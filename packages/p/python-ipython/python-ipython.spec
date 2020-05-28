@@ -29,7 +29,7 @@
 %define         skip_python2 1
 %bcond_without  iptest
 Name:           python-ipython%{psuffix}
-Version:        7.13.0
+Version:        7.14.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
@@ -37,6 +37,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipython
 Source:         https://files.pythonhosted.org/packages/source/i/ipython/ipython-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/jupyter/qtconsole/4.0.0/qtconsole/resources/icon/JupyterConsole.svg
+Patch0:         opensuse-disable-net-test.patch
 BuildRequires:  %{python_module backcall}
 BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module setuptools >= 18.5}
@@ -139,6 +140,7 @@ testing software that uses %{name}.
 
 %prep
 %setup -q -n ipython-%{version}
+%patch0 -p1
 
 %build
 %python_build

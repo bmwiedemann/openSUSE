@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat May  2 14:44:45 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 7.14.0
+  IPython  7.14 is a minor release that fix a couple of bugs and prepare
+  compatibility with new or future versions of some libraries. 
+  * Fix compatibility with Sphinx 3+
+    gh#ipython/ipython#12235
+  * Remove deprecated matplotlib parameter usage, compatibility with
+    matplotlib3.3+ 
+    gh#ipython/ipython#12250
+  * set ``.py`` extension when editing current buffer in vi/emacs.
+    gh#ipython/ipython#12167
+  * support for unicode identifiers in ``?``/``??``
+    gh#ipython/ipython#12208
+  * add extra options to the ``Video`` Rich objects
+    gh#ipython/ipython#12212
+  * add pretty-printing to ``SimpleNamespace``
+    gh#ipython/ipython#12230 
+- add opensuse-disable-net-test.patch to disable network access
+  during new test_embed_svg_url
+
+-------------------------------------------------------------------
 Thu Mar 19 11:38:34 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - update dep version of python-prompt_toolkit 
