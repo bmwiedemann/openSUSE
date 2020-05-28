@@ -179,6 +179,7 @@ Patch12:        right-json-location.patch
 Patch13:        remove-weakref.patch
 Patch14:        fix-lite.patch
 Patch17:        json-feature-name.patch
+Patch18:        fix-google-absl-memory.patch
 
 Requires:       python3
 Requires:       python3-Keras-Applications
@@ -451,6 +452,7 @@ mkdir -p %{bazeldir}
 %if 0%{?suse_version} > 1500 
 %patch17 -p 1
 %endif
+%patch18 -p 1
 
 %if %{is_lite}
 mkdir tensorflow/lite/tools/make/downloads/

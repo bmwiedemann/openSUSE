@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 25 15:44:40 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- fixed broken builds which were caused due to missing dependency
+  on @com_google_absl//absl/strings in various BUILD files
+- added patch: fix-google-absl-memory.patch
+
+-------------------------------------------------------------------
 Tue Apr  7 09:43:28 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - added mkl-ddn as source and do not use system mkl-dnn (bsc#1168839)
