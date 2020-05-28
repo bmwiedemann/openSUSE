@@ -41,4 +41,12 @@
 - Drop Source10 (copy of LICENSE), now included in upstream tarball.</comment>
     <requestid>800573</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>bc8a758d98d05620965188003feb66a4</srcmd5>
+    <version>2019.11.30</version>
+    <time>1590650194</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809361</requestid>
+  </revision>
 </revisionlist>

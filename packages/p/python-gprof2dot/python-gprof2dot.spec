@@ -27,8 +27,9 @@ Source:         https://files.pythonhosted.org/packages/source/g/gprof2dot/gprof
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -37,18 +38,25 @@ profilers into a dot graph.
 
 %prep
 %setup -q -n gprof2dot-%{version}
-sed -i -e '/^#!\//, 1d' gprof2dot.py 
+sed -i -e '/^#!\//, 1d' gprof2dot.py
 
 %build
 %python_build
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/gprof2dot
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative gprof2dot
+
+%postun
+%python_uninstall_alternative gprof2dot
 
 %files %{python_files}
 %license LICENSE.txt
-%python3_only %{_bindir}/gprof2dot
+%python_alternative %{_bindir}/gprof2dot
 %{python_sitelib}/*
 
 %changelog
