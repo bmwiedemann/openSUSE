@@ -1,7 +1,7 @@
 #
 # spec file for package python-abimap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
@@ -70,17 +72,26 @@ rm -rf html/.{doctrees,buildinfo}
 install -d -m 0755 %{buildroot}%{_mandir}/man1
 install -m 0644 man/abimap.1 %{buildroot}%{_mandir}/man1/
 
+%python_clone -a %{buildroot}%{_mandir}/man1/abimap.1
+%python_clone -a %{buildroot}%{_bindir}/abimap
+
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-make -j1 -C tests ABIMAP_NAME_VERSION="abimap-%{version}" ABIMAP_VERSION="%{version}"
+%make_build -j1 -C tests ABIMAP_NAME_VERSION="abimap-%{version}" ABIMAP_VERSION="%{version}"
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}:${PWD}/tests py.test-%{$python_version} -vv tests -k 'not test_main'
+
+%post
+%python_install_alternative abimap abimap.1
+
+%postun
+%python_uninstall_alternative abimap
 
 %files %{python_files}
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %license LICENSE
-%python3_only %{_bindir}/abimap
-%python3_only %{_mandir}/man1/abimap.1*
+%python_alternative %{_bindir}/abimap
+%python_alternative %{_mandir}/man1/abimap.1%{?ext_man}
 %{python_sitelib}/*
 
 %files %{python_files doc}
