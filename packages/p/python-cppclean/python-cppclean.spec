@@ -1,7 +1,7 @@
 #
 # spec file for package python-cppclean
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  bash
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -48,15 +49,22 @@ considerable extra compiles increasing the edit-compile-run cycle.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/cppclean
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_expand PYTHON=%{__$python} bash test.bash
 
+%post
+%python_install_alternative cppclean
+
+%postun
+%python_uninstall_alternative cppclean
+
 %files %{python_files}
 %license COPYING
 %doc README.rst
-%python3_only %{_bindir}/cppclean
+%python_alternative %{_bindir}/cppclean
 %{python_sitelib}/*
 
 %changelog
