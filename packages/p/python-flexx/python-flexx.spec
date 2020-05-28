@@ -1,7 +1,7 @@
 #
 # spec file for package python-flexx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,8 @@ Requires:       python-dialite >= 0.5.2
 Requires:       python-pscript >= 0.7.0
 Requires:       python-tornado
 Requires:       python-webruntime >= 0.5.6
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-imageio
 Recommends:     python-numpy
 Recommends:     python-vispy
@@ -67,16 +69,23 @@ document. It also works in the Jupyter notebook.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/flexx
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # Do not run tests, they require online access to jquery/etc.
 #%%pytest
 
+%post
+%python_install_alternative flexx
+
+%postun
+%python_uninstall_alternative flexx
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/flexx
+%python_alternative %{_bindir}/flexx
 %{python_sitelib}/*
 
 %changelog
