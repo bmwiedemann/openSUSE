@@ -1,7 +1,7 @@
 #
 # spec file for package python
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,10 @@
 %bcond_with test
 %endif
 Name:           python-releases%{psuffix}
-Version:        1.6.1
+Version:        1.6.3
 Release:        0
 Summary:        A Sphinx extension for changelog manipulation
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/bitprophet/releases
 Source:         https://files.pythonhosted.org/packages/source/r/releases/releases-%{version}.tar.gz
 Patch0:         semanticversioning.patch
@@ -84,6 +83,7 @@ Specifically:
 
 %if %{with test}
 %check
+export NOSE_NO_SPEC_COLOR=1
 %python_expand invoke-%{$python_bin_suffix} test
 %endif
 

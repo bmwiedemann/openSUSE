@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon May 25 21:27:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Restore semanticversioning.patch to allow semantic_version >= 2.7 
+  gh#bitprophet/releases#84
+  gh#bitprophet/releases#86
+- remove color printout in tests
+
+-------------------------------------------------------------------
+Wed Mar 18 09:08:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.6.3:
+  - :support:`87 backported` (via :issue:`88`) Our upper Sphinx version limit was
+    mostly defensive and at this point is just too old to even build on
+    ReadTheDocs successfully. Removed it for the time being. Thanks to José
+    Sánchez-Gallego for the nudge and the patch.
+  - :support:`84 backported` Pin us to ``semantic-version<2.7`` as they changed
+    their APIs (...) in that version in a way that breaks us. We do not need
+    anything they've added recently, so the conservative response is to just pin
+    until we truly need to upgrade. Thanks to everyone who reported and submitted
+    workarounds for this.
+- Drop merged patch semanticversioning.patch
+
+-------------------------------------------------------------------
 Tue Sep 17 10:11:28 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not generate test subpackage

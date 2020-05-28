@@ -39,4 +39,12 @@ https://build.opensuse.org/request/show/606019</comment>
   * semanticversioning.patch</comment>
     <requestid>731479</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c38924b45ca099949e7cfa2e0fdc7fc9</srcmd5>
+    <version>1.6.3</version>
+    <time>1590649767</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808931</requestid>
+  </revision>
 </revisionlist>
