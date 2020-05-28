@@ -1,7 +1,7 @@
 #
 # spec file for package python-dukpy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        JavaScript interpreter for Python
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/amol-/dukpy
+URL:            https://github.com/amol-/dukpy
 Source:         https://github.com/amol-/dukpy/archive/%{version}.tar.gz
 Patch0:         pytest.patch
 BuildRequires:  %{python_module devel}
@@ -33,8 +33,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module webassets}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-webassets
-
 %python_subpackages
 
 %description
@@ -63,16 +64,26 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/dukpy
+%python_clone -a %{buildroot}%{_bindir}/dukpy-install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 %python_expand PYTHONPATH="%{buildroot}%{$python_sitearch}:%{buildroot}%{$python_sitearch}/dukpy" py.test-%{$python_bin_suffix} -v
 
+%post
+%python_install_alternative dukpy
+%python_install_alternative dukpy-install
+
+%postun
+%python_uninstall_alternative dukpy
+%python_uninstall_alternative dukpy-install
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/dukpy-install
-%python3_only %{_bindir}/dukpy
+%python_alternative %{_bindir}/dukpy-install
+%python_alternative %{_bindir}/dukpy
 %{python_sitearch}/*
 
 %changelog
