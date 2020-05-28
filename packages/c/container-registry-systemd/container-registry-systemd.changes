@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 26 14:53:44 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20200526.1d9ce7b:
+  * Monitor container with conmon pid file (#2)
+
+-------------------------------------------------------------------
 Fri Feb 28 09:19:43 UTC 2020 - kukuk@suse.com
 
 - Update to version 0.0+git20200228.a79d477:
