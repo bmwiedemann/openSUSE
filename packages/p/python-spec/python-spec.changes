@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 19 08:59:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch from python3_only to python_alternative
+
+-------------------------------------------------------------------
 Tue Dec  4 12:54:34 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

@@ -1,7 +1,7 @@
 #
 # spec file for package python-spec
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Specification-style output for nose
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/bitprophet/spec
+URL:            https://github.com/bitprophet/spec
 Source:         https://files.pythonhosted.org/packages/source/s/spec/spec-%{version}.tar.gz
 # license is not included in sdist tarball, upstream fix: https://github.com/bitprophet/spec/pull/46
 Source1:        https://github.com/bitprophet/spec/raw/%{version}/LICENSE
@@ -32,9 +32,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-nose >= 1.3
 Requires:       python-six < 2.0
-BuildRequires:  fdupes
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -49,13 +49,18 @@ cp %{SOURCE1} .
 
 %install
 %python_install
-%python_clone %{buildroot}%{_bindir}/spec
+%python_clone -a %{buildroot}%{_bindir}/spec
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative spec
+
+%postun
+%python_uninstall_alternative spec
 
 %files %{python_files}
 %license LICENSE
-%python3_only %{_bindir}/spec
-%{_bindir}/spec-%{python_bin_suffix}
+%python_alternative %{_bindir}/spec
 %{python_sitelib}/*
 
 %changelog

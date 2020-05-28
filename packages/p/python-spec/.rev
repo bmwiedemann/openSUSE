@@ -16,4 +16,12 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>659686</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2b5b7fcf7c241f1ae58655016ff59d35</srcmd5>
+    <version>1.4.1</version>
+    <time>1590649673</time>
+    <user>maxlin_factory</user>
+    <comment>- Switch from python3_only to python_alternative</comment>
+    <requestid>807166</requestid>
+  </revision>
 </revisionlist>
