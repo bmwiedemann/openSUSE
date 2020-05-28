@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 15 23:02:19 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to v1.1.2
+  * Recent version of Sphinx deprecated its ``PyClassmember`` class. We've
+    adjusted sphinxcontrib-trio's internals to stop using it and silence
+    the warning. (gh#python-trio/sphinxcontrib-trio#154)
+- Changelog for v1.1.1
+  * When using autodoc to document a class that has inherited members, we
+    now correctly auto-detect the async-ness and other properties of those
+    inherited methods. (gh#python-trio/sphinxcontrib-trio#19)
+  * Recent versions of Sphinx deprecated its ``PyModulelevel`` class.
+    We've adjusted sphinxcontrib-trio's internals to stop using it.
+    gh#python-trio/sphinxcontrib-trio#138 
+
+-------------------------------------------------------------------
 Thu Jun  6 13:38:19 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.1.0:
