@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define commands export fsck gen-config import init passwd server
 %define skip_python2 1
 Name:           python-devpi-server
 Version:        5.4.1
@@ -42,6 +43,8 @@ Requires:       python-repoze.lru >= 0.6
 Requires:       python-ruamel.yaml >= 0.15.94
 Requires:       python-strictyaml
 Requires:       python-waitress >= 1.0.1
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # nginx tests failing when not skipped, likely due to rpmbuild environment
 Suggests:       nginx
 Suggests:       python-WebTest
@@ -83,17 +86,43 @@ sed -i "s/--flake8//" tox.ini
 
 %install
 %python_install
+for c in %{commands}; do
+  %python_clone -a %{buildroot}%{_bindir}/devpi-$c
+done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
-export PATH=$PATH:%{buildroot}/%{_bindir}
-%pytest --slow --ignore test_devpi_server %{buildroot}%{$python_sitelib}/test_devpi_server
+%{python_expand \
+mkdir bin-%{$python_version}
+for c in %{commands}; do
+  ln -s %{buildroot}%{_bindir}/devpi-$c-%{$python_version} bin-%{$python_version}/devpi-$c
+done
+export PATH=$PATH:`pwd`/bin-%{$python_version}
+export PYTHONPATH=:%{buildroot}%{$python_sitelib}
+$python -m pytest --slow --ignore test_devpi_server %{buildroot}%{$python_sitelib}/test_devpi_server
+}
+
+%post
+for c in %{commands}; do
+  %python_install_alternative devpi-$c
+done
+
+%postun
+for c in %{commands}; do
+  %python_uninstall_alternative devpi-$c
+done
 
 %files %{python_files}
 %doc CHANGELOG README.rst
 %license LICENSE
-%python3_only %{_bindir}/devpi*
+%python_alternative %{_bindir}/devpi-export
+%python_alternative %{_bindir}/devpi-fsck
+%python_alternative %{_bindir}/devpi-gen-config
+%python_alternative %{_bindir}/devpi-import
+%python_alternative %{_bindir}/devpi-init
+%python_alternative %{_bindir}/devpi-passwd
+%python_alternative %{_bindir}/devpi-server
 %{python_sitelib}/*
 
 %changelog
