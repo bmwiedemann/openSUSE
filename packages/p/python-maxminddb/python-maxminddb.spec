@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-maxminddb
-Version:        1.5.2
+Version:        1.5.4
 Release:        0
 Summary:        Reader for the MaxMind DB format
 License:        Apache-2.0

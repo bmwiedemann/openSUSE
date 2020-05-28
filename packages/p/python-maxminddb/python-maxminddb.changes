@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May  7 18:17:12 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.5.4:
+ - 1.5.3 was missing a test database. This release adds the test file.
+   There are no other changes. Reported by Lumír 'Frenzy' Balhar. GitHub #60.
+- update to version 1.5.3:
+ - Fix a segfault when decoding a database with a corrupt data section.
+   Reported by Robert Scott. GitHub #58.
+
+-------------------------------------------------------------------
 Sat Mar 14 08:03:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
