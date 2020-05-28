@@ -1,7 +1,7 @@
 #
 # spec file for package python-goobook
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-google-api-python-client >= 1.6.4
 Requires:       python-oauth2client >= 1.5.0
 Requires:       python-simplejson >= 2.1.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -50,12 +52,19 @@ sed -i '/^#!\/usr\/bin\/env python/d' goobook/application.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/goobook
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative goobook
+
+%postun
+%python_uninstall_alternative goobook
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE.txt
-%python3_only %{_bindir}/goobook
+%python_alternative %{_bindir}/goobook
 %{python_sitelib}/*
 
 %changelog

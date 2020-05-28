@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 06:34:27 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Thu Dec 12 13:56:10 UTC 2019 - Jan Baier <jbaier@suse.com>
 
 - initial release, version 3.4
