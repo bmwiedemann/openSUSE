@@ -39,6 +39,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-passlib >= 1.6
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python-mock
@@ -58,6 +60,7 @@ rm -f pytest.ini
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pypi-server
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -66,10 +69,16 @@ rm -f pytest.ini
 # (see centodeps-setup.py)
 %pytest tests -k "not (test_pipInstall_openOk or test_pipInstall_authedOk or test_hash_algos)"
 
+%post
+%python_install_alternative pypi-server
+
+%postun
+%python_uninstall_alternative pypi-server
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/*
-%python3_only %{_bindir}/pypi-server
+%python_alternative %{_bindir}/pypi-server
 
 %changelog
