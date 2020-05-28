@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 06:34:31 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Thu May 24 17:34:04 UTC 2018 - toddrme2178@gmail.com
 
 - Spec file cleanup
