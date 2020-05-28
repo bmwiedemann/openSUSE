@@ -1,7 +1,7 @@
 #
 # spec file for package python-cloud-init-seed
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Create cloud-init compatible image seeds
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/toabctl/cloud-init-seed
+URL:            https://github.com/toabctl/cloud-init-seed
 Source:         https://files.pythonhosted.org/packages/source/c/cloud-init-seed/cloud-init-seed-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pbr}
@@ -32,8 +32,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       mkisofs
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -47,12 +48,19 @@ Create cloud-init compatible image seeds
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/cloud-init-seed
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative cloud-init-seed
+
+%postun
+%python_uninstall_alternative cloud-init-seed
 
 %files %{python_files}
 %doc AUTHORS ChangeLog README.rst
 %license LICENSE
-%python3_only %{_bindir}/cloud-init-seed
+%python_alternative %{_bindir}/cloud-init-seed
 %{python_sitelib}/*
 
 %changelog

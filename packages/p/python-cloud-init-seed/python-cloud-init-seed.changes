@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 27 09:36:45 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Sun Dec 30 16:31:36 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
 
 - Add missing Requires for mkisofs
