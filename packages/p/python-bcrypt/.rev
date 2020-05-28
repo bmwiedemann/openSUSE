@@ -60,4 +60,12 @@
   * Added support for compilation on Haiku.</comment>
     <requestid>720013</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6730e29d01539661668eae26ea230bbd</srcmd5>
+    <version>3.1.7</version>
+    <time>1590649539</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>805265</requestid>
+  </revision>
 </revisionlist>

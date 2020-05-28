@@ -1,7 +1,7 @@
 #
 # spec file for package python-bcrypt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,7 +30,9 @@ Source:         https://files.pythonhosted.org/packages/source/b/bcrypt/bcrypt-%
 BuildRequires:  %{python_module cffi >= 1.1}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest >= 3.2.1}
-BuildRequires:  %{python_module setuptools >= 40.8.0}
+# setuptools 40.8.0 is required by upstream only for a pip issue that doesn't
+# affect us, so we relax the requirement to build in SLE/Leap 15.2 with 40.5.0
+BuildRequires:  %{python_module setuptools >= 40.5.0}
 BuildRequires:  %{python_module six >= 1.4.1}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
