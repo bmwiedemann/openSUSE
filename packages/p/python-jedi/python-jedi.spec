@@ -70,8 +70,8 @@ skiptests+=" or test_sqlite3_conversion"
 skiptests+=" or test_speed"
 # fails on some architectures
 skiptests+=" or test_init_extension_module"
-%if 0%{?sle_version} == 150100
-  # the python 2 pytest test discovery in Leap 15.1 and SLE15 SP1 
+%if 0%{?suse_version} == 1500
+  # the python 2 pytest test discovery in Leap 15 and SLE15
   # trips on purposely placed syntax errors in test/completion/imports.py
   %define pytestignore --ignore test/__init__.py
 %endif

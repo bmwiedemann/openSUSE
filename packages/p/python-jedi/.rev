@@ -232,4 +232,12 @@
     <comment></comment>
     <requestid>794384</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>57b861cfb300c46d4dbe601a4b413c59</srcmd5>
+    <version>0.17.0</version>
+    <time>1590649762</time>
+    <user>maxlin_factory</user>
+    <comment>- Skip two tests on leap not just sp1+</comment>
+    <requestid>808522</requestid>
+  </revision>
 </revisionlist>
