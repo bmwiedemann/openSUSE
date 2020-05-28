@@ -1,5 +1,5 @@
 #
-# spec file for package python-arrow
+# spec file for package python
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -26,7 +26,7 @@
 %endif
 %bcond_without python2
 Name:           python-arrow%{?psuffix}
-Version:        0.15.5
+Version:        0.15.6
 Release:        0
 Summary:        Better dates and times for Python
 License:        Apache-2.0
@@ -41,8 +41,10 @@ BuildArch:      noarch
 BuildRequires:  %{python_module arrow == %{version}}
 BuildRequires:  %{python_module chai}
 BuildRequires:  %{python_module dateparser}
+BuildRequires:  %{python_module dateutil}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module simplejson}
 %endif
@@ -80,16 +82,16 @@ rm -rf arrow.egg-info
 
 %check
 %if %{with test}
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v
+# remove pytest -cov* args. (Next release will move this to tox.ini)
+rm setup.cfg 
+%pytest
 %endif
 
 %if %{without test}
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%dir %{python_sitelib}/arrow
-%{python_sitelib}/arrow/*
-%dir %{python_sitelib}/arrow-%{version}-py*.egg-info
+%{python_sitelib}/arrow
 %{python_sitelib}/arrow-%{version}-py*.egg-info
 %endif
 
