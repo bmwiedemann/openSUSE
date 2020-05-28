@@ -1,7 +1,7 @@
 #
 # spec file for package python-demjson
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-2to3
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,6 +56,7 @@ sed -i "1d" demjson.py # Fix non-executable script
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/jsonlint
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with tests}3
@@ -67,11 +70,17 @@ $python test/test_demjson_%{$python_bin_suffix}.py
 }
 %endif
 
+%post
+%python_install_alternative jsonlint
+
+%postun
+%python_uninstall_alternative jsonlint
+
 %files %{python_files}
 %license LICENSE.txt
 %doc README.txt
 %doc docs/
-%python3_only %{_bindir}/jsonlint
+%python_alternative %{_bindir}/jsonlint
 %{python_sitelib}/*
 
 %changelog

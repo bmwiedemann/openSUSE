@@ -23,4 +23,12 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>654010</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>be46da16f5ba2d28fe328f38e435867b</srcmd5>
+    <version>2.2.4</version>
+    <time>1590650291</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809424</requestid>
+  </revision>
 </revisionlist>
