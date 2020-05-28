@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 06:34:09 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Mon Nov  4 15:05:59 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add pytest4.patch making the testsuite running again.

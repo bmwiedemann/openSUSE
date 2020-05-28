@@ -1,7 +1,7 @@
 #
 # spec file for package python-evtx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define commands dump dump_chunk_slack eid_record_numbers extract_record filter_records info record_structure structure templates
 Name:           python-evtx
 Version:        0.6.1
 Release:        0
@@ -36,6 +37,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-hexdump
 Requires:       python-lxml
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,19 +62,36 @@ find Evtx -name "*.py" | xargs sed -i '1 { /^#!/ d }'
 
 %install
 %python_install
-for script in scripts/evtx_*.py; do
-  sed -i -e 's:^#!%{_bindir}/env python:#!%{_bindir}/python3:' $script
-  dos2unix $script
+for c in %{commands}; do
+  %python_clone -a %{buildroot}%{_bindir}/evtx_$c.py
 done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+for c in %{commands}; do
+  %python_install_alternative evtx_$c.py
+done
+
+%postun
+for c in %{commands}; do
+  %python_uninstall_alternative evtx_$c.py
+done
+
 %files %{python_files}
 %license LICENSE.TXT
 %doc README.md
 %{python_sitelib}/*
-%python3_only %{_bindir}/evtx_*.py
+%python_alternative %{_bindir}/evtx_dump.py
+%python_alternative %{_bindir}/evtx_dump_chunk_slack.py
+%python_alternative %{_bindir}/evtx_eid_record_numbers.py
+%python_alternative %{_bindir}/evtx_extract_record.py
+%python_alternative %{_bindir}/evtx_filter_records.py
+%python_alternative %{_bindir}/evtx_info.py
+%python_alternative %{_bindir}/evtx_record_structure.py
+%python_alternative %{_bindir}/evtx_structure.py
+%python_alternative %{_bindir}/evtx_templates.py
 
 %changelog
