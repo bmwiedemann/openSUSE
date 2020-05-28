@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define commands arcsign arcverify dkimsign dkimverify dknewkey
 %define skip_python2 1
 Name:           python-dkimpy
 Version:        1.0.3
@@ -33,6 +34,8 @@ Requires:       python-PyNaCl
 Requires:       python-authres
 Requires:       python-dnspython >= 1.16
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyNaCl}
@@ -54,20 +57,38 @@ DKIM (DomainKeys Identified Mail)
 
 %install
 %python_install
+for c in %{commands}; do
+  %python_clone -a %{buildroot}%{_mandir}/man1/$c.1
+  %python_clone -a %{buildroot}%{_bindir}/$c
+done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+for c in %{commands}; do
+  %python_install_alternative $c $c.1
+done
+
+%postun
+for c in %{commands}; do
+  %python_uninstall_alternative $c
+done
+
 %files %{python_files}
 %doc ChangeLog README.md
 %license LICENSE
-%python3_only %{_bindir}/arcsign
-%python3_only %{_bindir}/arcverify
-%python3_only %{_bindir}/dkimsign
-%python3_only %{_bindir}/dkimverify
-%python3_only %{_bindir}/dknewkey
+%python_alternative %{_bindir}/arcsign
+%python_alternative %{_bindir}/arcverify
+%python_alternative %{_bindir}/dkimsign
+%python_alternative %{_bindir}/dkimverify
+%python_alternative %{_bindir}/dknewkey
+%python_alternative %{_mandir}/man1/arcsign.1%{?ext_man}
+%python_alternative %{_mandir}/man1/arcverify.1%{?ext_man}
+%python_alternative %{_mandir}/man1/dkimsign.1%{?ext_man}
+%python_alternative %{_mandir}/man1/dkimverify.1%{?ext_man}
+%python_alternative %{_mandir}/man1/dknewkey.1%{?ext_man}
 %{python_sitelib}/*
-%python3_only %{_mandir}/man1/*.1*
 
 %changelog
