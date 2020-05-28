@@ -42,6 +42,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six > 1.10.0
 Requires:       python-snowballstemmer
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-pep257 = %{version}
 Obsoletes:      python-pep257 < %{version}
 BuildArch:      noarch
@@ -71,6 +73,7 @@ sed -i /^pytestmark/d src/tests/test_integration.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pydocstyle
 %{python_expand  #
 sed -i -e '/^#! \//, 1d' %{buildroot}%{$python_sitelib}/pydocstyle/__main__.py
 dos2unix %{buildroot}%{$python_sitelib}/pydocstyle/__main__.py
@@ -81,10 +84,16 @@ dos2unix %{buildroot}%{$python_sitelib}/pydocstyle/__main__.py
 export PYTHONPATH=$(pwd)/src
 %pytest
 
+%post
+%python_install_alternative pydocstyle
+
+%postun
+%python_uninstall_alternative pydocstyle
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE-MIT
-%python3_only %{_bindir}/pydocstyle
+%python_alternative %{_bindir}/pydocstyle
 %{python_sitelib}/pydocstyle
 %{python_sitelib}/pydocstyle-%{version}-py*.egg-info
 
