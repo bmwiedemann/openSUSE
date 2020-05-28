@@ -32,6 +32,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-docopt
 Requires:       python-setuptools
 Requires:       python-yarg
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module docopt}
@@ -51,16 +53,23 @@ chmod a-x pipreqs/pipreqs.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pipreqs
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # Ignore tests that require network access
 %pytest -k 'not (test_get_imports_info or test_ignored_directory or test_init or test_init_overwrite or teset_init_savepath or test_omit_version)'
 
+%post
+%python_install_alternative pipreqs
+
+%postun
+%python_uninstall_alternative pipreqs
+
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license LICENSE
-%python3_only %{_bindir}/pipreqs
+%python_alternative %{_bindir}/pipreqs
 %{python_sitelib}/*
 
 %changelog

@@ -16,4 +16,13 @@
     <comment></comment>
     <requestid>787757</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5862b6c28b9d9677fd61c3ba12c118e4</srcmd5>
+    <version>0.4.10</version>
+    <time>1590649657</time>
+    <user>maxlin_factory</user>
+    <comment>- Don't use %python3_only command, but properly use alternatives.
+</comment>
+    <requestid>807046</requestid>
+  </revision>
 </revisionlist>
