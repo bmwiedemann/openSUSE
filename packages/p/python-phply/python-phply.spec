@@ -1,7 +1,7 @@
 #
 # spec file for package python-phply
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ply
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,17 +47,27 @@ phply is a parser for the PHP programming language written using PLY, a Lex/YACC
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/phpparse
+%python_clone -a %{buildroot}%{_bindir}/phplex
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/tests
 
 %check
 %python_exec setup.py test
 
+%post
+%python_install_alternative phpparse
+%python_install_alternative phplex
+
+%postun
+%python_uninstall_alternative phpparse
+%python_uninstall_alternative phplex
+
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%python3_only %{_bindir}/phplex
-%python3_only %{_bindir}/phpparse
+%python_alternative %{_bindir}/phplex
+%python_alternative %{_bindir}/phpparse
 %{python_sitelib}/*
 
 %changelog
