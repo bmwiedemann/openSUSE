@@ -714,4 +714,15 @@ See LICENSES.TXT - test.py is GPL licensed (aggregation) (forwarded request 8071
  * LP#1840234: The package version number is now available as lxml.__version__</comment>
     <requestid>781843</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>d1007ad827766a1169b46b925fff5ea6</srcmd5>
+    <version>4.5.0</version>
+    <time>1590649520</time>
+    <user>maxlin_factory</user>
+    <comment>- Remove explicit Provides of python-doc, which is just wrong.
+
+Send to Staging:E.
+</comment>
+    <requestid>803766</requestid>
+  </revision>
 </revisionlist>

@@ -45,7 +45,6 @@ RelaxNG, XML Schema, XSLT and C14N.
 %package -n %{name}-doc
 Summary:        Documentation for python-lxml, an XML processing library
 Group:          Documentation/Other
-Provides:       %{python_module doc = %{version}}
 BuildArch:      noarch
 
 %description -n %{name}-doc

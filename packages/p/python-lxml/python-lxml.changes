@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 12 20:48:37 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Remove explicit Provides of python-doc, which is just wrong.
+
+-------------------------------------------------------------------
 Thu Mar  5 12:44:43 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 4.5.0
