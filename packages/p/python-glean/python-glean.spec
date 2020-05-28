@@ -23,11 +23,15 @@ Release:        0
 Summary:        Program to write static config from config-drive
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            http://www.openstack.org/
+URL:            https://www.openstack.org/
 Source:         https://files.pythonhosted.org/packages/source/g/glean/glean-%{version}.tar.gz
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Sphinx >= 1.1.2}
 BuildRequires:  %{python_module mock >= 1.0}
@@ -38,9 +42,6 @@ BuildRequires:  %{python_module testrepository >= 0.0.18}
 BuildRequires:  %{python_module testscenarios >= 0.4}
 BuildRequires:  %{python_module testtools >= 0.9.34}
 # /SECTION
-BuildRequires:  fdupes
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -58,6 +59,9 @@ notably Rackspace, use configuration provided via a configuration drive.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/glean-install
+%python_clone -a %{buildroot}%{_bindir}/glean
+%python_clone -a %{buildroot}%{_bindir}/glean.sh
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -66,12 +70,22 @@ export PYTHON=$python
 $python setup.py test
 }
 
+%post
+%python_install_alternative glean-install
+%python_install_alternative glean
+%python_install_alternative glean.sh
+
+%postun
+%python_uninstall_alternative glean-install
+%python_uninstall_alternative glean
+%python_uninstall_alternative glean.sh
+
 %files %{python_files}
 %doc AUTHORS ChangeLog README.rst
 %license LICENSE
-%python3_only %{_bindir}/glean.sh
-%python3_only %{_bindir}/glean
-%python3_only %{_bindir}/glean-install
+%python_alternative %{_bindir}/glean.sh
+%python_alternative %{_bindir}/glean
+%python_alternative %{_bindir}/glean-install
 %{python_sitelib}/*
 
 %changelog
