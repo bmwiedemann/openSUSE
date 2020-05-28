@@ -32,6 +32,8 @@ Source2:        fetch-intersphinx-inventories.sh
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION documentation requirements
 BuildRequires:  python3-Sphinx
@@ -67,6 +69,7 @@ python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/waitress-serve
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -74,10 +77,16 @@ python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
 rm waitress/tests/test_adjustments.py
 %python_exec setup.py test
 
+%post
+%python_install_alternative waitress-serve
+
+%postun
+%python_uninstall_alternative waitress-serve
+
 %files %{python_files}
 %license LICENSE.txt
 %doc COPYRIGHT.txt README.rst
-%python3_only %{_bindir}/waitress-serve
+%python_alternative %{_bindir}/waitress-serve
 %{python_sitelib}/*
 
 %files %{python_files doc}
