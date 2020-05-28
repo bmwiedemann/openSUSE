@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 06:34:21 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Mon Jan 20 08:14:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to github archive in order to get tests

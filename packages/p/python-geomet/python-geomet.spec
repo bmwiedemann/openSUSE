@@ -30,6 +30,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click}
@@ -49,17 +51,29 @@ GeoJSON <-> WKT/WKB conversion utilities
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/geomet
 rm %{buildroot}%{_prefix}/LICENSE
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export PATH=$PATH:%{buildroot}%{_bindir}
-%pytest
+export PYTHONDONTWRITEBYTECODE=1
+%{python_expand \
+sed -i 's:geomet:geomet-%{$python_version}:' geomet/tests/test_cli.py
+export PYTHONPATH=:%{buildroot}%{$python_sitelib}
+$python -m pytest
+}
+
+%post
+%python_install_alternative geomet
+
+%postun
+%python_uninstall_alternative geomet
 
 %files %{python_files}
 %doc AUTHORS.txt README.md
 %license LICENSE
-%python3_only %{_bindir}/geomet
+%python_alternative %{_bindir}/geomet
 %{python_sitelib}/geomet
 %{python_sitelib}/geomet-%{version}-py*.egg-info
 
