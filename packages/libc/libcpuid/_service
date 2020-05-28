@@ -4,7 +4,8 @@
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">libcpuid</param>
-    <param name="versionformat">0.4.1+git.%cd</param>
+    <param name="versionformat">@PARENT_TAG@+git.%cd</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service mode="disabled" name="set_version"/>
   <service name="tar" mode="buildtime"/>

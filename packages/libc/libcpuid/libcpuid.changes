@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue May 26 12:21:20 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version v0.5.0+git.20200526:
+  * CI: remove 'v' prefix in assets
+  * CI: checkout sources before making release
+  * Release version 0.5.0 (#146)
+  * Add GitHub workflows for CI/CD - CI: it will check code consistency and run tests for all events (except for tags) - CD: it will build all assets and create a draft Close #122
+  * check-consistency: return error count
+  * Fix code consistency Result before this patch:
+  * CMake: fix include directory
+  * CMake: fix build on Windows
+  * CMake: fix install target's export
+  * tests: fix unused-result warning in convert_instlatx64 tool
+  * Update .gitignore
+  * CMake: fix Unix install and format
+  * Add config file for cmake-format It formats CMakeLists.txt files See https://github.com/cheshirekow/cmake_format
+  * Doxygen: upgrade Doxyfile to avoid warnings warning: Tag 'PERL_PATH' at line 1032 of file '/libcpuid/build/libcpuid/Doxyfile' has become obsolete. To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u" warning: argument 'a4wide' for option PAPER_TYPE is not a valid enum value Using the default: a4!
+  * Doxygen: turn on quiet mode It is too noisy with CMake
+  * Detect AVX512VBMI and AVX512VBMI2 features on Intel CPUs More information: https://en.wikichip.org/wiki/x86/avx-512 Resolve #134
+  * Detect ABM feature on Intel CPUs Resolve #144
+  * Detect RDSEED/ADX/SHA_NI features on AMD CPUs These x86 instruction set extensions are present since Zen micro-architecture Resolve #145
+  * Update cpuid_main.c
+  * DB: add Ivy Bridge-E (Xeon)
+  * Tests: update all tests to add fields for L1I
+  * Tests: update to add L1I information Related to 25d0614811991c855ce7db0d898dbc6200dfa840 Dump of Core i5 520m from CPU-X#119
+  * Add L1 Instruction Cache information Some CPUs does not have the same associativity for L1D and L1I, as reported in X0rg/CPU-X#119 It adds l1_instruction_assoc and l1_instruction_cacheline in cpu_id_t To avoid confusing, also adds l1_data_assoc and l1_data_cacheline l1_assoc and l1_cacheline are leave untouched for backward compatibility
+  * Ignore .vscode directory Yes, 0b05f45e03b0aa39a65eba9451b59c9381e8474c was about VS Code
+  * Tests: add amd_fn8000001dh subleaf See e562798cecf4af852fdfef4b0e7bf159a5d9b4de
+  * Tests: parse subleafs in convert_instlatx64 Also, it adds 0xffffffff when data is not available, so all lines are presents
+  * Re-fix L3 cache associativity detection on AMD Zen 2 CPUs Previous commit: 848394ee460c70298f91569d33f2c156bddb0f6c
+  * Applied a patch from @tavplubix
+  * Use constant for registers name It helps when reading technical documentation and it avoids 'magic values'
+  * Remove all trailling spaces It is annoying with some text editors
+  * DB: fix Rome extended model
+  * DB: add Renoir APUs
+  * Tests: add Core i5 8250U Related to X0rg/CPU-X#129
+  * DB: add Ice Lake CPUs
+  * DB: add Comet Lake CPUs
+  * DB: add Coffee Lake Refresh It differs from Coffee Lake by stepping Core i5 9400 and 9500 will still be detected as Coffee Lake because it only differs by revision...
+  * DB: add Coffee Lake-U It differs from Kaby Lake-U by stepping
+  * DB: add Cannon Lake CPUs
+  * DB: clarify Intel Generations
+  * tests: remove duplicate addresses in RAW part
+  * tests: fix convert_instlatx64 tool
+  * Fix L3 cache associativity detection on AMD Zen 2 CPUs
+  * Fix CMake
+  * Add CMake
+  * Add CMake
+
+-------------------------------------------------------------------
 Thu Jan 23 10:08:59 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.4.1+git.20200102:
