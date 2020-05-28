@@ -475,4 +475,12 @@
     <comment>- switch to python 3.x only build</comment>
     <requestid>783803</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>60cbcdb43a9204007b97e6caf6a7faba</srcmd5>
+    <version>3.1.0</version>
+    <time>1590649498</time>
+    <user>maxlin_factory</user>
+    <comment>Ussuri Update</comment>
+    <requestid>803555</requestid>
+  </revision>
 </revisionlist>

@@ -17,13 +17,13 @@
 
 
 Name:           python-cliff
-Version:        2.16.0
+Version:        3.1.0
 Release:        0
 Summary:        Command Line Interface Formulation Framework
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-cliff
-Source0:        https://files.pythonhosted.org/packages/source/c/cliff/cliff-2.16.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/c/cliff/cliff-3.1.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable
 BuildRequires:  python3-PyYAML
@@ -83,12 +83,12 @@ other extensions.
 This package contains documentation files for %{name}.
 
 %prep
-%autosetup -p1 -n cliff-2.16.0
+%autosetup -p1 -n cliff-3.1.0
 %py_req_cleanup
 
 %build
 %py3_build
-PBR_VERSION=2.16.0 PYTHONPATH=. %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=3.1.0 PYTHONPATH=. %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install

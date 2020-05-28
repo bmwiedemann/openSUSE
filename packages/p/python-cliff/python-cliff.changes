@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 12 09:52:03 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.1.0
+  - Switch to Ussuri jobs
+  - Add contributors link to readme
+  - Fix nested argument groups with ignore conflict handler
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - Allow finding command by partial name
+  - Add autoprogram_cliff_app_dist_name config opt
+  - adding missing releasenote for the drop of py27 support
+  - Add an errexit attribute to InteractiveApp to exit on command errors
+  - Re-add support for python 3.5
+  - Modify the help message of `-c`/`--column` parameter
+  - Stop wildcard importing argparse
+
+-------------------------------------------------------------------
 Wed Mar 11 12:19:48 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only build
