@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue May 26 19:33:57 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.56.4:
+  * Release v3.56.4
+  * Include default identity files during wrapped SSH
+  * Clarify testing instructions on dev build (#933)
+  * Fix local build when pip3 exists, but not pip
+  * Read routes from the deployments API in route:list command (#929)
+  * Recommend all apps/services/workers commands from each other (#930)
+  * Use a wildcard include for SSH configuration to reduce need for user configuration updates
+  * Include default SSH identity files when adding SSH config
+  * Avoid listing empty To email address in integration:list
+  * Release v3.56.3
+  * Fix phar decoding errors during update
+  * Fix .ssh/config permissions issues
+  * Fix release notes for very old version updates [skip changelog]
+
+-------------------------------------------------------------------
+Thu May 21 19:53:49 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.56.2:
+  * Release v3.56.2
+  * More ssh cert improvements
+  * Display MFA status in ssh-cert:load command
+  * Release v3.56.1
+  * Make certifier URL configurable
+  * Release v3.56.0
+  * Add an alias for environment deactivation. (#922)
+  * Support option for building draft pull requests in GitHub integration
+  * Introduce utility to manage code/config snippets
+  * Add automatic SSH certificate support
+  * Fix error in command listing, when the .platform.app.yaml is not found
+  * Extra space [skip changelog]
+
+-------------------------------------------------------------------
 Thu May 14 20:39:51 UTC 2020 - jimmy@boombatower.com
 
 - Update to version 3.55.0:
