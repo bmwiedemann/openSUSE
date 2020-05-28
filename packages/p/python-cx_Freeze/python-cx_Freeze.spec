@@ -1,7 +1,7 @@
 #
 # spec file for package python-cx_Freeze
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  chrpath
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # we provide same binary like the deprecated py2 variant
 Conflicts:      %{oldpython}-cx_Freeze
 %python_subpackages
@@ -63,6 +65,8 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/cxfreeze-quickstart
+%python_clone -a %{buildroot}%{_bindir}/cxfreeze
 %python_expand chrpath -d %{buildroot}%{$python_sitearch}/cx_Freeze/bases/Console*
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
@@ -70,11 +74,19 @@ export CFLAGS="%{optflags}"
 # test_FindModule_from_zip - needs testpkg1.egg which is not present
 %pytest_arch -k 'not test_FindModule_from_zip'
 
+%post
+%python_install_alternative cxfreeze-quickstart
+%python_install_alternative cxfreeze
+
+%postun
+%python_uninstall_alternative cxfreeze-quickstart
+%python_uninstall_alternative cxfreeze
+
 %files %{python_files}
 %doc README.md
 %license doc/src/license.rst
-%python3_only %{_bindir}/cxfreeze
-%python3_only %{_bindir}/cxfreeze-quickstart
+%python_alternative %{_bindir}/cxfreeze
+%python_alternative %{_bindir}/cxfreeze-quickstart
 %{python_sitearch}/*
 
 %changelog

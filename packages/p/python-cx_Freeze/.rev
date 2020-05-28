@@ -52,4 +52,12 @@
   * Fixed hook for zmq so it doesn’t fail when there is no bundled libzmq library in the installed pyzmq package (PR #442).</comment>
     <requestid>730768</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1a5bc29d0f36e52d36d161dc7796c784</srcmd5>
+    <version>6.0</version>
+    <time>1590650383</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809604</requestid>
+  </revision>
 </revisionlist>
