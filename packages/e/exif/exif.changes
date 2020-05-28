@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed May 20 06:41:17 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- updated to exif 0.6.22:
+  * New translations: ast, fur, ko, ms, pt_BR, ru, tr
+  * Updated translations: many!
+  * Fix a number of compiler and automake warnings
+  * Fix the --remove option when no tag is specified.
+  * Escape special XML characters in xml mode.
+  * Add many continuous integration builds
+  * Add more regression tests
+  * Fixup IFD 1 tags when adding or removing a thumbnail.
+  * Fix the XML tags used in --ids format.
+  * Fix a memory leak when no arguments are given.
+  * Enable AM_SILENT_RULES by default.
+  * Make sure the tag buffer in show_entry_xml is NUL-terminated.
+  * Eliminated unnecessary remove() calls in jpeg_data_save_file.
+  * Close files before logging the error.
+  * Install a SIGPIPE handler to stop generating a signal on pipe failures.
+  * Fix cross-compilation with pkg-config
+  * Use GP_CHECK_LIBRARY to look for popt.
+  * Include strings to translate from libjpeg/jpeg-data.c
+  * Fixed a double free by initializing data variable to NULL
+  * Check that JPEGs start with 0xff
+
+-------------------------------------------------------------------
 Mon Dec 22 13:18:52 UTC 2014 - meissner@suse.com
 
 - build with PIE
