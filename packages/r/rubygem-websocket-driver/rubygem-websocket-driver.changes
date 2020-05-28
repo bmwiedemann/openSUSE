@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 27 11:23:40 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 0.7.2
+
+  * Emit `ping` and `pong` events from the `Server` driver
+  * Handle draft-76 handshakes correctly if the request's body is a frozen string
+
+-------------------------------------------------------------------
 Sat Jun 29 22:12:11 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 0.7.1

@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-websocket-driver
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-websocket-driver
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 %define mod_name websocket-driver
 %define mod_full_name %{mod_name}-%{version}
@@ -33,7 +33,7 @@ BuildRequires:  %{rubydevel}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/faye/websocket-driver-ruby
+URL:            https://github.com/faye/websocket-driver-ruby
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        WebSocket protocol handler with pluggable I/O
