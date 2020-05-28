@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 26 14:58:13 UTC 2020 - Matei Albu <malbu@suse.com>
+
+- Update to Tomcat 9.0.35. See changelog at
+  https://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.35_(markt)
+- Fixed CVEs:
+  - CVE-2020-9484 (bsc#1171928)
+- Rebased patches:
+  * tomcat-9.0-javadoc.patch
+  * tomcat-9.0-osgi-build.patch
+  * tomcat-9.0.31-java8compat.patch
+  
+-------------------------------------------------------------------
 Fri Apr 10 15:43:59 UTC 2020 - Javier Llorente <javier@opensuse.org>
 
 - Update to Tomcat 9.0.34. See changelog at

@@ -1,8 +1,8 @@
-Index: apache-tomcat-9.0.33-src/build.xml
+Index: apache-tomcat-9.0.35-src/build.xml
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/build.xml
-+++ apache-tomcat-9.0.33-src/build.xml
-@@ -3316,6 +3316,9 @@ Read the Building page on the Apache Tom
+--- apache-tomcat-9.0.35-src.orig/build.xml
++++ apache-tomcat-9.0.35-src/build.xml
+@@ -3327,6 +3327,9 @@ Read the Building page on the Apache Tom
      <path id="bndlib.classpath">
        <fileset file="${bnd.jar}" />
        <fileset file="${bndlib.jar}" />

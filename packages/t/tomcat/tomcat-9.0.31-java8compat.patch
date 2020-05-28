@@ -1,7 +1,7 @@
-Index: apache-tomcat-9.0.33-src/java/org/apache/catalina/connector/InputBuffer.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/catalina/connector/InputBuffer.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/catalina/connector/InputBuffer.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/catalina/connector/InputBuffer.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/catalina/connector/InputBuffer.java
++++ apache-tomcat-9.0.35-src/java/org/apache/catalina/connector/InputBuffer.java
 @@ -389,10 +389,10 @@ public class InputBuffer extends Reader
          }
          int n = Math.min(to.remaining(), bb.remaining());
@@ -62,10 +62,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/catalina/connector/InputBuffer.j
          cb = tmp;
          tmp = null;
      }
-Index: apache-tomcat-9.0.33-src/java/org/apache/catalina/connector/OutputBuffer.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/catalina/connector/OutputBuffer.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/catalina/connector/OutputBuffer.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/catalina/connector/OutputBuffer.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/catalina/connector/OutputBuffer.java
++++ apache-tomcat-9.0.35-src/java/org/apache/catalina/connector/OutputBuffer.java
 @@ -761,10 +761,10 @@ public class OutputBuffer extends Writer
          int limit = bb.capacity();
          int fromLimit = from.limit();
@@ -80,10 +80,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/catalina/connector/OutputBuffer.
          }
  
          if (from.remaining() > 0) {
-Index: apache-tomcat-9.0.33-src/java/org/apache/catalina/tribes/transport/nio/NioReplicationTask.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/catalina/tribes/transport/nio/NioReplicationTask.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/catalina/tribes/transport/nio/NioReplicationTask.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/catalina/tribes/transport/nio/NioReplicationTask.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/catalina/tribes/transport/nio/NioReplicationTask.java
++++ apache-tomcat-9.0.35-src/java/org/apache/catalina/tribes/transport/nio/NioReplicationTask.java
 @@ -18,6 +18,7 @@
  package org.apache.catalina.tribes.transport.nio;
  import java.io.IOException;
@@ -137,10 +137,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/catalina/tribes/transport/nio/Ni
              //did we get a package
              count = reader.hasPackage()?1:-1;
          }
-Index: apache-tomcat-9.0.33-src/java/org/apache/catalina/tribes/transport/nio/NioSender.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/catalina/tribes/transport/nio/NioSender.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/catalina/tribes/transport/nio/NioSender.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/catalina/tribes/transport/nio/NioSender.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/catalina/tribes/transport/nio/NioSender.java
++++ apache-tomcat-9.0.35-src/java/org/apache/catalina/tribes/transport/nio/NioSender.java
 @@ -20,6 +20,7 @@ package org.apache.catalina.tribes.trans
  import java.io.EOFException;
  import java.io.IOException;
@@ -205,10 +205,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/catalina/tribes/transport/nio/Ni
                  if (isConnected()) {
                      if (isUdpBased())
                          dataChannel.register(getSelector(), SelectionKey.OP_WRITE, this);
-Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/ajp/AjpProcessor.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/coyote/ajp/AjpProcessor.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/coyote/ajp/AjpProcessor.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/coyote/ajp/AjpProcessor.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/coyote/ajp/AjpProcessor.java
++++ apache-tomcat-9.0.35-src/java/org/apache/coyote/ajp/AjpProcessor.java
 @@ -21,6 +21,7 @@ import java.io.EOFException;
  import java.io.IOException;
  import java.io.InterruptedIOException;
@@ -217,7 +217,7 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/ajp/AjpProcessor.java
  import java.nio.ByteBuffer;
  import java.security.NoSuchProviderException;
  import java.security.cert.CertificateFactory;
-@@ -1260,7 +1261,7 @@ public class AjpProcessor extends Abstra
+@@ -1258,7 +1259,7 @@ public class AjpProcessor extends Abstra
  
              responseMessage.reset();
              responseMessage.appendByte(Constants.JK_AJP13_SEND_BODY_CHUNK);
@@ -226,10 +226,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/ajp/AjpProcessor.java
              responseMessage.appendBytes(chunk);
              responseMessage.end();
              socketWrapper.write(blocking, responseMessage.getBuffer(), 0, responseMessage.getLen());
-Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/filters/BufferedInputFilter.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/coyote/http11/filters/BufferedInputFilter.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/coyote/http11/filters/BufferedInputFilter.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/filters/BufferedInputFilter.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/coyote/http11/filters/BufferedInputFilter.java
++++ apache-tomcat-9.0.35-src/java/org/apache/coyote/http11/filters/BufferedInputFilter.java
 @@ -18,6 +18,7 @@
  package org.apache.coyote.http11.filters;
  
@@ -268,10 +268,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/filters/BufferedIn
              }
          }
          hasRead = false;
-Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/filters/ChunkedInputFilter.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/coyote/http11/filters/ChunkedInputFilter.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/coyote/http11/filters/ChunkedInputFilter.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/filters/ChunkedInputFilter.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/coyote/http11/filters/ChunkedInputFilter.java
++++ apache-tomcat-9.0.35-src/java/org/apache/coyote/http11/filters/ChunkedInputFilter.java
 @@ -18,6 +18,7 @@ package org.apache.coyote.http11.filters
  
  import java.io.EOFException;
@@ -351,10 +351,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/filters/ChunkedInp
                  }
              }
  
-Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/filters/ChunkedOutputFilter.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/coyote/http11/filters/ChunkedOutputFilter.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/coyote/http11/filters/ChunkedOutputFilter.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/filters/ChunkedOutputFilter.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/coyote/http11/filters/ChunkedOutputFilter.java
++++ apache-tomcat-9.0.35-src/java/org/apache/coyote/http11/filters/ChunkedOutputFilter.java
 @@ -18,6 +18,7 @@ package org.apache.coyote.http11.filters
  
  import java.io.IOException;
@@ -400,10 +400,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/filters/ChunkedOut
          }
          buffer.end();
      }
-Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/filters/IdentityInputFilter.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/coyote/http11/filters/IdentityInputFilter.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/coyote/http11/filters/IdentityInputFilter.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/filters/IdentityInputFilter.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/coyote/http11/filters/IdentityInputFilter.java
++++ apache-tomcat-9.0.35-src/java/org/apache/coyote/http11/filters/IdentityInputFilter.java
 @@ -18,6 +18,7 @@
  package org.apache.coyote.http11.filters;
  
@@ -430,10 +430,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/filters/IdentityIn
                  }
                  result = -1;
              }
-Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/filters/IdentityOutputFilter.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/coyote/http11/filters/IdentityOutputFilter.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/coyote/http11/filters/IdentityOutputFilter.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/filters/IdentityOutputFilter.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/coyote/http11/filters/IdentityOutputFilter.java
++++ apache-tomcat-9.0.35-src/java/org/apache/coyote/http11/filters/IdentityOutputFilter.java
 @@ -17,6 +17,7 @@
  package org.apache.coyote.http11.filters;
  
@@ -462,10 +462,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/filters/IdentityOu
                  result = -1;
              }
          } else {
-Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/filters/SavedRequestInputFilter.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/coyote/http11/filters/SavedRequestInputFilter.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/coyote/http11/filters/SavedRequestInputFilter.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/filters/SavedRequestInputFilter.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/coyote/http11/filters/SavedRequestInputFilter.java
++++ apache-tomcat-9.0.35-src/java/org/apache/coyote/http11/filters/SavedRequestInputFilter.java
 @@ -18,6 +18,7 @@
  package org.apache.coyote.http11.filters;
  
@@ -483,10 +483,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/filters/SavedReque
          input.subtract(byteBuffer);
  
          return byteBuffer.remaining();
-Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/Http11InputBuffer.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/coyote/http11/Http11InputBuffer.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/coyote/http11/Http11InputBuffer.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/Http11InputBuffer.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/coyote/http11/Http11InputBuffer.java
++++ apache-tomcat-9.0.35-src/java/org/apache/coyote/http11/Http11InputBuffer.java
 @@ -18,6 +18,7 @@ package org.apache.coyote.http11;
  
  import java.io.EOFException;
@@ -526,16 +526,16 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/Http11InputBuffer.
  
              parsingRequestLineStart = byteBuffer.position();
              parsingRequestLinePhase = 2;
-@@ -412,7 +413,7 @@ public class Http11InputBuffer implement
-                     request.method().setBytes(byteBuffer.array(), parsingRequestLineStart,
-                             pos - parsingRequestLineStart);
-                 } else if (!HttpParser.isToken(chr)) {
+@@ -432,7 +433,7 @@ public class Http11InputBuffer implement
+                 chr = byteBuffer.get();
+                 if (!(chr == Constants.SP || chr == Constants.HT)) {
+                     space = false;
 -                    byteBuffer.position(byteBuffer.position() - 1);
 +                    ((Buffer)byteBuffer).position(byteBuffer.position() - 1);
-                     // Avoid unknown protocol triggering an additional error
-                     request.protocol().setString(Constants.HTTP_11);
-                     throw new IllegalArgumentException(sm.getString("iib.invalidmethod"));
-@@ -520,7 +521,7 @@ public class Http11InputBuffer implement
+                 }
+             }
+             parsingRequestLineStart = byteBuffer.position();
+@@ -526,7 +527,7 @@ public class Http11InputBuffer implement
                  byte chr = byteBuffer.get();
                  if (!(chr == Constants.SP || chr == Constants.HT)) {
                      space = false;
@@ -544,7 +544,7 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/Http11InputBuffer.
                  }
              }
              parsingRequestLineStart = byteBuffer.position();
-@@ -618,7 +619,7 @@ public class Http11InputBuffer implement
+@@ -643,7 +644,7 @@ public class Http11InputBuffer implement
  
          if (swallowInput && (lastActiveFilter != -1)) {
              int extraBytes = (int) activeFilters[lastActiveFilter].end();
@@ -553,7 +553,7 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/Http11InputBuffer.
          }
      }
  
-@@ -716,7 +717,7 @@ public class Http11InputBuffer implement
+@@ -741,7 +742,7 @@ public class Http11InputBuffer implement
                  wrapper.getSocketBufferHandler().getReadBuffer().capacity();
          if (byteBuffer == null || byteBuffer.capacity() < bufLength) {
              byteBuffer = ByteBuffer.allocate(bufLength);
@@ -562,7 +562,7 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/Http11InputBuffer.
          }
      }
  
-@@ -741,14 +742,14 @@ public class Http11InputBuffer implement
+@@ -766,14 +767,14 @@ public class Http11InputBuffer implement
                  throw new IllegalArgumentException(sm.getString("iib.requestheadertoolarge.error"));
              }
          } else {
@@ -581,7 +581,7 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/Http11InputBuffer.
          SocketWrapperBase<?> socketWrapper = this.wrapper;
          int nRead = -1;
          if (socketWrapper != null) {
-@@ -756,7 +757,7 @@ public class Http11InputBuffer implement
+@@ -781,7 +782,7 @@ public class Http11InputBuffer implement
          } else {
              throw new CloseNowException(sm.getString("iib.eof.error"));
          }
@@ -590,7 +590,7 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/Http11InputBuffer.
          if (nRead > 0) {
              return true;
          } else if (nRead == -1) {
-@@ -796,10 +797,10 @@ public class Http11InputBuffer implement
+@@ -821,10 +822,10 @@ public class Http11InputBuffer implement
              } else {
                  if (prevChr == Constants.CR) {
                      // Must have read two bytes (first was CR, second was not LF)
@@ -603,7 +603,7 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/Http11InputBuffer.
                  }
                  break;
              }
-@@ -842,7 +843,7 @@ public class Http11InputBuffer implement
+@@ -867,7 +868,7 @@ public class Http11InputBuffer implement
                  // Non-token characters are illegal in header names
                  // Parsing continues so the error can be reported in context
                  headerData.lastSignificantChar = pos;
@@ -612,7 +612,7 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/Http11InputBuffer.
                  // skipLine() will handle the error
                  return skipLine();
              }
-@@ -880,7 +881,7 @@ public class Http11InputBuffer implement
+@@ -905,7 +906,7 @@ public class Http11InputBuffer implement
                      chr = byteBuffer.get();
                      if (!(chr == Constants.SP || chr == Constants.HT)) {
                          headerParsePos = HeaderParsePosition.HEADER_VALUE;
@@ -621,7 +621,7 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/Http11InputBuffer.
                          break;
                      }
                  }
-@@ -1111,7 +1112,7 @@ public class Http11InputBuffer implement
+@@ -1136,7 +1137,7 @@ public class Http11InputBuffer implement
  
              int length = byteBuffer.remaining();
              handler.setByteBuffer(byteBuffer.duplicate());
@@ -630,7 +630,7 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/Http11InputBuffer.
  
              return length;
          }
-@@ -1133,12 +1134,12 @@ public class Http11InputBuffer implement
+@@ -1158,12 +1159,12 @@ public class Http11InputBuffer implement
      @Override
      public void expand(int size) {
          if (byteBuffer.capacity() >= size) {
@@ -645,10 +645,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/Http11InputBuffer.
          temp = null;
      }
  }
-Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/Http11OutputBuffer.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/coyote/http11/Http11OutputBuffer.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/coyote/http11/Http11OutputBuffer.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/Http11OutputBuffer.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/coyote/http11/Http11OutputBuffer.java
++++ apache-tomcat-9.0.35-src/java/org/apache/coyote/http11/Http11OutputBuffer.java
 @@ -17,6 +17,7 @@
  package org.apache.coyote.http11;
  
@@ -693,10 +693,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http11/Http11OutputBuffer
              }
          }
      }
-Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/HpackDecoder.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/coyote/http2/HpackDecoder.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/coyote/http2/HpackDecoder.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/HpackDecoder.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/coyote/http2/HpackDecoder.java
++++ apache-tomcat-9.0.35-src/java/org/apache/coyote/http2/HpackDecoder.java
 @@ -16,6 +16,7 @@
   */
  package org.apache.coyote.http2;
@@ -785,10 +785,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/HpackDecoder.java
          int index = Hpack.decodeInteger(buffer, prefixLength);
          if (index == -1) {
              return null;
-Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/HPackHuffman.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/coyote/http2/HPackHuffman.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/coyote/http2/HPackHuffman.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/HPackHuffman.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/coyote/http2/HPackHuffman.java
++++ apache-tomcat-9.0.35-src/java/org/apache/coyote/http2/HPackHuffman.java
 @@ -16,6 +16,7 @@
   */
  package org.apache.coyote.http2;
@@ -797,7 +797,7 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/HPackHuffman.java
  import java.nio.ByteBuffer;
  import java.util.Arrays;
  import java.util.HashSet;
-@@ -483,7 +484,7 @@ public class HPackHuffman {
+@@ -482,7 +483,7 @@ public class HPackHuffman {
                  int rem = code.length;
                  while (rem > 0) {
                      if (!buffer.hasRemaining()) {
@@ -806,7 +806,7 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/HPackHuffman.java
                          return false;
                      }
                      int remainingInByte = 8 - bytePos;
-@@ -504,7 +505,7 @@ public class HPackHuffman {
+@@ -503,7 +504,7 @@ public class HPackHuffman {
              }
              if (bytePos == 8) {
                  if (!buffer.hasRemaining()) {
@@ -815,7 +815,7 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/HPackHuffman.java
                      return false;
                  }
                  buffer.put(currentBufferByte);
-@@ -514,14 +515,14 @@ public class HPackHuffman {
+@@ -513,14 +514,14 @@ public class HPackHuffman {
              if (buffer.position() - start > toEncode.length()) {
                  //the encoded version is longer than the original
                  //just return false
@@ -832,10 +832,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/HPackHuffman.java
                  return false;
              }
              buffer.put((byte) (currentBufferByte | ((0xFF) >> bytePos)));
-Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/Hpack.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/coyote/http2/Hpack.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/coyote/http2/Hpack.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/Hpack.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/coyote/http2/Hpack.java
++++ apache-tomcat-9.0.35-src/java/org/apache/coyote/http2/Hpack.java
 @@ -16,6 +16,7 @@
   */
  package org.apache.coyote.http2;
@@ -853,10 +853,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/Hpack.java
                      return -1;
                  }
                  b = source.get();
-Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/Http2AsyncParser.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/coyote/http2/Http2AsyncParser.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/coyote/http2/Http2AsyncParser.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/Http2AsyncParser.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/coyote/http2/Http2AsyncParser.java
++++ apache-tomcat-9.0.35-src/java/org/apache/coyote/http2/Http2AsyncParser.java
 @@ -17,6 +17,7 @@
  package org.apache.coyote.http2;
  
@@ -892,10 +892,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/Http2AsyncParser.ja
                                  try {
                                      validateFrame(null, frameType, streamId, flags, payloadSize);
                                  } catch (StreamException e) {
-Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/Http2AsyncUpgradeHandler.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/coyote/http2/Http2AsyncUpgradeHandler.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/coyote/http2/Http2AsyncUpgradeHandler.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/Http2AsyncUpgradeHandler.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/coyote/http2/Http2AsyncUpgradeHandler.java
++++ apache-tomcat-9.0.35-src/java/org/apache/coyote/http2/Http2AsyncUpgradeHandler.java
 @@ -17,6 +17,7 @@
  package org.apache.coyote.http2;
  
@@ -918,10 +918,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/Http2AsyncUpgradeHa
              handleAsyncException();
          }
      }
-Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/Http2Parser.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/coyote/http2/Http2Parser.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/coyote/http2/Http2Parser.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/Http2Parser.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/coyote/http2/Http2Parser.java
++++ apache-tomcat-9.0.35-src/java/org/apache/coyote/http2/Http2Parser.java
 @@ -17,6 +17,7 @@
  package org.apache.coyote.http2;
  
@@ -976,10 +976,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/Http2Parser.java
              }
              return result;
          }
-Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/Http2UpgradeHandler.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/coyote/http2/Http2UpgradeHandler.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/coyote/http2/Http2UpgradeHandler.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/Http2UpgradeHandler.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/coyote/http2/Http2UpgradeHandler.java
++++ apache-tomcat-9.0.35-src/java/org/apache/coyote/http2/Http2UpgradeHandler.java
 @@ -18,6 +18,7 @@ package org.apache.coyote.http2;
  
  import java.io.EOFException;
@@ -1000,7 +1000,7 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/Http2UpgradeHandler
                      socketWrapper.flush(true);
                  } catch (IOException ioe) {
                      handleAppInitiatedIOException(ioe);
-@@ -1830,7 +1831,7 @@ class Http2UpgradeHandler extends Abstra
+@@ -1829,7 +1830,7 @@ class Http2UpgradeHandler extends Abstra
              } catch (IOException ioe) {
                  handleAppInitiatedIOException(ioe);
              }
@@ -1009,10 +1009,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/Http2UpgradeHandler
          }
  
          @Override
-Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/Stream.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/coyote/http2/Stream.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/coyote/http2/Stream.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/Stream.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/coyote/http2/Stream.java
++++ apache-tomcat-9.0.35-src/java/org/apache/coyote/http2/Stream.java
 @@ -17,6 +17,7 @@
  package org.apache.coyote.http2;
  
@@ -1080,10 +1080,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/coyote/http2/Stream.java
                  } else if (!canRead) {
                      return -1;
                  } else {
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/buf/B2CConverter.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/buf/B2CConverter.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/util/buf/B2CConverter.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/buf/B2CConverter.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/util/buf/B2CConverter.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/buf/B2CConverter.java
 @@ -18,6 +18,7 @@ package org.apache.tomcat.util.buf;
  
  import java.io.IOException;
@@ -1222,10 +1222,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/buf/B2CConverter.jav
                  bc.get(leftovers.array(), 0, bc.remaining());
              }
          }
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/buf/ByteBufferHolder.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/buf/ByteBufferHolder.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/util/buf/ByteBufferHolder.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/buf/ByteBufferHolder.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/util/buf/ByteBufferHolder.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/buf/ByteBufferHolder.java
 @@ -16,6 +16,7 @@
   */
  package org.apache.tomcat.util.buf;
@@ -1243,10 +1243,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/buf/ByteBufferHolder
              return true;
          } else {
              return false;
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/buf/ByteBufferUtils.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/buf/ByteBufferUtils.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/util/buf/ByteBufferUtils.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/buf/ByteBufferUtils.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/util/buf/ByteBufferUtils.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/buf/ByteBufferUtils.java
 @@ -19,6 +19,7 @@ package org.apache.tomcat.util.buf;
  import java.lang.reflect.Field;
  import java.lang.reflect.InvocationTargetException;
@@ -1264,10 +1264,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/buf/ByteBufferUtils.
          out.put(in);
  
          if (direct) {
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/buf/ByteChunk.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/buf/ByteChunk.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/util/buf/ByteChunk.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/buf/ByteChunk.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/util/buf/ByteChunk.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/buf/ByteChunk.java
 @@ -19,6 +19,7 @@ package org.apache.tomcat.util.buf;
  import java.io.IOException;
  import java.io.ObjectInputStream;
@@ -1313,10 +1313,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/buf/ByteChunk.java
          start += n;
          return n;
      }
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/buf/C2BConverter.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/buf/C2BConverter.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/util/buf/C2BConverter.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/buf/C2BConverter.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/util/buf/C2BConverter.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/buf/C2BConverter.java
 @@ -17,6 +17,7 @@
  package org.apache.tomcat.util.buf;
  
@@ -1454,10 +1454,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/buf/C2BConverter.jav
                  cc.get(leftovers.array(), 0, cc.remaining());
              }
          }
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/buf/Utf8Decoder.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/buf/Utf8Decoder.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/util/buf/Utf8Decoder.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/buf/Utf8Decoder.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/util/buf/Utf8Decoder.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/buf/Utf8Decoder.java
 @@ -16,6 +16,7 @@
   */
  package org.apache.tomcat.util.buf;
@@ -1623,10 +1623,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/buf/Utf8Decoder.java
          return (outRemaining == 0 && inIndex < inIndexLimit) ?
                  CoderResult.OVERFLOW :
                  CoderResult.UNDERFLOW;
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/buf/Utf8Encoder.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/buf/Utf8Encoder.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/util/buf/Utf8Encoder.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/buf/Utf8Encoder.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/util/buf/Utf8Encoder.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/buf/Utf8Encoder.java
 @@ -16,6 +16,7 @@
   */
  package org.apache.tomcat.util.buf;
@@ -1738,10 +1738,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/buf/Utf8Encoder.java
          }
          return CoderResult.UNDERFLOW;
      }
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/AprEndpoint.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/net/AprEndpoint.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/util/net/AprEndpoint.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/AprEndpoint.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/util/net/AprEndpoint.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/net/AprEndpoint.java
 @@ -20,6 +20,7 @@ import java.io.EOFException;
  import java.io.IOException;
  import java.net.InetSocketAddress;
@@ -1805,10 +1805,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/AprEndpoint.java
                      }
                  }
                  if (Status.APR_STATUS_IS_EAGAIN(-thisTime)) {
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/Nio2Endpoint.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/net/Nio2Endpoint.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/util/net/Nio2Endpoint.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/Nio2Endpoint.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/util/net/Nio2Endpoint.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/net/Nio2Endpoint.java
 @@ -22,6 +22,7 @@ import java.io.IOException;
  import java.net.InetSocketAddress;
  import java.net.SocketAddress;
@@ -1835,10 +1835,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/Nio2Endpoint.jav
                      nRead = fillReadBuffer(block, to);
                      if (log.isDebugEnabled()) {
                          log.debug("Socket: [" + this + "], Read direct from socket: [" + nRead + "]");
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/NioEndpoint.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/net/NioEndpoint.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/util/net/NioEndpoint.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/NioEndpoint.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/util/net/NioEndpoint.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/net/NioEndpoint.java
 @@ -23,6 +23,7 @@ import java.io.IOException;
  import java.net.InetAddress;
  import java.net.InetSocketAddress;
@@ -1856,10 +1856,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/NioEndpoint.java
                  nRead = fillReadBuffer(block, to);
                  if (log.isDebugEnabled()) {
                      log.debug("Socket: [" + this + "], Read direct from socket: [" + nRead + "]");
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/openssl/OpenSSLEngine.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/net/openssl/OpenSSLEngine.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/util/net/openssl/OpenSSLEngine.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/openssl/OpenSSLEngine.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/util/net/openssl/OpenSSLEngine.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/net/openssl/OpenSSLEngine.java
 @@ -16,6 +16,7 @@
   */
  package org.apache.tomcat.util.net.openssl;
@@ -2007,10 +2007,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/openssl/OpenSSLE
      }
  
      private SSLEngineResult.Status getEngineStatus() {
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/SecureNio2Channel.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/net/SecureNio2Channel.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/util/net/SecureNio2Channel.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/SecureNio2Channel.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/util/net/SecureNio2Channel.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/net/SecureNio2Channel.java
 @@ -18,6 +18,7 @@ package org.apache.tomcat.util.net;
  
  import java.io.EOFException;
@@ -2185,10 +2185,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/SecureNio2Channe
              if (result.getStatus() == Status.OK) {
                  if (result.getHandshakeStatus() == HandshakeStatus.NEED_TASK) {
                      tasks();
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/SecureNioChannel.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/net/SecureNioChannel.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/util/net/SecureNioChannel.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/SecureNioChannel.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/util/net/SecureNioChannel.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/net/SecureNioChannel.java
 @@ -19,6 +19,7 @@ package org.apache.tomcat.util.net;
  import java.io.EOFException;
  import java.io.IOException;
@@ -2328,10 +2328,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/SecureNioChannel
  
          if (result.getStatus() == Status.OK) {
              if (result.getHandshakeStatus() == HandshakeStatus.NEED_TASK) tasks();
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/SocketBufferHandler.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/net/SocketBufferHandler.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/util/net/SocketBufferHandler.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/SocketBufferHandler.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/util/net/SocketBufferHandler.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/net/SocketBufferHandler.java
 @@ -17,6 +17,7 @@
  package org.apache.tomcat.util.net;
  
@@ -2388,10 +2388,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/SocketBufferHand
          writeBufferConfiguredForWrite = true;
      }
  
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/SocketWrapperBase.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/net/SocketWrapperBase.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/util/net/SocketWrapperBase.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/SocketWrapperBase.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/util/net/SocketWrapperBase.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/net/SocketWrapperBase.java
 @@ -19,6 +19,7 @@ package org.apache.tomcat.util.net;
  import java.io.EOFException;
  import java.io.IOException;
@@ -2412,10 +2412,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/SocketWrapperBas
          }
          return max;
      }
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/TLSClientHelloExtractor.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/net/TLSClientHelloExtractor.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/util/net/TLSClientHelloExtractor.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/TLSClientHelloExtractor.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/util/net/TLSClientHelloExtractor.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/net/TLSClientHelloExtractor.java
 @@ -17,6 +17,7 @@
  package org.apache.tomcat.util.net;
  
@@ -2471,10 +2471,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/TLSClientHelloEx
      }
  
  
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/WriteBuffer.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/net/WriteBuffer.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/util/net/WriteBuffer.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/WriteBuffer.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/util/net/WriteBuffer.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/util/net/WriteBuffer.java
 @@ -17,6 +17,7 @@
  package org.apache.tomcat.util.net;
  
@@ -2483,10 +2483,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/util/net/WriteBuffer.java
  import java.nio.ByteBuffer;
  import java.util.ArrayList;
  import java.util.Iterator;
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/AsyncChannelWrapperSecure.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/websocket/AsyncChannelWrapperSecure.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/websocket/AsyncChannelWrapperSecure.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/AsyncChannelWrapperSecure.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/websocket/AsyncChannelWrapperSecure.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/websocket/AsyncChannelWrapperSecure.java
 @@ -18,6 +18,7 @@ package org.apache.tomcat.websocket;
  
  import java.io.EOFException;
@@ -2554,10 +2554,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/AsyncChannelWra
                              SSLEngineResult r =
                                      sslEngine.unwrap(socketReadBuffer, DUMMY);
                              checkResult(r, false);
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/PerMessageDeflate.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/websocket/PerMessageDeflate.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/websocket/PerMessageDeflate.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/PerMessageDeflate.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/websocket/PerMessageDeflate.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/websocket/PerMessageDeflate.java
 @@ -17,6 +17,7 @@
  package org.apache.tomcat.websocket;
  
@@ -2616,10 +2616,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/PerMessageDefla
                              compressedPart = new MessagePart(true,
                                      getRsv(uncompressedPart), opCode, compressedPayload,
                                      uncompressedIntermediateHandler, uncompressedIntermediateHandler,
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/server/WsFrameServer.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/websocket/server/WsFrameServer.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/websocket/server/WsFrameServer.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/server/WsFrameServer.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/websocket/server/WsFrameServer.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/websocket/server/WsFrameServer.java
 @@ -19,6 +19,7 @@ package org.apache.tomcat.websocket.serv
  import java.io.EOFException;
  import java.io.IOException;
@@ -2642,10 +2642,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/server/WsFrameS
              if (read < 0) {
                  throw new EOFException();
              } else if (read == 0) {
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/WsFrameBase.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/websocket/WsFrameBase.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/websocket/WsFrameBase.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/WsFrameBase.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/websocket/WsFrameBase.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/websocket/WsFrameBase.java
 @@ -17,6 +17,7 @@
  package org.apache.tomcat.websocket;
  
@@ -2888,10 +2888,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/WsFrameBase.jav
              payloadWritten += toWrite;
  
              if (payloadWritten == payloadLength) {
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/WsFrameClient.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/websocket/WsFrameClient.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/websocket/WsFrameClient.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/WsFrameClient.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/websocket/WsFrameClient.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/websocket/WsFrameClient.java
 @@ -18,6 +18,7 @@ package org.apache.tomcat.websocket;
  
  import java.io.EOFException;
@@ -2950,10 +2950,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/WsFrameClient.j
                  doResumeProcessing(false);
              } else {
                  close(exc);
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/WsRemoteEndpointImplBase.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/websocket/WsRemoteEndpointImplBase.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/websocket/WsRemoteEndpointImplBase.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/WsRemoteEndpointImplBase.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/websocket/WsRemoteEndpointImplBase.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/websocket/WsRemoteEndpointImplBase.java
 @@ -20,6 +20,7 @@ import java.io.IOException;
  import java.io.OutputStream;
  import java.io.Writer;
@@ -3106,10 +3106,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/WsRemoteEndpoin
              } else {
                  endpoint.stateMachine.complete(last);
              }
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/WsSession.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/websocket/WsSession.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/websocket/WsSession.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/WsSession.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/websocket/WsSession.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/websocket/WsSession.java
 @@ -18,6 +18,7 @@ package org.apache.tomcat.websocket;
  
  import java.io.IOException;
@@ -3127,10 +3127,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/WsSession.java
          try {
              wsRemoteEndpoint.sendMessageBlock(Constants.OPCODE_CLOSE, msg, true);
          } catch (IOException | WritePendingException e) {
-Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/WsWebSocketContainer.java
+Index: apache-tomcat-9.0.35-src/java/org/apache/tomcat/websocket/WsWebSocketContainer.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/java/org/apache/tomcat/websocket/WsWebSocketContainer.java
-+++ apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/WsWebSocketContainer.java
+--- apache-tomcat-9.0.35-src.orig/java/org/apache/tomcat/websocket/WsWebSocketContainer.java
++++ apache-tomcat-9.0.35-src/java/org/apache/tomcat/websocket/WsWebSocketContainer.java
 @@ -27,6 +27,7 @@ import java.net.ProxySelector;
  import java.net.SocketAddress;
  import java.net.URI;
@@ -3139,7 +3139,7 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/WsWebSocketCont
  import java.nio.ByteBuffer;
  import java.nio.channels.AsynchronousChannelGroup;
  import java.nio.channels.AsynchronousSocketChannel;
-@@ -742,7 +743,7 @@ public class WsWebSocketContainer implem
+@@ -740,7 +741,7 @@ public class WsWebSocketContainer implem
          // Terminating CRLF
          result.put(CRLF);
  
@@ -3148,7 +3148,7 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/WsWebSocketCont
  
          return result;
      }
-@@ -771,7 +772,7 @@ public class WsWebSocketContainer implem
+@@ -769,7 +770,7 @@ public class WsWebSocketContainer implem
                  newSize = input.capacity() * 2;
              }
              ByteBuffer expanded = ByteBuffer.allocate(newSize);
@@ -3157,7 +3157,7 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/WsWebSocketCont
              expanded.put(input);
              input = expanded;
          }
-@@ -800,14 +801,14 @@ public class WsWebSocketContainer implem
+@@ -798,14 +799,14 @@ public class WsWebSocketContainer implem
          while (!readHeaders) {
              // On entering loop buffer will be empty and at the start of a new
              // loop the buffer will have been fully read.
@@ -3174,10 +3174,10 @@ Index: apache-tomcat-9.0.33-src/java/org/apache/tomcat/websocket/WsWebSocketCont
              while (response.hasRemaining() && !readHeaders) {
                  if (line == null) {
                      line = readLine(response);
-Index: apache-tomcat-9.0.33-src/test/org/apache/coyote/http11/upgrade/TestUpgradeInternalHandler.java
+Index: apache-tomcat-9.0.35-src/test/org/apache/coyote/http11/upgrade/TestUpgradeInternalHandler.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/test/org/apache/coyote/http11/upgrade/TestUpgradeInternalHandler.java
-+++ apache-tomcat-9.0.33-src/test/org/apache/coyote/http11/upgrade/TestUpgradeInternalHandler.java
+--- apache-tomcat-9.0.35-src.orig/test/org/apache/coyote/http11/upgrade/TestUpgradeInternalHandler.java
++++ apache-tomcat-9.0.35-src/test/org/apache/coyote/http11/upgrade/TestUpgradeInternalHandler.java
 @@ -25,6 +25,7 @@ import java.io.OutputStreamWriter;
  import java.io.PrintWriter;
  import java.io.Writer;
@@ -3195,10 +3195,10 @@ Index: apache-tomcat-9.0.33-src/test/org/apache/coyote/http11/upgrade/TestUpgrad
              CompletionState state = wrapper.write(BlockingMode.BLOCK, 10, TimeUnit.SECONDS, null, SocketWrapperBase.COMPLETE_WRITE, new CompletionHandler<Long, Void>() {
                  @Override
                  public void completed(Long result, Void attachment) {
-Index: apache-tomcat-9.0.33-src/test/org/apache/coyote/http2/Http2TestBase.java
+Index: apache-tomcat-9.0.35-src/test/org/apache/coyote/http2/Http2TestBase.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/test/org/apache/coyote/http2/Http2TestBase.java
-+++ apache-tomcat-9.0.33-src/test/org/apache/coyote/http2/Http2TestBase.java
+--- apache-tomcat-9.0.35-src.orig/test/org/apache/coyote/http2/Http2TestBase.java
++++ apache-tomcat-9.0.35-src/test/org/apache/coyote/http2/Http2TestBase.java
 @@ -23,6 +23,7 @@ import java.io.InputStream;
  import java.io.OutputStream;
  import java.net.Socket;
@@ -3283,10 +3283,10 @@ Index: apache-tomcat-9.0.33-src/test/org/apache/coyote/http2/Http2TestBase.java
                      while (bodyBuffer.hasRemaining()) {
                          trace.append((char) bodyBuffer.get());
                      }
-Index: apache-tomcat-9.0.33-src/test/org/apache/coyote/http2/TestHpack.java
+Index: apache-tomcat-9.0.35-src/test/org/apache/coyote/http2/TestHpack.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/test/org/apache/coyote/http2/TestHpack.java
-+++ apache-tomcat-9.0.33-src/test/org/apache/coyote/http2/TestHpack.java
+--- apache-tomcat-9.0.35-src.orig/test/org/apache/coyote/http2/TestHpack.java
++++ apache-tomcat-9.0.35-src/test/org/apache/coyote/http2/TestHpack.java
 @@ -16,6 +16,7 @@
   */
  package org.apache.coyote.http2;
@@ -3349,10 +3349,10 @@ Index: apache-tomcat-9.0.33-src/test/org/apache/coyote/http2/TestHpack.java
          MimeHeaders headers2 = new MimeHeaders();
          HpackDecoder decoder = new HpackDecoder();
          decoder.setHeaderEmitter(new HeadersListener(headers2));
-Index: apache-tomcat-9.0.33-src/test/org/apache/coyote/http2/TestHttp2Limits.java
+Index: apache-tomcat-9.0.35-src/test/org/apache/coyote/http2/TestHttp2Limits.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/test/org/apache/coyote/http2/TestHttp2Limits.java
-+++ apache-tomcat-9.0.33-src/test/org/apache/coyote/http2/TestHttp2Limits.java
+--- apache-tomcat-9.0.35-src.orig/test/org/apache/coyote/http2/TestHttp2Limits.java
++++ apache-tomcat-9.0.35-src/test/org/apache/coyote/http2/TestHttp2Limits.java
 @@ -17,6 +17,7 @@
  package org.apache.coyote.http2;
  
@@ -3361,7 +3361,7 @@ Index: apache-tomcat-9.0.33-src/test/org/apache/coyote/http2/TestHttp2Limits.jav
  import java.nio.ByteBuffer;
  import java.util.ArrayList;
  import java.util.List;
-@@ -290,7 +291,7 @@ public class TestHttp2Limits extends Htt
+@@ -291,7 +292,7 @@ public class TestHttp2Limits extends Htt
          if (state != State.COMPLETE) {
              throw new Exception("Unable to build headers");
          }
@@ -3370,10 +3370,10 @@ Index: apache-tomcat-9.0.33-src/test/org/apache/coyote/http2/TestHttp2Limits.jav
  
          log.debug("Headers payload generated of size [" + headersPayload.limit() + "]");
      }
-Index: apache-tomcat-9.0.33-src/test/org/apache/coyote/http2/TestHttp2Section_8_1.java
+Index: apache-tomcat-9.0.35-src/test/org/apache/coyote/http2/TestHttp2Section_8_1.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/test/org/apache/coyote/http2/TestHttp2Section_8_1.java
-+++ apache-tomcat-9.0.33-src/test/org/apache/coyote/http2/TestHttp2Section_8_1.java
+--- apache-tomcat-9.0.35-src.orig/test/org/apache/coyote/http2/TestHttp2Section_8_1.java
++++ apache-tomcat-9.0.35-src/test/org/apache/coyote/http2/TestHttp2Section_8_1.java
 @@ -16,6 +16,7 @@
   */
  package org.apache.coyote.http2;
@@ -3391,10 +3391,10 @@ Index: apache-tomcat-9.0.33-src/test/org/apache/coyote/http2/TestHttp2Section_8_
  
          buildSimpleGetRequestPart2(headersFrameHeader, headersPayload, headers , 3);
  
-Index: apache-tomcat-9.0.33-src/test/org/apache/tomcat/util/buf/TestUtf8.java
+Index: apache-tomcat-9.0.35-src/test/org/apache/tomcat/util/buf/TestUtf8.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/test/org/apache/tomcat/util/buf/TestUtf8.java
-+++ apache-tomcat-9.0.33-src/test/org/apache/tomcat/util/buf/TestUtf8.java
+--- apache-tomcat-9.0.35-src.orig/test/org/apache/tomcat/util/buf/TestUtf8.java
++++ apache-tomcat-9.0.35-src/test/org/apache/tomcat/util/buf/TestUtf8.java
 @@ -16,6 +16,7 @@
   */
  package org.apache.tomcat.util.buf;
@@ -3442,10 +3442,10 @@ Index: apache-tomcat-9.0.33-src/test/org/apache/tomcat/util/buf/TestUtf8.java
  
          String expected = testCase.outputReplaced;
          if ((flags & REPLACE_SWALLOWS_TRAILER) != 0) {
-Index: apache-tomcat-9.0.33-src/test/org/apache/tomcat/websocket/pojo/TestEncodingDecoding.java
+Index: apache-tomcat-9.0.35-src/test/org/apache/tomcat/websocket/pojo/TestEncodingDecoding.java
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/test/org/apache/tomcat/websocket/pojo/TestEncodingDecoding.java
-+++ apache-tomcat-9.0.33-src/test/org/apache/tomcat/websocket/pojo/TestEncodingDecoding.java
+--- apache-tomcat-9.0.35-src.orig/test/org/apache/tomcat/websocket/pojo/TestEncodingDecoding.java
++++ apache-tomcat-9.0.35-src/test/org/apache/tomcat/websocket/pojo/TestEncodingDecoding.java
 @@ -18,6 +18,7 @@ package org.apache.tomcat.websocket.pojo
  
  import java.io.IOException;
@@ -3453,8 +3453,8 @@ Index: apache-tomcat-9.0.33-src/test/org/apache/tomcat/websocket/pojo/TestEncodi
 +import java.nio.Buffer;
  import java.nio.ByteBuffer;
  import java.util.ArrayList;
- import java.util.Collections;
-@@ -604,7 +605,7 @@ public class TestEncodingDecoding extend
+ import java.util.Arrays;
+@@ -605,7 +606,7 @@ public class TestEncodingDecoding extend
              reply.put((byte) 0x12);
              reply.put((byte) 0x34);
              reply.put(data);

@@ -1,8 +1,8 @@
-Index: apache-tomcat-9.0.33-src/build.xml
+Index: apache-tomcat-9.0.35-src/build.xml
 ===================================================================
---- apache-tomcat-9.0.33-src.orig/build.xml
-+++ apache-tomcat-9.0.33-src/build.xml
-@@ -1891,7 +1891,7 @@ Apache Tomcat ${version} native binaries
+--- apache-tomcat-9.0.35-src.orig/build.xml
++++ apache-tomcat-9.0.35-src/build.xml
+@@ -1902,7 +1902,7 @@ Apache Tomcat ${version} native binaries
        source="${compile.source}"
        maxmemory="512m"
        failonerror="true"
@@ -11,7 +11,7 @@ Index: apache-tomcat-9.0.33-src/build.xml
        <classpath>
          <path refid="compile.classpath"/>
          <path location="${ant.core.lib}"/>
-@@ -1913,7 +1913,7 @@ Apache Tomcat ${version} native binaries
+@@ -1924,7 +1924,7 @@ Apache Tomcat ${version} native binaries
        source="${compile.source}"
        maxmemory="512m"
        failonerror="true"
@@ -20,7 +20,7 @@ Index: apache-tomcat-9.0.33-src/build.xml
        <classpath>
          <path refid="compile.classpath"/>
          <path location="${ant.core.lib}"/>
-@@ -1934,7 +1934,7 @@ Apache Tomcat ${version} native binaries
+@@ -1945,7 +1945,7 @@ Apache Tomcat ${version} native binaries
        source="${compile.source}"
        maxmemory="512m"
        failonerror="true"
@@ -29,7 +29,7 @@ Index: apache-tomcat-9.0.33-src/build.xml
        <classpath>
          <path refid="compile.classpath"/>
          <path location="${ant.core.lib}"/>
-@@ -1955,7 +1955,7 @@ Apache Tomcat ${version} native binaries
+@@ -1966,7 +1966,7 @@ Apache Tomcat ${version} native binaries
        source="${compile.source}"
        maxmemory="512m"
        failonerror="true"
@@ -38,7 +38,7 @@ Index: apache-tomcat-9.0.33-src/build.xml
        <classpath>
          <path refid="compile.classpath"/>
          <path location="${ant.core.lib}"/>
-@@ -1976,7 +1976,7 @@ Apache Tomcat ${version} native binaries
+@@ -1987,7 +1987,7 @@ Apache Tomcat ${version} native binaries
        source="${compile.source}"
        maxmemory="512m"
        failonerror="true"
@@ -47,7 +47,7 @@ Index: apache-tomcat-9.0.33-src/build.xml
        <classpath>
          <path refid="compile.classpath"/>
          <path location="${ant.core.lib}"/>
-@@ -1994,9 +1994,10 @@ Apache Tomcat ${version} native binaries
+@@ -2005,9 +2005,10 @@ Apache Tomcat ${version} native binaries
        docencoding="UTF-8"
        charset="UTF-8"
        additionalparam="-breakiterator -notimestamp"
@@ -59,7 +59,7 @@ Index: apache-tomcat-9.0.33-src/build.xml
        <classpath>
          <path refid="compile.classpath"/>
          <path location="${ant.core.lib}"/>
-@@ -2016,7 +2017,7 @@ Apache Tomcat ${version} native binaries
+@@ -2027,7 +2028,7 @@ Apache Tomcat ${version} native binaries
        source="${compile.source}"
        maxmemory="512m"
        failonerror="true"
@@ -68,7 +68,7 @@ Index: apache-tomcat-9.0.33-src/build.xml
        <classpath>
          <path refid="compile.classpath"/>
          <path location="${ant.core.lib}"/>
-@@ -2027,8 +2028,6 @@ Apache Tomcat ${version} native binaries
+@@ -2038,8 +2039,6 @@ Apache Tomcat ${version} native binaries
        <link href="../elapi"/>
        <link href="../websocketapi"/>
        <link href="../jaspicapi"/>
