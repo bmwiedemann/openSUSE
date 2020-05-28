@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri May 15 08:44:10 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.9.2
+  * 2.9.2 - 2020-04-22
+    - Updated the macOS wheel to fix an issue where it would not run on macOS versions older than 10.15.
+  * 2.9.1 - 2020-04-21
+    - Updated Windows, macOS, and manylinux wheels to be compiled with OpenSSL 1.1.1g.
+  * 2.9 - 2020-04-02
+    - BACKWARDS INCOMPATIBLE: Support for Python 3.4 has been removed due to
+      low usage and maintenance burden.
+    - BACKWARDS INCOMPATIBLE: Support for OpenSSL 1.0.1 has been removed.
+      Users on older version of OpenSSL will need to upgrade.
+    - BACKWARDS INCOMPATIBLE: Support for LibreSSL 2.6.x has been removed.
+    - Removed support for calling public_bytes() with no arguments, as per 
+      our deprecation policy. You must now pass encoding and format.
+    - BACKWARDS INCOMPATIBLE: Reversed the order in which rfc4514_string()
+      returns the RDNs as required by RFC 4514.
+    - Updated Windows, macOS, and manylinux wheels to be compiled with OpenSSL 1.1.1f.
+    - Added support for parsing single_extensions in an OCSP response.
+    - NameAttribute values can now be empty strings.
+
+-------------------------------------------------------------------
 Thu Oct 17 14:53:32 UTC 2019 - Michael Ströder <michael@stroeder.com>
 
 - update to 2.8
