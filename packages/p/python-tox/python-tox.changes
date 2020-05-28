@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 20 15:40:00 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- version update to 3.15.1
+  * Allow parallel mode without arguments.
+  * Allow generative section name expansion.
+  * default to passing the env var PIP_EXTRA_INDEX_URL
+  * some bug fixes
+
+-------------------------------------------------------------------
 Fri Apr 17 11:43:16 UTC 2020 - pgajdos@suse.com
 
 - version update to 3.14.6

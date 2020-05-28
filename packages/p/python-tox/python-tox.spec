@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-tox
-Version:        3.14.6
+Version:        3.15.1
 Release:        0
 Summary:        Virtualenv-based automation of test activities
 License:        MIT
