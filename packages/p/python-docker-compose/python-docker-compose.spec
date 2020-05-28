@@ -56,6 +56,8 @@ Requires:       python-requests >= 2.20.0
 Requires:       python-six >= 1.3.0
 Requires:       python-texttable >= 0.9.1
 Requires:       python-websocket-client >= 0.32.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # This is py3 only as we have the binary just there
 %ifpython3
@@ -99,15 +101,22 @@ Previously known as Fig.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/docker-compose
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest tests/unit
 
+%post
+%python_install_alternative docker-compose
+
+%postun
+%python_uninstall_alternative docker-compose
+
 %files %{python_files}
 %license LICENSE
 %doc README.md CHANGES.md SWARM.md
-%python3_only %{_bindir}/docker-compose
+%python_alternative %{_bindir}/docker-compose
 %{python_sitelib}/*
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 07:22:43 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Tue Apr 21 08:59:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not skip temporarily disabled tests as they work now with new
