@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 07:22:41 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Fri Apr  3 07:55:20 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.0.3
