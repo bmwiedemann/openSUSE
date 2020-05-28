@@ -17,39 +17,38 @@
 
 
 %{?!python_module:%define python_module() python3-%{**}}
+%bcond_without tests
 %define skip_python2 1
-%define modname pylint
 Name:           python-pylint
-Version:        2.4.4
+Version:        2.5.2
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/pycqa/pylint
-Source:         https://github.com/PyCQA/%{modname}/archive/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module astroid >= 2.3.0}
-BuildRequires:  %{python_module editdistance}
-BuildRequires:  %{python_module isort >= 4.2.5}
-BuildRequires:  %{python_module mccabe >= 0.6}
-BuildRequires:  %{python_module pytest-runner}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module typed-ast}
+Source:         https://files.pythonhosted.org/packages/source/p/pylint/pylint-%{version}.tar.gz
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-astroid >= 2.3.0
+Requires:       python-astroid >= 2.4.0
 Requires:       python-editdistance
 Requires:       python-isort >= 4.2.5
 Requires:       python-mccabe >= 0.6
-Requires:       python-six
-Requires:       python-typed-ast
+Requires:       python-toml >= 0.7.1
+%if %{with tests}
+BuildRequires:  %{python_module astroid >= 2.4.0}
+BuildRequires:  %{python_module editdistance}
+BuildRequires:  %{python_module isort >= 4.2.5}
+BuildRequires:  %{python_module mccabe >= 0.6}
+BuildRequires:  %{python_module pytest-benchmark}
+BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module toml >= 0.7.1}
+%endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-# test is checking that "tkinter.tix" is deprecated
-%if 0%{?suse_version} >= 1500
-BuildRequires:  python3-tk
-%endif
 %python_subpackages
 
 %description
@@ -69,7 +68,9 @@ customizable, and you can easily write a small plugin to add a personal
 feature.
 
 %prep
-%setup -q -n pylint-pylint-%{version}
+%setup -q -n pylint-%{version}
+# fix test: ignore unexpected message gh#PyCQA/pylint#3635
+sed -i 's/import matplotlib.pyplot as plt/&  # pylint: disable=no-name-in-module/' tests/functional/u/undefined_variable.py
 
 %build
 export LC_ALL="en_US.UTF-8"
@@ -90,11 +91,14 @@ done
 %postun
 %python_uninstall_alternative pylint
 
+%if %{with tests}
 %check
-# test_by_module_statement_value - fails due to %%pytest macro way of execution
-export PYTHONDONTWRITEBYTECODE=1
 export LC_ALL="en_US.UTF-8"
-%pytest -k "not test_by_module_statement_value"
+%pytest -k "not test_do_not_import_files_from_local_directory"
+# workaround for gh#PyCQA/pylint#3636
+export PYTHONPATH="/"
+%pytest -k "test_do_not_import_files_from_local_directory"
+%endif
 
 %files %{python_files}
 %license COPYING
