@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 27 07:22:24 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.3.1205.0:
+  * Updated the SSM Agent Snap to core18
+  * Bug fix for expired in-progress documents being resumed
+  * Bug fix for update specific files not being deleted after agent update is finished
+  * Bug fix for cached manifest files not being deleted in the configurepackage plugin
+
+-------------------------------------------------------------------
 Thu Apr 30 12:03:11 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.3.978.0 (2020-04-08) (bsc#1170744)

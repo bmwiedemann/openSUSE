@@ -17,13 +17,13 @@
 
 
 Name:           amazon-ssm-agent
-Version:        2.3.978.0
+Version:        2.3.1205.0
 Release:        0
 Summary:        Amazon Remote System Config Management
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/aws/amazon-ssm-agent
-Source0:        %{name}-%{version}.tar.gz
+Source0:        https://github.com/aws/amazon-ssm-agent/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.service
 Patch1:         fix-config.patch
 Patch2:         fix-version.patch
@@ -66,21 +66,21 @@ PKG_ROOT=`pwd`/src/github.com/aws/amazon-ssm-agent
 GOPATH=${PKG_ROOT}/vendor:`pwd`
 export GOPATH
 
-go build -ldflags "-s -w" -o bin/amazon-ssm-agent -v \
+go build -ldflags "-s -w" -buildmode=pie -o bin/amazon-ssm-agent -v \
 ${PKG_ROOT}/agent/agent.go \
 ${PKG_ROOT}/agent/agent_unix.go \
 ${PKG_ROOT}/agent/agent_parser.go
 
-go build -ldflags "-s -w" -o bin/ssm-cli -v \
+go build -ldflags "-s -w" -buildmode=pie -o bin/ssm-cli -v \
 ${PKG_ROOT}/agent/cli-main/cli-main.go
 
-go build -ldflags "-s -w" -o bin/ssm-document-worker -v \
+go build -ldflags "-s -w" -buildmode=pie -o bin/ssm-document-worker -v \
 ${PKG_ROOT}/agent/framework/processor/executer/outofproc/worker/main.go
 
-go build -ldflags "-s -w" -o bin/ssm-session-worker -v \
+go build -ldflags "-s -w" -buildmode=pie -o bin/ssm-session-worker -v \
 ${PKG_ROOT}/agent/framework/processor/executer/outofproc/sessionworker/main.go
 
-go build -ldflags "-s -w" -o bin/ssm-session-logger -v \
+go build -ldflags "-s -w" -buildmode=pie -o bin/ssm-session-logger -v \
 ${PKG_ROOT}/agent/session/logging/main.go
 
 %install
@@ -95,7 +95,7 @@ install -m 755 bin/ssm-session-worker %{buildroot}%{_bindir}
 install -m 755 bin/ssm-session-logger %{buildroot}%{_bindir}
 
 mkdir -p %{buildroot}%{_unitdir}
-install -m 755 %SOURCE1 %{buildroot}%{_unitdir}
+install -m 644 %SOURCE1 %{buildroot}%{_unitdir}
 
 PKG_ROOT=`pwd`/src/github.com/aws/amazon-ssm-agent
 cp ${PKG_ROOT}/seelog_unix.xml %{buildroot}%{_sysconfdir}/amazon/ssm/seelog.xml.template
