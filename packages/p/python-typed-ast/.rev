@@ -111,4 +111,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>767037</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>fa34c501b1da3ee3500464d3a8f96e8c</srcmd5>
+    <version>1.4.1</version>
+    <time>1590649677</time>
+    <user>maxlin_factory</user>
+    <comment>- disable tests 'test_ignores' and 'test_convert_strs', failing on ppc64, fixes bsc#1171573.
+</comment>
+    <requestid>807170</requestid>
+  </revision>
 </revisionlist>
