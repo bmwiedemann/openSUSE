@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 26 20:51:17 UTC 2020 - Petr Vorel <pvorel@suse.cz>
+
+- Backport fix for #133
+  https://github.com/duncs/clusterssh/pull/133
+  0001-helper-Fix-missing-space-separator-for-ssh_args.patch
+
+-------------------------------------------------------------------
 Mon May 18 08:08:13 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to new upstream release v4.15
