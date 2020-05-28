@@ -1,9 +1,7 @@
 #
 # spec file for package ansible
 #
-# Copyright (c) 2019 SUSE LLC
-# Copyright 2013 by Lars Vogdt
-# Copyright 2014 by Boris Manojlovic
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# Disable shebang munging for specific paths. These files are data files.
-# ansible-test munges the shebangs itself.
+
 %global __brp_mangle_shebangs_exclude_from %{_prefix}/lib/python[0-9]+\.[0-9]+/site-packages/ansible_test/_data/.*
 %if 0%{?rhel} || 0%{?fedora}
 # RHEL and Fedora add -s to the shebang line.  We do *not* use -s -E -S or -I
@@ -30,42 +27,18 @@
 %define py2_shbang_opts %{nil}
 %define py3_shbang_opts %{nil}
 %endif
-
 # While Windows Powershell meanwhile exists, it is not in Factory/Leap for now.
 # So let's exclude /usr/bin/pwsh from the dependencies
 %define __requires_exclude ^%{_bindir}/pwsh$
-
 # Python 2 or Python 3?
 %if 0%{?suse_version} >= 1315
 %bcond_without  python3
 %else
 %bcond_with     python3
 %endif
-
-%if %{with python3}
-%define __python python3
-%define python python3
-%else
-%define python python
-%endif
-
-# Disable/Enable tests only on newer distributions, which have the 
+# Disable/Enable tests only on newer distributions, which have the
 # needed dependencies.
 %define with_tests 0
-
-
-Name:           ansible
-Version:        2.9.9
-Release:        0
-Summary:        SSH-based configuration management, deployment, and task execution system
-License:        GPL-3.0-or-later
-Group:          Development/Languages/Python
-URL:            https://ansible.com/
-Source:         https://releases.ansible.com/ansible/ansible-%{version}.tar.gz
-Source1:        https://releases.ansible.com/ansible/ansible-%{version}.tar.gz.sha
-Source99:       ansible-rpmlintrc
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildArch:      noarch
 #
 # Fedora
 #
@@ -92,6 +65,74 @@ Provides:       bundled(python-selectors2) = 1.1.1
 Provides:       bundled(python-six) = 1.12.0
 %endif
 #
+# RHEL
+#
+%if 0%{?rhel}
+%if 0%{?rhel} >= 8
+%global         with_python2 0
+%global         with_python3 1
+BuildRequires:  %{py3_dist coverage}
+BuildRequires:  git-core
+BuildRequires:  python3-PyYAML
+BuildRequires:  python3-cryptography
+BuildRequires:  python3-devel
+BuildRequires:  python3-docutils
+BuildRequires:  python3-jinja2
+BuildRequires:  python3-mock
+BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-mock
+BuildRequires:  python3-pytest-xdist
+BuildRequires:  python3-requests
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-six
+BuildRequires:  python3-systemd
+Requires:       python3-PyYAML
+Requires:       python3-cryptography
+Requires:       python3-jinja2
+Requires:       python3-six
+Requires:       sshpass
+%else
+%if 0%{?rhel} >= 7
+%global         with_python2 1
+%global         with_python3 0
+BuildRequires:  PyYAML
+BuildRequires:  git
+BuildRequires:  pytest
+BuildRequires:  python-boto3
+BuildRequires:  python-coverage
+BuildRequires:  python-jinja2
+BuildRequires:  python-jmespath
+BuildRequires:  python-mock
+BuildRequires:  python-paramiko
+BuildRequires:  python-passlib
+BuildRequires:  python-requests
+BuildRequires:  python-setuptools
+BuildRequires:  python-six
+BuildRequires:  python-sphinx
+BuildRequires:  python2-cryptography
+BuildRequires:  python2-devel
+Requires:       PyYAML
+Requires:       python-jinja2
+Requires:       python-paramiko
+Requires:       python-six
+Requires:       python2-cryptography
+Requires:       sshpass
+%endif  # Requires for RHEL 7
+%endif  # Requires for RHEL 8
+# Bundled provides
+Provides:       bundled(python-backports-ssl_match_hostname) = 3.7.0.1
+Provides:       bundled(python-distro) = 1.4.0
+Provides:       bundled(python-ipaddress) = 1.0.22
+Provides:       bundled(python-selectors2) = 1.1.1
+Provides:       bundled(python-six) = 1.12.0
+%endif
+%if %{with python3}
+%define __python python3
+%define python python3
+%else
+%define python python
+%endif
+#
 # SUSE/openSUSE
 #
 %if 0%{?suse_version}
@@ -105,7 +146,7 @@ Provides:       bundled(python-six) = 1.12.0
 # disable building extensive docs per default:
 %define with_docs 0
 # Distribution version dependend stuff
-%if 0%{?suse_version} >= 1500 
+%if 0%{?suse_version} >= 1500
 # Enable VMWare support for newer openSUSE distributions here
 # otherwise disable this by setting the value below to 0
 %define with_vmware 1
@@ -116,6 +157,35 @@ Provides:       bundled(python-six) = 1.12.0
 %define with_amazon 0
 %define with_vmware 0
 %define with_tests  0
+%endif
+%if ! %{with python3}
+Requires:       %{python}-xml
+%endif
+%if 0%{?with_amazon}
+BuildRequires:  %{python}-boto3
+BuildRequires:  %{python}-botocore
+%endif
+%if 0%{?with_gitlab}
+BuildRequires:  %{python}-gitlab
+BuildRequires:  %{python}-httmock
+Recommends:     %{python}-gitlab
+Recommends:     %{python}-httmock
+%endif
+%if 0%{?with_tests}
+BuildRequires:  %{python}-pbkdf2
+BuildRequires:  %{python}-pytest
+BuildRequires:  %{python}-python-memcached
+BuildRequires:  %{python}-redis
+BuildRequires:  %{python}-requests
+%endif
+%if 0%{?with_vmware}
+BuildRequires:  %{python}-pyvmomi
+Recommends:     %{python}-pyvmomi
+%endif
+%if 0%{?with_winrm}
+BuildRequires:  %{python}-pexpect
+BuildRequires:  %{python}-pywinrm
+Recommends:     %{python}-pywinrm
 %endif
 BuildRequires:  %{python}-Jinja2
 BuildRequires:  %{python}-PyYAML
@@ -135,112 +205,34 @@ Requires:       %{python}-paramiko
 Requires:       %{python}-passlib
 Requires:       %{python}-pycrypto >= 2.6
 Requires:       %{python}-setuptools > 0.6
-%if ! %{with python3}
-Requires:       %{python}-xml
-%endif
 Recommends:     %{python}-boto3
 Recommends:     %{python}-botocore
 Recommends:     %{python}-dnspython
 Recommends:     %{python}-dopy
 Recommends:     %{python}-httplib2
 Recommends:     %{python}-keyczar
-Recommends:     %{python}-python-memcached
 Recommends:     %{python}-pbkdf2
+Recommends:     %{python}-python-memcached
 Recommends:     %{python}-pywinrm
 Recommends:     %{python}-redis
 Recommends:     %{python}-requests
 Recommends:     %{python}-six
 Recommends:     sshpass
-%if 0%{?with_amazon}
-BuildRequires:  %{python}-boto3
-BuildRequires:  %{python}-botocore
 %endif
-%if 0%{?with_gitlab}
-BuildRequires:  %{python}-gitlab
-BuildRequires:  %{python}-httmock
-Recommends:     %{python}-gitlab
-Recommends:     %{python}-httmock
-%endif
-%if 0%{?with_tests}
-BuildRequires:  %{python}-python-memcached
-BuildRequires:  %{python}-pbkdf2
-BuildRequires:  %{python}-pytest
-BuildRequires:  %{python}-redis
-BuildRequires:  %{python}-requests
-%endif
-%if 0%{?with_vmware}
-BuildRequires:  %{python}-pyvmomi
-Recommends:     %{python}-pyvmomi
-%endif
-%if 0%{?with_winrm}
-BuildRequires:  %{python}-pywinrm
-BuildRequires:  %{python}-pexpect
-Recommends:     %{python}-pywinrm
-%endif
-%endif
-#
-# RHEL
-#
-%if 0%{?rhel}
-# Bundled provides
-Provides:       bundled(python-backports-ssl_match_hostname) = 3.7.0.1
-Provides:       bundled(python-distro) = 1.4.0
-Provides:       bundled(python-ipaddress) = 1.0.22
-Provides:       bundled(python-selectors2) = 1.1.1
-Provides:       bundled(python-six) = 1.12.0
-%if 0%{?rhel} >= 8
-%global         with_python2 0
-%global         with_python3 1
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-docutils
-BuildRequires:  python3-jinja2
-BuildRequires:  python3-PyYAML
-BuildRequires:  python3-cryptography
-BuildRequires:  python3-six
-BuildRequires:  python3-pytest
-BuildRequires:  python3-pytest-xdist
-BuildRequires:  python3-pytest-mock
-BuildRequires:  python3-requests
-BUildRequires:  %{py3_dist coverage}
-BuildRequires:  python3-mock
-BuildRequires:  python3-systemd
-BuildRequires:  git-core
-Requires:       python3-jinja2
-Requires:       python3-PyYAML
-Requires:       python3-cryptography
-Requires:       python3-six
-Requires:       sshpass
-%else
-%if 0%{?rhel} >= 7
-%global         with_python2 1
-%global         with_python3 0
-BuildRequires:  python2-devel
-BuildRequires:  python-setuptools
-BuildRequires:  python-sphinx
-BuildRequires:  python-jinja2
-BuildRequires:  PyYAML
-BuildRequires:  python2-cryptography
-BuildRequires:  python-six
-BuildRequires:  pytest
-BuildRequires:  python-requests
-BuildRequires:  python-coverage
-BuildRequires:  python-mock
-BuildRequires:  python-boto3
-BuildRequires:  git
-BuildRequires:  python-paramiko
-BuildRequires:  python-jmespath
-BuildRequires:  python-passlib
-Requires:       python-jinja2
-Requires:       PyYAML
-Requires:       python2-cryptography
-Requires:       python-six
-Requires:       sshpass
-Requires:       python-paramiko
-%endif  # Requires for RHEL 7
-%endif  # Requires for RHEL 8
-%endif
-
+Name:           ansible
+Version:        2.9.9
+Release:        0
+Summary:        SSH-based configuration management, deployment, and task execution system
+License:        GPL-3.0-or-later
+Group:          Development/Languages/Python
+URL:            https://ansible.com/
+Source:         https://releases.ansible.com/ansible/ansible-%{version}.tar.gz
+Source1:        https://releases.ansible.com/ansible/ansible-%{version}.tar.gz.sha
+Source99:       ansible-rpmlintrc
+# PATCH-FIX-UPSTREAM CVE-2020-1733_avoid_mkdir_p.patch bsc#1171823 mcepl@suse.com
+# gh#ansible/ansible#67791 avoid race condition and insecure directory creation
+Patch0:         CVE-2020-1733_avoid_mkdir_p.patch
+BuildArch:      noarch
 # extented documentation
 %if 0%{?with_docs}
 BuildRequires:  asciidoc
@@ -256,7 +248,6 @@ not require any software or daemons to be installed on remote nodes. Extension
 modules can be written in any language and are transferred to managed machines
 automatically.
 
-
 %package doc
 Summary:        Documentation for Ansible
 Recommends:     %{name} = %{version}
@@ -270,7 +261,6 @@ not require any software or daemons to be installed on remote nodes. Extension
 modules can be written in any language and are transferred to managed machines
 automatically.
 
-
 %package test
 Summary:        Tool for testing ansible plugin and module code
 Requires:       %{name} = %{version}
@@ -278,17 +268,16 @@ Requires:       %{name} = %{version}
 # RHEL
 #
 %if 0%{?rhel} >= 7
-Requires:       python-virtualenv
 BuildRequires:  python-virtualenv
+Requires:       python-virtualenv
 %endif
 #
 # SUSE/openSUSE
 #
 %if 0%{?suse_version} >= 1500
-Requires:       %{python}-virtualenv
 BuildRequires:  %{python}-virtualenv
+Requires:       %{python}-virtualenv
 %endif
-
 
 %description test
 This package installs the ansible-test command for testing modules and plugins
@@ -300,9 +289,10 @@ not require any software or daemons to be installed on remote nodes. Extension
 modules can be written in any language and are transferred to managed machines
 automatically.
 
-
 %prep
 %setup -q -n ansible-%{version}
+%autopatch -p1
+
 for file in .git_keep .travis.yml ; do
   find . -name "$file" -delete
 done
@@ -314,15 +304,15 @@ find ./ -type f -exec \
 
 
 %build
-%{__python} setup.py build
+%{python} setup.py build
 %if 0%{?with_docs}
-  make %{?_smp_mflags} PYTHON=%{_bindir}/%{python} SPHINXBUILD=sphinx-build webdocs
+  %make_build PYTHON=%{_bindir}/%{python} SPHINXBUILD=sphinx-build webdocs
 %else
-  make %{?_smp_mflags} PYTHON=%{_bindir}/%{python} -Cdocs/docsite config cli keywords modules plugins testing
+  %make_build PYTHON=%{_bindir}/%{python} -Cdocs/docsite config cli keywords modules plugins testing
 %endif
 
 %install
-%{__python} setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%{python} setup.py install --prefix=%{_prefix} --root=%{buildroot}
 
 mkdir -p %{buildroot}%{_sysconfdir}/ansible/
 cp examples/hosts %{buildroot}%{_sysconfdir}/ansible/
@@ -370,7 +360,7 @@ for location in $DATADIR_LOCATIONS ; do
 done
 mkdir -p %{buildroot}%{_sysconfdir}/ansible/
 mkdir -p %{buildroot}%{_sysconfdir}/ansible/roles/
-# fix for https://github.com/ansible/ansible/pull/24381 
+# fix for https://github.com/ansible/ansible/pull/24381
 # resp. https://bugzilla.opensuse.org/show_bug.cgi?id=1137479
 mkdir -p %{buildroot}%{python3_sitelib}/ansible/galaxy/data/default/role/{files,templates}
 
@@ -386,7 +376,7 @@ cp -pr docs/docsite/rst .
 
 %if 0%{?with_tests} &&  0%{with python3}
 %check
-%{__python3} bin/ansible-test units -v --python %{python3_version}
+python3 bin/ansible-test units -v --python %{python3_version}
 %endif
 
 

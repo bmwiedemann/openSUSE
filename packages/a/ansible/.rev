@@ -739,4 +739,12 @@ numbers for further reference.
     <comment>update to version 2.9.9 with fix for a regression introduced in 2.9.8</comment>
     <requestid>804063</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>60923666cd094a86345d68dbd4bde299</srcmd5>
+    <version>2.9.9</version>
+    <time>1590650094</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809115</requestid>
+  </revision>
 </revisionlist>
