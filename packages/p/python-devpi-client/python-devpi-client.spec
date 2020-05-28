@@ -36,6 +36,8 @@ Requires:       python-pluggy >= 0.6.0
 Requires:       python-py >= 1.4.31
 Requires:       python-tox >= 3.1.0
 Requires:       python-wheel
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     git-core
 Recommends:     python-Sphinx
 BuildArch:      noarch
@@ -72,6 +74,7 @@ sed -i 's/"python", "setup.py"/sys.executable, "setup.py"/' testing/test_test.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/devpi
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -79,12 +82,19 @@ export LANG=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
 export PATH=$PATH:%{buildroot}/%{_bindir}
 # Unknown failures https://github.com/devpi/devpi/issues/706
-%pytest -k 'not (test_simple_install_new_venv_workflow or test_simple_install_activated_venv_workflow)'
+# test_help: devpi binary is not available (update-alternatives)
+%pytest -k 'not (test_simple_install_new_venv_workflow or test_simple_install_activated_venv_workflow or test_help)'
+
+%post
+%python_install_alternative devpi
+
+%postun
+%python_uninstall_alternative devpi
 
 %files %{python_files}
 %doc AUTHORS CHANGELOG README.rst
 %license LICENSE
-%python3_only %{_bindir}/devpi
+%python_alternative %{_bindir}/devpi
 %{python_sitelib}/*
 
 %changelog

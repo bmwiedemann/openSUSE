@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 07:22:38 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Sun Jan 12 00:54:29 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 5.1.1:
