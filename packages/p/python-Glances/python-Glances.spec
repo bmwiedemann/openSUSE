@@ -40,11 +40,13 @@ Requires:       python-bottle
 Requires:       python-future
 Requires:       python-psutil >= 5.6.3
 Requires:       python-requests
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-curses
 Provides:       python-glances = %{version}
 Obsoletes:      python-glances < %{version}
-BuildArch:      noarch
 Provides:       glances
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -62,6 +64,8 @@ size of the user interface.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_mandir}/man1/glances.1
+%python_clone -a %{buildroot}%{_bindir}/glances
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -70,11 +74,17 @@ export LANG=en_US.UTF-8
 %python_exec unitest-restful.py
 %python_exec unitest-xmlrpc.py
 
+%post
+%python_install_alternative glances glances.1
+
+%postun
+%python_uninstall_alternative glances
+
 %files %{python_files}
 %license COPYING
 %doc NEWS.rst README.rst
-%python3_only %{_bindir}/glances
-%python3_only %{_mandir}/man1/glances.1.gz
+%python_alternative %{_bindir}/glances
+%python_alternative %{_mandir}/man1/glances.1%{?ext_man}
 %{python_sitelib}/*
 
 %changelog

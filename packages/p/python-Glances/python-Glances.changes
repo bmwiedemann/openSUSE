@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 06:34:24 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Wed May  6 18:46:52 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Drop python2
