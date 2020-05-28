@@ -30,6 +30,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,16 +46,23 @@ Node.js virtual environment builder.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/nodeenv
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # test_smoke is an integration test requiring network access.
 %pytest -k 'not test_smoke'
 
+%post
+%python_install_alternative nodeenv
+
+%postun
+%python_uninstall_alternative nodeenv
+
 %files %{python_files}
 %doc AUTHORS CHANGES README README.rst
 %license LICENSE
-%python3_only %{_bindir}/nodeenv
+%python_alternative %{_bindir}/nodeenv
 %{python_sitelib}/*
 
 %changelog
