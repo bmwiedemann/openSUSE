@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 19 08:03:11 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Sat Apr 25 16:25:20 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.8.7:

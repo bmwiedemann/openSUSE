@@ -31,6 +31,8 @@ BuildRequires:  %{python_module wcwidth}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-wcwidth
 Suggests:       python-pandas
 BuildArch:      noarch
@@ -57,15 +59,22 @@ The main use cases of the library are:
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/tabulate
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test
 
+%post
+%python_install_alternative tabulate
+
+%postun
+%python_uninstall_alternative tabulate
+
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%python3_only %{_bindir}/tabulate
+%python_alternative %{_bindir}/tabulate
 %{python_sitelib}/tabulate.*
 %{python_sitelib}/tabulate-%{version}-py*.egg-info
 %pycache_only %{python_sitelib}/__pycache__
