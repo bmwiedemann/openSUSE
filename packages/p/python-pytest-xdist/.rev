@@ -125,4 +125,12 @@
   * #524: Add testrun_uid fixture. This is a shared value that uniquely identifies a test run among all workers. This also adds a PYTEST_XDIST_TESTRUNUID environment variable that is accessible within a test as well as a command line option --testrunuid to manually set the value from outside.</comment>
     <requestid>799798</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>81810b04bdf5d725637dd2bb6acd8e79</srcmd5>
+    <version>1.32.0</version>
+    <time>1590649534</time>
+    <user>maxlin_factory</user>
+    <comment>- Do not do symlinks</comment>
+    <requestid>805107</requestid>
+  </revision>
 </revisionlist>

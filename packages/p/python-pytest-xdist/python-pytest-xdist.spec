@@ -72,7 +72,7 @@ sed -i 's/\r//' README.rst
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
