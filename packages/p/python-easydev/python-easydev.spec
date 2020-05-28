@@ -1,7 +1,7 @@
 #
 # spec file for package python-easydev
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,19 @@ Release:        0
 Summary:        Common utilities to ease the development of Python packages
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/cokelaer/easydev
+URL:            https://github.com/cokelaer/easydev
 Source:         https://files.pythonhosted.org/packages/source/e/easydev/easydev-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-colorama
+Requires:       python-colorlog
+Requires:       python-pexpect
+Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+Recommends:     python-line_profiler
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module colorlog}
@@ -38,13 +46,6 @@ BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-colorama
-Requires:       python-colorlog
-Requires:       python-pexpect
-Requires:       python-setuptools
-Recommends:     python-line_profiler
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -63,13 +64,23 @@ rm -r easydev/share/__pycache__
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/easydev_buildPackage
+%python_clone -a %{buildroot}%{_bindir}/browse
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative easydev_buildPackage
+%python_install_alternative browse
+
+%postun
+%python_uninstall_alternative easydev_buildPackage
+%python_uninstall_alternative browse
 
 %files %{python_files}
 %doc README.rst
 %license COPYING
-%python3_only %{_bindir}/browse
-%python3_only %{_bindir}/easydev_buildPackage
+%python_alternative %{_bindir}/browse
+%python_alternative %{_bindir}/easydev_buildPackage
 %{python_sitelib}/*
 
 %changelog
