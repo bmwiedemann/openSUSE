@@ -17,7 +17,7 @@
 
 
 Name:           ripgrep
-Version:        11.0.2
+Version:        12.1.0
 Release:        0
 Summary:        A search tool that combines ag with grep
 License:        MIT AND Unlicense
@@ -25,11 +25,9 @@ Group:          Productivity/Text/Utilities
 URL:            https://github.com/BurntSushi/ripgrep
 Source:         https://github.com/BurntSushi/ripgrep/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
-# PATCH-FIX-UPSTREAM https://github.com/BurntSushi/ripgrep/issues/1441
-Patch0:         ripgrep-11.0.2-reproducible-manpage.patch
-BuildRequires:  asciidoc
 BuildRequires:  cargo
 BuildRequires:  rust >= 1.31
+BuildRequires:  rubygem(asciidoctor)
 
 %description
 ripgrep is a line oriented search tool that combines the usability of
@@ -41,7 +39,7 @@ for a regex pattern.
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
 Requires:       bash-completion
-Supplements:    packageand(%{name}:bash)
+Supplements:    (%{name} and bash)
 BuildArch:      noarch
 
 %description bash-completion
@@ -50,7 +48,7 @@ The official bash completion script for ripgrep, generated during the build.
 %package zsh-completion
 Summary:        ZSH Completion for %{name}
 Group:          System/Shells
-Supplements:    packageand(%{name}:zsh)
+Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
 %description zsh-completion
@@ -59,7 +57,7 @@ The official zsh completion script for ripgrep, generated during the build.
 %package fish-completion
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
-Supplements:    packageand(%{name}:fish)
+Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
 %description fish-completion
@@ -68,7 +66,6 @@ The official fish completion script for ripgrep, generated during the build.
 %prep
 %setup -q
 %setup -q -D -T -a 1
-%patch0 -p1
 mkdir cargo-home
 cat >cargo-home/config <<EOF
 [source.crates-io]

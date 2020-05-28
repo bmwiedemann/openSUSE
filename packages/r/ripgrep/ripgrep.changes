@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 15 15:33:34 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ripgrep 12.1.0
+  * many bug fixes
+  * performance improvements
+  * --no-pcre2-unicode deprecated in favor of --no-unicode
+  * --auto-hybrid-regex deprecated in favor of --engine auto
+  * supports decompressing .Z files via uncompress
+- drop ripgrep-11.0.2-reproducible-manpage.patch, now upstream
+
+-------------------------------------------------------------------
 Thu Apr 30 22:33:42 UTC 2020 - Martin Wilck <mwilck@suse.com>
 
 - Remove transient file .crates2.json during build 
