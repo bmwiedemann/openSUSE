@@ -17,7 +17,7 @@
 
 
 Name:           lollypop
-Version:        1.2.35
+Version:        1.3.0
 Release:        0
 Summary:        GNOME music playing application
 License:        GPL-3.0-or-later
@@ -43,7 +43,6 @@ Requires:       python3-beautifulsoup4
 Requires:       python3-cairo
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
-Requires:       python3-pylast
 Recommends:     easytag
 Recommends:     kid3-cli
 Recommends:     youtube-dl
