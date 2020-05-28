@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May 16 00:00:10 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- The fix for bsc#1130082 does not have an effect (anymore?).
+  New version of flake8 raises more failures.
+  Switch off flake8 tests by removing pytest-flake8 and the
+  corresponding pytest argument.
+- pytest-cov not needed
+
+-------------------------------------------------------------------
 Fri Apr 26 07:27:51 UTC 2019 - pgajdos@suse.com
 
 - version update to 1.0.2

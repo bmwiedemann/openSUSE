@@ -1,7 +1,7 @@
 #
 # spec file for package python-tinycss2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,12 @@ Release:        0
 Summary:        Low-level CSS parser for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/Kozea/tinycss2
+URL:            https://github.com/Kozea/tinycss2
 Source:         https://files.pythonhosted.org/packages/source/t/tinycss2/tinycss2-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-flake8}
 BuildRequires:  %{python_module pytest-isort}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module webencodings >= 0.4}
@@ -57,11 +55,14 @@ more recent CSS Syntax Level 3 specification.
 
 %check
 export LANG=en_US.UTF-8
-%python_expand py.test-%{$python_bin_suffix} -v -k 'not FLAKE8-check'
+# remove pytest default args --flake8 and --isort
+rm setup.cfg
+%pytest --isort
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/tinycss2
+%{python_sitelib}/tinycss2-%{version}-*.egg-info
 
 %changelog
