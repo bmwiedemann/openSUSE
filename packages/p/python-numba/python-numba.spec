@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-numba%{psuffix}
-Version:        0.49.0
+Version:        0.49.1
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause

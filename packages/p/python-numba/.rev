@@ -210,4 +210,12 @@ Python2 support was turned off by accident.  I don't go out of my way to support
     <comment></comment>
     <requestid>798393</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1947b921ecdea3ca606b73815c53c8d2</srcmd5>
+    <version>0.49.1</version>
+    <time>1590650133</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809224</requestid>
+  </revision>
 </revisionlist>
