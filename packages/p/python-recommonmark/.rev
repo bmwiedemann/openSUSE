@@ -67,4 +67,13 @@
     <comment></comment>
     <requestid>722799</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>50e09328c9bc7ac4283494a6fab2e810</srcmd5>
+    <version>0.6.0</version>
+    <time>1590649529</time>
+    <user>maxlin_factory</user>
+    <comment>- Switch to pytest and ignore failing tests
+  (gh#readthedocs/recommonmark#200)</comment>
+    <requestid>804035</requestid>
+  </revision>
 </revisionlist>

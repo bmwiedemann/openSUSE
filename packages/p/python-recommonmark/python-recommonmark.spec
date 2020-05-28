@@ -1,7 +1,7 @@
 #
 # spec file for package python-recommonmark
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,12 +31,6 @@ Patch0:         sphinx2.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION tests
-BuildRequires:  %{python_module CommonMark >= 0.7.3}
-BuildRequires:  %{python_module Sphinx >= 1.3.1}
-BuildRequires:  %{python_module docutils >= 0.11}
-BuildRequires:  %{python_module future}
-# /SECTION tests
 Requires:       python-CommonMark >= 0.7.3
 Requires:       python-Sphinx >= 1.3.1
 Requires:       python-docutils >= 0.11
@@ -45,6 +39,13 @@ Requires(preun): update-alternatives
 Provides:       python-reCommonMark = %{version}
 Obsoletes:      python-reCommonMark < %{version}
 BuildArch:      noarch
+# SECTION tests
+BuildRequires:  %{python_module CommonMark >= 0.7.3}
+BuildRequires:  %{python_module Sphinx >= 1.3.1}
+BuildRequires:  %{python_module docutils >= 0.11}
+BuildRequires:  %{python_module future}
+BuildRequires:  %{python_module pytest}
+# /SECTION tests
 %ifpython2
 Obsoletes:      %{oldpython}-reCommonMark < %{version}
 Provides:       %{oldpython}-reCommonMark = %{version}
@@ -82,7 +83,8 @@ find recommonmark -name "*.py" | xargs sed -i '1 {/^#!/ d}'
 %python_clone -a %{buildroot}%{_bindir}/cm2xml
 
 %check
-%python_exec setup.py test
+# gh#readthedocs/recommonmark#200
+%pytest -k 'not (test_integration or test_code or test_headings or test_image or test_links or test_lists)'
 
 %post
 %{python_install_alternative cm2man cm2latex cm2xetex cm2pseudoxml cm2html cm2xml}
