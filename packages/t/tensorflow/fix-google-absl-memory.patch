@@ -1,0 +1,99 @@
+From 98cb8d3e4a1f3b6f41bdeea5a8596fa31685237d Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.de>
+Date: Tue, 26 May 2020 09:45:35 +0200
+Subject: [PATCH] fix google absl memory bazel fails when dependency of
+ @com_google_absl//absl/memory is added without @com_google_absl//absl/strings
+
+---
+ tensorflow/lite/python/interpreter_wrapper/BUILD | 1 +
+ tensorflow/lite/tools/optimize/BUILD             | 4 ++++
+ tensorflow/lite/tools/optimize/calibration/BUILD | 4 ++++
+ 3 files changed, 9 insertions(+)
+
+diff --git a/tensorflow/lite/python/interpreter_wrapper/BUILD b/tensorflow/lite/python/interpreter_wrapper/BUILD
+index 476f9390e5..98accf15a0 100644
+--- a/tensorflow/lite/python/interpreter_wrapper/BUILD
++++ b/tensorflow/lite/python/interpreter_wrapper/BUILD
+@@ -31,6 +31,7 @@ cc_library(
+         "//tensorflow/lite/kernels:builtin_ops",
+         "//third_party/python_runtime:headers",
+         "@com_google_absl//absl/memory",
++        "@com_google_absl//absl/strings",
+     ],
+ )
+ 
+diff --git a/tensorflow/lite/tools/optimize/BUILD b/tensorflow/lite/tools/optimize/BUILD
+index f9ef0d02e5..fb68eab5fc 100644
+--- a/tensorflow/lite/tools/optimize/BUILD
++++ b/tensorflow/lite/tools/optimize/BUILD
+@@ -26,6 +26,7 @@ cc_library(
+         "//tensorflow/lite/schema:schema_fbs",
+         "//third_party/eigen3",
+         "@com_google_absl//absl/memory",
++        "@com_google_absl//absl/strings",
+     ],
+ )
+ 
+@@ -40,6 +41,7 @@ cc_library(
+         "//tensorflow/lite/kernels/internal:types",
+         "//tensorflow/lite/schema:schema_fbs",
+         "@com_google_absl//absl/memory",
++        "@com_google_absl//absl/strings",
+     ],
+ )
+ 
+@@ -94,6 +96,7 @@ tf_cc_test(
+         "//tensorflow/lite:framework",
+         "//tensorflow/lite/schema:schema_fbs",
+         "@com_google_absl//absl/memory",
++        "@com_google_absl//absl/strings",
+         "@com_google_googletest//:gtest",
+         "@flatbuffers",
+     ],
+@@ -107,6 +110,7 @@ cc_library(
+         ":quantization_utils",
+         ":model_utils",
+         "@com_google_absl//absl/memory",
++        "@com_google_absl//absl/strings",
+         "@com_google_absl//absl/container:flat_hash_map",
+         "@flatbuffers",
+         "//tensorflow/lite:framework",
+diff --git a/tensorflow/lite/tools/optimize/calibration/BUILD b/tensorflow/lite/tools/optimize/calibration/BUILD
+index c65f05587e..c029af83bf 100644
+--- a/tensorflow/lite/tools/optimize/calibration/BUILD
++++ b/tensorflow/lite/tools/optimize/calibration/BUILD
+@@ -25,6 +25,7 @@ cc_library(
+         "//tensorflow/lite/kernels:builtin_ops",
+         "//tensorflow/lite/schema:schema_fbs",
+         "@com_google_absl//absl/memory",
++        "@com_google_absl//absl/strings",
+         "@flatbuffers",
+     ],
+ )
+@@ -49,6 +50,7 @@ tf_cc_test(
+         "//tensorflow/lite:framework",
+         "//tensorflow/lite/kernels:builtin_ops",
+         "@com_google_absl//absl/memory",
++        "@com_google_absl//absl/strings",
+         "@com_google_googletest//:gtest",
+     ],
+ )
+@@ -62,6 +64,7 @@ cc_library(
+         "//tensorflow/lite:framework",
+         "//tensorflow/lite/core/api",
+         "@com_google_absl//absl/memory",
++        "@com_google_absl//absl/strings",
+     ],
+ )
+ 
+@@ -84,6 +87,7 @@ cc_library(
+         ":calibration_logger",
+         "//tensorflow/lite:framework",
+         "@com_google_absl//absl/memory",
++        "@com_google_absl//absl/strings",
+     ],
+ )
+ 
+-- 
+2.25.0
+

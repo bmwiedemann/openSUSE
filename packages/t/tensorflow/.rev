@@ -145,4 +145,14 @@
     <comment>- removed hpc-mvapich2 build (bsc#1167735) (forwarded request 788444 from mslacken)</comment>
     <requestid>788445</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>5c5c7abd97b66ad7f0900426f99fcba4</srcmd5>
+    <version>1.15.2</version>
+    <time>1590649986</time>
+    <user>maxlin_factory</user>
+    <comment>- fixed broken builds which were caused due to missing dependency
+  on @com_google_absl//absl/strings in various BUILD files
+- added patch: fix-google-absl-memory.patch (forwarded request 808952 from mslacken)</comment>
+    <requestid>808980</requestid>
+  </revision>
 </revisionlist>

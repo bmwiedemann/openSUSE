@@ -168,6 +168,7 @@ Patch2:         fix-lite.patch
 Patch3:         Fix-build-failures-for-python-3.8.patch
 Patch4:         Fix-TensorFlow-on-Python-3.8-logger-issue.patch
 Patch5:         fix-mpi-build.patch
+Patch6:         fix-google-absl-memory.patch
 # only for TW right now
 Patch10:        json-feature-name.patch
 
@@ -415,6 +416,7 @@ pwd
 %if %{with mpi}
 %patch5 -p 1
 %endif
+%patch6 -p 1
 %if 0%{?suse_version} > 1500 
 %patch10 -p 1
 %endif

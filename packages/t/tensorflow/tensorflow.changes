@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 26 08:03:16 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- fixed broken builds which were caused due to missing dependency
+  on @com_google_absl//absl/strings in various BUILD files
+- added patch: fix-google-absl-memory.patch
+
+-------------------------------------------------------------------
 Thu Mar 26 08:21:08 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - removed hpc-mvapich2 build (bsc#1167735) 
