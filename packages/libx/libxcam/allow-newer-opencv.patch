@@ -1,0 +1,77 @@
+From a7ad68cf32079f297b9a210ad81b99207877437f Mon Sep 17 00:00:00 2001
+From: Yinhang Liu <yinhangx.liu@intel.com>
+Date: Fri, 20 Sep 2019 19:19:45 +0800
+Subject: [PATCH] OpenCV: support OpenCV version: [3.0.0, 4.0.0)
+
+---
+ README.md    |  2 +-
+ configure.ac | 30 ++++++++++++++++++------------
+ 2 files changed, 19 insertions(+), 13 deletions(-)
+
+diff --git a/README.md b/README.md
+index a81da4f2..4e094976 100644
+--- a/README.md
++++ b/README.md
+@@ -62,7 +62,7 @@ OpenCL is used to improve performance in different platforms.
+   * If --enable-gst, need install libgstreamer1.0-dev, libgstreamer-plugins-base1.0-dev
+   * If --enable-aiq, need get ia_imaging lib which we don't support
+   * If --enable-libcl, need compile [OpenCL](https://www.freedesktop.org/wiki/Software/Beignet) driver
+-  * If --enable-opencv, suggest [OpenCV](http://opencv.org) versions [3.0.0 - 3.4.3] (or: [OpenCV Wiki](https://github.com/opencv/opencv/wiki))
++  * If --enable-opencv, suggest [OpenCV](http://opencv.org) versions [3.0.0 - 4.0.0) (or: [OpenCV Wiki](https://github.com/opencv/opencv/wiki))
+   * If --enable-render, need compile [OpenSceneGraph](https://github.com/openscenegraph/OpenSceneGraph) library with configure option "-DOSG_WINDOWING_SYSTEM=X11"
+   * If --enable-gles, need to install [Mesa3D](https://www.mesa3d.org) library
+   * If --enable-vulkan, need to install [Mesa3D](https://www.mesa3d.org) library
+diff --git a/configure.ac b/configure.ac
+index ff71d1d4..f5e63402 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -27,9 +27,9 @@ XCAM_LT_LDFLAGS="-version-number $XCAM_LT_VERSION"
+ AC_SUBST(XCAM_LT_VERSION)
+ AC_SUBST(XCAM_LT_LDFLAGS)
+ 
+-#xcam required OpenCV version
++#xcam required OpenCV version [XCAM_REQUIRE_CV_MIN, XCAM_REQUIRE_CV_MAX)
+ XCAM_REQUIRE_CV_MIN=3.0.0
+-XCAM_REQUIRE_CV_MAX=3.4.3
++XCAM_REQUIRE_CV_MAX=4.0.0
+ 
+ #xcam required OpenSceneGraph version
+ XCAM_REQUIRE_OSG_MIN=3.3.2
+@@ -213,21 +213,27 @@ if test "$HAVE_LIBCL" -eq 1; then
+     fi
+ fi
+ 
+-# check opencv version number
++# check opencv version
+ HAVE_OPENCV=0
+ if test "$enable_opencv" = "yes"; then
+-    PKG_CHECK_MODULES(
+-        [OPENCV],
+-        [opencv >= $XCAM_REQUIRE_CV_MIN opencv <= $XCAM_REQUIRE_CV_MAX],
+-        [HAVE_OPENCV=1],
+-        [HAVE_OPENCV=0])
+-
+-    XCAM_CV_VERSION=`$PKG_CONFIG --modversion opencv`
++    XCAM_CV_VERSION=`opencv_version`
++    if test -z $XCAM_CV_VERSION; then
++        XCAM_CV_VERSION=`$PKG_CONFIG --modversion opencv`
++    fi
+     AC_MSG_NOTICE(OpenCV version: $XCAM_CV_VERSION)
+ 
+-    if test "$HAVE_OPENCV" -eq 0; then
+-        AC_MSG_ERROR(OpenCV required version: >= $XCAM_REQUIRE_CV_MIN && <= $XCAM_REQUIRE_CV_MAX)
++    XCAM_CV_MAJOR_VERSION=`echo $XCAM_CV_VERSION | cut -d '.' -f 1`
++
++    opencv_module=opencv
++    if test $XCAM_CV_MAJOR_VERSION -ge 4; then
++        opencv_module=opencv$XCAM_CV_MAJOR_VERSION
+     fi
++
++    PKG_CHECK_MODULES(
++        [OPENCV],
++        [$opencv_module >= $XCAM_REQUIRE_CV_MIN $opencv_module < $XCAM_REQUIRE_CV_MAX],
++        [HAVE_OPENCV=1],
++        [AC_MSG_ERROR(OpenCV required version: >= $XCAM_REQUIRE_CV_MIN && < $XCAM_REQUIRE_CV_MAX)])
+ fi
+ 
+ # check opencv videostab module

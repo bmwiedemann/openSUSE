@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu May 21 14:43:43 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 1.2.2
+ * GLES compute framework enabling.
+   - enable GL image processing framework.
+   - enable features of multi-band blender, geometry remap and data-copy.
+ * GLES surround-view stitching enabling.
+   - GLES stitching enabled (feature-match may support later).
+   - performance optimized on compute shaders.
+ * Vulkan compute framework enabling.
+   - enabled Vulkan image processing under xcam framework.
+   - vk-copy-handler as sample code.
+ * suggest OpenCV version [3.0.0 - 3.4.3]
+ * support CPU stitching based on dual-const and dual-curve scaling factors.
+ * support OpenCL stitching based on auto-scale in vertical 2D-direction.
+ * change test-soft-image to test-surround-view
+ * Vulkan surround-view stitching enabling.
+   - enable features of multi-band blender and geometry remap.
+   - enable Vulkan image stitching. (feature-match may support later)
+ * Surrond-view texture rendering.
+   - enable 3D surround view scene rendering and manipulation.
+ * require OpenSceneGraph minimal version 3.3.2
+ * DNN inference framwork enabling.
+   - enable pedestrian and vehicle detection based on OpenVino
+ * OpenCV feature match enabled for image stitching pipeline (GLES/Vulkan/CPU)
+   - support three versions of feature match: default, cluster, capi
+ * Abstract OpenCV source in ocv module, and build into a separate static library
+- Require pkgconfig(opencv), because this still needs OpenCV 3.
+- Add allow-newer-opencv.patch: Allow all 3.x.x versions.
+- Disable 3alib to prevent compiler errors due to missing linux/atomisp.h.
+- Enable Vulkan support.
+
+-------------------------------------------------------------------
 Tue Oct  2 10:55:20 UTC 2018 - Antonio Larrosa <alarrosa@suse.com> - 1.1.0
 
 - Update to version 1.1.0
