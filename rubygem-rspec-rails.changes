@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 27 11:18:57 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 4.0.1
+
+  Bug Fixes:
+
+  * Remove warning when calling `driven_by` in system specs. (Aubin Lorieux, #2302)
+  * Fix comparison of times for `#at` in job matchers. (Jon Rowe, Markus Doits, #2304)
+  * Allow `have_enqueued_mail` to match when a sub class of `ActionMailer::DeliveryJob`
+    is set using `<Class>.delivery_job=`. (Atsushi Yoshida #2305)
+  * Restore Ruby 2.2.x compatibility. (Jon Rowe, #2332)
+  * Add `required_ruby_version` to gem spec. (Marc-André Lafortune, #2319, #2338)
+
+-------------------------------------------------------------------
 Mon Apr 27 12:41:19 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 4.0.0
