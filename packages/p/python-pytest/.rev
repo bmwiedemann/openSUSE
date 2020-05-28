@@ -799,4 +799,37 @@
   be dropped when updating.</comment>
     <requestid>786286</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>86bea701175d8fa9aab9280155524a8d</srcmd5>
+    <version>5.4.2</version>
+    <time>1590649491</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 5.4.2
+ * Fix crash with captured output when using the capsysbinary fixture.
+ * Ensure a unittest.IsolatedAsyncioTestCase is actually awaited.
+ * Fix TerminalRepr instances to be hashable again.
+ * Fix regression where functions registered with TestCase.addCleanup
+    were not being called on test failures.
+ * Allow users to still set the deprecated TerminalReporter.writer attribute.
+ * Revert “tmpdir: clean up indirection via config for factories
+ * Fixed regression: asyncbase.TestCase tests are executed correctly again
+ * Fix File.from_constructor so it forwards extra keyword arguments to the constructor.
+ * Classes with broken __getattribute__ methods are displayed correctly during failures.
+ * Fix _is_setup_py for files encoded differently than locale.
+
+- Update to 5.4.1:
+  * #6909: Revert the change introduced by #6330, which required all
+    arguments to @pytest.mark.parametrize to be explicitly defined
+    in the function signature.
+  * #6910: Fix crash when plugins return an unknown stats while using
+    the --reportlog option.
+  * #6316: Matching of -k EXPRESSION to test names is now case-insensitive.
+  * #6443: Plugins specified with -p are now loaded after internal plugins
+  * #6637: Removed the long-deprecated pytest_itemstart hook.
+  * #6673: Reversed / fix meaning of “+/-” in error diffs. “-” means that
+    sth. expected is missing in the result and “+” means that there are
+    unexpected extras in the result.
+- Remove merged patch tidy-up-embeddedfile.patch</comment>
+    <requestid>802880</requestid>
+  </revision>
 </revisionlist>
