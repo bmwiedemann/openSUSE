@@ -25,7 +25,7 @@ Release:        0
 Summary:        An asynchronous networking framework written in Python
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://twistedmatrix.com/
+URL:            https://twistedmatrix.com/
 Source:         https://files.pythonhosted.org/packages/source/T/Twisted/%{modname}-%{version}.tar.bz2
 Patch1:         skip_MultiCast.patch
 Patch2:         no-pygtkcompat.patch
@@ -73,6 +73,8 @@ Requires:       python-pyasn1
 Requires:       python-pyserial >= 3.0
 Requires:       python-service_identity >= 18.1.0
 Requires:       python-zope.interface >= 4.4.2
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %ifpython2
 Provides:       %{oldpython}-twisted = %{version}
 Obsoletes:      %{oldpython}-twisted < %{version}
@@ -153,6 +155,26 @@ export PATH=%{buildroot}%{_bindir}:$PATH
 export PYTHONDONTWRITEBYTECODE=1
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m twisted.trial twisted
 
+%post
+%python_install_alternative twist
+%python_install_alternative trial
+%python_install_alternative tkconch
+%python_install_alternative pyhtmlizer
+%python_install_alternative conch
+%python_install_alternative ckeygen
+%python_install_alternative cftp
+%python_install_alternative twistd
+
+%postun
+%python_uninstall_alternative twist
+%python_uninstall_alternative trial trial.1
+%python_uninstall_alternative tkconch tkconch.1
+%python_uninstall_alternative pyhtmlizer pyhtmlizer.1
+%python_uninstall_alternative conch conch.1
+%python_uninstall_alternative ckeygen ckeygen.1
+%python_uninstall_alternative cftp cftp.1
+%python_uninstall_alternative twistd twistd.1
+
 %files -n %{name}-doc
 %doc docs/*
 
@@ -161,24 +183,24 @@ export PYTHONDONTWRITEBYTECODE=1
 %doc NEWS.rst README.rst
 %{_bindir}/*-%{python_bin_suffix}
 %{_mandir}/man1/*-%{python_bin_suffix}.1%{?ext_man}
-%python3_only %{_bindir}/twistd
-%python3_only %{_bindir}/cftp
-%python3_only %{_bindir}/ckeygen
-%python3_only %{_bindir}/conch
+%python_alternative %{_bindir}/twistd
+%python_alternative %{_bindir}/cftp
+%python_alternative %{_bindir}/ckeygen
+%python_alternative %{_bindir}/conch
 # Supported only in python2
 %python2_only %{_bindir}/mailmail
-%python3_only %{_bindir}/pyhtmlizer
-%python3_only %{_bindir}/tkconch
-%python3_only %{_bindir}/trial
-%python3_only %{_bindir}/twist
-%python3_only %{_mandir}/man1/twistd.1%{?ext_man}
-%python3_only %{_mandir}/man1/cftp.1%{?ext_man}
-%python3_only %{_mandir}/man1/ckeygen.1%{?ext_man}
-%python3_only %{_mandir}/man1/conch.1%{?ext_man}
+%python_alternative %{_bindir}/pyhtmlizer
+%python_alternative %{_bindir}/tkconch
+%python_alternative %{_bindir}/trial
+%python_alternative %{_bindir}/twist
+%python_alternative %{_mandir}/man1/twistd.1%{?ext_man}
+%python_alternative %{_mandir}/man1/cftp.1%{?ext_man}
+%python_alternative %{_mandir}/man1/ckeygen.1%{?ext_man}
+%python_alternative %{_mandir}/man1/conch.1%{?ext_man}
 %python2_only %{_mandir}/man1/mailmail.1%{?ext_man}
-%python3_only %{_mandir}/man1/pyhtmlizer.1%{?ext_man}
-%python3_only %{_mandir}/man1/tkconch.1%{?ext_man}
-%python3_only %{_mandir}/man1/trial.1%{?ext_man}
+%python_alternative %{_mandir}/man1/pyhtmlizer.1%{?ext_man}
+%python_alternative %{_mandir}/man1/tkconch.1%{?ext_man}
+%python_alternative %{_mandir}/man1/trial.1%{?ext_man}
 %{python_sitearch}/*
 
 %changelog
