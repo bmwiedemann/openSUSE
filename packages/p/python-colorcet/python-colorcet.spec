@@ -1,7 +1,7 @@
 #
 # spec file for package python-colorcet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-param >= 1.7.0
 Requires:       python-pyct >= 0.4.4
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -51,15 +53,22 @@ holoviews, and datashader.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/colorcet
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative colorcet
+
+%postun
+%python_uninstall_alternative colorcet
+
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%python3_only %{_bindir}/colorcet
+%python_alternative %{_bindir}/colorcet
 %{python_sitelib}/*
 
 %changelog
