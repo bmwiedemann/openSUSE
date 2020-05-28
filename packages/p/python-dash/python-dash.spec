@@ -40,6 +40,8 @@ Requires:       python-future
 # needed for dash/testing/browser.py
 Requires:       python-percy
 Requires:       python-plotly
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Flask >= 1.0.2}
@@ -74,13 +76,23 @@ sed -i -e 's:==:>=:g' requires-*txt
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/renderer
+%python_clone -a %{buildroot}%{_bindir}/dash-generate-components
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative renderer
+%python_install_alternative dash-generate-components
+
+%postun
+%python_uninstall_alternative renderer
+%python_uninstall_alternative dash-generate-components
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/dash-generate-components
-%python3_only %{_bindir}/renderer
+%python_alternative %{_bindir}/dash-generate-components
+%python_alternative %{_bindir}/renderer
 %{python_sitelib}/dash
 %{python_sitelib}/dash-%{version}-py*.egg-info
 
