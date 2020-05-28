@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-moban
-Version:        0.7.0
+Version:        0.7.5
 Release:        0
 Summary:        Yet another jinja2 CLI for static text generation
 License:        MIT
@@ -49,6 +49,8 @@ Requires:       python-fs >= 2.4.11
 Requires:       python-jinja2-fsloader >= 0.2.0
 Requires:       python-lml >= 0.0.9
 Requires:       python-ruamel.yaml >= 0.15.98
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-gitfs2
 Suggests:       python-pypifs
 BuildArch:      noarch
@@ -71,6 +73,7 @@ rm -r tests/integration_tests
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/moban
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -81,12 +84,19 @@ rm -r tests/integration_tests
 # test_level_11 probably depends on moban-handlebars, which is needed only in tests
 # test_handle_targets_sequence fails on wrong arg count
 # test_overrides_fs_url needs gitfs2, which is optional
-%python_expand nosetests-%{$python_bin_suffix} -e 'test_level_(9|10|11)|test_handle_targets_sequence|test_overrides_fs_url'
+# test_level_24 needs httpfs, which is optional
+%python_expand nosetests-%{$python_bin_suffix} -e 'test_level_(9|10|11|24)|test_handle_targets_sequence|test_overrides_fs_url'
+
+%post
+%python_install_alternative moban
+
+%postun
+%python_uninstall_alternative moban
 
 %files %{python_files}
 %{python_sitelib}/*
 %license LICENSE
 %doc README.rst CHANGELOG.rst
-%python3_only %{_bindir}/moban
+%python_alternative %{_bindir}/moban
 
 %changelog

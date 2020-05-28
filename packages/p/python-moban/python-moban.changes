@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 25 06:50:48 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Fri May 22 07:42:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.7.5
+  * #365: regression was introduced by v0.6.5. If you uses mobanfile 
+    as data configuration file, you are very likely to have this show 
+    stopper.
+  * suppress stdout message from deprecated pip install. but please 
+    do not use and migrate deprecated`requires` syntax.
+
+-------------------------------------------------------------------
 Mon Jan 20 15:16:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.7.0
