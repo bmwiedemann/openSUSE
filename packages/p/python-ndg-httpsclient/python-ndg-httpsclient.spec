@@ -1,7 +1,7 @@
 #
 # spec file for package python-ndg-httpsclient
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pyOpenSSL
 Requires:       python-pyasn1 >= 0.1.1
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,14 +49,21 @@ SSL peer.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/ndg_httpclient
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # tests require internet connection
+
+%post
+%python_install_alternative ndg_httpclient
+
+%postun
+%python_uninstall_alternative ndg_httpclient
 
 %files %{python_files}
 %doc README.md
 %license ndg/httpsclient/LICENSE
 %{python_sitelib}/*
-%python3_only %{_bindir}/ndg_httpclient
+%python_alternative %{_bindir}/ndg_httpclient
 
 %changelog
