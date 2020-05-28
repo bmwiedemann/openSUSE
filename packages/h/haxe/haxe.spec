@@ -19,7 +19,7 @@
 %global commit_hx3compat f1f18201e5c0479cb5adf5f6028788b37f37b730
 
 Name:           haxe
-Version:        4.1.0
+Version:        4.1.1
 Release:        0
 Summary:        Multiplatform programming language
 License:        GPL-2.0+ and MIT
@@ -31,9 +31,6 @@ Url:            https://haxe.org/
 Source0:        https://github.com/HaxeFoundation/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/HaxeFoundation/haxelib/archive/%{commit_haxelib}.tar.gz#/haxelib-%{commit_haxelib}.tar.gz
 Source2:        https://github.com/HaxeFoundation/hx3compat/archive/%{commit_hx3compat}.tar.gz#/hx3compat-%{commit_hx3compat}.tar.gz
-
-# quote command args in Makefile
-Patch0:         quote_command_args.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  help2man
