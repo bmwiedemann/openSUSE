@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Thu May 14 08:48:44 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 3.8.1
+  * Fix --output-file (regression in 3.8.0) (See also GitLab!427,
+    GitLab#637)
+- Update notes for 3.8.0
+   * Fix logical checks which report positions out of bounds (See also
+     GitLab!422, GitLab#635)
+   * Fix --exclude=.* accidentally matching . and .. (See also GitLab!424,
+     GitLab#632)
+   * Add deprecation message for vcs hooks (See also GitLab!420, GitLab#568)
+- Update notes for 3.8.0a2
+   * Fix type="str" optparse options (See also GitLab!419)
+- Update notes for 3.8.0a1
+  New Dependency Information
+  * Remove dependency on entrypoints and add dependency on importlib-metadata
+    (only for python<3.8) (See also GitLab!388, GitLab#569)
+  * Pyflakes has been updated to >= 2.2.0, < 2.3.0 (See also GitLab!417)
+  * pycodestyle has been updated to >= 2.6.0a1, < 2.7.0 (See also GitLab!418)
+  Features
+  * Add --extend-exclude option to add to --exclude without overwriting (See
+    also GitLab!315, GitLab#535)
+  * Move argument parsing from optparse to argparse (See also GitLab!341
+  * Group plugin options in --help (See also GitLab!342, GitLab#565)
+  * Remove parsing of verbose from configuration files as it was not
+    consistently applied (See also GitLab!360, GitLab#439)
+  * Remove parsing of output_file from configuration files as it was not
+    consistently applied (See also GitLab!361)
+  * Resolve configuration files relative to cwd instead of common prefix of
+    passed filenames. You may need to change flake8 subproject to cd subproject
+    && flake8 . (See also GitLab!363)
+  * Officially support python3.8 (See also GitLab!377)
+  * --disable-noqa now also disables # flake8: noqa (See also GitLab!380,
+    GitLab#590)
+  * Ensure that a missing file produces a E902 error (See also GitLab!404,
+    GitLab#600)
+  * # noqa comments now apply to all of the lines in an explicit \ continuation
+    or in a line continued by a multi-line string (See also GitLab!413, GitLab#375)
+  Bugs Fixed
+  * Fix --exclude=./t.py to only match t.py at the top level (See also
+    GitLab!311, GitLab#382)
+  * Fix --show-source when a file is indented with tabs (See also GitLab!339,
+    GitLab#563)
+  * Fix crash when --max-line-length is given a non-integer (See also
+    GitLab!341, GitLab#541)
+  * Prevent flip-flopping of indent_char causing extra E101 errors (See also
+    GitLab!357, pycodestyle#886)
+  * Only enable multiprocessing when the method is fork fixing issues on macos
+    with python3.8+ (See also GitLab!366, GitLab#587) (note: this fix also
+    landed in 3.7.9)
+  * noqa is now only handled by flake8 fixing specific-noqa. Plugins requesting
+    this parameter will always receive False (See also GitLab!331, GitLab#552)
+  * Fix duplicate loading of plugins when invoked via python -m flake8 (See also
+    GitLab!388)
+  * Fix early exit when --exit-zero and --diff are provided and the diff is
+    empty (See also GitLab!391)
+  * Consistently split lines when \f is present when reading from stdin
+    (See also GitLab!406, GitLab#270)
+  Deprecations
+  * python setup.py flake8 (setuptools integration) is now deprecated and will
+    be removed in a future version (See also GitLab!330, GitLab#544)
+  * type='string' (optparse) types are deprecated, use type=callable (argparse)
+    instead. Support for type='string' will be removed in a future version (See
+    also GitLab!341)
+  * %default in plugin option help text is deprecated, use %(default)s instead.
+    Support for %default will be removed in a future version (See also
+    GitLab!341)
+  * optparse-style action='callback' setting for options is deprecated,
+    use argparse action classes instead. This will be removed in a future
+    version (See also GitLab!341)
+- remove remove_mock_dependency.patch 
+- remove pyflakes-version.patch
+
+-------------------------------------------------------------------
 Mon May  4 20:02:18 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Skip failing test_all_pyflakes_messages_have_flake8_codes_assigned test

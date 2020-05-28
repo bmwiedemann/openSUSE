@@ -249,4 +249,41 @@
   the pyflakes in Factory now.</comment>
     <requestid>800170</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ba8e79ef8453e9ed385412f52c756c47</srcmd5>
+    <version>3.8.1</version>
+    <time>1590649568</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 3.8.1
+  * Fix --output-file (regression in 3.8.0) (See also GitLab!427,
+    GitLab#637)
+- Update notes for 3.8.0
+   * Fix logical checks which report positions out of bounds (See also
+     GitLab!422, GitLab#635)
+   * Fix --exclude=.* accidentally matching . and .. (See also GitLab!424,
+     GitLab#632)
+   * Add deprecation message for vcs hooks (See also GitLab!420, GitLab#568)
+- Update notes for 3.8.0a2
+   * Fix type=&quot;str&quot; optparse options (See also GitLab!419)
+- Update notes for 3.8.0a1
+  New Dependency Information
+  * Remove dependency on entrypoints and add dependency on importlib-metadata
+    (only for python&lt;3.8) (See also GitLab!388, GitLab#569)
+  * Pyflakes has been updated to &gt;= 2.2.0, &lt; 2.3.0 (See also GitLab!417)
+  * pycodestyle has been updated to &gt;= 2.6.0a1, &lt; 2.7.0 (See also GitLab!418)
+  Features
+  * Add --extend-exclude option to add to --exclude without overwriting (See
+    also GitLab!315, GitLab#535)
+  * Move argument parsing from optparse to argparse (See also GitLab!341
+  * Group plugin options in --help (See also GitLab!342, GitLab#565)
+  * Remove parsing of verbose from configuration files as it was not
+    consistently applied (See also GitLab!360, GitLab#439)
+  * Remove parsing of output_file from configuration files as it was not
+    consistently applied (See also GitLab!361)
+  * Resolve configuration files relative to cwd instead of common prefix of
+    passed filenames. You may need to change flake8 subproject to cd subproject
+    &amp;&amp; flake8 . (See also GitLab!363)
+  * Officially support python3.8 (See also GitLab!377)</comment>
+    <requestid>805760</requestid>
+  </revision>
 </revisionlist>

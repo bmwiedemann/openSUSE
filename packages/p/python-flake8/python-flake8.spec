@@ -19,32 +19,30 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-flake8
-Version:        3.7.9
+Version:        3.8.1
 Release:        0
 Summary:        Modular source code checker: pep8, pyflakes and co
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://gitlab.com/pycqa/flake8
 Source:         https://files.pythonhosted.org/packages/source/f/flake8/flake8-%{version}.tar.gz
-Patch0:         remove_mock_dependency.patch
-Patch1:         fix-mock-patch-with-python3.4.patch
-Patch2:         pyflakes-version.patch
+Patch0:         fix-mock-patch-with-python3.4.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-entrypoints >= 0.3
+Requires:       python-importlib-metadata
 Requires:       python-mccabe >= 0.6.0
-Requires:       python-pycodestyle >= 2.5.0
+Requires:       python-pycodestyle >= 2.6.0~a1
 Requires:       python-pyflakes >= 2.1.0
 Requires:       python-typing
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module entrypoints >= 0.3}
+BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module mccabe >= 0.6.0}
-BuildRequires:  %{python_module pycodestyle >= 2.5.0}
-BuildRequires:  %{python_module pyflakes >= 2.1.0}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pycodestyle >= 2.6.0~a1}
+BuildRequires:  %{python_module pyflakes >= 2.2.0}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing}
@@ -74,7 +72,6 @@ Flake8 runs all the tools by launching the single ``flake8`` script.
 
 %package -n %{name}-doc
 Summary:        Documentation files for %{name}
-Group:          Documentation/Other
 Recommends:     %{name} = %{version}
 
 %description -n %{name}-doc
@@ -101,8 +98,7 @@ This package provides documentation for %{name}.
 %python_uninstall_alternative flake8
 
 %check
-# gl#pycqa/flake8#633
-%pytest -k 'not test_all_pyflakes_messages_have_flake8_codes_assigned' tests
+%pytest tests
 
 %files %{python_files}
 %license LICENSE
