@@ -1,7 +1,7 @@
 #
 # spec file for package docker-bench-security
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ The Docker Bench for Security is a script that checks for dozens of common
 best-practices around deploying Docker containers in production.
 
 The tests are all automated, and implement the CIS Docker Benchmark.
+
 %prep
 %setup -q
 
@@ -47,6 +48,7 @@ The tests are all automated, and implement the CIS Docker Benchmark.
 sed -i \
 	-e 's|\./output_lib.sh|%{_libexecdir}/%{name}/output_lib.sh|' \
 	-e 's|\./helper_lib.sh|%{_libexecdir}/%{name}/helper_lib.sh|' \
+	-e 's|\./functions_lib.sh|%{_libexecdir}/%{name}/functions_lib.sh|' \
 	-e 's|for test in tests|for test in %{_libexecdir}/%{name}/tests|' \
 	-e 's|\./"$test"|"$test"|' \
 	docker-bench-security.sh
