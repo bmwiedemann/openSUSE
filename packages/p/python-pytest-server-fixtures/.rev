@@ -15,4 +15,12 @@
     <comment>- use pytest macro</comment>
     <requestid>759799</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>85a455bc1a10343d8b8d3d5a07ad32a2</srcmd5>
+    <version>1.7.0</version>
+    <time>1590780244</time>
+    <user>maxlin_factory</user>
+    <comment>- Remove pytest restriction as it seems to work with pytest5</comment>
+    <requestid>810171</requestid>
+  </revision>
 </revisionlist>

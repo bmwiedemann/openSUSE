@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-server-fixtures
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ Requires:       lsof
 Requires:       net-tools-deprecated
 Requires:       python-future
 Requires:       python-psutil
-Requires:       python-pytest < 5
+Requires:       python-pytest
 Requires:       python-pytest-fixture-config
 Requires:       python-pytest-shutil
 Requires:       python-requests
@@ -65,9 +65,9 @@ BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module psycopg2}
 BuildRequires:  %{python_module pymongo >= 3.6.0}
-BuildRequires:  %{python_module pytest < 5}
 BuildRequires:  %{python_module pytest-fixture-config}
 BuildRequires:  %{python_module pytest-shutil}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-jenkins}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module requests}
