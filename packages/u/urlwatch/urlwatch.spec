@@ -17,14 +17,14 @@
 
 
 Name:           urlwatch
-Version:        2.17
+Version:        2.18
 Release:        0
 Summary:        A tool for monitoring webpages for updates
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://thp.io/2008/urlwatch/
 Source0:        https://github.com/thp/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  python3-devel
+BuildRequires:  python3-devel >= 3.5
 BuildRequires:  python3-setuptools
 Requires:       python3-PyYAML
 Requires:       python3-appdirs
