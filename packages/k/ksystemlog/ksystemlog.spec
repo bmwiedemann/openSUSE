@@ -28,6 +28,8 @@ License:        GPL-2.0-only
 Group:          System/Monitoring
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch:          Disconnect-QtabWidget_currentChanged-signal-on-window-close.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  oxygen5-icon-theme-large
 BuildRequires:  pkgconfig
@@ -57,6 +59,7 @@ want to quickly see problems occurring on their server.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
   %cmake_kf5 -d build

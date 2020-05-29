@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 27 09:56:54 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add patch to fix a possible crash when closing the window:
+  (boo#1164633, kde#409375)
+  * Disconnect-QtabWidget_currentChanged-signal-on-window-close.patch
+
+-------------------------------------------------------------------
 Fri May 15 15:41:58 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.1
