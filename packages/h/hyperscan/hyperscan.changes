@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon May 25 17:22:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.3.0
+  * Improvement on literal matcher "Teddy" performance, including
+    support for Intel(R) AVX-512 Vector Byte Manipulation
+    Instructions (Intel(R) AVX-512 VBMI).
+  * Improvement on single-byte/two-byte matching performance,
+    including support for Intel(R) Advanced Vector Extensions 512
+    (Intel(R) AVX-512).
+  * hsbench: add hyphen support for -T option.
+  * tools/fuzz: add test scripts for synthetic pattern generation.
+  * Bugfix for acceleration path analysis in LimEx NFA.
+  * Bugfix for duplicate matches for Small-write engine.
+  * Bugfix for UTF8 checking problem for hscollider.
+  * Bugfix for issue #205: avoid crash of hs_compile_lit_multi()
+    with clang and ASAN.
+  * Bugfix for issue #217: fix cmake parsing issue of CPU arch for
+    non-English locale.
+  * Bugfix for issue #228: avoid undefined behavior when calling
+    close() after fdopendir() in loadExpressions().
+  * Bugfix for issue #239: fix hyperscan compile issue under gcc-10
+  * Add VLAN packets processing capability in pcap analysis script.
+  * Avoid extra convert instruction for "Noodle".
+  * Add Hyperscan version marcro in hs.h.
+
+-------------------------------------------------------------------
 Wed Oct 30 09:57:00 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.2.1
