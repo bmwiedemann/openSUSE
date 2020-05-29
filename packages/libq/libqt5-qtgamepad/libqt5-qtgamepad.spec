@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtgamepad
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,17 @@
 %define qt5_snapshot 0
 %define libname libQt5Gamepad5
 %define base_name libqt5
-%define real_version 5.14.1
-%define so_version 5.14.1
-%define tar_version qtgamepad-everywhere-src-5.14.1
+%define real_version 5.15.0
+%define so_version 5.15.0
+%define tar_version qtgamepad-everywhere-src-5.15.0
 Name:           libqt5-qtgamepad
-Version:        5.14.1
+Version:        5.15.0
 Release:        0
 Summary:        Qt 5 Gamepad Library
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-or-later
 Group:          Development/Libraries/X11
 URL:            https://qt.io
-Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  libQt5Core-private-headers-devel >= %{version}
 BuildRequires:  libQt5PlatformSupport-devel-static >= %{version}
