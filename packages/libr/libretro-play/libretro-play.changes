@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu May 28 12:23:46 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200525:
+  * fix FreeBSD builds
+  * Add SSE & SSE2 compiler flags to Unix builds.
+  * improve VU MOVE/RNEXT instruction
+  * Disable resume/pause menu when executable is not loaded.
+  * Add few test cases in MinMax test.
+  * Clamp vectors before comparing in MINI/MAX.
+  * Implement CIoman::Mkdir
+  * A sample is 16-bits.
+  * Implement ADDAq.
+  * Prevent ITOF0 & ITOF12 from clobbering VF0.
+  * Add constraint to CheckAsync matcher.
+  * Handle SPU IRQs in CORE0 output area.
+  * Updated README for Ubuntu builds
+  * Update CodeGen submodule.
+  * Update CodeGen submodule.
+  * Update CodeGen submodule.
+  * Use LoadFromRefIdx in ILW.
+  * Update CodeGen submodule.
+  * Use StoreAtRefIdx in ISW.
+  * Use StoreAtRefIdx4 in QueueInFlagPipeline.
+  * Update Dependencies submodule.
+  * update submodules
+  * silence nlohmann_json warning
+  * silence warning
+  * travis linux parallel build
+  * LibMc2: Warn if optional functions are not found.
+  * Make sure we can't ChDir out of the memory card's path.
+  * Add quotes around paths.
+  * Fix symbol error when building libretro core with gcc-8
+
+-------------------------------------------------------------------
 Tue May 05 06:32:46 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200503:

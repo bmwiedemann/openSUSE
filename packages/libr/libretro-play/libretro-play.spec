@@ -17,7 +17,7 @@
 
 
 Name:           libretro-play
-Version:        0~git20200503
+Version:        0~git20200525
 Release:        0
 Summary:        Play! libretro core for PlayStation 2 emulation
 License:        MIT
