@@ -252,4 +252,12 @@
     <comment>- Increase PowerPC disk size in _constraints to avoid build failure</comment>
     <requestid>769484</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f2ba91526bbc0f650c4c1fcdd75f1ef3</srcmd5>
+    <version>5.15.0</version>
+    <time>1590779632</time>
+    <user>maxlin_factory</user>
+    <comment>Qt 5.15.0</comment>
+    <requestid>809286</requestid>
+  </revision>
 </revisionlist>

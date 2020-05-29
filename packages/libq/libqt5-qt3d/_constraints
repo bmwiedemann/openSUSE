@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <constraints>
-  <overwrite>
-    <conditions>
-      <arch>ppc64</arch>
-      <arch>ppc64le</arch>
-    </conditions>
-    <hardware>
-      <disk>
-        <size unit="M">7000</size>
-      </disk>
-    </hardware>
-  </overwrite>
+  <hardware>
+    <disk>
+      <size unit="M">7000</size>
+    </disk>
+  </hardware>
 </constraints>

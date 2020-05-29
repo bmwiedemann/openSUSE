@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qt3d
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,11 @@
 %define qt5_snapshot 0
 %define libname libQt53DCore5
 %define base_name libqt5
-%define real_version 5.14.1
-%define so_version 5.14.1
-%define tar_version qt3d-everywhere-src-5.14.1
+%define real_version 5.15.0
+%define so_version 5.15.0
+%define tar_version qt3d-everywhere-src-5.15.0
 Name:           libqt5-qt3d
-Version:        5.14.1
+Version:        5.15.0
 Release:        0
 Summary:        Qt 5 3D Addon
 # Legal: some files are GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -31,7 +31,7 @@ Summary:        Qt 5 3D Addon
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  fdupes
 BuildRequires:  libQt5Bootstrap-devel-static >= %{version}
@@ -447,6 +447,8 @@ popd
 %dir %{_libqt5_libdir}/qt5/plugins/geometryloaders
 %{_libqt5_libdir}/qt5/plugins/geometryloaders/libdefaultgeometryloader.so
 %{_libqt5_libdir}/qt5/plugins/geometryloaders/libgltfgeometryloader.so
+%dir %{_libqt5_libdir}/qt5/plugins/renderers
+%{_libqt5_libdir}/qt5/plugins/renderers/libopenglrenderer.so
 
 %files -n libQt53DQuickInput5
 %defattr(-,root,root,755)
