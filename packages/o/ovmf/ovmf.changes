@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 21 03:36:17 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add ovmf-bsc1171643-workaround-outline-atomics.patch to disable
+  gcc10 outline-atomics in AArch64 (bsc#1171643)
+
+-------------------------------------------------------------------
 Mon Apr 20 06:11:25 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Build all non-native firmware files on x86_64 and aarch64 with

@@ -49,6 +49,7 @@ Patch3:         %{name}-pie.patch
 Patch4:         %{name}-disable-ia32-firmware-piepic.patch
 Patch5:         %{name}-set-fixed-enroll-time.patch
 Patch6:         %{name}-bsc1163927-fix-ping-and-ip6dxe.patch
+Patch7:         %{name}-bsc1171643-workaround-outline-atomics.patch
 Patch100:       openssl-fix-syntax-error.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bc
@@ -168,6 +169,9 @@ rm -rf $PKG_TO_REMOVE
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%if %{gcc_version} >= 10
+%patch7 -p1
+%endif
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
