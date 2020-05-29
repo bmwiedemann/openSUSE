@@ -1,4 +1,4 @@
-build (20200131) unstable; urgency=low
+build (20200520) unstable; urgency=low
 
   * Update to current git trunk
     - add sles11sp2 build config and adapt autodetection

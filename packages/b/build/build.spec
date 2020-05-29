@@ -18,17 +18,17 @@
 # needsbinariesforbuild
 
 
-%if 0%{?fedora} || 0%{?rhel}
-%define __pkg_name obs-build
-%else
+%if 0%{?suse_version}
 %define __pkg_name build
+%else
+%define __pkg_name obs-build
 %endif
 
 Name:           %{__pkg_name}
 Summary:        A Script to Build SUSE Linux RPMs
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Tools/Building
-Version:        20200131
+Version:        20200520
 Release:        0
 Source:         obs-build-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -47,12 +47,20 @@ BuildRequires:  binutils
 BuildRequires:  perl
 BuildRequires:  psmisc
 BuildRequires:  tar
+# For testcases
+BuildRequires:  perl(Date::Parse)
+BuildRequires:  perl(Test::Harness)
+BuildRequires:  perl(Test::More)
 %if 0%{?fedora}
 Requires:       perl-MD5
 Requires:       perl-TimeDate
+BuildRequires:  perl-TimeDate
 %endif
 Conflicts:      bsdtar < 2.5.5
-%if 0%{?suse_version} > 1000
+BuildRequires:  perl(Date::Parse)
+BuildRequires:  perl(Test::Harness)
+BuildRequires:  perl(Test::More)
+%if 0%{?suse_version} > 1000 || 0%{?centos_version} >= 800 || 0%{?rhel_version} >= 800 || 0%{?fedora_version} >= 21
 # None of them are actually required for core features.
 # Perl helper scripts use them.
 Recommends:     perl(Date::Language)
@@ -199,12 +207,16 @@ test -e baselibs_global.conf || exit 1
 
 %check
 for i in build build-* ; do bash -n $i || exit 1 ; done
+
+# run perl module unit tests
+LANG=C make test || exit 1
+
 if [ `whoami` != "root" ]; then
-  echo "WARNING: Not building as root, tests did not run!"
+  echo "WARNING: Not building as root, build test did not run!"
   exit 0
 fi
 if [ ! -f "%{buildroot}/usr/lib/build/configs/default.conf" ]; then
-  echo "WARNING: No default config, tests did not run!"
+  echo "WARNING: No default config, build test did not run!"
   exit 0
 fi
 # get back the default.conf link
@@ -213,6 +225,8 @@ cp -av %{buildroot}/usr/lib/build/configs/default.conf configs/
 export BUILD_IGNORE_2ND_STAGE=1
 # use our own build code
 export BUILD_DIR=$PWD
+
+# simple chroot build test
 cd test
 # target is autodetected
 %if 0%{?sles_version}
