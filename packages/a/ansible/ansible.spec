@@ -229,9 +229,9 @@ URL:            https://ansible.com/
 Source:         https://releases.ansible.com/ansible/ansible-%{version}.tar.gz
 Source1:        https://releases.ansible.com/ansible/ansible-%{version}.tar.gz.sha
 Source99:       ansible-rpmlintrc
-# PATCH-FIX-UPSTREAM CVE-2020-1733_avoid_mkdir_p.patch bsc#1171823 mcepl@suse.com
+# PATCH-FIX-UPSTREAM CVE-2020-1744_avoid_mkdir_p.patch bsc#1171823 mcepl@suse.com
 # gh#ansible/ansible#67791 avoid race condition and insecure directory creation
-Patch0:         CVE-2020-1733_avoid_mkdir_p.patch
+Patch0:         CVE-2020-1744_avoid_mkdir_p.patch
 BuildArch:      noarch
 # extented documentation
 %if 0%{?with_docs}
