@@ -17,7 +17,7 @@
 
 
 Name:           tilda
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        A Gtk based drop down terminal for Linux and Unix
 License:        GPL-2.0-or-later
