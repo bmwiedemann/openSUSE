@@ -588,4 +588,12 @@
   of https://github.com/v8/v8/commit/3f8dc4b2e5baf77b463334c769af85b79d8c1463</comment>
     <requestid>797111</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>960e8bd52f42eaf7b30729f32befdd0a</srcmd5>
+    <version>5.15.0</version>
+    <time>1590779737</time>
+    <user>maxlin_factory</user>
+    <comment>Qt 5.15.0</comment>
+    <requestid>809430</requestid>
+  </revision>
 </revisionlist>

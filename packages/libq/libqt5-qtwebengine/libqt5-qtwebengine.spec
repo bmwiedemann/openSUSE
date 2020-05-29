@@ -20,49 +20,35 @@
 %define qt5_snapshot 0
 
 %if %{?suse_version} > 1500 || 0%{?sle_version} > 150100
+%bcond_without system_harfbuzz
+%bcond_without system_icu
+%else
+%bcond_with system_harfbuzz
+%bcond_with system_icu
+%endif
+%if %{?suse_version} > 1500 || 0%{?sle_version} > 150200
 %bcond_without system_vpx
 %else
 %bcond_with system_vpx
 %endif
-%if 0%{?suse_version} > 1500
-# Needs ICU >= 63
-%bcond_without system_icu
-%else
-%bcond_with system_icu
-%endif
-%if %{?suse_version} >= 1330 || (0%{?is_opensuse} && 0%{?sle_version} >= 120200)
 %bcond_without system_ffmpeg
-%else
-%bcond_with system_ffmpeg
-%endif
-%if %{?suse_version} >= 1320 || (0%{?suse_version} == 1315 && 0%{?sle_version} >= 120200)
 %bcond_without system_minizip
-%else
-%bcond_with system_minizip
-%endif
-# Not even in Tumbleweed as of 2019-03-22
-%bcond_with system_harfbuzz
-# This is just overall condition to contain everything we can't provide on SLE12
-%if 0%{?suse_version} >= 1320 || 0%{?is_opensuse}
-%bcond_with sle_bundles
-%else
-%bcond_without sle_bundles
-%endif
+
 # spellchecking dictionary directory
 %global _qtwebengine_dictionaries_dir %{_libqt5_datadir}/qtwebengine_dictionaries
 
 Name:           libqt5-qtwebengine
-Version:        5.14.1
+Version:        5.15.0
 Release:        0
 Summary:        Qt 5 WebEngine Library
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.14.1
-%define so_version 5.14.1
-%define tar_version qtwebengine-everywhere-src-5.14.1
-Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
+%define real_version 5.15.0
+%define so_version 5.15.0
+%define tar_version qtwebengine-everywhere-src-5.15.0
+Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM armv6-ffmpeg-no-thumb.patch - Fix ffmpeg configuration for armv6
 Patch1:         armv6-ffmpeg-no-thumb.patch
@@ -70,12 +56,6 @@ Patch1:         armv6-ffmpeg-no-thumb.patch
 Patch2:         disable-gpu-when-using-nouveau-boo-1005323.diff
 # PATCH-FIX-UPSTREAM 0001-fix-build-after-y2038-changes-in-glibc.patch
 Patch3:         0001-fix-build-after-y2038-changes-in-glibc.patch
-# PATCH-FIX-UPSTREAM https://codereview.qt-project.org/c/qt/qtwebengine/+/290321
-Patch4:         QTBUG-81574.patch
-# PATCH-FIX-UPSTREAM https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/291216
-Patch5:         QTBUG-82186.patch
-# PATCH-FIX-OPENSUSE
-Patch6:         some-more-includes-gcc10.patch
 Patch7:         fix1163766.patch
 # PATCH-FIX-UPSTREAM https://chromium-review.googlesource.com/c/v8/v8/+/2136489
 Patch8:         icu-v67.patch
@@ -94,6 +74,8 @@ BuildRequires:  git-core
 BuildRequires:  krb5
 BuildRequires:  krb5-devel
 BuildRequires:  libQt5QuickControls2-devel
+# For building pdf exmples...
+BuildRequires:  libqt5-qtsvg-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libicu-devel
@@ -180,17 +162,16 @@ BuildRequires:  pkgconfig(xscrnsaver)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib)
-%if !%{with sle_bundles}
 BuildRequires:  yasm-devel
-%endif
 %if %{with system_minizip}
 BuildRequires:  pkgconfig(minizip)
 %endif
 %if %{with system_harfbuzz}
-BuildRequires:  pkgconfig(harfbuzz) >= 2.0.0
+BuildRequires:  pkgconfig(harfbuzz) >= 2.2.0
 %endif
 %if %{with system_icu}
-BuildRequires:  pkgconfig(icu-i18n) >= 63.0
+BuildRequires:  pkgconfig(icu-uc) >= 64.0
+BuildRequires:  pkgconfig(icu-i18n) >= 64.0
 %endif
 %if %{with system_vpx}
 BuildRequires:  pkgconfig(vpx) >= 1.8.0
@@ -245,13 +226,64 @@ API guarantees. The packages that build against these have to require
 the exact Qt version.
 
 %package examples
-Summary:        Qt5 location examples
+Summary:        Qt5 WebEngine examples
 Group:          Development/Libraries/X11
 Requires:       libqt5-qtquickcontrols2
 Recommends:     %{name}-devel
 
 %description examples
 Examples for the libqt5-qtwebengine module.
+
+%package -n libQt5Pdf5
+Summary:        Qt5 PDF library
+Group:          Development/Libraries/X11
+
+%description -n libQt5Pdf5
+Main library of the Qt PDF module.
+
+%package -n libQt5PdfWidgets5
+Summary:        Qt5 PDF library for Qt Widgets
+Group:          Development/Libraries/X11
+
+%description -n libQt5PdfWidgets5
+Library of the Qt PDF module with support for Qt Widgets.
+
+%package -n libqt5-qtpdf-imports
+Summary:        Qt5 PDF module for QML
+Group:          Development/Libraries/X11
+
+%description -n libqt5-qtpdf-imports
+Qt Quick module for the Qt PDF library.
+
+%package -n libqt5-qtpdf-devel
+Summary:        Development files for the Qt5 PDF library
+Group:          Development/Libraries/X11
+Requires:       libQt5Pdf5 = %{version}
+Requires:       libQt5PdfWidgets5 = %{version}
+
+%description -n libqt5-qtpdf-devel
+You need this package if you want to compile programs with Qt PDF.
+
+%package -n libqt5-qtpdf-private-headers-devel
+Summary:        Non-ABI stable experimental API for the Qt5 PDF library
+Group:          Development/Libraries/C and C++
+BuildArch:      noarch
+Requires:       libqt5-qtpdf-devel = %{version}
+%requires_ge    libqt5-qtbase-private-headers-devel
+
+%description -n libqt5-qtpdf-private-headers-devel
+This package provides private headers of libqt5-qtpdf that are normally
+not used by application development and that do not have any ABI or
+API guarantees. The packages that build against these have to require
+the exact Qt version.
+
+%package -n libqt5-qtpdf-examples
+Summary:        Qt5 PDF examples
+Group:          Development/Libraries/X11
+Recommends:     libqt5-qtpdf-devel
+
+%description -n libqt5-qtpdf-examples
+Examples for the libqt5-qtpdf module.
 
 %prep
 %setup -q -n %{tar_version}
@@ -266,16 +298,6 @@ sed -i -e '/toolprefix = /d' -e 's/\${toolprefix}//g' \
 %if %qt5_snapshot
 #force the configure script to generate the forwarding headers (it checks whether .git directory exists)
 mkdir .git
-%endif
-
-%if 0%{?suse_version} < 1330
-# WE checks the version of GCC qtbase was built with, not the version it's building with.
-# ARGH!
-echo "QT_GCC_MAJOR_VERSION = 7" > qtwebengine_new.pro
-echo "QT_GCC_MINOR_VERSION = 2" >> qtwebengine_new.pro
-echo "QT_CONFIG += c++14" >> qtwebengine_new.pro
-cat qtwebengine.pro >> qtwebengine_new.pro
-mv qtwebengine{_new,}.pro
 %endif
 
 %ifnarch x86_64
@@ -311,11 +333,6 @@ export RPM_OPT_FLAGS="${RPM_OPT_FLAGS} -Wno-return-type"
 # processes instead of its defaults.
 export NINJAFLAGS="%{_smp_mflags}"
 
-%if 0%{?suse_version} < 1330
-    export CC=gcc-7
-    export CXX=g++-7
-%endif
-
 make %{_smp_mflags} VERBOSE=1
 
 %install
@@ -341,8 +358,11 @@ sed -i '/find_package/!b;n;s/'%{so_version}/$(rpm -q --qf %%{version} libQt5Core
 mkdir -p %{buildroot}%{_qtwebengine_dictionaries_dir}
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
+%post -n libQt5Pdf5 -p /sbin/ldconfig
+%postun -n libQt5Pdf5 -p /sbin/ldconfig
+%post -n libQt5PdfWidgets5 -p /sbin/ldconfig
+%postun -n libQt5PdfWidgets5 -p /sbin/ldconfig
 
 %if 0%{?suse_version} >= 1500
 %filetriggerin -- %{_datadir}/hunspell
@@ -358,36 +378,86 @@ done
 %endif
 
 %files
-%defattr(-,root,root,755)
 %license LICENSE.*
-%{_libqt5_libdir}/libQt*Web*.so.*
-%{_datadir}/qt5/
-%dir %{_libqt5_libexecdir}
+%{_libqt5_libdir}/libQt5WebEngine.so.*
+%{_libqt5_libdir}/libQt5WebEngineCore.so.*
+%{_libqt5_libdir}/libQt5WebEngineWidgets.so.*
+%dir %{_datadir}/qt5/
+%dir %{_datadir}/qt5/translations/
+%{_datadir}/qt5/translations/qtwebengine_locales/
+%dir %{_datadir}/qt5/resources/
+%{_datadir}/qt5/resources/qtwebengine_*
+%if %{without system_icu}
+%{_datadir}/qt5/resources/icudtl.dat
+%endif
 %dir %{_qtwebengine_dictionaries_dir}
+%dir %{_libqt5_libexecdir}
 %{_libqt5_libexecdir}/QtWebEngineProcess
 %{_libqt5_archdatadir}/qml/QtWebEngine/
-%{_libqt5_plugindir}/designer/
 %{_libqt5_bindir}/qwebengine_convert_dict
 
 %files private-headers-devel
-%defattr(-,root,root,755)
 %license LICENSE.*
-%{_libqt5_includedir}/*/%{so_version}
+%{_libqt5_includedir}/QtWebEngine*/%{so_version}
 
 %files devel
-%defattr(-,root,root,755)
-%license LICENSE.*
-%exclude %{_libqt5_includedir}/*/%{so_version}
-%{_libqt5_includedir}/*/
-%{_libqt5_libdir}/cmake/Qt5*/
-%{_libqt5_libdir}/libQt*Web*.so
-%{_libqt5_libdir}/libQt*Web*.prl
-%{_libqt5_libdir}/qt5/mkspecs/modules/qt_lib_*.pri
-%{_libqt5_libdir}/pkgconfig/Qt*Web*.pc
+%exclude %{_libqt5_includedir}/QtWebEngine*/%{so_version}
+%{_libqt5_includedir}/QtWebEngine*/
+%{_libqt5_libdir}/libQt5WebEngine*.so
+%{_libqt5_libdir}/libQt5WebEngine*.prl
+%{_libqt5_libdir}/pkgconfig/Qt5WebEngine*.pc
+%{_libqt5_libdir}/qt5/mkspecs/modules/qt_lib_webengine*.pri
+%dir %{_libqt5_libdir}/cmake/Qt5Designer/
+%{_libqt5_libdir}/cmake/Qt5Designer/Qt5Designer_QWebEngineViewPlugin.cmake
+%dir %{_libqt5_plugindir}/designer/
+%{_libqt5_plugindir}/designer/libqwebengineview.so
+%{_libqt5_libdir}/cmake/Qt5WebEngine*/
 
 %files examples
-%defattr(-,root,root,755)
 %license LICENSE.*
-%{_libqt5_examplesdir}/
+%dir %{_libqt5_examplesdir}
+%{_libqt5_examplesdir}/webengine*/
+
+%files -n libQt5Pdf5
+%license LICENSE.*
+%{_libqt5_libdir}/libQt5Pdf.so.*
+%{_libqt5_archdatadir}/plugins/imageformats/libqpdf.so
+# Not quite sure what this would be used by
+%dir %{_libqt5_libdir}/cmake/
+%dir %{_libqt5_libdir}/cmake/Qt5Gui/
+%{_libqt5_libdir}/cmake/Qt5Gui/Qt5Gui_QPdfPlugin.cmake
+
+%files -n libQt5PdfWidgets5
+%license LICENSE.*
+%{_libqt5_libdir}/libQt5PdfWidgets.so.*
+
+%files -n libqt5-qtpdf-imports
+%license LICENSE.*
+%{_libqt5_archdatadir}/qml/QtQuick/Pdf/
+
+%files -n libqt5-qtpdf-private-headers-devel
+%license LICENSE.*
+%{_libqt5_includedir}/QtPdf/%{so_version}
+%{_libqt5_includedir}/QtPdfWidgets/%{so_version}
+
+%files -n libqt5-qtpdf-devel
+%license LICENSE.*
+%exclude %{_libqt5_includedir}/QtPdf*/%{so_version}
+%{_libqt5_includedir}/QtPdf/
+%{_libqt5_includedir}/QtPdfWidgets/
+%{_libqt5_libdir}/cmake/Qt5Pdf/
+%{_libqt5_libdir}/cmake/Qt5PdfWidgets/
+%{_libqt5_libdir}/libQt5Pdf.so
+%{_libqt5_libdir}/libQt5PdfWidgets.so
+%{_libqt5_libdir}/libQt5Pdf.prl
+%{_libqt5_libdir}/libQt5PdfWidgets.prl
+%{_libqt5_libdir}/qt5/mkspecs/modules/qt_lib_pdf*.pri
+%{_libqt5_libdir}/pkgconfig/Qt5Pdf.pc
+%{_libqt5_libdir}/pkgconfig/Qt5PdfWidgets.pc
+
+%files -n libqt5-qtpdf-examples
+%license LICENSE.*
+%dir %{_libqt5_examplesdir}
+%{_libqt5_examplesdir}/pdf*/
 
 %changelog
