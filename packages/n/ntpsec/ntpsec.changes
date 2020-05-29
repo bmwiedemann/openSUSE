@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May 29 07:25:07 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.1.9. See the NEWS.adoc file for the full list
+  of changes.
+  * Correctly parse ntpq :config output on Python 3 and check
+    return MACs.
+  * Add AES and other algorithm support to ntpq and ntpdig,
+    from OpenSSL.
+  * Remove support for NetInfo.
+  * The default restrictions now start with noquery and limited
+    to reduce the opportunities for being used for DDoS-ing.
+  * NTS client now requires ALPN on TLSv1.3.
+  * asciidoctor (1.5.8 or newer) is now supported and is the
+    preferred AsciiDoc processor.
+  
+-------------------------------------------------------------------
 Mon Feb 17 08:13:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.1.8:

@@ -18,7 +18,7 @@
 
 
 Name:           ntpsec
-Version:        1.1.8
+Version:        1.1.9
 Release:        0
 Summary:        Improved implementation of Network Time Protocol
 License:        BSD-2-Clause AND NTP AND BSD-3-Clause AND MIT
