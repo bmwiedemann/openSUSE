@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qttranslations
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,17 @@
 
 %define qt5_snapshot 0
 %define base_name libqt5
-%define real_version 5.14.1
-%define so_version 5.14.1
-%define tar_version qttranslations-everywhere-src-5.14.1
+%define real_version 5.15.0
+%define so_version 5.15.0
+%define tar_version qttranslations-everywhere-src-5.15.0
 Name:           libqt5-qttranslations
-Version:        5.14.1
+Version:        5.15.0
 Release:        0
 Summary:        Qt 5 translations
 License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 BuildRequires:  libqt5-qttools-devel >= %{version}
 BuildRequires:  xz
 %if %{qt5_snapshot}
