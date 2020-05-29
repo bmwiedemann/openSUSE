@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">git@github.com:sahlberg/libiscsi.git</param>
-              <param name="changesrevision">e6bcdf5fdbf39729399c4f0914661ca1055107a1</param></service></servicedata>
+              <param name="changesrevision">e6bcdf5fdbf39729399c4f0914661ca1055107a1</param></service><service name="tar_scm">
+                <param name="url">https://github.com/sahlberg/libiscsi.git</param>
+              <param name="changesrevision">33c66f2c39a01b4e109270ffcc83e2e2daf73ecb</param></service></servicedata>

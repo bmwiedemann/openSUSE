@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 26 08:40:28 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.19.0+git.20200521:
+  * test-tool, compare and write: Reduce maximum number of blocks from 256 to 255
+  * test_compareandwrite_invalid_dataout_size: Simplify this test
+  * test-tool: Use asprintf() in sg_send_scsi_cmd()
+  * test-tool: Fix a comment in sg_send_scsi_cmd()
+  * test-tool: Split send_scsi_command()
+  * socket: fix rewrite cmdsn of immediate pdus
+  * iser: eliminate unnecessary memory allocations
+  * iser: use `login_resp_buf` until login is finished
+  * init: free iscsi->opaque before check mallocs/frees counter
+  * reconnect: collect mallocs/frees of the previous reconnection
+
+-------------------------------------------------------------------
 Mon Apr 27 19:24:44 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Enable -fcommon in order to fix boo#1160276.

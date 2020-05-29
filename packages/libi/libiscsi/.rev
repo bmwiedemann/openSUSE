@@ -126,4 +126,22 @@
     <comment></comment>
     <requestid>798446</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>79d070c1ccc2e44fbca159e5670fa9e1</srcmd5>
+    <version>1.19.0+git.20200521</version>
+    <time>1590779617</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.19.0+git.20200521:
+  * test-tool, compare and write: Reduce maximum number of blocks from 256 to 255
+  * test_compareandwrite_invalid_dataout_size: Simplify this test
+  * test-tool: Use asprintf() in sg_send_scsi_cmd()
+  * test-tool: Fix a comment in sg_send_scsi_cmd()
+  * test-tool: Split send_scsi_command()
+  * socket: fix rewrite cmdsn of immediate pdus
+  * iser: eliminate unnecessary memory allocations
+  * iser: use `login_resp_buf` until login is finished
+  * init: free iscsi-&gt;opaque before check mallocs/frees counter
+  * reconnect: collect mallocs/frees of the previous reconnection</comment>
+    <requestid>808956</requestid>
+  </revision>
 </revisionlist>
