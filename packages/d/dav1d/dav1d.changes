@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May 20 16:50:41 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to verison 0.7.0
+  * Faster refmv implementation gaining up to 12% speed while
+    -25% of RAM (Single Thread)
+  * 10b/12b ARM64 optimizations are mostly complete:
+    + ipred (paeth, smooth, dc, pal, filter, cfl)
+    + itxfm (only 10b)
+  * AVX2/SSSE3 for non-4:2:0 film grain and for mc.resize
+  * AVX2 for cfl4:4:4
+  * AVX-512 CDEF filter
+  * ARM64 8b improvements for cfl_ac and itxfm
+  * ARM64 implementation for emu_edge in 8b/10b/12b
+  * ARM32 implementation for emu_edge in 8b
+  * Improvements on the dav1dplay utility player to support 10
+    bit, non-4:2:0 pixel formats and film grain on the GPU
+
+-------------------------------------------------------------------
 Fri Mar  6 07:20:04 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.6.0
