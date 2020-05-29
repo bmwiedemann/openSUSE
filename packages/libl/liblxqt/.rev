@@ -269,4 +269,16 @@
     <comment></comment>
     <requestid>798541</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>166bb7bd49e3e45432a2f1b47711ee0d</srcmd5>
+    <version>0.15.1</version>
+    <time>1590780239</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.15.1:
+  * Fix a crash on closing screen saver error message.
+  * Let Qt handle the positions of dialogs (in that way, dialogs
+    are shown on the correct screen).
+  * Remove dead codes.</comment>
+    <requestid>810159</requestid>
+  </revision>
 </revisionlist>

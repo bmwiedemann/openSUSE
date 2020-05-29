@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 29 09:06:36 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.1:
+  * Fix a crash on closing screen saver error message.
+  * Let Qt handle the positions of dialogs (in that way, dialogs
+    are shown on the correct screen).
+  * Remove dead codes.
+
+-------------------------------------------------------------------
 Mon Apr 27 10:44:11 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Changed liblxqt.keyring to tsujan's key

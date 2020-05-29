@@ -1,7 +1,7 @@
 #
 # spec file for package liblxqt
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           liblxqt
-Version:        0.15.0
+Version:        0.15.1
 Release:        0
 Summary:        Core utility library for LXQt
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.lxqt.org
+URL:            http://www.lxqt.org
 Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
