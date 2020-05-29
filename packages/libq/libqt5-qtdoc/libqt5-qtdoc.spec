@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtdoc
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 # nodebuginfo
 
 
-%define real_version 5.14.1
-%define tar_version qt-everywhere-src-5.14.1
+%define real_version 5.15.0
+%define tar_version qt-everywhere-src-5.15.0
 Name:           libqt5-qtdoc
-Version:        5.14.1
+Version:        5.15.0
 Release:        0
 Summary:        Qt 5 API Documentation
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
 Group:          Documentation/Other
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/single/%{tar_version}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/single/%{tar_version}.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch101:       qtdeclarative-switch-to-python3.patch
 # Breaks make_jobs
