@@ -17,7 +17,7 @@
 
 
 Name:           Play
-Version:        0~git20200503
+Version:        0~git20200525
 Release:        0
 Summary:        Play! - PlayStation 2 Emulator
 License:        MIT
