@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtlocation
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,18 @@
 %define qt5_snapshot 0
 %define libname libQt5Positioning5
 %define base_name libqt5
-%define real_version 5.14.1
-%define so_version 5.14.1
-%define tar_version qtlocation-everywhere-src-5.14.1
+%define real_version 5.15.0
+%define so_version 5.15.0
+%define tar_version qtlocation-everywhere-src-5.15.0
 Name:           libqt5-qtlocation
-Version:        5.14.1
+Version:        5.15.0
 Release:        0
 Summary:        Qt 5 Location Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-build-with-GCC10.patch
 BuildRequires:  fdupes
 BuildRequires:  libicu-devel
 BuildRequires:  libqt5-qtbase-private-headers-devel >= %{version}
@@ -125,7 +123,6 @@ Examples for libqt5-qtlocation module.
 
 %prep
 %setup -q -n qtlocation-everywhere-src-%{real_version}
-%patch0 -p1
 
 %build
 %if %{qt5_snapshot}

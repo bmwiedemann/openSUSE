@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue May 26 10:09:06 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 5.15.0:
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed May 20 16:22:36 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 5.15.0-rc2:
+  * No changelog available
+  * Removed 0001-Fix-build-with-GCC10.patch: contained in upstream
+
+-------------------------------------------------------------------
+Wed May  6 11:37:33 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-rc:
+  * New bugfix release
+  * For the changes between 5.14.2 and 5.15.0 please see:
+    http://code.qt.io/cgit/qt/qtlocation.git/plain/dist/changes-5.15.0/?h=5.15.0
+
+-------------------------------------------------------------------
+Fri Apr 24 07:11:19 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta4:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Apr 14 06:47:35 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta3:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
 Mon Mar 30 15:42:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix the build with GCC10 (boo#1158510):
@@ -6,6 +41,28 @@ Mon Mar 30 15:42:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 - Use -ffat-lto-objects (boo#1158510)
 - Drop obsolete conditions
 - Reorder the spec file.
+
+-------------------------------------------------------------------
+Tue Mar 24 12:13:44 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta2:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Fri Feb 28 09:58:58 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta1:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Feb 19 10:16:34 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-alpha:
+  * New feature release
+  * For more details please see:
+    https://wiki.qt.io/New_Features_in_Qt_5.15
 
 -------------------------------------------------------------------
 Mon Jan 27 13:14:23 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
