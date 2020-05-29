@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtscript
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,11 @@
 %define qt5_snapshot 0
 %define libname libQt5Script5
 %define base_name libqt5
-%define real_version 5.14.1
-%define so_version 5.14.1
-%define tar_version qtscript-everywhere-src-5.14.1
+%define real_version 5.15.0
+%define so_version 5.15.0
+%define tar_version qtscript-everywhere-src-5.15.0
 Name:           libqt5-qtscript
-Version:        5.14.1
+Version:        5.15.0
 Release:        0
 Summary:        Qt 5 Script library
 # Legal:
@@ -32,7 +32,7 @@ Summary:        Qt 5 Script library
 License:        (LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-or-later) AND LGPL-2.0-or-later AND LGPL-2.1-only
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM libqt5-qtscript-s390-support.patch -- adds s390, taken from webkit upstream
 Patch1:         libqt5-qtscript-s390-support.patch
