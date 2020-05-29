@@ -395,4 +395,12 @@ This is a less intrusive change than the original https://build.opensuse.org/req
     <comment></comment>
     <requestid>801823</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>eb0385d7f332239e0e9febd0573c8e0f</srcmd5>
+    <version>2.1.1</version>
+    <time>1590779604</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808914</requestid>
+  </revision>
 </revisionlist>

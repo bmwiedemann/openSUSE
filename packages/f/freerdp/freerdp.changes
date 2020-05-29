@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed May 20 15:14:52 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Updated to release 2.1.1
+  * CVE-2020-13396: GHSL-2020-100 OOB Read in ntlm_read_ChallengeMessage
+  * CVE-2020-13397: GHSL-2020-101 OOB Read in security_fips_decrypt due to uninitialized value
+  * CVE-2020-13398: GHSL-2020-102 OOB Write in crypto_rsa_common
+  * Enforce synchronous legacy RDP encryption count (#6156)
+  * Fixed some leaks and crashes missed in 2.1.0
+  * Removed dynamic channel listener limits
+  * Lots of resource cleanup fixes (clang sanitizers)
+  * A couple of performance improvements
+  * Various small annoyances eliminated (typos, prefilled username for windows client, ...)
+
+- Removed freerdp-bug-6175.patch and freerdp-bug-6207.patch because included in upstream
+
+-------------------------------------------------------------------
+Wed May 20 12:34:27 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Added freerdp-bug-6205.patch to fix reading newline on certificate accept gh#FreeRDP/FreeRDP#6205
+- Added freerdp-bug-6175.patch to fix Certificate Checking Recently Broke gh#FreeRDP/FreeRDP#6148
+- Added freerdp-bug-6207.patch to fix Abort on first possible certificate validation error gh#FreeRDP/FreeRDP#6207
+
+-------------------------------------------------------------------
 Fri May  8 09:51:06 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated to release 2.1.0

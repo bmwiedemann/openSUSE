@@ -27,13 +27,15 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           freerdp
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Remote Desktop Viewer Client
 License:        Apache-2.0
 Group:          Productivity/Networking/Other
 URL:            https://www.freerdp.com/
 Source0:        https://github.com/FreeRDP/FreeRDP/archive/%{version}.tar.gz#/FreeRDP-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM freerdp-bug-6205.patch gh#FreeRDP/FreeRDP#6205
+Patch0:         freerdp-bug-6205.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel
