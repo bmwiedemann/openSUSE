@@ -21,4 +21,12 @@
 - Switch to multibuild and enable tests</comment>
     <requestid>779125</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2ea308ecbf1e3a191a30fcf59ab91806</srcmd5>
+    <version>1.1.0</version>
+    <time>1590780258</time>
+    <user>maxlin_factory</user>
+    <comment>- Do not run doc tests as they require old TF</comment>
+    <requestid>810154</requestid>
+  </revision>
 </revisionlist>

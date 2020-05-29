@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 29 09:00:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not run doc tests as they require old TF
+
+-------------------------------------------------------------------
 Tue Feb 25 15:01:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add python-keras as a recommend only to not create cycle

@@ -73,7 +73,7 @@ rm setup.cfg
 
 %check
 %if %{with test}
-%pytest
+%pytest -k 'not test_doc'
 %endif
 
 %if !%{with test}
