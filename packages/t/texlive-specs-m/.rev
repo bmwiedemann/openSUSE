@@ -430,4 +430,12 @@
     <comment>Enhance spec file generator to catch more required style files e.g. readarray.sty for verbatimbox.sty as reported in boo#1155752</comment>
     <requestid>745618</requestid>
   </revision>
+  <revision rev="42" vrev="45">
+    <srcmd5>c74baaa1150ee8ece6b21b8a318b62e5</srcmd5>
+    <version>unknown</version>
+    <time>1590779892</time>
+    <user>maxlin_factory</user>
+    <comment>Enhance spec file geneerator to find missing .so man page link for better dependency resolution</comment>
+    <requestid>806899</requestid>
+  </revision>
 </revisionlist>

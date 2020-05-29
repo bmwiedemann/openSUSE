@@ -1,12 +1,12 @@
 ---
  texmf-dist/web2c/fmtutil.cnf |   17 ++---
  texmf-dist/web2c/mktex.opt   |   39 +++++++++--
- texmf-dist/web2c/texmf.cnf   |  140 +++++++++++++++++++++++++++----------------
- 3 files changed, 127 insertions(+), 69 deletions(-)
+ texmf-dist/web2c/texmf.cnf   |  141 +++++++++++++++++++++++++++----------------
+ 3 files changed, 128 insertions(+), 69 deletions(-)
 
 --- texmf-dist/web2c/fmtutil.cnf
-+++ texmf-dist/web2c/fmtutil.cnf	2015-03-30 10:44:48.993518643 +0000
-@@ -47,10 +47,11 @@ amstex pdftex - -translate-file=cp227.tc
++++ texmf-dist/web2c/fmtutil.cnf	2020-04-20 16:19:39.729909034 +0000
+@@ -51,10 +51,11 @@ amstex pdftex - -translate-file=cp227.tc
  # from context:
  cont-en pdftex cont-usr.tex -8bit *cont-en.mkii
  cont-en xetex cont-usr.tex -8bit *cont-en.mkii
@@ -22,7 +22,7 @@
  #
  # from cslatex:
  cslatex pdftex - -etex cslatex.ini
-@@ -67,8 +68,8 @@ pdfcsplain luatex - -etex csplain.ini
+@@ -71,8 +72,8 @@ pdfcsplain xetex - -etex csplain.ini
  eplain pdftex language.dat -translate-file=cp227.tcx *eplain.ini
  #
  # from jadetex:
@@ -32,15 +32,15 @@
 +pdfjadetex pdftex language.dat -translate-file=cp227.tcx *pdfjadetex.ini
  #
  # from latex-bin:
- latex pdftex language.dat -translate-file=cp227.tcx *latex.ini
-@@ -133,5 +134,5 @@ xetex xetex language.def -etex xetex.ini
- xelatex xetex language.dat -etex xelatex.ini
+ dvilualatex luatex language.dat,language.dat.lua dvilualatex.ini
+@@ -156,5 +157,5 @@ xelatex xetex language.dat -etex xelatex
+ xetex xetex language.def -etex xetex.ini
  #
  # from xmltex:
--xmltex pdftex language.dat *xmltex.ini
 -pdfxmltex pdftex language.dat *pdfxmltex.ini
-+xmltex pdftex language.dat -translate-file=cp227.tcx *xmltex.ini
+-xmltex pdftex language.dat *xmltex.ini
 +pdfxmltex pdftex language.dat -translate-file=cp227.tcx *pdfxmltex.ini
++xmltex pdftex language.dat -translate-file=cp227.tcx *xmltex.ini
 --- texmf-dist/web2c/mktex.opt
 +++ texmf-dist/web2c/mktex.opt	2012-05-14 11:26:00.034911495 +0000
 @@ -38,10 +38,11 @@ if test "$DOSISH" = "no"; then SEP=':';
@@ -120,8 +120,8 @@
  # Cache values that may be useful for recursive calls.
  export MT_MKTEX_OPT MT_MKTEX_CNF 
 --- texmf-dist/web2c/texmf.cnf
-+++ texmf-dist/web2c/texmf.cnf	2019-05-29 06:12:28.489081219 +0000
-@@ -61,20 +61,20 @@
++++ texmf-dist/web2c/texmf.cnf	2020-03-26 11:28:55.266623482 +0000
+@@ -62,20 +62,20 @@
  TEXMFROOT = $SELFAUTOPARENT
  
  % The main tree of distributed packages and programs:
@@ -146,20 +146,20 @@
  
  % Per-user texmf tree(s) -- organized per the TDS, as usual.  To define
  % more than one per-user tree, set this to a list of directories in
-@@ -83,10 +83,10 @@ TEXMFSYSCONFIG = $TEXMFROOT/texmf-config
+@@ -84,10 +84,10 @@ TEXMFSYSCONFIG = $TEXMFROOT/texmf-config
  TEXMFHOME = ~/texmf
  
  % TEXMFVAR, where texconfig/updmap/fmtutil store cached runtime data.
--TEXMFVAR = ~/.texlive2019/texmf-var
+-TEXMFVAR = ~/.texlive2020/texmf-var
 +TEXMFVAR = ${TEXMFSYSVAR}
  
  % TEXMFCONFIG, where texconfig/updmap/fmtutil store configuration data.
--TEXMFCONFIG = ~/.texlive2019/texmf-config
+-TEXMFCONFIG = ~/.texlive2020/texmf-config
 +TEXMFCONFIG = ${TEXMFSYSCONFIG}
  
  % This is the value manipulated by tlmgr's auxtrees subcommand in the
  % root texmf.cnf. Kpathsea warns about a literally empty string for a
-@@ -107,7 +107,7 @@ TEXMFAUXTREES = {}
+@@ -108,7 +108,7 @@ TEXMFAUXTREES = {}
  % The odd-looking $TEXMFAUXTREES$TEXMF... construct is so that if no auxtree is
  % ever defined (the 99% common case), no extra elements will be added to
  % the search paths. tlmgr takes care to end any value with a trailing comma.
@@ -168,7 +168,7 @@
  
  % Where to look for, and where mktexlsr creates, ls-R files. By default,
  % this is all and only the !! elements of TEXMF, so that mktexlsr does not
-@@ -115,24 +115,23 @@ TEXMF = {$TEXMFAUXTREES$TEXMFCONFIG,$TEX
+@@ -116,24 +116,23 @@ TEXMF = {$TEXMFAUXTREES$TEXMFCONFIG,$TEX
  % present, it will be used, and the disk will not (usually) be searched,
  % regardless of !!.  Although in principle a directory listed here need
  % not contain an ls-R file, in practice they all should.
@@ -196,7 +196,7 @@
  
  % On some systems, there will be a system tree which contains all the font
  % files that may be created as well as the formats.  For example
-@@ -143,7 +142,8 @@ VARTEXFONTS = $TEXMFVAR/fonts
+@@ -144,7 +143,8 @@ VARTEXFONTS = $TEXMFVAR/fonts
  %
  % Remove $VARTEXFONTS from TEXMFDBS if the VARTEXFONTS directory is below
  % one of the TEXMF directories (avoids overlapping ls-R files).
@@ -206,7 +206,7 @@
  
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  % Usually you will not need to edit any of the following variables.
-@@ -151,7 +151,7 @@ VARTEXFONTS = $TEXMFVAR/fonts
+@@ -152,7 +152,7 @@ VARTEXFONTS = $TEXMFVAR/fonts
  
  % WEB2C is for Web2C specific files.  The current directory may not be
  % a good place to look for them.
@@ -215,7 +215,7 @@
  
  % This variable exists only to be redefined; it is used in nearly all
  % search paths. If a document has source files not only in the current
-@@ -285,7 +285,7 @@ TEXINPUTS               = $TEXMFDOTDIR;$
+@@ -307,7 +307,7 @@ TEXINPUTS               = $TEXMFDOTDIR;$
  TTF2TFMINPUTS =                 $TEXMFDOTDIR;$TEXMF/ttf2pk//
  
  % Metafont, MetaPost inputs.
@@ -224,7 +224,7 @@
  MPINPUTS = $TEXMFDOTDIR;$TEXMF/metapost//
  
  % Dump files (fmt/base/mem) for vir{tex,mf,mp} to read.
-@@ -295,31 +295,31 @@ MPINPUTS = $TEXMFDOTDIR;$TEXMF/metapost/
+@@ -317,31 +317,31 @@ MPINPUTS = $TEXMFDOTDIR;$TEXMF/metapost/
  % We repeat the same definition three times because of the way fmtutil
  % is implemented; if we use ${TEXFORMATS}, the mpost/mf/etc. formats
  % will not be found.
@@ -263,7 +263,7 @@
  
  % Similarly for the GF format, which only remains in existence because
  % Metafont outputs it (and MF isn't going to change).
-@@ -415,8 +415,8 @@ MPSUPPORT = $TEXMFDOTDIR;$TEXMF/metapost
+@@ -437,8 +437,8 @@ MPSUPPORT = $TEXMFDOTDIR;$TEXMF/metapost
  % For xdvi to find mime.types and .mailcap, if they do not exist in
  % ~.  These are single directories, not paths.
  % (But the default mime.types, at least, may well suffice.)
@@ -274,7 +274,7 @@
  
  % Default settings for the fontconfig library as used by the Windows
  % versions of xetex/xdvipdfmx.  Not used by xetex on Unixish systems.
-@@ -440,10 +440,10 @@ WEBINPUTS = $TEXMFDOTDIR;$TEXMF/web//
+@@ -462,10 +462,10 @@ WEBINPUTS = $TEXMFDOTDIR;$TEXMF/web//
  CWEBINPUTS = $TEXMFDOTDIR;$TEXMF/cweb//
  
  % Omega-related fonts and other files.
@@ -289,7 +289,7 @@
  OTPINPUTS = $TEXMFDOTDIR;$TEXMF/omega/otp//
  OCPINPUTS = $TEXMFDOTDIR;$TEXMF/omega/ocp//
  
-@@ -526,32 +526,38 @@ RUBYINPUTS   = $TEXMFDOTDIR;$TEXMF/scrip
+@@ -558,32 +558,38 @@ RUBYINPUTS   = $TEXMFDOTDIR;$TEXMF/scrip
  % explicitly list every directory.  Arguably more understandable anyway.
  %
  TEXMFCNF = {\
@@ -353,10 +353,10 @@
  %
  % For reference, here is the old brace-using definition:
  %TEXMFCNF = {$SELFAUTOLOC,$SELFAUTODIR,$SELFAUTOPARENT}{,{/share,}/texmf{-local,}/web2c}
-@@ -836,3 +842,33 @@ max_cols.gftype = 8191
- % Guess input encoding (SJIS vs. Unicode, etc.) in pTeX and friends?
- % Default is 1, to guess. Used on Windows only.
- guess_input_kanji_encoding = 1
+@@ -894,3 +900,34 @@ guess_input_kanji_encoding = 1
+ % command_line_encoding = none
+ % in a texmf.cnf prefered, for example $TEXMFLOCAL/web2c/texmf.cnf.
+ command_line_encoding = utf-8
 +
 +% These are xmltex specific
 +main_memory.xmltex = 1500000
@@ -387,3 +387,4 @@
 +hash_extra.jadetex = 25000
 +pool_size.jadetex = 500000
 +save_size.jadetex = 15000
++
