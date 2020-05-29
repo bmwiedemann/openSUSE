@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat May 23 08:03:33 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.7
+  * capture: fixed a crash with invalid CSeq values
+  * capture: allow configurable libpcap capture buffer
+  * hep: support parsing of HEPv3 headers in any order
+  * ssl: updated code to exclude deprecated OpenSSL functions
+  * call raw: add support to IP alias display
+  * call list: updated diverted Call state conditions
+  * cli: match expression now applies to whole SIP payload
+  * cli: add support to multiple comma separated capture devices
+  * sip: add KDMQ custom method to SIP parser
+- Update to version 1.4.6
+  * capture: fixed pcap reading from stdin
+  * capture: make SIP regexp more tolerant to invalid uris
+  * capture: SIP dialogs can now start with INFO, REFER and UPDATE
+  * call list: Added methods and key bindings for soft clear of
+    call list
+  * call flow: improved performance while displaying a dialog with
+    lots of messages
+  * call flow: arrows are now sorted by time while displaying
+    multiple dialogs
+  * ui: fixed multiples buffer overflows crashes
+  * ui: improve compatibility with newest ncurses version
+- Drop not longer needed patch:
+  * 0001-ui-add-support-for-ncurses-compiled-with-opaque-stru.patch
+- Add patch:
+  * fix-build-with-recent-ncurses-versions.patch
+
+-------------------------------------------------------------------
 Thu Nov 15 20:04:49 UTC 2018 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Switch to ncurses6w.

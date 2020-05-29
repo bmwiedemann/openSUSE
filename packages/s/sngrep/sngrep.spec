@@ -1,7 +1,7 @@
 #
 # spec file for package sngrep
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           sngrep
-Version:        1.4.5
+Version:        1.4.7
 Release:        0
 Summary:        Ncurses SIP Messages flow viewer
 License:        GPL-3.0-or-later
@@ -26,7 +26,7 @@ Group:          Productivity/Telephony/Utilities
 URL:            https://github.com/irontec/sngrep
 #Git-Clone:     https://github.com/irontec/sngrep.git
 Source:         https://github.com/irontec/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         0001-ui-add-support-for-ncurses-compiled-with-opaque-stru.patch
+Patch0:         fix-build-with-recent-ncurses-versions.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libpcap-devel

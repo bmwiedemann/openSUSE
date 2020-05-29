@@ -1,0 +1,13 @@
+diff --git a/src/curses/ui_manager.c b/src/curses/ui_manager.c
+index f81ab8d..4ff7bc4 100644
+--- a/src/curses/ui_manager.c
++++ b/src/curses/ui_manager.c
+@@ -93,7 +93,7 @@ ncurses_init()
+     // Hide the cursor
+     curs_set(0);
+     // Only delay ESC Sequences 25 ms (we dont want Escape sequences)
+-    ESCDELAY = 25;
++    set_escdelay(25);
+ 
+     // Redefine some keys
+     term = getenv("TERM");
