@@ -1,6 +1,6 @@
---- guile-2.2.4/meta/guile-2.2.pc.in.orig	2018-11-27 17:28:06.487792308 +0100
-+++ guile-2.2.4/meta/guile-2.2.pc.in	2018-11-27 17:28:26.664200511 +0100
-@@ -22,9 +22,9 @@
+--- guile/meta/guile-3.0.pc.in.orig	2020-01-07 12:00:08.392929733 +0100
++++ guile/meta/guile-3.0.pc.in	2020-01-07 12:00:19.241097989 +0100
+@@ -22,7 +22,7 @@
  Name: GNU Guile
  Description: GNU's Ubiquitous Intelligent Language for Extension
  Version: @GUILE_VERSION@
@@ -9,6 +9,3 @@
  Libs.private: @LIB_CLOCK_GETTIME@ @LIBGMP@ @LIBLTDL@ @LIBFFI_LIBS@	\
    @LIBUNISTRING@ @GUILE_LIBS@ @LIBICONV@ @LIBINTL@ @LIBSOCKET@		\
    @SERVENT_LIB@ @HOSTENT_LIB@ @GETADDRINFO_LIB@ @INET_NTOP_LIB@		\
--  @INET_PTON_LIB@
-+  @INET_PTON_LIB@ @BDW_GC_LIBS@
- Cflags: -I${pkgincludedir}/@GUILE_EFFECTIVE_VERSION@ @GUILE_CFLAGS@ @BDW_GC_CFLAGS@

@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Tue May  5 09:21:02 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add gcc10-x86-disable-one-test.patch in order to fix
+  boo#1170836.
+
+-------------------------------------------------------------------
+Fri Mar 27 15:44:09 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to version 3.0.2:
+  Changes compared to 3.0.1:
+  * New (srfi srfi-171) module
+  * Fix heap corruption when allocating structs (caused problems when
+    building Guix on openSUSE)
+  * Fix race condition between 'abort-to-prompt' and stack marking 
+  * Ensure weak sets are occasionally vacuumed
+  * Interpret dynamic library name as literal file name first
+  * <libguile.h> includes <libguile/hooks.h> again
+  * Fix fixpoint computation in compute-significant-bits
+  * Fix compilation '--without-threads'
+  * 'tmpnam' is now deprecated
+- Remove patch:
+  * guile-3.0-fix-compile-crash.patch: patch included in release
+
+-------------------------------------------------------------------
+Sun Mar 22 15:03:51 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Add patch from upstream to fix build of Guix with more then two threads:
+  * guile-3.0-fix-compile-crash.patch 
+
+-------------------------------------------------------------------
+Mon Mar  9 10:21:27 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 3.0.1:
+  Changes compared to 3.0.0:
+  * Export constructor and predicate for '&quit-exception'
+  * (texinfo plain-text) now exports '*line-width*' fluid
+  * R7RS support recognizes the '.sld' extension
+  * 'hash' correctly handles keywords, ports, hash tables, etc.
+  * 'include' no longer rejects relative file names
+  * Reduce GC pressure when using bignums
+  * Fix expansion of 'error' calls with a non-constant argument
+  * Improve source location information for top-level references
+  * Web client treats TLS "premature termination" error as EOF
+  * Fix bug restoring a JIT continuation from the interpreter
+  * Export C symbols 'scm_sym_lambda', 'scm_sym_quote', etc. again
+  * Fix build on IA64 and on platforms where the stack grows upwards
+  * texinfo properly renders @acronym in plain text
+  * Compiler now optimizes (logior 0 INT)
+  * Fix Readline configure check for the sake of libedit
+  * Provided 'GUILE_PKG' Autoconf macro now detects Guile 3.0
+
+-------------------------------------------------------------------
+Thu Jan 16 11:55:13 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 3.0.0:
+  Major changes compared to 2.2.x:
+  * Just-in-time code generation on x86_64, i586, armv7l, and aarch64
+  * Lower-level bytecode
+  * Add support for R7RS
+  * Interleaved internal definitions and expressions allowed
+  * Record unification
+  * Reimplementation of exceptions to be more aligned with R6RS-style
+  * `guard' no longer unwinds the stack for clause tests
+  * Optimization of top-level bindings within a compilation unit (-O3
+    is now differnt then -O2)
+  * By default, GOOPS classes are not redefinable
+  * Define top-level bindings for aux syntax: `else', `=>', `...', `_'
+  * Conventional gettext alias is now `G_'
+  * Add --r6rs command-line option
+  * Add #:re-export-and-replace argument to `define-module'
+  * `define-module' #:autoload no longer pulls in the whole module
+  * Improve SRFI-43 vector-fill!
+  * `iota' in core and SRFI-1 `iota' are the same
+  * Improved Transport Layer Security (TLS) support in (web client)
+  * New deprecations
+    * scm_t_uint8, etc deprecated in favor of C99 stdint.h
+    * The two-argument form of `record-constructor'
+  * Incompatible changes
+    * All code deprecated in Guile 2.2 has been removed.
+    * Remove "self" field from vtables and "redefined" field from
+      classes
+    * VM hook manipulation simplified
+  * New effective version 3.0. pkg-config is now guile-3.0
+* Rename patch:
+  * guile-2.2-gc_pkgconfig_private.patch to
+    guile-3.0-gc_pkgconfig_private.patch: Adapt to 3.0 changes.
+* Set guilemaj to 3 and guilemin to 0
+
+-------------------------------------------------------------------
 Mon Sep 23 09:17:47 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Do sequential build for reproducible .go files (boo#1102408)
