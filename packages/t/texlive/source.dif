@@ -6,8 +6,6 @@
  texk/kpathsea/c-memstr.h                                    |    3 
  texk/kpathsea/cnf-to-paths.awk                              |    2 
  texk/kpathsea/db.c                                          |   13 -
- texk/kpathsea/mktex.opt                                     |   39 ++-
- texk/kpathsea/mktexlsr                                      |   52 +++-
  texk/kpathsea/progname.c                                    |    4 
  texk/kpathsea/texmf.cnf                                     |  140 +++++++-----
  texk/lcdf-typetools/lcdf-typetools-src/otftotfm/otftotfm.cc |    3 
@@ -16,33 +14,15 @@
  texk/texlive/linked_scripts/texlive/fmtutil-sys.sh          |    1 
  texk/texlive/linked_scripts/texlive/fmtutil.pl              |   24 +-
  texk/texlive/linked_scripts/texlive/updmap-sys.sh           |    1 
- texk/texlive/tl_scripts/fmtutil.cnf                         |   17 -
- texk/texlive/tl_scripts/texconfig-dialog.sh                 |   14 -
- texk/texlive/tl_scripts/texconfig-sys.sh                    |    1 
- texk/texlive/tl_scripts/texconfig.sh                        |   35 ---
- texk/texlive/tl_scripts/texlinks.sh                         |   53 +++-
  texk/web2c/Makefile.in                                      |    7 
- texk/web2c/luatexdir/luapplib/ppheap.c                      |   61 ++---
- texk/web2c/luatexdir/luapplib/ppload.c                      |    4 
  texk/web2c/uptexdir/tests/gkhugeng.err                      |    8 
  texk/web2c/window/regis.c                                   |    8 
  texk/web2c/window/x11-Xlib.c                                |    8 
  texk/web2c/window/x11-Xt.c                                  |    4 
  texk/xdvik/psgs.c                                           |   22 +
  texk/xdvik/xdvi-sh.in                                       |   19 +
- 31 files changed, 393 insertions(+), 190 deletions(-)
+ 22 files changed, 224 insertions(+), 83 deletions(-)
 
---- libs/icu/icu-src/source/common/Makefile.in
-+++ libs/icu/icu-src/source/common/Makefile.in	2018-04-10 09:02:17.774983801 +0000
-@@ -69,7 +69,7 @@ DEFS += -DU_COMMON_IMPLEMENTATION
- LDFLAGS += $(LDFLAGSICUUC)
- 
- # for plugin configuration
--CPPFLAGS += "-DDEFAULT_ICU_PLUGINS=\"$(libdir)/icu\" "
-+CPPFLAGS += "-DDEFAULT_ICU_PLUGINS=\"/usr/lib/icu\" "
- 
- # for icu data location
- ifeq ($(PKGDATA_MODE),common)
 --- reautoconf
 +++ reautoconf	2018-04-10 09:02:17.774983801 +0000
 @@ -83,7 +83,7 @@ echo "$0:               TL_AUTOHEADER, T
@@ -54,6 +34,17 @@
  
  AUTOCONF=$TL_AUTOCONF
  AUTOHEADER=$TL_AUTOHEADER
+--- libs/icu/icu-src/source/common/Makefile.in
++++ libs/icu/icu-src/source/common/Makefile.in	2018-04-10 09:02:17.774983801 +0000
+@@ -69,7 +69,7 @@ DEFS += -DU_COMMON_IMPLEMENTATION
+ LDFLAGS += $(LDFLAGSICUUC)
+ 
+ # for plugin configuration
+-CPPFLAGS += "-DDEFAULT_ICU_PLUGINS=\"$(libdir)/icu\" "
++CPPFLAGS += "-DDEFAULT_ICU_PLUGINS=\"/usr/lib/icu\" "
+ 
+ # for icu data location
+ ifeq ($(PKGDATA_MODE),common)
 --- texk/dviljk/dvi2xx.c
 +++ texk/dviljk/dvi2xx.c	2018-04-10 09:02:17.858982223 +0000
 @@ -168,7 +168,18 @@ main(int argc, char *argv[])
@@ -155,190 +146,6 @@
      while ((line = read_line (db_file)) != NULL) {
        len = strlen (line);
  
---- texk/kpathsea/mktex.opt
-+++ texk/kpathsea/mktex.opt	2018-04-10 09:02:17.858982223 +0000
-@@ -38,10 +38,11 @@ if test "$DOSISH" = "no"; then SEP=':';
- # TEMPDIR needs to be unique to each process because of the possibility of two
- # people running dvips (or whatever) simultaneously.
- if test -n "$TMPDIR"; then
--  TEMPDIR="${TMPDIR}/mt$$.tmp"
-+  TEMPDIR="${TMPDIR}/.mtXXXXXXXXXX"
- else
--  TEMPDIR="/tmp/mt$$.tmp"
-+  TEMPDIR="/tmp/.mtXXXXXXXXXX"
- fi
-+TEMPDIR=$(mktemp -d "$TEMPDIR") || exit 1
- 
- # We want to output only filenames to standard output, but it's too
- # error-prone to write the scripts that way, so we direct stdout here.
-@@ -49,17 +50,23 @@ STDOUT="$TEMPDIR/mt$$.out"
- 
- # We will change search paths to include $KPSE_DOT. This is necessary
- # since we cd to $TEMPDIR.
--: ${KPSE_DOT=`pwd`}; export KPSE_DOT
-+: ${KPSE_DOT=${PWD}}; export KPSE_DOT
- 
- # Clean up on normal or abnormal exit.
- # The "cd /" is for MS-DOS and MS-Windows, where there is a separate
- # current directory on each drive, and therefore "cd $KPSE_DOT" might
- # still leave $TMPDIR current directory on its drive, in which case it
- # cannot be removed.
--trap 'rc=$?; cd /; cd "$KPSE_DOT"; test -f "$STDOUT" && cat "$STDOUT"; rm -rf "$TEMPDIR"; exit $rc' \
--  0 1 2 3 7 13 15
-+atexit ()
-+{
-+  local rc=$?
-+  cd "$KPSE_DOT"
-+  test -n "$STDOUT"  -a -f "$STDOUT"  && cat "$STDOUT"
-+  test -n "$TEMPDIR" -a -d "$TEMPDIR" && rm -rf "$TEMPDIR"
-+  exit $rc
-+}
-+trap 'atexit' EXIT SIGHUP SIGINT SIGQUIT SIGBUS SIGPIPE SIGTERM
- 
--(umask 077 && mkdir "$TEMPDIR") || exit 1
- cd "$TEMPDIR" || exit 1
- 
- # The alternative location for fonts.  The directory need not exist,
-@@ -69,6 +76,11 @@ if test -z "$MT_VARTEXFONTS"; then
-   echo "$0: VARTEXFONTS is not defined.  Defaulting to \`$KPSE_DOT'." >&2
-   MT_VARTEXFONTS='$KPSE_DOT'
- fi
-+: ${MT_TEXMFVAR=`kpsewhich --expand-var='$TEXMFVAR' | sed 's%^!!%%'`}
-+if test -z "$MT_TEXMFVAR"; then
-+  echo "$0: TEXMFVAR is not defined.  Defaulting to \`$KPSE_DOT'." >&2
-+  MT_TEXMFVAR='$KPSE_DOT'
-+fi
- 
- # The supporting scripts:
- : ${MT_MKTEXNAM=`kpsewhich --format='web2c files' mktexnam`}
-@@ -109,9 +121,18 @@ fi
- : ${MAG=1.0}
- : ${ps_to_pk=gsftopk} # some prefer ps2pk
- 
--# Allow fonts to be read and written (especially in case we make
--# directories) by everyone.
--umask 0
-+case ":${MT_FEATURES}:" in
-+*:varfonts:*)
-+    if test -w "$MT_VARTEXFONTS" ; then
-+	# Allow fonts to be read and written (especially in case we make
-+	# directories) by everyone.
-+	umask 0
-+    else
-+	umask 022
-+	MT_VARTEXFONTS=$HOME/.cache/texmf/fonts
-+	test -d $MT_VARTEXFONTS || mkdir -p $MT_VARTEXFONTS
-+    fi
-+esac
- 
- # Cache values that may be useful for recursive calls.
- export MT_MKTEX_OPT MT_MKTEX_CNF 
---- texk/kpathsea/mktexlsr
-+++ texk/kpathsea/mktexlsr	2018-04-10 09:02:17.858982223 +0000
-@@ -58,6 +58,9 @@ if test "$DOSISH" = "no"; then SEP=':';
- # be done before kpsewhich can be called, and thus cannot be put into
- # mktex.opt.
- dirname=`echo $0 | sed 's%/*[^/][^/]*$%%'`
-+case "$SEP$PATH$SEP" in
-+   *$SEP$dirname$SEP*)  dirname="" ;;
-+esac
- case $dirname in
-   "") # Do nothing
-       ;;
-@@ -152,6 +155,16 @@ old_ls_R_magic='% ls-R -- maintained by
-   shift
- }
- 
-+cache="`kpsewhich --expand-var='$VARTEXFONTS'`"
-+{
-+  saveIFS=$IFS
-+  IFS=:
-+  for c in ${cache}; do
-+    test -w "$c" || continue
-+    cache=$c
-+  done
-+  IFS=$saveIFS
-+}
- for TEXMFLS_R in "$@"; do
-   # Prepend cwd if the directory was relative.
-   case "$TEXMFLS_R" in
-@@ -181,12 +194,23 @@ for TEXMFLS_R in "$@"; do
-   # want to be silent if the directory doesn't exist, since the ls-R
-   # path ordinarily contains many nonexistent directories.
-   test -d "$db_dir" || continue
--  test -w "$db_dir" || { echo "$progname: $db_dir: directory not writable. Skipping..." >&2; continue; }
-+  if test -w "$db_dir" ; then
-+    # default
-+    db_dir_tmp="$db_dir/.lsR.XXXXXX"
-+  else
-+    # Escape to writable cache directory
-+    test -w "$cache" || { echo "$progname: $db_dir: directory not writable. Skipping..." >&2; continue; }
-+    db_dir_tmp="$cache/.lsR.XXXXXX"
-+  fi
- 
-   if test ! -f "$db_file"; then
--    cp /dev/null "$db_file"
-+    # Note: this script has set the noclobber option at line 40
-+    > "$db_file" \
-+	|| { echo "$progname: could not create file '$db_file'. Skipping..." >&2; continue; }
-     # Use same permissions as parent directory, minus x,s, or t bits.
-     chmod `kpsestat -xst "$db_dir"` "$db_file"
-+  elif test -w $db_file -a ! -s $db_file ; then
-+    :  Is writable but empty
-   elif test -s "$db_file" \
-        && test "x`sed '1s/$//;1q' \"$db_file\"`" != "x$ls_R_magic" \
-        && test "x`sed '1s/$//;1q' \"$db_file\"`" != "x$old_ls_R_magic"; then
-@@ -197,8 +221,13 @@ for TEXMFLS_R in "$@"; do
-   # Skip if we cannot write the file:
-   kpseaccess -w "$db_file" || { echo "$progname: $db_file: no write permission, skipping..." >&2; continue; }
- 
--  db_dir_tmp="$db_dir/lsR$$.tmp"
--  (umask 077 && mkdir "$db_dir_tmp" ) \
-+  until PERMS=`kpsestat = "$db_file"`; do sleep 1; done
-+  if test "$PERMS" = "666" -a ! -k "$db_dir" ; then
-+    echo "$progname: $db_file: world writable but '$db_dir' not sticky, skipping..." >&2
-+    continue
-+  fi
-+
-+  db_dir_tmp=$(mktemp -d "$db_dir_tmp") \
-     || { echo "$progname: $db_dir_tmp: could not create directory, skipping..." >&2; continue; }
-   db_file_tmp="$db_dir_tmp/lsR$$.tmp"
-   rm -f "$db_file_tmp"
-@@ -206,7 +235,9 @@ for TEXMFLS_R in "$@"; do
-   $verbose && echo "$progname: Updating $db_file... "
-   $dry_run && continue
-   
--  echo "$ls_R_magic" >"$db_file_tmp"
-+  # Note: this script has set the noclobber option at line 40
-+  echo "$ls_R_magic" >"$db_file_tmp" \
-+    || { echo "$progname: $db_file_tmp: could not create file, skipping..." >&2; continue; }
- 
-   # The main task. We put ./: in the output, so top-level files can be
-   # found via ls-R. Probably irrelevant in practice.  The sed command
-@@ -220,15 +251,20 @@ for TEXMFLS_R in "$@"; do
-   vc_dirs='\.\(bzr\|git\|hg\|svn\)\|_darcs'
-   (cd "$TEXMFLS_R" && \ls -LRa 2>/dev/null) \
-    | sed -e '/^$/{n;s%^\./%%;s%^%./%;}; /^\.$/d; /^\.\.$/d; /^'$vc_dirs'$/d;' \
--         -e '/^[\.\/]*lsR[0-9]*\.tmp:*$/d' \
-+         -e '/^[\.\/]*lsR[0-9]*\.tmp:*$/d;/^[\.\/]*'${db_dir_tmp##*/}':*$/d' \
-    | sed -e /$vc_dirs'.*:$/,/^$/d' \
-    >>"$db_file_tmp"
- 
-   # To be really safe, a loop.
-   until PERMS=`kpsestat = "$db_file"`; do sleep 1; done
-   chmod $PERMS "$db_file_tmp"
--  rm -f "$db_file"
--  mv "$db_file_tmp" "$db_file"
-+  if test -w "$db_file" ; then
-+    # Sticky bit is set see line 200
-+    # Temporary unset the noclobber option at line 40
-+    set +o noclobber
-+    cat "$db_file_tmp" > "$db_file"
-+    set -o noclobber
-+  fi
-   rm -rf "$db_dir_tmp"
- done
- 
 --- texk/kpathsea/progname.c
 +++ texk/kpathsea/progname.c	2018-04-10 09:02:17.862982147 +0000
 @@ -662,9 +662,9 @@ kpathsea_set_program_name (kpathsea kpse
@@ -354,8 +161,8 @@
    sdir_greatgrandparent = xdirname (sdir_grandparent);
    kpathsea_xputenv (kpse, "SELFAUTOGRANDPARENT", fix_selfdir (sdir_greatgrandparent));
 --- texk/kpathsea/texmf.cnf
-+++ texk/kpathsea/texmf.cnf	2019-05-29 06:12:28.489081219 +0000
-@@ -61,20 +61,20 @@
++++ texk/kpathsea/texmf.cnf	2020-03-20 09:47:16.242820144 +0000
+@@ -62,20 +62,20 @@
  TEXMFROOT = $SELFAUTOPARENT
  
  % The main tree of distributed packages and programs:
@@ -380,20 +187,20 @@
  
  % Per-user texmf tree(s) -- organized per the TDS, as usual.  To define
  % more than one per-user tree, set this to a list of directories in
-@@ -83,10 +83,10 @@ TEXMFSYSCONFIG = $TEXMFROOT/texmf-config
+@@ -84,10 +84,10 @@ TEXMFSYSCONFIG = $TEXMFROOT/texmf-config
  TEXMFHOME = ~/texmf
  
  % TEXMFVAR, where texconfig/updmap/fmtutil store cached runtime data.
--TEXMFVAR = ~/.texlive2019/texmf-var
+-TEXMFVAR = ~/.texlive2020/texmf-var
 +TEXMFVAR = ${TEXMFSYSVAR}
  
  % TEXMFCONFIG, where texconfig/updmap/fmtutil store configuration data.
--TEXMFCONFIG = ~/.texlive2019/texmf-config
+-TEXMFCONFIG = ~/.texlive2020/texmf-config
 +TEXMFCONFIG = ${TEXMFSYSCONFIG}
  
  % This is the value manipulated by tlmgr's auxtrees subcommand in the
  % root texmf.cnf. Kpathsea warns about a literally empty string for a
-@@ -107,7 +107,7 @@ TEXMFAUXTREES = {}
+@@ -108,7 +108,7 @@ TEXMFAUXTREES = {}
  % The odd-looking $TEXMFAUXTREES$TEXMF... construct is so that if no auxtree is
  % ever defined (the 99% common case), no extra elements will be added to
  % the search paths. tlmgr takes care to end any value with a trailing comma.
@@ -402,7 +209,7 @@
  
  % Where to look for, and where mktexlsr creates, ls-R files. By default,
  % this is all and only the !! elements of TEXMF, so that mktexlsr does not
-@@ -115,24 +115,23 @@ TEXMF = {$TEXMFAUXTREES$TEXMFCONFIG,$TEX
+@@ -116,24 +116,23 @@ TEXMF = {$TEXMFAUXTREES$TEXMFCONFIG,$TEX
  % present, it will be used, and the disk will not (usually) be searched,
  % regardless of !!.  Although in principle a directory listed here need
  % not contain an ls-R file, in practice they all should.
@@ -430,7 +237,7 @@
  
  % On some systems, there will be a system tree which contains all the font
  % files that may be created as well as the formats.  For example
-@@ -143,7 +142,8 @@ VARTEXFONTS = $TEXMFVAR/fonts
+@@ -144,7 +143,8 @@ VARTEXFONTS = $TEXMFVAR/fonts
  %
  % Remove $VARTEXFONTS from TEXMFDBS if the VARTEXFONTS directory is below
  % one of the TEXMF directories (avoids overlapping ls-R files).
@@ -440,7 +247,7 @@
  
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  % Usually you will not need to edit any of the following variables.
-@@ -151,7 +151,7 @@ VARTEXFONTS = $TEXMFVAR/fonts
+@@ -152,7 +152,7 @@ VARTEXFONTS = $TEXMFVAR/fonts
  
  % WEB2C is for Web2C specific files.  The current directory may not be
  % a good place to look for them.
@@ -449,7 +256,7 @@
  
  % This variable exists only to be redefined; it is used in nearly all
  % search paths. If a document has source files not only in the current
-@@ -285,7 +285,7 @@ TEXINPUTS               = $TEXMFDOTDIR;$
+@@ -307,7 +307,7 @@ TEXINPUTS               = $TEXMFDOTDIR;$
  TTF2TFMINPUTS =                 $TEXMFDOTDIR;$TEXMF/ttf2pk//
  
  % Metafont, MetaPost inputs.
@@ -458,7 +265,7 @@
  MPINPUTS = $TEXMFDOTDIR;$TEXMF/metapost//
  
  % Dump files (fmt/base/mem) for vir{tex,mf,mp} to read.
-@@ -295,31 +295,31 @@ MPINPUTS = $TEXMFDOTDIR;$TEXMF/metapost/
+@@ -317,31 +317,31 @@ MPINPUTS = $TEXMFDOTDIR;$TEXMF/metapost/
  % We repeat the same definition three times because of the way fmtutil
  % is implemented; if we use ${TEXFORMATS}, the mpost/mf/etc. formats
  % will not be found.
@@ -497,7 +304,7 @@
  
  % Similarly for the GF format, which only remains in existence because
  % Metafont outputs it (and MF isn't going to change).
-@@ -415,8 +415,8 @@ MPSUPPORT = $TEXMFDOTDIR;$TEXMF/metapost
+@@ -437,8 +437,8 @@ MPSUPPORT = $TEXMFDOTDIR;$TEXMF/metapost
  % For xdvi to find mime.types and .mailcap, if they do not exist in
  % ~.  These are single directories, not paths.
  % (But the default mime.types, at least, may well suffice.)
@@ -508,7 +315,7 @@
  
  % Default settings for the fontconfig library as used by the Windows
  % versions of xetex/xdvipdfmx.  Not used by xetex on Unixish systems.
-@@ -440,10 +440,10 @@ WEBINPUTS = $TEXMFDOTDIR;$TEXMF/web//
+@@ -462,10 +462,10 @@ WEBINPUTS = $TEXMFDOTDIR;$TEXMF/web//
  CWEBINPUTS = $TEXMFDOTDIR;$TEXMF/cweb//
  
  % Omega-related fonts and other files.
@@ -523,7 +330,7 @@
  OTPINPUTS = $TEXMFDOTDIR;$TEXMF/omega/otp//
  OCPINPUTS = $TEXMFDOTDIR;$TEXMF/omega/ocp//
  
-@@ -526,32 +526,38 @@ RUBYINPUTS   = $TEXMFDOTDIR;$TEXMF/scrip
+@@ -558,32 +558,38 @@ RUBYINPUTS   = $TEXMFDOTDIR;$TEXMF/scrip
  % explicitly list every directory.  Arguably more understandable anyway.
  %
  TEXMFCNF = {\
@@ -587,10 +394,10 @@
  %
  % For reference, here is the old brace-using definition:
  %TEXMFCNF = {$SELFAUTOLOC,$SELFAUTODIR,$SELFAUTOPARENT}{,{/share,}/texmf{-local,}/web2c}
-@@ -836,3 +842,33 @@ max_cols.gftype = 8191
- % Guess input encoding (SJIS vs. Unicode, etc.) in pTeX and friends?
- % Default is 1, to guess. Used on Windows only.
- guess_input_kanji_encoding = 1
+@@ -894,3 +900,33 @@ guess_input_kanji_encoding = 1
+ % command_line_encoding = none
+ % in a texmf.cnf prefered, for example $TEXMFLOCAL/web2c/texmf.cnf.
+ command_line_encoding = utf-8
 +
 +% These are xmltex specific
 +main_memory.xmltex = 1500000
@@ -635,7 +442,7 @@
  #define VERSION_OPT             301
 --- texk/ps2pk/pk2bm.c
 +++ texk/ps2pk/pk2bm.c	2018-04-10 09:02:17.862982147 +0000
-@@ -103,7 +102,7 @@ int main(int argc, char *argv[])
+@@ -103,7 +103,7 @@ invalid:
        	 }
     }
  
@@ -685,7 +492,7 @@
 +umask 022
  exec fmtutil --sys ${1+"$@"}
 --- texk/texlive/linked_scripts/texlive/fmtutil.pl
-+++ texk/texlive/linked_scripts/texlive/fmtutil.pl	2018-04-10 09:02:17.862982147 +0000
++++ texk/texlive/linked_scripts/texlive/fmtutil.pl	2020-03-20 09:50:01.803710617 +0000
 @@ -10,16 +10,16 @@
  # History:
  # Original shell script (C) 2001 Thomas Esser, public domain
@@ -732,7 +539,7 @@
    }
    # set up destination directory
    $opts{'fmtdir'} ||= "$texmfvar/web2c";
-@@ -597,6 +604,7 @@ sub rebuild_one_format {
+@@ -599,6 +606,7 @@ sub rebuild_one_format {
    # check for existence of ini file before doing anything else
    if (system("kpsewhich -progname=$fmt -format=$kpsefmt $inifile >$nul 2>&1") != 0) {
      # we didn't find the ini file, skip
@@ -740,12 +547,12 @@
      print_deferred_warning("inifile $inifile for $fmt/$eng not found.\n");
      # The original script just skipped it but in TeX Live we expect that
      # all activated formats are also buildable, thus return failure.
-@@ -656,11 +664,15 @@ sub rebuild_one_format {
+@@ -658,11 +666,15 @@ sub rebuild_one_format {
          ",$opts{'no-error-if-no-engine'}," =~ m/,$eng,/) {
        return $FMT_NOTAVAIL;
      } else {
 +      return $FMT_NOTAVAIL if (!$opts{'no-error-if-no-engine'});
-       print_deferred_error("not building $fmt due to missing engine $eng.\n");
+       print_deferred_error("not building $fmt due to missing engine: $eng\n");
        return $FMT_FAILURE;
      }
    }
@@ -764,248 +571,9 @@
  
 +umask 022
  exec updmap --sys ${1+"$@"}
---- texk/texlive/tl_scripts/fmtutil.cnf
-+++ texk/texlive/tl_scripts/fmtutil.cnf	2018-04-10 09:02:17.862982147 +0000
-@@ -46,10 +46,11 @@ amstex pdftex - -translate-file=cp227.tc
- # from context:
- cont-en pdftex cont-usr.tex -8bit *cont-en.mkii
- cont-en xetex cont-usr.tex -8bit *cont-en.mkii
--#! cont-fr pdftex cont-usr.tex -8bit *cont-fr.mkii
--#! cont-it pdftex cont-usr.tex -8bit *cont-it.mkii
--#! cont-nl pdftex cont-usr.tex -8bit *cont-nl.mkii
--#! cont-ro pdftex cont-usr.tex -8bit *cont-ro.mkii
-+cont-de pdftex cont-usr.tex -8bit *cont-fr.mkii
-+cont-fr pdftex cont-usr.tex -8bit *cont-fr.mkii
-+cont-it pdftex cont-usr.tex -8bit *cont-it.mkii
-+cont-nl pdftex cont-usr.tex -8bit *cont-nl.mkii
-+cont-ro pdftex cont-usr.tex -8bit *cont-ro.mkii
- #
- # from cslatex:
- cslatex pdftex - -etex cslatex.ini
-@@ -66,8 +67,8 @@ pdfcsplain luatex - -etex csplain.ini
- eplain pdftex language.dat -translate-file=cp227.tcx *eplain.ini
- #
- # from jadetex:
--jadetex pdftex language.dat *jadetex.ini
--pdfjadetex pdftex language.dat *pdfjadetex.ini
-+jadetex pdftex language.dat -translate-file=cp227.tcx *jadetex.ini
-+pdfjadetex pdftex language.dat -translate-file=cp227.tcx *pdfjadetex.ini
- #
- # from latex-bin:
- latex pdftex language.dat -translate-file=cp227.tcx *latex.ini
-@@ -132,5 +133,5 @@ xetex xetex language.def -etex xetex.ini
- xelatex xetex language.dat -etex xelatex.ini
- #
- # from xmltex:
--xmltex pdftex language.dat *xmltex.ini
--pdfxmltex pdftex language.dat *pdfxmltex.ini
-+xmltex pdftex language.dat -translate-file=cp227.tcx *xmltex.ini
-+pdfxmltex pdftex language.dat -translate-file=cp227.tcx *pdfxmltex.ini
---- texk/texlive/tl_scripts/texconfig-dialog.sh
-+++ texk/texlive/tl_scripts/texconfig-dialog.sh	2018-04-10 09:02:17.862982147 +0000
-@@ -157,7 +157,14 @@ termCtl()
- ###############################################################################
- menuMain()
- {
--  cat <<-'eof'
-+  rows="$(stty size)"
-+  columns=${rows##* }
-+  rows=${rows%% *}
-+  test -n "$rows"      || rows=0
-+  test -n "$columns"   || columns=0
-+
-+  if test $rows -lt 24 -a $columns -lt 80 ; then
-+    cat <<-'eof'
- 	The interactive texconfig utility will be started now. Make sure
- 	your screen has at least 24 rows and 80 columns. If texconfig
- 	crashes now, you can still set up your TeX system using the
-@@ -169,8 +176,9 @@ menuMain()
- 	
- 	More likely these days, you're better off using tlmgr.
- 	See http://tug.org/texlive/tlmgr.html.
--eof
--  termCtl readln
-+	eof
-+    termCtl readln
-+  fi
- 
-   while :; do
-     logMessage='view logfile'
---- texk/texlive/tl_scripts/texconfig-sys.sh
-+++ texk/texlive/tl_scripts/texconfig-sys.sh	2018-04-10 09:02:17.862982147 +0000
-@@ -30,4 +30,5 @@ TEXMFVAR="$v"
- TEXMFCONFIG="$c"
- export TEXMFVAR TEXMFCONFIG
- 
-+umask 022
- exec texconfig ${1+"$@"}
---- texk/texlive/tl_scripts/texconfig.sh
-+++ texk/texlive/tl_scripts/texconfig.sh	2018-04-10 09:02:17.862982147 +0000
-@@ -40,7 +40,7 @@ envVars="
-   TEXMFDBS TEXMFINI TEXMFSCRIPTS TEXPICTS TEXPKS TEXPOOL TEXPSHEADERS
-   TEXSOURCES TFMFONTS TRFONTS TTFONTS VFFONTS WEB2C WEBINPUTS
- "
--tmpdir=${TMPDIR-${TEMP-${TMP-/tmp}}}/tctmp.$$
-+tmpdir=${TMPDIR-${TEMP-${TMP-/tmp}}}/tctmp.$$.$RANDOM
- needsCleanup=false
- lastUpdatedFile=
- 
-@@ -997,21 +997,6 @@ For more information about these \`featu
-       ;;
- 
-     formats)
--      cat >&2 <<EOM
--texconfig formats is no longer supported, because manual edits of
--fmtutil.cnf will be overwritten by the new TeX Live package manager,
--tlmgr, which regenerates that file as needed upon package changes.
--Thus, to add or remove formats, the recommended method is to use tlmgr
--to add or remove the appropriate package.
--
--If you need to make manual additions, you can edit the file
--fmtutil-local.cnf under TEXMFLOCAL.  Further information with
--tlmgr --help and at http://tug.org/texlive/tlmgr.html.
--
--Exiting.
--EOM
--      exit 1  # but leave the real code for posterity
--
-       setupTmpDir
-       echo "$progname: analyzing old configuration..." >&2
-       fmtutil --catcfg > $tmpdir/pre
-@@ -1037,22 +1022,6 @@ EOM
- 
-     # "hyphen FORMAT"
-     hyphen)
--      cat >&2 <<EOM
--texconfig hyphen is no longer supported, because manual edits of
--language.dat (or language.def) will be overwritten by the new TeX Live
--package manager, tlmgr, which regenerates those configuration files as
--needed upon package changes.  Thus, to add or remove hyphenation
--patterns, the recommended method is to use tlmgr to add or remove the
--appropriate package.
--
--If you need to make manual additions, you can edit the files
--language-local.dat and language-local.def under TEXMFLOCAL.  Further
--information with tlmgr --help and at http://tug.org/texlive/tlmgr.html.
--
--Exiting.
--EOM
--      exit 1  # but leave the real code for posterity
--
-       tcBatchHyphenFormat=$2
-       formatsForHyphen=`getFormatsForHyphen`
-       formatsForHyphenFmt=`echo "$formatsForHyphen" | myFmt | sed 's@^@  @'`
-@@ -1301,7 +1270,7 @@ Valid PAPER settings:
-       ;;
- 
-     rehash)
--      mktexlsr
-+      ( unset KPSE_DOT; mktexlsr )
-       ;;
-     
-     # 
---- texk/texlive/tl_scripts/texlinks.sh
-+++ texk/texlive/tl_scripts/texlinks.sh	2018-04-10 09:02:17.862982147 +0000
-@@ -100,7 +100,7 @@ setupTmpDir()
- 
-   trap 'cleanup 1' 1 2 3 7 13 15
-   needsCleanup=true
--  (umask 077; mkdir "$tmpdir") \
-+  (umask 077; mkdir -m 0700 "$tmpdir") \
-     || abort "could not create directory \`$tmpdir'"
- }
- 
-@@ -108,16 +108,18 @@ setupTmpDir()
- # search a binary along $PATH:
- check_for_binary()
- {
--  testbin=$1
--  set x `echo "$PATH" | sed 's/^:/.:/; s/:$/:./; s/::/:.:/g; s/:/ /g'`; shift
--  for i
--  do
--    if [ -x "$i/$testbin" ]; then
--      echo "$i/$testbin"
--      return 0
--    fi
--  done
--  return 1
-+# testbin=$1
-+# set x `echo "$PATH" | sed 's/^:/.:/; s/:$/:./; s/::/:.:/g; s/:/ /g'`; shift
-+# for i
-+# do
-+#   if [ -x "$i/$testbin" ]; then
-+#     echo "$i/$testbin"
-+#     return 0
-+#   fi
-+# done
-+# return 1
-+
-+  type -p $1
- }
- 
- 
-@@ -208,8 +210,22 @@ search_symlinkdir()
- upd_symlinkdir()
- {
-   search_symlinkdir || return 0
--  for i in `sed 's@ .*@@' cnf_file_ln.$$`; do
--    install_link "$selfautoloc/$i" "$symlinkdir/$i"
-+  set x `cat cnf_file_ln.$$` ; shift
-+  while test $# != 0; do
-+    fmt=$1; ini=$3; shift; shift; shift
-+
-+    # Some broken shells destroy the positional arguments when calling a
-+    # shellfunction. Therefore, we save and restore them "by hand" in the
-+    # main_args_while variable.
-+    main_args_while="$@"
-+
-+    kpsewhich -progname=$fmt -format=tex $ini >/dev/null 2>&1
-+    test $? -ne 0 && continue
-+
-+    install_link "$selfautoloc/$fmt" "$symlinkdir/$fmt"
-+
-+    # restore positional arguments:
-+    set x $main_args_while; shift
-   done
- }
- 
-@@ -274,12 +290,12 @@ main()
-   test -f "$cnf_file" || abort "config file \`$cnf' not found"
- 
- 
--  tmpdir=${TMPDIR-${TEMP-${TMP-/tmp}}}/texlinks.$$
-+  tmpdir=${TMPDIR-${TEMP-${TMP-/tmp}}}/texlinks.$$.$RANDOM
-   setupTmpDir
-   cd "$tmpdir" || cleanup 1
- 
--  sed '/^[ 	]*#/d; /^[ 	]*$/d' $cnf_file \
--    | awk '{print $1, $2}' > cnf_file_ln.$$
-+  sed '/^[ 	]*#/d; /^[ 	]*$/d; s%\*%%' $cnf_file \
-+    | awk '{print $1, $2, $NF}' > cnf_file_ln.$$
- 
-   if test -z "$dirs"; then
-     if test $multiplatform = true; then
-@@ -300,13 +316,16 @@ main()
-     # cnf_file_ln.$$ has lines with "format engine" pairs
-     set x `cat cnf_file_ln.$$`; shift
-     while test $# != 0; do
--      fmt=$1; engine=$2; shift; shift
-+      fmt=$1; engine=$2; ini=$3; shift; shift; shift
- 
-       # Some broken shells destroy the positional arguments when calling a
-       # shellfunction. Therefore, we save and restore them "by hand" in the
-       # main_args_while variable.
-       main_args_while="$@"
- 
-+      kpsewhich -progname=$fmt -format=tex $ini >/dev/null 2>&1
-+      test $? -ne 0 && continue
-+
-       test "x$fmt" = "x$engine" && continue
-       if test -f "$d/$engine$exeext"; then
-         case $unlink in
 --- texk/web2c/Makefile.in
 +++ texk/web2c/Makefile.in	2018-04-10 09:02:17.870981997 +0000
-@@ -4947,7 +4947,7 @@ libmd5_a_SOURCES = libmd5/md5.c libmd5/m
+@@ -5085,7 +5085,7 @@ libmd5_a_SOURCES = libmd5/md5.c libmd5/m
  md5main_CPPFLAGS = -I$(srcdir)/libmd5
  md5main_SOURCES = libmd5/md5main.c
  md5main_LDADD = libmd5.a
@@ -1014,7 +582,7 @@
  	$(MAKE) $(AM_MAKEFLAGS) all-recursive
  
  .SUFFIXES:
-@@ -4994,6 +4994,11 @@ w2c/c-auto.h: w2c/stamp-h1
+@@ -5132,6 +5132,11 @@ w2c/c-auto.h: w2c/stamp-h1
  w2c/stamp-h1: $(srcdir)/c-auto.in $(top_builddir)/config.status
  	@rm -f w2c/stamp-h1
  	cd $(top_builddir) && $(SHELL) ./config.status w2c/c-auto.h
@@ -1026,165 +594,8 @@
  $(srcdir)/c-auto.in: @MAINTAINER_MODE_TRUE@ $(am__configure_deps) 
  	($(am__cd) $(top_srcdir) && $(AUTOHEADER))
  	rm -f w2c/stamp-h1
---- texk/web2c/luatexdir/luapplib/ppheap.c
-+++ texk/web2c/luatexdir/luapplib/ppheap.c	2019-05-20 12:04:35.067508800 +0000
-@@ -101,21 +101,25 @@
- #endif 
- 
- typedef struct _simplereg {
--  size_t bucket_pos;
-+  int    heap_instance;
-+  int    bucket_pos;
-   size_t bucket_size;
--  size_t heap_instance;
--  aligned_data **align_data_set ;
--} simplereg;
-+  union {
-+    void *_area;
-+    aligned_data **_set;
-+  } align_data __attribute__ ((aligned(__alignof__(void*))));
-+} simplereg __attribute__ ((aligned(__alignof__(void*))));
- 
- /* By default static vars are initialized to  NULL, but to be clear.. */
- static simplereg *align_set = NULL ; 
- 
- static void align_init_set(void){
-    size_t size ;
-+   int p;
- 
-    if (align_set) {
-      align_set->heap_instance++;
--     return ;
-+     return;
-    }
- 
-    align_set = malloc(sizeof(simplereg)); 
-@@ -125,8 +129,8 @@
-      }
- 
-    size = SIZE_OF_POINTER*ALIGN_BUFF_BUCKET_SIZE;
--   align_set->align_data_set = malloc(size);
--   if (!align_set->align_data_set) {
-+   align_set->align_data._area = malloc(size);
-+   if (!align_set->align_data._area) {
-          fprintf(stderr,"! fatal error: unable to setup register for aligned pointers\n");
-          exit(EXIT_FAILURE);
-      }
-@@ -134,37 +138,40 @@
-    align_set->bucket_pos = 0;
-    align_set->bucket_size = ALIGN_BUFF_BUCKET_SIZE;
-    align_set->heap_instance = 1;
--   memset(align_set->align_data_set, 0UL,size);
-+   memset(align_set->align_data._area, 0, size);
-+   p = align_set->bucket_size;
-+   while (p-- > 0){
-+	  align_set->align_data._set[p] = NULL;
-+     }
- }
- 
- static void align_save_into_set(aligned_data *p){
-    if (align_set->bucket_pos >= align_set->bucket_size) {
-      size_t new_size;
--     aligned_data **align_data_set_new; 
-+     void *align_data_area_new; 
- 
--     if(!align_set->align_data_set){
-+     if(!align_set->align_data._area){
-          fprintf(stderr,"! fatal error: unable to save aligned pointer,corrupted set\n");
-          exit(EXIT_FAILURE);
-      }
-      new_size = (ALIGN_BUFF_BUCKET_SIZE+align_set->bucket_size)*SIZE_OF_POINTER;
--     align_data_set_new = malloc(new_size);
--     if (!align_data_set_new) {
-+     align_data_area_new = malloc(new_size);
-+     if (!align_data_area_new) {
-          fprintf(stderr,"! fatal error: unable to save aligned pointer\n");
-          exit(EXIT_FAILURE);
-      }
--     memset(align_data_set_new,0,new_size);
--     memcpy(align_data_set_new, align_set->align_data_set, align_set->bucket_size*SIZE_OF_POINTER);
--     free(align_set->align_data_set);
--     align_set->align_data_set = align_data_set_new ;
-+     memset(align_data_area_new,0,new_size);
-+     memcpy(align_data_area_new, align_set->align_data._area, align_set->bucket_size*SIZE_OF_POINTER);
-+     free(align_set->align_data._area);
-+     align_set->align_data._area = align_data_area_new ;
-      align_set->bucket_size += ALIGN_BUFF_BUCKET_SIZE;
-    }
-    if (align_set->bucket_pos>align_set->bucket_size){
-      fprintf(stderr,"! fatal error: unable to save aligned pointer, wrong position\n");
-      exit(EXIT_FAILURE);
-    }
--   align_set->align_data_set[align_set->bucket_pos] = p ; 
-+   align_set->align_data._set[align_set->bucket_pos] = p ; 
-    align_set->bucket_pos++;
--
- }
- 
- static void align_free_set(void){
-@@ -174,15 +181,16 @@
-     if (align_set->heap_instance>1) {
-       align_set->heap_instance--;
-     } else if (align_set->heap_instance ==1) {
--      if (align_set->align_data_set){
--	size_t p;
--	for(p=1;p<align_set->bucket_pos;p++){
--	  if (align_set->align_data_set[p]) {
--	    free(align_set->align_data_set[p]);
-+      if (align_set->align_data._area){
-+	int p = align_set->bucket_pos;
-+	while (p-- > 0){
-+	  if (align_set->align_data._set[p]) {
-+	    free(align_set->align_data._set[p]);
-+	    align_set->align_data._set[p] = NULL;
- 	  }
- 	}
--	free(align_set->align_data_set);
--	align_set->align_data_set = NULL;
-+	free(align_set->align_data._area);
-+	align_set->align_data._area = NULL;
-       }
-       align_set->heap_instance=0;
-       free(align_set);
-@@ -225,7 +233,6 @@
- #ifdef PPHEAP_NEED_ALIGNMENT
-     align_free_set();
- #endif  
--
- }
- 
- void ppheap_renew (ppheap *heap)
-@@ -415,7 +422,7 @@
-   // iof_close(O);
- #ifdef PPHEAP_NEED_ALIGNMENT
-   /* Todo: only if data%sizeof(aligned_data) != 0 */
--  p_aligned_data = malloc(size);
-+  p_aligned_data = (aligned_data*)malloc(size);
-   if (!p_aligned_data) {
-     fprintf(stderr,"! fatal error: unable to setup aligned pointer for ppheap_flush\n");
-     exit(EXIT_FAILURE);
---- texk/web2c/luatexdir/luapplib/ppload.c
-+++ texk/web2c/luatexdir/luapplib/ppload.c	2019-05-20 11:59:47.417508800 +0000
-@@ -60,7 +60,7 @@
-    ghost->size = siz - sizeof(_ppname) - 1, \
-   (ppname)(ghost + 1))
- 
--#if ARM_COMPLAINT
-+#if ARM_COMPLIANT
- #define ppname_flush_with_ego(O, ghost, siz, flgs) \
-   (iof_put(O, '\0'), \
-    pad=(O->pos - pos_begin)%(sizeof(ppname*)), \
-@@ -270,7 +270,7 @@
- 
- 
- 
--#if ARM_COMPLIANT 
-+#if 0 // ARM_COMPLIANT  /* Invalid write of size 8 */
- #define ppstring_set_alter_ego(string, ghost, ego) do{ \
-   size_t t = ((ghost)->size + 1); \
-   t = (t%sizeof(ppstring *))==0?t: (t/sizeof(ppstring *)+1)*sizeof(ppstring *); \
 --- texk/web2c/uptexdir/tests/gkhugeng.err
-+++ texk/web2c/uptexdir/tests/gkhugeng.err  2019-05-13 11:22:35.158192154 +0000
++++ texk/web2c/uptexdir/tests/gkhugeng.err	2019-05-13 11:22:35.158192154 +0000
 @@ -1,3 +1,11 @@
 +warning: kpathsea: /etc/texmf/ls-R: No usable entries in ls-R.
 +warning: kpathsea: See the manual for how to generate ls-R.
@@ -1268,7 +679,7 @@
  
  /* Condition for retrying a write */
  #include <errno.h>
-@@ -625,6 +627,26 @@ initGS(void)
+@@ -619,6 +621,26 @@ initGS(void)
  	perror("[xdvik] pipe");
  	return False;
      }

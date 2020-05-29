@@ -16,7 +16,7 @@ Index: texk/web2c/pdftexdir/pdftosrc.cc
 ===================================================================
 --- texk/web2c/pdftexdir/pdftosrc-newpoppler.cc
 +++ texk/web2c/pdftexdir/pdftosrc-newpoppler.cc
-@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
+@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
      Stream *s;
      Object srcStream, srcName, catalogDict;
      FILE *outfile;
@@ -437,7 +437,7 @@ Index: texk/web2c/pdftexdir/pdftosrc.cc
      int rotate;
 --- texk/web2c/pdftexdir/pdftoepdf-poppler0.72.0.cc
 +++ texk/web2c/pdftexdir/pdftoepdf-poppler0.72.0.cc	2019-05-13 08:38:55.432114555 +0000
-@@ -275,7 +275,7 @@ static int getNewObjectNumber(Ref ref)
+@@ -276,7 +276,7 @@ static int getNewObjectNumber(Ref ref)
  
  static void copyObject(Object *);
  
@@ -446,7 +446,7 @@ Index: texk/web2c/pdftexdir/pdftosrc.cc
  {
      pdf_puts("/");
      for (; *s != 0; s++) {
-@@ -287,7 +287,7 @@ static void copyName(char *s)
+@@ -288,7 +288,7 @@ static void copyName(char *s)
      }
  }
  
@@ -455,7 +455,7 @@ Index: texk/web2c/pdftexdir/pdftosrc.cc
  {
      Object obj1;
      copyName((char *)obj->dictGetKey(i));
-@@ -297,7 +297,7 @@ static void copyDictEntry(Object * obj,
+@@ -298,7 +298,7 @@ static void copyDictEntry(Object * obj,
      pdf_puts("\n");
  }
  
@@ -464,7 +464,7 @@ Index: texk/web2c/pdftexdir/pdftosrc.cc
  {
      int i, l;
      if (!obj->isDict())
-@@ -307,10 +307,10 @@ static void copyDict(Object * obj)
+@@ -308,10 +308,10 @@ static void copyDict(Object * obj)
          copyDictEntry(obj, i);
  }
  
@@ -477,7 +477,7 @@ Index: texk/web2c/pdftexdir/pdftosrc.cc
      if (!obj->isDict())
          pdftex_fail("PDF inclusion: invalid dict type <%s>",
                      obj->getTypeName());
-@@ -382,7 +382,7 @@ static bool embeddableFont(Object * font
+@@ -383,7 +383,7 @@ static bool embeddableFont(Object * font
      return false;
  }
  
@@ -486,7 +486,7 @@ Index: texk/web2c/pdftexdir/pdftosrc.cc
  {
      Object fontdict, subtype, basefont, fontdescRef, fontdesc, charset,
          stemV;
-@@ -467,7 +467,7 @@ static void copyFontResources(Object * o
+@@ -468,7 +468,7 @@ static void copyFontResources(Object * o
      pdf_puts(">>\n");
  }
  
@@ -495,7 +495,7 @@ Index: texk/web2c/pdftexdir/pdftosrc.cc
  {
      // copies all other resources (write_epdf handles Fonts and ProcSets),
  
-@@ -554,8 +554,8 @@ static void copyObject(Object * obj)
+@@ -555,8 +555,8 @@ static void copyObject(Object * obj)
      Object obj1;
      int i, l, c;
      Ref ref;
@@ -506,7 +506,7 @@ Index: texk/web2c/pdftexdir/pdftosrc.cc
      if (obj->isBool()) {
          pdf_printf("%s", obj->getBool()? "true" : "false");
      } else if (obj->isInt()) {
-@@ -655,7 +655,7 @@ static void writeRefs()
+@@ -656,7 +656,7 @@ static void writeRefs()
  static void writeEncodings()
  {
      UsedEncoding *r, *n;
@@ -515,7 +515,7 @@ Index: texk/web2c/pdftexdir/pdftosrc.cc
      int i;
      for (r = encodingList; r != 0; r = r->next) {
          for (i = 0; i < 256; i++) {
-@@ -822,7 +822,7 @@ void write_epdf(void)
+@@ -823,7 +823,7 @@ void write_epdf(void)
      Object groupDict;
      bool writeSepGroup = false;
      Object info;

@@ -30,13 +30,13 @@
           ac_configure_args="$ac_configure_args '--enable-native-texlive-build'"])
  AS_CASE([$enable_largefile],
 --- texk/dvipdfm-x/configure.ac
-+++ texk/dvipdfm-x/configure.ac	2019-05-13 10:27:04.041797653 +0000
-@@ -7,7 +7,7 @@ dnl   This file is free software; the co
++++ texk/dvipdfm-x/configure.ac	2020-03-19 13:15:34.631031066 +0000
+@@ -8,7 +8,7 @@ dnl   This file is free software; the co
  dnl   gives unlimited permission to copy and/or distribute it,
  dnl   with or without modifications, as long as this notice is preserved.
  dnl
--AC_INIT([dvipdfm-x (TeX Live)], [20190225], [tex-k@tug.org])
-+AC_INIT([dvipdfmx (TeX Live)], [20190225], [tex-k@tug.org])
+-AC_INIT([dvipdfm-x (TeX Live)], [20200315], [dvipdfmx@tug.org])
++AC_INIT([dvipdfm (TeX Live)], [20200315], [dvipdfmx@tug.org])
  AC_PREREQ([2.65])
  AC_CONFIG_SRCDIR([agl.c])
  AC_CONFIG_AUX_DIR([../../build-aux])

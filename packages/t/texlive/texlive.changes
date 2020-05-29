@@ -1,7 +1,101 @@
 -------------------------------------------------------------------
+Mon May 25 14:52:43 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Clean rpmlintrc as request in SR#805514 
+
+-------------------------------------------------------------------
+Thu May 14 08:46:23 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Correct permissions of wrapper of e.g. mktexlsr (boo#1171341) 
+
+-------------------------------------------------------------------
+Tue May 12 09:03:38 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Correct obsoletes for new packages 
+
+-------------------------------------------------------------------
+Tue May  5 09:01:14 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch source-ppc64.dif to get ppc64 acrch to work
+  (nevertheless ppc64 is currently disabled)
+
+-------------------------------------------------------------------
+Tue May  5 08:56:04 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Avouid conflict with rungs(.tlu) seeing twice in texlive-scripts
+  and texlive-dvipdfmx-bin
+
+-------------------------------------------------------------------
+Wed Apr 29 09:56:08 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch 0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
+  *Support luajit on ppc64/ppc64le
+- Add patch 0006-Fix-register-allocation-bug-in-arm64.patch
+  * luajit fix for arm64
+- Modify spec file to build luajit based programs on ppc64*
+
+-------------------------------------------------------------------
+Wed Apr 22 11:20:57 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- More LuaJIT binaries which are not build on ppc64/ppc64le not fixed
+  since ages https://github.com/LuaJIT/LuaJIT/issues/42
+
+-------------------------------------------------------------------
+Wed Apr 22 10:27:33 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Adopt patch source-poppler0.59.0.patch to latest use of read_pdf_info() 
+
+-------------------------------------------------------------------
+Wed Apr 22 09:49:08 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add a _constraints file to have a better control how much disk
+  space and power we have to get all binaries build and installed
+
+-------------------------------------------------------------------
+Wed Apr 22 06:18:45 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Extend patch source-overflow.dif to catch an overflow found
+  by fortify on ppc64
+- TeXLive 2020 requires harfbuzz >= 2.6
+
+-------------------------------------------------------------------
+Mon Apr 20 07:02:13 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Update to TeXLive 2020
+  * Version based on texlive-20200327-source and biber-2.14
+  * Remove patches now fixed upstream
+    0001-Updated-tests-after-U-C-upgrade-changed-sortinit-hashes.patch
+    source-poppler0.84.0.patch
+    source-common.patch
+    source-fix-axohelp.patch
+    source-synctex-bump-soname.dif
+  * Ported patches
+    biber-certs.dif
+    source-64.dif
+    source-a2ping.dif
+    source-configure.dif
+    source-fix-bool-poppler.patch
+    source-fix-const-poppler0.66.0.patch
+    source-lacheck.dif
+    source-poppler-fix-dict-memleak.patch
+    source-poppler-use-std_string.patch
+    source-psutils-kpathsea.dif
+    source-psutils.dif
+    source-warns.dif
+    source-x11r7.dif
+    source.dif
+   * New patch source-psutils-kpathsea.dif to avoid false positiv
+
+-------------------------------------------------------------------
 Fri Mar 27 01:39:45 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Add source-poppler0.86.0.patch: fix build with poppler 0.86.0.
+
+-------------------------------------------------------------------
+Fri Mar 20 12:12:25 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch source-psutils-kpathsea.dif to ignore warning from
+  kpathsea due missing ls-R files 
 
 -------------------------------------------------------------------
 Wed Mar 11 16:16:55 UTC 2020 - Dr. Werner Fink <werner@suse.de>

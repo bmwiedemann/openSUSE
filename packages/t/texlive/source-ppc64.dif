@@ -1,0 +1,40 @@
+---
+ libs/luajit/configure       |    9 +++++++++
+ libs/luajit/m4/lj-system.m4 |    8 +++++++-
+ 2 files changed, 16 insertions(+), 1 deletion(-)
+
+--- libs/luajit/configure
++++ libs/luajit/configure	2020-04-30 15:42:15.998038368 +0000
+@@ -14300,6 +14300,15 @@ fi
+ fi
+                 if test "x$LJHOST" = xPS3; then :
+   echo '-D PPE -D TOC' >>dynasm_flags
++fi
++                if grep 'LJ_ARCH_PPC_OPD 1' conftest.i >/dev/null 2>&1; then :
++  echo '-D OPD' >>dynasm_flags
++fi
++                if grep 'LJ_ARCH_PPC_OPDENV 1' conftest.i >/dev/null 2>&1; then :
++  echo '-D OPDENV' >>dynasm_flags
++fi
++                if grep 'LJ_ARCH_PPC_ELFV2 1' conftest.i >/dev/null 2>&1; then :
++  echo '-D ELFV2' >>dynasm_flags
+ fi ;; #(
+   *) :
+      ;;
+--- libs/luajit/m4/lj-system.m4
++++ libs/luajit/m4/lj-system.m4	2020-04-30 15:42:03.782274022 +0000
+@@ -87,7 +87,13 @@ AS_CASE([$LJARCH],
+                 AS_IF([grep 'LJ_ARCH_PPC64 ' conftest.i >/dev/null 2>&1],
+                       [DASM_ARCH=ppc64])
+                 AS_IF([test "x$LJHOST" = xPS3],
+-                      [echo '-D PPE -D TOC' >>dynasm_flags])])
++                      [echo '-D PPE -D TOC' >>dynasm_flags])
++                AS_IF([grep 'LJ_ARCH_PPC_OPD 1' conftest.i >/dev/null 2>&1],
++                      [echo '-D OPD' >>dynasm_flags])
++                AS_IF([grep 'LJ_ARCH_PPC_OPDENV 1' conftest.i >/dev/null 2>&1],
++                      [echo '-D OPDENV' >>dynasm_flags])
++                AS_IF([grep 'LJ_ARCH_PPC_ELFV2 1' conftest.i >/dev/null 2>&1],
++                      [echo '-D ELFV2' >>dynasm_flags])])
+ 
+ AS_IF([test "x$build" != "x$host"],
+  [AS_CASE([$LJHOST],

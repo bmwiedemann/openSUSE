@@ -50,7 +50,7 @@ diff --git a/texk/web2c/pdftexdir/pdftoepdf-poppler0.71.0.cc b/texk/web2c/pdftex
 diff --git a/texk/web2c/pdftexdir/pdftoepdf-poppler0.72.0.cc b/texk/web2c/pdftexdir/pdftoepdf-poppler0.72.0.cc
 --- a/texk/web2c/pdftexdir/pdftoepdf-poppler0.72.0.cc
 +++ b/texk/web2c/pdftexdir/pdftoepdf-poppler0.72.0.cc
-@@ -977,7 +977,7 @@ The changes below seem to work fine.
+@@ -978,7 +978,7 @@ The changes below seem to work fine.
              }
              l = dic1.getLength();
              for (i = 0; i < l; i++) {

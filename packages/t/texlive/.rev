@@ -769,4 +769,40 @@
     <comment></comment>
     <requestid>789002</requestid>
   </revision>
+  <revision rev="66" vrev="69">
+    <srcmd5>924227fd41bc5bbc33972c9254c25e8d</srcmd5>
+    <version>unknown</version>
+    <time>1590780006</time>
+    <user>maxlin_factory</user>
+    <comment>- Clean rpmlintrc as request in SR#805514 
+
+- Correct permissions of wrapper of e.g. mktexlsr (boo#1171341) 
+
+- Correct obsoletes for new packages 
+
+- Add patch source-ppc64.dif to get ppc64 acrch to work
+  (nevertheless ppc64 is currently disabled)
+
+- Avouid conflict with rungs(.tlu) seeing twice in texlive-scripts
+  and texlive-dvipdfmx-bin
+
+- Add patch 0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
+  *Support luajit on ppc64/ppc64le
+- Add patch 0006-Fix-register-allocation-bug-in-arm64.patch
+  * luajit fix for arm64
+- Modify spec file to build luajit based programs on ppc64*
+
+- More LuaJIT binaries which are not build on ppc64/ppc64le not fixed
+  since ages https://github.com/LuaJIT/LuaJIT/issues/42
+
+- Adopt patch source-poppler0.59.0.patch to latest use of read_pdf_info() 
+
+- Add a _constraints file to have a better control how much disk
+  space and power we have to get all binaries build and installed
+
+- Extend patch source-overflow.dif to catch an overflow found
+  by fortify on ppc64
+- TeXLive 2020 requires harfbuzz &gt;= 2.6</comment>
+    <requestid>808817</requestid>
+  </revision>
 </revisionlist>

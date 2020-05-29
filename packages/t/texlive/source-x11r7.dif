@@ -4,7 +4,7 @@
 
 --- texk/xdvik/xdvi.h
 +++ texk/xdvik/xdvi.h	2016-01-28 12:20:33.976881969 +0000
-@@ -194,6 +194,12 @@ extern unsigned long time_start, time_en
+@@ -182,6 +182,12 @@ extern unsigned long time_start, time_en
  #include <inttypes.h>
  #endif
  

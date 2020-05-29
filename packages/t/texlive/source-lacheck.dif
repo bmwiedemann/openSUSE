@@ -4,7 +4,7 @@
 
 --- utils/lacheck/lacheck.l
 +++ utils/lacheck/lacheck.l	2016-01-28 12:07:17.472961598 +0000
-@@ -119,6 +119,7 @@
+@@ -121,6 +121,7 @@
  
  #include <stdio.h>
  #include <string.h>

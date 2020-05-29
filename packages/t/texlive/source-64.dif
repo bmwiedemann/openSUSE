@@ -5,7 +5,7 @@
 
 --- configure
 +++ configure	2018-04-10 08:58:00.463820598 +0000
-@@ -20674,6 +20674,10 @@ fi
+@@ -20747,6 +20747,10 @@ fi
    # most powerpc-linux boxes support dynamic linking these days and
    # people can always --disable-shared, the test was removed, and we
    # assume the GNU/Linux dynamic linker is in use.

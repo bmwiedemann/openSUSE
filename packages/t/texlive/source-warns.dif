@@ -1,19 +1,18 @@
 ---
  libs/gmp/Makefile.in                       |    2 +-
  libs/icu/icu-src/source/i18n/decNumber.h   |   22 +++++++++++++---------
- libs/lua52/Makefile.in                     |    4 ++--
  libs/lua53/Makefile.in                     |    4 ++--
  libs/mpfr/Makefile.in                      |    2 +-
- libs/teckit/TECkit-src/source/Compiler.cpp |   17 ++++++++++-------
+ libs/teckit/TECkit-src/source/Compiler.cpp |   12 +++++++-----
  texk/makeindexk/genind.h                   |   16 +++++++++++++++-
  texk/makeindexk/mkind.h                    |   20 +++++++++++++++++---
  texk/makeindexk/scanid.h                   |   16 +++++++++++++++-
  texk/makeindexk/scanst.h                   |   16 +++++++++++++++-
- 10 files changed, 93 insertions(+), 32 deletions(-)
+ 9 files changed, 86 insertions(+), 24 deletions(-)
 
 --- libs/gmp/Makefile.in
 +++ libs/gmp/Makefile.in	2016-06-07 13:29:33.925651292 +0000
-@@ -480,7 +480,7 @@ am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
+@@ -484,7 +484,7 @@ am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
  am__v_lt_0 = --silent
  am__v_lt_1 = 
  COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
@@ -66,7 +65,7 @@
  
 --- libs/lua53/Makefile.in
 +++ libs/lua53/Makefile.in	2016-06-07 13:29:33.925651292 +0000
-@@ -238,11 +238,11 @@ depcomp = $(SHELL) $(top_srcdir)/../../b
+@@ -238,11 +238,11 @@ am__depfiles_remade = ./$(DEPDIR)/luates
  	@LUA53_TREE@/src/$(DEPDIR)/lzio.Plo
  am__mv = mv -f
  COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
@@ -92,28 +91,23 @@
  am__v_CC_ = $(am__v_CC_@AM_DEFAULT_V@)
  am__v_CC_0 = @echo "  CC      " $@;
 --- libs/teckit/TECkit-src/source/Compiler.cpp
-+++ libs/teckit/TECkit-src/source/Compiler.cpp	2016-06-07 13:29:51.653318024 +0000
-@@ -1449,13 +1449,16 @@ Compiler::Compiler(const char* txt, UInt
- 				if (dest != 0) {
- 					int	result = compress2(dest + 8, &destLen, compiledTable, compiledSize, Z_BEST_COMPRESSION);
++++ libs/teckit/TECkit-src/source/Compiler.cpp	2020-03-19 13:42:03.021195717 +0000
+@@ -1451,11 +1451,13 @@ Compiler::Compiler(const char* txt, UInt
  					if (result == Z_OK) {
--						destLen += 8;
--						dest = (Byte*)realloc(dest, destLen); // shrink dest to fit
--						WRITE(((FileHeader*)dest)->type, kMagicNumberCmp);
--						WRITE(((FileHeader*)dest)->version, compiledSize);
+ 						destLen += 8;
+ 						dest = static_cast<Byte*>(realloc(dest, destLen)); // shrink dest to fit
+-						WRITE(reinterpret_cast<FileHeader*>(dest)->type, kMagicNumberCmp);
+-						WRITE(reinterpret_cast<FileHeader*>(dest)->version, compiledSize);
 -						free(compiledTable);
 -						compiledTable = dest;
 -						compiledSize = destLen;
-+						if ((dest = (Byte*)realloc(dest, destLen+8)) != NULL) {
-+							destLen += 8;
-+							WRITE(((FileHeader*)dest)->type, kMagicNumberCmp);
-+							WRITE(((FileHeader*)dest)->version, compiledSize);
++						if (dest != NULL) {
++							WRITE(reinterpret_cast<FileHeader*>(dest)->type, kMagicNumberCmp);
++							WRITE(reinterpret_cast<FileHeader*>(dest)->version, compiledSize);
 +							free(compiledTable);
 +							compiledTable = dest;
 +							compiledSize = destLen;
 +						}
-+						else
-+							free(dest);
  					}
  					else
  						free(dest);

@@ -80,7 +80,7 @@ diff --git a/texk/web2c/pdftexdir/pdftosrc.cc b/texk/web2c/pdftexdir/pdftosrc.cc
 index 3b1d250..7dbee00 100644
 --- a/texk/web2c/pdftexdir/pdftosrc-newpoppler.cc
 +++ b/texk/web2c/pdftexdir/pdftosrc-newpoppler.cc
-@@ -178,9 +178,9 @@ int main(int argc, char *argv[])
+@@ -174,9 +174,9 @@ int main(int argc, char *argv[])
  
                  // parse the header: object numbers and offsets
                  objStr.streamReset();

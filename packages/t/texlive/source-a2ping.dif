@@ -4,7 +4,7 @@
 
 --- texk/texlive/linked_scripts/a2ping/a2ping.pl
 +++ texk/texlive/linked_scripts/a2ping/a2ping.pl	2018-04-10 09:00:52.856579965 +0000
-@@ -1676,7 +1676,7 @@ showpage quit
+@@ -1677,7 +1677,7 @@ showpage quit
        ## print STDERR $res;
        error $?==11 ? "segmentation fault in $GS" : "not a GS output from $GS ($?)"
          if !defined $res # BUGFIX at Sun Mar  7 18:51:34 CET 2004

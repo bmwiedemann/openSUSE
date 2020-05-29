@@ -1,6 +1,7 @@
 ---
+ texk/upmendex/convert.c    |    2 +-
  utils/lacheck/lacheck.test |    3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ 2 files changed, 3 insertions(+), 2 deletions(-)
 
 --- utils/lacheck/lacheck.test
 +++ utils/lacheck/lacheck.test	2018-04-10 08:57:17.672625041 +0000
@@ -11,4 +12,15 @@
 -diff $srcdir/test.old test.out || exit 1
 +test -e $srcdir/test.old || > $srcdir/test.old
 +diff $srcdir/test.old test.out || true
+ 
+--- texk/upmendex/convert.c
++++ texk/upmendex/convert.c	2020-04-22 06:10:54.285427585 +0000
+@@ -187,7 +187,7 @@ static int dcomp(const void *bf1, const
+ int convert(UChar *buff1, UChar *buff2)
+ {
+ 	int i=0,j=0,k;
+-	char errbuff[BUFFERLEN],errbuff2[BUFFERLEN];
++	char errbuff[BUFFERLEN+42],errbuff2[BUFFERLEN];
+ 	int wclen;
+ 	UChar buff3[3];
  

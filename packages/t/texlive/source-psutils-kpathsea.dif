@@ -1,0 +1,42 @@
+---
+ texk/psutils/tests/playnup.2  |    8 ++++++++
+ texk/psutils/tests/playnup1.2 |    8 ++++++++
+ texk/psutils/tests/playps.2   |    8 ++++++++
+ 3 files changed, 24 insertions(+)
+
+--- texk/psutils/tests/playnup.2
++++ texk/psutils/tests/playnup.2	2020-03-20 12:06:37.965805617 +0000
+@@ -1 +1,9 @@
++warning: kpathsea: /etc/texmf/ls-R: No usable entries in ls-R.
++warning: kpathsea: See the manual for how to generate ls-R.
++warning: kpathsea: /var/lib/texmf/ls-R: No usable entries in ls-R.
++warning: kpathsea: See the manual for how to generate ls-R.
++warning: kpathsea: /usr/share/texmf/ls-R: No usable entries in ls-R.
++warning: kpathsea: See the manual for how to generate ls-R.
++warning: kpathsea: /var/cache/texmf/fonts/ls-R: No usable entries in ls-R.
++warning: kpathsea: See the manual for how to generate ls-R.
+ [1] [2] [3] [4] [5] [6] Wrote 6 pages, 16644 bytes
+--- texk/psutils/tests/playnup1.2
++++ texk/psutils/tests/playnup1.2	2020-03-20 12:07:21.136995637 +0000
+@@ -1 +1,9 @@
++warning: kpathsea: /etc/texmf/ls-R: No usable entries in ls-R.
++warning: kpathsea: See the manual for how to generate ls-R.
++warning: kpathsea: /var/lib/texmf/ls-R: No usable entries in ls-R.
++warning: kpathsea: See the manual for how to generate ls-R.
++warning: kpathsea: /usr/share/texmf/ls-R: No usable entries in ls-R.
++warning: kpathsea: See the manual for how to generate ls-R.
++warning: kpathsea: /var/cache/texmf/fonts/ls-R: No usable entries in ls-R.
++warning: kpathsea: See the manual for how to generate ls-R.
+ [1] Wrote 1 pages, 19503 bytes
+--- texk/psutils/tests/playps.2
++++ texk/psutils/tests/playps.2	2020-03-20 12:08:02.816213645 +0000
+@@ -1 +1,9 @@
++warning: kpathsea: /etc/texmf/ls-R: No usable entries in ls-R.
++warning: kpathsea: See the manual for how to generate ls-R.
++warning: kpathsea: /var/lib/texmf/ls-R: No usable entries in ls-R.
++warning: kpathsea: See the manual for how to generate ls-R.
++warning: kpathsea: /usr/share/texmf/ls-R: No usable entries in ls-R.
++warning: kpathsea: See the manual for how to generate ls-R.
++warning: kpathsea: /var/cache/texmf/fonts/ls-R: No usable entries in ls-R.
++warning: kpathsea: See the manual for how to generate ls-R.
+ [1] [2] [3] [4] [5] [6] Wrote 6 pages, 16696 bytes

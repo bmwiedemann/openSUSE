@@ -1,0 +1,25 @@
+<constraints>
+  <hardware>
+    <disk>
+      <size unit="G">4</size>
+    </disk>
+    <physicalmemory>
+      <size unit="G">4</size>
+    </physicalmemory>
+    <processors>4</processors>
+  </hardware>
+  <overwrite>
+    <conditions>
+      <arch>x86_64</arch>
+      <arch>ppc64le</arch>
+      <arch>s390x</arch>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">6</size>
+      </memory>
+      <processors>8</processors>
+    </hardware>
+  </overwrite>
+</constraints>

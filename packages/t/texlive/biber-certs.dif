@@ -4,18 +4,18 @@
  2 files changed, 2 insertions(+), 1 deletion(-)
 
 --- Build.PL
-+++ Build.PL	2018-04-12 12:07:59.531719830 +0000
-@@ -54,7 +54,6 @@ my $builder = $class->new(
++++ Build.PL	2020-03-20 11:01:12.391105105 +0100
+@@ -55,7 +55,6 @@ my $builder = $class->new(
                   'List::AllUtils' => 0,
                   'List::MoreUtils' => 0,
                   'List::MoreUtils::XS' => 0,
 -                 'Mozilla::CA' =>  '20160104',
                   'Regexp::Common' => 0,
                   'Log::Log4perl' => 0,
-                  'Unicode::Collate' => '1.25',
+                  'Unicode::Collate' => '1.27',
 --- bin/biber
 +++ bin/biber	2018-04-12 12:06:39.913188617 +0000
-@@ -116,6 +116,8 @@ GetOptions(
+@@ -123,6 +123,8 @@ GetOptions(
            ) or pod2usage(-verbose => 0,
                           -exitval => EXIT_ERROR);
  

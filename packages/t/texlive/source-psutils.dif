@@ -1,9 +1,9 @@
 ---
- texk/psutils/psutils-1.23/epsffit.c |   13 +++++++++----
+ texk/psutils/psutils-src/epsffit.c |   13 +++++++++----
  1 file changed, 9 insertions(+), 4 deletions(-)
 
---- texk/psutils/psutils-1.23/epsffit.c
-+++ texk/psutils/psutils-1.23/epsffit.c	2009-08-28 14:47:37.000000000 +0000
+--- texk/psutils/psutils-src/epsffit.c
++++ texk/psutils/psutils-src/epsffit.c	2009-08-28 14:47:37.000000000 +0000
 @@ -147,9 +147,14 @@ main(int argc, char **argv)
  	 yoffset -= lly * yscale;
        }
