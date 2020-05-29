@@ -19,17 +19,17 @@
 %define qt5_snapshot 0
 %define libname libQt5WebChannel5
 %define base_name libqt5
-%define real_version 5.14.1
-%define so_version 5.14.1
-%define tar_version qtwebchannel-everywhere-src-5.14.1
+%define real_version 5.15.0
+%define so_version 5.15.0
+%define tar_version qtwebchannel-everywhere-src-5.15.0
 Name:           libqt5-qtwebchannel
-Version:        5.14.1
+Version:        5.15.0
 Release:        0
 Summary:        Qt 5 WebChannel Addon
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qtbase-private-headers-devel >= %{version}

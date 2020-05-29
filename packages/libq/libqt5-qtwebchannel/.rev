@@ -191,4 +191,12 @@
     <comment>Update to 5.14.1</comment>
     <requestid>768131</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6df5e23d4efb90afd5a24eb744bdb0e1</srcmd5>
+    <version>5.15.0</version>
+    <time>1590779733</time>
+    <user>maxlin_factory</user>
+    <comment>Qt 5.15.0</comment>
+    <requestid>809419</requestid>
+  </revision>
 </revisionlist>
