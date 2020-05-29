@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtwayland
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,21 +19,19 @@
 %define qt5_snapshot 0
 %define libname libQt5WaylandCompositor5
 %define base_name libqt5
-%define real_version 5.14.1
-%define so_version 5.14.1
-%define tar_version qtwayland-everywhere-src-5.14.1
+%define real_version 5.15.0
+%define so_version 5.15.0
+%define tar_version qtwayland-everywhere-src-5.15.0
 Name:           libqt5-qtwayland
-Version:        5.14.1
+Version:        5.15.0
 Release:        0
 Summary:        Qt 5 Wayland Addon
 # The wayland compositor files are GPL-3.0-or-later
 License:        GPL-3.0-or-later AND (LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
-# PATCH-FIX-OPENSUSE
-Patch100:       fix-return-nonvoid-function.patch
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qtbase-private-headers-devel >= %{version}
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{version}
@@ -46,10 +44,6 @@ BuildRequires:  pkgconfig(wayland-server) >= 1.1.0
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xkbcommon) >= 0.2.0
 Conflicts:      qtwayland
-%if 0%{?suse_version} < 1330
-# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-BuildRequires:  gcc7-c++
-%endif
 %if %{qt5_snapshot}
 #to create the forwarding headers
 BuildRequires:  perl
@@ -123,15 +117,7 @@ Examples for libqt5-qtwayland module.
 mkdir .git
 %endif
 %{_libqt5_qmake} \
-%if 0%{?suse_version} < 1330
-    QMAKE_CC=gcc-7 QMAKE_CXX=g++-7 CONFIG+=c++14 \
-%endif
 	CONFIG+=wayland-compositor
-
-%if 0%{?suse_version} < 1330
-    export CC=gcc-7
-    export CXX=g++-7
-%endif
 
 %make_jobs
 

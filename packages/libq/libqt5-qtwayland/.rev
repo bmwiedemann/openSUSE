@@ -275,4 +275,12 @@ This is a part of the 5.4 release, but can be built and used with older Qt relea
     <comment>Update to 5.14.1</comment>
     <requestid>768130</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>25aca4b793cea22445cb5e87da57b0f0</srcmd5>
+    <version>5.15.0</version>
+    <time>1590779730</time>
+    <user>maxlin_factory</user>
+    <comment>Qt 5.15.0</comment>
+    <requestid>809418</requestid>
+  </revision>
 </revisionlist>
