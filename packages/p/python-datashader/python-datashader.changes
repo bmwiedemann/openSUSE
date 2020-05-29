@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed May 27 07:06:34 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.11.0
+  New features (see getting_started/2_Pipeline.ipynb for examples):
+    New by() categorical aggregator, extending count_cat to work with other reduction functions, no longer just count. Allows binning of aggregates separately per category value, so that you can compare how that aggregate is affected by category value. (#875, #902, #904, #906)
+    Support for negative and zero values in tf.shade for categorical aggregates. (#896, #909, #910, #908)
+    Support for span in _colorize(). (#875, #910)
+    Support for Dask-based quadmesh rendering for rectilinear and curvilinear mesh types (#885, #913)
+    Support for Dask-based raster mesh rendering (via Canvas.quadmesh) (#872)
+    Faster TMS tileset generation (#886)
+    Expanded performance guide (#868)
+  Bugfixes:
+    Misc bugfixes and improvements (#874, #882, #888, #889, #890, #891)
+  Compatibility (breaking changes and deprecations):
+    To allow negative-valued aggregates, count_cat now weights categories according to how far they are from the minimum aggregate value observed, while previously they were referenced to zero. Previous behavior can be restored by passing color_baseline=0 to count_cat or by.
+    count_cat is now deprecated and removed from the docs; use by(..., count()) instead.
+    Result of a count() aggregation is now uint32, not int32, to distinguish counts from other aggregation types (#910).
+    tf.shade now only treats zero values as missing for count aggregates (uint); zero is otherwise a valid value distinct from NaN (#910).
+    alpha is now respected as the upper end of the alpha range for both _colorize() and _interpolate() in tf.shade; previously only _interpolate respected it.
+    Added new nansum_missing utility for working with Numpy>1.9, where nansum no longer returns NaN for all-NaN values.
+    ds.geo and ds.spatial modules are now deprecated; their contents have moved to xarray_spatial and spatialpandas, respectively. (#894)
+
+-------------------------------------------------------------------
+Tue May 26 07:22:31 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Fri Feb 21 12:47:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.10.0:

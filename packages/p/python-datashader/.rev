@@ -125,4 +125,12 @@
   * Compatibility with new pandas, numba and llvm</comment>
     <requestid>777954</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>efbc0393551647db775cfd392e6216df</srcmd5>
+    <version>0.11.0</version>
+    <time>1590780156</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809427</requestid>
+  </revision>
 </revisionlist>

@@ -24,7 +24,7 @@
 %endif
 %define         skip_python2 1
 Name:           python-datashader
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        Data visualization toolchain based on aggregating into a grid
 License:        BSD-3-Clause
@@ -54,6 +54,8 @@ Requires:       python-scikit-image
 Requires:       python-scipy
 Requires:       python-toolz >= 0.7.4
 Requires:       python-xarray >= 0.9.6
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module DataShape >= 0.5.1}
@@ -110,6 +112,7 @@ sed -i -e '/^#!\//, 1d' examples/*.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/datashader
 %{python_expand %fdupes %{buildroot}%{$python_sitelib}
 chmod a-x %{buildroot}%{$python_sitelib}/datashader/examples/filetimes.py
 }
@@ -121,10 +124,16 @@ export PYTHONPATH=examples
 %pytest datashader/tests --doctest-modules --doctest-ignore-import-errors
 %endif
 
+%post
+%python_install_alternative datashader
+
+%postun
+%python_uninstall_alternative datashader
+
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%python3_only %{_bindir}/datashader
+%python_alternative %{_bindir}/datashader
 %{python_sitelib}/datashader*
 
 %changelog
