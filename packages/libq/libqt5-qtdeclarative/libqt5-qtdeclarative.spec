@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtdeclarative
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,22 +19,25 @@
 %define qt5_snapshot 0
 %define libname libQtQuick5
 %define base_name libqt5
-%define real_version 5.14.1
-%define so_version 5.14.1
-%define tar_version qtdeclarative-everywhere-src-5.14.1
+%define real_version 5.15.0
+%define so_version 5.15.0
+%define tar_version qtdeclarative-everywhere-src-5.15.0
 Name:           libqt5-qtdeclarative
-Version:        5.14.1
+Version:        5.15.0
 Release:        0
 Summary:        Qt 5 Declarative Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM https://codereview.qt-project.org/c/qt/qtdeclarative/+/299258/1
+Patch1:         fix-subpixel-positioned-text.patch
 # PATCH-FIX-OPENSUSE sse2_nojit.patch -- enable JIT and sse2 only on sse2 case
 Patch100:       sse2_nojit.patch
 # PATCH-FIX-OPENSUSE Switch to use python3 at build time
 Patch102:       qtdeclarative-switch-to-python3.patch
+Patch103:       qtdeclarative-5.15.0-FixMaxXMaxYExtent.patch
 BuildRequires:  fdupes
 BuildRequires:  libQt5Core-private-headers-devel >= %{version}
 BuildRequires:  libQt5Gui-private-headers-devel >= %{version}
@@ -226,6 +229,8 @@ popd
 %{_libqt5_archdatadir}/qml/Qt/labs/sharedimage/
 %{_libqt5_archdatadir}/qml/Qt/labs/qmlmodels/
 %{_libqt5_archdatadir}/qml/Qt/labs/wavefrontmesh/
+%dir %{_libqt5_archdatadir}/qml/Qt/test
+%{_libqt5_archdatadir}/qml/Qt/test/qtestroot/
 %{_libqt5_plugindir}/qmltooling
 
 %files private-headers-devel
@@ -246,8 +251,11 @@ popd
 %{_libqt5_libdir}/libQt5Q*.so
 %{_libqt5_libdir}/libQt5*.a
 %{_libqt5_libdir}/pkgconfig/Qt5Q*.pc
+%{_libqt5_libdir}/metatypes/qt5quick*_metatypes.json
+%{_libqt5_libdir}/metatypes/qt5qml*_metatypes.json
 %{_libqt5_archdatadir}/mkspecs/modules/*.pri
 %{_libqt5_archdatadir}/mkspecs/features/qmlcache.prf
+%{_libqt5_archdatadir}/mkspecs/features/qmltypes.prf
 %{_libqt5_archdatadir}/mkspecs/features/qtquickcompiler.prf
 %{_libqt5_archdatadir}/qml/QtTest
 

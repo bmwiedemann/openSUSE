@@ -544,4 +544,12 @@ depends on sr#251413</comment>
     <comment>Update to 5.14.1</comment>
     <requestid>768108</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>ff2307cbeb2095592d1d573ba9e9a81c</srcmd5>
+    <version>5.15.0</version>
+    <time>1590779642</time>
+    <user>maxlin_factory</user>
+    <comment>Qt 5.15.0</comment>
+    <requestid>809291</requestid>
+  </revision>
 </revisionlist>
