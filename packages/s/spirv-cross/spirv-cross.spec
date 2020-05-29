@@ -16,8 +16,8 @@
 #
 
 
-%define _ver 2020-04-03
-%define _libver 0.30.0
+%define _ver 2020-05-19
+%define _libver 0.33.0
 %define _sover 0
 %define _libname libspirv-cross-c-shared
 %define _libpkg %{_libname}%{_sover}
