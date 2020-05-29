@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 29 10:38:57 UTC 2020 - Vladimir Nadvornik <nadvornik@suse.com>
+
+- version 0.12.1590748670.86b0749
+- make sure all release packages are installed (bsc#1171652)
+
+-------------------------------------------------------------------
 Tue Jan 28 14:31:24 UTC 2020 - Vladimir Nadvornik <nadvornik@suse.com>
 
 - version 0.12.1580220831.7102be8

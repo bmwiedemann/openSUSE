@@ -1,7 +1,7 @@
 #
 # spec file for package zypper-migration-plugin
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           zypper-migration-plugin
-Version:        0.12.1580220831.7102be8
+Version:        0.12.1590748670.86b0749
 Release:        0
-Url:            https://github.com/SUSE/zypper-migration
+URL:            https://github.com/SUSE/zypper-migration
 Requires:       zypper >= 1.11.38
 Requires:       rubygem(%{rb_default_ruby_abi}:suse-connect) >= 0.3.10
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

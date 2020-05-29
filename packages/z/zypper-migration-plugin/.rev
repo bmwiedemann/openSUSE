@@ -114,4 +114,14 @@
     <comment>fix jira number in previous submit</comment>
     <requestid>768332</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e9a31e110a9ab18805723b6bb569e401</srcmd5>
+    <version>0.12.1590748670.86b0749</version>
+    <time>1590780264</time>
+    <user>maxlin_factory</user>
+    <comment>- version 0.12.1590748670.86b0749
+- make sure all release packages are installed (bsc#1171652)
+</comment>
+    <requestid>810197</requestid>
+  </revision>
 </revisionlist>
