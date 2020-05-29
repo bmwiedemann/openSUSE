@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 27 17:27:17 UTC 2020 - maiku.fabian@gmail.com
+
+- Update to 2.9.1
+- Translation updates form Weblate for fr, nl, zh_TW
+- Make keyboard shortcuts like Control+a work on non-ASCII keyboard layouts
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/107)
+- Fix broken adding of key bindings
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/109)
+
+-------------------------------------------------------------------
 Wed May 20 17:20:29 UTC 2020 - maiku.fabian@gmail.com
 
 - Update to 2.9.0
