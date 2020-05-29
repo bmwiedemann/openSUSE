@@ -1,0 +1,31 @@
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Subject: Fix build against OpenSSL 1.1.0
+
+Leap 15.1 still has it and we can't switch away without breaking the world.
+
+Index: qtbase-everywhere-src-5.15.0-rc/src/network/ssl/qsslsocket_openssl_symbols.cpp
+===================================================================
+--- qtbase-everywhere-src-5.15.0-rc.orig/src/network/ssl/qsslsocket_openssl_symbols.cpp
++++ qtbase-everywhere-src-5.15.0-rc/src/network/ssl/qsslsocket_openssl_symbols.cpp
+@@ -373,7 +373,7 @@ DEFINEFUNC3(void, SSL_set_bio, SSL *a, a
+ DEFINEFUNC(void, SSL_set_accept_state, SSL *a, a, return, DUMMYARG)
+ DEFINEFUNC(void, SSL_set_connect_state, SSL *a, a, return, DUMMYARG)
+ DEFINEFUNC(int, SSL_shutdown, SSL *a, a, return -1, return)
+-DEFINEFUNC(int, SSL_in_init, const SSL *a, a, return 0, return)
++DEFINEFUNC(int, SSL_in_init, SSL *a, a, return 0, return)
+ DEFINEFUNC(int, SSL_get_shutdown, const SSL *ssl, ssl, return 0, return)
+ DEFINEFUNC2(int, SSL_set_session, SSL* to, to, SSL_SESSION *session, session, return -1, return)
+ DEFINEFUNC(void, SSL_SESSION_free, SSL_SESSION *ses, ses, return, DUMMYARG)
+Index: qtbase-everywhere-src-5.15.0-rc/src/network/ssl/qsslsocket_openssl_symbols_p.h
+===================================================================
+--- qtbase-everywhere-src-5.15.0-rc.orig/src/network/ssl/qsslsocket_openssl_symbols_p.h
++++ qtbase-everywhere-src-5.15.0-rc/src/network/ssl/qsslsocket_openssl_symbols_p.h
+@@ -516,7 +516,7 @@ void q_SSL_set_bio(SSL *a, BIO *b, BIO *
+ void q_SSL_set_accept_state(SSL *a);
+ void q_SSL_set_connect_state(SSL *a);
+ int q_SSL_shutdown(SSL *a);
+-int q_SSL_in_init(const SSL *s);
++int q_SSL_in_init(SSL *s);
+ int q_SSL_get_shutdown(const SSL *ssl);
+ int q_SSL_set_session(SSL *to, SSL_SESSION *session);
+ void q_SSL_SESSION_free(SSL_SESSION *ses);

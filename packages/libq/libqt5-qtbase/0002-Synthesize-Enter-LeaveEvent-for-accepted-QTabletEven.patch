@@ -22,11 +22,11 @@ Change-Id: Ifbad6284483ee282ad129db54606f5d0d9ddd633
  src/widgets/kernel/qwidgetwindow.cpp | 12 ++++++++++++
  1 file changed, 12 insertions(+)
 
-diff --git a/src/widgets/kernel/qwidgetwindow.cpp b/src/widgets/kernel/qwidgetwindow.cpp
-index fbc71cd0ea..729a7f701a 100644
---- a/src/widgets/kernel/qwidgetwindow.cpp
-+++ b/src/widgets/kernel/qwidgetwindow.cpp
-@@ -1051,6 +1051,18 @@ void QWidgetWindow::handleTabletEvent(QTabletEvent *event)
+Index: qtbase-everywhere-src-5.15.0-alpha/src/widgets/kernel/qwidgetwindow.cpp
+===================================================================
+--- qtbase-everywhere-src-5.15.0-alpha.orig/src/widgets/kernel/qwidgetwindow.cpp
++++ qtbase-everywhere-src-5.15.0-alpha/src/widgets/kernel/qwidgetwindow.cpp
+@@ -1075,6 +1075,18 @@ void QWidgetWindow::handleTabletEvent(QT
          event->setAccepted(ev.isAccepted());
      }
  
@@ -43,8 +43,5 @@ index fbc71cd0ea..729a7f701a 100644
 +    }
 +
      if (event->type() == QEvent::TabletRelease && event->buttons() == Qt::NoButton)
-         qt_tablet_target = 0;
+         qt_tablet_target = nullptr;
  }
--- 
-2.21.0
-
