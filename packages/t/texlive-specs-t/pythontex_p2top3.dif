@@ -1,0 +1,30 @@
+---
+ texmf-dist/doc/latex/pythontex/syncpdb.py   |    2 +-
+ texmf-dist/scripts/pythontex/depythontex.py |    2 +-
+ texmf-dist/scripts/pythontex/pythontex.py   |    2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+--- texmf-dist/scripts/pythontex/depythontex.py
++++ texmf-dist/scripts/pythontex/depythontex.py	2020-04-27 06:50:32.466503766 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ 
+ '''
+--- texmf-dist/scripts/pythontex/pythontex.py
++++ texmf-dist/scripts/pythontex/pythontex.py	2020-04-27 06:50:21.926703761 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ 
+ '''
+--- texmf-dist/doc/latex/pythontex/syncpdb.py
++++ texmf-dist/doc/latex/pythontex/syncpdb.py	2020-04-27 07:49:15.051750705 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ 
+ '''
