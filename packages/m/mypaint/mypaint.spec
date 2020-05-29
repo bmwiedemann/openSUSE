@@ -1,7 +1,7 @@
 #
 # spec file for package mypaint
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define skip_python2 1
 Name:           mypaint
@@ -30,15 +31,15 @@ BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  librsvg
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-cairo-devel
 BuildRequires:  python3-devel
 BuildRequires:  python3-gobject-devel
 BuildRequires:  python3-numpy >= 1.5
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-setuptools
-BuildRequires:  python-rpm-macros
-BuildRequires:  librsvg
 BuildRequires:  swig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0)
@@ -49,10 +50,11 @@ BuildRequires:  pkgconfig(libmypaint) >= 1.5.0
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(mypaint-brushes-2.0) >= 2.0.2
 BuildRequires:  pkgconfig(pygobject-3.0)
-Requires:       python3-numpy >= 1.7
+Requires:       mypaint-brushes >= 2.0.2
 Requires:       python3-gobject-Gdk
+Requires:       python3-numpy >= 1.7
+Requires:       python3-pycairo
 Recommends:     %{name}-lang = %{version}
-Recommends:     mypaint-brushes >= 2.0.2
 %lang_package
 
 %description
