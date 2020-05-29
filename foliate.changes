@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri May 29 08:07:24 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 2.2.0:
+  * Library:
+    - A library view showing recent books and reading progress
+    - Search books by metadata
+    - E-book discovery with OPDS
+  * New supported formats:
+    - FictionBook (.fb2, .fb2.zip) (#128)
+    - Comic book archive (.cbr, .cbz, .cbt, .cb7)
+    - Plain text (.txt) (#226)
+    - Unpacked EPUB files
+  * Layout:
+    - Option to set maximum page width
+    - The "Automatic" layout will now show four columns 
+      when the page width is wide
+  * Image viewer:
+    - Improved image viewer, with new shortcuts and the ability 
+      to rotate and invert images
+    - Option to disable image viewer, or to open images on double, 
+      middle, or right click
+  * Text-to-speech:
+    - Improved text-to-speech configuration UI
+    - Ability to set text-to-speech voice based on book language
+  * Annotations
+    - Import annotations from JSON
+    - Search in annotations
+    - Annotations are now sorted in the same order as they appear 
+      in the book
+  * Security:
+    - "Allow Unsafe Content" now only enables JavaScript; external 
+      content will no longer be loaded. This is an important 
+      security fix. If you are running an old version of Foliate 
+      and cannot upgrade, you should disable 
+      "Allow Unsafe Content".
+    - WebKit processes are now sandboxed
+  * Other featues and fixes:
+    - Improved support for vertical and right-to-left books
+    - Support for StarDict dictionaries
+    - Fixed current location not preserved when resizing
+    - Fixed auto-hiding header bar under some themes
+    - Command-line options for showing version and adding books 
+      to library
+    - Option to clear or disable cache
+    - When an HTML page contains invalid self-closing anchor tags, 
+      it is now parsed as XHTML
+- Add fdupes BuildRequires and macro call, remove duplicate files.
+
+-------------------------------------------------------------------
 Thu Apr  9 05:21:32 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 2.1.1:
