@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu May 28 10:37:56 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Use Supplements: packageand(%{name}:bash) instead of Suggests
+
+-------------------------------------------------------------------
+Thu May 28 07:40:31 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Install bash, fish and zsh completions
+
+-------------------------------------------------------------------
+Thu May 28 07:21:01 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.0:
+  Added:
+  * Improve Arrow 0.15.0 support after changes in arrow.get() behavior
+  (#296)
+  * Watson now suggests correct command if users make small typo (#318)
+  Changed:
+  * Always show total time at bottom of report (#356)
+  * Use the default system newline character for CSV output (#366).
+  Fixed:
+  * Stylize prompt to create new project or tag (#310).
+  * Aggregate calculates wrong time if used with --current (#293)
+  * The start command now correctly checks if project is empty (#322)
+  * Aggregate ignores frames that crosses aggregate boundary (#248)
+  * The report and aggregate commands with --json option now correctly
+    encode Arrow objects (#329)
+
+-------------------------------------------------------------------
 Wed May 27 20:00:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove rhetorics from description. Use %autosetup.

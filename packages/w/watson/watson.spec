@@ -18,7 +18,7 @@
 
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 Name:           watson
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        CLI time tracker
 License:        MIT
@@ -35,6 +35,36 @@ BuildArch:      noarch
 Watson helps managing time. It can tell how much time was spent on projects.
 It generates reports for clients.
 
+%package bash-completion
+Summary:        Bash completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    packageand(%{name}:bash)
+BuildArch:      noarch
+
+%description bash-completion
+Bash command line completion support for %{name}.
+
+%package fish-completion
+Summary:        Fish completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    packageand(%{name}:fish)
+BuildArch:      noarch
+
+%description fish-completion
+Fish command line completion support for %{name}.
+
+%package zsh-completion
+Summary:        Zsh completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    packageand(%{name}:zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+Zsh command line completion support for %{name}.
+
 %prep
 %autosetup -n Watson-%{version}
 
@@ -43,11 +73,26 @@ It generates reports for clients.
 
 %install
 %python3_install
+install -D -m 0644 watson.zsh-completion %{buildroot}%{_datadir}/zsh/site-functions/_watson
+mkdir -p %{buildroot}%{_datadir}%{_datadir}/fish/vendor_completions.d/
+install -D -m 0644 watson.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/watson.fish
+install -D -m 0644 watson.completion  %{buildroot}%{_datadir}/bash-completion/completions/watson
 
 %files
 %license LICENSE
 %doc CHANGELOG.md README.rst
 %{_bindir}/watson
 %{python_sitelib}/*
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/
+
+%files fish-completion
+%dir %{_datadir}/fish/
+%{_datadir}/fish/vendor_completions.d/
+
+%files zsh-completion
+%dir %{_datadir}/zsh/
+%{_datadir}/zsh/site-functions/
 
 %changelog
