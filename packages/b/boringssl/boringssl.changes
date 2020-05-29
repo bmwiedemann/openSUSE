@@ -1,4 +1,234 @@
 -------------------------------------------------------------------
+Thu May 28 11:48:37 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Rectify groups.
+
+-------------------------------------------------------------------
+Wed May 27 18:40:47 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Remove patch for enabling shared linking - it was enabled
+  upstream.
+  * 0001-add-soversion-option.patch
+- Add boringssl-source subpackage.
+
+-------------------------------------------------------------------
+Wed May 27 14:18:19 UTC 2020 - mrostecki@suse.com
+
+- Update to version 20200122:
+  * Define EVP compatibility constants for X448 and Ed448.
+  * Allow shared libraries in the external CMake build.
+  * Add a few little-endian functions to CBS/CBB.
+  * Move iOS asm tricks up in external CMake build.
+  * Try again to deal with expensive tests.
+  * Restore ARM CPU variation tests on builders.
+  * Remove SSL_CTX_set_rsa_pss_rsae_certs_enabled.
+  * Work around another NULL/0 C language bug.
+  * Use the MAYBE/DISABLED pattern in RSATest.BlindingCacheConcurrency.
+  * Switch an #if-0-gated test to DISABLED_Foo.
+  * Proxy: send whole SSL records through the handshaker.
+  * Disable Wycheproof primality test cases on non-x86 (too slow)
+  * test_state.cc: serialize the test clock.
+  * Output after every Wycheproof primality test.
+  * Maybe fix generated-CMake build on Android and iOS.
+  * Detect the NDK path from CMAKE_TOOLCHAIN_FILE.
+  * Tell Go to build for GOOS=android when running on Android.
+  * Reland bitsliced aes_nohw implementation.
+  * Add bssl client option to load a hashed directory of cacerts.
+  * No-op change to run the new NO_SSE2 builders.
+  * Clarify that we perform the point-on-curve check.
+  * Reduce size of BlindingCacheConcurrency test under TSAN.
+  * Compare vpaes/bsaes conversions against a reference implementation.
+  * Enable the SSE2 Poly1305 implementation on clang-cl.
+  * Remove alignment requirement on CRYPTO_poly1305_finish.
+  * Fix double-free under load.
+  * Add some XTS tests.
+  * Add EncodeHex and DecodeHex functions to test_util.h.
+  * Revert "Replace aes_nohw with a bitsliced implementation."
+  * Replace aes_nohw with a bitsliced implementation.
+  * Switch HRSS inversion algorithm.
+  * Run EVP_CIPHER tests in-place.
+  * Add an option to disable SSE2 intrinsics for testing.
+  * Dummy change to trigger master-with-bazel builder.
+  * Drop use of alignas(64) in aead_test.cc
+  * Add standalone CMake build to generate_build_files.py
+  * TLS 1.3 split handshake initial support.
+  * Import Wycheproof primality tests.
+  * Split BN_prime_checks into two constants for generation and validation.
+  * Add some Miller-Rabin tests from Wycheproof.
+  * Import Wycheproof PKCS#1 decrypt tests.
+  * Import Wycheproof OAEP tests.
+  * Import Wycheproof PKCS#1 signing tests.
+  * Skip JWK keys when converting Wycheproof tests.
+  * Import Wycheproof's size-specific RSA PKCS#1 verifying tests.
+  * Handle "acceptable" Wycheproof inputs unambiguously.
+  * Import Wycheproof XChaCha20-Poly1305 tests.
+  * Import Wycheproof HMAC tests.
+  * Import Wycheproof HKDF tests.
+  * bytestring: add methods for int64.
+  * Update Wycheproof test vectors.
+  * Add mock QUIC transport to runner
+  * Add test vectors for CVE-2019-1551 (not affected).
+  * Fix check_bn_tests.go.
+  * Fix MSan error in SSLTest.Handoff test.
+  * SSLTest.Handoff: extend to include a session resumption.
+  * inject_hash preserves filemode
+  * Move TLS 1.3 state machine constants to internal.h.
+  * Add a ppc64le ABI tester.
+  * Allocate small TLS read buffers inline.
+  * Remove unused labels from ARM ABI test assembly.
+  * Update AAPCS and AAPCS64 links.
+  * Fix EVP_has_aes_hardware on ppc64le.
+  * Remove remnants of end_of_early_data alert from tests.
+  * Add a test for ERR_error_string_n.
+  * Remove post-quantum experiment signal extension.
+  * Give ERR_error_string_n a return value for convenience.
+  * Defer early keys to QUIC clients to after certificate reverification.
+  * Defer releasing early secrets to QUIC servers.
+  * Halve the size of the kNIDsIn* constants
+  * modulewrapper: manage buffer with |unique_ptr|.
+  * Add missing boringssl_prefix_symbols_asm.h include.
+  * acvptool: add support for ECDSA
+  * Inline gcm_init_4bit into gcm_init_ssse3.
+  * Vectorize gcm_mul32_nohw and replace gcm_gmult_4bit_mmx.
+  * Add a constant-time fallback GHASH implementation.
+  * Conditionally define PTRACE_O_EXITKILL in urandom_test.cc
+  * Fix build warning if _SCL_SECURE_NO_WARNINGS is defined globally
+  * modulewrapper: use a raw string.
+  * acvptool: add license headers.
+  * Enable TLS 1.3 by default.
+  * acvptool: Add support for DRBG
+  * Discard user_canceled alerts in TLS 1.3.
+  * Work around more C language bugs with empty spans.
+  * No-op commit to test the new builder.
+  * acvptool: Add support for HMAC
+  * Add stub functions for RSA-PSS keygen parameters.
+  * HelloRetryRequest getter
+  * Add break-tests-android.sh script.
+  * Add compatibility functions for sigalgs
+  * Run AES-192-GCM in CAVP tests.
+  * Rename a number of BUF_* functions to OPENSSL_*.
+  * List bn_div fuzzer in documentation.
+  * Reenable bn_div fuzzer.
+  * Drop CECPQ2b code.
+  * Add urandom_test to all_tests.json
+  * Fix the standalone Android FIPS build.
+  * Add sanity checks to FIPS module construction.
+  * Correct relative path.
+  * Add test for urandom.c
+  * break-hash.go: Search ELF dynamic symbols if symbols not found.
+  * Fix $OPENSSL_ia32cap handling.
+  * Switch probable_prime to rejection sampling.
+  * Rename the last remnants of the early_data_info extension.
+  * Fix up BN_GENCB_call calls.
+  * Do fewer trial divisions for larger RSA keygens.
+  * Fix GRND_NONBLOCK flag when calling getrandom.
+  * Simplify bn_miller_rabin_iteration slightly.
+  * Add some notes on RSA key generation performance.
+  * Break early on composites in the primality test.
+  * Extract and test the deterministic part of Miller-Rabin.
+  * Fix the FIPS + fuzzing build.
+  * FIPS.md: document some recent Android changes.
+  * Add a function to derive an EC key from some input secret.
+  * Fix run_android_tests.go with shared library builds.
+  * No-op change to test new builders.
+  * Move no-exec-stack sections outside of #ifs.
+  * Add |SSL_get_min_proto_version| and |SSL_get_max_proto_version|
+  * Make FIPS build work for Android cross-compile.
+  * Enable optional GRND_RANDOM flag to be passed to getrandom on Android.
+  * Switch cert_compression_algs to GrowableArray.
+  * Add GrowableArray<T> to ssl/internal.h.
+  * Fixed quic_method lookup in TLS 1.3 server side handshake.
+  * Add .note.GNU-stack at the source level.
+  * -Wno-vla -> -Wvla
+  * Add an option for explicit renegotiations.
+  * tool: add -json flag to |speed|
+  * Set -Wno-vla.
+  * Use a pointer to module_hash in boringssl_fips_self_test() args.
+  * Use a smaller hex digest in FIPS flag files when SHA-256 used.
+  * Switch to using SHA-256 for FIPS integrity check on Android.
+  * Use getentropy on macOS 10.12 and later.
+  * Move #include of "internal.h", which defines |OPENSSL_URANDOM|.
+  * Style nit.
+  * Assert that BN_CTX_end is actually called.
+  * Test some known large primes.
+  * Test some Euler pseudoprimes.
+  * Be consistent about Miller-Rabin vs Rabin-Miller.
+  * fix build with armv6  Error: .size expression for _vpaes_decrypt_consts does not evaluate to a constant
+  * Mark ssl_early_data_reason_t values stable.
+  * Make the dispatch tests opt-in.
+  * Bound the number of API calls in ssl_ctx_api.cc.
+  * Only attempt to mprotect FIPS module for AArch64.
+  * Opportunistically read entropy from the OS in FIPS mode.
+  * Update INSTANTIATE_TEST_SUITE_P calls missing first argument.
+  * Ignore build32 and build64 subdirectories.
+  * Add page protection logic to BCM self test.
+  * Disable unwind tests in FIPS mode.
+  * Disable RDRAND on AMD family 0x17, models 0x70–0x7f.
+  * Don't allow SGC EKUs for server certificates.
+  * Add |SSL_CIPHER_get_value| to get the IANA number of a cipher suite.
+  * Add XOF compilation compatibility flags
+  * Replace BIO_printf with ASN1_STRING_print in GENERAL_NAME_print
+  * Trigger a build on the ARM mode builder.
+  * Fix vpaes-armv7.pl in ARM mode.
+  * Add AES-192-GCM support to EVP_AEAD.
+  * Add AES-256 CFB to libdecrepit.
+  * Parse explicit EC curves more strictly.
+  * Use the Go 1.13 standard library ed25519.
+  * Update build tools.
+  * Use ScopedEVP_AEAD_CTX in ImplDispatchTest.AEAD_AES_GCM.
+  * Use a mix of bsaes and vpaes for CTR on NEON.
+  * Use vpaes + conversion to setup CBC decrypt on NEON.
+  * Add NEON vpaes-to-bsaes key converters.
+  * Add vpaes-armv7.pl and replace non-parallel modes.
+  * Correct comments for x86_64 _vpaes_encrypt_core_2x.
+  * Add benchmarks for AES block operations.
+  * Only write self test flag files if an environment variable is set.
+  * Const-correct EC_KEY_set_public_key_affine_coordinates.
+  * Revert "Fix VS build when assembler is enabled"
+  * Support compilation via emscripten
+  * Fix cross-compile of Android on Windows.
+  * Move the config->async check into RetryAsync.
+  * Clear *out in ReadHandshakeData's empty case.
+  * Add initial support for 0-RTT with QUIC.
+  * Have some more fun with spans.
+  * Add OPENSSL_FALLTHROUGH to a few files.
+  * Limit __attribute__ ((fallthrough)) to Clang >= 5.
+  * Make |EVP_CIPHER_CTX_reset| return one.
+  * Add Fallthru support for clang 10.
+  * Add self-test suppression flag file for Android FIPS builds.
+  * Align 0-RTT and resumption state machines slightly
+  * Require getrandom in Android FIPS builds.
+  * acvp: allow passing custom subprocess I/O.
+  * Add a function to convert SSL_ERROR_* values to strings.
+  * Fold SSL_want constants into SSL_get_error constants.
+  * Use spans for the various TLS 1.3 secrets.
+  * Switch another low-level function to spans.
+  * Switch tls13_enc.cc to spans.
+  * Check the second ClientHello's PSK binder on resumption.
+  * Introduce libcrypto_bcm_sources for Android.
+  * Remove stale TODO.
+  * Add an android-cmake option to generate_build_files.py
+  * Add a QUIC test for HelloRetryRequest.
+  * Add missing ".text" to Windows code for dummy_chacha20_poly1305_asm
+  * Update TODO to note that Clang git doesn't have the POWER bug.
+  * Fix paths in break-tests.sh.
+  * Fix POWER build with OPENSSL_NO_ASM.
+  * Workaround Clang bug on POWER.
+  * Add assembly support for -fsanitize=hwaddress tagged globals.
+  * Fix typo in valgrind constant-time annotations.
+  * acvp: add support for AES-ECB and AES-CBC.
+  * Fix misspelled TODO.
+  * Move CCM fragments out of the FIPS module.
+  * Add EVP_PKEY_base_id.
+  * Add some project links to README.md.
+  * Make alert_dispatch into a bool.
+  * Trim some more per-connection memory.
+  * Remove SSL_export_early_keying_material.
+  * Add EVP_PKEY support for X25519.
+  * Make EVP_PKEY_bits return 253 for Ed25519.
+  * Make SSL_get_servername work in the early callback.
+
+-------------------------------------------------------------------
 Tue Mar 10 20:00:43 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix arm build:

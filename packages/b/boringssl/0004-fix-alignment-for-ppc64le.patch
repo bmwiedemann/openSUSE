@@ -4,13 +4,13 @@ Date: Wed, 4 Dec 2019 08:23:17 +0100
 Subject: [PATCH 4/4] fix alignment for ppc64le
 
 ---
- crypto/cipher_extra/aead_test.cc | 2 +-
+ src/crypto/cipher_extra/aead_test.cc | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/crypto/cipher_extra/aead_test.cc b/crypto/cipher_extra/aead_test.cc
 index 4c079e843321..2c7e116a4aad 100644
---- a/crypto/cipher_extra/aead_test.cc
-+++ b/crypto/cipher_extra/aead_test.cc
+--- a/src/crypto/cipher_extra/aead_test.cc
++++ b/src/crypto/cipher_extra/aead_test.cc
 @@ -29,7 +29,7 @@
  #include "../test/test_util.h"
  #include "../test/wycheproof_util.h"

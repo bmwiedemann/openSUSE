@@ -27,13 +27,13 @@ aead_test.cc:586:50: error: requested alignment 64 is larger than 16 [-Werror=at
 Signed-off-by: Michal Rostecki <mrostecki@opensuse.org>
 Change-Id: Iac2c6810fa260ad214abde8db733793ac914acda
 ---
- crypto/cipher_extra/aead_test.cc | 20 +++++++++++++-------
+ src/crypto/cipher_extra/aead_test.cc | 20 +++++++++++++-------
  1 file changed, 13 insertions(+), 7 deletions(-)
 
-Index: boringssl-20190523/crypto/cipher_extra/aead_test.cc
+Index: boringssl-20200122/src/crypto/cipher_extra/aead_test.cc
 ===================================================================
---- boringssl-20190523.orig/crypto/cipher_extra/aead_test.cc
-+++ boringssl-20190523/crypto/cipher_extra/aead_test.cc
+--- boringssl-20200122.orig/src/crypto/cipher_extra/aead_test.cc
++++ boringssl-20200122/src/crypto/cipher_extra/aead_test.cc
 @@ -29,6 +29,12 @@
  #include "../test/test_util.h"
  #include "../test/wycheproof_util.h"
@@ -47,45 +47,3 @@ Index: boringssl-20190523/crypto/cipher_extra/aead_test.cc
  
  struct KnownAEAD {
    const char name[40];
-@@ -540,10 +546,10 @@ TEST_P(PerAEADTest, AliasedBuffers) {
- }
- 
- TEST_P(PerAEADTest, UnalignedInput) {
--  alignas(64) uint8_t key[EVP_AEAD_MAX_KEY_LENGTH + 1];
--  alignas(64) uint8_t nonce[EVP_AEAD_MAX_NONCE_LENGTH + 1];
--  alignas(64) uint8_t plaintext[32 + 1];
--  alignas(64) uint8_t ad[32 + 1];
-+  alignas(ALIGN_BYTES) uint8_t key[EVP_AEAD_MAX_KEY_LENGTH + 1];
-+  alignas(ALIGN_BYTES) uint8_t nonce[EVP_AEAD_MAX_NONCE_LENGTH + 1];
-+  alignas(ALIGN_BYTES) uint8_t plaintext[32 + 1];
-+  alignas(ALIGN_BYTES) uint8_t ad[32 + 1];
-   OPENSSL_memset(key, 'K', sizeof(key));
-   OPENSSL_memset(nonce, 'N', sizeof(nonce));
-   OPENSSL_memset(plaintext, 'P', sizeof(plaintext));
-@@ -561,7 +567,7 @@ TEST_P(PerAEADTest, UnalignedInput) {
-   ASSERT_TRUE(EVP_AEAD_CTX_init_with_direction(
-       ctx.get(), aead(), key + 1, key_len, EVP_AEAD_DEFAULT_TAG_LENGTH,
-       evp_aead_seal));
--  alignas(64) uint8_t ciphertext[sizeof(plaintext) + EVP_AEAD_MAX_OVERHEAD];
-+  alignas(ALIGN_BYTES) uint8_t ciphertext[sizeof(plaintext) + EVP_AEAD_MAX_OVERHEAD];
-   size_t ciphertext_len;
-   ASSERT_TRUE(EVP_AEAD_CTX_seal(ctx.get(), ciphertext + 1, &ciphertext_len,
-                                 sizeof(ciphertext) - 1, nonce + 1, nonce_len,
-@@ -569,7 +575,7 @@ TEST_P(PerAEADTest, UnalignedInput) {
-                                 ad_len));
- 
-   // It must successfully decrypt.
--  alignas(64) uint8_t out[sizeof(ciphertext)];
-+  alignas(ALIGN_BYTES) uint8_t out[sizeof(ciphertext)];
-   ctx.Reset();
-   ASSERT_TRUE(EVP_AEAD_CTX_init_with_direction(
-       ctx.get(), aead(), key + 1, key_len, EVP_AEAD_DEFAULT_TAG_LENGTH,
-@@ -583,7 +589,7 @@ TEST_P(PerAEADTest, UnalignedInput) {
- }
- 
- TEST_P(PerAEADTest, Overflow) {
--  alignas(64) uint8_t key[EVP_AEAD_MAX_KEY_LENGTH];
-+  alignas(ALIGN_BYTES) uint8_t key[EVP_AEAD_MAX_KEY_LENGTH];
-   OPENSSL_memset(key, 'K', sizeof(key));
- 
-   bssl::ScopedEVP_AEAD_CTX ctx;

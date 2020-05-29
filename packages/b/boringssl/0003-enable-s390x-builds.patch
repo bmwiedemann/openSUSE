@@ -7,17 +7,17 @@ similar to the aarch64 patch, covering
 - recognition of architecture
 - adapting memory alignment
 ---
- CMakeLists.txt                   | 2 ++
- crypto/cipher_extra/aead_test.cc | 2 ++
- crypto/poly1305/poly1305_test.cc | 9 +++++++--
- include/openssl/base.h           | 3 +++
+ CMakeLists.txt                       | 2 ++
+ src/crypto/cipher_extra/aead_test.cc | 2 ++
+ src/crypto/poly1305/poly1305_test.cc | 9 +++++++--
+ src/include/openssl/base.h           | 3 +++
  4 files changed, 14 insertions(+), 2 deletions(-)
 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c06b700e5144..80c9383b9af8 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -469,6 +469,8 @@ elseif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "mips")
+Index: boringssl-20200122/CMakeLists.txt
+===================================================================
+--- boringssl-20200122.orig/CMakeLists.txt
++++ boringssl-20200122/CMakeLists.txt
+@@ -93,6 +93,8 @@ elseif(${CMAKE_SYSTEM_PROCESSOR} STREQUA
    set(ARCH "generic")
  elseif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "ppc64le")
    set(ARCH "ppc64le")
@@ -26,10 +26,10 @@ index c06b700e5144..80c9383b9af8 100644
  else()
    message(FATAL_ERROR "Unknown processor:" ${CMAKE_SYSTEM_PROCESSOR})
  endif()
-diff --git a/crypto/cipher_extra/aead_test.cc b/crypto/cipher_extra/aead_test.cc
-index fd20ebc77b67..4c079e843321 100644
---- a/crypto/cipher_extra/aead_test.cc
-+++ b/crypto/cipher_extra/aead_test.cc
+Index: boringssl-20200122/src/crypto/cipher_extra/aead_test.cc
+===================================================================
+--- boringssl-20200122.orig/src/crypto/cipher_extra/aead_test.cc
++++ boringssl-20200122/src/crypto/cipher_extra/aead_test.cc
 @@ -31,6 +31,8 @@
  
  #if defined(OPENSSL_AARCH64)
@@ -39,10 +39,10 @@ index fd20ebc77b67..4c079e843321 100644
  #else
  #define ALIGN_BYTES 64
  #endif
-diff --git a/crypto/poly1305/poly1305_test.cc b/crypto/poly1305/poly1305_test.cc
-index 198cca12dae5..43cd95c8eb86 100644
---- a/crypto/poly1305/poly1305_test.cc
-+++ b/crypto/poly1305/poly1305_test.cc
+Index: boringssl-20200122/src/crypto/poly1305/poly1305_test.cc
+===================================================================
+--- boringssl-20200122.orig/src/crypto/poly1305/poly1305_test.cc
++++ boringssl-20200122/src/crypto/poly1305/poly1305_test.cc
 @@ -25,6 +25,11 @@
  #include "../test/file_test.h"
  #include "../test/test_util.h"
@@ -55,28 +55,10 @@ index 198cca12dae5..43cd95c8eb86 100644
  
  static void TestSIMD(unsigned excess, const std::vector<uint8_t> &key,
                       const std::vector<uint8_t> &in,
-@@ -63,7 +68,7 @@ static void TestSIMD(unsigned excess, const std::vector<uint8_t> &key,
-   CRYPTO_poly1305_update(&state, in.data() + done, in.size() - done);
- 
-   // |CRYPTO_poly1305_finish| requires a 16-byte-aligned output.
--  alignas(16) uint8_t out[16];
-+  alignas(ALIGN_BYTES) uint8_t out[16];
-   CRYPTO_poly1305_finish(&state, out);
-   EXPECT_EQ(Bytes(out), Bytes(mac)) << "SIMD pattern " << excess << " failed.";
- }
-@@ -82,7 +87,7 @@ TEST(Poly1305Test, TestVectors) {
-     CRYPTO_poly1305_init(&state, key.data());
-     CRYPTO_poly1305_update(&state, in.data(), in.size());
-     // |CRYPTO_poly1305_finish| requires a 16-byte-aligned output.
--    alignas(16) uint8_t out[16];
-+    alignas(ALIGN_BYTES) uint8_t out[16];
-     CRYPTO_poly1305_finish(&state, out);
-     EXPECT_EQ(Bytes(out), Bytes(mac)) << "Single-shot Poly1305 failed.";
- 
-diff --git a/include/openssl/base.h b/include/openssl/base.h
-index cb1affacacce..2e29644ceadf 100644
---- a/include/openssl/base.h
-+++ b/include/openssl/base.h
+Index: boringssl-20200122/src/include/openssl/base.h
+===================================================================
+--- boringssl-20200122.orig/src/include/openssl/base.h
++++ boringssl-20200122/src/include/openssl/base.h
 @@ -99,6 +99,9 @@ extern "C" {
  #elif (defined(__PPC64__) || defined(__powerpc64__)) && defined(_LITTLE_ENDIAN)
  #define OPENSSL_64_BIT
@@ -87,6 +69,3 @@ index cb1affacacce..2e29644ceadf 100644
  #elif defined(__mips__) && !defined(__LP64__)
  #define OPENSSL_32_BIT
  #define OPENSSL_MIPS
--- 
-2.24.0
-
