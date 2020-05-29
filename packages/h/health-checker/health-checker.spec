@@ -16,6 +16,8 @@
 #
 
 
+%define _dracutmoduledir %(pkg-config --variable=dracutmodulesdir dracut)
+
 Name:           health-checker
 Version:        1.3.4
 Release:        0
@@ -112,7 +114,7 @@ ln -sf service %{buildroot}%{_sbindir}/rchealth-checker
 %files
 %license COPYING
 %doc NEWS README.md
-%{_libexecdir}/systemd/system/health-checker.service
+%{_unitdir}/health-checker.service
 %dir %{_libexecdir}/health-checker/
 %{_libexecdir}/health-checker/btrfs-subvolumes-mounted.sh
 %{_sbindir}/health-checker
@@ -121,9 +123,7 @@ ln -sf service %{buildroot}%{_sbindir}/rchealth-checker
 %{_mandir}/man8/health-checker.service.8%{?ext_man}
 %dir %{_sysconfdir}/grub.d
 %{_sysconfdir}/grub.d/*_health_check*
-%dir %{_libexecdir}/dracut
-%dir %{_libexecdir}/dracut/modules.d
-%{_libexecdir}/dracut/modules.d/50health-checker
+%{_dracutmoduledir}/50health-checker
 
 %files plugins-MicroOS
 %{_libexecdir}/health-checker/crio.sh
