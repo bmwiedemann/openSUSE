@@ -47,7 +47,7 @@
      if cachepaths == "" then
 --- texmf-dist/tex/luatex/luaotfload/fontloader-reference.lua
 +++ texmf-dist/tex/luatex/luaotfload/fontloader-reference.lua	2019-05-10 09:32:16.562792353 +0000
-@@ -4314,12 +4314,35 @@ if not caches.namespace or caches.namesp
+@@ -4472,12 +4472,35 @@ if not caches.namespace or caches.namesp
  end
  do
   local cachepaths=kpse.expand_var('$TEXMFCACHE') or ""

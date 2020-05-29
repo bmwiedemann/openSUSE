@@ -3,7 +3,7 @@
  1 file changed, 16 insertions(+), 8 deletions(-)
 
 --- texmf-dist/web2c/texmfcnf.lua
-+++ texmf-dist/web2c/texmfcnf.lua	2019-05-10 09:42:30.695251184 +0000
++++ texmf-dist/web2c/texmfcnf.lua	2020-03-26 12:29:02.097164665 +0000
 @@ -42,16 +42,24 @@ return {
              --     "selfautoparent:",
              -- }
@@ -18,7 +18,7 @@
              -- only used for FONTCONFIG_PATH & TEXMFCACHE in TeX Live
  
 -            TEXMFSYSVAR     = "selfautoparent:texmf-var",
--            TEXMFVAR        = "home:.texlive2019/texmf-var",
+-            TEXMFVAR        = "home:.texlive2020/texmf-var",
 +            TEXMFSYSVAR     = "/var/lib/texmf",
 +            TEXMFVAR        = "$TEXMFSYSVAR",
 +            HOMECACHE       = "home:.cache/texmf/fonts",
@@ -27,7 +27,7 @@
              -- will be chosen but there can be more readable paths.
  
 -            TEXMFCACHE      = "$TEXMFSYSVAR;$TEXMFVAR",
--            TEXMFCONFIG     = "home:.texlive2019/texmf-config",
+-            TEXMFCONFIG     = "home:.texlive2020/texmf-config",
 +            TEXMFCACHE      = "$TEXMFSYSVAR;$TEXMFVAR;$HOMECACHE",
 +            TEXMFCONFIG     = "$TEXMFSYSCONFIG",
  
