@@ -314,7 +314,7 @@
 +pdflatex musixdoc
 --- texmf-dist/scripts/musixtex/musixtex.lua
 +++ texmf-dist/scripts/musixtex/musixtex.lua	2018-05-03 10:08:07.363421541 +0000
-@@ -200,15 +200,24 @@ end
+@@ -205,15 +205,24 @@ end
  --       possible by exploiting the the fact that Lua has two false values.
  --         dvi == nil    "do not produce a DVI file" (but maybe PDF)
  --         dvi == false  "do not process the DVI file" (but stop after TeX)
