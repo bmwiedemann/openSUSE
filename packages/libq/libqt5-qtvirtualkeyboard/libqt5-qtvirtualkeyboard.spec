@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtvirtualkeyboard
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define qt5_snapshot 0
 
 Name:           libqt5-qtvirtualkeyboard
-Version:        5.14.1
+Version:        5.15.0
 Release:        0
 Summary:        Qt 5 Virtual Keyboard
 License:        GPL-3.0
 Group:          Development/Libraries/X11
 Url:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.14.1
-%define so_version 5.14.1
-%define tar_version qtvirtualkeyboard-everywhere-src-5.14.1
-Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
+%define real_version 5.15.0
+%define so_version 5.15.0
+%define tar_version qtvirtualkeyboard-everywhere-src-5.15.0
+Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 BuildRequires:  libQt5Gui-private-headers-devel >= %{version}
 BuildRequires:  libQt5Core-private-headers-devel >= %{version}
 BuildRequires:  pkgconfig(Qt5Qml) >= %{version}
