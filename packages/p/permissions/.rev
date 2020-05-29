@@ -1198,4 +1198,13 @@ Feel free to use or reject (forwarded request 397400 from dimstar)</comment>
     /usr/libexec (bsc#1171164)</comment>
     <requestid>801106</requestid>
   </revision>
+  <revision rev="135" vrev="15">
+    <srcmd5>e0067182dd539020a86d5126f2993605</srcmd5>
+    <version>unknown</version>
+    <time>1590779986</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 20200520:
+  * permissions fixed profile: utempter: reinstate libexec compatibility entry (forwarded request 807566 from mgerstner)</comment>
+    <requestid>807568</requestid>
+  </revision>
 </revisionlist>

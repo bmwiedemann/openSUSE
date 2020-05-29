@@ -16,7 +16,7 @@
 #
 
 
-%define VERSION_DATE 20200506
+%define VERSION_DATE 20200520
 
 Name:           permissions
 Version:        %{VERSION_DATE}.%{suse_version}
@@ -31,6 +31,7 @@ Source1:        fix_version.sh
 BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
+BuildRequires:  tclap
 Requires:       chkstat
 Requires:       permissions-config
 Recommends:     permissions-doc

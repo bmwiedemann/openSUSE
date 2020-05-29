@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed May 20 09:02:14 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 20200520:
+  * permissions fixed profile: utempter: reinstate libexec compatibility entry
+
+-------------------------------------------------------------------
+Tue May 19 09:14:38 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 20200519:
+  * chkstat: fix sign conversion warnings on 32-bit architectures
+  * chkstat: allow simultaneous use of `--set` and `--system`
+  * regtest: adjust TestUnkownOwnership test to new warning output behaviour
+
+-------------------------------------------------------------------
+Mon May 18 12:06:10 UTC 2020 - malte.kraus@suse.com
+
+- Update to version 20200518:
+  * whitelist texlive public binary (bsc#1171686)
+
+-------------------------------------------------------------------
+Fri May 15 09:49:48 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 20200514:
+  * fixed permissions: adjust to new libexec dir location (bsc#1171164)
+    (affects utempter path)
+
+-------------------------------------------------------------------
+Wed May 13 12:09:17 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 20200513:
+  * major rewrite of the chkstat tool
+  * setuid bit for cockpit (bsc#1169614)
+
+-------------------------------------------------------------------
 Thu May 07 09:50:15 UTC 2020 - malte.kraus@suse.com
 
 - Update to version 20200506:
