@@ -312,4 +312,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Update to 5.14.1</comment>
     <requestid>768135</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3bdbcebd9a86ddcd84dfec532e487291</srcmd5>
+    <version>5.15.0</version>
+    <time>1590779749</time>
+    <user>maxlin_factory</user>
+    <comment>Qt 5.15.0</comment>
+    <requestid>809433</requestid>
+  </revision>
 </revisionlist>
