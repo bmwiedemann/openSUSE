@@ -414,4 +414,12 @@ Aggregate licenses for spec file without subpackages (forwarded request 131950 f
     <comment>Enhance spec file generator to catch more required style files e.g. readarray.sty for verbatimbox.sty as reported in boo#1155752</comment>
     <requestid>745611</requestid>
   </revision>
+  <revision rev="40" vrev="43">
+    <srcmd5>5df7d399d03d04f540ab49ca52e6e1d8</srcmd5>
+    <version>unknown</version>
+    <time>1590779833</time>
+    <user>maxlin_factory</user>
+    <comment>Enhance spec file geneerator to find missing .so man page link for better dependency resolution</comment>
+    <requestid>806888</requestid>
+  </revision>
 </revisionlist>
