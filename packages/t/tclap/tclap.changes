@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 11:48:40 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Split -doc subpackage to a different spec file.
+
+-------------------------------------------------------------------
 Fri Dec 11 11:14:58 UTC 2015 - mpluskal@suse.com
 
 - Cleanup spec file with spec-cleaner

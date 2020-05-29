@@ -1,5 +1,5 @@
 #
-# spec file for package tclap
+# spec file for package tclap-doc
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -16,51 +16,50 @@
 #
 
 
-Name:           tclap
+Name:           tclap-doc
 Version:        1.2.1
 Release:        0
-Summary:        Templatized C++ Command Line Parser
+Summary:        API Documentation for %{name}
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            http://tclap.sf.net
 Source0:        http://prdownloads.sourceforge.net/tclap/tclap-%{version}.tar.gz
+BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  graphviz
 BuildRequires:  libstdc++-devel
 BuildRequires:  pkgconfig
-Provides:       libtclap = %{version}
-Provides:       libtclap-devel = %{version}
+BuildArch:      noarch
 
 %description
-TCLAP is a small, flexible library that provides a simple interface for
-defining and accessing command line arguments. It was intially inspired by the
-user friendly CLAP libary. The difference is that this library is templatized,
-so the argument class is type independent. Type independence avoids
-identical-except-for-type objects, such as IntArg, FloatArg, and StringArg.
-While the library is not strictly compliant with the GNU or POSIX standards, it
-is close.
+
+This package contains the API documentation for TCLAP, the Templatized
+C++ Command Line Parser.
 
 %prep
-%setup -q
+%setup -q -n tclap-%{version}
 
 %build
-%configure
+%configure \
+	 --enable-doxygen
 %make_build
 
 %install
 %make_install
 
 install -d "%{buildroot}%{_docdir}/%{name}"
-mv "%{buildroot}%{_datadir}/doc/tclap" "%{buildroot}%{_docdir}/%{name}/html"
-rm -rf "%{buildroot}%{_docdir}/%{name}"
 
-%check
-%make_build check
+mv "%{buildroot}%{_datadir}/doc/tclap" "%{buildroot}%{_docdir}/%{name}/html"
+rm -rf "%{buildroot}%{_docdir}/%{name}/html/html/CVS"
+
+%fdupes -s "%{buildroot}%{_docdir}/%{name}/html"
+
+rm -rf %{buildroot}/%{_includedir}/tclap
+rm -f %{buildroot}/%{_libdir}/pkgconfig/tclap.pc
 
 %files
-%license COPYING
-%doc AUTHORS ChangeLog NEWS README
-%{_includedir}/tclap
-%{_libdir}/pkgconfig/tclap.pc
+%doc %dir %{_docdir}/%{name}
+%doc %{_docdir}/%{name}/html
 
 %changelog
