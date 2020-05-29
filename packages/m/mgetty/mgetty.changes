@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 26 09:52:53 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- fix set_permissions invocation, a '%' was missing for the faxq-helper path,
+  causing the path never to be adjusted correctly during %post.
+
+-------------------------------------------------------------------
 Wed Feb 26 11:58:28 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 1.2.1

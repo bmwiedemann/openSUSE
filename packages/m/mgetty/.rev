@@ -284,4 +284,12 @@
     <comment>- Fixed permission handling of faxq-helper. (bsc#1168170)</comment>
     <requestid>790110</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>0e45e8cc25d384f54378b8572cbfcb63</srcmd5>
+    <version>1.2.1</version>
+    <time>1590780164</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809764</requestid>
+  </revision>
 </revisionlist>

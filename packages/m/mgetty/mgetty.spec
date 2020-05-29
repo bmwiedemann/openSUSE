@@ -140,10 +140,10 @@ chown fax:uucp %{_localstatedir}/log/sendfax.log
 chmod 664 %{_localstatedir}/log/sendfax.log
 
 %post -n sendfax
-%set_permissions  %{_localstatedir}/spool/fax/outgoing {_prefix}/lib/mgetty+sendfax/faxq-helper
+%set_permissions  %{_localstatedir}/spool/fax/outgoing %{_prefix}/lib/mgetty+sendfax/faxq-helper
 
 %verifyscript -n sendfax
-%verify_permissions -e %{_localstatedir}/spool/fax/outgoing -e {_prefix}/lib/mgetty+sendfax/faxq-helper
+%verify_permissions -e %{_localstatedir}/spool/fax/outgoing -e %{_prefix}/lib/mgetty+sendfax/faxq-helper
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
