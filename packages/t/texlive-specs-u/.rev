@@ -369,4 +369,12 @@ Reflect all of the licenses of the various components in the spec file license (
     <comment>Enhance spec file generator to catch more required style files e.g. readarray.sty for verbatimbox.sty as reported in boo#1155752</comment>
     <requestid>745626</requestid>
   </revision>
+  <revision rev="40" vrev="43">
+    <srcmd5>d78d79cf0bd9f8b7740c6d43a22e5e86</srcmd5>
+    <version>unknown</version>
+    <time>1590779957</time>
+    <user>maxlin_factory</user>
+    <comment>Enhance spec file geneerator to find missing .so man page link for better dependency resolution</comment>
+    <requestid>806931</requestid>
+  </revision>
 </revisionlist>
