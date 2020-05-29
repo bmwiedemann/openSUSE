@@ -422,4 +422,12 @@
     <comment>Fix build with Qt5.13</comment>
     <requestid>722598</requestid>
   </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>431d6dfbdc5da32ecc255828b9266781</srcmd5>
+    <version>1.7.5</version>
+    <time>1590779630</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>798845</requestid>
+  </revision>
 </revisionlist>

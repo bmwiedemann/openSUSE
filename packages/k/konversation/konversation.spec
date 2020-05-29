@@ -1,7 +1,7 @@
 #
 # spec file for package konversation
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://konversation.kde.org/
 Source0:        http://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-build-with-Qt-5.13.patch
+Patch1:         add-missing-includes.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  karchive-devel >= %{kf5_version}
 BuildRequires:  kbookmarks-devel >= %{kf5_version}
