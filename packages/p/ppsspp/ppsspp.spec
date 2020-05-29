@@ -1,7 +1,7 @@
 #
 # spec file for package ppsspp
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%define _lto_cflags %{nil} 
 Name:           ppsspp
-Version:        1.9.3~git20191218
+Version:        1.9.3~git20200523
 Release:        0
 Summary:        PlayStation Portable Emulator
 License:        GPL-2.0-or-later
@@ -47,6 +48,7 @@ BuildRequires:  wayland-devel
 
 #Qt deps:
 BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 
 #ffmpeg deps: (Restore once https://github.com/hrydgard/ppsspp/issues/9026 is closed)
