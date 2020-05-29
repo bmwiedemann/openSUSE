@@ -1,0 +1,119 @@
+From 33e0c7856b9a184858b7d41e20db1f17e74950de Mon Sep 17 00:00:00 2001
+From: Libor Pechacek <lpechacek@gmx.com>
+Date: Fri, 22 May 2020 19:14:44 +0200
+Subject: [PATCH] Port to Python3
+
+Signed-off-by: Libor Pechacek <lpechacek@suse.com>
+---
+ zramcfg.py | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/zramcfg.py b/zramcfg.py
+index 4d64face2d2d..b499df4123ad 100644
+--- a/zramcfg.py
++++ b/zramcfg.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ #
+ # zramcfg
+ # Copyright (c) 2016 Julius & Hannes Reinecke
+@@ -12,13 +12,13 @@ import glob
+ import os
+ import subprocess
+ import argparse
+-import ConfigParser
++import configparser
+ 
+ class zramcfg:
+     cfgnames = ['max_comp_streams' , 'comp_algorithm', 'disksize', 'mem_limit' ]
+ 
+     def __init__(self, name):
+-        self.config = ConfigParser.SafeConfigParser()
++        self.config = configparser.ConfigParser()
+         self.cfgfile = name
+ 
+     def is_active(self, dev):
+@@ -32,7 +32,7 @@ class zramcfg:
+ 
+     def save(self, force):
+         if not glob.glob('/sys/class/zram-control'):
+-            print 'zram not present, not saving configuration'
++            print('zram not present, not saving configuration')
+             try:
+                 if force:
+                     os.remove(self.cfgfile)
+@@ -45,7 +45,7 @@ class zramcfg:
+             if not self.is_active(zram):
+                 continue
+             # Save current configuration
+-            print 'Save configuration for /dev/' + zram
++            print('Save configuration for /dev/' + zram)
+             self.config.add_section(zram)
+             for attr in self.cfgnames:
+                 attrname = '/sys/block/' + zram + '/' + attr
+@@ -64,7 +64,7 @@ class zramcfg:
+             with open(self.cfgfile, 'wb') as configfile:
+                 self.config.write(configfile)
+         else:
+-            print 'zram not configured, not saving configuration'
++            print('zram not configured, not saving configuration')
+             try:
+                 if (force):
+                     os.remove(self.cfgfile)
+@@ -74,24 +74,24 @@ class zramcfg:
+     def load(self):
+         # Read configuration file
+         if not self.config.read(self.cfgfile):
+-            print 'Could not load configuration file ' + self.cfgfile
++            print('Could not load configuration file ' + self.cfgfile)
+             exit(0)
+ 
+         for zram in self.config.sections():
+             m = re.match(r"zram([0-9]*)", zram)
+             if not m.group(1):
+-                print 'Invalid group name ' + zram
++                print('Invalid group name ' + zram)
+                 continue
+             zram_num = m.group(1)
+-            print 'Load configuration for /dev/zram' + str(zram_num)
++            print('Load configuration for /dev/zram' + str(zram_num))
+             # Activate zram device
+             while not glob.glob('/sys/block/' + zram):
+                 if not glob.glob('/sys/module/zram'):
+                     if subprocess.call(["/sbin/modprobe","zram"]):
+-                        print 'Cannot load zram module'
++                        print('Cannot load zram module')
+                         exit(1)
+                 if not glob.glob('/sys/class/zram-control'):
+-                    print 'zram-control not present, cannot configure ' + zram
++                    print('zram-control not present, cannot configure ' + zram)
+                     exit(1)
+                 with open('/sys/class/zram-control/hot_add', 'r') as f:
+                     value = f.read()
+@@ -101,18 +101,18 @@ class zramcfg:
+ 
+             # Not able to configure device
+             if not glob.glob('/sys/block/' + zram):
+-                print '/dev/' + zram + ' is not configured'
++                print('/dev/' + zram + ' is not configured')
+                 continue
+ 
+             # check if zram device is active
+             if self.is_active(zram):
+-                print '/dev/' + zram + ' already active, skipping'
++                print('/dev/' + zram + ' already active, skipping')
+                 continue
+             # Write out configuration to sysfs attributes
+             for attr in self.cfgnames:
+                 value = self.config.get(zram, attr)
+-		attrname = '/sys/block/' + zram + '/' + attr
+-		with open(attrname, 'w') as f:
++                attrname = '/sys/block/' + zram + '/' + attr
++                with open(attrname, 'w') as f:
+                     f.write(value)
+                     f.close()
+ 
+-- 
+2.26.2
+

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 22 17:07:09 UTC 2020 - Libor Pechacek <lpechacek@suse.com>
+
+- Fix build
+- Python3 compatibility
+  * Add patch v0.2-Port-to-Python3.patch
+
+-------------------------------------------------------------------
 Sun Jul 17 13:45:11 UTC 2016 - jengelh@inai.de
 
 - Update to version 0.2
