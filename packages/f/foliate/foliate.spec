@@ -18,13 +18,14 @@
 
 %define oname com.github.johnfactotum.Foliate
 Name:           foliate
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        A simple and modern GTK eBook reader
 License:        GPL-3.0-only
 Group:          Productivity/Office/Other
 URL:            https://johnfactotum.github.io/foliate/
 Source:         %{name}-%{version}.tar.gz
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -58,6 +59,7 @@ done
 pushd %{buildroot}%{_datadir}/com.github.johnfactotum.Foliate/assets/KindleUnpack/
 sed -i -e '/^#!/, 1d' *.py
 popd
+%fdupes %{buildroot}/%{_datadir}/%{oname}
 
 %find_lang %{oname} --with-gnome
 
