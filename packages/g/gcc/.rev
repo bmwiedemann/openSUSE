@@ -518,4 +518,15 @@ from GCC 6).
     <comment>- Add ada links on riscv64 (forwarded request 703442 from Andreas_Schwab)</comment>
     <requestid>703444</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>fddc98363dfc435046e6f6f6e67abd29</srcmd5>
+    <version>10</version>
+    <time>1590779792</time>
+    <user>maxlin_factory</user>
+    <comment>- Sync separate_bi{32,64} macros with the GCC side, honoring
+  %disable_32bit.  [bsc#1170466]
+
+- Switch gcc to default 10.</comment>
+    <requestid>806858</requestid>
+  </revision>
 </revisionlist>

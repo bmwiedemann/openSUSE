@@ -1,7 +1,7 @@
 #
 # spec file for package gcc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,13 @@
 Name:           gcc
 %define separate_bi32 0
 %define separate_bi64 0
-%ifarch ppc
+%if 0%{!?disable_32bit:1}
+%ifarch ppc sparcv9
 %define separate_bi64 1
 %endif
-%ifarch x86_64 s390x ppc64
+%ifarch x86_64 s390x ppc64 sparc64
 %define separate_bi32 1
+%endif
 %endif
 # Ada currently fails to build on a few platforms, enable it only
 # on those that work
@@ -39,10 +41,10 @@ Name:           gcc
 %else
 %define build_d 0
 %endif
-Url:            http://gcc.gnu.org/
-%define gcc_version 9
-%define gcc_suffix 9
-Version:        9
+URL:            http://gcc.gnu.org/
+%define gcc_version 10
+%define gcc_suffix 10
+Version:        10
 Release:        0
 Summary:        The system GNU C Compiler
 License:        GPL-3.0-or-later
