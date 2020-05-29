@@ -288,6 +288,9 @@ bazel build \
     --override_repository="zlib=%{_datadir}/bazel-workspaces/zlib" \
     --strip=never \
     --verbose_failures \
+%ifarch ppc64le
+    --local_cpu_resources=HOST_CPUS*.5 \
+%endif
     //:envoy
 bazel shutdown
 

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 20 16:45:08 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+-  limit build resources for ppc64le to avoid Out of Memory error
+
+-------------------------------------------------------------------
+Wed May 20 07:11:38 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add ppc64/ppc64le in _constraints to use worker with max memory
+
+-------------------------------------------------------------------
 Thu Apr 16 17:35:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add big-endian-support.patch to fix build on s390x:
