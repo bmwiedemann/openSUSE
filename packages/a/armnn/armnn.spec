@@ -107,11 +107,13 @@ ExcludeArch:    %ix86
 BuildRequires:  boost-devel >= 1.59
 %else
 BuildRequires:  libboost_filesystem-devel >= 1.59
-BuildRequires:  libboost_log-devel >= 1.59
 BuildRequires:  libboost_program_options-devel >= 1.59
 BuildRequires:  libboost_system-devel >= 1.59
 BuildRequires:  libboost_test-devel >= 1.59
+%if %{with armnn_extra_tests}
+BuildRequires:  libboost_log-devel >= 1.59
 BuildRequires:  libboost_thread-devel >= 1.59
+%endif
 %endif
 %if %{with armnn_caffe}
 BuildRequires:  caffe-devel
@@ -357,14 +359,16 @@ This package contains the libarmnnOnnxParser library from armnn.
 %prep
 %setup -q -n armnn-%{version}
 %patch1 -p1
+%if %{with armnn_extra_tests}
 %patch200 -p1
 %patch201 -p1
 %patch202 -p1
 %patch203 -p1
 %patch204 -p1
 %patch205 -p1
-# Boost fixes for dynamic linking
-sed -i 's/find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework system filesystem program_options)/find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework system filesystem log thread program_options)/' ./cmake/GlobalConfig.cmake
+# Add Boost log as downstream extra test requires it
+sed -i 's/find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework system filesystem program_options)/find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework system filesystem log program_options)/' ./cmake/GlobalConfig.cmake
+%endif
 
 %build
 %if %{with armnn_onnx}

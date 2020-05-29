@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 28 15:10:11 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Apply boost link fixes only for armnn_extra_tests
+- Apply patches for armnn_extra_tests only when 
+  armnn_extra_tests is built
+
+-------------------------------------------------------------------
 Tue Mar 31 15:23:29 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable RPATH to fix build on Leap15.2/SLE15SP2
