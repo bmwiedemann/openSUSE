@@ -125,8 +125,7 @@ BuildRequires:  python3-psutil >= 5.3
 BuildRequires:  python3-pyaml
 BuildRequires:  python3-pygments >= 2.0
 BuildRequires:  python3-pylint >= 0.25
-BuildRequires:  python3-pytest < 5
-BuildRequires:  python3-pytest-faulthandler < 2.0
+BuildRequires:  python3-pytest >= 5.0
 BuildRequires:  python3-pytest-lazy-fixture
 BuildRequires:  python3-pytest-mock
 BuildRequires:  python3-pytest-ordering
@@ -298,6 +297,8 @@ skiptests+=" test_mpl_backend_change"
 skiptests+=" test_objectexplorer_collection_types"
 # timeout
 skiptests+=" test_run_python_script_in_terminal"
+# timeout
+skiptests+=" test_change_format_emits_signal"
 
 # segfault on obs (but not locally?)
 skipslowtests+=" test_arrayeditor_edit_complex_array"

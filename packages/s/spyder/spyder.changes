@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 29 09:54:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- We can be tested using pytest5
+- Skip one more timeouting test
+
+-------------------------------------------------------------------
 Sat May 16 10:52:34 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - increase memory requirement for builds (the tests consume a lot) 
