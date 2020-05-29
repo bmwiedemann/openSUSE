@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue May 26 07:49:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not depend on pytest-runner
+- Fix FontTools dependency
+
+-------------------------------------------------------------------
+Wed May 20 09:46:48 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Initial release of python-cu2qu
