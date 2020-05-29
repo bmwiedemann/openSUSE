@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue May 26 08:12:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Setup.py says they need 3.32.0 FontTools but in reality they
+  need 4.5.0 or newer based on the API
+
+-------------------------------------------------------------------
+Wed May 20 09:47:40 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Initial release of python-psautohint
