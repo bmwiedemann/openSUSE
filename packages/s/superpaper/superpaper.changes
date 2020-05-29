@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Sat May 23 02:31:38 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Fix dependencies. 
+
+-------------------------------------------------------------------
+Tue May 12 02:05:41 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2.0.2 
+  * Make wallpaper source browse and help dialogs resizable to
+    accommodate different resolutions
+  * Left double click on tray icon now opens wallpaper
+    configuration 
+  * Adjust KDE detection to remove false positives
+
+-------------------------------------------------------------------
+Fri Apr 24 03:05:01 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2.0.0
+  * New wallpaper configuration UI
+    * Preview of wallpaper options including bezels and ppi 
+      corrections.
+    * New bezel configuration through the display preview.
+    * New display physical position configuration for PPI
+      correction through the display preview.
+    * More readable option inputs, only compatible options are 
+      shown at a time.
+    * New help buttons.
+  * Pixel density (PPI) correction changes.
+    * Now supports arbitrary display arrangements!
+    * Bezels are now supported between displays above/below one 
+      another in addition to next to each other.
+    * Automatic PPI detection.
+  * NEW perspective corrections
+    * Even further improve wallpaper spanning alignment by 
+      adjusting the image perspective!
+    * Perspective setting profiles to enable easy configuration 
+      with different kinds of wallpapers.
+    * Warning if large images would be produced as a result of 
+      the entered settings.
+    * Tool to test perspective options with a user picked image.
+  * Display setup options like PPIs and bezel sizes are not stored 
+    in each wallpaper profile anymore.
+    * This means that once you configure the display setup once 
+      you're good.
+    * Perspectives are configured separately and wallpaper profiles
+      can use different perspective presets.
+  * Wallpaper preview help pop-up tells what the recommended 
+    wallpaper image size is for best quality.
+  * Single images can now be selected as wallpapers in addition to
+    folders.
+  * Show a busy cursor when user initiates image processing from 
+    the UI that takes some time.
+  * Fix for a scenario where options would not apply when selecting
+    'Apply'.
+  * A default path to start browsing wallpaper sources can be saved
+    from the Browse dialog.
+  * Improve application wide setting application during runtime.
+
+-------------------------------------------------------------------
+Thu Dec 26 14:09:52 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Initial package (v1.2.0)
