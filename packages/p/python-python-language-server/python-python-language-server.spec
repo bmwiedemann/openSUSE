@@ -18,29 +18,23 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
-%if %{without python2}
-  %define skip_python2 1
-%endif
 Name:           python-python-language-server
-Version:        0.31.10
+Version:        0.33.0
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/palantir/python-language-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-language-server/python-language-server-%{version}.tar.gz
-# gh#palantir/python-language-server#781
-Patch0:         pyls-pr781-jedi-017.patch 
 BuildRequires:  %{python_module PyQt5}
 BuildRequires:  %{python_module autopep8}
-BuildRequires:  %{python_module flake8}
-BuildRequires:  %{python_module future >= 0.14.0}
+BuildRequires:  %{python_module flake8 >= 3.8.0}
 BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module mccabe}
+BuildRequires:  %{python_module mccabe >= 0.6.0}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module pycodestyle}
+BuildRequires:  %{python_module pycodestyle >= 2.6.0}
 BuildRequires:  %{python_module pydocstyle >= 2.0.0}
-BuildRequires:  %{python_module pyflakes >= 1.6.0}
+BuildRequires:  %{python_module pyflakes >= 2.2.0}
 BuildRequires:  %{python_module pylint}
 BuildRequires:  %{python_module rope >= 0.10.5}
 BuildRequires:  %{python_module setuptools}
@@ -53,11 +47,11 @@ Requires:       python-pluggy
 Requires:       python-python-jsonrpc-server >= 0.3.2
 Requires:       python-setuptools
 Recommends:     python-autopep8
-Recommends:     python-flake8
-Recommends:     python-mccabe
-Recommends:     python-pycodestyle
+Recommends:     python-flake8 >= 3.8.0
+Recommends:     python-mccabe >= 0.6.0
+Recommends:     python-pycodestyle >= 2.6.0
 Recommends:     python-pydocstyle >= 2.0.0
-Recommends:     python-pyflakes >= 1.6.0
+Recommends:     python-pyflakes >= 2.2.0
 Recommends:     python-pylint
 Recommends:     python-rope >= 0.10.5
 BuildArch:      noarch
@@ -67,6 +61,7 @@ BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-jsonrpc-server >= 0.3.2}
+BuildRequires:  %{python_module future >= 0.14.0}
 %if %{with python2}
 BuildRequires:  python2-backports.functools_lru_cache
 BuildRequires:  python2-configparser
@@ -100,7 +95,6 @@ will be enabled:
 %autopatch -p1
 # Unpin software that has newer versions on Tumbleweed
 sed -i "s/'ujson<=.*'/'ujson'/" setup.py
-sed -i "s/'\(pyflakes.*\),<.*'/'\1'/" setup.py
 
 %build
 %python_build
@@ -119,19 +113,13 @@ sed -i "s/'\(pyflakes.*\),<.*'/'\1'/" setup.py
 %check
 # Remove pytest addopts
 rm setup.cfg
-# unclean tear down
-skip_tests="test_missing_message"
-# flake8>=2.2.0 produces E908 instead of empty list
-skip_tests+=" or test_flake8_no_checked_file"
-# pyflakes<2.2.0
-skip_tests+=" or test_flake8_lint"
 %if 0%{?sle_version} == 150100 && 0%{?is_opensuse}
   # Test failure on Leap 15.1 due to different pylint version
-  skip_tests+=" or test_syntax_error_pylint_py"
+  skip_tests+="test_syntax_error_pylint_py"
   # Test failure on Leap 15.1 due to mock hiccup
   skip_tests+=" or test_flake8_config_param"
 %endif
-%pytest  -k "not ( $skip_tests )"
+%pytest ${skip_tests:+-k "not ( $skip_tests )"}
 
 %files %{python_files}
 %doc README.rst

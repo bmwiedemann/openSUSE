@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu May 28 14:13:27 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to Version 0.33.0
+  * Add optional class objects to completion list.
+  * Fix completions with one arg.
+  * Remove pycodestyle plugin's dependency on autopep8. 
+
+-------------------------------------------------------------------
+Thu May 14 09:03:38 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to Version 0.32.0 
+  * Increase minimal supported version of flake8 and match 
+    flake8 requirements to PyLS ones.
+  * Add support for renaming with Jedi.
+  * Update Jedi calls for its 0.17 API
+  * Fix flake8 io deadlock.
+  * Follow LSP protocol when workspace folders are changed.
+  * Adapt root workspace uri if folder is changed.
+  * Add option to activate fuzzy completions in Jedi
+- remove pach pyls-pr781-jedi-017.patch merged
+  gh#palantir/python-language-server#781
+- Bump requirements in spec file 
+
+-------------------------------------------------------------------
 Mon May  4 16:56:39 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Don't use %python3_only command, but properly use alternatives.
