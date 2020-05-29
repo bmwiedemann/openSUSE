@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May 25 17:31:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.1
+  * Various documentation tweaks and improvements
+  * Define timespecsub macro in compat.h if it doesn't exists
+  * Use CLOCK_REALTIME if CLOCK_MONOTONIC is not available
+  * Display processing time on exit.
+  * Fix includes and add forward declarations in various source
+    files
+
+-------------------------------------------------------------------
+Mon Feb 17 19:33:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.0
+  * Add a new '-t' flag (type), allowing to specify input file type
+    and override file type detection
+  * Various documentation tweaks and improvements
+
+-------------------------------------------------------------------
 Sun Jan 19 10:09:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.0.7
