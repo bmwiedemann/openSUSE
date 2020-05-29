@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtdatavis3d
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,17 @@
 %define qt5_snapshot 0
 %define libname libQt5DataVisualization5
 %define base_name libqt5
-%define real_version 5.14.1
-%define so_version 5.14.1
-%define tar_version qtdatavis3d-everywhere-src-5.14.1
+%define real_version 5.15.0
+%define so_version 5.15.0
+%define tar_version qtdatavis3d-everywhere-src-5.15.0
 Name:           libqt5-qtdatavis3d
-Version:        5.14.1
+Version:        5.15.0
 Release:        0
 Summary:        Qt5 Data Visualization 3D
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/X11
 URL:            https://doc.qt.io/qt-5/qtdatavisualization-index.html
-Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qtdeclarative-devel >= %{version}
 %if %{qt5_snapshot}
