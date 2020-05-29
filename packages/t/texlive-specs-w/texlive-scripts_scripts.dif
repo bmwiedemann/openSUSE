@@ -1,0 +1,122 @@
+---
+ texmf-dist/scripts/texlive/fmtutil-sys.sh |    1 +
+ texmf-dist/scripts/texlive/fmtutil.pl     |   20 ++++++++++++++------
+ texmf-dist/scripts/texlive/updmap-sys.sh  |    1 +
+ texmf-dist/scripts/texlive/updmap.pl      |   16 ++++++++++------
+ 4 files changed, 26 insertions(+), 12 deletions(-)
+
+--- texmf-dist/scripts/texlive/fmtutil-sys.sh
++++ texmf-dist/scripts/texlive/fmtutil-sys.sh	2018-05-11 10:51:14.298775065 +0000
+@@ -22,4 +22,5 @@ PATH="$mydir:$PATH"; export PATH
+ # hack around a bug in zsh:
+ test -n "${ZSH_VERSION+set}" && alias -g '${1+"$@"}'='"$@"'
+ 
++umask 022
+ exec fmtutil --sys ${1+"$@"}
+--- texmf-dist/scripts/texlive/fmtutil.pl
++++ texmf-dist/scripts/texlive/fmtutil.pl	2018-05-11 10:51:51.546080553 +0000
+@@ -10,16 +10,16 @@
+ # History:
+ # Original shell script (C) 2001 Thomas Esser, public domain
+ 
+-my $TEXMFROOT;
++my $TEXMFDIST;
+ 
+ BEGIN {
+   $^W = 1;
+-  $TEXMFROOT = `kpsewhich -var-value=TEXMFROOT`;
++  $TEXMFDIST = `kpsewhich -var-value=TEXMFDIST`;
+   if ($?) {
+-    die "$0: kpsewhich -var-value=TEXMFROOT failed, aborting early.\n";
++    die "$0: kpsewhich -var-value=TEXMFDIST failed, aborting early.\n";
+   }
+-  chomp($TEXMFROOT);
+-  unshift(@INC, "$TEXMFROOT/tlpkg", "$TEXMFROOT/texmf-dist/scripts/texlive");
++  chomp($TEXMFDIST);
++  unshift(@INC, "$TEXMFDIST/tlpkg", "$TEXMFDIST/scripts/texlive");
+   require "mktexlsr.pl";
+   TeX::Update->import();
+ }
+@@ -70,7 +70,7 @@ TeXLive::TLUtils::prepend_own_path();
+ # this function checks by itself whether it is running on windows or not
+ reset_root_home();
+ 
+-chomp(our $TEXMFDIST = `kpsewhich --var-value=TEXMFDIST`);
++chomp(our $TEXMFROOT = `kpsewhich --var-value=TEXMFROOT`);
+ chomp(our $TEXMFVAR = `kpsewhich -var-value=TEXMFVAR`);
+ chomp(our $TEXMFSYSVAR = `kpsewhich -var-value=TEXMFSYSVAR`);
+ chomp(our $TEXMFCONFIG = `kpsewhich -var-value=TEXMFCONFIG`);
+@@ -361,7 +361,14 @@ sub callback_build_formats {
+       TeXLive::TLWinGoo::maybe_make_ro ($tmpdir);
+     }
+   } else {
++    my ($uid, $gid);
+     $tmpdir = File::Temp::tempdir(CLEANUP => 1);
++    if ($> == 0 && ($uid=getpwnam("nobody")) && ($gid=getgrnam("mktex"))) {
++      my $cnt = chown $uid, $gid, $tmpdir;
++      die "could not create directory $tmpdir" if $cnt <= 0;
++      $cnt = chmod 0770, $tmpdir;
++      die "could not create directory $tmpdir" if $cnt <= 0;
++    }
+   }
+   # set up destination directory
+   $opts{'fmtdir'} ||= "$texmfvar/web2c";
+@@ -599,6 +606,7 @@ sub rebuild_one_format {
+   # check for existence of ini file before doing anything else
+   if (system("kpsewhich -progname=$fmt -format=$kpsefmt $inifile >$nul 2>&1") != 0) {
+     # we didn't find the ini file, skip
++    return $FMT_NOTAVAIL if (!$opts{'no-error-if-no-engine'});
+     print_deferred_warning("inifile $inifile for $fmt/$eng not found.\n");
+     # The original script just skipped it but in TeX Live we expect that
+     # all activated formats are also buildable, thus return failure.
+--- texmf-dist/scripts/texlive/updmap-sys.sh
++++ texmf-dist/scripts/texlive/updmap-sys.sh	2018-05-11 10:53:43.971984421 +0000
+@@ -22,4 +22,5 @@ PATH="$mydir:$PATH"; export PATH
+ # hack around a bug in zsh:
+ test -n "${ZSH_VERSION+set}" && alias -g '${1+"$@"}'='"$@"'
+ 
++umask 022
+ exec updmap --sys ${1+"$@"}
+--- texmf-dist/scripts/texlive/updmap.pl
++++ texmf-dist/scripts/texlive/updmap.pl	2018-06-19 08:49:26.931648791 +0000
+@@ -16,15 +16,17 @@
+ 
+ my $svnid = '$Id: updmap.pl 51338 2019-06-07 16:36:59Z karl $';
+ 
+-my $TEXMFROOT;
++my $TEXMFDIST;
+ BEGIN {
+   $^W = 1;
+-  $TEXMFROOT = `kpsewhich -var-value=TEXMFROOT`;
++  $TEXMFDIST = `kpsewhich -var-value=TEXMFDIST`;
+   if ($?) {
+-    die "$0: kpsewhich -var-value=TEXMFROOT failed, aborting early.\n";
++    die "$0: kpsewhich -var-value=TEXMFDIST failed, aborting early.\n";
+   }
+-  chomp($TEXMFROOT);
+-  unshift(@INC, "$TEXMFROOT/tlpkg");
++  chomp($TEXMFDIST);
++  unshift(@INC, "$TEXMFDIST/tlpkg", "$TEXMFDIST/scripts/texlive");
++  require "mktexlsr.pl";
++  TeX::Update->import();
+ }
+ 
+ my $lastchdate = '$Date: 2019-06-07 18:36:59 +0200 (Fri, 07 Jun 2019) $';
+@@ -46,7 +48,7 @@ use TeXLive::TLUtils qw(mkdirhier mktexu
+ # see more comments at the definition of this function.
+ reset_root_home();
+ 
+-chomp(my $TEXMFDIST = `kpsewhich --var-value=TEXMFDIST`);
++chomp(my $TEXMFROOT = `kpsewhich --var-value=TEXMFROOT`);
+ chomp(my $TEXMFVAR = `kpsewhich -var-value=TEXMFVAR`);
+ chomp(my $TEXMFSYSVAR = `kpsewhich -var-value=TEXMFSYSVAR`);
+ chomp(my $TEXMFCONFIG = `kpsewhich -var-value=TEXMFCONFIG`);
+@@ -398,6 +400,8 @@ sub main {
+       print "in $changes_config_file\n";
+       print "Do you really want to continue (y/N)? ";
+       my $answer = <STDIN>;
++      my $dosync = $ENV{'UPDMAPSYNC'};
++      $answer = "y" if !defined($dosync);
+       $answer = "n" if !defined($answer);
+       chomp($answer);
+       print "answer =$answer=\n";

@@ -1,7 +1,56 @@
 ---
- texmf-dist/texdoc/texdoc.cnf |    7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ texmf-dist/scripts/texdoc/texdoclib-search.tlu |   24 +++++++++++++-----------
+ texmf-dist/texdoc/texdoc.cnf                   |    7 +++++--
+ 2 files changed, 18 insertions(+), 13 deletions(-)
 
+--- texmf-dist/scripts/texdoc/texdoclib-search.tlu
++++ texmf-dist/scripts/texdoc/texdoclib-search.tlu	2020-05-13 14:26:48.218370971 +0000
+@@ -30,7 +30,7 @@ local vanilla -- is this a vanilla TL or
+ 
+ -- find the TeX Live root
+ local function get_tlroot()
+-    local tlroot = kpse.expand_path('$TEXMFROOT') -- it should be exisitng one
++    local tlroot = kpse.expand_path('$TEXMFDIST') -- it should be exisitng one
+     get_tlroot = function() return tlroot end
+     return tlroot
+ end
+@@ -575,7 +575,8 @@ end
+ 
+ -- get pre-hashed tlpdb info from a cache file
+ get_tlpinfo_from_cache = function(filename)
+-    s_meta, tlp_from_runfile, tlp_doclist = dofile(filename)
++-- s_meta, tlp_from_runfile, tlp_doclist = dofile(filename)
++   s_meta, tlp_from_runfile, tlp_doclist = { }
+ end
+ 
+ -- get pre-hashed tlpdb info from a pseudo-cache file
+@@ -685,16 +686,17 @@ local function init_tlp_database()
+         else
+             dbg_print('tlpdb',
+                 'Getting data from tlpdb file ' .. texlive_tlpdb)
+-            get_tlpinfo_from_tlpdb(texlive_tlpdb)
++--      get_tlpinfo_from_tlpdb(texlive_tlpdb)
++        get_tlpinfo_from_tlpdb('/dev/null')
+             dbg_print('tlpdb', 'Writing data in cache file ' .. cache_file)
+-            local ok, msg = mkdir_p(texdoc.util.path_parent(cache_file))
+-            if not ok then
+-                err_print('warning',
+-                    'Failed to create cache file in %s:', cache_file)
+-                err_print('warning', msg)
+-            else
+-                print_out_tlpinfo(cache_file)
+-            end
++--          local ok, msg = mkdir_p(texdoc.util.path_parent(cache_file))
++--          if not ok then
++--              err_print('warning',
++--                  'Failed to create cache file in %s:', cache_file)
++--              err_print('warning', msg)
++--          else
++--              print_out_tlpinfo(cache_file)
++--          end
+         end
+     else
+         dbg_print('tlpdb', 'Using shipped tlpdb data.')
 --- texmf-dist/texdoc/texdoc.cnf
 +++ texmf-dist/texdoc/texdoc.cnf	2019-05-10 11:11:06.935408551 +0000
 @@ -60,8 +60,11 @@
