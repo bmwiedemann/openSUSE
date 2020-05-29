@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 28 13:57:38 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Correct ID of CVE and rename the patch to
+  CVE-2020-1744_avoid_mkdir_p.patch
+
+-------------------------------------------------------------------
 Tue May 26 13:02:10 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add CVE-2020-1733_avoid_mkdir_p.patch to fix CVE-2020-1733
@@ -43,7 +49,8 @@ Fri Apr 17 06:49:56 UTC 2020 - Michael Ströder <michael@stroeder.com>
     ldap_attr and ldap_entry modules
   - bsc#1166389 CVE-2020-1753 - kubectl connection plugin leaks
     sensitive information
-  - CVE-2020-10684 - code injection when using ansible_facts as a subkey
+  - bsc#1167532 CVE-2020-10684 - code injection when using
+    ansible_facts as a subkey
   - bsc#1167440 CVE-2020-10685 - modules which use files
     encrypted with vault are not properly cleaned up
   - CVE-2020-10691 - archive traversal vulnerability in ansible-galaxy collection install [2]
@@ -518,7 +525,7 @@ Sun Feb 24 10:06:31 UTC 2019 - Michael Ströder <michael@stroeder.com>
   * openstack inventory plugin * send logs from sdk to stderr so they do not combine with output
   * psrp * do not display bootstrap wrapper for each module exec run
   * redfish_utils * get standard properties for firmware entries (https://github.com/ansible/ansible/issues/49832)
-  * remote home directory * Disallow use of remote home directories that include relative pathing by means of `..` (CVE-2019-3828) (https://github.com/ansible/ansible/pull/52133)
+  * remote home directory * Disallow use of remote home directories that include relative pathing by means of `..` (CVE-2019-3828, bsc#1126503) (https://github.com/ansible/ansible/pull/52133)
   * ufw * when using ``state: reset`` in check mode, ``ufw --dry-run reset`` was executed, which causes a loss of firewall rules. The ``ufw`` module was adjusted to no longer run ``ufw --dry-run reset`` to prevent this from happening.
   * ufw: make sure that only valid values for ``direction`` are passed on.
   * update GetBiosBootOrder to use standard Redfish resources (https://github.com/ansible/ansible/issues/47571)
@@ -895,6 +902,8 @@ Mon Jul 30 15:05:07 UTC 2018 - lars@linux-schulserver.de
   + Restore module_utils.basic.BOOLEANS variable for backwards compatibility
     with the module API in older ansible releases.
   Bugfixes:
+  + Includes fix for bsc#1099808 (CVE-2018-10875) ansible.cfg is being read
+    from current working directory allowing possible code execution
   + Add text output along with structured output in nxos_facts 
   + Allow more than one page of results by using the right pagination 
     indicator ('NextMarker' instead of 'NextToken').
