@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 28 06:46:38 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- No pstools anymore in texlive database 
+
+-------------------------------------------------------------------
+Mon Apr 20 10:21:45 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Update to TeXLive 2020
+
+-------------------------------------------------------------------
 Mon Mar 23 16:18:13 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add new configuration variable HAVE_MKTEX_MEMBERS to texlive

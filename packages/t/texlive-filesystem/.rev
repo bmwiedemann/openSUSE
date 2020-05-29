@@ -445,4 +445,14 @@
   font cache directories (bsc#1158910, CVE-2020-8017)</comment>
     <requestid>787537</requestid>
   </revision>
+  <revision rev="45" vrev="48">
+    <srcmd5>c156340b9d0dcf6d6b74b9cdb53650ee</srcmd5>
+    <version>unknown</version>
+    <time>1590779755</time>
+    <user>maxlin_factory</user>
+    <comment>- No pstools anymore in texlive database 
+
+- Update to TeXLive 2020</comment>
+    <requestid>798522</requestid>
+  </revision>
 </revisionlist>

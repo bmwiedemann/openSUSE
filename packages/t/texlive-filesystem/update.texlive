@@ -134,6 +134,14 @@ if test ! -e "$TEXMFCNFFILE" ; then
 fi
 
 #
+# Check for scriplets
+#
+for run in /var/run/texlive/scriptlets/* ; do
+    test -e "$run" || break
+    bash $run < /dev/null 1>&4 2>&4
+done
+
+#
 # Language and hyphenation setup
 #
 cnf_ldat=$(TEXMF=$TEXMFSYSCONFIG kpsewhich language.dat 2> /dev/null)
