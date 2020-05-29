@@ -33,13 +33,13 @@
 %define btls no
 %endif
 
-%ifarch %ix86 x86_64 %{arm}
+%ifarch %ix86 x86_64 %{arm} aarch64
 %define roslyn yes
 %else
 %define roslyn no
 %endif
 
-%define version_suffix 96
+%define version_suffix 105
 
 Name:           mono-core
 Version:        6.8.0
@@ -51,6 +51,9 @@ Url:            http://www.mono-project.com
 Source0:        http://download.mono-project.com/sources/mono/mono-%{version}.%{version_suffix}.tar.xz
 Source1:        mono-core.rpmlintrc
 Source2:        gmcs
+Source3:        mono.attr
+Source4:        mono-find-provides
+Source5:        mono-find-requires
 # ppc build segfault so exclude it
 ExcludeArch:    ppc
 # PATCH-FIX-OPENSUSE remove checks for libmono in mono-find-provides and mono-find-requires scripts
@@ -63,6 +66,8 @@ Patch16:        fix-dbg-headers.patch
 Patch20:        xbuild-use-roslyn-vbc.patch
 # PATCH-FIX-OPENSUSE fix 64bit-portability-issue at exceptions-ppc.c:799
 Patch21:        fix-ppc-64bit-portability-issue.patch
+# PATCH-FIX-UPSTREAM fix-s390x-ucontext.patch bsc#1171934 mgorse@suse.com -- fix s390x build on glibc 2.26.
+Patch22:        fix-s390x-ucontext.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -212,6 +217,7 @@ technologies that have been submitted to the ECMA for standardization.
 %patch20 -p1
 %endif
 %patch21 -p1
+%patch22 -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -276,6 +282,16 @@ make
 
 %install
 %make_install
+
+%if 0%{?suse_version} > 1500 
+# install the rpm file attributes to arm the dependency scanner
+mkdir -p %{buildroot}%{_rpmconfigdir}/fileattrs
+install %{SOURCE3} %{buildroot}%{_rpmconfigdir}/fileattrs/mono.attr
+
+# Install custom mono-find-{provides/requires}
+install -p -m755 %{SOURCE4} %{SOURCE5} %{buildroot}%{_rpmconfigdir}
+
+%endif
 
 # Remove hardcoded lib directory from the config
 sed -i 's,\$mono_libdir/,,g' %{buildroot}%{_sysconfdir}/mono/config
@@ -1268,7 +1284,7 @@ Mono development tools.
 %defattr(-, root, root)
 %{_bindir}/aprofutil
 %{_prefix}/lib/mono/4.5/aprofutil.exe
-%ifnarch aarch64 ppc64 ppc64le
+%ifnarch ppc64 ppc64le s390x
 %{_prefix}/lib/mono/4.5/aprofutil.pdb
 %else
 %{_prefix}/lib/mono/4.5/aprofutil.exe.mdb
@@ -1293,6 +1309,13 @@ Mono development tools.
 %{_bindir}/mono-api-info
 %{_bindir}/mono-api-html
 %{_bindir}/mono-cil-strip
+
+%if 0%{?suse_version} > 1500 
+%{_rpmconfigdir}/fileattrs/mono.attr
+%{_rpmconfigdir}/mono-find-provides
+%{_rpmconfigdir}/mono-find-requires
+%endif
+
 %{_bindir}/mono-find-provides
 %{_bindir}/mono-find-requires
 %{_bindir}/mono-heapviz
@@ -1406,7 +1429,7 @@ Mono development tools.
 %{_prefix}/lib/mono/4.5/mono-cil-strip.exe*
 %{_prefix}/lib/mono/4.5/mono-shlib-cop.exe*
 %{_prefix}/lib/mono/4.5/mono-xmltool.exe*
-%ifnarch aarch64 ppc64 ppc64le
+%ifnarch ppc64 ppc64le s390x
 %{_prefix}/lib/mono/4.5/monolinker.*
 %endif
 %{_prefix}/lib/mono/4.5/monop.exe*
@@ -1559,7 +1582,7 @@ Monodoc-core contains documentation tools for C#.
 %{_mandir}/man1/monodocer.1%ext_man
 %{_mandir}/man1/monodocs2html.1%ext_man
 %{_mandir}/man5/mdoc.5%ext_man
-%ifnarch aarch64 ppc64 ppc64le
+%ifnarch ppc64 ppc64le s390x
 %{_prefix}/lib/mono/4.5/mdoc.exe*
 %endif
 %{_prefix}/lib/mono/4.5/mod.exe*

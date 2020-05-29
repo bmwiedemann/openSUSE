@@ -1035,4 +1035,26 @@
     <user>maxlin_factory</user>
     <comment>revert, breaks provides on mono packages, and so rebuildpacs go crazy</comment>
   </revision>
+  <revision rev="127" vrev="5">
+    <srcmd5>2b99d65c0b65095d7280267922961aac</srcmd5>
+    <version>6.8.0</version>
+    <time>1590779620</time>
+    <user>maxlin_factory</user>
+    <comment>- Fixup mono-find-requires for v1 profiles 
+
+- Add mono-find-provides and mono-find-requires from Fedora and use
+  it instead. Fixes boo#1152775
+
+- Add fix-s390x-ucontext.patch: fix the build on 15.2/s390x
+  (bsc#1171934).
+- Add _constraints to prevent running out of disk space.
+
+- Enable roslyn on aarch64 to build additionnal tools (mdoc.exe, ...)
+
+- Add mono.attr and install it to %_rpmconfigdir/fileattrs: enable
+  the dependency scanner for rpm packages (boo#1152775).
+
+- Update to the most current mono release, 6.8.0.105.</comment>
+    <requestid>809780</requestid>
+  </revision>
 </revisionlist>

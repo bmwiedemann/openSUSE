@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu May 28 07:05:06 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Fixup mono-find-requires for v1 profiles 
+
+-------------------------------------------------------------------
+Wed May 27 09:35:05 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add mono-find-provides and mono-find-requires from Fedora and use
+  it instead. Fixes boo#1152775
+
+-------------------------------------------------------------------
+Tue May 26 19:57:47 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Add fix-s390x-ucontext.patch: fix the build on 15.2/s390x
+  (bsc#1171934).
+- Add _constraints to prevent running out of disk space.
+
+-------------------------------------------------------------------
+Sun May 24 08:07:07 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable roslyn on aarch64 to build additionnal tools (mdoc.exe, ...)
+
+-------------------------------------------------------------------
+Wed Apr 29 10:05:31 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add mono.attr and install it to %_rpmconfigdir/fileattrs: enable
+  the dependency scanner for rpm packages (boo#1152775).
+
+-------------------------------------------------------------------
+Tue Apr 21 19:10:16 UTC 2020 - David Mulder <dmulder@suse.com>
+
+- Update to the most current mono release, 6.8.0.105.
+
+-------------------------------------------------------------------
 Thu Mar 19 07:44:57 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add aprofutil.exe.mdb and remove aprofutil.pdb, mdoc.exe and 
