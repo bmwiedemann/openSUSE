@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-specs-z
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,20 @@
 
 %bcond_with	zypper_posttrans
 
-%define texlive_version  2019
-%define texlive_previous 2018
-%define texlive_release  20190407
-%define texlive_noarch   168
+%define texlive_version  2020
+%define texlive_previous 2019
+%define texlive_release  20200327
+%define texlive_noarch   176
 
 #!BuildIgnore:          texlive
+#!BuildIgnore:          texlive-scripts
+#!BuildIgnore:          texlive-scripts-extra
+#!BuildIgnore:          texlive-scripts-bin
+#!BuildIgnore:          texlive-scripts-extra-bin
+#!BuildIgnore:          texlive-gsftopk
+#!BuildIgnore:          texlive-gsftopk-bin
+#!BuildIgnore:          texlive-kpathsea
+#!BuildIgnore:          texlive-kpathsea-bin
 
 %global _varlib         %{_localstatedir}/lib
 %global _libexecdir     %{_prefix}/lib
@@ -49,7 +57,7 @@
 %define _appdefdir      %{_x11data}/app-defaults
 
 Name:           texlive-specs-z
-Version:        2019
+Version:        2020
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
@@ -61,7 +69,7 @@ BuildArch:      noarch
 Summary:        Meta package for z
 License:        Apache-1.0 and BSD-3-Clause and GPL-2.0+ and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
-Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
+URL:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-z-rpmlintrc
 
 %description
@@ -73,19 +81,31 @@ Release:        0
 Summary:        Produces figures which text can flow around
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-wrapfig-doc >= %{texlive_version}
 Provides:       tex(wrapfig.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source1:        wrapfig.tar.xz
 Source2:        wrapfig.doc.tar.xz
 
@@ -95,16 +115,13 @@ not work in combination with list environments, but can be used
 in a parbox or minipage, and in twocolumn format. Supports the
 float package.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-wrapfig-doc
 Version:        %{texlive_version}.%{texlive_noarch}.3.6svn22048
 Release:        0
 Summary:        Documentation for texlive-wrapfig
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-wrapfig-doc
 This package includes the documentation for texlive-wrapfig
@@ -148,15 +165,27 @@ Release:        0
 Summary:        LaTeX class for Bavarian school w-seminar papers
 License:        BSD-3-Clause
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-wsemclassic-doc >= %{texlive_version}
 Provides:       tex(wsemclassic.cls)
 Requires:       tex(amsmath.sty)
@@ -179,8 +208,8 @@ Requires:       tex(setspace.sty)
 Requires:       tex(soulutf8.sty)
 Requires:       tex(titlesec.sty)
 Requires:       tex(tocbibind.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source3:        wsemclassic.tar.xz
 Source4:        wsemclassic.doc.tar.xz
 
@@ -191,16 +220,13 @@ typesetting w-seminar papers (strict mode), or to use another
 style which should look better. The class is based on the LaTeX
 standard report class.
 
-date: 2017-04-18 03:31:40 +0000
-
-
 %package -n texlive-wsemclassic-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.0.1svn31532
 Release:        0
 Summary:        Documentation for texlive-wsemclassic
 License:        BSD-3-Clause
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-wsemclassic-doc
 This package includes the documentation for texlive-wsemclassic
@@ -249,15 +275,27 @@ Release:        0
 Summary:        International Phonetic Alphabet fonts
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-wsuipa-doc >= %{texlive_version}
 Provides:       tex(ipa.sty)
 Provides:       tex(ipalmacs.sty)
@@ -280,8 +318,8 @@ Provides:       tex(wsuipa12.tfm)
 Provides:       tex(wsuipa17.tfm)
 Provides:       tex(wsuipa8.tfm)
 Provides:       tex(wsuipa9.tfm)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source5:        wsuipa.tar.xz
 Source6:        wsuipa.doc.tar.xz
 
@@ -290,16 +328,13 @@ The package provides a 7-bit IPA font, as Metafont source, and
 macros for support under TeXt1 and LaTeX. The fonts (and
 macros) are now largely superseded by the tipa fonts.
 
-date: 2017-10-29 14:25:02 +0000
-
-
 %package -n texlive-wsuipa-doc
 Version:        %{texlive_version}.%{texlive_noarch}.svn25469
 Release:        0
 Summary:        Documentation for texlive-wsuipa
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-wsuipa-doc
 This package includes the documentation for texlive-wsuipa
@@ -398,20 +433,32 @@ Release:        0
 Summary:        Extend LaTeX's cross-reference system
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-wtref-doc >= %{texlive_version}
 Provides:       tex(wtref.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source7:        wtref.tar.xz
 Source8:        wtref.doc.tar.xz
 
@@ -421,16 +468,13 @@ introduces concepts of namespace and scope. It also allows
 users to customize reference formats. The package is part of
 the WT Series.
 
-date: 2017-01-17 11:28:26 +0000
-
-
 %package -n texlive-wtref-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.2svn42981
 Release:        0
 Summary:        Documentation for texlive-wtref
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-wtref-doc:ja)
 
 %description -n texlive-wtref-doc
@@ -478,20 +522,32 @@ Release:        0
 Summary:        Define commands with many optional arguments
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xargs-doc >= %{texlive_version}
 Provides:       tex(xargs.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source9:        xargs.tar.xz
 Source10:       xargs.doc.tar.xz
 
@@ -501,16 +557,13 @@ related LaTeX commands, which allow easy and robust definition
 of macros with many optional arguments, using a clear and
 simple xkeyval-style syntax.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-xargs-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn15878
 Release:        0
 Summary:        Documentation for texlive-xargs
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-xargs-doc:fr;en)
 
 %description -n texlive-xargs-doc
@@ -550,20 +603,32 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-xassoccnt
-Version:        %{texlive_version}.%{texlive_noarch}.1.7svn49516
+Version:        %{texlive_version}.%{texlive_noarch}.1.7svn54080
 Release:        0
 Summary:        Associated counters stepping simultaneously
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xassoccnt-doc >= %{texlive_version}
 Provides:       tex(xassoccnt.sty)
 Requires:       tex(etoolbox.sty)
@@ -571,8 +636,8 @@ Requires:       tex(l3keys2e.sty)
 Requires:       tex(letltxmacro.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source11:       xassoccnt.tar.xz
 Source12:       xassoccnt.doc.tar.xz
 
@@ -587,16 +652,13 @@ package by the same author. However, as of 2017-03-05, some
 features of assoccnt are not (yet) contained in xassoccnt so
 that the older package cannot yet be regarded as obsolete.
 
-date: 2018-12-28 08:34:58 +0000
-
-
 %package -n texlive-xassoccnt-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.7svn49516
+Version:        %{texlive_version}.%{texlive_noarch}.1.7svn54080
 Release:        0
 Summary:        Documentation for texlive-xassoccnt
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xassoccnt-doc
 This package includes the documentation for texlive-xassoccnt
@@ -659,24 +721,36 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/xassoccnt/xassoccnt.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xassoccnt-%{texlive_version}.%{texlive_noarch}.1.7svn49516-%{release}-zypper
+/var/adm/update-scripts/texlive-xassoccnt-%{texlive_version}.%{texlive_noarch}.1.7svn54080-%{release}-zypper
 %endif
 
 %package -n texlive-xbmks
-Version:        %{texlive_version}.%{texlive_noarch}.svn48138
+Version:        %{texlive_version}.%{texlive_noarch}.svn53448
 Release:        0
 Summary:        Create a cross-document bookmark tree
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xbmks-doc >= %{texlive_version}
 Provides:       tex(xbmks-pdfmark.def)
 Provides:       tex(xbmks-pdftex.def)
@@ -686,8 +760,8 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source13:       xbmks.tar.xz
 Source14:       xbmks.doc.tar.xz
 
@@ -701,16 +775,13 @@ treated the same as pdfLaTeX), and XeLaTeX. The package
 auto-detects pdfLaTeX and XeLaTeX, and dvips is the default, so
 there is actually no need to pass the driver option.
 
-date: 2018-07-04 16:39:06 +0000
-
-
 %package -n texlive-xbmks-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn48138
+Version:        %{texlive_version}.%{texlive_noarch}.svn53448
 Release:        0
 Summary:        Documentation for texlive-xbmks
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xbmks-doc
 This package includes the documentation for texlive-xbmks
@@ -756,20 +827,25 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/xbmks/xbmks-xetex.def
 %{_texmfdistdir}/tex/latex/xbmks/xbmks.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xbmks-%{texlive_version}.%{texlive_noarch}.svn48138-%{release}-zypper
+/var/adm/update-scripts/texlive-xbmks-%{texlive_version}.%{texlive_noarch}.svn53448-%{release}-zypper
 %endif
 
 %package -n texlive-xcharter
-Version:        %{texlive_version}.%{texlive_noarch}.1.116svn48498
+Version:        %{texlive_version}.%{texlive_noarch}.1.205svn54512
 Release:        0
 Summary:        Extension of Bitstream Charter fonts
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -781,10 +857,17 @@ Requires(postun): grep
 Requires(postun): sed
 Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(updmap.cfg)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-xcharter-fonts >= %{texlive_version}
 Recommends:     texlive-xcharter-doc >= %{texlive_version}
 Provides:       tex(LY1XCharter-Dnom.fd)
@@ -844,9 +927,7 @@ Provides:       tex(XCharter-Bold-sup-ot1.tfm)
 Provides:       tex(XCharter-Bold-sup-t1--base.tfm)
 Provides:       tex(XCharter-Bold-sup-t1.tfm)
 Provides:       tex(XCharter-Bold-sup-t1.vf)
-Provides:       tex(XCharter-Bold-sup-t2a--base.tfm)
 Provides:       tex(XCharter-Bold-sup-t2a.tfm)
-Provides:       tex(XCharter-Bold-sup-t2a.vf)
 Provides:       tex(XCharter-Bold-sup-t2asrb--base.tfm)
 Provides:       tex(XCharter-Bold-sup-t2asrb.tfm)
 Provides:       tex(XCharter-Bold-sup-t2asrb.vf)
@@ -866,18 +947,14 @@ Provides:       tex(XCharter-Bold-tlf-sc-ot1.vf)
 Provides:       tex(XCharter-Bold-tlf-sc-t1--base.tfm)
 Provides:       tex(XCharter-Bold-tlf-sc-t1.tfm)
 Provides:       tex(XCharter-Bold-tlf-sc-t1.vf)
-Provides:       tex(XCharter-Bold-tlf-sc-t2a--base.tfm)
 Provides:       tex(XCharter-Bold-tlf-sc-t2a.tfm)
-Provides:       tex(XCharter-Bold-tlf-sc-t2a.vf)
 Provides:       tex(XCharter-Bold-tlf-sc-t2asrb--base.tfm)
 Provides:       tex(XCharter-Bold-tlf-sc-t2asrb.tfm)
 Provides:       tex(XCharter-Bold-tlf-sc-t2asrb.vf)
 Provides:       tex(XCharter-Bold-tlf-t1--base.tfm)
 Provides:       tex(XCharter-Bold-tlf-t1.tfm)
 Provides:       tex(XCharter-Bold-tlf-t1.vf)
-Provides:       tex(XCharter-Bold-tlf-t2a--base.tfm)
 Provides:       tex(XCharter-Bold-tlf-t2a.tfm)
-Provides:       tex(XCharter-Bold-tlf-t2a.vf)
 Provides:       tex(XCharter-Bold-tlf-t2asrb--base.tfm)
 Provides:       tex(XCharter-Bold-tlf-t2asrb.tfm)
 Provides:       tex(XCharter-Bold-tlf-t2asrb.vf)
@@ -897,18 +974,14 @@ Provides:       tex(XCharter-Bold-tosf-sc-ot1.vf)
 Provides:       tex(XCharter-Bold-tosf-sc-t1--base.tfm)
 Provides:       tex(XCharter-Bold-tosf-sc-t1.tfm)
 Provides:       tex(XCharter-Bold-tosf-sc-t1.vf)
-Provides:       tex(XCharter-Bold-tosf-sc-t2a--base.tfm)
 Provides:       tex(XCharter-Bold-tosf-sc-t2a.tfm)
-Provides:       tex(XCharter-Bold-tosf-sc-t2a.vf)
 Provides:       tex(XCharter-Bold-tosf-sc-t2asrb--base.tfm)
 Provides:       tex(XCharter-Bold-tosf-sc-t2asrb.tfm)
 Provides:       tex(XCharter-Bold-tosf-sc-t2asrb.vf)
 Provides:       tex(XCharter-Bold-tosf-t1--base.tfm)
 Provides:       tex(XCharter-Bold-tosf-t1.tfm)
 Provides:       tex(XCharter-Bold-tosf-t1.vf)
-Provides:       tex(XCharter-Bold-tosf-t2a--base.tfm)
 Provides:       tex(XCharter-Bold-tosf-t2a.tfm)
-Provides:       tex(XCharter-Bold-tosf-t2a.vf)
 Provides:       tex(XCharter-Bold-tosf-t2asrb--base.tfm)
 Provides:       tex(XCharter-Bold-tosf-t2asrb.tfm)
 Provides:       tex(XCharter-Bold-tosf-t2asrb.vf)
@@ -943,9 +1016,7 @@ Provides:       tex(XCharter-BoldItalic-sup-ot1.tfm)
 Provides:       tex(XCharter-BoldItalic-sup-t1--base.tfm)
 Provides:       tex(XCharter-BoldItalic-sup-t1.tfm)
 Provides:       tex(XCharter-BoldItalic-sup-t1.vf)
-Provides:       tex(XCharter-BoldItalic-sup-t2a--base.tfm)
 Provides:       tex(XCharter-BoldItalic-sup-t2a.tfm)
-Provides:       tex(XCharter-BoldItalic-sup-t2a.vf)
 Provides:       tex(XCharter-BoldItalic-sup-t2asrb--base.tfm)
 Provides:       tex(XCharter-BoldItalic-sup-t2asrb.tfm)
 Provides:       tex(XCharter-BoldItalic-sup-t2asrb.vf)
@@ -965,18 +1036,14 @@ Provides:       tex(XCharter-BoldItalic-tlf-sc-ot1.vf)
 Provides:       tex(XCharter-BoldItalic-tlf-sc-t1--base.tfm)
 Provides:       tex(XCharter-BoldItalic-tlf-sc-t1.tfm)
 Provides:       tex(XCharter-BoldItalic-tlf-sc-t1.vf)
-Provides:       tex(XCharter-BoldItalic-tlf-sc-t2a--base.tfm)
 Provides:       tex(XCharter-BoldItalic-tlf-sc-t2a.tfm)
-Provides:       tex(XCharter-BoldItalic-tlf-sc-t2a.vf)
 Provides:       tex(XCharter-BoldItalic-tlf-sc-t2asrb--base.tfm)
 Provides:       tex(XCharter-BoldItalic-tlf-sc-t2asrb.tfm)
 Provides:       tex(XCharter-BoldItalic-tlf-sc-t2asrb.vf)
 Provides:       tex(XCharter-BoldItalic-tlf-t1--base.tfm)
 Provides:       tex(XCharter-BoldItalic-tlf-t1.tfm)
 Provides:       tex(XCharter-BoldItalic-tlf-t1.vf)
-Provides:       tex(XCharter-BoldItalic-tlf-t2a--base.tfm)
 Provides:       tex(XCharter-BoldItalic-tlf-t2a.tfm)
-Provides:       tex(XCharter-BoldItalic-tlf-t2a.vf)
 Provides:       tex(XCharter-BoldItalic-tlf-t2asrb--base.tfm)
 Provides:       tex(XCharter-BoldItalic-tlf-t2asrb.tfm)
 Provides:       tex(XCharter-BoldItalic-tlf-t2asrb.vf)
@@ -996,18 +1063,14 @@ Provides:       tex(XCharter-BoldItalic-tosf-sc-ot1.vf)
 Provides:       tex(XCharter-BoldItalic-tosf-sc-t1--base.tfm)
 Provides:       tex(XCharter-BoldItalic-tosf-sc-t1.tfm)
 Provides:       tex(XCharter-BoldItalic-tosf-sc-t1.vf)
-Provides:       tex(XCharter-BoldItalic-tosf-sc-t2a--base.tfm)
 Provides:       tex(XCharter-BoldItalic-tosf-sc-t2a.tfm)
-Provides:       tex(XCharter-BoldItalic-tosf-sc-t2a.vf)
 Provides:       tex(XCharter-BoldItalic-tosf-sc-t2asrb--base.tfm)
 Provides:       tex(XCharter-BoldItalic-tosf-sc-t2asrb.tfm)
 Provides:       tex(XCharter-BoldItalic-tosf-sc-t2asrb.vf)
 Provides:       tex(XCharter-BoldItalic-tosf-t1--base.tfm)
 Provides:       tex(XCharter-BoldItalic-tosf-t1.tfm)
 Provides:       tex(XCharter-BoldItalic-tosf-t1.vf)
-Provides:       tex(XCharter-BoldItalic-tosf-t2a--base.tfm)
 Provides:       tex(XCharter-BoldItalic-tosf-t2a.tfm)
-Provides:       tex(XCharter-BoldItalic-tosf-t2a.vf)
 Provides:       tex(XCharter-BoldItalic-tosf-t2asrb--base.tfm)
 Provides:       tex(XCharter-BoldItalic-tosf-t2asrb.tfm)
 Provides:       tex(XCharter-BoldItalic-tosf-t2asrb.vf)
@@ -1042,9 +1105,7 @@ Provides:       tex(XCharter-BoldSlanted-sup-ot1.tfm)
 Provides:       tex(XCharter-BoldSlanted-sup-t1--base.tfm)
 Provides:       tex(XCharter-BoldSlanted-sup-t1.tfm)
 Provides:       tex(XCharter-BoldSlanted-sup-t1.vf)
-Provides:       tex(XCharter-BoldSlanted-sup-t2a--base.tfm)
 Provides:       tex(XCharter-BoldSlanted-sup-t2a.tfm)
-Provides:       tex(XCharter-BoldSlanted-sup-t2a.vf)
 Provides:       tex(XCharter-BoldSlanted-sup-t2asrb--base.tfm)
 Provides:       tex(XCharter-BoldSlanted-sup-t2asrb.tfm)
 Provides:       tex(XCharter-BoldSlanted-sup-t2asrb.vf)
@@ -1062,18 +1123,14 @@ Provides:       tex(XCharter-BoldSlanted-tlf-sc-ot1.vf)
 Provides:       tex(XCharter-BoldSlanted-tlf-sc-t1--base.tfm)
 Provides:       tex(XCharter-BoldSlanted-tlf-sc-t1.tfm)
 Provides:       tex(XCharter-BoldSlanted-tlf-sc-t1.vf)
-Provides:       tex(XCharter-BoldSlanted-tlf-sc-t2a--base.tfm)
 Provides:       tex(XCharter-BoldSlanted-tlf-sc-t2a.tfm)
-Provides:       tex(XCharter-BoldSlanted-tlf-sc-t2a.vf)
 Provides:       tex(XCharter-BoldSlanted-tlf-sc-t2asrb--base.tfm)
 Provides:       tex(XCharter-BoldSlanted-tlf-sc-t2asrb.tfm)
 Provides:       tex(XCharter-BoldSlanted-tlf-sc-t2asrb.vf)
 Provides:       tex(XCharter-BoldSlanted-tlf-t1--base.tfm)
 Provides:       tex(XCharter-BoldSlanted-tlf-t1.tfm)
 Provides:       tex(XCharter-BoldSlanted-tlf-t1.vf)
-Provides:       tex(XCharter-BoldSlanted-tlf-t2a--base.tfm)
 Provides:       tex(XCharter-BoldSlanted-tlf-t2a.tfm)
-Provides:       tex(XCharter-BoldSlanted-tlf-t2a.vf)
 Provides:       tex(XCharter-BoldSlanted-tlf-t2asrb--base.tfm)
 Provides:       tex(XCharter-BoldSlanted-tlf-t2asrb.tfm)
 Provides:       tex(XCharter-BoldSlanted-tlf-t2asrb.vf)
@@ -1093,18 +1150,14 @@ Provides:       tex(XCharter-BoldSlanted-tosf-sc-ot1.vf)
 Provides:       tex(XCharter-BoldSlanted-tosf-sc-t1--base.tfm)
 Provides:       tex(XCharter-BoldSlanted-tosf-sc-t1.tfm)
 Provides:       tex(XCharter-BoldSlanted-tosf-sc-t1.vf)
-Provides:       tex(XCharter-BoldSlanted-tosf-sc-t2a--base.tfm)
 Provides:       tex(XCharter-BoldSlanted-tosf-sc-t2a.tfm)
-Provides:       tex(XCharter-BoldSlanted-tosf-sc-t2a.vf)
 Provides:       tex(XCharter-BoldSlanted-tosf-sc-t2asrb--base.tfm)
 Provides:       tex(XCharter-BoldSlanted-tosf-sc-t2asrb.tfm)
 Provides:       tex(XCharter-BoldSlanted-tosf-sc-t2asrb.vf)
 Provides:       tex(XCharter-BoldSlanted-tosf-t1--base.tfm)
 Provides:       tex(XCharter-BoldSlanted-tosf-t1.tfm)
 Provides:       tex(XCharter-BoldSlanted-tosf-t1.vf)
-Provides:       tex(XCharter-BoldSlanted-tosf-t2a--base.tfm)
 Provides:       tex(XCharter-BoldSlanted-tosf-t2a.tfm)
-Provides:       tex(XCharter-BoldSlanted-tosf-t2a.vf)
 Provides:       tex(XCharter-BoldSlanted-tosf-t2asrb--base.tfm)
 Provides:       tex(XCharter-BoldSlanted-tosf-t2asrb.tfm)
 Provides:       tex(XCharter-BoldSlanted-tosf-t2asrb.vf)
@@ -1140,9 +1193,7 @@ Provides:       tex(XCharter-Italic-sup-ot1.tfm)
 Provides:       tex(XCharter-Italic-sup-t1--base.tfm)
 Provides:       tex(XCharter-Italic-sup-t1.tfm)
 Provides:       tex(XCharter-Italic-sup-t1.vf)
-Provides:       tex(XCharter-Italic-sup-t2a--base.tfm)
 Provides:       tex(XCharter-Italic-sup-t2a.tfm)
-Provides:       tex(XCharter-Italic-sup-t2a.vf)
 Provides:       tex(XCharter-Italic-sup-t2asrb--base.tfm)
 Provides:       tex(XCharter-Italic-sup-t2asrb.tfm)
 Provides:       tex(XCharter-Italic-sup-t2asrb.vf)
@@ -1162,18 +1213,14 @@ Provides:       tex(XCharter-Italic-tlf-sc-ot1.vf)
 Provides:       tex(XCharter-Italic-tlf-sc-t1--base.tfm)
 Provides:       tex(XCharter-Italic-tlf-sc-t1.tfm)
 Provides:       tex(XCharter-Italic-tlf-sc-t1.vf)
-Provides:       tex(XCharter-Italic-tlf-sc-t2a--base.tfm)
 Provides:       tex(XCharter-Italic-tlf-sc-t2a.tfm)
-Provides:       tex(XCharter-Italic-tlf-sc-t2a.vf)
 Provides:       tex(XCharter-Italic-tlf-sc-t2asrb--base.tfm)
 Provides:       tex(XCharter-Italic-tlf-sc-t2asrb.tfm)
 Provides:       tex(XCharter-Italic-tlf-sc-t2asrb.vf)
 Provides:       tex(XCharter-Italic-tlf-t1--base.tfm)
 Provides:       tex(XCharter-Italic-tlf-t1.tfm)
 Provides:       tex(XCharter-Italic-tlf-t1.vf)
-Provides:       tex(XCharter-Italic-tlf-t2a--base.tfm)
 Provides:       tex(XCharter-Italic-tlf-t2a.tfm)
-Provides:       tex(XCharter-Italic-tlf-t2a.vf)
 Provides:       tex(XCharter-Italic-tlf-t2asrb--base.tfm)
 Provides:       tex(XCharter-Italic-tlf-t2asrb.tfm)
 Provides:       tex(XCharter-Italic-tlf-t2asrb.vf)
@@ -1193,18 +1240,14 @@ Provides:       tex(XCharter-Italic-tosf-sc-ot1.vf)
 Provides:       tex(XCharter-Italic-tosf-sc-t1--base.tfm)
 Provides:       tex(XCharter-Italic-tosf-sc-t1.tfm)
 Provides:       tex(XCharter-Italic-tosf-sc-t1.vf)
-Provides:       tex(XCharter-Italic-tosf-sc-t2a--base.tfm)
 Provides:       tex(XCharter-Italic-tosf-sc-t2a.tfm)
-Provides:       tex(XCharter-Italic-tosf-sc-t2a.vf)
 Provides:       tex(XCharter-Italic-tosf-sc-t2asrb--base.tfm)
 Provides:       tex(XCharter-Italic-tosf-sc-t2asrb.tfm)
 Provides:       tex(XCharter-Italic-tosf-sc-t2asrb.vf)
 Provides:       tex(XCharter-Italic-tosf-t1--base.tfm)
 Provides:       tex(XCharter-Italic-tosf-t1.tfm)
 Provides:       tex(XCharter-Italic-tosf-t1.vf)
-Provides:       tex(XCharter-Italic-tosf-t2a--base.tfm)
 Provides:       tex(XCharter-Italic-tosf-t2a.tfm)
-Provides:       tex(XCharter-Italic-tosf-t2a.vf)
 Provides:       tex(XCharter-Italic-tosf-t2asrb--base.tfm)
 Provides:       tex(XCharter-Italic-tosf-t2asrb.tfm)
 Provides:       tex(XCharter-Italic-tosf-t2asrb.vf)
@@ -1239,9 +1282,7 @@ Provides:       tex(XCharter-Roman-sup-ot1.tfm)
 Provides:       tex(XCharter-Roman-sup-t1--base.tfm)
 Provides:       tex(XCharter-Roman-sup-t1.tfm)
 Provides:       tex(XCharter-Roman-sup-t1.vf)
-Provides:       tex(XCharter-Roman-sup-t2a--base.tfm)
 Provides:       tex(XCharter-Roman-sup-t2a.tfm)
-Provides:       tex(XCharter-Roman-sup-t2a.vf)
 Provides:       tex(XCharter-Roman-sup-t2asrb--base.tfm)
 Provides:       tex(XCharter-Roman-sup-t2asrb.tfm)
 Provides:       tex(XCharter-Roman-sup-t2asrb.vf)
@@ -1261,18 +1302,14 @@ Provides:       tex(XCharter-Roman-tlf-sc-ot1.vf)
 Provides:       tex(XCharter-Roman-tlf-sc-t1--base.tfm)
 Provides:       tex(XCharter-Roman-tlf-sc-t1.tfm)
 Provides:       tex(XCharter-Roman-tlf-sc-t1.vf)
-Provides:       tex(XCharter-Roman-tlf-sc-t2a--base.tfm)
 Provides:       tex(XCharter-Roman-tlf-sc-t2a.tfm)
-Provides:       tex(XCharter-Roman-tlf-sc-t2a.vf)
 Provides:       tex(XCharter-Roman-tlf-sc-t2asrb--base.tfm)
 Provides:       tex(XCharter-Roman-tlf-sc-t2asrb.tfm)
 Provides:       tex(XCharter-Roman-tlf-sc-t2asrb.vf)
 Provides:       tex(XCharter-Roman-tlf-t1--base.tfm)
 Provides:       tex(XCharter-Roman-tlf-t1.tfm)
 Provides:       tex(XCharter-Roman-tlf-t1.vf)
-Provides:       tex(XCharter-Roman-tlf-t2a--base.tfm)
 Provides:       tex(XCharter-Roman-tlf-t2a.tfm)
-Provides:       tex(XCharter-Roman-tlf-t2a.vf)
 Provides:       tex(XCharter-Roman-tlf-t2asrb--base.tfm)
 Provides:       tex(XCharter-Roman-tlf-t2asrb.tfm)
 Provides:       tex(XCharter-Roman-tlf-t2asrb.vf)
@@ -1292,18 +1329,14 @@ Provides:       tex(XCharter-Roman-tosf-sc-ot1.vf)
 Provides:       tex(XCharter-Roman-tosf-sc-t1--base.tfm)
 Provides:       tex(XCharter-Roman-tosf-sc-t1.tfm)
 Provides:       tex(XCharter-Roman-tosf-sc-t1.vf)
-Provides:       tex(XCharter-Roman-tosf-sc-t2a--base.tfm)
 Provides:       tex(XCharter-Roman-tosf-sc-t2a.tfm)
-Provides:       tex(XCharter-Roman-tosf-sc-t2a.vf)
 Provides:       tex(XCharter-Roman-tosf-sc-t2asrb--base.tfm)
 Provides:       tex(XCharter-Roman-tosf-sc-t2asrb.tfm)
 Provides:       tex(XCharter-Roman-tosf-sc-t2asrb.vf)
 Provides:       tex(XCharter-Roman-tosf-t1--base.tfm)
 Provides:       tex(XCharter-Roman-tosf-t1.tfm)
 Provides:       tex(XCharter-Roman-tosf-t1.vf)
-Provides:       tex(XCharter-Roman-tosf-t2a--base.tfm)
 Provides:       tex(XCharter-Roman-tosf-t2a.tfm)
-Provides:       tex(XCharter-Roman-tosf-t2a.vf)
 Provides:       tex(XCharter-Roman-tosf-t2asrb--base.tfm)
 Provides:       tex(XCharter-Roman-tosf-t2asrb.tfm)
 Provides:       tex(XCharter-Roman-tosf-t2asrb.vf)
@@ -1338,9 +1371,7 @@ Provides:       tex(XCharter-Slanted-sup-ot1.tfm)
 Provides:       tex(XCharter-Slanted-sup-t1--base.tfm)
 Provides:       tex(XCharter-Slanted-sup-t1.tfm)
 Provides:       tex(XCharter-Slanted-sup-t1.vf)
-Provides:       tex(XCharter-Slanted-sup-t2a--base.tfm)
 Provides:       tex(XCharter-Slanted-sup-t2a.tfm)
-Provides:       tex(XCharter-Slanted-sup-t2a.vf)
 Provides:       tex(XCharter-Slanted-sup-t2asrb--base.tfm)
 Provides:       tex(XCharter-Slanted-sup-t2asrb.tfm)
 Provides:       tex(XCharter-Slanted-sup-t2asrb.vf)
@@ -1358,18 +1389,14 @@ Provides:       tex(XCharter-Slanted-tlf-sc-ot1.vf)
 Provides:       tex(XCharter-Slanted-tlf-sc-t1--base.tfm)
 Provides:       tex(XCharter-Slanted-tlf-sc-t1.tfm)
 Provides:       tex(XCharter-Slanted-tlf-sc-t1.vf)
-Provides:       tex(XCharter-Slanted-tlf-sc-t2a--base.tfm)
 Provides:       tex(XCharter-Slanted-tlf-sc-t2a.tfm)
-Provides:       tex(XCharter-Slanted-tlf-sc-t2a.vf)
 Provides:       tex(XCharter-Slanted-tlf-sc-t2asrb--base.tfm)
 Provides:       tex(XCharter-Slanted-tlf-sc-t2asrb.tfm)
 Provides:       tex(XCharter-Slanted-tlf-sc-t2asrb.vf)
 Provides:       tex(XCharter-Slanted-tlf-t1--base.tfm)
 Provides:       tex(XCharter-Slanted-tlf-t1.tfm)
 Provides:       tex(XCharter-Slanted-tlf-t1.vf)
-Provides:       tex(XCharter-Slanted-tlf-t2a--base.tfm)
 Provides:       tex(XCharter-Slanted-tlf-t2a.tfm)
-Provides:       tex(XCharter-Slanted-tlf-t2a.vf)
 Provides:       tex(XCharter-Slanted-tlf-t2asrb--base.tfm)
 Provides:       tex(XCharter-Slanted-tlf-t2asrb.tfm)
 Provides:       tex(XCharter-Slanted-tlf-t2asrb.vf)
@@ -1389,18 +1416,14 @@ Provides:       tex(XCharter-Slanted-tosf-sc-ot1.vf)
 Provides:       tex(XCharter-Slanted-tosf-sc-t1--base.tfm)
 Provides:       tex(XCharter-Slanted-tosf-sc-t1.tfm)
 Provides:       tex(XCharter-Slanted-tosf-sc-t1.vf)
-Provides:       tex(XCharter-Slanted-tosf-sc-t2a--base.tfm)
 Provides:       tex(XCharter-Slanted-tosf-sc-t2a.tfm)
-Provides:       tex(XCharter-Slanted-tosf-sc-t2a.vf)
 Provides:       tex(XCharter-Slanted-tosf-sc-t2asrb--base.tfm)
 Provides:       tex(XCharter-Slanted-tosf-sc-t2asrb.tfm)
 Provides:       tex(XCharter-Slanted-tosf-sc-t2asrb.vf)
 Provides:       tex(XCharter-Slanted-tosf-t1--base.tfm)
 Provides:       tex(XCharter-Slanted-tosf-t1.tfm)
 Provides:       tex(XCharter-Slanted-tosf-t1.vf)
-Provides:       tex(XCharter-Slanted-tosf-t2a--base.tfm)
 Provides:       tex(XCharter-Slanted-tosf-t2a.tfm)
-Provides:       tex(XCharter-Slanted-tosf-t2a.vf)
 Provides:       tex(XCharter-Slanted-tosf-t2asrb--base.tfm)
 Provides:       tex(XCharter-Slanted-tosf-t2asrb.tfm)
 Provides:       tex(XCharter-Slanted-tosf-t2asrb.vf)
@@ -1424,7 +1447,6 @@ Provides:       tex(XCharter1-Bold-tosf-sc-ot1.vf)
 Provides:       tex(XCharter1-Bold-tosf-sc-t1--base.tfm)
 Provides:       tex(XCharter1-Bold-tosf-sc-t1.tfm)
 Provides:       tex(XCharter1-Bold-tosf-sc-t1.vf)
-Provides:       tex(XCharter1-Bold-tosf-sc-t2a--base.tfm)
 Provides:       tex(XCharter1-Bold-tosf-sc-t2a.tfm)
 Provides:       tex(XCharter1-Bold-tosf-sc-t2a.vf)
 Provides:       tex(XCharter1-Bold-tosf-sc-t2asrb--base.tfm)
@@ -1433,7 +1455,6 @@ Provides:       tex(XCharter1-Bold-tosf-sc-t2asrb.vf)
 Provides:       tex(XCharter1-Bold-tosf-t1--base.tfm)
 Provides:       tex(XCharter1-Bold-tosf-t1.tfm)
 Provides:       tex(XCharter1-Bold-tosf-t1.vf)
-Provides:       tex(XCharter1-Bold-tosf-t2a--base.tfm)
 Provides:       tex(XCharter1-Bold-tosf-t2a.tfm)
 Provides:       tex(XCharter1-Bold-tosf-t2a.vf)
 Provides:       tex(XCharter1-Bold-tosf-t2asrb--base.tfm)
@@ -1456,7 +1477,6 @@ Provides:       tex(XCharter1-BoldItalic-tosf-sc-ot1.vf)
 Provides:       tex(XCharter1-BoldItalic-tosf-sc-t1--base.tfm)
 Provides:       tex(XCharter1-BoldItalic-tosf-sc-t1.tfm)
 Provides:       tex(XCharter1-BoldItalic-tosf-sc-t1.vf)
-Provides:       tex(XCharter1-BoldItalic-tosf-sc-t2a--base.tfm)
 Provides:       tex(XCharter1-BoldItalic-tosf-sc-t2a.tfm)
 Provides:       tex(XCharter1-BoldItalic-tosf-sc-t2a.vf)
 Provides:       tex(XCharter1-BoldItalic-tosf-sc-t2asrb--base.tfm)
@@ -1465,7 +1485,6 @@ Provides:       tex(XCharter1-BoldItalic-tosf-sc-t2asrb.vf)
 Provides:       tex(XCharter1-BoldItalic-tosf-t1--base.tfm)
 Provides:       tex(XCharter1-BoldItalic-tosf-t1.tfm)
 Provides:       tex(XCharter1-BoldItalic-tosf-t1.vf)
-Provides:       tex(XCharter1-BoldItalic-tosf-t2a--base.tfm)
 Provides:       tex(XCharter1-BoldItalic-tosf-t2a.tfm)
 Provides:       tex(XCharter1-BoldItalic-tosf-t2a.vf)
 Provides:       tex(XCharter1-BoldItalic-tosf-t2asrb--base.tfm)
@@ -1488,7 +1507,6 @@ Provides:       tex(XCharter1-BoldSlanted-tosf-sc-ot1.vf)
 Provides:       tex(XCharter1-BoldSlanted-tosf-sc-t1--base.tfm)
 Provides:       tex(XCharter1-BoldSlanted-tosf-sc-t1.tfm)
 Provides:       tex(XCharter1-BoldSlanted-tosf-sc-t1.vf)
-Provides:       tex(XCharter1-BoldSlanted-tosf-sc-t2a--base.tfm)
 Provides:       tex(XCharter1-BoldSlanted-tosf-sc-t2a.tfm)
 Provides:       tex(XCharter1-BoldSlanted-tosf-sc-t2a.vf)
 Provides:       tex(XCharter1-BoldSlanted-tosf-sc-t2asrb--base.tfm)
@@ -1497,7 +1515,6 @@ Provides:       tex(XCharter1-BoldSlanted-tosf-sc-t2asrb.vf)
 Provides:       tex(XCharter1-BoldSlanted-tosf-t1--base.tfm)
 Provides:       tex(XCharter1-BoldSlanted-tosf-t1.tfm)
 Provides:       tex(XCharter1-BoldSlanted-tosf-t1.vf)
-Provides:       tex(XCharter1-BoldSlanted-tosf-t2a--base.tfm)
 Provides:       tex(XCharter1-BoldSlanted-tosf-t2a.tfm)
 Provides:       tex(XCharter1-BoldSlanted-tosf-t2a.vf)
 Provides:       tex(XCharter1-BoldSlanted-tosf-t2asrb--base.tfm)
@@ -1520,7 +1537,6 @@ Provides:       tex(XCharter1-Italic-tosf-sc-ot1.vf)
 Provides:       tex(XCharter1-Italic-tosf-sc-t1--base.tfm)
 Provides:       tex(XCharter1-Italic-tosf-sc-t1.tfm)
 Provides:       tex(XCharter1-Italic-tosf-sc-t1.vf)
-Provides:       tex(XCharter1-Italic-tosf-sc-t2a--base.tfm)
 Provides:       tex(XCharter1-Italic-tosf-sc-t2a.tfm)
 Provides:       tex(XCharter1-Italic-tosf-sc-t2a.vf)
 Provides:       tex(XCharter1-Italic-tosf-sc-t2asrb--base.tfm)
@@ -1529,7 +1545,6 @@ Provides:       tex(XCharter1-Italic-tosf-sc-t2asrb.vf)
 Provides:       tex(XCharter1-Italic-tosf-t1--base.tfm)
 Provides:       tex(XCharter1-Italic-tosf-t1.tfm)
 Provides:       tex(XCharter1-Italic-tosf-t1.vf)
-Provides:       tex(XCharter1-Italic-tosf-t2a--base.tfm)
 Provides:       tex(XCharter1-Italic-tosf-t2a.tfm)
 Provides:       tex(XCharter1-Italic-tosf-t2a.vf)
 Provides:       tex(XCharter1-Italic-tosf-t2asrb--base.tfm)
@@ -1552,7 +1567,6 @@ Provides:       tex(XCharter1-Roman-tosf-sc-ot1.vf)
 Provides:       tex(XCharter1-Roman-tosf-sc-t1--base.tfm)
 Provides:       tex(XCharter1-Roman-tosf-sc-t1.tfm)
 Provides:       tex(XCharter1-Roman-tosf-sc-t1.vf)
-Provides:       tex(XCharter1-Roman-tosf-sc-t2a--base.tfm)
 Provides:       tex(XCharter1-Roman-tosf-sc-t2a.tfm)
 Provides:       tex(XCharter1-Roman-tosf-sc-t2a.vf)
 Provides:       tex(XCharter1-Roman-tosf-sc-t2asrb--base.tfm)
@@ -1561,7 +1575,6 @@ Provides:       tex(XCharter1-Roman-tosf-sc-t2asrb.vf)
 Provides:       tex(XCharter1-Roman-tosf-t1--base.tfm)
 Provides:       tex(XCharter1-Roman-tosf-t1.tfm)
 Provides:       tex(XCharter1-Roman-tosf-t1.vf)
-Provides:       tex(XCharter1-Roman-tosf-t2a--base.tfm)
 Provides:       tex(XCharter1-Roman-tosf-t2a.tfm)
 Provides:       tex(XCharter1-Roman-tosf-t2a.vf)
 Provides:       tex(XCharter1-Roman-tosf-t2asrb--base.tfm)
@@ -1584,7 +1597,6 @@ Provides:       tex(XCharter1-Slanted-tosf-sc-ot1.vf)
 Provides:       tex(XCharter1-Slanted-tosf-sc-t1--base.tfm)
 Provides:       tex(XCharter1-Slanted-tosf-sc-t1.tfm)
 Provides:       tex(XCharter1-Slanted-tosf-sc-t1.vf)
-Provides:       tex(XCharter1-Slanted-tosf-sc-t2a--base.tfm)
 Provides:       tex(XCharter1-Slanted-tosf-sc-t2a.tfm)
 Provides:       tex(XCharter1-Slanted-tosf-sc-t2a.vf)
 Provides:       tex(XCharter1-Slanted-tosf-sc-t2asrb--base.tfm)
@@ -1593,7 +1605,6 @@ Provides:       tex(XCharter1-Slanted-tosf-sc-t2asrb.vf)
 Provides:       tex(XCharter1-Slanted-tosf-t1--base.tfm)
 Provides:       tex(XCharter1-Slanted-tosf-t1.tfm)
 Provides:       tex(XCharter1-Slanted-tosf-t1.vf)
-Provides:       tex(XCharter1-Slanted-tosf-t2a--base.tfm)
 Provides:       tex(XCharter1-Slanted-tosf-t2a.tfm)
 Provides:       tex(XCharter1-Slanted-tosf-t2a.vf)
 Provides:       tex(XCharter1-Slanted-tosf-t2asrb--base.tfm)
@@ -1608,135 +1619,135 @@ Provides:       tex(XCharterMathMI.tfm)
 Provides:       tex(XCharterMathRM.tfm)
 Provides:       tex(chalph.enc)
 Provides:       tex(chtabosf.enc)
+Provides:       tex(newtx-xcharter-subs.tex)
 Provides:       tex(omlzchmi.fd)
 Provides:       tex(t2asrbcmr.fd)
 Provides:       tex(t2asrbenc.def)
 Provides:       tex(xch1_3v4tq3.enc)
+Provides:       tex(xch1_4yv27g.enc)
+Provides:       tex(xch1_5xfeuz.enc)
 Provides:       tex(xch1_62ztbr.enc)
+Provides:       tex(xch1_7f2u2e.enc)
 Provides:       tex(xch1_7p4e2o.enc)
+Provides:       tex(xch1_a4gtyr.enc)
+Provides:       tex(xch1_b43rqs.enc)
 Provides:       tex(xch1_bcg6lk.enc)
 Provides:       tex(xch1_bpv7ty.enc)
-Provides:       tex(xch1_bwwzc2.enc)
 Provides:       tex(xch1_e3nxtd.enc)
-Provides:       tex(xch1_esnimw.enc)
+Provides:       tex(xch1_edxqyc.enc)
+Provides:       tex(xch1_erwtw3.enc)
 Provides:       tex(xch1_evj3rb.enc)
-Provides:       tex(xch1_gb4haz.enc)
-Provides:       tex(xch1_l6an6k.enc)
-Provides:       tex(xch1_lfljed.enc)
-Provides:       tex(xch1_lve4jz.enc)
-Provides:       tex(xch1_m7ekhw.enc)
-Provides:       tex(xch1_mtaw4d.enc)
-Provides:       tex(xch1_mz2wxn.enc)
-Provides:       tex(xch1_nzcsoe.enc)
+Provides:       tex(xch1_h7bh7r.enc)
+Provides:       tex(xch1_i3mpjp.enc)
+Provides:       tex(xch1_j3hr3h.enc)
+Provides:       tex(xch1_nfh2jb.enc)
 Provides:       tex(xch1_q7u3cc.enc)
-Provides:       tex(xch1_uyv5tr.enc)
-Provides:       tex(xch1_w7odti.enc)
-Provides:       tex(xch1_wi6ykn.enc)
-Provides:       tex(xch1_xj54uk.enc)
-Provides:       tex(xch1_xmfb6b.enc)
-Provides:       tex(xch_26pbhy.enc)
-Provides:       tex(xch_2o3aaj.enc)
+Provides:       tex(xch1_qdfne6.enc)
+Provides:       tex(xch1_wwsmtw.enc)
+Provides:       tex(xch1_xwsv67.enc)
+Provides:       tex(xch1_yz7cd7.enc)
 Provides:       tex(xch_3v4tq3.enc)
+Provides:       tex(xch_3xm3i2.enc)
+Provides:       tex(xch_4frzvl.enc)
 Provides:       tex(xch_4siibn.enc)
-Provides:       tex(xch_5klbw4.enc)
-Provides:       tex(xch_62z5ot.enc)
+Provides:       tex(xch_4yv27g.enc)
+Provides:       tex(xch_5xfeuz.enc)
 Provides:       tex(xch_62ztbr.enc)
-Provides:       tex(xch_7cmdv6.enc)
+Provides:       tex(xch_67xua3.enc)
+Provides:       tex(xch_6e6bv3.enc)
+Provides:       tex(xch_7f2u2e.enc)
+Provides:       tex(xch_7hqniv.enc)
+Provides:       tex(xch_7moowb.enc)
 Provides:       tex(xch_7p4e2o.enc)
-Provides:       tex(xch_a3psji.enc)
-Provides:       tex(xch_ao7ayk.enc)
-Provides:       tex(xch_ba4bq2.enc)
+Provides:       tex(xch_7vau5m.enc)
+Provides:       tex(xch_a4gtyr.enc)
+Provides:       tex(xch_b43rqs.enc)
 Provides:       tex(xch_bcg6lk.enc)
 Provides:       tex(xch_bk4eiy.enc)
 Provides:       tex(xch_bpv7ty.enc)
-Provides:       tex(xch_bwwzc2.enc)
 Provides:       tex(xch_ch4v2b.enc)
-Provides:       tex(xch_ct4qni.enc)
-Provides:       tex(xch_cwi5fu.enc)
-Provides:       tex(xch_dwd75d.enc)
+Provides:       tex(xch_cxo25j.enc)
+Provides:       tex(xch_dcwqct.enc)
 Provides:       tex(xch_e3nxtd.enc)
-Provides:       tex(xch_esnimw.enc)
+Provides:       tex(xch_edxqyc.enc)
+Provides:       tex(xch_erwtw3.enc)
 Provides:       tex(xch_evj3rb.enc)
-Provides:       tex(xch_g4jsot.enc)
-Provides:       tex(xch_gb4haz.enc)
-Provides:       tex(xch_ggr2qz.enc)
+Provides:       tex(xch_fp7vyz.enc)
+Provides:       tex(xch_ghovd2.enc)
+Provides:       tex(xch_gqxjho.enc)
 Provides:       tex(xch_h2xo5a.enc)
-Provides:       tex(xch_h4dyum.enc)
-Provides:       tex(xch_hftfu7.enc)
+Provides:       tex(xch_h7bh7r.enc)
 Provides:       tex(xch_hk5uz5.enc)
 Provides:       tex(xch_hnm3ex.enc)
-Provides:       tex(xch_iasu4e.enc)
-Provides:       tex(xch_jqdzb6.enc)
-Provides:       tex(xch_kkifs2.enc)
-Provides:       tex(xch_l6an6k.enc)
-Provides:       tex(xch_l7jokp.enc)
-Provides:       tex(xch_lfljed.enc)
-Provides:       tex(xch_lmi455.enc)
-Provides:       tex(xch_lve4jz.enc)
-Provides:       tex(xch_m7ekhw.enc)
-Provides:       tex(xch_mtaw4d.enc)
-Provides:       tex(xch_mz2wxn.enc)
-Provides:       tex(xch_nzcsoe.enc)
-Provides:       tex(xch_otbpkf.enc)
+Provides:       tex(xch_i3mpjp.enc)
+Provides:       tex(xch_iivqwt.enc)
+Provides:       tex(xch_j3hr3h.enc)
+Provides:       tex(xch_j65gg5.enc)
+Provides:       tex(xch_jdrr2i.enc)
+Provides:       tex(xch_jss6t5.enc)
+Provides:       tex(xch_l3qg6a.enc)
+Provides:       tex(xch_lotb2t.enc)
+Provides:       tex(xch_nfh2jb.enc)
+Provides:       tex(xch_nyk6di.enc)
+Provides:       tex(xch_opza6q.enc)
 Provides:       tex(xch_ouuvex.enc)
-Provides:       tex(xch_pmmkri.enc)
+Provides:       tex(xch_p5tyob.enc)
+Provides:       tex(xch_pcnxik.enc)
 Provides:       tex(xch_q7u3cc.enc)
-Provides:       tex(xch_qlavc3.enc)
+Provides:       tex(xch_qdfne6.enc)
+Provides:       tex(xch_qot36g.enc)
 Provides:       tex(xch_rwgtvm.enc)
-Provides:       tex(xch_tuu2ww.enc)
-Provides:       tex(xch_uxsipk.enc)
-Provides:       tex(xch_uyv5tr.enc)
-Provides:       tex(xch_v6llfb.enc)
-Provides:       tex(xch_vtvjjk.enc)
-Provides:       tex(xch_w7odti.enc)
-Provides:       tex(xch_wi6ykn.enc)
-Provides:       tex(xch_wredey.enc)
-Provides:       tex(xch_xj54uk.enc)
-Provides:       tex(xch_xmfb6b.enc)
-Provides:       tex(xch_ykltyo.enc)
+Provides:       tex(xch_se3wyw.enc)
+Provides:       tex(xch_ud56nl.enc)
+Provides:       tex(xch_unczov.enc)
+Provides:       tex(xch_uv5z4v.enc)
+Provides:       tex(xch_uy5hgr.enc)
+Provides:       tex(xch_vaa7pj.enc)
+Provides:       tex(xch_wwsmtw.enc)
+Provides:       tex(xch_xvwswz.enc)
+Provides:       tex(xch_xwsv67.enc)
+Provides:       tex(xch_yorls5.enc)
 Provides:       tex(xch_yrgi2d.enc)
-Provides:       tex(xch_zojt4g.enc)
-Provides:       tex(xch_zufbxc.enc)
-Provides:       tex(xch_zvionm.enc)
+Provides:       tex(xch_yz7cd7.enc)
+Provides:       tex(xch_zwwfce.enc)
 Provides:       tex(xcharter-ot2.enc)
 Provides:       tex(zchbmi.tfm)
 Provides:       tex(zchbmi.vf)
 Provides:       tex(zchbmi0.tfm)
 Provides:       tex(zchbmi0.vf)
+Provides:       tex(zchbmi2.tfm)
+Provides:       tex(zchbmi2.vf)
+Provides:       tex(zchbmi3.tfm)
+Provides:       tex(zchbmi3.vf)
 Provides:       tex(zchbmia.tfm)
 Provides:       tex(zchbmia.vf)
 Provides:       tex(zchmi.tfm)
 Provides:       tex(zchmi.vf)
 Provides:       tex(zchmi0.tfm)
 Provides:       tex(zchmi0.vf)
+Provides:       tex(zchmi2.tfm)
+Provides:       tex(zchmi2.vf)
+Provides:       tex(zchmi3.tfm)
+Provides:       tex(zchmi3.vf)
 Provides:       tex(zchmia.tfm)
 Provides:       tex(zchmia.vf)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fontaxes.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(mweights.sty)
-Requires:       tex(ntxbexb.tfm)
-Requires:       tex(ntxbmi.tfm)
-Requires:       tex(ntxexb.tfm)
-Requires:       tex(ntxmi.tfm)
-Requires:       tex(ntxsybalt.tfm)
-Requires:       tex(ntxsyralt.tfm)
 Requires:       tex(rtxbmi-ut.tfm)
 Requires:       tex(rtxmi-ut.tfm)
+Requires:       tex(stxscr.tfm)
 Requires:       tex(textcomp.sty)
-Requires:       tex(txb.tfm)
 Requires:       tex(txbmia.tfm)
-Requires:       tex(txbsyb.tfm)
-Requires:       tex(txbsyc.tfm)
+Requires:       tex(txbmiaSTbb.tfm)
+Requires:       tex(txbmiaX.tfm)
 Requires:       tex(txmia.tfm)
-Requires:       tex(txr.tfm)
-Requires:       tex(txsyb.tfm)
-Requires:       tex(txsyc.tfm)
+Requires:       tex(txmiaSTbb.tfm)
+Requires:       tex(txmiaX.tfm)
 Requires:       tex(xkeyval.sty)
-Requires:       tex(zxxbl7z.tfm)
-Requires:       tex(zxxrl7z.tfm)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source15:       xcharter.tar.xz
 Source16:       xcharter.doc.tar.xz
 
@@ -1747,28 +1758,25 @@ all four styles, accompanied by LaTeX font support files. The
 fonts themselves are provided in both Adobe Type 1 and OTF
 formats, with supporting files as necessary.
 
-date: 2018-08-27 08:05:39 +0000
-
-
 %package -n texlive-xcharter-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.116svn48498
+Version:        %{texlive_version}.%{texlive_noarch}.1.205svn54512
 Release:        0
 Summary:        Documentation for texlive-xcharter
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xcharter-doc
 This package includes the documentation for texlive-xcharter
 
 
 %package -n texlive-xcharter-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.116svn48498
+Version:        %{texlive_version}.%{texlive_noarch}.1.205svn54512
 Release:        0
 Summary:        Severed fonts for texlive-xcharter
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Fonts
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 %reconfigure_fonts_prereq
 Requires(posttrans): fontconfig
 Requires(posttrans): ghostscript-fonts-std
@@ -1805,6 +1813,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/xcharter/README
 %{_texmfdistdir}/doc/fonts/xcharter/altone.py
+%{_texmfdistdir}/doc/fonts/xcharter/newgermanfxch-crop.pdf
+%{_texmfdistdir}/doc/fonts/xcharter/newgermanfxch.pdf
+%{_texmfdistdir}/doc/fonts/xcharter/newgermanfxch.tex
 %{_texmfdistdir}/doc/fonts/xcharter/xcharter-doc.pdf
 %{_texmfdistdir}/doc/fonts/xcharter/xcharter-doc.tex
 
@@ -1823,92 +1834,92 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/chalph.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/chtabosf.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_3v4tq3.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_4yv27g.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_5xfeuz.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_62ztbr.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_7f2u2e.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_7p4e2o.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_a4gtyr.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_b43rqs.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_bcg6lk.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_bpv7ty.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_bwwzc2.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_e3nxtd.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_esnimw.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_edxqyc.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_erwtw3.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_evj3rb.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_gb4haz.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_l6an6k.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_lfljed.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_lve4jz.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_m7ekhw.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_mtaw4d.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_mz2wxn.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_nzcsoe.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_h7bh7r.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_i3mpjp.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_j3hr3h.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_nfh2jb.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_q7u3cc.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_uyv5tr.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_w7odti.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_wi6ykn.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_xj54uk.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_xmfb6b.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_26pbhy.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_2o3aaj.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_qdfne6.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_wwsmtw.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_xwsv67.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch1_yz7cd7.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_3v4tq3.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_3xm3i2.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_4frzvl.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_4siibn.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_5klbw4.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_62z5ot.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_4yv27g.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_5xfeuz.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_62ztbr.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_7cmdv6.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_67xua3.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_6e6bv3.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_7f2u2e.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_7hqniv.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_7moowb.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_7p4e2o.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_a3psji.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_ao7ayk.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_ba4bq2.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_7vau5m.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_a4gtyr.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_b43rqs.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_bcg6lk.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_bk4eiy.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_bpv7ty.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_bwwzc2.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_ch4v2b.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_ct4qni.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_cwi5fu.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_dwd75d.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_cxo25j.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_dcwqct.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_e3nxtd.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_esnimw.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_edxqyc.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_erwtw3.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_evj3rb.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_g4jsot.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_gb4haz.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_ggr2qz.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_fp7vyz.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_ghovd2.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_gqxjho.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_h2xo5a.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_h4dyum.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_hftfu7.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_h7bh7r.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_hk5uz5.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_hnm3ex.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_iasu4e.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_jqdzb6.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_kkifs2.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_l6an6k.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_l7jokp.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_lfljed.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_lmi455.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_lve4jz.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_m7ekhw.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_mtaw4d.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_mz2wxn.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_nzcsoe.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_otbpkf.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_i3mpjp.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_iivqwt.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_j3hr3h.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_j65gg5.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_jdrr2i.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_jss6t5.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_l3qg6a.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_lotb2t.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_nfh2jb.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_nyk6di.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_opza6q.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_ouuvex.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_pmmkri.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_p5tyob.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_pcnxik.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_q7u3cc.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_qlavc3.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_qdfne6.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_qot36g.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_rwgtvm.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_tuu2ww.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_uxsipk.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_uyv5tr.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_v6llfb.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_vtvjjk.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_w7odti.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_wi6ykn.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_wredey.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_xj54uk.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_xmfb6b.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_ykltyo.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_se3wyw.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_ud56nl.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_unczov.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_uv5z4v.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_uy5hgr.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_vaa7pj.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_wwsmtw.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_xvwswz.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_xwsv67.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_yorls5.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_yrgi2d.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_zojt4g.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_zufbxc.enc
-%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_zvionm.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_yz7cd7.enc
+%{_texmfdistdir}/fonts/enc/dvips/xcharter/xch_zwwfce.enc
 %{_texmfdistdir}/fonts/enc/dvips/xcharter/xcharter-ot2.enc
 %{_texmfdistdir}/fonts/map/dvips/xcharter/XCharter.map
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/xcharter/XCharter-Bold.otf
@@ -1939,7 +1950,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-sup-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-sup-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-sup-t2asrb.tfm
@@ -1954,13 +1964,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tlf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tlf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tlf-sc-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tlf-sc-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tlf-sc-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tlf-sc-t2asrb.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tlf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tlf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tlf-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tlf-t2asrb.tfm
@@ -1975,13 +1983,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tosf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tosf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tosf-sc-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tosf-sc-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tosf-sc-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tosf-sc-t2asrb.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tosf-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Bold-tosf-t2asrb.tfm
@@ -2007,7 +2013,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-sup-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-sup-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-sup-t2asrb.tfm
@@ -2022,13 +2027,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tlf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tlf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tlf-sc-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tlf-sc-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tlf-sc-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tlf-sc-t2asrb.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tlf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tlf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tlf-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tlf-t2asrb.tfm
@@ -2043,13 +2046,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tosf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tosf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tosf-sc-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tosf-sc-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tosf-sc-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tosf-sc-t2asrb.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tosf-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldItalic-tosf-t2asrb.tfm
@@ -2075,7 +2076,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-sup-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-sup-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-sup-t2asrb.tfm
@@ -2089,13 +2089,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tlf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tlf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tlf-sc-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tlf-sc-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tlf-sc-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tlf-sc-t2asrb.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tlf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tlf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tlf-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tlf-t2asrb.tfm
@@ -2110,13 +2108,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tosf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tosf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tosf-sc-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tosf-sc-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tosf-sc-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tosf-sc-t2asrb.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tosf-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-BoldSlanted-tosf-t2asrb.tfm
@@ -2143,7 +2139,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-sup-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-sup-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-sup-t2asrb.tfm
@@ -2158,13 +2153,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tlf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tlf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tlf-sc-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tlf-sc-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tlf-sc-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tlf-sc-t2asrb.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tlf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tlf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tlf-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tlf-t2asrb.tfm
@@ -2179,13 +2172,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tosf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tosf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tosf-sc-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tosf-sc-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tosf-sc-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tosf-sc-t2asrb.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tosf-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Italic-tosf-t2asrb.tfm
@@ -2211,7 +2202,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-sup-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-sup-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-sup-t2asrb.tfm
@@ -2226,13 +2216,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tlf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tlf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tlf-sc-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tlf-sc-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tlf-sc-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tlf-sc-t2asrb.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tlf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tlf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tlf-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tlf-t2asrb.tfm
@@ -2247,13 +2235,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tosf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tosf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tosf-sc-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tosf-sc-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tosf-sc-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tosf-sc-t2asrb.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tosf-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Roman-tosf-t2asrb.tfm
@@ -2279,7 +2265,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-sup-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-sup-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-sup-t2asrb.tfm
@@ -2293,13 +2278,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tlf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tlf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tlf-sc-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tlf-sc-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tlf-sc-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tlf-sc-t2asrb.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tlf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tlf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tlf-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tlf-t2asrb.tfm
@@ -2314,13 +2297,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tosf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tosf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tosf-sc-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tosf-sc-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tosf-sc-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tosf-sc-t2asrb.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tosf-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter-Slanted-tosf-t2asrb.tfm
@@ -2336,13 +2317,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Bold-tosf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Bold-tosf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Bold-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Bold-tosf-sc-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Bold-tosf-sc-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Bold-tosf-sc-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Bold-tosf-sc-t2asrb.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Bold-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Bold-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Bold-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Bold-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Bold-tosf-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Bold-tosf-t2asrb.tfm
@@ -2357,13 +2336,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldItalic-tosf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldItalic-tosf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldItalic-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldItalic-tosf-sc-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldItalic-tosf-sc-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldItalic-tosf-sc-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldItalic-tosf-sc-t2asrb.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldItalic-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldItalic-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldItalic-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldItalic-tosf-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldItalic-tosf-t2asrb.tfm
@@ -2378,13 +2355,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldSlanted-tosf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldSlanted-tosf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldSlanted-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldSlanted-tosf-sc-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldSlanted-tosf-sc-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldSlanted-tosf-sc-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldSlanted-tosf-sc-t2asrb.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldSlanted-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldSlanted-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldSlanted-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldSlanted-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldSlanted-tosf-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-BoldSlanted-tosf-t2asrb.tfm
@@ -2399,13 +2374,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Italic-tosf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Italic-tosf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Italic-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Italic-tosf-sc-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Italic-tosf-sc-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Italic-tosf-sc-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Italic-tosf-sc-t2asrb.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Italic-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Italic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Italic-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Italic-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Italic-tosf-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Italic-tosf-t2asrb.tfm
@@ -2420,13 +2393,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Roman-tosf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Roman-tosf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Roman-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Roman-tosf-sc-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Roman-tosf-sc-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Roman-tosf-sc-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Roman-tosf-sc-t2asrb.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Roman-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Roman-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Roman-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Roman-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Roman-tosf-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Roman-tosf-t2asrb.tfm
@@ -2441,13 +2412,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Slanted-tosf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Slanted-tosf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Slanted-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Slanted-tosf-sc-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Slanted-tosf-sc-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Slanted-tosf-sc-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Slanted-tosf-sc-t2asrb.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Slanted-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Slanted-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Slanted-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Slanted-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Slanted-tosf-t2asrb--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharter1-Slanted-tosf-t2asrb.tfm
@@ -2459,9 +2428,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/xcharter/XCharterMathRM.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/zchbmi.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/zchbmi0.tfm
+%{_texmfdistdir}/fonts/tfm/public/xcharter/zchbmi2.tfm
+%{_texmfdistdir}/fonts/tfm/public/xcharter/zchbmi3.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/zchbmia.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/zchmi.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/zchmi0.tfm
+%{_texmfdistdir}/fonts/tfm/public/xcharter/zchmi2.tfm
+%{_texmfdistdir}/fonts/tfm/public/xcharter/zchmi3.tfm
 %{_texmfdistdir}/fonts/tfm/public/xcharter/zchmia.tfm
 %verify(link) %{_texmfdistdir}/fonts/type1/public/xcharter/XCharter-Bold.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/public/xcharter/XCharter-BoldItalic.pfb
@@ -2481,27 +2454,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-numr-t1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-sup-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-sup-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-sup-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-tlf-ot1G.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-tlf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-tlf-sc-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-tlf-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-tlf-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-tosf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-tosf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-tosf-sc-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-tosf-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-tosf-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Bold-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-dnom-ly1.vf
@@ -2512,27 +2480,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-numr-t1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-sup-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-sup-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-sup-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-tlf-ot1G.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-tlf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-tlf-sc-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-tlf-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-tlf-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-tosf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-tosf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-tosf-sc-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-tosf-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-tosf-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldItalic-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-dnom-ly1.vf
@@ -2543,26 +2506,21 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-numr-t1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-sup-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-sup-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-sup-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-tlf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-tlf-sc-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-tlf-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-tlf-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-tosf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-tosf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-tosf-sc-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-tosf-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-tosf-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-BoldSlanted-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-dnom-ly1.vf
@@ -2573,27 +2531,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-numr-t1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-sup-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-sup-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-sup-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-tlf-ot1G.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-tlf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-tlf-sc-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-tlf-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-tlf-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-tosf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-tosf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-tosf-sc-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-tosf-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-tosf-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Italic-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-dnom-ly1.vf
@@ -2604,27 +2557,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-numr-t1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-sup-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-sup-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-sup-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-tlf-ot1G.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-tlf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-tlf-sc-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-tlf-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-tlf-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-tosf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-tosf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-tosf-sc-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-tosf-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-tosf-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Roman-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-dnom-ly1.vf
@@ -2635,26 +2583,21 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-numr-t1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-sup-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-sup-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-sup-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-tlf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-tlf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-tlf-sc-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-tlf-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-tlf-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-tosf-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-tosf-sc-ly1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-tosf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-tosf-sc-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-tosf-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-tosf-t2asrb.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter-Slanted-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter1-Bold-tosf-ly1.vf
@@ -2725,9 +2668,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/xcharter/XCharter1-Slanted-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/zchbmi.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/zchbmi0.vf
+%{_texmfdistdir}/fonts/vf/public/xcharter/zchbmi2.vf
+%{_texmfdistdir}/fonts/vf/public/xcharter/zchbmi3.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/zchbmia.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/zchmi.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/zchmi0.vf
+%{_texmfdistdir}/fonts/vf/public/xcharter/zchmi2.vf
+%{_texmfdistdir}/fonts/vf/public/xcharter/zchmi3.vf
 %{_texmfdistdir}/fonts/vf/public/xcharter/zchmia.vf
 %{_texmfdistdir}/tex/latex/xcharter/LY1XCharter-Dnom.fd
 %{_texmfdistdir}/tex/latex/xcharter/LY1XCharter-Inf.fd
@@ -2758,6 +2705,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/xcharter/TS1XCharter-TOsF.fd
 %{_texmfdistdir}/tex/latex/xcharter/XCharter.fontspec
 %{_texmfdistdir}/tex/latex/xcharter/XCharter.sty
+%{_texmfdistdir}/tex/latex/xcharter/newtx-xcharter-subs.tex
 %{_texmfdistdir}/tex/latex/xcharter/omlzchmi.fd
 %{_texmfdistdir}/tex/latex/xcharter/t2asrbcmr.fd
 %{_texmfdistdir}/tex/latex/xcharter/t2asrbenc.def
@@ -2765,7 +2713,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-xcharter-fonts
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-xcharter
-%config %{_sysconfdir}/fonts/conf.avail/58-texlive-xcharter.conf
+%{_datadir}/fontconfig/conf.avail/58-texlive-xcharter.conf
+%{_datadir}/fontconfig/conf.avail/55-texlive-xcharter.conf
 %config %{_sysconfdir}/fonts/conf.d/55-texlive-xcharter.conf
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-xcharter/encodings.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-xcharter/fonts.dir
@@ -2787,45 +2736,56 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-xcharter/XCharterMathMI.pfb
 %{_datadir}/fonts/texlive-xcharter/XCharterMathRM.pfb
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xcharter-fonts-%{texlive_version}.%{texlive_noarch}.1.116svn48498-%{release}-zypper
+/var/adm/update-scripts/texlive-xcharter-fonts-%{texlive_version}.%{texlive_noarch}.1.205svn54512-%{release}-zypper
 %endif
 
 %package -n texlive-xcite
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn23783
+Version:        %{texlive_version}.%{texlive_noarch}.16383.99998svn53486
 Release:        0
 Summary:        Use citation keys from a different document
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xcite-doc >= %{texlive_version}
 Provides:       tex(xcite.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+Requires:       tex(xr.sty)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source17:       xcite.tar.xz
 Source18:       xcite.doc.tar.xz
 
 %description -n texlive-xcite
-The package lets you use citation keys from another document,
-just as the xr package allows cross-document use of labels.
-
-date: 2016-06-24 17:18:15 +0000
-
+The package xcite is no longer necessary, because its
+functionality has been taken over by xr, so this final version
+is just a stub that loads xr.
 
 %package -n texlive-xcite-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn23783
+Version:        %{texlive_version}.%{texlive_noarch}.16383.99998svn53486
 Release:        0
 Summary:        Documentation for texlive-xcite
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xcite-doc
 This package includes the documentation for texlive-xcite
@@ -2859,7 +2819,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/xcite/xcite.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xcite-%{texlive_version}.%{texlive_noarch}.1.0svn23783-%{release}-zypper
+/var/adm/update-scripts/texlive-xcite-%{texlive_version}.%{texlive_noarch}.16383.99998svn53486-%{release}-zypper
 %endif
 
 %package -n texlive-xcjk2uni
@@ -2868,15 +2828,27 @@ Release:        0
 Summary:        Convert CJK characters to Unicode, in pdfTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xcjk2uni-doc >= %{texlive_version}
 Provides:       tex(xCJK2uni-UBg5plus.def)
 Provides:       tex(xCJK2uni-UBig5.def)
@@ -2886,8 +2858,8 @@ Provides:       tex(xCJK2uni-UJIS.def)
 Provides:       tex(xCJK2uni-UKS.def)
 Provides:       tex(xCJK2uni.sty)
 Requires:       tex(expl3.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source19:       xcjk2uni.tar.xz
 Source20:       xcjk2uni.doc.tar.xz
 
@@ -2899,16 +2871,13 @@ provides /ToUnicode mapping file(s) for a CJK subfont; these
 can be used with the cmap package, allowing searches of, and
 cut-and-paste operations on a PDF file generated by pdfTeX.
 
-date: 2019-04-07 16:00:27 +0000
-
-
 %package -n texlive-xcjk2uni-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn50848
 Release:        0
 Summary:        Documentation for texlive-xcjk2uni
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-xcjk2uni-doc:zh)
 
 %description -n texlive-xcjk2uni-doc
@@ -3304,28 +3273,40 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-xcntperchap
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn46236
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn54080
 Release:        0
 Summary:        Track the number of subsections etc. that occur in a specified tracklevel
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xcntperchap-doc >= %{texlive_version}
 Provides:       tex(xcntperchap.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xassoccnt.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(zref.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source21:       xcntperchap.tar.xz
 Source22:       xcntperchap.doc.tar.xz
 
@@ -3333,16 +3314,13 @@ Source22:       xcntperchap.doc.tar.xz
 This package is the successor of cntperchap and allows to
 provide more tracklevels than just only one.
 
-date: 2018-01-05 21:19:02 +0000
-
-
 %package -n texlive-xcntperchap-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn46236
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn54080
 Release:        0
 Summary:        Documentation for texlive-xcntperchap
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xcntperchap-doc
 This package includes the documentation for texlive-xcntperchap
@@ -3383,7 +3361,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/xcntperchap/xcntperchap.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xcntperchap-%{texlive_version}.%{texlive_noarch}.0.0.5svn46236-%{release}-zypper
+/var/adm/update-scripts/texlive-xcntperchap-%{texlive_version}.%{texlive_noarch}.0.0.5svn54080-%{release}-zypper
 %endif
 
 %package -n texlive-xcolor
@@ -3392,23 +3370,35 @@ Release:        0
 Summary:        Driver-independent color extensions for LaTeX and pdfLaTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xcolor-doc >= %{texlive_version}
 Provides:       tex(svgnam.def)
 Provides:       tex(x11nam.def)
 Provides:       tex(xcolor.sty)
 Requires:       tex(colortbl.sty)
 Requires:       tex(pdfcolmk.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source23:       xcolor.tar.xz
 Source24:       xcolor.doc.tar.xz
 
@@ -3423,16 +3413,13 @@ row colors plus repeated non-aligned material (like horizontal
 lines) in tables. Colors can be mixed like
 \color{red!30!green!40!blue}.
 
-date: 2017-04-18 03:31:40 +0000
-
-
 %package -n texlive-xcolor-doc
 Version:        %{texlive_version}.%{texlive_noarch}.2.12svn41044
 Release:        0
 Summary:        Documentation for texlive-xcolor
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xcolor-doc
 This package includes the documentation for texlive-xcolor
@@ -3485,21 +3472,33 @@ Release:        0
 Summary:        Defines the 256 colors from Google Material Color Palette
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xcolor-material-doc >= %{texlive_version}
 Provides:       tex(xcolor-material.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(xcolor.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source25:       xcolor-material.tar.xz
 Source26:       xcolor-material.doc.tar.xz
 
@@ -3509,16 +3508,13 @@ provides a useful definition of the beautiful Google Material
 Color Palette, available at Google Material design, for its use
 in document writing with LaTeX and Friends.
 
-date: 2016-11-16 07:03:52 +0000
-
-
 %package -n texlive-xcolor-material-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn42289
 Release:        0
 Summary:        Documentation for texlive-xcolor-material
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xcolor-material-doc
 This package includes the documentation for texlive-xcolor-material
@@ -3561,21 +3557,33 @@ Release:        0
 Summary:        Defines the 16 colors from Ethan Schoonover's Solarized palette
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xcolor-solarized-doc >= %{texlive_version}
 Provides:       tex(xcolor-solarized.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(xcolor.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source27:       xcolor-solarized.tar.xz
 Source28:       xcolor-solarized.doc.tar.xz
 
@@ -3584,16 +3592,13 @@ Built on top of the package, this package defines the sixteen
 colors of Ethan Schoonover's popular color palette, Solarized,
 for use in documents typeset with LaTeX and Friends.
 
-date: 2016-11-16 07:10:30 +0000
-
-
 %package -n texlive-xcolor-solarized-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn41809
 Release:        0
 Summary:        Documentation for texlive-xcolor-solarized
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xcolor-solarized-doc
 This package includes the documentation for texlive-xcolor-solarized
@@ -3636,20 +3641,32 @@ Release:        0
 Summary:        Allows selected environments to be included/excluded
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xcomment-doc >= %{texlive_version}
 Provides:       tex(xcomment.sty)
 Provides:       tex(xcomment.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source29:       xcomment.tar.xz
 Source30:       xcomment.doc.tar.xz
 
@@ -3664,16 +3681,13 @@ or creating an entire document containing only those
 environments. The package was previously part of the seminar
 bundle for typesetting presentations.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-xcomment-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.3svn20031
 Release:        0
 Summary:        Documentation for texlive-xcomment
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xcomment-doc
 This package includes the documentation for texlive-xcomment
@@ -3720,15 +3734,27 @@ Release:        0
 Summary:        Typeset (potentially long) recipes
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xcookybooky-doc >= %{texlive_version}
 Provides:       tex(xcookybooky.cfg)
 Provides:       tex(xcookybooky.sty)
@@ -3748,8 +3774,8 @@ Requires:       tex(units.sty)
 Requires:       tex(wrapfig.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source31:       xcookybooky.tar.xz
 Source32:       xcookybooky.doc.tar.xz
 
@@ -3762,16 +3788,13 @@ temperatures, recipe source and of course preparation steps and
 required ingredients. At the bottom you may insert an optional
 hint. The package depends on the Emerald fonts.
 
-date: 2018-04-05 04:13:24 +0000
-
-
 %package -n texlive-xcookybooky-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.5svn36435
 Release:        0
 Summary:        Documentation for texlive-xcookybooky
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xcookybooky-doc
 This package includes the documentation for texlive-xcookybooky
@@ -3822,15 +3845,27 @@ Release:        0
 Summary:        Natbib citations with PDF tooltips
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xcpdftips-doc >= %{texlive_version}
 Provides:       tex(xcpdftips.sty)
 Requires:       tex(bibentry.sty)
@@ -3844,8 +3879,8 @@ Requires:       tex(pdfcomment.sty)
 Requires:       tex(tcolorbox.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source33:       xcpdftips.tar.xz
 Source34:       xcpdftips.doc.tar.xz
 
@@ -3853,16 +3888,13 @@ Source34:       xcpdftips.doc.tar.xz
 This LaTeX package uses pdfcomment and bibentry to surround
 natbib citations with PDF tooltips.
 
-date: 2019-03-18 08:44:11 +0000
-
-
 %package -n texlive-xcpdftips-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn50449
 Release:        0
 Summary:        Documentation for texlive-xcpdftips
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xcpdftips-doc
 This package includes the documentation for texlive-xcpdftips
@@ -3905,23 +3937,35 @@ Release:        0
 Summary:        Extending the LaTeX doc system
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xdoc-doc >= %{texlive_version}
 Provides:       tex(docidx2e.sty)
 Provides:       tex(docindex.sty)
 Provides:       tex(xdoc2.sty)
 Requires:       tex(doc.sty)
 Requires:       tex(multicol.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source35:       xdoc.tar.xz
 Source36:       xdoc.doc.tar.xz
 
@@ -3953,16 +3997,13 @@ several experimental packages), whereas the docidx2e package
 has traditional raw macro interfaces and works with standard
 LaTeX2e.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-xdoc-doc
 Version:        %{texlive_version}.%{texlive_noarch}.prot2.5svn15878
 Release:        0
 Summary:        Documentation for texlive-xdoc
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xdoc-doc
 This package includes the documentation for texlive-xdoc
@@ -4011,15 +4052,27 @@ Release:        0
 Summary:        XeLaTeX template for writing Xidian University Thesis
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xduthesis-doc >= %{texlive_version}
 Provides:       tex(xduthesis.cfg)
 Provides:       tex(xduthesis.cls)
@@ -4040,8 +4093,8 @@ Requires:       tex(titletoc.sty)
 Requires:       tex(ulem.sty)
 Requires:       tex(xeCJK.sty)
 Requires:       tex(xunicode.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source37:       xduthesis.tar.xz
 Source38:       xduthesis.doc.tar.xz
 
@@ -4055,16 +4108,13 @@ professional master. But it is not guaranteed that you will
 pass the typesetting check and obtain your degree by using this
 template.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-xduthesis-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.00svn39694
 Release:        0
 Summary:        Documentation for texlive-xduthesis
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xduthesis-doc
 This package includes the documentation for texlive-xduthesis
@@ -4125,25 +4175,37 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-xdvi
-Version:        %{texlive_version}.%{texlive_noarch}.22.87svn50602
+Version:        %{texlive_version}.%{texlive_noarch}.svn54338
 Release:        0
 Summary:        A DVI previewer for the X Window System
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires(pre): texlive-xdvi-bin >= %{texlive_version}
 #!BuildIgnore: texlive-xdvi-bin
-Requires(pre): texlive >= %{texlive_version}
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xdvi-doc >= %{texlive_version}
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source39:       xdvi.tar.xz
 Source40:       xdvi.doc.tar.xz
 
@@ -4153,16 +4215,14 @@ based systems. The distribution has been integrated with that
 of xdvik (no longer separately available), so that it will
 build with web2c "out of the box". It is included in TeX Live.
 
-date: 2018-08-16 19:33:21 +0000
-
-
 %package -n texlive-xdvi-doc
-Version:        %{texlive_version}.%{texlive_noarch}.22.87svn50602
+Version:        %{texlive_version}.%{texlive_noarch}.svn54338
 Release:        0
 Summary:        Documentation for texlive-xdvi
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
+Provides:       man(xdvi.1)
 
 %description -n texlive-xdvi-doc
 This package includes the documentation for texlive-xdvi
@@ -4200,7 +4260,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %config %verify(not md5 mtime size) %{_texmfconfdir}/xdvi/XDvi
 %verify(link) %{_datadir}/X11/app-defaults/XDvi
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xdvi-%{texlive_version}.%{texlive_noarch}.22.87svn50602-%{release}-zypper
+/var/adm/update-scripts/texlive-xdvi-%{texlive_version}.%{texlive_noarch}.svn54338-%{release}-zypper
 %endif
 
 %package -n texlive-xebaposter
@@ -4209,15 +4269,27 @@ Release:        0
 Summary:        Create beautiful scientific Persian/Latin posters using TikZ
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xebaposter-doc >= %{texlive_version}
 Provides:       tex(xebaposter.cls)
 Requires:       tex(article.cls)
@@ -4230,8 +4302,8 @@ Requires:       tex(pgfpages.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source41:       xebaposter.tar.xz
 Source42:       xebaposter.doc.tar.xz
 
@@ -4243,16 +4315,13 @@ http://www.brian-amberg.de/uni/poster/. baposter's users should
 be able to compile their poster using xebaposter (instead of
 baposter) without any problem.
 
-date: 2016-09-12 17:55:23 +0000
-
-
 %package -n texlive-xebaposter-doc
 Version:        %{texlive_version}.%{texlive_noarch}.2.51svn42046
 Release:        0
 Summary:        Documentation for texlive-xebaposter
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xebaposter-doc
 This package includes the documentation for texlive-xebaposter
@@ -4303,24 +4372,36 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-xechangebar
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn44954
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn54080
 Release:        0
 Summary:        An extension of package changebar that can be used with XeLaTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xechangebar-doc >= %{texlive_version}
 Provides:       tex(xechangebar.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source43:       xechangebar.tar.xz
 Source44:       xechangebar.doc.tar.xz
 
@@ -4328,18 +4409,15 @@ Source44:       xechangebar.doc.tar.xz
 The package extends package changebar so it can be used with
 XeLaTeX. It introduces the new option xetex for use with
 XeLaTeX. Everything else remains the same and users should
-consult the original documenation for usage information.
-
-date: 2017-08-06 03:28:53 +0000
-
+consult the original documentation for usage information.
 
 %package -n texlive-xechangebar-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn44954
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn54080
 Release:        0
 Summary:        Documentation for texlive-xechangebar
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xechangebar-doc
 This package includes the documentation for texlive-xechangebar
@@ -4373,24 +4451,36 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/xelatex/xechangebar/xechangebar.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xechangebar-%{texlive_version}.%{texlive_noarch}.1.0svn44954-%{release}-zypper
+/var/adm/update-scripts/texlive-xechangebar-%{texlive_version}.%{texlive_noarch}.1.0svn54080-%{release}-zypper
 %endif
 
 %package -n texlive-xecjk
-Version:        %{texlive_version}.%{texlive_noarch}.3.7.2svn50852
+Version:        %{texlive_version}.%{texlive_noarch}.3.8.2svn53835
 Release:        0
 Summary:        Support for CJK documents in XeLaTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xecjk-doc >= %{texlive_version}
 Provides:       tex(full-stop.map)
 Provides:       tex(fullwidth-stop.map)
@@ -4402,7 +4492,6 @@ Provides:       tex(xeCJK.sty)
 Provides:       tex(xeCJKfntef.sty)
 Provides:       tex(xunicode-addon.sty)
 Provides:       tex(xunicode-extra.def)
-Requires:       tex(CJKfntef.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(l3keys2e.sty)
@@ -4411,8 +4500,8 @@ Requires:       tex(ulem.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xtemplate.sty)
 Requires:       tex(xunicode.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source45:       xecjk.tar.xz
 Source46:       xecjk.doc.tar.xz
 
@@ -4422,16 +4511,13 @@ have become used to, in the CJK package. The package requires a
 current version of xtemplate (and hence of the current LaTeX3
 development environment).
 
-date: 2019-04-07 17:45:54 +0000
-
-
 %package -n texlive-xecjk-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.7.2svn50852
+Version:        %{texlive_version}.%{texlive_noarch}.3.8.2svn53835
 Release:        0
 Summary:        Documentation for texlive-xecjk
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-xecjk-doc:zh)
 
 %description -n texlive-xecjk-doc
@@ -4494,7 +4580,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/xelatex/xecjk/xunicode-addon.sty
 %{_texmfdistdir}/tex/xelatex/xecjk/xunicode-extra.def
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xecjk-%{texlive_version}.%{texlive_noarch}.3.7.2svn50852-%{release}-zypper
+/var/adm/update-scripts/texlive-xecjk-%{texlive_version}.%{texlive_noarch}.3.8.2svn53835-%{release}-zypper
 %endif
 
 %package -n texlive-xecolor
@@ -4503,21 +4589,33 @@ Release:        0
 Summary:        Support for color in XeLaTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xecolor-doc >= %{texlive_version}
 Provides:       tex(xecolor.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(iftex.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source47:       xecolor.tar.xz
 Source48:       xecolor.doc.tar.xz
 
@@ -4526,16 +4624,13 @@ This is a simple package which defines about 140 different
 colours using XeTeX's colour feature. The colours can be used
 in bidirectional texts without any problem.
 
-date: 2018-11-28 20:16:05 +0000
-
-
 %package -n texlive-xecolor-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn29660
 Release:        0
 Summary:        Documentation for texlive-xecolor
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xecolor-doc
 This package includes the documentation for texlive-xecolor
@@ -4572,28 +4667,43 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-xecyr
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn20221
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn54308
 Release:        0
 Summary:        Using Cyrillic languages in XeTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xecyr-doc >= %{texlive_version}
 Provides:       tex(xecyr.sty)
-Provides:       tex(xu-ruenhyph.tex)
+Requires:       tex(ifluatex.sty)
+Requires:       tex(ifxetex.sty)
+Requires:       tex(inputenc.sty)
+Requires:       tex(luatextra.sty)
 Requires:       tex(misccorr.sty)
 Requires:       tex(xltxtra.sty)
 Requires:       tex(xunicode.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source49:       xecyr.tar.xz
 Source50:       xecyr.doc.tar.xz
 
@@ -4601,16 +4711,13 @@ Source50:       xecyr.doc.tar.xz
 Helper tools for using Cyrillic languages with XeLaTeX and
 babel.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-xecyr-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn20221
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn54308
 Release:        0
 Summary:        Documentation for texlive-xecyr
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-xecyr-doc:ru)
 
 %description -n texlive-xecyr-doc
@@ -4638,28 +4745,66 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-xecyr-doc
 %defattr(-,root,root,755)
-%{_texmfdistdir}/doc/xelatex/xecyr/1251.tex
-%{_texmfdistdir}/doc/xelatex/xecyr/866.tex
 %{_texmfdistdir}/doc/xelatex/xecyr/NEWS
 %{_texmfdistdir}/doc/xelatex/xecyr/README
-%{_texmfdistdir}/doc/xelatex/xecyr/iso.tex
-%{_texmfdistdir}/doc/xelatex/xecyr/koi8-r.tex
-%{_texmfdistdir}/doc/xelatex/xecyr/language.dat.add
+%{_texmfdistdir}/doc/xelatex/xecyr/combined_hyphenation/README
+%{_texmfdistdir}/doc/xelatex/xecyr/combined_hyphenation/combined_hyphenation_ruen-x.pdf
+%{_texmfdistdir}/doc/xelatex/xecyr/combined_hyphenation/combined_hyphenation_ruen-x.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/combined_hyphenation/combined_hyphenation_ruen.pdf
+%{_texmfdistdir}/doc/xelatex/xecyr/combined_hyphenation/combined_hyphenation_ruen.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/combined_hyphenation/examples.zip
+%{_texmfdistdir}/doc/xelatex/xecyr/grafika_v_tex.pdf
+%{_texmfdistdir}/doc/xelatex/xecyr/grafika_v_tex.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/howto-tex-ru-x.pdf
+%{_texmfdistdir}/doc/xelatex/xecyr/howto-tex-ru-x.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/inputs/1251.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/inputs/866.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/inputs/iso.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/inputs/koi8-r.tex
 %{_texmfdistdir}/doc/xelatex/xecyr/listings-utf8-ex.pdf
 %{_texmfdistdir}/doc/xelatex/xecyr/listings-utf8-ex.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/old/1251.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/old/866.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/old/iso.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/old/koi8-r.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/old/listings-utf8-ex.pdf
+%{_texmfdistdir}/doc/xelatex/xecyr/old/listings-utf8-ex.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/old/pict2e-ex.pdf
+%{_texmfdistdir}/doc/xelatex/xecyr/old/pict2e-ex.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/old/rubibtex-ex-x.pdf
+%{_texmfdistdir}/doc/xelatex/xecyr/old/rubibtex-ex-x.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/old/rubibtex-ex.bib
+%{_texmfdistdir}/doc/xelatex/xecyr/old/rumakeindex-ex-x.pdf
+%{_texmfdistdir}/doc/xelatex/xecyr/old/rumakeindex-ex-x.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/old/xecyr-doc-ru.pdf
+%{_texmfdistdir}/doc/xelatex/xecyr/old/xecyr-doc-ru.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/old/xecyr-ex1-ru-x.pdf
+%{_texmfdistdir}/doc/xelatex/xecyr/old/xecyr-ex1-ru-x.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/old/xecyr-ex2-ru-x.pdf
+%{_texmfdistdir}/doc/xelatex/xecyr/old/xecyr-ex2-ru-x.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/old/xecyr-ex3-ru-x.pdf
+%{_texmfdistdir}/doc/xelatex/xecyr/old/xecyr-ex3-ru-x.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/old/xecyr-ex4-ru-x.pdf
+%{_texmfdistdir}/doc/xelatex/xecyr/old/xecyr-ex4-ru-x.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/old/xecyr-ex5-ru-x.pdf
+%{_texmfdistdir}/doc/xelatex/xecyr/old/xecyr-ex5-ru-x.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/old/xecyr-ex6-ru-x.pdf
+%{_texmfdistdir}/doc/xelatex/xecyr/old/xecyr-ex6-ru-x.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/old/xecyr-ex7-ru-x.pdf
+%{_texmfdistdir}/doc/xelatex/xecyr/old/xecyr-ex7-ru-x.tex
 %{_texmfdistdir}/doc/xelatex/xecyr/pict2e-ex.pdf
 %{_texmfdistdir}/doc/xelatex/xecyr/pict2e-ex.tex
 %{_texmfdistdir}/doc/xelatex/xecyr/rubibtex-ex-x.pdf
+%{_texmfdistdir}/doc/xelatex/xecyr/rubibtex-ex-x.sh
 %{_texmfdistdir}/doc/xelatex/xecyr/rubibtex-ex-x.tex
 %{_texmfdistdir}/doc/xelatex/xecyr/rubibtex-ex.bib
 %{_texmfdistdir}/doc/xelatex/xecyr/rumakeindex-ex-x.pdf
 %{_texmfdistdir}/doc/xelatex/xecyr/rumakeindex-ex-x.tex
+%{_texmfdistdir}/doc/xelatex/xecyr/rumakeindex.sh
+%{_texmfdistdir}/doc/xelatex/xecyr/sample2e-ru-x.pdf
+%{_texmfdistdir}/doc/xelatex/xecyr/sample2e-ru-x.tex
 %{_texmfdistdir}/doc/xelatex/xecyr/xecyr-doc-ru.pdf
 %{_texmfdistdir}/doc/xelatex/xecyr/xecyr-doc-ru.tex
-%{_texmfdistdir}/doc/xelatex/xecyr/xecyr-ex1-ru-x.pdf
-%{_texmfdistdir}/doc/xelatex/xecyr/xecyr-ex1-ru-x.tex
-%{_texmfdistdir}/doc/xelatex/xecyr/xecyr-ex2-ru-x.pdf
-%{_texmfdistdir}/doc/xelatex/xecyr/xecyr-ex2-ru-x.tex
 %{_texmfdistdir}/doc/xelatex/xecyr/xecyr-ex3-ru-x.pdf
 %{_texmfdistdir}/doc/xelatex/xecyr/xecyr-ex3-ru-x.tex
 %{_texmfdistdir}/doc/xelatex/xecyr/xecyr-ex4-ru-x.pdf
@@ -4673,10 +4818,94 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-xecyr
 %defattr(-,root,root,755)
-%{_texmfdistdir}/tex/generic/xecyr/xu-ruenhyph.tex
 %{_texmfdistdir}/tex/xelatex/xecyr/xecyr.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xecyr-%{texlive_version}.%{texlive_noarch}.1.1svn20221-%{release}-zypper
+/var/adm/update-scripts/texlive-xecyr-%{texlive_version}.%{texlive_noarch}.1.2svn54308-%{release}-zypper
+%endif
+
+%package -n texlive-xecyrmongolian
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn53160
+Release:        0
+Summary:        Basic support for the typesetting of Cyrillic Mongolian documents using (Xe|Lua)LaTeX
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Recommends:     texlive-xecyrmongolian-doc >= %{texlive_version}
+Provides:       tex(xecyrmongolian.sty)
+Requires:       tex(luahyphenrules.sty)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source51:       xecyrmongolian.tar.xz
+Source52:       xecyrmongolian.doc.tar.xz
+
+%description -n texlive-xecyrmongolian
+The 'xecyrmongolian' package can be used to produce documents
+in Cyrillic Mongolian using either XeLaTeX or LuaLaTeX. The
+command \setlanguage can be used to load alternative
+hyphenation patterns so to be able to create multilingual
+documents.
+
+%package -n texlive-xecyrmongolian-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn53160
+Release:        0
+Summary:        Documentation for texlive-xecyrmongolian
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+
+%description -n texlive-xecyrmongolian-doc
+This package includes the documentation for texlive-xecyrmongolian
+
+%post -n texlive-xecyrmongolian
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-xecyrmongolian 
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-xecyrmongolian
+%if %{with zypper_posttrans}
+test -z "$ZYPP_IS_RUNNING" || exit 0
+%endif
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-xecyrmongolian-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/xecyrmongolian/README
+%{_texmfdistdir}/doc/latex/xecyrmongolian/xecyrmongolian.pdf
+
+%files -n texlive-xecyrmongolian
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/xecyrmongolian/xecyrmongolian.sty
+%if %{with zypper_posttrans}
+/var/adm/update-scripts/texlive-xecyrmongolian-%{texlive_version}.%{texlive_noarch}.1.0svn53160-%{release}-zypper
 %endif
 
 %package -n texlive-xeindex
@@ -4685,23 +4914,35 @@ Release:        0
 Summary:        Automatic index generation for XeLaTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xeindex-doc >= %{texlive_version}
 Provides:       tex(xeindex.sty)
 Requires:       tex(makeidx.sty)
 Requires:       tex(xesearch.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source51:       xeindex.tar.xz
-Source52:       xeindex.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source53:       xeindex.tar.xz
+Source54:       xeindex.doc.tar.xz
 
 %description -n texlive-xeindex
 The package is based on XeSearch, and will automatically index
@@ -4709,16 +4950,13 @@ words or phrases in an XeLaTeX document. Words are declared in
 a list, and every occurrence then creates an index entry whose
 content can be fully specified beforehand.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-xeindex-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn35756
 Release:        0
 Summary:        Documentation for texlive-xeindex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xeindex-doc
 This package includes the documentation for texlive-xeindex
@@ -4756,28 +4994,212 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 /var/adm/update-scripts/texlive-xeindex-%{texlive_version}.%{texlive_noarch}.0.0.3svn35756-%{release}-zypper
 %endif
 
+%package -n texlive-xelatex-dev
+Version:        %{texlive_version}.%{texlive_noarch}.svn54498
+Release:        0
+Summary:        Package xelatex-dev
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires:       texlive-babel >= %{texlive_version}
+#!BuildIgnore: texlive-babel
+Requires:       texlive-cm >= %{texlive_version}
+#!BuildIgnore: texlive-cm
+Requires:       texlive-hyphen-base >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires:       texlive-l3backend >= %{texlive_version}
+#!BuildIgnore: texlive-l3backend
+Requires:       texlive-l3kernel >= %{texlive_version}
+#!BuildIgnore: texlive-l3kernel
+Requires:       texlive-l3packages >= %{texlive_version}
+#!BuildIgnore: texlive-l3packages
+Requires:       texlive-latex-base-dev >= %{texlive_version}
+#!BuildIgnore: texlive-latex-base-dev
+Requires:       texlive-latex-fonts >= %{texlive_version}
+#!BuildIgnore: texlive-latex-fonts
+Requires:       texlive-lm >= %{texlive_version}
+#!BuildIgnore: texlive-lm
+Requires:       texlive-tex-ini-files >= %{texlive_version}
+#!BuildIgnore: texlive-tex-ini-files
+Requires:       texlive-unicode-data >= %{texlive_version}
+#!BuildIgnore: texlive-unicode-data
+Requires(pre): texlive-xelatex-dev-bin >= %{texlive_version}
+#!BuildIgnore: texlive-xelatex-dev-bin
+Requires:       texlive-xetex >= %{texlive_version}
+#!BuildIgnore: texlive-xetex
+Requires(pre): texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(post): findutils
+Requires(post): grep
+Requires(post): sed
+Requires(post): texlive >= %{texlive_version}
+Requires(post): tex(language.dat)
+Requires(post): tex(language.def)
+Requires(post): tex(language.dat.lua)
+#!BuildIgnore:  tex(language.dat)
+#!BuildIgnore:  tex(language.def)
+#!BuildIgnore:  tex(language.dat.lua)
+Requires(postun): findutils
+Requires(postun): grep
+Requires(postun): sed
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): tex(language.dat)
+Requires(postun): tex(language.def)
+Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source55:       xelatex-dev.tar.xz
+
+%description -n texlive-xelatex-dev
+The xelatex-dev package
+%post -n texlive-xelatex-dev
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+> /var/run/texlive/run-fmtutil.xelatex-dev
+sed -ri 's/^\#\![[= =]]+xelatex-dev\b.*/xelatex-dev xetex language.dat -etex xelatex.ini/' %{_texmfconfdir}/web2c/fmtutil.cnf || :
+
+%postun -n texlive-xelatex-dev 
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    sed -ri 's/^(xelatex-dev\b)/\#\!\ \1/' %{_texmfconfdir}/web2c/fmtutil.cnf || :
+    rm -f %{_texmfvardir}/web2c/xetex/xelatex-dev.*
+    exit 0
+fi
+
+%triggerin -n texlive-xelatex-dev -- texlive-babel
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%triggerun -n texlive-xelatex-dev -- texlive-babel
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%triggerin -n texlive-xelatex-dev -- texlive-cm
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%triggerun -n texlive-xelatex-dev -- texlive-cm
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%triggerin -n texlive-xelatex-dev -- texlive-hyphen-base
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%triggerun -n texlive-xelatex-dev -- texlive-hyphen-base
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%triggerin -n texlive-xelatex-dev -- texlive-l3backend
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%triggerun -n texlive-xelatex-dev -- texlive-l3backend
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%triggerin -n texlive-xelatex-dev -- texlive-l3kernel
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%triggerun -n texlive-xelatex-dev -- texlive-l3kernel
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%triggerin -n texlive-xelatex-dev -- texlive-l3packages
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%triggerun -n texlive-xelatex-dev -- texlive-l3packages
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%triggerin -n texlive-xelatex-dev -- texlive-latex-base-dev
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%triggerun -n texlive-xelatex-dev -- texlive-latex-base-dev
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%triggerin -n texlive-xelatex-dev -- texlive-latex-fonts
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%triggerun -n texlive-xelatex-dev -- texlive-latex-fonts
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%triggerin -n texlive-xelatex-dev -- texlive-lm
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%triggerun -n texlive-xelatex-dev -- texlive-lm
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%triggerin -n texlive-xelatex-dev -- texlive-tex-ini-files
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%triggerun -n texlive-xelatex-dev -- texlive-tex-ini-files
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%triggerin -n texlive-xelatex-dev -- texlive-unicode-data
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%triggerun -n texlive-xelatex-dev -- texlive-unicode-data
+> /var/run/texlive/run-fmtutil.xelatex-dev
+
+%posttrans -n texlive-xelatex-dev
+%if %{with zypper_posttrans}
+test -z "$ZYPP_IS_RUNNING" || exit 0
+%endif
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-xelatex-dev
+%defattr(-,root,root,755)
+%if %{with zypper_posttrans}
+/var/adm/update-scripts/texlive-xelatex-dev-%{texlive_version}.%{texlive_noarch}.svn54498-%{release}-zypper
+%endif
+
 %package -n texlive-xellipsis
 Version:        %{texlive_version}.%{texlive_noarch}.2.0svn47546
 Release:        0
 Summary:        Extremely configurable ellipses with formats for various style manuals
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xellipsis-doc >= %{texlive_version}
 Provides:       tex(xellipsis.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source53:       xellipsis.tar.xz
-Source54:       xellipsis.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source56:       xellipsis.tar.xz
+Source57:       xellipsis.doc.tar.xz
 
 %description -n texlive-xellipsis
 The xellipsis package provides a system for configuring
@@ -4789,16 +5211,13 @@ standard LaTeX \ldots as well as preset package options for the
 Chicago Manual of Style (Turabian); the Bluebook; and MLA
 guidelines.
 
-date: 2018-04-16 07:00:25 +0000
-
-
 %package -n texlive-xellipsis-doc
 Version:        %{texlive_version}.%{texlive_noarch}.2.0svn47546
 Release:        0
 Summary:        Documentation for texlive-xellipsis
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xellipsis-doc
 This package includes the documentation for texlive-xellipsis
@@ -4838,20 +5257,32 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-xepersian
-Version:        %{texlive_version}.%{texlive_noarch}.22.6svn50213
+Version:        %{texlive_version}.%{texlive_noarch}.22.8svn53625
 Release:        0
 Summary:        Persian for LaTeX, using XeTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xepersian-doc >= %{texlive_version}
 Provides:       tex(algorithm-xepersian.def)
 Provides:       tex(algorithmic-xepersian.def)
@@ -4878,7 +5309,6 @@ Provides:       tex(extbook-xepersian.def)
 Provides:       tex(extrafootnotefeatures-xepersian.def)
 Provides:       tex(extreport-xepersian.def)
 Provides:       tex(fancyref-xepersian.def)
-Provides:       tex(fontspec-xepersian.def)
 Provides:       tex(footnote-xepersian.def)
 Provides:       tex(framed-xepersian.def)
 Provides:       tex(glossaries-xepersian.def)
@@ -4938,25 +5368,22 @@ Requires:       tex(setspace.sty)
 Requires:       tex(tabularx.sty)
 Requires:       tex(textpos.sty)
 Requires:       tex(verbatim.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source55:       xepersian.tar.xz
-Source56:       xepersian.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source58:       xepersian.tar.xz
+Source59:       xepersian.doc.tar.xz
 
 %description -n texlive-xepersian
 This package provides a convenient interface for typesetting
 Persian and English texts in LaTeX, using the XeTeX engine.
 
-date: 2019-03-03 10:21:57 +0000
-
-
 %package -n texlive-xepersian-doc
-Version:        %{texlive_version}.%{texlive_noarch}.22.6svn50213
+Version:        %{texlive_version}.%{texlive_noarch}.22.8svn53625
 Release:        0
 Summary:        Documentation for texlive-xepersian
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xepersian-doc
 This package includes the documentation for texlive-xepersian
@@ -4983,7 +5410,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-xepersian-doc
 %defattr(-,root,root,755)
-%{_texmfdistdir}/doc/xelatex/xepersian/README
+%{_texmfdistdir}/doc/xelatex/xepersian/README.txt
 %{_texmfdistdir}/doc/xelatex/xepersian/dkun-0.3.py
 %{_texmfdistdir}/doc/xelatex/xepersian/dkun-0.4.py
 %{_texmfdistdir}/doc/xelatex/xepersian/ftxe-0.12.py
@@ -5031,7 +5458,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/xelatex/xepersian/extrafootnotefeatures-xepersian.def
 %{_texmfdistdir}/tex/xelatex/xepersian/extreport-xepersian.def
 %{_texmfdistdir}/tex/xelatex/xepersian/fancyref-xepersian.def
-%{_texmfdistdir}/tex/xelatex/xepersian/fontspec-xepersian.def
 %{_texmfdistdir}/tex/xelatex/xepersian/footnote-xepersian.def
 %{_texmfdistdir}/tex/xelatex/xepersian/framed-xepersian.def
 %{_texmfdistdir}/tex/xelatex/xepersian/glossaries-xepersian.def
@@ -5063,38 +5489,140 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/xelatex/xepersian/varioref-xepersian.def
 %{_texmfdistdir}/tex/xelatex/xepersian/xepersian-localise-commands-xepersian.def
 %{_texmfdistdir}/tex/xelatex/xepersian/xepersian-localise-environments-xepersian.def
-%{_texmfdistdir}/tex/xelatex/xepersian/xepersian-logo.pdf
 %{_texmfdistdir}/tex/xelatex/xepersian/xepersian-magazine.cls
 %{_texmfdistdir}/tex/xelatex/xepersian/xepersian-mathsdigitspec.sty
 %{_texmfdistdir}/tex/xelatex/xepersian/xepersian-multiplechoice.sty
 %{_texmfdistdir}/tex/xelatex/xepersian/xepersian-persiancal.sty
 %{_texmfdistdir}/tex/xelatex/xepersian/xepersian.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xepersian-%{texlive_version}.%{texlive_noarch}.22.6svn50213-%{release}-zypper
+/var/adm/update-scripts/texlive-xepersian-%{texlive_version}.%{texlive_noarch}.22.8svn53625-%{release}-zypper
 %endif
 
-%package -n texlive-xesearch
-Version:        %{texlive_version}.%{texlive_noarch}.svn16041
+%package -n texlive-xepersian-hm
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn54554
 Release:        0
-Summary:        A string finder for XeTeX
+Summary:        Fixes kashida feature in xepersian package
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Recommends:     texlive-xepersian-hm-doc >= %{texlive_version}
+Provides:       tex(kashida-xepersian-hm.def)
+Provides:       tex(xepersian-hm.sty)
+Requires:       tex(expl3.sty)
+Requires:       tex(l3keys2e.sty)
+Requires:       tex(xepersian.sty)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source60:       xepersian-hm.tar.xz
+Source61:       xepersian-hm.doc.tar.xz
+
+%description -n texlive-xepersian-hm
+The kashida feature in xepersian has problems with some fonts
+such as the HM Series fonts and the XB Series fonts. This
+package fixes these problems. The package requires xepersian
+and l3keys2e.
+
+%package -n texlive-xepersian-hm-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn54554
+Release:        0
+Summary:        Documentation for texlive-xepersian-hm
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Provides:       locale(texlive-xepersian-hm-doc:fa)
+
+%description -n texlive-xepersian-hm-doc
+This package includes the documentation for texlive-xepersian-hm
+
+%post -n texlive-xepersian-hm
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-xepersian-hm 
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-xepersian-hm
+%if %{with zypper_posttrans}
+test -z "$ZYPP_IS_RUNNING" || exit 0
+%endif
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-xepersian-hm-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/xelatex/xepersian-hm/README.txt
+%{_texmfdistdir}/doc/xelatex/xepersian-hm/kashida-example.pdf
+%{_texmfdistdir}/doc/xelatex/xepersian-hm/kashida-example.tex
+%{_texmfdistdir}/doc/xelatex/xepersian-hm/xepersian-hm.pdf
+
+%files -n texlive-xepersian-hm
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/xelatex/xepersian-hm/kashida-xepersian-hm.def
+%{_texmfdistdir}/tex/xelatex/xepersian-hm/xepersian-hm.sty
+%if %{with zypper_posttrans}
+/var/adm/update-scripts/texlive-xepersian-hm-%{texlive_version}.%{texlive_noarch}.0.0.4svn54554-%{release}-zypper
+%endif
+
+%package -n texlive-xesearch
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn51908
+Release:        0
+Summary:        A string finder for XeTeX
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xesearch-doc >= %{texlive_version}
 Provides:       tex(t-xesearch.tex)
 Provides:       tex(xesearch.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source57:       xesearch.tar.xz
-Source58:       xesearch.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source62:       xesearch.tar.xz
+Source63:       xesearch.doc.tar.xz
 
 %description -n texlive-xesearch
 The package finds strings (e.g. (parts of) words or phrases)
@@ -5106,16 +5634,13 @@ XeIndex, an automatic index for XeLaTeX, but examples are given
 of simple use to check spelling, count words, and highlight
 syntax of programming languages.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-xesearch-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn16041
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn51908
 Release:        0
 Summary:        Documentation for texlive-xesearch
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xesearch-doc
 This package includes the documentation for texlive-xesearch
@@ -5151,7 +5676,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/xetex/xesearch/t-xesearch.tex
 %{_texmfdistdir}/tex/xetex/xesearch/xesearch.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xesearch-%{texlive_version}.%{texlive_noarch}.svn16041-%{release}-zypper
+/var/adm/update-scripts/texlive-xesearch-%{texlive_version}.%{texlive_noarch}.0.0.2svn51908-%{release}-zypper
 %endif
 
 %package -n texlive-xespotcolor
@@ -5160,15 +5685,27 @@ Release:        0
 Summary:        Spot colours support for XeLaTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xespotcolor-doc >= %{texlive_version}
 Provides:       tex(xespotcolor.sty)
 Requires:       tex(color.sty)
@@ -5176,10 +5713,10 @@ Requires:       tex(everypage.sty)
 Requires:       tex(graphics.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(xcolor.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source59:       xespotcolor.tar.xz
-Source60:       xespotcolor.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source64:       xespotcolor.tar.xz
+Source65:       xespotcolor.doc.tar.xz
 
 %description -n texlive-xespotcolor
 The package provides macros for using spot colours in LaTeX
@@ -5187,16 +5724,13 @@ documents. The package is a reimplementation of the spotcolor
 package for use with XeLaTeX. As such, it has the same user
 interface and the same capabilities.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-xespotcolor-doc
 Version:        %{texlive_version}.%{texlive_noarch}.2.0asvn40118
 Release:        0
 Summary:        Documentation for texlive-xespotcolor
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xespotcolor-doc
 This package includes the documentation for texlive-xespotcolor
@@ -5238,38 +5772,58 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-xetex
-Version:        %{texlive_version}.%{texlive_noarch}.svn50602
+Version:        %{texlive_version}.%{texlive_noarch}.svn54276
 Release:        0
 Summary:        An extended variant of TeX for use with Unicode sources
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
 Recommends:     texlive-collection-genericrecommended >= %{texlive_version}
 Recommends:     texlive-collection-xetex >= %{texlive_version}
 Requires:       texlive-babel >= %{texlive_version}
+#!BuildIgnore: texlive-babel
 Requires:       texlive-cm >= %{texlive_version}
+#!BuildIgnore: texlive-cm
 Requires:       texlive-dvipdfmx >= %{texlive_version}
+#!BuildIgnore: texlive-dvipdfmx
 Requires:       texlive-etex >= %{texlive_version}
+#!BuildIgnore: texlive-etex
 Requires:       texlive-hyphen-base >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires:       texlive-l3kernel >= %{texlive_version}
+#!BuildIgnore: texlive-l3kernel
 Requires:       texlive-latex >= %{texlive_version}
+#!BuildIgnore: texlive-latex
 Requires:       texlive-latex-fonts >= %{texlive_version}
+#!BuildIgnore: texlive-latex-fonts
+Requires:       texlive-lm >= %{texlive_version}
+#!BuildIgnore: texlive-lm
 Requires:       texlive-plain >= %{texlive_version}
+#!BuildIgnore: texlive-plain
 Requires:       texlive-tex-ini-files >= %{texlive_version}
+#!BuildIgnore: texlive-tex-ini-files
 Requires:       texlive-unicode-data >= %{texlive_version}
-Requires:       texlive-xetexconfig >= %{texlive_version}
+#!BuildIgnore: texlive-unicode-data
 Requires(pre): texlive-xetex-bin >= %{texlive_version}
 #!BuildIgnore: texlive-xetex-bin
+Requires:       texlive-xetexconfig >= %{texlive_version}
+#!BuildIgnore: texlive-xetexconfig
 Requires(post): perl = %{perl_version}
 Requires(post): perl(TeXLive::TLUtils)
 Requires(post): tex(texmf.cnf)
 Requires(post): texlive-kpathsea-bin >= %{texlive_version}
 Requires(post): texlive-texlive.infra >= %{texlive_version}
 #!BuildIgnore: texlive-kpathsea
-Requires(pre): texlive >= %{texlive_version}
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -5287,17 +5841,26 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xetex-doc >= %{texlive_version}
 Provides:       tex(qx-unicode.map)
 Provides:       tex(tex-text.map)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source61:       xetex.tar.xz
-Source62:       xetex.doc.tar.xz
+Requires:       man(latex.1)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source66:       xetex.tar.xz
+Source67:       xetex.doc.tar.xz
+Source68:       xetex_conf.dif
 
 %description -n texlive-xetex
 XeTeX is a TeX typesetting engine using Unicode and supporting
@@ -5314,97 +5877,91 @@ xdvipdfmx), that produces PDF. XeTeX is released as part of TeX
 Live; documentation has arisen separately. Source code is
 available from ctan:/systems/texlive/Source/.
 
-date: 2018-12-26 08:45:23 +0000
-
-
 %package -n texlive-xetex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn50602
+Version:        %{texlive_version}.%{texlive_noarch}.svn54276
 Release:        0
 Summary:        Documentation for texlive-xetex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
+Provides:       man(xelatex.1)
+Provides:       man(xetex.1)
 
 %description -n texlive-xetex-doc
 This package includes the documentation for texlive-xetex
 
 %post -n texlive-xetex
-/usr/bin/perl %{_texmfmaindir}/tlpkg/tlpostcode/xetex.pl install %{_texmfmaindir}
 mkdir -p /var/run/texlive
+mkdir -p /var/run/texlive/scriptlets
+cat > /var/run/texlive/scriptlets/xetex << 'EOF'
+/usr/bin/perl %{_texmfmaindir}/tlpkg/tlpostcode/xetex.pl install %{_texmfmaindir}
+EOF
 > /var/run/texlive/run-mktexlsr
 > /var/run/texlive/run-update
-> /var/run/texlive/run-fmtutil.xetex
-sed -ri 's/^\#\![[= =]]+xetex\b.*/xetex xetex language.def -etex xetex.ini/' %{_texmfconfdir}/web2c/fmtutil.cnf || :
 > /var/run/texlive/run-fmtutil.xelatex
 sed -ri 's/^\#\![[= =]]+xelatex\b.*/xelatex xetex language.dat -etex xelatex.ini/' %{_texmfconfdir}/web2c/fmtutil.cnf || :
+> /var/run/texlive/run-fmtutil.xetex
+sed -ri 's/^\#\![[= =]]+xetex\b.*/xetex xetex language.def -etex xetex.ini/' %{_texmfconfdir}/web2c/fmtutil.cnf || :
 
 %postun -n texlive-xetex 
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
 > /var/run/texlive/run-update
 if test $1 = 0; then
-    sed -ri 's/^(xetex\b)/\#\!\ \1/' %{_texmfconfdir}/web2c/fmtutil.cnf || :
-    rm -f %{_texmfvardir}/web2c/xetex/xetex.*
     sed -ri 's/^(xelatex\b)/\#\!\ \1/' %{_texmfconfdir}/web2c/fmtutil.cnf || :
     rm -f %{_texmfvardir}/web2c/xetex/xelatex.*
+    sed -ri 's/^(xetex\b)/\#\!\ \1/' %{_texmfconfdir}/web2c/fmtutil.cnf || :
+    rm -f %{_texmfvardir}/web2c/xetex/xetex.*
     exit 0
 fi
 
 %triggerin -n texlive-xetex -- texlive-cm
-> /var/run/texlive/run-fmtutil.xetex
 > /var/run/texlive/run-fmtutil.xelatex
+> /var/run/texlive/run-fmtutil.xetex
 
 %triggerun -n texlive-xetex -- texlive-cm
-> /var/run/texlive/run-fmtutil.xetex
 > /var/run/texlive/run-fmtutil.xelatex
+> /var/run/texlive/run-fmtutil.xetex
+
+%triggerin -n texlive-xetex -- texlive-etex
+> /var/run/texlive/run-fmtutil.xelatex
+> /var/run/texlive/run-fmtutil.xetex
+
+%triggerun -n texlive-xetex -- texlive-etex
+> /var/run/texlive/run-fmtutil.xelatex
+> /var/run/texlive/run-fmtutil.xetex
 
 %triggerin -n texlive-xetex -- texlive-hyphen-base
-> /var/run/texlive/run-fmtutil.xetex
 > /var/run/texlive/run-fmtutil.xelatex
+> /var/run/texlive/run-fmtutil.xetex
 
 %triggerun -n texlive-xetex -- texlive-hyphen-base
-> /var/run/texlive/run-fmtutil.xetex
 > /var/run/texlive/run-fmtutil.xelatex
+> /var/run/texlive/run-fmtutil.xetex
+
+%triggerin -n texlive-xetex -- texlive-plain
+> /var/run/texlive/run-fmtutil.xelatex
+> /var/run/texlive/run-fmtutil.xetex
+
+%triggerun -n texlive-xetex -- texlive-plain
+> /var/run/texlive/run-fmtutil.xelatex
+> /var/run/texlive/run-fmtutil.xetex
 
 %triggerin -n texlive-xetex -- texlive-tex-ini-files
-> /var/run/texlive/run-fmtutil.xetex
 > /var/run/texlive/run-fmtutil.xelatex
+> /var/run/texlive/run-fmtutil.xetex
 
 %triggerun -n texlive-xetex -- texlive-tex-ini-files
-> /var/run/texlive/run-fmtutil.xetex
 > /var/run/texlive/run-fmtutil.xelatex
+> /var/run/texlive/run-fmtutil.xetex
 
 %triggerin -n texlive-xetex -- texlive-unicode-data
-> /var/run/texlive/run-fmtutil.xetex
 > /var/run/texlive/run-fmtutil.xelatex
+> /var/run/texlive/run-fmtutil.xetex
 
 %triggerun -n texlive-xetex -- texlive-unicode-data
-> /var/run/texlive/run-fmtutil.xetex
 > /var/run/texlive/run-fmtutil.xelatex
-
-%triggerin -n texlive-xetex -- texlive-babel
 > /var/run/texlive/run-fmtutil.xetex
-> /var/run/texlive/run-fmtutil.xelatex
-
-%triggerun -n texlive-xetex -- texlive-babel
-> /var/run/texlive/run-fmtutil.xetex
-> /var/run/texlive/run-fmtutil.xelatex
-
-%triggerin -n texlive-xetex -- texlive-latex
-> /var/run/texlive/run-fmtutil.xetex
-> /var/run/texlive/run-fmtutil.xelatex
-
-%triggerun -n texlive-xetex -- texlive-latex
-> /var/run/texlive/run-fmtutil.xetex
-> /var/run/texlive/run-fmtutil.xelatex
-
-%triggerin -n texlive-xetex -- texlive-latex-fonts
-> /var/run/texlive/run-fmtutil.xetex
-> /var/run/texlive/run-fmtutil.xelatex
-
-%triggerun -n texlive-xetex -- texlive-latex-fonts
-> /var/run/texlive/run-fmtutil.xetex
-> /var/run/texlive/run-fmtutil.xelatex
 
 %posttrans -n texlive-xetex
 %if %{with zypper_posttrans}
@@ -5431,7 +5988,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/misc/xetex/fontmapping/base/tex-text.tec
 %{_texmfmaindir}/tlpkg/tlpostcode/xetex.pl
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xetex-%{texlive_version}.%{texlive_noarch}.svn50602-%{release}-zypper
+/var/adm/update-scripts/texlive-xetex-%{texlive_version}.%{texlive_noarch}.svn54276-%{release}-zypper
 %endif
 
 %package -n texlive-xetex-devanagari
@@ -5440,33 +5997,42 @@ Release:        0
 Summary:        XeTeX input map for Unicode Devanagari
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xetex-devanagari-doc >= %{texlive_version}
 Provides:       tex(devanagarinumerals.map)
 Provides:       tex(harvardkyoto.map)
 Provides:       tex(iast.map)
 Provides:       tex(velthuis-sanskrit.map)
 Provides:       tex(velthuis.map)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source63:       xetex-devanagari.tar.xz
-Source64:       xetex-devanagari.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source69:       xetex-devanagari.tar.xz
+Source70:       xetex-devanagari.doc.tar.xz
 
 %description -n texlive-xetex-devanagari
 The package provides a map for use with Jonathan Kew's TECkit,
 to translate Devanagari (encoded according to the Harvard/Kyoto
 convention) to Unicode (range 0900-097F).
-
-date: 2016-06-24 17:18:15 +0000
-
 
 %package -n texlive-xetex-devanagari-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn34296
@@ -5474,7 +6040,7 @@ Release:        0
 Summary:        Documentation for texlive-xetex-devanagari
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xetex-devanagari-doc
 This package includes the documentation for texlive-xetex-devanagari
@@ -5526,15 +6092,27 @@ Release:        0
 Summary:        Itrans input maps for use with XeLaTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xetex-itrans-doc >= %{texlive_version}
 Provides:       tex(brh-kan.map)
 Provides:       tex(itrans-dvn.map)
@@ -5545,18 +6123,15 @@ Provides:       tex(itrans-santel.map)
 Provides:       tex(itrans-sdvn.map)
 Provides:       tex(itrans-tamil.map)
 Provides:       tex(itrans-tel.map)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source65:       xetex-itrans.tar.xz
-Source66:       xetex-itrans.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source71:       xetex-itrans.tar.xz
+Source72:       xetex-itrans.doc.tar.xz
 
 %description -n texlive-xetex-itrans
 The package provides maps for use with XeLaTeX with coding done
 using itrans. Fontspec maps are provided for Devanagari
 (Sanskrit), for Sanskrit in Kannada and for Kannada itself.
-
-date: 2018-01-06 11:14:59 +0000
-
 
 %package -n texlive-xetex-itrans-doc
 Version:        %{texlive_version}.%{texlive_noarch}.4.2svn35088
@@ -5564,7 +6139,7 @@ Release:        0
 Summary:        Documentation for texlive-xetex-itrans
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xetex-itrans-doc
 This package includes the documentation for texlive-xetex-itrans
@@ -5625,20 +6200,32 @@ Release:        0
 Summary:        Running PSTricks under XeTeX
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xetex-pstricks-doc >= %{texlive_version}
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source67:       xetex-pstricks.tar.xz
-Source68:       xetex-pstricks.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source73:       xetex-pstricks.tar.xz
+Source74:       xetex-pstricks.doc.tar.xz
 
 %description -n texlive-xetex-pstricks
 The package provides an indirection scheme for XeTeX to use the
@@ -5648,16 +6235,13 @@ pstricks.con configuration file. With this configuration, many
 PSTricks features can be used in XeLaTeX or plain XeTeX
 documents.
 
-date: 2018-09-15 12:24:32 +0000
-
-
 %package -n texlive-xetex-pstricks-doc
 Version:        %{texlive_version}.%{texlive_noarch}.svn17055
 Release:        0
 Summary:        Documentation for texlive-xetex-pstricks
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xetex-pstricks-doc
 This package includes the documentation for texlive-xetex-pstricks
@@ -5700,29 +6284,38 @@ Release:        0
 Summary:        XeTeX input maps for Unicode Tibetan
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xetex-tibetan-doc >= %{texlive_version}
 Provides:       tex(loctib.map)
 Provides:       tex(wylie.map)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source69:       xetex-tibetan.tar.xz
-Source70:       xetex-tibetan.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source75:       xetex-tibetan.tar.xz
+Source76:       xetex-tibetan.doc.tar.xz
 
 %description -n texlive-xetex-tibetan
 The package provides a map for use with Jonathan Kew's TECkit,
 to translate Tibetan to Unicode (range 0F00-0FFF).
-
-date: 2016-06-24 17:18:15 +0000
-
 
 %package -n texlive-xetex-tibetan-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn28847
@@ -5730,7 +6323,7 @@ Release:        0
 Summary:        Documentation for texlive-xetex-tibetan
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xetex-tibetan-doc
 This package includes the documentation for texlive-xetex-tibetan
@@ -5776,19 +6369,31 @@ Release:        0
 Summary:        Crop.cfg for XeLaTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(crop.cfg)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source71:       xetexconfig.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source77:       xetexconfig.tar.xz
 
 %description -n texlive-xetexconfig
 The xetexconfig package
@@ -5825,30 +6430,39 @@ Release:        0
 Summary:        Report font features in XeTeX
 License:        Apache-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xetexfontinfo-doc >= %{texlive_version}
 Provides:       tex(aat-info.tex)
 Provides:       tex(opentype-info.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source72:       xetexfontinfo.tar.xz
-Source73:       xetexfontinfo.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source78:       xetexfontinfo.tar.xz
+Source79:       xetexfontinfo.doc.tar.xz
 
 %description -n texlive-xetexfontinfo
 A pair of documents to reveal the font features supported by
 fonts usable in XeTeX. Use OpenType-info.tex for OpenType
 fonts, and AAT-info.tex for AAT fonts (Mac OS X only).
-
-date: 2016-06-24 17:18:15 +0000
-
 
 %package -n texlive-xetexfontinfo-doc
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
@@ -5856,7 +6470,7 @@ Release:        0
 Summary:        Documentation for texlive-xetexfontinfo
 License:        Apache-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xetexfontinfo-doc
 This package includes the documentation for texlive-xetexfontinfo
@@ -5894,20 +6508,32 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-xetexko
-Version:        %{texlive_version}.%{texlive_noarch}.2.21svn48378
+Version:        %{texlive_version}.%{texlive_noarch}.2.23svn53826
 Release:        0
 Summary:        Typeset Korean with Xe(La)TeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xetexko-doc >= %{texlive_version}
 Provides:       tex(xetexko-font.sty)
 Provides:       tex(xetexko-hanging.sty)
@@ -5918,28 +6544,26 @@ Provides:       tex(xetexko.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(kolabels-utf.sty)
 Requires:       tex(konames-utf.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source74:       xetexko.tar.xz
-Source75:       xetexko.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source80:       xetexko.tar.xz
+Source81:       xetexko.doc.tar.xz
 
 %description -n texlive-xetexko
 The package supports typesetting Korean documents (including
 old Hangul texts), using XeTeX. It enhances the existing
 support, in XeTeX, providing features that provide quality
-typesetting. This package requires cjk-ko package for its full
-functionality.
-
-date: 2018-08-08 07:37:17 +0000
-
+typesetting. This package requires the cjk-ko package for its
+full functionality.
 
 %package -n texlive-xetexko-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.21svn48378
+Version:        %{texlive_version}.%{texlive_noarch}.2.23svn53826
 Release:        0
 Summary:        Documentation for texlive-xetexko
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
+Provides:       locale(texlive-xetexko-doc:ko)
 
 %description -n texlive-xetexko-doc
 This package includes the documentation for texlive-xetexko
@@ -5983,34 +6607,43 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/xetex/xetexko/xetexko-vertical.sty
 %{_texmfdistdir}/tex/xetex/xetexko/xetexko.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xetexko-%{texlive_version}.%{texlive_noarch}.2.21svn48378-%{release}-zypper
+/var/adm/update-scripts/texlive-xetexko-%{texlive_version}.%{texlive_noarch}.2.23svn53826-%{release}-zypper
 %endif
 
 %package -n texlive-xetexref
-Version:        %{texlive_version}.%{texlive_noarch}.svn50244
+Version:        %{texlive_version}.%{texlive_noarch}.svn53068
 Release:        0
 Summary:        Reference documentation of XeTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source76:       xetexref.doc.tar.xz
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source82:       xetexref.doc.tar.xz
 
 %description -n texlive-xetexref
 The package comprises reference documentation for XeTeX
 detailing its extended features.
-
-date: 2019-03-05 07:57:15 +0000
-
 %post -n texlive-xetexref
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -6037,7 +6670,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/xetex/xetexref/xetex-reference.pdf
 %{_texmfdistdir}/doc/xetex/xetexref/xetex-reference.tex
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xetexref-%{texlive_version}.%{texlive_noarch}.svn50244-%{release}-zypper
+/var/adm/update-scripts/texlive-xetexref-%{texlive_version}.%{texlive_noarch}.svn53068-%{release}-zypper
 %endif
 
 %package -n texlive-xevlna
@@ -6046,21 +6679,33 @@ Release:        0
 Summary:        Insert non-breakable spaces using XeTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xevlna-doc >= %{texlive_version}
 Provides:       tex(xevlna.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source77:       xevlna.tar.xz
-Source78:       xevlna.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source83:       xevlna.tar.xz
+Source84:       xevlna.doc.tar.xz
 
 %description -n texlive-xevlna
 The package will directly insert nonbreakable spaces (in Czech,
@@ -6072,16 +6717,13 @@ fully reliable, because user defined macros and environments
 cannot reliably be recognised.) The package works both with
 (Plain) XeTeX and with XeLaTeX.
 
-date: 2018-05-30 17:48:21 +0000
-
-
 %package -n texlive-xevlna-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn43864
 Release:        0
 Summary:        Documentation for texlive-xevlna
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xevlna-doc
 This package includes the documentation for texlive-xevlna
@@ -6122,29 +6764,45 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-xfakebold
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.04svn48460
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.06svn54779
 Release:        0
 Summary:        Fake a regular font for bold characters
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires:       texlive-iftex >= %{texlive_version}
+#!BuildIgnore: texlive-iftex
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xfakebold-doc >= %{texlive_version}
 Provides:       tex(xfakebold.sty)
 Requires:       tex(ifluatex.sty)
+Requires:       tex(ifpdf.sty)
+Requires:       tex(iftex.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source79:       xfakebold.tar.xz
-Source80:       xfakebold.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source85:       xfakebold.tar.xz
+Source86:       xfakebold.doc.tar.xz
 
 %description -n texlive-xfakebold
 This package uses PDF's text rendering to modify the linewidth
@@ -6154,16 +6812,13 @@ package works both in text and in math mode, for pdfLaTeX as
 well as for LuaLaTeX. The package depends on ifluatex, ifxetex,
 and xkeyval.
 
-date: 2018-08-22 13:59:18 +0000
-
-
 %package -n texlive-xfakebold-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.04svn48460
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.06svn54779
 Release:        0
 Summary:        Documentation for texlive-xfakebold
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xfakebold-doc
 This package includes the documentation for texlive-xfakebold
@@ -6199,7 +6854,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/xfakebold/xfakebold.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xfakebold-%{texlive_version}.%{texlive_noarch}.0.0.04svn48460-%{release}-zypper
+/var/adm/update-scripts/texlive-xfakebold-%{texlive_version}.%{texlive_noarch}.0.0.06svn54779-%{release}-zypper
 %endif
 
 %package -n texlive-xfor
@@ -6208,21 +6863,33 @@ Release:        0
 Summary:        A reimplementation of the LaTeX for-loop macro
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xfor-doc >= %{texlive_version}
 Provides:       tex(xfor.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source81:       xfor.tar.xz
-Source82:       xfor.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source87:       xfor.tar.xz
+Source88:       xfor.doc.tar.xz
 
 %description -n texlive-xfor
 The package redefines the LaTeX internal \@for macro so that
@@ -6230,16 +6897,13 @@ the loop may be prematurely terminated. The action is akin to
 the C/Java break statement, except that the loop does not
 terminate until the end of the current iteration
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-xfor-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.05svn15878
 Release:        0
 Summary:        Documentation for texlive-xfor
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xfor-doc
 This package includes the documentation for texlive-xfor
@@ -6284,22 +6948,34 @@ Release:        0
 Summary:        XeLaTeX package for typesetting Greek language documents (beta release)
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xgreek-doc >= %{texlive_version}
 Provides:       tex(xgreek.sty)
 Requires:       tex(luahyphenrules.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source83:       xgreek.tar.xz
-Source84:       xgreek.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source89:       xgreek.tar.xz
+Source90:       xgreek.doc.tar.xz
 
 %description -n texlive-xgreek
 This package has been designed so to allow people to typeset
@@ -6315,16 +6991,13 @@ The command \setlanguage{<lang>} to activate the hyphenation
 patterns of the language <lang> This, however, can be done only
 if the format file has not been built with the babel mechanism.
 
-date: 2018-02-16 21:27:20 +0000
-
-
 %package -n texlive-xgreek-doc
 Version:        %{texlive_version}.%{texlive_noarch}.3.0.1svn46662
 Release:        0
 Summary:        Documentation for texlive-xgreek
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xgreek-doc
 This package includes the documentation for texlive-xgreek
@@ -6367,32 +7040,41 @@ Release:        0
 Summary:        Extending \hrulefill
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xhfill-doc >= %{texlive_version}
 Provides:       tex(xhfill.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xspace.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source85:       xhfill.tar.xz
-Source86:       xhfill.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source91:       xhfill.tar.xz
+Source92:       xhfill.doc.tar.xz
 
 %description -n texlive-xhfill
 The package provides extended macros for the default \hrulefill
 command. It allows modification of the width and the colour of
 the line.
-
-date: 2016-06-24 17:18:15 +0000
-
 
 %package -n texlive-xhfill-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.01svn22575
@@ -6400,7 +7082,7 @@ Release:        0
 Summary:        Documentation for texlive-xhfill
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xhfill-doc
 This package includes the documentation for texlive-xhfill
@@ -6445,24 +7127,36 @@ Release:        0
 Summary:        Extended conditional commands
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xifthen-doc >= %{texlive_version}
 Provides:       tex(xifthen.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(ifmtarg.sty)
 Requires:       tex(ifthen.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source87:       xifthen.tar.xz
-Source88:       xifthen.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source93:       xifthen.tar.xz
+Source94:       xifthen.doc.tar.xz
 
 %description -n texlive-xifthen
 This package extends the ifthen package by implementing new
@@ -6473,16 +7167,13 @@ complex expressions as introduced by the package calc, together
 with the ability of defining new commands to handle complex
 tests.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-xifthen-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.4.0svn38929
 Release:        0
 Summary:        Documentation for texlive-xifthen
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xifthen-doc
 This package includes the documentation for texlive-xifthen
@@ -6526,25 +7217,34 @@ Release:        0
 Summary:        Christmas silliness (English)
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source89:       xii.doc.tar.xz
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source95:       xii.doc.tar.xz
 
 %description -n texlive-xii
 This is the plain TeX file xii.tex. Call "pdftex xii.tex" to
 produce a (perhaps) surprising typeset document.
-
-date: 2017-11-14 11:04:34 +0000
-
 %post -n texlive-xii
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -6579,26 +7279,35 @@ Release:        0
 Summary:        Christmas silliness (Latin)
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source90:       xii-lat.doc.tar.xz
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source96:       xii-lat.doc.tar.xz
 
 %description -n texlive-xii-lat
 This is the plain TeX file xii-lat.tex. Call "pdftex
 xii-lat.tex" to produce a (perhaps) surprising typeset
 document.
-
-date: 2017-11-20 04:46:57 +0000
-
 %post -n texlive-xii-lat
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -6628,47 +7337,56 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-xindex
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.10svn50842
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.20svn52892
 Release:        0
 Summary:        Unicode compatible index generation
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires(pre): texlive-xindex-bin >= %{texlive_version}
 #!BuildIgnore: texlive-xindex-bin
-Requires(pre): texlive >= %{texlive_version}
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xindex-doc >= %{texlive_version}
 Provides:       tex(xindex.sty)
 Requires:       tex(imakeidx.sty)
 Requires:       tex(makeidx.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source91:       xindex.tar.xz
-Source92:       xindex.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source97:       xindex.tar.xz
+Source98:       xindex.doc.tar.xz
 
 %description -n texlive-xindex
 This package provides a unicode compatible index programm for
 LaTeX. It needs Lua 5.3, which will be included in at least
 LuaTeX 1.09 (TeX Live 2019).
 
-date: 2019-04-07 18:34:49 +0000
-
-
 %package -n texlive-xindex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.10svn50842
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.20svn52892
 Release:        0
 Summary:        Documentation for texlive-xindex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xindex-doc
 This package includes the documentation for texlive-xindex
@@ -6713,6 +7431,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/lualatex/xindex/tests/Umlaute2.pdf
 %{_texmfdistdir}/doc/lualatex/xindex/tests/Umlaute2.tex
 %{_texmfdistdir}/doc/lualatex/xindex/tests/buch.idx
+%{_texmfdistdir}/doc/lualatex/xindex/tests/buch.ind
 %{_texmfdistdir}/doc/lualatex/xindex/tests/buch.pdf
 %{_texmfdistdir}/doc/lualatex/xindex/tests/buch.tex
 %{_texmfdistdir}/doc/lualatex/xindex/tests/demo-hyperref.idx
@@ -6747,25 +7466,38 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/lualatex/xindex/xindex-lib.lua
 %{_texmfdistdir}/tex/lualatex/xindex/xindex-pretty.lua
 %{_texmfdistdir}/tex/lualatex/xindex/xindex-unicode.lua
+%{_texmfdistdir}/tex/lualatex/xindex/xindex-yannis.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xindex-%{texlive_version}.%{texlive_noarch}.0.0.10svn50842-%{release}-zypper
+/var/adm/update-scripts/texlive-xindex-%{texlive_version}.%{texlive_noarch}.0.0.20svn52892-%{release}-zypper
 %endif
 
 %package -n texlive-xint
-Version:        %{texlive_version}.%{texlive_noarch}.1.3esvn50844
+Version:        %{texlive_version}.%{texlive_noarch}.1.4bsvn53930
 Release:        0
 Summary:        Expandable operations on long numbers
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xint-doc >= %{texlive_version}
 Provides:       tex(xint.sty)
 Provides:       tex(xintbinhex.sty)
@@ -6781,10 +7513,10 @@ Provides:       tex(xinttools.sty)
 Provides:       tex(xinttrig.sty)
 Requires:       tex(poormanlog.sty)
 Requires:       tex(poormanlog.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source93:       xint.tar.xz
-Source94:       xint.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source99:       xint.tar.xz
+Source100:      xint.doc.tar.xz
 
 %description -n texlive-xint
 The xint bundle main modules are: xinttools utilities of
@@ -6810,16 +7542,13 @@ compatible with expansion-only context. The packages may be
 used with Plain TeX, LaTeX, or (a priori) any other macro
 format built upon TeX.
 
-date: 2019-04-06 20:13:46 +0000
-
-
 %package -n texlive-xint-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3esvn50844
+Version:        %{texlive_version}.%{texlive_noarch}.1.4bsvn53930
 Release:        0
 Summary:        Documentation for texlive-xint
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xint-doc
 This package includes the documentation for texlive-xint
@@ -6847,10 +7576,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-xint-doc
 %defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/xint/CHANGES.html
-%{_texmfdistdir}/doc/generic/xint/CHANGES.pdf
-%{_texmfdistdir}/doc/generic/xint/README
-%{_texmfdistdir}/doc/generic/xint/README.html
-%{_texmfdistdir}/doc/generic/xint/README.pdf
+%{_texmfdistdir}/doc/generic/xint/README.md
 %{_texmfdistdir}/doc/generic/xint/sourcexint.pdf
 %{_texmfdistdir}/doc/generic/xint/xint.pdf
 
@@ -6869,30 +7595,42 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/xint/xinttools.sty
 %{_texmfdistdir}/tex/generic/xint/xinttrig.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xint-%{texlive_version}.%{texlive_noarch}.1.3esvn50844-%{release}-zypper
+/var/adm/update-scripts/texlive-xint-%{texlive_version}.%{texlive_noarch}.1.4bsvn53930-%{release}-zypper
 %endif
 
 %package -n texlive-xits
-Version:        %{texlive_version}.%{texlive_noarch}.1.200.1svn48879
+Version:        %{texlive_version}.%{texlive_noarch}.1.301svn52046
 Release:        0
 Summary:        A Scientific Times-like font with support for mathematical typesetting
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-xits-fonts >= %{texlive_version}
 Recommends:     texlive-xits-doc >= %{texlive_version}
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source95:       xits.tar.xz
-Source96:       xits.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source101:      xits.tar.xz
+Source102:      xits.doc.tar.xz
 
 %description -n texlive-xits
 XITS is a Times-like font for scientific typesetting with
@@ -6901,28 +7639,25 @@ capable TeX engines, namely LuaTeX and XeTeX. For use with
 LuaLaTeX or XeLaTeX, support is available from the fontspec and
 unicode-math packages.
 
-date: 2018-10-10 10:22:04 +0000
-
-
 %package -n texlive-xits-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.200.1svn48879
+Version:        %{texlive_version}.%{texlive_noarch}.1.301svn52046
 Release:        0
 Summary:        Documentation for texlive-xits
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xits-doc
 This package includes the documentation for texlive-xits
 
 
 %package -n texlive-xits-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.200.1svn48879
+Version:        %{texlive_version}.%{texlive_noarch}.1.301svn52046
 Release:        0
 Summary:        Severed fonts for texlive-xits
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Fonts
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 %reconfigure_fonts_prereq
 Requires(posttrans): fontconfig
 Requires(posttrans): ghostscript-fonts-std
@@ -6956,7 +7691,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-xits-doc
 %defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/xits/FONTLOG.txt
-%{_texmfdistdir}/doc/fonts/xits/OFL-FAQ.txt
 %{_texmfdistdir}/doc/fonts/xits/OFL.txt
 %{_texmfdistdir}/doc/fonts/xits/README.txt
 
@@ -6972,7 +7706,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-xits-fonts
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-xits
-%config %{_sysconfdir}/fonts/conf.avail/58-texlive-xits.conf
+%{_datadir}/fontconfig/conf.avail/58-texlive-xits.conf
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-xits/encodings.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-xits/fonts.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-xits/fonts.scale
@@ -6983,7 +7717,96 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-xits/XITSMath-Bold.otf
 %{_datadir}/fonts/texlive-xits/XITSMath-Regular.otf
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xits-fonts-%{texlive_version}.%{texlive_noarch}.1.200.1svn48879-%{release}-zypper
+/var/adm/update-scripts/texlive-xits-fonts-%{texlive_version}.%{texlive_noarch}.1.301svn52046-%{release}-zypper
+%endif
+
+%package -n texlive-xkcdcolors
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.1svn54512
+Release:        0
+Summary:        Xkcd names of colors
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Recommends:     texlive-xkcdcolors-doc >= %{texlive_version}
+Provides:       tex(xkcdcolors.sty)
+Requires:       tex(xcolor.sty)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source103:      xkcdcolors.tar.xz
+Source104:      xkcdcolors.doc.tar.xz
+
+%description -n texlive-xkcdcolors
+In the year 2010, Randall Munroe on posted a really funny and
+nice article on xkcd. He made a very curious experiment:
+showing colors to a lot of people and asking to name each one.
+Afterward, he processed the data and sorted the names for each
+color by popularity -- that means, how many people gave the
+same name to the same color. This package makes the collected
+color names usable with LaTeX.
+
+%package -n texlive-xkcdcolors-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.1svn54512
+Release:        0
+Summary:        Documentation for texlive-xkcdcolors
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+
+%description -n texlive-xkcdcolors-doc
+This package includes the documentation for texlive-xkcdcolors
+
+%post -n texlive-xkcdcolors
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-xkcdcolors 
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-xkcdcolors
+%if %{with zypper_posttrans}
+test -z "$ZYPP_IS_RUNNING" || exit 0
+%endif
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-xkcdcolors-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/xkcdcolors/README.md
+%{_texmfdistdir}/doc/latex/xkcdcolors/lppl-1-3c_license.txt
+%{_texmfdistdir}/doc/latex/xkcdcolors/xkcdcolors-manual.pdf
+%{_texmfdistdir}/doc/latex/xkcdcolors/xkcdcolors-manual.tex
+
+%files -n texlive-xkcdcolors
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/xkcdcolors/xkcdcolors.sty
+%if %{with zypper_posttrans}
+/var/adm/update-scripts/texlive-xkcdcolors-%{texlive_version}.%{texlive_noarch}.1.0.1svn54512-%{release}-zypper
 %endif
 
 %package -n texlive-xkeyval
@@ -6992,15 +7815,27 @@ Release:        0
 Summary:        Extension of the keyval package
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xkeyval-doc >= %{texlive_version}
 Provides:       tex(keyval.tex)
 Provides:       tex(pst-xkey.sty)
@@ -7022,10 +7857,10 @@ Provides:       tex(xkvutils.tex)
 Provides:       tex(xkvview.sty)
 Requires:       tex(article.cls)
 Requires:       tex(longtable.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source97:       xkeyval.tar.xz
-Source98:       xkeyval.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source105:      xkeyval.tar.xz
+Source106:      xkeyval.doc.tar.xz
 
 %description -n texlive-xkeyval
 This package is an extension of the keyval package and offers
@@ -7036,16 +7871,13 @@ and to define families of key definitions; these all help use
 in documents where several packages define their own sets of
 keys.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-xkeyval-doc
 Version:        %{texlive_version}.%{texlive_noarch}.2.7asvn35741
 Release:        0
 Summary:        Documentation for texlive-xkeyval
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xkeyval-doc
 This package includes the documentation for texlive-xkeyval
@@ -7107,22 +7939,34 @@ Release:        0
 Summary:        Calculates and displays arithmetic operations
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xlop-doc >= %{texlive_version}
 Provides:       tex(xlop.sty)
 Provides:       tex(xlop.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source99:       xlop.tar.xz
-Source100:      xlop.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source107:      xlop.tar.xz
+Source108:      xlop.doc.tar.xz
 
 %description -n texlive-xlop
 Xlop (eXtra Large OPeration) will typeset arithmetic problems
@@ -7134,16 +7978,13 @@ e.g 200 figures (with a very long compilation time). Many other
 features allow to deal with numbers (tests, display, some high
 level operations, etc.)
 
-date: 2017-01-08 09:27:32 +0000
-
-
 %package -n texlive-xlop-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.26svn42899
 Release:        0
 Summary:        Documentation for texlive-xlop
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-xlop-doc:fr;en)
 
 %description -n texlive-xlop-doc
@@ -7187,28 +8028,41 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-xltabular
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2bsvn49939
+Version:        %{texlive_version}.%{texlive_noarch}.svn54437
 Release:        0
 Summary:        Longtable support with possible X-column specifier
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xltabular-doc >= %{texlive_version}
 Provides:       tex(xltabular.sty)
+Requires:       tex(longtable.sty)
 Requires:       tex(ltablex.sty)
 Requires:       tex(tabularx.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source101:      xltabular.tar.xz
-Source102:      xltabular.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source109:      xltabular.tar.xz
+Source110:      xltabular.doc.tar.xz
 
 %description -n texlive-xltabular
 This package loads package ltablex, but keeps the current
@@ -7216,16 +8070,13 @@ tabularx environment as is. The new environment xltabular is a
 combination of longtable and tabularx: Header/footer
 definitions, X-column specifier, and with possible pagebreaks.
 
-date: 2019-02-04 09:22:01 +0000
-
-
 %package -n texlive-xltabular-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2bsvn49939
+Version:        %{texlive_version}.%{texlive_noarch}.svn54437
 Release:        0
 Summary:        Documentation for texlive-xltabular
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xltabular-doc
 This package includes the documentation for texlive-xltabular
@@ -7265,7 +8116,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/xltabular/xltabular.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xltabular-%{texlive_version}.%{texlive_noarch}.0.0.2bsvn49939-%{release}-zypper
+/var/adm/update-scripts/texlive-xltabular-%{texlive_version}.%{texlive_noarch}.svn54437-%{release}-zypper
 %endif
 
 %package -n texlive-xltxtra
@@ -7274,16 +8125,29 @@ Release:        0
 Summary:        "Extras" for LaTeX users of XeTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-metalogo >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-metalogo
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xltxtra-doc >= %{texlive_version}
 Provides:       tex(xltxtra.sty)
 Requires:       tex(fontspec.sty)
@@ -7291,10 +8155,10 @@ Requires:       tex(ifluatex.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(metalogo.sty)
 Requires:       tex(realscripts.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source103:      xltxtra.tar.xz
-Source104:      xltxtra.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source111:      xltxtra.tar.xz
+Source112:      xltxtra.doc.tar.xz
 
 %description -n texlive-xltxtra
 This package was previously used to provide a number of
@@ -7306,16 +8170,13 @@ will: load the fontspec, metalogo, and realscripts packages;
 redefine \showhyphens so it works correctly; and define two
 extra commands: \vfrac and \namedglyph.
 
-date: 2018-12-31 09:09:56 +0000
-
-
 %package -n texlive-xltxtra-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn49555
 Release:        0
 Summary:        Documentation for texlive-xltxtra
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xltxtra-doc
 This package includes the documentation for texlive-xltxtra
@@ -7353,29 +8214,55 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-xmltex
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn48634
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn54498
 Release:        0
 Summary:        Support for parsing XML documents
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-babel >= %{texlive_version}
+#!BuildIgnore: texlive-babel
 Requires:       texlive-cm >= %{texlive_version}
+#!BuildIgnore: texlive-cm
 Requires:       texlive-dehyph >= %{texlive_version}
+#!BuildIgnore: texlive-dehyph
+Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires:       texlive-l3backend >= %{texlive_version}
+#!BuildIgnore: texlive-l3backend
+Requires:       texlive-l3kernel >= %{texlive_version}
+#!BuildIgnore: texlive-l3kernel
+Requires:       texlive-l3packages >= %{texlive_version}
+#!BuildIgnore: texlive-l3packages
 Requires:       texlive-latex >= %{texlive_version}
+#!BuildIgnore: texlive-latex
 Requires:       texlive-latex-fonts >= %{texlive_version}
+#!BuildIgnore: texlive-latex-fonts
 Requires:       texlive-latexconfig >= %{texlive_version}
+#!BuildIgnore: texlive-latexconfig
 Requires:       texlive-pdftex >= %{texlive_version}
+#!BuildIgnore: texlive-pdftex
 Requires:       texlive-tex >= %{texlive_version}
+#!BuildIgnore: texlive-tex
 Requires:       texlive-tex-ini-files >= %{texlive_version}
-Requires:       texlive-xmltexconfig >= %{texlive_version}
+#!BuildIgnore: texlive-tex-ini-files
+Requires:       texlive-unicode-data >= %{texlive_version}
+#!BuildIgnore: texlive-unicode-data
 Requires(pre): texlive-xmltex-bin >= %{texlive_version}
 #!BuildIgnore: texlive-xmltex-bin
-Requires(pre): texlive >= %{texlive_version}
+Requires:       texlive-xmltexconfig >= %{texlive_version}
+#!BuildIgnore: texlive-xmltexconfig
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -7393,17 +8280,24 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xmltex-doc >= %{texlive_version}
 Provides:       tex(xmltex.cfg)
 Provides:       tex(xmltex.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source105:      xmltex.tar.xz
-Source106:      xmltex.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source113:      xmltex.tar.xz
+Source114:      xmltex.doc.tar.xz
 
 %description -n texlive-xmltex
 The package provides an implementation of a parser for
@@ -7415,16 +8309,13 @@ subset of TEI, MathML, are included. Element and Attribute
 names, as well as character data, may use any characters
 allowed in XML, using UTF-8 or a suitable 8-bit encoding.
 
-date: 2018-04-05 04:13:24 +0000
-
-
 %package -n texlive-xmltex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn48634
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn54498
 Release:        0
 Summary:        Documentation for texlive-xmltex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xmltex-doc
 This package includes the documentation for texlive-xmltex
@@ -7433,94 +8324,134 @@ This package includes the documentation for texlive-xmltex
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
 > /var/run/texlive/run-update
-> /var/run/texlive/run-fmtutil.xmltex
-sed -ri 's/^\#\![[= =]]+xmltex\b.*/xmltex pdftex language.dat *xmltex.ini/' %{_texmfconfdir}/web2c/fmtutil.cnf || :
 > /var/run/texlive/run-fmtutil.pdfxmltex
 sed -ri 's/^\#\![[= =]]+pdfxmltex\b.*/pdfxmltex pdftex language.dat *pdfxmltex.ini/' %{_texmfconfdir}/web2c/fmtutil.cnf || :
+> /var/run/texlive/run-fmtutil.xmltex
+sed -ri 's/^\#\![[= =]]+xmltex\b.*/xmltex pdftex language.dat *xmltex.ini/' %{_texmfconfdir}/web2c/fmtutil.cnf || :
 
 %postun -n texlive-xmltex 
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
 > /var/run/texlive/run-update
 if test $1 = 0; then
-    sed -ri 's/^(xmltex\b)/\#\!\ \1/' %{_texmfconfdir}/web2c/fmtutil.cnf || :
-    rm -f %{_texmfvardir}/web2c/pdftex/xmltex.*
     sed -ri 's/^(pdfxmltex\b)/\#\!\ \1/' %{_texmfconfdir}/web2c/fmtutil.cnf || :
     rm -f %{_texmfvardir}/web2c/pdftex/pdfxmltex.*
+    sed -ri 's/^(xmltex\b)/\#\!\ \1/' %{_texmfconfdir}/web2c/fmtutil.cnf || :
+    rm -f %{_texmfvardir}/web2c/pdftex/xmltex.*
     exit 0
 fi
 
 %triggerin -n texlive-xmltex -- texlive-babel
-> /var/run/texlive/run-fmtutil.xmltex
 > /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
 
 %triggerun -n texlive-xmltex -- texlive-babel
-> /var/run/texlive/run-fmtutil.xmltex
 > /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
 
 %triggerin -n texlive-xmltex -- texlive-cm
-> /var/run/texlive/run-fmtutil.xmltex
 > /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
 
 %triggerun -n texlive-xmltex -- texlive-cm
-> /var/run/texlive/run-fmtutil.xmltex
 > /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
 
 %triggerin -n texlive-xmltex -- texlive-dehyph
-> /var/run/texlive/run-fmtutil.xmltex
 > /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
 
 %triggerun -n texlive-xmltex -- texlive-dehyph
-> /var/run/texlive/run-fmtutil.xmltex
 > /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
+
+%triggerin -n texlive-xmltex -- texlive-hyph-utf8
+> /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
+
+%triggerun -n texlive-xmltex -- texlive-hyph-utf8
+> /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
 
 %triggerin -n texlive-xmltex -- texlive-hyphen-base
-> /var/run/texlive/run-fmtutil.xmltex
 > /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
 
 %triggerun -n texlive-xmltex -- texlive-hyphen-base
-> /var/run/texlive/run-fmtutil.xmltex
 > /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
+
+%triggerin -n texlive-xmltex -- texlive-l3backend
+> /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
+
+%triggerun -n texlive-xmltex -- texlive-l3backend
+> /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
+
+%triggerin -n texlive-xmltex -- texlive-l3kernel
+> /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
+
+%triggerun -n texlive-xmltex -- texlive-l3kernel
+> /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
+
+%triggerin -n texlive-xmltex -- texlive-l3packages
+> /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
+
+%triggerun -n texlive-xmltex -- texlive-l3packages
+> /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
 
 %triggerin -n texlive-xmltex -- texlive-latex
-> /var/run/texlive/run-fmtutil.xmltex
 > /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
 
 %triggerun -n texlive-xmltex -- texlive-latex
-> /var/run/texlive/run-fmtutil.xmltex
 > /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
 
 %triggerin -n texlive-xmltex -- texlive-latex-fonts
-> /var/run/texlive/run-fmtutil.xmltex
 > /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
 
 %triggerun -n texlive-xmltex -- texlive-latex-fonts
-> /var/run/texlive/run-fmtutil.xmltex
 > /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
 
 %triggerin -n texlive-xmltex -- texlive-latexconfig
-> /var/run/texlive/run-fmtutil.xmltex
 > /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
 
 %triggerun -n texlive-xmltex -- texlive-latexconfig
-> /var/run/texlive/run-fmtutil.xmltex
 > /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
 
 %triggerin -n texlive-xmltex -- texlive-tex-ini-files
-> /var/run/texlive/run-fmtutil.xmltex
 > /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
 
 %triggerun -n texlive-xmltex -- texlive-tex-ini-files
-> /var/run/texlive/run-fmtutil.xmltex
 > /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
+
+%triggerin -n texlive-xmltex -- texlive-unicode-data
+> /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
+
+%triggerun -n texlive-xmltex -- texlive-unicode-data
+> /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
 
 %triggerin -n texlive-xmltex -- texlive-xmltexconfig
-> /var/run/texlive/run-fmtutil.xmltex
 > /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
 
 %triggerun -n texlive-xmltex -- texlive-xmltexconfig
-> /var/run/texlive/run-fmtutil.xmltex
 > /var/run/texlive/run-fmtutil.pdfxmltex
+> /var/run/texlive/run-fmtutil.xmltex
 
 %posttrans -n texlive-xmltex
 %if %{with zypper_posttrans}
@@ -7561,7 +8492,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/xmltex/base/xmltex.cfg
 %{_texmfdistdir}/tex/xmltex/base/xmltex.tex
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xmltex-%{texlive_version}.%{texlive_noarch}.0.0.8svn48634-%{release}-zypper
+/var/adm/update-scripts/texlive-xmltex-%{texlive_version}.%{texlive_noarch}.0.0.8svn54498-%{release}-zypper
 %endif
 
 %package -n texlive-xmltexconfig
@@ -7570,18 +8501,30 @@ Release:        0
 Summary:        Configuration files for xmltex and pdfxmltex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source107:      xmltexconfig.tar.xz
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source115:      xmltexconfig.tar.xz
 
 %description -n texlive-xmltexconfig
 The xmltexconfig package
@@ -7619,23 +8562,35 @@ Release:        0
 Summary:        Include eXtensible Metadata Platform data in pdfLaTeX
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xmpincl-doc >= %{texlive_version}
 Provides:       tex(xmpincl.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(ifthen.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source108:      xmpincl.tar.xz
-Source109:      xmpincl.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source116:      xmpincl.tar.xz
+Source117:      xmpincl.doc.tar.xz
 
 %description -n texlive-xmpincl
 The XMP (eXtensible Metadata platform) is a framework to add
@@ -7649,16 +8604,13 @@ license the author chose is one of the Creative Commons
 licenses, and their web-site offers this information in a valid
 XML-file, suitable for direct inclusion.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-xmpincl-doc
 Version:        %{texlive_version}.%{texlive_noarch}.2.2svn15878
 Release:        0
 Summary:        Documentation for texlive-xmpincl
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xmpincl-doc
 This package includes the documentation for texlive-xmpincl
@@ -7702,29 +8654,38 @@ Release:        0
 Summary:        Define \global and \protected commands with \newcommand
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xnewcommand-doc >= %{texlive_version}
 Provides:       tex(xnewcommand.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source110:      xnewcommand.tar.xz
-Source111:      xnewcommand.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source118:      xnewcommand.tar.xz
+Source119:      xnewcommand.doc.tar.xz
 
 %description -n texlive-xnewcommand
 The package provides the means of defining \global and (e-TeX)
 \protected commands, within the framework of LaTeX's standard
 \newcommand.
-
-date: 2016-06-24 17:18:15 +0000
-
 
 %package -n texlive-xnewcommand-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.2svn15878
@@ -7732,7 +8693,7 @@ Release:        0
 Summary:        Documentation for texlive-xnewcommand
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xnewcommand-doc
 This package includes the documentation for texlive-xnewcommand
@@ -7776,29 +8737,38 @@ Release:        0
 Summary:        Expandable macros that take an optional argument
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xoptarg-doc >= %{texlive_version}
 Provides:       tex(xoptarg.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source112:      xoptarg.tar.xz
-Source113:      xoptarg.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source120:      xoptarg.tar.xz
+Source121:      xoptarg.doc.tar.xz
 
 %description -n texlive-xoptarg
 Commands that take an optional argument are not ordinarily
 expandable; this package allows such commands to be expandable
 provided that they have at least one mandatory argument.
-
-date: 2016-06-24 17:18:15 +0000
-
 
 %package -n texlive-xoptarg-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn15878
@@ -7806,7 +8776,7 @@ Release:        0
 Summary:        Documentation for texlive-xoptarg
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xoptarg-doc
 This package includes the documentation for texlive-xoptarg
@@ -7845,44 +8815,53 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-xpatch
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn27897
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn54563
 Release:        0
 Summary:        Extending etoolbox patching commands
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xpatch-doc >= %{texlive_version}
 Provides:       tex(xpatch.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(xparse.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source114:      xpatch.tar.xz
-Source115:      xpatch.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source122:      xpatch.tar.xz
+Source123:      xpatch.doc.tar.xz
 
 %description -n texlive-xpatch
 The package generalises the macro patching commands provided by
 Philipp Lehmann's etoolbox.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-xpatch-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn27897
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn54563
 Release:        0
 Summary:        Documentation for texlive-xpatch
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xpatch-doc
 This package includes the documentation for texlive-xpatch
@@ -7916,7 +8895,79 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/xpatch/xpatch.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xpatch-%{texlive_version}.%{texlive_noarch}.0.0.2svn27897-%{release}-zypper
+/var/adm/update-scripts/texlive-xpatch-%{texlive_version}.%{texlive_noarch}.0.0.3svn54563-%{release}-zypper
+%endif
+
+%package -n texlive-xpdfopen
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.86svn53998
+Release:        0
+Summary:        Commands to control PDF readers, under X11
+License:        SUSE-Public-Domain
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Obsoletes:      texlive-pdftools <= 2019
+Recommends:     texlive-pdftosrc >= %{texlive_version}
+Requires(pre): texlive-xpdfopen-bin >= %{texlive_version}
+#!BuildIgnore: texlive-xpdfopen-bin
+Requires(pre): texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Provides:       man(pdfclose.1)
+Provides:       man(pdfopen.1)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source124:      xpdfopen.doc.tar.xz
+
+%description -n texlive-xpdfopen
+The command-line programs pdfopen and pdfclose allow you to
+control the X Window System version of Adobe's Acrobat Reader
+from the command line or from within a (shell) script. The
+programs work with Acrobat Reader 5, 7, 8 and 9 for Linux, xpdf
+and evince. This version derives from one written by Fabrice
+Popineau for Microsoft operating systems.
+%post -n texlive-xpdfopen
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-xpdfopen 
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-xpdfopen
+%if %{with zypper_posttrans}
+test -z "$ZYPP_IS_RUNNING" || exit 0
+%endif
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-xpdfopen
+%defattr(-,root,root,755)
+%{_mandir}/man1/pdfclose.1*
+%{_mandir}/man1/pdfopen.1*
+%if %{with zypper_posttrans}
+/var/adm/update-scripts/texlive-xpdfopen-%{texlive_version}.%{texlive_noarch}.0.0.86svn53998-%{release}-zypper
 %endif
 
 %package -n texlive-xpeek
@@ -7925,31 +8976,40 @@ Release:        0
 Summary:        Define commands that peek ahead in the input stream
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xpeek-doc >= %{texlive_version}
 Provides:       tex(xpeek.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(xparse.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source116:      xpeek.tar.xz
-Source117:      xpeek.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source125:      xpeek.tar.xz
+Source126:      xpeek.doc.tar.xz
 
 %description -n texlive-xpeek
 The package provides tools to help define commands that, like
 \xspace and the LaTeX command \textit, peek at what follows
 them in the command stream and choose appropriate behaviour.
-
-date: 2017-04-18 03:31:40 +0000
-
 
 %package -n texlive-xpeek-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn27442
@@ -7957,7 +9017,7 @@ Release:        0
 Summary:        Documentation for texlive-xpeek
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xpeek-doc
 This package includes the documentation for texlive-xpeek
@@ -8000,24 +9060,36 @@ Release:        0
 Summary:        An extension of the piano package
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xpiano-doc >= %{texlive_version}
 Provides:       tex(xpiano.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source118:      xpiano.tar.xz
-Source119:      xpiano.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source127:      xpiano.tar.xz
+Source128:      xpiano.doc.tar.xz
 
 %description -n texlive-xpiano
 This package provides macros for typesetting virtual keyboards
@@ -8032,16 +9104,13 @@ extended syntax and several options, like setting the color,
 adding numbers for pitch analysis, one or two octaves, and
 others.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-xpiano-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn37604
 Release:        0
 Summary:        Documentation for texlive-xpiano
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xpiano-doc
 This package includes the documentation for texlive-xpiano
@@ -8084,24 +9153,36 @@ Release:        0
 Summary:        Extensions of LaTeX picture drawing
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xpicture-doc >= %{texlive_version}
 Provides:       tex(xpicture.sty)
 Requires:       tex(calculus.sty)
 Requires:       tex(curve2e.sty)
 Requires:       tex(xcolor.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source120:      xpicture.tar.xz
-Source121:      xpicture.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source129:      xpicture.tar.xz
+Source130:      xpicture.doc.tar.xz
 
 %description -n texlive-xpicture
 The package extends the facilities of the pict2e and the
@@ -8109,16 +9190,13 @@ curve2e packages, providing extra reference frames, conic
 section curves, graphs of elementary functions and other
 parametric curves.
 
-date: 2018-01-06 11:14:59 +0000
-
-
 %package -n texlive-xpicture-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.2asvn28770
 Release:        0
 Summary:        Documentation for texlive-xpicture
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xpicture-doc
 This package includes the documentation for texlive-xpicture
@@ -8164,15 +9242,27 @@ Release:        0
 Summary:        Automatically add pinyin to Chinese characters
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xpinyin-doc >= %{texlive_version}
 Provides:       tex(xpinyin-database.def)
 Provides:       tex(xpinyin.sty)
@@ -8182,18 +9272,15 @@ Requires:       tex(l3keys2e.sty)
 Requires:       tex(xCJK2uni.sty)
 Requires:       tex(xeCJK.sty)
 Requires:       tex(xparse.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source122:      xpinyin.tar.xz
-Source123:      xpinyin.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source131:      xpinyin.tar.xz
+Source132:      xpinyin.doc.tar.xz
 
 %description -n texlive-xpinyin
 The package is written to simplify the input of Hanyu Pinyin.
 Macros are provided that automatically add pinyin to Chinese
 characters.
-
-date: 2019-04-07 16:07:42 +0000
-
 
 %package -n texlive-xpinyin-doc
 Version:        %{texlive_version}.%{texlive_noarch}.2.7svn50849
@@ -8201,7 +9288,7 @@ Release:        0
 Summary:        Documentation for texlive-xpinyin
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-xpinyin-doc:zh)
 
 %description -n texlive-xpinyin-doc
@@ -8246,22 +9333,34 @@ Release:        0
 Summary:        Print TeX lengths in a variety of units
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xprintlen-doc >= %{texlive_version}
 Provides:       tex(xprintlen.sty)
 Requires:       tex(fp.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source124:      xprintlen.tar.xz
-Source125:      xprintlen.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source133:      xprintlen.tar.xz
+Source134:      xprintlen.doc.tar.xz
 
 %description -n texlive-xprintlen
 The package defines a command, \printlen, to print TeX lengths
@@ -8269,16 +9368,13 @@ in a variety of units. It can handle all units supported by
 TeX. The package requires that a reasonably up to date version
 of the fp package be installed on you system.
 
-date: 2017-04-18 03:31:40 +0000
-
-
 %package -n texlive-xprintlen-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn35928
 Release:        0
 Summary:        Documentation for texlive-xprintlen
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xprintlen-doc
 This package includes the documentation for texlive-xprintlen
@@ -8324,22 +9420,34 @@ Release:        0
 Summary:        Process trailing punctuation which may be redundant
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xpunctuate-doc >= %{texlive_version}
 Provides:       tex(xpunctuate.sty)
 Requires:       tex(xspace.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source126:      xpunctuate.tar.xz
-Source127:      xpunctuate.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source135:      xpunctuate.tar.xz
+Source136:      xpunctuate.doc.tar.xz
 
 %description -n texlive-xpunctuate
 The package provides commands that enable the user (or package
@@ -8349,16 +9457,13 @@ provides the commands \xperiod, \xcomma and \xperiodcomma,
 which follow a similar procedure to that of \xspace, and insert
 punctuation if and only if it is necessary.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-xpunctuate-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn26641
 Release:        0
 Summary:        Documentation for texlive-xpunctuate
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xpunctuate-doc
 This package includes the documentation for texlive-xpunctuate
@@ -8401,31 +9506,40 @@ Release:        0
 Summary:        Support for writing about xiangqi
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xq-doc >= %{texlive_version}
 Provides:       tex(xq.sty)
 Provides:       tex(xqlarge.tfm)
 Provides:       tex(xqnormal.tfm)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source128:      xq.tar.xz
-Source129:      xq.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source137:      xq.tar.xz
+Source138:      xq.doc.tar.xz
 
 %description -n texlive-xq
 The package is for writing about xiangqi or chinese chess. You
 can write games or parts of games and show diagrams with
 special positions.
-
-date: 2016-06-24 17:18:15 +0000
-
 
 %package -n texlive-xq-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn35211
@@ -8433,7 +9547,7 @@ Release:        0
 Summary:        Documentation for texlive-xq
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xq-doc
 This package includes the documentation for texlive-xq
@@ -8488,29 +9602,41 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-xsavebox
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.12svn48171
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.16svn54097
 Release:        0
 Summary:        Saveboxes for repeating content without code replication, based on PDF Form XObjects
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xsavebox-doc >= %{texlive_version}
 Provides:       tex(xsavebox.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(pdfbase.sty)
 Requires:       tex(xparse.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source130:      xsavebox.tar.xz
-Source131:      xsavebox.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source139:      xsavebox.tar.xz
+Source140:      xsavebox.doc.tar.xz
 
 %description -n texlive-xsavebox
 The package defines commands for saving content that can be
@@ -8524,16 +9650,13 @@ modelled after the standard LaTeX commands \savebox, \sbox,
 back-ends are supported: pdfLaTeX, LuaLaTeX LaTeX - dvips -
 ps2pdf/Distiller (Xe)LaTeX - (x)dvipdfmx
 
-date: 2018-07-09 15:37:27 +0000
-
-
 %package -n texlive-xsavebox-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.12svn48171
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.16svn54097
 Release:        0
 Summary:        Documentation for texlive-xsavebox
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xsavebox-doc
 This package includes the documentation for texlive-xsavebox
@@ -8568,24 +9691,36 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/xsavebox/xsavebox.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xsavebox-%{texlive_version}.%{texlive_noarch}.0.0.12svn48171-%{release}-zypper
+/var/adm/update-scripts/texlive-xsavebox-%{texlive_version}.%{texlive_noarch}.0.0.16svn54097-%{release}-zypper
 %endif
 
 %package -n texlive-xsim
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.11svn46634
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.19bsvn54681
 Release:        0
 Summary:        EXercise Sheets IMproved
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xsim-doc >= %{texlive_version}
 Provides:       tex(xsim-manual.cls)
 Provides:       tex(xsim.auxfile.code.tex)
@@ -8611,9 +9746,11 @@ Provides:       tex(xsim.verbwrite.code.tex)
 Provides:       tex(xsimverb.sty)
 Requires:       tex(accsupp.sty)
 Requires:       tex(acro.sty)
+Requires:       tex(amsmath.sty)
 Requires:       tex(bookmark.sty)
 Requires:       tex(booktabs.sty)
 Requires:       tex(cnltx-doc.cls)
+Requires:       tex(csquotes.sty)
 Requires:       tex(datetime2.sty)
 Requires:       tex(embrac.sty)
 Requires:       tex(expl3.sty)
@@ -8621,6 +9758,7 @@ Requires:       tex(geometry.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(imakeidx.sty)
 Requires:       tex(inputenc.sty)
+Requires:       tex(l3keys2e.sty)
 Requires:       tex(lipsum.sty)
 Requires:       tex(longtable.sty)
 Requires:       tex(marginnote.sty)
@@ -8629,26 +9767,23 @@ Requires:       tex(refcount.sty)
 Requires:       tex(tcolorbox.sty)
 Requires:       tex(varioref.sty)
 Requires:       tex(xparse.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source132:      xsim.tar.xz
-Source133:      xsim.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source141:      xsim.tar.xz
+Source142:      xsim.doc.tar.xz
 
 %description -n texlive-xsim
 This package helps in creating exercises and the corresponding
 solutions. It is the official successor of the exsheets package
 and fixes/improves various long-standing issues.
 
-date: 2018-02-14 12:24:04 +0000
-
-
 %package -n texlive-xsim-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.11svn46634
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.19bsvn54681
 Release:        0
 Summary:        Documentation for texlive-xsim
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xsim-doc
 This package includes the documentation for texlive-xsim
@@ -8740,8 +9875,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/xsim/examples/xsim.texsx-391530.tex
 %{_texmfdistdir}/doc/latex/xsim/examples/xsim.texsx-395273.pdf
 %{_texmfdistdir}/doc/latex/xsim/examples/xsim.texsx-395273.tex
+%{_texmfdistdir}/doc/latex/xsim/examples/xsim.texsx-498299.pdf
+%{_texmfdistdir}/doc/latex/xsim/examples/xsim.texsx-498299.tex
 %{_texmfdistdir}/doc/latex/xsim/examples/xsim.texwelt-15093.pdf
 %{_texmfdistdir}/doc/latex/xsim/examples/xsim.texwelt-15093.tex
+%{_texmfdistdir}/doc/latex/xsim/examples/xsim.texwelt-23968.pdf
+%{_texmfdistdir}/doc/latex/xsim/examples/xsim.texwelt-23968.tex
 %{_texmfdistdir}/doc/latex/xsim/examples/xsim.texwelt-6698.pdf
 %{_texmfdistdir}/doc/latex/xsim/examples/xsim.texwelt-6698.tex
 %{_texmfdistdir}/doc/latex/xsim/examples/xsim.various.pdf
@@ -8776,24 +9915,36 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/xsim/xsim.verbwrite.code.tex
 %{_texmfdistdir}/tex/latex/xsim/xsimverb.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xsim-%{texlive_version}.%{texlive_noarch}.0.0.11svn46634-%{release}-zypper
+/var/adm/update-scripts/texlive-xsim-%{texlive_version}.%{texlive_noarch}.0.0.19bsvn54681-%{release}-zypper
 %endif
 
 %package -n texlive-xskak
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn35945
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn51432
 Release:        0
 Summary:        An extension to the skak package for chess typesetting
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xskak-doc >= %{texlive_version}
 Provides:       tex(xskak-keys.sty)
 Provides:       tex(xskak-nagdef.sty)
@@ -8801,10 +9952,10 @@ Provides:       tex(xskak.sty)
 Requires:       tex(chessboard.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(xifthen.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source134:      xskak.tar.xz
-Source135:      xskak.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source143:      xskak.tar.xz
+Source144:      xskak.doc.tar.xz
 
 %description -n texlive-xskak
 Xskak, as its prime function, saves information about a chess
@@ -8813,16 +9964,13 @@ animated board). The package also extends the input that the
 parsing commands can handle and offers an interface to define
 and switch between indefinite levels of styles.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-xskak-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn35945
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn51432
 Release:        0
 Summary:        Documentation for texlive-xskak
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xskak-doc
 This package includes the documentation for texlive-xskak
@@ -8849,8 +9997,17 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-xskak-doc
 %defattr(-,root,root,755)
-%{_texmfdistdir}/doc/latex/xskak/README
-%{_texmfdistdir}/doc/latex/xskak/README.TEXLIVE
+%{_texmfdistdir}/doc/latex/xskak/README.md
+%{_texmfdistdir}/doc/latex/xskak/UF-xskak-documentation.sty
+%{_texmfdistdir}/doc/latex/xskak/skak-comment-test.pdf
+%{_texmfdistdir}/doc/latex/xskak/skak-comment-test.tex
+%{_texmfdistdir}/doc/latex/xskak/skak-longmoves-test-new.pdf
+%{_texmfdistdir}/doc/latex/xskak/skak-longmoves-test-new.tex
+%{_texmfdistdir}/doc/latex/xskak/xskak.pdf
+%{_texmfdistdir}/doc/latex/xskak/xskak.tex
+%{_texmfdistdir}/doc/latex/xskak/xskak_and_beamer.pdf
+%{_texmfdistdir}/doc/latex/xskak/xskak_and_beamer.tex
+%{_texmfdistdir}/doc/latex/xskak/xskakgames.xsk
 
 %files -n texlive-xskak
 %defattr(-,root,root,755)
@@ -8858,7 +10015,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/xskak/xskak-nagdef.sty
 %{_texmfdistdir}/tex/latex/xskak/xskak.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xskak-%{texlive_version}.%{texlive_noarch}.1.4svn35945-%{release}-zypper
+/var/adm/update-scripts/texlive-xskak-%{texlive_version}.%{texlive_noarch}.1.5svn51432-%{release}-zypper
 %endif
 
 %package -n texlive-xstring
@@ -8867,22 +10024,34 @@ Release:        0
 Summary:        String manipulation for (La)TeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xstring-doc >= %{texlive_version}
 Provides:       tex(xstring.sty)
 Provides:       tex(xstring.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source136:      xstring.tar.xz
-Source137:      xstring.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source145:      xstring.tar.xz
+Source146:      xstring.doc.tar.xz
 
 %description -n texlive-xstring
 The package provides macros for manipulating strings -- testing
@@ -8893,16 +10062,13 @@ package works equally in Plain TeX and LaTeX (though e-TeX is
 always required). The strings to be processed may contain
 (expandable) macros.
 
-date: 2019-02-05 19:56:57 +0000
-
-
 %package -n texlive-xstring-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.83svn49946
 Release:        0
 Summary:        Documentation for texlive-xstring
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-xstring-doc:en;fr)
 
 %description -n texlive-xstring-doc
@@ -8954,29 +10120,38 @@ Release:        0
 Summary:        Break tables across pages
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xtab-doc >= %{texlive_version}
 Provides:       tex(xtab.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source138:      xtab.tar.xz
-Source139:      xtab.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source147:      xtab.tar.xz
+Source148:      xtab.doc.tar.xz
 
 %description -n texlive-xtab
 Xtab is an extended and somewhat improved version of
 supertabular; its xtabular environment provides tables that
 break across pages.
-
-date: 2016-06-24 17:18:15 +0000
-
 
 %package -n texlive-xtab-doc
 Version:        %{texlive_version}.%{texlive_noarch}.2.3fsvn23347
@@ -8984,7 +10159,7 @@ Release:        0
 Summary:        Documentation for texlive-xtab
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xtab-doc
 This package includes the documentation for texlive-xtab
@@ -9027,15 +10202,27 @@ Release:        0
 Summary:        XTU thesis template
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xtuthesis-doc >= %{texlive_version}
 Provides:       tex(xtuformat.sty)
 Requires:       tex(algorithm2e.sty)
@@ -9051,17 +10238,14 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(latexsym.sty)
 Requires:       tex(mathrsfs.sty)
 Requires:       tex(xcolor.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source140:      xtuthesis.tar.xz
-Source141:      xtuthesis.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source149:      xtuthesis.tar.xz
+Source150:      xtuthesis.doc.tar.xz
 
 %description -n texlive-xtuthesis
 The package provides a thesis template for the Xiangtan
 University.
-
-date: 2018-04-29 05:15:59 +0000
-
 
 %package -n texlive-xtuthesis-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn47049
@@ -9069,7 +10253,7 @@ Release:        0
 Summary:        Documentation for texlive-xtuthesis
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-xtuthesis-doc:zh)
 
 %description -n texlive-xtuthesis-doc
@@ -9132,24 +10316,37 @@ Release:        0
 Summary:        Generate Unicode characters from accented glyphs
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-tipa >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-tipa
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xunicode-doc >= %{texlive_version}
 Provides:       tex(xunicode.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(t3enc.def)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source142:      xunicode.tar.xz
-Source143:      xunicode.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source151:      xunicode.tar.xz
+Source152:      xunicode.doc.tar.xz
 
 %description -n texlive-xunicode
 The package supports XeTeX's (and other putative future similar
@@ -9159,16 +10356,13 @@ accent-glyph sequence to a single Unicode character for output.
 The package also covers glyphs specified by packages (such as
 tipa) which define many commands for single text glyphs.
 
-date: 2016-10-08 10:19:27 +0000
-
-
 %package -n texlive-xunicode-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.981svn30466
 Release:        0
 Summary:        Documentation for texlive-xunicode
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xunicode-doc
 This package includes the documentation for texlive-xunicode
@@ -9205,27 +10399,39 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-xurl
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.07svn49488
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.09svn53538
 Release:        0
 Summary:        Allow URL breaks at any alphanumerical character
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xurl-doc >= %{texlive_version}
 Provides:       tex(xurl.sty)
 Requires:       tex(url.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source144:      xurl.tar.xz
-Source145:      xurl.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source153:      xurl.tar.xz
+Source154:      xurl.doc.tar.xz
 
 %description -n texlive-xurl
 This package loads url by default and defines possible URL
@@ -9234,16 +10440,13 @@ breaks for all alphanumerical characters, as well as = / . : *
 will be passed on to this package. For more information read
 the documentation of url itself.
 
-date: 2018-12-23 11:25:27 +0000
-
-
 %package -n texlive-xurl-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.07svn49488
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.09svn53538
 Release:        0
 Summary:        Documentation for texlive-xurl
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xurl-doc
 This package includes the documentation for texlive-xurl
@@ -9279,7 +10482,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/xurl/xurl.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-xurl-%{texlive_version}.%{texlive_noarch}.0.0.07svn49488-%{release}-zypper
+/var/adm/update-scripts/texlive-xurl-%{texlive_version}.%{texlive_noarch}.0.0.09svn53538-%{release}-zypper
 %endif
 
 %package -n texlive-xwatermark
@@ -9288,30 +10491,39 @@ Release:        0
 Summary:        Graphics and text watermarks on selected pages
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xwatermark-doc >= %{texlive_version}
 Provides:       tex(xwatermark.sty)
 Requires:       tex(catoptions.sty)
 Requires:       tex(hyperref.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source146:      xwatermark.tar.xz
-Source147:      xwatermark.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source155:      xwatermark.tar.xz
+Source156:      xwatermark.doc.tar.xz
 
 %description -n texlive-xwatermark
 The package extends the author's draftmark and the watermark
 packages.
-
-date: 2016-06-24 17:18:15 +0000
-
 
 %package -n texlive-xwatermark-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.5.2dsvn28090
@@ -9319,7 +10531,7 @@ Release:        0
 Summary:        Documentation for texlive-xwatermark
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-xwatermark-doc
 This package includes the documentation for texlive-xwatermark
@@ -9366,24 +10578,36 @@ Release:        0
 Summary:        Draw syntactic trees, etc., for linguistics literature, using xy-pic
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xyling-doc >= %{texlive_version}
 Provides:       tex(xyling.sty)
 Requires:       tex(color.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(xy.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source148:      xyling.tar.xz
-Source149:      xyling.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source157:      xyling.tar.xz
+Source158:      xyling.doc.tar.xz
 
 %description -n texlive-xyling
 The macros in this package model the construction of linguistic
@@ -9394,16 +10618,13 @@ these three elements is constructed independent of the other
 two, and hence they can be modified without unwanted side
 effects. The macros are based on the xy-pic package.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-xyling-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn15878
 Release:        0
 Summary:        Documentation for texlive-xyling
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-xyling-doc:en)
 
 %description -n texlive-xyling-doc
@@ -9448,15 +10669,27 @@ Release:        0
 Summary:        Typesetting chemical structures
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xymtex-doc >= %{texlive_version}
 Provides:       tex(aliphat.sty)
 Provides:       tex(assurechemist.sty)
@@ -9491,10 +10724,10 @@ Requires:       tex(pst-coil.sty)
 Requires:       tex(pstricks.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source150:      xymtex.tar.xz
-Source151:      xymtex.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source159:      xymtex.tar.xz
+Source160:      xymtex.doc.tar.xz
 
 %description -n texlive-xymtex
 XyMTeX is a set of packages for drawing a wide variety of
@@ -9508,16 +10741,13 @@ vertices of heterocycles. It is believed that this systematic
 design allows XyMTeX to operate as a practical
 (device-independent) tool for use with LaTeX.
 
-date: 2018-01-06 11:14:59 +0000
-
-
 %package -n texlive-xymtex-doc
 Version:        %{texlive_version}.%{texlive_noarch}.5.06svn32182
 Release:        0
 Summary:        Documentation for texlive-xymtex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-xymtex-doc:ja)
 
 %description -n texlive-xymtex-doc
@@ -9618,11 +10848,16 @@ Release:        0
 Summary:        Flexible diagramming macros
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -9634,10 +10869,17 @@ Requires(postun): grep
 Requires(postun): sed
 Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(updmap.cfg)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-xypic-fonts >= %{texlive_version}
 Recommends:     texlive-xypic-doc >= %{texlive_version}
 Provides:       tex(movie.cls)
@@ -9736,10 +10978,10 @@ Provides:       tex(xyxdvi.tex)
 Requires:       tex(article.cls)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(keyval.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source152:      xypic.tar.xz
-Source153:      xypic.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source161:      xypic.tar.xz
+Source162:      xypic.doc.tar.xz
 
 %description -n texlive-xypic
 A package for typesetting a variety of graphs and diagrams with
@@ -9748,16 +10990,13 @@ AMS-LaTeX, AMS-TeX, and plain TeX). The distribution includes
 Michael Barr's diag package, which was previously distributed
 stand-alone.
 
-date: 2017-04-18 03:31:40 +0000
-
-
 %package -n texlive-xypic-doc
 Version:        %{texlive_version}.%{texlive_noarch}.3.8.9svn31859
 Release:        0
 Summary:        Documentation for texlive-xypic
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-xypic-doc:en)
 
 %description -n texlive-xypic-doc
@@ -9770,7 +11009,7 @@ Release:        0
 Summary:        Severed fonts for texlive-xypic
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Fonts
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 %reconfigure_fonts_prereq
 Requires(posttrans): fontconfig
 Requires(posttrans): ghostscript-fonts-std
@@ -10031,7 +11270,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-xypic-fonts
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-xypic
-%config %{_sysconfdir}/fonts/conf.avail/58-texlive-xypic.conf
+%{_datadir}/fontconfig/conf.avail/58-texlive-xypic.conf
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-xypic/encodings.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-xypic/fonts.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-xypic/fonts.scale
@@ -10068,24 +11307,33 @@ Release:        0
 Summary:        A tutorial for XY-pic, in Portuguese
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source154:      xypic-tut-pt.doc.tar.xz
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source163:      xypic-tut-pt.doc.tar.xz
 
 %description -n texlive-xypic-tut-pt
 The xypic-tut-pt package
-
-date: 2016-06-18 14:48:54 +0000
-
 %post -n texlive-xypic-tut-pt
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -10122,22 +11370,34 @@ Release:        0
 Summary:        Tree macros using XY-Pic
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-xytree-doc >= %{texlive_version}
 Provides:       tex(xytree.sty)
 Requires:       tex(xy.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source155:      xytree.tar.xz
-Source156:      xytree.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source164:      xytree.tar.xz
+Source165:      xytree.doc.tar.xz
 
 %description -n texlive-xytree
 The package provides means to draw linguistic syntactic trees
@@ -10145,16 +11405,13 @@ with ease and to support hopefully sufficient functionalities,
 that the linguist may need. The package (of course) depends on
 the XY-Pic package.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-xytree-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.5svn15878
 Release:        0
 Summary:        Documentation for texlive-xytree
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-xytree-doc:en)
 
 %description -n texlive-xytree-doc
@@ -10199,31 +11456,40 @@ Release:        0
 Summary:        A bundle of miscellaneous footnote packages
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-yafoot-doc >= %{texlive_version}
 Provides:       tex(dblfnote.sty)
 Provides:       tex(fnpos.sty)
 Provides:       tex(pfnote.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source157:      yafoot.tar.xz
-Source158:      yafoot.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source166:      yafoot.tar.xz
+Source167:      yafoot.doc.tar.xz
 
 %description -n texlive-yafoot
 Contains three packages: - pfnote to number footnotes per page;
 - fnpos to control the position of footnotes; and - dblfnote to
 make footnotes double-columned.
-
-date: 2018-09-03 06:40:26 +0000
-
 
 %package -n texlive-yafoot-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn48568
@@ -10231,7 +11497,7 @@ Release:        0
 Summary:        Documentation for texlive-yafoot
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-yafoot-doc
 This package includes the documentation for texlive-yafoot
@@ -10277,15 +11543,27 @@ Release:        0
 Summary:        A symbol loader
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-yagusylo-doc >= %{texlive_version}
 Provides:       tex(yagusylo.cfg)
 Provides:       tex(yagusylo.sty)
@@ -10293,10 +11571,10 @@ Requires:       tex(suffix.sty)
 Requires:       tex(xargs.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xifthen.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source159:      yagusylo.tar.xz
-Source160:      yagusylo.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source168:      yagusylo.tar.xz
+Source169:      yagusylo.doc.tar.xz
 
 %description -n texlive-yagusylo
 The name is by way of being an acronym for "Yet Another Grand
@@ -10306,16 +11584,13 @@ provides it; this has the advantage of avoiding the name
 clashes that so commonly trouble those who load
 symbol-packages.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-yagusylo-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.2svn29803
 Release:        0
 Summary:        Documentation for texlive-yagusylo
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-yagusylo-doc:fr;en)
 
 %description -n texlive-yagusylo-doc
@@ -10363,25 +11638,37 @@ Release:        0
 Summary:        Extremely flexible macros for letters, envelopes, and label sheets
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-yaletter-doc >= %{texlive_version}
 Provides:       tex(yaletter.cls)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(textpos.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source161:      yaletter.tar.xz
-Source162:      yaletter.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source170:      yaletter.tar.xz
+Source171:      yaletter.doc.tar.xz
 
 %description -n texlive-yaletter
 The yaletter class provides extremely configurable macros for
@@ -10392,16 +11679,13 @@ easy macros for envelopes and for label sheets. Finally, it
 provides some nice defaults for a few of the more common styles
 and sizes.
 
-date: 2017-01-03 04:00:21 +0000
-
-
 %package -n texlive-yaletter-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn42830
 Release:        0
 Summary:        Documentation for texlive-yaletter
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-yaletter-doc
 This package includes the documentation for texlive-yaletter
@@ -10446,15 +11730,27 @@ Release:        0
 Summary:        Greek fonts by Yannis Haralambous
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-yannisgr-doc >= %{texlive_version}
 Provides:       tex(mrgrbf10.tfm)
 Provides:       tex(mrgrrg10.tfm)
@@ -10465,10 +11761,10 @@ Provides:       tex(rgrrg10.tfm)
 Provides:       tex(rgrsc10.tfm)
 Provides:       tex(rgrsl10.tfm)
 Provides:       tex(rgrti10.tfm)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source163:      yannisgr.tar.xz
-Source164:      yannisgr.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source172:      yannisgr.tar.xz
+Source173:      yannisgr.doc.tar.xz
 
 %description -n texlive-yannisgr
 A family of 7-bit fonts with a code table designed for setting
@@ -10477,16 +11773,13 @@ source; macros to produce a Greek variant of Plain TeX
 (including a hyphenation table adapted to the fonts' code
 table) are provided.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-yannisgr-doc
 Version:        %{texlive_version}.%{texlive_noarch}.svn22613
 Release:        0
 Summary:        Documentation for texlive-yannisgr
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-yannisgr-doc
 This package includes the documentation for texlive-yannisgr
@@ -10570,20 +11863,32 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-yathesis
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.99usvn50630
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn54740
 Release:        0
 Summary:        A LaTeX class for writing a thesis following French rules
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-yathesis-doc >= %{texlive_version}
 Provides:       tex(yathesis-demo.sty)
 Provides:       tex(yathesis-translations.tex)
@@ -10594,6 +11899,7 @@ Requires:       tex(babel.sty)
 Requires:       tex(biblatex.sty)
 Requires:       tex(book.cls)
 Requires:       tex(bookmark.sty)
+Requires:       tex(colophon.sty)
 Requires:       tex(csquotes.sty)
 Requires:       tex(datatool.sty)
 Requires:       tex(datetime.sty)
@@ -10606,6 +11912,7 @@ Requires:       tex(filehook.sty)
 Requires:       tex(fncychap.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(glossaries-babel.sty)
+Requires:       tex(glossaries-english.ldf)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hopatch.sty)
 Requires:       tex(hypcap.sty)
@@ -10631,16 +11938,16 @@ Requires:       tex(xparse.sty)
 Requires:       tex(xpatch.sty)
 Requires:       tex(xstring.sty)
 Requires:       tex(zref.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source165:      yathesis.tar.xz
-Source166:      yathesis.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source174:      yathesis.tar.xz
+Source175:      yathesis.doc.tar.xz
 
 %description -n texlive-yathesis
-The purpose of yathesis is to facilitate dissertations'
-typesetting of theses prepared in France, whatever disciplines
-and institutes. It implements most notably recommendations from
-the Ministry of Higher Education and Research and this,
+The purpose of yathesis is to facilitate the typesetting of
+theses prepared in France, whatever the disciplines and
+institutes. It implements most notably recommendations from the
+Ministry of Higher Education and Research, and this
 transparently to the user. It has also been designed to
 (optionally) take advantage of powerful tools available in
 LaTeX, including packages: BibLaTeX for the bibliography;
@@ -10650,18 +11957,16 @@ simple to use and, to some extent, (easily) customizable.
 yathesis comes with templates and samples in the
 doc/latex/yathesis/french/exemples/ directory in the
 distribution. They can also be tested on ShareLaTeX (template
-and specimen) and on Overleaf (template and specimen).
-
-date: 2019-03-28 18:39:05 +0000
-
+and specimen) and on Overleaf (template and specimen). Note:
+The "ya" in the package name stands for "yet another".
 
 %package -n texlive-yathesis-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.99usvn50630
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn54740
 Release:        0
 Summary:        Documentation for texlive-yathesis
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-yathesis-doc:fr)
 
 %description -n texlive-yathesis-doc
@@ -10689,6 +11994,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-yathesis-doc
 %defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/yathesis/CHANGELOG.md
 %{_texmfdistdir}/doc/latex/yathesis/README.md
 %{_texmfdistdir}/doc/latex/yathesis/addons/completion/yathesis.cwl
 %{_texmfdistdir}/doc/latex/yathesis/english/README-TRANSLATION.md
@@ -10765,32 +12071,44 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/yathesis/yathesis-translations.tex
 %{_texmfdistdir}/tex/latex/yathesis/yathesis.cls
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-yathesis-%{texlive_version}.%{texlive_noarch}.0.0.99usvn50630-%{release}-zypper
+/var/adm/update-scripts/texlive-yathesis-%{texlive_version}.%{texlive_noarch}.1.0.2svn54740-%{release}-zypper
 %endif
 
 %package -n texlive-yax
-Version:        %{texlive_version}.%{texlive_noarch}.1.03svn21183
+Version:        %{texlive_version}.%{texlive_noarch}.1.03svn54080
 Release:        0
 Summary:        Yet Another Key System
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-yax-doc >= %{texlive_version}
 Provides:       tex(t-yax.tex)
 Provides:       tex(yax.sty)
 Provides:       tex(yax.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source167:      yax.tar.xz
-Source168:      yax.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source176:      yax.tar.xz
+Source177:      yax.doc.tar.xz
 
 %description -n texlive-yax
 YaX is advertised as a key system, but it rather organizes
@@ -10803,16 +12121,13 @@ Finally, YaX's syntax is a quite peculiar (as few braces as
 possible), but may be customized. YaX is based on texapi and
 thus requires e-TeX.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-yax-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.03svn21183
+Version:        %{texlive_version}.%{texlive_noarch}.1.03svn54080
 Release:        0
 Summary:        Documentation for texlive-yax
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-yax-doc
 This package includes the documentation for texlive-yax
@@ -10849,7 +12164,156 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/yax/yax.sty
 %{_texmfdistdir}/tex/generic/yax/yax.tex
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-yax-%{texlive_version}.%{texlive_noarch}.1.03svn21183-%{release}-zypper
+/var/adm/update-scripts/texlive-yax-%{texlive_version}.%{texlive_noarch}.1.03svn54080-%{release}-zypper
+%endif
+
+%package -n texlive-yazd-thesis
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn51725
+Release:        0
+Summary:        A template for the Yazd University
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Recommends:     texlive-yazd-thesis-doc >= %{texlive_version}
+Provides:       tex(yazd-thesis.cls)
+Requires:       tex(amsmath.sty)
+Requires:       tex(amssymb.sty)
+Requires:       tex(amsthm.sty)
+Requires:       tex(array.sty)
+Requires:       tex(book.cls)
+Requires:       tex(calc.sty)
+Requires:       tex(fancyhdr.sty)
+Requires:       tex(geometry.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(makeidx.sty)
+Requires:       tex(multicol.sty)
+Requires:       tex(tocbibind.sty)
+Requires:       tex(xcolor.sty)
+Requires:       tex(zref-perpage.sty)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source178:      yazd-thesis.tar.xz
+Source179:      yazd-thesis.doc.tar.xz
+
+%description -n texlive-yazd-thesis
+This package offers a document class for typesetting theses and
+dissertations at the Yazd University. The class requires use of
+XeLaTeX.
+
+%package -n texlive-yazd-thesis-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn51725
+Release:        0
+Summary:        Documentation for texlive-yazd-thesis
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Provides:       locale(texlive-yazd-thesis-doc:fa)
+
+%description -n texlive-yazd-thesis-doc
+This package includes the documentation for texlive-yazd-thesis
+
+%post -n texlive-yazd-thesis
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-yazd-thesis 
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-yazd-thesis
+%if %{with zypper_posttrans}
+test -z "$ZYPP_IS_RUNNING" || exit 0
+%endif
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-yazd-thesis-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/MyReferences.bib
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/README
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/appendix1.tex
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/chapter1.tex
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/chapter2.tex
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/chapter3.tex
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/chapter4.tex
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/chapter5.tex
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/dicen2fa.tex
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/dicfa2en.tex
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/eninfo.tex
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/fainfo.tex
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/DSsequence.pdf
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/Install-1.JPG
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/Install-2.JPG
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/Install-3.JPG
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/Install-4.JPG
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/Install-5.JPG
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/Install-6.JPG
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/Latex2Word.JPG
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/Print-PDF.png
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/Setup.JPG
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/TexLive2015-1.jpg
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/TexLive2015-2.jpg
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/TexLive2015-3.jpg
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/TexLive2015-4.jpg
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/TexLive2015-5.jpg
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/TexLive2015-6.jpg
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/TexLive2015-Update-1.jpg
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/TexLive2015-Update-2.jpg
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/TexLive2015-Update-3.jpg
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/TexLive2015-Update-4.jpg
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/TexLive2015-Update-5.jpg
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/TexLive2015-Update-6.jpg
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/TexLive2015-Update-7.jpg
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/besm.jpg
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/farsitex2xepersian-1.jpg
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/farsitex2xepersian-2.jpg
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/farsitex2xepersian-p1.jpg
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/farsitex2xepersian-p1.pdf
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/farsitex2xepersian-p2.jpg
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/farsitex2xepersian-p2.pdf
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/install-pack-1.JPG
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/install-pack-2.JPG
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/install-pack-3.JPG
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/install-pack-4.JPG
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/install-pack-5.JPG
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/logo.png
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/test-crop.jpg
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/test-crop.pdf
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/figures/word2Latex.JPG
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/yazd-thesis.pdf
+%{_texmfdistdir}/doc/xelatex/yazd-thesis/yazd-thesis.tex
+
+%files -n texlive-yazd-thesis
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/xelatex/yazd-thesis/yazd-thesis.cls
+%if %{with zypper_posttrans}
+/var/adm/update-scripts/texlive-yazd-thesis-%{texlive_version}.%{texlive_noarch}.0.0.3svn51725-%{release}-zypper
 %endif
 
 %package -n texlive-ycbook
@@ -10858,15 +12322,27 @@ Release:        0
 Summary:        A versatile book class
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-ycbook-doc >= %{texlive_version}
 Provides:       tex(ycbook.cls)
 Requires:       tex(adjustbox.sty)
@@ -10881,10 +12357,10 @@ Requires:       tex(inputenc.sty)
 Requires:       tex(placeins.sty)
 Requires:       tex(polyglossia.sty)
 Requires:       tex(titletoc.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source169:      ycbook.tar.xz
-Source170:      ycbook.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source180:      ycbook.tar.xz
+Source181:      ycbook.doc.tar.xz
 
 %description -n texlive-ycbook
 This class is intended to be an interpretation of the mwbk
@@ -10895,16 +12371,13 @@ They also have the benefit of being more economic in space than
 the most common LaTeX classes, while keeping a clear appearance
 and a smooth flow.
 
-date: 2018-01-02 22:40:15 +0000
-
-
 %package -n texlive-ycbook-doc
 Version:        %{texlive_version}.%{texlive_noarch}.svn46201
 Release:        0
 Summary:        Documentation for texlive-ycbook
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-ycbook-doc
 This package includes the documentation for texlive-ycbook
@@ -10948,15 +12421,27 @@ Release:        0
 Summary:        Macros for documentation of LaTeX classes and packages
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-ydoc-doc >= %{texlive_version}
 Provides:       tex(ydoc-code.sty)
 Provides:       tex(ydoc-desc.sty)
@@ -10979,10 +12464,10 @@ Requires:       tex(svn-prov.sty)
 Requires:       tex(url.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xspace.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source171:      ydoc.tar.xz
-Source172:      ydoc.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source182:      ydoc.tar.xz
+Source183:      ydoc.doc.tar.xz
 
 %description -n texlive-ydoc
 The package provides macros and environments to document LaTeX
@@ -10994,16 +12479,13 @@ should probably not (yet) be used with other packages, since
 the implementation might change. Nevertheless, the author uses
 it to document his own packages.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-ydoc-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.6alphasvn26202
 Release:        0
 Summary:        Documentation for texlive-ydoc
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-ydoc-doc
 This package includes the documentation for texlive-ydoc
@@ -11054,29 +12536,38 @@ Release:        0
 Summary:        Support for old German fonts
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-yfonts-doc >= %{texlive_version}
 Provides:       tex(yfonts.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source173:      yfonts.tar.xz
-Source174:      yfonts.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source184:      yfonts.tar.xz
+Source185:      yfonts.doc.tar.xz
 
 %description -n texlive-yfonts
 A LaTeX interface to the old-german fonts designed by Yannis
 Haralambous: Gothic, Schwabacher, Fraktur and the baroque
 initials.
-
-date: 2019-04-04 08:11:42 +0000
-
 
 %package -n texlive-yfonts-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.4svn50755
@@ -11084,7 +12575,7 @@ Release:        0
 Summary:        Documentation for texlive-yfonts
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-yfonts-doc
 This package includes the documentation for texlive-yfonts
@@ -11129,11 +12620,16 @@ Release:        0
 Summary:        Old German-style fonts, in Adobe type 1 format
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -11145,25 +12641,29 @@ Requires(postun): grep
 Requires(postun): sed
 Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(updmap.cfg)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-yfonts-t1-fonts >= %{texlive_version}
 Recommends:     texlive-yfonts-t1-doc >= %{texlive_version}
 Provides:       tex(yfrak.map)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source175:      yfonts-t1.tar.xz
-Source176:      yfonts-t1.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source186:      yfonts-t1.tar.xz
+Source187:      yfonts-t1.doc.tar.xz
 
 %description -n texlive-yfonts-t1
 This package comprises type 1 versions of the Gothic,
 Schwabacher and Fraktur fonts of Yannis Haralambous' set of old
 German fonts.
-
-date: 2017-11-24 05:13:30 +0000
-
 
 %package -n texlive-yfonts-t1-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn36013
@@ -11171,7 +12671,7 @@ Release:        0
 Summary:        Documentation for texlive-yfonts-t1
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-yfonts-t1-doc
 This package includes the documentation for texlive-yfonts-t1
@@ -11183,7 +12683,7 @@ Release:        0
 Summary:        Severed fonts for texlive-yfonts-t1
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Fonts
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 %reconfigure_fonts_prereq
 Requires(posttrans): fontconfig
 Requires(posttrans): ghostscript-fonts-std
@@ -11234,7 +12734,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-yfonts-t1-fonts
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-yfonts-t1
-%config %{_sysconfdir}/fonts/conf.avail/58-texlive-yfonts-t1.conf
+%{_datadir}/fontconfig/conf.avail/58-texlive-yfonts-t1.conf
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-yfonts-t1/encodings.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-yfonts-t1/fonts.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-yfonts-t1/fonts.scale
@@ -11246,16 +12746,21 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-yhmath
-Version:        %{texlive_version}.%{texlive_noarch}.1.5svn50127
+Version:        %{texlive_version}.%{texlive_noarch}.1.6svn54377
 Release:        0
 Summary:        Extended maths fonts for LaTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -11267,10 +12772,17 @@ Requires(postun): grep
 Requires(postun): sed
 Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(updmap.cfg)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-yhmath-fonts >= %{texlive_version}
 Recommends:     texlive-yhmath-doc >= %{texlive_version}
 Provides:       tex(OMXyhex.fd)
@@ -11281,37 +12793,34 @@ Provides:       tex(yhmath.sty)
 Provides:       tex(yrcmex10.tfm)
 Requires:       tex(amsmath.sty)
 Requires:       tex(cmex10.tfm)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source177:      yhmath.tar.xz
-Source178:      yhmath.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source188:      yhmath.tar.xz
+Source189:      yhmath.doc.tar.xz
 
 %description -n texlive-yhmath
 The yhmath bundle contains fonts (in Metafont and type 1
 format) and a LaTeX package for using them.
 
-date: 2019-02-24 07:57:29 +0000
-
-
 %package -n texlive-yhmath-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.5svn50127
+Version:        %{texlive_version}.%{texlive_noarch}.1.6svn54377
 Release:        0
 Summary:        Documentation for texlive-yhmath
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-yhmath-doc
 This package includes the documentation for texlive-yhmath
 
 
 %package -n texlive-yhmath-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.5svn50127
+Version:        %{texlive_version}.%{texlive_noarch}.1.6svn54377
 Release:        0
 Summary:        Severed fonts for texlive-yhmath
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Fonts
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 %reconfigure_fonts_prereq
 Requires(posttrans): fontconfig
 Requires(posttrans): ghostscript-fonts-std
@@ -11369,13 +12878,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-yhmath-fonts
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-yhmath
-%config %{_sysconfdir}/fonts/conf.avail/58-texlive-yhmath.conf
+%{_datadir}/fontconfig/conf.avail/58-texlive-yhmath.conf
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-yhmath/encodings.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-yhmath/fonts.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-yhmath/fonts.scale
 %{_datadir}/fonts/texlive-yhmath/yhcmex.pfb
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-yhmath-fonts-%{texlive_version}.%{texlive_noarch}.1.5svn50127-%{release}-zypper
+/var/adm/update-scripts/texlive-yhmath-fonts-%{texlive_version}.%{texlive_noarch}.1.6svn54377-%{release}-zypper
 %endif
 
 %package -n texlive-yinit-otf
@@ -11384,28 +12893,37 @@ Release:        0
 Summary:        OTF conversion of Yannis Haralambous' Old German decorative initials
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-yinit-otf-fonts >= %{texlive_version}
 Recommends:     texlive-yinit-otf-doc >= %{texlive_version}
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source179:      yinit-otf.tar.xz
-Source180:      yinit-otf.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source190:      yinit-otf.tar.xz
+Source191:      yinit-otf.doc.tar.xz
 
 %description -n texlive-yinit-otf
 This package is a conversion of the yinit font into OTF.
 Original Metafont files for yinit are in the yinit package.
-
-date: 2016-06-24 17:18:15 +0000
-
 
 %package -n texlive-yinit-otf-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn40207
@@ -11413,7 +12931,7 @@ Release:        0
 Summary:        Documentation for texlive-yinit-otf
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-yinit-otf-doc
 This package includes the documentation for texlive-yinit-otf
@@ -11425,7 +12943,7 @@ Release:        0
 Summary:        Severed fonts for texlive-yinit-otf
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Fonts
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 %reconfigure_fonts_prereq
 Requires(posttrans): fontconfig
 Requires(posttrans): ghostscript-fonts-std
@@ -11467,7 +12985,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-yinit-otf-fonts
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-yinit-otf
-%config %{_sysconfdir}/fonts/conf.avail/58-texlive-yinit-otf.conf
+%{_datadir}/fontconfig/conf.avail/58-texlive-yinit-otf.conf
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-yinit-otf/encodings.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-yinit-otf/fonts.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-yinit-otf/fonts.scale
@@ -11482,33 +13000,42 @@ Release:        0
 Summary:        A thesis class file for York University, Toronto
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-york-thesis-doc >= %{texlive_version}
 Provides:       tex(york-thesis.cls)
 Requires:       tex(calc.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(makeidx.sty)
 Requires:       tex(report.cls)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source181:      york-thesis.tar.xz
-Source182:      york-thesis.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source192:      york-thesis.tar.xz
+Source193:      york-thesis.doc.tar.xz
 
 %description -n texlive-york-thesis
 York Graduate Studies has again changed the requirements for
 theses and dissertations. The established york-thesis class
 file now implements the changes made in Spring 2005.
-
-date: 2016-06-24 17:18:15 +0000
-
 
 %package -n texlive-york-thesis-doc
 Version:        %{texlive_version}.%{texlive_noarch}.3.6svn23348
@@ -11516,7 +13043,7 @@ Release:        0
 Summary:        Documentation for texlive-york-thesis
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-york-thesis-doc
 This package includes the documentation for texlive-york-thesis
@@ -11561,29 +13088,38 @@ Release:        0
 Summary:        Typeset Young-Tableaux
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-youngtab-doc >= %{texlive_version}
 Provides:       tex(youngtab.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source183:      youngtab.tar.xz
-Source184:      youngtab.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source194:      youngtab.tar.xz
+Source195:      youngtab.doc.tar.xz
 
 %description -n texlive-youngtab
 A package for typesetting Young-Tableaux, mathematical symbols
 for the representations of groups, providing two macros,
 \yng(1) and \young(1) to generate the whole Young-Tableaux.
-
-date: 2018-01-06 11:14:59 +0000
-
 
 %package -n texlive-youngtab-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn17635
@@ -11591,7 +13127,7 @@ Release:        0
 Summary:        Documentation for texlive-youngtab
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-youngtab-doc
 This package includes the documentation for texlive-youngtab
@@ -11637,24 +13173,36 @@ Release:        0
 Summary:        Daily planner type calendar
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires(pre): texlive-yplan-bin >= %{texlive_version}
 #!BuildIgnore: texlive-yplan-bin
-Requires(pre): texlive >= %{texlive_version}
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-yplan-doc >= %{texlive_version}
 Provides:       tex(yplan.sty)
 Requires:       tex(ifthen.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source185:      yplan.tar.xz
-Source186:      yplan.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source196:      yplan.tar.xz
+Source197:      yplan.doc.tar.xz
 
 %description -n texlive-yplan
 Prints two six-monthly vertical-type daily planner (i.e.,
@@ -11666,16 +13214,13 @@ abandoned, in favour of a Perl script yplan that generates a
 year's planner automatically. (The last manually-generated
 LaTeX file remains on the archive.)
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-yplan-doc
 Version:        %{texlive_version}.%{texlive_noarch}.svn34398
 Release:        0
 Summary:        Documentation for texlive-yplan
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-yplan-doc
 This package includes the documentation for texlive-yplan
@@ -11715,30 +13260,153 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 /var/adm/update-scripts/texlive-yplan-%{texlive_version}.%{texlive_noarch}.svn34398-%{release}-zypper
 %endif
 
+%package -n texlive-yquant
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn54737
+Release:        0
+Summary:        Typesetting quantum circuits in a human-readable language
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Recommends:     texlive-yquant-doc >= %{texlive_version}
+Provides:       tex(yquant-circuit.tex)
+Provides:       tex(yquant-config.tex)
+Provides:       tex(yquant-draw.tex)
+Provides:       tex(yquant-env.tex)
+Provides:       tex(yquant-lang.tex)
+Provides:       tex(yquant-langhelper.tex)
+Provides:       tex(yquant-registers.tex)
+Provides:       tex(yquant-shapes.tex)
+Provides:       tex(yquant-tools.tex)
+Provides:       tex(yquant.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(trimspaces.sty)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source198:      yquant.tar.xz
+Source199:      yquant.doc.tar.xz
+
+%description -n texlive-yquant
+This LaTeX package allows to quickly draw quantum circuits. It
+bridges the gap between the two groups of packages that already
+exist: those that use a logic-oriented custom language, which
+is then translated into TeX by means of an external program;
+and the pure TeX versions that mainly provide some macros to
+allow for an easier input. yquant is a pure-LaTeX solution --
+i.e., it requires no external program -- that introduces a
+logic oriented language and thus brings the best of both worlds
+together. It builds on and interacts with TikZ, which brings an
+enourmous flexibility for customization of individual circuit.
+
+%package -n texlive-yquant-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn54737
+Release:        0
+Summary:        Documentation for texlive-yquant
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+
+%description -n texlive-yquant-doc
+This package includes the documentation for texlive-yquant
+
+%post -n texlive-yquant
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-yquant 
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-yquant
+%if %{with zypper_posttrans}
+test -z "$ZYPP_IS_RUNNING" || exit 0
+%endif
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-yquant-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/yquant/README.md
+%{_texmfdistdir}/doc/latex/yquant/yquant-doc.pdf
+%{_texmfdistdir}/doc/latex/yquant/yquant-doc.tex
+
+%files -n texlive-yquant
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/yquant/yquant-circuit.tex
+%{_texmfdistdir}/tex/latex/yquant/yquant-config.tex
+%{_texmfdistdir}/tex/latex/yquant/yquant-draw.tex
+%{_texmfdistdir}/tex/latex/yquant/yquant-env.tex
+%{_texmfdistdir}/tex/latex/yquant/yquant-lang.tex
+%{_texmfdistdir}/tex/latex/yquant/yquant-langhelper.tex
+%{_texmfdistdir}/tex/latex/yquant/yquant-registers.tex
+%{_texmfdistdir}/tex/latex/yquant/yquant-shapes.tex
+%{_texmfdistdir}/tex/latex/yquant/yquant-tools.tex
+%{_texmfdistdir}/tex/latex/yquant/yquant.sty
+%if %{with zypper_posttrans}
+/var/adm/update-scripts/texlive-yquant-%{texlive_version}.%{texlive_noarch}.0.0.1.2svn54737-%{release}-zypper
+%endif
+
 %package -n texlive-ytableau
 Version:        %{texlive_version}.%{texlive_noarch}.1.3svn27430
 Release:        0
 Summary:        Many-featured Young tableaux and Young diagrams
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-ytableau-doc >= %{texlive_version}
 Provides:       tex(ytableau.sty)
 Requires:       tex(pgfkeys.sty)
 Requires:       tex(pgfopts.sty)
 Requires:       tex(xcolor.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source187:      ytableau.tar.xz
-Source188:      ytableau.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source200:      ytableau.tar.xz
+Source201:      ytableau.doc.tar.xz
 
 %description -n texlive-ytableau
 The package provides several functions for drawing Young
@@ -11747,16 +13415,13 @@ packages but providing lots more features. Skew and coloured
 tableaux are easy, and pgfkeys-enabled options are provided
 both at package load and configurably.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-ytableau-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.3svn27430
 Release:        0
 Summary:        Documentation for texlive-ytableau
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-ytableau-doc
 This package includes the documentation for texlive-ytableau
@@ -11799,11 +13464,16 @@ Release:        0
 Summary:        URW "Base 35" font pack for LaTeX
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -11815,10 +13485,17 @@ Requires(postun): grep
 Requires(postun): sed
 Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(updmap.cfg)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-zapfchan-fonts >= %{texlive_version}
 Provides:       tex(8ruzc.fd)
 Provides:       tex(omluzc.fd)
@@ -11843,9 +13520,9 @@ Provides:       tex(uzcmi8c.vf)
 Provides:       tex(uzcmi8r.tfm)
 Provides:       tex(uzcmi8t.tfm)
 Provides:       tex(uzcmi8t.vf)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source189:      zapfchan.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source202:      zapfchan.tar.xz
 
 %description -n texlive-zapfchan
 A set of fonts for use as "drop-in" replacements for Adobe's
@@ -11859,16 +13536,13 @@ Chancery L Medium Italic (substituting for Adobe's Zapf
 Chancery); URW Gothic L Book (substituting for Adobe's Avant
 Garde); and URW Palladio L (substituting for Adobe's Palatino).
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-zapfchan-fonts
 Version:        %{texlive_version}.%{texlive_noarch}.svn31835
 Release:        0
 Summary:        Severed fonts for texlive-zapfchan
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Fonts
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 %reconfigure_fonts_prereq
 Requires(posttrans): fontconfig
 Requires(posttrans): ghostscript-fonts-std
@@ -11935,7 +13609,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-zapfchan-fonts
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-zapfchan
-%config %{_sysconfdir}/fonts/conf.avail/58-texlive-zapfchan.conf
+%{_datadir}/fontconfig/conf.avail/58-texlive-zapfchan.conf
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-zapfchan/encodings.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-zapfchan/fonts.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-zapfchan/fonts.scale
@@ -11950,11 +13624,16 @@ Release:        0
 Summary:        URW "Base 35" font pack for LaTeX
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -11966,18 +13645,25 @@ Requires(postun): grep
 Requires(postun): sed
 Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(updmap.cfg)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-zapfding-fonts >= %{texlive_version}
 Provides:       tex(pzdr.tfm)
 Provides:       tex(uuzd.fd)
 Provides:       tex(uzd.map)
 Provides:       tex(uzdr.tfm)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source190:      zapfding.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source203:      zapfding.tar.xz
 
 %description -n texlive-zapfding
 A set of fonts for use as "drop-in" replacements for Adobe's
@@ -11991,16 +13677,13 @@ Chancery L Medium Italic (substituting for Adobe's Zapf
 Chancery); URW Gothic L Book (substituting for Adobe's Avant
 Garde); and URW Palladio L (substituting for Adobe's Palatino).
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-zapfding-fonts
 Version:        %{texlive_version}.%{texlive_noarch}.svn31835
 Release:        0
 Summary:        Severed fonts for texlive-zapfding
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Fonts
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 %reconfigure_fonts_prereq
 Requires(posttrans): fontconfig
 Requires(posttrans): ghostscript-fonts-std
@@ -12048,7 +13731,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-zapfding-fonts
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-zapfding
-%config %{_sysconfdir}/fonts/conf.avail/58-texlive-zapfding.conf
+%{_datadir}/fontconfig/conf.avail/58-texlive-zapfding.conf
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-zapfding/encodings.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-zapfding/fonts.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-zapfding/fonts.scale
@@ -12058,20 +13741,32 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-zebra-goodies
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.0svn46004
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.8.0svn51554
 Release:        0
 Summary:        A collection of handy macros for paper writing
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-zebra-goodies-doc >= %{texlive_version}
 Provides:       tex(zebra-goodies.sty)
 Requires:       tex(kvoptions.sty)
@@ -12080,10 +13775,10 @@ Requires:       tex(marginnote.sty)
 Requires:       tex(microtype.sty)
 Requires:       tex(tikzpagenodes.sty)
 Requires:       tex(xcolor.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source191:      zebra-goodies.tar.xz
-Source192:      zebra-goodies.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source204:      zebra-goodies.tar.xz
+Source205:      zebra-goodies.doc.tar.xz
 
 %description -n texlive-zebra-goodies
 This package offers a collection of macros to help in the
@@ -12097,16 +13792,13 @@ following other LaTeX packages: kvoptions, manfnt, marginnote,
 tikzpagenodes, xcolor, and, optionally, microtype. Note:
 "zebra" is the name of the package author's lab.
 
-date: 2017-12-06 08:55:03 +0000
-
-
 %package -n texlive-zebra-goodies-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.0svn46004
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.8.0svn51554
 Release:        0
 Summary:        Documentation for texlive-zebra-goodies
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-zebra-goodies-doc
 This package includes the documentation for texlive-zebra-goodies
@@ -12134,12 +13826,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-zebra-goodies-doc
 %defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/zebra-goodies/README.md
+%{_texmfdistdir}/doc/latex/zebra-goodies/zebra-goodies.pdf
 
 %files -n texlive-zebra-goodies
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/zebra-goodies/zebra-goodies.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-zebra-goodies-%{texlive_version}.%{texlive_noarch}.0.0.3.0svn46004-%{release}-zypper
+/var/adm/update-scripts/texlive-zebra-goodies-%{texlive_version}.%{texlive_noarch}.0.0.8.0svn51554-%{release}-zypper
 %endif
 
 %package -n texlive-zed-csp
@@ -12148,29 +13841,38 @@ Release:        0
 Summary:        Typesetting Z and CSP format specifications
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-zed-csp-doc >= %{texlive_version}
 Provides:       tex(zed-csp.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source193:      zed-csp.tar.xz
-Source194:      zed-csp.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source206:      zed-csp.tar.xz
+Source207:      zed-csp.doc.tar.xz
 
 %description -n texlive-zed-csp
 The package supports real-time CSP and incorporates the
 functionality of Spivey's original Z package, written for LaTeX
 2.09.
-
-date: 2016-06-24 17:18:15 +0000
-
 
 %package -n texlive-zed-csp-doc
 Version:        %{texlive_version}.%{texlive_noarch}.svn17258
@@ -12178,7 +13880,7 @@ Release:        0
 Summary:        Documentation for texlive-zed-csp
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-zed-csp-doc
 This package includes the documentation for texlive-zed-csp
@@ -12218,30 +13920,42 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-zhlineskip
-Version:        %{texlive_version}.%{texlive_noarch}.1.0dsvn49296
+Version:        %{texlive_version}.%{texlive_noarch}.1.0esvn51142
 Release:        0
 Summary:        Line spacing for CJK documents
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-zhlineskip-doc >= %{texlive_version}
 Provides:       tex(zhlineskip.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(mathtools.sty)
 Requires:       tex(xintexpr.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source195:      zhlineskip.tar.xz
-Source196:      zhlineskip.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source208:      zhlineskip.tar.xz
+Source209:      zhlineskip.doc.tar.xz
 
 %description -n texlive-zhlineskip
 This package supports typesetting CJK documents. It allows
@@ -12253,16 +13967,13 @@ of the Latin text (usually 1.2 times the font size). Finally,
 it is possible to achieve the Microsoft Word multiple line
 spacing style using zhlineskip.
 
-date: 2018-12-01 05:25:43 +0000
-
-
 %package -n texlive-zhlineskip-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0dsvn49296
+Version:        %{texlive_version}.%{texlive_noarch}.1.0esvn51142
 Release:        0
 Summary:        Documentation for texlive-zhlineskip
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-zhlineskip-doc:zh)
 
 %description -n texlive-zhlineskip-doc
@@ -12293,32 +14004,44 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/zhlineskip/CJKmetrics.pdf
 %{_texmfdistdir}/doc/latex/zhlineskip/Latinmetrics.pdf
 %{_texmfdistdir}/doc/latex/zhlineskip/README.md
-%{_texmfdistdir}/doc/latex/zhlineskip/zhlineskip-man.pdf
-%{_texmfdistdir}/doc/latex/zhlineskip/zhlineskip-man.tex
 %{_texmfdistdir}/doc/latex/zhlineskip/zhlineskip-test.tex
+%{_texmfdistdir}/doc/latex/zhlineskip/zhlineskip.pdf
+%{_texmfdistdir}/doc/latex/zhlineskip/zhlineskip.tex
 
 %files -n texlive-zhlineskip
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/zhlineskip/zhlineskip.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-zhlineskip-%{texlive_version}.%{texlive_noarch}.1.0dsvn49296-%{release}-zypper
+/var/adm/update-scripts/texlive-zhlineskip-%{texlive_version}.%{texlive_noarch}.1.0esvn51142-%{release}-zypper
 %endif
 
 %package -n texlive-zhlipsum
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.1svn48629
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.0svn54758
 Release:        0
 Summary:        Chinese dummy text
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-zhlipsum-doc >= %{texlive_version}
 Provides:       tex(zhlipsum-big5.def)
 Provides:       tex(zhlipsum-gbk.def)
@@ -12327,26 +14050,23 @@ Provides:       tex(zhlipsum.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source197:      zhlipsum.tar.xz
-Source198:      zhlipsum.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source210:      zhlipsum.tar.xz
+Source211:      zhlipsum.doc.tar.xz
 
 %description -n texlive-zhlipsum
 This package provides an interface to dummy text in Chinese
 language, which will be useful for testing Chinese documents.
 UTF-8, GBK and Big5 encodings are supported.
 
-date: 2018-09-08 16:58:53 +0000
-
-
 %package -n texlive-zhlipsum-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.1svn48629
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.0svn54758
 Release:        0
 Summary:        Documentation for texlive-zhlipsum
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-zhlipsum-doc:en;zh)
 
 %description -n texlive-zhlipsum-doc
@@ -12386,7 +14106,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/zhlipsum/zhlipsum-utf8.def
 %{_texmfdistdir}/tex/latex/zhlipsum/zhlipsum.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-zhlipsum-%{texlive_version}.%{texlive_noarch}.1.1.1svn48629-%{release}-zypper
+/var/adm/update-scripts/texlive-zhlipsum-%{texlive_version}.%{texlive_noarch}.1.2.0svn54758-%{release}-zypper
 %endif
 
 %package -n texlive-zhmetrics
@@ -12395,15 +14115,27 @@ Release:        0
 Summary:        TFM subfont files for using Chinese fonts in 8-bit TeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-zhmetrics-doc >= %{texlive_version}
 Provides:       tex(c19fs.fd)
 Provides:       tex(c19hei.fd)
@@ -17342,10 +19074,10 @@ Provides:       tex(uniyouslfd.tfm)
 Provides:       tex(uniyouslfe.tfm)
 Provides:       tex(uniyouslff.tfm)
 Provides:       tex(zhwinfonts.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source199:      zhmetrics.tar.xz
-Source200:      zhmetrics.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source212:      zhmetrics.tar.xz
+Source213:      zhmetrics.doc.tar.xz
 
 %description -n texlive-zhmetrics
 These are metrics to use existing Chinese TrueType fonts in
@@ -17354,16 +19086,13 @@ themselves are not included in the package. Six font families
 are supported: kai, song, lishu, fangsong, youyuan and hei. Two
 encodings (GBK and UTF-8) are supported.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-zhmetrics-doc
 Version:        %{texlive_version}.%{texlive_noarch}.r206svn22207
 Release:        0
 Summary:        Documentation for texlive-zhmetrics
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-zhmetrics-doc
 This package includes the documentation for texlive-zhmetrics
@@ -22341,15 +24070,27 @@ Release:        0
 Summary:        Chinese font metrics for upTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-zhmetrics-uptex-doc >= %{texlive_version}
 Provides:       tex(upmono-h.tfm)
 Provides:       tex(upmono-v.tfm)
@@ -22387,18 +24128,15 @@ Provides:       tex(upzhserifit-h.tfm)
 Provides:       tex(upzhserifit-h.vf)
 Provides:       tex(upzhserifit-v.tfm)
 Provides:       tex(upzhserifit-v.vf)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source201:      zhmetrics-uptex.tar.xz
-Source202:      zhmetrics-uptex.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source214:      zhmetrics-uptex.tar.xz
+Source215:      zhmetrics-uptex.doc.tar.xz
 
 %description -n texlive-zhmetrics-uptex
 The package contains some Chinese font metrics (JFM, VF, etc)
 for upTeX engine, together with a simple DVIPDFMx font mapping
 of Fandol fonts for DVIPDFMx.
-
-date: 2016-06-24 17:18:15 +0000
-
 
 %package -n texlive-zhmetrics-uptex-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn40728
@@ -22406,7 +24144,7 @@ Release:        0
 Summary:        Documentation for texlive-zhmetrics-uptex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-zhmetrics-uptex-doc
 This package includes the documentation for texlive-zhmetrics-uptex
@@ -22490,15 +24228,27 @@ Release:        0
 Summary:        Typeset Chinese representations of numbers
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-zhnumber-doc >= %{texlive_version}
 Provides:       tex(zhnumber-big5.cfg)
 Provides:       tex(zhnumber-gbk.cfg)
@@ -22507,10 +24257,10 @@ Provides:       tex(zhnumber.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source203:      zhnumber.tar.xz
-Source204:      zhnumber.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source216:      zhnumber.tar.xz
+Source217:      zhnumber.doc.tar.xz
 
 %description -n texlive-zhnumber
 The package provides commands to typeset Chinese
@@ -22518,16 +24268,13 @@ representations of numbers. The main difference between this
 package and CJKnumb is that the commands provided are
 expandable in the 'proper' way.
 
-date: 2019-04-07 17:35:03 +0000
-
-
 %package -n texlive-zhnumber-doc
 Version:        %{texlive_version}.%{texlive_noarch}.2.7svn50850
 Release:        0
 Summary:        Documentation for texlive-zhnumber
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-zhnumber-doc:zh)
 
 %description -n texlive-zhnumber-doc
@@ -22574,15 +24321,27 @@ Release:        0
 Summary:        Spacing for mixed CJK-English documents in XeTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-zhspacing-doc >= %{texlive_version}
 Provides:       tex(t-zhspacing.tex)
 Provides:       tex(zhfont.sty)
@@ -22593,10 +24352,10 @@ Provides:       tex(zhsusefulmacros.sty)
 Provides:       tex(zhulem.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(ulem.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source205:      zhspacing.tar.xz
-Source206:      zhspacing.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source218:      zhspacing.tar.xz
+Source219:      zhspacing.doc.tar.xz
 
 %description -n texlive-zhspacing
 The package manages spacing in a CJK document; between
@@ -22605,16 +24364,13 @@ consistent space is inserted between Chinese text and English
 (or mathematics). The package may be used by any document
 format under XeTeX.
 
-date: 2017-04-18 03:31:40 +0000
-
-
 %package -n texlive-zhspacing-doc
 Version:        %{texlive_version}.%{texlive_noarch}.svn41145
 Release:        0
 Summary:        Documentation for texlive-zhspacing
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-zhspacing-doc
 This package includes the documentation for texlive-zhspacing
@@ -22665,21 +24421,33 @@ Release:        0
 Summary:        Conversion of punctuation in maths mode
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-ziffer-doc >= %{texlive_version}
 Provides:       tex(ziffer.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source207:      ziffer.tar.xz
-Source208:      ziffer.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source220:      ziffer.tar.xz
+Source221:      ziffer.doc.tar.xz
 
 %description -n texlive-ziffer
 The package modifies the behaviour of characters in maths mode
@@ -22689,16 +24457,13 @@ Germany) '--' is represented with spacing as appropriate to
 such constructs as '1.000,--'. These conversions may be
 switched on and off.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-ziffer-doc
 Version:        %{texlive_version}.%{texlive_noarch}.2.1svn32279
 Release:        0
 Summary:        Documentation for texlive-ziffer
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-ziffer-doc
 This package includes the documentation for texlive-ziffer
@@ -22735,20 +24500,32 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-zlmtt
-Version:        %{texlive_version}.%{texlive_noarch}.1.01svn34485
+Version:        %{texlive_version}.%{texlive_noarch}.1.02svn51368
 Release:        0
 Summary:        Use Latin Modern Typewriter fonts
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-zlmtt-doc >= %{texlive_version}
 Provides:       tex(il2zlmtt.fd)
 Provides:       tex(il2zlmvtt.fd)
@@ -22771,26 +24548,23 @@ Provides:       tex(ts1zlmvtt.fd)
 Provides:       tex(zlmtt.sty)
 Requires:       tex(mweights.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source209:      zlmtt.tar.xz
-Source210:      zlmtt.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source222:      zlmtt.tar.xz
+Source223:      zlmtt.doc.tar.xz
 
 %description -n texlive-zlmtt
 The package allows selection of Latin Modern Typewriter fonts
 with scaling and access to all its features. The package
 requires the mweights package.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-zlmtt-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.01svn34485
+Version:        %{texlive_version}.%{texlive_noarch}.1.02svn51368
 Release:        0
 Summary:        Documentation for texlive-zlmtt
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-zlmtt-doc
 This package includes the documentation for texlive-zlmtt
@@ -22843,7 +24617,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/zlmtt/ts1zlmvtt.fd
 %{_texmfdistdir}/tex/latex/zlmtt/zlmtt.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-zlmtt-%{texlive_version}.%{texlive_noarch}.1.01svn34485-%{release}-zypper
+/var/adm/update-scripts/texlive-zlmtt-%{texlive_version}.%{texlive_noarch}.1.02svn51368-%{release}-zypper
 %endif
 
 %package -n texlive-zootaxa-bst
@@ -22852,20 +24626,32 @@ Release:        0
 Summary:        A BibTeX style for the journal Zootaxa
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-zootaxa-bst-doc >= %{texlive_version}
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source211:      zootaxa-bst.tar.xz
-Source212:      zootaxa-bst.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source224:      zootaxa-bst.tar.xz
+Source225:      zootaxa-bst.doc.tar.xz
 
 %description -n texlive-zootaxa-bst
 This package provides a .bst reference style file for the
@@ -22876,16 +24662,13 @@ style. Further modifications were made to the code in order to
 generate in-text citations and bibliography sections
 appropriately.
 
-date: 2019-03-27 18:05:22 +0000
-
-
 %package -n texlive-zootaxa-bst-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn50619
 Release:        0
 Summary:        Documentation for texlive-zootaxa-bst
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-zootaxa-bst-doc
 This package includes the documentation for texlive-zootaxa-bst
@@ -22926,27 +24709,195 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 /var/adm/update-scripts/texlive-zootaxa-bst-%{texlive_version}.%{texlive_noarch}.1.0svn50619-%{release}-zypper
 %endif
 
+%package -n texlive-zref
+Version:        %{texlive_version}.%{texlive_noarch}.2.29svn54098
+Release:        0
+Summary:        A new reference scheme for LaTeX
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Recommends:     texlive-zref-doc >= %{texlive_version}
+Provides:       tex(zref-abspage.sty)
+Provides:       tex(zref-abspos.sty)
+Provides:       tex(zref-base.sty)
+Provides:       tex(zref-counter.sty)
+Provides:       tex(zref-dotfill.sty)
+Provides:       tex(zref-env.sty)
+Provides:       tex(zref-hyperref.sty)
+Provides:       tex(zref-lastpage.sty)
+Provides:       tex(zref-marks.sty)
+Provides:       tex(zref-nextpage.sty)
+Provides:       tex(zref-pageattr.sty)
+Provides:       tex(zref-pagelayout.sty)
+Provides:       tex(zref-perpage.sty)
+Provides:       tex(zref-runs.sty)
+Provides:       tex(zref-savepos.sty)
+Provides:       tex(zref-thepage.sty)
+Provides:       tex(zref-titleref.sty)
+Provides:       tex(zref-totpages.sty)
+Provides:       tex(zref-user.sty)
+Provides:       tex(zref-xr.sty)
+Provides:       tex(zref.sty)
+Requires:       tex(atbegshi.sty)
+Requires:       tex(atveryend.sty)
+Requires:       tex(auxhook.sty)
+Requires:       tex(etexcmds.sty)
+Requires:       tex(gettitlestring.sty)
+Requires:       tex(iftex.sty)
+Requires:       tex(infwarerr.sty)
+Requires:       tex(keyval.sty)
+Requires:       tex(kvdefinekeys.sty)
+Requires:       tex(kvoptions.sty)
+Requires:       tex(kvsetkeys.sty)
+Requires:       tex(ltxcmds.sty)
+Requires:       tex(makerobust.sty)
+Requires:       tex(pdftexcmds.sty)
+Requires:       tex(uniquecounter.sty)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source226:      zref.tar.xz
+Source227:      zref.doc.tar.xz
+
+%description -n texlive-zref
+This package offers a means to remove the limitation, of only
+two properties, that is inherent in the way LaTeX's reference
+system works. The package implements an extensible referencing
+system, where properties may be defined and used in the course
+of a document. It provides an interface for macro programmers
+to access the new reference scheme and some modules that use
+it. Modules available are: zref-user, use zref for
+"traditional" labels and references; zref-abspage, retrieve
+absolute page numbers (physical pages, as opposed to the
+'logical' page number that is normally typeset when a page
+number is requested; zref-lastpage, provide a zref-label for
+the last page of the document; zref-nextpage, provide the page
+number of the next page of the document; zref-totpages, provide
+the total number of pages in the document; zref-pagelayout,
+provide the page layout parameters of a each page (which may
+then be printed at the end of the document); zref-perpage, make
+a counter reset for each new page; zref-titleref, make section
+title or caption text available through the reference system;
+zref-savepos, make positions on a page available; zref-dotfill,
+controlled dot-filling; zref-env, record the latest
+environment's name and the line it started on; and zref-xr,
+provide the facilities of the xr and xr-hyper packages.
+
+%package -n texlive-zref-doc
+Version:        %{texlive_version}.%{texlive_noarch}.2.29svn54098
+Release:        0
+Summary:        Documentation for texlive-zref
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+
+%description -n texlive-zref-doc
+This package includes the documentation for texlive-zref
+
+%post -n texlive-zref
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-zref 
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-zref
+%if %{with zypper_posttrans}
+test -z "$ZYPP_IS_RUNNING" || exit 0
+%endif
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-zref-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/zref/README.md
+%{_texmfdistdir}/doc/latex/zref/zref.pdf
+
+%files -n texlive-zref
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/zref/zref-abspage.sty
+%{_texmfdistdir}/tex/latex/zref/zref-abspos.sty
+%{_texmfdistdir}/tex/latex/zref/zref-base.sty
+%{_texmfdistdir}/tex/latex/zref/zref-counter.sty
+%{_texmfdistdir}/tex/latex/zref/zref-dotfill.sty
+%{_texmfdistdir}/tex/latex/zref/zref-env.sty
+%{_texmfdistdir}/tex/latex/zref/zref-hyperref.sty
+%{_texmfdistdir}/tex/latex/zref/zref-lastpage.sty
+%{_texmfdistdir}/tex/latex/zref/zref-marks.sty
+%{_texmfdistdir}/tex/latex/zref/zref-nextpage.sty
+%{_texmfdistdir}/tex/latex/zref/zref-pageattr.sty
+%{_texmfdistdir}/tex/latex/zref/zref-pagelayout.sty
+%{_texmfdistdir}/tex/latex/zref/zref-perpage.sty
+%{_texmfdistdir}/tex/latex/zref/zref-runs.sty
+%{_texmfdistdir}/tex/latex/zref/zref-savepos.sty
+%{_texmfdistdir}/tex/latex/zref/zref-thepage.sty
+%{_texmfdistdir}/tex/latex/zref/zref-titleref.sty
+%{_texmfdistdir}/tex/latex/zref/zref-totpages.sty
+%{_texmfdistdir}/tex/latex/zref/zref-user.sty
+%{_texmfdistdir}/tex/latex/zref/zref-xr.sty
+%{_texmfdistdir}/tex/latex/zref/zref.sty
+%if %{with zypper_posttrans}
+/var/adm/update-scripts/texlive-zref-%{texlive_version}.%{texlive_noarch}.2.29svn54098-%{release}-zypper
+%endif
+
 %package -n texlive-zwgetfdate
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
 Release:        0
 Summary:        Get package or file date
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-zwgetfdate-doc >= %{texlive_version}
 Provides:       tex(zwgetfdate.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source213:      zwgetfdate.tar.xz
-Source214:      zwgetfdate.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source228:      zwgetfdate.tar.xz
+Source229:      zwgetfdate.doc.tar.xz
 
 %description -n texlive-zwgetfdate
 The package can fetch the date declaration of packages and
@@ -22955,16 +24906,13 @@ macros. The facilities provide a means of obtaining the date of
 a package being documented; this is mainly of use when
 doc/docstrip.
 
-date: 2017-04-18 03:31:40 +0000
-
-
 %package -n texlive-zwgetfdate-doc
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
 Release:        0
 Summary:        Documentation for texlive-zwgetfdate
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-zwgetfdate-doc
 This package includes the documentation for texlive-zwgetfdate
@@ -23004,29 +24952,41 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-zwpagelayout
-Version:        %{texlive_version}.%{texlive_noarch}.1.4dsvn28846
+Version:        %{texlive_version}.%{texlive_noarch}.1.4dsvn53965
 Release:        0
 Summary:        Page layout and crop-marks
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-zwpagelayout-doc >= %{texlive_version}
 Provides:       tex(zwpagelayout.sty)
-Requires:       tex(ifpdf.sty)
-Requires:       tex(ifxetex.sty)
+Requires:       tex(iftex.sty)
 Requires:       tex(kvoptions.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source215:      zwpagelayout.tar.xz
-Source216:      zwpagelayout.doc.tar.xz
+Requires:       tex(luatex85.sty)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source230:      zwpagelayout.tar.xz
+Source231:      zwpagelayout.doc.tar.xz
 
 %description -n texlive-zwpagelayout
 This package was developed as a typographers' toolbox offering
@@ -23036,16 +24996,13 @@ and it can reflect pages both horizontally and vertically. The
 package facilities work with TeX (output via dvips or
 (x)dvipdfm(x)), and with pdfTeX.
 
-date: 2017-04-18 03:31:40 +0000
-
-
 %package -n texlive-zwpagelayout-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.4dsvn28846
+Version:        %{texlive_version}.%{texlive_noarch}.1.4dsvn53965
 Release:        0
 Summary:        Documentation for texlive-zwpagelayout
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-zwpagelayout-doc
 This package includes the documentation for texlive-zwpagelayout
@@ -23088,7 +25045,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/zwpagelayout/zwpagelayout.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-zwpagelayout-%{texlive_version}.%{texlive_noarch}.1.4dsvn28846-%{release}-zypper
+/var/adm/update-scripts/texlive-zwpagelayout-%{texlive_version}.%{texlive_noarch}.1.4dsvn53965-%{release}-zypper
 %endif
 
 %package -n texlive-zxjafbfont
@@ -23097,28 +25054,37 @@ Release:        0
 Summary:        Fallback CJK font support for xeCJK
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-zxjafbfont-doc >= %{texlive_version}
 Provides:       tex(zxjafbfont.sty)
 Requires:       tex(xeCJK.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source217:      zxjafbfont.tar.xz
-Source218:      zxjafbfont.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source232:      zxjafbfont.tar.xz
+Source233:      zxjafbfont.doc.tar.xz
 
 %description -n texlive-zxjafbfont
 The zxjafbfont package
-
-date: 2016-12-18 07:34:28 +0000
-
 
 %package -n texlive-zxjafbfont-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn28539
@@ -23126,7 +25092,7 @@ Release:        0
 Summary:        Documentation for texlive-zxjafbfont
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-zxjafbfont-doc
 This package includes the documentation for texlive-zxjafbfont
@@ -23164,44 +25130,53 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-zxjafont
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn47613
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn53884
 Release:        0
 Summary:        Set up Japanese font families for XeLaTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-zxjafont-doc >= %{texlive_version}
 Provides:       tex(zxjafont.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(keyval.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source219:      zxjafont.tar.xz
-Source220:      zxjafont.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source234:      zxjafont.tar.xz
+Source235:      zxjafont.doc.tar.xz
 
 %description -n texlive-zxjafont
 The zxjafont package
 
-date: 2018-05-04 14:10:09 +0000
-
-
 %package -n texlive-zxjafont-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn47613
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn53884
 Release:        0
 Summary:        Documentation for texlive-zxjafont
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-zxjafont-doc:ja;en)
 
 %description -n texlive-zxjafont-doc
@@ -23239,48 +25214,57 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/zxjafont/zxjafont.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-zxjafont-%{texlive_version}.%{texlive_noarch}.0.0.4svn47613-%{release}-zypper
+/var/adm/update-scripts/texlive-zxjafont-%{texlive_version}.%{texlive_noarch}.1.2svn53884-%{release}-zypper
 %endif
 
 %package -n texlive-zxjatype
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6csvn47597
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn53500
 Release:        0
 Summary:        Standard conforming typesetting of Japanese, for XeLaTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-zxjatype-doc >= %{texlive_version}
 Provides:       tex(zxjatype.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(xeCJK.sty)
 Requires:       tex(xparse.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source221:      zxjatype.tar.xz
-Source222:      zxjatype.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source236:      zxjatype.tar.xz
+Source237:      zxjatype.doc.tar.xz
 
 %description -n texlive-zxjatype
 The zxjatype package
 
-date: 2018-05-03 12:56:59 +0000
-
-
 %package -n texlive-zxjatype-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6csvn47597
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn53500
 Release:        0
 Summary:        Documentation for texlive-zxjatype
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-zxjatype-doc:ja)
 
 %description -n texlive-zxjatype-doc
@@ -23319,7 +25303,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/zxjatype/zxjatype.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-zxjatype-%{texlive_version}.%{texlive_noarch}.0.0.6csvn47597-%{release}-zypper
+/var/adm/update-scripts/texlive-zxjatype-%{texlive_version}.%{texlive_noarch}.0.0.7svn53500-%{release}-zypper
 %endif
 
 %prep
@@ -23337,6 +25321,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf ../../share/texmf        %{buildroot}%{_datadir}/texlive/texmf
     ln -sf ../../../share/texmf/tlpkg/tlpostcode \
                                     %{buildroot}%{_datadir}/texlive/tlpkg/tlpostcode
+    ln -sf tlpkg/tlpostcode         %{buildroot}%{_texmfmaindir}/tlpostcode
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-wrapfig-%{texlive_version}.%{texlive_noarch}.3.6svn22048-%{release}-zypper
@@ -23375,19 +25360,19 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:10} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xassoccnt-%{texlive_version}.%{texlive_noarch}.1.7svn49516-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xassoccnt-%{texlive_version}.%{texlive_noarch}.1.7svn54080-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:11} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:12} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xbmks-%{texlive_version}.%{texlive_noarch}.svn48138-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xbmks-%{texlive_version}.%{texlive_noarch}.svn53448-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:13} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:14} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xcharter-fonts-%{texlive_version}.%{texlive_noarch}.1.116svn48498-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xcharter-fonts-%{texlive_version}.%{texlive_noarch}.1.205svn54512-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:15} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:16} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -23416,8 +25401,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     >  %{buildroot}%{_datadir}/fonts/texlive-xcharter/encodings.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-xcharter/fonts.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-xcharter/fonts.scale
-    mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.avail
-    (cat > %{buildroot}%{_sysconfdir}/fonts/conf.avail/58-texlive-xcharter.conf)<<-'EOF'
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-xcharter.conf)<<-'EOF'
 	<?xml version="1.0"?>
 	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 
@@ -23436,7 +25421,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	EOF
 
     mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.d
-    (cat > %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-xcharter.conf)<<-'EOF'
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/55-texlive-xcharter.conf)<<-'EOF'
 	<?xml version="1.0"?>
 	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 
@@ -23453,9 +25438,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </selectfont>
 	</fontconfig>
 	EOF
+    ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-xcharter.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-xcharter.conf
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xcite-%{texlive_version}.%{texlive_noarch}.1.0svn23783-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xcite-%{texlive_version}.%{texlive_noarch}.16383.99998svn53486-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:17} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:18} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -23467,7 +25453,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:20} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xcntperchap-%{texlive_version}.%{texlive_noarch}.0.0.5svn46236-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xcntperchap-%{texlive_version}.%{texlive_noarch}.0.0.5svn54080-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:21} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:22} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -23521,7 +25507,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:38} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xdvi-%{texlive_version}.%{texlive_noarch}.22.87svn50602-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xdvi-%{texlive_version}.%{texlive_noarch}.svn54338-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:39} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:40} -C %{buildroot}%{_datadir}/texlive
@@ -23540,13 +25526,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:42} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xechangebar-%{texlive_version}.%{texlive_noarch}.1.0svn44954-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xechangebar-%{texlive_version}.%{texlive_noarch}.1.0svn54080-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:43} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:44} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xecjk-%{texlive_version}.%{texlive_noarch}.3.7.2svn50852-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xecjk-%{texlive_version}.%{texlive_noarch}.3.8.2svn53835-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:45} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:46} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -23558,28 +25544,39 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:48} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xecyr-%{texlive_version}.%{texlive_noarch}.1.1svn20221-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xecyr-%{texlive_version}.%{texlive_noarch}.1.2svn54308-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:49} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:50} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:49} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:50} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xeindex-%{texlive_version}.%{texlive_noarch}.0.0.3svn35756-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xecyrmongolian-%{texlive_version}.%{texlive_noarch}.1.0svn53160-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:51} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:52} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xellipsis-%{texlive_version}.%{texlive_noarch}.2.0svn47546-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xeindex-%{texlive_version}.%{texlive_noarch}.0.0.3svn35756-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:53} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:54} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xepersian-%{texlive_version}.%{texlive_noarch}.22.6svn50213-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xelatex-dev-%{texlive_version}.%{texlive_noarch}.svn54498-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:55} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:55} -C %{buildroot}%{_datadir}/texlive
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-xellipsis-%{texlive_version}.%{texlive_noarch}.2.0svn47546-%{release}-zypper
+%endif
     tar --use-compress-program=xz -xf %{S:56} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:57} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-xepersian-%{texlive_version}.%{texlive_noarch}.22.8svn53625-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:58} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:59} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Correct wrong python scripts if any
     for scr in %{_texmfdistdir}/doc/xelatex/xepersian/ftxe-0.12.py
     do
@@ -23610,121 +25607,130 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     done
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xesearch-%{texlive_version}.%{texlive_noarch}.svn16041-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xepersian-hm-%{texlive_version}.%{texlive_noarch}.0.0.4svn54554-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:57} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:58} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:60} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:61} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-xesearch-%{texlive_version}.%{texlive_noarch}.0.0.2svn51908-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:62} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:63} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-xespotcolor-%{texlive_version}.%{texlive_noarch}.2.0asvn40118-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:59} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:60} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:64} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:65} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xetex-%{texlive_version}.%{texlive_noarch}.svn50602-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xetex-%{texlive_version}.%{texlive_noarch}.svn54276-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:61} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:62} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:66} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:67} -C %{buildroot}%{_datadir}/texlive
+    pushd %{buildroot}%{_datadir}/texlive/texmf-dist
+	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:68}
+    popd
     mkdir -p %{buildroot}%{_texmfvardir}/fonts/conf
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-xetex-devanagari-%{texlive_version}.%{texlive_noarch}.0.0.5svn34296-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:63} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:64} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xetex-itrans-%{texlive_version}.%{texlive_noarch}.4.2svn35088-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:65} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:66} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xetex-pstricks-%{texlive_version}.%{texlive_noarch}.svn17055-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:67} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:68} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xetex-tibetan-%{texlive_version}.%{texlive_noarch}.0.0.1svn28847-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:69} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:70} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xetexconfig-%{texlive_version}.%{texlive_noarch}.svn45845-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xetex-itrans-%{texlive_version}.%{texlive_noarch}.4.2svn35088-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:71} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:72} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-xetex-pstricks-%{texlive_version}.%{texlive_noarch}.svn17055-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:73} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:74} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-xetex-tibetan-%{texlive_version}.%{texlive_noarch}.0.0.1svn28847-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:75} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:76} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-xetexconfig-%{texlive_version}.%{texlive_noarch}.svn45845-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:77} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-xetexfontinfo-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:72} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:73} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xetexko-%{texlive_version}.%{texlive_noarch}.2.21svn48378-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:74} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:75} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xetexref-%{texlive_version}.%{texlive_noarch}.svn50244-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:76} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xevlna-%{texlive_version}.%{texlive_noarch}.1.1svn43864-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:77} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:78} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xfakebold-%{texlive_version}.%{texlive_noarch}.0.0.04svn48460-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xfor-%{texlive_version}.%{texlive_noarch}.1.05svn15878-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xetexko-%{texlive_version}.%{texlive_noarch}.2.23svn53826-%{release}-zypper
 %endif
+    tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-xetexref-%{texlive_version}.%{texlive_noarch}.svn53068-%{release}-zypper
+%endif
     tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xgreek-%{texlive_version}.%{texlive_noarch}.3.0.1svn46662-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xevlna-%{texlive_version}.%{texlive_noarch}.1.1svn43864-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xhfill-%{texlive_version}.%{texlive_noarch}.1.01svn22575-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xfakebold-%{texlive_version}.%{texlive_noarch}.0.0.06svn54779-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xifthen-%{texlive_version}.%{texlive_noarch}.1.4.0svn38929-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xfor-%{texlive_version}.%{texlive_noarch}.1.05svn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:87} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:88} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xii-%{texlive_version}.%{texlive_noarch}.svn45804-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xgreek-%{texlive_version}.%{texlive_noarch}.3.0.1svn46662-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:89} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:90} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-xhfill-%{texlive_version}.%{texlive_noarch}.1.01svn22575-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:91} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:92} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-xifthen-%{texlive_version}.%{texlive_noarch}.1.4.0svn38929-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:93} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-xii-%{texlive_version}.%{texlive_noarch}.svn45804-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:95} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-xii-lat-%{texlive_version}.%{texlive_noarch}.svn45805-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:90} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xindex-%{texlive_version}.%{texlive_noarch}.0.0.10svn50842-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xindex-%{texlive_version}.%{texlive_noarch}.0.0.20svn52892-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:91} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:92} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/xindex/xindex.lua
     do
@@ -23739,16 +25745,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     done
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xint-%{texlive_version}.%{texlive_noarch}.1.3esvn50844-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xint-%{texlive_version}.%{texlive_noarch}.1.4bsvn53930-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:93} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xits-fonts-%{texlive_version}.%{texlive_noarch}.1.200.1svn48879-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xits-fonts-%{texlive_version}.%{texlive_noarch}.1.301svn52046-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:95} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-xits
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/xits/*.{pf[ab],[ot]tf}
@@ -23761,8 +25767,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     >  %{buildroot}%{_datadir}/fonts/texlive-xits/encodings.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-xits/fonts.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-xits/fonts.scale
-    mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.avail
-    (cat > %{buildroot}%{_sysconfdir}/fonts/conf.avail/58-texlive-xits.conf)<<-'EOF'
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-xits.conf)<<-'EOF'
 	<?xml version="1.0"?>
 	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 
@@ -23781,177 +25787,188 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xkeyval-%{texlive_version}.%{texlive_noarch}.2.7asvn35741-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xlop-%{texlive_version}.%{texlive_noarch}.0.0.26svn42899-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xltabular-%{texlive_version}.%{texlive_noarch}.0.0.2bsvn49939-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xltxtra-%{texlive_version}.%{texlive_noarch}.0.0.7svn49555-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xkcdcolors-%{texlive_version}.%{texlive_noarch}.1.0.1svn54512-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xmltex-%{texlive_version}.%{texlive_noarch}.0.0.8svn48634-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xkeyval-%{texlive_version}.%{texlive_noarch}.2.7asvn35741-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:105} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:106} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:105} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:106} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-xlop-%{texlive_version}.%{texlive_noarch}.0.0.26svn42899-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:107} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:108} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-xltabular-%{texlive_version}.%{texlive_noarch}.svn54437-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:109} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:110} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-xltxtra-%{texlive_version}.%{texlive_noarch}.0.0.7svn49555-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:111} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:112} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-xmltex-%{texlive_version}.%{texlive_noarch}.0.0.8svn54498-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:113} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:114} -C %{buildroot}%{_datadir}/texlive
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-xmltexconfig-%{texlive_version}.%{texlive_noarch}.svn45845-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:107} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xmpincl-%{texlive_version}.%{texlive_noarch}.2.2svn15878-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:108} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:109} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xnewcommand-%{texlive_version}.%{texlive_noarch}.1.2svn15878-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:110} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:111} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xoptarg-%{texlive_version}.%{texlive_noarch}.1.0svn15878-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:112} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:113} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xpatch-%{texlive_version}.%{texlive_noarch}.0.0.2svn27897-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:114} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:115} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xpeek-%{texlive_version}.%{texlive_noarch}.0.0.2svn27442-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xmpincl-%{texlive_version}.%{texlive_noarch}.2.2svn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:116} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xpiano-%{texlive_version}.%{texlive_noarch}.1.0svn37604-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xnewcommand-%{texlive_version}.%{texlive_noarch}.1.2svn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xpicture-%{texlive_version}.%{texlive_noarch}.1.2asvn28770-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xoptarg-%{texlive_version}.%{texlive_noarch}.1.0svn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xpinyin-%{texlive_version}.%{texlive_noarch}.2.7svn50849-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xpatch-%{texlive_version}.%{texlive_noarch}.0.0.3svn54563-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-xpdfopen-%{texlive_version}.%{texlive_noarch}.0.0.86svn53998-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-xpeek-%{texlive_version}.%{texlive_noarch}.0.0.2svn27442-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-xpiano-%{texlive_version}.%{texlive_noarch}.1.0svn37604-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-xpicture-%{texlive_version}.%{texlive_noarch}.1.2asvn28770-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-xpinyin-%{texlive_version}.%{texlive_noarch}.2.7svn50849-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-xprintlen-%{texlive_version}.%{texlive_noarch}.1.0svn35928-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-xpunctuate-%{texlive_version}.%{texlive_noarch}.1.0svn26641-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-xq-%{texlive_version}.%{texlive_noarch}.0.0.4svn35211-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xsavebox-%{texlive_version}.%{texlive_noarch}.0.0.12svn48171-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xsavebox-%{texlive_version}.%{texlive_noarch}.0.0.16svn54097-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xsim-%{texlive_version}.%{texlive_noarch}.0.0.11svn46634-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xsim-%{texlive_version}.%{texlive_noarch}.0.0.19bsvn54681-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:142} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xskak-%{texlive_version}.%{texlive_noarch}.1.4svn35945-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xskak-%{texlive_version}.%{texlive_noarch}.1.5svn51432-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-xstring-%{texlive_version}.%{texlive_noarch}.1.83svn49946-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:146} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-xtab-%{texlive_version}.%{texlive_noarch}.2.3fsvn23347-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:148} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-xtuthesis-%{texlive_version}.%{texlive_noarch}.1.0svn47049-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:149} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:150} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-xunicode-%{texlive_version}.%{texlive_noarch}.0.0.981svn30466-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:142} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:152} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-xurl-%{texlive_version}.%{texlive_noarch}.0.0.07svn49488-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-xurl-%{texlive_version}.%{texlive_noarch}.0.0.09svn53538-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:153} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-xwatermark-%{texlive_version}.%{texlive_noarch}.1.5.2dsvn28090-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:146} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-xyling-%{texlive_version}.%{texlive_noarch}.1.1svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:148} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:149} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-xymtex-%{texlive_version}.%{texlive_noarch}.5.06svn32182-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:150} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-xypic-fonts-%{texlive_version}.%{texlive_noarch}.3.8.9svn31859-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:152} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:153} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/generic/xypic/support/dvitogif89a \
 	       %{_texmfdistdir}/doc/generic/xypic/support/install-tds
@@ -23971,8 +25988,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     >  %{buildroot}%{_datadir}/fonts/texlive-xypic/encodings.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-xypic/fonts.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-xypic/fonts.scale
-    mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.avail
-    (cat > %{buildroot}%{_sysconfdir}/fonts/conf.avail/58-texlive-xypic.conf)<<-'EOF'
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-xypic.conf)<<-'EOF'
 	<?xml version="1.0"?>
 	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 
@@ -23993,73 +26010,79 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-xypic-tut-pt-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-xytree-%{texlive_version}.%{texlive_noarch}.1.5svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-yafoot-%{texlive_version}.%{texlive_noarch}.1.1svn48568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-yagusylo-%{texlive_version}.%{texlive_noarch}.1.2svn29803-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-yaletter-%{texlive_version}.%{texlive_noarch}.1.1svn42830-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-yannisgr-%{texlive_version}.%{texlive_noarch}.svn22613-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-yathesis-%{texlive_version}.%{texlive_noarch}.0.0.99usvn50630-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-yathesis-%{texlive_version}.%{texlive_noarch}.1.0.2svn54740-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-yax-%{texlive_version}.%{texlive_noarch}.1.03svn21183-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-yax-%{texlive_version}.%{texlive_noarch}.1.03svn54080-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-yazd-thesis-%{texlive_version}.%{texlive_noarch}.0.0.3svn51725-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ycbook-%{texlive_version}.%{texlive_noarch}.svn46201-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ydoc-%{texlive_version}.%{texlive_noarch}.0.0.6alphasvn26202-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-yfonts-%{texlive_version}.%{texlive_noarch}.1.4svn50755-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-yfonts-t1-fonts-%{texlive_version}.%{texlive_noarch}.1.0svn36013-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-yfonts-t1
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/yfonts-t1/*.{pf[ab],[ot]tf}
@@ -24072,8 +26095,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     >  %{buildroot}%{_datadir}/fonts/texlive-yfonts-t1/encodings.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-yfonts-t1/fonts.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-yfonts-t1/fonts.scale
-    mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.avail
-    (cat > %{buildroot}%{_sysconfdir}/fonts/conf.avail/58-texlive-yfonts-t1.conf)<<-'EOF'
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-yfonts-t1.conf)<<-'EOF'
 	<?xml version="1.0"?>
 	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 
@@ -24092,10 +26115,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-yhmath-fonts-%{texlive_version}.%{texlive_noarch}.1.5svn50127-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-yhmath-fonts-%{texlive_version}.%{texlive_noarch}.1.6svn54377-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-yhmath
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/yhmath/*.{pf[ab],[ot]tf}
@@ -24108,8 +26131,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     >  %{buildroot}%{_datadir}/fonts/texlive-yhmath/encodings.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-yhmath/fonts.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-yhmath/fonts.scale
-    mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.avail
-    (cat > %{buildroot}%{_sysconfdir}/fonts/conf.avail/58-texlive-yhmath.conf)<<-'EOF'
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-yhmath.conf)<<-'EOF'
 	<?xml version="1.0"?>
 	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 
@@ -24130,8 +26153,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-yinit-otf-fonts-%{texlive_version}.%{texlive_noarch}.1.0svn40207-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-yinit-otf
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/yinit-otf/*.{pf[ab],[ot]tf}
@@ -24144,8 +26167,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     >  %{buildroot}%{_datadir}/fonts/texlive-yinit-otf/encodings.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-yinit-otf/fonts.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-yinit-otf/fonts.scale
-    mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.avail
-    (cat > %{buildroot}%{_sysconfdir}/fonts/conf.avail/58-texlive-yinit-otf.conf)<<-'EOF'
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-yinit-otf.conf)<<-'EOF'
 	<?xml version="1.0"?>
 	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 
@@ -24166,14 +26189,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-york-thesis-%{texlive_version}.%{texlive_noarch}.3.6svn23348-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-youngtab-%{texlive_version}.%{texlive_noarch}.1.1svn17635-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/youngtab/makeydoc.bat
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/youngtab/makeydoc
@@ -24185,19 +26209,25 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-yplan-%{texlive_version}.%{texlive_noarch}.svn34398-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-yquant-%{texlive_version}.%{texlive_noarch}.0.0.1.2svn54737-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ytableau-%{texlive_version}.%{texlive_noarch}.1.3svn27430-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-zapfchan-fonts-%{texlive_version}.%{texlive_noarch}.svn31835-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-zapfchan
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/urw/zapfchan/*.{pf[ab],[ot]tf}
@@ -24210,8 +26240,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     >  %{buildroot}%{_datadir}/fonts/texlive-zapfchan/encodings.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-zapfchan/fonts.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-zapfchan/fonts.scale
-    mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.avail
-    (cat > %{buildroot}%{_sysconfdir}/fonts/conf.avail/58-texlive-zapfchan.conf)<<-'EOF'
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-zapfchan.conf)<<-'EOF'
 	<?xml version="1.0"?>
 	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 
@@ -24232,7 +26262,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-zapfding-fonts-%{texlive_version}.%{texlive_noarch}.svn31835-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-zapfding
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/urw/zapfding/*.{pf[ab],[ot]tf}
@@ -24245,8 +26275,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     >  %{buildroot}%{_datadir}/fonts/texlive-zapfding/encodings.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-zapfding/fonts.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-zapfding/fonts.scale
-    mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.avail
-    (cat > %{buildroot}%{_sysconfdir}/fonts/conf.avail/58-texlive-zapfding.conf)<<-'EOF'
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-zapfding.conf)<<-'EOF'
 	<?xml version="1.0"?>
 	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 
@@ -24265,40 +26295,40 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-zebra-goodies-%{texlive_version}.%{texlive_noarch}.0.0.3.0svn46004-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-zebra-goodies-%{texlive_version}.%{texlive_noarch}.0.0.8.0svn51554-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:205} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-zed-csp-%{texlive_version}.%{texlive_noarch}.svn17258-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:206} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:207} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-zhlineskip-%{texlive_version}.%{texlive_noarch}.1.0dsvn49296-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-zhlineskip-%{texlive_version}.%{texlive_noarch}.1.0esvn51142-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:208} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:209} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-zhlipsum-%{texlive_version}.%{texlive_noarch}.1.1.1svn48629-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-zhlipsum-%{texlive_version}.%{texlive_noarch}.1.2.0svn54758-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:210} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:211} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-zhmetrics-%{texlive_version}.%{texlive_noarch}.r206svn22207-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:213} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-zhmetrics-uptex-%{texlive_version}.%{texlive_noarch}.1.0svn40728-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:214} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:215} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/fonts/zhmetrics-uptex/makemetrics.lua
     do
@@ -24321,67 +26351,74 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-zhnumber-%{texlive_version}.%{texlive_noarch}.2.7svn50850-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:216} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:217} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-zhspacing-%{texlive_version}.%{texlive_noarch}.svn41145-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:205} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:206} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:218} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:219} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ziffer-%{texlive_version}.%{texlive_noarch}.2.1svn32279-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:207} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:208} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:220} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-zlmtt-%{texlive_version}.%{texlive_noarch}.1.01svn34485-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-zlmtt-%{texlive_version}.%{texlive_noarch}.1.02svn51368-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:209} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:210} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:222} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:223} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-zootaxa-bst-%{texlive_version}.%{texlive_noarch}.1.0svn50619-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:211} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:224} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:225} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-zref-%{texlive_version}.%{texlive_noarch}.2.29svn54098-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-zwgetfdate-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:213} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:214} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-zwpagelayout-%{texlive_version}.%{texlive_noarch}.1.4dsvn28846-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-zwpagelayout-%{texlive_version}.%{texlive_noarch}.1.4dsvn53965-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:215} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:216} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-zxjafbfont-%{texlive_version}.%{texlive_noarch}.0.0.2svn28539-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:217} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:218} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-zxjafont-%{texlive_version}.%{texlive_noarch}.0.0.4svn47613-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-zxjafont-%{texlive_version}.%{texlive_noarch}.1.2svn53884-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:219} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:220} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-zxjatype-%{texlive_version}.%{texlive_noarch}.0.0.6csvn47597-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-zxjatype-%{texlive_version}.%{texlive_noarch}.0.0.7svn53500-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:222} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
     rm -v  %{buildroot}%{_datadir}/texlive/texmf
     rm -v  %{buildroot}%{_datadir}/texlive/texmf-dist
+    rm -v  %{buildroot}%{_texmfmaindir}/tlpostcode
     rm -vr %{buildroot}%{_datadir}/texlive
     # Handle manual pages
     rm -vf %{buildroot}%{_texmfmaindir}/doc/man/Makefile
