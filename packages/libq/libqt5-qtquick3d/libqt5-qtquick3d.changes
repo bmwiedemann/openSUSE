@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue May 26 10:14:30 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 5.15.0:
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed May 20 16:27:39 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 5.15.0-rc2:
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed May  6 11:37:45 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-rc:
+  * New bugfix release
+  * For the changes between 5.14.2 and 5.15.0 please see:
+    http://code.qt.io/cgit/qt/qtquick3d.git/plain/dist/changes-5.15.0/?h=5.15.0
+
+-------------------------------------------------------------------
+Fri Apr 24 07:11:23 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta4:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Apr 14 06:47:40 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta3:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Mar 24 12:13:48 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta2:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Fri Feb 28 09:59:03 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta1:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
 Wed Feb 26 15:52:34 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Only needs Qt 5.12 to build

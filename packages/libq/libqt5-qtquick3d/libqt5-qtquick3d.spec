@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtquick3d
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,20 +15,21 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_with system_assimp
 
 %define base_name libqt5
-%define real_version 5.15.0-alpha
+%define real_version 5.15.0
 %define so_version 5.15.0
-%define tar_version qtquick3d-everywhere-src-5.15.0-alpha
+%define tar_version qtquick3d-everywhere-src-5.15.0
 Name:           libqt5-qtquick3d
-Version:        5.15.0~alpha
+Version:        5.15.0
 Release:        0
 Summary:        Qt 5 Quick 3D Module
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/development_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 BuildRequires:  fdupes
 %if %{with system_assimp}
 BuildRequires:  pkgconfig(assimp) >= 5.0.0
@@ -37,8 +38,8 @@ BuildRequires:  zlib-devel
 %endif
 BuildRequires:  libQt5Core-private-headers-devel >= 5.12
 BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  libqt5-qtdeclarative-private-headers-devel
 BuildRequires:  libQt5OpenGLExtensions-devel-static
+BuildRequires:  libqt5-qtdeclarative-private-headers-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(Qt5Qml) >= 5.12
@@ -55,6 +56,7 @@ it is now possible to simply build up a 3D scene using high level primitives.
 
 %package -n libQt5Quick3D5
 Summary:        Qt5 Quick3D Library
+License:        GPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n libQt5Quick3D5
@@ -66,6 +68,7 @@ it is now possible to simply build up a 3D scene using high level primitives.
 
 %package -n libQt5Quick3DAssetImport5
 Summary:        Qt5 Quick3D Asset Importing Library
+License:        GPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n libQt5Quick3DAssetImport5
@@ -73,6 +76,7 @@ Qt Quick 3D Library for importing of 3D assets.
 
 %package tools
 Summary:        Qt Development Kit
+License:        GPL-3.0-or-later
 Group:          Development/Libraries/X11
 
 %description tools
@@ -80,6 +84,7 @@ Tools for working with the Qt Quick 3D module.
 
 %package imports
 Summary:        Qt Development Kit
+License:        GPL-3.0-or-later
 Group:          Development/Libraries/X11
 Requires:       %{name}-tools
 Requires:       libQt5Quick3D5 = %{version}
@@ -90,6 +95,7 @@ QML API for Qt Quick 3D.
 
 %package devel
 Summary:        Qt Development Kit
+License:        GPL-3.0-or-later
 Group:          Development/Libraries/X11
 Requires:       %{name}-tools
 Requires:       libQt5Quick3D5 = %{version}
@@ -100,6 +106,7 @@ You need this package if you want to compile programs with Qt Quick 3D.
 
 %package private-headers-devel
 Summary:        Headers for the unstable API of the Qt5 Quick 3D module
+License:        GPL-3.0-or-later
 Group:          Development/Libraries/X11
 Requires:       %{name}-devel = %{version}
 
@@ -109,8 +116,8 @@ of the Qt5 Quick 3D module.
 
 %package examples
 Summary:        Qt5 Quick 3D examples
-Group:          Development/Libraries/X11
 License:        BSD-3-Clause
+Group:          Development/Libraries/X11
 
 %description examples
 Examples for the Qt Quick 3D module.
