@@ -381,6 +381,7 @@ opensuse_microos:
   - grub2-x86_64-efi: [x86_64]
   - grub2-i386-pc: [x86_64]
   - grub2-arm64-efi: [aarch64]
+  - grub2-powerpc-ieee1275: [ppc64le]
 
 opensuse_kubic:
   - patterns-microos-desktop-kde: [locked]
@@ -395,3 +396,4 @@ opensuse_kubic:
   - grub2-x86_64-efi: [x86_64]
   - grub2-i386-pc: [x86_64]
   - grub2-arm64-efi: [aarch64]
+  - grub2-powerpc-ieee1275: [ppc64le]

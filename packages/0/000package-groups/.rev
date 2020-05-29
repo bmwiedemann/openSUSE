@@ -823,4 +823,14 @@ it wants then though.</comment>
   elsewhere (eg patterns).</comment>
     <requestid>800366</requestid>
   </revision>
+  <revision rev="114" vrev="112">
+    <srcmd5>46dc449040791d234f6d78215288fc05</srcmd5>
+    <version>unknown</version>
+    <time>1590779588</time>
+    <user>maxlin_factory</user>
+    <comment>- Add grub2-powerpc-ieee1275 for microos &amp; kubic
+  assuming will solve missing bootloader pattern
+  2nd correction for boo#1171146</comment>
+    <requestid>807751</requestid>
+  </revision>
 </revisionlist>
