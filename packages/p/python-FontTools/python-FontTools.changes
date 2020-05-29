@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May 26 06:34:20 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Wed May 20 10:13:15 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 4.10.2:
+  * Note: The v4.x version series only supports Python 3.6 or greater.
+  * see NEWS.rst for the full changelog
+
+- Use _multibuild to run the tests in a different flavor and make it
+  possible to BuildRequire ufoLib2 (which requires FontTools to build)
+  without creating a dependency cycle.
+
+- Add curves.json from upstream as a separate source as it's
+  missing from the zip file.
+
+-------------------------------------------------------------------
 Mon Apr  1 12:14:15 UTC 2019 - pgajdos@suse.com
 
 - version update to 3.39.0
