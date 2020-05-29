@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon May 18 08:47:10 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Enhance spec file generator to find missing .so man page
+  links for better dependency resolution (bsc#1171682)
+
+-------------------------------------------------------------------
+Wed May 13 13:59:14 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Modify patch texdoc_cnf.dif to ignore tlpkg/texlive.tlpdb as
+  kpathsea uses the ls-R files as well 
+
+-------------------------------------------------------------------
+Tue May 12 09:03:38 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Correct obsoletes for new packages
+
+-------------------------------------------------------------------
+Wed May  6 11:27:35 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Scan *.def files as well for RequirePackage 
+
+-------------------------------------------------------------------
+Tue May  5 13:55:07 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add Requires to tex(epstopdf-base.sty) to fix package split
+  of texlive-epstopdf 
+
+-------------------------------------------------------------------
+Mon May  4 09:00:25 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Skip *-dev packages from file dependendcy scanner as otherwise
+  we see doubling name space for some style files like amsmath.sty
+
+-------------------------------------------------------------------
+Mon Apr 27 06:52:15 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch pythontex_p2top3.dif and a removes file to fully
+  switch pythontex packages of TeXLive to python3
+
+-------------------------------------------------------------------
+Mon Apr 20 10:29:02 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Update to TeXLive 2020                 
+  * Port patches
+    kpathsea_cnf.dif
+    latexpand_perl.dif
+    luaotfload_varfonts.dif
+    luatex_cnf.dif
+    musixtex_various.dif
+  * Delete patches not needed anymore as files have moved
+    tetex_scripts.dif
+  * Delete patche updmap-map_roboto.dif as fixed upstream
+  * Add new patches to catch moved files
+    texlive-scripts-extra_scripts.dif
+    texlive-scripts_scripts.dif
+  * Add new patch xetex_conf.dif to fit FHS location
+  * Remove TeXLive installer files breaking rpm database
+    texlive-scripts.removes
+
+-------------------------------------------------------------------
 Tue Nov  5 15:12:46 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Enhance spec file generator to catch more required style files
