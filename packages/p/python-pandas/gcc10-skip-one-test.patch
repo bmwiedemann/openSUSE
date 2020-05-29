@@ -1,0 +1,12 @@
+diff --git a/pandas/tests/reshape/merge/test_merge.py b/pandas/tests/reshape/merge/test_merge.py
+index 8465e2c..f53d2ad 100644
+--- a/pandas/tests/reshape/merge/test_merge.py
++++ b/pandas/tests/reshape/merge/test_merge.py
+@@ -1459,6 +1459,7 @@ class TestMergeDtypes:
+         )
+         tm.assert_frame_equal(result, expected)
+ 
++    @pytest.mark.xfail
+     def test_merge_on_ints_floats_warning(self):
+         # GH 16572
+         # merge will produce a warning when merging on int and

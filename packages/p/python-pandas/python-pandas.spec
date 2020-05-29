@@ -26,6 +26,7 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://pandas.pydata.org/
 Source0:        https://files.pythonhosted.org/packages/source/p/pandas/pandas-%{version}.tar.gz
+Patch0:         gcc10-skip-one-test.patch
 BuildRequires:  %{python_module Cython >= 0.28.2}
 # test requirements
 BuildRequires:  %{python_module Jinja2}
@@ -98,6 +99,7 @@ block for doing data analysis in Python.
 
 %prep
 %setup -q -n pandas-%{version}
+%patch0 -p1
 sed -i -e '/^#!\//, 1d' pandas/core/computation/eval.py
 sed -i -e '/^#!\//, 1d' pandas/tests/io/generate_legacy_storage_files.py
 sed -i -e '/^#!\//, 1d' pandas/tests/plotting/common.py
@@ -122,6 +124,7 @@ export LC_ALL=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
 mv pandas pandas_temp
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
+$python -c 'import pandas; print(pandas.show_versions())'
 xvfb-run py.test-%{$python_version} -n auto -v %{buildroot}%{$python_sitearch}/pandas/tests -k 'not test_oo_optimizable and not test_encode_non_c_locale and not test_maybe_promote_int_with_int'
 }
 mv pandas_temp pandas
