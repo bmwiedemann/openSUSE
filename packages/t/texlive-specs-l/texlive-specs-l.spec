@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-specs-l
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,20 @@
 
 %bcond_with	zypper_posttrans
 
-%define texlive_version  2019
-%define texlive_previous 2018
-%define texlive_release  20190407
-%define texlive_noarch   168
+%define texlive_version  2020
+%define texlive_previous 2019
+%define texlive_release  20200327
+%define texlive_noarch   176
 
 #!BuildIgnore:          texlive
+#!BuildIgnore:          texlive-scripts
+#!BuildIgnore:          texlive-scripts-extra
+#!BuildIgnore:          texlive-scripts-bin
+#!BuildIgnore:          texlive-scripts-extra-bin
+#!BuildIgnore:          texlive-gsftopk
+#!BuildIgnore:          texlive-gsftopk-bin
+#!BuildIgnore:          texlive-kpathsea
+#!BuildIgnore:          texlive-kpathsea-bin
 
 %global _varlib         %{_localstatedir}/lib
 %global _libexecdir     %{_prefix}/lib
@@ -49,7 +57,7 @@
 %define _appdefdir      %{_x11data}/app-defaults
 
 Name:           texlive-specs-l
-Version:        2019
+Version:        2020
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
@@ -61,7 +69,7 @@ BuildArch:      noarch
 Summary:        Meta package for l
 License:        GFDL-1.2 and GPL-2.0+ and LGPL-2.1+ and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
-Url:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
+URL:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Source0:        texlive-specs-l-rpmlintrc
 
 %description
@@ -73,15 +81,27 @@ Release:        0
 Summary:        LaTeX support for Croatian documents
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-hrlatex-doc >= %{texlive_version}
 Provides:       tex(fsbispit.cls)
 Provides:       tex(fsbmath.sty)
@@ -105,8 +125,8 @@ Requires:       tex(paralist.sty)
 Requires:       tex(txfonts.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
 Source1:        hrlatex.tar.xz
 Source2:        hrlatex.doc.tar.xz
 
@@ -116,16 +136,13 @@ This package simplifies creation of new documents for the
 (designed for the graduation thesis at the University of
 Zagreb) and sample thesis documents are included.
 
-date: 2018-01-06 11:14:59 +0000
-
-
 %package -n texlive-hrlatex-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.23svn18020
 Release:        0
 Summary:        Documentation for texlive-hrlatex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-hrlatex-doc:hr)
 
 %description -n texlive-hrlatex-doc
@@ -170,27 +187,173 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 /var/adm/update-scripts/texlive-hrlatex-%{texlive_version}.%{texlive_noarch}.0.0.23svn18020-%{release}-zypper
 %endif
 
+%package -n texlive-hu-berlin-bundle
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.4svn54512
+Release:        0
+Summary:        LaTeX classes for the Humboldt-Universitat zu Berlin
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Recommends:     texlive-hu-berlin-bundle-doc >= %{texlive_version}
+Provides:       tex(hu-berlin-base.sty)
+Provides:       tex(hu-berlin-bundle-style.sty)
+Provides:       tex(hu-berlin-letter.cls)
+Requires:       tex(amssymb.sty)
+Requires:       tex(babel.sty)
+Requires:       tex(biblatex.sty)
+Requires:       tex(bookmark.sty)
+Requires:       tex(calc.sty)
+Requires:       tex(ccicons.sty)
+Requires:       tex(dirtree.sty)
+Requires:       tex(enumitem.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(fontspec.sty)
+Requires:       tex(geometry.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(hyperxmp.sty)
+Requires:       tex(ifluatex.sty)
+Requires:       tex(libertine.sty)
+Requires:       tex(listings.sty)
+Requires:       tex(luatex85.sty)
+Requires:       tex(luatexbase.sty)
+Requires:       tex(marginnote.sty)
+Requires:       tex(markdown.sty)
+Requires:       tex(marvosym.sty)
+Requires:       tex(microtype.sty)
+Requires:       tex(newfile.sty)
+Requires:       tex(pdfpages.sty)
+Requires:       tex(ragged2e.sty)
+Requires:       tex(scrlayer-scrpage.sty)
+Requires:       tex(url.sty)
+Requires:       tex(xcolor.sty)
+Requires:       tex(xparse.sty)
+Requires:       tex(xspace.sty)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source3:        hu-berlin-bundle.tar.xz
+Source4:        hu-berlin-bundle.doc.tar.xz
+
+%description -n texlive-hu-berlin-bundle
+This package provides files according to the corporate design
+of the Humboldt-Universitat zu Berlin. This is not an official
+package by the university itself, and not officially approved
+by it. More information can be found in the Humboldt
+University's corporate design guideline and on the website
+https://www.hu-berlin.de/de/hu-intern/design. At present, the
+bundle contains a letter class based on scrlttr2 and a package
+hu-berlin-base.sty which contains all relevant code for
+documents and documentclasses of the bundle.
+
+%package -n texlive-hu-berlin-bundle-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.4svn54512
+Release:        0
+Summary:        Documentation for texlive-hu-berlin-bundle
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+
+%description -n texlive-hu-berlin-bundle-doc
+This package includes the documentation for texlive-hu-berlin-bundle
+
+%post -n texlive-hu-berlin-bundle
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-hu-berlin-bundle 
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-hu-berlin-bundle
+%if %{with zypper_posttrans}
+test -z "$ZYPP_IS_RUNNING" || exit 0
+%endif
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-hu-berlin-bundle-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/hu-berlin-bundle/README.md
+%{_texmfdistdir}/doc/latex/hu-berlin-bundle/_markdown_hu-berlin-bundle/5743ba341396e7047e5a76bfb9c28dcd.md.tex
+%{_texmfdistdir}/doc/latex/hu-berlin-bundle/hu-berlin-bundle-bibliography.bib
+%{_texmfdistdir}/doc/latex/hu-berlin-bundle/hu-berlin-bundle.markdown.in
+%{_texmfdistdir}/doc/latex/hu-berlin-bundle/hu-berlin-bundle.pdf
+%{_texmfdistdir}/doc/latex/hu-berlin-bundle/hu-berlin-bundle.pkglist
+%{_texmfdistdir}/doc/latex/hu-berlin-bundle/hu-berlin-letter-example-lualatex.tex
+%{_texmfdistdir}/doc/latex/hu-berlin-bundle/hu-berlin-letter-example-markdown.md
+%{_texmfdistdir}/doc/latex/hu-berlin-bundle/hu-berlin-letter-example.lco
+%{_texmfdistdir}/doc/latex/hu-berlin-bundle/hu-berlin-letter-template.latex
+%{_texmfdistdir}/doc/latex/hu-berlin-bundle/img/hu-berlin-logo.jpg
+%{_texmfdistdir}/doc/latex/hu-berlin-bundle/img/texografie.png
+%{_texmfdistdir}/doc/latex/hu-berlin-bundle/makefile
+
+%files -n texlive-hu-berlin-bundle
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/hu-berlin-bundle/hu-berlin-base.sty
+%{_texmfdistdir}/tex/latex/hu-berlin-bundle/hu-berlin-bundle-style.sty
+%{_texmfdistdir}/tex/latex/hu-berlin-bundle/hu-berlin-letter.cls
+%if %{with zypper_posttrans}
+/var/adm/update-scripts/texlive-hu-berlin-bundle-%{texlive_version}.%{texlive_noarch}.1.0.4svn54512-%{release}-zypper
+%endif
+
 %package -n texlive-hulipsum
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn46803
 Release:        0
 Summary:        Hungarian dummy text (Lorum ipse)
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-hulipsum-doc >= %{texlive_version}
 Provides:       tex(hulipsum.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source3:        hulipsum.tar.xz
-Source4:        hulipsum.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source5:        hulipsum.tar.xz
+Source6:        hulipsum.doc.tar.xz
 
 %description -n texlive-hulipsum
 Lorem ipsum is an improper Latin filler dummy text, cf. the
@@ -203,16 +366,13 @@ paragraphs are taken with permission from
 http://www.lorumipse.hu. Thanks to Lorum Ipse Lab (Viktor Nagy
 and David Takacs) for their work.
 
-date: 2018-04-29 05:15:59 +0000
-
-
 %package -n texlive-hulipsum-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn46803
 Release:        0
 Summary:        Documentation for texlive-hulipsum
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-hulipsum-doc
 This package includes the documentation for texlive-hulipsum
@@ -255,15 +415,27 @@ Release:        0
 Summary:        Unofficial thesis template for Huazhong University
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-hustthesis-doc >= %{texlive_version}
 Provides:       tex(hustthesis.cls)
 Requires:       tex(afterpage.sty)
@@ -308,17 +480,14 @@ Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 Requires:       tex(xunicode.sty)
 Requires:       tex(zhnumber.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source5:        hustthesis.tar.xz
-Source6:        hustthesis.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source7:        hustthesis.tar.xz
+Source8:        hustthesis.doc.tar.xz
 
 %description -n texlive-hustthesis
 The package provides an Unofficial Thesis Template in LaTeX for
 Huazhong University of Science and Technology.
-
-date: 2017-04-18 03:31:40 +0000
-
 
 %package -n texlive-hustthesis-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.4svn42547
@@ -326,7 +495,7 @@ Release:        0
 Summary:        Documentation for texlive-hustthesis
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-hustthesis-doc
 This package includes the documentation for texlive-hustthesis
@@ -371,20 +540,32 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-hvfloat
-Version:        %{texlive_version}.%{texlive_noarch}.2.12asvn50846
+Version:        %{texlive_version}.%{texlive_noarch}.2.16svn52010
 Release:        0
 Summary:        Rotating caption and object of floats independently
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-hvfloat-doc >= %{texlive_version}
 Provides:       tex(hvfloat-fps.sty)
 Provides:       tex(hvfloat.sty)
@@ -398,10 +579,10 @@ Requires:       tex(ifoddpage.sty)
 Requires:       tex(multido.sty)
 Requires:       tex(subcaption.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source7:        hvfloat.tar.xz
-Source8:        hvfloat.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source9:        hvfloat.tar.xz
+Source10:       hvfloat.doc.tar.xz
 
 %description -n texlive-hvfloat
 This package defines a macro to place objects (tables and
@@ -414,16 +595,13 @@ Options are provided to place captions to the right or left,
 and rotated. Setting nonFloat=true results in placing the float
 here.
 
-date: 2019-04-07 15:12:28 +0000
-
-
 %package -n texlive-hvfloat-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.12asvn50846
+Version:        %{texlive_version}.%{texlive_noarch}.2.16svn52010
 Release:        0
 Summary:        Documentation for texlive-hvfloat
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-hvfloat-doc
 This package includes the documentation for texlive-hvfloat
@@ -563,7 +741,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/hvfloat/hvfloat-fps.sty
 %{_texmfdistdir}/tex/latex/hvfloat/hvfloat.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hvfloat-%{texlive_version}.%{texlive_noarch}.2.12asvn50846-%{release}-zypper
+/var/adm/update-scripts/texlive-hvfloat-%{texlive_version}.%{texlive_noarch}.2.16svn52010-%{release}-zypper
 %endif
 
 %package -n texlive-hvindex
@@ -572,23 +750,35 @@ Release:        0
 Summary:        Support for indexing
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-hvindex-doc >= %{texlive_version}
 Provides:       tex(hvindex.sty)
 Requires:       tex(makeidx.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source9:        hvindex.tar.xz
-Source10:       hvindex.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source11:       hvindex.tar.xz
+Source12:       hvindex.doc.tar.xz
 
 %description -n texlive-hvindex
 The package simplifies the indexing of words using the \index
@@ -596,16 +786,13 @@ command of makeidx. With the package, to index a word in a
 text, you only have to type it once; the package makes sure it
 is both typeset and indexed.
 
-date: 2017-12-12 09:21:06 +0000
-
-
 %package -n texlive-hvindex-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.04svn46051
 Release:        0
 Summary:        Documentation for texlive-hvindex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-hvindex-doc
 This package includes the documentation for texlive-hvindex
@@ -644,21 +831,208 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 /var/adm/update-scripts/texlive-hvindex-%{texlive_version}.%{texlive_noarch}.0.0.04svn46051-%{release}-zypper
 %endif
 
-%package -n texlive-hypdvips
-Version:        %{texlive_version}.%{texlive_noarch}.3.02svn34364
+%package -n texlive-hvqrurl
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.01asvn52993
 Release:        0
-Summary:        Hyperref extensions for use with dvips
+Summary:        Insert a QR code in the margin
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Recommends:     texlive-hvqrurl-doc >= %{texlive_version}
+Provides:       tex(hvqrurl.sty)
+Requires:       tex(marginnote.sty)
+Requires:       tex(qrcode.sty)
+Requires:       tex(url.sty)
+Requires:       tex(xcolor.sty)
+Requires:       tex(xkeyval.sty)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source13:       hvqrurl.tar.xz
+Source14:       hvqrurl.doc.tar.xz
+
+%description -n texlive-hvqrurl
+This package allows to draw an URL as a QR code into the margin
+of a one- or twosided document. The following packages are
+loaded by default: qrcode, marginnote, url, xcolor and xkeyval.
+
+%package -n texlive-hvqrurl-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.01asvn52993
+Release:        0
+Summary:        Documentation for texlive-hvqrurl
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+
+%description -n texlive-hvqrurl-doc
+This package includes the documentation for texlive-hvqrurl
+
+%post -n texlive-hvqrurl
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-hvqrurl 
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-hvqrurl
+%if %{with zypper_posttrans}
+test -z "$ZYPP_IS_RUNNING" || exit 0
+%endif
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-hvqrurl-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/hvqrurl/Changes
+%{_texmfdistdir}/doc/latex/hvqrurl/README
+%{_texmfdistdir}/doc/latex/hvqrurl/hvqrurl.pdf
+%{_texmfdistdir}/doc/latex/hvqrurl/hvqrurl.tex
+
+%files -n texlive-hvqrurl
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/hvqrurl/hvqrurl.sty
+%if %{with zypper_posttrans}
+/var/adm/update-scripts/texlive-hvqrurl-%{texlive_version}.%{texlive_noarch}.0.0.01asvn52993-%{release}-zypper
+%endif
+
+%package -n texlive-hycolor
+Version:        %{texlive_version}.%{texlive_noarch}.1.10svn53584
+Release:        0
+Summary:        Implements colour for packages hyperref and bookmark
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Recommends:     texlive-hycolor-doc >= %{texlive_version}
+Provides:       tex(hycolor.sty)
+Provides:       tex(xcolor-patch.sty)
+Requires:       tex(hopatch.sty)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source15:       hycolor.tar.xz
+Source16:       hycolor.doc.tar.xz
+
+%description -n texlive-hycolor
+This package provides the code for the color option that is
+used by packages hyperref and bookmark. It is not intended as
+package for the user.
+
+%package -n texlive-hycolor-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.10svn53584
+Release:        0
+Summary:        Documentation for texlive-hycolor
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Provides:       locale(texlive-hycolor-doc:en)
+
+%description -n texlive-hycolor-doc
+This package includes the documentation for texlive-hycolor
+
+%post -n texlive-hycolor
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-hycolor 
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-hycolor
+%if %{with zypper_posttrans}
+test -z "$ZYPP_IS_RUNNING" || exit 0
+%endif
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-hycolor-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/hycolor/README.md
+%{_texmfdistdir}/doc/latex/hycolor/hycolor.pdf
+
+%files -n texlive-hycolor
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/hycolor/hycolor.sty
+%{_texmfdistdir}/tex/latex/hycolor/xcolor-patch.sty
+%if %{with zypper_posttrans}
+/var/adm/update-scripts/texlive-hycolor-%{texlive_version}.%{texlive_noarch}.1.10svn53584-%{release}-zypper
+%endif
+
+%package -n texlive-hypdvips
+Version:        %{texlive_version}.%{texlive_noarch}.3.03svn53197
+Release:        0
+Summary:        Hyperref extensions for use with dvips
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-hypdvips-doc >= %{texlive_version}
 Provides:       tex(hypdvips.sty)
 Requires:       tex(atveryend.sty)
@@ -667,10 +1041,10 @@ Requires:       tex(hypcap.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source11:       hypdvips.tar.xz
-Source12:       hypdvips.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source17:       hypdvips.tar.xz
+Source18:       hypdvips.doc.tar.xz
 
 %description -n texlive-hypdvips
 The hypdvips package fixes some problems when using hyperref
@@ -680,16 +1054,13 @@ GoTo-links. The cooperation of hyperref with cleveref is
 improved, which in addition allows an enhanced back-referencing
 system.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-hypdvips-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.02svn34364
+Version:        %{texlive_version}.%{texlive_noarch}.3.03svn53197
 Release:        0
 Summary:        Documentation for texlive-hypdvips
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-hypdvips-doc
 This package includes the documentation for texlive-hypdvips
@@ -740,7 +1111,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/hypdvips/hypdvips.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hypdvips-%{texlive_version}.%{texlive_noarch}.3.02svn34364-%{release}-zypper
+/var/adm/update-scripts/texlive-hypdvips-%{texlive_version}.%{texlive_noarch}.3.03svn53197-%{release}-zypper
 %endif
 
 %package -n texlive-hyper
@@ -749,32 +1120,41 @@ Release:        0
 Summary:        Hypertext cross referencing
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-hyper-doc >= %{texlive_version}
 Provides:       tex(hxt-bc.sty)
 Provides:       tex(hyper.sty)
 Requires:       tex(color.sty)
 Requires:       tex(defpattern.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source13:       hyper.tar.xz
-Source14:       hyper.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source19:       hyper.tar.xz
+Source20:       hyper.doc.tar.xz
 
 %description -n texlive-hyper
 Redefines LaTeX cross-referencing commands to insert \special
 commands for HyperTeX dvi viewers, such as recent versions of
 xdvi. The package is now largely superseded by hyperref.
-
-date: 2016-06-24 17:18:15 +0000
-
 
 %package -n texlive-hyper-doc
 Version:        %{texlive_version}.%{texlive_noarch}.4.2dsvn17357
@@ -782,7 +1162,7 @@ Release:        0
 Summary:        Documentation for texlive-hyper
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-hyper-doc
 This package includes the documentation for texlive-hyper
@@ -860,22 +1240,34 @@ Release:        0
 Summary:        Add interactive Barcode fields to PDF forms
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-hyperbar-doc >= %{texlive_version}
 Provides:       tex(hyperbar.sty)
 Requires:       tex(hyperref.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source15:       hyperbar.tar.xz
-Source16:       hyperbar.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source21:       hyperbar.tar.xz
+Source22:       hyperbar.doc.tar.xz
 
 %description -n texlive-hyperbar
 The package extends the hyperref functionality for creating
@@ -883,16 +1275,13 @@ interactive forms to allow adding Barcode form fields supported
 by some modern PDF readers. Currently, only pdfTeX is
 supported.
 
-date: 2018-07-07 03:11:29 +0000
-
-
 %package -n texlive-hyperbar-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn48147
 Release:        0
 Summary:        Documentation for texlive-hyperbar
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-hyperbar-doc
 This package includes the documentation for texlive-hyperbar
@@ -937,21 +1326,33 @@ Release:        0
 Summary:        Allow hyperref and natbib to work together
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-hypernat-doc >= %{texlive_version}
 Provides:       tex(hypernat.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source17:       hypernat.tar.xz
-Source18:       hypernat.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source23:       hypernat.tar.xz
+Source24:       hypernat.doc.tar.xz
 
 %description -n texlive-hypernat
 Allows hyperref package and the natbib package with options
@@ -960,16 +1361,13 @@ multiple sequential citations (e.g [3,2,1]) will be compressed
 to [1-3], where the '1' and the '3' are (color-)linked to the
 bibliography.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-hypernat-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.0bsvn17358
 Release:        0
 Summary:        Documentation for texlive-hypernat
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-hypernat-doc
 This package includes the documentation for texlive-hypernat
@@ -1007,20 +1405,60 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-hyperref
-Version:        %{texlive_version}.%{texlive_noarch}.6.88esvn49299
+Version:        %{texlive_version}.%{texlive_noarch}.7.00dsvn53837
 Release:        0
 Summary:        Extensive support for hypertext in LaTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires:       texlive-atbegshi >= %{texlive_version}
+#!BuildIgnore: texlive-atbegshi
+Requires:       texlive-bitset >= %{texlive_version}
+#!BuildIgnore: texlive-bitset
+Requires:       texlive-etexcmds >= %{texlive_version}
+#!BuildIgnore: texlive-etexcmds
+Requires:       texlive-gettitlestring >= %{texlive_version}
+#!BuildIgnore: texlive-gettitlestring
+Requires:       texlive-intcalc >= %{texlive_version}
+#!BuildIgnore: texlive-intcalc
+Requires:       texlive-kvdefinekeys >= %{texlive_version}
+#!BuildIgnore: texlive-kvdefinekeys
+Requires:       texlive-kvsetkeys >= %{texlive_version}
+#!BuildIgnore: texlive-kvsetkeys
+Requires:       texlive-letltxmacro >= %{texlive_version}
+#!BuildIgnore: texlive-letltxmacro
+Requires:       texlive-ltxcmds >= %{texlive_version}
+#!BuildIgnore: texlive-ltxcmds
+Requires:       texlive-pdfescape >= %{texlive_version}
+#!BuildIgnore: texlive-pdfescape
+Requires:       texlive-refcount >= %{texlive_version}
+#!BuildIgnore: texlive-refcount
+Requires:       texlive-rerunfilecheck >= %{texlive_version}
+#!BuildIgnore: texlive-rerunfilecheck
+Requires:       texlive-stringenc >= %{texlive_version}
+#!BuildIgnore: texlive-stringenc
+Requires:       texlive-url >= %{texlive_version}
+#!BuildIgnore: texlive-url
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-hyperref-doc >= %{texlive_version}
 Provides:       tex(backref.sty)
 Provides:       tex(hdvipdfm.def)
@@ -1050,16 +1488,14 @@ Provides:       tex(puenc.def)
 Provides:       tex(puvnenc.def)
 Provides:       tex(xr-hyper.sty)
 Requires:       tex(atbegshi.sty)
+Requires:       tex(atveryend.sty)
 Requires:       tex(auxhook.sty)
 Requires:       tex(bitset.sty)
 Requires:       tex(color.sty)
 Requires:       tex(etexcmds.sty)
 Requires:       tex(gettitlestring.sty)
-Requires:       tex(hobsub-hyperref.sty)
 Requires:       tex(hycolor.sty)
-Requires:       tex(ifpdf.sty)
-Requires:       tex(ifvtex.sty)
-Requires:       tex(ifxetex.sty)
+Requires:       tex(iftex.sty)
 Requires:       tex(infwarerr.sty)
 Requires:       tex(intcalc.sty)
 Requires:       tex(keyval.sty)
@@ -1069,16 +1505,19 @@ Requires:       tex(kvsetkeys.sty)
 Requires:       tex(letltxmacro.sty)
 Requires:       tex(ltxcmds.sty)
 Requires:       tex(memhfixc.sty)
+Requires:       tex(minitoc.sty)
+Requires:       tex(pdf14.sty)
 Requires:       tex(pdfescape.sty)
 Requires:       tex(pdftexcmds.sty)
 Requires:       tex(refcount.sty)
 Requires:       tex(rerunfilecheck.sty)
 Requires:       tex(stringenc.sty)
+Requires:       tex(tex4ht.sty)
 Requires:       tex(url.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source19:       hyperref.tar.xz
-Source20:       hyperref.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source25:       hyperref.tar.xz
+Source26:       hyperref.doc.tar.xz
 
 %description -n texlive-hyperref
 The hyperref package is used to handle cross-referencing
@@ -1092,16 +1531,13 @@ distributed with the backref and nameref packages, which make
 use of the facilities of hyperref. The package depends on the
 author's kvoptions, ltxcmds and refcount packages.
 
-date: 2018-11-30 22:01:55 +0000
-
-
 %package -n texlive-hyperref-doc
-Version:        %{texlive_version}.%{texlive_noarch}.6.88esvn49299
+Version:        %{texlive_version}.%{texlive_noarch}.7.00dsvn53837
 Release:        0
 Summary:        Documentation for texlive-hyperref
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-hyperref-doc:en)
 
 %description -n texlive-hyperref-doc
@@ -1135,13 +1571,17 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/hyperref/cmmi10-22.gif
 %{_texmfdistdir}/doc/latex/hyperref/cmsy10-21.gif
 %{_texmfdistdir}/doc/latex/hyperref/hyperref.pdf
+%{_texmfdistdir}/doc/latex/hyperref/manifest.txt
 %{_texmfdistdir}/doc/latex/hyperref/manual.css
 %{_texmfdistdir}/doc/latex/hyperref/manual.html
 %{_texmfdistdir}/doc/latex/hyperref/manual.pdf
 %{_texmfdistdir}/doc/latex/hyperref/manual2.html
 %{_texmfdistdir}/doc/latex/hyperref/manual3.html
+%{_texmfdistdir}/doc/latex/hyperref/manual4.html
+%{_texmfdistdir}/doc/latex/hyperref/manual5.html
+%{_texmfdistdir}/doc/latex/hyperref/manual6.html
+%{_texmfdistdir}/doc/latex/hyperref/manual7.html
 %{_texmfdistdir}/doc/latex/hyperref/nameref.pdf
-%{_texmfdistdir}/doc/latex/hyperref/options.pdf
 %{_texmfdistdir}/doc/latex/hyperref/paper.pdf
 %{_texmfdistdir}/doc/latex/hyperref/slides.pdf
 
@@ -1161,7 +1601,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/hyperref/hvtexhtm.def
 %{_texmfdistdir}/tex/latex/hyperref/hvtexmrk.def
 %{_texmfdistdir}/tex/latex/hyperref/hxetex.def
-%{_texmfdistdir}/tex/latex/hyperref/hylatex.ltx
 %{_texmfdistdir}/tex/latex/hyperref/hyperref.sty
 %{_texmfdistdir}/tex/latex/hyperref/hypertex.def
 %{_texmfdistdir}/tex/latex/hyperref/minitoc-hyper.sty
@@ -1176,38 +1615,53 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/hyperref/puvnenc.def
 %{_texmfdistdir}/tex/latex/hyperref/xr-hyper.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyperref-%{texlive_version}.%{texlive_noarch}.6.88esvn49299-%{release}-zypper
+/var/adm/update-scripts/texlive-hyperref-%{texlive_version}.%{texlive_noarch}.7.00dsvn53837-%{release}-zypper
 %endif
 
 %package -n texlive-hyperxmp
-Version:        %{texlive_version}.%{texlive_noarch}.4.1svn50812
+Version:        %{texlive_version}.%{texlive_noarch}.5.1svn54758
 Release:        0
 Summary:        Embed XMP metadata within a LaTeX document
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-hyperxmp-doc >= %{texlive_version}
 Provides:       tex(hyperxmp.sty)
 Requires:       tex(atenddvi.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(ifdraft.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(ifmtarg.sty)
-Requires:       tex(ifxetex.sty)
+Requires:       tex(iftex.sty)
+Requires:       tex(ifthen.sty)
 Requires:       tex(intcalc.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(pdfescape.sty)
 Requires:       tex(stringenc.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source21:       hyperxmp.tar.xz
-Source22:       hyperxmp.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source27:       hyperxmp.tar.xz
+Source28:       hyperxmp.doc.tar.xz
 
 %description -n texlive-hyperxmp
 XMP (eXtensible Metadata Platform) is a mechanism proposed by
@@ -1235,16 +1689,13 @@ address/URL. Hyperxmp currently embeds XMP only within PDF
 documents; it is compatible with pdfLaTeX, XeLaTeX,
 LaTeX+dvipdfm, and LaTeX+dvips+ps2pdf.
 
-date: 2019-04-06 04:13:29 +0000
-
-
 %package -n texlive-hyperxmp-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.1svn50812
+Version:        %{texlive_version}.%{texlive_noarch}.5.1svn54758
 Release:        0
 Summary:        Documentation for texlive-hyperxmp
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-hyperxmp-doc
 This package includes the documentation for texlive-hyperxmp
@@ -1278,24 +1729,36 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/hyperxmp/hyperxmp.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyperxmp-%{texlive_version}.%{texlive_noarch}.4.1svn50812-%{release}-zypper
+/var/adm/update-scripts/texlive-hyperxmp-%{texlive_version}.%{texlive_noarch}.5.1svn54758-%{release}-zypper
 %endif
 
 %package -n texlive-hyph-utf8
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Hyphenation patterns expressed in UTF-8
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-hyph-utf8-doc >= %{texlive_version}
 Provides:       tex(conv-utf8-ec.tex)
 Provides:       tex(conv-utf8-il2.tex)
@@ -1306,10 +1769,10 @@ Provides:       tex(conv-utf8-lth.tex)
 Provides:       tex(conv-utf8-qx.tex)
 Provides:       tex(conv-utf8-t2a.tex)
 Provides:       tex(conv-utf8-t8m.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source23:       hyph-utf8.tar.xz
-Source24:       hyph-utf8.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source29:       hyph-utf8.tar.xz
+Source30:       hyph-utf8.doc.tar.xz
 
 %description -n texlive-hyph-utf8
 Modern native UTF-8 engines such as XeTeX and LuaTeX need
@@ -1324,16 +1787,13 @@ TeX systems are only read at iniTeX time, it is hoped that the
 UTF-8 patterns, with their converters, will completely supplant
 the older patterns.
 
-date: 2019-04-05 08:29:28 +0000
-
-
 %package -n texlive-hyph-utf8-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Documentation for texlive-hyph-utf8
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-hyph-utf8-doc:en)
 
 %description -n texlive-hyph-utf8-doc
@@ -1363,18 +1823,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/hyph-utf8/CHANGES
 %{_texmfdistdir}/doc/generic/hyph-utf8/HISTORY
-%{_texmfdistdir}/doc/generic/hyph-utf8/bg/azbukaExtended.pdf
-%{_texmfdistdir}/doc/generic/hyph-utf8/bg/azbukaExtended.tex
-%{_texmfdistdir}/doc/generic/hyph-utf8/es/README
-%{_texmfdistdir}/doc/generic/hyph-utf8/es/division.pdf
-%{_texmfdistdir}/doc/generic/hyph-utf8/hu/huhyphn.pdf
+%{_texmfdistdir}/doc/generic/hyph-utf8/README.md
 %{_texmfdistdir}/doc/generic/hyph-utf8/hyph-utf8.pdf
 %{_texmfdistdir}/doc/generic/hyph-utf8/hyph-utf8.tex
 %{_texmfdistdir}/doc/generic/hyph-utf8/hyphenation-distribution.pdf
 %{_texmfdistdir}/doc/generic/hyph-utf8/hyphenation-distribution.tex
 %{_texmfdistdir}/doc/generic/hyph-utf8/img/miktex-languages.png
 %{_texmfdistdir}/doc/generic/hyph-utf8/img/texlive-collection.png
-%{_texmfdistdir}/doc/generic/hyph-utf8/sa/hyphenmin.txt
 %{_texmfdistdir}/doc/luatex/hyph-utf8/README
 %{_texmfdistdir}/doc/luatex/hyph-utf8/luatex-hyphen.pdf
 
@@ -1392,22 +1847,29 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/luatex/hyph-utf8/etex.src
 %{_texmfdistdir}/tex/luatex/hyph-utf8/luatex-hyphen.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyph-utf8-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyph-utf8-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-afrikaans
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Afrikaans hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -1425,17 +1887,24 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-af.ec.tex)
 Provides:       tex(hyph-af.tex)
 Provides:       tex(hyph-quote-af.tex)
 Provides:       tex(loadhyph-af.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source25:       hyphen-afrikaans.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source31:       hyphen-afrikaans.tar.xz
 
 %description -n texlive-hyphen-afrikaans
 Hyphenation patterns for Afrikaans in T1/EC and UTF-8
@@ -1472,30 +1941,35 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-af.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/quote/hyph-quote-af.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-af.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-af.chr.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-af.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-af.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-af.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-afrikaans.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-afrikaans.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-afrikaans.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-afrikaans-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-afrikaans-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-ancientgreek
-Version:        %{texlive_version}.%{texlive_noarch}.svn50805
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Ancient Greek hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -1513,18 +1987,24 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(grahyph5.tex)
-Provides:       tex(hyph-grc-x-ibycus.tex)
 Provides:       tex(hyph-grc.tex)
 Provides:       tex(ibyhyph.tex)
 Provides:       tex(loadhyph-grc.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source26:       hyphen-ancientgreek.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source32:       hyphen-ancientgreek.tar.xz
 
 %description -n texlive-hyphen-ancientgreek
 Hyphenation patterns for Ancient Greek in LGR and UTF-8
@@ -1559,11 +2039,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-hyphen-ancientgreek
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-grc.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-grc-x-ibycus.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-grc.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-grc.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-grc.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-grc.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-grc.pat.txt
 %{_texmfdistdir}/tex/generic/hyphen/grahyph5.tex
 %{_texmfdistdir}/tex/generic/hyphen/ibyhyph.tex
@@ -1571,22 +2047,29 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-ancientgreek.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-ancientgreek.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-ancientgreek-%{texlive_version}.%{texlive_noarch}.svn50805-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-ancientgreek-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-arabic
-Version:        %{texlive_version}.%{texlive_noarch}.svn50805
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        (No) Arabic hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -1604,14 +2087,20 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
-Provides:       tex(hyph-ar.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source27:       hyphen-arabic.tar.xz
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source33:       hyphen-arabic.tar.xz
 
 %description -n texlive-hyphen-arabic
 Prevent hyphenation in Arabic.
@@ -1641,27 +2130,33 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-hyphen-arabic
 %defattr(-,root,root,755)
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-ar.tex
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-arabic.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-arabic.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-arabic.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-arabic-%{texlive_version}.%{texlive_noarch}.svn50805-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-arabic-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-armenian
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Armenian hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -1679,15 +2174,22 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-hy.tex)
 Provides:       tex(loadhyph-hy.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source28:       hyphen-armenian.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source34:       hyphen-armenian.tar.xz
 
 %description -n texlive-hyphen-armenian
 Hyphenation patterns for Armenian for Unicode engines.
@@ -1720,42 +2222,52 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-hy.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-hy.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-hy.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-hy.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-hy.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-hy.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-armenian.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-armenian.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-armenian.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-armenian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-armenian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-base
-Version:        %{texlive_version}.%{texlive_noarch}.svn50826
+Version:        %{texlive_version}.%{texlive_noarch}.svn54763
 Release:        0
 Summary:        Core hyphenation support files
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(dumyhyph.tex)
 Provides:       tex(hyphen.tex)
 Provides:       tex(hypht1.tex)
 Provides:       tex(language.dat)
 Provides:       tex(language.dat.lua)
 Provides:       tex(language.def)
+Provides:       tex(language.us.def)
 Provides:       tex(zerohyph.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source29:       hyphen-base.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source35:       hyphen-base.tar.xz
 
 %description -n texlive-hyphen-base
 Includes Knuth's original hyphen.tex, zerohyph.tex to disable
@@ -1796,22 +2308,29 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %config %verify(not md5 mtime size) %{_texmfconfdir}/tex/generic/config/language.dat.lua
 %config %verify(not md5 mtime size) %{_texmfconfdir}/tex/generic/config/language.def
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-base-%{texlive_version}.%{texlive_noarch}.svn50826-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-base-%{texlive_version}.%{texlive_noarch}.svn54763-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-basque
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Basque hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -1829,22 +2348,26 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-eu.ec.tex)
 Provides:       tex(hyph-eu.tex)
 Provides:       tex(loadhyph-eu.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source30:       hyphen-basque.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source36:       hyphen-basque.tar.xz
 
 %description -n texlive-hyphen-basque
 Hyphenation patterns for Basque in T1/EC and UTF-8 encodings.
-
-date: 2016-11-05 04:59:04 +0000
-
 %post -n texlive-hyphen-basque
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -1874,30 +2397,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-eu.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-eu.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-eu.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-eu.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-eu.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-eu.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-eu.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-basque.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-basque.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-basque.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-basque-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-basque-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-belarusian
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Belarusian hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -1915,17 +2442,24 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-be.t2a.tex)
 Provides:       tex(hyph-be.tex)
 Provides:       tex(hyph-quote-be.tex)
 Provides:       tex(loadhyph-be.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source31:       hyphen-belarusian.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source37:       hyphen-belarusian.tar.xz
 
 %description -n texlive-hyphen-belarusian
 Belarusian hyphenation patterns in T2A and UTF-8 encodings
@@ -1959,30 +2493,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-be.t2a.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/quote/hyph-quote-be.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-be.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-be.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-be.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-be.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-be.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-belarusian.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-belarusian.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-belarusian.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-belarusian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-belarusian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-bulgarian
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Bulgarian hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -2000,16 +2538,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-bg.t2a.tex)
 Provides:       tex(hyph-bg.tex)
 Provides:       tex(loadhyph-bg.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source32:       hyphen-bulgarian.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source38:       hyphen-bulgarian.tar.xz
 
 %description -n texlive-hyphen-bulgarian
 Hyphenation patterns for Bulgarian in T2A and UTF-8 encodings.
@@ -2042,30 +2587,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-bg.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-bg.t2a.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-bg.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-bg.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-bg.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-bg.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-bg.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-bulgarian.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-bulgarian.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-bulgarian.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-bulgarian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-bulgarian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-catalan
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Catalan hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -2083,16 +2632,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-ca.ec.tex)
 Provides:       tex(hyph-ca.tex)
 Provides:       tex(loadhyph-ca.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source33:       hyphen-catalan.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source39:       hyphen-catalan.tar.xz
 
 %description -n texlive-hyphen-catalan
 Hyphenation patterns for Catalan in T1/EC and UTF-8 encodings.
@@ -2125,98 +2681,35 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-ca.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-ca.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-ca.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ca.chr.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ca.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ca.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ca.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-catalan.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-catalan.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-catalan.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-catalan-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-catalan-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-chinese
-Version:        %{texlive_version}.%{texlive_noarch}.svn50821
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Chinese pinyin hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
-Requires(posttrans): findutils
-Requires(posttrans): grep
-Requires(posttrans): sed
-Requires(posttrans): texlive >= %{texlive_version}
-Provides:       tex(hyph-quote-zh-latn-pinyin.tex)
-Provides:       tex(hyph-zh-latn-pinyin.ec.tex)
-Provides:       tex(hyph-zh-latn-pinyin.tex)
-Provides:       tex(loadhyph-zh-latn-pinyin.tex)
-Provides:       tex(pyhyph.tex)
-Provides:       tex(pyhyph.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source34:       hyphen-chinese.tar.xz
-
-%description -n texlive-hyphen-chinese
-Hyphenation patterns for unaccented transliterated Mandarin
-Chinese (pinyin) in T1/EC and UTF-8 encodings.  The latter can
-hyphenate pinyin with or without tone markers; the former only
-without.
-%post -n texlive-hyphen-chinese
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-
-%postun -n texlive-hyphen-chinese 
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-if test $1 = 0; then
-    exit 0
-fi
-
-%posttrans -n texlive-hyphen-chinese
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
-test -d /var/run/texlive || exit 0
-VERBOSE=false %{_texmfdistdir}/texconfig/update || :
-
-%files -n texlive-hyphen-chinese
-%defattr(-,root,root,755)
-%{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-zh-latn-pinyin.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-zh-latn-pinyin.ec.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/quote/hyph-quote-zh-latn-pinyin.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex-8bit/pyhyph.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-zh-latn-pinyin.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-zh-latn-pinyin.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-zh-latn-pinyin.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-zh-latn-pinyin.lic.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-zh-latn-pinyin.pat.txt
-%{_texmfdistdir}/tex/generic/hyphen/pyhyph.tex
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-chinese-%{texlive_version}.%{texlive_noarch}.svn50821-%{release}-zypper
-%endif
-
-%package -n texlive-hyphen-churchslavonic
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
-Release:        0
-Summary:        Church Slavonic hyphenation patterns
-License:        LPPL-1.0
-Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires:       texlive-hyph-utf8 >= %{texlive_version}
-Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
-Requires(post): coreutils
-Requires(postun): coreutils
-Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -2234,15 +2727,118 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Provides:       tex(hyph-zh-latn-pinyin.ec.tex)
+Provides:       tex(hyph-zh-latn-pinyin.tex)
+Provides:       tex(loadhyph-zh-latn-pinyin.tex)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source40:       hyphen-chinese.tar.xz
+
+%description -n texlive-hyphen-chinese
+Hyphenation patterns for transliterated Mandarin Chinese
+(pinyin) in T1/EC and UTF-8 encodings. The latter can hyphenate
+pinyin with or without tone markers; the former only without.
+%post -n texlive-hyphen-chinese
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+> /var/run/texlive/run-fmtutil.language
+> /var/run/texlive/run-hyphen
+
+%postun -n texlive-hyphen-chinese 
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    > /var/run/texlive/run-fmtutil.language
+    > /var/run/texlive/run-hyphen
+    exit 0
+fi
+
+%posttrans -n texlive-hyphen-chinese
+%if %{with zypper_posttrans}
+test -z "$ZYPP_IS_RUNNING" || exit 0
+%endif
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-hyphen-chinese
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-zh-latn-pinyin.tex
+%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-zh-latn-pinyin.ec.tex
+%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-zh-latn-pinyin.tex
+%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-zh-latn-pinyin.pat.txt
+%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-chinese.dat
+%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-chinese.def
+%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-chinese.dat.lua
+%if %{with zypper_posttrans}
+/var/adm/update-scripts/texlive-hyphen-chinese-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
+%endif
+
+%package -n texlive-hyphen-churchslavonic
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
+Release:        0
+Summary:        Church Slavonic hyphenation patterns
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
+Requires:       texlive-hyphen-base >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(post): findutils
+Requires(post): grep
+Requires(post): sed
+Requires(post): texlive >= %{texlive_version}
+Requires(post): tex(language.dat)
+Requires(post): tex(language.def)
+Requires(post): tex(language.dat.lua)
+#!BuildIgnore:  tex(language.dat)
+#!BuildIgnore:  tex(language.def)
+#!BuildIgnore:  tex(language.dat.lua)
+Requires(postun): findutils
+Requires(postun): grep
+Requires(postun): sed
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): tex(language.dat)
+Requires(postun): tex(language.def)
+Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-cu.tex)
 Provides:       tex(loadhyph-cu.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source35:       hyphen-churchslavonic.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source41:       hyphen-churchslavonic.tar.xz
 
 %description -n texlive-hyphen-churchslavonic
 Hyphenation patterns for Church Slavonic in UTF-8 encoding
@@ -2274,30 +2870,35 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-cu.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-cu.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-cu.chr.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-cu.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-cu.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-cu.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-churchslavonic.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-churchslavonic.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-churchslavonic.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-churchslavonic-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-churchslavonic-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-coptic
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Coptic hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -2315,16 +2916,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(copthyph.tex)
 Provides:       tex(hyph-cop.tex)
 Provides:       tex(loadhyph-cop.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source36:       hyphen-coptic.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source42:       hyphen-coptic.tar.xz
 
 %description -n texlive-hyphen-coptic
 Hyphenation patterns for Coptic in UTF-8 encoding as well as in
@@ -2360,30 +2968,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-cop.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex-8bit/copthyph.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-cop.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-cop.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-cop.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-cop.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-cop.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-coptic.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-coptic.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-coptic.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-coptic-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-coptic-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-croatian
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Croatian hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -2401,22 +3013,26 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-hr.ec.tex)
 Provides:       tex(hyph-hr.tex)
 Provides:       tex(loadhyph-hr.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source37:       hyphen-croatian.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source43:       hyphen-croatian.tar.xz
 
 %description -n texlive-hyphen-croatian
 Hyphenation patterns for Croatian in T1/EC and UTF-8 encodings.
-
-date: 2018-01-06 11:14:59 +0000
-
 %post -n texlive-hyphen-croatian
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -2446,30 +3062,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-hr.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-hr.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-hr.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-hr.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-hr.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-hr.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-hr.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-croatian.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-croatian.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-croatian.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-croatian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-croatian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-czech
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Czech hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -2487,16 +3107,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-cs.ec.tex)
 Provides:       tex(hyph-cs.tex)
 Provides:       tex(loadhyph-cs.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source38:       hyphen-czech.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source44:       hyphen-czech.tar.xz
 
 %description -n texlive-hyphen-czech
 Hyphenation patterns for Czech in T1/EC and UTF-8 encodings.
@@ -2531,30 +3158,35 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-cs.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-cs.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-cs.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-cs.chr.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-cs.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-cs.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-cs.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-czech.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-czech.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-czech.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-czech-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-czech-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-danish
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Danish hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -2572,22 +3204,26 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-da.ec.tex)
 Provides:       tex(hyph-da.tex)
 Provides:       tex(loadhyph-da.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source39:       hyphen-danish.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source45:       hyphen-danish.tar.xz
 
 %description -n texlive-hyphen-danish
 Hyphenation patterns for Danish in T1/EC and UTF-8 encodings.
-
-date: 2016-11-05 04:59:04 +0000
-
 %post -n texlive-hyphen-danish
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -2617,30 +3253,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-da.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-da.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-da.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-da.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-da.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-da.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-da.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-danish.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-danish.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-danish.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-danish-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-danish-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-dutch
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn54568
 Release:        0
 Summary:        Dutch hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -2658,25 +3298,29 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-nl.ec.tex)
 Provides:       tex(hyph-nl.tex)
 Provides:       tex(loadhyph-nl.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source40:       hyphen-dutch.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source46:       hyphen-dutch.tar.xz
 
 %description -n texlive-hyphen-dutch
 Hyphenation patterns for Dutch in T1/EC and UTF-8 encodings.
 These patterns don't handle cases like 'menuutje' > 'menu-tje',
 and don't hyphenate words that have different hyphenations
 according to their meaning.
-
-date: 2018-01-06 11:14:59 +0000
-
 %post -n texlive-hyphen-dutch
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -2706,30 +3350,35 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-nl.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-nl.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-nl.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-nl.chr.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-nl.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-nl.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-nl.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-dutch.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-dutch.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-dutch.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-dutch-%{texlive_version}.%{texlive_noarch}.1.1svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-dutch-%{texlive_version}.%{texlive_noarch}.1.1svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-english
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        English hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -2747,23 +3396,30 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-en-gb.tex)
 Provides:       tex(hyph-en-us.tex)
 Provides:       tex(loadhyph-en-gb.tex)
 Provides:       tex(loadhyph-en-us.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source41:       hyphen-english.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source47:       hyphen-english.tar.xz
 
 %description -n texlive-hyphen-english
 Additional hyphenation patterns for American and British
-English in ASCII encoding.  The American English patterns
+English in ASCII encoding. The American English patterns
 (usenglishmax) greatly extend the standard patterns from Knuth
-to find many additional hyphenation points.  British English
+to find many additional hyphenation points. British English
 hyphenation is completely different from US English, so has its
 own set of patterns.
 %post -n texlive-hyphen-english
@@ -2796,34 +3452,37 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-en-us.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-en-gb.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-en-us.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-en-gb.chr.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-en-gb.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-en-gb.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-en-gb.pat.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-en-us.chr.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-en-us.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-en-us.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-en-us.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-english.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-english.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-english.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-english-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-english-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-esperanto
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Esperanto hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -2841,16 +3500,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-eo.il3.tex)
 Provides:       tex(hyph-eo.tex)
 Provides:       tex(loadhyph-eo.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source42:       hyphen-esperanto.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source48:       hyphen-esperanto.tar.xz
 
 %description -n texlive-hyphen-esperanto
 Hyphenation patterns for Esperanto ISO Latin 3 and UTF-8
@@ -2887,30 +3553,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-eo.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-eo.il3.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-eo.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-eo.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-eo.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-eo.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-eo.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-esperanto.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-esperanto.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-esperanto.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-esperanto-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-esperanto-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-estonian
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Estonian hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -2928,16 +3598,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-et.ec.tex)
 Provides:       tex(hyph-et.tex)
 Provides:       tex(loadhyph-et.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source43:       hyphen-estonian.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source49:       hyphen-estonian.tar.xz
 
 %description -n texlive-hyphen-estonian
 Hyphenation patterns for Estonian in T1/EC and UTF-8 encodings.
@@ -2970,30 +3647,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-et.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-et.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-et.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-et.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-et.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-et.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-et.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-estonian.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-estonian.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-estonian.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-estonian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-estonian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-ethiopic
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Hyphenation patterns for Ethiopic scripts
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -3011,15 +3692,22 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-mul-ethi.tex)
 Provides:       tex(loadhyph-mul-ethi.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source44:       hyphen-ethiopic.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source50:       hyphen-ethiopic.tar.xz
 
 %description -n texlive-hyphen-ethiopic
 Hyphenation patterns for languages written using the Ethiopic
@@ -3055,30 +3743,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-mul-ethi.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-mul-ethi.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-mul-ethi.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-mul-ethi.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-mul-ethi.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-mul-ethi.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-ethiopic.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-ethiopic.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-ethiopic.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-ethiopic-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-ethiopic-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-farsi
-Version:        %{texlive_version}.%{texlive_noarch}.svn50805
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        (No) Persian hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -3096,14 +3788,20 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
-Provides:       tex(hyph-fa.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source45:       hyphen-farsi.tar.xz
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source51:       hyphen-farsi.tar.xz
 
 %description -n texlive-hyphen-farsi
 Prevent hyphenation in Persian.
@@ -3133,27 +3831,33 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-hyphen-farsi
 %defattr(-,root,root,755)
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-fa.tex
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-farsi.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-farsi.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-farsi.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-farsi-%{texlive_version}.%{texlive_noarch}.svn50805-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-farsi-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-finnish
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Finnish hyphenation patterns
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -3171,22 +3875,26 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-fi.ec.tex)
 Provides:       tex(hyph-fi.tex)
 Provides:       tex(loadhyph-fi.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source46:       hyphen-finnish.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source52:       hyphen-finnish.tar.xz
 
 %description -n texlive-hyphen-finnish
 Hyphenation patterns for Finnish in T1/EC and UTF-8 encodings.
-
-date: 2016-07-20 06:22:15 +0000
-
 %post -n texlive-hyphen-finnish
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -3216,30 +3924,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-fi.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-fi.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-fi.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-fi.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-fi.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-fi.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-fi.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-finnish.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-finnish.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-finnish.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-finnish-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-finnish-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-french
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        French hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -3257,17 +3969,24 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-fr.ec.tex)
 Provides:       tex(hyph-fr.tex)
 Provides:       tex(hyph-quote-fr.tex)
 Provides:       tex(loadhyph-fr.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source47:       hyphen-french.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source53:       hyphen-french.tar.xz
 
 %description -n texlive-hyphen-french
 Hyphenation patterns for French in T1/EC and UTF-8 encodings.
@@ -3301,30 +4020,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-fr.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/quote/hyph-quote-fr.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-fr.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-fr.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-fr.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-fr.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-fr.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-french.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-french.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-french.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-french-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-french-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-friulan
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Friulan hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -3342,17 +4065,24 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-fur.ec.tex)
 Provides:       tex(hyph-fur.tex)
 Provides:       tex(hyph-quote-fur.tex)
 Provides:       tex(loadhyph-fur.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source48:       hyphen-friulan.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source54:       hyphen-friulan.tar.xz
 
 %description -n texlive-hyphen-friulan
 Hyphenation patterns for Friulan in ASCII encoding. They are
@@ -3389,30 +4119,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-fur.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/quote/hyph-quote-fur.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-fur.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-fur.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-fur.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-fur.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-fur.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-friulan.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-friulan.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-friulan.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-friulan-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-friulan-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-galician
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Galician hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -3430,16 +4164,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-gl.ec.tex)
 Provides:       tex(hyph-gl.tex)
 Provides:       tex(loadhyph-gl.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source49:       hyphen-galician.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source55:       hyphen-galician.tar.xz
 
 %description -n texlive-hyphen-galician
 Hyphenation patterns for Galician in T1/EC and UTF-8 encodings.
@@ -3472,30 +4213,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-gl.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-gl.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-gl.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-gl.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-gl.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-gl.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-gl.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-galician.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-galician.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-galician.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-galician-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-galician-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-georgian
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Georgian hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -3513,16 +4258,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-ka.t8m.tex)
 Provides:       tex(hyph-ka.tex)
 Provides:       tex(loadhyph-ka.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source50:       hyphen-georgian.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source56:       hyphen-georgian.tar.xz
 
 %description -n texlive-hyphen-georgian
 Hyphenation patterns for Georgian in T8M, T8K and UTF-8
@@ -3556,31 +4308,36 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-ka.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-ka.t8m.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-ka.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ka.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ka.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ka.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ka.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-georgian.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-georgian.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-georgian.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-georgian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-georgian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-german
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54758
 Release:        0
 Summary:        German hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-dehyph >= %{texlive_version}
+#!BuildIgnore: texlive-dehyph
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -3598,10 +4355,17 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-de-1901.ec.tex)
 Provides:       tex(hyph-de-1901.tex)
 Provides:       tex(hyph-de-1996.ec.tex)
@@ -3611,9 +4375,9 @@ Provides:       tex(hyph-de-ch-1901.tex)
 Provides:       tex(loadhyph-de-1901.tex)
 Provides:       tex(loadhyph-de-1996.tex)
 Provides:       tex(loadhyph-de-ch-1901.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source51:       hyphen-german.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source57:       hyphen-german.tar.xz
 
 %description -n texlive-hyphen-german
 Hyphenation patterns for German in T1/EC and UTF-8 encodings,
@@ -3626,9 +4390,6 @@ backward-compatibility reasons. Swiss German patterns are
 suitable for Swiss Standard German (Hochdeutsch) not the
 Alemannic dialects spoken in Switzerland (Schwyzerduetsch).
 There are no known patterns for written Schwyzerduetsch.
-
-date: 2018-09-01 13:39:22 +0000
-
 %post -n texlive-hyphen-german
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -3664,38 +4425,36 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-de-1901.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-de-1996.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-de-ch-1901.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-de-1901.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-de-1901.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-de-1901.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-de-1901.pat.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-de-1996.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-de-1996.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-de-1996.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-de-1996.pat.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-de-ch-1901.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-de-ch-1901.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-de-ch-1901.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-de-ch-1901.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-german.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-german.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-german.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-german-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-german-%{texlive_version}.%{texlive_noarch}.svn54758-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-greek
-Version:        %{texlive_version}.%{texlive_noarch}.5svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.5svn54568
 Release:        0
 Summary:        Modern Greek hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -3713,10 +4472,17 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-hyphen-greek-doc >= %{texlive_version}
 Provides:       tex(grmhyph5.tex)
 Provides:       tex(grphyph5.tex)
@@ -3724,27 +4490,24 @@ Provides:       tex(hyph-el-monoton.tex)
 Provides:       tex(hyph-el-polyton.tex)
 Provides:       tex(loadhyph-el-monoton.tex)
 Provides:       tex(loadhyph-el-polyton.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source52:       hyphen-greek.tar.xz
-Source53:       hyphen-greek.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source58:       hyphen-greek.tar.xz
+Source59:       hyphen-greek.doc.tar.xz
 
 %description -n texlive-hyphen-greek
 Hyphenation patterns for Modern Greek in monotonic and
-polytonic spelling in LGR and UTF-8 encodings.  Patterns in
+polytonic spelling in LGR and UTF-8 encodings. Patterns in
 UTF-8 use two code positions for each of the vowels with acute
 accent (a.k.a tonos, oxia), e.g., U+03AC, U+1F71 for alpha.
 
-date: 2016-07-20 06:10:44 +0000
-
-
 %package -n texlive-hyphen-greek-doc
-Version:        %{texlive_version}.%{texlive_noarch}.5svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.5svn54568
 Release:        0
 Summary:        Documentation for texlive-hyphen-greek
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-hyphen-greek-doc
 This package includes the documentation for texlive-hyphen-greek
@@ -3790,13 +4553,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-el-polyton.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-el-monoton.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-el-polyton.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-el-monoton.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-el-monoton.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-el-monoton.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-el-monoton.pat.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-el-polyton.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-el-polyton.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-el-polyton.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-el-polyton.pat.txt
 %{_texmfdistdir}/tex/generic/hyphen/grmhyph5.tex
 %{_texmfdistdir}/tex/generic/hyphen/grphyph5.tex
@@ -3804,22 +4561,29 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-greek.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-greek.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-greek-%{texlive_version}.%{texlive_noarch}.5svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-greek-%{texlive_version}.%{texlive_noarch}.5svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-hungarian
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Hungarian hyphenation patterns
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -3837,33 +4601,37 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-hyphen-hungarian-doc >= %{texlive_version}
 Provides:       tex(hyph-hu.ec.tex)
 Provides:       tex(hyph-hu.tex)
 Provides:       tex(loadhyph-hu.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source54:       hyphen-hungarian.tar.xz
-Source55:       hyphen-hungarian.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source60:       hyphen-hungarian.tar.xz
+Source61:       hyphen-hungarian.doc.tar.xz
 
 %description -n texlive-hyphen-hungarian
 Hyphenation patterns for Hungarian in T1/EC and UTF-8
 encodings.
 
-date: 2016-11-05 04:59:04 +0000
-
-
 %package -n texlive-hyphen-hungarian-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Documentation for texlive-hyphen-hungarian
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-hyphen-hungarian-doc
 This package includes the documentation for texlive-hyphen-hungarian
@@ -3905,30 +4673,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-hu.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-hu.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-hu.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-hu.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-hu.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-hu.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-hu.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-hungarian.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-hungarian.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-hungarian.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-hungarian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-hungarian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-icelandic
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Icelandic hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -3946,23 +4718,27 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-is.ec.tex)
 Provides:       tex(hyph-is.tex)
 Provides:       tex(loadhyph-is.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source56:       hyphen-icelandic.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source62:       hyphen-icelandic.tar.xz
 
 %description -n texlive-hyphen-icelandic
 Hyphenation patterns for Icelandic in T1/EC and UTF-8
 encodings.
-
-date: 2016-11-05 04:59:04 +0000
-
 %post -n texlive-hyphen-icelandic
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -3992,30 +4768,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-is.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-is.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-is.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-is.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-is.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-is.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-is.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-icelandic.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-icelandic.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-icelandic.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-icelandic-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-icelandic-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-indic
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Indic hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -4033,10 +4813,17 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-as.tex)
 Provides:       tex(hyph-bn.tex)
 Provides:       tex(hyph-gu.tex)
@@ -4061,9 +4848,9 @@ Provides:       tex(loadhyph-pa.tex)
 Provides:       tex(loadhyph-pi.tex)
 Provides:       tex(loadhyph-ta.tex)
 Provides:       tex(loadhyph-te.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source57:       hyphen-indic.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source63:       hyphen-indic.tar.xz
 
 %description -n texlive-hyphen-indic
 Hyphenation patterns for Assamese, Bengali, Gujarati, Hindi,
@@ -4119,74 +4906,45 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-pi.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-ta.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-te.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-as.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-as.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-as.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-as.pat.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-bn.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-bn.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-bn.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-bn.pat.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-gu.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-gu.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-gu.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-gu.pat.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-hi.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-hi.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-hi.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-hi.pat.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-kn.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-kn.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-kn.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-kn.pat.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ml.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ml.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ml.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ml.pat.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-mr.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-mr.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-mr.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-mr.pat.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-or.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-or.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-or.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-or.pat.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-pa.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-pa.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-pa.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-pa.pat.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-pi.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-pi.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-pi.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-pi.pat.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ta.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ta.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ta.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ta.pat.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-te.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-te.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-te.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-te.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-indic.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-indic.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-indic.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-indic-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-indic-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-indonesian
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Indonesian hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -4204,19 +4962,26 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-id.tex)
 Provides:       tex(loadhyph-id.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source58:       hyphen-indonesian.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source64:       hyphen-indonesian.tar.xz
 
 %description -n texlive-hyphen-indonesian
 Hyphenation patterns for Indonesian (Bahasa Indonesia) in ASCII
-encoding.  They are probably also usable for Malay (Bahasa
+encoding. They are probably also usable for Malay (Bahasa
 Melayu).
 %post -n texlive-hyphen-indonesian
 mkdir -p /var/run/texlive
@@ -4246,30 +5011,35 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-id.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-id.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-id.chr.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-id.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-id.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-id.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-indonesian.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-indonesian.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-indonesian.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-indonesian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-indonesian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-interlingua
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Interlingua hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -4287,15 +5057,22 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-ia.tex)
 Provides:       tex(loadhyph-ia.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source59:       hyphen-interlingua.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source65:       hyphen-interlingua.tar.xz
 
 %description -n texlive-hyphen-interlingua
 Hyphenation patterns for Interlingua in ASCII encoding.
@@ -4327,30 +5104,35 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-ia.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-ia.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ia.chr.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ia.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ia.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ia.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-interlingua.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-interlingua.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-interlingua.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-interlingua-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-interlingua-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-irish
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Irish hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -4368,16 +5150,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-ga.ec.tex)
 Provides:       tex(hyph-ga.tex)
 Provides:       tex(loadhyph-ga.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source60:       hyphen-irish.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source66:       hyphen-irish.tar.xz
 
 %description -n texlive-hyphen-irish
 Hyphenation patterns for Irish (Gaeilge) in T1/EC and UTF-8
@@ -4411,30 +5200,35 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-ga.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-ga.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-ga.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ga.chr.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ga.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ga.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ga.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-irish.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-irish.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-irish.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-irish-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-irish-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-italian
-Version:        %{texlive_version}.%{texlive_noarch}.4.8gsvn50792
+Version:        %{texlive_version}.%{texlive_noarch}.4.8gsvn54568
 Release:        0
 Summary:        Italian hyphenation patterns
 License:        LGPL-2.1-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -4452,25 +5246,29 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-it.tex)
 Provides:       tex(hyph-quote-it.tex)
 Provides:       tex(loadhyph-it.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source61:       hyphen-italian.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source67:       hyphen-italian.tar.xz
 
 %description -n texlive-hyphen-italian
 Hyphenation patterns for Italian in ASCII encoding. Compliant
 with the Recommendation UNI 6461 on hyphenation issued by the
 Italian Standards Institution (Ente Nazionale di Unificazione
 UNI).
-
-date: 2018-10-09 07:22:45 +0000
-
 %post -n texlive-hyphen-italian
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -4500,30 +5298,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-it.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/quote/hyph-quote-it.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-it.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-it.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-it.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-it.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-it.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-italian.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-italian.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-italian.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-italian-%{texlive_version}.%{texlive_noarch}.4.8gsvn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-italian-%{texlive_version}.%{texlive_noarch}.4.8gsvn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-kurmanji
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Kurmanji hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -4541,16 +5343,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-kmr.ec.tex)
 Provides:       tex(hyph-kmr.tex)
 Provides:       tex(loadhyph-kmr.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source62:       hyphen-kurmanji.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source68:       hyphen-kurmanji.tar.xz
 
 %description -n texlive-hyphen-kurmanji
 Hyphenation patterns for Kurmanji (Northern Kurdish) as spoken
@@ -4585,30 +5394,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-kmr.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-kmr.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-kmr.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-kmr.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-kmr.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-kmr.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-kmr.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-kurmanji.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-kurmanji.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-kurmanji.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-kurmanji-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-kurmanji-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-latin
-Version:        %{texlive_version}.%{texlive_noarch}.3.1svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.3.1svn54568
 Release:        0
 Summary:        Latin hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -4626,10 +5439,18 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Provides:       tex(hyph-la-x-classic.ec.tex)
 Provides:       tex(hyph-la-x-classic.tex)
 Provides:       tex(hyph-la-x-liturgic.ec.tex)
 Provides:       tex(hyph-la-x-liturgic.tex)
@@ -4638,9 +5459,9 @@ Provides:       tex(hyph-la.tex)
 Provides:       tex(loadhyph-la-x-classic.tex)
 Provides:       tex(loadhyph-la-x-liturgic.tex)
 Provides:       tex(loadhyph-la.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source63:       hyphen-latin.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source69:       hyphen-latin.tar.xz
 
 %description -n texlive-hyphen-latin
 Hyphenation patterns for Latin in T1/EC and UTF-8 encodings,
@@ -4653,9 +5474,6 @@ Classical Latin in T1/EC and UTF-8 encodings. Classical Latin
 hyphenation patterns are different from those of 'plain' Latin,
 the latter being more adapted to modern Latin. Hyphenation
 patterns for the Liturgical Latin in T1/EC and UTF-8 encodings.
-
-date: 2016-11-05 04:59:04 +0000
-
 %post -n texlive-hyphen-latin
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -4687,41 +5505,40 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-la.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-la-x-liturgic.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-la.ec.tex
+%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex-8bit/hyph-la-x-classic.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-la-x-classic.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-la-x-liturgic.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-la.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-la-x-classic.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-la-x-classic.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-la-x-classic.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-la-x-classic.pat.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-la-x-liturgic.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-la-x-liturgic.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-la-x-liturgic.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-la-x-liturgic.pat.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-la.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-la.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-la.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-la.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-latin.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-latin.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-latin.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-latin-%{texlive_version}.%{texlive_noarch}.3.1svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-latin-%{texlive_version}.%{texlive_noarch}.3.1svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-latvian
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Latvian hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -4739,16 +5556,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-lv.l7x.tex)
 Provides:       tex(hyph-lv.tex)
 Provides:       tex(loadhyph-lv.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source64:       hyphen-latvian.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source70:       hyphen-latvian.tar.xz
 
 %description -n texlive-hyphen-latvian
 Hyphenation patterns for Latvian in L7X and UTF-8 encodings.
@@ -4781,30 +5605,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-lv.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-lv.l7x.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-lv.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-lv.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-lv.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-lv.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-lv.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-latvian.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-latvian.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-latvian.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-latvian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-latvian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-lithuanian
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Lithuanian hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -4822,16 +5650,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-lt.l7x.tex)
 Provides:       tex(hyph-lt.tex)
 Provides:       tex(loadhyph-lt.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source65:       hyphen-lithuanian.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source71:       hyphen-lithuanian.tar.xz
 
 %description -n texlive-hyphen-lithuanian
 Hyphenation patterns for Lithuanian in L7X and UTF-8 encodings.
@@ -4865,30 +5700,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-lt.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-lt.l7x.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-lt.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-lt.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-lt.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-lt.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-lt.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-lithuanian.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-lithuanian.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-lithuanian.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-lithuanian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-lithuanian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
-%package -n texlive-hyphen-mongolian
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+%package -n texlive-hyphen-macedonian
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
-Summary:        Mongolian hyphenation patterns in Cyrillic script
+Summary:        Macedonian hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -4906,19 +5745,118 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Provides:       tex(hyph-mk.tex)
+Provides:       tex(loadhyph-mk.tex)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source72:       hyphen-macedonian.tar.xz
+
+%description -n texlive-hyphen-macedonian
+Hyphenation patterns for Macedonian
+%post -n texlive-hyphen-macedonian
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+> /var/run/texlive/run-fmtutil.language
+> /var/run/texlive/run-hyphen
+
+%postun -n texlive-hyphen-macedonian 
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    > /var/run/texlive/run-fmtutil.language
+    > /var/run/texlive/run-hyphen
+    exit 0
+fi
+
+%posttrans -n texlive-hyphen-macedonian
+%if %{with zypper_posttrans}
+test -z "$ZYPP_IS_RUNNING" || exit 0
+%endif
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-hyphen-macedonian
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-mk.tex
+%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-mk.tex
+%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-mk.pat.txt
+%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-macedonian.dat
+%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-macedonian.def
+%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-macedonian.dat.lua
+%if %{with zypper_posttrans}
+/var/adm/update-scripts/texlive-hyphen-macedonian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
+%endif
+
+%package -n texlive-hyphen-mongolian
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
+Release:        0
+Summary:        Mongolian hyphenation patterns in Cyrillic script
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
+Requires:       texlive-hyphen-base >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(post): findutils
+Requires(post): grep
+Requires(post): sed
+Requires(post): texlive >= %{texlive_version}
+Requires(post): tex(language.dat)
+Requires(post): tex(language.def)
+Requires(post): tex(language.dat.lua)
+#!BuildIgnore:  tex(language.dat)
+#!BuildIgnore:  tex(language.def)
+#!BuildIgnore:  tex(language.dat.lua)
+Requires(postun): findutils
+Requires(postun): grep
+Requires(postun): sed
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): tex(language.dat)
+Requires(postun): tex(language.def)
+Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-mn-cyrl-x-lmc.lmc.tex)
 Provides:       tex(hyph-mn-cyrl-x-lmc.tex)
 Provides:       tex(hyph-mn-cyrl.t2a.tex)
 Provides:       tex(hyph-mn-cyrl.tex)
 Provides:       tex(loadhyph-mn-cyrl-x-lmc.tex)
 Provides:       tex(loadhyph-mn-cyrl.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source66:       hyphen-mongolian.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source73:       hyphen-mongolian.tar.xz
 
 %description -n texlive-hyphen-mongolian
 Hyphenation patterns for Mongolian in T2A, LMC and UTF-8
@@ -4956,30 +5894,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-mn-cyrl.t2a.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-mn-cyrl-x-lmc.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-mn-cyrl.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-mn-cyrl.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-mn-cyrl.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-mn-cyrl.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-mn-cyrl.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-mongolian.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-mongolian.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-mongolian.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-mongolian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-mongolian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-norwegian
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Norwegian Bokmal and Nynorsk hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -4997,10 +5939,17 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-nb.ec.tex)
 Provides:       tex(hyph-nb.tex)
 Provides:       tex(hyph-nn.ec.tex)
@@ -5008,9 +5957,9 @@ Provides:       tex(hyph-nn.tex)
 Provides:       tex(hyph-no.tex)
 Provides:       tex(loadhyph-nb.tex)
 Provides:       tex(loadhyph-nn.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source67:       hyphen-norwegian.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source74:       hyphen-norwegian.tar.xz
 
 %description -n texlive-hyphen-norwegian
 Hyphenation patterns for Norwegian Bokmal and Nynorsk in T1/EC
@@ -5048,34 +5997,37 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-nb.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-nn.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-no.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-nb.chr.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-nb.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-nb.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-nb.pat.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-nn.chr.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-nn.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-nn.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-nn.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-norwegian.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-norwegian.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-norwegian.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-norwegian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-norwegian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-occitan
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Occitan hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -5093,17 +6045,24 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-oc.ec.tex)
 Provides:       tex(hyph-oc.tex)
 Provides:       tex(hyph-quote-oc.tex)
 Provides:       tex(loadhyph-oc.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source68:       hyphen-occitan.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source75:       hyphen-occitan.tar.xz
 
 %description -n texlive-hyphen-occitan
 Hyphenation patterns for Occitan in T1/EC and UTF-8 encodings.
@@ -5142,30 +6101,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-oc.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/quote/hyph-quote-oc.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-oc.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-oc.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-oc.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-oc.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-oc.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-occitan.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-occitan.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-occitan.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-occitan-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-occitan-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-piedmontese
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Piedmontese hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -5183,16 +6146,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-pms.tex)
 Provides:       tex(hyph-quote-pms.tex)
 Provides:       tex(loadhyph-pms.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source69:       hyphen-piedmontese.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source76:       hyphen-piedmontese.tar.xz
 
 %description -n texlive-hyphen-piedmontese
 Hyphenation patterns for Piedmontese in ASCII encoding.
@@ -5227,30 +6197,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-pms.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/quote/hyph-quote-pms.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-pms.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-pms.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-pms.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-pms.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-pms.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-piedmontese.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-piedmontese.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-piedmontese.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-piedmontese-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-piedmontese-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-polish
-Version:        %{texlive_version}.%{texlive_noarch}.3.0asvn50792
+Version:        %{texlive_version}.%{texlive_noarch}.3.0asvn54568
 Release:        0
 Summary:        Polish hyphenation patterns
 License:        SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -5268,24 +6242,28 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-pl.qx.tex)
 Provides:       tex(hyph-pl.tex)
 Provides:       tex(loadhyph-pl.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source70:       hyphen-polish.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source77:       hyphen-polish.tar.xz
 
 %description -n texlive-hyphen-polish
 Hyphenation patterns for Polish in QX and UTF-8 encodings.
 These patterns are also used by Polish TeX formats MeX and
 LaMeX.
-
-date: 2016-07-17 13:05:50 +0000
-
 %post -n texlive-hyphen-polish
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -5315,30 +6293,35 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-pl.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-pl.qx.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-pl.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-pl.chr.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-pl.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-pl.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-pl.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-polish.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-polish.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-polish.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-polish-%{texlive_version}.%{texlive_noarch}.3.0asvn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-polish-%{texlive_version}.%{texlive_noarch}.3.0asvn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-portuguese
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Portuguese hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -5356,16 +6339,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-pt.ec.tex)
 Provides:       tex(hyph-pt.tex)
 Provides:       tex(loadhyph-pt.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source71:       hyphen-portuguese.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source78:       hyphen-portuguese.tar.xz
 
 %description -n texlive-hyphen-portuguese
 Hyphenation patterns for Portuguese in T1/EC and UTF-8
@@ -5399,30 +6389,35 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-pt.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-pt.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-pt.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-pt.chr.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-pt.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-pt.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-pt.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-portuguese.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-portuguese.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-portuguese.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-portuguese-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-portuguese-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-romanian
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Romanian hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -5440,16 +6435,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-ro.ec.tex)
 Provides:       tex(hyph-ro.tex)
 Provides:       tex(loadhyph-ro.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source72:       hyphen-romanian.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source79:       hyphen-romanian.tar.xz
 
 %description -n texlive-hyphen-romanian
 Hyphenation patterns for Romanian in T1/EC and UTF-8 encodings.
@@ -5486,30 +6488,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-ro.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-ro.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-ro.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ro.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ro.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ro.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ro.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-romanian.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-romanian.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-romanian.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-romanian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-romanian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-romansh
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Romansh hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -5527,16 +6533,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-quote-rm.tex)
 Provides:       tex(hyph-rm.tex)
 Provides:       tex(loadhyph-rm.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source73:       hyphen-romansh.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source80:       hyphen-romansh.tar.xz
 
 %description -n texlive-hyphen-romansh
 Hyphenation patterns for Romansh in ASCII encoding. They are
@@ -5571,31 +6584,36 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-rm.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/quote/hyph-quote-rm.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-rm.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-rm.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-rm.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-rm.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-rm.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-romansh.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-romansh.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-romansh.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-romansh-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-romansh-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-russian
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Russian hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
 Requires:       texlive-ruhyphen >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-ruhyphen
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -5613,25 +6631,32 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-ru.t2a.tex)
 Provides:       tex(hyph-ru.tex)
 Provides:       tex(loadhyph-ru.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source74:       hyphen-russian.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source81:       hyphen-russian.tar.xz
 
 %description -n texlive-hyphen-russian
 Hyphenation patterns for Russian in T2A and UTF-8 encodings.
 For 8-bit engines, the 'ruhyphen' package provides a number of
 different pattern sets, as well as different (8-bit) encodings,
-that can be chosen at format-generation time.  The UTF-8
-version only provides the default pattern set.  A mechanism
-similar to the one used for 8-bit patterns may be implemented
-in the future.
+that can be chosen at format-generation time. The UTF-8 version
+only provides the default pattern set. A mechanism similar to
+the one used for 8-bit patterns may be implemented in the
+future.
 %post -n texlive-hyphen-russian
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -5661,30 +6686,35 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-ru.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-ru.t2a.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-ru.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ru.chr.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ru.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ru.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-ru.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-russian.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-russian.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-russian.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-russian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-russian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-sanskrit
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Sanskrit hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -5702,17 +6732,24 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-hyphen-sanskrit-doc >= %{texlive_version}
 Provides:       tex(hyph-sa.tex)
 Provides:       tex(loadhyph-sa.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source75:       hyphen-sanskrit.tar.xz
-Source76:       hyphen-sanskrit.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source82:       hyphen-sanskrit.tar.xz
+Source83:       hyphen-sanskrit.doc.tar.xz
 
 %description -n texlive-hyphen-sanskrit
 Hyphenation patterns for Sanskrit and Prakrit in
@@ -5720,12 +6757,12 @@ transliteration, and in Devanagari, Bengali, Kannada, Malayalam
 and Telugu scripts for Unicode engines.
 
 %package -n texlive-hyphen-sanskrit-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Documentation for texlive-hyphen-sanskrit
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-hyphen-sanskrit-doc
 This package includes the documentation for texlive-hyphen-sanskrit
@@ -5762,30 +6799,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-sa.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-sa.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sa.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sa.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sa.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sa.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-sanskrit.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-sanskrit.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-sanskrit.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-sanskrit-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-sanskrit-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-serbian
-Version:        %{texlive_version}.%{texlive_noarch}.1.0asvn50792
+Version:        %{texlive_version}.%{texlive_noarch}.1.0asvn54568
 Release:        0
 Summary:        Serbian hyphenation patterns
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -5803,10 +6844,17 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-sh-cyrl.t2a.tex)
 Provides:       tex(hyph-sh-cyrl.tex)
 Provides:       tex(hyph-sh-latn.ec.tex)
@@ -5814,9 +6862,9 @@ Provides:       tex(hyph-sh-latn.tex)
 Provides:       tex(hyph-sr-cyrl.tex)
 Provides:       tex(loadhyph-sr-cyrl.tex)
 Provides:       tex(loadhyph-sr-latn.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source77:       hyphen-serbian.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source84:       hyphen-serbian.tar.xz
 
 %description -n texlive-hyphen-serbian
 Hyphenation patterns for Serbian in T1/EC, T2A and UTF-8
@@ -5825,9 +6873,6 @@ separately as 'serbian' in T1/EC encoding for Latin script and
 'serbianc' in T2A encoding for Cyrillic script. Unicode engines
 should only use 'serbian' which has patterns in both scripts
 combined.
-
-date: 2016-11-05 04:59:04 +0000
-
 %post -n texlive-hyphen-serbian
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -5861,38 +6906,39 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-sh-cyrl.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-sh-latn.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-sr-cyrl.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sh-cyrl.chr.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sh-cyrl.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sh-cyrl.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sh-cyrl.pat.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sh-latn.chr.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sh-latn.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sh-latn.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sh-latn.pat.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sr-cyrl.chr.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sr-cyrl.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sr-cyrl.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sr-cyrl.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-serbian.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-serbian.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-serbian.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-serbian-%{texlive_version}.%{texlive_noarch}.1.0asvn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-serbian-%{texlive_version}.%{texlive_noarch}.1.0asvn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-slovak
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Slovak hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -5910,16 +6956,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-sk.ec.tex)
 Provides:       tex(hyph-sk.tex)
 Provides:       tex(loadhyph-sk.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source78:       hyphen-slovak.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source85:       hyphen-slovak.tar.xz
 
 %description -n texlive-hyphen-slovak
 Hyphenation patterns for Slovak in T1/EC and UTF-8 encodings.
@@ -5954,30 +7007,35 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-sk.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-sk.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-sk.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sk.chr.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sk.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sk.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sk.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-slovak.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-slovak.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-slovak.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-slovak-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-slovak-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-slovenian
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Slovenian hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -5995,16 +7053,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-sl.ec.tex)
 Provides:       tex(hyph-sl.tex)
 Provides:       tex(loadhyph-sl.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source79:       hyphen-slovenian.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source86:       hyphen-slovenian.tar.xz
 
 %description -n texlive-hyphen-slovenian
 Hyphenation patterns for Slovenian in T1/EC and UTF-8
@@ -6038,30 +7103,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-sl.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-sl.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-sl.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sl.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sl.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sl.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sl.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-slovenian.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-slovenian.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-slovenian.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-slovenian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-slovenian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-spanish
-Version:        %{texlive_version}.%{texlive_noarch}.4.5svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.4.5svn54568
 Release:        0
 Summary:        Spanish hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -6079,32 +7148,36 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-hyphen-spanish-doc >= %{texlive_version}
 Provides:       tex(hyph-es.ec.tex)
 Provides:       tex(hyph-es.tex)
 Provides:       tex(loadhyph-es.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source80:       hyphen-spanish.tar.xz
-Source81:       hyphen-spanish.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source87:       hyphen-spanish.tar.xz
+Source88:       hyphen-spanish.doc.tar.xz
 
 %description -n texlive-hyphen-spanish
 Hyphenation patterns for Spanish in T1/EC and UTF-8 encodings.
 
-date: 2017-04-18 03:31:40 +0000
-
-
 %package -n texlive-hyphen-spanish-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.5svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.4.5svn54568
 Release:        0
 Summary:        Documentation for texlive-hyphen-spanish
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-hyphen-spanish-doc:es)
 
 %description -n texlive-hyphen-spanish-doc
@@ -6144,30 +7217,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-es.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-es.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-es.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-es.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-es.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-es.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-es.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-spanish.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-spanish.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-spanish.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-spanish-%{texlive_version}.%{texlive_noarch}.4.5svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-spanish-%{texlive_version}.%{texlive_noarch}.4.5svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-swedish
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Swedish hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -6185,16 +7262,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-sv.ec.tex)
 Provides:       tex(hyph-sv.tex)
 Provides:       tex(loadhyph-sv.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source82:       hyphen-swedish.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source89:       hyphen-swedish.tar.xz
 
 %description -n texlive-hyphen-swedish
 Hyphenation patterns for Swedish in T1/EC and UTF-8 encodings.
@@ -6227,30 +7311,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-sv.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-sv.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-sv.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sv.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sv.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sv.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-sv.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-swedish.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-swedish.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-swedish.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-swedish-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-swedish-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-thai
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Thai hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -6268,16 +7356,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-th.lth.tex)
 Provides:       tex(hyph-th.tex)
 Provides:       tex(loadhyph-th.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source83:       hyphen-thai.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source90:       hyphen-thai.tar.xz
 
 %description -n texlive-hyphen-thai
 Hyphenation patterns for Thai in LTH and UTF-8 encodings.
@@ -6310,30 +7405,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-th.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-th.lth.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-th.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-th.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-th.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-th.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-th.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-thai.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-thai.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-thai.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-thai-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-thai-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-turkish
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Turkish hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -6351,16 +7450,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-tr.ec.tex)
 Provides:       tex(hyph-tr.tex)
 Provides:       tex(loadhyph-tr.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source84:       hyphen-turkish.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source91:       hyphen-turkish.tar.xz
 
 %description -n texlive-hyphen-turkish
 Hyphenation patterns for Turkish in T1/EC and UTF-8 encodings.
@@ -6370,9 +7476,6 @@ Project in 1987 and were suitable for both Modern Turkish and
 Ottoman Turkish in Latin script, however the required character
 set didn't fit into EC encoding, so support for Ottoman Turkish
 had to be dropped to keep compatibility with 8-bit engines.
-
-date: 2016-06-24 17:18:15 +0000
-
 %post -n texlive-hyphen-turkish
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -6402,30 +7505,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-tr.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-tr.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-tr.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-tr.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-tr.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-tr.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-tr.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-turkish.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-turkish.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-turkish.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-turkish-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-turkish-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-turkmen
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Turkmen hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -6443,16 +7550,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-tk.ec.tex)
 Provides:       tex(hyph-tk.tex)
 Provides:       tex(loadhyph-tk.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source85:       hyphen-turkmen.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source92:       hyphen-turkmen.tar.xz
 
 %description -n texlive-hyphen-turkmen
 Hyphenation patterns for Turkmen in T1/EC and UTF-8 encodings.
@@ -6485,31 +7599,36 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-tk.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-tk.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-tk.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-tk.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-tk.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-tk.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-tk.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-turkmen.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-turkmen.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-turkmen.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-turkmen-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-turkmen-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-ukrainian
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Ukrainian hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
 Requires:       texlive-ukrhyph >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-ukrhyph
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -6527,26 +7646,33 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-quote-uk.tex)
 Provides:       tex(hyph-uk.t2a.tex)
 Provides:       tex(hyph-uk.tex)
 Provides:       tex(loadhyph-uk.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source86:       hyphen-ukrainian.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source93:       hyphen-ukrainian.tar.xz
 
 %description -n texlive-hyphen-ukrainian
 Hyphenation patterns for Ukrainian in T2A and UTF-8 encodings.
 For 8-bit engines, the 'ukrhyph' package provides a number of
 different pattern sets, as well as different (8-bit) encodings,
-that can be chosen at format-generation time.  The UTF-8
-version only provides the default pattern set.  A mechanism
-similar to the one used for 8-bit patterns may be implemented
-in the future.
+that can be chosen at format-generation time. The UTF-8 version
+only provides the default pattern set. A mechanism similar to
+the one used for 8-bit patterns may be implemented in the
+future.
 %post -n texlive-hyphen-ukrainian
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -6577,30 +7703,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-uk.t2a.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/quote/hyph-quote-uk.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-uk.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-uk.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-uk.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-uk.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-uk.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-ukrainian.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-ukrainian.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-ukrainian.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-ukrainian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-ukrainian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-uppersorbian
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Upper Sorbian hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -6618,16 +7748,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-hsb.ec.tex)
 Provides:       tex(hyph-hsb.tex)
 Provides:       tex(loadhyph-hsb.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source87:       hyphen-uppersorbian.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source94:       hyphen-uppersorbian.tar.xz
 
 %description -n texlive-hyphen-uppersorbian
 Hyphenation patterns for Upper Sorbian in T1/EC and UTF-8
@@ -6661,30 +7798,35 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-hsb.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-hsb.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-hsb.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-hsb.chr.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-hsb.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-hsb.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-hsb.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-uppersorbian.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-uppersorbian.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-uppersorbian.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-uppersorbian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-uppersorbian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphen-welsh
-Version:        %{texlive_version}.%{texlive_noarch}.svn50792
+Version:        %{texlive_version}.%{texlive_noarch}.svn54568
 Release:        0
 Summary:        Welsh hyphenation patterns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Requires:       texlive-hyph-utf8 >= %{texlive_version}
+#!BuildIgnore: texlive-hyph-utf8
 Requires:       texlive-hyphen-base >= %{texlive_version}
-Requires(pre): texlive >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-base
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -6702,16 +7844,23 @@ Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(language.dat)
 Requires(postun): tex(language.def)
 Requires(postun): tex(language.dat.lua)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(hyph-cy.ec.tex)
 Provides:       tex(hyph-cy.tex)
 Provides:       tex(loadhyph-cy.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source88:       hyphen-welsh.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source95:       hyphen-welsh.tar.xz
 
 %description -n texlive-hyphen-welsh
 Hyphenation patterns for Welsh in T1/EC and UTF-8 encodings.
@@ -6744,15 +7893,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/hyph-utf8/loadhyph/loadhyph-cy.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/ptex/hyph-cy.ec.tex
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/tex/hyph-cy.tex
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-cy.chr.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-cy.hyp.txt
-%{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-cy.lic.txt
 %{_texmfdistdir}/tex/generic/hyph-utf8/patterns/txt/hyph-cy.pat.txt
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-welsh.dat
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-welsh.def
 %{_texmfdistdir}/tex/generic/config/language.splits/hyphen-welsh.dat.lua
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-hyphen-welsh-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+/var/adm/update-scripts/texlive-hyphen-welsh-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
 
 %package -n texlive-hyphenat
@@ -6761,21 +7907,33 @@ Release:        0
 Summary:        Disable/enable hypenation
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-hyphenat-doc >= %{texlive_version}
 Provides:       tex(hyphenat.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source89:       hyphenat.tar.xz
-Source90:       hyphenat.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source96:       hyphenat.tar.xz
+Source97:       hyphenat.doc.tar.xz
 
 %description -n texlive-hyphenat
 This package can disable all hyphenation or enable hyphenation
@@ -6784,16 +7942,13 @@ enable hyphenation within 'words' that contain non-alphabetic
 characters (e.g., that include underscores), and hyphenation of
 text typeset in monospaced (e.g., cmtt) fonts.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-hyphenat-doc
 Version:        %{texlive_version}.%{texlive_noarch}.2.3csvn15878
 Release:        0
 Summary:        Documentation for texlive-hyphenat
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-hyphenat-doc
 This package includes the documentation for texlive-hyphenat
@@ -6836,19 +7991,31 @@ Release:        0
 Summary:        US English hyphenation exceptions file
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(ushyphex.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source91:       hyphenex.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source98:       hyphenex.tar.xz
 
 %description -n texlive-hyphenex
 Exceptions for American English hyphenation patterns are
@@ -6857,9 +8024,6 @@ This bundle provides alternative Perl and Bourne shell scripts
 to convert the source of such an article into an exceptions
 file, together with a recent copy of the article and
 machine-readable files.
-
-date: 2018-01-06 11:14:59 +0000
-
 %post -n texlive-hyphenex
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -6893,31 +8057,40 @@ Release:        0
 Summary:        Basic support for multiple languages in Plain TeX
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-hyplain-doc >= %{texlive_version}
 Provides:       tex(hylang.tex)
 Provides:       tex(hyplain.tex)
 Provides:       tex(hyrules.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source92:       hyplain.tar.xz
-Source93:       hyplain.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source99:       hyplain.tar.xz
+Source100:      hyplain.doc.tar.xz
 
 %description -n texlive-hyplain
 The package offers a means to set up hyphenation suitable for
 several languages and/or dialects, and to select them or switch
 between them while typesetting.
-
-date: 2016-06-24 17:18:15 +0000
-
 
 %package -n texlive-hyplain-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn15878
@@ -6925,7 +8098,7 @@ Release:        0
 Summary:        Documentation for texlive-hyplain
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-hyplain-doc
 This package includes the documentation for texlive-hyplain
@@ -6972,23 +8145,35 @@ Release:        0
 Summary:        Use the Ibycus 4 Greek font with Babel
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-ibycus-babel-doc >= %{texlive_version}
 Provides:       tex(ibycus.ldf)
 Provides:       tex(lgienc.def)
 Provides:       tex(lgifib.fd)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source94:       ibycus-babel.tar.xz
-Source95:       ibycus-babel.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source101:      ibycus-babel.tar.xz
+Source102:      ibycus-babel.doc.tar.xz
 
 %description -n texlive-ibycus-babel
 The package allows you to use the Ibycus 4 font for ancient
@@ -7000,16 +8185,13 @@ quoted in mid-paragraph, you should use it with elatex (all
 current distributions of LaTeX are built with e-TeX, so the
 constraint should not be onerous).
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-ibycus-babel-doc
 Version:        %{texlive_version}.%{texlive_noarch}.3.0svn15878
 Release:        0
 Summary:        Documentation for texlive-ibycus-babel
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-ibycus-babel-doc
 This package includes the documentation for texlive-ibycus-babel
@@ -7056,11 +8238,16 @@ Release:        0
 Summary:        Fonts and macros to typeset ancient Greek
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -7072,10 +8259,17 @@ Requires(postun): grep
 Requires(postun): sed
 Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(updmap.cfg)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-ibygrk-fonts >= %{texlive_version}
 Recommends:     texlive-ibygrk-doc >= %{texlive_version}
 Provides:       tex(IbycusHTG.enc)
@@ -7102,10 +8296,10 @@ Provides:       tex(pssetiby.tex)
 Provides:       tex(setiby4.tex)
 Provides:       tex(tlgsqq.tex)
 Provides:       tex(version4.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source96:       ibygrk.tar.xz
-Source97:       ibygrk.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source103:      ibygrk.tar.xz
+Source104:      ibygrk.doc.tar.xz
 
 %description -n texlive-ibygrk
 Ibycus is a Greek typeface, based on Silvio Levy's realisation
@@ -7115,16 +8309,13 @@ format. This distribution of ibycus is accompanied by a set of
 macro packages to use it with Plain TeX or LaTeX, but for use
 with Babel, see the ibycus-babel package.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-ibygrk-doc
 Version:        %{texlive_version}.%{texlive_noarch}.4.5svn15878
 Release:        0
 Summary:        Documentation for texlive-ibygrk
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-ibygrk-doc
 This package includes the documentation for texlive-ibygrk
@@ -7136,7 +8327,7 @@ Release:        0
 Summary:        Severed fonts for texlive-ibygrk
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Fonts
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 %reconfigure_fonts_prereq
 Requires(posttrans): fontconfig
 Requires(posttrans): ghostscript-fonts-std
@@ -7242,7 +8433,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-ibygrk-fonts
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-ibygrk
-%config %{_sysconfdir}/fonts/conf.avail/58-texlive-ibygrk.conf
+%{_datadir}/fontconfig/conf.avail/58-texlive-ibygrk.conf
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-ibygrk/encodings.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-ibygrk/fonts.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-ibygrk/fonts.scale
@@ -7253,30 +8444,42 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-icite
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn50429
+Version:        %{texlive_version}.%{texlive_noarch}.1.3asvn54512
 Release:        0
 Summary:        Indices locorum citatorum
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-icite-doc >= %{texlive_version}
 Provides:       tex(icite.sty)
 Requires:       tex(datatool.sty)
 Requires:       tex(usebib.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source98:       icite.tar.xz
-Source99:       icite.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source105:      icite.tar.xz
+Source106:      icite.doc.tar.xz
 
 %description -n texlive-icite
 The package is designed to produce from BibTeX or BibLaTeX
@@ -7285,16 +8488,13 @@ works cited which are called indices locorum citatorum. It
 relies on a specific \icite command and can operate with either
 BibTeX or BibLaTeX.
 
-date: 2019-03-17 19:42:34 +0000
-
-
 %package -n texlive-icite-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn50429
+Version:        %{texlive_version}.%{texlive_noarch}.1.3asvn54512
 Release:        0
 Summary:        Documentation for texlive-icite
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-icite-doc
 This package includes the documentation for texlive-icite
@@ -7335,7 +8535,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/icite/icite.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-icite-%{texlive_version}.%{texlive_noarch}.1.2svn50429-%{release}-zypper
+/var/adm/update-scripts/texlive-icite-%{texlive_version}.%{texlive_noarch}.1.3asvn54512-%{release}-zypper
 %endif
 
 %package -n texlive-icsv
@@ -7344,15 +8544,27 @@ Release:        0
 Summary:        Class for typesetting articles for the ICSV conference
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-icsv-doc >= %{texlive_version}
 Provides:       tex(icsv.cls)
 Requires:       tex(amsmath.sty)
@@ -7372,17 +8584,14 @@ Requires:       tex(helvet.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(textcomp.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source100:      icsv.tar.xz
-Source101:      icsv.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source107:      icsv.tar.xz
+Source108:      icsv.doc.tar.xz
 
 %description -n texlive-icsv
 This is an ad-hoc class for typesetting articles for the ICSV
 conference, based on the earler active-conf by the same author.
-
-date: 2016-06-24 17:18:15 +0000
-
 
 %package -n texlive-icsv-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn15878
@@ -7390,7 +8599,7 @@ Release:        0
 Summary:        Documentation for texlive-icsv
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-icsv-doc
 This package includes the documentation for texlive-icsv
@@ -7434,30 +8643,39 @@ Release:        0
 Summary:        Typesetting bracketed dichotomous identification keys
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-identkey-doc >= %{texlive_version}
 Provides:       tex(identkey.sty)
 Requires:       tex(enumitem.sty)
 Requires:       tex(etoolbox.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source102:      identkey.tar.xz
-Source103:      identkey.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source109:      identkey.tar.xz
+Source110:      identkey.doc.tar.xz
 
 %description -n texlive-identkey
 The package is for typesetting bracketed dichotomous
 identification keys.
-
-date: 2018-11-03 04:32:32 +0000
-
 
 %package -n texlive-identkey-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.0svn49018
@@ -7465,7 +8683,7 @@ Release:        0
 Summary:        Documentation for texlive-identkey
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-identkey-doc
 This package includes the documentation for texlive-identkey
@@ -7502,44 +8720,53 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-idxcmds
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2csvn38115
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2csvn54554
 Release:        0
 Summary:        Semantic commands for adding formatted index entries
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-idxcmds-doc >= %{texlive_version}
 Provides:       tex(idxcmds.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(ltxcmds.sty)
 Requires:       tex(pgfopts.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source104:      idxcmds.tar.xz
-Source105:      idxcmds.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source111:      idxcmds.tar.xz
+Source112:      idxcmds.doc.tar.xz
 
 %description -n texlive-idxcmds
 The package provides commands for adding formatted index
 entries; it arises from the author's work on large documents.
 
-date: 2017-04-18 03:31:40 +0000
-
-
 %package -n texlive-idxcmds-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2csvn38115
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2csvn54554
 Release:        0
 Summary:        Documentation for texlive-idxcmds
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-idxcmds-doc
 This package includes the documentation for texlive-idxcmds
@@ -7574,7 +8801,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/idxcmds/idxcmds.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-idxcmds-%{texlive_version}.%{texlive_noarch}.0.0.2csvn38115-%{release}-zypper
+/var/adm/update-scripts/texlive-idxcmds-%{texlive_version}.%{texlive_noarch}.0.0.2csvn54554-%{release}-zypper
 %endif
 
 %package -n texlive-idxlayout
@@ -7583,25 +8810,37 @@ Release:        0
 Summary:        Configurable index layout, responsive to KOMA-Script and memoir
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-idxlayout-doc >= %{texlive_version}
 Provides:       tex(idxlayout.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(multicol.sty)
 Requires:       tex(ragged2e.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source106:      idxlayout.tar.xz
-Source107:      idxlayout.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source113:      idxlayout.tar.xz
+Source114:      idxlayout.doc.tar.xz
 
 %description -n texlive-idxlayout
 The idxlayout package offers a key-value interface to configure
@@ -7611,16 +8850,13 @@ typeset as a single paragraph. The package is responsive to the
 index-related options and commands of the KOMA-Script and
 memoir classes.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-idxlayout-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.4dsvn25821
 Release:        0
 Summary:        Documentation for texlive-idxlayout
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-idxlayout-doc:en)
 
 %description -n texlive-idxlayout-doc
@@ -7664,33 +8900,42 @@ Release:        0
 Summary:        IEEE Power Engineering Society Transactions
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-ieeepes-doc >= %{texlive_version}
 Provides:       tex(ieeepes.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(mathptm.sty)
 Requires:       tex(times.sty)
 Requires:       tex(vmargin.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source108:      ieeepes.tar.xz
-Source109:      ieeepes.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source115:      ieeepes.tar.xz
+Source116:      ieeepes.doc.tar.xz
 
 %description -n texlive-ieeepes
 Supports typesetting of transactions, as well as discussions
 and closures, for the IEEE Power Engineering Society
 Transactions journals.
-
-date: 2016-06-24 17:18:15 +0000
-
 
 %package -n texlive-ieeepes-doc
 Version:        %{texlive_version}.%{texlive_noarch}.4.0svn17359
@@ -7698,7 +8943,7 @@ Release:        0
 Summary:        Documentation for texlive-ieeepes
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-ieeepes-doc
 This package includes the documentation for texlive-ieeepes
@@ -7747,25 +8992,34 @@ Release:        0
 Summary:        Generate BibTeX entries for various IETF index files
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source110:      ietfbibs.doc.tar.xz
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source117:      ietfbibs.doc.tar.xz
 
 %description -n texlive-ietfbibs
 The package provides scripts to translate IETF index files to
 BibTeX files.
-
-date: 2017-04-18 03:31:40 +0000
-
 %post -n texlive-ietfbibs
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -7802,116 +9056,46 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 /var/adm/update-scripts/texlive-ietfbibs-%{texlive_version}.%{texlive_noarch}.1.0.0svn41332-%{release}-zypper
 %endif
 
-%package -n texlive-ifetex
-Version:        %{texlive_version}.%{texlive_noarch}.1.2asvn47231
-Release:        0
-Summary:        Provides \ifetex switch
-License:        LPPL-1.0
-Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
-Requires(post): coreutils
-Requires(postun): coreutils
-Requires(postun): texlive >= %{texlive_version}
-Requires(posttrans): findutils
-Requires(posttrans): grep
-Requires(posttrans): sed
-Requires(posttrans): texlive >= %{texlive_version}
-Recommends:     texlive-ifetex-doc >= %{texlive_version}
-Provides:       tex(ifetex.sty)
-Provides:       tex(ifetex.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source111:      ifetex.tar.xz
-Source112:      ifetex.doc.tar.xz
-
-%description -n texlive-ifetex
-The package provides the switch \ifetex which indicates whether
-e-TeX is available or not. The package can be loaded as LaTeX
-package using \usepackage{ifetex} or in plain TeX using \input
-ifetex. In either case it aborts silently if the \ifetex macro
-is already defined. The package's test is whether \eTeXversion
-is defined as a primitive; if it is, the package assumes e-TeX
-features are available.
-
-date: 2018-03-31 19:11:18 +0000
-
-
-%package -n texlive-ifetex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2asvn47231
-Release:        0
-Summary:        Documentation for texlive-ifetex
-License:        LPPL-1.0
-Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-
-%description -n texlive-ifetex-doc
-This package includes the documentation for texlive-ifetex
-
-%post -n texlive-ifetex
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-
-%postun -n texlive-ifetex 
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-if test $1 = 0; then
-    exit 0
-fi
-
-%posttrans -n texlive-ifetex
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
-test -d /var/run/texlive || exit 0
-VERBOSE=false %{_texmfdistdir}/texconfig/update || :
-
-%files -n texlive-ifetex-doc
-%defattr(-,root,root,755)
-%{_texmfdistdir}/doc/latex/ifetex/README
-%{_texmfdistdir}/doc/latex/ifetex/ifetex.pdf
-
-%files -n texlive-ifetex
-%defattr(-,root,root,755)
-%{_texmfdistdir}/tex/latex/ifetex/ifetex.sty
-%{_texmfdistdir}/tex/plain/ifetex/ifetex.tex
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-ifetex-%{texlive_version}.%{texlive_noarch}.1.2asvn47231-%{release}-zypper
-%endif
-
 %package -n texlive-iffont
 Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn38823
 Release:        0
 Summary:        Conditionally load fonts with fontspec
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-iffont-doc >= %{texlive_version}
 Provides:       tex(iffont.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fontspec.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source113:      iffont.tar.xz
-Source114:      iffont.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source118:      iffont.tar.xz
+Source119:      iffont.doc.tar.xz
 
 %description -n texlive-iffont
 This package provides a macro to select the first font XeLaTeX
 or LuaTeX can find in a comma separated list and, additionally,
 a number of macro tests.
-
-date: 2017-04-18 03:31:40 +0000
-
 
 %package -n texlive-iffont-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn38823
@@ -7919,7 +9103,7 @@ Release:        0
 Summary:        Documentation for texlive-iffont
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-iffont-doc
 This package includes the documentation for texlive-iffont
@@ -7956,96 +9140,33 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 /var/adm/update-scripts/texlive-iffont-%{texlive_version}.%{texlive_noarch}.1.0.0svn38823-%{release}-zypper
 %endif
 
-%package -n texlive-ifluatex
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn49285
-Release:        0
-Summary:        Provides the \ifluatex switch
-License:        LPPL-1.0
-Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
-Requires(post): coreutils
-Requires(postun): coreutils
-Requires(postun): texlive >= %{texlive_version}
-Requires(posttrans): findutils
-Requires(posttrans): grep
-Requires(posttrans): sed
-Requires(posttrans): texlive >= %{texlive_version}
-Recommends:     texlive-ifluatex-doc >= %{texlive_version}
-Provides:       tex(ifluatex.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source115:      ifluatex.tar.xz
-Source116:      ifluatex.doc.tar.xz
-
-%description -n texlive-ifluatex
-The package looks for LuaTeX regardless of its mode and
-provides the switch \ifluatex; it works with Plain TeX or
-LaTeX. The package is part of the oberdiek bundle.
-
-date: 2018-01-06 11:14:59 +0000
-
-
-%package -n texlive-ifluatex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn49285
-Release:        0
-Summary:        Documentation for texlive-ifluatex
-License:        LPPL-1.0
-Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-
-%description -n texlive-ifluatex-doc
-This package includes the documentation for texlive-ifluatex
-
-%post -n texlive-ifluatex
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-
-%postun -n texlive-ifluatex 
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-if test $1 = 0; then
-    exit 0
-fi
-
-%posttrans -n texlive-ifluatex
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
-test -d /var/run/texlive || exit 0
-VERBOSE=false %{_texmfdistdir}/texconfig/update || :
-
-%files -n texlive-ifluatex-doc
-%defattr(-,root,root,755)
-%{_texmfdistdir}/doc/latex/oberdiek/ifluatex.pdf
-%{_texmfdistdir}/doc/latex/oberdiek/test/ifluatex-test1.tex
-%{_texmfdistdir}/doc/latex/oberdiek/test/ifluatex-test2.tex
-%{_texmfdistdir}/doc/latex/oberdiek/test/ifluatex-test3.tex
-
-%files -n texlive-ifluatex
-%defattr(-,root,root,755)
-%{_texmfdistdir}/tex/generic/oberdiek/ifluatex.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-ifluatex-%{texlive_version}.%{texlive_noarch}.1.4svn49285-%{release}-zypper
-%endif
-
 %package -n texlive-ifmslide
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.47svn20727
 Release:        0
 Summary:        Presentation slides for screen and printouts
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-ifmslide-doc >= %{texlive_version}
 Provides:       tex(ifmslide.cfg)
 Provides:       tex(ifmslide.sty)
@@ -8059,10 +9180,10 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(texpower.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source117:      ifmslide.tar.xz
-Source118:      ifmslide.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source120:      ifmslide.tar.xz
+Source121:      ifmslide.doc.tar.xz
 
 %description -n texlive-ifmslide
 This package is used to produce printed slides with LaTeX and
@@ -8072,16 +9193,13 @@ Germany. It is based on ideas of pdfslide, but completely
 rewritten for compatibility with texpower and seminar. The
 manual describes all functions and provides a sample.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-ifmslide-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.47svn20727
 Release:        0
 Summary:        Documentation for texlive-ifmslide
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-ifmslide-doc
 This package includes the documentation for texlive-ifmslide
@@ -8147,28 +9265,37 @@ Release:        0
 Summary:        If-then-else command for processing potentially empty arguments
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-ifmtarg-doc >= %{texlive_version}
 Provides:       tex(ifmtarg.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source119:      ifmtarg.tar.xz
-Source120:      ifmtarg.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source122:      ifmtarg.tar.xz
+Source123:      ifmtarg.doc.tar.xz
 
 %description -n texlive-ifmtarg
 This package provides a command for the LaTeX programmer for
 testing whether an argument is empty.
-
-date: 2018-04-16 07:43:03 +0000
-
 
 %package -n texlive-ifmtarg-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.2bsvn47544
@@ -8176,7 +9303,7 @@ Release:        0
 Summary:        Documentation for texlive-ifmtarg
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-ifmtarg-doc
 This package includes the documentation for texlive-ifmtarg
@@ -8219,21 +9346,33 @@ Release:        0
 Summary:        Utility macro: peek ahead without ignoring spaces
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-ifnextok-doc >= %{texlive_version}
 Provides:       tex(ifnextok.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source121:      ifnextok.tar.xz
-Source122:      ifnextok.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source124:      ifnextok.tar.xz
+Source125:      ifnextok.doc.tar.xz
 
 %description -n texlive-ifnextok
 The package deals with the behaviour of the LaTeX internal
@@ -8246,16 +9385,13 @@ The package offers commands and options for modifying this
 behaviour, maybe limited to certain parts of the document
 source.
 
-date: 2017-05-06 06:24:26 +0000
-
-
 %package -n texlive-ifnextok-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn23379
 Release:        0
 Summary:        Documentation for texlive-ifnextok
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-ifnextok-doc
 This package includes the documentation for texlive-ifnextok
@@ -8301,21 +9437,33 @@ Release:        0
 Summary:        Determine if the current page is odd or even
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-ifoddpage-doc >= %{texlive_version}
 Provides:       tex(ifoddpage.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source123:      ifoddpage.tar.xz
-Source124:      ifoddpage.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source126:      ifoddpage.tar.xz
+Source127:      ifoddpage.doc.tar.xz
 
 %description -n texlive-ifoddpage
 The package provides an \ifoddpage conditional to determine if
@@ -8326,16 +9474,13 @@ results. In addition, the conditional \ifoddpageoronside is
 provided which is also true in oneside mode where all pages use
 the odd page layout.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-ifoddpage-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn40726
 Release:        0
 Summary:        Documentation for texlive-ifoddpage
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-ifoddpage-doc
 This package includes the documentation for texlive-ifoddpage
@@ -8378,25 +9523,37 @@ Release:        0
 Summary:        Conditionals to test which platform is being used
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-ifplatform-doc >= %{texlive_version}
 Provides:       tex(ifplatform.sty)
 Requires:       tex(catchfile.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(pdftexcmds.sty)
 Requires:       tex(shellesc.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source125:      ifplatform.tar.xz
-Source126:      ifplatform.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source128:      ifplatform.tar.xz
+Source129:      ifplatform.doc.tar.xz
 
 %description -n texlive-ifplatform
 This package uses the (La)TeX extension -shell-escape to
@@ -8408,16 +9565,13 @@ also preserves the output of uname on a Unix-like system, which
 may be used to distinguish between various classes of Unix
 systems.
 
-date: 2017-12-07 09:14:16 +0000
-
-
 %package -n texlive-ifplatform-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.4asvn45533
 Release:        0
 Summary:        Documentation for texlive-ifplatform
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-ifplatform-doc
 This package includes the documentation for texlive-ifplatform
@@ -8455,43 +9609,53 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-ifptex
-Version:        %{texlive_version}.%{texlive_noarch}.1.2csvn45485
+Version:        %{texlive_version}.%{texlive_noarch}.2.0svn52626
 Release:        0
 Summary:        Check if the engine is pTeX or one of its derivatives
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-ifptex-doc >= %{texlive_version}
 Provides:       tex(ifptex.sty)
 Provides:       tex(ifuptex.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source127:      ifptex.tar.xz
-Source128:      ifptex.doc.tar.xz
+Requires:       tex(iftex.sty)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source130:      ifptex.tar.xz
+Source131:      ifptex.doc.tar.xz
 
 %description -n texlive-ifptex
 The ifptex package is a counterpart of ifxetex, ifluatex, etc.
 for the ptex engine. The ifuptex package is an alias to ifptex
 provided for backward compatibility.
 
-date: 2017-10-05 21:03:57 +0000
-
-
 %package -n texlive-ifptex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2csvn45485
+Version:        %{texlive_version}.%{texlive_noarch}.2.0svn52626
 Release:        0
 Summary:        Documentation for texlive-ifptex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-ifptex-doc:ja)
 
 %description -n texlive-ifptex-doc
@@ -8528,7 +9692,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/ifptex/ifptex.sty
 %{_texmfdistdir}/tex/generic/ifptex/ifuptex.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-ifptex-%{texlive_version}.%{texlive_noarch}.1.2csvn45485-%{release}-zypper
+/var/adm/update-scripts/texlive-ifptex-%{texlive_version}.%{texlive_noarch}.2.0svn52626-%{release}-zypper
 %endif
 
 %package -n texlive-ifsym
@@ -8537,15 +9701,27 @@ Release:        0
 Summary:        A collection of symbols
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-ifsym-doc >= %{texlive_version}
 Provides:       tex(ifclk10.tfm)
 Provides:       tex(ifclkb10.tfm)
@@ -8568,10 +9744,10 @@ Provides:       tex(uifgeo.fd)
 Provides:       tex(uifsym.fd)
 Provides:       tex(uifwea.fd)
 Requires:       tex(calc.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source129:      ifsym.tar.xz
-Source130:      ifsym.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source132:      ifsym.tar.xz
+Source133:      ifsym.doc.tar.xz
 
 %description -n texlive-ifsym
 A set of symbol fonts, written in Metafont, offering
@@ -8581,16 +9757,13 @@ a set of miscellaneous symbols. A LaTeX package is provided,
 that allows the user to load only those symbols needed in a
 document.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-ifsym-doc
 Version:        %{texlive_version}.%{texlive_noarch}.svn24868
 Release:        0
 Summary:        Documentation for texlive-ifsym
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-ifsym-doc:de)
 
 %description -n texlive-ifsym-doc
@@ -8665,26 +9838,43 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-iftex
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn29654
+Version:        %{texlive_version}.%{texlive_noarch}.1.0dsvn54159
 Release:        0
 Summary:        Am I running under pdfTeX, XeTeX or LuaTeX?
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-iftex-doc >= %{texlive_version}
+Provides:       tex(ifetex.sty)
+Provides:       tex(ifluatex.sty)
+Provides:       tex(ifpdf.sty)
 Provides:       tex(iftex.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source131:      iftex.tar.xz
-Source132:      iftex.doc.tar.xz
+Provides:       tex(ifvtex.sty)
+Provides:       tex(ifxetex.sty)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source134:      iftex.tar.xz
+Source135:      iftex.doc.tar.xz
 
 %description -n texlive-iftex
 The package, which works both for Plain TeX and for LaTeX,
@@ -8694,16 +9884,13 @@ also provides the \RequirePDFTeX, \RequireXeTeX, and
 \RequireLuaTeX commands which throw an error if pdfTeX, XeTeX
 or LuaTeX (respectively) is not the engine in use.
 
-date: 2018-11-28 18:50:39 +0000
-
-
 %package -n texlive-iftex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn29654
+Version:        %{texlive_version}.%{texlive_noarch}.1.0dsvn54159
 Release:        0
 Summary:        Documentation for texlive-iftex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-iftex-doc
 This package includes the documentation for texlive-iftex
@@ -8730,15 +9917,20 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-iftex-doc
 %defattr(-,root,root,755)
-%{_texmfdistdir}/doc/generic/iftex/README
+%{_texmfdistdir}/doc/generic/iftex/README.md
 %{_texmfdistdir}/doc/generic/iftex/iftex.pdf
 %{_texmfdistdir}/doc/generic/iftex/iftex.tex
 
 %files -n texlive-iftex
 %defattr(-,root,root,755)
+%{_texmfdistdir}/tex/generic/iftex/ifetex.sty
+%{_texmfdistdir}/tex/generic/iftex/ifluatex.sty
+%{_texmfdistdir}/tex/generic/iftex/ifpdf.sty
 %{_texmfdistdir}/tex/generic/iftex/iftex.sty
+%{_texmfdistdir}/tex/generic/iftex/ifvtex.sty
+%{_texmfdistdir}/tex/generic/iftex/ifxetex.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-iftex-%{texlive_version}.%{texlive_noarch}.0.0.2svn29654-%{release}-zypper
+/var/adm/update-scripts/texlive-iftex-%{texlive_version}.%{texlive_noarch}.1.0dsvn54159-%{release}-zypper
 %endif
 
 %package -n texlive-ifthenx
@@ -8747,22 +9939,34 @@ Release:        0
 Summary:        Extra tests for \ifthenelse
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-ifthenx-doc >= %{texlive_version}
 Provides:       tex(ifthenx.sty)
 Requires:       tex(ifthen.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source133:      ifthenx.tar.xz
-Source134:      ifthenx.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source136:      ifthenx.tar.xz
+Source137:      ifthenx.doc.tar.xz
 
 %description -n texlive-ifthenx
 The package extends the ifthen package, providing extra
@@ -8771,16 +9975,13 @@ is complementary to xifthen, in that they provide different
 facilities; the two may be loaded in the same document, as long
 as xifthen is loaded first.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-ifthenx-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.1asvn25819
 Release:        0
 Summary:        Documentation for texlive-ifthenx
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-ifthenx-doc
 This package includes the documentation for texlive-ifthenx
@@ -8816,109 +10017,44 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 /var/adm/update-scripts/texlive-ifthenx-%{texlive_version}.%{texlive_noarch}.0.0.1asvn25819-%{release}-zypper
 %endif
 
-%package -n texlive-ifxetex
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn19685
-Release:        0
-Summary:        Am I running under XeTeX?
-License:        LPPL-1.0
-Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
-Requires(post): coreutils
-Requires(postun): coreutils
-Requires(postun): texlive >= %{texlive_version}
-Requires(posttrans): findutils
-Requires(posttrans): grep
-Requires(posttrans): sed
-Requires(posttrans): texlive >= %{texlive_version}
-Recommends:     texlive-ifxetex-doc >= %{texlive_version}
-Provides:       tex(ifxetex.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source135:      ifxetex.tar.xz
-Source136:      ifxetex.doc.tar.xz
-
-%description -n texlive-ifxetex
-A simple package which provides an \ifxetex conditional, so
-that other code can determine that it is running under XeTeX.
-The package requires the e-TeX extensions to the TeX primitive
-set.
-
-date: 2016-06-24 17:18:15 +0000
-
-
-%package -n texlive-ifxetex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn19685
-Release:        0
-Summary:        Documentation for texlive-ifxetex
-License:        LPPL-1.0
-Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-
-%description -n texlive-ifxetex-doc
-This package includes the documentation for texlive-ifxetex
-
-%post -n texlive-ifxetex
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-
-%postun -n texlive-ifxetex 
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-if test $1 = 0; then
-    exit 0
-fi
-
-%posttrans -n texlive-ifxetex
-%if %{with zypper_posttrans}
-test -z "$ZYPP_IS_RUNNING" || exit 0
-%endif
-test -d /var/run/texlive || exit 0
-VERBOSE=false %{_texmfdistdir}/texconfig/update || :
-
-%files -n texlive-ifxetex-doc
-%defattr(-,root,root,755)
-%{_texmfdistdir}/doc/generic/ifxetex/README
-%{_texmfdistdir}/doc/generic/ifxetex/ifxetex.pdf
-
-%files -n texlive-ifxetex
-%defattr(-,root,root,755)
-%{_texmfdistdir}/tex/generic/ifxetex/ifxetex.sty
-%if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-ifxetex-%{texlive_version}.%{texlive_noarch}.0.0.6svn19685-%{release}-zypper
-%endif
-
 %package -n texlive-ifxptex
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn46153
 Release:        0
 Summary:        Detect pTeX and its derivatives
 License:        SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-ifxptex-doc >= %{texlive_version}
 Provides:       tex(ifxptex.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source137:      ifxptex.tar.xz
-Source138:      ifxptex.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source138:      ifxptex.tar.xz
+Source139:      ifxptex.doc.tar.xz
 
 %description -n texlive-ifxptex
 The package provides commands for detecting pTeX and its
 derivatives (e-pTeX, upTeX, e-upTeX, and ApTeX). Both LaTeX and
 plain TeX are supported.
-
-date: 2017-12-27 10:02:36 +0000
-
 
 %package -n texlive-ifxptex-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn46153
@@ -8926,7 +10062,7 @@ Release:        0
 Summary:        Documentation for texlive-ifxptex
 License:        SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-ifxptex-doc
 This package includes the documentation for texlive-ifxptex
@@ -8970,21 +10106,33 @@ Release:        0
 Summary:        Multiple level of lists in one list-like environment
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-iitem-doc >= %{texlive_version}
 Provides:       tex(iitem.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source139:      iitem.tar.xz
-Source140:      iitem.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source140:      iitem.tar.xz
+Source141:      iitem.doc.tar.xz
 
 %description -n texlive-iitem
 The package defines multiple level lists within one list-like
@@ -8996,16 +10144,13 @@ environment. instead of writing \begin{enumerate} \item 1
 write \begin{enumerate} \item 1 \iitem 2 \iiitem 3 \ivtem 4
 \iitem 2.1 \item 1.1 \iitem 2 \end{enumerate}
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-iitem-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn29613
 Release:        0
 Summary:        Documentation for texlive-iitem
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-iitem-doc
 This package includes the documentation for texlive-iitem
@@ -9048,25 +10193,37 @@ Release:        0
 Summary:        LaTeX Class for the Israel Journal of Mathematics
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-ijmart-doc >= %{texlive_version}
 Provides:       tex(ijmart.cls)
 Requires:       tex(amsart.cls)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(lastpage.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source141:      ijmart.tar.xz
-Source142:      ijmart.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source142:      ijmart.tar.xz
+Source143:      ijmart.doc.tar.xz
 
 %description -n texlive-ijmart
 The Israel Journal of Mathematics is published by The Hebrew
@@ -9078,16 +10235,13 @@ authors already familiar with amsart to easily submit
 manuscripts for The Israel Journal of Mathematics or to put the
 preprints in arXiv with minimal changes in the LaTeX source.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-ijmart-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.7svn30958
 Release:        0
 Summary:        Documentation for texlive-ijmart
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-ijmart-doc
 This package includes the documentation for texlive-ijmart
@@ -9136,20 +10290,32 @@ Release:        0
 Summary:        BibTeX style file for the Intl. J. Quantum Chem
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-ijqc-doc >= %{texlive_version}
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source143:      ijqc.tar.xz
-Source144:      ijqc.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source144:      ijqc.tar.xz
+Source145:      ijqc.doc.tar.xz
 
 %description -n texlive-ijqc
 ijqc.bst is a BibTeX style file to support publication in
@@ -9157,16 +10323,13 @@ Wiley's International Journal of Quantum Chemistry. It is not
 in any way officially endorsed by the publisher or editors, and
 is provided without any warranty one could ever think of.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-ijqc-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.2svn15878
 Release:        0
 Summary:        Documentation for texlive-ijqc
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-ijqc-doc
 This package includes the documentation for texlive-ijqc
@@ -9212,15 +10375,27 @@ Release:        0
 Summary:        LaTeX document class for the International Journal of Student Research in Archaeology
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-ijsra-doc >= %{texlive_version}
 Provides:       tex(ijsra.cls)
 Requires:       tex(abbrevs.sty)
@@ -9262,17 +10437,14 @@ Requires:       tex(wrapfig.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xspace.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source145:      ijsra.tar.xz
-Source146:      ijsra.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source146:      ijsra.tar.xz
+Source147:      ijsra.doc.tar.xz
 
 %description -n texlive-ijsra
 This is a document class called ijsra which is used for the
 International Journal of Student Research in Archaeology.
-
-date: 2017-07-24 20:49:08 +0000
-
 
 %package -n texlive-ijsra-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.1svn44886
@@ -9280,7 +10452,7 @@ Release:        0
 Summary:        Documentation for texlive-ijsra
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-ijsra-doc
 This package includes the documentation for texlive-ijsra
@@ -9325,32 +10497,41 @@ Release:        0
 Summary:        International Modal Analysis Conference format
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-imac-doc >= %{texlive_version}
 Provides:       tex(imac.sty)
 Requires:       tex(amsmath.sty)
 Requires:       tex(cite.sty)
 Requires:       tex(ifthen.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source147:      imac.tar.xz
-Source148:      imac.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source148:      imac.tar.xz
+Source149:      imac.doc.tar.xz
 
 %description -n texlive-imac
 A set of files for producing correctly formatted documents for
 the International Modal Analysis Conference. The bundle
 provides a LaTeX package and a BibTeX style file.
-
-date: 2016-06-24 17:18:15 +0000
-
 
 %package -n texlive-imac-doc
 Version:        %{texlive_version}.%{texlive_noarch}.svn17347
@@ -9358,7 +10539,7 @@ Release:        0
 Summary:        Documentation for texlive-imac
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-imac-doc
 This package includes the documentation for texlive-imac
@@ -9404,15 +10585,27 @@ Release:        0
 Summary:        Create an overview of pictures from a digital camera or from other sources
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-image-gallery-doc >= %{texlive_version}
 Provides:       tex(image-gallery.cls)
 Requires:       tex(article.cls)
@@ -9421,10 +10614,10 @@ Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(url.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source149:      image-gallery.tar.xz
-Source150:      image-gallery.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source150:      image-gallery.tar.xz
+Source151:      image-gallery.doc.tar.xz
 
 %description -n texlive-image-gallery
 The class may be used to create an overview of pictures from a
@@ -9432,16 +10625,13 @@ digital camera or from other sources. It is possible to adjust
 the size of the pictures and all the margins. The example file
 shows the usage.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-image-gallery-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.0jsvn15878
 Release:        0
 Summary:        Documentation for texlive-image-gallery
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-image-gallery-doc
 This package includes the documentation for texlive-image-gallery
@@ -9508,25 +10698,37 @@ Release:        0
 Summary:        A package for producing multiple indexes
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-imakeidx-doc >= %{texlive_version}
 Provides:       tex(imakeidx.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(multicol.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source151:      imakeidx.tar.xz
-Source152:      imakeidx.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source152:      imakeidx.tar.xz
+Source153:      imakeidx.doc.tar.xz
 
 %description -n texlive-imakeidx
 The package enables the user to produce and typeset one or more
@@ -9538,16 +10740,13 @@ used. Using xindy or other programs it is necessary to enable
 shell escape; shell escape is also needed if splitindex is
 used.
 
-date: 2016-10-15 21:51:37 +0000
-
-
 %package -n texlive-imakeidx-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.3esvn42287
 Release:        0
 Summary:        Documentation for texlive-imakeidx
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-imakeidx-doc
 This package includes the documentation for texlive-imakeidx
@@ -9591,11 +10790,16 @@ Release:        0
 Summary:        IM Fell English fonts with LaTeX support
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -9607,10 +10811,17 @@ Requires(postun): grep
 Requires(postun): sed
 Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(updmap.cfg)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-imfellenglish-fonts >= %{texlive_version}
 Recommends:     texlive-imfellenglish-doc >= %{texlive_version}
 Provides:       tex(IM_FELL_English_Italic-tlf-ly1--base.tfm)
@@ -9677,10 +10888,10 @@ Requires:       tex(ifluatex.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source153:      imfellenglish.tar.xz
-Source154:      imfellenglish.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source154:      imfellenglish.tar.xz
+Source155:      imfellenglish.doc.tar.xz
 
 %description -n texlive-imfellenglish
 Igino Marini has implemented digital revivals of fonts
@@ -9689,16 +10900,13 @@ Oxford and Dean of Christ Church in 1686. This package provides
 the English family, consisting of Roman, Italic and Small-Cap
 fonts.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-imfellenglish-doc
 Version:        %{texlive_version}.%{texlive_noarch}.svn38547
 Release:        0
 Summary:        Documentation for texlive-imfellenglish
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-imfellenglish-doc
 This package includes the documentation for texlive-imfellenglish
@@ -9710,7 +10918,7 @@ Release:        0
 Summary:        Severed fonts for texlive-imfellenglish
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Fonts
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 %reconfigure_fonts_prereq
 Requires(posttrans): fontconfig
 Requires(posttrans): ghostscript-fonts-std
@@ -9821,7 +11029,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-imfellenglish-fonts
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-imfellenglish
-%config %{_sysconfdir}/fonts/conf.avail/58-texlive-imfellenglish.conf
+%{_datadir}/fontconfig/conf.avail/58-texlive-imfellenglish.conf
+%{_datadir}/fontconfig/conf.avail/55-texlive-imfellenglish.conf
 %config %{_sysconfdir}/fonts/conf.d/55-texlive-imfellenglish.conf
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-imfellenglish/encodings.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-imfellenglish/fonts.dir
@@ -9839,31 +11048,40 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-impatient
-Version:        %{texlive_version}.%{texlive_noarch}.svn35573
+Version:        %{texlive_version}.%{texlive_noarch}.2020svn54080
 Release:        0
 Summary:        Free edition of the book "TeX for the Impatient"
 License:        GFDL-1.2-only
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source155:      impatient.doc.tar.xz
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source156:      impatient.doc.tar.xz
 
 %description -n texlive-impatient
 "TeX for the Impatient" is a book (of around 350 pages) on TeX,
 Plain TeX and Eplain. The book is also available in French and
 Chinese translations.
-
-date: 2017-11-11 17:38:56 +0000
-
 %post -n texlive-impatient
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -9886,20 +11104,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-impatient
 %defattr(-,root,root,755)
+%{_texmfdistdir}/doc/plain/impatient/ChangeLog
 %{_texmfdistdir}/doc/plain/impatient/Makefile
-%{_texmfdistdir}/doc/plain/impatient/Makefile.in
 %{_texmfdistdir}/doc/plain/impatient/NEWS
 %{_texmfdistdir}/doc/plain/impatient/README
 %{_texmfdistdir}/doc/plain/impatient/backm.tex
+%{_texmfdistdir}/doc/plain/impatient/book.ccs
 %{_texmfdistdir}/doc/plain/impatient/book.pdf
 %{_texmfdistdir}/doc/plain/impatient/book.sdx
 %{_texmfdistdir}/doc/plain/impatient/book.tex
 %{_texmfdistdir}/doc/plain/impatient/capsule.tex
 %{_texmfdistdir}/doc/plain/impatient/concepts.tex
 %{_texmfdistdir}/doc/plain/impatient/config.tex
-%{_texmfdistdir}/doc/plain/impatient/configure
-%{_texmfdistdir}/doc/plain/impatient/configure.ac
 %{_texmfdistdir}/doc/plain/impatient/copyrght.tex
+%{_texmfdistdir}/doc/plain/impatient/diffs/impatient-2.0-2.3.diff.gz
+%{_texmfdistdir}/doc/plain/impatient/diffs/impatient-2.3-2.4.diff.gz
+%{_texmfdistdir}/doc/plain/impatient/diffs/impatient-2.4-2020.diff.gz
 %{_texmfdistdir}/doc/plain/impatient/eplain.tex
 %{_texmfdistdir}/doc/plain/impatient/errata.future
 %{_texmfdistdir}/doc/plain/impatient/errors.tex
@@ -9924,35 +11144,44 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/plain/impatient/usingtex.tex
 %{_texmfdistdir}/doc/plain/impatient/xmptext.tex
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-impatient-%{texlive_version}.%{texlive_noarch}.svn35573-%{release}-zypper
+/var/adm/update-scripts/texlive-impatient-%{texlive_version}.%{texlive_noarch}.2020svn54080-%{release}-zypper
 %endif
 
 %package -n texlive-impatient-cn
-Version:        %{texlive_version}.%{texlive_noarch}.svn45751
+Version:        %{texlive_version}.%{texlive_noarch}.2020svn54080
 Release:        0
 Summary:        Free edition of the book "TeX for the Impatient"
 License:        GFDL-1.2-only
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source156:      impatient-cn.doc.tar.xz
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source157:      impatient-cn.doc.tar.xz
 
 %description -n texlive-impatient-cn
 "TeX for the Impatient" is a book (of around 350 pages) on TeX,
 Plain TeX and Eplain. The book is also available in French and
 Chinese translations.
-
-date: 2017-11-11 17:38:56 +0000
-
 %post -n texlive-impatient-cn
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -10006,35 +11235,44 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/plain/impatient-cn/xeCJK-base.tex
 %{_texmfdistdir}/doc/plain/impatient-cn/xmptext.tex
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-impatient-cn-%{texlive_version}.%{texlive_noarch}.svn45751-%{release}-zypper
+/var/adm/update-scripts/texlive-impatient-cn-%{texlive_version}.%{texlive_noarch}.2020svn54080-%{release}-zypper
 %endif
 
 %package -n texlive-impatient-fr
-Version:        %{texlive_version}.%{texlive_noarch}.svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.2020svn54080
 Release:        0
 Summary:        Free edition of the book "TeX for the Impatient"
 License:        GFDL-1.2-only
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source157:      impatient-fr.doc.tar.xz
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source158:      impatient-fr.doc.tar.xz
 
 %description -n texlive-impatient-fr
 "TeX for the Impatient" is a book (of around 350 pages) on TeX,
 Plain TeX and Eplain. The book is also available in French and
 Chinese translations.
-
-date: 2017-11-11 17:38:56 +0000
-
 %post -n texlive-impatient-fr
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -10085,7 +11323,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/plain/impatient-fr/fusingtex.tex
 %{_texmfdistdir}/doc/plain/impatient-fr/fxmptext.tex
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-impatient-fr-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
+/var/adm/update-scripts/texlive-impatient-fr-%{texlive_version}.%{texlive_noarch}.2020svn54080-%{release}-zypper
 %endif
 
 %package -n texlive-impnattypo
@@ -10094,15 +11332,27 @@ Release:        0
 Summary:        Support typography of l'Imprimerie Nationale Francaise
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-impnattypo-doc >= %{texlive_version}
 Provides:       tex(impnattypo.sty)
 Requires:       tex(ifluatex.sty)
@@ -10110,17 +11360,14 @@ Requires:       tex(kvoptions.sty)
 Requires:       tex(luacode.sty)
 Requires:       tex(luatexbase.sty)
 Requires:       tex(xcolor.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source158:      impnattypo.tar.xz
-Source159:      impnattypo.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source159:      impnattypo.tar.xz
+Source160:      impnattypo.doc.tar.xz
 
 %description -n texlive-impnattypo
 The package provides useful macros implementing recommendations
 by the French Imprimerie Nationale.
-
-date: 2019-03-04 11:27:29 +0000
-
 
 %package -n texlive-impnattypo-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.5svn50227
@@ -10128,7 +11375,7 @@ Release:        0
 Summary:        Documentation for texlive-impnattypo
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-impnattypo-doc:fr;en)
 
 %description -n texlive-impnattypo-doc
@@ -10168,26 +11415,38 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-import
-Version:        %{texlive_version}.%{texlive_noarch}.5.1svn17361
+Version:        %{texlive_version}.%{texlive_noarch}.6.2svn54683
 Release:        0
 Summary:        Establish input relative to a directory
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-import-doc >= %{texlive_version}
 Provides:       tex(import.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source160:      import.tar.xz
-Source161:      import.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source161:      import.tar.xz
+Source162:      import.doc.tar.xz
 
 %description -n texlive-import
 The commands \import{full_path}{file} and
@@ -10196,16 +11455,13 @@ LaTeX mechanisms (\input, \include and \includegraphics) to
 load files relative to the \import-ed directory. There are also
 \includefrom, \subincludefrom, and * variants of the commands.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-import-doc
-Version:        %{texlive_version}.%{texlive_noarch}.5.1svn17361
+Version:        %{texlive_version}.%{texlive_noarch}.6.2svn54683
 Release:        0
 Summary:        Documentation for texlive-import
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-import-doc
 This package includes the documentation for texlive-import
@@ -10232,6 +11488,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-import-doc
 %defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/import/README
 %{_texmfdistdir}/doc/latex/import/import.pdf
 %{_texmfdistdir}/doc/latex/import/import.tex
 
@@ -10239,7 +11496,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/import/import.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-import-%{texlive_version}.%{texlive_noarch}.5.1svn17361-%{release}-zypper
+/var/adm/update-scripts/texlive-import-%{texlive_version}.%{texlive_noarch}.6.2svn54683-%{release}-zypper
 %endif
 
 %package -n texlive-imsproc
@@ -10248,30 +11505,39 @@ Release:        0
 Summary:        Typeset IMS conference proceedings
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-imsproc-doc >= %{texlive_version}
 Provides:       tex(imsproc.cls)
 Requires:       tex(amsfonts.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source162:      imsproc.tar.xz
-Source163:      imsproc.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source163:      imsproc.tar.xz
+Source164:      imsproc.doc.tar.xz
 
 %description -n texlive-imsproc
 The class typesets papers for IMS (Iranian Mathematical
 Society) conference proceedings. The class uses the XePersian
 package.
-
-date: 2018-11-28 18:55:07 +0000
-
 
 %package -n texlive-imsproc-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn29803
@@ -10279,7 +11545,7 @@ Release:        0
 Summary:        Documentation for texlive-imsproc
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-imsproc-doc
 This package includes the documentation for texlive-imsproc
@@ -10323,25 +11589,37 @@ Release:        0
 Summary:        IMTEK thesis class
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-imtekda-doc >= %{texlive_version}
 Provides:       tex(IMTEKda.cls)
 Requires:       tex(calc.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(scrbook.cls)
 Requires:       tex(textpos.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source164:      imtekda.tar.xz
-Source165:      imtekda.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source165:      imtekda.tar.xz
+Source166:      imtekda.doc.tar.xz
 
 %description -n texlive-imtekda
 The class permits typesetting of diploma, bachelor's and
@@ -10351,16 +11629,13 @@ based on the KOMA-Script class scrbook. Included in the
 documentation is a large collection of useful tips for
 typesetting theses and a list of recommended packages.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-imtekda-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.7svn17667
 Release:        0
 Summary:        Documentation for texlive-imtekda
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-imtekda-doc:de)
 
 %description -n texlive-imtekda-doc
@@ -10408,22 +11683,34 @@ Release:        0
 Summary:        Sophisticated graphics inclusion in a PDF document
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-incgraph-doc >= %{texlive_version}
 Provides:       tex(incgraph.sty)
 Requires:       tex(pgfkeys.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source166:      incgraph.tar.xz
-Source167:      incgraph.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source167:      incgraph.tar.xz
+Source168:      incgraph.doc.tar.xz
 
 %description -n texlive-incgraph
 The package provides tools for including graphics at the full
@@ -10434,16 +11721,13 @@ photographs. Bookmarking is especially supported. The tool box
 has basic macros and a 'convenience' user interface that wraps
 \includegraphics.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-incgraph-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.12svn36500
 Release:        0
 Summary:        Documentation for texlive-incgraph
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-incgraph-doc
 This package includes the documentation for texlive-incgraph
@@ -10498,23 +11782,35 @@ Release:        0
 Summary:        Include .Rnw inside .tex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-includernw-doc >= %{texlive_version}
 Provides:       tex(includeRnw.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(pdftexcmds.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source168:      includernw.tar.xz
-Source169:      includernw.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source169:      includernw.tar.xz
+Source170:      includernw.doc.tar.xz
 
 %description -n texlive-includernw
 This package is for including .Rnw (knitr/sweave)-files inside
@@ -10523,16 +11819,13 @@ installed. Note: This package will probably not work on
 Windows. It is tested only on OS X, and will probably also work
 on standard Linux distros.
 
-date: 2018-05-01 11:33:04 +0000
-
-
 %package -n texlive-includernw-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.0svn47557
 Release:        0
 Summary:        Documentation for texlive-includernw
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-includernw-doc
 This package includes the documentation for texlive-includernw
@@ -10571,16 +11864,21 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-inconsolata
-Version:        %{texlive_version}.%{texlive_noarch}.1.114svn46319
+Version:        %{texlive_version}.%{texlive_noarch}.1.121svn54512
 Release:        0
 Summary:        A monospaced font, with support files for use with TeX
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -10592,10 +11890,17 @@ Requires(postun): grep
 Requires(postun): sed
 Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(updmap.cfg)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-inconsolata-fonts >= %{texlive_version}
 Recommends:     texlive-inconsolata-doc >= %{texlive_version}
 Provides:       tex(i4-ly1-0.enc)
@@ -10774,10 +12079,10 @@ Provides:       tex(zi4.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(upquote.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source170:      inconsolata.tar.xz
-Source171:      inconsolata.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source171:      inconsolata.tar.xz
+Source172:      inconsolata.doc.tar.xz
 
 %description -n texlive-inconsolata
 Inconsolata is a monospaced font designed by Raph Levien. This
@@ -10787,28 +12092,25 @@ and options to control slashed zero, upright quotes and a
 shapelier lower-case L, plus metric files for use with TeX, and
 LaTeX font definition and other relevant files.
 
-date: 2018-01-15 06:32:06 +0000
-
-
 %package -n texlive-inconsolata-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.114svn46319
+Version:        %{texlive_version}.%{texlive_noarch}.1.121svn54512
 Release:        0
 Summary:        Documentation for texlive-inconsolata
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-inconsolata-doc
 This package includes the documentation for texlive-inconsolata
 
 
 %package -n texlive-inconsolata-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.114svn46319
+Version:        %{texlive_version}.%{texlive_noarch}.1.121svn54512
 Release:        0
 Summary:        Severed fonts for texlive-inconsolata
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Fonts
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 %reconfigure_fonts_prereq
 Requires(posttrans): fontconfig
 Requires(posttrans): ghostscript-fonts-std
@@ -11041,7 +12343,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-inconsolata-fonts
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-inconsolata
-%config %{_sysconfdir}/fonts/conf.avail/58-texlive-inconsolata.conf
+%{_datadir}/fontconfig/conf.avail/58-texlive-inconsolata.conf
+%{_datadir}/fontconfig/conf.avail/55-texlive-inconsolata.conf
 %config %{_sysconfdir}/fonts/conf.d/55-texlive-inconsolata.conf
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-inconsolata/encodings.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-inconsolata/fonts.dir
@@ -11055,7 +12358,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-inconsolata/InconsolataN-Bold.pfb
 %{_datadir}/fonts/texlive-inconsolata/InconsolataN-Regular.pfb
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-inconsolata-fonts-%{texlive_version}.%{texlive_noarch}.1.114svn46319-%{release}-zypper
+/var/adm/update-scripts/texlive-inconsolata-fonts-%{texlive_version}.%{texlive_noarch}.1.121svn54512-%{release}-zypper
 %endif
 
 %package -n texlive-index
@@ -11064,23 +12367,35 @@ Release:        0
 Summary:        Extended index for LaTeX including multiple indexes
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-index-doc >= %{texlive_version}
 Provides:       tex(autind.sty)
 Provides:       tex(bibref.sty)
 Provides:       tex(index.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source172:      index.tar.xz
-Source173:      index.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source173:      index.tar.xz
+Source174:      index.doc.tar.xz
 
 %description -n texlive-index
 This is a reimplementation of LaTeX's indexing macros to
@@ -11091,16 +12406,13 @@ robust \index command. It supplies short hand notations for the
 (abbreviated _{word}) that prints the word being indexed, as
 well as creating an index entry for it.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-index-doc
 Version:        %{texlive_version}.%{texlive_noarch}.4.1betasvn24099
 Release:        0
 Summary:        Documentation for texlive-index
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-index-doc
 This package includes the documentation for texlive-index
@@ -11154,15 +12466,27 @@ Release:        0
 Summary:        Producing multiple indices
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-indextools-doc >= %{texlive_version}
 Provides:       tex(indextools.sty)
 Requires:       tex(ifluatex.sty)
@@ -11172,10 +12496,10 @@ Requires:       tex(multicol.sty)
 Requires:       tex(pdftexcmds.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xpatch.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source174:      indextools.tar.xz
-Source175:      indextools.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source175:      indextools.tar.xz
+Source176:      indextools.doc.tar.xz
 
 %description -n texlive-indextools
 This package enables the user to produce and typeset one or
@@ -11187,16 +12511,13 @@ or other programs, it is necessary to enable shell escape.
 Shell escape is also needed if splitindex is used. This is a
 fork of imakeidx, with new features and fixed bugs.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-indextools-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.5.1svn38931
 Release:        0
 Summary:        Documentation for texlive-indextools
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-indextools-doc
 This package includes the documentation for texlive-indextools
@@ -11236,17 +12557,105 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 /var/adm/update-scripts/texlive-indextools-%{texlive_version}.%{texlive_noarch}.1.5.1svn38931-%{release}-zypper
 %endif
 
+%package -n texlive-infwarerr
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn53023
+Release:        0
+Summary:        Complete set of information/warning/error message macros
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Recommends:     texlive-infwarerr-doc >= %{texlive_version}
+Provides:       tex(infwarerr.sty)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source177:      infwarerr.tar.xz
+Source178:      infwarerr.doc.tar.xz
+
+%description -n texlive-infwarerr
+This package provides a complete set of macros for information,
+warning and error messages. Under LaTeX, the commands are
+wrappers for the corresponding LaTeX commands; under Plain TeX
+they are available as complete implementations.
+
+%package -n texlive-infwarerr-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn53023
+Release:        0
+Summary:        Documentation for texlive-infwarerr
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+
+%description -n texlive-infwarerr-doc
+This package includes the documentation for texlive-infwarerr
+
+%post -n texlive-infwarerr
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-infwarerr 
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-infwarerr
+%if %{with zypper_posttrans}
+test -z "$ZYPP_IS_RUNNING" || exit 0
+%endif
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-infwarerr-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/infwarerr/README.md
+%{_texmfdistdir}/doc/latex/infwarerr/infwarerr.pdf
+
+%files -n texlive-infwarerr
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/generic/infwarerr/infwarerr.sty
+%if %{with zypper_posttrans}
+/var/adm/update-scripts/texlive-infwarerr-%{texlive_version}.%{texlive_noarch}.1.5svn53023-%{release}-zypper
+%endif
+
 %package -n texlive-initials
-Version:        %{texlive_version}.%{texlive_noarch}.svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.svn54080
 Release:        0
 Summary:        Adobe Type 1 decorative initial fonts
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -11258,10 +12667,17 @@ Requires(postun): grep
 Requires(postun): sed
 Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(updmap.cfg)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-initials-fonts >= %{texlive_version}
 Recommends:     texlive-initials-doc >= %{texlive_version}
 Provides:       tex(Acorn.fd)
@@ -11333,37 +12749,34 @@ Provides:       tex(Typocaps.tfm)
 Provides:       tex(Zallman.fd)
 Provides:       tex(Zallman.map)
 Provides:       tex(Zallman.tfm)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source176:      initials.tar.xz
-Source177:      initials.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source179:      initials.tar.xz
+Source180:      initials.doc.tar.xz
 
 %description -n texlive-initials
-For each font, at least an .pfb and .tfm file is provided, with
-a .fd file for use with LaTeX.
-
-date: 2016-06-24 17:18:15 +0000
-
+For each font, at least a .pfb and a .tfm file is provided,
+with an .fd file for use with LaTeX.
 
 %package -n texlive-initials-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.svn54080
 Release:        0
 Summary:        Documentation for texlive-initials
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-initials-doc
 This package includes the documentation for texlive-initials
 
 
 %package -n texlive-initials-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.svn54080
 Release:        0
 Summary:        Severed fonts for texlive-initials
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Fonts
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 %reconfigure_fonts_prereq
 Requires(posttrans): fontconfig
 Requires(posttrans): ghostscript-fonts-std
@@ -11611,7 +13024,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-initials-fonts
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-initials
-%config %{_sysconfdir}/fonts/conf.avail/58-texlive-initials.conf
+%{_datadir}/fontconfig/conf.avail/58-texlive-initials.conf
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-initials/encodings.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-initials/fonts.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-initials/fonts.scale
@@ -11639,31 +13052,152 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-initials/Typocaps.pfb
 %{_datadir}/fonts/texlive-initials/Zallman.pfb
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-initials-fonts-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
+/var/adm/update-scripts/texlive-initials-fonts-%{texlive_version}.%{texlive_noarch}.svn54080-%{release}-zypper
 %endif
 
-%package -n texlive-inline-images
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn48415
+%package -n texlive-inkpaper
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn54080
 Release:        0
-Summary:        Inline images in base64 encoding
-License:        LGPL-2.1-or-later
+Summary:        A mathematical paper template
+License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Recommends:     texlive-inkpaper-doc >= %{texlive_version}
+Provides:       tex(inkpaper.cls)
+Requires:       tex(abstract.sty)
+Requires:       tex(amsfonts.sty)
+Requires:       tex(amsthm.sty)
+Requires:       tex(asymptote.sty)
+Requires:       tex(calc.sty)
+Requires:       tex(cite.sty)
+Requires:       tex(ctexart.cls)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(fancyhdr.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(ifxetex.sty)
+Requires:       tex(kvoptions.sty)
+Requires:       tex(listings.sty)
+Requires:       tex(mfirstuc.sty)
+Requires:       tex(microtype.sty)
+Requires:       tex(newtxmath.sty)
+Requires:       tex(newtxtext.sty)
+Requires:       tex(siunitx.sty)
+Requires:       tex(textcase.sty)
+Requires:       tex(xcolor.sty)
+Requires:       tex(xstring.sty)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source181:      inkpaper.tar.xz
+Source182:      inkpaper.doc.tar.xz
+
+%description -n texlive-inkpaper
+InkPaper is designed to write mathematical papers,especially
+designed for Mathematics Students. ZJGS students. magazine
+editors. NOTICE.This is not a Thesis class.
+
+%package -n texlive-inkpaper-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn54080
+Release:        0
+Summary:        Documentation for texlive-inkpaper
+License:        GPL-2.0-or-later
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Provides:       locale(texlive-inkpaper-doc:zh-cn;en)
+
+%description -n texlive-inkpaper-doc
+This package includes the documentation for texlive-inkpaper
+
+%post -n texlive-inkpaper
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-inkpaper 
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-inkpaper
+%if %{with zypper_posttrans}
+test -z "$ZYPP_IS_RUNNING" || exit 0
+%endif
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-inkpaper-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/inkpaper/LICENSE
+%{_texmfdistdir}/doc/latex/inkpaper/README.md
+%{_texmfdistdir}/doc/latex/inkpaper/inkpaper-cn.pdf
+%{_texmfdistdir}/doc/latex/inkpaper/inkpaper-cn.tex
+%{_texmfdistdir}/doc/latex/inkpaper/inkpaper-en.pdf
+%{_texmfdistdir}/doc/latex/inkpaper/inkpaper-en.tex
+
+%files -n texlive-inkpaper
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/inkpaper/inkpaper.cls
+%if %{with zypper_posttrans}
+/var/adm/update-scripts/texlive-inkpaper-%{texlive_version}.%{texlive_noarch}.1.0svn54080-%{release}-zypper
+%endif
+
+%package -n texlive-inline-images
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn54080
+Release:        0
+Summary:        Inline images in base64 encoding
+License:        LGPL-2.1-or-later
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-inline-images-doc >= %{texlive_version}
 Provides:       tex(inline-images.sty)
 Requires:       tex(graphicx.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source178:      inline-images.tar.xz
-Source179:      inline-images.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source183:      inline-images.tar.xz
+Source184:      inline-images.doc.tar.xz
 
 %description -n texlive-inline-images
 The package provides a command \inlineimg to dynamically create
@@ -11671,16 +13205,13 @@ a file containing the inline image in base64 format, which is
 decoded and included in the source file. Requirements LaTeX
 must be run with option --shell-escape. Program base64.
 
-date: 2018-08-18 03:31:14 +0000
-
-
 %package -n texlive-inline-images-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn48415
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn54080
 Release:        0
 Summary:        Documentation for texlive-inline-images
 License:        LGPL-2.1-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-inline-images-doc
 This package includes the documentation for texlive-inline-images
@@ -11716,7 +13247,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/inline-images/inline-images.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-inline-images-%{texlive_version}.%{texlive_noarch}.1.0svn48415-%{release}-zypper
+/var/adm/update-scripts/texlive-inline-images-%{texlive_version}.%{texlive_noarch}.1.0svn54080-%{release}-zypper
 %endif
 
 %package -n texlive-inlinebib
@@ -11725,22 +13256,34 @@ Release:        0
 Summary:        Citations in footnotes
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-inlinebib-doc >= %{texlive_version}
 Provides:       tex(inlinebib.sty)
 Provides:       tex(pageranges.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source180:      inlinebib.tar.xz
-Source181:      inlinebib.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source185:      inlinebib.tar.xz
+Source186:      inlinebib.doc.tar.xz
 
 %description -n texlive-inlinebib
 A BibTeX style and a LaTeX package that allow for a full
@@ -11748,16 +13291,13 @@ bibliography at the end of the document as well as citation
 details in footnotes. The footnote details include "op. cit."
 and "ibid." contractions.
 
-date: 2018-01-06 11:14:59 +0000
-
-
 %package -n texlive-inlinebib-doc
 Version:        %{texlive_version}.%{texlive_noarch}.svn22018
 Release:        0
 Summary:        Documentation for texlive-inlinebib
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-inlinebib-doc
 This package includes the documentation for texlive-inlinebib
@@ -11805,21 +13345,33 @@ Release:        0
 Summary:        Inline expansions within definitions
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-inlinedef-doc >= %{texlive_version}
 Provides:       tex(inlinedef.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source182:      inlinedef.tar.xz
-Source183:      inlinedef.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source187:      inlinedef.tar.xz
+Source188:      inlinedef.doc.tar.xz
 
 %description -n texlive-inlinedef
 The package provides a macro \Inline that precedes a \def or
@@ -11834,16 +13386,13 @@ not suitable. Another application is as an easier version of
 variables, then ending the group with
 \expandafter\endgroup\macro.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-inlinedef-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn15878
 Release:        0
 Summary:        Documentation for texlive-inlinedef
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-inlinedef-doc
 This package includes the documentation for texlive-inlinedef
@@ -11881,27 +13430,200 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 /var/adm/update-scripts/texlive-inlinedef-%{texlive_version}.%{texlive_noarch}.1.0svn15878-%{release}-zypper
 %endif
 
+%package -n texlive-inputenx
+Version:        %{texlive_version}.%{texlive_noarch}.1.12svn52986
+Release:        0
+Summary:        Enhanced input encoding handling
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Recommends:     texlive-inputenx-doc >= %{texlive_version}
+Provides:       tex(inputenx.sty)
+Provides:       tex(ix-alias.def)
+Provides:       tex(ix-math.def)
+Provides:       tex(ix-name.def)
+Provides:       tex(ix-slot.def)
+Provides:       tex(ix-uc.def)
+Provides:       tex(x-ascii.def)
+Provides:       tex(x-atarist.def)
+Provides:       tex(x-cp1250.def)
+Provides:       tex(x-cp1251.def)
+Provides:       tex(x-cp1252.def)
+Provides:       tex(x-cp1255.def)
+Provides:       tex(x-cp1257.def)
+Provides:       tex(x-cp437.def)
+Provides:       tex(x-cp850.def)
+Provides:       tex(x-cp852.def)
+Provides:       tex(x-cp855.def)
+Provides:       tex(x-cp858.def)
+Provides:       tex(x-cp865.def)
+Provides:       tex(x-cp866.def)
+Provides:       tex(x-dec-mcs.def)
+Provides:       tex(x-iso-8859-1.def)
+Provides:       tex(x-iso-8859-10.def)
+Provides:       tex(x-iso-8859-13.def)
+Provides:       tex(x-iso-8859-14.def)
+Provides:       tex(x-iso-8859-15.def)
+Provides:       tex(x-iso-8859-16.def)
+Provides:       tex(x-iso-8859-2.def)
+Provides:       tex(x-iso-8859-3.def)
+Provides:       tex(x-iso-8859-4.def)
+Provides:       tex(x-iso-8859-5.def)
+Provides:       tex(x-iso-8859-8.def)
+Provides:       tex(x-iso-8859-9.def)
+Provides:       tex(x-koi8-r.def)
+Provides:       tex(x-mac-centeuro.def)
+Provides:       tex(x-mac-cyrillic.def)
+Provides:       tex(x-mac-roman.def)
+Provides:       tex(x-nextstep.def)
+Provides:       tex(x-verbatim.def)
+Requires:       tex(inputenc.sty)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source189:      inputenx.tar.xz
+Source190:      inputenx.doc.tar.xz
+
+%description -n texlive-inputenx
+This package deals with input encodings. It provides a wider
+range of input encodings using standard mappings, than does
+inputenc; it also covers nearly all slots. In this way, it
+serves as more uptodate replacement for package inputenc.
+
+%package -n texlive-inputenx-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.12svn52986
+Release:        0
+Summary:        Documentation for texlive-inputenx
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+
+%description -n texlive-inputenx-doc
+This package includes the documentation for texlive-inputenx
+
+%post -n texlive-inputenx
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-inputenx 
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-inputenx
+%if %{with zypper_posttrans}
+test -z "$ZYPP_IS_RUNNING" || exit 0
+%endif
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-inputenx-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/inputenx/README.md
+%{_texmfdistdir}/doc/latex/inputenx/inputenx.pdf
+
+%files -n texlive-inputenx
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/inputenx/inputenx.sty
+%{_texmfdistdir}/tex/latex/inputenx/ix-alias.def
+%{_texmfdistdir}/tex/latex/inputenx/ix-math.def
+%{_texmfdistdir}/tex/latex/inputenx/ix-name.def
+%{_texmfdistdir}/tex/latex/inputenx/ix-slot.def
+%{_texmfdistdir}/tex/latex/inputenx/ix-uc.def
+%{_texmfdistdir}/tex/latex/inputenx/ix-utf8enc.dfu
+%{_texmfdistdir}/tex/latex/inputenx/x-ascii.def
+%{_texmfdistdir}/tex/latex/inputenx/x-atarist.def
+%{_texmfdistdir}/tex/latex/inputenx/x-cp1250.def
+%{_texmfdistdir}/tex/latex/inputenx/x-cp1251.def
+%{_texmfdistdir}/tex/latex/inputenx/x-cp1252.def
+%{_texmfdistdir}/tex/latex/inputenx/x-cp1255.def
+%{_texmfdistdir}/tex/latex/inputenx/x-cp1257.def
+%{_texmfdistdir}/tex/latex/inputenx/x-cp437.def
+%{_texmfdistdir}/tex/latex/inputenx/x-cp850.def
+%{_texmfdistdir}/tex/latex/inputenx/x-cp852.def
+%{_texmfdistdir}/tex/latex/inputenx/x-cp855.def
+%{_texmfdistdir}/tex/latex/inputenx/x-cp858.def
+%{_texmfdistdir}/tex/latex/inputenx/x-cp865.def
+%{_texmfdistdir}/tex/latex/inputenx/x-cp866.def
+%{_texmfdistdir}/tex/latex/inputenx/x-dec-mcs.def
+%{_texmfdistdir}/tex/latex/inputenx/x-iso-8859-1.def
+%{_texmfdistdir}/tex/latex/inputenx/x-iso-8859-10.def
+%{_texmfdistdir}/tex/latex/inputenx/x-iso-8859-13.def
+%{_texmfdistdir}/tex/latex/inputenx/x-iso-8859-14.def
+%{_texmfdistdir}/tex/latex/inputenx/x-iso-8859-15.def
+%{_texmfdistdir}/tex/latex/inputenx/x-iso-8859-16.def
+%{_texmfdistdir}/tex/latex/inputenx/x-iso-8859-2.def
+%{_texmfdistdir}/tex/latex/inputenx/x-iso-8859-3.def
+%{_texmfdistdir}/tex/latex/inputenx/x-iso-8859-4.def
+%{_texmfdistdir}/tex/latex/inputenx/x-iso-8859-5.def
+%{_texmfdistdir}/tex/latex/inputenx/x-iso-8859-8.def
+%{_texmfdistdir}/tex/latex/inputenx/x-iso-8859-9.def
+%{_texmfdistdir}/tex/latex/inputenx/x-koi8-r.def
+%{_texmfdistdir}/tex/latex/inputenx/x-mac-centeuro.def
+%{_texmfdistdir}/tex/latex/inputenx/x-mac-cyrillic.def
+%{_texmfdistdir}/tex/latex/inputenx/x-mac-roman.def
+%{_texmfdistdir}/tex/latex/inputenx/x-nextstep.def
+%{_texmfdistdir}/tex/latex/inputenx/x-verbatim.def
+%if %{with zypper_posttrans}
+/var/adm/update-scripts/texlive-inputenx-%{texlive_version}.%{texlive_noarch}.1.12svn52986-%{release}-zypper
+%endif
+
 %package -n texlive-inputtrc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn28019
 Release:        0
 Summary:        Trace which file loads which
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-inputtrc-doc >= %{texlive_version}
 Provides:       tex(inputtrc.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source184:      inputtrc.tar.xz
-Source185:      inputtrc.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source191:      inputtrc.tar.xz
+Source192:      inputtrc.doc.tar.xz
 
 %description -n texlive-inputtrc
 The package produces screen/log messages of the form '<current>
@@ -11911,16 +13633,13 @@ the level of input nesting. Tracing may be turned on and off,
 and the unit of indentation may be adjusted. The implementation
 somewhat resembles those of packages FiNK and inputfile.
 
-date: 2017-05-06 06:27:29 +0000
-
-
 %package -n texlive-inputtrc-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn28019
 Release:        0
 Summary:        Documentation for texlive-inputtrc
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-inputtrc-doc
 This package includes the documentation for texlive-inputtrc
@@ -11962,16 +13681,21 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-inriafonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn49826
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn54512
 Release:        0
 Summary:        Inria fonts with LaTeX support
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
 Requires(post): findutils
 Requires(post): grep
 Requires(post): sed
@@ -11983,10 +13707,17 @@ Requires(postun): grep
 Requires(postun): sed
 Requires(postun): texlive >= %{texlive_version}
 Requires(postun): tex(updmap.cfg)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-inriafonts-fonts >= %{texlive_version}
 Recommends:     texlive-inriafonts-doc >= %{texlive_version}
 Provides:       tex(InriaSans-Bold-lf-ly1--base.tfm)
@@ -12806,10 +14537,10 @@ Requires:       tex(fontenc.sty)
 Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source186:      inriafonts.tar.xz
-Source187:      inriafonts.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source193:      inriafonts.tar.xz
+Source194:      inriafonts.doc.tar.xz
 
 %description -n texlive-inriafonts
 Inria is a free font designed by Black[Foundry] for Inria
@@ -12823,28 +14554,25 @@ style files, InriaSerif.sty and InriaSans.sty, together with
 the PostScript version of the fonts and their associated files.
 These were created using autoinst.
 
-date: 2019-01-28 04:39:57 +0000
-
-
 %package -n texlive-inriafonts-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn49826
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn54512
 Release:        0
 Summary:        Documentation for texlive-inriafonts
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-inriafonts-doc
 This package includes the documentation for texlive-inriafonts
 
 
 %package -n texlive-inriafonts-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn49826
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn54512
 Release:        0
 Summary:        Severed fonts for texlive-inriafonts
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Fonts
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 %reconfigure_fonts_prereq
 Requires(posttrans): fontconfig
 Requires(posttrans): ghostscript-fonts-std
@@ -13740,7 +15468,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-inriafonts-fonts
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-inriafonts
-%config %{_sysconfdir}/fonts/conf.avail/58-texlive-inriafonts.conf
+%{_datadir}/fontconfig/conf.avail/58-texlive-inriafonts.conf
+%{_datadir}/fontconfig/conf.avail/55-texlive-inriafonts.conf
 %config %{_sysconfdir}/fonts/conf.d/55-texlive-inriafonts.conf
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-inriafonts/encodings.dir
 %ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-inriafonts/fonts.dir
@@ -13782,7 +15511,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-inriafonts/InriaSerif-LightItalic.pfb
 %{_datadir}/fonts/texlive-inriafonts/InriaSerif-Regular.pfb
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-inriafonts-fonts-%{texlive_version}.%{texlive_noarch}.1.0svn49826-%{release}-zypper
+/var/adm/update-scripts/texlive-inriafonts-fonts-%{texlive_version}.%{texlive_noarch}.1.0svn54512-%{release}-zypper
 %endif
 
 %package -n texlive-insbox
@@ -13791,29 +15520,38 @@ Release:        0
 Summary:        Insert pictures/boxes into paragraphs
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-insbox-doc >= %{texlive_version}
 Provides:       tex(insbox.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source188:      insbox.tar.xz
-Source189:      insbox.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source195:      insbox.tar.xz
+Source196:      insbox.doc.tar.xz
 
 %description -n texlive-insbox
 The package provides convenient bundling of the \parshape
 primitive. LaTeX users should note that this is a generic
 package, and should be loaded using \input .
-
-date: 2016-06-24 17:18:15 +0000
-
 
 %package -n texlive-insbox-doc
 Version:        %{texlive_version}.%{texlive_noarch}.2.2svn34299
@@ -13821,7 +15559,7 @@ Release:        0
 Summary:        Documentation for texlive-insbox
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-insbox-doc
 This package includes the documentation for texlive-insbox
@@ -13860,21 +15598,115 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 /var/adm/update-scripts/texlive-insbox-%{texlive_version}.%{texlive_noarch}.2.2svn34299-%{release}-zypper
 %endif
 
+%package -n texlive-intcalc
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn53168
+Release:        0
+Summary:        Expandable arithmetic operations with integers
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Recommends:     texlive-intcalc-doc >= %{texlive_version}
+Provides:       tex(intcalc.sty)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source197:      intcalc.tar.xz
+Source198:      intcalc.doc.tar.xz
+
+%description -n texlive-intcalc
+This package provides expandable arithmetic operations with
+integers, using the e-TeX extension \numexpr if it is
+available.
+
+%package -n texlive-intcalc-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn53168
+Release:        0
+Summary:        Documentation for texlive-intcalc
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            http://www.tug.org/texlive/
+
+%description -n texlive-intcalc-doc
+This package includes the documentation for texlive-intcalc
+
+%post -n texlive-intcalc
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-intcalc 
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-intcalc
+%if %{with zypper_posttrans}
+test -z "$ZYPP_IS_RUNNING" || exit 0
+%endif
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-intcalc-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/intcalc/README.md
+%{_texmfdistdir}/doc/latex/intcalc/intcalc.pdf
+
+%files -n texlive-intcalc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/generic/intcalc/intcalc.sty
+%if %{with zypper_posttrans}
+/var/adm/update-scripts/texlive-intcalc-%{texlive_version}.%{texlive_noarch}.1.3svn53168-%{release}-zypper
+%endif
+
 %package -n texlive-interactiveworkbook
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
 Release:        0
 Summary:        LaTeX-based interactive PDF on the Web
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-interactiveworkbook-doc >= %{texlive_version}
 Provides:       tex(interactiveworkbook-web.sty)
 Provides:       tex(interactiveworkbook.sty)
@@ -13882,10 +15714,10 @@ Requires:       tex(color.sty)
 Requires:       tex(epsfig.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(xspace.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source190:      interactiveworkbook.tar.xz
-Source191:      interactiveworkbook.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source199:      interactiveworkbook.tar.xz
+Source200:      interactiveworkbook.doc.tar.xz
 
 %description -n texlive-interactiveworkbook
 The package interactiveworkbook gives the user the ability to
@@ -13894,16 +15726,13 @@ question-and-answer Portable Document Format (PDF) tutorials
 meant to be used by Internet students and that, in particular,
 freely use mathematical notation.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-interactiveworkbook-doc
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
 Release:        0
 Summary:        Documentation for texlive-interactiveworkbook
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-interactiveworkbook-doc
 This package includes the documentation for texlive-interactiveworkbook
@@ -14059,23 +15888,35 @@ Release:        0
 Summary:        Managing character class schemes in XeTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-interchar-doc >= %{texlive_version}
 Provides:       tex(interchar.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(xparse.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source192:      interchar.tar.xz
-Source193:      interchar.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source201:      interchar.tar.xz
+Source202:      interchar.doc.tar.xz
 
 %description -n texlive-interchar
 The package manages character class schemes of XeTeX. Using
@@ -14083,16 +15924,13 @@ this package, you may switch among different character class
 schemes. Migration commands are provided for make packages
 using this mechanism compatible with each others.
 
-date: 2017-04-18 03:31:40 +0000
-
-
 %package -n texlive-interchar-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn36312
 Release:        0
 Summary:        Documentation for texlive-interchar
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-interchar-doc
 This package includes the documentation for texlive-interchar
@@ -14140,15 +15978,27 @@ Release:        0
 Summary:        Set parameters for other packages, conveniently
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-interfaces-doc >= %{texlive_version}
 Provides:       tex(interfaces-LaTeX.sty)
 Provides:       tex(interfaces-appendix.sty)
@@ -14182,10 +16032,10 @@ Requires:       tex(pgfkeys.sty)
 Requires:       tex(refcount.sty)
 Requires:       tex(scrlfile.sty)
 Requires:       tex(tikz.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source194:      interfaces.tar.xz
-Source195:      interfaces.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source203:      interfaces.tar.xz
+Source204:      interfaces.doc.tar.xz
 
 %description -n texlive-interfaces
 The package provides a small number of convenient macros that
@@ -14200,16 +16050,13 @@ package loads all available sub-packages, but techniques are
 provided for the user to select no more than the interfaces
 needed for a job.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-interfaces-doc
 Version:        %{texlive_version}.%{texlive_noarch}.3.1svn21474
 Release:        0
 Summary:        Documentation for texlive-interfaces
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-interfaces-doc
 This package includes the documentation for texlive-interfaces
@@ -14272,22 +16119,34 @@ Release:        0
 Summary:        Translate input files on the fly
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-interpreter-doc >= %{texlive_version}
 Provides:       tex(interpreter.sty)
 Provides:       tex(interpreter.tex)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source196:      interpreter.tar.xz
-Source197:      interpreter.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source205:      interpreter.tar.xz
+Source206:      interpreter.doc.tar.xz
 
 %description -n texlive-interpreter
 The package preprocesses input files to a Lua(La)TeX run, on
@@ -14304,16 +16163,13 @@ explained in the documentation itself. Interpreter is
 implemented using the author's gates (lua version), and works
 for plain TeX and LaTeX, but not ConTeXt.
 
-date: 2016-06-24 17:18:15 +0000
-
-
 %package -n texlive-interpreter-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.2svn27232
 Release:        0
 Summary:        Documentation for texlive-interpreter
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-interpreter-doc
 This package includes the documentation for texlive-interpreter
@@ -14361,22 +16217,34 @@ Release:        0
 Summary:        Format mathematical intervals, ensuring proper spacing
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-interval-doc >= %{texlive_version}
 Provides:       tex(interval.sty)
 Requires:       tex(pgfkeys.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source198:      interval.tar.xz
-Source199:      interval.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source207:      interval.tar.xz
+Source208:      interval.doc.tar.xz
 
 %description -n texlive-interval
 When typing an open interval as $]a,b[$, a closing bracket is
@@ -14389,16 +16257,13 @@ that the enclosing fences will end up having the proper closing
 and opening types. TeX maths does not do this job properly. The
 package depends on pgfkeys.
 
-date: 2019-03-06 16:01:59 +0000
-
-
 %package -n texlive-interval-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn50265
 Release:        0
 Summary:        Documentation for texlive-interval
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-interval-doc
 This package includes the documentation for texlive-interval
@@ -14437,44 +16302,54 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-intopdf
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.0svn46988
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.1svn51247
 Release:        0
 Summary:        Embed non-PDF files into PDF with hyperlink
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-intopdf-doc >= %{texlive_version}
 Provides:       tex(intopdf.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(pdftexcmds.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source200:      intopdf.tar.xz
-Source201:      intopdf.doc.tar.xz
+Requires:       tex(xparse.sty)
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source209:      intopdf.tar.xz
+Source210:      intopdf.doc.tar.xz
 
 %description -n texlive-intopdf
 The package allows to embed non-PDF files (e.g., BibTeX) into
 PDF with a hyperlink.
 
-date: 2018-04-29 05:15:59 +0000
-
-
 %package -n texlive-intopdf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.0svn46988
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.1svn51247
 Release:        0
 Summary:        Documentation for texlive-intopdf
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-intopdf-doc
 This package includes the documentation for texlive-intopdf
@@ -14508,7 +16383,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/intopdf/intopdf.sty
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-intopdf-%{texlive_version}.%{texlive_noarch}.0.0.1.0svn46988-%{release}-zypper
+/var/adm/update-scripts/texlive-intopdf-%{texlive_version}.%{texlive_noarch}.0.0.2.1svn51247-%{release}-zypper
 %endif
 
 %package -n texlive-intro-scientific
@@ -14517,18 +16392,30 @@ Release:        0
 Summary:        Introducing scientific/mathematical documents using LaTeX
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source202:      intro-scientific.doc.tar.xz
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source211:      intro-scientific.doc.tar.xz
 
 %description -n texlive-intro-scientific
 "Writing Scientific Documents Using LaTeX" is an article
@@ -14537,9 +16424,6 @@ documents. It covers the basics of creating a new LaTeX
 document, special typesetting considerations, mathematical
 typesetting and graphics. It also touches on bibliographic data
 and BibTeX.
-
-date: 2016-06-24 17:18:15 +0000
-
 %post -n texlive-intro-scientific
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
@@ -14577,29 +16461,38 @@ Release:        0
 Summary:        Calculate inverse file paths
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-inversepath-doc >= %{texlive_version}
 Provides:       tex(inversepath.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source203:      inversepath.tar.xz
-Source204:      inversepath.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source212:      inversepath.tar.xz
+Source213:      inversepath.doc.tar.xz
 
 %description -n texlive-inversepath
 The package calculates inverse relative paths. Such things may
 be useful, for example, when writing an auxiliary file to a
 different directory.
-
-date: 2018-01-06 11:14:59 +0000
-
 
 %package -n texlive-inversepath-doc
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn15878
@@ -14607,7 +16500,7 @@ Release:        0
 Summary:        Documentation for texlive-inversepath
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-inversepath-doc
 This package includes the documentation for texlive-inversepath
@@ -14650,15 +16543,27 @@ Release:        0
 Summary:        Generate invoices
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-invoice-doc >= %{texlive_version}
 Provides:       tex(invoice.sty)
 Provides:       tex(invoicelabels.sty)
@@ -14667,10 +16572,10 @@ Requires:       tex(fp.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(longtable.sty)
 Requires:       tex(siunitx.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source205:      invoice.tar.xz
-Source206:      invoice.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source214:      invoice.tar.xz
+Source215:      invoice.doc.tar.xz
 
 %description -n texlive-invoice
 The package may be used for generating invoices. The package
@@ -14680,16 +16585,13 @@ long-standing bug has been removed. Numbers now can show the
 comma as decimal separator. The package depends on the fp, calc
 and siunitx for its calculations.
 
-date: 2018-08-07 11:30:16 +0000
-
-
 %package -n texlive-invoice-doc
 Version:        %{texlive_version}.%{texlive_noarch}.svn48359
 Release:        0
 Summary:        Documentation for texlive-invoice
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-invoice-doc
 This package includes the documentation for texlive-invoice
@@ -14734,15 +16636,27 @@ Release:        0
 Summary:        Produces a standard US invoice from a CSV file
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-invoice-class-doc >= %{texlive_version}
 Provides:       tex(invoice-class.cls)
 Requires:       tex(array.sty)
@@ -14754,18 +16668,15 @@ Requires:       tex(geometry.sty)
 Requires:       tex(longtable.sty)
 Requires:       tex(multicol.sty)
 Requires:       tex(tabularx.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source207:      invoice-class.tar.xz
-Source208:      invoice-class.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source216:      invoice-class.tar.xz
+Source217:      invoice-class.doc.tar.xz
 
 %description -n texlive-invoice-class
 This class produces a standard US commercial invoice using data
 from a CSV file. Invoices can span multiple pages. The class is
 configurable for different shipping addresses.
-
-date: 2019-01-20 04:26:54 +0000
-
 
 %package -n texlive-invoice-class-doc
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn49749
@@ -14773,7 +16684,7 @@ Release:        0
 Summary:        Documentation for texlive-invoice-class
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-invoice-class-doc
 This package includes the documentation for texlive-invoice-class
@@ -14824,15 +16735,27 @@ Release:        0
 Summary:        Intelligent invoices with LaTeX3
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-invoice2-doc >= %{texlive_version}
 Provides:       tex(invoice2.sty)
 Requires:       tex(booktabs.sty)
@@ -14843,10 +16766,10 @@ Requires:       tex(siunitx.sty)
 Requires:       tex(translations.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source209:      invoice2.tar.xz
-Source210:      invoice2.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source218:      invoice2.tar.xz
+Source219:      invoice2.doc.tar.xz
 
 %description -n texlive-invoice2
 Typeset invoices with automatic VAT and calculation of totals.
@@ -14855,16 +16778,13 @@ booktabs for readability. Does not support separate projects
 per invoice. Can be used as a replacement for invoice in most
 cases.
 
-date: 2018-01-17 05:29:29 +0000
-
-
 %package -n texlive-invoice2-doc
 Version:        %{texlive_version}.%{texlive_noarch}.svn46364
 Release:        0
 Summary:        Documentation for texlive-invoice2
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 
 %description -n texlive-invoice2-doc
 This package includes the documentation for texlive-invoice2
@@ -14906,26 +16826,34 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-iodhbwm
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.1svn49838
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.1svn54734
 Release:        0
 Summary:        Unofficial template of the DHBW Mannheim
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
-Requires(pre): texlive >= %{texlive_version}
+URL:            http://www.tug.org/texlive/
+Requires(pre): texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
 Requires(posttrans): findutils
 Requires(posttrans): grep
 Requires(posttrans): sed
 Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
 Recommends:     texlive-iodhbwm-doc >= %{texlive_version}
-Provides:       tex(dhbw-declaration.def)
-Provides:       tex(dhbw-titlepage-ba.def)
-Provides:       tex(dhbw-titlepage-pa.def)
-Provides:       tex(dhbw-titlepage-sa.def)
-Provides:       tex(dhbw-titlepage.def)
+Provides:       tex(iodhbwm-i18n.def)
 Provides:       tex(iodhbwm-templates.sty)
 Provides:       tex(iodhbwm.cls)
 Requires:       tex(auxhook.sty)
@@ -14954,10 +16882,10 @@ Requires:       tex(totalcount.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xpatch.sty)
 Requires:       tex(xstring.sty)
-# Download at ftp://ftp.ctan.org/pub/tex/systems/texlive/tlnet/archive/
-# from 20190407
-Source211:      iodhbwm.tar.xz
-Source212:      iodhbwm.doc.tar.xz
+# Download at ftp://ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20200327
+Source220:      iodhbwm.tar.xz
+Source221:      iodhbwm.doc.tar.xz
 
 %description -n texlive-iodhbwm
 This package provides an unofficial template of the DHBW
@@ -14965,16 +16893,13 @@ Mannheim for the creation of bachelor thesis, studies or
 project work with LaTeX. The aim of the package is the quick
 creation of a basic framework without much effort.
 
-date: 2019-01-27 13:22:03 +0000
-
-
 %package -n texlive-iodhbwm-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.1svn49838
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.1svn54734
 Release:        0
 Summary:        Documentation for texlive-iodhbwm
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-Url:            http://www.tug.org/texlive/
+URL:            http://www.tug.org/texlive/
 Provides:       locale(texlive-iodhbwm-doc:de)
 
 %description -n texlive-iodhbwm-doc
@@ -15024,6 +16949,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/iodhbwm/examples/customizing/iodhbwm-print.tex
 %{_texmfdistdir}/doc/latex/iodhbwm/examples/customizing/iodhbwm-replace-part-naming.pdf
 %{_texmfdistdir}/doc/latex/iodhbwm/examples/customizing/iodhbwm-replace-part-naming.tex
+%{_texmfdistdir}/doc/latex/iodhbwm/examples/customizing/iodhbwm-roman-numbers.pdf
+%{_texmfdistdir}/doc/latex/iodhbwm/examples/customizing/iodhbwm-roman-numbers.tex
 %{_texmfdistdir}/doc/latex/iodhbwm/examples/how-to-use-iodhbwm/iodhbwm-advanced-starter.pdf
 %{_texmfdistdir}/doc/latex/iodhbwm/examples/how-to-use-iodhbwm/iodhbwm-advanced-starter.tex
 %{_texmfdistdir}/doc/latex/iodhbwm/examples/how-to-use-iodhbwm/iodhbwm-recommended-starter.pdf
@@ -15044,23 +16971,27 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/iodhbwm/examples/titlepages/iodhbwm-titlepage-logo.pdf
 %{_texmfdistdir}/doc/latex/iodhbwm/examples/titlepages/iodhbwm-titlepage-logo.tex
 %{_texmfdistdir}/doc/latex/iodhbwm/examples/titlepages/my-titlepage.tex
+%{_texmfdistdir}/doc/latex/iodhbwm/i18n/english/dhbw-declaration.def
+%{_texmfdistdir}/doc/latex/iodhbwm/i18n/english/dhbw-titlepage-ba.def
+%{_texmfdistdir}/doc/latex/iodhbwm/i18n/english/dhbw-titlepage-pa.def
+%{_texmfdistdir}/doc/latex/iodhbwm/i18n/english/dhbw-titlepage-sa.def
+%{_texmfdistdir}/doc/latex/iodhbwm/i18n/english/dhbw-titlepage.def
+%{_texmfdistdir}/doc/latex/iodhbwm/i18n/ngerman/dhbw-declaration.def
+%{_texmfdistdir}/doc/latex/iodhbwm/i18n/ngerman/dhbw-titlepage-ba.def
+%{_texmfdistdir}/doc/latex/iodhbwm/i18n/ngerman/dhbw-titlepage-pa.def
+%{_texmfdistdir}/doc/latex/iodhbwm/i18n/ngerman/dhbw-titlepage-sa.def
+%{_texmfdistdir}/doc/latex/iodhbwm/i18n/ngerman/dhbw-titlepage.def
 %{_texmfdistdir}/doc/latex/iodhbwm/iodhbwm.pdf
 %{_texmfdistdir}/doc/latex/iodhbwm/iodhbwm.tex
-%{_texmfdistdir}/doc/latex/iodhbwm/test-doc.pdf
-%{_texmfdistdir}/doc/latex/iodhbwm/test-doc.tex
 
 %files -n texlive-iodhbwm
 %defattr(-,root,root,755)
-%{_texmfdistdir}/tex/latex/iodhbwm/dhbw-declaration.def
 %{_texmfdistdir}/tex/latex/iodhbwm/dhbw-logo.png
-%{_texmfdistdir}/tex/latex/iodhbwm/dhbw-titlepage-ba.def
-%{_texmfdistdir}/tex/latex/iodhbwm/dhbw-titlepage-pa.def
-%{_texmfdistdir}/tex/latex/iodhbwm/dhbw-titlepage-sa.def
-%{_texmfdistdir}/tex/latex/iodhbwm/dhbw-titlepage.def
+%{_texmfdistdir}/tex/latex/iodhbwm/iodhbwm-i18n.def
 %{_texmfdistdir}/tex/latex/iodhbwm/iodhbwm-templates.sty
 %{_texmfdistdir}/tex/latex/iodhbwm/iodhbwm.cls
 %if %{with zypper_posttrans}
-/var/adm/update-scripts/texlive-iodhbwm-%{texlive_version}.%{texlive_noarch}.1.0.1svn49838-%{release}-zypper
+/var/adm/update-scripts/texlive-iodhbwm-%{texlive_version}.%{texlive_noarch}.1.2.1svn54734-%{release}-zypper
 %endif
 
 %prep
@@ -15078,6 +17009,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     ln -sf ../../share/texmf        %{buildroot}%{_datadir}/texlive/texmf
     ln -sf ../../../share/texmf/tlpkg/tlpostcode \
                                     %{buildroot}%{_datadir}/texlive/tlpkg/tlpostcode
+    ln -sf tlpkg/tlpostcode         %{buildroot}%{_texmfmaindir}/tlpostcode
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-hrlatex-%{texlive_version}.%{texlive_noarch}.0.0.23svn18020-%{release}-zypper
@@ -15086,75 +17018,93 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:2} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hulipsum-%{texlive_version}.%{texlive_noarch}.1.0svn46803-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hu-berlin-bundle-%{texlive_version}.%{texlive_noarch}.1.0.4svn54512-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:3} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:4} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hustthesis-%{texlive_version}.%{texlive_noarch}.1.4svn42547-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hulipsum-%{texlive_version}.%{texlive_noarch}.1.0svn46803-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:5} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:6} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hvfloat-%{texlive_version}.%{texlive_noarch}.2.12asvn50846-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hustthesis-%{texlive_version}.%{texlive_noarch}.1.4svn42547-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:7} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:8} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hvindex-%{texlive_version}.%{texlive_noarch}.0.0.04svn46051-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hvfloat-%{texlive_version}.%{texlive_noarch}.2.16svn52010-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:9} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:10} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hypdvips-%{texlive_version}.%{texlive_noarch}.3.02svn34364-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hvindex-%{texlive_version}.%{texlive_noarch}.0.0.04svn46051-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:11} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:12} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyper-%{texlive_version}.%{texlive_noarch}.4.2dsvn17357-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hvqrurl-%{texlive_version}.%{texlive_noarch}.0.0.01asvn52993-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:13} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:14} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyperbar-%{texlive_version}.%{texlive_noarch}.0.0.1svn48147-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hycolor-%{texlive_version}.%{texlive_noarch}.1.10svn53584-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:15} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:16} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hypernat-%{texlive_version}.%{texlive_noarch}.1.0bsvn17358-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hypdvips-%{texlive_version}.%{texlive_noarch}.3.03svn53197-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:17} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:18} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyperref-%{texlive_version}.%{texlive_noarch}.6.88esvn49299-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyper-%{texlive_version}.%{texlive_noarch}.4.2dsvn17357-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:19} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:20} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyperxmp-%{texlive_version}.%{texlive_noarch}.4.1svn50812-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyperbar-%{texlive_version}.%{texlive_noarch}.0.0.1svn48147-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:21} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:22} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyph-utf8-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hypernat-%{texlive_version}.%{texlive_noarch}.1.0bsvn17358-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:23} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:24} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-afrikaans-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyperref-%{texlive_version}.%{texlive_noarch}.7.00dsvn53837-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:25} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:26} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-hyperxmp-%{texlive_version}.%{texlive_noarch}.5.1svn54758-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:27} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:28} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-hyph-utf8-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:29} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:30} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-afrikaans-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:31} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-afrikaans.dat)<<'EOF'
 %% from hyphen-afrikaans:
@@ -15177,9 +17127,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-ancientgreek-%{texlive_version}.%{texlive_noarch}.svn50805-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-ancientgreek-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:26} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:32} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-ancientgreek.dat)<<'EOF'
 %% from hyphen-ancientgreek:
@@ -15211,9 +17161,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-arabic-%{texlive_version}.%{texlive_noarch}.svn50805-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-arabic-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:27} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:33} -C %{buildroot}%{_datadir}/texlive
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-arabic.dat)<<'EOF'
 %% from hyphen-arabic:
@@ -15235,9 +17185,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-armenian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-armenian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:28} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:34} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-armenian.dat)<<'EOF'
 %% from hyphen-armenian:
@@ -15260,9 +17210,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-base-%{texlive_version}.%{texlive_noarch}.svn50826-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-base-%{texlive_version}.%{texlive_noarch}.svn54763-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:29} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:35} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move configuration files
     mkdir -p %{buildroot}%{_texmfconfdir}/tex/generic/config
     mv -f  %{buildroot}%{_texmfdistdir}/tex/generic/config/language.dat %{buildroot}%{_texmfconfdir}/tex/generic/config/
@@ -15276,9 +17226,9 @@ EOF
     ln -sf %{_texmfconfdir}/tex/generic/config/language.def %{buildroot}%{_texmfdistdir}/tex/generic/config/language.def
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-basque-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-basque-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:30} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:36} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-basque.dat)<<'EOF'
 %% from hyphen-basque:
@@ -15301,9 +17251,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-belarusian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-belarusian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:31} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:37} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-belarusian.dat)<<'EOF'
 %% from hyphen-belarusian:
@@ -15326,9 +17276,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-bulgarian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-bulgarian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:32} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:38} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-bulgarian.dat)<<'EOF'
 %% from hyphen-bulgarian:
@@ -15351,9 +17301,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-catalan-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-catalan-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:33} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:39} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-catalan.dat)<<'EOF'
 %% from hyphen-catalan:
@@ -15376,14 +17326,34 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-chinese-%{texlive_version}.%{texlive_noarch}.svn50821-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-chinese-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:34} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:40} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
+    (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-chinese.dat)<<'EOF'
+%% from hyphen-chinese:
+pinyin loadhyph-zh-latn-pinyin.tex
+EOF
+    (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-chinese.def)<<'EOF'
+%% from hyphen-chinese:
+\addlanguage{pinyin}{loadhyph-zh-latn-pinyin.tex}{}{1}{2}
+EOF
+    (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-chinese.dat.lua)<<'EOF'
+-- from hyphen-chinese:
+	['pinyin'] = {
+		loader = 'loadhyph-zh-latn-pinyin.tex',
+		lefthyphenmin = 1,
+		righthyphenmin = 2,
+		synonyms = {  },
+		patterns = 'hyph-zh-latn-pinyin.pat.txt',
+		hyphenation = '',
+	},
+EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-churchslavonic-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-churchslavonic-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:35} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:41} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-churchslavonic.dat)<<'EOF'
 %% from hyphen-churchslavonic:
@@ -15406,9 +17376,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-coptic-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-coptic-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:36} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:42} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-coptic.dat)<<'EOF'
 %% from hyphen-coptic:
@@ -15431,9 +17401,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-croatian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-croatian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:37} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:43} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-croatian.dat)<<'EOF'
 %% from hyphen-croatian:
@@ -15456,9 +17426,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-czech-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-czech-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:38} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:44} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-czech.dat)<<'EOF'
 %% from hyphen-czech:
@@ -15481,9 +17451,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-danish-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-danish-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:39} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:45} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-danish.dat)<<'EOF'
 %% from hyphen-danish:
@@ -15506,9 +17476,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-dutch-%{texlive_version}.%{texlive_noarch}.1.1svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-dutch-%{texlive_version}.%{texlive_noarch}.1.1svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:40} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:46} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-dutch.dat)<<'EOF'
 %% from hyphen-dutch:
@@ -15531,9 +17501,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-english-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-english-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:41} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:47} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-english.dat)<<'EOF'
 %% from hyphen-english:
@@ -15570,9 +17540,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-esperanto-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-esperanto-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:42} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:48} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-esperanto.dat)<<'EOF'
 %% from hyphen-esperanto:
@@ -15595,9 +17565,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-estonian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-estonian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:43} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:49} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-estonian.dat)<<'EOF'
 %% from hyphen-estonian:
@@ -15620,9 +17590,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-ethiopic-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-ethiopic-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:44} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:50} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-ethiopic.dat)<<'EOF'
 %% from hyphen-ethiopic:
@@ -15649,9 +17619,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-farsi-%{texlive_version}.%{texlive_noarch}.svn50805-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-farsi-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:45} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:51} -C %{buildroot}%{_datadir}/texlive
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-farsi.dat)<<'EOF'
 %% from hyphen-farsi:
@@ -15675,9 +17645,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-finnish-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-finnish-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:46} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:52} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-finnish.dat)<<'EOF'
 %% from hyphen-finnish:
@@ -15700,9 +17670,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-french-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-french-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:47} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:53} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-french.dat)<<'EOF'
 %% from hyphen-french:
@@ -15729,9 +17699,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-friulan-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-friulan-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:48} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:54} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-friulan.dat)<<'EOF'
 %% from hyphen-friulan:
@@ -15754,9 +17724,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-galician-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-galician-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:49} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:55} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-galician.dat)<<'EOF'
 %% from hyphen-galician:
@@ -15779,9 +17749,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-georgian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-georgian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:50} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:56} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-georgian.dat)<<'EOF'
 %% from hyphen-georgian:
@@ -15804,9 +17774,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-german-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-german-%{texlive_version}.%{texlive_noarch}.svn54758-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:51} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:57} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-german.dat)<<'EOF'
 %% from hyphen-german:
@@ -15849,33 +17819,25 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-greek-%{texlive_version}.%{texlive_noarch}.5svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-greek-%{texlive_version}.%{texlive_noarch}.5svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:52} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:53} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:58} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:59} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-greek.dat)<<'EOF'
 %% from hyphen-greek:
-monogreek loadhyph-el-monoton.tex
 greek loadhyph-el-polyton.tex
 =polygreek
+monogreek loadhyph-el-monoton.tex
 EOF
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-greek.def)<<'EOF'
 %% from hyphen-greek:
-\addlanguage{monogreek}{loadhyph-el-monoton.tex}{}{1}{1}
 \addlanguage{greek}{loadhyph-el-polyton.tex}{}{1}{1}
 \addlanguage{polygreek}{loadhyph-el-polyton.tex}{}{1}{1}
+\addlanguage{monogreek}{loadhyph-el-monoton.tex}{}{1}{1}
 EOF
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-greek.dat.lua)<<'EOF'
 -- from hyphen-greek:
-	['monogreek'] = {
-		loader = 'loadhyph-el-monoton.tex',
-		lefthyphenmin = 1,
-		righthyphenmin = 1,
-		synonyms = {  },
-		patterns = 'hyph-el-monoton.pat.txt',
-		hyphenation = '',
-	},
 	['greek'] = {
 		loader = 'loadhyph-el-polyton.tex',
 		lefthyphenmin = 1,
@@ -15884,13 +17846,21 @@ EOF
 		patterns = 'hyph-el-polyton.pat.txt',
 		hyphenation = '',
 	},
+	['monogreek'] = {
+		loader = 'loadhyph-el-monoton.tex',
+		lefthyphenmin = 1,
+		righthyphenmin = 1,
+		synonyms = {  },
+		patterns = 'hyph-el-monoton.pat.txt',
+		hyphenation = '',
+	},
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-hungarian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-hungarian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:54} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:55} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:60} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:61} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-hungarian.dat)<<'EOF'
 %% from hyphen-hungarian:
@@ -15933,9 +17903,9 @@ EOF
     done
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-icelandic-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-icelandic-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:56} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:62} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-icelandic.dat)<<'EOF'
 %% from hyphen-icelandic:
@@ -15958,9 +17928,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-indic-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-indic-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:57} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:63} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-indic.dat)<<'EOF'
 %% from hyphen-indic:
@@ -15972,8 +17942,8 @@ kannada loadhyph-kn.tex
 malayalam loadhyph-ml.tex
 marathi loadhyph-mr.tex
 oriya loadhyph-or.tex
-panjabi loadhyph-pa.tex
 pali loadhyph-pi.tex
+panjabi loadhyph-pa.tex
 tamil loadhyph-ta.tex
 telugu loadhyph-te.tex
 EOF
@@ -15987,8 +17957,8 @@ EOF
 \addlanguage{malayalam}{loadhyph-ml.tex}{}{1}{1}
 \addlanguage{marathi}{loadhyph-mr.tex}{}{1}{1}
 \addlanguage{oriya}{loadhyph-or.tex}{}{1}{1}
-\addlanguage{panjabi}{loadhyph-pa.tex}{}{1}{1}
 \addlanguage{pali}{loadhyph-pi.tex}{}{1}{2}
+\addlanguage{panjabi}{loadhyph-pa.tex}{}{1}{1}
 \addlanguage{tamil}{loadhyph-ta.tex}{}{1}{1}
 \addlanguage{telugu}{loadhyph-te.tex}{}{1}{1}
 EOF
@@ -16058,20 +18028,20 @@ EOF
 		patterns = 'hyph-or.pat.txt',
 		hyphenation = '',
 	},
-	['panjabi'] = {
-		loader = 'loadhyph-pa.tex',
-		lefthyphenmin = 1,
-		righthyphenmin = 1,
-		synonyms = {  },
-		patterns = 'hyph-pa.pat.txt',
-		hyphenation = '',
-	},
 	['pali'] = {
 		loader = 'loadhyph-pi.tex',
 		lefthyphenmin = 1,
 		righthyphenmin = 2,
 		synonyms = {  },
 		patterns = 'hyph-pi.pat.txt',
+		hyphenation = '',
+	},
+	['panjabi'] = {
+		loader = 'loadhyph-pa.tex',
+		lefthyphenmin = 1,
+		righthyphenmin = 1,
+		synonyms = {  },
+		patterns = 'hyph-pa.pat.txt',
 		hyphenation = '',
 	},
 	['tamil'] = {
@@ -16093,9 +18063,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-indonesian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-indonesian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:58} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:64} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-indonesian.dat)<<'EOF'
 %% from hyphen-indonesian:
@@ -16118,9 +18088,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-interlingua-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-interlingua-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:59} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:65} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-interlingua.dat)<<'EOF'
 %% from hyphen-interlingua:
@@ -16143,9 +18113,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-irish-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-irish-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:60} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:66} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-irish.dat)<<'EOF'
 %% from hyphen-irish:
@@ -16168,9 +18138,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-italian-%{texlive_version}.%{texlive_noarch}.4.8gsvn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-italian-%{texlive_version}.%{texlive_noarch}.4.8gsvn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:61} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:67} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-italian.dat)<<'EOF'
 %% from hyphen-italian:
@@ -16193,9 +18163,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-kurmanji-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-kurmanji-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:62} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:68} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-kurmanji.dat)<<'EOF'
 %% from hyphen-kurmanji:
@@ -16218,38 +18188,38 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-latin-%{texlive_version}.%{texlive_noarch}.3.1svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-latin-%{texlive_version}.%{texlive_noarch}.3.1svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:63} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:69} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-latin.dat)<<'EOF'
 %% from hyphen-latin:
-latin loadhyph-la.tex
 classiclatin loadhyph-la-x-classic.tex
+latin loadhyph-la.tex
 liturgicallatin loadhyph-la-x-liturgic.tex
 EOF
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-latin.def)<<'EOF'
 %% from hyphen-latin:
-\addlanguage{latin}{loadhyph-la.tex}{}{2}{2}
 \addlanguage{classiclatin}{loadhyph-la-x-classic.tex}{}{2}{2}
+\addlanguage{latin}{loadhyph-la.tex}{}{2}{2}
 \addlanguage{liturgicallatin}{loadhyph-la-x-liturgic.tex}{}{2}{2}
 EOF
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-latin.dat.lua)<<'EOF'
 -- from hyphen-latin:
-	['latin'] = {
-		loader = 'loadhyph-la.tex',
-		lefthyphenmin = 2,
-		righthyphenmin = 2,
-		synonyms = {  },
-		patterns = 'hyph-la.pat.txt',
-		hyphenation = '',
-	},
 	['classiclatin'] = {
 		loader = 'loadhyph-la-x-classic.tex',
 		lefthyphenmin = 2,
 		righthyphenmin = 2,
 		synonyms = {  },
 		patterns = 'hyph-la-x-classic.pat.txt',
+		hyphenation = '',
+	},
+	['latin'] = {
+		loader = 'loadhyph-la.tex',
+		lefthyphenmin = 2,
+		righthyphenmin = 2,
+		synonyms = {  },
+		patterns = 'hyph-la.pat.txt',
 		hyphenation = '',
 	},
 	['liturgicallatin'] = {
@@ -16263,9 +18233,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-latvian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-latvian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:64} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:70} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-latvian.dat)<<'EOF'
 %% from hyphen-latvian:
@@ -16288,9 +18258,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-lithuanian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-lithuanian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:65} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:71} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-lithuanian.dat)<<'EOF'
 %% from hyphen-lithuanian:
@@ -16313,9 +18283,34 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-mongolian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-macedonian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:66} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:72} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
+    (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-macedonian.dat)<<'EOF'
+%% from hyphen-macedonian:
+macedonian loadhyph-mk.tex
+EOF
+    (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-macedonian.def)<<'EOF'
+%% from hyphen-macedonian:
+\addlanguage{macedonian}{loadhyph-mk.tex}{}{2}{2}
+EOF
+    (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-macedonian.dat.lua)<<'EOF'
+-- from hyphen-macedonian:
+	['macedonian'] = {
+		loader = 'loadhyph-mk.tex',
+		lefthyphenmin = 2,
+		righthyphenmin = 2,
+		synonyms = {  },
+		patterns = 'hyph-mk.pat.txt',
+		hyphenation = '',
+	},
+EOF
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-mongolian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:73} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-mongolian.dat)<<'EOF'
 %% from hyphen-mongolian:
@@ -16347,9 +18342,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-norwegian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-norwegian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:67} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:74} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-norwegian.dat)<<'EOF'
 %% from hyphen-norwegian:
@@ -16386,9 +18381,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-occitan-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-occitan-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:68} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:75} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-occitan.dat)<<'EOF'
 %% from hyphen-occitan:
@@ -16411,9 +18406,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-piedmontese-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-piedmontese-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:69} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:76} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-piedmontese.dat)<<'EOF'
 %% from hyphen-piedmontese:
@@ -16436,9 +18431,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-polish-%{texlive_version}.%{texlive_noarch}.3.0asvn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-polish-%{texlive_version}.%{texlive_noarch}.3.0asvn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:70} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:77} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-polish.dat)<<'EOF'
 %% from hyphen-polish:
@@ -16461,9 +18456,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-portuguese-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-portuguese-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:71} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:78} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-portuguese.dat)<<'EOF'
 %% from hyphen-portuguese:
@@ -16488,9 +18483,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-romanian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-romanian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:72} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-romanian.dat)<<'EOF'
 %% from hyphen-romanian:
@@ -16513,9 +18508,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-romansh-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-romansh-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:73} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-romansh.dat)<<'EOF'
 %% from hyphen-romansh:
@@ -16538,9 +18533,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-russian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-russian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:74} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-russian.dat)<<'EOF'
 %% from hyphen-russian:
@@ -16563,10 +18558,10 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-sanskrit-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-sanskrit-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:75} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:76} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-sanskrit.dat)<<'EOF'
 %% from hyphen-sanskrit:
@@ -16589,9 +18584,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-serbian-%{texlive_version}.%{texlive_noarch}.1.0asvn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-serbian-%{texlive_version}.%{texlive_noarch}.1.0asvn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:77} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-serbian.dat)<<'EOF'
 %% from hyphen-serbian:
@@ -16624,9 +18619,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-slovak-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-slovak-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:78} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-slovak.dat)<<'EOF'
 %% from hyphen-slovak:
@@ -16649,9 +18644,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-slovenian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-slovenian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-slovenian.dat)<<'EOF'
 %% from hyphen-slovenian:
@@ -16676,10 +18671,10 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-spanish-%{texlive_version}.%{texlive_noarch}.4.5svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-spanish-%{texlive_version}.%{texlive_noarch}.4.5svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:87} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:88} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-spanish.dat)<<'EOF'
 %% from hyphen-spanish:
@@ -16704,9 +18699,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-swedish-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-swedish-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:89} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-swedish.dat)<<'EOF'
 %% from hyphen-swedish:
@@ -16729,9 +18724,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-thai-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-thai-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:90} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-thai.dat)<<'EOF'
 %% from hyphen-thai:
@@ -16754,9 +18749,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-turkish-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-turkish-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:91} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-turkish.dat)<<'EOF'
 %% from hyphen-turkish:
@@ -16779,9 +18774,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-turkmen-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-turkmen-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:92} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-turkmen.dat)<<'EOF'
 %% from hyphen-turkmen:
@@ -16804,9 +18799,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-ukrainian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-ukrainian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:93} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-ukrainian.dat)<<'EOF'
 %% from hyphen-ukrainian:
@@ -16829,9 +18824,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-uppersorbian-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-uppersorbian-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:87} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-uppersorbian.dat)<<'EOF'
 %% from hyphen-uppersorbian:
@@ -16854,9 +18849,9 @@ EOF
 EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-hyphen-welsh-%{texlive_version}.%{texlive_noarch}.svn50792-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-hyphen-welsh-%{texlive_version}.%{texlive_noarch}.svn54568-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:88} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:95} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits
     (cat > %{buildroot}%{_texmfdistdir}/tex/generic/config/language.splits/hyphen-welsh.dat)<<'EOF'
 %% from hyphen-welsh:
@@ -16881,25 +18876,25 @@ EOF
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-hyphenat-%{texlive_version}.%{texlive_noarch}.2.3csvn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:89} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:90} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-hyphenex-%{texlive_version}.%{texlive_noarch}.svn37354-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:91} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-hyplain-%{texlive_version}.%{texlive_noarch}.1.0svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:92} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:93} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ibycus-babel-%{texlive_version}.%{texlive_noarch}.3.0svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:95} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/ibycus-babel/ibyhyph.pl
     do
@@ -16910,8 +18905,8 @@ EOF
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ibygrk-fonts-%{texlive_version}.%{texlive_noarch}.4.5svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-ibygrk
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/ibygrk/*.{pf[ab],[ot]tf}
@@ -16924,8 +18919,8 @@ EOF
     >  %{buildroot}%{_datadir}/fonts/texlive-ibygrk/encodings.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-ibygrk/fonts.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-ibygrk/fonts.scale
-    mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.avail
-    (cat > %{buildroot}%{_sysconfdir}/fonts/conf.avail/58-texlive-ibygrk.conf)<<-'EOF'
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-ibygrk.conf)<<-'EOF'
 	<?xml version="1.0"?>
 	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 
@@ -16944,177 +18939,159 @@ EOF
 	EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-icite-%{texlive_version}.%{texlive_noarch}.1.2svn50429-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-icite-%{texlive_version}.%{texlive_noarch}.1.3asvn54512-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:105} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:106} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-icsv-%{texlive_version}.%{texlive_noarch}.0.0.2svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:107} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:108} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-identkey-%{texlive_version}.%{texlive_noarch}.0.0.1.0svn49018-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-idxcmds-%{texlive_version}.%{texlive_noarch}.0.0.2csvn38115-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:105} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-idxlayout-%{texlive_version}.%{texlive_noarch}.0.0.4dsvn25821-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:106} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:107} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ieeepes-%{texlive_version}.%{texlive_noarch}.4.0svn17359-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:108} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:109} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ietfbibs-%{texlive_version}.%{texlive_noarch}.1.0.0svn41332-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:110} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ifetex-%{texlive_version}.%{texlive_noarch}.1.2asvn47231-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-idxcmds-%{texlive_version}.%{texlive_noarch}.0.0.2csvn54554-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:111} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:112} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-iffont-%{texlive_version}.%{texlive_noarch}.1.0.0svn38823-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-idxlayout-%{texlive_version}.%{texlive_noarch}.0.0.4dsvn25821-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:113} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:114} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ifluatex-%{texlive_version}.%{texlive_noarch}.1.4svn49285-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-ieeepes-%{texlive_version}.%{texlive_noarch}.4.0svn17359-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:115} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:116} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ifmslide-%{texlive_version}.%{texlive_noarch}.0.0.47svn20727-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-ietfbibs-%{texlive_version}.%{texlive_noarch}.1.0.0svn41332-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-iffont-%{texlive_version}.%{texlive_noarch}.1.0.0svn38823-%{release}-zypper
+%endif
     tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-ifmslide-%{texlive_version}.%{texlive_noarch}.0.0.47svn20727-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ifmtarg-%{texlive_version}.%{texlive_noarch}.1.2bsvn47544-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ifnextok-%{texlive_version}.%{texlive_noarch}.0.0.3svn23379-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ifoddpage-%{texlive_version}.%{texlive_noarch}.1.1svn40726-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ifplatform-%{texlive_version}.%{texlive_noarch}.0.0.4asvn45533-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ifptex-%{texlive_version}.%{texlive_noarch}.1.2csvn45485-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-ifptex-%{texlive_version}.%{texlive_noarch}.2.0svn52626-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ifsym-%{texlive_version}.%{texlive_noarch}.svn24868-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-iftex-%{texlive_version}.%{texlive_noarch}.0.0.2svn29654-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-iftex-%{texlive_version}.%{texlive_noarch}.1.0dsvn54159-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ifthenx-%{texlive_version}.%{texlive_noarch}.0.0.1asvn25819-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-ifxetex-%{texlive_version}.%{texlive_noarch}.0.0.6svn19685-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ifxptex-%{texlive_version}.%{texlive_noarch}.0.0.2svn46153-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-iitem-%{texlive_version}.%{texlive_noarch}.1.0svn29613-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ijmart-%{texlive_version}.%{texlive_noarch}.1.7svn30958-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:142} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ijqc-%{texlive_version}.%{texlive_noarch}.1.2svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-ijsra-%{texlive_version}.%{texlive_noarch}.1.1svn44886-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:146} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-imac-%{texlive_version}.%{texlive_noarch}.svn17347-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:148} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:149} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-image-gallery-%{texlive_version}.%{texlive_noarch}.1.0jsvn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:149} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:150} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-imakeidx-%{texlive_version}.%{texlive_noarch}.1.3esvn42287-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:152} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:153} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-imfellenglish-fonts-%{texlive_version}.%{texlive_noarch}.svn38547-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:153} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-imfellenglish
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/iginomarini/imfellenglish/*.{pf[ab],[ot]tf} \
@@ -17128,8 +19105,8 @@ EOF
     >  %{buildroot}%{_datadir}/fonts/texlive-imfellenglish/encodings.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-imfellenglish/fonts.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-imfellenglish/fonts.scale
-    mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.avail
-    (cat > %{buildroot}%{_sysconfdir}/fonts/conf.avail/58-texlive-imfellenglish.conf)<<-'EOF'
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-imfellenglish.conf)<<-'EOF'
 	<?xml version="1.0"?>
 	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 
@@ -17148,7 +19125,7 @@ EOF
 	EOF
 
     mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.d
-    (cat > %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-imfellenglish.conf)<<-'EOF'
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/55-texlive-imfellenglish.conf)<<-'EOF'
 	<?xml version="1.0"?>
 	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 
@@ -17165,63 +19142,64 @@ EOF
 	  </selectfont>
 	</fontconfig>
 	EOF
+    ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-imfellenglish.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-imfellenglish.conf
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-impatient-%{texlive_version}.%{texlive_noarch}.svn35573-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-impatient-cn-%{texlive_version}.%{texlive_noarch}.svn45751-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-impatient-%{texlive_version}.%{texlive_noarch}.2020svn54080-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-impatient-fr-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-impatient-cn-%{texlive_version}.%{texlive_noarch}.2020svn54080-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-impnattypo-%{texlive_version}.%{texlive_noarch}.1.5svn50227-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-impatient-fr-%{texlive_version}.%{texlive_noarch}.2020svn54080-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-import-%{texlive_version}.%{texlive_noarch}.5.1svn17361-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-impnattypo-%{texlive_version}.%{texlive_noarch}.1.5svn50227-%{release}-zypper
 %endif
+    tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-import-%{texlive_version}.%{texlive_noarch}.6.2svn54683-%{release}-zypper
+%endif
     tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-imsproc-%{texlive_version}.%{texlive_noarch}.0.0.1svn29803-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-imtekda-%{texlive_version}.%{texlive_noarch}.1.7svn17667-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-incgraph-%{texlive_version}.%{texlive_noarch}.1.12svn36500-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-includernw-%{texlive_version}.%{texlive_noarch}.0.0.1.0svn47557-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-inconsolata-fonts-%{texlive_version}.%{texlive_noarch}.1.114svn46319-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-inconsolata-fonts-%{texlive_version}.%{texlive_noarch}.1.121svn54512-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-inconsolata
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/inconsolata/*.{pf[ab],[ot]tf} \
@@ -17235,8 +19213,8 @@ EOF
     >  %{buildroot}%{_datadir}/fonts/texlive-inconsolata/encodings.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-inconsolata/fonts.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-inconsolata/fonts.scale
-    mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.avail
-    (cat > %{buildroot}%{_sysconfdir}/fonts/conf.avail/58-texlive-inconsolata.conf)<<-'EOF'
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-inconsolata.conf)<<-'EOF'
 	<?xml version="1.0"?>
 	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 
@@ -17255,7 +19233,7 @@ EOF
 	EOF
 
     mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.d
-    (cat > %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-inconsolata.conf)<<-'EOF'
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/55-texlive-inconsolata.conf)<<-'EOF'
 	<?xml version="1.0"?>
 	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 
@@ -17272,24 +19250,31 @@ EOF
 	  </selectfont>
 	</fontconfig>
 	EOF
+    ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-inconsolata.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-inconsolata.conf
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-index-%{texlive_version}.%{texlive_noarch}.4.1betasvn24099-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-indextools-%{texlive_version}.%{texlive_noarch}.1.5.1svn38931-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-initials-fonts-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-infwarerr-%{texlive_version}.%{texlive_noarch}.1.5svn53023-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-initials-fonts-%{texlive_version}.%{texlive_noarch}.svn54080-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-initials
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/initials/*.{pf[ab],[ot]tf}
@@ -17302,8 +19287,8 @@ EOF
     >  %{buildroot}%{_datadir}/fonts/texlive-initials/encodings.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-initials/fonts.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-initials/fonts.scale
-    mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.avail
-    (cat > %{buildroot}%{_sysconfdir}/fonts/conf.avail/58-texlive-initials.conf)<<-'EOF'
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-initials.conf)<<-'EOF'
 	<?xml version="1.0"?>
 	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 
@@ -17322,34 +19307,46 @@ EOF
 	EOF
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-inline-images-%{texlive_version}.%{texlive_noarch}.1.0svn48415-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-inkpaper-%{texlive_version}.%{texlive_noarch}.1.0svn54080-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-inline-images-%{texlive_version}.%{texlive_noarch}.1.0svn54080-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-inlinebib-%{texlive_version}.%{texlive_noarch}.svn22018-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-inlinedef-%{texlive_version}.%{texlive_noarch}.1.0svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-inputenx-%{texlive_version}.%{texlive_noarch}.1.12svn52986-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-inputtrc-%{texlive_version}.%{texlive_noarch}.0.0.3svn28019-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-inriafonts-fonts-%{texlive_version}.%{texlive_noarch}.1.0svn49826-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-inriafonts-fonts-%{texlive_version}.%{texlive_noarch}.1.0svn54512-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-inriafonts
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/inriafonts/*.{pf[ab],[ot]tf} \
@@ -17364,8 +19361,8 @@ EOF
     >  %{buildroot}%{_datadir}/fonts/texlive-inriafonts/encodings.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-inriafonts/fonts.dir
     >  %{buildroot}%{_datadir}/fonts/texlive-inriafonts/fonts.scale
-    mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.avail
-    (cat > %{buildroot}%{_sysconfdir}/fonts/conf.avail/58-texlive-inriafonts.conf)<<-'EOF'
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-inriafonts.conf)<<-'EOF'
 	<?xml version="1.0"?>
 	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 
@@ -17384,7 +19381,7 @@ EOF
 	EOF
 
     mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.d
-    (cat > %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-inriafonts.conf)<<-'EOF'
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/55-texlive-inriafonts.conf)<<-'EOF'
 	<?xml version="1.0"?>
 	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 
@@ -17401,88 +19398,96 @@ EOF
 	  </selectfont>
 	</fontconfig>
 	EOF
+    ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-inriafonts.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-inriafonts.conf
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-insbox-%{texlive_version}.%{texlive_noarch}.2.2svn34299-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-intcalc-%{texlive_version}.%{texlive_noarch}.1.3svn53168-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-interactiveworkbook-%{texlive_version}.%{texlive_noarch}.svn15878-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
        %{buildroot}/var/adm/update-scripts/texlive-interchar-%{texlive_version}.%{texlive_noarch}.0.0.2svn36312-%{release}-zypper
 %endif
-    tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-interfaces-%{texlive_version}.%{texlive_noarch}.3.1svn21474-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-interpreter-%{texlive_version}.%{texlive_noarch}.1.2svn27232-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-interval-%{texlive_version}.%{texlive_noarch}.0.0.4svn50265-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-intopdf-%{texlive_version}.%{texlive_noarch}.0.0.1.0svn46988-%{release}-zypper
-%endif
-    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-%if %{with zypper_posttrans}
-    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-intro-scientific-%{texlive_version}.%{texlive_noarch}.5th_editionsvn15878-%{release}-zypper
-%endif
     tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-inversepath-%{texlive_version}.%{texlive_noarch}.0.0.2svn15878-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-interfaces-%{texlive_version}.%{texlive_noarch}.3.1svn21474-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-invoice-%{texlive_version}.%{texlive_noarch}.svn48359-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-interpreter-%{texlive_version}.%{texlive_noarch}.1.2svn27232-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:205} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:206} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-invoice-class-%{texlive_version}.%{texlive_noarch}.1.0svn49749-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-interval-%{texlive_version}.%{texlive_noarch}.0.0.4svn50265-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:207} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:208} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-invoice2-%{texlive_version}.%{texlive_noarch}.svn46364-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-intopdf-%{texlive_version}.%{texlive_noarch}.0.0.2.1svn51247-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:209} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:210} -C %{buildroot}%{_datadir}/texlive/texmf-dist
 %if %{with zypper_posttrans}
     ln -sf %{_texmfdistdir}/texconfig/zypper.py \
-       %{buildroot}/var/adm/update-scripts/texlive-iodhbwm-%{texlive_version}.%{texlive_noarch}.1.0.1svn49838-%{release}-zypper
+       %{buildroot}/var/adm/update-scripts/texlive-intro-scientific-%{texlive_version}.%{texlive_noarch}.5th_editionsvn15878-%{release}-zypper
 %endif
     tar --use-compress-program=xz -xf %{S:211} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-inversepath-%{texlive_version}.%{texlive_noarch}.0.0.2svn15878-%{release}-zypper
+%endif
     tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:213} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-invoice-%{texlive_version}.%{texlive_noarch}.svn48359-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:214} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:215} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-invoice-class-%{texlive_version}.%{texlive_noarch}.1.0svn49749-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:216} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:217} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-invoice2-%{texlive_version}.%{texlive_noarch}.svn46364-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:218} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:219} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+%if %{with zypper_posttrans}
+    ln -sf %{_texmfdistdir}/texconfig/zypper.py \
+       %{buildroot}/var/adm/update-scripts/texlive-iodhbwm-%{texlive_version}.%{texlive_noarch}.1.2.1svn54734-%{release}-zypper
+%endif
+    tar --use-compress-program=xz -xf %{S:220} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
     rm -v  %{buildroot}%{_datadir}/texlive/texmf
     rm -v  %{buildroot}%{_datadir}/texlive/texmf-dist
+    rm -v  %{buildroot}%{_texmfmaindir}/tlpostcode
     rm -vr %{buildroot}%{_datadir}/texlive
     find %{buildroot}%{_texmfmaindir}/ %{buildroot}%{_texmfdistdir}/ \
         -type f -a -perm /g+w,o+w | xargs --no-run-if-empty chmod g-w,o-w
