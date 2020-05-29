@@ -251,14 +251,10 @@ export PYTHONDONTWRITEBYTECODE=1
 export PATH="%{buildroot}%{_bindir}:$PATH"
 mkdir testing
 pushd testing
-%ifarch ppc64 ppc64le
-%pytest_arch -n auto --pyargs numpy || echo "Warning: ignore check error for PowerPC bypass boo#1148173"
-%else
-%pytest_arch -n auto --pyargs numpy
-%endif
+%python_expand export PYTHONPATH=%{_python_sysconfig_path $python stdlib}:%{$python_sitearch}
+%pytest_arch -n auto --pyargs numpy %{buildroot}%{$python_sitearch}/numpy
 popd
 %endif
-
 %if %{without hpc}
 %post
 %python_install_alternative f2py
