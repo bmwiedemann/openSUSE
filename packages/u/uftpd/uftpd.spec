@@ -1,7 +1,7 @@
 #
 # spec file for package uftpd
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           uftpd
-Version:        2.11
+Version:        2.12
 Release:        0
 Summary:        A combined TFTP/FTP server
 License:        ISC
