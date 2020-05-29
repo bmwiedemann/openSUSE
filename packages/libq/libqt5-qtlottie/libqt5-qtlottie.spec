@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtlottie
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           libqt5-qtlottie
-Version:        5.13.1
+Version:        5.15.0
 Release:        0
 Summary:        Qt 5 Quick Lottie Addon
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.13.1
-%define so_version 5.13.1
-%define tar_version qtlottie-everywhere-src-5.13.1
-Source:         https://download.qt.io/official_releases/qt/5.13/%{real_version}/submodules/%{tar_version}.tar.xz
+%define real_version 5.15.0
+%define so_version 5.15.0
+%define tar_version qtlottie-everywhere-src-5.15.0
+Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  libQt5Gui-private-headers-devel >= %{version}
 BuildRequires:  pkgconfig
@@ -95,7 +95,7 @@ rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 %dir %{_libqt5_archdatadir}/qml/Qt/
 %dir %{_libqt5_archdatadir}/qml/Qt/labs/
 %dir %{_libqt5_archdatadir}/qml/Qt/labs/lottieqt/
-%{_libqt5_archdatadir}/qml/Qt/labs/lottieqt/liblottieqt.so
+%{_libqt5_archdatadir}/qml/Qt/labs/lottieqt/liblottieqtplugin.so
 %{_libqt5_archdatadir}/qml/Qt/labs/lottieqt/plugins.qmltypes
 %{_libqt5_archdatadir}/qml/Qt/labs/lottieqt/qmldir
 
