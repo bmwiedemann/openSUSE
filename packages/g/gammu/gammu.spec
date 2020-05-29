@@ -1,7 +1,7 @@
 #
 # spec file for package gammu
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,8 +38,8 @@ BuildRequires:  graphviz-gd
 BuildRequires:  mysql-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
-BuildRequires:  python-Sphinx
-BuildRequires:  python-sphinxcontrib-breathe
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-breathe
 BuildRequires:  pkgconfig(bluez) >= 2.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.16
 BuildRequires:  pkgconfig(gobject-2.0)
