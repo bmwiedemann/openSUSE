@@ -7,7 +7,7 @@ Prefer: python3-subunit
 # Prepare for the drop of python3-path.py
 Prefer: -python3-path.py
 
-%define gcc_version 9
+%define gcc_version 10
 
 # testing new cycle algorithm
 BuildFlags: genmetaalgo:1
@@ -1202,7 +1202,7 @@ Macros:
 # The following shlibs have the latest version built from GCC 9 sources
 %product_libs_gcc_ver_libasan5 9
 %product_libs_gcc_ver_libgo14 9
-%gcc_version 9
+%gcc_version 10
 
 %ext_info .gz
 %ext_man .gz
