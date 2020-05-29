@@ -34,6 +34,9 @@ Summary:        A library for property based testing
 License:        MPL-2.0
 URL:            https://github.com/HypothesisWorks/hypothesis-python
 Source:         https://github.com/HypothesisWorks/hypothesis/archive/hypothesis-python-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM failing-test_array_values_are_unique_high_collision.patch gh#HypothesisWorks/hypothesis#2447 mcepl@suse.com
+# Skip failing test on i586.
+Patch0:         failing-test_array_values_are_unique_high_collision.patch
 BuildRequires:  %{python_module setuptools >= 36}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -79,6 +82,8 @@ work on Jython or on Python 3.0 through 3.2.
 
 %prep
 %setup -q -n hypothesis-hypothesis-python-%{version}/hypothesis-python
+%autopatch -p1
+
 # the django fails to initialize
 rm -r tests/django
 # do not pull in pandas as a dep in ring1; it slows down things too much

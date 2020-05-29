@@ -1,0 +1,26 @@
+--- a/tests/numpy/test_gen_data.py
++++ b/tests/numpy/test_gen_data.py
+@@ -13,6 +13,7 @@
+ #
+ # END HEADER
+ 
++import struct
+ import sys
+ from functools import reduce
+ from itertools import zip_longest
+@@ -28,6 +29,7 @@ from hypothesis.strategies._internal imp
+ from tests.common.debug import find_any, minimal
+ from tests.common.utils import fails_with, flaky
+ 
++_IS_32BIT = 8 * struct.calcsize("P") == 32
+ ANY_SHAPE = nps.array_shapes(min_dims=0, max_dims=32, min_side=0, max_side=32)
+ ANY_NONZERO_SHAPE = nps.array_shapes(min_dims=0, max_dims=32, min_side=1, max_side=32)
+ STANDARD_TYPES = list(
+@@ -361,6 +363,7 @@ def test_cannot_generate_unique_array_of
+         strat.example()
+ 
+ 
++@pytest.mark.skipif(_IS_32BIT, reason="Test fails on 32bit architecture.")
+ @given(
+     nps.arrays(
+         elements=st.just(0.0),

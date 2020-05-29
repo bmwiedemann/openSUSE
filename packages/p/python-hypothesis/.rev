@@ -427,4 +427,14 @@ This version fixes the license naming issue.</comment>
     <comment></comment>
     <requestid>802287</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>3dd4da5c84f80aa4ca21bc0edf022e7d</srcmd5>
+    <version>5.11.0</version>
+    <time>1590779999</time>
+    <user>maxlin_factory</user>
+    <comment>- Add failing-test_array_values_are_unique_high_collision.patch
+  to avoid failing test on i586 (gh#HypothesisWorks/hypothesis#2447)
+</comment>
+    <requestid>808025</requestid>
+  </revision>
 </revisionlist>

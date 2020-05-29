@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 21 14:56:04 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add failing-test_array_values_are_unique_high_collision.patch
+  to avoid failing test on i586 (gh#HypothesisWorks/hypothesis#2447)
+
+-------------------------------------------------------------------
 Sat May  9 16:08:23 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 5.11.0:
