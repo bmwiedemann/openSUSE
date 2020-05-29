@@ -1,8 +1,82 @@
 -------------------------------------------------------------------
+Wed May 27 08:48:52 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to avoid behaviour change causing crashes (kde#419526):
+  * 0001-Revert-QMenu-hide-when-a-QWidgetAction-fires-the-tri.patch
+
+-------------------------------------------------------------------
+Tue May 26 09:44:55 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to 5.15.0:
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed May 20 15:38:18 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to 5.15.0-rc2
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed May  6 11:26:35 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-rc:
+  * New bugfix release
+  * For the changes between 5.14.2 and 5.15.0 please see:
+    http://code.qt.io/cgit/qt/qtbase.git/plain/dist/changes-5.15.0/?h=5.15.0
+- Drop patches, now upstream:
+  * 0001-QTextMarkdownImporter-fix-use-after-free-add-fuzz-ge.patch
+- Add patch to fix build on Leap 15.1:
+  * fix-build-openssl-1.1.0.patch
+
+-------------------------------------------------------------------
 Mon Apr 27 12:45:07 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix use-after-free (boo#1170582, CVE-2020-12267):
   * 0001-QTextMarkdownImporter-fix-use-after-free-add-fuzz-ge.patch
+
+-------------------------------------------------------------------
+Fri Apr 24 07:11:04 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta4:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Apr 14 06:47:19 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta3:
+  * New bugfix release
+  * No changelog available
+- Add patch to fix build on Leap 15.1:
+  * 0001-Lower-required-version-of-OpenSSL-to-1.1.0.patch
+
+-------------------------------------------------------------------
+Tue Mar 24 12:13:29 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta2:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Fri Feb 28 09:58:42 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta1:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Feb 19 10:16:14 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-alpha:
+  * New feature release
+  * For more details please see:
+    https://wiki.qt.io/New_Features_in_Qt_5.15
+- Replace patches with single patch
+  0001-Don-t-white-list-recent-Mesa-versions-for-multithrea.patch:
+  * 0001-Revert-Blacklist-nouveau-and-llvmpipe-for-multithrea.patch
+  * 0002-Revert-qtlite-Fix-build-libs-with-no-feature-regular.patch:
+  * 0003-Revert-White-list-more-recent-Mesa-version-for-multi.patch
+- Refresh 0002-Synthesize-Enter-LeaveEvent-for-accepted-QTabletEven.patch
 
 -------------------------------------------------------------------
 Mon Jan 27 13:13:57 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>

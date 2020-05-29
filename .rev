@@ -2156,4 +2156,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
   * 0001-QTextMarkdownImporter-fix-use-after-free-add-fuzz-ge.patch</comment>
     <requestid>798262</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>83db1a9aec49da505bf8a51b7d50c175</srcmd5>
+    <version>5.15.0</version>
+    <time>1590779633</time>
+    <user>maxlin_factory</user>
+    <comment>Qt 5.15.0</comment>
+    <requestid>809287</requestid>
+  </revision>
 </revisionlist>

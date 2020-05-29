@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtbase
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -36,23 +36,26 @@
 %endif
 
 Name:           libqt5-qtbase
-Version:        5.14.1
+Version:        5.15.0
 Release:        0
 Summary:        C++ Program Library, Core Components
 License:        LGPL-3.0-only or GPL-3.0-with-Qt-Company-Qt-exception-1.1
 Group:          System/Libraries
 Url:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.14.1
-%define so_version 5.14.1
-%define tar_version qtbase-everywhere-src-5.14.1
-Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
+%define real_version 5.15.0
+%define so_version 5.15.0
+%define tar_version qtbase-everywhere-src-5.15.0
+Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 # to get mtime of file:
 Source1:        libqt5-qtbase.changes
 Source2:        macros.qt5
 Source3:        baselibs.conf
 Source99:       libqt5-qtbase-rpmlintrc
 # patches 0-1000 are openSUSE and/or non-upstream(able) patches #
+Patch1:         0001-Lower-required-version-of-OpenSSL-to-1.1.0.patch
+Patch2:         fix-build-openssl-1.1.0.patch
+Patch3:         0001-Revert-QMenu-hide-when-a-QWidgetAction-fires-the-tri.patch
 # PATCH-FIX-OPENSUSE disable-rc4-ciphers-bnc865241.diff bnc#865241-- Exclude rc4 ciphers from being used by default
 Patch6:         disable-rc4-ciphers-bnc865241.diff
 Patch8:         tell-the-truth-about-private-api.patch
@@ -61,12 +64,9 @@ Patch10:        libqt5-prioritise-gtk2-platformtheme.patch
 # PATCH-FEATURE-OPENSUSE 0001-Add-remote-print-queue-support.patch fate#322052 -- Automatically recognize and allow printing to remote cups servers
 Patch12:        0001-Add-remote-print-queue-support.patch
 # PATCH-FIX-OPENSUSE
-Patch21:        0001-Revert-Blacklist-nouveau-and-llvmpipe-for-multithrea.patch
-Patch22:        0002-Revert-qtlite-Fix-build-libs-with-no-feature-regular.patch
-Patch23:        0003-Revert-White-list-more-recent-Mesa-version-for-multi.patch
+Patch21:        0001-Don-t-white-list-recent-Mesa-versions-for-multithrea.patch
 Patch24:        fix-fixqt4headers.patch
 # patches 1000-2000 and above from upstream 5.14 branch #
-Patch1000:      0001-QTextMarkdownImporter-fix-use-after-free-add-fuzz-ge.patch
 # patches 2000-3000 and above from upstream 5.15/dev branch #
 # Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/255384
 Patch2001:      0002-Synthesize-Enter-LeaveEvent-for-accepted-QTabletEven.patch
@@ -868,7 +868,8 @@ echo yes | ./configure \
 	-no-separate-debug-info \
 	-force-debug-info \
 	-shared \
-	-xkb \
+	-xkbcommon \
+	-no-bundled-xcb-xinput \
 	-dbus-linked \
 	-sm \
 	-no-rpath \
@@ -1059,6 +1060,8 @@ chmod 644 %{buildroot}%{libqt5_docdir}/global/template/images/*.png
 %{libqt5_libdir}/cmake/Qt5/
 %{libqt5_libdir}/pkgconfig/Qt5Core.pc
 %{libqt5_includedir}/QtCore/
+%dir %{libqt5_libdir}/metatypes/
+%{libqt5_libdir}/metatypes/qt5core_metatypes.json
 %exclude %{libqt5_includedir}/QtCore/%{so_version}
 %{libqt5_docdir}
 
@@ -1186,6 +1189,7 @@ chmod 644 %{buildroot}%{libqt5_docdir}/global/template/images/*.png
 %{libqt5_libdir}/cmake/Qt5Widgets/
 %{libqt5_libdir}/pkgconfig/Qt5Widgets.pc
 %{libqt5_includedir}/QtWidgets/
+%{libqt5_libdir}/metatypes/qt5widgets_metatypes.json
 %exclude %{libqt5_includedir}/QtWidgets/%{so_version}
 
 %files -n libQt5Gui5
@@ -1238,6 +1242,7 @@ chmod 644 %{buildroot}%{libqt5_docdir}/global/template/images/*.png
 %{libqt5_includedir}/QtGui/
 %{libqt5_includedir}/QtEglFSDeviceIntegration/
 %{libqt5_includedir}/QtXkbCommonSupport
+%{libqt5_libdir}/metatypes/qt5gui_metatypes.json
 %exclude %{libqt5_includedir}/QtGui/%{so_version}
 %exclude %{libqt5_includedir}/QtEglFSDeviceIntegration/%{so_version}
 %exclude %{libqt5_includedir}/QtXkbCommonSupport/%{so_version}
