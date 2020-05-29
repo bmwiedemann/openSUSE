@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Mon May 25 10:50:16 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Fix pytest version. 
+
+-------------------------------------------------------------------
+Sun May 24 16:53:39 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Fix dependencies, add dataclasses to build for leap 15.2.
+
+-------------------------------------------------------------------
+Thu May  7 00:15:12 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Initial package release. 
