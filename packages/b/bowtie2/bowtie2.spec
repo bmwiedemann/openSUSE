@@ -20,7 +20,7 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           bowtie2
-Version:        2.3.5.1
+Version:        2.4.1
 Release:        0
 Summary:        Fast and memory-efficient short read aligner
 License:        GPL-3.0-only
@@ -28,9 +28,13 @@ Group:          Productivity/Scientific/Other
 URL:            http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
 Source0:        https://github.com/BenLangmead/bowtie2/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        simde-0.0~git20190101.422ed9c.tar.xz
+# PATCH-FIX-UPSTREAM bowtie2-cmake-install-targets.patch gh#BenLangmead/bowtie2#292 badshah400@gmail.com -- Add install targets to cmake scripts and fix tests; patch taken from upstream git
+Patch0:         bowtie2-cmake-install-targets.patch
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(zlib)
 ExclusiveArch:  x86_64 s390x ppc64le ppc64 aarch64
 
 %description
@@ -45,19 +49,28 @@ supports gapped, local, and paired-end alignment modes.
 %prep
 %setup -q
 %setup -q -b 1
+%patch0 -p1
 pushd third_party
 rmdir simde
 ln -s ../../simde-*/ simde
 popd
+# Workaround to find simde/x86/*.h on aarch64
+ln -s ../simde-*/simde simde
 
 %build
 %ifarch aarch64
-export POPCNT_CAPABILITY=0
+sed -i -e 's/-msse2//' CMakeLists.txt
+sed -i -e 's/-m64//' CMakeLists.txt
 %endif
-make %{?_smp_mflags} RELEASE_FLAGS="%{optflags}"
+%cmake \
+%ifarch aarch64
+  -DNO_POPCNT_CAPABILITY=1 \
+%endif
+
+%cmake_build
 
 %install
-%make_install prefix=%{_prefix}
+%cmake_install
 
 # CONVERT env HASHBANGS TO USE DIRECT EXECUTABLE
 perlbin=`which perl`
