@@ -6,7 +6,7 @@
 
 --- texmf-dist/scripts/latexpand/latexpand
 +++ texmf-dist/scripts/latexpand/latexpand	2017-06-13 14:06:39.461591189 +0000
-@@ -161,6 +161,7 @@ sub process_file
+@@ -175,6 +175,7 @@ sub process_file
  	return $in_comment;
  }
  
@@ -14,11 +14,11 @@
  sub process_line
  {
  	my ($line, $prefix, $commented_newline, $file) = @_;
-@@ -392,6 +393,7 @@ sub process_line
+@@ -450,6 +451,7 @@ sub process_line
  	}
  	print;
  }
 +use warnings;
  
- # search $1 in $TEXINPUTS, with possible extensions in $2
- sub find_tex_file
+ sub unquote
+ {
