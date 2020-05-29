@@ -4124,4 +4124,16 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * most fixes in Radv, but there are fixes all over the tree</comment>
     <requestid>806009</requestid>
   </revision>
+  <revision rev="381" vrev="253">
+    <srcmd5>9be486592ca1d3dceca01f09f05335ba</srcmd5>
+    <version>unknown</version>
+    <time>1590780015</time>
+    <user>maxlin_factory</user>
+    <comment>- Add U_add-lifetime-dse-fix.patch as a proper fix for boo#1171855.
+
+- Disable LTO for now as there's a known upstream bug
+  that hasn't been resolved with GCC 10:
+  boo#1171855.</comment>
+    <requestid>809625</requestid>
+  </revision>
 </revisionlist>

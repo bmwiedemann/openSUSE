@@ -1,0 +1,46 @@
+From 9a72afaea7bf69f07623cae1af99f71be64688ba Mon Sep 17 00:00:00 2001
+From: Danylo Piliaiev <danylo.piliaiev@globallogic.com>
+Date: Tue, 19 May 2020 20:35:49 +0300
+Subject: [PATCH] meson: Disable GCC's dead store elimination for memory
+ zeroing custom new
+
+Some classes use custom new operator which zeroes memory, however gcc does
+aggressive dead-store elimination which threats all writes to the memory
+before the constructor as "dead stores".
+
+For now we disable this optimization.
+
+The new operators in question are declared via:
+ DECLARE_RZALLOC_CXX_OPERATORS
+ DECLARE_LINEAR_ZALLOC_CXX_OPERATORS
+
+The issue was found with lto builds, however there is no guarantee that
+it didn't happen with ordinary ones.
+
+CC: <mesa-stable@lists.freedesktop.org>
+Closes: https://gitlab.freedesktop.org/mesa/mesa/-/issues/2977
+Closes: https://gitlab.freedesktop.org/mesa/mesa/-/issues/1358
+Signed-off-by: Danylo Piliaiev <danylo.piliaiev@globallogic.com>
+---
+ meson.build | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/meson.build b/meson.build
+index 1a207842c55..3d4ea165c99 100644
+--- a/meson.build
++++ b/meson.build
+@@ -980,6 +980,11 @@ else
+     '-fno-math-errno',
+     '-fno-trapping-math',
+     '-Qunused-arguments',
++    # Some classes use custom new operator which zeroes memory, however
++    # gcc does aggressive dead-store elimination which threats all writes
++    # to the memory before the constructor as "dead stores".
++    # For now we disable this optimization.
++    '-flifetime-dse=1',
+   ]
+   # MinGW chokes on format specifiers and I can't get it all working
+   if not (cc.get_id() == 'gcc' and host_machine.system() == 'windows')
+-- 
+2.26.2
+

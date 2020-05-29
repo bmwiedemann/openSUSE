@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 19 19:22:02 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add U_add-lifetime-dse-fix.patch as a proper fix for boo#1171855.
+
+-------------------------------------------------------------------
+Tue May 19 05:52:31 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO for now as there's a known upstream bug
+  that hasn't been resolved with GCC 10:
+  boo#1171855.
+
+-------------------------------------------------------------------
 Fri May 15 09:52:07 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to Mesa 20.0.7
