@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 26 08:30:50 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- Update to upstream 0.8.0 release
+  * Also disable Twisted build requirement on older code streams due to dependency issues
+
+-------------------------------------------------------------------
 Mon Apr 20 10:53:52 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

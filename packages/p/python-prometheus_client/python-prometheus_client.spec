@@ -19,14 +19,17 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-prometheus_client
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        Python client for the Prometheus monitoring system
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/prometheus/client_python
 Source:         https://github.com/prometheus/client_python/archive/v%{version}.tar.gz
+%if 0%{suse_version} >= 1550
+# we disable testing the optional Twisted integration on older versions because that dependency tree is troublesome
 BuildRequires:  %{python_module Twisted}
+%endif
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -54,9 +57,7 @@ The official Python 2 and 3 client for Prometheus.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# some tests are currently broken in ppc64le
-# see https://bugzilla.suse.com/show_bug.cgi?id=1164604
-%pytest -k "not TestProcessCollector"
+%pytest
 
 %files %{python_files}
 %doc README.md
