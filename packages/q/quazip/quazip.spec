@@ -18,7 +18,7 @@
 
 %define so_ver 1
 Name:           quazip
-Version:        0.9
+Version:        0.9.1
 Release:        0
 Summary:        C++ wrapper for ZIP/UNZIP
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later
