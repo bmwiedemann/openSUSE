@@ -1,0 +1,18 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">git://github.com/bootchk/resynthesizer.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="filename">gimp-plugin-resynthesizer</param>
+    <param name="versionformat">%cd</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionprefix">2.0.3</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">gimp-plugin-resynthesizer</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>

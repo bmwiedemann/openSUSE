@@ -1,0 +1,6 @@
+<servicedata>
+    <service name="tar_scm">
+        <param name="url">git://github.com/bootchk/resynthesizer.git</param>
+        <param name="changesrevision">771785b6d8bf250b56d1409e076e38a7e641b7d2</param>
+    </service>
+</servicedata>
