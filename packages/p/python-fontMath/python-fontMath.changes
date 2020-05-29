@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Tue May 26 07:54:19 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix FontTools dependency
+
+-------------------------------------------------------------------
+Wed May 20 09:47:00 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Initial release of python-fontMath
