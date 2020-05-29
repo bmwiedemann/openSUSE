@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtspeech
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,17 @@
 %define qt5_snapshot 0
 %define libname libQt5TextToSpeech5
 %define base_name libqt5
-%define real_version 5.14.1
-%define so_version 5.14.1
-%define tar_version qtspeech-everywhere-src-5.14.1
+%define real_version 5.15.0
+%define so_version 5.15.0
+%define tar_version qtspeech-everywhere-src-5.15.0
 Name:           libqt5-qtspeech
-Version:        5.14.1
+Version:        5.15.0
 Release:        0
 Summary:        Qt 5 Speech Addon
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  fdupes
 BuildRequires:  libQt5Core-private-headers-devel
@@ -117,11 +117,15 @@ rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 
 %files plugin-speechd
 %{_libqt5_plugindir}/texttospeech/libqtexttospeech_speechd.so
+%dir %{_libqt5_libdir}/cmake/Qt5TextToSpeech/
+%{_libqt5_libdir}/cmake/Qt5TextToSpeech/Qt5TextToSpeech_QTextToSpeechPluginSpeechd.cmake
 
 %files devel
 %{_libqt5_archdatadir}/mkspecs/modules/qt_lib_*.pri
 %{_libqt5_includedir}/Qt*
-%{_libqt5_libdir}/cmake/Qt5TextToSpeech/
+%dir %{_libqt5_libdir}/cmake/Qt5TextToSpeech/
+%{_libqt5_libdir}/cmake/Qt5TextToSpeech/Qt5TextToSpeechConfig.cmake
+%{_libqt5_libdir}/cmake/Qt5TextToSpeech/Qt5TextToSpeechConfigVersion.cmake
 %{_libqt5_libdir}/libQt5TextToSpeech.prl
 %{_libqt5_libdir}/libQt5TextToSpeech.so
 %{_libqt5_libdir}/pkgconfig/Qt5TextToSpeech.pc
