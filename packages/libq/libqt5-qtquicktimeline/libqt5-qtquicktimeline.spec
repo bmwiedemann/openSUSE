@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtquicktimeline
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           libqt5-qtquicktimeline
-Version:        5.14.1
+Version:        5.15.0
 Release:        0
 Summary:        Qt 5 Quick Timeline Addon
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.14.1
-%define so_version 5.14.1
-%define tar_version qtquicktimeline-everywhere-src-5.14.1
-Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
+%define real_version 5.15.0
+%define so_version 5.15.0
+%define tar_version qtquicktimeline-everywhere-src-5.15.0
+Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{version}
 BuildRequires:  pkgconfig
