@@ -488,4 +488,21 @@ This fixes the missing pkgconfig(Qt5WebKit*) Provides and the rpmlint error. (fo
     <comment></comment>
     <requestid>748456</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>eef08e63363ed1c38d73c4f31cc8f6e8</srcmd5>
+    <version>5.212~alpha4</version>
+    <time>1590779626</time>
+    <user>maxlin_factory</user>
+    <comment>- Use Ninja with CMake to improve build times by circa 300%
+- Fix a few typos in libqt5-qtwebkit.spec
+
+- New upstream release
+- Drop patches
+  * icu-build-fix.patch
+  * qt5.15-workaround.patch
+
+- Add patch to fix build against Qt 5.15:
+  * qt5.15-workaround.patch</comment>
+    <requestid>789353</requestid>
+  </revision>
 </revisionlist>

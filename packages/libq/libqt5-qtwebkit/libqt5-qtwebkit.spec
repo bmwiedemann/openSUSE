@@ -16,6 +16,7 @@
 #
 
 %bcond_without avsupport
+%define __builder ninja
 %define _cxx g++
 %define _cc gcc
 
@@ -28,9 +29,8 @@
 %define so_version 5.212
 %define full_version 5.212.0
 %define required_qt5 5.2
-%define prerel_version alpha3
+%define prerel_version alpha4
 %define tar_version %{base_name}-%{full_version}-%{prerel_version}
-%define make_jobs /usr/bin/make -j4 VERBOSE=1
 Name:           libqt5-qtwebkit
 Version:        5.212~%{prerel_version}
 Release:        0
@@ -48,9 +48,6 @@ Patch0:         enable_x11_target_always.patch
 Patch1:         tell-the-truth-about-private-api.patch
 # PATCH-FIX-UPSTREAM https://bugs.webkit.org/show_bug.cgi?id=141288
 Patch2:         webkit-bwo141288.patch
-# PATCH-FIX-UPSTREAM https://bugs.webkit.org/show_bug.cgi?id=202600
-Patch3:         icu-build-fix.patch
-
 %if %{with avsupport}
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
@@ -85,6 +82,8 @@ BuildRequires:  gperf
 BuildRequires:  libicu-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libxslt-devel
+BuildRequires:  memory-constraints
+BuildRequires:  ninja
 BuildRequires:  python-xml
 BuildRequires:  ruby
 BuildRequires:  hyphen-devel
@@ -111,17 +110,13 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-The Qt WebKit module provides the WebView API, which allows QML
+The QtWebKit module provides the WebView API which allows QML
 applications to render regions of dynamic web content. A WebView
 component may share the screen with other QML components or encompass
 the full screen as specified within the QML application.
 
 %prep
-%setup -q -n %{tar_version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n %{tar_version}
 
 %package -n %libname
 Summary:        Qt 5 WebKit Widget library
@@ -129,7 +124,7 @@ Group:          Development/Libraries/X11
 Requires:       libQt5WebKit5 = %version
 
 %description -n %libname
-The Qt WebKit module provides the WebView API, which allows QML
+The QtWebKit module provides the WebView API which allows QML
 applications to render regions of dynamic web content. A WebView
 component may share the screen with other QML components or encompass
 the full screen as specified within the QML application.
@@ -139,7 +134,7 @@ Summary:        Qt5 WebKit Library
 Group:          Development/Libraries/X11
 
 %description -n libQt5WebKit5
-You need this package if you want to compile programs with qtwebkit.
+You need this package if you want to compile programs with QtWebKit.
 
 %package -n libQt5WebKit5-imports
 Summary:        QML imports for the Qt5 WebKit library
@@ -150,7 +145,7 @@ Conflicts:      libQt5WebKit5 < 5.4.1
 Requires:       libQt5WebKit5 = %version
 
 %description -n libQt5WebKit5-imports
-You need this package if you want to compile programs with qtwebkit.
+You need this package if you want to compile programs with QtWebKit.
 
 %package -n libQt5WebKitWidgets-devel
 Summary:        Development files for the Qt5 WebKit Widgets library
@@ -161,7 +156,7 @@ Requires:       libqt5-qtdeclarative-devel
 Requires:       libqt5-qtsensors-devel
 
 %description -n libQt5WebKitWidgets-devel
-You need this package if you want to compile programs with qtwebkit.
+You need this package if you want to compile programs with QtWebKit.
 
 %package -n libQt5WebKit5-devel
 Summary:        Development files for the Qt5 WebKit library
@@ -175,7 +170,7 @@ Requires:       pkgconfig(Qt5Quick)
 Requires:       pkgconfig(Qt5Sensors)
 
 %description -n libQt5WebKit5-devel
-You need this package if you want to compile programs with qtwebkit.
+You need this package if you want to compile programs with QtWebKit.
 
 %package -n libQt5WebKitWidgets-private-headers-devel
 Summary:        Non-ABI stable experimental API for the Qt5 WebKit Widgets library
@@ -221,7 +216,7 @@ Requires:       libQt5WebKit-private-headers-devel = %{version}
 Requires:       libQt5WebKitWidgets-private-headers-devel = %{version}
 
 %description private-headers-devel
-You need this package if you want to compile programs with qtwebkit.
+You need this package if you want to compile programs with QtWebKit.
 This package pulls in private headers for both libQt5WebKit and
 libQt5WebKitWidgets libraries.
 
@@ -236,11 +231,16 @@ libQt5WebKitWidgets libraries.
 
 %build
 %define _lto_cflags %{nil}
+
+# Limit to 2GB mem per thread to avoid failure
+%limit_build -m 2000
+
 %if %qt5_snapshot
 # force the configure script to generate the forwarding headers (it checks whether .git directory exists)
 mkdir .git
 %endif
 %global optflags %(echo %{optflags} -fpermissive -Wl,--no-keep-memory -Wl,--reduce-memory-overheads | sed 's/-g /-g1 /')
+
 %cmake -DPORT=Qt \
        -DCMAKE_C_COMPILER=%{_cc} \
        -DCMAKE_CXX_COMPILER=%{_cxx} \
@@ -255,10 +255,11 @@ mkdir .git
        -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -pthread" \
        -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -pthread"
 
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
+
 find %{buildroot}/%{_libqt5_libdir} -type f -name '*la' -print -exec perl -pi -e 's,-L%{_builddir}/\S+,,g' {} +
 
 # kill .la files
