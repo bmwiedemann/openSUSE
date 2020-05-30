@@ -5,8 +5,5 @@ by nearly all programs: the standard C library, the standard math
 library, and the POSIX thread library. A system is not functional
 without these libraries.</description>
   <devel project="Base:System" package="glibc"/>
-  <build>
-    <disable/>
-  </build>
   <bcntsynctag>glibc</bcntsynctag>
 </package>
