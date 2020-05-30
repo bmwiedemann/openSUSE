@@ -2,4 +2,7 @@
   <title>The GNU Parser Generator</title>
   <description>Bison is a parser generator similar to yacc(1).</description>
   <devel project="devel:tools:compiler" package="bison"/>
+  <build>
+    <disable/>
+  </build>
 </package>
