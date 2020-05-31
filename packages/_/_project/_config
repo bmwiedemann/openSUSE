@@ -445,6 +445,9 @@ Prefer: eclipse-swt
 # wine comes in various flavors by now, we pick the unflavored ones
 Prefer: wine-32bit wine-devel-32bit wine-devel
 
+# have choice for python3-Sphinx needed by trytond: python3-Sphinx python3-Sphinx2
+Prefer: python3-Sphinx
+
 # Ruby stuff - quite a few packages exist in multiple versions in the distro; in each case, the Preference is on the 'unversioned' package
 Prefer: ruby2.6-rubygem-addressable
 Prefer: ruby2.6-rubygem-builder
