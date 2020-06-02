@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  2 09:05:23 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version to 3.8.2
+  * Bump release with latest patches from GitHub.
+  * Fix Direct Messages with patches from @manuelcortez.
+  * Use PyPI tarball again because upstream did not tag this release
+- Drop upstreamed patch get_oembed_tweet-endpoint.patch
+- Replace nose with pytest
+
+-------------------------------------------------------------------
 Sat Mar 30 03:19:14 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Use GitHub archive tarball

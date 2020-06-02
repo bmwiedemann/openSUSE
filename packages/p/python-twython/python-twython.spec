@@ -1,7 +1,7 @@
 #
 # spec file for package python-twython
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-twython
-Version:        3.7.0
+Version:        3.8.2
 Release:        0
-License:        MIT
 Summary:        Python wrapper for the Twitter API
-Url:            https://github.com/ryanmcgrath/twython
+License:        MIT
 Group:          Development/Languages/Python
-Source:         https://github.com/ryanmcgrath/twython/archive/%{version}.tar.gz#/twython-%{version}.tar.gz
-Patch:          get_oembed_tweet-endpoint.patch
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module nose}
+URL:            https://github.com/ryanmcgrath/twython
+Source:         https://files.pythonhosted.org/packages/source/t/twython/twython-%{version}.tar.gz
+# PyJWT 1.4.2 isnt compatible with single-spec
+BuildRequires:  %{python_module PyJWT > 1.4.2}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.1.0}
 BuildRequires:  %{python_module requests-oauthlib >= 0.4.0}
 BuildRequires:  %{python_module responses}
-# PyJWT 1.4.2 isnt compatible with single-spec
-BuildRequires:  %{python_module PyJWT > 1.4.2}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.1.0
 Requires:       python-requests-oauthlib >= 0.4.0
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -62,7 +61,6 @@ Features include:
 
 %prep
 %setup -q -n twython-%{version}
-%patch -p1
 
 %build
 %python_build
@@ -73,10 +71,10 @@ Features include:
 
 %check
 # Five failing tests
-%python_exec %{_bindir}/nosetests -e '(test_get_lastfunction_header_should_return_header|test_request_should_handle_(rate_limit|401|400_that_is_not_auth_related|400_for_missing_auth_data))'
+%pytest -k "not (test_get_lastfunction_header_should_return_header or test_request_should_handle_40 or test_request_should_handle_rate_limit)"
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %{python_sitelib}/*
 
