@@ -24,7 +24,7 @@
 %define qml_dir %{_datadir}/leechcraft/qml5
 
 %define so_ver -qt5-0_6_75
-%define LEECHCRAFT_VERSION 0.6.70-13729-g7046a9d2a7
+%define LEECHCRAFT_VERSION 0.6.70-13907-g785196c688
 
 %define db_postfix %{so_ver}_1
 %define gui_postfix %{so_ver}_1
@@ -43,17 +43,22 @@
 %define xsd_postfix %{so_ver}
 
 Name:           leechcraft
-Version:        0.6.70+git.13729.g7046a9d2a7
+Version:        0.6.70+git.13907.g785196c688
 Release:        0
 Summary:        Modular Internet Client
 License:        BSL-1.0
 Group:          Productivity/Networking/Other
 URL:            http://leechcraft.org
 
-Source0:        https://dist.leechcraft.org/LeechCraft/0.6.75/leechcraft-%{LEECHCRAFT_VERSION}.tar.xz
+Source0:        leechcraft-%{LEECHCRAFT_VERSION}.tar.xz
 Source4:        %{name}-rpmlintrc
 Source8:        leechcraft-session.1
 Source9:        lc_plugin_wrapper-qt5.1
+
+# PATCH-FIX-OPENSUSE to save Qt 5.12 (i.e. Leap 15.2) compatibility.
+Patch0:         leechcraft-Qt5_12.patch
+# PATCH-FIX-OPENSUSE vs. Leap 15.2 qtermwidget' pkgconfig issue.
+Patch1:         leechcraft-qtermwidget-Leap-15_2.patch
 
 BuildRequires:  cmake >= 3.8
 BuildRequires:  fdupes
@@ -162,6 +167,7 @@ BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xrender)
+BuildRequires:  pkgconfig(xscrnsaver)
 
 BuildConflicts: gstreamer-0_10-devel
 BuildConflicts: gstreamer-0_10-plugins-base-devel
@@ -2251,6 +2257,10 @@ XmlSettingsDialog LeechCraft subsystem.
 
 %prep
 %setup -q -n leechcraft-%{LEECHCRAFT_VERSION}
+%if 0%{?sle_version} <= 150300 && 0%{?suse_version} < 1550
+%patch0 -p1
+%patch1 -p1
+%endif
 
 #removing non-free icons
 rm -rf src/plugins/azoth/share/azoth/iconsets/clients/default
@@ -2630,6 +2640,7 @@ ctest --output-on-failure
 %files azoth-embedmedia
 %defattr(-,root,root)
 %{plugin_dir}/*craft_azoth_embedmedia.so
+%{_datadir}/leechcraft/azoth/embedmedia
 
 %files azoth-herbicide
 %defattr(-,root,root)
@@ -2686,6 +2697,7 @@ ctest --output-on-failure
 %{plugin_dir}/*craft_azoth_murm.so
 %{translations_dir}/*craft_azoth_murm*.qm
 %{settings_dir}/azothmurmsettings.xml
+%{_datadir}/leechcraft/azoth/murm
 
 %files azoth-nativeemoticons
 %defattr(-,root,root)

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 21 12:25:32 UTC 2020 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Updated to 0.6.70-13907-g785196c688 snapshot:
+  * Current source-url provides 0.6.70-13870-ga08049301b.
+  * Pkgconfig for XCB, X11, udev, libguess, taglib, libmtp,
+    libprojectM, qtermwidget (doesn't work for Leap, so patched back),
+    pcre, libtorrent, maxminddb, libpurple, qca2, qxmpp, tox.
+  * Added leechcraft-Qt5_12.patch to save Qt 5.12 compatibility.
+  * Added leechcraft-qtermwidget-Leap-15_2.patch for Leap 15.2.
+  * Unembed some resources.
+
+-------------------------------------------------------------------
 Fri May  1 20:00:03 UTC 2020 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Updated to 0.6.70-13729-g7046a9d2a7 snapshot:

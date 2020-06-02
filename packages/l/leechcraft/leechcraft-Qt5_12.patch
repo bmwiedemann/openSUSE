@@ -1,0 +1,58 @@
+commit 5131562d2624a9abc1ba6d99052d0a4d7ba1927e
+Author: Dmitriy A. Perlow <dap.darkness@gmail.com>
+Date:   Fri May 22 14:34:59 2020 +0300
+
+    Revert "[CertMgr] Drop Qt <5.13"
+    
+    This reverts commit aa33ce39533072bee93a16af9800c28ad6c06df1.
+
+diff --git a/src/plugins/certmgr/certsmodel.cpp b/src/plugins/certmgr/certsmodel.cpp
+index 9bfb9f73ad..13f11c2b7a 100644
+--- a/src/plugins/certmgr/certsmodel.cpp
++++ b/src/plugins/certmgr/certsmodel.cpp
+@@ -153,9 +153,11 @@ namespace CertMgr
+ 					case QSsl::EmailEntry:
+ 						name = CertsModel::tr ("Email");
+ 						break;
++#if QT_VERSION >= QT_VERSION_CHECK (5, 13, 0)
+ 					case QSsl::IpAddressEntry:
+ 						name = CertsModel::tr ("IP address");
+ 						break;
++#endif
+ 					}
+ 
+ 					add (name, QStringList { subjs.values (key) }.join ("; "));
+commit 47e508aaa72493916d8c9a96d0cdf7db739d308f
+Author: Dmitriy A. Perlow <dap.darkness@gmail.com>
+Date:   Sat May 23 22:03:12 2020 +0300
+
+    Revert "[Overall] Enable full compression for resources"
+    
+    This reverts commit f2f43347ed0f75dd02de713eb7ae7e0dfa3f4098.
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 6fdd88b0bf..b3113b30c2 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -134,7 +134,7 @@ endmacro ()
+ 
+ macro (QtAddResources outfiles)
+ 	set (RCCS)
+-	QT5_ADD_RESOURCES (RCCS ${ARGN} OPTIONS -compress-algo best -threshold 0)
++	QT5_ADD_RESOURCES (RCCS ${ARGN})
+ 	set (${outfiles} ${${outfiles}} ${RCCS})
+ endmacro ()
+ 
+diff --git a/src/FindLeechCraft.cmake.in b/src/FindLeechCraft.cmake.in
+index bf27f097f6..4ede894c6c 100644
+--- a/src/FindLeechCraft.cmake.in
++++ b/src/FindLeechCraft.cmake.in
+@@ -32,7 +32,7 @@ endmacro ()
+ 
+ macro (QtAddResources outfiles)
+ 	set (RCCS)
+-	QT5_ADD_RESOURCES (RCCS ${ARGN} OPTIONS -compress-algo best -threshold 0)
++    QT5_ADD_RESOURCES (RCCS ${ARGN})
+ 	set (${outfiles} ${${outfiles}} ${RCCS})
+ endmacro ()
+ 

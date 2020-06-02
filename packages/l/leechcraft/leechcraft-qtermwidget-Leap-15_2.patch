@@ -1,0 +1,79 @@
+commit 3fe556e3be29327288895fdc02059121a3bb2ad2
+Author: Dmitriy A. Perlow <dap.darkness@gmail.com>
+Date:   Sat May 23 12:59:22 2020 +0300
+
+    Revert "[ER] Use pkgconfig to find qtermwidget"
+    
+    This reverts commit 171e73df165e747b4bc453604adbb87c386f1a13.
+
+diff --git a/src/plugins/eleeminator/CMakeLists.txt b/src/plugins/eleeminator/CMakeLists.txt
+index b46094c45f..e59452f69d 100644
+--- a/src/plugins/eleeminator/CMakeLists.txt
++++ b/src/plugins/eleeminator/CMakeLists.txt
+@@ -2,12 +2,13 @@ cmake_minimum_required (VERSION 3.3)
+ project (leechcraft_eleeminator)
+ include (InitLCPlugin NO_POLICY_SCOPE)
+ 
+-find_package (PkgConfig)
+-pkg_check_modules (QTermWidget REQUIRED IMPORTED_TARGET qtermwidget5)
++set (CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
++find_package (QTermWidget REQUIRED)
+ 
+ include_directories (
+ 	${CMAKE_CURRENT_BINARY_DIR}
+ 	${Boost_INCLUDE_DIR}
++	${QTERMWIDGET_INCLUDE_DIR}
+ 	${LEECHCRAFT_INCLUDE_DIR}
+ 	)
+ set (SRCS
+@@ -36,7 +37,7 @@ add_library (leechcraft_eleeminator SHARED
+ 	)
+ target_link_libraries (leechcraft_eleeminator
+ 	${LEECHCRAFT_LIBRARIES}
+-	PkgConfig::QTermWidget
++	${QTERMWIDGET_LIBRARIES}
+ 	)
+ install (TARGETS leechcraft_eleeminator DESTINATION ${LC_PLUGINS_DEST})
+ install (FILES eleeminatorsettings.xml DESTINATION ${LC_SETTINGS_DEST})
+diff --git a/src/plugins/eleeminator/cmake/FindQTermWidget.cmake b/src/plugins/eleeminator/cmake/FindQTermWidget.cmake
+new file mode 100644
+index 0000000000..9efc79e6dc
+--- /dev/null
++++ b/src/plugins/eleeminator/cmake/FindQTermWidget.cmake
+@@ -0,0 +1,36 @@
++find_path(QTERMWIDGET_INCLUDE_DIR qtermwidget.h
++	PATHS
++		${QTERMWIDGET_PATH_INCLUDES}/
++		/usr/include/
++		/usr/local/include/
++		/usr/local/include/
++		/opt/local/include/
++	PATH_SUFFIXES
++		qtermwidget5
++	)
++
++find_library(QTERMWIDGET_LIBRARIES
++	NAMES
++		qtermwidget5
++		qtermwidget
++	PATHS
++		${QTERMWIDGET_PATH_LIB}
++		/usr/lib/
++		/usr/lib64/
++		/usr/local/lib/
++		/usr/local/lib64/
++		/opt/local/lib/
++	)
++
++if (QTERMWIDGET_LIBRARIES AND QTERMWIDGET_INCLUDE_DIR)
++	set (QTERMWIDGET_FOUND TRUE)
++endif ()
++
++message (STATUS "Found QTermWidget includes at ${QTERMWIDGET_INCLUDE_DIR}")
++message (STATUS "Found QTermWidget libraries at ${QTERMWIDGET_LIBRARIES}")
++
++if (NOT QTERMWIDGET_FOUND)
++	if (QTermWidget_FIND_REQUIRED)
++		message (FATAL_ERROR "Could not find QTermWidget library")
++	endif ()
++endif ()
