@@ -138,4 +138,14 @@
 - Refresh flashfocus-2.0.3-no-i3ipc.patch</comment>
     <requestid>790006</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ec477a9ac680201c1a789ce07213b438</srcmd5>
+    <version>2.2.0</version>
+    <time>1591101462</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0:
+  * Added: --loglevel CLI option
+  * Fixed: Removed --opacity documentation in help</comment>
+    <requestid>810521</requestid>
+  </revision>
 </revisionlist>

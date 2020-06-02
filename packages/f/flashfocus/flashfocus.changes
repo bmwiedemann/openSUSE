@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  1 05:44:53 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.0:
+  * Added: --loglevel CLI option
+  * Fixed: Removed --opacity documentation in help
+
+-------------------------------------------------------------------
 Tue Mar 31 07:46:44 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.1.3:

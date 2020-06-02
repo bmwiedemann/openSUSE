@@ -17,7 +17,7 @@
 
 
 Name:           flashfocus
-Version:        2.1.3
+Version:        2.2.0
 Release:        0
 Summary:        Focus animations for tiling window managers
 License:        MIT
