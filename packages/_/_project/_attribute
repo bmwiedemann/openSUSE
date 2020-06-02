@@ -121,7 +121,7 @@
   boo#1171412: '20200528'
   boo#1171521: '20200513'
   boo#1171556: '20200511'
-  boo#1171714: '20200528'
+  boo#1171714: '20200530'
   boo#1171870: '20200517'
   boo#1172013: '20200528'
   boo#1172071: '20200523'
@@ -293,7 +293,7 @@
   poo#67183: '20200528'
   poo#67216: '20200526'
   poo#67234: '20200528'
-  poo#67288: '20200528'
+  poo#67288: '20200530'
   poo#67447: '20200528'
 </value>
   </attribute>
@@ -342,7 +342,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
-jobs_num: 221
+jobs_num: 228
 openqa_group: openSUSE Tumbleweed
 openqa_server: https://openqa.opensuse.org
 product_repo: images
@@ -513,7 +513,7 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20200530'
 published: '20200528'
 publishing: '20200528'
 testing: '20200530'
