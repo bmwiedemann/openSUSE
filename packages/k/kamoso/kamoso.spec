@@ -47,6 +47,7 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(libudev)
+Requires:       gstreamer-plugins-bad
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
 Requires:       kirigami2
