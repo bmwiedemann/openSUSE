@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May 31 18:12:23 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.17.8:
+  * CVE-2020-13614: SSL Certificate Hostnames were not verified
+    (boo#1172159)
+  * Replaced progressbar line clearing with terminal control sequence
+  * Fixed parsing of Content-Disposition HTTP header
+  * Fixed User-Agent HTTP header never being included
+
+-------------------------------------------------------------------
 Sun Mar 29 19:28:39 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 2.17.7:
