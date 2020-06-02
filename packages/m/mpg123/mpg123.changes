@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat May 30 13:57:25 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.26.1
+  * Fix cmake build by actually including the read_api_version
+    file in the distro.
+  * Fix big-endian build, stupid omission of a variable
+    declaration, semicolon.
+  * Silence a harmless warning for build without realtime
+    priority.
+- Drop fix-ppc64_1.patch and fix-ppc64_2.patch (merged upstream)
+
+-------------------------------------------------------------------
+Tue May 26 13:18:11 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add fix-ppc64_1.patch and fix-ppc64_2.patch
+
+-------------------------------------------------------------------
+Mon May 25 15:35:37 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.26.0
+  * Too many changes to list, see NEWS
+- Add libsyn123 subpackage
+- Drop Group tag
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sat Oct 26 10:58:43 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.25.13

@@ -128,4 +128,26 @@
     <comment></comment>
     <requestid>743102</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ad450b5eef4c523803ad9c12adfb20a3</srcmd5>
+    <version>1.26.1</version>
+    <time>1591101230</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.1
+  * Fix cmake build by actually including the read_api_version
+    file in the distro.
+  * Fix big-endian build, stupid omission of a variable
+    declaration, semicolon.
+  * Silence a harmless warning for build without realtime
+    priority.
+- Drop fix-ppc64_1.patch and fix-ppc64_2.patch (merged upstream)
+- Add fix-ppc64_1.patch and fix-ppc64_2.patch
+- Update to version 1.26.0
+  * Too many changes to list, see NEWS
+- Add libsyn123 subpackage
+- Drop Group tag
+- Spec cleanup
+</comment>
+    <requestid>810374</requestid>
+  </revision>
 </revisionlist>

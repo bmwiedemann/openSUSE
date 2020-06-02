@@ -1,7 +1,7 @@
 #
 # spec file for package mpg123
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
+%define sover   0
 Name:           mpg123
-Version:        1.25.13
+Version:        1.26.1
 Release:        0
 Summary:        Console MPEG audio player and decoder library
 License:        LGPL-2.1-only
-Group:          Productivity/Multimedia/Sound/Players
 URL:            http://www.mpg123.de/
 Source0:        https://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}.tar.bz2
 Source1:        https://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}.tar.bz2.sig
@@ -45,29 +45,34 @@ and output libraries.
 
 %package devel
 Summary:        Files to develop against libmpg123
-Group:          Development/Languages/C and C++
-Requires:       libmpg123-0 = %{version}
-Requires:       libout123-0 = %{version}
+Requires:       libmpg123-%{sover} = %{version}
+Requires:       libout123-%{sover} = %{version}
+Requires:       libsyn123-%{sover} = %{version}
 
 %description devel
 The mpg123 distribution contains an MPEG 1.0/2.0/2.5 audio player/decoder for
 layers 1, 2 and 3 (most commonly MPEG 1.0 Layer 3 aka MP3), as well as re-usable decoding
 and output libraries.
 
-%package -n libmpg123-0
+%package -n libmpg123-%{sover}
 Summary:        MPEG audio decoder library
-Group:          System/Libraries
-Obsoletes:      mpg123-esound >= 1.25.7
 
-%description -n libmpg123-0
+%description -n libmpg123-%{sover}
 MPEG 1.0/2.0/2.5 audio decoder library for layers 1, 2 and 3 (most
 commonly MPEG 1.0 Layer 3 aka MP3).
 
-%package -n libout123-0
+%package -n libout123-%{sover}
 Summary:        MPEG audio decoder library
-Group:          System/Libraries
 
-%description -n libout123-0
+%description -n libout123-%{sover}
+The mpg123 distribution contains a real time MPEG 1.0/2.0/2.5 audio player/decoder for
+layers 1,2 and 3 (most commonly MPEG 1.0 layer 3 aka MP3), as well as re-usable decoding
+and output libraries.
+
+%package -n libsyn123-%{sover}
+Summary:        MPEG audio decoder library
+
+%description -n libsyn123-%{sover}
 The mpg123 distribution contains a real time MPEG 1.0/2.0/2.5 audio player/decoder for
 layers 1,2 and 3 (most commonly MPEG 1.0 layer 3 aka MP3), as well as re-usable decoding
 and output libraries.
@@ -75,7 +80,6 @@ and output libraries.
 %if 0%{?suse_version} >= 1500
 %package openal
 Summary:        OpenAL Support for %{name}
-Group:          Productivity/Multimedia/Sound/Players
 Supplements:    openal-soft
 
 %description openal
@@ -88,7 +92,6 @@ This package contains the plugin for openal output support.
 
 %package pulse
 Summary:        Pulseaudio Support for %{name}
-Group:          Productivity/Multimedia/Sound/Players
 Supplements:    pulseaudio
 
 %description pulse
@@ -100,7 +103,6 @@ This package contains the plugin for Pulseaudio output support.
 
 %package jack
 Summary:        Jack Support for %{name}
-Group:          Productivity/Multimedia/Sound/Players
 Supplements:    jack
 
 %description jack
@@ -112,7 +114,6 @@ This package contains the plugin for JACK output support.
 
 %package portaudio
 Summary:        Portaudio Support for %{name}
-Group:          Productivity/Multimedia/Sound/Players
 
 %description portaudio
 The mpg123 distribution contains a real time MPEG 1.0/2.0/2.5 audio player/decoder for
@@ -123,7 +124,6 @@ This package contains the plugin for Portaudio output support.
 
 %package sdl
 Summary:        SDL Support for %{name}
-Group:          Productivity/Multimedia/Sound/Players
 
 %description sdl
 The mpg123 distribution contains a real time MPEG 1.0/2.0/2.5 audio player/decoder for
@@ -133,24 +133,26 @@ and output libraries.
 This package contains the plugin for SDL output support.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
     --enable-modules=yes
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n libmpg123-0 -p /sbin/ldconfig
-%postun -n libmpg123-0 -p /sbin/ldconfig
-%post   -n libout123-0 -p /sbin/ldconfig
-%postun -n libout123-0 -p /sbin/ldconfig
+%post   -n libmpg123-%{sover} -p /sbin/ldconfig
+%postun -n libmpg123-%{sover} -p /sbin/ldconfig
+%post   -n libout123-%{sover} -p /sbin/ldconfig
+%postun -n libout123-%{sover} -p /sbin/ldconfig
+%post   -n libsyn123-%{sover} -p /sbin/ldconfig
+%postun -n libsyn123-%{sover} -p /sbin/ldconfig
 
 %files
-%doc ChangeLog README
+%doc NEWS README
 %{_bindir}/mpg123
 %{_bindir}/mpg123-id3dump
 %{_bindir}/mpg123-strip
@@ -162,21 +164,27 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/%{name}/output_dummy.so
 %{_libdir}/%{name}/output_oss.so
 
-%files -n libmpg123-0
+%files -n libmpg123-%{sover}
 %license COPYING
 %{_libdir}/libmpg123.so.*
 
-%files -n libout123-0
+%files -n libout123-%{sover}
 %{_libdir}/libout123.so.*
+
+%files -n libsyn123-%{sover}
+%{_libdir}/libsyn123.so.*
 
 %files devel
 %{_libdir}/libmpg123.so
 %{_libdir}/libout123.so
+%{_libdir}/libsyn123.so
 %{_libdir}/pkgconfig/libmpg123.pc
 %{_libdir}/pkgconfig/libout123.pc
+%{_libdir}/pkgconfig/libsyn123.pc
 %{_includedir}/fmt123.h
 %{_includedir}/mpg123.h
 %{_includedir}/out123.h
+%{_includedir}/syn123.h
 
 %files pulse
 %{_libdir}/%{name}/output_pulse.so
