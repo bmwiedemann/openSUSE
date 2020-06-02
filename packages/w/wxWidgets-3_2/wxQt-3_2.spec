@@ -1,7 +1,7 @@
 #
 # spec file for package wxQt-3_2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,38 +22,34 @@ Name:           wxQt-3_2
 %define variant suse
 %define psonum 3_1_3
 %define sonum 3.1.3
-Version:        3.1.3~g673
+Version:        3.1.3
 Release:        0
 %define wx_minor 3.1
 %define wx_micro 3.1.3
 # build non-UI toolkit related packages
 %define         base_packages 0
 Summary:        C++ Library for Cross-Platform Development
-License:        LGPL-2.1+ WITH WxWindows-exception-3.1
+License:        LGPL-2.1-or-later WITH WxWindows-exception-3.1
 Group:          Development/Libraries/C and C++
 URL:            https://www.wxwidgets.org/
-Source:         %tarball_name-%version.tar.xz
+Source:         https://github.com/wxWidgets/wxWidgets/releases/download/v%{version}/wxWidgets-%{version}.tar.bz2#/%tarball_name-%version.tar.bz2
 Source2:        README.SUSE
 Source5:        wxWidgets-3_2-rpmlintrc
 # This script is not used during build, but it makes possible to
 # identify and backport wxPython fixes to wxWidgets.
 Source6:        wxpython-mkdiff.sh
 Patch1:         soversion.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  SDL-devel
+# PATCH-FIX-UPSTREAM https://github.com/wxWidgets/wxWidgets/pull/1879
+Patch2:         0002-Make-the-wxUIActionSimulator-Text-implementation-mat.patch
+# PATCH-FIX-UPSTREAM https://github.com/wxWidgets/wxWidgets/pull/1880
+Patch3:         0001-Add-missing-QPainterPath-include-required-with-Qt-5..patch
 BuildRequires:  autoconf
 BuildRequires:  cppunit-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gstreamer-devel
 BuildRequires:  gstreamer-plugins-base-devel
 %define toolkit qt
-%if 0%{?suse_version} >= 1220
 BuildRequires:  libSM-devel
-%else
-%if 0%{?sles_version} >= 11
-BuildRequires:  xorg-x11-libSM-devel
-%endif
-%endif
 BuildRequires:  libexpat-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libmspack-devel
@@ -68,6 +64,13 @@ BuildRequires:  pkgconfig(Qt5Test) >= 5.2.1
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.1
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(liblzma)
+%if 0%{?sle_version} < 150000 && !0%{?is_opensuse}
+BuildRequires:  pkgconfig(sdl)
+%else
+BuildRequires:  pkgconfig(sdl2)
+%endif
+BuildRequires:  pkgconfig(xtst)
 
 %description
 wxWidgets is a C++ library abstraction layer for a number of GUI
@@ -219,7 +222,7 @@ Summary:        wxWidgets SDL Plugin
 Group:          System/Libraries
 
 %description plugin-sound_sdlu-3_2
-SDL Plugin for the wxWidgets cross-platform GUI.
+SDL based sound plugin for the wxWidgets cross-platform GUI.
 
 %package devel
 Summary:        Development files for Qt-backed wxWidgets 3.2
@@ -257,6 +260,8 @@ read %_docdir/%name/README.SUSE to pick a correct variant.
 %prep
 %setup -q -n %tarball_name-%version
 %patch -P 1 -p1
+%patch2 -p1
+%patch3 -p1
 cp %{S:2} .
 
 %build
@@ -283,6 +288,7 @@ autoconf -f -i
 %else
 	--disable-debug \
 %endif
+        --enable-repro-build \
 	--enable-stl \
 	--enable-plugins
 make %{?_smp_mflags}
@@ -335,76 +341,59 @@ ln -sf $(echo %buildroot/%_libdir/wx/config/* | sed "s%%%buildroot%%%%") %buildr
 
 %if %base_packages
 %files -n libwx_baseu-%variant%psonum
-%defattr (-,root,root)
 %_libdir/libwx_baseu-%variant.so.%{sonum}*
 
 %files -n libwx_baseu_net-%variant%psonum
-%defattr (-,root,root)
 %_libdir/libwx_baseu_net-%variant.so.%{sonum}*
 
 %files -n libwx_baseu_xml-%variant%psonum
-%defattr (-,root,root)
 %_libdir/libwx_baseu_xml-%variant.so.%{sonum}*
 %endif
 
 %files -n libwx_%{toolkit}u_adv-%variant%psonum
-%defattr (-,root,root)
 %_libdir/libwx_%{toolkit}u_adv-%variant.so.%{sonum}*
 
 %files -n libwx_%{toolkit}u_aui-%variant%psonum
-%defattr (-,root,root)
 %_libdir/libwx_%{toolkit}u_aui-%variant.so.%{sonum}*
 
 %files -n libwx_%{toolkit}u_core-%variant%psonum
-%defattr (-,root,root)
 %_libdir/libwx_%{toolkit}u_core-%variant.so.%{sonum}*
 
 %files -n libwx_%{toolkit}u_gl-%variant%psonum
-%defattr (-,root,root)
 %_libdir/libwx_%{toolkit}u_gl-%variant.so.%{sonum}*
 
 %files -n libwx_%{toolkit}u_html-%variant%psonum
-%defattr (-,root,root)
 %_libdir/libwx_%{toolkit}u_html-%variant.so.%{sonum}*
 
 %files -n libwx_%{toolkit}u_media-%variant%psonum
-%defattr (-,root,root)
 %_libdir/libwx_%{toolkit}u_media-%variant.so.%{sonum}*
 
 %files -n libwx_%{toolkit}u_propgrid-%variant%psonum
-%defattr (-,root,root)
 %_libdir/libwx_%{toolkit}u_propgrid-%variant.so.%{sonum}*
 
 %files -n libwx_%{toolkit}u_qa-%variant%psonum
-%defattr (-,root,root)
 %_libdir/libwx_%{toolkit}u_qa-%variant.so.%{sonum}*
 
 %files -n libwx_%{toolkit}u_ribbon-%variant%psonum
-%defattr (-,root,root)
 %_libdir/libwx_%{toolkit}u_ribbon-%variant.so.%{sonum}*
 
 %files -n libwx_%{toolkit}u_richtext-%variant%psonum
-%defattr (-,root,root)
 %_libdir/libwx_%{toolkit}u_richtext-%variant.so.%{sonum}*
 
 %files -n libwx_%{toolkit}u_stc-%variant%psonum
-%defattr (-,root,root)
 %_libdir/libwx_%{toolkit}u_stc-%variant.so.%{sonum}*
 
 %files -n libwx_%{toolkit}u_xrc-%variant%psonum
-%defattr (-,root,root)
 %_libdir/libwx_%{toolkit}u_xrc-%variant.so.%{sonum}*
 
 %if %base_packages
 %files plugin-sound_sdlu-3_2
-%defattr (-,root,root)
 %dir %_libdir/wx
 %dir %_libdir/wx/%wx_micro
 %_libdir/wx/%wx_micro/sound_sdlu-%wx_micro.so
 %endif
 
 %files devel
-%defattr (-,root,root)
 # Complete documentation is available in the docs packages.
 %doc docs/*.txt README.SUSE
 %_bindir/wxrc
