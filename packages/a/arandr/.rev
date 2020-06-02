@@ -16,4 +16,13 @@
 This allows to remove desktop-data and hicolor-icon-theme buildrequires.</comment>
     <requestid>757199</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1192edd2c4b9b128dd61feb52df87df6</srcmd5>
+    <version>0.1.10</version>
+    <time>1591101711</time>
+    <user>dimstar_suse</user>
+    <comment>- boo#1172370 arandr fails to start in TW and 15.1:
+  Add BR on gobject-introspection and Requires on python3-gobject-Gdk</comment>
+    <requestid>810757</requestid>
+  </revision>
 </revisionlist>

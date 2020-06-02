@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  2 09:05:06 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- boo#1172370 arandr fails to start in TW and 15.1:
+  Add BR on gobject-introspection and Requires on python3-gobject-Gdk
+
+-------------------------------------------------------------------
 Sun Dec 15 18:35:42 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - update arandr-fix_desktop_icon.patch: use "video-display" icon
