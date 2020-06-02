@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 27 14:35:56 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.2
+* requires orthanc 1.7
+* Removed dependency on GDCM
+* "QidoCaseSensitive" defaults to "CaseSensitivePN" of Orthanc configuration (instead of "true")
+
+-------------------------------------------------------------------
 Thu Mar  5 08:47:21 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - Version 1.1

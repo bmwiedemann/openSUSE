@@ -21,7 +21,7 @@ Name:           orthanc-dicomweb
 Summary:        WebViewer plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        1.1
+Version:        1.2
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-dicom-web/OrthancDicomWeb-%{version}.tar.gz
@@ -39,8 +39,6 @@ Source10:       dicomweb.json
 BuildRequires:  cmake
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
-BuildRequires:  gdcm-devel
-BuildRequires:  gdcm-libgdcm3_0
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
