@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 27 08:21:26 CEST 2020 - tiwai@suse.de
+
+- More catch up of upstream fixes: mostly cosmetic style fixes:
+  0011-ucm2-remove-empty-enable-disable-sequence-sections.patch
+  0012-ucm2-fix-indentation-use-tabs.patch
+  0013-Add-initial-support-for-Realtek-ALC1220-TRX40-mother.patch
+  0014-ucm2-fix-chtrt5650-configuration-ucm-validator.patch
+  0015-bytcr-rt5651-fix-the-cfg-mic-in1-cfg-mic-in12-match-.patch
+  0016-ucm-fix-wrong-If-in-sequence-in-HiFi-dual.conf.patch
+- Add UCM profile for Chromebook Asus C300 (bsc#1171492):
+  0100-ucm2-Add-profile-for-Chromebook-Asus-C300.patch
+
+-------------------------------------------------------------------
 Mon Apr 20 18:04:59 CEST 2020 - tiwai@suse.de
 
 - Backport upstream fixes:

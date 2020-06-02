@@ -1,0 +1,52 @@
+From 1b502a0b5b0f4068afa2afd1f81372fe9f323eb5 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 25 May 2020 17:03:03 +0200
+Subject: [PATCH] bytcr-rt5651: fix the cfg-mic:in1 / cfg-mic:in12 match error
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/bytcr-rt5651/HiFi-Components.conf | 23 ++++++++++++-----------
+ 1 file changed, 12 insertions(+), 11 deletions(-)
+
+diff --git a/ucm2/bytcr-rt5651/HiFi-Components.conf b/ucm2/bytcr-rt5651/HiFi-Components.conf
+index d0a573ef2cba..966e8797f6b7 100644
+--- a/ucm2/bytcr-rt5651/HiFi-Components.conf
++++ b/ucm2/bytcr-rt5651/HiFi-Components.conf
+@@ -50,17 +50,6 @@ If.dmic {
+ 	}
+ }
+ 
+-If.in1 {
+-	Condition {
+-		Type String
+-		Haystack "${CardComponents}"
+-		Needle "cfg-mic:in1"
+-	}
+-	True {
+-		<codecs/rt5651/IN1-InternalMic.conf>
+-	}
+-}
+-
+ If.in2 {
+ 	Condition {
+ 		Type String
+@@ -81,4 +70,16 @@ If.in12 {
+ 	True {
+ 		<codecs/rt5651/IN12-InternalMic.conf>
+ 	}
++	False {
++		If.in1 {
++			Condition {
++				Type String
++				Haystack "${CardComponents}"
++				Needle "cfg-mic:in1"
++			}
++			True {
++				<codecs/rt5651/IN1-InternalMic.conf>
++			}
++		}
++	}
+ }
+-- 
+2.16.4
+

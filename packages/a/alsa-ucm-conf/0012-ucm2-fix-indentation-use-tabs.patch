@@ -1,0 +1,92 @@
+From 1550dd3dc4b5bc5c9685ba0c8657d684e52bbc2e Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 22 Apr 2020 12:11:48 +0200
+Subject: [PATCH] ucm2: fix indentation (use tabs)
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/PAZ00/PAZ00.conf         | 42 +++++++++++++++++++++---------------------
+ ucm2/kblrt5660/kblrt5660.conf |  8 ++++----
+ 2 files changed, 25 insertions(+), 25 deletions(-)
+
+diff --git a/ucm2/PAZ00/PAZ00.conf b/ucm2/PAZ00/PAZ00.conf
+index 2112225943e5..aa1e7f7386a8 100644
+--- a/ucm2/PAZ00/PAZ00.conf
++++ b/ucm2/PAZ00/PAZ00.conf
+@@ -3,32 +3,32 @@ Syntax 2
+ Comment "PAZ00 alc5632"
+  
+ SectionDefaults [
+-        cset "name='Master Playback Switch' on"
+-        cset "name='Master Playback Volume' 44,44"
+-        cset "name='Headphone Playback Volume' 21,21"
+-        cset "name='Speaker Playback Volume' 21,21"
+-        cset "name='SpeakerOut Mux' 2"
+-        cset "name='SpeakerOut N Mux' LN/-R"
+-        cset "name='AB-D Amp Mux' 0"
+-        cset "name='Left Headphone Mux' 1"
+-        cset "name='Right Headphone Mux' 1"
+-        cset "name='DMIC Boost Capture Volume' 4"
+-        cset "name='Rec Capture Volume' 24"
++	cset "name='Master Playback Switch' on"
++	cset "name='Master Playback Volume' 44,44"
++	cset "name='Headphone Playback Volume' 21,21"
++	cset "name='Speaker Playback Volume' 21,21"
++	cset "name='SpeakerOut Mux' 2"
++	cset "name='SpeakerOut N Mux' LN/-R"
++	cset "name='AB-D Amp Mux' 0"
++	cset "name='Left Headphone Mux' 1"
++	cset "name='Right Headphone Mux' 1"
++	cset "name='DMIC Boost Capture Volume' 4"
++	cset "name='Rec Capture Volume' 24"
+  
+-        # Fix external mic record volumes
+-        cset "name='Mic 1 Boost Volume' 0"
+-        cset "name='Mic 2 Boost Volume' 0"
+-        cset "name='Mic1 Playback Volume' 0"
+-        cset "name='Mic2 Playback Volume' 0"
+-        cset "name='Rec Capture Volume' 0"
++	# Fix external mic record volumes
++	cset "name='Mic 1 Boost Volume' 0"
++	cset "name='Mic 2 Boost Volume' 0"
++	cset "name='Mic1 Playback Volume' 0"
++	cset "name='Mic2 Playback Volume' 0"
++	cset "name='Rec Capture Volume' 0"
+ ]
+  
+ SectionUseCase."HiFi" {
+-    File "HiFi.conf"
+-    Comment "Music playback"
++	File "HiFi.conf"
++	Comment "Music playback"
+ }
+  
+ SectionUseCase."Record" {
+-    File "Record.conf"
+-    Comment "Playback and capture"
++	File "Record.conf"
++	Comment "Playback and capture"
+ }
+diff --git a/ucm2/kblrt5660/kblrt5660.conf b/ucm2/kblrt5660/kblrt5660.conf
+index 124fb8833364..1cdf91728efe 100755
+--- a/ucm2/kblrt5660/kblrt5660.conf
++++ b/ucm2/kblrt5660/kblrt5660.conf
+@@ -6,11 +6,11 @@ SectionUseCase."HiFi" {
+ }
+ 
+ SectionUseCase."Hdmi1" {
+-        File "Hdmi1.conf"
+-        Comment "Play on Hdmi/DP 1"
++	File "Hdmi1.conf"
++	Comment "Play on Hdmi/DP 1"
+ }
+ 
+ SectionUseCase."Hdmi2" {
+-        File "Hdmi2.conf"
+-        Comment "Play on Hdmi/DP 2"
++	File "Hdmi2.conf"
++	Comment "Play on Hdmi/DP 2"
+ }
+-- 
+2.16.4
+

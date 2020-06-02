@@ -1,0 +1,116 @@
+From 48b11a4c33f267c8ffd9a6c584c3e651eda7e5ec Mon Sep 17 00:00:00 2001
+From: Maxim Levitsky <mlevitsk@redhat.com>
+Date: Sun, 3 May 2020 22:31:12 +0300
+Subject: [PATCH] Add initial support for Realtek ALC1220 TRX40 motherboards
+
+Tested with TRX40 Designare but should work on most TRX40 motherboards
+Tested with pulseaudio 36a4923f9bd05d4c5e2e8b1765f18edf452b9251
+ with fix for 8 channel mixer element applied
+
+Tested with kernel 5.7.0-rc3
+
+The following are the notes of the testing and implementation
+
+* Back speaker works in 5.1 mode, becasue side channel
+  shares jack with line-in and by default line-in is configured.
+  Once jack retasking will work, it will work automatically
+  Same for front mic that can be retasked to line-in
+
+* SPDIF is not tested physically yet. The SPDIF mute mixer control is recognised by
+  pulseaudio correctly so profile is correct.
+
+* When all capture inputs are disconnected, pulseaudio thinks that the UCM2 profile
+  is invalid and doesn't use it by default. It can be forced to use it by selecting
+  it in the pavucontrol. Or you can for now comment out one of 'JackControl' statements,
+  to make it think that one of the jacks is always plugged in.
+
+Signed-off-by: Maxim Levitsky <maximlevitsky@gmail.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ .../USB-Audio/Realtek-ALC1220-VB-Desktop-HiFi.conf | 60 ++++++++++++++++++++++
+ ucm2/USB-Audio/Realtek-ALC1220-VB-Desktop.conf     |  6 +++
+ 2 files changed, 66 insertions(+)
+ create mode 100644 ucm2/USB-Audio/Realtek-ALC1220-VB-Desktop-HiFi.conf
+ create mode 100644 ucm2/USB-Audio/Realtek-ALC1220-VB-Desktop.conf
+
+diff --git a/ucm2/USB-Audio/Realtek-ALC1220-VB-Desktop-HiFi.conf b/ucm2/USB-Audio/Realtek-ALC1220-VB-Desktop-HiFi.conf
+new file mode 100644
+index 000000000000..344db8335398
+--- /dev/null
++++ b/ucm2/USB-Audio/Realtek-ALC1220-VB-Desktop-HiFi.conf
+@@ -0,0 +1,60 @@
++SectionDevice."Speaker" {
++	Comment "Speakers"
++	Value {
++	       PlaybackChannels 8
++	       PlaybackPriority 100
++	       PlaybackPCM "hw:${CardId}"
++	       JackControl "Speaker Jack"
++	       PlaybackMixerElem "Speaker"
++	}
++}
++
++SectionDevice."Headphones" {
++	Comment "Front Headphones"
++	Value {
++		PlaybackPriority 300
++		PlaybackPCM "hw:${CardId},1"
++		JackControl "Front Headphone Jack"
++		PlaybackMixerElem "Front Headphone"
++	}
++}
++
++SectionDevice."SPDIF" {
++	Comment "S/PDIF Out"
++	Value {
++		PlaybackPriority 200
++		PlaybackPCM "hw:${CardId},2"
++		PlaybackMixerElem "IEC958"
++	}
++}
++
++SectionDevice."Line" {
++	Comment "Line In"
++	Value {
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
++		JackControl "Line Jack"
++		CaptureMixerElem "Line"
++	}
++}
++
++SectionDevice."Mic1" {
++	Comment "Microphone"
++	Value {
++		CapturePriority 200
++		CapturePCM "hw:${CardId},1"
++		JackControl "Mic Jack"
++		CaptureMixerElem "Mic"
++	}
++}
++
++SectionDevice."Mic2" {
++	Comment "Front Microphone"
++	Value {
++		CapturePriority 300
++		CapturePCM "hw:${CardId},2"
++		JackControl "Front Mic Jack"
++		CaptureMixerElem "Front Mic"
++	}
++}
++
+diff --git a/ucm2/USB-Audio/Realtek-ALC1220-VB-Desktop.conf b/ucm2/USB-Audio/Realtek-ALC1220-VB-Desktop.conf
+new file mode 100644
+index 000000000000..da257e7ed336
+--- /dev/null
++++ b/ucm2/USB-Audio/Realtek-ALC1220-VB-Desktop.conf
+@@ -0,0 +1,6 @@
++Syntax 2
++Comment "USB-audio on Realtek ALC1220-VB desktop"
++SectionUseCase."HiFi" {
++	File "Realtek-ALC1220-VB-Desktop-HiFi.conf"
++	Comment "Default Alsa Profile"
++}
+-- 
+2.16.4
+
