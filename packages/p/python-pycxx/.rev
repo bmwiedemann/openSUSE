@@ -15,4 +15,13 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>659580</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c887acfc9156137989ae6dde65f5c4cc</srcmd5>
+    <version>7.0.3</version>
+    <time>1591101473</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove %python3_only constructs and replace them with other
+  conditional constructs.</comment>
+    <requestid>810301</requestid>
+  </revision>
 </revisionlist>

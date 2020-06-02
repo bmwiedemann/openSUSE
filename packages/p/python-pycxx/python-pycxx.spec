@@ -1,7 +1,7 @@
 #
-# spec file for package python
+# spec file for package python-pycxx
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Patch0:         python-pycxx-7.0.3-python37.patch
 Patch1:         python-pycxx-7.0.3-change-include-paths.patch
 Patch2:         python-pycxx-7.0.3-setup.py.patch
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 Obsoletes:      python-cxx < %{version}
@@ -75,9 +76,15 @@ of Python extension modules in C++.
 
 %build
 %python_build
+%ifpython3
+rm -r Doc/Python2 && mv Doc/Python3 Doc/Python
+%else
+rm -r Doc/Python3 && mv Doc/Python2 Doc/Python
+%endif
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license COPYRIGHT
@@ -85,10 +92,12 @@ of Python extension modules in C++.
 %{python_sitelib}/CXX*
 
 %files %{python_files devel}
-%python2_only %doc Doc/Python2/
-%python3_only %doc Doc/Python3/
-%python2_only %{_datadir}/python%{python2_bin_suffix}
-%python3_only %{_datadir}/python%{python3_bin_suffix}
+%doc Doc/Python/
+%ifpython3
+%{_datadir}/python%{python3_bin_suffix}
+%else
+%{_datadir}/python%{python2_bin_suffix}
+%endif
 %{python_sysconfig_path include}
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 29 20:32:15 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Remove %python3_only constructs and replace them with other
+  conditional constructs.
+
+-------------------------------------------------------------------
 Tue Dec  4 12:52:02 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
