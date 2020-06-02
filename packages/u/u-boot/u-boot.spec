@@ -228,6 +228,7 @@ Patch0022:      0022-config-Enable-support-for-the-XHCI-.patch
 Patch0023:      0023-arm-rpi-Add-function-to-trigger-VL8.patch
 Patch0024:      0024-usb-xhci-Load-Raspberry-Pi-4-VL805-.patch
 Patch0025:      0025-config-Enable-USB-Keyboard-support-.patch
+Patch0026:      0026-configs-rpi-set-NR_DRAM_BANKS-to-fo.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison

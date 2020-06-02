@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  2 06:54:36 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+- Fix RAM discovery for 8GB devices (bsc#1172371)
+Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2020.04
+* Patches added:
+  0026-configs-rpi-set-NR_DRAM_BANKS-to-fo.patch
+
+-------------------------------------------------------------------
 Mon May 11 13:40:32 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
 
 - Enable USB and USB keyboard on RPi4:
