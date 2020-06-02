@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 27 15:10:14 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.6
+* cachemngr.diff removed 
+* DecodedImageAdapter.cpp removed
+* Move the GDCM decoder out of the Orthanc Web viewer plugin as a
+  separate plugin: https://book.orthanc-server.com/plugins/gdcm.html
+* Performance: Replaced "OrthancPluginRegisterRestCallback" by
+  "OrthancPluginRegisterRestCallbackNoLock"
+* Authorization tokens passed as url search params in Orthanc Explorer
+  are now transmitted to the viewer and included as headers in every
+  HTTP request to the Rest API easing the usage of the Authorization
+  plugin
+* Upgrade to Orthanc framework to 1.7.0 
+
+-------------------------------------------------------------------
 Sun Apr 19 08:59:58 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - webjierwer.json & README adapted 

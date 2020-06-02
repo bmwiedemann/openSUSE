@@ -2,7 +2,7 @@
 # spec file for package orthanc-webviewer
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019 Dr. Axel Braun
+# Copyright (c) 2019-2020 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           orthanc-webviewer
 Summary:        Web Viewer plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        2.5
+Version:        2.6
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-webviewer/OrthancWebViewer-%{version}.tar.gz
@@ -30,14 +30,10 @@ Source2:        jquery-ui-1.11.3.zip
 Source3:        jsPanel-2.3.3-fixed.zip
 Source4:        pako-0.2.5.zip
 Source5:        js-url-1.8.6.zip
-Source6:        DecodedImageAdapter.cpp
 Source11:       orthanc-webviewer-readme.SUSE
 Source12:       webviewer.json
-Patch0:         cachemngr.diff
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  gdcm-devel
-BuildRequires:  gdcm-libgdcm3_0
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
@@ -48,6 +44,7 @@ BuildRequires:  libboost_system-devel >= 1.66
 BuildRequires:  libboost_thread-devel >= 1.66
 BuildRequires:  libuuid-devel
 BuildRequires:  orthanc-devel
+BuildRequires:  orthanc-gdcm
 BuildRequires:  orthanc-source
 BuildRequires:  sqlite3-devel
 BuildRequires:  unzip
@@ -61,10 +58,6 @@ Webviewer plugin for Orthanc
 
 %prep
 %setup -q -n OrthancWebViewer-%{version}
-
-cp %{S:6} Plugin/.
-
-%patch0 -p1
 
 #OrthanPlugin may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web
