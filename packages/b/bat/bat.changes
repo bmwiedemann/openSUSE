@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun  1 14:01:29 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.15.4
+  * Added missing Solarized themes
+  * Fixed highlighting bug in Haskell source files
+  * Cannot run bat with relative paths
+  * bat mishighlights Users that start with digits in SSH config
+  * --map-syntax doesn't work with names provided through --file-name
+  * Fix syntax detection for files called 'rails'
+  * Fix potential errors with syntax detection for symlinked files
+  * Fix highlighting of Markdown files
+
+-------------------------------------------------------------------
 Mon May  4 14:55:12 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - Update to version 0.15.0
