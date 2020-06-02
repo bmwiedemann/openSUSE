@@ -1,7 +1,7 @@
 #
 # spec file for package transmission
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        A BitTorrent client with multiple UIs
 License:        (GPL-2.0-only OR GPL-3.0-only) AND MIT
 Group:          Productivity/Networking/Other
-Url:            https://www.transmissionbt.com/
+URL:            https://www.transmissionbt.com/
 Source0:        https://github.com/%{name}/%{name}-releases/raw/master/%{name}-%{version}.tar.xz
 Source1:        transmission-qt.desktop
 Source3:        README.openSUSE
@@ -146,7 +146,7 @@ export CXXFLAGS="%{optflags} -fPIC"
         -DENABLE_CLI=ON \
         -DENABLE_DAEMON=ON \
         -DWITH_SYSTEMD=ON
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
@@ -242,11 +242,11 @@ fi
 %{_bindir}/%{name}-edit
 %{_bindir}/%{name}-remote
 %{_bindir}/%{name}-show
-%{_mandir}/man1/%{name}-cli.1*
-%{_mandir}/man1/%{name}-create.1*
-%{_mandir}/man1/%{name}-edit.1*
-%{_mandir}/man1/%{name}-remote.1*
-%{_mandir}/man1/%{name}-show.1*
+%{_mandir}/man1/%{name}-cli.1%{?ext_man}
+%{_mandir}/man1/%{name}-create.1%{?ext_man}
+%{_mandir}/man1/%{name}-edit.1%{?ext_man}
+%{_mandir}/man1/%{name}-remote.1%{?ext_man}
+%{_mandir}/man1/%{name}-show.1%{?ext_man}
 # Update-Alternative managed
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
@@ -257,7 +257,7 @@ fi
 %doc AUTHORS NEWS README README.openSUSE
 %license COPYING
 %dir %{_localstatedir}/lib/%{name}
-%{_mandir}/man1/%{name}-daemon.1*
+%{_mandir}/man1/%{name}-daemon.1%{?ext_man}
 %{_bindir}/%{name}-daemon
 %{_sbindir}/rc%{name}-daemon
 %{_unitdir}/%{name}-daemon.service
@@ -270,7 +270,7 @@ fi
 %license COPYING
 %{_bindir}/%{name}-gtk
 %{_datadir}/applications/%{name}-gtk.desktop
-%{_mandir}/man1/%{name}-gtk.1*
+%{_mandir}/man1/%{name}-gtk.1%{?ext_man}
 # Update-Alternative managed
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
@@ -287,7 +287,7 @@ fi
 %license COPYING
 %{_bindir}/%{name}-qt
 %{_datadir}/applications/%{name}-qt.desktop
-%{_mandir}/man1/%{name}-qt.1*
+%{_mandir}/man1/%{name}-qt.1%{?ext_man}
 # Update-Alternative managed
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
