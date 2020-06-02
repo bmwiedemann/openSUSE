@@ -1,7 +1,7 @@
 #
 # spec file for package python-zake
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ URL:            https://github.com/yahoo/Zake
 Source:         https://files.pythonhosted.org/packages/source/z/zake/zake-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/yahoo/Zake/master/LICENSE
 BuildRequires:  %{python_module kazoo}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module testtools}
@@ -55,7 +55,7 @@ cp %{SOURCE1} .
 %check
 # Skip upstream failing test_child_watch_no_create
 # Skip test_clients_counter that is absolutely random
-%python_expand nosetests-%{$python_bin_suffix} -v -e '(test_child_watch_no_create|test_clients_counter)'
+%pytest -k 'not (test_child_watch_no_create or test_clients_counter)'
 
 %files %{python_files}
 %license LICENSE

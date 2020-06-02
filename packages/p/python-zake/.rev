@@ -80,4 +80,12 @@
     <comment>- Skip one randomly failing test</comment>
     <requestid>713081</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>50cc1d543a4b351ac98ba558f75baa36</srcmd5>
+    <version>0.2.2</version>
+    <time>1591101346</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810157</requestid>
+  </revision>
 </revisionlist>
