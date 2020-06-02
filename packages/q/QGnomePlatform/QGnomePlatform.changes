@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  2 07:12:49 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.6.1:
+  + Preview support in file dialog.
+  + Prioritize Adwaita-dark theme for all themes ending with
+    "-dark" suffix.
+  + Use Qt's default palette.
+- Add QGnomePlatform-qt-5.15.patch: Fix build with Qt 5.15.
+
+-------------------------------------------------------------------
 Fri Jan 17 08:50:25 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
 
 - Install automatically with gnome-session and libqt5 base

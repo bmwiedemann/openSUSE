@@ -1,7 +1,7 @@
 #
 # spec file for package QGnomePlatform
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright © 2016      Yuriy Gorodilin <yurg27@gmail.com>
 # Copyright © 2018–2019 Markus S. <kamikazow@opensuse.org>
 #
@@ -19,7 +19,7 @@
 
 
 Name:           QGnomePlatform
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        A better Qt application inclusion in GNOME
 # Most code is LGPL-2.1-or-later but qgtk3dialoghelpers files forked from
@@ -28,8 +28,9 @@ License:        LGPL-3.0-only OR GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://github.com/FedoraQt/QGnomePlatform/
 Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM QGnomePlatform-qt-5.15.patch dimstar@opensuse.org -- Fix build with Qt 5.15
+Patch0:         QGnomePlatform-qt-5.15.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libQt5Core-private-headers-devel
@@ -38,11 +39,11 @@ BuildRequires:  libQt5PlatformSupport-private-headers-devel
 BuildRequires:  libqt5-qtwayland-devel
 BuildRequires:  libqt5-qtwayland-private-headers-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libinput)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xrandr)
