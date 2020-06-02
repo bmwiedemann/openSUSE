@@ -17,7 +17,7 @@
 
 
 Name:           feh
-Version:        3.4
+Version:        3.4.1
 Release:        0
 Summary:        X11 image viewer
 License:        MIT AND LGPL-2.0-or-later
@@ -79,7 +79,6 @@ gcc %{optflags} -fwhole-program jpegexiforient.c -o jpegexiforient
 rm -rf "%{buildroot}%{_datadir}/doc"
 
 install -D -m0755 jpegexiforient %{buildroot}%{_bindir}/jpegexiforient
-
 
 %files
 %license COPYING

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  1 08:33:22 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.4.1
+  * Fix lossless JPG rotate not being lossless when using feh with Imlib2 v1.6 or later
+
+-------------------------------------------------------------------
 Wed May  6 10:40:35 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.4:
