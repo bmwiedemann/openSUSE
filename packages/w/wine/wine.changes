@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat May 30 09:24:38 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- added ocl-icd-devel for opencl
+
+-------------------------------------------------------------------
+Sat May 23 09:02:12 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 5.9 development release
+  - Major progress on the WineD3D Vulkan backend.
+  - Initial support for splitting dlls into PE and Unix parts.
+  - Support for generating PDB files when building PE dlls.
+  - Timestamp updates in the Kernel User Shared Data.
+  - Various bug fixes.
+- update staging to 5.9 release
+
+-------------------------------------------------------------------
 Sat May  9 06:35:09 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 5.8 development release

@@ -3545,4 +3545,20 @@
 - remove patch.txt: was upstream fix</comment>
     <requestid>802002</requestid>
   </revision>
+  <revision rev="308" vrev="1">
+    <srcmd5>676d94ca6bff8679e7dab5cb7da6a32a</srcmd5>
+    <version>5.9</version>
+    <time>1591101423</time>
+    <user>dimstar_suse</user>
+    <comment>- added ocl-icd-devel for opencl
+
+- Updated to 5.9 development release
+  - Major progress on the WineD3D Vulkan backend.
+  - Initial support for splitting dlls into PE and Unix parts.
+  - Support for generating PDB files when building PE dlls.
+  - Timestamp updates in the Kernel User Shared Data.
+  - Various bug fixes.
+- update staging to 5.9 release</comment>
+    <requestid>810358</requestid>
+  </revision>
 </revisionlist>

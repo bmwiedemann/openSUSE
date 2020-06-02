@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 5.8
-Version:        5.8
+%define realver 5.9
+Version:        5.9
 Release:        0
 
 %if "%{flavor}" != ""
@@ -84,6 +84,7 @@ Recommends:     wine-mp3
 %endif
 BuildRequires:  SDL2-devel
 BuildRequires:  ncurses-devel
+BuildRequires:  ocl-icd-devel
 BuildRequires:  openal-soft-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  openssl-devel
@@ -157,7 +158,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc %arm aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 5.8
+%define staging_version 5.9
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
