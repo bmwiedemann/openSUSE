@@ -17,18 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} > 1500
-%define skip_python2 1
-%bcond_with python2
-%else
 %bcond_without python2
-%endif
 Name:           python-openapi-core
 Version:        0.13.3
 Release:        0
 Summary:        Adds client-side and server-side support for the oas3
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/p1c2u/openapi-core
 Source:         https://github.com/p1c2u/openapi-core/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Flask}
@@ -40,7 +34,7 @@ BuildRequires:  %{python_module more-itertools >= 5.0.0}
 BuildRequires:  %{python_module openapi-schema-validator}
 BuildRequires:  %{python_module openapi-spec-validator}
 BuildRequires:  %{python_module parse >= 1.14.0}
-BuildRequires:  %{python_module pytest < 5}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module strict-rfc3339}
@@ -88,7 +82,8 @@ export LANG=en_US.UTF-8
 %check
 sed -i '/addopts/d' setup.cfg
 export LANG=en_US.UTF-8
-%pytest tests/unit
+# test_string_format_invalid_value pytest5 incompatible, fixed in git by major rewrite
+%pytest tests/unit -k 'not test_string_format_invalid_value'
 
 %files %{python_files}
 %license LICENSE

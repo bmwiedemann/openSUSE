@@ -80,4 +80,12 @@
     https://github.com/p1c2u/openapi-core/releases</comment>
     <requestid>790004</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>df5c22145f23a58b9ff89e58eef8e54e</srcmd5>
+    <version>0.13.3</version>
+    <time>1591101350</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip one test so we can use pytest5</comment>
+    <requestid>810161</requestid>
+  </revision>
 </revisionlist>
