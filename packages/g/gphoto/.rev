@@ -412,4 +412,13 @@
   - bugfixes</comment>
     <requestid>706977</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>258b311d6fc45dc3f8c19dd81c7f5d9c</srcmd5>
+    <version>2.5.23</version>
+    <time>1591101652</time>
+    <user>dimstar_suse</user>
+    <comment>- fix-exif.patch: fix build with exif 0.6.22, which spells FlashPixversion
+  now FlashpixVersion</comment>
+    <requestid>810590</requestid>
+  </revision>
 </revisionlist>

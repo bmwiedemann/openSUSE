@@ -1,7 +1,7 @@
 #
 # spec file for package gphoto
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,15 +23,16 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  pkg-config
 BuildRequires:  popt-devel
 BuildRequires:  readline-devel
-Url:            http://gphoto.sourceforge.net
+URL:            http://gphoto.sourceforge.net
 Summary:        A Digital Camera Utility
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Hardware/Camera
 Version:        2.5.23
 Release:        0
 Source0:        https://downloads.sourceforge.net/project/gphoto/gphoto/%{version}/%{name}2-%{version}.tar.bz2
 Source1:        https://downloads.sourceforge.net/project/gphoto/gphoto/%{version}/%{name}2-%{version}.tar.bz2.asc
 Source2:        %name.keyring
+Patch0:         fix-exif.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -49,6 +50,7 @@ gphoto2 --list-cameras
 
 %prep
 %setup -q -n gphoto2-%{version}
+%patch0 -p1
 
 %build
 pkg-config --libs libgphoto2

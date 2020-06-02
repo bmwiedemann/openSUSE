@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 31 16:41:51 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- fix-exif.patch: fix build with exif 0.6.22, which spells FlashPixversion
+  now FlashpixVersion
+
+-------------------------------------------------------------------
 Sun Jun  2 16:40:32 UTC 2019 - Marcus Meissner <meissner@suse.com>
 
 - updated to 2.5.23 release
