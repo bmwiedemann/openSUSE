@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu May 28 16:13:31 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to 1.11.0:
+  agent:
+    * protocols: fix client unit tests for go 1.13
+    * agent: signal from keyboard must not be fatal
+    * agent: fix epoll fd left in the kata-agent when exec process
+    * agent: add configurable container pipe size cmdline option
+    * agent: add kernel cmdline parameter to enable or disable cgroups v2
+    * agent: support pmem/nvdimm hotplug
+    * agent: parse kernel command line as soon as possible
+    * agent: Remove dev from pciDeviceMap when device is unplugged
+    * build: Add support to strip the agent golang binary
+    * agent: don't receive signals from stdin
+    * protocols: client: Add timeout for hybrid vsock handshake
+    * mount: Use "virtiofs" instead of "virtio_fs"
+    * agent-client: include log in agent client
+    * FC: Add new vsock connection handshake
+    * build: Update CentOS version for the Dockerfile
+    * ipv6: Add flag IFA_F_NODAD for ipv6 address.
+    * ipv6: Add support for ipv6
+    * Revert: client.go: HybridVSockDialer: Change Read EOT to recv peek
+    * Revert: client.go: HybridVSockDialer: Check return size n of unix.Recvfrom
+    * Revert: client.go: HybridVSockDialer: Close dup fd after receive packet
+    * test: change import path for NetworkInterface
+    * vendor: Update vendoring for libcontainer.
+    * agent: Fix mem-hotplug on x86 when ARCH_MEMORY_PROBE is set
+    * vendor: update golang/sys
+    * client.go: HybridVSockDialer: Close dup fd after receive packet
+  osbuilder:
+    * tests: deleting when tests failed
+    * image_builder: Force mount_dir to be created in $TMPDIR
+    * scripts: set a default path to the yq binary
+    * rust-agent: Separate the build up of rust-agent and go-agent
+    * rootfs: remove RUST_SRC_PATH
+    * rootfs: Don't overwrite /sbin/init if it already exists
+    * initrd-builder: Don't error if run as non-root
+    * image-builder: Add NSDAX_BIN for passing in compiled nsdax tool
+    * image_builder: Reduce the boundary mb for reducing image size on arm64
+    * rootfs-builder: build rust agent using osbuilder
+    * image-builder: make docker runtime configurable
+    * image_builder: Remove nsdax binary after its usage
+- removed patch agent_memory-hotplug-probe.patch (merged upstream)
+
+-------------------------------------------------------------------
 Mon Jan 27 17:44:14 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - kata-agent: add patch agent_memory-hotplug-probe.patch to address
