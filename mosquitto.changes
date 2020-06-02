@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue May 26 06:36:17 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.10
+  Broker:
+  * Report invalid bridge prefix+pattern combinations at config
+    parsing time rather than letting the bridge fail later.
+  * Fix `mosquitto_passwd -b` not updating passwords for existing
+    users correctly. Creating a new user with `-b` worked without
+    problem.
+  * Fix memory leak when connecting clients rejected.
+  * Don't disconnect clients that are already disconnected. This
+    prevents the session expiry being extended on SIGHUP.
+  * Fix support for openssl 3.0.
+  * Fix check when loading persistence file of a different version
+    than the native version.
+  * Fix possible assert crash associated with bridge reconnecting
+    when compiled without epoll support.
+  Client library:
+  * Don't treat an unexpected PUBACK, PUBREL, or PUBCOMP as a
+    fatal error.
+  * Fix support for openssl 3.0.
+  * Fix memory leaks from multiple calls to
+    `mosquitto_lib_init()`/`mosquitto_lib_cleanup()`.
+  * Fix documentation on return code of `mosquitto_lib_init()`
+    for Windows.
+  Clients:
+  * Fix mosquitto_sub %j or %J not working on Windows.
+  Build:
+  * Various fixes for building with <C99 support.
+
+-------------------------------------------------------------------
 Sun Mar  1 09:34:15 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6.9
