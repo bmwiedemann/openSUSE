@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue May 19 10:00:23 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Fix baselibs.conf following the sover bump
+
+-------------------------------------------------------------------
+Mon Apr  6 19:36:39 UTC 2020 - Vinzenz Vietzke <vinz@vinzv.de>
+
+- Update to 1.2.1. Changes since 1.1.0:
+  * QXmppRegistrationManager: Fix failed and succeeded signals are both emitted
+    on success
+  * QXmppMessageReceiptManager: Fix receipts are sent on error messages
+  * QXmppVCardManager: Fix clientVCardReceived() not emitted when IQ is from the
+    bare JID of the user
+  * QXmppRosterManager: Fix 'ask' attribute is included when renaming item
+  * QXmppRosterIq: Add missing implementation of the copy constructor
+  * Implement XEP-0077: In-band registration:
+    * Add registration manager with full unit tests
+    * Add `registered` and `remove` to the IQ
+  * Implement XEP-0231: Bits of Binary
+  * Add `QXmppClient::indexOfExtension<T>()`
+  * Add QXmppStartTlsPacket to replace fixed XML data
+  * Move TLS code to private QXmppTlsManager
+  * Add private QXmppInternalClientExtensions to access private part of the
+    client
+  * Add utility methods to QXmppRegisterIq to create common requests
+  * QXmppMucManager: Make it possible to handle stanzas not handled by the
+    manager
+  * Only send Client State Indication (CSI) states when connected
+  * Fix no documentation is generated for QXmppStanza::Error and
+    QXmppStreamFeatures
+  * Fix some doxygen warnings and undocumented Q_PROPERTYs
+  * Replace deprecated Q_FOREACH
+  * Replace deprecated Q_ENUMS with Q_ENUM
+  * Replace deprecated signal/slots syntax
+  * Switch to Ubuntu Bionic for Travis-CI builds
+  * Use QSharedDataPointers for QXmppRegisterIq, QXmppPubSubIq,
+    QXmppDiscoveryIq, QXmppMam{Query,Result}Iq, QXmppStreamFeatures
+  * Refactor QXmppPubSubIq and add missing tests
+  * Refactor QXmppPresence and add missing tests
+  * Replace manual xmlns writing by writeDefaultNamespace()
+  * Use QT_VERSION_CHECK to generate QXMPP_VERSION
+  * Add clang-format file
+- Fixed shlib-policy-name-error libqxmpp2 (sover bump up to 3).
+
+-------------------------------------------------------------------
 Mon Nov 18 05:20:47 UTC 2019 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Update to 1.1.0. Changes since 1.0.0:
