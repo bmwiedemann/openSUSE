@@ -29,9 +29,9 @@ BuildRequires:  %{python_module WebOb >= 1.2.3}
 BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module netaddr >= 0.7.12}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pecan}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module simplegeneric}
@@ -63,7 +63,7 @@ with focus on extensibility, framework-independence and improved type handling.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec %{_bindir}/nosetests -v tests/pecantest tests/rest
+%pytest tests/pecantest tests/rest
 
 %files %{python_files}
 %license LICENSE

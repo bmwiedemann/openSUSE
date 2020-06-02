@@ -199,4 +199,12 @@
   * Removed older version of python added 3.5</comment>
     <requestid>798867</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>5e8d0bd7f19deec4fb88260fe89c4823</srcmd5>
+    <version>0.10.0</version>
+    <time>1591101369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810188</requestid>
+  </revision>
 </revisionlist>
