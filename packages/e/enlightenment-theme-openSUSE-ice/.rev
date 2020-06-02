@@ -51,4 +51,13 @@
 </comment>
     <requestid>761079</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b4d8f5a52a28421e5b31725ae7e0f141</srcmd5>
+    <version>20200529</version>
+    <time>1591101294</time>
+    <user>dimstar_suse</user>
+    <comment>- 20200529 - efl 1.24
+</comment>
+    <requestid>810214</requestid>
+  </revision>
 </revisionlist>

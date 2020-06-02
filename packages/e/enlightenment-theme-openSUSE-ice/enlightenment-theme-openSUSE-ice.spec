@@ -19,7 +19,7 @@
 %define icon_theme_name openSUSE-e-X-Ice
 
 Name:           enlightenment-theme-openSUSE-ice
-Version:        20200101
+Version:        20200529
 Release:        0
 Summary:        A light openSUSE theme modified to suite the openSUSE 13.2 artwork
 License:        BSD-2-Clause AND LGPL-2.1-only AND CC-BY-SA-3.0
@@ -51,18 +51,18 @@ theme
 
 %build
 ./build-darkmod.sh --epkg
-cp enlightenment-elementary/openSUSE-ice.edj .
+cp build/e/openSUSE-ice.edj .
 cp licenses-authors/* .
-cp openSUSE-ice-icons/README README.icons
+cp build/icons/openSUSE-ice-icons/README README.icons
 
 %install
 install -m 0755 -d %{buildroot}%{_datadir}/elementary/themes
 install -m 0644 -t %{buildroot}%{_datadir}/elementary/themes openSUSE-ice.edj
 
 install -m 0755 -d %{buildroot}%{_datadir}/icons/%{icon_theme_name}
-install -m 0644 -t %{buildroot}%{_datadir}/icons/%{icon_theme_name} openSUSE-ice-icons/index.theme
+install -m 0644 -t %{buildroot}%{_datadir}/icons/%{icon_theme_name} build/icons/openSUSE-ice-icons/index.theme
 
-pushd openSUSE-ice-icons
+pushd build/icons/openSUSE-ice-icons
 for d in */ ; do
     install -m 0755 -d %{buildroot}%{_datadir}/icons/%{icon_theme_name}/$d
     for in in $d/*/ ; do
