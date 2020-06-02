@@ -25,6 +25,8 @@ License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://gnome.org/
 Source0:        https://download.gnome.org/sources/gsettings-desktop-schemas/3.36/%{name}-%{version}.tar.xz
+# SOURCE-FIX-SLE 00_org.gnome.desktop.peripherals.gschema.override bsc#1171593 alynx.zhou@suse.com -- Change touchpad click method to default
+Source1:        00_org.gnome.desktop.peripherals.gschema.override
 
 # PATCH-FEATURE-OPENSUSE gsettings-desktop-schemas-fate324570-Add-key-for-GDM-background-configuration.patch fate#324570, glgo#GNOME/gnome-shell#680 qkzhu@suse.com -- This key is used by gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
 Patch0:         gsettings-desktop-schemas-fate324570-Add-key-for-GDM-background-configuration.patch
@@ -59,6 +61,9 @@ This package contains development files.
 %prep
 %setup -q
 %patch0 -p1
+%if 0%{?sle_version}
+cp -a %{SOURCE1} .
+%endif
 translation-update-upstream po %{name}
 
 %build
@@ -68,6 +73,9 @@ translation-update-upstream po %{name}
 
 %install
 %meson_install
+%if 0%{?sle_version}
+install -D -m0644 00_org.gnome.desktop.peripherals.gschema.override %{buildroot}%{_datadir}/glib-2.0/schemas/00_org.gnome.desktop.peripherals.gschema.override
+%endif
 %find_lang %{name} %{?no_lang_C}
 
 %files
@@ -103,6 +111,9 @@ translation-update-upstream po %{name}
 %{_datadir}/glib-2.0/schemas/org.gnome.system.location.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.system.proxy.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.peripherals.gschema.xml
+%if 0%{?sle_version}
+%{_datadir}/glib-2.0/schemas/00_org.gnome.desktop.peripherals.gschema.override
+%endif
 %dir %{_datadir}/GConf
 %dir %{_datadir}/GConf/gsettings
 %{_datadir}/GConf/gsettings/gsettings-desktop-schemas.convert
