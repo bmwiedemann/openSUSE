@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun  1 13:31:02 UTC 2020 - pgajdos@suse.com
+
+- version update to 3.0.3
+  * no upstream changelog found
+- run testsuite, use %pytest
+- added patches
+  https://github.com/JohnVinyard/featureflow/pull/11
+  + python-featureflow-no-unittest2.patch
+
+-------------------------------------------------------------------
 Tue Jul 23 20:33:10 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 3.0.1

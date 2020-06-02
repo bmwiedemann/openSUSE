@@ -1,0 +1,318 @@
+Index: featureflow-3.0.1/featureflow.egg-info/requires.txt
+===================================================================
+--- featureflow-3.0.1.orig/featureflow.egg-info/requires.txt	2019-03-07 03:31:14.000000000 +0100
++++ featureflow-3.0.1/featureflow.egg-info/requires.txt	2020-06-01 15:07:06.290277032 +0200
+@@ -1,6 +1,5 @@
+ dill
+ nose
+-unittest2
+ certifi==2017.7.27.1
+ requests
+ lmdb
+Index: featureflow-3.0.1/featureflow/test_bytestream.py
+===================================================================
+--- featureflow-3.0.1.orig/featureflow/test_bytestream.py	2019-03-07 03:24:36.000000000 +0100
++++ featureflow-3.0.1/featureflow/test_bytestream.py	2020-06-01 15:07:53.898542286 +0200
+@@ -1,5 +1,5 @@
+ from .bytestream import BytesWithTotalLength, ByteStream, ZipWrapper, iter_zip
+-import unittest2
++import unittest
+ import sys
+ import tempfile
+ import subprocess
+@@ -12,7 +12,7 @@ import zipfile
+ from .util import wait_for_http_server
+ 
+ 
+-class BytestreamTests(unittest2.TestCase):
++class BytestreamTests(unittest.TestCase):
+     def setUp(self):
+         self.HasUri = namedtuple('HasUri', ['uri'])
+         self.bytestream = ByteStream(chunksize=3)
+@@ -118,7 +118,7 @@ class BytestreamTests(unittest2.TestCase
+         self.assertEqual(self.expected, results)
+ 
+ 
+-class BytesWithTotalLengthTests(unittest2.TestCase):
++class BytesWithTotalLengthTests(unittest.TestCase):
+     def test_left_add(self):
+         self.assertEqual(
+             b'fakeblah', BytesWithTotalLength(b'fake', 100) + b'blah')
+@@ -138,7 +138,7 @@ class BytesWithTotalLengthTests(unittest
+         self.assertEqual(b'blahfake', x)
+ 
+ 
+-class IterZipTests(unittest2.TestCase):
++class IterZipTests(unittest.TestCase):
+     def test_iter_zip_yields_open_zip_files(self):
+         bio = BytesIO()
+         filename = 'test.dat'
+Index: featureflow-3.0.1/featureflow/test_datawriter.py
+===================================================================
+--- featureflow-3.0.1.orig/featureflow/test_datawriter.py	2019-03-02 04:03:23.000000000 +0100
++++ featureflow-3.0.1/featureflow/test_datawriter.py	2020-06-01 15:10:38.471459240 +0200
+@@ -1,9 +1,9 @@
+-import unittest2
++import unittest
+ from .datawriter import BytesIODataWriter
+ from .encoder import IdentityEncoder
+ 
+ 
+-class StringIODataWriterTests(unittest2.TestCase):
++class StringIODataWriterTests(unittest.TestCase):
+     def test_overflow(self):
+         buffer_size_limit = 128
+         writer = BytesIODataWriter(
+Index: featureflow-3.0.1/featureflow/test_eventlog.py
+===================================================================
+--- featureflow-3.0.1.orig/featureflow/test_eventlog.py	2019-03-02 04:03:23.000000000 +0100
++++ featureflow-3.0.1/featureflow/test_eventlog.py	2020-06-01 15:08:30.614746857 +0200
+@@ -1,4 +1,4 @@
+-import unittest2
++import unittest
+ from .eventlog import InMemoryChannel, EventLog
+ from .model import BaseModel
+ from .persistence import PersistenceSettings
+@@ -10,7 +10,7 @@ from .data import UuidProvider, StringDe
+ import json
+ 
+ 
+-class EventLogTests(unittest2.TestCase):
++class EventLogTests(unittest.TestCase):
+     def setUp(self):
+         self._dir = tempfile.mkdtemp()
+ 
+Index: featureflow-3.0.1/featureflow/test_integration.py
+===================================================================
+--- featureflow-3.0.1.orig/featureflow/test_integration.py	2019-03-02 04:03:23.000000000 +0100
++++ featureflow-3.0.1/featureflow/test_integration.py	2020-06-01 15:08:52.230867288 +0200
+@@ -1,7 +1,7 @@
+ import requests
+ import http.client
+ from .util import wait_for_http_server
+-import unittest2
++import unittest
+ from collections import defaultdict
+ import random
+ from requests.exceptions import HTTPError
+@@ -1761,7 +1761,7 @@ class BaseTest(object):
+         self.assertEqual(data_source['lorem'].lower(), b''.join(doc.lowercase))
+ 
+ 
+-class InMemoryTest(BaseTest, unittest2.TestCase):
++class InMemoryTest(BaseTest, unittest.TestCase):
+     def setUp(self):
+         class Settings(PersistenceSettings):
+             id_provider = UuidProvider()
+@@ -1771,7 +1771,7 @@ class InMemoryTest(BaseTest, unittest2.T
+         self.Settings = Settings
+ 
+ 
+-class FileSystemTest(BaseTest, unittest2.TestCase):
++class FileSystemTest(BaseTest, unittest.TestCase):
+     def setUp(self):
+         self._dir = mkdtemp()
+ 
+@@ -1787,7 +1787,7 @@ class FileSystemTest(BaseTest, unittest2
+         rmtree(self._dir)
+ 
+ 
+-class LmdbTest(BaseTest, unittest2.TestCase):
++class LmdbTest(BaseTest, unittest.TestCase):
+     def setUp(self):
+         self._dir = mkdtemp()
+ 
+Index: featureflow-3.0.1/featureflow/test_lmdbstore.py
+===================================================================
+--- featureflow-3.0.1.orig/featureflow/test_lmdbstore.py	2019-03-02 04:03:23.000000000 +0100
++++ featureflow-3.0.1/featureflow/test_lmdbstore.py	2020-06-01 15:09:31.819087872 +0200
+@@ -1,4 +1,4 @@
+-import unittest2
++import unittest
+ from .lmdbstore import LmdbDatabase
+ from uuid import uuid4
+ from .data import StringDelimitedKeyBuilder
+@@ -45,7 +45,7 @@ def db_count(d):
+     return len(list(EphemeralLmdb(dir=d).db.iter_ids()))
+ 
+ 
+-class LmdbDatabaseTests(unittest2.TestCase):
++class LmdbDatabaseTests(unittest.TestCase):
+     def setUp(self):
+         self.value = os.urandom(1000)
+         self.init_database()
+Index: featureflow-3.0.1/featureflow/test_multiprocessing.py
+===================================================================
+--- featureflow-3.0.1.orig/featureflow/test_multiprocessing.py	2019-03-02 04:03:23.000000000 +0100
++++ featureflow-3.0.1/featureflow/test_multiprocessing.py	2020-06-01 15:09:12.802981916 +0200
+@@ -1,4 +1,4 @@
+-import unittest2
++import unittest
+ from .feature import Feature, JSONFeature
+ from .lmdbstore import LmdbDatabase
+ from .model import BaseModel
+@@ -28,7 +28,7 @@ def get_count(_):
+     return len(list(D.database.iter_ids()))
+ 
+ 
+-class MultiProcessTests(unittest2.TestCase):
++class MultiProcessTests(unittest.TestCase):
+     def test_can_list_ids_from_multiple_processes(self):
+         D.process(stream='Here is some text')
+         D.process(stream='Here is some more')
+Index: featureflow-3.0.1/featureflow/test_nmpy.py
+===================================================================
+--- featureflow-3.0.1.orig/featureflow/test_nmpy.py	2019-03-02 04:03:23.000000000 +0100
++++ featureflow-3.0.1/featureflow/test_nmpy.py	2020-06-01 15:10:01.383252598 +0200
+@@ -1,4 +1,4 @@
+-import unittest2
++import unittest
+ 
+ try:
+     import numpy as np
+@@ -94,13 +94,13 @@ class BaseNumpyTest(object):
+             ('y', 'a32')])
+ 
+ 
+-class GreedyNumpyTest(BaseNumpyTest, unittest2.TestCase):
++class GreedyNumpyTest(BaseNumpyTest, unittest.TestCase):
+     def _register_database(self, settings_class):
+         return settings_class.clone(
+             database=InMemoryDatabase(key_builder=settings_class.key_builder))
+ 
+ 
+-class GreedyNumpyOnDiskTest(BaseNumpyTest, unittest2.TestCase):
++class GreedyNumpyOnDiskTest(BaseNumpyTest, unittest.TestCase):
+     def _register_database(self, settings_class):
+         self._dir = mkdtemp()
+         return settings_class.clone(database=FileSystemDatabase(
+@@ -111,7 +111,7 @@ class GreedyNumpyOnDiskTest(BaseNumpyTes
+         rmtree(self._dir)
+ 
+ 
+-class GreedyNumpyLmdbTest(BaseNumpyTest, unittest2.TestCase):
++class GreedyNumpyLmdbTest(BaseNumpyTest, unittest.TestCase):
+     def _register_database(self, settings_class):
+         self._dir = mkdtemp()
+         return settings_class.clone(database=LmdbDatabase(
+@@ -123,7 +123,7 @@ class GreedyNumpyLmdbTest(BaseNumpyTest,
+         rmtree(self._dir)
+ 
+ 
+-class StreamingNumpyTest(BaseNumpyTest, unittest2.TestCase):
++class StreamingNumpyTest(BaseNumpyTest, unittest.TestCase):
+     def _register_database(self, settings_class):
+         return settings_class.clone(
+             database=InMemoryDatabase(key_builder=settings_class.key_builder))
+@@ -147,7 +147,7 @@ class StreamingNumpyTest(BaseNumpyTest,
+         return np.concatenate(list(data))
+ 
+ 
+-class StreamingNumpyOnDiskTest(BaseNumpyTest, unittest2.TestCase):
++class StreamingNumpyOnDiskTest(BaseNumpyTest, unittest.TestCase):
+     def _register_database(self, settings_class):
+         self._dir = mkdtemp()
+         return settings_class.clone(database=FileSystemDatabase(
+@@ -176,7 +176,7 @@ class StreamingNumpyOnDiskTest(BaseNumpy
+         return np.concatenate(list(data))
+ 
+ 
+-class StreamingNumpyLmdbTest(BaseNumpyTest, unittest2.TestCase):
++class StreamingNumpyLmdbTest(BaseNumpyTest, unittest.TestCase):
+     def _register_database(self, settings_class):
+         self._dir = mkdtemp()
+         return settings_class.clone(database=LmdbDatabase(
+Index: featureflow-3.0.1/featureflow/test_objectstorage.py
+===================================================================
+--- featureflow-3.0.1.orig/featureflow/test_objectstorage.py	2019-03-02 04:03:23.000000000 +0100
++++ featureflow-3.0.1/featureflow/test_objectstorage.py	2020-06-01 15:08:13.578651936 +0200
+@@ -1,10 +1,10 @@
+-import unittest2
++import unittest
+ from .objectstore import WriteStream
+ import http.client
+ from collections import namedtuple
+ 
+ 
+-class WriteStreamTests(unittest2.TestCase):
++class WriteStreamTests(unittest.TestCase):
+     def test_write_stream_does_not_put_zero_bytes(self):
+         class TestWriteStream(WriteStream):
+             def __init__(self):
+Index: featureflow-3.0.1/featureflow/test_persistence.py
+===================================================================
+--- featureflow-3.0.1.orig/featureflow/test_persistence.py	2019-03-02 04:03:23.000000000 +0100
++++ featureflow-3.0.1/featureflow/test_persistence.py	2020-06-01 15:10:21.555364987 +0200
+@@ -1,4 +1,4 @@
+-import unittest2
++import unittest
+ from .persistence import simple_in_memory_settings
+ from .bytestream import ByteStream, ByteStreamFeature
+ from .feature import Feature, TextFeature
+@@ -6,7 +6,7 @@ from .model import BaseModel
+ from io import BytesIO
+ 
+ 
+-class SimpleInMemorySettingsDecoratorTests(unittest2.TestCase):
++class SimpleInMemorySettingsDecoratorTests(unittest.TestCase):
+     def test_can_process_document_using_decorated_class(self):
+         @simple_in_memory_settings
+         class Document(BaseModel):
+Index: featureflow-3.0.1/requirements.txt
+===================================================================
+--- featureflow-3.0.1.orig/requirements.txt	2017-05-13 04:26:57.000000000 +0200
++++ featureflow-3.0.1/requirements.txt	2020-06-01 15:06:55.930219258 +0200
+@@ -1,5 +1,4 @@
+ redis
+ nose
+-unittest2
+ requests
+-lmdb
+\ No newline at end of file
++lmdb
+Index: featureflow-3.0.1/setup.py
+===================================================================
+--- featureflow-3.0.1.orig/setup.py	2020-06-01 15:06:14.825989932 +0200
++++ featureflow-3.0.1/setup.py	2020-06-01 15:07:25.566384433 +0200
+@@ -30,7 +30,6 @@ setup(
+     install_requires=[
+         'dill',
+         'nose',
+-        'unittest2',
+         'certifi>=2017.7.27.1',
+         'requests',
+         'lmdb',
+Index: featureflow-3.0.1/featureflow/test_data.py
+===================================================================
+--- featureflow-3.0.1.orig/featureflow/test_data.py	2019-03-02 04:03:23.000000000 +0100
++++ featureflow-3.0.1/featureflow/test_data.py	2020-06-01 15:15:05.356946036 +0200
+@@ -1,4 +1,4 @@
+-import unittest2
++import unittest
+ from uuid import uuid4
+ from .data import \
+     InMemoryDatabase, UserSpecifiedIdProvider, FileSystemDatabase, \
+@@ -6,7 +6,7 @@ from .data import \
+ import shutil
+ 
+ 
+-class InMemoryDatabaseTest(unittest2.TestCase):
++class InMemoryDatabaseTest(unittest.TestCase):
+     def setUp(self):
+         self.db = InMemoryDatabase()
+ 
+@@ -35,12 +35,12 @@ class InMemoryDatabaseTest(unittest2.Tes
+         self.assertEqual(b'test data2', rs.read())
+ 
+ 
+-class UserSpecifiedIdProviderTest(unittest2.TestCase):
++class UserSpecifiedIdProviderTest(unittest.TestCase):
+     def test_raises_when_no_key_is_provided(self):
+         self.assertRaises(ValueError, lambda: UserSpecifiedIdProvider())
+ 
+ 
+-class FileSystemDatabaseTests(unittest2.TestCase):
++class FileSystemDatabaseTests(unittest.TestCase):
+     def setUp(self):
+         self._key_builder = StringDelimitedKeyBuilder()
+         self._path = '/tmp/{path}'.format(path=uuid4().hex)
