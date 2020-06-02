@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu May  7 08:30:50 UTC 2020 - thod_@gmx.de
+
+- Fix inkscape-split-extensions-extra.py for older python versions.
+
+-------------------------------------------------------------------
+Tue May  4 15:29:43 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.0:
+  * See https://inkscape.org/release/inkscape-1.0/
+- Re-enable ImageMagick support.
+- Replace inkscape-split-extensions-extra.sh with
+  inkscape-split-extensions-extra.py, adapting for 1.0.
+- Add python3-numpy and python3-scour to the list of extra
+  dependencies as only extra extensions need them.
+- Stop altering Name and GenericName from the .desktop file:
+  original values are fine.
+- Remove
+  0001-Run-python-script-for-translations-with-Python-3.patch:
+  merged upstream.
+- Remove build_internal_libraries_as_static.patch: merged upstream.
+- Remove f5e0ea893f34_extensions_python3_compatibility.patch:
+  merged upstream.
+- Remove fix_install_targets.patch: fixed upstream.
+- Remove inkscape-fix-for-poppler-0.76.patch: merged upstream.
+- Remove inkscape-fix-for-poppler-0.82.patch: merged upstream.
+- Remove inkscape-fix-for-poppler-0.83.patch: merged upstream.
+- Remove inkscape-packages.patch: no longer needed.
+- Remove mr_568_extensions_python3_compatibility.patch: merged
+  upstream.
+- Remove mr_582_extensions_python3_compatibility.patch: merged
+  upstream.
+- Remove obsolete hacks from the spec file and add new ones.
+- Remove the inkscape-extensions-dia and
+  inkscape-extensions-skencil packages: the extensions were
+  removed upstream.
+- Drop the python2 bcond, no practical use without skencil.
+- Drop openSUSE versions prior to Leap 15.x.
+
+-------------------------------------------------------------------
 Thu Apr 16 18:40:23 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fixup files sections for sk1 exclusion.
