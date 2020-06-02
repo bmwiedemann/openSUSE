@@ -1,7 +1,7 @@
 #
 # spec file for package openwsman
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -142,11 +142,11 @@ BuildRequires:  firewall-macros
 %endif
 
 Requires(pre):  sed coreutils grep /bin/hostname
-Version:        2.6.12
+Version:        2.7.0
 Release:        0
 # Mandriva:
 # Release %%mkrel 1
-Url:            http://www.openwsman.org/
+URL:            http://www.openwsman.org/
 Summary:        An implementation of the WS-MAN specification
 License:        BSD-3-Clause AND GPL-2.0-only
 Group:          System/Management
@@ -183,6 +183,17 @@ Web Services for Management (WS-MAN) is a specification for managing
 computer systems using web services standards.
 
 This subpackage provides the common libraries of OpenWSMAN.
+
+%package -n libwsman_client5
+Summary:        An implementation of the WS-MAN specification
+Group:          System/Libraries
+
+%description -n libwsman_client5
+OpenWSMAN is an implementation of the WS-Management protocol stack.
+Web Services for Management (WS-MAN) is a specification for managing
+computer systems using web services standards.
+
+This subpackage provides the client libraries of OpenWSMAN.
 
 %package -n libwsman-devel
 Summary:        Development files for OpenWSMAN
@@ -455,6 +466,9 @@ rm -f %{buildroot}/%{_bindir}/winrs
 %post -n libwsman3 -p /sbin/ldconfig
 %postun -n libwsman3 -p /sbin/ldconfig
 
+%post -n libwsman_client5 -p /sbin/ldconfig
+%postun -n libwsman_client5 -p /sbin/ldconfig
+
 %if 0%{?has_systemd}
 %pre server
 if [ -f /var/lib/systemd/migrated/%{name} ]; then
@@ -508,11 +522,17 @@ rm -f /var/log/wsmand.log
 
 %files -n libwsman3
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog README.md TODO src/plugins/redirect/redirect-README
+%doc AUTHORS ChangeLog README.md TODO src/plugins/redirect/redirect-README
+%license COPYING
 %{_libdir}/libwsman.so.*
-%{_libdir}/libwsman_client.so.*
 %{_libdir}/libwsman_curl_client_transport.so.*
 %dir %{_sysconfdir}/openwsman
+
+%files -n libwsman_client5
+%defattr(-,root,root)
+%doc AUTHORS
+%license COPYING
+%{_libdir}/libwsman_client.so.*
 %config(noreplace) %{_sysconfdir}/openwsman/openwsman_client.conf
 
 %files -n libwsman-devel
