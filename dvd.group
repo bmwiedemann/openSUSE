@@ -48,6 +48,7 @@
     <package name="PackageKit-gstreamer-plugin" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="PackageKit-gtk3-module" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="PackageKit-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="QGnomePlatform" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="WindowMaker" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
     <package name="WindowMaker-themes" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="a2ps" supportstatus="unsupported"/> <!-- reason: dvd:capi4hylafax -->
@@ -1634,7 +1635,7 @@
     <package name="libQt5Test5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libQt5TextToSpeech5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt5VirtualKeyboard5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libQt5WaylandClient5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libQt5WaylandClient5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libQt5WaylandCompositor5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt5WebChannel5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libQt5WebChannel5-imports" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
