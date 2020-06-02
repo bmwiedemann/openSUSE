@@ -1,7 +1,7 @@
 #
 # spec file for package sratom
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sover 0
 Name:           sratom
-Version:        0.6.2
+Version:        0.6.4
 Release:        0
 Summary:        A library for serialising LV2 atoms to/from RDF
 License:        ISC
@@ -79,7 +79,7 @@ python3 ./waf test
 
 %files -n libsratom-0-%{sover}
 %license COPYING
-%doc NEWS README
+%doc NEWS
 %{_libdir}/libsratom-0.so.%{sover}*
 
 %files devel

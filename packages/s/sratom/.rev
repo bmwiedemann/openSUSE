@@ -107,4 +107,13 @@
     <comment>- Use -std=gnu99 to fix compilation of bogus C code</comment>
     <requestid>637394</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e70df2e7261697f5b362ddfc6f668233</srcmd5>
+    <version>0.6.4</version>
+    <time>1591101192</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.6.4
+</comment>
+    <requestid>809146</requestid>
+  </revision>
 </revisionlist>
