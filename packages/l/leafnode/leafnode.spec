@@ -1,7 +1,7 @@
 #
 # spec file for package leafnode
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,20 +43,20 @@ BuildRequires:  libtool
 BuildRequires:  pam-devel
 BuildRequires:  pcre-devel
 BuildRequires:  perl
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
+BuildRequires:  shadow
 BuildRequires:  pkgconfig(systemd)
 Requires(post): coreutils
 Requires(post): systemd
 Requires(postun): systemd
+Requires(pre):  permissions
+Requires(pre):  shadow
 Requires(preun): systemd
-Obsoletes:      leafnode < %{version}
-Provides:       leafnode = %{version}-%{release}
 # Because of moderators(5) manpage, and really these two
 # shouldn't be on one system at once.
 Conflicts:      inn
-BuildRequires:  shadow
-Requires(pre):  permissions
-Requires(pre):  shadow
+Obsoletes:      leafnode < %{version}
+Provides:       leafnode = %{version}-%{release}
 
 %description
 Leafnode is a small NNTP server for leaf sites without permanent
@@ -85,10 +85,10 @@ cp -p %{SOURCE1} .
  --enable-spooldir=%{spooldir} \
  --enable-runas-user=$(id -un) \
  --sysconfdir=%{_sysconfdir}/%{upname} --with-pam
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 # first clean out any prior aborted runs

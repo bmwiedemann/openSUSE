@@ -113,4 +113,12 @@
   * Apparently leafnode-2 as of now builds with autoconf 2.63</comment>
     <requestid>753993</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>5d0d20c388d762157d25af0c9b243b7a</srcmd5>
+    <version>2.0.0+git.1527241185.66da754</version>
+    <time>1591101693</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>810586</requestid>
+  </revision>
 </revisionlist>

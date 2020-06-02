@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  1 09:50:14 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Run through spec-cleaner
+
+-------------------------------------------------------------------
 Wed Dec  4 14:22:18 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add Conflicts: inn, because of conflicting moderators(5)
