@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  2 07:31:15 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Enable -fcommon in order to fix gh#neovim/neovim#12423.
+
+-------------------------------------------------------------------
 Tue May 19 16:42:50 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - For compatibility with Leap 15.2 add libuv-compat.patch

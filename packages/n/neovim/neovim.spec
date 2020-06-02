@@ -111,8 +111,8 @@ HOSTNAME=OBS
 USERNAME=OBS
 mkdir -p build
 pushd build
-export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags}"
+export CFLAGS="%{optflags} -fcommon"
+export CXXFLAGS="%{optflags} -fcommon"
 %{__cmake} .. -DCMAKE_BUILD_TYPE=RelWithDebInfo \
 %ifarch aarch64 ppc64
        -DPREFER_LUA=ON \
