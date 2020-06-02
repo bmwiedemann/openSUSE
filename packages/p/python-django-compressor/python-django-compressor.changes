@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  1 07:34:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable tests until upstream makes them work with new python
+  Beautifulsoup
+
+-------------------------------------------------------------------
 Fri Apr  3 06:58:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Bump the version requirement on django to be >= 2.2
