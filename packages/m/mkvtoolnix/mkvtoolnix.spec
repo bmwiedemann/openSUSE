@@ -17,7 +17,7 @@
 
 
 Name:           mkvtoolnix
-Version:        46.0.0
+Version:        47.0.0
 Release:        0
 Summary:        Tools to Create, Alter, and Inspect Matroska Files
 License:        GPL-2.0-or-later
@@ -36,10 +36,8 @@ BuildRequires:  file-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libboost_date_time-devel >= 1.60.0
 BuildRequires:  libboost_filesystem-devel >= 1.60.0
 BuildRequires:  libboost_headers-devel >= 1.60.0
-BuildRequires:  libboost_regex-devel >= 1.60.0
 BuildRequires:  libboost_system-devel >= 1.60.0
 BuildRequires:  libxslt-tools
 BuildRequires:  nlohmann_json-devel
@@ -55,8 +53,9 @@ BuildRequires:  pkgconfig(Qt5Gui) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Network) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.9.0
+BuildRequires:  pkgconfig(dvdread)
 BuildRequires:  pkgconfig(flac)
-BuildRequires:  pkgconfig(fmt)
+BuildRequires:  pkgconfig(fmt) >= 6.1.0
 BuildRequires:  pkgconfig(libcmark)
 BuildRequires:  pkgconfig(libebml) >= 1.3.7
 BuildRequires:  pkgconfig(libmatroska) >= 1.5.0
