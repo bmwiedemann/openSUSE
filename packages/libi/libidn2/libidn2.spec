@@ -1,7 +1,7 @@
 #
 # spec file for package libidn2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           libidn2
 Version:        2.3.0
 Release:        0
 Summary:        Support for Internationalized Domain Names (IDN) based on IDNA2008
-License:        GPL-3.0-or-later
+License:        GPL-3.0-or-later AND (GPL-2.0-or-later OR LGPL-3.0-or-later)
 URL:            https://www.gnu.org/software/libidn/#libidn2
 Source0:        https://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/libidn/%{name}-%{version}.tar.gz.sig
@@ -34,6 +34,7 @@ An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 
 %package tools
 Summary:        Command line utility to convert Int. Domain Names
+License:        GPL-3.0-or-later
 Requires(post): %{install_info_prereq}
 
 %description tools
@@ -42,6 +43,7 @@ An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 %package -n %{lname}
 Summary:        Support for Internationalized Domain Names (IDN)
 # for lang package
+License:        GPL-2.0-or-later OR LGPL-3.0-or-later
 Provides:       %{name} = %{version}
 
 %description -n %{lname}
@@ -49,6 +51,7 @@ An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 
 %package devel
 Summary:        Include Files and Libraries mandatory for Development
+License:        GPL-3.0-or-later AND (GPL-2.0-or-later OR LGPL-3.0-or-later)
 Requires:       %{lname} = %{version}
 
 %description devel
