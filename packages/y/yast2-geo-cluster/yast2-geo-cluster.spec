@@ -17,7 +17,7 @@
 
 
 Name:           yast2-geo-cluster
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        Configuration of booth
 License:        GPL-2.0-only
