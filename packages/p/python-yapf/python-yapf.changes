@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri May 29 09:31:01 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.30.0
+  * Added `SPACES_AROUND_LIST_DELIMITERS`, `SPACES_AROUND_DICT_DELIMITERS`,
+    and `SPACES_AROUND_TUPLE_DELIMITERS` to add spaces after the opening
+    and before the closing delimiters for lists, dicts, and tuples.
+  * Adds `FORCE_MULTILINE_DICT` knob to ensure dictionaries always split,
+    even when shorter than the max line length.
+  * New knob `SPACE_INSIDE_BRACKETS` to add spaces inside brackets, braces, and
+    parentheses.
+  * New knob `SPACES_AROUND_SUBSCRIPT_COLON` to add spaces around the subscript /
+    slice operator.
+  * Renamed "chromium" style to "yapf". Chromium will now use PEP-8 directly.
+  * `CONTINUATION_ALIGN_STYLE` with `FIXED` or `VALIGN-RIGHT` now works with
+    space indentation.
+  * Don't over-indent a parameter list when not needed. But make sure it is
+    properly indented so that it doesn't collide with the lines afterwards.
+  * Don't split between two-word comparison operators: "is not", "not in", etc.
+- Replace nose with pytest
+  * not WLOG, some tests get skipped because of capturing stdin
+
+-------------------------------------------------------------------
 Tue Feb  4 15:55:15 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.29.0
