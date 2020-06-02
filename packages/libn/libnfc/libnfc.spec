@@ -1,7 +1,7 @@
 #
 # spec file for package libnfc
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,34 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libnfc
-%define lname	libnfc5
-Summary:        Library for Near Field Communication
-License:        LGPL-3.0+ and GPL-2.0+
-Group:          Development/Libraries/C and C++
-Version:        1.7.1
+%define lname	libnfc6
+Version:        1.8.0
 Release:        0
-Url:            http://libnfc.org/
+Summary:        Library for Near Field Communication
+License:        LGPL-3.0-or-later AND GPL-2.0-or-later
+Group:          Development/Libraries/C and C++
+URL:            http://libnfc.org/
 
-#Git-Clone:	http://code.google.com/p/libnfc/
-Source:         http://dl.bintray.com/nfc-tools/sources/%name-%version.tar.bz2
+#Git-Clone:	https://github.com/nfc-tools/libnfc
+Source:         https://github.com/nfc-tools/libnfc/releases/download/%name-%version/%name-%version.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-#BuildRequires:  autoconf
-#BuildRequires:  automake
-#BuildRequires:  libtool >= 2
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 BuildRequires:  readline-devel
-%if 0%{?suse_version} == 1110
-BuildRequires:  libusb-devel
-BuildRequires:  pcsc-lite-devel
-%else
 BuildRequires:  pkgconfig(libpcsclite)
 BuildRequires:  pkgconfig(libusb)
-%endif
 
 %description
 libnfc is a low-level SDK for various RFID and NFC applications.
@@ -51,7 +43,7 @@ target and as initiator.
 
 %package -n %lname
 Summary:        Library for Near Field Communication
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n %lname
@@ -64,14 +56,9 @@ target and as initiator.
 
 %package devel
 Summary:        Development files for the Near Field Communications library
-License:        LGPL-3.0+ and GPL-2.0+
+License:        LGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
-%if 0%{?suse_version} == 1110
-# The include files don't need it, but libnfc.pc does. And pkgconfig()
-# did not yet exist in SLE11.
-Requires:       libusb-devel
-%endif
 
 %description devel
 libnfc is a low-level SDK for various RFID and NFC applications.
@@ -85,7 +72,7 @@ This package contains the libnfc development files.
 
 %package tools
 Summary:        Tools for Near Field Communication
-License:        LGPL-3.0+ and GPL-2.0+
+License:        LGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Hardware/Other
 
 %description tools
@@ -102,33 +89,26 @@ This package contains the NFC utilities.
 %setup -q
 
 %build
-if [ ! -e configure ]; then
-	autoreconf -fi
-fi
 %configure --disable-static
 make %{?_smp_mflags}
 
 %install
-b="%buildroot"
 %make_install
-rm -f "$b/%_libdir"/*.la
+rm -fv "%buildroot/%_libdir"/*.la
 mkdir -p "%buildroot/%_sysconfdir/nfc"
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%_libdir/libnfc.so.5*
+%_libdir/libnfc.so.6*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/nfc
 %_libdir/libnfc.so
 %_libdir/pkgconfig/libnfc.pc
 
 %files tools
-%defattr(-,root,root)
 %_bindir/nfc-*
 %_bindir/pn53x-*
 %_mandir/man*/*.1*
