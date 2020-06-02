@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Jun 02 10:06:57 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1591092399.b9fb68988:
+  * t: Make output nicer on time limit
+  * Dependency cron 200601
+  * Avoid stopping the live log when the worker already works on different job
+  * worker: Keep uploading results until logs and assets have been uploaded
+  * worker: Log every 10th uploaded chunk to autoinst-log.txt as well
+  * Keep 'live' tab shown while uploading for improved feedback
+  * Avoid rendering 'live' tab when job is already done
+  * Update comments in worker function _upload_result
+  * Fix style issue in running.js so jshint shows no errors
+  * Do not shadow $errors in utils-job-templates test
+  * Capture base_state.json JSON error warning
+  * Add '--merge' option to prove
+  * Show an explicit warning when failing to wakeup scheduler
+  * Prefetch parent job in JobModules::job_modules()
+  * Capture screenshot created message in screenshot test
+  * Dependency cron 200529
+  * t: Make process handling more robust with IPC::Run
+  * Log errors when claiming OpenID identity
+  * Fix visual artifact in audio result box
+  * Use named tempdir in cli archive unit test
+  * Add documentation for MAX_JOB_TIME taking ab743579 into account
+  * Validate parameters passed to job API routes
+  * Add link to latest test in ObsRsync Project list (#3052)
+  * templates: Simplify calculation of build bar results with 'total' value
+  * t: Use OpenQA::Test::TimeLimit in basic.t for a start
+  * Add "by groups name" as option to organize the builds in parent group overview
+  * t: Add test module to check for test runtime
+  * t: Extend 28-logging.t to cover color codes
+  * Define custom log color selection compatible with reverse video terminals
+  * Slightly simplify OpenQA::Log
+  * Add colors to log output when available
+  * Enable NOVIDEO for jobs with increased MAX_JOB_TIME by default
+  * Move computing max job time into own function and add tests
+  * Job templates: Return full error message for invalid YAML
+  * t: Simplify basic.t
+  * t: Output port for scheduler service as well
+  * Improve debug message for job-worker assignment
+  * t: Add trivial test for OpenQA::Log::get_channel_handle coverage
+  * t: Simplify stdout matching in 28-logging.t
+  * t: Fix warning "Prototype mismatch: sub Time::HiRes::gettimeofday"
+  * t: Fix a sporadic problem in 05-scheduler-full about jobs assigned to dead workers
+  * Delete unused import in WebAPI::Controller::API::V1::Worker
+  * Delete obsolete TODO in worker schema implementation
+  * DRY in name/to_string within worker schema implementation
+  * t: Provide unique process name for all forked processes
+  * t: Use IPC::Run for gru service in t/api/14-plugin_obs_rsync_async.t
+  * t: Simplify sleep, retry and loops in t/api/14-plugin_obs_rsync_async.t
+  * t: Output port for websocket server same as we do for webapi
+  * t: Ensure unavailable websocket server is seen by throwing exception
+  * t: Sort external imports first in 43-scheduling-and-worker-scalability.t
+  * Simplify use of Test::Output with bare blocks rather than sub refs
+  * t: Delete obsolete/disabled code in api/04-jobs.t
+  * Render job module results on client side
+  * Job templates: Escape dot in regex
+  * Try using exclusive locks explicitly to prevent SQLite file corruption
+  * Move remaining clone job functions into CloneJob module
+
+-------------------------------------------------------------------
 Tue May 19 11:25:32 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1589882993.dd2749ac3:
