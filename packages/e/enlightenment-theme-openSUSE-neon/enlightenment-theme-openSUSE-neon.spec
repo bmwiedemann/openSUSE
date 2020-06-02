@@ -1,7 +1,7 @@
 #
-# spec file for package enlightenment-theme-openSUSE
+# spec file for package enlightenment-theme-openSUSE-neon
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define icon-theme-name openSUSE-e-X-Neon
+
+%define icon_theme_name openSUSE-e-X-Neon
 
 Name:           enlightenment-theme-openSUSE-neon
-Version:        20200101
+Version:        20200529
 Release:        0
 Summary:        openSUSE theme for Enlightenment
-License:        BSD-2-Clause and LGPL-2.1 and CC-BY-SA-3.0
+License:        BSD-2-Clause AND LGPL-2.1-only AND CC-BY-SA-3.0
 Group:          System/GUI/Other
-Url:            https://en.opensuse.org/Portal:Enlightenment
+URL:            https://en.opensuse.org/Portal:Enlightenment
 Source:         enlightenment-theme-openSUSE-Neon-%{version}.tar.xz
 BuildRequires:  edje
 # for convert
@@ -55,17 +56,17 @@ theme
 
 %build
 ./build-darkmod.sh --epkg
-cp enlightenment-elementary/openSUSE-Neon.edj .
+cp build/e/openSUSE-Neon.edj .
 cp licenses-authors/* .
-cp openSUSE-Neon-icons/README README.icons
+cp build/icons/openSUSE-Neon-icons/README README.icons
 
 %install
 install -m 0755 -d %{buildroot}%{_datadir}/elementary/themes
 install -m 0644 -t %{buildroot}%{_datadir}/elementary/themes openSUSE-Neon.edj
 install -m 0755 -d %{buildroot}%{_datadir}/icons/%{icon_theme_name}
-install -m 0644 -t %{buildroot}%{_datadir}/icons/%{icon_theme_name} openSUSE-Neon-icons/index.theme
+install -m 0644 -t %{buildroot}%{_datadir}/icons/%{icon_theme_name} build/icons/openSUSE-Neon-icons/index.theme
 
-pushd openSUSE-Neon-icons
+pushd build/icons/openSUSE-Neon-icons
 for d in */ ; do
     install -m 0755 -d %{buildroot}%{_datadir}/icons/%{icon_theme_name}/$d
     for in in $d/*/ ; do
