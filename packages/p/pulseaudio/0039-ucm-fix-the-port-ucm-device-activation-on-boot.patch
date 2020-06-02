@@ -1,0 +1,83 @@
+From fc5f263e594cf5ecb7034fb54dadb286d2b4a810 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 31 Mar 2020 13:24:36 +0200
+Subject: [PATCH] ucm: fix the port / ucm device activation on boot
+
+The UCM device must be activated using the pa_alsa_ucm_set_port()
+call on boot (the sink creation time). In case when the
+mixer controls are not defined for the application in the
+UCM configuration, the mixer_handle is NULL.
+
+Call the pa_alsa_ucm_set_port() before the mixer_handle check.
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/modules/alsa/alsa-sink.c   | 13 +++++++++----
+ src/modules/alsa/alsa-source.c | 13 +++++++++----
+ 2 files changed, 18 insertions(+), 8 deletions(-)
+
+diff --git a/src/modules/alsa/alsa-sink.c b/src/modules/alsa/alsa-sink.c
+index 65430caed902..7048371e1832 100644
+--- a/src/modules/alsa/alsa-sink.c
++++ b/src/modules/alsa/alsa-sink.c
+@@ -2138,6 +2138,15 @@ static int setup_mixer(struct userdata *u, bool ignore_dB) {
+ 
+     pa_assert(u);
+ 
++    /* This code is before the u->mixer_handle check, because if the UCM
++     * configuration doesn't specify volume or mute controls, u->mixer_handle
++     * will be NULL, but the UCM device enable sequence will still need to be
++     * executed. */
++    if (u->sink->active_port && u->ucm_context) {
++        if (pa_alsa_ucm_set_port(u->ucm_context, u->sink->active_port, true) < 0)
++            return -1;
++    }
++
+     if (!u->mixer_handle)
+         return 0;
+ 
+@@ -2155,10 +2164,6 @@ static int setup_mixer(struct userdata *u, bool ignore_dB) {
+         } else {
+             pa_alsa_ucm_port_data *data;
+ 
+-            /* First activate the port on the UCM side */
+-            if (pa_alsa_ucm_set_port(u->ucm_context, u->sink->active_port, true) < 0)
+-                return -1;
+-
+             data = PA_DEVICE_PORT_DATA(u->sink->active_port);
+ 
+             /* Now activate volume controls, if any */
+diff --git a/src/modules/alsa/alsa-source.c b/src/modules/alsa/alsa-source.c
+index c33f81e35c18..bf9e093b336a 100644
+--- a/src/modules/alsa/alsa-source.c
++++ b/src/modules/alsa/alsa-source.c
+@@ -1844,6 +1844,15 @@ static int setup_mixer(struct userdata *u, bool ignore_dB) {
+ 
+     pa_assert(u);
+ 
++    /* This code is before the u->mixer_handle check, because if the UCM
++     * configuration doesn't specify volume or mute controls, u->mixer_handle
++     * will be NULL, but the UCM device enable sequence will still need to be
++     * executed. */
++    if (u->source->active_port && u->ucm_context) {
++        if (pa_alsa_ucm_set_port(u->ucm_context, u->source->active_port, false) < 0)
++            return -1;
++    }
++
+     if (!u->mixer_handle)
+         return 0;
+ 
+@@ -1861,10 +1870,6 @@ static int setup_mixer(struct userdata *u, bool ignore_dB) {
+         } else {
+             pa_alsa_ucm_port_data *data;
+ 
+-            /* First activate the port on the UCM side */
+-            if (pa_alsa_ucm_set_port(u->ucm_context, u->source->active_port, false) < 0)
+-                return -1;
+-
+             data = PA_DEVICE_PORT_DATA(u->source->active_port);
+ 
+             /* Now activate volume controls, if any */
+-- 
+2.16.4
+

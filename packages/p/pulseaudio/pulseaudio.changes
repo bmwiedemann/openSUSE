@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 13 10:14:20 CEST 2020 - tiwai@suse.de
+
+- Backport upstream fixes for ALSA UCM profile handling
+  (boo#1171492):
+  0033-alsa-Document-that-mixer-elements-can-be-identified-.patch
+  0034-alsa-ucm-correct-the-channel-default-logic-stereo.patch
+  0035-alsa-ucm-do-not-assign-JackHWMute-when-JackControl-i.patch
+  0036-ucm-Don-t-log-errors-during-normal-operation.patch
+  0037-alsa-handle-unavailbale-HW-volume-in-UCM.patch
+  0038-alsa-ucm-use-the-right-profile-name.patch
+  0039-ucm-fix-the-port-ucm-device-activation-on-boot.patch
+  0040-alsa-sink-source-fix-the-mixer-initialization.patch
+
+-------------------------------------------------------------------
 Thu Apr  2 17:43:26 CEST 2020 - tiwai@suse.de
 
 - Control systemd user socket activation in setup-pulseaudio script

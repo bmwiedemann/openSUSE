@@ -1,0 +1,27 @@
+From 4dc73f5167f7d4c2cf1d3e9c8bb7c796f3a35a4e Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Wed, 25 Mar 2020 16:30:23 +0100
+Subject: [PATCH] alsa-ucm: use the right profile name
+
+Use the right profile name or else we could pass NULL to
+pa_hashmap_get() and crash.
+---
+ src/modules/alsa/alsa-ucm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/modules/alsa/alsa-ucm.c b/src/modules/alsa/alsa-ucm.c
+index 37cbafae51ee..9d6456162c55 100644
+--- a/src/modules/alsa/alsa-ucm.c
++++ b/src/modules/alsa/alsa-ucm.c
+@@ -1315,7 +1315,7 @@ int pa_alsa_ucm_set_profile(pa_alsa_ucm_config *ucm, pa_card *card, const char *
+     /* select volume controls on ports */
+     PA_HASHMAP_FOREACH(port, card->ports, state) {
+         data = PA_DEVICE_PORT_DATA(port);
+-        data->path = pa_hashmap_get(data->paths, new_profile);
++        data->path = pa_hashmap_get(data->paths, profile);
+     }
+ 
+     return ret;
+-- 
+2.16.4
+

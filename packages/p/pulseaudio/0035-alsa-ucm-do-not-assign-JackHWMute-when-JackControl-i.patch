@@ -1,0 +1,31 @@
+From 4da4670fdb9a09199fb5d3bfaee252b2f4f13128 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sun, 1 Mar 2020 15:55:07 +0100
+Subject: [PATCH] alsa ucm: do not assign JackHWMute when JackControl is
+ missing for the UCM device
+
+Fixes: https://github.com/alsa-project/alsa-ucm-conf/issues/14
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/modules/alsa/alsa-ucm.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/modules/alsa/alsa-ucm.c b/src/modules/alsa/alsa-ucm.c
+index b7d2c5b9c51a..8df24e7b51d7 100644
+--- a/src/modules/alsa/alsa-ucm.c
++++ b/src/modules/alsa/alsa-ucm.c
+@@ -1730,6 +1730,10 @@ static int ucm_create_profile(
+         /* JackHWMute contains a list of device names. Each listed device must
+          * be associated with the jack object that we just created. */
+         jack_hw_mute = pa_proplist_gets(dev->proplist, PA_ALSA_PROP_UCM_JACK_HW_MUTE);
++        if (jack_hw_mute && !jack) {
++            pa_log("[%s] JackHWMute set, but JackControl is missing", name);
++            jack_hw_mute = NULL;
++        }
+         if (jack_hw_mute) {
+             char *hw_mute_device_name;
+             const char *state = NULL;
+-- 
+2.16.4
+

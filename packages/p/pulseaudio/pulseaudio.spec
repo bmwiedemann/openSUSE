@@ -83,6 +83,14 @@ Patch1029:      0029-alsa-ucm-add-support-for-HDMI-ELD.patch
 Patch1030:      0030-alsa-mixer-do-the-quick-card-number-lookup-to-save-m.patch
 Patch1031:      0031-alsa-mixer-improve-check-for-the-empty-path-set-for-.patch
 Patch1032:      0032-alsa-ucm-allow-to-set-profile-priority-from-UCM-valu.patch
+Patch1033:      0033-alsa-Document-that-mixer-elements-can-be-identified-.patch
+Patch1034:      0034-alsa-ucm-correct-the-channel-default-logic-stereo.patch
+Patch1035:      0035-alsa-ucm-do-not-assign-JackHWMute-when-JackControl-i.patch
+Patch1036:      0036-ucm-Don-t-log-errors-during-normal-operation.patch
+Patch1037:      0037-alsa-handle-unavailbale-HW-volume-in-UCM.patch
+Patch1038:      0038-alsa-ucm-use-the-right-profile-name.patch
+Patch1039:      0039-ucm-fix-the-port-ucm-device-activation-on-boot.patch
+Patch1040:      0040-alsa-sink-source-fix-the-mixer-initialization.patch
 BuildRequires:  alsa-devel >= 1.0.19
 BuildRequires:  bluez-devel >= 5
 BuildRequires:  doxygen
@@ -403,6 +411,14 @@ Optional dependency offering zsh completion for various PulseAudio utilities
 %patch1030 -p1
 %patch1031 -p1
 %patch1032 -p1
+%patch1033 -p1
+%patch1034 -p1
+%patch1035 -p1
+%patch1036 -p1
+%patch1037 -p1
+%patch1038 -p1
+%patch1039 -p1
+%patch1040 -p1
 %patch1 -p1
 %patch2
 %patch5

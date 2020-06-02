@@ -1,0 +1,41 @@
+From f3f16fe6df087e37f219fd829ae5f647c40fc456 Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Fri, 20 Mar 2020 12:03:08 +0100
+Subject: [PATCH] alsa: handle unavailbale HW volume in UCM
+
+It is possible that UCM doesn't specify hardware volume controls.
+Fall back to software controls instead of aborting.
+---
+ src/modules/alsa/alsa-sink.c   | 2 +-
+ src/modules/alsa/alsa-source.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/modules/alsa/alsa-sink.c b/src/modules/alsa/alsa-sink.c
+index 042d4dfd9c89..65430caed902 100644
+--- a/src/modules/alsa/alsa-sink.c
++++ b/src/modules/alsa/alsa-sink.c
+@@ -1654,7 +1654,7 @@ static int sink_set_port_ucm_cb(pa_sink *s, pa_device_port *p) {
+     pa_assert(u->ucm_context);
+ 
+     data = PA_DEVICE_PORT_DATA(p);
+-    pa_assert_se(u->mixer_path = data->path);
++    u->mixer_path = data->path;
+     mixer_volume_init(u);
+ 
+     if (s->flags & PA_SINK_DEFERRED_VOLUME)
+diff --git a/src/modules/alsa/alsa-source.c b/src/modules/alsa/alsa-source.c
+index 104de4e266dd..c33f81e35c18 100644
+--- a/src/modules/alsa/alsa-source.c
++++ b/src/modules/alsa/alsa-source.c
+@@ -1525,7 +1525,7 @@ static int source_set_port_ucm_cb(pa_source *s, pa_device_port *p) {
+     pa_assert(u->ucm_context);
+ 
+     data = PA_DEVICE_PORT_DATA(p);
+-    pa_assert_se(u->mixer_path = data->path);
++    u->mixer_path = data->path;
+     mixer_volume_init(u);
+ 
+     if (s->flags & PA_SOURCE_DEFERRED_VOLUME)
+-- 
+2.16.4
+
