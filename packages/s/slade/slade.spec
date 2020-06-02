@@ -17,7 +17,7 @@
 
 
 Name:           slade
-Version:        3.1.11
+Version:        3.1.12
 Release:        0
 Summary:        An editor for DOOM maps and WAD/PK3 archives
 License:        GPL-2.0-or-later
@@ -34,6 +34,7 @@ BuildRequires:  cmake >= 3.1
 BuildRequires:  freeimage-devel
 BuildRequires:  gcc-c++ >= 6
 BuildRequires:  pkgconfig
+BuildRequires:  strip-nondeterminism
 BuildRequires:  update-desktop-files
 BuildRequires:  wxWidgets-3_0-devel
 BuildRequires:  zip
@@ -44,9 +45,6 @@ BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(sfml-all)
 BuildRequires:  pkgconfig(x11)
-%if 0%{?suse_version} > 1320
-BuildRequires:  strip-nondeterminism
-%endif
 
 %description
 SLADE3 is an editor for Doom-engine based games and source
@@ -67,10 +65,8 @@ from/to other generic formats such as PNG.
 make %{?_smp_mflags}
 
 %install
-%if 0%{?suse_version} > 1320
 strip-nondeterminism build/slade.pk3
-%endif
-b=%{buildroot}
+b="%buildroot"
 install -Dm755 build/slade "$b/%_bindir/slade"
 install -Dm644 build/slade.pk3 "$b/%_datadir/slade3/slade.pk3"
 
@@ -87,14 +83,6 @@ done
 popd
 
 install -Dm644 "%_sourcedir/slade.desktop" "$b/%_datadir/applications/%name.desktop"
-
-%if 0%{?suse_version} <= 1320
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%endif
 
 %files
 %license gpl-2.0.txt

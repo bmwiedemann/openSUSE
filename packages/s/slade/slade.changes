@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May 26 08:26:11 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.1.12
+  * 'Run Archive' and 'Run Map' configurations have been
+    separated, so they should now make more sense for each
+    context.
+  * Fixed an issue where clicking a toolbar and pressing enter
+    would show/hide the 2nd group in the toolbar (this is what
+    was causing some people to randomly lose the zoom slider in
+    the gfx editor, for example).
+  * Added SRB2 .dta as a valid wad file extension.
+  * Resource Editor:
+  * Fixed adjusted offsets not being saved after cropping an
+    image.
+  * Fixed wrong files being deleted in some situations when
+    saving a directory.
+  * Fixed "Open map in DB2" not working for maps in zip/directory
+    archives.
+  * Map Editor:
+  * Added support for GZDoom slope plane UDMF properties.
+  * Added basic support for ZScript inheritance for thing types.
+
+-------------------------------------------------------------------
 Wed Apr 29 12:45:36 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Refresh disable_sse.patch
