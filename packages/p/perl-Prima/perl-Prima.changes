@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu May 28 03:12:08 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 1.59
+   see /usr/share/doc/packages/perl-Prima/Changes
+
+  1.59 2020-05-27
+   - Added support for unicode bidirectional algorithm and text shaping:
+       -- All standard widgets are moved to new shaped text implementation:
+          formerly char-based position properties, such as firstChar and selection,
+          are now cluster-based.
+       -- Unicode bidirectional algorithms uses fribidi on all platforms
+       -- Text shaping uses harfbuzz on unix
+       -- Text::Bidi is no loger used
+       -- Text input direction is deduced from new Application.language
+   - Switch PostScript backend to generate embedded Type1 fonts only
+       -- Remove bitmap font generation and remove support for native PS fonts
+       -- Remove support for encodings, leave only Unicode
+   - Move Prima::*Dialog.pm files into Prima::Dialog::* namespace.
+       -- The old packages will be alive for a while, but will print a deprecation message
+  
+
+-------------------------------------------------------------------
 Mon Mar 16 03:12:59 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.58

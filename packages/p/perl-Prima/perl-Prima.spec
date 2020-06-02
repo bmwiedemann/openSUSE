@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Prima
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           perl-Prima
-Version:        1.58
+Version:        1.59
 Release:        0
 #Upstream: SUSE-Public-Domain
 %define cpan_name Prima
 Summary:        Perl graphic toolkit
 License:        BSD-2-Clause AND AGPL-3.0-only
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/K/KA/KARASIK/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
