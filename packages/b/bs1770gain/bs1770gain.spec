@@ -1,6 +1,7 @@
 #
 # spec file for package bs1770gain
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,8 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           bs1770gain
-Version:        0.6.9
+Version:        0.7.0
 Release:        0
 Summary:        A loudness scanner compliant with ITU-R BS.1770
 License:        GPL-2.0-or-later

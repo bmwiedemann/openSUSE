@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 29 19:25:41 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.7.0
+  * Improved configuration w.r.t. pthreads.
+  * Fixed some synchronization issues.
+  * Support multiple threads from within bs1770gain
+    option --threads=<number of threads>
+    Currently option --threads=<number of threads> just makes
+    sense when used in conjunction with options -o/--output or
+    --overwrite and may result in a significant performance gain
+    (it's meant for mass replay-gain tagging):
+  * Fixed a flaw with option -x rename.
+
+-------------------------------------------------------------------
 Sat May  2 12:36:14 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 0.6.9
