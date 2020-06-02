@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 26 11:35:13 UTC 2020 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to version 1.1.5
+  * properly free memory when calling `ipatch_close()`
+  * fix a bug when copy/pasting instrument or preset zones
+  * support multiple calls to `ipatch_init()`
+  * fix an uninitialized stack variable access
+  * various minor bug fixes
+
+-------------------------------------------------------------------
 Mon Apr 13 16:46:05 UTC 2020 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Update to version 1.1.4
