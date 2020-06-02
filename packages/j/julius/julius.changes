@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jun  1 14:35:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.0
+  Improvements
+  * Price is now shown in localized currency for game languages
+    other than English
+  * Added Russian translation for the configuration screen
+  Bugfixes
+  * reservoir range was not displaying properly for orientations
+    other than north
+  * filenames were not displaying properly when using the Chinese
+    version of the game
+  * building ghost flickered after scrolling
+  * aqueduct ghost was showing green on curved roads and plazas
+  * scroll speed calculations were incorrect for monitors not
+    running at 60Hz
+  * the select folder dialog crashed on certain Linux systems
+  * mouse double-click was not working properly
+  * Korean message about missing fonts was not displaying due to
+    missing fonts
+  * escape button was not working in the city when using touch
+
+-------------------------------------------------------------------
 Sun May 10 14:17:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.4.0
