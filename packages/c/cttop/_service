@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">git://git.breakpoint.cc/fw/cttop</param>
+		<param name="revision">master</param>
+		<param name="parent-tag">v0.3</param>
+		<param name="versionformat">0.3.g@TAG_OFFSET@</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 23 14:18:40 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize specfile and add a _service file for the
+  manually-rolled tarball.
+
+-------------------------------------------------------------------
 Thu Nov  5 00:18:10 UTC 2015 - rpm@fthiessen.de
 
 - Fixed BuildRequires of ncurses to build on all openSUSE versions
