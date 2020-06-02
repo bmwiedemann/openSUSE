@@ -26,7 +26,7 @@ BuildRequires:  pkgconfig(libdrm_nouveau) >= 2.4.25
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(xorg-macros)
 Url:            http://nouveau.freedesktop.org/wiki/
-Version:        1.0.15
+Version:        1.0.16
 Release:        0
 Summary:        Accelerated Open Source driver for nVidia cards
 License:        MIT
