@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon May  4 11:38:26 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
+
+- Update openvswitch to 2.13.0. 
+  * For a list of changes, check
+    https://github.com/openvswitch/ovs/blob/v2.13.0/NEWS 
+  * This version drops python2 binding support. Only python3 bindings
+    provided going forward.
+  * Tool ovs-vlan-bug-workaround is no longer provided.
+- OVN was split to its own repo but is still built together with OVS and as
+  such from this same source package. OVN initial version is 20.03.
+  * For a list of changes, check
+    https://github.com/ovn-org/ovn/blob/v20.03.0/NEWS
+  * Packages openvswitch-ovn* are renamed to ovn*.
+  * OVN now has its own sysconfig and log paths.
+- Add OVS patch to be proposed upstream:
+  * 0001-rhel-Fix-reload-of-OVS_USER_ID-on-startup.patch
+- Patch instead of post-processing configuration files to set running
+  credentials (bsc#1157338):
+  * 0001-Run-openvswitch-as-openvswitch-openvswitch.patch
+  * 0001-Run-ovn-as-openvswitch-openvswitch.patch
+- Will no longer change group ownership of /dev/hugepages to 'hugetlbfs'
+  (bsc#1140835). System admin should mount hugepages on a path and permissions of
+  his choosing for OVS. Add patch:
+  * 0001-Don-t-change-permissions-of-dev-hugepages.patch
+- Will no longer install udev rule to change group ownership of vfio devices to
+  'hugetlbfs'. Group name does not make much sense in this case and ownership of
+  vfio devices should be coordinated system wide or per device.
+- Will no longer run under group 'hugetlbfs' on new installs with DPDK enabled.
+  OVS will now run under group 'openvswitch' whether compiled with DPDK support
+  or not.
+- OVS persistent state is now saved on /var/lib/openvswitch instead of
+  /etc/openvswitch for new installs.
+
+-------------------------------------------------------------------
 Thu Feb 13 18:06:02 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add missing sortedcontainers dependency to the python bindings

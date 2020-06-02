@@ -586,4 +586,12 @@
     <comment>- add missing sortedcontainers dependency to the python bindings</comment>
     <requestid>774221</requestid>
   </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>da1ae72c3ce7f990b2e8406114c268d3</srcmd5>
+    <version>unknown</version>
+    <time>1591101787</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807822</requestid>
+  </revision>
 </revisionlist>

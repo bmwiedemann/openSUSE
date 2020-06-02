@@ -1,0 +1,48 @@
+From c349652c106b4c4e54e5a4a2f05546d35a801601 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jaime=20Caama=C3=B1o=20Ruiz?= <jcaamano@suse.com>
+Date: Tue, 5 May 2020 18:41:30 +0200
+Subject: [PATCH] rhel: Fix reload of OVS_USER_ID on startup
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+OVS_USER_ID was being picked up from a previously existing
+openvswitch.useropts rendering innefective any configuration change
+through sysconfig.
+
+There is no explicit ordering between Exec* and Environment* stanzas of
+systemd, full enviroment is always reloaded before each Exec. We make
+sure that openvswitch.useropts is removed first so that a fresh
+OVS_USER_ID can be picked up from config.
+
+Signed-off-by: Jaime Caamaño Ruiz <jcaamano@suse.com>
+---
+ rhel/usr_lib_systemd_system_ovsdb-server.service | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/rhel/usr_lib_systemd_system_ovsdb-server.service b/rhel/usr_lib_systemd_system_ovsdb-server.service
+index 4c170c09b..98338b9df 100644
+--- a/rhel/usr_lib_systemd_system_ovsdb-server.service
++++ b/rhel/usr_lib_systemd_system_ovsdb-server.service
+@@ -11,10 +11,16 @@ PIDFile=/var/run/openvswitch/ovsdb-server.pid
+ Restart=on-failure
+ EnvironmentFile=/etc/openvswitch/default.conf
+ EnvironmentFile=-/etc/sysconfig/openvswitch
++EnvironmentFile=-/run/openvswitch.useropts
++
++# Environment is reloaded for each Exec*, make sure to
++# remove openvswitch.useropts first to reload a fresh
++# OVS_USER_ID from default.conf or sysconfig.
++ExecStartPre=/usr/bin/rm -f /run/openvswitch.useropts
++
+ ExecStartPre=-/usr/bin/chown ${OVS_USER_ID} /var/run/openvswitch /var/log/openvswitch
+-ExecStartPre=/bin/sh -c 'rm -f /run/openvswitch.useropts; /usr/bin/echo "OVS_USER_ID=${OVS_USER_ID}" > /run/openvswitch.useropts'
++ExecStartPre=/bin/sh -c '/usr/bin/echo "OVS_USER_ID=${OVS_USER_ID}" > /run/openvswitch.useropts'
+ ExecStartPre=/bin/sh -c 'if [ "$${OVS_USER_ID/:*/}" != "root" ]; then /usr/bin/echo "OVS_USER_OPT=--ovs-user=${OVS_USER_ID}" >> /run/openvswitch.useropts; fi'
+-EnvironmentFile=-/run/openvswitch.useropts
+ ExecStart=/usr/share/openvswitch/scripts/ovs-ctl \
+           --no-ovs-vswitchd --no-monitor --system-id=random \
+           ${OVS_USER_OPT} \
+-- 
+2.16.4
+
