@@ -1,7 +1,7 @@
 #
 # spec file for package mozc
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,6 +79,8 @@ Source11:       ken_all.zip
 Patch:          fcitx-mozc-2.23.2815.102.1.patch
 Source21:       fcitx-mozc-icons.tar.gz
 %endif
+# A script for making a source tar.xz archive
+Source99:       make_archive.sh
 
 # PATCH-FEATURE-OPENSUSE ftake@geeko.jp
 Patch1:         ibus-provide-layout-variations.patch
@@ -195,6 +197,7 @@ tar xvf %{SOURCE3}
 tar xvf %{SOURCE5}
 # protobuf
 %if ! %{use_libprotobuf}
+mkdir protobuf
 tar xvf %{SOURCE6} -C protobuf --strip-components 1
 %endif
 cd ../..
