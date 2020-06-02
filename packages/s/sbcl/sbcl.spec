@@ -21,7 +21,7 @@
 
 Name:           sbcl
 #!BuildIgnore:  gcc-PIE
-Version:        2.0.4
+Version:        2.0.5
 Release:        0
 Summary:        Steel Bank Common Lisp
 License:        SUSE-Public-Domain AND BSD-3-Clause
@@ -72,7 +72,7 @@ Source26:       http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.5.8-ppc
 %define with_clisp 1
 %endif
 %ifarch riscv64
-%define sbcl_arch riscv
+%define sbcl_arch riscv64
 %define with_clisp 1
 %endif
 %if 0%{?with_clisp}
