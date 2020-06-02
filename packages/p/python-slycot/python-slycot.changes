@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sat May 30 14:03:41 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 0.4.0.0 
+  * Added periodic Schur decomposition functions mb03vd, mb03vy, and mb03wd
+  * Added ab08nz, allowing one to find zeros of complex-valued state-space models
+  * Added mb03rd, Schur to block-diagonal transform
+  * Added sb01fd H-infinity solver
+    Already present sb10ad searches for a minimum gamma value for a given 
+    H-infinity problem; sb10fd, by contrast, only attempts to solve for a given 
+    gamma value. This can be used to test for admissible gamma values, which 
+    could be useful for problems like python-control/python-control#367.
+  * New Slycot exception hierarchy; greatly improved Slycot error handling.
+    Slycot routines now raise SlycotValueError where they would previously have 
+    raised ValueError, and SlycotArithmeticError where they would have raised 
+    ArithmeticError.
+    These changes are backwardly compatible: SlycotValueError is a subclasss of 
+    ValueError, and SlycotArithmeticError is a subclass of ArithmeticError.
+    As part of this, many of the Slycot function docstrings were changed to 
+    conform to numpydoc conventions.
+    This supersedes an earlier fix for python-control#347 made during 0.4.0 
+    development.
+  * Override XERBLA
+    Overrode the BLAS error function XERBLA that SLICOT routines use to report 
+    errors; the BLAS-provided XERBLA can terminate the whole Python process.
+  * Correct application of DGEBAL in TB01TD and TB05AD
+  * Fixed ab01nd for jobz='N' case
+  * conda build recipes no longer use pip
+  * added conda recipes for MKL and Apple
+  * removed conda recipes for Windows; no developer is using them, and they 
+    weren't working
+  * the signature files (.pyf files) are now a dependency of wrapper generation
+    Testing
+  * Tests added for mb05nd, mc01td, ab08nd, ab08nz, mb03vd, mb03vy, mb03wd.
+  * Tests fixed or expanded for mb05md, sg03ad, td04ad.
+  * Switched to pytest; Slycot CI now uses pytest for both the Slycot and 
+     python-control test suites.
+  * CI now builds and tests for Linux and macOS. The Linux builds include 
+    OpenBLAS and MKL variants.
+  * Examples are run as part of tests. Outputs are not checked, but errors and 
+    warnings are.
+  * CI coveralls.io integration fixed.
+  * General test clean-up.
+  * Test files are no longer executable.
+  * Fix for mb05nd.
+  * Lots of clean-up: removal of unused mathematical.pyf, many docstring fixes, 
+    and some PEP 8 conformance changes to Python code.
+  * Fix for Fortran-compiler dependence on machine value used to represent 
+    logical values .TRUE. and .FALSE.
+  * @repagh fired up his time machine and ensured punch-card compatibility of 
+    the SLICOT Fortran code by limiting line lengths to 72 characters.
+- switch testing to pytest
+- some new tests require scipy
+- remove obsolete patches fix-test-sg03ad.patch and fix-test-td04ad.patch
+    
+-------------------------------------------------------------------
 Mon Apr 20 08:20:00 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - python2 dependency only for python2 enabling repos

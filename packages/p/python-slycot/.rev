@@ -71,4 +71,15 @@
 </comment>
     <requestid>795721</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>903d6f3a4b5fd8c6034f0844cf5fb7f0</srcmd5>
+    <version>0.4.0.0</version>
+    <time>1591101486</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.0.0 
+- switch testing to pytest
+- some new tests require scipy
+- remove obsolete patches fix-test-sg03ad.patch and fix-test-td04ad.patch</comment>
+    <requestid>810372</requestid>
+  </revision>
 </revisionlist>

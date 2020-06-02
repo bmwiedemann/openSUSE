@@ -28,21 +28,20 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
+%define eggversion 0.4.0
 Name:           python-slycot
-Version:        0.3.5.0
+Version:        0.4.0.0
 Release:        0
 Summary:        A wrapper for the SLICOT control and systems library
 License:        GPL-2.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/python-control/Slycot
 Source:         https://files.pythonhosted.org/packages/source/s/slycot/slycot-%{version}.tar.gz
-Patch0:         fix-test-td04ad.patch
-Patch1:         fix-test-sg03ad.patch
-BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scikit-build}
+BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -66,12 +65,6 @@ Slycot is a wrapper for the SLICOT control and systems library.
 
 %prep
 %setup -q -n slycot-%{version}
-%patch0 -p1
-%patch1 -p1
-%if %{with openblas}
-sed -i 's/#set(BLA_VENDOR "OpenBLAS")/set(BLA_VENDOR "OpenBLAS")/' CMakeLists.txt
-%endif
-sed -i 's/LAPACK REQUIRED/LAPACK REQUIRED MODULE/' CMakeLists.txt
 
 %build
 export CFLAGS="%{optflags}"
@@ -82,15 +75,15 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1 # make package build reproducible (boo#1047218)
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python runtests.py --coverage --no-build
-}
+export LANG="en_US.UTF-8"
+# avoid leading empty path entry introduced by %%pytest_arch
+export PYTHONPATH=/nonexistent
+%pytest_arch --pyargs slycot
 
 %files %{python_files}
-%doc README.rst CREDITS
+%doc README.rst
 %license COPYING
 %{python_sitearch}/slycot
-%{python_sitearch}/slycot-*-py*.egg-info
+%{python_sitearch}/slycot-%{eggversion}-py*.egg-info
 
 %changelog
