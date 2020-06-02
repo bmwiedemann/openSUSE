@@ -1,7 +1,7 @@
 #
 # spec file for package bleachbit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 8/2011 by open-slx GmbH <Sascha.Manns@open-slx.de>
 # Copyright (c) 2010 - 7/2011 by Sascha Manns <saigkill@opensuse.org>
 #
@@ -17,6 +17,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define         _desktopname       org.bleachbit.BleachBit
 
 Name:           bleachbit
@@ -28,16 +29,16 @@ Group:          Productivity/File utilities
 URL:            https://www.bleachbit.org/
 Source:         https://github.com/bleachbit/bleachbit/archive/v%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  gobject-introspection
 BuildRequires:  kf5-filesystem
-BuildRequires:  pkgconfig(systemd)
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
-BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(systemd)
 Requires:       python3
 Requires:       python3-chardet
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
-Requires:       gobject-introspection
 Requires:       python3-xml
 Requires:       xdg-utils
 BuildArch:      noarch
@@ -53,7 +54,7 @@ VIM, XChat, and more.
 
 %prep
 %setup -q
-sed -i -e 's|%{_bindir}/env python|%{_bindir}/python|g' \
+sed -i -e 's|%{_bindir}/env python.*|%{_bindir}/python3|g' \
         bleachbit/{CLI.py,GUI.py} bleachbit.py
 
 %build

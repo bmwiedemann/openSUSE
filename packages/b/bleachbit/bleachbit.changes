@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 18 08:17:57 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix dependencies:
+  + gobject-introspection is a build-depoendency, not a runtime
+    dependency. Having it in the buildroot also enable the
+    typelib()-dependency scanner, which in turn allows to:
+ + Remove typelib-1_0-Gtk-3_0 Requires: this is now propelry
+   auto-detected (together with the other typelib-* deps).
+- Fix more shebangs using sed: we still ended up requiring python2.
+
+-------------------------------------------------------------------
+Sun May 17 00:02:24 UTC 2020 - andrew ziem <ahz001@gmail.com>
+
+- Add missing dependency typelib-1_0-Gtk-3_0 to fix error
+  "Namespace Gtk not available"
+
+-------------------------------------------------------------------
 Thu Apr 23 08:59:25 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - BuildRequire gobject-introspection and let deps autodetect
