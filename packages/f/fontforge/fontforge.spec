@@ -31,6 +31,10 @@ Source1:        get-source.sh
 Patch0:         fontforge-version.patch
 Patch1:         fix-return-statement.patch
 Patch2:         fix-sphinx-doc.patch
+# gh#fontforge/fontforge#4269
+Patch3:         support-sphinx3.patch
+# taken from gh#fontforge/fontforge#4284
+Patch4:         fix-glossary.patch
 BuildRequires:  cairo-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -102,6 +106,8 @@ to develop applications that use FontForge libraries.
 %if %{?suse_version} < 1550
 %patch2 -p1
 %endif
+%patch3 -p1
+%patch4 -p1
 
 %build
 %cmake \

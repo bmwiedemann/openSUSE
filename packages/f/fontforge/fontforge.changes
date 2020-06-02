@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 25 19:11:37 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- add support-sphinx3.patch and fix-glossary.patch to allow 
+  python-Sphinx >= 3
+  gh#fontforge/fontforge#4269 
+  gh#fontforge/fontforge#4284  
+
+-------------------------------------------------------------------
 Wed Apr 15 18:30:12 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 20200314:
