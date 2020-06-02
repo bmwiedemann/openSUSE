@@ -1,7 +1,7 @@
 #
 # spec file for package materia-gtk-theme
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %define         _name    materia-theme
 Name:           materia-gtk-theme
-Version:        20190315
+Version:        20200320
 Release:        0
 Summary:        A Material Design theme for GNOME/GTK+ based desktop environments
 License:        GPL-2.0-only
-Group:          System/GUI/Other
 URL:            https://github.com/nana-4/materia-theme
 Source:         https://github.com/nana-4/%{_name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  bc

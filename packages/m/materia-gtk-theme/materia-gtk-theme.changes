@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 29 19:00:15 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20200320
+  * Make dark variant even darker
+  * Don't change button text color on focus, hover, active
+  * gtk: Rewrite ripple implementation
+  * gtk: Change checked raised button style
+  * gtk: Lighten up switch slider color on dark variant
+  * gtk: Use primary color for spinner
+  * gtk: Use primary color for caret-color (experimentally)
+  * gtk: Add various improvements of Budgie styling
+  * gnome-shell: Add support for version 3.36
+  * gnome-shell: Drop support for versions 3.18 - 3.24
+  * gnome-shell: Drop support for legacy Ubuntu-specific sessions
+  * gnome-shell: Land massive Sass rewrite
+  * Other various improvements, fixes, refactors, and cleanups
+
+-------------------------------------------------------------------
 Fri Mar 15 20:23:44 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 20190315
