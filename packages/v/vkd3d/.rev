@@ -27,4 +27,12 @@
   - Support for geometry shaders.</comment>
     <requestid>640434</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>262ccd55439612890e1b363860625996</srcmd5>
+    <version>1.1</version>
+    <time>1591101513</time>
+    <user>dimstar_suse</user>
+    <comment>- updated baselibs requires to allow better wine 32bit dependencies (bsc#1172310) (forwarded request 810396 from msmeissn)</comment>
+    <requestid>810397</requestid>
+  </revision>
 </revisionlist>

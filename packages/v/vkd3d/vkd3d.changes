@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 30 16:03:34 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- updated baselibs requires to allow better wine 32bit dependencies (bsc#1172310)
+
+-------------------------------------------------------------------
 Sun Oct  7 15:40:27 UTC 2018 - meissner@suse.com
 
 - updated to 1.1
