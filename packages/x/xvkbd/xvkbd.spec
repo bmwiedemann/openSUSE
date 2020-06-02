@@ -1,7 +1,7 @@
 #
 # spec file for package xvkbd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xvkbd
-Version:        4.0
+Version:        4.1
 Release:        0
 Summary:        Virtual Keyboard for the X Window System
 License:        GPL-2.0-or-later
@@ -50,11 +50,11 @@ sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/g" xvkbd.c
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 install -dm 0755 %{buildroot}%{_datadir}/X11/app-defaults
-%make_install appdefaultdir=%{buildroot}%{_datadir}/X11/app-defaults datarootdir=%{buildroot}%{_datadir}
+%make_install
 desktop-file-install %{SOURCE1}
 install -Dpm 0644 %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/xvkbd.png
 

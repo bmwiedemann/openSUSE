@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May 30 19:36:21 UTC 2020 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Update to version 4.1:
+  * xvkbd-4.0 couldn't read word list without frequency
+    information. This bug is not fixed.
+  * Too slow startup if word list file is large.
+    This problem is now fixed by making xvkbd to read large word
+    list file on the fly.
+  * Modified Makefile.am to add prefix $(DESTDIR) to the
+    destination path.
+  * Fixed duplicate definition problem of variable appres.
+
+-------------------------------------------------------------------
 Sat Oct  5 22:27:31 UTC 2019 - Asterios Dramis <asterios.dramis@gmail.com>
 
 - Update to version 4.0:
