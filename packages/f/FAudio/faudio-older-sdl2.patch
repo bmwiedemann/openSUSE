@@ -1,8 +1,8 @@
-diff --git a/lib/FAudio/CMakeLists.txt b/lib/FAudio/CMakeLists.txt
-index dca4563..1aaa437 100644
---- a/lib/FAudio/CMakeLists.txt
-+++ b/lib/FAudio/CMakeLists.txt
-@@ -181,14 +181,14 @@ else()
+Index: FNA/lib/FAudio/CMakeLists.txt
+===================================================================
+--- FNA.orig/lib/FAudio/CMakeLists.txt
++++ FNA/lib/FAudio/CMakeLists.txt
+@@ -182,14 +182,14 @@ else()
  		endif()
  	elseif (TARGET SDL2)
  		message(STATUS "using TARGET SDL2")
@@ -19,10 +19,10 @@ index dca4563..1aaa437 100644
  		if(INSTALL_MINGW_DEPENDENCIES)
  			install_shared_libs(${SDL2_LIBRARIES} DESTINATION bin NO_INSTALL_SYMLINKS)
  		endif()
-diff --git a/lib/FAudio/src/FAudio_internal.h b/lib/FAudio/src/FAudio_internal.h
-index 555a945..e16ce72 100644
---- a/lib/FAudio/src/FAudio_internal.h
-+++ b/lib/FAudio/src/FAudio_internal.h
+Index: FNA/lib/FAudio/src/FAudio_internal.h
+===================================================================
+--- FNA.orig/lib/FAudio/src/FAudio_internal.h
++++ FNA/lib/FAudio/src/FAudio_internal.h
 @@ -111,7 +111,7 @@
  #define FAudio_floor(x) SDL_floor(x)
  #define FAudio_abs(x) SDL_abs(x)
@@ -32,16 +32,3 @@ index 555a945..e16ce72 100644
  
  #define FAudio_cosf(x) SDL_cosf(x)
  #define FAudio_sinf(x) SDL_sinf(x)
-diff --git a/lib/FAudio/src/FAudio_platform_sdl2.c b/lib/FAudio/src/FAudio_platform_sdl2.c
-index 08a8feb..e9462f7 100644
---- a/lib/FAudio/src/FAudio_platform_sdl2.c
-+++ b/lib/FAudio/src/FAudio_platform_sdl2.c
-@@ -100,8 +100,6 @@ iosretry:
- #else
- #ifdef _WIN32
- #error Windows absolutely positively needs SDL 2.0.9!
--#else
--#pragma message("Please update to SDL 2.0.9 ASAP!")
- #endif
- 		0
- #endif

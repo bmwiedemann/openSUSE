@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 18 18:08:10 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Rebase faudio-older-sdl2.patch to fix build error in Leap.
+
+-------------------------------------------------------------------
 Wed May  6 09:52:48 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20.05:

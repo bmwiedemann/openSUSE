@@ -25,4 +25,12 @@
   * No changelog available (forwarded request 800658 from pluskalm)</comment>
     <requestid>800697</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2068a5559643669f75247f88f03458b4</srcmd5>
+    <version>20.05</version>
+    <time>1591101539</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase faudio-older-sdl2.patch to fix build error in Leap.</comment>
+    <requestid>810557</requestid>
+  </revision>
 </revisionlist>
