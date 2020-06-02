@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 30 18:04:52 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.3.9 fixed AgsAudiorec's new ags-fx-playback
+  recall to play and record audio data.
+
+-------------------------------------------------------------------
 Tue May 26 15:24:48 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.3.7 fixed potential SIGSEG in AgsSpectrometer as
