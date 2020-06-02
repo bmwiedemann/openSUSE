@@ -1,7 +1,7 @@
 #
 # spec file for package json-glib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2009 Dominique Leuenberger, Almere, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,6 +29,7 @@ Source99:       baselibs.conf
 BuildRequires:  glib2-devel >= 2.46
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  meson
+BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 
 %description
