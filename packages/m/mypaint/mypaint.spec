@@ -18,15 +18,13 @@
 
 %define skip_python2 1
 Name:           mypaint
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Graphics application for digital painters
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            http://mypaint.org
 Source:         https://github.com/mypaint/mypaint/releases/download/v%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM mypaint-python3-pass-str-to-exec.patch badshah400@gmail.com -- Fix build with python3 by passing a str object as the first arg to exec instead of an open file object
-Patch0:         mypaint-python3-pass-str-to-exec.patch
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -46,7 +44,7 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(json)
 BuildRequires:  pkgconfig(lcms2)
-BuildRequires:  pkgconfig(libmypaint) >= 1.5.0
+BuildRequires:  pkgconfig(libmypaint) >= 1.6.0
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(mypaint-brushes-2.0) >= 2.0.2
 BuildRequires:  pkgconfig(pygobject-3.0)
@@ -74,6 +72,7 @@ pencils, ink, or paint.
 
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_libexecdir}/%{name}/
+%fdupes %{buildroot}%{_datadir}/icons/hicolor/
 
 %check
 python3 setup.py test

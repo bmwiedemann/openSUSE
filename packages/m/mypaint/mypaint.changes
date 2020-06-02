@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri May 29 20:04:01 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.1:
+  * HSV/HCY brush dynamics in 2.x mode fixed.
+  * Undo/Redo stack size made configurable and more efficient.
+  * Undo/Redo stack default size increased to 40.
+  * Rounding error when saving files in 2.x mode fixed.
+  * Invalid l11n strings fixed.
+  * Translated strings added/updated for several languages.
+  * Dependency on intltool removed (still required for
+    libmypaint).
+  * Variables in l11n strings validated on build (xml tags are not
+    validated yet, however).
+  * libmypaint translations are now bound, making them work
+    properly in the appimages.
+  * OARS rating added to appdata (relevant for app-distribution
+    software, but not much else).
+  * A number of Py3 compatibility issues were fixed.
+  * Svg icons fixed - some were previously considered invalid by
+    librsvg >= 2.48.
+  * Svg icon sizes reduced across the board.
+  * Typos in documentation fixed (not user-facing typos).
+- Drop mypaint-python3-pass-str-to-exec.patch: upstreamed.
+- Update version of libmypaint in BuildRequires.
+- Run an additional fdupes to clean up duplicates in icon dir.
+
+-------------------------------------------------------------------
 Wed May 27 11:19:30 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Fix run time dependencies:
