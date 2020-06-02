@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-astor
 Version:        0.8.1
 Release:        0
@@ -27,12 +28,15 @@ URL:            https://github.com/berkerpeksag/astor
 Source:         https://github.com/berkerpeksag/astor/archive/%{version}.tar.gz#/astor-%{version}.tar.gz
 # https://github.com/berkerpeksag/astor/pull/177
 Patch0:         remove_nose.patch
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module unittest2}
+%if %{with python2}
+BuildRequires:  python-unittest2
+%endif
 # /SECTION
 %python_subpackages
 
@@ -77,7 +81,7 @@ chmod a-x astor/rtrip.py
 %python_expand chmod 755 %{buildroot}%{$python_sitelib}/astor/rtrip.py
 
 %check
-%python_exec -m unittest2 discover -v
+%pytest tests
 
 %files %{python_files}
 %doc AUTHORS README.rst docs/*.rst

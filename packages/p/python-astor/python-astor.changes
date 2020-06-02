@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun  1 09:54:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove patch remove_unittest2.patch as we use pytest to load
+  stuff it is no longer really needed
+
+-------------------------------------------------------------------
+Fri May 29 12:49:31 UTC 2020 - pgajdos@suse.com
+
+- for python3, drop dependency on unittest2
+- added patches
+  + remove_unittest2.patch
+
+-------------------------------------------------------------------
 Fri Apr  3 21:34:35 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - remove the shebang line from the rtrip.py otherwise the python3

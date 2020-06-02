@@ -56,4 +56,17 @@
     <comment></comment>
     <requestid>791387</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>2aedb3473a5f4c2c7846392fb7d7b1dd</srcmd5>
+    <version>0.8.1</version>
+    <time>1591101580</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove patch remove_unittest2.patch as we use pytest to load
+  stuff it is no longer really needed
+
+- for python3, drop dependency on unittest2
+- added patches
+  + remove_unittest2.patch</comment>
+    <requestid>810588</requestid>
+  </revision>
 </revisionlist>
