@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun  1 13:53:40 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.8.4
+  * don't try to import GAE API in other environments (#903) (09e6447)
+  * the turn down date for global batch uri (#901) (6ddadd7)
+  * downgrade repetitive logging calls to debug (#885) (3bf2781), closes #781
+- added patches
+  fix unittest2 seems to be fake dependency
+  + python-google-api-python-client-no-unittest2.patch
+
+-------------------------------------------------------------------
 Mon May 11 06:28:41 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.8.2:

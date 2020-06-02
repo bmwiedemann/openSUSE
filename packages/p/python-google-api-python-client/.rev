@@ -142,4 +142,12 @@ eplacement for google-api-python-client, follow our naming convention</comment>
 - Fix filelist (no CHANGELOG anymore, missing README.md)</comment>
     <requestid>802599</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3f020cef65c485faa1b8ee73f75cfffc</srcmd5>
+    <version>1.8.4</version>
+    <time>1591101598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810641</requestid>
+  </revision>
 </revisionlist>
