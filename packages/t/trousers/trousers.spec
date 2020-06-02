@@ -30,6 +30,7 @@ Source2:        baselibs.conf
 Source3:        91-trousers.rules
 Patch0:         fix-lto.patch
 Patch1:         bsc1164472.patch
+Patch2:         gcc-10.patch
 BuildRequires:  gtk2-devel
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
@@ -82,6 +83,7 @@ system. It is a character device file major 10 minor 224, 0600 tss:tss.
 %setup -q -c %{name}-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
     CC=gcc

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  2 10:23:53 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- add gcc-10.patch: fixes the build on gcc 10 by removing unused global
+  variables. This patch was posted on the TrouSerS mailing list [1].
+
+  [1]: https://sourceforge.net/p/trousers/mailman/message/36951419/
+
+-------------------------------------------------------------------
 Wed May 20 10:05:51 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - get rid of %pre/%post logic that fixes the old packaging bug. Turns out

@@ -400,4 +400,14 @@ Should be handled together with sr#769061</comment>
   file or directory&quot;.</comment>
     <requestid>807580</requestid>
   </revision>
+  <revision rev="46" vrev="11">
+    <srcmd5>ed66686e8136586fb351a2492cf27263</srcmd5>
+    <version>0.3.14</version>
+    <time>1591101778</time>
+    <user>dimstar_suse</user>
+    <comment>- add gcc-10.patch: fixes the build on gcc 10 by removing unused global
+  variables. This patch was posted on the TrouSerS mailing list [1].
+  [1]: https://sourceforge.net/p/trousers/mailman/message/36951419/</comment>
+    <requestid>810797</requestid>
+  </revision>
 </revisionlist>
