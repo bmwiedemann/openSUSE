@@ -331,4 +331,12 @@
   sr#793088 gh#neovim/neovim#12108</comment>
     <requestid>807386</requestid>
   </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>3206712a4cc217f53f2780355d77ef79</srcmd5>
+    <version>0.4.3</version>
+    <time>1591101726</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable -fcommon in order to fix gh#neovim/neovim#12423.</comment>
+    <requestid>810727</requestid>
+  </revision>
 </revisionlist>
