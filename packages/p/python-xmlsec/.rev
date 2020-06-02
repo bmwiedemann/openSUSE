@@ -26,4 +26,16 @@
     <comment></comment>
     <requestid>711672</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0ce675862e74001312aa37580c9e3522</srcmd5>
+    <version>1.3.8</version>
+    <time>1591101625</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.8:
+  * No upstream changelog.
+- Drop reproducible.patch, included upstream.
+- Switch to PyPI tarball due to use of setuptools_scm.
+- Update BuildRequires.</comment>
+    <requestid>810716</requestid>
+  </revision>
 </revisionlist>

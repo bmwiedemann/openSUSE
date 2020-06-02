@@ -1,7 +1,7 @@
 #
 # spec file for package python-xmlsec
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,20 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xmlsec
-Version:        1.3.6
+Version:        1.3.8
 Release:        0
 Summary:        Python bindings for the XML Security Library
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/mehcode/python-xmlsec
-Source:         https://github.com/mehcode/python-xmlsec/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/mehcode/python-xmlsec/pull/91
-Patch0:         reproducible.patch
+Source:         https://files.pythonhosted.org/packages/source/x/xmlsec/xmlsec-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lxml >= 3.0}
 BuildRequires:  %{python_module lxml-devel}
 BuildRequires:  %{python_module pkgconfig}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -50,8 +49,7 @@ Requires:       python-pkgconfig
 Python bindings for the XML Security Library
 
 %prep
-%setup -q
-%patch0 -p1
+%setup -q -n xmlsec-%{version}
 
 %build
 export CFLAGS="%{optflags}"
