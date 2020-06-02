@@ -1,0 +1,26 @@
+Index: django-rest-framework-client-0.1.1/tests/api.py
+===================================================================
+--- django-rest-framework-client-0.1.1.orig/tests/api.py	2017-05-07 21:11:26.000000000 +0200
++++ django-rest-framework-client-0.1.1/tests/api.py	2020-06-01 14:13:14.172177016 +0200
+@@ -3,7 +3,7 @@ import json
+ import mock
+ import requests
+ import requests_mock
+-import unittest2 as unittest
++import unittest
+ 
+ from drf_client.connection import Api
+ from drf_client.exceptions import HttpClientError, HttpServerError
+Index: django-rest-framework-client-0.1.1/tests/resources.py
+===================================================================
+--- django-rest-framework-client-0.1.1.orig/tests/resources.py	2017-05-07 21:11:26.000000000 +0200
++++ django-rest-framework-client-0.1.1/tests/resources.py	2020-06-01 14:13:31.476274606 +0200
+@@ -3,7 +3,7 @@ import json
+ import mock
+ import requests
+ import requests_mock
+-import unittest2 as unittest
++import unittest
+ 
+ from drf_client.connection import Api, RestResource
+ from drf_client import exceptions
