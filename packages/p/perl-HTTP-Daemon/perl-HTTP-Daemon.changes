@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed May 27 03:12:24 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 6.10
+   see /usr/share/doc/packages/perl-HTTP-Daemon/Changes
+
+  6.10      2020-05-26 16:20:36Z
+    - No changes since TRIAL release 6.09
+  
+  6.09      2020-05-25 16:52:14Z (TRIAL RELEASE)
+    - Require IO::Socket::IP 0.25 so that HTTP::Tiny uses it (GH#45) (Shoichi Kaji)
+  
+  6.08      2020-05-22 15:26:00Z (TRIAL RELEASE)
+    - In t/chunked.t, leave choosing IP address family to IO::Socket::IP (GH#42) (Shoichi Kaji)
+    - Add "IPv6 SUPPORT" section to pod (GH#43) (Shoichi Kaji)
+    - Use HTTP::Tiny 0.042+ for IPv6 support (GH#41) (Shoichi Kaji)
+  
+  6.07      2020-05-19 19:19:53Z (TRIAL RELEASE)
+    - Prefer IP address for host in $d->url (GH#40) (Shoichi Kaji)
+    - Improve documentation readability (GH#36) (Ferenc Erki)
+  
+
+-------------------------------------------------------------------
 Fri Aug 30 12:30:36 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 6.06
