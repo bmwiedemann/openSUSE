@@ -19,7 +19,7 @@
 %define icon_theme_name openSUSE-e-X
 
 Name:           enlightenment-theme-openSUSE
-Version:        20191110
+Version:        20200528
 Release:        0
 Summary:        openSUSE theme for Enlightenment
 License:        BSD-2-Clause AND LGPL-2.1-only AND CC-BY-SA-3.0
@@ -61,15 +61,15 @@ theme
 ./build-darkmod.sh --epkg
 cp enlightenment-elementary/openSUSE.edj ./default.edj
 cp licenses-authors/* .
-cp openSUSE-icons/README README.icons
+cp build/icons/openSUSE-icons/README README.icons
 
 %install
 install -m 0755 -d %{buildroot}%{_datadir}/elementary/themes
 install -m 0644 -t %{buildroot}%{_datadir}/elementary/themes default.edj
 install -m 0755 -d %{buildroot}%{_datadir}/icons/%{icon_theme_name}
-install -m 0644 -t %{buildroot}%{_datadir}/icons/%{icon_theme_name} openSUSE-icons/index.theme
+install -m 0644 -t %{buildroot}%{_datadir}/icons/%{icon_theme_name} build/icons/openSUSE-icons/index.theme
 
-pushd openSUSE-icons
+pushd build/icons/openSUSE-icons
 for d in */ ; do
     install -m 0755 -d %{buildroot}%{_datadir}/icons/%{icon_theme_name}/$d
     for in in $d/*/ ; do

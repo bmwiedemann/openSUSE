@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Thu May 28 13:03:41 UTC 2020 - Simon Lees <simonf.lees@suse.com>
+
+- 20200528 - efl 1.24
+
+-------------------------------------------------------------------
 Wed Nov  6 05:49:31 UTC 2019 - Simon Lees <sflees@suse.com>
 
-- 20191110 - efl 1.23  
+- 20191110 - efl 1.23
   * Now also ship openSUSE-e-X icon theme to match efl theme
 
 -------------------------------------------------------------------
@@ -24,7 +29,7 @@ Fri Jul 14 13:12:35 UTC 2017 - sflees@suse.de
 Thu Oct 20 02:21:20 UTC 2016 - sflees@suse.de
 
 - Update to 20161020
-  * Fixes incorrect clock color (due to upstream changes) 
+  * Fixes incorrect clock color (due to upstream changes)
 
 -------------------------------------------------------------------
 Tue Jul  5 04:38:44 UTC 2016 - sflees@suse.de
@@ -49,7 +54,7 @@ Tue Dec  1 07:19:26 UTC 2015 - simon@simotek.net
 -------------------------------------------------------------------
 Mon Oct 26 05:37:04 UTC 2015 - simon@simotek.net
 
-- Add some debug for when it fails in staging 
+- Add some debug for when it fails in staging
 
 -------------------------------------------------------------------
 Thu Oct 22 12:46:58 UTC 2015 - simon@simotek.net
@@ -70,7 +75,7 @@ Wed Jun 10 06:54:15 UTC 2015 - simon@simotek.net
 -------------------------------------------------------------------
 Sat Oct 11 00:08:20 UTC 2014 - simon@simotek.net
 
-- Follow upstream in relicencing bsd theme code to lgpl2+, 
+- Follow upstream in relicencing bsd theme code to lgpl2+,
      Note the build system is still BSD
 - Fix incorrect spec file which only mentioned BSD licence
 - Fix Init logo
@@ -112,7 +117,7 @@ Tue Feb 18 10:55:32 UTC 2014 - simon@simotek.net
 -------------------------------------------------------------------
 Wed Jan  1 02:43:43 UTC 2014 - simon@simotek.net
 
-- 20131230 
+- 20131230
   - Fix LED color in IBox
   - Fixed folder icon to suite the theme better
 
@@ -162,6 +167,5 @@ Tue Oct  1 04:03:57 UTC 2013 - simon@simotek.net
 -------------------------------------------------------------------
 Sat Sep 28 07:37:03 UTC 2013 - simon@simotek.net
 
-- Fixed init splash background 
+- Fixed init splash background
   version 20130928
-
