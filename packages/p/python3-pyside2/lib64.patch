@@ -1,12 +1,18 @@
-From f041ed5f4a3960cebf65c963b50d2c5490cd8b2a Mon Sep 17 00:00:00 2001
+From d494a8eb0653b6e22207c48da7808a0bbd86b569 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
 Date: Thu, 20 Dec 2018 19:05:03 +0100
 Subject: [PATCH] Lookup clang library and install in arch specific library
  path
 
 ---
+ build_scripts/platforms/unix.py                               | 4 ++--
+ sources/pyside2/CMakeLists.txt                                | 2 +-
+ .../shiboken2/ApiExtractor/clangparser/compilersupport.cpp    | 2 +-
+ sources/shiboken2/CMakeLists.txt                              | 2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
 diff --git a/build_scripts/platforms/unix.py b/build_scripts/platforms/unix.py
-index 83de489..f6498c6 100644
+index 60722cd..c9df7f9 100644
 --- a/build_scripts/platforms/unix.py
 +++ b/build_scripts/platforms/unix.py
 @@ -81,7 +81,7 @@ def prepare_packages_posix(self, vars):
@@ -18,7 +24,7 @@ index 83de489..f6498c6 100644
              "{st_build_dir}/{st_package_name}",
              filter=[
                  adjusted_lib_name("libshiboken*",
-@@ -156,7 +156,7 @@ def prepare_packages_posix(self, vars):
+@@ -139,7 +139,7 @@ def prepare_packages_posix(self, vars):
  
          # <install>/lib/lib* -> {st_package_name}/
          copydir(
@@ -28,10 +34,10 @@ index 83de489..f6498c6 100644
              filter=[
                  adjusted_lib_name("libpyside*",
 diff --git a/sources/pyside2/CMakeLists.txt b/sources/pyside2/CMakeLists.txt
-index 1603859..f8b1bf5 100644
+index bab97f4..26fa266 100644
 --- a/sources/pyside2/CMakeLists.txt
 +++ b/sources/pyside2/CMakeLists.txt
-@@ -96,7 +96,7 @@ endif()
+@@ -98,7 +98,7 @@ endif()
  
  option(BUILD_TESTS "Build tests." TRUE)
  option(ENABLE_VERSION_SUFFIX "Used to use current version in suffix to generated files. This is used to allow multiples versions installed simultaneous." FALSE)
@@ -41,7 +47,7 @@ index 1603859..f8b1bf5 100644
  if(CMAKE_HOST_APPLE)
      set(ALTERNATIVE_QT_INCLUDE_DIR "" CACHE PATH "Deprecated. CMake now finds the proper include dir itself.")
 diff --git a/sources/shiboken2/ApiExtractor/clangparser/compilersupport.cpp b/sources/shiboken2/ApiExtractor/clangparser/compilersupport.cpp
-index f301733..a421153 100644
+index dac5110..4b091eb 100644
 --- a/sources/shiboken2/ApiExtractor/clangparser/compilersupport.cpp
 +++ b/sources/shiboken2/ApiExtractor/clangparser/compilersupport.cpp
 @@ -243,7 +243,7 @@ static QString findClangLibDir()
@@ -54,11 +60,11 @@ index f301733..a421153 100644
                  return path;
          }
 diff --git a/sources/shiboken2/CMakeLists.txt b/sources/shiboken2/CMakeLists.txt
-index c1349ca..bdbc93d 100644
+index 5877971..25a53b3 100644
 --- a/sources/shiboken2/CMakeLists.txt
 +++ b/sources/shiboken2/CMakeLists.txt
-@@ -115,7 +115,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D QT_NO_CAST_FROM_ASCII -D QT_NO_CAST_T
- set(CMAKE_CXX_STANDARD 11)
+@@ -121,7 +121,7 @@ else()
+ endif()
  set(CMAKE_CXX_STANDARD_REQUIRED ON)
  
 -set(LIB_SUFFIX "" CACHE STRING "Define suffix of directory name (32/64)" )
@@ -66,17 +72,6 @@ index c1349ca..bdbc93d 100644
  set(LIB_INSTALL_DIR "lib${LIB_SUFFIX}" CACHE PATH "The subdirectory relative to the install \
      prefix where libraries will be installed (default is /lib${LIB_SUFFIX})" FORCE)
  set(BIN_INSTALL_DIR "bin" CACHE PATH "The subdirectory relative to the install prefix where \
-diff --git a/sources/shiboken2/data/shiboken_helpers.cmake b/sources/shiboken2/data/shiboken_helpers.cmake
-index 8111fa6..d9f8c1e 100644
---- a/sources/shiboken2/data/shiboken_helpers.cmake
-+++ b/sources/shiboken2/data/shiboken_helpers.cmake
-@@ -174,7 +174,8 @@ macro(setup_clang)
-         set(CLANG_LIB_NAMES libclang)
-     endif()
- 
--    find_library(CLANG_LIBRARY NAMES ${CLANG_LIB_NAMES} HINTS ${CLANG_DIR}/lib)
-+    set(LIB_SUFFIX "64" CACHE STRING "Define suffix of directory name (32/64)")
-+    find_library(CLANG_LIBRARY NAMES ${CLANG_LIB_NAMES} HINTS ${CLANG_DIR}/lib${LIB_SUFFIX})
-     if (NOT EXISTS ${CLANG_LIBRARY})
-         string(REPLACE ";" ", " CLANG_LIB_NAMES_STRING "${CLANG_LIB_NAMES}")
-         message(FATAL_ERROR "Unable to find the Clang library in ${CLANG_DIR}.\
+-- 
+2.26.2
+

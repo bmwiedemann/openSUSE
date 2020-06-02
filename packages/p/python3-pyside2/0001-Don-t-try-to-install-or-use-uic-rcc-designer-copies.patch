@@ -1,7 +1,7 @@
-From 69d6c32805c57e9b1c2428567ee968bff33781be Mon Sep 17 00:00:00 2001
+From 06f2d7c11dece8a6e7328cf4f8ade48ce75874b0 Mon Sep 17 00:00:00 2001
 From: Christophe Giboudeaux <christophe@krop.fr>
 Date: Mon, 30 Dec 2019 11:24:23 +0100
-Subject: [PATCH 1/2] Don't try to install or use uic/rcc/designer copies.
+Subject: [PATCH] Don't try to install or use uic/rcc/designer copies.
 
 These executables are installed by qtbase and qttools. Making copies
 is not needed.
@@ -13,7 +13,7 @@ pyside2-tools wrongly assumed the executables were in /usr/bin on Linux.
  2 files changed, 1 insertion(+), 64 deletions(-)
 
 diff --git a/build_scripts/platforms/unix.py b/build_scripts/platforms/unix.py
-index abca942..f5b2760 100644
+index b842510..fd2f71c 100644
 --- a/build_scripts/platforms/unix.py
 +++ b/build_scripts/platforms/unix.py
 @@ -134,24 +134,9 @@ def prepare_packages_posix(self, vars):
@@ -30,8 +30,8 @@ index abca942..f5b2760 100644
 -            executables.extend(copydir(
 -                "{install_dir}/bin/Designer.app",
 -                "{st_build_dir}/{st_package_name}/Designer.app",
--                filter=None,
--                recursive=True, vars=vars))
+-                filter=None, recursive=True,
+-                force=False, vars=vars))
 -        else:
 -            copyfile(
 -                "{install_dir}/bin/designer",
@@ -110,5 +110,5 @@ index ce65750..ed7fb09 100644
                 "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
                 IMMEDIATE @ONLY)
 -- 
-2.24.1
+2.26.2
 

@@ -22,7 +22,7 @@
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 Name:           python3-pyside2
-Version:        5.14.1
+Version:        5.15.0
 Release:        0
 Summary:        Python bindings for Qt
 # Legal:
@@ -39,8 +39,6 @@ Patch0:         lib64.patch
 Patch1:         0001-Don-t-try-to-install-or-use-uic-rcc-designer-copies.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         0002-Fix-the-openSUSE-executable-names.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-shiboken-Support-Clang-version-10.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -49,8 +47,7 @@ BuildRequires:  libqt5-qtdeclarative-private-headers-devel
 
 ##### essential modules
 BuildRequires:  cmake(Qt5Concurrent)
-BuildConflicts: cmake(Qt5Core) >= 5.15
-BuildRequires:  cmake(Qt5Core) >= 5.14
+BuildRequires:  cmake(Qt5Core) >= 5.15
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Sql)
@@ -74,12 +71,14 @@ BuildRequires:  cmake(Qt5Designer)
 BuildRequires:  cmake(Qt5Multimedia)
 BuildRequires:  cmake(Qt5MultimediaWidgets)
 BuildRequires:  cmake(Qt5OpenGL)
+BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5RemoteObjects)
 BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5ScriptTools)
 BuildRequires:  cmake(Qt5Scxml)
 BuildRequires:  cmake(Qt5Sensors)
+BuildRequires:  cmake(Qt5SerialPort)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5TextToSpeech)
 BuildRequires:  cmake(Qt5WebChannel)
@@ -125,7 +124,6 @@ Examples and Tutorials for the PySide2 bindings for Qt.
 %setup -q -n pyside-setup-opensource-src-%{version}
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 %if "%{_lib}" == "lib64"
 %patch0 -p1
 %endif

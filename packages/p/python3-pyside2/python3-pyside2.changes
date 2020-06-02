@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed May 27 12:03:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.15.0
+  * [PYSIDE-487] Add API of Qt 5.15
+  * [PYSIDE-487] Add support for QSerialPort
+  * [PYSIDE-487] Add QtQuickControls2
+  * [PYSIDE-841] example: add systray example
+  * [PYSIDE-841] doc: add more videos from Qt events
+  * [PYSIDE-841] doc: add tutorial for using qrc files
+  * [PYSIDE-904] libpyside: Remove deprecated API
+  * [PYSIDE-904] Add support for template type aliases
+  * [PYSIDE-957] Add a tool to dump meta objects of QObject-derived classes
+  * [PYSIDE-1280] Enable injecting raw code for setattro/getattro
+  * [PYSIDE-1309] Rename and update some snippets
+  * [PYSIDE-454] shiboken: Add a way of specifying system includes to be parsed
+  * [PYSIDE-454] shiboken: Handle smart pointers with const pointees
+  * [PYSIDE-904] libshiboken: Remove deprecated API
+  * [PYSIDE-957] shiboken: Fix refcounts of sbkenum
+  * [PYSIDE-990] shiboken: Handle inline namespaces
+  * [PYSIDE-1024] shiboken: Make it possible to specify smartpointer instantiations
+  * [PYSIDE-1074] shiboken: Fix classes in hidden namespaces
+  * [PYSIDE-1188] shiboken: Fix shared pointer return value in virtual function
+  * [PYSIDE-1265] shiboken: Introduce a separate logging category for documentation generation
+  * [PYSIDE-1265] shiboken: Change debug messages to use qCInfo and remove some messages
+  * [PYSIDE-1267] shiboken: Allow for parsing headers under system include paths
+  * [PYSIDE-1296] shiboken: Support non-type template parameters in functions
+- Drop 0001-shiboken-Support-Clang-version-10.patch. Fixed upstream
+- Rebase 0001-Don-t-try-to-install-or-use-uic-rcc-designer-copies.patch
+- Rebase lib64.patch
+
+-------------------------------------------------------------------
 Thu Apr 23 12:46:58 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to support clang 10:
