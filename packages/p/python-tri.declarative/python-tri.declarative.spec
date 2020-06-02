@@ -29,9 +29,7 @@ Source:         https://github.com/TriOptima/tri.declarative/archive/%{version}.
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-# Tests are incomptaible with pytest 5
-# https://github.com/TriOptima/tri.declarative/issues/9
-BuildRequires:  %{python_module pytest < 5}
+BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module tri.struct >= 3.0.0}
 # /SECTION
 BuildRequires:  fdupes
@@ -55,7 +53,9 @@ subclass semantics in the style of django Model classes.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# test_namespace_missing_call_target - pytest5 incompatible usage
+#   https://github.com/TriOptima/tri.declarative/issues/9
+%pytest -k 'not test_namespace_missing_call_target'
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst

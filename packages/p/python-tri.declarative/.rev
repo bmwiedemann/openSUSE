@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>794885</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4c86e16cfc218ded8585d79f0c5a2b44</srcmd5>
+    <version>5.3.0</version>
+    <time>1591101355</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pytest5 and disable one test that does not work with it</comment>
+    <requestid>810163</requestid>
+  </revision>
 </revisionlist>

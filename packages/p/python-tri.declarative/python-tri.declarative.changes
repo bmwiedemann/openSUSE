@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 29 09:28:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to pytest5 and disable one test that does not work with it
+
+-------------------------------------------------------------------
 Fri Apr 17 11:19:26 UTC 2020 - pgajdos@suse.com
 
 - version update to 5.3.0
