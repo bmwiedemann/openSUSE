@@ -26,6 +26,7 @@ URL:            https://github.com/opcm/pcm
 Source:         https://github.com/opcm/pcm/archive/%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  make
+ExclusiveArch:  %ix86 x86_64
 
 %description
 Processor Counter Monitor (PCM) is an application programming interface (API)
