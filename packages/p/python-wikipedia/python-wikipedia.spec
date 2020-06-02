@@ -1,7 +1,7 @@
 #
 # spec file for package python-wikipedia
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/goldsmith/Wikipedia
 Source:         https://files.pythonhosted.org/packages/source/w/wikipedia/wikipedia-%{version}.tar.gz
 BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
@@ -55,7 +55,7 @@ Wikipedia data, not getting it.
 
 %check
 ln -s tests/request_mock_data.py .
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
 %license LICENSE
