@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 29 07:10:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull in the dephell-macros for now as it cycles
+
+-------------------------------------------------------------------
 Mon Mar 23 18:13:44 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add macro %dephell_genspec to generate setup.py
