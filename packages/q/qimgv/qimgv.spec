@@ -23,12 +23,16 @@ Summary:        Qt5 image viewer
 License:        GPL-3.0-only
 URL:            https://github.com/easymodo/qimgv
 Source0:        https://github.com/easymodo/qimgv/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FEATURE-OPENSUSE qimgv-nosharedlib.patch # aloisio@gmx.com build helper library statically
-Patch0:         qimgv-nosharedlib.patch
 # PATCH-FEATURE-OPENSUSE qimgv-PIE.patch # aloisio@gmx.com add PIE flags
 Patch1:         qimgv-PIE.patch
 # PATCH-FIX-OPENSUSE qimgv-includepath.patch # aloisio@gmx.com use correct path for opencv includes
 Patch2:         qimgv-includepath.patch
+# PATCH-FIX-UPSTREAM qimgv-pluginpath_1.patch
+Patch3:         qimgv-pluginpath_1.patch
+# PATCH-FIX-UPSTREAM qimgv-pluginpath_2.patch
+Patch4:         qimgv-pluginpath_2.patch
+# PATCH-FIX-UPSTREAM qimgv-pluginpath_3.patch
+Patch5:         qimgv-pluginpath_3.patch
 BuildRequires:  cmake >= 3.13
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++
@@ -42,6 +46,7 @@ BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.9
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(mpv) >= 1.22.0
+Requires:       mpv >= 0.32.0
 
 %description
 Qt5 image viewer with webm support.
@@ -53,7 +58,7 @@ Qt5 image viewer with webm support.
 export CXX=g++
 test -x "$(type -p g++-8)" && export CXX=g++-8
 %cmake
-make %{?_smp_mflags}
+%make_jobs
 
 %install
 %cmake_install
@@ -64,5 +69,7 @@ make %{?_smp_mflags}
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
+%{_libdir}/%{name}
+%{_libdir}/%{name}/player_mpv.so
 
 %changelog

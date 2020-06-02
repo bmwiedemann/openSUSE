@@ -1,0 +1,121 @@
+From dab45dd74ca2e8c208548f3e21546dc3e91acf34 Mon Sep 17 00:00:00 2001
+From: easymodo <easymodofrf@gmail.com>
+Date: Sun, 31 May 2020 17:56:31 +0300
+Subject: [PATCH] [cmake] use absolute path for player .so; initPlayer() -
+ tweak file checks & error messages
+
+---
+ CMakeLists.txt                             |  6 +++---
+ qimgv/CMakeLists.txt                       |  2 +-
+ qimgv/gui/viewers/videoplayerinitproxy.cpp | 25 +++++++++-------------
+ qimgv/gui/viewers/videoplayerinitproxy.h   |  1 +
+ 4 files changed, 15 insertions(+), 19 deletions(-)
+
+Index: qimgv-0.9.1/CMakeLists.txt
+===================================================================
+--- qimgv-0.9.1.orig/CMakeLists.txt
++++ qimgv-0.9.1/CMakeLists.txt
+@@ -12,10 +12,10 @@ project(qimgv
+ #endif()
+ message(STATUS "Build configuration: " ${CMAKE_BUILD_TYPE})
+ 
+-set(QIMGV_PLUGIN_PATH "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/qimgv")
+-ADD_DEFINITIONS(-D_QIMGV_PLUGIN_PATH="${QIMGV_PLUGIN_PATH}/")
++set(QIMGV_PLUGIN_DIR "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/qimgv")
++ADD_DEFINITIONS(-D_QIMGV_PLUGIN_DIR="${QIMGV_PLUGIN_DIR}")
+ 
+-message(STATUS "Plugin path: " ${QIMGV_PLUGIN_PATH})
++message(STATUS "Plugin dir: " ${QIMGV_PLUGIN_DIR})
+ 
+ # detect if libstdc++ is in use to know if libstdc++fs should be linked
+ include(CheckCXXSourceCompiles)
+Index: qimgv-0.9.1/qimgv/CMakeLists.txt
+===================================================================
+--- qimgv-0.9.1.orig/qimgv/CMakeLists.txt
++++ qimgv-0.9.1/qimgv/CMakeLists.txt
+@@ -46,7 +46,7 @@ endif()
+ if(VIDEO_SUPPORT)
+     target_compile_definitions(qimgv PRIVATE USE_MPV)
+     if(NOT WIN32)
+-        ADD_DEFINITIONS(-D_QIMGV_PLAYER_PLUGIN="player_mpv.so")
++        ADD_DEFINITIONS(-D_QIMGV_PLAYER_PLUGIN="${QIMGV_PLUGIN_DIR}/player_mpv.so")
+     endif()
+ endif()
+ if(OPENCV_SUPPORT)
+Index: qimgv-0.9.1/qimgv/gui/viewers/videoplayerinitproxy.cpp
+===================================================================
+--- qimgv-0.9.1.orig/qimgv/gui/viewers/videoplayerinitproxy.cpp
++++ qimgv-0.9.1/qimgv/gui/viewers/videoplayerinitproxy.cpp
+@@ -1,11 +1,5 @@
+ #include "videoplayerinitproxy.h"
+ 
+-#ifdef _QIMGV_PLUGIN_PATH
+-    #define QIMGV_PLUGIN_PATH _QIMGV_PLUGIN_PATH
+-#else
+-    #define QIMGV_PLUGIN_PATH ""
+-#endif
+-
+ #ifdef _QIMGV_PLAYER_PLUGIN
+     #define QIMGV_PLAYER_PLUGIN _QIMGV_PLAYER_PLUGIN
+ #else
+@@ -38,21 +32,22 @@ std::shared_ptr<VideoPlayer> VideoPlayer
+ }
+ 
+ inline bool VideoPlayerInitProxy::initPlayer() {
+-    QString path = QString(QIMGV_PLUGIN_PATH) + QIMGV_PLAYER_PLUGIN;
++    QString path = QIMGV_PLAYER_PLUGIN;
+ #ifndef USE_MPV
+     return false;
+ #endif
+     if(player)
+         return true;
+-#ifdef __linux
+-    if(QFile::exists(path)) {
++#ifdef _WIN32
++    playerLib.setFileName("plugins/player_mpv.dll");
++#else
++    QFileInfo pluginFile(path);
++    if(pluginFile.isFile() && pluginFile.isReadable()) {
+         playerLib.setFileName(path);
+     } else {
+         qDebug() << "Plugin at:" << path << "does not exist.";
+-        playerLib.setFileName("qimgv_player_mpv"); // let QLibrary try to find it
++        return false;
+     }
+-#else
+-    playerLib.setFileName("libqimgv_player_mpv.dll");
+ #endif
+     typedef VideoPlayer* (*createPlayerWidgetFn)();
+     createPlayerWidgetFn fn = (createPlayerWidgetFn) playerLib.resolve("CreatePlayerWidget");
+@@ -61,7 +56,7 @@ inline bool VideoPlayerInitProxy::initPl
+         player.reset(pl);
+     }
+     if(!player) {
+-        qDebug() << "Could not load plugin:" << playerLib.fileName();
++        qDebug() << "Could not load plugin:" << playerLib.fileName() << ". Last error: " << playerLib.errorString();
+         return false;
+     }
+ 
+@@ -75,8 +70,8 @@ inline bool VideoPlayerInitProxy::initPl
+     setFocusProxy(player.get());
+     connect(player.get(), SIGNAL(durationChanged(int)), this, SIGNAL(durationChanged(int)));
+     connect(player.get(), SIGNAL(positionChanged(int)), this, SIGNAL(positionChanged(int)));
+-    connect(player.get(), SIGNAL(videoPaused(bool)), this, SIGNAL(videoPaused(bool)));
+-    connect(player.get(), SIGNAL(playbackFinished()), this, SIGNAL(playbackFinished()));
++    connect(player.get(), SIGNAL(videoPaused(bool)),    this, SIGNAL(videoPaused(bool)));
++    connect(player.get(), SIGNAL(playbackFinished()),   this, SIGNAL(playbackFinished()));
+     return true;
+ }
+ 
+Index: qimgv-0.9.1/qimgv/gui/viewers/videoplayerinitproxy.h
+===================================================================
+--- qimgv-0.9.1.orig/qimgv/gui/viewers/videoplayerinitproxy.h
++++ qimgv-0.9.1/qimgv/gui/viewers/videoplayerinitproxy.h
+@@ -7,6 +7,7 @@
+ #include "videoplayer.h"
+ #include "settings.h"
+ #include <QLibrary>
++#include <QFileInfo>
+ #include <QDebug>
+ 
+ class VideoPlayerInitProxy : public VideoPlayer {
