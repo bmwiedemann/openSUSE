@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 27 14:24:06 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.7.1
+* Fix decoding of DICOM images for plugins (for compatibility with
+  Orthanc Web Viewer 2.6) 
+
+-------------------------------------------------------------------
 Fri May 22 17:22:11 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - new version 1.7.0
