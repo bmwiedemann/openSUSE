@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 27 15:42:20 UTC 2020 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Remove third party files which are not distributed BSD-3-Clause
+  from the source tar.xz 
+
+-------------------------------------------------------------------
 Mon Apr 20 05:33:17 UTC 2020 - Cliff Zhao <qzhao@suse.com>
 
 - Update mozc.spec: Drop the is_opensuse macro to eliminate in 
