@@ -1,7 +1,7 @@
 #
 # spec file for package clementine
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define rev 240ba7b487e7132f14053e643866307b323b5f01
+%define rev eeb9f7e30311a11bb9ea2d37ee701db086dc4fd9
 
-%bcond_with git
+%bcond_without git
 
 %if 0%{?suse_version} > 1500
 %bcond_without manpage
@@ -29,21 +29,22 @@
 %define gname Clementine
 
 Name:           clementine
-Version:        1.3.9
+Version:        1.3.92
 Release:        0
 Summary:        A music player inspired by Amarok 1.4
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
-Url:            https://clementine-player.org/
+URL:            https://clementine-player.org/
 %if %{without git}
-Source:         https://github.com/clementine-player/%{gname}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+#Source:         https://github.com/clementine-player/%%{gname}/archive/%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
 %else
-#Source0:        https://github.com/clementine-player/Clementine/archive/%%{rev}.tar.gz#/%%{name}-%%{version}.tar.gz
+Source0:        https://github.com/clementine-player/Clementine/archive/%{rev}.tar.gz#/%{name}-%{version}.tar.gz
 %endif
 # PATCH-FEATURE-UPSTREAM uudisks2-support-for-devicemanager.patch
 Patch1:         clementine-udisks-headers.patch
 # Patch fix factory build, add -fPIC to moodbar build
 Patch2:         clementine-moodbar-fpic.patch
+Patch3:         0001-Adds-missing-QPainterPath-include.patch
 # PATCH-FIX-OPENSUSE clementine-hidden-systray-icon.patch davejplater@gmail.com -- sys tray icon is hidden on some plasma5 systems.
 Patch4:         clementine-hidden-systray-icon.patch
 # PATCH-FEATURE-OPENSUSE
