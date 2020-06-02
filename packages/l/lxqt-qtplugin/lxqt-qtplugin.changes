@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  1 05:54:21 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.1:
+  * Fixed Fusion's window color with Qt 5.15.
+  * Made the window color configurable.
+
+-------------------------------------------------------------------
 Mon Apr 27 11:00:52 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Changed lxqt-qtplugin.keyring to tsujan's key

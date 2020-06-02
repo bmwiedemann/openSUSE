@@ -240,4 +240,14 @@
     <comment></comment>
     <requestid>798544</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7e2c2378f805a7e40a6024a670136772</srcmd5>
+    <version>0.15.1</version>
+    <time>1591101446</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.1:
+  * Fixed Fusion's window color with Qt 5.15.
+  * Made the window color configurable.</comment>
+    <requestid>810524</requestid>
+  </revision>
 </revisionlist>
