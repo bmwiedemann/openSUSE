@@ -17,14 +17,14 @@
 
 
 Name:           jag
-Version:        0.3.6
+Version:        0.3.7
 Release:        0
 Summary:        Arcade and Puzzle 2D Game in which you have to break all the target pieces
 # jag.xlabsoft.com is down
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Logic
-URL:            https://salsa.debian.org/games-team/jag
-Source0:        https://salsa.debian.org/games-team/jag/-/archive/upstream/%{version}/%{name}-upstream-%{version}.tar.bz2
+URL:            https://gitlab.com/coringao/jag
+Source0:        https://gitlab.com/coringao/jag/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source2:        %{name}.appdata.xml
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -77,7 +77,7 @@ have beaten the last level and won the game.
 This package contains the level editor for JAG.
 
 %prep
-%setup -q -n %{name}-upstream-%{version}
+%setup -q
 
 # qmake...
 sed -i 's#target.path = %{_prefix}/games/#target.path = %{_bindir}#' game.pro

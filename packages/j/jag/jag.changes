@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 29 16:17:10 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.3.7
+  * Fixed integrated qmake support for pkg-config
+  * jag-editor: Removing extra file after running the compiled binary.
+- Update URL.
+
+-------------------------------------------------------------------
 Tue Mar 31 13:05:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 0.3.6
