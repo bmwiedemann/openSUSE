@@ -17,7 +17,7 @@
 
 
 Name:           treeline
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        Versatile Tree-Style Outliner for Defining Custom Data Schemas
 License:        GPL-2.0-or-later
@@ -76,9 +76,7 @@ python3 install.py -x \
    -d "%{_docdir}/%{name}" \
    -b %{buildroot}
 
-pushd %{buildroot}%{python_sitearch}
 python3 -c "import compileall; compileall.compile_dir('%{buildroot}%{_libexecdir}/treeline',2,ddir='%{_libexecdir}/treeline')"
-popd
 
 install -d "%{buildroot}%{_datadir}/mimelnk/application"
 install -m0644 \

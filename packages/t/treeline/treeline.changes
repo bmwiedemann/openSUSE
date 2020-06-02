@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun May 24 10:50:29 UTC 2020 - Gottfried Necker <gottfried.necker@gmx.de>
+
+- Update to 3.1.2
+  * Packaging:
+    - Remove pushd and popd from spec file.
+
+  * New Features:
+    - Add a simplified Chinese GUI translation
+      (thanks to Qu Ray for translating).
+    - Add a general option to extend the height of data editors with 
+      long text content. The default setting (limit the height to
+      the window size) is unchanged. The new option uses the view
+      scroll bars to access the full text length.
+
+  * Updates:
+    - Restore the cursor and scroll positions of data editors when
+      the editors are re-created after focus changes.
+    - Add an asterisk after the file name in the title bar if
+      a file has been modified.
+    - Change lettered outline numbering sequences to match standards.
+      The sequences change from ...Y, Z, AA, AB, AC... to ...Y, Z, AA, BB, CC...
+
+  * Bug Fixes:
+    - Fix a bug that truncated plain text exports after the first line.
+    - Enable the title list view's select in tree context menu to be used
+      on new child nodes.
+    - Modify dark mode colors to make tool tips visible.
+    - Fix error due to character encoding when importing files from Treepad.
+    - Fix an error caused by attempting to print an empty branch.
+
+- changelog for 3.1.1
+  * Updates:
+    - Added many Show Configuration Structure data fields to show detailed
+      settings for type formats and field formats.
+    - Added support for finding and replacing empty data fields using the
+      search and replace command.
+    - Updated German and Spanish GUI translations (thanks to Maria Seliger
+      and Diego).
+
+  * Bug Fixes:
+    - Fix printing problems when using the dark theme.
+    - Fix incorrect numbering updates in some situations with mixed node types.
+    - Fix problems defining a math field equation on a recently copied data type.
+    - Eliminate a problem defining math field equations that include
+      child count references.
+    - Fix a minor bug affecting default directories for save-as and export
+      commands when there is not already a file name set.
+
+-------------------------------------------------------------------
 Fri Sep 20 08:57:19 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 3.1.1 to use PyQt5 instead of PyQt4.
