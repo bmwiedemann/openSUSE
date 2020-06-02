@@ -300,4 +300,14 @@
 - Remove not needed install-location.patch.</comment>
     <requestid>796230</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>19a1bdb891512886945393fb8e35d3c6</srcmd5>
+    <version>2.10.0+git.20200420.d83cbda</version>
+    <time>1591101493</time>
+    <user>dimstar_suse</user>
+    <comment>- Use LLVM 10.
+
+- Update Requires for the package.</comment>
+    <requestid>810370</requestid>
+  </revision>
 </revisionlist>

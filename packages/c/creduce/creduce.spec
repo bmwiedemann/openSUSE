@@ -29,12 +29,12 @@ Patch2:         binary-search-location.patch
 Patch3:         port-to-llvm10.patch
 Patch4:         std-cpp14.patch
 BuildRequires:  astyle
-BuildRequires:  clang9-devel
+BuildRequires:  clang10-devel
 BuildRequires:  delta
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  indent
-BuildRequires:  llvm9-devel
+BuildRequires:  llvm10-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  perl-Benchmark-Timer
 BuildRequires:  perl-Exporter-Lite
@@ -43,10 +43,10 @@ BuildRequires:  perl-Getopt-Tabular
 BuildRequires:  perl-Regexp-Common
 BuildRequires:  perl-Term-ReadKey
 Requires:       astyle
-Requires:       clang9-devel
+Requires:       clang10
 Requires:       delta
 Requires:       indent
-Requires:       llvm9-devel
+Requires:       llvm10
 Requires:       perl-Benchmark-Timer
 Requires:       perl-Exporter-Lite
 Requires:       perl-File-Which

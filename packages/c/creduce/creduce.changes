@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 30 14:12:38 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use LLVM 10.
+
+-------------------------------------------------------------------
+Sat May 30 13:45:59 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Update Requires for the package.
+
+-------------------------------------------------------------------
 Wed Apr 22 08:20:25 UTC 2020 - mliska@suse.cz
 
 - Update to version 2.10.0+git.20200420.d83cbda:
