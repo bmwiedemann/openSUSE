@@ -215,9 +215,6 @@ find . \( -name \*.txt -o -name \*.xml -o -name '*.[ch]' -o -name '*.[ch][px][px
 
 %cmake_install
 
-# UNNECESSARY STATIC LIBS
-rm %{buildroot}%{_libdir}/%{name}-%{major_ver}/plugins/GeodesicMeasurement/libFmmMesh.a
-
 # INSTALL DOCUMENTATION USED BY THE HELP MENU IN MAIN APP
 install -Dm0644 %{S:2} %{buildroot}%{_datadir}/%{name}-%{major_ver}/doc/GettingStarted.pdf
 install -Dm0644 %{S:3} %{buildroot}%{_datadir}/%{name}-%{major_ver}/doc/Guide.pdf

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 17 19:57:59 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Don't delete libFmmMesh.a static lib, it is referenced by
+  installed cmake files and needed for plugin development.
+
+-------------------------------------------------------------------
 Thu May  7 21:53:50 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop patches no longer needed:

@@ -346,4 +346,12 @@ Please consider for 13.2, which already has 4.2.0-RC1 and the only change is the
     <comment></comment>
     <requestid>802707</requestid>
   </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>880c0f0101cd7f6e00a79b4f7d1f71f3</srcmd5>
+    <version>5.8.0</version>
+    <time>1591101413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810271</requestid>
+  </revision>
 </revisionlist>
