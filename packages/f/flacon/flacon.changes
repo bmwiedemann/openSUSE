@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May 31 11:14:30 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+- Update to version 6.0.0
+  * Added support of profiles, you can have different encoding
+    options for different cases, such as maximum quality for your
+    computer, and CD quality for your phone.
+  * Improved usability of the preferences dialog.
+  * Now the program generates file names that are safe for
+    Windows file systems.
+  * Support for sampling rates greater than 192000 Hz.
+  * When used in console mode, the program prints information
+    about the status of tracks conversion.
+  * Many small improvements and bug fixes.
+  * Translations updated.
+
+-------------------------------------------------------------------
 Fri Mar 13 15:39:56 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Recommend faac

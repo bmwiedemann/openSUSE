@@ -18,7 +18,7 @@
 
 
 Name:           flacon
-Version:        5.5.1
+Version:        6.0.0
 Release:        0
 Summary:        Audio File Encoder
 License:        LGPL-2.1-or-later
@@ -73,7 +73,7 @@ tag separately.
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/flacon.png
 %{_datadir}/icons/hicolor/scalable/apps/flacon.svg
-%{_datadir}/metainfo/com.github.Flacon.metadata.xml
+%{_datadir}/metainfo/com.github.Flacon.metainfo.xml
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files lang -f %{name}.lang
