@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 21 19:24:41 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1590082367.4286487f:
+  * Dockerfile: Remove unused dependencies
+  * Use new docker image os-autoinst_dev
+  * Simplify some code
+  * Remove redundant newline in diag message
+  * Change BuildTag in Dockerfile
+
+-------------------------------------------------------------------
 Tue May 19 11:24:46 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1589880721.55a008dd:
