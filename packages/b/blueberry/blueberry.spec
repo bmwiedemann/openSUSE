@@ -18,7 +18,7 @@
 
 %define __requires_exclude typelib\\((St)\\)
 Name:           blueberry
-Version:        1.3.6
+Version:        1.3.8
 Release:        0
 Summary:        A configuration tool for Bluetooth
 License:        GPL-3.0-or-later
@@ -75,9 +75,6 @@ install -Dpm 0644 %{name}-rfkill.rules \
 %{_sysconfdir}/xdg/autostart/%{name}-obex-agent.desktop
 %{_bindir}/%{name}*
 %{_libexecdir}/%{name}/
-%dir %{_datadir}/cinnamon/
-%dir %{_datadir}/cinnamon/applets/
-%{_datadir}/cinnamon/applets/%{name}*/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/*/%{name}*
 %{_datadir}/glib-2.0/schemas/org.%{name}.gschema.xml
