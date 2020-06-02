@@ -69,6 +69,7 @@ KAddressbook is an application by KDE to manage contacts.
 %package doc
 Summary:        Documentation for kaddressbook
 Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description doc
 This package includes the user guide for KAddressbook in HTML format.
