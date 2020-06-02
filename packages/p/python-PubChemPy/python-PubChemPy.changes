@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Fri May 29 07:18:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Refetch the tarball to match the url
+- Add tests (disabled) as they are all online ones
+- Install license and docs
+
+-------------------------------------------------------------------
+Thu May 28 15:34:38 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Remove python-devel dependency, exclude pycache files. 
+
+-------------------------------------------------------------------
+Thu May 28 12:16:36 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Cleanup spec file 
+
+-------------------------------------------------------------------
+Wed Apr 22 02:30:51 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Initial package release. 
