@@ -226,4 +226,22 @@
     blogc(1)'s -p command-line argument.</comment>
     <requestid>730285</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d7a4b36c265626415856df139dfbc707</srcmd5>
+    <version>0.19.0</version>
+    <time>1591101561</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.19.0:
+  * blogc(1) now accepts multiple -e command-line arguments, to allow
+    declaration of multiple listing_entry template blocks.
+	See blogc-template(7) for details. This is not supported by
+	blogc-make(1), it only accepts one file as listing_entry setting.
+  * blogc(1) now supports a listing_empty template block, that is
+    displayed only when the the listing set is empty.
+	See blogc-template(7) for details.
+  * Fixed a race condition in blogc-make(1)'s runserver command.
+  * Minor adjustments in blogc-make(1) atom feed generation.
+  * Some other minor bug fixes.</comment>
+    <requestid>810520</requestid>
+  </revision>
 </revisionlist>
