@@ -1,7 +1,7 @@
 #
 # spec file for package python-xmltodict
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-xml
 BuildArch:      noarch
-BuildRequires:  %{python_module nose >= 1.0}
+BuildRequires:  %{python_module pytest}
 %python_subpackages
 
 %description
@@ -54,7 +54,7 @@ export LANG=en_US.UTF-8
 
 %check
 export LANG=en_US.UTF-8
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
 %license LICENSE
