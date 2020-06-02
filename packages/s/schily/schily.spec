@@ -17,14 +17,14 @@
 
 
 # grep -Pir 'define\s+VERSION|strvers'
-%global box_version	2020.05.11
+%global box_version	2020.05.25
 %global cdr_version	3.02~a10
 %global sccs_version	5.09
 %global smake_version	1.3
 %global star_version	1.6.1
 %global libfind_version 1.7
 %global ved_version     1.7
-%define rver	2020-05-11
+%define rver	2020-05-25
 
 Name:           schily
 Version:        %box_version
@@ -41,7 +41,6 @@ Source1:        README-FIRST
 # and submit patches upstream FIRST (cc to the bspkg maintainer perhaps).
 Patch1:         iconv-name.diff
 Patch2:         schily-2018-05-25_star_configuration.patch
-Patch3:         large_mac_iso.patch
 BuildRequires:  autoconf
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -970,34 +969,13 @@ fi
 %_mandir/man1/rcs2sccs.1*
 %_mandir/man1/rmdel.1*
 %_mandir/man1/sact.1*
-%_mandir/man1/sccs-admin.1*
-%_mandir/man1/sccs-cdc.1*
-%_mandir/man1/sccs-comb.1*
-%_mandir/man1/sccs-cvt.1*
-%_mandir/man1/sccs-delta.1*
-%_mandir/man1/sccs-get.1*
-%_mandir/man1/sccs-help.1*
-%_mandir/man1/sccs-log.1*
-%_mandir/man1/sccs-prs.1*
-%_mandir/man1/sccs-prt.1*
-%_mandir/man1/sccs-rcs2sccs.1*
-%_mandir/man1/sccs-rmdel.1*
-%_mandir/man1/sccs-sact.1*
-%_mandir/man1/sccs-sccsdiff.1*
-%_mandir/man1/sccs-unget.1*
-%_mandir/man1/sccs-val.1*
-%_mandir/man1/sccs.1*
-%_mandir/man1/sccscvt.1*
-%_mandir/man1/sccsdiff.1*
-%_mandir/man1/sccslog.1*
-%_mandir/man1/sccspatch.1*
+%_mandir/man1/sccs*.1*
 %_mandir/man1/unget.1*
 %_mandir/man1/val.1*
 %_mandir/man1/vc.1*
 %_mandir/man1/what.1*
 %_mandir/man5/changeset.5*
-%_mandir/man5/sccschangeset.5*
-%_mandir/man5/sccsfile.5*
+%_mandir/man5/sccs*.5*
 
 %files -n schily-mt
 %license CDDL.Schily.txt

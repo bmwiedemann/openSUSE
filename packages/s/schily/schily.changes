@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue May 26 11:32:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.05.25
+  * mkisofs: Fixed an integer overflow bug in mac_label.c with
+    Apple -chrp boot.
+  * star: The subst command for pax now supports the \1, \2, ...
+    escapes for \(...\) selections in the from pattern, like it
+    is used by sed(1).
+  * star: A new subst option -pax-s has been added that supports
+    sed(1) like substitutions. The old option -s continues to
+    support change(1) like substititions.
+  * SCCS: A new option -X0 has been introduced to allow to use
+    nul byte separated file names on stdin when using the file
+    argument "-".
+  * SCCS: The commands sccslog and sccscvt now also support the
+    argument "-" as a directive to read filenames from stdin.
+  * SCCS: `sccs init` now by default creates an empty changeset
+    history file with release 1.0 as
+    $SRC_ROOT/.sccs/SCCS/s.changeset This signals SCCS to work in
+    project mode where a group of files is managed together and
+    the version 1.0 allows the first proect release to become
+    1.1.
+  * SCCS: `sccs init -s` now allows to initialize a directory
+    tree without creating a $SRC_ROOT/.sccs/SCCS/s.changeset
+    history file. This signals SCCS to work in single file mode.
+- Drop large_mac_iso.patch (merged)
+
+-------------------------------------------------------------------
 Wed May 13 09:21:22 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.05.11
