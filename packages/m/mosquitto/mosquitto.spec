@@ -26,7 +26,7 @@
 %endif
 %bcond_without  websockets
 Name:           mosquitto
-Version:        1.6.9
+Version:        1.6.10
 Release:        0
 Summary:        A MQTT v3.1/v3.1.1 Broker
 License:        EPL-1.0
