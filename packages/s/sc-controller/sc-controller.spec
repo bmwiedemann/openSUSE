@@ -1,7 +1,7 @@
 #
 # spec file for package sc-controller
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           sc-controller
-Version:        0.4.7
+Version:        0.4.7.20200531
 Release:        0
 Summary:        User-mode driver and GTK3-based GUI for the Steam Controller
 License:        GPL-2.0-only
 Group:          Hardware/Joystick
-URL:            https://github.com/kozec/sc-controller
-Source:         https://github.com/kozec/sc-controller/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/Ryochan7/sc-controller/tree/python3
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
@@ -31,13 +31,12 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
 BuildRequires:  zlib-devel
-BuildRequires:  pkgconfig(python2)
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(udev)
-#Requires:       libgtk-3-0
-Requires:       python-evdev
-Requires:       python-gobject-Gdk
-Requires:       python-pylibacl
-Requires:       python-setuptools
+Requires:       python3-evdev
+Requires:       python3-gobject-Gdk
+Requires:       python3-pylibacl
+Requires:       python3-setuptools
 
 %description
 Application allowing to setup, configure and use the Steam Controller
@@ -47,37 +46,23 @@ without using the Steam client.
 %setup -q
 
 %build
-python setup.py build
+python3 setup.py build
 
 %install
-python setup.py install --root=%{buildroot} --optimize=1
+python3 setup.py install --root=%{buildroot} --optimize=1
 
 %fdupes %{buildroot}%{_prefix}
 
-%post
-%desktop_database_post
-%icon_theme_cache_post
-%mime_database_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%mime_database_postun
-
 %files
-%defattr(-,root,root)
 %license LICENSE
 %doc README.md ADDITIONAL-LICENSES TODO.md
 %{_bindir}/*
-%{python_sitearch}/*
+%{python3_sitearch}/*
 %{_datadir}/applications/*
 %{_datadir}/pixmaps/*
 %{_datadir}/scc/
 %{_datadir}/mime/packages/*
 %{_datadir}/icons/hicolor/*
 %{_udevrulesdir}/69-sc-controller.rules
-
-%dir %_libdir/python2.7/site-packages/scc/
-%dir %{_datadir}/scc/*
 
 %changelog
