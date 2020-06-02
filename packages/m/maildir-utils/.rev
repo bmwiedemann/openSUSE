@@ -217,4 +217,17 @@
   * mu4e: support 'no trash flag' for all mark-for-trash</comment>
     <requestid>806278</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b34663fed0c662cb222dd2baa5e7729c</srcmd5>
+    <version>1.4.8</version>
+    <time>1591101555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.8:
+  * Strip properties from mu4e-completing-read-function results
+  * mu4e: remove easy-accounts / no-trash-providers for now
+  * Add missing space between signature verification and signers 
+  * mu4e-maildir-shortcuts: update for today's functionality 
+  * mu4e-maildir-shortcuts: update for today's functionality</comment>
+    <requestid>810523</requestid>
+  </revision>
 </revisionlist>

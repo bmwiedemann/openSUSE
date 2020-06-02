@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun  1 05:47:08 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.8:
+  * Strip properties from mu4e-completing-read-function results
+  * mu4e: remove easy-accounts / no-trash-providers for now
+  * Add missing space between signature verification and signers 
+  * mu4e-maildir-shortcuts: update for today's functionality 
+  * mu4e-maildir-shortcuts: update for today's functionality 
+
+-------------------------------------------------------------------
 Sun May 17 18:24:09 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.6:
