@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20200530" schemaversion="4.1">
+<image name="OBS__openSUSE___20200602" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200530</productvar>
+      <productvar name="VERSION">20200602</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200530,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200602,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200530/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200602/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -935,6 +935,7 @@
       <repopackage name="gtksourceview-lang"/>
       <repopackage name="gtksourceview4-lang"/>
       <repopackage name="gtkspell-lang"/>
+      <repopackage name="gtkspell3-lang" arch="x86_64"/>
       <repopackage name="gucharmap"/>
       <repopackage name="gucharmap-lang"/>
       <repopackage name="guestfs-data" arch="x86_64"/>
@@ -1737,7 +1738,6 @@
       <repopackage name="libefa1"/>
       <repopackage name="libefivar1"/>
       <repopackage name="libelf1"/>
-      <repopackage name="libEMF1"/>
       <repopackage name="libenca0"/>
       <repopackage name="libenchant-2-2"/>
       <repopackage name="libenchant1"/>
@@ -1984,12 +1984,12 @@
       <repopackage name="libgtk-vnc-2_0-0"/>
       <repopackage name="libgtkhex-3-0"/>
       <repopackage name="libgtkimageview0"/>
-      <repopackage name="libgtkmm-2_4-1"/>
       <repopackage name="libgtkmm-3_0-1"/>
       <repopackage name="libgtksourceview-3_0-1"/>
       <repopackage name="libgtksourceview-4-0"/>
       <repopackage name="libgtksourceviewmm-3_0-0"/>
       <repopackage name="libgtkspell0"/>
+      <repopackage name="libgtkspell3-3-0" arch="x86_64"/>
       <repopackage name="libgtop-2_0-11"/>
       <repopackage name="libgtop-lang"/>
       <repopackage name="libgts-0_7-5"/>
@@ -2546,7 +2546,6 @@
       <repopackage name="libpkcs11-helper1"/>
       <repopackage name="libpkgconf3"/>
       <repopackage name="libplist3"/>
-      <repopackage name="libplotter2"/>
       <repopackage name="libply-boot-client5"/>
       <repopackage name="libply-splash-core5"/>
       <repopackage name="libply-splash-graphics5"/>
@@ -3964,7 +3963,6 @@
       <repopackage name="psmisc"/>
       <repopackage name="psmisc-lang"/>
       <repopackage name="psqlODBC"/>
-      <repopackage name="pstoedit"/>
       <repopackage name="psutils"/>
       <repopackage name="ptools"/>
       <repopackage name="publicsuffix"/>
@@ -5626,7 +5624,6 @@
       <repopackage name="yp-tools"/>
       <repopackage name="ypbind"/>
       <repopackage name="ypserv"/>
-      <repopackage name="yudit"/>
       <repopackage name="zd1211-firmware"/>
       <repopackage name="zeitgeist"/>
       <repopackage name="zenity"/>

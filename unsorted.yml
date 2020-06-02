@@ -5309,7 +5309,7 @@ unsorted:
   - gtkspell-devel 
   - gtkspell-doc 
   - gtkspell3-devel 
-  - gtkspell3-lang 
+  - gtkspell3-lang: [i586] 
   - gtkwave 
   - gtkwave-doc 
   - gtkwave-examples 
@@ -5852,7 +5852,7 @@ unsorted:
   - ini4j 
   - ini4j-javadoc 
   - injeqt-devel 
-  - inkscape-extensions-dia 
+  - inkscape-extensions-dia: [i586] 
   - inkscape-extensions-fig 
   - inn-devel 
   - innoextract 
@@ -7384,6 +7384,7 @@ unsorted:
   - libConvexDecomposition2_89 
   - libEMF-devel 
   - libEMF-utils 
+  - libEMF1: [x86_64] 
   - libFAudio0 
   - libFAudio0-32bit: [x86_64] 
   - libFLAC++6-32bit: [x86_64] 
@@ -9614,12 +9615,13 @@ unsorted:
   - libgtkhtml-4_0-0-32bit: [x86_64] 
   - libgtkhtml-editor-4_0-0 
   - libgtkhtml-editor-4_0-0-32bit: [x86_64] 
+  - libgtkmm-2_4-1: [x86_64] 
   - libgtkmm-2_4-1-32bit: [x86_64] 
   - libgtkmm-3_0-1-32bit: [x86_64] 
   - libgtkpod1 
   - libgtksourceview-2_0-0 
   - libgtksourceviewmm-4_0-0 
-  - libgtkspell3-3-0 
+  - libgtkspell3-3-0: [i586] 
   - libgtop 
   - libgtop-2_0-11-32bit: [x86_64] 
   - libgtop-devel 
@@ -10672,7 +10674,7 @@ unsorted:
   - libnf2ff0 
   - libnfc-devel 
   - libnfc-tools 
-  - libnfc5 
+  - libnfc6 
   - libnfnetlink-devel 
   - libnfnetlink0-32bit: [x86_64] 
   - libnfs-devel 
@@ -10865,7 +10867,7 @@ unsorted:
   - libopenvas_wmiclient-devel 
   - libopenvas_wmiclient1 
   - libopenvdb7_0 
-  - libopenvswitch-2_12-0 
+  - libopenvswitch-2_13-0 
   - liboping-devel 
   - liboping-devel-32bit: [x86_64] 
   - liboping0 
@@ -10963,6 +10965,7 @@ unsorted:
   - libout123-0 
   - libout123-0-32bit: [x86_64] 
   - libovf-glib-devel 
+  - libovn-20_03-0 
   - libowncloudsync-devel 
   - libowncloudsync0 
   - liboyranos-alpha-devel 
@@ -11114,6 +11117,7 @@ unsorted:
   - libplist-devel 
   - libplist3-32bit: [x86_64] 
   - libplot2 
+  - libplotter2: [x86_64] 
   - libplplot17 
   - libplplotada4 
   - libplplotcxx15 
@@ -11478,8 +11482,8 @@ unsorted:
   - libqxmledit0-32bit: [x86_64] 
   - libqxmpp-devel 
   - libqxmpp-doc 
-  - libqxmpp2 
-  - libqxmpp2-32bit: [x86_64] 
+  - libqxmpp3 
+  - libqxmpp3-32bit: [x86_64] 
   - libqxp-devel 
   - libqxp-doc 
   - libqxp-tools 
@@ -11850,7 +11854,6 @@ unsorted:
   - libschily-devel 
   - libschily-devel-doc 
   - libschroedinger-1_0-0-32bit: [x86_64] 
-  - libscilab6: [x86_64] 
   - libscintilla-devel 
   - libscintilla3 
   - libscotch0 
@@ -12144,6 +12147,8 @@ unsorted:
   - libsybdb5 
   - libsympol0_1 
   - libsymspg1 
+  - libsyn123-0 
+  - libsyn123-0-32bit: [x86_64] 
   - libsynce-devel 
   - libsynce0 
   - libsysstat-qt5-0 
@@ -12675,6 +12680,7 @@ unsorted:
   - libwslay0 
   - libwsman-devel 
   - libwsman3 
+  - libwsman_client5 
   - libwsman_clientpp-devel 
   - libwsman_clientpp1 
   - libwtdbo4_2_2 
@@ -15981,11 +15987,6 @@ unsorted:
   - openvswitch-devel 
   - openvswitch-doc 
   - openvswitch-ipsec 
-  - openvswitch-ovn-central 
-  - openvswitch-ovn-common 
-  - openvswitch-ovn-docker 
-  - openvswitch-ovn-host 
-  - openvswitch-ovn-vtep 
   - openvswitch-pki 
   - openvswitch-test 
   - openvswitch-vtep 
@@ -16102,6 +16103,13 @@ unsorted:
   - otter-browser 
   - ovirt-guest-agent-common 
   - ovmf-tools: [x86_64] 
+  - ovn 
+  - ovn-central 
+  - ovn-devel 
+  - ovn-doc 
+  - ovn-docker 
+  - ovn-host 
+  - ovn-vtep 
   - ovnkube 
   - ovnkube-cni 
   - owasp-modsecurity-crs 
@@ -18356,6 +18364,7 @@ unsorted:
   - pspg 
   - pspp 
   - pspp-devel 
+  - pstoedit: [x86_64] 
   - pstoedit-devel 
   - pthread-stubs-devel 
   - ptokax 
@@ -18663,7 +18672,6 @@ unsorted:
   - python2-mraa: [i586] 
   - python2-opencensus-ext-threading 
   - python2-osc-tiny 
-  - python2-ovs 
   - python2-pip 
   - python2-proliantutils 
   - python2-pycairo-common-devel 
@@ -18787,6 +18795,7 @@ unsorted:
   - python3-PsyLab 
   - python3-PsychoPy 
   - python3-PsychoPy-lang 
+  - python3-PubChemPy 
   - python3-Pweave 
   - python3-PyAudio 
   - python3-PyAutoGUI 
@@ -20771,7 +20780,6 @@ unsorted:
   - python3-pytest-env 
   - python3-pytest-error-for-skips 
   - python3-pytest-expect 
-  - python3-pytest-faulthandler 
   - python3-pytest-filter-subpackage 
   - python3-pytest-fixture-config 
   - python3-pytest-flake8 
@@ -24091,13 +24099,6 @@ unsorted:
   - schroedinger-doc 
   - scidavis 
   - scidavis-lang 
-  - scilab: [x86_64] 
-  - scilab-devel: [x86_64] 
-  - scilab-lang: [x86_64] 
-  - scilab-modules: [x86_64] 
-  - scilab-modules-doc: [x86_64] 
-  - scilab-modules-doc-lang: [x86_64] 
-  - scilab-tests: [x86_64] 
   - scim 
   - scim-32bit: [x86_64] 
   - scim-anthy 
@@ -24856,8 +24857,6 @@ unsorted:
   - target-isns 
   - targetcli-fb-common 
   - taskwarrior 
-  - tasque 
-  - tasque-lang 
   - tayga 
   - tbb-devel 
   - tboot 
@@ -33736,7 +33735,6 @@ unsorted:
   - wcslib-devel 
   - wcslib-doc 
   - wcslib-tools 
-  - wdm 
   - weave-kube: [x86_64] 
   - weave-npc: [x86_64] 
   - webalizer 
@@ -34399,6 +34397,7 @@ unsorted:
   - yubikey-manager 
   - yubikey-manager-qt 
   - yubioath-desktop 
+  - yudit: [x86_64] 
   - yum 
   - yum-utils 
   - z 
