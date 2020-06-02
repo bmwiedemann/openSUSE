@@ -29,7 +29,8 @@ BuildRequires:  %{python_module Django >= 1.10}
 BuildRequires:  %{python_module django-jinja}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module unittest2}
+# tests are not currently run; transition unittest2
+#BuildRequires:  %%{python_module unittest2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.10
