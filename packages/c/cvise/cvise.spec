@@ -17,7 +17,7 @@
 
 
 Name:           cvise
-Version:        1.3.0+git.20200511.50c821f
+Version:        1.4.0+git.20200601.4173fa7
 Release:        0
 Summary:        Super-parallel Python port of the C-Reduce
 License:        BSD-3-Clause
@@ -25,12 +25,12 @@ Group:          Development/Tools/Other
 URL:            https://github.com/marxin/cvise
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  astyle
-BuildRequires:  clang9-devel
+BuildRequires:  clang10-devel
 BuildRequires:  cmake
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  indent
-BuildRequires:  llvm9-devel
+BuildRequires:  llvm10-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  ninja
 BuildRequires:  python3-Pebble
@@ -38,9 +38,9 @@ BuildRequires:  python3-psutil
 BuildRequires:  python3-pytest4
 BuildRequires:  unifdef
 Requires:       astyle
-Requires:       clang9
+Requires:       clang10
 Requires:       indent
-Requires:       llvm9
+Requires:       llvm10
 Requires:       python3-Pebble
 Requires:       unifdef
 
