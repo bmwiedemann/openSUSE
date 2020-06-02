@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-configargparse
-Version:        1.0
+Version:        1.2.3
 Release:        0
 Summary:        A drop-in replacement for argparse
 License:        MIT
