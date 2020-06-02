@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 15 10:08:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix build on bigendian:
+  * bigendian.patch
+
+-------------------------------------------------------------------
+Fri May 15 10:05:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch CVE-2019-12211_2019-12213.patch to fix:
+  * bsc#113576 CVE-2019-12211
+  * bsc#1135731 CVE-2019-12213
+
+-------------------------------------------------------------------
 Tue Sep 11 13:18:49 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 3.18.0

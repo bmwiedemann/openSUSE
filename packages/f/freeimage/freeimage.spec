@@ -1,7 +1,7 @@
 #
 # spec file for package freeimage
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,41 +12,38 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define so_ver 3
 %define tarver 3180
-
 Name:           freeimage
 Version:        3.18.0
 Release:        0
 Summary:        Multi-format Image Decoder Library
 License:        GPL-2.0-only OR GPL-3.0-only
-Group:          System/Libraries
-Url:            http://freeimage.sourceforge.net/
+URL:            http://freeimage.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/freeimage/FreeImage%{tarver}.zip
-Patch0:         unbundle.patch 
+Patch0:         unbundle.patch
 # PATCH-FIX-OPENSUSE doxygen.patch asterios.dramis@gmail.com -- Fix documentation building (Based on patch from Fedora)
 Patch1:         doxygen.patch
 # PATCH-FIX-OPENSUSE makefiles_fixes.patch asterios.dramis@gmail.com -- Fix CFLAGS and CXXFLAGS, removed -s (strip) option, add missing symlinks for libfreeimageplus, remove root user from install
 Patch3:         makefiles_fixes.patch
 Patch4:         freeimage-no-return-in-nonvoid.patch
+Patch5:         CVE-2019-12211_2019-12213.patch
+Patch6:         bigendian.patch
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  jxrlib-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  openjpeg2-devel
-BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(libraw)
-%if 0%{?suse_version} >= 1320
-BuildRequires:  pkgconfig(libmng)
-%else
-BuildRequires:  libmng-devel
-%endif
+BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(OpenEXR)
+BuildRequires:  pkgconfig(libmng)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libraw)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(zlib)
@@ -59,7 +56,6 @@ multithreading safe.
 
 %package devel
 Summary:        Development Files for FreeImage
-Group:          Development/Libraries/C and C++
 Requires:       lib%{name}%{so_ver} = %{version}
 Requires:       lib%{name}plus%{so_ver} = %{version}
 # libfreeimage-devel was last used at version 3.10.0
@@ -72,7 +68,6 @@ software using FreeImage.
 
 %package -n lib%{name}%{so_ver}
 Summary:        Multi-format Image Decoder Library
-Group:          System/Libraries
 
 %description -n lib%{name}%{so_ver}
 FreeImage is an Open Source library project for developers who would like to
@@ -82,7 +77,6 @@ multithreading safe.
 
 %package -n lib%{name}plus%{so_ver}
 Summary:        Multi-format Image Decoder Library
-Group:          System/Libraries
 
 %description -n lib%{name}plus%{so_ver}
 FreeImage is an Open Source library project for developers who would like to
@@ -96,6 +90,8 @@ multithreading safe.
 %patch1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
+%patch6 -p1
 
 # Remove bundled libs to make sure these don't get used during compile
 rm -rf Source/LibPNG/ Source/LibRawLite/ Source/OpenEXR/ Source/ZLib/ Source/LibOpenJPEG/ Source/LibJPEG/
@@ -127,22 +123,18 @@ doxygen FreeImagePlus.dox
 popd
 
 %install
-make DESTDIR=%{buildroot} INSTALLDIR=%{buildroot}%{_libdir} install
+%make_install INSTALLDIR=%{buildroot}%{_libdir}
 make -f Makefile.fip DESTDIR=%{buildroot} INSTALLDIR=%{buildroot}%{_libdir} install
 
 # Remove static libraries
 rm -f %{buildroot}%{_libdir}/*.a
 
 %post -n lib%{name}%{so_ver} -p /sbin/ldconfig
-
 %postun -n lib%{name}%{so_ver} -p /sbin/ldconfig
-
 %post -n lib%{name}plus%{so_ver} -p /sbin/ldconfig
-
 %postun -n lib%{name}plus%{so_ver} -p /sbin/ldconfig
 
 %files devel
-%defattr(-,root,root,-)
 %doc Whatsnew.txt license-*.txt
 %doc Wrapper/FreeImagePlus/doc/html/
 %{_includedir}/FreeImage.h
@@ -151,12 +143,10 @@ rm -f %{buildroot}%{_libdir}/*.a
 %{_libdir}/libfreeimageplus.so
 
 %files -n lib%{name}%{so_ver}
-%defattr(-,root,root,-)
 %{_libdir}/lib%{name}.so.3*
 %{_libdir}/lib%{name}-%{version}.so
 
 %files -n lib%{name}plus%{so_ver}
-%defattr(-,root,root,-)
 %{_libdir}/lib%{name}plus.so.3*
 %{_libdir}/lib%{name}plus-%{version}.so
 
