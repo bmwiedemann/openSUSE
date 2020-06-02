@@ -26,7 +26,7 @@ URL:            http://www.virtualgl.org
 Source0:        https://sourceforge.net/projects/virtualgl/files/%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch1:         VirtualGL-link-libs.patch
-Patch2:         glx.patch
+Patch2:         fix-Mesa-19.3.0-build.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  Mesa-libGLU-devel
 BuildRequires:  cmake
@@ -95,9 +95,7 @@ Ertl 2000.)
 %prep
 %setup -q
 %patch1 -p1
-%if %{suse_version} > 1500
 %patch2 -p1
-%endif
 
 # Use /var/lib
 sed -e "s#%{_sysconfdir}/opt#%{_localstatedir}/lib#g" \

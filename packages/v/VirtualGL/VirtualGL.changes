@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun  1 08:56:08 UTC 2020 - Max Lin <mlin@suse.com>
+
+- Remove conditional of applying glx.patch because we have newer Mesa
+  in Leap 15.2
+- Use upstream patch fix-Mesa-19.3.0-build.patch to replace glx.patch
+  * Add fix-Mesa-19.3.0-build.patch
+  * Remove glx.patch
+
+-------------------------------------------------------------------
 Sun Feb  9 21:26:35 UTC 2020 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 2.6.3
