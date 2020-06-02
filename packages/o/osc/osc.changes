@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May 29 18:40:18 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
+
+- 0.169.1
+  * add --ccache option to osc getbinaries 
+
+-------------------------------------------------------------------
+Wed May 27 12:54:14 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
+
+- 0.169.0  
+   * improve speed and usability of osc bash completion
+   * switch packagequery.py to return only bytes
+   * improved some error messages
+   * osc add: support git@ (private github) or git:// URLs correctly
+   * split dependson and whatdependson commands
+   * support for osc build --shell-cmd
+   * Fix kiwi build with --prefer-pkgs
+   * add pkg-ccache support for osc build
+   * fix security issue (bsc#1122675, CVE-2019-3681) do not allow '/' in filename 
+
+-------------------------------------------------------------------
 Fri Mar 13 06:49:27 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
 
 - 0.168.2

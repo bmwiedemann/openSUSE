@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="version">0.168.2</param>
-    <param name="revision">0.168.2</param>
+    <param name="version">0.169.1</param>
+    <param name="revision">0.169.1</param>
     <param name="url">git://github.com/openSUSE/osc.git</param>
     <param name="scm">git</param>
   </service>

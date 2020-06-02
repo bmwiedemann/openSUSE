@@ -1356,4 +1356,24 @@ sr#761596 needed for this.</comment>
      compatibility (boo#1166537)</comment>
     <requestid>784534</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>7d04efb37f7659c3f078ce6d58f2f402</srcmd5>
+    <version>0.169.1</version>
+    <time>1591101289</time>
+    <user>dimstar_suse</user>
+    <comment>- 0.169.1
+  * add --ccache option to osc getbinaries 
+
+- 0.169.0  
+   * improve speed and usability of osc bash completion
+   * switch packagequery.py to return only bytes
+   * improved some error messages
+   * osc add: support git@ (private github) or git:// URLs correctly
+   * split dependson and whatdependson commands
+   * support for osc build --shell-cmd
+   * Fix kiwi build with --prefer-pkgs
+   * add pkg-ccache support for osc build
+   * fix security issue (bsc#1122675, CVE-2019-3681) do not allow '/' in filename</comment>
+    <requestid>810270</requestid>
+  </revision>
 </revisionlist>
