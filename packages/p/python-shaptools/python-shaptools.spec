@@ -22,13 +22,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-shaptools
-Version:        0.3.8
+Version:        0.3.8+git.1591005605.6537616
 Release:        0
 Summary:        Python tools to interact with SAP HANA utilities
 License:        Apache-2.0
 Group:          Development/Languages/Python
 Url:            https://github.com/SUSE/shaptools
-Source:         shaptools-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 %if %{with test}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
@@ -43,7 +43,7 @@ BuildArch:      noarch
 API to expose SAP HANA functionalities
 
 %prep
-%setup -q -n shaptools-%{version}
+%setup -q -n %{name}-%{version}
 
 %build
 %python_build

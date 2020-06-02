@@ -4,18 +4,20 @@ Fri Mar 27 18:15:37 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 - Create version 0.3.8
 - Add functionality to extract SAP sar files using SAPCAR tool
 
+  (jsc#SLE-10902, jsc#SLE-10903, jsc#ECO-817, jsc#ECO-818)
+
 -------------------------------------------------------------------
 Tue Mar 24 11:29:14 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Create version 0.3.7
 - Improve hana installation software detection to allow more use
-  cases 
+  cases
 
 -------------------------------------------------------------------
 Thu Mar 19 15:31:22 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Create version 0.3.6
-- Change the get_platform method to include the system OS type 
+- Change the get_platform method to include the system OS type
 
 -------------------------------------------------------------------
 Thu Jan  2 21:59:30 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>

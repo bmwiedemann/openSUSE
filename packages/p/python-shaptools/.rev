@@ -98,4 +98,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>805830</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e63d640e48fa2250b2b6e8f639550806</srcmd5>
+    <version>0.3.8+git.1591005605.6537616</version>
+    <time>1591101678</time>
+    <user>dimstar_suse</user>
+    <comment>New version of python-shaptools released</comment>
+    <requestid>810592</requestid>
+  </revision>
 </revisionlist>

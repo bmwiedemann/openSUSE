@@ -1,0 +1,19 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/SUSE/shaptools.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="filename">python-shaptools</param>
+    <param name="versionformat">@PARENT_TAG@+git.%ct.%h</param>
+    <param name="revision">6537616c8664ca5e2bb466256d372ebf8664e373</param>
+  </service>
+
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+  <service name="set_version" mode="disabled">
+    <param name="basename">python-shaptools</param>
+  </service>
+</services>
