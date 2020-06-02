@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Jun  1 17:33:56 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 0.11.1 
+  * Support using scikit-build with conan where distro<1.2.0 is required.
+    Thanks @AntoinePrv and @Chrismarsh for reporting issue gh#scikit-build/scikit-build#472
+    and gh#scikit-build/scikit-build#488.  
+  * Fix link in `Conda: Step-by-step` release guide available in `/make_a_release` section.
+- Changelog for version 0.11.0    
+  * Add a hook to process the cmake install manifest building the wheel. The hook
+    function can be specified as an argument to the `setup()` function. This can be used e.g.
+    to prevent installing cmake configuration files, headers, or static libraries with the wheel.
+    Thanks @SylvainCorlay for the contribution. See gh#scikit-build/scikit-build#473.
+  * Add support for passing :ref:`CMake configure options <usage_cmake_configure_options>` like `-DFOO:STRING:bar`
+    as global `setuptools` or `pip` options.
+  * Add support for building project using PyPy or PyPy3. See https://pypy.org
+    See gh#scikit-build/scikit-build#407.
+  * Add support for OS/400 (now known as IBM i).
+    Thanks @jwoehr for the contribution. See gh#scikit-build/scikit-build#444.
+  * Display CMake command used to configure the project.
+    Thanks @native-api for the contribution. See gh#scikit-build/scikit-build#443.
+  * Improve CMake module `/cmake-modules/F2PY` adding `add_f2py_target()` CMake function
+    allowing to generate `*-f2pywrappers.f` and `*module.c` files from `*.pyf` files.
+    Thanks @xoviat for the contribution.
+  * Update CMake module `/cmake-modules/PythonExtensions` adding `add_python_library()`
+    and `add_python_extension()`.
+    Thanks @xoviat for the contribution.
+  * Fix python 2.7 installation ensuring setuptools < 45 is required. See gh#scikit-build/scikit-build#478.
+  * Fix unclosed file resource in :meth:`skbuild.cmaker.CMaker.check_for_bad_installs`.
+    Thanks @Nic30 for the suggestion. See gh#scikit-build/scikit-build#429.
+  * Update CMake module `/cmake-modules/PythonExtensions`:
+  * Ensure correct suffix is used for compiled python module on windows. See gh#scikit-build/scikit-build#383.
+  * Fix warning using `EXT_SUFFIX` config variable instead of deprecated `SO` variable. See gh#scikit-build/scikit-build#381.
+  * Honor the `MACOSX_DEPLOYMENT_TARGET` environment variable if it is defined on
+    macOS. Thanks @certik for the contribution. See gh#scikit-build/scikit-build#441.
+  * Fix CMake module `/cmake-modules/F2PY` to ensure the `f2py` executable specific to
+    the python version being used is found. See gh#scikit-build/scikit-build#449. Thanks @bnavigator for
+    the contribution.
+  * Replace `platform.linux_distribution()` which was removed in Python 3.8 by a call to
+    `distro.id()`. This adds the `distro` package as dependency. See gh#scikit-build/scikit-build#458. Thanks
+    @bnavigator for the contribution.
+  * Add `/notes` section to the `For maintainers` top-level category that includes a comparison between
+    `sysconfig` and `distutils.sysconfig` modules.
+  * Remove obsolete comment in `cmaker.py`. See gh#scikit-build/scikit-build#439. Thanks @isuruf
+  * Update `initialize_git_repo_and_commit` to prevent signing message on system with commit signing
+    enabled globally.
+- Remove obsolete patches   
+  * scikit-build-pr450-findf2py.patch gh#scikit-build/scikit-build#450
+  * python38.patch gh#scikit-build/scikit-build#458
+- Skip Python 2 because of unresolvable python2-path.py in Leap
+- Remove code coverage dependencies
+- make the previously skipped tests pass by installing the test projects
+  into a temporary directory gh#scikit-build/scikit-build#469
+  
+-------------------------------------------------------------------
 Tue Apr  7 12:04:36 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Add scikit-build-pr450-findf2py.patch to find the flavor specific

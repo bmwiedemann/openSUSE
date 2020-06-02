@@ -17,15 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-scikit-build
-Version:        0.10.0
+Version:        0.11.1
 Release:        0
 Summary:        Improved build system generator for Python C/C++/Fortran/Cython extensions
 License:        MIT
 URL:            https://github.com/scikit-build/scikit-build
 Source:         https://files.pythonhosted.org/packages/source/s/scikit-build/scikit-build-%{version}.tar.gz
-Patch0:         python38.patch
-Patch1:         scikit-build-pr450-findf2py.patch
+Source99:       sample-setup.cfg
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools >= 28.0.0}
 BuildRequires:  fdupes
@@ -36,16 +36,11 @@ Requires:       python-setuptools >= 28.0.0
 Requires:       python-wheel >= 0.29.0
 # SECTION test requirements
 BuildRequires:  %{python_module Cython >= 0.25.1}
-BuildRequires:  %{python_module codecov >= 2.0.5}
-BuildRequires:  %{python_module coverage >= 4.2}
 BuildRequires:  %{python_module distro}
 BuildRequires:  %{python_module flake8 >= 3.0.4}
-BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module path.py >= 11.5.0}
-BuildRequires:  %{python_module pytest >= 3.0.3}
-BuildRequires:  %{python_module pytest-cov >= 2.4.0}
-BuildRequires:  %{python_module pytest-mock >= 1.4.0}
-BuildRequires:  %{python_module pytest-runner >= 2.9}
+BuildRequires:  %{python_module pytest >= 4.5.0}
+BuildRequires:  %{python_module pytest-mock >= 1.10.4}
 BuildRequires:  %{python_module pytest-virtualenv >= 1.2.5}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module six >= 1.10.0}
@@ -64,8 +59,15 @@ Improved build system generator for Python C/C++/Fortran/Cython extensions
 
 %prep
 %setup -q -n scikit-build-%{version}
-%patch0 -p1
-%patch1 -p1
+# some tests call setup.py develop|install|test, which by default write to /usr
+# This is not allowed in OBS
+# gh#scikit-build/scikit-build/issues/469
+mkdir -p /tmp/fakepythonroot%{python_sitelib}
+cp %{S:99} tests/samples/hello-cpp/setup.cfg
+sed -i "/hello-1.2.3\/setup.py/ a \        'hello-1.2.3/setup.cfg'," tests/test_hello_cpp.py
+cp %{S:99} tests/samples/issue-274-support-default-package-dir/setup.cfg
+cp %{S:99} tests/samples/issue-274-support-one-package-without-package-dir/setup.cfg
+cp %{S:99} tests/samples/issue-334-configure-cmakelist-non-cp1252-encoding/setup.cfg
 
 %build
 %python_build
@@ -75,9 +77,10 @@ Improved build system generator for Python C/C++/Fortran/Cython extensions
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# setup.py install, develop, etc default to writing to /usr .
-#  Tests need enhancing upstream or patching.
-%pytest -k 'not (test_install_command or test_develop_command or test_test_command or test_hello_develop)'
+%{python_expand  export PYTHONDONTWRITEBYTECODE=1
+export PYTHONPATH=/tmp/fakepythonroot%{$python_sitelib}:%{buildroot}%{$python_sitelib}
+py.test-%{$python_bin_suffix}
+}
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst CONTRIBUTING.rst HISTORY.rst docs/
