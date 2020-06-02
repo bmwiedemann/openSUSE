@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 27 15:37:17 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- version 0.7
+* Improved consistency when transcoding/re-encoding is applied
+* Support of grayscale images
+* Fix issue #139 (OrthancWSIDicomizer PixelSpacing)
+* Fix issue #144 (OrthancWSIDicomizer PhotometricInterpretation)
+* Fix issue #163 (Failure to recognize MIRAX / 3DHISTECH images)
+* Upgrade to Orthanc framework 1.7.0
+
+-------------------------------------------------------------------
 Sun Apr 19 07:06:11 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - orthanc 1.6.0 breaks build of this plugin.

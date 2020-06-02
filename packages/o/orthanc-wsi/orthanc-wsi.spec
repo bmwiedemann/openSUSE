@@ -21,12 +21,11 @@ Name:           orthanc-wsi
 Summary:        Whole Slide Imaging for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        0.6
+Version:        0.7
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/whole-slide-imaging/OrthancWSI-%{version}.tar.gz
 Source1:        openlayers-3.19.0-dist.zip
-Source2:        http://www.orthanc-server.com/downloads/get.php?path=/orthanc/Orthanc-1.5.2.tar.gz
 Source11:       orthanc-wsi-readme.SUSE
 BuildRequires:  cmake
 BuildRequires:  curl-devel
@@ -53,7 +52,7 @@ BuildRequires:  tcpd-devel
 BuildRequires:  openjpeg2-devel
 BuildRequires:  openssl-devel
 BuildRequires:  orthanc-devel
-##uildRequires:  orthanc-source
+BuildRequires:  orthanc-source
 BuildRequires:  unzip
 
 Requires:       orthanc
@@ -75,9 +74,6 @@ The Orthanc project provides three official tools to support DICOM for whole-sli
 mkdir ViewerPlugin/ThirdPartyDownloads
 cp %{S:1} ViewerPlugin/ThirdPartyDownloads/.
 
-mkdir Applications/ThirdPartyDownloads
-cp %{S:2} Applications/ThirdPartyDownloads/.
-
 %build
 # build the applications
 cd Applications
@@ -85,9 +81,9 @@ cd Applications
 %cmake .. \
        -DALLOW_DOWNLOADS=OFF \
        -DUSE_SYSTEM_ORTHANC_SDK=ON \
-       -DORTHANC_FRAMEWORK_SOURCE=web \
+       -DORTHANC_FRAMEWORK_SOURCE=path \
        -DBoost_NO_BOOST_CMAKE=ON \
-       -DORTHANC_FRAMEWORK_ROOT=ThirdPartyDownloads/ \
+       -DORTHANC_FRAMEWORK_ROOT=/usr/src/orthanc/ \
        -DLIB_INSTALL_DIR=%{_libdir}/share/orthanc/plugins/
 
 %cmake_build %{?_smp_mflags}
@@ -100,7 +96,7 @@ cd ../../ViewerPlugin
        -DUSE_SYSTEM_ORTHANC_SDK=ON \
        -DORTHANC_FRAMEWORK_SOURCE=path \
        -DBoost_NO_BOOST_CMAKE=ON \
-       -DORTHANC_FRAMEWORK_ROOT=%{_builddir}/OrthancWSI-0.6/Applications/build/Orthanc-1.5.2 \
+       -DORTHANC_FRAMEWORK_ROOT=/usr/src/orthanc/ \
        -DLIB_INSTALL_DIR=%{_libdir}/share/orthanc/plugins/
 
 %cmake_build %{?_smp_mflags}
