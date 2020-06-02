@@ -1,0 +1,13 @@
+Index: python-bibtexparser-1.1.0/bibtexparser/tests/test_crossref_resolving.py
+===================================================================
+--- python-bibtexparser-1.1.0.orig/bibtexparser/tests/test_crossref_resolving.py	2019-01-17 16:31:34.000000000 +0100
++++ python-bibtexparser-1.1.0/bibtexparser/tests/test_crossref_resolving.py	2020-06-01 11:32:48.246219654 +0200
+@@ -1,4 +1,7 @@
+-import unittest2 as unittest
++try:
++    import unittest2 as unittest
++except ImportError:
++    import unittest
+ from bibtexparser.bibdatabase import BibDatabase
+ from bibtexparser.bparser import BibTexParser
+ 

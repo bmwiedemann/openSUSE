@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without  python2
 Name:           python-bibtexparser
 Version:        1.1.0
 Release:        0
@@ -25,6 +26,8 @@ License:        LGPL-3.0-only OR BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/sciunto-org/python-bibtexparser
 Source:         https://github.com/sciunto-org/python-bibtexparser/archive/v%{version}.tar.gz#/python-bibtexparser-%{version}.tar.gz
+# https://github.com/sciunto-org/python-bibtexparser/pull/259
+Patch0:         python-bibtexparser-remove-unittest2.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -36,7 +39,9 @@ BuildArch:      noarch
 BuildRequires:  %{python_module future >= 0.16.0}
 BuildRequires:  %{python_module pyparsing >= 2.0.3}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module unittest2}
+%if %{with python2}
+BuildRequires:  python-unittest2
+%endif
 # /SECTION
 %python_subpackages
 
@@ -45,6 +50,7 @@ Python library to parse bibtex files..
 
 %prep
 %setup -q -n python-bibtexparser-%{version}
+%patch0 -p1
 sed -i -e '/^#!\//, 1d' bibtexparser/*.py
 
 %build

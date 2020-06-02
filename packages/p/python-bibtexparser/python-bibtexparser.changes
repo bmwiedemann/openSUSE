@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  1 10:15:19 UTC 2020 - pgajdos@suse.com
+
+- unittest2 is not neccessary for python3
+- added patches
+  use unittest2 only if present, fall back to unittest
+  + python-bibtexparser-remove-unittest2.patch
+
+-------------------------------------------------------------------
 Wed Apr 15 10:00:08 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Switch from using nosetest runner to pytest
