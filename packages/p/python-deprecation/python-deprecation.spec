@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-deprecation
 Version:        2.1.0
 Release:        0
@@ -25,8 +26,15 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/briancurtin/deprecation
 Source:         https://files.pythonhosted.org/packages/source/d/deprecation/deprecation-%{version}.tar.gz
+# https://github.com/briancurtin/deprecation/pull/50
+Patch0:         python-deprecation-no-unittest2.patch
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module unittest2}
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+%if %{with python2}
+BuildRequires:  python-unittest2
+%endif
+# /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -39,6 +47,7 @@ enable the automation of several things:
 
 %prep
 %setup -q -n deprecation-%{version}
+%patch0 -p1
 
 %build
 
@@ -49,7 +58,7 @@ enable the automation of several things:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %license LICENSE
