@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May 30 10:34:28 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 2.4.3
+  * Finally, loading the game list is much faster. Enjoy!
+  * Integer scaling improvements
+  * Fixes to the load of high-res tiles in keen5 and 6
+  * Some bug fixes
+
+-------------------------------------------------------------------
 Sat May 23 08:29:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 2.4.2
