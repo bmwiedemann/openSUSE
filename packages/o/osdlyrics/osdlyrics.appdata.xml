@@ -2,7 +2,7 @@
 <component type="desktop">
   <id>osdlyrics.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
-  <project_license>GPL-3.0</project_license>
+  <project_license>GPL-3.0-or-later</project_license>
   <name>OSD Lyrics</name>
   <name xml:lang="zh_CN">透明桌面歌词</name>
   <name xml:lang="zh_TW">透明桌面歌詞</name>
@@ -19,32 +19,41 @@ OSD Lyrics is released under GPL v3. See COPYING for more detail.
     <p xml:lang="zh_CN">
       OSD Lyrics 是一款针对播放器的歌词外挂，非插件实为独立程序。OSD Lyrics 在你的桌面上显示卡拉 OK 风格的歌词。也提供另外一种卷式风格的歌词显示方式。OSD Lyrics 可以自动从互联网上自动搜索并下载对应的歌词。
       
-      OSD Lyrics 采用 GPLv3 协议发布，细节详见 COPYING 文件。
+      OSD Lyrics 采用 GPLv3 协议发布，细节详见 LICENSE 文件。
     </p>
     <p xml:lang="zh_TW">
       OSD Lyrics 是一款針對播放器的歌詞外掛，非插件實為獨立程式。OSD Lyrics 在你的桌面上顯示卡拉 OK 風格的歌詞。也提供另外一種卷式風格的歌詞顯示方式。OSD Lyrics 可以自動從網路上自動搜索并下載對應的歌詞。
       
-      OSD Lyrics 釆用 GPLv3 協議發布，細節詳見 COPYING 文件。
+      OSD Lyrics 釆用 GPLv3 協議發布，細節詳見 LICENSE 檔案。
     </p>
     <p xml:lang="zh_HK">
       OSD Lyrics 是一款針對播放器的歌詞外掛，非插件實為獨立程序。OSD Lyrics 在你的桌面上顯示卡拉 OK 風格的歌詞。也提供另外一種卷式風格的歌詞顯示方式。OSD Lyrics 可以自動從互聯網上自動搜索并下載對應的歌詞。
       
-      OSD Lyrics 釆用 GPLv3 協議發布，細節詳見 COPYING 文件。
+      OSD Lyrics 釆用 GPLv3 協議發布，細節詳見 LICENSE 檔案。
     </p>
   </description>
   <url type="homepage">https://github.com/osdlyrics/osdlyrics</url>
   <url type="bugtracker">https://github.com/osdlyrics/osdlyrics/issues</url>
   <releases>
-    <release version="$$version" date="$$date"></release>
+    <release version="0.5.5-RC1" date="2019-03-30">
+      <description>
+        <p>
+          Fixes autoreconf with "foreign" flag
+        </p>
+      </description>
+    </release>
   </releases>
-  <project_license>GPL-3.0</project_license>
   <developer_name>
   Tiger Soldier
   Sarlmol Apple
   Simply Zhao
  </developer_name>
   <screenshots>
-    <screenshot type="default">https://raw.githubusercontent.com/hillwoodroc/appdata/master/screenshot/osdlyrics/osdlyrics01.png</screenshot>
-    <screenshot type="default">https://raw.githubusercontent.com/hillwoodroc/appdata/master/screenshot/osdlyrics/osdlyrics02.png</screenshot>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/hillwoodroc/appdata/master/screenshot/osdlyrics/osdlyrics01.png</image>
+    </screenshot>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/hillwoodroc/appdata/master/screenshot/osdlyrics/osdlyrics02.png</image>
+    </screenshot>
   </screenshots>
 </component>

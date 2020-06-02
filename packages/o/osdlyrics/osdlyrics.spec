@@ -17,7 +17,6 @@
 
 
 %define  with_mpd     0
-%define  date         20190330
 # %define  commit       18cc4a872c3a18e99a33ac233f7c8cb2f5dfc624
 # %define  shortcommit  18cc4a8
 %define _version 0.5.5-rc1
@@ -31,7 +30,7 @@ Group:          Productivity/Multimedia/Sound/Visualization
 URL:            https://github.com/osdlyrics/osdlyrics
 Source0:        https://github.com/osdlyrics/osdlyrics/archive/%{_version}/%{name}-%{_version}.tar.gz
 # Source0:        https://github.com/osdlyrics/osdlyrics/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
-Source1:        %{name}-appdata.xml
+Source1:        %{name}.appdata.xml
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -98,9 +97,7 @@ NOCONFIGURE=1 ./autogen.sh
 %install
 %make_install
 install -d %{buildroot}%{_datadir}/metainfo
-cp %{SOURCE1} %{buildroot}%{_datadir}/metainfo
-sed -i 's/$$version/%{_version}/g; s/$$date/%{date}/g' \
-%{buildroot}%{_datadir}/metainfo/%{name}-appdata.xml
+install -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/metainfo
 
 %suse_update_desktop_file %{name}
 
@@ -119,7 +116,7 @@ sed -i 's/$$version/%{_version}/g; s/$$date/%{date}/g' \
 %{_datadir}/%{name}/
 %{_datadir}/dbus-1/services/org.%{name}.*
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/%{name}-appdata.xml
+%{_datadir}/metainfo/%{name}.appdata.xml
 
 %files -n python3-%{name}
 %{python3_sitelib}/%{name}
