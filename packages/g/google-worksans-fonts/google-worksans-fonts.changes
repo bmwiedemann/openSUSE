@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 26 16:07:58 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Pick TTF format fonts back: the desktop needs ttf to render gui 
+  program, This feature is necessary for SLE-15:SP2(jsc#SLE-12421,
+  boo#1172154).
+
+-------------------------------------------------------------------
 Fri May  8 18:40:40 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Adjust description for temporal grammar. Drop author list

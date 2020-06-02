@@ -46,9 +46,9 @@ chmod -x *.md *.txt
 
 %build
 
-
 %install
 install -m 0755 -d %{buildroot}%{_ttfontsdir}
+install -p -m 0644 fonts/static/TTF/*.ttf %{buildroot}/%{_ttfontsdir}/
 install -p -m 0644 fonts/static/WOFF/*.woff %{buildroot}/%{_ttfontsdir}/
 
 # call fonts-config after installation or deinstallation of this package
