@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 27 03:08:57 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 2.27
+   see /usr/share/doc/packages/perl-Compress-Bzip2/Changes
+
+  
+  2.27 2020-05-26 15:56:27 rurban
+     - fix various null derefs (RT #132711, reported by Petr Pisar)
+     - 5.6 does not work for some time, disallow
+
+-------------------------------------------------------------------
 Tue Apr 11 05:17:47 UTC 2017 - coolo@suse.com
 
 - updated to 2.26
