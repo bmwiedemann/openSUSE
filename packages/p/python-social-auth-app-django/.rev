@@ -31,4 +31,12 @@
     <comment>- Export lang to fix build with older openSUSE releases</comment>
     <requestid>697475</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>21785e1f330557664c65ffde2838e321</srcmd5>
+    <version>3.4.0</version>
+    <time>1591101751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810766</requestid>
+  </revision>
 </revisionlist>

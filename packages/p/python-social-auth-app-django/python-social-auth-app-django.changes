@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun  2 03:13:01 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove merged pr_197.patch
+- Update to version 3.4.0
+  *  Correct release mechanism
+- from v3.3.0
+  *Updated release and tests mechanism
+- from v3.2.0
+  * Increase social-core dependency version to 3.3.0
+  * Implement `get` and `delete` class methods for `DjangoNonceMixin`
+  * Added `created` and `modified` fields to `UserSocialAuth` model
+
+-------------------------------------------------------------------
 Wed Apr 24 12:19:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Export lang to fix build with older openSUSE releases

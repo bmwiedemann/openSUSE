@@ -1,7 +1,7 @@
 #
 # spec file for package python-social-auth-app-django
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,23 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-social-auth-app-django
-Version:        3.1.0
+Version:        3.4.0
 Release:        0
 Summary:        Python Social Authentication, Django integration
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/python-social-auth/social-app-django
 Source:         https://files.pythonhosted.org/packages/source/s/social-auth-app-django/social-auth-app-django-%{version}.tar.gz
-Patch0:         https://github.com/python-social-auth/social-app-django/commit/f8d674d.patch#/pr_197.patch
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module social-auth-core >= 1.2.0}
+BuildRequires:  %{python_module social-auth-core >= 3.3.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.11
 Requires:       python-six
-Requires:       python-social-auth-core >= 1.2.0
+Requires:       python-social-auth-core >= 3.3.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,7 +45,6 @@ in a Django based project.
 
 %prep
 %setup -q -n social-auth-app-django-%{version}
-%patch0 -p1
 
 %build
 %python_build
