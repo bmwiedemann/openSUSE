@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu May 28 16:24:26 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to 1.11.0 (bsc#1172092, CVE-2020-2024)
+  runtime:
+    - qemu: Support PCIe device hotplug for q35
+    - qemu: Add virtio-mem support (experimental)
+    - Support pmem/nvdimm hotplug
+    - ipv6: Add support for ipv6
+    - persist: move "newstore" out of experimental:The "newstore"
+      feature has had been a "experimental" feature for long time.
+    - rootless: Fix rootless for case net=none
+    - Support device cgroup in the host when sandbox_cgroup_only
+      is true, the hypervisor has access only to the devices that
+      the sandbox and its containers need
+  shim:
+    - vendor: Update kata agent to 5bf8d4cc461
+    - vendor: Update logrus to v1.4.2
+    - make: Add support to strip the binary
+    - Makefile: overwrite PREFIX from environment
+
+-------------------------------------------------------------------
 Mon Jan 20 15:46:33 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Update to 1.10.0:
