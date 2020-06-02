@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  2 09:50:49 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- add libart-gcc10.patch: this fixes the build using gcc-10. There's not
+  readily available upstream release with fixes yet (there are releases but
+  the look automatic and don't contain generated autotools files).
+
+-------------------------------------------------------------------
 Thu Jan 23 14:51:22 UTC 2020 - matthias.gerstner@suse.com
 
 - add Conflicts to fix

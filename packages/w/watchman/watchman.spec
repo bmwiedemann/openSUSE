@@ -1,7 +1,7 @@
 #
 # spec file for package watchman
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ Source3:        watchman@.socket
 Patch0:         %{name}_4.7.0_makefile-am.diff
 Patch1:         0001-Replaced-memset-calls-with-appopriate-C-11-init-or-a.patch
 Patch2:         0002-Re-worked-replacement-of-memset-with-proper-init-to-.patch
+Patch3:         libart-gcc10.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -101,6 +102,7 @@ Additionally, some Python tools that are part of watchman will be installed.
 %patch0
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 # There is some basic support for watchman to run under systemd:
 #
