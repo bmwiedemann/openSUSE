@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu May 28 08:51:19 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Add publish_batch to ClearFuncs exposed methods
+
+- Added:
+  * add-publish_batch-to-clearfuncs-exposed-methods.patch
+
+-------------------------------------------------------------------
+Tue May 26 14:37:09 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Update to Salt release version 3000.3
+  See release notes: https://docs.saltstack.com/en/latest/topics/releases/3000.3.html
+
+- Removed:
+  * fix-typo-in-minion_runner-for-aesfuncs-exposed-metho.patch
+
+-------------------------------------------------------------------
+Thu May 21 08:35:30 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- zypperpkg: filter patterns that start with dot (bsc#1171906)
+
+- Added:
+  * zypperpkg-filter-patterns-that-start-with-dot-244.patch
+
+-------------------------------------------------------------------
+Wed May 20 13:27:23 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Batch mode now also correctly provides return value (bsc#1168340)
+
+- Added:
+  * fix-for-return-value-ret-vs-return-in-batch-mode.patch
+
+-------------------------------------------------------------------
+Mon May 18 15:22:58 UTC 2020 - Alexander Graul <alexander.graul@suse.com>
+
+- Add docker.logout to docker execution module (bsc#1165572)
+
+- Added:
+  * add-docker-logout-237.patch
+
+-------------------------------------------------------------------
+Tue May 12 15:07:12 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Testsuite fix
+- Add option to enable/disable force refresh for zypper
+
+- Added:
+  * option-to-en-disable-force-refresh-in-zypper-215.patch
+  * fix-a-test-and-some-variable-names-229.patch
+
+-------------------------------------------------------------------
 Fri May  8 14:24:19 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
 
 - Python 3.8 compatibility changes

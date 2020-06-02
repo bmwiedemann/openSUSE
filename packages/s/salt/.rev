@@ -1436,4 +1436,37 @@ let build start it or we will get libvirt errors.
   * make-lazyloader.__init__-call-to-_refresh_file_mappi.patch</comment>
     <requestid>801830</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>2fd99626bd2eb26df4f99f66c7c6e0d3</srcmd5>
+    <version>3000.3</version>
+    <time>1591101225</time>
+    <user>dimstar_suse</user>
+    <comment>- Add publish_batch to ClearFuncs exposed methods
+- Added:
+  * add-publish_batch-to-clearfuncs-exposed-methods.patch
+
+- Update to Salt release version 3000.3
+  See release notes: https://docs.saltstack.com/en/latest/topics/releases/3000.3.html
+- Removed:
+  * fix-typo-in-minion_runner-for-aesfuncs-exposed-metho.patch
+
+- zypperpkg: filter patterns that start with dot (bsc#1171906)
+- Added:
+  * zypperpkg-filter-patterns-that-start-with-dot-244.patch
+
+- Batch mode now also correctly provides return value (bsc#1168340)
+- Added:
+  * fix-for-return-value-ret-vs-return-in-batch-mode.patch
+
+- Add docker.logout to docker execution module (bsc#1165572)
+- Added:
+  * add-docker-logout-237.patch
+
+- Testsuite fix
+- Add option to enable/disable force refresh for zypper
+- Added:
+  * option-to-en-disable-force-refresh-in-zypper-215.patch
+  * fix-a-test-and-some-variable-names-229.patch</comment>
+    <requestid>810127</requestid>
+  </revision>
 </revisionlist>

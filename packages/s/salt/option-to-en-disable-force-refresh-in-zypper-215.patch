@@ -1,0 +1,124 @@
+From bb870d08a0268cb2be5309ee1a1b8facd2c885df Mon Sep 17 00:00:00 2001
+From: darix <darix@users.noreply.github.com>
+Date: Tue, 12 May 2020 13:58:15 +0200
+Subject: [PATCH] Option to en-/disable force refresh in zypper (#215)
+
+The default will still be force refresh to keep existing setups working.
+
+1. Pillar option to turn off force refresh
+
+```
+zypper:
+  refreshdb_force: false
+```
+
+2. Cmdline option to force refresh.
+
+```
+salt '*' pkg.refresh_db [force=true|false]
+```
+
+The cmdline option will override the pillar as well.
+
+Co-authored-by: Alexander Graul <agraul@suse.com>
+---
+ salt/modules/zypperpkg.py            | 32 ++++++++++++++++++++--------
+ tests/unit/modules/test_zypperpkg.py | 24 +++++++++++++++++++--
+ 2 files changed, 45 insertions(+), 11 deletions(-)
+
+diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
+index e3f802a911..ed8420f398 100644
+--- a/salt/modules/zypperpkg.py
++++ b/salt/modules/zypperpkg.py
+@@ -1279,25 +1279,39 @@ def mod_repo(repo, **kwargs):
+     return repo
+ 
+ 
+-def refresh_db(root=None):
+-    '''
+-    Force a repository refresh by calling ``zypper refresh --force``, return a dict::
++def refresh_db(root=None, force=None):
++    """
++    Trigger a repository refresh by calling ``zypper refresh``. Refresh will run
++    with ``--force`` if the "force=True" flag is passed on the CLI or
++    ``refreshdb_force`` is set to ``true`` in the pillar. The CLI option
++    overrides the pillar setting.
+ 
+-        {'<database name>': Bool}
++    It will return a dict::
+ 
+-    root
+-        operate on a different root directory.
++        {'<database name>': Bool}
+ 
+     CLI Example:
+ 
+     .. code-block:: bash
+ 
+-        salt '*' pkg.refresh_db
+-    '''
++        salt '*' pkg.refresh_db [force=true|false]
++
++    Pillar Example:
++
++    .. code-block:: yaml
++
++       zypper:
++         refreshdb_force: false
++    """
+     # Remove rtag file to keep multiple refreshes from happening in pkg states
+     salt.utils.pkg.clear_rtag(__opts__)
+     ret = {}
+-    out = __zypper__(root=root).refreshable.call('refresh', '--force')
++    refresh_opts = ['refresh']
++    if force is None:
++        force = __pillar__.get('zypper', {}).get('refreshdb_force', True)
++    if force:
++        refresh_opts.append('--force')
++    out = __zypper__(root=root).refreshable.call(*refresh_opts)
+ 
+     for line in out.splitlines():
+         if not line:
+diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
+index 2a8e753b9d..9a5c59a857 100644
+--- a/tests/unit/modules/test_zypperpkg.py
++++ b/tests/unit/modules/test_zypperpkg.py
+@@ -278,12 +278,32 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+             'stderr': '', 'stdout': '\n'.join(ref_out), 'retcode': 0
+         }
+ 
+-        with patch.dict(zypper.__salt__, {'cmd.run_all': MagicMock(return_value=run_out)}):
+-            with patch.object(salt.utils.pkg, 'clear_rtag', Mock()):
++        zypper_mock = MagicMock(return_value=run_out)
++        call_kwargs = {
++            "output_loglevel": "trace",
++            "python_shell": False,
++            "env": {}
++        }
++        with patch.dict(zypper.__salt__, {"cmd.run_all": zypper_mock}):
++            with patch.object(salt.utils.pkg, "clear_rtag", Mock()):
+                 result = zypper.refresh_db()
+                 self.assertEqual(result.get("openSUSE-Leap-42.1-LATEST"), False)
+                 self.assertEqual(result.get("openSUSE-Leap-42.1-Update"), False)
+                 self.assertEqual(result.get("openSUSE-Leap-42.1-Update-Non-Oss"), True)
++                zypper_mock.assert_called_with(
++                    ["zypper", "--non-interactive", "refresh", "--force"],
++                    **call_kwargs
++                )
++                zypper.refresh_db(force=False)
++                zypper_mock.assert_called_with(
++                    ["zypper", "--non-interactive", "refresh"],
++                    **call_kwargs
++                )
++                zypper.refresh_db(force=True)
++                zypper_mock.assert_called_with(
++                    ["zypper", "--non-interactive", "refresh", "--force"],
++                    **call_kwargs
++                )
+ 
+     def test_info_installed(self):
+         '''
+-- 
+2.26.2
+
+

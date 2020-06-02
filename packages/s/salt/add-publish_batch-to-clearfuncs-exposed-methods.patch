@@ -1,0 +1,27 @@
+From da936daeebd701e147707ad814c07bfc259d4be4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Thu, 28 May 2020 09:37:08 +0100
+Subject: [PATCH] Add publish_batch to ClearFuncs exposed methods
+
+---
+ salt/master.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/salt/master.py b/salt/master.py
+index 485c16029b12fc38fc88b54aba95f03aa95d14ee..7d7a094a1a212180bfb294df3ad8b38477981450 100644
+--- a/salt/master.py
++++ b/salt/master.py
+@@ -1906,7 +1906,7 @@ class ClearFuncs(TransportMethods):
+     # These methods will be exposed to the transport layer by
+     # MWorker._handle_clear
+     expose_methods = (
+-        'ping', 'publish', 'get_token', 'mk_token', 'wheel', 'runner',
++        'ping', 'publish', 'publish_batch', 'get_token', 'mk_token', 'wheel', 'runner',
+     )
+ 
+     # The ClearFuncs object encapsulates the functions that can be executed in
+-- 
+2.23.0
+
+

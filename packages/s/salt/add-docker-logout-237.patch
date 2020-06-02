@@ -1,0 +1,179 @@
+From 9e6bd24b07cd2424c3805777b07b9ea84adff416 Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Mon, 18 May 2020 16:39:27 +0200
+Subject: [PATCH] Add docker logout (#237)
+
+Docker logout works analog to login. It takes none, one or more registries as
+arguments. If there are no arguments, all known (specified in pillar)
+docker registries are logged out of. If arguments are present, they are
+interpreted as a list of docker registries to log out of.
+---
+ salt/modules/dockermod.py            | 80 ++++++++++++++++++++++++++++
+ tests/unit/modules/test_dockermod.py | 59 ++++++++++++++++++++
+ 2 files changed, 139 insertions(+)
+
+diff --git a/salt/modules/dockermod.py b/salt/modules/dockermod.py
+index 28a2107cec..119e9eb170 100644
+--- a/salt/modules/dockermod.py
++++ b/salt/modules/dockermod.py
+@@ -1481,6 +1481,86 @@ def login(*registries):
+     return ret
+ 
+ 
++def logout(*registries):
++    """
++    .. versionadded:: 3001
++
++    Performs a ``docker logout`` to remove the saved authentication details for
++    one or more configured repositories.
++
++    Multiple registry URLs (matching those configured in Pillar) can be passed,
++    and Salt will attempt to logout of *just* those registries. If no registry
++    URLs are provided, Salt will attempt to logout of *all* configured
++    registries.
++
++    **RETURN DATA**
++
++    A dictionary containing the following keys:
++
++    - ``Results`` - A dictionary mapping registry URLs to the authentication
++      result. ``True`` means a successful logout, ``False`` means a failed
++      logout.
++    - ``Errors`` - A list of errors encountered during the course of this
++      function.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt myminion docker.logout
++        salt myminion docker.logout hub
++        salt myminion docker.logout hub https://mydomain.tld/registry/
++    """
++    # NOTE: This function uses the "docker logout" CLI command to remove
++    # authentication information from config.json. docker-py does not support
++    # this usecase (see https://github.com/docker/docker-py/issues/1091)
++
++    # To logout of all known (to Salt) docker registries, they have to be collected first
++    registry_auth = __salt__["config.get"]("docker-registries", {})
++    ret = {"retcode": 0}
++    errors = ret.setdefault("Errors", [])
++    if not isinstance(registry_auth, dict):
++        errors.append("'docker-registries' Pillar value must be a dictionary")
++        registry_auth = {}
++    for reg_name, reg_conf in six.iteritems(
++        __salt__["config.option"]("*-docker-registries", wildcard=True)
++    ):
++        try:
++            registry_auth.update(reg_conf)
++        except TypeError:
++            errors.append(
++                "Docker registry '{0}' was not specified as a "
++                "dictionary".format(reg_name)
++            )
++
++    # If no registries passed, we will logout of all known registries
++    if not registries:
++        registries = list(registry_auth)
++
++    results = ret.setdefault("Results", {})
++    for registry in registries:
++        if registry not in registry_auth:
++            errors.append("No match found for registry '{0}'".format(registry))
++            continue
++        else:
++            cmd = ["docker", "logout"]
++            if registry.lower() != "hub":
++                cmd.append(registry)
++            log.debug("Attempting to logout of docker registry '%s'", registry)
++            logout_cmd = __salt__["cmd.run_all"](
++                cmd, python_shell=False, output_loglevel="quiet",
++            )
++            results[registry] = logout_cmd["retcode"] == 0
++            if not results[registry]:
++                if logout_cmd["stderr"]:
++                    errors.append(logout_cmd["stderr"])
++                elif logout_cmd["stdout"]:
++                    errors.append(logout_cmd["stdout"])
++    if errors:
++        ret["retcode"] = 1
++    return ret
++
++
+ # Functions for information gathering
+ def depends(name):
+     '''
+diff --git a/tests/unit/modules/test_dockermod.py b/tests/unit/modules/test_dockermod.py
+index 191bfc123f..8f4ead2867 100644
+--- a/tests/unit/modules/test_dockermod.py
++++ b/tests/unit/modules/test_dockermod.py
+@@ -164,6 +164,65 @@ class DockerTestCase(TestCase, LoaderModuleMockMixin):
+                     self.assertIn('retcode', ret)
+                     self.assertNotEqual(ret['retcode'], 0)
+ 
++    def test_logout_calls_docker_cli_logout_single(self):
++        client = Mock()
++        get_client_mock = MagicMock(return_value=client)
++        ref_out = {"stdout": "", "stderr": "", "retcode": 0}
++        registry_auth_data = {
++            "portus.example.com:5000": {
++                "username": "admin",
++                "password": "linux12345",
++                "email": "tux@example.com",
++            }
++        }
++        docker_mock = MagicMock(return_value=ref_out)
++        with patch.object(docker_mod, "_get_client", get_client_mock):
++            dunder_salt = {
++                "config.get": MagicMock(return_value=registry_auth_data),
++                "cmd.run_all": docker_mock,
++                "config.option": MagicMock(return_value={}),
++            }
++            with patch.dict(docker_mod.__salt__, dunder_salt):
++                ret = docker_mod.logout("portus.example.com:5000")
++                assert "retcode" in ret
++                assert ret["retcode"] == 0
++                docker_mock.assert_called_with(
++                    ["docker", "logout", "portus.example.com:5000"],
++                    python_shell=False,
++                    output_loglevel="quiet",
++                )
++
++
++    def test_logout_calls_docker_cli_logout_all(self):
++        client = Mock()
++        get_client_mock = MagicMock(return_value=client)
++        ref_out = {"stdout": "", "stderr": "", "retcode": 0}
++        registry_auth_data = {
++            "portus.example.com:5000": {
++                "username": "admin",
++                "password": "linux12345",
++                "email": "tux@example.com",
++            },
++            "portus2.example.com:5000": {
++                "username": "admin",
++                "password": "linux12345",
++                "email": "tux@example.com",
++            },
++        }
++
++        docker_mock = MagicMock(return_value=ref_out)
++        with patch.object(docker_mod, "_get_client", get_client_mock):
++            dunder_salt = {
++                "config.get": MagicMock(return_value=registry_auth_data),
++                "cmd.run_all": docker_mock,
++                "config.option": MagicMock(return_value={}),
++            }
++            with patch.dict(docker_mod.__salt__, dunder_salt):
++                ret = docker_mod.logout()
++                assert "retcode" in ret
++                assert ret["retcode"] == 0
++                assert docker_mock.call_count == 2
++
+     def test_ps_with_host_true(self):
+         '''
+         Check that docker.ps called with host is ``True``,
+-- 
+2.26.2
+
+

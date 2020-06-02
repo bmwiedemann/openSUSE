@@ -1,0 +1,66 @@
+From c1e66b9953c753dc9eff3652aef316e19c22deb4 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Tue, 12 May 2020 14:16:23 +0200
+Subject: [PATCH] Fix a test and some variable names (#229)
+
+* loop: fix variable names for until_no_eval
+
+* Fix test_core tests for fqdns errors
+---
+ salt/modules/network.py        |  2 +-
+ tests/unit/grains/test_core.py | 24 +++++++++++++-----------
+ 2 files changed, 14 insertions(+), 12 deletions(-)
+
+diff --git a/salt/modules/network.py b/salt/modules/network.py
+index 880f4f8d5f..9e11eb816e 100644
+--- a/salt/modules/network.py
++++ b/salt/modules/network.py
+@@ -1946,4 +1946,4 @@ def fqdns():
+     elapsed = time.time() - start
+     log.debug('Elapsed time getting FQDNs: {} seconds'.format(elapsed))
+ 
+-    return {"fqdns": sorted(list(fqdns))}
+\ No newline at end of file
++    return {"fqdns": sorted(list(fqdns))}
+diff --git a/tests/unit/grains/test_core.py b/tests/unit/grains/test_core.py
+index 94e4199814..36aa49f232 100644
+--- a/tests/unit/grains/test_core.py
++++ b/tests/unit/grains/test_core.py
+@@ -1122,20 +1122,22 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+ 
+         for errno in (0, core.HOST_NOT_FOUND, core.NO_DATA):
+             mock_log = MagicMock()
++            with patch.dict(core.__salt__, {'network.fqdns': salt.modules.network.fqdns}):
++                with patch.object(socket, 'gethostbyaddr',
++                                  side_effect=_gen_gethostbyaddr(errno)):
++                    with patch('salt.modules.network.log', mock_log):
++                        self.assertEqual(core.fqdns(), {'fqdns': []})
++                        mock_log.debug.assert_called()
++                        mock_log.error.assert_not_called()
++
++        mock_log = MagicMock()
++        with patch.dict(core.__salt__, {'network.fqdns': salt.modules.network.fqdns}):
+             with patch.object(socket, 'gethostbyaddr',
+-                              side_effect=_gen_gethostbyaddr(errno)):
+-                with patch('salt.grains.core.log', mock_log):
++                              side_effect=_gen_gethostbyaddr(-1)):
++                with patch('salt.modules.network.log', mock_log):
+                     self.assertEqual(core.fqdns(), {'fqdns': []})
+                     mock_log.debug.assert_called_once()
+-                    mock_log.error.assert_not_called()
+-
+-        mock_log = MagicMock()
+-        with patch.object(socket, 'gethostbyaddr',
+-                          side_effect=_gen_gethostbyaddr(-1)):
+-            with patch('salt.grains.core.log', mock_log):
+-                self.assertEqual(core.fqdns(), {'fqdns': []})
+-                mock_log.debug.assert_not_called()
+-                mock_log.error.assert_called_once()
++                    mock_log.error.assert_called_once()
+ 
+     @patch.object(salt.utils.platform, 'is_windows', MagicMock(return_value=False))
+     @patch('salt.utils.network.ip_addrs', MagicMock(return_value=['1.2.3.4', '5.6.7.8']))
+-- 
+2.26.2
+
+
