@@ -17,7 +17,7 @@
 
 
 Name:           tellico
-Version:        3.3
+Version:        3.3.1
 Release:        0
 Summary:        A Collection Manager
 License:        GPL-2.0-or-later
@@ -25,9 +25,7 @@ Group:          Productivity/Office/Other
 URL:            https://tellico-project.org/
 Source0:        https://tellico-project.org/files/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM
-Patch0:         Use-unnamespaced-hex-for-Qt-lt-5.14.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         Fix-build-with-Qt-5.9.patch
+Patch0:         Fix-compilation-with-Qt-5.9.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  libcdio-devel

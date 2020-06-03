@@ -1,0 +1,33 @@
+From ac8740fd9b4042af476fcf8dbb91c7d212d143e4 Mon Sep 17 00:00:00 2001
+From: Wolfgang Bauer <wbauer@tmo.at>
+Date: Tue, 2 Jun 2020 17:12:02 +0200
+Subject: Fix compilation with Qt 5.9
+
+`QTimer::callOnTimeout()` only exists since Qt 5.12.
+
+Connect to the `QTimer::timeout` signal instead, this works with older
+versions as well and is equivalent according to the Qt documentation.
+
+BUG: 422354
+FIXED-IN: 3.3.2
+Differential Revision: https://phabricator.kde.org/D29841
+---
+ src/document.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/document.cpp b/src/document.cpp
+index 3d2b4b1..7807002 100644
+--- a/src/document.cpp
++++ b/src/document.cpp
+@@ -61,7 +61,7 @@ Document::Document() : QObject(), m_coll(nullptr), m_isModified(false),
+   m_allImagesOnDisk = Config::imageLocation() != Config::ImagesInFile;
+   m_loadImagesTimer.setSingleShot(true);
+   m_loadImagesTimer.setInterval(500);
+-  m_loadImagesTimer.callOnTimeout(this, &Document::slotLoadAllImages);
++  connect(&m_loadImagesTimer, &QTimer::timeout, this, &Document::slotLoadAllImages);
+   newDocument(Collection::Book);
+ }
+ 
+-- 
+cgit v1.1
+
