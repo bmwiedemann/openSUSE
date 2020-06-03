@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  2 14:46:11 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints file to avoid build error for ppc64/ppc64le
+
+-------------------------------------------------------------------
 Sat May 30 13:32:44 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 47.0.0
