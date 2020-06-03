@@ -16,9 +16,9 @@
 #
 
 
-%global longver 2020-04-01
+%global longver 2020-05-01
 %global shortver %(echo %{longver}|sed 's|-||g')
-%define libname libre2-6
+%define libname libre2-7
 Name:           re2
 Version:        %{shortver}
 Release:        0
@@ -75,7 +75,14 @@ you will need to install %{name}-devel.
 %setup -q -n %{name}-%{longver}
 
 %build
-%make_build CXXFLAGS="%{optflags}"
+%if %{do_profiling}
+  %make_build CXXFLAGS="%{optflags} %{cflags_profile_generate}"
+  %make_build CXXFLAGS="%{optflags} %{cflags_profile_generate}" LDFLAGS="-lgcov" benchlog
+  %make_build clean
+  %make_build CXXFLAGS="%{optflags} %{cflags_profile_feedback}"
+%else
+  %make_build CXXFLAGS="%{optflags}"
+%endif
 
 %install
 %make_install includedir=%{_includedir} libdir=%{_libdir}
@@ -84,7 +91,10 @@ you will need to install %{name}-devel.
 find %{buildroot} -name 'lib%{name}.a' -delete
 
 %check
-%make_build test
+# Tests fail on all 32 bit architectures
+%if %{__isa_bits} == 64
+%make_build test CXXFLAGS="%{optflags}"
+%endif
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

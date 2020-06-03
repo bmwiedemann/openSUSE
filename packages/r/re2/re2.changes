@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 29 09:33:23 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Enable PGO during build
+
+-------------------------------------------------------------------
+Wed May 20 13:23:47 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2020-05-03:
+  * Internal fixes and optimisations
+  * Remove deprecated APIs, SONAME change
+- Build tests with optflags
+- Disable tests for 32 bit architectures
+
+-------------------------------------------------------------------
 Sun Apr  5 08:22:33 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Updat to version 2020-04-01:
