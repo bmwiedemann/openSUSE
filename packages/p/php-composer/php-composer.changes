@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  3 08:40:35 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 1.10.7
+  * Fixed PHP 8 deprecations
+  * Fixed detection of pcntl_signal being in disabled_functions when
+    pcntl_async_signal is allowed
+
+-------------------------------------------------------------------
 Mon May 11 07:49:20 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Version 1.10.6

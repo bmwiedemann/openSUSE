@@ -328,4 +328,16 @@
 </comment>
     <requestid>802614</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5e21e362b4fe998ea1df30a547636067</srcmd5>
+    <version>1.10.7</version>
+    <time>1591209296</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.10.7
+  * Fixed PHP 8 deprecations
+  * Fixed detection of pcntl_signal being in disabled_functions when
+    pcntl_async_signal is allowed
+</comment>
+    <requestid>811042</requestid>
+  </revision>
 </revisionlist>
