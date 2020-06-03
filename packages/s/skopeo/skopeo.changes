@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May 21 12:43:35 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to skopeo v1.0.0:
+* Add skopeo Login from c/common
+* Add skopeo login&logout
+* Add Security Policy
+* Add tests for using signatures with mirrors
+* Update c/image for containers/image#912
+* Use cobra in skopeo
+* Update containers/image to v5.4.4
+* Bump github.com/containers/storage from 1.18.2 to 1.19.0
+* v0.11.2 containers/common
+
+-------------------------------------------------------------------
 Tue Apr 14 07:25:44 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to skopeo v0.2.0:

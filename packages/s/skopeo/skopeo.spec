@@ -24,7 +24,7 @@
 %define with_libostree 1
 %endif
 Name:           skopeo
-Version:        0.2.0
+Version:        1.0.0
 Release:        0
 Summary:        Container image repository tool
 License:        Apache-2.0
