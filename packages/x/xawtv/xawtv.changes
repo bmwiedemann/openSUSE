@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun  3 10:31:36 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- add gcc-10.patch: fixes multiple definitions of global variables across the
+  code. These cause errors with new major gcc 10 version.
+
+-------------------------------------------------------------------
+Fri May 29 09:02:03 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- v4l-conf: add v4l-conf-fix-CVE-2020-13696.patch: fix security issue in
+  setuid-root program that allows for arbitrary file existence tests and
+  open() with O_RDWR (bsc#1171655, CVE-2020-13696)
+
+-------------------------------------------------------------------
 Thu Apr 30 06:40:47 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable LTO on %arm and aarch64 to fix build

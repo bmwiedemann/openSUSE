@@ -1,0 +1,91 @@
+Index: xawtv-3.103/common/commands.c
+===================================================================
+--- xawtv-3.103.orig/common/commands.c
++++ xawtv-3.103/common/commands.c
+@@ -63,7 +63,7 @@ void (*capture_get_hook)(void);
+ void (*capture_rel_hook)(void);
+ void (*movie_hook)(int argc, char **argv);
+ 
+-int debug;
++extern int debug;
+ int do_overlay;
+ char *snapbase = "snap";
+ int have_shmem;
+Index: xawtv-3.103/console/streamer.c
+===================================================================
+--- xawtv-3.103.orig/console/streamer.c
++++ xawtv-3.103/console/streamer.c
+@@ -59,7 +59,7 @@ static int  quiet = 0, fps = 10000;
+ 
+ static int  signaled = 0, wait_seconds = 0;
+ 
+-int debug = 0, have_dga = 0;
++int debug = 0;
+ 
+ /* ---------------------------------------------------------------------- */
+ 
+Index: xawtv-3.103/libng/grab-ng.h
+===================================================================
+--- xawtv-3.103.orig/libng/grab-ng.h
++++ xawtv-3.103/libng/grab-ng.h
+@@ -481,9 +481,9 @@ void ng_color_yuv2rgb_init(void);
+ void ng_writefile_init(void);
+ 
+ /* for yuv2rgb using lookup tables (color_lut.c, color_yuv2rgb.c) */
+-unsigned long   ng_lut_red[256];
+-unsigned long   ng_lut_green[256];
+-unsigned long   ng_lut_blue[256];
++extern unsigned long   ng_lut_red[256];
++extern unsigned long   ng_lut_green[256];
++extern unsigned long   ng_lut_blue[256];
+ void ng_yuv422_to_lut2(unsigned char *dest, unsigned char *s, int p);
+ void ng_yuv422_to_lut4(unsigned char *dest, unsigned char *s, int p);
+ void ng_yuv420p_to_lut2(void *h, struct ng_video_buf *out,
+Index: xawtv-3.103/console/ttv.c
+===================================================================
+--- xawtv-3.103.orig/console/ttv.c
++++ xawtv-3.103/console/ttv.c
+@@ -33,6 +33,8 @@ static struct ng_video_conv  *conv;
+ static struct ng_convert_handle *ch;
+ static int fast;
+ 
++int debug = 0;
++
+ static void
+ grabber_init(void)
+ {
+Index: xawtv-3.103/x11/xawtv.c
+===================================================================
+--- xawtv-3.103.orig/x11/xawtv.c
++++ xawtv-3.103/x11/xawtv.c
+@@ -82,7 +82,7 @@ Widget            chan_viewport, chan_bo
+ Pixmap            tv_pix;
+ struct vbi_window *vtx;
+ 
+-int               have_config = 0;
++extern int               have_config;
+ XtIntervalId      audio_timer;
+ XtIntervalId      unmute_timer;
+ int               unmute_pending = 0;
+Index: xawtv-3.103/console/fbtv.c
+===================================================================
+--- xawtv-3.103.orig/console/fbtv.c
++++ xawtv-3.103/console/fbtv.c
+@@ -72,7 +72,6 @@ static struct ng_video_conv  *conv;
+ static struct ng_convert_handle *ch;
+ static int dx,dy;
+ 
+-int have_config;
+ int x11_native_format,have_dga=1,debug;
+ 
+ /*--- channels ------------------------------------------------------------*/
+Index: xawtv-3.103/x11/wmhooks.h
+===================================================================
+--- xawtv-3.103.orig/x11/wmhooks.h
++++ xawtv-3.103/x11/wmhooks.h
+@@ -1,3 +1,3 @@
+ void wm_detect(Display *dpy);
+-void (*wm_stay_on_top)(Display *dpy, Window win, int state);
+-void (*wm_fullscreen)(Display *dpy, Window win, int state);
++extern void (*wm_stay_on_top)(Display *dpy, Window win, int state);
++extern void (*wm_fullscreen)(Display *dpy, Window win, int state);

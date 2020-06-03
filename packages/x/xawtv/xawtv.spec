@@ -1,7 +1,7 @@
 #
 # spec file for package xawtv
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %ifarch %arm aarch64
 %define _lto_cflags %{nil}
@@ -35,6 +36,8 @@ Patch0:         v4l-conf_non-position-independent-executable_fix.patch
 Patch1:         xawtv-fixblitframesegfault.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         fix-build-with-recent-glibc.patch
+Patch3:         v4l-conf-fix-CVE-2020-13696.patch
+Patch4:         gcc-10.patch
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel
 BuildRequires:  gcc-c++
@@ -152,6 +155,8 @@ as well.
 %patch0
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
