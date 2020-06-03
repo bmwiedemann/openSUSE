@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May 26 14:54:40 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.0.5
+  * Changed number of columns in type code output ("sgdisk -L"
+    and equivalents in gdisk and cgdisk) from 3 to 2, since some
+    descriptions are long enough that they are ambiguous with
+    three columns.
+  * You can now put the 0xEE partition last in a hybrid MBR using
+    sgdisk. (Previously, this was possible with gdisk but not
+    with sgdisk.) See the sgdisk man page for details.
+  * Added numerous type codes for Container Linux, Veracrypt, and
+    Freedesktop.org's Discoverable Partitions Specification
+  * Partition type name searches are now case-insensitive.
+  * It is now possible to quit out of partition type name
+    searches by typing "q".
+  * When changing a partition type code, the default is now the
+    current type code, not a platform-specific type code.
+
+-------------------------------------------------------------------
 Wed Oct 24 04:20:34 UTC 2018 - sean@suspend.net
 
 - Update to 1.0.4
