@@ -1,7 +1,7 @@
 #
 # spec file for package cgal
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 Ioda-Net Sàrl, Charmoille, Switzerland.
 #
 # All modifications and additions to the file contributed by third parties
@@ -40,12 +40,12 @@
 %define _sourcename CGAL
 %define _libname() libCGAL%{?1}%{?2}%{expand:%{_sover%{?1}}}
 Name:           cgal
-Version:        4.14
+Version:        5.0.2
 Release:        0
 Summary:        Computational Geometry Algorithms Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Graphics/CAD
-Url:            http://www.cgal.org/
+Url:            https://www.cgal.org/
 # You will need to update the magic numbers from the download urls on updating
 Source0:        https://github.com/CGAL/cgal/releases/download/releases%%2FCGAL-%{version}/CGAL-%{version}.tar.xz
 Source1:        https://github.com/CGAL/cgal/releases/download/releases%%2FCGAL-%{version}/CGAL-%{version}-doc_html.tar.xz
@@ -189,8 +189,8 @@ This package provides the documentation for CGAL algorithms.
 %setup -q -n CGAL-%{version} -a1
 
 %build
-%cmake \
-	-DCGAL_INSTALL_LIB_DIR=%{_lib}
+%cmake -DCGAL_HEADER_ONLY=OFF \
+       -DCGAL_INSTALL_LIB_DIR=%{_lib}
 
 make %{?_smp_mflags}
 
