@@ -26,7 +26,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           shorewall
-Version:        5.2.4.4
+Version:        5.2.4.5
 Release:        0
 Summary:        An iptables-based firewall for Linux systems
 License:        GPL-2.0-only
@@ -268,18 +268,11 @@ rm -rf %buildroot%_initddir
 # Since 5.12 we need to remove them again
 rm -f %{buildroot}/%{_sysconfdir}/sysconfig/%{name}*
 
-%pretrans
+%pre
+%service_add_pre shorewall.service
 %if %conf_need_update
 echo "upgrade configuration" > /run/%{name}_upgrade
 %endif
-
-%pretrans -n %{name}6
-%if %conf_need_update
-echo "upgrade configuration" > /run/%{name}6_upgrade
-%endif
-
-%pre
-%service_add_pre shorewall.service
 
 %post
 %service_add_post shorewall.service
@@ -293,7 +286,7 @@ rm -f %{_sysconfdir}/%{name}/startup_disabled
 
 %posttrans
 if [ -f /run/%{name}_upgrade ]; then
-cat > %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-something << EOF
+cat > %{_localstatedir}/adm/update-messages/%{name}-%{version}-something << EOF
 Warning: Shorewall %{dmaj} has just been installed
 Warning: You have to check and upgrade your configuration
 %{name} update -a %{_sysconfdir}/%{name}
@@ -307,6 +300,9 @@ fi
 
 %pre -n %{name}6
 %service_add_pre shorewall6.service
+%if %conf_need_update
+echo "upgrade configuration" > /run/%{name}6_upgrade
+%endif
 
 %post -n %{name}6
 %service_add_post shorewall6.service
@@ -320,7 +316,7 @@ rm -f %{_sysconfdir}/%{name}/startup_disabled
 
 %posttrans -n %{name}6
 if [ -f /run/%{name}6_upgrade ]; then
-cat > %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-something << EOF
+cat > %{_localstatedir}/adm/update-messages/%{name}-%{version}-something << EOF
 Warning: Shorewall6 %{dmaj} has just been installed
 Warning: You have to check and upgrade your configuration
 %{name}6 update -a %{_sysconfdir}/%{name}6

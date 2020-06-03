@@ -2098,4 +2098,12 @@ Will serve as maintenance sr for Leap + Factory submission (forwarded request 36
 - This version will served also as maintenance upgrade for Leap</comment>
     <requestid>799547</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>218563bbfb0ef508cc6f0974eef6ad01</srcmd5>
+    <version>5.2.4.5</version>
+    <time>1591209280</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>810932</requestid>
+  </revision>
 </revisionlist>

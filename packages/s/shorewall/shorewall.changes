@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 26 17:00:46 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to bugfix version 5.2.4.5
+  + The description of the 'optional' option has been expanded in
+    shorewall-interfaces(5).
+  + Previously, the AUTOMAKE option did not work properly when
+    /etc/shorewall[6] was a symbolic link. That has been corrected.
+- Packaging
+  + Remove broken %pretrans, move content to %pre
+  + Remove use of %release in rpm scriptlet
+  + This will avoid constant rebuild.
+
+-------------------------------------------------------------------
 Thu Apr 30 08:19:02 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to bugfix version 5.2.4.4
