@@ -1,0 +1,141 @@
+From f9dcb113bc2f81ef6abd2044d8512cd4e02f176c Mon Sep 17 00:00:00 2001
+From: Miklos Vajna <vmiklos@collabora.com>
+Date: Mon, 11 May 2020 10:10:34 +0200
+Subject: [PATCH] Related: tdf#129916 svx: clean up duplicated matrix decompose
+ for shadow size
+
+Pass the object's transform matrix to createEmbeddedShadowPrimitive(),
+this allows decomposing it only at a single place. Also, this will allow
+creating the shadow based on the object size.
+
+(cherry picked from commit 4ba368a3dd793bdc703858f358e1af7112decadd)
+
+Conflicts:
+	svx/inc/sdr/primitive2d/sdrdecompositiontools.hxx
+	svx/source/sdr/primitive2d/sdrdecompositiontools.cxx
+
+Change-Id: I8d8bf59934b00e13cda1da0398910aa9f1ce3c59
+---
+ .../svx/sdr/primitive2d/sdrdecompositiontools.hxx   |  4 ++--
+ .../sdr/primitive2d/sdrcustomshapeprimitive2d.cxx   |  7 +------
+ .../sdr/primitive2d/sdrdecompositiontools.cxx       | 13 +++++++++----
+ svx/source/sdr/primitive2d/sdrgrafprimitive2d.cxx   |  8 +-------
+ 4 files changed, 13 insertions(+), 19 deletions(-)
+
+diff --git a/include/svx/sdr/primitive2d/sdrdecompositiontools.hxx b/include/svx/sdr/primitive2d/sdrdecompositiontools.hxx
+index 844da339c111..8635981dc0ae 100644
+--- a/include/svx/sdr/primitive2d/sdrdecompositiontools.hxx
++++ b/include/svx/sdr/primitive2d/sdrdecompositiontools.hxx
+@@ -21,6 +21,7 @@
+ #define INCLUDED_SVX_SDR_PRIMITIVE2D_SDRDECOMPOSITIONTOOLS_HXX
+ 
+ #include <drawinglayer/primitive2d/baseprimitive2d.hxx>
++#include <basegfx/matrix/b2dhommatrix.hxx>
+ 
+ #include <svx/svxdllapi.h>
+ 
+@@ -72,8 +73,7 @@ namespace drawinglayer
+         Primitive2DContainer SVX_DLLPUBLIC createEmbeddedShadowPrimitive(
+             const Primitive2DContainer& rContent,
+             const attribute::SdrShadowAttribute& rShadow,
+-            sal_Int32 nGraphicTranslateX = 0,
+-            sal_Int32 nGraphicTranslateY = 0);
++            const basegfx::B2DHomMatrix& rObjectMatrix = basegfx::B2DHomMatrix());
+ 
+     } // end of namespace primitive2d
+ } // end of namespace drawinglayer
+diff --git a/svx/source/sdr/primitive2d/sdrcustomshapeprimitive2d.cxx b/svx/source/sdr/primitive2d/sdrcustomshapeprimitive2d.cxx
+index 3e0350aaf56c..2334b1d7fef6 100644
+--- a/svx/source/sdr/primitive2d/sdrcustomshapeprimitive2d.cxx
++++ b/svx/source/sdr/primitive2d/sdrcustomshapeprimitive2d.cxx
+@@ -68,13 +68,8 @@ namespace drawinglayer
+                 // shadow will be correct (using ColorModifierStack), but expensive.
+                 if(!get3DShape())
+                 {
+-                    basegfx::B2DTuple aScale;
+-                    basegfx::B2DTuple aTranslate;
+-                    double fRotate = 0;
+-                    double fShearX = 0;
+-                    maTransform.decompose(aScale, aTranslate, fRotate, fShearX);
+                     aRetval = createEmbeddedShadowPrimitive(aRetval, getSdrSTAttribute().getShadow(),
+-                                                            aTranslate.getX(), aTranslate.getY());
++                                                            maTransform);
+                 }
+             }
+ 
+diff --git a/svx/source/sdr/primitive2d/sdrdecompositiontools.cxx b/svx/source/sdr/primitive2d/sdrdecompositiontools.cxx
+index d6822bfd1519..42c0bb60ecc9 100644
+--- a/svx/source/sdr/primitive2d/sdrdecompositiontools.cxx
++++ b/svx/source/sdr/primitive2d/sdrdecompositiontools.cxx
+@@ -44,6 +44,7 @@
+ #include <drawinglayer/attribute/sdrlineattribute.hxx>
+ #include <drawinglayer/attribute/sdrlinestartendattribute.hxx>
+ #include <drawinglayer/attribute/sdrshadowattribute.hxx>
++#include <sal/log.hxx>
+ 
+ 
+ using namespace com::sun::star;
+@@ -482,8 +483,7 @@ namespace drawinglayer
+         Primitive2DContainer createEmbeddedShadowPrimitive(
+             const Primitive2DContainer& rContent,
+             const attribute::SdrShadowAttribute& rShadow,
+-            sal_Int32 nGraphicTranslateX,
+-            sal_Int32 nGraphicTranslateY)
++            const basegfx::B2DHomMatrix& rObjectMatrix)
+         {
+             if(!rContent.empty())
+             {
+@@ -493,10 +493,15 @@ namespace drawinglayer
+                 {
+                     if(rShadow.getSize().getX() != 100000)
+                     {
++                        basegfx::B2DTuple aScale;
++                        basegfx::B2DTuple aTranslate;
++                        double fRotate = 0;
++                        double fShearX = 0;
++                        rObjectMatrix.decompose(aScale, aTranslate, fRotate, fShearX);
+                         // Scale the shadow
+-                        aShadowOffset.translate(-nGraphicTranslateX, -nGraphicTranslateY);
++                        aShadowOffset.translate(-aTranslate.getX(), -aTranslate.getY());
+                         aShadowOffset.scale(rShadow.getSize().getX() * 0.00001, rShadow.getSize().getY() * 0.00001);
+-                        aShadowOffset.translate(nGraphicTranslateX, nGraphicTranslateY);
++                        aShadowOffset.translate(aTranslate.getX(), aTranslate.getY());
+                     }
+ 
+                     aShadowOffset.translate(rShadow.getOffset().getX(), rShadow.getOffset().getY());
+diff --git a/svx/source/sdr/primitive2d/sdrgrafprimitive2d.cxx b/svx/source/sdr/primitive2d/sdrgrafprimitive2d.cxx
+index 676b26183b09..be25a1278e64 100644
+--- a/svx/source/sdr/primitive2d/sdrgrafprimitive2d.cxx
++++ b/svx/source/sdr/primitive2d/sdrgrafprimitive2d.cxx
+@@ -35,7 +35,6 @@ namespace drawinglayer
+         void SdrGrafPrimitive2D::create2DDecomposition(Primitive2DContainer& rContainer, const geometry::ViewInformation2D& /*aViewInformation*/) const
+         {
+             Primitive2DContainer  aRetval;
+-            basegfx::B2DTuple aTranslateGrf;
+ 
+             // create unit outline polygon
+             const basegfx::B2DPolygon& aUnitOutline(basegfx::utils::createUnitPolygon());
+@@ -62,10 +61,6 @@ namespace drawinglayer
+                         getTransform(),
+                         getGraphicObject(),
+                         getGraphicAttr()));
+-                double fRotate = 0;
+-                double fShearX = 0;
+-                basegfx::B2DTuple aScaleGrf;
+-                getTransform().decompose(aScaleGrf, aTranslateGrf, fRotate, fShearX);
+                 aRetval.push_back(xGraphicContentPrimitive);
+             }
+ 
+@@ -127,8 +122,7 @@ namespace drawinglayer
+                 aRetval = createEmbeddedShadowPrimitive(
+                     aRetval,
+                     getSdrLFSTAttribute().getShadow(),
+-                    aTranslateGrf.getX(),
+-                    aTranslateGrf.getY());
++                    getTransform());
+             }
+ 
+             rContainer.insert(rContainer.end(), aRetval.begin(), aRetval.end());
+-- 
+2.26.1
+

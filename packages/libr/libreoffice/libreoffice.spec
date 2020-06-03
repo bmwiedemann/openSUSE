@@ -50,7 +50,7 @@
 %bcond_with system_gpgme
 %endif
 Name:           libreoffice
-Version:        6.4.3.2
+Version:        6.4.4.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -104,7 +104,6 @@ Patch8:         replace-boost-bimap-in-sdext-pdfimport.patch
 # Bug 1165870 - LO-L3: Image shadow that should be invisible shown as extraneous line below
 Patch9:         bsc1165870.diff
 # Bug 1160687 - LO-L3: Elements on title page mixed up
-Patch10:        bsc1160687-1.diff
 Patch11:        bsc1160687-2.diff
 Patch12:        bsc1160687-3.diff
 Patch13:        bsc1160687-4.diff
@@ -112,6 +111,12 @@ Patch14:        bsc1160687-5.diff
 Patch15:        bsc1160687-6.diff
 Patch16:        bsc1160687-7.diff
 Patch17:        bsc1160687-8.diff
+# Bug 1165849 - LO-L3: Shadow size for rectangle is only a fraction of Office 365
+Patch18:        bsc1165849-1.diff
+Patch19:        bsc1165849-2.diff
+Patch20:        bsc1165849-3.diff
+# Bug 1146025 - LO-L3: Colored textboxes in PPTX look very odd (SmartArt)
+Patch21:        bsc1146025.diff
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -971,7 +976,6 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
-%patch10 -p1
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
@@ -979,6 +983,10 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch15 -p1
 %patch16 -p1
 %patch17 -p1
+%patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
 %patch990 -p1
 %patch991 -p1
 

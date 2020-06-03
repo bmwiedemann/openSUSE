@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun  1 18:25:46 UTC 2020 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1146025 - LO-L3: Colored textboxes in PPTX look very odd (SmartArt)
+  * bsc1146025.diff
+
+-------------------------------------------------------------------
+Tue May 26 11:25:10 UTC 2020 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1165849 - LO-L3: Shadow size for rectangle is only a fraction of Office 365
+  * bsc1165849-1.diff
+  * bsc1165849-2.diff
+  * bsc1165849-3.diff
+
+-------------------------------------------------------------------
+Thu May 21 09:12:27 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 6.4.4.2:
+  * 6.4.4 release
+- Remove merged patch bsc1160687-1.diff
+
+-------------------------------------------------------------------
 Tue May 12 08:57:23 UTC 2020 - Andras Timar <andras.timar@collabora.com>
 
 - Fix bsc#1160687 - LO-L3: Elements on title page mixed up
@@ -20,8 +41,8 @@ Tue May  5 12:36:00 UTC 2020 - Andras Timar <andras.timar@collabora.com>
 -------------------------------------------------------------------
 Wed Apr  8 11:13:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
-- Update to 6.4.3.2:
-  * 6.4.2 RC2 release
+- Update to 6.4.3.2 bsc#1171997 CVE-2020-12801:
+  * 6.4.3 RC2 release
 - Drop merged patch adapt-o3tl-span-to-removal-of-std-span-cbegin-et-al.patch
 
 -------------------------------------------------------------------
