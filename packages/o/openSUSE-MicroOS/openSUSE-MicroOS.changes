@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  3 06:25:10 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Use console=ttyAMA0 for RPi2 (boo#1172417)
+
+-------------------------------------------------------------------
 Wed May 20 14:12:47 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - No microos_apparmor on plain MicroOS anymore (boo#1171747)
