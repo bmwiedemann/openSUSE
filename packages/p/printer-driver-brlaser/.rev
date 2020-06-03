@@ -73,4 +73,12 @@
   0002-Add-Brother-DCP1510.diff</comment>
     <requestid>794818</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b74a9ead422e0b14790855ce2c315255</srcmd5>
+    <version>6+git20191118.2f63d0a</version>
+    <time>1591209192</time>
+    <user>dimstar_suse</user>
+    <comment>- use cups-rpm-helper to have automatic printer driver provides (boo#1172407)</comment>
+    <requestid>810863</requestid>
+  </revision>
 </revisionlist>

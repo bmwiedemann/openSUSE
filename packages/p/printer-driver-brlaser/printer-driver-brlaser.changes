@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  2 14:38:16 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- use cups-rpm-helper to have automatic printer driver provides (boo#1172407)
+
+-------------------------------------------------------------------
 Thu Apr 16 14:59:45 UTC 2020 - i@xuzhao.net
 
 - Update to version 6+git20191118.2f63d0a:

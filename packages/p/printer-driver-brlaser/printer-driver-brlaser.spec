@@ -26,6 +26,7 @@ Group:          Hardware/Printing
 URL:            https://github.com/pdewacht/brlaser
 Source:         brlaser-%{version}.tar.gz
 BuildRequires:  cmake
+BuildRequires:  cups-rpm-helper
 %if 0%{?is_opensuse} || 0%{?suse_version} != 1315
 BuildRequires:  cups-ddk
 BuildRequires:  cups-devel
@@ -37,7 +38,6 @@ BuildRequires:  cups154-ddk
 BuildRequires:  cups154-devel
 %endif
 BuildRequires:  gcc-c++
-BuildRequires:  python-cups
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
