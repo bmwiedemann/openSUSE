@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Wed May 27 16:23:58 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/gfxboot#46
+- add F8-shortcut for language selection (jsc#SLE-12810, jsc#SLE-12479)
+- actual implementation of language switch
+- 4.5.69
+
+--------------------------------------------------------------------
 Tue Apr 14 04:17:26 UTC 2020 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Thai) (bsc#1149754)
