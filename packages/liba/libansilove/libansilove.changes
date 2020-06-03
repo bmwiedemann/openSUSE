@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 25 17:30:14 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.3
+  * Call memset() to set all fontData struct fields to zero in
+    all loaders
+  * Refactor error handling in ansilove_savefile()
+  * Add error handling for fwrite() in ansilove_savefile()
+  * Fix includes in various source files
+
+-------------------------------------------------------------------
 Thu Apr 30 12:05:53 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.2
