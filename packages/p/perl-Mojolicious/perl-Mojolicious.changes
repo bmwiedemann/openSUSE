@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun  1 03:15:17 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 8.51
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.51  2020-05-30
+    - Improved map efficiency in Mojo::Promise. (mst)
+    - Improved more tests to use subtests. (veesh)
+    - Improved .perltidyrc with more modern settings.
+  
+
+-------------------------------------------------------------------
 Tue May 26 03:10:45 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 8.50
