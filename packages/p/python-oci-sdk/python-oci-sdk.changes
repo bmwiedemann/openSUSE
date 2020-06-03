@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jun  2 10:12:27 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.14.3
+  * Support for returning the private IP of a private
+    endpoint database in the Database service
+  * Support for native JWT validation in the API Gateway service
+- from version 2.14.2
+  * Support for drift detection in the Resource Manager service
+- from version 2.14.1
+  * Support for updating the license type of database systems in the Database service
+  * Support for updating the version of 19c autonomous databases in the Database service
+  * Support for backup and restore functionality in the Key Management service
+  * Support for reports in the Marketplace service
+  * Support for calling Oracle Cloud Infrastructure services in the ap-hyderabad-1 region
+- from version 2.14.0
+   * Support for the MySQL Database service
+   * Support for updating the database home of a database in the Database service
+   * Support for government regions in the Marketplace service
+   * Support for starting and stopping instances in the Integration service
+   * Support for installing Windows updates in the OS Management service
+   * Deleted models ErrataId, ManagedInstanceUpdateDetails and UpdatablePackageSummary
+     from the os_management service
+- Update file list to fix Python imports for unvendoring
+- Update ops_relax-python-depends.patch to drop configparser from Python requirements
+
+-------------------------------------------------------------------
 Mon Apr 27 11:24:05 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.13.0

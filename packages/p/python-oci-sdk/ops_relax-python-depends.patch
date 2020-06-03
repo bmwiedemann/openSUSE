@@ -1,7 +1,7 @@
-diff -Nru oci-python-sdk-2.13.0.orig/requirements.txt oci-python-sdk-2.13.0/requirements.txt
---- oci-python-sdk-2.13.0.orig/requirements.txt	2020-04-21 20:03:17.000000000 +0200
-+++ oci-python-sdk-2.13.0/requirements.txt	2020-04-27 10:55:56.351972437 +0200
-@@ -1,18 +1,18 @@
+diff -Nru oci-python-sdk-2.14.3.orig/requirements.txt oci-python-sdk-2.14.3/requirements.txt
+--- oci-python-sdk-2.14.3.orig/requirements.txt	2020-05-19 17:48:45.000000000 +0200
++++ oci-python-sdk-2.14.3/requirements.txt	2020-06-02 16:38:24.924772081 +0200
+@@ -1,18 +1,17 @@
 -autodocsumm==0.1.11
 +autodocsumm>=0.1.11
  certifi
@@ -14,7 +14,6 @@ diff -Nru oci-python-sdk-2.13.0.orig/requirements.txt oci-python-sdk-2.13.0/requ
 -pytest==4.1.0
 -pytest-cov==2.6.1
 -attrs==19.1.0
-+configparser>=4.0.2
 +coverage>=4.5.2
 +cryptography>=2.8
 +flake8>=3.6.0
@@ -35,16 +34,15 @@ diff -Nru oci-python-sdk-2.13.0.orig/requirements.txt oci-python-sdk-2.13.0/requ
 +tox>=3.6.1
 +vcrpy>=2.0.1
 +wheel>=0.32.3
-diff -Nru oci-python-sdk-2.13.0.orig/setup.py oci-python-sdk-2.13.0/setup.py
---- oci-python-sdk-2.13.0.orig/setup.py	2020-04-21 20:03:17.000000000 +0200
-+++ oci-python-sdk-2.13.0/setup.py	2020-04-27 10:55:39.227948492 +0200
-@@ -31,8 +31,8 @@
+diff -Nru oci-python-sdk-2.14.3.orig/setup.py oci-python-sdk-2.14.3/setup.py
+--- oci-python-sdk-2.14.3.orig/setup.py	2020-05-19 17:48:45.000000000 +0200
++++ oci-python-sdk-2.14.3/setup.py	2020-06-02 16:38:45.961107246 +0200
+@@ -31,8 +31,7 @@
  
  requires = [
      "certifi",
 -    "configparser==4.0.2",
 -    "cryptography==2.8",
-+    "configparser>=4.0.2",
 +    "cryptography>=2.8",
      "pyOpenSSL>=17.5.0",
      "python-dateutil>=2.5.3,<3.0.0",
