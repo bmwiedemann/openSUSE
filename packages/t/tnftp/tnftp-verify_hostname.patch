@@ -1,0 +1,78 @@
+Index: tnftp-20151004/src/ssl.c
+===================================================================
+--- tnftp-20151004.orig/src/ssl.c
++++ tnftp-20151004/src/ssl.c
+@@ -56,6 +56,7 @@ __RCSID(" NetBSD: ssl.c,v 1.5 2015/09/16
+ 
+ #include <openssl/crypto.h>
+ #include <openssl/x509.h>
++#include <openssl/x509v3.h>
+ #include <openssl/pem.h>
+ #include <openssl/ssl.h>
+ #include <openssl/err.h>
+@@ -559,34 +560,56 @@ fetch_start_ssl(int sock, const char *se
+ 	SSL_CTX *ctx;
+ 	int ret, ssl_err;
+ 
+-	/* Init the SSL library and context */
+-	if (!SSL_library_init()){
+-		fprintf(ttyout, "SSL library init failed\n");
++	OPENSSL_init_ssl(0, NULL);
++
++	ctx = SSL_CTX_new(SSLv23_client_method());
++	
++	if(!ctx) {
++		fprintf(ttyout, "SSL_CTX context creation failed: %s\n", ERR_error_string(ERR_get_error(), NULL));
+ 		return NULL;
+ 	}
++	
++	SSL_CTX_set_mode(ctx, SSL_MODE_AUTO_RETRY|SSL_MODE_RELEASE_BUFFERS);
++	SSL_CTX_set_default_verify_paths(ctx);
++	SSL_CTX_set_min_proto_version(ctx, TLS1_VERSION);
+ 
+-	SSL_load_error_strings();
+-
+-	ctx = SSL_CTX_new(SSLv23_client_method());
+-	SSL_CTX_set_mode(ctx, SSL_MODE_AUTO_RETRY);
+ 
+ 	ssl = SSL_new(ctx);
+ 	if (ssl == NULL){
+-		fprintf(ttyout, "SSL context creation failed\n");
++		fprintf(ttyout, "SSL context creation failed: %s\n", ERR_error_string(ERR_get_error(), NULL));
++		SSL_CTX_free(ctx);
++		return NULL;
++	}
++	if(!SSL_set_fd(ssl, sock)) {
++		fprintf(ttyout, "SSL_set_fd() failed: %s\n", ERR_error_string(ERR_get_error(), NULL));
+ 		SSL_CTX_free(ctx);
++		SSL_free(ssl);
+ 		return NULL;
+ 	}
+-	SSL_set_fd(ssl, sock);
+ 	if (!SSL_set_tlsext_host_name(ssl, __UNCONST(servername))) {
+ 		fprintf(ttyout, "SSL hostname setting failed\n");
+ 		SSL_CTX_free(ctx);
++		SSL_free(ssl);
++		return NULL;
++	}
++	
++	SSL_set_hostflags(ssl, X509_CHECK_FLAG_NO_PARTIAL_WILDCARDS);
++	
++	if (!SSL_set1_host(ssl, __UNCONST(servername))) {
++		fprintf(ttyout, "SSL hostname setting for validation failed\n");
++		SSL_CTX_free(ctx);
++		SSL_free(ssl);
+ 		return NULL;
+ 	}
++
++	SSL_set_verify(ssl, SSL_VERIFY_PEER, NULL);
++
+ 	while ((ret = SSL_connect(ssl)) == -1) {
+ 		ssl_err = SSL_get_error(ssl, ret);
+ 		if (ssl_err != SSL_ERROR_WANT_READ &&
+ 		    ssl_err != SSL_ERROR_WANT_WRITE) {
+ 			ERR_print_errors_fp(ttyout);
++			SSL_CTX_free(ctx);
+ 			SSL_free(ssl);
+ 			return NULL;
+ 		}

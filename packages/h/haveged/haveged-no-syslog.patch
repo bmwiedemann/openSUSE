@@ -1,12 +1,8 @@
-Index: haveged-1.9.1/src/haveged.c
+Index: haveged-1.9.8/src/haveged.c
 ===================================================================
----
- haveged-1.9.4/src/haveged.c |    6 ++++++
- 1 file changed, 6 insertions(+)
-
---- haveged-1.9.4/src/haveged.c
-+++ haveged-1.9.4/src/haveged.c	2018-09-19 09:24:30.741795848 +0000
-@@ -478,8 +478,10 @@ static void daemonize(     /* RETURN: no
+--- haveged-1.9.8.orig/src/haveged.c
++++ haveged-1.9.8/src/haveged.c
+@@ -480,8 +480,10 @@ static void daemonize(     /* RETURN: no
     void)                   /* IN: nothing       */
  {
     FILE *fh;
@@ -17,7 +13,7 @@ Index: haveged-1.9.1/src/haveged.c
     if (daemon(0, 0) == -1)
        error_exit("Cannot fork into the background");
     fh = fopen(params->pid_file, "w");
-@@ -684,7 +686,9 @@ void error_exit(           /* RETURN: no
+@@ -692,7 +694,9 @@ void error_exit(           /* RETURN: no
  #ifndef NO_DAEMON
     if (params->detached!=0) {
        unlink(params->pid_file);
@@ -27,7 +23,7 @@ Index: haveged-1.9.1/src/haveged.c
        }
     else
  #endif
-@@ -794,11 +798,13 @@ static void print_msg(     /* RETURN: no
+@@ -802,11 +806,13 @@ static void print_msg(     /* RETURN: no
     va_list ap;
     va_start(ap, format);
     snprintf(buffer, sizeof(buffer), "%s: %s", params->daemon, format);

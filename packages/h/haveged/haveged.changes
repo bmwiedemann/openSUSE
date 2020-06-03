@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue May 26 10:49:29 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9.8:
+  * Fix for Unresolved symbol error_exit in libhavege #20 by pld-gitsync [Jirka Hladky]
+  * order after systemd-tmpfiles-setup-dev.service (origin/pr/21) [Christian Hesse]
+  * use systemd security features [Christian Hesse]
+  * do not run in container [Christian Hesse]
+  * do not use carriage return in line break [Christian Hesse]
+  * Fixed invalid UTF-8 codes in ChangeLog [Jirka Hladky]
+- Changes for version 1.9.5:
+  * Added test for /dev/random symlink [Jirka Hladky]
+  * Update to automake 1.16 [Jirka Hladky]
+  * Fix segv at start [Andrew]
+  * Fixed built issue on Cygwin [jbaker6953]
+  * Fix segfault on arm machines (origin/pr/7) [Natanael Copa]
+  * init.d/Makefile.am - add missing dependency [Jackie Huang]
+  * service.redhat - update PIDFile [Pierre-Jean Texier]
+  * Fix type mismatch in get_poolsize [Andreas Schwab]
+  * Fixup upstream changelog [Nicolas Braud-Santoni]
+  * Remove support for CPUID on ia64 (origin/pr/19) [Jeremy Bobbio]
+  * Output some progress during CUSUM and RANDOM EXCURSION test [Sven Hartge]
+  * Diagnostics capture mode now works correctly [Ethan Rahn]
+- Drop upstream patches:
+  * f2193587.patch
+  * get-poolsize.patch
+
+-------------------------------------------------------------------
 Tue Jul 30 08:25:59 UTC 2019 - Andreas Schwab <schwab@suse.de>
 
 - get-poolsize.patch: Fix type mismatch in get_poolsize that breaks error

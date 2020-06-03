@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 27 23:31:52 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 27
+  * Link to libcrypto rather than requiring openssl.
+  * Use PKCS#7 instead of CMS for parsing module signature to be
+    compatible with LibreSSL and OpenSSL < 1.1.0.
+  * Teach modinfo to parse modules.builtin.modinfo. When using
+    Linux kernel >= v5.2~rc1, it is possible to get module
+    information from this new file.
+
+-------------------------------------------------------------------
 Tue Feb 12 19:41:20 UTC 2019 - Michal Suchanek <msuchanek@suse.com>
 
 - Enable PKCS#7 signature parsing again - requires openssl

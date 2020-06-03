@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-input-synaptics
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Synaptics touchpad input driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
 Source1:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
@@ -62,7 +62,6 @@ become available.
 %package devel
 Summary:        Synaptics touchpad input driver for the Xorg X server -- Development Files
 Group:          Development/Libraries/X11
-Requires:       %{name} = %{version}
 
 %description devel
 synaptics is an Xorg input driver for touchpads.

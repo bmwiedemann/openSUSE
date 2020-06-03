@@ -1,5 +1,6 @@
---- rp-pppoe-3.12.orig/scripts/pppoe-connect.in	2015-11-11 17:10:02.000000000 +0200
-+++ rp-pppoe-3.12/scripts/pppoe-connect.in	2016-11-16 17:25:28.510472180 +0200
+diff -Pdpru rp-pppoe-3.14.orig/scripts/pppoe-connect.in rp-pppoe-3.14/scripts/pppoe-connect.in
+--- rp-pppoe-3.14.orig/scripts/pppoe-connect.in	2020-05-27 03:29:37.000000000 +0300
++++ rp-pppoe-3.14/scripts/pppoe-connect.in	2020-05-28 03:25:07.471458502 +0300
 @@ -18,7 +18,7 @@
  # Usage: pppoe-connect [config_file]
  #        pppoe-connect interface user [config_file]

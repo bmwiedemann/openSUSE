@@ -1,6 +1,7 @@
---- gui/Makefile.in
-+++ gui/Makefile.in
-@@ -46,7 +46,7 @@
+diff -Pdpru rp-pppoe-3.14.orig/gui/Makefile.in rp-pppoe-3.14/gui/Makefile.in
+--- rp-pppoe-3.14.orig/gui/Makefile.in	2020-05-27 03:29:37.000000000 +0300
++++ rp-pppoe-3.14/gui/Makefile.in	2020-05-28 03:54:38.555034196 +0300
+@@ -47,7 +47,7 @@ install: all
  	-mkdir -p $(DESTDIR)$(sbindir)
  	-mkdir -p $(DESTDIR)$(bindir)
  	-mkdir -p $(DESTDIR)/etc/ppp/rp-pppoe-gui

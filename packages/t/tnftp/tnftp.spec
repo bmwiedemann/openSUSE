@@ -1,7 +1,7 @@
 #
 # spec file for package tnftp
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,16 +22,17 @@ Release:        0
 Summary:        Enhanced FTP Client
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Ftp/Clients
-Url:            ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/
+URL:            ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/
 Source0:        ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/%{name}-%{version}.tar.gz
 Source1:        ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/%{name}-%{version}.tar.gz.asc
 Source2:        tnftp.keyring
 # PATCH-FIX-UPSTREAM: do not use bundled libedit
 Patch0:         tnftp-20100108-am_and_libedit.patch
+Patch1:         tnftp-verify_hostname.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libedit-devel
-BuildRequires:  libopenssl-devel
+BuildRequires:  libopenssl-devel >= 1.1
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  update-alternatives
@@ -53,6 +54,7 @@ formerly called lukemftp.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 #axe bundled library

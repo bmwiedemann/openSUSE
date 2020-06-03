@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 26 13:49:20 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- tnftp ssl client should validate hostnames and certificates,
+  so for example tnftp -d https://revoked.badssl.com/example
+  fails to connect. (tnftp-verify_hostname.patch), There are
+  at least two reports about this misbehaviour online but it has
+  never been fixed. Patch targets openSSL 1.1.x and later
+  so specify requirement in spec file.
+
+-------------------------------------------------------------------
 Mon Aug  8 21:21:36 UTC 2016 - asterios.dramis@gmail.com
 
 - Update to version 20151004:

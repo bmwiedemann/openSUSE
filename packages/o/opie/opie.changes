@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 11:16:45 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- allso apply permissions macros to /etc/opiekeys
+
+-------------------------------------------------------------------
 Tue Aug 27 07:33:25 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove ancient %clean section. Replace old $RPM_* shell vars

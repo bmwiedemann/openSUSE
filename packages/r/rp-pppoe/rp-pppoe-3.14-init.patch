@@ -1,8 +1,8 @@
-diff -ruN rp-pppoe-3.10-orig/scripts/pppoe-init-suse.in rp-pppoe-3.10/scripts/pppoe-init-suse.in
---- rp-pppoe-3.10-orig/scripts/pppoe-init-suse.in	2008-06-30 14:00:42.000000000 +0000
-+++ rp-pppoe-3.10/scripts/pppoe-init-suse.in	2009-05-08 00:07:50.511480596 +0000
-@@ -12,53 +12,114 @@
- # 2 or any later version.
+diff -Pdpru rp-pppoe-3.14.orig/scripts/pppoe-init-suse.in rp-pppoe-3.14/scripts/pppoe-init-suse.in
+--- rp-pppoe-3.14.orig/scripts/pppoe-init-suse.in	2020-05-27 03:29:37.000000000 +0300
++++ rp-pppoe-3.14/scripts/pppoe-init-suse.in	2020-05-28 03:46:47.354070399 +0300
+@@ -15,53 +15,106 @@
+ 
  # Modifed to work with SuSE 6.4 linux by Gary Cameron.
  #
 -# Source function library.
@@ -37,7 +37,7 @@ diff -ruN rp-pppoe-3.10-orig/scripts/pppoe-init-suse.in rp-pppoe-3.10/scripts/pp
  
 -test "$PPPoE_START" = "yes" || exit 0
 +CONFIG=`cat @sbindir@/pppoe-start | grep "^CONFIG" | awk -F"=" '{print $2}'`
-+CF_BASE=$(basename $CONFIG)
++CF_BASE=`basename $CONFIG`
 +PIDFILE=`cat $CONFIG | grep "^PIDFILE" | awk -F"=" '{print $2}'`
 +PPPOE_PIDFILE=`cat @sbindir@/pppoe-connect | grep "^PPPOE_PIDFILE" | awk -F"=" '{print $2}'`
 +PPPD_PIDFILE=`cat @sbindir@/pppoe-connect | grep "^PPPD_PIDFILE" | awk -F"=" '{print $2}'`
@@ -57,7 +57,6 @@ diff -ruN rp-pppoe-3.10-orig/scripts/pppoe-init-suse.in rp-pppoe-3.10/scripts/pp
 +  esac
 +  return $RES
 +}
-+
  
  # The echo return value for success (defined in /etc/rc.config).
 -return=$rc_done
@@ -66,79 +65,66 @@ diff -ruN rp-pppoe-3.10-orig/scripts/pppoe-init-suse.in rp-pppoe-3.10/scripts/pp
 -        echo -n "Bringing up PPPoE link"
 -        $START  > /dev/null 2>&1 || return=$rc_failed
 -        echo -e "$return"
--        ;;
-+	echo -n "Bringing up PPPoE link: "
-+	$START  > /dev/null 2>&1
- 
-+	# Remember status and be verbose
-+	rc_status -v
-+	;;
++        echo -n "Bringing up PPPoE link: "
++        $START  > /dev/null 2>&1 
++        # Remember status and be verbose
++        rc_status -v
+         ;;
+-
      stop)
 -        echo -n "Shutting down PPPoE link"
 -        $STOP > /dev/null 2>&1 || return=$rc_failed
 -        echo -e "$return"
--        ;;
-+	echo -n "Shutting down PPPoE link: "
-+	$STOP > /dev/null 2>&1
- 
-+	# Remember status and be verbose
-+	rc_status -v
-+	;;
++        echo -n "Shutting down PPPoE link: "
++        $STOP > /dev/null 2>&1
++        # Remember status and be verbose
++        rc_status -v
++        ;;
 +    try-restart)
-+	## Stop the service and regardless of whether it was
-+	## running or not, start it again.
-+	$0 stop
-+	$0 start
-+
-+	# Remember status and be quiet
-+	rc_status
-+	;;
-     restart)
--        $0 stop
--        echo "Waiting" $restart_time "seconds for the host to reset itself"
--        sleep $restart_time  #Note: Need time for host to reset itself
--        $0 start
--        ;;
++        ## Stop the service and regardless of whether it was
++        ## running or not, start it again.
++        $0 stop
++        $0 start
++        # Remember status and be quiet
++        rc_status
+         ;;
 -
-+	$0 stop
-+	echo "Waiting" $restart_time "seconds for the host to reset itself"
-+	sleep $restart_time  #Note: Need time for host to reset itself
-+	$0 start
-+
-+	# Remember status and be quiet
-+	rc_status
-+	;;
+     restart)
+         $0 stop
+         echo "Waiting" $restart_time "seconds for the host to reset itself"
+         sleep $restart_time  #Note: Need time for host to reset itself
+         $0 start
++        # Remember status and be quiet
++        rc_status
++        ;;
 +    reload|force-reload)
-+	echo -n "Reload PPPoE link: "
-+	rc_failed 5
-+
-+	# Remember status and be verbose
-+	rc_status -v
-+	;;
++        echo -n "Reload PPPoE link: "
++        rc_failed 5
++        # Remember status and be verbose
++        rc_status -v
+         ;;
+-
      status)
 -        $STATUS
--        ;;
++        echo -n "Checking PPPoE link: "
++        # Return value is slightly different for the status command:
++        # 0 - service up and running
++        # 1 - service dead, but /var/run/  pid  file exists
++        # 2 - service dead, but /var/lock/ lock file exists
++        # 3 - service not running (unused)
++        # 4 - service status unknown :-(
++        # 5--199 reserved (5--99 LSB, 100--149 distro, 150--199 appl.)
++        RET=`$STATUS > /dev/null 2>&1; echo $?`
++        chk_status $RET
++        # Remember status and be verbose
++        rc_status -v
+         ;;
 -
-+	echo -n "Checking PPPoE link: "
-+	# Return value is slightly different for the status command:
-+	# 0 - service up and running
-+	# 1 - service dead, but /var/run/  pid  file exists
-+	# 2 - service dead, but /var/lock/ lock file exists
-+	# 3 - service not running (unused)
-+	# 4 - service status unknown :-(
-+	# 5--199 reserved (5--99 LSB, 100--149 distro, 150--199 appl.)
-+	RET=`$STATUS > /dev/null 2>&1; echo $?`
-+	chk_status $RET
-+
-+	# Remember status and be verbose
-+	rc_status -v
-+	;;
      *)
 -        echo "Usage: pppoe {start|stop|restart|status}"
--        exit 1
-+	echo "Usage: pppoe {start|stop|restart|status|try-restart}"
-+	exit 1
++        echo "Usage: pppoe {start|stop|restart|status|try-restart}"
+         exit 1
  esac
-+rc_exit
- 
+-
 -exit 0
++rc_exit

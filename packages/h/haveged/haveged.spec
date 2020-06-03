@@ -1,7 +1,7 @@
 #
 # spec file for package haveged
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d }
 Name:           haveged
-Version:        1.9.4
+Version:        1.9.8
 Release:        0
 Summary:        Daemon for feeding entropy into the random pool
 License:        GPL-3.0-only
 Group:          System/Daemons
 URL:            https://github.com/jirka-h/haveged
-Source0:        https://github.com/jirka-h/haveged/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/jirka-h/haveged/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        %{name}.service
 Source3:        90-haveged.rules
 Source4:        haveged-dracut.module
@@ -34,10 +34,6 @@ Patch0:         ppc64le.patch
 Patch1:         haveged-conditional-enttest.patch
 # PATCH-FIX-UPSTREAM: don't write to syslog at startup to avoid deadlocks psimons@suse.com bnc#959237
 Patch2:         haveged-no-syslog.patch
-# PATCH-FIX-GITHUB: Fix segfault on arm machines
-Patch3:         f2193587.patch
-# PATCH-FIX-GITHUB: Fix type mismatch in get_poolsize bsc#1111047
-Patch4:         get-poolsize.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -82,12 +78,7 @@ This package contains the haveged implementation of the HAVEGE
 algorithm and supporting features.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1
 
 %build
 autoreconf -fvi
@@ -168,7 +159,6 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %{_mandir}/man3/libhavege.3%{?ext_man}
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/havege.h
-%{_includedir}/%{name}/havegecmd.h
 %doc contrib/build/havege_sample.c
 %{_libdir}/*.so
 

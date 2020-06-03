@@ -1,6 +1,7 @@
---- gui/Makefile.in.orig
-+++ gui/Makefile.in
-@@ -37,10 +37,10 @@ all: pppoe-wrapper
+diff -Pdpru rp-pppoe-3.14.orig/gui/Makefile.in rp-pppoe-3.14/gui/Makefile.in
+--- rp-pppoe-3.14.orig/gui/Makefile.in	2020-05-27 03:29:37.000000000 +0300
++++ rp-pppoe-3.14/gui/Makefile.in	2020-05-28 03:51:05.322582248 +0300
+@@ -38,10 +38,10 @@ all: pppoe-wrapper
  	@echo "Type 'make install' as root to install the software."
  
  pppoe-wrapper: wrapper.o

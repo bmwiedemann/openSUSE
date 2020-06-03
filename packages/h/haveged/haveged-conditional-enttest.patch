@@ -2,8 +2,10 @@
  haveged-1.9.4/configure.ac |    7 ++++++-
  1 file changed, 6 insertions(+), 1 deletion(-)
 
---- haveged-1.9.4/configure.ac
-+++ haveged-1.9.4/configure.ac	2018-09-19 09:23:58.582379792 +0000
+Index: haveged-1.9.8/configure.ac
+===================================================================
+--- haveged-1.9.8.orig/configure.ac
++++ haveged-1.9.8/configure.ac
 @@ -62,6 +62,11 @@ AC_ARG_ENABLE(nistest,
     AS_HELP_STRING([--enable-nistest=[no/yes]],[Run NIST test suite [default=no]]),
     , enable_nistest="no")

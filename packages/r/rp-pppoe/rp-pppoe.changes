@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu May 28 01:11:10 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Refresh spec-file via spec-cleaner and manual optimisations.
+  * Add make_build and autopatch macros.
+  * Remove group tag and obsoleted conditions.
+- Refresh and rename patches:
+  * docdir.diff to rp-pppoe-3.14-docdir.patch
+  * nonrfc-modems.diff to rp-pppoe-3.14-nonrfc-modems.patch
+  * release-buildsystem.diff to rp-pppoe-3.14-release-buildsystem.patch
+  * resolve-conf.diff to rp-pppoe-3.14-resolve-conf.patch
+  * rp-pppoe-3.10-config.patch to rp-pppoe-3.14-config.patch
+  * rp-pppoe-3.10-init.patch to rp-pppoe-3.14-init.patch
+  * rp-pppoe-pie.patch to rp-pppoe-3.14-pie.patch
+  * strip.diff to rp-pppoe-3.14-strip.patch
+- Update to 3.14
+  * Add -H and -M options for sending HURL and MOTM packets respectively.
+  * Change VERSION macro to RP_VERSION to avoid conflict with pppd macro.
+
+-------------------------------------------------------------------
 Mon Jun 17 07:50:57 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Refresh spec-file via spec-cleaner and manual optimisations.

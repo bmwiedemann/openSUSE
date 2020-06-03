@@ -503,4 +503,12 @@
     <comment>kmod 26</comment>
     <requestid>699853</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>15136be635e3b2494785169b45de1783</srcmd5>
+    <version>27</version>
+    <time>1591208917</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 27</comment>
+    <requestid>809713</requestid>
+  </revision>
 </revisionlist>

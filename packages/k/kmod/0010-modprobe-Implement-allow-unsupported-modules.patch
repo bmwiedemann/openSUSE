@@ -6,20 +6,20 @@ Subject: [PATCH 4/6] modprobe: Implement --allow-unsupported-modules
 References: fate#316971
 Patch-mainline: never
 ---
- Makefile.am                   | 4 +++-
- libkmod/libkmod-unsupported.c | 9 +++++++++
- libkmod/libkmod-unsupported.h | 8 ++++++++
- tools/modprobe.c              | 8 +++++++-
+ Makefile.am                   |    4 +++-
+ libkmod/libkmod-unsupported.c |    9 +++++++++
+ libkmod/libkmod-unsupported.h |    8 ++++++++
+ tools/modprobe.c              |    8 +++++++-
  4 files changed, 27 insertions(+), 2 deletions(-)
  create mode 100644 libkmod/libkmod-unsupported.c
  create mode 100644 libkmod/libkmod-unsupported.h
 
-diff --git a/Makefile.am b/Makefile.am
-index ddb25f0..e332977 100644
---- a/Makefile.am
-+++ b/Makefile.am
-@@ -92,7 +92,9 @@ libkmod_libkmod_la_LIBADD = \
- 	${liblzma_LIBS} ${zlib_LIBS} ${openssl_LIBS}
+Index: kmod-27/Makefile.am
+===================================================================
+--- kmod-27.orig/Makefile.am
++++ kmod-27/Makefile.am
+@@ -93,7 +93,9 @@ libkmod_libkmod_la_LIBADD = \
+ 	${liblzma_LIBS} ${zlib_LIBS} ${libcrypto_LIBS}
  
  noinst_LTLIBRARIES += libkmod/libkmod-internal.la
 -libkmod_libkmod_internal_la_SOURCES = $(libkmod_libkmod_la_SOURCES)
@@ -29,11 +29,10 @@ index ddb25f0..e332977 100644
  libkmod_libkmod_internal_la_LDFLAGS = $(AM_LDFLAGS) \
  	-Wl,--version-script=$(top_srcdir)/libkmod/libkmod.sym
  libkmod_libkmod_internal_la_DEPENDENCIES  = $(libkmod_libkmod_la_DEPENDENCIES)
-diff --git a/libkmod/libkmod-unsupported.c b/libkmod/libkmod-unsupported.c
-new file mode 100644
-index 0000000..7ef9fc8
+Index: kmod-27/libkmod/libkmod-unsupported.c
+===================================================================
 --- /dev/null
-+++ b/libkmod/libkmod-unsupported.c
++++ kmod-27/libkmod/libkmod-unsupported.c
 @@ -0,0 +1,9 @@
 +#include "libkmod-internal.h"
 +#include "libkmod-unsupported.h"
@@ -44,11 +43,10 @@ index 0000000..7ef9fc8
 +
 +	config->block_unsupported = 0;
 +}
-diff --git a/libkmod/libkmod-unsupported.h b/libkmod/libkmod-unsupported.h
-new file mode 100644
-index 0000000..a95b4a2
+Index: kmod-27/libkmod/libkmod-unsupported.h
+===================================================================
 --- /dev/null
-+++ b/libkmod/libkmod-unsupported.h
++++ kmod-27/libkmod/libkmod-unsupported.h
 @@ -0,0 +1,8 @@
 +#pragma once
 +
@@ -58,10 +56,10 @@ index 0000000..a95b4a2
 + * library
 + */
 +void kmod_internal_allow_unsupported(struct kmod_ctx *ctx);
-diff --git a/tools/modprobe.c b/tools/modprobe.c
-index 3be2989..aa4033d 100644
---- a/tools/modprobe.c
-+++ b/tools/modprobe.c
+Index: kmod-27/tools/modprobe.c
+===================================================================
+--- kmod-27.orig/tools/modprobe.c
++++ kmod-27/tools/modprobe.c
 @@ -38,6 +38,8 @@
  
  #include "kmod.h"
@@ -71,7 +69,7 @@ index 3be2989..aa4033d 100644
  static int log_priority = LOG_CRIT;
  static int use_syslog = 0;
  #define LOG(...) log_printf(log_priority, __VA_ARGS__)
-@@ -755,6 +757,7 @@ static int do_modprobe(int argc, char **orig_argv)
+@@ -761,6 +763,7 @@ static int do_modprobe(int argc, char **
  	const char *dirname = NULL;
  	const char *root = NULL;
  	const char *kversion = NULL;
@@ -79,7 +77,7 @@ index 3be2989..aa4033d 100644
  	int use_all = 0;
  	int do_remove = 0;
  	int do_show_config = 0;
-@@ -846,7 +849,7 @@ static int do_modprobe(int argc, char **orig_argv)
+@@ -852,7 +855,7 @@ static int do_modprobe(int argc, char **
  			kversion = optarg;
  			break;
  		case 128:
@@ -88,7 +86,7 @@ index 3be2989..aa4033d 100644
  			break;
  		case 's':
  			env_modprobe_options_append("-s");
-@@ -919,6 +922,9 @@ static int do_modprobe(int argc, char **orig_argv)
+@@ -925,6 +928,9 @@ static int do_modprobe(int argc, char **
  
  	log_setup_kmod_log(ctx, verbose);
  
@@ -98,6 +96,3 @@ index 3be2989..aa4033d 100644
  	kmod_load_resources(ctx);
  
  	if (do_show_config)
--- 
-2.20.1
-

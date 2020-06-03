@@ -1,7 +1,7 @@
 #
 # spec file for package rp-pppoe
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,10 @@
 %define _name pppoe
 %define _group dialout
 Name:           rp-%{_name}
-Version:        3.13
+Version:        3.14
 Release:        0
 Summary:        A PPP Over Ethernet Redirector for PPPD
 License:        GPL-2.0-or-later
-Group:          Productivity/Networking/PPP
 URL:            https://dianne.skoll.ca/projects/%{name}
 Source0:        https://dianne.skoll.ca/projects/%{name}/download/%{name}-%{version}.tar.gz
 Source1:        %{_name}-connect
@@ -33,26 +32,22 @@ Source4:        %{_name}-status
 Source5:        %{_name}-stop
 Source6:        %{_name}.service
 Source7:        %{_name}-server.service
-Patch0:         docdir.diff
-Patch1:         nonrfc-modems.diff
-Patch2:         release-buildsystem.diff
-Patch3:         resolve-conf.diff
-Patch4:         %{name}-3.10-config.patch
-Patch5:         %{name}-3.10-init.patch
-Patch6:         %{name}-pie.patch
-Patch7:         strip.diff
+Patch0:         %{name}-3.14-docdir.patch
+Patch1:         %{name}-3.14-nonrfc-modems.patch
+Patch2:         %{name}-3.14-release-buildsystem.patch
+Patch3:         %{name}-3.14-resolve-conf.patch
+Patch4:         %{name}-3.14-config.patch
+Patch5:         %{name}-3.14-init.patch
+Patch6:         %{name}-3.14-pie.patch
+Patch7:         %{name}-3.14-strip.patch
 BuildRequires:  pkgconfig
 BuildRequires:  ppp
 BuildRequires:  pkgconfig(systemd)
+Requires:       group(%{_group})
 Requires:       net-tools
 Requires:       ppp
 Requires(post): permissions
-%if 0%{?suse_version} >= 1330
-Requires:       group(%{_group})
 Requires(pre):  group(%{_group})
-%else
-Requires(pre):  shadow
-%endif
 
 %description
 %{name} is a user-space redirector which permits the use of PPPoE
@@ -61,21 +56,14 @@ many ADSL service providers.
 
 %prep
 %setup -q
-%patch0
-%patch1
-%patch2
-%patch3
-%patch4 -p1
-%patch5 -p1
-%patch6
-%patch7
+%autopatch -p1
 
 %build
 cd src
 %configure
-make %{?_smp_mflags}
+%make_build
 cd ../gui
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install -C src
