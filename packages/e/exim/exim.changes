@@ -1,3 +1,17 @@
+Tue Jun  2 07:12:55 CEST 2020 - wullinger@rz.uni-kiel.de
+
+- update to exim 4.94
+  * some transports now refuse to use tainted data in constructing their delivery
+    location
+    this WILL BREAK configurations which are not updated accordingly.
+    In particular: any Transport use of $local_user which has been relying upon
+    check_local_user far away in the Router to make it safe, should be updated to
+    replace $local_user with $local_part_data.
+  * Attempting to remove, in router or transport, a header name that ends with
+    an asterisk (which is a standards-legal name) will now result in all headers
+    named starting with the string before the asterisk being removed.
+
+-------------------------------------------------------------------
 Tue May 19 13:47:05 CEST 2020 - wullinger@rz.uni-kiel.de
 - switch pretrans to use lua
   (fixes bsc#1171877)

@@ -713,4 +713,22 @@ argument by removing the curly brackets (shell syntax).</comment>
     <comment></comment>
     <requestid>807583</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>76e48888409d17bcdf019750a069899b</srcmd5>
+    <version>4.94</version>
+    <time>1591209282</time>
+    <user>dimstar_suse</user>
+    <comment>- update to exim 4.94
+  * some transports now refuse to use tainted data in constructing their delivery
+    location
+    this WILL BREAK configurations which are not updated accordingly.
+    In particular: any Transport use of $local_user which has been relying upon
+    check_local_user far away in the Router to make it safe, should be updated to
+    replace $local_user with $local_part_data.
+  * Attempting to remove, in router or transport, a header name that ends with
+    an asterisk (which is a standards-legal name) will now result in all headers
+    named starting with the string before the asterisk being removed.
+</comment>
+    <requestid>810991</requestid>
+  </revision>
 </revisionlist>

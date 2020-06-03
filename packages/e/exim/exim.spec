@@ -72,8 +72,8 @@ Requires(pre):  group(mail)
 %endif
 Requires(pre):  fileutils textutils
 %endif
-Version:        4.93.0.4
-Release:        4
+Version:        4.94
+Release:        1
 %if %{with_mysql}
 BuildRequires:  mysql-devel
 %endif
@@ -87,8 +87,8 @@ Summary:        The Exim Mail Transfer Agent, a Replacement for sendmail
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Servers
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source:         http://ftp.exim.org/pub/exim/exim4/fixes/exim-%{version}.tar.bz2
-Source3:        http://ftp.exim.org/pub/exim/exim4/fixes/exim-%{version}.tar.bz2.asc
+Source:         http://ftp.exim.org/pub/exim/exim4/exim-%{version}.tar.bz2
+Source3:        http://ftp.exim.org/pub/exim/exim4/exim-%{version}.tar.bz2.asc
 # http://ftp.exim.org/pub/exim/Exim-Maintainers-Keyring.asc
 Source4:        exim.keyring
 Source1:        sysconfig.exim
@@ -102,7 +102,6 @@ Source32:       eximstats.conf-2.2
 Source40:       exim.service
 Patch0:         exim-tail.patch
 Patch1:         gnu_printf.patch
-Patch2:         patch-exim-fixes-ee83de04d3087efaf808d1f2235a988275c2ee94
 
 %package -n eximon
 Summary:        Eximon, an graphical frontend to administer Exim's mail queue
@@ -146,7 +145,6 @@ once, if at all. The rest is done by logrotate / cron.)
 %setup -q -n exim-%{version}
 %patch0
 %patch1 -p1
-%patch2 -p1
 # build with fPIE/pie on SUSE 10.0 or newer, or on any other platform
 %if %{?suse_version:%suse_version}%{?!suse_version:99999} > 930
 fPIE="-fPIE"
@@ -227,7 +225,6 @@ cat <<-EOF > Local/Makefile
     AUTH_TLS=yes
 	AUTH_LIBS=-lsasl2
     USE_OPENSSL=yes
-	SUPPORT_TLS=yes
 	TLS_LIBS=-lssl -lcrypto
 	INFO_DIRECTORY=%{_infodir}
 	LOG_FILE_PATH=/var/log/exim/%%s.log
