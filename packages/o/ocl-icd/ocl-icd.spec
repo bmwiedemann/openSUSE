@@ -23,6 +23,9 @@ Summary:        OpenCL ICD Bindings
 License:        BSD-2-Clause
 URL:            https://github.com/OCL-dev/ocl-icd
 Source:         https://github.com/OCL-dev/ocl-icd/archive/v%{version}/%{name}-%{version}.tar.gz
+Source1:        baselibs.conf
+# PATCH-FIx-UPSTREAM ocl-icd-gcc10.patch dimstar@opensuse.org -- Fix build with gcc10
+Patch0:         ocl-icd-gcc10.patch
 BuildRequires:  libtool
 BuildRequires:  opencl-headers >= 2.2
 BuildRequires:  pkgconfig
@@ -66,7 +69,7 @@ This package provides the files needed to build OpenCL client drivers that
 use ocl-icd for ICD functionality.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 ./bootstrap

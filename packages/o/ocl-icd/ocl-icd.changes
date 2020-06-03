@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun  3 10:56:53 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add ocl-icd-gcc10.patch: Fix build with gcc10 (boo#1172436).
+
+-------------------------------------------------------------------
+Sat May 30 08:57:18 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- add baselibs.conf to build 32bit binaries for Wine (bsc#1172303)
+
+-------------------------------------------------------------------
 Wed Feb 26 12:25:52 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove condition for SLE11 build as it is unresolvable anyway
