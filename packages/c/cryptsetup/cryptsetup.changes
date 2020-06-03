@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu May 28 18:43:29 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.3.3:
+  * Fix BitLocker compatible device access that uses native 4kB
+    sectors
+  * Support large IV count (--iv-large-sectors) cryptsetup option
+    for plain device mapping
+  * Fix a memory leak in BitLocker compatible handling
+  * Allow EBOIV (Initialization Vector algorithm) use
+  * LUKS2: Require both keyslot cipher and key size option, do
+    not fail silently
+- includes changes from 2.3.2:
+  * Add option to dump content of LUKS2 unbound keyslot
+  * Add support for discards (TRIM) for standalone dm-integrity
+    devices (Kernel 5.7) via --allow-discards, not for LUKS2
+  * Fix cryptsetup-reencrypt to work on devices that do not allow
+    direct-io device access.
+  * Fix a crash in the BitLocker-compatible code error path
+  * Fix Veracrypt compatible support for longer (>64 bytes)
+    passphrases
+
+-------------------------------------------------------------------
 Thu Apr  2 14:27:18 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - Split translations to -lang package

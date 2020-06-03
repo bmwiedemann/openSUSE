@@ -943,4 +943,12 @@ in future, e.g. &quot;Version: 2.0~beta1&quot; (forwarded request 160813 from je
     if binary keyslots areas metadata are not correct.</comment>
     <requestid>790921</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>718713f83bd65f121dd9fb623dda63c9</srcmd5>
+    <version>2.3.3</version>
+    <time>1591208982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810247</requestid>
+  </revision>
 </revisionlist>
