@@ -1,7 +1,7 @@
 #
 # spec file for package python-web_cache
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ License:        LGPL-2.1-only
 URL:            https://github.com/desbma/web_cache
 Source:         https://github.com/desbma/web_cache/archive/%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module unittest2}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
