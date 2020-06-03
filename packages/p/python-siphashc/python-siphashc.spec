@@ -27,6 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/WeblateOrg/siphashc
 Source:         https://files.pythonhosted.org/packages/source/s/siphashc/siphashc-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -50,7 +51,7 @@ export CFLAGS="%{optflags}"
 %python_build
 
 %check
-%python_exec setup.py test
+%pytest_arch
 
 %install
 %python_install
