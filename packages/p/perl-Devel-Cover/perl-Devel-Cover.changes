@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed May 20 03:10:07 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 1.36
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  1.36 - 19 May 2020
+   - Fix pod error
+   - Quieten perltidy syntax highlighting errors
+   - Fix up minimum perl version (Dick Franks) (GH-268)
+   - Fix passing full path for cover DB (GH-267)
+
+  1.35 - 17 May 2020
+   - Replace "use vars" with "our" (James Raspass) (GH-255)
+   - Remove tray db file from release
+   - Don't chdir when given a -dir flag (Dave Rolsky) (GH-253)
+   - Manage code references in @INC (Slaven Rezić) (GH-249, GH-250)
+
+  1.34 - 16 May 2020
+   - Minimum supported version is now 5.10.0 (Karen Etheridge) (GH-226)
+   - Support 5.32 by accomodating signauture changes (GH-260)
+
+-------------------------------------------------------------------
 Wed Sep  4 23:02:57 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
 
 - Explicitly require perl-B-Debug because B::Debug was in core and is
