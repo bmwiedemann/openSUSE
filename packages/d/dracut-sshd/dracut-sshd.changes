@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Tue Jun  2 13:34:05 UTC 2020 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- spec: Add full Github URL for tar archive. 
+
+-------------------------------------------------------------------
+Tue Jun  2 10:57:32 UTC 2020 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Update to upstream version 0.5.1-2
+  - Adds support for SUSE
+  - Adds support for Arch
+  - Properly install sshd depedencies
+  - Support dracut_authorized_keys file for early boot
+  - Removes SUSE support patches that are now part of the upstream release
+  * Drops 0001-Fail-if-there-is-no-authorized_keys.patch
+  * Drops 0002-Use-install-command-to-create-directories.patch
+  * Drops 0003-Either-install-ssh-or-sshd-sysconfig.patch
+  * Drops 0004-Try-to-load-etc-sysconfig-ssh.patch
+  * Drops 0005-Create-privilege-seperation-dirs-for-Fedora-and-SUSE.patch
+  * Drops 0006-Only-include-systemd-networkd-if-active.patch
+  * Drops 0007-Add-network-dependency-if-systemd-networkd-is-not-us.patch
+
+-------------------------------------------------------------------
+Tue Jul 23 10:53:15 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Add gladiacs patchset
+  * Adds 0001-Fail-if-there-is-no-authorized_keys.patch
+  * Adds 0002-Use-install-command-to-create-directories.patch
+  * Adds 0003-Either-install-ssh-or-sshd-sysconfig.patch
+  * Adds 0004-Try-to-load-etc-sysconfig-ssh.patch
+  * Adds 0005-Create-privilege-seperation-dirs-for-Fedora-and-SUSE.patch
+  * Adds 0006-Only-include-systemd-networkd-if-active.patch
+  * Adds 0007-Add-network-dependency-if-systemd-networkd-is-not-us.patch
+
+-------------------------------------------------------------------
+Mon Jul 22 15:08:40 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Initial checkin 
