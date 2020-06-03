@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Tue Jun  2 18:57:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Add URL tag
+- Package LICENSE and README
+- Rename specfiles and changes files to match the package name
+  * python-aiohttp-cors -> python-aiohttp_cors
+- Add patches to fix the unit tests:
+  * 0001-Fix-tests.patch
+  * 0001-215-fixing-exception-message-216.patch
+  * 278.patch (gh#278)
+
+-------------------------------------------------------------------
+Mon Apr  2 07:14:38 UTC 2018 - adrian@suse.de
+
+- update to version 0.7.0
+
+-------------------------------------------------------------------
+Sun Dec 31 09:16:55 UTC 2017 - adrian@suse.de
+
+- package version 0.6.0
+
