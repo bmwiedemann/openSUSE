@@ -32,6 +32,7 @@ Source:         https://github.com/KDAB/GammaRay/releases/download/v%{version}/%
 Patch0:         Fix_icons_installation.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         0001-Fix-build-with-Qt-5.15.patch
+Patch3:         fix-build-with-qt-5.15-again.patch
 BuildRequires:  binutils-devel
 BuildRequires:  cmake >= 3.1
 BuildRequires:  doxygen

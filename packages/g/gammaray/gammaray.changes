@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  2 09:58:03 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add another patch to fix build against Qt 5.15:
+  * fix-build-with-qt-5.15-again.patch
+
+-------------------------------------------------------------------
 Thu May  7 07:32:15 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Update to 2.11.1:
