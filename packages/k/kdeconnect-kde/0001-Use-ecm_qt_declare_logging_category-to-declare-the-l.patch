@@ -1,0 +1,2041 @@
+From 1d361642308a2d3008b57d250c8f2b5c6495e45f Mon Sep 17 00:00:00 2001
+From: Antonio Larrosa <antonio.larrosa@gmail.com>
+Date: Tue, 26 May 2020 18:55:47 +0200
+Subject: [PATCH] Use ecm_qt_declare_logging_category to declare the logging
+ categories
+
+This automatizes the generation of logging categories so a
+kdeconnect-kde.categories is generated and installed to
+/usr/share/qlogging-categories5/ so kdebugsettings can use it.
+
+Also, sets the default logging level to Warning. So now the logs
+of users won't be filled with debug messages but they can
+modify the configuration easily with kdebugsettings.
+
+This patch has some modifications to apply correctly (actually, this is
+mostly the original patch which was later modified to be submitted to
+upstream in the commit mentioned above)
+
+Index: kdeconnect-kde-20.04.1/daemon/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/daemon/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/daemon/CMakeLists.txt
+@@ -1,6 +1,13 @@
+ add_definitions(-DTRANSLATION_DOMAIN="kdeconnect-kded")
+ 
+-add_executable(kdeconnectd kdeconnectd.cpp)
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER kdeconnectd_debug.h
++    IDENTIFIER KDECONNECT_DAEMON CATEGORY_NAME kdeconnect.daemon
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (daemon)")
++
++add_executable(kdeconnectd kdeconnectd.cpp ${debug_file_SRCS})
+ target_include_directories(kdeconnectd PUBLIC ${CMAKE_BINARY_DIR})
+ target_link_libraries(kdeconnectd kdeconnectcore KF5::KIOWidgets KF5::DBusAddons KF5::Notifications KF5::I18n Qt5::Widgets)
+ 
+Index: kdeconnect-kde-20.04.1/daemon/kdeconnectd.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/daemon/kdeconnectd.cpp
++++ kdeconnect-kde-20.04.1/daemon/kdeconnectd.cpp
+@@ -21,7 +21,6 @@
+ #include <QApplication>
+ #include <QNetworkAccessManager>
+ #include <QTimer>
+-#include <QLoggingCategory>
+ #include <QCommandLineOption>
+ #include <QCommandLineParser>
+ #include <QDBusMessage>
+@@ -42,9 +41,7 @@
+ #include "core/device.h"
+ #include "core/backends/pairinghandler.h"
+ #include "kdeconnect-version.h"
+-
+-Q_DECLARE_LOGGING_CATEGORY(KDECONNECT_DAEMON)
+-Q_LOGGING_CATEGORY(KDECONNECT_DAEMON, "kdeconnect.daemon")
++#include "kdeconnectd_debug.h"
+ 
+ class DesktopDaemon : public Daemon
+ {
+Index: kdeconnect-kde-20.04.1/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/CMakeLists.txt
+@@ -20,6 +20,7 @@ include(KDECMakeSettings)
+ include(ECMAddTests)
+ include(ECMSetupVersion)
+ include(ECMInstallIcons)
++include(ECMQtDeclareLoggingCategory)
+ include(FeatureSummary)
+ include(GenerateExportHeader)
+ if (NOT SAILFISHOS)
+@@ -129,3 +130,5 @@ ki18n_install(po)
+ if (KF5DocTools_FOUND)
+  kdoctools_install(po)
+ endif()
++
++ecm_qt_install_logging_categories(EXPORT kdeconnect-kde FILE kdeconnect-kde.categories DESTINATION "${KDE_INSTALL_LOGGINGCATEGORIESDIR}")
+Index: kdeconnect-kde-20.04.1/core/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/core/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/core/CMakeLists.txt
+@@ -1,5 +1,13 @@
+ add_definitions(-DTRANSLATION_DOMAIN=\"kdeconnect-core\")
+ 
++set(debug_file_SRCS)
++
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER kdeconnect_debug.h
++    IDENTIFIER KDECONNECT_CORE CATEGORY_NAME kdeconnect.core
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (core)")
++
+ set(KDECONNECT_PRIVATE_DBUS_ADDR unix:tmpdir=/tmp)
+ if(WIN32)
+     set(KDECONNECT_PRIVATE_DBUS_ADDR tcp:host=localhost,port=0)
+@@ -39,6 +47,7 @@ set(kdeconnectcore_SRCS
+     device.cpp
+     core_debug.cpp
+     notificationserverinfo.cpp
++    ${debug_file_SRCS}
+ )
+ 
+ add_library(kdeconnectcore ${kdeconnectcore_SRCS})
+Index: kdeconnect-kde-20.04.1/core/core_debug.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/core/core_debug.cpp
++++ kdeconnect-kde-20.04.1/core/core_debug.cpp
+@@ -20,8 +20,6 @@
+ 
+ #include "core_debug.h"
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_CORE, "kdeconnect.core")
+-
+ #if defined(__GNU_LIBRARY__)
+ #include <execinfo.h>
+ #include <stdlib.h>
+Index: kdeconnect-kde-20.04.1/core/core_debug.h
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/core/core_debug.h
++++ kdeconnect-kde-20.04.1/core/core_debug.h
+@@ -21,11 +21,8 @@
+ #ifndef CORE_DEBUG_H
+ #define CORE_DEBUG_H
+ 
+-#include <QLoggingCategory>
+-
+ #include "kdeconnectcore_export.h"
+-
+-KDECONNECTCORE_EXPORT Q_DECLARE_LOGGING_CATEGORY(KDECONNECT_CORE)
++#include "kdeconnect_debug.h"
+ 
+ void logBacktrace();
+ 
+Index: kdeconnect-kde-20.04.1/kio/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/kio/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/kio/CMakeLists.txt
+@@ -1,8 +1,16 @@
+ include_directories(${CMAKE_SOURCE_DIR})
+ add_definitions(-DTRANSLATION_DOMAIN="kdeconnect-kio")
+ 
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER kdeconnectkio_debug.h
++    IDENTIFIER KDECONNECT_KIO CATEGORY_NAME kdeconnect.kio
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (kio)")
++
+ set(kio_kdeconnect_PART_SRCS
+    kiokdeconnect.cpp
++   ${debug_file_SRCS}
+ )
+ 
+ add_library(kio_kdeconnect MODULE ${kio_kdeconnect_PART_SRCS})
+Index: kdeconnect-kde-20.04.1/kio/kiokdeconnect.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/kio/kiokdeconnect.cpp
++++ kdeconnect-kde-20.04.1/kio/kiokdeconnect.cpp
+@@ -29,7 +29,7 @@
+ #include <QDebug>
+ #include <QtPlugin>
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_KIO, "kdeconnect.kio")
++#include "kdeconnectkio_debug.h"
+ 
+ class KIOPluginForMetaData : public QObject
+ {
+Index: kdeconnect-kde-20.04.1/interfaces/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/interfaces/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/interfaces/CMakeLists.txt
+@@ -10,6 +10,19 @@ function(geninterface source_h output_h)
+     set(libkdeconnect_SRC ${libkdeconnect_SRC} PARENT_SCOPE)
+ endfunction()
+ 
++set(debug_files_SRCS)
++ecm_qt_declare_logging_category(
++    debug_files_SRCS HEADER interfaces_conversation_message_debug.h
++    IDENTIFIER CONVERSATION_MESSAGE_LOGGING_CATEGORY CATEGORY_NAME kdeconnect.interfaces.conversationmessage
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (conversation message)")
++
++ecm_qt_declare_logging_category(
++    debug_files_SRCS HEADER interfaces_debug.h
++    IDENTIFIER KDECONNECT_INTERFACES CATEGORY_NAME kdeconnect.interfaces
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (interfaces)")
++
+ set(libkdeconnect_SRC
+     dbusinterfaces.cpp
+     devicesmodel.cpp
+@@ -20,6 +33,7 @@ set(libkdeconnect_SRC
+     remotesinksmodel.cpp
+     devicespluginfilterproxymodel.cpp
+ #    modeltest.cpp
++    ${debug_files_SRCS}
+ )
+ 
+ geninterface(${PROJECT_SOURCE_DIR}/core/daemon.h daemoninterface)
+Index: kdeconnect-kde-20.04.1/interfaces/conversationmessage.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/interfaces/conversationmessage.cpp
++++ kdeconnect-kde-20.04.1/interfaces/conversationmessage.cpp
+@@ -20,10 +20,9 @@
+ 
+ #include "conversationmessage.h"
+ 
+-#include <QLoggingCategory>
+ #include <QVariantMap>
+ 
+-Q_LOGGING_CATEGORY(CONVERSATION_MESSAGE_LOGGING_CATEGORY, "kdeconnect.interfaces.conversationmessage")
++#include "interfaces_conversation_message_debug.h"
+ 
+ ConversationMessage::ConversationMessage(const QVariantMap& args)
+     : m_eventField(args[QStringLiteral("event")].toInt()),
+Index: kdeconnect-kde-20.04.1/interfaces/devicesmodel.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/interfaces/devicesmodel.cpp
++++ kdeconnect-kde-20.04.1/interfaces/devicesmodel.cpp
+@@ -32,7 +32,7 @@
+ #include <dbushelper.h>
+ // #include "modeltest.h"
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_INTERFACES, "kdeconnect.interfaces");
++#include "interfaces_debug.h"
+ 
+ static QString createId() { return QCoreApplication::instance()->applicationName()+QString::number(QCoreApplication::applicationPid()); }
+ 
+Index: kdeconnect-kde-20.04.1/fileitemactionplugin/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/fileitemactionplugin/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/fileitemactionplugin/CMakeLists.txt
+@@ -1,6 +1,13 @@
+ add_definitions(-DTRANSLATION_DOMAIN="kdeconnect-fileitemaction")
+ 
+-add_library(kdeconnectfileitemaction MODULE sendfileitemaction.cpp)
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER kdeconnect_fileitemaction_debug.h
++    IDENTIFIER KDECONNECT_FILEITEMACTION CATEGORY_NAME kdeconnect.fileitemaction
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (fileitemaction)")
++
++add_library(kdeconnectfileitemaction MODULE sendfileitemaction.cpp ${debug_file_SRCS})
+ target_link_libraries(
+     kdeconnectfileitemaction
+     KF5::KIOWidgets
+Index: kdeconnect-kde-20.04.1/fileitemactionplugin/sendfileitemaction.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/fileitemactionplugin/sendfileitemaction.cpp
++++ kdeconnect-kde-20.04.1/fileitemactionplugin/sendfileitemaction.cpp
+@@ -37,9 +37,9 @@
+ 
+ #include <dbushelper.h>
+ 
+-K_PLUGIN_CLASS_WITH_JSON(SendFileItemAction, "kdeconnectsendfile.json")
++#include "kdeconnect_fileitemaction_debug.h"
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_FILEITEMACTION, "kdeconnect.fileitemaction")
++K_PLUGIN_CLASS_WITH_JSON(SendFileItemAction, "kdeconnectsendfile.json")
+ 
+ SendFileItemAction::SendFileItemAction(QObject* parent, const QVariantList& ): KAbstractFileItemActionPlugin(parent)
+ {
+Index: kdeconnect-kde-20.04.1/plugins/screensaver-inhibit/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/screensaver-inhibit/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/screensaver-inhibit/CMakeLists.txt
+@@ -12,7 +12,14 @@ else()
+     )
+ endif()
+ 
+-kdeconnect_add_plugin(kdeconnect_screensaver_inhibit JSON kdeconnect_screensaver_inhibit.json SOURCES ${kdeconnect_screensaver_inhibit_SRCS})
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER kdeconnect_screensaverinhibit_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_SCREENSAVERINHIBIT CATEGORY_NAME kdeconnect.plugin.screensaverinhibit
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin screensaverinhibit)")
++
++kdeconnect_add_plugin(kdeconnect_screensaver_inhibit JSON kdeconnect_screensaver_inhibit.json SOURCES ${kdeconnect_screensaver_inhibit_SRCS} ${debug_file_SRCS})
+ 
+ target_link_libraries(kdeconnect_screensaver_inhibit kdeconnectcore)
+ if(NOT APPLE AND NOT WIN32)
+Index: kdeconnect-kde-20.04.1/plugins/screensaver-inhibit/screensaverinhibitplugin-macos.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/screensaver-inhibit/screensaverinhibitplugin-macos.cpp
++++ kdeconnect-kde-20.04.1/plugins/screensaver-inhibit/screensaverinhibitplugin-macos.cpp
+@@ -21,12 +21,10 @@
+ #include "screensaverinhibitplugin-macos.h"
+ 
+ #include <KPluginFactory>
+-#include <QLoggingCategory>
++#include "kdeconnect_screensaverinhibit_debug.h"
+ 
+ K_PLUGIN_CLASS_WITH_JSON(ScreensaverInhibitPlugin, "kdeconnect_screensaver_inhibit.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_SCREENSAVERINHIBIT, "kdeconnect.plugin.screensaverinhibit")
+-
+ ScreensaverInhibitPlugin::ScreensaverInhibitPlugin(QObject* parent, const QVariantList& args)
+     : KdeConnectPlugin(parent, args), m_caffeinateProcess(nullptr)
+ {
+Index: kdeconnect-kde-20.04.1/plugins/screensaver-inhibit/screensaverinhibitplugin-win.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/screensaver-inhibit/screensaverinhibitplugin-win.cpp
++++ kdeconnect-kde-20.04.1/plugins/screensaver-inhibit/screensaverinhibitplugin-win.cpp
+@@ -21,13 +21,11 @@
+ #include "screensaverinhibitplugin-win.h"
+ 
+ #include <KPluginFactory>
+-#include <QLoggingCategory>
+ #include <Windows.h>
++#include "kdeconnect_screensaverinhibit_debug.h"
+ 
+ K_PLUGIN_CLASS_WITH_JSON(ScreensaverInhibitPlugin, "kdeconnect_screensaver_inhibit.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_SCREENSAVERINHIBIT, "kdeconnect.plugin.screensaverinhibit")
+-
+ ScreensaverInhibitPlugin::ScreensaverInhibitPlugin(QObject* parent, const QVariantList& args)
+     : KdeConnectPlugin(parent, args)
+ {
+Index: kdeconnect-kde-20.04.1/plugins/screensaver-inhibit/screensaverinhibitplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/screensaver-inhibit/screensaverinhibitplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/screensaver-inhibit/screensaverinhibitplugin.cpp
+@@ -22,14 +22,12 @@
+ 
+ #include <KLocalizedString>
+ #include <KPluginFactory>
+-#include <QLoggingCategory>
+ #include <QDBusConnection>
+ #include <QDBusInterface>
++#include "kdeconnect_screensaverinhibit_debug.h"
+ 
+ K_PLUGIN_CLASS_WITH_JSON(ScreensaverInhibitPlugin, "kdeconnect_screensaver_inhibit.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_SCREENSAVERINHIBIT, "kdeconnect.plugin.screensaverinhibit")
+-
+ #define INHIBIT_SERVICE QStringLiteral("org.freedesktop.ScreenSaver")
+ #define INHIBIT_INTERFACE INHIBIT_SERVICE
+ #define INHIBIT_PATH QStringLiteral("/ScreenSaver")
+Index: kdeconnect-kde-20.04.1/plugins/sftp/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/sftp/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/sftp/CMakeLists.txt
+@@ -14,7 +14,14 @@ else()
+     )
+ endif()
+ 
+-kdeconnect_add_plugin(kdeconnect_sftp JSON kdeconnect_sftp.json SOURCES ${kdeconnect_sftp_SRCS})
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_sftp_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_SFTP CATEGORY_NAME kdeconnect.plugin.sftp
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin sftp)")
++
++kdeconnect_add_plugin(kdeconnect_sftp JSON kdeconnect_sftp.json SOURCES ${kdeconnect_sftp_SRCS} ${debug_file_SRCS})
+ 
+ target_link_libraries(kdeconnect_sftp
+     kdeconnectcore
+Index: kdeconnect-kde-20.04.1/plugins/sftp/sftpplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/sftp/sftpplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/sftp/sftpplugin.cpp
+@@ -32,12 +32,10 @@
+ #include <KPluginFactory>
+ 
+ #include "mounter.h"
+-#include "sftp_debug.h"
++#include "plugin_sftp_debug.h"
+ 
+ K_PLUGIN_CLASS_WITH_JSON(SftpPlugin, "kdeconnect_sftp.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_SFTP, "kdeconnect.plugin.sftp")
+-
+ static const QSet<QString> fields_c = QSet<QString>() << QStringLiteral("ip") << QStringLiteral("port") << QStringLiteral("user") << QStringLiteral("port") << QStringLiteral("path");
+ 
+ struct SftpPlugin::Pimpl
+Index: kdeconnect-kde-20.04.1/plugins/sftp/mounter.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/sftp/mounter.cpp
++++ kdeconnect-kde-20.04.1/plugins/sftp/mounter.cpp
+@@ -28,7 +28,7 @@
+ 
+ #include "mountloop.h"
+ #include "config-sftp.h"
+-#include "sftp_debug.h"
++#include "plugin_sftp_debug.h"
+ #include "kdeconnectconfig.h"
+ 
+ Mounter::Mounter(SftpPlugin* sftp)
+Index: kdeconnect-kde-20.04.1/plugins/sftp/sftpplugin-win.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/sftp/sftpplugin-win.cpp
++++ kdeconnect-kde-20.04.1/plugins/sftp/sftpplugin-win.cpp
+@@ -29,12 +29,10 @@
+ #include <KLocalizedString>
+ #include <KPluginFactory>
+ 
+-#include "sftp_debug.h"
++#include "plugin_sftp_debug.h"
+ 
+ K_PLUGIN_CLASS_WITH_JSON(SftpPlugin, "kdeconnect_sftp.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_SFTP, "kdeconnect.plugin.sftp")
+-
+ SftpPlugin::SftpPlugin(QObject* parent, const QVariantList& args)
+     : KdeConnectPlugin(parent, args)
+ {
+Index: kdeconnect-kde-20.04.1/plugins/sendnotifications/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/sendnotifications/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/sendnotifications/CMakeLists.txt
+@@ -6,11 +6,19 @@ endif()
+ 
+ configure_file(kdeconnect_sendnotifications.json.in kdeconnect_sendnotifications.json)
+ 
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_sendnotification_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_SENDNOTIFICATION CATEGORY_NAME kdeconnect.plugin.sendnotification
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin sendnotification)")
++
+ set(kdeconnect_sendnotifications_SRCS
+     sendnotificationsplugin.cpp
+     notificationslistener.cpp
+     notifyingapplication.cpp
+     kdeconnect_sendnotifications.json
++    ${debug_file_SRCS}
+ )
+ 
+ kdeconnect_add_plugin(kdeconnect_sendnotifications JSON "${CMAKE_CURRENT_BINARY_DIR}/kdeconnect_sendnotifications.json" SOURCES ${kdeconnect_sendnotifications_SRCS})
+Index: kdeconnect-kde-20.04.1/plugins/sendnotifications/sendnotificationsplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/sendnotifications/sendnotificationsplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/sendnotifications/sendnotificationsplugin.cpp
+@@ -21,14 +21,12 @@
+ #include "sendnotificationsplugin.h"
+ 
+ #include "notificationslistener.h"
+-#include "sendnotification_debug.h"
++#include "plugin_sendnotification_debug.h"
+ 
+ #include <KPluginFactory>
+ 
+ K_PLUGIN_CLASS_WITH_JSON(SendNotificationsPlugin, "kdeconnect_sendnotifications.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_SENDNOTIFICATION, "kdeconnect.plugin.sendnotification")
+-
+ SendNotificationsPlugin::SendNotificationsPlugin(QObject* parent, const QVariantList& args)
+     : KdeConnectPlugin(parent, args)
+ {
+Index: kdeconnect-kde-20.04.1/plugins/systemvolume/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/systemvolume/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/systemvolume/CMakeLists.txt
+@@ -12,7 +12,13 @@ else()
+     )
+ endif()
+ 
+-kdeconnect_add_plugin(kdeconnect_systemvolume JSON kdeconnect_systemvolume.json SOURCES ${kdeconnect_systemvolume_SRCS})
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_systemvolume_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_SYSTEMVOLUME CATEGORY_NAME kdeconnect.plugin.systemvolume
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin systemvolume)")
++kdeconnect_add_plugin(kdeconnect_systemvolume JSON kdeconnect_systemvolume.json SOURCES ${kdeconnect_systemvolume_SRCS} ${debug_file_SRCS})
+ 
+ if(WIN32)
+     target_link_libraries(kdeconnect_systemvolume
+Index: kdeconnect-kde-20.04.1/plugins/systemvolume/systemvolumeplugin-macos.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/systemvolume/systemvolumeplugin-macos.cpp
++++ kdeconnect-kde-20.04.1/plugins/systemvolume/systemvolumeplugin-macos.cpp
+@@ -23,14 +23,13 @@
+ #include <KPluginFactory>
+ 
+ #include <QDebug>
+-#include <QLoggingCategory>
+ #include <QJsonArray>
+ #include <QJsonDocument>
+ #include <QJsonObject>
++#include "plugin_systemvolume_debug.h"
+ 
+ K_PLUGIN_FACTORY_WITH_JSON( KdeConnectPluginFactory, "kdeconnect_systemvolume.json", registerPlugin< SystemvolumePlugin >(); )
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_SYSTEMVOLUME, "kdeconnect.plugin.systemvolume")
+ 
+ class MacOSCoreAudioDevice
+ {
+Index: kdeconnect-kde-20.04.1/plugins/systemvolume/systemvolumeplugin-pulse.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/systemvolume/systemvolumeplugin-pulse.cpp
++++ kdeconnect-kde-20.04.1/plugins/systemvolume/systemvolumeplugin-pulse.cpp
+@@ -23,7 +23,6 @@
+ #include <KPluginFactory>
+ 
+ #include <QDebug>
+-#include <QLoggingCategory>
+ #include <QProcess>
+ #include <QJsonArray>
+ #include <QJsonDocument>
+@@ -33,10 +32,10 @@
+ 
+ #include <PulseAudioQt/Sink>
+ #include <PulseAudioQt/Context>
++#include "plugin_systemvolume_debug.h"
+ 
+ K_PLUGIN_CLASS_WITH_JSON(SystemvolumePlugin, "kdeconnect_systemvolume.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_SYSTEMVOLUME, "kdeconnect.plugin.systemvolume")
+ 
+ SystemvolumePlugin::SystemvolumePlugin(QObject* parent, const QVariantList& args)
+     : KdeConnectPlugin(parent, args)
+Index: kdeconnect-kde-20.04.1/plugins/systemvolume/systemvolumeplugin-win.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/systemvolume/systemvolumeplugin-win.cpp
++++ kdeconnect-kde-20.04.1/plugins/systemvolume/systemvolumeplugin-win.cpp
+@@ -21,7 +21,6 @@
+ #include "systemvolumeplugin-win.h"
+ 
+ #include <QDebug>
+-#include <QLoggingCategory>
+ #include <QJsonArray>
+ #include <QJsonDocument>
+ #include <QJsonObject>
+@@ -32,9 +31,9 @@
+ 
+ #include <core/device.h>
+ 
+-K_PLUGIN_CLASS_WITH_JSON(SystemvolumePlugin, "kdeconnect_systemvolume.json")
++#include "plugin_systemvolume_debug.h"
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_SYSTEMVOLUME, "kdeconnect.plugin.systemvolume")
++K_PLUGIN_CLASS_WITH_JSON(SystemvolumePlugin, "kdeconnect_systemvolume.json")
+ 
+ // Private classes of SystemvolumePlugin
+ 
+Index: kdeconnect-kde-20.04.1/plugins/notifications/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/notifications/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/notifications/CMakeLists.txt
+@@ -1,8 +1,16 @@
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_notification_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_NOTIFICATION CATEGORY_NAME kdeconnect.plugin.notification
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin notification)")
++
+ set(kdeconnect_notifications_SRCS
+     notification.cpp
+     notificationsplugin.cpp
+     notificationsdbusinterface.cpp
+     sendreplydialog.cpp
++    ${debug_file_SRCS}
+ )
+ 
+ ki18n_wrap_ui(kdeconnect_notifications_SRCS sendreplydialog.ui)
+Index: kdeconnect-kde-20.04.1/plugins/notifications/notification.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/notifications/notification.cpp
++++ kdeconnect-kde-20.04.1/plugins/notifications/notification.cpp
+@@ -19,7 +19,7 @@
+  */
+ 
+ #include "notification.h"
+-#include "notification_debug.h"
++#include "plugin_notification_debug.h"
+ 
+ #include <KNotification>
+ #include <QtGlobal>
+Index: kdeconnect-kde-20.04.1/plugins/notifications/notificationsdbusinterface.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/notifications/notificationsdbusinterface.cpp
++++ kdeconnect-kde-20.04.1/plugins/notifications/notificationsdbusinterface.cpp
+@@ -19,7 +19,7 @@
+  */
+ 
+ #include "notificationsdbusinterface.h"
+-#include "notification_debug.h"
++#include "plugin_notification_debug.h"
+ #include "notification.h"
+ 
+ #include <core/device.h>
+Index: kdeconnect-kde-20.04.1/plugins/notifications/notificationsplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/notifications/notificationsplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/notifications/notificationsplugin.cpp
+@@ -21,14 +21,12 @@
+ #include "notificationsplugin.h"
+ 
+ #include "notificationsdbusinterface.h"
+-#include "notification_debug.h"
++#include "plugin_notification_debug.h"
+ 
+ #include <KPluginFactory>
+ 
+ K_PLUGIN_CLASS_WITH_JSON(NotificationsPlugin, "kdeconnect_notifications.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_NOTIFICATION, "kdeconnect.plugin.notification")
+-
+ NotificationsPlugin::NotificationsPlugin(QObject* parent, const QVariantList& args)
+     : KdeConnectPlugin(parent, args)
+ {
+Index: kdeconnect-kde-20.04.1/plugins/ping/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/ping/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/ping/CMakeLists.txt
+@@ -1,5 +1,13 @@
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_ping_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_PING CATEGORY_NAME kdeconnect.plugin.ping
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin ping)")
++
+ set(kdeconnect_ping_SRCS
+     pingplugin.cpp
++    ${debug_file_SRCS}
+ )
+ 
+ kdeconnect_add_plugin(kdeconnect_ping JSON kdeconnect_ping.json SOURCES ${kdeconnect_ping_SRCS})
+Index: kdeconnect-kde-20.04.1/plugins/ping/pingplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/ping/pingplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/ping/pingplugin.cpp
+@@ -25,14 +25,13 @@
+ 
+ #include <QDebug>
+ #include <QDBusConnection>
+-#include <QLoggingCategory>
+ 
+ #include <core/device.h>
+ #include <core/daemon.h>
+ 
+-K_PLUGIN_CLASS_WITH_JSON(PingPlugin, "kdeconnect_ping.json")
++#include "plugin_ping_debug.h"
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_PING, "kdeconnect.plugin.ping")
++K_PLUGIN_CLASS_WITH_JSON(PingPlugin, "kdeconnect_ping.json")
+ 
+ PingPlugin::PingPlugin(QObject* parent, const QVariantList& args)
+     : KdeConnectPlugin(parent, args)
+Index: kdeconnect-kde-20.04.1/plugins/remotecommands/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/remotecommands/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/remotecommands/CMakeLists.txt
+@@ -1,7 +1,15 @@
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_remotecommands_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_REMOTECOMMANDS CATEGORY_NAME kdeconnect.plugin.remotecommands
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin remotecommands)")
++
+ kdeconnect_add_plugin(kdeconnect_remotecommands JSON kdeconnect_remotecommands.json
+-    SOURCES remotecommandsplugin.cpp
++    SOURCES remotecommandsplugin.cpp ${debug_file_SRCS}
+ )
+ 
++
+ target_link_libraries(kdeconnect_remotecommands
+     kdeconnectcore
+     Qt5::DBus
+Index: kdeconnect-kde-20.04.1/plugins/remotecommands/remotecommandsplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/remotecommands/remotecommandsplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/remotecommands/remotecommandsplugin.cpp
+@@ -22,17 +22,15 @@
+ 
+ #include <KPluginFactory>
+ 
+-#include <QLoggingCategory>
+-
+ #include <core/networkpacket.h>
+ #include <core/device.h>
+ 
++#include "plugin_remotecommands_debug.h"
++
+ #define PACKET_TYPE_RUNCOMMAND_REQUEST QLatin1String("kdeconnect.runcommand.request")
+ 
+ K_PLUGIN_CLASS_WITH_JSON(RemoteCommandsPlugin, "kdeconnect_remotecommands.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_REMOTECOMMANDS, "kdeconnect.plugin.remotecommands")
+-
+ RemoteCommandsPlugin::RemoteCommandsPlugin(QObject* parent, const QVariantList& args)
+     : KdeConnectPlugin(parent, args)
+     , m_commands("{}")
+Index: kdeconnect-kde-20.04.1/plugins/presenter/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/presenter/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/presenter/CMakeLists.txt
+@@ -1,6 +1,13 @@
+ qt5_add_resources(presenter_SRCS assets.qrc)
+ 
+-kdeconnect_add_plugin(kdeconnect_presenter JSON kdeconnect_presenter.json SOURCES presenterplugin.cpp ${presenter_SRCS})
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_presenter_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_PRESENT CATEGORY_NAME kdeconnect.plugin.presenter
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin presenter)")
++
++kdeconnect_add_plugin(kdeconnect_presenter JSON kdeconnect_presenter.json SOURCES presenterplugin.cpp ${presenter_SRCS} ${debug_file_SRCS})
+ target_link_libraries(kdeconnect_presenter
+     kdeconnectcore
+     Qt5::DBus
+Index: kdeconnect-kde-20.04.1/plugins/presenter/presenterplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/presenter/presenterplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/presenter/presenterplugin.cpp
+@@ -25,7 +25,6 @@
+ 
+ #include <QDebug>
+ #include <QDBusConnection>
+-#include <QLoggingCategory>
+ #include <QQuickView>
+ #include <QQmlError>
+ #include <QQuickItem>
+@@ -34,11 +33,10 @@
+ #include <core/device.h>
+ #include <core/daemon.h>
+ #include <QScreen>
++#include "plugin_presenter_debug.h"
+ 
+ K_PLUGIN_CLASS_WITH_JSON(PresenterPlugin, "kdeconnect_presenter.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_PRESENT, "kdeconnect.plugin.presenter")
+-
+ class PresenterView : public QQuickView
+ {
+ public:
+Index: kdeconnect-kde-20.04.1/plugins/contacts/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/contacts/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/contacts/CMakeLists.txt
+@@ -1,5 +1,13 @@
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_contacts_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_CONTACTS CATEGORY_NAME kdeconnect.plugin.contacts
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin contacts)")
++
+ set(kdeconnect_contacts_SRCS
+     contactsplugin.cpp
++    ${debug_file_SRCS}
+ )
+ 
+ kdeconnect_add_plugin(kdeconnect_contacts JSON kdeconnect_contacts.json SOURCES ${kdeconnect_contacts_SRCS})
+Index: kdeconnect-kde-20.04.1/plugins/contacts/contactsplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/contacts/contactsplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/contacts/contactsplugin.cpp
+@@ -24,16 +24,15 @@
+ 
+ #include <QDBusConnection>
+ #include <QDBusMetaType>
+-#include <QLoggingCategory>
+ #include <QFile>
+ #include <QDir>
+ #include <QIODevice>
+ 
+ #include <core/device.h>
+ 
+-K_PLUGIN_CLASS_WITH_JSON(ContactsPlugin, "kdeconnect_contacts.json")
++#include "plugin_contacts_debug.h"
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_CONTACTS, "kdeconnect.plugin.contacts")
++K_PLUGIN_CLASS_WITH_JSON(ContactsPlugin, "kdeconnect_contacts.json")
+ 
+ ContactsPlugin::ContactsPlugin(QObject* parent, const QVariantList& args) :
+         KdeConnectPlugin(parent, args)
+Index: kdeconnect-kde-20.04.1/plugins/sms/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/sms/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/sms/CMakeLists.txt
+@@ -1,7 +1,21 @@
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_sms_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_SMS CATEGORY_NAME kdeconnect.plugin.sms
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin sms)")
++
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER kdeconnect_conversations_debug.h
++    IDENTIFIER KDECONNECT_CONVERSATIONS CATEGORY_NAME kdeconnect.conversations
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (conversations)")
++
+ set(kdeconnect_sms_SRCS
+     smsplugin.cpp
+     conversationsdbusinterface.cpp
+     requestconversationworker.cpp
++    ${debug_file_SRCS}
+ )
+ 
+ include_directories(${CMAKE_BINARY_DIR})
+Index: kdeconnect-kde-20.04.1/plugins/sms/conversationsdbusinterface.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/sms/conversationsdbusinterface.cpp
++++ kdeconnect-kde-20.04.1/plugins/sms/conversationsdbusinterface.cpp
+@@ -29,7 +29,7 @@
+ #include <core/device.h>
+ #include <core/kdeconnectplugin.h>
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_CONVERSATIONS, "kdeconnect.conversations")
++#include "kdeconnect_conversations_debug.h"
+ 
+ QMap<QString, ConversationsDbusInterface*> ConversationsDbusInterface::liveConversationInterfaces;
+ 
+Index: kdeconnect-kde-20.04.1/plugins/sms/smsplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/sms/smsplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/sms/smsplugin.cpp
+@@ -26,18 +26,16 @@
+ 
+ #include <QDebug>
+ #include <QDBusConnection>
+-#include <QLoggingCategory>
+ #include <QProcess>
+ 
+ #include <core/device.h>
+ #include <core/daemon.h>
+ 
+ #include "sendreplydialog.h"
++#include "plugin_sms_debug.h"
+ 
+ K_PLUGIN_CLASS_WITH_JSON(SmsPlugin, "kdeconnect_sms.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_SMS, "kdeconnect.plugin.sms")
+-
+ SmsPlugin::SmsPlugin(QObject* parent, const QVariantList& args)
+     : KdeConnectPlugin(parent, args)
+     , m_telepathyInterface(QStringLiteral("org.freedesktop.Telepathy.ConnectionManager.kdeconnect"), QStringLiteral("/kdeconnect"))
+Index: kdeconnect-kde-20.04.1/plugins/lockdevice/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/lockdevice/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/lockdevice/CMakeLists.txt
+@@ -1,6 +1,13 @@
+ qt5_add_dbus_interface(lockdevice_SRCS org.freedesktop.ScreenSaver.xml screensaverdbusinterface)
+ 
+-kdeconnect_add_plugin(kdeconnect_lockdevice JSON kdeconnect_lockdevice.json SOURCES lockdeviceplugin.cpp ${lockdevice_SRCS})
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_lock_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_LOCKREMOTE CATEGORY_NAME kdeconnect.plugin.lock
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin lockremote)")
++
++kdeconnect_add_plugin(kdeconnect_lockdevice JSON kdeconnect_lockdevice.json SOURCES lockdeviceplugin.cpp ${lockdevice_SRCS} ${debug_file_SRCS})
+ 
+ target_link_libraries(kdeconnect_lockdevice
+     kdeconnectcore
+Index: kdeconnect-kde-20.04.1/plugins/lockdevice/lockdeviceplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/lockdevice/lockdeviceplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/lockdevice/lockdeviceplugin.cpp
+@@ -24,16 +24,14 @@
+ #include <KPluginFactory>
+ 
+ #include <QDebug>
+-#include <QLoggingCategory>
+ #include "screensaverdbusinterface.h"
++#include "plugin_lock_debug.h"
+ 
+ #include <core/device.h>
+ #include <dbushelper.h>
+ 
+ K_PLUGIN_CLASS_WITH_JSON(LockDevicePlugin, "kdeconnect_lockdevice.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_LOCKREMOTE, "kdeconnect.plugin.lock")
+-
+ LockDevicePlugin::LockDevicePlugin(QObject* parent, const QVariantList& args)
+     : KdeConnectPlugin(parent, args)
+     , m_remoteLocked(false)
+Index: kdeconnect-kde-20.04.1/plugins/mprisremote/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/mprisremote/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/mprisremote/CMakeLists.txt
+@@ -1,4 +1,11 @@
+-kdeconnect_add_plugin(kdeconnect_mprisremote JSON kdeconnect_mprisremote.json SOURCES mprisremoteplugin.cpp mprisremoteplayer.cpp mprisremoteplayermediaplayer2.cpp mprisremoteplayermediaplayer2player.cpp)
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_mprisremote_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_MPRISREMOTE CATEGORY_NAME kdeconnect.plugin.mprisremote
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin mprisremote)")
++
++kdeconnect_add_plugin(kdeconnect_mprisremote JSON kdeconnect_mprisremote.json SOURCES mprisremoteplugin.cpp mprisremoteplayer.cpp mprisremoteplayermediaplayer2.cpp mprisremoteplayermediaplayer2player.cpp ${debug_file_SRCS})
+ 
+ target_link_libraries(kdeconnect_mprisremote
+     kdeconnectcore
+Index: kdeconnect-kde-20.04.1/plugins/mprisremote/mprisremoteplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/mprisremote/mprisremoteplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/mprisremote/mprisremoteplugin.cpp
+@@ -23,13 +23,13 @@
+ #include <KPluginFactory>
+ 
+ #include <QDebug>
+-#include <QLoggingCategory>
+ 
+ #include <core/device.h>
+ 
++#include "plugin_mprisremote_debug.h"
++
+ K_PLUGIN_CLASS_WITH_JSON(MprisRemotePlugin, "kdeconnect_mprisremote.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_MPRISREMOTE, "kdeconnect.plugin.mprisremote")
+ 
+ MprisRemotePlugin::MprisRemotePlugin(QObject* parent, const QVariantList& args)
+     : KdeConnectPlugin(parent, args)
+Index: kdeconnect-kde-20.04.1/plugins/pausemusic/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/pausemusic/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/pausemusic/CMakeLists.txt
+@@ -8,9 +8,16 @@ else()
+     )
+ endif()
+ 
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_pausemusic_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_PAUSEMUSIC CATEGORY_NAME kdeconnect.plugin.pausemusic
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin pausemusic)")
++
+ qt5_add_dbus_interface(kdeconnect_pausemusic_SRCS org.mpris.MediaPlayer2.Player.xml mprisplayer)
+ 
+-kdeconnect_add_plugin(kdeconnect_pausemusic JSON kdeconnect_pausemusic.json SOURCES ${kdeconnect_pausemusic_SRCS})
++kdeconnect_add_plugin(kdeconnect_pausemusic JSON kdeconnect_pausemusic.json SOURCES ${kdeconnect_pausemusic_SRCS} ${debug_file_SRCS})
+ 
+ target_link_libraries(kdeconnect_pausemusic
+     kdeconnectcore
+Index: kdeconnect-kde-20.04.1/plugins/pausemusic/pausemusicplugin-win.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/pausemusic/pausemusicplugin-win.cpp
++++ kdeconnect-kde-20.04.1/plugins/pausemusic/pausemusicplugin-win.cpp
+@@ -22,11 +22,10 @@
+ #include "pausemusicplugin-win.h"
+ 
+ #include <KPluginFactory>
++#include "plugin_pausemusic_debug.h"
+ 
+ K_PLUGIN_CLASS_WITH_JSON(PauseMusicPlugin, "kdeconnect_pausemusic.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_PAUSEMUSIC, "kdeconnect.plugin.pausemusic")
+-
+ PauseMusicPlugin::PauseMusicPlugin(QObject* parent, const QVariantList& args)
+     : KdeConnectPlugin(parent, args)
+ {
+Index: kdeconnect-kde-20.04.1/plugins/pausemusic/pausemusicplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/pausemusic/pausemusicplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/pausemusic/pausemusicplugin.cpp
+@@ -29,11 +29,10 @@
+ 
+ //In older Qt released, qAsConst isnt available
+ #include "qtcompat_p.h"
++#include "plugin_pausemusic_debug.h"
+ 
+ K_PLUGIN_CLASS_WITH_JSON(PauseMusicPlugin, "kdeconnect_pausemusic.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_PAUSEMUSIC, "kdeconnect.plugin.pausemusic")
+-
+ PauseMusicPlugin::PauseMusicPlugin(QObject* parent, const QVariantList& args)
+     : KdeConnectPlugin(parent, args)
+     , mutedSinks()
+Index: kdeconnect-kde-20.04.1/plugins/clipboard/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/clipboard/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/clipboard/CMakeLists.txt
+@@ -1,6 +1,14 @@
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_clipboard_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_CLIPBOARD CATEGORY_NAME kdeconnect.plugin.clipboard
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin clipboard)")
++
+ set(kdeconnect_clipboard_SRCS
+     clipboardplugin.cpp
+     clipboardlistener.cpp
++    ${debug_file_SRCS}
+ )
+ 
+ kdeconnect_add_plugin(kdeconnect_clipboard JSON kdeconnect_clipboard.json SOURCES ${kdeconnect_clipboard_SRCS})
+Index: kdeconnect-kde-20.04.1/plugins/clipboard/clipboardplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/clipboard/clipboardplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/clipboard/clipboardplugin.cpp
+@@ -21,13 +21,12 @@
+ #include "clipboardplugin.h"
+ 
+ #include "clipboardlistener.h"
++#include "plugin_clipboard_debug.h"
+ 
+ #include <KPluginFactory>
+ 
+ K_PLUGIN_CLASS_WITH_JSON(ClipboardPlugin, "kdeconnect_clipboard.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_CLIPBOARD, "kdeconnect.plugin.clipboard")
+-
+ ClipboardPlugin::ClipboardPlugin(QObject* parent, const QVariantList& args)
+     : KdeConnectPlugin(parent, args)
+ {
+Index: kdeconnect-kde-20.04.1/plugins/photo/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/photo/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/photo/CMakeLists.txt
+@@ -1,5 +1,13 @@
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_photo_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_PHOTO CATEGORY_NAME kdeconnect.plugin.photo
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin photo)")
++
+ set(kdeconnect_photo_SRCS
+     photoplugin.cpp
++    ${debug_file_SRCS}
+ )
+ 
+ kdeconnect_add_plugin(kdeconnect_photo JSON kdeconnect_photo.json SOURCES ${kdeconnect_photo_SRCS})
+Index: kdeconnect-kde-20.04.1/plugins/photo/photoplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/photo/photoplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/photo/photoplugin.cpp
+@@ -23,14 +23,12 @@
+ #include <KPluginFactory>
+ 
+ #include <QDebug>
+-#include <QLoggingCategory>
+ 
+ #include <core/filetransferjob.h>
++#include "plugin_photo_debug.h"
+ 
+ K_PLUGIN_CLASS_WITH_JSON(PhotoPlugin, "kdeconnect_photo.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_PHOTO, "kdeconnect.plugin.photo")
+-
+ PhotoPlugin::PhotoPlugin(QObject* parent, const QVariantList& args)
+     : KdeConnectPlugin(parent, args)
+ {
+Index: kdeconnect-kde-20.04.1/plugins/remotesystemvolume/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/remotesystemvolume/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/remotesystemvolume/CMakeLists.txt
+@@ -1,5 +1,13 @@
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_remotesystemvolume_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_REMOTESYSTEMVOLUME CATEGORY_NAME kdeconnect.plugin.remotesystemvolume
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin remotesystemvolume)")
++
+ set(kdeconnect_remotesystemvolume_SRCS
+     remotesystemvolumeplugin.cpp
++    ${debug_file_SRCS}
+ )
+ 
+ kdeconnect_add_plugin(kdeconnect_remotesystemvolume JSON kdeconnect_remotesystemvolume.json SOURCES ${kdeconnect_remotesystemvolume_SRCS})
+Index: kdeconnect-kde-20.04.1/plugins/remotesystemvolume/remotesystemvolumeplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/remotesystemvolume/remotesystemvolumeplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/remotesystemvolume/remotesystemvolumeplugin.cpp
+@@ -25,16 +25,15 @@
+ 
+ #include <QDebug>
+ #include <QDBusConnection>
+-#include <QLoggingCategory>
+ #include <QJsonArray>
+ #include <QJsonDocument>
+ 
+ #include <core/device.h>
+ #include <core/daemon.h>
+ 
+-K_PLUGIN_CLASS_WITH_JSON(RemoteSystemVolumePlugin, "kdeconnect_remotesystemvolume.json")
++#include "plugin_remotesystemvolume_debug.h"
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_REMOTESYSTEMVOLUME, "kdeconnect.plugin.remotesystemvolume")
++K_PLUGIN_CLASS_WITH_JSON(RemoteSystemVolumePlugin, "kdeconnect_remotesystemvolume.json")
+ 
+ RemoteSystemVolumePlugin::RemoteSystemVolumePlugin(QObject* parent, const QVariantList& args)
+     : KdeConnectPlugin(parent, args)
+Index: kdeconnect-kde-20.04.1/plugins/runcommand/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/runcommand/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/runcommand/CMakeLists.txt
+@@ -1,5 +1,13 @@
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_runcommand_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_RUNCOMMAND CATEGORY_NAME kdeconnect.plugin.runcommand
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin runcommand)")
++
+ set(kdeconnect_runcommand_SRCS
+     runcommandplugin.cpp
++    ${debug_file_SRCS}
+ )
+ 
+ kdeconnect_add_plugin(kdeconnect_runcommand JSON kdeconnect_runcommand.json SOURCES ${kdeconnect_runcommand_SRCS})
+Index: kdeconnect-kde-20.04.1/plugins/runcommand/runcommandplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/runcommand/runcommandplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/runcommand/runcommandplugin.cpp
+@@ -25,7 +25,6 @@
+ #include <QDBusConnection>
+ #include <QProcess>
+ #include <QDir>
+-#include <QLoggingCategory>
+ #include <QSettings>
+ #include <QJsonDocument>
+ 
+@@ -39,6 +38,8 @@
+ #include <core/networkpacket.h>
+ #include <core/device.h>
+ 
++#include "plugin_runcommand_debug.h"
++
+ #define PACKET_TYPE_RUNCOMMAND QStringLiteral("kdeconnect.runcommand")
+ 
+ #ifdef Q_OS_WIN
+@@ -53,8 +54,6 @@
+ 
+ K_PLUGIN_CLASS_WITH_JSON(RunCommandPlugin, "kdeconnect_runcommand.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_RUNCOMMAND, "kdeconnect.plugin.runcommand")
+-
+ RunCommandPlugin::RunCommandPlugin(QObject* parent, const QVariantList& args)
+     : KdeConnectPlugin(parent, args)
+ {
+Index: kdeconnect-kde-20.04.1/plugins/battery/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/battery/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/battery/CMakeLists.txt
+@@ -1,6 +1,14 @@
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_battery_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_BATTERY CATEGORY_NAME kdeconnect.plugin.battery
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin battery)")
++
+ set(kdeconnect_battery_SRCS
+     batteryplugin.cpp
+     batterydbusinterface.cpp
++    ${debug_file_SRCS}
+ )
+ 
+ kdeconnect_add_plugin(kdeconnect_battery JSON kdeconnect_battery.json SOURCES ${kdeconnect_battery_SRCS})
+Index: kdeconnect-kde-20.04.1/plugins/battery/batteryplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/battery/batteryplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/battery/batteryplugin.cpp
+@@ -26,11 +26,10 @@
+ #include <core/daemon.h>
+ 
+ #include "batterydbusinterface.h"
++#include "plugin_battery_debug.h"
+ 
+ K_PLUGIN_CLASS_WITH_JSON(BatteryPlugin, "kdeconnect_battery.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_BATTERY, "kdeconnect.plugin.battery")
+-
+ BatteryPlugin::BatteryPlugin(QObject* parent, const QVariantList& args)
+     : KdeConnectPlugin(parent, args)
+     , batteryDbusInterface(new BatteryDbusInterface(device()))
+Index: kdeconnect-kde-20.04.1/plugins/telephony/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/telephony/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/telephony/CMakeLists.txt
+@@ -1,5 +1,13 @@
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_telephony_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_TELEPHONY CATEGORY_NAME kdeconnect.plugin.telephony
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin telephony)")
++
+ set(kdeconnect_telephony_SRCS
+     telephonyplugin.cpp
++    ${debug_file_SRCS}
+ )
+ 
+ include_directories(${CMAKE_BINARY_DIR})
+Index: kdeconnect-kde-20.04.1/plugins/telephony/telephonyplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/telephony/telephonyplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/telephony/telephonyplugin.cpp
+@@ -27,11 +27,10 @@
+ 
+ #include <KPluginFactory>
+ #include <KNotification>
++#include "plugin_telephony_debug.h"
+ 
+ K_PLUGIN_CLASS_WITH_JSON(TelephonyPlugin, "kdeconnect_telephony.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_TELEPHONY, "kdeconnect.plugin.telephony")
+-
+ TelephonyPlugin::TelephonyPlugin(QObject* parent, const QVariantList& args)
+     : KdeConnectPlugin(parent, args)
+ {
+Index: kdeconnect-kde-20.04.1/plugins/remotekeyboard/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/remotekeyboard/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/remotekeyboard/CMakeLists.txt
+@@ -1,5 +1,12 @@
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_remotekeyboard_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_REMOTEKEYBOARD CATEGORY_NAME kdeconnect.plugin.remotekeyboard
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin remotekeyboard)")
++
+ kdeconnect_add_plugin(kdeconnect_remotekeyboard JSON kdeconnect_remotekeyboard.json
+-    SOURCES remotekeyboardplugin.cpp)
++    SOURCES remotekeyboardplugin.cpp ${debug_file_SRCS})
+ 
+ target_link_libraries(kdeconnect_remotekeyboard
+     kdeconnectcore
+Index: kdeconnect-kde-20.04.1/plugins/remotekeyboard/remotekeyboardplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/remotekeyboard/remotekeyboardplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/remotekeyboard/remotekeyboardplugin.cpp
+@@ -23,11 +23,10 @@
+ #include <QDebug>
+ #include <QString>
+ #include <QVariantMap>
++#include "plugin_remotekeyboard_debug.h"
+ 
+ K_PLUGIN_CLASS_WITH_JSON(RemoteKeyboardPlugin, "kdeconnect_remotekeyboard.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_REMOTEKEYBOARD, "kdeconnect.plugin.remotekeyboard");
+-
+ // Mapping of Qt::Key to internal codes, corresponds to the mapping in mousepadplugin
+ QMap<int, int> specialKeysMap = {
+     //0,              // Invalid
+Index: kdeconnect-kde-20.04.1/plugins/share/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/share/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/share/CMakeLists.txt
+@@ -1,5 +1,13 @@
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_share_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_SHARE CATEGORY_NAME kdeconnect.plugin.share
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin share)")
++
+ set(kdeconnect_share_SRCS
+     shareplugin.cpp
++    ${debug_file_SRCS}
+ )
+ 
+ kdeconnect_add_plugin(kdeconnect_share JSON kdeconnect_share.json SOURCES ${kdeconnect_share_SRCS})
+Index: kdeconnect-kde-20.04.1/plugins/share/shareplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/share/shareplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/share/shareplugin.cpp
+@@ -19,7 +19,6 @@
+  */
+ 
+ #include "shareplugin.h"
+-#include "share_debug.h"
+ 
+ #include <QStandardPaths>
+ #include <QProcess>
+@@ -39,11 +38,10 @@
+ 
+ #include "core/filetransferjob.h"
+ #include "core/daemon.h"
++#include "plugin_share_debug.h"
+ 
+ K_PLUGIN_CLASS_WITH_JSON(SharePlugin, "kdeconnect_share.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_SHARE, "kdeconnect.plugin.share")
+-
+ SharePlugin::SharePlugin(QObject* parent, const QVariantList& args)
+     : KdeConnectPlugin(parent, args)
+     , m_compositeJob()
+Index: kdeconnect-kde-20.04.1/plugins/mpriscontrol/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/mpriscontrol/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/mpriscontrol/CMakeLists.txt
+@@ -20,7 +20,14 @@ qt5_add_dbus_interface(kdeconnect_mprisc
+ 
+ endif()
+ 
+-kdeconnect_add_plugin(kdeconnect_mpriscontrol JSON kdeconnect_mpriscontrol.json SOURCES  ${kdeconnect_mpriscontrol_SRCS})
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_mpris_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_MPRIS CATEGORY_NAME kdeconnect.plugin.mpris
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin mpris)")
++
++kdeconnect_add_plugin(kdeconnect_mpriscontrol JSON kdeconnect_mpriscontrol.json SOURCES  ${kdeconnect_mpriscontrol_SRCS} ${debug_file_SRCS})
+ 
+ if(WIN32)
+    target_link_libraries(kdeconnect_mpriscontrol kdeconnectcore)
+Index: kdeconnect-kde-20.04.1/plugins/mpriscontrol/mpriscontrolplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/mpriscontrol/mpriscontrolplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/mpriscontrol/mpriscontrolplugin.cpp
+@@ -34,12 +34,10 @@
+ #include "dbusproperties.h"
+ #include "mprisplayer.h"
+ #include "mprisroot.h"
++#include "plugin_mpris_debug.h"
+ 
+ K_PLUGIN_CLASS_WITH_JSON(MprisControlPlugin, "kdeconnect_mpriscontrol.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_MPRIS, "kdeconnect.plugin.mpris")
+-
+-
+ MprisPlayer::MprisPlayer(const QString& serviceName, const QString& dbusObjectPath, const QDBusConnection& busConnection)
+     : m_serviceName(serviceName)
+     , m_propertiesInterface(new OrgFreedesktopDBusPropertiesInterface(serviceName, dbusObjectPath, busConnection))
+Index: kdeconnect-kde-20.04.1/plugins/mpriscontrol/mpriscontrolplugin-win.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/mpriscontrol/mpriscontrolplugin-win.cpp
++++ kdeconnect-kde-20.04.1/plugins/mpriscontrol/mpriscontrolplugin-win.cpp
+@@ -20,6 +20,7 @@
+ 
+ #include "mpriscontrolplugin-win.h"
+ #include <core/device.h>
++#include "plugin_mpris_debug.h"
+ 
+ #include <KPluginFactory>
+ 
+@@ -27,8 +28,6 @@
+ 
+ K_PLUGIN_CLASS_WITH_JSON(MprisControlPlugin, "kdeconnect_mpriscontrol.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_MPRIS, "kdeconnect.plugin.mpris")
+-
+ MprisControlPlugin::MprisControlPlugin(QObject *parent, const QVariantList &args) : KdeConnectPlugin(parent, args) {  }
+ 
+ bool MprisControlPlugin::receivePacket(const NetworkPacket &np)
+Index: kdeconnect-kde-20.04.1/plugins/remotecontrol/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/remotecontrol/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/remotecontrol/CMakeLists.txt
+@@ -1,4 +1,11 @@
+-kdeconnect_add_plugin(kdeconnect_remotecontrol JSON kdeconnect_remotecontrol.json SOURCES remotecontrolplugin.cpp)
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_remotecontrol_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_REMOTECONTROL CATEGORY_NAME kdeconnect.plugin.remotecontrol
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin remotecontrol)")
++
++kdeconnect_add_plugin(kdeconnect_remotecontrol JSON kdeconnect_remotecontrol.json SOURCES remotecontrolplugin.cpp ${debug_file_SRCS})
+ 
+ target_link_libraries(kdeconnect_remotecontrol
+     kdeconnectcore
+Index: kdeconnect-kde-20.04.1/plugins/remotecontrol/remotecontrolplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/remotecontrol/remotecontrolplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/remotecontrol/remotecontrolplugin.cpp
+@@ -26,14 +26,12 @@
+ #include <QDebug>
+ #include <QDBusConnection>
+ #include <QPoint>
+-#include <QLoggingCategory>
+ 
+ #include <core/device.h>
++#include "plugin_remotecontrol_debug.h"
+ 
+ K_PLUGIN_CLASS_WITH_JSON(RemoteControlPlugin, "kdeconnect_remotecontrol.json")
+ 
+-Q_LOGGING_CATEGORY(KDECONNECT_PLUGIN_REMOTECONTROL, "kdeconnect.plugin.remotecontrol")
+-
+ RemoteControlPlugin::RemoteControlPlugin(QObject* parent, const QVariantList &args)
+     : KdeConnectPlugin(parent, args)
+ {
+Index: kdeconnect-kde-20.04.1/smsapp/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/smsapp/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/smsapp/CMakeLists.txt
+@@ -2,8 +2,29 @@ qt5_add_resources(KCSMS_SRCS resources.q
+ 
+ find_package(KF5People)
+ 
++set(smshelper_debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    smshelper_debug_file_SRCS HEADER smshelper_debug.h
++    IDENTIFIER KDECONNECT_SMS_SMSHELPER CATEGORY_NAME kdeconnect.sms.smshelper
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (smshelper)")
++
++set(sms_debug_files_SRCS)
++ecm_qt_declare_logging_category(
++    sms_debug_files_SRCS HEADER sms_conversation_debug.h
++    IDENTIFIER KDECONNECT_SMS_CONVERSATION_MODEL CATEGORY_NAME kdeconnect.sms.conversation
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (sms conversation model)")
++
++ecm_qt_declare_logging_category(
++    sms_debug_files_SRCS HEADER sms_conversations_list_debug.h
++    IDENTIFIER KDECONNECT_SMS_CONVERSATIONS_LIST_MODEL CATEGORY_NAME kdeconnect.sms.conversations_list
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (sms conversations list)")
++
+ add_library(kdeconnectsmshelper
+ 	smshelper.cpp
++        ${smshelper_debug_file_SRCS}
+ )
+ 
+ set_target_properties(kdeconnectsmshelper PROPERTIES
+@@ -32,7 +53,8 @@ add_executable(kdeconnect-sms
+     main.cpp
+     conversationlistmodel.cpp
+     conversationmodel.cpp
+-    ${KCSMS_SRCS})
++    ${KCSMS_SRCS}
++    ${sms_debug_files_SRCS})
+ 
+ target_include_directories(kdeconnect-sms PUBLIC ${CMAKE_BINARY_DIR})
+ 
+Index: kdeconnect-kde-20.04.1/smsapp/conversationlistmodel.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/smsapp/conversationlistmodel.cpp
++++ kdeconnect-kde-20.04.1/smsapp/conversationlistmodel.cpp
+@@ -22,7 +22,6 @@
+ #include "conversationlistmodel.h"
+ 
+ #include <QString>
+-#include <QLoggingCategory>
+ #include <QPainter>
+ 
+ #include <KLocalizedString>
+@@ -30,8 +29,7 @@
+ #include "interfaces/conversationmessage.h"
+ #include "interfaces/dbusinterfaces.h"
+ #include "smshelper.h"
+-
+-Q_LOGGING_CATEGORY(KDECONNECT_SMS_CONVERSATIONS_LIST_MODEL, "kdeconnect.sms.conversations_list")
++#include "sms_conversations_list_debug.h"
+ 
+ OurSortFilterProxyModel::OurSortFilterProxyModel(){}
+ OurSortFilterProxyModel::~OurSortFilterProxyModel(){}
+Index: kdeconnect-kde-20.04.1/smsapp/conversationmodel.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/smsapp/conversationmodel.cpp
++++ kdeconnect-kde-20.04.1/smsapp/conversationmodel.cpp
+@@ -23,14 +23,12 @@
+ 
+ #include <QClipboard>
+ #include <QGuiApplication>
+-#include <QLoggingCategory>
+ 
+ #include <KLocalizedString>
+ 
+ #include "interfaces/conversationmessage.h"
+ #include "smshelper.h"
+-
+-Q_LOGGING_CATEGORY(KDECONNECT_SMS_CONVERSATION_MODEL, "kdeconnect.sms.conversation")
++#include "sms_conversation_debug.h"
+ 
+ ConversationModel::ConversationModel(QObject* parent)
+     : QStandardItemModel(parent)
+Index: kdeconnect-kde-20.04.1/smsapp/smshelper.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/smsapp/smshelper.cpp
++++ kdeconnect-kde-20.04.1/smsapp/smshelper.cpp
+@@ -24,7 +24,6 @@
+ #include <QPainter>
+ #include <QRegularExpression>
+ #include <QString>
+-#include <QLoggingCategory>
+ #include <QStandardPaths>
+ #include <QHash>
+ 
+@@ -32,8 +31,7 @@
+ #include <KPeople/PersonsModel>
+ 
+ #include "interfaces/conversationmessage.h"
+-
+-Q_LOGGING_CATEGORY(KDECONNECT_SMS_SMSHELPER, "kdeconnect.sms.smshelper")
++#include "smshelper_debug.h"
+ 
+ bool SmsHelper::isPhoneNumberMatchCanonicalized(const QString& canonicalPhone1, const QString& canonicalPhone2)
+ {
+Index: kdeconnect-kde-20.04.1/smsapp/conversationlistmodel.h
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/smsapp/conversationlistmodel.h
++++ kdeconnect-kde-20.04.1/smsapp/conversationlistmodel.h
+@@ -23,15 +23,11 @@
+ #define CONVERSATIONLISTMODEL_H
+ 
+ #include <QStandardItemModel>
+-#include <QLoggingCategory>
+ #include <QQmlParserStatus>
+ 
+ #include "interfaces/conversationmessage.h"
+ #include "interfaces/dbusinterfaces.h"
+ 
+-Q_DECLARE_LOGGING_CATEGORY(KDECONNECT_SMS_CONVERSATIONS_LIST_MODEL)
+-
+-
+ class OurSortFilterProxyModel : public QSortFilterProxyModel, public QQmlParserStatus
+ {
+     Q_OBJECT
+Index: kdeconnect-kde-20.04.1/smsapp/conversationmodel.h
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/smsapp/conversationmodel.h
++++ kdeconnect-kde-20.04.1/smsapp/conversationmodel.h
+@@ -23,14 +23,11 @@
+ #define CONVERSATIONMODEL_H
+ 
+ #include <QStandardItemModel>
+-#include <QLoggingCategory>
+ #include <QSet>
+ 
+ #include "interfaces/conversationmessage.h"
+ #include "interfaces/dbusinterfaces.h"
+ 
+-Q_DECLARE_LOGGING_CATEGORY(KDECONNECT_SMS_CONVERSATION_MODEL)
+-
+ #define INVALID_THREAD_ID -1
+ 
+ class ConversationModel
+Index: kdeconnect-kde-20.04.1/smsapp/smshelper.h
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/smsapp/smshelper.h
++++ kdeconnect-kde-20.04.1/smsapp/smshelper.h
+@@ -22,7 +22,6 @@
+ #define SMSHELPER_H
+ 
+ #include <QIcon>
+-#include <QLoggingCategory>
+ 
+ #include <KPeople/PersonData>
+ #include <QSharedPointer>
+@@ -31,8 +30,6 @@
+ 
+ #include "kdeconnectsms_export.h"
+ 
+-Q_DECLARE_LOGGING_CATEGORY(KDECONNECT_SMS_SMSHELPER)
+-
+ class KDECONNECTSMSAPPLIB_EXPORT SmsHelper
+ {
+ public:
+Index: kdeconnect-kde-20.04.1/kio/kiokdeconnect.h
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/kio/kiokdeconnect.h
++++ kdeconnect-kde-20.04.1/kio/kiokdeconnect.h
+@@ -22,14 +22,11 @@
+ #define KIOKDECONNECT_H
+ 
+ #include <QObject>
+-#include <QLoggingCategory>
+ 
+ #include <kio/slavebase.h>
+ 
+ #include "interfaces/dbusinterfaces.h"
+ 
+-Q_DECLARE_LOGGING_CATEGORY(KDECONNECT_KIO)
+-
+ class KioKdeconnect : public QObject, public KIO::SlaveBase
+ {
+     Q_OBJECT
+Index: kdeconnect-kde-20.04.1/interfaces/conversationmessage.h
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/interfaces/conversationmessage.h
++++ kdeconnect-kde-20.04.1/interfaces/conversationmessage.h
+@@ -22,12 +22,9 @@
+ #define PLUGINS_TELEPHONY_CONVERSATIONMESSAGE_H_
+ 
+ #include <QDBusMetaType>
+-#include <QLoggingCategory>
+ 
+ #include "kdeconnectinterfaces_export.h"
+ 
+-Q_DECLARE_LOGGING_CATEGORY(CONVERSATION_MESSAGE_LOGGING_CATEGORY)
+-
+ class ConversationAddress;
+ 
+ class KDECONNECTINTERFACES_EXPORT ConversationMessage
+Index: kdeconnect-kde-20.04.1/fileitemactionplugin/sendfileitemaction.h
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/fileitemactionplugin/sendfileitemaction.h
++++ kdeconnect-kde-20.04.1/fileitemactionplugin/sendfileitemaction.h
+@@ -23,13 +23,11 @@
+ 
+ #include <KFileItemListProperties>
+ #include <KAbstractFileItemActionPlugin>
+-#include <QLoggingCategory>
+ 
+ class QAction;
+ class KFileItemListProperties;
+ class QWidget;
+ 
+-Q_DECLARE_LOGGING_CATEGORY(KDECONNECT_FILEITEMACTION)
+ class SendFileItemAction : public KAbstractFileItemActionPlugin
+ {
+ Q_OBJECT
+Index: kdeconnect-kde-20.04.1/plugins/sendnotifications/notificationslistener.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/sendnotifications/notificationslistener.cpp
++++ kdeconnect-kde-20.04.1/plugins/sendnotifications/notificationslistener.cpp
+@@ -22,7 +22,6 @@
+ #include <QDBusInterface>
+ #include <QDBusArgument>
+ #include <QtDebug>
+-#include <QLoggingCategory>
+ #include <QStandardPaths>
+ #include <QImage>
+ #include <KConfig>
+@@ -36,7 +35,7 @@
+ #include <dbushelper.h>
+ 
+ #include "sendnotificationsplugin.h"
+-#include "sendnotification_debug.h"
++#include "plugin_sendnotification_debug.h"
+ #include "notifyingapplication.h"
+ 
+ //In older Qt released, qAsConst isnt available
+Index: kdeconnect-kde-20.04.1/plugins/clipboard/clipboardplugin.h
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/clipboard/clipboardplugin.h
++++ kdeconnect-kde-20.04.1/plugins/clipboard/clipboardplugin.h
+@@ -23,11 +23,8 @@
+ 
+ #include <QObject>
+ #include <QClipboard>
+-#include <QLoggingCategory>
+ #include <core/kdeconnectplugin.h>
+ 
+-Q_DECLARE_LOGGING_CATEGORY(KDECONNECT_PLUGIN_CLIPBOARD)
+-
+ /**
+  * Packet containing just clipboard contents, sent when a device updates its clipboard.
+  * <p>
+Index: kdeconnect-kde-20.04.1/plugins/pausemusic/pausemusicplugin-win.h
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/pausemusic/pausemusicplugin-win.h
++++ kdeconnect-kde-20.04.1/plugins/pausemusic/pausemusicplugin-win.h
+@@ -28,13 +28,9 @@
+ 
+ #include <core/kdeconnectplugin.h>
+ 
+-#include <QLoggingCategory>
+-
+ #include <mmdeviceapi.h>
+ #include <endpointvolume.h>
+ 
+-Q_DECLARE_LOGGING_CATEGORY(KDECONNECT_PLUGIN_PAUSEMUSIC)
+-
+ class PauseMusicPlugin
+     : public KdeConnectPlugin
+ {
+Index: kdeconnect-kde-20.04.1/plugins/pausemusic/pausemusicplugin.h
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/pausemusic/pausemusicplugin.h
++++ kdeconnect-kde-20.04.1/plugins/pausemusic/pausemusicplugin.h
+@@ -27,10 +27,6 @@
+ 
+ #include <core/kdeconnectplugin.h>
+ 
+-#include <QLoggingCategory>
+-
+-Q_DECLARE_LOGGING_CATEGORY(KDECONNECT_PLUGIN_PAUSEMUSIC)
+-
+ class PauseMusicPlugin
+     : public KdeConnectPlugin
+ {
+Index: kdeconnect-kde-20.04.1/plugins/battery/batteryplugin.h
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/battery/batteryplugin.h
++++ kdeconnect-kde-20.04.1/plugins/battery/batteryplugin.h
+@@ -21,12 +21,10 @@
+ #ifndef BATTERYPLUGIN_H
+ #define BATTERYPLUGIN_H
+ 
+-#include <QLoggingCategory>
+ #include <core/kdeconnectplugin.h>
+ 
+ #define PACKET_TYPE_BATTERY_REQUEST QStringLiteral("kdeconnect.battery.request")
+ 
+-Q_DECLARE_LOGGING_CATEGORY(KDECONNECT_PLUGIN_BATTERY)
+ class BatteryDbusInterface;
+ 
+ class BatteryPlugin
+Index: kdeconnect-kde-20.04.1/plugins/findthisdevice/CMakeLists.txt
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/findthisdevice/CMakeLists.txt
++++ kdeconnect-kde-20.04.1/plugins/findthisdevice/CMakeLists.txt
+@@ -1,5 +1,13 @@
++set(debug_file_SRCS)
++ecm_qt_declare_logging_category(
++    debug_file_SRCS HEADER plugin_findthisdevice_debug.h
++    IDENTIFIER KDECONNECT_PLUGIN_FINDTHISDEVICE CATEGORY_NAME kdeconnect.plugin.findthisdevice
++    DEFAULT_SEVERITY Warning
++    EXPORT kdeconnect-kde DESCRIPTION "kdeconnect (plugin findthisdevice)")
++
+ set(kdeconnect_findthisdevice_SRCS
+     findthisdeviceplugin.cpp
++    ${debug_file_SRCS}
+ )
+ 
+ kdeconnect_add_plugin(kdeconnect_findthisdevice
+@@ -22,7 +30,7 @@ endif()
+ set(kdeconnect_findthisdevice_config_SRCS findthisdevice_config.cpp)
+ ki18n_wrap_ui(kdeconnect_findthisdevice_config_SRCS findthisdevice_config.ui)
+ 
+-add_library(kdeconnect_findthisdevice_config MODULE ${kdeconnect_findthisdevice_config_SRCS})
++add_library(kdeconnect_findthisdevice_config MODULE ${kdeconnect_findthisdevice_config_SRCS} ${debug_file_SRCS})
+ target_link_libraries(kdeconnect_findthisdevice_config
+     kdeconnectpluginkcm
+     Qt5::Multimedia
+Index: kdeconnect-kde-20.04.1/plugins/findthisdevice/findthisdeviceplugin.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/findthisdevice/findthisdeviceplugin.cpp
++++ kdeconnect-kde-20.04.1/plugins/findthisdevice/findthisdeviceplugin.cpp
+@@ -32,6 +32,7 @@
+ // Qt
+ #include <QDBusConnection>
+ #include <QMediaPlayer>
++#include "plugin_findthisdevice_debug.h"
+ 
+ K_PLUGIN_CLASS_WITH_JSON(FindThisDevicePlugin, "kdeconnect_findthisdevice.json")
+ 
+Index: kdeconnect-kde-20.04.1/plugins/findthisdevice/findthisdeviceplugin.h
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/findthisdevice/findthisdeviceplugin.h
++++ kdeconnect-kde-20.04.1/plugins/findthisdevice/findthisdeviceplugin.h
+@@ -33,16 +33,10 @@
+ #include <QUrl>
+ #endif
+ // Qt
+-#include <QLoggingCategory>
++#include "plugin_findthisdevice_debug.h"
+ 
+ #define PACKET_TYPE_FINDMYPHONE_REQUEST QStringLiteral("kdeconnect.findmyphone.request")
+ 
+-static const QLoggingCategory &KDECONNECT_PLUGIN_FINDTHISDEVICE()
+-{
+-    static const QLoggingCategory category("kdeconnect.plugin.findthisdevice");
+-    return category;
+-}
+-
+ class FindThisDevicePlugin
+     : public KdeConnectPlugin
+ {
+Index: kdeconnect-kde-20.04.1/plugins/mpriscontrol/mpriscontrolplugin-win.h
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/mpriscontrol/mpriscontrolplugin-win.h
++++ kdeconnect-kde-20.04.1/plugins/mpriscontrol/mpriscontrolplugin-win.h
+@@ -24,14 +24,11 @@
+ #include <core/kdeconnectplugin.h>
+ 
+ #include <QString>
+-#include <QLoggingCategory>
+ 
+ #define PLAYERNAME QStringLiteral("Media Player")
+ 
+ #define PACKET_TYPE_MPRIS QStringLiteral("kdeconnect.mpris")
+ 
+-Q_DECLARE_LOGGING_CATEGORY(KDECONNECT_PLUGIN_MPRIS)
+-
+ class MprisControlPlugin
+     : public KdeConnectPlugin
+ {
+Index: kdeconnect-kde-20.04.1/plugins/mpriscontrol/mpriscontrolplugin.h
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/mpriscontrol/mpriscontrolplugin.h
++++ kdeconnect-kde-20.04.1/plugins/mpriscontrol/mpriscontrolplugin.h
+@@ -23,13 +23,11 @@
+ 
+ #include <QString>
+ #include <QHash>
+-#include <QLoggingCategory>
+ #include <QDBusServiceWatcher>
+ #include <QSharedPointer>
+ 
+ #include <core/kdeconnectplugin.h>
+ 
+-
+ class OrgFreedesktopDBusPropertiesInterface;
+ class OrgMprisMediaPlayer2PlayerInterface;
+ 
+@@ -53,8 +51,6 @@ private:
+ 
+ #define PACKET_TYPE_MPRIS QStringLiteral("kdeconnect.mpris")
+ 
+-Q_DECLARE_LOGGING_CATEGORY(KDECONNECT_PLUGIN_MPRIS)
+-
+ class MprisControlPlugin
+     : public KdeConnectPlugin
+ {
+Index: kdeconnect-kde-20.04.1/plugins/remotekeyboard/remotekeyboardplugin.h
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/remotekeyboard/remotekeyboardplugin.h
++++ kdeconnect-kde-20.04.1/plugins/remotekeyboard/remotekeyboardplugin.h
+@@ -23,13 +23,10 @@
+ 
+ #include <core/kdeconnectplugin.h>
+ #include <QDBusInterface>
+-#include <QLoggingCategory>
+ #include <QVariantMap>
+ 
+ struct FakeKey;
+ 
+-Q_DECLARE_LOGGING_CATEGORY(KDECONNECT_PLUGIN_REMOTEKEYBOARD);
+-
+ #define PACKET_TYPE_MOUSEPAD_REQUEST QLatin1String("kdeconnect.mousepad.request")
+ #define PACKET_TYPE_MOUSEPAD_ECHO QLatin1String("kdeconnect.mousepad.echo")
+ #define PACKET_TYPE_MOUSEPAD_KEYBOARDSTATE QLatin1String("kdeconnect.mousepad.keyboardstate")
+Index: kdeconnect-kde-20.04.1/plugins/telephony/telephonyplugin.h
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/telephony/telephonyplugin.h
++++ kdeconnect-kde-20.04.1/plugins/telephony/telephonyplugin.h
+@@ -22,7 +22,6 @@
+ #ifndef TELEPHONYPLUGIN_H
+ #define TELEPHONYPLUGIN_H
+ 
+-#include <QLoggingCategory>
+ #include <QPointer>
+ 
+ #include <KNotification>
+@@ -45,8 +44,6 @@
+ 
+ #define PACKET_TYPE_TELEPHONY_REQUEST_MUTE QStringLiteral("kdeconnect.telephony.request_mute")
+ 
+-Q_DECLARE_LOGGING_CATEGORY(KDECONNECT_PLUGIN_TELEPHONY)
+-
+ class TelephonyPlugin
+     : public KdeConnectPlugin
+ {
+Index: kdeconnect-kde-20.04.1/plugins/battery/batterydbusinterface.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/plugins/battery/batterydbusinterface.cpp
++++ kdeconnect-kde-20.04.1/plugins/battery/batterydbusinterface.cpp
+@@ -23,6 +23,7 @@
+ 
+ #include <QDebug>
+ #include <core/device.h>
++#include "plugin_battery_debug.h"
+ 
+ QMap<QString, BatteryDbusInterface *> BatteryDbusInterface::s_dbusInterfaces;
+ 
+Index: kdeconnect-kde-20.04.1/interfaces/notificationsmodel.cpp
+===================================================================
+--- kdeconnect-kde-20.04.1.orig/interfaces/notificationsmodel.cpp
++++ kdeconnect-kde-20.04.1/interfaces/notificationsmodel.cpp
+@@ -19,7 +19,6 @@
+  */
+ 
+ #include "notificationsmodel.h"
+-#include "interfaces_debug.h"
+ 
+ #include <QDebug>
+ #include <QIcon>
+@@ -30,6 +29,7 @@
+ 
+ //In older Qt released, qAsConst isnt available
+ #include "core/qtcompat_p.h"
++#include "interfaces_debug.h"
+ 
+ NotificationsModel::NotificationsModel(QObject* parent)
+     : QAbstractListModel(parent)
+diff --git a/interfaces/interfaces_debug.h b/interfaces/interfaces_debug.h
+deleted file mode 100644
+index cfd1b648..00000000
+--- a/interfaces/interfaces_debug.h
++++ /dev/null
+@@ -1,28 +0,0 @@
+-/**
+- * Copyright 2014 Alejandro Fiestas Olivares <afiestas@kde.org>
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License as
+- * published by the Free Software Foundation; either version 2 of
+- * the License or (at your option) version 3 or any later version
+- * accepted by the membership of KDE e.V. (or its successor approved
+- * by the membership of KDE e.V.), which shall act as a proxy
+- * defined in Section 14 of version 3 of the license.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+- */
+-
+-#ifndef KDECONNECT_INTERFACES_DEBUG_H
+-#define KDECONNECT_INTERFACES_DEBUG_H
+-
+-#include <QLoggingCategory>
+-
+-Q_DECLARE_LOGGING_CATEGORY(KDECONNECT_INTERFACES)
+-
+-#endif //KDECONNECT_INTERFACES_DEBUG_H
+diff --git a/plugins/notifications/notification_debug.h b/plugins/notifications/notification_debug.h
+deleted file mode 100644
+index b1366801..00000000
+--- a/plugins/notifications/notification_debug.h
++++ /dev/null
+@@ -1,28 +0,0 @@
+-/**
+- * Copyright 2014 Alejandro Fiestas Olivares <afiestas@kde.org>
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License as
+- * published by the Free Software Foundation; either version 2 of
+- * the License or (at your option) version 3 or any later version
+- * accepted by the membership of KDE e.V. (or its successor approved
+- * by the membership of KDE e.V.), which shall act as a proxy
+- * defined in Section 14 of version 3 of the license.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+- */
+-
+-#ifndef NOTIFICATION_DEBUG_H
+-#define NOTIFICATION_DEBUG_H
+-
+-#include <QLoggingCategory>
+-
+-Q_DECLARE_LOGGING_CATEGORY(KDECONNECT_PLUGIN_NOTIFICATION)
+-
+-#endif //NOTIFICATION_DEBUG_H
+diff --git a/plugins/sendnotifications/sendnotification_debug.h b/plugins/sendnotifications/sendnotification_debug.h
+deleted file mode 100644
+index e0cee05d..00000000
+--- a/plugins/sendnotifications/sendnotification_debug.h
++++ /dev/null
+@@ -1,28 +0,0 @@
+-/**
+- * Copyright 2014 Alejandro Fiestas Olivares <afiestas@kde.org>
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License as
+- * published by the Free Software Foundation; either version 2 of
+- * the License or (at your option) version 3 or any later version
+- * accepted by the membership of KDE e.V. (or its successor approved
+- * by the membership of KDE e.V.), which shall act as a proxy
+- * defined in Section 14 of version 3 of the license.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+- */
+-
+-#ifndef SENDNOTIFICATION_DEBUG_H
+-#define SENDNOTIFICATION_DEBUG_H
+-
+-#include <QLoggingCategory>
+-
+-Q_DECLARE_LOGGING_CATEGORY(KDECONNECT_PLUGIN_SENDNOTIFICATION)
+-
+-#endif //NOTIFICATION_DEBUG_H
+diff --git a/plugins/sftp/sftp_debug.h b/plugins/sftp/sftp_debug.h
+deleted file mode 100644
+index 89a2de05..00000000
+--- a/plugins/sftp/sftp_debug.h
++++ /dev/null
+@@ -1,28 +0,0 @@
+-/**
+- * Copyright 2014 Alejandro Fiestas Olivares <afiestas@kde.org>
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License as
+- * published by the Free Software Foundation; either version 2 of
+- * the License or (at your option) version 3 or any later version
+- * accepted by the membership of KDE e.V. (or its successor approved
+- * by the membership of KDE e.V.), which shall act as a proxy
+- * defined in Section 14 of version 3 of the license.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+- */
+-
+-#ifndef SFTP_DEBUG_H
+-#define SFTP_DEBUG_H
+-
+-#include <QLoggingCategory>
+-
+-Q_DECLARE_LOGGING_CATEGORY(KDECONNECT_PLUGIN_SFTP)
+-
+-#endif //SFTP_DEBUG_H
+diff --git a/plugins/share/share_debug.h b/plugins/share/share_debug.h
+deleted file mode 100644
+index 6097e737..00000000
+--- a/plugins/share/share_debug.h
++++ /dev/null
+@@ -1,28 +0,0 @@
+-/**
+- * Copyright 2014 Alejandro Fiestas Olivares <afiestas@kde.org>
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License as
+- * published by the Free Software Foundation; either version 2 of
+- * the License or (at your option) version 3 or any later version
+- * accepted by the membership of KDE e.V. (or its successor approved
+- * by the membership of KDE e.V.), which shall act as a proxy
+- * defined in Section 14 of version 3 of the license.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+- */
+-
+-#ifndef SHARE_DEBUG_H
+-#define SHARE_DEBUG_H
+-
+-#include <QLoggingCategory>
+-
+-Q_DECLARE_LOGGING_CATEGORY(KDECONNECT_PLUGIN_SHARE)
+-
+-#endif //SHARE_DEBUG_H

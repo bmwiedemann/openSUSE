@@ -32,6 +32,8 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 %endif
 Source100:      kdeconnect-kde.SuSEfirewall
 Source101:      kdeconnect-kde-firewalld.xml
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Use-ecm_qt_declare_logging_category-to-declare-the-l.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
@@ -92,6 +94,7 @@ ZSH command line completion support for %{name}.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake_kf5 -d build
@@ -167,6 +170,7 @@ install -D -m 0644 %{SOURCE101} \
 %{_kf5_htmldir}/en/kdeconnect/
 %dir %{_kf5_appstreamdir}
 %{_kf5_appstreamdir}/org.kde.kdeconnect.kcm.appdata.xml
+%{_kf5_debugdir}/kdeconnect-kde.categories
 
 %if %{with lang}
 %files lang -f %{name}.lang
