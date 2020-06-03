@@ -37,6 +37,8 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.frrouting.org
 #Git-Clone:     https://github.com/FRRouting/frr.git
+# PATCH-FIX-UPSTREAM: build-use-configfile-mode-in-init-script
+Patch1:		0001-build-use-configfile-mode-in-init-script.patch
 Source:         https://github.com/FRRouting/frr/archive/%{name}-%{version}.tar.gz
 Source1:        %{name}-tmpfiles.d
 BuildRequires:  %{python_module Sphinx}
@@ -170,6 +172,7 @@ developing OSPF-API and frr applications.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
+%patch1 -p1
 
 %build
 # GCC LTO objects must be "fat" to avoid assembly errors

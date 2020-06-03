@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 31 22:40:46 UTC 2020 - Erico Mendonca <erico.mendonca@suse.com>
+
+- 0001-build-use-configfile-mode-in-init-script.patch: Fix CVE-2020-12831 (boo#1171658).
+
+-------------------------------------------------------------------
 Wed May  6 16:07:32 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.3.1

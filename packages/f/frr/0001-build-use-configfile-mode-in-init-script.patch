@@ -1,0 +1,71 @@
+From 5c9063771195bb51a8cc1c64f9924e53a0602817 Mon Sep 17 00:00:00 2001
+From: David Lamparter <equinox@diac24.net>
+Date: Mon, 11 May 2020 21:37:08 +0200
+Subject: [PATCH] build: use configfile mode in init script
+
+This only applies for split-config;  the init script would create an
+empty config file with default permissions.
+
+Reported-by: Robert Scheck <robert@fedoraproject.org>
+Signed-off-by: David Lamparter <equinox@opensourcerouting.org>
+---
+ configure.ac          | 1 +
+ tools/frr.in          | 2 ++
+ tools/frrcommon.sh.in | 2 ++
+ 3 files changed, 5 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index faaf1dd23..d4c652c6e 100755
+--- a/configure.ac
++++ b/configure.ac
+@@ -813,6 +813,7 @@ AC_SUBST([enable_vty_group])
+ 
+ enable_configfile_mask=${enable_configfile_mask:-0600}
+ AC_DEFINE_UNQUOTED([CONFIGFILE_MASK], [${enable_configfile_mask}], [Mask for config files])
++AC_SUBST([enable_configfile_mask])
+ 
+ enable_logfile_mask=${enable_logfile_mask:-0600}
+ AC_DEFINE_UNQUOTED([LOGFILE_MASK], [${enable_logfile_mask}], [Mask for log files])
+diff --git a/tools/frr.in b/tools/frr.in
+index d9816c256..40862aa4c 100755
+--- a/tools/frr.in
++++ b/tools/frr.in
+@@ -21,6 +21,7 @@ VTYSH="@vtysh_bin@" # /usr/bin/vtysh
+ FRR_USER="@enable_user@" # frr
+ FRR_GROUP="@enable_group@" # frr
+ FRR_VTY_GROUP="@enable_vty_group@" # frrvty
++FRR_CONFIG_MODE="@enable_configfile_mask@" # 0600
+ FRR_DEFAULT_PROFILE="@DFLT_NAME@" # traditional / datacenter
+ 
+ # Local Daemon selection may be done by using /etc/frr/daemons.
+@@ -56,6 +57,7 @@ chownfrr()
+ {
+ 	test -n "$FRR_USER" && chown "$FRR_USER" "$1"
+ 	test -n "$FRR_GROUP" && chgrp "$FRR_GROUP" "$1"
++	test -n "$FRR_CONFIG_MODE" && chmod "$FRR_CONFIG_MODE" "$1"
+ }
+ 
+ # Check if daemon is started by using the pidfile.
+diff --git a/tools/frrcommon.sh.in b/tools/frrcommon.sh.in
+index 0dfdfd0ef..9dc8cea60 100644
+--- a/tools/frrcommon.sh.in
++++ b/tools/frrcommon.sh.in
+@@ -24,6 +24,7 @@ VTYSH="@vtysh_bin@" # /usr/bin/vtysh
+ FRR_USER="@enable_user@" # frr
+ FRR_GROUP="@enable_group@" # frr
+ FRR_VTY_GROUP="@enable_vty_group@" # frrvty
++FRR_CONFIG_MODE="@enable_configfile_mask@" # 0600
+ FRR_DEFAULT_PROFILE="@DFLT_NAME@" # traditional / datacenter
+ 
+ # ORDER MATTERS FOR $DAEMONS!
+@@ -53,6 +54,7 @@ debug() {
+ chownfrr() {
+ 	[ -n "$FRR_USER" ] && chown "$FRR_USER" "$1"
+ 	[ -n "$FRR_GROUP" ] && chgrp "$FRR_GROUP" "$1"
++	[ -n "$FRR_CONFIG_MODE" ] && chmod "$FRR_CONFIG_MODE" "$1"
+ }
+ 
+ vtysh_b () {
+-- 
+2.21.1 (Apple Git-122.3)
+
