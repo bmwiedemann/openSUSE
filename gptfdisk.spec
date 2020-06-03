@@ -1,7 +1,7 @@
 #
 # spec file for package gptfdisk
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           gptfdisk
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        GPT partitioning and MBR repair software
 License:        GPL-2.0-only
 Group:          System/Base
-Url:            http://rodsbooks.com/gdisk
+URL:            http://rodsbooks.com/gdisk
 
 Source:         http://downloads.sf.net/%name/%name-%version.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
