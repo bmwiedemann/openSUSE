@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 28 06:48:37 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- libfdk-aac is now .so.2, not .so.1.
+
+-------------------------------------------------------------------
 Mon May 11 09:40:09 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Throw out v4l2 m2m. This is likely the same case as boo#1041794.
