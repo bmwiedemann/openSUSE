@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun  3 04:06:52 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update version 20200602
+  - Animated notification icons in Pantheon and other improvements to ePapirus
+  - Yaru folders color #2198
+  - Added 66 icons
+  - Updated 23 icons
+  - Changes and fixes
+    * Added hacks for LXQt Plugins #2211
+    * Fixed the size of the muted mic in Pantheon (ePapirus) #2241
+    * Moved gtk-network icon from actions to places #2197
+    * Removed gnome from Inherits #1153
+    * Unified the disabled state in symbolic icons
+
+-------------------------------------------------------------------
 Fri May  1 11:03:03 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 20200430
