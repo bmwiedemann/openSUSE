@@ -17,7 +17,7 @@
 
 
 Name:           libdrm
-Version:        2.4.101
+Version:        2.4.102
 Release:        0
 Summary:        Userspace Interface for Kernel DRM Services
 License:        MIT
@@ -302,6 +302,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %endif
 
 %files tools
+%{_bindir}/drmdevice
 %ifarch %arm aarch64
 %{_bindir}/etnaviv_2d_test
 %{_bindir}/etnaviv_bo_cache_test
