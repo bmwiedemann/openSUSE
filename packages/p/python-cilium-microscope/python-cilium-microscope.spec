@@ -43,6 +43,8 @@ Requires:       python-requests
 Requires:       python-rsa
 Requires:       python-urwid
 Requires:       python-websocket-client
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Provides:       %{modname} = %{version}
 Obsoletes:      %{modname} < 1.1.1
 BuildArch:      noarch
@@ -61,11 +63,18 @@ to interact with your cilium nodes within k8s cluster.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/microscope
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative microscope
+
+%postun
+%python_uninstall_alternative microscope
 
 %files %{python_files}
 %{python_sitelib}/*
-%python3_only %{_bindir}/microscope
+%python_alternative %{_bindir}/microscope
 %license LICENSE
 
 %changelog
