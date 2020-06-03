@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 28 21:04:29 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Support spell checking for Finnish using Voikko in the
+  sonnet-voikko package (boo#1172245)
+
+-------------------------------------------------------------------
 Sun May  3 09:40:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.70.0

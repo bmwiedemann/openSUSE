@@ -50,6 +50,7 @@ BuildRequires:  cmake(Qt5Test) >= 5.12.0
 BuildRequires:  cmake(Qt5UiPlugin) >= 5.12.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
 BuildRequires:  pkgconfig(hunspell)
+BuildRequires:  pkgconfig(libvoikko)
 %if %{with lang}
 BuildRequires:  cmake(Qt5LinguistTools) >= 5.12.0
 %endif
@@ -99,6 +100,16 @@ Sonnet is a plugin-based spell checking library for Qt-based
 applications. It supports several different plugins, including
 HSpell, Enchant, ASpell and HUNSPELL. Development files.
 
+%package voikko
+Summary:        KDE spell checking library: Support for Voikko
+Group:          System/GUI/KDE
+Requires:       %{name} = %{version}
+Provides:       locale(sonnet:fi)
+
+%description voikko
+Plug-in adding Voikko based spell checking for the Finnish language
+to the Sonnet spell checking framework.
+
 %lang_package -n libKF5SonnetCore%{sonum}
 
 %prep
@@ -130,7 +141,8 @@ HSpell, Enchant, ASpell and HUNSPELL. Development files.
 %doc README*
 %{_kf5_debugdir}/sonnet.categories
 %dir %{_kf5_plugindir}/kf5
-%{_kf5_plugindir}/kf5/sonnet/
+%dir %{_kf5_plugindir}/kf5/sonnet
+%{_kf5_plugindir}/kf5/sonnet/sonnet_hunspell.so
 
 %files -n libKF5SonnetCore%{sonum}
 %license COPYING*
@@ -150,5 +162,9 @@ HSpell, Enchant, ASpell and HUNSPELL. Development files.
 %{_kf5_libdir}/libKF5SonnetUi.so
 %{_kf5_mkspecsdir}/qt_Sonnet*.pri
 %{_kf5_plugindir}/designer/sonnetui5widgets.so
+
+%files voikko
+%license COPYING*
+%{_kf5_plugindir}/kf5/sonnet/sonnet_voikko.so
 
 %changelog
