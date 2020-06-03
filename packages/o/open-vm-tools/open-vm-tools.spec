@@ -37,6 +37,14 @@
 # X modules are lower prio upstream and once in a while fail. Offer an easy way to enable/disable them.
 %define with_X 1
 
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 0150200
+%define         with_sdmp 1
+%define         arg_servicediscovery --enable-servicediscovery
+%else
+%define         with_sdmp 0
+%define         arg_servicediscovery --without-servicediscovery
+%endif
+
 Name:           open-vm-tools
 %define subname open-vm-tools
 %define tarname open-vm-tools
@@ -185,6 +193,7 @@ This package contains only the user-space programs and libraries of
 machines.
 %endif
 
+%if %{with_sdmp}
 %package        sdmp
 Summary:        Service Discovery Plugin
 Group:          System Environment/Libraries
@@ -192,6 +201,7 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description      sdmp
 Service Discovery Plugin
+%endif
 
 %package -n libvmtools0
 Summary:        Open Virtual Machine Tools - shared library
@@ -253,7 +263,7 @@ chmod 755 configure
     %{?arg_xerces} \
     --with-udev-rules-dir=%{_udevrulesdir} \
     --enable-resolutionkms \
-    --enable-servicediscovery \
+    %{?arg_servicediscovery} \
     --disable-static
 make
 
@@ -351,8 +361,10 @@ install -D -m 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/modprobe.d/50-vmnics.co
 
 %endif
 
+%if %{with_sdmp}
 %post sdmp
 systemctl try-restart vmtoolsd.service || :
+%endif
 
 %preun
 %service_del_preun vmtoolsd.service
@@ -374,9 +386,11 @@ fi
 %endif
 /sbin/ldconfig
 
+%if %{with_sdmp}
 %postun sdmp
 # restart tools without plugin
 systemctl try-restart vmtoolsd.service || :
+%endif
 
 %post -n libvmtools0 -p /sbin/ldconfig
 
@@ -471,6 +485,7 @@ rm -rf %{buildroot}
 
 %endif
 
+%if %{with_sdmp}
 %files sdmp
 %dir %{_libdir}/%{name}/serviceDiscovery/
 %dir %{_libdir}/%{name}/serviceDiscovery/scripts/
@@ -479,6 +494,7 @@ rm -rf %{buildroot}
 %{_libdir}/%{name}/serviceDiscovery/scripts/get-listening-process-info.sh
 %{_libdir}/%{name}/serviceDiscovery/scripts/get-listening-process-perf-metrics.sh
 %{_libdir}/%{name}/serviceDiscovery/scripts/get-versions.sh
+%endif
 
 %files -n libvmtools0
 %defattr(-, root, root)

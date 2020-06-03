@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 28 20:35:31 UTC 2020 - Kirk Allan <kallan@suse.com>
+
+- While updating to 11.1.0 (build 16036546) (boo#1171764) hold off on
+  producing the open-vm-tools-sdmp (boo#1171765 Service Discover plugin)
+  until it has gone through the ECO process.  Once approved, will resubmit
+  to include the plugin.
+
+-------------------------------------------------------------------
 Fri May 15 22:53:34 UTC 2020 - Kirk Allan <kallan@suse.com>
 
 - Update to 11.1.0 (build 16036546) (boo#1171764, boo#1171765)
