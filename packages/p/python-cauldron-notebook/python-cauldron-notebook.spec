@@ -37,6 +37,8 @@ Requires:       python-numpy
 Requires:       python-pandas
 Requires:       python-pygments
 Requires:       python-requests
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-bokeh
 Recommends:     python-matplotlib
 Recommends:     python-plotly
@@ -72,16 +74,23 @@ modeling and analysis in Python.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/cauldron
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # Tests only work on git repo
 # %%check
 # %%pytest
 
+%post
+%python_install_alternative cauldron
+
+%postun
+%python_uninstall_alternative cauldron
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/cauldron
+%python_alternative %{_bindir}/cauldron
 %{python_sitelib}/*
 
 %changelog
