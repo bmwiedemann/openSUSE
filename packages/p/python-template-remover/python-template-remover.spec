@@ -27,7 +27,7 @@ URL:            https://github.com/deezer/template-remover
 Source:         https://files.pythonhosted.org/packages/source/t/template-remover/template-remover-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/deezer/template-remover/master/LICENSE
 BuildRequires:  %{python_module docopt >= 0.6.1}
-BuildRequires:  %{python_module nose >= 1.3}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -58,7 +58,7 @@ mv %{buildroot}%{_bindir}/remove_template.py %{buildroot}%{_bindir}/remove_templ
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -R setup.py nosetests
+%pytest
 
 %post
 %python_install_alternative remove_template
