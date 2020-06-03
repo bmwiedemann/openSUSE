@@ -817,4 +817,12 @@
   &quot;ps aufxZ&quot; more readable</comment>
     <requestid>794395</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>30aa0dc82adb831558f5090fac44f46f</srcmd5>
+    <version>2.1.5+git0.36e14bd31</version>
+    <time>1591208976</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.5+git0.36e14bd31:</comment>
+    <requestid>810208</requestid>
+  </revision>
 </revisionlist>
