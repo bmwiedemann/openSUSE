@@ -31,6 +31,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-blosc
 Requires:       python-numpy
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     cryptography >= 1.3.4
 Recommends:     python-pyOpenSSL >= 0.14
 BuildArch:      noarch
@@ -72,6 +74,7 @@ export LANG=en_US.UTF-8
 %install
 export LANG=en_US.UTF-8
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/blpk
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -80,10 +83,16 @@ export LANG=en_US.UTF-8
 # Tests take too long
 # %%python_expand nosetests-%%{$python_bin_suffix} test
 
+%post
+%python_install_alternative blpk
+
+%postun
+%python_uninstall_alternative blpk
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/blpk
+%python_alternative %{_bindir}/blpk
 %{python_sitelib}/*
 
 %changelog
