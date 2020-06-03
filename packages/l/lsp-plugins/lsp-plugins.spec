@@ -20,7 +20,7 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           lsp-plugins
-Version:        1.1.19
+Version:        1.1.22
 Release:        0
 Summary:        Linux Studio Plugins Project (Stand-alone)
 License:        LGPL-3.0-only AND Zlib
@@ -138,8 +138,7 @@ done
 %files common
 %license LICENSE.txt
 %dir %{_libdir}/%{name}
-%{_libdir}/%{name}/%{name}-jack-core-%{version}.so
-%{_libdir}/%{name}/%{name}-r3d-glx.so
+%{_libdir}/%{name}/%{name}*
 
 %files -n ladspa-%{name}
 %{_libdir}/ladspa/%{name}-ladspa.so
