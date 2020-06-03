@@ -1,0 +1,13 @@
+Index: uget-2.2.3/ui-gtk/UgtkBanner.h
+===================================================================
+--- uget-2.2.3.orig/ui-gtk/UgtkBanner.h
++++ uget-2.2.3/ui-gtk/UgtkBanner.h
+@@ -64,7 +64,7 @@ struct UgtkBanner {
+ 		UgetRssFeed*    feed;
+ 		UgetRssItem*    item;
+ 	} rss;
+-} banner;
++};
+ 
+ void  ugtk_banner_init (UgtkBanner* banner);
+ 

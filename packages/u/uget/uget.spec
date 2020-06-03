@@ -1,7 +1,7 @@
 #
 # spec file for package uget
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,8 +22,10 @@ Release:        0
 Summary:        Download Manager with a GTK+ user interface
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Web/Utilities
-Url:            http://ugetdm.com
+URL:            http://ugetdm.com
 Source:         http://downloads.sourceforge.net/project/urlget/uget%20%28stable%29/%{version}/%{name}-%{version}-1.tar.gz
+# PATCH-FIX-UPSTREAM uget-gcc10.patch dimstar@opensuse.org -- Fix build with GCC10, taken from upstream git 148909
+Patch0:         uget-gcc10.patch
 BuildRequires:  intltool
 %if 0%{?WITH_APPINDICATOR}
 BuildRequires:  pkgconfig(appindicator3-0.1)
@@ -45,7 +47,7 @@ category having an independent configuration.
 
 %lang_package
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
