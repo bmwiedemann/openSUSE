@@ -115,4 +115,18 @@
 - Remove some hasbangs for non-exec files.</comment>
     <requestid>765276</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c51d8b3d49d59be8728023eb248edaa7</srcmd5>
+    <version>2.2.10</version>
+    <time>1591209103</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop post(un) install-info scripts for devel pkg, these are  handled by rpm file triggers; also drop the appropriate dependencies.
+- Update to version 2.2.10
+- Build with Rivet support (BuildRequires: Rivet-devel).
+- Fix some incorrect Provides and Obsoletes in subpackages.
+- Execute hashbang cleanup on source files instead of acting on  installed files in %{buildroot}.
+- Run spec-cleaner for minor formatting cleanups.
+</comment>
+    <requestid>811083</requestid>
+  </revision>
 </revisionlist>
