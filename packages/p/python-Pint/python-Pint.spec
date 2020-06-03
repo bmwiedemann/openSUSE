@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-Pint
-Version:        0.10.1
+Version:        0.11
 Release:        0
 Summary:        Physical quantities module
 License:        BSD-3-Clause
@@ -68,7 +68,8 @@ the complete list without changing the source code.
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS CHANGES README.rst
-%{python_sitelib}/Pint-%{version}-py*.egg-info
+%{_bindir}/pint-convert
+%{python_sitelib}/Pint-0*-py*.egg-info
 %{python_sitelib}/pint/
 
 %changelog

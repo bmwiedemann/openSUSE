@@ -84,4 +84,37 @@
     <comment>- Package requires pytest 4.x or newer</comment>
     <requestid>805763</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>531476e6b7cce0db0215163464b7aa8c</srcmd5>
+    <version>0.11</version>
+    <time>1591209361</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11:
+  - Added pint-convert script.
+  - Remove `default_en_0.6.txt`.
+  - Make `__str__` and `__format__` locale configurable.
+  (Issue #984)
+  - Quantities wrapping NumPy arrays will no longer warning for the changed
+  array function behavior introduced in 0.10.
+  (Issue #1029, Thanks Jon Thielen)
+  - **BREAKING CHANGE**:
+  The array protocol fallback deprecated in version 0.10 has been removed.
+  (Issue #1029, Thanks Jon Thielen)
+  - Now we use `pyproject.toml` for providing `setuptools_scm` settings
+  - Remove `default_en_0.6.txt`
+  - Reorganize long_description.
+  - Moved Pi to definitions files.
+  - Use ints (not floats) a defaults at many points in the codebase as in Python 3
+  the true division is the default one.
+  - **BREAKING CHANGE**:
+  Added `from_string` method to all Definitions subclasses. The value/converter
+  argument of the constructor no longer accepts an string.
+  It is unlikely that this change affects the end user.
+  - Added additional NumPy function implementations (allclose, intersect1d)
+  (Issue #979, Thanks Jon Thielen)
+  - Allow constants in units by using a leading underscore (Issue #989, Thanks
+  Juan Nunez-Iglesias)
+  - Fixed bug where to_compact handled prefix units incorrectly (Issue #960)</comment>
+    <requestid>811107</requestid>
+  </revision>
 </revisionlist>
