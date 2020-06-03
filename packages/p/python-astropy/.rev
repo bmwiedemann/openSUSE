@@ -1026,4 +1026,14 @@
     <comment></comment>
     <requestid>795889</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>68036aed51691b16757a257f5008a740</srcmd5>
+    <version>4.0.1.post1</version>
+    <time>1591209098</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to multibuild to avoid cycle with python-asdf package
+
+- %python3_only -&gt; %python_alternative</comment>
+    <requestid>811018</requestid>
+  </revision>
 </revisionlist>
