@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu May 28 03:14:24 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 1.43
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+
+  1.43	- 2020-05-27, H.Merijn Brand
+      * Add --parser-opt[=value] to csv-check
+      * Add -L & -X to csv-check
+      * Fix undef value in attribute setters for strings (issue 24)
+      * Document quote (undef) is not supported
+  
+
+-------------------------------------------------------------------
+Wed May 20 03:14:18 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 1.42
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+
+  1.42	- 2020-05-19, H.Merijn Brand
+      * Update to Devel::PPPort-3.58
+      * Unicode fixes for csv2xls and csv2xlsx
+      * Add internal buffers to cache diagnostics
+      * Fix positional reporting in examples/csv-check
+      * Allow passing CSV parsing attributes to csv-check
+      * Proof reading - doc fixes by Klaus Baldermann <soonix> (PR#21)
+      * Fix type caching (RT#132344)
+      * Small doc fix by Nick Tonkin <1nickt> (PR#22)
+      * Fix sep=; being ignored in ->header (issue 23)
+  
+
+-------------------------------------------------------------------
 Mon Feb 17 03:13:29 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.41
