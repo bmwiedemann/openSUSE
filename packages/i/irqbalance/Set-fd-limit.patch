@@ -1,8 +1,10 @@
-Index: irqbalance-1.6.0/misc/irqbalance.service
-===================================================================
---- irqbalance-1.6.0.orig/misc/irqbalance.service	2019-07-01 17:12:55.781596074 +0200
-+++ irqbalance-1.6.0/misc/irqbalance.service	2019-07-01 17:13:22.025596492 +0200
-@@ -13,6 +13,7 @@ ReadOnlyPaths=/
+---
+ misc/irqbalance.service |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/misc/irqbalance.service
++++ b/misc/irqbalance.service
+@@ -14,6 +14,7 @@
  ReadWritePaths=/proc/irq
  RestrictAddressFamilies=AF_UNIX
  RuntimeDirectory=irqbalance/

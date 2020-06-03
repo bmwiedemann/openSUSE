@@ -1,7 +1,7 @@
 #
 # spec file for package irqbalance
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           irqbalance
-Version:        1.6.0+git20190711.f7fdebb
+Version:        1.6.0+git20200317.0348a3b
 Release:        0
 Summary:        Daemon to balance IRQs on SMP machines
 License:        GPL-2.0-or-later
@@ -31,7 +31,6 @@ URL:            https://github.com/Irqbalance/irqbalance
 Source:         %{name}-%{version}.tar.gz
 Source3:        sysconfig.irqbalance
 Patch1:         Set-fd-limit.patch
-Patch2:         install-man-pages.patch
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
@@ -103,5 +102,6 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcirqbalance
 
 %files ui
 %{_sbindir}/irqbalance-ui
+%{_mandir}/man1/irqbalance-ui.1%{?ext_man}
 
 %changelog

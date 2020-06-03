@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 26 14:48:21 UTC 2020 - Thomas Renninger <trenn@suse.de>
+
+- Update to latest git HEAD version 0348a3b.
+  There has been no version update for quite some time, but some
+  restructuring and fixes we want to have included.
+D install-man-pages.patch
+
+-------------------------------------------------------------------
 Fri Apr 24 11:18:18 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Package COPYING and README.md
