@@ -8,11 +8,11 @@ static linking, create a private shared library that simply
 exports all symbols. With the exception of exported symbols, it is
 identical to the regular library.
 
-Index: mariadb-connector-c-3.1.4-src/libmariadb/CMakeLists.txt
+Index: mariadb-connector-c-3.1.8-src/libmariadb/CMakeLists.txt
 ===================================================================
---- mariadb-connector-c-3.1.4-src.orig/libmariadb/CMakeLists.txt
-+++ mariadb-connector-c-3.1.4-src/libmariadb/CMakeLists.txt
-@@ -410,17 +410,25 @@ IF(CMAKE_SIZEOF_VOID_P EQUAL 8 AND MSVC)
+--- mariadb-connector-c-3.1.8-src.orig/libmariadb/CMakeLists.txt
++++ mariadb-connector-c-3.1.8-src/libmariadb/CMakeLists.txt
+@@ -411,17 +411,25 @@ IF(CMAKE_SIZEOF_VOID_P EQUAL 8 AND MSVC)
    SET_TARGET_PROPERTIES(mariadbclient PROPERTIES STATIC_LIBRARY_FLAGS "/machine:x64")
  ENDIF()
  
@@ -25,7 +25,7 @@ Index: mariadb-connector-c-3.1.4-src/libmariadb/CMakeLists.txt
  IF(CMAKE_SYSTEM_NAME MATCHES "Linux" OR
     CMAKE_SYSTEM_NAME MATCHES "GNU")
    IF (NOT WITH_ASAN AND NOT WITH_TSAN AND NOT WITH_UBSAN AND NOT WITH_MSAN)
-     TARGET_LINK_LIBRARIES (libmariadb "-Wl,--no-undefined")
+     TARGET_LINK_LIBRARIES (libmariadb LINK_PRIVATE "-Wl,--no-undefined")
    ENDIF()
    SET_TARGET_PROPERTIES(libmariadb PROPERTIES LINK_FLAGS "${CC_BINARY_DIR}/libmariadb/mariadbclient.def")
 +  SET_TARGET_PROPERTIES(libmariadbprivate PROPERTIES LINK_FLAGS "-Wl,--no-undefined")
@@ -38,7 +38,7 @@ Index: mariadb-connector-c-3.1.4-src/libmariadb/CMakeLists.txt
  SET_TARGET_PROPERTIES(libmariadb PROPERTIES PREFIX "")
  
  #
-@@ -454,7 +462,9 @@ INSTALL(TARGETS mariadbclient
+@@ -455,7 +463,9 @@ INSTALL(TARGETS mariadbclient
  INSTALL(TARGETS libmariadb
            COMPONENT SharedLibraries
          DESTINATION ${INSTALL_LIBDIR})
@@ -47,12 +47,12 @@ Index: mariadb-connector-c-3.1.4-src/libmariadb/CMakeLists.txt
 +          COMPONENT SharedLibraries
 +          DESTINATION ${INSTALL_LIBDIR})
  
- IF(WIN32)
+ IF(MSVC)
     # On Windows, install PDB
-Index: mariadb-connector-c-3.1.4-src/mariadb_config/mariadb_config.c.in
+Index: mariadb-connector-c-3.1.8-src/mariadb_config/mariadb_config.c.in
 ===================================================================
---- mariadb-connector-c-3.1.4-src.orig/mariadb_config/mariadb_config.c.in
-+++ mariadb-connector-c-3.1.4-src/mariadb_config/mariadb_config.c.in
+--- mariadb-connector-c-3.1.8-src.orig/mariadb_config/mariadb_config.c.in
++++ mariadb-connector-c-3.1.8-src/mariadb_config/mariadb_config.c.in
 @@ -7,6 +7,8 @@ static char *mariadb_progname;
  
  #define INCLUDE "-I@INSTALL_INCLUDEDIR@ -I@INSTALL_INCLUDEDIR@/mariadb"
@@ -62,15 +62,15 @@ Index: mariadb-connector-c-3.1.4-src/mariadb_config/mariadb_config.c.in
  #define LIBS_SYS "@extra_dynamic_LDFLAGS@"
  #define CFLAGS  INCLUDE
  #define VERSION "@MARIADB_CLIENT_VERSION@"
-@@ -30,6 +32,7 @@ static struct option long_options[]=
-   {"port", no_argument, 0, 'i'},
-   {"plugindir", no_argument, 0, 'j'},
-   {"tlsinfo", no_argument, 0, 'k'},
-+  {"privatelibs", no_argument, 0, 'm'},
+@@ -35,6 +37,7 @@ static struct option long_options[]=
+   {OPT_STRING_TYPE "port", no_argument, 0, 'i'},
+   {OPT_STRING_TYPE "plugindir", no_argument, 0, 'j'},
+   {OPT_STRING_TYPE "tlsinfo", no_argument, 0, 'k'},
++  {OPT_STRING_TYPE "privatelibs", no_argument, 0, 'm'},
    {NULL, 0, 0, 0}
  };
  
-@@ -45,6 +48,7 @@ static const char *values[]=
+@@ -50,6 +53,7 @@ static const char *values[]=
    CC_VERSION,
    SOCKET,
    PORT,
@@ -78,7 +78,7 @@ Index: mariadb-connector-c-3.1.4-src/mariadb_config/mariadb_config.c.in
    PLUGIN_DIR,
    TLS_LIBRARY_VERSION
  };
-@@ -115,6 +119,9 @@ int main(int argc, char **argv)
+@@ -120,6 +124,9 @@ int main(int argc, char **argv)
      case 'l':
        puts(LIBS_SYS);
        break;

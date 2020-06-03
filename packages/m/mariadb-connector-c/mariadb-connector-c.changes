@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 22 15:05:07 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to release 3.1.8 [bsc#1171550]
+  * CONC-304: Rename the static library to libmariadb.a and other
+    libmariadb files in a consistent manner
+  * CONC-441: Default user name for C/C is wrong if login user
+    is different from effective user
+  * CONC-449: Check $MARIADB_HOME/my.cnf in addition to
+    $MYSQL_HOME/my.cnf
+  * CONC-457: mysql_list_processes crashes in unpack_fields
+  * CONC-458: mysql_get_timeout_value crashes when used improperly
+  * CONC-464: Fix static build for auth_gssapi_client plugin
+  * Fixes for the following security vulnerabilities:
+    CVE-2020-13249
+- refresh absolute_path_fix.patch and private_library.patch
+
+-------------------------------------------------------------------
 Thu Feb  6 20:30:28 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - Update to release 3.1.7
