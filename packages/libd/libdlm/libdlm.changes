@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 15 08:10:20 UTC 2020 - ghe@suse.com
+
+- Support uint64_t corosync ringid (bsc#1168771)
+ * add cluster-ringid-seq.patch
+
+-------------------------------------------------------------------
 Mon Aug  5 09:16:31 UTC 2019 - ghe@suse.com
 
 - Update to v4.0.9

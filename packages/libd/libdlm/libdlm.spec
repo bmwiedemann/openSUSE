@@ -1,7 +1,7 @@
 #
 # spec file for package libdlm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,7 @@ Patch1:         0001-makefile-for-diff-arch.patch
 Patch2:         0002-remove-sd-notify.patch
 Patch3:         0003-bnc#874705-nodes-without-quorum.patch
 Patch4:         sysmacros.patch
+Patch5:         cluster-ringid-seq.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel
@@ -85,6 +86,7 @@ like OCFS2, to interface with the in-kernel distributed lock manager.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 ###########################################################
 
 %build
