@@ -1,0 +1,32 @@
+From: Martin Rotter <rotter@praktik.cz>
+Date: Wed, 3 Jun 2020 11:51:59 +0200
+Subject: Fix invalid application of 'sizeof' to incomplete type 'Downloader
+
+Merged commits 139e014d2af6a6e156098ba486dbbe2681018fab
+and 7b64bc31045a82626d835c80b79f01770b3a0683.
+
+Index: rssguard-3.6.3/src/librssguard/network-web/googlesuggest.h
+===================================================================
+--- rssguard-3.6.3.orig/src/librssguard/network-web/googlesuggest.h
++++ rssguard-3.6.3/src/librssguard/network-web/googlesuggest.h
+@@ -33,16 +33,16 @@
+ 
+ #include <QObject>
+ 
++#include <QListWidget>
++
+ #include <QNetworkReply>
+ 
++#include "network-web/downloader.h"
++
+ class LocationLineEdit;
+ 
+ class QTimer;
+ 
+-class QListWidget;
+-
+-class Downloader;
+-
+ class GoogleSuggest : public QObject {
+   Q_OBJECT
+ 

@@ -16,17 +16,19 @@
 #
 
 
-%define libver  3_6_1
+%define libver  3_6_3
 Name:           rssguard
-Version:        3.6.1
+Version:        3.6.3
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
 License:        GPL-3.0-only AND AGPL-3.0-or-later
 URL:            https://github.com/martinrotter/rssguard
 Source0:        https://github.com/martinrotter/rssguard/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.changes
-# PATCH-FIX-OPENSUSE rssguard-3.6.0-add_library_version.patch aloisio@gmx.com -- add version to shared library
-Patch2:         rssguard-3.6.0-add_library_version.patch
+# PATCH-FIX-OPENSUSE rssguard-3.6.3-add_library_version.patch aloisio@gmx.com -- add version to shared library
+Patch2:         rssguard-3.6.3-add_library_version.patch
+# PATCH-FIX-UPSTREAM rssguard-3.6.3-fix_sizeof.patch
+Patch3:         rssguard-3.6.3-fix_sizeof.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -34,7 +36,7 @@ BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core) >= 5.9
+BuildRequires:  pkgconfig(Qt5Core) >= 5.12
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Sql)

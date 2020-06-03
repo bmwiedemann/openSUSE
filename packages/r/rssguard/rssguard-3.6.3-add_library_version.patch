@@ -1,7 +1,7 @@
-Index: rssguard-3.6.0/src/librssguard/librssguard.pro
+Index: rssguard-3.6.3/src/librssguard/librssguard.pro
 ===================================================================
---- rssguard-3.6.0.orig/src/librssguard/librssguard.pro
-+++ rssguard-3.6.0/src/librssguard/librssguard.pro
+--- rssguard-3.6.3.orig/src/librssguard/librssguard.pro
++++ rssguard-3.6.3/src/librssguard/librssguard.pro
 @@ -1,7 +1,10 @@
  TEMPLATE = lib
  
@@ -44,10 +44,10 @@ Index: rssguard-3.6.0/src/librssguard/librssguard.pro
  RESOURCES += ../../resources/sql.qrc \
               ../../resources/rssguard.qrc \
               ../../resources/icons.qrc
-Index: rssguard-3.6.0/src/rssguard/rssguard.pro
+Index: rssguard-3.6.3/src/rssguard/rssguard.pro
 ===================================================================
---- rssguard-3.6.0.orig/src/rssguard/rssguard.pro
-+++ rssguard-3.6.0/src/rssguard/rssguard.pro
+--- rssguard-3.6.3.orig/src/rssguard/rssguard.pro
++++ rssguard-3.6.3/src/rssguard/rssguard.pro
 @@ -47,7 +47,7 @@ INCLUDEPATH +=  $$PWD/../librssguard \
  DEPENDPATH += $$PWD/../librssguard
  
@@ -57,10 +57,10 @@ Index: rssguard-3.6.0/src/rssguard/rssguard.pro
  
  # Create new "make 7zip" target and "make zip" target.
  win32 {
-Index: rssguard-3.6.0/pri/install.pri
+Index: rssguard-3.6.3/pri/install.pri
 ===================================================================
---- rssguard-3.6.0.orig/pri/install.pri
-+++ rssguard-3.6.0/pri/install.pri
+--- rssguard-3.6.3.orig/pri/install.pri
++++ rssguard-3.6.3/pri/install.pri
 @@ -190,14 +190,17 @@ unix:!mac:!android {
    appdata.files = ../../resources/desktop/$${APP_REVERSE_NAME}.appdata.xml
    appdata.path = $$quote($$PREFIX/share/metainfo/)
@@ -80,5 +80,5 @@ Index: rssguard-3.6.0/pri/install.pri
 -  INSTALLS += target lib desktop_file desktop_icon appdata
 +  INSTALLS += target lib pkgconfig desktop_file desktop_icon appdata
    
-   INSTALL_HEADERS_PREFIX = $$quote($$PREFIX/include/librssguard/)
+   INSTALL_HEADERS_PREFIX = $$quote($$PREFIX/include/librssguard)
  }

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun  3 08:57:39 UTC 2020 - aloisio@gmx.com
+
+- Update to version 3.6.3
+  Fixed/changed:
+  * Fixed some compiler warnings.
+  * Fixed application crash when doing some network operations
+    when application exits.
+  * Some localizations now have more precise country codes.
+    Localizations were also synced.
+- Replace rssguard-3.6.0-add_library_version.patch with
+  rssguard-3.6.3-add_library_version.patch
+- Add rssguard-3.6.3-fix_sizeof.patch
+
+-------------------------------------------------------------------
 Thu May  7 07:54:52 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.6.1
