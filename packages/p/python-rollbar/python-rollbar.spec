@@ -26,12 +26,14 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/rollbar/pyrollbar
 Source:         https://github.com/rollbar/pyrollbar/archive/v%{version}.tar.gz
+# https://github.com/rollbar/pyrollbar/pull/340
+Patch0:         python-rollbar-no-unittest2.patch
 BuildRequires:  %{python_module WebOb}
 BuildRequires:  %{python_module blinker}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 0.12.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.9.0}
-BuildRequires:  %{python_module unittest2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 0.12.1
@@ -43,6 +45,7 @@ BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python2-enum34
 BuildRequires:  python2-mock
+BuildRequires:  python2-unittest2
 %endif
 %python_subpackages
 
@@ -51,6 +54,7 @@ Send messages and exceptions with arbitrary context, get back aggregates, and de
 
 %prep
 %setup -q -n pyrollbar-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -61,7 +65,7 @@ Send messages and exceptions with arbitrary context, get back aggregates, and de
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %post
 %python_install_alternative rollbar

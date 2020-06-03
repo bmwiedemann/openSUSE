@@ -1,0 +1,19 @@
+Index: pyrollbar-0.15.0/rollbar/test/__init__.py
+===================================================================
+--- pyrollbar-0.15.0.orig/rollbar/test/__init__.py	2020-04-04 02:08:37.000000000 +0200
++++ pyrollbar-0.15.0/rollbar/test/__init__.py	2020-06-03 10:51:15.137644743 +0200
+@@ -1,9 +1,12 @@
+-import unittest2
++try:
++    import unittest2 as unittest
++except ImportError:
++    import unittest
+ 
+ 
+ SNOWMAN = b'\xe2\x98\x83'
+ SNOWMAN_UNICODE = SNOWMAN.decode('utf8')
+ 
+ 
+-class BaseTest(unittest2.TestCase):
++class BaseTest(unittest.TestCase):
+     pass

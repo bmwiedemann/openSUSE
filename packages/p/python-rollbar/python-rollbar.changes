@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun  3 09:05:04 UTC 2020 - pgajdos@suse.com
+
+- use %pytest macro
+- remove dependency on unittest2 for python3
+- added patches
+  https://github.com/rollbar/pyrollbar/pull/340
+  + python-rollbar-no-unittest2.patch
+
+-------------------------------------------------------------------
 Tue May 19 09:27:47 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
