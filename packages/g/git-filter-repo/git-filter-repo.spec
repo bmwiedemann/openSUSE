@@ -22,7 +22,7 @@
 %global gitexecdir %{_libexecdir}/git
 
 Name:           git-filter-repo
-Version:        2.26.0
+Version:        2.27.0
 Release:        0
 Summary:        Quickly rewrite git repository history (git-filter-branch replacement)
 License:        MIT OR GPL-2.0-only
