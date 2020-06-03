@@ -1,7 +1,7 @@
 #
 # spec file for package python-audio-degrader
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-librosa >= 0.6.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module librosa >= 0.6.0}
@@ -48,6 +50,7 @@ degradations to audio.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/audio_degrader
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # Tests are not in sdist and there is no github tag for the latest release
@@ -56,10 +59,16 @@ degradations to audio.
 # %%check
 # %%pytest
 
+%post
+%python_install_alternative audio_degrader
+
+%postun
+%python_uninstall_alternative audio_degrader
+
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
-%python3_only %{_bindir}/audio_degrader
+%python_alternative %{_bindir}/audio_degrader
 %{python_sitelib}/*
 
 %changelog
