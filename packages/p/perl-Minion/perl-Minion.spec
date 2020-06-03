@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Minion
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,21 @@
 
 
 Name:           perl-Minion
-Version:        10.04
+Version:        10.06
 Release:        0
 %define cpan_name Minion
 Summary:        Job queue
 License:        Artistic-2.0
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SR/SRI/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Mojolicious) >= 8.27
-Requires:       perl(Mojolicious) >= 8.27
+BuildRequires:  perl(Mojolicious) >= 8.50
+Requires:       perl(Mojolicious) >= 8.50
 %{perl_requires}
 
 %description

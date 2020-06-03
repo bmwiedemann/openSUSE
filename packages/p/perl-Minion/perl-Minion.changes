@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jun  3 03:09:49 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 10.06
+   see /usr/share/doc/packages/perl-Minion/Changes
+
+  10.06  2020-06-01
+    - Added EXPERIMENTAL support for custom task classes.
+    - Added EXPERIMENTAL class_for_task method to Minion.
+    - Added EXPERIMENTAL run method to Minion::Job.
+    - Added -T option to job command.
+  
+
+-------------------------------------------------------------------
+Mon Jun  1 03:11:54 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 10.05
+   see /usr/share/doc/packages/perl-Minion/Changes
+
+  10.05  2020-05-30
+    - Improved .perltidyrc with more modern settings.
+    - Fixed result_p promise leak in Minion.
+  
+
+-------------------------------------------------------------------
 Fri Jan 31 03:12:57 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 10.04
