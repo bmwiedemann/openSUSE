@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 27 22:43:47 UTC 2020 - Jason Craig <os-dev@jacraig.com>
+
+- Change %{py_ver} to %{python_version} to fix build.
+- Mark license with %license instead of %doc.
+
+-------------------------------------------------------------------
 Thu Jun 22 15:42:58 UTC 2017 - alarrosa@suse.com
 
 - singlespec version of python-suds-jurko
