@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Email-MIME
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-Email-MIME
-Version:        1.946
+Version:        1.949
 Release:        0
 %define cpan_name Email-MIME
-Summary:        Easy Mime Message Handling
+Summary:        Easy MIME message handling
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Email-MIME/
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -31,7 +31,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Email::Address::XS)
-BuildRequires:  perl(Email::MIME::ContentType) >= 1.022
+BuildRequires:  perl(Email::MIME::ContentType) >= 1.023
 BuildRequires:  perl(Email::MIME::Encodings) >= 1.314
 BuildRequires:  perl(Email::MessageID)
 BuildRequires:  perl(Email::Simple) >= 2.212
@@ -42,7 +42,7 @@ BuildRequires:  perl(Module::Runtime)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(parent)
 Requires:       perl(Email::Address::XS)
-Requires:       perl(Email::MIME::ContentType) >= 1.022
+Requires:       perl(Email::MIME::ContentType) >= 1.023
 Requires:       perl(Email::MIME::Encodings) >= 1.314
 Requires:       perl(Email::MessageID)
 Requires:       perl(Email::Simple) >= 2.212
@@ -63,11 +63,11 @@ decoded from MIME encoding.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
