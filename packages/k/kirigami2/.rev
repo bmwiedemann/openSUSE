@@ -329,4 +329,13 @@
     <comment>KDE Frameworks 5.70</comment>
     <requestid>802095</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>7bde44a003130fb3f3caadc81227ab55</srcmd5>
+    <version>5.70.0</version>
+    <time>1591208878</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix PlaceholderMessage with Qt 5.12:
+  * fix-import-in-PlaceholderMessage.patch</comment>
+    <requestid>809465</requestid>
+  </revision>
 </revisionlist>

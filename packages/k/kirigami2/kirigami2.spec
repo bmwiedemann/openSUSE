@@ -35,6 +35,8 @@ Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
+# PATCH-FIX-UPSTREAM https://invent.kde.org/frameworks/kirigami/-/merge_requests/9
+Patch1:         fix-import-in-PlaceholderMessage.patch
 BuildRequires:  extra-cmake-modules >= %{_tar_path}
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(Qt5Core) >= 5.12.0
