@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  2 08:30:11 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to version 1.10
+  - See ChangeLog for a complete list of changes
+- Drop Add-support-for-older-cmake.patch fixed upstream
+-------------------------------------------------------------------
 Thu Feb 13 09:14:33 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to version 1.9

@@ -21,11 +21,10 @@ Name:           libpmemobj-cpp
 Summary:        C++ bindings for libpmemobj
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Version:        1.9
+Version:        1.10
 Release:        0
 URL:            http://pmem.io/pmdk/
 Source:         https://github.com/pmem/libpmemobj-cpp/archive/%{version}.tar.gz
-Patch0:         Add-support-for-older-cmake.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -62,7 +61,6 @@ Example C++ programs (with source) on how to use libpmemobj++.
 
 %prep
 %setup -q
-%patch0
 
 %build
 %cmake \
