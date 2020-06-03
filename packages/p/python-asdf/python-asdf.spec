@@ -37,6 +37,8 @@ Requires:       python-jsonschema >= 2.3
 Requires:       python-numpy >= 1.8
 Requires:       python-semantic_version >= 2.8
 Requires:       python-six >= 1.9.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 3.10}
@@ -69,16 +71,23 @@ chmod a-x asdf/tests/data/example_schema.json
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/asdftool
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
 %pytest
 
+%post
+%python_install_alternative asdftool
+
+%postun
+%python_uninstall_alternative asdftool
+
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license licenses/*
-%python3_only %{_bindir}/asdftool
+%python_alternative %{_bindir}/asdftool
 %{python_sitelib}/*
 
 %changelog
