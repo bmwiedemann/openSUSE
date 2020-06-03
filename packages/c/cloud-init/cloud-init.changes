@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 20 11:23:04 UTC 2020 - Martin Loviska <mloviska@suse.com>
+
+- bsc#1170154: rsyslog warning, '~' is deprecated 
+  + replace deprecated syntax '& ~' by '& stop'
+    for more information please see https://www.rsyslog.com/rsyslog-error-2307/ 
+
+-------------------------------------------------------------------
 Tue May 19 11:51:18 UTC 2020 - Joachim Gleissner <jgleissner@suse.com>
 
 - Update cloud-init-write-routes.patch
@@ -8,7 +15,7 @@ Tue May 19 11:51:18 UTC 2020 - Joachim Gleissner <jgleissner@suse.com>
 Mon May 18 14:37:30 UTC 2020 - Joachim Gleissner <jgleissner@suse.com>
 
 - Update cloud-init-write-routes.patch
-  + Handle netconfig v2 device configurations (bsc#1171546)
+  + Handle netconfig v2 device configurations (bsc#1171546, bsc#1171995)
 
 -------------------------------------------------------------------
 Fri Mar 27 12:21:00 UTC 2020 - Robert Schweikert <rjschwei@suse.com>

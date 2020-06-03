@@ -87,7 +87,7 @@ Requires:       dhcp-client
 Requires:       file
 Requires:       growpart
 Requires:       e2fsprogs
-Requires:	    net-tools
+Requires:       net-tools
 Requires:       openssh
 %if 0%{?suse_version} > 1320
 Requires:       python3-configobj >= 5.0.2
