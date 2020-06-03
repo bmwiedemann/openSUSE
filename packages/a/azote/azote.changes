@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  3 04:44:59 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.11:
+  * Python version-independent launcher script #87
+
+-------------------------------------------------------------------
 Wed May 20 06:15:47 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Add BuildRequires gobject-introspection and python3-gobject-Gdk
