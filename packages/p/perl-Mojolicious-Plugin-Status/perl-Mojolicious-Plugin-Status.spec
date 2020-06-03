@@ -17,7 +17,7 @@
 
 
 Name:           perl-Mojolicious-Plugin-Status
-Version:        1.10
+Version:        1.11
 Release:        0
 %define cpan_name Mojolicious-Plugin-Status
 Summary:        Mojolicious server status
@@ -34,12 +34,12 @@ BuildRequires:  perl(BSD::Resource)
 BuildRequires:  perl(Cpanel::JSON::XS) >= 4.09
 BuildRequires:  perl(File::Map)
 BuildRequires:  perl(File::Temp) >= 0.2308
-BuildRequires:  perl(Mojolicious) >= 8.33
+BuildRequires:  perl(Mojolicious) >= 8.50
 Requires:       perl(BSD::Resource)
 Requires:       perl(Cpanel::JSON::XS) >= 4.09
 Requires:       perl(File::Map)
 Requires:       perl(File::Temp) >= 0.2308
-Requires:       perl(Mojolicious) >= 8.33
+Requires:       perl(Mojolicious) >= 8.50
 %{perl_requires}
 
 %description
