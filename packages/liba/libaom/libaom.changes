@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May 19 12:32:12 UTC 2020 - daniel.molkentin@suse.com
+
+- Update to version 2.0.0 "Applejack":
+  
+  This is the first official release of libaom. It has real-time
+  mode and SVC support, as well as substantial documentation
+  improvement and clean-ups.
+
+  Important changes:
+  * Decouple library version and so version.
+  * Move functions into a header file
+  * Remove av1_ prefix from static functions
+  * Remove aom_ prefix from static functions
+  * Remove aom_ prefix for static functions
+  * Remove av1_ prefix for a static function
+- Drop libaom-0002-link-threading-lib-with-shared-library.patch and
+  libaom-0003-update-CHANGELOG.patch
+
+-------------------------------------------------------------------
 Tue Jul 31 21:29:49 UTC 2018 - 9+suse@cirno.systems
 
 - Enable CONFIG_LOWBITDEPTH. Makes 8-bit decoding faster. The only

@@ -1,7 +1,7 @@
 #
 # spec file for package libaom
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,15 +12,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define sover 0
+%define sover 2
 %define __builder ninja
 %define __builddir _build
 Name:           libaom
-Version:        1.0.0
+Version:        2.0.0
 Release:        0
 Summary:        AV1 codec library
 License:        BSD-2-Clause
@@ -29,8 +29,6 @@ URL:            https://aomedia.googlesource.com/aom/
 Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 Patch0:         libaom-0001-Do-not-disable-_FORTIFY_SOURCE.patch
-Patch1:         libaom-0002-link-threading-lib-with-shared-library.patch
-Patch3:         libaom-0003-update-CHANGELOG.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -72,6 +70,7 @@ for the AOMedia Video 1 (AV1) video coding format.
 
 %package -n aom-tools
 Summary:        AV1 Codec Library Tools
+Group:          Productivity/Multimedia/Other
 
 %description -n aom-tools
 This package contains tools included with libaom, a library for
@@ -85,6 +84,7 @@ the AOMedia Video 1 (AV1) video coding format.
 
 %cmake \
 	-DCONFIG_LOWBITDEPTH=1 \
+	-DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \
 %ifnarch aarch64 %{arm} %{ix86} x86_64
 	-DAOM_TARGET_CPU=generic \
 %endif
@@ -105,6 +105,7 @@ the AOMedia Video 1 (AV1) video coding format.
 
 %install
 %cmake_install
+rm %{buildroot}%{_libdir}/%{name}.a
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
 %postun -n %{name}%{sover} -p /sbin/ldconfig
