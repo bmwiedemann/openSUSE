@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  3 09:22:00 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- replace nose with pytest
+
+-------------------------------------------------------------------
 Thu Apr 18 16:03:40 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 0.4.3
