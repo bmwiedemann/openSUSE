@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun  3 05:34:50 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Fix _service file to include TTF file instead of just overwriting
+  the tarball.
+- Use fixed revision 18037a0b49722b70379d9bca074fa4503fb136bd instead
+  of master.
+- Don't install WOFF files, TTF is good enough and in line with other
+  fonts.
+
+-------------------------------------------------------------------
 Tue May 26 16:07:58 UTC 2020 - Cliff Zhao <qzhao@suse.com>
 
 - Pick TTF format fonts back: the desktop needs ttf to render gui 
