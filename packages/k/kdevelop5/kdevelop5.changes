@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  2 14:13:17 UTC 2020 - wbauer@tmo.at
+
+- Update to 5.5.2
+  * Remove plugin "kde repo provider" due to defunct service
+  * Fix extra margins around config pages
+
+-------------------------------------------------------------------
 Tue May  5 20:54:00 UTC 2020 - wbauer@tmo.at
 
 - Update to 5.5.1

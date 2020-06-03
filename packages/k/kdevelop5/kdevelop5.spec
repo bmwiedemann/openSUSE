@@ -19,7 +19,7 @@
 %define rname   kdevelop
 %define libkdev_major 55
 Name:           kdevelop5
-Version:        5.5.1
+Version:        5.5.2
 Release:        0
 Summary:        Plugin-extensible IDE for C/C++ and other programming languages
 License:        GPL-2.0-or-later
@@ -187,7 +187,7 @@ Provides translations to the package kdevplatform
          kdevcustommake kdevcustomscript kdevdebuggercommon kdevdocker kdevdocumentswitcher \
          kdevdocumentview kdevelop kdevexecute kdevexecuteplasmoid kdevexecutescript \
          kdevexternalscript kdevfilemanager kdevfiletemplates kdevflatpak kdevgdb \
-         kdevghprovider kdevgit kdevgrepview kdevheaptrack kdevkdeprovider kdevkonsole kdevlldb \
+         kdevghprovider kdevgit kdevgrepview kdevheaptrack kdevkonsole kdevlldb \
          kdevmakebuilder kdevmanpage kdevmesonmanager kdevninja kdevokteta kdevopenwith
          kdevpatchreview kdevperforce kdevproblemreporter kdevprojectfilter kdevprojectmanagerview \
          kdevqmakebuilder kdevqmakemanager kdevqmljs kdevqthelp kdevquickopen kdevscratchpad \
