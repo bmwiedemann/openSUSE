@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  2 21:23:34 UTC 2020 - Max Lin <mlin@suse.com>
+
+- Fix build with scons 3.1.2 - env.Copy() has been depreacated
+  * add toluapp-fix-deprecared-env-copy.patch
+
+-------------------------------------------------------------------
 Tue Feb 26 03:51:05 UTC 2019 - Marguerite Su <i@marguerite.su>
 
 - fix tumbleweed build

@@ -1,7 +1,7 @@
 #
 # spec file for package lua-toluapp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ Release:        0
 Summary:        C/C++ with Lua Integration Tool
 License:        MIT
 Group:          Development/Languages/Other
-Url:            https://github.com/LuaDist/toluapp
+URL:            https://github.com/LuaDist/toluapp
 Source:         https://github.com/LuaDist/toluapp/archive/%{version}/toluapp-%{version}.tar.gz
 Patch0:         toluapp-libdir.patch
 Patch1:         toluapp-versioned-shared-lib.patch
@@ -43,6 +43,8 @@ Patch3:         tolua++-1.0.93-lua52.patch
 Patch4:         toluapp-scons-py3.patch
 #PATCH-FIX-UPSTREAM marguerite@opensuse.org - scons Options() is deprecated in 0.98.1, use Variables() instead
 Patch5:         scons-0.98.1-Options-deprecated.patch
+#PATCH-FIX-OPENSUSE mlin@suse.com - scons env.Copy() has been deprecated, use env.Clone() instead if needed
+Patch6:         toluapp-fix-deprecared-env-copy.patch
 BuildRequires:  %{flavor}-devel
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -98,6 +100,7 @@ This package provides development headers for tolua++.
 %patch2 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 %if "%{flavor}" != "lua51"
 %patch3 -p1
 %endif
