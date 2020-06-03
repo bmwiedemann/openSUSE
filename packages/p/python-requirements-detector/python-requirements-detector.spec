@@ -36,7 +36,7 @@ Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module astroid}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %ifpython3
 Conflicts:      %{oldpython}-requirements-detector < 0.6
@@ -63,7 +63,7 @@ depends on.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$pthon_sitelib} nosetests-%{$python_bin_suffix}
+%pytest
 
 %post
 %python_install_alternative detect-requirements

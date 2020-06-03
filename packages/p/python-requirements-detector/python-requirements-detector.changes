@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  3 10:48:17 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- replace nose with pytest
+
+-------------------------------------------------------------------
 Tue May 19 09:27:42 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
