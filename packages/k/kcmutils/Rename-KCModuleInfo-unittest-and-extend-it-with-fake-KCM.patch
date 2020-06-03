@@ -1,0 +1,249 @@
+From a65c6819464b5a91e038d17f422bb43cfcdf30be Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Fri, 22 May 2020 12:29:20 +0200
+Subject: Rename KCModuleInfo unittest and extend it with the "fake KCM"
+ testcase
+
+---
+ autotests/CMakeLists.txt                |  4 +-
+ autotests/jsonplugin/CMakeLists.txt     |  8 ++++
+ autotests/jsonplugin/jsonplugin.cpp     | 18 +++++++++
+ autotests/jsonplugin/jsonplugin.desktop | 17 +++++++++
+ autotests/jsonplugin/jsonplugin.h       | 20 ++++++++++
+ autotests/kcmoduleinfotest.cpp          | 68 +++++++++++++++++++++++++++++++++
+ autotests/kplugininfotest.cpp           | 42 --------------------
+ 7 files changed, 134 insertions(+), 43 deletions(-)
+ create mode 100644 autotests/jsonplugin/CMakeLists.txt
+ create mode 100644 autotests/jsonplugin/jsonplugin.cpp
+ create mode 100644 autotests/jsonplugin/jsonplugin.desktop
+ create mode 100644 autotests/jsonplugin/jsonplugin.h
+ create mode 100644 autotests/kcmoduleinfotest.cpp
+ delete mode 100644 autotests/kplugininfotest.cpp
+
+diff --git a/autotests/CMakeLists.txt b/autotests/CMakeLists.txt
+index d494215..358ca4e 100644
+--- a/autotests/CMakeLists.txt
++++ b/autotests/CMakeLists.txt
+@@ -1,7 +1,9 @@
+ include(ECMAddTests)
+ 
+ ecm_add_tests(
+- kplugininfotest.cpp
++ kcmoduleinfotest.cpp
+ 
+  LINK_LIBRARIES KF5KCMUtils Qt5::Test
+ )
++
++add_subdirectory(jsonplugin)
+diff --git a/autotests/jsonplugin/CMakeLists.txt b/autotests/jsonplugin/CMakeLists.txt
+new file mode 100644
+index 0000000..739f4a4
+--- /dev/null
++++ b/autotests/jsonplugin/CMakeLists.txt
+@@ -0,0 +1,8 @@
++
++add_library(jsonplugin MODULE jsonplugin.cpp)
++
++kcoreaddons_desktop_to_json(jsonplugin jsonplugin.desktop)
++
++target_link_libraries(jsonplugin KF5::CoreAddons)
++
++set_target_properties(jsonplugin PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/testplugins")
+diff --git a/autotests/jsonplugin/jsonplugin.cpp b/autotests/jsonplugin/jsonplugin.cpp
+new file mode 100644
+index 0000000..f2eff39
+--- /dev/null
++++ b/autotests/jsonplugin/jsonplugin.cpp
+@@ -0,0 +1,18 @@
++/*
++    SPDX-FileCopyrightText: 2013 Sebastian Kügler <sebas@kde.org>
++
++    SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
++*/
++
++#include "jsonplugin.h"
++#include <kpluginfactory.h>
++
++JsonPlugin::JsonPlugin(QObject *parent, const QVariantList &args)
++    : QObject(parent)
++{
++    Q_UNUSED(args)
++}
++
++K_PLUGIN_FACTORY_WITH_JSON(jsonpluginfa, "jsonplugin.json", registerPlugin<JsonPlugin>();)
++
++#include "jsonplugin.moc"
+diff --git a/autotests/jsonplugin/jsonplugin.desktop b/autotests/jsonplugin/jsonplugin.desktop
+new file mode 100644
+index 0000000..6f4c64a
+--- /dev/null
++++ b/autotests/jsonplugin/jsonplugin.desktop
+@@ -0,0 +1,17 @@
++[Desktop Entry]
++Type=Service
++Icon=view-pim-mail
++X-KDE-ServiceTypes=KPluginInfo
++
++X-KDE-Library=jsonplugin
++
++X-KDE-PluginInfo-Name=jsonplugin
++X-KDE-PluginInfo-Version=0.1
++X-KDE-PluginInfo-License=GPL
++X-KDE-PluginInfo-EnabledByDefault=true
++
++X-DocPath=doc/path
++
++Comment=Test plugin
++Name=Test
++
+diff --git a/autotests/jsonplugin/jsonplugin.h b/autotests/jsonplugin/jsonplugin.h
+new file mode 100644
+index 0000000..1ffe6ae
+--- /dev/null
++++ b/autotests/jsonplugin/jsonplugin.h
+@@ -0,0 +1,20 @@
++/*
++    SPDX-FileCopyrightText: 2013 Sebastian Kügler <sebas@kde.org>
++
++    SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
++*/
++
++#ifndef JSONPLUGIN_H
++#define JSONPLUGIN_H
++
++#include <QObject>
++
++class JsonPlugin : public QObject
++{
++    Q_OBJECT
++
++public:
++    explicit JsonPlugin(QObject *parent, const QVariantList &args);
++};
++
++#endif // JSONPLUGIN_H
+diff --git a/autotests/kcmoduleinfotest.cpp b/autotests/kcmoduleinfotest.cpp
+new file mode 100644
+index 0000000..48c271d
+--- /dev/null
++++ b/autotests/kcmoduleinfotest.cpp
+@@ -0,0 +1,68 @@
++/* This file is part of the KDE Frameworks
++    Copyright (c) 2020 David Faure <faure@kde.org>
++
++    This library is free software; you can redistribute it and/or modify
++    it under the terms of the GNU Lesser General Public License as published by
++    the Free Software Foundation; either version 2 of the License or ( at
++    your option ) version 3 or, at the discretion of KDE e.V. ( which shall
++    act as a proxy as in section 14 of the GPLv3 ), any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Lesser General Public License
++    along with this library; see the file COPYING.LIB.  If not, write to
++    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
++    Boston, MA 02110-1301, USA.
++*/
++
++#include <QTest>
++#include <QObject>
++#include <KCModuleInfo>
++#include <KPluginLoader>
++#include <KPluginMetaData>
++#include <KPluginInfo>
++
++class KCModuleInfoTest : public QObject
++{
++    Q_OBJECT
++
++private Q_SLOTS:
++    void testExternalApp();
++    void testFakeKCM();
++};
++
++void KCModuleInfoTest::testExternalApp()
++{
++    const QString yast = QFINDTESTDATA("YaST-systemsettings.desktop");
++    QVERIFY(!yast.isEmpty());
++    KCModuleInfo info(yast);
++    QVERIFY(info.service());
++}
++
++void KCModuleInfoTest::testFakeKCM()
++{
++    // Similar to kontact's code
++    const QVector<KPluginMetaData> pluginMetaDatas = KPluginLoader::findPlugins(
++            QStringLiteral("testplugins"), [](const KPluginMetaData &) { return true; });
++    const QList<KPluginInfo> pluginInfos = KPluginInfo::fromMetaData(pluginMetaDatas);
++    QVERIFY(pluginInfos.count() > 0);
++    KPluginInfo pluginInfo = pluginInfos.at(0);
++    QVERIFY(pluginInfo.isValid());
++
++    // WHEN
++    KCModuleInfo info(pluginInfo); // like Dialog::addPluginInfos does
++
++    // THEN
++    QCOMPARE(info.pluginInfo().name(), QStringLiteral("Test"));
++    QCOMPARE(QFileInfo(info.library()).fileName(), QStringLiteral("jsonplugin.so"));
++    QCOMPARE(info.icon(), QStringLiteral("view-pim-mail"));
++    QCOMPARE(info.comment(), QStringLiteral("Test plugin"));
++    QCOMPARE(info.docPath(), QStringLiteral("doc/path"));
++    QVERIFY(!info.service());
++}
++
++QTEST_MAIN(KCModuleInfoTest)
++#include "kcmoduleinfotest.moc"
+diff --git a/autotests/kplugininfotest.cpp b/autotests/kplugininfotest.cpp
+deleted file mode 100644
+index 6541eb4..0000000
+--- a/autotests/kplugininfotest.cpp
++++ /dev/null
+@@ -1,42 +0,0 @@
+-/* This file is part of the KDE Frameworks
+-    Copyright (c) 2020 David Faure <faure@kde.org>
+-
+-    This library is free software; you can redistribute it and/or modify
+-    it under the terms of the GNU Lesser General Public License as published by
+-    the Free Software Foundation; either version 2 of the License or ( at
+-    your option ) version 3 or, at the discretion of KDE e.V. ( which shall
+-    act as a proxy as in section 14 of the GPLv3 ), any later version.
+-
+-    This library is distributed in the hope that it will be useful,
+-    but WITHOUT ANY WARRANTY; without even the implied warranty of
+-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+-    Library General Public License for more details.
+-
+-    You should have received a copy of the GNU Lesser General Public License
+-    along with this library; see the file COPYING.LIB.  If not, write to
+-    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+-    Boston, MA 02110-1301, USA.
+-*/
+-
+-#include <QTest>
+-#include <QObject>
+-#include <KCModuleInfo>
+-
+-class KPluginInfoTest : public QObject
+-{
+-    Q_OBJECT
+-
+-private Q_SLOTS:
+-    void testExternalApp();
+-};
+-
+-void KPluginInfoTest::testExternalApp()
+-{
+-    const QString yast = QFINDTESTDATA("YaST-systemsettings.desktop");
+-    QVERIFY(!yast.isEmpty());
+-    KCModuleInfo info(yast);
+-    QVERIFY(info.service());
+-}
+-
+-QTEST_MAIN(KPluginInfoTest)
+-#include "kplugininfotest.moc"
+-- 
+cgit v1.1
+

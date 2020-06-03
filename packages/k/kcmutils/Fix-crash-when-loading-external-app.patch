@@ -1,0 +1,247 @@
+From 53b41bc90b354ce7642f29d0f0a0464b32b29860 Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Wed, 20 May 2020 22:50:35 +0200
+Subject: Fix crash when loading an external app KCM like yast
+
+This re-instates the use of KService as a first-class citizen
+in KCModuleInfo, apparently needed for non-plugins.
+
+A unittest ensures that the very basic use of service() on such
+a desktop file doesn't crash.
+
+BUG: 421566
+---
+ CMakeLists.txt                        |  5 ++-
+ autotests/CMakeLists.txt              |  7 ++++
+ autotests/YaST-systemsettings.desktop |  8 ++++
+ autotests/kplugininfotest.cpp         | 42 +++++++++++++++++++
+ src/kcmoduleinfo.cpp                  | 76 +++++++++++++++++++++++++++--------
+ 5 files changed, 120 insertions(+), 18 deletions(-)
+ create mode 100644 autotests/CMakeLists.txt
+ create mode 100644 autotests/YaST-systemsettings.desktop
+ create mode 100644 autotests/kplugininfotest.cpp
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e3a3d5c..6131840 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,7 +17,7 @@ include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
+ include(KDECMakeSettings)
+ 
+ set(REQUIRED_QT_VERSION 5.12.0)
+-find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Widgets DBus Qml Quick QuickWidgets)
++find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Widgets DBus Qml Quick QuickWidgets Test)
+ 
+ include(ECMGenerateExportHeader)
+ include(ECMSetupVersion)
+@@ -58,6 +58,9 @@ if (IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/po")
+ endif()
+ add_definitions(-DQT_NO_FOREACH)
+ add_subdirectory(src)
++if(BUILD_TESTING)
++add_subdirectory(autotests)
++endif()
+ 
+ 
+ # create a Config.cmake and a ConfigVersion.cmake file and install them
+diff --git a/autotests/CMakeLists.txt b/autotests/CMakeLists.txt
+new file mode 100644
+index 0000000..d494215
+--- /dev/null
++++ b/autotests/CMakeLists.txt
+@@ -0,0 +1,7 @@
++include(ECMAddTests)
++
++ecm_add_tests(
++ kplugininfotest.cpp
++
++ LINK_LIBRARIES KF5KCMUtils Qt5::Test
++)
+diff --git a/autotests/YaST-systemsettings.desktop b/autotests/YaST-systemsettings.desktop
+new file mode 100644
+index 0000000..c33c091
+--- /dev/null
++++ b/autotests/YaST-systemsettings.desktop
+@@ -0,0 +1,8 @@
++[Desktop Entry]
++Type=Service
++Name=YaST
++Icon=yast-control-center
++GenericName=Administrator Settings
++Exec=kdesu -c /sbin/yast2
++X-KDE-System-Settings-Parent-Category=system-administration 
++X-KDE-ServiceTypes=SystemSettingsExternalApp
+diff --git a/autotests/kplugininfotest.cpp b/autotests/kplugininfotest.cpp
+new file mode 100644
+index 0000000..6541eb4
+--- /dev/null
++++ b/autotests/kplugininfotest.cpp
+@@ -0,0 +1,42 @@
++/* This file is part of the KDE Frameworks
++    Copyright (c) 2020 David Faure <faure@kde.org>
++
++    This library is free software; you can redistribute it and/or modify
++    it under the terms of the GNU Lesser General Public License as published by
++    the Free Software Foundation; either version 2 of the License or ( at
++    your option ) version 3 or, at the discretion of KDE e.V. ( which shall
++    act as a proxy as in section 14 of the GPLv3 ), any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Lesser General Public License
++    along with this library; see the file COPYING.LIB.  If not, write to
++    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
++    Boston, MA 02110-1301, USA.
++*/
++
++#include <QTest>
++#include <QObject>
++#include <KCModuleInfo>
++
++class KPluginInfoTest : public QObject
++{
++    Q_OBJECT
++
++private Q_SLOTS:
++    void testExternalApp();
++};
++
++void KPluginInfoTest::testExternalApp()
++{
++    const QString yast = QFINDTESTDATA("YaST-systemsettings.desktop");
++    QVERIFY(!yast.isEmpty());
++    KCModuleInfo info(yast);
++    QVERIFY(info.service());
++}
++
++QTEST_MAIN(KPluginInfoTest)
++#include "kplugininfotest.moc"
+diff --git a/src/kcmoduleinfo.cpp b/src/kcmoduleinfo.cpp
+index 11d6643..8f27b9c 100644
+--- a/src/kcmoduleinfo.cpp
++++ b/src/kcmoduleinfo.cpp
+@@ -43,8 +43,12 @@ public:
+     bool        allLoaded = false;
+     int         weight = 100;
+ 
++    // For real C++ plugins
+     KPluginInfo pluginInfo;
+ 
++    // Can be a C++ plugin, or just a desktop file launching an executable (see autotest)
++    KService::Ptr service;
++
+     /**
+      * Reads the service entries specific for KCModule from the desktop file.
+      * The usual desktop entries are read in the Private ctor.
+@@ -73,19 +78,35 @@ KCModuleInfo::Private::Private(const KPluginInfo &pluginInfo)
+     keywords = pluginInfo.property(QStringLiteral("Keywords")).toStringList();
+ }
+ 
++KCModuleInfo::Private::Private(const KService::Ptr &service)
++    : allLoaded(false),
++      pluginInfo(),
++      service(service)
++{
++    if (!service) {
++        return;
++    }
++
++    name = service->name();
++    comment = service->comment();
++    icon = service->icon();
++    fileName = service->entryPath();
++    lib = service->library();
++    keywords = service->keywords();
++}
++
+ KCModuleInfo::KCModuleInfo()
+     : d(new Private)
+ {
+ }
+ 
+ KCModuleInfo::KCModuleInfo(const QString &desktopFile)
+-// TODO KF6: turn this into KPluginMetaData(file) so that most callers still work, after adding the JSON to the .so files
+-    : d(new Private(KPluginInfo(KService::serviceByStorageId(desktopFile))))
++    : d(new Private(KService::serviceByStorageId(desktopFile)))
+ {
+ }
+ 
+ KCModuleInfo::KCModuleInfo(KService::Ptr service)
+-    : d(new Private(KPluginInfo(service)))
++    : d(new Private(service))
+ {
+ }
+ 
+@@ -125,24 +146,39 @@ void KCModuleInfo::Private::loadAll()
+ {
+     allLoaded = true;
+ 
+-    if (!pluginInfo.isValid()) { /* We have a bogus service. All get functions will return empty/zero values */
++    if (!pluginInfo.isValid() && !service) { /* We have a bogus service. All get functions will return empty/zero values */
+         return;
+     }
+ 
+-    // get the documentation path
+-    doc = pluginInfo.property(QStringLiteral("X-DocPath")).toString();
+-    if (doc.isEmpty()) {
+-        doc = pluginInfo.property(QStringLiteral("DocPath")).toString();
++    if (service) {
++        // get the documentation path
++        doc = service->property(QStringLiteral("X-DocPath"), QVariant::String).toString();
++        if (doc.isEmpty()) {
++            doc = service->property(QStringLiteral("DocPath"), QVariant::String).toString();
++        }
++
++        // read weight
++        QVariant tmp = service->property(QStringLiteral("X-KDE-Weight"), QVariant::Int);
++        weight = tmp.isValid() ? tmp.toInt() : 100;
++
++        // factory handle
++        tmp = service->property(QStringLiteral("X-KDE-FactoryName"), QVariant::String);
++        handle = tmp.isValid() ? tmp.toString() : lib;
++    } else {
++        // get the documentation path
++        doc = pluginInfo.property(QStringLiteral("X-DocPath")).toString();
++        if (doc.isEmpty()) {
++            doc = pluginInfo.property(QStringLiteral("DocPath")).toString();
++        }
++
++        // read weight
++        QVariant tmp = pluginInfo.property(QStringLiteral("X-KDE-Weight")).toInt();
++        weight = tmp.isValid() ? tmp.toInt() : 100;
++
++        // factory handle
++        tmp = pluginInfo.property(QStringLiteral("X-KDE-FactoryName"));
++        handle = tmp.isValid() ? tmp.toString() : lib;
+     }
+-
+-    // read weight
+-    QVariant tmp = pluginInfo.property(QStringLiteral("X-KDE-Weight")).toInt();
+-    weight = tmp.isValid() ? tmp.toInt() : 100;
+-
+-    // factory handle
+-    tmp = pluginInfo.property(QStringLiteral("X-KDE-FactoryName"));
+-    handle = tmp.isValid() ? tmp.toString() : lib;
+-
+ }
+ 
+ QString KCModuleInfo::fileName() const
+@@ -162,6 +198,12 @@ QString KCModuleInfo::moduleName() const
+ 
+ KService::Ptr KCModuleInfo::service() const
+ {
++    if (d->service) {
++        return d->service;
++    }
++    if (!d->pluginInfo.isValid()) {
++        return {};
++    }
+     return d->pluginInfo.service();
+ }
+ 
+-- 
+cgit v1.1
+

@@ -36,6 +36,13 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch:          Fix-crash-when-loading-external-app.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         Rename-KCModuleInfo-unittest-and-extend-it-with-fake-KCM.patch
+Patch2:         Add-test-for-a-normal-KCM-with-desktop-file.patch
+Patch3:         Repair-kcmshell5-after-previous-commits.patch
+Patch4:         Port-these-two-to-KCModuleInfo_property-as-well.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
@@ -87,6 +94,7 @@ created with the KConfigWidgets framework. Development files.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
   %cmake_kf5 -d build

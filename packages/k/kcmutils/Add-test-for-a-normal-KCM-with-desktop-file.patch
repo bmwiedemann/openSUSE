@@ -1,0 +1,313 @@
+From b1f56973ea194f69a5c8040ebdc500e23ef01f28 Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Fri, 22 May 2020 12:47:00 +0200
+Subject: Add test for a "normal" KCM with desktop file
+
+---
+ autotests/CMakeLists.txt                 |   1 +
+ autotests/desktopfilekcm/CMakeLists.txt  |   6 ++
+ autotests/desktopfilekcm/kcmtest.cpp     |  32 +++++++
+ autotests/desktopfilekcm/kcmtest.desktop | 149 +++++++++++++++++++++++++++++++
+ autotests/desktopfilekcm/kcmtest.h       |  29 ++++++
+ autotests/kcmoduleinfotest.cpp           |  20 +++++
+ 6 files changed, 237 insertions(+)
+ create mode 100644 autotests/desktopfilekcm/CMakeLists.txt
+ create mode 100644 autotests/desktopfilekcm/kcmtest.cpp
+ create mode 100644 autotests/desktopfilekcm/kcmtest.desktop
+ create mode 100644 autotests/desktopfilekcm/kcmtest.h
+
+diff --git a/autotests/CMakeLists.txt b/autotests/CMakeLists.txt
+index 358ca4e..35ce99d 100644
+--- a/autotests/CMakeLists.txt
++++ b/autotests/CMakeLists.txt
+@@ -7,3 +7,4 @@ ecm_add_tests(
+ )
+ 
+ add_subdirectory(jsonplugin)
++add_subdirectory(desktopfilekcm)
+diff --git a/autotests/desktopfilekcm/CMakeLists.txt b/autotests/desktopfilekcm/CMakeLists.txt
+new file mode 100644
+index 0000000..eb01930
+--- /dev/null
++++ b/autotests/desktopfilekcm/CMakeLists.txt
+@@ -0,0 +1,6 @@
++add_library(kcmtest MODULE kcmtest.cpp)
++
++kcoreaddons_desktop_to_json(kcmtest kcmtest.desktop)
++
++target_link_libraries(kcmtest KF5::CoreAddons)
++
+diff --git a/autotests/desktopfilekcm/kcmtest.cpp b/autotests/desktopfilekcm/kcmtest.cpp
+new file mode 100644
+index 0000000..574adb4
+--- /dev/null
++++ b/autotests/desktopfilekcm/kcmtest.cpp
+@@ -0,0 +1,32 @@
++/*
++    Copyright (c) 2020 David Faure <faure@kde.org>
++
++    This library is free software; you can redistribute it and/or modify
++    it under the terms of the GNU Lesser General Public License as published by
++    the Free Software Foundation; either version 2 of the License or ( at
++    your option ) version 3 or, at the discretion of KDE e.V. ( which shall
++    act as a proxy as in section 14 of the GPLv3 ), any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Lesser General Public License
++    along with this library; see the file COPYING.LIB.  If not, write to
++    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
++    Boston, MA 02110-1301, USA.
++*/
++
++#include "kcmtest.h"
++#include <kpluginfactory.h>
++
++KCMTest::KCMTest(QObject *parent, const QVariantList &args)
++    : QObject(parent)
++{
++    Q_UNUSED(args)
++}
++
++K_PLUGIN_FACTORY_WITH_JSON(kcmtestfactory, "kcmtest.json", registerPlugin<KCMTest>();)
++
++#include "kcmtest.moc"
+diff --git a/autotests/desktopfilekcm/kcmtest.desktop b/autotests/desktopfilekcm/kcmtest.desktop
+new file mode 100644
+index 0000000..7d97fe0
+--- /dev/null
++++ b/autotests/desktopfilekcm/kcmtest.desktop
+@@ -0,0 +1,149 @@
++[Desktop Entry]
++Exec=kcmshell5 kcmkded
++Icon=preferences-system-session-services
++Type=Service
++X-KDE-ServiceTypes=KCModule
++
++X-KDE-Library=kcm_kded
++X-KDE-ParentApp=kcontrol
++
++X-KDE-System-Settings-Parent-Category=session
++X-KDE-Weight=50
++X-DocPath=kcontrol/kded/index.html
++
++Name=Background Services
++Name[ar]=خدمات الخلفيّة
++Name[ast]=Servicios en segundu planu
++Name[bs]=Pozadinski servisi
++Name[ca]=Serveis en segon pla
++Name[ca@valencia]=Serveis en segon pla
++Name[cs]=Služby na pozadí
++Name[da]=Baggrundstjenester
++Name[de]=Hintergrunddienste
++Name[el]=Υπηρεσίες παρασκηνίου
++Name[en_GB]=Background Services
++Name[es]=Servicios en segundo plano
++Name[et]=Taustateenused
++Name[eu]=Atzeko planoko zerbitzuak
++Name[fi]=Taustapalvelut
++Name[fr]=Services d'arrière plan
++Name[gl]=Servizos en segundo plano
++Name[he]=שירותי רקע
++Name[hu]=Háttérszolgáltatások
++Name[ia]=Servicios de fundo (in background)
++Name[id]=Layanan Latarbelakang
++Name[is]=Bakgrunnsþjónustur
++Name[it]=Servizi in background
++Name[ko]=배경 서비스
++Name[lt]=Foninės tarnybos
++Name[nb]=Bakgrunnstjenester
++Name[nds]=Achtergrunddeensten
++Name[nl]=Achtergrondservices
++Name[nn]=Bakgrunnstenester
++Name[pa]=ਬੈਕਗਰਾਊਂਡ ਸੇਵਾਵਾਂ
++Name[pl]=Usługi w tle
++Name[pt]=Serviços de Segundo Plano
++Name[pt_BR]=Serviços de segundo plano
++Name[ru]=Управление службами
++Name[sk]=Služby pozadia
++Name[sl]=Storitve v ozadju
++Name[sr]=Позадински сервиси
++Name[sr@ijekavian]=Позадински сервиси
++Name[sr@ijekavianlatin]=Pozadinski servisi
++Name[sr@latin]=Pozadinski servisi
++Name[sv]=Bakgrundstjänster
++Name[tr]=Arkaplan Servisleri
++Name[uk]=Фонові служби
++Name[x-test]=xxBackground Servicesxx
++Name[zh_CN]=后台服务
++Name[zh_TW]=背景服務
++Comment=Configure background services
++Comment[ast]=Configura los servicios en segundu planu
++Comment[ca]=Configura els serveis en segon pla
++Comment[cs]=Nastavit služby na pozadí
++Comment[de]=Hintergrunddienste einrichten
++Comment[en_GB]=Configure background services
++Comment[es]=Configurar los servicios en segundo plano
++Comment[et]=Taustateenuste seadistamine
++Comment[eu]=Konfiguratu atzeko planoko zerbitzuak
++Comment[fi]=Taustapalveluasetukset
++Comment[fr]=Configurer les services d'arrière plan
++Comment[ia]=Configura servicios de fundo
++Comment[id]=Konfigurasikan layanan latarbelakang
++Comment[it]=Configura i servizi in background
++Comment[ko]=배경 서비스 설정
++Comment[lt]=Konfigūruoti fonines tarnybas
++Comment[nl]=Achtergrondservices configureren
++Comment[nn]=Set opp bakgrunnstenester
++Comment[pt]=Configurar os serviços de segundo plano
++Comment[pt_BR]=Configurar os serviços de segundo plano
++Comment[ru]=Настройка служб KDE
++Comment[sk]=Nastaviť služby na pozadí
++Comment[sl]=Nastavi storitve v ozadju
++Comment[sv]=Anpassa bakgrundstjänster
++Comment[uk]=Налаштування фонових служб
++Comment[x-test]=xxConfigure background servicesxx
++Comment[zh_CN]=配置后台服务
++Comment[zh_TW]=設定背景服務
++X-KDE-Keywords=KDED,Daemon,Services
++X-KDE-Keywords[ast]=KDED,Degorriu,Servicios
++X-KDE-Keywords[bg]=KDED,Daemon,Services,Услуги
++X-KDE-Keywords[bn]=KDED,Daemon,Services
++X-KDE-Keywords[bs]=KDED,Daemon,Services,demon,usluge
++X-KDE-Keywords[ca]=KDED,Dimoni,Serveis
++X-KDE-Keywords[ca@valencia]=KDED,Dimoni,Serveis
++X-KDE-Keywords[cs]=KDED,Démon,Služby
++X-KDE-Keywords[da]=KDED,dæmon,tjenester
++X-KDE-Keywords[de]=KDED,Dienst,Services,Dienste
++X-KDE-Keywords[el]=KDED,Daemon,Services
++X-KDE-Keywords[en_GB]=KDED,Daemon,Services
++X-KDE-Keywords[eo]=KDED,Demono,Servoj
++X-KDE-Keywords[es]=KDED,Demonio,Servicios
++X-KDE-Keywords[et]=KDED,deemon,teenused
++X-KDE-Keywords[eu]=KDED,daemon-a,zerbitzuak
++X-KDE-Keywords[fa]=KDED,Daemon,Services
++X-KDE-Keywords[fi]=KDED,Palvelu,Taustaprosessi,Palvelin,Palvelut
++X-KDE-Keywords[fr]=KDED, démon, services
++X-KDE-Keywords[ga]=KDED,Deamhan,Seirbhísí
++X-KDE-Keywords[gl]=KDED,servizo,servizos
++X-KDE-Keywords[gu]=KDED,ડેમન,સેવાઓ
++X-KDE-Keywords[he]=KDED,Daemon,Services,שירותים
++X-KDE-Keywords[hi]=KDED,डेमन सेवाएँ
++X-KDE-Keywords[hu]=KDED,Démon,Szolgáltatások
++X-KDE-Keywords[ia]=KDED,Daemon,Servicios
++X-KDE-Keywords[id]=KDED,Daemon,Layanan
++X-KDE-Keywords[is]=KDED,Þjónusta,Þjónustur
++X-KDE-Keywords[it]=KDED,demone,servizi
++X-KDE-Keywords[kk]=KDED,Daemon,Services
++X-KDE-Keywords[km]=KDED ដេមិន សេវាកម្ម
++X-KDE-Keywords[ko]=KDED,Daemon,Services,데몬,서비스
++X-KDE-Keywords[lt]=KDED,tarnyba,paslaugos
++X-KDE-Keywords[lv]=KDED,dēmons,servisi
++X-KDE-Keywords[mr]=केडीईD, डीमन, सेवा
++X-KDE-Keywords[nb]=KDED,Daemon,Tjenester
++X-KDE-Keywords[nds]=KDED,Dämoon,Deensten
++X-KDE-Keywords[nl]=KDED,daemon,services
++X-KDE-Keywords[nn]=KDED,daemon,tenester,tenester
++X-KDE-Keywords[pa]=KDED,ਡੈਮਨ,ਸਰਵਿਸਾਂ
++X-KDE-Keywords[pl]=KDED,Demon,Usługi
++X-KDE-Keywords[pt]=KDED,Servidor,Serviços
++X-KDE-Keywords[pt_BR]=KDED,Servidor,Serviços
++X-KDE-Keywords[ro]=KDED,Servicii,Demon
++X-KDE-Keywords[ru]=KDED,Daemon,Services,фоновая служба,демон,служба
++X-KDE-Keywords[sk]=KDED,Démon,Služby
++X-KDE-Keywords[sl]=KDED,ozadnji program,storitve
++X-KDE-Keywords[sr]=KDED,Daemon,Services,КДЕД,демон,сервис
++X-KDE-Keywords[sr@ijekavian]=KDED,Daemon,Services,КДЕД,демон,сервис
++X-KDE-Keywords[sr@ijekavianlatin]=KDED,Daemon,Services,KDED,demon,servis
++X-KDE-Keywords[sr@latin]=KDED,Daemon,Services,KDED,demon,servis
++X-KDE-Keywords[sv]=KDED,Demon,Tjänster
++X-KDE-Keywords[tr]=KDED,Servis,Servisler
++X-KDE-Keywords[ug]=KDED،Daemon، مۇلازىمەتلەر
++X-KDE-Keywords[uk]=KDED,Daemon,Services,служба,служби,фонова служба,фонові служби
++X-KDE-Keywords[vi]=KDED,Trình nền,Dịch vụ, Daemon,Services
++X-KDE-Keywords[wa]=KDED,Démon,Demon,Siervices
++X-KDE-Keywords[x-test]=xxKDEDxx,xxDaemonxx,xxServicesxx
++X-KDE-Keywords[zh_CN]=KDED,Daemon,Services,服务,后台进程
++X-KDE-Keywords[zh_TW]=KDED,Daemon,Services
++
++Categories=Qt;KDE;X-KDE-settings-components;
+diff --git a/autotests/desktopfilekcm/kcmtest.h b/autotests/desktopfilekcm/kcmtest.h
+new file mode 100644
+index 0000000..84a34f1
+--- /dev/null
++++ b/autotests/desktopfilekcm/kcmtest.h
+@@ -0,0 +1,29 @@
++/*
++    Copyright (c) 2020 David Faure <faure@kde.org>
++
++    This library is free software; you can redistribute it and/or modify
++    it under the terms of the GNU Lesser General Public License as published by
++    the Free Software Foundation; either version 2 of the License or ( at
++    your option ) version 3 or, at the discretion of KDE e.V. ( which shall
++    act as a proxy as in section 14 of the GPLv3 ), any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Lesser General Public License
++    along with this library; see the file COPYING.LIB.  If not, write to
++    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
++    Boston, MA 02110-1301, USA.
++*/
++
++#include <QObject>
++#include <QVariantList>
++
++class KCMTest : public QObject
++{
++    Q_OBJECT
++public:
++     explicit KCMTest(QObject* parent, const QVariantList& foo = QVariantList());
++};
+diff --git a/autotests/kcmoduleinfotest.cpp b/autotests/kcmoduleinfotest.cpp
+index 48c271d..8b2dbae 100644
+--- a/autotests/kcmoduleinfotest.cpp
++++ b/autotests/kcmoduleinfotest.cpp
+@@ -32,6 +32,7 @@ class KCModuleInfoTest : public QObject
+ private Q_SLOTS:
+     void testExternalApp();
+     void testFakeKCM();
++    void testDesktopFileKCM();
+ };
+ 
+ void KCModuleInfoTest::testExternalApp()
+@@ -58,11 +59,30 @@ void KCModuleInfoTest::testFakeKCM()
+     // THEN
+     QCOMPARE(info.pluginInfo().name(), QStringLiteral("Test"));
+     QCOMPARE(QFileInfo(info.library()).fileName(), QStringLiteral("jsonplugin.so"));
++    QCOMPARE(QFileInfo(info.fileName()).fileName(), QStringLiteral("jsonplugin.so"));
+     QCOMPARE(info.icon(), QStringLiteral("view-pim-mail"));
+     QCOMPARE(info.comment(), QStringLiteral("Test plugin"));
+     QCOMPARE(info.docPath(), QStringLiteral("doc/path"));
+     QVERIFY(!info.service());
+ }
+ 
++void KCModuleInfoTest::testDesktopFileKCM()
++{
++    const QString desktopFile = QFINDTESTDATA("desktopfilekcm/kcmtest.desktop");
++    QVERIFY(!desktopFile.isEmpty());
++
++    // WHEN
++    KCModuleInfo info(desktopFile);
++
++    // THEN
++    QVERIFY(info.service());
++    QVERIFY(!info.pluginInfo().isValid());
++    QCOMPARE(QFileInfo(info.library()).fileName(), QStringLiteral("kcm_kded"));
++    QCOMPARE(QFileInfo(info.fileName()).fileName(), QStringLiteral("kcmtest.desktop"));
++    QCOMPARE(info.icon(), QStringLiteral("preferences-system-session-services"));
++    QCOMPARE(info.comment(), QStringLiteral("Configure background services"));
++    QCOMPARE(info.docPath(), QStringLiteral("kcontrol/kded/index.html"));
++}
++
+ QTEST_MAIN(KCModuleInfoTest)
+ #include "kcmoduleinfotest.moc"
+-- 
+cgit v1.1
+

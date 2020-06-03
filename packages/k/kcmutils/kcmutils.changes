@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 22 14:53:24 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update Fix-crash-when-loading-external-app.patch to last version
+  that actually was committed upstream
+- Add upstream patches to fix loading normal settings modules that
+  got broken by the previous fix (kde#421898), and add unit tests:
+  * Rename-KCModuleInfo-unittest-and-extend-it-with-fake-KCM.patch
+  * Add-test-for-a-normal-KCM-with-desktop-file.patch
+  * Repair-kcmshell5-after-previous-commits.patch
+  * Port-these-two-to-KCModuleInfo_property-as-well.patch
+
+-------------------------------------------------------------------
+Wed May 20 21:07:16 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Fix-crash-when-loading-external-app.patch to fix loading the
+  Yast entry in systemsettings (boo#1171916, kde#421566)
+
+-------------------------------------------------------------------
 Sun May  3 09:39:45 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.70.0

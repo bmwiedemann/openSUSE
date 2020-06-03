@@ -1,0 +1,212 @@
+From c2db5f797fd3f1eb632de8baa7c034469af69ed1 Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Fri, 22 May 2020 13:22:54 +0200
+Subject: Repair kcmshell5 after previous commits, now with unittest
+
+---
+ autotests/kcmoduleinfotest.cpp | 16 ++++++++++++++++
+ src/kcmoduleinfo.cpp           | 14 ++++++++++++++
+ src/kcmoduleinfo.h             | 14 ++++++++++++++
+ src/kcmoduleloader.cpp         |  6 ++++--
+ src/kcmultidialog.cpp          |  4 ++--
+ src/kpluginselector.cpp        |  2 +-
+ src/ksettings/dialog.cpp       |  2 +-
+ 7 files changed, 52 insertions(+), 6 deletions(-)
+
+diff --git a/autotests/kcmoduleinfotest.cpp b/autotests/kcmoduleinfotest.cpp
+index 8b2dbae..9e7bc6a 100644
+--- a/autotests/kcmoduleinfotest.cpp
++++ b/autotests/kcmoduleinfotest.cpp
+@@ -21,6 +21,7 @@
+ #include <QTest>
+ #include <QObject>
+ #include <KCModuleInfo>
++#include <KCMultiDialog>
+ #include <KPluginLoader>
+ #include <KPluginMetaData>
+ #include <KPluginInfo>
+@@ -33,6 +34,7 @@ private Q_SLOTS:
+     void testExternalApp();
+     void testFakeKCM();
+     void testDesktopFileKCM();
++    void testInvalidKCM();
+ };
+ 
+ void KCModuleInfoTest::testExternalApp()
+@@ -41,6 +43,7 @@ void KCModuleInfoTest::testExternalApp()
+     QVERIFY(!yast.isEmpty());
+     KCModuleInfo info(yast);
+     QVERIFY(info.service());
++    QVERIFY(info.isValid());
+ }
+ 
+ void KCModuleInfoTest::testFakeKCM()
+@@ -57,6 +60,7 @@ void KCModuleInfoTest::testFakeKCM()
+     KCModuleInfo info(pluginInfo); // like Dialog::addPluginInfos does
+ 
+     // THEN
++    QVERIFY(info.isValid());
+     QCOMPARE(info.pluginInfo().name(), QStringLiteral("Test"));
+     QCOMPARE(QFileInfo(info.library()).fileName(), QStringLiteral("jsonplugin.so"));
+     QCOMPARE(QFileInfo(info.fileName()).fileName(), QStringLiteral("jsonplugin.so"));
+@@ -75,6 +79,7 @@ void KCModuleInfoTest::testDesktopFileKCM()
+     KCModuleInfo info(desktopFile);
+ 
+     // THEN
++    QVERIFY(info.isValid());
+     QVERIFY(info.service());
+     QVERIFY(!info.pluginInfo().isValid());
+     QCOMPARE(QFileInfo(info.library()).fileName(), QStringLiteral("kcm_kded"));
+@@ -82,6 +87,17 @@ void KCModuleInfoTest::testDesktopFileKCM()
+     QCOMPARE(info.icon(), QStringLiteral("preferences-system-session-services"));
+     QCOMPARE(info.comment(), QStringLiteral("Configure background services"));
+     QCOMPARE(info.docPath(), QStringLiteral("kcontrol/kded/index.html"));
++
++    // WHEN actually loading the module
++    KCMultiDialog dlg;
++    QVERIFY(dlg.addModule(info));
++}
++
++void KCModuleInfoTest::testInvalidKCM()
++{
++    KCModuleInfo info(QStringLiteral("doest_not_exist.desktop"));
++    QVERIFY(!info.isValid());
++    QVERIFY(!info.service());
+ }
+ 
+ QTEST_MAIN(KCModuleInfoTest)
+diff --git a/src/kcmoduleinfo.cpp b/src/kcmoduleinfo.cpp
+index 8f27b9c..faea919 100644
+--- a/src/kcmoduleinfo.cpp
++++ b/src/kcmoduleinfo.cpp
+@@ -142,6 +142,11 @@ KCModuleInfo::~KCModuleInfo()
+     delete d;
+ }
+ 
++bool KCModuleInfo::isValid() const
++{
++    return d->pluginInfo.isValid() || d->service;
++}
++
+ void KCModuleInfo::Private::loadAll()
+ {
+     allLoaded = true;
+@@ -254,3 +259,12 @@ int KCModuleInfo::weight() const
+     return d->weight;
+ }
+ 
++QVariant KCModuleInfo::property(const QString &key) const
++{
++    if (d->service) {
++        return d->service->property(key);
++    } else {
++        return d->pluginInfo.property(key);
++    }
++}
++
+diff --git a/src/kcmoduleinfo.h b/src/kcmoduleinfo.h
+index 4dc998e..529ba33 100644
+--- a/src/kcmoduleinfo.h
++++ b/src/kcmoduleinfo.h
+@@ -111,6 +111,12 @@ public:
+     ~KCModuleInfo();
+ 
+     /**
++     * Returns true if the KCM was found
++     * @since 5.71
++     */
++    bool isValid() const;
++
++    /**
+      * @return the filename of the .desktop file that describes the KCM
+      */
+     QString fileName() const;
+@@ -170,6 +176,14 @@ public:
+      */
+     int weight() const;
+ 
++    /**
++     * @return The value associated to the @p key. You can use it if you
++     *         want to read custom values. To do this you need to define
++     *         your own servicetype and add it to the ServiceTypes keys.
++     * @since 5.71
++     */
++    QVariant property(const QString &key) const;
++
+ private:
+     class Private;
+     Private *d;
+diff --git a/src/kcmoduleloader.cpp b/src/kcmoduleloader.cpp
+index 197023e..113da6f 100644
+--- a/src/kcmoduleloader.cpp
++++ b/src/kcmoduleloader.cpp
+@@ -74,14 +74,16 @@ KCModule *KCModuleLoader::loadModule(const KCModuleInfo &mod, ErrorReporting rep
+      *  from the factory.
+      */
+ 
+-    if (!mod.pluginInfo().isValid())
++    if (!mod.isValid()) {
+         return reportError(report,
+                            i18n("The module %1 could not be found.",
+                                 mod.moduleName()), i18n("<qt><p>The diagnosis is:<br />The desktop file %1 could not be found.</p></qt>", mod.fileName()), parent);
+-    if (mod.service() && mod.service()->noDisplay())
++    }
++    if (mod.service() && mod.service()->noDisplay()) {
+         return reportError(report, i18n("The module %1 is disabled.", mod.moduleName()),
+                            i18n("<qt><p>Either the hardware/software the module configures is not available or the module has been disabled by the administrator.</p></qt>"),
+                            parent);
++    }
+ 
+     if (!mod.library().isEmpty()) {
+         QString error;
+diff --git a/src/kcmultidialog.cpp b/src/kcmultidialog.cpp
+index 82d0fb1..49e9137 100644
+--- a/src/kcmultidialog.cpp
++++ b/src/kcmultidialog.cpp
+@@ -464,7 +464,7 @@ KPageWidgetItem *KCMultiDialog::addModule(const KCModuleInfo &moduleInfo,
+         KPageWidgetItem *parentItem, const QStringList &args)
+ {
+     Q_D(KCMultiDialog);
+-    if (!moduleInfo.pluginInfo().isValid()) {
++    if (!moduleInfo.isValid()) {
+         return nullptr;
+     }
+ 
+@@ -490,7 +490,7 @@ KPageWidgetItem *KCMultiDialog::addModule(const KCModuleInfo &moduleInfo,
+     KCMultiDialogPrivate::CreatedModule cm;
+     cm.kcm = kcm;
+     cm.item = item;
+-    cm.componentNames = moduleInfo.pluginInfo().property(QStringLiteral("X-KDE-ParentComponents")).toStringList();
++    cm.componentNames = moduleInfo.property(QStringLiteral("X-KDE-ParentComponents")).toStringList();
+     d->modules.append(cm);
+ 
+     if (qobject_cast<KCModuleQml *>(kcm->realModule())) {
+diff --git a/src/kpluginselector.cpp b/src/kpluginselector.cpp
+index 9788e36..3477fc2 100644
+--- a/src/kpluginselector.cpp
++++ b/src/kpluginselector.cpp
+@@ -891,7 +891,7 @@ void KPluginSelector::Private::PluginDelegate::configure(const QModelIndex& inde
+ 
+         if (configDialog.exec() == QDialog::Accepted) {
+             for (KCModuleProxy *moduleProxy : qAsConst(moduleProxyList)) {
+-                const QStringList parentComponents = moduleProxy->moduleInfo().pluginInfo().property(QStringLiteral("X-KDE-ParentComponents")).toStringList();
++                const QStringList parentComponents = moduleProxy->moduleInfo().property(QStringLiteral("X-KDE-ParentComponents")).toStringList();
+                 moduleProxy->save();
+                 for (const QString &parentComponent : parentComponents) {
+                     emit configCommitted(parentComponent.toLatin1());
+diff --git a/src/ksettings/dialog.cpp b/src/ksettings/dialog.cpp
+index c64da39..2412413 100644
+--- a/src/ksettings/dialog.cpp
++++ b/src/ksettings/dialog.cpp
+@@ -191,7 +191,7 @@ bool DialogPrivate::isPluginForKCMEnabled(const KCModuleInfo *moduleinfo, KPlugi
+     bool enabled = true;
+     //qDebug() << "check whether the '" << moduleinfo->moduleName() << "' KCM should be shown";
+     // for all parent components
+-    const QStringList parentComponents = moduleinfo->pluginInfo().property(
++    const QStringList parentComponents = moduleinfo->property(
+             QStringLiteral("X-KDE-ParentComponents")).toStringList();
+     for (QStringList::ConstIterator pcit = parentComponents.begin();
+             pcit != parentComponents.end(); ++pcit) {
+-- 
+cgit v1.1
+
