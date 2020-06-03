@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  2 15:00:02 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix a memory issue that in some cases might make
+  borg use more than 32 GB of memory for an operation that shouldn't
+  consume any memory at all, thus forcing the kernel to kill the process:
+  * 0001-rename-local-preload-function-to-not-overwrite-keyword-argument.patch
+
+-------------------------------------------------------------------
 Thu May  7 11:21:07 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Add libb2 dependency, where appropriate (avoids bundling libb2)
