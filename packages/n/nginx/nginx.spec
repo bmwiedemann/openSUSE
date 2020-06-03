@@ -76,7 +76,7 @@
 %endif
 #
 Name:           nginx
-Version:        1.18.0
+Version:        1.19.0
 Release:        0
 Summary:        A HTTP server and IMAP/POP3 proxy server
 License:        BSD-2-Clause

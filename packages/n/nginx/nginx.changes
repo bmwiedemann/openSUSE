@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 28 01:46:00 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 1.19.0
+  * https://nginx.org/en/CHANGES
+  * Client certificate validation with OCSP.
+  * "upstream sent frame for closed stream" errors might occur
+    when working with gRPC backends.
+  * OCSP stapling might not work if the "resolver" directive
+    was not specified.
+  * Connections with incorrect HTTP/2 preface were not logged.
+
+-------------------------------------------------------------------
 Thu May  7 16:15:48 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Do not arbitrarily limit the default listen backlog  
