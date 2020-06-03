@@ -1,7 +1,7 @@
 #
 # spec file for package perl-SQL-Abstract
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-SQL-Abstract
-Version:        1.86
+Version:        1.87
 Release:        0
 %define cpan_name SQL-Abstract
 Summary:        Generate SQL from Perl data structures
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/SQL-Abstract/
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/I/IL/ILMARI/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -34,6 +34,7 @@ BuildRequires:  perl(Hash::Merge) >= 0.12
 BuildRequires:  perl(MRO::Compat) >= 0.12
 BuildRequires:  perl(Moo) >= 2.000001
 BuildRequires:  perl(Sub::Quote) >= 2.000001
+BuildRequires:  perl(Test::Builder::Module) >= 0.84
 BuildRequires:  perl(Test::Deep) >= 0.101
 BuildRequires:  perl(Test::Exception) >= 0.310000
 BuildRequires:  perl(Test::More) >= 0.88
@@ -43,6 +44,8 @@ Requires:       perl(Hash::Merge) >= 0.12
 Requires:       perl(MRO::Compat) >= 0.12
 Requires:       perl(Moo) >= 2.000001
 Requires:       perl(Sub::Quote) >= 2.000001
+Requires:       perl(Test::Builder::Module) >= 0.84
+Requires:       perl(Test::Deep) >= 0.101
 Requires:       perl(Text::Balanced) >= 2.00
 %{perl_requires}
 
@@ -90,14 +93,14 @@ These are then used directly in your DBI code:
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

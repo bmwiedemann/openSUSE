@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  2 15:36:46 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.87
+   see /usr/share/doc/packages/perl-SQL-Abstract/Changes
+
+  1.87 - 2020-06-02
+      - Add runtime dependency on Test::Deep and Test::Builder::Module for
+        SQL::Abstract::Test (RT#131623)
+  
+
+-------------------------------------------------------------------
 Tue Jul 10 06:00:40 UTC 2018 - coolo@suse.com
 
 - updated to 1.86
