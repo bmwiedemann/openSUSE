@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jun 03 17:06:10 UTC 2020 - lduncan@suse.com
+
+- Previous update to 0.6.8 did not work (see below), because of
+  an error in the _service file, now fixed. As a reminder, changes
+  since 0.6.7:
+  * Update the changelog for release 0.6.8
+  * Bump version to 0.6.8
+  * Remove useless variable spotted by clang-tidy
+  * Add Maurizio Lombardi to THANKS
+  * Fix compile error with GCC 10
+
+  Note that this did *NOT* change the name of the compressed tar
+  file used (target-isns-0.6.8.tar.xz), just its contents.
+
+  This also fixes an issue in our OBS (build service), where
+  link-time optimization was detecting an issue with the "config"
+  structure, which had already been fixed upstream.
+
+- Modified and renamed a previous patch. Don't change zero-
+  length arrays to pointers, but intead change the declaration
+  to empty arrays, as per current coding practices for this
+  case, replacing:
+  * target-isns-Replace-zero-length-arrays-with-pointers.patch
+  with:
+  * target-isns-Replace-zero-length-arrays-with-empty-arrays.patch
+
+-------------------------------------------------------------------
+Sat May 30 21:25:49 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Fix gcc-10 issue with zero-length arrays, converting them
+  to pointers, adding patch:
+  * target-isns-Replace-zero-length-arrays-with-pointers.patch
+
+-------------------------------------------------------------------
 Fri May 22 15:26:28 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Update to version 0.6.8, including:

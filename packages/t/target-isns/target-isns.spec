@@ -23,6 +23,7 @@ Group:          System/Kernel
 Version:        0.6.8
 Release:        0
 Source:         %{name}-%{version}.tar.xz
+Patch1:         %{name}-Replace-zero-length-arrays-with-empty-arrays.patch
 URL:            https://github.com/open-iscsi/target-isns
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cmake
@@ -45,6 +46,7 @@ iSNS server.
 
 %prep
 %setup -n %{name}-%{version}
+%patch1 -p1
 
 %build
 %cmake -DSUPPORT_SYSTEMD=ON
