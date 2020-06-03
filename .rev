@@ -55,4 +55,14 @@
     <comment></comment>
     <requestid>782228</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>819af02d5d697ee28e81db47b0b80c9e</srcmd5>
+    <version>1.0.1</version>
+    <time>1591209348</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.1:
+ * Update hacking for Python3
+ * Switch to sphinx-build and cleanup</comment>
+    <requestid>811109</requestid>
+  </revision>
 </revisionlist>
