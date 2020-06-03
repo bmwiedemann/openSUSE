@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 %define         oldpython python
 %define         X_display ":98"
 %bcond_with     test
@@ -27,7 +28,7 @@
 %define wx_args --gtk3 -v
 %endif
 Name:           python-wxPython
-Version:        4.0.7.post2
+Version:        4.1.0
 Release:        0
 Summary:        The "Phoenix" variant of the wxWidgets Python bindings
 License:        GPL-2.0-or-later
