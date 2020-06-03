@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun  2 11:39:38 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 7.3.1
+  BACKEND
+  * Zstd 1.4.5
+  CODE
+  * Various fixes, improved progress bar accurancy for multiple
+    tasks
+  FILE MANAGER
+  * Fixed folder sorting, now folders are always grouped before
+    files
+  * Improved theming, window and toolbar colors can now be
+    customized
+  * New Graphite, Mocha, and Senape themes with intermediate
+    color tones
+  * System-rendered widgetsets are not affected by theme colors
+    as native drawing methods were not bypassed by theme
+    implementation
+  EXTRACTION and ARCHIVING
+  * Added support for .zstd extension, as used in compressed cpo
+    in new rpm installers
+  * Updated sfx module for p7zip
+
+-------------------------------------------------------------------
 Mon May 18 10:45:48 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 7.3.0

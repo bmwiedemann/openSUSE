@@ -808,4 +808,32 @@
     <comment></comment>
     <requestid>806903</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ed6b10b8c7a3d57c1b2035a0c00e524b</srcmd5>
+    <version>7.3.1</version>
+    <time>1591209178</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.3.1
+  BACKEND
+  * Zstd 1.4.5
+  CODE
+  * Various fixes, improved progress bar accurancy for multiple
+    tasks
+  FILE MANAGER
+  * Fixed folder sorting, now folders are always grouped before
+    files
+  * Improved theming, window and toolbar colors can now be
+    customized
+  * New Graphite, Mocha, and Senape themes with intermediate
+    color tones
+  * System-rendered widgetsets are not affected by theme colors
+    as native drawing methods were not bypassed by theme
+    implementation
+  EXTRACTION and ARCHIVING
+  * Added support for .zstd extension, as used in compressed cpo
+    in new rpm installers
+  * Updated sfx module for p7zip
+</comment>
+    <requestid>810857</requestid>
+  </revision>
 </revisionlist>
