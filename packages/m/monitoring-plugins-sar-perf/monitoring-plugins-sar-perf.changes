@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 31 13:31:20 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
+
+- update AppArmor profile to allow reading /etc/nsswitch.conf and /etc/passwd
+
+-------------------------------------------------------------------
 Fri Mar 13 00:42:48 CET 2020 - ro@suse.de
 
 - update apparmor profile usr.lib.nagios.plugins.check_iostat

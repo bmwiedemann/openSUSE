@@ -14,6 +14,8 @@
    /proc/diskstats r,
    /proc/uptime r,
    / r,
+   /etc/nsswitch.conf r,
+   /etc/passwd r,
    /etc/sysstat/sysstat.ioconf r,
 }
 
