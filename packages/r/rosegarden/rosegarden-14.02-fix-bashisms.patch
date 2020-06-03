@@ -1,7 +1,7 @@
-Index: scripts/distclean.sh
+Index: rosegarden-19.12/scripts/distclean.sh
 ===================================================================
---- scripts/distclean.sh.orig
-+++ scripts/distclean.sh
+--- rosegarden-19.12.orig/scripts/distclean.sh	2020-06-03 13:56:12.929998737 +0200
++++ rosegarden-19.12/scripts/distclean.sh	2020-06-03 13:56:42.131153109 +0200
 @@ -1,12 +1,10 @@
  #!/bin/sh
 -rm -f  {,src/,po/,docs/,data/}CMakeCache.txt
@@ -23,10 +23,10 @@ Index: scripts/distclean.sh
 +	done
 +done
  rm -rf RGbuild/*
-Index: scripts/reorganise.sh
+Index: rosegarden-19.12/scripts/reorganise.sh
 ===================================================================
---- scripts/reorganise.sh.orig
-+++ scripts/reorganise.sh
+--- rosegarden-19.12.orig/scripts/reorganise.sh	2020-06-03 13:56:12.929998737 +0200
++++ rosegarden-19.12/scripts/reorganise.sh	2020-06-03 13:56:42.131153109 +0200
 @@ -585,7 +585,7 @@ for file in guitar/*.h ; do
  	fi
      fi
@@ -80,7 +80,7 @@ Index: scripts/reorganise.sh
 -for file in */*.{cpp,h} */*/*.{cpp,h} */*/*/*.{cpp,h} ; do 
 -    perl -i -p -e 's,^//(inc|dec|ndec|replacement_candidate)!,,' $file
 +for e in cpp h; do
-+    for file in */*.$e */*/*.$e */*/*/*.$e ; do 
++    for file in */*.$e */*/*.$e */*/*/*.$e ; do
 +	perl -i -p -e 's,^//(inc|dec|ndec|replacement_candidate)!,,' $file
 +    done
  done

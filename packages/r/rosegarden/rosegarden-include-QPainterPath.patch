@@ -1,0 +1,24 @@
+Index: rosegarden-19.12/src/gui/widgets/Panner.cpp
+===================================================================
+--- rosegarden-19.12.orig/src/gui/widgets/Panner.cpp	2020-06-03 13:56:12.753991778 +0200
++++ rosegarden-19.12/src/gui/widgets/Panner.cpp	2020-06-03 13:56:46.291317540 +0200
+@@ -26,6 +26,7 @@
+ 
+ #include <QPolygon>
+ #include <QMouseEvent>
++#include <QPainterPath>
+ 
+ #include <iostream>
+ 
+Index: rosegarden-19.12/src/gui/general/ThornStyle.cpp
+===================================================================
+--- rosegarden-19.12.orig/src/gui/general/ThornStyle.cpp	2019-12-12 03:21:05.000000000 +0200
++++ rosegarden-19.12/src/gui/general/ThornStyle.cpp	2020-06-03 14:09:38.489355952 +0200
+@@ -34,6 +34,7 @@
+ #include <QLabel>
+ #include <QLayout>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QRadioButton>
+ #include <QStyleFactory>
+ #include <QStyleOption>

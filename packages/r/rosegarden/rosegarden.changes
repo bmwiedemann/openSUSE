@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Jun  3 12:03:20 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Update to stable release is 19.12 and add patch to fix factory
+  build: rosegarden-include-QPainterPath.patch.
+- Upstream changes:
+  *Fix synth plugin Send Test Note button (r15502)
+  *Plugin Editor: Fix Send Test Note not sustaining (r15511)
+  *Treat Left + Right mouse buttons as Middle button in Matrix and
+   Notation editors (r15522)
+  *Matrix: Fix no update on delete. Bug #1569. (r15616)
+  *Fix missing metronome beat when expanding end during recording
+   (r15621)
+  *Style: Make QLineEdit text gray when disabled (r15631)
+  *Fix transposing keys by interval (r15632)
+  *RMW: Reduce calls to leave/enterActionState() (r15641)
+  *Matrix Editor: Implement new auto-scroll behavior
+   (r15525 - r15544)
+  *Segment Canvas: Implement new auto-scroll behavior
+   (r15546 - r15551)
+  *Notation Editor: Implement new auto-scroll behavior
+   (r15553 - r15555)
+  *Add –convert command line option (r15607)
+  *Add quaver triplet to standard quantizations (r15613)
+  *Quantize: Add arbitrary quantization units. Feature #477(r15630)
+  *Preferences: Allow dangerous operations during playback. Feature
+   #478. (r15643, r15646, r15647, r15651)
+  *Add ability to enable metronome during count-in and
+   enable/disable during recording. Feature #453. (r15649)
+  *Segment Parameters box cleanup (r15562 - r15597, r15604)
+  *Replace FastVector with std::vector (r15609)
+  *Quantize dialog cleanup (r15611 - r15614,
+   r15617 - r15620, r15623 - r15629)
+  *Preferences cleanup (r15634 - r15640)
+
+-------------------------------------------------------------------
 Thu May  7 13:01:46 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Correct lilypond font requirement for lilypond-2.20.0

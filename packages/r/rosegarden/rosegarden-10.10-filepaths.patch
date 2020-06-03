@@ -1,7 +1,7 @@
-Index: src/gui/widgets/FileDialog.cpp
+Index: rosegarden-19.12/src/gui/widgets/FileDialog.cpp
 ===================================================================
---- src/gui/widgets/FileDialog.cpp.orig	2017-04-19 15:39:16.000000000 +0200
-+++ src/gui/widgets/FileDialog.cpp	2017-04-21 18:31:36.613889673 +0200
+--- rosegarden-19.12.orig/src/gui/widgets/FileDialog.cpp	2020-06-03 13:56:13.142007118 +0200
++++ rosegarden-19.12/src/gui/widgets/FileDialog.cpp	2020-06-03 13:56:27.638580234 +0200
 @@ -56,8 +56,8 @@ FileDialog::FileDialog(QWidget *parent,
  #else
      QString home = QDesktopServices::storageLocation(QDesktopServices::HomeLocation);
@@ -13,10 +13,10 @@ Index: src/gui/widgets/FileDialog.cpp
      QString rosegarden = home + "/rosegarden";
  
      RG_DEBUG  << "FileDialog::FileDialog(...)"
-Index: src/gui/studio/BankEditorDialog.cpp
+Index: rosegarden-19.12/src/gui/studio/BankEditorDialog.cpp
 ===================================================================
---- src/gui/studio/BankEditorDialog.cpp.orig	2017-04-19 15:39:14.000000000 +0200
-+++ src/gui/studio/BankEditorDialog.cpp	2017-04-21 18:31:36.613889673 +0200
+--- rosegarden-19.12.orig/src/gui/studio/BankEditorDialog.cpp	2020-06-03 13:56:13.142007118 +0200
++++ rosegarden-19.12/src/gui/studio/BankEditorDialog.cpp	2020-06-03 13:56:27.638580234 +0200
 @@ -1553,7 +1553,7 @@ BankEditorDialog::slotImport()
  #else
      QString home = QUrl::fromLocalFile(QDesktopServices::storageLocation(QDesktopServices::HomeLocation)).path();

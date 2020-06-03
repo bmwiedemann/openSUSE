@@ -16,7 +16,7 @@
 #
 
 Name:           rosegarden
-Version:        19.06
+Version:        19.12
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Midi, Audio And Notation Editor
@@ -29,6 +29,7 @@ Source2:        %{name}.1
 Patch1:         rosegarden-10.10-filepaths.patch
 # PATCH-FIX-OPENSUSE ledest@gmail.com fix bashisms in scripts
 Patch2:         rosegarden-14.02-fix-bashisms.patch
+Patch3:         rosegarden-include-QPainterPath.patch
 BuildRequires:  alsa-devel
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  dssi-devel
@@ -50,7 +51,7 @@ BuildRequires: pkgconfig(Qt5Test)
 BuildRequires: cmake(Qt5LinguistTools)
 BuildRequires:  libsamplerate-devel
 BuildRequires:  libsndfile-devel
-BuildRequires:  lilypond
+BuildRequires:  lilypond-fonts-common >= 2.20
 BuildRequires:  lirc-devel
 BuildRequires:  pkg-config
 #BuildRequires:  pkgconfig(libxml++-2.6)
@@ -78,8 +79,8 @@ home recording environments.
 
 %prep
 %setup -q
-%patch1
-%patch2
+%autopatch -p1
+
 # When we build svn we need to execute bootstrap.sh
 #sh bootstrap.sh
 for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
@@ -126,17 +127,6 @@ install -D -m 0644 "%{SOURCE1}" "%{buildroot}%{_datadir}/pixmaps/%{name}.xpm"
 mkdir -p %{buildroot}%{_mandir}/man1
 install -D -m 0644 "%{SOURCE2}" "%{buildroot}%{_mandir}/man1/"
 %fdupes -s %{buildroot}%{_datadir}/
-
-%post
-%mime_database_post
-%desktop_database_post
-
-%postun
-%mime_database_postun
-%desktop_database_postun
-
-%clean
-rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
