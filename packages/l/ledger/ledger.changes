@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 29 06:39:31 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.2.1:
+  * Fix regression with expression evaluation by reverting commit
+    Correction to the way parens are parsed in query expressions
+  * Fix --invert breakage by reverting commit Change --invert to
+    invert displayed amounts and totals, not amounts
+  * Fix performance regression by reverting commit Compare price
+    annotations using their textual rendering
+  * Fix library path issue
+  * Allow specifying the Python version
+  * Some documentation fixes
+- Clean up spec file of various legacy parts - it fails to build
+  anyways
+- Refresh ledger-cmakelists.patch
+
+-------------------------------------------------------------------
 Wed May  6 09:20:38 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.2.0
