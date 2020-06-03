@@ -18,7 +18,7 @@
 
 %define rname   kdev-php
 Name:           kdevelop5-plugin-php
-Version:        5.5.1
+Version:        5.5.2
 Release:        0
 Summary:        PHP plugin for Kdevelop5 Integrated Development Environment
 License:        GPL-2.0-or-later
