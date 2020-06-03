@@ -391,4 +391,12 @@ Fixes build against latest qt5 with qtractor-QAction.patch.</comment>
     <comment></comment>
     <requestid>744882</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>deafa4d383d797da1fe46c13e32a9842</srcmd5>
+    <version>0.9.14</version>
+    <time>1591209302</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811081</requestid>
+  </revision>
 </revisionlist>

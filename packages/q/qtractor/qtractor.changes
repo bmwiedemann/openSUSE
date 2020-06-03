@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Jun  3 10:15:30 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Update to version 0.9.14 and fix factory build.
+- Upstream changes:
+  *LV2 plug-in UI GTK2 and X11 in Qt5 host native support in addition
+   and alternative to libsuil.
+  *Generic plug-in/Properties... dialog now showing each
+   parameter/property automation status on a skeuomorphic aka. fake and
+   tiny LED ;)
+  *LV2 Plug-in Patch parameter/properties automation and MIDI
+   Controller assignment/learn are now a possibility.
+  *LV2 Atom/Port-event host notification support has been implemented
+   (unofficial).
+  *Fix clean-up of any recording leftovers.
+  *JACK Transport latency is now taken into account for recording
+   latency compensation.
+  *Attempt to force correct audio clip offsets due on recording latency
+   compensation are not quantized to MIDI metronomic time-scale anymore.
+  *LV2 Plug-in MIDNAM support introduced.
+  *Use Shift or Ctrl keyboard modifiers with the mouse  *wheel to change
+   any Direct Access plug-in parameters (issue #257).
+  *All meters background color are now customize-able (cf.
+   View/Options.../Display/Meters, color level "Back").
+  *Automatic mixer grid layout (multi-row) is now in effect
+   permanently--being an option no more.
+  *Always show plugins and meters on track list/left pane as permanent
+   standard now.
+  *LV2 UI Request-value feature/interface support has been implemented.
+  *Audio output monitoring meters are now shown/hidden auto-magically
+   on MIDI tracks and/or buses--no need for some user preference option
+   anymore (ie. View/ Options.../Plugins/Instruments/Show audio output
+   monitoring meters, is now gone).
+  *Default track height has been slightly increased.
+  *Track / Duplicate Track... now also takes a MIDI track's audio
+   meters setting into account.
+  *Fixed first bar/measure position drawing on the time-scale/grid
+   across time-signature changes on the MIDI clip editor (aka.
+   piano-roll) (hopefully fixing issue #245).
+  *Plugins and meters on track list/left pane, are now being set on as
+   default--maybe going stapled in some near future ;)
+  *Avoid resetting top or left position when zooming with mouse pointer
+   is in main tracks or MIDI clip editor (piano-roll) views.
+  *Basic key-signature has been added to tempo, time -signature and
+   location markers map.
+  *MIDI Clip editor (aka. piano-roll) horizontal and vertical splitter
+   sizes, widths and heights resp. are now preserved as user preferences
+   and also to session state.
+
+-------------------------------------------------------------------
 Sat Nov  2 07:43:26 UTC 2019 - Dave Plater <davejplater@gmail.com>
 
 - Update to version 0.9.10
