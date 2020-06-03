@@ -17,7 +17,7 @@
 
 
 Name:           courier-authlib
-Version:        0.69.1
+Version:        0.70.0
 Release:        0
 Summary:        Courier authentication library
 License:        SUSE-GPL-3.0-with-openssl-exception

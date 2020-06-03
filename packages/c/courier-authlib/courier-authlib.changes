@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 28 11:30:36 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 0.70.0
+  * authsasl.c (auth_sasl_ex): For EXTERNAL, base64-decode the
+    initial authorization string, since if none is provided the
+    callback's reply is base64-decoded.
+
+-------------------------------------------------------------------
 Tue Mar 17 01:16:53 UTC 2020 - Max Lin <mlin@suse.com>
 
 - BuildRequires postgresql-server-devel on Leap >= 15.2
