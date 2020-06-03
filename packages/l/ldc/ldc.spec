@@ -1,7 +1,7 @@
 #
 # spec file for package ldc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,8 @@
 #
 
 
-%define so_ver        86
+%define so_ver        91
+%define lname_jit     libldc-jit
 %define lname_runtime libdruntime-%{name}
 %define lname_phobos  libphobos2-%{name}
 %define _bashcompletionsdir %{_datadir}/bash-completion/completions
@@ -38,12 +39,11 @@
 %bcond_with ldc_tests
 
 Name:           ldc
-Version:        1.16.0
+Version:        1.21.0
 Release:        0
 Summary:        The LLVM D Compiler
 License:        BSD-3-Clause AND Artistic-1.0
-Group:          Development/Languages/Other
-Url:            https://wiki.dlang.org/LDC
+URL:            https://wiki.dlang.org/LDC
 Source0:        https://github.com/ldc-developers/ldc/releases/download/v%{version}/ldc-%{version}-src.tar.gz
 Source1:        %{name}-rpmlintrc
 Patch0:         ldc-1.9.0-fix_arm_build.patch
@@ -52,7 +52,7 @@ BuildRequires:  help2man
 BuildRequires:  libconfig++-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libstdc++-devel
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
 # Use clang7/llvm7 on Tumbleweed due to https://github.com/ldc-developers/ldc/issues/3109
 BuildRequires:  clang7
 BuildRequires:  llvm7-devel
@@ -67,6 +67,7 @@ BuildRequires:  pkgconfig(bash-completion)
 # Should be installed, at least runtime
 Recommends:     ldc-phobos-devel = %{version}
 Recommends:     ldc-runtime-devel = %{version}
+Recommends:     ldc-jit-devel = %{version}
 Recommends:     %{name}-bash-completion
 # Since version 1.13.0, ldc uses ld.gold by default
 Requires:       binutils-gold
@@ -106,14 +107,12 @@ capabilities.
 
 %package -n %{lname_runtime}%{so_ver}
 Summary:        Minimal D runtime library
-Group:          System/Libraries
 
 %description -n %{lname_runtime}%{so_ver}
 The minimal runtime library required to support the D programming language.
 
 %package runtime-devel
 Summary:        Development files for the D runtime library
-Group:          Development/Libraries/Other
 Requires:       %{lname_runtime}%{so_ver} = %{version}
 Recommends:     ldc-phobos-devel = %{version}
 
@@ -123,14 +122,25 @@ with LDC.
 
 %package -n %{lname_phobos}%{so_ver}
 Summary:        The D standard library
-Group:          System/Libraries
 
 %description -n %{lname_phobos}%{so_ver}
 This package includes ldc's phobos library - The D standard library.
 
+%package -n %{lname_jit}%{so_ver}
+Summary:        The LDC jit library
+
+%description -n %{lname_jit}%{so_ver}
+This package includes ldc's jit library.
+
+%package jit-devel
+Summary:        Development files for the D standard library
+Requires:       %{lname_jit}%{so_ver} = %{version}
+
+%description jit-devel
+This package contains the LDC jit development files.
+
 %package phobos-devel
 Summary:        Development files for the D standard library
-Group:          Development/Libraries/Other
 Requires:       %{lname_phobos}%{so_ver} = %{version}
 Requires:       %{name}-runtime-devel = %{version}
 
@@ -140,7 +150,6 @@ with LDC.
 
 %package bash-completion
 Summary:        LDC Bash completion
-Group:          System/Shells
 Requires:       bash-completion
 
 %description bash-completion
@@ -177,7 +186,7 @@ cmake \
     -DCMAKE_CXX_FLAGS="-std=c++11" \
     -DCMAKE_C_FLAGS="-fPIC" \
     ..
-make %{?_smp_mflags}
+%make_build
 popd
 popd
 %if %{with 1_12_0_intermediate}
@@ -195,7 +204,7 @@ cmake \
     -DCMAKE_CXX_FLAGS="-std=c++11" \
     -DCMAKE_C_FLAGS="-fPIC" \
     ..
-make %{?_smp_mflags}
+%make_build
 popd
 popd
 %endif
@@ -215,12 +224,12 @@ touch no-suse-rules
 %endif
 %endif
     -DCMAKE_CXX_FLAGS="-std=c++11"
-make %{?_smp_mflags}
+%make_build
 
 %if %{with ldc_tests}
 %check
 pushd build/
-make %{?_smp_mflags} test
+%make_build test
 popd
 %endif
 
@@ -228,19 +237,21 @@ popd
 %cmake_install
 # Install bash completion in the right folder
 install -d %{buildroot}%{_bashcompletionsdir}
-mv %{buildroot}/etc/bash_completion.d/ldc2 %{buildroot}%{_bashcompletionsdir}
-rmdir %{buildroot}/etc/bash_completion.d/
+mv %{buildroot}%{_sysconfdir}/bash_completion.d/ldc2 %{buildroot}%{_bashcompletionsdir}
+rmdir %{buildroot}%{_sysconfdir}/bash_completion.d/
 # Build man pages
 help2man %{buildroot}%{_bindir}/ldc2  > ldc2.1  && gzip ldc2.1
 help2man %{buildroot}%{_bindir}/ldmd2 > ldmd2.1 && gzip ldmd2.1
 install -d %{buildroot}%{_mandir}/man1
 install -m 644 -t %{buildroot}%{_mandir}/man1/ ldmd2.1.gz ldc2.1.gz
-rm -rf %{buildroot}%{_libexecdir}/debug
+rm -rf %{buildroot}%{_prefix}/lib/debug
 
 %post -n %{lname_runtime}%{so_ver} -p /sbin/ldconfig
 %post -n %{lname_phobos}%{so_ver}  -p /sbin/ldconfig
+%post -n %{lname_jit}%{so_ver}     -p /sbin/ldconfig
 %postun -n %{lname_runtime}%{so_ver} -p /sbin/ldconfig
 %postun -n %{lname_phobos}%{so_ver}  -p /sbin/ldconfig
+%postun -n %{lname_jit}%{so_ver}     -p /sbin/ldconfig
 
 %files
 %license LICENSE
@@ -266,10 +277,17 @@ rm -rf %{buildroot}%{_libexecdir}/debug
 %{_libdir}/%{lname_phobos}-shared.so.*
 %{_libdir}/%{lname_phobos}-debug-shared.so.*
 
+%files -n %{lname_jit}%{so_ver}
+%{_libdir}/%{lname_jit}.so.*
+
+%files jit-devel
+%{_libdir}/%{lname_jit}-rt.a
+%{_libdir}/%{lname_jit}.so
+
 %files phobos-devel
 %{_libdir}/%{lname_phobos}-shared.so
 %{_libdir}/%{lname_phobos}-debug-shared.so
-%{_includedir}/d/etc
+%{_includedir}/d%{_sysconfdir}
 %{_includedir}/d/std
 
 %files bash-completion
