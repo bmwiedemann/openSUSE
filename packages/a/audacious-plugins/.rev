@@ -111,4 +111,12 @@
     <comment></comment>
     <requestid>808355</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cfa05a0cc3aaae01d724f3ea8debe8e7</srcmd5>
+    <version>4.0.4</version>
+    <time>1591286092</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.4.</comment>
+    <requestid>811240</requestid>
+  </revision>
 </revisionlist>

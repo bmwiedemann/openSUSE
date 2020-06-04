@@ -21,7 +21,7 @@
 %define aud_ver_max 4.0.99
 %bcond_with faad
 Name:           audacious-plugins
-Version:        4.0.3
+Version:        4.0.4
 Release:        0
 Summary:        Plugins for Audacious
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only AND MIT AND BSD-2-Clause
