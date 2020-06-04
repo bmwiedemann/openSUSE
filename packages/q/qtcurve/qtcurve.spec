@@ -1,7 +1,7 @@
 #
 # spec file for package qtcurve
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,12 @@ Release:        0
 Summary:        QtCurve style for Qt and GTK+
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
-URL:            https://github.com/KDE/qtcurve
+URL:            https://invent.kde.org/system/qtcurve
 Source0:        qtcurve-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         0001-utils-gtkprops-Remove-unnecessary-constexpr-this-is-.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-build-with-Qt-5.15-missing-QPainterPath-include.patch
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  extra-cmake-modules
 BuildRequires:  frameworkintegration-devel
@@ -104,13 +106,12 @@ This package contains the QtCurve style for Qt 5. QtCurve is a set
 of widget styles available for Qt and GTK+.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build -- -DLIB_INSTALL_DIR=%{_libdir}
 
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
