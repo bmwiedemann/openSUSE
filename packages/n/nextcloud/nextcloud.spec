@@ -49,7 +49,7 @@
 %endif
 
 Name:           nextcloud
-Version:        18.0.4
+Version:        19.0.0
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -131,6 +131,7 @@ Recommends:     php-exif
 Recommends:     php-gmp
 # For enhanced server performance:
 Recommends:     php-APCu
+Recommends:     php7-bcmath
 # For preview generation: 
 Recommends:     php-imagick 
 Recommends:     php-ffmpeg

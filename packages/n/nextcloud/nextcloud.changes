@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun  3 17:49:51 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 19.0.0
+  * Changes
+    Nextcloud Hub v19, code name “home office”, represents a big step forward 
+    for remote collaboration in teams. 
+    This release brings document collaboration to video chats,
+    introduces password-less login and improves performance.
+
+    As this is a major release, the changelog is too long to put here. 
+    Users can look at github milestones to find what has been merged. 
+    A quick overview of what is new:
+
+    - password-less authentication and many other security measures
+    - Talk 9 with built-in office document editing courtesy of Collabora, a grid view & more
+    - MUCH improved performance, Deck integration in Calendar, guest account groups and more!
+
+-------------------------------------------------------------------
 Wed May 13 15:40:10 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Add missing security issues for 18.0.3:
