@@ -1,0 +1,19 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/SUSE/sapnwbootstrap-formula.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="filename">sapnwbootstrap-formula</param>
+    <param name="versionformat">0.4.4+git.%ct.%h</param>
+    <param name="revision">611687eb99ad67f2ad97dc91f723d874510a24fb</param>
+  </service>
+
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+  <service name="set_version" mode="disabled">
+    <param name="basename">sapnwbootstrap-formula</param>
+  </service>
+</services>

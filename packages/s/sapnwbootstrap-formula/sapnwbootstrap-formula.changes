@@ -5,6 +5,9 @@ Mon May 18 15:02:26 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
   * Use gcp-vpc-move-route properly using independent route names
   for ASCS and ERS instances
 
+  (jsc#ECO-1965, jsc#SLE-4047)
+
+-------------------------------------------------------------------
 Fri May 15 09:31:34 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
 
 - Version 0.4.3
