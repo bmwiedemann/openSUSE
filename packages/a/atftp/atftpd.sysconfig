@@ -18,10 +18,23 @@ ATFTPD_GROUP="tftp"
 ## Default: ""
 ##
 ## INFO:
-## "--daemon, --user, --group, --logfile" can not be removed/replaced here as
-## atftp is started with them as default opts: "--daemon --user atftp --group atftp " 
+## logging to file, if enabled, defaults to: "/var/log/atftpd/atftp.log"
+#
+# atftpd logfile
+#
+ATFTPD_LOGFILE="/var/log/atftpd/atftp.log"
+
+## Type:    string
+## Default: ""
+##
+## INFO:
+## "--daemon is obsolete since systemd"
+## "--user, --group" can not be removed/replaced here as
+## atftpd is started with them as default opts: "--user $ATFTPD_USER --group $ATFTPD_GROUP" 
 ## and
-## logging to file is set as default: "--logfile /var/log/atftpd/atftp.log "
+## logging is set to syslog as default if not enabled:
+## use the following to enable logging to own logfile
+## "--logfile $ATFTPD_LOGFILE"
 #
 # atftpd options
 #
@@ -50,5 +63,7 @@ ATFTPD_DIRECTORY="/srv/tftpboot"
 #  Whitespace seperated list of IP addresses which ATFTPD binds to.
 #  One instance of the service is started on each IP address.
 #  By default atftpd will listen on all available IP addresses/interfaces.
+#
+# obsolete since systemd socket binds to 0.0.0.0
 #
 ATFTPD_BIND_ADDRESSES=""

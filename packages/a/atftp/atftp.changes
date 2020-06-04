@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr 25 13:16:41 UTC 2020 - chris@computersalat.de
+
+- fix logrotate
+  * change command to '/sbin/service atftpd restart' since there is no
+    init script and we are using systemd
+- fix service file
+  * atftpd does not create logfile when there is none, hence we create
+    in ExecStartPre
+- Update sysconfig file
+  * add ATFTPD_LOGFILE if we want to use our own logfile
+  * add comment to ATFTPD_BIND_ADDRESSES that it is obsolete since
+    systemd (binds to 0.0.0.0)
+
+-------------------------------------------------------------------
 Fri Jul  5 11:45:37 UTC 2019 - matthias.gerstner@suse.com
 
 - removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by

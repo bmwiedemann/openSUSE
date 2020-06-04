@@ -3,5 +3,7 @@ Description=Advanced TFTP Server
 
 [Service]
 EnvironmentFile=/etc/sysconfig/atftpd
+# atftpd does not create logfile when there is none
+ExecStartPre=-/usr/bin/su -c "/usr/bin/touch $ATFTPD_LOGFILE" -s /bin/bash $ATFTPD_USER
 ExecStart=/usr/sbin/atftpd --user $ATFTPD_USER --group $ATFTPD_GROUP $ATFTPD_OPTIONS $ATFTPD_DIRECTORY
 StandardInput=socket

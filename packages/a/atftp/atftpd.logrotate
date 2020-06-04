@@ -9,6 +9,6 @@
     missingok
     create 640 tftp tftp
     postrotate
-     /etc/init.d/atftpd restart
+     /sbin/service atftpd restart
     endscript
 }
