@@ -1,7 +1,7 @@
 #
 # spec file for package atomix
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,8 @@ License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://wiki.gnome.org/Apps/Atomix
 Source0:        https://download.gnome.org/sources/atomix/3.34/%{name}-%{version}.tar.xz
-
+# PATCH-FIX-UPSTREAM atomix-gcc10.patch dimstar@opensuse.org -- Fix build with gcc10
+Patch0:         atomix-gcc10.patch
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.0.5
@@ -43,7 +44,7 @@ best to find where to build the molecule, and move the atoms there.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson

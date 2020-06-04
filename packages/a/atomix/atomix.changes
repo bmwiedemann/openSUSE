@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  4 10:47:20 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add atomix-gcc10.patch: Fix build with GCC 10.
+
+-------------------------------------------------------------------
 Tue Sep 10 06:06:23 CDT 2019 - mgorse@suse.com
 
 - Update to version 3.34.0:
