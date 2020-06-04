@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 28 13:31:34 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.141
+  * loader: Preload ICDs to speed up common path
+
+-------------------------------------------------------------------
 Mon Apr 13 09:57:00 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.137
