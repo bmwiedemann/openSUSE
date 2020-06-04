@@ -66,7 +66,8 @@ cd docs && make html && rm -r build/html/.buildinfo build/html/objects.inv # Bui
 %check
 sed -i '/--cov/d' setup.cfg
 export LANG=en_US.UTF-8
-%pytest
+# test_event_dispatcher randomly fails on SLE15
+%pytest -k 'not test_event_dispatcher'
 
 %post
 %python_install_alternative watchmedo

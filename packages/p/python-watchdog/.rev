@@ -56,4 +56,12 @@
     <comment></comment>
     <requestid>806805</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>2dda5ec15774935b73f3071f65374f50</srcmd5>
+    <version>0.10.2</version>
+    <time>1591286232</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip randomly failing test test_event_dispatcher</comment>
+    <requestid>811020</requestid>
+  </revision>
 </revisionlist>

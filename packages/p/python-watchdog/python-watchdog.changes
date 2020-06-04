@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  3 07:50:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip randomly failing test test_event_dispatcher
+
+-------------------------------------------------------------------
 Mon May 18 07:25:34 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
