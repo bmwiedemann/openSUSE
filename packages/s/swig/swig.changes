@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 23 07:04:09 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Revert last change, drop 0005-disable_li_std_wstring.patch
+- ruby-std-wstring-byte-order.patch: fix wstring encoding boo#1171368
+
+-------------------------------------------------------------------
 Mon May 18 15:46:46 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add 0005-disable_li_std_wstring.patch for BE arches

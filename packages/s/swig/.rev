@@ -635,4 +635,14 @@
     <comment></comment>
     <requestid>807118</requestid>
   </revision>
+  <revision rev="70" vrev="4">
+    <srcmd5>bba03d38f050e7cc8bddb83516e0b6f8</srcmd5>
+    <version>4.0.1</version>
+    <time>1591285868</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert last change, drop 0005-disable_li_std_wstring.patch
+- ruby-std-wstring-byte-order.patch: fix wstring encoding boo#1171368
+</comment>
+    <requestid>808396</requestid>
+  </revision>
 </revisionlist>

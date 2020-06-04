@@ -42,8 +42,8 @@ Patch1:         0001-Fix-code-generated-for-Ruby-global-variables.patch
 Patch2:         0002-Add-support-for-Ruby-2.7.patch
 Patch3:         0003-Move-new-macros-for-Ruby-to-their-dedicated-namespac.patch
 Patch4:         0004-Improve-description-of-cast-macros-for-Ruby.patch
-Patch5:         0005-disable_li_std_wstring.patch
 
+Patch300:       ruby-std-wstring-byte-order.patch
 Patch308:       swig308-isfinite.diff
 
 BuildRequires:  autoconf
@@ -120,18 +120,7 @@ understandig SWIG usage.
 
 %prep
 %setup -q -n %{name}-rel-%{version}
-# for BE (Big Endian) do all patch (with 0005-disable_li_std_wstring.patch)
-# bypass https://bugzilla.opensuse.org/show_bug.cgi?id=1171368
-# for all other arches do all BUT that specific one
-%ifarch ppc64 s390 s390x
 %autopatch -p1
-%else
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch308 -p1
-%endif
 
 %build
 %ifarch s390 s390x
