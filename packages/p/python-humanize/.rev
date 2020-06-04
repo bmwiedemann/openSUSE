@@ -52,4 +52,15 @@
 - Switch to pypi source tarball, required for setuptools_scm</comment>
     <requestid>789933</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>81ecf0ccfab4d4849eccc71ec6c6f181</srcmd5>
+    <version>2.4.0</version>
+    <time>1591286129</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.0:
+  * Added Spanish (Spain) locale.
+  * Polish (pl_PL) locales added
+- Switch to %pytest macro.</comment>
+    <requestid>811308</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun  4 06:42:45 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.4.0:
+  * Added Spanish (Spain) locale.
+  * Polish (pl_PL) locales added
+- Switch to %pytest macro. 
+
+-------------------------------------------------------------------
 Tue Mar 31 05:49:52 UTC 2020 - steven.kowalik@suse.com
 
 - Update to 2.2.0: 
