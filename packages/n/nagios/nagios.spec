@@ -30,7 +30,7 @@
 %endif
 
 Name:           nagios
-Version:        4.4.5
+Version:        4.4.6
 Release:        0
 Summary:        The Nagios Network Monitor
 License:        GPL-2.0-or-later
@@ -232,7 +232,7 @@ This package provides include files that Nagios-related applications
 may compile against.
 
 %prep
-%setup -q
+%setup -q -n nagioscore-%{name}-%{version}
 %patch3 -p1
 %patch4 -p1
 %patch11 -p1

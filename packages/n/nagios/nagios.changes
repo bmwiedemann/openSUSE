@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun  3 14:41:41 UTC 2020 - Stefan Botter <obs@botter.cc>
+
+- 4.4.6
+* Fixed Map display in Internet Explorer 11 (#714)
+* Fixed duplicate properties appearing in statusjson.cgi (#718)
+* Fixed NERD not building when enabled in ./configure (#723)
+* Fixed build process when using GCC 10 (#721)
+* Fixed postauth vulnerabilities in histogram.js, map.js, trends.js 
+  (CVE-2020-1408)
+* When using systemd, configuration will be verified before
+  reloading (#715)
+* Fixed HARD OK states triggering on the maximum check attempt (#757)
+
+-------------------------------------------------------------------
 Mon Apr  6 15:55:26 UTC 2020 - lars@linux-schulserver.de - 4.4.5
 
 - fix boo#1156309, CVE-2019-3698 : Symbolic Link (Symlink) following 
