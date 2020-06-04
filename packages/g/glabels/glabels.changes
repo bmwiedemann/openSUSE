@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  3 17:03:06 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add glabels-externs.patch: define shared variables as extern.
+
+-------------------------------------------------------------------
 Thu Jan 30 11:10:24 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

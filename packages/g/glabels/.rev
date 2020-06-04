@@ -298,4 +298,12 @@
     <comment>Removal of -lang recommends (forwarded request 768591 from dimstar)</comment>
     <requestid>768669</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>c07c088c945d77c52f4f6f86aaeb83f2</srcmd5>
+    <version>3.4.1</version>
+    <time>1591286177</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811383</requestid>
+  </revision>
 </revisionlist>
