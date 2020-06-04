@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  4 07:44:39 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * eclipse-gcc10.patch
+    + fix build with gcc 10
+
+-------------------------------------------------------------------
 Thu Apr  9 09:13:21 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Build against jgit, since jgit-bootstrap does not exist

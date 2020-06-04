@@ -117,6 +117,7 @@ Patch35:        eclipse-arm32.patch
 Patch36:        eclipse-force-gtk2.patch
 Patch37:        eclipse-felix-scr-dependencies.patch
 Patch38:        eclipse-lucene-8.patch
+Patch39:        eclipse-gcc10.patch
 BuildRequires:  ant >= 1.10.5
 BuildRequires:  ant-antlr
 BuildRequires:  ant-apache-bcel
@@ -521,6 +522,7 @@ tar --strip-components=1 -xf %{SOURCE1}
 %if %{?pkg_vcmp:%pkg_vcmp lucene-core >= 8}%{!?pkg_vcmp:0}
 %patch38 -p1
 %endif
+%patch39 -p1
 
 # Use ecj when bootstrapping
 %if %{with bootstrap}
