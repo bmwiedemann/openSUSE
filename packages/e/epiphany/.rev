@@ -1374,4 +1374,12 @@ MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme
     <comment>Scripted push of project GNOME:Next (forwarded request 795012 from iznogood)</comment>
     <requestid>795168</requestid>
   </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>9bdcf47b207fe498e4f9de9732a2af98</srcmd5>
+    <version>3.36.2</version>
+    <time>1591286197</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 810275 from iznogood)</comment>
+    <requestid>811419</requestid>
+  </revision>
 </revisionlist>
