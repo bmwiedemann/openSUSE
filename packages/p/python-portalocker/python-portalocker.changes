@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  3 20:15:46 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.7.0
+  * Fix ResourceWarning unclosed file if LockException is raised
+- from v1.6.0
+  * Fixed unlocking bug on Windows
+
+-------------------------------------------------------------------
 Wed Mar 18 08:44:55 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.5.2

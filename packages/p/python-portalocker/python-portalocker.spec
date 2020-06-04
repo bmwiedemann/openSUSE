@@ -1,7 +1,7 @@
 #
 # spec file for package python-portalocker
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-portalocker
-Version:        1.5.2
+Version:        1.7.0
 Release:        0
 Summary:        Locking library for Python
 License:        Python-2.0
