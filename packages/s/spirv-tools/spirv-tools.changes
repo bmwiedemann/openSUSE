@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 29 17:21:04 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.3
+  * spirv-fuzz: Add validator options
+  * Add unrolling to performance passes
+  * spirv-fuzz: Support bit width argument for int and float types
+
+-------------------------------------------------------------------
 Wed Apr  8 11:21:33 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.2

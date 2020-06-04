@@ -16,11 +16,10 @@
 #
 
 
-%define version_unconverted 2020.1
-%define lname libSPIRV-Tools-suse17
+%define lname libSPIRV-Tools-suse18
 
 Name:           spirv-tools
-Version:        2020.2
+Version:        2020.3
 Release:        0
 Summary:        API and commands for processing SPIR-V modules
 License:        Apache-2.0
