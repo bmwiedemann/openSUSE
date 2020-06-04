@@ -1,0 +1,42 @@
+From a797ed79bd85d25cd4a75d3e7c51d9363582d3d6 Mon Sep 17 00:00:00 2001
+From: Marko Lindqvist <cazfi74@gmail.com>
+Date: Tue, 7 Apr 2020 13:22:14 +0300
+Subject: [PATCH 2/2] Include <QPainterPath> where needed
+
+This fixes Qt-client build on OpenEmbedded
+
+See hrm Bug #868060
+
+Signed-off-by: Marko Lindqvist <cazfi74@gmail.com>
+---
+ client/gui-qt/canvas.cpp  | 1 +
+ client/gui-qt/dialogs.cpp | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/client/gui-qt/canvas.cpp b/client/gui-qt/canvas.cpp
+index 24291bc183..00fa1b8f52 100644
+--- a/client/gui-qt/canvas.cpp
++++ b/client/gui-qt/canvas.cpp
+@@ -18,6 +18,7 @@
+ // Qt
+ #include <QFontMetrics>
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ // qt-client
+ #include "canvas.h"
+diff --git a/client/gui-qt/dialogs.cpp b/client/gui-qt/dialogs.cpp
+index e0f9de31d4..4b3254c496 100644
+--- a/client/gui-qt/dialogs.cpp
++++ b/client/gui-qt/dialogs.cpp
+@@ -24,6 +24,7 @@
+ #include <QMessageBox>
+ #include <QMouseEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QRadioButton>
+ #include <QRect>
+ #include <QSignalMapper>
+-- 
+2.25.1
+

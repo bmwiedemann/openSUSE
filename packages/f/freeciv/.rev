@@ -68,4 +68,12 @@
     <comment></comment>
     <requestid>789278</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d0953fcbf12860f512f5617d4ef01dc3</srcmd5>
+    <version>2.6.2</version>
+    <time>1591297029</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with Qt 5.15 and without ggz</comment>
+    <requestid>811554</requestid>
+  </revision>
 </revisionlist>

@@ -31,6 +31,7 @@ Source4:        freeciv-manual
 Source5:        freeciv-manual.desktop
 Source6:        freeciv-manual.png
 Patch0:         freeciv-appdata-desktop-references.patch
+Patch1:         freeciv-qt-5.15.patch
 BuildRequires:  audiofile-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -39,7 +40,6 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gtk3-devel
 BuildRequires:  libbz2-devel
-BuildRequires:  libggz2-devel
 BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libtool
@@ -91,6 +91,7 @@ Freeciv executable using Gtk3 library
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 export MOCCMD="moc-qt5"

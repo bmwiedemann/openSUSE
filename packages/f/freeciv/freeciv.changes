@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun  4 15:47:41 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add freeciv-qt-5.15.patch: Fix build with Qt 5.15.
+
+-------------------------------------------------------------------
+Thu Jun  4 13:45:39 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop libggz2-devel BuildRequires: ggz has not been supported
+  since freeciv 2.6.0.
+
+-------------------------------------------------------------------
 Fri Mar 27 14:56:42 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.6.2. New bugfix release.
