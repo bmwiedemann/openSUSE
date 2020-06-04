@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  1 17:51:24 UTC 2020 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Specfile cleanup
+- Fix python enet requirement
+- Added rpm-shbang.patch for RPM python detection
+
+-------------------------------------------------------------------
 Tue Mar 24 19:23:45 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch to fix build with python 3.8:
