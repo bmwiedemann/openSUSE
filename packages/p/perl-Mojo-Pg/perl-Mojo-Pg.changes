@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun  1 03:13:19 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 4.19
+   see /usr/share/doc/packages/perl-Mojo-Pg/Changes
+
+  4.19  2020-05-30
+    - Improved .perltidyrc with more modern settings.
+    - Fixed validation problem in blog example.
+  
+  4.18  2020-01-30
+    - Improved support for -json values to be a little more consistent.
+  
+
+-------------------------------------------------------------------
 Tue Oct  8 08:02:30 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 4.17

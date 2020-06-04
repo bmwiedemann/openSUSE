@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojo-Pg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-Mojo-Pg
-Version:        4.17
+Version:        4.19
 Release:        0
 %define cpan_name Mojo-Pg
 Summary:        Wrapper around DBD::Pg for using PostgreSql with Mojolicious
 License:        Artistic-2.0
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SR/SRI/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -31,10 +31,10 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(DBD::Pg) >= 3.007004
-BuildRequires:  perl(Mojolicious) >= 8.03
+BuildRequires:  perl(Mojolicious) >= 8.50
 BuildRequires:  perl(SQL::Abstract) >= 1.86
 Requires:       perl(DBD::Pg) >= 3.007004
-Requires:       perl(Mojolicious) >= 8.03
+Requires:       perl(Mojolicious) >= 8.50
 Requires:       perl(SQL::Abstract) >= 1.86
 %{perl_requires}
 
@@ -50,7 +50,7 @@ the publish/subscribe pattern.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
