@@ -186,4 +186,19 @@
     <comment></comment>
     <requestid>775134</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8ec0c93ed49f529ea9b1811f1f419ff7</srcmd5>
+    <version>1.8.4</version>
+    <time>1591285843</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.4:
+  * Bug fix: #414
+  * Re-work configure to be better about self configuration
+  * Updates to travis CI docker script
+  * Use jsmn JSON parser, remove YAJL and nlohmann
+  * Make some of the simulator disks much larger
+  * Introduce cformat makefile target to re-format C/C++ code
+    requires clang-format</comment>
+    <requestid>808137</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 22 08:58:44 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.4:
+  * Bug fix: #414
+  * Re-work configure to be better about self configuration
+  * Updates to travis CI docker script
+  * Use jsmn JSON parser, remove YAJL and nlohmann
+  * Make some of the simulator disks much larger
+  * Introduce cformat makefile target to re-format C/C++ code
+    requires clang-format
+
+-------------------------------------------------------------------
 Tue Feb 18 10:09:41 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.3:
