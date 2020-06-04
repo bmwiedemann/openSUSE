@@ -1,0 +1,19 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/SUSE/salt-shaptools.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="filename">salt-shaptools</param>
+    <param name="versionformat">0.3.7+git.%ct.%h</param>
+    <param name="revision">9989ae7bec9c54c17db26aeac3a9f75aac47e27e</param>
+  </service>
+
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+  <service name="set_version" mode="disabled">
+    <param name="basename">salt-shaptools</param>
+  </service>
+</services>

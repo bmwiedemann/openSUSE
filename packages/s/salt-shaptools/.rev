@@ -129,4 +129,12 @@ Mon Feb  25 10:22:24 UTC 2019 - dakechi@suse.com
     <comment>New version of salt-shaptools released</comment>
     <requestid>809597</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c53f21c3ce4fec73addcc8eb1bc23919</srcmd5>
+    <version>0.3.7+git.1591284143.9989ae7</version>
+    <time>1591297039</time>
+    <user>dimstar_suse</user>
+    <comment>New version of salt-shaptools released</comment>
+    <requestid>811545</requestid>
+  </revision>
 </revisionlist>
