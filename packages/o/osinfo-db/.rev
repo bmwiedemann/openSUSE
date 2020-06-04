@@ -296,4 +296,12 @@
     <comment>Add UEFI support for openSUSE and SLE (bsc#1165855)</comment>
     <requestid>781944</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>9a3b769dc1aac325ebaad997df3f61be</srcmd5>
+    <version>20200214</version>
+    <time>1591285857</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1172008 - Add support for openSUSE Leap 15.2 to the database</comment>
+    <requestid>808302</requestid>
+  </revision>
 </revisionlist>

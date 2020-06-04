@@ -32,6 +32,7 @@ Patch23:        add-sle15sp2-support.patch
 Patch24:        add-win-2k19-media-info.patch
 Patch25:        fix-sle15sp1-volume-id-string.patch
 Patch26:        SLE-add-info-about-UEFI-support.patch
+Patch27:        add-opensuse-leap-15.2-support.patch
 BuildRequires:  intltool
 BuildRequires:  osinfo-db-tools
 
@@ -49,6 +50,7 @@ provisioning of new virtual machines
 %patch24 -p1
 %patch25 -p1
 %patch26 -p1
+%patch27 -p1
 
 %build
 cd %{_builddir}

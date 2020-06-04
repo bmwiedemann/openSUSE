@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 22 10:41:42 MDT 2020 - carnold@suse.com
+
+- bsc#1172008 - osinfo-db: Add support for openSUSE Leap 15.2
+  add-opensuse-leap-15.2-support.patch
+
+-------------------------------------------------------------------
 Thu Mar  5 13:22:20 MST 2020 - carnold@suse.com
 
 - bsc#1165855 - Add UEFI support to the database for SLES and
