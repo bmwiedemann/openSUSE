@@ -4,7 +4,7 @@ Index: mod_auth_mellon-0.16.0/mellon_create_metadata.sh
 +++ mod_auth_mellon-0.16.0/mellon_create_metadata.sh
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env bash
-+#!/usr/bin/bash
++#!/bin/bash
  set -e
  
  PROG="$(basename "$0")"

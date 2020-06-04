@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  4 11:00:04 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- update mod_auth_mellon-0.16.0-env-script-interpreter.patch
+  use /bin/bash instead of /usr/bin/bash
+
+-------------------------------------------------------------------
 Mon May 11 15:44:36 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - replace version_path with the fixed value
