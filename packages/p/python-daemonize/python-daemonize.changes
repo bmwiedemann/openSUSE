@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  4 10:01:47 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Don't use nose, switch to pytest.
+
+-------------------------------------------------------------------
 Thu Apr 30 07:54:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix test running without python2:

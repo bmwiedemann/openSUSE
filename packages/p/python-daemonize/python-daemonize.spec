@@ -25,7 +25,7 @@ License:        MIT
 URL:            https://github.com/thesharp/daemonize
 Source:         https://github.com/thesharp/daemonize/archive/v%{version}.tar.gz
 Patch0:         no-python2.patch
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  procps
@@ -49,7 +49,7 @@ daemonize is a library for writing system daemons in Python.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v
+%pytest tests/test.py
 
 %files %{python_files}
 %license LICENSE
