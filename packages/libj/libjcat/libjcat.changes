@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Wed Jun 03 15:43:21 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 0.1.2:
+  * Lower the meson dep version
+  * build: Check for Python modules explicitly
+- Update Build dependencies: use pkgconfig(gobject-introspection-1.0)
+  instead of gobject-introspection plus
+  gobject-introspection-devel.
+- Be more explicit in the files list for the typelib: if the file
+  name changes, we want to see a failure to ensure the package name
+  changes too.
+
+-------------------------------------------------------------------
+Wed Apr 22 08:07:20 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add the missing BuildRequires: gobject-introspection-devel
+
+-------------------------------------------------------------------
+Wed Apr 15 07:18:51 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Initial import 0.1.1
