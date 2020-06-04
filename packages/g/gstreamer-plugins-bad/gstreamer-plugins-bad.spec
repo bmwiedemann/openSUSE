@@ -48,7 +48,8 @@ Patch0:         gst-bad-interlace-fixes.patch
 Patch1:         gst-bad-autoconvert-fix-lock-less.patch
 # PATCH-FIX-UPSTREAM gst-plugins-bad-wayland-headers.patch -- Fix wayland headers discovery
 Patch2:         gst-plugins-bad-wayland-headers.patch
-
+# PATCH-FIX-UPSTREAM gst-plugins-bad-vkerror.patch dimstar@opensuse.org -- vulkan: Drop use of VK_RESULT_BEGIN_RANGE
+Patch3:         gst-plugins-bad-vkerror.patch
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
