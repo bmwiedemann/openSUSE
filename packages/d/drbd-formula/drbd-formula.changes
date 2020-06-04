@@ -5,6 +5,8 @@ Mon Dec 23 07:58:27 UTC 2019 - nick wang <nwang@suse.com>
   * With the fix of salt-shaptools 0.2.9, doesn't need to
   estimate a long time for write I/O completion.
 
+  (jsc#ECO-1965, jsc#SLE-4047)
+
 -------------------------------------------------------------------
 Wed Dec 18 10:39:28 UTC 2019 - nick wang <nwang@suse.com>
 
@@ -16,7 +18,7 @@ Wed Dec 18 10:39:28 UTC 2019 - nick wang <nwang@suse.com>
 Thu Nov 28 10:01:29 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version 0.3.8
-  * Add json rendering to jinja templates for old salt versions 
+  * Add json rendering to jinja templates for old salt versions
 
 -------------------------------------------------------------------
 Wed Nov 13 11:59:38 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
