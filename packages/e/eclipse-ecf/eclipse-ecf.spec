@@ -26,21 +26,20 @@
 # This exclude breaks the cyclic dependency on the platform to aide in
 # bootstrapping
 %global __requires_exclude .*org\.eclipse\.equinox.*
-%global git_tag 62a51c1a2635c5e17a17c0d8fc46c1f006e24184
+%global git_tag 10bfc24f030d889e7dfa36e3a77034ae2786c368
 # Set this flag to avoid building additional providers when their
 # dependencies are not available
 %bcond_with providers
-Version:        3.14.1
+Version:        3.14.7
 Release:        0
 Summary:        Eclipse Communication Framework (ECF) Eclipse plug-in
 # Note: The jive/smack provider is apache licensed
 License:        EPL-1.0 AND Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://www.eclipse.org/ecf/
-Source0:        http://git.eclipse.org/c/ecf/org.eclipse.ecf.git/snapshot/org.eclipse.ecf-%{git_tag}.tar.xz
+Source0:        https://git.eclipse.org/c/ecf/org.eclipse.ecf.git/snapshot/org.eclipse.ecf-%{git_tag}.tar.xz
 # Change how feature deps are specified, to avoid embedding versions
 Patch0:         eclipse-ecf-feature-deps.patch
-Patch1:         eclipse-ecf-asm7.patch
 BuildRequires:  apache-commons-codec
 BuildRequires:  apache-commons-logging
 BuildRequires:  eclipse-license
@@ -127,8 +126,7 @@ Documentation and developer resources for the Eclipse Communication Framework
 find . -type f -name "*.jar" -exec rm {} \;
 find . -type f -name "*.class" -exec rm {} \;
 
-%patch0
-%patch1 -p1
+%patch0 -p1
 
 # Correction for content of runtime package
 %pom_xpath_remove "feature/plugin[@id='org.eclipse.ecf.presence']" releng/features/org.eclipse.ecf.core/feature.xml
@@ -184,6 +182,10 @@ sed -i -e '/<module>examples/d' -e '/<module>tests/d' pom.xml
 %pom_xpath_remove "feature/plugin[@id='org.eclipse.ecf.provider.irc']" releng/features/org.eclipse.ecf.core/feature.xml
 %pom_xpath_remove "feature/plugin[@id='org.eclipse.ecf.provider.irc.ui']" releng/features/org.eclipse.ecf.core/feature.xml
 %endif
+
+# Don't build bundles that are not relevant to our platform
+%pom_disable_module providers/bundles/org.eclipse.ecf.provider.filetransfer.httpclient45.win32
+%pom_xpath_remove "feature/plugin[@os='win32']" releng/features/org.eclipse.ecf.filetransfer.httpclient45.feature/feature.xml
 
 # Use system libs
 ln -s $(build-classpath osgi-annotation) osgi/bundles/org.eclipse.osgi.services.remoteserviceadmin/osgi/osgi.annotation.jar

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  2 10:24:46 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 3.14.7
+- Refresh eclipse-ecf-feature-deps.patch
+- Remove eclipse-ecf-asm7.patch fixed upstream
+
+-------------------------------------------------------------------
 Thu Apr  9 09:09:25 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Build against jgit, since jgit-bootstrap does not exist

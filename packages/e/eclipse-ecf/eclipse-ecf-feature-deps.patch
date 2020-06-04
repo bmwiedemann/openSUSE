@@ -1,6 +1,47 @@
---- releng/features/org.eclipse.ecf.filetransfer.httpclient4.feature/feature.xml.orig	2018-05-15 10:08:53.167669287 +0100
-+++ releng/features/org.eclipse.ecf.filetransfer.httpclient4.feature/feature.xml	2018-05-15 10:10:29.460140752 +0100
-@@ -27,6 +27,10 @@
+From 51b88b0a6e59107f393d497cf94db07c0865e577 Mon Sep 17 00:00:00 2001
+From: Mat Booth <mat.booth@redhat.com>
+Date: Sun, 16 Jun 2019 12:22:32 +0100
+Subject: [PATCH 1/2] Avoid hard-coding dependency versions by using feature
+ imports instead of feature plugins for third party bundles
+
+---
+ .../feature.xml                               |  8 +--
+ .../feature.xml                               | 32 ++---------
+ .../feature.xml                               | 56 ++-----------------
+ .../feature.xml                               |  8 +--
+ .../feature.xml                               |  7 ---
+ .../org.eclipse.ecf.xmpp.feature/feature.xml  |  8 +--
+ 6 files changed, 11 insertions(+), 108 deletions(-)
+
+diff --git a/releng/features/org.eclipse.ecf.discovery.dnssd.feature/feature.xml b/releng/features/org.eclipse.ecf.discovery.dnssd.feature/feature.xml
+index 0c7810a..d4b0e67 100644
+--- a/releng/features/org.eclipse.ecf.discovery.dnssd.feature/feature.xml
++++ b/releng/features/org.eclipse.ecf.discovery.dnssd.feature/feature.xml
+@@ -27,6 +27,7 @@
+ 
+    <requires>
+       <import feature="org.eclipse.ecf.discovery.feature" version="1.0.0" match="compatible"/>
++      <import plugin="org.xbill.dns"/>
+    </requires>
+ 
+    <plugin
+@@ -36,11 +37,4 @@
+          version="0.0.0"
+          unpack="false"/>
+ 
+-   <plugin
+-         id="org.xbill.dns"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+ </feature>
+diff --git a/releng/features/org.eclipse.ecf.filetransfer.httpclient4.feature/feature.xml b/releng/features/org.eclipse.ecf.filetransfer.httpclient4.feature/feature.xml
+index 3405a28..14061df 100644
+--- a/releng/features/org.eclipse.ecf.filetransfer.httpclient4.feature/feature.xml
++++ b/releng/features/org.eclipse.ecf.filetransfer.httpclient4.feature/feature.xml
+@@ -27,6 +27,10 @@ Contributors: Composent, Inc. - initial API and implementation
  
     <requires>
        <import feature="org.eclipse.ecf.filetransfer.feature" version="3.9.0" match="compatible"/>
@@ -11,12 +52,10 @@
     </requires>
  
     <plugin
-@@ -34,34 +38,6 @@
-          download-size="0"
-          install-size="0"
+@@ -36,32 +40,4 @@ Contributors: Composent, Inc. - initial API and implementation
           version="0.0.0"
--         unpack="false"/>
--
+          unpack="false"/>
+ 
 -   <plugin
 -         id="org.apache.commons.codec"
 -         download-size="0"
@@ -43,36 +82,86 @@
 -         download-size="0"
 -         install-size="0"
 -         version="0.0.0"
-          unpack="false"/>
- 
+-         unpack="false"/>
+-
  </feature>
---- releng/features/org.eclipse.ecf.discovery.dnssd.feature/feature.xml.orig	2016-09-15 16:17:49.933927862 +0100
-+++ releng/features/org.eclipse.ecf.discovery.dnssd.feature/feature.xml	2016-09-15 16:19:27.324810394 +0100
-@@ -27,6 +27,7 @@
+diff --git a/releng/features/org.eclipse.ecf.filetransfer.httpclient45.feature/feature.xml b/releng/features/org.eclipse.ecf.filetransfer.httpclient45.feature/feature.xml
+index 635864e..8d2a450 100644
+--- a/releng/features/org.eclipse.ecf.filetransfer.httpclient45.feature/feature.xml
++++ b/releng/features/org.eclipse.ecf.filetransfer.httpclient45.feature/feature.xml
+@@ -21,6 +21,10 @@
  
     <requires>
-       <import feature="org.eclipse.ecf.discovery.feature" version="1.0.0" match="compatible"/>
-+      <import plugin="org.xbill.dns"/>
+       <import feature="org.eclipse.ecf.filetransfer.feature" version="3.9.0" match="compatible"/>
++      <import plugin="org.apache.commons.codec" />
++      <import plugin="org.apache.commons.logging" />
++      <import plugin="org.apache.httpcomponents.httpclient" />
++      <import plugin="org.apache.httpcomponents.httpcore" />
     </requires>
  
     <plugin
-@@ -34,13 +35,6 @@
-          download-size="0"
-          install-size="0"
+@@ -38,56 +42,4 @@
           version="0.0.0"
--         unpack="false"/>
--
+          unpack="false"/>
+ 
 -   <plugin
--         id="org.xbill.dns"
+-         id="org.apache.commons.codec"
 -         download-size="0"
 -         install-size="0"
 -         version="0.0.0"
-          unpack="false"/>
- 
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.apache.commons.logging"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="com.sun.jna"
+-         os="win32"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="com.sun.jna.platform"
+-         os="win32"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.apache.httpcomponents.httpclient"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.apache.httpcomponents.httpclient.win"
+-         os="win32"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.apache.httpcomponents.httpcore"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
  </feature>
---- releng/features/org.eclipse.ecf.remoteservice.rosgi.feature/feature.xml.orig	2018-05-15 10:06:12.993548459 +0100
-+++ releng/features/org.eclipse.ecf.remoteservice.rosgi.feature/feature.xml	2018-05-15 10:06:50.070344950 +0100
-@@ -32,6 +32,7 @@
+diff --git a/releng/features/org.eclipse.ecf.remoteservice.rosgi.feature/feature.xml b/releng/features/org.eclipse.ecf.remoteservice.rosgi.feature/feature.xml
+index af23e93..284c52f 100644
+--- a/releng/features/org.eclipse.ecf.remoteservice.rosgi.feature/feature.xml
++++ b/releng/features/org.eclipse.ecf.remoteservice.rosgi.feature/feature.xml
+@@ -32,6 +32,7 @@ https://wiki.eclipse.org/ECF#OSGi_Remote_Services
     <requires>
        <import feature="org.eclipse.ecf.provider.generic.feature" version="1.0" match="compatible"/>
        <import feature="org.eclipse.ecf.remoteservice.feature" version="2.1" match="compatible"/>
@@ -80,23 +169,23 @@
     </requires>
  
     <plugin
-@@ -46,13 +47,6 @@
-          download-size="0"
-          install-size="0"
+@@ -48,11 +49,4 @@ https://wiki.eclipse.org/ECF#OSGi_Remote_Services
           version="0.0.0"
--         unpack="false"/>
--
+          unpack="false"/>
+ 
 -   <plugin
 -         id="org.objectweb.asm"
 -         download-size="0"
 -         install-size="0"
 -         version="0.0.0"
-          unpack="false"/>
- 
+-         unpack="false"/>
+-
  </feature>
---- releng/features/org.eclipse.ecf.remoteservice.servlet.feature/feature.xml.orig	2016-12-04 06:16:14.000000000 +0000
-+++ releng/features/org.eclipse.ecf.remoteservice.servlet.feature/feature.xml	2017-01-04 12:05:48.238868061 +0000
-@@ -50,11 +50,4 @@
+diff --git a/releng/features/org.eclipse.ecf.remoteservice.servlet.feature/feature.xml b/releng/features/org.eclipse.ecf.remoteservice.servlet.feature/feature.xml
+index dee188b..0d0d7ad 100644
+--- a/releng/features/org.eclipse.ecf.remoteservice.servlet.feature/feature.xml
++++ b/releng/features/org.eclipse.ecf.remoteservice.servlet.feature/feature.xml
+@@ -50,11 +50,4 @@ https://wiki.eclipse.org/ECF#OSGi_Remote_Services
           version="0.0.0"
           unpack="false"/>
  
@@ -108,9 +197,11 @@
 -         unpack="false"/>
 -
  </feature>
---- releng/features/org.eclipse.ecf.xmpp.feature/feature.xml.orig	2017-01-04 12:35:24.342531553 +0000
-+++ releng/features/org.eclipse.ecf.xmpp.feature/feature.xml	2017-01-04 12:36:03.274095480 +0000
-@@ -30,6 +30,7 @@
+diff --git a/releng/features/org.eclipse.ecf.xmpp.feature/feature.xml b/releng/features/org.eclipse.ecf.xmpp.feature/feature.xml
+index a7aa0da..4e3cc0c 100644
+--- a/releng/features/org.eclipse.ecf.xmpp.feature/feature.xml
++++ b/releng/features/org.eclipse.ecf.xmpp.feature/feature.xml
+@@ -30,6 +30,7 @@ Contributors: Composent, Inc. - initial API and implementation
        <import feature="org.eclipse.ecf.presence.feature" version="1.0" match="compatible"/>
        <import feature="org.eclipse.ecf.datashare.feature" version="1.0" match="compatible"/>
        <import feature="org.eclipse.ecf.remoteservice.feature" version="2.1" match="compatible"/>
@@ -118,7 +209,7 @@
     </requires>
  
     <plugin
-@@ -62,11 +63,4 @@
+@@ -62,11 +63,4 @@ Contributors: Composent, Inc. - initial API and implementation
           fragment="true"
           unpack="false"/>
  
@@ -130,3 +221,6 @@
 -         unpack="false"/>
 -
  </feature>
+-- 
+2.20.1
+
