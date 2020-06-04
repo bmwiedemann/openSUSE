@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 28 14:29:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.141
+  * layers: Add full Format Feature tracking support
+  * layers: RayTracingPipelineCreateInfo validation
+  * layers: Add support for VK_EXT_headless_surface
+  * layers: Ray tracing validation
+  * layers: Add drawIndirectCount parameterValidation
+  * layers: Validate VK_EXT_fragment_density_map
+  * layers: Validation for VK_EXT_custom_border_color
+  * layers: Add VK_EXT_pipeline_creation_cache_control
+
+-------------------------------------------------------------------
 Mon Apr 13 10:14:34 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.137
