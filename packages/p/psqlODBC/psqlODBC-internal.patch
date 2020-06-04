@@ -1,5 +1,6 @@
---- connection.h.orig
-+++ connection.h
+diff -urEbw psqlodbc-12.02.0000/connection.h psqlodbc-12.02.0000.new/connection.h
+--- psqlodbc-12.02.0000/connection.h	2020-05-26 11:25:36.000000000 +0200
++++ psqlodbc-12.02.0000.new/connection.h	2020-06-04 11:23:11.137604357 +0200
 @@ -11,7 +11,7 @@
  
  #include "psqlodbc.h"
@@ -9,3 +10,15 @@
  
  #include <time.h>
  
+diff -urEbw psqlodbc-12.02.0000/statement.h psqlodbc-12.02.0000.new/statement.h
+--- psqlodbc-12.02.0000/statement.h	2020-05-26 11:25:36.000000000 +0200
++++ psqlodbc-12.02.0000.new/statement.h	2020-06-04 11:23:08.981589595 +0200
+@@ -12,7 +12,7 @@
+ #include "psqlodbc.h"
+ #include <time.h>
+ 
+-#include "pqexpbuffer.h"
++#include "internal/pqexpbuffer.h"
+ #include "pgtypes.h"
+ #include "bind.h"
+ #include "descriptor.h"

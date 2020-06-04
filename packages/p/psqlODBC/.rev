@@ -224,4 +224,41 @@
     <comment></comment>
     <requestid>775067</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2b3a0947c33edc1ef6e2da9d28616483</srcmd5>
+    <version>12.02.0000</version>
+    <time>1591286173</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 12.02.0000:
+  * Add a new *Display Optional Error Message* option.
+    This option allows to display error messages other than primary
+    one. Also add documentaition about the option and
+    *Numeric as* option.
+  * Handle notice messages in libpq_bind_and_exec().
+    Sets and resets a notify receiver around PQexecParams() or
+    PQexecPrepared().
+  * Ignore PQtransactionStatus PQTRANS_ACTIVE in
+    LIBPQ_update_transaction_status(). PQTRANS_ACTIVE isn't a
+    transaction status.
+  * Improve execution of parameterized SQL statements with arrays
+    of parameters by sending chunks of SQL statements.
+    If SQL_ATTR_CURSOR_TYPE of an statement is
+    SQL_CURSOR_FORWARD_ONLY, SQL_ATTR_CONCURRENCY is
+    SQL_CONCUR_READ_ONLY and extended protocol isn't used, the
+    batch execution of the statement is possible. A new option
+    Batch Size was introduced for such cases.
+    Batch Size: Split an array (of parameters) into chunks of
+    Batch Size to execute statements. The last chunk may contain
+    less than Batch Size elements. Setting 1 to this option forces
+    the current one by one execution.
+    Also turn off use_server_side_prepare option temporarily when
+    batch executuion is possible.
+  * Change SC_execute() so that it returns a return code which is
+    not affetced by the preceding results. It's necessary for
+    batch execution with arrays of parameters.
+  * Add a new option IgnoreTimeout.
+  * Some tools issue issue SQLSetStmtAttr(.., SQL_ATTR_QUERY_TIMEOUT,,)
+    internally and sometimes it's difficult for users to change the</comment>
+    <requestid>811346</requestid>
+  </revision>
 </revisionlist>
