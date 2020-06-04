@@ -18,7 +18,7 @@
 
 %define _version 4
 Name:           nano
-Version:        4.9.2
+Version:        4.9.3
 Release:        0
 Summary:        Pico editor clone with enhancements
 License:        GPL-3.0-or-later

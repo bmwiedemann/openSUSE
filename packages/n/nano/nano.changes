@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 24 05:54:09 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU nano 4.9.3:
+  * fix a crash when the terminal screen is resized while at a
+    lock-file prompt
+
+-------------------------------------------------------------------
 Tue Apr  7 20:00:24 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU nano 4.9.2:
