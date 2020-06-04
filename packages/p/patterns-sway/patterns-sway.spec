@@ -47,15 +47,17 @@ Provides:       pattern-icon() = pattern-sway
 Provides:       pattern-order() = 1460
 Provides:       pattern-visible()
 
+Requires:       grim
+Requires:       mako
+Requires:       slurp
 Requires:       sway
 Requires:       swaybg
 Requires:       swayidle
 Requires:       swaylock
-Requires:       slurp
-Requires:       grim
 Requires:       waybar
-Requires:       mako
 #Requires:       wofi
+Requires:       Mesa
+Requires:       alacritty
 
 Recommends:     kanshi
 Recommends:     pulseaudio
