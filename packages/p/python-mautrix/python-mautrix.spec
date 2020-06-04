@@ -20,7 +20,7 @@
 # Python2 is not supported
 %define skip_python2 1
 Name:           python-mautrix
-Version:        0.4.2
+Version:        0.5.0
 Release:        0
 Summary:        A Python 3 asyncio Matrix framework
 License:        MPL-2.0
