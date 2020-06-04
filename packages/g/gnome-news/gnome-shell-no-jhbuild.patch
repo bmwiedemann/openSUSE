@@ -1,0 +1,16 @@
+Index: gnome-news-0.0.1+20200418/gnome-news.in
+===================================================================
+--- gnome-news-0.0.1+20200418.orig/gnome-news.in
++++ gnome-news-0.0.1+20200418/gnome-news.in
+@@ -6,11 +6,6 @@ import os
+ import locale
+ import gettext
+ 
+-# Make sure we'll find the pygobject module, even in JHBuild
+-sys.path.insert(1, "@pyexecdir@")
+-# Make sure we'll find the gnomenews module, even in JHBuild
+-sys.path.insert(1, "@pythondir@")
+-
+ import argparse
+ import logging
+ try:

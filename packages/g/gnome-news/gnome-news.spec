@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-news
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           gnome-news
-Version:        0.0.1+20190326
+Version:        0.0.1+20200418
 Release:        0
 Summary:        GNOME News Reader
 License:        GPL-3.0-or-later
 Group:          Productivity/Other
 URL:            https://git.gnome.org//browse/gnome-news
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM gnome-shell-no-jhbuild.patch boo#1109687 dimstar@opensuse.org -- Drop special code for jhbuild, make the package noarch
+Patch0:         gnome-shell-no-jhbuild.patch
 BuildRequires:  appstream-glib-devel >= 0.7.3
 BuildRequires:  autoconf-archive
 BuildRequires:  fdupes
@@ -42,7 +44,7 @@ A GNOME 3 Feed Reader.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 #Fix rpm runtime dependency rpmlint error replace the shebang in all the scripts with %%{_bindir}/python3
 find . -type f -exec perl -pi -e 'BEGIN{undef $/};s[^#\!%{_bindir}/env python3][#\!%{_bindir}/python3]' {} \;
 
