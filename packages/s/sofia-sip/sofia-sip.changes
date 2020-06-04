@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  3 21:25:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.12.11+20110422
+  * In the 1.12.11 release, SOATAG_LOCAL_SDP_STR_REF is broken (but
+    that is fixed in commmit bcd0f17f). Let's use the same version
+    debian/ubuntu are using.
+- Add patch (various fixes from the debian package):
+  * sofia-sip_1.12.11+20110422.1-2.1.diff.gz
+- Package cleanup 
+- Remove compat ifdefs for old SLE versions
+
+-------------------------------------------------------------------
 Fri Mar  1 12:46:50 UTC 2013 - dimstar@opensuse.org
 
 - Spec-cleanup using format_spec_file service.
