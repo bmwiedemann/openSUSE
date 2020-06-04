@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  4 14:01:16 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with Qt 5.15:
+  * 0001-Fix-build-with-Qt-5.15.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sun Jul 28 22:53:45 UTC 2019 - wbauer@tmo.at
 
 - Update to version 3.2.0

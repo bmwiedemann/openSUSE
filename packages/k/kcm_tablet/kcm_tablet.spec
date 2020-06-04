@@ -1,7 +1,7 @@
 #
 # spec file for package kcm_tablet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010 Raymond Wooninck <tittiatcoke@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,8 +24,10 @@ Release:        0
 Summary:        KDE Config Module for Wacom Tablets
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-Url:            https://cgit.kde.org/wacomtablet.git/
+URL:            https://cgit.kde.org/wacomtablet.git/
 Source:         https://download.kde.org/stable/%{rname}/%{version}/%{rname}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-with-Qt-5.15.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -54,7 +56,7 @@ BuildRequires:  pkgconfig(xrandr)
 Requires:       xf86-input-wacom >= 0.20
 Recommends:     %{name}-lang = %{version}
 Recommends:     xrandr >= 1.2
-Supplements:    packageand(plasma5-workspace:xf86-input-wacom)
+Supplements:    (plasma5-workspace and xf86-input-wacom)
 
 %description
 This module implements a GUI for the Wacom Linux Drivers and extends it
@@ -67,40 +69,19 @@ All tablets can be set up as long as they are found with the wacom kernel module
 %lang_package
 
 %prep
-%setup -n %{rname}-%{version}
+%autosetup -p1 -n %{rname}-%{version}
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
   %find_lang %{rname} %{name}.lang
   %find_lang plasma_applet_org.kde.plasma.%{rname} %{name}.lang
-  %if 0%{?suse_version} > 1320 || 0%{?sle_version} >= 120300
   %{kf5_find_htmldocs}
-  %else
-  # %%kf5_find_htmldocs is only defined since Leap 42.3
-  CURDIR=`pwd`
-  pushd %{buildroot}%{_kf5_htmldir}
-  for i in *; do
-    if ! [ -d "%{_datadir}/locale/${i}" ]; then
-        echo "Removing unsupported translation %{_kf5_htmldir}/${i}"
-        rm -rf "$i"
-    elif [ "$i" != "en" ]; then
-        echo "%doc %lang($i) %{_kf5_htmldir}/${i}" >> $CURDIR/%{name}.lang
-    fi
-  done
-  popd
-  %endif
 
   %suse_update_desktop_file kde_wacom_tabletfinder Qt KDE Utility System Configuration
-
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
 
 %files lang -f %{name}.lang
 
