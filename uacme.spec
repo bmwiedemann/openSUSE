@@ -18,7 +18,7 @@
 
 
 Name:           uacme
-Version:        1.2.3
+Version:        1.4.1
 Release:        0
 Summary:        A minimal ACMEv2 client
 License:        GPL-3.0-or-later
@@ -65,5 +65,6 @@ mv %{buildroot}/%{_datadir}/doc/uacme/*.html .
 %dir %{_datadir}/uacme
 %{_datadir}/uacme/uacme.sh
 %{_datadir}/uacme/ualpn.sh
+%{_datadir}/uacme/nsupdate.sh
 
 %changelog
