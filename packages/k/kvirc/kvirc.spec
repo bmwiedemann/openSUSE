@@ -29,6 +29,7 @@ Patch0:         0001-Add-support-for-Python-3.patch
 Patch1:         0001-This-is-not-necessary-anymore.patch
 Patch2:         0001-Replace-FindPythonLibs-with-FindPython3-in-CMake.patch
 Patch3:         0001-Stop-unsetting-_DEBUG-when-including-Python.h.patch
+Patch4:         0001-Fix-build-with-Qt-5.15.patch
 BuildRequires:  audiofile-devel
 BuildRequires:  cmake >= 3.12.0
 BuildRequires:  doxygen
@@ -82,7 +83,7 @@ EXTRA_FLAGS="-UCMAKE_MODULE_LINKER_FLAGS \
 "
 
 %cmake_kf5 -d build -- $EXTRA_FLAGS
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
