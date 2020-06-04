@@ -247,6 +247,8 @@ Requires:       %{name} = %{version}
 Requires:       python3
 Requires:       python3-Twisted
 Requires:       python3-ovs = %{version}
+Provides:       python3-%{name}-test = %{version}
+Obsoletes:      python3-%{name}-test < 2.13.0
 
 %description test
 Open vSwitch is a software-based Ethernet switch.
