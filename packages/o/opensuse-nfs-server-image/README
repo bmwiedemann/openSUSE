@@ -1,0 +1,36 @@
+openSUSE NFS Server Image
+
+Description
+
+This container image contains all required tools to run a NFS Server.
+By default, only NFSv4 is available, but NFSv3 can be enabled, too.
+
+Location: registry.opensuse.org/opensuse/nfs-server
+
+Configuration
+
+The command to run this container is:
+
+podman run -d --rm -v /<export>:/<export> [-v /etc/exports:/etc/exports:ro] --name nfs-server -p 2049:2049 --privileged registry.opensuse.org/opensuse/nfs-server [/export]
+
+The module needs to be able to load the nfsd kernel module.
+
+There are two ways to export the directories:
+An /etc/exports file with all directories and permissions can be provided. Or,
+a list of directories which should be exported can be provided as argument
+list. In this case, and if there is no /etc/exports, the container will create
+it's own /etc/exports file with default exports rules.
+
+NFSv3:
+
+To enable NFSv3, the variable NFS3_SERVER_SUPPORT from /etc/sysconfig/nfs
+needs to be set to "yes".
+
+Untested: additional, all services needs to be exported, including
+rpcbind, rpc.statd and others.
+
+A list of possible additional ports: 
+  -p 2049:2049   -p 2049:2049/udp
+  -p 111:111     -p 111:111/udp
+  -p 32765:32765 -p 32765:32765/udp
+  -p 32767:32767 -p 32767:32767/udp
