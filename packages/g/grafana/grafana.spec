@@ -26,7 +26,7 @@
 %endif
 
 Name:           grafana
-Version:        6.7.3
+Version:        7.0.1
 Release:        0
 Summary:        Dashboards and editors for Graphite, InfluxDB, OpenTSDB
 License:        Apache-2.0
@@ -46,6 +46,12 @@ BuildRequires:  shadow
 BuildRequires:  golang(API) >= 1.14
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
+
+# Exclude s390 on SLE12, since golang 1.14 itself is not built for this arch on SLE12
+# See https://build.suse.de/package/view_file/SUSE:SLE-12:Update/go1.14/go1.14.spec?expand=1
+%if 0%{?suse_version} == 1315
+ExcludeArch:    s390
+%endif
 
 %description
 A graph and dashboard builder for visualizing time series metrics.

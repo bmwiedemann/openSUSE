@@ -21,14 +21,9 @@ tar:
         gunzip ../$$tar.gz && \
 	tar -xf ../$$tar && \
 	cd $$basename && \
-	# Patches for the JS frontend go after here
-	# No patches currently needed 
-	# End patches section
-	# exclude the phantomjs-prebuilt binary module from the webpack \
-	sed -i '/phantomjs-prebuilt/d' package.json && \
-	# nuke grunt task for copying phantomjs \
-	rm -f scripts/grunt/options/phantomjs.js && \
-	sed -i '/phantomjs/d' scripts/grunt/*.js && \
+	# Patches for the JS frontend go after here \
+	# No patches currently needed \
+	# End patches section \
 	yarn install --pure-lockfile && \
 	grunt release && \
 	cp -pr tmp/public . && \
