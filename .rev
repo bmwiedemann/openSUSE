@@ -319,4 +319,13 @@
 - Drop obsolete conditions</comment>
     <requestid>765064</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>4d2ae5f64b62e57ebce1f4a1de7adfc0</srcmd5>
+    <version>5.0.0</version>
+    <time>1591286241</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with Qt 5.15:
+  0001-Fix-build-with-Qt-5.15.patch</comment>
+    <requestid>811515</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  4 14:20:43 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with Qt 5.15:
+  0001-Fix-build-with-Qt-5.15.patch
+
+-------------------------------------------------------------------
 Thu Jan 16 11:34:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patches to use Python 3:
