@@ -1,6 +1,7 @@
 #
 # spec file for package dns24-update
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) specCURRENT_YEAR SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,28 +13,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           dns24-update
-Version:        1.0
+Version:        1.1
 Release:        0
-Summary:        Simple update client for the dns24.ch DynDNS service
+Summary:        Update dynamic DNS records hosted by dns24.ch
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/DNS/Utilities
-Url:            https://www.dns24.ch/
+URL:            https://www.dns24.ch/
 Source0:        dns24@.service
 Source1:        dns24@.timer
 Source20:       README.md
 Source10:       template.curl
 BuildArch:      noarch
+Requires:       curl
 BuildRequires:  systemd-rpm-macros
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-A simple utility for regularly updating one or more dynamic DNS records on the
-dns24.ch service.
+DNS24 (dns24.ch) is a DNS hosting service offering support for dynamic DNS.
+With this utility you can easily configure regular updates of your dynamic DNS
+records hosted by DNS24.
 
 %prep
 

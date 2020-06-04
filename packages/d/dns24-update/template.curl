@@ -2,7 +2,9 @@
 # See README.md for instructions on use.
 
 get
-digest
+
+# Use "basic" authentication for https updates, and "digest" for http
+basic
 
 # Replace with the login credentials of your DNS24 account
 user = "USERNAME:PASSWORD"
@@ -11,9 +13,8 @@ user = "USERNAME:PASSWORD"
 
 ipv4
 # Replace YOUR.DOMAIN.NAME with the domain name to be updated
-url = "http://dyn.dns24.ch/update?type=A&data=client&hostname=YOUR.DOMAIN.NAME"
+url = "https://dyn.dns24.ch/update?type=A&data=client&hostname=YOUR.DOMAIN.NAME"
 # You can update multiple domains at once by adding more "url=..." lines
 
 #ipv6
-#url = "http://dyn.dns24.ch/update?type=AAAA&data=client&hostname=YOUR.DOMAIN.NAME"
-
+#url = "https://dyn.dns24.ch/update?type=AAAA&data=client&hostname=YOUR.DOMAIN.NAME"

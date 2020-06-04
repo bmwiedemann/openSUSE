@@ -10,13 +10,17 @@ by DNS24.
 
 ## How it works
 
-The curl command is used to perform the actual updates using the HTTP interface
-provided by DNS24.  The curl parameters required for updating a domain are
-defined in configuration files in `/etc/dns24`.
+DNS24 offers an HTTP API for updating dynamic DNS records. This update client
+uses the curl command to send update requests.
 
-An instantiable systemd unit runs curl using a configuration file in
-`/etc/dns24` identified by the instance name. An associated systemd timer unit
-causes the update to run at regular intervals.
+The curl parameters required for updating one or more domains are defined in
+configuration files stored in `/etc/dns24/`. The configuration files must have
+the ".curl" suffix.
+
+The systemd unit "dns24@.service" can be instantiated with the name of a .curl
+parameter file in /etc/dns24/ to execute an update using those parameters. An
+associated timer unit can be enabled to make the update run at regular
+intervals.
 
 The following sections show how to set up the client using a simple
 example.
@@ -37,14 +41,17 @@ as the domain name you want to update. Test your configuration like this:
     # curl --config /etc/dns24/mydomain.curl
     0000 Transaction successful, # affected row(s) = 1
 
-If you see output similar to the above, the configuration is correct.
+(Alternatively, run "systemctl start dns24@mydomain", then check the status of
+the service.)
+
+If you see output similar to what's shown above, the configuration is correct.
 
 ## Enable automatic updates
 
 Once you have a working update configuration for a domain, as described above,
 you can enable automatic updates for it by running:
 
-    systemctl enable dns24@mydomain.timer
+    systemctl enable --now dns24@mydomain.timer
 
 ## Verify updates
 
