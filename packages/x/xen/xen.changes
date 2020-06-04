@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon May 18 10:55:26 MDT 2020 - carnold@suse.com
+
+- Update to Xen 4.13.1 bug fix release (bsc#1027519)
+  xen-4.13.1-testing-src.tar.bz2
+  5eb51be6-cpupool-fix-removing-cpu-from-pool.patch
+  5eb51caa-sched-vcpu-pause-flags-atomic.patch
+  5ec2a760-x86-determine-MXCSR-mask-always.patch
+- Drop patches contained in new tarball
+  5de65f84-gnttab-map-always-do-IOMMU-part.patch
+  5de65fc4-x86-avoid-HPET-use-on-certain-Intel.patch
+  5e15e03d-sched-fix-S3-resume-with-smt=0.patch
+  5e16fb6a-x86-clear-per-cpu-stub-page-info.patch
+  5e1da013-IRQ-u16-is-too-narrow-for-evtchn.patch
+  5e1dcedd-Arm-place-speculation-barrier-after-ERET.patch
+  5e21ce98-x86-time-update-TSC-stamp-after-deep-C-state.patch
+  5e286cce-VT-d-dont-pass-bridges-to-domain_context_mapping_one.patch
+  5e318cd4-x86-apic-fix-disabling-LVT0.patch
+  5e344c11-x86-HVM-relinquish-resources-from-domain_destroy.patch
+  5e3bd385-EFI-recheck-variable-name-strings.patch
+  5e3bd3d1-EFI-dont-leak-heap-VIA-XEN_EFI_get_next_variable_name.patch
+  5e3bd3f8-xmalloc-guard-against-overflow.patch
+  5e46e090-x86-smp-reset-x2apic_enabled-in-smp_send_stop.patch
+  5e4c00ef-VT-d-check-full-RMRR-for-E820-reserved.patch
+  5e4d4f5b-sched-fix-get_cpu_idle_time-with-core-sched.patch
+  5e4e614d-x86-spec-ctrl-no-xen-also-disables-branch-hardening.patch
+  5e4ec20e-x86-virtualise-MSR_PLATFORM_ID-properly.patch
+  5e5e7188-fix-error-path-in-cpupool_unassign_cpu_start.patch
+  5e6f53dd-AMD-IOMMU-fix-off-by-one-get_paging_mode.patch
+  5e7a371c-sched-fix-cpu-onlining-with-core-sched.patch
+  5e7c90cf-sched-fix-cpu-offlining-with-core-sched.patch
+  5e7cfb29-x86-ucode-AMD-fix-assert-in-compare_patch.patch
+  5e7cfb29-x86-ucode-fix-error-paths-in-apply_microcode.patch
+  5e7dd83b-libx86-CPUID-fix-not-just-leaf-7.patch
+  5e7dfbf6-x86-ucode-AMD-potential-buffer-overrun-equiv-tab.patch
+  5e846cce-x86-HVM-fix-AMD-ECS-handling-for-Fam10.patch
+  5e84905c-x86-ucode-AMD-fix-more-potential-buffer-overruns.patch
+  5e86f7b7-credit2-avoid-vCPUs-with-lower-creds-than-idle.patch
+  5e86f7fd-credit2-fix-credit-too-few-resets.patch
+  5e876b0f-tools-xenstore-fix-use-after-free-in-xenstored.patch
+  5e95ad61-xenoprof-clear-buffer-intended-to-be-shared-with-guests.patch
+  5e95ad8f-xenoprof-limit-consumption-of-shared-buffer-data.patch
+  5e95ae77-Add-missing-memory-barrier-in-the-unlock-path-of-rwlock.patch
+  5e95af5e-xen-gnttab-Fix-error-path-in-map_grant_ref.patch
+  5e95afb8-gnttab-fix-GNTTABOP_copy-continuation-handling.patch
+
+-------------------------------------------------------------------
+Wed May 13 21:07:29 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- spec: Remove invocation of autogen.sh
+- spec: Recommend qemu-ovmf-x86_64 to provide UEFI firmwares
+
+-------------------------------------------------------------------
 Wed May 13 09:56:49 MDT 2020 - carnold@suse.com
 
 - bsc#1170968 - GCC 10: xen build fails on i586

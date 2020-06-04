@@ -1,0 +1,69 @@
+# Commit 2b532519d64e653a6bbfd9eefed6040a09c8876d
+# Date 2020-05-18 17:18:56 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86: determine MXCSR mask in all cases
+
+For its use(s) by the emulator to be correct in all cases, the filling
+of the variable needs to be independent of XSAVE availability. As
+there's no suitable function in i387.c to put the logic in, keep it in
+xstate_init(), arrange for the function to be called unconditionally,
+and pull the logic ahead of all return paths there.
+
+Fixes: 9a4496a35b20 ("x86emul: support {,V}{LD,ST}MXCSR")
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Andrew Cooper <andrew.cooper3@citrix.com>
+
+--- a/xen/arch/x86/cpu/common.c
++++ b/xen/arch/x86/cpu/common.c
+@@ -487,8 +487,7 @@ void identify_cpu(struct cpuinfo_x86 *c)
+ 
+ 	/* Now the feature flags better reflect actual CPU features! */
+ 
+-	if ( cpu_has_xsave )
+-		xstate_init(c);
++	xstate_init(c);
+ 
+ #ifdef NOISY_CAPS
+ 	printk(KERN_DEBUG "CPU: After all inits, caps:");
+--- a/xen/arch/x86/xstate.c
++++ b/xen/arch/x86/xstate.c
+@@ -587,6 +587,18 @@ void xstate_init(struct cpuinfo_x86 *c)
+     u32 eax, ebx, ecx, edx;
+     u64 feature_mask;
+ 
++    if ( bsp )
++    {
++        static typeof(current->arch.xsave_area->fpu_sse) __initdata ctxt;
++
++        asm ( "fxsave %0" : "=m" (ctxt) );
++        if ( ctxt.mxcsr_mask )
++            mxcsr_mask = ctxt.mxcsr_mask;
++    }
++
++    if ( !cpu_has_xsave )
++        return;
++
+     if ( (bsp && !use_xsave) ||
+          boot_cpu_data.cpuid_level < XSTATE_CPUID )
+     {
+@@ -610,8 +622,6 @@ void xstate_init(struct cpuinfo_x86 *c)
+ 
+     if ( bsp )
+     {
+-        static typeof(current->arch.xsave_area->fpu_sse) __initdata ctxt;
+-
+         xfeature_mask = feature_mask;
+         /*
+          * xsave_cntxt_size is the max size required by enabled features.
+@@ -620,10 +630,6 @@ void xstate_init(struct cpuinfo_x86 *c)
+         xsave_cntxt_size = _xstate_ctxt_size(feature_mask);
+         printk("xstate: size: %#x and states: %#"PRIx64"\n",
+                xsave_cntxt_size, xfeature_mask);
+-
+-        asm ( "fxsave %0" : "=m" (ctxt) );
+-        if ( ctxt.mxcsr_mask )
+-            mxcsr_mask = ctxt.mxcsr_mask;
+     }
+     else
+     {

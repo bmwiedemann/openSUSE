@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 21 15:16:53 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
+
+- apparmor.vim: update from latest AppArmor 2.13 branch:
+  - allow alias rules with leading whitespace
+  - allow 'include if exists' rules
+
+-------------------------------------------------------------------
 Thu May 14 15:20:08 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - introduce vim-small package with reduced requirements for small

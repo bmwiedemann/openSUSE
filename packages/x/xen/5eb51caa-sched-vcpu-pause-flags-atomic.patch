@@ -1,0 +1,76 @@
+# Commit e0d92d9bd7997c6bcda17a19aba4f3957dd1a2e9
+# Date 2020-05-08 10:47:38 +0200
+# Author Juergen Gross <jgross@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+sched: always modify vcpu pause flags atomically
+
+credit2 is currently modifying the pause flags of vcpus non-atomically
+via sched_set_pause_flags() and sched_clear_pause_flags(). This is
+dangerous as there are cases where the paus flags are modified without
+any lock held.
+
+So drop the non-atomic pause flag modification functions and rename the
+atomic ones dropping the _atomic suffix.
+
+Fixes: a76255b4266516 ("xen/sched: make credit2 scheduler vcpu agnostic.")
+Signed-off-by: Juergen Gross <jgross@suse.com>
+Reviewed-by: Dario Faggioli <dfaggioli@suse.com>
+
+--- a/xen/common/sched_credit.c
++++ b/xen/common/sched_credit.c
+@@ -452,7 +452,7 @@ static inline void __runq_tickle(struct
+                     SCHED_UNIT_STAT_CRANK(cur, kicked_away);
+                     SCHED_UNIT_STAT_CRANK(cur, migrate_r);
+                     SCHED_STAT_CRANK(migrate_kicked_away);
+-                    sched_set_pause_flags_atomic(cur->unit, _VPF_migrating);
++                    sched_set_pause_flags(cur->unit, _VPF_migrating);
+                 }
+                 /* Tickle cpu anyway, to let new preempt cur. */
+                 SCHED_STAT_CRANK(tickled_busy_cpu);
+@@ -983,7 +983,7 @@ csched_unit_acct(struct csched_private *
+         {
+             SCHED_UNIT_STAT_CRANK(svc, migrate_r);
+             SCHED_STAT_CRANK(migrate_running);
+-            sched_set_pause_flags_atomic(currunit, _VPF_migrating);
++            sched_set_pause_flags(currunit, _VPF_migrating);
+             /*
+              * As we are about to tickle cpu, we should clear its bit in
+              * idlers. But, if we are here, it means there is someone running
+--- a/xen/include/xen/sched-if.h
++++ b/xen/include/xen/sched-if.h
+@@ -175,7 +175,7 @@ static inline void sched_set_pause_flags
+     struct vcpu *v;
+ 
+     for_each_sched_unit_vcpu ( unit, v )
+-        __set_bit(bit, &v->pause_flags);
++        set_bit(bit, &v->pause_flags);
+ }
+ 
+ /* Clear a bit in pause_flags of all vcpus of a unit. */
+@@ -184,26 +184,6 @@ static inline void sched_clear_pause_fla
+ {
+     struct vcpu *v;
+ 
+-    for_each_sched_unit_vcpu ( unit, v )
+-        __clear_bit(bit, &v->pause_flags);
+-}
+-
+-/* Set a bit in pause_flags of all vcpus of a unit via atomic updates. */
+-static inline void sched_set_pause_flags_atomic(struct sched_unit *unit,
+-                                                unsigned int bit)
+-{
+-    struct vcpu *v;
+-
+-    for_each_sched_unit_vcpu ( unit, v )
+-        set_bit(bit, &v->pause_flags);
+-}
+-
+-/* Clear a bit in pause_flags of all vcpus of a unit via atomic updates. */
+-static inline void sched_clear_pause_flags_atomic(struct sched_unit *unit,
+-                                                  unsigned int bit)
+-{
+-    struct vcpu *v;
+-
+     for_each_sched_unit_vcpu ( unit, v )
+         clear_bit(bit, &v->pause_flags);
+ }

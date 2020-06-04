@@ -25,7 +25,7 @@
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
 %define changeset 40162
-%define xen_build_dir xen-4.13.0-testing
+%define xen_build_dir xen-4.13.1-testing
 #
 %define with_gdbsx 0
 %define with_dom0_support 0
@@ -70,10 +70,6 @@ BuildRequires:  libfdt-devel
 BuildRequires:  libfdt1-devel
 %endif
 %endif
-# JWF: Until Anthony's series to load BIOS via toolstack is merged,
-# autoconf is needed by autogen.sh.
-# http://lists.xenproject.org/archives/html/xen-devel/2016-03/msg01626.html
-BuildRequires:  autoconf >= 2.67
 BuildRequires:  bison
 BuildRequires:  fdupes
 %if 0%{?suse_version} > 1315
@@ -127,12 +123,12 @@ BuildRequires:  makeinfo
 BuildRequires:  pesign-obs-integration
 %endif
 
-Version:        4.13.0_12
+Version:        4.13.1_02
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
 Group:          System/Kernel
-Source0:        xen-4.13.0-testing-src.tar.bz2
+Source0:        xen-4.13.1-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
 Source5:        ipxe.tar.bz2
 Source6:        mini-os.tar.bz2
@@ -166,42 +162,9 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
-Patch1:         5de65f84-gnttab-map-always-do-IOMMU-part.patch
-Patch2:         5de65fc4-x86-avoid-HPET-use-on-certain-Intel.patch
-Patch3:         5e15e03d-sched-fix-S3-resume-with-smt=0.patch
-Patch4:         5e16fb6a-x86-clear-per-cpu-stub-page-info.patch
-Patch5:         5e1da013-IRQ-u16-is-too-narrow-for-evtchn.patch
-Patch6:         5e1dcedd-Arm-place-speculation-barrier-after-ERET.patch
-Patch7:         5e21ce98-x86-time-update-TSC-stamp-after-deep-C-state.patch
-Patch8:         5e286cce-VT-d-dont-pass-bridges-to-domain_context_mapping_one.patch
-Patch9:         5e318cd4-x86-apic-fix-disabling-LVT0.patch
-Patch10:        5e344c11-x86-HVM-relinquish-resources-from-domain_destroy.patch
-Patch11:        5e3bd385-EFI-recheck-variable-name-strings.patch
-Patch12:        5e3bd3d1-EFI-dont-leak-heap-VIA-XEN_EFI_get_next_variable_name.patch
-Patch13:        5e3bd3f8-xmalloc-guard-against-overflow.patch
-Patch14:        5e46e090-x86-smp-reset-x2apic_enabled-in-smp_send_stop.patch
-Patch15:        5e4c00ef-VT-d-check-full-RMRR-for-E820-reserved.patch
-Patch16:        5e4d4f5b-sched-fix-get_cpu_idle_time-with-core-sched.patch
-Patch17:        5e4e614d-x86-spec-ctrl-no-xen-also-disables-branch-hardening.patch
-Patch18:        5e4ec20e-x86-virtualise-MSR_PLATFORM_ID-properly.patch
-Patch19:        5e5e7188-fix-error-path-in-cpupool_unassign_cpu_start.patch
-Patch20:        5e6f53dd-AMD-IOMMU-fix-off-by-one-get_paging_mode.patch
-Patch21:        5e7a371c-sched-fix-cpu-onlining-with-core-sched.patch
-Patch22:        5e7c90cf-sched-fix-cpu-offlining-with-core-sched.patch
-Patch23:        5e7cfb29-x86-ucode-AMD-fix-assert-in-compare_patch.patch
-Patch24:        5e7cfb29-x86-ucode-fix-error-paths-in-apply_microcode.patch
-Patch25:        5e7dd83b-libx86-CPUID-fix-not-just-leaf-7.patch
-Patch26:        5e7dfbf6-x86-ucode-AMD-potential-buffer-overrun-equiv-tab.patch
-Patch27:        5e846cce-x86-HVM-fix-AMD-ECS-handling-for-Fam10.patch
-Patch28:        5e84905c-x86-ucode-AMD-fix-more-potential-buffer-overruns.patch
-Patch29:        5e86f7b7-credit2-avoid-vCPUs-with-lower-creds-than-idle.patch
-Patch30:        5e86f7fd-credit2-fix-credit-too-few-resets.patch
-Patch31:        5e876b0f-tools-xenstore-fix-use-after-free-in-xenstored.patch
-Patch32:        5e95ad61-xenoprof-clear-buffer-intended-to-be-shared-with-guests.patch
-Patch33:        5e95ad8f-xenoprof-limit-consumption-of-shared-buffer-data.patch
-Patch34:        5e95ae77-Add-missing-memory-barrier-in-the-unlock-path-of-rwlock.patch
-Patch35:        5e95af5e-xen-gnttab-Fix-error-path-in-map_grant_ref.patch
-Patch36:        5e95afb8-gnttab-fix-GNTTABOP_copy-continuation-handling.patch
+Patch1:         5eb51be6-cpupool-fix-removing-cpu-from-pool.patch
+Patch2:         5eb51caa-sched-vcpu-pause-flags-atomic.patch
+Patch3:         5ec2a760-x86-determine-MXCSR-mask-always.patch
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch
@@ -297,8 +260,7 @@ Group:          System/Kernel
 %if 0%{?suse_version} >= 1315
 Requires:       grub2-x86_64-xen
 %endif
-# Uncomment when ovmf is supported
-#Requires:       qemu-ovmf-x86_64
+Recommends:     qemu-ovmf-x86_64
 Requires:       qemu-x86
 %endif
 %ifarch %arm aarch64
@@ -431,39 +393,6 @@ Authors:
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch20 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
-%patch24 -p1
-%patch25 -p1
-%patch26 -p1
-%patch27 -p1
-%patch28 -p1
-%patch29 -p1
-%patch30 -p1
-%patch31 -p1
-%patch32 -p1
-%patch33 -p1
-%patch34 -p1
-%patch35 -p1
-%patch36 -p1
 # Our platform specific patches
 %patch400 -p1
 %patch401 -p1
@@ -517,9 +446,6 @@ Authors:
 
 %build
 %define _lto_cflags %{nil}
-# JWF: Anthony's series to load BIOS from toolstack requires autogen.sh.
-# http://lists.xenproject.org/archives/html/xen-devel/2016-03/msg01626.html
-./autogen.sh
 
 # we control the version info of this package
 # to gain control of filename of xen.gz

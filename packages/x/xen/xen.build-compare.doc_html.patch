@@ -5,11 +5,11 @@ Sort input files to reduce build-compare noise.
  docs/Makefile |    6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
-Index: xen-4.13.0-testing/docs/Makefile
+Index: xen-4.13.1-testing/docs/Makefile
 ===================================================================
---- xen-4.13.0-testing.orig/docs/Makefile
-+++ xen-4.13.0-testing/docs/Makefile
-@@ -188,7 +188,7 @@ uninstall: uninstall-man-pages uninstall
+--- xen-4.13.1-testing.orig/docs/Makefile
++++ xen-4.13.1-testing/docs/Makefile
+@@ -191,7 +191,7 @@ uninstall: uninstall-man-pages uninstall
  
  # Individual file build targets
  html/index.html: $(DOC_HTML) $(CURDIR)/gen-html-index INDEX
@@ -18,7 +18,7 @@ Index: xen-4.13.0-testing/docs/Makefile
  
  html/%.txt: %.txt
  	@$(INSTALL_DIR) $(@D)
-@@ -203,8 +203,8 @@ html/hypercall/%/index.html: $(CURDIR)/x
+@@ -206,8 +206,8 @@ html/hypercall/%/index.html: $(CURDIR)/x
  	$(INSTALL_DIR) $(@D)
  	$(PERL) -w $(CURDIR)/xen-headers -O $(@D) \
  		-T 'arch-$* - Xen public headers' \

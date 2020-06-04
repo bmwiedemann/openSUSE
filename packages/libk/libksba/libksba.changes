@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed May 20 07:47:55 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- libksba 1.4.0:
+ * Supports ECDSA and EdDSA certificate creation and parsing.
+ * Supports ECDH enveloped data.
+ * Supports ECDSA and EdDSA signed data.
+ * Supports rsaPSS signature verification.
+ * Supports standard file descriptors in ksba_reader_read.
+ * Allows for optional elements in keyinfo objects.
+ * Fixes error detection in the CMS parser.
+ * Fixes memory leak in ksba_cms_identify.
+ * New constants KSBA_VERSION and KSBA_VERSION_NUMBER.
+ * New API to make creation of DER objects easy.
+ * Interface changes relative to the 1.3.5 release:
+   KSBA_VERSION                     NEW.
+   KSBA_VERSION_NUMBER              NEW.
+   KSBA_CT_SPC_IND_DATA_CTX         NEW.
+   KSBA_CLASS_*                     NEW.
+   KSBA_TYPE_*                      NEW.
+   ksba_der_t                       NEW.
+   ksba_der_release                 NEW.
+   ksba_der_builder_new             NEW.
+   ksba_der_builder_reset           NEW.
+   ksba_der_add_ptr                 NEW.
+   ksba_der_add_val                 NEW.
+   ksba_der_add_int                 NEW.
+   ksba_der_add_oid                 NEW.
+   ksba_der_add_bts                 NEW.
+   ksba_der_add_der                 NEW.
+   ksba_der_add_tag                 NEW.
+   ksba_der_add_end                 NEW.
+   ksba_der_builder_get             NEW.
+
+-------------------------------------------------------------------
 Thu Feb 22 15:10:36 UTC 2018 - fvogt@suse.com
 
 - Use %license (boo#1082318)

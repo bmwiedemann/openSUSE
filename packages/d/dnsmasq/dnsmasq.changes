@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue May  5 11:26:55 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.81:
+  *	Improve cache behaviour for TCP connections
+  *	Remove the NO_FORK compile-time option, and support for uclinux
+  *	Fix line-counting when reading /etc/hosts and friends
+  *	Fix bug in DNS non-terminal code, added in 2.80, which could
+	sometimes cause a NODATA rather than an NXDOMAIN reply.
+  *	Support TCP-fastopen (RFC-7413) on both incoming and
+	outgoing TCP connections, if supported and enabled in the OS.
+  *	Improve kernel-capability manipulation code under Linux
+  *	Add --shared-network config. This enables allocation of addresses
+	by the DHCP server in subnets where the server (or relay) does not
+	have an interface on the network in that subnet. Many thanks to
+	kamp.de for sponsoring this feature.
+  *	Fix broken contrib/lease_tools/dhcp_lease_time.c. A packet
+	validation check got borked in commit 2b38e382 and release 2.80.
+	Thanks to Tomasz Szajner for spotting this.
+  *	Fix compilation against nettle version 3.5 and later.
+  *	Fix spurious DNSSEC validation failures when the auth section
+	of a reply contains unsigned RRs from a signed zone,
+	with the exception that NSEC and NSEC3 RRs must always be signed.
+        Thanks to Tore Anderson for spotting and diagnosing the bug.
+  *	Add --dhcp-ignore-clid. This disables reading of DHCP client
+	identifier option (option 61), so clients are only identified by
+	MAC addresses.
+  *	Fix a bug which stopped --dhcp-name-match from working when a hostname
+	is supplied in --dhcp-host. Thanks to James Feeney for spotting this.
+  *	Fix bug which caused very rarely caused zero-length DHCPv6 packets.
+	Thanks to Dereck Higgins for spotting this.
+  *	Add --tftp-single-port option.
+  *	Enhance --conf-dir to load files in a deterministic order
+  * Add filtering by tag of --dhcp-host directives
+  * Remove DSA signature verification from DNSSEC, as specified in
+	RFC 8624
+  *	Add --script-on-renewal option.
+- Remove Fix-build-with-libnettle-3.5.patch
+- Remove 0001-fix-build-after-y2038-changes-in-glibc.patch
+- Remove dnsmasq-CVE-2019-14834.patch
+
+-------------------------------------------------------------------
 Sat Nov 30 12:15:42 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Remove redundant %else without meaning (if/else/else/endif?)

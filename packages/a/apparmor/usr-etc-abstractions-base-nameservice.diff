@@ -72,7 +72,7 @@ index ec639cda..4024ba1e 100644
  
    # When using libnss-extrausers, the passwd and group files are merged from
    # an alternate path
-@@ -36,15 +36,15 @@
+@@ -41,15 +41,15 @@
    /var/lib/sss/mc/passwd  r,
    /var/lib/sss/pipes/nss  rw,
  
@@ -92,7 +92,7 @@ index ec639cda..4024ba1e 100644
    # db backend
    /var/lib/misc/*.db      r,
    # The Name Service Cache Daemon can cache lookups, sometimes leading
-@@ -60,14 +60,14 @@
+@@ -65,14 +65,14 @@
    # they are available
    /{usr/,}lib{,32,64}/libnss_*.so*      mr,
    /{usr/,}lib/@{multiarch}/libnss_*.so*      mr,

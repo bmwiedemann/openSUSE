@@ -1,7 +1,7 @@
 #
 # spec file for package zstd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define major 1
 %define libname lib%{name}%{major}
 Name:           zstd
-Version:        %{major}.4.4
+Version:        %{major}.4.5
 Release:        0
 Summary:        Zstandard compression tools
 License:        BSD-3-Clause AND GPL-2.0-only

@@ -1,7 +1,7 @@
 #
 # spec file for package libksba
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define soname 8
 Name:           libksba
-Version:        1.3.5
+Version:        1.4.0
 Release:        0
 Summary:        A X.509 Library
-License:        (LGPL-3.0+ or GPL-2.0+) and GPL-3.0+ and MIT
+License:        (LGPL-3.0-or-later OR GPL-2.0-or-later) AND GPL-3.0-or-later AND MIT
 Group:          Development/Libraries/C and C++
-Url:            http://www.gnupg.org/aegypten/
+URL:            https://www.gnupg.org
 Source:         ftp://ftp.gnupg.org/gcrypt/libksba/%{name}-%{version}.tar.bz2
 Source2:        ftp://ftp.gnupg.org/gcrypt/libksba/%{name}-%{version}.tar.bz2.sig
 Source3:        libksba.keyring
 Source4:        libksba.changes
 BuildRequires:  libgpg-error-devel >= 1.8
+BuildRequires:  pkgconfig
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         %{install_info_prereq}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -97,10 +98,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files devel
 %defattr(-,root,root)
-%{_bindir}/*
+%{_bindir}/ksba-config
 %{_libdir}/libksba*.so
-%{_includedir}/*
-%{_infodir}/ksba*
-%{_datadir}/aclocal/*
+%{_libdir}/pkgconfig/ksba.pc
+%{_includedir}/ksba.h
+%{_datadir}/aclocal/ksba.m4
+%{_infodir}/ksba.info*
 
 %changelog

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu May 21 12:17:15 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
+
+- add changes-since-2.13.4.diff with upstream changes and fixes
+  since 2.13.4 up to 5f61bd4c:
+  - add several abstractions related to xdg-open:
+    dbus-network-manager-strict, exo-open, gio-open, gvfs-open,
+    kde-open5, xdg-open
+  - introduce @{run} variable
+  - update dnsmasq and winbindd profile
+  - update mdns, mesa and nameservice abstraction
+  - some bugfixes in the aa-* tools, including a remote bugfix in the
+    YaST AppArmor module (boo#1171315)
+- drop upstream(ed) patches (now part of changes-since-2.13.4.diff):
+  - make-4.3-capabilities.diff
+  - make-4.3-capabilities-vim.diff
+  - make-4.3-fix-utils-network-test.diff
+  - make-4.3-network.diff
+  - abstractions-add-etc-mdns.allow-to-etc-apparmor.d-abstractions-mdns.patch
+- apply usr-etc-abstractions-base-nameservice.diff only for
+  Tumbleweed, but not for Leap 15.x where it's not needed
+- refresh usr-etc-abstractions-base-nameservice.diff
+
+-------------------------------------------------------------------
 Thu Apr  9 18:56:09 UTC 2020 - Goldwyn Rodrigues <rgoldwyn@suse.com>
 
 - Add abstractions-add-etc-mdns.allow-to-etc-apparmor.d-abstractions-mdns.patch

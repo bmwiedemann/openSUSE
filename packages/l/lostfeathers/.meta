@@ -1,5 +1,0 @@
-<package name="lostfeathers" project="openSUSE:Factory">
-  <title>The Lost Feathers</title>
-  <description>You control a boy and his bird named Py. Your goal is to recover Py's magical feathers, which were stolen by Evil Businessman.</description>
-  <devel project="games" package="lostfeathers"/>
-</package>

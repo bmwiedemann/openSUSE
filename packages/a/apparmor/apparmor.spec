@@ -65,23 +65,11 @@ Patch4:         apparmor-lessopen-profile.patch
 # workaround for boo#1119937 / lp#1784499 - allow network access for reading files on NFS (proper solution needs kernel fix)
 Patch5:         apparmor-lessopen-nfs-workaround.diff
 
+# changes and fixes since the 2.13.4 Release (v2.13.4 (= df0ac742)..5f61bd4c
+Patch9:         changes-since-2.13.4.diff
+
 # update abstractions/base and nameservice for /usr/etc (submitted upstream 2020-01-25 https://gitlab.com/apparmor/apparmor/merge_requests/447, only merged to master, not 2.13.x)
 Patch10:        ./usr-etc-abstractions-base-nameservice.diff
-
-# fix build with make 4.3  - network rules (taken from upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/307, not in 2.13.x, boo#1167953)
-Patch11:        make-4.3-network.diff
-
-# fix build with make 4.3 - fix utils network tests (taken from upstream 9144e39d2, not in 2.13.x, boo#1167953)
-Patch12:        make-4.3-fix-utils-network-test.diff
-
-# fix build with make 4.3 -  capability rules (taken from upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/461, not in 2.13.x, boo#1167953)
-Patch13:        make-4.3-capabilities.diff
-
-# fix build with make 4.3 -  fix apparmor.vim capability rules (submitted upstream 2020-03-29 https://gitlab.com/apparmor/apparmor/-/merge_requests/463, not in 2.13.x, boo#1167953)
-Patch14:        make-4.3-capabilities-vim.diff
-
-#Bug 1168306 - apparmor prevents the resolver from reading /etc/mdns.allow, and therefore forbids using any custom domain name
-Patch15:        abstractions-add-etc-mdns.allow-to-etc-apparmor.d-abstractions-mdns.patch
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -371,12 +359,12 @@ SubDomain.
 %patch3 -p1
 %patch4
 %patch5
+%patch9 -p1
+
+%if 0%{?suse_version} > 1500
+# /usr/etc/ changes in abstractions, apply only to Tumbleweed, but not to Leap 15.x
 %patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
+%endif
 
 %build
 %define _lto_cflags %{nil}

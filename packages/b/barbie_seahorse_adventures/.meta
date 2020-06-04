@@ -1,7 +1,0 @@
-<package name="barbie_seahorse_adventures" project="openSUSE:Factory">
-  <title>Barbie Seahorse Adventures</title>
-  <description>You're a seahorse - and you want to go to the moon!
-
-When you play - make sure to check out all 3 phases - Jungle, Volcano, and Moon!</description>
-  <devel project="games" package="barbie_seahorse_adventures"/>
-</package>

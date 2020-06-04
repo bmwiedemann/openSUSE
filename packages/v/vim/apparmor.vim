@@ -116,7 +116,7 @@ syn match sdError /^.*$/ contains=sdComment "highlight all non-valid lines as er
 " TODO: make a separate pattern for variable definitions, then mark sdGlob as contained
 syn match sdGlob /\v\?|\*|\{.*,.*\}|[[^\]]\+\]|\@\{[a-zA-Z][a-zA-Z0-9_]*\}/
 
-syn match sdAlias /\v^alias\s+(\/|\@\{\S*\})\S*\s+-\>\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment
+syn match sdAlias /\v^\s*alias\s+(\/|\@\{\S*\})\S*\s+-\>\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment
 
 " syn match sdComment /#.*/
 
@@ -189,6 +189,8 @@ syn match sdComment /\s*#.*$/
 " NOTE: Comment highlighting still works without contains=sdComment.
 syn match sdInclude /\s*#include\s<\S*>/ " TODO: doesn't check until $
 syn match sdInclude /\s*include\s<\S*>/  " TODO: doesn't check until $
+syn match sdInclude /\s*#include\sif\sexists\s<\S*>/ " TODO: doesn't check until $
+syn match sdInclude /\s*include\sif\sexists\s<\S*>/  " TODO: doesn't check until $
 
 " basic profile block...
 " \s+ does not work in end=, therefore using \s\s*

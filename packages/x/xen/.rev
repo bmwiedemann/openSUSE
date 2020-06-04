@@ -2443,4 +2443,12 @@
     <comment>Fix for bsc#1170968 - GCC 10: xen build fails on i586</comment>
     <requestid>805360</requestid>
   </revision>
+  <revision rev="285" vrev="1">
+    <srcmd5>aec121416563f0163fbc5ff994cfa9c4</srcmd5>
+    <version>4.13.1_02</version>
+    <time>1591285822</time>
+    <user>dimstar_suse</user>
+    <comment>Update Xen to bug fix release 4.13.1 with a couple spec file cleanups</comment>
+    <requestid>808027</requestid>
+  </revision>
 </revisionlist>

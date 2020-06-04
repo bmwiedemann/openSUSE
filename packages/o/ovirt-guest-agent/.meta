@@ -1,6 +1,0 @@
-<package name="ovirt-guest-agent" project="openSUSE:Factory">
-  <title>oVirt Guest Agent</title>
-  <description>oVirt-guest-agent is a daemon which resides within the guest and is required to perform/supply information to the Virtualization Manager (such as oVirt-engine or Red Hat Enterprise Virtualization Manager) that is required to properly manage the VMs. It communicates to Vdsm through a vioserial device using a json protocol. It is written in python and supports a growing list of Guest OSs.
-  </description>
-  <devel project="Virtualization" package="ovirt-guest-agent"/>
-</package>

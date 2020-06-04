@@ -1,0 +1,29 @@
+# Commit 498d73647fa17d9eb7a67d2e9bdccac6b438e559
+# Date 2020-05-08 10:44:22 +0200
+# Author Juergen Gross <jgross@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+cpupool: fix removing cpu from a cpupool
+
+Commit cb563d7665f2 ("xen/sched: support core scheduling for moving
+cpus to/from cpupools") introduced a regression when trying to remove
+an offline cpu from a cpupool, as the system would crash in this
+situation.
+
+Fix that by testing the cpu to be online.
+
+Fixes: cb563d7665f2 ("xen/sched: support core scheduling for moving cpus to/from cpupools")
+Signed-off-by: Juergen Gross <jgross@suse.com>
+Acked-by: Dario Faggioli <dfaggioli@suse.com>
+
+--- a/xen/common/cpupool.c
++++ b/xen/common/cpupool.c
+@@ -519,6 +519,9 @@ static int cpupool_unassign_cpu(struct c
+     debugtrace_printk("cpupool_unassign_cpu(pool=%d,cpu=%d)\n",
+                       c->cpupool_id, cpu);
+ 
++    if ( !cpu_online(cpu) )
++        return -EINVAL;
++
+     master_cpu = sched_get_resource_cpu(cpu);
+     ret = cpupool_unassign_cpu_start(c, master_cpu);
+     if ( ret )

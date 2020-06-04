@@ -1,7 +1,7 @@
 #
 # spec file for package dnsmasq
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Name:           dnsmasq
 Summary:        DNS Forwarder and DHCP Server
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Productivity/Networking/DNS/Servers
-Version:        2.80
+Version:        2.81
 Release:        0
 Provides:       dns_daemon
 URL:            http://www.thekelleys.org.uk/dnsmasq/
@@ -38,10 +38,6 @@ Source4:        dnsmasq.service
 Source5:        rc.dnsmasq-suse
 Source8:        %{name}-rpmlintrc
 Patch0:         dnsmasq-groups.patch
-Patch1:         0001-fix-build-after-y2038-changes-in-glibc.patch
-# PATCH-FIX-UPSTREAM -- http://thekelleys.org.uk/gitweb/?p=dnsmasq.git;a=commit;h=ab73a746a0d6fcac2e682c5548eeb87fb9c9c82e
-Patch2:         Fix-build-with-libnettle-3.5.patch
-Patch3:         dnsmasq-CVE-2019-14834.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  dbus-1-devel
 BuildRequires:  dos2unix
@@ -78,9 +74,6 @@ server's leases.
 %prep
 %setup -q
 %patch0
-%patch1 -p1
-%patch2 -p1
-%patch3
 
 # Remove the executable bit from python example files to
 # avoid unwanted automatic dependencies

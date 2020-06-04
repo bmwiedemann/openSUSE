@@ -1874,4 +1874,30 @@ The correct message about the refreshed patch is:
     <comment>bsc1168306 - Add /etc/mdns.allow (forwarded request 792967 from goldwynr)</comment>
     <requestid>792970</requestid>
   </revision>
+  <revision rev="138" vrev="4">
+    <srcmd5>c64c7820d29993c56419beb8db69dfeb</srcmd5>
+    <version>2.13.4</version>
+    <time>1591285789</time>
+    <user>dimstar_suse</user>
+    <comment>- add changes-since-2.13.4.diff with upstream changes and fixes
+  since 2.13.4 up to 5f61bd4c:
+  - add several abstractions related to xdg-open:
+    dbus-network-manager-strict, exo-open, gio-open, gvfs-open,
+    kde-open5, xdg-open
+  - introduce @{run} variable
+  - update dnsmasq and winbindd profile
+  - update mdns, mesa and nameservice abstraction
+  - some bugfixes in the aa-* tools, including a remote bugfix in the
+    YaST AppArmor module (boo#1171315)
+- drop upstream(ed) patches (now part of changes-since-2.13.4.diff):
+  - make-4.3-capabilities.diff
+  - make-4.3-capabilities-vim.diff
+  - make-4.3-fix-utils-network-test.diff
+  - make-4.3-network.diff
+  - abstractions-add-etc-mdns.allow-to-etc-apparmor.d-abstractions-mdns.patch
+- apply usr-etc-abstractions-base-nameservice.diff only for
+  Tumbleweed, but not for Leap 15.x where it's not needed
+- refresh usr-etc-abstractions-base-nameservice.diff (forwarded request 807998 from cboltz)</comment>
+    <requestid>807999</requestid>
+  </revision>
 </revisionlist>

@@ -34,9 +34,6 @@ Patch4:         ddr_1998-testhole.diff
 Patch5:         ddr_1998-ossl11-warn.diff
 BuildRequires:  autoconf
 BuildRequires:  libattr-devel
-%if 0%{?is_opensuse}
-BuildRequires:  libfallocate-devel
-%endif
 BuildRequires:  lzo-devel
 %if 0%{?suse_version} >= 1200
 BuildRequires:  lzop

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 13 06:30:40 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Dropped build dependency on libfallocate-devel as fallocate64 is
+  now in glibc and thus libfallocate is not required any more.
+  [dd_rescue.spec, jira#11972]
+
+-------------------------------------------------------------------
 Mon Apr  6 09:17:38 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Run tests with -fcommon in order to fix boo#1160261.
