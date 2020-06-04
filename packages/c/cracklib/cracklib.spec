@@ -1,7 +1,7 @@
 #
 # spec file for package cracklib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           cracklib
 Version:        2.9.6
 Release:        0
 Summary:        Library to crack passwords using dictionaries
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          System/Libraries
-Url:            http://sourceforge.net/projects/cracklib
+URL:            http://sourceforge.net/projects/cracklib
 Source:         https://github.com/%{name}/%{name}/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
 # PATCH-FIX-OPENSUSE (should be upstreamed)
@@ -38,7 +38,7 @@ BuildRequires:  gzip
 BuildRequires:  libtool
 BuildRequires:  zlib-devel
 Requires:       cracklib-dict
-%if ! 0%{?is_opensuse}
+%if 0%{?sle_version}
 BuildRequires:  translation-update-upstream
 %endif
 
@@ -87,7 +87,7 @@ This package contains a small dictionay file used by cracklib.
 
 %prep
 %setup -q
-%if ! 0%{?is_opensuse}
+%if 0%{?sle_version}
 translation-update-upstream
 %endif
 %patch1
@@ -118,9 +118,9 @@ sed "s,%{_libexecdir}/cracklib_dict,%{_datadir}/cracklib/pw_dict,g" lib/crack.h 
 ln -s cracklib-format %{buildroot}/%{_sbindir}/mkdict
 ln -s cracklib-packer %{buildroot}/%{_sbindir}/packer
 rm -f %{buildroot}/%{_datadir}/cracklib/cracklib-small
-ln -sf %{_datadir}/cracklib/pw_dict.hwm %{buildroot}%{_libexecdir}/cracklib_dict.hwm
-ln -sf %{_datadir}/cracklib/pw_dict.pwd %{buildroot}%{_libexecdir}/cracklib_dict.pwd
-ln -sf %{_datadir}/cracklib/pw_dict.pwi %{buildroot}%{_libexecdir}/cracklib_dict.pwi
+ln -sf %{_datadir}/cracklib/pw_dict.hwm %{buildroot}/usr/lib/cracklib_dict.hwm
+ln -sf %{_datadir}/cracklib/pw_dict.pwd %{buildroot}/usr/lib/cracklib_dict.pwd
+ln -sf %{_datadir}/cracklib/pw_dict.pwi %{buildroot}/usr/lib/cracklib_dict.pwi
 #
 # using zip'ed dict takes too long for a check. But the support
 # for this is still in the lib.
@@ -154,9 +154,9 @@ make %{?_smp_mflags} check
 %{_sbindir}/cracklib-unpacker
 %dir %{_datadir}/cracklib
 %{_datadir}/cracklib/cracklib.magic
-%{_libexecdir}/cracklib_dict.hwm
-%{_libexecdir}/cracklib_dict.pwd
-%{_libexecdir}/cracklib_dict.pwi
+/usr/lib/cracklib_dict.hwm
+/usr/lib/cracklib_dict.pwd
+/usr/lib/cracklib_dict.pwi
 
 %files devel
 %{_includedir}/crack.h

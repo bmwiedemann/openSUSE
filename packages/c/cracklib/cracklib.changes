@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 22 16:06:54 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Enable translation-update-upstream on leap, to remove the use of
+  is_opensuse (jsc#SLE-12096).
+
+-------------------------------------------------------------------
+Wed May  6 09:45:09 UTC 2020 - pgajdos@suse.com
+
+- use /usr/lib instead of %{_libexecdir}, %{_libexecdir} should
+  contain internal binaries, not data
+
+-------------------------------------------------------------------
 Thu Feb 22 15:10:30 UTC 2018 - fvogt@suse.com
 
 - Use %license (boo#1082318)
