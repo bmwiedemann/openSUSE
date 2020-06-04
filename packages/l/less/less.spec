@@ -17,7 +17,7 @@
 
 
 Name:           less
-Version:        557
+Version:        562
 Release:        0
 Summary:        Text File Browser and Pager Similar to more
 License:        GPL-3.0-or-later OR BSD-2-Clause
@@ -46,7 +46,7 @@ start an editor at any time from within less.
 
 %prep
 %setup -q
-%patch0
+%patch0 -p1
 %patch1
 %patch2
 #

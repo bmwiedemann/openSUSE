@@ -1,8 +1,7 @@
-Index: filename.c
-===================================================================
---- filename.c.orig
-+++ filename.c
-@@ -574,7 +574,7 @@ shellcmd(cmd)
+diff -ru a/filename.c b/filename.c
+--- a/filename.c	2020-05-11 23:36:17.000000000 +0200
++++ b/filename.c	2020-05-12 14:01:23.624217811 +0200
+@@ -574,7 +574,7 @@
  #if HAVE_SHELL
  	char *shell;
  
@@ -11,10 +10,9 @@ Index: filename.c
  	if (!isnullenv(shell))
  	{
  		char *scmd;
-Index: less.hlp
-===================================================================
---- less.hlp.orig
-+++ less.hlp
+diff -ru a/less.hlp b/less.hlp
+--- a/less.hlp	2020-05-11 23:36:21.000000000 +0200
++++ b/less.hlp	2020-05-12 14:00:58.680162327 +0200
 @@ -101,7 +101,7 @@
    ___<_n_a_m_e_>             Display the setting of an option, by name.
    +_c_m_d                 Execute the less cmd each time a new file is examined.
@@ -24,11 +22,10 @@ Index: less.hlp
    |XX_c_o_m_m_a_n_d            Pipe file between current pos & mark XX to shell command.
    s _f_i_l_e               Save input to a file.
    v                    Edit the current file with $VISUAL or $EDITOR.
-Index: less.nro
-===================================================================
---- less.nro.orig
-+++ less.nro
-@@ -419,7 +419,7 @@ current file.
+diff -ru a/less.nro b/less.nro
+--- a/less.nro	2020-05-11 23:36:21.000000000 +0200
++++ b/less.nro	2020-05-12 14:02:02.728304787 +0200
+@@ -420,7 +420,7 @@
  A pound sign (#) is replaced by the name of the previously examined file.
  "!!" repeats the last shell command.
  "!" with no shell command simply invokes a shell.
@@ -37,20 +34,26 @@ Index: less.nro
  or defaults to "sh".
  On MS-DOS and OS/2 systems, the shell is the normal command processor.
  .IP "| <m> shell-command"
-@@ -1790,7 +1790,7 @@ compatible mode.
+@@ -1793,7 +1793,7 @@
  .IP PATH
  User's search path (used to find a lesskey file
  on MS-DOS and OS/2 systems).
 -.IP SHELL
 +.IP LESSSHELL
- The shell used to execute the ! command, as well as to expand filenames.
+ The shell used to execute the !\& command, as well as to expand filenames.
  .IP TERM
  The type of terminal on which
-Index: lsystem.c
-===================================================================
---- lsystem.c.orig
-+++ lsystem.c
-@@ -133,7 +133,7 @@ lsystem(cmd, donemsg)
+diff -ru a/lsystem.c b/lsystem.c
+--- a/lsystem.c	2020-05-11 23:36:17.000000000 +0200
++++ b/lsystem.c	2020-05-12 14:02:25.352355117 +0200
+@@ -127,13 +127,13 @@
+ 
+ 	/*
+ 	 * Pass the command to the system to be executed.
+-	 * If we have a SHELL environment variable, use
++	 * If we have a LESSSHELL environment variable, use
+ 	 * <$SHELL -c "command"> instead of just <command>.
+ 	 * If the command is empty, just invoke a shell.
  	 */
  #if HAVE_SHELL
  	p = NULL;
