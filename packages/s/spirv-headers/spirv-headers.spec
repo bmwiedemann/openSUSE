@@ -17,15 +17,14 @@
 
 
 Name:           spirv-headers
-Version:        1.5.1.corrected+git24
+Version:        1.5.3
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Headers
 
-#Source:         https://github.com/KhronosGroup/SPIRV-Headers/archive/%version.tar.gz
-Source:         SPIRV-Headers-%version.tar.xz
+Source:         https://github.com/KhronosGroup/SPIRV-Headers/archive/%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes

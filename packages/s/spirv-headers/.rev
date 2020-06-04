@@ -143,4 +143,12 @@
     <comment>- Update to snapshot 1.5.1.c+git24 (f8bf11a)</comment>
     <requestid>792439</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e7024ac02b80619e12b03ff61f5d6ad7</srcmd5>
+    <version>1.5.3</version>
+    <time>1591285899</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.5.3</comment>
+    <requestid>810824</requestid>
+  </revision>
 </revisionlist>
