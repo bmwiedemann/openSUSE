@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun  4 12:34:14 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.1.0~alpha1 (changes since 4.0.2):
+  * Port to Python 3.
+  * The Files panel dropdown list now also lists filesystem mounts.
+  * Fix a crash when fetching covers with the Cover Manager.
+  * Some dialogues that were previously orphaned now have parents.
+  * Allow -symbolic fallback and SVG on some icons.
+  * Update the .mod file support to work with latest libmodplug.
+  * Empty search entries now show the "Search" placeholder text.
+  * Many accessibility issues were found (due to gla11y) and fixed.
+  * Update translations.
+
+-------------------------------------------------------------------
 Sun Mar 29 10:30:42 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to version 4.0.2

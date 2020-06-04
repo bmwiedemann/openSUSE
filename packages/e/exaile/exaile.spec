@@ -18,13 +18,14 @@
 
 %define __requires_exclude typelib\\((GtkosxApplication)\\)
 %define _name   Exaile
+%define _version 4.1.0-alpha1
 Name:           exaile
-Version:        4.0.2
+Version:        4.1.0~alpha1
 Release:        0
-Summary:        Gtk3 Amarok-like music player
+Summary:        GTK Amarok-like music player
 License:        GPL-3.0-or-later
 URL:            https://www.exaile.org/
-Source:         https://github.com/exaile/exaile/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/exaile/exaile/releases/download/%{_version}/%{name}-%{_version}.tar.gz
 # PATCH-FEATURE-OPENSUSE exaile-no-splash-default.patch sor.alexei@meowr.ru -- Do not show splash screen on startup by default.
 Patch0:         %{name}-no-splash-default.patch
 # PATCH-FEATURE-OPENSUSE exaile-mate-screensaver.patch sor.alexei@meowr.ru -- Make the screensaverpause plugin work with MATE Screensaver.
@@ -33,43 +34,28 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  help2man
+BuildRequires:  python3
+BuildRequires:  python3-gobject
 BuildRequires:  update-desktop-files
 Requires:       gdk-pixbuf-loader-rsvg
 Requires:       gstreamer
 Requires:       gstreamer-plugins-good
+Requires:       python3-bsddb3
+Requires:       python3-cairo
+Requires:       python3-dbus-python
+Requires:       python3-feedparser
+Requires:       python3-gobject
+Requires:       python3-gobject-Gdk
+Requires:       python3-gobject-cairo
+Requires:       python3-mutagen >= 1.10
 Recommends:     %{name}-lang
 Recommends:     gstreamer-plugins-bad
 Recommends:     gstreamer-plugins-ugly
+Recommends:     python3-CDDB
+Recommends:     python3-Pillow
+Recommends:     python3-gpod
 Recommends:     udisks2
 BuildArch:      noarch
-%if 0%{?suse_version} >= 1500
-BuildRequires:  python2
-BuildRequires:  python2-gobject
-Requires:       python2-bsddb3
-Requires:       python2-cairo
-Requires:       python2-dbus-python
-Requires:       python2-feedparser
-Requires:       python2-gobject
-Requires:       python2-gobject-Gdk
-Requires:       python2-gobject-cairo
-Requires:       python2-mutagen >= 1.10
-Recommends:     python2-CDDB
-Recommends:     python2-Pillow
-Recommends:     python2-gpod
-%else
-BuildRequires:  python
-BuildRequires:  python-gobject
-Requires:       dbus-1-python
-Requires:       python-cairo
-Requires:       python-feedparser
-Requires:       python-gobject
-Requires:       python-gobject-Gdk
-Requires:       python-gobject-cairo
-Requires:       python-mutagen >= 1.10
-Recommends:     python-CDDB
-Recommends:     python-Pillow
-Recommends:     python-gpod
-%endif
 
 %description
 Exaile is a media player aiming to be similar to Clementine, but
@@ -90,7 +76,8 @@ fretplay.com, and submitting played tracks on your iPod to last.fm.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -n %{name}-%{_version} -p1
+chmod a-x COPYING README.md
 
 %build
 %make_build
@@ -107,20 +94,12 @@ dirname $(find %{buildroot}%{_datadir} -type f -name '*.py') | sort -u | while r
     # Fix python-bytecode-inconsistent-mtime (hacky).
     rm -f *.pyc *.pyo
     touch -c *.py
-    %py_compile .
+    %py3_compile .
     popd
 done
 
 %fdupes %{buildroot}%{_prefix}/
 %find_lang %{name}
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%endif
 
 %files
 %license COPYING
@@ -135,7 +114,6 @@ done
 %{_datadir}/dbus-1/services/org.%{name}.%{_name}.service
 %dir %{_sysconfdir}/xdg/%{name}/
 %config %{_sysconfdir}/xdg/%{name}/settings.ini
-%dir %{_datadir}/appdata/
 %{_datadir}/appdata/%{name}.appdata.xml
 %dir %{_datadir}/bash-completion/
 %dir %{_datadir}/bash-completion/completions/
