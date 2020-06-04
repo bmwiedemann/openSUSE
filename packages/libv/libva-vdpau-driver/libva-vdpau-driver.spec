@@ -1,7 +1,7 @@
 #
 # spec file for package libva-vdpau-driver
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        HW video decode support for VDPAU platforms
 License:        GPL-2.0-or-later
 Group:          System/Libraries
-Url:            http://cgit.freedesktop.org/vaapi/vdpau-driver
+URL:            http://cgit.freedesktop.org/vaapi/vdpau-driver
 Source:         http://www.freedesktop.org/software/vaapi/releases/%{name}/%{name}-%{version}.tar.bz2
 Patch0:         libva-vdpau-driver-0.7.4-glext-85.patch
 Patch1:         libva-vdpau-driver-0.7.4-drop-h264-api.patch
@@ -52,12 +52,14 @@ cat > %{name}.sh << EOF
 # use this library when NVIDIA's proprietary driver is running
 if test -c /dev/nvidiactl; then
   export LIBVA_DRIVER_NAME='vdpau'
+  export VDPAU_DRIVER=nvidia
 fi
 EOF
 cat > %{name}.csh << EOF
 # use this library when NVIDIA's proprietary driver is running
 if (-c /dev/nvidiactl) then
   setenv LIBVA_DRIVER_NAME 'vdpau'
+  setenv VDPAU_DRIVER 'nvidia'
 endif
 EOF
 
