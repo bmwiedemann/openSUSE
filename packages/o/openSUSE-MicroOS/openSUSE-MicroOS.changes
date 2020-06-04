@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  4 09:29:19 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Use firmware="efi" for RPi2 (boo#1172473)
+
+-------------------------------------------------------------------
 Wed Jun  3 06:25:10 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Use console=ttyAMA0 for RPi2 (boo#1172417)

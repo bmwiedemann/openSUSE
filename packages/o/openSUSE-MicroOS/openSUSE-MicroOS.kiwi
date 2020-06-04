@@ -420,7 +420,7 @@
             fsmountoptions="noatime,compress=lzo"
             bootloader="grub2"
             bootloader_console="gfxterm"
-            firmware="uefi"
+            firmware="efi"
             kernelcmdline="console=ttyAMA0,115200 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal rd.neednet=0"
             bootpartition="false"
             devicepersistency="by-uuid"
