@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun  4 03:10:36 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 8.52
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.52  2020-06-01
+    - Updated project metadata.
+    - Fixed a bug in Mojo::Asset::Memory where the upgrade event could not change the temporary directory.
+  
+
+-------------------------------------------------------------------
 Mon Jun  1 03:15:17 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 8.51
