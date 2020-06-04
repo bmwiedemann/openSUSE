@@ -21,7 +21,7 @@
 %define gtk_binary_version 4.0.0
 %define _name gtk
 Name:           gtk4
-Version:        3.98.3
+Version:        3.98.4
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
