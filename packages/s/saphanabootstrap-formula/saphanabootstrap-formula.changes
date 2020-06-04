@@ -1,7 +1,77 @@
 -------------------------------------------------------------------
+Tue Jun  2 00:21:55 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
+
+- Version 0.5.10
+  * Change colocation weight for col_saphana_ip for Azure provider \
+
+  (jsc#ECO-1965, jsc#SLE-4047)
+
+-------------------------------------------------------------------
+Fri May 15 08:19:31 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- Implement exporter Pacemaker resource, refactor monitoring settings
+
+-------------------------------------------------------------------
+Fri May 15 01:55:38 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
+
+- Version 0.5.9
+  * Update extraction functionality for cost optimized scenario
+
+-------------------------------------------------------------------
+Tue Apr 21 02:21:28 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
+
+- Version 0.5.8
+  * Adjust software_path usage for cost optimized scenario
+
+-------------------------------------------------------------------
+Fri Apr 17 08:14:08 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.5.7
+  * Use gcp instance name instead of id in fence_gce agent
+  (bsc#1161898, bsc#1160933)
+
+-------------------------------------------------------------------
+Tue Apr 14 13:28:03 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.5.6
+  * Update anyting socat resource by azure-lb as recommended in
+  the updated best practices guide
+
+-------------------------------------------------------------------
+Tue Mar 31 07:25:29 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.5.5
+  * Implement the new SAPHanaSR hook usage
+
+-------------------------------------------------------------------
+Fri Mar 27 11:16:16 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.5.4
+  * Update the fence_gce usage to use gcp_instance_id
+
+-------------------------------------------------------------------
+Wed Mar 25 21:34:17 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
+
+- Version 0.5.3
+ * Add support to run sapcar and extract HANA sar package
+
+-------------------------------------------------------------------
+Fri Mar 20 13:19:03 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.5.2
+  * Install pydbapi package to be used by hanadb_exporter
+
+-------------------------------------------------------------------
+Tue Mar  3 09:51:59 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.5.1
+  * Adapt the cluster template to use the proper gcp agents
+  (bsc#1161898, bsc#1160933)
+
+-------------------------------------------------------------------
 Tue Feb 11 10:51:56 UTC 2020 - Dario Maiocchi <dmaiocchi@suse.com>
 
--  Version 0.5.0
+- Version 0.5.0
   * Change the package name to prometheus-hanadb_exporter (jsc#SLE-10545)
   (bsc#1165156, jsc#SLE-4143, boo#1137989, jsc#SLE-10545)
 
