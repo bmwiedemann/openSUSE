@@ -1,0 +1,67 @@
+From 5558e36bd97ace7bc3efe3a70d0c9d4fc0d34e2a Mon Sep 17 00:00:00 2001
+From: Ivan Babrou <github@ivan.computer>
+Date: Fri, 29 May 2020 15:33:25 -0700
+Subject: [PATCH] Make reading blacklist from debugfs optional
+
+With lockdown enabled one sees the following:
+
+```
+$ sudo /usr/share/bcc/tools/funccount -Ti 1 run_timer_softirq
+[Errno 1] Operation not permitted: '/sys/kernel/debug/tracing/../kprobes/blacklist'
+```
+
+Which is accompanied by the following in `dmesg`:
+
+```
+[Fri May 29 22:12:47 2020] Lockdown: funccount: debugfs access is restricted; see man kernel_lockdown.7
+```
+
+Since blacklist is not a required feature, let's make
+reading from it optional, so that bcc can work out of the box.
+---
+ src/python/bcc/__init__.py | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/src/python/bcc/__init__.py b/src/python/bcc/__init__.py
+index 8496ee62..749ebfe5 100644
+--- a/src/python/bcc/__init__.py
++++ b/src/python/bcc/__init__.py
+@@ -546,8 +546,15 @@ class BPF(object):
+ 
+     @staticmethod
+     def get_kprobe_functions(event_re):
+-        with open("%s/../kprobes/blacklist" % TRACEFS, "rb") as blacklist_f:
+-            blacklist = set([line.rstrip().split()[1] for line in blacklist_f])
++        blacklist_file = "%s/../kprobes/blacklist" % TRACEFS
++        try:
++            with open(blacklist_file, "rb") as blacklist_f:
++                blacklist = set([line.rstrip().split()[1] for line in blacklist_f])
++        except IOError as e:
++            if e.errno != errno.EPERM:
++                raise e
++            blacklist = set([])
++
+         fns = []
+ 
+         in_init_section = 0
+@@ -607,7 +614,7 @@ class BPF(object):
+         global _num_open_probes
+         del self.kprobe_fds[name]
+         _num_open_probes -= 1
+- 
++
+     def _add_uprobe_fd(self, name, fd):
+         global _num_open_probes
+         self.uprobe_fds[name] = fd
+@@ -643,7 +650,7 @@ class BPF(object):
+             if name.startswith(prefix):
+                 return self.get_syscall_fnname(name[len(prefix):])
+         return name
+-       
++
+     def attach_kprobe(self, event=b"", event_off=0, fn_name=b"", event_re=b""):
+         event = _assert_is_bytes(event)
+         fn_name = _assert_is_bytes(fn_name)
+-- 
+2.25.1
+

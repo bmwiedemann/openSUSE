@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  4 07:31:29 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add bcc-bsc1172493-Make-reading-blacklist-optional.patch to make
+  reading kprobe blacklist optional so that the bcc scripts can
+  work with the locked down kernel (bsc#1172493)
+
+-------------------------------------------------------------------
 Thu Apr 23 02:07:32 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Amend the sed rule for python3 shebang
