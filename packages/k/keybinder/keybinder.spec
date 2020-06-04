@@ -1,7 +1,7 @@
 #
 # spec file for package keybinder
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %if 0%{?suse_version} > 1500
 %define do_python 0
@@ -27,9 +28,9 @@ Name:           keybinder
 Version:        0.3.1
 Release:        0
 Summary:        A Library for Registering Global Keyboard Shortcuts
-License:        GPL-2.0+ and MIT
-Group:          Development/Libraries/Other
-Url:            https://github.com/kupferlauncher
+License:        GPL-2.0-or-later AND MIT
+Group:          Development/Libraries/C and C++
+URL:            https://github.com/kupferlauncher
 Source:         https://github.com/kupferlauncher/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        example_gi.py
 Patch:          keybinder-doc-xml-fallback.patch
@@ -46,13 +47,12 @@ BuildRequires:  python-gobject2-devel
 BuildRequires:  python-gtk-devel
 %endif
 BuildRequires:  lua51-devel
-BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xrender)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Library for registering global keyboard shortcuts. Keybinder
@@ -65,7 +65,7 @@ The library contains:
 - An examples directory with programs in C, Lua, Python and Vala.
 
 %package -n %{libname}
-Summary:        Library Package for Keybinder
+Summary:        A library for registering global keyboard shortcuts
 Group:          System/Libraries
 
 %description -n %{libname}
@@ -89,7 +89,7 @@ based on keybinder.
 
 %package lua
 Summary:        Lua Files for Keybinder
-Group:          Development/Libraries/Other
+Group:          Development/Languages/Lua
 Requires:       %{libname} = %{version}
 
 %description lua
@@ -98,7 +98,7 @@ This package contains Lua files for applications based on keybinder.
 %package -n python-%{name}
 
 Summary:        Python Bindings for Keybinder
-Group:          Development/Libraries/Python
+Group:          Development/Languages/Python
 Requires:       %{libname} = %{version}
 Requires:       python-base = %{py_ver}
 Requires:       python-gobject2
@@ -108,7 +108,7 @@ Requires:       python-gtk
 This package contains python bindings for keybinder.
 
 %package -n typelib-1_0-Keybinder-0_0
-Summary:        A Library for Registering Global Keyboard Shortcuts -- Introspection bindings
+Summary:        Introspection bindins for the Keybinder library
 Group:          System/Libraries
 
 %description -n typelib-1_0-Keybinder-0_0
@@ -159,23 +159,18 @@ find %{buildroot}%{_libdir} -name '*.la' -exec rm -f {} +
 
 find examples -type f -exec chmod 644 {} +
 
-%fdupes %{buildroot}
+%fdupes %{buildroot}/%{_prefix}
 
 %post -n %{libname} -p /sbin/ldconfig
 
 %postun -n %{libname} -p /sbin/ldconfig
 
-%clean
-rm -rf %{buildroot}
-
 %files -n %{libname}
-%defattr(-,root,root)
 %license COPYING
 %doc AUTHORS NEWS README
 %{_libdir}/libkeybinder.so.*
 
 %files devel
-%defattr(-,root,root)
 %doc examples
 %{_includedir}/keybinder.h
 %{_libdir}/libkeybinder.so
@@ -184,7 +179,6 @@ rm -rf %{buildroot}
 %{_datadir}/gir-1.0/Keybinder-0.0.gir
 
 %files lua
-%defattr(-,root,root)
 %{_libdir}/lua/*/keybinder.so
 
 %if 0%{?do_python}
@@ -194,7 +188,6 @@ rm -rf %{buildroot}
 %endif
 
 %files -n typelib-1_0-Keybinder-0_0
-%defattr(-,root,root)
 %{_libdir}/girepository-1.0/Keybinder-0.0.typelib
 
 %changelog
