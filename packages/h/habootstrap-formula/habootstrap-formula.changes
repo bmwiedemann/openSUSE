@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun  4 08:56:32 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version bump 0.3.7
+  * Make diskless sbd and using disks self exclusive (bsc#1172432)
+
+  (jsc#ECO-1965, jsc#SLE-4047)
+
+-------------------------------------------------------------------
 Thu May 21 10:12:17 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version bump 0.3.6

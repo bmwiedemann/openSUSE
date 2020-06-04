@@ -19,8 +19,8 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           habootstrap-formula
-Version:        0.3.6
 Group:          System/Packages
+Version:        0.3.7+git.1591284136.61a57d8
 Release:        0
 Summary:        HA cluster (crmsh) deployment salt formula
 

@@ -1,0 +1,19 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/SUSE/habootstrap-formula.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="filename">habootstrap-formula</param>
+    <param name="versionformat">0.3.7+git.%ct.%h</param>
+    <param name="revision">61a57d858f0a5b7e96526491aaf462040b0625f7</param>
+  </service>
+
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+  <service name="set_version" mode="disabled">
+    <param name="basename">habootstrap-formula</param>
+  </service>
+</services>
