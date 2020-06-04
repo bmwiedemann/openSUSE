@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 20 19:27:23 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Make tests arch-dependent. Needed to exclude mono tests on s390x
+  (bsc#1171934).
+
+-------------------------------------------------------------------
 Fri May 15 10:23:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.54.2:

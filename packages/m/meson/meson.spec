@@ -52,7 +52,9 @@ Patch5:         meson-distutils.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
+%if "%{flavor}" != "test"
 BuildArch:      noarch
+%endif
 %if %{with setuptools}
 BuildRequires:  python3-setuptools
 Requires:       python3-setuptools
