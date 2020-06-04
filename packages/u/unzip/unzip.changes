@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 22 09:27:01 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Change unzip-doc to noarch
+
+-------------------------------------------------------------------
 Thu Oct 11 14:49:01 UTC 2018 - kstreitova@suse.com
 
 - Add unzip60-cfactorstr_overflow.patch to fix buffer overflow in

@@ -75,6 +75,7 @@ functionality. This version can also extract encrypted archives.
 %package doc
 Summary:        Documentation files for unzip
 Group:          Productivity/Archiving/Compression
+BuildArch:      noarch
 
 %description doc
 UnZip is an extraction utility for archives compressed in .zip format
