@@ -386,4 +386,20 @@
     <comment></comment>
     <requestid>794554</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>2055c3bdf67f67a26e7faccc90a3fe36</srcmd5>
+    <version>21.2.1</version>
+    <time>1591379983</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.2.1:
+  * #426: Restored lenience on startup when entry point
+    metadata is missing.
+  * #423: Avoid RecursionError when initializing backends
+    when a limit is supplied.
+
+- Fix the requirements to match reality of setup.cfg
+
+- %python3_only -&gt; %python_alternative</comment>
+    <requestid>810904</requestid>
+  </revision>
 </revisionlist>

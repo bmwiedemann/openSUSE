@@ -19,16 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-keyring
-Version:        21.2.0
+Version:        21.2.1
 Release:        0
 Summary:        System keyring service access from Python
 License:        Python-2.0 AND MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/keyring
 Source:         https://files.pythonhosted.org/packages/source/k/keyring/keyring-%{version}.tar.gz
 BuildRequires:  %{python_module SecretStorage >= 3}
 BuildRequires:  %{python_module entrypoints}
-BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module pytest >= 3.5}
 BuildRequires:  %{python_module setuptools >= 17.1}
 BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
@@ -37,8 +36,11 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-SecretStorage >= 3
 Requires:       python-entrypoints
+Requires:       python-importlib-metadata
 Requires:       python-jeepney >= 0.4.2
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -57,15 +59,22 @@ sed -i -e 's,--flake8,,' -e 's,--black,,' -e 's,--cov,,' pytest.ini
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/keyring
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative keyring
+
+%postun
+%python_uninstall_alternative keyring
+
 %files %{python_files}
 %doc README.rst CHANGES.rst
 %license LICENSE
-%python3_only %{_bindir}/keyring
+%python_alternative %{_bindir}/keyring
 %{python_sitelib}/keyring-%{version}-py*.egg-info
 %{python_sitelib}/keyring/
 
