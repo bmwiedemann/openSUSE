@@ -199,4 +199,12 @@
     <comment>- switch to python 3.x only client</comment>
     <requestid>785571</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d3138192376080e1954bd7e70de7050a</srcmd5>
+    <version>2.0.0</version>
+    <time>1591380815</time>
+    <user>dimstar_suse</user>
+    <comment>Ussuri Update</comment>
+    <requestid>803585</requestid>
+  </revision>
 </revisionlist>
