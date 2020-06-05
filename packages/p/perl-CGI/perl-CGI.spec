@@ -17,7 +17,7 @@
 
 
 Name:           perl-CGI
-Version:        4.47
+Version:        4.48
 Release:        0
 %define cpan_name CGI
 Summary:        Handle Common Gateway Interface requests and responses

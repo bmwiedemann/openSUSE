@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun  2 15:31:48 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.48
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.48 2020-06-02
+  
+      [ FIX ]
+      - fix CGI::Cookie->bake() doesn't work with mod_perl redirects (GH #240)
+      - thanks to sherrardb for the PR (GH #241)
+  
+
+-------------------------------------------------------------------
 Sat May  2 03:07:28 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 4.47
