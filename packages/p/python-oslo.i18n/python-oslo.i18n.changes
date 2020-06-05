@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 12 09:43:53 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.0.1
+  - Use unittest.mock instead of third party mock
+  - tox: Trivial cleanup
+  - Update hacking for Python3
+  - Deprecate Message.translate in favor of Message.translation
+  - remove outdated header
+  - Integrate sphinxcontrib-apidoc
+  - Imported Translations from Zanata
+  - Allow Message.translate to handle unhashable inputs
+  - tox: Keeping going with docs
+  - Update master for stable/train
+  - [ussuri][goal] Drop python 2.7 support and testing
+
+-------------------------------------------------------------------
 Sat Mar 14 12:03:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only builds
