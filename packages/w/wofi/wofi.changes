@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Thu Jun  4 15:46:59 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Switch from URL-based Source line to _service file
+  * remote couldn't provide stable source ball
+
+-------------------------------------------------------------------
+Mon Apr 20 08:53:43 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Switch to URL-based Source line. Use %autosetup. Improve
+  description of wofi-devel.
+
+-------------------------------------------------------------------
+Wed Apr 15 15:29:27 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Updated spec file to use general meson macros
+- Added devel package as default meson build does it
+- Update to version v1.1.2:
+  * Wofi properly shuts down if its window is closed in normal
+    window mode
+  * Removed threads from the dependencies
+  * Pressing a key with no modifier which is bound with a
+    modifier will now correctly focus the search box
+  * Added support for using \t as a separator in dmenu mode
+  * Modes are no longer loaded on their own thread
+  * Replaced 1 with TRUE when setting
+    gtk-application-prefer-dark-theme
+  * Removed debug print
+  * add switch to use the dark gtk theme
+
+-------------------------------------------------------------------
+Sat Nov 16 23:54:00 UTC 2019 - Alexander Graul <agraul@suse.com>
+
+- Initial Package
