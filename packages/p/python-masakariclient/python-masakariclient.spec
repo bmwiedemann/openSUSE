@@ -18,13 +18,13 @@
 
 %global oldpython python
 Name:           python-masakariclient
-Version:        5.5.0
+Version:        6.0.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Masakari
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/%{name}
-Source0:        https://files.pythonhosted.org/packages/source/p/python-masakariclient/python-masakariclient-5.5.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-masakariclient/python-masakariclient-6.0.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable
 BuildRequires:  python3-ddt
@@ -83,8 +83,8 @@ This package contains the documentation.
 %{py3_build}
 
 # Build HTML docs and man page
-PBR_VERSION=5.5.0 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=5.5.0 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=6.0.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=6.0.0 %sphinx_build -b man doc/source doc/build/man
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install

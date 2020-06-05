@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 12 09:59:06 UTC 2020 - cloud-devel@suse.de
+
+- update to version 6.0.0
+  - Update master for stable/train
+  - Cleanup py27 support
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - Update operator guide documentation
+  - Update hacking for Python3
+
+-------------------------------------------------------------------
 Wed Mar 11 12:59:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only
