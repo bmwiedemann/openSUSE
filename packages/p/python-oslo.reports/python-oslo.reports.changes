@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 12 09:44:20 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.0.1
+  - Exclude tests from apidoc
+  - trivial: Remove cruft from sphinx config file
+  - Update master for stable/train
+  - tox: Keeping going with docs
+  - Use unittest.mock instead of third party mock
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - remove outdated header
+  - Switch to Ussuri jobs
+  - Switch from 'collections' -> 'collections.abc'
+  - tox: Add missing deps for 'releasenotes' job
+  - Update the constraints url
+  - Update hacking for Python3
+  - tox: Trivial cleanup
+
+-------------------------------------------------------------------
 Sat Mar 14 15:37:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only builds
