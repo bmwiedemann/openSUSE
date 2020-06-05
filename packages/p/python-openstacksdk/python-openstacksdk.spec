@@ -19,29 +19,27 @@
 # and cause timeouts due to swapping. Disabling for now
 %define with_tests 0
 Name:           python-openstacksdk
-Version:        0.36.2
+Version:        0.46.0
 Release:        0
 Summary:        An SDK for building applications to work with OpenStack
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/openstacksdk
-Source0:        https://files.pythonhosted.org/packages/source/o/openstacksdk/openstacksdk-0.36.2.tar.gz
-# https://review.opendev.org/692323
-Patch0:         0001-Increase-test-timeout-for-2-tests-in-TestImageProxy-.patch
+Source0:        https://files.pythonhosted.org/packages/source/o/openstacksdk/openstacksdk-0.46.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 3.12
 BuildRequires:  python3-appdirs >= 1.3.0
 BuildRequires:  python3-beautifulsoup4
-BuildRequires:  python3-decorator >= 3.4.0
+BuildRequires:  python3-ddt
+BuildRequires:  python3-decorator >= 4.4.1
 BuildRequires:  python3-deprecation
-BuildRequires:  python3-devel
-BuildRequires:  python3-dogpile.cache >= 0.6.2
+BuildRequires:  python3-dogpile.cache >= 0.6.5
 BuildRequires:  python3-extras
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-jmespath >= 0.9.0
 BuildRequires:  python3-jsonpatch >= 1.16
 BuildRequires:  python3-jsonschema
-BuildRequires:  python3-keystoneauth1 >= 3.16.0
+BuildRequires:  python3-keystoneauth1 >= 3.18.0
 BuildRequires:  python3-mock
 BuildRequires:  python3-munch >= 2.1.0
 BuildRequires:  python3-netifaces >= 0.10.4
@@ -77,12 +75,12 @@ Group:          Development/Languages/Python
 Requires:       python3-PyYAML >= 3.12
 Requires:       python3-appdirs >= 1.3.0
 Requires:       python3-cryptography >= 2.1
-Requires:       python3-decorator >= 3.4.0
-Requires:       python3-dogpile.cache >= 0.6.2
+Requires:       python3-decorator >= 4.4.1
+Requires:       python3-dogpile.cache >= 0.6.5
 Requires:       python3-iso8601 >= 0.1.11
 Requires:       python3-jmespath >= 0.9.0
 Requires:       python3-jsonpatch >= 1.16
-Requires:       python3-keystoneauth1 >= 3.16.0
+Requires:       python3-keystoneauth1 >= 3.18.0
 Requires:       python3-munch >= 2.1.0
 Requires:       python3-netifaces >= 0.10.4
 Requires:       python3-os-service-types >= 1.7.0
@@ -115,7 +113,7 @@ Summary:        %{summary} - Documentation
 Group:          Documentation/HTML
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
-Requires:       python3-openstacksdk = %{version}
+BuildRequires:  python3-sphinxcontrib-svg2pdfconverter
 
 %description -n python-openstacksdk-doc
 The openstacksdk is a library for building applications to work
@@ -128,7 +126,7 @@ The openstacksdk is a collection of libraries for building
 applications to work with OpenStack clouds.
 
 %prep
-%autosetup -p1 -n openstacksdk-0.36.2
+%autosetup -p1 -n openstacksdk-0.46.0
 %py_req_cleanup
 sed -i -e 's,coverage.*,,' test-requirements.txt || true
 sed -i -e "s,'sphinx.ext.intersphinx'\,,," doc/source/conf.py
@@ -139,7 +137,7 @@ rm openstack/tests/unit/test_stats.py
 
 %build
 %py3_build
-PBR_VERSION=0.36.2 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=0.46.0 %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install

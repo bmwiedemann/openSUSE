@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Tue May 12 12:33:57 UTC 2020 - cloud-devel@suse.de
+
+- removed 0001-Increase-test-timeout-for-2-tests-in-TestImageProxy-.patch
+- update to version 0.46.0
+  - Add method for bulk creating objects.
+  - Add router add/remove route operations
+  - Keep connection backrefs with weakref.proxy
+  - Increase test timeout for 2 tests in TestImageProxy class
+  - Update the constraints url
+  - Add Octavia quota to the SDK docs
+  - Fix microversion negotiation in some bare metal node call
+  - Add bulk port create.
+  - Add support for additional volume backup options
+  - Add application credential CRUD support
+  - Fix the wrong doc use oslo_conf param
+  - Run fetch-subunit-output role conditionally
+  - Add a non-voting ironic-inspector job
+  - Fix server for later microversion
+  - Support for stateless security groups
+  - Add availability_zone param to load balancer
+  - Fix duplicated words issue like "was not not found"
+  - Support uploading image from data and stdin
+  - Remove duplicate job definition
+  - Add allowed_cidrs param to load balancer listener
+  - Fix aggregate functional test for id restriction
+  - Change of auth url and regions
+  - Raise hacking to 2.x
+  - Add availability zone and availability zone profile resources to load balancer
+  - Replace six.iteritems() with .items()
+  - Update deps for tox venv target
+  - Include user_id attribute in volume information
+  - Lay a foundation for the project cleanup
+  - Add reset_interfaces argument to patch_node
+  - fix "How To Contribute" url
+  - Revert "Switch to futurist for concurrency"
+  - Update master for stable/train
+  - Add clustering update_action
+  - Add unit test for rackspace block-storage workaround
+  - Add support for Federation Protocols
+  - Switch stable ansible job to 2.8
+  - Build PDF docs
+  - baremetal node: 'error' is a failed state
+  - Add bulk creation of rules for Security Group.
+  - Add support for Node tainted field
+  - Use the bifrost bionic CI job
+  - Start supporting type info
+  - "qos_network_policy_id" attribute added to port resource
+  - Include "fields" to "SecurityGroup" query parameters
+  - Consistent normalization of Machine objects in the cloud layer
+  - baremetal: fail-less mode for wait_for_nodes_provision_state
+  - Re-add nodepool functional test
+  - Update Rackspace vendor profile for cinder v2
+  - Volume.backup API attr name fixes
+  - Switch to Ussuri jobs
+  - Update to hacking 3.0
+  - baremetal-introspection: add manage_boot argument to start_introspection
+  - Rationalize examples and functional extra config loading
+  - Added missing {user, project}_domain_name in Api
+  - Update local hacking checks
+  - Switch to futurist for concurrency
+  - Add support for Identity Providers
+  - Implement If-Match support for Neutron resources
+  - Normalise create_coe_cluster{,_template} results
+  - Replace assertItemsEqual with assertCountEqual
+  - Add port property: ip_allocation
+  - Import generate_temp_url from swiftclient
+  - Fix error handling in network trunks operations
+  - Use generated list of services instead of metaclass
+  - Fix .. note:: rendering in doc
+  - Extract check temp_url_key logic
+  - Set max_microversion to 2.53 for hypervisors
+  - Re-add functional tests on flavor content
+  - Make proxy honor raise_exc in REST primitives
+  - Make the bifrost job non-voting
+  - Handle HTTP errors in add/remove router interface calls
+  - Turn off test log capture for now
+  - Set min version to test node retirement
+  - Cleanup doc/source/conf.py
+  - Increase dogpile version for Py3.7 compatibility
+  - Add description field to portforwarding NAT rules
+  - Add support for not including the ID in creation requests
+  - Return uuid alias for coe_cluster in non strict mode
+  - Remove python2 from project-template
+  - CI: add ironic-python-agent-builder to the ironic job
+  - Fix service_type test for magnum in gate
+  - Add dns_publish_fixed_ip attribute to subnets
+  - Add support for federation mappings
+  - Remove kwargs validation for identity project updates
+  - Change default image type in the OTC vendor profile
+  - Support vendor data in configdrive building
+  - [tests] Improve devstack/post playbook efficiency
+  - Bump the openstackdocstheme extension to 1.20
+  - Fix: Set image name correctly if filename is not passed
+  - Fix error handling on add/remove router iface calls
+  - Fixes get_user when identity responses are paged
+  - update OVH vendor entry
+  - tox: Keeping going with docs
+  - Add python-requires entry indicating 3.5 is required
+  - Bump min version of decorator
+  - Stop supporting python2
+  - Handle old status-less placement service
+  - Adding basic implementation for Accelerator(Cyborg)
+  - Add retired and retired_reason fields to baremetal node
+  - Fix bug in object storage container creation setting metadata
+  - Remove extra python2 test jobs
+  - Small cleanups after Python2 drop
+  - Fail a job for ansible modules with message
+  - Fix reno index list indent
+  - Add Release notes entry for Identity v3 IDP, Mapping and Protocol
+  - Add return cluster_id when query actions list
+  - Expose baremetal Node.owner
+  - Use has_service in functional test's require_service
+
+-------------------------------------------------------------------
 Mon Mar 23 17:21:41 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add obsoletes
