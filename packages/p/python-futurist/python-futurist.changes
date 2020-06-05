@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 12 09:59:29 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.1.1
+  - Make PrettyTable optional
+  - Switch to Ussuri jobs
+  - Update master for stable/train
+  - Update the constraints url
+  - Fix Calling waiters.wait_for_any() blocks if future has called Condition.wait()
+  - Sync Sphinx requirement
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - Add release notes link to README
+  - Bump the openstackdocstheme extension to 1.20
+  - Update hacking for Python3
+
+-------------------------------------------------------------------
 Sat Mar 14 12:31:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only builds
