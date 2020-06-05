@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 26 09:08:26 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.52.1
+  * required for Firefox 77.0
+  Notable changes
+  * Update NSS to support PKCS#11 v3.0 (bmo#1603628)
+  * Support new PKCS #11 v3.0 Message Interface for AES-GCM and
+    ChaChaPoly (bmo#1623374)
+  * Integrate AVX2 ChaCha20, Poly1305, and ChaCha20Poly1305 from HACL*
+    (bmo#1612493)
+  * CVE-2020-12399 - Force a fixed length for DSA exponentiation
+    (bmo#1631576, boo#1171978)
+- removed obsolete nss-kremlin-ppc64le.patch
+
+-------------------------------------------------------------------
 Wed Apr 29 13:54:42 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Set NSS_ENABLE_WERROR=0 in order to fix boo#1169746.
@@ -31,7 +46,7 @@ Tue Mar 31 15:14:11 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 -------------------------------------------------------------------
 Tue Mar 31 09:31:14 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
-- Add patch nss-kremlin-ppc64le.patch to fix ppc and s390x builds  
+- Add patch nss-kremlin-ppc64le.patch to fix ppc and s390x builds
 
 -------------------------------------------------------------------
 Mon Mar 30 13:35:25 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
