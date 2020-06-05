@@ -1,7 +1,7 @@
 #
 # spec file for package python-fastimport
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -28,6 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/f/fastimport/fast
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,17 +48,30 @@ git-remote-hg use a slightly modified version of it.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/fast-import-query
+%python_clone -a %{buildroot}%{_bindir}/fast-import-info
+%python_clone -a %{buildroot}%{_bindir}/fast-import-filter
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec -m unittest fastimport.tests.test_suite
 
+%post
+%python_install_alternative fast-import-query
+%python_install_alternative fast-import-info
+%python_install_alternative fast-import-filter
+
+%postun
+%python_uninstall_alternative fast-import-query
+%python_uninstall_alternative fast-import-info
+%python_uninstall_alternative fast-import-filter
+
 %files %{python_files}
 %doc NEWS README.md
 %license COPYING
 %{python_sitelib}/fastimport*
-%python3_only %{_bindir}/fast-import-filter
-%python3_only %{_bindir}/fast-import-info
-%python3_only %{_bindir}/fast-import-query
+%python_alternative %{_bindir}/fast-import-filter
+%python_alternative %{_bindir}/fast-import-info
+%python_alternative %{_bindir}/fast-import-query
 
 %changelog
