@@ -42,7 +42,6 @@ unsorted:
   - DVDStyler 
   - DVDStyler-lang 
   - DevIL-devel 
-  - DisplayCAL 
   - EternalTerminal 
   - FAudio-devel 
   - FAudio-devel-32bit: [x86_64] 
@@ -1038,7 +1037,6 @@ unsorted:
   - bamf-devel 
   - bamf-doc 
   - bandwidth 
-  - barbie_seahorse_adventures 
   - barcode 
   - barcode-devel 
   - barrier 
@@ -1632,7 +1630,6 @@ unsorted:
   - chafa 
   - chafa-devel 
   - chafa-doc 
-  - chameleon 
   - changelog-generator-data 
   - charliecloud 
   - charliecloud-doc 
@@ -2522,7 +2519,6 @@ unsorted:
   - dosemu 
   - dotconf-devel 
   - double-conversion-devel 
-  - double-cross 
   - dovecot 
   - dovecot23 
   - dovecot23-backend-mysql 
@@ -4439,9 +4435,6 @@ unsorted:
   - giflib-devel-32bit: [x86_64] 
   - giflib-progs 
   - gifsicle 
-  - giggle 
-  - giggle-devel 
-  - giggle-lang 
   - gigolo 
   - gigolo-lang 
   - gimp-devel 
@@ -4499,6 +4492,9 @@ unsorted:
   - git-p4 
   - git-remote-gcrypt 
   - git-review 
+  - git-subrepo 
+  - git-subrepo-bash-completion 
+  - git-subrepo-zsh-completion 
   - git-sync 
   - git-test 
   - gitolite 
@@ -6177,6 +6173,7 @@ unsorted:
   - jboss-websocket-1.0-api-javadoc 
   - jc 
   - jcasgen-maven-plugin 
+  - jcat-tool 
   - jchardet 
   - jchardet-javadoc 
   - jcifs 
@@ -7866,8 +7863,8 @@ unsorted:
   - libSHERPA-MC0-config 
   - libSM-devel-32bit: [x86_64] 
   - libSM6-32bit: [x86_64] 
-  - libSPIRV-Tools-suse17 
-  - libSPIRV-Tools-suse17-32bit: [x86_64] 
+  - libSPIRV-Tools-suse18 
+  - libSPIRV-Tools-suse18-32bit: [x86_64] 
   - libSampleICC-devel 
   - libSampleICC1 
   - libSavitar-devel 
@@ -10014,6 +10011,8 @@ unsorted:
   - libjbig-devel-32bit: [x86_64] 
   - libjbig2dec0 
   - libjbig2dec0-32bit: [x86_64] 
+  - libjcat-devel 
+  - libjcat1 
   - libjd0 
   - libjim0_75 
   - libjpeg62 
@@ -11223,7 +11222,6 @@ unsorted:
   - libproxy1-config-kde-32bit: [x86_64] 
   - libproxy1-networkmanager-32bit: [x86_64] 
   - libproxy1-pacrunner-webkit-32bit: [x86_64] 
-  - libpsiconv6 
   - libpskc-devel 
   - libpsl-devel 
   - libpsl5-32bit: [x86_64] 
@@ -13249,7 +13247,6 @@ unsorted:
   - lonote 
   - lookbook 
   - loook 
-  - lostfeathers 
   - loudmouth-devel 
   - loudmouth-doc 
   - lout 
@@ -14822,7 +14819,6 @@ unsorted:
   - ndesk-dbus-glib 
   - ndesk-dbus-glib-devel 
   - ndpi-tools 
-  - ndpmon 
   - ndppd 
   - neard 
   - neard-devel 
@@ -16111,7 +16107,6 @@ unsorted:
   - otrs-doc 
   - otrs-itsm 
   - otter-browser 
-  - ovirt-guest-agent-common 
   - ovmf-tools: [x86_64] 
   - ovn 
   - ovn-central 
@@ -18367,8 +18362,6 @@ unsorted:
   - psi+-plugins-translateplugin 
   - psi+-plugins-videostatusplugin 
   - psi+-plugins-watcherplugin 
-  - psiconv 
-  - psiconv-devel 
   - psl 
   - psl-make-dafsa 
   - pspg 
@@ -18447,7 +18440,6 @@ unsorted:
   - pw3270 
   - pw3270-branding 
   - pw3270-devel 
-  - py-fishcrypt 
   - pybugz-common 
   - pydf 
   - pyenv 
@@ -19812,6 +19804,7 @@ unsorted:
   - python3-gluster 
   - python3-gmconfig 
   - python3-gmsh 
+  - python3-gns3fy 
   - python3-gnucash 
   - python3-gobject-Dee 
   - python3-gobject-devel 
@@ -20598,6 +20591,7 @@ unsorted:
   - python3-pwquality 
   - python3-py-cpuinfo 
   - python3-py-espeak-ng 
+  - python3-py-multihash 
   - python3-py-radix 
   - python3-py-ubjson 
   - python3-py2pack 
@@ -21367,6 +21361,7 @@ unsorted:
   - python3-validate_email 
   - python3-validators 
   - python3-vapoursynth 
+  - python3-varint 
   - python3-varlink 
   - python3-vcrpy 
   - python3-vcver 
@@ -24453,7 +24448,6 @@ unsorted:
   - solaar 
   - solaar-doc 
   - solaar-udev 
-  - solarfighter 
   - solarus 
   - solarus-devel 
   - solarus-gui 
@@ -24461,8 +24455,6 @@ unsorted:
   - solarus-quest-editor 
   - solarus-quest-editor-assets 
   - solarus-quest-editor-lang 
-  - solarwolf 
-  - solarwolf_we 
   - solfege 
   - solid-devel 
   - solid-devel-32bit: [x86_64] 
@@ -33200,6 +33192,7 @@ unsorted:
   - typelib-1_0-ICal-3_0 
   - typelib-1_0-ICalGLib-3_0 
   - typelib-1_0-Ido3-0_1 
+  - typelib-1_0-Jcat-1_0 
   - typelib-1_0-Keybinder-0_0 
   - typelib-1_0-Keybinder-3_0 
   - typelib-1_0-Libags-3_0 
