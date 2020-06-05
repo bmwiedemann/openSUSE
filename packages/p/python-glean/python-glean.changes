@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun  4 16:13:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.18.0:
+  * write one resolv config
+  * Switch to Fedora 30 jobs
+  * Fix a handful of bugs in config-drive processing
+  * Remove trusty job
+  * Move opensuse jobs to experimental for now
+  * Add support for SLES
+  * Do not bring up udev assigned interfaces
+  * Update testing to opensuse 15
+
+-------------------------------------------------------------------
 Tue May 26 06:34:26 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

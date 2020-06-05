@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-glean
-Version:        1.15.0
+Version:        1.18.0
 Release:        0
 Summary:        Program to write static config from config-drive
 License:        Apache-2.0
@@ -35,7 +35,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Sphinx >= 1.1.2}
 BuildRequires:  %{python_module mock >= 1.0}
-BuildRequires:  %{python_module oslosphinx}
 BuildRequires:  %{python_module oslotest >= 1.1.0.0a1}
 BuildRequires:  %{python_module python-subunit}
 BuildRequires:  %{python_module testrepository >= 0.0.18}

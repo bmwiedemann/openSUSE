@@ -47,4 +47,20 @@
     <comment></comment>
     <requestid>809365</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a16e47ffc32558c31f0b138c5e3d300b</srcmd5>
+    <version>1.18.0</version>
+    <time>1591381190</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.18.0:
+  * write one resolv config
+  * Switch to Fedora 30 jobs
+  * Fix a handful of bugs in config-drive processing
+  * Remove trusty job
+  * Move opensuse jobs to experimental for now
+  * Add support for SLES
+  * Do not bring up udev assigned interfaces
+  * Update testing to opensuse 15</comment>
+    <requestid>811558</requestid>
+  </revision>
 </revisionlist>
