@@ -1,7 +1,7 @@
 #
 # spec file for package python-yaql
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,20 +27,8 @@ URL:            https://launchpad.net/yaql
 Source0:        https://files.pythonhosted.org/packages/source/y/yaql/yaql-1.1.3.tar.gz
 BuildRequires:  openstack-macros
 # for testing
-BuildRequires:  python2-Sphinx
-BuildRequires:  python2-fixtures
-BuildRequires:  python2-oslosphinx
-BuildRequires:  python2-pbr
-BuildRequires:  python2-ply
-BuildRequires:  python2-python-dateutil
-BuildRequires:  python2-python-subunit
-BuildRequires:  python2-six
-BuildRequires:  python2-testrepository
-BuildRequires:  python2-testscenarios
-BuildRequires:  python2-testtools
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-fixtures
-BuildRequires:  python3-oslosphinx
 BuildRequires:  python3-pbr
 BuildRequires:  python3-ply
 BuildRequires:  python3-python-dateutil
@@ -49,21 +37,7 @@ BuildRequires:  python3-six
 BuildRequires:  python3-testrepository
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
-Requires:       python-Babel
-Requires:       python-ply
-Requires:       python-python-dateutil
-Requires:       python-six
-Conflicts:      %{oldpython}-yaql < %version-%release
 BuildArch:      noarch
-%if 0%{?suse_version}
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-%else
-# on RDO, update-alternatives is in chkconfig
-Requires(post): chkconfig
-Requires(postun): chkconfig
-%endif
-%python_subpackages
 
 %description
 YAQL (Yet Another Query Language) is an embeddable and extensible query
@@ -72,33 +46,42 @@ has a vast and comprehensive standard library of frequently used querying
 functions and can be extend even further with user-specified functions. YAQL is
 written in python and is distributed via PyPI.
 
+%package -n python3-yaql
+Summary:        YAQL - Yet Another Query Language
+Group:          Development/Languages/Python
+Requires:       python3-Babel
+Requires:       python3-ply
+Requires:       python3-python-dateutil
+Requires:       python3-six
+Conflicts:      %{oldpython}-yaql < %version-%release
+
+%description -n python3-yaql
+YAQL (Yet Another Query Language) is an embeddable and extensible query
+language, that allows performing complex queries against arbitrary objects. It
+has a vast and comprehensive standard library of frequently used querying
+functions and can be extend even further with user-specified functions. YAQL is
+written in python and is distributed via PyPI.
+
+This package contains the Python 3.x module.
+
 %prep
 %autosetup -p1 -n yaql-1.1.3
 %py_req_cleanup
 
 %build
-%{python_build}
+%{py3_build}
 
 %install
-%{python_install}
-%python_clone -a %{buildroot}%{_bindir}/yaql
-
-%post
-%{python_install_alternative yaql}
-
-%postun
-%python_uninstall_alternative yaql
+%{py3_install}
 
 %check
-%{python_expand rm -rf .testrepository
-$python setup.py testr
-}
+PYTHON=python3 python3 setup.py testr
 
-%files %{python_files}
+%files -n python3-yaql
 %license LICENSE
 %doc ChangeLog README.rst
-%python_alternative %{_bindir}/yaql
-%{python_sitelib}/yaql
-%{python_sitelib}/yaql*.egg-info
+%{_bindir}/yaql
+%{python3_sitelib}/yaql
+%{python3_sitelib}/yaql*.egg-info
 
 %changelog
