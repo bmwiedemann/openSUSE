@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue May 12 09:53:04 UTC 2020 - cloud-devel@suse.de
+
+- update to version 17.0.0
+  - [Trivial] FUP: Enhanced description for 'server list --config-drive' help
+  - Make 'server list --config-drive' a boolean option
+  - Update to hacking 3.0
+  - Add a check for --config-drive option on nova boot
+  - Add release note for bug 1845322
+  - Add aggregate-cache-images command and client routines
+  - Remove cells v1 and extension commands and APIs
+  - Bump to hacking 2.x
+  - Stop supporting and testing python2
+  - Add functional test for migration-list in v2.80
+  - Stop silently ignoring invalid 'nova boot --hint' options
+  - Add images.GlanceManager.find_images() bulk query
+  - doc: Update Testing document
+  - Remove six
+  - Microversion 2.83 - Add more filters for the nova list command
+  - doc: Fix supported version descriptions
+  - Microversion 2.84 - action event fault details
+  - setup.cfg: Various Python 3 fixes
+  - Switch to Ussuri jobs
+  - Microversion 2.85: Change volume-update CLI
+  - Random cleanups
+  - Microversion 2.87 - Stable device boot from volume rescue
+  - Microversion 2.82 - nova cyborg interaction
+  - Don't print user_data for 'nova show'
+  - FUP: Add volume-update CLI pre V285 tests
+  - trivial: Remove 'u' prefix from string
+  - Clarify --migration-type migration value as cold migration
+  - Microversion 2.86 - Extra spec validation
+  - Add minor version [21] to the test_versions
+  - Microversion 2.80: Add user_id/project_id to migration-list API
+  - PDF documentation build
+  - Update master for stable/train
+  - tox: Configure 'ignore_basepython_conflict'
+  - doc: Add support microversions for options
+
+-------------------------------------------------------------------
 Mon Mar 23 12:29:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add obsoletes
