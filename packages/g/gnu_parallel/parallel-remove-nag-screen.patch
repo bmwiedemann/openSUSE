@@ -6,10 +6,10 @@ Date:
  src/sem      |    2 ++
  2 files changed, 4 insertions(+)
 
-Index: parallel-20200422/src/parallel
+Index: parallel-20200522/src/parallel
 ===================================================================
---- parallel-20200422.orig/src/parallel
-+++ parallel-20200422/src/parallel
+--- parallel-20200522.orig/src/parallel
++++ parallel-20200522/src/parallel
 @@ -2028,7 +2028,9 @@ sub parse_options(@) {
      #
      # If you want GNU Parallel to be maintained in the future keep
@@ -17,13 +17,13 @@ Index: parallel-20200422/src/parallel
 +    if (0) {
      citation_notice();
 +    }
-     # Seriously: YOU will be harming free software by removing the
-     # notice.  You make it harder to justify spending time developing
+     # Seriously: _YOU_ will be harming free software by removing the
+     # notice.  _YOU_ make it harder to justify spending time developing
      # it. If you *do* remove the line, please email
-Index: parallel-20200422/src/sem
+Index: parallel-20200522/src/sem
 ===================================================================
---- parallel-20200422.orig/src/sem
-+++ parallel-20200422/src/sem
+--- parallel-20200522.orig/src/sem
++++ parallel-20200522/src/sem
 @@ -2028,7 +2028,9 @@ sub parse_options(@) {
      #
      # If you want GNU Parallel to be maintained in the future keep
@@ -31,6 +31,6 @@ Index: parallel-20200422/src/sem
 +    if (0) {
      citation_notice();
 +    }
-     # Seriously: YOU will be harming free software by removing the
-     # notice.  You make it harder to justify spending time developing
+     # Seriously: _YOU_ will be harming free software by removing the
+     # notice.  _YOU_ make it harder to justify spending time developing
      # it. If you *do* remove the line, please email

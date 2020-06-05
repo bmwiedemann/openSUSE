@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  5 14:53:23 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20200522
+  * While running a job $PARALLEL_JOBSLOT is the jobslot of the
+    job. It is equal to {%} unless the job is being retried. See
+    {%} for details.
+
+-------------------------------------------------------------------
 Tue Apr 28 21:29:53 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20200422
