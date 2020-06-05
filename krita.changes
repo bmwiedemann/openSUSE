@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  4 14:35:42 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with Qt 5.15:
+  * 0001-Fix-build-with-Qt-5.15.patch
+
+-------------------------------------------------------------------
 Thu Mar 26 15:26:54 UTC 2020 - wbauer@tmo.at
 
 - Update to 4.2.9:
