@@ -1,7 +1,7 @@
 #
 # spec file for package courier-imap
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           courier-imap
-Version:        5.0.8
+Version:        5.0.10
 Release:        0
 Summary:        An IMAP and POP3 Server for Maildir MTAs
 License:        GPL-3.0-or-later
@@ -44,6 +44,8 @@ Patch2:         %{name}-ulimit_conf.patch
 ### Patch for upstream:
 ## fixes typo in Makefile.am
 Patch3:         %{name}-Makefile.patch
+# PATCH-FIX-SLE courier-imap-stdc.patch - rewrite C99 construction to C89 as GCC 4.8 doesn't enable C99 by default
+Patch4:         %{name}-stdc.patch
 BuildRequires:  audit-libs
 BuildRequires:  courier-authlib-devel >= 0.68
 BuildRequires:  courier-unicode-devel >= 2.0
@@ -101,6 +103,7 @@ install the entire Courier server.
 %patch0
 %patch2
 %patch3
+%patch4
 
 %build
 %configure \

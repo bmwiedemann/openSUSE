@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 28 11:44:19 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.0.10 
+  * tcpd/starttls.c (dossl): Start client after negotiating SSL, in
+    order to allow EXTERNAL client certificate authentication.
+  * Fix virtual IP and hostname handling when using GnuTLS for SSL.
+  * imap, pop3: include remote port TCP port number together with the
+    IP address, in log messages.
+- add courier-imap-stdc.patch to remove 'for' loop initial declarations
+
+-------------------------------------------------------------------
 Tue Nov 12 15:23:15 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.0.8
