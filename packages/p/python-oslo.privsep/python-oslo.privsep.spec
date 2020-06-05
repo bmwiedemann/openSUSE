@@ -17,21 +17,19 @@
 
 
 Name:           python-oslo.privsep
-Version:        1.33.3
+Version:        2.1.1
 Release:        0
 Summary:        OpenStack library for privilege separation
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.privsep
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.privsep/oslo.privsep-1.33.3.tar.gz
-# https://review.opendev.org/#/c/713337/
-Patch1:         0001-Disable-logger-validation-during-unit-testing.patch
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.privsep/oslo.privsep-2.1.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cffi >= 1.7.0
 BuildRequires:  python3-eventlet >= 0.18.2
-BuildRequires:  python3-greenlet >= 0.4.10
+BuildRequires:  python3-greenlet >= 0.4.14
 BuildRequires:  python3-mock
-BuildRequires:  python3-msgpack >= 0.5.0
+BuildRequires:  python3-msgpack >= 0.6.0
 BuildRequires:  python3-oslo.config >= 5.2.0
 BuildRequires:  python3-oslo.i18n >= 3.15.3
 BuildRequires:  python3-oslo.log >= 3.36.0
@@ -50,8 +48,8 @@ Summary:        OpenStack library for privilege separation
 Group:          Development/Languages/Python
 Requires:       python3-cffi >= 1.7.0
 Requires:       python3-eventlet >= 0.18.2
-Requires:       python3-greenlet >= 0.4.10
-Requires:       python3-msgpack >= 0.5.0
+Requires:       python3-greenlet >= 0.4.14
+Requires:       python3-msgpack >= 0.6.0
 Requires:       python3-oslo.config >= 5.2.0
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.log >= 3.36.0
@@ -74,7 +72,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for oslo.privsep
 
 %prep
-%autosetup -p1 -n oslo.privsep-1.33.3
+%autosetup -p1 -n oslo.privsep-2.1.1
 %py_req_cleanup
 
 %build

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May 12 09:47:16 UTC 2020 - cloud-devel@suse.de
+
+- removed 0001-Disable-logger-validation-during-unit-testing.patch
+- update to version 2.1.1
+  - tox: Add missing 'deps' for releasenotes testenv
+  - Switch to Ussuri jobs
+  - Bump the openstackdocstheme extension to 1.20
+  - Add functional tests
+  - trivial: Cleanup Sphinx config file, setup.cfg
+  - Add lock around channel creation
+  - Update hacking for Python3
+  - Use unittest.mock instead of third party mock
+  - Update the constraints url
+  - tox: Trivial cleanup
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - remove outdated header
+  - Disable logger validation during unit testing
+  - Bring sanity to lower-constraints
+  - Update master for stable/train
+  - Make compatible with msgpack 1.0.0
+  - tox: Keeping going with docs
+
+-------------------------------------------------------------------
 Mon Mar 23 12:20:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add obsoletes
