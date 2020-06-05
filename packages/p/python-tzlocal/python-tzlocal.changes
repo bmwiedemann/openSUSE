@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  2 17:17:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.1:
+  - The is_dst flag is wrong for Europe/Dublin on some Unix releases.
+  I changed to another way of determining if DST is in effect or not.
+  - Added support for Python 3.7 and 3.8. Dropped 3.5 although it still works.
+
+-------------------------------------------------------------------
 Wed Mar 11 16:47:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without py2

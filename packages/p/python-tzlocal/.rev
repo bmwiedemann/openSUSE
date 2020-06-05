@@ -87,4 +87,15 @@
     <comment>Staging:I</comment>
     <requestid>783973</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3e1a4e7cea8a2bf9de88d9f501171287</srcmd5>
+    <version>2.1</version>
+    <time>1591380004</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1:
+  - The is_dst flag is wrong for Europe/Dublin on some Unix releases.
+  I changed to another way of determining if DST is in effect or not.
+  - Added support for Python 3.7 and 3.8. Dropped 3.5 although it still works.</comment>
+    <requestid>810919</requestid>
+  </revision>
 </revisionlist>
