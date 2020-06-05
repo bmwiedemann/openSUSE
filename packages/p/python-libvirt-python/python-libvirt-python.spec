@@ -23,7 +23,7 @@
 %define srcname libvirt-python
 Name:           python-libvirt-python
 URL:            https://libvirt.org/
-Version:        6.3.0
+Version:        6.4.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -67,7 +67,7 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
-%doc ChangeLog AUTHORS NEWS README COPYING COPYING.LESSER examples/
+%doc ChangeLog AUTHORS README COPYING COPYING.LESSER examples/
 %{python_sitearch}/*
 %pycache_only %{python3_sitearch}/__pycache__/*
 
