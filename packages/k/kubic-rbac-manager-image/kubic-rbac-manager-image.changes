@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  5 10:36:15 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove "--" from the package list to separate pkgs from
+  arguments: kiwi does this implicit now.
+
+-------------------------------------------------------------------
 Tue Apr 28 09:32:08 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - ca-certificates needs real findutils

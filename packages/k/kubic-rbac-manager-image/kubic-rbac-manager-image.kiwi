@@ -46,7 +46,6 @@
     <package name="rbac-manager"/>
     <package name="ca-certificates"/>
     <package name="ca-certificates-mozilla"/>
-    <package name="--"/>
     <package name="-busybox-findutils"/>
   </packages>
 </image>

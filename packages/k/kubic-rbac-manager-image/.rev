@@ -21,4 +21,13 @@
     <comment>- ca-certificates needs real findutils</comment>
     <requestid>798938</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>16fb1075ab634c68f5baaedc576853cf</srcmd5>
+    <version>1.0.0</version>
+    <time>1591380525</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove &quot;--&quot; from the package list to separate pkgs from
+  arguments: kiwi does this implicit now. (forwarded request 811747 from dimstar)</comment>
+    <requestid>811758</requestid>
+  </revision>
 </revisionlist>
