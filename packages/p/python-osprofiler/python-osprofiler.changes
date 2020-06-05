@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 12 10:04:24 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.1.0
+  - Handle driver initialization errors to avoid service crash
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - Switch to Ussuri jobs
+  - Start README.rst with a better title
+  - Update master for stable/train
+  - Update hacking for Python3
+
+-------------------------------------------------------------------
 Mon Mar 23 12:16:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add obsoletes
