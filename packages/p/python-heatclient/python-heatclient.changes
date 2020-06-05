@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May 12 10:01:12 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.1.0
+  - Cap sphinx for py2 to match global requirements
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - Update hacking for Python3
+  - Cleanup of .keys() from dict_object.keys() *in* operator
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Allow to set poll interval to OSC stack create
+  - Add files-container option for stack create and update
+  - tests: Convert 'test_resources' to mock
+  - Ignore not found when delete in test
+  - Remove mox usage from test_shell
+  - Remove dependency on mox3
+  - Update master for stable/train
+  - Change openstack-dev to openstack-discuss
+  - tests: Pre-mox removal cleanup
+
+-------------------------------------------------------------------
 Mon Mar 23 12:25:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add obsoletes

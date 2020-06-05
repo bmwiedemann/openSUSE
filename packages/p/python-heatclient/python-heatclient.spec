@@ -17,13 +17,13 @@
 
 
 Name:           python-heatclient
-Version:        1.18.0
+Version:        2.1.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Heat
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-heatclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-heatclient/python-heatclient-1.18.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-heatclient/python-heatclient-2.1.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 3.12
 BuildRequires:  python3-cliff >= 2.8.0
@@ -97,14 +97,14 @@ the OpenStack Heat API.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-heatclient-1.18.0
+%autosetup -p1 -n python-heatclient-2.1.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=1.18.0 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=1.18.0 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=2.1.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=2.1.0 %sphinx_build -b man doc/source doc/build/man
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

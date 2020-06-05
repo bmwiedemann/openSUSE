@@ -580,4 +580,12 @@
 - switch to python 3.x only build</comment>
     <requestid>787453</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>02652643064ee784b2280108097c4846</srcmd5>
+    <version>2.1.0</version>
+    <time>1591380617</time>
+    <user>dimstar_suse</user>
+    <comment>Ussuri Update</comment>
+    <requestid>803563</requestid>
+  </revision>
 </revisionlist>
