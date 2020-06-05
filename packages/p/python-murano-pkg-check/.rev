@@ -23,4 +23,17 @@
     <comment>- Switch to stable/queens spec template</comment>
     <requestid>583319</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>01c167ef28f4da40bf3343bdfe0f4d3f</srcmd5>
+    <version>0.3.0</version>
+    <time>1591380985</time>
+    <user>dimstar_suse</user>
+    <comment>- blacklist failing test
+
+- switch to ussuri spec template
+
+- Switch to stable/train spec template
+  * Switch to python3 only</comment>
+    <requestid>811542</requestid>
+  </revision>
 </revisionlist>

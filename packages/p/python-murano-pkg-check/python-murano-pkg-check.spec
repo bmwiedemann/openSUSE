@@ -1,7 +1,7 @@
 #
 # spec file for package python-murano-pkg-check
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,62 +12,71 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%global sname murano-pkg-check
 Name:           python-murano-pkg-check
 Version:        0.3.0
 Release:        0
 Summary:        Murano package validator tool
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            http://docs.openstack.org/developer/murano/
-Source0:        https://files.pythonhosted.org/packages/source/m/murano-pkg-check/murano-pkg-check-%{version}.tar.gz
+URL:            https://docs.openstack.org/developer/murano/
+Source0:        https://files.pythonhosted.org/packages/source/m/murano-pkg-check/murano-pkg-check-0.3.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-PyYAML >= 3.10
-BuildRequires:  python-devel
-BuildRequires:  python-oslo.i18n >= 3.15.3
-BuildRequires:  python-oslotest >= 3.2.0
-BuildRequires:  python-pbr >= 2.0.0
-BuildRequires:  python-python-subunit >= 1.0.0
-BuildRequires:  python-semantic_version
-BuildRequires:  python-setuptools >= 16.0
-BuildRequires:  python-stevedore >= 1.20.0
-BuildRequires:  python-testrepository >= 0.0.18
-BuildRequires:  python-testscenarios >= 0.4
-BuildRequires:  python-testtools >= 2.2.0
-BuildRequires:  python-yaql >= 1.1.3
-Requires:       python-PyYAML >= 3.10
-Requires:       python-oslo.i18n >= 3.15.3
-Requires:       python-semantic_version
-Requires:       python-six >= 1.10.0
-Requires:       python-stevedore >= 1.20.0
-Requires:       python-yaql >= 1.1.3
+BuildRequires:  python3-PyYAML >= 3.10.0
+BuildRequires:  python3-oslo.i18n >= 2.1.0
+BuildRequires:  python3-oslotest
+BuildRequires:  python3-pbr >= 1.8
+BuildRequires:  python3-python-subunit
+BuildRequires:  python3-semantic_version
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-stestr
+BuildRequires:  python3-stevedore >= 1.17.1
+BuildRequires:  python3-testscenarios
+BuildRequires:  python3-yaql >= 1.1.0
 BuildArch:      noarch
 
 %description
 Murano package validator tool
 
+%package -n python3-murano-pkg-check
+Summary:        Murano package validator tool
+Group:          Development/Languages/Python
+Requires:       python3-PyYAML >= 3.10.0
+Requires:       python3-oslo.i18n >= 2.1.0
+Requires:       python3-semantic_version
+Requires:       python3-six >= 1.9.0
+Requires:       python3-stevedore >= 1.17.1
+Requires:       python3-yaql >= 1.1.0
+%if 0%{?suse_version}
+Obsoletes:      python-murano-pkg-check < 0.3.1
+%endif
+
+%description -n python3-murano-pkg-check
+Murano package validator tool
+
 %prep
-%autosetup -n %{sname}-%{version}
+%autosetup -n murano-pkg-check-%{version}
 %py_req_cleanup
 
 %build
-%{py2_build}
+%{py3_build}
 
 %install
-%{py2_install}
+%{py3_install}
 
 %check
-%{__python2} setup.py testr
+%{__python3} -m stestr.cli --test-path=./muranopkgcheck/tests/ \
+  run \
+  --black-regex=muranopkgcheck.tests.test_manager.ManagerTest.test_validate
 
-%files
+%files -n python3-murano-pkg-check
 %doc README.rst
 %license LICENSE
 %{_bindir}/murano-pkg-check
-%{python2_sitelib}/muranopkgcheck
-%{python2_sitelib}/*.egg-info
+%{python3_sitelib}/muranopkgcheck
+%{python3_sitelib}/*.egg-info
 
 %changelog
