@@ -164,4 +164,14 @@
   * * Fix syntax warnings on python 3.8</comment>
     <requestid>783711</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9626026fe0f429bdf610896521bc75cd</srcmd5>
+    <version>0.10.0</version>
+    <time>1591379971</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.0:
+  * Python 2.6 and 3.3 have reached end-of-life and have been deprecated. (issue 175)
+  * Fix race condition when clearing cached parsed expressions. (issue 197)</comment>
+    <requestid>810897</requestid>
+  </revision>
 </revisionlist>
