@@ -42,6 +42,8 @@ Requires:       python-billiard >= 3.6.1
 Requires:       python-kombu >= 4.6.7
 Requires:       python-pytz >= 2016.7
 Requires:       python-vine >= 1.3.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-curses
 Recommends:     python-pyOpenSSL
 Suggests:       python-eventlet
@@ -91,6 +93,7 @@ sed -i -e 's:==:>=:g' requirements/*.txt
 %install
 %if !%{with test}
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/celery
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -101,11 +104,17 @@ sed -i -e 's:==:>=:g' requirements/*.txt
 %endif
 
 %if !%{with test}
+%post
+%python_install_alternative celery
+
+%postun
+%python_uninstall_alternative celery
+
 %files %{python_files}
 %{python_sitelib}/*
 %license LICENSE
 %doc README.rst TODO
-%python3_only %{_bindir}/celery*
+%python_alternative %{_bindir}/celery
 %endif
 
 %changelog

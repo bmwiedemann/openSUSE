@@ -274,4 +274,12 @@
 - Remove no longer needed unpin-pytest.patch</comment>
     <requestid>805558</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>2b503fb35e6eaf1947e5d1e7de2b9a85</srcmd5>
+    <version>4.4.2</version>
+    <time>1591379961</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809824</requestid>
+  </revision>
 </revisionlist>
