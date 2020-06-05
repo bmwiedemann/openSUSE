@@ -24,4 +24,13 @@
     <comment>- Add LICENSE</comment>
     <requestid>796534</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a45f0983f1d9013c864d5956dc9dc4c2</srcmd5>
+    <version>1.0.0</version>
+    <time>1591380539</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove &quot;--&quot; from the package list to separate pkgs from
+  arguments: kiwi does this implicit now. (forwarded request 811749 from dimstar)</comment>
+    <requestid>811760</requestid>
+  </revision>
 </revisionlist>

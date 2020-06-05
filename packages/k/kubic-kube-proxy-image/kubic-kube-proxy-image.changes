@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun  5 10:44:27 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove "--" from the package list to separate pkgs from
+  arguments: kiwi does this implicit now.
+
+-------------------------------------------------------------------
+Mon May  4 17:01:26 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Uninstall busybox-{coreutils,findutils,kbd,kmod,misc,util-linux,
+  and sed}
+
+-------------------------------------------------------------------
 Thu Apr 23 11:59:49 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Add LICENSE 

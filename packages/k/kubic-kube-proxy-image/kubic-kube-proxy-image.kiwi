@@ -40,5 +40,12 @@
   </repository>
   <packages type="bootstrap">
     <package name="kubernetes-proxy"/>
+    <package name="-busybox-coreutils"/>
+    <package name="-busybox-findutils"/>
+    <package name="-busybox-kbd"/>
+    <package name="-busybox-kmod"/>
+    <package name="-busybox-misc"/>
+    <package name="-busybox-util-linux"/>
+    <package name="-busybox-sed"/>
   </packages>
 </image>
