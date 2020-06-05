@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 12 10:05:31 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.1.0
+  - Update hacking for Python3
+  - Switch to Ussuri jobs
+  - fix: typo in tox minversion option
+  - Cleanup py27 support
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - Fix the "image register" command (OSC 5.2.0 regression)
+  - Update master for stable/train
+
+-------------------------------------------------------------------
 Wed Mar 11 12:41:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only

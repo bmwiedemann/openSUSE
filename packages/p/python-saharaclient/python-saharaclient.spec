@@ -17,16 +17,16 @@
 
 
 Name:           python-saharaclient
-Version:        2.3.0
+Version:        3.1.0
 Release:        0
 Summary:        Client library for OpenStack Sahara API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/%{name}
-Source0:        https://files.pythonhosted.org/packages/source/p/python-saharaclient/python-saharaclient-2.3.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-saharaclient/python-saharaclient-3.1.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-mock
-BuildRequires:  python3-osc-lib >= 1.11.0
+BuildRequires:  python3-osc-lib >= 2.0.0
 BuildRequires:  python3-oslo.i18n >= 3.15.3
 BuildRequires:  python3-oslo.log >= 3.36.0
 BuildRequires:  python3-oslo.serialization >= 2.18.0
@@ -48,8 +48,8 @@ Summary:        Client library for OpenStack Sahara API
 Group:          Development/Languages/Python
 Requires:       python3-Babel >= 2.3.4
 Requires:       python3-keystoneauth1 >= 3.4.0
-Requires:       python3-openstackclient >= 3.12.0
-Requires:       python3-osc-lib >= 1.11.0
+Requires:       python3-openstackclient >= 5.2.0
+Requires:       python3-osc-lib >= 2.0.0
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.log >= 3.36.0
 Requires:       python3-oslo.serialization >= 2.18.0
@@ -72,7 +72,7 @@ BuildRequires:  python3-openstackdocstheme
 Python client library for interacting with OpenStack Sahara API.
 
 %prep
-%autosetup -p1 -n python-saharaclient-2.3.0
+%autosetup -p1 -n python-saharaclient-3.1.0
 %py_req_cleanup
 
 %build
@@ -82,7 +82,7 @@ Python client library for interacting with OpenStack Sahara API.
 %{py3_install}
 
 # Build HTML docs and man page
-PYTHONPATH=. PBR_VERSION=2.3.0 %sphinx_build -b html -d doc/build/doctrees doc/source doc/build/html
+PYTHONPATH=. PBR_VERSION=3.1.0 %sphinx_build -b html -d doc/build/doctrees doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
