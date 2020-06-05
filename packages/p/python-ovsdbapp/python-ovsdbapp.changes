@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue May 12 10:03:38 UTC 2020 - cloud-devel@suse.de
+
+- update to version 1.1.0
+  - Log invalid address values in lsp_set_addresses
+  - Make it possible to reference a newly created object within a transaction
+  - Help with troubleshooting failures from venv.py
+  - Handle unset OVN_SRCDIR
+  - Change EAFP to LBYL style in nested transaction
+  - Drop python 2 support and testing
+  - Update master for stable/train
+  - Do not try to execute transaction if command list is empty
+  - ovn_northbound: make all list commands ReadOnlyCommand
+  - Handle the ovs/ovn split
+  - More robustly handle venv ovs/ovn paths
+  - PDF documentation build
+  - Add consts for OVN install path
+  - Fix the url, change http to https
+  - Make ovndir configurable
+  - Default testenv to basepython = python3
+  - Switch to Ussuri jobs
+  - Update Zuul jobs: Enable docs publishing
+  - Fix debug_venv for ovn split
+  - Call row.verify() when updating map columns with db_set
+  - Fix building OVS after python2 removal
+
+-------------------------------------------------------------------
 Thu Mar 12 08:34:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only client
