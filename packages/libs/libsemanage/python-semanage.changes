@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun  4 09:57:51 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop suse_path.patch: replace it with a grep/sed logic replacing
+  /usr/libexec in all files with the correct value for all distros
+  (taking into account that openSUSE is in progress of migrating
+  from /usr/lib to /usr/libexec).
+
+-------------------------------------------------------------------
+Fri May 29 12:51:17 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
+
+- Apply suse_path.patch only for older distributions. Newer
+  use libexec
+
+-------------------------------------------------------------------
 Tue Mar  3 12:23:51 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
 
 - Update to version 3.0

@@ -26,7 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/SELinuxProject/selinux
 Source:         https://github.com/SELinuxProject/selinux/releases/download/20191204/libsemanage-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch0:         suse_path.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  audit-devel
 BuildRequires:  bison
@@ -47,7 +46,8 @@ SELinux policy management applications.
 
 %prep
 %setup -q -n libsemanage-%{version}
-%patch0
+# Replace /usr/libexec with whatever the distro defines as libexecdir - across all files
+grep /usr/libexec . -rl | xargs sed -i "s|/usr/libexec|%{_libexecdir}|g"
 
 %build
 %define _lto_cflags %{nil}

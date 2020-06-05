@@ -26,7 +26,6 @@ URL:            https://github.com/SELinuxProject/selinux/wiki/Releases
 Source:         https://github.com/SELinuxProject/selinux/releases/download/20191204/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Source2:        semanage.conf
-Patch0:         suse_path.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  fdupes
@@ -91,7 +90,8 @@ stores must be migrated before any commands that modify or use the store
 
 %prep
 %setup -q
-%patch0
+# Replace /usr/libexec with whatever the distro defines as libexecdir - across all files
+grep /usr/libexec . -rl | xargs sed -i "s|/usr/libexec|%{_libexecdir}|g"
 
 %build
 %define _lto_cflags %{nil}
