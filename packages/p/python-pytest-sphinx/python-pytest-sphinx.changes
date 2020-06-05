@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  5 13:57:25 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Package doesn't work with pytest 5.*
+
+-------------------------------------------------------------------
 Mon Apr 20 10:25:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun  4 17:26:15 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.5.5:
+  + Fixed build on GCC 10.
+  + Updated translations.
+- Run spec-cleaner, modernize spec.
+- Pkgconfigify spec, replace glib2-devel, gtk2-devel and
+  libpulse-devel BuildRequires with pkgconfig(gtk+-2.0),
+  pkgconfig(gthread-2.0) and pkgconfig(libpulse-simple).
+
+-------------------------------------------------------------------
 Thu Jan 30 11:13:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

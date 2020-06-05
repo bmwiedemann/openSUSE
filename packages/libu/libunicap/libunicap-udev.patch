@@ -1,5 +1,7 @@
---- libunicap-0.9.12.orig/data/50-euvccam.rules
-+++ libunicap-0.9.12/data/50-euvccam.rules
+Index: libunicap-0.9.12/data/50-euvccam.rules
+===================================================================
+--- libunicap-0.9.12.orig/data/50-euvccam.rules	2010-04-29 08:24:24.000000000 +0200
++++ libunicap-0.9.12/data/50-euvccam.rules	2020-06-05 10:40:30.597937086 +0200
 @@ -1,8 +1,13 @@
 -SYSFS{idVendor}=="199e", SYSFS{idProduct}=="8201", GROUP="video", MODE="0660"
 -SYSFS{idVendor}=="199e", SYSFS{idProduct}=="8202", GROUP="video", MODE="0660"
@@ -21,8 +23,10 @@
 +ATTRS{idVendor}=="199e", ATTRS{idProduct}=="8207", GROUP="video", MODE="0660"
 +
 +LABEL="euvccam_rules_end"
---- libunicap-0.9.12.orig/data/Makefile.am
-+++ libunicap-0.9.12/data/Makefile.am
+Index: libunicap-0.9.12/data/Makefile.am
+===================================================================
+--- libunicap-0.9.12.orig/data/Makefile.am	2010-07-15 22:08:51.000000000 +0200
++++ libunicap-0.9.12/data/Makefile.am	2020-06-05 10:40:30.601937250 +0200
 @@ -1,4 +1,4 @@
 -euvccamrulesdir=/etc/udev/rules.d
 +euvccamrulesdir=$(shell pkg-config --variable=udevdir udev)/rules.d

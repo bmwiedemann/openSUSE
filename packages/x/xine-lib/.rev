@@ -558,4 +558,12 @@ Reason 1.1.x will not be supported to EOL of openSUSE 12.2, see also Bugzilla Bu
     <comment>Update to 1.2.10</comment>
     <requestid>767566</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>4276824f2a0dc5f2573c0e6c4cfc75c4</srcmd5>
+    <version>1.2.10</version>
+    <time>1591381473</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with xine-lib-dec_info_real.patch</comment>
+    <requestid>811875</requestid>
+  </revision>
 </revisionlist>

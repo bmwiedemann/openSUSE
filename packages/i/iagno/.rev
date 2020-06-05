@@ -285,4 +285,12 @@
     <comment>New stable release, not buildtested! (forwarded request 797744 from iznogood)</comment>
     <requestid>798350</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>989bb44f0ba4703792680d9dcfe3acc2</srcmd5>
+    <version>3.36.3</version>
+    <time>1591381425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811873</requestid>
+  </revision>
 </revisionlist>

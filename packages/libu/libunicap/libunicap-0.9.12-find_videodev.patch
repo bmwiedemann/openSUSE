@@ -1,5 +1,7 @@
---- cpi/v4l/v4l.c.orig
-+++ cpi/v4l/v4l.c
+Index: libunicap-0.9.12/cpi/v4l/v4l.c
+===================================================================
+--- libunicap-0.9.12.orig/cpi/v4l/v4l.c	2010-01-17 09:49:29.000000000 +0200
++++ libunicap-0.9.12/cpi/v4l/v4l.c	2020-06-05 10:40:11.017168305 +0200
 @@ -49,7 +49,7 @@
  #endif
  #include <debug.h>
@@ -9,8 +11,10 @@
  #include <linux/videodev2.h> // for v4l2 checks
  
  #include "v4l.h"
---- cpi/v4l2cpi/uvcvideo.h.orig
-+++ cpi/v4l2cpi/uvcvideo.h
+Index: libunicap-0.9.12/cpi/v4l2cpi/uvcvideo.h
+===================================================================
+--- libunicap-0.9.12.orig/cpi/v4l2cpi/uvcvideo.h	2010-01-17 09:49:29.000000000 +0200
++++ libunicap-0.9.12/cpi/v4l2cpi/uvcvideo.h	2020-06-05 10:40:11.017168305 +0200
 @@ -2,7 +2,7 @@
  #define _USB_VIDEO_H_
  

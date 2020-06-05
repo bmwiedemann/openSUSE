@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  5 14:24:51 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Don't use nose, switch to pytest.
+
+-------------------------------------------------------------------
 Sun Mar  3 21:01:12 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary.

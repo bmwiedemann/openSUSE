@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jun  5 14:20:27 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.8.5
+  * New feature: computation of refined triangulations using all
+    input generators or all lattice points in a polytope or being
+    unimodular.
+
+-------------------------------------------------------------------
+Fri Feb 14 13:58:07 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.8.4
+  * Use of precomputed data newly designed.
+  * New versions of CoCoALib and nauty integrated.
+
+-------------------------------------------------------------------
 Tue Nov 26 11:18:43 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.8.3

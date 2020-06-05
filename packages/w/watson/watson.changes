@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  5 12:00:31 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add Requires on python3-click-didyoumean
+- Add watson-arrow-version.patch:
+  We have a newer python-arrow version which still works
+
+-------------------------------------------------------------------
 Thu May 28 10:37:56 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Use Supplements: packageand(%{name}:bash) instead of Suggests

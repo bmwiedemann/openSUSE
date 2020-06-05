@@ -1,7 +1,7 @@
 #
 # spec file for package beignet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        OpenCL implementation for Intel GPUs
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://01.org/beignet/
+URL:            https://01.org/beignet/
 Source0:        https://01.org/sites/default/files/%{name}-%{version}-source.tar.gz
 Source99:       beignet-rpmlintrc
 Patch0:         beignet-llvm6.patch
@@ -40,12 +40,12 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(ocl-icd)
-BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
+BuildRequires:  pkgconfig(zlib)
 # exclusive to Intel GPU
 ExclusiveArch:  %{ix86} x86_64
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
 BuildRequires:  clang7-devel
 %else
 BuildRequires:  clang-devel >= 3.3

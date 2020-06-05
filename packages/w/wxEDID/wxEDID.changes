@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Jun  5 11:35:37 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Add wxedid-no-implicit-string-conversion.patch
+  Works around compilation issues with openSUSE’s wxWidgets
+  packages, which do not enable implicit string type conversion.
+- Update to v0.0.20
+Added
+  * Added: Loading/Importing EDID files from path passed as cmd
+    line argument.
+  * Added: Save settings: last used directory + last opened file,
+    dtd_keep_aspect_ratio
+
+Changed
+  * lower-case name for the final executable: wxEDID -> wxedid
+
+Fixed
+  * (BUG) cea_y42c_cl::gen_data_layout() never tested: buggy code,
+    memory corruption. Program crash if EDID data contains
+    "YCBCR 4:2:0 Capability Map Data Block"
+    (TagCode=7, ExtTagCode=15)
+
+-------------------------------------------------------------------
+Sun Jan  5 17:21:10 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to v0.0.19
+Fixed
+  * evt_blktree_sel(): the cell editor must be closed before
+    switching to newly selected data block. Otherwise the cell
+    editor can be "orphaned" and its window stays opened until
+    another cell editor is activated. This problem was visible
+    only when the cell editor was activated from Value Selector
+    Menu event and if evt_blktree_sel() was invoked with opened
+    cell editor.
+  * EDID_cl::ProdWk(): wxString::operator<<() requires type casting
+    to <int> when appending a byte -> otherwise <u8_t> is
+    interpreted as <char>
+  * menu Options::"Ignore EDID errors" must be always enabled,
+    because otherwise the option will be unavailable until a valid
+    EDID structure is loaded.
+
+Added
+  * Menu Help::Flags & Types: info about flags displayed in the
+    block data grid.
+
+-------------------------------------------------------------------
 Wed Jul 24 13:57:06 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to v0.0.18

@@ -1,0 +1,60 @@
+Index: lmms-1.2.1/plugins/Eq/EqSpectrumView.h
+===================================================================
+--- lmms-1.2.1.orig/plugins/Eq/EqSpectrumView.h	2019-10-21 02:27:12.000000000 +0200
++++ lmms-1.2.1/plugins/Eq/EqSpectrumView.h	2020-06-05 09:46:25.060061433 +0200
+@@ -24,6 +24,7 @@
+ #define EQSPECTRUMVIEW_H
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QWidget>
+ 
+ #include "fft_helpers.h"
+Index: lmms-1.2.1/src/gui/AutomationPatternView.cpp
+===================================================================
+--- lmms-1.2.1.orig/src/gui/AutomationPatternView.cpp	2019-10-21 02:27:12.000000000 +0200
++++ lmms-1.2.1/src/gui/AutomationPatternView.cpp	2020-06-04 17:14:15.287101387 +0200
+@@ -25,6 +25,7 @@
+ 
+ #include <QMouseEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QMenu>
+ 
+ #include "AutomationEditor.h"
+Index: lmms-1.2.1/src/gui/editors/AutomationEditor.cpp
+===================================================================
+--- lmms-1.2.1.orig/src/gui/editors/AutomationEditor.cpp	2019-10-21 02:27:12.000000000 +0200
++++ lmms-1.2.1/src/gui/editors/AutomationEditor.cpp	2020-06-05 09:44:05.130076858 +0200
+@@ -35,6 +35,7 @@
+ #include <QLayout>
+ #include <QMdiArea>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QScrollBar>
+ #include <QStyleOption>
+ #include <QToolTip>
+Index: lmms-1.2.1/src/gui/LmmsStyle.cpp
+===================================================================
+--- lmms-1.2.1.orig/src/gui/LmmsStyle.cpp	2019-10-21 02:27:12.000000000 +0200
++++ lmms-1.2.1/src/gui/LmmsStyle.cpp	2020-06-05 09:29:47.631812717 +0200
+@@ -28,6 +28,7 @@
+ #include <QApplication>
+ #include <QFrame>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QStyleFactory>
+ #include <QStyleOption>
+ 
+Index: lmms-1.2.1/plugins/Eq/EqCurve.h
+===================================================================
+--- lmms-1.2.1.orig/plugins/Eq/EqCurve.h	2019-10-21 02:27:12.000000000 +0200
++++ lmms-1.2.1/plugins/Eq/EqCurve.h	2020-06-05 09:45:18.753256805 +0200
+@@ -27,6 +27,7 @@
+ 
+ #include <QGraphicsItem>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QGraphicsSceneWheelEvent>
+ #include "lmms_math.h"
+ #include "AutomatableModelView.h"

@@ -1,7 +1,7 @@
 #
 # spec file for package normaliz
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 Name:           normaliz
 %define lname	libnormaliz3
-Version:        3.8.3
+Version:        3.8.5
 Release:        0
 Summary:        Tools for computations in affine monoids and rational cones
 License:        GPL-3.0-or-later
@@ -57,8 +57,8 @@ Group:          System/Libraries
 Normaliz is a tool for computations in affine monoids, vector configurations,
 lattice polytopes, and rational cones.
 
-Normaliz offers an API - libnormaliz - that allows the user to access
-the Normaliz computations from any C++ program.
+Normaliz offers an API, libnormaliz, that allows the user to access
+the Normaliz computations from C++ programs.
 
 %package devel
 Summary:        Development files for Normaliz, a tool for computation of rotational cones
@@ -70,8 +70,8 @@ Requires:       gmp-devel
 Normaliz is a tool for computations in affine monoids, vector configurations,
 lattice polytopes, and rational cones.
 
-Normaliz offers an API - libnormaliz - that allows the user to access
-the Normaliz computations from any C++ program.
+Normaliz offers an API, libnormaliz, that allows the user to access
+the Normaliz computations from C++ programs.
 
 %prep
 %autosetup -p1

@@ -24,4 +24,12 @@
     <comment></comment>
     <requestid>681233</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>06f04b07c574bc8abccb99c5d5daafe4</srcmd5>
+    <version>0.1.5</version>
+    <time>1591381433</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use nose, switch to pytest.</comment>
+    <requestid>811840</requestid>
+  </revision>
 </revisionlist>

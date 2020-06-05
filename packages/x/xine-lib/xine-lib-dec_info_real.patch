@@ -1,0 +1,78 @@
+--- a/src/libreal/real_common.c
++++ b/src/libreal/real_common.c
+@@ -190,6 +190,25 @@ void *_x_real_codec_open(xine_stream_t *
+   return NULL;
+ }
+ 
++/*
++ * exported plugin catalog entry
++ */
++static const uint32_t supported_types[] = { BUF_VIDEO_RV30,
++                                      BUF_VIDEO_RV40,
++                                      0 };
++static const decoder_info_t dec_info_realvideo = {
++  supported_types,     /* supported types */
++  7                    /* priority        */
++};
++
++static const uint32_t audio_types[] = {
++  BUF_AUDIO_COOK, BUF_AUDIO_ATRK, /* BUF_AUDIO_14_4, BUF_AUDIO_28_8, */ BUF_AUDIO_SIPRO, 0
++ };
++static const decoder_info_t dec_info_realaudio = {
++  audio_types,         /* supported types */
++  6                    /* priority        */
++};
++
+ const plugin_info_t xine_plugin_info[] EXPORTED = {
+   /* type, API, "name", version, special_info, init_function */
+   { PLUGIN_VIDEO_DECODER | PLUGIN_MUST_PRELOAD, 19, "realvdec", XINE_VERSION_CODE, &dec_info_realvideo, init_realvdec },
+--- a/src/libreal/real_common.h
++++ b/src/libreal/real_common.h
+@@ -75,10 +75,8 @@ void *_x_real_codec_open(xine_stream_t *
+ 			 const char *const codec_name,
+ 			 const char *const codec_alternate);
+ 
+-const decoder_info_t dec_info_realvideo;
+ void *init_realvdec (xine_t *xine, const void *data);
+ 
+-const decoder_info_t dec_info_realaudio;
+ void *init_realadec (xine_t *xine, const void *data);
+ 
+ #endif
+--- a/src/libreal/xine_real_audio_decoder.c
++++ b/src/libreal/xine_real_audio_decoder.c
+@@ -509,16 +509,3 @@ void *init_realadec (xine_t *xine, const
+   _x_real_codecs_init(xine);
+   return (audio_decoder_class_t *)&this;
+ }
+-
+-/*
+- * exported plugin catalog entry
+- */
+-
+-static const uint32_t audio_types[] = {
+-  BUF_AUDIO_COOK, BUF_AUDIO_ATRK, /* BUF_AUDIO_14_4, BUF_AUDIO_28_8, */ BUF_AUDIO_SIPRO, 0
+- };
+-
+-const decoder_info_t dec_info_realaudio = {
+-  audio_types,         /* supported types */
+-  6                    /* priority        */
+-};
+--- a/src/libreal/xine_real_video_decoder.c
++++ b/src/libreal/xine_real_video_decoder.c
+@@ -536,15 +536,3 @@ void *init_realvdec (xine_t *xine, const
+   return (video_decoder_class_t *)&this;
+ }
+ 
+-/*
+- * exported plugin catalog entry
+- */
+-
+-static const uint32_t supported_types[] = { BUF_VIDEO_RV30,
+-                                      BUF_VIDEO_RV40,
+-                                      0 };
+-
+-const decoder_info_t dec_info_realvideo = {
+-  supported_types,     /* supported types */
+-  7                    /* priority        */
+-};

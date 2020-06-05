@@ -1,0 +1,9 @@
+diff -urEbw Watson-1.9.0/requirements.txt Watson-1.9.0.new/requirements.txt
+--- Watson-1.9.0/requirements.txt	2020-05-27 22:54:22.000000000 +0200
++++ Watson-1.9.0.new/requirements.txt	2020-06-05 14:00:12.783665497 +0200
+@@ -1,4 +1,4 @@
+-arrow!=0.11,!=0.12.0,<0.15.6
++arrow!=0.11,!=0.12.0
+ click>=7.0
+ click-didyoumean
+ colorama; sys_platform == "win32"

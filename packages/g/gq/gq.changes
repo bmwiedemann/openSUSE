@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  4 18:56:36 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Export -fcommon to optflags, fixes build with gcc 10. Yes this is
+  a cheat, but good enough for this more or less abandoned package.
+
+-------------------------------------------------------------------
 Wed Nov 30 20:13:20 UTC 2011 - dimstar@opensuse.org
 
 - Add gq-glib-2.31.patch: Fix build with glib 2.31.

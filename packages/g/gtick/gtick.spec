@@ -1,7 +1,7 @@
 #
 # spec file for package gtick
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gtick
-Version:        0.5.4
+Version:        0.5.5
 Release:        0
 Summary:        A metronome application
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Utilities
-Url:            http://www.antcom.de/gtick/
-Source0:        http://www.antcom.de/gtick/download/%{name}-%{version}.tar.gz
+URL:            https://www.antcom.de/gtick
+Source0:        %{url}/download/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE fix-desktop-categories.patch p.drouand@gmail.com -- Fix .desktop categories and no abs path for icon
 Patch0:         fix-desktop-categories.patch
-BuildRequires:  glib2-devel
-BuildRequires:  gtk2-devel
-BuildRequires:  libpulse-devel
+
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(gthread-2.0)
+BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(libpulse-simple)
 
 %description
 GTick is a metronome application written for GNU/Linux and other UN*X-like
@@ -40,12 +41,11 @@ and speeds ranging from 10 to 1000 bpm.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -53,17 +53,16 @@ make %{?_smp_mflags}
 %suse_update_desktop_file %{name}
 
 %files
-%defattr(-,root,root,-)
-%doc AUTHORS ChangeLog COPYING README
+%license COPYING
+%doc AUTHORS ChangeLog README
 %dir %{_datadir}/appdata
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1.gz
+%{_mandir}/man1/%{name}.1%{?ext_man}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/appdata/gtick.appdata.xml
 %{_datadir}/icons/hicolor/64x64/apps/gtick.xpm
 %{_datadir}/pixmaps/gtick_32x32.xpm
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
 
 %changelog

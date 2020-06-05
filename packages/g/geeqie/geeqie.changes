@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  4 16:18:51 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add geeqie-gcc10-buildfix.patch: Fix build with gcc 10.
+- Drop no longer needed desktop_database_post(un) calls from
+  post(un), and various other spec modernizations.
+
+-------------------------------------------------------------------
 Thu Jan 30 11:10:00 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

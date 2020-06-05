@@ -1,7 +1,7 @@
 #
 # spec file for package xine-lib
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -99,7 +99,7 @@ Release:        0
 Summary:        Video Player with Plug-Ins
 License:        GPL-2.0-or-later AND SUSE-Public-Domain
 Group:          Productivity/Multimedia/Video/Players
-Url:            https://www.xine-project.org/
+URL:            https://www.xine-project.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 Source:         http://sourceforge.net/projects/xine/files/%{name}/%{version}/%{name}-%{version}.tar.xz
@@ -107,8 +107,7 @@ Source1:        baselibs.conf
 
 Patch0:         xine-lib-libdvdread_udf.diff
 Patch1:         xine-lib-v4l-2.6.38.patch
-#Patch2:         xine-lib-contrib.patch
-#Patch3:         xine-lib-alsa.patch
+Patch2:         xine-lib-dec_info_real.patch
 # Add theora FOURCC to libxine I found an avi container that xine wouldn't play.
 Patch4:         xine-lib-theora.patch
 # This should be fixed upstream, but this patch will not work for them.

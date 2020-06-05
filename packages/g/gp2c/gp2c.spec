@@ -1,7 +1,7 @@
 #
 # spec file for package gp2c
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gp2c
-Version:        0.0.11pl2
+Version:        0.0.11pl4
 Release:        0
 Summary:        GP script to PARI C program compiler
 License:        GPL-2.0-only
@@ -28,6 +28,7 @@ URL:            https://pari.math.u-bordeaux.fr/
 #Git-Web:	https://pari.math.u-bordeaux.fr/cgi-bin/gitweb.cgi
 Source:         https://pari.math.u-bordeaux.fr/pub/pari/GP2C/gp2c-%version.tar.gz
 Source2:        https://pari.math.u-bordeaux.fr/pub/pari/GP2C/gp2c-%version.tar.gz.asc
+Source9:        %name.keyring
 BuildRequires:  fdupes
 
 %description
@@ -43,7 +44,7 @@ scripts.
 %setup -q
 
 %build
-%configure --docdir="%_docdir/%name"
+%configure --docdir="%_docdir/%name" CFLAGS="%optflags -fno-common"
 make %{?_smp_mflags}
 
 %install
@@ -51,7 +52,6 @@ make %{?_smp_mflags}
 %fdupes %buildroot/%_prefix
 
 %files
-%defattr(-,root,root)
 %_bindir/gp2c*
 %_docdir/%name/
 %_datadir/%name/

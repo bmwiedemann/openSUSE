@@ -1,5 +1,7 @@
---- cpi/v4l2cpi/buffermanager.c.orig
-+++ cpi/v4l2cpi/buffermanager.c
+Index: libunicap-0.9.12/cpi/v4l2cpi/buffermanager.c
+===================================================================
+--- libunicap-0.9.12.orig/cpi/v4l2cpi/buffermanager.c	2010-08-17 18:13:08.000000000 +0200
++++ libunicap-0.9.12/cpi/v4l2cpi/buffermanager.c	2020-06-05 10:40:34.274087670 +0200
 @@ -1,12 +1,13 @@
  #include "config.h"
  
@@ -29,8 +31,10 @@
   #define CLOSE  v4l2_close
   #define IOCTL  v4l2_ioctl
   #define MMAP   v4l2_mmap
---- cpi/euvccam/euvccam_colorproc.c.orig
-+++ cpi/euvccam/euvccam_colorproc.c
+Index: libunicap-0.9.12/cpi/euvccam/euvccam_colorproc.c
+===================================================================
+--- libunicap-0.9.12.orig/cpi/euvccam/euvccam_colorproc.c	2010-08-19 20:04:25.000000000 +0200
++++ libunicap-0.9.12/cpi/euvccam/euvccam_colorproc.c	2020-06-05 10:40:34.274087670 +0200
 @@ -18,6 +18,8 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
   */
@@ -40,8 +44,10 @@
  #include "euvccam_cpi.h"
  #include "debayer.h"
  
---- cpi/euvccam/euvccam_usb.c.orig
-+++ cpi/euvccam/euvccam_usb.c
+Index: libunicap-0.9.12/cpi/euvccam/euvccam_usb.c
+===================================================================
+--- libunicap-0.9.12.orig/cpi/euvccam/euvccam_usb.c	2010-03-01 12:42:38.000000000 +0200
++++ libunicap-0.9.12/cpi/euvccam/euvccam_usb.c	2020-06-05 10:40:34.274087670 +0200
 @@ -18,6 +18,8 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
   */
@@ -51,8 +57,10 @@
  #include <sys/types.h>
  #include <ctype.h>
  #include <dirent.h>
---- cpi/euvccam/logging.c.orig
-+++ cpi/euvccam/logging.c
+Index: libunicap-0.9.12/cpi/euvccam/logging.c
+===================================================================
+--- libunicap-0.9.12.orig/cpi/euvccam/logging.c	2010-01-19 08:52:22.000000000 +0200
++++ libunicap-0.9.12/cpi/euvccam/logging.c	2020-06-05 10:40:34.274087670 +0200
 @@ -18,9 +18,11 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
   */
@@ -65,8 +73,10 @@
  
  FILE *g_logfp = NULL;
  int g_log_modules_mask = 0xffff;
---- common/Makefile.am.orig
-+++ common/Makefile.am
+Index: libunicap-0.9.12/common/Makefile.am
+===================================================================
+--- libunicap-0.9.12.orig/common/Makefile.am	2010-01-17 15:17:21.000000000 +0200
++++ libunicap-0.9.12/common/Makefile.am	2020-06-05 10:40:36.954197456 +0200
 @@ -1,5 +1,5 @@
 -INCLUDES=-I../include
 +AM_CPPFLAGS= -include $(top_builddir)/config.h -I../include
@@ -75,9 +85,11 @@
  libucutils_la_SOURCES = queue.c queue.h ucutil.h
 -libucutils_la_LIBADD = 
 \ No newline at end of file
-+libucutils_la_LIBADD = 
---- cpi/dcam/Makefile.am.orig
-+++ cpi/dcam/Makefile.am
++libucutils_la_LIBADD =
+Index: libunicap-0.9.12/cpi/dcam/Makefile.am
+===================================================================
+--- libunicap-0.9.12.orig/cpi/dcam/Makefile.am	2010-05-27 09:24:46.000000000 +0200
++++ libunicap-0.9.12/cpi/dcam/Makefile.am	2020-06-05 10:40:34.274087670 +0200
 @@ -1,5 +1,5 @@
  MAINTAINERCLEANFILES = Makefile.in
 -INCLUDES = -I../include -I../../include -I../../ -I../../common @LIBRAW1394_PACKAGE_CFLAGS@
@@ -94,8 +106,10 @@
  
  libdcam_la_SOURCES =  \
  	1394util.c \
---- cpi/euvccam/Makefile.am.orig
-+++ cpi/euvccam/Makefile.am
+Index: libunicap-0.9.12/cpi/euvccam/Makefile.am
+===================================================================
+--- libunicap-0.9.12.orig/cpi/euvccam/Makefile.am	2010-08-19 19:52:27.000000000 +0200
++++ libunicap-0.9.12/cpi/euvccam/Makefile.am	2020-06-05 10:40:34.274087670 +0200
 @@ -1,4 +1,4 @@
 -INCLUDES = -I../include -I../../include -I../../ -I../../common
 +INCLUDES = -include $(top_builddir)/config.h -I../include -I../../include -I../../ -I../../common
@@ -112,8 +126,10 @@
  
  libeuvccam_cpi_la_SOURCES= \
  	euvccam_cpi.c euvccam_cpi.h \
---- cpi/thing/Makefile.am.orig
-+++ cpi/thing/Makefile.am
+Index: libunicap-0.9.12/cpi/thing/Makefile.am
+===================================================================
+--- libunicap-0.9.12.orig/cpi/thing/Makefile.am	2010-01-17 09:49:29.000000000 +0200
++++ libunicap-0.9.12/cpi/thing/Makefile.am	2020-06-05 10:40:34.274087670 +0200
 @@ -1,5 +1,5 @@
  MAINTAINERCLEANFILES = Makefile.in
 -INCLUDES = -I../include -I../../include
@@ -121,8 +137,10 @@
  
  libcpi_LTLIBRARIES = libthing.la
  
---- cpi/v4l/Makefile.am.orig
-+++ cpi/v4l/Makefile.am
+Index: libunicap-0.9.12/cpi/v4l/Makefile.am
+===================================================================
+--- libunicap-0.9.12.orig/cpi/v4l/Makefile.am	2010-05-27 09:24:09.000000000 +0200
++++ libunicap-0.9.12/cpi/v4l/Makefile.am	2020-06-05 10:40:34.274087670 +0200
 @@ -1,5 +1,5 @@
  MAINTAINERCLEANFILES = Makefile.in
 -INCLUDES = -I../include -I../../include -I../../common
@@ -139,8 +157,10 @@
  
  libv4l_la_SOURCES =  \
  	v4l.c v4l.h 
---- cpi/v4l2cpi/Makefile.am.orig
-+++ cpi/v4l2cpi/Makefile.am
+Index: libunicap-0.9.12/cpi/v4l2cpi/Makefile.am
+===================================================================
+--- libunicap-0.9.12.orig/cpi/v4l2cpi/Makefile.am	2010-07-05 18:27:15.000000000 +0200
++++ libunicap-0.9.12/cpi/v4l2cpi/Makefile.am	2020-06-05 10:40:34.274087670 +0200
 @@ -1,5 +1,5 @@
  MAINTAINERCLEANFILES = Makefile.in
 -INCLUDES = -I../include -I../../include -I../../common
@@ -164,8 +184,10 @@
 -EXTRA_DIST = v4l2_i18n_strings.h
 \ No newline at end of file
 +EXTRA_DIST = v4l2_i18n_strings.h
---- cpi/vid21394/Makefile.am.orig
-+++ cpi/vid21394/Makefile.am
+Index: libunicap-0.9.12/cpi/vid21394/Makefile.am
+===================================================================
+--- libunicap-0.9.12.orig/cpi/vid21394/Makefile.am	2010-05-27 09:27:19.000000000 +0200
++++ libunicap-0.9.12/cpi/vid21394/Makefile.am	2020-06-05 10:40:34.274087670 +0200
 @@ -1,5 +1,5 @@
  MAINTAINERCLEANFILES = Makefile.in
 -INCLUDES = -I../include -I../../include @LIBRAW1394_PACKAGE_CFLAGS@ -I. -I../../common
@@ -189,8 +211,10 @@
 -libvid21394_la_CFLAGS = -fno-strict-aliasing
 \ No newline at end of file
 +libvid21394_la_CFLAGS = -fno-strict-aliasing
---- src/Makefile.am.orig
-+++ src/Makefile.am
+Index: libunicap-0.9.12/src/Makefile.am
+===================================================================
+--- libunicap-0.9.12.orig/src/Makefile.am	2010-05-27 09:21:01.000000000 +0200
++++ libunicap-0.9.12/src/Makefile.am	2020-06-05 10:40:34.274087670 +0200
 @@ -1,12 +1,12 @@
  MAINTAINERCLEANFILES = Makefile.in
  INCLUDES = -I../include -I../cpi/include
@@ -206,8 +230,10 @@
  endif
  
  libunicap_la_SOURCES =   \
---- cpi/v4l2cpi/tiseuvccam.c.orig
-+++ cpi/v4l2cpi/tiseuvccam.c
+Index: libunicap-0.9.12/cpi/v4l2cpi/tiseuvccam.c
+===================================================================
+--- libunicap-0.9.12.orig/cpi/v4l2cpi/tiseuvccam.c	2010-01-17 09:49:29.000000000 +0200
++++ libunicap-0.9.12/cpi/v4l2cpi/tiseuvccam.c	2020-06-05 10:40:34.274087670 +0200
 @@ -37,7 +37,8 @@
  #define FOURCC(a,b,c,d) (unsigned int)((((unsigned int)d)<<24)+(((unsigned int)c)<<16)+(((unsigned int)b)<<8)+a)
  
@@ -218,8 +244,10 @@
   #define CLOSE  v4l2_close
   #define IOCTL  v4l2_ioctl
   #define MMAP   v4l2_mmap
---- cpi/v4l2cpi/tisuvccam.c.orig
-+++ cpi/v4l2cpi/tisuvccam.c
+Index: libunicap-0.9.12/cpi/v4l2cpi/tisuvccam.c
+===================================================================
+--- libunicap-0.9.12.orig/cpi/v4l2cpi/tisuvccam.c	2010-01-18 17:14:25.000000000 +0200
++++ libunicap-0.9.12/cpi/v4l2cpi/tisuvccam.c	2020-06-05 10:40:34.274087670 +0200
 @@ -39,7 +39,8 @@
  
  
@@ -230,8 +258,10 @@
   #define CLOSE  v4l2_close
   #define IOCTL  v4l2_ioctl
   #define MMAP   v4l2_mmap
---- configure.ac.orig
-+++ configure.ac
+Index: libunicap-0.9.12/configure.ac
+===================================================================
+--- libunicap-0.9.12.orig/configure.ac	2010-09-19 09:16:40.000000000 +0200
++++ libunicap-0.9.12/configure.ac	2020-06-05 10:40:34.274087670 +0200
 @@ -38,12 +38,12 @@ AC_SUBST(pkg_version)
  AC_CONFIG_MACRO_DIR(m4)
  

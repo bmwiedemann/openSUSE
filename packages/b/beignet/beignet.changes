@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  4 19:21:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Use LLVM7 on Leap 15.2 / SLE15 SP2 or later (boo#1172362)
+
+-------------------------------------------------------------------
 Mon Nov 18 23:15:31 UTC 2019 - Simon Lees <sflees@suse.de>
 
 - %make_jobs is depricated replaced by %cmake_build

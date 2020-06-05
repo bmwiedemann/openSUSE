@@ -1,7 +1,7 @@
 #
 # spec file for package python-colour
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/vaab/colour
 Source0:        https://files.pythonhosted.org/packages/source/c/colour/colour-%{version}.tar.gz
 BuildRequires:  %{python_module d2to1}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -58,7 +58,7 @@ rm -rf colour.egg-info
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest --doctest-modules
 
 %files %{python_files}
 %license LICENSE

@@ -1,0 +1,75 @@
+From 6cf16e964e312a2e040cc3e7b45be21715961a19 Mon Sep 17 00:00:00 2001
+From: Kamil Dudka <kdudka@redhat.com>
+Date: Thu, 7 Oct 2010 11:02:48 +0200
+Subject: [PATCH 2/2] linunicap: do not compare arrays with NULL
+
+---
+ cpi/vid21394/vid21394_base.c |    2 +-
+ cpi/vid21394/vid21394_cpi.c  |    3 ---
+ src/unicap_helpers.c         |   10 +++++-----
+ 3 files changed, 6 insertions(+), 9 deletions(-)
+
+Index: libunicap-0.9.12/cpi/vid21394/vid21394_base.c
+===================================================================
+--- libunicap-0.9.12.orig/cpi/vid21394/vid21394_base.c	2010-01-25 19:28:00.000000000 +0200
++++ libunicap-0.9.12/cpi/vid21394/vid21394_base.c	2020-06-05 10:51:38.609127177 +0200
+@@ -501,7 +501,7 @@ static unicap_status_t _vid21394_send_fc
+ 
+    raw1394handle_t raw1394handle = vid21394handle->raw1394handle;
+ 
+-   nodeid_t nodeid = 	nodeid = 0xffc0 | vid21394handle->node;
++   nodeid_t nodeid = 0xffc0 | vid21394handle->node;
+ 	
+    unicap_status_t status = STATUS_SUCCESS;
+ 
+Index: libunicap-0.9.12/cpi/vid21394/vid21394_cpi.c
+===================================================================
+--- libunicap-0.9.12.orig/cpi/vid21394/vid21394_cpi.c	2010-01-17 09:49:29.000000000 +0200
++++ libunicap-0.9.12/cpi/vid21394/vid21394_cpi.c	2020-06-05 10:51:38.609127177 +0200
+@@ -655,7 +655,6 @@ int cpi_enumerate_formats( void *cpi_dat
+       return STATUS_INVALID_PARAMETER;
+    }
+ 	
+-   if( !data->current_formats )
+    {
+       int tmp;
+       cpi_reenumerate_formats( cpi_data, &tmp );
+@@ -684,7 +683,6 @@ int cpi_set_format( void *cpi_data, unic
+ 	
+    TRACE( "cpi_set_format\n" );
+ 
+-   if( !data->current_formats )
+    {
+       int tmp;
+       cpi_reenumerate_formats( cpi_data, &tmp );
+@@ -846,7 +844,6 @@ unicap_status_t cpi_get_format( void *cp
+ {
+    vid21394_data_t *data = cpi_data;
+ 
+-   if( !data->current_formats )
+    {
+       int tmp;
+       cpi_reenumerate_formats( cpi_data, &tmp );
+Index: libunicap-0.9.12/src/unicap_helpers.c
+===================================================================
+--- libunicap-0.9.12.orig/src/unicap_helpers.c	2010-01-17 09:49:29.000000000 +0200
++++ libunicap-0.9.12/src/unicap_helpers.c	2020-06-05 10:51:38.609127177 +0200
+@@ -105,13 +105,13 @@ unicap_status_t unicap_describe_device(
+ 		 "Vendor id: %u ( 0x%x )\n"\
+ 		 "cpi: %s\n"\
+ 		 "device: %s\n", 
+-		 device->identifier ? device->identifier : "(nil)",
+-		 device->model_name ? device->model_name : "(nil)", 
+-		 device->vendor_name ? device->vendor_name : "(nil)", 
++		 device->identifier,
++		 device->model_name,
++		 device->vendor_name,
+ 		 device->model_id,
+ 		 device->vendor_id, device->vendor_id, 
+-		 device->cpi_layer ? device->cpi_layer : "(nil)", 
+-		 device->device ? device->device : "(nil)" );
++		 device->cpi_layer,
++		 device->device);
+ 	
+ 	strncpy( buffer, tmp_buffer, (*buffer_size)-1 );
+ 	

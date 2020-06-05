@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  4 19:41:34 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with Qt 5.15:
+  * 0001-Fix-build-with-Qt-5.15.patch
+
+-------------------------------------------------------------------
 Tue Jul 17 04:06:08 UTC 2018 - plinnell@opensuse.org
 
 - add fotowall-1.0-fix-build-against-qt-5.11.0.patch from Mageia

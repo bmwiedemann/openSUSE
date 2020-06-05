@@ -1,7 +1,7 @@
 #
 # spec file for package libunicap
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,9 +26,9 @@ Name:           libunicap
 Version:        0.9.12
 Release:        0
 Summary:        Library to access different kinds of (video) capture devices
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Hardware/Camera
-Url:            http://www.unicap-imaging.org/
+URL:            http://www.unicap-imaging.org/
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        libunicap-filter.sh
 Source2:        baselibs.conf
@@ -39,6 +39,12 @@ Patch2:         libunicap_0912_fixPrivate.patch
 # PATCH-FIX-UPSTREAM libunicap-udev.patch bnc726471 https://bugs.launchpad.net/unicap/+bug/959626 sbrabec@suse.cz -- port rules to the new udev
 Patch3:         libunicap-udev.patch
 Patch4:         unicap-implicit-fortify-decl.patch
+# Patches from Fedora:
+Patch5:         libunicap-0.9.12-gcc10.patch
+Patch8:         libunicap-0.9.12-arraycmp.patch
+Patch9:         libunicap-0.9.12-datadirname.patch
+Patch10:        libunicap-bz641623.patch
+Patch12:        libunicap-0.9.12-memerrs.patch
 BuildRequires:  alsa-lib-devel
 BuildRequires:  gettext
 BuildRequires:  gtk-doc >= 1.4
@@ -96,12 +102,7 @@ contains the API documentation of the library, too.
 
 %prep
 %setup -q -n %{name}-%{version}
-%if 0%{?suse_version} >= 1210
-%patch1
-%endif
-%patch2 -p 1
-%patch3 -p 1
-%patch4
+%autopatch -p1
 %build
 mkdir -p m4
 autoreconf -fiv
@@ -122,7 +123,8 @@ rm -f %{buildroot}%{_libdir}/{,unicap2/cpi/}*.{a,la}
 
 %files -n libunicap2 -f unicap.lang
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING README
+%doc AUTHORS ChangeLog README
+%license COPYING
 %{_libdir}/*.so.*
 %{_libdir}/unicap2
 %{_udevrulesdir}/50-euvccam.rules

@@ -25,9 +25,11 @@ License:        MIT
 Group:          Productivity/Office/Organizers
 URL:            https://github.com/TailorDev/Watson
 Source:         https://github.com/TailorDev/Watson/archive/%{version}.tar.gz
+Patch0:         watson-arrow-version.patch
 BuildRequires:  python3-setuptools
 Requires:       python3-arrow
 Requires:       python3-click
+Requires:       python3-click-didyoumean
 Requires:       python3-requests
 BuildArch:      noarch
 

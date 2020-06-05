@@ -23,4 +23,12 @@
     <comment>- add fotowall-1.0-fix-build-against-qt-5.11.0.patch from Mageia</comment>
     <requestid>624054</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>2e04c0e80436267a7cdfbae2d0a7c3a4</srcmd5>
+    <version>1.0</version>
+    <time>1591381281</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811680</requestid>
+  </revision>
 </revisionlist>

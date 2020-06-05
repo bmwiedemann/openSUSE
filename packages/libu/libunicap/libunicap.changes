@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  5 09:12:57 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Fix Factory build, add patches from Fedora:
+  libunicap-0.9.12-gcc10.patch, libunicap-0.9.12-arraycmp.patch,
+  libunicap-0.9.12-datadirname.patch, libunicap-bz641623.patch
+  and libunicap-0.9.12-memerrs.patch
+
+-------------------------------------------------------------------
 Thu Sep 28 08:17:01 UTC 2017 - davejplater@gmail.com
 
 - Fix Factory build by disable gtk-doc html build due to

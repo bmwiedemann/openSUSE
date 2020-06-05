@@ -1,7 +1,7 @@
 #
 # spec file for package lmms
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,7 @@ Patch1:         lmms-1.2.0-crippled_stk.patch
 # PATCH-FIX-UPSTREAM Fix plugin library search path, testing an upstream proposal
 Patch2:         lmms-1.2.0-libdir.patch
 Patch3:         lmms-rpmalloc-fpic.patch
+Patch4:         lmms-qpainterpath.patch
 
 BuildRequires:  bash-completion
 BuildRequires:  cmake

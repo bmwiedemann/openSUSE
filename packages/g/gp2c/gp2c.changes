@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun  5 13:20:49 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.0.11pl4
+  * Added support for references (~) from PARI 2.12.1,
+    support for foreach from PARI 2.12.1,
+    support for holes in multi-assignement from PARI 2.12.1,
+    support for \r "..." from PARI 2.12.1,
+    support for ploth and plothexport,
+    support for parfor, parforprime and parforvec,
+    support for alarm.
+
+-------------------------------------------------------------------
 Wed Aug 14 04:21:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 0.0.11pl2

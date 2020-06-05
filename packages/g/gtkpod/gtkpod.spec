@@ -103,6 +103,7 @@ write metadata function.
 %patch1 -p1
 
 %build
+export CFLAGS="%{optflags} -fcommon"
 %configure --disable-static
 make V=1
 

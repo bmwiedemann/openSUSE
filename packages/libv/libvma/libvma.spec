@@ -1,7 +1,7 @@
 #
 # spec file for package libvma
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 #
-%define git_ver .0.731961ca9087
-%define lib_major 8
+%define git_ver .0.6a69f4613bb3
+%define lib_major 9
 
 Name:           libvma
 Summary:        A library for boosting TCP and UDP traffic (over RDMA hardware)
 License:        GPL-2.0-only OR BSD-2-Clause
 Group:          Development/Libraries/C and C++
-Version:        8.9.4
+Version:        9.1.0
 Release:        0
 Source0:        %{name}-%{version}%{git_ver}.tar.gz
 Source1:        vma.service
-Url:            https://github.com/Mellanox/libvma
+URL:            https://github.com/Mellanox/libvma
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
@@ -122,6 +122,7 @@ for service in vma; do ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc${se
 %{_unitdir}/vma.service
 %{_bindir}/vma_stats
 %{_datadir}/%{name}/vma_perf_envelope.sh
+%{_mandir}/man*/*
 %license COPYING
 
 %files -n libvma%{lib_major}

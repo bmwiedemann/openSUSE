@@ -26,6 +26,7 @@ License:        BSD-2-Clause AND GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Url:            https://github.com/NilsBrause/waylandpp
 Source0:        %{name}-%{version}.tar.xz
+Patch0:         695c0881101435a57d24c84d04cbcb79eec49903.patch
 BuildRequires:  cmake >= 3.13
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config

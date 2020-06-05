@@ -34,8 +34,8 @@ BuildArch:      noarch
 Requires:       python-enum34
 %endif
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 3.1.1}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest4 >= 3.1.1}
 %if %{with python2}
 BuildRequires:  python2-enum34
 %endif

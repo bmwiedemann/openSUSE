@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  4 19:36:39 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.3.11 more fixes to AgsAudiorec.
+- provide patch gsequencer.1-improved-glib-compatibility.patch to
+  improve compatibility to glib-2.0 version 2.54.
+
+-------------------------------------------------------------------
 Sat May 30 18:04:52 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.3.9 fixed AgsAudiorec's new ags-fx-playback

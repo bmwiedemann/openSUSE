@@ -1,6 +1,8 @@
---- libunicap-0.9.12/include/unicap.h.old
-+++ libunicap-0.9.12/include/unicap.h
-@@ -215,7 +215,7 @@
+Index: libunicap-0.9.12/include/unicap.h
+===================================================================
+--- libunicap-0.9.12.orig/include/unicap.h	2010-08-05 08:51:58.000000000 +0200
++++ libunicap-0.9.12/include/unicap.h	2020-06-05 10:40:26.525774869 +0200
+@@ -215,7 +215,7 @@ struct _unicap_data_buffer_t
  
     unicap_buffer_flags_t flags;
     
@@ -9,9 +11,11 @@
  };
  
  typedef struct _unicap_data_buffer_t unicap_data_buffer_t;
---- libunicap-0.9.12/src/unicap.c.old
-+++ libunicap-0.9.12/src/unicap.c
-@@ -1467,7 +1467,7 @@
+Index: libunicap-0.9.12/src/unicap.c
+===================================================================
+--- libunicap-0.9.12.orig/src/unicap.c	2010-09-19 09:02:48.000000000 +0200
++++ libunicap-0.9.12/src/unicap.c	2020-06-05 10:40:26.525774869 +0200
+@@ -1467,7 +1467,7 @@ unicap_data_buffer_t *unicap_data_buffer
     buffer->buffer_size = buffer->format.buffer_size;
     buffer->data = malloc( buffer->buffer_size );   
     unicap_copy_format( &buffer->format, format );
@@ -20,7 +24,7 @@
  
     return buffer;
  }
-@@ -1475,28 +1475,28 @@
+@@ -1475,28 +1475,28 @@ unicap_data_buffer_t *unicap_data_buffer
  void unicap_data_buffer_init( unicap_data_buffer_t *buffer, unicap_format_t *format, unicap_data_buffer_init_data_t *init_data )
  {
     unicap_copy_format( &buffer->format, format );
@@ -34,7 +38,7 @@
 -   buffer->private->unref_func = init_data->unref_func;
 -   buffer->private->unref_func_data = init_data->unref_func_data;
 +   buffer->private_buffer = malloc( sizeof( unicap_data_buffer_private_t ) );
-+   sem_init( &buffer->private_buffer->lock, 0, 1 );   
++   sem_init( &buffer->private_buffer->lock, 0, 1 );
 +   buffer->private_buffer->ref_count = 0;
 +   buffer->private_buffer->free_func = init_data->free_func;
 +   buffer->private_buffer->free_func_data = init_data->free_func_data;
@@ -64,7 +68,7 @@
     if (buffer->data)
        free( buffer->data );
     free( buffer );
-@@ -1504,9 +1504,9 @@
+@@ -1504,9 +1504,9 @@ void unicap_data_buffer_free( unicap_dat
  
  unicap_status_t unicap_data_buffer_ref( unicap_data_buffer_t *buffer )
  {
@@ -77,7 +81,7 @@
  
     return STATUS_SUCCESS;
  }
-@@ -1514,36 +1514,36 @@
+@@ -1514,36 +1514,36 @@ unicap_status_t unicap_data_buffer_ref(
  unicap_status_t unicap_data_buffer_unref( unicap_data_buffer_t *buffer )
  {
     unicap_status_t status = STATUS_SUCCESS;

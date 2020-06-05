@@ -60,7 +60,7 @@ An LDAP client for GTK.
 # needed for patch0
 autoreconf -fi -I macros
 gq-%{version}-langpack-1/langpack .
-export CFLAGS="-DLDAP_DEPRECATED $RPM_OPT_FLAGS"
+export CFLAGS="-DLDAP_DEPRECATED $RPM_OPT_FLAGS -fcommon"
 %configure \
     --enable-browser-dnd 		\
     --disable-update-mimedb             \

@@ -1,7 +1,7 @@
 #
 # spec file for package python-nautilus
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ License:        GPL-2.0-or-later
 Group:          Development/Libraries/Python
 URL:            https://wiki.gnome.org/Projects/NautilusPython
 Source:         http://download.gnome.org/sources/nautilus-python/1.2/%{_name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM python-nautilus-gcc10-buildfix.patch -- Fix build with gcc 10
+Patch0:         python-nautilus-gcc10-buildfix.patch
 
 BuildRequires:  %{python_module devel}
 BuildRequires:  gtk-doc

@@ -17,4 +17,12 @@
 - Remove waylandpp.patch</comment>
     <requestid>738459</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>807aeffa952e231c11fab3bbb95044d0</srcmd5>
+    <version>0.2.7.20191014T190311.4007255</version>
+    <time>1591381429</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 695c0881101435a57d24c84d04cbcb79eec49903.patch to fix build</comment>
+    <requestid>811846</requestid>
+  </revision>
 </revisionlist>

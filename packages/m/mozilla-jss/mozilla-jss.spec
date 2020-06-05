@@ -118,7 +118,8 @@ cp -p *.txt %{buildroot}%{_javadocdir}/jss-%{version}
 
 %files
 %doc jss.html MPL-1.1.txt gpl.txt lgpl.txt
-%{_libdir}/*
+%dir %{_libdir}/jss/
+%{_libdir}/jss/*
 %{_jnidir}/*
 
 %files javadoc

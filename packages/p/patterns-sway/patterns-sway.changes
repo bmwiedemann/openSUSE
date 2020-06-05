@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  5 08:50:08 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Add dmenu requirement as it is default menu in sway config
+
+-------------------------------------------------------------------
 Thu Jun  4 14:36:08 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - Add Mesa requirement to be able to run sway

@@ -17,7 +17,7 @@
 
 
 Name:           gnome-2048
-Version:        3.36.2
+Version:        3.36.3
 Release:        0
 Summary:        Sliding block puzzle game
 License:        GPL-3.0-or-later

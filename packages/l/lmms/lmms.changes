@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  5 07:05:14 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Fix build with qt5.15 with lmms-qpainterpath.patch
+
+-------------------------------------------------------------------
 Sun Mar 29 09:34:51 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Update to version 1.2.1 and enable wine dependent vst plugins in

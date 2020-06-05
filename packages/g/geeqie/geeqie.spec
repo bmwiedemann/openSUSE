@@ -1,7 +1,7 @@
 #
 # spec file for package geeqie
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,15 @@ Release:        0
 Summary:        Lightweight Gtk+ based image viewer
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
-URL:            http://www.geeqie.org/
-Source0:        http://www.geeqie.org/%{name}-%{version}.tar.xz
-Source1:        http://www.geeqie.org/%{name}-%{version}.tar.xz.asc
+URL:            http://www.geeqie.org
+Source0:        %{url}/%{name}-%{version}.tar.xz
+Source1:        %{url}/%{name}-%{version}.tar.xz.asc
 Source2:        geeqie.keyring
+# PATCH-FIX-UPSTREAM geeqie-gcc10-buildfix.patch -- Fix build with gcc 10
+Patch0:         geeqie-gcc10-buildfix.patch
+
+BuildRequires:  c++_compiler
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  intltool
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
@@ -43,11 +46,9 @@ BuildRequires:  pkgconfig(clutter-gtk-1.0) >= 1.0
 BuildRequires:  pkgconfig(exiv2) >= 0.11
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(lua5.1)
 Requires(post): update-desktop-files
 Requires(postun): update-desktop-files
-%if 0%{?suse_version} >= 1330
-BuildRequires:  pkgconfig(lua5.1)
-%endif
 
 %description
 Geeqie is a lightweight image viewer for Linux, BSDs and compatibles.
@@ -55,7 +56,7 @@ Geeqie is a lightweight image viewer for Linux, BSDs and compatibles.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # Needed to bootstrap
@@ -66,25 +67,18 @@ autoreconf -fvi
         --with-readmedir=%{_defaultdocdir}/%{name} \
         --enable-map \
         %{nil}
-make %{?_smp_mflags} CFLAGS="-Wno-deprecated-declarations"
+%make_build CFLAGS="-Wno-deprecated-declarations"
 
 %install
 %make_install
 %find_lang %{name} %{?no_lang_C}
 %suse_update_desktop_file %{name}
-%fdupes %{buildroot}
+%fdupes %{buildroot}/%{_prefix}
 
 # Already in the license directory
 rm %{buildroot}%{_docdir}/%{name}/COPYING
 
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-
 %files
-%defattr(-,root,root)
 %license COPYING
 %doc AUTHORS ChangeLog ChangeLog.html NEWS TODO README.md README.lirc
 %{_bindir}/geeqie

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun  4 18:18:28 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.11:
+  * Add a new undisclosed_recipients command and
+    --undisclosed-recipients option to replace To, Cc, Bcc with a
+    single "To: undisclosed-recipients:;" header.
+  * Improved handling of temporary files on Windows systems.
+  * Re-enabled support for systems lacking vasprintf(),
+    such as IBM i PASE.
+- spec cleaning:
+  * drop reference to suse_version 10
+  * use make_build and make_install macros
+  * remove defattr from %files sections
+  * use %license for the license file instead of doc
+  * fix the man and info pages extension
+
+-------------------------------------------------------------------
 Thu May 14 12:37:47 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - gnu sasl support needs to be enabled with a configure option

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  4 17:13:26 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Export -fcommon to optflags, fixes build with gcc 10. Yes this is
+  a cheat, but good enough for this more or less abandoned package.
+
+-------------------------------------------------------------------
 Wed Mar  4 17:16:03 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to port a script to python3:

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Jun 05 13:33:07 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 0.5+git.1590819266.c37f09e:
+  * test: update
+  * vis: fix implicit enum conversion warning
+  * build: update alpine in docker build to version 3.12
+  * doc: update outdated version information
+  * doc: update sphinx configuration to python 3
+  * test: update
+  * text: introduce text_save_method, remove text_save_range
+  * test: update
+  * build: use -O2 by default
+  * vis: cleanup pre-processing of :-commands
+  * Tweak README
+  * vt100: do not crash if termkey is not yet initialized
+  * ui: fix line number drawing
+  * build: fix _XOPEN_SOURCE redefinition warning
+  * vis: make <Escape> reset count in visual modes
+  * vis: make <Escape> reset count in normal mode
+  * lexers: prioritize markdown list rule
+  * lexers: make markdown white space rule less greedy
+  * man: document theme location
+  * Avoid use of VLAs
+  * vt100: use shorter escape sequence to clear screen
+  * Add Julia lexer
+
+-------------------------------------------------------------------
 Thu Apr 16 22:18:41 UTC 2020 - mcepl@cepl.eu
 
 - Update to version 0.5+git.1584517720.08a550d:

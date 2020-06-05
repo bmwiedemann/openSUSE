@@ -1,0 +1,24 @@
+From 3177d8610981f2a80f3472270f44c3a8ae0c253d Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Thu, 4 Jun 2020 21:41:07 +0200
+Subject: [PATCH] Fix build with Qt 5.15
+
+---
+ 3rdparty/posterazor/paintcanvas.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/3rdparty/posterazor/paintcanvas.cpp b/3rdparty/posterazor/paintcanvas.cpp
+index df33b8a..fd0f319 100644
+--- a/3rdparty/posterazor/paintcanvas.cpp
++++ b/3rdparty/posterazor/paintcanvas.cpp
+@@ -23,6 +23,7 @@
+ #include "paintcanvas.h"
+ #include <QImage>
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ PaintCanvas::PaintCanvas(QWidget *parent)
+     : QWidget(parent)
+-- 
+2.26.2
+

@@ -1,0 +1,109 @@
+From 739d6bde46f6d7dd68e228f2a27eb039d0550999 Mon Sep 17 00:00:00 2001
+From: Kamil Dudka <kdudka@redhat.com>
+Date: Thu, 7 Oct 2010 10:56:06 +0200
+Subject: [PATCH] libunicap: fix various memory errors
+
+---
+ cpi/dcam/dcam_v_modes.c       |    3 ++-
+ cpi/euvccam/euvccam_capture.c |    1 +
+ cpi/v4l/v4l.c                 |    2 +-
+ cpi/v4l2cpi/v4l2.c            |   12 ++++++++++--
+ cpi/vid21394/vid21394_cpi.c   |    5 ++---
+ src/unicap.c                  |    2 ++
+ 6 files changed, 18 insertions(+), 7 deletions(-)
+
+Index: libunicap-0.9.12/cpi/dcam/dcam_v_modes.c
+===================================================================
+--- libunicap-0.9.12.orig/cpi/dcam/dcam_v_modes.c	2020-06-05 10:53:06.896699260 +0200
++++ libunicap-0.9.12/cpi/dcam/dcam_v_modes.c	2020-06-05 10:53:18.353163741 +0200
+@@ -182,7 +182,8 @@ unicap_status_t _dcam_prepare_format_arr
+ 		  int index = _dcam_get_mode_index( f, i );
+ 		  TRACE( "f: %d m: %d  index: %d (%s)\n", f, i, index, _dcam_unicap_formats[index].identifier );
+ 		  TRACE( "size: %d x %d\n", _dcam_unicap_formats[index].size.width, _dcam_unicap_formats[index].size.height );
+-		  memcpy( format_array + current_format, &_dcam_unicap_formats[index], sizeof( unicap_format_t ) );
++		  if( 0 < index )
++		     memcpy( format_array + current_format, &_dcam_unicap_formats[index], sizeof( unicap_format_t ) );
+ 		  current_format++;
+ 	       }
+ 	    }
+Index: libunicap-0.9.12/cpi/euvccam/euvccam_capture.c
+===================================================================
+--- libunicap-0.9.12.orig/cpi/euvccam/euvccam_capture.c	2020-06-05 10:53:06.896699260 +0200
++++ libunicap-0.9.12/cpi/euvccam/euvccam_capture.c	2020-06-05 10:53:18.353163741 +0200
+@@ -231,6 +231,7 @@ static void *capture_thread( euvccam_han
+       if( ret < 0 ){
+ 	 TRACE( "Failed to submit urb!\n" );
+ 	 perror( "ioctl" );
++	 free( urb );
+ 	 return NULL;
+       }
+ 
+Index: libunicap-0.9.12/cpi/v4l/v4l.c
+===================================================================
+--- libunicap-0.9.12.orig/cpi/v4l/v4l.c	2020-06-05 10:53:06.896699260 +0200
++++ libunicap-0.9.12/cpi/v4l/v4l.c	2020-06-05 10:53:18.353163741 +0200
+@@ -292,7 +292,7 @@ static unicap_status_t v4l_open( void **
+ 	v4l_handle_t v4lhandle;
+ 	
+ 	*cpi_data = malloc( sizeof( struct _v4l_handle ) );
+-	if( !cpi_data )
++	if( !*cpi_data )
+ 	{
+ 		TRACE( "malloc failed\n" );
+ 		return STATUS_FAILURE;
+Index: libunicap-0.9.12/cpi/v4l2cpi/v4l2.c
+===================================================================
+--- libunicap-0.9.12.orig/cpi/v4l2cpi/v4l2.c	2020-06-05 10:53:06.896699260 +0200
++++ libunicap-0.9.12/cpi/v4l2cpi/v4l2.c	2020-06-05 10:53:18.353163741 +0200
+@@ -864,7 +864,7 @@ static unicap_status_t v4l2_reenumerate_
+ 
+       sizes = build_format_size_table( handle, v4l2_fmt.pixelformat, &size_count );
+ 		
+-      if( size_count == 0 )
++      if( sizes == NULL )
+       {
+ 	 handle->unicap_formats[v4l2_fmt.index].min_size.width = 
+ 	    handle->unicap_formats[v4l2_fmt.index].min_size.height = 1;
+@@ -2152,6 +2152,8 @@ static unicap_status_t v4l2_queue_buffer
+       else
+       {
+ 	 TRACE( "queue buffer failed\n" );
++	 free( queue );
++	 /* FIXME: should return STATUS_FAILURE? */
+       }
+ 
+       if( ( status == STATUS_NO_BUFFERS ) && ( buffer->type == UNICAP_BUFFER_TYPE_SYSTEM ) )
+@@ -2159,6 +2161,10 @@ static unicap_status_t v4l2_queue_buffer
+ 	 status = STATUS_SUCCESS;
+       }
+    }
++   else
++   {
++      free( queue );
++   }
+ 
+    
+    return STATUS_SUCCESS;
+Index: libunicap-0.9.12/cpi/vid21394/vid21394_cpi.c
+===================================================================
+--- libunicap-0.9.12.orig/cpi/vid21394/vid21394_cpi.c	2020-06-05 10:51:38.609127177 +0200
++++ libunicap-0.9.12/cpi/vid21394/vid21394_cpi.c	2020-06-05 10:53:18.353163741 +0200
+@@ -504,9 +504,6 @@ int cpi_close( void *cpi_data )
+ {
+    vid21394_data_t *data = cpi_data;
+ 
+-   vid21394_close( data->vid21394handle );
+-
+-
+    ucutil_destroy_queue( data->in_queue );
+    ucutil_destroy_queue( data->out_queue );	
+ 	
+@@ -515,6 +512,8 @@ int cpi_close( void *cpi_data )
+       free( data->vid21394handle->unicap_handle );
+    }
+ 
++   vid21394_close( data->vid21394handle );
++
+    g_instance_count--;
+    free( data );
+ 	

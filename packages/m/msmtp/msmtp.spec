@@ -17,7 +17,7 @@
 
 
 Name:           msmtp
-Version:        1.8.10
+Version:        1.8.11
 Release:        0
 BuildRequires:  gnutls-devel
 BuildRequires:  libidn2-devel
@@ -35,15 +35,8 @@ BuildRequires:  libgsasl-devel
 BuildRequires:  vim-common
 %requires_eq    vim-common
 %else
-%if 0%{?suse_version} < 1030
-# old openSUSE and SLES and Fedora and RHEL:
-BuildRequires:  vim
-%requires_eq    vim
-%else
-# recent openSUSE:
 BuildRequires:  vim-base
 %requires_eq    vim-base
-%endif #suse_version
 %endif #centos_version
 %if 0%{?suse_version}
 Requires(post): %install_info_prereq
@@ -109,15 +102,11 @@ for i in scripts/msmtpqueue/*.sh \
 done
 
 %build
-%if 0%{?suse_version} > 1000
-CFLAGS="%{optflags} -fstack-protector -fPIE"
-export LDFLAGS="-pie"
-%endif
 %configure --docdir="%{_docdir}/%{name}" --with-tls=gnutls --without-msmtpd --with-libgsasl
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
-%makeinstall V=1
+%make_install V=1
 %find_lang %{name}
 for i in README ChangeLog ; do
     cp scripts/msmtpqueue/$i ${i}.msmtpqueue
@@ -187,9 +176,8 @@ rm -f "%{buildroot}%{_infodir}/dir"
 %endif # fedora
 
 %files -f %{name}.lang
-%defattr (-, root, root)
 %doc %dir %{_docdir}/%{name}
-%doc %{_docdir}/%{name}/COPYING
+%license %{_docdir}/%{name}/COPYING
 %{_bindir}/msmtp
 %{_bindir}/msmtpq
 %{_bindir}/msmtp-queue
@@ -198,17 +186,15 @@ rm -f "%{buildroot}%{_infodir}/dir"
 %{_bindir}/msmtp-listqueue.sh
 %{_bindir}/set_sendmail.sh
 %{_bindir}/find_alias_for_msmtp.sh
-%{_mandir}/man1/msmtp.1%{ext_man}
-%{_infodir}/msmtp.info%{ext_info}
+%{_mandir}/man1/msmtp.1%{?ext_man}
+%{_infodir}/msmtp.info%{?ext_info}
 %{_datadir}/vim/*/syntax/msmtp.vim
 
 %files doc -f docfiles.lst
-%defattr (-, root, root)
 %doc %dir %{_docdir}/%{name}
 
 %files mta
-%defattr (-, root, root)
 %{_sbindir}/sendmail
-%{_mandir}/man1/sendmail.1%{ext_man}
+%{_mandir}/man1/sendmail.1%{?ext_man}
 
 %changelog

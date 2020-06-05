@@ -58,6 +58,7 @@ Requires:       waybar
 #Requires:       wofi
 Requires:       Mesa
 Requires:       alacritty
+Requires:       dmenu
 
 Recommends:     kanshi
 Recommends:     pulseaudio
