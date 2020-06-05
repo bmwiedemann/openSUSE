@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 12 10:02:24 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.10.0
+  - Bump the openstackdocstheme extension to 1.20
+  - Support two-way auth for barbicanclient
+  - PDF Documentation Build tox target
+  - Fix lower-constraints tox target
+  - docs: Turn on warning-as-error
+
+-------------------------------------------------------------------
 Mon Mar 23 12:24:18 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add obsoletes
