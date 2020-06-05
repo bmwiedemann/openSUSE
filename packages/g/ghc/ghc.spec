@@ -16,10 +16,6 @@
 #
 
 
-%if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
-%define without_manual 1
-%endif
-
 %ifnarch %{arm} s390x
 %define with_libnuma 1
 %else
@@ -40,8 +36,6 @@ Summary:        The Glorious Glasgow Haskell Compiler
 License:        BSD-3-Clause
 Group:          Development/Languages/Other
 ExclusiveArch:  aarch64 %{arm} %{ix86} x86_64 ppc64 ppc64le riscv64 s390x
-# hard to port to PIE, some prebuilt static libraries are non-PIC ...
-#!BuildIgnore:  gcc-PIE
 BuildRequires:  binutils-devel
 BuildRequires:  gcc
 BuildRequires:  ghc-bootstrap >= 8.6
@@ -50,17 +44,9 @@ BuildRequires:  glibc-devel
 BuildRequires:  gmp-devel
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
-#Fix for openSUSE:Leap:42.1
-%if 0%{?suse_version} == 1315
-BuildRequires:  libffi48-devel
-%else
 BuildRequires:  libffi-devel
-%endif
 BuildRequires:  libtool
-# not resolvable on ppc
-%if 0%{?suse_version} >= 1500
 BuildRequires:  memory-constraints
-%endif
 BuildRequires:  ncurses-devel
 BuildRequires:  pkg-config
 BuildRequires:  xz
@@ -84,27 +70,16 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  libnuma-devel
 %endif
 
-# for patch 1
-# BuildRequires:  python3
 
-# bogus requires
-%ifarch x86_64
 BuildRequires:  ghc-bootstrap-helpers
-%else
-BuildRequires:  alex
-BuildRequires:  happy
-%endif
-
 PreReq:         update-alternatives
+
 Requires:       ghc-compiler = %{version}-%{release}
 Requires:       ghc-ghc-devel = %{version}-%{release}
 Requires:       ghc-libraries = %{version}-%{release}
+
 # PATCH-FIX-UPSTREAM Disable-unboxed-arrays.patch ptrommler@icloud.com -- Do not use unboxed arrays on big-endian platforms. See Haskell Trac #15411.
 Patch3:         Disable-unboxed-arrays.patch
-# PATCH-FIX-UPSTREAM fix-build-using-unregisterized-v8.4.patch
-Patch5:         fix-build-using-unregisterized-v8.4.patch
-# PATCH-FIX-UPSTREAM fix-unregisterised-v8.4-8.6.patch
-Patch6:         fix-unregisterised-v8.4-8.6.patch
 # PATCH-FIX-UPSTREAM ghc-pie.patch - set linux as default PIE platform
 Patch35:        ghc-pie.patch
 # PATCH-FIX-OPENSUSE ghc-8.0.2-Cabal-dynlibdir.patch -- Fix shared library directory location.
@@ -227,21 +202,14 @@ except the ghc library, which is installed by the toplevel ghc metapackage.
 
 %prep
 %setup -q
-#%%patch1 -p1
-#%%patch2 -p1
 %ifarch ppc64 s390 s390x
 %patch3 -p1
 %endif
-%patch5 -p1
-%patch6 -p1
 %patch35 -p1
 %patch100 -p1
 %patch110 -p1
 
 %build
-# patch 1 modifies build system, we need to recreate configure
-# ./boot
-
 cat > mk/build.mk <<EOF
 %ifarch aarch64 %{arm}
 BuildFlavour = perf-llvm
@@ -308,9 +276,6 @@ make -j 2
 
 
 %install
-%if 0%{?suse_version} <= 1320
-%ghc_suse_disable_debug_packages
-%endif
 %makeinstall
 
 for i in %{ghc_packages_list}; do
@@ -358,10 +323,6 @@ for i in hsc2hs runhaskell; do
   ln -s -f %{_sysconfdir}/alternatives/$i %{buildroot}%{_bindir}/$i
   touch %{buildroot}%{_sysconfdir}/alternatives/$i
 done
-
-%if 0%{?suse_version} <= 1320
-%ghc_strip_dynlinked
-%endif
 
 find %{buildroot}%{ghclibdocdir} -name LICENSE -exec rm '{}' ';'
 
@@ -479,11 +440,6 @@ fi
 %ghost %{ghcdocbasedir}/libraries/index*.html
 %ghost %{ghcdocbasedir}/libraries/minus.gif
 %ghost %{ghcdocbasedir}/libraries/plus.gif
-%endif
-# With 1.7.4 of ghc-rpm-macros license files are installed here
-# but rpm does not own this directory on older openSUSE.
-%if 0%{?suse_version} <= 1320
-%dir %{_datadir}/licenses
 %endif
 
 %files libraries

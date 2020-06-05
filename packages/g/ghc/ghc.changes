@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 31 18:47:18 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- cleanup specfile from Leap 42 and older remrants
+- drop fix-unregisterised-v8.4-8.6.patch
+- drop fix-build-using-unregisterized-v8.4.patch 
+
+-------------------------------------------------------------------
 Thu May  7 07:44:47 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Update ghc to version 8.10.1. Important changes are:

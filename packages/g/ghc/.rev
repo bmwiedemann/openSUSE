@@ -816,4 +816,14 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
     <comment>major version update</comment>
     <requestid>801074</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>55941cc913fbef12bf2b969bdf099a07</srcmd5>
+    <version>8.10.1</version>
+    <time>1591381081</time>
+    <user>dimstar_suse</user>
+    <comment>- cleanup specfile from Leap 42 and older remrants
+- drop fix-unregisterised-v8.4-8.6.patch
+- drop fix-build-using-unregisterized-v8.4.patch</comment>
+    <requestid>811492</requestid>
+  </revision>
 </revisionlist>
