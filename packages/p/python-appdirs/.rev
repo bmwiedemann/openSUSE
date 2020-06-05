@@ -65,4 +65,16 @@
     <comment>- Format with spec-cleaner</comment>
     <requestid>745372</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c129e1aac415344898f1936df2cbec5c</srcmd5>
+    <version>1.4.4</version>
+    <time>1591379994</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.4:
+  - [PR #92] Don't import appdirs from setup.py
+  Project officially classified as Stable which is important
+  for inclusion in other distros such as ActivePython.
+  First of several incremental releases to catch up on maintenance.</comment>
+    <requestid>810912</requestid>
+  </revision>
 </revisionlist>
