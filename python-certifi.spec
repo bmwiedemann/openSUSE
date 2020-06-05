@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-certifi
-Version:        2019.11.28
+Version:        2020.4.5.1
 Release:        0
 Summary:        Python package for providing Mozilla's CA Bundle
 License:        MPL-2.0

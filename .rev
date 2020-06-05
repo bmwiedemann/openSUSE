@@ -176,4 +176,14 @@
     <comment></comment>
     <requestid>766931</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e7f1c5f89797386f24a78a8e79bb3425</srcmd5>
+    <version>2020.4.5.1</version>
+    <time>1591380050</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2020.4.5.1:
+  adds Agencia Catalana de Certificacio (NIF Q-0801176-I) OU=Serveis
+  Publics de Certificacio/Vegeu</comment>
+    <requestid>811099</requestid>
+  </revision>
 </revisionlist>
