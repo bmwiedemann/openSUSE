@@ -30,6 +30,8 @@ Source:         https://files.pythonhosted.org/packages/source/d/distro/distro-%
 Patch0:         assert_locale.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test
 %if %{with test}
@@ -53,6 +55,7 @@ It is a renewed alternative implementation for Python's original platform.linux_
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/distro
 
 %if %{with test}
 %check
@@ -60,9 +63,15 @@ It is a renewed alternative implementation for Python's original platform.linux_
 LANG=en_US.utf8 %python_exec setup.py pytest
 %endif
 
+%post
+%python_install_alternative distro
+
+%postun
+%python_uninstall_alternative distro
+
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%python3_only %{_bindir}/distro
+%python_alternative %{_bindir}/distro
 %{python_sitelib}/*
 %%license LICENSE
 
