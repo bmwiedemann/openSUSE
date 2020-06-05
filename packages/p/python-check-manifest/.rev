@@ -59,4 +59,12 @@ Needed for python3-jupyter_ipython</comment>
     <comment>- Switch to multibuild and remove Suggests for bzr.</comment>
     <requestid>799507</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>01352f3f12344c6e0b5b4cff157c1077</srcmd5>
+    <version>0.40</version>
+    <time>1591379927</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>808800</requestid>
+  </revision>
 </revisionlist>

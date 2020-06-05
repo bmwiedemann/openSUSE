@@ -24,8 +24,8 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-Name:           python-check-manifest%{psuffix}
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+Name:           python-check-manifest%{psuffix}
 Version:        0.40
 Release:        0
 Summary:        Tool to check Python source package MANIFEST.in for completeness
@@ -39,17 +39,19 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
+Requires:       python-toml
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+Suggests:       git-core
+Suggests:       mercurial
+Suggests:       subversion
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  git-core
 BuildRequires:  mercurial
 BuildRequires:  subversion
 %endif
-Requires:       python-setuptools
-Requires:       python-toml
-Suggests:       git-core
-Suggests:       mercurial
-Suggests:       subversion
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -67,6 +69,7 @@ chmod -x check_manifest.py
 %install
 %if !%{with test}
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/check-manifest
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -77,10 +80,16 @@ export LANG=en_US.UTF-8
 %endif
 
 %if !%{with test}
+%post
+%python_install_alternative check-manifest
+
+%postun
+%python_uninstall_alternative check-manifest
+
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE.rst
-%python3_only %{_bindir}/check-manifest
+%python_alternative %{_bindir}/check-manifest
 %{python_sitelib}/*
 %endif
 

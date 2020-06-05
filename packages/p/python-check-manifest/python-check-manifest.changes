@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 25 10:59:13 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Fri May  1 12:09:52 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Switch to multibuild and remove Suggests for bzr.
