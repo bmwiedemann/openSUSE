@@ -1,0 +1,16 @@
+Index: libselinux-3.0/src/selinux_restorecon.c
+===================================================================
+--- libselinux-3.0.orig/src/selinux_restorecon.c
++++ libselinux-3.0/src/selinux_restorecon.c
+@@ -991,9 +991,8 @@ int selinux_restorecon(const char *pathn
+ 			selinux_log(SELINUX_ERROR,
+ 				    "Directory cycle on %s.\n",
+ 				    ftsent->fts_path);
+-			errno = ELOOP;
+-			error = -1;
+-			goto out;
++			fts_set(fts, ftsent, FTS_SKIP);
++			continue;
+ 		case FTS_DP:
+ 			continue;
+ 		case FTS_DNR:

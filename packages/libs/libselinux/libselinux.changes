@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 26 15:43:41 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
+
+- Added skip_cycles.patch to skip directory cycles and not error
+  out
+
+-------------------------------------------------------------------
 Tue Mar  3 11:13:12 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
 
 - Update to version 3.0

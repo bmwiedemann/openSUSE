@@ -29,6 +29,7 @@ Source1:        selinux-ready
 Source2:        baselibs.conf
 # PATCH-FIX-UPSTREAM Include <sys/uio.h> for readv prototype
 Patch4:         readv-proto.patch
+Patch5:         skip_cycles.patch
 BuildRequires:  fdupes
 BuildRequires:  libsepol-devel >= %{libsepol_ver}
 BuildRequires:  pcre-devel
@@ -95,6 +96,7 @@ necessary to develop your own software using libselinux.
 %prep
 %setup -q
 %patch4 -p1
+%patch5 -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -106,21 +108,6 @@ mkdir -p %{buildroot}%{_libdir}
 mkdir -p %{buildroot}%{_includedir}
 mkdir -p %{buildroot}%{_sbindir}
 make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="/%{_lib}" BINDIR="%{_sbindir}" install
-rm -f %{buildroot}%{_sbindir}/compute_*
-rm -f %{buildroot}%{_sbindir}/deftype
-rm -f %{buildroot}%{_sbindir}/execcon
-rm -f %{buildroot}%{_sbindir}/getenforcemode
-rm -f %{buildroot}%{_sbindir}/getfilecon
-rm -f %{buildroot}%{_sbindir}/getpidcon
-rm -f %{buildroot}%{_sbindir}/mkdircon
-rm -f %{buildroot}%{_sbindir}/policyvers
-rm -f %{buildroot}%{_sbindir}/setfilecon
-rm -f %{buildroot}%{_sbindir}/selinuxconfig
-rm -f %{buildroot}%{_sbindir}/selinuxdisable
-rm -f %{buildroot}%{_sbindir}/getseuser
-rm -f %{buildroot}%{_sbindir}/selinux_check_securetty_context
-rm -f %{buildroot}%{_sbindir}/selabel_get_digests_all_partial_matches
-rm -f %{buildroot}%{_sbindir}/validatetrans
 mv %{buildroot}%{_sbindir}/getdefaultcon %{buildroot}%{_sbindir}/selinuxdefcon
 mv %{buildroot}%{_sbindir}/getconlist %{buildroot}%{_sbindir}/selinuxconlist
 install -m 0755 %{SOURCE1} %{buildroot}%{_sbindir}/selinux-ready
@@ -145,10 +132,18 @@ install -m 0755 %{SOURCE1} %{buildroot}%{_sbindir}/selinux-ready
 %{_sbindir}/selinuxenabled
 %{_sbindir}/setenforce
 %{_sbindir}/togglesebool
-#%#{_sbindir}/selinux_restorecon
 %{_sbindir}/selinux-ready
 %{_sbindir}/selinuxexeccon
 %{_sbindir}/sefcontext_compile
+%{_sbindir}/compute_*
+%{_sbindir}/getfilecon
+%{_sbindir}/getpidcon
+%{_sbindir}/policyvers
+%{_sbindir}/setfilecon
+%{_sbindir}/getseuser
+%{_sbindir}/selinux_check_securetty_context
+%{_sbindir}/selabel_get_digests_all_partial_matches
+%{_sbindir}/validatetrans
 %{_mandir}/man5/*
 %{_mandir}/ru/man5/*
 %{_mandir}/man8/*

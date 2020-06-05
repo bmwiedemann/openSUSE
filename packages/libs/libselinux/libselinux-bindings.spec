@@ -89,17 +89,10 @@ make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags}" -C src pywrap V=1
 make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags}" -C src rubywrap V=1
 
 %install
-make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" \
-    SHLIBDIR="/%{_lib}" LIBSEPOLA=%{_libdir}/libsepol.a \
-    -C src install V=1
-make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" \
-    SHLIBDIR="/%{_lib}" LIBSEPOLA=%{_libdir}/libsepol.a \
-    -C src install-pywrap V=1
-make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" \
-    SHLIBDIR="/%{_lib}" LIBSEPOLA=%{_libdir}/libsepol.a \
-    -C src install-rubywrap V=1
-rm -rf %{buildroot}/%{_lib} %{buildroot}%{_libdir}/libselinux.* \
-    %{buildroot}%{_libdir}/pkgconfig
+make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="/%{_lib}" LIBSEPOLA=%{_libdir}/libsepol.a -C src install V=1
+make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="/%{_lib}" LIBSEPOLA=%{_libdir}/libsepol.a -C src install-pywrap V=1
+make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="/%{_lib}" LIBSEPOLA=%{_libdir}/libsepol.a -C src install-rubywrap V=1
+rm -rf %{buildroot}/%{_lib} %{buildroot}%{_libdir}/libselinux.* %{buildroot}%{_libdir}/pkgconfig
 
 %files -n python3-selinux
 %{python3_sitearch}/*selinux*
