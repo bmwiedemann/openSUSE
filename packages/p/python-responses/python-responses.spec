@@ -1,7 +1,7 @@
 #
 # spec file for package python-responses
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,9 +54,13 @@ about the library.
 %setup -q -n responses-%{version}
 
 %build
+export LANG="en_US.UTF8"
+export PYTHONIOENCODING="utf_8"
 %python_build
 
 %install
+export LANG="en_US.UTF8"
+export PYTHONIOENCODING="utf_8"
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
