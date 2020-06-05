@@ -28,7 +28,7 @@
 %define psuffix %{nil}
 %endif
 Name:           python-six%{psuffix}
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        Python 2 and 3 compatibility utilities
 License:        MIT
