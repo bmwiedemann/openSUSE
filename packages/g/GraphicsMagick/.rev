@@ -890,4 +890,15 @@
     GetMagickResource() would return -1 rather than the maximum range</comment>
     <requestid>788080</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>f0962764ef2f089d41ed8b372576c82b</srcmd5>
+    <version>1.3.35</version>
+    <time>1591380134</time>
+    <user>dimstar_suse</user>
+    <comment>- security update
+- added patches
+  fix CVE-2020-12672 [bsc#1171271], heap-based buffer overflow in ReadMNGImage in coders/png.c.
+  + GraphicsMagick-CVE-2020-12672.patch</comment>
+    <requestid>810842</requestid>
+  </revision>
 </revisionlist>

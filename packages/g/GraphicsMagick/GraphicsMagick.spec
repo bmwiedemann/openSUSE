@@ -41,6 +41,8 @@ Source:         ftp://ftp.GraphicsMagick.org/pub/%{name}/%{base_version}/%{name}
 Patch0:         GraphicsMagick-perl-linkage.patch
 %endif
 Patch1:         GraphicsMagick-disable-insecure-coders.patch
+# CVE-2020-12672 [bsc#1171271], heap-based buffer overflow in ReadMNGImage in coders/png.c.
+Patch2:         GraphicsMagick-CVE-2020-12672.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++
@@ -210,6 +212,7 @@ images, and to create thumbnail images.
 %patch0 -p1
 %endif
 %patch1 -p1
+%patch2 -p1
 
 %build
 # This shouldn't be there yet.
