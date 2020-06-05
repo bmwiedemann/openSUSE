@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 12 10:01:32 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.0.0
+  - Switch upper-constraints URL to static location
+  - Use unittest.mock instead of third party mock
+  - Switch to Ussuri jobs
+  - Cleanup py27 support
+  - Removing unused code
+  - More cleanup
+  - Fix "recordset list --all-projects" in interactive OSC
+  - Fix "zone list --all-projects" in interactive OSC
+  - Update master for stable/train
+  - Drop py27 support
+
+-------------------------------------------------------------------
 Wed Mar 11 12:57:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only
