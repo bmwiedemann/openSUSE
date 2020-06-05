@@ -328,4 +328,12 @@
     <comment>- switch to python 3.x only builds</comment>
     <requestid>784952</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>76e8ed43af8c9d86242dffa23e2cc1be</srcmd5>
+    <version>3.3.1</version>
+    <time>1591380942</time>
+    <user>dimstar_suse</user>
+    <comment>Ussuri Update</comment>
+    <requestid>803603</requestid>
+  </revision>
 </revisionlist>

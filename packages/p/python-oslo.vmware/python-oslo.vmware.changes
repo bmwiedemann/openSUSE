@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May 12 09:48:57 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.3.1
+  - Pass "base_image_ref" to backend when transfer volume to image
+  - Ensure lease polling raises proper exception
+  - Fix object has no attribute 'readinto' in Python3
+  - Document disable flake8/hacking warnings
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - Add ability to change read chunk size
+  - Adds standard file operation functions
+  - tox: Trivial cleanup
+  - Update hacking for Python3
+  - remove outdated header
+  - Use unittest.mock instead of third party mock
+  - Pass "store_id" to backend when transfer volume to image
+  - Update the tox minversion parameter.
+  - tox: Keeping going with docs
+  - reword releasenote for py27 support dropping
+  - Switch to Ussuri jobs
+  - Drop use of six
+  - Update master for stable/train
+
+-------------------------------------------------------------------
 Sat Mar 14 12:06:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only builds

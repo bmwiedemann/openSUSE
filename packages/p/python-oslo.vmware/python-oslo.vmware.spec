@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.vmware
-Version:        2.34.1
+Version:        3.3.1
 Release:        0
 Summary:        Oslo VMware library for OpenStack projects
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.vmware
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.vmware/oslo.vmware-2.34.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.vmware/oslo.vmware-3.3.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Babel
 BuildRequires:  python3-ddt
@@ -67,7 +67,7 @@ Requires:       python3-oslo.context >= 2.19.2
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-requests >= 2.14.2
-Requires:       python3-six >= 1.10.0
+Requires:       python3-six
 Requires:       python3-stevedore >= 1.20.0
 Requires:       python3-suds-jurko >= 0.6
 Requires:       python3-urllib3 >= 1.21.1
@@ -93,7 +93,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for OpenStack common VMware library.
 
 %prep
-%autosetup -p1 -n oslo.vmware-2.34.1
+%autosetup -p1 -n oslo.vmware-3.3.1
 %py_req_cleanup
 
 %build
@@ -108,6 +108,8 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %py3_install
 
 %check
+# don't want to depend on hacking for package building
+rm oslo_vmware/tests/test_hacking.py
 python3 -m stestr.cli run
 
 %files -n python3-oslo.vmware
