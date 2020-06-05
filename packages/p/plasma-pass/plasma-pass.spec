@@ -1,7 +1,7 @@
 #
 # spec file for package plasma-pass
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source:         https://download.kde.org/stable/plasma-pass/%{name}-%{version}.t
 Source1:        https://download.kde.org/stable/plasma-pass/%{name}-%{version}.tar.xz.sig
 Source2:        plasma-pass.keyring
 %endif
+Patch0:         0001-Fix-build-against-Qt-5.15.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  cmake(KF5I18n) >= 5.42.0
@@ -49,32 +50,33 @@ generated and stored by the "pass" password manager.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
 %if %{with lang}
  %find_lang %{lang_name} %{name}.lang
 %endif
+
 %fdupes %{buildroot}
 
 %files
 %license COPYING
 %doc README.md
-%{_kf5_appstreamdir}/org.kde.plasma.pass.appdata.xml
 %dir %{_kf5_plasmadir}/plasmoids
-%{_kf5_plasmadir}/plasmoids/org.kde.plasma.pass/
 %dir %{_kf5_qmldir}/org/kde/plasma/
 %dir %{_kf5_qmldir}/org/kde/plasma/private/
 %dir %{_kf5_qmldir}/org/kde/plasma/private/plasmapass
+%{_kf5_appstreamdir}/org.kde.plasma.pass.appdata.xml
+%{_kf5_debugdir}/plasma-pass.categories
+%{_kf5_plasmadir}/plasmoids/org.kde.plasma.pass/
 %{_kf5_qmldir}/org/kde/plasma/private/plasmapass/libplasmapassplugin.so
 %{_kf5_qmldir}/org/kde/plasma/private/plasmapass/qmldir
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.pass.desktop
-%{_kf5_debugdir}/plasma-pass.categories
 
 %if %{with lang}
 %files lang -f %{name}.lang

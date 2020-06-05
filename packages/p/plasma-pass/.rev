@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>754661</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6f9e56b970818b519b389e205c2201cd</srcmd5>
+    <version>1.1.0</version>
+    <time>1591381173</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch:
+  * 0001-Fix-build-against-Qt-5.15.patch</comment>
+    <requestid>811544</requestid>
+  </revision>
 </revisionlist>

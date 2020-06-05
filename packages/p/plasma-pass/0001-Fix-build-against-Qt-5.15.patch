@@ -1,0 +1,28 @@
+From cbc0374d0671b14fe84c12ff2e9f0c3dbc56c4f2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Vr=C3=A1til?= <dvratil@kde.org>
+Date: Thu, 9 Apr 2020 12:48:53 +0200
+Subject: [PATCH] Fix build against Qt 5.15
+
+---
+ plugin/passwordfiltermodel.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/plugin/passwordfiltermodel.cpp b/plugin/passwordfiltermodel.cpp
+index 3115a6c..79173fa 100644
+--- a/plugin/passwordfiltermodel.cpp
++++ b/plugin/passwordfiltermodel.cpp
+@@ -79,7 +79,11 @@ void PasswordFilterModel::delayedUpdateFilter()
+     Q_ASSERT(sender() == &mUpdateTimer);
+ 
+     mFilter = mUpdateTimer.property(newFilterProperty).toString();
++#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
+     mParts = mFilter.splitRef(QLatin1Char('/'), QString::SkipEmptyParts);
++#else
++    mParts = mFilter.splitRef(QLatin1Char('/'), Qt::SkipEmptyParts);
++#endif
+     Q_EMIT passwordFilterChanged();
+     mSortingLookup.clear();
+     invalidate();
+-- 
+2.26.2
+
