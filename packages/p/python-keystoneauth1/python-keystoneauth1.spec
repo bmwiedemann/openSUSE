@@ -17,13 +17,13 @@
 
 
 Name:           python-keystoneauth1
-Version:        3.17.2
+Version:        4.0.0
 Release:        0
 Summary:        OpenStack authenticating tools
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/keystoneauth
-Source0:        https://files.pythonhosted.org/packages/source/k/keystoneauth1/keystoneauth1-3.17.2.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/k/keystoneauth1/keystoneauth1-4.0.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-betamax
@@ -78,6 +78,7 @@ Summary:        Documentation for OpenStack authenticating tools
 Group:          Development/Languages/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-sphinxcontrib-apidoc
 
 %description -n python-keystoneauth1-doc
 Documentation for OpenStack authenticating tools.
@@ -96,7 +97,7 @@ echo "intersphinx_mapping = {}" >> doc/source/conf.py
 %{py3_install}
 
 # generate html docs
-PBR_VERSION=%{version} sphinx-build -b html doc/source doc/build/html
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

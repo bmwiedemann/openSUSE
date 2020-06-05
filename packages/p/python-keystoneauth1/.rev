@@ -279,4 +279,12 @@ update to version 2.12.0
   * Update .gitreview for stable/train</comment>
     <requestid>786267</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c7577daa641436856c6457c56f6bec2b</srcmd5>
+    <version>4.0.0</version>
+    <time>1591380627</time>
+    <user>dimstar_suse</user>
+    <comment>Ussuri Update</comment>
+    <requestid>803566</requestid>
+  </revision>
 </revisionlist>

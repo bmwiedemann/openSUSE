@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 12 09:57:35 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.0.0
+  - Follow the PTI for docs
+  - Switch to Ussuri jobs
+  - Remove universal wheel configuration
+  - Fetch discovery documents with auth when needed
+  - Update master for stable/train
+  - fix bandit complains
+  - Generate pdf documentation
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - Update hacking for Python3
+  - Fix misspell word
+  - Cleanup session on delete
+  - Make tests pass in 2020
+  - Allow initializing session with connection retries
+
+-------------------------------------------------------------------
 Sat Mar 14 11:44:31 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - fix doc requirements
