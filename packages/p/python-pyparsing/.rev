@@ -450,4 +450,12 @@ self, run_tests_report, expected_parse_results=None, msg=None)
   . Cleanup output in runTests if comments are embedded in test string</comment>
     <requestid>800308</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>ffff70694957d35ffda6cf67265075ea</srcmd5>
+    <version>2.4.7</version>
+    <time>1591380035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811049</requestid>
+  </revision>
 </revisionlist>

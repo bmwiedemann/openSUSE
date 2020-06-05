@@ -27,6 +27,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%bcond_without python2
 Name:           python-pyparsing%{psuffix}
 Version:        2.4.7
 Release:        0
@@ -39,7 +40,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module unittest2}
+BuildRequires:  %{python_module pytest}
 %endif
 %ifpython2
 Provides:       %{oldpython}-parsing = %{version}
@@ -74,12 +75,7 @@ cp -r pyparsing.egg-info %{buildroot}%{$python_sitelib}/pyparsing-%{version}-py%
 
 %check
 %if %{with test}
-%{python_expand export PYTHONPATH=.
-# unittest from Python 2.7 doesn't load tests correctly
-# no work simple_unit_tests.py examples.antlr_grammar_tests
-$python -munittest2 -v examples.test_bibparse
-$python unitTests.py
-}
+%pytest
 %endif
 
 %if ! %{with test}
