@@ -70,7 +70,9 @@ for i in %{_prefix}/share/fvwm/themes/current/theme.cfg \
 	 %{_prefix}/share/fvwm/themes-rc \
 	 %{_prefix}/share/fvwm/themes-rc-2 \
  	 %{_prefix}/share/fvwm/themes-rc-3 ; do
-sed -e "s@$RPM_BUILD_ROOT@@g" < $RPM_BUILD_ROOT/$i > xxtmp
+
+rpmbuildroot2=${RPM_BUILD_ROOT/#\/home\/abuild/\$HOME}
+sed -e "s@$RPM_BUILD_ROOT@@g; s@$rpmbuildroot2@@g" < $RPM_BUILD_ROOT/$i > xxtmp
 mv xxtmp $RPM_BUILD_ROOT/$i
 done
 

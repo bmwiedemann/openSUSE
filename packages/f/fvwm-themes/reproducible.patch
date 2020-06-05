@@ -2,6 +2,15 @@ Index: fvwm-themes-0.7.0/bin/fvwm-themes-config.in
 ===================================================================
 --- fvwm-themes-0.7.0.orig/bin/fvwm-themes-config.in
 +++ fvwm-themes-0.7.0/bin/fvwm-themes-config.in
+@@ -1784,7 +1784,7 @@ sub getAdditionalImagePath ($) {
+ 
+ sub getAllHooksRc ($) {
+ 	my $self = shift;
+-	my $currentComponents = [keys %{$self->{cc}}];
++	my $currentComponents = [sort keys %{$self->{cc}}];
+ 	my $startItems = [];
+ 	my $stopItems = [];
+ 	my $loadItems = [];
 @@ -2142,7 +2142,8 @@ sub generateThemesRc ($) {
  	my $self = shift;
  

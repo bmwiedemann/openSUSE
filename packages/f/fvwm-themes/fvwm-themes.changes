@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 30 19:33:43 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Extend reproducible.patch to produce consistent rc file
+  entry order even across architectures
+- Drop even more RPM_BUILD_ROOT path from rc file
+
+-------------------------------------------------------------------
 Mon May  1 20:14:03 UTC 2017 - bwiedemann@suse.com
 
 - Add reproducible.patch and override HOST in order to
