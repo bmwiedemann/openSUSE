@@ -20,20 +20,20 @@
 %global rdo 1
 %endif
 Name:           python-oslo.service
-Version:        1.40.2
+Version:        2.1.1
 Release:        0
 Summary:        OpenStack oslo.service library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.service
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.service/oslo.service-1.40.2.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.service/oslo.service-2.1.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  procps
 BuildRequires:  python3-Paste >= 2.0.2
 BuildRequires:  python3-PasteDeploy >= 1.5.0
 BuildRequires:  python3-Routes >= 2.3.1
 BuildRequires:  python3-WebOb >= 1.7.1
-BuildRequires:  python3-eventlet >= 0.18.2
+BuildRequires:  python3-eventlet >= 0.22.0
 BuildRequires:  python3-fixtures >= 3.0.0
 BuildRequires:  python3-greenlet >= 0.4.10
 BuildRequires:  python3-mock
@@ -64,7 +64,7 @@ Requires:       python3-PasteDeploy >= 1.5.0
 Requires:       python3-Routes >= 2.3.1
 Requires:       python3-WebOb >= 1.7.1
 Requires:       python3-debtcollector >= 1.2.0
-Requires:       python3-eventlet >= 0.18.2
+Requires:       python3-eventlet >= 0.22.0
 Requires:       python3-fixtures >= 3.0.0
 Requires:       python3-greenlet >= 0.4.10
 Requires:       python3-oslo.concurrency >= 3.25.0
@@ -95,7 +95,7 @@ performing periodic operations, interacting with systemd, etc.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.service-1.40.2
+%autosetup -p1 -n oslo.service-2.1.1
 %py_req_cleanup
 
 %build
