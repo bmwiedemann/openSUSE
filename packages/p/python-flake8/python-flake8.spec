@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-flake8
-Version:        3.8.1
+Version:        3.8.2
 Release:        0
 Summary:        Modular source code checker: pep8, pyflakes and co
 License:        MIT

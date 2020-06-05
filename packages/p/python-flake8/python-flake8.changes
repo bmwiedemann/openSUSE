@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun  3 02:23:36 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 3.8.2:
+  * Improve performance by eliminating unncessary sort (See also
+    GitLab!429)
+  * Improve messaging of --jobs argument by utilizing argparse (See
+    also GitLab!428, GitLab#567)
+  * Fix file configuration options to be relative to the config passed
+    on the command line (See also GitLab!431, GitLab#651)
+  * Fix incorrect handling of --extend-exclude by treating its values
+    as files (See also GitLab!432, GitLab#653)
+
+-------------------------------------------------------------------
 Thu May 14 08:48:44 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 3.8.1
