@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May 12 09:46:46 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.0.2
+  - tox: Stop using 'python setup.py test'
+  - tox: Keeping going with docs
+  - Drop python 2.7 support and testing
+  - Don't build universal wheel
+  - Bump the openstackdocstheme extension to 1.20
+  - Update master for stable/train
+  - tox: Trivial cleanup
+  - reword releasenote for py27 support dropping
+  - remove outdated header
+  - gitignore: Hide reno cache files
+  - Filter out auth_token_info from logging values
+  - Update the constraints url
+  - Update hacking for Python3
+  - Switch to Ussuri jobs
+  - trivial: Cleanup tox.ini
+
+-------------------------------------------------------------------
 Sat Mar 14 11:45:31 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only builds

@@ -18,13 +18,13 @@
 
 %bcond_without test
 Name:           python-oslo.context
-Version:        2.23.0
+Version:        3.0.2
 Release:        0
 Summary:        OpenStack Oslo context library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.context
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.context/oslo.context-2.23.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.context/oslo.context-3.0.2.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-pbr >= 2.0.0
 BuildArch:      noarch
@@ -64,7 +64,7 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for the oslo-context library.
 
 %prep
-%autosetup -p1 -n oslo.context-2.23.0
+%autosetup -p1 -n oslo.context-3.0.2
 %py_req_cleanup
 
 %build
