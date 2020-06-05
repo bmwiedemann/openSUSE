@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 12 10:00:54 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.0.1
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - Modify "backup-list" show
+  - Update tox.ini file to add py36 in envlist
+  - Remove six usage from freezerclient package
+  - Upgrade pylint&astroid to a version that works with python3.7
+  - Cleanup py27 support
+  - result is different from comments
+  - Add Python 3 Train unit tests
+  - [ussuri][goal] Drop python 2.7 support and testing
+
+-------------------------------------------------------------------
 Tue Mar 10 17:24:03 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - Switch to a python 3.x only build
