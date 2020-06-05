@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue May 12 09:45:06 UTC 2020 - cloud-devel@suse.de
+
+- update to version 12.1.0
+  - Update the constraints url
+  - Removed unused variable pools
+  - Update master for stable/train
+  - remove outdated header
+  - Make sure minimum amqp is 2.5.2
+  - Do not use threading.Event
+  - Align message serialization between drivers
+  - Ignore releasenote cache within git untracked files
+  - tox: Trivial cleanup
+  - tox: Keeping going with docs
+  - Migrate grenade jobs to py3
+  - Remove telemetry checks
+  - Revert "Add RPC incoming and reply log"
+  - Adding debug logs on AMQPListener poll
+  - Add support for kafka SSL autentication
+  - Switch to Ussuri jobs
+  - Add RPC incoming and reply log
+  - Remove the deprecated blocking executor
+  - Fix help text for heartbeat_in_pthread option
+  - Remove unused variable WAKE_UP
+  - Setup backend scenarios for functional tests
+  - Fix spacing in help message
+  - Update hacking for Python3
+  - Modify some comments to make them clickable
+  - Don't log NoSuchMethod for special non-existing methods
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - reword releasenote for py27 support dropping
+
+-------------------------------------------------------------------
 Mon Mar 23 12:19:43 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add obsoletes
