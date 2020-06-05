@@ -37,6 +37,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Pillow
 Requires:       python-imageio-ffmpeg
 Requires:       python-numpy
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     libfreeimageplus3
 BuildArch:      noarch
 %python_subpackages
@@ -62,17 +64,27 @@ export IMAGEIO_NO_INTERNET=1
 %install
 export IMAGEIO_NO_INTERNET=1
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/imageio_remove_bin
+%python_clone -a %{buildroot}%{_bindir}/imageio_download_bin
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export IMAGEIO_NO_INTERNET=1
 %pytest -k "not test_fei_file_fail and not test_ffmpeg and not test_series_unclosed and not test_import_dependencies"
 
+%post
+%python_install_alternative imageio_remove_bin
+%python_install_alternative imageio_download_bin
+
+%postun
+%python_uninstall_alternative imageio_remove_bin
+%python_uninstall_alternative imageio_download_bin
+
 %files %{python_files}
 %license LICENSE
 %doc CONTRIBUTORS.txt README.md
 %{python_sitelib}/*
-%python3_only %{_bindir}/imageio_download_bin
-%python3_only %{_bindir}/imageio_remove_bin
+%python_alternative %{_bindir}/imageio_download_bin
+%python_alternative %{_bindir}/imageio_remove_bin
 
 %changelog
