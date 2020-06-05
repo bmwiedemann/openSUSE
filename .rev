@@ -346,4 +346,12 @@ update to version 1.10.0
 - switch to python 3.x only</comment>
     <requestid>787454</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>935fa516aeb5cd9d200900c8c90783a8</srcmd5>
+    <version>2.1.0</version>
+    <time>1591380663</time>
+    <user>dimstar_suse</user>
+    <comment>Ussuri Update</comment>
+    <requestid>803570</requestid>
+  </revision>
 </revisionlist>
