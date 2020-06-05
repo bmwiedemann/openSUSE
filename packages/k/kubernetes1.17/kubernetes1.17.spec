@@ -116,6 +116,7 @@ Group:          System/Management
 Requires:       cri-runtime
 Requires:       kubernetes-kubelet-common
 Provides:       kubernetes-kubelet%{baseversion} = %{version}
+Obsoletes:      kubernetes-kubelet < 1.17.5
 Obsoletes:      kubernetes-kubelet%{baseversion} < %{version}
 %{?systemd_requires}
 

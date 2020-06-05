@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  3 12:49:13 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Avoid unncessary kubernetes1.17-kubelet package removal [boo#1168390] 
+
+-------------------------------------------------------------------
 Wed May 20 11:13:27 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Run sysctl -a --system before kubelet to ensure sysctl parameters are correctly loaded [boo#1171770]
