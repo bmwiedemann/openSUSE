@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue May 12 09:54:56 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.1.0
+  - Fix reference cycle caused by deprecated sample override
+  - Bump the openstackdocstheme extension to 1.20
+  - tox: Trivial cleanup
+  - Fix doc comments for new enforce default flag
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - Use unittest.mock instead of third party mock
+  - Update hacking for Python3
+  - Add new config to enforce the new defaults
+  - Allow disabling the default check_str change warnings
+  - Initialize global config object in cli tools
+  - Bump oslo.utils to 3.40.0
+  - Temporarily make namespace arg optional
+  - Link to the Keystone role documentation
+  - Follow the new PTI for document build
+  - Don't use string processing to combine deprecated rules
+  - Modernize policy checker
+  - Don't parse cli args on the global object in sphinxpolicygen
+  - Make HTTP check doc heading more specific
+  - Cleanup warnings
+  - Update master for stable/train
+  - Suppress deprecation warnings in oslopolicy-list-redundant
+  - tox: Keeping going with docs
+  - remove outdated header
+  - Update the constraints url
+  - Switch to Ussuri jobs
+  - Move away from python setup.py test who is deprecated in pbr
+
+-------------------------------------------------------------------
 Sat Mar 14 12:05:15 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only builds
