@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 21 03:11:03 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 0.072
+   see /usr/share/doc/packages/perl-PPIx-Regexp/Changes
+
+  0.072		2020-05-20	T. R. Wyant
+      Drop dependency on List::MoreUtils.  Thanks to Graham Ollis
+      (plicease) for bringing the issues with this module to my attention.
+  
+
+-------------------------------------------------------------------
 Sun Mar 29 03:11:09 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.071

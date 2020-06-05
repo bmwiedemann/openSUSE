@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PPIx-Regexp
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,23 @@
 
 
 Name:           perl-PPIx-Regexp
-Version:        0.071
+Version:        0.072
 Release:        0
 %define cpan_name PPIx-Regexp
 Summary:        Represent a regular expression of some sort
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/W/WY/WYANT/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(List::MoreUtils)
 BuildRequires:  perl(Module::Build) >= 0.420000
 BuildRequires:  perl(PPI::Document) >= 1.117
 BuildRequires:  perl(Task::Weaken)
 BuildRequires:  perl(Test::More) >= 0.88
-Requires:       perl(List::MoreUtils)
 Requires:       perl(PPI::Document) >= 1.117
 Requires:       perl(Task::Weaken)
 %{perl_requires}
