@@ -1,7 +1,7 @@
 #
 # spec file for package kiwi
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,7 +14,7 @@
 #
 # Please submit bugfixes or comments via:
 #
-#       https://github.com/SUSE/kiwi/issues
+#       https://github.com/OSInside/kiwi/issues
 #
 
 # If they aren't provided by a system installed macro, define them
@@ -43,13 +43,13 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.20.9
-Provides:       kiwi-schema = 7.1
+Version:        9.20.16
+Provides:       kiwi-schema = 7.2
 Release:        0
-Url:            https://github.com/SUSE/kiwi
+Url:            https://github.com/OSInside/kiwi
 Summary:        KIWI - Appliance Builder Next Generation
 License:        GPL-3.0-or-later
-%if %{_vendor} == "debbuild"
+%if "%{_vendor}" == "debbuild"
 # Needed to set Maintainer in output debs
 Packager:       Marcus Schaefer <ms@suse.de>
 %endif
@@ -80,6 +80,9 @@ and cloud systems like Xen, KVM, VMware, EC2 and more.
 %package -n python%{python3_pkgversion}-kiwi
 Summary:        KIWI - Appliance Builder Next Generation
 Group:          Development/Languages/Python
+Obsoletes:      python2-kiwi
+Conflicts:      python2-kiwi
+Conflicts:      kiwi-man-pages < %{version}
 %if 0%{?fedora} || 0%{?rhel} >= 8 || 0%{?suse_version} || 0%{?debian} || 0%{?ubuntu}
 Recommends:     jing
 %endif
@@ -122,10 +125,14 @@ Requires:       gdisk
 Requires:       dnf
 Provides:       kiwi-packagemanager:dnf
 Provides:       kiwi-packagemanager:yum
+%if 0%{?fedora} || 0%{?rhel} >= 8
+Recommends:     gnupg2
+%endif
 %endif
 %if 0%{?suse_version}
 # If it's available, let's pull it in
 Recommends:     dnf
+Recommends:     gpg2
 %endif
 %if 0%{?fedora} >= 26 || 0%{?suse_version}
 Requires:       zypper
@@ -136,6 +143,7 @@ Requires:       debootstrap
 Requires:       qemu-utils
 Requires:       squashfs-tools
 Requires:       gdisk
+Recommends:     gnupg
 %endif
 Requires:       dosfstools
 Requires:       e2fsprogs
@@ -179,7 +187,7 @@ kiwi created initial ramdisk which is used to control the very
 first boot of an appliance. The tools are not meant to be used
 outside of the scope of kiwi appliance building.
 
-%if %{_vendor} != "debbuild"
+%if "%{_vendor}" != "debbuild"
 %ifarch %{ix86} x86_64
 %package -n kiwi-pxeboot
 Summary:        KIWI - PXE boot structure
@@ -386,7 +394,7 @@ ln -sr %{buildroot}%{_bindir}/kiwi-ng %{buildroot}%{_bindir}/kiwi
 ln -sr %{buildroot}%{_bindir}/kiwi-ng %{buildroot}%{_bindir}/kiwi-ng-3
 ln -sr %{buildroot}%{_bindir}/kiwicompat %{buildroot}%{_bindir}/kiwicompat-3
 
-%if %{_vendor} != "debbuild"
+%if "%{_vendor}" != "debbuild"
 # kiwi pxeboot directory structure to be packed in kiwi-pxeboot
 %ifarch %{ix86} x86_64
 for i in KIWI pxelinux.cfg image upload boot; do \
@@ -399,7 +407,7 @@ done
 %fdupes %{buildroot}/srv/tftpboot
 %endif
 
-%if %{_vendor} != "debbuild" && 0%{?suse_version} < 1550
+%if "%{_vendor}" != "debbuild" && 0%{?suse_version} < 1550
 %ifarch %{ix86} x86_64
 %pre -n kiwi-pxeboot
 #============================================================
@@ -452,7 +460,7 @@ fi
 %files -n dracut-kiwi-overlay
 %{_usr}/lib/dracut/modules.d/90kiwi-overlay
 
-%if %{_vendor} != "debbuild"
+%if "%{_vendor}" != "debbuild"
 %ifarch %{ix86} x86_64
 %files -n kiwi-pxeboot
 %if 0%{?suse_version} < 1550

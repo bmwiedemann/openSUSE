@@ -1,4 +1,453 @@
 -------------------------------------------------------------------
+Fri May 22 15:00:19 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.20.15 → 9.20.16
+
+-------------------------------------------------------------------
+Fri May 22 14:57:29 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed schematron rule for bootloader targettype
+
+  The targettype attribute must be allowed for the grub2_s390x_emu
+  bootloader name
+
+-------------------------------------------------------------------
+Fri May 22 14:35:46 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.20.14 → 9.20.15
+
+-------------------------------------------------------------------
+Fri May 22 14:31:43 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed parse result description reference
+
+  The object that holds the parse result also contains an
+  information about description_dir and derived_description_dir.
+  The change on the markup processing impacted the value for
+  description_dir to be no longer the origin (user provided)
+  directory. That broke any reference of files that belongs
+  to the description directory like custom scripts config.sh,
+  images.sh and so on.
+
+-------------------------------------------------------------------
+Fri May 22 13:28:04 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed sdist MANIFEST
+
+  kiwi.markup was not part of the source tarball
+
+-------------------------------------------------------------------
+Fri May 22 13:21:22 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.20.13 → 9.20.14
+
+-------------------------------------------------------------------
+Fri May 22 11:08:46 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Remmove any Recommends for CentOS7
+
+  This commit fixes the package spec for CentOS 7. In CentOS 7 there is no
+  support for weak dependencies. In 9792cea1 a recommended dependency on
+  gpg tools was included for all builds and this caused a failure for
+  CentOS 7. With this commit, the recommended dependency, is omitted for
+  any pre CentOS 8 distro.
+
+-------------------------------------------------------------------
+Fri May 22 10:10:08 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.20.12 → 9.20.13
+
+-------------------------------------------------------------------
+Wed May 20 12:47:47 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Fix default repositories for APT
+
+  This commit fixes the default repositories configuration for APT.
+
+  Fixes #1439
+
+-------------------------------------------------------------------
+Mon May 18 12:01:50 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Include recommend for gpg tool
+
+-------------------------------------------------------------------
+Fri May 15 11:40:59 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Fix signing keys management for APT
+
+  This commit fixes the management of the trusted keyring for apt
+  repositories. It creates a `trusted.gpg` keyring with the provided
+  signing keys so APT can check against that the configured repositories.
+
+  Fixes #1440
+
+-------------------------------------------------------------------
+Thu May 14 13:30:57 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed spec file
+
+  This patch is two fold. First the py2 version of kiwi was
+  dropped since py2 is EOL. To indicate that correctly on the
+  package level python3-kiwi has to obsolete python2-kiwi.
+  The other part of the change is a file conflict of the
+  files:
+
+  etc/bash_completion.d/kiwi-ng.sh
+  /usr/share/doc/packages/python-kiwi/README
+
+  which were provided by the kiwi-man-pages sub-package but
+  were moved to be provided by the main python3-kiwi package
+  now. On update of the package with an older version of
+  kiwi that maintains this files to belong to kiwi-man-pages
+  a file conflict at install time appears. To solve this
+  python3-kiwi now conflicts with kiwi-man-pages < %{version}
+  This Fixes #1413 and Fixes bsc#1168973 and bsc#1156677
+
+-------------------------------------------------------------------
+Wed May 13 12:45:30 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Cleanup use of machine platform name
+
+  in kiwi we handle 32bit x86 architecture names as ix86. This is
+  done by checking i586 and i686 32bit arch names. However those
+  checks are spread over the entire kiwi code base and should be
+  consolidated into one method. The cleanup of those arch name
+  usage fixes an inconsistency between the arch name used in the
+  disk builder and the arch name used in the subformat image
+  formats. This Fixes #1438
+
+-------------------------------------------------------------------
+Wed May 13 12:21:45 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed zypper error code validation
+
+  The error code 127 - command not found, was not treated as
+  an error. This commit adds 127 to be an error condition
+  along with the other 1xx error codes from zypper that are
+  handled as errors. This Fixes #1430
+
+-------------------------------------------------------------------
+Wed May 13 11:34:29 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added archlinux to build_status helper
+
+  Show the archlinux build results in the build_status
+  helper script
+
+-------------------------------------------------------------------
+Wed May 13 11:30:59 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added sidebar link to ArchLinux build tests
+
+-------------------------------------------------------------------
+Tue May 12 14:51:36 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Fix string formatting
+
+  After a flake8 upgrade to v3.8.0 these changes were required to pass
+  the `tox -e check` validation.
+
+-------------------------------------------------------------------
+Tue May 12 13:02:16 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Add Arch Linux integration tests for x86_64
+
+-------------------------------------------------------------------
+Mon May 11 18:19:25 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Support multiple markup formats
+
+  Allow to read multiple markup formats. Supported are XML
+  and YAML. The parsing and transformation is based on the
+  anymarkup module. The use of anymarkup is optional and
+  implemented as an on demand loading module. If a user
+  uses a yaml config file or a request to convert into
+  yaml is made without an installed anymarkup module an
+  exception is thrown
+
+-------------------------------------------------------------------
+Mon May 11 16:15:16 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed boxbuild documentation
+
+  The command doesn't have to be called as root. Therefore
+  the example should not be used with sudo prefix
+
+-------------------------------------------------------------------
+Mon May 11 15:39:18 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Allow setup of serial line in bootloader
+
+  So far kiwi used a static serial line setup of the console
+  type was configured to use a serial console. However if
+  different parameters are needed there was no way to change
+  the static setup. This commit adds a new bootloader attribute
+  called serial_line which allows to specify the serial line
+  parameters for the grub bootloader e.g
+
+  serial_line="serial --speed=9600 --unit=0 --word=8 --parity=no --stop=1"
+
+  Please note serial_line takes the value as it is given and
+  adds this as a line to the grub configuration or as content
+  to the variable GRUB_SERIAL_COMMAND. No further validation
+  of the information takes place by kiwi. This Fixes #1401
+
+-------------------------------------------------------------------
+Mon May 11 12:32:36 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Support grub timeout_style parameter
+
+  Grub supports a style setting that influences the display of
+  the menu depending on the configured timeout value. With this
+  patch kiwi allows to specify the style via a new bootloader
+  parameter named timeout_style="hidden|countdown". If not set
+  the grub default applies which shows the menu in any case.
+  This Fixes bsc#1165730 and Fixes #1404
+
+-------------------------------------------------------------------
+Fri May 08 16:47:03 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.20.11 → 9.20.12
+
+-------------------------------------------------------------------
+Fri May 08 13:41:38 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Update build tests to match new schema v7.2
+
+-------------------------------------------------------------------
+Thu May 07 12:17:10 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Refactor setup of bootloader parameters
+
+  The bootloader settings are handled through attributes in the
+  type element. Over the years some attributes were added and
+  there are requests for more settings. Therefore the bootloader
+  setup deservers its own section. With this commit the schema
+  changes from v7.1 to v7.2 and moves bootloader, bootloader_console
+  boottimeout and zipl_targettype into a new bootloader subsection
+  below type. The commit also adds an auto transformation template
+  such that customers don't have to change their image descriptions.
+  This is related to Issue #1401
+
+-------------------------------------------------------------------
+Tue May 05 10:43:52 CEST 2020 - Patrik Jakobsson <patrik.r.jakobsson@gmail.com>
+
+- Fix support for multiple dracut modules
+
+  Passing the dmsquash flag adds dmsquash-live and livenet modules to
+  dracut. This broke when adding a check to only add modules that dracut
+  reports as available. Use a list instead of a string to represent the
+  modules to add.
+
+  Fixes: 07ea23a4
+
+-------------------------------------------------------------------
+Mon May 04 16:30:03 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Rewrite chapter about self-contained builds
+
+  Document the new boxed build plugin. The former solution
+  with dice will be deprecated in favor of the kiwi plugin.
+  This is related to Issue #1409
+
+-------------------------------------------------------------------
+Mon May 04 09:29:36 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Clean AnonymousUniqueId
+
+  This is a follow up commit for 469f71144. There is not need to remove
+  the `/var/lib/zypp/AnonymousUniqueId` file from the clean up method
+  since this has been already integrated inside the python code base
+  and this is not needed anymore as a helper function.
+
+-------------------------------------------------------------------
+Fri May 01 17:40:12 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.20.10 → 9.20.11
+
+-------------------------------------------------------------------
+Fri May 01 17:39:33 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Update Oxygen schema documentation
+
+-------------------------------------------------------------------
+Fri May 01 17:38:09 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed headline for schema docs chapter
+
+  Use the same headline for the schema chapter in the
+  schema_docs generator as in the default source file
+
+-------------------------------------------------------------------
+Fri May 01 17:12:35 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.20.9 → 9.20.10
+
+-------------------------------------------------------------------
+Thu Apr 30 15:05:14 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Clean AnonymousUniqueId from the image
+
+  This commit is two fold.
+
+  For one side does a small refactor to move the deletion of custom RPM
+  macros to package manager level inside a cleaning method. This way only
+  RPM based package managers run RPM specific code and each package manager
+  can apply its own specific logic.
+
+  On the other hand for the zypper package manager the deletion of
+  /var/lib/zypp/AnonymousUniqueId file has been added as part of the
+  new cleaning method.
+
+  Fixes #1396
+
+-------------------------------------------------------------------
+Thu Apr 30 13:55:20 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added kis type to image attribute
+
+-------------------------------------------------------------------
+Wed Apr 29 11:14:53 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Use auto video mode as default for grub
+
+  An explicit video mode 800x600 was used for grub if no
+  video mode setup exists in the XML description. For grub
+  this should better result in the auto mode. Related to
+  bsc#1165730
+
+-------------------------------------------------------------------
+Tue Apr 28 17:49:20 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Do not set GRUB_DISTRIBUTOR
+
+  grub mkconfig creates a proper string based on /etc/os-release
+  if GRUB_DISTRIBUTOR is not set. We assume this to be true
+  for all distributions. This Fixes #1416
+
+-------------------------------------------------------------------
+Tue Apr 28 13:10:19 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed spec file header information
+
+  Fixed copyright date/company and url path to project
+
+-------------------------------------------------------------------
+Tue Apr 28 12:11:31 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed ovf Machine section setup for virtualbox
+
+  Required attributes/sections name, ostype, uuid and StorageControllers
+  were missing according to IVirtualBox::createMachine documentation
+  from here:
+
+  https://www.virtualbox.org/sdkref/interface_i_virtual_box.html
+
+  This Fixes #1322
+
+-------------------------------------------------------------------
+Mon Apr 27 14:44:38 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added new build type kis
+
+  KIS is an abbreviation for Kernel, Initrd, System and defines a
+  highly customizable image consisting out of these components.
+  This commit performs the changes documented in #1414 and
+  introduces the new kis type. From an image build perspective
+  kis is currently the same as pxe with restrictions for kis
+  on the schema level. A kis build uses dracut and does not allow
+  to use the legacy netboot initrd. The pxe type will therefore be
+  exclusively used to built for the legacy netboot infrastructure
+  and is on its way to deprecation in the future.
+  This Fixes #1262
+
+-------------------------------------------------------------------
+Thu Apr 23 22:41:35 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added KIS chapter
+
+  A new chapter to document KIS images. KIS is an abbreviation
+  for Kernel, Initrd, System and defines a highly customizable
+  image consisting out of these components. This Fixes #1346
+
+-------------------------------------------------------------------
+Thu Apr 23 22:29:35 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Move the self-contained chapter to the toplevel
+
+  This chapter will be rewritten when the new kiwi box
+  plugin is available and deserves a space on the toplevel
+  page
+
+-------------------------------------------------------------------
+Thu Apr 23 22:22:27 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Moved chapters from building to working
+
+  Chapters build_in_buildservice and build_with_profiles
+  belongs more to working with images
+
+-------------------------------------------------------------------
+Thu Apr 23 22:15:32 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Refactor netboot chapters
+
+  All information about network boot that references the legacy
+  netboot code has been moved into one chapter at working_with_images
+  named legacy_netboot_root_filesystem.rst
+
+-------------------------------------------------------------------
+Thu Apr 23 21:57:56 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Update article about network live boot
+
+  Added a note about the configured PXE loader
+
+-------------------------------------------------------------------
+Thu Apr 23 21:42:30 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Update boot server setup chapter
+
+  Describe the general setup procedure to setup DHCP and TFTP
+  services using dnsmasq for clients to boot with either
+  pxelinux or grub loaders
+
+-------------------------------------------------------------------
+Thu Apr 23 17:20:49 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Add flags and argument separator for zypper
+
+  This commits adds a `--` argument in zypper install calls right after
+  the flags and before the arguments (in this case packages) list.
+
+  Fixes #1407
+
+-------------------------------------------------------------------
+Wed Apr 22 12:05:31 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Disable AudioAdapter for vagrant
+
+  The kiwi template for vagrant images assumes the box files to
+  be used in non graphics mode and for the purpose of automation
+  or server deployment. Thus by default we disable Audio.
+  For details see the API reference:
+
+  https://www.virtualbox.org/sdkref/interface_i_audio_adapter.html
+
+  This Fixes #1322
+
+-------------------------------------------------------------------
+Wed Apr 22 11:42:59 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added check_syslinux_installed_if_isolinux_is_used
+
+  ISO images that are configured to use isolinux requires the host
+  to provide a set of syslinux binaries. The runtime check makes
+  sure to check for this condition early including a proper message.
+  This Fixes #1376
+
+-------------------------------------------------------------------
 Fri Apr 17 11:06:19 CEST 2020 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.20.8 → 9.20.9
@@ -2911,6 +3360,15 @@ Mon Jul 01 10:51:19 CEST 2019 - Marcus Schäfer <ms@suse.de>
   operation used the wrong filenames and was broken since
   baseCreateCommonKernelFile is only used in the legacy
   custom kiwi boot images but not in the dracut case.
+
+-------------------------------------------------------------------
+Fri Jun 28 17:26:37 CEST 2019 - David Cassany <dcassany@suse.com>
+
+- Adding support for Pacman package manager
+
+  This commit adds support for pacman package manager and, in
+  consequence, support for Arch Linux images. It also adds
+  the package definition for Arch Linux.
 
 -------------------------------------------------------------------
 Fri Jun 28 09:24:18 CEST 2019 - Marcus Schäfer <ms@suse.de>
