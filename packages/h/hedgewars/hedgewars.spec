@@ -1,7 +1,7 @@
 #
 # spec file for package hedgewars
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,10 +32,12 @@ Release:        0
 Summary:        Turn-based artillery game, featuring fighting hedgehogs
 License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Turn Based
-Url:            http://www.hedgewars.org/
+URL:            http://www.hedgewars.org/
 Source:         http://hedgewars.org/download/releases/hedgewars-src-%{version}.tar.bz2
 Source99:       %{name}-rpmlintrc
 Patch0:         hedgewars-disable_fpc_workaround.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-build-with-Qt-5.15.patch
 BuildRequires:  SDL2-devel
 BuildRequires:  SDL2_image-devel
 BuildRequires:  SDL2_mixer-devel
@@ -121,8 +123,8 @@ This package contains a standalone local hedgewars server.
 
 %prep
 %setup -q -n %{name}-src-%{version}
-
 %patch0 -p0
+%patch1 -p1
 
 %build
 # CMAKE_POLICY_DEFAULT_CMP0083=NEW - apply POSITION_INDEPENDENT_CODE also to "-pie", since CMake 3.14

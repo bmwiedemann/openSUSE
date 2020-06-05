@@ -1,0 +1,33 @@
+From d0a3d313bbc1b939f77647d85f3179ac1e81959d Mon Sep 17 00:00:00 2001
+From: Felix Yan <felixonmars@archlinux.org>
+Date: Thu, 4 Jun 2020 14:44:18 +0800
+Subject: [PATCH] Fix build with Qt 5.15+
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+```
+/build/hedgewars/src/hedgewars-src-1.0.0/QTfrontend/ui/page/pagegamestats.cpp: In member function ‘void PageGameStats::renderStats()’:
+/build/hedgewars/src/hedgewars-src-1.0.0/QTfrontend/ui/page/pagegamestats.cpp:222:26: error: aggregate ‘QPainterPath path’ has incomplete type and cannot be defined
+  222 |             QPainterPath path;
+      |                          ^~~~
+```
+---
+ QTfrontend/ui/page/pagegamestats.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/QTfrontend/ui/page/pagegamestats.cpp b/QTfrontend/ui/page/pagegamestats.cpp
+index ed2751f..6f675c8 100644
+--- a/QTfrontend/ui/page/pagegamestats.cpp
++++ b/QTfrontend/ui/page/pagegamestats.cpp
+@@ -21,6 +21,7 @@
+ #include <QHBoxLayout>
+ #include <QGraphicsScene>
+ #include <QGroupBox>
++#include <QPainterPath>
+ #include <QSizePolicy>
+ 
+ #include "pagegamestats.h"
+-- 
+2.26.2
+
