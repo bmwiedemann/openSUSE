@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 12 10:03:21 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.0.0
+  - Drop py27 tests
+  - Update hacking for Python3
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Allow cluster config for any cluster state
+  - Update master for stable/train
+  - Update links in README
+  - Add nodegroup CRUD commands
+  - Bugfix: Use fields option for cluster template list
+
+-------------------------------------------------------------------
 Mon Mar 23 12:26:54 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add obsoletes
