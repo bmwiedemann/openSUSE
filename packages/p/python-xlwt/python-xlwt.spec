@@ -1,7 +1,7 @@
 #
 # spec file for package python-xlwt
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%bcond_without tests
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without tests
 Name:           python-xlwt
 Version:        1.3.0
 Release:        0
-Url:            https://secure.simplistix.co.uk/svn/xlwt/trunk
 Summary:        Library to Create Spreadsheet Files Compatible With MS Excel 97/2000/XP/2003
-License:        BSD-4-Clause and BSD-3-Clause and LGPL-2.1+
+License:        BSD-4-Clause AND BSD-3-Clause AND LGPL-2.1-or-later
 Group:          Development/Languages/Python
+URL:            https://secure.simplistix.co.uk/svn/xlwt/trunk
 Source:         https://files.pythonhosted.org/packages/source/x/xlwt/xlwt-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-pkginfo
-%if %{with tests}
-BuildRequires:  %{python_module nose}
-%endif
 BuildArch:      noarch
+%if %{with tests}
+BuildRequires:  %{python_module pytest}
+%endif
 %python_subpackages
 
 %description
@@ -62,11 +59,10 @@ cd docs && make html && rm _build/html/.buildinfo
 
 %if %{with tests}
 %check
-nosetests
+%pytest
 %endif
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %doc docs/_build/html/
 %doc examples/
