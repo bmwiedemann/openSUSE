@@ -184,4 +184,12 @@
   - Unblock tooz gate</comment>
     <requestid>736628</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c98f05136dc22dad3fe339a0d4681a19</srcmd5>
+    <version>2.1.0</version>
+    <time>1591380978</time>
+    <user>dimstar_suse</user>
+    <comment>Ussuri Update</comment>
+    <requestid>803611</requestid>
+  </revision>
 </revisionlist>
