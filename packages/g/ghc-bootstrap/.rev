@@ -187,4 +187,18 @@ Add support for ppc64le.</comment>
     <comment>version update</comment>
     <requestid>801004</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>71e651b731dac81ea9d19025864eb45c</srcmd5>
+    <version>8.10.1</version>
+    <time>1591380993</time>
+    <user>dimstar_suse</user>
+    <comment>- update most archs to 8.10.1
+- clean-up spec
+
+- Add numa-devel requirement
+  * fixes ghc-bootstrap-helpers builds on ppc64, ppc64le
+
+- ghc-8.6.5-riscv64-unknown-linux.tar.xz: rebuilt with current libffi</comment>
+    <requestid>811490</requestid>
+  </revision>
 </revisionlist>

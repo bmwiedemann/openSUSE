@@ -50,93 +50,96 @@
 %define sysname ibm
 %endif
 %ifarch x86_64
-%define sysname deb8
+%define sysname unknown
 %endif
 %ifarch %{ix86}
-%define sysname deb9
+%define sysname unknown
 %endif
 %ifarch ppc64 ppc64le %{arm} aarch64 riscv64
 %define sysname unknown
 %endif
-
 Name:           ghc-bootstrap
-Version:        8.6.5
 Release:        0
-URL:            https://build.opensuse.org/package/view_file/devel:languages:haskell:bootstrap
 Summary:        Binary distributions of The Glorious Glasgow Haskell Compiler
 License:        BSD-3-Clause
 Group:          Development/Languages/Other
+URL:            https://build.opensuse.org/package/view_file/devel:languages:haskell:bootstrap
 Source1:        README.openSUSE
 Source2:        LICENSE
-Source10:       ghc-8.6.5-i386-deb9-linux.tar.xz
-Source12:       ghc-8.6.5-powerpc64-unknown-linux.tar.xz
-Source13:       ghc-8.6.5-powerpc64le-unknown-linux.tar.xz
-Source14:       ghc-8.6.5-x86_64-deb8-linux.tar.xz
+Source10:       ghc-8.10.1-i386-unknown-linux.tar.xz
+Source12:       ghc-8.10.1-powerpc64-unknown-linux.tar.xz
+Source13:       ghc-8.10.1-powerpc64le-unknown-linux.tar.xz
+Source14:       ghc-8.10.1-x86_64-unknown-linux.tar.xz
 Source16:       ghc-8.6.5-s390x-ibm-linux.tar.xz
-Source17:       ghc-8.6.5-aarch64-unknown-linux.tar.xz
-Source18:       ghc-8.6.5-arm-unknown-linux.tar.xz
-Source19:       ghc-8.6.5-riscv64-unknown-linux.tar.xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source17:       ghc-8.10.1-aarch64-unknown-linux.tar.xz
+Source18:       ghc-8.10.1-arm-unknown-linux.tar.xz
+Source19:       ghc-8.10.1-riscv64-unknown-linux.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
 BuildRequires:  libncurses5
+BuildRequires:  pkgconfig(libffi)
+Requires:       gmp-devel
+Requires:       libncurses5
+Requires:       pkgconfig(libffi)
+# This package is not meant to be used outside OBS
+Requires:       this-is-only-for-build-envs
+Provides:       ghc-bootstrap-devel
+ExclusiveArch:  %{ix86} ppc64 ppc64le x86_64 s390x aarch64 %{arm} riscv64
+AutoReq:        off
+%ifnarch s390 s390x
+Version:        8.10.1
+%else
+Version:        8.6.5
+%endif
 %ifnarch %{arm} s390x
 BuildRequires:  libnuma-devel
 %endif
 %ifarch aarch64 %{arm}
 BuildRequires:  binutils-gold
 Requires:       binutils-gold
+Requires:       llvm9
 %endif
-%ifarch s390x riscv64
-BuildRequires:  libffi-devel
+%ifnarch %{arm} s390x
+Requires:       libnuma-devel
+Requires:       libffi-devel
 %endif
-Requires:       gmp-devel
-Requires:       libncurses5
-# This package is not meant to be used outside OBS
-Requires:       this-is-only-for-build-envs
-
-ExclusiveArch:  %{ix86} ppc64 ppc64le x86_64 s390x aarch64 %{arm} riscv64
-Provides:       ghc-bootstrap-devel
-
-AutoReq:        off
 
 %description
 This package contains a binary distribution of "The Glorious Glasgow
 Haskell Compilation System". See README.openSUSE on how the tarballs
 were produced.
 
-Do not install this package! Install 'ghc' instead. 
-
+Do not install this package! Install 'ghc' instead.
 
 %prep
-cp %SOURCE1 .
-cp %SOURCE2 .
-cp %SOURCE10 .
-cp %SOURCE12 .
-cp %SOURCE13 .
-cp %SOURCE14 .
-cp %SOURCE16 .
-cp %SOURCE17 .
-cp %SOURCE18 .
-cp %SOURCE19 .
+cp %{SOURCE1} .
+cp %{SOURCE2} .
+cp %{SOURCE10} .
+cp %{SOURCE12} .
+cp %{SOURCE13} .
+cp %{SOURCE14} .
+cp %{SOURCE16} .
+cp %{SOURCE17} .
+cp %{SOURCE18} .
+cp %{SOURCE19} .
 
 %build
 tar Jxf ghc-%{version}-%{longarch}-%{sysname}-linux.tar.xz
 cd ghc-%{version}
+# FIXME: you should use the %%configure macro
 ./configure --prefix=/opt
 
 %install
 cd ghc-%{version}
-%makeinstall
+%make_install
 %fdupes -s %{buildroot}
 
 %post
 /opt/bin/ghc-pkg recache
 
 %files
-%defattr(-,root,root,-)
 %doc README.openSUSE
-%doc LICENSE
+%license LICENSE
 /opt
 
 %changelog

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun May 31 20:51:10 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update most archs to 8.10.1
+- clean-up spec
+
+-------------------------------------------------------------------
+Thu May 21 11:48:31 UTC 2020 - Peter Trommler <ptrommler@icloud.com>
+
+- Add numa-devel requirement
+  * fixes ghc-bootstrap-helpers builds on ppc64, ppc64le
+
+-------------------------------------------------------------------
+Sun May 17 11:26:43 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- ghc-8.6.5-riscv64-unknown-linux.tar.xz: rebuilt with current libffi
+
+-------------------------------------------------------------------
 Wed May  6 14:02:54 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Drop duplicated ix86 case from list of conditionals.
