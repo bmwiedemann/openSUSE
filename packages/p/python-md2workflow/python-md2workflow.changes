@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jun  4 09:20:44 UTC 2020 - Lubos Kocman <lubos.kocman@suse.com>
+- Update to 1.4.18
+
+- Use github source url instead of pypy as it contains tests 
+- Use correct openSUSE project url
+- Fix issues with optparse call in pytest
+- Fix pytest issues on python2
+- Add missing dependency on icalendar (schedule integration)
+- Add dependencies for pytest execution
+
+-------------------------------------------------------------------
+Thu Jun  4 08:04:03 UTC 2020 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Fix __pycache__ reference for python2.
+  ensure to reference *.py* for python2 (py, pyo, pyc)
+  Builds on Leap fail on this
+
+-------------------------------------------------------------------
+Thu Jun  4 06:34:38 UTC 2020 - Lubos Kocman <lubos.kocman@suse.com>
+- Update to 1.4.15
+
+* Reworked plugins into submodules, so handling of individual
+  __pycache__ is now easier
+
+* Removed direct dependency in setup.py on backported 
+  python-configparser. Configparser is part of python3
+
+-------------------------------------------------------------------
 Mon Apr 20 13:11:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - The package name is python-redmine not just redmine on pypi

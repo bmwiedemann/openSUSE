@@ -18,22 +18,27 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-md2workflow
-Version:        1.4.12
+Version:        1.4.18
 Release:        0
 Summary:        Tool to create a JIRA or other Workflow from markdown files
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
-URL:            https://github.com/lkocman/md2workflow.git
-Source:         https://files.pythonhosted.org/packages/source/m/md2workflow/md2workflow-%{version}.tar.gz
+URL:            https://github.com/openSUSE/md2workflow
+Source:         https://github.com/openSUSE/md2workflow/archive/%{version}.tar.gz
 Source1:        LICENSE
 Source2:        suse-prod.conf
 Source3:        suse-devel.conf
 Source4:        suse-staging.conf
 Source5:        suse-lutoslawski.conf
 Source6:        opensuse-prod.conf
+BuildRequires:  %{python_module icalendar}
+BuildRequires:  %{python_module jira}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-redmine}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-icalendar
 Requires:       python-md2workflow-common
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -84,6 +89,9 @@ cp %{_sourcedir}/LICENSE LICENSE
 %build
 %python_build
 
+%check
+%pytest
+
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/md2workflow
@@ -99,46 +107,37 @@ ln -s -f %{_datadir}/md2workflow/config %{buildroot}%{_sysconfdir}/md2workflow
 %files %{python_files}
 %license LICENSE
 %python_alternative %{_bindir}/md2workflow
-%pycache_only %{python_sitelib}/md2workflow/backend/__pycache__/__init*
-%pycache_only %{python_sitelib}/md2workflow/backend/__pycache__/genericbackend*
+%if "%{python_flavor}" != "python2"
 %pycache_only %{python_sitelib}/md2workflow/__pycache__
-%pycache_only %{python_sitelib}/md2workflow/validation/__pycache__/__init*
-%pycache_only %{python_sitelib}/md2workflow/validation/__pycache__/config*
-%pycache_only %{python_sitelib}/md2workflow/validation/__pycache__/project*
+%pycache_only %{python_sitelib}/md2workflow/backend/__pycache__
+%pycache_only %{python_sitelib}/md2workflow/validation/__pycache__
+%endif
 %dir %{python_sitelib}/md2workflow
+%{python_sitelib}/md2workflow/*.py*
 %dir %{python_sitelib}/md2workflow/backend
-%dir %{python_sitelib}/md2workflow/backend
+%{python_sitelib}/md2workflow/backend/*.py*
 %dir %{python_sitelib}/md2workflow/validation
-%{python_sitelib}/md2workflow/backend/genericbackend.*
-%{python_sitelib}/md2workflow/backend/__init__.*
-%{python_sitelib}/md2workflow/cli.*
+%{python_sitelib}/md2workflow/validation/*.py*
 %{python_sitelib}/md2workflow*.egg-info
-%{python_sitelib}/md2workflow/__init__.*
-%{python_sitelib}/md2workflow/markdown.*
-%{python_sitelib}/md2workflow/schedule.*
-%{python_sitelib}/md2workflow/validation/config_validation.*
-%{python_sitelib}/md2workflow/validation/__init__.*
-%{python_sitelib}/md2workflow/validation/project_validation.*
-%{python_sitelib}/md2workflow/workflow.*
 
 %files %{python_files plugins-jira}
-%{python_sitelib}/md2workflow/backend/jirabackend.*
-%{python_sitelib}/md2workflow/validation/jira_validation.*
+%dir %{python_sitelib}/md2workflow/backend/jirabackend
+%{python_sitelib}/md2workflow/backend/jirabackend/*.py*
+%dir %{python_sitelib}/md2workflow/validation/jira_validation
+%{python_sitelib}/md2workflow/validation/jira_validation/*.py*
 %if "%{python_flavor}" != "python2"
-%dir %{python_sitelib}/md2workflow/backend/__pycache__
-%dir %{python_sitelib}/md2workflow/validation/__pycache__
-%pycache_only %{python_sitelib}/md2workflow/backend/__pycache__/jira*
-%pycache_only %{python_sitelib}/md2workflow/validation/__pycache__/jira*
+%pycache_only %{python_sitelib}/md2workflow/backend/jirabackend/__pycache__
+%pycache_only %{python_sitelib}/md2workflow/validation/jira_validation/__pycache__
 %endif
 
 %files %{python_files plugins-redmine}
-%{python_sitelib}/md2workflow/backend/redminebackend.*
-%{python_sitelib}/md2workflow/validation/redmine_validation.*
+%dir %{python_sitelib}/md2workflow/backend/redminebackend
+%{python_sitelib}/md2workflow/backend/redminebackend/*.py*
+%dir %{python_sitelib}/md2workflow/validation/redmine_validation
+%{python_sitelib}/md2workflow/validation/redmine_validation/*.py*
 %if "%{python_flavor}" != "python2"
-%dir %{python_sitelib}/md2workflow/backend/__pycache__
-%dir %{python_sitelib}/md2workflow/validation/__pycache__
-%pycache_only %{python_sitelib}/md2workflow/backend/__pycache__/redmine*
-%pycache_only %{python_sitelib}/md2workflow/validation/__pycache__/redmine*
+%pycache_only %{python_sitelib}/md2workflow/backend/redminebackend/__pycache__
+%pycache_only %{python_sitelib}/md2workflow/validation/redmine_validation/__pycache__
 %endif
 
 %files -n python-md2workflow-common
