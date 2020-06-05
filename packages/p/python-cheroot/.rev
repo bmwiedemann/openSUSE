@@ -123,4 +123,12 @@
   * python383.patch</comment>
     <requestid>807188</requestid>
   </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>b1792252dd66ff33c833dc48d2840a43</srcmd5>
+    <version>8.3.0</version>
+    <time>1591379931</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>808801</requestid>
+  </revision>
 </revisionlist>

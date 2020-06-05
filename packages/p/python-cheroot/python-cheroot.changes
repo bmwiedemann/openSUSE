@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 25 10:59:14 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Tue May 19 10:35:40 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix build with python 3.8.3:

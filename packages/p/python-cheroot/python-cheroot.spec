@@ -48,6 +48,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-jaraco.functools
 Requires:       python-more-itertools >= 2.6
 Requires:       python-six >= 1.11.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # the package and distribution name is lowercase-cheroot,
 # but PyPI claims the name is capital-Cheroot
 # *smacks head against desk*
@@ -77,16 +79,23 @@ rm pytest.ini
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/cheroot
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # Exclusions because of gh#cherrypy/cheroot#200
 %pytest -k 'not test_tls_client_auth'
 
+%post
+%python_install_alternative cheroot
+
+%postun
+%python_uninstall_alternative cheroot
+
 %files %{python_files}
 %license LICENSE.md
 %doc README.rst CHANGES.rst
-%python3_only %{_bindir}/cheroot
+%python_alternative %{_bindir}/cheroot
 %{python_sitelib}/*
 
 %changelog
