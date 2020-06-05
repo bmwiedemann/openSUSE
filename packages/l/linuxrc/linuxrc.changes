@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Jun 3 12:56:12 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#224
+- replace $releasever in URLs, similar to libzypp (bsc#1171018)
+- 7.0.17
+
+--------------------------------------------------------------------
 Thu May 14 08:32:49 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#223
