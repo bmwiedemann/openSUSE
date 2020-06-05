@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  4 20:20:03 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch:
+  * 0001-Fix-build-with-Qt-5.15-missing-QPainterPath-includes.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
 Fri Sep 14 10:24:13 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 1.0.16

@@ -1,7 +1,7 @@
 #
 # spec file for package scantailor
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,11 @@ Release:        0
 Summary:        Interactive post-processing tool for scanned pages
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Other
-Url:            http://scantailor.sourceforge.net/
+URL:            http://scantailor.sourceforge.net/
 Source0:        https://github.com/4lex4/%{name}-advanced/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-icons.tar.bz2
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-with-Qt-5.15-missing-QPainterPath-includes.patch
 BuildRequires:  cmake >= 3.9.0
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -44,9 +46,7 @@ BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} >= 1500
 BuildRequires:  libboost_test-devel >= 1.65.0
 %else
-BuildRequires:  boost-devel => 1.65.0
-Requires(post):   hicolor-icon-theme
-Requires(postun): hicolor-icon-theme
+BuildRequires:  boost-devel >= 1.65.0
 %endif
 
 %description
@@ -58,10 +58,11 @@ pages ready to be printed or assembled into a PDF or DJVU file.
 %prep
 %setup -q -a 1 -n %{name}-advanced-%{version}
 cp -p resources/icons/{COPYING,COPYING.icons}
+%patch0 -p1
 
 %build
-%cmake ..
-make %{?_smp_mflags} VERBOSE=1
+%cmake
+%cmake_build
 
 %install
 %cmake_install
@@ -88,15 +89,6 @@ StartupNotify=true
 Terminal=false
 EOF
 %suse_update_desktop_file -i %{name}
-
-%if 0%{?suse_version} < 1500
-
-%post
-%icon_theme_cache_post
-
-%postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %license LICENSE resources/icons/COPYING.icons
