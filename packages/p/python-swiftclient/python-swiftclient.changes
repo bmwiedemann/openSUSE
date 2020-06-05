@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 12 10:04:43 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.9.0
+  - Cleanup session on delete
+  - Authors/changelog for 3.9.0
+  - Switch to Ussuri jobs
+  - v1auth: support endpoint_data_for() api
+  - Rename "tests" directory to be "test" like in the swift repo
+  - Update master for stable/train
+  - packaging: Properly flag universal wheel
+  - Add test for bulk-delete-attempt-counter fix
+  - Make py38 job voting
+  - Fix printed object names on successful bulk-delete
+
+-------------------------------------------------------------------
 Mon Mar 23 12:30:07 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add obsoletes
