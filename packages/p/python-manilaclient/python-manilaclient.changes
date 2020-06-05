@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue May 12 09:59:44 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.1.0
+  - Remove experimental flag from share groups commands
+  - Update the constraints url
+  - Fix osc delete share and show share tests
+  - Update hacking for Python3
+  - Update master for stable/train
+  - [OSC] Init OpenStack Client implementation
+  - Add new share replica quotas to the CLI
+  - Implement OSC share access rules commands
+  - Put osc unit tests with all other unit tests
+  - Fix lower bound for sphix in docs/requirements.txt
+  - Fix update share network tests and skip exception issue
+  - OSC Fix list for all projects
+  - Implement osc share set/unset commands
+  - Update the python manila client api version
+  - Support query user message by timestamp
+  - Add more detail to API introduction
+  - Cleanup py27 support
+  - Add functional tests for OSC
+  - Implement OSC share type commands
+  - [ussuri][goal] Drop python2.7 support
+
+-------------------------------------------------------------------
 Mon Mar 23 12:26:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add obsoletes
