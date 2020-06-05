@@ -28,11 +28,12 @@ Source:         https://files.pythonhosted.org/packages/source/h/html5lib/html5l
 # This patch makes testsuite pass with pytest4
 Patch0:         pytest4-mhroncok.patch
 Patch1:         collections-abc.patch
+Patch2:         pytest5.patch
 BuildRequires:  %{python_module Genshi}
 BuildRequires:  %{python_module datrie}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest < 5.0}
+BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module pytest-expect}
 BuildRequires:  %{python_module setuptools >= 18.5}
 BuildRequires:  %{python_module six >= 1.9}

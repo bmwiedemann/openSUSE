@@ -1,0 +1,63 @@
+From 3f10121d98ce8ca36b4b856275093dd189fdf1d2 Mon Sep 17 00:00:00 2001
+From: Sam Sneddon <me@gsnedders.com>
+Date: Fri, 22 May 2020 20:37:19 +0100
+Subject: [PATCH] Update pytest
+
+---
+ .pytest.expect                      |  4 +--
+ html5lib/tests/tree_construction.py | 12 ++++-----
+ 3 files changed, 15 insertions(+), 42 deletions(-)
+
+diff --git a/html5lib/tests/tree_construction.py b/html5lib/tests/tree_construction.py
+index 6112d11d..1ef6e725 100644
+--- a/html5lib/tests/tree_construction.py
++++ b/html5lib/tests/tree_construction.py
+@@ -57,8 +57,6 @@ def _getParserTests(self, treeName, treeAPIs):
+             item.add_marker(pytest.mark.parser)
+             if namespaceHTMLElements:
+                 item.add_marker(pytest.mark.namespaced)
+-            if treeAPIs is None:
+-                item.add_marker(pytest.mark.skipif(True, reason="Treebuilder not loaded"))
+             yield item
+ 
+     def _getTreeWalkerTests(self, treeName, treeAPIs):
+@@ -69,8 +67,6 @@ def _getTreeWalkerTests(self, treeName, treeAPIs):
+                               treeAPIs)
+         item.add_marker(getattr(pytest.mark, treeName))
+         item.add_marker(pytest.mark.treewalker)
+-        if treeAPIs is None:
+-            item.add_marker(pytest.mark.skipif(True, reason="Treebuilder not loaded"))
+         yield item
+ 
+ 
+@@ -84,12 +80,14 @@ def convertTreeDump(data):
+ class ParserTest(pytest.Item):
+     def __init__(self, name, parent, test, treeClass, namespaceHTMLElements):
+         super(ParserTest, self).__init__(name, parent)
+-        self.obj = lambda: 1  # this is to hack around skipif needing a function!
+         self.test = test
+         self.treeClass = treeClass
+         self.namespaceHTMLElements = namespaceHTMLElements
+ 
+     def runtest(self):
++        if self.treeClass is None:
++            pytest.skip("Treebuilder not loaded")
++
+         p = html5parser.HTMLParser(tree=self.treeClass,
+                                    namespaceHTMLElements=self.namespaceHTMLElements)
+ 
+@@ -147,11 +145,13 @@ def repr_failure(self, excinfo):
+ class TreeWalkerTest(pytest.Item):
+     def __init__(self, name, parent, test, treeAPIs):
+         super(TreeWalkerTest, self).__init__(name, parent)
+-        self.obj = lambda: 1  # this is to hack around skipif needing a function!
+         self.test = test
+         self.treeAPIs = treeAPIs
+ 
+     def runtest(self):
++        if self.treeAPIs is None:
++            pytest.skip("Treebuilder not loaded")
++
+         p = html5parser.HTMLParser(tree=self.treeAPIs["builder"])
+ 
+         input = self.test['data']

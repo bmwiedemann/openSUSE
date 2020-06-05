@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 29 09:17:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix run with pytest5:
+  * pytest5.patch
+
+-------------------------------------------------------------------
 Wed May  6 07:41:38 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to not collide with collections deprecation:
