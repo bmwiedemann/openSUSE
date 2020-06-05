@@ -37,6 +37,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-appdirs >= 1.4.0
 Recommends:     python-pip
 Recommends:     python-pipreqs
@@ -82,6 +84,7 @@ chmod -x LICENSE
 %install
 %if !%{with test}
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/isort
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -92,9 +95,15 @@ chmod -x LICENSE
 %endif
 
 %if !%{with test}
+%post
+%python_install_alternative isort
+
+%postun
+%python_uninstall_alternative isort
+
 %files %{python_files}
 %{python_sitelib}/isort*
-%python3_only %{_bindir}/isort
+%python_alternative %{_bindir}/isort
 %license LICENSE
 %endif
 
