@@ -45,7 +45,6 @@ BuildRequires:  %{python_module six >= 1.10.0}
 BuildRequires:  %{python_module stestr >= 2.0.0}
 BuildRequires:  %{python_module testrepository >= 0.0.18}
 BuildRequires:  %{python_module testtools >= 2.2.0}
-BuildRequires:  %{python_module unittest2}
 # /SECTION
 %python_subpackages
 
