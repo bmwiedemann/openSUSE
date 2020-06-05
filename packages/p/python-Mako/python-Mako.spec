@@ -24,7 +24,7 @@ Release:        0
 Summary:        A Python templating language
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://www.makotemplates.org/
+URL:            https://www.makotemplates.org/
 Source:         https://files.pythonhosted.org/packages/source/M/Mako/Mako-%{version}.tar.gz
 BuildRequires:  %{python_module MarkupSafe >= 0.9.2}
 BuildRequires:  %{python_module mock}
@@ -35,6 +35,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-MarkupSafe >= 0.9.2
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24
 Recommends:     python-Beaker >= 1.1
@@ -66,16 +68,23 @@ scoping semantics.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/mako-render
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative mako-render
+
+%postun
+%python_uninstall_alternative mako-render
+
 %files %{python_files}
 %license LICENSE
 %doc CHANGES README.rst
 %doc examples
-%python3_only %{_bindir}/mako-render
+%python_alternative %{_bindir}/mako-render
 %{python_sitelib}/mako/
 %{python_sitelib}/Mako-%{version}-py*.egg-info
 

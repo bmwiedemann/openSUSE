@@ -386,4 +386,12 @@ Switching over to update-alternatives for python 3 would be a huge undertaking a
  * Added –output-file argument to the Mako command line runner</comment>
     <requestid>780851</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>7fe5296f822823ad5ed6b74156907958</srcmd5>
+    <version>1.1.2</version>
+    <time>1591379915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>808682</requestid>
+  </revision>
 </revisionlist>

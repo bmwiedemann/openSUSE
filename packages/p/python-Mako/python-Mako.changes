@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 25 06:50:43 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Mon Mar  2 08:38:32 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 1.1.2
