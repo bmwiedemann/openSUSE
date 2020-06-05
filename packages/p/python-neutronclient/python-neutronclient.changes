@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May 12 09:56:11 UTC 2020 - cloud-devel@suse.de
+
+- update to version 7.1.1
+  - Remove 'public' and 'private' parameters in fwaas_v2
+  - Switch to Ussuri jobs
+  - Fix pep8 errors with hacking 2.0.0
+  - Drop python 2.7 support
+  - Avoid py36 error when printing unicode chars in a stream
+  - Drop python3 hack for XML serializer
+  - fix a typo
+  - PDF documentation build
+  - Add support for port bindings
+  - Cleanup py27 support
+  - Update master for stable/train
+  - Drop lib-forward-testing
+  - Convert exception to string before passing it in
+  - Move grenade neutron-lib job to py3 and in python-neutronclient repo
+  - Replace 'bgp speaker show dragents' with 'bgp dragent list'
+
+-------------------------------------------------------------------
 Mon Mar 23 12:28:50 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add obsoletes
