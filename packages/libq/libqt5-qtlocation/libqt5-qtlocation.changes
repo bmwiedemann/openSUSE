@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun  4 09:23:10 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Bump disk constraints to 5G for everyone
+
+-------------------------------------------------------------------
+Wed Jun  3 10:30:58 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add ppc in _constraints to avoid  "No space left on device"
+
+-------------------------------------------------------------------
 Tue May 26 10:09:06 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Update to version 5.15.0:

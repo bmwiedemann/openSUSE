@@ -351,4 +351,14 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.0</comment>
     <requestid>809377</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>010f16999def21340677d60008099cc2</srcmd5>
+    <version>5.15.0</version>
+    <time>1591380518</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump disk constraints to 5G for everyone
+
+- Add ppc in _constraints to avoid  &quot;No space left on device&quot;</comment>
+    <requestid>811364</requestid>
+  </revision>
 </revisionlist>
