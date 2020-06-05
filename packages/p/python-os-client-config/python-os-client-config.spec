@@ -20,13 +20,13 @@
 %bcond_with test
 %bcond_with docs
 Name:           python-os-client-config
-Version:        1.33.0
+Version:        2.1.0
 Release:        0
 Summary:        OpenStack Client Configuration Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/%{name}
-Source0:        https://files.pythonhosted.org/packages/source/o/os-client-config/os-client-config-1.33.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/os-client-config/os-client-config-2.1.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-pbr
 BuildRequires:  python3-setuptools

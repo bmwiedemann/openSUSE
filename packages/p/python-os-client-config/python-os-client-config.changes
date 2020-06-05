@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 12 12:32:34 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.1.0
+  - Stop testing python2.7
+  - Use unittest.mock instead of third party mock
+  - Fix pep8 issue in o_c_c/__init__
+  - Update master for stable/train
+  - Uncap jsonschema
+  - Update the constraints url
+  - Add a release note for Python 2 support removal
+
+-------------------------------------------------------------------
 Wed Apr  1 09:27:05 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only builds
