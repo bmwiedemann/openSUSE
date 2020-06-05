@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.log
-Version:        3.44.1
+Version:        4.1.1
 Release:        0
 Summary:        OpenStack log library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.log
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.log/oslo.log-3.44.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.log/oslo.log-4.1.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-mock
 BuildRequires:  python3-monotonic >= 1.4
@@ -36,7 +36,7 @@ BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 3.1.1
 BuildRequires:  python3-pyinotify >= 0.9.6
 BuildRequires:  python3-python-dateutil >= 2.7.0
-BuildRequires:  python3-six >= 1.11.0
+BuildRequires:  python3-six
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testtools
 BuildArch:      noarch
@@ -58,7 +58,7 @@ Requires:       python3-oslo.serialization >= 2.25.0
 Requires:       python3-oslo.utils >= 3.36.0
 Requires:       python3-pyinotify >= 0.9.6
 Requires:       python3-python-dateutil >= 2.7.0
-Requires:       python3-six >= 1.11.0
+Requires:       python3-six
 Requires:       python3-systemd
 %if 0%{?suse_version}
 Obsoletes:      python2-oslo.log < 4.0.0
@@ -81,14 +81,14 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for the oslo.log library.
 
 %prep
-%autosetup -p1 -n oslo.log-3.44.1
+%autosetup -p1 -n oslo.log-4.1.1
 %py_req_cleanup
 
 %build
 %{py3_build}
 
 # generate html docs
-PYTHONPATH=. PBR_VERSION=3.44.1 %sphinx_build -b html doc/source doc/build/html
+PYTHONPATH=. PBR_VERSION=4.1.1 %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install

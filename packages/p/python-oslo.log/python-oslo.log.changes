@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue May 12 09:44:47 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.1.1
+  - Serialize complex objects in FluentFormatter
+  - Use unittest.mock instead of third party mock
+  - Migrate grenade jobs to py3
+  - Add Ussuri release to versionutils
+  - Stop to build universal wheel
+  - remove outdated header
+  - Switch to hacking 2.x
+  - tox: Trivial cleanup
+  - Always use jsonutils.to_primitive 'fallback' parameter
+  - Ignore releasenote artifacts files.
+  - drop use of six
+  - Drop python 2.7 support and testing
+  - Add Victoria and Wallaby releases to versionutils
+  - tox: Keeping going with docs
+  - Switch to official Ussuri jobs
+  - Drop use of unittest2
+  - Update master for stable/train
+
+-------------------------------------------------------------------
 Mon Mar 23 17:21:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add obsoletes
