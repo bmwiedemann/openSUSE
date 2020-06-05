@@ -17,13 +17,13 @@
 
 
 Name:           python-congressclient
-Version:        1.13.0
+Version:        2.0.1
 Release:        0
 Summary:        Client library for Congress
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-congressclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-congressclient/python-congressclient-1.13.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-congressclient/python-congressclient-2.0.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-mock
@@ -88,7 +88,7 @@ This package contains the documentation.
 %{py3_build}
 
 # Build HTML docs and man page
-PBR_VERSION=1.13.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=2.0.1 %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
