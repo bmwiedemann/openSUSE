@@ -167,7 +167,7 @@ mv ${semodule_utils_pwd}/semodule_expand ${semodule_utils_pwd}/semodule_link ${s
 
 %build
 export PYTHON="python3" LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fPIE" LDFLAGS="-pie -Wl,-z,relro"
-make %{?_smp_mflags}
+make %{?_smp_mflags} LIBEXECDIR="%{_libexecdir}"
 
 %install
 export PYTHON="python3"
@@ -179,7 +179,7 @@ mkdir -p %{buildroot}%{_mandir}/man1
 mkdir -p %{buildroot}%{_mandir}/man8
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
 mkdir -p %{buildroot}%{_sysconfdir}/security/console.apps
-make LSPP_PRIV=y DESTDIR=%{buildroot} install
+make LSPP_PRIV=y DESTDIR=%{buildroot} install LIBEXECDIR=%{_libexecdir}
 install -D -m 644 %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/system-config-selinux.png
 install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/system-config-selinux
 install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/selinux-polgengui
@@ -192,7 +192,6 @@ mkdir -p %{buildroot}%{_fillupdir}/
 mkdir -p %{buildroot}%{_libexecdir}/selinux/hll/
 mkdir -p %{buildroot}%{_localstatedir}/lib/sepolgen
 cp %{python3_sitearch}/setools/perm_map %{buildroot}%{_localstatedir}/lib/sepolgen
-mv %{buildroot}%{_prefix}/libexec/selinux/hll/pp %{buildroot}%{_libexecdir}/selinux/hll/pp
 %suse_update_desktop_file -i system-config-selinux System Security Settings
 %suse_update_desktop_file -i selinux-polgengui System Security Settings
 %find_lang %{name}
@@ -239,9 +238,9 @@ exit 0
 %{_sbindir}/semanage
 %{_sbindir}/fixfiles
 %{_sbindir}/load_policy
+%dir %{_localstatedir}/lib/sepolgen
 %dir %{_libexecdir}/selinux
 %dir %{_libexecdir}/selinux/hll
-%dir %{_localstatedir}/lib/sepolgen
 %{_libexecdir}/selinux/hll/pp
 %{_sbindir}/genhomedircon
 %{_sbindir}/setsebool
