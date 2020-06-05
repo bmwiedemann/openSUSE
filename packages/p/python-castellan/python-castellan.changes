@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 12 10:00:40 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.0.1
+  - Fix stale references to renamed constant
+  - Update master for stable/train
+  - Fix "is" usage with literals
+  - Implements KeyManager's option discovery.
+  - Fix coverage tests
+  - Switch to Ussuri jobs
+  - Removes context "validation".
+  - Add Wiki links to readme
+  - PDF Documentation Build tox target
+  - Reuse existing token from RequestContext
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - Moving common objects under KeyManager.
+  - Drop use of six
+
+-------------------------------------------------------------------
 Thu Mar 12 16:52:30 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only client

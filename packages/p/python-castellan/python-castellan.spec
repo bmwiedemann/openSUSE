@@ -17,13 +17,13 @@
 
 
 Name:           python-castellan
-Version:        1.3.1
+Version:        3.0.1
 Release:        0
 Summary:        Generic Key Manager interface for OpenStack
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/castellan
-Source0:        https://files.pythonhosted.org/packages/source/c/castellan/castellan-1.3.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/c/castellan/castellan-3.0.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-barbicanclient >= 4.5.2
 BuildRequires:  python3-cryptography >= 2.1
@@ -31,7 +31,6 @@ BuildRequires:  python3-keystoneauth1 >= 3.4.0
 BuildRequires:  python3-oslo.config >= 6.4.0
 BuildRequires:  python3-oslo.log >= 3.36.0
 BuildRequires:  python3-oslotest
-BuildRequires:  python3-pifpaf
 BuildRequires:  python3-reno
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-stestr
@@ -54,7 +53,7 @@ Requires:       python3-oslo.context >= 2.19.2
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.log >= 3.36.0
 Requires:       python3-oslo.utils >= 3.33.0
-Requires:       python3-requests >= 2.14.2
+Requires:       python3-requests >= 2.18.0
 Requires:       python3-stevedore >= 1.20.0
 
 %description -n python3-castellan
@@ -67,13 +66,14 @@ Summary:        Documentation for castellan
 Group:          Documentation/HTML
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-sphinxcontrib-svg2pdfconverter
 
 %description -n python-castellan-doc
 Castellan is a generic Key Manager interface for OpenStack.
 This package contains the documentation
 
 %prep
-%autosetup -p1 -n castellan-1.3.1
+%autosetup -p1 -n castellan-3.0.1
 %py_req_cleanup
 
 %build
@@ -81,7 +81,7 @@ This package contains the documentation
 # generate html docs
 PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
-rm -rf html/.{doctrees,buildinfo}
+rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
 %{py3_install}
