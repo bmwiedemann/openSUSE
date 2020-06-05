@@ -18,18 +18,18 @@
 
 
 # changed with every update
-%define major          76
+%define major          77
 %define mainver        %major.0.1
-%define orig_version   76.0.1
+%define orig_version   77.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
 %define devpkg         1
 
-# disable for FF73 for now as it fails for unknown reason
+# PGO builds do not work in TW currently (bmo#1642410)
 %define do_profiling   0
 
-# always build with GCC as SUSE Security Team requires that
+# upstream default is clang (to use gcc for large parts set to 0)
 %define clang_build 0
 
 # PIE, full relro
@@ -84,14 +84,14 @@ BuildRequires:  libnotify-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.25
-BuildRequires:  mozilla-nss-devel >= 3.51.1
+BuildRequires:  mozilla-nss-devel >= 3.52.1
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs10 >= 10.19.0
 BuildRequires:  python-devel
 BuildRequires:  python2-xml
 BuildRequires:  python3 >= 3.5
 BuildRequires:  rust >= 1.41
-BuildRequires:  rust-cbindgen >= 0.13.1
+BuildRequires:  rust-cbindgen >= 0.14.1
 BuildRequires:  startup-notification-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
@@ -104,6 +104,7 @@ BuildRequires:  zip
 %if 0%{?suse_version} < 1550
 BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %endif
+BuildRequires:  clang-devel >= 5
 BuildRequires:  pkgconfig(gdk-x11-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -113,12 +114,6 @@ BuildRequires:  pkgconfig(gtk+-unix-print-2.0)
 BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(libpulse)
-%if 0%{?suse_version} > 1320
-BuildRequires:  llvm-clang-devel >= 3.9.0
-%else
-# this covers the workaround to compile on Leap 42 in OBS
-BuildRequires:  clang4-devel
-%endif
 # libavcodec is required for H.264 support but the
 # openSUSE version is currently not able to play H.264
 # therefore the Packman version is required
@@ -186,6 +181,7 @@ Patch19:        mozilla-bmo1512162.patch
 Patch20:        mozilla-fix-top-level-asm.patch
 Patch21:        mozilla-bmo1504834-part4.patch
 Patch22:        mozilla-bmo849632.patch
+Patch23:        mozilla-bmo1634646.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -321,6 +317,7 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
+%patch23 -p1
 # Firefox
 %patch101 -p1
 %patch102 -p1

@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  04c2cbd396b26a8e08980304a436e5e12fb6a205
+# Parent  b517aa8dfa37d729db9590fe699caa38f899dfba
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -31,7 +31,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  #ifdef MOZ_MEMORY
  #  include "mozmemory.h"
  #endif
-@@ -4539,25 +4540,37 @@ nsresult Preferences::InitInitialObjects
+@@ -4566,25 +4567,37 @@ nsresult Preferences::InitInitialObjects
    // application pref files for backwards compatibility.
    static const char* specialFiles[] = {
  #if defined(XP_MACOSX)
@@ -69,7 +69,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  
    // Load jar:$app/omni.jar!/defaults/preferences/*.js
    // or jar:$gre/omni.jar!/defaults/preferences/*.js.
-@@ -4603,17 +4616,17 @@ nsresult Preferences::InitInitialObjects
+@@ -4630,17 +4643,17 @@ nsresult Preferences::InitInitialObjects
        }
  
        nsCOMPtr<nsIFile> path = do_QueryInterface(elem);
@@ -302,7 +302,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
  nsUnixSystemProxySettings::GetMainThreadOnly(bool* aMainThreadOnly) {
    // dbus prevents us from being threadsafe, but this routine should not block
    // anyhow
-@@ -380,21 +383,50 @@ nsresult nsUnixSystemProxySettings::GetP
+@@ -384,21 +387,50 @@ nsresult nsUnixSystemProxySettings::GetP
    return NS_OK;
  }
  
@@ -974,7 +974,7 @@ diff --git a/uriloader/exthandler/unix/nsKDERegistry.cpp b/uriloader/exthandler/
 new file mode 100644
 --- /dev/null
 +++ b/uriloader/exthandler/unix/nsKDERegistry.cpp
-@@ -0,0 +1,87 @@
+@@ -0,0 +1,86 @@
 +/* -*- Mode: C++; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 +/* This Source Code Form is subject to the terms of the Mozilla Public
 + * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -985,7 +985,6 @@ new file mode 100644
 +#include "prmem.h"
 +#include "nsString.h"
 +#include "nsMIMEInfoUnix.h"
-+#include "nsAutoPtr.h"
 +#include "nsKDEUtils.h"
 +
 +/* static */ bool
@@ -1351,7 +1350,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
  #define MAX_PREVIEW_SOURCE_SIZE 4096
  
  nsIFile* nsFilePicker::mPrevDisplayDirectory = nullptr;
-@@ -227,17 +230,19 @@ nsFilePicker::AppendFilters(int32_t aFil
+@@ -223,17 +226,19 @@ nsFilePicker::AppendFilters(int32_t aFil
    mAllowURLs = !!(aFilterMask & filterAllowURLs);
    return nsBaseFilePicker::AppendFilters(aFilterMask);
  }
@@ -1372,7 +1371,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
  
    mFilters.AppendElement(filter);
    mFilterNames.AppendElement(name);
-@@ -337,16 +342,39 @@ nsresult nsFilePicker::Show(int16_t* aRe
+@@ -333,16 +338,39 @@ nsresult nsFilePicker::Show(int16_t* aRe
    return NS_OK;
  }
  
@@ -1412,7 +1411,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
    GtkFileChooserAction action = GetGtkFileChooserAction(mMode);
  
    const gchar* accept_button;
-@@ -571,16 +599,244 @@ void nsFilePicker::Done(void* file_choos
+@@ -562,16 +590,244 @@ void nsFilePicker::Done(void* file_choos
      mCallback->Done(result);
      mCallback = nullptr;
    } else {
@@ -1831,10 +1830,10 @@ diff --git a/xpcom/components/moz.build b/xpcom/components/moz.build
  
  if CONFIG['MOZ_WIDGET_TOOLKIT'] == 'gtk':
      CXXFLAGS += CONFIG['TK_CFLAGS']
+     if CONFIG['MOZ_ENABLE_DBUS']:
+         CXXFLAGS += CONFIG['MOZ_DBUS_GLIB_CFLAGS']
  
  if CONFIG['MOZ_LAYOUT_DEBUGGER']:
-     DEFINES['MOZ_LAYOUT_DEBUGGER'] = True
- 
 diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
 --- a/xpcom/io/nsLocalFileUnix.cpp
 +++ b/xpcom/io/nsLocalFileUnix.cpp

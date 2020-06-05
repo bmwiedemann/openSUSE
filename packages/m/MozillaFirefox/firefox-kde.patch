@@ -3,7 +3,7 @@
 # Date 1559300151 -7200
 #      Fri May 31 12:55:51 2019 +0200
 # Node ID 54d41b0033b8d649d842a1f862c6fed8b9874dec
-# Parent  5db49d25901f390e985c8e4bb5e0ec0b22cadeec
+# Parent  0fd58e0df883086574263e0881e1503cf110562a
 How to apply this patch:
 1. Import and apply it
 2. cp browser/base/content/browser.xul browser/base/content/browser-kde.xul
@@ -11,10 +11,10 @@ How to apply this patch:
 4. Replace #ifndef with #ifdef in the line above (this hanges the button order from Gnome-style to KDE-style)
 5. hg qrefresh
 
-diff --git a/browser/components/preferences/in-content/main.js b/browser/components/preferences/in-content/main.js
---- a/browser/components/preferences/in-content/main.js
-+++ b/browser/components/preferences/in-content/main.js
-@@ -333,16 +333,23 @@ var gMainPane = {
+diff --git a/browser/components/preferences/main.js b/browser/components/preferences/main.js
+--- a/browser/components/preferences/main.js
++++ b/browser/components/preferences/main.js
+@@ -336,16 +336,23 @@ var gMainPane = {
          }, backoffTimes[this._backoffIndex + 1 < backoffTimes.length ? this._backoffIndex++ : backoffTimes.length - 1]);
        };
  
@@ -38,7 +38,7 @@ diff --git a/browser/components/preferences/in-content/main.js b/browser/compone
      );
      let performanceSettingsUrl =
        Services.urlFormatter.formatURLPref("app.support.baseURL") +
-@@ -1296,16 +1303,27 @@ var gMainPane = {
+@@ -1301,16 +1308,27 @@ var gMainPane = {
        this._backoffIndex = 0;
  
        let shellSvc = getShellService();
@@ -69,7 +69,7 @@ diff --git a/browser/components/preferences/in-content/main.js b/browser/compone
 diff --git a/browser/components/shell/moz.build b/browser/components/shell/moz.build
 --- a/browser/components/shell/moz.build
 +++ b/browser/components/shell/moz.build
-@@ -28,16 +28,18 @@ if CONFIG['MOZ_WIDGET_TOOLKIT'] == 'coco
+@@ -34,16 +34,18 @@ if CONFIG['MOZ_WIDGET_TOOLKIT'] == 'coco
      ]
  elif CONFIG['MOZ_WIDGET_TOOLKIT'] == 'gtk':
      XPIDL_SOURCES += [
@@ -81,13 +81,13 @@ diff --git a/browser/components/shell/moz.build b/browser/components/shell/moz.b
 +        'nsKDEShellService.cpp',
 +        'nsUnixShellService.cpp',
      ]
- elif CONFIG['OS_ARCH'] == 'WINNT':
-     XPIDL_SOURCES += [
-         'nsIWindowsShellService.idl',
-     ]
-     SOURCES += [
-         'nsWindowsShellService.cpp',
-     ]
+     if CONFIG['MOZ_ENABLE_DBUS']:
+         SOURCES += [
+             'nsGNOMEShellDBusHelper.cpp',
+             'nsGNOMEShellSearchProvider.cpp',
+         ]
+         include('/ipc/chromium/chromium-config.mozbuild')
+ 
 diff --git a/browser/components/shell/nsKDEShellService.cpp b/browser/components/shell/nsKDEShellService.cpp
 new file mode 100644
 --- /dev/null

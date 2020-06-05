@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Jun  3 21:39:11 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 77.0.1
+  * Disable automatic selection of DNS over HTTPS providers during
+    a test to enable wider deployment in a more controlled way
+    (bmo#1642723)
+
+-------------------------------------------------------------------
+Fri May 29 11:49:36 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 77.0
+  * view and manage web certificates more easily on the new
+    about:certificate page
+  * improvements in accessibility
+  * significant improvements to JavaScript debugging
+  MFSA 2020-20 (bsc#1172402)
+  * CVE-2020-12399 (bmo#1631576)
+    Timing attack on DSA signatures in NSS library
+    (fixed with external NSS >= 3.52.1)
+  * CVE-2020-12405 (bmo#1631618)
+    Use-after-free in SharedWorkerService
+  * CVE-2020-12406 (bmo#1639590)
+    JavaScript type confusion with NativeTypes
+  * CVE-2020-12407 (bmo#1637112)
+    WebRender leaking GPU memory when using border-image CSS
+    directive
+  * CVE-2020-12408 (bmo#1623888)
+    URL spoofing when using IP addresses
+  * CVE-2020-12409 (bmo#1619305, bmo#1632717)
+    Memory safety bugs fixed in Firefox 77 and Firefox ESR 68.9
+  * CVE-2020-12411 (bmo#1620972, bmo#1625333)
+    Memory safety bugs fixed in Firefox 77
+- requires
+  * NSS >= 3.52.1
+  * rust-cbindgen >= 1.14.1
+  * clang >= 5
+- added mozilla-bmo1634646.patch as part of fixing PGO build
+  (still not working)
+
+-------------------------------------------------------------------
 Wed May 13 12:21:13 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - change again _constraints for ppc64le use <physicalmemory>

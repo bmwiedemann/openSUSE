@@ -1,0 +1,26 @@
+# HG changeset patch
+# User Wolfgang Rosenauer <wr@rosenauer.org>
+# Parent  43820d9e289abee98a2e3cdb4314848de3bc8622
+
+diff --git a/build/pgo/profileserver.py b/build/pgo/profileserver.py
+--- a/build/pgo/profileserver.py
++++ b/build/pgo/profileserver.py
+@@ -127,17 +127,17 @@ if __name__ == '__main__':
+         # Bug 1553850 considers fixing this.
+         env["MOZ_DISABLE_CONTENT_SANDBOX"] = "1"
+         env["MOZ_DISABLE_RDD_SANDBOX"] = "1"
+ 
+         # Ensure different pids write to different files
+         env["LLVM_PROFILE_FILE"] = "default_%p_random_%m.profraw"
+ 
+         # Write to an output file if we're running in automation
+-        process_args = {}
++        process_args = {'universal_newlines': True}
+         if 'UPLOAD_PATH' in env:
+             process_args['logfile'] = os.path.join(env['UPLOAD_PATH'], 'profile-run-1.log')
+ 
+         # Run Firefox a first time to initialize its profile
+         runner = FirefoxRunner(profile=profile,
+                                binary=binary,
+                                cmdargs=['data:text/html,<script>Quitter.quit()</script>'],
+                                env=env,
