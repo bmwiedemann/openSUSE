@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Jun  5 05:46:59 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.18.0
+  * New Features
+    - Viewer: Search panel: Add a button to return to the position
+      the book was at before doing a search.
+    - Tag browser: Improve handling of hierarchical tags
+    - Viewer: In flow mode, implement drag scrolling.
+    - Tag browser: Allow Manage Tags to open to a selected letter
+      when clicking on a letter.
+    - Viewer: Show number of search results in title of search panel.
+    - Content server: In the book list hovering over the library
+      name now shows the total number of books in the library.
+  * Bug Fixes
+    - Fix a regression in the previous release that broke the copy
+      and recalculate author sort buttons.
+    - Book details: Fix extra margin to the right of the metadata
+      fields.
+    - Cover grid: Show text under books that have no cover as well.
+    - When merging metadata, if a custom column has type multiple
+      in the new data and some other type in the old data, 
+      ignore the old data instead of failing
+    - macOS: When using the single instance option of the viewer, 
+      crashes should not require a restart of the computer to use
+      the viewer again.
+    - Windows: Fix an error when changing title/author for books in
+      a library whose name contains characters not encodeable in 
+      the current code page
+    - Windows: Fix amazon metadata download failing when accented
+      characters in search query
+    - Comments editor: Fix shortcuts for bold/italic not working
+      when toolbars are hidden
+- Drop db7007a25faefb0cc90e64dda1c0793393b9512d.patch, because
+  it is now in upstream.
+
+-------------------------------------------------------------------
+Thu Jun  4 12:21:50 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add db7007a25faefb0cc90e64dda1c0793393b9512d.patch from upstream
+  to fix build with Qt 5.15
+
+-------------------------------------------------------------------
 Sat May 23 08:17:05 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.17.0
