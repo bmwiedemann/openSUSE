@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 12 10:01:48 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.0.1
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - trivial: Remove noise
+  - Ignore releasenote artifacts files.
+  - Update hacking for Python3
+  - Move doc requirements into dedicated file
+  - Add python3 classifiers
+  - Update master for stable/train
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - Update the constraints url
+  - Switch to Ussuri jobs
+
+-------------------------------------------------------------------
 Wed Mar 11 21:12:01 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only build

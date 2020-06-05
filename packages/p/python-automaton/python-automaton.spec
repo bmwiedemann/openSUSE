@@ -17,13 +17,13 @@
 
 
 Name:           python-automaton
-Version:        1.17.0
+Version:        2.0.1
 Release:        0
 Summary:        Friendly state machines for python
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/automaton
-Source0:        https://files.pythonhosted.org/packages/source/a/automaton/automaton-1.17.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/a/automaton/automaton-2.0.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable >= 0.7.2
 BuildRequires:  python3-devel
@@ -58,7 +58,7 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for the Automaton library.
 
 %prep
-%autosetup -p1 -n automaton-1.17.0
+%autosetup -p1 -n automaton-2.0.1
 %py_req_cleanup
 
 %build
@@ -67,7 +67,7 @@ Documentation for the Automaton library.
 # generate html docs
 PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 # remove the Sphinx-build leftovers
-rm -rf html/.{doctrees,buildinfo}
+rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
 %{py3_install}
