@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May 28 12:43:51 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 20.3.0
+  * drop Python 2
+  * twisted.news is deprecated.
+  * twisted.conch.ssh now supports the curve25519-sha256 key exchange 
+    algorithm (requires OpenSSL >= 1.1.0).
+  * many bugfixes and other miscelaneous fixes
+- Fixed update-alternatives mechanism
+- Added true-binary.patch
+- Dropped python-38-xml-namespace.patch
+- Reapplied python-38-hmac-digestmod.patch
+
+-------------------------------------------------------------------
 Mon May 18 13:15:58 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

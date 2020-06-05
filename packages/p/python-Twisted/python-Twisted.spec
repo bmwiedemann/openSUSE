@@ -17,10 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
 %define modname Twisted
+%define skip_python2 1
 Name:           python-Twisted
-Version:        19.10.0
+Version:        20.3.0
 Release:        0
 Summary:        An asynchronous networking framework written in Python
 License:        MIT
@@ -30,20 +30,20 @@ Source:         https://files.pythonhosted.org/packages/source/T/Twisted/%{modna
 Patch1:         skip_MultiCast.patch
 Patch2:         no-pygtkcompat.patch
 Patch3:         test-mktime-invalid-tm_isdst.patch
-Patch4:         python-38-xml-namespace.patch
 Patch5:         python-38-hmac-digestmod.patch
 Patch6:         python-38-no-cgi-parseqs.patch
+Patch7:         true-binary.patch
 BuildRequires:  %{python_module Automat >= 0.3.0}
 BuildRequires:  %{python_module PyHamcrest >= 1.9.0}
 BuildRequires:  %{python_module appdirs >= 1.4.0}
-BuildRequires:  %{python_module attrs >= 17.4.0}
+BuildRequires:  %{python_module attrs >= 19.2.0}
 BuildRequires:  %{python_module bcrypt >= 3.0.0}
 BuildRequires:  %{python_module constantly >= 15.1}
-BuildRequires:  %{python_module cryptography >= 2.5}
+BuildRequires:  %{python_module cryptography >= 2.6}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module h2 >= 3.0}
 BuildRequires:  %{python_module hyperlink >= 17.1.1}
-BuildRequires:  %{python_module idna >= 0.6}
+BuildRequires:  %{python_module idna >= 2.4}
 BuildRequires:  %{python_module incremental >= 16.10.1}
 BuildRequires:  %{python_module pyOpenSSL >= 16.0.0}
 BuildRequires:  %{python_module pyasn1}
@@ -60,13 +60,13 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Automat >= 0.3.0
 Requires:       python-PyHamcrest >= 1.9.0
 Requires:       python-appdirs >= 1.4.0
-Requires:       python-attrs >= 17.4.0
+Requires:       python-attrs >= 19.2.0
 Requires:       python-bcrypt >= 3.0.0
 Requires:       python-constantly >= 15.1
-Requires:       python-cryptography >= 2.5
+Requires:       python-cryptography >= 2.6
 Requires:       python-h2 >= 3.0
 Requires:       python-hyperlink >= 17.1.1
-Requires:       python-idna >= 0.6
+Requires:       python-idna >= 2.4
 Requires:       python-incremental >= 16.10.1
 Requires:       python-pyOpenSSL >= 16.0.0
 Requires:       python-pyasn1
@@ -75,30 +75,6 @@ Requires:       python-service_identity >= 18.1.0
 Requires:       python-zope.interface >= 4.4.2
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-%ifpython2
-Provides:       %{oldpython}-twisted = %{version}
-Obsoletes:      %{oldpython}-twisted < %{version}
-Provides:       %{oldpython}-twisted-core = %{version}
-Obsoletes:      %{oldpython}-twisted-core < %{version}
-Provides:       %{oldpython}-twisted-conch = %{version}
-Obsoletes:      %{oldpython}-twisted-conch < %{version}
-Provides:       %{oldpython}-twisted-lore = %{version}
-Obsoletes:      %{oldpython}-twisted-lore < %{version}
-Provides:       %{oldpython}-twisted-mail = %{version}
-Obsoletes:      %{oldpython}-twisted-mail < %{version}
-Provides:       %{oldpython}-twisted-names = %{version}
-Obsoletes:      %{oldpython}-twisted-names < %{version}
-Provides:       %{oldpython}-twisted-news = %{version}
-Obsoletes:      %{oldpython}-twisted-news < %{version}
-Provides:       %{oldpython}-twisted-runner = %{version}
-Obsoletes:      %{oldpython}-twisted-runner < %{version}
-Provides:       %{oldpython}-twisted-web = %{version}
-Obsoletes:      %{oldpython}-twisted-web < %{version}
-Provides:       %{oldpython}-twisted-words = %{version}
-Obsoletes:      %{oldpython}-twisted-words < %{version}
-Provides:       %{oldpython}-twisted-xish = %{version}
-Obsoletes:      %{oldpython}-twisted-xish < %{version}
-%endif
 %python_subpackages
 
 %description
@@ -133,21 +109,15 @@ find docs -type f -print0 | xargs -0 chmod a-x # Fix doc-file dependency by remo
 
 # Prepare for update-alternatives usage
 for p in twistd cftp ckeygen conch pyhtmlizer tkconch trial ; do
-    %python_clone %{buildroot}%{_bindir}/$p
-    %python_clone %{buildroot}%{_mandir}/man1/$p.1
+    %python_clone -a %{buildroot}%{_bindir}/$p
+    %python_clone -a %{buildroot}%{_mandir}/man1/$p.1
 done
 
-# update alternatives for parts supported only in python2
-%ifpython2
-%python_clone %{buildroot}%{_bindir}/mailmail
-%python_clone %{buildroot}%{_mandir}/man1/mailmail.1
-%endif
-%if ! 0%{?have_python2} || 0%{?skip_python2}
+# mailmail is useful only on Python 2
 rm %{buildroot}%{_bindir}/mailmail %{buildroot}%{_mandir}/man1/mailmail.1
-%endif
 
 # no manpage for twist yet:
-%python_clone %{buildroot}%{_bindir}/twist
+%python_clone -a %{buildroot}%{_bindir}/twist
 
 %check
 export LANG=en_US.UTF-8
@@ -181,14 +151,10 @@ export PYTHONDONTWRITEBYTECODE=1
 %files %{python_files}
 %license LICENSE
 %doc NEWS.rst README.rst
-%{_bindir}/*-%{python_bin_suffix}
-%{_mandir}/man1/*-%{python_bin_suffix}.1%{?ext_man}
 %python_alternative %{_bindir}/twistd
 %python_alternative %{_bindir}/cftp
 %python_alternative %{_bindir}/ckeygen
 %python_alternative %{_bindir}/conch
-# Supported only in python2
-%python2_only %{_bindir}/mailmail
 %python_alternative %{_bindir}/pyhtmlizer
 %python_alternative %{_bindir}/tkconch
 %python_alternative %{_bindir}/trial
@@ -197,7 +163,6 @@ export PYTHONDONTWRITEBYTECODE=1
 %python_alternative %{_mandir}/man1/cftp.1%{?ext_man}
 %python_alternative %{_mandir}/man1/ckeygen.1%{?ext_man}
 %python_alternative %{_mandir}/man1/conch.1%{?ext_man}
-%python2_only %{_mandir}/man1/mailmail.1%{?ext_man}
 %python_alternative %{_mandir}/man1/pyhtmlizer.1%{?ext_man}
 %python_alternative %{_mandir}/man1/tkconch.1%{?ext_man}
 %python_alternative %{_mandir}/man1/trial.1%{?ext_man}

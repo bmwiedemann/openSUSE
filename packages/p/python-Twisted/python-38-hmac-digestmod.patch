@@ -52,28 +52,6 @@ Index: Twisted-19.10.0/src/twisted/cred/test/test_cramauth.py
          self.assertTrue(c.checkPassword(b'supersecret'))
          self.assertEqual(c.username, b"squirrel")
  
-Index: Twisted-19.10.0/src/twisted/mail/_cred.py
-===================================================================
---- Twisted-19.10.0.orig/src/twisted/mail/_cred.py
-+++ Twisted-19.10.0/src/twisted/mail/_cred.py
-@@ -7,6 +7,7 @@ Credential managers for L{twisted.mail}.
- 
- from __future__ import absolute_import, division
- 
-+from hashlib import md5
- import hmac
- 
- from zope.interface import implementer
-@@ -28,7 +29,8 @@ class CramMD5ClientAuthenticator:
- 
- 
-     def challengeResponse(self, secret, chal):
--        response = hmac.HMAC(secret, chal).hexdigest().encode('ascii')
-+        response = hmac.HMAC(
-+            secret, chal, digestmod=md5).hexdigest().encode('ascii')
-         return self.user + b' ' + response
- 
- 
 Index: Twisted-19.10.0/src/twisted/mail/test/test_pop3.py
 ===================================================================
 --- Twisted-19.10.0.orig/src/twisted/mail/test/test_pop3.py
