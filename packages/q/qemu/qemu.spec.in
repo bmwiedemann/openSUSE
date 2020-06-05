@@ -1201,11 +1201,11 @@ make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms seavgabios-ati \
   HOSTCC=cc \
 %endif
 
-make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms pxerom NO_WERROR=1
+make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms pxerom
 
 %ifnarch %ix86
 make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms efirom \
-  EDK2_BASETOOLS_OPTFLAGS='-fPIE' NO_WERROR=1
+  EDK2_BASETOOLS_OPTFLAGS='-fPIE'
 %endif
 
 make                 -C %{_builddir}/%buildsubdir/roms sgabios \
@@ -1216,7 +1216,7 @@ pushd %{_builddir}/%buildsubdir
 patch -p1 < %_sourcedir/stub-out-the-SAN-req-s-in-int13.patch
 popd
 make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms \
-    pxerom_variants=virtio pxerom_targets=1af41000 pxerom NO_WERROR=1
+    pxerom_variants=virtio pxerom_targets=1af41000 pxerom
 %endif
 
 # enforce pxe rom sizes for migration compatability from SLE 11 SP3 forward

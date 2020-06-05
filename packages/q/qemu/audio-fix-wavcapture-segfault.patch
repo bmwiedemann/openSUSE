@@ -1,0 +1,49 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Thu, 21 May 2020 11:29:31 -0600
+Subject: audio: fix wavcapture segfault
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: cbaf25d1f59ee13fc7542a06ea70784f2e000c04
+References: boo#1171712
+
+Commit 571a8c522e caused the HMP wavcapture command to segfault when
+processing audio data in audio_pcm_sw_write(), where a NULL
+sw->hw->pcm_ops is dereferenced. This fix checks that the pointer is
+valid before dereferincing it. A similar fix is also made in the
+parallel function audio_pcm_sw_read().
+
+Fixes: 571a8c522e (audio: split ctl_* functions into enable_* and
+volume_*)
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-id: 20200521172931.121903-1-brogers@suse.com
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ audio/audio.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/audio/audio.c b/audio/audio.c
+index 7a9e6803558b85ff8d4158aa35f9..08a067722b2c33b3f31cb8cf9884 100644
+--- a/audio/audio.c
++++ b/audio/audio.c
+@@ -649,7 +649,7 @@ static size_t audio_pcm_sw_read(SWVoiceIn *sw, void *buf, size_t size)
+         total += isamp;
+     }
+ 
+-    if (!hw->pcm_ops->volume_in) {
++    if (hw->pcm_ops && !hw->pcm_ops->volume_in) {
+         mixeng_volume (sw->buf, ret, &sw->vol);
+     }
+ 
+@@ -736,7 +736,7 @@ static size_t audio_pcm_sw_write(SWVoiceOut *sw, void *buf, size_t size)
+     if (swlim) {
+         sw->conv (sw->buf, buf, swlim);
+ 
+-        if (!sw->hw->pcm_ops->volume_out) {
++        if (sw->hw->pcm_ops && !sw->hw->pcm_ops->volume_out) {
+             mixeng_volume (sw->buf, swlim, &sw->vol);
+         }
+     }

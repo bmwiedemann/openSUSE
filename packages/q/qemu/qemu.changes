@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun  2 17:22:57 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Work around gcc 10 bug (boo#1172411)
+  build-Work-around-gcc10-bug-by-not-using.patch
+
+-------------------------------------------------------------------
+Mon Jun  1 17:48:14 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Now that gcc10 compatibility is figured out, remove NO_WERROR=1
+  again from ipxe make.
+
+-------------------------------------------------------------------
+Tue May 26 14:35:34 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Fix segfault when doing HMP wavcapture (boo#1171712)
+  audio-fix-wavcapture-segfault.patch
+
+-------------------------------------------------------------------
 Tue May  5 21:11:11 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Fix DoS in virtiofsd, where a FUSE client could exhaust the

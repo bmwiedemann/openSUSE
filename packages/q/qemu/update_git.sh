@@ -548,10 +548,6 @@ rm -rf $BUNDLE_DIR
 
         if [ "$WRITE_LOG" = "1" ]; then
 # Factory requires all deleted and added patches to be mentioned
-            if [ -e qemu.changes.deleted ] || [ -e qemu.changes.added ]; then
-                echo "Patch queue updated from ${GIT_TREE} ${GIT_BRANCH}" > \
-                    $package.changes.proposed
-            fi
             if [ -e qemu.changes.deleted ]; then
                 echo "* Patches dropped:" >> $package.changes.proposed
                 cat qemu.changes.deleted  >> $package.changes.proposed

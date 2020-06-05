@@ -1,0 +1,78 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Mon, 1 Jun 2020 14:48:23 -0600
+Subject: build: Work around gcc10 bug by not using char type in triggering
+ code
+
+References: boo#1172411
+
+It appears we are bumping into a bug in the gcc10 compiler where it gets
+it wrong in deciding that we're beyond the end of an array, in this case
+because of some detection wrt the char type. Change to non-char type to
+work around this issue. As near as I can tell, this isn't introducing
+any behavioral changes or another bug. (see for eg:
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=92955 )
+
+Here is the error reported:
+[ 2046s] /home/abuild/rpmbuild/BUILD/qemu-5.0.50/target/xtensa/mmu_helper.c: In function 'reset_tlb_mmu_ways56.constprop.isra':
+[ 2046s] /home/abuild/rpmbuild/BUILD/qemu-5.0.50/target/xtensa/mmu_helper.c:377:31: error: writing 1 byte into a region of size 0 [-Werror=stringop-overflow=]
+[ 2046s]   377 |             entry[6][ei].asid = 1;
+[ 2046s]       |             ~~~~~~~~~~~~~~~~~~^~~
+[ 2046s] /home/abuild/rpmbuild/BUILD/qemu-5.0.50/target/xtensa/mmu_helper.c:378:31: error: writing 1 byte into a region of size 0 [-Werror=stringop-overflow=]
+[ 2046s]   378 |             entry[6][ei].attr = 3;
+[ 2046s]       |             ~~~~~~~~~~~~~~~~~~^~~
+[ 2046s] /home/abuild/rpmbuild/BUILD/qemu-5.0.50/target/xtensa/mmu_helper.c:377:31: error: writing 1 byte into a region of size 0 [-Werror=stringop-overflow=]
+[ 2046s]   377 |             entry[6][ei].asid = 1;
+[ 2046s]       |             ~~~~~~~~~~~~~~~~~~^~~
+[ 2046s] /home/abuild/rpmbuild/BUILD/qemu-5.0.50/target/xtensa/mmu_helper.c:378:31: error: writing 1 byte into a region of size 0 [-Werror=stringop-overflow=]
+[ 2046s]   378 |             entry[6][ei].attr = 3;
+[ 2046s]       |             ~~~~~~~~~~~~~~~~~~^~~
+[ 2046s] /home/abuild/rpmbuild/BUILD/qemu-5.0.50/target/xtensa/mmu_helper.c:377:31: error: writing 1 byte into a region of size 0 [-Werror=stringop-overflow=]
+[ 2046s]   377 |             entry[6][ei].asid = 1;
+[ 2046s]       |             ~~~~~~~~~~~~~~~~~~^~~
+[ 2046s] /home/abuild/rpmbuild/BUILD/qemu-5.0.50/target/xtensa/mmu_helper.c:378:31: error: writing 1 byte into a region of size 0 [-Werror=stringop-overflow=]
+[ 2046s]   378 |             entry[6][ei].attr = 3;
+[ 2046s]       |             ~~~~~~~~~~~~~~~~~~^~~
+[ 2046s] /home/abuild/rpmbuild/BUILD/qemu-5.0.50/target/xtensa/mmu_helper.c:377:31: error: writing 1 byte into a region of size 0 [-Werror=stringop-overflow=]
+[ 2046s]   377 |             entry[6][ei].asid = 1;
+[ 2046s]       |             ~~~~~~~~~~~~~~~~~~^~~
+[ 2046s] /home/abuild/rpmbuild/BUILD/qemu-5.0.50/target/xtensa/mmu_helper.c:378:31: error: writing 1 byte into a region of size 0 [-Werror=stringop-overflow=]
+[ 2046s]   378 |             entry[6][ei].attr = 3;
+[ 2046s]       |             ~~~~~~~~~~~~~~~~~~^~~
+[ 2046s] /home/abuild/rpmbuild/BUILD/qemu-5.0.50/target/xtensa/mmu_helper.c:377:31: error: writing 1 byte into a region of size 0 [-Werror=stringop-overflow=]
+[ 2046s]   377 |             entry[6][ei].asid = 1;
+[ 2046s]       |             ~~~~~~~~~~~~~~~~~~^~~
+[ 2046s] /home/abuild/rpmbuild/BUILD/qemu-5.0.50/target/xtensa/mmu_helper.c:378:31: error: writing 1 byte into a region of size 0 [-Werror=stringop-overflow=]
+[ 2046s]   378 |             entry[6][ei].attr = 3;
+[ 2046s]       |             ~~~~~~~~~~~~~~~~~~^~~
+[ 2046s] /home/abuild/rpmbuild/BUILD/qemu-5.0.50/target/xtensa/mmu_helper.c:377:31: error: writing 1 byte into a region of size 0 [-Werror=stringop-overflow=]
+[ 2046s]   377 |             entry[6][ei].asid = 1;
+[ 2046s]       |             ~~~~~~~~~~~~~~~~~~^~~
+[ 2046s] /home/abuild/rpmbuild/BUILD/qemu-5.0.50/target/xtensa/mmu_helper.c:378:31: error: writing 1 byte into a region of size 0 [-Werror=stringop-overflow=]
+[ 2046s]   378 |             entry[6][ei].attr = 3;
+[ 2046s]       |             ~~~~~~~~~~~~~~~~~~^~~
+[ 2046s] /home/abuild/rpmbuild/BUILD/qemu-5.0.50/target/xtensa/mmu_helper.c:377:31: error: writing 1 byte into a region of size 0 [-Werror=stringop-overflow=]
+[ 2046s]   377 |             entry[6][ei].asid = 1;
+[ 2046s]       |             ~~~~~~~~~~~~~~~~~~^~~
+[ 2046s] /home/abuild/rpmbuild/BUILD/qemu-5.0.50/target/xtensa/mmu_helper.c:378:31: error: writing 1 byte into a region of size 0 [-Werror=stringop-overflow=]
+[ 2046s]   378 |             entry[6][ei].attr = 3;
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ target/xtensa/cpu.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
+index 7a46dccbe11b05e9565192b9e242..fc039349623057083541c160270f 100644
+--- a/target/xtensa/cpu.h
++++ b/target/xtensa/cpu.h
+@@ -309,8 +309,8 @@ struct CPUXtensaState;
+ typedef struct xtensa_tlb_entry {
+     uint32_t vaddr;
+     uint32_t paddr;
+-    uint8_t asid;
+-    uint8_t attr;
++    uint32_t asid;
++    uint32_t attr;
+     bool variable;
+ } xtensa_tlb_entry;
+ 

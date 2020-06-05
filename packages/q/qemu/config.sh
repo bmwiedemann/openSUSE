@@ -19,9 +19,6 @@ NEXT_RELEASE_IS_MAJOR=0
 # We can do so by specifing the value here:
 #SEABIOS_VERSION=1.13.0
 
-# The shared git repo, on which $GIT_LOCAL_TREE is based
-GIT_TREE=git://github.com/openSUSE/qemu.git
-
 # Temporary directories used by this script
 GIT_DIR=/dev/shm/qemu-factory-git-dir
 CMP_DIR=/dev/shm/qemu-factory-cmp-dir
