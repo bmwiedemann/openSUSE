@@ -17,13 +17,13 @@
 
 
 Name:           python-os-api-ref
-Version:        1.6.2
+Version:        2.0.1
 Release:        0
 Summary:        Sphinx Extensions to support API reference sites in OpenStack
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/%{sname}
-Source0:        https://files.pythonhosted.org/packages/source/o/os-api-ref/os-api-ref-1.6.2.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/os-api-ref/os-api-ref-2.0.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 3.12
 BuildRequires:  python3-Sphinx
@@ -73,7 +73,7 @@ expand / collapse all sections.
 This package contains the Python 3.x module.
 
 %prep
-%autosetup -p1 -n os-api-ref-1.6.2
+%autosetup -p1 -n os-api-ref-2.0.1
 %py_req_cleanup
 
 %build
