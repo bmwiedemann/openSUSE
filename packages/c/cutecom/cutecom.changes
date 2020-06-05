@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun  5 06:48:59 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Small packaging adjustements:
+  * Dont manually compress manpages
+  * Fully leverage install command
+
+-------------------------------------------------------------------
+Thu Jun  4 16:51:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with Qt 5.15:
+  * 0001-Fix-build-with-Qt-5.15.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sat Sep 01 13:37:14 UTC 2018 - cyc1ingsir@gmail.com
 
 -update to release 0.51.0

@@ -1,7 +1,7 @@
 #
 # spec file for package cutecom
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,20 @@
 Name:           cutecom
 Version:        0.51.0
 Release:        0
-Url:            https://gitlab.com/cutecom/cutecom
-Summary:        A graphical serial terminal 
+Summary:        A graphical serial terminal
 License:        GPL-3.0-or-later
 Group:          System/X11/Terminals
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://gitlab.com/cutecom/cutecom
+Source:         %{name}-%{version}.tgz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-with-Qt-5.15.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  libqt5-qtserialport-devel
-Source:         %{name}-%{version}.tgz
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5SerialPort)
+BuildRequires:  cmake(Qt5Widgets)
 
 %description
 CuteCom is a graphical serial terminal, similar to minicom. It is
@@ -38,34 +42,28 @@ It is aimed mainly at hardware developers or other people who need a
 terminal to talk to their devices.
 
 %prep
-%setup
+%autosetup -p1
 
 %build
-cmake .
-make
+%cmake
+%cmake_build
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_bindir}
-mkdir -p $RPM_BUILD_ROOT/%{_mandir}/man1
-install -s -m 755 %{name} $RPM_BUILD_ROOT/%{_bindir}/
-gzip %{name}.1
-install -m 644 %{name}.1.gz $RPM_BUILD_ROOT/%{_mandir}/man1/
+%cmake_install
 
-install -d 755 $RPM_BUILD_ROOT%{_datadir}/applications
-install -m 644 distribution/openSUSE/cutecom.desktop $RPM_BUILD_ROOT%{_datadir}/applications/
-install -d 755 $RPM_BUILD_ROOT%{_datadir}/pixmaps
-install -m 644 images/cutecom.svg $RPM_BUILD_ROOT%{_datadir}/pixmaps/
-
-%clean
-rm -rf "$RPM_BUILD_ROOT"
+install -Dpm 644 %{name}.1 \
+  %{buildroot}/%{_mandir}/man1/%{name}.1
+install -Dpm 644 distribution/openSUSE/cutecom.desktop \
+  %{buildroot}%{_datadir}/applications/cutecom.desktop
+install -Dpm 644 images/cutecom.svg \
+  %{buildroot}%{_datadir}/pixmaps/cutecom.svg
 
 %files
-%defattr(-,root,root)
+%license LICENSE
+%doc Changelog TODO CREDITS README.md
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1.gz
+%{_mandir}/man1/%{name}.1%{?ext_man}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/cutecom.svg
-%doc Changelog TODO CREDITS README.md
-%license LICENSE
 
 %changelog
