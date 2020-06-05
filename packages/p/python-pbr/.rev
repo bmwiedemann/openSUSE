@@ -594,4 +594,13 @@
   infrastructure would need rewrite</comment>
     <requestid>786399</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>fbf5a81ad48435fcb72e13e7455dfb0b</srcmd5>
+    <version>5.4.5</version>
+    <time>1591379974</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.4.5:
+  * Switch to Ussuri jobs</comment>
+    <requestid>810899</requestid>
+  </revision>
 </revisionlist>
