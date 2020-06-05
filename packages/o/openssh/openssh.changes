@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 31 11:25:07 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add upstream signing key to actually verify source signature
+
+-------------------------------------------------------------------
 Fri Feb 28 16:15:06 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - Don't recommend xauth to avoid pulling in X.

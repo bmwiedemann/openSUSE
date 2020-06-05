@@ -20,13 +20,11 @@
 %ifnarch ppc
 %define sandbox_seccomp 1
 %endif
-
 %if 0%{?suse_version} >= 1500
 %bcond_without tirpc
 %else
 %bcond_with tirpc
 %endif
-
 %define _fwdir      %{_sysconfdir}/sysconfig/SuSEfirewall2.d
 %define _fwdefdir   %{_fwdir}/services
 %define _appdefdir  %( grep "configdirspec=" $( which xmkmf ) | sed -r 's,^[^=]+=.*-I(.*)/config.*$,\\1/app-defaults,' )
@@ -42,7 +40,7 @@ Release:        0
 Summary:        Secure Shell Client and Server (Remote Login Program)
 License:        BSD-2-Clause AND MIT
 Group:          Productivity/Networking/SSH
-URL:            http://www.openssh.com/
+URL:            https://www.openssh.com/
 Source0:        http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-%{version}.tar.gz
 Source1:        http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-%{version}.tar.gz.asc
 Source2:        sshd.pamd
@@ -56,6 +54,7 @@ Source9:        sshd-gen-keys-start
 Source10:       sshd.service
 Source11:       README.FIPS
 Source12:       cavs_driver-ssh.pl
+Source13:       https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/RELEASE_KEY.asc#/openssh.keyring
 Patch0:         openssh-7.7p1-allow_root_password_login.patch
 Patch1:         openssh-7.7p1-X11_trusted_forwarding.patch
 Patch3:         openssh-7.7p1-enable_PAM_by_default.patch
@@ -115,7 +114,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libsystemd)
 Requires(post): %fillup_prereq
-Requires(pre):  pwdutils
+Requires(pre):  shadow
 Recommends:     %{name}-helpers = %{version}-%{release}
 Recommends:     audit
 Conflicts:      %{name}-fips < %{version}-%{release}
@@ -214,7 +213,7 @@ export LDFLAGS CFLAGS CXXFLAGS CPPFLAGS
     --with-libedit \
     --target=%{_target_cpu}-suse-linux
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
