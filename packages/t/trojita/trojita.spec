@@ -39,6 +39,8 @@ Patch0:         Skip-QtWebKit-tests.patch
 Patch1:         tests-Fix-build-with-Qt-5.13.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         0001-Support-both-vanilla-gpgme-and-KDE-Frameworks-gpgmep.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-Fix-build-with-Qt-5.15.0.patch
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  git
 BuildRequires:  libgpgmepp-devel >= 1.8.0
@@ -72,8 +74,7 @@ Trojita is a Qt IMAP e-mail client which:
   * Plays well with the rest of the ecosystem. We don't like reinventing wheels, but when the existing wheels quite don't fit the tracks, we're not afraid of making them work.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 export CXXFLAGS="%{optflags} -fPIC"

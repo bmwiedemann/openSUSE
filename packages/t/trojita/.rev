@@ -88,4 +88,13 @@
 - Spec cleanup.</comment>
     <requestid>789378</requestid>
   </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>f9ad183617067c5a5408f88240969da1</srcmd5>
+    <version>0.7</version>
+    <time>1591381168</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch:
+  * 0001-Fix-build-with-Qt-5.15.0.patch</comment>
+    <requestid>811543</requestid>
+  </revision>
 </revisionlist>

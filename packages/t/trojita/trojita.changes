@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  4 15:05:22 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch:
+  * 0001-Fix-build-with-Qt-5.15.0.patch
+
+-------------------------------------------------------------------
 Sat Mar 28 20:00:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to use gpgme instead of the obsolete gpgmepp:
