@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun  4 17:08:45 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Disable LLVM on SLE builds.
+
+-------------------------------------------------------------------
+Tue Oct 22 16:13:29 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- supplement the llvmjit subpackage with the llvmjit main package
+
+-------------------------------------------------------------------
+Tue Oct 22 15:34:17 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- adding postgresql12 to _multibuild
+
+-------------------------------------------------------------------
 Sat Aug 31 06:54:17 UTC 2019 - Andrey Karepin <egdfree@opensuse.org>
 
 - update to 1.2.0

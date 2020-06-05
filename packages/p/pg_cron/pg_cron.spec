@@ -1,7 +1,7 @@
 #
 # spec file for package pg_cron
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define         sname pg_cron
 %define         pg_libdir %(pg_config --pkglibdir)
 %define         pg_share %(pg_config --sharedir)
-%if "%{pgversion}" == "postgresql11" && 0%{?suse_version} >= 1500 
+%if 0%{?is_opensuse} && ("%{pgversion}" == "postgresql11" || "%{pgversion}" == "postgresql12") && 0%{?suse_version} >= 1500
 %bcond_without  llvm
 %else
 %bcond_with     llvm
@@ -50,10 +50,12 @@ the database.
 
 %if %{with llvm}
 %package llvmjit
-Summary:        Just-in-time compilation support for PostgreSQL pg_cron extension
+Summary:        Just-in-time compilation support for PostgreSQL %{sname} extension
 Group:          Productivity/Databases/Servers
+Requires:       %{pgversion}-%{sname} = %{version}-%{release}
+Requires:       %{pgversion}-llvmjit
 Requires:       %{pgversion}-server
-Requires:       postgresql-llvmjit-noarch
+Supplements:    packageand(%{pgversion}-llvmjit:%{name})
 
 %description llvmjit
 This package contains support for just-in-time compiling parts of

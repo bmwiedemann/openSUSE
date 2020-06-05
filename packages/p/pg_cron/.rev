@@ -31,4 +31,12 @@
   * Fixes a bug that caused the cron.job table to not appear in pg_dump</comment>
     <requestid>727405</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>15f32742c23f13d9addf95e50f8c167a</srcmd5>
+    <version>1.2.0</version>
+    <time>1591381212</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811587</requestid>
+  </revision>
 </revisionlist>
