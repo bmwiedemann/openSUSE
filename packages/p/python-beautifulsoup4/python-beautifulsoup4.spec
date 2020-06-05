@@ -18,13 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-beautifulsoup4
-Version:        4.9.0
+Version:        4.9.1
 Release:        0
 Summary:        HTML/XML Parser for Quick-Turnaround Applications Like Screen-Scraping
 License:        MIT
 URL:            https://www.crummy.com/software/BeautifulSoup/
 Source:         https://files.pythonhosted.org/packages/source/b/beautifulsoup4/beautifulsoup4-%{version}.tar.gz
-Patch0:         soupsieve2-tests.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module soupsieve >= 1.2}
@@ -75,7 +74,6 @@ Documentation and help files for %{name}
 
 %prep
 %setup -q -n beautifulsoup4-%{version}
-%patch0 -p1
 
 %build
 %python_build

@@ -332,4 +332,33 @@ Build and package documentation (forwarded request 176044 from TheBlackCat)</com
   * fixes to work with new soupsieve</comment>
     <requestid>793355</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>930b1af5f3903aa1411f95c290c64c15</srcmd5>
+    <version>4.9.1</version>
+    <time>1591380044</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.9.1:
+  * Added a keyword argument 'on_duplicate_attribute' to the
+    BeautifulSoupHTMLParser constructor (used by the html.parser tree
+    builder) which lets you customize the handling of markup that
+    contains the same attribute more than once, as in:
+    &lt;a href=&quot;url1&quot; href=&quot;url2&quot;&gt; [bug=1878209]
+  * Added a distinct subclass, GuessedAtParserWarning, for the warning
+    issued when BeautifulSoup is instantiated without a parser being
+    specified. [bug=1873787]
+  * Added a distinct subclass, MarkupResemblesLocatorWarning, for the
+    warning issued when BeautifulSoup is instantiated with 'markup' that
+    actually seems to be a URL or the path to a file on
+    disk. [bug=1873787]
+  * The new NavigableString subclasses (Stylesheet, Script, and
+    TemplateString) can now be imported directly from the bs4 package.
+  * If you encode a document with a Python-specific encoding like
+    'unicode_escape', that encoding is no longer mentioned in the final
+    XML or HTML document. Instead, encoding information is omitted or
+    left blank. [bug=1874955]
+  * Fixed test failures when run against soupselect 2.0. Patch by Tomáš
+    Chvátal. [bug=1872279]
+- remove soupsieve2-tests.patch: upstreamed</comment>
+    <requestid>811097</requestid>
+  </revision>
 </revisionlist>
