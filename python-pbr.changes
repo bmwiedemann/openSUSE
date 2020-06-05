@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  2 16:28:54 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 5.4.5:
+  * Switch to Ussuri jobs
+
+-------------------------------------------------------------------
 Thu Mar 19 10:07:37 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip temporarily test_requirement_parsing as it requires
