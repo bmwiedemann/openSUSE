@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun  2 17:19:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.25.9:
+  * Added ``InvalidProxyConfigurationWarning`` which is raised when
+    erroneously specifying an HTTPS proxy URL. urllib3 doesn't currently
+    support connecting to HTTPS proxies but will soon be able to
+    and we would like users to migrate properly without much breakage.
+  * Drain connection after ``PoolManager`` redirect (Pull #1817)
+  * Ensure ``load_verify_locations`` raises ``SSLError`` for all backends (Pull #1812)
+  * Rename ``VerifiedHTTPSConnection`` to ``HTTPSConnection`` (Pull #1805)
+  * Allow the CA certificate data to be passed as a string (Pull #1804)
+  * Raise ``ValueError`` if method contains control characters (Pull #1800)
+  * Add ``__repr__`` to ``Timeout`` (Pull #1795)
+
+-------------------------------------------------------------------
 Tue Apr 21 21:07:06 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Explicitly switch off building python 2 version.

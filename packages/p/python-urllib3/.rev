@@ -399,4 +399,22 @@
     <comment>- Explicitly switch off building python 2 version.</comment>
     <requestid>796203</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>1b78fdb9fa5b6f97140a89678d1028e2</srcmd5>
+    <version>1.25.9</version>
+    <time>1591380105</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.25.9:
+  * Added ``InvalidProxyConfigurationWarning`` which is raised when
+    erroneously specifying an HTTPS proxy URL. urllib3 doesn't currently
+    support connecting to HTTPS proxies but will soon be able to
+    and we would like users to migrate properly without much breakage.
+  * Drain connection after ``PoolManager`` redirect (Pull #1817)
+  * Ensure ``load_verify_locations`` raises ``SSLError`` for all backends (Pull #1812)
+  * Rename ``VerifiedHTTPSConnection`` to ``HTTPSConnection`` (Pull #1805)
+  * Allow the CA certificate data to be passed as a string (Pull #1804)
+  * Raise ``ValueError`` if method contains control characters (Pull #1800)
+  * Add ``__repr__`` to ``Timeout`` (Pull #1795)</comment>
+    <requestid>811626</requestid>
+  </revision>
 </revisionlist>

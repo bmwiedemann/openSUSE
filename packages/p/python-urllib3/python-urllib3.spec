@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-urllib3%{psuffix}
-Version:        1.25.8
+Version:        1.25.9
 Release:        0
 Summary:        HTTP library with thread-safe connection pooling, file post, and more
 License:        MIT
@@ -128,7 +128,7 @@ ln -s %{python3_sitelib}/__pycache__/six.cpython-%{python3_version_nodots}.pyc \
 
 %if %{with test}
 %check
-skiplist='not test_select_interrupt_exception and not test_selector_error and not timeout and not test_request_host_header_ignores_fqdn_dot and not test_dotted_fqdn and not TestImportWithoutSSL'
+skiplist='not test_select_interrupt_exception and not test_selector_error and not timeout and not test_request_host_header_ignores_fqdn_dot and not test_dotted_fqdn and not TestImportWithoutSSL and not test_ssl_failed_fingerprint_verification'
 case $(uname -m) in
 ppc*)
 skiplist="$skiplist and not test_select_timing and not test_select_multiple_interrupts_with_event and not test_interrupt_wait_for_read_with_event and not test_select_interrupt_with_event";;
