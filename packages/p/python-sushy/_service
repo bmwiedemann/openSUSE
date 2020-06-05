@@ -1,8 +1,8 @@
 <services>
   <service mode="disabled" name="renderspec">
-    <param name="input-template">https://raw.githubusercontent.com/openstack/rpm-packaging/master/openstack/sushy/sushy.spec.j2</param>
+    <param name="input-template">https://opendev.org/openstack/rpm-packaging/raw/branch/master/openstack/sushy/sushy.spec.j2</param>
     <param name="output-name">python-sushy.spec</param>
-    <param name="requirements">https://raw.githubusercontent.com/openstack/sushy/master/requirements.txt</param>
+    <param name="requirements">https://opendev.org/openstack/sushy/raw/branch/master/requirements.txt</param>
     <param name="changelog-email">cloud-devel@suse.de</param>
     <param name="changelog-provider">gh,openstack,sushy</param>
   </service>

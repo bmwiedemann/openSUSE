@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Tue May 12 12:36:20 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.2.0
+  - Add `set_system_boot_options` method
+  - Lazily load message registries
+  - Ignore failing message registry download
+  - Explicitly set ramdisk type
+  - Bump hacking to 3.0.0
+  - Fix incorrect usage of assertRaisesRegex in unit tests
+  - Add `Connector(..., response_callback=None)`` parameter
+  - Make MessageRegistryFile.Registry attribute non-required
+
+-------------------------------------------------------------------
+Thu Mar 12 16:49:06 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.1.0
+  - Add ``Endpoint`` sub-resource to ``Fabric``
+  - Fix exposed UpdateService constants
+  - Enforce running tox with correct python version based on env
+  - Fix wrong default JsonDataReader() argument
+  - Add conditional field matching
+  - Update model to support ApplyTime annotations
+  - Add @Redfish.Settings update status and expose it for BIOS
+  - Switch jobs to python3
+  - Added changes to `simple_update` on update service
+  - Retry Virtual Media eject action on HTTP 400 response
+  - Add settable `IndicatorLED` of `System` and `Chassis`
+  - Add Power and Thermal resources to Chassis
+  - update git.openstack.org to opendev
+  - OpenDev Migration Patch
+  - Add MappedListField
+  - Add OEM extension example script
+  - Automatically discover available system/manager/chassis
+  - Action #Bios.ResetBios fails as POST request has no body
+  - Handle incomplete messages in MessageRegistry
+  - Relax required Redfish fields handling
+  - Update master for stable/train
+  - Add versions to release notes series
+  - Disregard registry files of unsupported types
+  - Disable HTTP connection pooling
+  - Change OEM extensions architecture
+  - Expand Drive schema
+  - Add mappings for `system_type`
+  - Update Python 3 test runtimes for Train
+  - Add Task Monitor support for async operations
+  - Stop using six library
+  - Drop python 2.7 support and testing
+  - Make UpdateService.simple_update() operational
+  - Add settable `IndicatorLED` property to the `Drive` resource
+  - Enhance Storage models to support RAID config
+  - Update sphinx requirements
+  - Cleanup for Standard message registry loading
+  - Update master for stable/stein
+  - Add support for loading packaged standard registries
+  - Dropping the py35 testing
+  - Low case `ParamTypes` in received `MessageRegistry`
+  - Add public resource loading and message parsing
+  - Implements adapter checking
+  - Adding Thermal resource schema
+  - Add `FabricCollection` and `Fabric` classes
+  - Handle incomplete message registries
+  - Adding Power resource schema
+  - Fix 'None' field value processing
+  - Refactor DurableName identifier and Protocol fields
+  - Include OData-Version header in Redfish requests
+  - Use collections.abc instead of collections when available
+  - Cache message registries
+  - Build pdf doc
+  - Deprecate System-specific `IndicatorLED` state constants
+  - Make Manager->Actions field optional
+  - Fix typo in the section Enabling SSL
+  - Change sushy devstack job to python3
+  - SSC.disks_sizes_bytes handle CapacityBytes is None
+  - Make message registries available to all resources
+  - Unify OEM Actions with non-OEM Actions
+
+-------------------------------------------------------------------
 Tue May  7 07:00:31 UTC 2019 - cloud-devel@suse.de
 
 - update to version 1.8.1
