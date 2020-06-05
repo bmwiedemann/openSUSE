@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  2 11:21:30 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to runc v1.0.0-rc10, which is required for Docker 19.03.11-ce.
+  bsc#1172377
+- Remove upstreamed patches:
+  - CVE-2019-16884.patch
+  - CVE-2019-19921.patch
+- Synchronise patches with 'runc' package:
+  + bsc1149954-0001-sd-notify-do-not-hang-when-NOTIFY_SOCKET-is-used-wit.patch
+  * bsc1168481-0001-cgroup-devices-major-cleanups-and-minimal-transition.patch
+
+-------------------------------------------------------------------
 Wed May 13 06:49:44 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Backport https://github.com/opencontainers/runc/pull/2391 to help fix

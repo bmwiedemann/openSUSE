@@ -29,21 +29,17 @@
 %endif
 
 # MANUAL: Update the git_version, git_short, and git_revision
-%define git_version 3e425f80a8c931f88e6d94a8c831b9d5aa481657
-%define git_short   3e425f80a8c9
-# How to get the git_revision
-# git clone ${url}.git runc-upstream
-# cd runc-upstream
-# git checkout $git_version
-# git_revision=r$(git rev-list HEAD | wc -l)
-%define git_revision r3917
+%define git_version dc9208a3303feef5b3839f4323d9beb36df0a9dd
+%define git_short   dc9208a3303f
+# git_revision=r$(git rev-list $COMMIT_ID | wc -l)
+%define git_revision r3981
 
 %define go_tool go
 %define _name runc
 %define project github.com/opencontainers/%{_name}
 
 Name:           %{realname}%{name_suffix}
-Version:        1.0.0rc8+git%{git_revision}_%{git_short}
+Version:        1.0.0rc10+git%{git_revision}_%{git_short}
 Release:        0
 Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0
@@ -51,12 +47,10 @@ Group:          System/Management
 URL:            https://github.com/opencontainers/runc
 Source:         %{realname}-git.%{git_short}.tar.xz
 Source1:        %{realname}-rpmlintrc
-# FIX-UPSTREAM: Backport of https://github.com/opencontainers/runc/pull/2130.
-Patch1:         CVE-2019-16884.patch
-# FIX-UPSTREAM: Backport of https://github.com/opencontainers/runc/pull/2207.
-Patch2:         CVE-2019-19921.patch
+# FIX-UPSTREAM: Backport of https://github.com/opencontainers/runc/pull/1807. bsc#1149954
+Patch0:         bsc1149954-0001-sd-notify-do-not-hang-when-NOTIFY_SOCKET-is-used-wit.patch
 # FIX-UPSTREAM: Backport of https://github.com/opencontainers/runc/pull/2391. bsc#1168481
-Patch3:         bsc1168481-0001-cgroup-devices-major-cleanups-and-minimal-transition.patch
+Patch1:         bsc1168481-0001-cgroup-devices-major-cleanups-and-minimal-transition.patch
 BuildRequires:  fdupes
 BuildRequires:  go-go-md2man
 BuildRequires:  libapparmor-devel
@@ -93,12 +87,10 @@ and has grown to become a separate project entirely.
 
 %prep
 %setup -q -n %{realname}-git.%{git_short}
-# CVE-2019-16884 bsc#1152308
-%patch1 -p1
-# CVE-2019-19921
-%patch2 -p1
+# bsc#1149954
+%patch0 -p1
 # bsc#1168481
-%patch3 -p1
+%patch1 -p1
 
 %build
 # Do not use symlinks. If you want to run the unit tests for this package at

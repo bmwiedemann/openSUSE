@@ -205,4 +205,19 @@ necessary for the Docker 17.07.0_ce update.</comment>
   + bsc1168481-0001-cgroup-devices-major-cleanups-and-minimal-transition.patch</comment>
     <requestid>804889</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b0475b1f4392145c48ebd02ee3ae54e7</srcmd5>
+    <version>1.0.0rc10+gitr3981_dc9208a3303f</version>
+    <time>1591380363</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to runc v1.0.0-rc10, which is required for Docker 19.03.11-ce.
+  bsc#1172377
+- Remove upstreamed patches:
+  - CVE-2019-16884.patch
+  - CVE-2019-19921.patch
+- Synchronise patches with 'runc' package:
+  + bsc1149954-0001-sd-notify-do-not-hang-when-NOTIFY_SOCKET-is-used-wit.patch
+  * bsc1168481-0001-cgroup-devices-major-cleanups-and-minimal-transition.patch</comment>
+    <requestid>811119</requestid>
+  </revision>
 </revisionlist>

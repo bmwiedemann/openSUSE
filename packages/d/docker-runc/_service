@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="filename">docker-runc</param>
     <param name="versionformat">git.%h</param>
-    <param name="revision">3e425f80a8c931f88e6d94a8c831b9d5aa481657</param>
+    <param name="revision">dc9208a3303feef5b3839f4323d9beb36df0a9dd</param>
     <param name="exclude">.git</param>
   </service>
   <service name="recompress" mode="disabled">

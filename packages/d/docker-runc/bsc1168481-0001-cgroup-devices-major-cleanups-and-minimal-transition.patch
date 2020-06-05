@@ -1,4 +1,4 @@
-From e37ef513e9566731a25c68a687f60fd566d60feb Mon Sep 17 00:00:00 2001
+From 607e6ef7bf4f32652f5346e72b712b92ace98f58 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Sun, 10 May 2020 02:40:25 +1000
 Subject: [PATCH] cgroup: devices: major cleanups and minimal transition rules
@@ -30,23 +30,27 @@ Signed-off-by: Aleksa Sarai <asarai@suse.de>
  libcontainer/cgroups/cgroups.go               |    3 +
  .../cgroups/devices/devices_emulator.go       |  355 ++++++
  .../cgroups/devices/devices_emulator_test.go  | 1096 +++++++++++++++++
+ .../cgroups/ebpf/devicefilter/devicefilter.go |    4 +-
+ .../ebpf/devicefilter/devicefilter_test.go    |   70 +-
  libcontainer/cgroups/fs/apply_raw.go          |   39 +-
  libcontainer/cgroups/fs/devices.go            |   87 +-
  libcontainer/cgroups/fs/devices_test.go       |   91 +-
  libcontainer/cgroups/fs/freezer.go            |   34 +-
- libcontainer/cgroups/fs/freezer_v2.go         |   21 +
+ libcontainer/cgroups/fs2/devices.go           |   39 +-
+ libcontainer/cgroups/fs2/freezer.go           |   62 +-
+ libcontainer/cgroups/fs2/fs2.go               |    4 +
  libcontainer/cgroups/systemd/apply_systemd.go |  229 +++-
- .../cgroups/systemd/unified_hierarchy.go      |   18 +
+ .../cgroups/systemd/unified_hierarchy.go      |   14 +
  libcontainer/configs/cgroup_linux.go          |   11 +-
  libcontainer/configs/device.go                |  169 ++-
  libcontainer/configs/device_defaults.go       |  111 --
  libcontainer/container_linux.go               |   22 +-
- libcontainer/container_linux_test.go          |    4 +
+ libcontainer/container_linux_test.go          |    5 +
  libcontainer/devices/devices.go               |   36 +-
  libcontainer/integration/template_test.go     |   11 +-
  libcontainer/rootfs_linux.go                  |   19 +-
- libcontainer/specconv/spec_linux.go           |  557 +++++----
- 21 files changed, 2342 insertions(+), 595 deletions(-)
+ libcontainer/specconv/spec_linux.go           |  556 +++++----
+ 25 files changed, 2416 insertions(+), 675 deletions(-)
  create mode 100644 libcontainer/cgroups/devices/devices_emulator.go
  create mode 100644 libcontainer/cgroups/devices/devices_emulator_test.go
  delete mode 100644 libcontainer/configs/device_defaults.go
@@ -128,13 +132,13 @@ index a791ca2d2494..6803ef56c5ba 100644
  	Mounts: []*configs.Mount{
  		{
 diff --git a/libcontainer/cgroups/cgroups.go b/libcontainer/cgroups/cgroups.go
-index 25ff5158933a..f16f9bfc0d19 100644
+index c0a965923f9b..b4bc05c15f96 100644
 --- a/libcontainer/cgroups/cgroups.go
 +++ b/libcontainer/cgroups/cgroups.go
-@@ -39,6 +39,9 @@ type Manager interface {
+@@ -49,6 +49,9 @@ type Manager interface {
  
- 	// Sets the cgroup as configured.
- 	Set(container *configs.Config) error
+ 	// Gets the cgroup as configured.
+ 	GetCgroups() (*configs.Cgroup, error)
 +
 +	// GetFreezerState retrieves the current FreezerState of the cgroup.
 +	GetFreezerState() (configs.FreezerState, error)
@@ -1604,11 +1608,167 @@ index 000000000000..f813accef239
 +func TestDeviceEmulatorTransitionFromWhitelist(t *testing.T) {
 +	testDeviceEmulatorTransition(t, false)
 +}
+diff --git a/libcontainer/cgroups/ebpf/devicefilter/devicefilter.go b/libcontainer/cgroups/ebpf/devicefilter/devicefilter.go
+index 847ce8ef1a0d..af9275451cd8 100644
+--- a/libcontainer/cgroups/ebpf/devicefilter/devicefilter.go
++++ b/libcontainer/cgroups/ebpf/devicefilter/devicefilter.go
+@@ -22,7 +22,7 @@ const (
+ )
+ 
+ // DeviceFilter returns eBPF device filter program and its license string
+-func DeviceFilter(devices []*configs.Device) (asm.Instructions, string, error) {
++func DeviceFilter(devices []*configs.DeviceRule) (asm.Instructions, string, error) {
+ 	p := &program{}
+ 	p.init()
+ 	for i := len(devices) - 1; i >= 0; i-- {
+@@ -67,7 +67,7 @@ func (p *program) init() {
+ }
+ 
+ // appendDevice needs to be called from the last element of OCI linux.resources.devices to the head element.
+-func (p *program) appendDevice(dev *configs.Device) error {
++func (p *program) appendDevice(dev *configs.DeviceRule) error {
+ 	if p.blockID < 0 {
+ 		return errors.New("the program is finalized")
+ 	}
+diff --git a/libcontainer/cgroups/ebpf/devicefilter/devicefilter_test.go b/libcontainer/cgroups/ebpf/devicefilter/devicefilter_test.go
+index 59ff4b49bd35..885bf4db4ef5 100644
+--- a/libcontainer/cgroups/ebpf/devicefilter/devicefilter_test.go
++++ b/libcontainer/cgroups/ebpf/devicefilter/devicefilter_test.go
+@@ -20,7 +20,7 @@ func hash(s, comm string) string {
+ 	return strings.Join(res, "\n")
+ }
+ 
+-func testDeviceFilter(t testing.TB, devices []*configs.Device, expectedStr string) {
++func testDeviceFilter(t testing.TB, devices []*configs.DeviceRule, expectedStr string) {
+ 	insts, _, err := DeviceFilter(devices)
+ 	if err != nil {
+ 		t.Fatalf("%s: %v (devices: %+v)", t.Name(), err, devices)
+@@ -81,71 +81,69 @@ block-2:
+         18: Exit
+ block-3:
+         19: JNEImm dst: r2 off: -1 imm: 2 <block-4>
+-        20: JNEImm dst: r4 off: -1 imm: 5 <block-4>
+-        21: JNEImm dst: r5 off: -1 imm: 1 <block-4>
++        20: JNEImm dst: r4 off: -1 imm: 1 <block-4>
++        21: JNEImm dst: r5 off: -1 imm: 9 <block-4>
+         22: Mov32Imm dst: r0 imm: 1
+         23: Exit
+ block-4:
+         24: JNEImm dst: r2 off: -1 imm: 2 <block-5>
+         25: JNEImm dst: r4 off: -1 imm: 1 <block-5>
+-        26: JNEImm dst: r5 off: -1 imm: 9 <block-5>
++        26: JNEImm dst: r5 off: -1 imm: 5 <block-5>
+         27: Mov32Imm dst: r0 imm: 1
+         28: Exit
+ block-5:
+         29: JNEImm dst: r2 off: -1 imm: 2 <block-6>
+-        30: JNEImm dst: r4 off: -1 imm: 1 <block-6>
+-        31: JNEImm dst: r5 off: -1 imm: 5 <block-6>
++        30: JNEImm dst: r4 off: -1 imm: 5 <block-6>
++        31: JNEImm dst: r5 off: -1 imm: 0 <block-6>
+         32: Mov32Imm dst: r0 imm: 1
+         33: Exit
+ block-6:
+         34: JNEImm dst: r2 off: -1 imm: 2 <block-7>
+-        35: JNEImm dst: r4 off: -1 imm: 5 <block-7>
+-        36: JNEImm dst: r5 off: -1 imm: 0 <block-7>
++        35: JNEImm dst: r4 off: -1 imm: 1 <block-7>
++        36: JNEImm dst: r5 off: -1 imm: 7 <block-7>
+         37: Mov32Imm dst: r0 imm: 1
+         38: Exit
+ block-7:
+         39: JNEImm dst: r2 off: -1 imm: 2 <block-8>
+         40: JNEImm dst: r4 off: -1 imm: 1 <block-8>
+-        41: JNEImm dst: r5 off: -1 imm: 7 <block-8>
++        41: JNEImm dst: r5 off: -1 imm: 8 <block-8>
+         42: Mov32Imm dst: r0 imm: 1
+         43: Exit
+ block-8:
+         44: JNEImm dst: r2 off: -1 imm: 2 <block-9>
+         45: JNEImm dst: r4 off: -1 imm: 1 <block-9>
+-        46: JNEImm dst: r5 off: -1 imm: 8 <block-9>
++        46: JNEImm dst: r5 off: -1 imm: 3 <block-9>
+         47: Mov32Imm dst: r0 imm: 1
+         48: Exit
+ block-9:
+-        49: JNEImm dst: r2 off: -1 imm: 2 <block-10>
+-        50: JNEImm dst: r4 off: -1 imm: 1 <block-10>
+-        51: JNEImm dst: r5 off: -1 imm: 3 <block-10>
+-        52: Mov32Imm dst: r0 imm: 1
+-        53: Exit
+-block-10:
+ // (b, wildcard, wildcard, m, true)
+-        54: JNEImm dst: r2 off: -1 imm: 1 <block-11>
+-        55: Mov32Reg dst: r1 src: r3
+-        56: And32Imm dst: r1 imm: 1
+-        57: JEqImm dst: r1 off: -1 imm: 0 <block-11>
+-        58: Mov32Imm dst: r0 imm: 1
+-        59: Exit
+-block-11:
++        49: JNEImm dst: r2 off: -1 imm: 1 <block-10>
++        50: Mov32Reg dst: r1 src: r3
++        51: And32Imm dst: r1 imm: 1
++        52: JEqImm dst: r1 off: -1 imm: 0 <block-10>
++        53: Mov32Imm dst: r0 imm: 1
++        54: Exit
++block-10:
+ // (c, wildcard, wildcard, m, true)
+-        60: JNEImm dst: r2 off: -1 imm: 2 <block-12>
+-        61: Mov32Reg dst: r1 src: r3
+-        62: And32Imm dst: r1 imm: 1
+-        63: JEqImm dst: r1 off: -1 imm: 0 <block-12>
+-        64: Mov32Imm dst: r0 imm: 1
+-        65: Exit
+-block-12:
+-        66: Mov32Imm dst: r0 imm: 0
+-        67: Exit
++        55: JNEImm dst: r2 off: -1 imm: 2 <block-11>
++        56: Mov32Reg dst: r1 src: r3
++        57: And32Imm dst: r1 imm: 1
++        58: JEqImm dst: r1 off: -1 imm: 0 <block-11>
++        59: Mov32Imm dst: r0 imm: 1
++        60: Exit
++block-11:
++        61: Mov32Imm dst: r0 imm: 0
++        62: Exit
+ `
+-	testDeviceFilter(t, specconv.AllowedDevices, expected)
++	var devices []*configs.DeviceRule
++	for _, device := range specconv.AllowedDevices {
++		devices = append(devices, &device.DeviceRule)
++	}
++	testDeviceFilter(t, devices, expected)
+ }
+ 
+ func TestDeviceFilter_Privileged(t *testing.T) {
+-	devices := []*configs.Device{
++	devices := []*configs.DeviceRule{
+ 		{
+ 			Type:        'a',
+ 			Major:       -1,
+@@ -171,7 +169,7 @@ block-0:
+ }
+ 
+ func TestDeviceFilter_PrivilegedExceptSingleDevice(t *testing.T) {
+-	devices := []*configs.Device{
++	devices := []*configs.DeviceRule{
+ 		{
+ 			Type:        'a',
+ 			Major:       -1,
+@@ -210,7 +208,7 @@ block-1:
+ }
+ 
+ func TestDeviceFilter_Weird(t *testing.T) {
+-	devices := []*configs.Device{
++	devices := []*configs.DeviceRule{
+ 		{
+ 			Type:        'b',
+ 			Major:       8,
 diff --git a/libcontainer/cgroups/fs/apply_raw.go b/libcontainer/cgroups/fs/apply_raw.go
-index 512fd700104b..79887c6f0f3f 100644
+index ec148b489051..11a15660beb1 100644
 --- a/libcontainer/cgroups/fs/apply_raw.go
 +++ b/libcontainer/cgroups/fs/apply_raw.go
-@@ -174,9 +174,6 @@ func (m *Manager) Apply(pid int) (err error) {
+@@ -162,9 +162,6 @@ func (m *Manager) Apply(pid int) (err error) {
  	}
  
  	for _, sys := range m.getSubsystems() {
@@ -1618,7 +1778,7 @@ index 512fd700104b..79887c6f0f3f 100644
  		p, err := d.path(sys.Name())
  		if err != nil {
  			// The non-presence of the devices subsystem is
-@@ -189,10 +186,10 @@ func (m *Manager) Apply(pid int) (err error) {
+@@ -177,10 +174,10 @@ func (m *Manager) Apply(pid int) (err error) {
  		m.Paths[sys.Name()] = p
  
  		if err := sys.Apply(d); err != nil {
@@ -1633,7 +1793,7 @@ index 512fd700104b..79887c6f0f3f 100644
  			if isIgnorableError(m.Rootless, err) && m.Cgroups.Path == "" {
  				delete(m.Paths, sys.Name())
  				continue
-@@ -280,22 +277,26 @@ func (m *Manager) Set(container *configs.Config) error {
+@@ -272,22 +269,26 @@ func (m *Manager) Set(container *configs.Config) error {
  
  // Freeze toggles the container's freezer cgroup depending on the state
  // provided
@@ -1666,9 +1826,9 @@ index 512fd700104b..79887c6f0f3f 100644
  		return err
  	}
  	return nil
-@@ -430,3 +431,15 @@ func CheckCpushares(path string, c uint64) error {
- 
- 	return nil
+@@ -409,3 +410,15 @@ func CheckCpushares(path string, c uint64) error {
+ func (m *Manager) GetCgroups() (*configs.Cgroup, error) {
+ 	return m.Cgroups, nil
  }
 +
 +func (m *Manager) GetFreezerState() (configs.FreezerState, error) {
@@ -1683,10 +1843,10 @@ index 512fd700104b..79887c6f0f3f 100644
 +	return freezer.(*FreezerGroup).GetState(dir)
 +}
 diff --git a/libcontainer/cgroups/fs/devices.go b/libcontainer/cgroups/fs/devices.go
-index 0ac5b4ed7003..31f8b953d2f4 100644
+index 036c8db773e5..4fc3951de913 100644
 --- a/libcontainer/cgroups/fs/devices.go
 +++ b/libcontainer/cgroups/fs/devices.go
-@@ -3,12 +3,18 @@
+@@ -3,13 +3,19 @@
  package fs
  
  import (
@@ -1696,6 +1856,7 @@ index 0ac5b4ed7003..31f8b953d2f4 100644
 +
  	"github.com/opencontainers/runc/libcontainer/cgroups"
 +	"github.com/opencontainers/runc/libcontainer/cgroups/devices"
+ 	"github.com/opencontainers/runc/libcontainer/cgroups/fscommon"
  	"github.com/opencontainers/runc/libcontainer/configs"
  	"github.com/opencontainers/runc/libcontainer/system"
  )
@@ -1705,12 +1866,12 @@ index 0ac5b4ed7003..31f8b953d2f4 100644
  }
  
  func (s *DevicesGroup) Name() string {
-@@ -25,49 +31,74 @@ func (s *DevicesGroup) Apply(d *cgroupData) error {
+@@ -26,49 +32,74 @@ func (s *DevicesGroup) Apply(d *cgroupData) error {
  	return nil
  }
  
 +func loadEmulator(path string) (*devices.Emulator, error) {
-+	list, err := readFile(path, "devices.list")
++	list, err := fscommon.ReadFile(path, "devices.list")
 +	if err != nil {
 +		return nil, err
 +	}
@@ -1740,7 +1901,7 @@ index 0ac5b4ed7003..31f8b953d2f4 100644
 -			if dev.Allow {
 -				file = "devices.allow"
 -			}
--			if err := writeFile(path, file, dev.CgroupString()); err != nil {
+-			if err := fscommon.WriteFile(path, file, dev.CgroupString()); err != nil {
 -				return err
 -			}
 -		}
@@ -1757,12 +1918,12 @@ index 0ac5b4ed7003..31f8b953d2f4 100644
  	}
 -	if cgroup.Resources.AllowAllDevices != nil {
 -		if *cgroup.Resources.AllowAllDevices == false {
--			if err := writeFile(path, "devices.deny", "a"); err != nil {
+-			if err := fscommon.WriteFile(path, "devices.deny", "a"); err != nil {
 -				return err
 -			}
  
 -			for _, dev := range cgroup.Resources.AllowedDevices {
--				if err := writeFile(path, "devices.allow", dev.CgroupString()); err != nil {
+-				if err := fscommon.WriteFile(path, "devices.allow", dev.CgroupString()); err != nil {
 -					return err
 -				}
 -			}
@@ -1779,14 +1940,14 @@ index 0ac5b4ed7003..31f8b953d2f4 100644
 +			file = "devices.allow"
  		}
 -
--		if err := writeFile(path, "devices.allow", "a"); err != nil {
-+		if err := writeFile(path, file, rule.CgroupString()); err != nil {
+-		if err := fscommon.WriteFile(path, "devices.allow", "a"); err != nil {
++		if err := fscommon.WriteFile(path, file, rule.CgroupString()); err != nil {
  			return err
  		}
  	}
  
 -	for _, dev := range cgroup.Resources.DeniedDevices {
--		if err := writeFile(path, "devices.deny", dev.CgroupString()); err != nil {
+-		if err := fscommon.WriteFile(path, "devices.deny", dev.CgroupString()); err != nil {
 +	// Final safety check -- ensure that the resulting state is what was
 +	// requested. This is only really correct for white-lists, but for
 +	// black-lists we can at least check that the cgroup is in the right mode.
@@ -1809,10 +1970,10 @@ index 0ac5b4ed7003..31f8b953d2f4 100644
  }
  
 diff --git a/libcontainer/cgroups/fs/devices_test.go b/libcontainer/cgroups/fs/devices_test.go
-index fc635b990f56..fdfc37a7e170 100644
+index 648f4a2ff47b..da7ccb01ecc1 100644
 --- a/libcontainer/cgroups/fs/devices_test.go
 +++ b/libcontainer/cgroups/fs/devices_test.go
-@@ -8,91 +8,44 @@ import (
+@@ -9,91 +9,44 @@ import (
  	"github.com/opencontainers/runc/libcontainer/configs"
  )
  
@@ -1859,7 +2020,7 @@ index fc635b990f56..fdfc37a7e170 100644
 -		t.Fatal(err)
 -	}
 -
--	value, err := getCgroupParamString(helper.CgroupPath, "devices.allow")
+-	value, err := fscommon.GetCgroupParamString(helper.CgroupPath, "devices.allow")
 -	if err != nil {
 -		t.Fatalf("Failed to parse devices.allow - %s", err)
 -	}
@@ -1873,7 +2034,7 @@ index fc635b990f56..fdfc37a7e170 100644
 -	if err := devices.Set(helper.CgroupPath, helper.CgroupData.config); err != nil {
 -		t.Fatal(err)
 -	}
--	value, err = getCgroupParamString(helper.CgroupPath, "devices.allow")
+-	value, err = fscommon.GetCgroupParamString(helper.CgroupPath, "devices.allow")
 -	if err != nil {
 -		t.Fatalf("Failed to parse devices.allow - %s", err)
 -	}
@@ -1908,7 +2069,7 @@ index fc635b990f56..fdfc37a7e170 100644
  	}
  
 +	// The default deny rule must be written.
- 	value, err := getCgroupParamString(helper.CgroupPath, "devices.deny")
+ 	value, err := fscommon.GetCgroupParamString(helper.CgroupPath, "devices.deny")
  	if err != nil {
 -		t.Fatalf("Failed to parse devices.deny - %s", err)
 +		t.Fatalf("Failed to parse devices.deny: %s", err)
@@ -1920,17 +2081,17 @@ index fc635b990f56..fdfc37a7e170 100644
 -	if value != deniedList {
 -		t.Fatal("Got the wrong value, set devices.deny failed.")
 +	// Permitted rule must be written.
-+	if value, err := getCgroupParamString(helper.CgroupPath, "devices.allow"); err != nil {
++	if value, err := fscommon.GetCgroupParamString(helper.CgroupPath, "devices.allow"); err != nil {
 +		t.Fatalf("Failed to parse devices.allow: %s", err)
 +	} else if value != "c 1:5 rwm" {
 +		t.Errorf("Got the wrong value (%q), set devices.allow failed.", value)
  	}
  }
 diff --git a/libcontainer/cgroups/fs/freezer.go b/libcontainer/cgroups/fs/freezer.go
-index 4b19f8a970d7..2f9d91bb5097 100644
+index 9dc81bdb84c3..a6c622958c8c 100644
 --- a/libcontainer/cgroups/fs/freezer.go
 +++ b/libcontainer/cgroups/fs/freezer.go
-@@ -4,11 +4,14 @@ package fs
+@@ -4,12 +4,15 @@ package fs
  
  import (
  	"fmt"
@@ -1939,17 +2100,18 @@ index 4b19f8a970d7..2f9d91bb5097 100644
  	"time"
  
  	"github.com/opencontainers/runc/libcontainer/cgroups"
+ 	"github.com/opencontainers/runc/libcontainer/cgroups/fscommon"
  	"github.com/opencontainers/runc/libcontainer/configs"
 +	"github.com/pkg/errors"
 +	"golang.org/x/sys/unix"
  )
  
  type FreezerGroup struct {
-@@ -38,11 +41,11 @@ func (s *FreezerGroup) Set(path string, cgroup *configs.Cgroup) error {
+@@ -39,11 +42,11 @@ func (s *FreezerGroup) Set(path string, cgroup *configs.Cgroup) error {
  				return err
  			}
  
--			state, err := readFile(path, "freezer.state")
+-			state, err := fscommon.ReadFile(path, "freezer.state")
 +			state, err := s.GetState(path)
  			if err != nil {
  				return err
@@ -1959,14 +2121,14 @@ index 4b19f8a970d7..2f9d91bb5097 100644
  				break
  			}
  
-@@ -64,3 +67,30 @@ func (s *FreezerGroup) Remove(d *cgroupData) error {
+@@ -65,3 +68,30 @@ func (s *FreezerGroup) Remove(d *cgroupData) error {
  func (s *FreezerGroup) GetStats(path string, stats *cgroups.Stats) error {
  	return nil
  }
 +
 +func (s *FreezerGroup) GetState(path string) (configs.FreezerState, error) {
 +	for {
-+		state, err := readFile(path, "freezer.state")
++		state, err := fscommon.ReadFile(path, "freezer.state")
 +		if err != nil {
 +			// If the kernel is too old, then we just treat the freezer as
 +			// being in an "undefined" state.
@@ -1990,44 +2152,182 @@ index 4b19f8a970d7..2f9d91bb5097 100644
 +		}
 +	}
 +}
-diff --git a/libcontainer/cgroups/fs/freezer_v2.go b/libcontainer/cgroups/fs/freezer_v2.go
-index 186de9ab41fd..ad0a962b91c4 100644
---- a/libcontainer/cgroups/fs/freezer_v2.go
-+++ b/libcontainer/cgroups/fs/freezer_v2.go
-@@ -4,6 +4,7 @@ package fs
+diff --git a/libcontainer/cgroups/fs2/devices.go b/libcontainer/cgroups/fs2/devices.go
+index e0fd685402a2..ee180bdaf50b 100644
+--- a/libcontainer/cgroups/fs2/devices.go
++++ b/libcontainer/cgroups/fs2/devices.go
+@@ -10,12 +10,10 @@ import (
+ 	"golang.org/x/sys/unix"
+ )
+ 
+-func isRWM(cgroupPermissions string) bool {
+-	r := false
+-	w := false
+-	m := false
+-	for _, rn := range cgroupPermissions {
+-		switch rn {
++func isRWM(perms configs.DevicePermissions) bool {
++	var r, w, m bool
++	for _, perm := range perms {
++		switch perm {
+ 		case 'r':
+ 			r = true
+ 		case 'w':
+@@ -39,22 +37,10 @@ func canSkipEBPFError(cgroup *configs.Cgroup) bool {
+ }
+ 
+ func setDevices(dirPath string, cgroup *configs.Cgroup) error {
++	// XXX: This is currently a white-list (but all callers pass a blacklist of
++	//      devices). This is bad for a whole variety of reasons, but will need
++	//      to be fixed with co-ordinated effort with downstreams.
+ 	devices := cgroup.Devices
+-	if allowAllDevices := cgroup.Resources.AllowAllDevices; allowAllDevices != nil {
+-		// never set by OCI specconv, but *allowAllDevices=false is still used by the integration test
+-		if *allowAllDevices == true {
+-			return errors.New("libcontainer AllowAllDevices is not supported, use Devices")
+-		}
+-		for _, ad := range cgroup.Resources.AllowedDevices {
+-			d := *ad
+-			d.Allow = true
+-			devices = append(devices, &d)
+-		}
+-	}
+-	if len(cgroup.Resources.DeniedDevices) != 0 {
+-		// never set by OCI specconv
+-		return errors.New("libcontainer DeniedDevices is not supported, use Devices")
+-	}
+ 	insts, license, err := devicefilter.DeviceFilter(devices)
+ 	if err != nil {
+ 		return err
+@@ -64,6 +50,17 @@ func setDevices(dirPath string, cgroup *configs.Cgroup) error {
+ 		return errors.Errorf("cannot get dir FD for %s", dirPath)
+ 	}
+ 	defer unix.Close(dirFD)
++	// XXX: This code is currently incorrect when it comes to updating an
++	//      existing cgroup with new rules (new rulesets are just appended to
++	//      the program list because this uses BPF_F_ALLOW_MULTI). If we didn't
++	//      use BPF_F_ALLOW_MULTI we could actually atomically swap the
++	//      programs.
++	//
++	//      The real issue is that BPF_F_ALLOW_MULTI makes it hard to have a
++	//      race-free blacklist because it acts as a whitelist by default, and
++	//      having a deny-everything program cannot be overriden by other
++	//      programs. You could temporarily insert a deny-everything program
++	//      but that would result in spurrious failures during updates.
+ 	if _, err := ebpf.LoadAttachCgroupDeviceFilter(insts, license, dirFD); err != nil {
+ 		if !canSkipEBPFError(cgroup) {
+ 			return err
+diff --git a/libcontainer/cgroups/fs2/freezer.go b/libcontainer/cgroups/fs2/freezer.go
+index 130c63f3e2bf..3dd4a527bf0f 100644
+--- a/libcontainer/cgroups/fs2/freezer.go
++++ b/libcontainer/cgroups/fs2/freezer.go
+@@ -3,32 +3,48 @@
+ package fs2
  
  import (
- 	"fmt"
+-	"strconv"
 +	"os"
  	"strings"
- 	"time"
  
-@@ -72,3 +73,23 @@ func (s *FreezerGroupV2) Remove(d *cgroupData) error {
- func (s *FreezerGroupV2) GetStats(path string, stats *cgroups.Stats) error {
- 	return nil
- }
+ 	"github.com/opencontainers/runc/libcontainer/cgroups/fscommon"
+ 	"github.com/opencontainers/runc/libcontainer/configs"
+ 	"github.com/pkg/errors"
++	"golang.org/x/sys/unix"
+ )
+ 
+ func setFreezer(dirPath string, state configs.FreezerState) error {
+-	var desired int
++	if err := supportsFreezer(dirPath); err != nil {
++		// We can ignore this request as long as the user didn't ask us to
++		// freeze the container (since without the freezer cgroup, that's a
++		// no-op).
++		if state == configs.Undefined || state == configs.Thawed {
++			err = nil
++		}
++		return errors.Wrap(err, "freezer not supported")
++	}
 +
-+func (s *FreezerGroupV2) GetState(path string) (configs.FreezerState, error) {
-+	state, err := readFile(path, "cgroup.freeze")
-+	if err != nil {
++	var stateStr string
+ 	switch state {
+ 	case configs.Undefined:
+ 		return nil
+ 	case configs.Frozen:
+-		desired = 1
++		stateStr = "1"
+ 	case configs.Thawed:
+-		desired = 0
++		stateStr = "0"
+ 	default:
+-		return errors.Errorf("unknown freezer state %+v", state)
++		return errors.Errorf("invalid freezer state %q requested", state)
++	}
++
++	if err := fscommon.WriteFile(dirPath, "cgroup.freeze", stateStr); err != nil {
++		return err
+ 	}
+-	supportedErr := supportsFreezer(dirPath)
+-	if supportedErr != nil && desired != 0 {
+-		// can ignore error if desired == 1
+-		return errors.Wrap(supportedErr, "freezer not supported")
++	// Confirm that the cgroup did actually change states.
++	if actualState, err := getFreezer(dirPath); err != nil {
++		return err
++	} else if actualState != state {
++		return errors.Errorf(`expected "cgroup.freeze" to be in state %q but was in %q`, state, actualState)
+ 	}
+-	return freezeWithInt(dirPath, desired)
++	return nil
+ }
+ 
+ func supportsFreezer(dirPath string) error {
+@@ -36,18 +52,22 @@ func supportsFreezer(dirPath string) error {
+ 	return err
+ }
+ 
+-// freeze writes desired int to "cgroup.freeze".
+-func freezeWithInt(dirPath string, desired int) error {
+-	desiredS := strconv.Itoa(desired)
+-	if err := fscommon.WriteFile(dirPath, "cgroup.freeze", desiredS); err != nil {
+-		return err
+-	}
+-	got, err := fscommon.ReadFile(dirPath, "cgroup.freeze")
++func getFreezer(dirPath string) (configs.FreezerState, error) {
++	state, err := fscommon.ReadFile(dirPath, "cgroup.freeze")
+ 	if err != nil {
+-		return err
 +		// If the kernel is too old, then we just treat the freezer as being in
 +		// an "undefined" state.
-+		if os.IsNotExist(err) {
++		if os.IsNotExist(err) || errors.Cause(err) == unix.ENODEV {
 +			err = nil
 +		}
 +		return configs.Undefined, err
-+	}
+ 	}
+-	if gotS := strings.TrimSpace(string(got)); gotS != desiredS {
+-		return errors.Errorf("expected \"cgroup.freeze\" in %q to be %q, got %q", dirPath, desiredS, gotS)
 +	switch strings.TrimSpace(state) {
 +	case "0":
 +		return configs.Thawed, nil
 +	case "1":
 +		return configs.Frozen, nil
 +	default:
-+		return configs.Undefined, fmt.Errorf(`unknown "cgroup.freeze" state: %q`, state)
-+	}
++		return configs.Undefined, errors.Errorf(`unknown "cgroup.freeze" state: %q`, state)
+ 	}
+-	return nil
+ }
+diff --git a/libcontainer/cgroups/fs2/fs2.go b/libcontainer/cgroups/fs2/fs2.go
+index 4bb7091a1832..82d1d08430c7 100644
+--- a/libcontainer/cgroups/fs2/fs2.go
++++ b/libcontainer/cgroups/fs2/fs2.go
+@@ -212,3 +212,7 @@ func (m *manager) Set(container *configs.Config) error {
+ func (m *manager) GetCgroups() (*configs.Cgroup, error) {
+ 	return m.config, nil
+ }
++
++func (m *manager) GetFreezerState() (configs.FreezerState, error) {
++	return getFreezer(m.dirPath)
 +}
 diff --git a/libcontainer/cgroups/systemd/apply_systemd.go b/libcontainer/cgroups/systemd/apply_systemd.go
-index f274a49a3c1a..b28a19bb033f 100644
+index c4b19b3e6d4f..e2f94d1b1254 100644
 --- a/libcontainer/cgroups/systemd/apply_systemd.go
 +++ b/libcontainer/cgroups/systemd/apply_systemd.go
 @@ -3,7 +3,8 @@
@@ -2283,7 +2583,7 @@ index f274a49a3c1a..b28a19bb033f 100644
  	if c.Resources.Memory != 0 {
  		properties = append(properties,
  			newProp("MemoryLimit", uint64(c.Resources.Memory)))
-@@ -472,7 +684,6 @@ func (m *LegacyManager) Set(container *configs.Config) error {
+@@ -476,7 +688,6 @@ func (m *LegacyManager) Set(container *configs.Config) error {
  		if err != nil && !cgroups.IsNotFound(err) {
  			return err
  		}
@@ -2291,9 +2591,9 @@ index f274a49a3c1a..b28a19bb033f 100644
  		if err := sys.Set(path, container.Cgroups); err != nil {
  			return err
  		}
-@@ -524,3 +735,15 @@ func isUnitExists(err error) bool {
- 	}
- 	return false
+@@ -532,3 +743,15 @@ func isUnitExists(err error) bool {
+ func (m *LegacyManager) GetCgroups() (*configs.Cgroup, error) {
+ 	return m.Cgroups, nil
  }
 +
 +func (m *LegacyManager) GetFreezerState() (configs.FreezerState, error) {
@@ -2308,10 +2608,10 @@ index f274a49a3c1a..b28a19bb033f 100644
 +	return freezer.(*fs.FreezerGroup).GetState(path)
 +}
 diff --git a/libcontainer/cgroups/systemd/unified_hierarchy.go b/libcontainer/cgroups/systemd/unified_hierarchy.go
-index d394e3a5a8f7..5221db485225 100644
+index 6605099190ca..2bfcccd130ac 100644
 --- a/libcontainer/cgroups/systemd/unified_hierarchy.go
 +++ b/libcontainer/cgroups/systemd/unified_hierarchy.go
-@@ -95,6 +95,12 @@ func (m *UnifiedManager) Apply(pid int) error {
+@@ -87,6 +87,12 @@ func (m *UnifiedManager) Apply(pid int) error {
  	properties = append(properties,
  		newProp("DefaultDependencies", false))
  
@@ -2324,21 +2624,17 @@ index d394e3a5a8f7..5221db485225 100644
  	if c.Resources.Memory != 0 {
  		properties = append(properties,
  			newProp("MemoryLimit", uint64(c.Resources.Memory)))
-@@ -327,3 +333,15 @@ func (m *UnifiedManager) Set(container *configs.Config) error {
- 	}
- 	return nil
+@@ -310,3 +316,11 @@ func (m *UnifiedManager) Set(container *configs.Config) error {
+ func (m *UnifiedManager) GetCgroups() (*configs.Cgroup, error) {
+ 	return m.Cgroups, nil
  }
 +
 +func (m *UnifiedManager) GetFreezerState() (configs.FreezerState, error) {
-+	path, err := getSubsystemPath(m.Cgroups, "freezer")
++	fsMgr, err := m.fsManager()
 +	if err != nil {
 +		return configs.Undefined, err
 +	}
-+	freezer, err := unifiedSubsystems.Get("freezer")
-+	if err != nil {
-+		return configs.Undefined, err
-+	}
-+	return freezer.(*fs.FreezerGroupV2).GetState(path)
++	return fsMgr.GetFreezerState()
 +}
 diff --git a/libcontainer/configs/cgroup_linux.go b/libcontainer/configs/cgroup_linux.go
 index 58ed19c9e78e..e83bb72dc334 100644
@@ -2686,10 +2982,10 @@ index e4f423c523ff..000000000000
 -	DefaultAutoCreatedDevices = append([]*Device{}, DefaultSimpleDevices...)
 -)
 diff --git a/libcontainer/container_linux.go b/libcontainer/container_linux.go
-index 6ff4d96a5f55..c247b7876c0e 100644
+index fe70c937aad9..e59f29588164 100644
 --- a/libcontainer/container_linux.go
 +++ b/libcontainer/container_linux.go
-@@ -1809,27 +1809,11 @@ func (c *linuxContainer) runType() (Status, error) {
+@@ -1812,27 +1812,11 @@ func (c *linuxContainer) runType() (Status, error) {
  }
  
  func (c *linuxContainer) isPaused() (bool, error) {
@@ -2709,7 +3005,7 @@ index 6ff4d96a5f55..c247b7876c0e 100644
 +	state, err := c.cgroupManager.GetFreezerState()
  	if err != nil {
 -		// If freezer cgroup is not mounted, the container would just be not paused.
--		if os.IsNotExist(err) {
+-		if os.IsNotExist(err) || err == syscall.ENODEV {
 -			return false, nil
 -		}
 -		return false, newSystemErrorWithCause(err, "checking if container is paused")
@@ -2721,11 +3017,16 @@ index 6ff4d96a5f55..c247b7876c0e 100644
  
  func (c *linuxContainer) currentState() (*State, error) {
 diff --git a/libcontainer/container_linux_test.go b/libcontainer/container_linux_test.go
-index 0bf8803d3412..c97ed8e4d3ca 100644
+index f8af05d75fb0..2d972212ce02 100644
 --- a/libcontainer/container_linux_test.go
 +++ b/libcontainer/container_linux_test.go
-@@ -58,6 +58,10 @@ func (m *mockCgroupManager) Freeze(state configs.FreezerState) error {
+@@ -61,10 +61,15 @@ func (m *mockCgroupManager) GetUnifiedPath() (string, error) {
+ func (m *mockCgroupManager) Freeze(state configs.FreezerState) error {
  	return nil
+ }
++
+ func (m *mockCgroupManager) GetCgroups() (*configs.Cgroup, error) {
+ 	return nil, nil
  }
  
 +func (m *mockCgroupManager) GetFreezerState() (configs.FreezerState, error) {
@@ -2835,10 +3136,10 @@ index 5f7cab53b67c..30503a98bb99 100644
  		Mounts: []*configs.Mount{
  			{
 diff --git a/libcontainer/rootfs_linux.go b/libcontainer/rootfs_linux.go
-index 10888b499beb..465fdd21cae4 100644
+index 106c4c2b98bf..4285eb8acaaa 100644
 --- a/libcontainer/rootfs_linux.go
 +++ b/libcontainer/rootfs_linux.go
-@@ -606,11 +606,14 @@ func bindMountDeviceNode(dest string, node *configs.Device) error {
+@@ -624,11 +624,14 @@ func bindMountDeviceNode(dest string, node *configs.Device) error {
  
  // Creates the device node in the rootfs of the container.
  func createDeviceNode(rootfs string, node *configs.Device, bind bool) error {
@@ -2854,7 +3155,7 @@ index 10888b499beb..465fdd21cae4 100644
  	if bind {
  		return bindMountDeviceNode(dest, node)
  	}
-@@ -628,16 +631,20 @@ func createDeviceNode(rootfs string, node *configs.Device, bind bool) error {
+@@ -646,16 +649,20 @@ func createDeviceNode(rootfs string, node *configs.Device, bind bool) error {
  func mknodDevice(dest string, node *configs.Device) error {
  	fileMode := node.FileMode
  	switch node.Type {
@@ -2881,14 +3182,14 @@ index 10888b499beb..465fdd21cae4 100644
  	}
  	return unix.Chown(dest, int(node.Uid), int(node.Gid))
 diff --git a/libcontainer/specconv/spec_linux.go b/libcontainer/specconv/spec_linux.go
-index d98444ad6c72..7338debcb186 100644
+index d9e73c46be10..69bbc7c0b889 100644
 --- a/libcontainer/specconv/spec_linux.go
 +++ b/libcontainer/specconv/spec_linux.go
-@@ -43,103 +43,147 @@ var mountPropagationMapping = map[string]int{
+@@ -43,104 +43,147 @@ var mountPropagationMapping = map[string]int{
  	"":            0,
  }
  
--var allowedDevices = []*configs.Device{
+-// AllowedDevices is exposed for devicefilter_test.go
 +// AllowedDevices is the set of devices which are automatically included for
 +// all containers.
 +//
@@ -2904,7 +3205,7 @@ index d98444ad6c72..7338debcb186 100644
 +//
 +//    ... unfortunately I'm too scared to change this now because who knows how
 +//    many people depend on this (incorrect and arguably insecure) behaviour.
-+var AllowedDevices = []*configs.Device{
+ var AllowedDevices = []*configs.Device{
  	// allow mknod for any device
  	{
 -		Type:        'c',
@@ -3105,11 +3406,11 @@ index d98444ad6c72..7338debcb186 100644
  	},
  }
  
-@@ -341,251 +385,198 @@ func createCgroupConfig(opts *CreateOpts) (*configs.Cgroup, error) {
+@@ -342,251 +385,198 @@ func CreateCgroupConfig(opts *CreateOpts) (*configs.Cgroup, error) {
  
  	// In rootless containers, any attempt to make cgroup changes is likely to fail.
  	// libcontainer will validate this but ignores the error.
--	c.Resources.AllowedDevices = allowedDevices
+-	c.Resources.AllowedDevices = AllowedDevices
  	if spec.Linux != nil {
  		r := spec.Linux.Resources
 -		if r == nil {
@@ -3396,7 +3697,7 @@ index d98444ad6c72..7338debcb186 100644
  		}
  	}
 -	// append the default allowed devices to the end of the list
--	c.Resources.Devices = append(c.Resources.Devices, allowedDevices...)
+-	c.Resources.Devices = append(c.Resources.Devices, AllowedDevices...)
 +	// Append the default allowed devices to the end of the list.
 +	// XXX: Really this should be prefixed...
 +	for _, device := range AllowedDevices {
@@ -3510,7 +3811,7 @@ index d98444ad6c72..7338debcb186 100644
  	if spec.Linux != nil {
  		for _, d := range spec.Linux.Devices {
  			var uid, gid uint32
-@@ -605,10 +596,12 @@ func createDevices(spec *specs.Spec, config *configs.Config) error {
+@@ -606,10 +596,12 @@ func createDevices(spec *specs.Spec, config *configs.Config) error {
  				filemode = *d.FileMode
  			}
  			device := &configs.Device{
