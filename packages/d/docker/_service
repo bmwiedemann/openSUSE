@@ -3,8 +3,8 @@
     <param name="url">https://github.com/docker/docker-ce.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">19.03.5_ce_%h</param>
-    <param name="revision">v19.03.5</param>
+    <param name="versionformat">19.03.11_ce_%h</param>
+    <param name="revision">v19.03.11</param>
     <param name="filename">docker</param>
   </service>
   <service name="recompress" mode="disabled">

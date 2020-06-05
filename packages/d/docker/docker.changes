@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  2 08:37:06 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 19.03.11-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1172377 CVE-2020-13401
+- Backport https://github.com/gotestyourself/gotest.tools/pull/169 so that we
+  can build Docker with Go 1.14 (upstream uses Go 1.13).
+  + bsc1172377-0001-unexport-testcase.Cleanup-to-fix-Go-1.14.patch
+
+-------------------------------------------------------------------
 Thu Dec 19 15:42:26 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libsystemd) instead of systemd-devel:

@@ -973,4 +973,16 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
     <comment></comment>
     <requestid>758650</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>4539c2e8cc63779f35518cb41650173a</srcmd5>
+    <version>19.03.11_ce</version>
+    <time>1591380342</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Docker 19.03.11-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1172377 CVE-2020-13401
+- Backport https://github.com/gotestyourself/gotest.tools/pull/169 so that we
+  can build Docker with Go 1.14 (upstream uses Go 1.13).
+  + bsc1172377-0001-unexport-testcase.Cleanup-to-fix-Go-1.14.patch</comment>
+    <requestid>811118</requestid>
+  </revision>
 </revisionlist>

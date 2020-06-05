@@ -1,7 +1,7 @@
 #
 # spec file for package docker
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,17 +42,17 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_version 633a0ea838f1
-%define git_commit_epoch 1573629549
+%define git_version 42e35e61f352
+%define git_commit_epoch 1591001995
 
 # These are the git commits required. We verify them against the source to make
 # sure we didn't miss anything important when doing upgrades.
-%define required_containerd b34a5c8af56e510852c35414db4c1f4fa6172339
-%define required_dockerrunc 3e425f80a8c931f88e6d94a8c831b9d5aa481657
-%define required_libnetwork 3eb39382bfa6a3c42f83674ab080ae13b0e34e5d
+%define required_containerd 7ad184331fa3e55e52b890ea95e65ba581ae3429
+%define required_dockerrunc dc9208a3303feef5b3839f4323d9beb36df0a9dd
+%define required_libnetwork 153d0769a1181bf591a9637fd487a541ec7db1e6
 
 Name:           %{realname}%{name_suffix}
-Version:        19.03.5_ce
+Version:        19.03.11_ce
 Release:        0
 Summary:        The Moby-project Linux container runtime
 License:        Apache-2.0
@@ -83,6 +83,8 @@ Patch300:       packaging-0001-revert-Remove-docker-prefix-for-containerd-and-ru
 Patch401:       bsc1073877-0001-apparmor-clobber-docker-default-profile-on-start.patch
 # SUSE-BACKPORT: Backport of https://github.com/docker/docker/pull/39121. bsc#1122469
 Patch402:       bsc1122469-0001-apparmor-allow-readby-and-tracedby.patch
+# FIX-UPSTREAM: Backport of https://github.com/gotestyourself/gotest.tools/pull/169. bsc#1172377
+Patch410:       bsc1172377-0001-unexport-testcase.Cleanup-to-fix-Go-1.14.patch
 # SUSE-FEATURE: Add support to mirror inofficial/private registries
 #               (https://github.com/docker/docker/pull/34319)
 Patch500:       private-registry-0001-Add-private-registry-mirror-support.patch
@@ -97,8 +99,8 @@ BuildRequires:  libseccomp-devel >= 2.2
 BuildRequires:  libtool
 BuildRequires:  procps
 BuildRequires:  sqlite3-devel
-BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  zsh
+BuildRequires:  pkgconfig(libsystemd)
 Requires:       apparmor-parser
 Requires:       ca-certificates-mozilla
 # Required in order for networking to work. fix_bsc_1057743 is a work-around
@@ -136,7 +138,7 @@ Recommends:     git-core >= 1.7
 Conflicts:      lxc < 1.0
 ExcludeArch:    s390 ppc
 BuildRequires:  go-go-md2man
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  golang(API) >= 1.13
 # KUBIC-SPECIFIC: This was required when upgrading from the original kubic
 #                 packaging, when everything was renamed to -kubic. It also is
 #                 used to ensure that nothing complains too much when using
@@ -263,6 +265,8 @@ docker container runtime configuration for kubeadm
 %patch401 -p1
 # bsc#1122469
 %patch402 -p1
+# bsc#1172377
+%patch410 -p1
 %if "%flavour" == "kubic"
 # PATCH-SUSE: Mirror patch.
 %patch500 -p1
@@ -349,9 +353,9 @@ popd
 # of the upstream vendoring scripts. This is done on-build to make sure that
 # someone doing an update didn't miss anything.
 cd components/engine
-grep 'RUNC_COMMIT=%{required_dockerrunc}'       hack/dockerfile/install/runc.installer
-grep 'CONTAINERD_COMMIT=%{required_containerd}' hack/dockerfile/install/containerd.installer
-grep 'LIBNETWORK_COMMIT=%{required_libnetwork}' hack/dockerfile/install/proxy.installer
+grep 'RUNC_COMMIT:=%{required_dockerrunc}'       hack/dockerfile/install/runc.installer
+grep 'CONTAINERD_COMMIT:=%{required_containerd}' hack/dockerfile/install/containerd.installer
+grep 'LIBNETWORK_COMMIT:=%{required_libnetwork}' hack/dockerfile/install/proxy.installer
 
 %install
 install -d %{buildroot}%{_bindir}
