@@ -33,6 +33,8 @@ Patch1:         htop-script-python3.patch
 Patch2:         htop-2.2.0-fix-option-string.patch
 # PATCH-FIX-UPSTREAM Make sure the auto-regenerated headers (after scripts/MakeHeader.py) actually compile
 Patch3:         htop-2.2.0-fix-linux-process-ordering.patch
+# PATCH-FIX-OPENSUSE htop-2.2.0-gcc10.patch https://github.com/hishamhm/htop/pull/981
+Patch4:         htop-2.2.0-gcc10.patch
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  python3-base
 BuildRequires:  update-desktop-files

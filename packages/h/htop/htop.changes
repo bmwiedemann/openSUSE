@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  5 07:07:31 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building with gcc10:
+  * htop-2.2.0-gcc10.patch
+
+-------------------------------------------------------------------
 Thu Apr 23 05:46:54 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Add patches:

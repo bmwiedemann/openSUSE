@@ -423,4 +423,13 @@
   * htop-2.2.0-fix-option-string.patch (fixes boo#1165352)</comment>
     <requestid>796378</requestid>
   </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>c6884491e32545bc1de5c095d1b0fc58</srcmd5>
+    <version>2.2.0</version>
+    <time>1591381229</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with gcc10:
+  * htop-2.2.0-gcc10.patch</comment>
+    <requestid>811678</requestid>
+  </revision>
 </revisionlist>
