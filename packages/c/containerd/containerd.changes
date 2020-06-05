@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  2 08:57:36 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.2.13, which is required for Docker 19.03.11-ce.
+  bsc#1172377
+
+-------------------------------------------------------------------
 Tue Oct  8 23:35:36 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Update to containerd v1.2.10, which is required for Docker 19.03.3-ce.

@@ -282,4 +282,13 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
     <comment>Required for Docker 19.03.3-ce update.</comment>
     <requestid>740817</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>df55f479d763c341ba7a177620393a32</srcmd5>
+    <version>1.2.13</version>
+    <time>1591380322</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to containerd v1.2.13, which is required for Docker 19.03.11-ce.
+  bsc#1172377</comment>
+    <requestid>811117</requestid>
+  </revision>
 </revisionlist>

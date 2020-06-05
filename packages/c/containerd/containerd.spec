@@ -1,7 +1,7 @@
 #
 # spec file for package containerd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,16 +34,16 @@
 %endif
 
 # MANUAL: Update the git_version.
-%define git_version b34a5c8af56e510852c35414db4c1f4fa6172339
-%define git_short   b34a5c8af56e
+%define git_version 7ad184331fa3e55e52b890ea95e65ba581ae3429
+%define git_short   7ad184331fa3
 
 Name:           %{realname}%{name_suffix}
-Version:        1.2.10
+Version:        1.2.13
 Release:        0
 Summary:        Standalone OCI Container Daemon
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://containerd.tools
+URL:            https://containerd.tools
 Source:         %{realname}-%{version}_%{git_short}.tar.xz
 Source1:        %{realname}-rpmlintrc
 # OPENSUSE-FIX-UPSTREAM: Backport of https://github.com/containerd/containerd/pull/2764.
