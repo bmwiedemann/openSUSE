@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 02 12:43:51 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20200602.25da9c0:
+  * Fix creation of nginx directories
+
+-------------------------------------------------------------------
+Tue Jun 02 12:19:05 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20200602.570333a:
+  * Move from sysconfig to /etc/default to seperate defaults from user made
+    changes (containers-systemd#1)
+  * Use conmon-pidfile for better systemd integration
+    (container-registry-systemd#2)
+
+-------------------------------------------------------------------
 Fri Apr 24 13:20:21 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - use SLE15 compatible %service_del_postun

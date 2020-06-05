@@ -26,14 +26,13 @@ DISABLE_RESTART_ON_UPDATE=1 \
 %endif
 
 Name:           containers-systemd
-Version:        0.0+git20200324.5f4ae65
+Version:        0.0+git20200602.25da9c0
 Release:        0
 Summary:        Systemd service files and config files for openSUSE container
 License:        MIT
 URL:            https://github.com/kubic-project/containers-systemd
 Source:         containers-systemd-%{version}.tar.xz
 Source1:        containers-systemd.rpmlintrc
-Requires(post): %fillup_prereq
 BuildArch:      noarch
 
 %description
@@ -50,10 +49,10 @@ Additional, there is a timer to cleanup dangling container images.
 %install
 mkdir -p %{buildroot}%{_sbindir}
 mkdir -p %{buildroot}%{_unitdir}
-mkdir -p %{buildroot}%{_fillupdir}
+mkdir -p %{buildroot}%{_distconfdir}/default
 for i in %{containers}; do
     mkdir -p %{buildroot}/srv/$i
-    install -m 644 sysconfig.container-$i %{buildroot}%{_fillupdir}/
+    install -m 644 container-$i.default %{buildroot}%{_distconfdir}/default/container-$i
     install -m 644 container-$i.service %{buildroot}%{_unitdir}/
     # create symlink for rccontainer-*
     ln -s /sbin/service %{buildroot}%{_sbindir}/rccontainer-$i
@@ -71,9 +70,6 @@ done
 %service_add_pre %{container_services}
 
 %post
-for i in %{containers}; do
-    %{fillup_only -n container-$i}
-done
 %service_add_post %{container_services}
 
 %preun
@@ -87,21 +83,21 @@ done
 %license LICENSE
 %doc README.md
 %{_unitdir}/container-bind.service
-%{_fillupdir}/sysconfig.container-bind
+%{_distconfdir}/default/container-bind
 %{_sbindir}/rccontainer-bind
 %ghost %dir /srv/bind
 %{_unitdir}/container-dhcp-server.service
 %{_unitdir}/container-dhcp6-server.service
-%{_fillupdir}/sysconfig.container-dhcp-server
+%{_distconfdir}/default/container-dhcp-server
 %{_sbindir}/rccontainer-dhcp-server
 %{_sbindir}/rccontainer-dhcp6-server
 %ghost %dir /srv/dhcp-server
 %{_unitdir}/container-haproxy.service
-%{_fillupdir}/sysconfig.container-haproxy
+%{_distconfdir}/default/container-haproxy
 %{_sbindir}/rccontainer-haproxy
 %ghost %dir /srv/haproxy
 %{_unitdir}/container-mariadb.service
-%{_fillupdir}/sysconfig.container-mariadb
+%{_distconfdir}/default/container-mariadb
 %{_sbindir}/rccontainer-mariadb
 %ghost %dir /srv/mariadb
 %dir %attr(0700,root,root) %{_sysconfdir}/mariadb-secrets
@@ -111,11 +107,11 @@ done
 %config(noreplace) %attr(0600,root,root) %{_sysconfdir}/mariadb-secrets/MYSQL_USER
 %config(noreplace) %attr(0600,root,root) %{_sysconfdir}/mariadb-secrets/MYSQL_PASSWORD
 %{_unitdir}/container-nginx.service
-%{_fillupdir}/sysconfig.container-nginx
+%{_distconfdir}/default/container-nginx
 %{_sbindir}/rccontainer-nginx
 %ghost %dir /srv/nginx
 %{_unitdir}/container-squid.service
-%{_fillupdir}/sysconfig.container-squid
+%{_distconfdir}/default/container-squid
 %{_sbindir}/rccontainer-squid
 %ghost %dir /srv/squid
 %{_unitdir}/container-image-prune.service

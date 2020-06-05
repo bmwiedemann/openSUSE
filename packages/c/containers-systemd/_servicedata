@@ -1,5 +1,5 @@
 <servicedata>
   <service name="tar_scm">
     <param name="url">git://github.com/kubic-project/containers-systemd.git</param>
- <param name="changesrevision">5f4ae650ef35272a2c0f7bc06298a559071075a3</param></service>
+ <param name="changesrevision">25da9c0a7b741f97a2bac78dfa3891206b26afe0</param></service>
 </servicedata>

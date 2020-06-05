@@ -95,4 +95,19 @@
     <comment></comment>
     <requestid>800133</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>93f4828927a110671e50c61e310f312a</srcmd5>
+    <version>0.0+git20200602.25da9c0</version>
+    <time>1591380122</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200602.25da9c0:
+  * Fix creation of nginx directories
+
+- Update to version 0.0+git20200602.570333a:
+  * Move from sysconfig to /etc/default to seperate defaults from user made
+    changes (containers-systemd#1)
+  * Use conmon-pidfile for better systemd integration
+    (container-registry-systemd#2)</comment>
+    <requestid>810841</requestid>
+  </revision>
 </revisionlist>
