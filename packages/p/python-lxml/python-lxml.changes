@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  2 14:24:31 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 4.5.1
+  * LP#1570388: Fix failures when serialising documents larger
+    than 2GB in some cases.
+  * LP#1865141, GH#298: QName values were not accepted by the
+    el.iter() method. Patch by xmo-odoo.
+  * LP#1863413, GH#297: The build failed to detect libraries on
+    Linux that are only configured via pkg-config.
+
+-------------------------------------------------------------------
 Tue May 12 20:48:37 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Remove explicit Provides of python-doc, which is just wrong.

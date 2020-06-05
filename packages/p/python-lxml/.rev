@@ -725,4 +725,12 @@ Send to Staging:E.
 </comment>
     <requestid>803766</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>5604d608053835ed59946abbea66bfe2</srcmd5>
+    <version>4.5.1</version>
+    <time>1591379987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810905</requestid>
+  </revision>
 </revisionlist>
