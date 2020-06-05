@@ -1,0 +1,17 @@
+<constraints>
+  <hardware>
+    <physicalmemory>
+      <size unit="G">4</size>
+    </physicalmemory>
+  </hardware>
+  <overwrite>
+    <conditions>
+      <arch>riscv64</arch>
+    </conditions>
+    <hardware>
+      <physicalmemory>
+        <size unit="G">8</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+</constraints>

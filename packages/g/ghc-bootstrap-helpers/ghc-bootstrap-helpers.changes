@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  2 08:11:28 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- add constraints for memory on riscv64 
+
+-------------------------------------------------------------------
 Sat Jan 18 09:08:42 UTC 2020 - Peter Trommler <ptrommler@icloud.com>
 
 - improve packaging and avoid rpmlint warning 
