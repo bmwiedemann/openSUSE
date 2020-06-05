@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Fri May 29 07:36:29 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to transmission 3.00:
+  + Common:
+    - Allow the RPC server to listen on an IPv6 address.
+    - Change TR_CURL_SSL_VERIFY to TR_CURL_SSL_NO_VERIFY and enable
+      verification by default.
+    - Go back to using hash as base name for resume and torrent
+      files.
+    - Handle "fields" argument in "session-get" RPC request.
+    - Limit the number of incorrect authentication attempts in
+      embedded web server to 100 to prevent brute-force attacks.
+    - Set idle seed limit range to 1..40320 (4 weeks tops) in all
+      clients.
+    - Add Peer ID for Xfplay, PicoTorrent, Free Download Manager,
+      Folx, Baidu Netdisk torrent clients.
+    - Announce INT64_MAX as size left if the value is unknown.
+    - Add TCP_FASTOPEN support.
+    - Improve ToS handling on IPv6 connections.
+    - Abort handshake if establishing DH shared secret fails.
+    - Don't switch trackers while announcing.
+    - Maintain a "session ID" file (in temporary directory) to
+      better detect whether session is local or remote.
+    - Change torrent location even if no data move is needed.
+    - Support CIDR-notated blocklists.
+    - Update the resume file before running scripts.
+    - Make multiscrape limits adaptive.
+    - Add label support to libtransmission and transmission-remote.
+    - Parse session-id header case-insensitively.
+    - Sanitize suspicious path components instead of rejecting
+      them.
+    - Add support for mbedtls (formely polarssl) and wolfssl
+      (formely cyassl), LibreSSL.
+    - Fix building against OpenSSL 1.1.0+.
+    - Fix a number of memory leaks (magnet loading, session
+      shutdown, bencoded data parsing).
+    - Bump miniupnpc version to 2.0.20170509.
+    - Switch to submodules to manage (most of) third-party
+      dependencies.
+  + GTK:
+    - Add queue up/down hotkeys.
+    - Modernize the .desktop file.
+    - Add AppData file.
+    - Add symbolic icon variant for the Gnome top bar and.
+      when the high contrast theme is in use.
+    - Update file icon when its name changes.
+    - Switch from intltool to gettext for translations.
+  + QT:
+    - Bump minimum Qt version to 5.2.
+    - Fix dropping .torrent files into main window on Windows .
+    - Fix prepending of drive letter to various user-selected paths
+      on Windows.
+    - Fix sorting by progress in presence of magnet transfers.
+    - Fix .torrent file trashing upon addition. 
+    - Add queue up/down hotkeys.
+    - Reduce torrent properties (file tree) memory usage.
+    - Display tooltips in torrent properties (file tree) in case
+      the names don't fit.
+    - Improve UI look on hi-dpi displays. 
+    - Use session ID (if available) to check if session is local
+      or not.
+    - Use default (instead of system) locale to be more flexible.
+    - Modernize the .desktop file.
+  + Daemon:
+    - Use libsystemd instead of libsystemd-daemon.
+    - Harden transmission-daemon.service by disallowing privileges elevation.
+    - Fix exit code to be zero when dumping settings.
+  + Web Client:
+    - Fix tracker error XSS in inspector.
+    - Fix performance issues due to improper use of setInterval()
+      for UI refresh.
+    - Fix recognition of https:// links in comments field.
+    - Fix torrent list style in Google Chrome 59+.
+    - Show ETA in compact view on non-mobile devices.
+    - Show upload file button on mobile devices.
+    - Add keyboard hotkeys for web interface.
+    - Disable autocompletion in torrent URL field.
+- Remove transmission-3rdparty-no-download.patch,
+  transmission-appdata.patch andRemove transmission-systemd.patch:
+  merged upstream.
+- Change build system from cmake to autoconf: replace
+  %cmake/%cmake_build/%cmake_install with
+  %configure/%make/%make_install.
+
+-------------------------------------------------------------------
 Fri May 22 10:39:02 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Use modern macros for cmake building

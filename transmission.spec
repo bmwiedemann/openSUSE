@@ -18,7 +18,7 @@
 
 %global WITH_APPINDICATOR 1
 Name:           transmission
-Version:        2.94
+Version:        3.00
 Release:        0
 Summary:        A BitTorrent client with multiple UIs
 License:        (GPL-2.0-only OR GPL-3.0-only) AND MIT
@@ -27,14 +27,6 @@ URL:            https://www.transmissionbt.com/
 Source0:        https://github.com/%{name}/%{name}-releases/raw/master/%{name}-%{version}.tar.xz
 Source1:        transmission-qt.desktop
 Source3:        README.openSUSE
-# PATCH-FIX-UPSTREAM transmission-appdata.patch badshah400@gmail.com -- Add and install appdata files for both gtk and qt applications; enable translations for the gtk metainfo
-Patch0:         transmission-appdata.patch
-# PATCH-FIX-UPSTREAM transmission-systemd.patch dimstar@opensuse.org -- Fix build with systemd 232, patch taken from git
-Patch1:         transmission-systemd.patch
-# PATCH-FIX-UPSTREAM translmission-3rdparty-no-download.patch marguerite@opensuse.org do not update \
-# 3rd-party dependencies from github during build, specify the SOURCE_DIR containing sources.
-Patch2:         transmission-3rdparty-no-download.patch
-BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
@@ -42,8 +34,8 @@ BuildRequires:  libb64-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libevent-devel >= 2.0.0
 BuildRequires:  libminiupnpc-devel
-BuildRequires:  libqt5-linguist-devel
-BuildRequires:  libqt5-qtbase-devel
+BuildRequires:  libqt5-linguist-devel >= 5.12
+BuildRequires:  libqt5-qtbase-devel >= 5.12
 BuildRequires:  libtool
 BuildRequires:  openssl-devel >= 0.9.7
 BuildRequires:  pkgconfig
@@ -127,29 +119,25 @@ Discovery, DHT, µTP, PEX and magnet links.
 %lang_package -n %{name}-qt
 
 %prep
-%autosetup -p1
+%setup
 cp %{SOURCE3} .
-# required by patch2
-mv third-party/libnatpmp third-party/natpmp
-mv third-party/libutp third-party/utp
 
 %build
-export CFLAGS="%{optflags} -fPIC"
-export CXXFLAGS="%{optflags} -fPIC"
-%cmake \
-%if 0%{?WITH_APPINDICATOR}
-        -DWITH_LIBAPPINDICATOR=ON \
-%endif
-        -DENABLE_QT=ON \
-        -DUSE_QT5=ON \
-        -DUSE_SYSTEM_B64=ON \
-        -DENABLE_CLI=ON \
-        -DENABLE_DAEMON=ON \
-        -DWITH_SYSTEMD=ON
-%cmake_build
+autoreconf -fi
+sed -i '/^Icon=/ s/$/-qt/' qt/transmission-qt.desktop
+%configure \
+    --prefix=/usr \
+    --enable-cli
+%make_build
+cd qt
+%qmake5 DEFINES+=TRANSLATIONS_DIR=\\\\\\\"/usr/share/transmission/translations\\\\\\\"
+lrelease-qt5 translations/*.ts
+mkdir -p %{buildroot}/%{_datadir}/%{name}/translations
+mv translations/*qm %{buildroot}/%{_datadir}/%{name}/translations
 
 %install
-%cmake_install
+%make_install
+make -C qt INSTALL_ROOT=%{buildroot}/usr install
 mkdir -p %{buildroot}%{_unitdir}
 install -m0644 daemon/transmission-daemon.service  %{buildroot}%{_unitdir}/
 mkdir -p %{buildroot}%{_sharedstatedir}/transmission
@@ -167,9 +155,6 @@ rm -rf %{buildroot}%{_datadir}/doc/transmission
 %suse_update_desktop_file transmission-gtk
 %suse_update_desktop_file -i transmission-qt
 %fdupes %{buildroot}
-
-%check
-%ctest
 
 %pre daemon
 getent group transmission >/dev/null || groupadd -r transmission
@@ -234,7 +219,7 @@ fi
 %endif
 
 %files
-%doc AUTHORS NEWS README README.openSUSE
+%doc AUTHORS NEWS.md README.md README.openSUSE
 %doc extras/rpc-spec.txt extras/send-email-when-torrent-done.sh
 %license COPYING
 %{_bindir}/%{name}-cli
@@ -254,7 +239,7 @@ fi
 %ghost %{_sysconfdir}/alternatives/%{name}.1.gz
 
 %files daemon
-%doc AUTHORS NEWS README README.openSUSE
+%doc AUTHORS NEWS.md README.md README.openSUSE
 %license COPYING
 %dir %{_localstatedir}/lib/%{name}
 %{_mandir}/man1/%{name}-daemon.1%{?ext_man}
@@ -266,7 +251,7 @@ fi
 %files -n %{name}-gtk-lang -f %{name}-gtk.lang
 
 %files gtk
-%doc AUTHORS NEWS README README.openSUSE
+%doc AUTHORS NEWS.md README.md README.openSUSE
 %license COPYING
 %{_bindir}/%{name}-gtk
 %{_datadir}/applications/%{name}-gtk.desktop
@@ -283,7 +268,7 @@ fi
 %dir %{_datadir}/%{name}/translations
 
 %files qt
-%doc AUTHORS NEWS README README.openSUSE
+%doc AUTHORS NEWS.md README.md README.openSUSE
 %license COPYING
 %{_bindir}/%{name}-qt
 %{_datadir}/applications/%{name}-qt.desktop
@@ -293,12 +278,13 @@ fi
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %ghost %{_sysconfdir}/alternatives/%{name}
 %ghost %{_sysconfdir}/alternatives/%{name}.1.gz
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/%{name}-qt.appdata.xml
 
 %files common
 %{_datadir}/%{name}/
 %{_datadir}/icons/*/*/apps/%{name}.*
+%{_datadir}/icons/hicolor/symbolic/apps/transmission-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/apps/transmission-devel.svg
+%{_datadir}/pixmaps/transmission.png
 %exclude %{_datadir}/%{name}/translations
 
 %changelog
