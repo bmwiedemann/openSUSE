@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun  3 18:44:47 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Updated to 0.4.0
+  * Rewrite in C
+  * Fix horizontal mode
+  * Improve user interface by use a start/stop button rather than reset
+  * Reset via menu entry
+  * Save/load running state so timer continues after panel reload
+
+-------------------------------------------------------------------
 Sat Aug 24 04:47:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove redundant %clean section.

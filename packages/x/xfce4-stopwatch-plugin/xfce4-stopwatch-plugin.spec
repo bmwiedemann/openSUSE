@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-stopwatch-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,13 @@
 %define plugin stopwatch
 
 Name:           xfce4-%{plugin}-plugin
-Version:        0.3.1
+Version:        0.4.0
 Release:        0
 Summary:        A panel plugin to keep track of elapsed time
 License:        BSD-2-Clause
 Group:          System/GUI/XFCE
-Url:            https://goodies.xfce.org/projects/panel-plugins/xfce4-stopwatch-plugin
-Source:         https://archive.xfce.org/src/panel-plugins/%{name}/0.3/%{name}-%{version}.tar.bz2
+URL:            https://docs.xfce.org/panel-plugins/xfce4-stopwatch-plugin
+Source:         https://archive.xfce.org/src/panel-plugins/%{name}/0.4/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -69,11 +69,9 @@ Provides translations for the "%{name}" package.
 NOCONFIGURE=1 ./autogen.sh
 %configure \
     --enable-maintainer-mode \
-    --libexecdir=%{_libdir} \
     --disable-static
 %else
 %configure \
-    --libexecdir=%{_libdir} \
     --disable-static
 %endif
 
@@ -90,7 +88,7 @@ rm -f %{buildroot}%{_libdir}/xfce4/panel/plugins/libstopwatch.la
 
 %files
 %license COPYING
-%doc ChangeLog README NEWS AUTHORS
+%doc README.md NEWS AUTHORS
 %{_libdir}/xfce4/panel/plugins/libstopwatch.{so,so.0,so.0.0.0}
 %{_datadir}/xfce4/panel/plugins/xfce4-stopwatch-plugin.desktop
 %{_datadir}/icons/hicolor/*/apps/xfce4-stopwatch-plugin.*
