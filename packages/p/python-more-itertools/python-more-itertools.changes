@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun  2 16:30:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 8.3.0:
+  * New itertools
+    * :func:`zip_equal` (thanks to frankier and alexmojaki)
+    * :func:`split_at`, :func:`split_before`, :func:`split_after`, and :func:`split_when` all got a ``maxsplit`` paramter (thanks to jferard and ilai-deutel)
+    * :func:`split_at` now accepts a ``keep_separator`` parameter (thanks to jferard)
+    * :func:`distinct_permutations` can now generate ``r``-length permutations (thanks to SergBobrovsky and ilai-deutel)
+    * The :func:`windowed` implementation was improved  (thanks to SergBobrovsky)
+    * The :func:`spy` implementation was improved (thanks to has2k1)
+    * Type stubs are now tested with ``stubtest`` (thankjs to ilai-deutel)
+    * Tests now run with ``python -m unittest`` instead of ``python setup.py test`` (thanks to jdufresne)
+
+-------------------------------------------------------------------
 Fri Feb 28 21:37:22 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 8.2.0:
