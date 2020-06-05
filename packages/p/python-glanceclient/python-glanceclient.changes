@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue May 12 09:55:53 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.1.1
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Remove .zuul.yaml from the list of irrelevant files
+  - update doc url to new
+  - Update master for stable/train
+  - Stop configuring install_command in tox.
+  - Add release note for glanceclient 3.1.1
+  - Remove v1 tests
+  - Rename releasenotes to reflect correct version
+  - Add support for multi-store import
+  - Delete image from specific store
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/ussuri
+  - Add release note for glanceclient 3.0.0
+  - Drop python 2.7 support and testing
+  - Cleanup session object
+  - Update .gitreview for stable/ussuri
+  - setup.cfg: Use better Python 3 hinting
+  - Pass --all-stores, --allow-failure as bool to API
+  - Add support for copy-image import method
+  - Drop support for tempest-full
+  - Move py35 jobs to latest python3
+  - Cleanup py27 support
+  - Update hacking for Python3
+
+-------------------------------------------------------------------
 Mon Mar 23 12:25:22 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add obsoletes

@@ -559,4 +559,12 @@ update to version 2.3.0
 - switch to python 3.x only build</comment>
     <requestid>787452</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>df87778e9348c8bae026eb5457f96570</srcmd5>
+    <version>3.1.1</version>
+    <time>1591380610</time>
+    <user>dimstar_suse</user>
+    <comment>Ussuri Update</comment>
+    <requestid>803562</requestid>
+  </revision>
 </revisionlist>
