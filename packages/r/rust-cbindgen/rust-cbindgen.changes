@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed May 27 07:39:14 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Update to version 0.14.1
+  0.14.1
+  * Handle mangling pointers.
+  * Unconditionally generate a return statement in partialeq implementations.
+  0.14.0
+  * Minor tweak at how [export.exclude] is handled to allow excluding
+    generic instantiations in C mode.
+  * Documented cpp_compat option.
+  * Fixed a panic when parsing associated constants for a built-in type.
+  0.13.2
+  * Constants now have suitable documentation.
+  * Fixed some C warnings by emitting void when there are no arguments.
+  * Avoids reading cargo.toml when not needed, which can cause panics
+    in workspace situations.
+  * Only write `default` cases if the switch is not exhaustive.
+  * Some warnings have been refined.
+  * Code generation for static arrays has been fixed.
+  * Opt-in support for constexpr in constants.
+  * Fix C code generation and some warnings when extremely large
+    constants are used.
+  * Proper escaping of enum variants and fields.
+  * Added support for RefCell (as an opaque type) and Cell.
+- required for Firefox >= 77.0
+
+-------------------------------------------------------------------
 Mon Mar 30 20:12:18 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Update to version 0.13.1

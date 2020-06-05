@@ -20,7 +20,7 @@
 %global crate_name cbindgen
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now
 Name:           rust-%{crate_name}
-Version:        0.13.1
+Version:        0.14.1
 Release:        0
 Summary:        A tool for generating C bindings from Rust code
 License:        MPL-2.0
