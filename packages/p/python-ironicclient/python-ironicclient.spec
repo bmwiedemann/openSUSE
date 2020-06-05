@@ -17,13 +17,13 @@
 
 
 Name:           python-ironicclient
-Version:        3.1.1
+Version:        4.1.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Ironic
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-ironicclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-ironicclient/python-ironicclient-3.1.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-ironicclient/python-ironicclient-4.1.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Babel
 BuildRequires:  python3-PyYAML >= 3.12
@@ -34,7 +34,7 @@ BuildRequires:  python3-jsonschema >= 2.6.0
 BuildRequires:  python3-mock
 BuildRequires:  python3-openstackclient
 BuildRequires:  python3-osc-lib >= 1.10.0
-BuildRequires:  python3-oslo.i18n >= 3.15.3
+BuildRequires:  python3-oslo.i18n
 BuildRequires:  python3-oslo.utils >= 3.33.0
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 2.0.0
@@ -61,12 +61,11 @@ Requires:       python3-jsonschema >= 2.6.0
 Requires:       python3-keystoneauth1 >= 3.4.0
 Requires:       python3-openstackclient
 Requires:       python3-osc-lib >= 1.10.0
-Requires:       python3-oslo.i18n >= 3.15.3
+Requires:       python3-oslo.i18n
 Requires:       python3-oslo.serialization >= 2.18.0
 Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-pbr >= 2.0.0
 Requires:       python3-requests >= 2.14.2
-Requires:       python3-six >= 1.10.0
 
 %description -n python3-ironicclient
 OpenStack Bare Metal Provisioning API Client Library.
@@ -91,13 +90,13 @@ Each implements 100% of the OpenStack Ironic API.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-ironicclient-3.1.1
+%autosetup -p1 -n python-ironicclient-4.1.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=3.1.1 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=4.1.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
@@ -112,6 +111,7 @@ python3 -m stestr.cli run
 %doc README.rst
 %{python3_sitelib}/ironicclient
 %{python3_sitelib}/*.egg-info
+%{_bindir}/baremetal
 
 %files -n python-ironicclient-doc
 %license LICENSE

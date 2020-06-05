@@ -380,4 +380,12 @@
   - Fix AttributeError in negotiate_version</comment>
     <requestid>784067</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>20bcc4599f4fd7246bd8dafcb354b508</srcmd5>
+    <version>4.1.0</version>
+    <time>1591380623</time>
+    <user>dimstar_suse</user>
+    <comment>Ussuri Update</comment>
+    <requestid>803565</requestid>
+  </revision>
 </revisionlist>

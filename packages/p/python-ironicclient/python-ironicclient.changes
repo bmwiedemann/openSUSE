@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue May 12 09:58:02 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.1.0
+  - Provide a clear error message when using client.Client without a session
+  - Bump hacking to 3.0.0
+  - Add node lessee
+  - Make the dependency on oslo.config explicit
+  - Cleanup py27 support
+  - Add support for retired{_reason} fields.
+  - Add --no-retired list option
+  - Update master for stable/train
+  - Enforce running tox with correct python version based on env
+  - Stop using six library
+  - Fix TypeError when using endpoint_override with SessionClient
+  - Explicitly set ramdisk type
+  - Drop python 2.7 support and testing
+  - Add versions to release notes series
+  - Standalone CLI: optional support for ironic-inspector
+  - Standalone CLI: fix a minor issue in the docs
+  - Fix AttributeError in negotiate_version
+  - Fix usage of --owner filter during node list
+  - Remove the requirement on either endpoint_override or os_ironic_api_version
+  - Add allocation owner
+  - Make it clear that a Session is required for v1.client.Client
+  - Get rid of the oslo.config requirement
+  - A standalone CLI for ironic
+  - Switch to Ussuri job
+  - Switch jobs to python3
+  - Fix source link.
+  - Make oslo.i18n an optional dependency
+  - Remove VerifiedHTTPSConnection class
+
+-------------------------------------------------------------------
 Wed Mar 11 20:59:21 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only build
