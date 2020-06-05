@@ -715,4 +715,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>800883</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>e3cdbc15dff5db6a4e9a9cb00a1d6ae6</srcmd5>
+    <version>3.0.7</version>
+    <time>1591380096</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.7
+- drop 32bit.patch
+ *  boo#1172167 - CVE-2020-13254: Potential data leakage via malformed
+      memcached keys
+ * boo#1172167 -  CVE-2020-13596: Possible XSS via admin
+      ForeignKeyRawIdWidget
+ * many other bugfixes</comment>
+    <requestid>811528</requestid>
+  </revision>
 </revisionlist>
