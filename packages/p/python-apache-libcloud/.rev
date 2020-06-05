@@ -317,4 +317,29 @@ https://github.com/apache/libcloud/blob/trunk/CHANGES.rst#changes-in-apache-libc
     <comment>- Fix build without python2</comment>
     <requestid>784258</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>5b736f0c00a53fd1736d6fd9f6c1d319</srcmd5>
+    <version>3.0.0</version>
+    <time>1591379936</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v3.0.0:
+  * Make sure auth_user_info variable on the OpenStack identify connection class is populated when using auth version 3.x_password and 3.x_oidc_access_token.
+  * [OpenStack] Update OpenStack identity driver so a custom project can be selected using domain_name keyword argument containing a project id.
+  * [GCE] Update create_node() method so it throws an exception if node location can't be inferred and location is not specified by the user ( either by passing datacenter constructor argument or by passing location argument to the method).
+  * [GCE] Update ex_get_disktype method so it works if zone argument is not set. (GITHUB-1443) [Tomaz Muraus]
+  * [GiG G8] Add new driver for GiG G8 provider (https://gig.tech/). (GITHUB-1437) [Jo De Boeck - @grimpy]
+  * [OpenStack] Fix auto assignment of volume device when using device name auto in the attach_volume method. (GITHUB-1444) [Joshua Hesketh - @jhesketh]
+  * [Kamatera] Add new driver for Kamatera provider (https://www.kamatera.com). (GITHUB-1442) [Ori Hoch - @OriHoch]
+  * Add new download_object_range and download_object_range_as_stream methods for downloading part of the object content (aka range downloads) to the base storage API.
+  * [Google Storage] Update the driver so it supports service account HMAC credentials.
+  * [Kubernetes] Add support for the client certificate and static token based authentication to the driver. (GITHUB-1421) [Tomaz Muraus]
+  * Add support for Ed25519 private keys for deploy_node() functionality when using paramiko &gt;= 2.2.0. (GITHUB-1445) [Tomaz Muraus - @Kami]
+  * Fix deploy_node() so it correctly propagates an exception is a private key which is used is password protected, but no password is specified.
+  * Allow user to specify password for encrypted keys by passing ssh_key_password argument to the deploy_node() method.
+  * Fix deploy_node() method so we don't retry on fatal SSHCommandTimeoutError exception (exception which is thrown when a command which is running on remote host times out). (GITHUB-1445) [Tomaz Muraus - @Kami]
+  * Add new stdout and stderr attribute to SSHCommandTimeoutError class.
+  * [OpenStack] Fix auto assignment of volume device when using device name auto in the attach_volume method. (GITHUB-1444) [Joshua Hesketh - @jhesketh]
+- Refresh patches gce_image_projects.patch and ec2_create_node.patch.</comment>
+    <requestid>809124</requestid>
+  </revision>
 </revisionlist>

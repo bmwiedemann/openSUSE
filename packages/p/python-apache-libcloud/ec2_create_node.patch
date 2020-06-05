@@ -1,10 +1,10 @@
-Index: apache-libcloud-2.8.1/libcloud/compute/drivers/ec2.py
+Index: apache-libcloud-3.0.0/libcloud/compute/drivers/ec2.py
 ===================================================================
---- apache-libcloud-2.8.1.orig/libcloud/compute/drivers/ec2.py
-+++ apache-libcloud-2.8.1/libcloud/compute/drivers/ec2.py
-@@ -1892,12 +1892,18 @@ class BaseEC2NodeDriver(NodeDriver):
-                                               for system shutdown.
-         :type       ex_terminate_on_shutdown: ``bool``
+--- apache-libcloud-3.0.0.orig/libcloud/compute/drivers/ec2.py
++++ apache-libcloud-3.0.0/libcloud/compute/drivers/ec2.py
+@@ -1902,12 +1902,18 @@ class BaseEC2NodeDriver(NodeDriver):
+                                        on-demand price will be used.
+         :type       ex_spot_max_price: ``float``
          """
 +
 +        try:
