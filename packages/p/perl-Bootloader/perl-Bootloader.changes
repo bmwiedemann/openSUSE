@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Jun 3 08:56:32 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#127
+- use correct target name on aarch64 (bsc#1172293)
+- 0.928
+
+--------------------------------------------------------------------
 Fri Apr 24 10:30:48 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#126
