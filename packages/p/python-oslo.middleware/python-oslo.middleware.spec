@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.middleware
-Version:        3.38.1
+Version:        4.0.2
 Release:        0
 Summary:        OpenStack oslo.middleware library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.middleware
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.middleware/oslo.middleware-3.38.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.middleware/oslo.middleware-4.0.2.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Jinja2 >= 2.10
 BuildRequires:  python3-WebOb >= 1.8.0
@@ -88,7 +88,7 @@ for limiting size/connection etc.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.middleware-3.38.1
+%autosetup -p1 -n oslo.middleware-4.0.2
 %py_req_cleanup
 
 %build

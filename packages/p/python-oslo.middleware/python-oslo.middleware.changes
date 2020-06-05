@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 12 09:51:18 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.0.2
+  - Switch to Ussuri jobs
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - tox: Trivial cleanup
+  - remove outdated header
+  - reword releasenote for py27 support dropping
+  - tox: Keeping going with docs
+  - Update master for stable/train
+  - Remove universal wheel configuration
+  - Update the constraints url
+  - Use unittest.mock instead of third party mock
+
+-------------------------------------------------------------------
 Sat Mar 14 12:04:52 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only builds
