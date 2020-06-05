@@ -151,4 +151,17 @@
   #!BuildIgnore: post-build-checks-malwarescan</comment>
     <requestid>800247</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5f2ad4b8ba4f795582066acae8e5481b</srcmd5>
+    <version>20.4</version>
+    <time>1591379990</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.4:
+  * Canonicalize version before comparing specifiers. (:issue:`282`)
+  * Change type hint for ``canonicalize_name`` to return
+  ``packaging.utils.NormalizedName``.
+  This enables the use of static typing tools (like mypy) to detect mixing of
+  normalized and un-normalized names.</comment>
+    <requestid>810910</requestid>
+  </revision>
 </revisionlist>
