@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May 12 09:55:36 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.0.1
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - fixed compatibility issues between mistral and client
+  - Switch to Ussuri jobs
+  - tox: Keeping going with docs
+  - Add namespace support for actions to client
+  - Roots only option for executions-list
+  - Add "duration" to task executions printed by CLI commands
+  - Cleanup py27 support
+  - Update hacking and fix warning
+  - Update master for stable/train
+  - Fix preinstalled workflows tests
+  - fix the mistralclient set endpoint_type invaild
+  - Add "duration" to workflow executions printed by CLI commands
+  - Add script for unit test coverage job
+  - Add new CLI commands for sub-executions new API endpoints
+  - Create client for interactive shell
+
+-------------------------------------------------------------------
 Wed Mar 11 21:00:43 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only builds

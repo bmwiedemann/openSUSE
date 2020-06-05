@@ -18,13 +18,13 @@
 
 %global oldpython python
 Name:           python-mistralclient
-Version:        3.10.0
+Version:        4.0.1
 Release:        0
 Summary:        Python API and CLI for OpenStack Mistral
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/%{name}
-Source0:        https://files.pythonhosted.org/packages/source/p/python-mistralclient/python-mistralclient-3.10.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-mistralclient/python-mistralclient-4.0.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 3.12
 BuildRequires:  python3-fixtures
@@ -76,7 +76,7 @@ Client library for Mistral built on the Mistral API. It provides a Python API
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n python-mistralclient-3.10.0
+%autosetup -p1 -n python-mistralclient-4.0.1
 %py_req_cleanup
 
 %build
