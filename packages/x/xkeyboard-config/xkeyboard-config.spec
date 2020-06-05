@@ -17,7 +17,7 @@
 
 
 Name:           xkeyboard-config
-Version:        2.29
+Version:        2.30
 Release:        0
 Summary:        The X Keyboard Extension
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND CDDL-1.0
@@ -27,10 +27,10 @@ Source:         http://xorg.freedesktop.org/archive/individual/data/%{name}/%{na
 Patch100:       n_suse-ctrl-alt-bksp-terminate.patch
 # PATCH-FIX-OPENSUSE disable-2xalt_2xctrl-toggle.diff fdo#4927 -- This is just a workaround until fdo#4927 is fixed
 Patch109:       n_disable-2xalt_2xctrl-toggle.diff
-BuildRequires:  python3
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
+BuildRequires:  python3
 BuildRequires:  translation-update-upstream
 BuildRequires:  xsltproc
 BuildRequires:  perl(XML::Parser)
