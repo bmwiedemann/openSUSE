@@ -447,6 +447,11 @@ Prefer: eclipse-swt
 # wine comes in various flavors by now, we pick the unflavored ones
 Prefer: wine-32bit wine-devel-32bit wine-devel
 
+# Mesa newly also comes with -32bit devel packages; we want to use the native ones
+Prefer: -Mesa-libGL-devel-32bit
+Prefer: -Mesa-libEGL-devel-32bit
+Prefer: -Mesa-libGLESv2-devel-32bit
+
 # have choice for python3-Sphinx needed by trytond: python3-Sphinx python3-Sphinx2
 Prefer: python3-Sphinx
 

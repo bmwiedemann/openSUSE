@@ -296,7 +296,7 @@
   poo#67183: '20200603'
   poo#67216: '20200526'
   poo#67234: '20200603'
-  poo#67288: '20200603'
+  poo#67288: '20200604'
   poo#67447: '20200528'
   poo#67660: '20200602'
 </value>
@@ -418,6 +418,8 @@ products:
     - x86_64
   - opensuse-mariadb-image:
     - x86_64
+  - opensuse-nfs-server-image:
+    - x86_64
   - opensuse-nginx-image:
     - x86_64
   - opensuse-redis-image:
@@ -520,7 +522,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20200603'
 publishing: '20200603'
-testing: '20200603'
+testing: '20200604'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
