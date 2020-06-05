@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May 12 09:48:16 UTC 2020 - cloud-devel@suse.de
+
+- update to version 6.0.2
+  - Update the constraints url
+  - Sync Sphinx requirement
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - remove outdated header
+  - Switch to Ussuri jobs
+  - Implement "realpath" to retrieve the real absolute path
+  - Remove universal wheel configuration
+  - Use unittest.mock instead of third party mock
+  - Bump the openstackdocstheme extension to 1.20
+  - tox: Trivial cleanup
+  - tox: Keeping going with docs
+  - Update master for stable/train
+  - reword releasenote for py27 support dropping
+  - reap rootwrap daemon process when it is timeout
+
+-------------------------------------------------------------------
 Sat Mar 14 12:05:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only builds
