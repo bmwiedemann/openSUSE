@@ -3311,4 +3311,12 @@ list of changes.</comment>
     <comment></comment>
     <requestid>800663</requestid>
   </revision>
+  <revision rev="260" vrev="1">
+    <srcmd5>afad86d705981ed2cf0e710f1a363116</srcmd5>
+    <version>4.12.3+git.161.208cf9730ee</version>
+    <time>1591380479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811173</requestid>
+  </revision>
 </revisionlist>

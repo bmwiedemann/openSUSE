@@ -53,7 +53,7 @@
 %define talloc_version 2.3.1
 %define tevent_version 0.10.2
 %define tdb_version    1.4.3
-%define ldb_version    2.1.2
+%define ldb_version    2.1.3
 
 %global with_mitkrb5 1
 %global with_dc 0
@@ -164,7 +164,7 @@ BuildRequires:  libtasn1-devel >= 3.8
 %else
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
-Version:        4.12.2+git.152.c5bf9f6da52
+Version:        4.12.3+git.161.208cf9730ee
 Release:        0
 Url:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -179,6 +179,7 @@ Source4:        baselibs.conf
 Source100:      samba-client-rpmlintrc
 Requires(pre):  /usr/bin/getent
 Requires(pre):  /usr/sbin/groupadd
+Requires:       system-user-nobody
 Requires:       coreutils
 Requires:       grep
 %if 0%{?suse_version} > 1220
@@ -1334,22 +1335,24 @@ popd
 %pre
 getent group ntadmin >/dev/null || groupadd -g 71 -o -r ntadmin
 %if 0%{?suse_version} > 1220
-%if %{with_dc}
-%service_add_pre nmb.service smb.service samba-ad-dc.service
-%else
 %service_add_pre nmb.service smb.service
 %endif
+
+%if %{with_dc}
+%pre ad-dc
+%service_add_pre samba-ad-dc.service
 %endif
 
 %preun
 %if 0%{?suse_version} > 1220
-%if %{with_dc}
-%service_del_preun nmb.service smb.service samba-ad-dc.service
-%else
 %service_del_preun nmb.service smb.service
-%endif
 %else
 %{?stop_on_removal:%{stop_on_removal smb nmb}}
+%endif
+
+%if %{with_dc}
+%preun ad-dc
+%service_del_preun samba-ad-dc.service
 %endif
 
 %post
@@ -1367,22 +1370,14 @@ then
     sed -i 's/-F *//g' %{_sysconfdir}/sysconfig/samba    
 fi
 
-%if %{with_dc}
-%service_add_post nmb.service smb.service samba-ad-dc.service
-%else
 %service_add_post nmb.service smb.service
-%endif
 %{_bindir}/systemd-tmpfiles --create %{_tmpfilesdir}/samba.conf
 %fillup_only
 %endif
 
 %postun
 %if 0%{?suse_version} > 1220
-%if %{with_dc}
-%service_del_postun nmb.service smb.service samba-ad-dc.service
-%else
 %service_del_postun nmb.service smb.service
-%endif
 %else
 %{?restart_on_update:%{restart_on_update nmb smb}}
 %{?insserv_cleanup:%{insserv_cleanup}}
@@ -1494,8 +1489,16 @@ fi
 %postun libs -p /sbin/ldconfig
 %post test -p /sbin/ldconfig
 %postun test -p /sbin/ldconfig
-%post ad-dc -p /sbin/ldconfig
-%postun ad-dc -p /sbin/ldconfig
+
+%if %{with_dc}
+%post ad-dc
+/sbin/ldconfig
+%service_add_post samba-ad-dc.service
+
+%postun ad-dc
+/sbin/ldconfig
+%service_del_postun samba-ad-dc.service
+%endif
 
 %post dsdb-modules
 ln -sf %{_libdir}/samba/ldb %{_libdir}/ldb/samba

@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sat May 30 15:42:34 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- add libnetapi-devel to baselibs conf, for wine usage (bsc#1172307)
+
+-------------------------------------------------------------------
+Thu May 28 10:56:26 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
+
+- Add system-user-nobody to samba package requirements
+
+-------------------------------------------------------------------
+Wed May 20 15:56:03 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to samba 4.12.3
+  + Fix smbd panic on force-close share during async io; (bso#14301);
+  + s3: vfs_full_audit: Add missing fcntl entry in vfs_op_names[] array;
+    (bso#14343);
+  + vfs_io_uring: Fix data corruption with Windows clients; (bso#14361);
+  + Fix smbd crashes when MacOS Catalina connects if iconv initialization
+    fails; (bso#14372);
+  + Exporting from macOS Adobe Illustrator creates multiple copies;
+    (bso#14150);
+  + smbd does a chdir() twice per request; (bso#14256);
+  + smbd mistakenly updates a file's write-time on close; (bso#14320);
+  + vfs_shadow_copy2: implement case canonicalisation in
+    shadow_copy2_get_real_filename(); (bso#14350);
+  + Fix Windows 7 clients problem after upgrading samba file server;
+    (bso#14375);
+  + s3: Pass DCE RPC handle type to create_policy_hnd; (bso#14359);
+  + Fix uxsuccess test with new MIT krb5 library 1.18; (bso#14155);
+  + mit-kdc: Explicitly reject S4U requests; (bso#14342);
+  + dbwrap_watch: Set rec->value_valid while returning nested
+    share_mode_do_locked(); (bso#14352);
+  + lib:util: Fix smbclient -l basename dir; (bso#14345);
+  + s3:libads: Fix ads_get_upn(); (bso#14336);
+  + ctdb: Fix a memleak; (bso#14348);
+  + Malicous SMB1 server can crash libsmbclient; (bso#14366);
+  + ldb: Bump version to 2.1.3, LMDB databases can grow without bounds;
+    (bso#14330);
+  + vfs_io_uring: Fix data corruption with Windows clients; (bso#14361);
+  + s3/librpc/crypto: Fix double free with unresolved credential cache;
+    (bso#14344);
+  + docs-xml: Fix usernames in pam_winbind manpages; (bso#14358);
+
+-------------------------------------------------------------------
+Mon May 11 14:53:16 UTC 2020 - David Mulder <dmulder@dmulder.com>
+
+- Installing: samba - samba-ad-dc.service does not exist and unit
+  not found; (bsc#1171437);
+
+-------------------------------------------------------------------
 Mon May  4 10:33:43 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
 
 - libsmb: Don't try to find posix stat info in SMBC_getatr();
