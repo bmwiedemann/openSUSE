@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  4 17:58:13 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to fix build with Qt 5.15:
+  * 0001-Add-missing-include-directive-for-QPainterPath.patch
+
+-------------------------------------------------------------------
 Sun Apr 12 15:36:36 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 1.6.4:
