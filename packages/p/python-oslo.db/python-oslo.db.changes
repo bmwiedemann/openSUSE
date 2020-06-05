@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue May 12 09:50:47 UTC 2020 - cloud-devel@suse.de
+
+- update to version 8.1.0
+  - Remove deprecated class DbMigrationError since we already have DBMigrationError
+  - Bump the openstackdocstheme extension to 1.20
+  - Update hacking for Python3
+  - Remove final references to mox
+  - tox: Keeping going with docs
+  - Convert remaining use of mox
+  - Use regex to compare SQL strings with IN
+  - Imported Translations from Zanata
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - Remove 'handle_connect_error'
+  - Drop use of six
+  - Use unittest.mock instead of third party mock
+  - Switch to official Ussuri jobs
+  - reword releasenote for py27 support dropping
+  - Drop unittest2 usage
+  - Reduce severity of wrapped exceptions logs to warning
+  - gitignore: Add reno artefacts
+  - Ignore releasenote artifacts files.
+  - Update master for stable/train
+  - Raise minimum SQLAlchemy version to 1.2.0
+  - tox: Trivial cleanup
+  - remove outdated header
+
+-------------------------------------------------------------------
 Fri Mar 13 08:46:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only build

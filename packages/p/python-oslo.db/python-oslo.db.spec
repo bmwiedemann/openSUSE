@@ -17,18 +17,17 @@
 
 
 Name:           python-oslo.db
-Version:        5.0.2
+Version:        8.1.0
 Release:        0
 Summary:        OpenStack oslo.db library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.db
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.db/oslo.db-5.0.2.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.db/oslo.db-8.1.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyMySQL
 BuildRequires:  python3-alembic >= 0.9.6
 BuildRequires:  python3-debtcollector >= 1.2.0
-BuildRequires:  python3-devel
 BuildRequires:  python3-eventlet
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-mock
@@ -41,7 +40,8 @@ BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-psycopg2
 BuildRequires:  python3-python-subunit
 BuildRequires:  python3-reno
-BuildRequires:  python3-six >= 1.10.0
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-six
 BuildRequires:  python3-sqlalchemy-migrate >= 0.11.0
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testresources >= 2.0.0
@@ -60,7 +60,7 @@ to the different backends and helper utils.
 Summary:        OpenStack oslo.db library
 Group:          Development/Languages/Python
 Requires:       python3-PyMySQL
-Requires:       python3-SQLAlchemy >= 1.0.10
+Requires:       python3-SQLAlchemy >= 1.2.0
 Requires:       python3-alembic >= 0.9.6
 Requires:       python3-debtcollector >= 1.2.0
 Requires:       python3-oslo.config >= 5.2.0
@@ -68,7 +68,7 @@ Requires:       python3-oslo.context
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-psycopg2
-Requires:       python3-six >= 1.10.0
+Requires:       python3-six
 Requires:       python3-sqlalchemy-migrate >= 0.11.0
 Requires:       python3-stevedore >= 1.20.0
 Requires:       python3-testresources >= 2.0.0
@@ -94,7 +94,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the Oslo database handling library.
 
 %prep
-%autosetup -p1 -n oslo.db-5.0.2
+%autosetup -p1 -n oslo.db-8.1.0
 %py_req_cleanup
 
 %build
