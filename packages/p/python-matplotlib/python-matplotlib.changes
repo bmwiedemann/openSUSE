@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jun  4 12:59:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip tests that randomly fail
+- Run the tests on 64bit arm and intel only as elsewhere there are
+  >100 test failures
+
+-------------------------------------------------------------------
+Mon May 18 08:45:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch no-builddir-freetype.patch to not require freetype
+  in build/ subfolder which we use in python macros
+  * This is SUSE specific patch
+- Make the package multibuild and execute the testsuite
+
+-------------------------------------------------------------------
+Mon May 18 06:56:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove the is_opensuse literals as we don't want to have matplotlib
+  behave differently between openSUSE and SLE jsc#SLE-11752
+
+-------------------------------------------------------------------
+Fri May 15 09:03:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove the qt4 code support as we do just Qt5 everywhere
+
+-------------------------------------------------------------------
 Sat Mar 28 16:40:20 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

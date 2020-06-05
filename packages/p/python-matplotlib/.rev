@@ -626,4 +626,24 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
     <comment></comment>
     <requestid>789360</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>39698677fdebe35d60ec9f2626d97e9b</srcmd5>
+    <version>3.2.1</version>
+    <time>1591380085</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip tests that randomly fail
+- Run the tests on 64bit arm and intel only as elsewhere there are
+  &gt;100 test failures
+
+- Add patch no-builddir-freetype.patch to not require freetype
+  in build/ subfolder which we use in python macros
+  * This is SUSE specific patch
+- Make the package multibuild and execute the testsuite
+
+- Remove the is_opensuse literals as we don't want to have matplotlib
+  behave differently between openSUSE and SLE jsc#SLE-11752
+
+- Remove the qt4 code support as we do just Qt5 everywhere</comment>
+    <requestid>811473</requestid>
+  </revision>
 </revisionlist>
