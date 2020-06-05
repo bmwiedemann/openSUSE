@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 20 16:18:06 UTC 2020 - Stefan Knorr <sknorr@suse.com>
+
+- Stable release of the SUSE XSL stylesheets 2.0.17:
+  https://github.com/openSUSE/suse-xsl/releases/tag/2.0.17
+
+- HTML:
+  - Fix recursion issue that broke builds of certain long
+    documents because we evaluated far too much content for
+    teaser texts
+  - Get fonts CSS via HTTPS by default
+
+- Other:
+  - Fix release version insertion in Makefile
+
+-------------------------------------------------------------------
 Thu May 14 20:38:52 UTC 2020 - Stefan Knorr <sknorr@suse.com>
 
 - Stable release of the SUSE XSL stylesheets 2.0.16:

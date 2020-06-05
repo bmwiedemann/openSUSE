@@ -4,7 +4,7 @@
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="url">git@github.com:openSUSE/suse-xsl.git</param>
     <param name="scm">git</param>
-    <param name="revision">2.0.16</param>
+    <param name="revision">2.0.17</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>

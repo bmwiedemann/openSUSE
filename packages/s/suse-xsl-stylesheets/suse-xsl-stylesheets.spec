@@ -17,7 +17,7 @@
 
 
 Name:           suse-xsl-stylesheets
-Version:        2.0.16
+Version:        2.0.17
 Release:        0
 
 %define reponame          suse-xsl
@@ -112,7 +112,8 @@ stylesheets are based on the original DocBook XSLT 1.0 stylesheets.
 make install DESTDIR=%{buildroot} LIBDIR=%{_libdir}
 
 # create symlinks:
-%fdupes -s %{buildroot}/%{_datadir}
+# (intentionally no slash between the variables -- %{_datadir} has a leading slash already.)
+%fdupes -s %{buildroot}%{_datadir}
 
 
 %post
