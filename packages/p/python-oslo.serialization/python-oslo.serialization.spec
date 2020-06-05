@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.serialization
-Version:        2.29.2
+Version:        3.1.1
 Release:        0
 Summary:        OpenStack serialization library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.serialization
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.serialization/oslo.serialization-2.29.2.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.serialization/oslo.serialization-3.1.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-mock
 BuildRequires:  python3-msgpack >= 0.5.2
@@ -45,7 +45,7 @@ Group:          Development/Languages/Python
 Requires:       python3-msgpack >= 0.5.2
 Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-pytz >= 2013.6
-Requires:       python3-six >= 1.10.0
+Requires:       python3-six
 
 %description -n python3-oslo.serialization
 The oslo.serialization library provides support for representing objects
@@ -65,7 +65,7 @@ in transmittable and storable formats, such as Base64, JSON and MessagePack.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.serialization-2.29.2
+%autosetup -p1 -n oslo.serialization-3.1.1
 sed -i -e "s,bandit.*,," test-requirements.txt
 %py_req_cleanup
 

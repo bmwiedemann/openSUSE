@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May 12 09:58:24 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.1.1
+  - Switch to Ussuri jobs
+  - remove outdated header
+  - Remove Python 3-specific conditional in dump_as_bytes
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - tox: Trivial cleanup
+  - Update master for stable/train
+  - reword releasenote for py27 support dropping
+  - Deprecated the yamlutils module.
+  - Drop use of six
+  - Remove long-dead workaround
+  - Update hacking for Python3
+  - Add releasenote to deprecate the yamlutils module
+  - tox: Keeping going with docs
+  - Update the minversion parameter.
+  - Use unittest.mock instead of third party mock
+
+-------------------------------------------------------------------
 Sat Mar 14 11:49:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only builds
