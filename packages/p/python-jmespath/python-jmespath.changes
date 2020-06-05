@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  2 16:21:51 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.10.0:
+  * Python 2.6 and 3.3 have reached end-of-life and have been deprecated. (issue 175)
+  * Fix race condition when clearing cached parsed expressions. (issue 197)
+
+-------------------------------------------------------------------
 Wed Mar 11 09:37:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.9.5:

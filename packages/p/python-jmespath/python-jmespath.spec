@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jmespath
-Version:        0.9.5
+Version:        0.10.0
 Release:        0
 Summary:        Python module for declarative JSON document element extraction
 License:        MIT
