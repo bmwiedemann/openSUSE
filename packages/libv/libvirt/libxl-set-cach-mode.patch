@@ -3,10 +3,10 @@ https://bugzilla.novell.com/show_bug.cgi?id=879425
  src/libxl/libxl_conf.c |   25 +++++++++++++++++++++++++
  1 file changed, 25 insertions(+)
 
-Index: libvirt-6.3.0/src/libxl/libxl_conf.c
+Index: libvirt-6.4.0/src/libxl/libxl_conf.c
 ===================================================================
---- libvirt-6.3.0.orig/src/libxl/libxl_conf.c
-+++ libvirt-6.3.0/src/libxl/libxl_conf.c
+--- libvirt-6.4.0.orig/src/libxl/libxl_conf.c
++++ libvirt-6.4.0/src/libxl/libxl_conf.c
 @@ -905,6 +905,30 @@ libxlDiskSetDiscard(libxl_device_disk *x
  #endif
  }

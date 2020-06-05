@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun  3 16:38:09 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- libxl: Normalize MAC address in device conf on netdev hotplug
+  ec07aad8-libxl-normalize-mac-addr.patch
+  bsc#1172052
+
+-------------------------------------------------------------------
+Tue Jun  2 15:16:15 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 6.4.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    d677de9d-libxl-fix-driver-name-check.patch,
+    d218a9c2-libxl-xen-driver-tables.patch,
+    836ea91d-libxl-xenlight-internal.patch,
+    57687260-xen-doc-improvements.patch
+
+-------------------------------------------------------------------
 Wed May  6 20:43:16 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - Xen: Fix connection when host uses modular daemons

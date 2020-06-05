@@ -185,7 +185,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        6.3.0
+Version:        6.4.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -338,10 +338,7 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
-Patch0:         d677de9d-libxl-fix-driver-name-check.patch
-Patch1:         d218a9c2-libxl-xen-driver-tables.patch
-Patch2:         836ea91d-libxl-xenlight-internal.patch
-Patch3:         57687260-xen-doc-improvements.patch
+Patch0:         ec07aad8-libxl-normalize-mac-addr.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -878,9 +875,6 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 %patch100 -p1
 %patch101 -p1
 %patch150 -p1

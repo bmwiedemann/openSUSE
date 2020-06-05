@@ -3594,4 +3594,12 @@ StandardGroups in rpmlint package.
     bed32525-tests-check-passthrough.patch</comment>
     <requestid>801297</requestid>
   </revision>
+  <revision rev="306" vrev="1">
+    <srcmd5>bea19a12c8f3b0a92b3051411966c905</srcmd5>
+    <version>6.4.0</version>
+    <time>1591380238</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811207</requestid>
+  </revision>
 </revisionlist>
