@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun  3 11:45:25 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.41.0
+  * Fix CVE-2020-11080
+  * lib: Implement max settings option (Patch from James M Snell)
+  * lib: Earlier check for settings flood (Patch from James M Snell)
+  * lib: Fix receiving stream data stall (GH-1444)
+  * build: cmake: Make hard-coded static lib suffix optional (Patch from Viktor Szakats) (GH-1418)
+  * third-party: Bump llhttp to 2.0.4 (GH-1442)
+  * nghttpx: Add PROXY-protocol v2 support (GH-1452)
+  * nghttpx: Fix get_x509_serial for long serial numbers (Patch from Jacky Tian) (GH-1455)
+  * h2load: Allow port in --connect-to
+  * h2load: add --connect-to option (Patch from Lucas Pardue) (GH-1426)
+
+-------------------------------------------------------------------
 Tue Jan 14 18:01:52 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Update to version 1.40.0

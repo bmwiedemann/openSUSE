@@ -29,7 +29,7 @@
 %bcond_with python
 %endif
 Name:           nghttp2%{psuffix}
-Version:        1.40.0
+Version:        1.41.0
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 2 in C
 License:        MIT
