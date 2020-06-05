@@ -17,13 +17,13 @@
 
 
 Name:           python-monascaclient
-Version:        1.16.0
+Version:        2.1.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Monasca
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-monascaclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-monascaclient/python-monascaclient-1.16.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-monascaclient/python-monascaclient-2.1.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable >= 0.7.2
 BuildRequires:  python3-PyYAML >= 3.12
@@ -73,7 +73,7 @@ provides a Python API (the ``monascaclient`` module) and a command-line tool
 The Monasca Client was written using the OpenStack Heat Python client as a framework.
 
 %prep
-%autosetup -p1 -n python-monascaclient-1.16.0
+%autosetup -p1 -n python-monascaclient-2.1.0
 %py_req_cleanup
 
 %build
