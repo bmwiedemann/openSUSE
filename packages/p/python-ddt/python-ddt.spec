@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-ddt
-Version:        1.3.1
+Version:        1.4.1
 Release:        0
 Summary:        Data-Driven/Decorated Tests
 License:        MIT
@@ -31,7 +31,7 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 %if %{with python2}
 BuildRequires:  python-mock
 %endif
@@ -52,7 +52,7 @@ A library to multiply test cases.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc CONTRIBUTING.md README.md

@@ -83,4 +83,18 @@
     <comment></comment>
     <requestid>790849</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ad2ed695cc13bb95898542afb4e4f859</srcmd5>
+    <version>1.4.1</version>
+    <time>1591379958</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.1:
+  * Remove nose dependency for good
+  * Require enum34 for Python 2.x.
+  * Improved code comments and renamed the test name format enum class
+  * Use enum instead of bool to allow easier future changes
+  * Allow index-only test names 
+- Switch to using %pytest macro now that nose is not required</comment>
+    <requestid>809724</requestid>
+  </revision>
 </revisionlist>
