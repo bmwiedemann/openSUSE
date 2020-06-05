@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 06:34:15 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Fri Apr  3 17:31:16 UTC 2020 - Petr Cervinka <petr@cervinka.net>
 
 - Update to 1.1.2:

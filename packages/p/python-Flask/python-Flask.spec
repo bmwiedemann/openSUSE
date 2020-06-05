@@ -24,7 +24,7 @@ Release:        0
 Summary:        A microframework based on Werkzeug, Jinja2 and good intentions
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://github.com/mitsuhiko/flask/
+URL:            https://github.com/mitsuhiko/flask/
 Source:         https://files.pythonhosted.org/packages/source/F/Flask/Flask-%{version}.tar.gz
 BuildRequires:  %{python_module Jinja2 >= 2.4}
 BuildRequires:  %{python_module Werkzeug >= 0.15}
@@ -33,15 +33,17 @@ BuildRequires:  %{python_module itsdangerous >= 0.24}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-%if %{?suse_version} < 1500
-BuildRequires:  python
-%endif
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 2.10
 Requires:       python-Werkzeug >= 0.15
 Requires:       python-click >= 5.1
 Requires:       python-itsdangerous >= 0.24
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
+%if %{?suse_version} < 1500
+BuildRequires:  python
+%endif
 %ifpython2
 Provides:       %{oldpython}-flask = %{version}
 Obsoletes:      %{oldpython}-flask < %{version}
@@ -70,7 +72,7 @@ reference for python-Flask.
 
 %install
 %python_install
-%python_clone %{buildroot}%{_bindir}/flask
+%python_clone -a %{buildroot}%{_bindir}/flask
 
 %fdupes %{buildroot}%{python_sitelib}
 
@@ -78,10 +80,16 @@ reference for python-Flask.
 export LANG=en_US.UTF-8
 %pytest
 
+%post
+%python_install_alternative flask
+
+%postun
+%python_uninstall_alternative flask
+
 %files %{python_files}
 %license LICENSE.rst
 %doc CHANGES.rst README.rst
-%python3_only %{_bindir}/flask
+%python_alternative %{_bindir}/flask
 %{_bindir}/flask-%{python_bin_suffix}
 %dir %{python_sitelib}/flask
 %{python_sitelib}/flask/*
