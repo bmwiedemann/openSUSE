@@ -1,0 +1,37 @@
+From 46f0dabb9a5b995aba7b0cef53284b23d94e4266 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Thu, 4 Jun 2020 17:49:50 +0200
+Subject: [PATCH] Fix build with Qt 5.15
+
+---
+ src/libs/main/KoDocument.cpp         | 1 +
+ src/libs/ui/kptganttitemdelegate.cpp | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/libs/main/KoDocument.cpp b/src/libs/main/KoDocument.cpp
+index 76ecad05..2eeb76b1 100644
+--- a/src/libs/main/KoDocument.cpp
++++ b/src/libs/main/KoDocument.cpp
+@@ -69,6 +69,7 @@
+ #include <QDir>
+ #include <QFileInfo>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QTimer>
+ #ifndef QT_NO_DBUS
+ #include <KJobWidgets>
+diff --git a/src/libs/ui/kptganttitemdelegate.cpp b/src/libs/ui/kptganttitemdelegate.cpp
+index 04217da4..d2f3e6d8 100644
+--- a/src/libs/ui/kptganttitemdelegate.cpp
++++ b/src/libs/ui/kptganttitemdelegate.cpp
+@@ -28,6 +28,7 @@
+ #include <QModelIndex>
+ #include <QApplication>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QLocale>
+ 
+ #include <KLocalizedString>
+-- 
+2.26.2
+

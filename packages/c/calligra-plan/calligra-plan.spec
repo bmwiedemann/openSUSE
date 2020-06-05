@@ -1,7 +1,7 @@
 #
 # spec file for package calligra-plan
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Office/Suite
 URL:            https://www.calligra.org/
 Source0:        https://download.kde.org/stable/calligra/%{version}/calligraplan-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-with-Qt-5.15.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  perl-base
@@ -72,11 +74,11 @@ Plan is the project management application of the Calligra Suite.
 %lang_package
 
 %prep
-%setup -q -n calligraplan-%{version}
+%autosetup -p1 -n calligraplan-%{version}
 
 %build
 %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
