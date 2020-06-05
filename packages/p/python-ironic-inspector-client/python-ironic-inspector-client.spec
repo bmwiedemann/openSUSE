@@ -17,19 +17,19 @@
 
 
 Name:           python-ironic-inspector-client
-Version:        3.7.0
+Version:        4.1.0
 Release:        0
 Summary:        Python client and CLI tool for Ironic Inspector
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-ironic-inspector-client
-Source0:        https://files.pythonhosted.org/packages/source/p/python-ironic-inspector-client/python-ironic-inspector-client-3.7.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-ironic-inspector-client/python-ironic-inspector-client-4.1.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-mock
 BuildRequires:  python3-openstackclient
 BuildRequires:  python3-openstackdocstheme
-BuildRequires:  python3-osc-lib >= 1.8.0
+BuildRequires:  python3-osc-lib
 BuildRequires:  python3-oslo.concurrency
 BuildRequires:  python3-reno
 BuildRequires:  python3-requests-mock
@@ -51,11 +51,10 @@ Group:          Development/Languages/Python
 Requires:       python3-PyYAML >= 3.12
 Requires:       python3-keystoneauth1 >= 3.4.0
 Requires:       python3-openstackclient
-Requires:       python3-osc-lib >= 1.8.0
-Requires:       python3-oslo.i18n >= 3.15.3
-Requires:       python3-oslo.utils >= 3.33.0
+Requires:       python3-osc-lib
+Requires:       python3-oslo.i18n
+Requires:       python3-oslo.utils
 Requires:       python3-requests >= 2.14.2
-Requires:       python3-six >= 1.10.0
 
 %description -n python3-ironic-inspector-client
 Ironic Inspector is an auxiliary service for discovering hardware properties
@@ -69,7 +68,7 @@ This package contains Python client and command line tool for Ironic Inspector.
 This package contains the Python 3.x module.
 
 %prep
-%autosetup -p1 -n python-ironic-inspector-client-3.7.0
+%autosetup -p1 -n python-ironic-inspector-client-4.1.0
 sed -i -e 's,hacking.*,,' test-requirements.txt
 sed -i -e 's,coverage.*,,' test-requirements.txt
 sed -i -e 's,doc8.*,,' test-requirements.txt

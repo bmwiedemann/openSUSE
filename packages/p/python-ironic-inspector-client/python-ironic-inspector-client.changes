@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May 12 10:06:17 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.1.0
+  - Update the constraints url
+  - Cleanup py27 support
+  - Enforce running tox with correct python version based on env
+  - Switch jobs to python3
+  - Fixing base job
+  - Bump hacking to 3.0.0
+  - Make oslo.i18n an optional dependency
+  - Stop using six library
+  - Get rid of the oslo.utils requirement
+  - Add bindep env and fix pdf doc generation
+  - Recover the functional test
+  - Add versions to release notes series
+  - Move osc-lib to test-requirements
+  - Drop python 2.7 support and testing
+  - Update master for stable/train
+  - Switch to Ussuri job
+
+-------------------------------------------------------------------
 Wed Mar 11 17:02:09 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only build
