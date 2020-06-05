@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 25 11:24:30 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.15.0:
+  * encrypted mtls private key support 
+  * signBytes for impersonated credentials 
+  * catch exceptions.RefreshError 
+  * support string type response.data
+
+-------------------------------------------------------------------
 Tue Apr 28 07:49:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.14.1:
