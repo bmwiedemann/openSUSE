@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May 12 10:02:01 UTC 2020 - cloud-devel@suse.de
+
+- update to version 7.0.0
+  - Fix doc bug filing link
+  - Update hacking version
+  - Fix: --poll inconsistency
+  - Remove autogen warning
+  - Update master for stable/train
+  - Ussuri contrib docs community goal
+  - Pass os_endpoint to keystone session
+  - Cleanup py27 support
+  - Add support for Block Storage API mv 3.60
+  - Add release note for Ussuri cinderclient release.
+  - Hide cinder CLI errors on bash-completion
+  - Add test for subcommands
+  - Raise hacking version to 2.0.0
+  - Drop support for python 2
+  - Add filters support for volume transfer
+  - Remove --bypass-url documentation
+  - Replace bypass_url with os_endpoint
+  - Update revert_to_snapshot params
+
+-------------------------------------------------------------------
 Mon Mar 23 12:24:49 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add obsoletes
