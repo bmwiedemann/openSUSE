@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  4 17:28:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch:
+  * 0001-Include-stdexcept-for-std-runtime_error.patch
+
+-------------------------------------------------------------------
 Fri Mar 27 14:31:33 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.0.5. Check the CHANGELOG file for the complete list

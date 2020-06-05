@@ -24,6 +24,8 @@ License:        GPL-3.0-only AND CC-BY-SA-3.0
 Group:          Amusements/Games/Action/Race
 URL:            https://juzzlin.github.io/DustRacing2D/
 Source:         https://github.com/juzzlin/DustRacing2D/archive/%{version}/dustrac-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Include-stdexcept-for-std-runtime_error.patch
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
@@ -46,6 +48,7 @@ creation. A separate engine, MiniCore, is used for physics modeling.
 
 %prep
 %setup -q -n DustRacing2D-%{version}
+%patch0 -p1
 
 %build
 %cmake \
