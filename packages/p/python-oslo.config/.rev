@@ -726,4 +726,12 @@ all changed Requires/Buildrequires seem to be available
     <comment>- switch to python 3.x only builds</comment>
     <requestid>789261</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>88cb274a858bcbd6b0039d090d74ef08</srcmd5>
+    <version>8.0.2</version>
+    <time>1591380833</time>
+    <user>dimstar_suse</user>
+    <comment>Ussuri Update</comment>
+    <requestid>803588</requestid>
+  </revision>
 </revisionlist>

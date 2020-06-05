@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue May 12 09:46:27 UTC 2020 - cloud-devel@suse.de
+
+- update to version 8.0.2
+  - Remove universal wheel configuration
+  - fix: fix float opt min and max value format errror
+  - Use stevedore to list the source drivers in documentation
+  - reword releasenote for py27 support dropping
+  - Switch to Ussuri jobs
+  - Switch to hacking 2.x
+  - Update master for stable/train
+  - tox: Trivial cleanup
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - trivial: Cleanup tox.ini
+  - Update the minversion parameter.
+  - update source link in readme
+  - Ensure option groups don't change during logging
+  - Refactor unit tests for CLI usage
+  - remove outdated header
+  - Remove ConfigFilter
+  - Support hyphens in positional argument names
+  - mypy: Add boilerplate configuration
+  - Stop configuring install_command in tox.
+  - Remove six
+  - Update the constraints url
+  - Assume positional arguments are required
+  - tox: Keeping going with docs
+
+-------------------------------------------------------------------
 Sat Mar 14 12:03:03 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only builds
