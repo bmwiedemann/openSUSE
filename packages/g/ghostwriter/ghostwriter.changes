@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  4 17:03:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with Qt 5.15:
+  * 0001-Fix-build-with-Qt-5.15.patch
+
+-------------------------------------------------------------------
 Mon Feb 24 08:19:31 UTC 2020 - Sebastien CHAVAUX <seb95passionlinux@opensuse.org>
 
 - Update to version 1.8.1:

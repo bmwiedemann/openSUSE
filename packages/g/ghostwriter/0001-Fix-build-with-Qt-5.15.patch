@@ -1,0 +1,24 @@
+From f7e27056d8c935c353de29e7f45a6b04a5be5b2e Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Thu, 4 Jun 2020 19:03:01 +0200
+Subject: [PATCH] Fix build with Qt 5.15
+
+---
+ src/MarkdownEditor.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/MarkdownEditor.cpp b/src/MarkdownEditor.cpp
+index 2e4a9a1..39ddadb 100644
+--- a/src/MarkdownEditor.cpp
++++ b/src/MarkdownEditor.cpp
+@@ -36,6 +36,7 @@
+ #include <QPainter>
+ #include <QFileInfo>
+ #include <QDir>
++#include <QPainterPath>
+ 
+ #include "ColorHelper.h"
+ #include "MarkdownEditor.h"
+-- 
+2.26.2
+

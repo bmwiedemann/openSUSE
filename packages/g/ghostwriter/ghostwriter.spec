@@ -1,7 +1,7 @@
 #
 # spec file for package ghostwriter
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wereturtle.github.io/ghostwriter
 Source:         https://github.com/wereturtle/ghostwriter/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-with-Qt-5.15.patch
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
@@ -58,7 +60,7 @@ provides a relaxing, distraction-free writing environment.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 lrelease-qt5 %{name}.pro
