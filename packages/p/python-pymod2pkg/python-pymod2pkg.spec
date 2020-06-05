@@ -18,13 +18,13 @@
 
 %global sname pymod2pkg
 Name:           python-pymod2pkg
-Version:        0.23.0
+Version:        0.25.0
 Release:        0
 Summary:        OpenStack Packaging - python module name to package name map
 License:        Apache-2.0
 Group:          Development/Libraries/Python
 URL:            https://wiki.openstack.org/wiki/Rpm-packaging
-Source0:        https://files.pythonhosted.org/packages/source/p/pymod2pkg/pymod2pkg-0.23.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pymod2pkg/pymod2pkg-0.25.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-distro
 BuildRequires:  python3-pbr >= 2.0.0
@@ -62,7 +62,7 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for python module name to package name map library.
 
 %prep
-%autosetup -p1 -n pymod2pkg-0.23.0
+%autosetup -p1 -n pymod2pkg-0.25.0
 %py_req_cleanup
 
 %build

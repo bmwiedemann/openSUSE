@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun  5 07:52:09 UTC 2020 - cloud-devel@suse.de
+
+- update to version 0.25.0
+  - doc: update git clone url to opendev.org
+  - Add ansible-runner
+  - Switch to newer openstackdocstheme version
+  - Cleanup py27 support
+
+-------------------------------------------------------------------
 Mon Apr 20 07:53:01 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
 
 - Add missing Obsoletes

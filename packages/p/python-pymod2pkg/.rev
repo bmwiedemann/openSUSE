@@ -276,4 +276,16 @@
   - Fix some upstream mappings</comment>
     <requestid>795685</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>166eaf7b14fc25dc45c37adc058885b8</srcmd5>
+    <version>0.25.0</version>
+    <time>1591381234</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.25.0
+  - doc: update git clone url to opendev.org
+  - Add ansible-runner
+  - Switch to newer openstackdocstheme version
+  - Cleanup py27 support</comment>
+    <requestid>811683</requestid>
+  </revision>
 </revisionlist>
