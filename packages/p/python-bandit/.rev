@@ -39,4 +39,12 @@
     <comment>- Skip out python2 build as the dependencies are unresolvable</comment>
     <requestid>748705</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>00b26bf9e54dfda9428a20f5baba8c5b</srcmd5>
+    <version>1.6.2</version>
+    <time>1591381193</time>
+    <user>dimstar_suse</user>
+    <comment>- drop oslosphinx dependency</comment>
+    <requestid>811559</requestid>
+  </revision>
 </revisionlist>

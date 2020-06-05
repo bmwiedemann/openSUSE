@@ -1,7 +1,7 @@
 #
 # spec file for package python-bandit
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,6 @@ BuildRequires:  python-rpm-macros
 # doc requirements
 %if %{with builddocs}
 BuildRequires:  %{python_module Sphinx >= 1.2.1}
-BuildRequires:  %{python_module oslosphinx >= 4.7.0}
 BuildRequires:  %{python_module oslotest >= 3.2.0}
 BuildRequires:  %{python_module reno >= 1.8.0}
 %endif
