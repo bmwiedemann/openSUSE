@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  4 19:31:20 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add python-nautilus-gcc10-buildfix.patch: Fix build with gcc 10.
+
+-------------------------------------------------------------------
 Wed Dec  4 22:10:09 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Fix Requires in devel subpackage, needed now we only build
