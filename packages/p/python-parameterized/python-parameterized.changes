@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun  2 14:26:24 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.7.4
+    * Add ``class_name_func`` option to ``@parameterized_class``
+    * Fix arguments being passed to skip_on_empty_helper (thanks @gaf3;
+      https://github.com/wolever/parameterized/issues/57)
+    * Fix tests on Python 3.8.2 (thanks @Ikke;
+      https://github.com/wolever/parameterized/pull/99)
+    * Fix some typos (thanks @LWprogramming, @jinnovation;
+      https://github.com/wolever/parameterized/pull/77,
+      https://github.com/wolever/parameterized/pull/80)
+    * Fix unicode handling in setup.py (thanks @sliwinski-milosz;
+      https://github.com/wolever/parameterized/pull/89)
+    * Fix Python 3.9 compat (thanks @vstinner;
+      https://github.com/wolever/parameterized/pull/94)
+    * Add `@parameterized_class` name function callback support (thanks
+      @duncwebb et al; https://github.com/wolever/parameterized/pull/74)
+- drop dependency on unittest2
+
+-------------------------------------------------------------------
 Thu Dec  5 15:52:40 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.7.1:

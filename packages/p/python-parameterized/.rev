@@ -59,4 +59,12 @@
   failing with Python 3.8. gh#wolever/parameterized#84</comment>
     <requestid>754448</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d1ded74673e56f7ffe56313ca8f5e315</srcmd5>
+    <version>0.7.4</version>
+    <time>1591380019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811024</requestid>
+  </revision>
 </revisionlist>

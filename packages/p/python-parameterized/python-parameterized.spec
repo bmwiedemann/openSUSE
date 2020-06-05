@@ -1,7 +1,7 @@
 #
 # spec file for package python-parameterized
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-parameterized
-Version:        0.7.1
+Version:        0.7.4
 Release:        0
 Summary:        Parameterized testing
 License:        BSD-2-Clause
@@ -31,12 +31,10 @@ BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose2}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module unittest2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       python-nose
 Suggests:       python-nose2
-Suggests:       python-unittest2
 BuildArch:      noarch
 %python_subpackages
 
@@ -58,10 +56,8 @@ Not working with supportest "pytest" versions
 
 %check
 export LANG=en_US.UTF8
-# gh#wolever/parameterized#84
 %{python_expand nosetests-%$python_version}
 %{python_expand nose2-%$python_version}
-%{python_expand unit2-%$python_version}
 %python_exec -m unittest parameterized.test
 
 %files %{python_files}
