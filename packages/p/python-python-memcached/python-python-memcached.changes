@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  3 11:51:18 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- replace nose with pytest
+
+-------------------------------------------------------------------
 Wed Jan  9 22:14:36 UTC 2019 - Jonathan Brownell <jbrownell@suse.com>
 
 - Use proper memcached path on Red Hat platforms

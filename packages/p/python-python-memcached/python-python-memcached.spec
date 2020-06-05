@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-memcached
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/linsomniac/python-memcached
 Source:         https://github.com/linsomniac/python-memcached/archive/%{version}.tar.gz
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  memcached
@@ -69,7 +69,7 @@ sed -i \
 %else
 /usr/sbin/memcached -dv -P $PWD/memcached.pid
 %endif
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest
 kill -9 $(cat $PWD/memcached.pid)
 
 %files %{python_files}

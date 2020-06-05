@@ -163,4 +163,12 @@
     <comment>- Version update to 1.59 bsc#1131840:</comment>
     <requestid>697088</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>161b61782efa71be6434822fe976c9ba</srcmd5>
+    <version>1.59</version>
+    <time>1591380068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811141</requestid>
+  </revision>
 </revisionlist>
