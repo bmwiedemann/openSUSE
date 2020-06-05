@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-click
-Version:        7.1.1
+Version:        7.1.2
 Release:        0
 Summary:        A wrapper around optparse for command line utilities
 License:        BSD-3-Clause

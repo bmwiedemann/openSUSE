@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun  3 11:15:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 7.1.2:
+   Revert applying shell quoting to commands for ``echo_with_pager``
+   and ``edit``. This was intended to allows spaces in commands, but
+   caused issues if the string was actually a command and arguments, or
+   on Windows. Instead, the string must be quoted manually as it should
+   appear on the command line. :issue:`1514`
+
+-------------------------------------------------------------------
 Tue Mar 31 11:57:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 7.1.1
