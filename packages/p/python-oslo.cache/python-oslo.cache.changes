@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue May 12 09:46:11 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.3.0
+  - Add memcache_pool backend job
+  - Update master for stable/train
+  - Switch from python-memcached to pymemcache.
+  - tox: Keeping going with docs
+  - Update hacking for Python3
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - remove outdated header
+  - Fix pymemcache release note python package name
+  - Remove dogpile kwarg test
+  - Revert "Switch from python-memcached to pymemcache."
+  - Update memcached configuration help text
+  - trivial: Cleanup tox.ini
+  - Use unittest.mock instead of third party mock
+  - Ignore reno artifacts
+  - Fix python2 syntaxe in doc
+  - tox: Trivial cleanup
+  - Imported Translations from Zanata
+
+-------------------------------------------------------------------
 Sat Mar 14 12:02:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only builds

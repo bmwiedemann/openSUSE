@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.cache
-Version:        1.37.0
+Version:        2.3.0
 Release:        0
 Summary:        Cache storage for Openstack projects
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/%{sname}
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.cache/oslo.cache-1.37.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.cache/oslo.cache-2.3.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-dogpile.cache >= 0.6.2
 BuildRequires:  python3-mock
@@ -73,7 +73,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the OpenStack Oslo cache library.
 
 %prep
-%autosetup -p1 -n oslo.cache-1.37.0
+%autosetup -p1 -n oslo.cache-2.3.0
 %py_req_cleanup
 
 %build
@@ -83,7 +83,7 @@ Documentation for the OpenStack Oslo cache library.
 %{py3_install}
 
 # generate html docs
-PBR_VERSION=1.37.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=2.3.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
