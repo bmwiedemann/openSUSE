@@ -17,29 +17,29 @@
 
 
 Name:           python-openstackclient
-Version:        4.0.0
+Version:        5.2.0
 Release:        0
 Summary:        OpenStack Command-line Client
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-openstackclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-openstackclient/python-openstackclient-4.0.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-openstackclient/python-openstackclient-5.2.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cinderclient >= 3.3.0
 BuildRequires:  python3-cliff >= 2.8.0
-BuildRequires:  python3-devel
 BuildRequires:  python3-fixtures
-BuildRequires:  python3-glanceclient >= 2.8.0
-BuildRequires:  python3-keystoneclient >= 3.17.0
+BuildRequires:  python3-glanceclient
+BuildRequires:  python3-keystoneclient >= 3.22.0
 BuildRequires:  python3-mock
-BuildRequires:  python3-novaclient >= 15.0.0
-BuildRequires:  python3-openstacksdk >= 0.17.0
+BuildRequires:  python3-novaclient >= 15.1.0
+BuildRequires:  python3-openstacksdk >= 0.36.0
 BuildRequires:  python3-os-client-config
-BuildRequires:  python3-osc-lib >= 1.14.0
+BuildRequires:  python3-osc-lib >= 2.0.0
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-osprofiler
 BuildRequires:  python3-requests
 BuildRequires:  python3-requests-mock
+BuildRequires:  python3-setuptools
 BuildRequires:  python3-stestr
 BuildRequires:  python3-stevedore
 BuildRequires:  python3-testtools
@@ -57,13 +57,13 @@ Group:          Development/Languages/Python
 Requires:       python3-Babel >= 2.3.4
 Requires:       python3-cinderclient >= 3.3.0
 Requires:       python3-cliff >= 2.8.0
-Requires:       python3-glanceclient >= 2.8.0
+Requires:       python3-glanceclient
 Requires:       python3-heatclient
-Requires:       python3-keystoneauth1 >= 3.6.2
-Requires:       python3-keystoneclient >= 3.17.0
-Requires:       python3-novaclient >= 15.0.0
-Requires:       python3-openstacksdk >= 0.17.0
-Requires:       python3-osc-lib >= 1.14.0
+Requires:       python3-keystoneauth1
+Requires:       python3-keystoneclient >= 3.22.0
+Requires:       python3-novaclient >= 15.1.0
+Requires:       python3-openstacksdk >= 0.36.0
+Requires:       python3-osc-lib >= 2.0.0
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-six >= 1.10.0
@@ -106,14 +106,14 @@ actual REST API client actions.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-openstackclient-4.0.0
+%autosetup -p1 -n python-openstackclient-5.2.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=4.0.0 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=4.0.0 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=5.2.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=5.2.0 %sphinx_build -b man doc/source doc/build/man
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

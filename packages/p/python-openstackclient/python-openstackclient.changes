@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Tue May 12 09:52:28 UTC 2020 - cloud-devel@suse.de
+
+- update to version 5.2.0
+  - Add bindep file
+  - Use 'KeyValueAppendAction' from osc-lib
+  - Bump lower constraint of MarkupSafe
+  - Replace six.iteritems() with .items()
+  - Don't look up project by id if given id
+  - Add storage policy option to create container command
+  - Stop configuring install_command in tox and stop use pip.
+  - Update http links in docs
+  - Doc: launchpad => storyboard
+  - Allow setting floating IP description
+  - Deflate .htaccess
+  - Fix network segment range "_get_ranges" function
+  - Fix copypaste errors in access rule command
+  - Remove redundant OpenStackShell.prepare_to_run_command
+  - Remove plugin projects from test-requirements.txt
+  - neutron: autogenerate docs
+  - Incorrect title for service provider
+  - Add plugin doc page for watcher
+  - Show correct name for resource with quota set to zero
+  - Disallow setting default on internal network
+  - Fix openstack server list --deleted --marker option
+  - Add support for app cred access rules
+  - Fix plugin autodoc generation
+  - Switch image to use SDK
+  - Provide stderr in exception when check_parser fails
+  - Microversion 2.79: Add delete_on_termination to volume-attach API
+  - Complete switch from glanceclient to SDK for image service
+  - Use autoprogram-cliff for remaining plugin docs
+  - Bump tox minversion
+  - Add unit tests and release note for dns_publish_fixed_ip
+  - common: autogenerate docs
+  - Update master for stable/train
+  - Create Volume v3 functional tests
+  - Change dockerhub password
+  - Honor endpoint override from config for volume
+  - Fix functional tests for py3
+  - Stop testing python 2 in tox and zuul.
+  - Raise hacking to more recent 2.0.0
+  - Now we can add description for role creation in OSC
+  - Build utility image for using osc
+  - Replace port 35357 with 5000 for "auth_url"
+  - Switch to using osc_lib.utils.tags
+  - Split plugin docs per project
+  - Fix router create/show if extraroute not supported
+  - Add qos_network_policy_id to network port tests
+  - Link to (some) plugin doc pages
+  - Refactor AggregateTests
+  - Remove trailing newline from dockerhub secret
+  - Update a stale doc reference to use :neutron-doc:
+  - Add dns_publish_fixed_ip attribute to subnets
+  - Fix osc-lib interface change: catch osc-lib Forbidden
+  - Use SDK to get compute API extensions
+  - Add placement to known plugins
+  - Update the content about Import Format
+  - compute: autogenerate docs
+  - versions: Fix 'versions show' help message
+  - Add parent project filter for listing projects
+  - Raise flake8-import-order version to latest
+  - Add "fields" parameter to ListSecurityGroup query
+  - openstack.cli: autogenerate docs
+  - Add redirect testing
+  - Stop silently ignoring invalid 'server create --hint' options
+  - Produce complete content for plugin docs
+  - Remove mention of meetings from docs
+  - Update image building jobs
+  - Add 'openstack server migrate (confirm|revert)' commands
+  - Complete "Drop python2 support" goal
+  - Fix faulthy state argument choice
+
+-------------------------------------------------------------------
 Tue Mar 24 09:48:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add obsoletes
