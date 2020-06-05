@@ -1,7 +1,7 @@
 #
 # spec file for package golang
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,14 +29,10 @@
 %endif
 
 # MANUAL: Update the git_version and git_revision
-%define git_version 3eb39382bfa6a3c42f83674ab080ae13b0e34e5d
-%define git_short   3eb39382bfa6
-# How to get the git_revision
-# git clone https://github.com/docker/libnetwork.git libnetwork
-# cd libnetwork
-# git checkout $git_version
-# git_revision=r$(git rev-list HEAD | wc -l)
-%define git_revision r2877
+%define git_version 153d0769a1181bf591a9637fd487a541ec7db1e6
+%define git_short   153d0769a118
+# git_revision=r$(git rev-list $COMMIT_ID | wc -l)
+%define git_revision r2902
 
 %global provider        github
 %global provider_tld    com

@@ -197,4 +197,13 @@ the Docker 17.07.0_ce update. This SR is in conjunction with:
     <comment>Add bug reference (bsc#1158590).</comment>
     <requestid>754553</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>41471e0a92ad6de965e3a654daa2004d</srcmd5>
+    <version>0.7.0.1+gitr2902_153d0769a118</version>
+    <time>1591380380</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to libnetwork 153d0769a118, which is required for Docker 19.03.11-ce.
+  bsc#1172377</comment>
+    <requestid>811120</requestid>
+  </revision>
 </revisionlist>

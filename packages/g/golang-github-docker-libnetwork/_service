@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="versionformat">git.%h</param>
-    <param name="revision">3eb39382bfa6a3c42f83674ab080ae13b0e34e5d</param>
+    <param name="revision">153d0769a1181bf591a9637fd487a541ec7db1e6</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">libnetwork-*.tar</param>
