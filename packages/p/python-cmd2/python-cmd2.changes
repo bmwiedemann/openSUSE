@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  4 12:37:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not restrict pytest4 as it works quite fine with pytest5
+
+-------------------------------------------------------------------
 Thu Feb 27 13:47:06 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - go back to 0.8.9, cliff (which is the only user) is not compatible

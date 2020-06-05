@@ -47,7 +47,7 @@ BuildRequires:  %{python_module colorama >= 0.3.7}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pyperclip >= 1.6}
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest4}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wcwidth >= 0.1.7}
 # Required by tests.
 BuildRequires:  vim

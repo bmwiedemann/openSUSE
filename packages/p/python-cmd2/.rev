@@ -413,4 +413,12 @@
 - Same commit like december, november and october last year.</comment>
     <requestid>780065</requestid>
   </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>c6ab97fed2b3f2800a54ff48a1a447d9</srcmd5>
+    <version>0.8.9</version>
+    <time>1591380075</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not restrict pytest4 as it works quite fine with pytest5</comment>
+    <requestid>811458</requestid>
+  </revision>
 </revisionlist>
