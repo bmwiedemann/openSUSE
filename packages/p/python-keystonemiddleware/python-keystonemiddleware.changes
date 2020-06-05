@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue May 12 09:58:47 UTC 2020 - cloud-devel@suse.de
+
+- update to version 9.0.0
+  - Update master for stable/train
+  - Rename _v3_to_v2_catalog to _normalize_catalog
+  - Make tests pass in 2022
+  - Change ec2 URLs to v3
+  - Switch to Ussuri jobs
+  - Have middlewarearchitecture doc reference auth_type option
+  - Update invalid link for README
+  - Remove v2.0 functionality
+  - Update hacking for Python3
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - Fix DeprecationWarning: invalid escape sequence issues
+  - Imported Translations from Zanata
+  - Remove universal wheel configuration
+  - Remove keystoneclient exception usage in tests
+  - Fix misspell word
+  - Update the constraints url
+  - Generate pdf documentation
+
+-------------------------------------------------------------------
 Fri Mar 13 07:57:31 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only build

@@ -232,4 +232,12 @@ update to version 4.9.0
     <comment>- switch to python 3.x only build</comment>
     <requestid>784577</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ab1fe9c6b02e9e1d94ea1cd7734e7eba</srcmd5>
+    <version>9.0.0</version>
+    <time>1591380641</time>
+    <user>dimstar_suse</user>
+    <comment>Ussuri Update</comment>
+    <requestid>803568</requestid>
+  </revision>
 </revisionlist>
