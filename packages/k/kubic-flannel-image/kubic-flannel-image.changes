@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  5 10:35:11 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove "--" from the package list to separate pkgs from
+  arguments: kiwi does this implicit now.
+
+-------------------------------------------------------------------
 Tue Apr 28 09:10:49 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Deinstall busybox-sh in favour of bash
