@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.concurrency
-Version:        3.30.0
+Version:        4.0.2
 Release:        0
 Summary:        OpenStack oslo.concurrency library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.concurrency
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.concurrency/oslo.concurrency-3.30.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.concurrency/oslo.concurrency-4.0.2.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-eventlet
 BuildRequires:  python3-fasteners >= 0.7.0
@@ -77,7 +77,7 @@ external processes.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.concurrency-3.30.0
+%autosetup -p1 -n oslo.concurrency-4.0.2
 %py_req_cleanup
 
 %build

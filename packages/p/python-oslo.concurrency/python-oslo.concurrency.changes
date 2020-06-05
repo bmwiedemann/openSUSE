@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue May 12 09:54:07 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.0.2
+  - Spiff up docs for *_with_prefix
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - tox: Keeping going with docs
+  - Stop to build universal wheel
+  - Update the constraints url
+  - tox: Trivial cleanup
+  - Update master for stable/train
+  - ignore reno builds artifacts
+  - Drop python 2.7 support and testing
+  - Document management and history of lock files
+  - Update hacking for Python3
+  - Switch to Ussuri jobs
+  - Add lock_with_prefix convenience utility
+  - Fix remove_lock test
+  - trivial: Cleanup tox.ini
+  - remove outdated header
+  - Use unittest.mock instead of third party mock
+  - Stop configuring install_command in tox.
+  - Some test cleanup
+  - Bump the openstackdocstheme extension to 1.20
+
+-------------------------------------------------------------------
 Mon Mar 23 12:17:14 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add obsoletes
