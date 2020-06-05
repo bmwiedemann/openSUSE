@@ -31,6 +31,8 @@ License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://www.krita.org/
 Source0:        https://download.kde.org/stable/krita/%{version}/krita-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-with-Qt-5.15.patch
 BuildRequires:  OpenColorIO-devel
 BuildRequires:  OpenEXR-devel
 BuildRequires:  extra-cmake-modules
@@ -104,7 +106,7 @@ Development headers and libraries for Krita.
 %lang_package
 
 %prep
-%setup -q -n krita-%{version}
+%autosetup -p1
 
 %build
 # install translations to %%{_kf5_localedir} so they don't clash with the krita translations in calligra-l10n (KDE4 based)
