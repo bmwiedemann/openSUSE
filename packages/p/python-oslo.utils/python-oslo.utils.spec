@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.utils
-Version:        3.41.5
+Version:        4.1.1
 Release:        0
 Summary:        OpenStack Utils Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.utils
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.utils/oslo.utils-3.41.5.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.utils/oslo.utils-4.1.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Babel
 BuildRequires:  python3-ddt
@@ -32,7 +32,7 @@ BuildRequires:  python3-eventlet
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-iso8601 >= 0.1.11
 BuildRequires:  python3-mock
-BuildRequires:  python3-monotonic >= 0.6
+BuildRequires:  python3-monotonic
 BuildRequires:  python3-netaddr >= 0.7.18
 BuildRequires:  python3-netifaces >= 0.10.4
 BuildRequires:  python3-oslo.i18n >= 3.15.3
@@ -76,7 +76,7 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for OpenStack utils library.
 
 %prep
-%autosetup -p1 -n oslo.utils-3.41.5
+%autosetup -p1 -n oslo.utils-4.1.1
 
 %py_req_cleanup
 
@@ -87,7 +87,7 @@ Documentation for OpenStack utils library.
 %py3_install
 
 # generate html docs
-PBR_VERSION=3.41.5 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=4.1.1 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

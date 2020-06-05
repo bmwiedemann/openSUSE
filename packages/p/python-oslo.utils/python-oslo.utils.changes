@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue May 12 09:49:15 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.1.1
+  - trivial: Move setup code into setUp helper
+  - Switch to Ussuri jobs
+  - Remove universal wheel configuration
+  - tests: Convert remaining tests to mock
+  - tox: Use upper-constraints for docs jobs
+  - Make mask_password case insensitive, and add new patterns
+  - Ignore releasenote cache within git untracked files
+  - Ignore the .eggs directory
+  - Support "qemu-img info" virtual size in QEMU 4.1 and later
+  - reword releasenote for py27 support dropping
+  - Bump the openstackdocstheme extension to 1.20
+  - tox: Keeping going with docs
+  - Update master for stable/train
+  - Add test to check scientific notation on disk virtual size
+  - Update hacking for Python3
+  - Use unittest.mock instead of third party mock
+  - remove outdated header
+  - Fix invalid escapes in regular expression strings
+  - tox: Trivial cleanup
+  - imageutils: Report format specific details when using JSON output format
+  - Verify the sanitize keys are lowered
+  - Update the constraints url
+  - Make mask_dict_password case insensitive and add new patterns
+  - Fix regex to correctly recognize scientific notation with QemuImgInfo
+  - Flatten test case
+  - [ussuri][goal] Drop python 2.7 support and testing
+
+-------------------------------------------------------------------
 Wed Mar 18 20:56:50 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.41.5

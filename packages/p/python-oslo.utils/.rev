@@ -411,4 +411,12 @@
   - Update TOX/UPPER_CONSTRAINTS_FILE for stable/train</comment>
     <requestid>786268</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5207432f610a1e73f5e9125b3defe6c6</srcmd5>
+    <version>4.1.1</version>
+    <time>1591380929</time>
+    <user>dimstar_suse</user>
+    <comment>Ussuri Update</comment>
+    <requestid>803601</requestid>
+  </revision>
 </revisionlist>
