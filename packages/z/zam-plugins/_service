@@ -2,7 +2,7 @@
   <service mode="disabled" name="tar_scm">
     <param name="url">https://github.com/zamaudio/zam-plugins.git</param>
     <param name="scm">git</param>
-    <param name="revision">3.11</param>
+    <param name="revision">3.12</param>
     <param name="versionformat">@PARENT_TAG@</param>
   </service>
   <service mode="disabled" name="recompress">

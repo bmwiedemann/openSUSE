@@ -1,7 +1,7 @@
 #
 # spec file for package zam-plugins
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018 Edgar Aichinger <edogawa@aon.at>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,11 +18,10 @@
 
 
 Name:           zam-plugins
-Version:        3.11
+Version:        3.12
 Release:        0
 Summary:        A collection of audio plugins for high quality processing
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://www.zamaudio.com/?p=976
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE zam-plugins-verbose_build.patch aloisio@gmx.com -- prints compilation flags
@@ -65,41 +64,112 @@ ZamGEQ31X2 - Stereo 31 band graphic equalizer plugin
 
 %package -n ladspa-%{name}
 Summary:        A collection of audio plugins for high quality processing
-Requires:       ladspa%{?_isa}
+Requires:       ladspa
 Conflicts:      %{name}
 
 %description -n ladspa-%{name}
-${sum}.
+These plugins provide DSP. Of these, ZamValve has two different
+models, one of which uses very large proportion of CPU, but has been
+reported to produce more realistic sound than the tanh model.
+
+There currently is no documentation on how to use these plugins, but
+anyone who is familiar with outboard gear should be able to work it out.
+The default settings and almost every slider is calibrated to
+standard ranges.
+
+The suite so far consists of:
+
+ZamAutoSat - Automatic saturation plugin
+ZamComp - Mono Compressor plugin
+ZamCompX2 - Stereo Compressor plugin
+ZamCompExp - Stereo Compressor/Expander plugin
+ZamEQ2 - 2x parametric EQ (with high/lowshelf and HP/LP) plugin
+ZamValve - Valve distortion (WDF physical model or tanh) plugin
+ZamGEQ31 - Mono 31 band graphic equalizer plugin
+ZamGEQ31X2 - Stereo 31 band graphic equalizer plugin
 
 %package -n lv2-%{name}
 Summary:        A collection of audio plugins for high quality processing
-Requires:       lv2%{?_isa}
+Requires:       lv2
 Conflicts:      %{name}
 
 %description -n lv2-%{name}
-${sum}.
+These plugins provide DSP. Of these, ZamValve has two different
+models, one of which uses very large proportion of CPU, but has been
+reported to produce more realistic sound than the tanh model.
+
+There currently is no documentation on how to use these plugins, but
+anyone who is familiar with outboard gear should be able to work it out.
+The default settings and almost every slider is calibrated to
+standard ranges.
+
+The suite so far consists of:
+
+ZamAutoSat - Automatic saturation plugin
+ZamComp - Mono Compressor plugin
+ZamCompX2 - Stereo Compressor plugin
+ZamCompExp - Stereo Compressor/Expander plugin
+ZamEQ2 - 2x parametric EQ (with high/lowshelf and HP/LP) plugin
+ZamValve - Valve distortion (WDF physical model or tanh) plugin
+ZamGEQ31 - Mono 31 band graphic equalizer plugin
+ZamGEQ31X2 - Stereo 31 band graphic equalizer plugin
 
 %package vst
 Summary:        A collection of audio plugins for high quality processing
 Conflicts:      %{name}
 
 %description vst
-${sum}.
+These plugins provide DSP. Of these, ZamValve has two different
+models, one of which uses very large proportion of CPU, but has been
+reported to produce more realistic sound than the tanh model.
+
+There currently is no documentation on how to use these plugins, but
+anyone who is familiar with outboard gear should be able to work it out.
+The default settings and almost every slider is calibrated to
+standard ranges.
+
+The suite so far consists of:
+
+ZamAutoSat - Automatic saturation plugin
+ZamComp - Mono Compressor plugin
+ZamCompX2 - Stereo Compressor plugin
+ZamCompExp - Stereo Compressor/Expander plugin
+ZamEQ2 - 2x parametric EQ (with high/lowshelf and HP/LP) plugin
+ZamValve - Valve distortion (WDF physical model or tanh) plugin
+ZamGEQ31 - Mono 31 band graphic equalizer plugin
+ZamGEQ31X2 - Stereo 31 band graphic equalizer plugin
 
 %package jack
 Summary:        A collection of audio plugins for high quality processing
 Conflicts:      %{name}
 
 %description jack
-${sum}.
+These plugins provide DSP. Of these, ZamValve has two different
+models, one of which uses very large proportion of CPU, but has been
+reported to produce more realistic sound than the tanh model.
+
+There currently is no documentation on how to use these plugins, but
+anyone who is familiar with outboard gear should be able to work it out.
+The default settings and almost every slider is calibrated to
+standard ranges.
+
+The suite so far consists of:
+
+ZamAutoSat - Automatic saturation plugin
+ZamComp - Mono Compressor plugin
+ZamCompX2 - Stereo Compressor plugin
+ZamCompExp - Stereo Compressor/Expander plugin
+ZamEQ2 - 2x parametric EQ (with high/lowshelf and HP/LP) plugin
+ZamValve - Valve distortion (WDF physical model or tanh) plugin
+ZamGEQ31 - Mono 31 band graphic equalizer plugin
+ZamGEQ31X2 - Stereo 31 band graphic equalizer plugin
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}" CXXFLAGS="%{optflags}"
-make %{?_smp_mflags} SKIP_STRIPPING=true
+%make_build SKIP_STRIPPING=true
 
 %install
 %make_install PREFIX=%{_prefix} LIBDIR=%{_lib}

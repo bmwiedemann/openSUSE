@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun  5 15:54:20 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.12
+  * Bugfixes and DSP improvements
+    + ZamCompX2: Fix bug with left channel using right side
+    + Compressors: 5% speedup
+    + ZaMultiCompX2: 15% Speed up - remove averaging every
+      cycle
+    + ZaMultiCompX2: Fix averaging
+    + ZamTube: Fix uninitialised bugs
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sat Sep 21 23:43:39 UTC 2019 - Giordano Boschetti <geekosdaw@gmail.com>
 
 - separate plugins in specific packages with the conventional Linux names
