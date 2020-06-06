@@ -46,7 +46,6 @@
     <package name="haproxy"/>
     <package name="mandoc"/>
     <archive name="entrypoint.tar.gz"/>
-    <package name="--"/>
     <package name="-busybox-man"/>
   </packages>
 </image>
