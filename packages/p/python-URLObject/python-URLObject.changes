@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  5 14:37:28 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_nose.patch replacing use of nose with the standard
+  library.
+
+-------------------------------------------------------------------
 Thu Nov  7 16:03:18 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Run through spec-cleaner

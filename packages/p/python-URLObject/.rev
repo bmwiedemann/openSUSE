@@ -24,4 +24,13 @@
     <comment>- Run through spec-cleaner</comment>
     <requestid>746344</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4803cb79bcb60b5c64ca06c8cf455a88</srcmd5>
+    <version>2.4.3</version>
+    <time>1591479596</time>
+    <user>dimstar_suse</user>
+    <comment>- Add remove_nose.patch replacing use of nose with the standard
+  library.</comment>
+    <requestid>811923</requestid>
+  </revision>
 </revisionlist>

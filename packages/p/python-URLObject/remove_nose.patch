@@ -1,0 +1,41 @@
+--- a/test/netloc_test.py
++++ b/test/netloc_test.py
+@@ -1,7 +1,5 @@
+ import unittest
+ 
+-from nose.tools import assert_raises
+-
+ from urlobject.netloc import Netloc
+ 
+ 
+@@ -49,8 +47,8 @@ class NetlocTest(unittest.TestCase):
+                 'zack:5678@github.com:443')
+ 
+     def test_with_password_on_a_netloc_with_no_username_raises_ValueError(self):
+-        assert_raises(ValueError,
+-                      lambda: Netloc('github.com').with_password('1234'))
++        with self.assertRaises(ValueError):
++            Netloc('github.com').with_password('1234')
+ 
+     def test_with_auth_with_one_arg_adds_username(self):
+         assert (Netloc('github.com').with_auth('zack') ==
+--- a/test/urlobject_test.py
++++ b/test/urlobject_test.py
+@@ -2,7 +2,6 @@ import platform
+ import doctest
+ import unittest
+ 
+-from nose.tools import assert_raises
+ from urlobject import urlobject as urlobject_module
+ from urlobject import URLObject
+ from urlobject.six import text_type, u, print_
+@@ -188,7 +187,8 @@ class URLObjectModificationTest(unittest
+ 
+     def test_with_password_raises_ValueError_when_there_is_no_username(self):
+         url = URLObject('https://github.com/')
+-        assert_raises(ValueError, lambda: url.with_password('1234'))
++        with self.assertRaises(ValueError):
++            url.with_password('1234')
+ 
+     def test_with_password_replaces_password(self):
+         url = URLObject('https://zack:1234@github.com/')

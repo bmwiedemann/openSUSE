@@ -1,7 +1,7 @@
 #
 # spec file for package python-URLObject
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,15 @@ Summary:        Python library for manipulating URLs (and some URIs) in a more n
 License:        SUSE-Public-Domain
 URL:            https://github.com/zacharyvoase/urlobject
 Source:         https://files.pythonhosted.org/packages/source/U/URLObject/URLObject-%{version}.tar.gz
+# patch-feature-upstream remove_nose.patch gh#zacharyvoase/urlobject#42 mcepl@suse.com
+# Remove the need for nose and use the standard library.
+Patch0:         remove_nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -42,6 +45,7 @@ test-driven manner, and has full Sphinx documentation.
 
 %prep
 %setup -q -n URLObject-%{version}
+%autopatch -p1
 
 %build
 %python_build
@@ -51,7 +55,7 @@ test-driven manner, and has full Sphinx documentation.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
 %doc README.rst
