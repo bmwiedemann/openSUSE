@@ -1,0 +1,19 @@
+From: Dave Plater <davejplater@gmail.com>
+Date: Sat  6 Jun 09:45:43 SAST 2020
+Subject: Fix missing QPainterPath include
+Author: Dave Plater <davejplater@gmail.com>
+
+Qt5.15 needs #include <QPainterPath> for QPainterPath class
+
+diff --git a/src/widgetCollection/waveformSlider.cpp b/src/widgetCollection/waveformSlider.cpp
+index 38c4fea..af314e7 100644
+--- a/src/widgetCollection/waveformSlider.cpp
++++ b/src/widgetCollection/waveformSlider.cpp
+@@ -26,6 +26,7 @@
+ #include <QMouseEvent>
+ #include <QFile>
+ #include <QStylePainter>
++#include <QPainterPath>
+ #include <QStyleOptionFocusRect>
+ 
+ #define IDLE_INTERVAL 60

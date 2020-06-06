@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun  6 07:48:43 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Update to snapshot 0.8.2.pre61qt5.9b036e and fix qt5.15 build
+  with nulloy-QPainterPath-patch see:
+  https://github.com/nulloy/nulloy/issues/156
+- Remove incorporated patches:
+  0001-configurable-library-directory.patch,
+  0001-vlc-phonon-plugins-update.patch and
+  0001-pkg_check_lib-fix.patch
+- Upstream changes beside patches:
+  *Fix LIBDIR variable reference
+
+-------------------------------------------------------------------
 Wed Nov  6 14:56:49 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to make zip timestamps reproducible (boo#1134568)

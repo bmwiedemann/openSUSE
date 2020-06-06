@@ -72,4 +72,12 @@ Fixed plugin directory (problem mentioned in SR 342476).</comment>
     <comment></comment>
     <requestid>746150</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c14be05ce95d09f9af9c30b04d5757a6</srcmd5>
+    <version>0.8.2.pre61qt5.9b036e</version>
+    <time>1591479646</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812037</requestid>
+  </revision>
 </revisionlist>

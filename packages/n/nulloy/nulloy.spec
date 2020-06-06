@@ -1,7 +1,7 @@
 #
 # spec file for package nulloy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,18 @@
 #
 
 
-%define rev d15e0f3aee22ef1cdd84729cf75f505adcc0ffda
+%define rev 9b036eafd1b526c70c8fce8f5f6c1e76b9d74761
 
 Name:           nulloy
-Version:        0.8.2.pre61qt5
+Version:        0.8.2.pre61qt5.9b036e
 Release:        0
 Summary:        Music player with a Waveform Progress Bar
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Players
-Url:            http://nulloy.com
+URL:            http://nulloy.com
 Source:         https://github.com/nulloy/nulloy/archive/%{rev}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         0001-configurable-library-directory.patch
-Patch1:         0001-vlc-phonon-plugins-update.patch
-Patch2:         0001-pkg_check_lib-fix.patch
-Patch3:         reproducible.patch
+Patch0:         reproducible.patch
+Patch1:         nulloy-QPainterPath-patch
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libQt5Gui-private-headers-devel
@@ -100,8 +98,8 @@ music player with a Waveform Progressbar.
 
 %build
 # This is not an autotools configure
-CFLAGS="%{optflags} -isystem %{_includedir}/phonon4qt5"
-CXXFLAGS="$CFLAGS" \
+CFLAGS="%{optflags}" \
+CXXFLAGS="%{optflags}" \
 QMAKE=qmake-qt5 \
 LRELEASE=lrelease-qt5 \
 ./configure \
@@ -128,17 +126,7 @@ LRELEASE=lrelease-qt5 \
 	--gstreamer-tagreader
 
 %makeinstall
-mkdir -p %{buildroot}%{_libdir}
-mv %{buildroot}%{_prefix}/%{name} %{buildroot}%{_libdir}
 %suse_update_desktop_file %{name}
-
-%post
-%icon_theme_cache_post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
 
 %files
 %defattr(-,root,root)
