@@ -20,7 +20,7 @@
 %define _lto_cflags %{nil}
 %define sover 2_6
 Name:           ulfius
-Version:        2.6.6
+Version:        2.6.7
 Release:        0
 Summary:        Web Framework for REST Applications in C
 License:        MIT
