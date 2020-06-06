@@ -95,4 +95,12 @@
 - Drop merged patch fix-gnutls-3.6.4.patch</comment>
     <requestid>751859</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>02a47ba82f1e474891f2a15652eeaa47</srcmd5>
+    <version>0.11</version>
+    <time>1591479610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812020</requestid>
+  </revision>
 </revisionlist>

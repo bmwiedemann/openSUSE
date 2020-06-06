@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  5 05:17:39 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- add tests-Fix-building-with-GCC-10.patch
+
+-------------------------------------------------------------------
 Thu Nov 28 12:37:33 UTC 2019 - Jiri Slaby <jslaby@suse.com>
 
 - Version bump to 0.11:
