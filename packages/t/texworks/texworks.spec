@@ -25,6 +25,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texworks/
 Source0:        https://github.com/TeXworks/texworks/archive/release-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-QtPDF-Fix-compilation-with-Qt-5.15.patch
 BuildRequires:  cmake
 BuildRequires:  dbus-1-devel
 BuildRequires:  desktop-file-utils
@@ -82,6 +84,7 @@ This package adds lua scripting abitilies to TeXworks.
 
 %prep
 %setup -q -n texworks-release-%{version}
+%patch0 -p1
 
 %build
 
