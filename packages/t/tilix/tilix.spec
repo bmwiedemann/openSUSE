@@ -1,7 +1,7 @@
 #
 # spec file for package tilix
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ Version:        1.9.3
 Release:        0
 Summary:        A tiling terminal emulator based on GTK+ 3
 License:        MPL-2.0 AND LGPL-3.0-only
-Group:          System/X11/Terminals
 URL:            https://github.com/gnunn1/tilix
 Source0:        https://github.com/gnunn1/tilix/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # See https://github.com/dlang/dub/issues/838 on why we need to have the full source code as dependency
@@ -42,6 +41,8 @@ Patch1:         dynamic-link.patch
 Patch2:         fix-ldc-link.patch
 # PATCH-FIX-UPSTREAM fix-meson-build.patch
 Patch3:         fix-meson-build.patch
+# PATCH-FIX-UPSTREAM 0001-Avoid-calling-values-on-a-shared-object.patch gh#gnunn1/tilix#1733
+Patch4:         0001-Avoid-calling-values-on-a-shared-object.patch
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig
@@ -86,13 +87,12 @@ A tiling terminal emulator for Linux using GTK+ 3
 
 %package -n nautilus-extension-tilix
 Summary:        Nautilus Extension to Open Tilix in Folders
-Group:          System/GUI/GNOME
-%if 0%{?suse_version} < 1550
-Requires:       python-nautilus
-%else
-Requires:       python3-nautilus
-%endif
 Supplements:    (nautilus and %{name})
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
+Requires:       python3-nautilus
+%else
+Requires:       python-nautilus
+%endif
 
 %description -n nautilus-extension-tilix
 This is a Nautilus extension that allows you to open tilix in
@@ -103,6 +103,7 @@ arbitrary folders.
 %prep
 %setup -q -a 1
 %patch0 -p 1
+%patch4 -p 1
 %if 0%{?suse_version} < 1550
 %if %{with dcompiler_dmd}
 %patch1 -p 1
@@ -171,9 +172,9 @@ rm %{buildroot}%{_datadir}/glib-2.0/schemas/gschemas.compiled
 %{_datadir}/icons/hicolor/symbolic/apps/com.gexperts.Tilix-symbolic.svg
 %else
 %{_datadir}/icons/hicolor/scalable/apps/com.gexperts.Tilix-symbolic.svg
-%{_mandir}/man1/tilix.1%{?ext_man}
 %{_datadir}/tilix/schemes/yaru.json
 %endif
+%{_mandir}/man1/tilix.1%{?ext_man}
 %{_datadir}/glib-2.0/schemas/com.gexperts.Tilix.gschema.xml
 %{_datadir}/dbus-1/services/com.gexperts.Tilix.service
 

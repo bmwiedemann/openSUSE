@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jun  5 23:29:52 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Always apply patch 0001-Avoid-calling-values-on-a-shared-object.patch
+  so we fix builds for all openSUSE distributions
+
+-------------------------------------------------------------------
+Fri Jun  5 22:38:17 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Refresh Patch (fix-meson-build.patch) with some minor updates from upstream
+- Package man file
+- Add patch 0001-Avoid-calling-values-on-a-shared-object.patch to make it build on newer ldc
+
+-------------------------------------------------------------------
+Wed Jun  3 22:20:04 UTC 2020 - Max Lin <mlin@suse.com>
+
+- Use python3-nautilus for Leap 15.2 since python2-nautilus has been dropped
+
+-------------------------------------------------------------------
 Sat Nov 30 18:58:24 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
 
 - Use python3-nautilus dependency for Tumbleweed since python2 support have
