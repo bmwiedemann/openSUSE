@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  5 10:48:12 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove "--" from the package list to separate pkgs from
+  arguments: kiwi does this implicit now.
+
+-------------------------------------------------------------------
 Mon May 11 12:58:26 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Only install default htdocs if htdocs directory is totally empty

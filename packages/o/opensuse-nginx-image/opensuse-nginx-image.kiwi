@@ -51,7 +51,6 @@
     <package name="bash"/>
     <archive name="entrypoint.tar.gz"/>
     <package name="mandoc"/>
-    <package name="--"/>
     <package name="-busybox-man"/>
   </packages>
 </image>
