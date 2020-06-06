@@ -49,7 +49,6 @@
   <packages type="bootstrap">
     <package name="squid"/>
     <package name="mandoc"/>
-    <package name="--"/>
     <package name="-busybox-man"/>
     <archive name="entrypoint.tar.gz"/>
   </packages>

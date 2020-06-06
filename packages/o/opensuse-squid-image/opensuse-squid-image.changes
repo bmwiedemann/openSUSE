@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  5 10:49:22 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove "--" from the package list to separate pkgs from
+  arguments: kiwi does this implicit now.
+
+-------------------------------------------------------------------
 Sat Apr 18 19:52:11 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - De-install busybox-man in favour of mandoc
