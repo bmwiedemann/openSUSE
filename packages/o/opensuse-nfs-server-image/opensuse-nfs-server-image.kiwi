@@ -45,7 +45,6 @@
     <package name="nfs-kernel-server"/>
     <package name="mandoc"/>
     <package name="kubernetes-pause"/>
-    <package name="--"/>
     <package name="-busybox-man"/>
     <archive name="entrypoint.tar.gz"/>
   </packages>

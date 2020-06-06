@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  5 10:47:29 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove "--" from the package list to separate pkgs from
+  arguments: kiwi does this implicit now.
+
+-------------------------------------------------------------------
 Thu Jun  4 08:56:26 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add README file with documentation how to use this container
