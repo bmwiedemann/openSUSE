@@ -33,6 +33,8 @@ Patch1:         0001-Revert-Exiv2-is-now-released-with-exported-targets-u.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         fix-build-with-opencv-4.2.patch
 Patch3:         dlib-update-to-work-with-latest-version-of-OpenCV.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         Fix-build-with-Qt-5.15.patch
 BuildRequires:  QtAV-devel >= 1.12
 BuildRequires:  bison
 BuildRequires:  boost-devel
@@ -184,6 +186,7 @@ The main digikam libraries that are being shared between showfoto and digikam
 %endif
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 # Remove build time references so build-compare can do its work
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')

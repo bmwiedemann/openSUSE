@@ -1575,4 +1575,12 @@ ImageEditor : Add HTMLGallery, Calendar, ExpoBlending, VideSlideshow,</comment>
   * dlib-update-to-work-with-latest-version-of-OpenCV.patch</comment>
     <requestid>763631</requestid>
   </revision>
+  <revision rev="187" vrev="3">
+    <srcmd5>0ed009b44b924a3c5154d6bdffc802d7</srcmd5>
+    <version>6.4.0</version>
+    <time>1591479568</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811909</requestid>
+  </revision>
 </revisionlist>

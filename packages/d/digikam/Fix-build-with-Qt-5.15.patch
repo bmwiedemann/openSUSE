@@ -1,0 +1,42 @@
+From 9ef1670e7ea0852cdfb694dd4d839977305bd4a2 Mon Sep 17 00:00:00 2001
+From: Gilles Caulier <caulier.gilles@gmail.com>
+Date: Wed, 20 May 2020 13:05:55 +0200
+Subject: fix broken compilation with Qt 5.15 CCBUGS: 421817
+
+diff --git a/core/libs/dimg/filters/levels/histogrampainter.cpp b/core/libs/dimg/filters/levels/histogrampainter.cpp
+index 241d5fc..f11ad4b 100644
+--- a/core/libs/dimg/filters/levels/histogrampainter.cpp
++++ b/core/libs/dimg/filters/levels/histogrampainter.cpp
+@@ -30,6 +30,7 @@
+ // Qt includes
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ // KDE includes
+ 
+diff --git a/core/libs/dimg/filters/curves/curveswidget.cpp b/core/libs/dimg/filters/curves/curveswidget.cpp
+index cccccbd..e8b2e1b 100644
+--- a/core/libs/dimg/filters/curves/curveswidget.cpp
++++ b/core/libs/dimg/filters/curves/curveswidget.cpp
+@@ -42,6 +42,7 @@
+ #include <QFontMetrics>
+ #include <QPaintEvent>
+ #include <QMouseEvent>
++#include <QPainterPath>
+ 
+ // KDE includes
+ 
+diff --git a/core/dplugins/generic/view/presentation/opengl/presentationgl.cpp b/core/dplugins/generic/view/presentation/opengl/presentationgl.cpp
+index b376994..4d4dbfb 100644
+--- a/core/dplugins/generic/view/presentation/opengl/presentationgl.cpp
++++ b/core/dplugins/generic/view/presentation/opengl/presentationgl.cpp
+@@ -44,6 +44,8 @@
+ #include <QMatrix>
+ #include <QMouseEvent>
+ #include <QPainter>
++#include <QPainterPath>
++#include <QPainterPathStroker>
+ #include <QPixmap>
+ #include <QTimer>
+ #include <QWheelEvent>

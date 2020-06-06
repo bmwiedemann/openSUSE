@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  5 11:55:04 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Fix-build-with-Qt-5.15.patch to fix build with Qt 5.15
+  (kde#421817)
+
+-------------------------------------------------------------------
 Sat Jan 11 22:09:41 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patches to fix build with OpenCV >= 4.2 (boo#1160721):
