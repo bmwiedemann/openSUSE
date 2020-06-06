@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  5 10:45:36 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove "--" from the package list to separate pkgs from
+  arguments: kiwi does this implicit now.
+
+-------------------------------------------------------------------
 Fri Apr 17 13:45:25 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use bind-utils instead busybox variant

@@ -35,4 +35,13 @@
 - Use mandoc instead of busybox variant</comment>
     <requestid>798935</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>42b5c6306d50055dd5baed53d4545f16</srcmd5>
+    <version>1.0.0</version>
+    <time>1591423956</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove &quot;--&quot; from the package list to separate pkgs from
+  arguments: kiwi does this implicit now. (forwarded request 811750 from dimstar)</comment>
+    <requestid>811761</requestid>
+  </revision>
 </revisionlist>
