@@ -1,0 +1,15 @@
+diff -up adns-1.5.1/src/event.c.me adns-1.5.1/src/event.c
+diff -up adns-1.5.1/src/internal.h.me adns-1.5.1/src/internal.h
+--- adns-1.5.1/src/internal.h.me	2020-02-18 13:54:38.578415675 +0100
++++ adns-1.5.1/src/internal.h	2020-02-18 14:00:26.398198338 +0100
+@@ -246,7 +246,9 @@ union maxalign {
+   void *p;
+   void (*fp)(void);
+   union maxalign *up;
+-} data;
++};
++
++extern union maxalign data;
+ 
+ struct adns__query {
+   adns_state ads;

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  2 12:48:11 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- add adns-1.5.1-gcc10.patch to fix build with GCC10
+- run spec-cleaner
+
+-------------------------------------------------------------------
 Sat Nov  4 20:26:32 UTC 2017 - aavindraa@gmail.com
 
 - Update to 1.5.1

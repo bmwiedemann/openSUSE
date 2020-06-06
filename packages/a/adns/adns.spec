@@ -1,7 +1,7 @@
 #
 # spec file for package adns
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           adns
 Version:        1.5.1
 Release:        0
 Summary:        Advanced Easy-to-Use Asynchronous-Capable DNS Utilities
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/DNS/Utilities
-Url:            http://www.chiark.greenend.org.uk/~ian/adns/ftp/
+URL:            https://www.chiark.greenend.org.uk/~ian/adns/ftp/
 Source0:        http://www.chiark.greenend.org.uk/~ian/adns/ftp/%{name}-%{version}.tar.gz
 Source1:        http://www.chiark.greenend.org.uk/~ian/adns/ftp/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
@@ -32,6 +32,7 @@ Source4:        baselibs.conf
 Patch0:         adns-1.4-destdir.patch
 Patch1:         adns-1.4-configure.patch
 Patch2:         adns-visibility.patch
+Patch3:         adns-1.5.1-gcc10.patch
 BuildRequires:  autoconf
 
 %description
@@ -63,12 +64,13 @@ programs with libads support.
 %patch0
 %patch1
 %patch2
+%patch3 -p1
 cp %{SOURCE3} .
 
 %build
 autoreconf -fiv
 %configure
-make %{?_smp_mflags} all
+%make_build all
 
 %install
 %make_install
@@ -76,7 +78,8 @@ make %{?_smp_mflags} all
 rm %{buildroot}%{_libdir}/*.a
 
 %files
-%doc COPYING GPL-vs-LGPL README* TODO changelog
+%license COPYING
+%doc GPL-vs-LGPL README* TODO changelog
 %{_bindir}/adns*
 
 %files -n %{lname}
