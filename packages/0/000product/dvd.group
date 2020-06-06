@@ -1768,7 +1768,6 @@
     <package name="libavformat58" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libavresample4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavutil56" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libb64-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbabl-0_1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbase" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbasicobjects0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
