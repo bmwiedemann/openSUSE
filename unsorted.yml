@@ -8236,6 +8236,7 @@ unsorted:
   - libb2-1 
   - libb2-devel 
   - libb64 
+  - libb64-0 
   - libb64-devel 
   - libbabl-0_1-0-32bit: [x86_64] 
   - libbamf3-2 
@@ -9391,8 +9392,6 @@ unsorted:
   - libgfortran5-32bit: [x86_64] 
   - libgfortran5-gcc9 
   - libgfortran5-gcc9-32bit: [x86_64] 
-  - libggz2 
-  - libggz2-devel 
   - libgiblib1 
   - libgif7-32bit: [x86_64] 
   - libgig-devel 
@@ -10610,6 +10609,7 @@ unsorted:
   - libnet-doc 
   - libnet9 
   - libnetapi-devel 
+  - libnetapi-devel-32bit: [x86_64] 
   - libnetcdf-cxx4-gnu-hpc 
   - libnetcdf-cxx4-gnu-hpc-devel 
   - libnetcdf-cxx4_4_3_1-gnu-hpc 
@@ -12556,7 +12556,7 @@ unsorted:
   - libvkd3d1-32bit: [x86_64] 
   - libvma: [x86_64] 
   - libvma-devel: [x86_64] 
-  - libvma8: [x86_64] 
+  - libvma9: [x86_64] 
   - libvmdk-devel 
   - libvmdk-tools 
   - libvmdk1 
@@ -17166,6 +17166,7 @@ unsorted:
   - perl-Mojolicious-Plugin-AssetPack 
   - perl-Mojolicious-Plugin-CHI 
   - perl-Mojolicious-Plugin-NYTProf 
+  - perl-Mojolicious-Plugin-OAuth2 
   - perl-Mojolicious-Plugin-RenderFile 
   - perl-Mojolicious-Plugin-Status 
   - perl-Monitoring-Plugin 
@@ -18159,6 +18160,8 @@ unsorted:
   - postgresql11-timescaledb 
   - postgresql12-devel 
   - postgresql12-docs 
+  - postgresql12-pg_cron 
+  - postgresql12-pg_cron-llvmjit 
   - postgresql12-plperl 
   - postgresql12-plpython 
   - postgresql12-pltcl 
@@ -18553,7 +18556,6 @@ unsorted:
   - python-mox3-doc 
   - python-mpi4py-common-devel 
   - python-mpi4py-doc 
-  - python-murano-pkg-check 
   - python-muranoclient 
   - python-muranoclient-doc 
   - python-nautilus-common-devel 
@@ -18680,9 +18682,6 @@ unsorted:
   - python2-pycairo-devel 
   - python2-python-dotenv 
   - python2-setuptools 
-  - python2-sushy 
-  - python2-tooz 
-  - python2-yaql 
   - python3-32bit: [x86_64] 
   - python3-APScheduler 
   - python3-AnyQt 
@@ -20192,7 +20191,6 @@ unsorted:
   - python3-marshmallow 
   - python3-masakariclient 
   - python3-matplotlib-latex 
-  - python3-matplotlib-qt-shared 
   - python3-matplotlib-qt5 
   - python3-matplotlib-tk 
   - python3-matplotlib-web 
@@ -20262,6 +20260,7 @@ unsorted:
   - python3-multipledispatch 
   - python3-munch 
   - python3-munkres 
+  - python3-murano-pkg-check 
   - python3-musicbrainzngs 
   - python3-mutagen 
   - python3-mutatorMath 
@@ -32773,6 +32772,7 @@ unsorted:
   - thrift 
   - thttpd 
   - thunar-devel 
+  - thunar-plugin-dropbox 
   - thunar-plugin-shares 
   - thunar-plugin-shares-lang 
   - thunar-plugin-vcs 
@@ -33816,6 +33816,8 @@ unsorted:
   - wmpomme 
   - wmutils 
   - woff2-devel 
+  - wofi 
+  - wofi-devel 
   - wol-udev-rules 
   - woodstox-core 
   - woodstox-core-javadoc 
