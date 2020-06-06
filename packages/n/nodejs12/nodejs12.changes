@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu Jun  4 11:58:49 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 12.18.0:
+  * napi: fix various types of memory corruption in napi_get_value_string_*()
+    (CVE-2020-8174, bsc#1172443)
+  * http2: fix HTTP/2 Large Settings Frame DoS
+    (CVE-2020-11080, bsc#1172442)
+  * TLS session reuse can lead to host certificate verification bypass
+    (CVE-2020-8172, bsc#1172441)
+
+- use system ICU on SLE-15
+
+-------------------------------------------------------------------
+Wed May 27 10:56:40 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Update to LTS release 12.17.0:
+  * async-hooks: introduce async-storage API
+  * cli: Added a --trace-sigint CLI flag that will print the current
+   execution stack on SIGINT #29207.
+  * crypto: Various crypto APIs now support Diffie-Hellman secrets
+  * dns: Added the dns.ALL flag, that can be passed to dns.lookup()
+    with dns.V4MAPPED to return resolved IPv6 addresses as well as
+    IPv4 mapped IPv6 addresses #32183.
+  * events: It is now possible to monitor 'error' events on an EventEmitter
+    without consuming the emitted error by installing a listener
+    using the symbol EventEmitter.errorMonitor
+  * http,https: The default value of server.headersTimeout for
+    http and https servers was increased from 40000 to 60000ms
+  * process: It is now possible to monitor 'uncaughtException'
+    events without overriding the default behavior
+  * repl:
+    + Added REPL substring-based search
+    + Added preview
+    + Added reverse-i-search
+  * module: Added a new experimental API to interact with
+    Source Map V3 data #31132.
+  * worker: Added support for passing a transferList along
+    with workerData to the Worker constructor #32278.
+
+For further information, please see
+https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V12.md#12.17.0
+
+- icu-v67.patch: upstreamed
+- skip_no_console.patch, versioned.patch: refreshed
+
+-------------------------------------------------------------------
+Wed May 13 04:19:25 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add icu-v67.patch to fix build with icu v67 
+
+-------------------------------------------------------------------
+Mon May  4 12:28:44 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Reduce Requires to Recommends on nodejs12-devel when installing npm12
+
+-------------------------------------------------------------------
 Tue Apr 28 15:30:09 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Update to LTS release 12.16.3:
@@ -16,7 +72,7 @@ Mon Apr 27 13:15:17 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Update to LTS release 12.16.2:
   * deps:
-    + upgrade npm to 6.13.6
+    + upgrade npm to 6.13.6 (bsc#1166916, CVE-2020-7598)
     + update openssl to 1.1.1e
 
 - openssl_rand_regression.patch, wasi_compile_flags.patch: upstreamed

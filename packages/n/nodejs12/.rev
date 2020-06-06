@@ -213,4 +213,43 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>800675</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>aebb3f50400d9ab9e83162ae67c1034b</srcmd5>
+    <version>12.18.0</version>
+    <time>1591479487</time>
+    <user>dimstar_suse</user>
+    <comment>Requires nghttp2 1.41.0 for Factory
+
+- New upstream LTS version 12.18.0:
+  * napi: fix various types of memory corruption in napi_get_value_string_*()
+    (CVE-2020-8174, bsc#1172443)
+  * http2: fix HTTP/2 Large Settings Frame DoS
+    (CVE-2020-11080, bsc#1172442)
+  * TLS session reuse can lead to host certificate verification bypass
+    (CVE-2020-8172, bsc#1172441)
+- use system ICU on SLE-15
+
+- Update to LTS release 12.17.0:
+  * async-hooks: introduce async-storage API
+  * cli: Added a --trace-sigint CLI flag that will print the current
+   execution stack on SIGINT #29207.
+  * crypto: Various crypto APIs now support Diffie-Hellman secrets
+  * dns: Added the dns.ALL flag, that can be passed to dns.lookup()
+    with dns.V4MAPPED to return resolved IPv6 addresses as well as
+    IPv4 mapped IPv6 addresses #32183.
+  * events: It is now possible to monitor 'error' events on an EventEmitter
+    without consuming the emitted error by installing a listener
+    using the symbol EventEmitter.errorMonitor
+  * http,https: The default value of server.headersTimeout for
+    http and https servers was increased from 40000 to 60000ms
+  * process: It is now possible to monitor 'uncaughtException'
+    events without overriding the default behavior
+  * repl:
+    + Added REPL substring-based search
+    + Added preview
+    + Added reverse-i-search
+  * module: Added a new experimental API to interact with
+    Source Map V3 data #31132.</comment>
+    <requestid>811803</requestid>
+  </revision>
 </revisionlist>
