@@ -1,7 +1,7 @@
 #
 # spec file for package minitube
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           minitube
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        Native YouTube Client
 License:        GPL-3.0-or-later
@@ -28,8 +28,10 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        minitube.1
 # PATCH-FIX-OPENSUSE minitube-no-update-check.patch sur5r@sur5r.net -- Disable update check.
 Patch0:         %{name}-no-update-check.patch
-# PATCH-FIX-UPSTREAM minitube-fix-for-upstream-missing-qthelper.hpp-in-newer-mpv-version.patch
+# PATCH-FIX-UPSTREAM minitube-fix-for-upstream-missing-qthelper.hpp-in-newer-mpv-version.patch- gh#flaviotordini/minitube/#157
 Patch1:         %{name}-fix-for-upstream-missing-qthelper.hpp-in-newer-mpv-version.patch
+# PATCH-FIX-UPSTREAM minitube-fix_audio_playback.patch - gh#flaviotordini/minitube/#155
+Patch2:  %{name}-fix_audio_playback.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
@@ -61,6 +63,7 @@ it strives to create a new TV-like experience.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 # Remove build time references so build-compare can do its work
 FAKE_BUILDDATE="$(LC_ALL=C date -u -d "@${SOURCE_DATE_EPOCH}" '+%%b %%e %%Y')"
@@ -70,7 +73,7 @@ sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/" src/aboutview.cpp
 %qmake5 \
   "DEFINES+=APP_GOOGLE_API_KEY=AIzaSyBs1wuIgc-QDnk5u7OavF1loJVO0r89B4Y" \
   PREFIX=%{_prefix}
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %qmake5_install
@@ -78,7 +81,7 @@ install -Dpm 0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/%{name}.1
 %suse_update_desktop_file -r %{name} AudioVideo Video Player
 # symlink for german translation file de_DE -> de
 pushd %{buildroot}%{_datadir}/%{name}/locale
-%{__ln_s} de_DE.qm de.qm
+ln -s de_DE.qm de.qm
 popd
 %fdupes %{buildroot}%{_datadir}/
 

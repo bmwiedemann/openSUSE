@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 31 14:18:19 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.4:
+  * 0-9 keyboard shortcuts to navigate video
+  * Left and Right arrow keyboard shortcuts to seek 10 seconds
+  * New icons
+  * Fixed layout bug when window is maximized on macOS
+  * Fixed playback for some videos
+  * Updated Polish and Japanese translations
+- Run spec-cleaner
+- Rebase minitube-no-update-check.patch,
+  minitube-qt5-lessthan-ten.patch and
+  minitube-fix-for-upstream-missing-qthelper.hpp-in-newer-mpv-version.patch
+- Add minitube-fix_audio_playback.patch
+
+-------------------------------------------------------------------
 Wed Mar 18 17:27:59 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
 
 - Added fix for building with newer mpv versions:

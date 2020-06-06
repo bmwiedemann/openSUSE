@@ -1,7 +1,7 @@
-diff -aur a/src/mainwindow.cpp b/src/mainwindow.cpp
---- a/src/mainwindow.cpp
-+++ b/src/mainwindow.cpp
-@@ -232,7 +232,7 @@ void MainWindow::lazyInit() {
+diff -Nur minitube-3.4/src/mainwindow.cpp new/src/mainwindow.cpp
+--- minitube-3.4/src/mainwindow.cpp	2020-05-29 16:37:47.000000000 +0200
++++ new/src/mainwindow.cpp	2020-05-31 15:56:15.998171572 +0200
+@@ -216,7 +216,7 @@
  
      ChannelAggregator::instance()->start();
  
