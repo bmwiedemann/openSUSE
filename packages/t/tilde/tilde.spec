@@ -1,7 +1,7 @@
 #
 # spec file for package tilde
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           tilde
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        A text editor for the terminal
 License:        GPL-3.0-only
-Group:          Development/Libraries/C and C++
+Group:          Productivity/Text/Editors
 URL:            https://os.ghalkes.nl/t3/libt3widget.html
 
-#Freecode-URL:	http://freecode.com/projects/tilde
 #Git-Clone:	https://github.com/gphalkes/tilde
 Source:         https://os.ghalkes.nl/dist/%name-%version.tar.bz2
 Source2:        https://os.ghalkes.nl/dist/%name-%version.tar.bz2.sig
@@ -52,7 +51,7 @@ File menu can be accessed by pressing Alt-F.
 %autosetup -p1
 
 %build
-%configure --docdir="%_docdir/%name"
+%configure CC=gcc CXX=g++ LIBTOOL=libtool --docdir="%_docdir/%name"
 make %{?_smp_mflags}
 
 %install
