@@ -26,6 +26,8 @@ URL:            https://github.com/lupoDharkael/flameshot#flameshot
 Source0:        https://github.com/lupoDharkael/flameshot/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         desktop-files.patch
 Patch2:         0001-utils-confighandler.cpp-Enable-Pin-and-Text-tool-by-.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-Fix-build-with-Qt-5.15.patch
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtbase

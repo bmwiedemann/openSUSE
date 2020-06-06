@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  5 18:11:33 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with Qt 5.15:
+  * 0001-Fix-build-with-Qt-5.15.patch
+
+-------------------------------------------------------------------
 Mon Mar  9 18:55:17 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Supplement against bash-completion, not bash
