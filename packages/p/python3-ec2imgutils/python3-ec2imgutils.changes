@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun  5 13:39:47 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 8.1.0 (bsc#1172579)
+  + Do not call the AWS API if the image copy setting has no value to avoid
+    an API error.
+  + Add new utility ec2listimg to list images owned by the specified account
+  + Switch all code to support output to a logger
+
+-------------------------------------------------------------------
 Wed May 20 19:00:49 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 8.0.0 (bsc#1171933)
