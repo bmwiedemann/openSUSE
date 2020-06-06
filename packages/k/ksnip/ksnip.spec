@@ -17,13 +17,15 @@
 
 
 Name:           ksnip
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        Screenshot tool
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/DamirPorobic/ksnip
 Source:         https://github.com/DamirPorobic/ksnip/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-compilation-error-with-Qt-5.15-279.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
@@ -49,11 +51,11 @@ annotation features for your screenshots.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install

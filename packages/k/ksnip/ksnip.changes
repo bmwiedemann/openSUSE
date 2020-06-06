@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun  5 18:29:58 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.6.2
+  * Changed: Add missing plugs to silence snap socket warnings.
+  * Fixed: Window decoration and alt+tab menu show Wayland generic icon on KDE Plasma.
+  * Fixed: Logout canceled by 'ksnip' under KDE.
+  * Fixed: Ksnip not displayed on the monitor (off screen).
+  * Fixed: CTRL+Q to quit Ksnip not working.
+  * Fixed: Global Hotkeys not working with activated Num and Caps Lock under X11.
+  * Fixed: Meta Global Hotkey under X11 not working.
+- Add upstream patch:
+  * 0001-Fix-compilation-error-with-Qt-5.15-279.patch
+
+-------------------------------------------------------------------
 Wed Feb 26 13:57:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6.1
