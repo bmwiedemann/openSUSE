@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  5 07:25:55 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- add
+  0001-avoid-using-deprecated-qs-rand.patch
+  0001-gui-datovka-annotate-fall-through-cases.patch
+  0001-Fixed-compilation-using-Qt-5.15.0.patch
+
+-------------------------------------------------------------------
 Mon Mar  9 07:09:54 UTC 2020 - Jiri Slaby <jslaby@suse.com>
 
 - Update to 4.15.0

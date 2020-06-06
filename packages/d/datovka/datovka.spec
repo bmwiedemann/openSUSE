@@ -27,6 +27,9 @@ Source0:        https://secure.nic.cz/files/datove_schranky/%{version}/%{name}-%
 Source1:        https://secure.nic.cz/files/datove_schranky/%{version}/%{name}-%{version}.tar.xz.sha256
 # PATCH-FIX-UPSTREAM: remove some issues with current .pro file
 Patch0:         datovka-fix-pro.patch
+Patch1:         0001-Fixed-compilation-using-Qt-5.15.0.patch
+Patch2:         0001-avoid-using-deprecated-qs-rand.patch
+Patch3:         0001-gui-datovka-annotate-fall-through-cases.patch
 BuildRequires:  libqt5-linguist
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
@@ -57,8 +60,7 @@ Data Box Information System) SOAP services as defined in Czech ISDS Act
 %{?lang_package}
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 sed -i \
     -e 's:lrelease:lrelease-qt5:g' \
     %{name}.pro

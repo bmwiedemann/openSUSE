@@ -1,0 +1,148 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Fri, 5 Jun 2020 09:06:29 +0200
+Subject: avoid using deprecated qs?rand
+Patch-mainline: no
+References: qs?rand
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ src/datovka_shared/crypto/crypto_wrapped.cpp        | 13 +++++++++++++
+ src/datovka_shared/utility/strings.cpp              | 11 +++++++++++
+ src/main.cpp                                        |  2 ++
+ src/main_cli.cpp                                    |  2 ++
+ .../gui/dialogue_stored_files.cpp                   | 13 ++++++++++++-
+ 5 files changed, 40 insertions(+), 1 deletion(-)
+
+diff --git a/src/datovka_shared/crypto/crypto_wrapped.cpp b/src/datovka_shared/crypto/crypto_wrapped.cpp
+index b875e00f9174..a5ff23a32c7d 100644
+--- a/src/datovka_shared/crypto/crypto_wrapped.cpp
++++ b/src/datovka_shared/crypto/crypto_wrapped.cpp
+@@ -25,15 +25,28 @@
+ #include "src/datovka_shared/crypto/crypto_pwd.h"
+ #include "src/datovka_shared/crypto/crypto_wrapped.h"
+ 
++#include <QtGlobal>
++#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
++ #include <QRandomGenerator>
++#endif
++
+ QByteArray randomSalt(unsigned int len)
+ {
+ 	QByteArray salt;
+ 
++#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
++	salt.resize(len);
++
++	Q_ASSERT((len % sizeof(quint32)) == 0);
++
++	QRandomGenerator::global()->fillRange((quint32 *)salt.data(), len / sizeof(quint32));
++#else
+ 	/* Make sure that random generator is initialised. */
+ 
+ 	for (unsigned int i = 0; i < len; ++i) {
+ 		salt.append(qrand() % 256);
+ 	}
++#endif
+ 
+ 	return salt;
+ }
+diff --git a/src/datovka_shared/utility/strings.cpp b/src/datovka_shared/utility/strings.cpp
+index 8b6f25d4be18..01c40c1595c0 100644
+--- a/src/datovka_shared/utility/strings.cpp
++++ b/src/datovka_shared/utility/strings.cpp
+@@ -23,6 +23,10 @@
+ 
+ #include <QtGlobal> /* qrand() */
+ 
++#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
++ #include <QRandomGenerator>
++#endif
++
+ #include "src/datovka_shared/utility/strings.h"
+ 
+ QString Utility::generateRandomString(int length)
+@@ -34,9 +38,16 @@ QString Utility::generateRandomString(int length)
+ 	    "!#$%&()*+,-.:=?@[]_{|}~");
+ 
+ 	QString randomString;
++#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
++	QRandomGenerator *rnd = QRandomGenerator::global();
++#endif
+ 
+ 	for (int i = 0; i < length; ++i) {
++#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
++		int index = rnd->bounded(possibleCharacters.length());
++#else
+ 		int index = qrand() % possibleCharacters.length();
++#endif
+ 		QChar nextChar = possibleCharacters.at(index);
+ 		randomString.append(nextChar);
+ 	}
+diff --git a/src/main.cpp b/src/main.cpp
+index 0d3fee1b0320..810d85ddb264 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -96,8 +96,10 @@ int main(int argc, char *argv[])
+ 		return EXIT_FAILURE;
+ 	}
+ 
++#if (QT_VERSION < QT_VERSION_CHECK(5, 10, 0))
+ 	/* Set random generator. */
+ 	qsrand(QDateTime::currentDateTime().toTime_t());
++#endif
+ 
+ 	/* Log warnings. */
+ 	GlobInstcs::logPtr->setLogLevelBits(LogDevice::LF_STDERR, LOGSRC_ANY,
+diff --git a/src/main_cli.cpp b/src/main_cli.cpp
+index d46d93a51880..4bdf36ea8cc3 100644
+--- a/src/main_cli.cpp
++++ b/src/main_cli.cpp
+@@ -61,8 +61,10 @@ int main(int argc, char *argv[])
+ 		return EXIT_FAILURE;
+ 	}
+ 
++#if (QT_VERSION < QT_VERSION_CHECK(5, 10, 0))
+ 	/* Set random generator. */
+ 	qsrand(QDateTime::currentDateTime().toTime_t());
++#endif
+ 
+ 	/* Log warnings. */
+ 	GlobInstcs::logPtr->setLogLevelBits(LogDevice::LF_STDERR, LOGSRC_ANY,
+diff --git a/tests/records_management_app/gui/dialogue_stored_files.cpp b/tests/records_management_app/gui/dialogue_stored_files.cpp
+index b030ff3481a2..78a752bdb7cd 100644
+--- a/tests/records_management_app/gui/dialogue_stored_files.cpp
++++ b/tests/records_management_app/gui/dialogue_stored_files.cpp
+@@ -27,6 +27,10 @@
+ #include <QtGlobal> // qrand
+ #include <QTime>
+ 
++#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
++ #include <QRandomGenerator>
++#endif
++
+ #include "src/datovka_shared/records_management/conversion.h"
+ #include "tests/records_management_app/gui/dialogue_stored_files.h"
+ #include "ui_dialogue_stored_files.h"
+@@ -143,11 +147,18 @@ void generateIdentifiers(QWidget *parent, QLineEdit &lineEdit)
+ 		return;
+ 	}
+ 
+-	qsrand((uint)QTime::currentTime().msec());
+ 	QStringList strIds;
++#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
++	auto rnd = QRandomGenerator::global();
++	for (int i = 0; i < num; ++i) {
++		strIds.append(QString::number(rnd->generate()));
++	}
++#else
++	qsrand((uint)QTime::currentTime().msec());
+ 	for (int i = 0; i < num; ++i) {
+ 		strIds.append(QString::number(qrand()));
+ 	}
++#endif
+ 
+ 	lineEdit.setText(strIds.join(SEPARATOR));
+ }
+-- 
+2.27.0
+

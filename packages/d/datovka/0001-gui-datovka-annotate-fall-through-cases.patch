@@ -1,0 +1,37 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Fri, 5 Jun 2020 09:22:07 +0200
+Subject: gui/datovka: annotate fall through cases
+Patch-mainline: no
+References: qs?rand
+
+So that compiler won't complain:
+warning: this statement may fall through
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ src/gui/datovka.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/gui/datovka.cpp b/src/gui/datovka.cpp
+index b55b31acf8e7..ee28080e3ad9 100644
+--- a/src/gui/datovka.cpp
++++ b/src/gui/datovka.cpp
+@@ -5843,6 +5843,7 @@ void MainWindow::showImportZFOActionDialog(void)
+ 	switch (locationType) {
+ 	case DlgImportZFO::IMPORT_FROM_SUBDIR:
+ 		includeSubdir = true;
++		/* fallthrough */
+ 	case DlgImportZFO::IMPORT_FROM_DIR:
+ 		importDir = QFileDialog::getExistingDirectory(this,
+ 		    tr("Select directory"), m_import_zfo_path,
+@@ -7140,6 +7141,7 @@ void MainWindow::prepareMsgTmstmpExpir(enum DlgTimestampExpir::Action action)
+ 
+ 	case DlgTimestampExpir::CHECK_DIR_SUB:
+ 		includeSubdir = true;
++		/* fallthrough */
+ 	case DlgTimestampExpir::CHECK_DIR:
+ 		importDir = QFileDialog::getExistingDirectory(this,
+ 		    tr("Select directory"), m_import_zfo_path,
+-- 
+2.27.0
+
