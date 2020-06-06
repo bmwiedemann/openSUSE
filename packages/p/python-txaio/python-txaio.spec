@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-txaio
-Version:        20.3.1
+Version:        20.4.1
 Release:        0
 Summary:        WebSocket and WAMP in Python for Twisted and asyncio
 License:        MIT
@@ -32,7 +32,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python2-devel
 BuildRequires:  python3-testsuite
 Requires:       python-six
-Recommends:     python-Twisted >= 12.1.0
+Recommends:     python-Twisted >= 20.3.0
 Recommends:     python-zope.interface >= 3.6
 BuildArch:      noarch
 %ifpython2
@@ -40,7 +40,7 @@ Requires:       python-future
 Recommends:     python-trollius
 %endif
 # SECTION test requirements
-BuildRequires:  %{python_module Twisted >= 12.1.0}
+BuildRequires:  %{python_module Twisted >= 20.3.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  6 09:20:12 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 20.4.1
+  * always use the asyncio loop of the thread which conducts the API call
+
+-------------------------------------------------------------------
 Fri Mar 27 15:24:16 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Remove pytest4.patch as it is included upstream

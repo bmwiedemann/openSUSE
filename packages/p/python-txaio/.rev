@@ -78,4 +78,12 @@
  * drop support for python 3.4 and older</comment>
     <requestid>789103</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fe0dd1e5552010777f7288eeb2865ea8</srcmd5>
+    <version>20.4.1</version>
+    <time>1591479477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791739</requestid>
+  </revision>
 </revisionlist>
