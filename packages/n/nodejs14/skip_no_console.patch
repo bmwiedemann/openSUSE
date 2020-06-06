@@ -1,259 +1,29 @@
-Index: node-git.5f2c4ce74f/test/parallel/test-console-clear.js
+Index: node-v14.3.0/test/parallel/test-repl-mode.js
 ===================================================================
---- node-git.5f2c4ce74f.orig/test/parallel/test-console-clear.js
-+++ node-git.5f2c4ce74f/test/parallel/test-console-clear.js
-@@ -1,6 +1,6 @@
+--- node-v14.3.0.orig/test/parallel/test-repl-mode.js
++++ node-v14.3.0/test/parallel/test-repl-mode.js
+@@ -1,9 +1,11 @@
  'use strict';
- 
 -require('../common');
 +const common = require('../common');
  const assert = require('assert');
- 
- const stdoutWrite = process.stdout.write;
-@@ -18,5 +18,6 @@ function doTest(isTTY, check) {
- }
- 
- // Fake TTY
--doTest(true, check);
-+if (!common.isDumbTerminal)
-+	doTest(true, check);
- doTest(false, '');
-Index: node-git.5f2c4ce74f/test/parallel/test-readline-position.js
-===================================================================
---- node-git.5f2c4ce74f.orig/test/parallel/test-readline-position.js
-+++ node-git.5f2c4ce74f/test/parallel/test-readline-position.js
-@@ -1,6 +1,6 @@
- // Flags: --expose-internals
- 'use strict';
--require('../common');
-+const common = require('../common');
- const { internalBinding } = require('internal/test/binding');
- const { PassThrough } = require('stream');
- const readline = require('readline');
-@@ -8,6 +8,8 @@ const assert = require('assert');
- 
- const ctrlU = { ctrl: true, name: 'u' };
+ const Stream = require('stream');
+ const repl = require('repl');
  
 +common.skipIfDumbTerminal();
 +
- {
-   const input = new PassThrough();
-   const rl = readline.createInterface({
-Index: node-git.5f2c4ce74f/test/parallel/test-readline-interface.js
+ const tests = [
+   testSloppyMode,
+   testStrictMode,
+Index: node-v14.3.0/test/parallel/test-repl-strict-mode-previews.js
 ===================================================================
---- node-git.5f2c4ce74f.orig/test/parallel/test-readline-interface.js
-+++ node-git.5f2c4ce74f/test/parallel/test-readline-interface.js
-@@ -22,6 +22,7 @@
- // Flags: --expose-internals
- 'use strict';
+--- node-v14.3.0.orig/test/parallel/test-repl-strict-mode-previews.js
++++ node-v14.3.0/test/parallel/test-repl-strict-mode-previews.js
+@@ -5,6 +5,7 @@
  const common = require('../common');
-+common.skipIfDumbTerminal();
- 
- const assert = require('assert');
- const readline = require('readline');
-Index: node-git.5f2c4ce74f/test/parallel/test-readline-undefined-columns.js
-===================================================================
---- node-git.5f2c4ce74f.orig/test/parallel/test-readline-undefined-columns.js
-+++ node-git.5f2c4ce74f/test/parallel/test-readline-undefined-columns.js
-@@ -5,6 +5,8 @@ const assert = require('assert');
- const PassThrough = require('stream').PassThrough;
- const readline = require('readline');
- 
-+common.skipIfDumbTerminal();
-+
- // Checks that tab completion still works
- // when output column size is undefined
- 
-Index: node-git.5f2c4ce74f/test/parallel/test-readline.js
-===================================================================
---- node-git.5f2c4ce74f.orig/test/parallel/test-readline.js
-+++ node-git.5f2c4ce74f/test/parallel/test-readline.js
-@@ -4,6 +4,8 @@ const { PassThrough } = require('stream'
- const readline = require('readline');
- const assert = require('assert');
- 
-+common.skipIfDumbTerminal();
-+
- {
-   const input = new PassThrough();
-   const rl = readline.createInterface({
-Index: node-git.5f2c4ce74f/test/parallel/test-repl-editor.js
-===================================================================
---- node-git.5f2c4ce74f.orig/test/parallel/test-repl-editor.js
-+++ node-git.5f2c4ce74f/test/parallel/test-repl-editor.js
-@@ -1,10 +1,12 @@
- 'use strict';
- 
--require('../common');
-+const common = require('../common');
- const assert = require('assert');
- const repl = require('repl');
- const ArrayStream = require('../common/arraystream');
- 
-+common.skipIfDumbTerminal();
-+
- // \u001b[nG - Moves the cursor to n st column
- // \u001b[0J - Clear screen
- // \u001b[0K - Clear to line end
-Index: node-git.5f2c4ce74f/test/parallel/test-repl-history-navigation.js
-===================================================================
---- node-git.5f2c4ce74f.orig/test/parallel/test-repl-history-navigation.js
-+++ node-git.5f2c4ce74f/test/parallel/test-repl-history-navigation.js
-@@ -10,6 +10,8 @@ const fs = require('fs');
- const path = require('path');
- const { inspect } = require('util');
- 
-+common.skipIfDumbTerminal();
-+
- const tmpdir = require('../common/tmpdir');
- tmpdir.refresh();
- 
-Index: node-git.5f2c4ce74f/test/parallel/test-repl-load-multiline.js
-===================================================================
---- node-git.5f2c4ce74f.orig/test/parallel/test-repl-load-multiline.js
-+++ node-git.5f2c4ce74f/test/parallel/test-repl-load-multiline.js
-@@ -1,10 +1,12 @@
- 'use strict';
--require('../common');
-+const common = require('../common');
- const ArrayStream = require('../common/arraystream');
- const fixtures = require('../common/fixtures');
- const assert = require('assert');
- const repl = require('repl');
- 
-+common.skipIfDumbTerminal();
-+
- const command = `.load ${fixtures.path('repl-load-multiline.js')}`;
- const terminalCode = '\u001b[1G\u001b[0J \u001b[1G';
- const terminalCodeRegex = new RegExp(terminalCode.replace(/\[/g, '\\['), 'g');
-Index: node-git.5f2c4ce74f/test/parallel/test-repl-persistent-history.js
-===================================================================
---- node-git.5f2c4ce74f.orig/test/parallel/test-repl-persistent-history.js
-+++ node-git.5f2c4ce74f/test/parallel/test-repl-persistent-history.js
-@@ -12,6 +12,8 @@ const path = require('path');
- const os = require('os');
- const util = require('util');
- 
-+common.skipIfDumbTerminal();
-+
- const tmpdir = require('../common/tmpdir');
- tmpdir.refresh();
- 
-Index: node-git.5f2c4ce74f/test/parallel/test-repl-programmatic-history.js
-===================================================================
---- node-git.5f2c4ce74f.orig/test/parallel/test-repl-programmatic-history.js
-+++ node-git.5f2c4ce74f/test/parallel/test-repl-programmatic-history.js
-@@ -10,6 +10,8 @@ const path = require('path');
- const os = require('os');
- const util = require('util');
- 
-+common.skipIfDumbTerminal();
-+
- const tmpdir = require('../common/tmpdir');
- tmpdir.refresh();
- 
-Index: node-git.5f2c4ce74f/test/common/README.md
-===================================================================
---- node-git.5f2c4ce74f.orig/test/common/README.md
-+++ node-git.5f2c4ce74f/test/common/README.md
-@@ -223,6 +223,10 @@ Platform check for Advanced Interactive
- 
- Attempts to 'kill' `pid`
- 
-+### `isDumbTerminal`
-+
-+* [&lt;boolean>][]
-+
- ### `isFreeBSD`
- 
- * [&lt;boolean>][]
-@@ -385,6 +389,10 @@ will not be run.
- 
- Logs '1..0 # Skipped: ' + `msg` and exits with exit code `0`.
- 
-+### `skipIfDumbTerminal()`
-+
-+Skip the rest of the tests if the current terminal is a dumb terminal
-+
- ### `skipIfEslintMissing()`
- 
- Skip the rest of the tests in the current file when `ESLint` is not available
-Index: node-git.5f2c4ce74f/test/common/index.js
-===================================================================
---- node-git.5f2c4ce74f.orig/test/common/index.js
-+++ node-git.5f2c4ce74f/test/common/index.js
-@@ -112,6 +112,8 @@ const isOpenBSD = process.platform === '
- const isLinux = process.platform === 'linux';
- const isOSX = process.platform === 'darwin';
- 
-+const isDumbTerminal = process.env.TERM === 'dumb';
-+
- const rootDir = isWindows ? 'c:\\' : '/';
- 
- const buildType = process.config.target_defaults ?
-@@ -653,6 +655,12 @@ function invalidArgTypeHelper(input) {
-   return ` Received type ${typeof input} (${inspected})`;
- }
- 
-+function skipIfDumbTerminal() {
-+  if (isDumbTerminal) {
-+    skip('skipping - dumb terminal');
-+  }
-+}
-+
- const common = {
-   allowGlobals,
-   buildType,
-@@ -672,6 +680,7 @@ const common = {
-   invalidArgTypeHelper,
-   isAIX,
-   isAlive,
-+  isDumbTerminal,
-   isFreeBSD,
-   isLinux,
-   isMainThread,
-@@ -692,6 +701,7 @@ const common = {
-   runWithInvalidFD,
-   skip,
-   skipIf32Bits,
-+  skipIfDumbTerminal,
-   skipIfEslintMissing,
-   skipIfInspectorDisabled,
-   skipIfWorker,
-Index: node-git.5f2c4ce74f/test/parallel/test-readline-tab-complete.js
-===================================================================
---- node-git.5f2c4ce74f.orig/test/parallel/test-readline-tab-complete.js
-+++ node-git.5f2c4ce74f/test/parallel/test-readline-tab-complete.js
-@@ -8,6 +8,8 @@ const assert = require('assert');
- const EventEmitter = require('events').EventEmitter;
- const { getStringWidth } = require('internal/util/inspect');
- 
-+common.skipIfDumbTerminal();
-+
- // This test verifies that the tab completion supports unicode and the writes
- // are limited to the minimum.
- [
-Index: node-git.5f2c4ce74f/test/parallel/test-repl-preview.js
-===================================================================
---- node-git.5f2c4ce74f.orig/test/parallel/test-repl-preview.js
-+++ node-git.5f2c4ce74f/test/parallel/test-repl-preview.js
-@@ -7,6 +7,7 @@ const { Stream } = require('stream');
- const { inspect } = require('util');
  
  common.skipIfInspectorDisabled();
 +common.skipIfDumbTerminal();
  
- const PROMPT = 'repl > ';
- 
-Index: node-git.5f2c4ce74f/test/parallel/test-repl-reverse-search.js
-===================================================================
---- node-git.5f2c4ce74f.orig/test/parallel/test-repl-reverse-search.js
-+++ node-git.5f2c4ce74f/test/parallel/test-repl-reverse-search.js
-@@ -10,6 +10,7 @@ const fs = require('fs');
- const path = require('path');
- const { inspect } = require('util');
- 
-+common.skipIfDumbTerminal();
- common.allowGlobals('aaaa');
- 
- const tmpdir = require('../common/tmpdir');
+ if (process.argv[2] === 'child') {
+   const stream = require('stream');

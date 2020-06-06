@@ -8,10 +8,10 @@ management via update_alternatives.
 
 This is also important for generation of binary
 modules for multiple versions of NodeJS
-Index: node-git.05f1df5200/Makefile
+Index: node-v14.3.0/Makefile
 ===================================================================
---- node-git.05f1df5200.orig/Makefile
-+++ node-git.05f1df5200/Makefile
+--- node-v14.3.0.orig/Makefile
++++ node-v14.3.0/Makefile
 @@ -45,7 +45,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
  EXEEXT := $(shell $(PYTHON) -c \
  		"import sys; print('.exe' if sys.platform == 'win32' else '')")
@@ -21,10 +21,10 @@ Index: node-git.05f1df5200/Makefile
  NODE ?= ./$(NODE_EXE)
  NODE_G_EXE = node_g$(EXEEXT)
  NPM ?= ./deps/npm/bin/npm-cli.js
-Index: node-git.05f1df5200/tools/install.py
+Index: node-v14.3.0/tools/install.py
 ===================================================================
---- node-git.05f1df5200.orig/tools/install.py
-+++ node-git.05f1df5200/tools/install.py
+--- node-v14.3.0.orig/tools/install.py
++++ node-v14.3.0/tools/install.py
 @@ -81,34 +81,34 @@ def uninstall(paths, dst):
      try_remove(path, dst)
  
@@ -137,10 +137,10 @@ Index: node-git.05f1df5200/tools/install.py
  
  def run(args):
    global node_prefix, install_path, target_defaults, variables
-Index: node-git.05f1df5200/doc/node.1
+Index: node-v14.3.0/doc/node.1
 ===================================================================
---- node-git.05f1df5200.orig/doc/node.1
-+++ node-git.05f1df5200/doc/node.1
+--- node-v14.3.0.orig/doc/node.1
++++ node-v14.3.0/doc/node.1
 @@ -30,24 +30,24 @@
  .Dt NODE 1
  .
@@ -170,10 +170,10 @@ Index: node-git.05f1df5200/doc/node.1
  .Op Fl -v8-options
  .
  .\"======================================================================
-Index: node-git.05f1df5200/src/node.stp
+Index: node-v14.3.0/src/node.stp
 ===================================================================
---- node-git.05f1df5200.orig/src/node.stp
-+++ node-git.05f1df5200/src/node.stp
+--- node-v14.3.0.orig/src/node.stp
++++ node-v14.3.0/src/node.stp
 @@ -19,7 +19,7 @@
  // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
  // USE OR OTHER DEALINGS IN THE SOFTWARE.
@@ -246,12 +246,12 @@ Index: node-git.05f1df5200/src/node.stp
  {
    scavenge = 1 << 0;
    compact = 1 << 1;
-Index: node-git.05f1df5200/deps/npm/man/man1/npm.1
+Index: node-v14.3.0/deps/npm/man/man1/npm.1
 ===================================================================
---- node-git.05f1df5200.orig/deps/npm/man/man1/npm.1
-+++ node-git.05f1df5200/deps/npm/man/man1/npm.1
+--- node-v14.3.0.orig/deps/npm/man/man1/npm.1
++++ node-v14.3.0/deps/npm/man/man1/npm.1
 @@ -1,11 +1,11 @@
- .TH "NPM" "1" "March 2020" "" ""
+ .TH "NPM" "1" "May 2020" "" ""
  .SH "NAME"
 -\fBnpm\fR \- javascript package manager
 +\fBnpm14\fR \- javascript package manager
@@ -290,7 +290,7 @@ Index: node-git.05f1df5200/deps/npm/man/man1/npm.1
  .P
  If a package references to another package with a git URL, npm depends
 @@ -57,7 +57,7 @@ the node\-gyp repository \fIhttps://gith
- the node\-gyp Wiki \fIhttps://github\.com/TooTallNate/node\-gyp/wiki\fR\|\.
+ the node\-gyp Wiki \fIhttps://github\.com/nodejs/node\-gyp/wiki\fR\|\.
  .SS Directories
  .P
 -See npm help \fBfolders\fP to learn about where npm puts stuff\.
@@ -356,10 +356,10 @@ Index: node-git.05f1df5200/deps/npm/man/man1/npm.1
 +npm14 help npmrc
  
  .RE
-Index: node-git.05f1df5200/src/node_main.cc
+Index: node-v14.3.0/src/node_main.cc
 ===================================================================
---- node-git.05f1df5200.orig/src/node_main.cc
-+++ node-git.05f1df5200/src/node_main.cc
+--- node-v14.3.0.orig/src/node_main.cc
++++ node-v14.3.0/src/node_main.cc
 @@ -124,6 +124,7 @@ int main(int argc, char* argv[]) {
  #endif
    // Disable stdio buffering, it interacts poorly with printf()
@@ -368,10 +368,10 @@ Index: node-git.05f1df5200/src/node_main.cc
    setvbuf(stdout, nullptr, _IONBF, 0);
    setvbuf(stderr, nullptr, _IONBF, 0);
    return node::Start(argc, argv);
-Index: node-git.05f1df5200/deps/npm/man/man1/npx.1
+Index: node-v14.3.0/deps/npm/man/man1/npx.1
 ===================================================================
---- node-git.05f1df5200.orig/deps/npm/man/man1/npx.1
-+++ node-git.05f1df5200/deps/npm/man/man1/npx.1
+--- node-v14.3.0.orig/deps/npm/man/man1/npx.1
++++ node-v14.3.0/deps/npm/man/man1/npx.1
 @@ -1,32 +1,32 @@
  .TH "NPX" "1" "January 2020" "npx@10.2.1" "User Commands"
  .SH "NAME"
@@ -456,10 +456,10 @@ Index: node-git.05f1df5200/deps/npm/man/man1/npx.1
  
  .RE
  
-Index: node-git.05f1df5200/tools/test.py
+Index: node-v14.3.0/tools/test.py
 ===================================================================
---- node-git.05f1df5200.orig/tools/test.py
-+++ node-git.05f1df5200/tools/test.py
+--- node-v14.3.0.orig/tools/test.py
++++ node-v14.3.0/tools/test.py
 @@ -908,7 +908,7 @@ class Context(object):
      if self.vm is not None:
        return self.vm
@@ -469,10 +469,10 @@ Index: node-git.05f1df5200/tools/test.py
      else:
        name = 'out/%s.%s/node' % (arch, mode)
  
-Index: node-git.05f1df5200/node.gyp
+Index: node-v14.3.0/node.gyp
 ===================================================================
---- node-git.05f1df5200.orig/node.gyp
-+++ node-git.05f1df5200/node.gyp
+--- node-v14.3.0.orig/node.gyp
++++ node-v14.3.0/node.gyp
 @@ -22,8 +22,8 @@
      'node_use_openssl%': 'true',
      'node_shared_openssl%': 'false',

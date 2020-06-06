@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 ###########################################################
 #
 #   WARNING! WARNING! WARNING! WARNING! WARNING! WARNING!
@@ -25,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs14
-Version:        14.1.0
+Version:        14.4.0
 Release:        0
 
 %define node_version_number 14
@@ -132,9 +133,6 @@ Patch3:         fix_ci_tests.patch
 Patch5:         sle12_python3_compat.patch
 Patch7:         manual_configure.patch
 
-
-
-
 ## Patches specific to SUSE and openSUSE
 Patch100:       linker_lto_jobs.patch
 # PATCH-FIX-OPENSUSE -- set correct path for dtrace if it is built
@@ -172,11 +170,11 @@ BuildRequires:  config(netcfg)
 %if 0%{?suse_version} == 1110
 # GCC 5 is only available in the SUSE:SLE-11:SP4:Update repository (SDK).
 %if %node_version_number >= 8
-BuildRequires:   gcc5-c++
+BuildRequires:  gcc5-c++
 %define cc_exec  gcc-5
 %define cpp_exec g++-5
 %else
-BuildRequires:   gcc48-c++
+BuildRequires:  gcc48-c++
 %define cc_exec  gcc-4.8
 %define cpp_exec g++-4.8
 %endif
@@ -187,12 +185,12 @@ BuildRequires:   gcc48-c++
 # for SLE-12:Update targets
 %if 0%{?suse_version} == 1315
 %if %node_version_number >= 14
-BuildRequires:   gcc9-c++
+BuildRequires:  gcc9-c++
 %define cc_exec  gcc-9
 %define cpp_exec g++-9
 %else
 %if %node_version_number >= 8
-BuildRequires:   gcc7-c++
+BuildRequires:  gcc7-c++
 %define cc_exec  gcc-7
 %define cpp_exec g++-7
 %endif
@@ -212,8 +210,8 @@ BuildRequires:  zlib-devel
 
 # Python dependencies
 %if %node_version_number > 12
-BuildRequires:  python3
 BuildRequires:  netcfg
+BuildRequires:  python3
 %else
 %if 0%{?suse_version} >= 1500
 BuildRequires:  python2
@@ -223,8 +221,8 @@ BuildRequires:  python
 %endif  # python3
 
 %if 0%{?suse_version} >= 1500 && %{node_version_number} >= 10
-BuildRequires:  user(nobody)
 BuildRequires:  group(nobody)
+BuildRequires:  user(nobody)
 %endif
 
 %if ! 0%{with intree_openssl}
@@ -251,11 +249,11 @@ BuildRequires:  pkgconfig(icu-i18n) >= 63
 %endif
 
 %if ! 0%{with intree_nghttp2}
-BuildRequires: libnghttp2-devel >= 1.34.0
+BuildRequires:  libnghttp2-devel >= 1.41.0
 %endif
 
 %if 0%{with valgrind_tests}
-BuildRequires: valgrind
+BuildRequires:  valgrind
 %endif
 
 Requires(post): update-alternatives
@@ -308,12 +306,12 @@ Group:          Development/Languages/NodeJS
 Recommends:     %{name}-devel = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
-Provides:       npm(npm) = 6.13.6
 Provides:       npm = %{version}
+Provides:       npm(npm) = 6.13.6
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
-Requires:       user(nobody)
 Requires:       group(nobody)
+Requires:       user(nobody)
 %endif
 Recommends:     python2
 Recommends:     python3
@@ -540,7 +538,9 @@ export CXX=%{?cpp_exec}
 %endif
 
 export NODE_TEST_NO_INTERNET=1
+%if %{node_version_number} >= 14
 find test \( -name \*.out -or -name \*.js \) -exec sed -i 's,Use `node ,Use `node%{node_version_number} ,' {} \;
+%endif
 
 ln addon-rpm.gypi deps/npm/node_modules/node-gyp/addon-rpm.gypi
 # Tarball doesn't have eslint package distributed, so disable some tests

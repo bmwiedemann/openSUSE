@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jun  4 12:03:49 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 14.4.0:
+  * napi: fix various types of memory corruption in napi_get_value_string_*()
+    (CVE-2020-8174, bsc#1172443)
+  * http2: fix HTTP/2 Large Settings Frame DoS
+    (CVE-2020-11080, bsc#1172442)
+  * TLS session reuse can lead to host certificate verification bypass
+    (CVE-2020-8172, bsc#1172441)
+
+-------------------------------------------------------------------
+Fri May 29 10:46:58 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 14.3.0:
+  * repl: previews improvements with autocompletion
+  * it's now possible to use the await keyword outside of async functions,
+    with the --experimental-top-level-await flag
+
+- Changes in version 14.2.0:
+  * console: Support for console constructor groupIndentation options
+
+- skip_no_console.patch: refreshed
+- versioned.patch, fix_ci_tests.patch: refreshed
+
+-------------------------------------------------------------------
 Thu Apr 30 11:22:45 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Update to version 14.1.0:
