@@ -32,4 +32,12 @@
     <comment>- Don't install busybox-man in favour of mandoc (forwarded request 798926 from kukuk)</comment>
     <requestid>798927</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>1356a03eb1f5f6c089508e78296ca2fd</srcmd5>
+    <version>1.0.0</version>
+    <time>1591423969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811764</requestid>
+  </revision>
 </revisionlist>
