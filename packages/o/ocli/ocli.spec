@@ -25,6 +25,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://github.com/owntracks/ocli
 Source:         https://github.com/owntracks/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         0001-FIX-adapted-for-gpsd-3.20.patch
 BuildRequires:  gpsd-devel
 BuildRequires:  mosquitto-devel
 Provides:       owntracks-cli-publisher
@@ -37,6 +38,7 @@ compatible software to process location data.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"
