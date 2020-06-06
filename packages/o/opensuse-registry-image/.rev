@@ -15,4 +15,12 @@
     <comment>- ca-certificates needs real findutils, remove busybox-findutils</comment>
     <requestid>798937</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8f25e7a97e6847ee468ab95ca2562770</srcmd5>
+    <version>1.0.0</version>
+    <time>1591424013</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811768</requestid>
+  </revision>
 </revisionlist>

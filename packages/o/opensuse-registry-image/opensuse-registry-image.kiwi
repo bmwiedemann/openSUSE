@@ -51,7 +51,6 @@
     <package name="ca-certificates"/>
     <package name="docker-distribution-registry"/>
     <package name="apache2-utils"/>
-    <package name="--"/>
     <package name="-busybox-findutils"/>
   </packages>
 </image>
