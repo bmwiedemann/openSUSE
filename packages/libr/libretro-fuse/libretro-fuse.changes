@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 07 14:28:49 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200506:
+  * Emscripten fixes
+  * Fix a crash on core load
+  * (tvOS) support building with tvOS SDK
+
+-------------------------------------------------------------------
 Sun Jan 12 16:23:38 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Initial version

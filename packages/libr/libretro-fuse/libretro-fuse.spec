@@ -17,10 +17,10 @@
 
 
 Name:           libretro-fuse
-Version:        0~git20191129
+Version:        0~git20200506
 Release:        0
 Summary:        Fuse libretro core for ZX Spectrum emulation
-License:        GPL-3.0
+License:        GPL-3.0-only
 URL:            http://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz
 
