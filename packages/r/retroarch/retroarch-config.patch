@@ -70,9 +70,9 @@ diff -rub retroarch.orig/retroarch.cfg retroarch/retroarch.cfg
  # Save all remapped controls to this directory.
  # input_remapping_directory =
 @@ -913,3 +913,6 @@
- 
  # Enable device vibration for supported cores
  # enable_device_vibration = false
-+
+ 
 +# Download thumbnails from network on demand
 +network_on_demand_thumbnails = true
++

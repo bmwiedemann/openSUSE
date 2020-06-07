@@ -3,8 +3,8 @@
     <param name="scm">git</param>
     <param name="url">https://github.com/libretro/RetroArch.git</param>
     <param name="filename">retroarch</param>
-    <param name="revision">v1.8.6</param>
-    <param name="version">1.8.6</param>
+    <param name="revision">v1.8.8</param>
+    <param name="version">1.8.8</param>
     <param name="exclude">media/icons</param>
     <param name="exclude">ps2</param>
     <param name="exclude">uwp</param>

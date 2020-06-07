@@ -17,7 +17,7 @@
 
 
 Name:           retroarch
-Version:        1.8.6
+Version:        1.8.8
 Release:        0
 Summary:        Emulator frontend
 License:        GPL-3.0-only
@@ -82,10 +82,9 @@ Recommends:     libretro-database
 
 # Emulation cores
 
-# Arcade/MAME for old roms
+# Arcade/MAME
+# MAME 2003 Plus has the best performance, supporting most games before 2000
 Recommends:     libretro-mame2003-plus
-# Arcade/MAME for latest roms
-Recommends:     libretro-mame
 
 # Atari 2600
 Recommends:     libretro-stella
@@ -138,6 +137,8 @@ Recommends:     libretro-cap32
 Recommends:     libretro-beetle-wswan
 # Fairchild ChannelF
 Recommends:     libretro-freechaf
+# Game & Watch
+Recommends:     libretro-gw
 # Mattel Intellivision
 Recommends:     libretro-freeintv
 # MS DOS
@@ -161,6 +162,7 @@ Recommends:     libretro-chailove
 Recommends:     libretro-craft
 Recommends:     libretro-easyrpg
 Recommends:     libretro-ffmpeg
+Recommends:     libretro-gme
 
 %description
 RetroArch is a modular multi-system emulator system that is designed to be
@@ -174,6 +176,8 @@ have, such as real-time rewinding and game-aware shading.
 
 # Change /usr/lib/ to /usr/lib64/ on 64-bit platform
 sed -i s~/usr/lib/~%{_libdir}/~g retroarch.cfg
+# Change /usr/bin/env python to /usr/bin/python
+sed -i s~%{_bindir}/env\ python~%{_bindir}/python~g tools/cg2glsl.py
 
 %build
 export CFLAGS="%{optflags}"
