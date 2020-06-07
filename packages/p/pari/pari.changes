@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun  6 23:59:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.11.4
+  * fixed "factor((x-1)*(x-y)^2)" going into an infinite loop
+  * "ellap" could fail with division by 0
+  * cure wrong results from "bnfsunit"
+
+-------------------------------------------------------------------
 Thu Mar  5 16:44:44 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.11.3

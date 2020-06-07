@@ -164,4 +164,12 @@
     <comment>- Update to release 2.11.3</comment>
     <requestid>782011</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bb7a8513da780121581070b03c1a5e2e</srcmd5>
+    <version>2.11.4</version>
+    <time>1591558733</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.11.4</comment>
+    <requestid>812132</requestid>
+  </revision>
 </revisionlist>

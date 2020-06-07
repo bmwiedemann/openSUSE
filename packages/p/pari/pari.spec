@@ -23,7 +23,7 @@
 Name:           pari
 %define sover  6
 %define lname   libpari-gmp-tls%sover
-Version:        2.11.3
+Version:        2.11.4
 Release:        0
 Summary:        Computer Algebra System for computations in Number Theory
 License:        GPL-2.0-only
@@ -88,8 +88,7 @@ power series, algebraic numbers etc., and a lot of transcendental
 functions.
 
 %prep
-%setup -q
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
 ./Configure --prefix="%_prefix" \
