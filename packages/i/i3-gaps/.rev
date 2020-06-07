@@ -207,4 +207,23 @@
 </comment>
     <requestid>782746</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b35de08d9bb78da14322bc7c8ca7ac05</srcmd5>
+    <version>4.18.1</version>
+    <time>1591558628</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.18.1:
+  * Bugfixes
+  - Move parent nodes in scratchpad correctly
+  - i3bar: Call cont_child() more liberally
+  - Fix load_layout crash when floating node doesn't have
+    CT_FLOATING_CON parent
+  - Fix SEGFAULT when i3bar receives invalid input
+  - Revert &quot;floating_reposition: avoid extra tree_render&quot;
+  - Call tree_render if floating move changes workspace
+  - Update EWMH properties on workspace move
+  - cmd_focus_sibling: Fix crash on workspace level
+</comment>
+    <requestid>812067</requestid>
+  </revision>
 </revisionlist>

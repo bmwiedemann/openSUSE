@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jun  5 01:17:18 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 4.18.1:
+  * Bugfixes
+  - Move parent nodes in scratchpad correctly
+  - i3bar: Call cont_child() more liberally
+  - Fix load_layout crash when floating node doesn't have
+    CT_FLOATING_CON parent
+  - Fix SEGFAULT when i3bar receives invalid input
+  - Revert "floating_reposition: avoid extra tree_render"
+  - Call tree_render if floating move changes workspace
+  - Update EWMH properties on workspace move
+  - cmd_focus_sibling: Fix crash on workspace level
+
+-------------------------------------------------------------------
 Mon Mar  9 01:20:32 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 4.18:
