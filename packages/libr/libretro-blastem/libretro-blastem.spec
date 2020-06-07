@@ -24,7 +24,8 @@ License:        GPL-3.0-only
 Group:          System/Emulators/Other
 URL:            http://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz
-
+Patch0:         fix-enum-syntax.patch
+ExclusiveArch:  x86_64 i586
 BuildRequires:  gcc-c++
 BuildRequires:  make
 
@@ -34,10 +35,11 @@ that runs on modest hardware. This package is for RetroArch/libretro front-end.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %ifarch x86_64
-make -f Makefile.libretro 
+make -f Makefile.libretro
 %endif
 %ifarch %ix86
 make -f Makefile.libretro ABI=i686

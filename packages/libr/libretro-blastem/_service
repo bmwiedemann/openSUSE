@@ -6,6 +6,7 @@
     <param name="revision">master</param>
     <param name="versionformat">0~git%cd</param>
     <param name="changesgenerate">enable</param>
+    <param name="exclude">android</param>
   </service>
   <service name="recompress" mode="localonly">
     <param name="file">*.tar</param>

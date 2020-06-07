@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun  6 12:06:10 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Exclude android source
+- Add fix-enum-syntax.patch to fix Tumbleweed build
+- Exclude unsupported CPU architecture
+
+-------------------------------------------------------------------
 Wed Feb 19 09:21:37 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Fix i586 build
