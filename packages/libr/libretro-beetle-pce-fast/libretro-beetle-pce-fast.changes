@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat May 30 16:10:10 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200523:
+  * Regression fix
+  * Update
+  * Update
+  * Silence some warnings
+  * Drop this - won't work on PowerPC OSX otherwise
+  * Update README
+  * Filter out device types other than JOYPAD and MOUSE.
+  * Add "Disable Soft Reset" core option to FAST variant of the core.
+  * Add mouse support
+  * Update retro_controller_info from 2 ports to 5 ports
+  * Input: Selective updates based on latest source
+  * Update libretro-common files
+  * Selectively apply patches from 0.9.39.2 that avoids undefined behavior
+  * Silence warnings
+  * Update gamepad turbo logic
+  * Remove unneeded core options - These turbo-related core options are not working correctly and redundant because there is already a dedicated button   to enable turbo buttons. These core options also resets turbo states each time a core option is modified.   Removing it since it unneeded.
+  * Fix incorrect turbo core option labels
+  * fix MacOS compile
+  * Add PCE-CD RAM to retro_memory_map
+  * Adjust aspect ratio logic to be dynamic
+  * Update README
+  * Clean up Makefile echoing
+
+-------------------------------------------------------------------
 Thu Oct 10 21:40:46 UTC 2019 - i@guoyunhe.me
 
 - Update to version 0~git20190911:
