@@ -28,6 +28,7 @@ URL:            http://cdemu.sf.net/about/libmirage/
 
 #Git-Clone:     git://git.code.sf.net/p/cdemu/code
 Source:         https://downloads.sf.net/cdemu/%name-%version.tar.bz2
+Patch1:         0001-libMirage-utils.h-added-missing-extern-specifiers.patch
 Patch3:         CVE-2019-15757.patch
 BuildRequires:  cmake >= 2.8.5
 BuildRequires:  intltool >= 0.21

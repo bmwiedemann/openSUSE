@@ -189,4 +189,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>801836</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>dfdd67c93faf5b408f7829087732cf7e</srcmd5>
+    <version>3.2.4</version>
+    <time>1591558688</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-libMirage-utils.h-added-missing-extern-specifiers.patch .</comment>
+    <requestid>812131</requestid>
+  </revision>
 </revisionlist>
