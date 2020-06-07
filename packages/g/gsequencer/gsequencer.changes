@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun  6 22:47:18 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.3.12 fixed missing include string.h in
+  ags_math_util.c.
+
+-------------------------------------------------------------------
 Thu Jun  4 19:36:39 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.3.11 more fixes to AgsAudiorec.

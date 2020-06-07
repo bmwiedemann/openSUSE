@@ -1,5 +1,5 @@
---- configure.ac.orig	2020-06-04 21:30:46.767556796 +0200
-+++ configure.ac	2020-06-04 21:31:09.175820297 +0200
+--- configure.ac.orig	2020-06-07 00:44:49.780581237 +0200
++++ configure.ac	2020-06-07 00:46:14.617504085 +0200
 @@ -340,23 +340,23 @@
  AC_SUBST(FFTW_CFLAGS)
  AC_SUBST(FFTW_LIBS)
@@ -18,9 +18,8 @@
  AC_DEFINE([HAVE_GLIB_2_44], [1], [GLib 2.44 available])
  AC_DEFINE([HAVE_GLIB_2_54], [1], [GLib 2.54 available])
 -AC_DEFINE([HAVE_GLIB_2_56], [1], [GLib 2.56 available])
--AC_DEFINE([HAVE_GLIB_2_62], [1], [GLib 2.62 available])
 +AC_DEFINE([HAVE_GLIB_2_56], [0], [GLib 2.56 available])
-+AC_DEFINE([HAVE_GLIB_2_62], [0], [GLib 2.62 available])
+ AC_DEFINE([HAVE_GLIB_2_62], [0], [GLib 2.62 available])
  
  GOBJECT_INTROSPECTION_CHECK([1.30.0])
  
