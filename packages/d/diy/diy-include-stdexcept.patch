@@ -1,0 +1,22 @@
+From 9e2377b7335299b03003d86ea97910958a646e69 Mon Sep 17 00:00:00 2001
+From: Dmitriy Morozov <dmitriy@mrzv.org>
+Date: Sun, 24 May 2020 13:02:58 -0700
+Subject: [PATCH] Add missing <stdexcept> to i/diy/mpi/io.hpp
+
+---
+ include/diy/mpi/io.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/diy/mpi/io.hpp b/include/diy/mpi/io.hpp
+index 38d156d1f..42885906b 100644
+--- a/include/diy/mpi/io.hpp
++++ b/include/diy/mpi/io.hpp
+@@ -8,6 +8,7 @@
+ 
+ #include <vector>
+ #include <string>
++#include <stdexcept>
+ 
+ namespace diy
+ {
+

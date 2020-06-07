@@ -58,6 +58,8 @@ URL:            https://github.com/diatomic/diy
 Source:         https://github.com/diatomic/diy/archive/%{version}.tar.gz#/%{pname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM diy-disable-memory-heavy-tests.patch badshah400@gmail.com -- Disable a few tests requiring more than 10 GB memory
 Patch0:         diy-disable-memory-heavy-tests.patch
+# PATCH-FIX-UPSTREAM diy-include-stdexcept.patch badshah400@gmail.com -- Include a missing header flagged by GCC 10
+Patch1:         diy-include-stdexcept.patch
 BuildRequires:  cmake >= 3.2
 BuildRequires:  gcc-c++
 %if %{with mpi}

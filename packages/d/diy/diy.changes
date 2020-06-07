@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun  6 21:23:45 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add diy-include-stdexcept.patch: Include a missing header
+  flagged by GCC 10; patch taken from upstream commit.
+
+-------------------------------------------------------------------
 Fri May 15 13:33:42 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop the "serial" flavour and build the no-mpi package for
