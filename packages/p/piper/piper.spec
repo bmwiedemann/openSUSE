@@ -18,7 +18,7 @@
 
 
 Name:           piper
-Version:        0.4
+Version:        0.5
 Release:        0
 Summary:        Configuration UI for gaming mice
 License:        GPL-2.0-only

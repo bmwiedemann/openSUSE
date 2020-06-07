@@ -87,4 +87,28 @@ changes incompatibly.</comment>
     <comment></comment>
     <requestid>805910</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a2def43a8482a82120a7248df203f60b</srcmd5>
+    <version>0.5</version>
+    <time>1591558647</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5:
+  * New and Improved devices
+    + Logitech MX Anywhere 2
+    + Logitech G9x
+    + Logitech G403 Hero
+    + Logitech M720 Triathlon
+    + Logitech G815
+    + Logitech MX518
+    + Logitech MX Master 3
+  * Updated translations
+    + Croattian
+    + Brazilian Protuguese
+    + French
+    + Swedish
+    + Dutch
+    + Spanish
+    + German</comment>
+    <requestid>812104</requestid>
+  </revision>
 </revisionlist>
