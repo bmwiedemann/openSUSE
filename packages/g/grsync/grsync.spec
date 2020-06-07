@@ -17,13 +17,14 @@
 
 
 Name:           grsync
-Version:        1.2.6
+Version:        1.2.8
 Release:        0
 Summary:        GUI for rsync
 License:        GPL-2.0
 Group:          Productivity/Archiving/Backup
 Url:            http://www.opbyte.it/grsync/
 Source:         http://www.opbyte.it/release/%{name}-%{version}.tar.gz
+Patch0:         grsync.patch
 Patch1:         fix-invalid-lc-messages-dir.patch
 # PATCH-FIX-UPSTREAM grsync-appdata.patch badshah400@gmail.com -- Add, translate and install appdata file
 Patch2:         grsync-appdata.patch
@@ -36,7 +37,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.16
 Requires:       rsync
 Recommends:     %{name}-lang
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Grsync is a GUI (Graphical User Interface) for rsync, the commandline directory
@@ -49,9 +49,7 @@ drive, replication of a partition to another one, mirroring of files, etc.
 %lang_package
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
@@ -82,8 +80,8 @@ dos2unix README NEWS AUTHORS
 %suse_update_desktop_file -r %{name} Utility Archiving GTK
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING README NEWS
+%license COPYING
+%doc AUTHORS README NEWS
 %{_bindir}/grsync
 %{_bindir}/grsync-batch
 %{_datadir}/applications/grsync.desktop

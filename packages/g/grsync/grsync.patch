@@ -1,0 +1,57 @@
+--- a/src/callbacks.h
++++ b/src/callbacks.h
+@@ -7,11 +7,17 @@
+ #define ICON_PACKAGE PACKAGE_DATA_DIR "/" ICON_SOURCE
+ #define ICON_PACKAGE_BUSY PACKAGE_DATA_DIR "/" ICON_SOURCE_BUSY
+ 
+-GtkBuilder *builder;
+-GtkWidget *main_window;
+-gchar *argv_session, *argv_filename, *icon, *icon_busy;
+-gboolean cmdline_session, cmdline_execute, cmdline_stayopen, cmdline_import;
+-GtkListStore *liststore_session;
++extern GtkBuilder *builder;
++extern GtkWidget *main_window;
++extern gchar *argv_session;
++extern gchar **argv_filename;
++extern gchar *icon;
++extern gchar *icon_busy;
++extern gboolean cmdline_session;
++extern gboolean cmdline_execute;
++extern gboolean cmdline_stayopen;
++extern gboolean cmdline_import;
++extern GtkListStore *liststore_session;
+ 
+ void save_settings(gchar *session, gchar *filename);
+ gboolean load_groups(gchar *session);
+--- a/src/main.c
++++ b/src/main.c
+@@ -9,6 +9,17 @@
+ #	include <hildon/hildon.h>
+ #	include <libosso.h>
+ #endif
++GtkBuilder *builder;
++GtkWidget *main_window;
++gchar *argv_session;
++gchar **argv_filename;
++gchar *icon;
++gchar *icon_busy;
++gboolean cmdline_session;
++gboolean cmdline_execute;
++gboolean cmdline_stayopen;
++gboolean cmdline_import;
++GtkListStore *liststore_session;
+ 
+ int main (int argc, char *argv[]) {
+ #ifdef ENABLE_NLS
+@@ -33,11 +44,6 @@ int main (int argc, char *argv[]) {
+ 	GtkWidget *appmenu;
+ #endif
+ 
+-	cmdline_session = FALSE;
+-	cmdline_execute = FALSE;
+-	cmdline_stayopen = FALSE;
+-	cmdline_import = FALSE;
+-	argv_filename = NULL;
+ 
+ 	while (i < argc && argv[i] != NULL) {
+ 		if (argv[i][0] == '-') {

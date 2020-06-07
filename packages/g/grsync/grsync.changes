@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun  7 10:10:10 UTC 2020 - olaf@aepfle.de
+
+- Update to 1.2.8
+- Fix build with grsync.patch
+
+-------------------------------------------------------------------
 Tue Aug  9 20:07:48 UTC 2016 - badshah400@gmail.com
 
 - Add grsync-appdata.patch to add, translate and install appdata

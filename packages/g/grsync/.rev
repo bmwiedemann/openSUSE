@@ -93,4 +93,13 @@
     <comment>1</comment>
     <requestid>418410</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>095a093180d1077d6b84598931eeae6c</srcmd5>
+    <version>1.2.8</version>
+    <time>1591558767</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.8
+- Fix build with grsync.patch</comment>
+    <requestid>812211</requestid>
+  </revision>
 </revisionlist>

@@ -2,15 +2,13 @@
  configure.in |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: grsync-1.2.4/configure.in
-===================================================================
---- grsync-1.2.4.orig/configure.in
-+++ grsync-1.2.4/configure.in
-@@ -91,7 +91,7 @@
+--- a/configure.in
++++ b/configure.in
+@@ -91,7 +91,7 @@ AC_SUBST(GETTEXT_PACKAGE)
  AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [Gettext package.])
  
  dnl Add the languages which your application supports here.
--ALL_LINGUAS="nl_NL it_IT zh_CN fr_FR sv_SE nb_NO tr_TR ru_RU de_DE es_ES cs_CZ gl_ES ca_ES pt_BR id_ID hr_HR zh_TW hu_HU"
+-ALL_LINGUAS="nl_NL it_IT zh_CN fr_FR sv_SE nb_NO tr_TR ru_RU de_DE es_ES cs_CZ gl_ES ca_ES pt_BR id_ID hr_HR zh_TW hu_HU el_GR pt_PT"
 +ALL_LINGUAS="ca cs de es fr gl hr hu id it nb nl pt_BR ru sv tr zh_CN zh_TW"
  AM_GLIB_GNU_GETTEXT
  
