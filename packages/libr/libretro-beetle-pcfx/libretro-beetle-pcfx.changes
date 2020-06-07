@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May 30 16:12:29 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200520:
+  * Update
+  * Silence most warnings
+  * (MSVC 2017) Only compile in HAVE_CDROM part for desktop
+  * Potential buildfix
+  * Makefile: Add libnx target
+  * Makefile: Add wiiu target
+  * Potential buildfixes for wiiu
+  * (MSVC 2017) Buildfix
+
+-------------------------------------------------------------------
 Sat Oct 12 17:02:01 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
 
 - Initial version
