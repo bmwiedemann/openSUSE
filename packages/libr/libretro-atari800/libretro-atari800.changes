@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May 30 16:03:35 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200429:
+  * Let retro_endianness.h define WORDS_BIGENDIAN when applicable
+  * Add missing files to compilation list
+  * Add libretro-common submodule
+  * Remove the copy of libretro-common
+  * config: don't use unaligned access on RISC
+  * Use log_cb instead of printing directly
+  * Use frame counter instead of real clock
+  * Revert "sound: fix faint sound buzzing (from https://github.com/atari800/atari800/commit/43fa9)"
+  * sound: fix faint sound buzzing (from https://github.com/atari800/atari800/commit/43fa9)
+  * Disable Util_sleep on __LIBRETRO__
+  * Revert "Load/save atari state from RetroArch"
+  * Fix libnx linking
+  * Load/save atari state from RetroArch
+  * Make atari800 compile again for PSP
+  * Fix for not working virtual keyboard
+
+-------------------------------------------------------------------
 Thu Oct 10 20:53:23 UTC 2019 - i@guoyunhe.me
 
 - Update to version 0~git20190907:
