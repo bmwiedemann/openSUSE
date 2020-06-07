@@ -25,7 +25,7 @@
 %define release 1
 
 Name:           R-base
-Version:        4.0.0
+Version:        4.0.1
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.bz2
@@ -1078,7 +1078,7 @@ Metapackage, Requires: all recommended Packages
 
 %package -n R-boot
 Summary:        Package provides recommended R-boot
-Version:        1.3.24
+Version:        1.3.25
 Release:        %release
 Requires:       R-base
 
@@ -1102,6 +1102,7 @@ This packages provides R-boot, one of the recommended packages.
 %lang(de) %{_libdir}/R/library/boot/po/de/
 %lang(en) %{_libdir}/R/library/boot/po/en*/
 %lang(fr) %{_libdir}/R/library/boot/po/fr/
+%lang(fr) %{_libdir}/R/library/boot/po/it/
 %lang(ko) %{_libdir}/R/library/boot/po/ko/
 %lang(pl) %{_libdir}/R/library/boot/po/pl/
 %lang(ru) %{_libdir}/R/library/boot/po/ru/
@@ -1109,7 +1110,7 @@ This packages provides R-boot, one of the recommended packages.
 
 %package -n R-class
 Summary:        Package provides recommended R-class
-Version:        7.3.16
+Version:        7.3.17
 Release:        %release
 Requires:       R-base
 
@@ -1194,7 +1195,7 @@ This packages provides R-codetools, one of the recommended packages.
 
 %package -n R-foreign
 Summary:        Package provides recommended R-foreign
-Version:        0.8.78
+Version:        0.8.80
 Release:        %release
 Requires:       R-base
 
@@ -1218,12 +1219,13 @@ This packages provides R-foreign, one of the recommended packages.
 %lang(de) %{_libdir}/R/library/foreign/po/de/
 %lang(en) %{_libdir}/R/library/foreign/po/en*/
 %lang(fr) %{_libdir}/R/library/foreign/po/fr/
+%lang(fr) %{_libdir}/R/library/foreign/po/it/
 %lang(pl) %{_libdir}/R/library/foreign/po/pl/
 %{_libdir}/R/library/foreign/R/
 
 %package -n R-KernSmooth
 Summary:        Package provides recommended R-KernSmooth
-Version:        2.23.16
+Version:        2.23.17
 Release:        %release
 Requires:       R-base
 
@@ -1245,6 +1247,7 @@ This packages provides R-KernSmooth, one of the recommended packages.
 %lang(de) %{_libdir}/R/library/KernSmooth/po/de/
 %lang(en) %{_libdir}/R/library/KernSmooth/po/en*/
 %lang(fr) %{_libdir}/R/library/KernSmooth/po/fr/
+%lang(fr) %{_libdir}/R/library/KernSmooth/po/it/
 %lang(pl) %{_libdir}/R/library/KernSmooth/po/pl/
 %lang(ko) %{_libdir}/R/library/KernSmooth/po/ko/
 %{_libdir}/R/library/KernSmooth/R/
@@ -1283,7 +1286,7 @@ This packages provides R-lattice, one of the recommended packages.
 
 %package -n R-MASS
 Summary:        Package provides recommended R-MASS
-Version:        7.3.51
+Version:        7.3.51.6
 Release:        %release
 Requires:       R-base
 
@@ -1308,6 +1311,7 @@ This packages provides R-MASS, one of the recommended packages.
 %lang(de) %{_libdir}/R/library/MASS/po/de/
 %lang(en) %{_libdir}/R/library/MASS/po/en*/
 %lang(fr) %{_libdir}/R/library/MASS/po/fr/
+%lang(fr) %{_libdir}/R/library/MASS/po/it/
 %lang(ko) %{_libdir}/R/library/MASS/po/ko/
 %lang(pl) %{_libdir}/R/library/MASS/po/pl/
 %{_libdir}/R/library/MASS/R/
@@ -1401,7 +1405,7 @@ This packages provides R-mgcv, one of the recommended packages.
 
 %package -n R-nlme
 Summary:        Package provides recommended R-nlme
-Version:        3.1.147
+Version:        3.1.148
 Release:        %release
 Requires:       R-base
 
@@ -1434,7 +1438,7 @@ This packages provides R-nlme, one of the recommended packages.
 
 %package -n R-nnet
 Summary:        Package provides recommended R-nnet
-Version:        7.3.13
+Version:        7.3.14
 Release:        %release
 Requires:       R-base
 
@@ -1458,6 +1462,7 @@ This packages provides R-nnet, one of the recommended packages.
 %lang(de) %{_libdir}/R/library/nnet/po/de/
 %lang(en) %{_libdir}/R/library/nnet/po/en*/
 %lang(fr) %{_libdir}/R/library/nnet/po/fr/
+%lang(fr) %{_libdir}/R/library/nnet/po/it/
 %lang(ko) %{_libdir}/R/library/nnet/po/ko/
 %lang(pl) %{_libdir}/R/library/nnet/po/pl/
 %{_libdir}/R/library/nnet/R/
@@ -1496,7 +1501,7 @@ This packages provides R-rpart, one of the recommended packages.
 
 %package -n R-spatial
 Summary:        Package provides recommended R-spatial
-Version:        7.3.11
+Version:        7.3.12
 Release:        %release
 Requires:       R-base
 
@@ -1520,6 +1525,7 @@ This packages provides R-spatial, one of the recommended packages.
 %lang(de) %{_libdir}/R/library/spatial/po/de/
 %lang(en) %{_libdir}/R/library/spatial/po/en*/
 %lang(fr) %{_libdir}/R/library/spatial/po/fr/
+%lang(fr) %{_libdir}/R/library/spatial/po/it/
 %lang(ko) %{_libdir}/R/library/spatial/po/ko/
 %lang(pl) %{_libdir}/R/library/spatial/po/pl/
 %{_libdir}/R/library/spatial/ppdata/

@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat Jun  6 10:33:50 UTC 2020 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- CHANGES IN R 4.0.1:
+
+  NEW FEATURES:
+
+    * paste() and paste0() gain a new optional argument recycle0.  When
+      set to true, zero-length arguments are recycled leading to
+      character(0) after the sep-concatenation, i.e., to the empty
+      string "" if collapse is a string and to the zero-length value
+      character(0) when collapse = NULL.
+
+      A package whose code uses this should depend on R (>= 4.0.1).
+
+    * The summary(<warnings>) method now maps the counts correctly to
+      the warning messages.
+
+  BUG FIXES:
+
+    * aov(frml, ...) now also works where the formula deparses to more
+      than 500 characters, thanks to a report and patch proposal by Jan
+      Hauffa.
+
+    * Fix a dozen places (code, examples) as Sys.setlocale() returns
+      the new rather than the previous setting.
+
+    * Fix for adding two complex grid units via sum().  Thanks to Gu
+      Zuguang for the report and Thomas Lin Pedersen for the patch.
+
+    * Fix parallel::mclapply(..., mc.preschedule=FALSE) to handle raw
+      vector results correctly. PR#17779
+
+    * Computing the base value, i.e., 2, "everywhere", now uses
+      FLT_RADIX, as the original machar code looped indefinitely on the
+      ppc64 architecture for the longdouble case.
+
+    * In R 4.0.0, sort.list(x) when is.object(x) was true, e.g., for x
+      <- I(letters), was accidentally using method = "radix".
+      Consequently, e.g., merge(<data.frame>) was much slower than
+      previously; reported in PR#17794.
+
+    * plot(y ~ x, ylab = quote(y[i])) now works, as e.g., for xlab;
+      related to PR#10525.
+
+    * parallel::detect.cores(all.tests = TRUE) tries a matching OS name
+      before the other tests (which were intended only for unknown
+      OSes).
+
+    * Parse data for raw strings is now recorded correctly. Reported by
+      Gabor Csardi. 
+
+-------------------------------------------------------------------
 Fri Apr 24 08:08:31 UTC 2020 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - CHANGES IN 4.0.0:

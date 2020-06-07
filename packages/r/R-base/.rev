@@ -1512,4 +1512,41 @@ CHANGES IN R 3.4.2:
   REFERENCE COUNTING:</comment>
     <requestid>797070</requestid>
   </revision>
+  <revision rev="74" vrev="31">
+    <srcmd5>d79ca6ce76ab657807ca8376d8979acf</srcmd5>
+    <version>unknown</version>
+    <time>1591558640</time>
+    <user>dimstar_suse</user>
+    <comment>- CHANGES IN R 4.0.1:
+  NEW FEATURES:
+    * paste() and paste0() gain a new optional argument recycle0.  When
+      set to true, zero-length arguments are recycled leading to
+      character(0) after the sep-concatenation, i.e., to the empty
+      string &quot;&quot; if collapse is a string and to the zero-length value
+      character(0) when collapse = NULL.
+      A package whose code uses this should depend on R (&gt;= 4.0.1).
+    * The summary(&lt;warnings&gt;) method now maps the counts correctly to
+      the warning messages.
+  BUG FIXES:
+    * aov(frml, ...) now also works where the formula deparses to more
+      than 500 characters, thanks to a report and patch proposal by Jan
+      Hauffa.
+    * Fix a dozen places (code, examples) as Sys.setlocale() returns
+      the new rather than the previous setting.
+    * Fix for adding two complex grid units via sum().  Thanks to Gu
+      Zuguang for the report and Thomas Lin Pedersen for the patch.
+    * Fix parallel::mclapply(..., mc.preschedule=FALSE) to handle raw
+      vector results correctly. PR#17779
+    * Computing the base value, i.e., 2, &quot;everywhere&quot;, now uses
+      FLT_RADIX, as the original machar code looped indefinitely on the
+      ppc64 architecture for the longdouble case.
+    * In R 4.0.0, sort.list(x) when is.object(x) was true, e.g., for x
+      &lt;- I(letters), was accidentally using method = &quot;radix&quot;.
+      Consequently, e.g., merge(&lt;data.frame&gt;) was much slower than
+      previously; reported in PR#17794.
+    * plot(y ~ x, ylab = quote(y[i])) now works, as e.g., for xlab;
+      related to PR#10525.
+    * parallel::detect.cores(all.tests = TRUE) tries a matching OS name</comment>
+    <requestid>812058</requestid>
+  </revision>
 </revisionlist>
