@@ -65,8 +65,8 @@ Index: include/version.h
 -#include "buildstamp.h"
 -
  /* Application version (in various forms) */
- #define PROFTPD_VERSION_NUMBER		0x0001030608
- #define PROFTPD_VERSION_TEXT		"1.3.6c"
+ #define PROFTPD_VERSION_NUMBER		0x0001030609
+ #define PROFTPD_VERSION_TEXT		"1.3.6d"
 Index: src/main.c
 ===================================================================
 --- src/main.c.orig
