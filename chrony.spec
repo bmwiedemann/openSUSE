@@ -16,7 +16,6 @@
 #
 
 
-%define vendorzone opensuse.
 %define _systemdutildir %(pkg-config --variable systemdutildir systemd)
 %global clknetsim_ver 79ffe44
 #Compat macro for new _fillupdir macro introduced in Nov 2017
@@ -41,6 +40,8 @@ Source8:        chrony.keyring
 # Simulator for test suite
 Source10:       https://github.com/mlichvar/clknetsim/archive/%{clknetsim_ver}/clknetsim-%{clknetsim_ver}.tar.gz
 Source11:       chrony-tmpfiles
+Source12:       pool.conf.suse
+Source13:       pool.conf.opensuse
 # PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
 Patch0:         chrony-config.patch
 # Add NTP servers from DHCP when starting service
@@ -66,6 +67,8 @@ Requires:       logrotate
 Requires(post): %fillup_prereq
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
+Requires:       %name-pool
+Recommends:     %name-pool-nonempty
 Provides:       ntp-daemon
 %ifarch s390 s390x ppc64le
 BuildRequires:  libseccomp-devel >= 2.2.0
@@ -95,6 +98,48 @@ performance and configuring various settings. It can do so while
 running on the same computer as the chronyd instance it is controlling
 or a different computer.
 
+%package pool-suse
+Summary:        Chrony preconfiguration for SUSE
+Group:          Productivity/Networking/Other
+Provides:       %name-pool = %version
+Provides:       %name-pool-nonempty
+Conflicts:      otherproviders(%name-pool)
+Requires:       %name = %version
+BuildArch:      noarch
+RemovePathPostfixes: .suse
+
+%description pool-suse
+This package configures chrony to use the SUSE NTP server pool by
+default.
+
+%package pool-openSUSE
+Summary:        Chrony preconfiguration for openSUSE
+Group:          Productivity/Networking/Other
+Provides:       %name-pool = %version
+Provides:       %name-pool-nonempty
+Conflicts:      otherproviders(%name-pool)
+Requires:       %name = %version
+BuildArch:      noarch
+RemovePathPostfixes: .opensuse
+
+%description pool-openSUSE
+This package configures chrony to use the openSUSE NTP server pool by
+default.
+
+%package pool-empty
+Summary:        Empty pool preconfiguration for chrony
+Group:          Productivity/Networking/Other
+Provides:       %name-pool = %version
+Conflicts:      otherproviders(%name-pool)
+Requires:       %name = %version
+BuildArch:      noarch
+RemovePathPostfixes: .empty
+
+%description pool-empty
+This package provides an empty /etc/chrony.d/pool.conf file for
+situations when having servers preconfigured in chrony is undesirable,
+e.g. because the servers will be set via DHCP.
+
 %prep
 %setup -q -a 10
 %patch0 -p1
@@ -104,16 +149,11 @@ or a different computer.
 %patch4 -p1
 %patch5 -p1
 
-# If this is an openSUSE build, use our vendor zone
-# (2.*pool.ntp.org names include IPv6 addresses). If not
-# an openSUSE build, comment out the pool statement
-%if 0%{?is_opensuse}
-sed -e 's|^\(pool \)\(pool.ntp.org\)|\12.%{vendorzone}\2|' \
-        < examples/chrony.conf.example2 > chrony.conf
-%else
+# Remove pool statements from the default /etc/chrony.conf. They will
+# be provided by branding packages in /etc/chrony.d/pool.conf .
+
 sed -e 's|^\pool|! pool|' \
         < examples/chrony.conf.example2 > chrony.conf
-%endif
 
 cat << EOF >> chrony.conf
 
@@ -183,6 +223,10 @@ install -Dpm 755 %{SOURCE4} \
 install -d %{buildroot}%{_localstatedir}/log/chrony
 touch %{buildroot}%{_localstatedir}/lib/chrony/{drift,rtc}
 
+# Install the NTP pool files
+install -Dpm 644 %{SOURCE12} %{SOURCE13} %{buildroot}/etc/chrony.d
+touch %{buildroot}/etc/chrony.d/pool.conf.empty
+
 %ifnarch %ix86
 %check
 # Set random seed to get deterministic results
@@ -237,5 +281,14 @@ getent passwd %{name} >/dev/null || useradd -r -g %{name} -d "%{_localstatedir}/
 %ghost %attr(640,chrony,chrony) %{_localstatedir}/lib/chrony/rtc
 %dir %attr(750,chrony,chrony) %{_localstatedir}/log/chrony
 %ghost %attr(0750, %{name}, %{name}) %{_rundir}/%{name}
+
+%files pool-empty
+%config (noreplace) /etc/chrony.d/pool.conf.empty
+
+%files pool-suse
+%config (noreplace) /etc/chrony.d/pool.conf.suse
+
+%files pool-openSUSE
+%config (noreplace) /etc/chrony.d/pool.conf.opensuse
 
 %changelog

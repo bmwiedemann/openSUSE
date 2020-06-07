@@ -250,4 +250,18 @@
     <comment></comment>
     <requestid>799425</requestid>
   </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>226578d499c814679857e97acc66a754</srcmd5>
+    <version>3.5</version>
+    <time>1591558419</time>
+    <user>dimstar_suse</user>
+    <comment>- Add chrony-pool-suse and chrony-pool-openSUSE subpackages that
+  preconfigure chrony to use NTP servers from the  respective
+  pools for SUSE and openSUSE (bsc#1156884, SLE-11424).
+- Add chrony-pool-empty to still allow installing chrony without
+  preconfigured servers.
+- Use iburst in the default pool statements to speed up initial
+  synchronisation (bsc#1172113).</comment>
+    <requestid>811536</requestid>
+  </revision>
 </revisionlist>
