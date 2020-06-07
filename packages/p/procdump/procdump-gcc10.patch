@@ -1,0 +1,77 @@
+From 0d98403557465dd12e4f8d33a673d98b3468dd60 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Grabovsk=C3=BD?= <mgrabovs@redhat.com>
+Date: Thu, 20 Feb 2020 10:11:47 +0100
+Subject: [PATCH] Fix for build on GCC 10
+
+GCC 10 defaults to -fno-common which requires us to explicitly mark
+global variables with extern in header files.
+---
+ include/Logging.h               | 6 ++----
+ include/ProcDumpConfiguration.h | 6 +++---
+ src/ProcDumpConfiguration.c     | 6 ++++++
+ 3 files changed, 11 insertions(+), 7 deletions(-)
+
+Index: ProcDump-for-Linux-1.1.1/include/Logging.h
+===================================================================
+--- ProcDump-for-Linux-1.1.1.orig/include/Logging.h
++++ ProcDump-for-Linux-1.1.1/include/Logging.h
+@@ -26,8 +26,6 @@
+ #define S2(x) S1(x)
+ #define LOCATION "in "__FILE__ ", at line " S2(__LINE__)
+ 
+-extern struct ProcDumpConfiguration g_config;
+-
+ 
+ enum LogLevel{
+     debug,
+@@ -39,7 +37,7 @@ enum LogLevel{
+ 
+ void Log(enum LogLevel logLevel, const char *message, ...);
+ 
+-pthread_mutex_t LoggerLock;
++extern pthread_mutex_t LoggerLock;
+ 
+ void DiagTrace(const char* message, ...);
+ 
+@@ -54,4 +52,4 @@ void DiagTrace(const char* message, ...)
+ #define Trace(format, ...) \
+     DiagTrace(format " %s", ##__VA_ARGS__, LOCATION);
+ 
+-#endif // LOGGING_H
+\ No newline at end of file
++#endif // LOGGING_H
+Index: ProcDump-for-Linux-1.1.1/include/ProcDumpConfiguration.h
+===================================================================
+--- ProcDump-for-Linux-1.1.1.orig/include/ProcDumpConfiguration.h
++++ ProcDump-for-Linux-1.1.1/include/ProcDumpConfiguration.h
+@@ -40,10 +40,10 @@
+ 
+ #define MIN_POLLING_INTERVAL 1000   // default trigger polling interval (ms)
+ 
+-struct ProcDumpConfiguration g_config;  // backbone of the program
++extern struct ProcDumpConfiguration g_config;  // backbone of the program
+ 
+-long HZ;                                // clock ticks per second
+-int MAXIMUM_CPU;                        // maximum cpu usage percentage (# cores * 100)
++extern long HZ;                                // clock ticks per second
++extern int MAXIMUM_CPU;                        // maximum cpu usage percentage (# cores * 100)
+ 
+ // -------------------
+ // Structs
+Index: ProcDump-for-Linux-1.1.1/src/ProcDumpConfiguration.c
+===================================================================
+--- ProcDump-for-Linux-1.1.1.orig/src/ProcDumpConfiguration.c
++++ ProcDump-for-Linux-1.1.1/src/ProcDumpConfiguration.c
+@@ -12,6 +12,12 @@
+ 
+ struct Handle g_evtConfigurationInitialized = HANDLE_MANUAL_RESET_EVENT_INITIALIZER("ConfigurationInitialized");
+ 
++pthread_mutex_t LoggerLock;
++struct ProcDumpConfiguration g_config;
++
++long HZ;
++int MAXIMUM_CPU;
++
+ static sigset_t sig_set;
+ static pthread_t sig_thread_id;
+ 

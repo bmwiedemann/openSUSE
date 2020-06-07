@@ -17,12 +17,14 @@
 
 
 Name:           procdump
-Version:        1.1
+Version:        1.1.1
 Release:        0
 Summary:        Process coredump emitter using performance triggers
 License:        MIT
 URL:            https://github.com/Microsoft/ProcDump-for-Linux
 Source0:        https://github.com/Microsoft/ProcDump-for-Linux/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM procdump-gcc10.patch
+Patch0:         procdump-gcc10.patch
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -30,7 +32,7 @@ A Linux version of the eponymous ProcDump tool from the Windows Sysinternals
 suite. It can create core dumps of processes based on performance triggers.
 
 %prep
-%setup -q -n ProcDump-for-Linux-%{version}
+%autosetup -p1 -n ProcDump-for-Linux-%{version}
 
 %build
 export CFLAGS="%{optflags}"
