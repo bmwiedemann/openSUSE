@@ -1,7 +1,7 @@
 #
 # spec file for package openbsc
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -94,7 +94,7 @@ echo "%version" >.tarball-version
 autoreconf -fi
 %configure --disable-static --includedir="%_includedir/%name" \
 	--docdir="%_docdir/%name" --with-systemdsystemunitdir="%_unitdir" \
-	--enable-smpp
+	--enable-smpp CFLAGS="-Wno-error=implicit -Wno-error=maybe-uninitialized -Wno-error=memset-transposed-args -Wno-error=null-dereference -Wno-error=sizeof-array-argument -Wno-error=sizeof-pointer-memaccess -fcommon"
 make %{?_smp_mflags}
 popd
 

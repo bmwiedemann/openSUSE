@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>761612</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5ceaf587924432d1558c901cd2b3573f</srcmd5>
+    <version>1.3.2</version>
+    <time>1591558716</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable -Werror. Add -fcommon.</comment>
+    <requestid>812123</requestid>
+  </revision>
 </revisionlist>
