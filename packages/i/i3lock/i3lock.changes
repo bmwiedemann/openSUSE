@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun  6 11:57:02 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- update to 2.12
+  * remove stray \n from error messages
+  * capitalize unlock indicator contents
+  * set WM_CLASS property
+  * reference modifier as “Super”, not “Win”
+  * add --raw option to read image as raw bytes
+- run spec-cleaner
+  * Remove Gropus
+- add patch 0001-unlock_indicator.c-fix-build-failure-against-gcc-10.patch
+  to fix builds with gcc10
+
+-------------------------------------------------------------------
 Mon Feb  3 13:56:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop libudev1 BuildRequires: buildrequiring a library (and not a
