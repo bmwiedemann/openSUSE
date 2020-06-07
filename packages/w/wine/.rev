@@ -3561,4 +3561,20 @@
 - update staging to 5.9 release</comment>
     <requestid>810358</requestid>
   </revision>
+  <revision rev="309" vrev="1">
+    <srcmd5>6800c510f5220cc84c095eb3da21f768</srcmd5>
+    <version>5.10</version>
+    <time>1591558548</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 5.10 development release
+  - More progress on the WineD3D Vulkan backend.
+  - Beginnings of a separate Unix library for NTDLL.
+  - Better support for anti-cheat kernel drivers.
+  - More glyph substitutions in DirectWrite.
+  - Support for DSS private keys.
+  - ARM64 exception handling fixes.
+  - Various bug fixes.
+- update staging to 5.10 release</comment>
+    <requestid>812079</requestid>
+  </revision>
 </revisionlist>

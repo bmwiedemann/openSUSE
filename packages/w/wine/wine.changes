@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun  6 06:38:19 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 5.10 development release
+  - More progress on the WineD3D Vulkan backend.
+  - Beginnings of a separate Unix library for NTDLL.
+  - Better support for anti-cheat kernel drivers.
+  - More glyph substitutions in DirectWrite.
+  - Support for DSS private keys.
+  - ARM64 exception handling fixes.
+  - Various bug fixes.
+- update staging to 5.10 release
+
+-------------------------------------------------------------------
 Sat May 30 09:24:38 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - added ocl-icd-devel for opencl
