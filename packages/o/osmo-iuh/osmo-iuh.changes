@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun  6 23:26:04 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Set CFLAGS+=-fcommon.
+
+-------------------------------------------------------------------
 Sun Jan  5 10:57:39 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 0.6.0

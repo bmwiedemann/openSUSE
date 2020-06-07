@@ -89,7 +89,7 @@ applications that want to make use of libosmo-sabp.
 %build
 echo "%version" >.tarball-version
 autoreconf -fi
-%configure \
+%configure CFLAGS="%optflags -fcommon" \
     --disable-static \
     --docdir="%_docdir/%name" \
     --with-systemdsystemunitdir="%_unitdir"

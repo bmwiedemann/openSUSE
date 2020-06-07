@@ -55,4 +55,12 @@
     <comment>- Update to new upstream release 0.6.0</comment>
     <requestid>761610</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>606110e30cfd24b1803689330231ee42</srcmd5>
+    <version>0.6.0</version>
+    <time>1591558709</time>
+    <user>dimstar_suse</user>
+    <comment>- Set CFLAGS+=-fcommon.</comment>
+    <requestid>812122</requestid>
+  </revision>
 </revisionlist>
