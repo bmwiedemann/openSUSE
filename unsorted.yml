@@ -1665,6 +1665,8 @@ unsorted:
   - chromium: [x86_64] 
   - chromium-bsu 
   - chromium-uget-integrator 
+  - chrony-pool-empty 
+  - chrony-pool-suse 
   - chrpath 
   - ciano 
   - ciano-lang 
@@ -10289,7 +10291,7 @@ unsorted:
   - liblqr-devel 
   - liblrdf-devel 
   - liblrdf2-32bit: [x86_64] 
-  - liblrs-7_0a0 
+  - liblrs1 
   - liblsan0-gcc7: [x86_64] 
   - liblsan0-gcc9: [x86_64] 
   - liblscp-devel 
