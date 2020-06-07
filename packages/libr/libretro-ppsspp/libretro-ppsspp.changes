@@ -1,4 +1,669 @@
 -------------------------------------------------------------------
+Sat May 30 11:55:18 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200530:
+  * oop
+  * Remove log as @unknownbrackets suggest
+  * add raspberry pi 64 bit build files
+  * Thread: Default to kernel threads from kernel.
+
+-------------------------------------------------------------------
+Sat May 30 08:09:19 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200529:
+  * Experimentally enable pixel-depth-rounding for Tales of Phantasia, tries to work around an Exynos driver bug.
+  * Time to update gradle again (Android Studio 4.0 was released)
+  * Fix minor bug in StereoResampler debug display
+  * UWP: Fix safe insets.
+  * Vulkan: Ensure depth/stencil load match on Mali.
+  * Vulkan: Trivially kill more empty steps.
+  * Travis: Build UWP also.
+  * UWP: Link ChatScreen.
+  * UWP: Stub new inputbox system func.
+  * UWP: Buildfix for controller vibration.
+  * UWP: Add libpng17 include path.
+  * UWP: Include TextDrawer in main MSVC project.
+  * UWP: Fix TextDrawer with latest changes.
+  * GPU: Don't allow step id to decrease at a sync.
+  * Vulkan: Correct viewport flag reset on rebind.
+  * GE Debugger: Fix alignment in GE dumps.
+  * Do a similar thing for D3D (let the backend handle the dirtying).
+  * OpenGL/Vulkan: Rework the contract around dynamic state. Removes some ugly dirtying from the GL render manager.
+  * UI: Lock around removal from dispatch queue.
+  * Remove all those "GLES reset the blend state" comments.
+  * GLRenderManager: Removes some redundant dirtying. Preserves blend state (color mask) across clears.
+  * Vulkan: After binding a new framebuffer, we always need to dirty the viewport/scissor state.
+  * DarkStalkers: Handle the "normal" screen stretch too, not just "wide", to avoid a surprising performance drop.
+  * Exclude a couple more commands from re-execution in ReapplyGfxState. See
+  * GPU: Don't reapply LoadClut each frame.
+  * PPGe: Left align messages in dialogs.
+  * Windows: Workaround for custom build step error.
+  * Windows: Avoid calling git describe 3 times.
+  * SDL: Try to continue if EGL init fails.
+  * Windows: Move git-version update to build event.
+  * Global: Add more other platforms to MSVC project.
+  * Headless: Fix flash0/font path.
+  * Debugger: Avoid symbol map if deleted.
+  * Debugger: Don't break during startup.
+  * Android: Buildfix.
+  * GPU: Never set safe size larger than the buffer.
+  * [Camera/V4L] Add support for jpeg and multiple buffers
+  * Windows: Ask for a specific device on failure.
+  * Windows: Avoid WASAPI init for a bad format.
+  * Windows: Avoid crash for a mono output format.
+  * Ge: Check stack depth based on args struct size.
+  * GPU: Ignore viewport for scissor of 481.
+  * Vulkan: Label render passes in RenderDoc/etc.
+  * Vulkan: Cleanup some duplicate code.
+  * Correct an issue where reformat didn't work if no renderpass was active due to the use of clear.
+  * Remove a redundant framebuffer bind in CopyDisplayToOutput
+  * Add a name tag for all render steps (GL/Vulkan). Helps with debugging and should be cheap enough (a single pointer per "step").
+  * Move the check from #12908 into the firmware version check.
+  * Vulkan: Avoid stencilAction != depthAction.
+  * Vulkan: Check driver version for Adreno 5xx bug.
+  * Vulkan: Move Harvest Moon fix to Draw::Bugs.
+  * Vulkan: Stencil initialization: Use the adreno path for Mali as well.
+  * Fix a case of pointer truncation in Vulkan on 32-bit. Fixes #12932
+  * Vulkan crashfix (pNext was uninitialized)
+  * Vulkan: Fix leak and remove extra allocator.
+  * Vulkan: Create FB compatible pipelines in Draw.
+  * Vulkan: Expand logging of render steps a bit.
+  * D3D9: Avoid clearing color on stencil upload.
+  * GPU: Avoid unnecessary clear on stencil upload.
+  * Revert "Experimental commit that effectively reverts the Vulkan part of #12882."
+  * Experimental commit that effectively reverts the Vulkan part of #12882.
+  * Fix the Windows 32-bit build.
+  * Track scissors like we track viewports (bugfix?).
+  * Show "debug build" on the splash screen, in debug builds.
+  * Vulkan: Switch the framebuffer-rebind-to-clear on reformat to, well, a normal clear instead.
+  * Vulkan: Verify scissor as well.
+  * Vulkan: Add asserts to catch no viewport render.
+  * UI: Take reporting screenshot at frame end.
+  * Vulkan validation: Switch to the new Khronos validation layer shipping with recent SDKs.
+  * Vulkan: Stop merge at clear/touched read only.
+  * Vulkan: Make merge pass a bit easier to read.
+  * GLES: Fix invalidation of backbuffer.
+  * Vulkan: Generalize dependency tracking.
+  * GLES: Add dependency tracking for render passes.
+  * GPU: Centralize framebuffer download.
+  * Buildfix
+  * Remove the Audio Resampling setting (now always on). Having it off is not useful because it'll never sync up perfectly over time.
+  * Revert the loop check in StereoResampler, new one could accidentally keep looping when underrun severely (like if emulation stopped).
+  * Add more debug info in scePsmfPlayerStart
+  * Make the IsValidPBP DISC_ID check a bit more lenient. Fixes an issue where some homebrew would no longer show in the list.
+  * Fix homebrew store button to work even after changing grid layouts (it lost its click handler)
+  * Fix a crash bug in homebrew store
+  * Remove our custom atomics code entirely.
+  * Convert atomic code in core and ConsoleListener to use C++ atomics
+  * Reduce the SDL audio buffer size, 2048 is a bit excessive. Port the changes to the Qt SDL code.
+  * StereoResampler: Make sure the target buffer size is large enough, taking SYSPROP_AUDIO_FRAMES_PER_BUFFER into account.
+  * Rename things to make more sense.
+  * StereoResampler: Use C++ atomics
+  * Add some vaguely interesting stats
+  * SDL: If we get an audio device with a different freq than 44100, that's actually OK.
+  * arm64jit: Track writable and non-writable pointers.
+  * Mp4: Cleanup some parameters.
+  * cmake: Fix rpi4 build on newer gcc.
+  * GPU: Fix an overflow loading old save states.
+  * GLES: Specify buffer type just to be safe.
+  * arm64jit: Minor cleanup.
+  * GPU: Allow each shader in chain to have settings.
+  * UI: Translate shader setting names.
+  * GPU: Keep last output size in chained postshaders.
+  * GPU: Prevent infinite loops in postshader chains.
+  * GPU: Force nearest only for the upscaling filter.
+  * GPU: Move calculating render res to presentation.
+  * GPU: Allow postshaders to have parents.
+  * GPU: Update postshader uniforms for each.
+  * GPU: Process all postshader pipelines.
+  * GPU: Cleanup a comment, we use shorts now.
+  * GPU: Move things around to be per postshader.
+  * Simplify how to get the debug stats from StereoResampler
+  * Fix comment
+  * Qt fix
+  * Only show frames per buffer if the number is available through sysinfo
+  * Oops, need to pass an (invalid) slot number in headless too.
+  * SDL: Show the actually used sample rate in system info.
+  * oop
+  * Fix "Improved compatibility of sceGeListEnQueue: verify that stackDepth < 256"
+  * Display the savestate slot number when saving and loading state through shortcuts.
+  * Very minor optimization in PresentationCommon (don't upload the indices every frame).
+  * Fix per game setting and pack setting in vec4
+  * Use map for settings
+  * Post shader setting uniform
+  * Thin3D: use 16-bit indices. Fixes #12898.
+  * GPU: Oops, don't skip copy if stride different.
+  * Fix DarkStalkers after the just-merged refactoring.
+  * Draw: Small optimization to callback.
+  * Libretro: Add libpng17 to include flags.
+  * GPU: Take A off RGB565 conversion funcs.
+  * GPU: Use texclamp for postshader/present draw.
+  * GPU: Centralize DestroyAllFBOs().
+  * GPU: Cleanup presentation flipping a bit.
+  * D3D11: Allow pixel shader uniforms in Draw.
+  * GPU: Cleanup skip buffer texture draws.
+  * GPU: Simplify direct render when skipping buffers.
+  * softgpu: Fix postshader on 5551.
+  * D3D9: Attempt PS/VS 3.0 if it doesn't work with 2.
+  * GPU: Use postshader for direct VRAM draws again.
+  * GPU: Use a texture directly for MakePixelTexture.
+  * softgpu: Avoid RB swizzle when using a postshader.
+  * Vulkan: Allow frag shader UBO reads.
+  * Vulkan: Correct missing offsets in Draw.
+  * Vulkan: Correct postshader sampler binding.
+  * Draw: Actually use the index offset parameter.
+  * softgpu: Enable postshader support.
+  * GLES: Fix reuse of vertex data buffer.
+  * GPU: Cleanup leftover postshader stuff.
+  * UI: Allow postshaders on D3D9.
+  * GPU: Move post shader handling to new class.
+  * D3D9: Enable postprocessing of post shaders.
+  * Draw: Enable backwards compat on D3D11 shaders.
+  * Draw: Add more uniform types.
+  * Draw: Allow specifying a tag on shaders.
+  * GPU: Move a bit more to new display approach.
+  * softgpu: Allow display rotation.
+  * softgpu: Allow configuring Google Cardboard.
+  * GPU: Move cardboard/etc. to PresentationCommon.
+  * Vulkan: Fix Draw usage of framebuffers.
+  * GPU: Split FramebufferCommon into two classes.
+  * softgpu: Fix texture overlap.
+  * GPU: Handle buffer overhead in postshader uniforms.
+  * Android: Oops, fix start with space in filename.
+  * Global: Add some defs for MSVC highlighting.
+  * Temporarily disable YuGiOh save fix (experiment in issue #7914)
+  * Improved compatibility of sceGeListEnQueue: verify that stackDepth < 256
+  * D3D11: Better set current texture to null first, otherwise we can run into another issue.
+  * Fix a comment
+  * D3D11: Fix a bind ordering issue in depal (only a problem with debug layer enabled)
+  * ColorConv: Fix a few conversions that missed the lower bits of each component.
+  * Vulkan: Don't merge render passes where the second one begins with a clear.
+  * Android: Avoid multiple resizes in a row.
+  * UI: Add more options to touch test screen.
+  * UI: Return to game settings after restart.
+  * Windows: Fix GL reinit on backend switch.
+  * Android: Move a bit more size handling.
+  * Android: Reassert sustained perf when going ingame.
+  * Android: Refactor size maintenance to own class.
+  * GPU: Minor lighting cleanup in software transform.
+  * GPU: Split up software transform into phases.
+  * Windows: Add safety checks to WASAPI code.
+  * GLES: Add safety handling for offset depal.
+  * GPU: Calc framebuf offset with right params.
+  * GPU: Avoid a texture offset change in sw transform.
+  * GLES: Simplify the framebuf offset detection.
+  * Vulkan: Framebuffer manager: Use an allocator for "MakePixelTexture" images.
+  * compat.ini: Turn on ForceUMDDelay for Innocent Life. See issue #2830.
+  * iOS/macOS : set bundle version
+  * iOS : File association
+  * compat.ini: Set ForceMax60FPS for Super Monkey Ball Adventures. See #7674.
+  * Make PPSSPP visible in OUYA launcher
+  * Fix: touchscreen evens on upcomming SDL2 versions which includes the same functionality but inside the library
+  * And another mumbo jumbo game (#12857)
+  * Enable ForceMax60FPS for games published by MumboJumbo. See issue #12857
+  * Vulkan: Discard negative width/height framebuffer blits. Will likely help #12531.
+  * Address additional feedback from Unknown, finally
+  * Assorted fixes (build and crash)
+  * Use PPSSPP's kernel interface to retrieve Heap objects
+  * Address Unknown's feedback
+  * Change to info log
+  * Attempt to make save status
+  * Fix crash in sceKernelDeleteHeap
+  * Attempt to build fix non-windows
+  * remove comment
+  * Try to Implement  SysMemForKernel
+  * Move SysMemForKernel to sceKernelMemory
+  * oop
+  * Wrap some SysMemForKernel's nids
+  * Update <Share> dialog on Android 10
+  * iOS Share PPSSPP
+  * Travis: Handle new package versions better.
+  * PPGe: Remove half-pixel offset.
+  * http: Fix thread join on enable/disable.
+  * "Unify" the credits screen. Fixes #12844.
+  * Android: Don't cache env in text drawer.
+  * Update gradle again
+  * GLES: Disable range culling on old Tegras, they seem to misbehave (see issue #12838).
+  * update VS projects
+  * D3D11: Always use accurate depth.
+  * Windows: Send resize when adjusting render mode.
+  * Add "Switch UMD" menu point to Linux version
+  * Improve code readability
+  * Implement PPSSPP specific cheats:
+  * Update more Linux version menu points to correspond to Windows ones
+  * Remove leftovers
+  * Add "Record" menu group to Linux version
+  * TextureReplacer: Generate a default value in the ini files for ignoreMipmap.
+  * Add "Enable chat" menu point to Linux version
+  * Auto rotate over a square
+  * Fixes (stage 3)
+  * Update TextureReplacer.h
+  * Update TextureReplacer.cpp
+  * Fixes (stage 2)
+  * #8714 Unified resolution scaling for all platforms.
+  * Add option to prevent Mipmaps from being dumped
+  * Fixes (stage 1)
+  * Turn on [ForceMax60FPS] for  "Fat Princess: Fistful of Cake". Benefits loading times etc.
+  * Update "File" menu to match Windows version
+  * Update "Emulation" menu to match Windows version
+  * Update "Debug" menu to match Windows version
+  * Update "Options" menu to match Windows version
+  * Update "Help" menu to match Windows version
+  * UI: Respect insets with on-device debug stats.
+  * GE Debugger: Prevent crash when stopping execution.
+  * GLES: Update shader uniforms after apply state.
+  * Cheats: Fix use in homebrew on start.
+  * Cheats: Cleanup global usage.
+  * UI: Cleanup old specialized checkbox.
+  * UI: Monitor cheat file changes on cheat editor.
+  * UI: Update cheat file more safely.
+  * UI: Use standard back and checkbox in cheats UI.
+  * UI: Prevent changing memstick path in game.
+  * Travis: Cache macOS python build as a bottle.
+  * Audio: Remove latency setting.
+  * GLES: Re-enable non-float depal shader path.
+  * Update gradle again
+  * x86jit: Force INF * 0 to +NAN.
+  * Windows: Prevent applying -1 as inset space.
+  * Windows: Ensure we resize after hw transform swap.
+  * Headless: Fix compile on Android.
+  * UI: Small cleanup in touch control layout editor.
+  * UI: General cleanup in layout editor.
+  * UI: Prevent drag drift in layout editor.
+  * UI: Make display layout editor support 1x PSP.
+  * Fix SDK requirements of Atlas and Zim tools.
+  * Net: Correct pool allocation.
+  * GPU: Track HW tess at start of frame too.
+  * GPU: Reset hw transform once per frame.
+  * GPU: Move hw transform decision to draw engine.
+  * GPU: Update uniforms w/ consistent render mode too.
+  * GPU: Use consistent buffered rendering state.
+  * Setting the width and height to 0 made the frameskip unusable on lakka/libretro with a XU4 with a MALI GPU T628. The result was that bad flickering happened when in frameskip mode. Once it reached 60fps, no flickering, below that flickering. This change fixes the flickering and calls video_cb with the correct height and width.
+  * Travis: build libretro android
+  * libretro: Fix Android builds
+  * Mouse 4 as back in menu navigation
+  * android: include path fix
+  * Android: Change the display length for "toast" message to Toast.LENGTH_LONG
+  * Touch layout clean up
+  * UI: Properly clamp control positioning in edit.
+  * [iOS] Notch support
+  * Additional rendering fixes for notch
+  * Fix landscape/reverse landscape cutout padding issue, see #12779
+  * Update the lang submodule
+  * Support drawing around notches on Android displays. Fixes #12261
+  * Target Android SDK 29.
+  * Vulkan: Pick shaders after calling ConvertStateToVulkanKey because it may end up disabling shader blending
+  * Fix duplicate translation ID
+  * PPGe: Slightly reduce the font size, might help #12764
+  * Windows: Show a message when failing over backend.
+  * Back to ERROR
+  * Remove outdated code that reset the logenabled flags on non-Windows. Fixes #12291
+  * Minor log improvement in BlockDevices.cpp
+  * Rember cheat scroll position
+  * HLE: Oops, make sure we don't deadbeef mips calls.
+  * macOS: Fix build
+  * SaveState: Correct compat load with OSK changes.
+  * PPGe: Fix dialog button positioning.
+  * UI: Prevent stretching game icons on detail.
+  * Do not apply sensibility of deadzone skip
+  * Fix translation things
+  * Enable chat input for SDL
+  * Skip deadzone option on tilt
+  * HLE: Fix some misleading logging.
+  * Windows: Fix strange build error.
+  * UI: Translate HAT and left analog the same way.
+  * Use 2 different button for CW and CCW
+  * Core: Add argmask for threadhacks to prevent crash.
+  * GPU: Treat negative light exp same as 0.
+  * Android: Reassert immersive after input dialog.
+  * cmake: Improve building with the system libpng.
+  * Osk: Correct UCS2 conversion.
+  * Auto rotating analog
+  * Camera: Fix missing return warning.
+  * Remove some more uint16_t
+  * More correctly handle UCS2 encoding.
+  * Address feedback
+  * Support a few more wstring functions on non-windows platforms, due to the armips assembler.
+  * Text input: Clearly use 16-bit chars like the PSP, don't rely on wchar_t.
+  * PPGe: Avoid crash with missing metadata.
+  * HLE: Make calling mips funcs simpler.
+  * GPU: Assume a scissor of 481x273 is a mistake.
+  * Io: Apply VFAT hack only to dirs <= 8 chars long.
+  * UI: Allow startup without UI assets.
+  * UI: Avoid crash when atlas metadata is missing.
+  * UI: Avoid cached booleans for simple globals.
+  * UI: Disable render dup frames where it can't work.
+  * Font: Prevent crash on game exit.
+  * Android: Fix dismiss of OSK dialog.
+  * Reporting: Log SceIoChstat calls.
+  * GPU: Avoid divide by zero in garbage displaylist.
+  * GPU: Fix memory corruption with bufw > w.
+  * Add more assets directory paths.
+  * Correcting return value of some mipscalls without after action.
+  * Qt: Correct DPI accounting in font rendering.
+  * cmake: Disable discord-rpc for libretro builds.
+  * Fix the logic around postEffectRequiresFlip so duplicateFrames doesn't require a post shader.
+  * Vpl: Correct allocation order when splitting block.
+  * Core: Use full memory for ELF files.
+  * Reset the useAllocCallbacks on font init.
+  * Buildfix.
+  * Display: Update latched fbaddr on immediate update.
+  * Fix states.
+  * No need to manually decide pending or not for mipscalls.
+  * Net: Stub network sign-in dialog.
+  * Net: Support NETCONF_CONNECT_APNET_LAST request.
+  * NetAdhoc: Match init/term behavior better.
+  * Net: Better simulate sceWlanGetEtherAddr timing.
+  * Net: Handle memory allocation better.
+  * Add option to improve frame pacing through duplicate frames if framerate is below 60hz.
+  * UI: Rebind the backbuffer when drawing UI.
+  * Switch: Add EGL interface.
+  * Kernel: Rename conflicting kernel object names.
+  * Font:alloc/free memory for font file and char bitmap.
+  * Vulkan: Blacklist on Switch.
+  * Core: Add some libnx calls for Switch.
+  * Core: Use a lock for i18n categories.
+  * PPGe: Clear unused parts of text image buffers.
+  * PPGe: Correct double spacing in some save text.
+  * libretro makefile fix
+  * Camera: Simplify an expression.
+  * Core: Quiet some warnings.
+  * Android: Delay TextDrawer init in PPGe.
+  * PPGe: Show ellipsis for overly long lines.
+  * PPGe: Use TextDrawer for save UI if available.
+  * PPGe: Make some of the API internal only.
+  * PPGe: Support 8-bit text bitmaps from TextDrawer.
+  * PPGe: Allow overriding text drawer DPI scale.
+  * Qt: Cleanup differences in text hashing.
+  * UI: Refactor TextDrawer to provide bitmaps too.
+  * UI: Minor cleanups to chat UI code.
+  * Fix capitalization of mfreadwrite.h include
+  * Windows: Warn if Windows Firewall blocks PPSSPP.
+  * http: Show more detailed status when scanning.
+  * http: Correct new thread executor.
+  * Android: Enable native keyboard for OSK.
+  * softgpu: Correct clear/solid rect BR corner.
+  * Android: Fix upside-down joystick navigation (due to an old sin).
+  * New heuristic for getting rid of unnecessary "antialias-lines".
+  * THe proposed Hive Sweeper fix in #11025 looks right, let's just commit it.
+  * Possible fix for libretro build issue. (blind commit, untested)
+  * Osk: Prevent adding highlighted char past limit.
+  * Core: Avoid shadowing a define.
+  * Io: Correct some error handling for OpenFile().
+  * Android: Avoid translation conflict in translation.
+  * UI: Move Camera settings lower in Graphics.
+  * Android: Process input prompts more clearly.
+  * UI: Make System_InputBox API asynchronous.
+  * Vulkan: Track down another one of those minor resource leaks.
+  * Module: Reinit gpu only on runtime module load.
+  * Android: Reload game config on storage permission.
+  * Android: Ensure we forget the shortcut on next run.
+  * Update lang submodule
+  * UI: Temporary solution to the layout issue: Remove the gear button from the recent screen.
+  * Vulkan: Ensure scaling happens in cached RAM.
+  * Headless: Prevent crash running graphics tests.
+  * Vulkan: Fix minor vulkan resource leak if inflight frames isn't max.
+  * UI: Simple joystick navigation. Fixes #10996.
+  * Comment fix
+  * Also move out the global stuff from view.cpp/h to root.cpp/h
+  * UI: Break out the hierarchy functions into ui/root.cpp/h
+  * Minor cleanups
+  * UI: Ignore invalid PBPs in game browser.
+  * u8_clamp clean up
+  * Let's wait 5 frames
+  * Fix wheel up/down and additional mouse button
+  * Android: Fix glslang include path.
+  * Force Polar's Puzzles to use accurate UMD timing. Should help #12677
+  * Add the glslang include path in another place
+  * http: Avoid detach() in webserver code.
+  * Core: Bring over some file related Switch changes.
+  * Another attempt
+  * Fix atlas tool build on linux
+  * Also try to fix the legacy Android build.
+  * CMake buildfix
+  * Update the glslang submodule, fix the build afterwards.
+  * Better smoothing and added missing break on MOUSE_WHEEL
+  * Fix excessive scroll
+  * Warning fix.
+  * Attempt to replace 0 frame width with valid frame width.(sceMpegAvcCsc)
+  * UI fix
+  * GPU: Restart when changing inflight frames setting.
+  * Tweaked chatbox a little bit
+  * Fix chat color formatting
+  * Fix building errors
+  * Fix weight
+  * Move clear game list to new menu
+  * Update lang submodule
+  * GPU: Use old frame when presenting a skip.
+  * Address some feedback, thanks unknown
+  * Fix toggle
+  * GPU: Allow choosing number of inflight frames.
+  * Squash commit
+  * Vulkan: Allow alt speed above 60 with vsync.
+  * Rebase on master
+  * GPU: Add setting to control inflight frame usage.
+  * Warning fixes
+  * Vulkan: Support devices that don't properly support 16-bit texture (like MoltenVK).
+  * Fix bug in atlas gen.
+  * Switch all images to dynamic lookup in the atlas by string ID.
+  * Get rid of atlas tables.
+  * Update atlas building scripts
+  * Modify atlas generator to output binary metadata
+  * D3D9: Allow vsync change at runtime.
+  * D3D11: Respect vsync setting.
+  * Vulkan: Present using FIFO for vsync.
+  * GPU: Centralize vsync interval logic.
+  * UI: Respect resize flag during graphics init.
+  * Debugger: Stop remote server in full shutdown.
+  * Remove support for "lowmem" UI atlas. Had to regenerate unfortunately.
+  * And 2017 again...
+  * Delete unused support for ETC1 texture compression
+  * And fix it on 2019...
+  * Recreate the VS projects in 2017
+  * Code cleanup
+  * More VS2017 compat
+  * Reformat the atlastool/zimtool source, fix warnings.
+  * Atlastool/zimtool: Try not to require VS 2019.
+  * Atlastool/zimtool: Make it easy to build these on Windows (prebuilt submodule)
+  * Log shader contents to VERBOSE instead of DEBUG.
+  * Update gradle again
+  * ScanForFunctions: Drastically speed up by only trying to insert the newly found functions into the symbol map.
+  * Rename func.
+  * Check whether the audio is actually played in psmf player
+  * Better align and spacing of UI element
+  * Better UI for game version in list view
+  * Toggle mute button
+  * Go for Abbanon approach
+  * Scale font down a bit
+  * Improve stability on non-jailbroken devices
+  * Add a option for game ID+version as well
+  * Show region on game selection screen
+  * Kernel: Delay better in sceKernelReferThreadStatus.
+  * Rename rapid fire touch control
+  * UI: Separate sleep time in frame time graph.
+  * UI: Show refresh rate on more platforms.
+  * UI: Correct refresh rate display.
+  * Add toggle flag to combo button
+  * UWP: Update "certificate thumbprint" to one that works
+  * Fix linking issue in the UWP build (add camera files to project)
+  * Add some reference line
+  * Framegraph in devmenu
+  * macOS permissions
+  * QT Api for Camera (Linux/macOS)
+  * Core: Use a shared_ptr for i18n categories.
+  * HttpClient/Buffer: Just some tweaks/sanity checks
+  * libretro: android: ios: Add stub camera functionality
+  * libretro: android: Do not build in the standalone UI
+  * Fixes
+  * Switch mode only if needed
+  * SDL analog mouse input
+  * Modify Info.plist automatically
+  * NativeApp: add System_GetPropertyFloat all the places
+  * Qt/macOS: enable HiDPI ( retina display ) support
+  * Remove unused import.
+  * Use System_GetPropertyInt(SYSPROP_SYSTEMVERSION to retrieve version.
+  * Use ASharedMemory api instead of direct access to /dev/ashmem which is deprecated.
+  * compat.ini: Workaround for timing problem in Hot Wheels, see #12604.
+  * Rapid fire touch control
+  * Add new listeners in addition to those present which are deprecated
+  * Core: Future proof CSO support a bit.
+  * DX9: Simplify some expressions
+  * GPU: Only GL uses a flipped buffer in non-buffered, reflect that in the SW transform code.
+  * Apply viewport before SoftwareTransform so flipping can be checked
+  * OpenGL: Call ApplyDrawState before SoftwareTransform
+  * DrawEngineDX9: Rename lookup table, cleanup
+  * Location: add HDOP; change speed to km/h; change altitude from geoid to sea level
+  * Do not stop camera if unnecessary
+  * Android satellites info
+  * Common/Hashmaps.h: add missing <stdint> include
+  * Update macOS system name
+  * Add camera/location support for iOS
+  * Don't shut down camera when exiting games,also re-enumerating devices if
+  * Partial workaround for #12588. Cameras are now gone from settings though after playing one game...
+  * D3D11: Fix mistake in UI vertex shader for non-textured geometry. Fixes #12587.
+  * Add support for iOS ( completely untested )
+  * Initial support for vulkan on macOS ( MoltenVK )
+  * Revert "Android EGL config: Always require 8888, stencil if version >= ICS"
+  * SDL app icon
+  * Add camera support for linux (V4L2)
+  * Add DEFLATE and MD5 to HLE module blacklist. Replaces #12576, fixes #12570
+  * Flush other UI element draw before changing to noTex
+  * Fix line rendering in texmode
+  * Add another game controller mapping. Fixes #10679
+  * Render grid
+  * BuildFix2
+  * Oops
+  * Improve compatibility.
+  * BuildFix
+  * Loader: If the module range is bad, don't get stuck trying to scan for functions.
+  * Update lang submodule
+  * Add camera support for windows.
+  * Async I/O: Don't delay on close. Fixes #12549 (MGS:PW crash).
+  * Warning fix
+  * Avoid divison by 0
+  * Remove extra newline
+  * Snap resize
+  * Upload new Gold icon for Windows
+  * PRX Decryption: add pauth decryption
+  * PRX Decryption: add missing decryption keys
+  * PRX Decryption: add support for gzip compressed executables
+  * PRX Decryption: add support for type 0/1/2/5/6 decryption
+  * Don't check auAddr.
+  * Check invalid address in sceMpegAtracDecode.
+  * Update submodules assets/lang, ffmpeg
+  * Add headbar icon to Qt
+  * Qt: don't return dangling pointer
+  * Don't use the MAP_32BIT flag on any platform.
+  * Mac: MAP_32BIT is no longer supported in Catalina and breaks. We don't need it anymore anyway. Fixes #12495.
+  * Windows: Mark PPSSPP as long path aware.
+  * Windows: Make TEMP dir detection long path aware.
+  * Windows: Allow long path for sys directory.
+  * Windows: Support long My Documents paths.
+  * Windows: Allow longer paths in browse for folder.
+  * Windows: Make memory dump long path friendly.
+  * Windows: Allow read only files in load dialog.
+  * Windows: Make open/save dialogs long path aware.
+  * Windows: Resolve module/full paths for long paths.
+  * Io: Correct async priority default on async open.
+  * Oops.
+  * fix
+  * Io: Return a better error code for sceIoCancel.
+  * Io: Update async priority more correctly.
+  * Change async priority to current thread'priority if priority = -1.
+  * minor fix
+  * Avoid thread queue out of range by a offset.
+  * Move umd replace to loaders.
+  * compat.ini: Add Japanese Game ID for DarkStalkers (Vampire Chronicles)
+  * SDL: Ignore audio switch events in first second.
+  * Io: Allow adjusting default async thread priority.
+  * Io: Correct leak on save state.
+  * Just return error if current directory not be setted.
+  * SoftGPU: Convert from 16-bit if unsupported.
+  * Hide "Control" label on top
+  * Disabled grid size if snap is disabled
+  * Fix
+  * Touch controll grid snap
+  * Update build.gradle.. again.
+  * Don't ignore SCE_KERNEL_ERROR_NOCWD in many cases.
+  * IO:Re-grab SCE_KERNEL_ERROR_NOCWD.
+  * IO:Add an extra delay to simulate umd delay in file seek whence.
+  * vulkan: The GPU profiler could end up writing massive amounts of text, fix some bugs around that.
+  * vulkan: ApplyRenderPassMerge; Add copy / blit destinations to touched buffers.
+  * Vulkan: Enable renderpass merging for all games (was introduced in 1.9 for GoW games). A number of other games can also benefit.
+  * Update lang submodule
+  * Do not assert in Discord::Shutdown
+  * Update CMakeLists.txt
+  * libretro buildfix
+  * Update libretro.cpp
+  * Remove the I/O on Thread option - treat it as always on.
+  * Yet another gradle update
+  * Fix vcrs disassembly
+  * Oops
+  * Isolate most of the softgpu specialization code to RasterizerRectangle.
+  * Fix a backwards check
+  * Remove unused textureswizzle support (we use shaders instead).  Universally support presenting 5551 format directly.
+  * Hack around most of the problems with the save/load dialog. Software stretch gets enabled in non-wide mode, so wallpapers work at a cost of speed.
+  * Scissor fix
+  * Even more speed.
+  * More speed
+  * Buildfix
+  * Further specialization.
+  * More specialization work.
+  * DarkStalkers: Fix display on OpenGL ES.
+  * DarkStalkers: Fix display in the D3D backends. Still broken in OpenGL.
+  * Darkstalkers: Gross hack to avoid the game's own stretch, and present the raw buffer instead for a sharper image.
+  * More darkstalkers work
+  * Detect sprite drawing (1:1 texture mapping), run a simpler function without the triangle state tracking.
+  * SoftGPU: Detect through-mode rectangles from triangle strips
+  * Software renderer: Use hardware color conversion on Vulkan in 5551 16-bit mode
+  * Start slowly migrating from macros
+  * Add a compat.ini flag for software rendering, use it to force on in Darkstalkers
+  * Buildfix
+  * Also rename the config setting to make sure it starts out off.
+  * Cardboard VR: Add an on-screen VR OFF button. Enable Cardboard on iOS.
+  * Revert "Remove Google Cardboard support. Fixes #11668"
+  * Update lang submodule, adding Croatian, thanks to HilmBrala
+  * Text drawing fixes
+  * Correct the wrong GL DataFormat enums
+  * GL: remove another unused format
+  * Reduce GL texture format support to the ES minimum. We have to handle these anyway so let's only have one path.
+  * OpenGL dataformat cleanup - pass Draw::DataFormat to the GLRenderManager.
+  * Fix the build - there's a Vec3 name collision, fixed it using a namespace.
+  * Vulkan+SoftwareRenderer: Fix screen rotation on Android.
+  * Io: Consistently use error codes with OpenFile().
+  * Io: Return error code for write attempt to UMD.
+  * Io: Change async thread priority if running.
+  * Io: Destroy async threads on reset.
+  * Vulkan: Add checks so we don't try to write NULL objects to a descriptor set.
+  * Change Bloom Hack aggressive detection to include GOW games bloom.
+  * Use old jit enablement method if clean method fails
+  * HLE: Replace Motorstorm pixel read func.
+  * Make style more consistent
+  * Update ab.cmd
+  * group chat options and set enabled ptr
+  * Bug fix
+  * Quick Chat
+  * Add virtual key for opening chat
+  * Rebased and fix the update scroll
+  * build fix
+  * chat screen & chat button position and hide ui on show chat
+  * remove pointer and using update() should fix random crash (thanks Uknown)
+  * Add translation of "You're in Offline Mode"
+  * Build fix for Linux QT
+  * Add support OSK for windows
+  * Android chat empty after : fix
+  * pointer and scroll fix
+  * cmake buildfix
+  * Windows CTRL + C Hotkey
+  * Add New Chat Counter
+  * Android Chat Support
+  * Oops it still random crashed destructor do the fix well
+  * pointer fix random crash & better substring logic
+  * Add translation
+  * Enable chat box
+  * PPSSPP early chat feature rebranched
+
+-------------------------------------------------------------------
 Wed Oct 16 16:40:30 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
 
 - Initial version
