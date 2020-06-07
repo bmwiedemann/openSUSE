@@ -1,7 +1,7 @@
 #
 # spec file for package gasnet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,14 @@ Release:        0
 Summary:        A Communication Layer for GAS Languages
 License:        PostgreSQL
 Group:          Productivity/Networking/Other
-Url:            https://gasnet.lbl.gov
+URL:            https://gasnet.lbl.gov
 Source0:        https://gasnet.lbl.gov/download/GASNet-%{version}.tar.gz
 Patch0:         gasnet-date-time.patch
 # PATCH-FIX-OPENSUSE -- have constant BUILD_ID to fix build-compare
 Patch2:         gasnet-build-id.patch
 # PATCH-FIX-OPENSUSE https://bitbucket.org/berkeleylab/gasnet/pull-requests/253/allow-to-not-store-build-date-user-and/diff
 Patch3:         gasnet-build-hostname.patch
+Patch4:         gasnet-fix-multiple-definitions.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -102,6 +103,7 @@ This package contains the documentation for GASNet.
 %patch0
 %patch2 -p1
 %patch3 -p1
+%patch4
 
 # Avoid unnecessary rebuilds of the package
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
@@ -157,12 +159,12 @@ for l in %{buildroot}/%{_libdir}/lib{gasnet-smp-par,am*,*}.a; do \
     [[ ${soname} = libgasnet-ofi-* ]] && libs+=" -L${libdir} -lfabric" &&
 	   linker=`which mpic++`; \
     [[ ${soname} = libgasnet-*-* ]] && libs+=" -lrt"; \
-    ${linker} -shared -Wl,-soname=${soname}-%{version}.so \
+    (${linker} -shared -Wl,-soname=${soname}-%{version}.so \
         -Wl,--as-needed -Wl,-z,defs -Wl,--rpath-link=. \
         -Wl,--whole-archive ${l} -Wl,--no-whole-archive \
         ${libs} -o ${libdir}/${soname}-%{version}.so && \
     ln -s ${soname}-%{version}.so ${libdir}/${soname}.so && \
-    rm ${l} ; \
+    rm ${l}) || exit 1 ; \
 done
 
 %post -n libgasnet-%{libver} -p /sbin/ldconfig

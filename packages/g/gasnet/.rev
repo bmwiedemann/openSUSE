@@ -107,4 +107,12 @@ Requires and fixes SR#532253 and SR#532254</comment>
     <comment></comment>
     <requestid>741733</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>12189680eb58a4426ca754dfcaf362fe</srcmd5>
+    <version>1.32.0</version>
+    <time>1591558804</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812242</requestid>
+  </revision>
 </revisionlist>

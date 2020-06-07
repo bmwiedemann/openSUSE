@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  7 13:52:05 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add gasnet-fix-multiple-definitions.patch to fix compatibility with GCC10
+
+-------------------------------------------------------------------
 Fri Oct  4 07:03:25 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Always use the default openmpi
