@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun  7 14:48:12 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v10.10.1
+  - No changelog available
+  - Add opa-fm-fix-multiple-definitions.patch to fix compatibility with GCC10
+
+-------------------------------------------------------------------
 Thu Sep 26 11:07:49 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to v10.9.3.1.1

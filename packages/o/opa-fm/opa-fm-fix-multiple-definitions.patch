@@ -1,0 +1,77 @@
+commit 0b6df10765e358e2ced979edb000c7d0c12b276f
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Sun Jun 7 16:21:22 2020 +0200
+
+    opa-fm: fix multiple definitions
+    
+    Fix compilation errors due to multiple definitions with GCC10
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git Esm/ib/src/pm/include/pm_topology.h Esm/ib/src/pm/include/pm_topology.h
+index 1564174bfc7e..b7ce456c3029 100644
+--- Esm/ib/src/pm/include/pm_topology.h
++++ Esm/ib/src/pm/include/pm_topology.h
+@@ -1551,7 +1551,7 @@ extern FSTATUS PmClearPortRunningVFCounters(Pm_t *pm, PmPort_t *pmportp, STLVlCo
+ // compute theoretical limits for each rate
+ //extern void PM_InitLswfToMBps(void);
+ // ideally should be static, extern due to split of sweep.c and calc.c
+-uint32 s_StaticRateToMBps[IB_STATIC_RATE_MAX+1];
++extern uint32 s_StaticRateToMBps[IB_STATIC_RATE_MAX+1];
+ 
+ // This group of functions accept an index into the pmportp->Groups[]
+ // caller should search for appropriate entry in array to act on
+diff --git Esm/ib/src/pm/pm/pm.c Esm/ib/src/pm/pm/pm.c
+index afab7736b7d7..c4e49c3ea383 100644
+--- Esm/ib/src/pm/pm/pm.c
++++ Esm/ib/src/pm/pm/pm.c
+@@ -126,10 +126,6 @@ extern Status_t vfi_GetPortGuid(ManagerInfo_t * fp, uint32_t gididx);
+ 
+ #define SID_ASCII_FORMAT "%02x%02x%02x%02x%02x%02x%02x%02x"
+ static IB_SERVICE_RECORD  pmServRer;
+-#ifndef __VXWORKS__
+-static char msgbuf[256];
+-#endif
+-
+ 
+ #if 0
+ /*
+diff --git Esm/ib/src/smi/include/sa_l.h Esm/ib/src/smi/include/sa_l.h
+index 1e2e0afc2587..d83aeaa0a887 100644
+--- Esm/ib/src/smi/include/sa_l.h
++++ Esm/ib/src/smi/include/sa_l.h
+@@ -314,7 +314,7 @@ Status_t	sa_Authenticate_Path(STL_LID, STL_LID);
+ Status_t	sa_Authenticate_Access(uint32_t, STL_LID, STL_LID, STL_LID);
+ Status_t	sa_Compare_Node_Port_PKeys(Node_t*, Port_t*);
+ Status_t	sa_Compare_Port_PKeys(Port_t*, Port_t*);
+-uint32_t    saDebugPerf;  // control SA performance messages; default is off
++extern uint32_t    saDebugPerf;  // control SA performance messages; default is off
+ 
+ Status_t	sa_data_offset(uint16_t class, uint16_t type);
+ Status_t	sa_create_template_mask(uint16_t, uint64_t);
+diff --git Esm/ib/src/smi/sm/sm_main.c Esm/ib/src/smi/sm/sm_main.c
+index 0f34e78608f6..5de2d4d16007 100644
+--- Esm/ib/src/smi/sm/sm_main.c
++++ Esm/ib/src/smi/sm/sm_main.c
+@@ -223,7 +223,7 @@ SMMcastConfig_t 			sm_mc_config;
+ SmMcastMlidShare_t 			sm_mls_config;
+ SMMcastDefGrpCfg_t 			sm_mdg_config;
+ 
+-uint32_t    				xml_trace = 0;
++static uint32_t    				xml_trace = 0;
+ 
+ extern uint32_t pm_conf_start;
+ extern uint32_t bm_conf_start;
+diff --git Esm/ib/src/smi/sm/sm_utility.c Esm/ib/src/smi/sm/sm_utility.c
+index 3f0abcf35cca..47a8ca569575 100644
+--- Esm/ib/src/smi/sm/sm_utility.c
++++ Esm/ib/src/smi/sm/sm_utility.c
+@@ -86,7 +86,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #endif
+ 
+ extern Lock_t tid_lock;
+-uint32_t sm_instance;
++extern uint32_t sm_instance;
+ //#define TRACK_SEARCHES
+ 
+ uint32_t sm_node_guid_cnt = 0;

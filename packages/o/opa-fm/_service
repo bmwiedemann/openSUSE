@@ -8,7 +8,7 @@
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">0236727e70cbec41b5700d2cca25e998015fa278</param>
+    <param name="revision">317bb9f137735388b121b5fd6e7be28dde48b0a3</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">opa-fm*.tar</param>

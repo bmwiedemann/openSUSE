@@ -1,7 +1,7 @@
 #
 # spec file for package opa-fm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,24 @@
 #
 
 
-%define git_ver .1.1.0.0236727e70cb
+%define git_ver .0.35.0.317bb9f13773
 
 %define pseudo_opt %{_prefix}/lib/opa-fm
 %define opasysconfdir %{_sysconfdir}/opa-fm/
 %define opavarlibdir %{_localstatedir}/usr/lib/opa-fm/
 Name:           opa-fm
-Version:        10.9.3
+Version:        10.10.1
 Release:        0
 Summary:        Intel Omni-Path Fabric Management Software
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://www.intel.com/
+URL:            http://www.intel.com/
 Source0:        %{name}-%{version}%{git_ver}.tar.gz
 Source1:        %{name}-rpmlintrc
 Patch1:         opa-fm-Fallback-to-custom-vendor-if-os_vendor-fails.patch
 Patch2:         opa-fm-use-RPM_OPT_FLAGS.patch
 Patch3:         opa-fm-force-code-symbols-to-be-loaded.patch
+Patch4:         opa-fm-fix-multiple-definitions.patch
 BuildRequires:  gcc-c++
 BuildRequires:  infiniband-diags-devel
 BuildRequires:  libexpat-devel
@@ -57,6 +58,7 @@ Fabric Executive, and some fabric management tools.
 %patch1
 %patch2
 %patch3
+%patch4
 
 %build
 export RPM_OPT_FLAGS
