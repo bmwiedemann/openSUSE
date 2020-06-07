@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 30 17:23:18 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200507:
+  * Remove leftover endiannness defines
+  * Fix arguments for coinDeviceCreate
+  * Add support for psl1ght
+  * Fixed not smooth scroll in PAL 50Hz
+  * Fix libnx compilation
+  * Fix 3DS compilation
+  * (MSVC 2017) Buildfix
+  * (VITA) Use diet-glob
+  * (VITA) Fix missing functions
+
+-------------------------------------------------------------------
 Mon Oct 14 12:22:21 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
 
 - Initial version
