@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jun  7 03:40:17 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.6.1
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.6.1
+  * https://github.com/Ultimaker/Cura/releases/tag/4.6.0
+  * https://github.com/Ultimaker/Cura/releases/tag/4.5.0
+- Drop unneeded patches:
+  * fix-crash-on-start.patch
+  * fix-runtime.patch
+- Rebase 0001-Avoid-crash-caused-by-KDE-qqc2-desktop-style.patch
+
+-------------------------------------------------------------------
+Tue Mar 31 10:45:18 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove pkgconfig(Qt5Core) from runtime dependencies, pulls in
+  a huge set of Qt5 devel packages.
+
+-------------------------------------------------------------------
 Thu Feb 20 01:06:00 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Avoid crash when qqc2-desktop-style is installed and used as

@@ -1,6 +1,6 @@
-From c11ed62920c472057295720cb53373b86f93eb20 Mon Sep 17 00:00:00 2001
+From d54db37c125ecc057246f656c014ea849f6a0dcb Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
-Date: Thu, 20 Feb 2020 02:05:19 +0100
+Date: Sun, 7 Jun 2020 20:05:23 +0200
 Subject: [PATCH] Avoid crash caused by KDE qqc2-desktop-style
 
 https://bugs.kde.org/show_bug.cgi?id=417900
@@ -9,12 +9,12 @@ https://bugs.kde.org/show_bug.cgi?id=417900
  1 file changed, 6 insertions(+)
 
 diff --git a/cura_app.py b/cura_app.py
-index 6149eeeb9..236dfb618 100755
+index a78e7cabd..7c9771d20 100755
 --- a/cura_app.py
 +++ b/cura_app.py
-@@ -207,5 +207,11 @@ if Platform.isLinux() and getattr(sys, "frozen", False):
-     import trimesh.exchange.load
-     os.environ["LD_LIBRARY_PATH"] = old_env
+@@ -230,5 +230,11 @@ if ApplicationMetadata.CuraDebugMode:
+     ssl_conf.setPeerVerifyMode(QSslSocket.VerifyNone)
+     QSslConfiguration.setDefaultConfiguration(ssl_conf)
  
 +# WORKAROUND: CURA-5488
 +# When using the KDE qqc2-desktop-style, the UI layout is completely broken, and
@@ -25,5 +25,5 @@ index 6149eeeb9..236dfb618 100755
  app = CuraApplication()
  app.run()
 -- 
-2.25.0
+2.26.2
 
