@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  4 12:28:24 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch 0001-Fix-build-with-Qt-5.15.patch
+
+-------------------------------------------------------------------
 Sat Jan 25 12:53:28 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Fix-crash-when-KWallet-is-not-available.patch to fix crashes

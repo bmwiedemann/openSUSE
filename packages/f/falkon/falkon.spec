@@ -1,8 +1,8 @@
 #
 # spec file for package falkon
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright © 2015 Mariusz Fik <fisiu@opensuse.org>
-# Copyright © 2017 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright © 2019 Markus S. <kamikazow@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -14,8 +14,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           falkon
 Version:        3.1.0
@@ -23,7 +24,7 @@ Release:        0
 Summary:        Modern web browser
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
-Url:            https://www.falkon.org/
+URL:            https://www.falkon.org/
 Source:         %{name}-%{version}.tar.xz
 # Used to get a timestamp to override __DATE__ and __TIME__ with
 Source1:        %{name}.changes
@@ -34,8 +35,19 @@ Source3:        opensusesoftware.png
 Patch0:         Add-missing-include-in-last-qt5.14.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         Fix-crash-when-KWallet-is-not-available.patch
-BuildRequires:  cmake(KF5Crash) >= 5.54.0
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Fix-build-with-Qt-5.15.patch
+BuildRequires:  extra-cmake-modules
+BuildRequires:  fdupes
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  ki18n-devel
+BuildRequires:  libQt5Gui-private-headers-devel
+BuildRequires:  libqt5-qttools-devel
+BuildRequires:  libressl-devel
+BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5CoreAddons) >= 5.54.0
+BuildRequires:  cmake(KF5Crash) >= 5.54.0
 BuildRequires:  cmake(KF5KIO) >= 5.54.0
 BuildRequires:  cmake(KF5Purpose) >= 5.54.0
 BuildRequires:  cmake(KF5Wallet) >= 5.54.0
@@ -57,23 +69,14 @@ BuildRequires:  cmake(Qt5WebEngineCore) >= 5.9.0
 BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.9.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.9.0
 BuildRequires:  cmake(Qt5X11Extras) >= 5.9.0
-BuildRequires:  extra-cmake-modules
-BuildRequires:  fdupes
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  ki18n-devel
-BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  libqt5-qttools-devel
-BuildRequires:  libressl-devel
-BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gnome-keyring-1)
 BuildRequires:  pkgconfig(xcb-atom)
-BuildRequires:  update-desktop-files
 Recommends:     %{name}-kde
 Recommends:     %{name}-lang
 # it doesn't start without it (boo#1067547)
 Requires:       libQt5Sql5-sqlite
-Provides:       web_browser
 Provides:       qupzilla = %{version}
+Provides:       web_browser
 Obsoletes:      qupzilla < %{version}
 
 %lang_package
@@ -114,8 +117,8 @@ Plugin for the Falkon browser that allows tighter integration of KDE technologie
 such as storing passwords in KWallet.
 
 %prep
-%setup -q -n %{name}-%{version}
-%autopatch -p1
+%autosetup -p1 -n %{name}-%{version}
+
 # Remove __DATE__ and __TIME__
 FAKE_DATE="\"$(LC_ALL=C date -u -r %{SOURCE1} '+%%b %%e %%Y')\""
 FAKE_TIME="\"$(LC_ALL=C date -u -r %{SOURCE1} '+%%H:%%M')\""
