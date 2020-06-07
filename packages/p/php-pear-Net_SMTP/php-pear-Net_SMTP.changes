@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun  7 17:47:04 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- New upstream release 1.9.1
+  * Added .gitattributes for nicer packaging
+
+-------------------------------------------------------------------
 Thu Dec  5 20:57:49 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
 
 - make package PHP version independent
