@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-beetle-lynx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           libretro-beetle-lynx
-Version:        0~git20190911
+Version:        0~git20200518
 Release:        0
 Summary:        mednafen_lynx libretro core
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/Emulators/Other
 URL:            http://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz

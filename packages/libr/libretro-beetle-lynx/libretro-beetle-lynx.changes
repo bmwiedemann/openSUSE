@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat May 30 16:06:40 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200518:
+  * Silence most warnings
+  * Update core option label - Shorten option description and make key label more descriptive - This should reflect the proposed changes on the docs page
+  * Fix bug where loading homebrew dumps causes core to crash
+  * Add *.o as supported extentions (homebrews)
+  * Cleanup
+  * Implement environment callback RETRO_ENVIRONMENT_GET_INPUT_BITMASKS
+  * Bump version to 1.24.0
+  * Add core option to auto-rotate known games
+  * Update libretro-common
+  * Add database for common available titles
+  * Sync to 1.24.0
+  * Update file.c and header - Restores file_read and file_seek functions
+  * roadblasters flicker fix
+
+-------------------------------------------------------------------
 Thu Oct 10 21:18:38 UTC 2019 - i@guoyunhe.me
 
 - Update to version 0~git20190911:
