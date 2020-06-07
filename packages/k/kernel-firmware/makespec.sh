@@ -13,8 +13,8 @@ define_subpackage () {
     echo "%package $topic"
     echo "Summary:        Kernel firmware files for $desc"
     echo "Group:          System/Kernel"
-    echo "Requires(post): coreutils"
-    echo "Requires(postun): coreutils"
+    echo "Requires(post): /usr/bin/mkdir /usr/bin/touch"
+    echo "Requires(postun): /usr/bin/mkdir /usr/bin/touch"
     echo "Requires(post): dracut >= 049"
     echo "Conflicts:      kernel < 5.3"
     grep "^${topic}:" topicprovs | sed -e's/^[^ \t]*:[[:space:]]*//g'

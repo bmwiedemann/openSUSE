@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-firmware
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,8 +57,8 @@ Source1013:     update-aliases.py
 Source1014:     README.build
 BuildRequires:  fdupes
 BuildRequires:  suse-module-tools
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 BuildArch:      noarch
 Provides:       ath3k-firmware
 Obsoletes:      ath3k-firmware
@@ -98,8 +98,8 @@ that do not support the compressed format.
 %package -n ucode-amd
 Summary:        Microcode updates for AMD CPUs
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 # new style (after 3.12 kernel somewhen)
 Supplements:    modalias(cpu:type%%3Ax86*ven0002*)
 # old style (before 3.16 kernel)
@@ -111,8 +111,8 @@ This package contains the microcode files used by AMD CPUs.
 %package all
 Summary:        Compatibility metapackage for kernel firmware files
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Provides:       kernel-firmware = %{version}
 Obsoletes:      kernel-firmware <= %{version}
@@ -156,8 +156,8 @@ all files that have been provided by kernel-firmware package.
 %package amdgpu
 Summary:        Kernel firmware files for AMDGPU graphics driver
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v00001002d00001304sv*sd*bc*sc*i*)
@@ -419,8 +419,8 @@ AMDGPU graphics driver.
 %package atheros
 Summary:        Kernel firmware files for Atheros wireless drivers
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Provides:       ath3k-firmware
@@ -619,8 +619,8 @@ Atheros wireless drivers.
 %package ath10k
 Summary:        Kernel firmware files for Atheros QCA988x WiFi drivers
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(of:N*T*Cqcom,ipq4019-wifi)
@@ -645,8 +645,8 @@ Atheros QCA988x WiFi drivers.
 %package bluetooth
 Summary:        Kernel firmware files for various Bluetooth drivers
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(of:N*T*Cusb1286,204e)
@@ -695,8 +695,8 @@ various Bluetooth drivers.
 %package bnx2
 Summary:        Kernel firmware files for Broadcom network drivers
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v00001077d000016A1sv*sd*bc*sc*i*)
@@ -742,8 +742,8 @@ Broadcom network drivers.
 %package brcm
 Summary:        Kernel firmware files for Broadcom wireless drivers
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Provides:       bcm43xx-firmware:/lib/firmware/brcm/brcmfmac43430-sdio.bin
@@ -808,8 +808,8 @@ Broadcom wireless drivers.
 %package chelsio
 Summary:        Kernel firmware files for Chelsio network drivers
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Provides:       cxgb3-firmware
@@ -1192,8 +1192,8 @@ Chelsio network drivers.
 %package dpaa2
 Summary:        Kernel firmware files for NXP Management Complex bus driver
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 
@@ -1204,8 +1204,8 @@ NXP Management Complex bus driver.
 %package i915
 Summary:        Kernel firmware files for Intel i915 graphics driver
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v00008086d00000042sv*sd*bc03sc*i*)
@@ -1492,8 +1492,8 @@ Intel i915 graphics driver.
 %package intel
 Summary:        Kernel firmware files for Intel-platform device drivers
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v00008086d00000435sv*sd*bc*sc*i*)
@@ -1534,8 +1534,8 @@ Intel-platform device drivers.
 %package iwlwifi
 Summary:        Kernel firmware files for Intel wireless drivers
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Provides:       iwl1000-ucode
@@ -2439,8 +2439,8 @@ Intel wireless drivers.
 %package liquidio
 Summary:        Kernel firmware files for Cavium LiquidIO driver
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v0000177Dd00000091sv*sd*bc*sc*i*)
@@ -2454,8 +2454,8 @@ Cavium LiquidIO driver.
 %package marvell
 Summary:        Kernel firmware files for Marvell network drivers
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v000011ABd00002A0Asv*sd*bc*sc*i*)
@@ -2492,8 +2492,8 @@ Marvell network drivers.
 %package media
 Summary:        Kernel firmware files for various Video4Linux drivers
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(i2c:cx25840)
@@ -2675,8 +2675,8 @@ various Video4Linux drivers.
 %package mediatek
 Summary:        Kernel firmware files for Mediatek network drivers
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Provides:       ralink-firmware
@@ -2752,8 +2752,8 @@ Mediatek network drivers.
 %package mellanox
 Summary:        Kernel firmware files for Mellanox Spectrum switch driver
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v000015B3d0000CB84sv*sd*bc*sc*i*)
@@ -2767,8 +2767,8 @@ Mellanox Spectrum switch driver.
 %package mwifiex
 Summary:        Kernel firmware files for Marvell WiFi fullmac drivers
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v000011ABd00002B30sv*sd*bc*sc*i*)
@@ -2809,8 +2809,8 @@ Marvell WiFi fullmac drivers.
 %package network
 Summary:        Kernel firmware files for various network drivers
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v00001011d0000001Asv*sd*bc02sc00i*)
@@ -3031,8 +3031,8 @@ various network drivers.
 %package nfp
 Summary:        Kernel firmware files for Netronome Flow Processor driver
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v000019EEd00004000sv000019EEsd*bc*sc*i*)
@@ -3047,8 +3047,8 @@ Netronome Flow Processor driver.
 %package nvidia
 Summary:        Kernel firmware files for Nvidia Tegra and graphics drivers
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(of:N*T*Cnvidia,gk20a)
@@ -3149,8 +3149,8 @@ Nvidia Tegra and graphics drivers.
 %package platform
 Summary:        Kernel firmware files for various platform drivers
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(acpi*:AMDI0C00:*)
@@ -3667,8 +3667,8 @@ various platform drivers.
 %package qlogic
 Summary:        Kernel firmware files for QLogic network drivers
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Provides:       qlogic-firmware
@@ -3726,8 +3726,8 @@ QLogic network drivers.
 %package radeon
 Summary:        Kernel firmware files for Radeon graphics driver
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v00001002d00001304sv*sd*bc*sc*i*)
@@ -4539,8 +4539,8 @@ Radeon graphics driver.
 %package realtek
 Summary:        Kernel firmware files for Realtek wireless drivers
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v00000001d00008168sv*sd00002410bc*sc*i*)
@@ -5231,8 +5231,8 @@ Realtek wireless drivers.
 %package serial
 Summary:        Kernel firmware files for various serial drivers
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(pci:v000011FEd00000040sv*sd*bc*sc*i*)
@@ -5399,8 +5399,8 @@ various serial drivers.
 %package sound
 Summary:        Kernel firmware files for various sound drivers
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(acpi*:80860F28:*)
@@ -5450,8 +5450,8 @@ various sound drivers.
 %package ti
 Summary:        Kernel firmware files for Texas Instruments wireless drivers
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(platform:wl12xx)
@@ -5464,8 +5464,8 @@ Texas Instruments wireless drivers.
 %package ueagle
 Summary:        Kernel firmware files for Eagle IV USB ADSL modem driver
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(usb:v05CCp3350d*dc*dsc*dp*ic*isc*ip*in*)
@@ -5510,8 +5510,8 @@ Eagle IV USB ADSL modem driver.
 %package usb-network
 Summary:        Kernel firmware files for various USB WiFi / Ethernet drivers
 Group:          System/Kernel
-Requires(post): coreutils
-Requires(postun): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/touch
+Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Supplements:    modalias(sdio:c*v041Bd9116*)
