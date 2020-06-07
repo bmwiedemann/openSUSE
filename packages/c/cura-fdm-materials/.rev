@@ -41,4 +41,12 @@
 - update to version 4.3.0</comment>
     <requestid>760433</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5421b2d280f9dd70ecdd88ae99e7b3f4</srcmd5>
+    <version>4.6.1</version>
+    <time>1591559760</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812287</requestid>
+  </revision>
 </revisionlist>
