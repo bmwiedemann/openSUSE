@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun  4 15:23:17 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Add chrony-pool-suse and chrony-pool-openSUSE subpackages that
+  preconfigure chrony to use NTP servers from the  respective
+  pools for SUSE and openSUSE (bsc#1156884, SLE-11424).
+- Add chrony-pool-empty to still allow installing chrony without
+  preconfigured servers.
+- Use iburst in the default pool statements to speed up initial
+  synchronisation (bsc#1172113).
+
+-------------------------------------------------------------------
 Thu Apr 30 16:03:16 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use _systemdutildir instead of _libexecdir/systemd: systemd does
