@@ -1,7 +1,7 @@
 #
 # spec file for package libosmocore
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libosmocore
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        The Open Source Mobile Communications Core Library
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND AGPL-3.0-or-later
@@ -305,16 +305,15 @@ applications that want to make use of libosmousb.
 %build
 echo "%version" >.tarball-version
 autoreconf -fiv
-%configure \
-    --enable-shared \
-    --disable-static \
-    --includedir="%_includedir/%name"
+%configure CFLAGS="%optflags -fcommon" \
+	--enable-shared \
+	--disable-static \
+	--includedir="%_includedir/%name"
 make %{?_smp_mflags}
 
 %install
-b="%buildroot"
-make %{?_smp_mflags} install DESTDIR="$b"
-find "$b/%_libdir" -type f -name "*.la" -delete
+%make_install
+find "%buildroot/%_libdir" -type f -name "*.la" -delete
 
 %check
 make %{?_smp_mflags} check || (find . -name testsuite.log -exec cat {} +)
@@ -426,11 +425,9 @@ make %{?_smp_mflags} check || (find . -name testsuite.log -exec cat {} +)
 %_libdir/pkgconfig/libosmovty.pc
 
 %files -n libosmousb0
-%defattr(-,root,root)
 %_libdir/libosmousb.so.0*
 
 %files -n libosmousb-devel
-%defattr(-,root,root)
 %dir %_includedir/%name
 %dir %_includedir/%name/osmocom
 %_includedir/%name/osmocom/usb/

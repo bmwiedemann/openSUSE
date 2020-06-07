@@ -183,4 +183,12 @@
     <comment></comment>
     <requestid>761533</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>43344d839541457f50e2b1f2c398e526</srcmd5>
+    <version>1.3.1</version>
+    <time>1591558698</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.3.1</comment>
+    <requestid>812118</requestid>
+  </revision>
 </revisionlist>
