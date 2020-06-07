@@ -17,7 +17,7 @@
 
 
 Name:           uranium
-Version:        4.4.1
+Version:        4.6.1
 Release:        0
 Summary:        Python framework for Desktop applications
 License:        LGPL-3.0-only
@@ -26,21 +26,24 @@ URL:            http://github.com/Ultimaker/Uranium
 Source0:        Uranium-%{version}.tar.xz
 # X-OPENSUSE-FIX fix cmake install directory.
 Patch1:         fix-cmake-install.patch
-# PATCH-FIX-UPSTREAM -- https://github.com/Ultimaker/Uranium/commit/78fa9ab2dd8ab117.patch
-Patch2:         Check-validity-of-polygon.patch
+# PaTCH-FIX-UPSTREAM - https://github.com/Ultimaker/Uranium/issues/619
+Patch2:         0001-Handle-indexing-on-Python-3.8-AST-string-constants-c.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libArcus-devel
 BuildRequires:  python3-devel >= 3.4.0
 # for tests:
+BuildRequires:  python3-Twisted
+BuildRequires:  python3-cryptography
 BuildRequires:  python3-numpy
 BuildRequires:  python3-pip
 BuildRequires:  python3-pytest
 BuildRequires:  python3-qt5
 BuildRequires:  python3-scipy
 BuildRequires:  python3-shapely
-BuildArch:      noarch
+Requires:       python3-cryptography
 Recommends:     python3-numpy-stl
+BuildArch:      noarch
 # No 32bit support in cura-engine anymore
 ExcludeArch:    %ix86 %arm
 
@@ -75,7 +78,8 @@ find %{buildroot}%{_datadir}/%{name} -type d -path \*i18n\* | sed '
 
 %check
 %{__python3} -m pip freeze
-%{__python3} -m pytest -v
+# TestHttpRequestManager has threading issues, see https://github.com/Ultimaker/Uranium/issues/594
+%{__python3} -m pytest -v -k 'not TaskManagement/TestHttpRequestManager.py'
 
 %files -f %{name}.lang
 %license LICENSE

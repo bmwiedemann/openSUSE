@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun  7 15:39:03 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.6.1
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.6.1
+  * https://github.com/Ultimaker/Cura/releases/tag/4.6.0
+  * https://github.com/Ultimaker/Cura/releases/tag/4.5.0
+- Rebase fix-cmake-install.patch
+- Drop obsolete Check-validity-of-polygon.patch
+- Fix AST parsing for Python 3.8, add
+  0001-Handle-indexing-on-Python-3.8-AST-string-constants-c.patch
+
+-------------------------------------------------------------------
 Tue Feb 18 00:13:36 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix crash with libGeos 3.8.0, https://github.com/Ultimaker/Cura/issues/6771
