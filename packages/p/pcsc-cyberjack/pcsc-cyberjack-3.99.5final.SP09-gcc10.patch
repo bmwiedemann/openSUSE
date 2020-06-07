@@ -1,0 +1,30 @@
+diff -Nrup a/ifd/ifd.cpp b/ifd/ifd.cpp
+--- a/ifd/ifd.cpp	2018-11-08 02:54:16.000000000 -0700
++++ b/ifd/ifd.cpp	2019-09-24 13:13:40.098320636 -0600
+@@ -964,22 +964,22 @@ RESPONSECODE IFDHandler::powerICC(DWORD
+       *AtrLength=l_atrLength;
+     break;
+ 
+-  case STATUS_NO_MEDIA:
++  case int(STATUS_NO_MEDIA):
+     DEBUGLUN(Lun, DEBUG_MASK_IFD, "No media\n");
+     rc=IFD_ERROR_POWER_ACTION;
+     break;
+ 
+-  case STATUS_UNRECOGNIZED_MEDIA:
++  case int(STATUS_UNRECOGNIZED_MEDIA):
+     DEBUGLUN(Lun, DEBUG_MASK_IFD, "Unrecognized media\n");
+     rc=IFD_ERROR_POWER_ACTION;
+     break;
+ 
+-  case STATUS_CANCELLED:
++  case int(STATUS_CANCELLED):
+     DEBUGLUN(Lun, DEBUG_MASK_IFD, "Cancelled\n");
+     rc=IFD_ERROR_POWER_ACTION;
+     break;
+ 
+-  case STATUS_IO_TIMEOUT:
++  case int(STATUS_IO_TIMEOUT):
+     DEBUGLUN(Lun, DEBUG_MASK_IFD, "Timeout\n");
+     rc=IFD_RESPONSE_TIMEOUT;
+     break;

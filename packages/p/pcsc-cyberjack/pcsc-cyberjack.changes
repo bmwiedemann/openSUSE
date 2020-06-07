@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun  7 00:14:34 UTC 2020 - Jason Sikes <jsikes@suse.com>
+
+- Add patch to enable compile with gcc10
+  * pcsc-cyberjack-3.99.5final.SP09-gcc10.patch
+
+-------------------------------------------------------------------
 Mon Feb  3 15:37:20 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(udev) instead of udev: allow OBS to

@@ -40,6 +40,7 @@ Source2:        40-cyberjack.rules
 Patch1:         ctapi-cyberjack-configure.patch
 Patch2:         no-checksuite.patch
 Patch3:         no-libdialog.patch
+Patch4:         pcsc-cyberjack-3.99.5final.SP09-gcc10.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define ifddir %(pkg-config --variable=usbdropdir libpcsclite)
 BuildRequires:  distribution-release
@@ -90,6 +91,7 @@ cp -a %{S:1} README.SUSE
 %patch1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 ACLOCAL="aclocal -I m4" autoreconf -f -i
