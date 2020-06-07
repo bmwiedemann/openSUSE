@@ -10601,6 +10601,7 @@ unsorted:
   - libndr-krb5pac-devel 
   - libndr-nbt-devel 
   - libndr-standard-devel 
+  - libneatvnc0 
   - libneko2 
   - libnemo-extension1 
   - libneon-devel 
@@ -14823,6 +14824,7 @@ unsorted:
   - neard 
   - neard-devel 
   - neard-test 
+  - neatvnc-devel 
   - nedit 
   - neko 
   - neko-devel 
@@ -33735,6 +33737,7 @@ unsorted:
   - wayland-protocols-devel 
   - waylandpp 
   - waylandpp-devel 
+  - wayvnc 
   - wbxml2-tools 
   - wcd 
   - wcslib-devel 
