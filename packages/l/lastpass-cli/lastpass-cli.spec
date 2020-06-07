@@ -1,7 +1,7 @@
 #
 # spec file for package lastpass-cli
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-only
 Group:          Productivity/Security
 URL:            https://github.com/LastPass/lastpass-cli
 Source:         https://github.com/lastpass/lastpass-cli/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 0001-Mark-global-variable-as-extern.patch gh#lastpass/lastpass-cli#532
+Patch0:         0001-Mark-global-variable-as-extern.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -43,7 +45,7 @@ passwords in the cloud. This package provided it's command line interface
 tool.
 
 %prep
-%autosetup
+%autosetup -p 1
 
 %build
 %cmake \
@@ -60,7 +62,7 @@ install -Dpm 0644 contrib/completions-lpass.fish \
   %{buildroot}%{_datadir}/fish/completions/completions-lpass.fish
 
 %check
-make %{?_smp_mflags} test
+%make_build test
 
 %files
 %license COPYING

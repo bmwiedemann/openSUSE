@@ -107,4 +107,12 @@
     + Debian stable/testing and Ubuntu dependencies (Wesley Schwengle)</comment>
     <requestid>706300</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>013db55dbb3fe41b34fe834459125967</srcmd5>
+    <version>1.3.3</version>
+    <time>1591558674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812080</requestid>
+  </revision>
 </revisionlist>
