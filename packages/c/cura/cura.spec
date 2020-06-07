@@ -17,7 +17,7 @@
 
 
 Name:           cura
-Version:        4.4.1
+Version:        4.6.1
 Release:        0
 Summary:        3D printer control software
 License:        LGPL-3.0-only
@@ -26,16 +26,12 @@ URL:            https://github.com/Ultimaker/Cura
 Source0:        Cura-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE disable-code-style-check.patch code style is no distro buisiness
 Patch1:         disable-code-style-check.patch
-# PATCH-FIX-OPENSUSE fix-runtime.patch
-Patch2:         fix-runtime.patch
-# PATCH-FIX-OPENSUSE fix-crash-on-start.patch
-Patch3:         fix-crash-on-start.patch
 # PATCH-FIX-OPENSUSE -- avoid bad UI layout and crash in preview
 Patch4:         0001-Avoid-crash-caused-by-KDE-qqc2-desktop-style.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  libArcus3
-BuildRequires:  python3-Savitar
+BuildRequires:  libArcus3 >= 4.6.0
+BuildRequires:  python3-Savitar >= 4.6.0
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy
 BuildRequires:  python3-pytest
@@ -45,30 +41,27 @@ BuildRequires:  python3-scipy
 BuildRequires:  python3-shapely
 BuildRequires:  python3-zeroconf
 BuildRequires:  update-desktop-files
-BuildRequires:  uranium
+BuildRequires:  uranium >= 4.6.0
 # It builds with older Qt, but crashes due to missing qml features
 BuildRequires:  pkgconfig(Qt5Core) >= 5.10
-Requires:       cura-engine >= 4.4.0
+Requires:       cura-engine >= 4.6.0
 Requires:       python3-numpy
 # Build and test suite works with older Qt, but no UI shows up due to usage
 # of newer QML elements
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols
 Requires:       libqt5-qtquickcontrols2
+Requires:       python3-Savitar
 Requires:       python3-pyserial
 Requires:       python3-qt5 >= 5.10
 Requires:       python3-requests
 Requires:       python3-scipy
 Requires:       python3-shapely
 Requires:       python3-typing
-Requires:       uranium >= 4.4.0
-Requires:       pkgconfig(Qt5Core) >= 5.10
-Recommends:     cura-fdm-materials
-Recommends:     python3-Savitar
+Requires:       uranium >= 4.6.0
+Recommends:     cura-fdm-materials >= 4.6.0
 Recommends:     python3-trimesh
 Recommends:     python3-zeroconf
-# for 3mf plugin
-Recommends:     python3-Savitar
 BuildArch:      noarch
 # The CuraEngine is not supported on 32bit Linux anymore
 ExcludeArch:    %ix86 %arm s390
@@ -85,9 +78,8 @@ settings, and send this G-Code to the 3D printer for printing.
 %prep
 %setup -q -n Cura-%version
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
 %patch4 -p1
+sed -i -e '1 s/env python3/python3/' cura_app.py
 
 %build
 CFLAGS="%{optflags}"
