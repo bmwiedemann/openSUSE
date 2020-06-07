@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun  6 23:33:36 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Rename ht-gcc7.diff to ht-gcc10.diff and adjust for gcc10.
+
+-------------------------------------------------------------------
 Wed Jun  7 11:52:27 UTC 2017 - jengelh@inai.de
 
 - Add ht-gcc7.diff

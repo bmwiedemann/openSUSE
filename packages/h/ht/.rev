@@ -135,4 +135,12 @@
     <comment>- Add ht-gcc7.diff</comment>
     <requestid>501699</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>64e24e2be0b73d357f0451639b7e2e36</srcmd5>
+    <version>2.1.0</version>
+    <time>1591558685</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename ht-gcc7.diff to ht-gcc10.diff and adjust for gcc10.</comment>
+    <requestid>812126</requestid>
+  </revision>
 </revisionlist>

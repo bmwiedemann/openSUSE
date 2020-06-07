@@ -1,7 +1,7 @@
 #
 # spec file for package ht
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,15 +20,14 @@ Name:           ht
 Version:        2.1.0
 Release:        0
 Summary:        Disassembler, object dumper and hex editor
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
-Url:            http://hte.sf.net/
+URL:            http://hte.sf.net/
 
 #Git-Clone:	https://github.com/sebastianbiallas/ht
 Source:         http://downloads.sf.net/hte/%name-%version.tar.bz2
 Patch1:         ht-no-date.diff
-Patch2:         ht-gcc7.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch2:         ht-gcc10.diff
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -54,27 +53,23 @@ The HT editor is a file viewer, editor and analyzer for text, binary,
 and (especially) executable files.
 
 %prep
-%setup -q
-%patch -P 1 -P 2 -p1
+%autosetup -p1
 
 %build
-%configure --enable-release
+%configure --enable-release CFLAGS="%optflags -Wno-narrowing"
 make %{?_smp_mflags}
 
 %install
-b="%buildroot"
-make install DESTDIR="$b"
-pushd "$b/%_bindir/"
+%make_install
+pushd "%buildroot/%_bindir/"
 mv ht hte
 ln -s hte ht
 popd
 
 %files
-%defattr(-,root,root)
 %_bindir/ht
 
 %files -n hte
-%defattr(-,root,root)
 %_bindir/hte
 %doc AUTHORS ChangeLog KNOWNBUGS NEWS README TODO
 
