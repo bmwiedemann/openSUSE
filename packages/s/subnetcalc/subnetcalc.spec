@@ -1,7 +1,7 @@
 #
 # spec file for package subnetcalc
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           subnetcalc
-Version:        2.4.14
+Version:        2.4.16
 Release:        0
 Summary:        IPv4/IPv6 Subnet Calculator
 License:        GPL-3.0-or-later
@@ -46,12 +46,12 @@ interface ID, etc.).
 %cmake_install
 
 %check
-%{buildroot}%{_bindir}/%name 192.168.1.0/255.255.0.0
+%{buildroot}%{_bindir}/%{name} 192.168.1.0/255.255.0.0
 
 %files
 %doc AUTHORS ChangeLog README
 %license COPYING
-%{_bindir}/%name
-%{_mandir}/man1/%name.1*
+%{_bindir}/%{name}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog

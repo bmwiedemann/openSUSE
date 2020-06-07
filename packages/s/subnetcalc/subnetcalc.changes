@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun  7 09:42:10 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.4.16:
+  * build script fixes, fixes for other platforms and minor fixes
+
+-------------------------------------------------------------------
 Sat Nov 16 16:10:57 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - remove dependency on deprecated GeoIP-devel, fixes boo#1156201
