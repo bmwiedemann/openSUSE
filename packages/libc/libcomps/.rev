@@ -75,4 +75,15 @@
   + Refactor building and installing Python bindings</comment>
     <requestid>753241</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7c22dd13f23b0e1ee0afe02d52fe5014</srcmd5>
+    <version>0.1.15</version>
+    <time>1591558739</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 0.1.15
+  + Do not skip type=mandatory in xml output and test it (rh#1771224)
+  + Remove unused global variable UnfoObjListIt (rh#1793424)
+  + Make inline function __comps_objmrtree_all also static (rh#1793424)</comment>
+    <requestid>812119</requestid>
+  </revision>
 </revisionlist>

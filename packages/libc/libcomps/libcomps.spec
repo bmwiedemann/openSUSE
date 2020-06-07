@@ -2,7 +2,7 @@
 # spec file for package libcomps
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define major 0
 %define minor 1
-%define patch 14
+%define patch 15
 %define libname %{name}%{major}
 %define devname %{name}-devel
 
