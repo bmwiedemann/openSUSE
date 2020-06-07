@@ -1,7 +1,7 @@
 #
 # spec file for package libArcus
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,16 @@
 
 %define sover 3
 Name:           libArcus
-Version:        4.4.1
+Version:        4.6.1
 Release:        0
 Summary:        3D printer control software
 License:        LGPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            http://github.com/Ultimaker/%name
 Source:         %name-%{version}.tar.xz
-BuildRequires:  cmake
+# PATCH-FIX-OPENSUSE - use Qt5 sip import name, taken from Fedora
+Patch0:         libArcus-3.5.1-PyQt5.sip.patch
+BuildRequires:  cmake >= 3.6
 BuildRequires:  gcc-c++
 BuildRequires:  protobuf-devel >= 3.0.0
 BuildRequires:  python3-sip-devel
@@ -53,6 +55,7 @@ tools necessary for compiling and linking programs which use %{name}.
 
 %prep
 %setup
+%patch0 -p1
 
 %build
 %cmake

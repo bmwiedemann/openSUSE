@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun  7 17:55:54 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to version 4.6.1
+  * no code changes
+- Fix Arcus python import error with current PyQt5, add
+  libArcus-3.5.1-PyQt5.sip.patch
+
+-------------------------------------------------------------------
 Thu Jan  2 11:38:33 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - update to version 4.4.1
