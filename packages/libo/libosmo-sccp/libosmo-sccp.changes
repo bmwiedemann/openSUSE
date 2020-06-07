@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun  6 23:05:34 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Set CFLAGS+=-fcommon.
+
+-------------------------------------------------------------------
 Tue Jan  7 11:42:32 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update 0001-build-fixes.patch to build sccp_test with SOURCES,

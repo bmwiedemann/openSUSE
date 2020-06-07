@@ -160,11 +160,11 @@ a STP, such as Global Title Routing, Global Title Translation.
 %build
 echo "%version" >.tarball-version
 autoreconf -fiv
-%configure \
-        --disable-static \
-        --includedir="%_includedir/%name" \
+%configure CFLAGS="%optflags -fcommon" \
+	--disable-static \
+	--includedir="%_includedir/%name" \
 	--docdir="%_defaultdocdir/%name" \
-        --with-systemdsystemunitdir=%_unitdir
+	--with-systemdsystemunitdir=%_unitdir
 make %{?_smp_mflags}
 
 %install
