@@ -1,7 +1,7 @@
 #
 # spec file for package iptables
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           iptables
-Version:        1.8.4
+Version:        1.8.5
 Release:        0
 Summary:        IP packet filter administration utilities
 License:        GPL-2.0-only AND Artistic-2.0
@@ -27,12 +27,10 @@ URL:            https://netfilter.org/projects/iptables/
 Source:         https://netfilter.org/projects/iptables/files/%name-%version.tar.bz2
 Source2:        https://netfilter.org/projects/iptables/files/%name-%version.tar.bz2.sig
 Source3:        %name.keyring
-Patch3:         iptables-batch.patch
-Patch4:         iptables-apply-mktemp-fix.patch
-Patch5:         iptables-batch-lock.patch
-Patch6:         iptables-1.8.2-dont_read_garbage.patch
+Patch1:         iptables-batch.patch
+Patch2:         iptables-batch-lock.patch
+Patch3:         iptables-1.8.2-dont_read_garbage.patch
 
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex >= 2.5.33
@@ -42,7 +40,7 @@ BuildRequires:  xz
 BuildRequires:  pkgconfig(libmnl) >= 1.0
 BuildRequires:  pkgconfig(libnetfilter_conntrack) >= 1.0.4
 BuildRequires:  pkgconfig(libnfnetlink) >= 1.0.0
-BuildRequires:  pkgconfig(libnftnl) >= 1.1.5
+BuildRequires:  pkgconfig(libnftnl) >= 1.1.6
 Requires:       netcfg >= 11.6
 Requires:       xtables-plugins = %version-%release
 Requires(post): update-alternatives
@@ -177,7 +175,6 @@ b="%buildroot"
 rm -f "$b/%_libdir/"libiptc.so*
 # iptables-apply is not installed by upstream Makefile
 install -m0755 iptables/iptables-apply "$b/%_sbindir/"
-install -m0644 iptables/iptables-apply.8 "$b/%_mandir/man8/"
 rm -f "$b/%_libdir"/*.la
 rm -f "$b/%_sysconfdir/ethertypes" # -> netcfg
 
@@ -242,6 +239,7 @@ fi
 %_sbindir/iptables-legacy*
 %_sbindir/iptables-nft*
 %_sbindir/iptables-*translate*
+%_sbindir/ip6tables-apply
 %_sbindir/ip6tables-legacy*
 %_sbindir/ip6tables-nft*
 %_sbindir/ip6tables-*translate*

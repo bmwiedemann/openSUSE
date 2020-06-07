@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  3 13:21:57 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.5
+  * IDLETIMER: Add alarm timer option
+  * nft: CT: add translation for NOTRACK                                                         
+- Drop iptables-apply-mktemp-fix.patch (seemingly applied)
+
+-------------------------------------------------------------------
 Mon Dec  2 20:01:25 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8.4

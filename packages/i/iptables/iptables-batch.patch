@@ -3,14 +3,14 @@
  iptables/iptables-batch.c |  468 ++++++++++++++++++++++++++++++++++++++++++++++
  2 files changed, 477 insertions(+)
 
-Index: iptables-1.8.0/iptables/Makefile.am
+Index: iptables-1.8.5/iptables/Makefile.am
 ===================================================================
---- iptables-1.8.0.orig/iptables/Makefile.am
-+++ iptables-1.8.0/iptables/Makefile.am
-@@ -98,3 +98,12 @@ install-exec-hook:
- 	for i in ${v4_sbin_links}; do ${LN_S} -f xtables-legacy-multi "${DESTDIR}${sbindir}/$$i"; done;
+--- iptables-1.8.5.orig/iptables/Makefile.am
++++ iptables-1.8.5/iptables/Makefile.am
+@@ -111,3 +111,12 @@ install-exec-hook:
  	for i in ${v6_sbin_links}; do ${LN_S} -f xtables-legacy-multi "${DESTDIR}${sbindir}/$$i"; done;
  	for i in ${x_sbin_links}; do ${LN_S} -f xtables-nft-multi "${DESTDIR}${sbindir}/$$i"; done;
+ 	${LN_S} -f iptables-apply "${DESTDIR}${sbindir}/ip6tables-apply"
 +
 +iptables_legacy_batch_SOURCES  = iptables-batch.c iptables.c xshared.c
 +iptables_legacy_batch_LDFLAGS  = ${xtables_legacy_multi_LDFLAGS}
@@ -20,10 +20,10 @@ Index: iptables-1.8.0/iptables/Makefile.am
 +ip6tables_legacy_batch_LDFLAGS = ${xtables_legacy_multi_LDFLAGS}
 +ip6tables_legacy_batch_LDADD   = ${xtables_legacy_multi_LDADD}
 +sbin_PROGRAMS += iptables-legacy-batch ip6tables-legacy-batch
-Index: iptables-1.8.0/iptables/iptables-batch.c
+Index: iptables-1.8.5/iptables/iptables-batch.c
 ===================================================================
 --- /dev/null
-+++ iptables-1.8.0/iptables/iptables-batch.c
++++ iptables-1.8.5/iptables/iptables-batch.c
 @@ -0,0 +1,468 @@
 +/*
 + * Author: Ludwig Nussel <ludwig.nussel@suse.de>
