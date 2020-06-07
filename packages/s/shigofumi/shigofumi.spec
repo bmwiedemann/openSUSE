@@ -24,6 +24,7 @@ License:        GPL-3.0+
 Group:          Applications/Internet
 Url:            http://xpisar.wz.cz/%{name}/
 Source0:        http://xpisar.wz.cz/%{name}/dist/%{name}-%{version}.tar.xz
+Patch0:         shigofumi.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  file-devel
 BuildRequires:  pkg-config
@@ -39,23 +40,23 @@ This is Shigofumi, an ISDS (Informační systém datových schránek / Data Box
 Information System) client.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
     --disable-fatalwarnings
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 %find_lang %{name}
 
 %check
 make %{?_smp_mflags} check
 
 %files -f %{name}.lang
-%defattr(-,root,root)
-%doc README AUTHORS NEWS TODO COPYING ChangeLog
+%doc AUTHORS NEWS TODO
+%license COPYING
 %{_bindir}/*
 %{_mandir}/man1/*
 %{_mandir}/*/man1/*
