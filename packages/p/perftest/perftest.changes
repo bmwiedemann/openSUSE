@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun  7 13:04:06 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 4.4.0-29
+  - No release notes available
+  - Fixes compilation for GCC10
+
+-------------------------------------------------------------------
 Wed Apr 15 14:29:42 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file to use current macros

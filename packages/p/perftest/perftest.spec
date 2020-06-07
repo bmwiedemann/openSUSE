@@ -16,7 +16,7 @@
 #
 
 
-%define extra_version -0.11
+%define extra_version -0.29
 Name:           perftest
 Version:        4.4
 Release:        0

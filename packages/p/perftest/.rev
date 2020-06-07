@@ -92,4 +92,12 @@ This patch is applied during compilation as perftest-license.patch</comment>
     <comment></comment>
     <requestid>794229</requestid>
   </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>3e2abcdb5b42b46ba602a5e8680980ce</srcmd5>
+    <version>4.4</version>
+    <time>1591558794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812234</requestid>
+  </revision>
 </revisionlist>
