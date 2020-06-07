@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jun  6 23:40:11 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.1
+  * lrs: redund function is now performed by lrs via options, but
+    legacy redund maintained.
+  * lrs: extract option to extract columns from the input especially
+    with linearities.
+  * lrs: hvref makes a cross reference list between H and V
+    representations.
+  * mplrs: Temporary files no longer used for communicating with
+    workers.
+  * mplrs: Parallel version of redund is now available.
+- Drop lrs-version.diff. Add lrs-types.diff.
+
+-------------------------------------------------------------------
 Mon Nov  4 13:03:41 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.0a

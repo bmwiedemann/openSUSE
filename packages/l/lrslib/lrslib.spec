@@ -1,7 +1,7 @@
 #
 # spec file for package lrslib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,25 @@
 #
 
 
-%define dullver	070a
-%define dullver2 070
-%define lname   liblrs-7_0a0
+%define dullver	071
+%define dullver2 071
+%define lname   liblrs1
 Name:           lrslib
-Version:        7.0a
+Version:        7.1
 Release:        0
 Summary:        Reverse Search Vertex Enumeration program
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            http://cgm.cs.mcgill.ca/~avis/C/lrs.html
 Source:         http://cgm.cs.mcgill.ca/~avis/C/lrslib/archive/%name-%dullver.tar.gz
-Patch1:         lrs-version.diff
-Patch2:         lrs-128.diff
-Patch3:         lrs-compile.diff
+Patch1:         lrs-128.diff
+Patch2:         lrs-compile.diff
+Patch3:         lrs-types.diff
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libtool >= 2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 lrslib is a library for the reverse search algorithm for vertex
@@ -90,16 +89,13 @@ chmod a-x COPYING README "%buildroot/%_includedir/lrslib"/*.h
 %postun -n %lname -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %_bindir/*
 %doc COPYING README
 
 %files -n %lname
-%defattr(-,root,root)
-%_libdir/liblrs-%version.so.0*
+%_libdir/liblrs.so.1*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/lrslib/
 %_libdir/liblrs.so
 

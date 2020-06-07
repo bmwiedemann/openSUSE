@@ -1,17 +1,12 @@
-From: Jan Engelhardt <jengelh@inai.de>
-Date: 2019-03-16 09:30:59.618075690 +0100
-
-Not all platforms have __int128 and would fail to build.
-
 ---
- makefile |   10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ makefile |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Index: lrslib-070/makefile
+Index: lrslib-071/makefile
 ===================================================================
---- lrslib-070.orig/makefile
-+++ lrslib-070/makefile
-@@ -196,7 +196,7 @@ SOMINOR ?=.0.0
+--- lrslib-071.orig/makefile
++++ lrslib-071/makefile
+@@ -186,7 +186,7 @@ SOMINOR ?=.0.0
  SHLIB ?=$(SONAME)$(SOMINOR)
  SHLINK ?=liblrs.so
  
@@ -19,20 +14,15 @@ Index: lrslib-070/makefile
 +SHLIBOBJ=lrslong1-shr.o lrslib1-shr.o \
  	lrslibgmp-shr.o lrsgmp-shr.o lrsdriver-shr.o
  
- SHLIBBIN=lrs-shared redund-shared lrsnash-shared
-@@ -216,11 +216,11 @@ ${SHLINK}: ${SONAME}
+ SHLIBBIN=lrs-shared lrsnash-shared
+@@ -206,8 +206,8 @@ ${SHLINK}: ${SONAME}
  
  all-shared: ${SHLIBBIN}
  
 -lrs-shared: ${SHLINK} lrs.o
 -	$(CC) lrs.o -o $@ -L . -llrs
 +lrs-shared: ${SHLINK} lrs64.o
-+	$(CC) lrs64.o -o $@ -L . -llrs
++	${CC} lrs64.o -o $@ -L . -llrs
  
--redund-shared: ${SHLINK}  redund.o
--	$(CC) redund.o -o $@ -L . -llrs
-+redund-shared: ${SHLINK} redund64.o
-+	$(CC) redund64.o -o $@ -L . -llrs
  
  lrsnash-shared: ${SHLINK}  lrsnash.c
- 	$(CC) -DGMP -DMA lrsnash.c  lrsnashlib.c -I${INCLUDEDIR} -o $@ -L . -llrs -lgmp

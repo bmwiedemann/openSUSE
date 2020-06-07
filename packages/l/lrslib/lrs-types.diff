@@ -1,0 +1,25 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2020-06-07 01:52:05.520375779 +0200
+
+Work around the terrible quality control.
+A dummy .c file with lrslib.h won't build because lrs_restart_dat
+is not defined and lrsrestart.h is not included by lrslib.h.
+
+---
+ lrslib.h |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+Index: lrslib-071/lrslib.h
+===================================================================
+--- lrslib-071.orig/lrslib.h
++++ lrslib-071/lrslib.h
+@@ -341,7 +341,8 @@ void lrs_exit(int i);
+ /****************/
+ /* following provided by mplrs.c */
+ void post_output(const char *, const char *);
+-void post_R(lrs_restart_dat *R);
++struct lrs_restart_dat;
++void post_R(struct lrs_restart_dat *R);
+ void open_outputblock(void);
+ void close_outputblock(void);
+ void mplrs_cleanstop(int checkpoint);

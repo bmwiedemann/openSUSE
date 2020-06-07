@@ -31,4 +31,12 @@
     <comment>- Update to release 7.0a</comment>
     <requestid>745211</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>14fc8fd82089e49d6c779064a01aeedc</srcmd5>
+    <version>7.1</version>
+    <time>1591558731</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 7.1</comment>
+    <requestid>812127</requestid>
+  </revision>
 </revisionlist>

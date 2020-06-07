@@ -12,11 +12,11 @@ lrslib.cpp:1485:54: error: invalid conversion from 'void (*)()' to '__sighandler
  lrslib.c |   12 ++++++------
  1 file changed, 6 insertions(+), 6 deletions(-)
 
-Index: lrslib-070/lrslib.c
+Index: lrslib-071/lrslib.c
 ===================================================================
---- lrslib-070.orig/lrslib.c
-+++ lrslib-070/lrslib.c
-@@ -71,10 +71,10 @@ static double get_time();
+--- lrslib-071.orig/lrslib.c
++++ lrslib-071/lrslib.c
+@@ -72,10 +72,10 @@ static double get_time(void);
  /* signals handling            */
  /*******************************/
  #ifndef SIGNALS
@@ -24,13 +24,13 @@ Index: lrslib-070/lrslib.c
 -static void die_gracefully ();
 +static void checkpoint (int);
 +static void die_gracefully (int);
- static void setup_signals ();
+ static void setup_signals (void);
 -static void timecheck ();
 +static void timecheck (int);
  #endif
  
  /*******************************/
-@@ -5016,7 +5016,7 @@ setup_signals ()
+@@ -5365,7 +5365,7 @@ setup_signals ()
  }
  
  static void
@@ -39,7 +39,7 @@ Index: lrslib-070/lrslib.c
  {
    lrs_dump_state ();
    errcheck ("signal", signal (SIGALRM, timecheck));
-@@ -5024,14 +5024,14 @@ timecheck ()
+@@ -5373,14 +5373,14 @@ timecheck ()
  }
  
  static void
