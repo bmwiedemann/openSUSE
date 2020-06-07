@@ -1,7 +1,7 @@
 #
 # spec file for package ibutils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,7 +45,8 @@ Patch5:         ibutils-no_special_ldflags_for_ibdmsh.patch
 # Add --disable-ibdiagui option to allow for split builds
 Patch6:         ibutils-diagui.patch
 Patch7:         ibutils-fix-build-dependency.patch
-Url:            http://www.openfabrics.org
+Patch8:         ibis-drop-multiple-definition-of-IbisObj.patch
+URL:            http://www.openfabrics.org
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -121,6 +122,7 @@ This package contains shared libraries for the IB utils.
 %patch5
 %patch6
 %patch7
+%patch8
 
 %build
 autoreconf -fi

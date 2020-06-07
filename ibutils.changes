@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  7 12:58:06 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add ibis-drop-multiple-definition-of-IbisObj.patch to fix compilation with GCC10
+
+-------------------------------------------------------------------
 Tue May 28 14:03:57 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Unify changelog with SLE12
