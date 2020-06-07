@@ -1,7 +1,7 @@
 #
 # spec file for package cura-fdm-materials
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           cura-fdm-materials
-Version:        4.4.1
+Version:        4.6.1
 Release:        0
 Summary:        FDM material database
 License:        CC0-1.0
 Group:          Hardware/Printing
-Url:            https://github.com/Ultimaker/fdm_materials
+URL:            https://github.com/Ultimaker/fdm_materials
 Source0:        fdm_materials-%{version}.tar.xz
 BuildRequires:  xz
 BuildArch:      noarch
