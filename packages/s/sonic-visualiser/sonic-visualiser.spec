@@ -31,6 +31,8 @@ Source:         https://code.soundsoftware.ac.uk/attachments/download/2607/%{nam
 Source1:        %{name}.xml
 # PATCH-FIX-OPENSUSE sonic-visualiser-system-dataquay.patch aloisio@gmx.com -- force use of system libdataquay
 Patch0:         sonic-visualiser-system-dataquay.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-build-with-Qt-5.15.patch
 BuildRequires:  capnproto
 BuildRequires:  dssi
 BuildRequires:  flac
@@ -118,6 +120,8 @@ With Sonic Visualiser you can:
 %if 0%{?BUILD_ORIG}
 %patch0 -p1
 %endif
+%patch1 -p1
+
 # required with capnproto 0.7.0
 for x in *.pr* config* Makefile* ; do perl -i -p -e 's/c\+\+11/c++14/g' "$x" ; done
 
