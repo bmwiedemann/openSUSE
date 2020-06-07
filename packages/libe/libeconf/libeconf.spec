@@ -18,7 +18,7 @@
 
 %define lname	libeconf0
 Name:           libeconf
-Version:        0.3.5+git20200203.3144b69
+Version:        0.3.7+git20200605.c67ef9a
 Release:        0
 Summary:        Enhanced config file parser ala systemd
 License:        LGPL-2.1-or-later
@@ -26,10 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/openSUSE/libeconf
 Source:         libeconf-%{version}.tar.xz
 Source2:        baselibs.conf
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
-BuildRequires:  pkgconfig
+BuildRequires:  meson
 
 %description
 Enhanced config file parser, which merges config files placed
@@ -57,15 +54,14 @@ different locations.
 %setup -q
 
 %build
-./autogen.sh
-%configure --disable-static
+%meson
+%meson_build
 
 %install
-%make_install
-rm -fv %{buildroot}%{_libdir}/libeconf.la
+%meson_install
 
 %check
-make check
+%meson_test
 
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig

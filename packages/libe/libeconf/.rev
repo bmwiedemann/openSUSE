@@ -67,4 +67,17 @@
 </comment>
     <requestid>769722</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>16e1201efa6c7d11e3ed65e041217e9e</srcmd5>
+    <version>0.3.7+git20200605.c67ef9a</version>
+    <time>1591558442</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.7+git20200605.c67ef9a:
+  * Fix build on i586
+
+- Update to version 0.3.6+git20200529.276359f:
+  * add support for meson
+  * Add C++ compatibility</comment>
+    <requestid>811882</requestid>
+  </revision>
 </revisionlist>

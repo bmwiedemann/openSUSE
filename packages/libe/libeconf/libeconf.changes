@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jun 05 15:57:26 UTC 2020 - rbrown@suse.com
+
+- Update to version 0.3.7+git20200605.c67ef9a:
+  * Fix build on i586
+
+-------------------------------------------------------------------
+Thu Jun 04 11:05:02 UTC 2020 - rbrown@suse.com
+
+- Update to version 0.3.6+git20200529.276359f:
+  * Package meson files with autotools
+  * Use newer version of actions/checkout
+  * Add actions for meson
+  * Create meson.yml
+  * Use meson source root for tests configuration files
+  * Add additional compiler warnings
+  * First useable meson build support including unit tests
+  * Add global options, build with pie and GNU_SOURCE
+  * Fix name of library, add example binary
+  * add support for meson
+  * Add C++ compatibility
+  * Add test case for crash with empty value keys
+
+-------------------------------------------------------------------
 Mon Feb 03 16:21:51 UTC 2020 - rbrown@suse.com
 
 - Update to version 0.3.5+git20200203.3144b69:
