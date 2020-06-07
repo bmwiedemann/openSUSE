@@ -70,4 +70,12 @@ for :adi:116
   * https://github.com/Ultimaker/Cura/releases/tag/v4.4.0</comment>
     <requestid>760438</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>da9d679118c333fcc1e76c8807ed415d</srcmd5>
+    <version>4.6.1</version>
+    <time>1591559758</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812286</requestid>
+  </revision>
 </revisionlist>

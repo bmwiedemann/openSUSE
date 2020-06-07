@@ -1,7 +1,7 @@
 #
 # spec file for package cura-engine
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cura-engine
-Version:        4.4.1
+Version:        4.6.1
 Release:        0
 Summary:        3D printer control software
 License:        AGPL-3.0-only
@@ -27,14 +27,8 @@ Source0:        CuraEngine-%{version}.tar.xz
 Source1:        CuraEngine.1
 # X-OPENSUSE-PATCH fix-build.patch follow openSUSE policies
 Patch1:         fix-build.patch
-# On TW/Factory or Leap/SLE 15 use latest gcc, gcc6 otherwise
-%if 0%{?suse_version} < 1500
-BuildRequires:  gcc6-c++
-#!BuildIgnore:  libgcc_s1
-%else
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  gmock
 BuildRequires:  gtest
 BuildRequires:  libArcus-devel
@@ -54,15 +48,10 @@ It is part of the larger project called "Cura".
 sed -i -e 's,"master","%{version}",' tests/GCodeExportTest.cpp
 
 %build
-%if 0%{?suse_version} < 1500
-export CC=gcc-6
-export CXX=g++-6
-%endif
 # make sure lib_CuraEngine is statically build and linked
 %cmake -DCURA_ENGINE_VERSION=%version \
        -DCMAKE_POSITION_INDEPENDENT_CODE="true" \
        -DBUILD_SHARED_LIBS="false" \
-       -DCMAKE_BUILD_TYPE=Release \
        -DBUILD_TESTS=ON
 %make_jobs
 
