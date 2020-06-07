@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Jun 07 12:55:51 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200512:
+  * Clean up flags for Gekko platforms
+  * Recognize platform=unix-armv7-hardfloat-neon
+  * Provide default CC and CXX values for qnx
+  * Switch from hand-written endian handlers to retro_endianness.h
+  * Add libretro-common as submodule
+  * Remove libretro-common
+  * Remove unused endianness defines
+  * Fixes #12
+  * added channelf_hle.c
+  * Cleanup
+  * Added GLP notice
+  * Fixes warning
+  * Change psp to bpp=16 and pitch=320*2
+  * Support for non-packed framebuffers
+  * Support 16-bit bpp
+  * Add PSP support
+  * Convert Application.mk into unix EOL
+  * Experimental BIOS-less mode
+  * Move A register in serialize to avoid unnecessarry padding
+  * Remove leftover keyboard callback
+  * Update file_path.c
+  * Support emscripten
+  * Fix memory declaration
+  * Expose memory to frontend
+  * Use VFS API to load BIOS
+  * Remove libm linking
+  * Optimize CHANNELF_loadROM_mem by using memcpy
+  * Update libretro.h
+  * switch to integer-driven audio synthesis
+  * Use batch audio
+  * Support serialization and deserialization
+  * Use right types for memory and registers
+  * Support loading rom from ram
+  * Add missing chf extension
+  * Fix android compilation
+
+-------------------------------------------------------------------
 Sun Jan 12 14:55:13 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Initial version

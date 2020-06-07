@@ -17,10 +17,10 @@
 
 
 Name:           libretro-freechaf
-Version:        0~git20200109
+Version:        0~git20200512
 Release:        0
 Summary:        FreeChaF libretro core for Fairchild ChannelF emulation
-License:        GPL-3.0
+License:        GPL-3.0-only
 URL:            http://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz
 
