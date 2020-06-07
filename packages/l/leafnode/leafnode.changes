@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun  6 21:54:51 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add sudoers droplet to allow users in newsadmin group to
+  run fetchnews.
+
+-------------------------------------------------------------------
 Mon Jun  1 09:50:14 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Run through spec-cleaner

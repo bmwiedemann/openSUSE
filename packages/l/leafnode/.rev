@@ -121,4 +121,14 @@
     <comment>- Run through spec-cleaner</comment>
     <requestid>810586</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>9d307d5b3809e207bd4cab11ea793eae</srcmd5>
+    <version>2.0.0+git.1527241185.66da754</version>
+    <time>1591558736</time>
+    <user>dimstar_suse</user>
+    <comment>- Add sudoers droplet to allow users in newsadmin group to
+  run fetchnews.
+</comment>
+    <requestid>812113</requestid>
+  </revision>
 </revisionlist>

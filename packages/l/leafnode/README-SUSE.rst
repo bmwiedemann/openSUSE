@@ -22,3 +22,8 @@ For better orientation the package changelog has interspersed
 records from leafnode-2 package in the originally leafnode-1 one. 
 They are all from me (mcepl@something) and they are marked as 
 ``[leafnode-2]`` in the first line of the record.
+
+There is a droplet for sudoers allowing an user in the group
+``newsadmin`` to run without a password command::
+
+    sudo -u news /usr/sbin/fetchnews -vvv -e

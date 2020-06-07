@@ -20,6 +20,8 @@
 %define confdir     %{_sysconfdir}/leafnode
 %define runas_user  news
 %define runas_group news
+%define admin_user  newsadmin
+%define admin_group newsadmin
 %define upname leafnode
 Name:           %{upname}
 Version:        2.0.0+git.1527241185.66da754
@@ -121,15 +123,24 @@ cat >%{buildroot}/%{_sysconfdir}/leafnode/local.groups << EOS
 # n - "No local postings are allowed, only articles from peers."
 EOS
 
+# Droplet for sudoers
+install -d -m 750 %{buildroot}/%{_sysconfdir}/sudoers.d
+echo "%"%{admin_group}"  ALL = (%{runas_user}) NOPASSWD:/usr/sbin/fetchnews" \
+    > %{buildroot}%{_sysconfdir}/sudoers.d/leafnode
+
 %pre
 %service_add_pre leafnode.service leafnode.socket leafnode@.service leafnode-daily.service leafnode-hourly.service leafnode-daily.timer leafnode-hourly.timer
 
 # create daemon group, if not existing
 getent group %{runas_group} >/dev/null || groupadd -r %{runas_group}  2>/dev/null || :
+getent group %{admin_group} >/dev/null || groupadd -r %{admin_group}  2>/dev/null || :
 # create daemon user, if not existing
 getent passwd %{runas_user} >/dev/null || \
     useradd -r -g %{runas_group} -s /bin/false -c "leafnode daemon" \
         -d %{spooldir} %{runas_user}  2>/dev/null || :
+getent passwd %{admin_user} >/dev/null || \
+    useradd -r -g %{admin_group} -s /bin/false -c "leafnode administration" \
+        -d %{spooldir} %{admin_user}  2>/dev/null || :
 exit 0
 
 %post
@@ -152,11 +163,13 @@ fi
 %doc config.example filters.example CREDITS README-SUSE.rst
 %doc DEBUGGING ENVIRONMENT FAQ.tex CHANGES-FROM-LEAFNODE-1 NEWS
 %doc README-FQDN.tex TODO ChangeLog AUTHORS README-leaf.node README.html
-
-%config %{_sysconfdir}/leafnode/
 %attr(644,root,root) %{_unitdir}/%{upname}*
+%dir %{_sysconfdir}/leafnode/
+%config(noreplace) %attr(640,root,news) %{_sysconfdir}/leafnode/config
 %config(noreplace) %attr(640,root,news) %{_sysconfdir}/leafnode/uucp
 %config(noreplace) %attr(640,root,news) %{_sysconfdir}/leafnode/local.groups
+%dir %{_sysconfdir}/sudoers.d
+%config(noreplace) %attr(644,root,root) %{_sysconfdir}/sudoers.d/leafnode
 %attr(755,root,root) %{_bindir}/leafnode-version
 %attr(755,root,root) %{_bindir}/lsmac.pl
 %attr(755,root,root) %{_bindir}/newsq
