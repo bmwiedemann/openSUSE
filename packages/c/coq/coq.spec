@@ -18,7 +18,7 @@
 
 
 Name:           coq
-Version:        8.11.1
+Version:        8.11.2
 Release:        0
 Summary:        Proof Assistant based on the Calculus of Inductive Constructions
 License:        LGPL-2.1-only

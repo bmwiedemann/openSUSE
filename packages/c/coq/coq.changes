@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun  6 12:11:06 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 8.11.2.
+  * Fixed a kernel issue where using Require inside a section
+    caused an anomaly when closing the section.
+  * Fixed normalization in conclusion of custom induction scheme.
+  * Fixed a loss of location of some tactic errors.
+  * Ignore -native-compiler option when built without native
+    compute support.
+  * Fixed a segfault issue with CoqIDE completion.
+  * Highlighting style is now consistently applied to all three
+    buffers of CoqIDE.
+
+-------------------------------------------------------------------
 Wed Apr  8 22:20:23 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 8.11.1, with upstream support for OCaml 4.10.
