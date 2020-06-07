@@ -34,6 +34,7 @@ URL:            http://www.shotcut.org/
 Source:         https://github.com/mltframework/shotcut/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM shotcut-with-mlt-6.16.0.patch davejplater@gmail.com -- Fix missing type define with mlt < 6.17.0
 Patch1:         shotcut-with-mlt-6.16.0.patch
+Patch2:         shotcut-QPainterPath.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme

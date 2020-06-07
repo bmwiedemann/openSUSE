@@ -1,8 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun  5 14:16:15 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Fix Factory build with shotcut-QPainterPath.patch submitted
+  upstream https://github.com/mltframework/shotcut/issues/874
+
+-------------------------------------------------------------------
 Tue Apr 28 13:44:53 UTC 2020 - Pavol Cupka <palica@liguros.net>
 
 - update to release version 20.04.12
-- upstream changes please see - https://github.com/mltframework/shotcut/releases/tag/v20.04.12
+- upstream changes please see:
+  https://github.com/mltframework/shotcut/releases/tag/v20.04.12
 
 -------------------------------------------------------------------
 Tue Feb 18 18:56:50 UTC 2020 - Pavol Cupka <palica@liguros.net>

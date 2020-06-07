@@ -1,0 +1,17 @@
+From: Dave Plater <davejplater@gmail.com>
+Date: Fri  5 Jun 16:07:05 SAST 2020
+Subject: Fix missing QPainterPath include
+Author: Dave Plater <davejplater@gmail.com>
+
+diff --git a/src/widgets/scopes/videohistogramscopewidget.cpp b/src/widgets/scopes/videohistogramscopewidget.cpp
+index fcb8e660..16225d2a 100644
+--- a/src/widgets/scopes/videohistogramscopewidget.cpp
++++ b/src/widgets/scopes/videohistogramscopewidget.cpp
+@@ -19,6 +19,7 @@
+ #include <Logger.h>
+ #include <QMouseEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QToolTip>
+ 
+ const qreal IRE0 = 16;

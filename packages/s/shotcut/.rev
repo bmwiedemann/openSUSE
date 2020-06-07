@@ -345,4 +345,12 @@ Update to release 19.04.30.</comment>
     <comment></comment>
     <requestid>799294</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>d8acb852d7f3791dce40dbae933f70d5</srcmd5>
+    <version>20.04.12</version>
+    <time>1591558495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811844</requestid>
+  </revision>
 </revisionlist>
