@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jun  7 09:49:22 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 3.11
+  V3.11 incorporates SCP additions and extensions by Dave Bryan to
+  support his HP simulators.
+  * added simh-sigma and simh-uc15
+
+- dropped Unix v7 image, get it from http://simh.trailing-edge.com/software.html
+
+- add 0001-declare-don-t-define-uc15_memsize-in-include-file.patch
+
+- dropped interim-20130422.tar.gz and interim-20130422.patch
+  (removed simh-altairz80, simh-hp2100, simh-swtp6800mp-a, simh-swtp6800mp-a2)
+
+- dropped (unused) simhv37-3.dif
+
+- Update to 3.10
+  V3.10 backports an significant number of modules and features from
+  the SimH 4.x branch, as well as some unique new features.
+
+-------------------------------------------------------------------
 Mon Apr 22 12:50:25 UTC 2013 - boris@steki.net
 
 - Updated to latest upstream 39_0 version

@@ -1,7 +1,7 @@
 #
 # spec file for package simh
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           simh
 BuildRequires:  libpcap-devel
 BuildRequires:  unzip
-Url:            http://simh.trailing-edge.com/
-Version:        3.9_0
+URL:            http://simh.trailing-edge.com/
+Version:        3.11_0
 Release:        0
 Summary:        A collection of simulators of historically significant data processing systems
 License:        BSD-3-Clause
 Group:          System/Emulators/Other
-Source:         http://simh.trailing-edge.com/sources/simhv39-0.zip
-Source1:        uv7swre.tar.bz2
-# Preparation of interim patches...
-# DFORMAT=$(date +"%Y%m%d")
-# export DFORMAT
-# wget -q -nH -m -np http://simh.trailing-edge.com/interim/ &&  mv interim/ interim-${DFORMAT} && mv interim-${DFORMAT} && rm interim-${DFORMAT}/index*
-# tar zvcf interim-${DFORMAT}.tar.gz interim-${DFORMAT}
-Source2:        interim-20130422.tar.gz
-# PATCH-FIX-UPSTREAM -- obsolete not used any more...
-Patch0:         simhv37-3.dif
-# PATCH-FIX-UPSTREAM  interim-20130422.patch fix for interim source as it has typo error 
-Patch1:         interim-20130422.patch
+Source:         http://simh.trailing-edge.com/sources/simhv311-0.zip
+Patch1:         0001-declare-don-t-define-uc15_memsize-in-include-file.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  help2man
@@ -69,24 +59,13 @@ History Simulation Project at http://simh.trailing-edge.com/
 
 
 %prep
-%setup -c -T -a 1
+%setup -c -T
 unzip -a %SOURCE0
-tar zxvf %SOURCE2
-# obsolete patch
-#%%patch
-%patch1
-#for i in `find -name "*.[ch]"` makefile
-#do
-#	recode ibmpc..lat1 $i || true
-#done
-
-# replace files with interim fixed ones...
-for i in interim-20130422/* ; do
-	FLOCATION=$(find . -name $(basename $i)|grep -v interim)
-	cp -v $i $FLOCATION
-done
+cd sim
+%patch1 -p1
 
 %build
+cd sim
 mkdir -p BIN
 USE_NETWORK=1 make
 for i in $(cd BIN; ls *) ; do 
@@ -98,25 +77,22 @@ cp sim_rev.h CHANGELOG_sim_rev_h.txt
 %install
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/usr/bin
-install -m 755 BIN/* $RPM_BUILD_ROOT/usr/bin
-chmod 644 *.txt SDS/*.txt Interdata/*.txt
+install -m 755 sim/BIN/* $RPM_BUILD_ROOT/usr/bin
+chmod 644 sim/*.txt sim/SDS/*.txt sim/Interdata/*.txt
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc *.txt Disks */*txt
+%doc sim/*.txt sim/*/*txt
 %{_bindir}/simh-altair
-%{_bindir}/simh-altairz80
 %{_bindir}/simh-eclipse
 %{_bindir}/simh-gri
 %{_bindir}/simh-h316
-%{_bindir}/simh-hp2100
 %{_bindir}/simh-i1401
 %{_bindir}/simh-i1620
 %{_bindir}/simh-i7094
-%{_bindir}/simh-ibm1130
 %{_bindir}/simh-id16
 %{_bindir}/simh-id32
 %{_bindir}/simh-lgp
@@ -131,10 +107,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/simh-pdp9
 %{_bindir}/simh-s3
 %{_bindir}/simh-sds
+%{_bindir}/simh-sigma
+%{_bindir}/simh-uc15
 %{_bindir}/simh-vax
 %{_bindir}/simh-vax780
-%{_bindir}/simh-eclipse
-%{_bindir}/simh-swtp6800mp-a
-%{_bindir}/simh-swtp6800mp-a2
 
 %changelog
