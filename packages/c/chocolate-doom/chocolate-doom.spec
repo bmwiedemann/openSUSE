@@ -1,7 +1,7 @@
 #
 # spec file for package chocolate-doom
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,15 +22,13 @@ Release:        0
 Summary:        Conservative DOOM/Heretic/Hexen/Strife source port
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Shoot
-Url:            http://chocolate-doom.org/
+URL:            http://chocolate-doom.org/
 
-#Git-Clone:	git://github.com/fragglet/chocolate-doom
 #Git-Web:	https://github.com/fragglet/chocolate-doom
 Source:         http://www.chocolate-doom.org/downloads/%version/%name-%version.tar.gz
 Source2:        http://www.chocolate-doom.org/downloads/%version/%name-%version.tar.gz.asc
 Source3:        %name.keyring
 Patch1:         chdoom-iwaddir.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -71,7 +69,7 @@ Additions for bash-completion to support chocolate-doom.
 
 %build
 autoreconf -fi
-%configure
+%configure CFLAGS="%optflags -fcommon"
 make %{?_smp_mflags}
 
 %install
@@ -87,7 +85,6 @@ rm -f "$b/%_datadir/applications/chocolate-setup.desktop" # has wrong paths
 echo "INFO: %name: The global IWAD directory is %_datadir/doom."
 
 %files
-%defattr(-,root,root)
 %_bindir/chocolate-*
 %_mandir/man*/*
 %_datadir/appdata/
@@ -96,7 +93,6 @@ echo "INFO: %name: The global IWAD directory is %_datadir/doom."
 %_docdir/chocolate-*/
 
 %files bash-completion
-%defattr(-,root,root)
 %_datadir/bash-completion/
 
 %changelog

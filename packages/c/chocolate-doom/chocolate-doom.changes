@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun  6 23:53:33 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Set CFLAGS+=-fcommon.
+
+-------------------------------------------------------------------
 Wed Nov 14 08:29:31 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Update description.
