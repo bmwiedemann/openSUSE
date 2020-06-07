@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun  6 21:45:17 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Replace inkscape by rsvg-convert: reduces build time
+  dependencies and works without GUI fixing build failures on
+  openSUSE >= 1550; BuildRequires: rsvg-convert (rsvg-view for
+  Leap 15.1).
+- Use %license for LICENSE file.
+
+-------------------------------------------------------------------
 Tue Jun 12 11:35:40 UTC 2018 - badshah400@opensuse.org
 
 - Add equalx-adapt-headers-for-qt5_11.patch: Include additional

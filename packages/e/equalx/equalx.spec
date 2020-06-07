@@ -1,7 +1,7 @@
 #
 # spec file for package equalx
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Editor for writing and exporting TeX/LaTeX equations
 License:        GPL-3.0-or-later
 Group:          Productivity/Publishing/TeX/Frontends
-Url:            http://equalx.sourceforge.net/
+URL:            http://equalx.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/equalx/%{name}-%{version}.tar.gz
 Source1:        %{name}.appdata.xml
 # PATCH-FIX-OPENSUSE equalx-fix-desktop-file.patch badshah400@gmail.com -- Fix icon tag in desktop file and categories for compatibility with openSUSE defined ones
@@ -33,8 +33,12 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  ghostscript
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  inkscape
 BuildRequires:  pkg-config
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150100
+BuildRequires:  rsvg-view
+%else
+BuildRequires:  rsvg-convert
+%endif
 %if 0%{?suse_version} > 1320
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Widgets)
@@ -83,7 +87,7 @@ install -D -p bin/%{name} %{buildroot}%{_bindir}/%{name}
 pushd resources/icons/equalx
 for i in 256 512;
 do
-  inkscape -w ${i} -C equalx.svg -e equalx-${i}x${i}.png
+  rsvg-convert -w ${i} equalx.svg > equalx-${i}x${i}.png
 done
 popd
 
@@ -123,7 +127,8 @@ install -Dm0644 %{S:1} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 
 %files
 %defattr(-,root,root)
-%doc changelog README LICENSE THANKS
+%doc changelog README THANKS
+%license LICENSE
 %{_bindir}/%{name}
 # OWN THE 512x512 ICON DIR AS HICOLOR THEME DOES NOT PROVIDE IT YET
 %dir %{_datadir}/icons/hicolor/512x512
