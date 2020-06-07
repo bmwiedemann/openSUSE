@@ -20,16 +20,17 @@
 
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 Name:           i3lock
-Version:        2.11.1
+Version:        2.12
 Release:        0
 Summary:        Screen Locker for the i3 Window Manager
 License:        BSD-3-Clause
-Group:          System/GUI/Other
 URL:            https://i3wm.org/i3lock/
 Source:         https://i3wm.org/i3lock/%{name}-%{version}.tar.bz2
 # borrowed from gnome-icon-theme
 Source2:        i3lock-icon.png
 Source3:        xlock.sh
+# PATCH-FIX-UPSTREAM 0001-unlock_indicator.c-fix-build-failure-against-gcc-10.patch gh#i3/i3lock#259
+Patch0:         0001-unlock_indicator.c-fix-build-failure-against-gcc-10.patch
 BuildRequires:  gcc
 BuildRequires:  glibc-devel
 BuildRequires:  make
@@ -50,7 +51,6 @@ screen by entering your password.
 
 %package xlock-compat
 Summary:        Xlock-compatibility script which calls i3lock
-Group:          System/GUI/Other
 Requires:       ImageMagick
 Requires:       xdpyinfo
 Conflicts:      xlockmore
@@ -61,12 +61,12 @@ This is handy for hard-coded screen-saver invocations e.g. in XFCE4, so you can 
 i3lock instead of xlock with them.
 
 %prep
-%setup -q
+%autosetup -p 1
 
 %build
 %configure
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
