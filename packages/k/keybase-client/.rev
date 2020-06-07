@@ -116,4 +116,18 @@
     <comment></comment>
     <requestid>805915</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ef40310196ed16786f0aaa1ade2a7093</srcmd5>
+    <version>5.5.1</version>
+    <time>1591558811</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 5.5.1
+  * Improved file sharing with email addresses
+  * Fix a panic when KEYBASE_DISABLE_FAVORITES is set. This should
+    not affect typical use cases.
+
+- Explicity use go1.14 as the client won't build with older
+  versions.</comment>
+    <requestid>812197</requestid>
+  </revision>
 </revisionlist>

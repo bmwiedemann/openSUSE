@@ -1,10 +1,20 @@
 -------------------------------------------------------------------
+Sun Jun  7 08:52:32 UTC 2020 - Matthias Bach <marix@marix.org>
+
+- Upgrade to version 5.5.1
+  * Improved file sharing with email addresses
+  * Fix a panic when KEYBASE_DISABLE_FAVORITES is set. This should
+    not affect typical use cases.
+
+-------------------------------------------------------------------
 Tue May 15 19:27:12 UTC 2020 - Matthias Bach <marix@marix.org>
 
 - Upgrade to version 5.4.1
   * You can now search for open teams using chat search.
   * KBFS performance fixed.
   * Many performance improvements and bug fixes.
+- Explicity use go1.14 as the client won't build with older
+  versions.
 
 -------------------------------------------------------------------
 Mon Feb  3 22:22:05 UTC 2020 - Matthias Bach <marix@marix.org>
