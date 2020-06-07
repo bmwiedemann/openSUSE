@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-cap32
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           libretro-cap32
-Version:        0~git20190907
+Version:        0~git20200508
 Release:        0
 Summary:        Caprice32 libretro core for Amstrad CPC emulation
-License:        GPL-2.0
+License:        GPL-2.0-only
 URL:            http://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz
 

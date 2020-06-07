@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat May 30 18:27:45 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200508:
+  * Cleanup wiiu flags
+  * Fix incorrect dereferencing
+  * Fix video glitch on big-endian
+  * Replace ad-hoc MSB_FIRST with retro_endianness.h
+  * Fix Core_PollEvent declaration
+  * Fix declaration of ev_events
+  * Fix crash on blackberry
+  * Apply c++ flags also on debug version
+  * QNX fixes
+  * Fix psl1ght support
+  * Remove unused GetTicks
+
+-------------------------------------------------------------------
 Tue Oct 22 19:41:39 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
 
 - Initial version
