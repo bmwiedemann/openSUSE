@@ -69,9 +69,6 @@ Provides: weakremover(ruby2.5-rubygem-net-ssh-5.0)
 Provides: weakremover(ruby2.5-rubygem-net-ssh-doc-5.0)
 %endif
 # 15.1:update
-Provides: weakremover(chrony-pool-empty)
-Provides: weakremover(chrony-pool-openSUSE)
-Provides: weakremover(chrony-pool-suse)
 Provides: weakremover(python3-pytest5)
 Provides: weakremover(tftpboot-installation-openSUSE-Leap-15.1-x86_64)
 %ifarch x86_64
@@ -10689,6 +10686,7 @@ Provides: weakremover(liblouis16)
 Provides: weakremover(liblouis17)
 Provides: weakremover(liblouis9)
 Provides: weakremover(liblrs-7_0-0)
+Provides: weakremover(liblrs-7_0a0)
 Provides: weakremover(liblrsgmp-062)
 Provides: weakremover(liblrzip-devel)
 Provides: weakremover(liblrzip0)
