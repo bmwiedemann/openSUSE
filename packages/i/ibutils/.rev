@@ -83,4 +83,12 @@
 - Use %license for COPYING</comment>
     <requestid>706088</requestid>
   </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>c0c741b54ca9e7d4682225d3cd678640</srcmd5>
+    <version>1.5.7.0.2</version>
+    <time>1591558800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812235</requestid>
+  </revision>
 </revisionlist>
