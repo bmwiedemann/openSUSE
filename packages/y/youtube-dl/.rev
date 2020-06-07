@@ -1249,4 +1249,12 @@
     <comment>- Update to release 2020.05.29</comment>
     <requestid>810250</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>496ed3c55ffee4a9014bbb57b29fe212</srcmd5>
+    <version>2020.06.06</version>
+    <time>1591558722</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2020.06.06</comment>
+    <requestid>812121</requestid>
+  </revision>
 </revisionlist>

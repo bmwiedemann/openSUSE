@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun  6 23:01:22 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.06.06
+  * jwplatform: Improve embeds extraction
+  * brightcove: Fix subtitles extraction
+  * twitch: Pass v5 accept header and fix thumbnails extraction
+
+-------------------------------------------------------------------
 Fri May 29 15:05:45 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.05.29
