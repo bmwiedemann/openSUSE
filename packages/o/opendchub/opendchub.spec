@@ -1,7 +1,7 @@
 #
 # spec file for package opendchub
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,12 +20,11 @@ Name:           opendchub
 Version:        0.8.3
 Release:        0
 Summary:        DirectConnect++ Hub Server
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/File-Sharing
-Url:            http://opendchub.sf.net/
+URL:            http://opendchub.sf.net/
 
 Source:         http://downloads.sf.net/opendchub/%name-%version.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  libcap-devel
 BuildRequires:  libnsl-devel
 %{?libperl_requires}
@@ -42,15 +41,15 @@ users connected to the hub.
 
 %build
 chmod a+x configure
-%configure
+%configure CFLAGS="%optflags -fcommon"
 make %{?_smp_mflags}
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc COPYING Documentation/*
+%license COPYING
+%doc Documentation/*
 %_bindir/*
 
 %changelog

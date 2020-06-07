@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  7 00:18:01 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Set CFLAGS+=-fcommon.
+
+-------------------------------------------------------------------
 Mon Sep 25 12:01:34 UTC 2017 - jengelh@inai.de
 
 - Add libnsl-devel as BuildRequires
