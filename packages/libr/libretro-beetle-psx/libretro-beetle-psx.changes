@@ -1,4 +1,149 @@
 -------------------------------------------------------------------
+Sat May 30 16:13:53 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200529:
+  * Add support for frontend message interface v1
+  * Cleanups
+  * Silence some debug messages
+  * Cleanups
+  * Update libretro.cpp
+  * Revert "sanitize gl context requests"
+  * Load bios from path that was checked
+  * sanitize gl context requests
+  * Add more detailed error messages for mmap, unlink sooner
+  * Allow Solaris 11 build
+  * Cleanup warnings: snprintf truncation, strncpy->memcpy, memset
+  * Cleanup/deduplicate mmap code
+  * Lightrec: Improve homebrew support
+  * Fix inverted check for dma-only invalidation
+  * Fix OS X compile
+  * Lightrec: fix more games
+  * git subrepo pull (merge) deps/lightrec
+  * Lightrec: Fix SWL/LWL using wrong mask
+  * When HAVE_SHM always use global memfd so it can be closed properly on exit
+  * Keep track of mmap failing
+  * Update to latest lightrec and extract PGXP from lightrec
+  * Compile in Lightrec support by default
+  * Improve DualShock calibration reference
+  * Fix disk control interface when running single-disk PBP content
+  * Revert "WIP: increase RAM to 8MB instead of the default 2"
+  * Improve internal FPS detection
+  * WIP: increase RAM to 8MB instead of the default 2
+  * Clean up Fast PAL, add Force NTSC aspect ratio
+  * Added "fast PAL" hack to allow PAL games to play at NTSC framerates
+  * parallel-psx: Remove unnecessary includes from renderer.cpp
+  * Rename lineRender option to line_render for consistency
+  * Vulkan renderer: Disable adaptive smoothing by default
+  * Hide scanline core options based on content region
+  * Refactor memory card core options logic
+  * libretro.cpp: Eliminate redundant is_pal variable
+  * Clean up recent changes
+  * Implement aspect ratio core option (psx.correct_aspect equivalent)
+  * Minor optimization for fps timing switch
+  * Add option for setting core-reported fps timing
+  * Revert "Add Hardware Voices and CDDA volume adjust options"
+  * Add Hardware Voices and CDDA volume adjust options
+  * Minor update to issue template
+  * Update libretro_core_options.h
+  * Rework UpdateDisplayMode and rsx set_display_mode functions
+  * Make scanline core options dynamic for sw renderer (#585)
+  * Don't expose forcing for renderers not built in core
+  * Port GP1(05h) command to GL renderer
+  * Update rsx hook sequence in GPU reset and GPU restore state
+  * Limit image_offset range to prevent segfault
+  * parallel-psx: Decouple MDEC and SSAA filter logic
+  * VK renderer: Add Display VRAM core option support
+  * Add GP1(05h) command to rsx and parallel-psx, update rsx_dump
+  * Add support for forcing hw rendering backend
+  * Add accurate timing macros and report noninterlaced by default
+  * Eliminate redundant glClear call
+  * Add frame duping support to RSX Vulkan
+  * Separate lightrec PGXP and non-PGXP rw_func
+  * Pare down some values arrays in Italian core options
+  * Fix and update Italian core options
+  * Don't call PGXP functions in gpu when PGXP is disabled
+  * Re-init dynarec when changing invalidate mode
+  * Add disk control interface v1 support
+  * Add PGXP support in dynarec
+  * ValidateAddress does nothing and slows down pgxp by a few percent
+  * Add more DMA/GPU Event Cycles options
+  * Increase CPU overclock limit to 750% (#601)
+  * Add initial Italian core options translation
+  * Fix loading save states from pre-dynarec, need to use SFARRAYN with old name
+  * Fix Dynarec DMA/GPU Event Cycles to allow higher settings, prevent crashes and bugs
+  * git subrepo pull (merge) deps/lightrec
+  * Increase horizontal image offset range (#580)
+  * git subrepo pull (merge) deps/lightrec
+  * shm_unlink directly after shm_open and mmap
+  * Aarch64: Remove assertions on immediate alignment in ldxi/stxi
+  * Don't mess with PIOMem
+  * Cleanup stuff from _Bool fix attempts
+  * Allow easy disabling of lightrec THREADED_RECOMPILER
+  * Use libretro logging for dynarec
+  * git subrepo pull (merge) deps/lightrec
+  * git subrepo pull (merge) deps/lightning
+  * Make supported_io_bases check UINTPTR_MAX, static_cast to prevent implicit conversion
+  * Make this __MACH__ only
+  * Buildfixes for Android
+  * Push buildfix for libFLAC
+  * Change default for CPU Dynarec to disabled
+  * Fix Mac mmap support
+  * Add more CPU overclocking
+  * Try to fix Android
+  * Enable HAVE_LIGHTREC=1 for Android
+  * Add lightrec dynarec support
+  * Add deps for dynarec
+  * Backport this from mainline (mednafen 1.22.2) - PSX: Fixed a regression introduced in 1.22.0-UNSTABLE that broke a few PS1 games(e.g. SimCity 2000 and Rise 2)
+  * From the upstream changelog: Handle SPU CD volume as signed 16-bit instead of unsigned; fixes lowest volume setting in "Star Wars Dark Forces".
+  * Update READMEs
+  * parallel-psx: Fix precision bug with resolve roundtrip.
+  * Restore and update rsx_lib_vulkan
+  * Restore and update rsx_lib_gl
+  * Clean up rsx_intf.h
+  * Remove deprecated rsx.h
+  * Adjust lightgun input scaling for PAL and overscan
+  * Fix lightgun color detection for SW renderer upscale
+  * Add lightgun cursor upscaling for SW renderer
+  * Separate core globals from callbacks
+  * Add -MMD to Makefile for non-MSVC builds (#462)
+  * Clean up Makefile formatting
+  * Allow line render hack for non-HW build
+  * Rewrite core option sublabels
+  * Add rsx subdirectory README
+  * Fix GET_PREFERRED_HW_RENDER handling and fallback
+  * Fix upscale not being set on startup in non-HW build
+  * Revert "Changes to core startup. Fixes #553"
+  * Update RSX dump and playback for recent additions
+  * Fix regression in GL Display VRAM from 26da9f0
+  * Minor update to some option sublabels
+  * Reorder core options by approximate category
+  * Standardize input.h/input.cpp formatting
+  * Clean RSX and libretro.cpp options style
+  * Adhere core option values to standard format
+  * Expose base PGXP core option for non-HW build
+  * Hide frame duping option for HW renderers & SW fix
+  * Add horizontal offset option to GL and VK
+  * Refactor GL viewport calculation code
+  * Clean up RSX interface style
+  * Implement initial/last scanline options for Vulkan
+  * Changes to core startup. Fixes #553
+  * Implement display range code for Vulkan renderer
+  * Gl crop overscan accuracy additions (#559)
+  * Implement crop overscan option for GL renderer
+  * Implement initial/last scanline core options for GL renderer
+  * Make sure has_software_fb is set by GLRenderer_new
+  * Adjust display range reset values in GL render for accuracy
+  * Update rsx_dump for set_display_mode and implement rsx_dump for set_display_range
+  * Implement framebuffer height padding for GL renderer
+  * Remove conflicting PAL overscan crop code in SW renderer
+  * Added support for frontends not having GET_PREFERRED_HW_RENDER.
+  * Fix Haiku build (#549)
+  * Adjust outdated overscan cropping code (#550)
+  * Enable gl driver support for hw context.
+  * Update libretro.cpp
+  * Properly negotiating with frontend for driver to use.
+
+-------------------------------------------------------------------
 Sat Oct 12 17:08:42 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
 
 - Initial version

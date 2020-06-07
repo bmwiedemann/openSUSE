@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-beetle-psx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           libretro-beetle-psx
-Version:        0~git20191009
+Version:        0~git20200529
 Release:        0
 Summary:        Mednafen PSX libretro core for Sony PlayStation emulation
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          System/Emulators/Other
 URL:            http://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz
