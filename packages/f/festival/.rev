@@ -253,4 +253,12 @@ into sibling directories. (forwarded request 163507 from Andreas_Schwab)</commen
 - Run spec-cleaner</comment>
     <requestid>729968</requestid>
   </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>7911b6d58ae5829f1f7e4c596393e512</srcmd5>
+    <version>2.5.0</version>
+    <time>1591558682</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812125</requestid>
+  </revision>
 </revisionlist>

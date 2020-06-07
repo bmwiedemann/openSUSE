@@ -1,7 +1,7 @@
 #
 # spec file for package festival
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,6 +53,7 @@ Patch11:        speech_tools-undefined-operation.patch
 Patch12:        speech_tools-1.2.95-config.patch
 # PATCH-FIX-UPSTREAM speech_tools-no-LD_LIBRARY_PATH-extension.patch vuntz@opensuse.org -- Do not change LD_LIBRARY_PATH in binaries, to avoid any risks
 Patch17:        speech_tools-no-LD_LIBRARY_PATH-extension.patch
+Patch18:        speech_tools-remove-errneous-decl.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
@@ -89,6 +90,7 @@ cd ../speech_tools
 %patch11 -p1
 %patch12
 %patch17 -p1
+%patch18 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
