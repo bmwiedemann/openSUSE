@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-websocket-extensions
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rubygem-websocket-extensions
-Version:        0.1.4
+Version:        0.1.5
 Release:        0
 %define mod_name websocket-extensions
 %define mod_full_name %{mod_name}-%{version}
@@ -26,7 +26,7 @@ BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/faye/websocket-extensions-ruby
+URL:            https://github.com/faye/websocket-extensions-ruby
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Summary:        Generic extension manager for WebSocket connections
 License:        Apache-2.0
