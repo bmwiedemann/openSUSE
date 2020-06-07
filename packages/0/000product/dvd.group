@@ -314,6 +314,7 @@
     <package name="chewing-utils" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="chkstat" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="chrony" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="chrony-pool-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cifs-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cim-schema" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="circuslinux" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
