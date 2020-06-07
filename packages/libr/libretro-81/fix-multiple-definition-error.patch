@@ -1,0 +1,22 @@
+From d1f9f60f6cb55e4fb8117653af607635f4b929b2 Mon Sep 17 00:00:00 2001
+From: Guo Yunhe <i@guoyunhe.me>
+Date: Sun, 7 Jun 2020 12:32:40 +0300
+Subject: [PATCH] Fix multiple definition error when -fno-common
+
+---
+ src/coreopt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/coreopt.c b/src/coreopt.c
+index 84696cd..1dc2828 100644
+--- a/src/coreopt.c
++++ b/src/coreopt.c
+@@ -7,7 +7,7 @@
+ 
+ #include <gamedb/db.inl>
+ 
+-retro_log_printf_t log_cb;
++extern retro_log_printf_t log_cb;
+ 
+ static int getindex( const char* options, const char* value )
+ {
