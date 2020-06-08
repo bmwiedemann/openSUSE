@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-aioresponses
-Version:        0.6.2
+Version:        0.6.4
 Release:        0
 Summary:        Python module for mocking out requests made by ClientSession from aiohttp
 License:        MIT
@@ -59,7 +59,8 @@ export LC_ALL=en_US.UTF-8
 
 %check
 export LC_ALL=en_US.UTF-8
-%python_exec setup.py test
+# disabled test which uses http://httpbin.org
+%pytest -k "not test_pass_through_with_origin_params"
 
 %files %{python_files}
 %doc AUTHORS AUTHORS.rst ChangeLog README.rst

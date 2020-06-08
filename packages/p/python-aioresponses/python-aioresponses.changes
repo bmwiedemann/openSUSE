@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun  8 09:41:48 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.6.4
+ * Load response cookies from headers
+ * BaseException handling(in Pyhton 3.8 asyncio.CancelError, 
+     asyncio.TimeoutError are subclass of BaseException)
+ * exception can be as class or as object of exception(Exception or Exception())
+ * Change method to GET for redirect after POST request.
+ * set request_info on response rather than a mock
+ * Avoid failure in case one of the request arguments cannot be deep copied
+
+-------------------------------------------------------------------
 Thu Jan 16 16:49:49 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.6.2

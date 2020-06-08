@@ -48,4 +48,19 @@
     <comment></comment>
     <requestid>765075</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>57ca5c86bcc7c249c795b565cf4689ca</srcmd5>
+    <version>0.6.4</version>
+    <time>1591654011</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.4
+ * Load response cookies from headers
+ * BaseException handling(in Pyhton 3.8 asyncio.CancelError, 
+     asyncio.TimeoutError are subclass of BaseException)
+ * exception can be as class or as object of exception(Exception or Exception())
+ * Change method to GET for redirect after POST request.
+ * set request_info on response rather than a mock
+ * Avoid failure in case one of the request arguments cannot be deep copied</comment>
+    <requestid>812531</requestid>
+  </revision>
 </revisionlist>
