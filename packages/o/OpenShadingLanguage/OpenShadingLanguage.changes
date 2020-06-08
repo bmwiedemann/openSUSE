@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed May 13 19:11:41 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use the correct CMake variable to set the shader install location.
+- Replace osl-pkgconfig-versions.patch with correct upstream
+  0001-Fix-typo-in-the-.pc.in-files-that-botched-the-versio.patch
+- Adapt to LLVM 9/10 changes defaulting to single clang-cpp library,
+  add 0001-Use-single-shared-clang-cpp-library-starting-with-LL.patch
+  instead of mangling CMake output.
+- Dropped osl-oslimageio-soname.patch, which erroneously adds a
+  version to the OpenImageIO plugin, voiding any chance for
+  OIIO to find and load the plugin.
+- Rename the osl.imageio package to OpenImageIO-plugin-osl, to
+  better reflect its purpose, install the plugin to the default
+  OpenImageIO plugin directory.
+- Use python3 for the build process.
+
+-------------------------------------------------------------------
+Tue Apr 21 09:54:50 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Update to v1.11.4.1 to fix build with LLVM10.
+- Remove incorporated patch:
+  0001-Generalize-lookup-of-stdosl.h-in-install-directory-a.patch
+- Added patches from git:
+  0001-Some-SPI-build-fixes-for-finding-the-right-llvm.patch and
+  0001-LLVM-10-odds-and-ends-1135.patch.
+- Created osl-pkgconfig-versions.patch to fix pc file's version
+  fields. Upstreamed along with workaround for new libclang-cpp in
+  issue #1155
+- Created osl-oslimageio-soname.patch to keep the library build in
+  line with v1.x.
+- For many upstream changes since v1.10.7 see:
+  /usr/share/doc/packages/OpenShadingLanguage/CHANGES.md
+
+-------------------------------------------------------------------
 Wed Nov  6 15:45:59 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Properly rebase 0001-Generalize-lookup-of-stdosl.h-in-install-directory-a.patch

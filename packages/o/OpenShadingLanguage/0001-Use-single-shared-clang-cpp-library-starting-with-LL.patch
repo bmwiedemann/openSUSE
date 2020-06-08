@@ -1,0 +1,41 @@
+From 891061d02a71ce1a5aad6807063b69f8e38e174a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Wed, 13 May 2020 20:23:49 +0200
+Subject: [PATCH] Use single shared clang-cpp library starting with LLVM 9
+
+Since 9.0 LLVM defaults to building a single clang-cpp library for
+non-developer builds.
+
+As this is just the default, and some distributions enable it only with
+LLVM 10 (e.g. Fedora), make the clang-cpp search dependent on the build
+mode.
+---
+ src/cmake/modules/FindLLVM.cmake | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/src/cmake/modules/FindLLVM.cmake b/src/cmake/modules/FindLLVM.cmake
+index 8b17ad8e..21a87f38 100644
+--- a/src/cmake/modules/FindLLVM.cmake
++++ b/src/cmake/modules/FindLLVM.cmake
+@@ -79,6 +79,18 @@ if (NOT LLVM_LIBRARY)
+     set (LLVM_LIBRARY "${LLVM_LIBRARIES}")
+ endif ()
+ 
++execute_process (COMMAND ${LLVM_CONFIG} --shared-mode
++       OUTPUT_VARIABLE LLVM_SHARED_MODE
++       OUTPUT_STRIP_TRAILING_WHITESPACE)
++if (LLVM_VERSION VERSION_GREATER_EQUAL 9.0 AND (LLVM_SHARED_MODE STREQUAL "shared"))
++    find_library ( _CLANG_CPP_LIBRARY
++		  NAMES "clang-cpp"
++		  PATHS ${LLVM_LIB_DIR})
++    if (_CLANG_CPP_LIBRARY)
++        list (APPEND CLANG_LIBRARIES ${_CLANG_CPP_LIBRARY})
++    endif ()
++endif ()
++
+ foreach (COMPONENT clangFrontend clangDriver clangSerialization
+                    clangParse clangSema clangAnalysis clangAST clangBasic
+                    clangEdit clangLex)
+-- 
+2.26.2
+

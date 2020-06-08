@@ -1,0 +1,94 @@
+From 2683cfdc41e66f7681c68a6f1b85e0a26fb00a86 Mon Sep 17 00:00:00 2001
+From: Larry Gritz <lg@larrygritz.com>
+Date: Tue, 31 Mar 2020 08:21:01 -0700
+Subject: [PATCH] LLVM 10 odds and ends (#1135)
+
+* Use llvm 10 in some CI tests
+
+* build_llvm: New download location for llvm 10
+
+* Build time check that LLVM 10+ requires C++ >= 14
+---
+ .github/workflows/workflow.yml    | 22 ++++++++++++++++++++--
+ src/build-scripts/build_llvm.bash |  7 ++++++-
+ src/cmake/externalpackages.cmake  |  5 ++++-
+ 3 files changed, 30 insertions(+), 4 deletions(-)
+
+diff --git a/.github/workflows/workflow.yml b/.github/workflows/workflow.yml
+index b331fca9..4ef8a2ee 100644
+--- a/.github/workflows/workflow.yml
++++ b/.github/workflows/workflow.yml
+@@ -111,8 +111,26 @@ jobs:
+             source src/build-scripts/gh-installdeps.bash
+             source src/build-scripts/ci-build-and-test.bash
+ 
++  linux-2021ish-gcc8-llvm9:
++    name: "Linux gcc8, C++17, llvm10, oiio master, avx2, exr2.4"
++    runs-on: ubuntu-18.04
++    steps:
++      - uses: actions/checkout@v1
++      - name: all
++        env:
++          CXX: g++-8
++          CMAKE_CXX_STANDARD: 17
++          LLVM_VERSION: 10.0.0
++          USE_SIMD: avx2,f16c
++          OPENEXR_VERSION: 2.4.0
++          OPENIMAGEIO_BRANCH: master
++        run: |
++            source src/build-scripts/ci-startup.bash
++            source src/build-scripts/gh-installdeps.bash
++            source src/build-scripts/ci-build-and-test.bash
++
+   linux-bleeding:
+-    name: "Linux bleeding edge: gcc8, C++17, llvm9, oiio master, avx2, exr2.4"
++    name: "Linux bleeding edge: gcc8, C++17, llvm10, oiio master, avx2, exr2.4"
+     runs-on: ubuntu-18.04
+     steps:
+       - uses: actions/checkout@v1
+@@ -121,7 +139,7 @@ jobs:
+           CXX: g++-8
+           USE_CPP: 17
+           CMAKE_CXX_STANDARD: 17
+-          LLVM_VERSION: 9.0.0
++          LLVM_VERSION: 10.0.0
+           USE_SIMD: avx2,f16c
+           OPENEXR_VERSION: 2.4.0
+           OPENIMAGEIO_BRANCH: master
+diff --git a/src/build-scripts/build_llvm.bash b/src/build-scripts/build_llvm.bash
+index b0fdf591..3b25b64e 100755
+--- a/src/build-scripts/build_llvm.bash
++++ b/src/build-scripts/build_llvm.bash
+@@ -24,7 +24,12 @@ if [[ `uname` == "Linux" ]] ; then
+         LLVMTAR=clang+llvm-${LLVM_VERSION}-x86_64-linux-gnu-${LLVM_DISTRO_NAME}.tar.xz
+     fi
+     echo LLVMTAR = $LLVMTAR
+-    curl --location http://releases.llvm.org/${LLVM_VERSION}/${LLVMTAR} -o $LLVMTAR
++    if [ "$LLVM_VERSION" == "10.0.0" ] ; then
++        # new
++        curl --location https://github.com/llvm/llvm-project/releases/download/llvmorg-${LLVM_VERSION}/${LLVMTAR} -o $LLVMTAR
++    else
++        curl --location http://releases.llvm.org/${LLVM_VERSION}/${LLVMTAR} -o $LLVMTAR
++    fi
+     ls -l $LLVMTAR
+     tar xf $LLVMTAR
+     rm -f $LLVMTAR
+diff --git a/src/cmake/externalpackages.cmake b/src/cmake/externalpackages.cmake
+index 5afb9664..62f9b7fd 100644
+--- a/src/cmake/externalpackages.cmake
++++ b/src/cmake/externalpackages.cmake
+@@ -223,7 +223,10 @@ add_definitions (-DOSL_LLVM_FULL_VERSION="${LLVM_VERSION}")
+ if (LLVM_NAMESPACE)
+     add_definitions ("-DLLVM_NAMESPACE=${LLVM_NAMESPACE}")
+ endif ()
+-
++if (LLVM_VERSION VERSION_GREATER_EQUAL 10.0.0 AND
++    CMAKE_CXX_STANDARD VERSION_LESS 14)
++    message (FATAL_ERROR "LLVM 10+ requires C++14 or higher.")
++endif ()
+ 
+ checked_find_package (partio)
+ 
+-- 
+2.16.4
+

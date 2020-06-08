@@ -1,0 +1,51 @@
+From 38413a86dc8782048089077a07b2347bf430dc02 Mon Sep 17 00:00:00 2001
+From: Larry Gritz <lg@larrygritz.com>
+Date: Sat, 9 May 2020 12:48:09 -0700
+Subject: [PATCH] Fix typo in the .pc.in files that botched the version (#1168)
+
+Signed-off-by: Larry Gritz <lg@larrygritz.com>
+---
+ src/build-scripts/oslcomp.pc.in  | 2 +-
+ src/build-scripts/oslexec.pc.in  | 2 +-
+ src/build-scripts/oslquery.pc.in | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/build-scripts/oslcomp.pc.in b/src/build-scripts/oslcomp.pc.in
+index 00244fd1..63cf7a9f 100644
+--- a/src/build-scripts/oslcomp.pc.in
++++ b/src/build-scripts/oslcomp.pc.in
+@@ -6,6 +6,6 @@ includedir=${prefix}/include
+ Name: oslcomp
+ Description: oslcomp Compile OSL shaders from source
+ URL: https://github.com/imageworks/OpenShadingLanguage
+-Version: @PACKAGE_VERSION_MAJOR@.@PACKAGE_VERSION_MINOR@.@PACKAGE_VERSION_PATCH@
++Version: @PROJECT_VERSION_MAJOR@.@PROJECT_VERSION_MINOR@.@PROJECT_VERSION_PATCH@
+ Libs: -L${libdir} -loslcomp
+ Cflags: -I${includedir}
+diff --git a/src/build-scripts/oslexec.pc.in b/src/build-scripts/oslexec.pc.in
+index e29cf9a1..1ad264c2 100644
+--- a/src/build-scripts/oslexec.pc.in
++++ b/src/build-scripts/oslexec.pc.in
+@@ -6,6 +6,6 @@ includedir=${prefix}/include
+ Name: oslexec
+ Description: oslexec Execute compiled OSL shaders
+ URL: https://github.com/imageworks/OpenShadingLanguage
+-Version: @PACKAGE_VERSION_MAJOR@.@PACKAGE_VERSION_MINOR@.@PACKAGE_VERSION_PATCH@
++Version: @PROJECT_VERSION_MAJOR@.@PROJECT_VERSION_MINOR@.@PROJECT_VERSION_PATCH@
+ Libs: -L${libdir} -loslexec
+ Cflags: -I${includedir}
+diff --git a/src/build-scripts/oslquery.pc.in b/src/build-scripts/oslquery.pc.in
+index 060cd4c0..4da229b2 100644
+--- a/src/build-scripts/oslquery.pc.in
++++ b/src/build-scripts/oslquery.pc.in
+@@ -6,6 +6,6 @@ includedir=${prefix}/include
+ Name: oslquery
+ Description: oslquery Query parameters of OSL compiled shaders
+ URL: https://github.com/imageworks/OpenShadingLanguage
+-Version: @PACKAGE_VERSION_MAJOR@.@PACKAGE_VERSION_MINOR@.@PACKAGE_VERSION_PATCH@
++Version: @PROJECT_VERSION_MAJOR@.@PROJECT_VERSION_MINOR@.@PROJECT_VERSION_PATCH@
+ Libs: -L${libdir} -loslquery
+ Cflags: -I${includedir}
+-- 
+2.26.2
+
