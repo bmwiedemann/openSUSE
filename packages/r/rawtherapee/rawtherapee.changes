@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  8 11:35:53 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Adding -fno-tree-loop-vectorize because GCC10 causes a weird bug:
+  https://github.com/Beep6581/RawTherapee/issues/5749
+
+-------------------------------------------------------------------
 Thu Feb  6 11:08:19 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.8

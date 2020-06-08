@@ -16,13 +16,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           rawtherapee
 Version:        5.8
 Release:        1%{?dist}
-License:        GPL-3.0
 Summary:        Cross-platform raw image processing program
-Url:            http://rawtherapee.com
+License:        GPL-3.0-only
 Group:          Productivity/Graphics/Other
+URL:            http://rawtherapee.com
 
 %define _name rawtherapee
 
@@ -32,7 +33,7 @@ Group:          Productivity/Graphics/Other
 %define liblcms2_name lcms2
 %endif
 
-Requires:	%{liblcms2_name} >= 2.6
+Requires:       %{liblcms2_name} >= 2.6
 
 BuildRequires:  cmake
 
@@ -76,11 +77,11 @@ BuildRequires:  gcc5-c++
 #!Buildignore:  libgcc_s1
 %endif
 
-BuildRequires:  pkgconfig(glibmm-2.4)
-BuildRequires:  pkgconfig(gtkmm-2.4)
 BuildRequires:  libiptcdata-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
+BuildRequires:  pkgconfig(glibmm-2.4)
+BuildRequires:  pkgconfig(gtkmm-2.4)
 %if 0%{?fedora_version} >= 24
 BuildRequires:  libsigc++20-devel
 %else
@@ -90,10 +91,10 @@ BuildRequires:  libsigc++2.0-devel
 BuildRequires:  libsigc++2-devel
 %endif
 %endif
-BuildRequires:  libtiff-devel
-BuildRequires:  zlib-devel
 BuildRequires:  glib2-devel
 BuildRequires:  gtk3-devel
+BuildRequires:  libtiff-devel
+BuildRequires:  zlib-devel
 %if (0%{?suse_version} || 0%{?sles_version})
 BuildRequires:  gtkmm3-devel
 %else
@@ -123,15 +124,15 @@ BuildRequires:  fdupes
 %endif
 
 %if (0%{?suse_version} || 0%{?sles_version})
-BuildRequires:  liblcms2-devel >= 2.6
 BuildRequires:  libexpat-devel
+BuildRequires:  liblcms2-devel >= 2.6
 BuildRequires:  update-desktop-files
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 %else
-BuildRequires:  lcms2-devel >= 2.6
-BuildRequires:  expat-devel
 BuildRequires:  desktop-file-utils
+BuildRequires:  expat-devel
+BuildRequires:  lcms2-devel >= 2.6
 %endif
 
 BuildRequires:  lensfun-devel
@@ -141,7 +142,6 @@ BuildRequires:  librsvg2-devel
 %else
 BuildRequires:  librsvg-devel
 %endif
-
 
 Source0:        %{name}-%{version}.tar.bz2
 
@@ -156,6 +156,7 @@ Conflicts:      rawtherapee-gtk2
 Conflicts:      rawtherapee-gtk2-nosse
 Conflicts:      rawtherapee-gtk2-unstable
 Conflicts:      rawtherapee-gtk2-nosse-unstable
+
 %description
 RawTherapee is a cross platform image processing software equipped with the essential tools for high quality and efficient RAW photo development.
 %ifarch i386 i486 i586 i686
@@ -175,8 +176,10 @@ test -x "$(type -p gcc-6)" && export CC=gcc-6
 test -x "$(type -p g++-6)" && export CXX=g++-6
 test -x "$(type -p gcc-7)" && export CC=gcc-7
 test -x "$(type -p g++-7)" && export CXX=g++-7
-export CFLAGS="%(echo %{optflags} | sed 's/-O2/-O3/' | sed 's/-D_FORTIFY_SOURCE=2/-D_FORTIFY_SOURCE=3/')"
-export CXXFLAGS="%(echo %{optflags} | sed 's/-O2/-O3/' | sed 's/-D_FORTIFY_SOURCE=2/-D_FORTIFY_SOURCE=3/')"
+
+# Adding -fno-tree-loop-vectorize due to https://github.com/Beep6581/RawTherapee/issues/5749
+export CFLAGS="%(echo %{optflags} | sed 's/-O2/-O3/' | sed 's/-D_FORTIFY_SOURCE=2/-D_FORTIFY_SOURCE=3/') -fno-tree-loop-vectorize"
+export CXXFLAGS="$CFLAGS"
 
 %ifarch i386 i486 i586 i686
 export CFLAGS+=" -msse2"
@@ -189,11 +192,8 @@ export CXXFLAGS+=" -msse2"
 
 %endif
 
-
 echo "CFLAGS: "$CFLAGS
 echo "CXXFLAGS= "$CXXFLAGS
-
-
 
 #fix LICENSE.txt EOL
 sed -i 's/\r$//' LICENSE.txt
@@ -207,9 +207,8 @@ cmake \
                 -DCACHE_NAME_SUFFIX="" \
                 -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
                 -DCMAKE_C_FLAGS="$CFLAGS" .
-                
-%__make %{?_smp_mflags}
 
+%__make %{?_smp_mflags}
 
 %install
 %make_install
@@ -227,7 +226,6 @@ desktop-file-install --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_d
 %fdupes %buildroot/%_prefix
 %endif
 
-
 %post
 
 %if (0%{?suse_version} || 0%{?sles_version})
@@ -237,7 +235,6 @@ desktop-file-install --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_d
 /usr/bin/update-desktop-database &> /dev/null || :
 /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
 %endif
-
 
 %postun
 
@@ -252,18 +249,15 @@ if [ $1 -eq 0 ] ; then
 fi
 %endif
 
-
 %posttrans
 
 %if !(0%{?suse_version} || 0%{?sles_version})
 /usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %endif
 
-
 %clean
 
 rm -rf %{buildroot}
-
 
 %files
 
@@ -276,6 +270,5 @@ rm -rf %{buildroot}
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/doc/packages/%{_name}
 %{_datadir}/man/*/%{_name}*
-
 
 %changelog
