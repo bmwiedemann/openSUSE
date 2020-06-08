@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 29 19:50:00 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.3:
+  + EEwsNotification: Change how subscription to server change
+    notifications work
+  + Add parameter check into ews_get_error_code()
+  + Bugs fixed: glgo#GNOME/evolution-ews#99,
+    glgo#GNOME/evolution-ews#102, glgo#GNOME/evolution-ews#103.
+
+-------------------------------------------------------------------
 Sat Apr 25 17:55:05 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.2:

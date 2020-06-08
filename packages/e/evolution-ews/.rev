@@ -867,4 +867,12 @@
     <comment>New stable release, not buildtested! (forwarded request 797723 from iznogood)</comment>
     <requestid>798343</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>cd6d7465625ac5d66842a915d622c2c2</srcmd5>
+    <version>3.36.3</version>
+    <time>1591652899</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 810284 from iznogood)</comment>
+    <requestid>811424</requestid>
+  </revision>
 </revisionlist>
