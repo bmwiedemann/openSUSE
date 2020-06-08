@@ -1,0 +1,12 @@
+diff --git a/traceplot.cpp b/traceplot.cpp
+index 3704d24..04bdba8 100644
+--- a/traceplot.cpp
++++ b/traceplot.cpp
+@@ -20,6 +20,7 @@
+ #include <QPixmapCache>
+ #include <QTextStream>
+ #include <QtConcurrent>
++#include <QPainterPath>
+ #include "samplesource.h"
+ #include "traceplot.h"
+ 

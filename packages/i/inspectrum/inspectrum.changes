@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jun 07 19:39:15 UTC 2020 - mardnh@gmx.de
+
+- Add patch:
+  * inspectrum-fix-with-qt-5.15.patch
+- Update to version 0.2.2+git.20200527:
+  * Add file extensions for real sample file types
+  * frequencydemod: set modulation index based on tuner width
+  * Tighten transition band when tuner bandwidth is narrow
+  * SpectrogramPlot: Ignore negative frequencies for real signals
+  * SpectrogramPlot: Fix uses of fftSize where it should've been height()
+  * Add SampleAdapters for real samples
+  * Use double for sample rate
+  * Remove all usage of old SIGNAL/SLOT macros
+  * allow file format override from command line
+  * Fix override warnings
+
+-------------------------------------------------------------------
 Thu Jun 07 10:22:19 UTC 2018 - mardnh@gmx.de
 
 - Update to version 0.2.2+git.20180603:

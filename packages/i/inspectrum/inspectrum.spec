@@ -1,7 +1,7 @@
 #
 # spec file for package inspectrum
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,18 +13,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           inspectrum
-Version:        0.2.2+git.20180603
+Version:        0.2.2+git.20200527
 Release:        0
 Summary:        A tool for analysing captured signals from SDRs
 License:        GPL-3.0-or-later
 Group:          Productivity/Hamradio/Other
 URL:            https://github.com/miek/inspectrum
 Source:         %{name}-%{version}.tar.xz
+Patch0:         inspectrum-fix-with-qt-5.15.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -45,6 +46,7 @@ A tool for analysing captured signals, primarily from software-defined radio rec
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake
@@ -52,7 +54,6 @@ make %{?_smp_mflags}
 
 %install
 %cmake_install
-install -d %{buildroot}/%{_datadir}/pixmaps/
 install -Dm 0644 screenshot.jpg %{buildroot}/%{_datadir}/pixmaps/inspectrum.jpg
 %suse_update_desktop_file -c inspectrum inspectrum "Offline Radio Signal Analyser" inspectrum inspectrum "Network;HamRadio"
 
