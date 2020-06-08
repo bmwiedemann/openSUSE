@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  7 22:32:17 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Set CFLAGS+=-fcommon.
+
+-------------------------------------------------------------------
 Fri Aug 23 16:21:12 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Disable DUMB backend because of its removal from Factory

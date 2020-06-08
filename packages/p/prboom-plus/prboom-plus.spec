@@ -1,7 +1,7 @@
 #
 # spec file for package prboom-plus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        DOOM source port with demo compatibility
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Shoot
-Url:            http://prboom-plus.sf.net/
+URL:            http://prboom-plus.sf.net/
 
 #SVN-Clone:	https://svn.prboom.org/repos/branches/prboom-plus-24/prboom2
 #DL-URL:	http://downloads.sf.net/prboom-plus/prboom-plus-2.5.1.4.tar.gz
@@ -70,8 +70,7 @@ PrBoom+ is a conservative Doom source port. It features:
   mode.
 
 %prep
-%setup -qn prboom2-%version
-%patch -P 1 -P 2 -P 3 -P 5 -P 6 -P 7 -P 8 -p1
+%autosetup -p1 -n prboom2-%version
 
 %build
 cp -alv data/sounds/free/*.wav data/sounds/
@@ -79,7 +78,7 @@ cp -alv data/sprites/free/* data/sprites/
 autoreconf -fi
 # rpm has its own optimizations, so turn off shipped defaults
 %configure --enable-gl --disable-cpu-opt --program-prefix="" \
-	--with-waddir="%_datadir/doom" --disable-dogs
+	--with-waddir="%_datadir/doom" --disable-dogs CFLAGS="%optflags -fcommon"
 make %{?_smp_mflags}
 
 %install
@@ -92,6 +91,7 @@ install -Dm0644 ICONS/prboom-plus.svg "$b/%_datadir/icons/hicolor/scalable/apps/
 install -Dm0644 ICONS/prboom-plus.desktop "$b/%_datadir/applications/prboom-plus.desktop"
 install -Dm0644 ICONS/prboom-plus.bash "$b/%_datadir/bash-completion/completions/prboom-plus.bash"
 
+%if 0%{?suse_version} && 0%{?suse_version} < 1550
 %post
 %desktop_database_post
 %icon_theme_cache_post
@@ -99,9 +99,9 @@ install -Dm0644 ICONS/prboom-plus.bash "$b/%_datadir/bash-completion/completions
 %postun
 %desktop_database_postun
 %icon_theme_cache_postun
+%endif
 
 %files
-%defattr(-,root,root)
 %_bindir/*
 %_datadir/doom/
 %_datadir/doc/*
