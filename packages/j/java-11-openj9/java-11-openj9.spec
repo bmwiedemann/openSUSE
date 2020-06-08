@@ -160,6 +160,7 @@ Patch20:        loadAssistiveTechnologies.patch
 Patch30:        JDK-8208602.patch
 Patch31:        aarch64.patch
 Patch32:        gcc-fno-common-fix.patch
+Patch33:        gcc10.patch
 #
 # OpenJDK specific patches
 #
@@ -448,6 +449,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch30 -p1
 %patch31 -p1
 %patch32 -p1
+%patch33
 
 %patch302 -p1
 %patch303 -p1

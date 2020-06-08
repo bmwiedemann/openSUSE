@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  8 07:17:18 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * gcc10.patch
+    + fix build with gcc 10.x
+
+-------------------------------------------------------------------
 Wed Apr 22 12:27:23 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 11.0.7 with OpenJ9 0.20.0 virtual machine
