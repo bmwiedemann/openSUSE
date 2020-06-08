@@ -561,4 +561,12 @@
     <comment></comment>
     <requestid>796641</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>9550939aeebeca2f5e84010fb0f9c6cc</srcmd5>
+    <version>3.36.4</version>
+    <time>1591652844</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 808836 from iznogood)</comment>
+    <requestid>811415</requestid>
+  </revision>
 </revisionlist>

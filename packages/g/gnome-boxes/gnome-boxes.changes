@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 25 17:15:11 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.4:
+  + Fix crash when input-source is not available.
+  + Include rolling release OSes in "Download an OS".
+  + Offer newest releases of recommended downloads.
+  + Fix drag and drop issue in file sharing.
+  + Grab focus for password field when showing an authentication
+    dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Apr 20 20:34:30 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.3:
