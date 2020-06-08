@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Sun Jun  7 05:35:54 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Tidy spec, running test suite via pytest directly
+
+-------------------------------------------------------------------
+Sat Feb  8 16:04:39 UTC 2020 - Kurt Garloff <kurt@garloff.de>
+
+- Build python-dictdiffer-0.8.1 via py2pack.
+- lower-reqs.diff: Allow building with tox >= 2.9 and 
+  setuptools_scm >= 1.15.
