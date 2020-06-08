@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Jun  4 13:27:13 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- Changes since 5.18.90:
+  * set AcceptingInputStatus flag only when the text is in the panel (kde#410612)
+
+-------------------------------------------------------------------
+Thu May 14 14:33:06 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Changes since 5.18.5:
+  * Remove remaining icons from applets with custom tooltips
+  * Konsole Runner: optimize and simplify
+  * [applets/weather] Improve UX for selecting a weather station
+  * Port quicklaunch from KRun::run to CommandLauncherJob
+  * Remove too strict Qt/KF5 deprecation rule
+  * Port Konsole and Kate runners and dataengine away from KToolInvocation
+  * [runners/converter] Skip empty parts when splitting units
+  * Fix build
+  * Refactor foreach, use Qt5 signal syntax, remove unnecessary method call
+  * [applets/notes] Actually hide button row when it's not visible
+  * add missing include to fix freebsd build
+  * do not link qtest on the runner
+  * make convertrunner only build once
+  * use correct locale for thousand separator + force qlocale default
+  * Refactor converter runner
+  * characters: Refactoring, improve validation in kcm, optimize
+  * [applet/notes] Show a "remove" button on the button row
+  * Make it compile against qt5.15. SkipEmptyParts is part of Qt::.
+  * [applets/notes] Rename to "Sticky Note"
+  * [applets/notes] Only show configure button when focussed (kde#417608)
+  * Fix duplicate results for sessions, simplify and optimize
+  * Fix minor EBN issues: http -> https, newlines, licenses
+  * Fix minor EBN issues
+
+-------------------------------------------------------------------
 Tue May  5 13:01:54 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5
