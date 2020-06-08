@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  3 19:39:59 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.7
+  * macsec: add support for reporting and changing the offloading
+    mode (`ip macsec offload`).
+
+-------------------------------------------------------------------
 Wed Apr  8 05:59:55 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Move arpd into own subpackage to avoid libdb dependency
