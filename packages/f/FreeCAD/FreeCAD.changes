@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  7 15:48:17 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with Qt 5.15, add fix_qt_5.15_build.patch
+
+-------------------------------------------------------------------
 Wed Mar 18 09:34:33 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Allow install with lowercase package name: zypper install freecad

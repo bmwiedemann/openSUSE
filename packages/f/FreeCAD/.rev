@@ -259,4 +259,16 @@
 This should allow to submit the latest version to Leap 15.2. The current version in 15.2 fails to build since 4 months (and is uninstallable), and needs an update. (forwarded request 800657 from wolfi323)</comment>
     <requestid>800703</requestid>
   </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>8894ed60885107b7f2c55d7e24a9ab72</srcmd5>
+    <version>0.18.4</version>
+    <time>1591653605</time>
+    <user>dimstar_suse</user>
+    <comment>
+- Fix build with Qt 5.15, add fix_qt_5.15_build.patch
+
+Build in science fails due to incompatible VTK 9.0, which is not yet in Tumbleweed
+</comment>
+    <requestid>812289</requestid>
+  </revision>
 </revisionlist>

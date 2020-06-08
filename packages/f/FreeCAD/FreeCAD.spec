@@ -33,9 +33,7 @@ Summary:        General Purpose 3D CAD Modeler
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
 Group:          Productivity/Graphics/CAD
 URL:            https://www.freecadweb.org/
-%if %{build_tar_ball}
 Source0:        %{name}-%version.tar.xz
-%endif
 # PATCH-FIX-UPSTREAM 0001-Fix-build-with-pyside2-shiboken2-5.12.1.patch -- Fix build with shiboken2/pyside2 >= 5.12.1
 Patch1:         0001-Fix-build-with-pyside2-shiboken2-5.12.1.patch
 # PATCH-FIX-OPENSUSE qt-5.14.patch
@@ -46,6 +44,8 @@ Patch4:         update-swigpyrunin-for-python-3.8.patch
 Patch5:         0001-fem-use-time.process_time-instead-of-removed-time.cl.patch
 # PATCH-FIX-OPENSUSE Use correct import for Python 3 tkinter
 Patch6:         fix_unittestgui_tkinter_py3.patch
+# PATCH-FIX-UPSTREAM https://github.com/FreeCAD/FreeCAD/pull/3558
+Patch7:         fix_qt_5.15_build.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x
@@ -76,6 +76,7 @@ BuildRequires:  glew-devel
 BuildRequires:  graphviz
 BuildRequires:  hdf5-devel
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  java-devel
 # We use the internal smesh version with fixes atm
 #BuildRequires:  smesh-devel
 BuildRequires:  libXerces-c-devel
@@ -87,6 +88,8 @@ BuildRequires:  netgen-devel
 # we use upstream OpenCASCADE instead of oce-devel atm
 BuildRequires:  occt-devel
 BuildRequires:  pkg-config
+BuildRequires:  proj-devel
+BuildRequires:  sqlite3-devel
 
 %if 0%{?suse_version}
 # Qt5 & python3
