@@ -1,7 +1,7 @@
 #
 # spec file for package distcc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,14 @@ Release:        0
 Summary:        A distributed C/C++ compiler
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-Url:            https://github.com/distcc/distcc
+URL:            https://github.com/distcc/distcc
 Source0:        https://github.com/distcc/distcc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        distccd.sysconfig
 Source2:        distccd.service
 Patch1:         distcc-3.2_rc1-freedesktop.patch
 Patch2:         distcc-3.2_rc1-gssapi.patch
 Patch3:         distcc-3.2_rc1-python.patch
+Patch4:         gcc-10-no-common.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  binutils-devel

@@ -68,4 +68,13 @@
 - Rebase patch distcc-3.2_rc1-freedesktop.patch</comment>
     <requestid>732630</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>4ba5446c0dbb6c23f6c4203975d781d2</srcmd5>
+    <version>3.3.3</version>
+    <time>1591654120</time>
+    <user>dimstar_suse</user>
+    <comment>- add gcc-10-no-common.patch: 
+  * Fixes link with gcc 10, upstream (https://github.com/distcc/distcc/pull/373)</comment>
+    <requestid>812599</requestid>
+  </revision>
 </revisionlist>
