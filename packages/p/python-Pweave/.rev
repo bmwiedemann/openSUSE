@@ -37,4 +37,14 @@
   * testFIR_FilterExampleTex</comment>
     <requestid>731697</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>b15d3754481974c12b4bdce8824ef9e5</srcmd5>
+    <version>0.30.3</version>
+    <time>1591653935</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust the tests to run with pytest and not nose
+- Skip format checking tests that rely on jupyter behaviour
+  and thus break with updates</comment>
+    <requestid>812447</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pweave
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,25 +23,11 @@ Version:        0.30.3
 Release:        0
 Summary:        Scientific reports with embedded python computations
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-Url:            https://github.com/mpastell/Pweave
+URL:            https://github.com/mpastell/Pweave
 Source:         https://files.pythonhosted.org/packages/source/P/Pweave/Pweave-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module Markdown}
-BuildRequires:  %{python_module Pygments}
-BuildRequires:  %{python_module certifi}
-BuildRequires:  %{python_module jupyter_client}
-BuildRequires:  %{python_module jupyter_ipykernel}
-BuildRequires:  %{python_module jupyter_ipython}
-BuildRequires:  %{python_module jupyter_nbconvert}
-BuildRequires:  %{python_module jupyter_nbformat}
-BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module scipy}
-# /SECTION
 Requires:       python-Markdown
 Requires:       python-Pygments
 Requires:       python-certifi
@@ -55,7 +41,19 @@ Recommends:     python-matplotlib
 Recommends:     python-scipy
 Recommends:     python-sphinx_rtd_theme
 BuildArch:      noarch
-
+# SECTION test requirements
+BuildRequires:  %{python_module Markdown}
+BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module certifi}
+BuildRequires:  %{python_module jupyter_client}
+BuildRequires:  %{python_module jupyter_ipykernel}
+BuildRequires:  %{python_module jupyter_ipython}
+BuildRequires:  %{python_module jupyter_nbconvert}
+BuildRequires:  %{python_module jupyter_nbformat}
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scipy}
+# /SECTION
 %python_subpackages
 
 %description
@@ -81,8 +79,8 @@ with e.g. Sphinx or rest2web.
 
 %check
 # tests.test_readers.test_url - online
-# testFIR_FilterExampleTex - contains warning from matplotlib that changes the output
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v -e '(test_url|testFIR_FilterExampleTex)'
+# Formatters/publish Layout changes with updates in jupyter
+%pytest -k 'not (test_url or testFormatters or test_publish)'
 
 %files %{python_files}
 %doc CHANGELOG.txt README.rst
