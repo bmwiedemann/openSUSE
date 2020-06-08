@@ -1,0 +1,42 @@
+---
+ librecad/src/lib/engine/lc_splinepoints.cpp |    1 +
+ librecad/src/lib/gui/rs_painterqt.cpp       |    1 +
+ librecad/src/lib/gui/rs_painterqt.h         |    1 +
+ 3 files changed, 3 insertions(+)
+
+Index: LibreCAD-2.1.3/librecad/src/lib/engine/lc_splinepoints.cpp
+===================================================================
+--- LibreCAD-2.1.3.orig/librecad/src/lib/engine/lc_splinepoints.cpp
++++ LibreCAD-2.1.3/librecad/src/lib/engine/lc_splinepoints.cpp
+@@ -22,6 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fi
+ **********************************************************************/
+ 
+ #include <QPolygonF>
++#include <QPainterPath>
+ #include "lc_splinepoints.h"
+ 
+ #include "rs_circle.h"
+Index: LibreCAD-2.1.3/librecad/src/lib/gui/rs_painterqt.cpp
+===================================================================
+--- LibreCAD-2.1.3.orig/librecad/src/lib/gui/rs_painterqt.cpp
++++ LibreCAD-2.1.3/librecad/src/lib/gui/rs_painterqt.cpp
+@@ -25,6 +25,7 @@
+ **********************************************************************/
+ 
+ #include<cmath>
++#include <QPainterPath>
+ #include "rs_painterqt.h"
+ #include "rs_math.h"
+ #include "rs_debug.h"
+Index: LibreCAD-2.1.3/librecad/src/lib/gui/rs_painterqt.h
+===================================================================
+--- LibreCAD-2.1.3.orig/librecad/src/lib/gui/rs_painterqt.h
++++ LibreCAD-2.1.3/librecad/src/lib/gui/rs_painterqt.h
+@@ -29,6 +29,7 @@
+ #define RS_PAINTERQT_H
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ #include "rs_painter.h"
+ #include "rs_pen.h"

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  7 22:55:24 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add fix-build-with-Qt-5.15.patch. Set CFLAGS+=-fcommon.
+
+-------------------------------------------------------------------
 Tue May 28 09:05:54 UTC 2019 - Jiri Slaby <jslaby@suse.com>
 
 - add 0001-fix-build-with-gcc-9.patch

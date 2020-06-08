@@ -1,7 +1,7 @@
 #
 # spec file for package librecad
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,9 @@ Release:        0
 Summary:        Computer-aided design (CAD) software package for 2D design and drafting
 License:        GPL-2.0-only AND (Apache-2.0 OR SUSE-GPL-3.0+-with-font-exception)
 Group:          Productivity/Graphics/CAD
-Url:            http://librecad.org/
+URL:            http://librecad.org/
 
-#Git-Clone:     git://github.com/LibreCAD/LibreCAD
-#Git-Web:       http://github.com/LibreCAD/LibreCAD/tags
+#Git-Web:       https://github.com/LibreCAD/LibreCAD
 Source:         https://github.com/LibreCAD/LibreCAD/archive/%version.tar.gz
 # Version is actually 8, not 3 (it is 3 in the filename due to how MediaWiki
 # works -- see http://wiki.librecad.org/index.php/File:Architect3-LCAD.zip)
@@ -34,40 +33,31 @@ Source3:        http://wiki.librecad.org/images/7/70/Electronics3-LCAD.zip
 Source4:        http://wiki.librecad.org/images/9/9d/Electrical1-LCAD.zip
 Source10:       ttf2lff.1
 Source20:       %name-rpmlintrc
-Patch0:         ensured-all-objects-are-shown-when-a-layer-is-toggle.patch
-Patch1:         fix-build-with-Qt-5.11.patch
-Patch2:         librecad-no-date.diff
-Patch3:         librecad-use-system-libdxfrw.patch
-Patch4:         librecad-install.diff
-Patch5:         librecad-plugindir.diff
-Patch6:         librecad-use-system-shapelib.patch
-Patch7:         0001-fix-build-with-gcc-9.patch
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
+Patch1:         ensured-all-objects-are-shown-when-a-layer-is-toggle.patch
+Patch2:         fix-build-with-Qt-5.11.patch
+Patch3:         fix-build-with-Qt-5.15.patch
+Patch4:         librecad-no-date.diff
+Patch5:         librecad-use-system-libdxfrw.patch
+Patch6:         librecad-install.diff
+Patch7:         librecad-plugindir.diff
+Patch8:         librecad-use-system-shapelib.patch
+Patch9:         0001-fix-build-with-gcc-9.patch
 BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++ >= 4.7
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libdxfrw-devel >= 0.6.1
-%if 0%{?suse_version} >= 1321
 BuildRequires:  libshp-devel
-%endif
-%if 0%{?suse_version} >= 1321
+BuildRequires:  muparser-devel
+BuildRequires:  unzip
+BuildRequires:  update-desktop-files
+BuildRequires:  wqy-microhei-fonts
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Help)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
-%else
-BuildRequires:  libqt4-devel
-%endif
-BuildRequires:  muparser-devel
-BuildRequires:  unzip
-BuildRequires:  update-desktop-files
-BuildRequires:  wqy-microhei-fonts
 Requires(post): desktop-file-utils
 Requires(post): shared-mime-info
 Requires(postun): desktop-file-utils
@@ -76,7 +66,6 @@ Recommends:     %name-parts
 # old qcad had a newer version, so we provide all versions here.
 Provides:       qcad
 Obsoletes:      qcad <= 2.0.5
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 LibreCAD is a Qt4 Computer-aided design (CAD) software package for 2D design
@@ -94,36 +83,25 @@ CAD drawings.
 
 %prep
 %setup -qn LibreCAD-%version -a 2 -a 3 -a 4
-%patch -P 0 -P 1 -P 2 -P 3 -P 4 -P 5 -P 7 -p1
-%if 0%{?suse_version} >= 1321
-%patch -P 6 -p1
-%endif
+%autopatch -p1
 
 dxfrw_includedir=$(pkg-config --cflags-only-I libdxfrw0 | sed 's|-I||g')
 
 # Fix paths
 sed -i 's|##LIBDIR##|%_libdir|g' librecad/src/lib/engine/rs_system.cpp
 sed -i 's|$${DXFRW_INCLUDEDIR}|'"$dxfrw_includedir"'|g' librecad/src/src.pro
-%if 0%{?suse_version} >= 1321
 sed -i 's@LRELEASE="lrelease"@LRELEASE="lrelease-qt5"@' scripts/postprocess-unix.sh
-%endif
 
 # Make sure bundled libraries are not used
 rm -rf libraries/libdxfrw
-%if 0%{?suse_version} >= 1321
 rm -rf plugins/importshp/shapelib
-%endif
 
 # Fix "wrong-file-end-of-line-encoding" rpmlint warning
 sed -i 's/\r$//' LICENSE-MIT.txt LICENSE_KST32B_v2.txt license-lc_opengost-fonts.txt
 
 %build
 echo 'DISABLE_POSTSCRIPT = true' > librecad/src/custom.pri
-%if 0%{?suse_version} >= 1321
 qmake-qt5 \
-%else
-qmake \
-%endif
 librecad.pro CONFIG+="release" \
 	QMAKE_CFLAGS+="%optflags" QMAKE_CXXFLAGS+="%optflags"
 make %{?_smp_mflags}
@@ -158,14 +136,13 @@ cp -a Architect8-LCAD "$b/%_datadir/%name/library/architecture/"
 cp -a Electronic8-LCAD "$b/%_datadir/%name/library/electronics/"
 cp -a Electrical1-LCAD "$b/%_datadir/%name/library/electrical/"
 
-%if 0%{?suse_version}
 %suse_update_desktop_file -G "CAD Program" -r %name Graphics 2DGraphics VectorGraphics
-%endif
 # Fix rpmlint warning "invalid-desktopfile"
 perl -pi -e "s|image/vnd.dxf|image/vnd.dxf;|" %buildroot%_datadir/applications/librecad.desktop
 
 %fdupes -s %buildroot/%_prefix
 
+%if 0%{?suse_version} && 0%{?suse_version} < 1550
 %post
 %mime_database_post
 %desktop_database_post
@@ -173,9 +150,9 @@ perl -pi -e "s|image/vnd.dxf|image/vnd.dxf;|" %buildroot%_datadir/applications/l
 %postun
 %mime_database_postun
 %desktop_database_postun
+%endif
 
 %files
-%defattr(-,root,root)
 %doc README.md
 %license LICENSE* gpl-2.0* license-lc_opengost-fonts.txt
 %_bindir/librecad
@@ -183,9 +160,6 @@ perl -pi -e "s|image/vnd.dxf|image/vnd.dxf;|" %buildroot%_datadir/applications/l
 %_libdir/%name
 %_mandir/man1/librecad.1*
 %_mandir/man1/ttf2lff.1*
-%if 0%{?suse_version} < 1320
-%dir %_datadir/appdata/
-%endif
 %_datadir/appdata/%name.appdata.xml
 %_datadir/applications/librecad.desktop
 %_datadir/mime/packages/%name.xml
@@ -196,7 +170,6 @@ perl -pi -e "s|image/vnd.dxf|image/vnd.dxf;|" %buildroot%_datadir/applications/l
 %_datadir/%name/qm
 
 %files parts
-%defattr(-,root,root)
 %dir %_datadir/%name
 %_datadir/%name/library
 
