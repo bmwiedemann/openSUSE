@@ -19,19 +19,18 @@
 
 %define bname fop
 Name:           xmlgraphics-fop
-Version:        2.1
+Version:        2.5
 Release:        0
 Summary:        Formatter for Printing XSLT Processed XML Files
 License:        Apache-2.0
 Group:          Productivity/Publishing/XML
 URL:            https://xmlgraphics.apache.org/fop/
 Source0:        https://ftp.halifax.rwth-aachen.de/apache/xmlgraphics/fop/source/fop-%{version}-src.tar.gz
-Source1:        https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/fop/%{version}/fop-%{version}.pom
+Source1:        https://download.sourceforge.net/project/offo/offo-hyphenation/2.2/offo-hyphenation.zip
 #FIX-OPENSUSE: add xmlgraphics-commons to classpath
 Source2:        %{name}.script
 Source3:        %{name}-fontmetrics.script
 Source4:        %{name}-fontlist.script
-Source5:        https://download.sourceforge.net/project/offo/offo-hyphenation/2.2/offo-hyphenation.zip
 # Manpage(s)
 Source10:       %{name}.xml
 Source11:       %{name}-fontmetrics.xml
@@ -42,33 +41,36 @@ Patch3:         fix-javadoc-java8.patch
 Patch4:         java8-compatibility.patch
 # PATCH-FEATURE-OPENSUSE reproducible-build-manifest.patch -- boo#1110024
 Patch5:         reproducible-build-manifest.patch
-Patch6:         fop-2.1-QDox-2.0.patch
-Patch7:         fop-2.1-batik-xmlconstants.patch
-BuildRequires:  ant >= 1.6.5
-BuildRequires:  apache-pdfbox
-BuildRequires:  avalon-framework >= 4.3
+Patch6:         fop-2.5-QDox-2.0.patch
+BuildRequires:  ant >= 1.8.4
+BuildRequires:  apache-pdfbox >= 2.0
 BuildRequires:  commons-io >= 2.4
 BuildRequires:  commons-logging
 BuildRequires:  docbook-xsl-stylesheets
-# Needed for maven conversions
 BuildRequires:  glassfish-servlet-api
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  libxslt
 BuildRequires:  qdox >= 2.0
 BuildRequires:  unzip
-BuildRequires:  xml-commons-apis >= 1.3
-BuildRequires:  xmlgraphics-batik >= 1.8
+BuildRequires:  xml-commons-apis
+BuildRequires:  xmlgraphics-batik >= 1.11
 BuildRequires:  xmlgraphics-commons >= 2.1
 #!BuildIgnore:  saxon
-Requires:       apache-pdfbox
-Requires:       avalon-framework >= 4.3
-Requires:       commons-io >= 2.4
-Requires:       commons-logging
 Requires:       java >= 1.8
-Requires:       xml-commons-apis >= 1.3
-Requires:       xmlgraphics-commons >= 2.1
-%requires_ge    xmlgraphics-batik
+Requires:       xml-commons-apis
+Requires:       mvn(com.thoughtworks.qdox:qdox) >= 2.0
+Requires:       mvn(commons-io:commons-io)
+Requires:       mvn(commons-logging:commons-logging)
+Requires:       mvn(javax.servlet:servlet-api)
+Requires:       mvn(org.apache.pdfbox:fontbox) >= 2.0
+Requires:       mvn(org.apache.xmlgraphics:batik-anim) >= 1.11
+Requires:       mvn(org.apache.xmlgraphics:batik-awt-util) >= 1.11
+Requires:       mvn(org.apache.xmlgraphics:batik-bridge) >= 1.11
+Requires:       mvn(org.apache.xmlgraphics:batik-extension) >= 1.11
+Requires:       mvn(org.apache.xmlgraphics:batik-gvt) >= 1.11
+Requires:       mvn(org.apache.xmlgraphics:batik-transcoder) >= 1.11
+Requires:       mvn(org.apache.xmlgraphics:xmlgraphics-commons)
 Provides:       %{bname} = %{version}-%{release}
 Obsoletes:      %{bname} < %{version}-%{release}
 Provides:       fo-formatter = %{version}-%{release}
@@ -82,46 +84,63 @@ formats: PDF (primary output target), PCL, PS, SVG, XML (area tree
 representation), Print, AWT, MIF, and TXT.
 
 %prep
-%setup -q -n %{bname}-%{version} -a5
-ln -thyph offo-hyphenation/hyph/*.xml
+%setup -q -n %{bname}-%{version} -a1
+ln -t fop/hyph offo-hyphenation/hyph/*.xml
 find -name "*.jar" | xargs -t rm
-# Remove this file. It needs jai and we don't compile it.
-# Just javadoc chokes on it.
-rm src/java/org/apache/fop/util/bitmap/JAIMonochromeBitmapConverter.java
 %patch1 -p1 -b .cli
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-# Batik 1.11 moved XMLConstants from org.apache.batik.util to org.apache.batik.constants
 %patch6 -p1
-%if %{?pkg_vcmp:%pkg_vcmp xmlgraphics-batik >= 1.11}%{!?pkg_vcmp:0}
-%patch7 -p1
-%endif
 
 # Replace keyword "VERSION" in XML files with the real one:
 for x in %{SOURCE10} %{SOURCE11} %{SOURCE12}; do
  sed -i "s=@VERSION@=%{version}=" $x
 done
 
+# Building with ant, so the parent is pointless
+%pom_remove_parent fop
+%pom_xpath_inject pom:project "<version>%{version}</version>" fop
+
+# When building with ant, the fop.jar is an all-in jar,
+# so adapt the dependencies accordingly
+
+# Remove dependencies on fop modules included in the jar
+%pom_remove_dep :fop-events fop
+%pom_remove_dep :fop-util fop
+%pom_remove_dep :fop-core fop
+
+# Add dependencies of fop modules included in the jar
+%pom_add_dep com.thoughtworks.qdox:qdox:2 fop
+%pom_add_dep commons-io:commons-io:1.3.1 fop
+%pom_add_dep commons-logging:commons-logging:1.0.4 fop
+%pom_add_dep javax.servlet:servlet-api:2.2 fop
+%pom_add_dep org.apache.pdfbox:fontbox:2.0.16 fop
+%pom_add_dep org.apache.xmlgraphics:batik-anim:1.13 fop
+%pom_add_dep org.apache.xmlgraphics:batik-awt-util:1.13 fop
+%pom_add_dep org.apache.xmlgraphics:batik-bridge:1.13 fop
+%pom_add_dep org.apache.xmlgraphics:batik-extension:1.13 fop
+%pom_add_dep org.apache.xmlgraphics:batik-gvt:1.13 fop
+%pom_add_dep org.apache.xmlgraphics:batik-transcoder:1.13 fop
+%pom_add_dep org.apache.xmlgraphics:xmlgraphics-commons:2.4 fop
+
 %build
-build-jar-repository -s lib \
-        avalon-framework-api \
-        avalon-framework-impl \
+build-jar-repository -s fop/lib \
         commons-io \
         commons-logging \
         fontbox \
         glassfish-servlet-api \
+        batik-all \
         xml-commons-apis \
         xml-commons-apis-ext \
-        batik-all \
         xmlgraphics-commons \
         qdox
 
 export CLASSPATH= LANG=en_US.UTF-8
-%{ant} \
+%{ant} -f fop/build.xml \
     -Djavac.source=1.8 -Djavac.target=1.8 \
-	package
+    package
 
 # Build the manpage(s) and HTML
 DB=%{_datadir}/xml/docbook/stylesheet/nwalsh/current
@@ -135,13 +154,13 @@ done
 %install
 # jars
 mkdir -p %{buildroot}%{_javadir}
-install -m 644 build/%{bname}.jar %{buildroot}%{_javadir}/%{name}.jar
-install -m 644 build/%{bname}-hyph.jar %{buildroot}%{_javadir}/%{name}-hyph.jar
-install -m 644 build/%{bname}-sandbox.jar %{buildroot}%{_javadir}/%{name}-sandbox.jar
+install -m 644 fop/build/%{bname}.jar %{buildroot}%{_javadir}/%{name}.jar
+install -m 644 fop/build/%{bname}-hyph.jar %{buildroot}%{_javadir}/%{name}-hyph.jar
+install -m 644 fop/build/%{bname}-sandbox.jar %{buildroot}%{_javadir}/%{name}-sandbox.jar
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+install -pm 644 fop/pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
 %add_maven_depmap
 
 # script
@@ -155,7 +174,7 @@ ln -s %{name}-fontmetrics %{buildroot}%{_bindir}/%{bname}-fontmetrics
 ln -s %{name}-fontlist    %{buildroot}%{_bindir}/%{bname}-fontlist
 
 # data
-install -D -m 644 conf/fop.xconf %{buildroot}%{_sysconfdir}/fop.xconf
+install -D -m 644 fop/conf/fop.xconf %{buildroot}%{_sysconfdir}/fop.xconf
 
 # Manpages
 mkdir -p %{buildroot}%{_mandir}/man1
@@ -175,7 +194,7 @@ popd
 %{_javadir}/%{name}-hyph.jar
 %{_javadir}/%{name}-sandbox.jar
 %license LICENSE
-%doc NOTICE README known-issues.xml
+%doc NOTICE README fop/known-issues.xml
 %doc *.html
 %attr(0755,root,root) %{_bindir}/%{name}
 %{_bindir}/%{bname}

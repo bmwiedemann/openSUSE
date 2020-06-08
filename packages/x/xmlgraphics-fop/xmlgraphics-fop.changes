@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jun  4 05:13:44 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- version 2.5
+  * Does not need avalon-framework to build or run
+  * Adapt the command-line scripts by removing avalon-framework
+    from classpath
+  * Build against fontbox from apache-pdfbox >= 2
+  * Use the included pom file instead of downloading the same
+    file from maven central
+- Removed patch:
+  * fop-2.1-batik-xmlconstants.patch
+    + Included directly in this version. Requires batik >= 1.11
+- Modified patches:
+  * fop-2.1-QDox-2.0.patch -> fop-2.5-QDox-2.0.patch
+  * fix-javadoc-java8.patch
+  * hyphenation-more-stack.patch
+  * java8-compatibility.patch
+  * reproducible-build-manifest.patch
+  * xmlgraphics-fop-cli.patch
+    + Port to fop 2.5
+
+-------------------------------------------------------------------
 Mon May 18 14:41:12 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Do not install the OFFO hyphenation files to datadir, but package

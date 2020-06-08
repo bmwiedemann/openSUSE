@@ -1,5 +1,5 @@
---- fop-2.1/src/java/org/apache/fop/afp/fonts/CharactersetEncoder.java	2016-01-07 15:13:29.000000000 +0100
-+++ fop-2.1/src/java/org/apache/fop/afp/fonts/CharactersetEncoder.java	2018-12-06 23:18:14.815791853 +0100
+--- fop-2.5/fop-core/src/main/java/org/apache/fop/afp/fonts/CharactersetEncoder.java	2020-05-05 11:42:04.000000000 +0200
++++ fop-2.5/fop-core/src/main/java/org/apache/fop/afp/fonts/CharactersetEncoder.java	2020-06-03 11:18:04.577537190 +0200
 @@ -21,6 +21,7 @@
  
  import java.io.IOException;
@@ -17,8 +17,8 @@
              byte[] bytes = new byte[bb.remaining()];
              bb.get(bytes);
              return getEncodedChars(bytes, bytes.length);
---- fop-2.1/src/java/org/apache/fop/area/AreaTreeParser.java	2016-01-07 15:13:29.000000000 +0100
-+++ fop-2.1/src/java/org/apache/fop/area/AreaTreeParser.java	2018-12-06 23:18:14.815791853 +0100
+--- fop-2.5/fop-core/src/main/java/org/apache/fop/area/AreaTreeParser.java	2020-05-05 11:42:04.000000000 +0200
++++ fop-2.5/fop-core/src/main/java/org/apache/fop/area/AreaTreeParser.java	2020-06-03 11:18:04.581537214 +0200
 @@ -24,6 +24,7 @@
  import java.awt.geom.Rectangle2D;
  import java.io.FileNotFoundException;
@@ -27,7 +27,7 @@
  import java.nio.CharBuffer;
  import java.util.List;
  import java.util.Map;
-@@ -322,7 +323,7 @@
+@@ -326,7 +327,7 @@
                  throws SAXException {
              lastAttributes = new AttributesImpl(attributes);
              Maker maker = makers.get(localName);
@@ -36,7 +36,7 @@
              ignoreCharacters = true;
              if (maker != null) {
                  ignoreCharacters = maker.ignoreCharacters();
-@@ -353,7 +354,7 @@
+@@ -357,7 +358,7 @@
                      Maker maker = makers.get(localName);
                      if (maker != null) {
                          maker.endElement();
@@ -45,7 +45,7 @@
                      }
                      ignoreCharacters = true;
                  } else {
-@@ -798,7 +799,7 @@
+@@ -845,7 +846,7 @@
                  boolean reversed = XMLUtil.getAttributeAsBoolean(lastAttributes, "reversed", false);
                  int[][] gposAdjustments
                      = XMLUtil.getAttributeAsPositionAdjustments(lastAttributes, "position-adjust");
@@ -54,7 +54,7 @@
                  WordArea word = new WordArea(
                      offset, level, content.toString().trim(), letterAdjust,
                        null, gposAdjustments, reversed);
-@@ -818,7 +819,7 @@
+@@ -865,7 +866,7 @@
                  int offset = XMLUtil.getAttributeAsInt(lastAttributes, "offset", 0);
                  //TODO the isAdjustable parameter is currently not used/implemented
                  if (content.position() > 0) {
@@ -63,7 +63,7 @@
                      boolean adjustable = XMLUtil.getAttributeAsBoolean(lastAttributes, "adj", true);
                      int level = XMLUtil.getAttributeAsInt(lastAttributes, "level", -1);
                      SpaceArea space = new SpaceArea(offset, level, content.charAt(0), adjustable);
-@@ -1207,17 +1208,17 @@
+@@ -1254,17 +1255,17 @@
                      // allocate a larger buffer and transfer content
                      CharBuffer newContent
                              = CharBuffer.allocate(this.content.position() + length);
@@ -84,8 +84,8 @@
                  }
              }
          }
---- fop-2.1/src/java/org/apache/fop/fo/FOText.java	2016-01-07 15:13:29.000000000 +0100
-+++ fop-2.1/src/java/org/apache/fop/fo/FOText.java	2018-12-06 23:21:33.412845154 +0100
+--- fop-2.5/fop-core/src/main/java/org/apache/fop/fo/FOText.java	2020-05-05 11:42:04.000000000 +0200
++++ fop-2.5/fop-core/src/main/java/org/apache/fop/fo/FOText.java	2020-06-03 11:18:04.581537214 +0200
 @@ -20,6 +20,7 @@
  package org.apache.fop.fo;
  
@@ -94,7 +94,7 @@
  import java.nio.CharBuffer;
  import java.text.CharacterIterator;
  import java.text.StringCharacterIterator;
-@@ -128,17 +129,17 @@
+@@ -134,17 +135,17 @@
                      newCapacity = requires;
                  }
                  CharBuffer newBuffer = CharBuffer.allocate(newCapacity);
@@ -115,7 +115,7 @@
      }
  
      /**
-@@ -150,7 +151,7 @@
+@@ -156,7 +157,7 @@
          if (this.charBuffer == null) {
              return null;
          }
@@ -124,7 +124,7 @@
          return this.charBuffer.asReadOnlyBuffer().subSequence(0, this.charBuffer.limit());
      }
  
-@@ -163,9 +164,9 @@
+@@ -169,9 +170,9 @@
              // pointed to is really a different one
              if (charBuffer != null) {
                  ft.charBuffer = CharBuffer.allocate(charBuffer.limit());
@@ -136,7 +136,7 @@
              }
          }
          ft.prevFOTextThisBlock = null;
-@@ -197,7 +198,7 @@
+@@ -203,7 +204,7 @@
      /** {@inheritDoc} */
      public void endOfNode() throws FOPException {
          if (charBuffer != null) {
@@ -145,7 +145,7 @@
          }
          super.endOfNode();
          getFOEventHandler().characters(this);
-@@ -224,7 +225,7 @@
+@@ -230,7 +231,7 @@
          }
  
          char ch;
@@ -154,7 +154,7 @@
          while (charBuffer.hasRemaining()) {
              ch = charBuffer.get();
              if (!((ch == CharUtilities.SPACE)
-@@ -232,7 +233,7 @@
+@@ -238,7 +239,7 @@
                      || (ch == CharUtilities.CARRIAGE_RETURN)
                      || (ch == CharUtilities.TAB))) {
                  // not whitespace
@@ -163,7 +163,7 @@
                  return true;
              }
          }
-@@ -275,7 +276,7 @@
+@@ -281,7 +282,7 @@
              return;
          }
  
@@ -172,7 +172,7 @@
          CharBuffer tmp = charBuffer.slice();
          char c;
          int lim = charBuffer.limit();
-@@ -542,19 +543,19 @@
+@@ -548,19 +549,19 @@
          public void remove() {
  
              if (this.canRemove) {
@@ -197,7 +197,7 @@
                  // Make sure following calls fail, unless nextChar() was called
                  this.canRemove = false;
              } else {
-@@ -737,7 +738,7 @@
+@@ -743,7 +744,7 @@
       */
      public void resetBuffer() {
          if (charBuffer != null) {
@@ -206,8 +206,8 @@
          }
      }
  
---- fop-2.1/src/java/org/apache/fop/fonts/MultiByteFont.java	2016-01-07 15:13:29.000000000 +0100
-+++ fop-2.1/src/java/org/apache/fop/fonts/MultiByteFont.java	2018-12-06 23:18:14.815791853 +0100
+--- fop-2.5/fop-core/src/main/java/org/apache/fop/fonts/MultiByteFont.java	2020-05-05 11:42:05.000000000 +0200
++++ fop-2.5/fop-core/src/main/java/org/apache/fop/fonts/MultiByteFont.java	2020-06-03 11:19:29.182037444 +0200
 @@ -21,6 +21,7 @@
  
  import java.awt.Rectangle;
@@ -215,11 +215,11 @@
 +import java.nio.Buffer;
  import java.nio.CharBuffer;
  import java.nio.IntBuffer;
- import java.util.BitSet;
-@@ -686,7 +687,7 @@
-                 cb.put((char) cc);
-             }
+ import java.util.ArrayList;
+@@ -731,7 +732,7 @@
+             cb.put(c);
          }
+ 
 -        cb.flip();
 +        ((Buffer)cb).flip();
          return cb;

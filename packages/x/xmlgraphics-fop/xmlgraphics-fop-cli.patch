@@ -1,8 +1,6 @@
-Index: fop-1.0/src/java/org/apache/fop/cli/Main.java
-===================================================================
---- fop-1.0.orig/src/java/org/apache/fop/cli/Main.java	2010-07-12 21:34:44.000000000 +0200
-+++ fop-1.0/src/java/org/apache/fop/cli/Main.java	2010-11-03 15:33:27.174637237 +0100
-@@ -201,11 +201,7 @@
+--- fop-2.5/fop-core/src/main/java/org/apache/fop/cli/Main.java
++++ fop-2.5/fop-core/src/main/java/org/apache/fop/cli/Main.java
+@@ -210,11 +210,7 @@
       * @param args the command line parameters
       */
      public static void main(String[] args) {

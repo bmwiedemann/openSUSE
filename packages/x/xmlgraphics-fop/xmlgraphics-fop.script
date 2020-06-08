@@ -33,7 +33,7 @@ fi
 
 # Rest of the configuration
 MAIN_CLASS=org.apache.fop.cli.Main
-BASE_JARS="xmlgraphics-fop xmlgraphics-fop-hyph xmlgraphics-commons commons-logging commons-io avalon-framework-api avalon-framework-impl batik-all fontbox xml-commons-apis xml-commons-apis-ext"
+BASE_JARS="xmlgraphics-fop xmlgraphics-fop-hyph xmlgraphics-commons commons-logging commons-io batik-all fontbox xml-commons-apis xml-commons-apis-ext"
 
 # Set parameters
 set_jvm

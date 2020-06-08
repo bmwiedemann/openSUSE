@@ -41,7 +41,7 @@ else
 MAIN_CLASS=${MAIN_CLASS_TTF}
 fi
 
-BASE_JARS="xmlgraphics-fop xmlgraphics-commons commons-io commons-logging avalon-framework-impl avalon-framework-api xml-commons-apis xerces-j2 xalan-j2 xalan-j2-serializer"
+BASE_JARS="xmlgraphics-fop xmlgraphics-commons commons-io commons-logging xml-commons-apis xerces-j2 xalan-j2 xalan-j2-serializer"
 
 # Set parameters
 set_jvm

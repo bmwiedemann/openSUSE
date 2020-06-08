@@ -1,6 +1,5 @@
-diff -urEbwB fop-2.1/src/codegen/java/org/apache/fop/tools/EventProducerCollector.java fop-2.1.new/src/codegen/java/org/apache/fop/tools/EventProducerCollector.java
---- fop-2.1/src/codegen/java/org/apache/fop/tools/EventProducerCollector.java	2016-01-07 15:13:29.000000000 +0100
-+++ fop-2.1.new/src/codegen/java/org/apache/fop/tools/EventProducerCollector.java	2019-01-01 19:11:50.659094055 +0100
+--- fop-2.5/fop-events/src/main/java/org/apache/fop/tools/EventProducerCollector.java	2020-05-05 11:42:05.000000000 +0200
++++ fop-2.5/fop-events/src/main/java/org/apache/fop/tools/EventProducerCollector.java	2020-06-03 10:49:58.195555295 +0200
 @@ -21,6 +21,7 @@
  
  import java.io.File;
@@ -48,7 +47,7 @@ diff -urEbwB fop-2.1/src/codegen/java/org/apache/fop/tools/EventProducerCollecto
      }
  
      /**
-@@ -89,12 +77,11 @@
+@@ -89,9 +77,9 @@
       */
      public boolean scanFile(File src)
              throws IOException, EventConventionException, ClassNotFoundException {
@@ -58,39 +57,27 @@ diff -urEbwB fop-2.1/src/codegen/java/org/apache/fop/tools/EventProducerCollecto
 -        JavaClass[] classes = builder.getClasses();
 +        Collection<JavaClass> classes = builder.getClasses();
          boolean eventProducerFound = false;
--        for (int i = 0, c = classes.length; i < c; i++) {
--            JavaClass clazz = classes[i];
-+         for (JavaClass clazz : classes) {
+         for (JavaClass clazz : classes) {
              if (clazz.isInterface() && implementsInterface(clazz, CLASSNAME_EVENT_PRODUCER)) {
-                 processEventProducerInterface(clazz);
-                 eventProducerFound = true;
-@@ -104,9 +91,9 @@
+@@ -103,7 +91,7 @@
      }
  
      private boolean implementsInterface(JavaClass clazz, String intf) {
 -        JavaClass[] classes = clazz.getImplementedInterfaces();
--        for (int i = 0, c = classes.length; i < c; i++) {
--            JavaClass cl = classes[i];
 +        List<JavaClass> classes = clazz.getInterfaces();
-+        for (int i = 0, c = classes.size(); i < c; i++) {
-+            JavaClass cl = classes.get(i);
+         for (JavaClass cl : classes) {
              if (cl.getFullyQualifiedName().equals(intf)) {
                  return true;
-             }
-@@ -123,9 +110,9 @@
+@@ -121,7 +109,7 @@
      protected void processEventProducerInterface(JavaClass clazz)
                  throws EventConventionException, ClassNotFoundException {
          EventProducerModel prodMeta = new EventProducerModel(clazz.getFullyQualifiedName());
 -        JavaMethod[] methods = clazz.getMethods(true);
--        for (int i = 0, c = methods.length; i < c; i++) {
--            JavaMethod method = methods[i];
 +        List<JavaMethod> methods = clazz.getMethods(true);
-+        for (int i = 0, c = methods.size(); i < c; i++) {
-+            JavaMethod method = methods.get(i);
+         for (JavaMethod method : methods) {
              EventMethodModel methodMeta = createMethodModel(method);
              prodMeta.addMethod(methodMeta);
-         }
-@@ -136,20 +123,20 @@
+@@ -133,20 +121,20 @@
  
      private EventMethodModel createMethodModel(JavaMethod method)
              throws EventConventionException, ClassNotFoundException {
@@ -117,7 +104,7 @@ diff -urEbwB fop-2.1/src/codegen/java/org/apache/fop/tools/EventProducerCollecto
              throw new EventConventionException("The first parameter of the method " + methodSig
                      + " must be: 'Object source'!");
          }
-@@ -164,12 +151,12 @@
+@@ -161,12 +149,12 @@
          }
          EventMethodModel methodMeta = new EventMethodModel(
                  method.getName(), severity);
@@ -135,7 +122,7 @@ diff -urEbwB fop-2.1/src/codegen/java/org/apache/fop/tools/EventProducerCollecto
                      type = PRIMITIVE_MAP.get(pClass.getName());
                      if (type == null) {
                          throw new UnsupportedOperationException(
-@@ -182,10 +169,10 @@
+@@ -179,10 +167,10 @@
                  methodMeta.addParameter(type, p.getName());
              }
          }

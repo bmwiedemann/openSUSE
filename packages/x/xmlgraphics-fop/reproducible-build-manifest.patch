@@ -1,15 +1,6 @@
-Remove custom "Build-Id" field from manifest. It contains:
-* Timestamp: Makes the build unreproducible.
-* Architecture: Makes the build arch-dependent whereas we want it as
-  noarch.:
-* OS and Java version: Too detailed information, triggers too many
-  publication for no real advantage.
-
---
-diff -up fop-2.1/build.xml.orig fop-2.1/build.xml
---- fop-2.1/build.xml.orig	2018-10-29 07:26:58.205413821 +0100
-+++ fop-2.1/build.xml	2018-10-29 07:55:33.117484917 +0100
-@@ -460,7 +460,6 @@ list of possible build targets.
+--- fop-2.5/fop/build.xml	2020-05-05 11:42:05.000000000 +0200
++++ fop-2.5/fop/build.xml	2020-06-03 11:24:41.859886083 +0200
+@@ -500,7 +500,6 @@
          <attribute name="Implementation-Title" value="${Name}"/>
          <attribute name="Implementation-Version" value="${version}"/>
          <attribute name="Implementation-Vendor" value="The Apache Software Foundation (http://xmlgraphics.apache.org/fop/)"/>
@@ -17,15 +8,15 @@ diff -up fop-2.1/build.xml.orig fop-2.1/build.xml
        </manifest>
      </jar>
    </target>
-@@ -482,7 +481,6 @@ list of possible build targets.
-     <jar jarfile="${build.dir}/fop.jar" basedir="${build.classes.dir}">
+@@ -522,7 +521,6 @@
+     <jar jarfile="${build.dir}/fop.jar">
        <manifest>
          <attribute name="Main-Class" value="org.apache.fop.cli.Main"/>
 -        <attribute name="Build-Id" value="${ts} (${user.name} [${os.name} ${os.version} ${os.arch}, Java ${java.runtime.version}, Target Java ${javac.target}])"/>
          <section name="org/apache/fop/">
            <attribute name="Specification-Title" value="XSL-FO - Extensible Stylesheet Language"/>
            <attribute name="Specification-Version" value="1.1"/>
-@@ -506,9 +504,7 @@ list of possible build targets.
+@@ -550,9 +548,7 @@
        <format property="ts" pattern="yyyyMMdd-HHmmss-z"/>
      </tstamp>
      <jar jarfile="${build.dir}/fop-sandbox.jar" basedir="${build.sandbox-classes.dir}">
@@ -33,26 +24,10 @@ diff -up fop-2.1/build.xml.orig fop-2.1/build.xml
 -        <attribute name="Build-Id" value="${ts} (${user.name} [${os.name} ${os.version} ${os.arch}, Java ${java.runtime.version}, Target Java ${javac.target}])"/>
 -      </manifest>
 +      <manifest/>
-       <metainf dir="${basedir}" includes="LICENSE,NOTICE"/>
+       <metainf dir="${basedir}/.." includes="LICENSE,NOTICE"/>
      </jar>
    </target>
-@@ -637,7 +633,6 @@ list of possible build targets.
-         <attribute name="Implementation-Title" value="${fop-transcoder.name}"/>
-         <attribute name="Implementation-Version" value="${fop-transcoder.version}"/>
-         <attribute name="Implementation-Vendor" value="The Apache Software Foundation (http://xmlgraphics.apache.org/fop/)"/>
--        <attribute name="Build-Id" value="${ts} (${user.name} [${os.name} ${os.version} ${os.arch}, Java ${java.runtime.version}, Target Java ${javac.target}])"/>
-       </manifest>
-       <metainf dir="${basedir}" includes="LICENSE,NOTICE"/>
-     </jar>
-@@ -672,7 +667,6 @@ list of possible build targets.
-         <attribute name="Implementation-Title" value="${fop-transcoder.name}"/>
-         <attribute name="Implementation-Version" value="${fop-transcoder.version}"/>
-         <attribute name="Implementation-Vendor" value="The Apache Software Foundation (http://xmlgraphics.apache.org/fop/)"/>
--        <attribute name="Build-Id" value="${ts} (${user.name} [${os.name} ${os.version} ${os.arch}, Java ${java.runtime.version}, Target Java ${javac.target}])"/>
-       </manifest>
-       <metainf dir="${basedir}" includes="LICENSE,NOTICE"/>
-     </jar>
-@@ -1042,9 +1036,7 @@ NOTE:
+@@ -983,9 +979,7 @@
    </target>
    <target name="jar-javadocs" depends="javadocs" description="Generates a jar file containing the Javadocs">
      <jar jarfile="${build.dir}/${name}-${version}-javadoc.jar">
@@ -61,22 +36,10 @@ diff -up fop-2.1/build.xml.orig fop-2.1/build.xml
 -      </manifest>
 +      <manifest/>
        <fileset dir="${build.javadocs.dir}"/>
-       <metainf dir="${basedir}" includes="LICENSE,NOTICE"/>
+       <metainf dir="${basedir}/.." includes="LICENSE,NOTICE"/>
      </jar>
-@@ -1346,9 +1338,7 @@ NOTE:
-       <param name="pwd" value="${pwd}"/>
-     </antcall>
-     <jar jarfile="${build.dir}/${name}-${version}-bundle.jar">
--      <manifest>
--        <attribute name="Build-Id" value="${ts} (${user.name} [${os.name} ${os.version} ${os.arch}, Java ${java.runtime.version}])"/>
--      </manifest>
-+      <manifest/>
-       <fileset dir="${build.dir}">
-         <patternset>
-           <include name="${name}-${version}.jar*"/>
-diff -up fop-2.1/examples/plan/build.xml.orig fop-2.1/examples/plan/build.xml
---- fop-2.1/examples/plan/build.xml.orig	2018-10-29 07:48:15.749466784 +0100
-+++ fop-2.1/examples/plan/build.xml	2018-10-29 07:48:22.709467073 +0100
+--- fop-2.5/fop/examples/plan/build.xml	2020-05-05 11:42:05.000000000 +0200
++++ fop-2.5/fop/examples/plan/build.xml	2020-06-03 11:50:35.613163539 +0200
 @@ -133,7 +133,6 @@
          <attribute name="Implementation-Title" value="${Name}"/>
          <attribute name="Implementation-Version" value="${version}"/>

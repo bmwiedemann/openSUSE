@@ -29,7 +29,7 @@ fi
 # Rest of the configuration
 MAIN_CLASS=org.apache.fop.tools.fontlist.FontListMain
 
-BASE_JARS="xmlgraphics-fop xmlgraphics-commons batik-all avalon-framework-impl avalon-framework-api xerces-j2 xalan-j2 xalan-j2-serializer commons-logging commons-io"
+BASE_JARS="xmlgraphics-fop xmlgraphics-commons batik-all xerces-j2 xalan-j2 xalan-j2-serializer commons-logging commons-io"
 
 # Set parameters
 set_jvm

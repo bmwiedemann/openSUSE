@@ -1,11 +1,9 @@
-Index: fop-2.1/build.xml
-===================================================================
---- fop-2.1.orig/build.xml
-+++ fop-2.1/build.xml
-@@ -963,6 +963,7 @@ NOTE:
+--- fop-2.5/fop/build.xml
++++ fop-2.5/fop/build.xml
+@@ -904,6 +904,7 @@ NOTE:
        doctitle="Apache Formatting Objects Processor (FOP)"
        bottom="Copyright ${year} The Apache Software Foundation. All Rights Reserved."
-       overview="${src.dir}/java/org/apache/fop/overview.html"
+       overview="${src.java.dir}/org/apache/fop/overview.html"
 +      additionalparam="--allow-script-in-comments"
        maxmemory="256M">
        <header><![CDATA[${name} ${version}]]></header>
