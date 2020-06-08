@@ -87,4 +87,14 @@
   + Switch all code to support output to a logger</comment>
     <requestid>811905</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>399f40f1635ed36cfb9bc70b3828de41</srcmd5>
+    <version>8.1.1</version>
+    <time>1591654187</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.1.1
+  + Handle log adapter when getting log_level and set log_level as
+    instance attr</comment>
+    <requestid>812633</requestid>
+  </revision>
 </revisionlist>
