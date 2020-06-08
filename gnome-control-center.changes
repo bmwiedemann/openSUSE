@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun  3 16:38:10 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.3:
+  + Users:
+    - Show add user button also if no users found.
+    - Show permissions toolbar also if no users found.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri May  1 08:19:54 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.2:

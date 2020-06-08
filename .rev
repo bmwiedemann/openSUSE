@@ -1620,4 +1620,12 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
     <comment>New stable release, NOT BUILDTESTED! (forwarded request 799428 from iznogood)</comment>
     <requestid>799480</requestid>
   </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>aab5c697f2eff4716d97ff49bbfc03a3</srcmd5>
+    <version>3.36.3</version>
+    <time>1591652973</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 811195 from iznogood)</comment>
+    <requestid>811433</requestid>
+  </revision>
 </revisionlist>
