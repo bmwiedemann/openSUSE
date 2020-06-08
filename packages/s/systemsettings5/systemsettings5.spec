@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           systemsettings5
-Version:        5.18.5
+Version:        5.19.0
 Release:        0
 Summary:        KDE's control center
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/systemsettings-%{version}.tar.xz
+Source:         systemsettings-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/systemsettings-%{version}.tar.xz.sig
+Source1:        systemsettings-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.2.0
@@ -40,6 +40,7 @@ BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5ItemModels)
@@ -93,22 +94,22 @@ Provides KDE's control center modules. Development files.
 
 %files
 %license COPYING*
-%{_kf5_appstreamdir}/org.kde.systemsettings.metainfo.xml
-%{_kf5_bindir}/systemsettings5
-%{_kf5_libdir}/libsystemsettingsview.so.*
-%{_kf5_plugindir}/
-%{_kf5_applicationsdir}/*.desktop
-%dir %{_kf5_htmldir}/en
-%dir %{_kf5_htmldir}
-%doc %{_kf5_htmldir}/en/*/
-%{_kf5_servicesdir}/
-%{_kf5_servicetypesdir}/
-%{_kf5_sharedir}/systemsettings/
-%{_kf5_sharedir}/kxmlgui5/
+%dir %{_kf5_sharedir}/kglobalaccel
 %dir %{_kf5_sharedir}/kpackage
 %dir %{_kf5_sharedir}/kpackage/genericqml
-%{_kf5_sharedir}/kpackage/genericqml/org.kde.systemsettings.sidebar
+%doc %{_kf5_htmldir}/en/*/
+%{_kf5_applicationsdir}/*.desktop
+%{_kf5_appstreamdir}/org.kde.systemsettings.metainfo.xml
+%{_kf5_bindir}/systemsettings5
 %{_kf5_debugdir}/*.categories
+%{_kf5_libdir}/libsystemsettingsview.so.*
+%{_kf5_plugindir}/
+%{_kf5_servicesdir}/
+%{_kf5_servicetypesdir}/
+%{_kf5_sharedir}/kglobalaccel/systemsettings.desktop
+%{_kf5_sharedir}/kpackage/genericqml/org.kde.systemsettings.sidebar
+%{_kf5_sharedir}/kxmlgui5/
+%{_kf5_sharedir}/systemsettings/
 
 %files devel
 %{_kf5_libdir}/libsystemsettingsview.so

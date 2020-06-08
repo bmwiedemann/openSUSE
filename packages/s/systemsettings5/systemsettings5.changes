@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jun  4 13:27:15 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- Changes since 5.18.90:
+  * don't try to access invalid modules (kde#422029)
+
+-------------------------------------------------------------------
+Thu May 14 14:33:10 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Changes since 5.18.5:
+  * Add global shortcut
+  * Support module commandline paramenter
+  * Port from KRun::runService to KIO::ApplicationLauncherJob
+  * Use correct icon for Applications category
+  * bump to require Qt 5.14
+  * Hide configure action in Info center mode (kde#417977,kde#417981)
+  * If KHelpCenter isn't available fallback to opening doc at docs.kde.org (kde#405647)
+  * Handle spawning kinfocenter with a full path
+  * delay show window
+  * Introduce an Info Center mode (kde#412975)
+
+-------------------------------------------------------------------
 Tue May  5 13:01:56 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5
