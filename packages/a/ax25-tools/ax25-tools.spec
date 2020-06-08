@@ -1,7 +1,7 @@
 #
 # spec file for package ax25-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Version:        0.0.10rc4_87
 Release:        0
 Summary:        AX.25 tools
 License:        GPL-2.0-only
-Url:            http://www.linux-ax25.org
+URL:            http://www.linux-ax25.org
 Source:         ax25-tools-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -40,6 +40,7 @@ package ax25apps.
 %setup -q
 
 %build
+export CFLAGS="%optflags -fcommon"
 autoreconf -fiv
 %configure \
   --localstatedir=%{_localstatedir}/lib
