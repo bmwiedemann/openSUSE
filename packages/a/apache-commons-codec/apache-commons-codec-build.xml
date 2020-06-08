@@ -10,7 +10,7 @@
 
   <property name="project.groupId" value="commons-codec"/>
   <property name="project.artifactId" value="commons-codec"/>
-  <property name="project.version" value="1.11"/>
+  <property name="project.version" value="1.14"/>
   <property name="project.name" value="Apache Commons Codec"/>
   <property name="project.description" value="The Apache Commons Codec package
 contains simple encoder and decoders for various formats such as Base64 and Hexadecimal.

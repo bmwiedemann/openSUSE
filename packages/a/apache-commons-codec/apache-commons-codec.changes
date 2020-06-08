@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Jun  2 08:57:59 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to version 1.14
+  * Release 1.14 - 2019-12-30
+    - Fix: Hex: Allow encoding read-only ByteBuffer.
+    - Fix: Hex: Only use an available ByteBuffer backing array if
+      the length equals the remaining byte count.
+    - Update: MurmurHash3: Deprecate hash64 methods and hash methods
+      accepting a String that use the default encoding.
+    - Fix: BaseNCodec to expand buffer using overflow conscious code.
+    - Fix: Base32/64: Fixed decoding check that all the final trailing
+      bits to discard are zero.
+    - Add: Add MurmurHash3.hash128x64 methods to fix sign extension error
+      during seeding in hash128 methods.
+    - Add: Add MurmurHash3.hash32x86 methods and IncrementalHash32x86 to
+      fix sign extension error in hash32 methods.
+    - Fix: Allow repeat calls to MurmurHash3.IncrementalHash32.end() to
+      generate the same value.
+    - Add: Add RandomAccessFile digest methods #31.
+    - Add: Add Path APIs to org.apache.commons.codec.digest.DigestUtils
+      similar to File APIs.
+    - Add: Add SHA-512/224 and SHA-512/256 to DigestUtils for Java 9 and up.
+    - Add: Add missing note in javadoc when sign extension error is present #34.
+    - Fix: Reliance on default encoding in MurmurHash2 and MurmurHash3.
+    - Update: Don't reload standard Charsets in org.apache.commons.codec.Charsets.
+    - Update: Deprecate Charset constants in org.apache.commons.codec.Charsets
+      in favor of java.nio.charset.StandardCharsets.
+  * Release 1.13 - 2019-07-20
+    - Fix: ColognePhonetic handles x incorrectly.
+    - Fix: ColognePhonetic does not treat the letter H correctly.
+    - Fix: Reject any decode request for a value that is impossible to
+      encode to for Base32/Base64 rather than blindly decoding.
+    - Add: MurmurHash2 for 32-bit or 64-bit value.
+    - Add: MurmurHash3 for 32-bit or 128-bit value.
+    - Update: Broken direct java.nio.ByteBuffer support in
+      org.apache.commons.codec.binary.Hex.
+  * Release 1.12 - 2019-02-04
+    - Fix: B64 salt generator: Random -> ThreadLocalRandom.
+    - Fix: Wrong value calculated by Cologne Phonetic if a special character
+      is placed between equal letters.
+    - Update: Update from Java 6 to Java 7.
+    - Add: Add Percent-Encoding Codec (described in RFC3986 and RFC7578).
+    - Fix: ColognePhoneticTest.testIsEncodeEquals missing assertions.
+    - Add: Add SHA-3 methods in DigestUtils.
+
+-------------------------------------------------------------------
 Mon Mar 25 17:23:20 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Remove pom parent, since we don't use it when not building with
