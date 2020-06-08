@@ -663,4 +663,12 @@
     <comment>New upstream release</comment>
     <requestid>795371</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>da2a9edac274f237a732cfb285ccb862</srcmd5>
+    <version>2.6.7</version>
+    <time>1591652985</time>
+    <user>dimstar_suse</user>
+    <comment>harfbuzz 2.6.7 (forwarded request 811217 from AndreasStieger)</comment>
+    <requestid>811434</requestid>
+  </revision>
 </revisionlist>
