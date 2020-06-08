@@ -59,6 +59,8 @@ Patch3:         PackageKit-drop-gtk2.patch
 Patch4:         PackageKit-zypp-update-packages-in-all-openSUSE.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-ignore-already-installed-packages.patch bsc#1155624, gh#/hughsie/PackageKit/commit/d9233011 songchuan.kang@suse.com -- zypp: Ignore already installed package when installing.
 Patch5:         PackageKit-zypp-ignore-already-installed-packages.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-ensure-ResPool-before-is_tumbleweed.patch gh#/hughsie/PackageKit/commit/5c0fd7d7 sckang@suse.com -- zypp: Ensure ResPool is built before is_tumbleweed().
+Patch6:         PackageKit-zypp-ensure-ResPool-before-is_tumbleweed.patch
 # PATCH-FIX-OPENSUSE PackageKit-dnf-Add-openSUSE-vendor.patch ngompa13@gmail.com -- Add openSUSE vendor
 Patch1001:      PackageKit-dnf-Add-openSUSE-vendor.patch
 # PATCH-FIX-OPENSUSE PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch ngompa13@gmail.com -- Band-aid to deal with OBS producing differently named appstream repodata files
