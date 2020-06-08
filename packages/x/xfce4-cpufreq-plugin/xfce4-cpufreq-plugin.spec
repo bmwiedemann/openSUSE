@@ -66,6 +66,8 @@ Provides translations for the "%{name}" package.
 %autosetup
 
 %build
+# gcc10 workaround
+export CFLAGS="%{optflags} -fcommon"
 %if %{with git}
 NOCONFIGURE=1 ./autogen.sh
 %configure \
