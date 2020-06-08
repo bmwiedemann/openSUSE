@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 30 08:46:17 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.24.14:
+  * libqmi-glib:
+    - Fix build with GLib < 2.44.
+    - Fix UTF-8 string validation when the string contains a
+      trailing NUL byte (e.g. the Sierra specific "DMS Swi Get
+      Current Firmware" command).
+
+-------------------------------------------------------------------
 Sat May  9 12:29:42 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.24.12:
