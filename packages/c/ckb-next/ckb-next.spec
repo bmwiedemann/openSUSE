@@ -1,7 +1,7 @@
 #
 # spec file for package ckb-next
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ Patch3:         ckb-next-no-cmake-modules.patch
 Patch4:         ckb-next-udev.patch
 # PATCH-FIX-UPSTREAM 422.patch boo#1135528
 Patch5:         422.patch
+# PATCH-FIX-UPSTREAM ckb-next-gcc10.patch
+Patch6:         ckb-next-gcc10.patch
 BuildRequires:  ImageMagick
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme

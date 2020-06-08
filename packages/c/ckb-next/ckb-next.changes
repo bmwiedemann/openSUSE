@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  8 07:44:47 UTC 2020 - aloisio@gmx.com
+
+- Add ckb-next-gcc10.patch
+
+-------------------------------------------------------------------
 Wed Nov 20 23:15:31 UTC 2019 - Simon Lees <sflees@suse.de>
 
 - %make_jobs is depricated replaced by %cmake_build
