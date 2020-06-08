@@ -1,7 +1,7 @@
 #
 # spec file for package siproxd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ Release:        0
 Summary:        A SIP masquerading proxy with RTP support
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-Url:            http://siproxd.sourceforge.net/
+URL:            http://siproxd.sourceforge.net/
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        susefirewall2.%{name}
 Source2:        %name.init.in
@@ -49,6 +49,7 @@ Patch0:         siproxd-libs.patch
 #PATCH-FIX-FROM-DEBIAN use logger not user
 Patch1:         siproxd-log.c.patch
 Patch2:         siproxd.plugin_fix_bogus_via.c.patch
+Patch3:         siproxd-multiple-definition.patch
 BuildRequires:  docbook-utils
 BuildRequires:  libosip2
 BuildRequires:  libosip2-devel
@@ -95,6 +96,7 @@ HTML and PDF documentation for %{name}
 %patch0 -p1	
 %patch1
 %patch2 -p1
+%patch3 -p1
 
 cp %{S:5} .
 

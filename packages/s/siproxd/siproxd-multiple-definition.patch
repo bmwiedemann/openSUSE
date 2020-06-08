@@ -1,0 +1,10 @@
+--- siproxd-0.8.2/src/accessctl.c	2020/06/08 08:58:02	1.1
++++ siproxd-0.8.2/src/accessctl.c	2020/06/08 08:58:08
+@@ -35,6 +35,6 @@
+ 
+ /* configuration storage */
+-struct siproxd_config configuration;
++extern struct siproxd_config configuration;
+ 
+ 
+ /*

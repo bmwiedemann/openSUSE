@@ -306,4 +306,15 @@ Error is masked due to || : (forwarded request 141997 from dimstar)</comment>
     <comment></comment>
     <requestid>690484</requestid>
   </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>25bfdff4a2154d05a00ede0d440ba17f</srcmd5>
+    <version>0.8.2</version>
+    <time>1591654032</time>
+    <user>dimstar_suse</user>
+    <comment>- add patch siproxd-multiple-definition.patch
+  to fix compilation with recent gcc
+  accessctl.o:./src/accessctl.c:37: multiple definition of
+  configuration struct (forwarded request 812499 from oertel)</comment>
+    <requestid>812500</requestid>
+  </revision>
 </revisionlist>
