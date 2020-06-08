@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-sensors-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
 Version:        1.3.0
-Release:        100
+Release:        0
 Summary:        Hardware Sensor Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
@@ -85,6 +85,9 @@ Provides translations for the "%{name}" package.
 %autosetup
 
 %build
+# gcc10 workaround
+export CFLAGS="%{optflags} -fcommon"
+
 # --enable-netcat actually enables "hddtemp via netcat"
 %if %{with git}
 NOCONFIGURE=1 ./autogen.sh
