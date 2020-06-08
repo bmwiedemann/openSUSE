@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jun 05 10:31:13 UTC 2020 - jcavalheiro@suse.com
+
+- Update to version 7.0.3
+  * Features / Enhancements
+    - Stats: include all fields. #24829, @ryantxu
+    - Variables: change VariableEditorList row action Icon to IconButton. #25217, @hshoff
+  * Bug fixes
+    - Cloudwatch: Fix dimensions of DDoSProtection. #25317, @papagian
+    - Configuration: Fix env var override of sections containing hyphen. #25178, @marefr
+    - Dashboard: Get panels in collapsed rows. #25079, @peterholmberg
+    - Do not show alerts tab when alerting is disabled. #25285, @dprokop
+    - Jaeger: fixes cascader option label duration value. #25129, @Estrax
+    - Transformations: Fixed Transform tab crash & no update after adding first transform. #25152, @torkelo
+
+- Update to version 7.0.2
+  * Bug fixes
+    - Security: Urgent security patch release to fix CVE-2020-13379
+
+-------------------------------------------------------------------
 Mon Jun 01 13:12:54 UTC 2020 - jcavalheiro@suse.com
 
 - Update to version 7.0.1
