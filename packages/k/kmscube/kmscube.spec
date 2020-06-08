@@ -1,7 +1,7 @@
 #
 # spec file for package kmscube
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019, Guillaume GARDET <guillaume@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,17 +18,16 @@
 
 
 Name:           kmscube
-Version:        0.0.0.git1562664497.a12e306
+Version:        0.0.0.git1585705428.4660a7d
 Release:        0
 Summary:        Demo for bare metal graphics
 License:        MIT
 Group:          Development/Tools/Other
-Url:            https://github.com/bastibl/kmscube.git
+URL:            https://github.com/bastibl/kmscube.git
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  Mesa-devel
 BuildRequires:  Mesa-libGLESv3-devel
-BuildRequires:  autoconf
-BuildRequires:  automake
+BuildRequires:  meson >= 0.47
 BuildRequires:  gcc
 BuildRequires:  glib2-devel
 BuildRequires:  gstreamer-devel >= 1.6.0
@@ -36,9 +35,9 @@ BuildRequires:  gstreamer-plugins-base-devel >= 1.6.0
 BuildRequires:  libdrm-devel >= 2.4.71
 BuildRequires:  libgbm-devel >= 13.0
 BuildRequires:  make
-BuildRequires:  pkg-config >= 0.9.0
+BuildRequires:  pkgconfig >= 0.9.0
+BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(x11)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 kmscube is a little demonstration program for how to drive bare metal graphics
@@ -48,14 +47,15 @@ OpenGL or OpenGL ES.
 
 %prep
 %setup -q
+# Fix libpng detection
+sed -i -e "s/'libpng'/'libpng16'/" meson.build
 
 %build
-autoreconf -f --install
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %defattr(-,root,root)

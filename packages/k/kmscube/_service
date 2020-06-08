@@ -2,7 +2,7 @@
   <service name="tar_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://gitlab.freedesktop.org/mesa/kmscube</param>
-    <param name="revision">a12e306ce18ff1c2922219a5342fa419ee80a12e</param>
+    <param name="revision">4660a7dc</param>
     <param name="exclude">.git</param>
     <param name="versionformat">git%ct.%h</param>
     <param name="versionprefix">0.0.0</param>
