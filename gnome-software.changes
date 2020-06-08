@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri May 22 18:13:46 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.1:
+  + Add distro upgrade css for the HC theme.
+  + Check if a stock icon actually exists in the theme.
+  + Correctly mark layered local packages as removable.
+  + Fine-tune F32 upgrade banner position and font.
+  + Fix loading if applications directory does not exist.
+  + Fix the progress info required for the loading page.
+  + Handle invalid snap auth data.
+  + Improve performance when showing lots of applications.
+  + Only delete the installed firmware archive if we downloaded it.
+  + Properly check if an flatpak application is a runtime.
+  + Show the correct state for local packages without AppData.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu May 21 01:59:11 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Re-autostart GNOME Software and re-enable its search extension
+  (bsc#1168861, bsc#1157928).
+
+-------------------------------------------------------------------
 Wed Mar 11 13:57:51 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 3.36.0:

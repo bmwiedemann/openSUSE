@@ -18,7 +18,7 @@
 
 %define gs_plugin_api 13
 Name:           gnome-software
-Version:        3.36.0
+Version:        3.36.1
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
@@ -92,21 +92,6 @@ GNOME software store plugins.
 # Remove any piece of doc that ends up in non-standard locations and use the doc macro instead
 rm %{buildroot}%{_datadir}/doc/%{name}/README.md
 
-%if 0%{?sle_version} == 150200
-#needed for both Leap and SLE
-#workaround until bsc#1157928 is resolved, otherwise SLES users get authentication popup all the time
-cat << EOF >> %{buildroot}%{_sysconfdir}/xdg/autostart/gnome-software-service.desktop
-Hidden=true
-EOF
-
-cat << EOF > %{buildroot}%{_datadir}/glib-2.0/schemas/00_org.gnome.software.gschema.override
-#workaround until bsc#1157928 is resolved, otherwise SLES users get authentication popup all the time
-[org.gnome.desktop.search-providers]
-disabled=["org.gnome.Software.desktop"]
-EOF
-
-%endif
-
 %files
 %license COPYING
 %doc NEWS README.md
@@ -125,9 +110,6 @@ EOF
 %{_datadir}/dbus-1/services/org.gnome.Software.service
 %{_datadir}/dbus-1/services/org.freedesktop.PackageKit.service
 %{_datadir}/glib-2.0/schemas/org.gnome.software.gschema.xml
-%if 0%{?sle_version} == 150200
-%{_datadir}/glib-2.0/schemas/00_org.gnome.software.gschema.override
-%endif
 %dir %{_datadir}/gnome-shell
 %dir %{_datadir}/gnome-shell/search-providers
 %{_datadir}/gnome-shell/search-providers/org.gnome.Software-search-provider.ini
