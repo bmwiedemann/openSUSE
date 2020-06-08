@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu Jun  4 13:27:12 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- Changes since 5.18.90:
+  * properly access savedColors
+  * Fix sensorColors check
+  * Add missing formatter lib to sensordatamodel test
+  * Make SensorDataModel::sensorsChanged more stupid
+  * Add an autotest for SensorDataModel
+  * Don't magically add 180 degrees to start angle
+  * adapt to controller.sensorColors being a map
+  * Use Kirigami.Units instead of units
+  * ExtendedLegend: Don't try to access a non-existing sourceModel
+  * Fix crash on ProcessDataModel creation
+  * Compute new index as distance between begin and upper bound
+  * Remove "name" from SensorTreeItem
+  * SensorFaceController: Sort matches from SensorQuery when loading presets
+  * Add a simple autotest for sensortreemodel
+  * Replace TreeItem QVector children with QMap
+  * Do not have different KF API visible for developer & tarball builds
+  * Fix typos in BarChart Face
+  * [sensors] Avoid breaking IDs of nodes within SensorTreeModel (kde#421696)
+  * Remove stray import
+  * Add missing var keyword
+  * Elide sensor names in config view
+  * Build against correct translation domain
+  * Replace MapProxySource with some javascript code
+
+-------------------------------------------------------------------
+Thu May 14 14:33:05 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Changes since 5.18.5:
+  * use kns kpackage integration
+  * move knsrc files here
+  * proper color source
+  * support translations in faces
+  * fix SensorFaceController::compactRepresentation()
+  * Use INTERFACE IMPORTED target type instead of ALIAS for compatibility targets
+  * Add KSysGuard::Sensors library
+  * Use KSysGuard namespace for KSysGuard library targets
+  * Add a declarative plugin to ProcessCore
+  * Add KSysGuard::Sensors library
+  * [KSysGuardProcessList] Port away from KRun
+  * bump to require Qt 5.14
+  * Use non-const iterators
+  * Make 'nonphysical' spelling consistent
+  * Introduce ProcessDataModel
+  * Fix Formatter library CMake
+  * Properly install the export header for the formatter lib
+  * Add license header to formatter test
+  * Separate processcore/{formatter,unit} into its own library
+  * Add missing includes
+  * Rename tests to autotests
+  * [ksgrd] Drop a QWidget dependency
+
+-------------------------------------------------------------------
 Tue May  5 13:01:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5
