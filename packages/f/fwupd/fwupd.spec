@@ -28,7 +28,7 @@
 %global efidir sles
 %endif
 Name:           fwupd
-Version:        1.3.9
+Version:        1.4.2
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -66,28 +66,29 @@ BuildRequires:  pkgconfig(appstream-glib) >= 0.5.10
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(colorhug) >= 1.2.12
-BuildRequires:  pkgconfig(gio-2.0) >= 2.25.9
-BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.45.8
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.48.8
 BuildRequires:  pkgconfig(glib-2.0) >= 2.45.8
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk-doc) >= 1.14
-BuildRequires:  pkgconfig(gudev-1.0)
+BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(gusb) >= 0.2.9
+BuildRequires:  pkgconfig(jcat) >= 0.1.0
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.1.1
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libelf)
-BuildRequires:  pkgconfig(libgcab-1.0)
+BuildRequires:  pkgconfig(libgcab-1.0) >= 1.0
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.51.92
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.103
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
-BuildRequires:  pkgconfig(tss2-esys)
+BuildRequires:  pkgconfig(tss2-esys) >= 2.0
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(valgrind)
-BuildRequires:  pkgconfig(xmlb)
+BuildRequires:  pkgconfig(xmlb) >= 0.1.13
 %if %{with efi_fw_update}
 BuildRequires:  gnu-efi
 BuildRequires:  pesign-obs-integration
@@ -265,7 +266,9 @@ fi
 %{_unitdir}/fwupd-refresh.timer
 %{_libexecdir}/fwupd
 %{_bindir}/fwupdagent
+%if %{with efi_fw_update}
 %{_bindir}/fwupdate
+%endif
 %{_bindir}/fwupdmgr
 %{_bindir}/fwupdtool
 %{_sbindir}/rc%{name}
@@ -292,7 +295,9 @@ fi
 %{_datadir}/%{name}/quirks.d/*.quirk
 %{_datadir}/%{name}/remotes.d/vendor/firmware/README.md
 %{_mandir}/man1/fwupdagent.1%{?ext_man}
+%if %{with efi_fw_update}
 %{_mandir}/man1/fwupdate.1%{?ext_man}
+%endif
 %{_mandir}/man1/fwupdmgr.1%{?ext_man}
 %{_mandir}/man1/fwupdtool.1%{?ext_man}
 %{_datadir}/polkit-1/actions/org.freedesktop.fwupd.policy

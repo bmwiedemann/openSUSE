@@ -1,7 +1,7 @@
 #
 # spec file for package jna
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           jna
-Version:        5.4.0
+Version:        5.5.0
 Release:        0
 Summary:        Pure Java access to native libraries
 License:        LGPL-2.1-or-later OR Apache-2.0

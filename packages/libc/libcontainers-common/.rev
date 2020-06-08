@@ -204,4 +204,12 @@
   (https://github.com/SUSE/container-suseconnect/issues/41)</comment>
     <requestid>805286</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ca9389beef3daeca10bb94679b7390a2</srcmd5>
+    <version>20200603</version>
+    <time>1591652780</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811340</requestid>
+  </revision>
 </revisionlist>

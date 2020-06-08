@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jun  4 06:38:27 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 5.5.0
+  * Features
+    + Add CoreFoundation, IOKit, and DiskArbitration mappings in
+      c.s.j.p.mac.
+    + c.s.j.p.mac.SystemB now extends c.s.j.p.unix.LibCAPI.
+    + Add additional OSGi headers for the JNA bundle to support
+      32bit ARM (hardfloat)
+    + Include Win32 COM utils (c.s.j.p.win32.com.util and
+      c.s.j.p.win32.com.annotation) in OSGI bundle
+  * Bug Fixes
+    + Fix signature for c.s.j.p.win32.Kernel32#CreateRemoteThread
+      and bind VirtualAllocEx, VirtualFreeEx, GetExitCodeThread in
+      c.s.j.p.win32.Kernel32
+    + Windows needs a wide string in
+      c.s.j.p.win32.COM.IShellFolder#ParseDisplayName
+    + KEY_ALL_ACCESS value is incorrect in c.s.j.p.win32.WinNT.java
+    + Ensure JARs created from the build system don't contain
+      invalid Info-ZIP Unicode Path extra info
+    + Read correct member of
+      WinBase.SYSTEM_INFO.processorArchitecture union
+    + Fix passing unions containing integer and floating point
+      members as parameters by value
+- Modified patch:
+  * jna-build.patch
+    + rediff to the changed context
+    + disable warnings as errors
+    + fix build on ppc64 and s390x
+
+-------------------------------------------------------------------
 Thu Oct 10 18:33:20 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Rename package to jna, since the jna package must be anyway

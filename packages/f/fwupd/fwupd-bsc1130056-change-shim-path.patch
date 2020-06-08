@@ -10,17 +10,17 @@ Signed-off-by: Gary Lin <glin@suse.com>
  plugins/uefi/fu-uefi-bootmgr.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-Index: fwupd-1.2.9/plugins/uefi/fu-uefi-bootmgr.c
+Index: fwupd-1.4.0/plugins/uefi/fu-uefi-bootmgr.c
 ===================================================================
---- fwupd-1.2.9.orig/plugins/uefi/fu-uefi-bootmgr.c
-+++ fwupd-1.2.9/plugins/uefi/fu-uefi-bootmgr.c
-@@ -324,7 +324,8 @@ fu_uefi_bootmgr_bootnext (const gchar *e
- 		return FALSE;
+--- fwupd-1.4.0.orig/plugins/uefi/fu-uefi-bootmgr.c
++++ fwupd-1.4.0/plugins/uefi/fu-uefi-bootmgr.c
+@@ -309,7 +309,8 @@ fu_uefi_bootmgr_bootnext (const gchar *e
+ 	secure_boot = fu_efivar_secure_boot_enabled ();
+ 	if (secure_boot) {
+ 		/* test to make sure shim is there if we need it */
+-		shim_app = fu_uefi_get_esp_app_path (esp_path, "shim", error);
++		shim_app = g_strdup_printf ("%s/shim.efi",
++					    fu_uefi_get_esp_path_for_os (esp_path));
+ 		if (shim_app == NULL)
+ 			return FALSE;
  
- 	/* test to make sure shim is there if we need it */
--	shim_app = fu_uefi_get_esp_app_path (esp_path, "shim", error);
-+    shim_app = g_strdup_printf ("%s/shim.efi",
-+				    fu_uefi_get_esp_path_for_os (esp_path));
- 	if (shim_app == NULL)
- 		return FALSE;
- 	if (g_file_test (shim_app, G_FILE_TEST_EXISTS)) {

@@ -1,0 +1,275 @@
+From c79ae4c2558778aa36e48c16ebc64946116bcdf2 Mon Sep 17 00:00:00 2001
+From: Adam Rice <ricea@chromium.org>
+Date: Wed, 15 Jan 2020 03:45:37 +0000
+Subject: [PATCH] Revert "Allow FROM_HERE to be backed by
+ base::Location::Current()."
+
+This reverts commit 6c9388f9a927eb3391446d713bd2e68e1f4667d3.
+
+Reason for revert: Broke compile on ios-device-xcode-clang bot: https://ci.chromium.org/p/chromium/builders/ci/ios-device-xcode-clang/120239
+
+Original change's description:
+> Allow FROM_HERE to be backed by base::Location::Current().
+>
+> This allows the functionality of base::Location::Current() to be
+> verified in releases while still allowing a simple revert.
+>
+> One minor difference from before is that the helper macro
+> FROM_HERE_WITH_EXPLICIT_FUNCTION is no longer supported. Since
+> cc::BeginFrameTracker is the only user of this macro and doesn't
+> appear to need it, just revert it to use FROM_HERE directly.
+>
+> Bug: 974061
+> Change-Id: Iae09bc02caf9f095a3ace9ea3ac70ded3dd493e4
+> Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1990262
+> Commit-Queue: Daniel Cheng <dcheng@chromium.org>
+> Reviewed-by: danakj <danakj@chromium.org>
+> Reviewed-by: Alexander Timin <altimin@chromium.org>
+> Reviewed-by: Jeremy Roman <jbroman@chromium.org>
+> Auto-Submit: Daniel Cheng <dcheng@chromium.org>
+> Cr-Commit-Position: refs/heads/master@{#731804}
+
+TBR=danakj@chromium.org,dcheng@chromium.org,jbroman@chromium.org,altimin@chromium.org
+
+Change-Id: I4d545b08f3e784cb9302ad1fb1541741296af726
+No-Presubmit: true
+No-Tree-Checks: true
+No-Try: true
+Bug: 974061
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/2000439
+Reviewed-by: Adam Rice <ricea@chromium.org>
+Commit-Queue: Adam Rice <ricea@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#731812}
+---
+ base/BUILD.gn                                  |  8 --------
+ base/location.cc                               |  8 --------
+ base/location.h                                | 17 ++++++-----------
+ base/location_unittest.cc                      |  2 --
+ cc/scheduler/begin_frame_tracker.h             |  3 +++
+ cc/scheduler/scheduler.cc                      |  3 +--
+ cc/trees/layer_tree_host_impl.cc               |  3 +--
+ components/viz/test/begin_frame_source_test.cc |  4 ++--
+ 8 files changed, 13 insertions(+), 35 deletions(-)
+
+Index: chromium-83.0.4103.61/base/BUILD.gn
+===================================================================
+--- chromium-83.0.4103.61.orig/base/BUILD.gn
++++ chromium-83.0.4103.61/base/BUILD.gn
+@@ -54,13 +54,6 @@ declare_args() {
+   # file name) is saved.
+   enable_location_source = true
+ 
+-  # Whether or not the FROM_HERE macro uses base::Location::Current(). This
+-  # allows the implementation to be reverted if needed while validating its
+-  # replacement base::Location::Current(). On by default in non-official builds
+-  # for testing purposes.
+-  # TODO(https://crbug.com/974061): remove this eventually.
+-  from_here_uses_location_builtins = !is_official_build
+-
+   # Unsafe developer build. Has developer-friendly features that may weaken or
+   # disable security measures like sandboxing or ASLR.
+   # IMPORTANT: Unsafe developer builds should never be distributed to end users.
+@@ -2113,7 +2106,6 @@ buildflag_header("debugging_buildflags")
+ 
+   flags = [
+     "ENABLE_LOCATION_SOURCE=$enable_location_source",
+-    "FROM_HERE_USES_LOCATION_BUILTINS=$from_here_uses_location_builtins",
+     "ENABLE_PROFILING=$enable_profiling",
+     "CAN_UNWIND_WITH_FRAME_POINTERS=$can_unwind_with_frame_pointers",
+     "UNSAFE_DEVELOPER_BUILD=$is_unsafe_developer_build",
+Index: chromium-83.0.4103.61/base/location.cc
+===================================================================
+--- chromium-83.0.4103.61.orig/base/location.cc
++++ chromium-83.0.4103.61/base/location.cc
+@@ -57,16 +57,11 @@ std::string Location::ToString() const {
+ #define RETURN_ADDRESS() nullptr
+ #endif
+ 
+-#if !BUILDFLAG(FROM_HERE_USES_LOCATION_BUILTINS)
+-#if !BUILDFLAG(ENABLE_LOCATION_SOURCE)
+-
+ // static
+ NOINLINE Location Location::CreateFromHere(const char* file_name) {
+   return Location(file_name, RETURN_ADDRESS());
+ }
+ 
+-#else
+-
+ // static
+ NOINLINE Location Location::CreateFromHere(const char* function_name,
+                                            const char* file_name,
+@@ -74,9 +69,6 @@ NOINLINE Location Location::CreateFromHe
+   return Location(function_name, file_name, line_number, RETURN_ADDRESS());
+ }
+ 
+-#endif
+-#endif
+-
+ #if SUPPORTS_LOCATION_BUILTINS && BUILDFLAG(ENABLE_LOCATION_SOURCE)
+ // static
+ NOINLINE Location Location::Current(const char* function_name,
+Index: chromium-83.0.4103.61/base/location.h
+===================================================================
+--- chromium-83.0.4103.61.orig/base/location.h
++++ chromium-83.0.4103.61/base/location.h
+@@ -83,15 +83,10 @@ class BASE_EXPORT Location {
+   // are not available, this will return "pc:<hex address>".
+   std::string ToString() const;
+ 
+-#if !BUILDFLAG(FROM_HERE_USES_LOCATION_BUILTINS)
+-#if !BUILDFLAG(ENABLE_LOCATION_SOURCE)
+   static Location CreateFromHere(const char* file_name);
+-#else
+   static Location CreateFromHere(const char* function_name,
+                                  const char* file_name,
+                                  int line_number);
+-#endif
+-#endif
+ 
+ #if SUPPORTS_LOCATION_BUILTINS && BUILDFLAG(ENABLE_LOCATION_SOURCE)
+   static Location Current(const char* function_name = __builtin_FUNCTION(),
+@@ -112,20 +107,20 @@ class BASE_EXPORT Location {
+ 
+ BASE_EXPORT const void* GetProgramCounter();
+ 
+-#if BUILDFLAG(FROM_HERE_USES_LOCATION_BUILTINS)
+-
+-#define FROM_HERE ::base::Location::Current()
+-
+ // The macros defined here will expand to the current function.
+-#elif BUILDFLAG(ENABLE_LOCATION_SOURCE)
++#if BUILDFLAG(ENABLE_LOCATION_SOURCE)
+ 
+ // Full source information should be included.
+-#define FROM_HERE ::base::Location::CreateFromHere(__func__, __FILE__, __LINE__)
++#define FROM_HERE FROM_HERE_WITH_EXPLICIT_FUNCTION(__func__)
++#define FROM_HERE_WITH_EXPLICIT_FUNCTION(function_name) \
++  ::base::Location::CreateFromHere(function_name, __FILE__, __LINE__)
+ 
+ #else
+ 
+ // TODO(http://crbug.com/760702) remove the __FILE__ argument from these calls.
+ #define FROM_HERE ::base::Location::CreateFromHere(__FILE__)
++#define FROM_HERE_WITH_EXPLICIT_FUNCTION(function_name) \
++  ::base::Location::CreateFromHere(function_name, __FILE__, -1)
+ 
+ #endif
+ 
+Index: chromium-83.0.4103.61/base/location_unittest.cc
+===================================================================
+--- chromium-83.0.4103.61.orig/base/location_unittest.cc
++++ chromium-83.0.4103.61/base/location_unittest.cc
+@@ -34,8 +34,6 @@ TEST(LocationTest, CurrentYieldsCorrectV
+ #endif
+ #elif defined(OFFICIAL_BUILD)
+ #error Location builtins must be supported in official builds.
+-#elif BUILDFLAG(FROM_HERE_USES_LOCATION_BUILTINS)
+-#error FROM_HERE requires location builtins to be supported.
+ #endif
+   ALLOW_UNUSED_LOCAL(previous_line);
+ }
+Index: chromium-83.0.4103.61/cc/scheduler/begin_frame_tracker.h
+===================================================================
+--- chromium-83.0.4103.61.orig/cc/scheduler/begin_frame_tracker.h
++++ chromium-83.0.4103.61/cc/scheduler/begin_frame_tracker.h
+@@ -8,11 +8,14 @@
+ #include <set>
+ #include <string>
+ 
++#include "base/location.h"
+ #include "base/trace_event/trace_event.h"
+ #include "base/trace_event/traced_value.h"
+ #include "cc/cc_export.h"
+ #include "components/viz/common/frame_sinks/begin_frame_args.h"
+ 
++#define BEGINFRAMETRACKER_FROM_HERE FROM_HERE_WITH_EXPLICIT_FUNCTION("")
++
+ namespace perfetto {
+ namespace protos {
+ namespace pbzero {
+Index: chromium-83.0.4103.61/cc/scheduler/scheduler.cc
+===================================================================
+--- chromium-83.0.4103.61.orig/cc/scheduler/scheduler.cc
++++ chromium-83.0.4103.61/cc/scheduler/scheduler.cc
+@@ -9,7 +9,6 @@
+ 
+ #include "base/auto_reset.h"
+ #include "base/bind.h"
+-#include "base/location.h"
+ #include "base/logging.h"
+ #include "base/single_thread_task_runner.h"
+ #include "base/trace_event/trace_event.h"
+@@ -41,7 +40,7 @@ Scheduler::Scheduler(
+       layer_tree_host_id_(layer_tree_host_id),
+       task_runner_(task_runner),
+       compositor_timing_history_(std::move(compositor_timing_history)),
+-      begin_impl_frame_tracker_(FROM_HERE),
++      begin_impl_frame_tracker_(BEGINFRAMETRACKER_FROM_HERE),
+       state_machine_(settings) {
+   TRACE_EVENT1("cc", "Scheduler::Scheduler", "settings", settings_.AsValue());
+   DCHECK(client_);
+Index: chromium-83.0.4103.61/cc/trees/layer_tree_host_impl.cc
+===================================================================
+--- chromium-83.0.4103.61.orig/cc/trees/layer_tree_host_impl.cc
++++ chromium-83.0.4103.61/cc/trees/layer_tree_host_impl.cc
+@@ -18,7 +18,6 @@
+ #include "base/containers/flat_map.h"
+ #include "base/debug/crash_logging.h"
+ #include "base/debug/dump_without_crashing.h"
+-#include "base/location.h"
+ #include "base/memory/ptr_util.h"
+ #include "base/memory/read_only_shared_memory_region.h"
+ #include "base/metrics/histogram.h"
+@@ -286,7 +285,7 @@ LayerTreeHostImpl::LayerTreeHostImpl(
+     : client_(client),
+       scheduling_client_(scheduling_client),
+       task_runner_provider_(task_runner_provider),
+-      current_begin_frame_tracker_(FROM_HERE),
++      current_begin_frame_tracker_(BEGINFRAMETRACKER_FROM_HERE),
+       compositor_frame_reporting_controller_(
+           std::make_unique<CompositorFrameReportingController>(
+               /*should_report_metrics=*/!settings
+Index: chromium-83.0.4103.61/components/viz/test/begin_frame_source_test.cc
+===================================================================
+--- chromium-83.0.4103.61.orig/components/viz/test/begin_frame_source_test.cc
++++ chromium-83.0.4103.61/components/viz/test/begin_frame_source_test.cc
+@@ -4,7 +4,6 @@
+ 
+ #include "components/viz/test/begin_frame_source_test.h"
+ 
+-#include "base/location.h"
+ #include "components/viz/test/begin_frame_args_test.h"
+ #include "testing/gmock/include/gmock/gmock.h"
+ #include "testing/gtest/include/gtest/gtest.h"
+@@ -34,7 +33,8 @@ const BeginFrameArgs MockBeginFrameObser
+ #ifdef NDEBUG
+         nullptr,
+ #else
+-        FROM_HERE,
++        FROM_HERE_WITH_EXPLICIT_FUNCTION(
++            "MockBeginFrameObserver::kDefaultBeginFrameArgs"),
+ #endif
+         BeginFrameArgs::kManualSourceId,
+         BeginFrameArgs::kStartingFrameNumber,
+Index: chromium-83.0.4103.61/third_party/blink/renderer/platform/heap/persistent.h
+===================================================================
+--- chromium-83.0.4103.61.orig/third_party/blink/renderer/platform/heap/persistent.h
++++ chromium-83.0.4103.61/third_party/blink/renderer/platform/heap/persistent.h
+@@ -39,16 +39,10 @@ class PersistentLocation final {
+   base::Location location_;
+ };
+ 
+-#if !BUILDFLAG(FROM_HERE_USES_LOCATION_BUILTINS) && \
+-    BUILDFLAG(RAW_HEAP_SNAPSHOTS)
+-#if !BUILDFLAG(ENABLE_LOCATION_SOURCE)
+-#define PERSISTENT_FROM_HERE \
+-  PersistentLocation(::base::Location::CreateFromHere(__FILE__))
+-#else
++#if BUILDFLAG(RAW_HEAP_SNAPSHOTS)
+ #define PERSISTENT_FROM_HERE \
+   PersistentLocation(        \
+       ::base::Location::CreateFromHere(__func__, __FILE__, __LINE__))
+-#endif
+ #else
+ #define PERSISTENT_FROM_HERE PersistentLocation()
+ #endif  // BUILDFLAG(RAW_HEAP_SNAPSHOTS)

@@ -2961,4 +2961,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
   * CVE-2020-6487: Insufficient policy enforcement in downloads. Reported by Jun Kokatsu (@shhnjk) on 2015-10-06</comment>
     <requestid>808194</requestid>
   </revision>
+  <revision rev="258" vrev="1">
+    <srcmd5>b9f2896ac778f8bb1439e324ae03e22d</srcmd5>
+    <version>83.0.4103.97</version>
+    <time>1591652650</time>
+    <user>dimstar_suse</user>
+    <comment>up</comment>
+    <requestid>811311</requestid>
+  </revision>
 </revisionlist>

@@ -3414,4 +3414,13 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   (jsc#SLE-12127)</comment>
     <requestid>800858</requestid>
   </revision>
+  <revision rev="382" vrev="3">
+    <srcmd5>13fb5ea7a774c59ab57c1bd3b5f90e00</srcmd5>
+    <version>1.20.8+0</version>
+    <time>1591652806</time>
+    <user>dimstar_suse</user>
+    <comment>- U_glamor_egl-Reject-OpenGL-2.1-early-on.patch
+  * GLAMOR: no longer bail out for OpenGL drivers &lt; 2.1 (boo#1172321)</comment>
+    <requestid>811380</requestid>
+  </revision>
 </revisionlist>

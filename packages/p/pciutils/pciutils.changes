@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun  1 07:19:48 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 3.7.0:
+  * Add or improved the following capabilities:
+    Designated Vendor-Specific, Compute eXpress Link,
+    Resizable BARs, VF Resizable BARs, Link Capabilities 2,
+    Link Status 2
+  * On Linux, lspci can show IOMMU groups
+  * setpci can be asked to skip bus scan and operate on a device
+    completely specified by its domain/bus/dev/func address
+  * back-ends which do not support domains now correctly fail when
+    trying to access devices outside domain 0
+- Add upstream keyging to verify source signature
+
+-------------------------------------------------------------------
 Thu Apr  2 07:38:52 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.6.4:

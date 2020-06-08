@@ -18,7 +18,7 @@
 
 %define lname   libpci3
 Name:           pciutils
-Version:        3.6.4
+Version:        3.7.0
 Release:        0
 Summary:        PCI utilities for the Linux Kernel
 License:        GPL-2.0-or-later
@@ -27,6 +27,8 @@ URL:            https://atrey.karlin.mff.cuni.cz/~mj/pciutils.shtml
 Source:         https://www.kernel.org/pub/software/utils/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://www.kernel.org/pub/software/utils/%{name}/%{name}-%{version}.tar.sign
 Source2:        baselibs.conf
+# https://mj.ucw.cz/pgp.html
+Source3:        https://mj.ucw.cz/pgpkey.txt#/%{name}.keyring
 Patch1:         pciutils-3.1.9_pkgconfig.patch
 Patch2:         pciutils-ocloexec.patch
 Patch3:         pciutils-endianh.patch
@@ -94,9 +96,11 @@ ln -sf /%{_lib}/libpci.so.3 %{buildroot}%{_libdir}/libpci.so
 %{_mandir}/man5/pci.ids.5%{?ext_man}
 
 %files -n %{lname}
+%license COPYING
 /%{_lib}/libpci.so.*
 
 %files devel
+%license COPYING
 %{_includedir}/pci/
 %{_libdir}/libpci.so
 %{_libdir}/pkgconfig/libpci.pc

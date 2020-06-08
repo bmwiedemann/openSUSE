@@ -1,5 +1,5 @@
---- jna-5.4.0/build.xml	2019-07-19 21:22:03.000000000 +0200
-+++ jna-5.4.0/build.xml	2019-10-10 19:10:07.252492214 +0200
+--- jna-5.5.0/build.xml	2019-10-30 17:41:18.000000000 +0100
++++ jna-5.5.0/build.xml	2020-06-04 08:56:23.649941131 +0200
 @@ -357,7 +357,7 @@
    <target name="-setup" depends="-dynamic-properties">
      <path id="compile-test.path">
@@ -18,7 +18,7 @@
            description="Build primary jar">
      <!-- Bundle native components with primary jar to facilitate
           easy distribution to common platforms.
-@@ -436,155 +436,10 @@
+@@ -436,157 +436,10 @@
          <!-- Note that no terminal "*" is included in this list,
               which will force failure on unsupported platforms.
            -->
@@ -61,6 +61,8 @@
 -processor=x86-64;osname=linux,
 -com/sun/jna/linux-arm/libjnidispatch.so;
 -processor=arm;osname=linux,
+-com/sun/jna/linux-arm/libjnidispatch.so;
+-processor=arm_le;osname=linux,
 -com/sun/jna/linux-armel/libjnidispatch.so;
 -processor=armel;osname=linux,
 -com/sun/jna/linux-aarch64/libjnidispatch.so;
@@ -174,7 +176,7 @@
      </jar>
      <zip zipfile="${build}/${minjar}">
        <zipfileset src="${build}/${jar}" excludes="**/*jnidispatch*"/>
-@@ -1057,7 +912,7 @@
+@@ -1059,7 +912,7 @@
      </javac>
    </target>
  
@@ -183,16 +185,16 @@
    	description="Compile all test code">
      <javac classpathref="compile-test.path"
             source="${test.compatibility}"
-@@ -1109,8 +964,6 @@
+@@ -1111,8 +964,6 @@
      <mkdir dir="${build}/jws"/>
      <copy todir="${build}/jws" file="${build}/${jar}"/>
      <copy todir="${build}/jws" file="${build}/${testjar}"/>
 -    <copy todir="${build}/jws" file="lib/junit.jar"/>
 -    <copy todir="${build}/jws" file="lib/clover.jar"/>
-     <jar jarfile="${build}/jws/jnidispatch.jar">
+     <jar jarfile="${build}/jws/jnidispatch.jar" createUnicodeExtraFields="never" encoding="UTF-8">
        <fileset dir="${build.native}" includes="*jnidispatch.*"/>
      </jar>
-@@ -1311,7 +1164,6 @@
+@@ -1313,7 +1164,6 @@
        <doctitle>JNA API Documentation</doctitle>
        <header>${header}</header>
        <bottom>${footer}</bottom>
@@ -200,13 +202,13 @@
  
        <packageset dir="${src}" defaultexcludes="yes">
          <patternset>
-@@ -1329,13 +1181,14 @@
+@@ -1331,13 +1181,14 @@
        <group title="Platform Specific" packages="com.sun.jna.platform.*"/>
  
        <arg value="-notimestamp"/>
 +      <arg value="--allow-script-in-comments"/>
      </javadoc>
-     <jar jarfile="${platform-javadoc-jar}">
+     <jar jarfile="${platform-javadoc-jar}" createUnicodeExtraFields="never" encoding="UTF-8">
        <fileset dir="${javadoc}" />
      </jar>
    </target>
@@ -216,9 +218,9 @@
            description="Build distribution files">
      <copy todir="${dist}" force="true" overwrite="true">
        <fileset dir="${build}" includes="${jar},${minjar},${aar}"/>
-Only in jna-5.4.0: build.xml.orig
---- jna-5.4.0/native/Makefile	2019-07-19 21:22:03.000000000 +0200
-+++ jna-5.4.0/native/Makefile	2019-10-10 19:08:35.831965950 +0200
+Only in jna-5.5.0/native/libffi/src/powerpc: linux64_closure.S.orig
+--- jna-5.5.0/native/Makefile	2019-10-30 17:41:18.000000000 +0100
++++ jna-5.5.0/native/Makefile	2020-06-04 08:53:07.896789270 +0200
 @@ -97,7 +97,7 @@
  PCFLAGS=-W -Wall -Wno-unused -Wno-parentheses
  CFLAGS=$(PCFLAGS) $(CFLAGS_EXTRA) $(COPT) $(CDEBUG) $(CDEFINES) $(CINCLUDES) \
@@ -228,6 +230,20 @@ Only in jna-5.4.0: build.xml.orig
  ifeq ($(DYNAMIC_LIBFFI),true)
  CFLAGS += $(shell pkg-config --cflags libffi 2>/dev/null || echo)
  LIBS += $(shell pkg-config --libs libffi 2>/dev/null || echo -lffi)
+@@ -337,11 +337,11 @@
+     GCC_MAJOR_VERSION = $(shell gcc -dumpversion | cut -f 1 -d '.')
+     ifneq ($(GCC_MAJOR_VERSION),4)
+ 	ifneq ($(GCC_MAJOR_VERSION),3)
+-	    LOC_CC_OPTS=-Wno-unknown-warning-option -Werror -Wno-clobbered -Wno-unused-variable
++	    LOC_CC_OPTS=-Wno-error -Wno-clobbered -Wno-unused-variable
+ 	endif
+     endif
+ else
+-    LOC_CC_OPTS=-Wno-unknown-warning-option -Werror -Wno-clobbered -Wno-unused-variable
++    LOC_CC_OPTS=-Wno-error -Wno-clobbered -Wno-unused-variable
+ endif
+ 
+ # Enable 64-bit builds if the arch demands it
 @@ -457,7 +457,6 @@
  
  $(LIBRARY): $(JNIDISPATCH_OBJS) $(FFI_LIB)

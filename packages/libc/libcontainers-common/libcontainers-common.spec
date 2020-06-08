@@ -16,16 +16,16 @@
 #
 
 # libpodver - version from containers/libpod
-%define libpodver 1.8.0
+%define libpodver 1.9.3
 
 # storagever - version from containers/storage
-%define storagever 1.16.1
+%define storagever 1.19.1
 
 # imagever - version from containers/image
-%define imagever 5.2.1
+%define imagever 5.4.4
 
 Name:           libcontainers-common
-Version:        20200306
+Version:        20200603
 Release:        0
 Summary:        Configuration files common to github.com/containers
 License:        Apache-2.0 and GPL-3.0+
@@ -94,7 +94,6 @@ cd ..
 cat >>%{SOURCE5} <<EOL
 /etc/SUSEConnect:/etc/SUSEConnect
 /etc/zypp/credentials.d/SCCcredentials:/etc/zypp/credentials.d/SCCcredentials
-/var/lib/ca-certificates/pem/SUSE.pem:/etc/pki/trust/anchors/SUSE.pem
 EOL
 %endif
 

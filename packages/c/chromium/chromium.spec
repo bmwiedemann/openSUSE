@@ -46,7 +46,7 @@
 %bcond_with clang
 %bcond_with wayland
 Name:           chromium
-Version:        83.0.4103.61
+Version:        83.0.4103.97
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -89,6 +89,9 @@ Patch26:        chromium-83-gcc-iterator.patch
 Patch27:        chromium-83-gcc-include.patch
 Patch28:        chromium-83-gcc-10.patch
 Patch29:        chromium-81-re2-0.2020.05.01.patch
+Patch30:        chromium-83-gcc-location-revert.patch
+# Do not use unrar code, it is non-free
+Patch31:        chromium-norar.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -249,11 +252,11 @@ BuildRequires:  pkgconfig(vpx) >= 1.6.1
 BuildRequires:  clang >= 5.0.0
 %else
 %if %{?suse_version} > 1500
-BuildRequires:  gcc >= 8
-BuildRequires:  gcc-c++ >= 8
+BuildRequires:  gcc >= 9
+BuildRequires:  gcc-c++ >= 9
 %else
-BuildRequires:  gcc8
-BuildRequires:  gcc8-c++
+BuildRequires:  gcc9
+BuildRequires:  gcc9-c++
 %endif
 %endif
 
@@ -399,7 +402,6 @@ keeplibs=(
     third_party/node
     third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2
     third_party/one_euro_filter
-    third_party/openh264
     third_party/openscreen
     third_party/openscreen/src/third_party/tinycbor/src/src
     third_party/ots
@@ -532,8 +534,8 @@ export CXX=g++
 export AR=ar
 export NM=nm
 %if 0%{?suse_version} <= 1500
-export CC=gcc-8
-export CXX=g++-8
+export CC=gcc-9
+export CXX=g++-9
 # some still call gcc/g++
 mkdir -p "$HOME/bin/"
 ln -sfn %{_bindir}/$CC $HOME/bin/gcc
@@ -630,7 +632,6 @@ myconf_gn+=" use_system_freetype=true"
 %endif
 myconf_gn+=" enable_hangout_services_extension=true"
 myconf_gn+=" enable_vulkan=true"
-myconf_gn+=" enable_hevc_demuxing=true"
 %if %{with pipewire}
 myconf_gn+=" rtc_use_pipewire=true rtc_link_pipewire=true"
 myconf_gn+=" rtc_use_pipewire_version=\"0.3\""

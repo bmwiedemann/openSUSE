@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun  3 14:37:20 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to image 5.4.4
+  - Remove registries.conf VERSION 2 references from man page
+  - Intial authfile man page
+  - Add $HOME/.config/containers/certs.d to perHostCertDirPath
+  - Add $HOME/.config/containers/registries.conf to config path
+  - registries.conf.d: add stances for the registries.conf
+- update to libpod 1.9.3
+  - userns: support --userns=auto
+  - Switch to using --time as opposed to --timeout to better match Docker
+  - Add support for specifying CNI networks in podman play kube
+  - man pages: fix inconsistencies
+- Update to storage 1.19.1
+  - userns: add support for auto
+  - store: change the default user to containers
+  - config: honor XDG_CONFIG_HOME
+- Remove the /var/lib/ca-certificates/pem/SUSE.pem workaround again.
+  It never ended up in SLES and a different way to fix the underlying
+  problem is being worked on.
+
+-------------------------------------------------------------------
 Wed May 13 12:45:58 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Add registry.opensuse.org as default registry [bsc#1171578] 

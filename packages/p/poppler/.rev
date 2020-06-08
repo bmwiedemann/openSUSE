@@ -1604,4 +1604,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>799487</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>cf1b5a76c9a1723025bd73165a8137b1</srcmd5>
+    <version>0.89.0</version>
+    <time>1591652798</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel, lets see what breaks this time :-)</comment>
+    <requestid>811372</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,8 @@
-diff -urN chromium-62.0.3192.0.orig/media/BUILD.gn chromium-62.0.3192.0/media/BUILD.gn
---- chromium-62.0.3192.0.orig/media/BUILD.gn	2017-08-25 11:22:39.294487172 +0200
-+++ chromium-62.0.3192.0/media/BUILD.gn	2017-08-25 11:25:41.674488175 +0200
-@@ -42,12 +42,6 @@
+Index: chromium-83.0.4103.61/media/BUILD.gn
+===================================================================
+--- chromium-83.0.4103.61.orig/media/BUILD.gn
++++ chromium-83.0.4103.61/media/BUILD.gn
+@@ -45,12 +45,6 @@ buildflag_header("media_buildflags") {
    ]
  }
  
@@ -14,3 +15,17 @@ diff -urN chromium-62.0.3192.0.orig/media/BUILD.gn chromium-62.0.3192.0/media/BU
  # Common configuration for targets in the media directory; these must not be
  # exported since things like USE_NEON and USE_CRAS have different meanings
  # elsewhere in the code base.
+Index: chromium-83.0.4103.61/third_party/webrtc/webrtc.gni
+===================================================================
+--- chromium-83.0.4103.61.orig/third_party/webrtc/webrtc.gni
++++ chromium-83.0.4103.61/third_party/webrtc/webrtc.gni
+@@ -152,8 +152,7 @@ declare_args() {
+   #
+   # Enabling H264 when building with MSVC is currently not supported, see
+   # bugs.webrtc.org/9213#c13 for more info.
+-  rtc_use_h264 =
+-      proprietary_codecs && !is_android && !is_ios && !(is_win && !is_clang)
++  rtc_use_h264 = false
+ 
+   # By default, use normal platform audio support or dummy audio, but don't
+   # use file-based audio playout and record.

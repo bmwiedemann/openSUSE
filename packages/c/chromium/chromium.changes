@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Jun  4 06:28:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 83.0.4103.97 bsc#1172496:
+  * CVE-2020-6493: Use after free in WebAuthentication.
+  * CVE-2020-6494: Incorrect security UI in payments.
+  * CVE-2020-6495: Insufficient policy enforcement in developer tools.
+  * CVE-2020-6496: Use after free in payments.
+
+-------------------------------------------------------------------
+Thu May 28 09:18:05 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to not use bundled unrar:
+  * chromium-norar.patch
+
+-------------------------------------------------------------------
+Thu May 28 08:59:02 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Amend chromium-prop-codecs.patch to allow proprietary_codecs
+  without building third_party/openh264
+
+-------------------------------------------------------------------
+Wed May 27 12:03:31 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add revert of location setting commit that broke build on
+  openSUSE Leap 15.1:
+  * chromium-83-gcc-location-revert.patch
+
+-------------------------------------------------------------------
+Mon May 25 09:16:54 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Swtich to GCC 9.x on Leaps to avoid gcc bug exposed in gcc8
+
+-------------------------------------------------------------------
 Fri May 22 09:44:37 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix building with new re2:

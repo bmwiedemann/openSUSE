@@ -1,0 +1,82 @@
+From 26004df63c25061586a967f3586795a75280acc2 Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lkundrak@v3.sk>
+Date: Wed, 25 Dec 2019 18:54:03 +0100
+Subject: [PATCH] glamor_egl: Reject OpenGL < 2.1 early on
+
+The Etnaviv driver on GC2000 reports desktop OpenGL 1.3 but also OpenGL ES 2.0.
+However, with the modesetting driver, GLES2 never gets a chance:
+
+  [ 11233.393] Require OpenGL version 2.1 or later.
+  [ 11233.393] (EE) modeset(0): Failed to initialize glamor at ScreenInit() time.
+  [ 11233.393] (EE)
+  Fatal server error:
+  [ 11233.395] (EE) AddScreen/ScreenInit failed for driver 0
+
+Let's reject old desktop GL early on, just like XWayland seems to do.
+
+This is perhaps a slightly bit more complicated that one would expect, since we
+need to call eglMakeCurrent() before we query the GL version.
+
+Signed-off-by: Lubomir Rintel <lkundrak@v3.sk>
+---
+ glamor/glamor_egl.c | 39 ++++++++++++++++++++++++++++-----------
+ 1 file changed, 28 insertions(+), 11 deletions(-)
+
+Index: xserver-1.20.8+0/glamor/glamor_egl.c
+===================================================================
+--- xserver-1.20.8+0.orig/glamor/glamor_egl.c
++++ xserver-1.20.8+0/glamor/glamor_egl.c
+@@ -985,6 +985,22 @@ glamor_egl_init(ScrnInfoPtr scrn, int fd
+                                                    config_attribs);
+     }
+ 
++    if (glamor_egl->context != EGL_NO_CONTEXT) {
++        if (!eglMakeCurrent(glamor_egl->display,
++                            EGL_NO_SURFACE, EGL_NO_SURFACE, glamor_egl->context)) {
++            xf86DrvMsg(scrn->scrnIndex, X_ERROR,
++                       "Failed to make GL context current\n");
++            goto error;
++        }
++
++        if (epoxy_gl_version() < 21) {
++            xf86DrvMsg(scrn->scrnIndex, X_INFO,
++                       "glamor: Ignoring GL < 2.1, falling back to GLES.\n");
++            eglDestroyContext(glamor_egl->display, glamor_egl->context);
++            glamor_egl->context = EGL_NO_CONTEXT;
++        }
++    }
++
+     if (glamor_egl->context == EGL_NO_CONTEXT) {
+         static const EGLint config_attribs[] = {
+             EGL_CONTEXT_CLIENT_VERSION, 2,
+@@ -999,18 +1015,19 @@ glamor_egl_init(ScrnInfoPtr scrn, int fd
+         glamor_egl->context = eglCreateContext(glamor_egl->display,
+                                                NULL, EGL_NO_CONTEXT,
+                                                config_attribs);
+-    }
+-    if (glamor_egl->context == EGL_NO_CONTEXT) {
+-        xf86DrvMsg(scrn->scrnIndex, X_ERROR,
+-                   "glamor: Failed to create GL or GLES2 contexts\n");
+-        goto error;
+-    }
+ 
+-    if (!eglMakeCurrent(glamor_egl->display,
+-                        EGL_NO_SURFACE, EGL_NO_SURFACE, glamor_egl->context)) {
+-        xf86DrvMsg(scrn->scrnIndex, X_ERROR,
+-                   "Failed to make EGL context current\n");
+-        goto error;
++        if (glamor_egl->context == EGL_NO_CONTEXT) {
++            xf86DrvMsg(scrn->scrnIndex, X_ERROR,
++                       "glamor: Failed to create GL or GLES2 contexts\n");
++            goto error;
++        }
++
++        if (!eglMakeCurrent(glamor_egl->display,
++                            EGL_NO_SURFACE, EGL_NO_SURFACE, glamor_egl->context)) {
++            xf86DrvMsg(scrn->scrnIndex, X_ERROR,
++                       "Failed to make GLES2 context current\n");
++            goto error;
++        }
+     }
+ 
+     renderer = glGetString(GL_RENDERER);

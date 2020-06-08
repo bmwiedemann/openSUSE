@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun  3 14:04:18 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- update to version 0.89.0
+  + core:
+    - Add support for ResetForm action
+    - Fix crash in PDFDoc::getSignatureFields when there's no Forms
+      at all
+    - Fix exporting to PS of some files with CID fonts
+    - Use ICC profiles in PS output (if new enough lcms is used)
+    - Allow almost-singular tiling pattern matrices
+    - Fix memory leak when failing to load some fonts
+    - CairoOutputDev: Use stroke opacity when clipping to a stroke
+      path
+    - CairoOutputDev: Fix tiling patterns when pattern cell is too
+      far
+  + glib: Add poppler_movie_get_aspect
+  + cpp: Add the font infos to the text_box object
+- Bump poppler_sover following upstream changes.
+
+-------------------------------------------------------------------
 Thu Apr 30 06:29:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.88.0:

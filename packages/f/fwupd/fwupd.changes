@@ -1,4 +1,245 @@
 -------------------------------------------------------------------
+Wed Jun 03 15:32:46 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 1.4.2:
+  * vli: Add no-guid-matching for all VLI devices
+  * vli: Remove a copy-and-paste mistake
+  * Add two OUI quirks
+  * ata: Add WD OUI quirk 000cca
+  * synaptics-rmi: Essentially blacklist Dell K12A
+  * dfu: Avoid communicating when bitManifestationTolerant is off
+  * ata: Add OUI quirk for Western Digital
+  * dfu: Support MATEKF722SE quirk
+  * Fix various build issues with -Wdiscarded-qualifiers
+  * thunderbolt/dell-dock: Delay activation for Thunderbolt updates
+  * Switch the default of EnumerateAllDevices to false
+  * Add OUI quirk for SanDisk
+  * vli: Add two standard USB instance IDs for shared-PD devices
+  * vli: Use GPIOB to reset the VL817 found in two Lenovo products
+  * tpm-eventlog: Correct the display of final calculated PCRs
+  * wacom-raw: fixup switching to bootloader mode
+
+-------------------------------------------------------------------
+Wed Jun 03 15:30:48 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 1.4.1:
+  * thunderbolt: Don't show safe mode errors for USB4 host controllers
+  * ep963x: Various changes to make the plugin actually work on real hardware
+  * Make tss2-esys conditional
+  * ep963x: Remove some dead code spotted by Coverity
+  * ccgx: Only update the FW2 partition of the ThinkPad USB-C Dock Gen2
+  * ccgx: Expand the FWImageType for future hardware
+  * Allow specifying the device on the command line by GUID
+  * Fix the DeviceID set by GetDetails
+  * wacom-usb: Fix a theoretical buffer over-read to make GCC happy
+  * vli: Only show the i2c devices on the USB3 hub
+  * Allow devices to be updatable, but only when upgrading a proxy device
+  * Reset the progressbar time estimate if the percentage is invalid
+  * ccgx: Always report 100% when finished writing
+  * Add a device quirk that forces an explicit device-id match
+  * ccgx: Set the device name and summary from quirk files
+  * vli: Only do the APP5 FW bug fix on affected hardware
+  * vli: Show all the buffer when debugging with FWUPD_VLI_USBHUB_VERBOSE
+  * fu-engine: Refresh device name and format before setting supported flag
+  * Allow a device to set the logical or physical ID during ->setup()
+  * ccgx: Split out a trivial helper to set the instance IDs
+  * ccgx: Set the device name to be more useful
+  * ccgx: Set the logical ID as the FwMode
+  * ccgx: Split out a trivial function to set the version
+  * ccgx: Do not reboot the device write after installing
+  * ccgx: Do no show the flash parameters when unknown
+  * Allow devices to match the proxy device by GUID
+  * Do not skip attach() if the device is marked _WILL_DISAPPEAR
+  * dell-dock: Port to using fu_device_get_proxy()
+  * Allow adding a device 'proxy' device that can do actions on it
+  * vli: Do not show the USB 2 recovery devices for USB 3 hubs
+  * vli: Add metadata to identify which is the same physical device
+  * uefi: correctly format firmware version of Dynabook (né Toshiba) X30, X40 and probably others
+  * synaptics-cxaudio: Use the ->attach() device vfunc
+  * synaptics-cxaudio: Wait for the device to reboot after writing firmware
+  * logitech_hidpp: decrease verbosity of messages that hid++ ID is missing
+  * Prefer to update the child first if the order is unspecified
+  * Do not modify the device priority for child devices
+
+-------------------------------------------------------------------
+Wed Apr 22 08:48:51 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Exclude fwupdate from the architectures without UEFI support.
+
+-------------------------------------------------------------------
+Wed Apr 15 06:23:16 UTC 2020 - glin@suse.com
+
+- Update to version 1.4.0:
+  * Release fwupd 1.4.0
+  * Allow removing device flags from quirk files
+  * Use black to format python source in a consistent manner
+  * Define SOURCE_VERSION when building a package
+  * Only set the parent when adopting children
+  * Do not conditionalize attach() and detach() on IS_BOOTLOADER
+  * Do not crash the daemon if a plugin does something dumb
+  * wacom-usb: Add more sanity checks in case the daemon goes crazy
+  * wacom-usb: Use a per-device cleanup function
+  * Add some more device regression tests
+  * wacom-usb: Add a lot of missing metadata about the devices
+  * wacom-usb: Hide a lot of debugging behind FWUPD_WACOM_VERBOSE
+  * Only auto-add counterpart GUIDs when required
+  * ccgx: remove update message
+  * ccgx: add parent guid for hybrid dock
+  * ccgx: Use a smaller timeout for i2c read and write operations
+  * ccgx: Retry the register read and write with a i2c reset
+  * ccgx: Fix buffer overflow when reading out i2c status
+  * ccgx: Retry the HID disconnect up to 5 times
+  * ccgx: Show a better error message on failure
+  * ccgx: Allow forcing firmware of the wrong app_type with fwupdtool
+  * Modularize the hardware tests
+  * Ignore indirect devices that replug during the composite firmware update
+  * Export the device state as part of the D-Bus interface
+  * Fix devices that use CounterpartGuid when more than one device is installed
+  * Use the GUID as a fallback rather than the connection ID
+  * ccgx: Fix critical warning on i2c write failure
+  * logitech-hidpp: Do not add peripheral devices for receiver in BL mode
+  * Install the installed-tests only if tests are enabled
+  * Load the signature to get the aliased CDN-safe version of the metadata
+  * vli: Only reboot the USB hub once
+  * synaptics-cxaudio: Only use the PATCH2 address when the patch level is 2
+  * add STM32F745 stm dfuse quirk
+  * dfu: Add a way to set the timeout from a quirk
+  * Export the release urgency
+  * Export the release creation time
+  * Check the firmware requirements before adding SUPPORTED
+  * data/motd/fwupd-refresh: Only order after network.target
+  * ccgx: Do not add the HID device that will disconnect
+  * ccgx: Use Silicon ID and Application type to set flash parameters
+  * Add a new daemon configuration option to control EnumerateAllDevices
+  * logitech_hidpp: set the bootloader protocol
+  * Install meson from pip for LGTM
+  * bash: add completion for fwupdtool reinstall
+  * fu-tool: add reinstall command
+  * fu-engine: export fu_engine_get_releases_for_device in header
+  * vli: Wait for the VL103 to timeout to fix detach
+  * ccgx: Show the UpdateMessage in the correct device mode
+  * ccgx: Add extra instance IDs to match specific firmware
+  * Use a static version number
+  * thunderbolt: Rather than hardcoding to PCI slot numbers, use domain in GUID
+  * Revert "thunderbolt: Create a unique GUID including Thunderbolt controller path"
+  * dell-dock: Port to fu_device_retry()
+  * nitrokey: Convert to use FuHidDevice
+  * nitrokey: Port to fu_device_retry()
+  * vli: Port to fu_device_retry()
+  * Add fu_device_retry() helper functionality
+  * ccgx: Implement writing firmware to flash
+  * ccgx: Add i2c status check when reading or writing registers
+  * ccgx: Add 5ms delay between read registers to avoid an i2c error
+  * libfwupdplugin: Use fu_device_locker_close()
+  * synaptics-mst: Use fu_device_locker_close()
+  * Add fu_device_locker_close()
+  * ccgx: Do not store the silicon ID in the image address
+  * ccgx: Add device quirks for the Lenovo Hybrid Dock
+  * ccgx: Switch HID mode to HPI mode at startup
+  * ccgx: Clear the event queue when in startup
+  * ccgx: Wait for hardware to settle when coming out of reset
+  * ccgx: Do not mark the device as updatable when in boot mode
+  * ccgx: Verify the firmware app type when preparing firmware
+  * ccgx: Set the update message when running in backup firmware
+  * ccgx: Read the FwAppType from the hardware
+  * ccgx: Set the HPI version number for the current firmware
+  * ccgx: Get the silicon ID to map the flash parameters
+  * ccgx: Read the HPI device mode at startup
+  * ccgx: Set up the HPI I²C config at startup
+  * ccgx: Create devices when in HID and I2C modes
+  * Add a new ChromeOS CI target to build without GPG and PKCS7
+  * Use Jcat files in firmware archives and for metadata
+  * csr: Allow truncated HID reads
+  * vli: Only consider the high nibble when building the sub-version
+  * csr: Parse the firmware as a DFU file
+  * Add support for EP963x hardware
+  * Add FuHidDevice abstraction
+  * vli: Correctly attach VL103 after a firmware update
+  * ccgx: Parse the metadata block in the firmware image
+  * ccgx: Add a firmare parser for cyacd files
+  * logitech: Correctly set the protocol
+  * Add the optional device-id to the update --help output
+  * Fix a difficult-to-trigger daemon hang when replugging devices
+  * vli: Remove a dock device from the whitelist that is never going to be updated
+  * vli: Add some trivial debugging to help track down a bug
+  * vli: Never add USB hub devices that are not upgradable
+  * uefi: Don't use shim for non-secure boot configurations
+  * Start fwupd-activate.service after snapd.service
+  * dfu: Actually reload the DFU device after upgrade has completed
+  * dfu: Add one more m-stack device requiring a quirk
+  * Apply version format to releases and devices at same time
+  * Ensure that the DeviceID is set for child devices
+  * Fix a daemon crash when removing children
+  * Allow waiting for the parent device when replugging
+  * Add fu_device_get_root() shared API
+  * vli: Fix an error when detaching MSP430
+  * vli: Fix a critical warning when getting the USB speed
+  * vli: Fix the error enum values for the MSP430
+  * Do not add blank lines when tokenizing Intel hex files
+  * vli: Fix the version calculation for MSP430
+  * vli: Ignore one more error when attaching
+  * vli: Always expect the VL103 header at 0x1003 or 0x4000
+  * vli: Do not fall back to the recovery write for usbhubs
+  * vli: Only show the 2nd header if the device ID is valid
+  * vli: Fix VL103 reboot from ROM mode to FW mode
+  * vli: Add some better comments for writing GPIOs
+  * Add a helper script to add a DFU header
+  * Add 'firmware-convert' subcommand to fwupdtool
+  * fu-engine: Make two passes of requirements checking
+  * fu-engine: Copy the VersionFormat from the CAB if specified in `get-details`
+  * Add a new plugin for CPU microcode
+  * Don't build/install fwupdagent man page if agent build is not requested
+  * Introduce a new VersionFormat for `hex`
+  * Drop UEFI quirks we now inherit from metadata
+  * ci: build Debian using libflashrom
+  * When TPM PCR0 measurements fail, query if secure boot is available and enabled
+  * fix fwupd.shutdown.in according to the movement of fwupdtool to bindir
+  * ata: Add OUI quirk for Western Digital and Intel
+  * improved fish shell completion
+  * vli: Set the MSP430 version format to pair
+  * Always return AppStream markup for remote agreements
+  * ata: Add trivial OUI quirk for Micron
+  * added completion script for fish shell
+  * Do not fail loading in /etc/machine-id is not available
+  * Use xb_builder_source_add_simple_adapter
+  * Create FuCabinet and untangle a lot of legacy code
+  * nvme: Do not try to handle integer version numbers
+  * Allow server metadata to set the version format on some devices
+  * fu-tool: Correctly append the release to devices in `get-details`
+  * For the `get-details` command make sure to always show devices
+  * fu-engine: Copy the version and format from donor device in get-details
+  * fu-engine: Use unknown for version format by default on get-details
+  * Inihbit all power management actions using logind when updating
+  * Decouple the version format from the version itself
+  * Add raw versions for bootloader and lowest
+  * Allow server metadata to set the device name on some devices
+  * Remove support for GCab less than v1.0
+  * fu-device-list: Check protocol before de-duping devices
+  * Do not allow devices that have no vendor ID to be UPDATABLE
+  * ata: Include a vendor ID for ATA hardware
+  * ata: Switch off the verbose logging by default
+  * Always check for PLAIN when doing vercmp() operations
+  * Discard the reason upgrades aren't available (Fixes: #1678)
+  * Improve the description of `fwupdtpmevlog` for man page
+  * Move `fwupdtpmevlog` into `bindir`
+  * uefi: Move `fwupdate` into `bindir`
+  * Move `fwupdtool` and `fwupdagent` into `bindir`
+  * Use the system provided flashrom on Fedora
+  * Add a plugin vfunc to run after subclassed FuDevice creation
+  * ci: use standalone script to generate build dependencies
+  * Move the daemons from /usr/lib/fwupd to /usr/libexec/fwupd
+  * Use the recently released flashrom v1.2
+  * Generate an additional UEFI quirk file using the stable LVFS metadata
+  * uefi: Apply capsule update even with single valid capsule
+  * Fix a critical warning when installing some firmware
+  * ebitdo: Fix the endpoint address logged in the error message
+  * uefi: Find the correct lds and crt name when specifying -Defi_ldsdir
+  * upower: Move battery threshold declaration into a configuration file
+  * upower: Decrease minimum battery requirement to 10%
+- Refresh fwupd-bsc1130056-change-shim-path.patch
+- Add new dependency: jcat
+
+-------------------------------------------------------------------
 Wed Mar 11 09:14:46 UTC 2020 - hpj@urpla.net
 
 - Update to version 1.3.9:
