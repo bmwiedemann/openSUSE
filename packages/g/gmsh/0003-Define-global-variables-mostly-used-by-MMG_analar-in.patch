@@ -1,0 +1,64 @@
+From fa82408303433c2fc7bfa2b6f702e7c4b535f0b1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Mon, 8 Jun 2020 03:01:38 +0200
+Subject: [PATCH 3/3] Define global variables mostly used by MMG_analar in
+ analar.c
+
+The analar state variables are only reset and printed in MMG_mmg3d1,
+MMG_mm3d4, so move the definition to analar.c.
+
+Another ODR violation fix.
+---
+ contrib/mmg3d/build/sources/analar.c | 5 +++--
+ contrib/mmg3d/build/sources/mmg3d1.c | 3 ++-
+ contrib/mmg3d/build/sources/mmg3d4.c | 4 ++--
+ 3 files changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/contrib/mmg3d/build/sources/analar.c b/contrib/mmg3d/build/sources/analar.c
+index cf032cae0..1c9827cf3 100644
+--- a/contrib/mmg3d/build/sources/analar.c
++++ b/contrib/mmg3d/build/sources/analar.c
+@@ -51,8 +51,9 @@ along with MMG3D. If not, see <http://www.gnu.org/licenses/>.
+ #define EPS4  1.e-04
+ 
+ extern int MMG_nlen,MMG_ncal,MMG_ntopo,MMG_nex;
+-extern int MMG_npuisstot,MMG_nvoltot,MMG_nprestot;
+-extern int MMG_npdtot;
++
++int MMG_npuisstot,MMG_nvoltot,MMG_nprestot;
++int MMG_npdtot;
+ 
+ int MMG_npuiss,MMG_nvol,MMG_npres;
+ 
+diff --git a/contrib/mmg3d/build/sources/mmg3d1.c b/contrib/mmg3d/build/sources/mmg3d1.c
+index 3408e41d3..d490afdf5 100644
+--- a/contrib/mmg3d/build/sources/mmg3d1.c
++++ b/contrib/mmg3d/build/sources/mmg3d1.c
+@@ -47,7 +47,8 @@ along with MMG3D. If not, see <http://www.gnu.org/licenses/>.
+ 
+ extern TIM_mytime         MMG_ctim[TIMEMAX];
+ 
+-int MMG_npdtot,MMG_npuisstot,MMG_nvoltot,MMG_nprestot;
++extern int MMG_npuisstot,MMG_nvoltot,MMG_nprestot;
++extern int MMG_npdtot;
+ 
+ int MMG_cendellong(pMesh mesh,pSol sol,double declic,int base);
+ 
+diff --git a/contrib/mmg3d/build/sources/mmg3d4.c b/contrib/mmg3d/build/sources/mmg3d4.c
+index 395b01112..795fe3500 100644
+--- a/contrib/mmg3d/build/sources/mmg3d4.c
++++ b/contrib/mmg3d/build/sources/mmg3d4.c
+@@ -45,8 +45,8 @@ along with MMG3D. If not, see <http://www.gnu.org/licenses/>.
+ ****************************************************************************/
+ #include "mesh.h"
+ 
+-int MMG_npuisstot,MMG_nvoltot,MMG_nprestot;
+-int MMG_npdtot;
++extern int MMG_npuisstot,MMG_nvoltot,MMG_nprestot;
++extern int MMG_npdtot;
+ 
+ int ddebug;
+ 
+-- 
+2.26.2
+

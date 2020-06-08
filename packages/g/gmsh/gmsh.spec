@@ -29,7 +29,15 @@ URL:            https://gmsh.info/
 Source0:        https://gmsh.info/src/gmsh-%{version}-source.tgz
 Patch0:         link_dynamic_gl2ps.patch
 Patch1:         gmsh-2.10.1-implicit.patch
-Patch6:         gmsh-3.0.5-add-shebang-to-onelab.patch
+Patch2:         gmsh-3.0.5-add-shebang-to-onelab.patch
+# PATCH-FIX-UPSTREAM -- fix build with GCC 10
+Patch3:         move-globals-to-mmg3d-c.patch
+# PATCH-FIX-UPSTREAM -- fix build with GCC 10
+Patch4:         0001-MMG3D-Remove-some-duplicated-variables-from-global-s.patch
+# PATCH-FIX-UPSTREAM -- fix build with GCC 10
+Patch5:         0002-Remove-non-namespaced-endcod-function-duplicates-MMG.patch
+# PATCH-FIX-UPSTREAM -- fix build with GCC 10
+Patch6:         0003-Define-global-variables-mostly-used-by-MMG_analar-in.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  bison
 BuildRequires:  blas-devel
@@ -48,7 +56,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  makeinfo
 BuildRequires:  metis-devel
-BuildRequires:  oce-devel
+BuildRequires:  occt-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  zlib-devel
 %if %{with pdf_doc}
@@ -148,6 +156,10 @@ This package contains the public gmsh API for Python.
 %setup -q -n %{name}-%{version}-source
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
 %patch6 -p1
 
 %build

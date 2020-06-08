@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun  7 23:07:15 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix failing build due to GCC10 catching redefinitions, add
+  * move-globals-to-mmg3d-c.patch
+  * 0001-MMG3D-Remove-some-duplicated-variables-from-global-s.patch
+  * 0002-Remove-non-namespaced-endcod-function-duplicates-MMG.patch
+  * 0003-Define-global-variables-mostly-used-by-MMG_analar-in.patch
+- Use OCC OpenCASCADE variant, like FreeCAD. OCE is mostly dormant.
+
+-------------------------------------------------------------------
 Tue Apr  7 08:43:01 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 4.5.6:
