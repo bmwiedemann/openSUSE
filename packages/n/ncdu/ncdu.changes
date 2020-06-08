@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun  6 12:28:31 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 1.15
+  * (Linux) Add --exclude-kernfs option to exclude pseudo filesystems (Christian Göttsche)
+  * Fix bug in calculating the apparent size of directories containing hardlinks
+  * Fix integer overflow with directories containing >2GiB worth of file names
+  * Fix yet another possible 100% CPU bug when losing terminal
+- run spec-cleaner
+
+-------------------------------------------------------------------
 Sat May 18 08:08:05 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.14

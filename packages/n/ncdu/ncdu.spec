@@ -1,7 +1,7 @@
 #
 # spec file for package ncdu
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,11 @@
 
 
 Name:           ncdu
-Version:        1.14
+Version:        1.15
 Release:        0
 Summary:        NCurses Disk Usage
 License:        MIT
-Group:          System/Filesystems
-Url:            https://dev.yorhel.nl/ncdu/
+URL:            https://dev.yorhel.nl/ncdu/
 Source0:        https://dev.yorhel.nl/download/%{name}-%{version}.tar.gz
 Source1:        https://dev.yorhel.nl/download/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
@@ -38,14 +37,15 @@ directories are using your disk space.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%doc ChangeLog README COPYING
+%license COPYING
+%doc ChangeLog README
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog
