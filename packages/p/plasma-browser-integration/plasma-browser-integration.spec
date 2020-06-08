@@ -21,15 +21,15 @@
 %bcond_with browser_extension
 %bcond_without lang
 Name:           plasma-browser-integration
-Version:        5.18.5
+Version:        5.19.0
 Release:        0
 Summary:        Helper for the KDE Plasma Browser Integration
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Utilities
 Url:            https://cgit.kde.org/plasma-browser-integration.git
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-browser-integration-%{version}.tar.xz
+Source:         plasma-browser-integration-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-browser-integration-%{version}.tar.xz.sig
+Source1:        plasma-browser-integration-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}

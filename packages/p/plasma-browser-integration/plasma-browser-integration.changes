@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Jun  4 13:27:14 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- No code changes since 5.18.90
+
+-------------------------------------------------------------------
+Thu May 14 14:33:08 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Changes since 5.18.5:
+  * [Reminder] Also advert Chromie store for Vivaldi and Brave
+  * Port KRun::runApplication to ApplicationLauncherJob
+  * Use player "poster" as album cover if available
+  * Signal player gone in "pagehide" not "beforeunload"
+  * Support Brave browser
+  * Don't offer sending non-http(s)/ftp links and sources via KDE Connect
+  * Bump manifest version
+  * Better vertically align checkboxes in media controls blacklist
+  * Add "document-share" icon for "Share..." context menu entry
+  * Add device icons to KDE Connect context menu
+  * Show purpose context menu only when enabled (kde#418436)
+  * [Purpose Plugin] Open shared URL when clicking notification
+  * Restore old Audio prototype after exportFunction (kde#414512)
+  * Provide light icon for dark mode via theme_icons (kde#414544)
+  * Also invert the generic Plasma logo in dark mode
+  * Set AA_UseHighDpiPixmaps
+  * linkText will be set to the URL when there is no label
+  * Set linkText as share title
+  * Manually merge stored and default settings
+  * Prefer to use currentSrc on player
+  * Emit change for CanSeek only if it actually changed
+  * Don't consider player gone when it only got temporarily added by us
+  * Update KDE Connect Website URL
+  * Catch getSubsystemStatus failing on initial load (kde#418487)
+  * Update copyright
+  * Add link to changelog on about page
+  * Also overwrite document.createElement using exportFunction
+  * Add better player tab crash handling (kde#419699)
+
+-------------------------------------------------------------------
 Tue May  5 13:01:55 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5
