@@ -31,6 +31,7 @@ Source:         release-R%{major_version}-%{minor_version}.B.tar.gz
 Patch1:         fix_Makefile.patch
 Patch2:         Fix-arch-detection-for-armv6.patch
 Patch3:         reproducible.patch
+Patch4:         fix_vboot_version.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libgnutls-devel
 BuildRequires:  libuuid-devel
@@ -49,6 +50,7 @@ helper tools for Chrome OS devices.
 %patch1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 export CFLAGS="-D_GNU_SOURCE %{optflags}"

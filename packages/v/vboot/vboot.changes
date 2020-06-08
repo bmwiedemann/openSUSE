@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  7 16:18:07 UTC 2020 - Misha Komarovskiy <zombah@gmail.com>
+
+- add fix_vboot_version.patch to fix gcc10 build 
+
+-------------------------------------------------------------------
 Sun Feb 23 20:07:57 UTC 2020 - Misha Komarovskiy <zombah@gmail.com>
 
 - riscv64 arch is not supported by vboot, exclude it until supported 
