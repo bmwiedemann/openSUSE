@@ -1,4 +1,4 @@
-From f605191a7833e9791711d2272e05b52d92bcfb18 Mon Sep 17 00:00:00 2001
+From 0e638de390c1629feba3ebd165e4c2a9d872b4f9 Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Date: Wed, 27 Dec 2017 18:54:36 +0100
 Subject: [PATCH 2/3] Replace autologin configuration with a note to use YaST
@@ -13,10 +13,10 @@ which is what sddm uses as well.
  2 files changed, 19 insertions(+), 6 deletions(-)
 
 diff --git a/src/advancedconfig.cpp b/src/advancedconfig.cpp
-index 3ac31dd..3bc01cd 100644
+index ac1acfd..e5ff047 100644
 --- a/src/advancedconfig.cpp
 +++ b/src/advancedconfig.cpp
-@@ -84,7 +84,7 @@ void AdvanceConfig::load()
+@@ -84,7 +84,7 @@ void AdvancedConfig::load()
      const QString currentUser = mConfig->group("Autologin").readEntry("User", "");
      configUi->userList->setCurrentIndex(userModel->indexOf(currentUser));
  
@@ -25,9 +25,9 @@ index 3ac31dd..3bc01cd 100644
      configUi->sessionList->setCurrentIndex(sessionModel->indexOf(autologinSession));
  
      configUi->autoLogin->setChecked(!currentUser.isEmpty());
-@@ -108,7 +108,7 @@ QVariantMap AdvanceConfig::save()
-     QVariantMap args;
- 
+@@ -106,7 +106,7 @@ void AdvancedConfig::load()
+ void AdvancedConfig::save(QVariantMap &args)
+ {
      args[QStringLiteral("kde_settings.conf/Autologin/User")] = ( configUi->autoLogin->isChecked() ) ? configUi->userList->currentText() : QString();
 -    args[QStringLiteral("kde_settings.conf/Autologin/Session")] = ( configUi->autoLogin->isChecked() ) ? configUi->sessionList->currentData() : QString();
 +    args[QStringLiteral("kde_settings.conf/Autologin/Session")] = configUi->sessionList->currentData();
@@ -35,7 +35,7 @@ index 3ac31dd..3bc01cd 100644
      args[QStringLiteral("kde_settings.conf/Autologin/Relogin")] = configUi->reloginAfterQuit->isChecked();
      //TODO session
 diff --git a/src/ui/advancedconfig.ui b/src/ui/advancedconfig.ui
-index 537d932..85a73f9 100644
+index b4824e5..6941024 100644
 --- a/src/ui/advancedconfig.ui
 +++ b/src/ui/advancedconfig.ui
 @@ -19,7 +19,14 @@
@@ -100,5 +100,5 @@ index 537d932..85a73f9 100644
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
 -- 
-2.22.0
+2.25.1
 
