@@ -1,7 +1,7 @@
 #
 # spec file for package guile1
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,8 @@ Release:        0
 Summary:        GNU's Ubiquitous Intelligent Language for Extension
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Scheme
-Url:            https://www.gnu.org/software/guile/
+URL:            https://www.gnu.org/software/guile/
+#https://github.com/texmacs/guile/archive/texmacs.zip
 Source0:        https://ftp.gnu.org/gnu/guile/guile-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/guile/guile-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
@@ -169,6 +170,14 @@ sed -i s/-Werror// configure.in configure
 
 %build
 %define _lto_cflags %{nil}
+# NOTE: GCC 10 succeeds in rewriting a
+#particular tail call into jumps. This avoids stack frames from the
+#recursive call which the check relies on. Funnily enough, a comment
+#says: "If the code could be inlined, that might cause the test to give
+#an incorrect answer." - indeed.
+# As a result the guile executable causes a segfault when built with -02
+export CFLAGS="`echo %optflags|tr 02 00`"
+echo $CFLAGS
 sed -i "s:GUILE_:GUILE1_:" guile-config/guile.m4
 sed -i "s:guile:guile1:" guile-config/guile.m4
 # automake 1.13: do not run test simultaneously
@@ -181,7 +190,7 @@ autoreconf -fi
 	--with-pic \
 	--with-threads \
 	--program-transform-name="s:guile:%{binpref}:"
-make %{?_smp_mflags}
+make --trace %{?_smp_mflags}
 
 %check
 # 47 of 11930 tests are failing now

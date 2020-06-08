@@ -144,4 +144,14 @@
 </comment>
     <requestid>750430</requestid>
   </revision>
+  <revision rev="19" vrev="23">
+    <srcmd5>0e7c50755fe3dbcc5686a312cee11d53</srcmd5>
+    <version>1.8.8</version>
+    <time>1591654112</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with gcc10 by removing optimization from the build flags
+  Thanks to the lilypond devs.
+</comment>
+    <requestid>812590</requestid>
+  </revision>
 </revisionlist>

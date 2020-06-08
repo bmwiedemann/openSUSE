@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  8 12:03:54 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Fix build with gcc10 by removing optimization from the build flags
+  Thanks to the lilypond devs.
+
+-------------------------------------------------------------------
 Sat Nov 23 12:19:17 UTC 2019 - Dave Plater <davejplater@gmail.com>
 
 - Fix build with new texinfo, which now assumes UTF8 in the texi
