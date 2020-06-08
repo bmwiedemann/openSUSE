@@ -1,63 +1,38 @@
-From 53c3f29e67660edcd2c3b5f6a468f361275d17fd Mon Sep 17 00:00:00 2001
+From 1cb46a0ab2d5f713a0006b1ae7d0bdfc54d5cfe2 Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
-Date: Tue, 13 Jun 2017 21:04:27 +0200
-Subject: [PATCH] Revert "Make WindowSwitching (Alt+Tab) the default left touch
- screen edge"
+Date: Fri, 22 May 2020 19:48:34 +0200
+Subject: [PATCH] Revert "Make WindowSwitching (Alt+Tab) the default left
+ touchscreen edge"
 
 This reverts commit c453eb696cc97208f8ebf2f632995b891bb425c3.
 
 This causes a 1px wide window on the left screen edge
 that steals clicks from windows. Very annoying.
 
+BUG: 387775
 ---
- kcmkwin/kwinscreenedges/touch.cpp | 4 +---
- tabbox/tabbox.cpp                 | 6 +++---
- 2 files changed, 4 insertions(+), 6 deletions(-)
+ kcmkwin/kwinscreenedges/kwintouchscreensettings.kcfg | 2 +-
+ tabbox/tabbox.cpp                                    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-Index: kwin-5.15.80git.20191114T141940~cb7022150/kcmkwin/kwinscreenedges/touch.cpp
-===================================================================
---- kwin-5.15.80git.20191114T141940~cb7022150.orig/kcmkwin/kwinscreenedges/touch.cpp	2019-11-14 15:19:40.000000000 +0100
-+++ kwin-5.15.80git.20191114T141940~cb7022150/kcmkwin/kwinscreenedges/touch.cpp	2019-11-14 23:02:35.305453854 +0100
-@@ -251,7 +251,7 @@
-     KConfigGroup tabBoxConfig(m_config, "TabBox");
-     list.clear();
-     // TabBox
--    list.append(int(ElectricLeft));
-+    list.append(int(ElectricNone));
-     list = tabBoxConfig.readEntry("TouchBorderActivate", list);
-     foreach (int i, list) {
-         monitorChangeEdge(ElectricBorder(i), int(TabBox));
-@@ -346,8 +346,6 @@
-     // Clear all edges
-     for (int i = 0; i < 8; i++)
-         m_ui->monitor->selectEdgeItem(i, 0);
--    // select TabBox
--    m_ui->monitor->selectEdgeItem(int(Monitor::Left), int(TabBox));
- }
- 
- void KWinScreenEdgesConfig::monitorShowEvent()
-Index: kwin-5.15.80git.20191114T141940~cb7022150/tabbox/tabbox.cpp
-===================================================================
---- kwin-5.15.80git.20191114T141940~cb7022150.orig/tabbox/tabbox.cpp	2019-11-14 15:19:40.000000000 +0100
-+++ kwin-5.15.80git.20191114T141940~cb7022150/tabbox/tabbox.cpp	2019-11-14 23:02:35.305453854 +0100
-@@ -782,14 +782,14 @@
-         borderConfig = QStringLiteral("BorderAlternativeActivate");
-     }
- 
--    auto touchConfig = [this, config] (const QString &key, QHash<ElectricBorder, QAction *> &actions, TabBoxMode mode, const QStringList &defaults = QStringList{}) {
-+    auto touchConfig = [this, config] (const QString &key, QHash<ElectricBorder, QAction *> &actions, TabBoxMode mode) {
-         // fist erase old config
-         for (auto it = actions.begin(); it != actions.end(); ) {
-             delete it.value();
-             it = actions.erase(it);
-         }
-         // now new config
--        const QStringList list = config.readEntry(key, defaults);
-+        const QStringList list = config.readEntry(key, QStringList());
-         for (const auto &s : list) {
-             bool ok;
-             const int i = s.toInt(&ok);
-@@ -802,7 +802,7 @@
+diff --git a/kcmkwin/kwinscreenedges/kwintouchscreensettings.kcfg b/kcmkwin/kwinscreenedges/kwintouchscreensettings.kcfg
+index 49a253edc..feca5cb0c 100644
+--- a/kcmkwin/kwinscreenedges/kwintouchscreensettings.kcfg
++++ b/kcmkwin/kwinscreenedges/kwintouchscreensettings.kcfg
+@@ -47,7 +47,7 @@
+     </group>
+     <group name="TabBox">
+         <entry name="TouchBorderActivateTabBox" key="TouchBorderActivate" type="IntList">
+-            <default>ElectricLeft</default>
++            <default>ElectricNone</default>
+         </entry>
+         <entry key="TouchBorderAlternativeActivate" type="IntList">
+             <default>ElectricNone</default>
+diff --git a/tabbox/tabbox.cpp b/tabbox/tabbox.cpp
+index 87de23fc5..e13640c38 100644
+--- a/tabbox/tabbox.cpp
++++ b/tabbox/tabbox.cpp
+@@ -793,7 +793,7 @@ void TabBox::reconfigure()
              actions.insert(ElectricBorder(i), a);
          }
      };
@@ -66,3 +41,6 @@ Index: kwin-5.15.80git.20191114T141940~cb7022150/tabbox/tabbox.cpp
      touchConfig(QStringLiteral("TouchBorderAlternativeActivate"), m_touchAlternativeActivate, TabBoxWindowsAlternativeMode);
  }
  
+-- 
+2.25.1
+

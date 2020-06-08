@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sun Jun  7 19:57:54 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix loading the Plastik window decoration (boo#1172615):
+  * 0001-Fix-the-Plastik-decoration-with-Qt-5.15.patch
+
+-------------------------------------------------------------------
+Thu Jun  4 13:27:12 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- Changes since 5.18.90:
+  * [KCM] Fix label in Screen Edges system settings
+  * Capstone commit to prevent force push reversed commits returning accidentally.
+  * [scene] Avoid a crash when currentPixmap is invalid and previousPixmap is null or invalid
+  * [kcm/kwinrules] Fix "window role" combo not showing up (kde#422302)
+  * [kcm/kwinrules] Fix first item position on property list (kde#421583)
+  * [wayland] Fix misuse of EGL/eglmesaext.h (kde#422131)
+  * [effects/blur] Don't blur outside the frame rect (kde#422202)
+  * [kwinrules] Add kconf_update script to fix placement rule
+  * fix compilation, remove extra parenthesis
+  * Wayland: avoid binding disabled outputs to surfaces (kde#419749)
+  * Correctly align natural layout in present windows
+  * [kcm/kwinrules] Extend upper limit of position and size spinners (kde#421892)
+  * [decoration] Fix propagation of client size (kde#419080)
+  * [platforms/drm] show cursor only when it is enabled (kde#418977)
+  * [scene] Re-build window quads after creating a WindowPixmap
+  * [kcm/kwinrules] Detect virtual desktops in Wayland (kde#416165)
+  * [kcm/kwinrules] Fix Placement setting (kde#421586)
+  * [kcm/kwinrules] Fix size properties not being stored (kde#421055)
+  * [kcm/kwinrules] Fix placeholder message in RulesEditor
+- Remove patches, now upstream:
+  * 0001-scene-Re-build-window-quads-after-creating-a-WindowP.patch
+
+-------------------------------------------------------------------
+Fri May 22 17:51:15 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Reintroduce patch, apparently still needed:
+  * 0001-Revert-Make-WindowSwitching-Alt-Tab-the-default-left.patch
+
+-------------------------------------------------------------------
+Tue May 19 18:39:34 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix initial rendering of Xwayland windows:
+  * 0001-scene-Re-build-window-quads-after-creating-a-WindowP.patch
+
+-------------------------------------------------------------------
+Thu May 14 14:33:05 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Too many changes to list here
+- Refresh patches:
+  * 0001-Bypass-wayland-interface-blacklisting.patch
+  * 0001-Use-Xauthority-for-Xwayland.patch
+- Drop patch, upstream changes made it unnecessary:
+  * 0001-Revert-Make-WindowSwitching-Alt-Tab-the-default-left.patch
+
+-------------------------------------------------------------------
 Tue May  5 13:01:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5

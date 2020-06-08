@@ -17,11 +17,11 @@ starting applications as other users again
  xwl/xwayland.h   |   3 ++
  3 files changed, 105 insertions(+), 2 deletions(-)
 
-Index: kwin-5.15.80git.20200128T055143~f859c2184/CMakeLists.txt
+Index: kwin-5.15.80git.20200430T125608~3a9d7a6e9/CMakeLists.txt
 ===================================================================
---- kwin-5.15.80git.20200128T055143~f859c2184.orig/CMakeLists.txt	2020-01-28 07:06:54.470652988 +0100
-+++ kwin-5.15.80git.20200128T055143~f859c2184/CMakeLists.txt	2020-01-28 07:07:01.953123505 +0100
-@@ -605,6 +605,7 @@
+--- kwin-5.15.80git.20200430T125608~3a9d7a6e9.orig/CMakeLists.txt	2020-04-30 12:56:08.000000000 +0200
++++ kwin-5.15.80git.20200430T125608~3a9d7a6e9/CMakeLists.txt	2020-05-01 10:53:29.546483491 +0200
+@@ -624,6 +624,7 @@
      ${X11_ICE_LIB}
      ${X11_SM_LIB}
      ${X11_X11_LIB}
@@ -29,10 +29,10 @@ Index: kwin-5.15.80git.20200128T055143~f859c2184/CMakeLists.txt
  )
  
  set(kwin_XCB_LIBS
-Index: kwin-5.15.80git.20200128T055143~f859c2184/xwl/xwayland.cpp
+Index: kwin-5.15.80git.20200430T125608~3a9d7a6e9/xwl/xwayland.cpp
 ===================================================================
---- kwin-5.15.80git.20200128T055143~f859c2184.orig/xwl/xwayland.cpp	2020-01-28 07:06:54.470652988 +0100
-+++ kwin-5.15.80git.20200128T055143~f859c2184/xwl/xwayland.cpp	2020-01-28 07:10:26.978420516 +0100
+--- kwin-5.15.80git.20200430T125608~3a9d7a6e9.orig/xwl/xwayland.cpp	2020-04-30 12:56:08.000000000 +0200
++++ kwin-5.15.80git.20200430T125608~3a9d7a6e9/xwl/xwayland.cpp	2020-05-01 10:53:29.546483491 +0200
 @@ -48,6 +48,8 @@
  #include <sys/socket.h>
  #include <iostream>
@@ -169,10 +169,10 @@ Index: kwin-5.15.80git.20200128T055143~f859c2184/xwl/xwayland.cpp
      int screenNumber = 0;
      xcb_connection_t *c = nullptr;
      if (m_xcbConnectionFd == -1) {
-Index: kwin-5.15.80git.20200128T055143~f859c2184/xwl/xwayland.h
+Index: kwin-5.15.80git.20200430T125608~3a9d7a6e9/xwl/xwayland.h
 ===================================================================
---- kwin-5.15.80git.20200128T055143~f859c2184.orig/xwl/xwayland.h	2020-01-28 07:06:54.470652988 +0100
-+++ kwin-5.15.80git.20200128T055143~f859c2184/xwl/xwayland.h	2020-01-28 07:07:01.953123505 +0100
+--- kwin-5.15.80git.20200430T125608~3a9d7a6e9.orig/xwl/xwayland.h	2020-04-30 12:56:08.000000000 +0200
++++ kwin-5.15.80git.20200430T125608~3a9d7a6e9/xwl/xwayland.h	2020-05-01 10:53:29.546483491 +0200
 @@ -23,6 +23,7 @@
  #include "xwayland_interface.h"
  

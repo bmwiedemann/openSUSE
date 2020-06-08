@@ -21,7 +21,7 @@
 %global wayland (0%{?suse_version} >= 1330)
 %bcond_without lang
 Name:           kwin5
-Version:        5.18.5
+Version:        5.19.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -31,11 +31,13 @@ Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz
+Source:         kwin-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz.sig
+Source1:        kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-the-Plastik-decoration-with-Qt-5.15.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       0001-Revert-Make-WindowSwitching-Alt-Tab-the-default-left.patch
 # PATCH-FEATURE-OPENSUSE
@@ -83,6 +85,7 @@ BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
 BuildRequires:  cmake(KScreenLocker) >= %{_plasma5_version}
+BuildRequires:  cmake(KWaylandServer)
 BuildRequires:  cmake(Qt5Concurrent) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
 BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
@@ -135,6 +138,7 @@ Requires:       kdialog
 Requires:       libQt5Multimedia5
 # Needed for the virtual desktop KCM
 Requires:       kirigami2
+Requires:       kitemmodels-imports
 %requires_eq    libQt5Core5
 %requires_eq    libQt5Gui5
 Provides:       windowmanager
@@ -207,7 +211,6 @@ This package provides development files.
 %{_kf5_libdir}/kconf_update_bin/
 %{_kf5_libdir}/libexec/
 %{_kf5_libdir}/libkwin.so.*
-%{_kf5_libdir}/libkdeinit5_kwin*.so
 %{_kf5_libdir}/libkwin4_effect_builtins.so.*
 %{_kf5_libdir}/libkwineffects.so.*
 %{_kf5_libdir}/libkwingl*utils.so.*
@@ -216,7 +219,6 @@ This package provides development files.
 %{_kf5_libdir}/libkcmkwincommon.so.5.*
 %{_kf5_plugindir}/kcm_kwin_scripts.so
 %{_kf5_plugindir}/kcm_kwinoptions.so
-%{_kf5_plugindir}/kcm_kwinrules.so
 %{_kf5_plugindir}/kcm_kwinscreenedges.so
 %{_kf5_plugindir}/kcm_kwintabbox.so
 %{_kf5_plugindir}/kcm_kwintouchscreen.so
@@ -224,6 +226,7 @@ This package provides development files.
 %{_kf5_plugindir}/kcms/kcm_kwin_effects.so
 %{_kf5_plugindir}/kcms/kcm_kwin_virtualdesktops.so
 %{_kf5_plugindir}/kcms/kcm_kwindecoration.so
+%{_kf5_plugindir}/kcms/kcm_kwinrules.so
 %dir %{_kf5_plugindir}/kf5/
 %dir %{_kf5_plugindir}/kf5/org.kde.kidletime.platforms/
 %{_kf5_plugindir}/kf5/org.kde.kidletime.platforms/KF5IdleTimeKWinWaylandPrivatePlugin.so
@@ -304,6 +307,7 @@ This package provides development files.
 %{_kf5_sharedir}/kpackage/kcms/kcm_kwin_virtualdesktops
 %{_kf5_sharedir}/kpackage/kcms/kcm_kwindecoration
 %{_kf5_sharedir}/kpackage/kcms/kcm_kwin_effects
+%{_kf5_sharedir}/kpackage/kcms/kcm_kwinrules
 
 %files devel
 %license COPYING*
