@@ -1,7 +1,7 @@
 #
 # spec file for package icingaweb2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013-2017 Icinga Development Team | GPLv2+
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,13 +20,13 @@
 %define revision 1
 
 Name:           icingaweb2
-Version:        2.7.3
+Version:        2.8.0
 Release:        %{revision}%{?dist}
 Summary:        Icinga Web 2
 License:        GPL-2.0-or-later AND MIT AND BSD-3-Clause
 Group:          System/Monitoring
 URL:            https://icinga.com
-Source0:        https://github.com/Icinga/%{name}/archive/v%{version}.tar.gz
+Source0:        https://github.com/Icinga/icingaweb2/archive/v%{version}/%{name}-%{version}.tar.gz
 Source90:       README.SUSE
 Source99:       %{name}-rpmlintrc
 BuildArch:      noarch
@@ -268,7 +268,7 @@ Icinga Web 2's fork of Zend Framework 1.
 
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}
 %if 0%{?use_selinux}
 mkdir selinux
 cp -p packages/selinux/icingaweb2.{fc,if,te} selinux
@@ -294,7 +294,7 @@ cd -
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/{%{basedir}/{modules,library/vendor,public},%{bindir},%{configdir}/modules,%{logdir},%{phpdir},%{wwwconfigdir},%{_sysconfdir}/bash_completion.d,%{docsdir}}
 cp -prv application doc %{buildroot}/%{basedir}
-cp -pv etc/bash_completion.d/icingacli %{buildroot}/%{_sysconfdir}/bash_completion.d/icingacli
+install -Dm0644 etc/bash_completion.d/icingacli %{buildroot}%{_datadir}/bash-completion/completions/icingacli
 cp -prv modules/{monitoring,setup,doc,translation} %{buildroot}/%{basedir}/modules
 cp -prv library/Icinga %{buildroot}/%{phpdir}
 cp -prv library/vendor/{dompdf,HTMLPurifier*,JShrink,lessphp,Parsedown,Zend} %{buildroot}/%{basedir}/library/vendor
@@ -387,7 +387,7 @@ exit 0
 %files -n icingacli
 %defattr(-,root,root)
 %{basedir}/application/clicommands
-%{_sysconfdir}/bash_completion.d/icingacli
+%{_datadir}/bash-completion/completions/icingacli
 %attr(0755,root,root) %{bindir}/icingacli
 
 %if 0%{?use_selinux}
