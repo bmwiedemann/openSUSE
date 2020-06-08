@@ -55,6 +55,7 @@ Obsoletes:      nma-data < %{version}
 Provides:       nma-data = %{version}
 Obsoletes:      libnma-data < %{version}
 Provides:       libnma-data = %{version}
+Requires:       mobile-broadband-provider-info
 
 %description -n %{name}%{sover}
 Shared library for NetworkManager-applet.

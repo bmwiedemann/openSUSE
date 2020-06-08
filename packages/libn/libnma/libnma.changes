@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  4 07:35:49 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Make libnma require mobile-broadband-provider-info(bsc#1172499).
+
+-------------------------------------------------------------------
 Fri Apr 17 06:59:36 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add libnma-fix-segment-fault.patch: nma-ws: properly dispose
