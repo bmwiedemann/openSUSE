@@ -586,4 +586,12 @@
     <comment>New stable release (forwarded request 800609 from iznogood)</comment>
     <requestid>800799</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>6b821e7c232b5663a1fa179bf9e855d1</srcmd5>
+    <version>3.36.3</version>
+    <time>1591652822</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 811194 from iznogood)</comment>
+    <requestid>811409</requestid>
+  </revision>
 </revisionlist>
