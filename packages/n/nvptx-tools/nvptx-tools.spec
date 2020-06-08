@@ -31,8 +31,8 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # tools for executing are not built.  CUDA is not free software.
 BuildRequires:  gcc-c++
 # The package is used for NVPTX offloading support in GCC which is currently
-# only enabled on x86_64
-ExclusiveArch:  x86_64
+# only enabled on x86_64 and aarch64
+ExclusiveArch:  x86_64 aarch64
 
 %description
 A collection of tools for use with nvptx-none (NVIDIA Parallel Thread
