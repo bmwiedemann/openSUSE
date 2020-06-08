@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri May 29 19:35:31 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.2:
+  + Add a new build option 'firewalld-zone'; when enabled,
+    NetworkManager installs a firewalld zone for connection sharing
+    and puts interfaces using IPv4 or IPv6 shared mode in this zone
+    during activation. The option is enabled by default. Note that
+    NetworkManager still calls to iptables to enable masquerading
+    and open needed ports for DHCP and DNS. The new option is
+    useful on systems using firewalld with the nftables backend,
+    where the iptables rules would not be sufficient.
+  + ifcfg-rh:
+    - Handle "802-1x.{,phase2-}ca-path". Otherwise setting this
+      property silently fails and a profile might accidentally not
+      perform any authentication (CVE-2020-10754).
+    - Handle 802-1x.pin properties.
+  + platform: fix crash detecting device type from netlink.
+  + ip-tunnel: only set cloned-mac-address for layer 2 tunnels.
+  + Fixes for sanitizer build and valgrind.
+  + Various other bugfixes.
+
+-------------------------------------------------------------------
 Fri May  8 13:51:44 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.0:
