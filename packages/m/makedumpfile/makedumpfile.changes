@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  4 09:57:15 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- makedumpfile-sadump-Fix-failure-of-reading.patch: sadump: Fix
+  failure of reading __per_cpu_load memory (bsc#1168798).
+
+-------------------------------------------------------------------
 Fri Apr  3 05:51:49 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add -fcommon in order to fix boo#1160282.

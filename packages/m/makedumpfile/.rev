@@ -1024,4 +1024,14 @@ See README.static for an explanation why static linking is preferred for some li
 </comment>
     <requestid>791930</requestid>
   </revision>
+  <revision rev="78" vrev="4">
+    <srcmd5>4d52b6265481ebc035bf1970bd05d743</srcmd5>
+    <version>1.6.7</version>
+    <time>1591653045</time>
+    <user>dimstar_suse</user>
+    <comment>- makedumpfile-sadump-Fix-failure-of-reading.patch: sadump: Fix
+  failure of reading __per_cpu_load memory (bsc#1168798).
+</comment>
+    <requestid>811495</requestid>
+  </revision>
 </revisionlist>

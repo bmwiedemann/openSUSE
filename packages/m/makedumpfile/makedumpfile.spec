@@ -45,6 +45,7 @@ Patch2:         %{name}-ppc64-VA-range-SUSE.patch
 Patch3:         %{name}-PN_XNUM.patch
 Patch4:         %{name}-arm64-Align-PMD_SECTION_MASK-with-PHYS_MASK.patch
 Patch5:         %{name}-Fix-cd_header-offset-overflow-with-large-pfn.patch
+Patch6:         %{name}-sadump-Fix-failure-of-reading.patch
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libeppic-devel
