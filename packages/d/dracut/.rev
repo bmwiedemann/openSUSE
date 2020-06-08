@@ -1710,4 +1710,14 @@ Add:  dracut_git_v034_to_head.patch</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>807699</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>14742ebd788debeaca5d1b197a9e4073</srcmd5>
+    <version>050+suse.65.ge1e64674</version>
+    <time>1591653032</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 050+suse.65.ge1e64674:
+  * Add wicked specific config files (bsc#1089333)
+  * Run format_spec_file</comment>
+    <requestid>811476</requestid>
+  </revision>
 </revisionlist>
