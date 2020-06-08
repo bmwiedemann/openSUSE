@@ -32,7 +32,7 @@
 %bcond_without introspection
 
 Name:           evolution-data-server
-Version:        3.36.2
+Version:        3.36.3
 Release:        0
 Summary:        Evolution Data Server
 License:        LGPL-2.0-only
