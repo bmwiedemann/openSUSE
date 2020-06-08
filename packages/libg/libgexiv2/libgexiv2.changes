@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May 23 18:20:50 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.12.1:
+  + Support macOS dylib versioning
+  + Improve compatibility with current exiv2 development versions
+  + Fix compiling on windows
+  + Fix issue with problematic symbol visibility of exiv2
+  + Fix issues with tests overwriting environment variables
+  + Fix exception escaping on division by zero
+  + Fix overflow in altitude fraction conversion
+  + Fix crash with experimental GIO support
+  + Documentation fixes
+  + Add gexiv2_metadata_update_gps_info which will not remove all
+    other GPS information
+  + Bugs fixed: glgo#GNOME/gexiv2!41, glgo#GNOME/gexiv2!42,
+    glgo#GNOME/gexiv2!45, glgo#GNOME/gexiv2!52,
+    glgo#GNOME/gexiv2!53, glgo#GNOME/gexiv2!54,
+    glgo#GNOME/gexiv2!55.
+
+-------------------------------------------------------------------
 Mon Mar 18 02:23:45 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to version 0.12.0:

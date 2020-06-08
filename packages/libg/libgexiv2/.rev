@@ -310,4 +310,12 @@
     <comment>Scripted push from GNOME:Apps</comment>
     <requestid>767377</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>199f641fcfb5ca7d36e311fef245fcc3</srcmd5>
+    <version>0.12.1</version>
+    <time>1591652815</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release, not buildtested (forwarded request 808460 from iznogood)</comment>
+    <requestid>811407</requestid>
+  </revision>
 </revisionlist>
