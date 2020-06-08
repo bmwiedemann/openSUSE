@@ -1968,4 +1968,12 @@ Recommended for 12.3</comment>
     <comment>New stable release, not buildtested! (forwarded request 797722 from iznogood)</comment>
     <requestid>798342</requestid>
   </revision>
+  <revision rev="235" vrev="1">
+    <srcmd5>e188946189c3e71ddf26abd2aa86ca43</srcmd5>
+    <version>3.36.3</version>
+    <time>1591652892</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 810283 from iznogood)</comment>
+    <requestid>811423</requestid>
+  </revision>
 </revisionlist>
