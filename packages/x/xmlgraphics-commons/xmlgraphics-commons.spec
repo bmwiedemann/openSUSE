@@ -18,7 +18,7 @@
 
 
 Name:           xmlgraphics-commons
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        XML Graphics Commons
 License:        Apache-2.0
