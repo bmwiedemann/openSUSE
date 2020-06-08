@@ -72,10 +72,12 @@ Provides: weakremover(ruby2.5-rubygem-net-ssh-doc-5.0)
 Provides: weakremover(python3-pytest5)
 Provides: weakremover(tftpboot-installation-openSUSE-Leap-15.1-x86_64)
 %ifarch x86_64
+Provides: weakremover(gstreamer-devel-32bit)
 Provides: weakremover(libgnutls30-hmac-32bit)
 Provides: weakremover(pam-extra-32bit)
 Provides: weakremover(python3-numpy_1_17_3-gnu-hpc)
 Provides: weakremover(python3-numpy_1_17_3-gnu-hpc-devel)
+Provides: weakremover(typelib-1_0-Gst-1_0-32bit)
 %endif
 # 42.1
 Provides: weakremover(arista)
