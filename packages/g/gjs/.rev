@@ -1574,4 +1574,12 @@ Fri Dec  18 23:51:08 UTC 2015 - damjanovic.ivo@gmail.com
     <comment></comment>
     <requestid>798688</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>1e6b4ffbe85a354c5b22060fd5d6539f</srcmd5>
+    <version>1.64.3</version>
+    <time>1591652933</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 810502 from iznogood)</comment>
+    <requestid>811428</requestid>
+  </revision>
 </revisionlist>

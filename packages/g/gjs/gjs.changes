@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 31 19:49:27 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.64.3:
+  + Closed bugs and merge requests:
+    - arg: Don't sink GClosure ref if it's a return value.
+    - overrides/Gtk: Adjust gtk_container_child_set_property()
+      check.
+    - 1.63.3: test suite is failing.
+    - Simplify private pointers.
+  + Various backports:
+    - Use memory GSettings backend in tests.
+    - Update debug message from trimLeft/trimRight to
+      trimStart/trimEnd.
+    - Various fixes for potential crash and memory issues.
+
+-------------------------------------------------------------------
 Tue Apr 28 08:56:01 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.64.2:
