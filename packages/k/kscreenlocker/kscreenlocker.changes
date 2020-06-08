@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jun  4 13:27:11 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- No code changes since 5.18.90
+
+-------------------------------------------------------------------
+Thu May 14 14:33:04 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Changes since 5.18.5:
+  * bump to require Qt 5.14
+  * Add support for logging categories
+  * Take file descriptor only instead of whole KWayland Display
+  * Populate Greeter process exit stderr
+  * Fix disabeling of autolock timeout
+  * globalaccel: allow sleep and hibernate keyboard shortcuts
+  * Use K_PLUGIN_CLASS_WITH_JSON
+
+-------------------------------------------------------------------
 Tue May  5 13:01:52 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5
