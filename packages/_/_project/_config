@@ -282,6 +282,7 @@ Prefer: yast2-branding-openSUSE
 Prefer: yast2-qt:yast2-qt-branding-openSUSE
 Prefer: yast2-theme-openSUSE
 Prefer: branding-openSUSE
+Prefer: chrony-pool-openSUSE
 # pciutils-ids and hwdata both provides pciutils-ids
 Prefer: hwdata
 # have choice for xfce4-panel-plugin-whiskermenu needed by xfce4-panel-branding-openSUSE: xfce4-panel-plugin-whiskermenu xfce4-whiskermenu-plugin
