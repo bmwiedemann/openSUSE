@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?fedora}
+%define _pkg_base %nil
+%else
+%define _pkg_base -base
+%endif
+
 %define flavor @BUILD_FLAVOR@%nil
 %if "%{flavor}" == ""
 %define nsuffix %nil
@@ -105,8 +111,8 @@ Recommends:     %{use_python}-keyrings.alt                      \
 
 %define pkg_name obs-service-tar_scm
 Name:           %{pkg_name}%{nsuffix}
-%define version_unconverted 0.10.15.1588842879.5c43eef
-Version:        0.10.15.1588842879.5c43eef
+%define version_unconverted 0.10.16.1590752286.5c27247
+Version:        0.10.16.1590752286.5c27247
 Release:        0
 Summary:        An OBS source service: create tar ball from svn/git/hg
 License:        GPL-2.0-or-later
@@ -125,7 +131,6 @@ BuildRequires:  %{use_python}-keyring
 BuildRequires:  %{use_python}-keyrings.alt
 BuildRequires:  %{use_python}-mock
 BuildRequires:  %{use_python}-six
-BuildRequires:  %{use_python}-unittest2
 BuildRequires:  bzr
 BuildRequires:  git-core
 BuildRequires:  mercurial
@@ -142,7 +147,7 @@ BuildRequires:  %{use_python}-dateutil
 BuildRequires:  %{use_python}-lxml
 
 %if %{with python3}
-BuildRequires:  %{use_python}-base
+BuildRequires:  %{use_python}%{_pkg_base}
 # Fix missing Requires in python3-pbr in Leap42.3
 BuildRequires:  %{use_python}-setuptools
 %else
@@ -227,7 +232,9 @@ Summary:        Creates Debian source artefacts from a Git repository
 Group:          Development/Tools/Building
 Requires:       git-buildpackage >= 0.6.0
 Requires:       obs-service-obs_scm-common = %version-%release
+%if 0%{?enable_gbp}
 Provides:       obs-service-tar_scm:/usr/lib/obs/service/obs_gbp.service
+%endif
 
 %description -n obs-service-gbp
 Debian git-buildpackage workflow support: uses gbp to create Debian
@@ -241,7 +248,7 @@ source artefacts (.dsc, .origin.tar.gz and .debian.tar.gz if non-native).
 
 %install
 %if %{without obs_scm_testsuite}
-make install DESTDIR="%{buildroot}" PREFIX="%{_prefix}" SYSCFG="%{_sysconfdir}" PYTHON="%{_bindir}/%{use_python}"
+make install DESTDIR="%{buildroot}" PREFIX="%{_prefix}" SYSCFG="%{_sysconfdir}" PYTHON="%{_bindir}/%{use_python}" WITH_GBP="%{enable_gbp}"
 
 %else
 # moved conditional to the top as it helps to have it all in one place and only rely on the bcond_with here.
@@ -266,7 +273,8 @@ make %{use_test}
 %dir %{_sysconfdir}/obs
 %dir %{_sysconfdir}/obs/services
 %verify (not user group) %dir %{_sysconfdir}/obs/services/tar_scm.d
-%config(noreplace) %{_sysconfdir}/obs/services/*
+%config(noreplace) %{_sysconfdir}/obs/services/
+%ghost %dir %{_sysconfdir}/obs/services/tar_scm.d/python_keyring
 
 %files -n obs-service-tar
 %defattr(-,root,root)

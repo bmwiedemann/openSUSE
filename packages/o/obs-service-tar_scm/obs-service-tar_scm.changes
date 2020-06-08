@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  3 12:38:35 UTC 2020 - pgajdos@suse.com
+
+- remove unused unittest2 dependency
+
+-------------------------------------------------------------------
+Fri May 29 11:41:50 UTC 2020 - FSchreiner@suse.com
+
+- Update to version 0.10.16.1590752286.5c27247:
+  * [dist] fix for gbp/fedora (python*-base)
+  * fix situation when revision has been modified in _service
+
+-------------------------------------------------------------------
 Thu May 07 09:33:04 UTC 2020 - FSchreiner@suse.com
 
 - Update to version 0.10.15.1588842879.5c43eef:
