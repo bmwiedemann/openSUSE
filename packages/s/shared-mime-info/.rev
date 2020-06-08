@@ -535,4 +535,12 @@
   installation path. (forwarded request 802623 from dimstar)</comment>
     <requestid>802681</requestid>
   </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>fe00f911a22d76db65706d99d2173991</srcmd5>
+    <version>2.0</version>
+    <time>1591652955</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 810739 from dimstar)</comment>
+    <requestid>811430</requestid>
+  </revision>
 </revisionlist>

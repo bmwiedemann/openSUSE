@@ -65,8 +65,6 @@ This package contains:
 
 %install
 %meson_install
-# we also deliver %{_datadir}/mime/application directory - many other packages install files in there
-if [ ! -d %{buildroot}%{_datadir}/mime/application ]; then mkdir -p %{buildroot}%{_datadir}/mime/application; fi
 %find_lang %{name} %{?no_lang_C}
 # Install rpm macros
 install -D -m644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.shared-mime-info

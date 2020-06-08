@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 19 18:08:38 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Revert the previous change, we should not own
+  /usr/share/mime/application: ref the spec upstream, this is
+  wrong. Any application depending on this previous error needs to
+  be fixed on a individual basis. Upstream ref: 
+  https://specifications.freedesktop.org/shared-mime-info-spec/shared-mime-info-spec-0.18.html#idm45709761658688
+
+-------------------------------------------------------------------
 Mon May 11 08:39:01 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Create and own /usr/share/mime/application: many packages install
