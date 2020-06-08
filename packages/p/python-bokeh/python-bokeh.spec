@@ -16,68 +16,48 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Tests fail due to missing git data,
-# and building the JS from source doesn't work
-%bcond_with     tests
-%bcond_without python2
+# and building the JS from source doesn't work (tested as of version 2.0.2)
+%bcond_with    tests
+
+# PACKAGE NO LONGER SUPPORTS PYTHON2
+%define skip_python2 1
+
 Name:           python-bokeh
-Version:        1.4.0
+Version:        2.0.2
 Release:        0
 Summary:        Statistical interactive HTML plots for Python
 License:        BSD-3-Clause
 URL:            https://github.com/bokeh/bokeh/
 Source:         https://files.pythonhosted.org/packages/source/b/bokeh/bokeh-%{version}.tar.gz
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+# SECTION test requirements
+%if %{with tests}
 BuildRequires:  %{python_module Jinja2 >= 2.7}
 BuildRequires:  %{python_module Pillow >= 4.0}
 BuildRequires:  %{python_module PyYAML >= 3.10}
-BuildRequires:  %{python_module jupyter_ipython}
-BuildRequires:  %{python_module numpy >= 1.7.1}
+BuildRequires:  %{python_module numpy >= 1.11.3}
 BuildRequires:  %{python_module packaging >= 16.8}
 BuildRequires:  %{python_module python-dateutil >= 2.1}
-BuildRequires:  %{python_module requests >= 1.2.3}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.5.2}
-BuildRequires:  %{python_module tornado >= 4.3}
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module tornado >= 5}
+BuildRequires:  %{python_module typing_extensions >= 3.7.4}
+%endif
+# /SECTION
 BuildConflicts: python-buildservice-tweak
 Requires:       python-Jinja2 >= 2.7
 Requires:       python-Pillow >= 4.0
 Requires:       python-PyYAML >= 3.10
-Requires:       python-numpy >= 1.7.1
+Requires:       python-numpy >= 1.11.3
 Requires:       python-packaging >= 16.8
 Requires:       python-python-dateutil >= 2.1
-Requires:       python-requests >= 1.2.3
-Requires:       python-six >= 1.5.2
-Requires:       python-tornado >= 4.3
+Requires:       python-tornado >= 5
+Requires:       python-typing_extensions >= 3.7.4
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
-Recommends:     python-icalendar
-Recommends:     python-networkx
-Recommends:     python-pscript
-Recommends:     python-vincent
+Requires(postun): update-alternatives
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-futures >= 3.0.3
-%endif
-%if %{with tests}
-BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module boto}
-BuildRequires:  %{python_module certifi}
-BuildRequires:  %{python_module colorama}
-BuildRequires:  %{python_module jupyter_nbconvert}
-BuildRequires:  %{python_module jupyter_nbformat}
-BuildRequires:  %{python_module mock >= 1.0.1}
-BuildRequires:  %{python_module networkx}
-BuildRequires:  %{python_module pscript}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module selenium}
-BuildRequires:  chromedriver
-%endif
-%ifpython2
-Requires:       python-futures >= 3.0.3
-%endif
 %python_subpackages
 
 %description
@@ -88,10 +68,6 @@ with interactivity over large or streaming datasets.
 
 %prep
 %setup -q -n bokeh-%{version}
-sed -i 's/\r$//' examples/app/apply_theme.py
-sed -i 's/\r$//' examples/reference/models/Dash.py
-sed -i 's/\r$//' examples/app/apply_theme.py
-sed -i 's/\r$//' examples/reference/models/Dash.py
 
 %build
 %python_build
@@ -99,15 +75,10 @@ sed -i 's/\r$//' examples/reference/models/Dash.py
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
 %python_clone -a %{buildroot}%{_bindir}/bokeh
 
 # Remove hidden files
-%python_expand mkdir -p %{buildroot}%{_docdir}/%{$python_prefix}-bokeh
-%python_expand cp -r examples %{buildroot}%{_docdir}/%{$python_prefix}-bokeh/
-%python_expand rm -rf examples %{buildroot}%{_docdir}/%{$python_prefix}-bokeh/examples/*/.ipynb_checkpoints
-%python_expand rm -rf examples %{buildroot}%{_docdir}/%{$python_prefix}-bokeh/examples/*/*/.ipynb_checkpoints
-%python_expand %fdupes %{buildroot}%{_docdir}/%{$python_prefix}-bokeh/
+%python_expand rm %{buildroot}%{$python_sitelib}/bokeh/server/static/.keep
 
 # Remove test and script files
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/scripts/
@@ -115,12 +86,7 @@ sed -i 's/\r$//' examples/reference/models/Dash.py
 
 %if %{with tests}
 %check
-rm -rf build _build.*
-%{python_expand rm -rf build _build.*
-py.test-%{$python_bin_suffix} -s -m js -rs
-py.test-%{$python_bin_suffix} -m 'not (examples or js or integration)' --cov=bokeh --cov-config=bokeh/.coveragerc -rs
-py.test-%{$python_bin_suffix} -m integration -rs -v
-}
+%python_exec setup.py test
 %endif
 
 %post
@@ -131,9 +97,9 @@ py.test-%{$python_bin_suffix} -m integration -rs -v
 
 %files %{python_files}
 %license LICENSE.txt
-%{_docdir}/%{python_prefix}-bokeh
+%doc CHANGELOG README.md
 %python_alternative %{_bindir}/bokeh
 %{python_sitelib}/bokeh/
-%{python_sitelib}/bokeh-%{version}-py*.egg-info
+%{python_sitelib}/bokeh-%{version}-py%{python_version}.egg-info
 
 %changelog
