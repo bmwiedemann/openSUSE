@@ -1,7 +1,7 @@
 #
 # spec file for package swift-im
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,17 +23,19 @@
 %define _flags V=1 swiften_dll=1 test=none optimize=1 debug=0 cxxflags='%{optflags}'
 %endif
 Name:           swift-im
-Version:        4.0
+Version:        4.0.2
 Release:        0
 Summary:        XMPP client
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Talk/Clients
-Url:            http://swift.im/
+URL:            https://swift.im/
 Source0:        http://swift.im/downloads/releases/%{_name}-%{version}/%{_name}-%{version}.tar.gz
 Source1:        http://swift.im/downloads/releases/%{_name}-%{version}/%{_name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Patch0:         swift-4.0-qt5.11-includes.patch
 Patch1:         swift-im-boost-tribool.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Fix-build-with-Qt-5.15.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-dtds
 BuildRequires:  fdupes
@@ -106,9 +108,7 @@ Requires:       libSwiften4 = %{version}
 Swiften is a C++ library for implementing XMPP applications.
 
 %prep
-%setup -q -n swift-4.0
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n swift-%{version}
 
 # Remove 3rd party libraries
 # Following ones are used from distro:
@@ -148,15 +148,11 @@ find 3rdParty/SQLite -delete
 %fdupes %{buildroot}%{_prefix}
 %suse_update_desktop_file -r %{_name} Network InstantMessaging
 
-%icon_theme_cache_post
-%icon_theme_cache_postun
-
 %post -n libSwiften4 -p /sbin/ldconfig
 %postun -n libSwiften4 -p /sbin/ldconfig
 
 %files
 %license COPYING
-
 %{_bindir}/%{_name}-im
 %{_bindir}/%{_name}-open-uri
 %{_datadir}/applications/%{_name}.desktop

@@ -1,0 +1,24 @@
+From 13f7c2778bd5115d5342a8a4bcd0ecc4eca94ce8 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Sat, 6 Jun 2020 10:09:14 +0200
+Subject: [PATCH] Fix build with Qt 5.15
+
+---
+ Swift/QtUI/Roster/GroupItemDelegate.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Swift/QtUI/Roster/GroupItemDelegate.cpp b/Swift/QtUI/Roster/GroupItemDelegate.cpp
+index 0356aa0..28af259 100644
+--- a/Swift/QtUI/Roster/GroupItemDelegate.cpp
++++ b/Swift/QtUI/Roster/GroupItemDelegate.cpp
+@@ -7,6 +7,7 @@
+ #include <Swift/QtUI/Roster/GroupItemDelegate.h>
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QPen>
+ #include <QtDebug>
+ 
+-- 
+2.26.2
+
