@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jun  4 09:34:36 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias/conjecture from description. Fixup RPM groups.
+
+-------------------------------------------------------------------
+Wed Jun  3 15:48:08 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Update to 0.31.0
+  * No changelog available
+- Drop deprecated perl bindings package
+- Enable tests
+- Drop obsolete patches:
+  * qpid-proton-fix-dh-openssl-1.1.0.patch
+  * qpid-proton-fix-session-resume-openssl-1.1.0.patch
+  * reproducible.patch
+  * catch-by-const-reference.patch
+  * qpid-proton-0.16.0-gcc7.patch
+  * qpid-proton-0.9-pthread.patch
+  * qpid-proton-cmake-fixes.patch
+
+-------------------------------------------------------------------
+Wed Jun  3 13:00:22 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Fix build with OpenSSL 3.0.0 (bsc#1172267)
+  * https://issues.apache.org/jira/projects/PROTON/issues/PROTON-2238
+  * add qpid-proton-openssl-3.0.0.patch
+
+-------------------------------------------------------------------
 Fri Jan 11 00:16:03 UTC 2019 - Jonathan Brownell <jbrownell@suse.com>
 
 - Ignore redundant files generated during builds on Red Hat
