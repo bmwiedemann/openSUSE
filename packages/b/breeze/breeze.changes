@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Jun  4 13:27:10 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- Changes since 5.18.90:
+  * [kstyle] Ensure that shadows are destroyed after decorated windows
+  * [style] Reparent window shadows to widgets
+
+-------------------------------------------------------------------
+Thu May 14 14:33:01 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Changes since 5.18.5:
+  * Add mobile-friendly versions
+  * Revert unnecessary wallpaper plugin name change
+  * Use "Flow" wallpaper for Plasma 5.19
+  * Phrase active window titlebar separator option more accurately (kde#420753)
+  * Use the same icon mode calculation for comboboxes as for buttons
+  * Fix variable mixup
+  * Don't set a custom palette if we have the same palette as the currently active one
+  * Drop QWindow and explicit devicePixelRatio usage for ComboBox
+  * Color icons in titlebar if possible
+  * Apply the correct palette to icons
+  * Remove unused methods
+  * Add missing includes
+  * [kstyle] Properly unregister widgets in ShadowHelper
+  * [kstyle] Use QX11Info::isCompositingManagerRunning()
+  * [kstyle] Drop Helper::connection()
+  * [kstyle] Unregister a shadow when it's destroyed (kde#416854)
+  * Update my last name
+  * Delete unused property name
+  * Port connections to new syntax
+  * now that qt4 was dropped we can use specific ECM/Qt/KF5 version
+  * [kstyle] Port to KWindowSystem shadows API
+  * [kstyle] Drop Qt 4 style plugin
+  * Center only during drawing, not the hit rects (kde#416348)
+- Drop Qt4 support:
+  * breeze4-style.spec
+  * breeze4-style.changes
+  * add-support-for-Q3ListView-to-the-KDE4-style.patch
+
+-------------------------------------------------------------------
 Tue May  5 13:01:51 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5
