@@ -238,4 +238,15 @@
     <comment>- remove GeoIP support [bsc#1156197]</comment>
     <requestid>746482</requestid>
   </revision>
+  <revision rev="33" vrev="25">
+    <srcmd5>95d0a473f04724e4fe239638e24e3b62</srcmd5>
+    <version>2.23</version>
+    <time>1591653968</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build
+- added patches
+  fix static variables
+  + webalizer-static.patch</comment>
+    <requestid>812472</requestid>
+  </revision>
 </revisionlist>

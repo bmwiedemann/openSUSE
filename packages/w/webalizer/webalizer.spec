@@ -1,7 +1,7 @@
 #
 # spec file for package webalizer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Utilities
 Version:        2.23
 Release:        0
-Url:            http://www.mrunix.net/webalizer/
+URL:            http://www.mrunix.net/webalizer/
 Source0:        ftp://ftp.mrunix.net/pub/webalizer/%{name}-%{version}-%{editlvl}-src.tar.bz2
 Source1:        flags.tar.bz2
 Source2:        flags.license.html
@@ -42,6 +42,8 @@ Patch5:         %{name}-2.21-02-fclose.diff
 # FIX-DATADIR - fix for datadir and mandir
 Patch6:         %{name}-2.23-04-Makefile.patch
 Patch7:         webalizer-overlinking.patch
+# static variables
+Patch8:         webalizer-static.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  apache2-devel
 BuildRequires:  autoconf
@@ -72,7 +74,7 @@ these which it attempts to handle intelligently.
 Summary:        Flags of the World
 License:        CC-BY-SA-3.0
 Group:          Productivity/Networking/Web/Utilities
-Url:            http://flags.blogpotato.de/
+URL:            http://flags.blogpotato.de/
 BuildArch:      noarch
 
 %description flags
@@ -91,6 +93,7 @@ world set.
 %patch5
 %patch6
 %patch7
+%patch8 -p1
 %{__cp} -a %{S:2} .
 
 %build
