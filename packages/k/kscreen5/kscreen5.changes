@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jun  4 13:27:11 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- No code changes since 5.18.90
+
+-------------------------------------------------------------------
+Thu May 14 14:33:04 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Changes since 5.18.5:
+  * fix(kcm): avoid recursive OpacityMask which leads to teardown crash (kde#419625)
+  * fix(kded): center action OSD on wayland (kde#397586)
+  * refactor(kcm): remove unused QTimer field
+  * feat(kded): add getAutoRotate method and rename lockAutoRotate
+  * fix(kcm): show output ids in reference to currently applied config
+  * fix (kcm): correct output identifier position on wayland (kde#385672)
+  * bump to require Qt 5.14
+  * fix(kded): watch config also when known config is applied
+  * feat(kded): add a dbus method to lock current rotation
+  * build: ignore clang-format file
+  * docs: update commit message guideline version
+  * fix(plasmoid): add smallSpacing to leftMargin
+  * feat(kcm): show resolution aspect ratio
+  * refactor: fix various compiler warnings
+
+-------------------------------------------------------------------
 Tue May  5 13:01:52 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5
