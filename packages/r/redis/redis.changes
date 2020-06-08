@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 28 18:38:17 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- redis 6.0.4:
+  * fix a severe replication bug introduced in Redis 6 by the
+    "meaningful offset" feature
+
+-------------------------------------------------------------------
+Sun May 17 11:18:37 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- redis 6.0.3:
+  * fix a crash introduced in 6.0.2
+- includes changes from 6.0.2:
+  * bug fixes
+  * fix to client side caching when keys are evicted from the
+    tracking table but no notifications are sent
+
+-------------------------------------------------------------------
 Sat May  9 12:09:41 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - redis-disable_integration_logging.patch: remove

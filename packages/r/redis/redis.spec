@@ -19,10 +19,10 @@
 %define _data_dir       %{_localstatedir}/lib/%{name}
 %define _log_dir        %{_localstatedir}/log/%{name}
 %define _conf_dir       %{_sysconfdir}/%{name}
-%define redis_hashes_tree e72cde5afa7f6640eeb9f6a5ba5ffe02c5f52ea2
+%define redis_hashes_tree 6132305b4e7b98a88e6526d36190251960b6fc38
 
 Name:           redis
-Version:        6.0.1
+Version:        6.0.4
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause
