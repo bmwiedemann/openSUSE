@@ -3001,4 +3001,14 @@ will self heal once rpmlint-mini is rebuild
     <comment></comment>
     <requestid>808696</requestid>
   </revision>
+  <revision rev="336" vrev="25">
+    <srcmd5>5f4feabde1c30209d9c76a393fa7e4ad</srcmd5>
+    <version>1.11</version>
+    <time>1591653072</time>
+    <user>dimstar_suse</user>
+    <comment>- whitelist pam_setquota (bsc#1171563)
+
+- Add '_gns3' to StandardGroups and StandardUsers</comment>
+    <requestid>811762</requestid>
+  </revision>
 </revisionlist>

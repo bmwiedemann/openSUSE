@@ -79,6 +79,7 @@ addFilter('.*non-standard-group.*')
 
 setOption('StandardGroups', (
     '_cscreen',
+    '_gns3',
     'aegis',
     'antivir',
     'arangodb',
@@ -283,6 +284,7 @@ setOption('StandardGroups', (
 
 setOption('StandardUsers', (
     '_cscreen',
+    '_gns3',
     'aegis',
     'amanda',
     'aodh',
@@ -895,12 +897,14 @@ setOption("PAMModules.WhiteList", (
     # mariadb (bsc#1163362)
     "pam_user_map.so",
     # oddjob (bsc#1169494)
-    "pam_oddjob_mkhomedir.so"
+    "pam_oddjob_mkhomedir.so",
     # cockpit (bsc#1169614)
     "pam_cockpit_cert.so",
     "pam_ssh_add.so",
     # pam (bsc#1171564)
     "pam_usertype.so",
+    # pam (bsc#1171563)
+    "pam_setquota.so",
 ))
 
 # Output filters
