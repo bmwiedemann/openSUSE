@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  5 07:46:01 UTC 2020 - nick wang <nwang@suse.com>
+
+- Version 0.3.8
+  * DRBD: Avoid CommandExecutionError when estimation sync time not ready
+
+-------------------------------------------------------------------
 Thu Jun  4 09:17:52 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version 0.3.7
