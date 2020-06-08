@@ -1,7 +1,7 @@
 #
 # spec file for package python-nltk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,23 @@
 
 
 %{!?python_module:%define python_module() python-%{**} python3-%{**}}
-%define interps python python3
 %define pyname nltk
-%bcond_without python2
+%define skip_python2 1
 Name:           python-nltk
-Version:        3.4.5
+Version:        3.5
 Release:        0
 Summary:        Natural Language Toolkit
 License:        Apache-2.0
 URL:            http://nltk.org/
 Source:         https://files.pythonhosted.org/packages/source/n/nltk/%{pyname}-%{version}.zip
-BuildRequires:  %{interps}
+BuildRequires:  %{python_module regex}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
+Requires:       python-regex
 Requires:       python-six
 Recommends:     python-gensim
 Recommends:     python-matplotlib
@@ -43,13 +44,9 @@ Recommends:     python-requests
 Recommends:     python-scikit-learn
 Recommends:     python-scipy
 Recommends:     python-twython
+Requires(post):   update-alternatives
+Requires(postun):  update-alternatives
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-singledispatch
-%endif
-%ifpython2
-Requires:       python-singledispatch
-%endif
 %python_subpackages
 
 %description
@@ -71,6 +68,7 @@ sed -i "1,4{/\/usr\/bin\/env/d}" nltk/tokenize/stanford_segmenter.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/nltk
 
 %{python_expand %fdupes %{buildroot}%{$python_sitelib}/
 chmod -x %{buildroot}%{$python_sitelib}/nltk/test/dependency.doctest
@@ -80,10 +78,17 @@ chmod -x %{buildroot}%{$python_sitelib}/nltk/test/dependency.doctest
 # FOLLOWING http://www.nltk.org/install.html
 %python_exec -c "import nltk" || exit 1
 
+%post
+%python_install_alternative nltk
+
+%postun
+%python_uninstall_alternative nltk
+
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
 %{python_sitelib}/%{pyname}/
 %{python_sitelib}/%{pyname}-%{version}-py%{python_version}.egg-info/
+%python_alternative %{_bindir}/nltk
 
 %changelog

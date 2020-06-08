@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 23 13:54:08 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v3.5
+  * add support for Python 3.8
+  * drop support for Python 2
+  * create NLTK's own Tokenizer class distinct from the Treebank
+    reference tokeniser
+  * update Vader sentiment analyser
+  * fix JSON serialization of some PoS taggers
+  * minor improvements in grammar.CFG, Vader, pl196x corpus reader,
+    StringTokenizer
+  * change implementation <= and >= for FreqDist so they are partial
+    orders
+  * make FreqDist iterable
+  * correctly handle Penn Treebank trees with a unlabeled branching
+    top node
+
+-------------------------------------------------------------------
 Sat Mar 14 09:07:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

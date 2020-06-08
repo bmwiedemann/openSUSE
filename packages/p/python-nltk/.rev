@@ -90,4 +90,26 @@
     <comment>- Update to 3.4.5 (bsc#1146427, CVE-2019-14751):</comment>
     <requestid>787913</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cfd5310eea8fe74218939eef5ac5b86f</srcmd5>
+    <version>3.5</version>
+    <time>1591653755</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v3.5
+  * add support for Python 3.8
+  * drop support for Python 2
+  * create NLTK's own Tokenizer class distinct from the Treebank
+    reference tokeniser
+  * update Vader sentiment analyser
+  * fix JSON serialization of some PoS taggers
+  * minor improvements in grammar.CFG, Vader, pl196x corpus reader,
+    StringTokenizer
+  * change implementation &lt;= and &gt;= for FreqDist so they are partial
+    orders
+  * make FreqDist iterable
+  * correctly handle Penn Treebank trees with a unlabeled branching
+    top node
+</comment>
+    <requestid>812413</requestid>
+  </revision>
 </revisionlist>
