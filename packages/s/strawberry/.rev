@@ -500,4 +500,22 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
  + Added lyrics from Genius, Musixmatch and ChartLyrics.</comment>
     <requestid>806026</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>03fc332c8514a70b256a3a9029e9b68a</srcmd5>
+    <version>0.6.12</version>
+    <time>1591653888</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.12:
+ * Bugfixes:
+ + Fixed height of about dialog.
+ * Enhancements:
+ + Only save settings for pages that actually has been changed.
+ + Replaced use of deprecated Qt functionality as of 5.15.
+ + Made scrobbler show error dialog for all errors when show error dialog option is on.
+ + Dont append disc to album titles for Subsonic and Tidal.
+ + Sort folders added from file view.
+ + Changed default collection grouping to album - disc.
+</comment>
+    <requestid>812364</requestid>
+  </revision>
 </revisionlist>
