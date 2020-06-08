@@ -1,14 +1,13 @@
---- VTK-8.2.0/ThirdParty/libharu/vtklibharu/src/CMakeLists.txt_orig	2019-02-14 22:43:46.723537248 +0100
-+++ VTK-8.2.0/ThirdParty/libharu/vtklibharu/src/CMakeLists.txt	2019-02-14 22:45:37.203271692 +0100
-@@ -101,8 +101,10 @@
-   )
- endif(LIBHPDF_SHARED)
- else ()
--  vtk_add_library(vtklibharu ${LIBHPDF_SRCS})
-+  vtk_add_library(vtklibharu ${LIBHPDF_SRCS})
-+  set_property(TARGET vtklibharu PROPERTY POSITION_INDEPENDENT_CODE ON)
-   target_link_libraries(vtklibharu PRIVATE ${vtkzlib_LIBRARIES} ${vtkpng_LIBRARIES})
-+  target_link_libraries(vtklibharu PUBLIC m)
-   if (WIN32)
-     set_target_properties(vtklibharu
-       PROPERTIES
+Index: VTK-9.0.0/ThirdParty/libharu/vtklibharu/CMakeLists.txt
+===================================================================
+--- VTK-9.0.0.orig/ThirdParty/libharu/vtklibharu/CMakeLists.txt
++++ VTK-9.0.0/ThirdParty/libharu/vtklibharu/CMakeLists.txt
+@@ -125,6 +125,8 @@ if(PNG_FOUND)
+ endif(PNG_FOUND)
+ endif ()
+ 
++link_libraries(m)
++
+ # =======================================================================
+ # configure header files, add compiler flags
+ # =======================================================================

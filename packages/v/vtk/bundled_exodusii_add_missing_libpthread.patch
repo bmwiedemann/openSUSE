@@ -1,14 +1,63 @@
---- VTK-8.2.0/ThirdParty/exodusII/vtkexodusII/CMakeLists.txt_orig	2019-02-14 23:22:45.209934041 +0100
-+++ VTK-8.2.0/ThirdParty/exodusII/vtkexodusII/CMakeLists.txt	2019-02-14 23:23:32.793799582 +0100
-@@ -297,8 +297,10 @@
+From ca02bcc844e4d268ac5060f56f10467e2579fb43 Mon Sep 17 00:00:00 2001
+From: Ben Boeckel <ben.boeckel@kitware.com>
+Date: Thu, 7 May 2020 11:36:50 -0400
+Subject: [PATCH 1/3] exodusII: also link to hdf5 directly
+
+---
+ ThirdParty/exodusII/vtk.module | 1 +
+ 1 file changed, 1 insertion(+)
+
+Index: VTK-9.0.0/ThirdParty/exodusII/vtk.module
+===================================================================
+--- VTK-9.0.0.orig/ThirdParty/exodusII/vtk.module
++++ VTK-9.0.0/ThirdParty/exodusII/vtk.module
+@@ -3,5 +3,6 @@ NAME
+ LIBRARY_NAME
+   vtkexodusII
+ DEPENDS
++  VTK::hdf5
+   VTK::netcdf
+ THIRD_PARTY
+
+From a98772f6d5f6b62c0f3ac360702b585c09bc5557 Mon Sep 17 00:00:00 2001
+From: Seacas Upstream <kwrobot@kitware.com>
+Date: Thu, 7 May 2020 12:22:01 -0400
+Subject: [PATCH 3/3] exodusII 2020-05-07 (2c24a120)
+
+Code extracted from:
+
+    https://gitlab.kitware.com/third-party/seacas.git
+
+at commit 2c24a120deb77a8a2ea05462d0a60e7f9d90e58e (for/vtk-20200507-7.24f-v2019-12-18).
+---
+ ThirdParty/exodusII/vtkexodusII/CMakeLists.txt | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/ThirdParty/exodusII/vtkexodusII/CMakeLists.txt b/ThirdParty/exodusII/vtkexodusII/CMakeLists.txt
+index 025abc43e0..d931004997 100644
+--- a/ThirdParty/exodusII/vtkexodusII/CMakeLists.txt
++++ b/ThirdParty/exodusII/vtkexodusII/CMakeLists.txt
+@@ -297,14 +297,19 @@ set(headers
    "${CMAKE_CURRENT_BINARY_DIR}/include/exodusII_cfg.h"
    "${CMAKE_CURRENT_BINARY_DIR}/include/exodus_config.h")
  
--vtk_add_library(vtkexodusII ${sources} ${headers})
-+vtk_add_library(vtkexodusII ${sources} ${headers})
-+set_property(TARGET vtkexodusII PROPERTY POSITION_INDEPENDENT_CODE ON)
- target_link_libraries(vtkexodusII PUBLIC ${vtknetcdf_LIBRARIES})
-+target_link_libraries(vtkexodusII PUBLIC pthread)
- if (NOT VTK_INSTALL_NO_DEVELOPMENT)
-   install(FILES
-     ${headers}
++vtk_module_find_package(PACKAGE Threads)
++
+ vtk_module_add_module(VTK::exodusII
+   SOURCES ${sources}
+   HEADERS ${headers}
+   HEADERS_SUBDIR "vtkexodusII/include")
+-target_compile_definitions(exodusII
++vtk_module_definitions(VTK::exodusII
+   PRIVATE
+     exoIIc_EXPORTS)
+-target_include_directories(exodusII
++vtk_module_include(VTK::exodusII
+   PUBLIC
+     "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+     "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>")
++vtk_module_link(VTK::exodusII
++  PRIVATE
++    Threads::Threads)
+-- 
+2.26.2

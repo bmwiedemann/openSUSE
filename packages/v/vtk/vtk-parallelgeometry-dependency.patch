@@ -1,0 +1,12 @@
+Index: VTK-9.0.0/Filters/ParallelGeometry/vtk.module
+===================================================================
+--- VTK-9.0.0.orig/Filters/ParallelGeometry/vtk.module
++++ VTK-9.0.0/Filters/ParallelGeometry/vtk.module
+@@ -12,6 +12,7 @@ DEPENDS
+   VTK::CommonCore
+   VTK::CommonSystem
+   VTK::CommonExecutionModel
++  VTK::FiltersCore
+   VTK::FiltersGeometry
+   VTK::FiltersParallel
+   VTK::ParallelMPI

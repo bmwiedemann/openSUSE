@@ -18,8 +18,6 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-# FIXME: ENABLE EXAMPLES BY DEFAULT WHEN VERSION 9.0 IS PACKAGED
-# [https://gitlab.kitware.com/vtk/vtk/issues/17619]
 %bcond_with examples
 
 %if 0%{?sle_version} >= 150200
@@ -31,17 +29,30 @@
 
 %define pkgname vtk
 
+# PUGIXML, GL2PS IN LEAPS ARE TOO OLD
 %if 0%{?suse_version} <= 1500
 %bcond_with    pugixml
+%bcond_with    gl2ps
 %else
 %bcond_without pugixml
+%bcond_without gl2ps
 %endif
+
+# PEGTL IN LEAP 15.1 IS TOO OLD (< 2.0.0)
+# cmake STILL CHECKS FOR JAVAH (AND CHEATING WITH %{_bindir}/true NO LONGER WORKS)
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150100
+%bcond_with    java
+%bcond_with    pegtl
+%else
+%bcond_without java
+%bcond_without pegtl
+%endif
+
 # Need patched version with HPDF_SHADING
 %bcond_with    haru
-# Need unrelased version > 1.4.0 with e.g. gl2psTextOptColorBL
-%bcond_with    gl2ps
 
 %if "%{flavor}" == ""
+%define my_suffix %{nil}
 %define my_prefix %_prefix
 %define my_bindir %_bindir
 %define my_libdir %_libdir
@@ -88,9 +99,9 @@
 %define shlib   %{vtklib}
 
 Name:           vtk%{?my_suffix}
-Version:        8.2.0
+Version:        9.0.0
 Release:        0
-%define series  8.2
+%define series  9.0
 # This is a variant BSD license, a cross between BSD and ZLIB.
 # For all intents, it has the same rights and restrictions as BSD.
 # http://fedoraproject.org/wiki/Licensing/BSD#VTKBSDVariant
@@ -102,20 +113,19 @@ Source:         https://www.vtk.org/files/release/%{series}/VTK-%{version}.tar.g
 # FIXME See if packaging can be tweaked to accommodate python-vtk's devel files in a devel package later
 # We need to use the compat conditionals here to avoid Factory's source validator from tripping up
 Source99:       vtk-rpmlintrc
+# PATCH-NEEDS-REBASE
+%if 0
 # PATCH-FIX-OPENSUSE 0001-Allow-compilation-on-GLES-platforms.patch VTK issue #17113 stefan.bruens@rwth-aachen.de -- Fix building with Qt GLES builds
 Patch2:         0001-Allow-compilation-on-GLES-platforms.patch
-# PATCH-FIX-OPENSUSE bundled_libharu_add_missing_libm.patch stefan.bruens@rwth-aachen.de -- Add missing libm for linking
+%endif
+# PATCH-FIX-OPENSUSE bundled_libharu_add_missing_libm.patch stefan.bruens@rwth-aachen.de -- Add missing libm for linking (gh#libharu/libharu#213)
 Patch3:         bundled_libharu_add_missing_libm.patch
-# PATCH-FIX-OPENSUSE bundled_exodusii_add_missing_libpthread.patch stefan.bruens@rwth-aachen.de -- Add missing libm for linking
+# PATCH-FIX-UPSTREAM bundled_exodusii_add_missing_libpthread.patch stefan.bruens@rwth-aachen.de -- Add missing libm for linking (updated to upstream patch by badshah400, see https://gitlab.kitware.com/vtk/vtk/-/merge_requests/6865)
 Patch4:         bundled_exodusii_add_missing_libpthread.patch
-# PATCH-FIX-OPENSUSE -- Missing libogg symbols
-Patch5:         0001-Add-libogg-to-IOMovie-target-link-libraries.patch
-# PATCH-FIX-UPSTREAM -- Compatibility for proj4 5.x and 6.0, https://gitlab.kitware.com/vtk/vtk/issues/17554
-Patch6:         0001-Make-code-calling-proj4-compatible-with-proj4-5.0-an.patch
-# PATCH-FIX-UPSTREAM -- Support for python3.8
-Patch7:         python38.patch
-# PATCH-FIX-UPSTREAM https://gitlab.kitware.com/vtk/vtk/merge_requests/5633 + 5634
-Patch8:         reproducible.patch
+# PATCH-FIX-UPSTREAM vtk-parallelgeometry-dependency.patch badshah400@gmail.com -- Fix a mistake in the dependencies for ParallelGeometry causing build failures for MPI builds
+Patch5:         vtk-parallelgeometry-dependency.patch
+# PATCH-FIX-UPSTREAM vtk-qt-5.15-include-QPainterPath.patch badshah400@gmail.com -- Include QPainterPath to fix build failures against Qt 5.15; patch taken from upstream, see https://gitlab.kitware.com/vtk/vtk/-/merge_requests/6943
+Patch6:         vtk-qt-5.15-include-QPainterPath.patch
 BuildRequires:  R-base-devel
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.4
@@ -123,37 +133,19 @@ BuildRequires:  double-conversion-devel
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-%if %{with gl2ps}
-BuildRequires:  gl2ps-devel > 1.4.0
-%endif
 BuildRequires:  gnuplot
 BuildRequires:  graphviz
-%if %{with mpi}
-BuildRequires:  hdf5-%{mpi_flavor}-devel
-%endif
 BuildRequires:  hdf5-devel
-BuildRequires:  java-devel
 BuildRequires:  libboost_graph-devel
 BuildRequires:  libboost_graph_parallel-devel
 BuildRequires:  libboost_serialization-devel
-%if %{with mpi}
-BuildRequires:  libboost_mpi-devel
-%endif
-%if %{with haru}
-BuildRequires:  libharu-devel > 2.3.0
-%endif
 BuildRequires:  libjpeg-devel
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libtiff-devel
-%if %{with mpi}
-BuildRequires:  %{mpi_flavor}-devel
-%endif
 BuildRequires:  python3-devel
-%if %{with mpi}
-BuildRequires:  python3-mpi4py-devel
-%endif
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-qt5-devel
+BuildRequires:  utfcpp-devel
 BuildRequires:  wget
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5OpenGL)
@@ -177,19 +169,35 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(netcdf)
-%if %{with mpi}
-BuildRequires:  netcdf-%{mpi_flavor}-devel
-%endif
 BuildRequires:  pkgconfig(proj) >= 5.0.0
-%if %{with pugixml}
-BuildRequires:  pkgconfig(pugixml)
-%endif
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(theora)
 # Still required with 8.2.x for PythonTkInter
 BuildRequires:  pkgconfig(tk)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(zlib)
+%if %{with gl2ps}
+BuildRequires:  gl2ps-devel > 1.4.0
+%endif
+%if %{with haru}
+BuildRequires:  libharu-devel > 2.3.0
+%endif
+%if %{with java}
+BuildRequires:  java-devel
+%endif
+%if %{with mpi}
+BuildRequires:  %{mpi_flavor}-devel
+BuildRequires:  hdf5-%{mpi_flavor}-devel
+BuildRequires:  libboost_mpi-devel
+BuildRequires:  netcdf-%{mpi_flavor}-devel
+BuildRequires:  python3-mpi4py-devel
+%endif
+%if %{with pugixml}
+BuildRequires:  pkgconfig(pugixml)
+%endif
+%if %{with pegtl}
+BuildRequires:  pegtl-devel >= 2.0.0
+%endif
 
 %description
 VTK is a software system for image processing, 3D graphics, volume
@@ -232,6 +240,7 @@ Requires:       libnetcdf_c++-devel
 Requires:       libtiff-devel
 Requires:       python3-%{name} = %{version}
 Requires:       python3-%{name} = %{version}
+Requires:       utfcpp-devel
 %{?with_mpi:Requires:       %{mpi_flavor}}
 %{?with_mpi:Requires:       %{mpi_flavor}-devel}
 Requires:       pkgconfig(Qt5Core)
@@ -256,6 +265,9 @@ Requires:       pkgconfig(libswscale)
 Requires:       pkgconfig(netcdf)
 Requires:       pkgconfig(theora)
 Requires:       pkgconfig(zlib)
+%if %{with pegtl}
+Requires:       pegtl-devel
+%endif
 Conflicts:      vtk-compat_gl-devel
 
 %description    devel
@@ -351,14 +363,7 @@ languages.
 %endif
 
 %prep
-%setup -q -n VTK-%{version}
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
+%autosetup -p1 -n VTK-%{version}
 
 # Replace relative path ../../../../VTKData with %%{_datadir}/vtkdata
 # otherwise it will break on symlinks.
@@ -378,58 +383,50 @@ export CXX=g++
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 
-# FindJava.cmake looks for javah executable. However,
-# the build never invokes the tool. Define a bogus
-# Java_JAVAH_EXECUTABLE in order to be able to build
-# with JDK10 that does not have this tool, deprecated
-# since JDK8.
+# THE %%cmake MACRO SETS CMAKE_SKIP_RPATH=ON FOR LEAP 15.x WHICH CAUSES BUILD FAILURES
+# https://discourse.vtk.org/t/building-fails-generating-wrap-hierarchy-for-vtk-commoncore-unable-to-open-libvtkwrappingtools-so-1
 %cmake \
-    -DBUILD_DOCUMENTATION:BOOL=ON \
-    -DBUILD_EXAMPLES:BOOL=%{?with_examples:ON}%{!?with_examples:OFF} \
-    -DBUILD_TESTING:BOOL=OFF \
-    -DCMAKE_NO_BUILTIN_CHRPATH:BOOL=ON \
-    -DJava_JAVAH_EXECUTABLE:PATH=%{_bindir}/true \
-    -DModule_vtkTestingCore:BOOL=ON \
-    -DModule_vtkTestingRendering:BOOL=ON \
-    -DOpenGL_GL_PREFERENCE:STRING='GLVND' \
-    -DVTK_CUSTOM_LIBRARY_SUFFIX="" \
-    -DVTK_Group_Imaging:BOOL=ON \
-%if %{with mpi}
-    -DVTK_Group_MPI:BOOL=ON \
-%else
-    -DVTK_Group_MPI:BOOL=OFF \
-%endif
-    -DVTK_Group_Qt:BOOL=ON \
-    -DVTK_Group_Rendering:BOOL=ON \
-    -DVTK_Group_StandAlone:BOOL=ON \
-    -DVTK_Group_Tk:BOOL=ON \
-    -DVTK_Group_Views:BOOL=ON \
     -DCMAKE_INSTALL_PREFIX:PATH=%{my_prefix} \
-    -DVTK_INSTALL_ARCHIVE_DIR:PATH=%{_lib} \
+    -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \
+    -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name}-%{series} \
     -DVTK_INSTALL_LIBRARY_DIR:PATH=%{_lib} \
     -DVTK_INSTALL_PACKAGE_DIR:PATH=%{_lib}/cmake/%{pkgname} \
-    -DVTK_INSTALL_QT_DIR:STRING=%{_lib}/qt5/plugins/designer \
+    -DVTK_PYTHON_OPTIONAL_LINK:BOOL=OFF \
+    -DVTK_BUILD_TESTING:BOOL=ON \
+    -DCMAKE_NO_BUILTIN_CHRPATH:BOOL=ON \
+%if 0%{?suse_version} <= 1500
+    -DCMAKE_SKIP_RPATH:BOOL=OFF \
+    -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
+%endif
+    -DVTK_MODULE_ENABLE_VTK_TestingCore=WANT \
+    -DVTK_MODULE_ENABLE_VTK_TestingRendering=WANT \
+    -DOpenGL_GL_PREFERENCE:STRING='GLVND' \
+    -DVTK_CUSTOM_LIBRARY_SUFFIX="" \
+    -DVTK_GROUP_ENABLE_Imaging=WANT \
+%if %{with mpi}
+    -DVTK_USE_MPI:BOOL=ON \
+    -DVTK_GROUP_ENABLE_MPI=WANT \
+%else
+    -DVTK_USE_MPI:BOOL=OFF \
+%endif
+    -DVTK_GROUP_ENABLE_Qt=WANT \
+    -DVTK_GROUP_ENABLE_Rendering=WANT \
+    -DVTK_GROUP_ENABLE_StandAlone=WANT \
+    -DVTK_GROUP_ENABLE_Views=WANT \
     -DVTK_PYTHON_VERSION=3 \
-    -DVTK_QT_VERSION=5 \
     -DVTK_USE_OGGTHEORA_ENCODER:BOOL=ON \
-    -DVTK_USE_SYSTEM_LIBRARIES:BOOL=ON \
-    -DVTK_USE_SYSTEM_DIY2=OFF \
-    -DVTK_USE_SYSTEM_GL2PS:BOOL=%{?with_gl2ps:ON}%{!?with_gl2ps:OFF} \
-    -DVTK_USE_SYSTEM_LIBHARU:BOOL=%{?with_haru:ON}%{!?with_haru:OFF} \
-    -DVTK_USE_SYSTEM_LIBPROJ:BOOL=ON \
-    -DVTK_USE_SYSTEM_HDF5:BOOL=ON  \
-    -DVTK_USE_SYSTEM_MPI4PY=ON \
-    -DVTK_USE_SYSTEM_NETCDF:BOOL=ON \
-    -DVTK_USE_SYSTEM_PUGIXML:BOOL=%{?with_pugixml:ON}%{!?with_pugixml:OFF} \
-    -DVTK_WRAP_JAVA:BOOL=ON \
+    -DVTK_WRAP_JAVA:BOOL=%{?with_java:ON}%{!?with_java:OFF} \
     -DVTK_WRAP_PYTHON:BOOL=ON \
-    -DVTK_WRAP_PYTHON_SIP:BOOL=ON \
+    -DVTK_USE_EXTERNAL:BOOL=ON \
+    -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=%{?with_gl2ps:ON}%{!?with_gl2ps:OFF} \
+    -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=%{?with_haru:ON}%{!?with_haru:OFF} \
+    -DVTK_MODULE_USE_EXTERNAL_VTK_pugixml=%{?with_pugixml:ON}%{!?with_pugixml:OFF} \
+    -DVTK_MODULE_ENABLE_VTK_pegtl=%{?with_pegtl:YES}%{!?with_pegtl:NO} \
     -DVTK_INSTALL_DOC_DIR:PATH=%{_docdir}/%{name}-%{series}
 
     #-DVTK_EXTERNAL_LIBHARU_IS_SHARED:BOOL=OFF \
 
-%make_jobs
-make %{?_smp_mflags} DoxygenDoc
+%cmake_build
 
 # Remove executable bits from sources (some of which are generated)
 find . -name \*.c -o -name \*.cxx -o -name \*.h -o -name \*.hxx -o -name \*.gif -exec chmod -x "{}" "+"
@@ -491,6 +488,10 @@ perl -pi -e's,^,%{my_bindir}/,' examples.list
 
 %endif
 
+# MOVE LICENSES TO PROPER DOCDIR INSTEAD OF %%{my_datadir}/licenses
+mkdir -p %{buildroot}%{_datadir}/licenses/%{name}
+mv %{buildroot}%{my_datadir}/licenses/VTK/* %{buildroot}%{_datadir}/licenses/%{name}/
+
 %fdupes -s %{buildroot}
 
 %check
@@ -507,47 +508,52 @@ find %{buildroot} . -name vtk.cpython-3*.pyc -delete # drop unreproducible time-
 
 %post   -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
+%if %{with java}
 %post   java -p /sbin/ldconfig
 %postun java -p /sbin/ldconfig
+%endif
+%post   qt -p /sbin/ldconfig
+%postun qt -p /sbin/ldconfig
 %post   -n python3-%{name} -p /sbin/ldconfig
 %postun -n python3-%{name} -p /sbin/ldconfig
 
 %files -n %{shlib}
 %license Copyright.txt
 %{my_libdir}/lib*.so.*
+%exclude %{my_libdir}/libvtk*Qt*.so.*
 %exclude %{my_libdir}/libvtk*Java.so.1
-%exclude %{my_libdir}/libvtk*Python3*.so.1
-%exclude %{my_libdir}/libvtkFiltersPython.so.1
-%exclude %{my_libdir}/libvtkPythonContext2D.so.1
+%exclude %{my_libdir}/libvtk*Python*.so.1
 
 %files devel
 %license Copyright.txt
-#%%{my_bindir}/%%{pkgname}EncodeString
-#%%{my_bindir}/%%{pkgname}HashSource
+%license %{_datadir}/licenses/%{name}/
+%{my_bindir}/vtkProbeOpenGLVersion
 %{my_bindir}/%{pkgname}ParseJava
 %{my_bindir}/%{pkgname}WrapHierarchy
 %{my_bindir}/%{pkgname}WrapJava
 %{my_bindir}/%{pkgname}WrapPython
 %{my_bindir}/%{pkgname}WrapPythonInit
 %{my_libdir}/*.so
+%{my_libdir}/vtk/
 %{?with_mpi: %dir %{my_libdir}/cmake/}
-%{my_libdir}/cmake/%{pkgname}/
-%{my_libdir}/libvtkWrappingTools.a
+%{my_libdir}/cmake/%{pkgname}-%{series}/
 %{my_incdir}/%{pkgname}-%{series}/
-# VTK JNI, PythonTkinter
+# VTK JNI, PythonTkinter, QtGUI
 %exclude %{my_libdir}/libvtk*Java.so
-%exclude %{my_libdir}/libvtk*Python3*.so
-%exclude %{my_libdir}/libvtkRenderingPythonTkWidgets*.so
+%exclude %{my_libdir}/libvtk*Python*.so
+%exclude %{my_libdir}/libvtk*Qt*.so
 
 %files devel-doc
 %license Copyright.txt
 %{_docdir}/%{name}-%{series}
 
+%if %{with java}
 %files java
 %license Copyright.txt
-%{my_libdir}/%{pkgname}.jar
 %{my_libdir}/libvtk*Java.so
 %{my_libdir}/libvtk*Java.so.1
+%{my_libdir}/java/
+%endif
 
 %files -n python3-%{name}
 %license Copyright.txt
@@ -558,17 +564,13 @@ find %{buildroot} . -name vtk.cpython-3*.pyc -delete # drop unreproducible time-
 %else
 %{python3_sitearch}/
 %endif
-%{my_libdir}/libvtk*Python3*.so.1
-%{my_libdir}/libvtkFiltersPython.so.1
-%{my_libdir}/libvtkPythonContext2D.so.1
-%{my_libdir}/libvtkRenderingPythonTkWidgets*.so
+%{my_libdir}/libvtk*Python*.so.1
+%{my_libdir}/libvtk*Python*.so
 
 %files qt
 %license Copyright.txt
-%{?with_mpi: %dir %{my_libdir}/qt5/}
-%{?with_mpi: %dir %{my_libdir}/qt5/plugins/}
-%dir %{my_libdir}/qt5/plugins/designer/
-%{my_libdir}/qt5/plugins/designer/libQVTKWidgetPlugin.so
+%{my_libdir}/libvtk*Qt*.so.*
+%{my_libdir}/libvtk*Qt*.so
 
 %if %{with examples}
 %if "%{flavor}" == ""

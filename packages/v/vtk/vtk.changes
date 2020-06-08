@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sun May 31 20:28:03 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add vtk-qt-5.15-include-QPainterPath.patch: Include QPainterPath
+  to fix build failures against Qt 5.15; patch taken from
+  upstream, see
+  <https://gitlab.kitware.com/vtk/vtk/-/merge_requests/6943>.
+- The %%cmake macro sets CMAKE_SKIP_RPATH=ON for Leap 15.x which
+  causes build failures; set it to OFF and set
+  CMAKE_SKIP_INSTALL_RPATH=ON for openSUSE <= 1500. See
+  <https://discourse.vtk.org/t/building-fails-generating-wrap-hierarchy-for-vtk-commoncore-unable-to-open-libvtkwrappingtools-so-1>.
+- Build without pegtl for distributions where pegtl > 2.0 is
+  unavailable (Leap 15.1).
+- Disable java bindings for Leap 15.1 only where cmake still
+  searches for the javah binary (and setting it to %{_bindir}/true
+  seems to no longer work).
+- Run ld post scripts for vtk-qt.
+
+-------------------------------------------------------------------
+Fri May  8 13:33:26 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 9.0.0 
+  * See https://discourse.vtk.org/t/vtk-9-0-0/3205.
+- Rebase patches still required for building:
+  * bundled_exodusii_add_missing_libpthread.patch: Update to
+    upstream patch
+    (https://gitlab.kitware.com/vtk/vtk/-/merge_requests/6865).
+  * bundled_libharu_add_missing_libm.patch
+- Pass VTK_PYTHON_OPTIONAL_LINK:BOOL=OFF to cmake to link against
+  the system python library explicitly.
+- Add vtk-parallelgeometry-dependency.patch to fix a missing
+  dependency for vtkparallelgeometry (see
+  https://discourse.vtk.org/t/building-vtk-9-0-fails-when-using-mpi-support/3227).
+- Comment out 0001-Allow-compilation-on-GLES-platforms.patch that
+  no longer applies and needs extensive rebasing.
+- Drop patches incorporated or otherwise fixed upstream:
+  * 0001-Make-code-calling-proj4-compatible-with-proj4-5.0-an.patch
+  * 0001-Add-libogg-to-IOMovie-target-link-libraries.patch
+  * python38.patch
+  * reproducible.patch
+- Adapt to changes in upstream's cmake script:
+  * Replace old options by their newer versions where applicable.
+  * Pass VTK_USE_EXTERNAL=ON to use system libraries by default
+    except for gl2ps, haru, and pugixml.
+- New BuildRequires: pegtl-devel and utfcpp-devel.
+- No longer needed to pass
+  Java_JAVAH_EXECUTABLE:PATH=%{_bindir}/true to cmake; script does
+  not look for javah any more.
+- Use autosetup to set up and patch sources: simplifies applying
+  changing list of patches; use an if guard to avoid patch needing
+  rebase while not running into conflict with factory bot.
+- Use system gl2ps for openSUSE > 1500.
+
+-------------------------------------------------------------------
 Mon Apr 27 11:00:45 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Fix serial builds broken due to disabling the building of
