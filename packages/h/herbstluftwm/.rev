@@ -114,4 +114,18 @@ herbstluftwm.x86_64: E: summary-not-capitalized (Badness: 63) C a manual tiling 
   * Fix the exit code of the 'focus' command</comment>
     <requestid>800246</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3ab52bff2a90d9f910f6dfdc084ca4cd</srcmd5>
+    <version>0.8.3</version>
+    <time>1591653931</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.3:
+  * Set .desktop file Type to Application (#903) 
+  * Ignore EnterNotify events by grabs and decoration (#907) 
+  * Don't drop later EnterNotify during enternotify() (#909) 
+  * Consistently use $(BUILDDIR) in Makefile
+  * Remove unused command interface methods (#917) 
+  * Update and add new tests</comment>
+    <requestid>812452</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           herbstluftwm
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        A manual tiling window manager
 License:        BSD-2-Clause
