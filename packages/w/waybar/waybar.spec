@@ -53,11 +53,27 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-protocols)
+# requires branding
+Requires:       %{name}-branding >= %{version}
 # optional: sway integration
 Recommends:     sway
 
 %description
 Customizable Wayland bar for Sway and Wlroots based compositors.
+
+%package branding-upstream
+Summary:        Upstream branding of %{name}
+Group:          System/GUI/Other
+Requires:       %{name} = %{version}
+Supplements:    packageand(%{name}:branding-upstream)
+Conflicts:      otherproviders(%{name}-branding)
+Provides:       %{name}-branding = %{version}
+BuildArch:      noarch
+#BRAND: /etc/xdg/waybar/config contains upstream config
+#BRAND: /etc/xdg/waybar/style.css contains upstream style
+
+%description branding-upstream
+This package provides the upstream look and feel for sway.
 
 %prep
 %setup -q -n Waybar-%{version}
@@ -70,9 +86,13 @@ Customizable Wayland bar for Sway and Wlroots based compositors.
 %meson_install
 
 %files
-%{_sysconfdir}/xdg/waybar/
 %{_bindir}/waybar
 %{_mandir}/man?/%{name}*
 %{_prefix}/lib/systemd/user/waybar.service
+
+%files branding-upstream
+%dir %{_sysconfdir}/xdg/waybar
+%config(noreplace) %{_sysconfdir}/xdg/waybar/config
+%config(noreplace) %{_sysconfdir}/xdg/waybar/style.css
 
 %changelog
