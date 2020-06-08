@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Sun May 31 09:54:43 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Activated test suites
+
+-------------------------------------------------------------------
+Wed Apr  1 01:08:31 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v12.6.3
+
+-------------------------------------------------------------------
+Thu Oct 24 11:14:49 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Tue Jan  3 10:36:15 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 11.12:
+  - Sorry, no changelog atm.
+- Remove CFLAGS and %clean section from spec file;
+- License in SPDX format.
+
+-------------------------------------------------------------------
+Wed Sep 14 03:20:26 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 11.09:
+  - Sorry, no changelog.
+
+-------------------------------------------------------------------
+Fri Apr 29 22:31:19 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 11.05.1:
+  - Sorry, no changelog.
+
+-------------------------------------------------------------------
+Thu Apr 28 22:00:00 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 11.05:
+  - Sorry, no changelog.
+
+-------------------------------------------------------------------
+Wed Apr 20 01:58:31 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 11.04:
+- Regenerate spec file with py2pack.
+
+-------------------------------------------------------------------
+Sat Jan 29 12:44:04 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 11.01;
+- Spec file cleaned with spec-cleaner;
+- Bzip2 source file.
+
+-------------------------------------------------------------------
+Sun Jun 20 17:23:59 UTC 2010 - nix@opensuse.org
+
+- Make wv a Recommends and change from wv2 to libwv2
+
+-------------------------------------------------------------------
+Mon Oct  5 11:56:10 UTC 2009 - alexandre@exatati.com.br
+
+- Update to 3.2.5;
+- Building as noarch for openSUSE >= 11.2.
+
+-------------------------------------------------------------------
+Fri Sep 18 01:25:52 UTC 2009 - alexandre@exatati.com.br
+
+- Update to 3.2.4.
+
+-------------------------------------------------------------------
+Tue Sep 15 11:52:34 UTC 2009 - alexandre@exatati.com.br
+
+- Update to 3.2.3.
+
+-------------------------------------------------------------------
+Fri Aug 28 01:42:51 UTC 2009 - alexandre@exatati.com.br
+
+- Update to 3.2.2.
+
+-------------------------------------------------------------------
+Tue Aug 18 01:15:57 UTC 2009 - alexandre@exatati.com.br
+
+- Initial package (3.2) for openSUSE.
