@@ -26,8 +26,8 @@
 # major 69
 # mainver %major.99
 %define major           68
-%define mainver         %major.8.1
-%define orig_version    68.8.1
+%define mainver         %major.9.0
+%define orig_version    68.9.0
 %define orig_suffix     %{nil}
 %define update_channel  release
 %define source_prefix   thunderbird-%{mainver}
@@ -62,7 +62,7 @@ Name:           %{pkgname}
 BuildRequires:  Mesa-devel
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf213
-BuildRequires:  dbus-1-glib-devel
+BuildRequires:  dbus-1-glib-devel >= 0.60
 BuildRequires:  fdupes
 %if 0%{?suse_version} <= 1320
 BuildRequires:  gcc7-c++
@@ -77,7 +77,7 @@ BuildRequires:  libidl-devel
 BuildRequires:  libnotify-devel
 BuildRequires:  memory-constraints
 BuildRequires:  mozilla-nspr-devel >= 4.21
-BuildRequires:  mozilla-nss-devel >= 3.44.3
+BuildRequires:  mozilla-nss-devel >= 3.44.4
 BuildRequires:  nasm >= 2.13
 BuildRequires:  nodejs8 >= 8.11
 BuildRequires:  python-devel

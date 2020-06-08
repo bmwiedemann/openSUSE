@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jun  6 21:05:07 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Thunderbird 68.9.0
+  * fixed: Custom headers added for searching or filtering could
+    not be removed (bmo#1631577)
+  * fixed: Calendar: Today Pane updated prior to loading all data
+    (bmo#1635613)
+  * fixed: Stability improvements (bmo#1625677)
+  MFSA 2020-22 (bsc#1172402)
+  * CVE-2020-12405 (bmo#1631618)
+    Use-after-free in SharedWorkerService
+  * CVE-2020-12406 (bmo#1639590)
+    JavaScript Type confusion with NativeTypes
+  * CVE-2020-12410 (bmo#1619305, bmo#1632717)
+    Memory safety bugs fixed in Thunderbird 68.9.0
+  * CVE-2020-12398 (bmo#1613623)
+    Security downgrade with IMAP STARTTLS leads to information
+    leakage
+
+-------------------------------------------------------------------
 Sun May 24 20:46:21 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Thunderbird 68.8.1

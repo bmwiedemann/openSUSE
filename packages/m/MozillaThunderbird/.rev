@@ -3212,4 +3212,12 @@ But as always there are semi-relevant changes from the Gecko 60.4 baseline. Many
     <comment></comment>
     <requestid>808609</requestid>
   </revision>
+  <revision rev="232" vrev="1">
+    <srcmd5>939f713da4545ee56da679db40912366</srcmd5>
+    <version>68.9.0</version>
+    <time>1591653476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812112</requestid>
+  </revision>
 </revisionlist>
