@@ -1,7 +1,7 @@
 #
 # spec file for package trace-cmd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source0:        trace-cmd-%{version}.tar.bz2
 Source1:        trace-cmd-rpmlintrc
 Patch1:         makefile-lib64.patch
 Patch2:         makefile-bash.patch
+Patch3:         0001-trace-cmd-fix-multiple-definition-compiler-errors.patch
 BuildRequires:  asciidoc
 BuildRequires:  audit-devel
 BuildRequires:  docbook-xsl-stylesheets
@@ -44,6 +45,7 @@ trace-cmd is a command-line tool for configuring Ftrace.
 %setup -q
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 make %{?_smp_mflags} prefix=%{_prefix} trace-cmd
