@@ -49,6 +49,8 @@ This package provides the documentation files for python thunarx.
 %autosetup -p1
 
 %build
+# gcc10 workaround
+export CFLAGS="%{optflags} -fcommon"
 %configure \
     --enable-gtk-doc \
     --docdir=%{_defaultdocdir}/%{name}

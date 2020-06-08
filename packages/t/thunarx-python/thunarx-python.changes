@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  8 08:08:17 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- add -fcommon to CFLAGS to work around gcc10 default changes
+
+-------------------------------------------------------------------
 Tue Mar 17 08:14:09 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - add thunarx-python-py3.8.diff to add missing "--embed" flag to
