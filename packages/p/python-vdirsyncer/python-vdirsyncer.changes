@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  7 21:35:23 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add missing BR python-atomicwrites
+
+-------------------------------------------------------------------
 Mon May 18 09:10:46 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

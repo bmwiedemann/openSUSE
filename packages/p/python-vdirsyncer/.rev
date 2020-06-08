@@ -82,4 +82,12 @@
     <comment></comment>
     <requestid>806957</requestid>
   </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>17083de4e6bfceab8e60dd79558fde26</srcmd5>
+    <version>0.16.7</version>
+    <time>1591653751</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BR python-atomicwrites</comment>
+    <requestid>812361</requestid>
+  </revision>
 </revisionlist>

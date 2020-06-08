@@ -33,6 +33,7 @@ Source2:        vdirsyncer.timer
 Patch0:         python-vdirsyncer-fix-tests.patch
 # default deadline (200ms) is too short for obs
 Patch1:         python-vdirsyncer-shift-deadline.patch
+BuildRequires:  %{python_module atomicwrites}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
