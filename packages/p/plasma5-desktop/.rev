@@ -1202,4 +1202,12 @@
     <comment>- Leap 15.2 also has ibus-dict-emoji</comment>
     <requestid>805604</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>8755b86d7f7054add9b5e91cdbddf92b</srcmd5>
+    <version>5.19.0</version>
+    <time>1591653289</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.0</comment>
+    <requestid>812328</requestid>
+  </revision>
 </revisionlist>

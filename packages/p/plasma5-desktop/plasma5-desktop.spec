@@ -22,7 +22,7 @@
 
 %bcond_without lang
 Name:           plasma5-desktop
-Version:        5.18.5
+Version:        5.19.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -32,16 +32,13 @@ Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz
+Source:         plasma-desktop-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz.sig
+Source1:        plasma-desktop-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Use-themed-user-face-icon-in-kickoff.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-krdb-Drop-GTK2-colour-exporting.patch
-Patch3:         0001-Stop-multiplying-duration-values.patch
 BuildRequires:  extra-cmake-modules >= 1.8.0
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel
@@ -83,10 +80,8 @@ BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 BuildRequires:  cmake(KRunnerAppDBusInterface) >= %{_plasma5_version}
 BuildRequires:  cmake(KSMServerDBusInterface) >= %{_plasma5_version}
 BuildRequires:  cmake(KWinDBusInterface) >= %{_plasma5_version}
-# Hack: The version in the .cmake config is missing the .1.
-# Replace with %{_plasma5_bugfix} again with 5.18.5
-BuildRequires:  cmake(LibKWorkspace) >= 5.18.4
-BuildRequires:  cmake(LibTaskManager) >= 5.18.4
+BuildRequires:  cmake(LibKWorkspace) >= %{_plasma5_bugfix}
+BuildRequires:  cmake(LibTaskManager) >= %{_plasma5_version}
 BuildRequires:  cmake(Phonon4Qt5) >= 4.6.60
 BuildRequires:  cmake(Qt5Concurrent) >= 5.4.0
 BuildRequires:  cmake(Qt5DBus) >= 5.4.0
@@ -143,6 +138,8 @@ Requires:       kinfocenter5
 Requires:       kirigami2
 Requires:       kmenuedit5
 Requires:       ksysguard5
+# Needed for sensors
+Requires:       libksysguard5-imports
 # kcm_style does DBus calls to the KDED module.
 # However, that depends on xsettingsd and gio, so
 # let the Supplements in kde-gtk-config5 handle it.
@@ -205,7 +202,6 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
   # Reference the local copy (see the comment in the install section)
   sed -i"" 's#ibus/dicts/#plasma/ibus-emoji-dicts/#g' applets/kimpanel/backend/ibus/emojier/emojier.cpp
 %endif
-
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
   %cmake_build
 
@@ -247,6 +243,7 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 
 %files
 %license COPYING*
+%{_kf5_debugdir}/kcmkeys.categories
 %{_kf5_dbuspolicydir}/org.kde.fontinst.conf
 %{_kf5_dbuspolicydir}/org.kde.kcontrol.kcmclock.conf
 %{_kf5_knsrcfilesdir}/colorschemes.knsrc
@@ -270,6 +267,7 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %{_kf5_bindir}/lookandfeeltool
 %{_kf5_bindir}/kcolorschemeeditor
 %{_kf5_bindir}/tastenbrett
+%{_kf5_configdir}/autostart/kaccess.desktop
 %{_kf5_libdir}/kconf_update_bin/krdb_clearlibrarypath
 %{_kf5_libdir}/libexec/
 %{_kf5_libdir}/libkdeinit5_kaccess.so

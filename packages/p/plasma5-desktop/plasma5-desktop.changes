@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jun  4 13:27:13 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- Changes since 5.18.90:
+  * KCM Notifications: Open app page only after model is loaded
+  * [kimpanel] Make candidate index more visible.
+  * Emoji Panel: Use the right category component
+  * [Emoji panel] fix slowness introduced in the last patch
+  * [Emoji panel] search when the user begins typing
+  * [kcms/nightcolour] Reset needsSave after loading initial QML properties (kde#411584)
+
+-------------------------------------------------------------------
+Thu May 14 14:33:07 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-krdb-Drop-GTK2-colour-exporting.patch
+  * 0001-Stop-multiplying-duration-values.patch
+
+-------------------------------------------------------------------
 Thu May 14 13:22:23 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Leap 15.2 also has ibus-dict-emoji
