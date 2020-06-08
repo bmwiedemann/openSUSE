@@ -38,7 +38,7 @@
 %endif
 
 Name:           borgbackup
-Version:        1.1.11
+Version:        1.1.13
 Release:        0
 Summary:        Deduplicating backup program with compression and authenticated encryption
 License:        BSD-3-Clause
@@ -51,7 +51,6 @@ Source2:        %{name}.keyring
 # python3-guzzle_sphinx_theme isn't available everywhere,
 # fall back to Sphinx default theme for older distributions
 Patch0:         borgbackup-1.1.4-sphinx-default-theme.patch
-Patch1:         0001-rename-local-preload-function-to-not-overwrite-keyword-argument.patch
 
 # build dependencies
 BuildRequires:  bash
@@ -165,7 +164,6 @@ This package contains the fish completion script for borgbackup.
 %if ! %{with borg_guzzle}
 %patch0 -p1
 %endif
-%patch1 -p1
 # remove bundled libraries, that we don't want to be included
 rm -rf src/borg/algorithms/{lz4,zstd}
 # remove bundled blake2 library, if appropriate
