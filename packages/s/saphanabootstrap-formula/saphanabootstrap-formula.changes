@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  5 14:42:12 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- Fix provisioning of hanadb_exporter in SLE12, where python3-pip must be always installed.
+
+-------------------------------------------------------------------
 Tue Jun  2 00:21:55 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 
 - Version 0.5.10

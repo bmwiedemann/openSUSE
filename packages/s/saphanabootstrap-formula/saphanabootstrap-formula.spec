@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           saphanabootstrap-formula
-Version:        0.5.10+git.1591284130.9c8bc34
+Version:        0.5.10+git.1591606061.233ca8b
 Release:        0
 Summary:        SAP HANA platform deployment formula
 License:        Apache-2.0
