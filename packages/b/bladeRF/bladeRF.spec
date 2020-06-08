@@ -1,7 +1,7 @@
 #
 # spec file for package bladeRF
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013-2015 Wojciech Kazubski, wk@ire.pw.edu.pl
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,6 +33,8 @@ URL:            https://nuand.com/
 #Git-Clone:     https://github.com/Nuand/bladeRF.git
 Source0:        https://github.com/Nuand/bladeRF/archive/%{release_name}.tar.gz#/%{name}-%{release_name}.tar.xz
 Source1:        ad9361.tar.xz
+Patch0:         0001-libbladeRF-unambiguous-flash_arch-macro-name.patch
+Patch1:         0002-libbladeRF-define-bladerf2_state_to_string-as-extern.patch
 BuildRequires:  cmake >= 2.8.4
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -86,6 +88,8 @@ use of libbladerf.
 
 %prep
 %setup -q -n %{name}-%{release_name}
+%patch0 -p1
+%patch1 -p1
 ls
 pushd thirdparty/analogdevicesinc/no-OS
 tar -xJf %{SOURCE1}

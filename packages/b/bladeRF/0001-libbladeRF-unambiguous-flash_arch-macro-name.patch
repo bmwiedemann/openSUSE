@@ -1,0 +1,53 @@
+From 163425d48a3b7d8c100d7295220d3648c050d0dd Mon Sep 17 00:00:00 2001
+From: Robert Ghilduta <robert.ghilduta@nuand.com>
+Date: Mon, 25 May 2020 21:36:44 -0500
+Subject: [PATCH 1/2] libbladeRF: unambiguous flash_arch macro name
+
+---
+ host/libraries/libbladeRF/src/board/bladerf1/bladerf1.c | 2 +-
+ host/libraries/libbladeRF/src/board/bladerf2/bladerf2.c | 2 +-
+ host/libraries/libbladeRF/src/board/board.h             | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/host/libraries/libbladeRF/src/board/bladerf1/bladerf1.c b/host/libraries/libbladeRF/src/board/bladerf1/bladerf1.c
+index cd4c18b9..3dcc74ba 100644
+--- a/host/libraries/libbladeRF/src/board/bladerf1/bladerf1.c
++++ b/host/libraries/libbladeRF/src/board/bladerf1/bladerf1.c
+@@ -838,7 +838,7 @@ static int bladerf1_open(struct bladerf *dev, struct bladerf_devinfo *devinfo)
+     board_data->module_format[BLADERF_RX] = -1;
+     board_data->module_format[BLADERF_TX] = -1;
+ 
+-    dev->flash_arch->status          = STATE_UNINITIALIZED;
++    dev->flash_arch->status          = STATUS_FLASH_UNINITIALIZED;
+     dev->flash_arch->manufacturer_id = 0x0;
+     dev->flash_arch->device_id       = 0x0;
+ 
+diff --git a/host/libraries/libbladeRF/src/board/bladerf2/bladerf2.c b/host/libraries/libbladeRF/src/board/bladerf2/bladerf2.c
+index 5e1367c0..9d82aa17 100644
+--- a/host/libraries/libbladeRF/src/board/bladerf2/bladerf2.c
++++ b/host/libraries/libbladeRF/src/board/bladerf2/bladerf2.c
+@@ -280,7 +280,7 @@ static int bladerf2_open(struct bladerf *dev, struct bladerf_devinfo *devinfo)
+     board_data->module_format[BLADERF_RX] = -1;
+     board_data->module_format[BLADERF_TX] = -1;
+ 
+-    dev->flash_arch->status          = STATE_UNINITIALIZED;
++    dev->flash_arch->status          = STATUS_FLASH_UNINITIALIZED;
+     dev->flash_arch->manufacturer_id = 0x0;
+     dev->flash_arch->device_id       = 0x0;
+ 
+diff --git a/host/libraries/libbladeRF/src/board/board.h b/host/libraries/libbladeRF/src/board/board.h
+index db8128c3..66873069 100644
+--- a/host/libraries/libbladeRF/src/board/board.h
++++ b/host/libraries/libbladeRF/src/board/board.h
+@@ -446,7 +446,7 @@ struct board_fns {
+ 
+ /* Information about the (SPI) flash architecture */
+ struct bladerf_flash_arch {
+-    enum { STATUS_UNINITIALIZED, STATUS_SUCCESS, STATUS_ASSUMED } status;
++    enum { STATUS_FLASH_UNINITIALIZED, STATUS_SUCCESS, STATUS_ASSUMED } status;
+ 
+     uint8_t manufacturer_id; /**< Raw manufacturer ID */
+     uint8_t device_id;       /**< Raw device ID */
+-- 
+2.26.2
+

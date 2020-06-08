@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun  7 20:25:19 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Add patches to fix gcc10 compile errors:
+  * 0001-libbladeRF-unambiguous-flash_arch-macro-name.patch
+  * 0002-libbladeRF-define-bladerf2_state_to_string-as-extern.patch
+
+-------------------------------------------------------------------
 Fri Jan 17 21:12:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Redownloaded tarball
