@@ -1,7 +1,7 @@
 #
 # spec file for package OpenImageIO
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,43 +21,53 @@
 %else
 %bcond_without imageviewer
 %endif
+%bcond_without python_bindings
+%bcond_with apidocs
+%bcond_with opencv
 
-%define so_ver 1_8
-%global gccv %(gcc  -dumpversion)
+%define so_ver 2_1
+%define major_minor_ver 2.1
 Name:           OpenImageIO
-Version:        1.8.17
+Version:        2.1.15.0
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
-Url:            http://www.openimageio.org/
+URL:            https://www.openimageio.org/
 Source0:        https://github.com/OpenImageIO/oiio/archive/Release-%{version}.tar.gz#/oiio-Release-%{version}.tar.gz
 Patch0:         oiio-clusterfit-boundscheck.patch
 Patch1:         oiio-detectplatform-others.patch
-Patch2:         oiio_gcc6_missleading_indentation.patch
-Patch3:         oiio-add-libdl-for-plugin.patch
-BuildRequires:  cmake
+# NOTE: Please don't uncomment a build requirement unless you have submitted the package to factory and it exists
+#BuildRequires:  Field3D-devel
+BuildRequires:  cmake >= 3.12
+%if %{with apidocs}
 BuildRequires:  doxygen
+%endif
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  giflib-devel
 BuildRequires:  hdf5-devel
+BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_thread-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
+BuildRequires:  openvdb-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pugixml-devel
+%if %{with python_bindings}
+BuildRequires:  python3-devel
+BuildRequires:  python3-pybind11-devel
+%endif
+BuildRequires:  robin-map-devel
+BuildRequires:  tbb-devel
 BuildRequires:  txt2man
-BuildRequires:  pkgconfig(IlmBase)
-# NOTE: Please don't uncomment a build requirement unless you have submitted the package to factory and it exists
-#BuildRequires:  Field3D-devel
 BuildRequires:  pkgconfig(OpenColorIO)
 BuildRequires:  pkgconfig(OpenEXR)
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(glew)
-BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libopenjp2)
-BuildRequires:  pkgconfig(libopenjpeg)
-BuildRequires:  pkgconfig(libopenjpeg1)
 %if %{with imageviewer}
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
@@ -65,25 +75,16 @@ BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5Widgets)
 %endif
 BuildRequires:  pkgconfig(libraw)
-BuildRequires:  pkgconfig(libraw_r)
-BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libwebpdecoder)
 BuildRequires:  pkgconfig(libwebpdemux)
 BuildRequires:  pkgconfig(libwebpmux)
+%if %{with opencv}
 BuildRequires:  pkgconfig(opencv)
-BuildRequires:  pkgconfig(openssl)
+%endif
 BuildRequires:  pkgconfig(zlib)
 Recommends:     google-droid-fonts
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_regex-devel
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_thread-devel
-%else
-BuildRequires:  boost-devel
-%endif
 
 %description
 OpenImageIO is a library for reading and writing images, and a bunch of related
@@ -98,10 +99,20 @@ Summary:        Development Files for OpenImageIO
 Group:          Development/Libraries/C and C++
 Requires:       libOpenImageIO%{so_ver} = %{version}
 Requires:       libOpenImageIO_Util%{so_ver} = %{version}
+Suggests:       %{name}-devel-doc
 
 %description devel
 This package provides development libraries and headers needed to build
 software using OpenImageIO.
+
+%package devel-doc
+Summary:        API documentation for OpenImageIO
+Group:          Productivity/Graphics/Other
+Requires:       %{name}-devel
+BuildArch:      noarch
+
+%description devel-doc
+This package provides the API documentation for OpenImageIO.
 
 %package -n libOpenImageIO%{so_ver}
 Summary:        Library for Reading and Writing Images
@@ -127,22 +138,18 @@ effects work for film. OpenImageIO is used extensively in animation and VFX
 studios all over the world, and is also incorporated into several commercial
 products.
 
-%if 1 == 0
-%package -n python-OpenImageIO
+%package -n python3-OpenImageIO
 Summary:        Python Bindings for OpenImageIO
 Group:          Development/Libraries/Python
 
-%description -n python-OpenImageIO
+%description -n python3-OpenImageIO
 This package contains python bindings for OpenImageIO.
-%endif
 
 %prep
 %setup -q -n oiio-Release-%{version}
 %patch0
 %patch1
-%patch2
-%patch3
-echo "gcc version %{gccv}"
+sed -i -e 's/_runtest python/_runtest python3/' src/cmake/oiio_macros.cmake
 
 # Make sure that bundled libraries are not used
 rm -f src/include/pugiconfig.hpp \
@@ -150,28 +157,6 @@ rm -f src/include/pugiconfig.hpp \
 rm -rf src/include/tbb/
 
 %build
-# This is for build debugging purposed
-export OIIOINC=`echo $PWD`
-%define pwd $OIIOINC
-%define oiioinclude %{pwd}/src/include
-echo %{pwd}
-%if 1 == 0
-%define gcc_version 8
-export CC=gcc-8
-export CPP=cpp-8
-export CXX=g++-8
-%endif
-
-export CFLAGS="%{optflags} -Wno-error=deprecated-declarations"
-%if 0%{?gcc_version} >= 7
-#This host of flags to allow oiio to build with gcc7 are the result of oiio being built with -Werror"
-export CXXFLAGS="%{optflags} -Wno-error=maybe-uninitialized -Wno-error=noexcept-type -Wno-error=format-truncation= -Wno-error=aligned-new= -Wno-error=deprecated-declarations"
-%if 0%{?gcc_version} >= 8
-export CXXFLAGS="$CXXFLAGS -Wno-error=class-memaccess -Wno-error=sizeof-pointer-memaccess -Wno-error=uninitialized"
-%endif
-%else
-export CXXFLAGS="%{optflags} -Wno-error=deprecated-declarations"
-%endif
 %cmake \
 %ifarch ppc
     -DNOTHREADS=ON \
@@ -179,39 +164,51 @@ export CXXFLAGS="%{optflags} -Wno-error=deprecated-declarations"
     -DINSTALL_DOCS:BOOL=ON \
     -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
     -DCMAKE_INSTALL_MANDIR:PATH=%{_mandir}/man1 \
-    -DINSTALL_FONTS:BOOL=ON \
-    -DBUILDSTATIC:BOOL=OFF \
+    -DINSTALL_FONTS:BOOL=OFF \
     -DLINKSTATIC:BOOL=OFF \
     -DUSE_EXTERNAL_PUGIXML:BOOL=ON \
     -DUSE_FFMPEG:BOOL=OFF \
-    -DUSE_OPENSSL:BOOL=ON \
     -DCMAKE_SKIP_RPATH:BOOL=ON \
-    -DUSE_OPENCV:BOOL=OFF \
-    -DUSE_PYTHON:BOOL=OFF \
-    -DCMAKE_DL_LIBS=dl \
-        ..
-#    -DPYLIB_INSTALL_DIR=%%{python3_sitearch} \
-make %{?_smp_mflags} VERBOSE=1
-#|| \
-#make -j1 VERBOSE=1
+    -DUSE_OPENCV:BOOL=%{?with_opencv:ON}%{?without_opencv:OFF} \
+    -DUSE_PYTHON:BOOL=%{?with_python_bindings:ON}%{?without_python_bindings:OFF} \
+    -DPYTHON_EXECUTABLE:PATH=%{_bindir}/python3 \
+    -DPLUGIN_SEARCH_PATH:PATH=%{_libdir}/%{name}-%{major_minor_ver} \
+    ..
+%cmake_build
+
+%if %{with apidocs}
 cd ..
 make %{?_smp_mflags} doxygen
+%endif
 
 %install
-%make_install -C build
+%cmake_install
+# Create and own the default plugin directory
+mkdir -p %{buildroot}%{_libdir}/%{name}-%{major_minor_ver}
 
-# Delete bundled fonts
-rm -Rf %{buildroot}%{_datadir}/fonts/%{name}
-
-# Move devel documentation to the right location
-mkdir -p %{buildroot}%{_docdir}/%{name}-devel
-mv %{buildroot}%{_docdir}/%{name}/openimageio.pdf %{buildroot}%{_docdir}/%{name}-devel/
-%if 1 == 0
+%if %{with apidocs}
 # Install additional devel documentation
 cp -a src/doc/doxygen/html/ %{buildroot}%{_docdir}/%{name}-devel/
 %endif
 
+# Clean up licenses installed in _licensedir
+rm %{buildroot}%{_docdir}/%{name}/LICENSE*md
+
 %fdupes -s %{buildroot}
+
+%check
+# Make sure testsuite can find required fonts
+mkdir -p build/fonts
+ln -s ../../src/fonts/Droid_Serif/DroidSerif.ttf build/fonts/DroidSerif.ttf
+ln -s ../../src/fonts/Droid_Sans/DroidSans.ttf build/fonts/DroidSans.ttf
+# Exclude known broken tests
+%ifarch x86_64
+%ctest '-E' 'broken|texture-icwrite'
+%ctest '-R' 'texture-icwrite' || true
+%else
+# Many test cases are failing on PPC, ARM, ix64 ... ignore for now
+%ctest '-E' 'broken|texture-icwrite' || true
+%endif
 
 %post -n libOpenImageIO%{so_ver} -p /sbin/ldconfig
 %postun -n libOpenImageIO%{so_ver} -p /sbin/ldconfig
@@ -219,23 +216,32 @@ cp -a src/doc/doxygen/html/ %{buildroot}%{_docdir}/%{name}-devel/
 %postun -n libOpenImageIO_Util%{so_ver} -p /sbin/ldconfig
 
 %files
-%doc CHANGES.md CREDITS.md LICENSE README.md
+%doc CHANGES.md CHANGES-0.x.md CHANGES-1.x.md CREDITS.md README.md
+%license LICENSE.md LICENSE-THIRD-PARTY.md
 %{_bindir}/*
 %{_mandir}/man1/*.1%{ext_man}
 
-%files devel
+%if %{with apidocs}
+%files devel-doc
 %doc %{_docdir}/%{name}-devel/
+%endif
+
+%files devel
 %{_includedir}/%{name}/
+%{_libdir}/pkgconfig
+%{_libdir}/cmake
+%{_datadir}/cmake
 %{_libdir}/*.so
 
 %files -n lib%{name}%{so_ver}
 %{_libdir}/lib%{name}.so.*
+%dir %{_libdir}/%{name}-%{major_minor_ver}
 
 %files -n lib%{name}_Util%{so_ver}
 %{_libdir}/lib%{name}_Util.so.*
 
-%if 1 == 0
-%files -n python-%{name}
+%if %{with python_bindings}
+%files -n python3-%{name}
 %{python3_sitearch}/%{name}.so
 %endif
 
