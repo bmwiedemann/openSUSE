@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jun  4 13:27:11 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- No code changes since 5.18.90
+
+-------------------------------------------------------------------
+Thu May 14 14:33:03 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Changes since 5.18.5:
+  * Port khotkeys to KIO's ApplicationLauncherJob & CommandLauncherJob
+  * Launch qdbusviewer with CommandLauncherJob. Tested, works.
+  * bump to require Qt 5.14
+- Refresh patches:
+  * 0001-Use-qdbus-qt5-and-qdbusviewer-qt5.patch
+
+-------------------------------------------------------------------
 Tue May  5 13:01:52 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5

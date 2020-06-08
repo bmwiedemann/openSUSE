@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           khotkeys5
-Version:        5.18.5
+Version:        5.19.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,9 +28,9 @@ Summary:        KDE's hotkey daemon
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/khotkeys-%{version}.tar.xz
+Source:         khotkeys-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/khotkeys-%{version}.tar.xz.sig
+Source1:        khotkeys-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -48,7 +48,7 @@ BuildRequires:  cmake(KF5Plasma)
 BuildRequires:  cmake(KF5XmlGui)
 #!BuildIgnore: kwin5
 BuildRequires:  cmake(LibKWorkspace) >= %{_plasma5_version}
-BuildRequires:  cmake(Qt5X11Extras) >= 5.4.0
+BuildRequires:  cmake(Qt5X11Extras) >= 5.14
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xtst)
 Requires:       libqt5-qdbus
@@ -70,8 +70,7 @@ Files to develop with KDE's hotkey daemon module.
 %lang_package
 
 %prep
-%setup -q -n khotkeys-%{version}
-%patch -p1
+%autosetup -p1 -n khotkeys-%{version}
 
 %build
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}

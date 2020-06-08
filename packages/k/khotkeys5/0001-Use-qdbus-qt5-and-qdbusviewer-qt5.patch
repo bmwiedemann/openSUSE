@@ -10,27 +10,24 @@ D-BUS actions like spectacle's "Print Screen" shortcuts.
  libkhotkeysprivate/actions/dbus_action.cpp | 2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
 
-Index: khotkeys-5.10.4/kcm_hotkeys/actions/dbus_action_widget.cpp
+Index: khotkeys-5.15.80git.20200423T192354~9b4759c/kcm_hotkeys/actions/dbus_action_widget.cpp
 ===================================================================
---- khotkeys-5.10.4.orig/kcm_hotkeys/actions/dbus_action_widget.cpp
-+++ khotkeys-5.10.4/kcm_hotkeys/actions/dbus_action_widget.cpp
-@@ -117,9 +117,9 @@ bool DbusActionWidget::isChanged() const
+--- khotkeys-5.15.80git.20200423T192354~9b4759c.orig/kcm_hotkeys/actions/dbus_action_widget.cpp	2020-04-24 08:10:26.252530468 +0200
++++ khotkeys-5.15.80git.20200423T192354~9b4759c/kcm_hotkeys/actions/dbus_action_widget.cpp	2020-04-24 08:11:06.703582629 +0200
+@@ -117,7 +117,7 @@
  
  void DbusActionWidget::launchDbusBrowser() const
      {
--    if( KRun::runCommand( "qdbusviewer", window()) == 0 )
-+    if( KRun::runCommand( "qdbusviewer-qt5", window()) == 0 )
-         {
--        KMessageBox::sorry( window(), i18n( "Failed to run qdbusviewer" ));
-+        KMessageBox::sorry( window(), i18n( "Failed to run qdbusviewer-qt5, maybe you need to install libqt5-qttools?" ));
-         }
+-        auto *job = new KIO::CommandLauncherJob("qdbusviewer");
++        auto *job = new KIO::CommandLauncherJob("qdbusviewer-qt5");
+         job->setUiDelegate(new KDialogJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, window()));
+         job->start();
      }
- 
-Index: khotkeys-5.10.4/libkhotkeysprivate/actions/dbus_action.cpp
+Index: khotkeys-5.15.80git.20200423T192354~9b4759c/libkhotkeysprivate/actions/dbus_action.cpp
 ===================================================================
---- khotkeys-5.10.4.orig/libkhotkeysprivate/actions/dbus_action.cpp
-+++ khotkeys-5.10.4/libkhotkeysprivate/actions/dbus_action.cpp
-@@ -133,7 +133,7 @@ void DBusAction::execute()
+--- khotkeys-5.15.80git.20200423T192354~9b4759c.orig/libkhotkeysprivate/actions/dbus_action.cpp	2020-04-24 08:08:41.193493337 +0200
++++ khotkeys-5.15.80git.20200423T192354~9b4759c/libkhotkeysprivate/actions/dbus_action.cpp	2020-04-24 08:10:26.252530468 +0200
+@@ -133,7 +133,7 @@
          }
      qDebug() << "D-Bus call:" << _application << ":" << _object << ":" << _function << ":" << args_list;
      KProcess proc;
