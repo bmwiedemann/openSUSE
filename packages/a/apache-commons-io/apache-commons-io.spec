@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-io
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,15 @@
 %define short_name      commons-%{base_name}
 %bcond_with tests
 Name:           apache-%{short_name}
-Version:        2.6
+Version:        2.7
 Release:        0
 Summary:        Utilities to assist with developing IO functionality
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://commons.apache.org/%{base_name}
-Source0:        http://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
-Source1:        %{name}-build.xml
+URL:            https://commons.apache.org/%{base_name}
+Source0:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
+Source1:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz.asc
+Source2:        %{name}-build.xml
 BuildRequires:  ant >= 1.6
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
@@ -54,7 +55,7 @@ This package provides %{summary}.
 
 %prep
 %setup -q -n %{short_name}-%{version}-src
-cp %{SOURCE1} build.xml
+cp %{SOURCE2} build.xml
 
 %pom_remove_parent
 
