@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Jun  4 13:27:15 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- Changes since 5.18.90:
+  * Screencast: add information about the source type which is being shared
+  * Background portal: do not notify about apps in background when we don't track them
+  * Background portal: correctly send respond whether we allow application in the background
+
+-------------------------------------------------------------------
+Thu May 14 14:33:10 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Changes since 5.18.5:
+  * FileChooser portal: add support for opening directories
+  * Screensharing: support variable stride
+  * Make PipeWire, GBM and Epoxy libs as required dependencies
+  * Return buffer to pipewire when returning early from recordFrame
+  * Send notification when screencasting fails
+  * Add background portal
+  * ScreenSharing: close dialogs when session is closed
+  * Send notification when screencasting fails
+  * bump to require Qt 5.14
+  * Avoid copying buffer twice (kde#419209)
+  * Add new Account portal
+  * Make it possible to stream only input
+  * Return if the process couldn't be properly registered
+
+-------------------------------------------------------------------
 Tue May  5 13:01:56 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5
