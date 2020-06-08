@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Jun  4 13:27:11 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- Changes since 5.18.90:
+  * Rename binary kstats as it causes a conflict with other packages (kde#421532)
+  * Fix the user message: it is allocated, not used
+  * ksysguardiface: Also exlude table and listview types from exposed sensors
+  * ksgrdiface: Revert change to "All" strings
+  * ksgrdiface: Use translated strings from KSysGuard::SysGuard library
+  * Add proper names for containers/objects created by ksgrdinterface plugin
+  * Add sensorinfo for sensorcontainers and sensorobjects
+  * Cleanup indentation
+  * Skip loading a plugin if it was already loaded
+  * Fix Messages.sh v2
+  * Fix Messages.sh
+  * Only build autotests when enabled
+  * Prefix disk name on size labels (kde#421513)
+
+-------------------------------------------------------------------
+Thu May 14 14:33:04 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Changes since 5.18.5:
+  * Fix translation domain for ksysguard plugins
+  * Exclude all loop devices from partition and disk sensors
+  * Add context to translated strings and clarify some strings
+  * Use KSysGuard namespace for KSysGuard targets
+  * Add a new daemon for stats monitoring
+  * Remove too strict Qt/KF5 deprecation rule
+  * Add some new battery sensors : energy_now, energy_full and power_now.
+  * bump to require Qt 5.14
+  * Add per-partition total and all partitions sensors
+  * Add support for power sensors from lm-sensors
+  * Make it compile against qt5.15. SkipEmptyParts is part of Qt::.
+  * Linux/cpuinfo.c: grow buffer size as needed for 12+ core CPUs (kde#384515)
+  * Use safe hardcoded value for ProvidersUrl
+  * Unify ksysguard cpu clock speed names
+
+-------------------------------------------------------------------
 Tue May  5 13:01:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5

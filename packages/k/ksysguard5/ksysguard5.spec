@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           ksysguard5
-Version:        5.18.5
+Version:        5.19.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,9 +28,9 @@ Summary:        KDE System Guard daemon
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/ksysguard-%{version}.tar.xz
+Source:         ksysguard-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/ksysguard-%{version}.tar.xz.sig
+Source1:        ksysguard-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        ksysguardd.service
@@ -54,8 +54,10 @@ BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5SysGuard) >= %{_plasma5_version}
 BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(Qt5Core) >= 5.12.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
+BuildRequires:  cmake(Qt5Core) >= 5.14.0
+BuildRequires:  cmake(Qt5Widgets)
+# kde#421514
+BuildRequires:  cmake(Qt5Test)
 # No pkgconfig(pcap) in Leap 15.1 yet
 BuildRequires:  libpcap-devel
 Requires:       libksysguard5-helper
@@ -120,9 +122,12 @@ exit 0
 %license COPYING*
 %{_kf5_bindir}/ksysguard
 %{_kf5_bindir}/ksysguardd
+%{_kf5_bindir}/ksystemstats
+%{_kf5_bindir}/kstatsviewer
 %config %{_kf5_sysconfdir}/ksysguarddrc
 %{_kf5_knsrcfilesdir}/ksysguard.knsrc
 %{_kf5_libdir}/libkdeinit5_ksysguard.so
+%{_kf5_libdir}/libksgrdbackend.so
 %{_kf5_applicationsdir}/org.kde.ksysguard.desktop
 %{_kf5_notifydir}/
 %dir %{_kf5_htmldir}/en
@@ -138,6 +143,9 @@ exit 0
 %dir %{_kf5_plugindir}/ksysguard/process
 %{_kf5_plugindir}/ksysguard/process/ksysguard_plugin_network.so
 %{_kf5_plugindir}/ksysguard/process/ksysguard_plugin_nvidia.so
+%{_kf5_plugindir}/ksysguard/ksysguard_plugin_nvidiaglobal.so
+%{_kf5_plugindir}/ksysguard/ksysguard_ksgrd.so
+%{_kf5_sharedir}/dbus-1/services/org.kde.ksystemstats.service
 %{_unitdir}/ksysguardd.service
 
 %if %{with lang}

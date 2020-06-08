@@ -841,4 +841,16 @@ Wed Sep  3 21:20:56 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.18.5</comment>
     <requestid>800480</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>50a1e4362f2d47e1a46078e10ebb7ee1</srcmd5>
+    <version>5.19.0</version>
+    <time>1591653443</time>
+    <user>dimstar_suse</user>
+    <comment>Tar got respun:
+
+  * Rename binary kstats as it causes a conflict with other packages (kde#421532)
+  * Fix the user message: it is allocated, not used
+  * ksysguardiface: Also exlude table and listview types from exposed sensors (forwarded request 812501 from Vogtinator)</comment>
+    <requestid>812527</requestid>
+  </revision>
 </revisionlist>
