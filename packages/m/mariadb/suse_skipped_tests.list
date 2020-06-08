@@ -26,22 +26,34 @@ unit.ed25519                                 : since 10.4.12 - ppc, we don't bui
 #----------------------------------------------------------------
 
 # Needs to be investigated (issues trackers will be added)
-sys_vars.slave_parallel_threads_basic        : since 10.3.16 - x86_64, i386, s390x, armv7l, aarch64, ppc64, ppc64le
-main.gis_notembedded                         : since 10.3.16 - x86_64, i386, s390x, armv7l, aarch64, ppc64, ppc64le
-versioning.partition                         : since 10.3.16 - armv7l
-innodb.innodb-page_compression_lzma          : since 10.3.20 - armv7l
-sys_vars.sysvars_wsrep                       : since 10.4.12 - ppc
-rpl.rpl_ip_mix                               : since 10.4.10 - all
-rpl.rpl_ip_mix2                              : since 10.4.10 - all
-rpl.rpl_ipv4_as_ipv6                         : since 10.4.10 - all
-rpl.rpl_ipv6                                 : since 10.4.10 - all 
-perfschema.socket_instances_func             : since 10.4.10 - all 
-main.ipv4_and_ipv6                           : since 10.4.10 - all 
-main.ipv4_as_ipv6                            : since 10.4.10 - all 
-main.ipv6                                    : since 10.4.10 - all 
-main.information_schema                      : since 10.4.10 - all 
-main.system_mysql_db                         : since 10.4.10 - all 
-main.gis_notembedded                         : since 10.4.10 - all 
-funcs_1.is_columns_mysql                     : since 10.4.10 - all 
-sys_vars.tcp_nodelay                         : since 10.4.10 - all
-oqgraph.social                               : since 10.4.12 - i386
+sys_vars.slave_parallel_threads_basic            : since 10.3.16 - x86_64, i386, s390x, armv7l, aarch64, ppc64, ppc64le
+main.gis_notembedded                             : since 10.3.16 - x86_64, i386, s390x, armv7l, aarch64, ppc64, ppc64le
+versioning.partition                             : since 10.3.16 - armv7l
+innodb.innodb-page_compression_lzma              : since 10.3.20 - armv7l
+sys_vars.sysvars_wsrep                           : since 10.4.12 - ppc
+rpl.rpl_ip_mix                                   : since 10.4.10 - all
+rpl.rpl_ip_mix2                                  : since 10.4.10 - all
+rpl.rpl_ipv4_as_ipv6                             : since 10.4.10 - all
+rpl.rpl_ipv6                                     : since 10.4.10 - all 
+perfschema.socket_instances_func                 : since 10.4.10 - all 
+main.ipv4_and_ipv6                               : since 10.4.10 - all 
+main.ipv4_as_ipv6                                : since 10.4.10 - all 
+main.ipv6                                        : since 10.4.10 - all 
+main.information_schema                          : since 10.4.10 - all 
+main.system_mysql_db                             : since 10.4.10 - all 
+main.gis_notembedded                             : since 10.4.10 - all 
+funcs_1.is_columns_mysql                         : since 10.4.10 - all 
+sys_vars.tcp_nodelay                             : since 10.4.10 - all
+oqgraph.social                                   : since 10.4.12 - i586 (MDEV-22280)
+sys_vars.have_rtree_keys_basic                   : since 10.4.13 - x86_64
+main.func_int                                    : since 10.4.13 - i586
+perfschema.dml_tlws_by_table                     : since 10.4.13 - x86_64
+sys_vars.aria_used_for_temp_tables_basic         : since 10.4.13 - ppc64
+main.subselect_no_opts                           : since 10.4.13 - aarch64
+igcol.main_mysqldump                             : since 10.4.13 - aarch64
+main.timezone_grant                              : since 10.4.13 - ppc64
+perfschema.ddl_setup_consumers                   : since 10.4.13 - i586 
+main.subselect_sj_nonmerged                      : since 10.4.13 - i586
+sys_vars.innodb_encryption_rotation_iops_basic   : since 10.4.13 - i586
+main.symlink-myisam-11902                        : since 10.4.13 - i586
+sys_vars.innodb_fast_shutdown_basic              : since 10.4.13 - i586 

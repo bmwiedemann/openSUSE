@@ -3,14 +3,19 @@
 %__mysql_test_pass     dbuserpass
 %__mysql_test_cconf    abuild-myclient.cnf
 %__mysql_test_port     63306
+%__mysql_test_db       testdb
 
 #
 # macro: mysql_testserver_start -- start a test mysqld instance
 #
-#        usage: %mysql_test_start -u <dbuser> -p <dbpassword> -t <port>
+#        usage: %mysql_test_start -u <db_user> -p <db_user_password> -t <port> -d <db_names>
+#
+#               db_user:          user of the database (not admin of the server)
+#               db_user_password: his password
+#               db_names:         name or names separated by semicolon (e. g. testhat or test1:test2)
 #
 
-%mysql_testserver_start(u:p:t:) \
+%mysql_testserver_start(u:p:t:d:) \
 TEST_RUN_DIR=%{__mysql_test_run_dir} \
 TEST_USER="%{-u:%{-u*}}" \
 if [ -z "$TEST_USER" ]; then \
@@ -23,6 +28,10 @@ fi \
 TEST_PORT="%{-t:%{-t*}}" \
 if [ -z "$TEST_PORT" ]; then \
   TEST_PORT='%{__mysql_test_port}' \
+fi \
+TEST_DB="%{-d:%{-d*}}" \
+if [ -z "$TEST_DB" ]; then \
+  TEST_DB='%{__mysql_test_db}' \
 fi \
 \
 [ -d $TEST_RUN_DIR ] && rm -r $TEST_RUN_DIR \
@@ -50,9 +59,11 @@ echo '>>> Invoking mysqld' \
 /usr/sbin/mysqld --defaults-file=$TEST_RUN_DIR/my.cnf& \
 sleep 2 \
 \
-echo '>>> Creating authentication database (credentials: $TEST_USER, $TEST_PASS)' \
+echo ">>> Creating \'$TEST_DB\' database, (credentials: $TEST_USER, $TEST_PASS)" \
 mysqladmin       --defaults-file=$TEST_RUN_DIR/my.cnf --user=abuild password abuildpw \
-mysqladmin       --defaults-file=$TEST_RUN_DIR/my.cnf --user=abuild --password=abuildpw create testhat \
+for db in `echo $TEST_DB | tr ':' ' '`; do \
+  mysqladmin       --defaults-file=$TEST_RUN_DIR/my.cnf --user=abuild --password=abuildpw create $db \
+done \
 cat << EOF > $TEST_RUN_DIR/create_auth.sql \
 CREATE USER '$TEST_USER'@'localhost' IDENTIFIED BY '$TEST_PASS'; \
 GRANT ALL PRIVILEGES ON * . * TO '$TEST_USER'@'localhost'; \
@@ -62,24 +73,28 @@ mysql       --defaults-file=$TEST_RUN_DIR/my.cnf --user=abuild --password=abuild
 %nil
 
 #
-# macro mysql_testserver_cconf -- generate client access conf
+# macro: mysql_testserver_cconf -- generate client access conf
 #
+#        usage: %mysql_testserver_cconf -n <filename> -d <dbname>
+#
+#               filename: filename of the configuration
+#               dbname:   database name (only one, not multiple as in %mysql_testserver_start)
 
-%mysql_testserver_cconf(n:t:) \
+%mysql_testserver_cconf(n:d:) \
 TEST_RUN_DIR=%{__mysql_test_run_dir} \
 TEST_CCONF="%{-n:%{-n*}}" \
 if [ -z "$TEST_CCONF" ]; then \
   TEST_CCONF='%{__mysql_test_cconf}' \
 fi \
-TEST_PORT="%{-t:%{-t*}}" \
-if [ -z "$TEST_PORT" ]; then \
-  TEST_PORT='%{__mysql_test_port}' \
+TEST_DB="%{-d:%{-d*}}" \
+if [ -z "$TEST_DB" ]; then \
+  TEST_DB='%{__mysql_test_db}' \
 fi \
 cat << EOF > $TEST_CCONF \
 [client] \
-user     = abuild \
-password = abuildpw \
-database = test \
+user     = $TEST_USER \
+password = $TEST_PASS \
+database = $TEST_DB \
 socket   = $TEST_RUN_DIR/mysql.sock \
 port     = $TEST_PORT \
 EOF\

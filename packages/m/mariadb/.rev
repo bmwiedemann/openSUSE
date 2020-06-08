@@ -1600,4 +1600,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-01/msg00544.html for more co
     <comment></comment>
     <requestid>798609</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>eaaf2220621897a67285a1ad18dc4be3</srcmd5>
+    <version>10.4.13</version>
+    <time>1591653447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811983</requestid>
+  </revision>
 </revisionlist>

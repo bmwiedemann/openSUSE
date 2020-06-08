@@ -25,12 +25,7 @@
 # unstable-tests list (contains also suse_skipped_tests.list) and don't
 # ignore failures
 %define ignore_testsuite_result 0
-# OQGRAPH engine cannot be built for SLE (missing Judy dependency)
-%if 0%{?is_opensuse} > 0
 %define with_oqgraph 1
-%else
-%define with_oqgraph 0
-%endif
 # TokuDB engine is available only for x86_64 architecture
 # see https://mariadb.com/kb/en/mariadb/tokudb/
 # Temporarily stop to build it as jemalloc 5 is not backwards compatible
@@ -56,7 +51,7 @@
 # Build with cracklib plugin when cracklib-dict-full >= 2.9.0 is available
 %define with_cracklib_plugin 0
 Name:           mariadb
-Version:        10.4.12
+Version:        10.4.13
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
@@ -550,7 +545,7 @@ rm -f %{buildroot}'%{_unitdir}/mariadb@.service'
 rm -f %{buildroot}'%{_unitdir}/mariadb@bootstrap.service.d/use_galera_new_cluster.conf'
 
 # Remove systemd-sysusers conf file for creating of mysql user (we do it in the specfile)
-rm -f %{buildroot}%{_sysusersdir}/sysusers.conf
+rm -f %{buildroot}%{_sysusersdir}/mariadb.conf
 
 # Remove client libraries that are now provided in mariadb-connector-c
 # Client library and links
@@ -563,7 +558,7 @@ rm %{buildroot}%{_libdir}/mysql/plugin/{auth_gssapi_client.so,dialog.so,mysql_cl
 # Devel files
 rm %{buildroot}%{_bindir}/mysql_config
 rm %{buildroot}%{_bindir}/mariadb_config
-rm %{buildroot}%{_datadir}/pkgconfig/mariadb.pc
+rm %{buildroot}%{_libdir}/pkgconfig/mariadb.pc
 rm -f %{buildroot}%{_prefix}/lib/pkgconfig/libmariadb.pc
 rm -f %{buildroot}%{_libdir}/pkgconfig/libmariadb.pc
 rm %{buildroot}%{_datadir}/aclocal/mysql.m4
@@ -640,9 +635,6 @@ install -D -m 644 %{_sourcedir}/mariadb.target '%{buildroot}'%{_unitdir}/mariadb
 ln -sf %{_unitdir}/mariadb.service %{buildroot}%{_unitdir}/mysql.service
 ln -sf %{_unitdir}/mariadb@.service %{buildroot}%{_unitdir}/mysql@.service
 
-# Rename systemd-tmpfiles conf file because each systemd-tmpfiles file shall be named in the style of package.conf or package-part.conf
-mv %{buildroot}%{_tmpfilesdir}/tmpfiles.conf %{buildroot}%{_tmpfilesdir}/mariadb.conf
-
 # Tmpfiles file to exclude mysql tempfiles that are auto-cleaned up
 # bnc#852451
 mkdir -p %{buildroot}%{_tmpfilesdir}
@@ -692,12 +684,6 @@ mkdir -p '%{buildroot}'%{_localstatedir}/lib/mysql-files
 # install rpm macros file
 mkdir -p %{buildroot}%{_rpmconfigdir}/macros.d
 install -m 644 %{SOURCE19} %{buildroot}%{_rpmconfigdir}/macros.d
-
-# install pam_user_map.so to /lib64/security for non 32bit architectures
-%ifnarch i586 %{arm} ppc
-mkdir -p %{buildroot}/%{_lib}/security
-mv %{buildroot}/lib/security/pam_user_map.so %{buildroot}/%{_lib}/security/
-%endif
 
 # Install sysusers.d file
 mkdir -p %{buildroot}%{_sysusersdir}

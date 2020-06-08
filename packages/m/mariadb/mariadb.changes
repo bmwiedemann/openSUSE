@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Jun  3 13:32:46 UTC 2020 - pgajdos@suse.com
+
+- rpm macros: $TEST_USER identified by $TEST_PASS is actually user
+  of the database for which client conf should be made for
+- rpm macros: database name or names can be specified as a
+  %mysql_testserver_start and %mysql_testserver_cconf parameter
+- modified sources
+  % macros.mariadb-test
+
+-------------------------------------------------------------------
+Mon Jun  1 11:50:50 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Build with oqgraph by default for all codestreams [jsc#SLE-12253] 
+
+-------------------------------------------------------------------
+Fri May 22 14:21:14 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to 10.4.13
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-10413-release-notes
+    https://mariadb.com/kb/en/library/mariadb-10413-changelog
+  * fixes for the following security vulnerabilities:
+    CVE-2020-2752, CVE-2020-2812, CVE-2020-2814, CVE-2020-2760,
+    CVE-2020-13249
+- fixes [bsc#1168380] (the same as [bsc#1166781])
+  MDEV-21244 mysql_upgrade creating empty global_priv table support
+  upgrades from 5.2 privilege tables
+- drop specfile "hacks" as things work correctly in upstream now:
+  * renaming tmpfiles.conf -> mariadb.conf
+  * installing pam_user_map.so to /lib64/security for non 32bit
+    architectures
+  * sysusers.conf was renamed to mariadb.conf
+- update suse_skipped_tests.list
+
+-------------------------------------------------------------------
 Mon Apr 27 16:36:28 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - move mariadb-client-test from client subpackage to test subpackage
