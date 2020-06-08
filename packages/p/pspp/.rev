@@ -95,4 +95,15 @@
     <comment></comment>
     <requestid>785770</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>58f0bcfe8803547149a0c90e156f375d</srcmd5>
+    <version>1.2.0</version>
+    <time>1591653657</time>
+    <user>dimstar_suse</user>
+    <comment>Fix compilation in openSUSE Factory/TW:
+- Add option -fcommon as a workaround for compilation with GCC10.
+- Don't try delete /usr/share/info/dir which does not exist before 
+  compilation in openSUSE TW</comment>
+    <requestid>812440</requestid>
+  </revision>
 </revisionlist>

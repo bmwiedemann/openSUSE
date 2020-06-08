@@ -141,7 +141,7 @@ applications that want to build pspp plugins.
 
 %build
 export SUSE_ASNEEDED=0
-export CFLAGS="%{optflags} -fgnu89-inline"
+export CFLAGS="%{optflags} -fgnu89-inline -fcommon"
 %if 0%{?suse_version} <= 1320
 autoreconf -f -i
 %endif
@@ -161,8 +161,8 @@ autoreconf -f -i
 %if 0%{?mandriva_version}
 # do nothing
 %else
-# don't own /usr/share/info/dir
-rm %{buildroot}/%{_infodir}/dir
+# don't own /usr/share/info/dir if it exist
+[ -d %{buildroot}/%{_infodir}/dir ] && rm %{buildroot}/%{_infodir}/dir
 %endif
 
 #Config for ld

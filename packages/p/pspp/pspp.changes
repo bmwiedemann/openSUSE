@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  8 06:44:01 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Add option -fcommon as a workaround for compilation with GCC10.
+- Don't try delete /usr/share/info/dir which does not exist before 
+  compilation in openSUSE TW
+
+-------------------------------------------------------------------
 Fri Sep 13 18:46:16 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Switch on tests.
