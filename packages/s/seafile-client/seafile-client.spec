@@ -18,7 +18,7 @@
 
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 Name:           seafile-client
-Version:        7.0.7
+Version:        7.0.8
 Release:        0
 Summary:        Cloud storage client
 License:        GPL-3.0-only
@@ -26,6 +26,7 @@ URL:            https://github.com/haiwen/seafile-client/
 Source0:        https://github.com/haiwen/%{name}/archive/v%{version}.tar.gz
 Source1:        seafile.appdata.xml
 Patch0:         01-fix-no-return-in-nonvoid.patch
+Patch1:         fix_qpainterpath.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cmake
@@ -77,6 +78,7 @@ Seafile also allows users to create groups and easily sharing files into groups.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 export CFLAGS="%{optflags} -fPIE -pie"
