@@ -17,16 +17,16 @@
 
 
 Name:           lyx
-Version:        2.3.4.4
+Version:        2.3.5
 Release:        0
 Summary:        WYSIWYM (What You See Is What You Mean) document processor
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            http://www.lyx.org/
-Source:         ftp://ftp.lyx.org/pub/lyx/stable/2.3.x/lyx-%{version}.tar.bz2
+Source:         ftp://ftp.lyx.org/pub/lyx/stable/2.3.x/lyx-%{version}.1.tar.xz
 Source1:        lyxrc.dist
 Source2:        lyx.keyring
-Source3:        ftp://ftp.lyx.org/pub/lyx/stable/2.3.x/lyx-%{version}.tar.bz2.sig
+Source3:        ftp://ftp.lyx.org/pub/lyx/stable/2.3.x/lyx-%{version}.1.tar.xz.sig
 Source4:        README.SUSE
 # PATCH-FIX-UPSTREAM to satisfy rpmlint - use #! /usr/bin/python as shebang
 # See: https://www.lyx.org/trac/changeset/cac27076ead10684270520670adc6bd004793361/lyxgit
@@ -123,7 +123,7 @@ LyX uses ImageMagick to deal with images. For security reasons
 (in /usr/share/doc/packages/lyx/) for more information.
 
 %prep
-%setup -q
+%setup -q -n lyx-2.3.5-1
 %patch0 -p1
 
 %build

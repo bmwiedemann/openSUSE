@@ -754,4 +754,20 @@
     <comment></comment>
     <requestid>799496</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>2bc664f6fa236ffc6188370a22792ead</srcmd5>
+    <version>2.3.5</version>
+    <time>1591654089</time>
+    <user>dimstar_suse</user>
+    <comment>- Because of some packaging errors the name of the package now has
+  number 2.3.5.1, but this is actually 2.3.5 inside, numbered as
+  2.3.5-1. It's a bit confusing. I decided to maintain 2.3.5 as
+  version number.
+
+- Update to 2.3.5:
+  * This is a maintenance release. Details can be found in the included
+    ANNOUNCE file or on https://www.lyx.org/announce/2_3_5.txt
+  * Perhaps most interesting is added support for inkscape 1.0</comment>
+    <requestid>812582</requestid>
+  </revision>
 </revisionlist>
