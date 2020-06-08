@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyCBC
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 Name:           python-PyCBC
-Version:        1.15.6
+Version:        1.16.1
 Release:        0
-License:        GPL-3.0-or-later
 Summary:        Core library to analyze gravitational-wave data
-Url:            http://www.pycbc.org/
+License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
+URL:            http://www.pycbc.org/
 Source:         https://files.pythonhosted.org/packages/source/p/pycbc/PyCBC-%{version}.tar.gz
-BuildRequires:  gcc-c++
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  fdupes
+BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy >= 1.16.0}
 BuildRequires:  %{python_module numpy-devel >= 1.16.0}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  gcc-c++
+BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.16.0
 ExclusiveArch:  %ix86 x86_64
 
