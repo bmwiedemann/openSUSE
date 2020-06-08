@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jun  4 13:27:12 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- No code changes since 5.18.90
+
+-------------------------------------------------------------------
+Thu May 14 14:33:05 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Changes since 5.18.5:
+  * bump to require Qt 5.14
+  * build: ignore clang-format file
+  * docs: update commit message guideline version
+  * fix: transfer tablet mode properties (kde#418739)
+  * fix: consider DSI display to be embedded panel
+  * feat(kwayland): enable the auto-rotation and tablet mode
+  * fix: handle when backend fails to load/initialize
+  * test: query correct output
+  * fix: reset doctor output color before exiting
+
+-------------------------------------------------------------------
 Tue May  5 13:01:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5
