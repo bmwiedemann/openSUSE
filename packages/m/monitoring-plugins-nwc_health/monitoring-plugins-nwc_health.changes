@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  4 09:55:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.12
+  * add mode watch-vips and connect-vips for F5
+  * check the number of nodes in a Fortigate cluster
+
+-------------------------------------------------------------------
 Fri May 22 06:21:18 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.11
