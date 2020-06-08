@@ -352,4 +352,12 @@ changes since last time:
   wlroots is used.</comment>
     <requestid>800872</requestid>
   </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>e802974ad7597a1cdd1dd66b2b3838da</srcmd5>
+    <version>1.4</version>
+    <time>1591653923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812492</requestid>
+  </revision>
 </revisionlist>

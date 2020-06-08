@@ -26,6 +26,7 @@ URL:            https://github.com/swaywm/sway
 Source0:        https://github.com/swaywm/sway/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        sway.keyring
 Patch0:         sway-1.0-include.patch
+Patch1:         0001-Fix-compiling-with-fno-common.patch
 BuildRequires:  gcc-c++
 #BuildRequires:  libxslt-tools
 BuildRequires:  libevdev-devel
@@ -50,6 +51,7 @@ BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(xkbcommon)
+Requires:       %{name}-branding >= %{version}
 Requires:       ImageMagick
 Requires:       ffmpeg
 %if 0%{?suse_version}
@@ -61,9 +63,24 @@ Recommends:     xorg-x11-server-wayland
 "SirCmpwn's Wayland window manager" is a work in progress i3-compatible window
 manager for Wayland.
 
+%package branding-upstream
+Summary:        Upstream branding of %{name}
+Group:          System/GUI/Other
+Requires:       %{name} = %{version}
+Supplements:    packageand(%{name}:branding-upstream)
+Conflicts:      otherproviders(%{name}-branding)
+Provides:       %{name}-branding = %{version}
+BuildArch:      noarch
+#BRAND: /etc/sway/config contains upstream config and brand
+
+%description branding-upstream
+This package provides the upstream look and feel for sway.
+
+
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -81,9 +98,7 @@ export CFLAGS="%{optflags}"
 %license LICENSE
 %doc README.md CONTRIBUTING.md
 %{_bindir}/%{name}*
-%dir %{_sysconfdir}/sway
 %dir %{_sysconfdir}/sway/security.d
-%config(noreplace) %{_sysconfdir}/sway/config
 %config(noreplace) %{_sysconfdir}/sway/security.d/00-defaults
 %{_mandir}/man?/%{name}*
 %{_datadir}/wayland-sessions/
@@ -92,5 +107,9 @@ export CFLAGS="%{optflags}"
 %{_datadir}/bash-completion
 %{_datadir}/fish
 %{_datadir}/zsh
+
+%files branding-upstream
+%dir %{_sysconfdir}/sway
+%config(noreplace) %{_sysconfdir}/sway/config
 
 %changelog

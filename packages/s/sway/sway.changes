@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun  5 14:43:57 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Add -fno-common patch in order to address boo#1160244
+  * 0001-Fix-compiling-with-fno-common.patch
+  * https://github.com/swaywm/sway/pull/4943
+
+-------------------------------------------------------------------
+Fri May 29 14:05:57 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Add separate branding package
+
+-------------------------------------------------------------------
 Thu May  7 05:48:07 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Remove dependency on wlc. It is long deprecated and actually
