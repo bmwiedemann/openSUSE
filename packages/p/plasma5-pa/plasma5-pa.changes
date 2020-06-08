@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Jun  4 13:27:13 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- No code changes since 5.18.90
+
+-------------------------------------------------------------------
+Thu May 14 14:33:07 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Changes since 5.18.5:
+  * Converted to page and added heading
+  * Add options for OSD feedback (kde#363983)
+  * bump to require Qt 5.14
+  * [KCM]Align volume controls row
+  * [KCM]Update Device item layout based on applet (kde#417607)
+  * [applet] For placeholder labels, disable rather than changing opacity
+  * [Applet]Improvements for unavailable port.
+  * [Applet]Correct raise max volume functions for mic
+  * [Applet]Always get valid device and stream name
+  * Fix minor EBN issue and typos
+  * [Applet] Display device name when there is than one device (kde#417079)
+  * [Applet]Fix device label problems (kde#417074,kde#417106)
+  * [Applet]Supplementary add port check
+  * [Applet]Add port check
+  * [Applet] Remove leftover in config window
+  * [Applet] Enable new global "Raise maximum volume" checkbox
+  * [Applet]Hide hamburger menu when empty
+  * [Applet]Add global mute function (kde#396835)
+  * [Applet] Make 'raise maximum volume' global
+  * [Applet]Update layout based on T10470
+
+-------------------------------------------------------------------
 Tue May  5 13:01:54 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5
