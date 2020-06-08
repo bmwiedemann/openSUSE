@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jun  4 13:27:10 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- Changes since 5.18.90:
+  * Fix a merge conflict in the appdata file
+  * fwupd: discard search if the url is present but is not for fwupd
+  * Disable session management for Discover (kde#415874)
+  * applist: Properly allocate space for the fetching text as well (kde#418304)
+  * updates: Make sure the progressbar doesn't overflow (kde#421619)
+  * Hardcode more colorSets
+  * Hardcode fewer colorSets (kde#421571)
+  * Make it compile against qt5.15. SkipEmptyParts is part of Qt::.
+  * flatpak: Don't issue commands when cancelled (kde#404622)
+  * fix toplevels test
+
+-------------------------------------------------------------------
+Thu May 14 14:33:01 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May  5 13:01:51 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5
