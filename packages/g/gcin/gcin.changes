@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  8 02:26:19 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 2.9.0
+  + Fix gtab word choosing area mismatching
+  + Fix an issue with hsu keyboard
+  + gcc 10 compatibility
+
+-------------------------------------------------------------------
 Wed Apr 17 14:53:36 CEST 2019 - tiwai@suse.de
 
 - Drop build of gcin-qt4 subpackage on TW due to EOL of Qt4.

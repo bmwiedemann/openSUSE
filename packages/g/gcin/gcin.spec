@@ -1,7 +1,7 @@
 #
 # spec file for package gcin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define build_qt4 0%{?is_opensuse} && 0%{?suse_version} < 1550
 
 Name:           gcin
-Version:        2.8.9
+Version:        2.9.0
 Release:        0
 Summary:        Chinese input method server
 License:        LGPL-2.1-only
 Group:          System/I18n/Chinese
-Url:            http://hyperrate.com/dir.php?eid=67
+URL:            http://hyperrate.com/dir.php?eid=67
 Source:         http://hyperrate.com/gcin-source/%{name}-%{version}.tar.xz
 Source1:        xim.d-gcin
 Source2:        gcin-README.suse
