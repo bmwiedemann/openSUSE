@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun  4 03:07:49 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.12.1
+   see /usr/share/doc/packages/perl-DBD-Pg/Changes
+
+  Version 3.12.1  (released June 3, 2020)
+  
+   - Remove test that assumed '(12,34)' is an invalid entry for type "circle",
+       as the Postgres source code changed this behavior on April 7, 2020
+     [Greg Sabino Mullane]
+     (RT ticket #132740)
+  
+  
+
+-------------------------------------------------------------------
 Fri May  8 03:08:00 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 3.12.0

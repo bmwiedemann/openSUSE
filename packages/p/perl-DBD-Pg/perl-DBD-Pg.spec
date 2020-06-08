@@ -17,7 +17,7 @@
 
 
 Name:           perl-DBD-Pg
-Version:        3.12.0
+Version:        3.12.1
 Release:        0
 %define cpan_name DBD-Pg
 Summary:        PostgreSQL database driver for the DBI module
