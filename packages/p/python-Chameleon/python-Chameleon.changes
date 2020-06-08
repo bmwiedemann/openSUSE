@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  8 09:03:16 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 3.7.2
+ * Fix compatiblity issue with Python 3.9.
+ * Allow setting a custom value representation function
+
+-------------------------------------------------------------------
 Fri Apr 17 08:04:30 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.7.0

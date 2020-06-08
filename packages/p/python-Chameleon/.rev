@@ -101,4 +101,14 @@ New dependency of python-Pyramid</comment>
     <comment></comment>
     <requestid>794803</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>123ddbe204e99c0468e36027bf8876ed</srcmd5>
+    <version>3.7.2</version>
+    <time>1591653939</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.7.2
+ * Fix compatiblity issue with Python 3.9.
+ * Allow setting a custom value representation function</comment>
+    <requestid>812491</requestid>
+  </revision>
 </revisionlist>
