@@ -1,7 +1,7 @@
 #
 # spec file for package libEMF
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libEMF
-Version:        1.0.7
+Version:        1.0.12
 Release:        0
 Summary:        Library for Manipulation with Enhanced MetaFile (EMF, ECMA-234)
-License:        LGPL-2.1+ and GPL-2.0+
+License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          System/Libraries
-Url:            http://libemf.sourceforge.net/
-Source:         http://downloads.sourceforge.net/project/libemf/libemf/%{version}/%{name}-%{version}.tar.gz
-Patch0:         aarch64-support.patch
+URL:            http://libemf.sourceforge.net/
+Source:         http://downloads.sourceforge.net/libemf/libemf-%{version}.tar.gz
 Patch2:         ppc64le-support.patch
 BuildRequires:  gcc-c++
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # taken from includes/wine/winnt.h
-ExclusiveArch:  alpha %arm aarch64 %ix86 mips ppc ppc64 ppc64le sparc s390 s390x x86_64
+ExclusiveArch:  alpha %{arm} aarch64 %{ix86} mips ppc ppc64 ppc64le sparc s390 s390x x86_64
 
 %description
 LibEMF is a C/C++ library that provides a drawing toolkit based on
@@ -43,7 +41,7 @@ object.
 
 %package -n libEMF1
 Summary:        Library for manipulation with Enhanced MetaFile (EMF, ECMA-234)
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/Libraries
 
 %description -n libEMF1
@@ -58,9 +56,9 @@ SO/OO graphics object.
 
 %package utils
 Summary:        Library for manipulation with Enhanced MetaFile (EMF, ECMA-234)
-License:        GPL-2.0+
-Group:          Productivity/Graphics/Other
 # split-provides for upgrade from openSUSE <= 12.1 and SLE <= 11
+License:        GPL-2.0-or-later
+Group:          Productivity/Graphics/Other
 Provides:       %{name}:%{_bindir}/printemf
 
 %description utils
@@ -75,7 +73,7 @@ SO/OO graphics object.
 
 %package devel
 Summary:        Library for manipulation with Enhanced MetaFile (EMF, ECMA-234)
-License:        LGPL-2.1+ and GPL-2.0+
+License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libEMF1 = %{version}
@@ -91,38 +89,34 @@ SO/OO. The EMF format also has the additional advantage that it can be
 SO/OO graphics object.
 
 %prep
-%setup -q
-%patch0 -p1
+%setup -q -n libemf-%{version}
 %patch2 -p1
 
 %build
 %configure\
 	--disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n libEMF1 -p /sbin/ldconfig
-
 %postun -n libEMF1 -p /sbin/ldconfig
 
 %files -n libEMF1
-%defattr(-, root, root)
-%doc COPYING.LIB
+%license COPYING.LIB
 %{_libdir}/*.so.*
 
 %files utils
-%defattr(-, root, root)
-%doc AUTHORS COPYING ChangeLog NEWS README
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README
 %{_bindir}/*
 
 %files devel
-%defattr(-, root, root)
 %doc doc/html
 %{_includedir}/libEMF
 %{_libdir}/*.so
