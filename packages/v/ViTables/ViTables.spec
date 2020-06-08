@@ -1,7 +1,7 @@
 #
 # spec file for package ViTables
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           ViTables
-Version:        3.0.0
+Version:        3.0.2
 Release:        0
 Summary:        A viewer package for PyTables
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Other
 URL:            https://github.com/uvemas/ViTables
-Source0:        https://github.com/uvemas/ViTables/archive/v%{version}.tar.gz
+Source0:        https://github.com/uvemas/ViTables/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hdf5-devel
 BuildRequires:  hicolor-icon-theme
@@ -36,7 +36,6 @@ BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-qt5
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-tables
-BuildRequires:  update-desktop-files
 Requires:       hdf5
 Requires:       hicolor-icon-theme
 Requires:       python3-Cython
@@ -69,13 +68,9 @@ export CFLAGS="%{optflags}"
 
 for p in 16 22 32 48 64 128; do 
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${p}x${p}/apps/
-install -m 644 -D unixapp/vitables_${p}x${p}.png %{buildroot}%{_datadir}/icons/hicolor/${p}x${p}/apps/vitables.png
+install -m 644 -D vitables/icons/unixapp/vitables_${p}x${p}.png %{buildroot}%{_datadir}/icons/hicolor/${p}x${p}/apps/vitables.png
 done
-install -m 644 -D unixapp/vitables.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/vitables.svg
-
-pushd unixapp
-%suse_update_desktop_file vitables
-popd
+install -m 644 -D vitables/icons/unixapp/vitables.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/vitables.svg
 
 %files
 %doc ANNOUNCE.txt ChangeLog.txt README.txt TODO.txt
