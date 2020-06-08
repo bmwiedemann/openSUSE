@@ -18,24 +18,27 @@
 
 %bcond_without lang
 Name:           kde-gtk-config5
-Version:        5.18.5
+Version:        5.19.0
 Release:        0
 Summary:        Daemon for GTK2 and GTK3 Applications Appearance Under KDE
 License:        LGPL-3.0-or-later AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            http://projects.kde.org/kde-gtk-config
-Source:         https://download.kde.org/stable/plasma/%{version}/kde-gtk-config-%{version}.tar.xz
+Source:         kde-gtk-config-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kde-gtk-config-%{version}.tar.xz.sig
+Source1:        kde-gtk-config-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 0.0.9
 BuildRequires:  kf5-filesystem
 BuildRequires:  xz
 BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  pkgconfig(giomm-2.4)
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(x11)
@@ -86,6 +89,9 @@ the GTK3 application style from within the application style KCM
 
 %files
 %license COPYING*
+%dir %{_kf5_libdir}/gtk-3.0/
+%dir %{_kf5_libdir}/gtk-3.0/modules/
+%{_kf5_libdir}/gtk-3.0/modules/libcolorreload-gtk-module.so
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/kded
 %{_kf5_plugindir}/kf5/kded/gtkconfig.so
