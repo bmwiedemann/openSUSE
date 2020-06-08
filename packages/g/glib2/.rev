@@ -1737,4 +1737,12 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
     <comment>Push forgotten glib2 update</comment>
     <requestid>795599</requestid>
   </revision>
+  <revision rev="224" vrev="1">
+    <srcmd5>1dadbef10836675d4611a8929a66683a</srcmd5>
+    <version>2.64.3</version>
+    <time>1591652832</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 807837 from iznogood)</comment>
+    <requestid>811412</requestid>
+  </revision>
 </revisionlist>
