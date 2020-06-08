@@ -1082,4 +1082,12 @@
     <comment> (forwarded request 807082 from iznogood)</comment>
     <requestid>807573</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>57fbac1ebdb21be30f52f6afdd761f53</srcmd5>
+    <version>3.36.2</version>
+    <time>1591652944</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 810503 from iznogood)</comment>
+    <requestid>811429</requestid>
+  </revision>
 </revisionlist>
