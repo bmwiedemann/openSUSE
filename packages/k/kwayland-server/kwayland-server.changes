@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Thu Jun  4 13:27:12 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- Changes since 5.18.90:
+  * Support mulitple data devices on a single client
+
+-------------------------------------------------------------------
+Thu May 14 18:20:35 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+
+-------------------------------------------------------------------
+Fri May  1 08:30:07 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Initial package
