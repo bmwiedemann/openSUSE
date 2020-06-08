@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  8 08:11:04 UTC 2020 - nick wang <nwang@suse.com>
+
+- bsc#1172641, fix the link error of setup_option.
+  Add patch link-error-setup_option.patch
+
+-------------------------------------------------------------------
 Sat May  9 01:17:31 UTC 2020 - nick wang <nwang@suse.com>
 
 - bsc#1171419, Update to 9.13.0

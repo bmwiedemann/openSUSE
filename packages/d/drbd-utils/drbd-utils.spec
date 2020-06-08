@@ -20,7 +20,6 @@
 # Man pages are included in the released tarball.
 # Only need po4a to build man from git source code
 %bcond_without prebuiltman
-
 Name:           drbd-utils
 Version:        9.13.0
 Release:        0
@@ -28,7 +27,6 @@ Summary:        Distributed Replicated Block Device
 License:        GPL-2.0-or-later
 URL:            http://www.drbd.org/
 Source:         http://www.linbit.com/downloads/drbd/utils/%{name}-%{version}.tar.gz
-
 # PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
 Patch1:         init-script-fixes.diff
 Patch2:         fix-libdir-in-Makefile.patch
@@ -36,6 +34,7 @@ Patch3:         fence-after-pacemaker-down.patch
 # PATCH-SUSE-FIX: Disable quorum in default configuration (bsc#1032142)
 Patch4:         0001-Disable-quorum-in-default-configuration-bsc-1032142.patch
 Patch5:         move_fencing_from_disk_to_net_in_example.patch
+Patch6:         link-error-setup_option.patch
 
 Provides:       drbd-bash-completion = %{version}
 Provides:       drbd-pacemaker = %{version}
@@ -47,8 +46,7 @@ Obsoletes:      drbd-udev < %{version}
 # and suse let drbd driver goes in-kernel
 # Provides:       drbd = 8.4.5
 # Obsoletes:      drbd < 8.4.5
-
-%ifarch %ix86 x86_64
+%ifarch %{ix86} x86_64
 Provides:       drbd-xen = %{version}
 Obsoletes:      drbd-xen < %{version}
 %endif
@@ -80,12 +78,13 @@ device over the network to another machine. Think of it as networked
 raid 1. It is a building block for setting up clusters.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 export WANT_DRBD_REPRODUCIBLE_BUILD=1
@@ -118,13 +117,13 @@ make OPTFLAGS="%{optflags}" %{?_smp_mflags}
 %make_install
 
 mkdir -p %{buildroot}%{_localstatedir}/lib/drbd
-%ifnarch %ix86 x86_64
+%ifnarch %{ix86} x86_64
 rm -rf %{buildroot}%{_sysconfdir}/xen
 %else
 d=%{_libexecdir}/xen/scripts
 mkdir -p %{buildroot}$d
 mv %{buildroot}%{_sysconfdir}/xen/scripts/block-drbd %{buildroot}$d
-%if %{suse_version} > 1500
+%if 0%{?suse_version} > 1500
 rm -rf %{buildroot}%{_sysconfdir}/xen
 %else
 tee %{buildroot}%{_sysconfdir}/xen/scripts/block-drbd <<_EOS_
@@ -171,7 +170,7 @@ ln -sf drbdmon-9.0.8.gz %{_mandir}/ja/man8/drbdmon.8.gz
 %doc %{_mandir}/man7/ocf_linbit_drbd.*
 %doc %{_mandir}/ja/man5/drbd.*
 %doc %{_mandir}/ja/man8/drbd*
-%doc COPYING
+%license COPYING
 %doc README.md
 %doc ChangeLog
 %doc scripts/drbd.conf.example
@@ -182,8 +181,8 @@ ln -sf drbdmon-9.0.8.gz %{_mandir}/ja/man8/drbdmon.8.gz
 %if %{with drbdmon}
 /sbin/drbdmon
 %endif
-%ifarch %ix86 x86_64
-%if %{suse_version} <= 1500
+%ifarch %{ix86} x86_64
+%if 0%{?suse_version} <= 1500
 %dir %attr(700,root,root) %{_sysconfdir}/xen
 %dir %{_sysconfdir}/xen/scripts
 %attr(755,root,root) %{_sysconfdir}/xen/scripts/block-drbd
