@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jun  4 14:33:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2020.05.15:
+  + Added a new filter class "ADTSAudioStreamDiscreteFramer" that
+    prepends ADTS headers to incoming AAC audio frames. This makes
+    the AAC audio playable (by media players).
+  + Updated "openRTSP" to use a "ADTSAudioStreamDiscreteFramer"
+    when outputting a AAC audio stream.
+  + Updated the "LIVE555 HLS Proxy" to support AAC audio tracks
+    (as well as H.264/5 video).
+- Changes from version 2020.05.14:
+  + Updated "H264or5VideoStreamDiscreteFramer" to add VPS,SPS,PPS
+    NAL units (if known) to the output stream, each time an
+    "access_unit_delimiter" NAL unit is added. This makes it more
+    likely that the Transport Stream segments produced by the
+    "LIVE555 HLS Proxy" will be understandable by a client browser.
+  + Added support for H.265 video streams to the "LIVE555 HLS Proxy".
+- Changes from version 2020.05.13:
+  + Made the "MPEG2TransportStreamMultiplexor" segmentation mechanism
+    (used by "HLSSegmenter") more robust in case the Transport
+    Stream PTS is not monotonic non-decreasing.
+
+-------------------------------------------------------------------
 Tue Apr 28 16:01:13 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2020.04.24:
