@@ -1,7 +1,7 @@
 #
 # spec file for package python-python3-openid
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 # tests are partly broken
-%bcond_with     tests
+%bcond_without     test
 Name:           python-python3-openid
 Version:        3.1.0
 Release:        0
-Summary:        OpenID support for modern servers and consumers
+Summary:        OpenID support for Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            http://github.com/necaris/python3-openid
+URL:            https://github.com/necaris/python3-openid
 Source:         https://files.pythonhosted.org/packages/source/p/python3-openid/python3-openid-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -34,16 +34,16 @@ BuildRequires:  python-rpm-macros
 Requires:       python-defusedxml
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module defusedxml}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module mysqlclient}
+BuildRequires:  %{python_module psycopg2}
 %endif
 %python_subpackages
 
 %description
-This is a set of Python packages to support use of
-the OpenID decentralized identity system in your application, update to Python
-3.  Want to enable single sign-on for your web site?  Use the openid.consumer
-package.  Want to run your own OpenID server? Check out openid.server.
+This is a set of Python packages to support the use of
+the OpenID decentralized identity system in applications.
 Includes example code and support for a variety of storage back-ends.
 
 %prep
@@ -58,7 +58,7 @@ Includes example code and support for a variety of storage back-ends.
 
 %if %{with test}
 %check
-%python_expand nosetests-%{$python_bin_suffix} --where=openid/test
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m unittest openid.test.test_suite
 %endif
 
 %files %{python_files}

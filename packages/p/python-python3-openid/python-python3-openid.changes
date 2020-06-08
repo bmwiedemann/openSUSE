@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun  8 09:25:58 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim conjecture and rhetorics from descriptions. Fix
+  grammar issues.
+
+-------------------------------------------------------------------
+Thu Jun  4 12:01:43 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- replace nose (and launch tests)
+
+-------------------------------------------------------------------
 Tue Dec  4 12:53:14 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
