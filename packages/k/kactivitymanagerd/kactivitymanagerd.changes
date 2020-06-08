@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jun  4 13:27:11 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- No code changes since 5.18.90
+
+-------------------------------------------------------------------
+Thu May 14 14:33:02 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Changes since 5.18.5:
+  * Remove .clang-format
+  * Remove too strict Qt/KF5 deprecation rule
+  * bump to require Qt 5.14
+  * Support execution of shell scripts on activity events
+  * Require C++17
+  * No need to use QSet for activity existence checking (kde#418839)
+  * Remove usage of KDBusConnectionPool
+  * Port QProcess::startDetached deprecated method
+
+-------------------------------------------------------------------
 Tue May  5 13:01:51 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5
