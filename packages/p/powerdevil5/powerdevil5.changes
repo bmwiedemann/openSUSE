@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jun  4 13:27:15 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- No code changes since 5.18.90
+
+-------------------------------------------------------------------
+Thu May 14 14:33:10 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Changes since 5.18.5:
+  * Close low battery notificaton when showing critical
+  * Make low battery notification critical
+  * bump to require Qt 5.14
+  * Properly store the powerdown action
+  * Improve powerdevil's main
+  * Revert "Fix build with Qt 5.15"
+  * Fix compilation with Qt 5.15, this hit the time bomb too
+  * Include comment for translators for Power Down
+  * Port deprecated method
+  * Fix build with Qt 5.15
+  * Improve the behaviour of the power button on mobile
+  * replace Q_FOREACH with for-range loop, should fix freeBSD compilation
+  * Use directly a QMultiHash here, as it used insertMulti
+
+-------------------------------------------------------------------
 Tue May  5 13:01:56 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5
