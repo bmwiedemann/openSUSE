@@ -30,6 +30,7 @@ License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/swaywm/wlroots
 Source0:        https://github.com/swaywm/wlroots/archive/%{version}.tar.gz
+Patch0:         0001-Declare-wlr_seat-globals-as-extern.patch
 BuildRequires:  meson >= 0.48.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)
@@ -88,7 +89,7 @@ Pluggable, composable modules for building a Wayland compositor.
 
 %prep
 %setup -q
-
+%patch0 -p1
 %build
 export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls"
 %meson \
