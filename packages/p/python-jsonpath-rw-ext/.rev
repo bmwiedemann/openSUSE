@@ -45,4 +45,12 @@
   * Fix problem with None value of element</comment>
     <requestid>718130</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>bdb4a92076617e9094df0344b75ec471</srcmd5>
+    <version>1.2.2</version>
+    <time>1591654062</time>
+    <user>dimstar_suse</user>
+    <comment>- run tests with older pytest as pytest 5.x+ fails</comment>
+    <requestid>812549</requestid>
+  </revision>
 </revisionlist>

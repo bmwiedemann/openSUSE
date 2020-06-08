@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonpath-rw-ext
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/j/jsonpath-rw-ext
 BuildRequires:  %{python_module jsonpath-rw >= 1.2.0}
 BuildRequires:  %{python_module oslotest >= 1.10.0}
 BuildRequires:  %{python_module pbr}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest < 5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testscenarios >= 0.4}
 BuildRequires:  fdupes

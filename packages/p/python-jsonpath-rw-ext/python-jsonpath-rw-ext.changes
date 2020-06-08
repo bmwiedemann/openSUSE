@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  8 10:55:38 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- run tests with older pytest as pytest 5.x+ fails
+
+-------------------------------------------------------------------
 Wed Jul 24 08:34:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.2.2:
