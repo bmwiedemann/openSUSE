@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Thu Jan 28 12:10:00 UTC 2014 - andrea@opensuse.org
+
+- New upstream version 0.2.4
+* Code clean up following structured programming
+* Enabled not interactive command line arguments. example of usage:
+  multicast -v4 -server -group 239.1.2.3 -port 9999 -delay 1
+  multicast -v6 -client -group FF05::3232 -port 9999
+  multicast -v4 -client-ssm -group 232.1.2.3 -source 10.0.0.1 -port 9999
+    
+-------------------------------------------------------------------
+Mon Jan 13 14:10:00 UTC 2014 - andrea@opensuse.org
+
+- New upstream version 0.2.3
+ * Code clean up
+ * Better menu handling
+ * Full IPv6 support, SSM is now working for IPv6 too
+ 
+-------------------------------------------------------------------
+Fri Jan 10 10:10:00 UTC 2014 - andrea@opensuse.org
+
+- New package
