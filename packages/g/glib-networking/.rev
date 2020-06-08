@@ -558,4 +558,12 @@ a newer version not fitting</comment>
     <comment>Scripted push of project GNOME:Next (forwarded request 795029 from iznogood)</comment>
     <requestid>795184</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>9f9f3e93c35a654b45b4776d57afec25</srcmd5>
+    <version>2.64.3</version>
+    <time>1591652858</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 810061 from iznogood)</comment>
+    <requestid>811418</requestid>
+  </revision>
 </revisionlist>
