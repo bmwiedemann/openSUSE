@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-gwcs
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        Generalized World Coordinate System
 License:        BSD-3-Clause
@@ -27,8 +27,8 @@ Group:          Productivity/Scientific/Astronomy
 URL:            https://gwcs.readthedocs.io/en/latest/
 Source:         https://files.pythonhosted.org/packages/source/g/gwcs/gwcs-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-asdf
@@ -46,7 +46,7 @@ BuildRequires:  %{python_module scipy}
 %python_subpackages
 
 %description
-An Astropy affiliated package providing tools for managing the 
+An Astropy affiliated package providing tools for managing the
 World Coordinate System of astronomical data.
 
 %prep
@@ -60,7 +60,7 @@ World Coordinate System of astronomical data.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc README.rst

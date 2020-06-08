@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun  8 13:14:28 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.13.0
+  - Added two new transforms - ``SphericalToCartesian`` and
+  ``CartesianToSpherical``. [#275, #284, #285]
+  - Added ``to_fits_sip`` method to generate FITS header with SIP keywords [#286]
+  - Added ``get_ctype_from_ucd`` function. [#288]
+  - Fixed an off by one issue in ``utils.make_fitswcs_transform``. [#290]
+
+-------------------------------------------------------------------
 Mon Jan  6 15:57:28 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.12.0
