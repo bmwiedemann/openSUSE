@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Jun  4 13:27:11 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- No code changes since 5.18.90
+
+-------------------------------------------------------------------
+Thu May 14 14:33:03 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Changes since 5.18.5:
+  * use better strings for dri devices
+  * bump to require Qt 5.14
+  * view1394: initialize OuiDb only when needed
+  * view1394: try to load OUI data from system location
+  * view1394: isolate DB loading in own function
+  * Optimize message extraction
+  * don't hold initdness in a static var (kde#417466)
+  * improve some previously recycled strings
+  * add gpu entry to about system (kde#355053)
+  * refactor about-distro to more generically support textual dumps
+  * cleanup devinfo header includes
+  * add trivial systemsettings finder and mark it as RUNTIME dep
+  * Restore config-x11 header file
+  * Kill the KinfoCenter binary
+  * Remove unused includes
+- Refresh patches:
+  * plasma-session-name.patch
+
+-------------------------------------------------------------------
 Tue May  5 13:01:52 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5

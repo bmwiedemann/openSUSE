@@ -20,7 +20,7 @@
 
 %bcond_without lang
 Name:           kinfocenter5
-Version:        5.18.5
+Version:        5.19.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -30,9 +30,9 @@ Summary:        Utility that provides information about a computer system
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/kinfocenter-%{version}.tar.xz
+Source:         kinfocenter-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kinfocenter-%{version}.tar.xz.sig
+Source1:        kinfocenter-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE plasma-session-name.patch
@@ -41,6 +41,7 @@ BuildRequires:  extra-cmake-modules >= 1.2.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  libraw1394-devel
 BuildRequires:  pciutils-devel
+BuildRequires:  systemsettings5
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  cmake(KF5Completion) >= %{kf5_version}
@@ -77,6 +78,8 @@ Conflicts:      kdebase4-workspace < 5.3.0
 Recommends:     %{name}-lang
 # needed for the fileindexermonitor
 Requires:       baloo5-imports
+# The executable is now a link to systemsettings5
+Requires:       systemsettings5
 
 %description
 KDE Utility that provides information about a computer system.
@@ -110,7 +113,6 @@ KDE Utility that provides information about a computer system.
 %{_kf5_sharedir}/kpackage/
 %{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
-%{_kf5_sharedir}/kxmlgui5/
 %{_kf5_configdir}/menus/kinfocenter.menu
 %{_kf5_sharedir}/desktop-directories/
 %{_kf5_appstreamdir}/org.kde.kinfocenter.appdata.xml

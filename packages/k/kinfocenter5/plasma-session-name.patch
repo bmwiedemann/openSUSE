@@ -1,9 +1,9 @@
-diff --git a/Modules/about-distro/src/Module.cpp b/Modules/about-distro/src/Module.cpp
-index bec3a36..b78ede7 100644
---- a/Modules/about-distro/src/Module.cpp
-+++ b/Modules/about-distro/src/Module.cpp
-@@ -190,7 +190,7 @@ void Module::defaults()
- QString Module::plasmaVersion() const
+diff --git a/Modules/about-distro/src/PlasmaEntry.cpp b/Modules/about-distro/src/PlasmaEntry.cpp
+index 6deb095..1e7f4c9 100644
+--- a/Modules/about-distro/src/PlasmaEntry.cpp
++++ b/Modules/about-distro/src/PlasmaEntry.cpp
+@@ -22,7 +22,7 @@ PlasmaEntry::PlasmaEntry()
+ QString PlasmaEntry::plasmaVersion()
  {
      const QStringList &filePaths = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation,
 -                                                             QStringLiteral("xsessions/plasma.desktop"));
