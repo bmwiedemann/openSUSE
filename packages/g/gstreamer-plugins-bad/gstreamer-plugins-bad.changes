@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  7 15:56:43 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gst-plugins-bad-neon-bump.patch: meson: build with neon 0.31.
+
+-------------------------------------------------------------------
 Wed Jun  3 11:13:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add gst-plugins-bad-vkerror.patch: vulkan: Drop use of

@@ -50,6 +50,9 @@ Patch1:         gst-bad-autoconvert-fix-lock-less.patch
 Patch2:         gst-plugins-bad-wayland-headers.patch
 # PATCH-FIX-UPSTREAM gst-plugins-bad-vkerror.patch dimstar@opensuse.org -- vulkan: Drop use of VK_RESULT_BEGIN_RANGE
 Patch3:         gst-plugins-bad-vkerror.patch
+# PATCH-FIX-UPSTREAM gst-plugins-bad-neon-bump.patch -- meson: build with neon 0.31
+Patch4:         gst-plugins-bad-neon-bump.patch
+
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
