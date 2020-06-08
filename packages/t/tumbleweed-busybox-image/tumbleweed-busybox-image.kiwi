@@ -60,6 +60,7 @@
     <package name="busybox-misc" replaces="e2fsprogs"/>
     <package name="busybox-misc" replaces="shadow"/>
     <package name="busybox-misc" replaces="sysvinit-tools"/>
+    <package name="busybox-misc" replaces="bc"/>
     <package name="busybox-ncurses-utils" replaces="ncurses-utils"/>
     <package name="busybox-net-tools"/>
     <package name="busybox-patch" replaces="patch"/>

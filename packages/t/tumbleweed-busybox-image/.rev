@@ -83,4 +83,13 @@
     <comment>- Add new busybox-sendmail sub-package</comment>
     <requestid>803062</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>20eac440b36b1615b3e64c897ebbd64a</srcmd5>
+    <version>1.0.0</version>
+    <time>1591653474</time>
+    <user>dimstar_suse</user>
+    <comment>- Add replaces &quot;bc&quot; for ppc64 to busybox-misc
+</comment>
+    <requestid>812078</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  5 13:46:26 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add replaces "bc" for ppc64 to busybox-misc
+
+-------------------------------------------------------------------
 Tue May 12 14:46:17 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add new busybox-sendmail sub-package
