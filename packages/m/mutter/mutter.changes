@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun  4 09:45:27 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.3+1:
+  + Broadcast clipboard/primary offers.
+  + Fix monitor screen cast on X11.
+  + Implement touch-mode detecation for the X11 backend.
+  + Drop external keyboard detection from touch-mode heuristics.
+  + Fix leaked DMA buffers in screencasts.
+  + Fixed various crashes.
+  + Renderer-native: Don't leak DMA buffer CoglFramebuffer.
+
+-------------------------------------------------------------------
 Fri May  1 20:27:46 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Enable SLE patches on leap (jsc#SLE-11897).

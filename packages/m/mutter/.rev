@@ -1285,4 +1285,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment></comment>
     <requestid>799563</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>1418ca51e083dcf1e0ff70fac2c00f64</srcmd5>
+    <version>3.36.3+1</version>
+    <time>1591653001</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 811367 from iznogood)</comment>
+    <requestid>811437</requestid>
+  </revision>
 </revisionlist>
