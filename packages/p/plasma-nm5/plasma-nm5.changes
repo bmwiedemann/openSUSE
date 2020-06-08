@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jun  4 13:27:14 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- No code changes since 5.18.90
+
+-------------------------------------------------------------------
+Thu May 14 14:33:09 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-Use-system-color-scheme-from-Kirigami-instead-of-Pla.patch
+  * 0002-KCM-restore-original-color.patch
+
+-------------------------------------------------------------------
 Wed May 13 08:25:17 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patches to fix appearance of the KCM (kde#418416):
