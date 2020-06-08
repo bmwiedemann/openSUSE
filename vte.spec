@@ -23,7 +23,7 @@
 %define _name   vte
 
 Name:           vte
-Version:        0.60.2
+Version:        0.60.3
 Release:        0
 Summary:        Terminal Emulator Library
 License:        LGPL-2.0-only AND LGPL-3.0-only AND GPL-3.0-or-later

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 29 21:49:35 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 0.60.3:
+  * widget:
+    - Fix underlining the space character in a matched regex
+    - Notify correct property when setting the scroll-on-keystroke
+    - Set error from vte_terminal_set_encoding when built without
+      ICU
+  * pty: Call grantpt/unlockpt when opening the PTY
+  * icu: glue: Set error callback on the from-unicode conversion
+  * lib: Fix switching between legacy encodings
+  * all: Fix the build without ICU
+  * docs: Add index for API new in 0.60
+
+-------------------------------------------------------------------
 Sun Apr 26 11:13:25 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 0.60.2:
