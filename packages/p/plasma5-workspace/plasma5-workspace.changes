@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Jun  4 13:27:14 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- Changes since 5.18.90:
+  * appstreamrunner: do case insensitive comparisons
+  * Fix many results when query starts with =
+  * [notifications] don't widen the notifications on the mobile
+  * Kicker fix KRunner prepare/teardown method calls
+  * Bookmarks Runner: Fix extraction of firefox profile (kde#418526)
+  * [applets/systemtray] Fix configuraiton read on Plasma start
+  * [applets/systemtray] Consistent name/icon in System Tray settings (kde#421561)
+  * [applets/systemtray] Lazy initialize SystemTray model (kde#420993)
+  * [applets/mediacontroller] Icon for Playing/Paused
+  * [applets/mediacontroller] Don't use Album Art for icon (kde#420197)
+  * Remove useless double line
+  * Make system tray impossible to resize again
+  * Revert "[applets/batterymonitor] Collapse inhibitions list properly"
+  * [Battery Monitor] Fix ScrollView anchoring
+  * [Notifications] Restore item spacing
+  * [Notifications] Don't take updated time into account for sorting
+  * [Kicker] Fix jump list actions in RunnerMatchesModel
+
+-------------------------------------------------------------------
+Thu May 14 14:33:08 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-Stop-multiplying-duration-values.patch
+
+-------------------------------------------------------------------
 Mon May 11 15:09:12 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix animations with Frameworks 5.70:

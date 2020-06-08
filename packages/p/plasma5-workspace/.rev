@@ -1356,4 +1356,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment></comment>
     <requestid>802753</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>e1d11c856fec31f3de0d8f3c5695d4d1</srcmd5>
+    <version>5.19.0</version>
+    <time>1591653335</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.0</comment>
+    <requestid>812333</requestid>
+  </revision>
 </revisionlist>

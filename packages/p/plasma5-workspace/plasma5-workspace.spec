@@ -27,20 +27,19 @@ Name:           plasma5-workspace
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.18.5
+Version:        5.19.0
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz
+Source:         plasma-workspace-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz.sig
+Source1:        plasma-workspace-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
 Source4:        plasmafullwayland.desktop
-Patch1:         0001-Stop-multiplying-duration-values.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch
@@ -392,6 +391,7 @@ fi
 %{_kf5_bindir}/plasma_session
 %{_kf5_bindir}/startplasma-wayland
 %{_kf5_bindir}/startplasma-x11
+%{_kf5_bindir}/plasma-shutdown
 %{_kf5_configdir}/autostart/org.kde.plasmashell.desktop
 %{_kf5_configdir}/autostart/klipper.desktop
 %{_kf5_knsrcfilesdir}/plasmoids.knsrc
@@ -405,7 +405,6 @@ fi
 %{_kf5_libdir}/libkdeinit5_kcminit.so
 %{_kf5_libdir}/libkdeinit5_kcminit_startup.so
 %{_kf5_libdir}/libkdeinit5_klipper.so
-%{_kf5_libdir}/libkdeinit5_ksmserver.so
 %{_kf5_libdir}/kconf_update_bin/krunnerplugins
 %{_kf5_libdir}/kconf_update_bin/krunnerglobalshortcuts
 %{_kf5_libdir}/libexec/baloorunner
@@ -422,6 +421,8 @@ fi
 %{_kf5_sharedir}/dbus-1/services/org.kde.baloorunner.service
 %{_kf5_sharedir}/dbus-1/services/org.kde.krunner.service
 %{_kf5_sharedir}/dbus-1/services/org.kde.plasma.Notifications.service
+%{_kf5_sharedir}/dbus-1/services/org.kde.KSplash.service
+%{_kf5_sharedir}/dbus-1/services/org.kde.Shutdown.service
 %{_kf5_sharedir}/desktop-directories/
 %{_kf5_sharedir}/kconf_update/
 %dir %{_kf5_htmldir}
@@ -447,8 +448,8 @@ fi
 %{_kf5_debugdir}/*.categories
 %dir %{_kf5_sharedir}/kpackage
 %dir %{_kf5_sharedir}/kpackage/kcms
-%{_kf5_sharedir}/kpackage/kcms/kcm_feedback
 %{_kf5_sharedir}/kpackage/kcms/kcm_translations
+%{_kf5_sharedir}/kpackage/kcms/kcm_feedback
 
 %files -n xembedsniproxy
 %license COPYING*
