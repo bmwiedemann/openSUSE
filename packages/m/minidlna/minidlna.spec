@@ -1,7 +1,7 @@
 #
 # spec file for package minidlna
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 by Lars Vogdt <lars@linux-schulserver.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,6 +33,7 @@ Source2:        %{name}-tmpfiles.conf
 Source3:        minidlna_logrotate
 # VDR FIX thanks to Boris from openSuse
 Patch0:         minidlna-vdr.diff
+Patch1:         minidlna-multiple_definition.patch
 #BuildRequires:  cvs
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  flac-devel
@@ -41,10 +42,10 @@ BuildRequires:  libid3tag-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  libvorbis-devel
+BuildRequires:  sqlite-devel
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
-BuildRequires:  sqlite-devel
 Requires:       logrotate
 Requires:       sqlite3
 Requires(pre):  pwdutils
@@ -57,6 +58,7 @@ compliant with DLNA/UPnP-AV clients.
 %prep
 %setup -q
 %patch0
+%patch1 -p1
 
 %build
 #./autogen.sh

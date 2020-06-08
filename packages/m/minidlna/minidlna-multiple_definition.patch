@@ -1,0 +1,46 @@
+--- minidlna-1.2.1/image_utils.c	2020/06/08 08:44:01	1.1
++++ minidlna-1.2.1/image_utils.c	2020/06/08 08:45:33
+@@ -190,7 +190,7 @@
+ 	src->pub.bytes_in_buffer = bufsize;
+ }
+ 
+-jmp_buf setjmp_buffer;
++static jmp_buf setjmp_buffer;
+ /* Don't exit on error like libjpeg likes to do */
+ static void
+ libjpeg_error_handler(j_common_ptr cinfo)
+--- minidlna-1.2.1/metadata.c	2020/06/08 08:45:39	1.1
++++ minidlna-1.2.1/metadata.c	2020/06/08 08:47:21
+@@ -484,7 +484,7 @@
+ }
+ 
+ /* For libjpeg error handling */
+-jmp_buf setjmp_buffer;
++static jmp_buf setjmp_buffer;
+ static void
+ libjpeg_error_handler(j_common_ptr cinfo)
+ {
+--- minidlna-1.2.1/tivo_utils.h	2020/06/08 08:47:55	1.1
++++ minidlna-1.2.1/tivo_utils.h	2020/06/08 08:48:08
+@@ -30,7 +30,9 @@
+   unsigned char isInit;          /* True if initialized */
+   unsigned char i, j;            /* State variables */
+   unsigned char s[256];          /* State variables */
+-} sqlite3Prng;
++};
++
++extern struct sqlite3PrngType sqlite3Prng;
+ 
+ char *
+ decodeString(char *string, int inplace);
+--- minidlna-1.2.1/tivo_utils.c	2020/06/08 08:47:38	1.1
++++ minidlna-1.2.1/tivo_utils.c	2020/06/08 08:47:50
+@@ -27,6 +27,8 @@
+ #include <sqlite3.h>
+ #include "tivo_utils.h"
+ 
++struct sqlite3PrngType sqlite3Prng;
++
+ /* This function based on byRequest */
+ char *
+ decodeString(char *string, int inplace)
