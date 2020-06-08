@@ -422,4 +422,12 @@
     <comment></comment>
     <requestid>773992</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>10381b8b4e479046c8b3ca775618cded</srcmd5>
+    <version>3.34.2</version>
+    <time>1591652826</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel, not buildtested (forwarded request 807825 from iznogood)</comment>
+    <requestid>811411</requestid>
+  </revision>
 </revisionlist>
