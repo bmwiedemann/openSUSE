@@ -37,13 +37,10 @@
 # X modules are lower prio upstream and once in a while fail. Offer an easy way to enable/disable them.
 %define with_X 1
 
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 0150200
-%define         with_sdmp 1
-%define         arg_servicediscovery --enable-servicediscovery
-%else
+# VMware has asked to not build the service discovery plugin until they have
+# removed the netstat dependency.
 %define         with_sdmp 0
 %define         arg_servicediscovery --without-servicediscovery
-%endif
 
 Name:           open-vm-tools
 %define subname open-vm-tools

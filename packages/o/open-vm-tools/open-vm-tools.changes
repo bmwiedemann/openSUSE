@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun  3 20:56:17 UTC 2020 - Kirk Allan <kallan@suse.com>
+
+- VMware has now asked that in updating to 11.1.0 (build 16036546) (boo#1171764)
+  to hold off on producing the open-vm-tools-sdmp service discovery plugin
+  (boo#1171765) for all SUSE versions due to the plugin's dependency on
+  netstat.  Once they have removed the netstat dependency we will need to go
+  through the ECO process to get the plugin added.
+
+-------------------------------------------------------------------
 Thu May 28 20:35:31 UTC 2020 - Kirk Allan <kallan@suse.com>
 
 - While updating to 11.1.0 (build 16036546) (boo#1171764) hold off on
