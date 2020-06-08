@@ -1667,4 +1667,14 @@ Library portions are LGPL-2.1+ licensed (forwarded request 132611 from dimstar)<
   differences(jsc#SLE-11804). (forwarded request 796143 from JonathanKang)</comment>
     <requestid>798329</requestid>
   </revision>
+  <revision rev="201" vrev="5">
+    <srcmd5>fcb0076ab345ca44c5fc8013d01729df</srcmd5>
+    <version>1.1.13</version>
+    <time>1591652849</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PackageKit-zypp-ensure-ResPool-before-is_tumbleweed.patch:
+  zypp: Ensure ResPool is built before is_tumbleweed()
+  (gh#/hughsie/PackageKit/commit/5c0fd7d7). (forwarded request 808875 from JonathanKang)</comment>
+    <requestid>811416</requestid>
+  </revision>
 </revisionlist>
