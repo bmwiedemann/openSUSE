@@ -230,4 +230,13 @@
   * mu4e-maildir-shortcuts: update for today's functionality</comment>
     <requestid>810523</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>730b3dcb01885f6213579e3fd2ea3e81</srcmd5>
+    <version>1.4.9</version>
+    <time>1591653973</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.9:
+  * mu4e: avoid trouble with truncate-string-to-width</comment>
+    <requestid>812445</requestid>
+  </revision>
 </revisionlist>
