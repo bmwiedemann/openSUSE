@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 20 09:51:47 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 8.1.0
+  * Features
+    - Add new --owner [user][:group] command-line option
+    - Add support for a global ignore file (~/.config/fd/ignore on Unix)
+    - Do not exit immediately if one of the search paths is missing
+  * Bugfixes
+    - Reverted a change from fd 8.0 that enabled colors on all
+      Windows terminals (see below) in order to support
+      older Windows versions again
+    - Fix --glob behavior with empty pattern
+
+-------------------------------------------------------------------
 Thu Apr 16 10:56:42 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - Update to 8.0.0
