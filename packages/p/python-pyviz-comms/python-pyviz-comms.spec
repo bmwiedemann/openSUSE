@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyviz-comms
-Version:        0.7.3
+Version:        0.7.4
 Release:        0
 Summary:        Tool to launch jobs, organize the output, and dissect the results
 License:        BSD-3-Clause
