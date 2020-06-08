@@ -1,7 +1,7 @@
 #
 # spec file for package neon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,19 @@
 
 
 Name:           neon
-Version:        0.30.2
+Version:        0.31.1
 Release:        0
 Summary:        An HTTP and WebDAV Client Library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Other
-Url:            http://www.webdav.org/neon
-Source0:        http://www.webdav.org/neon/neon-%{version}.tar.gz
-Source1:        http://www.webdav.org/neon/neon-%{version}.tar.gz.asc
+URL:            https://notroj.github.io/neon/
+Source0:        https://notroj.github.io/neon/neon-%{version}.tar.gz
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Source10:       replace_manpage_with_links.sh
 # PATCH-MISSING-TAG -- See http://wiki.opensuse.org/Packaging/Patches
 Patch0:         %{name}-0.28.4-bloat.patch
 Patch1:         fix_timeout_tests_for_ppc64le.patch
-Patch2:         neon-0.30.2_ssl-fix_timeout_retvals.patch
-# backport from upstream
-Patch3:         neon-0.30.2-nulcert.patch
 BuildRequires:  krb5-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libproxy-devel
@@ -76,10 +72,6 @@ neon is an HTTP and WebDAV client library with a C interface.
 %ifarch ppc64le ppc64
 %patch1
 %endif
-if pkg-config --atleast-version=1.1.1 openssl; then
-%patch2 -p1
-fi
-%patch3 -p1
 
 %build
 rm -f aclocal.m4 ltmain.sh
@@ -107,7 +99,7 @@ make %{?_smp_mflags} check
 %postun -n libneon27 -p /sbin/ldconfig
 
 %files -n libneon27
-%doc AUTHORS BUGS ChangeLog NEWS README THANKS TODO
+%doc AUTHORS BUGS ChangeLog NEWS THANKS TODO
 %{_libdir}/*.so.27*
 %license src/COPYING.LIB
 
