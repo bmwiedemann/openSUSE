@@ -19,7 +19,7 @@
 Name:           neatvnc
 Version:        0.1.0
 Release:        0
-Summary:        A liberally licensed VNC server library
+Summary:        A VNC server library
 License:        ISC
 Group:          System/GUI/Other
 URL:            https://github.com/any1/neatvnc
@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 
 %description
-This is a liberally licensed VNC server library that's intended to be fast and neat.
+This is a VNC server library.
 
 %package        devel
 Summary:        Development files for %{name}
@@ -45,14 +45,14 @@ Requires:       libneatvnc0 = %{version}
 Development files and headers for %{name}.
 
 %package -n     libneatvnc0
-Summary:        A liberally licensed VNC server library
+Summary:        A VNC server library
 Group:          System/Libraries
 
 %description -n libneatvnc0
-A liberally licensed VNC server library.
+A VNC server library.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson
