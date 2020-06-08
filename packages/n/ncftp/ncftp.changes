@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  8 09:16:08 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Fix build with GCC 10:
+  * Set gBm as extern only in bookmark.h
+- Add ncftp-gcc10-gBm.patch
+
+-------------------------------------------------------------------
 Thu Jun 14 08:10:29 UTC 2018 - bwiedemann@suse.com
 
 - Add ncftp-3.2.6-no-uname.patch to make build reproducible (boo#1084909)
