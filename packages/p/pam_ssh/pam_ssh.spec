@@ -1,7 +1,7 @@
 #
 # spec file for package pam_ssh
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        PAM Module for SSH Authentication
 License:        BSD-3-Clause
 Group:          Productivity/Networking/SSH
-Url:            http://sourceforge.net/projects/pam-ssh/
+URL:            http://sourceforge.net/projects/pam-ssh/
 Source:         http://sourceforge.net/projects/pam-ssh/files/pam_ssh/%{version}/%{name}-%{version}.tar.xz
 Source1:        http://sourceforge.net/projects/pam-ssh/files/pam_ssh/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        baselibs.conf
@@ -45,7 +45,7 @@ entire session, the user types no more passwords.
 
 %build
 autoreconf -fiv
-export CFLAGS="%{optflags} -fno-strict-aliasing"
+export CFLAGS="%{optflags} -fno-strict-aliasing -fcommon"
 %configure --libdir=/%{_lib}
 make %{?_smp_mflags}
 
