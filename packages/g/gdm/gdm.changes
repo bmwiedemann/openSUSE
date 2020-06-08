@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 26 00:36:52 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch:
+  When user session reuses tty7 same as greeter session, gdm
+  doesn't bring up the greeter session after switching from other
+  tty to tty7 (bsc#1171290).
+
+-------------------------------------------------------------------
 Mon May  4 20:34:09 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.2:

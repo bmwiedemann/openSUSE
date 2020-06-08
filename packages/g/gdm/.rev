@@ -1731,4 +1731,15 @@
     <comment>New stable rel, now with new Requires. Still maintain that we should let this one wait a day or 2 more (forwarded request 800434 from iznogood)</comment>
     <requestid>800802</requestid>
   </revision>
+  <revision rev="229" vrev="2">
+    <srcmd5>1ee0f2fd71be0b77a5233133f704b467</srcmd5>
+    <version>3.36.2</version>
+    <time>1591652852</time>
+    <user>dimstar_suse</user>
+    <comment>- Update gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch:
+  When user session reuses tty7 same as greeter session, gdm
+  doesn't bring up the greeter session after switching from other
+  tty to tty7 (bsc#1171290). (forwarded request 810058 from xiaoguang_wang)</comment>
+    <requestid>811417</requestid>
+  </revision>
 </revisionlist>
