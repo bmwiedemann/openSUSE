@@ -143,6 +143,8 @@ Requires:       zypper
 Recommends:     rollback-helper
 Recommends:     SUSEConnect
 %endif
+# Support multiversion(kernel) (jsc#SLE-10162)
+Requires:       purge-kernels-service
 # Add some static base tool in case system explodes; Recommend only, as users are free to uninstall it
 Recommends:     busybox-static
 Recommends:     elfutils
@@ -156,7 +158,10 @@ Recommends:     terminfo-iterm
 Recommends:     terminfo-screen
 Recommends:     timezone
 Recommends:     glibc-locale-base
-
+%ifarch ppc64 ppc64le
+# bsc#1098849
+Requires:       ppc64-diag
+%endif
 # Current systems suffer from entropy starvation (bsc#1131369)
 %ifarch aarch64 %ix86 x86_64 ppc64 ppc64le s390x
 Recommends:     haveged
@@ -165,6 +170,8 @@ Recommends:     haveged
 %if !(0%{?is_opensuse} && 0%{?sle_version})
 Recommends:     issue-generator
 %endif
+# hint for aaa_base requiring /usr/bin/xz
+Suggests:       xz
 
 %description base
 This is the base runtime system.  It contains only a minimal multiuser booting system. For running on real hardware, you need to add additional packages and pattern to make this pattern useful on its own.

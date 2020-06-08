@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jun  1 12:35:44 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- re-add ppc64-diag on ppc64le (bsc#1098849).
+
+-------------------------------------------------------------------
+Thu May 28 08:22:09 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Suggest xz in base, as it is now required by aaa_base and we don't
+  want that zypper uses busybox instead [bsc#1172209]
+
+-------------------------------------------------------------------
+Thu May 28 07:24:12 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Re-add purge-kernels-service dependency (boo#1168727).
+  Support multiversion(kernel) with purge-kernels.service separated from dracut
+  (jsc#SLE-10162).
+- Call perl directly in pre_checkin.sh. create_32bit-patterns_file.pl is not
+  executable when checked out from OBS.
+- Skip bootloader in pre_checkin.sh
+- Re-generate 32bit patterns.
+
+-------------------------------------------------------------------
 Thu May  7 09:19:47 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Require pam_pwquality in base as it's the replacement for

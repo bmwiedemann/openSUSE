@@ -25,27 +25,37 @@ The 32bit pattern complementing apparmor.
 #
 %package base-32bit
 Summary:        Minimal Base System
-Recommends:     kmod-32bit
-Recommends:     polkit-32bit
-Recommends:     polkit-default-privs-32bit
-Recommends:     shadow-32bit
-Recommends:     util-linux-32bit
-Recommends:     which-32bit
-Recommends:     systemd-coredump-32bit
-Recommends:     busybox-static-32bit
-Recommends:     bash-completion-32bit
+Recommends:     aaa_base-32bit
+Recommends:     bash-32bit
 Recommends:     ca-certificates-mozilla-32bit
-Recommends:     chrony-32bit
-Recommends:     cron-32bit
-Recommends:     cronie-32bit
+Recommends:     coreutils-32bit
+Recommends:     glibc-32bit
+Recommends:     libnss_usrfiles2-32bit
+Recommends:     pam-32bit
+Recommends:     pam-config-32bit
+Recommends:     pam_pwquality-32bit
+Recommends:     rpm-32bit
+Recommends:     shadow-32bit
+Recommends:     sysconfig-32bit
+Recommends:     system-user-nobody-32bit
+Recommends:     systemd-32bit
+Recommends:     util-linux-32bit
+Recommends:     zypper-32bit
+Recommends:     rollback-helper-32bit
+Recommends:     SUSEConnect-32bit
+Recommends:     purge-kernels-service-32bit
+Recommends:     busybox-static-32bit
+Recommends:     elfutils-32bit
+Recommends:     iproute2-32bit
+Recommends:     system-group-trusted-32bit
+Recommends:     system-group-wheel-32bit
+Recommends:     system-user-bin-32bit
+Recommends:     system-user-daemon-32bit
+Recommends:     terminfo-32bit
+Recommends:     terminfo-iterm-32bit
+Recommends:     terminfo-screen-32bit
+Recommends:     timezone-32bit
 Recommends:     glibc-locale-base-32bit
-Recommends:     glibc-locale-32bit
-Recommends:     systemd-sysvinit-32bit
-Recommends:     snapper-32bit
-Recommends:     branding-openSUSE-32bit
-Recommends:     branding-SLE-32bit
-Recommends:     lshw-32bit
-Recommends:     lsvpd-32bit
 Recommends:     ppc64-diag-32bit
 Recommends:     haveged-32bit
 Recommends:     issue-generator-32bit
@@ -74,6 +84,7 @@ Recommends:     acl-32bit
 Recommends:     alsa-plugins-32bit
 Recommends:     attr-32bit
 Recommends:     autofs-32bit
+Recommends:     bash-completion-32bit
 Recommends:     bind-utils-32bit
 Recommends:     binutils-32bit
 Recommends:     bzip2-32bit
@@ -205,7 +216,6 @@ Recommends:     setserial-32bit
 Recommends:     sharutils-32bit
 Recommends:     spax-32bit
 Recommends:     strace-32bit
-Recommends:     telnet-32bit
 Recommends:     terminfo-32bit
 Recommends:     vlan-32bit
 Recommends:     wol-32bit
@@ -225,34 +235,10 @@ The 32bit pattern complementing enhanced_base.
 #
 %package minimal_base-32bit
 Summary:        Minimal Appliance Base
-Recommends:     aaa_base-32bit
-Recommends:     bash-32bit
-Recommends:     coreutils-32bit
-Recommends:     device-mapper-32bit
+Recommends:     branding-32bit
 Recommends:     distribution-release-32bit
 Recommends:     filesystem-32bit
-Recommends:     glibc-32bit
-Recommends:     iproute2-32bit
-Recommends:     kbd-32bit
-Recommends:     libnss_usrfiles2-32bit
-Recommends:     pam-32bit
-Recommends:     procps-32bit
-Recommends:     rpm-32bit
-Recommends:     sysconfig-32bit
-Recommends:     system-group-hardware-32bit
-Recommends:     system-group-wheel-32bit
-Recommends:     system-user-bin-32bit
-Recommends:     system-user-daemon-32bit
-Recommends:     system-user-nobody-32bit
-Recommends:     systemd-32bit
-Recommends:     udev-32bit
-Recommends:     zypper-32bit
-Recommends:     branding-32bit
-Recommends:     rollback-helper-32bit
-Recommends:     openSUSE-build-key-32bit
-Recommends:     SUSEConnect-32bit
-Recommends:     rollback_helper-32bit
-Recommends:     suse-build-key-32bit
+Recommends:     build-key-32bit
 Provides:       pattern() = minimal_base%2d32bit
 Group:          Metapackages
 Supplements:    packageand(patterns-base-32bit:patterns-base-minimal_base)
@@ -289,6 +275,7 @@ The 32bit pattern complementing sw_management.
 #
 %package x11-32bit
 Summary:        X Window System
+Recommends:     pattern()-32bit
 Recommends:     pattern()-32bit
 Recommends:     xorg-x11-fonts-core-32bit
 Recommends:     xorg-x11-server-32bit
