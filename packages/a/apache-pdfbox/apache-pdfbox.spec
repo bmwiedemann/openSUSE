@@ -1,7 +1,7 @@
 #
 # spec file for package apache-pdfbox
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,39 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 # Only fontbox and jempbox are built as pdfbox itself depends on Adobe's pcif.
 Name:           apache-pdfbox
-Version:        1.8.16
+Version:        2.0.19
 Release:        0
 Summary:        Java PDF Library
-License:        Apache-2.0
+License:        Apache-2.0 AND OFL-1.1
 Group:          Development/Libraries/Java
-Url:            https://pdfbox.apache.org/
-Source0:        http://www-us.apache.org/dist/pdfbox/%{version}/pdfbox-%{version}-src.zip
-Source1:        http://central.maven.org/maven2/org/apache/pdfbox/pdfbox/%{version}/pdfbox-%{version}.pom
-Source2:        http://central.maven.org/maven2/org/apache/pdfbox/fontbox/%{version}/fontbox-%{version}.pom
-Source3:        http://central.maven.org/maven2/org/apache/pdfbox/jempbox/%{version}/jempbox-%{version}.pom
-Patch0:         pdfbox-1.8.12-bouncycastle.patch
-Patch1:         disable-downloads.patch
-Patch2:         fix-javadoc-dep.patch
-Patch3:         pdfbox-1.8.12-sourcetarget.patch
-Patch4:         fix-version.patch
+URL:            https://pdfbox.apache.org/
+Source0:        http://archive.apache.org/dist/pdfbox/%{version}/pdfbox-%{version}-src.zip
+Source1:        pdfbox-%{version}-build.tar.xz
 BuildRequires:  ant
 BuildRequires:  apache-commons-logging
 BuildRequires:  bouncycastle
+BuildRequires:  bouncycastle-mail
+BuildRequires:  bouncycastle-pkix
 BuildRequires:  fdupes
-BuildRequires:  icu4j
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  javapackages-tools
-BuildRequires:  junit
 BuildRequires:  unzip
 Requires:       apache-commons-logging
-Requires:       icu4j
 BuildArch:      noarch
 
 %description
@@ -62,52 +54,38 @@ Requires:       %{name} = %{version}-%{release}
 JavaDoc documentation for %{name}
 
 %prep
-%setup -q -n pdfbox-%{version}
-%autopatch -p1
+%setup -q -n pdfbox-%{version} -a1
+%pom_change_dep :junit :::test fontbox
 
 %build
-# Build
-ant -buildfile pdfbox/build.xml \
-    -Dbcprov.jar=$(build-classpath bcprov) -Djunit.jar=$(build-classpath junit4) \
-    -Dicu4j.jar=$(build-classpath icu4j) -Dlogging.jar=$(build-classpath commons-logging) \
-    -Dbuild.sysclasspath=first -Dcompile.source=8 -Dcompile.target=8 \
-    fontbox.package jempbox.package javadoc
+mkdir -p lib
+build-jar-repository -s lib bcmail bcpkix bcprov commons-logging
+ant -Dtest.skip=true package javadoc
 
 %install
 # Code
-install -d %{buildroot}%{_javadir}
-for jar in fontbox jempbox; do
-    install -p -m644 ${jar}/target/${jar}-%{version}.jar %{buildroot}%{_javadir}/${jar}.jar
+install -d -m 0755 %{buildroot}%{_javadir}/pdfbox
+install -d -m 0755 %{buildroot}%{_mavenpomdir}/pdfbox
+install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}
+for jar in fontbox pdfbox debugger tools; do
+    install -p -m 0644 ${jar}/target/*-%{version}.jar %{buildroot}%{_javadir}/pdfbox/${jar}.jar
+	%pom_remove_parent ${jar}
+	%pom_xpath_inject pom:project "<groupId>org.apache.pdfbox</groupId><version>%{version}</version>" ${jar}
+	install -p -m 0644 ${jar}/pom.xml %{buildroot}%{_mavenpomdir}/pdfbox/${jar}.pom
+	%add_maven_depmap pdfbox/${jar}.pom pdfbox/${jar}.jar
+	cp -pr ${jar}/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/${jar}
 done
+# Compatibility link
+ln -s -f %{_javadir}/pdfbox/fontbox.jar %{buildroot}%{_javadir}/
 
-install -d -m 0755 %{buildroot}/%{_mavenpomdir}/
-install -m 0644 %{SOURCE2} %{buildroot}/%{_mavenpomdir}/JPP-fontbox.pom
-install -m 0644 %{SOURCE3} %{buildroot}/%{_mavenpomdir}/JPP-jempbox.pom
-
-%add_maven_depmap JPP-fontbox.pom fontbox.jar
-%add_maven_depmap JPP-jempbox.pom jempbox.jar
-
-# JavaDoc
-install -dm 755 %{buildroot}%{_javadocdir}/%{name}-%{version}
-cp -pr pdfbox/target/javadoc/* %{buildroot}%{_javadocdir}/%{name}-%{version}
-%fdupes %{buildroot}%{_javadocdir}/%{name}-%{version}
-ln -s %{name}-%{version} %{buildroot}%{_javadocdir}/%{name}
+%fdupes -s %{buildroot}%{_javadocdir}
 
 %files javadoc
-%{_javadocdir}/%{name}-%{version}
 %{_javadocdir}/%{name}
 
-%files
-%doc RELEASE-NOTES.txt NOTICE.txt README.txt
-%license LICENSE.txt
+%files -f .mfiles
+%doc RELEASE-NOTES.txt README.md
+%license LICENSE.txt NOTICE.txt
 %{_javadir}/fontbox.jar
-%{_javadir}/jempbox.jar
-%{_mavenpomdir}/JPP-fontbox.pom
-%{_mavenpomdir}/JPP-jempbox.pom
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml*
-%endif
 
 %changelog

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun  4 05:06:54 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.0.19:
+  * Move from 1.x release line to the 2.x one.
+  * This is a ABI change
+  * Generate the ant build system from the maven one and customize
+    it
+- Removed patches:
+  * disable-downloads.patch
+  * fix-javadoc-dep.patch
+  * fix-version.patch
+  * pdfbox-1.8.12-bouncycastle.patch
+  * pdfbox-1.8.12-sourcetarget.patch
+    + incorporated in the customizations of the ant build system
+
+-------------------------------------------------------------------
 Mon Oct  8 07:30:50 UTC 2018 - Fabian Vogt <fvogt@suse.com>
 
 - Update to 1.8.16:
