@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  8 12:19:07 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Workaround gh#fluent/fluent-bit#1945 by building with -fcommon and disabling LTO
+
+-------------------------------------------------------------------
 Wed May 27 08:37:28 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.4.5

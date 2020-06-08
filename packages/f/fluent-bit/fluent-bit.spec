@@ -16,6 +16,9 @@
 #
 
 
+# Add -fcommon and -fno-lto to optflags to workaround https://github.com/fluent/fluent-bit/issues/1945
+%global optflags %optflags -fcommon -fno-lto
+
 Name:           fluent-bit
 Version:        1.4.5
 Release:        0
