@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jun  4 13:27:13 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- No code changes since 5.18.90
+
+-------------------------------------------------------------------
+Thu May 14 14:33:07 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Changes since 5.18.5:
+  * Use Standard "Show/Hide Hidden files" shortcuts in directory chooser dialog
+  * Raise size of default fixed-width font from 9 to 10pt
+  * Remove too strict Qt/KF5 deprecation rule
+  * Set cursor size default to 24 to align with KCM default value
+  * Fix build
+  * bump to require Qt 5.14
+  * Make it compile against qt5.15. SkipEmptyParts is part of Qt::.
+
+-------------------------------------------------------------------
 Tue May  5 13:01:54 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5
