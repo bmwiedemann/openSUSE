@@ -770,4 +770,12 @@
     <comment>Plasma 5.18.5</comment>
     <requestid>800476</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>cd14fd0b5e116c64f11d6f3a30cb6741</srcmd5>
+    <version>5.19.0</version>
+    <time>1591653203</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.0</comment>
+    <requestid>812311</requestid>
+  </revision>
 </revisionlist>
