@@ -1,7 +1,7 @@
 #
 # spec file for package xviewer
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xviewer
-Version:        2.2.0
+Version:        2.6.0
 Release:        0
 Summary:        Fast and functional graphics viewer
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -48,9 +48,9 @@ Recommends:     %{name}-lang
 Suggests:       %{name}-plugins
 %glib2_gsettings_schema_requires
 %if 0%{?suse_version} >= 1500
-BuildRequires:  python2-libxml2-python
+BuildRequires:  python3-libxml2-python
 %else
-BuildRequires:  libxml2-python
+BuildRequires:  libxml2-python3
 %endif
 
 %description
