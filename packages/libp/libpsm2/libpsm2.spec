@@ -98,12 +98,12 @@ make %{?_smp_mflags}
 %install
 export DESTDIR=%{buildroot}
 make %{?_smp_mflags} DESTDIR=%{buildroot} install
-install -m0644 %{buildroot}/%{_libdir}/psm2-compat/libpsm_infinipath.so.1 %{buildroot}/%{_libdir}/libpsm_infinipath.so.1
+install -m0644 %{buildroot}%{_libdir}/psm2-compat/libpsm_infinipath.so.1 %{buildroot}%{_libdir}/libpsm_infinipath.so.1
 # removing file to get rid of rpm errors
-rm  %{buildroot}/%{_libdir}/psm2-compat/libpsm_infinipath.so.1
-rm  %{buildroot}/%{_libexecdir}/%name/libpsm2-compat.cmds
+rm  %{buildroot}%{_libdir}/psm2-compat/libpsm_infinipath.so.1
+rm  %{buildroot}/usr/lib/%name/libpsm2-compat.cmds
 # remove static library
-rm  %{buildroot}/%{_libdir}/libpsm2.a
+rm  %{buildroot}%{_libdir}/libpsm2.a
 
 %post -n %{name}-%{psm_so} -p /sbin/ldconfig
 %postun -n %{name}-%{psm_so} -p /sbin/ldconfig
