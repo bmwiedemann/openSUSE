@@ -1,7 +1,7 @@
 #
 # spec file for package xjadeo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2015 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Visualization
 URL:            http://xjadeo.sourceforge.net/
 Source0:        https://sourceforge.net/projects/xjadeo/files/xjadeo/v%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE xjadeo-gcc10.patch
+Patch0:         xjadeo-gcc10.patch
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
@@ -52,12 +54,12 @@ the movie, which may be useful for creating a soundtrack for
 a video clip.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CFLAGS="-Wall %{optflags}"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

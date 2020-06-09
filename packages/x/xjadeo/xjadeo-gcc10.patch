@@ -1,0 +1,30 @@
+Index: xjadeo-0.8.9/src/xjadeo/main.c
+===================================================================
+--- xjadeo-0.8.9.orig/src/xjadeo/main.c
++++ xjadeo-0.8.9/src/xjadeo/main.c
+@@ -170,8 +170,8 @@ int want_genpts =0;	/* --genpts */
+ int want_ignstart =0;	/* --ignorefileoffset */
+ int want_nosplash =0;	/* --nosplash */
+ int want_noindex =0;	/* --noindex */
+-int start_ontop =0;	/* --ontop // -a */
+-int start_fullscreen =0;/* --fullscreen // -s */
++extern int start_ontop =0;	/* --ontop // -a */
++extern int start_fullscreen =0;/* --fullscreen // -s */
+ int want_letterbox =1;  /* --letterbox -b */
+ int want_dropframes =0; /* --dropframes -N  -- force using drop-frame timecode */
+ int want_autodrop =1;   /* --nodropframes -n (hidden option) -- allow using drop-frame timecode */
+Index: xjadeo-0.8.9/src/xjadeo/configfile.c
+===================================================================
+--- xjadeo-0.8.9.orig/src/xjadeo/configfile.c
++++ xjadeo-0.8.9/src/xjadeo/configfile.c
+@@ -90,8 +90,8 @@ extern int    OSD_mode;
+ extern char   OSD_text[128];
+ extern int    OSD_fx, OSD_tx, OSD_sx, OSD_fy, OSD_sy, OSD_ty;
+ 
+-int start_ontop;
+-int start_fullscreen;
++extern int start_ontop;
++extern int start_fullscreen;
+ 
+ extern char	*current_file;
+ #ifdef JACK_SESSION
