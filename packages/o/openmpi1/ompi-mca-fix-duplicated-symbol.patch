@@ -1,0 +1,33 @@
+commit e1f77cff04e2403275fbf119fe2685171511aa55
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Tue Jun 9 10:46:17 2020 +0200
+
+    ompi mca: fix duplicated symbol
+    
+    Add missing extern to avoid duplicated symbol error with GCC10
+    /usr/lib64/gcc/x86_64-suse-linux/10/../../../../x86_64-suse-linux/bin/ld: .libs/mtl_psm_component.o (symbol from plugin): in function `mca_mtl_psm_component':
+    (.text+0x0): multiple definition of `mca_mtl_psm_component'; .libs/mtl_psm.o (symbol from plugin):(.text+0x0): first defined here
+    /usr/lib64/gcc/x86_64-suse-linux/10/../../../../x86_64-suse-linux/bin/ld: .libs/mtl_psm_endpoint.o (symbol from plugin): in function `mca_mtl_psm_endpoint_t_class':
+    (.text+0x0): multiple definition of `mca_mtl_psm_component'; .libs/mtl_psm.o (symbol from plugin):(.text+0x0): first defined here
+    /usr/lib64/gcc/x86_64-suse-linux/10/../../../../x86_64-suse-linux/bin/ld: .libs/mtl_psm_probe.o (symbol from plugin): in function `ompi_mtl_psm_iprobe':
+    (.text+0x0): multiple definition of `mca_mtl_psm_component'; .libs/mtl_psm.o (symbol from plugin):(.text+0x0): first defined here
+    /usr/lib64/gcc/x86_64-suse-linux/10/../../../../x86_64-suse-linux/bin/ld: .libs/mtl_psm_recv.o (symbol from plugin): in function `ompi_mtl_psm_irecv':
+    (.text+0x0): multiple definition of `mca_mtl_psm_component'; .libs/mtl_psm.o (symbol from plugin):(.text+0x0): first defined here
+    /usr/lib64/gcc/x86_64-suse-linux/10/../../../../x86_64-suse-linux/bin/ld: .libs/mtl_psm_send.o (symbol from plugin): in function `ompi_mtl_psm_send':
+    (.text+0x0): multiple definition of `mca_mtl_psm_component'; .libs/mtl_psm.o (symbol from plugin):(.text+0x0): first defined here
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git ompi/mca/mtl/psm/mtl_psm_types.h ompi/mca/mtl/psm/mtl_psm_types.h
+index 734825ce6019..799f6acdf065 100644
+--- ompi/mca/mtl/psm/mtl_psm_types.h
++++ ompi/mca/mtl/psm/mtl_psm_types.h
+@@ -70,7 +70,7 @@ struct mca_mtl_psm_component_t {
+ };
+ typedef struct mca_mtl_psm_component_t mca_mtl_psm_component_t;
+ 
+-OMPI_DECLSPEC mca_mtl_psm_component_t mca_mtl_psm_component;
++extern OMPI_DECLSPEC mca_mtl_psm_component_t mca_mtl_psm_component;
+     
+ #define PSM_MAKE_MQTAG(ctxt,rank,utag)		    \
+         ( (((ctxt)&0xffffULL)<<48)| (((rank)&0xffffULL)<<32)| \

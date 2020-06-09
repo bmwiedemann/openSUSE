@@ -127,6 +127,7 @@ Patch3:         openmpi-1.8.3-fix-bashisms.patch
 Patch4:         openmpi-etc-files.patch
 Patch5:         openmpi-btl-openib-backport-device-params-from-master.patch
 Patch6:         reproducible.patch
+Patch7:         ompi-mca-fix-duplicated-symbol.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -388,6 +389,7 @@ echo without HPC
 %patch3 -p1
 %patch4
 %patch5
+%patch7
 
 %if %{without hpc}
 cat > %{_sourcedir}/baselibs.conf  <<EOF

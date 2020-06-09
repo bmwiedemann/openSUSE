@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  9 08:47:45 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add ompi-mca-fix-duplicated-symbol.patch to fix compilation with GCC10
+
+-------------------------------------------------------------------
 Thu Mar 19 08:24:46 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Drop different package string between SLES and Leap (jsc#SLE-11898)
