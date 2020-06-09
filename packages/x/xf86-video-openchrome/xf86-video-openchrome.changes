@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  9 11:06:06 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_gcc10.patch 
+  * fixes build against gcc10, which uses -fno-common by default
+
+-------------------------------------------------------------------
 Wed May 23 15:07:36 UTC 2018 - sndirsch@suse.com
 
 - n_xorg-server-1.20.patch

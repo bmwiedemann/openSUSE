@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-openchrome
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,10 @@ Release:        0
 Summary:        Openchrome driver (VIA GPUs) for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
 Patch0:         n_xorg-server-1.20.patch
+Patch1:         u_gcc10.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(x11)
@@ -42,6 +43,7 @@ of VIA chipsets featuring the VIA UniChrome, UniChrome Pro and Chrome9 integrate
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %configure

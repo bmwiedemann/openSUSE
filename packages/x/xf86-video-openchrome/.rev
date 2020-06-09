@@ -124,4 +124,13 @@
   * fix build against xorg-server 1.20</comment>
     <requestid>611709</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>f4b982dce31b3df0bff84571c61b7051</srcmd5>
+    <version>0.6.0</version>
+    <time>1591743043</time>
+    <user>dimstar_suse</user>
+    <comment>- u_gcc10.patch 
+  * fixes build against gcc10, which uses -fno-common by default</comment>
+    <requestid>812880</requestid>
+  </revision>
 </revisionlist>
