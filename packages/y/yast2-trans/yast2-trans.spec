@@ -17,7 +17,7 @@
 
 
 Name:           yast2-trans
-Version:        84.87.20200217.775c690a81
+Version:        84.87.20200606.1c5278cf88
 Release:        0
 Summary:        YaST2 - Translation Container Package
 License:        GPL-2.0-or-later
@@ -27,9 +27,11 @@ Source1:        COPYING
 Source2:        po-stats
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-Url:            https://github.com/yast/yast2-translations/
+URL:            https://github.com/yast/yast2-translations/
+Obsoletes:      yast2-trans-en
+Obsoletes:      yast2-trans-en_US
 #@SOURCES@
-%define build_languages af am ar ast be bg bn bs ca cs cy da de el en en_GB en_US eo es es_AR et eu fa fi fr gl gu he hi hr hu id it ja jv ka kab km kn ko ku lo lt lv mk mr ms my nb nds ne nl nn pa pl ps pt pt_BR ro ru si sk sl sq sr sr@latin sv sw ta tg th tk tr uk vi wa xh zh_CN zh_TW zu
+%define build_languages af am ar ast be bg bn bs ca cs cy da de el en_GB eo es es_AR et eu fa fi fr gl gu he hi hr hu id it ja jv ka kab km kn ko ku lo lt lv mk mr ms my nb nds ne nl nn pa pl ps pt pt_BR ro ru si sk sl sq sr sr@latin sv sw ta tg th tk tr uk vi wa xh zh_CN zh_TW zu
 
 %description
 This is a container package.  Its only purpose is to build the
@@ -40,7 +42,7 @@ subpackages.
 Summary:        YaST2 - Afrikaans Translations
 Group:          System/YaST
 Provides:       locale(yast2:af)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description af
 YaST2 - Translations for Afrikaans.
@@ -49,7 +51,7 @@ YaST2 - Translations for Afrikaans.
 Summary:        YaST2 - Amharic Translations
 Group:          System/YaST
 Provides:       locale(yast2:am)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description am
 YaST2 - Translations for Amharic.
@@ -58,7 +60,7 @@ YaST2 - Translations for Amharic.
 Summary:        YaST2 - Arabic Translations
 Group:          System/YaST
 Provides:       locale(yast2:ar)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description ar
 YaST2 - Translations for Arabic.
@@ -67,7 +69,7 @@ YaST2 - Translations for Arabic.
 Summary:        YaST2 - Asturian Translations
 Group:          System/YaST
 Provides:       locale(yast2:ast)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description ast
 YaST2 - Translations for Asturian.
@@ -76,7 +78,7 @@ YaST2 - Translations for Asturian.
 Summary:        YaST2 - Byelorussian Translations
 Group:          System/YaST
 Provides:       locale(yast2:be)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description be
 YaST2 - Translations for Byelorussian (Belarusian).
@@ -85,7 +87,7 @@ YaST2 - Translations for Byelorussian (Belarusian).
 Summary:        YaST2 - Bulgarian Translations
 Group:          System/YaST
 Provides:       locale(yast2:bg)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description bg
 YaST2 - Translations for Bulgarian.
@@ -94,7 +96,7 @@ YaST2 - Translations for Bulgarian.
 Summary:        YaST2 - Bengali Translations
 Group:          System/YaST
 Provides:       locale(yast2:bn)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description bn
 YaST2 - Translations for Bengali.
@@ -103,7 +105,7 @@ YaST2 - Translations for Bengali.
 Summary:        YaST2 - Bosnian Translations
 Group:          System/YaST
 Provides:       locale(yast2:bs)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description bs
 YaST2 - Translations for Bosnian.
@@ -112,7 +114,7 @@ YaST2 - Translations for Bosnian.
 Summary:        YaST2 - Catalan Translations
 Group:          System/YaST
 Provides:       locale(yast2:ca)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description ca
 YaST2 - Catalan translations.
@@ -121,7 +123,7 @@ YaST2 - Catalan translations.
 Summary:        YaST2 - Czech Translations
 Group:          System/YaST
 Provides:       locale(yast2:cs)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description cs
 YaST2 - Czech translations.
@@ -130,7 +132,7 @@ YaST2 - Czech translations.
 Summary:        YaST2 - Welsh Translations
 Group:          System/YaST
 Provides:       locale(yast2:cy)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description cy
 YaST2 - Welsh translations.
@@ -139,7 +141,7 @@ YaST2 - Welsh translations.
 Summary:        YaST2 - Danish Translations
 Group:          System/YaST
 Provides:       locale(yast2:da)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description da
 YaST2 - Translations for Danish.
@@ -148,7 +150,7 @@ YaST2 - Translations for Danish.
 Summary:        YaST2 - German Translations
 Group:          System/YaST
 Provides:       locale(yast2:de)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description de
 YaST2 - German translations.
@@ -157,25 +159,16 @@ YaST2 - German translations.
 Summary:        YaST2 - Greek Translations
 Group:          System/YaST
 Provides:       locale(yast2:el)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description el
 YaST2 - Translations for Greek.
-
-%package en
-Summary:        YaST2 - English Translations
-Group:          System/YaST
-Provides:       locale(yast2:en)
-Url:            http://l10n.opensuse.org/
-
-%description en
-YaST2 - English Translations.
 
 %package eo
 Summary:        YaST2 - Esperanto Translations
 Group:          System/YaST
 Provides:       locale(yast2:eo)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description eo
 YaST2 - Esperanto Translations.
@@ -184,7 +177,7 @@ YaST2 - Esperanto Translations.
 Summary:        YaST2 - Spanish Translations
 Group:          System/YaST
 Provides:       locale(yast2:es)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description es
 YaST2 - Spanish Translations.
@@ -193,7 +186,7 @@ YaST2 - Spanish Translations.
 Summary:        YaST2 - Spanish (Argentina) Translations
 Group:          System/YaST
 Provides:       locale(yast2:es_AR)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description es_AR
 YaST2 - Spanish (Argentina) Translations.
@@ -202,7 +195,7 @@ YaST2 - Spanish (Argentina) Translations.
 Summary:        YaST2 - Estonian Translations
 Group:          System/YaST
 Provides:       locale(yast2:et)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description et
 YaST2 - Translations for Estonian.
@@ -211,7 +204,7 @@ YaST2 - Translations for Estonian.
 Summary:        YaST2 - Esperanto Translations
 Group:          System/YaST
 Provides:       locale(yast2:eu)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description eu
 YaST2 - Translations for Esperanto.
@@ -220,7 +213,7 @@ YaST2 - Translations for Esperanto.
 Summary:        YaST2 - Persian Translations
 Group:          System/YaST
 Provides:       locale(yast2:fa)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description fa
 YaST2 - Persian Translations.
@@ -229,7 +222,7 @@ YaST2 - Persian Translations.
 Summary:        YaST2 - Finnish Translations
 Group:          System/YaST
 Provides:       locale(yast2:fi)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description fi
 YaST2 - Finnish translations.
@@ -238,7 +231,7 @@ YaST2 - Finnish translations.
 Summary:        YaST2 - French Translations
 Group:          System/YaST
 Provides:       locale(yast2:fr)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description fr
 YaST2 - Translations for French.
@@ -247,7 +240,7 @@ YaST2 - Translations for French.
 Summary:        YaST2 - Galician Translations
 Group:          System/YaST
 Provides:       locale(yast2:gl)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description gl
 YaST2 - Galician translations.
@@ -256,7 +249,7 @@ YaST2 - Galician translations.
 Summary:        YaST2 - Gujarati Translations
 Group:          System/YaST
 Provides:       locale(yast2:gu)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description gu
 YaST2 - Translations for Gujarati.
@@ -265,7 +258,7 @@ YaST2 - Translations for Gujarati.
 Summary:        YaST2 - Hebrew Translations
 Group:          System/YaST
 Provides:       locale(yast2:he)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description he
 YaST2 - Translations for Hebrew.
@@ -274,7 +267,7 @@ YaST2 - Translations for Hebrew.
 Summary:        YaST2 - Hindi Translations
 Group:          System/YaST
 Provides:       locale(yast2:hi)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description hi
 YaST2 - Translations for Hindi.
@@ -283,7 +276,7 @@ YaST2 - Translations for Hindi.
 Summary:        YaST2 - Croatian Translations
 Group:          System/YaST
 Provides:       locale(yast2:hr)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description hr
 YaST2 - Croatian Translations.
@@ -292,7 +285,7 @@ YaST2 - Croatian Translations.
 Summary:        YaST2 - Hungarian Translations
 Group:          System/YaST
 Provides:       locale(yast2:hu)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description hu
 YaST2 - Hungarian translations.
@@ -301,7 +294,7 @@ YaST2 - Hungarian translations.
 Summary:        YaST2 - Indonesian Translations
 Group:          System/YaST
 Provides:       locale(yast2:id)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description id
 YaST2 - Indonesian Translations.
@@ -310,7 +303,7 @@ YaST2 - Indonesian Translations.
 Summary:        YaST2 - Italian Translations
 Group:          System/YaST
 Provides:       locale(yast2:it)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description it
 YaST2 - translations for Italian.
@@ -319,7 +312,7 @@ YaST2 - translations for Italian.
 Summary:        YaST2 - Japanese Translations
 Group:          System/YaST
 Provides:       locale(yast2:ja)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description ja
 YaST2 - Japanese translations.
@@ -328,7 +321,7 @@ YaST2 - Japanese translations.
 Summary:        YaST2 - Javanese Translations
 Group:          System/YaST
 Provides:       locale(yast2:jv)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description jv
 YaST2 - Translations for Javanese.
@@ -337,7 +330,7 @@ YaST2 - Translations for Javanese.
 Summary:        YaST2 - Georgian Translations
 Group:          System/YaST
 Provides:       locale(yast2:ka)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description ka
 YaST2 - Translations for Georgian.
@@ -346,7 +339,7 @@ YaST2 - Translations for Georgian.
 Summary:        YaST2 - Kabyle Translations
 Group:          System/YaST
 Provides:       locale(yast2:kab)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description kab
 YaST2 - Translations for Kabyle.
@@ -355,7 +348,7 @@ YaST2 - Translations for Kabyle.
 Summary:        YaST2 - Khmer Translations
 Group:          System/YaST
 Provides:       locale(yast2:km)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description km
 YaST2 - Translations for Khmer.
@@ -364,7 +357,7 @@ YaST2 - Translations for Khmer.
 Summary:        YaST2 - Kannada Translations
 Group:          System/YaST
 Provides:       locale(yast2:ka)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description kn
 YaST2 - Translations for Kannada.
@@ -373,7 +366,7 @@ YaST2 - Translations for Kannada.
 Summary:        YaST2 - Korean Translations
 Group:          System/YaST
 Provides:       locale(yast2:ko)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description ko
 YaST2 - Translations for Korean.
@@ -382,7 +375,7 @@ YaST2 - Translations for Korean.
 Summary:        YaST2 - Kurdish Translations
 Group:          System/YaST
 Provides:       locale(yast2:ku)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description ku
 YaST2 - Kurdish Translations.
@@ -391,7 +384,7 @@ YaST2 - Kurdish Translations.
 Summary:        YaST2 - Lao Translations
 Group:          System/YaST
 Provides:       locale(yast2:lo)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description lo
 YaST2 - Translations for Lao.
@@ -400,7 +393,7 @@ YaST2 - Translations for Lao.
 Summary:        YaST2 - Lithuanian Translations
 Group:          System/YaST
 Provides:       locale(yast2:lt)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description lt
 YaST2 - Translations for Lithuanian.
@@ -409,7 +402,7 @@ YaST2 - Translations for Lithuanian.
 Summary:        YaST2 - Latvian Translations
 Group:          System/YaST
 Provides:       locale(yast2:lv)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description lv
 YaST2 - Translations for Latvian.
@@ -418,7 +411,7 @@ YaST2 - Translations for Latvian.
 Summary:        YaST2 - Macedonian Translations
 Group:          System/YaST
 Provides:       locale(yast2:mk)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description mk
 YaST2 - Translations for Macedonian.
@@ -427,7 +420,7 @@ YaST2 - Translations for Macedonian.
 Summary:        YaST2 - Marathi Translations
 Group:          System/YaST
 Provides:       locale(yast2:mr)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description mr
 YaST2 - Translations for Marathi.
@@ -436,7 +429,7 @@ YaST2 - Translations for Marathi.
 Summary:        YaST2 - Malay Translations
 Group:          System/YaST
 Provides:       locale(yast2:ms)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description ms
 YaST2 - Translations for Malay.
@@ -445,7 +438,7 @@ YaST2 - Translations for Malay.
 Summary:        YaST2 - Burmese Translations
 Group:          System/YaST
 Provides:       locale(yast2:my)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description my
 YaST2 - Translations for Burmese.
@@ -454,7 +447,7 @@ YaST2 - Translations for Burmese.
 Summary:        YaST2 - Norwegian Bokmål Translations
 Group:          System/YaST
 Provides:       locale(yast2:nb)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description nb
 YaST2 - Translations for Norwegian Bokmål.
@@ -463,7 +456,7 @@ YaST2 - Translations for Norwegian Bokmål.
 Summary:        YaST2 - Low Saxonian Translations
 Group:          System/YaST
 Provides:       locale(yast2:nds)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description nds
 YaST2 - Translations for Low Saxonian.
@@ -472,7 +465,7 @@ YaST2 - Translations for Low Saxonian.
 Summary:        YaST2 - Nepali Translations
 Group:          System/YaST
 Provides:       locale(yast2:ne)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description ne
 YaST2 - Translations for Nepali.
@@ -481,7 +474,7 @@ YaST2 - Translations for Nepali.
 Summary:        YaST2 - Dutch Translations
 Group:          System/YaST
 Provides:       locale(yast2:nl)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description nl
 YaST2 - Translations for Dutch.
@@ -490,7 +483,7 @@ YaST2 - Translations for Dutch.
 Summary:        YaST2 - Norwegian Nynorsk
 Group:          System/YaST
 Provides:       locale(yast2:nn)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description nn
 YaST2 - Translations for Norwegian Nynorsk.
@@ -499,7 +492,7 @@ YaST2 - Translations for Norwegian Nynorsk.
 Summary:        YaST2 - Punjabi Translations
 Group:          System/YaST
 Provides:       locale(yast2:pa)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description pa
 Translations for Punjabi.
@@ -508,7 +501,7 @@ Translations for Punjabi.
 Summary:        YaST2 - Polish Translations
 Group:          System/YaST
 Provides:       locale(yast2:pl)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description pl
 YaST2 - Translations for Polish.
@@ -517,7 +510,7 @@ YaST2 - Translations for Polish.
 Summary:        YaST2 - Pashto Translations
 Group:          System/YaST
 Provides:       locale(yast2:ps)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description ps
 YaST2 - Translations for Pashto.
@@ -526,7 +519,7 @@ YaST2 - Translations for Pashto.
 Summary:        YaST2 - Portuguese Translations
 Group:          System/YaST
 Provides:       locale(yast2:pt)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description pt
 YaST2 - Translations for Portuguese.
@@ -535,7 +528,7 @@ YaST2 - Translations for Portuguese.
 Summary:        YaST2 - Romanian Translations
 Group:          System/YaST
 Provides:       locale(yast2:ro)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description ro
 YaST2 - Translations for Romanian.
@@ -544,7 +537,7 @@ YaST2 - Translations for Romanian.
 Summary:        YaST2 - Russian Translations
 Group:          System/YaST
 Provides:       locale(yast2:ru)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description ru
 YaST2 - Translations for Russian.
@@ -553,7 +546,7 @@ YaST2 - Translations for Russian.
 Summary:        YaST2 - Sinhala Translations
 Group:          System/YaST
 Provides:       locale(yast2:si)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description si
 YaST2 - Translations for Sinhala.
@@ -562,7 +555,7 @@ YaST2 - Translations for Sinhala.
 Summary:        YaST2 - Slovak Translations
 Group:          System/YaST
 Provides:       locale(yast2:sk)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description sk
 YaST2 - Slovak Translations.
@@ -571,7 +564,7 @@ YaST2 - Slovak Translations.
 Summary:        YaST2 - Slovene Translations
 Group:          System/YaST
 Provides:       locale(yast2:sl)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description sl
 YaST2 - Translations for Slovene.
@@ -580,7 +573,7 @@ YaST2 - Translations for Slovene.
 Summary:        YaST2 - Albanian Translations
 Group:          System/YaST
 Provides:       locale(yast2:sq)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description sq
 YaST2 - Translations for Albanian.
@@ -589,7 +582,7 @@ YaST2 - Translations for Albanian.
 Summary:        YaST2 - Serbian Translations
 Group:          System/YaST
 Provides:       locale(yast2:sr)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description sr
 YaST2 - Translations for Serbian.
@@ -599,7 +592,7 @@ Summary:        YaST2 - Serbian (Latin) Translations
 Group:          System/YaST
 Provides:       locale(yast2:sr@latin)
 Obsoletes:      yast2-trans-sr-latin
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description sr-latin
 YaST2 - Translations for Serbian (Latin).
@@ -608,7 +601,7 @@ YaST2 - Translations for Serbian (Latin).
 Summary:        YaST2 - Swedish Translations
 Group:          System/YaST
 Provides:       locale(yast2:sv)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description sv
 YaST2 - Translations for Swedish.
@@ -617,7 +610,7 @@ YaST2 - Translations for Swedish.
 Summary:        YaST2 - Swahili Translations
 Group:          System/YaST
 Provides:       locale(yast2:sw)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description sw
 YaST2 - Translations for Swahili.
@@ -626,7 +619,7 @@ YaST2 - Translations for Swahili.
 Summary:        YaST2 - Tamil Translations
 Group:          System/YaST
 Provides:       locale(yast2:ta)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description ta
 YaST2 - Tamil translations.
@@ -635,7 +628,7 @@ YaST2 - Tamil translations.
 Summary:        YaST2 - Tajik Translations
 Group:          System/YaST
 Provides:       locale(yast2:tg)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description tg
 YaST2 - Tajik translations.
@@ -644,7 +637,7 @@ YaST2 - Tajik translations.
 Summary:        YaST2 - Thai Translations
 Group:          System/YaST
 Provides:       locale(yast2:th)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description th
 YaST2 - Thai translations.
@@ -653,7 +646,7 @@ YaST2 - Thai translations.
 Summary:        YaST2 -  Turkmen Translations
 Group:          System/YaST
 Provides:       locale(yast2:tk)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description tk
 YaST2 - Translations for Turkmen.
@@ -662,7 +655,7 @@ YaST2 - Translations for Turkmen.
 Summary:        YaST2 - Turkish Translations
 Group:          System/YaST
 Provides:       locale(yast2:tr)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description tr
 YaST2 - Translations for Turkish.
@@ -671,7 +664,7 @@ YaST2 - Translations for Turkish.
 Summary:        YaST2 - Ukrainian Translations
 Group:          System/YaST
 Provides:       locale(yast2:uk)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description uk
 YaST2 - Translations for Ukrainian.
@@ -680,7 +673,7 @@ YaST2 - Translations for Ukrainian.
 Summary:        YaST2 - Vietnamese Translations
 Group:          System/YaST
 Provides:       locale(yast2:vi)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description vi
 YaST2 - Translations for Vietnamese.
@@ -689,7 +682,7 @@ YaST2 - Translations for Vietnamese.
 Summary:        YaST2 - Walloon Translations
 Group:          System/YaST
 Provides:       locale(yast2:wa)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description wa
 YaST2 - Translations for Walloon.
@@ -698,7 +691,7 @@ YaST2 - Translations for Walloon.
 Summary:        YaST2 - Xhosa Translations
 Group:          System/YaST
 Provides:       locale(yast2:xh)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description xh
 YaST2 - Translations for Xhosa.
@@ -707,7 +700,7 @@ YaST2 - Translations for Xhosa.
 Summary:        YaST2 - Zulu Translations
 Group:          System/YaST
 Provides:       locale(yast2:zu)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description zu
 YaST2 - Translations for Zulu.
@@ -716,25 +709,16 @@ YaST2 - Translations for Zulu.
 Summary:        YaST2 - British English Translations
 Group:          System/YaST
 Provides:       locale(yast2:en_GB)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description en_GB
 YaST2 - Translations for British English.
-
-%package en_US
-Summary:        YaST2 - Translations
-Group:          System/YaST
-Provides:       locale(yast2:en_US)
-Url:            http://l10n.opensuse.org/
-
-%description en_US
-YaST2 - Translations for American English.
 
 %package pt_BR
 Summary:        YaST2 - Brazilian Portuguese Translations
 Group:          System/YaST
 Provides:       locale(yast2:pt_BR)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description pt_BR
 YaST2 - Translations for Brazilian Portuguese.
@@ -743,7 +727,7 @@ YaST2 - Translations for Brazilian Portuguese.
 Summary:        YaST2 - Simplified Chinese Translations
 Group:          System/YaST
 Provides:       locale(yast2:zh_CN)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description zh_CN
 YaST2 - Simplified Chinese translations.
@@ -752,7 +736,7 @@ YaST2 - Simplified Chinese translations.
 Summary:        YaST2 - Traditional Chinese Translations
 Group:          System/YaST
 Provides:       locale(yast2:zh_TW)
-Url:            http://l10n.opensuse.org/
+URL:            http://l10n.opensuse.org/
 
 %description zh_TW
 YaST2 - Translations for Traditional Chinese.
@@ -865,11 +849,6 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-el
 %lang(el) %{_datadir}/YaST2/locale/el
-
-%files en
-%defattr(-,root,root)
-%doc %{_docdir}/yast2-trans-en
-%lang(en) %{_datadir}/YaST2/locale/en
 
 %files eo
 %defattr(-,root,root)
@@ -1175,11 +1154,6 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc %{_docdir}/yast2-trans-en_GB
 %lang(en_GB) %{_datadir}/YaST2/locale/en_GB
-
-%files en_US
-%defattr(-,root,root)
-%doc %{_docdir}/yast2-trans-en_US
-%lang(en_US) %{_datadir}/YaST2/locale/en_US
 
 %files pt_BR
 %defattr(-,root,root)

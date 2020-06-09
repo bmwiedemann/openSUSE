@@ -1,4 +1,828 @@
 -------------------------------------------------------------------
+Mon Jun 08 05:13:40 UTC 2020 - git@opensuse.org
+
+- Update to version 84.87.20200606.1c5278cf88:
+  * New POT for text domain 'autoinst'.
+  * New POT for text domain 'update'.
+
+-------------------------------------------------------------------
+Mon Jun 01 05:12:58 UTC 2020 - git@opensuse.org
+
+- Update to version 84.87.20200530.5097ac412c:
+  * New POT for text domain 'storage'.
+  * New POT for text domain 'network'.
+  * New POT for text domain 'firewall'.
+  * New POT for text domain 'autoinst'.
+  * New POT for text domain 'registration'.
+  * New POT for text domain 'gtk'.
+  * New POT for text domain 'base'.
+  * New POT for text domain 'autoinst'.
+
+-------------------------------------------------------------------
+Thu May 28 14:43:59 UTC 2020 - git@opensuse.org
+
+- Update to version 84.87.20200526.c3c3aee240:
+  * New POT for text domain 'sysconfig'.
+  * New POT for text domain 'configuration_management'.
+
+-------------------------------------------------------------------
+Mon May 25 05:12:56 UTC 2020 - git@opensuse.org
+
+- Update to version 84.87.20200523.8f5cee73fd:
+  * New POT for text domain 'network'.
+  * New POT for text domain 'autoinst'.
+  * New POT for text domain 'autoinst'.
+  * New POT for text domain 'qt-pkg'.
+  * New POT for text domain 'qt'.
+  * New POT for text domain 'iscsi-client'.
+  * New POT for text domain 'base'.
+
+-------------------------------------------------------------------
+Wed May 20 07:23:08 UTC 2020 - git@opensuse.org
+
+- Update to version 84.87.20200520.6056e0e314:
+  * Resolved conflict
+  * New POT for text domain 'qt-pkg'.
+  * New POT for text domain 'ncurses-pkg'.
+  * New POT for text domain 'storage'.
+  * New POT for text domain 'autoinst'.
+  * New POT for text domain 'users'.
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * New POT for text domain 'rmt'.
+  * New POT for text domain 'nfs'.
+  * Translated using Weblate (Thai)
+  * Translated using Weblate (Thai)
+  * Translated using Weblate (Thai)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Portuguese)
+  * Translated using Weblate (Portuguese)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Hindi)
+  * Translated using Weblate (Hindi)
+  * Translated using Weblate (Hindi)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * New POT for text domain 'vpn'.
+  * New POT for text domain 'users'.
+  * New POT for text domain 'update'.
+  * New POT for text domain 'tune'.
+  * New POT for text domain 'tftp-server'.
+  * New POT for text domain 'sysconfig'.
+  * New POT for text domain 'support'.
+  * New POT for text domain 'sudo'.
+  * New POT for text domain 'storage'.
+  * New POT for text domain 'squid'.
+  * New POT for text domain 'sound'.
+  * New POT for text domain 'snapper'.
+  * New POT for text domain 'slp-server'.
+  * New POT for text domain 'services-manager'.
+  * New POT for text domain 'security'.
+  * New POT for text domain 'scanner'.
+  * New POT for text domain 'samba-server'.
+  * New POT for text domain 'samba-client'.
+  * New POT for text domain 's390'.
+  * New POT for text domain 'registration'.
+  * New POT for text domain 'rear'.
+  * New POT for text domain 'proxy'.
+  * New POT for text domain 'printer'.
+  * New POT for text domain 'pam'.
+  * New POT for text domain 'packager'.
+  * New POT for text domain 'online-update-configuration'.
+  * New POT for text domain 'online-update'.
+  * New POT for text domain 'oneclickinstall'.
+  * New POT for text domain 'ntp-client'.
+  * New POT for text domain 'nis_server'.
+  * New POT for text domain 'nis'.
+  * New POT for text domain 'nfs_server'.
+  * New POT for text domain 'nfs'.
+  * New POT for text domain 'network'.
+  * New POT for text domain 'migration'.
+  * New POT for text domain 'mail'.
+  * New POT for text domain 'ldap-client'.
+  * New POT for text domain 'ldap'.
+  * New POT for text domain 'kdump'.
+  * New POT for text domain 'journalctl'.
+  * New POT for text domain 'journal'.
+  * New POT for text domain 'isns'.
+  * New POT for text domain 'iscsi-lio-server'.
+  * New POT for text domain 'iscsi-client'.
+  * New POT for text domain 'instserver'.
+  * New POT for text domain 'installation'.
+  * New POT for text domain 'http-server'.
+  * New POT for text domain 'ftp-server'.
+  * New POT for text domain 'firewall'.
+  * New POT for text domain 'fcoe-client'.
+  * New POT for text domain 'drbd'.
+  * New POT for text domain 'docker'.
+  * New POT for text domain 'dns-server'.
+  * New POT for text domain 'dhcp-server'.
+  * New POT for text domain 'crowbar'.
+  * New POT for text domain 'country'.
+  * New POT for text domain 'configuration_management'.
+  * New POT for text domain 'cluster'.
+  * New POT for text domain 'cio'.
+  * New POT for text domain 'caasp'.
+  * New POT for text domain 'bootloader'.
+  * New POT for text domain 'base'.
+  * New POT for text domain 'autoinst'.
+  * New POT for text domain 'authserver'.
+  * New POT for text domain 'auth-client'.
+  * New POT for text domain 'audit-laf'.
+  * New POT for text domain 'apparmor'.
+  * New POT for text domain 'add-on'.
+  * Added translation using Weblate (Catalan)
+  * New POT for text domain 'control'.
+
+-------------------------------------------------------------------
+Mon May 11 05:12:48 UTC 2020 - git@opensuse.org
+
+- Update to version 84.87.20200508.5453c0354f:
+  * New POT for text domain 'base'.
+  * Translated using Weblate (Indonesian)
+  * New POT for text domain 'autoinst'.
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Thai)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Added translation using Weblate (Catalan)
+
+-------------------------------------------------------------------
+Mon May 04 05:12:36 UTC 2020 - git@opensuse.org
+
+- Update to version 84.87.20200428.e19abccf99:
+  * Fixed string interpolations
+
+-------------------------------------------------------------------
+Mon Apr 27 05:12:34 UTC 2020 - git@opensuse.org
+
+- Update to version 84.87.20200423.c909ae4466:
+  * New POT for text domain 'storage'.
+  * New POT for text domain 'packager'.
+  * New POT for text domain 'network'.
+
+-------------------------------------------------------------------
+Mon Apr 20 05:12:50 UTC 2020 - git@opensuse.org
+
+- Update to version 84.87.20200418.b0c6b54fb8:
+  * New POT for text domain 'storage'.
+  * New POT for text domain 'network'.
+  * New POT for text domain 'control'.
+  * New POT for text domain 'storage'.
+  * New POT for text domain 'bootloader'.
+  * New POT for text domain 'iscsi-lio-server'.
+  * New POT for text domain 'cluster'.
+  * New POT for text domain 'base'.
+
+-------------------------------------------------------------------
+Mon Apr 13 05:13:14 UTC 2020 - git@opensuse.org
+
+- Update to version 84.87.20200409.2e12144f97:
+  * New POT for text domain 'packager'.
+  * New POT for text domain 'iscsi-lio-server'.
+  * New POT for text domain 'control'.
+  * New POT for text domain 'storage'.
+  * New POT for text domain 'dhcp-server'.
+
+-------------------------------------------------------------------
+Mon Apr 06 05:13:03 UTC 2020 - git@opensuse.org
+
+- Update to version 84.87.20200404.27b067da26:
+  * New POT for text domain 'base'.
+  * New POT for text domain 'security'.
+  * New POT for text domain 's390'.
+  * New POT for text domain 'configuration_management'.
+
+-------------------------------------------------------------------
+Mon Mar 30 05:13:08 UTC 2020 - git@opensuse.org
+
+- Update to version 84.87.20200328.a4cebef694:
+  * New POT for text domain 'network'.
+  * New POT for text domain 'bootloader'.
+  * New POT for text domain 'storage'.
+  * New POT for text domain 'registration'.
+  * New POT for text domain 'packager'.
+  * New POT for text domain 'qt-pkg'.
+  * New POT for text domain 'network'.
+  * New POT for text domain 'bootloader'.
+  * New POT for text domain 's390'.
+  * New POT for text domain 'registration'.
+  * New POT for text domain 'ntp-client'.
+  * New POT for text domain 'firewall'.
+
+-------------------------------------------------------------------
+Mon Mar 23 05:14:33 UTC 2020 - git@opensuse.org
+
+- Update to version 84.87.20200321.fdfcc500d6:
+  * New POT for text domain 'storage'.
+  * New POT for text domain 'registration'.
+  * New POT for text domain 'installation'.
+  * New POT for text domain 'control'.
+  * New POT for text domain 'ntp-client'.
+  * New POT for text domain 'registration'.
+  * New POT for text domain 'packager'.
+  * New POT for text domain 'network'.
+  * New POT for text domain 'installation'.
+  * New POT for text domain 'control'.
+
+-------------------------------------------------------------------
+Mon Mar 16 05:13:02 UTC 2020 - git@opensuse.org
+
+- Update to version 84.87.20200314.c9b7814b34:
+  * New POT for text domain 'users'.
+  * New POT for text domain 'update'.
+  * New POT for text domain 'storage'.
+  * New POT for text domain 'iscsi-lio-server'.
+  * New POT for text domain 'installation'.
+  * New POT for text domain 'firstboot'.
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Albanian)
+
+-------------------------------------------------------------------
+Thu Mar 12 02:37:27 UTC 2020 - git@opensuse.org
+
+- Update to version 84.87.20200312.cfc23cf7a4:
+  * POT updates.
+  * Translation updates.
+  * Drop obsolete en_US.po files (bsc#1084015).
+  * Remove bogus po/auth-client/en.po (bsc#1163437).
+- Drop yast2-trans-en and yast2-trans-en_US.
+
+-------------------------------------------------------------------
 Mon Feb 17 05:13:07 UTC 2020 - git@opensuse.org
 
 - Update to version 84.87.20200217.775c690a81:
