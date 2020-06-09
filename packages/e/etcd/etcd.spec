@@ -1,7 +1,7 @@
 #
 # spec file for package etcd
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,38 +12,35 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define project go.etcd.io/etcd
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-%define project go.etcd.io/etcd
-
 Name:           etcd
 Version:        3.4.3
 Release:        0
 Summary:        Highly-available key value store for configuration and service discovery
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://github.com/coreos/etcd
+URL:            https://github.com/etcd-io/etcd
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source11:       %{name}.conf
 Source12:       %{name}.service
 Source15:       README.security
+BuildRequires:  go1.12 >= 1.12.9
+BuildRequires:  golang(API) = 1.12
 BuildRequires:  golang-packaging
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
-BuildRequires:  golang(API) = 1.12
-BuildRequires:  go1.12 >= 1.12.9
-ExcludeArch:    %ix86
 Requires(post): %fillup_prereq
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExcludeArch:    s390
+ExcludeArch:    s390 %ix86
 %{?systemd_requires}
 %{go_provides}
 # Make sure that the binary is not getting stripped.
@@ -123,9 +120,8 @@ getent passwd %{name} >/dev/null || %{_sbindir}/useradd -r -g %{name} -d %{_loca
 %service_del_postun %{name}.service
 
 %files
-%defattr(-,root,root)
-%doc CONTRIBUTING.md README.md DCO NOTICE README.security
 %license LICENSE
+%doc CONTRIBUTING.md README.md DCO NOTICE README.security
 %{_sbindir}/%{name}
 
 # Service
@@ -139,7 +135,6 @@ getent passwd %{name} >/dev/null || %{_sbindir}/useradd -r -g %{name} -d %{_loca
 %dir %attr(0750,%{name},%{name}) %{_localstatedir}/lib/%{name}
 
 %files -n etcdctl
-%defattr(-,root,root)
 %{_bindir}/etcdctl
 
 %changelog
