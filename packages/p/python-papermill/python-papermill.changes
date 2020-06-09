@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  9 08:34:04 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.1.1:
+  * Support for python 3.5 has been dropped
+  * Error cells injected at the top of failed notebooks look nicer now as markdown.
+  * DeadKernelExceptions, usually from OOM, now exit with a status code of 138 from the CLI.
+  * Error cell at the top of failed notebook has been made better. It now also has a link to an injected cell where the error occurred.
+  * Updated a deprecated function to the new function name for nbclient dependency.
+
+-------------------------------------------------------------------
 Wed May 20 07:26:04 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
