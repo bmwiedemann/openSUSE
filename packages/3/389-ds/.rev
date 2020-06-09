@@ -362,4 +362,12 @@
   * Issue 51027 - Test passwordHistory is not rewritten on a fail attempt (forwarded request 802797 from firstyear)</comment>
     <requestid>802944</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>757df95f4944850ce901296456bdb478</srcmd5>
+    <version>1.4.4.3~git0.7b79b89c1</version>
+    <time>1591742827</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>812366</requestid>
+  </revision>
 </revisionlist>

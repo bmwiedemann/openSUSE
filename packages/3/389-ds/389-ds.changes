@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun May 31 23:52:49 UTC 2020 - wbrown@suse.de
+
+- Update to version 1.4.4.3~git0.7b79b89c1:
+  * Bump version to 1.4.4.3
+  * Issue 50931 - RFE AD filter rewriter for ObjectCategory
+  * Issue: 50860 - Port Password Policy test cases from TET to python3 part1
+  * Issue 51113 - Allow using uid for replication manager entry
+  * Issue 51095 - abort operation if CSN can not be generated
+  * Issue 51110 - Fix ASAN ODR warnings
+  * Issue 49850 -ldbm_get_nonleaf_ids() painfully slow for databases with many non-leaf entries
+  * Issue 51102 - RFE - ds-replcheck - make online timeout configurable
+  * Issue 51076 - remove unnecessary slapi entry dups
+  * Issue 51086 - Improve dscreate instance name validation
+  * Issue:51070 - Port Import TET module to python3 part1
+  * Ticket 51037 - compiler warning
+  * Ticket 50989 - ignore pid when it is ourself in protect_db
+  * Ticket 51037 - RFE AD filter rewriter for ObjectSID
+  * Issue 50499 - Fix some npm audit issues
+  * Issue 51091 - healthcheck json report fails when mapping tree is deleted
+  * Ticket 51079 - container pid start and stop issues
+  * Revert "Issue 51017 - Implement dynamic ds/bz pytest markers"
+  * Issue 49761 - Fix CI tests
+  * Issue 50610 - Fix return code when it's nothing to free
+  * Issue 50610 - memory leaks in dbscan and changelog encryption
+  * Issue 51076 - prevent unnecessarily duplication of the target entry
+  * Issue 50940 - Permissions of some shipped directories may change over time
+  * Issue 50873 - Fix issues with healthcheck tool
+  * Issue 51017 - Implement dynamic ds/bz pytest markers
+  * Ticket 51082 - abort when a empty valueset is freed
+  * Issue:CI test - automember_plugin (Long Duration test)
+  * Issue 50201 - nsIndexIDListScanLimit accepts any value
+
+-------------------------------------------------------------------
 Tue May 12 01:21:03 UTC 2020 - wbrown@suse.de
 
 - Update to version 1.4.4.2~git0.debc684ad:
