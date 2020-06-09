@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jun  8 08:15:26 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- AutoYaST: Udev rules are written or copied to the target system
+  properly when defined in the profile (bsc#1169663).
+- AutoYaST: Fixed the copy or merge of the linuxrc interfaces
+  configuration when the installation network configuration is
+  selected to be kept.
+- 4.3.3
+
+-------------------------------------------------------------------
+Wed May 20 14:07:13 UTC 2020 - schubi@suse.de
+
+- AutoYaST: Cleanup/improve issue handling (bsc#1171335).
+- 4.3.2
+
+-------------------------------------------------------------------
+Wed May 20 13:07:13 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- AutoYaST: Adapted the module to handle a complete network
+  configuration during the first stage (bsc#1171922)
+- 4.3.1
+
+-------------------------------------------------------------------
 Tue May 12 13:08:03 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Autoyast schema: Allow optional types for string and map objects
