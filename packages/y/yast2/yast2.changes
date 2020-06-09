@@ -1,8 +1,61 @@
 -------------------------------------------------------------------
+Fri Jun  5 15:13:42 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Improve actions to stop and start a system service.
+- Related to bsc#1162514.
+- 4.3.5
+
+-------------------------------------------------------------------
+Thu Jun  4 13:16:21 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Drop anyxml agent to unify used xml parsers. All usage replaced
+  by rubygem-nokogiri
+  (related to bsc#1170886)
+- 4.3.4
+
+-------------------------------------------------------------------
+Mon Jun  1 08:45:51 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Improved XML validation, raise exception for not well formed
+  documents (related to bsc#1170886)
+- 4.3.3
+
+-------------------------------------------------------------------
+Fri May 29 05:21:09 UTC 2020 - schubi@suse.de
+
+- autoinst_issues/list.add : Fixed documentation.
+  (bsc#1171335).
+
+-------------------------------------------------------------------
+Mon May 18 10:21:09 UTC 2020 - schubi@suse.de
+
+- autoinst_issues/list.add : Changed first parameter from tag to
+  classes (bsc#1171335).
+- Added general AY issue classes: InvalidValue, MissingValue
+- 4.3.2
+
+-------------------------------------------------------------------
+Mon May 18 08:21:09 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Restore back the perl-XML-Simple dependency, it is needed for
+  ag_anyxml (related to bsc#1170886)
+- 4.3.1
+
+-------------------------------------------------------------------
+Thu May 14 07:32:16 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Re-implement XML parser (bsc#1170886):
+-- use as backend nokogiri instead of hand written libxml2 wrapper
+-- Use exceptions instead of silently ignoring issues
+-- export map as type to xml
+-- add new method #validate to validate against relax-ng schema
+- 4.3.0
+
+-------------------------------------------------------------------
 Wed May  6 17:43:51 CEST 2020 - schubi@suse.de
 
 - AutoYaST: Cleanup/improve issue handling (bsc#1171335).
-- 4.2.84 
+- 4.2.84
 
 -------------------------------------------------------------------
 Fri Apr 24 14:53:03 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
@@ -133,7 +186,7 @@ Mon Feb 17 17:59:07 UTC 2020 - schubi@suse.de
 
 - SysctlConfig class: Handle sysctl entries in different
   directories (bsc#1151649).
-- 4.2.66  
+- 4.2.66
 
 -------------------------------------------------------------------
 Mon Feb 17 16:59:07 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
