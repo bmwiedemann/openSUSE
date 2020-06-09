@@ -1,0 +1,86 @@
+--- a/python/subunit/tests/test_test_protocol.py
++++ b/python/subunit/tests/test_test_protocol.py
+@@ -16,10 +16,9 @@
+ 
+ import datetime
+ import io
+-import unittest2 as unittest
+ import os
+-import sys
+ import tempfile
++import unittest
+ 
+ from testtools import PlaceHolder, skipIf, TestCase, TestResult
+ from testtools.compat import _b, _u, BytesIO
+@@ -38,6 +37,7 @@ except ImportError:
+         ExtendedTestResult,
+         )
+ from testtools.matchers import Contains
++from testtools.testcase import six
+ 
+ import subunit
+ from subunit.tests import (
+@@ -60,7 +60,7 @@ class TestHelpers(TestCase):
+         fd, file_path = tempfile.mkstemp()
+         self.addCleanup(os.remove, file_path)
+         fake_file = os.fdopen(fd, 'r')
+-        if sys.version_info > (3, 0):
++        if six.PY3:
+             self.assertEqual(fake_file.buffer,
+                              subunit._unwrap_text(fake_file))
+         else:
+@@ -70,7 +70,7 @@ class TestHelpers(TestCase):
+         fd, file_path = tempfile.mkstemp()
+         self.addCleanup(os.remove, file_path)
+         fake_file = os.fdopen(fd, 'w')
+-        if sys.version_info > (3, 0):
++        if six.PY3:
+             self.assertEqual(fake_file.buffer,
+                              subunit._unwrap_text(fake_file))
+         else:
+@@ -152,13 +152,20 @@ class TestTestProtocolServerPipe(unittes
+         protocol.readFrom(pipe)
+         bing = subunit.RemotedTestCase("bing crosby")
+         an_error = subunit.RemotedTestCase("an error")
+-        self.assertEqual(
+-            client.errors,
+-            [(an_error, tb_prelude + _remote_exception_repr + '\n')])
+-        self.assertEqual(
+-            client.failures,
+-            [(bing, tb_prelude + _remote_exception_repr + ": "
+-              + details_to_str({'traceback': text_content(traceback)}) + "\n")])
++        if six.PY3:
++            self.assertEqual(client.errors,
++                             [(an_error, _remote_exception_repr + '\n')])
++            self.assertEqual(
++                client.failures,
++                [(bing, _remote_exception_repr + ": "
++                  + details_to_str({'traceback': text_content(traceback)}) + "\n")])
++        else:
++            self.assertEqual(client.errors,
++                             [(an_error, '_StringException\n')])
++            self.assertEqual(
++                client.failures,
++                [(bing, "_StringException: "
++                  + details_to_str({'traceback': text_content(traceback)}) + "\n")])
+         self.assertEqual(client.testsRun, 3)
+ 
+     def test_non_test_characters_forwarded_immediately(self):
+@@ -1012,9 +1019,14 @@ class TestRemotedTestCase(unittest.TestC
+                          "'A test description'>", "%r" % test)
+         result = unittest.TestResult()
+         test.run(result)
+-        self.assertEqual([(test, tb_prelude + _remote_exception_repr + ": "
+-                                 "Cannot run RemotedTestCases.\n\n")],
+-                         result.errors)
++        if six.PY3:
++            self.assertEqual([(test, _remote_exception_repr + ': ' +
++                                     "Cannot run RemotedTestCases.\n\n")],
++                             result.errors)
++        else:
++            self.assertEqual([(test, "_StringException: " +
++                                     "Cannot run RemotedTestCases.\n\n")],
++                             result.errors)
+         self.assertEqual(1, result.testsRun)
+         another_test = subunit.RemotedTestCase("A test description")
+         self.assertEqual(test, another_test)

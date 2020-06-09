@@ -55,4 +55,12 @@
     <comment></comment>
     <requestid>790156</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e53030c006d047b977fae0444c48bc4c</srcmd5>
+    <version>1.4.0+git.1584197985.0e9f67b</version>
+    <time>1591742012</time>
+    <user>dimstar_suse</user>
+    <comment>- Add remove_unittest2.patch to remove dependency on unittest2</comment>
+    <requestid>811713</requestid>
+  </revision>
 </revisionlist>

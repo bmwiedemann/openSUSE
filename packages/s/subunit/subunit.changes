@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  5 08:36:13 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_unittest2.patch to remove dependency on unittest2
+
+-------------------------------------------------------------------
 Tue Mar 31 09:44:25 UTC 2020 - mcepl@cepl.eu
 
 - Update to version 1.4.0+git.1584197985.0e9f67b:

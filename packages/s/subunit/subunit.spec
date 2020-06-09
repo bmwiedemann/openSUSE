@@ -33,6 +33,9 @@ Source99:       subunit-rpmlintrc
 # PATCH-FIX-UPSTREAM python38-failing-tests.patch mcepl@suse.com
 # skip tests failing with Python 3.8+
 Patch0:         python38-failing-tests.patch
+# patch-feature-upstream remove_unittest2.patch gh#testing-cabal/subunit#32 mcepl@suse.com
+# Remove dependency on unittest2
+Patch1:         remove_unittest2.patch
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module extras}
 BuildRequires:  %{python_module fixtures}
@@ -41,7 +44,6 @@ BuildRequires:  %{python_module iso8601}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testscenarios}
 BuildRequires:  %{python_module testtools >= 1.8.0}
-BuildRequires:  %{python_module unittest2}
 BuildRequires:  check-devel
 BuildRequires:  cppunit-devel
 BuildRequires:  fdupes
