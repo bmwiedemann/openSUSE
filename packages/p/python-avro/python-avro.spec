@@ -31,6 +31,8 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-python-snappy
 BuildArch:      noarch
 %python_subpackages
@@ -46,6 +48,7 @@ Avro is a serialization and RPC framework.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/avro
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -53,8 +56,14 @@ Avro is a serialization and RPC framework.
 #  E   ImportError: No module named set_avro_test_path
 #%%pytest
 
+%post
+%python_install_alternative avro
+
+%postun
+%python_uninstall_alternative avro
+
 %files %{python_files}
-%python3_only %{_bindir}/avro
+%python_alternative %{_bindir}/avro
 %{python_sitelib}/*
 
 %changelog
