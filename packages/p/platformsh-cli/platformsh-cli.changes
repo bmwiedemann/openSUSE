@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jun 09 18:55:18 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.57.0:
+  * Release v3.57.0
+  * Remove whitelist/blacklist from variable names
+  * Add file-level comment for config.yaml
+  * Show session info in auth:info, logout, login, and welcome commands
+  * Recommend login after switching sessions; report filename of invalid ID
+  * Fix not logged in error after switching session
+  * Improve SSH key commands
+  * Improve session:switch documentation
+  * Improve comment in session.config file
+  * Clean up Api service - remove getCache(), add some property documentation
+  * Fix running parent command after login
+  * Display the session ID when useful
+  * Add session:switch command
+  * Fix 403 errors when a non-current project is specified
+  * Silence deleting session include files when it's automatic
+  * Only add the default SSH identities if necessary
+  * Automatically select an SSH key corresponding to the user account (#941)
+  * Refactor API token configuration to remove circular dependency
+  * Delete SSH configuration on logout independently from Certifier
+  * Include only one session's SSH certificate configuration
+  * Refactor Config service to allow new instances
+  * Select integration from a list in integration:update command (when interactive)
+  * Disable command auth:password-login, which no longer works
+  * Fix use of certifier URL configuration
+  * Release v3.56.6
+  * Search more activities to find the backup in backup:restore command (#938)
+  * Sort routes, and optionally display the URL, in the route:list (routes) command (#935)
+  * Skip python dependencies install on Travis
+  * Separate dependencies tests
+  * Find existing pip command automatically
+  * Clarify error when a repository is not found, for an external repository
+  * Move some SSH certificate code into the API client library
+  * Release v3.56.5
+  * Ensure include file for SSH configuration exists
+  * Support app config grouped in .platform/applications.yaml (#932)
+  * Read certificate principals, options, and extensions as arrays (#934)
+
+-------------------------------------------------------------------
 Tue May 26 19:33:57 UTC 2020 - jimmy@boombatower.com
 
 - Update to version 3.56.4:
