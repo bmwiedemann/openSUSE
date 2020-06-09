@@ -109,6 +109,8 @@ This package provides the GObject Introspection bindings for Nemo.
 %patch0 -p1
 
 %build
+export CFLAGS="%{optflags} -fcommon"
+export CXXFLAGS="%{optflags} -fcommon"
 %if 0%{?suse_version} < 1500
 mkdir -p bin
 cat > bin/g-ir-scanner << EOF

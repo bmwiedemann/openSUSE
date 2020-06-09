@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  9 19:26:00 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Enable -fcommon which is not default with GCC10.
+
+-------------------------------------------------------------------
 Thu Apr  2 15:41:48 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - Update to version 4.4.2 
