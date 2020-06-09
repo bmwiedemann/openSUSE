@@ -18,16 +18,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-toml
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        Python module which parses and emits TOML
 License:        MIT
 URL:            https://github.com/uiri/toml
 Source:         https://files.pythonhosted.org/packages/source/t/toml/toml-%{version}.tar.gz
 # Untagged test data https://github.com/uiri/toml/issues/232
-Source1:        https://github.com/BurntSushi/toml-test/archive/39bb76d6.tar.gz#/toml-test-39bb76d6.tar.gz
+Source1:        https://github.com/BurntSushi/toml-test/archive/280497f.tar.gz#/toml-test-280497f.tar.gz
 # Missing file https://github.com/uiri/toml/pull/231
 Source2:        https://raw.githubusercontent.com/uiri/toml/%{version}/test.toml
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  coreutils

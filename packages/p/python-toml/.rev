@@ -142,4 +142,13 @@
     <comment>- Use pytest macro directly</comment>
     <requestid>784152</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>862655fccef621ecf9c06ace800d6597</srcmd5>
+    <version>0.10.1</version>
+    <time>1591742077</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.1
+ * update testdata</comment>
+    <requestid>812543</requestid>
+  </revision>
 </revisionlist>
