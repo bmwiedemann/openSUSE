@@ -36,6 +36,8 @@ Requires:       python-PyYAML
 Requires:       python-future
 Requires:       python-jsonlines
 Requires:       python-requests
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -50,14 +52,21 @@ Python wrapper for the Cloudflare Client API v4.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/cli4
 # remove examples from sitelib
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/examples
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%post
+%python_install_alternative cli4
+
+%postun
+%python_uninstall_alternative cli4
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/cli4
+%python_alternative %{_bindir}/cli4
 %{python_sitelib}/*
 
 %changelog
