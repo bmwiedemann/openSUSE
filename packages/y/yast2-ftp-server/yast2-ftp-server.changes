@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  2 14:20:43 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Add missing dependency of yast2-users (bsc#1132116).
+- 4.3.1
+
+-------------------------------------------------------------------
 Thu May  7 11:12:04 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Autoyast schema: Allow optional types for string and map objects

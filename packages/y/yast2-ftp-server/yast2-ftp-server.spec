@@ -17,7 +17,7 @@
 
 
 Name:           yast2-ftp-server
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        YaST2 - FTP configuration
 License:        GPL-2.0-only
@@ -36,6 +36,8 @@ BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
 # Yast2::CommandLine readonly parameter
 Requires:       yast2 >= 4.2.57
 Requires:       yast2-ruby-bindings >= 1.0.0
+# Do not log passwords
+Requires:       yast2-users >= 4.2.4
 
 BuildArch:      noarch
 
