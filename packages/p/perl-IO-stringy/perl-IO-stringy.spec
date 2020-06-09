@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-stringy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,35 +17,49 @@
 
 
 Name:           perl-IO-stringy
-Version:        2.111
+Version:        2.113
 Release:        0
-#Upstream: CHECK(GPL-1.0+ or Artistic-1.0)
-%define cpan_name IO-stringy
-Summary:        IO::stringy Perl module
+%define cpan_name IO-Stringy
+Summary:        I/O on in-core objects like strings and arrays
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/IO-stringy/
-Source0:        http://www.cpan.org/authors/id/D/DS/DSKOLL/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/C/CA/CAPOEIRAB/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Test::More) >= 0.88
+BuildRequires:  perl(Test::Tester)
+BuildRequires:  perl(parent)
+Requires:       perl(parent)
 %{perl_requires}
 
 %description
-IO::stringy Perl module
+This toolkit primarily provides modules for performing both traditional and
+object-oriented i/o) on things _other_ than normal filehandles; in
+particular, IO::Scalar, IO::ScalarArray, and IO::Lines.
+
+In the more-traditional IO::Handle front, we have IO::AtomicFile which may
+be used to painlessly create files which are updated atomically.
+
+And in the "this-may-prove-useful" corner, we have IO::Wrap, whose exported
+wraphandle() function will clothe anything that's not a blessed object in
+an IO::Handle-like wrapper... so you can just use OO syntax and stop
+worrying about whether your function's caller handed you a string, a
+globref, or a FileHandle.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
 find . -type f -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -54,7 +68,7 @@ find . -type f -print0 | xargs -0 chmod 644
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%license COPYING
-%doc examples README
+%doc Changes contrib examples README
+%license COPYING LICENSE
 
 %changelog

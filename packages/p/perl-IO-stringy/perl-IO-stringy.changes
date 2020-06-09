@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jun  4 11:29:16 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 2.113
+  * Changes in 2.113     2020-01-16
+    - Get rid of use of Common and TBone in all tests
+    - Convert to Dist::Zilla for authoring
+    - Cleaned up some of the docs. Needs more.
+  * Changes in 2.112    2019-12-13
+    - Change use vars qw() to our $whatever instead. 'our'
+    - Hide IO::WrapTie subclasses from PAUSE
+    - Convert README to README.md
+    - Fix the documentation in the main module, IO::Stringy to better indicate
+      where to get info and how to use the module
+    - Add a LICENSE file
+    - Get rid of the set-version.pl file as it's no longer needed
+    - update t/IO_InnerFile.t to use Test::More and a proper TEMP file
+
+-------------------------------------------------------------------
 Mon Jan 14 15:54:33 CET 2019 - kukuk@suse.de
 
 - Use %license instead of %doc [bsc#1082318]
