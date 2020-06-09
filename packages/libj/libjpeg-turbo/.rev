@@ -769,4 +769,20 @@
 - Added If statments for Fedora not having sertain openSUSE macros</comment>
     <requestid>789669</requestid>
   </revision>
+  <revision rev="52" vrev="59">
+    <srcmd5>c2f0692d27cb49c7b3f199b1ce37027e</srcmd5>
+    <version>unknown</version>
+    <time>1591742081</time>
+    <user>dimstar_suse</user>
+    <comment>- security update
+- added patches
+  fix CVE-2020-13790 [bsc#1172491], heap-based buffer over-read in get_rgb_row() in rdppm.c via a malformed PPM input file
+  + libjpeg-turbo-CVE-2020-13790.patch
+
+- security update
+- added patches
+  fix CVE-2020-13790 [bsc#1172491], heap-based buffer over-read in get_rgb_row() in rdppm.c via a malformed PPM input file
+  + libjpeg-turbo-CVE-2020-13790.patch</comment>
+    <requestid>812575</requestid>
+  </revision>
 </revisionlist>

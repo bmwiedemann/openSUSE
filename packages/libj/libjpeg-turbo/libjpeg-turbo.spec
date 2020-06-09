@@ -39,6 +39,8 @@ Source0:        http://downloads.sf.net/libjpeg-turbo/libjpeg-turbo-%{version}.t
 Source1:        baselibs.conf
 Patch1:         libjpeg-turbo-1.3.0-tiff-ojpeg.patch
 Patch2:         ctest-depends.patch
+# CVE-2020-13790 [bsc#1172491], heap-based buffer over-read in get_rgb_row() in rdppm.c via a malformed PPM input file
+Patch3:         libjpeg-turbo-CVE-2020-13790.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -104,6 +106,7 @@ files using the libjpeg library.
 %setup -q
 %patch1
 %patch2 -p1
+%patch3 -p1
 
 %build
 MYLDFLAGS="-Wl,-z,relro,-z,now"
