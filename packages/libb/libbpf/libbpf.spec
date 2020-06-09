@@ -25,8 +25,9 @@ Release:        0
 Summary:        C library for managing eBPF programs and maps
 License:        LGPL-2.1-only
 URL:            http://www.kernel.org/
-BuildRequires:  libelf-devel
 BuildRequires:  kernel-source
+BuildRequires:  libelf-devel
+BuildRequires:  python3
 
 %description
 libbpf is a C library which provides API for managing eBPF programs and maps.

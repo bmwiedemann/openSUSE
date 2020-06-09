@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  8 23:52:39 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Add python3 as a build dependency.
+
+-------------------------------------------------------------------
 Sun Feb  2 19:50:55 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Build libbpf from kernel sources, not from github sources, for
