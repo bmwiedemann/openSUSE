@@ -47,4 +47,12 @@
     <comment></comment>
     <requestid>749210</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f0ba64d42fba5e6ee012bfcf53ab49e1</srcmd5>
+    <version>4.3.1</version>
+    <time>1591742414</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.3.1.</comment>
+    <requestid>796706</requestid>
+  </revision>
 </revisionlist>

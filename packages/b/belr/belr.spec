@@ -1,7 +1,7 @@
 #
 # spec file for package belr
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,19 @@
 %define soname  libbelr
 %define sover   1
 Name:           belr
-Version:        0.1.3
+Version:        4.3.1
 Release:        0
 Summary:        Language recognition library
 License:        GPL-3.0-or-later
 URL:            https://linphone.org/
-Source:         https://linphone.org/releases/sources/%{name}/%{name}-%{version}.tar.gz
+Source:         https://gitlab.linphone.org/BC/public/belr/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE belr-fix-pkgconfig.patch sor.alexei@meowr.ru -- Install belr.pc.
 Patch0:         belr-fix-pkgconfig.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 0.6.0
+BuildRequires:  pkgconfig(bctoolbox) >= 4.3.0
 
 %description
 Belr parses input formatted according to a language defined by an
@@ -56,8 +56,7 @@ This package contains header files and development libraries needed
 to develop applications using the belr library.
 
 %prep
-%setup -q -n %{name}-%{version}-0
-%autopatch -p1
+%autosetup -p1
 
 %build
 %cmake \
@@ -69,19 +68,22 @@ to develop applications using the belr library.
 %cmake_install
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
+
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
 
 %files -n %{soname}%{sover}
-%license COPYING
+%license LICENSE.txt
 %{_libdir}/%{soname}.so.%{sover}*
 
 %files devel
-%license COPYING
-%doc NEWS README.md
-%{_bindir}/belr-parse
+%license LICENSE.txt
+%doc CHANGELOG.md README.md
+%{_bindir}/%{name}*
 %{_includedir}/%{name}/
 %{_libdir}/%{soname}.so
-%{_datadir}/Belr/
+%{_libdir}/cmake/%{name}/
+%{_datadir}/%{name}/
+%{_datadir}/%{name}-tester/
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
