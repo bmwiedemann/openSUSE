@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 28 08:42:09 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- The hypothesis pytest module used by natsort requires at least
+  pytest 4.3
+
+-------------------------------------------------------------------
 Thu Apr 23 10:45:41 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Drop py2 dependency from py3 only package
