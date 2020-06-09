@@ -17,7 +17,7 @@
 
 
 Name:           yast2-users
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Summary:        YaST2 - User and Group Configuration
 License:        GPL-2.0-only
@@ -31,7 +31,6 @@ BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  perl-Digest-SHA1
-BuildRequires:  perl-XML-Writer
 BuildRequires:  update-desktop-files
 # CLI readonly
 BuildRequires:  yast2 >= 4.2.57
@@ -39,7 +38,6 @@ BuildRequires:  yast2-core-devel
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-perl-bindings
 BuildRequires:  yast2-security
-BuildRequires:  yast2-testsuite
 BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
 
 Requires:       cracklib
@@ -80,8 +78,6 @@ This package provides GUI for maintenance of linux users and groups.
 %yast_build
 
 %install
-# make testsuite/modules/Ldap.rb visible
-export Y2BASE_Y2DIR=`pwd`/testsuite
 %yast_install
 %yast_metainfo
 

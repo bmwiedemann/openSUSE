@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 27 11:55:44 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Dropped legacy testsuite (related to bsc#1138668).
+- 4.3.2
+
+-------------------------------------------------------------------
 Wed May 13 14:04:35 UTC 2020 - schubi@suse.de
 
 - AY proposal: Fixed crash. Showing user settings only because the
