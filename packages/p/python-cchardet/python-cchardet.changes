@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 27 09:36:37 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Wed Dec 11 13:02:14 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - initial commit 

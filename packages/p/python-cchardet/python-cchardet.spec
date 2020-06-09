@@ -1,7 +1,7 @@
 #
 # spec file for package python-cchardet
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(uchardet)
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -44,12 +46,19 @@ cChardet is high speed universal character encoding detector. - binding to `ucha
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/cchardetect
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+
+%post
+%python_install_alternative cchardetect
+
+%postun
+%python_uninstall_alternative cchardetect
 
 %files %{python_files}
 %license COPYING
 %doc README.rst
-%python3_only %{_bindir}/cchardetect
+%python_alternative %{_bindir}/cchardetect
 %{python_sitearch}/*
 
 %changelog
