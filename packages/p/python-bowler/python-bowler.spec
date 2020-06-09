@@ -1,7 +1,7 @@
 #
 # spec file for package python-bowler
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,8 @@ Requires:       python-click
 Requires:       python-fissix
 Requires:       python-setuptools
 Requires:       python-sh
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -62,15 +64,22 @@ modifiers as needed to build more complex or custom refactorings.  See the
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/bowler
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec -m bowler.tests
 
+%post
+%python_install_alternative bowler
+
+%postun
+%python_uninstall_alternative bowler
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/*
-%python3_only %{_bindir}/bowler
+%python_alternative %{_bindir}/bowler
 
 %changelog
