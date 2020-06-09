@@ -17,7 +17,7 @@
 
 
 Name:           yast2-update
-Version:        4.2.18
+Version:        4.3.0
 Release:        0
 Summary:        YaST2 - Update
 License:        GPL-2.0-only
@@ -40,6 +40,8 @@ BuildRequires:  yast2-installation-control
 # Needed for tests
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
+# nokogiri is used also for parsing in tests. It is not problem as yast2 also depends on it
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:nokogiri)
 # Y2Storage::Crypttab.save_encryption_names
 BuildRequires:  yast2-storage-ng >= 4.2.42
 
@@ -53,6 +55,8 @@ Requires:       yast2-packager >= 4.2.33
 # Improved Pkg.SourceRestore()
 Requires:       yast2-pkg-bindings >= 4.2.6
 Requires:       yast2-ruby-bindings >= 1.0.0
+# nokogiri is used for parsing pam conf.
+Requires:       rubygem(%{rb_default_ruby_abi}:nokogiri)
 # use parallel gzip when crating backup (much faster)
 Requires:       pigz
 

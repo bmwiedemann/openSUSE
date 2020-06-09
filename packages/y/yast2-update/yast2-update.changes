@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  3 16:12:18 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Replace anyxml agent with rubygem-nokogiri as yast2 already
+  depends on nokogiri, to reduce amount of used xml parsers.
+  (related to bsc#1170886)
+- 4.3.0
+
+-------------------------------------------------------------------
 Thu Mar 12 08:52:36 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
 
 - Do not remove the installation repositories in the "Previously
