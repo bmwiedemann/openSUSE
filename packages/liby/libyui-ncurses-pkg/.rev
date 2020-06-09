@@ -324,4 +324,12 @@
     <comment>submit new version 2.50.6</comment>
     <requestid>774825</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>6597e7e5fae0a21c934b8d5b6fc41bda</srcmd5>
+    <version>2.50.8</version>
+    <time>1591742383</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.50.8</comment>
+    <requestid>812668</requestid>
+  </revision>
 </revisionlist>
