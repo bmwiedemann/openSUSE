@@ -1,7 +1,7 @@
 #
 # spec file for package python-audiogrep
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-audiogrep
 Version:        0.1.5
 Release:        0
-License:        MIT
 Summary:        Python package to create audio supercuts
-Url:            http://antiboredom.github.io/audiogrep
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://antiboredom.github.io/audiogrep
 Source:         https://files.pythonhosted.org/packages/source/a/audiogrep/audiogrep-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module pydub}
-# /SECTION
 Requires:       ffmpeg
 Requires:       pocketsphinx
 Requires:       python-pydub
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-
+# SECTION test requirements
+BuildRequires:  %{python_module pydub}
+# /SECTION
 %python_subpackages
 
 %description
@@ -49,12 +51,19 @@ based on search phrases.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/audiogrep
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative audiogrep
+
+%postun
+%python_uninstall_alternative audiogrep
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/audiogrep
+%python_alternative %{_bindir}/audiogrep
 %{python_sitelib}/*
 
 %changelog
