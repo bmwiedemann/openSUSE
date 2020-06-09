@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE-MicroOS___20200607" schemaversion="4.1">
+<image name="OBS__openSUSE-MicroOS___20200609" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200607</productvar>
+      <productvar name="VERSION">20200609</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20200607,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20200609,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20200607/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20200609/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -337,6 +337,7 @@
       <repopackage name="kio-core" arch="x86_64"/>
       <repopackage name="kio-extras5" arch="x86_64"/>
       <repopackage name="kirigami2" arch="x86_64"/>
+      <repopackage name="kitemmodels-imports" arch="x86_64"/>
       <repopackage name="kmenuedit5" arch="x86_64"/>
       <repopackage name="kmod"/>
       <repopackage name="kmod-compat"/>
@@ -624,6 +625,7 @@
       <repopackage name="libjansson4" arch="x86_64"/>
       <repopackage name="libjavascriptcoregtk-4_0-18" arch="x86_64"/>
       <repopackage name="libjbig2" arch="x86_64"/>
+      <repopackage name="libjcat1" arch="x86_64"/>
       <repopackage name="libjpeg8" arch="x86_64"/>
       <repopackage name="libjson-c4"/>
       <repopackage name="libjson-glib-1_0-0" arch="x86_64"/>
@@ -705,9 +707,11 @@
       <repopackage name="libKScreenLocker5" arch="x86_64"/>
       <repopackage name="libksysguard5" arch="x86_64"/>
       <repopackage name="libksysguard5-helper" arch="x86_64"/>
+      <repopackage name="libksysguard5-imports" arch="x86_64"/>
       <repopackage name="libKUserFeedbackCore1" arch="x86_64"/>
       <repopackage name="libKUserFeedbackWidgets1" arch="x86_64"/>
       <repopackage name="libkwalletbackend5-5" arch="x86_64"/>
+      <repopackage name="libKWaylandServer5" arch="x86_64"/>
       <repopackage name="liblcms2-2" arch="x86_64"/>
       <repopackage name="libldap-2_4-2" arch="x86_64"/>
       <repopackage name="libldb2" arch="x86_64"/>
@@ -811,7 +815,7 @@
       <repopackage name="libpolkit0" arch="x86_64"/>
       <repopackage name="libpoppler-glib8" arch="x86_64"/>
       <repopackage name="libpoppler-qt5-1" arch="x86_64"/>
-      <repopackage name="libpoppler99" arch="x86_64"/>
+      <repopackage name="libpoppler100" arch="x86_64"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libprocps8" arch="x86_64"/>
       <repopackage name="libproxy1" arch="x86_64"/>
@@ -1089,6 +1093,7 @@
       <repopackage name="metatheme-adwaita-common" arch="x86_64"/>
       <repopackage name="microos-tools" arch="x86_64"/>
       <repopackage name="milou5" arch="x86_64"/>
+      <repopackage name="mobile-broadband-provider-info" arch="x86_64"/>
       <repopackage name="mokutil" arch="x86_64"/>
       <repopackage name="mozilla-nspr" arch="x86_64"/>
       <repopackage name="mozilla-nss" arch="x86_64"/>
@@ -1219,6 +1224,7 @@
       <repopackage name="pulseaudio-module-x11" arch="x86_64"/>
       <repopackage name="pulseaudio-module-zeroconf" arch="x86_64"/>
       <repopackage name="pulseaudio-utils" arch="x86_64"/>
+      <repopackage name="purge-kernels-service" arch="x86_64"/>
       <repopackage name="purpose" arch="x86_64"/>
       <repopackage name="python-rpm-macros" arch="x86_64"/>
       <repopackage name="python3" arch="x86_64"/>
