@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  8 18:55:02 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix build on aarch64:
+  * gdcm-2.8.8-dont_use_EOF.patch 
+
+-------------------------------------------------------------------
 Tue Apr 14 18:59:21 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update poppler_api.patch to make UnicodeMap* const.
