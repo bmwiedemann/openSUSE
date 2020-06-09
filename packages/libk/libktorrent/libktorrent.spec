@@ -1,7 +1,7 @@
 #
 # spec file for package libktorrent
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define ktor_ver 5.1.2
+%define ktor_ver 5.2.0
 %define sonum   6
 Name:           libktorrent
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        Torrent Downloading Library
 License:        GPL-2.0-or-later

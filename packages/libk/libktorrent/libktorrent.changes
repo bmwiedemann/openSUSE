@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun  8 13:59:41 UTC 2020 - wbauer@tmo.at
+
+- Update to version 2.2.0
+  * DHT improvements (add bootstrapping from well-known nodes, fix
+    replying a non 20-bytes long tokens)
+  * Quite a few small bugfixes but everything should be more stable
+  * Porting away from some deprecated methods
+
+-------------------------------------------------------------------
 Sun Sep  1 19:42:51 UTC 2019 - wbauer@tmo.at
 
 - Update to version 2.1.1
