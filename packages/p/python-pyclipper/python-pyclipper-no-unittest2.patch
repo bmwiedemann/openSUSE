@@ -1,0 +1,16 @@
+Index: pyclipper-1.1.0.post3/tests/test_pyclipper.py
+===================================================================
+--- pyclipper-1.1.0.post3.orig/tests/test_pyclipper.py	2019-11-29 17:53:00.000000000 +0100
++++ pyclipper-1.1.0.post3/tests/test_pyclipper.py	2020-06-02 16:53:28.959317899 +0200
+@@ -4,7 +4,10 @@ Tests for Pyclipper wrapper library.
+ """
+ 
+ from __future__ import print_function
+-from unittest2 import TestCase, main
++try:
++  from unittest2 import TestCase, main
++except ImportError:
++  from unittest import TestCase, main
+ import sys
+ 
+ if sys.version_info < (3,):

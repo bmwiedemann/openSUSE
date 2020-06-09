@@ -18,6 +18,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-pyclipper
 Version:        1.1.0.post3
 Release:        0
@@ -25,12 +26,16 @@ Summary:        Cython wrapper for the Clipper library
 License:        MIT
 URL:            https://github.com/fonttools/pyclipper
 Source:         https://files.pythonhosted.org/packages/source/p/pyclipper/pyclipper-%{version}.zip
+# https://github.com/fonttools/pyclipper/pull/32
+Patch0:         python-pyclipper-no-unittest2.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module unittest2}
+%if %{with python2}
+BuildRequires:  python2-unittest2
+%endif
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
@@ -44,6 +49,7 @@ the C++ translation of the `Angus Johnson's Clipper library (ver.
 
 %prep
 %setup -q -n pyclipper-%{version}
+%patch0 -p1
 
 %build
 %python_build

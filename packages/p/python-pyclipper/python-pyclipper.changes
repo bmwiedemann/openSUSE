@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  2 15:03:59 UTC 2020 - pgajdos@suse.com
+
+- drop dependency on unittest2 for python3
+- added patches
+  https://github.com/fonttools/pyclipper/pull/32
+  + python-pyclipper-no-unittest2.patch
+
+-------------------------------------------------------------------
 Fri Mar  6 02:17:18 UTC 2020 - Xu Zhao <i@xuzhao.net>
 
 - Initial commit.
