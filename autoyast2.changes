@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Tue Jun  9 12:17:51 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not crash when the partitioning section is not specified
+  (bsc#1172718).
+- 4.3.10
+
+-------------------------------------------------------------------
+Fri Jun  5 08:03:15 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix 'autoyast' and 'clone_system' command line interfaces
+  (bsc#1172548):
+  - autoyast: add a list-modules command to list all known modules.
+  - autoyast: display the correct client name in the help text.
+  - autoyast: 'file' and 'module' command are now equivalent.
+    Both of them support setting 'filename' and 'modname'
+    arguments.
+  - clone_system: add a 'filename' option instead of always using
+    '/root/autoinst.xml'.
+  - clone_system: move the logic to find the clonable modules
+    to Y2ModuleConfig.
+- 4.3.9
+
+-------------------------------------------------------------------
+Mon Jun  1 09:46:08 UTC 2020 - Martin Vidner <mvidner@suse.com>
+
+- AutoYaST schema fixes:
+  - Work around Relax-NG parser error: "Found anyName attribute
+    without oneOrMore ancestor" (bsc#1172131)
+  - Rename 'option' to 'fs_option' to fix a duplicate definition
+    (bsc#1170886)
+- 4.3.8
+
+-------------------------------------------------------------------
+Wed May 27 15:03:50 UTC 2020 - schubi@suse.de
+
+- AutoYaST: Cleanup/improve issue handling (bsc#1171335).
+- 4.3.7
+
+-------------------------------------------------------------------
+Wed May 27 14:03:50 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- When running an autoinstallation with the Online medium, the
+  network configuration based on the profile can be written before
+  the registration takes place (bsc#1171922)
+- 4.3.6
+
+-------------------------------------------------------------------
+Wed May 27 08:26:35 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not propose insecure signature handling settings when
+  cloning (bsc#1171343).
+- Assign the correct callback when "accept_unknown_digest" is set.
+- Do not export storage settings in the general section
+  unless it is needed (related to bsc#1171356).
+- 4.3.5
+
+-------------------------------------------------------------------
+Fri May 22 09:58:24 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- The network configuration is applied during the first stage by
+  default (bsc#1171922)
+- 4.3.4
+
+-------------------------------------------------------------------
+Thu May 21 13:51:22 UTC 2020 - David Díaz <dgonzalez@suse.com>
+
+- Revamp the storage client user interface, adapting it to the
+  storage-ng features.
+- Avoid detecting bcache as a volume group (bsc#1136454).
+- 4.3.3
+
+-------------------------------------------------------------------
+Mon May 18 07:12:41 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix error reporting for invalid profile to respect new API
+  (bsc#1171412)
+- fix profile loading test
+- 4.3.2
+
+-------------------------------------------------------------------
 Mon May 11 14:27:50 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - fix schema if it include definition multiple times (bsc#1171412)
