@@ -23,6 +23,7 @@ Version:        2.6.4
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
+Group:          Productivity/Networking/File-Sharing
 URL:            https://nextcloud.com/
 Source:         https://github.com/nextcloud/desktop/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        sysctl-sync-inotify.conf
@@ -30,6 +31,8 @@ Source1:        sysctl-sync-inotify.conf
 Patch0:         nextcloud-desktop-fix-rpath.patch
 # PATCH-FIX-OPENSUSE nextcloud-desktop-remove-datetime.patch sor.alexei@meowr.ru -- Remove __TIME__ and __DATE__.
 Patch1:         nextcloud-desktop-remove-datetime.patch
+# PATCH-FIX-OPENSUSE nextcloud-desktop-qt_5.15.patch - Fix build error with QT 5.15.
+Patch2:         %{name}-qt_5.15.patch
 BuildRequires:  AppStream
 BuildRequires:  cmake >= 3.2
 BuildRequires:  fdupes
@@ -81,6 +84,7 @@ synchronisation client does the rest.
 %if 0%{?is_opensuse}
 %package doc
 Summary:        Documentation for nextcloud-desktop
+Group:          Productivity/Networking/File-Sharing
 Provides:       nextcloud-client-doc = %{version}
 Obsoletes:      nextcloud-client-doc < %{version}
 BuildArch:      noarch
@@ -94,12 +98,14 @@ This package contains the documentation.
 
 %package -n %{soname}%{sover}
 Summary:        The Nextcloud synchronisation library
+Group:          Productivity/Networking/File-Sharing
 
 %description -n %{soname}%{sover}
 The Nextcloud Desktop Client synchronisation library.
 
 %package -n %{soname}-devel
 Summary:        Development files for the Nextcloud synchronisation library
+Group:          Productivity/Networking/File-Sharing
 Requires:       %{soname}%{sover} = %{version}
 
 %description -n %{soname}-devel
@@ -108,6 +114,7 @@ library.
 
 %package -n nautilus-extension-nextcloud
 Summary:        Nautilus overlay icons
+Group:          Productivity/Networking/File-Sharing
 Requires:       %{name} = %{version}
 Requires:       nautilus
 Requires:       python3-nautilus
@@ -121,6 +128,7 @@ synchronisation state in the Nautilus file manager.
 %if 0%{?is_opensuse}
 %package -n caja-extension-nextcloud
 Summary:        Caja overlay icons
+Group:          Productivity/Networking/File-Sharing
 Requires:       %{name} = %{version}
 Requires:       caja
 Requires:       python-caja
@@ -133,6 +141,7 @@ synchronisation state in the Caja file manager.
 
 %package -n nemo-extension-nextcloud
 Summary:        Nemo overlay icons
+Group:          Productivity/Networking/File-Sharing
 Requires:       %{name} = %{version}
 Requires:       nemo
 Requires:       python-nemo
@@ -145,6 +154,7 @@ synchronisation state in the Nemo file manager.
 
 %package -n %{name}-dolphin
 Summary:        Dolphin overlay icons
+Group:          Productivity/Networking/File-Sharing
 Requires:       %{name} = %{version}
 Requires:       dolphin
 Supplements:    (%{name} and dolphin)
@@ -158,6 +168,7 @@ Dolphin filemanager to display overlay icons.
 %setup -q -n desktop-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 cp -a %{SOURCE1} sysctl-sync-inotify.conf
 
 %build

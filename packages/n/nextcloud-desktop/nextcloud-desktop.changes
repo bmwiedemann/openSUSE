@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  8 14:52:29 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Fix build error in Tumbleweed.
+  - Add nextcloud-desktop-qt_5.15.patch to fix build error with
+    Qt 5.15.
+
+-------------------------------------------------------------------
 Sun Mar  8 20:18:45 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Rename nextcloud-client to nextcloud-desktop following upstream.
