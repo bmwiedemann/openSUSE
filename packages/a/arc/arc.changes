@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  8 15:57:22 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+-  arc-5.21p-fno-common.patch: from Gentoo, fixe FTBS with
+   recent GCC versions.
+
+-------------------------------------------------------------------
 Fri Jan 17 09:14:38 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Cleanup package

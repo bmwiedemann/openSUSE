@@ -26,6 +26,7 @@ Source:         https://github.com/ani6al/arc/archive/%{version}.tar.gz#/%{name}
 Patch0:         arc-5.21p-directory-traversel.patch
 Patch1:         arc-5.21p-fix-arcdie.patch
 Patch2:         arc-5.21p-hdrv1-read-fix.patch
+Patch3:         https://gitweb.gentoo.org/repo/gentoo.git/plain/app-arch/arc/files/arc-5.21p-fno-common.patch
 # /usr/bin/arc binary name conflicts
 Conflicts:      arcanist
 
