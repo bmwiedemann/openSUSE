@@ -1,7 +1,7 @@
 #
 # spec file for package python-bobo
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,16 @@ Release:        0
 Summary:        Web application framework for the impatient
 License:        ZPL-2.1
 Group:          Development/Languages/Python
-Url:            http://bobo.readthedocs.io/
+URL:            http://bobo.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/b/bobo/bobo-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-WebOb
+Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
 BuildRequires:  %{python_module WebOb}
@@ -35,11 +41,6 @@ BuildRequires:  %{python_module bobodoctestumentation >= 2.4.0}
 BuildRequires:  %{python_module six}
 %endif
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-WebOb
-Requires:       python-six
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -61,12 +62,18 @@ Bobo builds on other frameworks, most notably WSGI and WebOb.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/bobo
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%post
+%python_install_alternative bobo
+
+%postun
+%python_uninstall_alternative bobo
+
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc CHANGES.rst README.rst
-%python3_only %{_bindir}/bobo
+%python_alternative %{_bindir}/bobo
 %{python_sitelib}/*
 
 %changelog
