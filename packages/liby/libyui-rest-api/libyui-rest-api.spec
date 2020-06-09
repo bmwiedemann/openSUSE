@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-rest-api
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define so_version 11
+%define so_version 12
 %define bin_name %{name}%{so_version}
-%define libyui_devel_version libyui-devel >= 3.8.0
+%define libyui_devel_version libyui-devel >= 3.10.0
 
 Name:           libyui-rest-api
-Version:        0.3.0
+Version:        0.4.1
 Release:        0
 Summary:        Libyui - REST API plugin, the shared part
 License:        LGPL-2.1-only OR LGPL-3.0-only
