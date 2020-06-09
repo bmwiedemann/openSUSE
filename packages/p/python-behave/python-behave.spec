@@ -1,7 +1,7 @@
 #
 # spec file for package python-behave
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Behaviour-driven development, Python style
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-URL:            http://github.com/behave/behave
+URL:            https://github.com/behave/behave
 Source:         https://files.pythonhosted.org/packages/source/b/behave/behave-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -32,6 +32,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-parse >= 1.8.2
 Requires:       python-parse_type >= 0.4.2
 Requires:       python-six >= 1.11
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-argparse
 Suggests:       python-coverage
 Suggests:       python-enum34
@@ -78,14 +80,21 @@ code.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/behave
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 
+%post
+%python_install_alternative behave
+
+%postun
+%python_uninstall_alternative behave
+
 %files %{python_files}
 %license LICENSE
 %doc CHANGES.rst README.rst
-%python3_only %{_bindir}/behave
+%python_alternative %{_bindir}/behave
 %{python_sitelib}/*
 
 %changelog
