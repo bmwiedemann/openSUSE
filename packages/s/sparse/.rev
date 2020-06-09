@@ -392,4 +392,31 @@ Spec file licenses are written in SPDX compatible format. Where there is no shor
     <comment></comment>
     <requestid>795670</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>4a9105b48af89482b117e23d3dd35ddf</srcmd5>
+    <version>0.6.1+20200606</version>
+    <time>1591742982</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.1+20200606:
+  * pre-process: fix a compiler array subscript type warning
+  * univ-init: set default to -Wno-universal-initializer
+  * univ-init: scalar initializer needs some additional checks
+  * evaluate: mark evaluate_generic_selection() as static
+  * add support for _Generic
+  * testsuite: add testcase for duplicated local definitions
+  * add an option to suppress warning 'no newline at EOF'
+  * univ-init: conditionally accept { 0 } without warnings
+  * bad-label: respect attribute((unused))
+  * bad-label: mark labels as used when needed
+  * bad-label: check for unused labels
+  * bad-goto: check declaration of label expressions
+  * bad-goto: extract check_label_declaration()
+  * bad-goto: label expression inside a statement expression is UB
+  * bad-goto: jumping inside a statement expression is an error
+  * scope: give a scope for labels &amp; gotos
+  * build: fix LLVM version detection
+  * and much more
+- Use latest llvm again as the detection is fixed</comment>
+    <requestid>812801</requestid>
+  </revision>
 </revisionlist>

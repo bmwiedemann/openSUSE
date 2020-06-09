@@ -17,7 +17,7 @@
 
 
 Name:           sparse
-Version:        0.6.1+20200413
+Version:        0.6.1+20200606
 Release:        0
 Summary:        A semantic parser of source files
 License:        MIT
@@ -32,8 +32,8 @@ BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 %if 0%{?suse_version} > 1320 || 0%{?is_opensuse}
 %ifarch         x86_64
-BuildRequires:  clang9
-BuildRequires:  llvm9-devel
+BuildRequires:  clang
+BuildRequires:  llvm-devel
 %endif
 %endif
 

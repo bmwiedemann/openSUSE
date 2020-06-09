@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun 09 07:29:30 UTC 2020 - jslaby@suse.com
+
+- Update to version 0.6.1+20200606:
+  * pre-process: fix a compiler array subscript type warning
+  * univ-init: set default to -Wno-universal-initializer
+  * univ-init: scalar initializer needs some additional checks
+  * evaluate: mark evaluate_generic_selection() as static
+  * add support for _Generic
+  * testsuite: add testcase for duplicated local definitions
+  * add an option to suppress warning 'no newline at EOF'
+  * univ-init: conditionally accept { 0 } without warnings
+  * bad-label: respect attribute((unused))
+  * bad-label: mark labels as used when needed
+  * bad-label: check for unused labels
+  * bad-goto: check declaration of label expressions
+  * bad-goto: extract check_label_declaration()
+  * bad-goto: label expression inside a statement expression is UB
+  * bad-goto: jumping inside a statement expression is an error
+  * scope: give a scope for labels & gotos
+  * build: fix LLVM version detection
+  * and much more
+- Use latest llvm again as the detection is fixed
+
+-------------------------------------------------------------------
 Sat Apr 18 06:41:15 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.6.1+20200413:
