@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  1 07:11:31 UTC 2020 - Michal Filka <mfilka@suse.com>
+
+- bnc#1172180 
+  - activates keyboard layout also for ttyAMA devices
+- 4.3.1
+
+-------------------------------------------------------------------
 Thu May  7 15:19:48 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Autoyast schema: Allow optional types for string and map objects
