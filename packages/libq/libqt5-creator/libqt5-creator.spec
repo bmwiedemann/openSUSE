@@ -24,7 +24,7 @@
 %endif
 
 Name:           libqt5-creator
-Version:        4.12.1
+Version:        4.12.2
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -38,7 +38,7 @@ Group:          Development/Tools/IDE
 Url:            https://www.qt.io/ide/
 %define major_ver 4.12
 %define qt5_version 5.11.0
-%define tar_version 4.12.1
+%define tar_version 4.12.2
 Source:         https://download.qt.io/official_releases/qtcreator/%{major_ver}/%{tar_version}/qt-creator-opensource-src-%{tar_version}.tar.xz
 Source1:        %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE
@@ -104,6 +104,8 @@ This package contains all files from the Qt Creator source directory
 rm -r src/shared/qbs
 
 %build
+%define _lto_cflags %{nil}
+
 sed -i s,libexec/qtcreator,%{_lib}/qtcreator/libexec,g qtcreator.qbs
 sed -i 's,libexec/qtcreator,$$IDE_LIBRARY_BASENAME/qtcreator/libexec,g' qtcreator.pri
 # https://bugzilla.opensuse.org/962650

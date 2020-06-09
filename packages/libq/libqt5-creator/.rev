@@ -761,4 +761,20 @@ No hurry to checkin ;-) but it is needed for QtLocation</comment>
 - Rebase 0001-Fix-build-with-openSUSE-clang9-package.patch</comment>
     <requestid>807774</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>0db614352abb5fd5421be26cb0e94dff</srcmd5>
+    <version>4.12.2</version>
+    <time>1591743127</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable LTO. This is causing a build error.
+
+- Update to 4.12.2
+  https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.12.2.md
+  * Fixed line and column support for opening files with Locator
+  * Fixed crash with QML Preview
+  * Fixed issue with Clazy 1.6
+  * Fixed persistence of diagnostics configurations
+  * Fixed persistence of license template setting (forwarded request 811670 from cgiboudeaux)</comment>
+    <requestid>812944</requestid>
+  </revision>
 </revisionlist>

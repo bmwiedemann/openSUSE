@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun  5 06:13:20 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Disable LTO. This is causing a build error.
+
+-------------------------------------------------------------------
+Wed Jun  3 19:28:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.12.2
+  https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.12.2.md
+  * Fixed line and column support for opening files with Locator
+  * Fixed crash with QML Preview
+  * Fixed issue with Clazy 1.6
+  * Fixed persistence of diagnostics configurations
+  * Fixed persistence of license template setting
+
+-------------------------------------------------------------------
 Wed May 20 13:05:00 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 4.12.1.
