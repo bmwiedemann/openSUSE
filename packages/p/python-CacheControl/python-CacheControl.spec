@@ -1,7 +1,7 @@
 #
 # spec file for package python-CacheControl
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-msgpack
 Requires:       python-requests
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-lockfile >= 0.9
 Suggests:       python-redis >= 2.10.5
 BuildArch:      noarch
@@ -57,16 +59,23 @@ requests session object.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/doesitcache
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # test_file_cache_recognizes_consumed_file_handle uses httpbin.org directly
 PYTHONPATH=%{buildroot}%{python3_sitelib} py.test-%{python3_bin_suffix} -v -k 'not test_file_cache_recognizes_consumed_file_handle'
 
+%post
+%python_install_alternative doesitcache
+
+%postun
+%python_uninstall_alternative doesitcache
+
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%python3_only %{_bindir}/doesitcache
+%python_alternative %{_bindir}/doesitcache
 %{python_sitelib}/*
 
 %changelog

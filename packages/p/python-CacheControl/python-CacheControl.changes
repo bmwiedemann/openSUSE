@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 27 09:36:33 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Thu Jan  2 11:57:41 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Drop merged pytest4.patch
