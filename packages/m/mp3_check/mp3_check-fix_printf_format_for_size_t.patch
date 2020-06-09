@@ -1,5 +1,5 @@
---- support_functions.h.orig	2011-05-17 20:59:31.000000000 +0200
-+++ support_functions.h	2011-05-17 20:59:43.000000000 +0200
+--- mp3_check-1.98/support_functions.h.orig	2011-05-17 20:59:31.000000000 +0200
++++ mp3_check-1.98/support_functions.h	2011-05-17 20:59:43.000000000 +0200
 @@ -680,7 +680,7 @@
  	printf("%-20s%d\n", "BitRate", mp3_i->BIT_RATE);
  	printf("%-20s%d\n", "SampRate", mp3_i->SAMPLE_FREQ);

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  8 11:57:30 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Refresh mp3_check-fix_makefile.patch and
+  mp3_check-fix_printf_format_for_size_t.patch
+- Add mp3_check-gcc10.patch
+
+-------------------------------------------------------------------
 Fri Aug 25 15:40:57 UTC 2017 - jengelh@inai.de
 
 - Update description.
