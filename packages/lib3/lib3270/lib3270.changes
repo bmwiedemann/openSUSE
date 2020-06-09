@@ -1,4 +1,176 @@
 -------------------------------------------------------------------
+Thu Jun 04 13:35:16 UTC 2020 - perry.werneck@gmail.com
+
+- Update to version 5.3:
+  * Adding openssl info in the version string.
+  * Updating package release based in rpm release.
+  * Setting version strings from configure.
+  * Adding method to get the build timestamp; usefull for version checks.
+  * Implementing property to get/set the min/max ssl supported protocol version.
+  * Can't connect to an empty host or service name.
+  * Build instructions for macOS
+  * Replacing "<ctrl>" for "<Primary" in keytable definition.
+  * Adding option to disable automatic download of the CRL.
+  * Adds support for macosx
+  * Change name of wait callback type to avoid collision with mac system type
+  * Include test for presence of malloc.h
+  * Fix warning with autoconf > 2.68
+  * Adding more trace information on "connect" process.
+  * Fixing null module on log manager.
+  * Updating smart paste summary.
+  * Fixing action labels.
+  * Moving to lib3270 own translations.
+  * Fixing unlock-delay property.
+  * Fixing exports.
+  * Small adjustments in toggles labels and descriptions.
+  * Adding more translation methods.
+  * Adding methods to get translated properties.
+  * Creating lib3270's own translation files.
+  * Fixing action group error.
+  * Adding signals for save/print copy actions.
+  * Removing print/save actions from the protocol library; it's better to implement then on the gui application.
+  * Fixing reconnect action label & description.
+  * Adding convenience method for open windows registry.
+  * Fixing status of "reconnect" action.
+  * Preventing emit of "save-settings" signal on v3270 when the host URL is set to the same value.
+  * Fixing action descriptions.
+  * Using spec-cleaner on lib3270.spec
+  * Cleaning up unused code.
+  * Fixing error when the selection format toggle is activated with an active selection.
+  * Tracing connection state changes.
+  * Adding method to get "paste-next" state.
+  * Adding new action group for clipboard content availability.
+  * Exporting action group notifier for use by libv3270.
+  * Using only alfanumeric chars to translate toggle names.
+  * Some actions requires more than one accelerator.
+  * Improving trace of the http download engine; adding some proxy support.
+  * Adjusting property names.
+  * Adding host-type property as an unsigned int value for saving it in the session properties.
+  * Adding default values for properties.
+  * Allow to override build date with SOURCE_DATE_EPOCH
+  * Adding more CG chars in the test pattern.
+  * Addin APL chars 0xF1 to 0xF9 on test pattern.
+  * Grouping property descriptors.
+  * Adding method to get property descriptor by name.
+  * Refactoring "lunames" property.
+  * Activating auto-connect when the corresponding toggle is set and the session is offline.
+  * Adding method to get the toggle descriptor from id.
+  * Refactoring LU properties.
+  * Adjustments on charset API.
+  * Color type should be an unsigned int.
+  * Fixing action name issue detected on the main application.
+  * Adding option for default property value.
+  * Improving the model number property.
+  * Fixing windows build.
+  * Fixing typeahead problem.
+  * Adding method to get the "activatable" state of an action group.
+  * Fixing "formatted-screen" actions.
+  * Fixing "locked" signal on disconnect.
+  * Updating action table.
+  * Adding events for cursor state.
+  * Fixing issue with "selection" actions.
+  * Fixing problem with the select/unselect notifications.
+  * Adding action types.
+  * Adding listeners for action group state changes (required for the new UI).
+  * Cleaning unused methods.
+  * Fixing segfault on CRL download.
+  * Use of curl is now default on linux.
+  * Small message adjustment.
+  * Fixing CRL download using curl.
+  * Splitting windows HTTP download method.
+  * Fixes from comments on OBS Request https://build.opensuse.org/request/show/736258
+  * CRL check is now default.
+  * Adjustments in the SSL negotiation.
+  * Releasing CRL on URL change.
+  * Adding callback for URL change.
+  * Refactoring CRL download method.
+  * Organizing CRL check engine to avoid duplications.
+  * Fixing warnings and SSL information dialogs.
+  * Refactoring CRL check engine.
+  * Adding action groups (required for GAction implementatin).
+  * Creating and using standard chained list managers.
+  * Changint toogle descriptor type name to a more standard one.
+  * Changing toggle id type name.
+  * Update README.md
+  * Fixing icon names.
+  * Fixing non-ssl builds.
+  * Adjustments in the action API & property tables.
+  * Fixing errno use in "has_selection" attribute.
+  * Adding method to get property description & summary.
+  * Fixing name conflict with the "autoreconnect" toggle and the "reconnect" action.
+  * Refactoring actions as properties (easier for language bindings).
+  * Adding method to set field and jump to next.
+  * Refactoring action table.
+  * Adding id in the toggle id description. Required for dynamic attributes.
+  * Fixing thread issue on custom certificate loading.
+  * Adding method to build filenames independent of the OS.
+  * Fixing oversize.
+  * Updating sf.
+  * Refactoring output buffer management.
+  * Adding max witdh & height as read-only properties.
+  * Adjustments on screen size changes.
+  * Adjustments in the remap engine.
+  * Fixing "wait_for_ready" behavior during the "connecting..." state.
+  * Fixing conflict with action "connect" and ipc method "connect".
+  * Datadir is now based on product name.
+  * Adding methods to build data & config file names based in the product name instead of library name.
+  * Refactoring charset translation sources.
+  * Refacoring toggle engine.
+  * Adding lib3270 revision on sdk.
+  * Refactoring the action table.
+  * Moving charset method to main library.
+  * Refactoring action table for use with keyboard preferences dialog.
+  * Adding product name in the lib3270 "pc" file.
+  * Fixing event trace description.
+  * Updating method declarations.
+  * Adding oversize setting Updating API.
+  * Adding "wait for string" methods Standardizing API Calls
+  * Addint method to wait for screen content.
+  * Updating documentation, adjusting return codes.
+  * Fixing syslog methods.
+  * Splitting property set/get methods.
+  * Adding method to disable the "lock on operator error" feature.
+  * Disabling unlock delay feature when the ms value is 0.
+  * Improving keyboard lock status check.
+  * Adding APIs to get keyboard lock state.
+  * Decreasing delay in "wait_for_ready" method.
+  * Fixing bug in the "wait-for-connect" process.
+  * Fixing "connect" delay.
+  * Fixing confusing documentation of lib3270_connect.
+  * Updating API, adding method to get screen format state.
+  * Adding "length" parameters in the "set" api calls.
+  * Adding ssl state property.
+  * Adjustments in the API.
+  * Refactoring build process.
+  * Adding build option to disable SSL error notifications.
+  * Refactoring toggle api calls.
+  * Adding option to get the entire terminal window as selection.
+  * Default print and save methods now show a warning popup.
+  * Emiting notification when SSL validation fails.
+  * Adding callback to let the application (or user) to decide if the connection will continue on SSL error.
+  * Adding option to use syslog (when available).
+  * Moving event source to global to avoid segfault when writing logs before session creation.
+  * Log messages are now sent to windows event log.
+  * Language bindings library is now part of the IPC plugin package.
+  * Small changes in the paste methods.
+  * Adjustments in selection data.
+  * Adding documentation and return code on input string method.
+  * Adding new method to translate the windows error codes.
+  * Fixing CRL download methods in windows.
+  * Moving new selection management methods to protocol library.
+  * Adding method to erase selected inputs.
+  * Updating clipboard tools.
+  * Adding method to get a rectangle with the selected region.
+  * Improving cut&paste methods.
+  * Updating selection mechanism.
+  * Static library build is now optional and defaults only for windows.
+  * Changing "cut" methods to use the same code for "get".
+  * Refactoring clipboard management.
+  * Adding library name on pkg-config description file (some language binding need it for dynamic loading).
+  * Fixing "keep-selected" flag behavior.
+  * Updating package to follow naming guidelines.
+
+-------------------------------------------------------------------
 Mon Oct  7 15:23:25 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Cleanup spec file

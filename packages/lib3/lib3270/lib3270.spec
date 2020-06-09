@@ -18,7 +18,7 @@
 
 
 Name:           lib3270
-Version:        5.2
+Version:        5.3
 Release:        0
 Summary:        TN3270 Access library
 License:        LGPL-3.0-only
@@ -33,11 +33,16 @@ BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  m4
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  xz
+
+%if 0%{?centos_version}
+# CENTOS Requires gdb for debuginfo
+BuildRequires:  gdb
+%endif
 
 %description
 TN3270 access library, originally designed as part of the pw3270 application.
@@ -66,29 +71,25 @@ Header files for the TN3270 access library.
 %prep
 %setup -q
 NOCONFIGURE=1 ./autogen.sh
-%configure
+%configure --with-release=%{release}
 
 %build
 make all %{?_smp_mflags}
 
 %install
 %make_install
-
-# configure --disable-static is non-functional
-rm -f %{buildroot}/%{_libdir}/*.a
+%find_lang %{name} langfiles
 
 %fdupes %{buildroot}/%{_prefix}
 
-%files -n %{name}-%{_libvrs}
+%files -n %{name}-%{_libvrs}  -f langfiles
 %doc AUTHORS README.md
 %license LICENSE
 
 %{_libdir}/%{name}.so.*
-%{_libdir}/%{name}++.so.*
 
 %files devel
 %{_libdir}/%{name}.so
-%{_libdir}/%{name}++.so
 %dir %{_datadir}/pw3270
 %dir %{_datadir}/pw3270/pot
 %{_datadir}/pw3270/pot/*.pot
