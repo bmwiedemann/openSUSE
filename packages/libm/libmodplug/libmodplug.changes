@@ -1,0 +1,180 @@
+-------------------------------------------------------------------
+Mon Jun  8 07:28:16 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Reinstated libmodplug package from Leap:42.3:Update to replace
+  obsolete libopenmpt generated binary.
+
+-------------------------------------------------------------------
+Mon Mar 19 11:21:27 UTC 2018 - tchvatal@suse.com
+
+- Update to version 0.8.9.0+git20170610.f6dd59a bsc#1022032:
+  * PSM: add missing line to commit
+  * ABC: prevent possible increment of p past end
+  * ABC: ensure read pointer is valid before incrementing
+  * ABC: terminate early when things don't work in substitute
+  * OKT: add one more bound check
+  * FAR: out by one on check
+  * ABC: 10 digit ints require null termination
+  * PSM: make sure reads occur of only valid ins
+  * ABC: cleanup tracks correctly.
+  * WAV: check that there is space for both headers
+  * OKT: ensure file size is enough to contain data
+  * ABC: initialize earlier
+  * ABC: ensure array access is bounded correctly.
+  * ABC: clean up loop exiting code
+  * ABC: avoid possibility of incrementing *p
+  * ABC: abort early if macro would be blank
+  * ABC: Use blankline more often
+  * ABC: Ensure for loop does not increment past end of loop
+  * Initialize nPatterns to 0 earlier
+  * Check memory position isn't over the memory length
+  * ABC: transpose only needs to look at notes (<26)
+
+-------------------------------------------------------------------
+Mon Mar 19 11:10:11 UTC 2018 - tchvatal@suse.com
+
+- Update to version 0.8.9.0+git20171024.e9fc46e:
+  * Spelling fixes
+  * Bump version number to 0.8.9.0
+  * MMCMP: Check that end pointer is within the file size
+  * WAV: ensure integer doesn't overflow
+  * XM: additional mempos check
+  * sndmix: Don't process row if its empty.
+  * snd_fx: dont include patterns of zero size in length calc
+  * MT2,AMF: prevent OOB reads
+
+-------------------------------------------------------------------
+Thu Mar 27 12:05:12 UTC 2014 - tchvatal@suse.com
+
+- Add patch for broken pc file where quite some upstream refer to
+  modplug directly without specifying the subdir it is in.
+  * libmodplug-0.8.8.5-fix-missing-include-path.patch
+
+-------------------------------------------------------------------
+Thu Mar 13 08:50:39 UTC 2014 - reddwarf@opensuse.org
+
+- Update to version 0.8.8.5
+  * Some security patches: CVE-2013-4233, CVE-2013-4234, as well as
+    many fixes suggested by static analyzers: clang build-scan, and coverity.
+- Remove CVE-2013-4233.patch, CVE-2013-4234.patch and libmodplug-overflow.patch
+- Stop using dos2unix
+- Run through spec-cleaner
+- Use full URL in Source tag
+
+-------------------------------------------------------------------
+Tue Oct 22 16:42:30 CEST 2013 - sbrabec@suse.cz
+
+- Two security fixes (bnc#834483):
+  * Fix integer overflow (CVE-2013-4233, CVE-2013-4233.patch).
+  * Fix heap overflows (CVE-2013-4234, CVE-2013-4234.patch).
+
+-------------------------------------------------------------------
+Thu Mar 15 13:10:41 UTC 2012 - aj@suse.de
+
+- Fix buffer overflow.
+
+-------------------------------------------------------------------
+Fri Aug 12 21:24:44 UTC 2011 - dimstar@opensuse.org
+
+- Stop using source services.
+
+-------------------------------------------------------------------
+Mon Aug  8 20:08:13 CEST 2011 - sbrabec@suse.cz
+
+- Update to version 0.8.8.4 (bnc#710726):
+  * Improve timidity.cfg parsing capability
+  * Add source command capability in timidity.cfg
+    (useful for debian default)
+  * Fix integer overflow in WAV reader (SA45131/A)
+  * Fix S3M stack overflow possibility (SA45131/B)
+  * Bound seeking and reading in PAT files
+  * Fix AMS/AMSv2 and DSM too large by one (SA45131/C)
+  * Use bmpvalues in Octamed files when calcuting default tempo
+
+-------------------------------------------------------------------
+Wed May 25 16:27:11 CEST 2011 - sbrabec@suse.cz
+
+- Updated to version 0.8.8.3:
+  * Several security fixes (including CVE-2011-1761, bnc#691137).
+  * Improve compatibility with MSVC 2010
+  * Improve PTM playback (Fix byteswapping)
+  * Improve S3M support (ignore corrupted data, bnc#686624)
+  * Improve AMF support (bounds checking)
+
+-------------------------------------------------------------------
+Sun May 22 21:40:17 UTC 2011 - davejplater@gmail.com
+
+- Fixed ChangeLog eol encoding with dos2unix.
+
+-------------------------------------------------------------------
+Mon Apr 18 23:53:47 CEST 2011 - ro@suse.de
+
+- fix baselibs.conf file 
+
+-------------------------------------------------------------------
+Sun Apr  3 17:58:42 UTC 2011 - reddwarf@opensuse.org
+
+- Updated to version 0.8.8.2
+  *  Improve compatibility with MSVC 2010
+  *  Improve PTM playback (Fix byteswapping)
+  *  Improve S3M support (ignore corrupted data)
+  *  Improve AMF support (bounds checking)
+- Added pkg-config BuildRequire
+- Make build verbose
+- Remove execution permission from shared library
+
+-------------------------------------------------------------------
+Sat Jul 17 11:40:27 UTC 2010 - reddwarf@opensuse.org
+
+- Updated to version 0.8.8.1
+
+-------------------------------------------------------------------
+Tue Feb 16 14:41:20 CET 2010 - meissner@suse.de
+
+- added a baselibs.conf (for libxine1 baselibs)
+
+-------------------------------------------------------------------
+Wed May  6 18:29:14 CEST 2009 - sbrabec@suse.cz
+
+- Changes reviewed and signed-off.
+
+-------------------------------------------------------------------
+Wed Apr 29 16:18:40 CEST 2009 - cmorve69@yahoo.es
+
+- Updated to version 0.8.7.
+  * small fixes contributed since last release
+  * buffer overflow fix (already fixed in openSUSE)
+
+-------------------------------------------------------------------
+Tue Apr 21 15:10:44 CEST 2009 - sbrabec@suse.cz
+
+- Package added to openSUSE Factory - gstreamer-0_10-plugins-bad
+  now depend on external libmodplug. Source: OBS home:RedDwarf.
+- Rename and split according to shared library policy.
+- Updated to version 0.8.6:
+  * small fixes contributed since last release
+  * fixed libmodplug s3m boundary check overflow vulnerability in
+    Amiga MED and OctaMED files (bnc#496541, securityfocus#30801)
+- Fixed invalid delete (bnc#443444).
+- Fixed timidity.cfg path.
+
+-------------------------------------------------------------------
+Mon Mar 23 12:00:00 UTC 2009 - cmorve69@yahoo.es
+
+- First OBS version, from Packman
+
+-------------------------------------------------------------------
+Sat Nov 03 12:00:00 UTC 2006 - Manfred.Tremmel@iiv.de
+
+- Update to 0.8.4
+
+-------------------------------------------------------------------
+Fri Oct 15 12:00:00 UTC 2004 - Manfred.Tremmel@iiv.de
+
+- some little changes for amd64
+
+-------------------------------------------------------------------
+Fri Feb 13 12:00:00 UTC 2004 - Manfred.Tremmel@iiv.de
+
+- Initial version
+

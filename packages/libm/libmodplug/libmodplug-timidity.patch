@@ -1,0 +1,15 @@
+Index: src/load_pat.cpp
+===================================================================
+--- src/load_pat.cpp.orig
++++ src/load_pat.cpp
+@@ -59,8 +59,8 @@ typedef UWORD WORD;
+ #define PATHFORPAT	"C:\\TIMIDITY\\INSTRUMENTS"
+ #else
+ #define DIRDELIM		'/'
+-#define TIMIDITYCFG	"/usr/local/share/timidity/timidity.cfg"
+-#define PATHFORPAT	"/usr/local/share/timidity/instruments"
++#define TIMIDITYCFG	"/etc/timidity.cfg"
++#define PATHFORPAT	"/usr/share/timidity/patch"
+ #endif
+ 
+ #define PAT_ENV_PATH2CFG			"MMPAT_PATH_TO_CFG"

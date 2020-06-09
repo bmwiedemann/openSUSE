@@ -1,0 +1,15 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">https://github.com/Konstanty/libmodplug</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="revision">oob_read_fixes</param>
+    <param name="filename">libmodplug</param>
+    <param name="versionformat">0.8.9.0+git%cd.%h</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>

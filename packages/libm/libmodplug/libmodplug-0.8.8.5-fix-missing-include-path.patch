@@ -1,0 +1,9 @@
+diff -urN libmodplug-0.8.8.5.old/libmodplug.pc.in libmodplug-0.8.8.5/libmodplug.pc.in
+--- libmodplug-0.8.8.5.old/libmodplug.pc.in	2014-03-27 13:04:13.803895733 +0100
++++ libmodplug-0.8.8.5/libmodplug.pc.in	2014-03-27 13:04:26.425896900 +0100
+@@ -9,4 +9,4 @@
+ Requires: 
+ Libs: -L${libdir} -lmodplug 
+ Libs.private: -lstdc++ -lm
+-Cflags: -I${includedir}
++Cflags: -I${includedir} -I${includedir}/libmodplug
