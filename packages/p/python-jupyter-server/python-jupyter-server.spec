@@ -44,7 +44,7 @@ BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module prometheus_client}
 BuildRequires:  %{python_module pytest-console-scripts}
 BuildRequires:  %{python_module pytest-tornasync}
-BuildRequires:  %{python_module pytest4}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyzmq >= 17}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module terminado >= 0.8.1}

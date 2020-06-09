@@ -63,4 +63,12 @@
     <comment>- Drop py2 deps from the spec</comment>
     <requestid>796493</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e40b095bf26ccab3f92813ad56a6370f</srcmd5>
+    <version>0.2.1</version>
+    <time>1591742960</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not restrict us to pytest4 as the tests work with pytest5 too</comment>
+    <requestid>812787</requestid>
+  </revision>
 </revisionlist>
