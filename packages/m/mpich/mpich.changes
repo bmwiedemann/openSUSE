@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  9 19:35:09 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Fix compilation with GCC10 by adding -fallow-argument-mismatch to FFLAGS
+
+-------------------------------------------------------------------
 Tue Apr 14 07:22:58 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Add ch3-fix-improper-error-handling-from-MPL_get_sockaddr.patch and

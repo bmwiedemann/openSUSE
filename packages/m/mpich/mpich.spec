@@ -293,6 +293,12 @@ echo without HPC
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+
+# GCC10 needs an extra flag to allow badly passed parameters
+%if 0%{?suse_version} > 1500
+export FFLAGS="-fallow-argument-mismatch $FFLAGS"
+%endif
+
 ./autogen.sh
 %{?with_hpc:%hpc_debug}
 %if %{with hpc}
