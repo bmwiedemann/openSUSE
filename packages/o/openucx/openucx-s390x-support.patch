@@ -1,4 +1,4 @@
-commit 7efd75794d17351fbcfdd2759fc9abf22af0d631
+commit 02e9e9daa1adf26573bfb0d35c26cca46fb0e777
 Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 Date:   Thu Aug 9 07:41:24 2018 +0200
 
@@ -32,6 +32,20 @@ index 9c7c820d9fff..8297fc7e6ec2 100644
  
  AS_IF([test "x$bistro_hooks_happy" = "xyes"],
        [AC_DEFINE([UCM_BISTRO_HOOKS], [1], [Enable BISTRO hooks])],
+diff --git src/tools/info/sys_info.c src/tools/info/sys_info.c
+index 435e5a6feb8b..9b3beed68ea4 100644
+--- src/tools/info/sys_info.c
++++ src/tools/info/sys_info.c
+@@ -37,7 +37,8 @@ static const char* cpu_vendor_names[] = {
+     [UCS_CPU_VENDOR_INTEL]            = "Intel",
+     [UCS_CPU_VENDOR_AMD]              = "AMD",
+     [UCS_CPU_VENDOR_GENERIC_ARM]      = "Generic ARM",
+-    [UCS_CPU_VENDOR_GENERIC_PPC]      = "Generic PPC"
++    [UCS_CPU_VENDOR_GENERIC_PPC]      = "Generic PPC",
++    [UCS_CPU_VENDOR_GENERIC_IBM]      = "Generic IBM"
+ };
+ 
+ static double measure_memcpy_bandwidth(size_t size)
 diff --git src/ucm/Makefile.am src/ucm/Makefile.am
 index e53a30a46916..21bce848045d 100644
 --- src/ucm/Makefile.am
@@ -79,10 +93,10 @@ index 000000000000..334c0474e8b6
 +
 +#endif
 diff --git src/ucm/mmap/install.c src/ucm/mmap/install.c
-index c58afb37e029..a9cfd5865278 100644
+index 6824a6247bef..81d0375a4132 100644
 --- src/ucm/mmap/install.c
 +++ src/ucm/mmap/install.c
-@@ -254,7 +254,11 @@ static ucs_status_t ucs_mmap_install_reloc(int events)
+@@ -258,7 +258,11 @@ static ucs_status_t ucs_mmap_install_reloc(int events)
                  status = ucm_reloc_modify(&entry->patch);
              } else {
                  ucs_assert(ucm_mmap_hook_mode() == UCM_MMAP_HOOK_BISTRO);
@@ -95,10 +109,18 @@ index c58afb37e029..a9cfd5865278 100644
              if (status != UCS_OK) {
                  ucm_warn("failed to install %s hook for '%s'",
 diff --git src/ucs/Makefile.am src/ucs/Makefile.am
-index 7e8153a4fd07..d41842711a5e 100644
+index 2bd0a8d50c4b..4a60658f34d8 100644
 --- src/ucs/Makefile.am
 +++ src/ucs/Makefile.am
-@@ -56,6 +56,8 @@ noinst_HEADERS = \
+@@ -58,6 +58,7 @@ nobase_dist_libucs_la_HEADERS = \
+ 	arch/x86_64/global_opts.h \
+ 	arch/aarch64/global_opts.h \
+ 	arch/ppc64/global_opts.h \
++	arch/s390x/global_opts.h \
+ 	arch/global_opts.h
+ 
+ noinst_HEADERS = \
+@@ -67,6 +68,8 @@ noinst_HEADERS = \
  	arch/generic/cpu.h \
  	arch/ppc64/bitops.h \
  	arch/ppc64/cpu.h \
@@ -107,8 +129,16 @@ index 7e8153a4fd07..d41842711a5e 100644
  	arch/x86_64/atomic.h \
  	arch/x86_64/bitops.h \
  	arch/x86_64/cpu.h \
+@@ -108,6 +111,7 @@ libucs_la_SOURCES = \
+ 	algorithm/qsort_r.c \
+ 	arch/aarch64/cpu.c \
+ 	arch/aarch64/global_opts.c \
++	arch/s390x/global_opts.c \
+ 	arch/ppc64/timebase.c \
+ 	arch/ppc64/global_opts.c \
+ 	arch/x86_64/cpu.c \
 diff --git src/ucs/arch/atomic.h src/ucs/arch/atomic.h
-index 0caea9b1f3ba..d9afa780bbc5 100644
+index 99e53ca5d0f7..dfa83b757bb0 100644
 --- src/ucs/arch/atomic.h
 +++ src/ucs/arch/atomic.h
 @@ -15,6 +15,8 @@
@@ -121,7 +151,7 @@ index 0caea9b1f3ba..d9afa780bbc5 100644
  #  error "Unsupported architecture"
  #endif
 diff --git src/ucs/arch/bitops.h src/ucs/arch/bitops.h
-index af7bb93392d4..6639045ae0b6 100644
+index 91d4573c1faf..8b092b023639 100644
 --- src/ucs/arch/bitops.h
 +++ src/ucs/arch/bitops.h
 @@ -14,6 +14,8 @@
@@ -133,16 +163,64 @@ index af7bb93392d4..6639045ae0b6 100644
  #else
  #  error "Unsupported architecture"
  #endif
+diff --git src/ucs/arch/cpu.c src/ucs/arch/cpu.c
+index e81f540a899d..40b89907664a 100644
+--- src/ucs/arch/cpu.c
++++ src/ucs/arch/cpu.c
+@@ -57,7 +57,11 @@ const ucs_cpu_builtin_memcpy_t ucs_cpu_builtin_memcpy[UCS_CPU_VENDOR_LAST] = {
+     [UCS_CPU_VENDOR_GENERIC_PPC] = {
+         .min = UCS_MEMUNITS_INF,
+         .max = UCS_MEMUNITS_INF
+-    }
++    },
++    [UCS_CPU_VENDOR_GENERIC_IBM] = {
++        .min = UCS_MEMUNITS_INF,
++        .max = UCS_MEMUNITS_INF
++    },
+ };
+ 
+ const size_t ucs_cpu_est_bcopy_bw[UCS_CPU_VENDOR_LAST] = {
+@@ -65,7 +69,8 @@ const size_t ucs_cpu_est_bcopy_bw[UCS_CPU_VENDOR_LAST] = {
+     [UCS_CPU_VENDOR_INTEL]       = 5800 * UCS_MBYTE,
+     [UCS_CPU_VENDOR_AMD]         = 5008 * UCS_MBYTE,
+     [UCS_CPU_VENDOR_GENERIC_ARM] = 5800 * UCS_MBYTE,
+-    [UCS_CPU_VENDOR_GENERIC_PPC] = 5800 * UCS_MBYTE
++    [UCS_CPU_VENDOR_GENERIC_PPC] = 5800 * UCS_MBYTE,
++    [UCS_CPU_VENDOR_GENERIC_IBM] = 5800 * UCS_MBYTE,
+ };
+ 
+ static void ucs_sysfs_get_cache_size()
 diff --git src/ucs/arch/cpu.h src/ucs/arch/cpu.h
-index 58a83825ee4a..a30456ba441d 100644
+index c1f1cc826b6b..e9d5c5b32ca3 100644
 --- src/ucs/arch/cpu.h
 +++ src/ucs/arch/cpu.h
-@@ -59,6 +59,8 @@ typedef enum ucs_cpu_flag {
+@@ -58,6 +58,7 @@ typedef enum ucs_cpu_vendor {
+     UCS_CPU_VENDOR_AMD,
+     UCS_CPU_VENDOR_GENERIC_ARM,
+     UCS_CPU_VENDOR_GENERIC_PPC,
++    UCS_CPU_VENDOR_GENERIC_IBM,
+     UCS_CPU_VENDOR_LAST
+ } ucs_cpu_vendor_t;
+ 
+@@ -91,6 +92,8 @@ typedef struct ucs_cpu_builtin_memcpy {
  #  include "ppc64/cpu.h"
  #elif defined(__aarch64__)
  #  include "aarch64/cpu.h"
 +#elif defined(__s390x__)
 +#  include "s390x/cpu.h"
+ #else
+ #  error "Unsupported architecture"
+ #endif
+diff --git src/ucs/arch/global_opts.h src/ucs/arch/global_opts.h
+index 8786f130290a..0d251fb91868 100644
+--- src/ucs/arch/global_opts.h
++++ src/ucs/arch/global_opts.h
+@@ -15,6 +15,8 @@
+ #  include "ppc64/global_opts.h"
+ #elif defined(__aarch64__)
+ #  include "aarch64/global_opts.h"
++#elif defined(__s390x__)
++#  include "s390x/global_opts.h"
  #else
  #  error "Unsupported architecture"
  #endif
@@ -186,10 +264,10 @@ index 000000000000..39ad125107e9
 +#endif
 diff --git src/ucs/arch/s390x/cpu.h src/ucs/arch/s390x/cpu.h
 new file mode 100644
-index 000000000000..b8ab713d6e21
+index 000000000000..4f0a87006118
 --- /dev/null
 +++ src/ucs/arch/s390x/cpu.h
-@@ -0,0 +1,53 @@
+@@ -0,0 +1,84 @@
 +/**
 +* Copyright (C) Mellanox Technologies Ltd. 2001-2013.  ALL RIGHTS RESERVED.
 +* Copyright (C) ARM Ltd. 2016-2017.  ALL RIGHTS RESERVED.
@@ -204,9 +282,13 @@ index 000000000000..b8ab713d6e21
 +#include <ucs/sys/compiler.h>
 +#include <ucs/arch/generic/cpu.h>
 +#include <stdint.h>
++#include <string.h>
++#include <ucs/type/status.h>
 +
 +
 +#define UCS_ARCH_CACHE_LINE_SIZE 256
++
++BEGIN_C_DECLS
 +
 +/* Assume the worst - weak memory ordering */
 +#define ucs_memory_bus_fence()        asm volatile (""::: "memory")
@@ -233,6 +315,11 @@ index 000000000000..b8ab713d6e21
 +    return UCS_CPU_MODEL_UNKNOWN;
 +}
 +
++static inline ucs_cpu_vendor_t ucs_arch_get_cpu_vendor()
++{
++    return UCS_CPU_VENDOR_GENERIC_IBM;
++}
++
 +static inline int ucs_arch_get_cpu_flag()
 +{
 +    return UCS_CPU_FLAG_UNKNOWN;
@@ -242,4 +329,87 @@ index 000000000000..b8ab713d6e21
 +
 +#define ucs_arch_wait_mem ucs_arch_generic_wait_mem
 +
++static inline void ucs_cpu_init()
++{
++}
++
++static inline void *ucs_memcpy_relaxed(void *dst, const void *src, size_t len)
++{
++    return memcpy(dst, src, len);
++}
++
++static UCS_F_ALWAYS_INLINE void
++ucs_memcpy_nontemporal(void *dst, const void *src, size_t len)
++{
++    memcpy(dst, src, len);
++}
++
++static inline ucs_status_t ucs_arch_get_cache_size(size_t *cache_sizes)
++{
++    return UCS_ERR_UNSUPPORTED;
++}
++
++END_C_DECLS
++
 +#endif
+diff --git src/ucs/arch/s390x/global_opts.c src/ucs/arch/s390x/global_opts.c
+new file mode 100644
+index 000000000000..4fa0c74034a7
+--- /dev/null
++++ src/ucs/arch/s390x/global_opts.c
+@@ -0,0 +1,24 @@
++/**
++* Copyright (C) Mellanox Technologies Ltd. 2019.  ALL RIGHTS RESERVED.
++*
++* See file LICENSE for terms.
++*/
++
++#if defined(__s390x__)
++
++#ifdef HAVE_CONFIG_H
++#  include "config.h"
++#endif
++
++#include <ucs/arch/global_opts.h>
++#include <ucs/config/parser.h>
++
++ucs_config_field_t ucs_arch_global_opts_table[] = {
++  {NULL}
++};
++
++void ucs_arch_print_memcpy_limits(ucs_arch_global_opts_t *config)
++{
++}
++
++#endif
+diff --git src/ucs/arch/s390x/global_opts.h src/ucs/arch/s390x/global_opts.h
+new file mode 100644
+index 000000000000..225e4e5e896a
+--- /dev/null
++++ src/ucs/arch/s390x/global_opts.h
+@@ -0,0 +1,25 @@
++/**
++* Copyright (C) Mellanox Technologies Ltd. 2019.  ALL RIGHTS RESERVED.
++*
++* See file LICENSE for terms.
++*/
++
++
++#ifndef UCS_PPC64_GLOBAL_OPTS_H_
++#define UCS_PPC64_GLOBAL_OPTS_H_
++
++#include <ucs/sys/compiler_def.h>
++
++BEGIN_C_DECLS
++
++#define UCS_ARCH_GLOBAL_OPTS_INITALIZER {}
++
++/* built-in memcpy config */
++typedef struct ucs_arch_global_opts {
++    char dummy;
++} ucs_arch_global_opts_t;
++
++END_C_DECLS
++
++#endif
++

@@ -1,7 +1,7 @@
 #
 # spec file for package openucx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           openucx
-Summary:        Unifieid Communication X
+Version:        1.8.0
+Release:        0
+Summary:        Communication layer for Message Passing (MPI)
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Version:        1.6.0
-Release:        0
-Url:            http://openucx.org/
+URL:            http://openucx.org/
 
 #Git-Clone:	git://github.com/openucx/ucx
 #Git-Web:	https://github.com/openucx/ucx
@@ -48,14 +48,13 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  aarch64 %power64 x86_64 s390x
 
 %description
-UCX stands for Unified Communication X. UCX provides an optimized communication
-layer for Message Passing (MPI), PGAS/OpenSHMEM libraries and RPC/data-centric
-applications. UCX utilizes high-speed networks, such as RDMA (InfiniBand, RoCE,
-etc), Cray Gemini or Aries, for inter-node communication. If no such network is
-available, TCP is used instead. UCX supports efficient transfer of data in
-either main memory (RAM) or GPU memory (through CUDA and ROCm libraries).
-In addition, UCX provides efficient intra-node communication, by leveraging the
-following shared memory mechanisms: posix, sysv, cma, knem, and xpmem.
+UCX stands for Unified Communication X. UCX provides a communication
+layer for Message Passing (MPI), PGAS/OpenSHMEM libraries and
+RPC/data-centric applications. UCX utilizes networks such as RDMA
+(InfiniBand, RoCE, etc), Cray Gemini or Aries, for inter-node
+communication, or TCP. UCX supports transfer of data in either main
+memory (RAM) or GPU memory (through CUDA and ROCm libraries). UCX
+provides intra-node communication by using shared memory mechanisms.
 
 %package tools
 Summary:        OpenUCX utilities
@@ -70,12 +69,7 @@ Group:          System/Libraries
 
 %description -n libucm0
 libucm is a standalone non-unloadable library which installs hooks
-for virtual memory changes in the current process. Then, it calls
-user-defined callbacks, which may potentially override the default
-behavior, or just passively listen and update their own data. libucm
-does not use libuct, to avoid making it non-unloadable as well, and
-impelements a basic logging service which is safe to use from malloc
-hooks.
+for virtual memory changes in the current process.
 
 %package -n libucm-devel
 Summary:        Development files for Unified Communication X Memory Hooks
@@ -108,8 +102,8 @@ Summary:        Infiniband Unicified Communication Services
 Group:          System/Libraries
 
 %description -n libucs0
-This framework provides basic infrastructure for component based
-programming, memory management, and useful system utilities.
+This framework provides infrastructure for component based
+programming, memory management, and system utilities.
 
 %package -n libucs-devel
 Summary:        Development files for Unified Communication Services (UC-S)
@@ -117,16 +111,16 @@ Group:          Development/Libraries/C and C++
 Requires:       libucs0 = %version
 
 %description -n libucs-devel
-This framework provides basic infrastructure for component based
-programming, memory management, and useful system utilities.
+This framework provides infrastructure for component based
+programming, memory management, and system utilities.
 
 %package -n libuct0
 Summary:        Infiniband Unified Communication Transport
 Group:          System/Libraries
 
 %description -n libuct0
-Low-level API that expose basic network operations supported by
-underlying hardware.
+Low-level API that expose network operations supported by underlying
+hardware.
 
 %package -n libuct-devel
 Summary:        Development files for Unified Communication Transport (UC-T)
@@ -134,8 +128,8 @@ Group:          Development/Libraries/C and C++
 Requires:       libuct0 = %version
 
 %description -n libuct-devel
-Low-level API that expose basic network operations supported by
-underlying hardware.
+Low-level API that expose network operations supported by underlying
+hardware.
 
 %prep
 %setup -qn ucx-%version

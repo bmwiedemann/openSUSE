@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Fri Jun  5 09:38:40 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias and filler wording from descriptions.
+
+-------------------------------------------------------------------
+Thu Jun  4 08:18:26 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v1.8.0
+  - Features:
+    - Improved detection for DEVX support
+    - Improved TCP scalability
+    - Added support for ROCM to perftest
+    - Added support for different source and target memory types to perftest
+    - Added optimized memcpy for ROCM devices
+    - Added hardware tag-matching for CUDA buffers
+    - Added support for CUDA and ROCM managed memories
+    - Added support for client/server disconnect protocol over rdma connection manager
+    - Added support for striding receive queue for hardware tag-matching
+    - Added XPMEM-based rendezvous protocol for shared memory
+    - Added support shared memory communication between containers on same machine
+    - Added support for multi-threaded RDMA memory registration for large regions
+    - Added new test cases to Azure CI
+    - Added support for multiple listening transports
+    - Added UCT socket-based connection manager transport
+    - Updated API for UCT component management
+    - Added API to retrieve the listening port
+    - Added UCP active message API
+    - Removed deprecated API for querying UCT memory domains
+    - Refactored server/client examples
+    - Added support for dlopen interception in UCM
+    - Added support for PCIe atomics
+    - Updated Java API: added support for most of UCP layer operations
+    - Updated support for Mellanox DevX API
+    - Added multiple UCT/TCP transport performance optimizations
+    - Optimized memcpy() for Intel platforms
+    - Added protection from non-UCX socket based app connections
+    - Improved search time for PKEY object
+    - Enabled gtest over IPv6 interfaces
+    - Updated Mellanox and Bull device IDs
+    - Added support for CUDA_VISIBLE_DEVICES
+    - Increased limits for CUDA IPC registration
+  - Bugfixes:
+    - Multiple fixes in JUCX
+    - Fixes in UCP thread safety
+    - Fixes for most recent versions GCC, PGI, and ICC
+    - Fixes for CPU affinity on Azure instances
+    - Fixes in XPMEM support on PPC64
+    - Performance fixes in CUDA IPC
+    - Fixes in RDMA CM flows
+    - Multiple fixes in TCP transport
+    - Multiple fixes in documentation
+    - Fixes in transport lane selection logic
+    - Fixes in Java jar build
+    - Fixes in socket connection manager for Nvidia DGX-2 platform
+    - Multiple fixes in UCP, UCT, UCM libraries
+    - Multiple fixes for BSD and Mac OS systems
+    - Fixes for Clang compiler
+    - Fix CPU optimization configuration options
+    - Fix JUCX build on GPU nodes
+    - Fix in Azure release pipeline flow
+    - Fix in CUDA memory hooks management
+    - Fix in GPU memory peer direct gtest
+    - Fix in TCP connection establishment flow
+    - Fix in GPU IPC check
+    - Fix in CUDA Jenkins test flow
+    - Multiple fixes in CUDA IPC flow
+    - Fix adding missing header files
+    - Fix to prevent failures in presence of VPN enabled Ethernet interfaces
+- Refresh openucx-s390x-support.patch against new version
+
+-------------------------------------------------------------------
 Fri Oct  4 08:11:49 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure /usr/lib/ucx is owned at all times.
