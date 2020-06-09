@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-django-picklefield
-Version:        2.1.1
+Version:        3.0.0
 Release:        0
 Summary:        Pickled object field for Django
 License:        MIT

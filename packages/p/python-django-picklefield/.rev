@@ -113,4 +113,17 @@
   * no changelog</comment>
     <requestid>777595</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c21f199dac8933aec31cd00bb2b3ea39</srcmd5>
+    <version>3.0.0</version>
+    <time>1591743096</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0
+ * Allowed default pickle protocol to be overriden using
+    the PICKLEFIELD_DEFAULT_PROTOCOL setting.
+ * Dropped support for Python 2.
+ * Added testing against Django 3.0.
+ * Dropped support for Django 1.11.</comment>
+    <requestid>812910</requestid>
+  </revision>
 </revisionlist>
