@@ -303,6 +303,8 @@ This package provides development headers for Node.js.
 %package -n npm14
 Summary:        Package manager for Node.js
 Group:          Development/Languages/NodeJS
+Requires:       %{name} = %{version}
+Requires:       nodejs-common
 Recommends:     %{name}-devel = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0

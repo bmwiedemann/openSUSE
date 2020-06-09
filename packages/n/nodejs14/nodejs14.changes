@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  9 11:45:55 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Add Require for nodejs14 when intalling npm14. (bsc#1172728)
+
+-------------------------------------------------------------------
 Thu Jun  4 12:03:49 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Update to version 14.4.0:
