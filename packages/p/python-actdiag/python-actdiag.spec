@@ -31,13 +31,15 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-blockdiag >= 1.5.0
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 %if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24 ||  0%{?rhel} >= 8
 Suggests:       python-docutils
 Suggests:       python-nose
 Suggests:       python-pep8 >= 1.3
 Suggests:       python-reportlab
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -51,12 +53,19 @@ actdiag generates activity-diagram image files from spec-text files.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/actdiag
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative actdiag
+
+%postun
+%python_uninstall_alternative actdiag
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%python3_only %{_bindir}/actdiag
+%python_alternative %{_bindir}/actdiag
 %{python_sitelib}/*
 
 %changelog

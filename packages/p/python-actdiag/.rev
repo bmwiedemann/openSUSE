@@ -40,4 +40,12 @@
   * Drop python2 and python3.4 support</comment>
     <requestid>779142</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>a73abfd1729bebfd396430530f9b614f</srcmd5>
+    <version>2.0.0</version>
+    <time>1591742640</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809820</requestid>
+  </revision>
 </revisionlist>
