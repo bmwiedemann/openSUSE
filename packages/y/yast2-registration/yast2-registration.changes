@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 28 10:50:51 UTC 2020 - Martin Vidner <mvidner@suse.com>
+
+- Declining/refusal of an addon license means canceling all addons.
+  (bsc#1169577)
+- 4.3.1
+
+-------------------------------------------------------------------
 Tue May 12 14:43:44 UTC 2020 - josef Reidinger <jreidinger@localhost>
 
 - Autoyast schema: Allow optional types for string and map objects
