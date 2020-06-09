@@ -1,0 +1,22 @@
+From 924edeccfaaddf483959b8cf140f13ef64420378 Mon Sep 17 00:00:00 2001
+From: Volker Kohaupt <vkohaupt@freenet.de>
+Date: Sat, 6 Jun 2020 08:42:07 +0200
+Subject: [PATCH] Adapted to Qt 5.15.0
+
+---
+ src/region/QvkRegionButtonArrow.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/region/QvkRegionButtonArrow.cpp b/src/region/QvkRegionButtonArrow.cpp
+index 984048b0..82987915 100644
+--- a/src/region/QvkRegionButtonArrow.cpp
++++ b/src/region/QvkRegionButtonArrow.cpp
+@@ -22,6 +22,8 @@
+ 
+ #include "QvkRegionButtonArrow.h"
+ 
++#include <QPainterPath>
++
+ QvkRegionButtonArrow::QvkRegionButtonArrow()
+ {
+ }

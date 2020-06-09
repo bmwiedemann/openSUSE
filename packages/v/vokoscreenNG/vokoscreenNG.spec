@@ -24,6 +24,8 @@ License:        GPL-2.0-only
 Group:          Productivity/Multimedia/Other
 URL:            https://github.com/vkohaupt/vokoscreenNG
 Source:         https://github.com/vkohaupt/%{name}/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - Fix Qt 5.15 build failure
+Patch0:         adapt-to-qt-5.15.patch
 BuildRequires:  gstreamer-devel
 BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
@@ -62,7 +64,7 @@ Obsoletes:      vokoscreen < %{version}
 vokoscreenNG is a user friendly Open Source screencaster for Linux and Windows.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 cd src

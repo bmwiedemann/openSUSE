@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  8 11:33:18 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- added adapt-to-qt-5.15.patch
+  * upstream fix for Qt 5.15 build failure
+
+-------------------------------------------------------------------
 Thu Apr 30 12:03:33 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 3.0.4
