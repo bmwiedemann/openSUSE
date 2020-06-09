@@ -31,6 +31,8 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,15 +47,22 @@ Base58 and Base58Check implementation compatible with what is used by the bitcoi
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/base58
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative base58
+
+%postun
+%python_uninstall_alternative base58
+
 %files %{python_files}
 %doc README.md
 %license COPYING
-%python3_only %{_bindir}/base58
+%python_alternative %{_bindir}/base58
 %{python_sitelib}/*
 
 %changelog
