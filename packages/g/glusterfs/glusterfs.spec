@@ -249,7 +249,7 @@ rm -f "%buildroot/%_sbindir/conf.py"
 %_unitdir/glustereventsd.service
 %_unitdir/glusterfssharedstorage.service
 %_unitdir/gluster-ta-volume.service
-%_libexecdir/ocf
+/usr/lib/ocf
 
 %files -n libgfapi0
 %_libdir/libgfapi.so.0*
