@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jun  6 22:00:39 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 0.4.3
+- Fixed
+  * Tabstops not being reset with reset
+  * Fallback to LC_CTYPE=UTF-8 on macOS without valid system locale
+  * Resize lag on launch under some X11 wms
+  * Increased input latency due to vsync behavior on X11
+  * Emoji colors blending with terminal background
+  * Fix escapes prematurely terminated by terminators in unicode glyphs
+  * Incorrect location when clicking inside an unfocused window on macOS
+  * Startup mode Maximized on Windows
+  * Crash when writing a fullwidth character in the last column with auto-wrap mode disabled
+  * Crashing at startup on Windows
+- run spec-cleaner
+
+-------------------------------------------------------------------
 Mon Mar 30 12:04:23 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - Update to 0.4.2

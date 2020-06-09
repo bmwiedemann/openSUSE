@@ -20,11 +20,10 @@
 %global rustflags "-Clink-arg=-Wl,-z,relro,-z,now"
 
 Name:           alacritty
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        A GPU-accelerated terminal emulator
 License:        Apache-2.0
-Group:          System/X11/Terminals
 URL:            https://github.com/jwilm/alacritty/
 Source:         https://github.com/jwilm/alacritty/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
@@ -47,9 +46,8 @@ rendering.
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
-Group:          System/X11/Terminals
 Requires:       bash-completion
-Supplements:    packageand(%{name}:bash)
+Supplements:    (%{name} and bash)
 BuildArch:      noarch
 
 %description bash-completion
@@ -58,8 +56,7 @@ for every argument that can currently be passed to alacritty.
 
 %package fish-completion
 Summary:        Fish Completion for %{name}
-Group:          System/X11/Terminals
-Supplements:    packageand(%{name}:fish)
+Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
 %description fish-completion
@@ -67,8 +64,7 @@ The official fish completion script for alacritty.
 
 %package zsh-completion
 Summary:        ZSH Completion for %{name}
-Group:          System/X11/Terminals
-Supplements:    packageand(%{name}:zsh)
+Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
 %description zsh-completion
