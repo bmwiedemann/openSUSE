@@ -309,4 +309,12 @@
   * Update use_system_v4l_for_qv4l.patch (forwarded request 799704 from StefanBruens)</comment>
     <requestid>799785</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>d1c19693e0bd3702ae3f5d2ce47890d9</srcmd5>
+    <version>1.18.1</version>
+    <time>1591742047</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812412</requestid>
+  </revision>
 </revisionlist>

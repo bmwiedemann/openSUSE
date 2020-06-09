@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun  7 15:09:57 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- libv4l-devel-32bit needs to require the shared libraries belonging
+  to it, libv4l1-0-32bit + libv4l2-0-32bit + libv4l2rds0-32bit + libv4lconvert0-32bit.
+
+  This helps Wine development (bsc#1172301)
+
+-------------------------------------------------------------------
 Sat May  2 15:30:43 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 1.18.1:
