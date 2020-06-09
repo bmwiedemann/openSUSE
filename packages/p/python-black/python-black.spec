@@ -1,7 +1,7 @@
 #
 # spec file for package python-black
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,6 +56,8 @@ Requires:       python-regex
 Requires:       python-toml >= 0.9.4
 Requires:       python-typed-ast
 Requires:       python-typing_extensions
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -80,6 +82,7 @@ rm -rf %{pypi_name}.egg-info
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/black
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # TODO: missing aiohttp-cors (not in distribution and tests failing)
 rm %{buildroot}/%{_bindir}/blackd
@@ -88,10 +91,16 @@ rm %{buildroot}/%{_bindir}/blackd
 # test_expression_diff - sometimes fails on async timing in OBS
 %pytest -k 'not test_expression_diff'
 
+%post
+%python_install_alternative black
+
+%postun
+%python_uninstall_alternative black
+
 %files %{python_files}
 %doc README.md
-%python3_only %{_bindir}/black
-#%%python3_only %%{_bindir}/blackd
+%python_alternative %{_bindir}/black
+#%%python_alternative %%{_bindir}/blackd
 %license LICENSE
 %{python_sitelib}/*
 
