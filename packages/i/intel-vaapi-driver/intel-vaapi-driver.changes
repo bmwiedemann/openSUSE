@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  9 10:38:34 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_Fix-HEVCe-kernel-compile-error-on-gcc10.patch
+  * fixed build against gcc10, which uses -fno-common by default 
+
+-------------------------------------------------------------------
 Mon Feb 17 18:54:18 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.4.0

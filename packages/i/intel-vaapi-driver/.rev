@@ -109,4 +109,13 @@ vaapi-intel-driver needs to be dropped then.</comment>
   * U_vaapi_Fix-off-by-one-in-ROI-regions.patch</comment>
     <requestid>775129</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d8004420b351bfb3e3601c4858284649</srcmd5>
+    <version>2.4.0</version>
+    <time>1591743036</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Fix-HEVCe-kernel-compile-error-on-gcc10.patch
+  * fixed build against gcc10, which uses -fno-common by default</comment>
+    <requestid>812865</requestid>
+  </revision>
 </revisionlist>
