@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun  8 07:53:38 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.3.0:
+  * Add json example for C (#870)
+  * Add both header and body packing functions for C (#870)
+  * Set default ref_size and chunk_size to vrefbuffer (#865)
+  * Add examples (#861)
+  * Improve build system (#839, #842)
+  * Improve tests (#829)
+  * Improve documents (#828)
+  * Remove some warnings (#827, #851, #871])
+  * Improve CI environment (#824, #831, #833, #834, #846,
+  #860, 874)
+
+-------------------------------------------------------------------
 Tue Dec 10 15:34:04 UTC 2019 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.2.1:

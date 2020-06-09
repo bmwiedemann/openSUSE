@@ -1,7 +1,7 @@
 #
 # spec file for package msgpack
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           msgpack
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        Object serialization library for cross-language communication
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-Url:            https://msgpack.org
+URL:            https://msgpack.org
 Source0:        https://github.com/msgpack/msgpack-c/releases/download/cpp-%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
