@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  9 08:05:42 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- replace nose with pytest
+
+-------------------------------------------------------------------
 Tue Dec  3 18:32:31 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - initial version

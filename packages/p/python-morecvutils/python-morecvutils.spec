@@ -1,7 +1,7 @@
 #
 # spec file for package python-morecvutils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,18 +29,17 @@ BuildRequires:  %{python_module pip >= 10}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       ffmpeg
+Requires:       gstreamer-plugins-good
 Requires:       python-imageio
 Requires:       python-imageio-ffmpeg
 Requires:       python-numpy
 Requires:       python-opencv
-Requires:       ffmpeg
-Requires:       gstreamer-plugins-good
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module coveralls}
-BuildRequires:  %{python_module imageio}
 BuildRequires:  %{python_module imageio-ffmpeg}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module imageio}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module opencv}
 BuildRequires:  %{python_module pytest}
@@ -70,7 +69,7 @@ rm %{buildroot}%{_bindir}/OpticalFlow_Python_vs_Matlab.py
 
 %check
 # test uses AVC/AAC file
-%python_expand nosetests-%{$python_bin_suffix} -e test_avi
+%pytest -k "not test_avi"
 
 %files %{python_files}
 %doc README.md
