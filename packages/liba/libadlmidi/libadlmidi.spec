@@ -1,6 +1,7 @@
 #
 # spec file for package libadlmidi
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,10 +22,12 @@ Name:           libadlmidi
 Version:        1.4.0.1
 Release:        0
 Summary:        A software MIDI synthesizer library with OPL3 emulation
-License:        GPL-3.0-only AND LGPL-3.0
+License:        GPL-3.0-only AND LGPL-3.0-only
 Group:          Development/Languages/C and C++
 URL:            https://github.com/Wohlstand/libADLMIDI
 Source:         https://github.com/Wohlstand/libADLMIDI/archive/v%{version}-1.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - https://github.com/Wohlstand/libADLMIDI/issues/229
+Patch1:         libadlmidi-fix-arm.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -62,6 +65,7 @@ Development and header files for libADLMIDI.
 
 %prep
 %setup -q -n libADLMIDI-%{version}-1
+%patch1 -p1
 
 %build
 %cmake \
