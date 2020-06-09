@@ -153,4 +153,14 @@
     <comment></comment>
     <requestid>799321</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a637327a412780f98362badf3234dea3</srcmd5>
+    <version>1.2</version>
+    <time>1591742107</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2
+  - depend on dbus and not network as we disabled etcd support
+    [bsc#1172518]</comment>
+    <requestid>812647</requestid>
+  </revision>
 </revisionlist>
