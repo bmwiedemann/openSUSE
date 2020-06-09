@@ -1,0 +1,63 @@
+From 31f586eca3b21ece95a55ba7b0a66526cb92ff12 Mon Sep 17 00:00:00 2001
+From: lbartoletti <loic.bartoletti@oslandia.com>
+Date: Sun, 31 May 2020 09:55:45 +0200
+Subject: [PATCH] Prepare for Qt5.15. Add QPainterPath include
+
+---
+ src/core/dxf/qgsdxfpaintengine.h    | 1 +
+ src/core/geometry/qgscurve.h        | 2 +-
+ src/core/symbology/qgssymbollayer.h | 1 +
+ src/gui/qgsmapoverviewcanvas.cpp    | 1 +
+ 4 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/core/dxf/qgsdxfpaintengine.h b/src/core/dxf/qgsdxfpaintengine.h
+index 49b2279c4471..103a1b910f97 100644
+--- a/src/core/dxf/qgsdxfpaintengine.h
++++ b/src/core/dxf/qgsdxfpaintengine.h
+@@ -22,6 +22,7 @@
+ 
+ #include "qgis_core.h"
+ #include <QPaintEngine>
++#include <QPainterPath>
+ #include "qgsabstractgeometry.h"
+ 
+ class QgsPoint;
+diff --git a/src/core/geometry/qgscurve.h b/src/core/geometry/qgscurve.h
+index 4c1dcf393fbd..a936655242ca 100644
+--- a/src/core/geometry/qgscurve.h
++++ b/src/core/geometry/qgscurve.h
+@@ -22,9 +22,9 @@
+ #include "qgis_sip.h"
+ #include "qgsabstractgeometry.h"
+ #include "qgsrectangle.h"
++#include <QPainterPath>
+ 
+ class QgsLineString;
+-class QPainterPath;
+ 
+ /**
+  * \ingroup core
+diff --git a/src/core/symbology/qgssymbollayer.h b/src/core/symbology/qgssymbollayer.h
+index cf140e4382d4..725a08062d70 100644
+--- a/src/core/symbology/qgssymbollayer.h
++++ b/src/core/symbology/qgssymbollayer.h
+@@ -26,6 +26,7 @@
+ #include <QSet>
+ #include <QDomDocument>
+ #include <QDomElement>
++#include <QPainterPath>
+ 
+ #include "qgssymbol.h"
+ #include "qgsfields.h"
+diff --git a/src/gui/qgsmapoverviewcanvas.cpp b/src/gui/qgsmapoverviewcanvas.cpp
+index 66f063c5cb2e..e72c6570d8cd 100644
+--- a/src/gui/qgsmapoverviewcanvas.cpp
++++ b/src/gui/qgsmapoverviewcanvas.cpp
+@@ -24,6 +24,7 @@
+ #include "qgsmaptopixel.h"
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QPaintEvent>
+ #include <QResizeEvent>
+ #include <QMouseEvent>

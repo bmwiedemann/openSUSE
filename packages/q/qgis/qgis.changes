@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun  8 15:39:20 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 3.12.3 (bugfix)
+
+-------------------------------------------------------------------
+Mon Jun  8 15:38:09 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport patch for qt 5.15:
+  * qgis-qt5.15.patch
+
+-------------------------------------------------------------------
 Mon Apr 27 17:52:35 UTC 2020 - Nicolas Rochard <nrochard@gmail.com>
 
 - Update to 3.12.2 (monthly bugfix)

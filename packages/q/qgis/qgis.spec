@@ -18,7 +18,7 @@
 
 %bcond_without grass
 Name:           qgis
-Version:        3.12.2
+Version:        3.12.3
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
@@ -28,6 +28,8 @@ Source:         https://qgis.org/downloads/%{name}-%{version}.tar.bz2
 Source1:        https://qgis.org/downloads/%{name}-%{version}.tar.bz2.sha256
 Source2:        %{name}.rpmlintrc
 Source3:        qgis_sample_data.zip
+# PATCH-FIX-UPSTREAM - Commit 31f586ec
+Patch1:         qgis-qt5.15.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  bison >= 2.4
 BuildRequires:  cmake >= 3.0.0
