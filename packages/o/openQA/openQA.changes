@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue Jun 09 10:52:53 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1591699942.8543386ed:
+  * Dependency cron 200609
+  * Add notes about arbitrary reasons
+  * Remove out-dated comments; stopping will no longer be delayed as stated
+  * Use newly introduced constants for worker commands and stop reasons
+  * Improve dealing with worker commands and stop reasons
+  * Add missing copyright header in constants modules
+  * Remove stop type 'scheduler_abort' which is not used anymore
+  * Improve coding style in set_running
+  * Prevent Perl warning in downloader code
+  * Improve UI for selecting the display order of builds
+  * Select interval checkbox for interval from query parameter if applicable
+  * Improve wording in the index page form, mainly to improve consistency
+  * Improve coding style in JavaScript/CSS/template files
+  * Avoid accumulating `comments_page` query parameters when using pagination
+  * Fix typo in pagination code
+  * Add autorefresh in the index page (#3141)
+  * Maintain pagination when an user role changes
+  * Fix pagination in the group overview page
+  * Dependency cron 200605
+  * Turn two schema functions into methods
+  * Hide livestream when loading test details and job is currently uploading
+  * Update out-dated comment; the image upload is async via Mojo::IOLoop->subprocess
+  * t: Use Test::MockModule->redefine in t/28-logging.t
+  * Only reload test schedule when test_order.json has been changed
+  * Make restart button work again after the job state changed
+  * Dependency cron 200604
+  * t: Allow to configure amount of unstable/rejective workers in 05-scheduler-full.t
+  * t: Simplify worker startup in 05-scheduler-full with map
+  * t: Improve test description strings in 05-scheduler-full
+  * t: Fix warning in 28-logging.t with strict MockModule and Test::Warnings
+  * Extract methods for "ignore_known_images" and "ignore_known_files" in Worker::Job
+  * Simplify Worker::Job slightly
+  * Remove unnecessary single-line step in Worker::Job
+  * Use the more idiomatic ->find instead of ->single
+  * Replace duplicate method OpenQA::Schema::Result::Workers::to_string
+  * Delete unnecessary pre-declaration of log_warning in OpenQA::Log
+  * Generalize handling the video
+  * Remove dead code from OpenQA::WebAPI::Plugin::ObsRsync
+  * doc: Improve virtio/svirt serial terminal docs
+  * Fix tests on OBS when "ps" is not installed
+  * Use :report_warnings feature of Test::Warnings
+  * Mark "25-cache-service.t" as unstable test as observed in circleci
+  * Mark old issues and pull requests as stale
+  * Extract methods for "ignore_known_images" and "ignore_known_files" in Worker::Job
+  * Simplify Worker::Job slightly
+  * Remove unnecessary single-line step in Worker::Job
+  * t: Fix "Dubious, test returned 9" in 05-scheduler-full.t
+  * t: Fix unstable test 'Allocated maximum number' in 05-scheduler-full
+  * t: Sleep only when necessary when waiting for worker
+  * t: Fix sporadic test failures on mis-assignment of jobs in scheduling
+  * t: Increase robustness of 05-scheduler-full with reduced scheduler tick
+  * t: Prevent use of occupied port in all full-stack/scalability tests
+  * Makefile: Bump timeout limit for various tests for slow circleci
+  * t: Provide unique process name for worker in scalability test as well
+  * t: More cleanup in t/05-scheduler-full.t
+
+-------------------------------------------------------------------
 Tue Jun 02 10:06:57 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1591092399.b9fb68988:
