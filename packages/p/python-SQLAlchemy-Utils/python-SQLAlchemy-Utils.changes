@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun  9 12:14:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add missing deps
+- Reenable testsuite by skipping the tests needing pgsql
+
+-------------------------------------------------------------------
+Mon Jun  8 13:33:49 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.36.6:
+  - Reverted #426 and added support for Legacy Encrypted Type (#450, pull request courtesy of rushilsrivastava)
+  - Added psycopg2cffi support for create_database and drop_database (#447, pull request courtesy of DominicBurkart)
+
+-------------------------------------------------------------------
 Sat May  9 16:12:59 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.36.5:

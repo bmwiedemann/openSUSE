@@ -222,4 +222,17 @@
     <comment></comment>
     <requestid>802548</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ed77153fbcc1572b7b1c7608a3219e19</srcmd5>
+    <version>0.36.6</version>
+    <time>1591742853</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing deps
+- Reenable testsuite by skipping the tests needing pgsql
+
+- update to 0.36.6:
+  - Reverted #426 and added support for Legacy Encrypted Type (#450, pull request courtesy of rushilsrivastava)
+  - Added psycopg2cffi support for create_database and drop_database (#447, pull request courtesy of DominicBurkart)</comment>
+    <requestid>812913</requestid>
+  </revision>
 </revisionlist>
