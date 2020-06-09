@@ -17,7 +17,7 @@
 
 
 Name:           microos-tools
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
@@ -65,8 +65,11 @@ Files, scripts and directories for openSUSE Kubic.
 %{_unitdir}/printenv.service
 %{_unitdir}/setup-systemd-proxy-env.path
 %{_unitdir}/setup-systemd-proxy-env.service
-%{_unitdir}/sysinit.target.wants
+%{_unitdir}/tmp.mount
+%dir %{_unitdir}/sysinit.target.wants
 %{_unitdir}/sysinit.target.wants/MicroOS-firstboot.service
+%dir %{_unitdir}/local-fs.target.wants
+%{_unitdir}/local-fs.target.wants/tmp.mount
 %{_prefix}/lib/sysctl.d/30-corefiles.conf
 %{_libexecdir}/MicroOS-firstboot
 %{_sbindir}/setup-systemd-proxy-env

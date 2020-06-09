@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  5 10:14:16 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.1
+  - Provide support to use tmpfs for /tmp
+
+-------------------------------------------------------------------
 Sun May 10 09:32:13 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.0
