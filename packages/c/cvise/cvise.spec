@@ -21,7 +21,6 @@ Version:        1.4.0+git.20200601.4173fa7
 Release:        0
 Summary:        Super-parallel Python port of the C-Reduce
 License:        BSD-3-Clause
-Group:          Development/Tools/Other
 URL:            https://github.com/marxin/cvise
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  astyle
@@ -35,7 +34,7 @@ BuildRequires:  ncurses-devel
 BuildRequires:  ninja
 BuildRequires:  python3-Pebble
 BuildRequires:  python3-psutil
-BuildRequires:  python3-pytest4
+BuildRequires:  python3-pytest
 BuildRequires:  unifdef
 Requires:       astyle
 Requires:       clang10
@@ -62,12 +61,12 @@ and report bugs in compilers and other tools that process C/C++ or OpenCL code.
 
 %build
 %define __builder ninja
-%cmake -DCMAKE_INSTALL_LIBEXECDIR=%_libexecdir
+%cmake -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir}
 %cmake_build
 
 %check
 cd build
-pytest .
+pytest -v .
 
 %install
 %cmake_install
