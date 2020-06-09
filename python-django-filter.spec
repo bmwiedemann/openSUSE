@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-filter
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-filter
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Reusable Django app to allow users to filter queryset dynamically
 License:        BSD-3-Clause
@@ -34,6 +34,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
+Requires:       python-djangorestframework
 Recommends:     python-django-crispy-forms
 BuildArch:      noarch
 %python_subpackages
@@ -53,7 +54,7 @@ requires Python 2.7 or higher. For usage and installation instructions, consult 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec runtests.py
+%python_exec runtests.py -v 2 
 
 %files %{python_files}
 %license LICENSE
