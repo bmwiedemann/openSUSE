@@ -26,7 +26,7 @@ URL:            http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
 Group:          System/Emulators/PC
-Version:        202002
+Version:        202005
 Release:        0
 Source0:        https://github.com/tianocore/edk2/archive/edk2-stable%{version}.tar.gz
 Source1:        https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz
@@ -39,6 +39,10 @@ Source5:        openSUSE-UEFI-SIGN-Certificate-2048.crt
 # berkeley-softfloat-3: https://github.com/ucb-bar/berkeley-softfloat-3
 Source6:        berkeley-softfloat-3-%{softfloat_version}.tar.xz
 Source7:        descriptors.tar.xz
+# brotli: https://github.com/google/brotli, "c" directory only
+Source8:        brotli-v1.0.7-17-g666c328-c.tar.xz
+# oniguruma: https://github.com/kkos/oniguruma,  "src" directory only
+Source9:        oniguruma-v6.9.4_mark1-src.tar.xz
 Source100:      %{name}-rpmlintrc
 Source101:      gdb_uefi.py.in
 Source102:      gen-key-enrollment-iso.sh
@@ -48,8 +52,6 @@ Patch2:         %{name}-gdb-symbols.patch
 Patch3:         %{name}-pie.patch
 Patch4:         %{name}-disable-ia32-firmware-piepic.patch
 Patch5:         %{name}-set-fixed-enroll-time.patch
-Patch6:         %{name}-bsc1163927-fix-ping-and-ip6dxe.patch
-Patch7:         %{name}-bsc1171643-workaround-outline-atomics.patch
 Patch100:       openssl-fix-syntax-error.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bc
@@ -168,10 +170,6 @@ rm -rf $PKG_TO_REMOVE
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
-%if %{gcc_version} >= 10
-%patch7 -p1
-%endif
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
@@ -186,6 +184,19 @@ popd
 
 # prepare the firmware descriptors for qemu
 tar -xf %{SOURCE7}
+
+# add brotli
+pushd BaseTools/Source/C/BrotliCompress/brotli
+tar -xf %{SOURCE8} --strip 1
+popd
+pushd MdeModulePkg/Library/BrotliCustomDecompressLib/brotli
+tar -xf %{SOURCE8} --strip 1
+popd
+
+# add oniguruma
+pushd MdeModulePkg/Universal/RegularExpressionDxe/oniguruma
+tar -xf %{SOURCE9} --strip 1
+popd
 
 chmod +x %{SOURCE102}
 

@@ -1,4 +1,4 @@
-From 7eef4b6160dc5503acdf3b6a5b932085fe67abe6 Mon Sep 17 00:00:00 2001
+From 263791566fbe25755aebde54c98d5aea061414f3 Mon Sep 17 00:00:00 2001
 From: Gary Ching-Pang Lin <glin@suse.com>
 Date: Tue, 24 Jun 2014 11:57:32 +0800
 Subject: [PATCH 1/3] Add DebugPkg
@@ -551,7 +551,7 @@ index 000000000000..dac215c53893
 2.25.1
 
 
-From 91908717fae43b7fa1d4b2e353258b2c93677216 Mon Sep 17 00:00:00 2001
+From 2554f33897c7caa946110444992cb8edb01eb60c Mon Sep 17 00:00:00 2001
 From: Gary Ching-Pang Lin <glin@suse.com>
 Date: Tue, 24 Jun 2014 11:59:02 +0800
 Subject: [PATCH 2/3] Compile DebugPkg and load .debug files
@@ -582,12 +582,12 @@ index dac215c53893..3db87a4de430 100644
                               (sym_name,
                                long (base)))
 diff --git a/OvmfPkg/OvmfPkgX64.dsc b/OvmfPkg/OvmfPkgX64.dsc
-index f6c1d8d228c6..e886e2468f28 100644
+index f7fe75ebf531..05a010659440 100644
 --- a/OvmfPkg/OvmfPkgX64.dsc
 +++ b/OvmfPkg/OvmfPkgX64.dsc
-@@ -940,3 +940,5 @@ [Components]
-   SecurityPkg/Tcg/Tcg2Config/Tcg2ConfigDxe.inf
- !endif
+@@ -1011,3 +1011,5 @@ [Components]
+       Tpm12DeviceLib|SecurityPkg/Library/Tpm12DeviceLibDTpm/Tpm12DeviceLibDTpm.inf
+   }
  !endif
 +
 +  DebugPkg/GdbSyms/GdbSyms.inf
@@ -595,7 +595,7 @@ index f6c1d8d228c6..e886e2468f28 100644
 2.25.1
 
 
-From 768ec2226be984a63afa9329f183ab74a6671a4b Mon Sep 17 00:00:00 2001
+From adf37c44c49f3bc6a654e5d8efd8ee28558d51ab Mon Sep 17 00:00:00 2001
 From: Gary Lin <glin@suse.com>
 Date: Mon, 16 Oct 2017 16:32:27 +0800
 Subject: [PATCH 3/3] DebugPkg: Print the local variables

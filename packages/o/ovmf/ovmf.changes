@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Jun  9 08:06:06 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Use the reduced source tarballs since ovmf only needs a portion
+  of the code.
+  + brotli-v1.0.7-17-g666c328.tar.xz ->
+    brotli-v1.0.7-17-g666c328-c.tar.xz
+    - We only need the "c" directory, not the whole tarball.
+  + oniguruma-v6.9.4_mark1.tar.xz ->
+    oniguruma-v6.9.4_mark1-src.tar.xz
+    - We only need the "src" directory, not the whole tarball.
+
+-------------------------------------------------------------------
+Fri Jun  5 06:33:21 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to edk2-stable202005
+  + RegularExpressionDxe: Use submodule way to access third party
+    Oniguruma
+  + BrotliCustomDecompressLib: Use submodule way to access third
+    party brotli
+  + BaseTools: Use submodule way to access third party brotli
+  + RISC-V architecture on EDK2
+  + Disabling safe string constraint assertions
+  + ArmVirtPkg Implement support for TPM2 measured boot
+  + OVMF Implement support for Linux v5.7+ initrd and mixed mode
+    loading
+  + OVMF Use loadimage/startimage for loading the kernel passed
+    via the QEMU command line
+  + OVMF Support booting from Fusion-MPT SCSI controllers
+  + OVMF Support booting from VMware PVSCSI controllers
+  + OVMF RFE: VCPU hotplug with SMM
+  + OVMF PEI phase variable driver / MemoryTypeInfo tracking
+  + ArmVirtPkg, OvmfPkg: Pass parameter from QEMU to control PXE
+    IPv4/v6 boot
+  + Remove deprecate APIs in BaseCryptLib
+  + Add UEFI 2.8/2.8a definition in MdePkg
+  + Add PI1.7/PI1.7a definition into MdePkg
+  + BaseCryptoLib MD4, ARC4, TDES, AES ECB MODE, HMAC MD5, HMAC
+    SHA1 API have been deprecated.
+  + SecurityPkg Tcg2PhysicalPresenceLib library class removes two
+    macros TCG2_BIOS_TPM_MANAGEMENT_FLAG_DEFAULT and
+    TCG2_BIOS_STORAGE_MANAGEMENT_FLAG_DEFAULT.
+- Add 2 tarballs from the submodules of edk2:
+  + brotli-v1.0.7-17-g666c328.tar.xz
+  + oniguruma-v6.9.4_mark1.tar.xz
+- Refresh patches:
+  + ovmf-add-exclude-shell-flag.patch
+  + ovmf-gdb-symbols.patch
+- Drop upstream patch: ovmf-bsc1163927-fix-ping-and-ip6dxe.patch
+- Drop ovmf-bsc1171643-workaround-outline-atomics.patch since
+  upstream fixed it in another way.
+
+-------------------------------------------------------------------
 Thu May 21 03:36:17 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add ovmf-bsc1171643-workaround-outline-atomics.patch to disable
