@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 02 16:41:06 UTC 2020 - dmueller@suse.com
+
+- Update to version 3.1.2.1588659169.f14903a:
+  * Bump patch level, this time with known signature
+  * Accept that this arguably simple feature can't be tested easily…
+  * allow setting depth when cloning a submodule
+  * add test case for submodule depth parameter
+  * add myself to AUTHORS
+  * Change signing key back to what it was
+  * bump patch level
+  * Remove forced verbosity when fetching from a remote
+  * Now it should really start working - go, doctests, go!
+  * Maybe this fixes the doc tests
+
+-------------------------------------------------------------------
 Mon May 04 09:21:39 UTC 2020 - johannes.grassler@suse.com
 
 - Update to version 3.1.1.1586590969.b860d1873a25:
