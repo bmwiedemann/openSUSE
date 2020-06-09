@@ -16,11 +16,12 @@
 #
 
 
-%define libplug libmodplug1
 %define libopenmpt libopenmpt0
 %define libopenmpt_modplug libopenmpt_modplug1
+%define libopenmpt_modplug_version 0.8.9.0
+
 Name:           libopenmpt
-Version:        0.4.12
+Version:        0.5.0
 Release:        0
 Summary:        C++ and C library to decode tracker music files
 License:        BSD-3-Clause
@@ -28,8 +29,6 @@ Group:          Productivity/Multimedia/Other
 URL:            https://lib.openmpt.org/libopenmpt/
 Source:         https://lib.openmpt.org/files/libopenmpt/src/%{name}-%{version}+release.autotools.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM: modplug pc file needs to have full path
-Patch0:         libmodpulg-pcfile.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  dos2unix
@@ -53,28 +52,6 @@ libopenmpt is a C++ and C library to decode tracker music files
 (modules) into a PCM audio stream. It is based on the player code of
 the OpenMPT project, a descendant of the original ModPlug Tracker.
 
-%package -n %{libplug}
-Summary:        Library to operate with module formats
-Group:          System/Libraries
-
-%description -n %{libplug}
-This is the Modplug library, based on the ModPlug sound engine coming
-from libopenmpt.
-- plays 22 different module formats
-- plays zip, rar, gzip, and bzip2 compressed modules
-- plays Timidity's GUS patch files (*.pat)
-- plays all types of MIDI files (*.mid)
-- plays textfiles written in the ABC music notation (*.abc)
-
-%package -n libmodplug-devel
-Summary:        Development files for libmodplug
-Group:          Development/Libraries/C and C++
-Requires:       %{libplug} = %{version}
-
-%description -n libmodplug-devel
-Files needed to program against libmodplug interface.
-This version comes from libopenmpt.
-
 %package -n %{libopenmpt}
 Summary:        Library to operate with module formats using the openmpt API
 Group:          System/Libraries
@@ -84,19 +61,9 @@ libopenmpt is a C++ and C library to decode tracker music files
 (modules) into a PCM audio stream. It is based on the player code of
 the OpenMPT project, a descendant of the original ModPlug Tracker.
 
-%package -n %{libopenmpt_modplug}
-Summary:        Modplug wrapper for a library to operate with module formats
-Group:          System/Libraries
-
-%description -n %{libopenmpt_modplug}
-This package contains the modplug compatibility shared library. It is used by
-programs that want to use libopenmpt's decoder, but are written using
-libmodplug's API.
-
 %package devel
 Summary:        Development files for libopenmpt
 Group:          Development/Libraries/C and C++
-Requires:       %{libopenmpt_modplug} = %{version}
 Requires:       %{libopenmpt} = %{version}
 
 %description devel
@@ -112,7 +79,6 @@ This package contains the openmpt123 command-line module player.
 
 %prep
 %setup -q -n %{name}-%{version}+release.autotools
-%patch0 -p1
 # disable werror
 sed -i -e 's:-Werror ::g' configure.ac
 # fix encoding
@@ -126,8 +92,6 @@ autoreconf -fvi
     --docdir=%{_docdir}/%{name}-devel \
     --disable-static \
     --disable-silent-rules \
-    --enable-libopenmpt_modplug \
-    --enable-libmodplug \
     --disable-doxygen-doc \
     --with-zlib \
     --with-mpg123 \
@@ -145,30 +109,14 @@ make %{?_smp_mflags}
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %{libplug} -p /sbin/ldconfig
-%postun -n %{libplug} -p /sbin/ldconfig
 %post -n %{libopenmpt} -p /sbin/ldconfig
 %postun -n %{libopenmpt} -p /sbin/ldconfig
-%post -n %{libopenmpt_modplug} -p /sbin/ldconfig
-%postun -n %{libopenmpt_modplug} -p /sbin/ldconfig
 
 %files -n openmpt123
 %license LICENSE
 %doc README.md
 %{_bindir}/openmpt123
 %{_mandir}/man1/openmpt123.1%{?ext_man}
-
-%files -n libmodplug-devel
-%dir %{_includedir}/libmodplug/
-%{_includedir}/libmodplug/modplug.h
-%{_includedir}/libmodplug/sndfile.h
-%{_includedir}/libmodplug/stdafx.h
-%{_libdir}/libmodplug.so
-%{_libdir}/pkgconfig/libmodplug.pc
-
-%files -n %{libplug}
-%license LICENSE
-%{_libdir}/libmodplug.so.*
 
 %files devel
 %dir %{_docdir}/%{name}-devel/
@@ -184,13 +132,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/libopenmpt/libopenmpt_ext.h
 %{_includedir}/libopenmpt/libopenmpt_stream_callbacks_buffer.h
 %{_libdir}/libopenmpt.so
-%{_libdir}/libopenmpt_modplug.so
 %{_libdir}/pkgconfig/libopenmpt.pc
 
 %files -n %{libopenmpt}
 %{_libdir}/libopenmpt.so.*
-
-%files -n %{libopenmpt_modplug}
-%{_libdir}/libopenmpt_modplug.so.*
 
 %changelog
