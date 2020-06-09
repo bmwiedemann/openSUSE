@@ -1,7 +1,7 @@
 #
 # spec file for package ktorrent
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ktorrent
-Version:        5.1.2
+Version:        5.2.0
 Release:        0
 Summary:        KDE BitTorrent Client
 License:        GPL-2.0-or-later
@@ -55,8 +55,7 @@ BuildRequires:  cmake(KF5Plotting)
 BuildRequires:  cmake(KF5Solid)
 BuildRequires:  cmake(KF5Syndication)
 BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5Torrent) >= 2.1
-BuildRequires:  cmake(KF5WebKit)
+BuildRequires:  cmake(KF5Torrent) >= 2.2
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
@@ -69,6 +68,9 @@ BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(taglib)
 Recommends:     %{name}-lang = %{version}
+%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
+BuildRequires:  cmake(Qt5WebEngineWidgets)
+%endif
 
 %description
 KTorrent is a BitTorrent application by KDE which allows you to download files
@@ -95,10 +97,8 @@ cp -a %{SOURCE2} %{buildroot}%{_mandir}/man1
 cp -a %{SOURCE3} %{buildroot}%{_mandir}/man1
 
 # Fix any .py files with shebangs and wrong permissions.
-if test -z "`find %{buildroot} -name *.py -perm 0644 -print0|xargs -0r grep -l '#!'`"; \
-then break;
-else chmod -f 0755 `find %{buildroot} -name *.py -perm 0644 -print0|xargs -0r grep -l '#!'`; \
-fi
+find %{buildroot} -name "*.py" -perm 0644 -exec grep -l '#!' {} + | \
+	xargs -rd'\n' chmod -f a+x
 
 %suse_update_desktop_file -r org.kde.ktorrent Qt KDE Network P2P
 
