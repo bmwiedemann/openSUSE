@@ -471,6 +471,7 @@
     <package name="policycoreutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="procps" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="psmisc" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
+    <package name="purge-kernels-service" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="python-rpm-macros" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="python3" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="python3-Babel" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubic_worker -->

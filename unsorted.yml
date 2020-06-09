@@ -145,6 +145,7 @@ unsorted:
   - OpenImageDenoise-devel: [x86_64] 
   - OpenImageIO 
   - OpenImageIO-devel 
+  - OpenImageIO-plugin-osl 
   - OpenLP 
   - OpenMoji-Black 
   - OpenMoji-Color 
@@ -3587,16 +3588,11 @@ unsorted:
   - gccmakedep 
   - gcdemu 
   - gcdemu-lang 
-  - gcin 
   - gcin-anthy 
   - gcin-anthy-32bit: [x86_64] 
-  - gcin-branding-openSUSE 
   - gcin-branding-upstream 
-  - gcin-gtk2 
   - gcin-gtk2-32bit: [x86_64] 
-  - gcin-gtk3 
   - gcin-gtk3-32bit: [x86_64] 
-  - gcin-qt5 
   - gcin-qt5-32bit: [x86_64] 
   - gcolor2 
   - gcolor3 
@@ -6085,6 +6081,7 @@ unsorted:
   - java-15-openjdk-accessibility 
   - java-15-openjdk-demo 
   - java-15-openjdk-devel 
+  - java-15-openjdk-headless 
   - java-15-openjdk-javadoc 
   - java-15-openjdk-jmods 
   - java-15-openjdk-src 
@@ -6803,7 +6800,6 @@ unsorted:
   - kissfft-devel: [x86_64] 
   - kitemmodels-devel 
   - kitemmodels-devel-32bit: [x86_64] 
-  - kitemmodels-imports 
   - kitemviews-devel 
   - kitemviews-devel-32bit: [x86_64] 
   - kiten-devel 
@@ -7085,6 +7081,7 @@ unsorted:
   - kwayland-32bit: [x86_64] 
   - kwayland-devel 
   - kwayland-devel-32bit: [x86_64] 
+  - kwayland-server-devel 
   - kwebkitpart 
   - kwebkitpart-lang 
   - kwidgetsaddons-devel 
@@ -7607,8 +7604,8 @@ unsorted:
   - libOpenCOLLADAStreamWriter0_3 
   - libOpenIPMI0 
   - libOpenImageDenoise0: [x86_64] 
-  - libOpenImageIO1_8 
-  - libOpenImageIO_Util1_8 
+  - libOpenImageIO2_1 
+  - libOpenImageIO_Util2_1 
   - libOpenSceneGraph-devel 
   - libOpenSceneGraph131 
   - libOpenSceneGraph131-devel 
@@ -9319,7 +9316,6 @@ unsorted:
   - libgcc_s1-gcc9 
   - libgcc_s1-gcc9-32bit: [x86_64] 
   - libgci-1-0_0_0 
-  - libgcin-im-client1 
   - libgcin-im-client1-32bit: [x86_64] 
   - libgck-1-0-32bit: [x86_64] 
   - libgck-devel 
@@ -10013,7 +10009,6 @@ unsorted:
   - libjbig2dec0 
   - libjbig2dec0-32bit: [x86_64] 
   - libjcat-devel 
-  - libjcat1 
   - libjd0 
   - libjim0_75 
   - libjpeg62 
@@ -10896,10 +10891,10 @@ unsorted:
   - libortp14-32bit: [x86_64] 
   - libosdCPU3_4_3 
   - libosinfo-devel 
-  - liboslcomp1_10 
-  - liboslexec1_10 
-  - liboslnoise1_10 
-  - liboslquery1_10 
+  - liboslcomp1_11 
+  - liboslexec1_11 
+  - liboslnoise1_11 
+  - liboslquery1_11 
   - libosmcomp5 
   - libosmcomp5-32bit: [x86_64] 
   - libosmgpsmap-1_0-1 
@@ -11175,7 +11170,7 @@ unsorted:
   - libpoppler-glib8-32bit: [x86_64] 
   - libpoppler-qt5-1-32bit: [x86_64] 
   - libpoppler-qt5-devel 
-  - libpoppler99-32bit: [x86_64] 
+  - libpoppler100-32bit: [x86_64] 
   - libportal-devel 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
@@ -11303,7 +11298,8 @@ unsorted:
   - libqobs-devel 
   - libqobs2 
   - libqore5 
-  - libqpid-proton-cpp10 
+  - libqpid-proton-cpp12 
+  - libqpid-proton-proactor1 
   - libqpid-proton10 
   - libqrcodegen1 
   - libqrencode4-32bit: [x86_64] 
@@ -12229,7 +12225,7 @@ unsorted:
   - libtermkey-devel 
   - libtermkey1 
   - libtesseract4 
-  - libtestshade1_10 
+  - libtestshade1_11 
   - libtevent-devel 
   - libtevent-util-devel 
   - libtexlua53-5 
@@ -15685,7 +15681,6 @@ unsorted:
   - open-isns-devel 
   - open-lldp: [i586] 
   - open-lldp-devel 
-  - open-vm-tools-sdmp 
   - openCryptoki 
   - openCryptoki-32bit: [i586] 
   - openCryptoki-64bit: [x86_64] 
@@ -16064,7 +16059,6 @@ unsorted:
   - osgi-core 
   - osgi-core-javadoc 
   - osinfo-db-tools 
-  - osl.imageio1_10 
   - osmo-bsc 
   - osmo-bsc-abisip-find 
   - osmo-bsc-bs11-utils 
@@ -17728,7 +17722,6 @@ unsorted:
   - perl-obexftp 
   - perl-pcsc 
   - perl-prefork 
-  - perl-qpid-proton 
   - perl-rrdtool 
   - perl-slurm: [x86_64] 
   - perl-solv 
@@ -17959,6 +17952,7 @@ unsorted:
   - plasma-vault-backend-cryfs 
   - plasma-vault-backend-encfs 
   - plasma-vault-lang 
+  - plasma-wayland-protocols 
   - plasma5-addons-devel 
   - plasma5-applet-suse-prime 
   - plasma5-sdk 
@@ -18438,7 +18432,6 @@ unsorted:
   - pulseview 
   - pumpa 
   - pure-ftpd 
-  - purge-kernels-service 
   - purpose-32bit: [x86_64] 
   - purpose-devel 
   - purpose-devel-32bit: [x86_64] 
@@ -18652,7 +18645,6 @@ unsorted:
   - python-tooz-doc 
   - python-translationstring-doc 
   - python-typeshed 
-  - python-volatility 
   - python-xcaplib-bash-completion 
   - python-xml 
   - python-zope.deprecation-doc 
@@ -18756,6 +18748,7 @@ unsorted:
   - python3-HeapDict 
   - python3-HepMC 
   - python3-HyperKitty 
+  - python3-IMAPClient 
   - python3-IMDbPY 
   - python3-Js2Py 
   - python3-JsonWeb 
@@ -18783,6 +18776,7 @@ unsorted:
   - python3-MouseInfo 
   - python3-MulticoreTSNE 
   - python3-OWSLib 
+  - python3-OpenImageIO 
   - python3-PGet 
   - python3-PTable 
   - python3-Parsley 
@@ -19508,6 +19502,7 @@ unsorted:
   - python3-dfdatetime 
   - python3-dfwinreg 
   - python3-dialite 
+  - python3-dictdiffer 
   - python3-dicttoxml 
   - python3-diff-match-patch 
   - python3-digitalocean 
@@ -19836,6 +19831,9 @@ unsorted:
   - python3-gpxpy 
   - python3-gr-iqbal 
   - python3-grab 
+  - python3-graphene 
+  - python3-graphql-core 
+  - python3-graphql-relay 
   - python3-graphviz 
   - python3-greenlet-devel 
   - python3-grpc-google-iam-v1 
@@ -20370,6 +20368,7 @@ unsorted:
   - python3-onnx 
   - python3-onnxconverter-common 
   - python3-opcodes 
+  - python3-openapi-codec 
   - python3-openapi-core 
   - python3-openapi-schema-validator 
   - python3-openapi-spec-validator 
@@ -20572,6 +20571,7 @@ unsorted:
   - python3-process-tests 
   - python3-proglog 
   - python3-progress 
+  - python3-progressbar2 
   - python3-proliantutils 
   - python3-prometheus_client 
   - python3-promise 
@@ -21123,6 +21123,7 @@ unsorted:
   - python3-socketIO-client-nexus 
   - python3-socketpool 
   - python3-softlayer 
+  - python3-sorl-thumbnail 
   - python3-sortedcollections 
   - python3-sortedcontainers 
   - python3-sortinghat 
@@ -21263,6 +21264,7 @@ unsorted:
   - python3-threevis 
   - python3-thrift 
   - python3-thriftpy2 
+  - python3-tinyarray 
   - python3-tinycss2 
   - python3-tinydb 
   - python3-tinyrecord 
@@ -21366,6 +21368,7 @@ unsorted:
   - python3-vapoursynth 
   - python3-varint 
   - python3-varlink 
+  - python3-vatnumber 
   - python3-vcrpy 
   - python3-vcver 
   - python3-vcversioner 
@@ -21616,6 +21619,7 @@ unsorted:
   - qphotorec 
   - qpid-proton-devel 
   - qpid-proton-devel-doc 
+  - qpid-proton-test 
   - qpress 
   - qprint 
   - qps 
@@ -24281,6 +24285,7 @@ unsorted:
   - simple-ccsm 
   - simple-ccsm-lang 
   - simple-mtpfs 
+  - simple-multicast 
   - simple-obfs 
   - simple-obfs-doc 
   - simplescreenrecorder 
@@ -24737,6 +24742,7 @@ unsorted:
   - svn2git 
   - svxlink-server 
   - sway 
+  - sway-branding-upstream 
   - swaybg 
   - swayidle 
   - swayidle-bash-completion 
@@ -33734,6 +33740,7 @@ unsorted:
   - wavpack 
   - wavpack-devel 
   - waybar 
+  - waybar-branding-upstream 
   - wayland-devel 
   - wayland-devel-32bit: [x86_64] 
   - wayland-protocols-devel 
