@@ -16,6 +16,8 @@
 #
 
 
+%define binaries stackalytics2sh mozilla2sh mailmap2sh grimoirelab2sh gitdm2sh eclipse2sh sortinghat sh2mg mg2sh
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-sortinghat
@@ -95,15 +97,9 @@ sed -i -e "s/\('pandoc'\|'wheel',\)//" -e 's/==/>=/' setup.py
 
 %install
 %python_install
-%python_clone -a %{buildroot}%{_bindir}/stackalytics2sh
-%python_clone -a %{buildroot}%{_bindir}/mozilla2sh
-%python_clone -a %{buildroot}%{_bindir}/mailmap2sh
-%python_clone -a %{buildroot}%{_bindir}/grimoirelab2sh
-%python_clone -a %{buildroot}%{_bindir}/gitdm2sh
-%python_clone -a %{buildroot}%{_bindir}/eclipse2sh
-%python_clone -a %{buildroot}%{_bindir}/sortinghat
-%python_clone -a %{buildroot}%{_bindir}/sh2mg
-%python_clone -a %{buildroot}%{_bindir}/mg2sh
+for b in %{binaries}; do
+  %python_clone -a %{buildroot}%{_bindir}/$b
+done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -111,17 +107,19 @@ exit_code=0
 user=auth_db_user
 pass=auth_db_pass
 port=63306
+dbname=testhat
 run_dir=/tmp/mysql
 #
 # start the mariadb server
 #
-%mysql_testserver_start -u $user -p $pass -t $port
+%mysql_testserver_start -u $user -p $pass -t $port -d $dbname
 #
 # running the test
 #
+# this is read by TestDatabaseCaseBase.setUpClass
 cat << EOF > tests/tests.conf
 [Database]
-name=testhat
+name=$dbname
 host=127.0.0.1
 port=$port
 user=$user
@@ -137,26 +135,14 @@ sed -i -e "s/'3306'/self.kwargs['port']/" tests/test_cmd_init.py
 exit $exit_code
 
 %post
-%python_install_alternative stackalytics2sh
-%python_install_alternative mozilla2sh
-%python_install_alternative mailmap2sh
-%python_install_alternative grimoirelab2sh
-%python_install_alternative gitdm2sh
-%python_install_alternative eclipse2sh
-%python_install_alternative sortinghat
-%python_install_alternative sh2mg
-%python_install_alternative mg2sh
+for b in %{binaries}; do
+  %python_install_alternative $b
+done
 
 %postun
-%python_uninstall_alternative stackalytics2sh
-%python_uninstall_alternative mozilla2sh
-%python_uninstall_alternative mailmap2sh
-%python_uninstall_alternative grimoirelab2sh
-%python_uninstall_alternative gitdm2sh
-%python_uninstall_alternative eclipse2sh
-%python_uninstall_alternative sortinghat
-%python_uninstall_alternative sh2mg
-%python_uninstall_alternative mg2sh
+for b in %{binaries}; do
+  %python_uninstall_alternative stackalytics2sh
+done
 
 %files %{python_files}
 %doc NEWS README.md
