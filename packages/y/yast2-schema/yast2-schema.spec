@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-schema
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
 Name:           yast2-schema
-Version:        4.2.10
+Version:        4.3.1
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        %{name}-%{version}.tar.bz2
 
-URL:            https://github.com/yast/yast-schema
+Url:            https://github.com/yast/yast-schema
 
 # Dependencies needed to build the package
+BuildRequires:  jing
+BuildRequires:  libxml2-tools
 BuildRequires:  trang
 BuildRequires:  yast2-devtools
 
@@ -36,19 +38,20 @@ BuildRequires:  yast2-devtools
 BuildRequires:  autoyast2 >= 4.2.25
 BuildRequires:  yast2
 # add_on_others element
-BuildRequires:  yast2-add-on >= 4.2.4
-BuildRequires:  yast2-audit-laf
-BuildRequires:  yast2-auth-client
+BuildRequires:  yast2-add-on >= 4.3.0
+BuildRequires:  yast2-audit-laf >= 4.3.0
+BuildRequires:  yast2-auth-client >= 4.3.0
 BuildRequires:  yast2-auth-server
 # tag secure_boot
-BuildRequires:  yast2-bootloader >= 4.2.11
-BuildRequires:  yast2-configuration-management >= 4.1.2
-BuildRequires:  yast2-country
-BuildRequires:  yast2-dhcp-server
-BuildRequires:  yast2-dns-server
-BuildRequires:  yast2-firewall >= 4.1.8
-BuildRequires:  yast2-firstboot >= 4.1.1
-BuildRequires:  yast2-ftp-server
+BuildRequires:  yast2-bootloader >= 4.3.0
+BuildRequires:  yast2-configuration-management >= 4.3.0
+BuildRequires:  yast2-country >= 4.3.0
+BuildRequires:  yast2-dhcp-server >= 4.3.0
+BuildRequires:  yast2-dns-server >= 4.3.0
+BuildRequires:  yast2-firewall >= 4.3.0
+BuildRequires:  yast2-firstboot >= 4.3.0
+BuildRequires:  yast2-ftp-server >= 4.3.0
+BuildRequires:  yast2-geo-cluster >= 4.3.0
 BuildRequires:  yast2-http-server
 BuildRequires:  yast2-installation
 BuildRequires:  yast2-iscsi-client
