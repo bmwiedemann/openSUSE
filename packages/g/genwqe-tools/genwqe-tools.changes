@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  5 15:13:08 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+-  New genwqe-user-4.0.20-glibc-2.30-gettid-naming-conflict.patch
+
+-------------------------------------------------------------------
 Tue Jul 30 15:27:04 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - for ppc64* remove in spec the lines about BUNDLE_LIBCXL

@@ -1,7 +1,7 @@
 #
 # spec file for package genwqe-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright 2015, International Business Machines
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@ Group:          Development/Tools
 Name:           genwqe-tools
 Version:        4.0.20
 Release:        1%{?dist}
-Url:            https://github.com/ibm-genwqe/genwqe-user/
+URL:            https://github.com/ibm-genwqe/genwqe-user/
 Requires:       zlib >= 1.2.7
 BuildRequires:  help2man
 BuildRequires:  zlib-devel >= 1.2.7
@@ -40,6 +40,7 @@ Source0:        genwqe-user-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Patch0:         genwqe-user-4.0.18-install-gzFile_test.patch
 Patch1:         genwqe-user-4.0.18-config.patch
+Patch2:         genwqe-user-4.0.20-glibc-2.30-gettid-naming-conflict.patch
 
 %description
 Provide a suite of utilities to manage and configure the IBM GenWQE card.
@@ -71,6 +72,7 @@ developing applications that use %{name}.
 %autosetup -p1 -n genwqe-user-%{version}
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 make %{?_smp_mflags} tools lib VERSION=%{version} \
        CONFIG_ZLIB_PATH=/%{_lib}/libz.so.1
 

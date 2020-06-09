@@ -2,11 +2,11 @@
  tools/Makefile |    1 +
  1 file changed, 1 insertion(+)
 
-Index: genwqe-user-4.0.18/tools/Makefile
+Index: genwqe-user-4.0.20/tools/Makefile
 ===================================================================
---- genwqe-user-4.0.18.orig/tools/Makefile
-+++ genwqe-user-4.0.18/tools/Makefile
-@@ -110,6 +110,7 @@ install_gzip_tools: all
+--- genwqe-user-4.0.20.orig/tools/Makefile
++++ genwqe-user-4.0.20/tools/Makefile
+@@ -122,6 +122,7 @@ install_gzip_tools: all
  	install -D -m 755 zlib_mt_perf   -T $(DESTDIR)/bin/zlib_mt_perf
  	install -D -m 755 genwqe_mt_perf -T $(DESTDIR)/bin/genwqe_mt_perf
  	install -D -m 755 genwqe_test_gz -T $(DESTDIR)/bin/genwqe_test_gz
