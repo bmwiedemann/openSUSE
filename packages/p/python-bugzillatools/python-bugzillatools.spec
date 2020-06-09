@@ -1,7 +1,7 @@
 #
 # spec file for package python-bugzillatools
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ Patch1:         no-bzrlib-py3k.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # We want to conflict even package literally called python-bugzilla
 # without the python version number
 Conflicts:      %{oldpython}-bugzilla
@@ -58,14 +60,21 @@ sed -i "/.bugzillarc.sample/d" setup.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/bugzilla
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec -munittest discover -v
 
+%post
+%python_install_alternative bugzilla
+
+%postun
+%python_uninstall_alternative bugzilla
+
 %files %{python_files}
 %doc CHANGES README.rst gpl-3.0.txt
-%python3_only %{_bindir}/bugzilla
+%python_alternative %{_bindir}/bugzilla
 %{python_sitelib}/bzlib
 %{python_sitelib}/bzrlib
 %{python_sitelib}/bugzillatools-%{version}-py%{python_version}.egg-info
