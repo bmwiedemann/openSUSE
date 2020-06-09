@@ -1,7 +1,7 @@
 #
 # spec file for package python-celerymon
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,14 @@ Release:        0
 Summary:        Real-time monitoring of Celery workers
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-URL:            http://github.com/ask/celerymon/
+URL:            https://github.com/ask/celerymon/
 Source:         https://files.pythonhosted.org/packages/source/c/celerymon/celerymon-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 Requires:       python-celery
 Requires:       python-tornado
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -43,11 +45,18 @@ celerymon - Real-time monitoring of Celery workers
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/celerymon
+
+%post
+%python_install_alternative celerymon
+
+%postun
+%python_uninstall_alternative celerymon
 
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS README
-%python3_only %{_bindir}/celerymon
+%python_alternative %{_bindir}/celerymon
 %{python_sitelib}/*
 
 %changelog
