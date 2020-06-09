@@ -17,7 +17,7 @@
 
 
 Name:           profanity
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        Console-based XMPP client
 License:        SUSE-GPL-3.0+-with-openssl-exception
@@ -25,12 +25,12 @@ Group:          Productivity/Networking/Instant Messenger
 URL:            https://profanity-im.github.io
 Source:         https://github.com/profanity-im/profanity/releases/download/%{version}/profanity-%{version}.tar.gz
 Source1:        profanity-rpmlintrc
-BuildRequires:  glib2-devel >= 2.26
+BuildRequires:  glib2-devel >= 2.56
 BuildRequires:  gtk2-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libgpgme-devel
-BuildRequires:  libmesode-devel >= 0.9.2
+BuildRequires:  libmesode-devel >= 0.9.3
 BuildRequires:  libnotify-devel
 BuildRequires:  libotr-devel
 BuildRequires:  libsignal-protocol-c-devel >= 2.3.1
@@ -38,9 +38,9 @@ BuildRequires:  libuuid-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  python3-devel
 BuildRequires:  readline-devel
-Requires:       libmesode0 >= 0.9.2
+BuildRequires:  sqlite3-devel >= 3.22.0
+Requires:       libmesode0 >= 0.9.3
 Requires:       profanity-binary = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Profanity is a console-based XMPP client written in C using ncurses,
@@ -79,7 +79,7 @@ Including:
  * Tray icon
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 sed -i -e "s/python-config/python3-config/g" configure
 
 %build
@@ -94,10 +94,11 @@ sed -i -e "s/python-config/python3-config/g" configure
 	--enable-plugins \
 	--enable-icons
 
-make %{?_smp_mflags}
+export CFLAGS="%{optflags} -fcommon"
+%make_build
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 rm %{buildroot}%{_libdir}/libprofanity.la
 
 mv %{buildroot}%{_bindir}/profanity{,-standard}
@@ -115,8 +116,9 @@ make clean
 	--enable-plugins \
 	--disable-icons
 
+export CFLAGS="%{optflags} -fcommon"
 make %{?_smp_mflags}
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 rm %{buildroot}%{_libdir}/libprofanity.la
 
 mv %{buildroot}%{_bindir}/profanity{,-mini}
@@ -127,8 +129,7 @@ ln -s profanity %{buildroot}%{_sysconfdir}/alternatives/profanity
 ln -s profanity %{buildroot}%{_bindir}/profanity
 
 %files
-%defattr(-,root,root)
-%{_mandir}/man1/profanity.1%{ext_man}
+%{_mandir}/man1/profanity.1%{?ext_man}
 %dir %{_datadir}/profanity/
 %dir %{_datadir}/profanity/themes/
 %dir %{_datadir}/profanity/icons/
@@ -140,20 +141,17 @@ ln -s profanity %{buildroot}%{_bindir}/profanity
 %{_includedir}/profapi.h
 
 %files mini
-%defattr(-,root,root)
 %ghost %{_sysconfdir}/alternatives/profanity
 %ghost %{_bindir}/profanity
 %{_bindir}/profanity-mini
 
 %files standard
-%defattr(-,root,root)
 %ghost %{_sysconfdir}/alternatives/profanity
 %ghost %{_bindir}/profanity
 %{_bindir}/profanity-standard
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
-
 %post mini
 %{_sbindir}/update-alternatives --install \
     %{_bindir}/profanity profanity %{_bindir}/profanity-mini 10
