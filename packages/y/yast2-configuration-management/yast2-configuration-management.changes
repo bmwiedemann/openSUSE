@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May 21 21:20:44 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- bsc#1169410:
+  - Add an option to set the log level when running the
+    provisioners. By default, it is set to "info".
+  - By default, do not retry in masterless mode.
+  - Honor the AutoYaST reporting settings.
+  - When not running during autoinstallation, do not automatically
+    close the dialog after finishing.
+  - Allow using several locations to save pillars data.
+  - Do not leak passwords from pillars to the console.
+  - Add the /usr/share/salt-formulas to the list of directories
+    to search for formulas.
+  - Groups and namespaces are presented in the same way due to
+    some UI limitations.
+  - Fixes several problems related to widgets visibility.
+  - Take precedence over existing top.sls files.
+- 4.3.1
+
+-------------------------------------------------------------------
 Thu May  7 15:05:43 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Autoyast schema: Allow optional types for string and map objects
