@@ -87,4 +87,13 @@ Can't really provide infinitely many versions!</comment>
     <comment>- Set CFLAGS+=-fcommon.</comment>
     <requestid>812363</requestid>
   </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>da861a2f6324af2424da908a45834b17</srcmd5>
+    <version>2.5.1.5+svn4532</version>
+    <time>1591743259</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-fix-heap-buffer-overflows-in-UDP-code-CVE-2019-20797.patch
+  [CVE-2019-20797, boo#1171974]</comment>
+    <requestid>813049</requestid>
+  </revision>
 </revisionlist>

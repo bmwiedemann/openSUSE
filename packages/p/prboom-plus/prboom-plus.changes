@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  9 20:32:48 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-fix-heap-buffer-overflows-in-UDP-code-CVE-2019-20797.patch
+  [CVE-2019-20797, boo#1171974]
+
+-------------------------------------------------------------------
 Sun Jun  7 22:32:17 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Set CFLAGS+=-fcommon.

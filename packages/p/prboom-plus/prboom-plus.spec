@@ -25,6 +25,7 @@ Group:          Amusements/Games/3D/Shoot
 URL:            http://prboom-plus.sf.net/
 
 #SVN-Clone:	https://svn.prboom.org/repos/branches/prboom-plus-24/prboom2
+#Sibling-Prj:	https://github.com/coelckers/prboom-plus (umapinfo fork)
 #DL-URL:	http://downloads.sf.net/prboom-plus/prboom-plus-2.5.1.4.tar.gz
 Source:         prboom2-%version.tar.xz
 Patch1:         prboom-nodatetime.diff
@@ -34,6 +35,7 @@ Patch5:         prboom-enable-tessellation.diff
 Patch6:         prboom-hbar-color.diff
 Patch7:         prboom-hbar-all.diff
 Patch8:         prboom-hbar-gradient.diff
+Patch9:         0001-fix-heap-buffer-overflows-in-UDP-code-CVE-2019-20797.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  automake
 BuildRequires:  fluidsynth-devel
