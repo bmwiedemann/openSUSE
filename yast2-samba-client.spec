@@ -17,7 +17,7 @@
 
 
 Name:           yast2-samba-client
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        YaST2 - Samba Client Configuration
 License:        GPL-2.0-only
@@ -26,12 +26,10 @@ Url:            https://github.com/yast/yast-samba-client
 
 Source0:        %{name}-%{version}.tar.bz2
 
-BuildRequires:  perl-XML-Writer
 BuildRequires:  update-desktop-files
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-pam
 BuildRequires:  yast2-perl-bindings
-BuildRequires:  yast2-testsuite
 
 Requires:       perl-XML-LibXML
 # new Pam.ycp API

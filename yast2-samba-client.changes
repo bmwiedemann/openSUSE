@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 27 14:20:13 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Dropped legacy testsuite (related to bsc#1138668).
+- 4.3.1
+
+-------------------------------------------------------------------
 Tue May 12 14:57:19 UTC 2020 - josef Reidinger <jreidinger@localhost>
 
 - Autoyast schema: Allow optional types for string and map objects
