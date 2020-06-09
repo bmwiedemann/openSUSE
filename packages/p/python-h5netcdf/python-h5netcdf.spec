@@ -1,7 +1,7 @@
 #
 # spec file for package python-h5netcdf
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module netCDF4}
-BuildRequires:  %{python_module pytest4}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 

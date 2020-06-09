@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  9 07:20:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- NO reason to restrict to pytest4, tests pass with pytest5
+
+-------------------------------------------------------------------
 Mon Feb 10 15:21:03 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.8.0
