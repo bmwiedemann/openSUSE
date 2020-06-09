@@ -28,6 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/a/av/av-%{version
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -36,7 +37,8 @@ BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavutil)
 Requires:       python-setuptools
-BuildRequires:  %{python_module numpy}
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -50,16 +52,23 @@ Pythonic bindings for FFmpeg's libraries.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pyav
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 # Sadly needs full ffmpeg with all the codec support so we have to skip
 #%%python_exec setup.py test
 
+%post
+%python_install_alternative pyav
+
+%postun
+%python_uninstall_alternative pyav
+
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
-%python3_only %{_bindir}/pyav
+%python_alternative %{_bindir}/pyav
 %{python_sitearch}/av
 %{python_sitearch}/av-%{version}-py%{python_version}.egg-info
 
