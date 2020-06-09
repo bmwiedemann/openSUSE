@@ -110,4 +110,14 @@
     <comment></comment>
     <requestid>809539</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>98341008d5bf1ace9f1baaafda645fa4</srcmd5>
+    <version>0.10.14</version>
+    <time>1591742073</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.14
+ * Improved handling of unicode bodies
+ * Streamlined querysting matching code</comment>
+    <requestid>812533</requestid>
+  </revision>
 </revisionlist>

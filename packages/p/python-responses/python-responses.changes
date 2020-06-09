@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  8 10:18:01 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.10.14
+ * Improved handling of unicode bodies
+ * Streamlined querysting matching code
+
+-------------------------------------------------------------------
 Wed May 27 12:22:21 UTC 2020 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Set encodings to UTF-8 to avoid UnicodeDecodeError
