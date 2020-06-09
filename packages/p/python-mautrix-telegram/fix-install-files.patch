@@ -1,14 +1,14 @@
 diff -rub a/setup.py b/setup.py
---- a/setup.py	2020-01-26 00:53:45.913212000 +0600
-+++ b/setup.py	2020-01-26 02:03:09.142426230 +0600
-@@ -76,8 +76,9 @@
-         "web/public/*.mako", "web/public/*.png", "web/public/*.css",
+--- a/setup.py	2020-04-24 23:10:10.000000000 +0600
++++ b/setup.py	2020-06-03 22:03:50.729089296 +0600
+@@ -74,8 +74,9 @@
+         "example-config.yaml",
      ]},
      data_files=[
--        (".", ["example-config.yaml", "alembic.ini"]),
+-        (".", ["alembic.ini"]),
 -        ("alembic", ["alembic/env.py"]),
 -        ("alembic/versions", glob.glob("alembic/versions/*.py"))
-+        ("/etc/mautrix-telegram", ["example-config.yaml"]),
++        ("/etc/mautrix-telegram", ["mautrix_telegram/example-config.yaml"]),
 +        ("/etc/alembic", ["alembic.ini"]),
 +        ("/usr/share/alembic", ["alembic/env.py"]),
 +        ("/usr/share/alembic/versions", glob.glob("alembic/versions/*.py"))

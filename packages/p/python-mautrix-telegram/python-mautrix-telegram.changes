@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Jun  5 08:23:07 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Corrected dependencies in spec and requirements.txt 
+
+-------------------------------------------------------------------
+Thu Jun  4 14:07:30 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Dependencies updated according to requirements.txt 
+
+-------------------------------------------------------------------
+Wed Jun  3 16:39:17 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.8.0: 
+  + Added
+    - Command for backfilling room history from Telegram.
+    - Optional end-to-bridge encryption support. 
+      See page on wiki for more info.
+    - allow_avatar_remove config option to sync removed avatars 
+      from Telegram instead of leaving the last known avatar 
+      forever.
+    - private_chat_portal_meta config option to set private chat 
+      portal room name/avatar explicitly. This is enabled 
+      implicitly if end-to-bridge encryption is enabled.
+    - Config options to send delivery receipts and error notices.
+    - Bridging for Telegram dice roll messages.
+    - Implemented MSC2346: Bridge information state event for 
+      newly created rooms
+  + Improved
+    - Moved private information to trace log level
+  + Fixed
+    - Riot iOS not showing stickers properly.
+    - Updated to Telethon 1.13 to fix bugs like #443.
+    - sync_direct_chats option creating non-working portals
+    - Video thumbnailing sometimes leaving behind downloaded 
+      videos in /tmp
+    - Admin detection on Telegram-side relaybot commands
+    - Bug handling ChatForbidden when syncing chats
+    - Infinite loop of avatar changes when using double puppeting
+  * Rebase fix-install-files.patch
+  * Remove fix-test.patch, Is no longer needed
+  * Removed source license, now comes with source code 
+
+-------------------------------------------------------------------
 Mon May 25 06:50:45 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

@@ -20,28 +20,25 @@
 # Python2 is not supported
 %define skip_python2 1
 Name:           python-mautrix-telegram
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        A Matrix-Telegram hybrid puppeting/relaybot bridge
 License:        AGPL-3.0-only
 URL:            https://github.com/tulir/mautrix-telegram
 Source0:        https://files.pythonhosted.org/packages/source/m/mautrix-telegram/mautrix-telegram-%{version}.tar.gz
 Source1:        mautrix-telegram.service
-# https://github.com/tulir/mautrix-telegram/issues/454
-Source99:       https://raw.githubusercontent.com/tulir/mautrix-telegram/master/LICENSE
-Patch0:         fix-test.patch
-Patch1:         fix-install-files.patch
+Patch0:         fix-install-files.patch
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
 Requires:       python-SQLAlchemy >= 1.2.3
-Requires:       python-Telethon >= 1.10
+Requires:       python-Telethon >= 1.13
 Requires:       python-aiohttp >= 3.0.1
 Requires:       python-alembic >= 1.0.0
 Requires:       python-commonmark >= 0.8.1
-Requires:       python-mautrix >= 0.4.0
+Requires:       python-mautrix >= 0.5.0
 Requires:       python-python-magic >= 0.4.15
 Requires:       python-ruamel.yaml >= 0.15.35
 Requires:       python-telethon-session-sqlalchemy >= 0.2.14
@@ -59,11 +56,11 @@ Provides:       mautrix-telegram-impl = %{version}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module SQLAlchemy >= 1.2.3}
-BuildRequires:  %{python_module Telethon >= 1.10}
+BuildRequires:  %{python_module Telethon >= 1.13}
 BuildRequires:  %{python_module aiohttp >= 3.0.1}
 BuildRequires:  %{python_module alembic >= 1.0.0}
 BuildRequires:  %{python_module commonmark >= 0.8.1}
-BuildRequires:  %{python_module mautrix >= 0.4.0}
+BuildRequires:  %{python_module mautrix >= 0.5.0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
@@ -85,8 +82,8 @@ A Matrix-Telegram hybrid puppeting/relaybot bridge bridge server.
 
 %prep
 %setup -q -n mautrix-telegram-%{version}
+sed -i "s/mautrix==0.5.0/mautrix>=0.5.0/g" requirements.txt
 %autopatch -p1
-cp %{SOURCE99} .
 
 %build
 %python_build
