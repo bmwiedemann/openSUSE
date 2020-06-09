@@ -1,4 +1,68 @@
 --------------------------------------------------------------------
+Fri Jun 5 14:54:02 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#749
+- removed unused variable
+- improved memory managment
+- coding style
+- minor code improvements
+- 4.3.26
+
+--------------------------------------------------------------------
+Wed Jun 3 07:38:51 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#748
+- avoid deprecated functions
+- extended documentation
+- improved memory managment
+- minor code improvements
+- 4.3.25
+
+--------------------------------------------------------------------
+Fri May 22 21:08:29 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#747
+- extended userdata handling
+- coding style
+- updated documentation
+- added check
+- extended documentation
+- 4.3.24
+
+--------------------------------------------------------------------
+Wed May 20 12:02:38 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#746
+- added functions to query btrfs snapshot relations
+- handle empty btrfs subvolume top level UUID better
+- added checks
+- extended documentation
+- work on probing btrfs snapshot relations
+- 4.3.23
+
+--------------------------------------------------------------------
+Tue May 19 12:38:06 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#745
+- correct block device size for LVM thick snapshots
+- added note
+- extended developer mode
+- 4.3.22
+
+--------------------------------------------------------------------
+Mon May 18 12:27:11 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#744
+- disallow resizing thick volume groups with snapshots
+- generate bindings for Snapshot class
+- fixed typo
+- stricter devicegraph check
+- extended documentation
+- updated documentation
+- fixed documentation
+- 4.3.21
+
+--------------------------------------------------------------------
 Fri May 15 07:17:13 UTC 2020 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#743
