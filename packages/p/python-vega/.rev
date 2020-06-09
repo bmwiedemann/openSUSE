@@ -51,4 +51,14 @@
     <comment></comment>
     <requestid>783938</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>431c374ea536eb6469e2e6515010f2a0</srcmd5>
+    <version>3.4.0</version>
+    <time>1591742995</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.0:
+  * Add altair endpoints
+  * Internal updates</comment>
+    <requestid>812822</requestid>
+  </revision>
 </revisionlist>
