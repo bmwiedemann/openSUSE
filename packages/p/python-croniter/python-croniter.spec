@@ -18,20 +18,23 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-croniter
-Version:        0.3.31
+Version:        0.3.32
 Release:        0
 Summary:        Python iterators for datetime objects with cron-like format
 License:        MIT
 Group:          Development/Languages/Python
 URL:            http://github.com/kiorky/croniter
 Source:         https://files.pythonhosted.org/packages/source/c/croniter/croniter-%{version}.tar.gz
+BuildRequires:  %{python_module natsort}
 BuildRequires:  %{python_module pytest >= 3.0.3}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module tzlocal}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
+Requires:       python-natsort
 Requires:       python-python-dateutil
 BuildArch:      noarch
 %python_subpackages
