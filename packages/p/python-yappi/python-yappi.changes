@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  2 17:34:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.2.5:
+  * Fix tag/ctx_id filtering on get_func_stats
+  * Add filter_callback to get_func_stats() for filtering function/module descriptors
+  * FIX: issues related to invalid conversion from long->ptr in Win32
+  * Optimize tstate->dict retrieval
+  * Various other fixes
+
+-------------------------------------------------------------------
 Fri May 15 12:52:55 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
