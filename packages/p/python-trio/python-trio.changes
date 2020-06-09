@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  9 07:36:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.15.1:
+  * Added a helpful error message if an async function is passed to
+    trio.from_thread.run_sync or a sync function to trio.from_thread.run. (#1244)
+  * Previously, when trio.run_process was cancelled, it always killed the subprocess immediately. Now, on Unix, it first gives the process a chance to clean up by sending SIGTERM, and only escalates to SIGKILL if the process is still running after 5 seconds. But if you prefer the old behavior, or want to adjust the timeout, then don't worry: you can now pass a custom deliver_cancel= argument to define your own process killing policy. (#1104)
+  * It turns out that creating a subprocess can block the parent process for a surprisingly long time. So trio.open_process now uses a worker thread to avoid blocking the event loop. (#1109)
+  * On Linux kernels v5.3 or newer, trio.Process.wait now uses the pidfd API to track child processes. This shouldn't have any user-visible change, but it makes working with subprocesses faster and use less memory. (#1241)
+  * The trio.Process.returncode attribute is now automatically updated as needed, instead of only when you call ~trio.Process.poll or ~trio.Process.wait. Also, repr(process_object) now always contains up-to-date information about the process status. (#1315)
+
+-------------------------------------------------------------------
 Sat Jan 11 12:01:37 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.13.0

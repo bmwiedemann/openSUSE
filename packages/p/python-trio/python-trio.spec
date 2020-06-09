@@ -19,26 +19,26 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-trio
-Version:        0.13.0
+Version:        0.15.1
 Release:        0
 Summary:        An async/await-native I/O library
 License:        MIT OR Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/python-trio/trio
 Source:         https://github.com/python-trio/trio/archive/v%{version}.tar.gz#/trio-%{version}.tar.gz
 BuildRequires:  %{python_module astor >= 0.8}
 BuildRequires:  %{python_module async_generator >= 1.9}
 BuildRequires:  %{python_module attrs >= 19.2.0}
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module outcome}
 BuildRequires:  %{python_module pyOpenSSL}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 5.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module yapf >= 0.27.0}
 # for protocol specifications
 BuildRequires:  %{python_module sniffio}
 BuildRequires:  %{python_module sortedcontainers}
 BuildRequires:  %{python_module trustme}
+BuildRequires:  %{python_module yapf >= 0.27.0}
 BuildRequires:  fdupes
 BuildRequires:  netcfg
 BuildRequires:  python-rpm-macros
