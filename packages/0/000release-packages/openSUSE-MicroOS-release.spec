@@ -17,7 +17,7 @@
 
 
 Name:           openSUSE-MicroOS-release
-Version:        20200607
+Version:        20200609
 Release:        0
 Summary:        openSUSE MicroOS 
 License:        GPL-2.0-or-later
@@ -37,6 +37,8 @@ Provides:       distribution-release
 # MicroOS-release replaces Tumbleweed-Kubic-release
 Provides:       openSUSE-Tumbleweed-Kubic-release
 Obsoletes:      openSUSE-Tumbleweed-Kubic-release <= 20190324
+# Give zypp a hint that this product must be kept up-to-date using zypper dup, not up (boo#1061384)
+Provides:       product-update() = dup
 # With more than one product in the FTP tree, yast needs to know which products are installable
 # The name is referenced by the control file as well
 Provides:       system-installation() = openSUSE-MicroOS
@@ -169,9 +171,9 @@ Provides:       weakremover(openssl-debuginfo)
 %include %{SOURCE100}
 Provides:       %name-%version
 Provides:       product() = openSUSE-MicroOS
-Provides:       product(openSUSE-MicroOS) = 20200607-0
+Provides:       product(openSUSE-MicroOS) = 20200609-0
 Provides:       product-label() = openSUSE%20MicroOS
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aopensuse%2Dmicroos%3A20200607
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aopensuse%2Dmicroos%3A20200609
 Provides:       product-url(releasenotes) = http%3A%2F%2Fdoc.opensuse.org%2Frelease%2Dnotes%2Fx86_64%2FopenSUSE%2FTumbleweed%2Frelease%2Dnotes%2DopenSUSE.rpm
 Provides:       product-endoflife()
 Requires:       product_flavor(openSUSE-MicroOS)
@@ -187,7 +189,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(dvd)
-Provides:       product_flavor(openSUSE-MicroOS) = 20200607-0
+Provides:       product_flavor(openSUSE-MicroOS) = 20200609-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description dvd
@@ -203,7 +205,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(kubic-dvd)
-Provides:       product_flavor(openSUSE-MicroOS) = 20200607-0
+Provides:       product_flavor(openSUSE-MicroOS) = 20200609-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description kubic-dvd
@@ -219,7 +221,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
-Provides:       product_flavor(openSUSE-MicroOS) = 20200607-0
+Provides:       product_flavor(openSUSE-MicroOS) = 20200609-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description appliance
@@ -235,7 +237,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance-kubic)
-Provides:       product_flavor(openSUSE-MicroOS) = 20200607-0
+Provides:       product_flavor(openSUSE-MicroOS) = 20200609-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description appliance-kubic
@@ -293,11 +295,11 @@ cat >$RPM_BUILD_ROOT/etc/products.d/openSUSE-MicroOS.prod << EOF
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
   <name>openSUSE-MicroOS</name>
-  <version>20200607</version>
+  <version>20200609</version>
   <release>0</release>
   <endoflife></endoflife>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:opensuse-microos:20200607</cpeid>
+  <cpeid>cpe:/o:opensuse:opensuse-microos:20200609</cpeid>
   <productline>openSUSE-MicroOS</productline>
   <register>
     <pool>
