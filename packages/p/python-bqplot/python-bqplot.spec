@@ -1,7 +1,7 @@
 #
 # spec file for package python-bqplot
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-bqplot
-Version:        0.12.3
+Version:        0.12.12
 Release:        0
 Summary:        Interactive plotting package for the Jupyter notebook
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/bloomberg/bqplot
 Source:         https://files.pythonhosted.org/packages/source/b/bqplot/bqplot-%{version}.tar.gz
 BuildRequires:  %{python_module notebook}
@@ -31,7 +30,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-bqplot = %{version}
-Requires:       python-ipywidgets >= 7.0.0a8
+Requires:       python-ipywidgets >= 7.5.0
 Requires:       python-numpy >= 1.10.4
 Requires:       python-pandas
 Requires:       python-traitlets >= 4.3.0
@@ -40,9 +39,11 @@ Provides:       python-jupyter_bqplot = %{version}
 Obsoletes:      python-jupyter_bqplot < %{version}
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module ipywidgets >= 7.0.0a8}
+BuildRequires:  %{python_module ipywidgets >= 7.5.0}
+BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module numpy >= 1.10.4}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module traitlets >= 4.3.0}
 BuildRequires:  %{python_module traittypes >= 0.0.6}
 # /SECTION
@@ -85,13 +86,13 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/bq
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 }
 
-%{jupyter_move_config}
-
+%jupyter_move_config
 
 %check
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
 $python -c "import bqplot"
 }
+%pytest tests/
 
 %files %{python_files}
 %doc README.md

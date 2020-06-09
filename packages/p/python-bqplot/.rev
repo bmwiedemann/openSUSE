@@ -56,4 +56,13 @@
     <comment></comment>
     <requestid>773168</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cd7c7d36bfd8380dd585ff5957da6a45</srcmd5>
+    <version>0.12.12</version>
+    <time>1591743026</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.12:
+  * Minor fixes around</comment>
+    <requestid>812841</requestid>
+  </revision>
 </revisionlist>
