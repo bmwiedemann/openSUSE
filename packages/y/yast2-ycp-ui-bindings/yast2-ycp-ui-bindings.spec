@@ -17,11 +17,11 @@
 
 
 # YUIWidget_CustomStatusItemSelector
-%define min_yui_version	3.9.1
-%define yui_so		11
+%define min_yui_version	3.10.0
+%define yui_so		12
 
 Name:           yast2-ycp-ui-bindings
-Version:        4.2.9
+Version:        4.3.0
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

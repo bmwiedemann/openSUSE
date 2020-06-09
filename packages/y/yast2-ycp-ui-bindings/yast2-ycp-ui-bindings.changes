@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  4 11:52:17 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Added widget option autoWrap for label widget (bsc#1172513) 
+- Require libyui.so.12
+- 4.3.10
+
+-------------------------------------------------------------------
 Thu Jan 23 16:47:02 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Add support for the option to enable the online search
