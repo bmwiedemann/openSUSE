@@ -833,4 +833,11 @@ it wants then though.</comment>
   2nd correction for boo#1171146</comment>
     <requestid>807751</requestid>
   </revision>
+  <revision rev="115" vrev="113">
+    <srcmd5>376c1f73b30a0382840eb7853124c4c1</srcmd5>
+    <version>unknown</version>
+    <time>1591691231</time>
+    <user>dimstar_suse</user>
+    <comment>Add dup helper flag to MicroOS</comment>
+  </revision>
 </revisionlist>

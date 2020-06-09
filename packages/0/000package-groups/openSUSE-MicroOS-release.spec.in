@@ -37,6 +37,8 @@ Provides:       distribution-release
 # MicroOS-release replaces Tumbleweed-Kubic-release
 Provides:       openSUSE-Tumbleweed-Kubic-release
 Obsoletes:      openSUSE-Tumbleweed-Kubic-release <= 20190324
+# Give zypp a hint that this product must be kept up-to-date using zypper dup, not up (boo#1061384)
+Provides:       product-update() = dup
 # With more than one product in the FTP tree, yast needs to know which products are installable
 # The name is referenced by the control file as well
 Provides:       system-installation() = openSUSE-MicroOS
