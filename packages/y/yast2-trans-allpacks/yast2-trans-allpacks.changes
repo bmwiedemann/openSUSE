@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 19 08:33:42 UTC 2020 - Michal Filka <mfilka@suse.com>
+
+- bnc#1169424
+  - dropped yast2-trans-en_US from the list of requires
+- version synced with other yast packages
+- 4.3.0
+
+-------------------------------------------------------------------
 Thu May 19 15:15:57 CEST 2011 - ke@suse.de
 
 - Add yast2-trans-nds and yast2-trans-nn.

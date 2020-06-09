@@ -128,4 +128,15 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d68809e227dbeee2f56a1ef722e8318e</srcmd5>
+    <version>4.3.0</version>
+    <time>1591742126</time>
+    <user>dimstar_suse</user>
+    <comment>- bnc#1169424
+  - dropped yast2-trans-en_US from the list of requires
+- version synced with other yast packages
+- 4.3.0</comment>
+    <requestid>807167</requestid>
+  </revision>
 </revisionlist>
