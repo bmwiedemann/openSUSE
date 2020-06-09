@@ -17,7 +17,7 @@
 
 
 Name:           perl-HTTP-Daemon
-Version:        6.10
+Version:        6.12
 Release:        0
 %define cpan_name HTTP-Daemon
 Summary:        Simple http server class

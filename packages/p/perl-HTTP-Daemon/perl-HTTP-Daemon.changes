@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun  5 03:11:59 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.12
+   see /usr/share/doc/packages/perl-HTTP-Daemon/Changes
+
+  6.12      2020-06-04 16:01:31Z
+    - No changes since TRIAL release 6.11
+  
+  6.11      2020-06-03 14:47:21Z (TRIAL RELEASE)
+    - An IPv6 zone separator must be URI-quoted (GH#47) (Petr Pisar and Olaf
+      Alders)
+  
+
+-------------------------------------------------------------------
 Wed May 27 03:12:24 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 6.10
