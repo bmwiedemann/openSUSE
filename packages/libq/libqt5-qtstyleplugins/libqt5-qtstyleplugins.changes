@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  9 07:58:08 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Amend patch to fix issues with platform themes providing an
+  incompatible palette (boo#1172658):
+  * fix-build-qt5.15.patch
+
+-------------------------------------------------------------------
 Thu Mar  5 14:51:02 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix build against Qt 5.15:

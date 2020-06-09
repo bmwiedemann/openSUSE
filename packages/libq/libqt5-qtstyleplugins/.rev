@@ -88,4 +88,12 @@
   * fix-build-qt5.15.patch</comment>
     <requestid>781891</requestid>
   </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>a40e83ef0b3e6650ce1a25c330111f2c</srcmd5>
+    <version>5.0.0+git20170311</version>
+    <time>1591743031</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812858</requestid>
+  </revision>
 </revisionlist>
