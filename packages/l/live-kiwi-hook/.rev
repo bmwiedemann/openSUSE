@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>775111</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>57b10c019b15aee1c17d90f9760d2927</srcmd5>
+    <version>1.0</version>
+    <time>1591703461</time>
+    <user>dimstar_suse</user>
+    <comment>- Undo the change in kiwi to use &quot;ix86&quot; as arch for 32-bit x86</comment>
+    <requestid>812904</requestid>
+  </revision>
 </revisionlist>

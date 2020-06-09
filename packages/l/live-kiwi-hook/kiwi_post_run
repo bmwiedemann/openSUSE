@@ -8,6 +8,8 @@
 # The isos written by KIWI (and subsequently renamed by the OBS KIWI
 # build recipe) do not follow that name scheme, so we need to rename
 # it manually to the expected names.
+# Additionally, kiwi in a newer version uses "ix86" instead of the full
+# arch, which is not handled/expected by various scripts. So undo that.
 
 # The Rescue CD is intented to be written to CDs, so it must not exceed
 # the 680 MiB size limit. For GNOME and KDE Lives there's an arbitrary
@@ -25,12 +27,14 @@ if ! [ -f *.iso ]; then
 	exit 0
 fi
 
-# openSUSE-Tumbleweed-GNOME-Live.i686-2.8.0-noEFI-Build22.1
+# openSUSE-Tumbleweed-GNOME-Live.ix86-2.8.0-noEFI-Build22.1
 oldiso="$(echo *.iso | sed 's/\.iso//')"
 flavor="$(echo "${oldiso}" | awk -F- '/-Rescue-CD/ { print "Rescue" } /-GNOME-Live/ { print "GNOME" } /-KDE-Live/ { print "KDE" } /-XFCE-Live/ { print "XFCE" }')"
 
+# openSUSE-Tumbleweed-GNOME-Live.i686-2.8.0-noEFI-Build22.1
+newiso="$(echo "${oldiso}" | sed -E 's/ix86/i686/')"
 # openSUSE-Tumbleweed-GNOME-Live-i686-Build22.1-Media
-newiso="$(echo "${oldiso}" | sed -E 's/([^.]*)\.([^0-9][^-]+).*(Build.*)/\1-\2-\3-Media/')"
+newiso="$(echo "${newiso}" | sed -E 's/([^.]*)\.([^0-9][^-]+).*(Build.*)/\1-\2-\3-Media/')"
 
 # Use rename to also rename the checksum files
 rename -v "${oldiso}" "${newiso}" ./*

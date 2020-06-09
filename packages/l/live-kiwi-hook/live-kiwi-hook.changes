@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  9 11:47:31 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Undo the change in kiwi to use "ix86" as arch for 32-bit x86
+
+-------------------------------------------------------------------
 Tue Feb 18 09:21:18 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Update the filename in .sha256 files as well (boo#1159974)
