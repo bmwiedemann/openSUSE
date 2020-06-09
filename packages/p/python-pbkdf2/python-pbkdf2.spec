@@ -1,7 +1,7 @@
 #
 # spec file for package python-pbkdf2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,20 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pbkdf2
-Version:        1.3 
+Version:        1.3
 Release:        0
 Summary:        PKCS#5 v2.0 PBKDF2 Module
 License:        MIT
 Group:          Development/Libraries/Python
-Url:            http://www.dlitz.net/software/%{name}/
+URL:            http://www.dlitz.net/software/%{name}/
 Source:         https://files.pythonhosted.org/packages/source/p/pbkdf2/pbkdf2-%{version}.tar.gz
-BuildArch:      noarch
 BuildRequires:  %{python_module base}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pycrypto}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 Requires:       python-pycrypto
-
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -50,10 +49,9 @@ sed -i '1d' pbkdf2.py
 %python_install
 
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest
 
-%files %python_files
-%defattr(-,root,root,-)
+%files %{python_files}
 %{python_sitelib}/*
 %doc README.txt
 
