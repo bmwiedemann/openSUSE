@@ -47,4 +47,13 @@
     <comment>Inserted RPM changelog entry regarding new package ebiso for SUSE Linux Enterprise to solve bsc#1041565 (forwarded request 500048 from jsmeix)</comment>
     <requestid>500049</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>745888433311e09fdcab9a16122d8c73</srcmd5>
+    <version>0.2.7</version>
+    <time>1591742866</time>
+    <user>dimstar_suse</user>
+    <comment>- workaround for compiling with gcc-10
+</comment>
+    <requestid>812747</requestid>
+  </revision>
 </revisionlist>

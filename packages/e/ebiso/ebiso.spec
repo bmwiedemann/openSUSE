@@ -17,17 +17,17 @@
 
 
 Name:           ebiso
-Version:        0.2.5
+Version:        0.2.7
 Release:        0
 Summary:        UEFI bootable ISO image creator for Relax-and-Recover
-License:        GPL-2.0+
+License:        GPL-3.0
 Group:          Productivity/Archiving/Backup
 # Refer to http://license.opensuse.org/
 # for the list of known licences and their exact spelling:
 # ebiso is only used by rear to make UEFI bootable ISO images
 # accordingly ebiso is in the same RPM group as rear:
-Url:            https://github.com/gozora/ebiso
-Source0:        https://github.com/gozora/ebiso/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Url:            https://gitlab.com/gozora/ebiso
+Source0:        https://gitlab.com/gozora/ebiso/-/archive/%{version}/ebiso-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # Supplements is a reverse "Recommends" which means
 # (cf. https://tr.opensuse.org/Libzypp/Dependencies):
 # ebiso should be be installed if rear is is provided by an installed package.
@@ -41,7 +41,7 @@ Source0:        https://github.com/gozora/ebiso/archive/v%{version}.tar.gz#/%{na
 Supplements:    rear
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Enable building only on architectures which support UEFI
-ExclusiveArch:  %ix86 x86_64 aarch64
+ExclusiveArch:  x86_64
 
 %description
 ebiso is needed by Relax-and-Recover (abbreviated ReaR)
@@ -51,7 +51,7 @@ on 64-bit x86_64 architecture.
 ebiso only works for systems with UEFI boot.
 ebiso cannot create legacy bootable ISOs.
 
-See project pages at https://github.com/gozora/ebiso
+See project pages at https://gitlab.com/gozora/ebiso
 
 %prep
 %setup -q
