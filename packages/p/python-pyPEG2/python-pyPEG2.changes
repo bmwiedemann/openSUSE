@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  8 13:14:43 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- replace nose with pytest
+
+-------------------------------------------------------------------
 Tue May  2 21:42:12 UTC 2017 - sor.alexei@meowr.ru
 
 - Update for the multipython build.

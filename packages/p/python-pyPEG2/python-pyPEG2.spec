@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyPEG2
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,12 +23,12 @@ Name:           python-pyPEG2
 Version:        2.15.2
 Release:        0
 Summary:        PEG Parser-Interpreter framework for Python
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Languages/Python
-Url:            https://fdik.org/pyPEG2
+URL:            https://fdik.org/pyPEG2
 Source:         https://files.pythonhosted.org/packages/source/p/%{_name}/%{_name}-%{version}.tar.gz
 BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  python-rpm-macros
 Requires:       python-lxml
 BuildArch:      noarch
@@ -55,11 +55,11 @@ With pyPEG you can parse many formal languages in a very easy way.
 %python_install
 
 %check
-nosetests-%{python_version}
+%pytest
 
 %files %{python_files}
-%defattr(-,root,root)
-%doc CHANGES.txt LICENSE.txt README.txt
+%license LICENSE.txt
+%doc CHANGES.txt README.txt
 %{python_sitelib}/pypeg2/
 %{python_sitelib}/%{_name}-%{version}-py%{python_version}.egg-info
 
