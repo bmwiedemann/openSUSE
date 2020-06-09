@@ -375,6 +375,8 @@ find -name COPYING.GPL3 -exec chmod -x '{}' \;
 
 %build
 pushd nemo-pastebin
+export CFLAGS="%{optflags} -fcommon"
+export CXXFLAGS="%{optflags} -fcommon"
 %py3_build
 popd
 

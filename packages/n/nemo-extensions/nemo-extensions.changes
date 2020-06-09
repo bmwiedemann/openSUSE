@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  2 11:14:09 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Enable -fcommon which is not default with GCC10.
+
+-------------------------------------------------------------------
 Thu Feb 27 23:35:10 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to the version 4.4.0:
