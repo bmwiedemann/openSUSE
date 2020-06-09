@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  9 07:44:50 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.3.5:
+  * Fix bug in marker evaluation #42
+  * Refactor tests for clarity
+
+-------------------------------------------------------------------
 Tue Apr 14 09:06:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
-- Update to 0.4.3:
+- Update to 0.3.4:
   * Drop support for unsupported versions of Python #23
   * Convert toolchain from pip/tox/twine to poetry
   * Replace TravisCI and Appveyor with GitHub Actions #36

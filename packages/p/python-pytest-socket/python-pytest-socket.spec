@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-socket
-Version:        0.3.4
+Version:        0.3.5
 Release:        0
 Summary:        Pytest Plugin to disable socket
 License:        MIT
