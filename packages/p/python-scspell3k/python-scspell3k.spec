@@ -28,7 +28,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-cram
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -83,8 +82,6 @@ to three different sub-dictionaries may be searched for any given file:
 
 %check
 %pytest
-sed -i -e 's:python $TESTDIR:python3 $TESTDIR:g' ./test.cram
-python3 -m cram --indent=4 ./test.cram
 
 %post
 %python_install_alternative scspell

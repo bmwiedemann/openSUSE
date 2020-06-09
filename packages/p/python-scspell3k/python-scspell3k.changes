@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  9 06:56:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop dependency on cram as we remove it due to build fail
+
+-------------------------------------------------------------------
 Tue May 19 09:27:54 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

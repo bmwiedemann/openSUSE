@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>807287</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>0c0672756708714955e1763b9c389b4f</srcmd5>
+    <version>2.2</version>
+    <time>1591742922</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop dependency on cram as we remove it due to build fail</comment>
+    <requestid>812782</requestid>
+  </revision>
 </revisionlist>
