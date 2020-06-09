@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Thu May 28 14:41:15 UTC 2020 - Thomas Renninger <trenn@suse.de>
+
+- Bring changelog in sync with Uyuni:
+- Fixes template engine selection(bsc#1170462)
+  Fixed mainline by commit 33c769e99
+D fix-template-engine-selection.patch
+
+- Fixes a template rendering error (bsc#1169779)
+  Fixed mainline by commit 5e5ef6c8c
+D fixes-a-template-rendering-error.patch
+
+  
+- use systemctl to restart cobblerd on logfile rotation (bsc#1169207)
+  Mainline logrotate conf file uses already /sbin/service instead of
+  outdated: /etc/init.d/cobblerd
+
+- Fix cobbler sync for DHCP or DNS (bsc#1169553)
+  Fixed mainline by commit 2d6cfe42da
+  D fix_cobbler_sync_for_dhcp_or_dns.diff
+
+- Signatures file now uses "default_autoinstall" which fixes import
+  problem happening with some distributions (bsc#1159010)
+  Fixed mainline by commit 33d181199f0da1da
+  
+- Fix for kernel and initrd detection (bsc#1159010)
+  Fixed mainline by commit 872f505f66c50059
+
+-------------------------------------------------------------------
+Wed May 27 10:20:36 UTC 2020 - Enno Gotthold <egotthold@suse.com>
+
+- New:
+  * For the distro there is now a parameter remote_boot_initrd and remote_boot_kernel ()
+  * For the profile there is now a parameter filename for DHCP. (#2280)
+  * Signatures for ESXi 6 and 7 (#2308)
+  * The hardlink command is now detected more dynamically and thus more error resistant (#2297)
+  * HTTPBoot will now work in some cases out of the bug. (#2295)
+  * Additional DNS query for a case where the wrong record was queried in the nsupdate system case (#2285)
+
+- Changes:
+  * Enabled a lot of tests, removed some and implemented new. (#2202)
+  * Removed not used files from the codebase. (#2302)
+  * Exchanged mkisofs to xorrisofs. (#2296)
+  * Removed duplicate code. (#2224)
+  * Removed unreachable code. (#2223)
+  * Snippet creation and deletion now works again via xmlrpc. (#2244)
+  * Replace createrepo with createrepo_c. (#2266)
+  * Enable Kerberos through having a case sensitive users.conf. (#2272)
+
+- Bugfixes:
+  * General various Bugfixes (#2331, )
+  * Makefile usage and commands. (#2344, #2304)
+  * Fix the dhcp template. (#2314)
+  * Creation of the management classes and gPXE. (#2310)
+  * Fix the scm_track module. (#2275, #2279)
+  * Fix passing the netdevice parameter correctly to the linuxrc. (#2263)
+  * powerstatus from cobbler now works thanks to a wrapper for ipmitool. (#2267)
+  * In case the LDAP is used for auth, it now works with ADs. (#2274)
+  * Fix passthru authentication. (#2271)
+
+- Other:
+  * Add Codecov. (#2229)
+  * Documentation updates. (#2333, #2326, #2305, #2249, #2268)
+  * Buildprocess:
+    *  Recreation and cleanup of Grub2. (#2278)
+    *  Fix small errors for openSUSE Leap. (#2233)
+    *  Fix rpmlint errors. (#2237)
+    *  Maximum compatibility for debbuild package creation. (#2255, #2292, #2242, #2300)
+  * Fixes related to our CI Pipeline (#2254, #2269)
+  * Internal Code cleanup (#2273, #2270)
+
+- Breaking Changes:
+  * Hash handling in users.digest file. (#2299) 
+
+-------------------------------------------------------------------
 Mon Feb 24 11:40:36 UTC 2020 - Thomas Renninger <trenn@suse.de>
 
 - Removed not needed files in obs. This is now all mainline:

@@ -1,6 +1,3 @@
-#
-# RPM spec file for all Cobbler packages
-#
 # Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -11,17 +8,8 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-#
-# Supported/tested build targets:
-# - Fedora: 30, 31, Rawhide
-# - CentOS + EPEL: 7, 8
-# - SLE: 15sp1
-# - OpenSuSE: Leap 15.1, Tumbleweed
-# - Debian: 10
-# - Ubuntu: 18.04
-#
-# If it doesn't build on the Open Build Service (OBS) it's a bug.
-#
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 
 # Force bash instead of Debian dash
 %global _buildshell /bin/bash
@@ -124,7 +112,7 @@
 %global __requires_exclude_from ^%{python3_sitelib}/modules/serializer_mongodb.py*$
 
 Name:           cobbler
-Version:        3.1.1+git20200316.25209de3
+Version:        3.1.2
 Release:        0%{?dist}
 Summary:        Boot server configurator
 URL:            https://cobbler.github.io/
@@ -140,10 +128,8 @@ Group:          Development/System
 %endif
 
 License:        GPL-2.0-or-later
-#Source0:        https://github.com/cobbler/cobbler/archive/v%{version}/%{name}-%{version}.tar.gz
-Source0:        %{name}-%{version}.tar.gz
-Source1:        %{name}-rpmlintrc
-
+Source:         %{name}-%{version}.tar.gz
+Source1:        cobbler.rpmlintrc
 BuildArch:      noarch
 
 BuildRequires:  git-core

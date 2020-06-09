@@ -1106,4 +1106,41 @@ First the remaining diff has to be submitted mainline.
   * Building the Cent-OS RPMs in Docker (#2190 #2189)</comment>
     <requestid>792600</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>73aec8a419dc8614c9ad1bc76bea97a1</srcmd5>
+    <version>3.1.2</version>
+    <time>1591742912</time>
+    <user>dimstar_suse</user>
+    <comment>- Bring changelog in sync with Uyuni:
+- Fixes template engine selection(bsc#1170462)
+  Fixed mainline by commit 33c769e99
+D fix-template-engine-selection.patch
+- Fixes a template rendering error (bsc#1169779)
+  Fixed mainline by commit 5e5ef6c8c
+D fixes-a-template-rendering-error.patch
+  
+- use systemctl to restart cobblerd on logfile rotation (bsc#1169207)
+  Mainline logrotate conf file uses already /sbin/service instead of
+  outdated: /etc/init.d/cobblerd
+- Fix cobbler sync for DHCP or DNS (bsc#1169553)
+  Fixed mainline by commit 2d6cfe42da
+  D fix_cobbler_sync_for_dhcp_or_dns.diff
+- Signatures file now uses &quot;default_autoinstall&quot; which fixes import
+  problem happening with some distributions (bsc#1159010)
+  Fixed mainline by commit 33d181199f0da1da
+  
+- Fix for kernel and initrd detection (bsc#1159010)
+  Fixed mainline by commit 872f505f66c50059
+
+- New:
+  * For the distro there is now a parameter remote_boot_initrd and remote_boot_kernel ()
+  * For the profile there is now a parameter filename for DHCP. (#2280)
+  * Signatures for ESXi 6 and 7 (#2308)
+  * The hardlink command is now detected more dynamically and thus more error resistant (#2297)
+  * HTTPBoot will now work in some cases out of the bug. (#2295)
+  * Additional DNS query for a case where the wrong record was queried in the nsupdate system case (#2285)
+- Changes:
+  * Enabled a lot of tests, removed some and implemented new. (#2202)</comment>
+    <requestid>812949</requestid>
+  </revision>
 </revisionlist>

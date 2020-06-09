@@ -2,12 +2,12 @@
   <service mode="disabled" name="obs_scm">
     <param name="url">git://github.com/cobbler/cobbler.git</param>
     <param name="scm">git</param>
-    <param name="revision">master</param>
-    <param name="versionformat">3.1.1+git%cd.%h</param>
+    <param name="revision">release30</param>
 <!--
-    <param name="versionformat">3.1.1</param>
--->
+    <param name="versionformat">3.1.2+git%cd.%h</param>
     <param name="extract">cobbler.spec</param>
+-->
+    <param name="versionformat">3.1.2</param>
     <param name="extract">cobbler.rpmlintrc</param>
   </service>
   <service mode="disabled" name="set_version"/>
