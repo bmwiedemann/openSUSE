@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun  3 08:54:07 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- update comments in /etc/sysconfig/bootloader (bsc#1171912)
+- 4.3.3
+
+-------------------------------------------------------------------
+Mon May 25 15:00:44 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- s390 secure boot: enhance disk type detection to cover multipath
+  (bsc#1171821)
+- 4.3.2
+
+-------------------------------------------------------------------
 Thu May  7 12:53:53 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Autoyast schema: Allow optional types for string and map objects
