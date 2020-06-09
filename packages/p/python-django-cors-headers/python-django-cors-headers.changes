@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  9 10:46:42 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 3.3.0
+ * Drop Django 1.11 support. Only Django 2.0+ is supported now.
+ * Drop the providing_args argument from Signal to prevent
+    a deprecation warning on Django 3.1.
+
+-------------------------------------------------------------------
 Mon Jan 13 12:02:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Build on Leap by not using the macros

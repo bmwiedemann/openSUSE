@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-cors-headers
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        A Django App that adds CORS headers to responses
 License:        MIT
@@ -40,7 +40,6 @@ responses.
 
 %prep
 %setup -q -n django-cors-headers-%{version}
-rm pytest.ini
 
 %build
 %python_build
@@ -51,7 +50,7 @@ rm pytest.ini
 
 %check
 export DJANGO_SETTINGS_MODULE=tests.settings
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m pytest -v
+%pytest
 
 %files %{python_files}
 %license LICENSE
