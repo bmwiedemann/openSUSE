@@ -166,4 +166,18 @@
   * First release of Grappelli which is compatible with Django 3.0.</comment>
     <requestid>777584</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>be0a4682626ef119e3cb8d5feafa722b</srcmd5>
+    <version>2.14.2</version>
+    <time>1591743088</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.2
+ * Fixed: Django version (3.0) with docs and quickstart.
+ * Fixed: Dashboard with metaclass.
+ * Fixed: Missing variable in RelatedObjectLookups.
+ * Fixed: Sortables with tuples when using StackedInlines.
+ * Improved: Removed six dependency.
+ * Improved: Changed bodyclass in order to allow adding more attributes.</comment>
+    <requestid>812886</requestid>
+  </revision>
 </revisionlist>
