@@ -1,7 +1,7 @@
 #
 # spec file for package openmpi4
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2004-2005 The Trustees of Indiana University and Indiana
 #                         University Research and Technology
 #                         Corporation.  All rights reserved.
@@ -42,8 +42,8 @@
 # % define build_static_devel 1
 
 %define pname openmpi
-%define vers 4.0.2
-%define _vers 4_0_2
+%define vers 4.0.3
+%define _vers 4_0_3
 %define m_f_ver 4
 %bcond_with ringdisabled
 
@@ -115,7 +115,7 @@ ExclusiveArch:  do_not_build
 %global hpc_openmpi_pack_version %{hpc_openmpi_dep_version}
 %endif
 
-%define git_ver .0.cb5f4e737a9d
+%define git_ver .0.8b4a8cd34cb3
 
 #############################################################################
 #
@@ -129,14 +129,13 @@ Release:        0
 Summary:        An implementation of MPI/SHMEM (Version %{m_f_ver})
 License:        BSD-3-Clause
 Group:          Development/Libraries/Parallel
-Url:            http://www.open-mpi.org/
+URL:            http://www.open-mpi.org/
 Source0:        openmpi-%{version}%{git_ver}.tar.bz2
 Source2:        openmpi4-rpmlintrc
 Source3:        macros.hpc-openmpi
 Source4:        mpivars.sh
 Source5:        mpivars.csh
 Patch0:         reproducible.patch
-patch1:         memory-patcher-fix-compiler-warning.patch
 Provides:       mpi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -403,7 +402,6 @@ EOF
 %endif
 
 %patch0 -p1
-%patch1
 
 # Live patch the VERSION file
 sed -i -e 's/^greek=.*$/greek=%{git_ver}/' -e 's/^repo_rev=.*$/repo_rev=%{version}%{git_ver}/' \
