@@ -19,7 +19,7 @@
 %define pypi_package_name django-guardian
 %define skip_python2 1
 Name:           python-%{pypi_package_name}
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Implementation of per object permissions for Django
 License:        BSD-3-Clause

@@ -140,4 +140,20 @@ SPDX syntax (http://www.spdx.org/licenses) (forwarded request 83930 from babelwo
   * Django 3.x support</comment>
     <requestid>777586</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>dc2385caffb76a10bf2839ecb7dd5dc8</srcmd5>
+    <version>2.3.0</version>
+    <time>1591743092</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.0
+ * Drop support for Django 2.1
+ * Fix compatibility with UUIDField primary keys
+ * Fix formatting for pyupgrade
+ * Fix error with get_objects_for_user on PostgreSQL
+ * Modify 'assign_perm' shortcut to treat lists as a queryset
+ * Updated links to Django documentation and django-authority repository
+ * Removed reference to &quot;easy_install&quot; in the documentation
+ * Run migrations check only if required version of django is installed</comment>
+    <requestid>812905</requestid>
+  </revision>
 </revisionlist>

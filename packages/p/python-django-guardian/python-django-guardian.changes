@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun  9 11:44:07 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 2.3.0
+ * Drop support for Django 2.1
+ * Fix compatibility with UUIDField primary keys
+ * Fix formatting for pyupgrade
+ * Fix error with get_objects_for_user on PostgreSQL
+ * Modify 'assign_perm' shortcut to treat lists as a queryset
+ * Updated links to Django documentation and django-authority repository
+ * Removed reference to "easy_install" in the documentation
+ * Run migrations check only if required version of django is installed
+
+-------------------------------------------------------------------
 Thu Feb 20 08:18:29 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.2.0:
