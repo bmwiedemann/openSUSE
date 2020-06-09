@@ -1,7 +1,7 @@
 #
 # spec file for package python-JsonWeb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,7 @@ Summary:        Add JSON (de)serialization to your python objects
 License:        BSD-3-Clause
 URL:            http://www.jsonweb.info/
 Source:         https://files.pythonhosted.org/packages/source/J/JsonWeb/JsonWeb-%{version}.tar.gz
-BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
@@ -44,7 +43,7 @@ to your python classes.
 %python_install
 
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
 %doc README.rst

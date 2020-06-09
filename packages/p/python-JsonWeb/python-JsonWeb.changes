@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  9 11:14:01 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- replace nose with pytest
+
+-------------------------------------------------------------------
 Thu Nov  7 14:51:29 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Run through spec-cleaner
