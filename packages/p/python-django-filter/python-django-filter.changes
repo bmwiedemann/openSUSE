@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  9 09:42:22 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 2.3.0
+ * Fixed import of FieldDoesNotExist. 
+ * Added testing against Django 3.0
+ * Declared support for, and added testing against, Python 3.8
+ * Fix filterset multiple inheritance bug
+ * Allowed customising default lookup expression.
+ * Fixed IsoDateTimeRangeFieldTests for Django 3.1
+
+-------------------------------------------------------------------
 Mon Sep 16 09:33:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.2.0:

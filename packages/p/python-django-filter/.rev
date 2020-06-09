@@ -39,4 +39,18 @@
 - Remove merged patch fix_tests.patch</comment>
     <requestid>731220</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d92cf9362151aee1c0bd7614e90805ae</srcmd5>
+    <version>2.3.0</version>
+    <time>1591743022</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.0
+ * Fixed import of FieldDoesNotExist. 
+ * Added testing against Django 3.0
+ * Declared support for, and added testing against, Python 3.8
+ * Fix filterset multiple inheritance bug
+ * Allowed customising default lookup expression.
+ * Fixed IsoDateTimeRangeFieldTests for Django 3.1</comment>
+    <requestid>812848</requestid>
+  </revision>
 </revisionlist>
