@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  9 08:03:40 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to github archive for tests
+- Update to 0.5.1:
+  * Fixes for new pytest
+  * Drop py2 support
+
+-------------------------------------------------------------------
 Thu Feb 21 11:31:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.4.0:

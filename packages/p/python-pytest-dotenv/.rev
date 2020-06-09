@@ -7,4 +7,15 @@
     <comment></comment>
     <requestid>677974</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8e60f3b8d13659c19d2de8bddf5dde16</srcmd5>
+    <version>0.5.1</version>
+    <time>1591742988</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to github archive for tests
+- Update to 0.5.1:
+  * Fixes for new pytest
+  * Drop py2 support</comment>
+    <requestid>812816</requestid>
+  </revision>
 </revisionlist>
