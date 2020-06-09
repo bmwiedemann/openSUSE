@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  9 08:49:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.3.1:
+  * The (async_)start_new_kernel_client method now supports starting a new client when its kernel manager (self.km) is a MultiKernelManager. The method now returns the kernel id in addition to the kernel client. If the kernel manager was a KernelManager, the returned kernel id is None. #51
+  * Added reset_kc option to reset_execution_trackers, so that the kernel client can be reset and a new one created in calls to (async_)execute #44
+  * Check that a kernel manager exists before cleaning up the kernel #61
+  * Force client class to be async when kernel manager is MultiKernelManager #55
+  * Replace pip install with conda install in Binder #54
+
+-------------------------------------------------------------------
 Sun Apr 26 19:33:24 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:
