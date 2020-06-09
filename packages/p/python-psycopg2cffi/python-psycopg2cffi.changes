@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue Jun  9 10:44:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix dependencies
+- Enable tests
+
+-------------------------------------------------------------------
+Wed Jun  3 02:27:51 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- updated specfile:
+  * use pypi source
+  * some cleanup
+
+-------------------------------------------------------------------
+Wed Apr  1 01:17:31 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v2.8.1
