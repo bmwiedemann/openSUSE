@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  7 19:29:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Set CFLAGS+=-fcommon to workaround gcc10 errors (boo#1160244)
+
+-------------------------------------------------------------------
 Sun Jan 13 11:15:02 UTC 2019 - mardnh@gmx.de
 
 - Rename binary from nInvaders to ninvaders
