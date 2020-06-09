@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  9 11:26:25 CEST 2020 - tiwai@suse.de
+
+- Update to alsa-topology-conf 1.2.3:
+  Add topology file for generic HDA DSP machine driver
+
+-------------------------------------------------------------------
 Fri Mar 13 14:45:26 CET 2020 - tiwai@suse.de
 
 - Update to 1.2.2 tarball;
