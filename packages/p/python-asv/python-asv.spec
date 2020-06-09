@@ -1,7 +1,7 @@
 #
 # spec file for package python-asv
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,21 +24,22 @@ Summary:        Airspeed Velocity: A Python history benchmarking tool
 License:        BSD-3-Clause AND MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/airspeed-velocity/asv
-Source:         https://files.pythonhosted.org/packages/6e/94/4521cc0183a5656de9470452ddd2b6170a2d04ba9b18b84c597db09b8b0d/asv-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/asv/asv-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
+Requires:       python-six >= 1.4
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+Suggests:       python-python-hglib >= 1.5
 # SECTION test requirements
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six >= 1.4}
 BuildRequires:  git
 # /SECTION
-BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-Requires:       python-six >= 1.4
-Suggests:       python-python-hglib >= 1.5
-
 %python_subpackages
 
 %description
@@ -59,6 +60,7 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/asv
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -66,10 +68,16 @@ export CFLAGS="%{optflags}"
 exit 0
 # % python_exec setup.py test
 
+%post
+%python_install_alternative asv
+
+%postun
+%python_uninstall_alternative asv
+
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE.rst
-%python3_only %{_bindir}/asv
+%python_alternative %{_bindir}/asv
 %{python_sitearch}/*
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 27 09:36:06 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Mon Aug 26 05:24:29 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use more detailed description.
