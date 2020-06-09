@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-Pager
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-IO-Pager
-Version:        1.01
+Version:        1.02
 Release:        0
 %define cpan_name IO-Pager
-Summary:        Select a pager and pipe text to it if destination is a TTY
+Summary:        Select a pager (possibly perl-based) & pipe it text if a TTY
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/J/JP/JPIERCE/%{cpan_name}-%{version}.tgz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -50,7 +50,7 @@ appropriate subclass for implementation specific details.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

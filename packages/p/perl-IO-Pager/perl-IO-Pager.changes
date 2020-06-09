@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jun  8 03:11:41 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.02
+   see /usr/share/doc/packages/perl-IO-Pager/CHANGES
+
+  1.02	Sun Jun 07 2020
+  	Fix warning for undefined PAGER RT#132658
+  
+  	Fix flipped operands for cmp_ok in test 11.
+  
+  	Fix synthetic warning in test 9.
+  
+  	Win32 path fixes (git pull #6)
+  
+  	Remove deprecated POD content that some parsers carped about RT#131437
+  
+  	::Perl Add --tail mode to tp
+  
+  	::Perl Implement reflow for toggleable line numbering and folding.
+  
+  	::Perl Add support for bookmarks.
+  
+  	::Perl Add and document environment variable + switch processing to tp.
+  
+  	::Perl Rename visualBeep to visuaBell, but keep visualBeep as an alias.
+  
+  	::Perl Rename done() to close(), but keep done() as an alias.
+  
+  	::Perl Remove some debugging status updates.
+  
+  	::Perl More fixes for interactive test 16.
+  
+
+-------------------------------------------------------------------
 Wed Oct  9 08:16:45 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.01
