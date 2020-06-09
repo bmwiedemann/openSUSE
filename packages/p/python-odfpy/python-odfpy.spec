@@ -18,6 +18,7 @@
 
 #
 %define modname odfpy
+%define binaries csv2ods mailodf odf2mht odf2xhtml odf2xml odfimgimport odflint odfmeta odfoutline odfuserfield xml2odf
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-%{modname}
 Version:        1.4.1
@@ -32,8 +33,10 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 Requires:       python-defusedxml
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -72,15 +75,49 @@ sed -i "1d" odf/{userfield,odf2xhtml,manifest,element,elementtypes,load,odfmanif
 
 %install
 %python_install
+for b in %{binaries}; do
+  %python_clone -a %{buildroot}%{_mandir}/man1/$b.1
+  %python_clone -a %{buildroot}%{_bindir}/$b
+done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_version} -v
+%pytest
+
+%post
+for b in %{binaries}; do
+  %python_install_alternative $b $b.1
+done
+
+%postun
+for b in %{binaries}; do
+  %python_uninstall_alternative $b
+done
 
 %files %{python_files}
 %license APACHE-LICENSE-2.0.txt GPL-LICENSE-2.txt
-%python3_only %{_bindir}/*
-%python3_only %{_mandir}/man1/*
+%python_alternative %{_bindir}/csv2ods
+%python_alternative %{_bindir}/mailodf
+%python_alternative %{_bindir}/odf2mht
+%python_alternative %{_bindir}/odf2xhtml
+%python_alternative %{_bindir}/odf2xml
+%python_alternative %{_bindir}/odfimgimport
+%python_alternative %{_bindir}/odflint
+%python_alternative %{_bindir}/odfmeta
+%python_alternative %{_bindir}/odfoutline
+%python_alternative %{_bindir}/odfuserfield
+%python_alternative %{_bindir}/xml2odf
+%python_alternative %{_mandir}/man1/csv2ods.1%{ext_man}
+%python_alternative %{_mandir}/man1/mailodf.1%{ext_man}
+%python_alternative %{_mandir}/man1/odf2mht.1%{ext_man}
+%python_alternative %{_mandir}/man1/odf2xhtml.1%{ext_man}
+%python_alternative %{_mandir}/man1/odf2xml.1%{ext_man}
+%python_alternative %{_mandir}/man1/odfimgimport.1%{ext_man}
+%python_alternative %{_mandir}/man1/odflint.1%{ext_man}
+%python_alternative %{_mandir}/man1/odfmeta.1%{ext_man}
+%python_alternative %{_mandir}/man1/odfoutline.1%{ext_man}
+%python_alternative %{_mandir}/man1/odfuserfield.1%{ext_man}
+%python_alternative %{_mandir}/man1/xml2odf.1%{ext_man}
 %{python_sitelib}/odf
 %{python_sitelib}/%{modname}*
 
