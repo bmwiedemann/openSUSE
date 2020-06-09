@@ -40,6 +40,7 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(alsa) >= 1.0.16
 BuildRequires:  pkgconfig(audacious) >= %{aud_ver_min}
 BuildRequires:  pkgconfig(flac) >= 1.2.1

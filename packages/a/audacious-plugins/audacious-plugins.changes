@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  9 06:39:50 UTC 2020 - Petr Vorel <pvorel@suse.cz>
+
+- Add missing Qt5X11Extras dependency for qthotkey plugin.
+
+-------------------------------------------------------------------
 Wed Jun  3 17:24:18 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 4.0.4:
