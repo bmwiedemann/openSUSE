@@ -58,11 +58,13 @@ ln -sf ../../bin/%{name} clang++
 # and regular cc
 ln -sf ../../bin/%{name} cc
 ln -sf ../../bin/%{name} c++
+# and for nvidia cuda
+ln -sf ../../bin/%{name} nvcc
 
 %ifnarch %{ix86}
 # Testsuite fails on i586
 %check
-make %{?_smp_mflags} check
+%make_build check
 %endif
 
 %files
