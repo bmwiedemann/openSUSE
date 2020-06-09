@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun  4 11:45:45 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Replace anyxml agent with rubygem-nokogiri as yast2 already
+  depends on nokogiri, to reduce amount of used xml parsers.
+  (related to bsc#1170886)
+- 4.3.2
+
+-------------------------------------------------------------------
 Mon May 11 09:13:21 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Removed widget option :immediate which is undefined for the
@@ -10,7 +18,7 @@ Thu May  7 09:38:10 UTC 2020 - Michal Filka <mchf@suse.cz>
 
 - bnc#1166661
   - do not crash on empty system_packages_repos.yaml
-- 4.3.0 
+- 4.3.0
 
 -------------------------------------------------------------------
 Mon Apr 20 11:46:59 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
