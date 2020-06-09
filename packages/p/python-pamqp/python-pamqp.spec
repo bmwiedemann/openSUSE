@@ -26,7 +26,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/gmr/pamqp
 Source:         https://github.com/gmr/pamqp/archive/%{version}.tar.gz
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -60,8 +60,7 @@ encoding should be run through the pamqp.frame module.
 %check
 # for python 2.7 has to 'always' be there, for python 3.7 'default' is enough
 export PYTHONWARNINGS=always
-# test_decode_embedded_value_long_uint_data_type https://github.com/gmr/pamqp/issues/11
-%python_expand nosetests-%{$python_bin_suffix} tests/ -e 'test_decode_embedded_value_long_uint_data_type'
+%pytest tests/*
 
 %files %{python_files}
 %license LICENSE
