@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 26 13:48:56 UTC 2020 - Martin Vidner <martin@frogs>
+
+- Work around Relax-NG parser error: "Found anyName attribute
+  without oneOrMore ancestor" (bsc#1172131)
+- 4.3.2
+
+-------------------------------------------------------------------
 Mon May 11 07:45:17 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
 
 - remove obsolete proposal_settings_editable (bsc#1171423)
