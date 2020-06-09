@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun  1 09:40:31 UTC 2020 - Martin Vidner <mvidner@suse.com>
+
+- Autoyast schema: corrected problems in 'disabled' and 'share'
+  (bsc#1170886)
+- 4.3.2
+
+-------------------------------------------------------------------
+Wed May 27 13:34:52 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Dropped legacy testsuite (related to bsc#1138668).
+- 4.3.1
+
+-------------------------------------------------------------------
 Tue May 12 15:09:50 UTC 2020 - josef Reidinger <jreidinger@localhost>
 
 - Autoyast schema: Allow optional types for string and map objects

@@ -17,7 +17,7 @@
 
 
 Name:           yast2-samba-server
-Version:        4.3.0
+Version:        4.3.2
 Release:        0
 Url:            https://github.com/yast/yast-samba-server
 Summary:        YaST2 - Samba Server Configuration
@@ -30,17 +30,17 @@ Source0:        %{name}-%{version}.tar.bz2
 BuildRequires:  libsmbclient-devel
 BuildRequires:  perl-Crypt-SmbHash
 BuildRequires:  perl-X500-DN
-BuildRequires:  perl-XML-Writer
-BuildRequires:  samba-client
 BuildRequires:  update-desktop-files
 # Yast2::ServiceWidget
 BuildRequires:  yast2 >= 4.1.0
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-ldap
 BuildRequires:  yast2-perl-bindings
-BuildRequires:  yast2-samba-client
-BuildRequires:  yast2-testsuite
 BuildRequires:  yast2-users
+
+# Test suite
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 
 Requires:       perl-Crypt-SmbHash
 # Yast2::ServiceWidget
@@ -64,6 +64,9 @@ configuration.
 
 %prep
 %setup -q
+
+%check
+rake test:unit
 
 %build
 %yast_build
