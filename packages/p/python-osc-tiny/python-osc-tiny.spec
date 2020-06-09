@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-osc-tiny
 Version:        0.2.2
 Release:        0
@@ -35,9 +36,11 @@ BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
-BuildRequires:  python-mock
 BuildRequires:  python-rpm-macros
-BuildRequires:  python-unittest2
+%if %{with python2}
+BuildRequires:  python2-mock
+BuildRequires:  python2-unittest2
+%endif
 Requires:       python-lxml
 Requires:       python-python-dateutil
 Requires:       python-pytz
