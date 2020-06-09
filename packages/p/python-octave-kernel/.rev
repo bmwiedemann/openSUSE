@@ -33,4 +33,15 @@
     <comment></comment>
     <requestid>748385</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a323126fd07170d7d8ec56647d7dfb5c</srcmd5>
+    <version>0.32.0</version>
+    <time>1591743001</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.32.0:
+  * Fixes for octave5
+  * Fixes for new jupyterlab
+- Remove fix_octave5.patch</comment>
+    <requestid>812825</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  9 08:38:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.32.0:
+  * Fixes for octave5
+  * Fixes for new jupyterlab
+- Remove fix_octave5.patch
+
+-------------------------------------------------------------------
 Wed Nov 13 14:44:08 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - jupyter_client renamed to jupyter-client
