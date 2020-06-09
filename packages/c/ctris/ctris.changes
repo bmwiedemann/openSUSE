@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  7 20:14:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Set CFLAGS+=-fcommon to workaround gcc10 errors (boo#1160244)
+
+-------------------------------------------------------------------
 Wed Jan 23 23:47:24 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim extra typographic marks from descriptions.

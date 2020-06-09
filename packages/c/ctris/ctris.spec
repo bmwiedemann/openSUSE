@@ -1,7 +1,7 @@
 #
 # spec file for package ctris
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ A colorized, small and flexible Tetris clone for the console.
 %setup -q
 
 %build
-make CFLAGS="%{optflags}" %{?_smp_mflags}
+make CFLAGS="%{optflags} -fcommon" %{?_smp_mflags}
 
 %install
 %make_install BINDIR="%{buildroot}%{_bindir}"
