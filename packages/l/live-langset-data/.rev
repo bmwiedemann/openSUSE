@@ -118,4 +118,12 @@
 - Support new keyboard API in yast2-country</comment>
     <requestid>744197</requestid>
   </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>142cdbe1ce4bc37c599dfe05b5367c11</srcmd5>
+    <version>2.0</version>
+    <time>1591742228</time>
+    <user>dimstar_suse</user>
+    <comment>- Use y2start instead of y2base, it breaks nokogiri</comment>
+    <requestid>810832</requestid>
+  </revision>
 </revisionlist>

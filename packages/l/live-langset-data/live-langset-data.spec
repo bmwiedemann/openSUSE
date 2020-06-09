@@ -1,7 +1,7 @@
 #
 # spec file for package live-langset-data
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Scripts and data to allow locale switching in live media
 License:        GPL-2.0-only
 Group:          System/YaST
-Url:            https://build.opensuse.org/package/show/openSUSE:Factory:Live/live-langset-data
+URL:            https://build.opensuse.org/package/show/openSUSE:Factory:Live/live-langset-data
 Source1:        langset.sh
 Source2:        langset.service
 Source3:        getcountrydata.rb
@@ -47,7 +47,7 @@ cp %{SOURCE4} .
 
 %build
 mkdir output
-OUTPUTDIR=$PWD/output %{_libexecdir}/YaST2/bin/y2base %{SOURCE3} UI
+OUTPUTDIR=$PWD/output %{_libexecdir}/YaST2/bin/y2start %{SOURCE3} UI
 
 %install
 pushd output
