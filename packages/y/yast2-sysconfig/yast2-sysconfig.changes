@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  2 13:12:59 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Drop old testsuite that failing in new ruby
+  (related to bsc#1138668)
+- 4.3.1
+
+-------------------------------------------------------------------
 Wed May 13 09:05:34 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Autoyast schema: Allow optional types for string and map objects

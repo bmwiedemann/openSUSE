@@ -20,21 +20,21 @@ Name:           yast2-sysconfig
 Summary:        YaST2 - Sysconfig Editor
 License:        GPL-2.0-or-later
 Group:          System/YaST
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Url:            https://github.com/yast/yast-sysconfig
 
 Source0:        %{name}-%{version}.tar.bz2
 
-BuildRequires:  perl-XML-Writer
 BuildRequires:  update-desktop-files
 BuildRequires:  yast2
 BuildRequires:  yast2-devtools >= 4.2.2
-BuildRequires:  yast2-testsuite
 # path_matching (RSpec argument matcher)
 BuildRequires:  yast2-ruby-bindings >= 3.1.31
 # For tests
-BuildRequires:  ruby
+BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
+# For build
+BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
 
 Requires:       perl
 # Yast2::Systemd::Service
@@ -50,8 +50,10 @@ information.
 %prep
 %setup -q
 
+%check
+%yast_check
+
 %build
-%yast_build
 
 %install
 %yast_install
