@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>791102</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>90c58f03acdd84cf41e496c7a9fc5787</srcmd5>
+    <version>0.8.1</version>
+    <time>1591742953</time>
+    <user>dimstar_suse</user>
+    <comment>- remove pep8 unit tests, those are not useful to execute and
+  fail</comment>
+    <requestid>812806</requestid>
+  </revision>
 </revisionlist>

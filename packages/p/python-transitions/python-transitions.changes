@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  9 07:44:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- remove pep8 unit tests, those are not useful to execute and
+  fail
+
+-------------------------------------------------------------------
 Fri Apr  3 06:23:04 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to versino 0.8.1
