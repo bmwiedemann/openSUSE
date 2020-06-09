@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Thu Feb 20 13:33:57 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Setup as service
+- Brush up spec file to reduce distro branching
+- Create symlink for recognition by terraform
+
+-------------------------------------------------------------------
+Fri May 17 11:53:07 UTC 2019 -  <fbergmann@suse.com>
+
+- Initial packaging of the null provider
