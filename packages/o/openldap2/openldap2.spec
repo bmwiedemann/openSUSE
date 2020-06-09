@@ -1,7 +1,7 @@
 #
 # spec file for package openldap2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ License:        OLDAP-2.8
 Group:          Productivity/Networking/LDAP/Servers
 Version:        %{version_main}
 Release:        0
-Url:            https://www.openldap.org
+URL:            https://www.openldap.org
 Source:         https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-%{version_main}.tgz
 Source1:        slapd.conf
 Source2:        slapd.conf.olctemplate
@@ -232,7 +232,7 @@ Version:        %{version_ppolicy_check_module}
 Release:        0
 Summary:        Password quality check module for OpenLDAP
 Group:          Productivity/Networking/LDAP/Servers
-Url:            https://github.com/onyxpoint/ppolicy-check-password
+URL:            https://github.com/onyxpoint/ppolicy-check-password
 BuildRequires:  cracklib-devel
 Requires:       openldap2 = %version_main
 Recommends:     cracklib cracklib-dict-full
@@ -345,13 +345,13 @@ make SLAPD_DEBUG=0 test
 %endif
 
 %install
-mkdir -p %{buildroot}/%{_libdir}/openldap
+mkdir -p %{buildroot}%{_libdir}/openldap
 mkdir -p %{buildroot}/usr/lib/openldap
-mkdir -p %{buildroot}/usr/sbin
-mkdir -p %{buildroot}/%{_unitdir}
+mkdir -p %{buildroot}%{_sbindir}
+mkdir -p %{buildroot}%{_unitdir}
 make STRIP="" DESTDIR="%{buildroot}" "sysconfdir=%{_sysconfdir}/openldap" "libdir=%{_libdir}" "libexecdir=%{_libdir}" install
 # Additional symbolic link to slapd executable in /usr/sbin/
-ln -s %{_libdir}/slapd %{buildroot}/usr/sbin/slapd
+ln -s %{_libdir}/slapd %{buildroot}%{_sbindir}/slapd
 # Install selected contrib overlays
 for SLAPO_NAME in addpartial allowed allop autogroup lastbind denyop cloak noopsrch passwd/argon2 passwd/sha2 passwd/pbkdf2 trace
 do
@@ -360,18 +360,18 @@ done
 # slapo-smbk5pwd only for Samba password hashes
 make -C contrib/slapd-modules/smbk5pwd STRIP="" DESTDIR="%{buildroot}" "sysconfdir=%{_sysconfdir}/openldap" "libdir=%{_libdir}" "libexecdir=%{_libdir}" install
 install -m 755 %{SOURCE13} %{buildroot}/usr/lib/openldap/start
-install -m 644 %{SOURCE14} %{buildroot}/%{_unitdir}
-mkdir -p %{buildroot}/%{_sysconfdir}/openldap/slapd.d
-mkdir -p %{buildroot}/%{_sysconfdir}/sasl2
-install -m 644 %{SOURCE4} %{buildroot}/%{_sysconfdir}/sasl2/slapd.conf
+install -m 644 %{SOURCE14} %{buildroot}%{_unitdir}
+mkdir -p %{buildroot}%{_sysconfdir}/openldap/slapd.d
+mkdir -p %{buildroot}%{_sysconfdir}/sasl2
+install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/sasl2/slapd.conf
 install -m 755 -d %{buildroot}/var/lib/ldap
-chmod a+x %{buildroot}/%{_libdir}/liblber.so*
-chmod a+x %{buildroot}/%{_libdir}/libldap_r.so*
-install -m 755 %{SOURCE6} %{buildroot}/usr/sbin/schema2ldif
-install -m 755 %{SOURCE17} %{buildroot}/usr/sbin
-mkdir -p  %{buildroot}/usr/lib/tmpfiles.d/
-install -m 644 %{SOURCE18} %{buildroot}/usr/lib/tmpfiles.d/
-install -m 644 %{SOURCE3}  %{buildroot}/%{_libexecdir}/openldap/
+chmod a+x %{buildroot}%{_libdir}/liblber.so*
+chmod a+x %{buildroot}%{_libdir}/libldap_r.so*
+install -m 755 %{SOURCE6} %{buildroot}%{_sbindir}/schema2ldif
+install -m 755 %{SOURCE17} %{buildroot}%{_sbindir}
+mkdir -p  %{buildroot}%{_tmpfilesdir}/
+install -m 644 %{SOURCE18} %{buildroot}%{_tmpfilesdir}/
+install -m 644 %{SOURCE3}  %{buildroot}/usr/lib/openldap/
 
 # Install ppolicy check module
 make -C contrib/slapd-modules/ppolicy-check-password STRIP="" DESTDIR="%{buildroot}" "sysconfdir=%{_sysconfdir}/openldap" "libdir=%{_libdir}" "libexecdir=%{_libexecdir}" install
@@ -385,43 +385,43 @@ popd
 # Install ppolicy check module's manual page
 install -m 0644 %{S:203}.gz %{buildroot}%{_mandir}/man5/
 
-mkdir -p %{buildroot}/%{_fillupdir}
-install -m 644 %{SOURCE16} %{buildroot}/%{_fillupdir}/sysconfig.openldap
-install -m 644 *.ldif %{buildroot}/%{_sysconfdir}/openldap/schema
-install -m 644 *.schema %{buildroot}/%{_sysconfdir}/openldap/schema
+mkdir -p %{buildroot}%{_fillupdir}
+install -m 644 %{SOURCE16} %{buildroot}%{_fillupdir}/sysconfig.openldap
+install -m 644 *.ldif %{buildroot}%{_sysconfdir}/openldap/schema
+install -m 644 *.schema %{buildroot}%{_sysconfdir}/openldap/schema
 # Install default and sample configuration files
-install -m 644 %{SOURCE1} %{buildroot}/%{_sysconfdir}/openldap
-install -m 644 %{SOURCE2} %{buildroot}/%{_sysconfdir}/openldap
-install -m 644 %{SOURCE12} %{buildroot}/%{_sysconfdir}/openldap
+install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/openldap
+install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/openldap
+install -m 644 %{SOURCE12} %{buildroot}%{_sysconfdir}/openldap
 find doc/guide '(' ! -name *.html -a ! -name *.gif -a ! -name *.png -a ! -type d ')' -delete
 rm -rf doc/guide/release
 
 %define DOCDIR %{_defaultdocdir}/%{name}
 # Install default database optimisation
-install -d %{buildroot}/%{DOCDIR}/adminguide \
-           %{buildroot}/%{DOCDIR}/images \
-           %{buildroot}/%{DOCDIR}/drafts
-install -m 644 %{buildroot}/etc/openldap/DB_CONFIG.example %{buildroot}/%{DOCDIR}/
-install -m 644 doc/guide/admin/* %{buildroot}/%{DOCDIR}/adminguide
-install -m 644 doc/guide/images/*.gif %{buildroot}/%{DOCDIR}/images
-install -m 644 doc/drafts/* %{buildroot}/%{DOCDIR}/drafts
+install -d %{buildroot}%{DOCDIR}/adminguide \
+           %{buildroot}%{DOCDIR}/images \
+           %{buildroot}%{DOCDIR}/drafts
+install -m 644 %{buildroot}/etc/openldap/DB_CONFIG.example %{buildroot}%{DOCDIR}/
+install -m 644 doc/guide/admin/* %{buildroot}%{DOCDIR}/adminguide
+install -m 644 doc/guide/images/*.gif %{buildroot}%{DOCDIR}/images
+install -m 644 doc/drafts/* %{buildroot}%{DOCDIR}/drafts
 install -m 644 ANNOUNCEMENT \
                COPYRIGHT \
                README \
                CHANGES \
                %{SOURCE5} \
-               %{buildroot}/%{DOCDIR}
+               %{buildroot}%{DOCDIR}
 install -m 644 servers/slapd/slapd.ldif \
-               %{buildroot}/%{DOCDIR}/slapd.ldif.default
+               %{buildroot}%{DOCDIR}/slapd.ldif.default
 rm -f %{buildroot}/etc/openldap/DB_CONFIG.example
 rm -f %{buildroot}/etc/openldap/schema/README
 rm -f %{buildroot}/etc/openldap/slapd.ldif*
-rm -f %{buildroot}/%{_rundir}/openldap-data/DB_CONFIG.example
+rm -f %{buildroot}%{_rundir}/openldap-data/DB_CONFIG.example
 mv servers/slapd/back-sql/rdbms_depend servers/slapd/back-sql/examples
 
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcslapd
 
-rm -f %{buildroot}/%{_libdir}/openldap/*.a
+rm -f %{buildroot}%{_libdir}/openldap/*.a
 rm -f %{buildroot}/usr/share/man/man5/slapd-dnssrv.5
 rm -f %{buildroot}/usr/share/man/man5/slapd-ndb.5
 rm -f %{buildroot}/usr/share/man/man5/slapd-null.5
@@ -429,14 +429,14 @@ rm -f %{buildroot}/usr/share/man/man5/slapd-passwd.5
 rm -f %{buildroot}/usr/share/man/man5/slapd-shell.5
 rm -f %{buildroot}/usr/share/man/man5/slapd-tcl.5
 # Remove *.la files, libtool does not handle this correct
-rm -f  %{buildroot}/%{_libdir}/lib*.la
+rm -f  %{buildroot}%{_libdir}/lib*.la
 
 # Make ldap_r the only copy in the system [rh#1370065].
 # libldap.so is only for `gcc/ld -lldap`. Make no libldap-2.4.so.2.
-rm -f "%{buildroot}/%{_libdir}"/libldap-2.4.so*
-ln -fs libldap_r.so "%{buildroot}/%{_libdir}/libldap.so"
-gcc -shared -o "%{buildroot}/%{_libdir}/libldap-2.4.so.2" -Wl,--no-as-needed \
-       -Wl,-soname -Wl,libldap-2.4.so.2 -L "%{buildroot}/%{_libdir}" -lldap_r
+rm -f "%{buildroot}%{_libdir}"/libldap-2.4.so*
+ln -fs libldap_r.so "%{buildroot}%{_libdir}/libldap.so"
+gcc -shared -o "%{buildroot}%{_libdir}/libldap-2.4.so.2" -Wl,--no-as-needed \
+       -Wl,-soname -Wl,libldap-2.4.so.2 -L "%{buildroot}%{_libdir}" -lldap_r
 
 %pre
 getent group ldap >/dev/null || /usr/sbin/groupadd -g 70 -o -r ldap
@@ -475,9 +475,9 @@ fi
 %config(noreplace) %attr(640, root, ldap) %{_sysconfdir}/openldap/slapd.conf.olctemplate
 %config %attr(640, root, ldap) %{_sysconfdir}/openldap/slapd.conf.default
 %config %attr(640, root, ldap) %{_sysconfdir}/openldap/slapd.conf.example
-%config(noreplace) %attr(640, ldap, ldap) %{_libexecdir}/openldap/DB_CONFIG
+%config(noreplace) %attr(640, ldap, ldap) /usr/lib/openldap/DB_CONFIG
 %dir %{_libdir}/openldap
-%dir %{_libexecdir}/openldap
+%dir /usr/lib/openldap
 %dir %{_sysconfdir}/sasl2
 %dir %{_sysconfdir}/openldap
 %dir %attr(0770, ldap, ldap) %{_sysconfdir}/openldap/slapd.d
@@ -514,10 +514,10 @@ fi
 %{_libdir}/openldap/unique*
 %{_libdir}/openldap/valsort*
 %{_libdir}/slapd
-%{_libexecdir}/openldap/start
+/usr/lib/openldap/start
 %{_unitdir}/slapd.service
-/usr/lib/tmpfiles.d/%{name}.conf
-%dir %attr(0750, ldap, ldap) /var/lib/ldap
+%{_tmpfilesdir}/%{name}.conf
+%dir %attr(0750, ldap, ldap) %{_sharedstatedir}/ldap
 %ghost %attr(0750, ldap, ldap) %{_rundir}
 %doc %{_mandir}/man8/sl*
 %doc %{_mandir}/man5/slapd.*
