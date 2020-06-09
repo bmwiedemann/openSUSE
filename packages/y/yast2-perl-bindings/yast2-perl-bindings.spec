@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-perl-bindings
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-perl-bindings
-Version:        4.1.0
+Version:        4.3.0
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -74,8 +74,6 @@ rm $RPM_BUILD_ROOT/%{perl_vendorarch}/auto/YaST/YCP/libYCP.la
 %{perl_vendorarch}/auto/YaST/YCP/libYCP.so*
 %dir %{yast_moduledir}
 %{yast_moduledir}/YaPI.pm
-%{yast_ydatadir}/devtools/pluglib-bindings
-%{yast_ydatadir}/devtools/admin/aminclude/pluglib-bindings.ami
 %doc %{yast_docdir}
 %license COPYING
 

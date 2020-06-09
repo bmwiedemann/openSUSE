@@ -313,4 +313,12 @@
     <comment>submit new version 4.1.0</comment>
     <requestid>679765</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>3bb79c82f7179f49b3d26d77d4a438c0</srcmd5>
+    <version>4.3.0</version>
+    <time>1591742173</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.3.0</comment>
+    <requestid>809851</requestid>
+  </revision>
 </revisionlist>
