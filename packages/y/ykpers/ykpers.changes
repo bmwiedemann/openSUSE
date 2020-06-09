@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  8 06:59:22 UTC 2020 - Torsten Gruner <t.gruner@katodev.de>
+
+- Fix build with gcc 10 [gh#Yubico/yubikey-personalization#155]
+- Fix boolean value with json-c 0.14 [gh#Yubico/yubikey-personalization#159]
+  adds ykpers-json.patch
+
+-------------------------------------------------------------------
 Sun Jul 14 19:37:26 UTC 2019 - Karol Babioch <kbabioch@suse.com>
 
 - Version 1.20.0 (released 2019-07-03d)

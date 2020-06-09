@@ -1,7 +1,7 @@
 #
 # spec file for package ykpers
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://developers.yubico.com/yubikey-personalization/
 Source0:        https://developers.yubico.com/yubikey-personalization/Releases/ykpers-%{version}.tar.gz
 Source1:        https://developers.yubico.com/yubikey-personalization/Releases/ykpers-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM ykpers-json.patch gh#Yubico/yubikey-personalization#159
+Patch0:         ykpers-json.patch
 BuildRequires:  libyubikey-devel >= 1.12
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(json-c) >= 0.10
@@ -53,9 +55,11 @@ Requires:       libykpers-1-1 = %{version}
 Yubico's YubiKey can be re-programmed. This project provides a reference implementation for configuration of YubiKeys.
 
 %prep
-%setup -q
+%autosetup
 # Add access for group "users"
 sed -i 's|--device=$env{DEVNAME}"|--device=$env{DEVNAME}" GROUP="users"|g' 70-yubikey.rules
+# PATCH-FIX-UPSTREAM gh#Yubico/yubikey-personalization#155 -- Fix build with gcc 10
+sed -i 's|^const char|extern const char|g' ykpers-args.h
 
 %build
 %configure --disable-static --with-pic \
