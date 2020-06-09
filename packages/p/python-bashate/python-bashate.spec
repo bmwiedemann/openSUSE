@@ -36,6 +36,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-argparse
 Requires:       python-Babel >= 0.9.6
 Requires:       python-pbr
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %ifpython2
 Requires:       python-argparse
@@ -62,6 +64,7 @@ and will continue to evolve over time.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/bashate
 %{python_expand  #
 rm -rf %{buildroot}%{$python_sitelib}/bashate/tests
 sed -i -e '/^#!\//, 1d' %{buildroot}%{$python_sitelib}/bashate/bashate.py
@@ -71,10 +74,16 @@ sed -i -e '/^#!\//, 1d' %{buildroot}%{$python_sitelib}/bashate/bashate.py
 %check
 %python_exec -m stestr.cli run
 
+%post
+%python_install_alternative bashate
+
+%postun
+%python_uninstall_alternative bashate
+
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS README.rst ChangeLog
-%python3_only %{_bindir}/bashate
+%python_alternative %{_bindir}/bashate
 %{python_sitelib}/*
 
 %changelog

@@ -43,4 +43,12 @@
   * import zuul job settings from project-config</comment>
     <requestid>780409</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d29e0ef4535fdb4dc7093ee80290529d</srcmd5>
+    <version>1.0.0</version>
+    <time>1591742552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809805</requestid>
+  </revision>
 </revisionlist>
