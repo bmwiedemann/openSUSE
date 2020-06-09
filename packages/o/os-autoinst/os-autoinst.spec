@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1590082367.4286487f
+Version:        4.6.1591696864.96b3acb2
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -31,8 +31,10 @@ Source0:        %{name}-%{version}.tar.xz
 %else
 %define opencv_require pkgconfig(opencv)
 %endif
-%define build_requires %opencv_require autoconf automake gcc-c++ libtool make perl(Module::CPANfile) pkg-config pkgconfig(fftw3) pkgconfig(libpng) pkgconfig(sndfile) pkgconfig(theoraenc)
-%define requires perl(B::Deparse) perl(Carp::Always) perl(Class::Accessor::Fast) perl(Cpanel::JSON::XS) perl(Crypt::DES) perl(Data::Dumper) perl(Exception::Class) perl(File::Touch) perl(File::Which) perl(IO::Scalar) perl(IO::Socket::INET) perl(IPC::Run::Debug) perl(IPC::System::Simple) perl(List::MoreUtils) perl(Mojolicious) >= 7.92 perl(Mojo::IOLoop::ReadWriteProcess) >= 0.23 perl(Net::DBus) perl(Net::IP) perl(Net::SNMP) perl(Net::SSH2) perl(Socket::MsgHdr) perl(Term::ANSIColor) perl(Try::Tiny) perl(XML::LibXML) perl(XML::SemanticDiff) perl(autodie) perl-base
+# The following line is generated from dependencies.yaml
+%define build_requires %opencv_require autoconf automake gcc-c++ libtool make perl(ExtUtils::Embed) perl(ExtUtils::MakeMaker) >= 7.12 perl(Module::CPANfile) pkg-config pkgconfig(fftw3) pkgconfig(libpng) pkgconfig(sndfile) pkgconfig(theoraenc)
+# The following line is generated from dependencies.yaml
+%define main_requires perl(B::Deparse) perl(Carp) perl(Carp::Always) perl(Class::Accessor::Fast) perl(Config) perl(Cpanel::JSON::XS) perl(Crypt::DES) perl(Cwd) perl(Data::Dumper) perl(Digest::MD5) perl(DynaLoader) perl(English) perl(Errno) perl(Exception::Class) perl(Exporter) perl(ExtUtils::testlib) perl(Fcntl) perl(File::Basename) perl(File::Find) perl(File::Path) perl(File::Spec) perl(File::Temp) perl(File::Touch) perl(File::Which) perl(IO::Handle) perl(IO::Scalar) perl(IO::Select) perl(IO::Socket) perl(IO::Socket::INET) perl(IO::Socket::UNIX) perl(IPC::Open3) perl(IPC::Run::Debug) perl(IPC::System::Simple) perl(List::MoreUtils) perl(List::Util) perl(Mojo::IOLoop::ReadWriteProcess) >= 0.23 perl(Mojo::JSON) perl(Mojo::Log) perl(Mojo::URL) perl(Mojo::UserAgent) perl(Mojolicious) >= 8.42 perl(Mojolicious::Lite) perl(Net::DBus) perl(Net::IP) perl(Net::SNMP) perl(Net::SSH2) perl(POSIX) perl(Scalar::Util) perl(Socket) perl(Socket::MsgHdr) perl(Term::ANSIColor) perl(Thread::Queue) perl(Time::HiRes) perl(Try::Tiny) perl(XML::LibXML) perl(XML::SemanticDiff) perl(autodie) perl(base) perl(constant) perl(integer) perl(strict) perl(warnings) perl-base
 %define requires_not_needed_in_tests git-core
 # all requirements needed by the tests, do not require on this in the package
 # itself or any sub-packages
@@ -43,16 +45,19 @@ Source0:        %{name}-%{version}.tar.xz
 %bcond_without spellcheck
 %endif
 %if %{with spellcheck}
-%define spellcheck_requires perl(Pod::Spell) aspell-spell aspell-en
+# The following line is generated from dependencies.yaml
+%define spellcheck_requires aspell-en aspell-spell perl(Pod::Spell)
 %define make_check_args %{nil}
 %else
 %define spellcheck_requires %{nil}
 %define make_check_args CHECK_DOC=0
 %endif
-%define test_requires %build_requires %requires %spellcheck_requires perl(Devel::Cover) perl(Perl::Tidy) perl(Pod::Coverage) perl(Test::Exception) perl(Test::Fatal) perl(Test::MockModule) perl(Test::MockObject) perl(Test::Mock::Time) perl(Test::Output) perl(Test::Pod) perl(Test::Strict) perl(Test::Warnings) qemu-tools
-%define devel_requires %test_requires %requires_not_needed_in_tests
+# The following line is generated from dependencies.yaml
+%define test_requires %build_requires %main_requires %spellcheck_requires perl(Benchmark) perl(Devel::Cover) perl(FindBin) perl(Perl::Critic) perl(Perl::Critic::Freenode) perl(Pod::Coverage) perl(Test::Exception) perl(Test::Fatal) perl(Test::Mock::Time) perl(Test::MockModule) perl(Test::MockObject) perl(Test::Mojo) perl(Test::More) perl(Test::Output) perl(Test::Pod) perl(Test::Strict) perl(Test::Warnings) >= 0.029 perl(YAML::PP) qemu qemu-tools qemu-x86
+# The following line is generated from dependencies.yaml
+%define devel_requires %requires_not_needed_in_tests %test_requires perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy)
 BuildRequires:  %test_requires
-Requires:       %requires
+Requires:       %main_requires
 Requires:       %requires_not_needed_in_tests
 Recommends:     tesseract-ocr
 Recommends:     /usr/bin/xkbcomp /usr/bin/Xvnc dumponlyconsole
@@ -113,7 +118,7 @@ make INSTALLDIRS=vendor %{?_smp_mflags}
 %install
 %make_install INSTALLDIRS=vendor
 # only internal stuff
-rm %{buildroot}/usr/lib/os-autoinst/tools/{tidy,check_coverage,absolutize,docker_run_ci}
+rm %{buildroot}/usr/lib/os-autoinst/tools/{tidy,check_coverage,absolutize,docker_run_ci,update-deps}
 rm -r %{buildroot}/usr/lib/os-autoinst/tools/lib/perlcritic
 #
 ls -lR %buildroot

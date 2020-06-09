@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jun 09 10:01:14 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1591696864.96b3acb2:
+  * Move MakeMaker dependency to build_requires
+  * Fix missing qemu-kvm dependency on non-x86_64
+  * Slightly simplify amt backend
+  * spec: Fix 'update-deps' not to be packaged
+  * Deps: rename %requires to %main_requires
+  * Fix wrong comment about replacerect
+  * Fix YAML::PP dependency
+  * Add flags for non-verbose output to ffmpeg example
+  * Use :report_warnings feature of Test::Warnings
+  * Update documentation of videoencoder.cpp
+  * Support using an external video encoder
+  * Mark old issues and pull requests as stale
+  * Capture isotovideo output in isotovideo test
+  * Dependencies: Add code to update Dockerfile
+  * Makefiles: set CXXFLAGS not CFLAGS or CPPFLAGS
+  * Improve coding style in code file migration of QEMU backend
+  * Improve 'Migrate to file failed [...]' error message to include unit
+  * make update-deps
+  * Dependencies: add tools/update-deps
+  * Add YAML::PP dependency
+  * Simplify use of Test::Output with bare blocks rather than sub refs
+
+-------------------------------------------------------------------
 Thu May 21 19:24:41 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1590082367.4286487f:
