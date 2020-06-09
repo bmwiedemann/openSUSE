@@ -18,7 +18,7 @@
 
 %define binname yubioath
 Name:           yubioath-desktop
-Version:        5.0.2
+Version:        5.0.4
 Release:        0
 Summary:        Graphical interface for displaying OATH codes with a Yubikey
 License:        GPL-3.0-or-later
@@ -45,8 +45,6 @@ the shared secrets.
 
 %prep
 %setup -q -n %{name}
-# Fix build for Leap 15 and SLE 15
-sed -i 's|python |python3 |g' yubioath-desktop.pro
 
 %build
 qmake-qt5 QMAKE_CFLAGS+="%{optflags}" QMAKE_CXXFLAGS+="%{optflags}" QMAKE_STRIP="/bin/true";
@@ -54,13 +52,11 @@ make %{?_smp_mflags}
 
 %install
 make install INSTALL_ROOT="%{buildroot}";
-
 mkdir -p %{buildroot}%{_datadir}/pixmaps
-install -p -m 0644 resources/icons/com.yubico.yubioath.png %{buildroot}%{_datadir}/pixmaps/
-
+install -p -m 0644 resources/icons/com.yubico.yubioath.svg %{buildroot}%{_datadir}/pixmaps/
 mkdir -p %{buildroot}%{_datadir}/applications
-install -p -m 0644 resources/%{name}.desktop %{buildroot}%{_datadir}/applications/
-%suse_update_desktop_file -i %{name} System Security
+install -p -m 0644 resources/com.yubico.yubioath.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
+%suse_update_desktop_file -r %{buildroot}%{_datadir}/applications/%{name}.desktop System Security 
 %fdupes %{buildroot}
 
 %files
@@ -68,6 +64,6 @@ install -p -m 0644 resources/%{name}.desktop %{buildroot}%{_datadir}/application
 %doc NEWS README
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/com.yubico.yubioath.png
+%{_datadir}/pixmaps/com.yubico.yubioath.svg
 
 %changelog
