@@ -134,4 +134,12 @@
   * Map LOCK_DEADLOCK to OperationalError (#693)</comment>
     <requestid>682059</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9895d569e88eb86954e166117fa740d1</srcmd5>
+    <version>0.9.3</version>
+    <time>1591742809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811739</requestid>
+  </revision>
 </revisionlist>

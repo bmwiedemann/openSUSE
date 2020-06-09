@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyMySQL
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,14 @@ Summary:        Pure Python MySQL Driver
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/PyMySQL/PyMySQL/
-Source:         https://files.pythonhosted.org/packages/source/P/PyMySQL/PyMySQL-%{version}.tar.gz
+Source:         https://github.com/PyMySQL/PyMySQL/archive/v%{version}.tar.gz#/PyMySQL-0.9.3.tar.gz
+# https://github.com/PyMySQL/PyMySQL/commit/a500fcd64d4500417540a2a2ff7b16a88d1872ad
+Patch0:         python-PyMySQL-no-unittest2.patch
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  mariadb-rpm-macros
 # will be removed with next release
-BuildRequires:  %{python_module unittest2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography
@@ -48,6 +50,7 @@ its unit tests as well as running it against the MySQLdb and myconnpy unit tests
 
 %prep
 %setup -q -n PyMySQL-%{version}
+%patch0 -p1
 # remove unwanted shebang
 sed -i '1 { /^#!/ d }' pymysql/tests/thirdparty/test_MySQLdb/*.py
 
@@ -59,8 +62,37 @@ sed -i '1 { /^#!/ d }' pymysql/tests/thirdparty/test_MySQLdb/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+exit_code=0
+dbuser='db_user'
+dbuserpw='db_user_secret'
+dbname1='test1'
+dbname2='test2'
 # Needs mysql server
 #%%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v
+cconf=abuild-myclient.cnf
+#
+# start the mariadb server
+#
+%mysql_testserver_start -u $dbuser -p $dbuserpw -d $dbname1:$dbname2 -t 3306
+#
+# creating client config, see base.py
+#
+cat << EOF > pymysql/tests/databases.json
+[{"host":"localhost","user":"$dbuser","passwd":"$dbuserpw",
+   "db":"$dbname1", "use_unicode": true, "local_infile": true},
+ {"host":"localhost","user":"$dbuser","passwd":"$dbuserpw","db":"$dbname2"}]
+EOF
+#
+# running the test
+#
+export USER="$dbuser"
+export PASSWORD="$dbuserpw"
+%pytest pymysql/tests || exit_code=1
+#
+# stopping mariadb
+#
+%mysql_testserver_stop
+exit $exit_code
 
 %files %{python_files}
 %license LICENSE
