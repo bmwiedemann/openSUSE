@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  9 07:49:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- build against older pytest to have tests passing
+
+-------------------------------------------------------------------
 Thu Apr 23 10:47:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Drop py2 dependencies from py3 only marked package

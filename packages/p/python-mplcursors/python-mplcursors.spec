@@ -33,7 +33,7 @@ Requires:       python-matplotlib >= 2.1
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module matplotlib >= 2.1}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest < 5}
 # /SECTION
 %python_subpackages
 
