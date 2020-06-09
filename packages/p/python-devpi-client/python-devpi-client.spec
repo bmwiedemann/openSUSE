@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-devpi-client
-Version:        5.1.1
+Version:        5.2.0
 Release:        0
 Summary:        Client for devpi
 License:        MIT

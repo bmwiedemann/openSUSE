@@ -39,4 +39,14 @@
     <comment></comment>
     <requestid>809420</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a506597ee45977b82f2281bbf6448350</srcmd5>
+    <version>5.2.0</version>
+    <time>1591743235</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.2.0:
+  - fix #799: proper error message for devpi login without prior devpi use
+  - Support for check_manifest&gt;=0.42.</comment>
+    <requestid>813032</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  9 19:25:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 5.2.0:
+  - fix #799: proper error message for devpi login without prior devpi use
+  - Support for check_manifest>=0.42.
+
+-------------------------------------------------------------------
 Tue May 26 07:22:38 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
