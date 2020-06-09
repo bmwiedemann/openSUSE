@@ -75,4 +75,12 @@
     from a previous version, you will need to run SQL migrations with ``ara-manage migrate``.</comment>
     <requestid>800936</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>317d320d87963233b7a7a0d32f3db045</srcmd5>
+    <version>1.4.0</version>
+    <time>1591742615</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809817</requestid>
+  </revision>
 </revisionlist>
