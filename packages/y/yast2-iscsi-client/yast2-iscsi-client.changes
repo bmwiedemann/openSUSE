@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 20 13:55:46 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Help text to clarify the behavior of the Startup widget when
+  iBFT is detected (bsc#1170317).
+- 4.3.1
+
+-------------------------------------------------------------------
 Tue May 12 08:50:23 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Autoyast schema: Allow optional types for string and map objects
