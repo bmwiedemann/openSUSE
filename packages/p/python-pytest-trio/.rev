@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>731165</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f95f2a7d87e9a750469f4a46d2474570</srcmd5>
+    <version>0.6.0</version>
+    <time>1591742948</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0:
+  * Incompatible change: if you use yield inside a Trio fixture,
+    and the yield gets cancelled (for example, due to a background
+    task crashing), then the yield will now raise :exc:`trio.Cancelled`.
+  * Updated for compatibility with Trio v0.15.0.</comment>
+    <requestid>812803</requestid>
+  </revision>
 </revisionlist>

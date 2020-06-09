@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  9 07:31:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.6.0:
+  * Incompatible change: if you use yield inside a Trio fixture,
+    and the yield gets cancelled (for example, due to a background
+    task crashing), then the yield will now raise :exc:`trio.Cancelled`.
+  * Updated for compatibility with Trio v0.15.0.
+
+-------------------------------------------------------------------
 Sat Sep 14 11:52:57 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Add a temporary hack in the spec to alter the conftest.py used
