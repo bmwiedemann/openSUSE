@@ -212,4 +212,29 @@
   * Added logging facililities into :class:`.CacheRegion`</comment>
     <requestid>758615</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>cdcc6eef2da4a3a0a6f5ae9a4968182c</srcmd5>
+    <version>0.9.2</version>
+    <time>1591742759</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.2:
+   Ensured that the &quot;pyproject.toml&quot; file is not included in builds, as the
+   presence of this file indicates to pip that a pep-517 installation process
+   should be used.  As this mode of operation appears to be not well supported
+   by current tools / distros, these problems are avoided within the scope of
+   dogpile.cache installation by omitting the file.
+   Added option to the Redis backend
+   :paramref:`.RedisBackend.thread_local_lock`, which when set to False will
+   disable the use of a threading local  by the ``redis`` module in its
+   distributed lock service, which is known to interfere with the lock's
+   behavior when used in an &quot;async&quot; use case, within dogpile this would be
+   when using the :paramref:`.CacheRegion.async_creation_runner` feature. The
+   default is conservatively being left at True, but it's likely this should
+   be set to False in all cases, so a warning is emitted if this flag is not
+   set to False in conjunction with the distributed lock. Added an optional
+   argument to :class:`.RedisBackend` that specifies whether or not a
+   thread-local Redis lock should be used.  This is the default, but it breaks
+   asynchronous runner compatibility.</comment>
+    <requestid>810916</requestid>
+  </revision>
 </revisionlist>
