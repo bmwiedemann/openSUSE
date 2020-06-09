@@ -1,7 +1,7 @@
 #
 # spec file for package belle-sip
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,26 +20,22 @@
 %define soname  libbellesip
 %define sover   0
 Name:           belle-sip
-Version:        1.6.3
+Version:        4.3.1
 Release:        0
 Summary:        C object-oriented SIP Stack
 License:        GPL-2.0-or-later
 URL:            https://linphone.org/technical-corner/belle-sip/overview
-Source:         https://linphone.org/releases/sources/%{name}/%{name}-%{version}.tar.gz
+Source:         https://gitlab.linphone.org/BC/public/belle-sip/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        http://antlr3.org/download/antlr-3.4-complete.jar
 Source2:        baselibs.conf
-# PATCH-FIX-OPENSUSE belle-sip-fix-pkgconfig.patch sor.alexei@meowr.ru -- Fix up pkgconfig.
-Patch0:         belle-sip-fix-pkgconfig.patch
-# PATCH-FIX-OPENSUSE belle-sip-fix-dns-build.patch -- Pass -Wno-override-init to the compiler while building dns.c (commit 99dda3d1).
-Patch1:         belle-sip-fix-dns-build.patch
 # PATCH-FIX-OPENSUSE fix-build.patch idoenmez@suse.de -- Remove reference to wakelock.h
-Patch2:         fix-build.patch
+Patch0:         fix-build.patch
 BuildRequires:  antlr3c-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  java
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 0.6.0
+BuildRequires:  pkgconfig(bctoolbox) >= 4.3.0
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -67,7 +63,7 @@ This package contains header files and development libraries needed
 to develop applications using the belle-sip library.
 
 %prep
-%autosetup -p1 -n %{name}-%{version}-0
+%autosetup -p1
 
 cp -f %{SOURCE1} antlr3.jar
 
@@ -87,16 +83,17 @@ antlr_jar="$PWD/antlr3.jar"
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
 
 %files -n %{soname}%{sover}
-%license COPYING
+%license LICENSE.txt
 %{_libdir}/%{soname}.so.%{sover}*
 
 %files devel
-%license COPYING
-%doc AUTHORS NEWS README.md
+%license LICENSE.txt
+%doc AUTHORS.md CHANGELOG.md README.md
 %{_bindir}/belle_sip_tester
 %{_includedir}/%{name}/
 %{_libdir}/%{soname}.so
-%{_datadir}/BelleSIP/
+%{_libdir}/cmake/BelleSIP/
+%{_datadir}/belle_sip_tester/
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog

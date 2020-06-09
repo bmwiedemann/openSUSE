@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Apr 22 16:24:17 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.3.1 (changes since 1.6.3):
+  * RFC3262 (100 rel) support.
+  * Use maddr for http uris.
+  * Install cmake config files into the correct path.
+  * Enable faster retry upon io/error.
+  * Add wakelocks counters to destroy powermanager only if there is
+    no more initialised wakelocks
+  * Send keepalive on channels that are in out state IDLE only +
+    add method to send a keep alive manually.
+  * Fix http provider auth using SHA-256.
+  * Use BcTooblox macros for source archive generation.
+  * Fix loop of REGISTER when the server replies 500 Internal
+    error.
+  * Export some functions related to escaped characters.
+  * Process 100rel for answers from 101 to 199.
+  * CMakeLists.txt: Introduce ENABLE_PACKAGE_SOURCE option.
+  * Improve prack behaviour in case of reliable response
+    retransmition.
+  * The licence is now GPLv3+.
+  * Remove some useless files.
+- Drop belle-sip-fix-dns-build.patch,
+  belle-sip-fix-pkgconfig.patch.
+
+-------------------------------------------------------------------
 Mon Nov 18 23:15:31 UTC 2019 - Simon Lees <sflees@suse.de>
 
 - %make_jobs is depricated replaced by %cmake_build
