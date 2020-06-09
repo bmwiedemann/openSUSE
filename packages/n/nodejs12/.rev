@@ -252,4 +252,12 @@
     Source Map V3 data #31132.</comment>
     <requestid>811803</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>e5fc934d3c580d981903ef8fdcecd71b</srcmd5>
+    <version>12.18.0</version>
+    <time>1591743168</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Require for nodejs12 when intalling npm12. (bsc#1172728)</comment>
+    <requestid>812979</requestid>
+  </revision>
 </revisionlist>

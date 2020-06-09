@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  9 11:34:55 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Add Require for nodejs12 when intalling npm12. (bsc#1172728)
+
+-------------------------------------------------------------------
 Thu Jun  4 11:58:49 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - New upstream LTS version 12.18.0:
