@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 21 06:55:36 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Wed Aug 29 10:54:27 UTC 2018 - tchvatal@suse.com
 
 - Fix build on 42.3 by calling pytest properly and adding dependency

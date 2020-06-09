@@ -1,7 +1,7 @@
 #
 # spec file for package python-odorik
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Python module for Odorik API
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
-URL:            http://cihar.com/software/odorik/
+URL:            https://cihar.com/software/odorik/
 Source:         https://files.pythonhosted.org/packages/source/o/odorik/odorik-%{version}.tar.bz2
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module httpretty}
@@ -35,6 +35,8 @@ BuildRequires:  python
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil
 Requires:       python-xdg
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,22 +48,30 @@ Python module to work with Odorik API.
 
 %build
 %python_build
-make %{?_smp_mflags} -C docs man
+%make_build -C docs man
 
 %install
 %python_install
 install -d %{buildroot}%{_mandir}/man1
 install -m 644 docs/_build/man/odorik.1 %{buildroot}%{_mandir}/man1
+%python_clone -a %{buildroot}%{_bindir}/odorik
+%python_clone -a %{buildroot}%{_mandir}/man1/odorik.1
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand py.test-%{$python_version} odorik
+%pytest odorik
+
+%post
+%python_install_alternative odorik odorik.1
+
+%postun
+%python_uninstall_alternative odorik
 
 %files %{python_files}
 %license LICENSE
 %doc NEWS.rst README.rst
 %{python_sitelib}/*
-%python3_only %{_mandir}/man1/*
-%python3_only %{_bindir}/*
+%python_alternative %{_mandir}/man1/odorik.1%{ext_man}
+%python_alternative %{_bindir}/odorik
 
 %changelog
