@@ -56,4 +56,13 @@
 - Remove merged test_flaky.patch</comment>
     <requestid>798143</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b3d032a4ec9834af84b6e206ddd1e522</srcmd5>
+    <version>3.4.0</version>
+    <time>1591742993</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.0:
+  * Parse multiline steps according to the gherkin specification #365.</comment>
+    <requestid>812820</requestid>
+  </revision>
 </revisionlist>
