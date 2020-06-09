@@ -1,7 +1,7 @@
 #
 # spec file for package hex2bin
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,15 @@ Group:          Development/Tools/Building
 URL:            https://sourceforge.net/projects/hex2bin
 Source:         https://downloads.sourceforge.net/%{name}/Hex2bin-%{version}.tar.bz2
 BuildRequires:  dos2unix
+# PATCH-FIX-OPENSUSE Hex2bin-gcc10.patch
+Patch0:         Hex2bin-gcc10.patch
 
 %description
 Converts Motorola and Intel hex files to binary. For other formats, check this
 project also on sourceforge: srecord
 
 %prep
-%setup -q -n Hex2bin-%{version}
+%autosetup -p1 -n Hex2bin-%{version}
 rm -f hex2bin mot2bin
 dos2unix doc/S-record.txt doc/srec.txt
 sed -e 's/^CPFLAGS =.*/CPFLAGS = -std=c99 %{optflags}/' \
@@ -39,7 +41,7 @@ sed -e 's/^CPFLAGS =.*/CPFLAGS = -std=c99 %{optflags}/' \
     -i Makefile
 
 %build
-make %{?_smp_mflags}
+%make_build
 
 %install
 install -d %{buildroot}/%{_bindir} %{buildroot}/%{_mandir}/man1

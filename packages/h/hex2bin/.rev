@@ -22,4 +22,13 @@
     <comment></comment>
     <requestid>640706</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>216d01a357651f32a5c355eae5c9fa14</srcmd5>
+    <version>2.5</version>
+    <time>1591742889</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Hex2bin-gcc10.patch
+</comment>
+    <requestid>812705</requestid>
+  </revision>
 </revisionlist>
