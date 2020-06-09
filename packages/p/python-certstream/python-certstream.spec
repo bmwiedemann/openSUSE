@@ -30,6 +30,8 @@ BuildRequires:  %{python_module termcolor}
 BuildRequires:  %{python_module websocket-client >= 0.48.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # /SECTION
 Requires:       python3-termcolor
 Requires:       python3-websocket-client >= 0.48.0
@@ -52,15 +54,22 @@ sed -i -e 's:==:>=:g' requirements.txt
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/certstream
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # there are no tests
+
+%post
+%python_install_alternative certstream
+
+%postun
+%python_uninstall_alternative certstream
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/certstream/
 %{python_sitelib}/certstream-%{version}-py*.egg-info
-%python3_only %{_bindir}/certstream
+%python_alternative %{_bindir}/certstream
 
 %changelog

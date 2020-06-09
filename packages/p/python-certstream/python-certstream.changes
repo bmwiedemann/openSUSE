@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 27 09:36:43 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Wed Jan  1 11:09:59 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 1.11.0:

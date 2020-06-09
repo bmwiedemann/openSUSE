@@ -51,4 +51,12 @@
  - Update websocket-client and add ping every 15s</comment>
     <requestid>761130</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9ef746f08119b801c94244654912c55e</srcmd5>
+    <version>1.11</version>
+    <time>1591742659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809822</requestid>
+  </revision>
 </revisionlist>
