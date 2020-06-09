@@ -1,4 +1,25 @@
 --------------------------------------------------------------------
+Tue Jun 9 17:02:40 UTC 2020 - lslezak@suse.cz
+
+- merge gh#openSUSE/installation-images#382
+- follow xorg font file shuffle (xorg-x11-legacy, bsc#1169444)
+- 15.4
+
+--------------------------------------------------------------------
+Tue May 19 14:46:03 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#378
+- ensure there's a writable /var/lib/rpm directory (bsc#1171733)
+- 15.3
+
+--------------------------------------------------------------------
+Mon May 18 11:11:20 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#377
+- support Leap-based MicroOS (bsc#1171585)
+- 15.2
+
+--------------------------------------------------------------------
 Tue May 12 09:43:26 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#376
