@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  2 13:56:19 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 0.9.0
+  * Raise new UnsupportedContourError on unsupported segment type
+    such as "qcurve"
+
+-------------------------------------------------------------------
 Wed May 20 09:46:34 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Initial release of python-booleanOperations

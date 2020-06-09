@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-booleanOperations%{psuffix}
-Version:        0.8.2
+Version:        0.9.0
 Release:        0
 Summary:        Boolean operations on paths
 License:        MIT
@@ -38,14 +38,14 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-FontTools >= 3.32.0
-Requires:       python-pyclipper >= 1.0.5
+Requires:       python-FontTools >= 4.0.2
+Requires:       python-pyclipper >= 1.1.0post1
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module FontTools >= 3.32.0}
+BuildRequires:  %{python_module FontTools >= 4.0.2}
 BuildRequires:  %{python_module defcon}
 BuildRequires:  %{python_module fontPens}
-BuildRequires:  %{python_module pyclipper >= 1.0.5}
+BuildRequires:  %{python_module pyclipper >= 1.1.0post1}
 BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
