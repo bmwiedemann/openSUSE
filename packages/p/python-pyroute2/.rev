@@ -182,4 +182,15 @@
     <comment></comment>
     <requestid>807680</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>37b386427c4d3532f77483826fca5435</srcmd5>
+    <version>0.5.12</version>
+    <time>1591742756</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.12:
+  * rtnl: implement team config pass &lt;https://github.com/svinota/pyroute2/issues/699&gt;
+  * ndb.auth: example auth modules for RADIUS and OpenStack / Keystone
+  * cli: syntax fixes</comment>
+    <requestid>810907</requestid>
+  </revision>
 </revisionlist>

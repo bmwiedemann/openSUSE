@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  2 16:34:32 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.5.12:
+  * rtnl: implement team config pass <https://github.com/svinota/pyroute2/issues/699>
+  * ndb.auth: example auth modules for RADIUS and OpenStack / Keystone
+  * cli: syntax fixes
+
+-------------------------------------------------------------------
 Wed May 20 07:26:42 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
