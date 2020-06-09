@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun  7 21:34:54 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Use license compatibility cruft, cleanup spec file
+- Fix build with gcc10
+  * nvdock-fix-gcc10-build.patch
+
+-------------------------------------------------------------------
 Wed May  4 06:44:48 UTC 2011 - adam@mizerski.pl
 
 - added nvdock-1.02-datadir.patch.in

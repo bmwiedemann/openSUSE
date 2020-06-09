@@ -1,7 +1,7 @@
 #
 # spec file for package nvdock
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
 
 
 Name:           nvdock
 Version:        1.02
-Release:        1
+Release:        0
 Summary:        Tray icon for launching NVIDIA Settings
-Group:          System/X11/Utilities
-
 License:        BSD-3-Clause
-Url:            http://www.opsat.net/development/nvdock/
+Group:          System/X11/Utilities
+URL:            https://www.opsat.net/development/nvdock/
 Source0:        http://bobmajdakjr.googlecode.com/files/%{name}-%{version}.tar.bz2
 # The provided Makefile sucks, so I did this one. -- adam@mizerski.pl
 Source1:        Makefile
@@ -33,9 +31,10 @@ Source2:        %{name}.desktop
 Source3:        %{name}-1.02-datadir.patch.in
 # PATCH-FIX-UPSTREAM nvdock-1.02-argptr.patch adam@mizerski.pl - Get rid of "warning: cast to pointer from integer of different size"
 Patch0:         %{name}-1.02-argptr.patch
-
-BuildRequires:  pkgconfig(gtk+-2.0)
+Patch1:         %{name}-fix-gcc10-build.patch
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(gtk+-2.0)
 
 %description
 Little NVIDIA tray icon.
@@ -45,8 +44,8 @@ Also on the menu it will show the NVIDIA driver version, which is surely to come
 
 %prep
 %setup -q
-%patch0 -p1
-sed -i "s|@DATADIR@|%{_datadir}|g" %{SOURCE3} | patch -p1
+sed -e "s|@DATADIR@|%{_datadir}|g" < %{SOURCE3} | patch -p1
+%autopatch -p1
 
 %build
 make -C src -f %{SOURCE1} %{?_smp_mflags}
@@ -57,14 +56,23 @@ install -m 644 -D data/nvdock.png %{buildroot}%{_datadir}/pixmaps/nvdock.png
 install -m 644 -D %{SOURCE2} %{buildroot}%{_datadir}/applications/nvdock.desktop
 %suse_update_desktop_file nvdock
 
-%clean
-rm -rf %{buildroot}
+# Compatibility cruft
+# there is no %%license prior to SLE12
+%if %{undefined _defaultlicensedir}
+%define license %doc
+%else
+# filesystem before SLE12 SP3 lacks /usr/share/licenses
+%if 0%(test ! -d %{_defaultlicensedir} && echo 1)
+%define _defaultlicensedir %{_defaultdocdir}
+%endif
+%endif
+# End of compatibility cruft
 
 %files
-%defattr(-,root,root)
 %{_bindir}/nvdock
 %{_datadir}/pixmaps/nvdock.png
 %{_datadir}/applications/nvdock.desktop
-%doc COPYING ChangeLog README TODO
+%license COPYING
+%doc ChangeLog README TODO
 
 %changelog
