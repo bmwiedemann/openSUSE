@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  9 07:39:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.5.3:
+  * requirement pycodestyle version 2.6.0+ ( #548 )
+  * Expected pyproject.toml configuration syntax incompatible with TOML format ( #528 , #546 )
+  * Fix incompatible exit code with --jobs=0 and --exit-code ( #543 , #545 )
+  * Fix hangup E122 fixed method with backslash ( #540 , #541 )
+
+-------------------------------------------------------------------
 Fri Apr 24 15:15:40 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.5.2:

@@ -173,4 +173,16 @@
     <comment></comment>
     <requestid>797253</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>cdd938ab7305f5acf1fc75fb6f3bc43e</srcmd5>
+    <version>1.5.3</version>
+    <time>1591742945</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.3:
+  * requirement pycodestyle version 2.6.0+ ( #548 )
+  * Expected pyproject.toml configuration syntax incompatible with TOML format ( #528 , #546 )
+  * Fix incompatible exit code with --jobs=0 and --exit-code ( #543 , #545 )
+  * Fix hangup E122 fixed method with backslash ( #540 , #541 )</comment>
+    <requestid>812802</requestid>
+  </revision>
 </revisionlist>
