@@ -17,7 +17,7 @@
 
 
 Name:           lollypop
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        GNOME music playing application
 License:        GPL-3.0-or-later
@@ -86,6 +86,8 @@ search results from %{name}.
 
 %prep
 %autosetup -p1
+# Don't use env interpreter so that the rpm dependency detection work
+sed -i 's;/usr/bin/env python3;/usr/bin/python3;' lollypop.in search-provider/lollypop-sp.in
 
 %build
 %meson

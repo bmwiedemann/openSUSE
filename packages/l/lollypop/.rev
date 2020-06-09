@@ -1378,4 +1378,16 @@
 - Remove pylast from dependencies: Not required anymore.</comment>
     <requestid>809680</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>93f84cda171cd576521564bbcd3ae591</srcmd5>
+    <version>1.3.1</version>
+    <time>1591743243</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.1:
+  * Fix a crash when playing a radio (glgo#World/lollypop#2459).
+  * Fix an issue with shuffle (glgo#World/lollypop#2453).
+  * Remove reference to meson deprecated python3 module.
+- Replace shebangs which use env interpreter.</comment>
+    <requestid>813034</requestid>
+  </revision>
 </revisionlist>
