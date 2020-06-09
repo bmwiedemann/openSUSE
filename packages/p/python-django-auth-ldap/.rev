@@ -133,4 +133,13 @@
   * Removed drepecated ``providing_args`` from ``Signal`` instances.</comment>
     <requestid>791170</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3d6ceeb78ce58a248ab38250548eee42</srcmd5>
+    <version>2.2.0</version>
+    <time>1591743052</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0
+ * Added support for the escape argument in LDAPSearchUnion.execute()</comment>
+    <requestid>812852</requestid>
+  </revision>
 </revisionlist>

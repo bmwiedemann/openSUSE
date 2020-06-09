@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-auth-ldap
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        Django LDAP authentication backend
 License:        BSD-2-Clause

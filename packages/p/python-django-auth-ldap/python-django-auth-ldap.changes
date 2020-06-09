@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  9 10:06:39 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 2.2.0
+ * Added support for the escape argument in LDAPSearchUnion.execute()
+
+-------------------------------------------------------------------
 Fri Apr  3 10:52:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.1.1:
