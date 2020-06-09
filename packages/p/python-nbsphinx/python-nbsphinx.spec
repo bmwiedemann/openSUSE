@@ -19,26 +19,25 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-nbsphinx
-Version:        0.6.1
+Version:        0.7.0
 Release:        0
 Summary:        Jupyter Notebook Tools for Sphinx
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/spatialaudio/nbsphinx/
 Source:         https://files.pythonhosted.org/packages/source/n/nbsphinx/nbsphinx-%{version}.tar.gz
-BuildRequires:  %{python_module Send2Trash}
-BuildRequires:  %{python_module Sphinx >= 1.3.2}
+BuildRequires:  %{python_module Sphinx >= 1.8}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module traitlets}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
-Requires:       python-Send2Trash
-Requires:       python-Sphinx >= 1.3.2
+Requires:       python-Sphinx >= 1.8
 Requires:       python-docutils
 Requires:       python-nbconvert
 Requires:       python-nbformat
 Requires:       python-sphinx_rtd_theme
+Requires:       python-traitlets
 Recommends:     mathjax
 Recommends:     pandoc
 Provides:       python-jupyter_nbsphinx = %{version}
@@ -67,7 +66,7 @@ build process.
 %python_install
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%{fdupes %{buildroot}%{_jupyter_prefix} %{buildroot}%{python_sitelib}}
+%fdupes %{buildroot}%{_jupyter_prefix}
 
 %files %{python_files}
 %doc NEWS.rst README.rst

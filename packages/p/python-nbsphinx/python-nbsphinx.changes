@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  9 08:42:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.0:
+  * Warnings can be suppressed with suppress_warnings.
+  * CSS: prompts protrude into left margin if nbsphinx_prompt_width is
+too small
+  * <img> tags are handled in Markdown cells
+
+-------------------------------------------------------------------
 Sat May  2 20:20:26 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.6.1:

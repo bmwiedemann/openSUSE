@@ -82,4 +82,16 @@
     <comment></comment>
     <requestid>808512</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>06ed014d633fc5f8588870a9e8202f43</srcmd5>
+    <version>0.7.0</version>
+    <time>1591743003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  * Warnings can be suppressed with suppress_warnings.
+  * CSS: prompts protrude into left margin if nbsphinx_prompt_width is
+too small
+  * &lt;img&gt; tags are handled in Markdown cells</comment>
+    <requestid>812828</requestid>
+  </revision>
 </revisionlist>
