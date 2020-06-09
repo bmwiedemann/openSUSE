@@ -123,4 +123,31 @@
     <comment></comment>
     <requestid>794524</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>93aa71808d1b54f51d229d0643979a4a</srcmd5>
+    <version>0.27.1</version>
+    <time>1591742885</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.27.1
+  * Improved the logging situation
+  * Large multi-resource responses are now split into separate packets which fixes a bad
+    mdns-repeater/ChromeCast Audio interaction ending with ChromeCast Audio crash (and possibly
+    some others) and improves RFC 6762 compliance, thanks to Greg Badros
+  * Added a warning presented when the listener passed to ServiceBrowser lacks update_service()
+    callback
+  * Added support for finding all services available in the browser example, thanks to Perry Kunder
+  * Removed previously deprecated ServiceInfo address constructor parameter and property
+  * Improved readability of logged incoming data, thanks to Erik Montnemery
+  * Threads are given unique names now to aid debugging, thanks to Erik Montnemery
+  * Fixed a regression where get_service_info() called within a listener add_service method
+    would deadlock, timeout and incorrectly return None, fix thanks to Erik Montnemery, but
+    Matt Saxon and Hmmbob were also involved in debugging it.
+  * Added support for multiple types to ServiceBrowser, thanks to J. Nick Koston
+  * Fixed a race condition where a listener gets a message before the lock is created
+  * Fixed a performance regression introduced in 0.26.0, thanks to J. Nick Koston (this is close in
+    spirit to an optimization made in 0.24.5 by the same author)
+  * Fixed a regression where service update listener wasn't called on IP address change (it's called
+    on SRV/A/AAAA record changes now), thanks to Matt Saxon</comment>
+    <requestid>812731</requestid>
+  </revision>
 </revisionlist>
