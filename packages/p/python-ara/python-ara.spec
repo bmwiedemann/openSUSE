@@ -24,7 +24,6 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ara
@@ -38,6 +37,19 @@ Source:         https://files.pythonhosted.org/packages/source/a/ara/ara-%{versi
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-pbr >= 2.0.0
+Requires:       python-requests >= 2.14.2
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+Recommends:     python-Django >= 2.1.5
+Recommends:     python-django-cors-headers
+Recommends:     python-django-filter
+Recommends:     python-djangorestframework >= 3.9.1
+Recommends:     python-dynaconf
+Recommends:     python-whitenoise
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Django >= 2.1.5}
 BuildRequires:  %{python_module ara >= %{version}}
@@ -52,18 +64,6 @@ BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module tzlocal}
 BuildRequires:  %{python_module whitenoise}
 %endif
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-Requires:       python-pbr >= 2.0.0
-Requires:       python-requests >= 2.14.2
-Recommends:     python-Django >= 2.1.5
-Recommends:     python-django-cors-headers
-Recommends:     python-django-filter
-Recommends:     python-djangorestframework >= 3.9.1
-Recommends:     python-dynaconf
-Recommends:     python-whitenoise
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -80,6 +80,7 @@ tools and interfaces.
 %install
 %if !%{with test}
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/ara-manage
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -89,10 +90,16 @@ ara-manage test ara
 %endif
 
 %if !%{with test}
+%post
+%python_install_alternative ara-manage
+
+%postun
+%python_uninstall_alternative ara-manage
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/ara-manage
+%python_alternative %{_bindir}/ara-manage
 %{python_sitelib}/*
 %endif
 

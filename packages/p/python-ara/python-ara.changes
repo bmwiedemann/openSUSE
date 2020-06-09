@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 27 09:36:03 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Thu May  7 05:28:19 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.4.0:
