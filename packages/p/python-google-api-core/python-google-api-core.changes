@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  2 16:14:34 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.17.0:
+  * api_core: add retry param into PollingFuture() and it’s inheritors (#9923) (14f1f34), closes #6197
+  * api-core: add client_cert_source to ClientOptions (#17) (748c935)
+  * consume part of StreamingResponseIterator to support failure while under a retry context (#10206) (2b103b6)
+
+-------------------------------------------------------------------
 Mon Apr 20 11:56:55 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix condition for py2 only packages

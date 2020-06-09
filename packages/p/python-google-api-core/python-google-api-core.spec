@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-google-api-core
-Version:        1.16.0
+Version:        1.17.0
 Release:        0
 Summary:        Google API client core library
 License:        Apache-2.0

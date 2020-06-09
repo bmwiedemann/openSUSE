@@ -110,4 +110,15 @@
     <comment>- Fix condition for py2 only packages</comment>
     <requestid>795815</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>541041290c7b25275467cd4981fd2d1e</srcmd5>
+    <version>1.17.0</version>
+    <time>1591742721</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.17.0:
+  * api_core: add retry param into PollingFuture() and it’s inheritors (#9923) (14f1f34), closes #6197
+  * api-core: add client_cert_source to ClientOptions (#17) (748c935)
+  * consume part of StreamingResponseIterator to support failure while under a retry context (#10206) (2b103b6)</comment>
+    <requestid>810893</requestid>
+  </revision>
 </revisionlist>
