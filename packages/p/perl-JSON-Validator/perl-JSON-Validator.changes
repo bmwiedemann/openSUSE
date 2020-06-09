@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun  8 03:13:01 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.00
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  4.00 2020-06-08T10:41:55+0900
+   - JSON::Validator::schema() now holds a JSON::Validator::Schema object
+     instead of Mojo::JSON::Pointer
+   - Add schema classes for Draft4, Draft6 and Draft7
+   - Add "duration" and "uuid" formats #210
+   - Fix coercing boolean "false" #215
+   - Fix not matching "null" should also be a "type" error #217
+   - Deprecated JSON::Validator::joi()
+   - Deprecated JSON::Validator::singleton()
+   - Deprecated JSON::Validator::validate_json()
+   - Deprecated JSON::Validator::version()
+   - Removed JSON::Validator::generate_definitions_path()
+   - Removed support for JSON::Validator::bundle({ref_key => ...})
+  
+
+-------------------------------------------------------------------
 Thu Mar 26 03:08:02 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 3.25
