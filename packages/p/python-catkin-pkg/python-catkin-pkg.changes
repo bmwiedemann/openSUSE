@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 27 09:36:36 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+- use %pytest
+
+-------------------------------------------------------------------
 Mon Mar 30 12:51:38 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.4.16

@@ -17,6 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define commands create_pkg find_pkg generate_changelog package_version prepare_release tag_changelog test_changelog
+
 Name:           python-catkin-pkg
 Version:        0.4.16
 Release:        0
@@ -32,13 +34,15 @@ Requires:       python-docutils
 Requires:       python-pyparsing
 Requires:       python-python-dateutil
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pyparsing}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 # /SECTION
 %python_subpackages
@@ -54,23 +58,35 @@ Library for retrieving information about catkin packages.
 
 %install
 %python_install
+for c in %{commands}; do
+  %python_clone -a %{buildroot}%{_bindir}/catkin_$c
+done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export PYTHONPATH=$PWD/src
-cd test
 # flake8 line length checks failing (E501)
-%python_exec %{_bindir}/nosetests --exclude=test/test_flake8.py
+%pytest -k 'not test_flake8'
+
+%post
+for c in %{commands}; do
+  %python_install_alternative catkin_$c
+done
+
+%postun
+for c in %{commands}; do
+  %python_uninstall_alternative catkin_$c
+done
 
 %files %{python_files}
 %license LICENSE
-%python3_only %{_bindir}/catkin_create_pkg
-%python3_only %{_bindir}/catkin_find_pkg
-%python3_only %{_bindir}/catkin_generate_changelog
-%python3_only %{_bindir}/catkin_package_version
-%python3_only %{_bindir}/catkin_prepare_release
-%python3_only %{_bindir}/catkin_tag_changelog
-%python3_only %{_bindir}/catkin_test_changelog
+%python_alternative %{_bindir}/catkin_create_pkg
+%python_alternative %{_bindir}/catkin_find_pkg
+%python_alternative %{_bindir}/catkin_generate_changelog
+%python_alternative %{_bindir}/catkin_package_version
+%python_alternative %{_bindir}/catkin_prepare_release
+%python_alternative %{_bindir}/catkin_tag_changelog
+%python_alternative %{_bindir}/catkin_test_changelog
 %{python_sitelib}/*
 
 %changelog
