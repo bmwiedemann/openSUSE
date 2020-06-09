@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Thu Jun 04 18:30:11 UTC 2020 - perry.werneck@gmail.com
+
+- Update to version 5.3:
+  * Signal tables are now static.
+  * Updating README.
+  * Fixing build in newest gcc.
+  * Changing type of the PACKAGE_RELEASE macro to allow non numeric values.
+  * Updating version info.
+  * Adding release info when trace window starts.
+  * Refactoring accelerator engine.
+  * Build instructions for macOS
+  * Refactoring keytable management.
+  * Sets Courier New as default print font for macOS
+  * Change default font for macOS
+  * Add support to macosx
+  * Disabling "apply" button when host & service name are not set on host properties widget.
+  * Show host properties when terminal widget is activated without any host info.
+  * Refactoring actions.
+  * Adding group on property action (required for screen-model property actions).
+  * Fixing security dialog layout on windows.
+  * Implementing copy with center button.
+  * Adding smart copy options.
+  * Fixing toggle actions.
+  * Fixing tooltip for screen paste options.
+  * Implementing configuration for the "paste screen" option.
+  * Implementing clipboard settings dialog.
+  * Adding convenience method for comboboxes.
+  * Implementing cut&paste settings dialog.
+  * Settings dialog should destroy with parent.
+  * Moving property based actions to terminal library.
+  * Adding signal for OIA clicks.
+  * libv3270 now uses his own translation domain.
+  * Fixing v3270 state methods.
+  * Adding PF/PA Actions.
+  * The toggle action now lives in lib3270.
+  * Implementing GActions for v3270 terminal.
+  * Adding print and save actions in a more standard format.
+  * Adding key-file save & load on print operation object. 
+  * Adding signal for keyfile load on terminal widget.
+  * Removing deprecated signals.
+  * Implementing accelerator edit widget.
+  * CG character 0x20 should be blank.
+  * Loading accelerators from keyfile.
+  * Isolating CG translation table.
+  * Fixing CG char 0x00.
+  * Color theme are now standard widget properties. 
+  * Saving color & host-type properties to settings files.
+  * Implementing the "save to keyfile" method.
+  * Improving the "can't paste formatted data" popup dialog. It can be disabled now.
+  * Fixing "\n" at the end of text copy.
+  * Adding default action for the "click" on the OIA's security state icon.
+  * Disabling traces when the trace widget is destroyed.
+  * The "trace" widget can now be create/destroyed changing a terminal property.
+  * "keep-alive" is a network setting, then, it should be in the connection dialog.
+  * Refactoring clipboard methods.
+  * Fixing charset reset issue.
+  * Refactoring configuration dialogs to a more standard and consistent behavior.
+  * Adding property for dynamic font space for compatibility with the previous version.
+  * Adjustments in the model_number property.
+  * Host select widget is now sensible to connection state.
+  * Changing the default session name from "application name" to "product name".
+  * Fix based on comment from OBS request https://build.opensuse.org/request/show/736258
+  * Adjusments base of the comments on OBS Request 735904 (https://build.opensuse.org/request/show/735904)
+  * Fixing as requested on review of https://build.opensuse.org/request/show/731972:
+  * Trigerring reconfigure event when terminal size changes.
+  * Moving charset translation to main library.
+  * Getting product name from lib3270 configuration.
+  * Refactoring build process.
+  * Refactoring "paste from file" method.
+  * Refactoring print settings dialog.
+  * Adding popup asking for user intervention when the SSL negotiation fails.
+  * Removing lib3270 log redirection.
+  * Implementing the new smart paste feature.
+  * Refactoring clipboard manager.
+  * Moving selection management methods to protocol library.
+  * Moving terminal definitions to separated include file.
+  * Adding signal when session name changes (required for the HLLAPI plugin module).
+  * Updating package to follow naming guidelines.
+
+-------------------------------------------------------------------
 Mon Oct  7 15:20:18 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Cleanup spec file

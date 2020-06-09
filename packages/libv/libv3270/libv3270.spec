@@ -18,7 +18,7 @@
 
 
 Name:           libv3270
-Version:        5.2
+Version:        5.3
 Release:        0
 Summary:        3270 Virtual Terminal for GTK
 License:        LGPL-3.0-only
@@ -32,7 +32,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  m4
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(lib3270) >= 5.2
+BuildRequires:  pkgconfig(lib3270) >= %{version}
 %if 0%{?centos_version}
 # CENTOS Genmarshal doesn't depend on python!
 BuildRequires:  python
@@ -48,6 +48,7 @@ For more details, see https://softwarepublico.gov.br/social/pw3270/ .
 %define MAJOR_VERSION %(echo %{version} | cut -d. -f1)
 %define MINOR_VERSION %(echo %{version} | cut -d. -f2)
 %define _libvrs %{MAJOR_VERSION}_%{MINOR_VERSION}
+%define _product %(pkg-config --variable=product_name lib3270)
 
 %package -n %{name}-%{_libvrs}
 Summary:    TN3270 access library
@@ -76,21 +77,22 @@ widgets in Glade.
 %prep
 %setup -q
 NOCONFIGURE=1 ./autogen.sh
-%configure
+%configure --with-release=%{release}
 
 %build
-%make_build
+make all %{?_smp_mflags}
 
 %install
 %make_install
+%find_lang %{name} langfiles
 
-# configure --disable-static has no effect
-rm -f %{buildroot}/%{_libdir}/*.a
-
-%files -n %{name}-%{_libvrs}
+%files -n %{name}-%{_libvrs} -f langfiles
 %license LICENSE
 %doc AUTHORS README.md
 %{_libdir}/%{name}.so.*
+%{_datadir}/%{_product}/colors.conf
+%dir %{_datadir}/%{_product}/remap/
+%{_datadir}/%{_product}/remap/*.xml
 
 %files devel
 %{_datadir}/pw3270/pot/*.pot
