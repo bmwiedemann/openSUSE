@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun  8 08:55:04 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Get rid of pandoc BuildRequires:
+  - no-pandoc.patch: don't check for pandoc
+  - tallow-man-pages.tar.gz: prebuild manual pages
+
+-------------------------------------------------------------------
+Thu Jun  4 14:56:11 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- PreRequire mkdir, rm and touch instead of coreutils
+
+-------------------------------------------------------------------
+Thu May 28 06:20:22 UTC 2020 - kukuk@suse.de
+
+- Update to version 21+git20200401.03f4d64:
+  * Convert to pandoc.
+- fwcmd_path.patch: fix default path to firewall-cmd
+
+-------------------------------------------------------------------
 Thu Feb 13 19:46:11 UTC 2020 - kukuk@suse.de
 
 - Update to version 21+git20200213.865ec91:

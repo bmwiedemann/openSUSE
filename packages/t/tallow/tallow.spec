@@ -17,23 +17,25 @@
 
 
 Name:           tallow
-Version:        21+git20200213.865ec91
+Version:        21+git20200401.03f4d64
 Release:        0
 Summary:        Temporary IP address ban issuance daemon
 License:        GPL-3.0-or-later
 URL:            https://github.com/clearlinux/tallow
 Source:         tallow-%{version}.tar.xz
+Source1:        tallow-man-pages.tar.gz
+Patch:          fwcmd_path.patch
+Patch1:         no-pandoc.patch
 Requires:       ipset
 Requires:       iptables
 #For systemd macros:
-PreReq:         coreutils
+PreReq:         /usr/bin/mkdir /usr/bin/rm /usr/bin/touch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libjson-c-devel
 BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  rubygem(ronn)
 
 %description
 Tallow is a fail2ban/lard replacement that uses systemd's native
@@ -45,7 +47,9 @@ clutter and system resource usage at the cost of denying access to
 potentially valid users.
 
 %prep
-%setup -q
+%setup -qa1
+%patch -p1
+%patch1 -p1
 
 %build
 ./autogen.sh

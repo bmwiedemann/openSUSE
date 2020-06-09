@@ -95,4 +95,20 @@
 - Drop 0001-Add-extra-path-for-firewall-cmd.patch, accepted upstream</comment>
     <requestid>774231</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9c898fe6c21aa4b31d684a7da25d7382</srcmd5>
+    <version>21+git20200401.03f4d64</version>
+    <time>1591742066</time>
+    <user>dimstar_suse</user>
+    <comment>- Get rid of pandoc BuildRequires:
+  - no-pandoc.patch: don't check for pandoc
+  - tallow-man-pages.tar.gz: prebuild manual pages
+
+- PreRequire mkdir, rm and touch instead of coreutils
+
+- Update to version 21+git20200401.03f4d64:
+  * Convert to pandoc.
+- fwcmd_path.patch: fix default path to firewall-cmd</comment>
+    <requestid>812505</requestid>
+  </revision>
 </revisionlist>

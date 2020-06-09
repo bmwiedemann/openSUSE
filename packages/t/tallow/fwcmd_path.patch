@@ -1,0 +1,26 @@
+diff --git a/src/tallow.c b/src/tallow.c
+index 58e0fb4..de92403 100644
+--- a/src/tallow.c
++++ b/src/tallow.c
+@@ -293,7 +293,7 @@ int main(void)
+ 	json_load_patterns();
+ 
+ 	strcpy(ipt_path, "/usr/sbin");
+-	strcpy(fwcmd_path, "/usr/sbin");
++	strcpy(fwcmd_path, "/usr/bin");
+ 
+ #ifdef DEBUG
+ 	fprintf(stderr, "Debug output enabled. Send SIGUSR1 to dump internal state table\n");
+diff --git a/tallow.conf b/tallow.conf
+index df0ffb4..e0a98d4 100644
+--- a/tallow.conf
++++ b/tallow.conf
+@@ -1,7 +1,7 @@
+ 
+ # tallow.conf - see `man tallow.conf` for more information
+ 
+-#fwcmd_path=/usr/sbin
++#fwcmd_path=/usr/bin
+ #ipt_path=/usr/sbin
+ #expires=3600
+ #whitelist=127.0.0.1
