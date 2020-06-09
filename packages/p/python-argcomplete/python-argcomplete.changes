@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 27 13:01:18 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Thu Apr 30 06:05:59 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix test execution without /usr/bin/python

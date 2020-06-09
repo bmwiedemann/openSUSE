@@ -124,4 +124,12 @@
     <comment>- Fix test execution without /usr/bin/python</comment>
     <requestid>799410</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>375f1bdb2899566593b420dfdbb0051e</srcmd5>
+    <version>1.11.1</version>
+    <time>1591742603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809816</requestid>
+  </revision>
 </revisionlist>

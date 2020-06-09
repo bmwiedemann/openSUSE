@@ -37,6 +37,8 @@ BuildRequires:  fdupes
 BuildRequires:  fish
 BuildRequires:  python-rpm-macros
 Requires:       python-importlib-metadata >= 0.23
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -57,32 +59,45 @@ resources over the network).
 %prep
 %setup -q -n argcomplete-%{version}
 %autopatch -p1
-# https://github.com/kislyuk/argcomplete/issues/255
-# https://github.com/kislyuk/argcomplete/issues/256
-sed -i -e "1s|#!.*python.*|#!%{__python3}|" test/prog scripts/*
-sed -i -e "s|python |python3 |g" test/test.py
 
 %build
 %python_build
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/register-python-argcomplete
+%python_clone -a %{buildroot}%{_bindir}/python-argcomplete-check-easy-install-script
 rm -rf %{buildroot}%{python_sitelib}/test
 rm %{buildroot}%{_bindir}/activate-global-python-argcomplete
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
 # tcsh support is broken
 rm %{buildroot}%{_bindir}/python-argcomplete-tcsh
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m unittest discover -v
+%{python_expand \
+  # https://github.com/kislyuk/argcomplete/issues/255
+  # https://github.com/kislyuk/argcomplete/issues/256
+  # https://github.com/kislyuk/argcomplete/issues/299
+  sed -i -e "1s|#!.*python.*|#!%{_bindir}/$python|" test/prog scripts/*
+  sed -i -e "s|python |$python |g" test/test.py
+  PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m unittest discover -v
+}
+
+%post
+%python_install_alternative register-python-argcomplete
+%python_install_alternative python-argcomplete-check-easy-install-script
+
+%postun
+%python_uninstall_alternative register-python-argcomplete
+%python_uninstall_alternative python-argcomplete-check-easy-install-script
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.rst
 %{python_sitelib}/argcomplete-%{version}-py%{python_version}.egg-info
 %{python_sitelib}/argcomplete
-%python3_only %{_bindir}/python-argcomplete-check-easy-install-script
-%python3_only %{_bindir}/register-python-argcomplete
+%python_alternative %{_bindir}/python-argcomplete-check-easy-install-script
+%python_alternative %{_bindir}/register-python-argcomplete
 
 %changelog
