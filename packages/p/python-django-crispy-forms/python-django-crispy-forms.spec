@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define mod_name django-crispy-forms
 Name:           python-%{mod_name}
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Django DRY Forms
 License:        MIT

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  9 11:00:22 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 1.9.1
+ * Added Bootstrap 4 styling for clearable file widget.
+ * Fixed FileField UI bug
+ * Project now uses GitHub actions for testing
+
+-------------------------------------------------------------------
 Mon Mar  2 08:38:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.9.0:

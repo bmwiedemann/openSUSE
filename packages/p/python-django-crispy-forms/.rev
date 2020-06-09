@@ -70,4 +70,15 @@
   * CSS for Column layout object in Bootstrap 4 template pack changed to 'col-md'.</comment>
     <requestid>791169</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f8ade130bfee524a3754bfac6e261879</srcmd5>
+    <version>1.9.1</version>
+    <time>1591743061</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.1
+ * Added Bootstrap 4 styling for clearable file widget.
+ * Fixed FileField UI bug
+ * Project now uses GitHub actions for testing</comment>
+    <requestid>812876</requestid>
+  </revision>
 </revisionlist>
