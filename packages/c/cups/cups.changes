@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  5 10:25:47 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec
+
+-------------------------------------------------------------------
 Thu Feb 21 12:44:01 CET 2019 - vliaskovitis@suse.com
 
 - Add issue5509-fix-utf-8-validation-issue.patch (bsc#1118118)

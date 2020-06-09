@@ -17,7 +17,7 @@
 
 
 # _tmpfilesdir is not defined in systemd macros up to openSUSE 13.2
-%{!?_tmpfilesdir: %global _tmpfilesdir %{_libexecdir}/tmpfiles.d }
+%{!?_tmpfilesdir: %global _tmpfilesdir /usr/lib/tmpfiles.d }
 Name:           cups
 # CUPS beta version numbers like "2.3b6" can be used as is because
 # "zypper vcmp 2.3.b99 2.3.0" shows "2.3.b99 is older than 2.3.0" and
@@ -521,44 +521,44 @@ exit 0
 %{_sbindir}/cupsfilter
 %{_sbindir}/rccups
 %{_sbindir}/rccups-lpd
-%dir %{_libexecdir}/cups
-%dir %{_libexecdir}/cups/backend
-%{_libexecdir}/cups/backend/dnssd
-%{_libexecdir}/cups/backend/http
-%{_libexecdir}/cups/backend/https
-%{_libexecdir}/cups/backend/ipp
-%{_libexecdir}/cups/backend/ipps
-%{_libexecdir}/cups/backend/lpd
-%{_libexecdir}/cups/backend/snmp
-%{_libexecdir}/cups/backend/socket
-%{_libexecdir}/cups/backend/usb
-%dir %{_libexecdir}/cups/cgi-bin
-%{_libexecdir}/cups/cgi-bin/admin.cgi
-%{_libexecdir}/cups/cgi-bin/classes.cgi
-%{_libexecdir}/cups/cgi-bin/help.cgi
-%{_libexecdir}/cups/cgi-bin/jobs.cgi
-%{_libexecdir}/cups/cgi-bin/printers.cgi
-%dir %{_libexecdir}/cups/daemon
-%{_libexecdir}/cups/daemon/cups-deviced
-%{_libexecdir}/cups/daemon/cups-driverd
-%{_libexecdir}/cups/daemon/cups-exec
-%{_libexecdir}/cups/daemon/cups-lpd
-%dir %{_libexecdir}/cups/driver
-%dir %{_libexecdir}/cups/filter
-%{_libexecdir}/cups/filter/commandtops
-%{_libexecdir}/cups/filter/gziptoany
-%{_libexecdir}/cups/filter/pstops
-%{_libexecdir}/cups/filter/rastertoepson
-%{_libexecdir}/cups/filter/rastertohp
-%{_libexecdir}/cups/filter/rastertolabel
-%{_libexecdir}/cups/filter/rastertopwg
-%dir %{_libexecdir}/cups/monitor
-%{_libexecdir}/cups/monitor/bcp
-%{_libexecdir}/cups/monitor/tbcp
-%dir %{_libexecdir}/cups/notifier
-%{_libexecdir}/cups/notifier/dbus
-%{_libexecdir}/cups/notifier/mailto
-%{_libexecdir}/cups/notifier/rss
+%dir /usr/lib/cups
+%dir /usr/lib/cups/backend
+/usr/lib/cups/backend/dnssd
+/usr/lib/cups/backend/http
+/usr/lib/cups/backend/https
+/usr/lib/cups/backend/ipp
+/usr/lib/cups/backend/ipps
+/usr/lib/cups/backend/lpd
+/usr/lib/cups/backend/snmp
+/usr/lib/cups/backend/socket
+/usr/lib/cups/backend/usb
+%dir /usr/lib/cups/cgi-bin
+/usr/lib/cups/cgi-bin/admin.cgi
+/usr/lib/cups/cgi-bin/classes.cgi
+/usr/lib/cups/cgi-bin/help.cgi
+/usr/lib/cups/cgi-bin/jobs.cgi
+/usr/lib/cups/cgi-bin/printers.cgi
+%dir /usr/lib/cups/daemon
+/usr/lib/cups/daemon/cups-deviced
+/usr/lib/cups/daemon/cups-driverd
+/usr/lib/cups/daemon/cups-exec
+/usr/lib/cups/daemon/cups-lpd
+%dir /usr/lib/cups/driver
+%dir /usr/lib/cups/filter
+/usr/lib/cups/filter/commandtops
+/usr/lib/cups/filter/gziptoany
+/usr/lib/cups/filter/pstops
+/usr/lib/cups/filter/rastertoepson
+/usr/lib/cups/filter/rastertohp
+/usr/lib/cups/filter/rastertolabel
+/usr/lib/cups/filter/rastertopwg
+%dir /usr/lib/cups/monitor
+/usr/lib/cups/monitor/bcp
+/usr/lib/cups/monitor/tbcp
+%dir /usr/lib/cups/notifier
+/usr/lib/cups/notifier/dbus
+/usr/lib/cups/notifier/mailto
+/usr/lib/cups/notifier/rss
 %dir %attr(0775,root,ntadmin) %{_datadir}/cups/drivers
 %doc %{_defaultdocdir}/cups
 %doc %{_mandir}/man1/cups.1.gz
