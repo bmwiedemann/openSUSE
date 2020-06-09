@@ -167,4 +167,25 @@
   * core: Fix races in GetVariableValue (#24599)</comment>
     <requestid>807147</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>31dff34a0f7a4f46f66dcffd40db78ba</srcmd5>
+    <version>0.12.26</version>
+    <time>1591743212</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.12.26
+  ENHANCEMENTS:
+  * backend/remote: Can now accept -target options when creating a plan using
+  remote operations, if supported by the target server. (Server-side support
+  for this in Terraform Cloud and Terraform Enterprise will follow in
+  forthcoming releases of each.) (#24834)
+  * cli: A special new lifecycle mode for provider plugins where they are
+  assumed to be controlled by an external process outside of Terraform. This
+  is for automated provider plugin testing only, and is not an end-user
+  feature. (#24674)
+
+- Update in SLE-15 (bsc#1158440, CVE-2019-19316)
+
+- Include in SLE-15 (bsc#1148092, jsc#ECO-134)</comment>
+    <requestid>813002</requestid>
+  </revision>
 </revisionlist>

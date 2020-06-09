@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun  8 07:16:53 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.12.26
+  ENHANCEMENTS:
+  * backend/remote: Can now accept -target options when creating a plan using
+  remote operations, if supported by the target server. (Server-side support
+  for this in Terraform Cloud and Terraform Enterprise will follow in
+  forthcoming releases of each.) (#24834)
+  * cli: A special new lifecycle mode for provider plugins where they are
+  assumed to be controlled by an external process outside of Terraform. This
+  is for automated provider plugin testing only, and is not an end-user
+  feature. (#24674)
+
+-------------------------------------------------------------------
 Tue May 19 07:28:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.12.25:
@@ -67,6 +81,11 @@ Wed Feb 19 07:05:47 UTC 2020 - Petr Cervinka <petr@cervinka.net>
    * This release includes an _opt-in experiment_ for [custom validation rules on module variables](https://www.terraform.io/docs/configuration/variables.html#custom-validation-rules).
      The feature is not yet finalized and is subject to breaking changes even in minor releases, but we're introducing it here in order to solicit feedback from module developers about which use-cases it is meeting, any use-cases it _isn't_ meeting, and any situations where things feel harder to express than they might be.
      Due to the experimental nature of this feature, we do not recommend using it in "production" modules yet and we require an explicit [experimental feature opt-in](https://www.terraform.io/docs/configuration/terraform.html#experimental-language-features) of `variable_validation`. Depending on what feedback we receive, the design of this experimental feature may change significantly in future versions without an automatic upgrade path. 
+
+-------------------------------------------------------------------
+Mon Jan 20 09:42:59 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update in SLE-15 (bsc#1158440, CVE-2019-19316)
 
 -------------------------------------------------------------------
 Wed Jan 15 11:18:20 UTC 2020 - Jean-Philippe Evrard <jevrard@suse.com>
@@ -227,6 +246,11 @@ Wed Sep 18 06:27:30 UTC 2019 - Petr Cervinka <petr@cervinka.net>
    * command/show: Fixed bug with wrong errors being returned or swallowed. ([#22772](https://github.com/hashicorp/terraform/issues/22772))
    * config: The `cidrhost`, `cidrsubnet`, and `cidrnetmask` functions now behave correctly with IPv6 prefixes that are short enough for the host portion to be greater than 64-bit or 32-bit (depending on the target architecture). ([#22505](https://github.com/hashicorp/terraform/issues/22505))
    * config: Fixed bug on empty sets with `for_each` ([#22281](https://github.com/hashicorp/terraform/issues/22281)) 
+
+-------------------------------------------------------------------
+Tue Sep 17 07:35:09 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Include in SLE-15 (bsc#1148092, jsc#ECO-134)
 
 -------------------------------------------------------------------
 Mon Sep 16 12:30:28 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
