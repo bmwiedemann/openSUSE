@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  9 07:43:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.3.1:
+  * Fix pytest 5.4 support.
+
+-------------------------------------------------------------------
 Thu Feb 20 07:12:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.3.0:

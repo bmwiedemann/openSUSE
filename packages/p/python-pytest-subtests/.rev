@@ -16,4 +16,13 @@
   * subtests now correctly captures and displays stdout/stderr (#18).</comment>
     <requestid>777568</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>00b628172a6865a0ec60fa89903dbfbd</srcmd5>
+    <version>0.3.1</version>
+    <time>1591742950</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.1:
+  * Fix pytest 5.4 support.</comment>
+    <requestid>812805</requestid>
+  </revision>
 </revisionlist>
