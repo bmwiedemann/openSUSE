@@ -17,7 +17,7 @@
 
 
 Name:           yast2-squid
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        Configuration of squid
 License:        GPL-2.0-only
@@ -33,13 +33,11 @@ BuildRequires:  boost-devel
 %endif
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  perl-XML-Writer
 BuildRequires:  update-desktop-files
 # Yast2::ServiceWidget
 BuildRequires:  yast2 >= 4.1.0
 BuildRequires:  yast2-core-devel
 BuildRequires:  yast2-devtools >= 4.2.2
-BuildRequires:  yast2-testsuite
 
 Requires:       yast2-ruby-bindings >= 1.0.0
 # Yast2::ServiceWidget
@@ -60,7 +58,6 @@ rm -rf %{buildroot}/%{yast_plugindir}/libpy2ag_squid.la
 %yast_metainfo
 
 %files
-%config /etc/sysconfig/SuSEfirewall2.d/services/squid
 %{yast_yncludedir}
 %{yast_clientdir}
 %{yast_moduledir}

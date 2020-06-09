@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 20 10:48:24 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Removed leftovers from the old compatibility with SuSEfirewall2
+  (fate#323460, fixes contributed by matthias.gerstner@suse.com).
+- Dropped legacy testsuite in favor of RSpec
+- Updated package dependencies
+- 4.3.1
+
+-------------------------------------------------------------------
 Tue May 12 15:47:09 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Autoyast schema: Allow optional types for string and map objects
