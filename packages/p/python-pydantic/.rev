@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>795465</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>aae8308d9e3ba4e39ed5da0b5cfe9b49</srcmd5>
+    <version>1.5.1</version>
+    <time>1591743229</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.1
+  * Signature generation with `extra: allow` never uses a field name, #1418 by @prettywood
+  * Avoid mutating `Field` default value, #1412 by @prettywood</comment>
+    <requestid>813030</requestid>
+  </revision>
 </revisionlist>

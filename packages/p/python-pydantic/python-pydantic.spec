@@ -20,14 +20,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pydantic
-Version:        1.5
+Version:        1.5.1
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/samuelcolvin/pydantic
 Source:         https://github.com/samuelcolvin/pydantic/archive/v%{version}.tar.gz
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest < 5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
