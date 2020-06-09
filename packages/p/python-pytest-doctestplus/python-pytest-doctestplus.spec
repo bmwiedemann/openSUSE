@@ -27,7 +27,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-doctestplus%{psuffix}
-Version:        0.6.1
+Version:        0.7.0
 Release:        0
 Summary:        Pytest plugin with advanced doctest features
 License:        BSD-3-Clause

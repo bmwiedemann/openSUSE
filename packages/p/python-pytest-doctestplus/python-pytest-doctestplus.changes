@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  9 08:05:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.0:
+  * Added a new ini option, doctest_subpackage_requires, that can
+    be used to skip specific subpackages based on required packages. [#112]
+
+-------------------------------------------------------------------
 Mon May 18 09:18:14 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.6.1:

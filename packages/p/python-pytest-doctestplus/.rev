@@ -86,4 +86,14 @@
   * Fix compatibility with pytest 5.4. [#103]</comment>
     <requestid>806847</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>eef92a0e6af7040a3d0b3c2e77a94771</srcmd5>
+    <version>0.7.0</version>
+    <time>1591742991</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  * Added a new ini option, doctest_subpackage_requires, that can
+    be used to skip specific subpackages based on required packages. [#112]</comment>
+    <requestid>812817</requestid>
+  </revision>
 </revisionlist>
