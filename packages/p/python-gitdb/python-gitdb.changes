@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  2 15:21:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.0.5:
+  * Support for PyOxidizer
+
+-------------------------------------------------------------------
 Mon Mar 30 10:54:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Provide and obsolete deprecated gitdb2 module
