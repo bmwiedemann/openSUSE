@@ -19,7 +19,7 @@
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Mako
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        A Python templating language
 License:        MIT
