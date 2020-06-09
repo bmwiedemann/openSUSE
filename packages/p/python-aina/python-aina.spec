@@ -1,7 +1,7 @@
 #
 # spec file for package python-aina
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-base >= 3.5
 Requires:       python-click >= 6.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click >= 6.0}
@@ -52,16 +54,23 @@ dos2unix AUTHORS.rst README.rst
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/aina
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python setup.py test
 
+%post
+%python_install_alternative aina
+
+%postun
+%python_uninstall_alternative aina
+
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license LICENSE
-%python3_only %{_bindir}/aina
+%python_alternative %{_bindir}/aina
 %{python_sitelib}/*
 
 %changelog
