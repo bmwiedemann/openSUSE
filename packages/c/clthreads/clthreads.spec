@@ -56,7 +56,7 @@ export CXXFLAGS="%{optflags}"
 %make_build -C source
 
 %install
-make -C source DESTDIR=%{buildroot} PREFIX=%{_prefix} install
+make -C source DESTDIR=%{buildroot} PREFIX=%{_prefix} LIBDIR=%{_libdir} install
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
