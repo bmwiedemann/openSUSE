@@ -1,0 +1,27 @@
+From 05ead497ad4d95cf5c37154b780724d67da93f55 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Tue, 9 Jun 2020 08:51:28 +0200
+Subject: [PATCH] Fix build with GCC 10.
+
+The default option was fixed in the latest Twain releases
+but Opentoonz includes Twain 2.1.
+---
+ toonz/sources/common/twain/twain.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/toonz/sources/common/twain/twain.h b/toonz/sources/common/twain/twain.h
+index c7dee179..1bfe9d50 100644
+--- a/toonz/sources/common/twain/twain.h
++++ b/toonz/sources/common/twain/twain.h
+@@ -2209,7 +2209,7 @@ typedef struct {
+ #elif defined(TWH_CMP_GNU)
+ #pragma pack(pop, before_twain)
+ #elif defined(TWH_CMP_BORLAND)
+-#pragma option a.
++#pragma option -a.
+ #elif defined(TWH_CMP_XCODE)
+ #if PRAGMA_STRUCT_ALIGN
+ #pragma options align = reset
+-- 
+2.26.2
+

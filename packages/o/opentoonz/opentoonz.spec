@@ -26,11 +26,15 @@ Group:          Productivity/Graphics/Other
 URL:            https://opentoonz.github.io/e/
 Source0:        %{name}-%{version}.tar.xz
 Source3:        %{name}-rpmlintrc
-Patch1:         p_handle-no-return-in-nonvoid-function.patch
+Patch0:         p_handle-no-return-in-nonvoid-function.patch
 # PATCH-FIX-UPSTREAM
-Patch2:         0001-Fix-linker-errors-on-Linux.patch
+Patch1:         0001-Fix-linker-errors-on-Linux.patch
 # PATCH-FIX-OPENSUSE -- Use the system mypaint brushes
-Patch3:         0001-Use-the-system-mypaint-brushes.patch
+Patch2:         0001-Use-the-system-mypaint-brushes.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-Fix-build-with-GCC-10.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         0001-Fix-build-with-Qt-5.15.patch
 BuildRequires:  boost-devel >= 1.55
 BuildRequires:  cmake
 BuildRequires:  freeglut-devel

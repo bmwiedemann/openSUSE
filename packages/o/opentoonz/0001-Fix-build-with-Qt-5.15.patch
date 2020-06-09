@@ -1,0 +1,38 @@
+From 63b56bdaa760bb6bf67b5a4fd30e3a508fdc1081 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Tue, 9 Jun 2020 09:47:56 +0200
+Subject: [PATCH] Fix build with Qt 5.15.
+
+QPainterPath is no longer included indirectly.
+---
+ toonz/sources/tnztools/toolutils.cpp    | 1 +
+ toonz/sources/toonzqt/functionpanel.cpp | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/toonz/sources/tnztools/toolutils.cpp b/toonz/sources/tnztools/toolutils.cpp
+index 1ceff937..db4032f7 100644
+--- a/toonz/sources/tnztools/toolutils.cpp
++++ b/toonz/sources/tnztools/toolutils.cpp
+@@ -42,6 +42,7 @@
+ #include "tools/strokeselection.h"
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QGLWidget>  // for QGLWidget::convertToGLFormat
+ #include <QFont>
+ #include <QFontMetrics>
+diff --git a/toonz/sources/toonzqt/functionpanel.cpp b/toonz/sources/toonzqt/functionpanel.cpp
+index 4cc66126..b6a0c092 100644
+--- a/toonz/sources/toonzqt/functionpanel.cpp
++++ b/toonz/sources/toonzqt/functionpanel.cpp
+@@ -24,6 +24,7 @@
+ 
+ // Qt includes
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QMouseEvent>
+ #include <QWheelEvent>
+ #include <QMenu>
+-- 
+2.26.2
+

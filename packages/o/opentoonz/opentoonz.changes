@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  9 06:52:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with GCC 10:
+  * 0001-Fix-build-with-GCC-10.patch
+- Add patch to fix build with Qt 5.15:
+  * 0001-Fix-build-with-Qt-5.15.patch
+
+-------------------------------------------------------------------
 Mon Apr 13 18:35:09 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop p_add-zlo-to-cmake-include-path-suffixes.patch, no
