@@ -1,0 +1,36 @@
+From c8382374c5d340aa4115d527aed76e876ee5456b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ond=C5=99ej=20Lyson=C4=9Bk?= <olysonek@redhat.com>
+Date: Sun, 9 Feb 2020 16:16:59 +0100
+Subject: [PATCH] Drop superfluous global variable definitions
+
+The only place where the EXTERN macro mechanism is used to define the
+global variables 'portfd_is_socket' and 'portfd_is_connected' is
+minicom.c (by defining an empty EXTERN macro and including the
+minicom.h header). The source file sysdep1_s.c already defines these
+variables. The sysdep1_s.o object file is always linked to
+minicom.o. Thus it is safe to drop the definitions from minicom.c and
+only declare the variables in the minicom.h header.
+
+This fixes linking with gcc 10 which uses -fno-common by default,
+disallowing multiple global variable definitions.
+---
+ src/minicom.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: minicom-2.7.1/src/minicom.h
+===================================================================
+--- minicom-2.7.1.orig/src/minicom.h
++++ minicom-2.7.1/src/minicom.h
+@@ -113,9 +113,9 @@ EXTERN char *dial_user;     /* Our usern
+ EXTERN char *dial_pass;     /* Our password */
+ 
+ #ifdef USE_SOCKET
+-EXTERN int portfd_is_socket;	/* File descriptor is a unix socket */
+-EXTERN int portfd_is_connected;	/* 1 if the socket is connected */
+-EXTERN struct sockaddr_un portfd_sock_addr;	/* the unix socket address */
++extern int portfd_is_socket;	/* File descriptor is a unix socket */
++extern int portfd_is_connected;	/* 1 if the socket is connected */
++extern struct sockaddr_un portfd_sock_addr;	/* the unix socket address */
+ #define portfd_connected ((portfd_is_socket && !portfd_is_connected) \
+                            ? -1 : portfd)
+ #else

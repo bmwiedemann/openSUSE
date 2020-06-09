@@ -1,11 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun  9 03:11:04 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Fix some unneccesary global defenitions to fix build failures with
+  gcc10.
+  * fix-upstream-gcc10-build1.patch
+  * fix-upstream-gcc10-build2.patch
+  * fix-upstream-gcc10-build3.patch
+
+-------------------------------------------------------------------
 Thu Apr 13 01:13:24 UTC 2017 - sflees@suse.de
 
 - Update to 2.7.1
   * Contains 1 fix for CVE-2017-7467, bsc#1033783
-    * Invalid cursor coordinates and scroll regions could lead to code 
+    * Invalid cursor coordinates and scroll regions could lead to code
       execution
-  
+
 -------------------------------------------------------------------
 Wed Oct 26 14:20:42 CEST 2016 - kukuk@suse.de
 
@@ -21,7 +30,7 @@ Fri Mar 13 12:30:20 UTC 2015 - tchvatal@suse.com
 -------------------------------------------------------------------
 Tue Jan 14 09:13:13 UTC 2014 - dmueller@suse.com
 
-- fix Source url 
+- fix Source url
 
 -------------------------------------------------------------------
 Thu Jan  2 11:12:46 UTC 2014 - vcizek@suse.com
@@ -39,7 +48,7 @@ Wed Dec 18 09:58:51 UTC 2013 - mvyskocil@suse.com
 - update to 2.6.2
  * Alternative hex output (to be improved)
  * Print creation date of serial device file (if < 20 hrs), useful for
-   identifying just plugged in USB-Serial adapters 
+   identifying just plugged in USB-Serial adapters
  * Support ':' (colon) in device path names. Note, that this changes old
    behaviour which used ':' as a device path delimiter.
  * Several language updates.
@@ -102,7 +111,7 @@ Wed Aug 24 09:44:30 UTC 2011 - lnussel@suse.de
 -------------------------------------------------------------------
 Tue Jul 26 09:24:27 UTC 2011 - vcizek@novell.com
 
-- increased length of serial device (bnc#707860) 
+- increased length of serial device (bnc#707860)
 
 -------------------------------------------------------------------
 Mon Jan 31 10:03:17 UTC 2011 - vcizek@novell.com
@@ -132,8 +141,8 @@ Tue Aug 31 15:46:53 CEST 2010 - anicka@suse.cz
  * Add options -b, -D and -R.
  * Remove environment variable for the remote
    charset and make it available via option -R.
- * remove all code that deals with running as suid-root. Also 
-   remove minicom.users as it's not needed anymore. Handle 
+ * remove all code that deals with running as suid-root. Also
+   remove minicom.users as it's not needed anymore. Handle
    permissions within the file-system.
  * Consolidate lockfile handling into separate functions and use them,
    also do lockfile handling before and after launching kermit.
@@ -142,7 +151,7 @@ Tue Aug 31 15:46:53 CEST 2010 - anicka@suse.cz
 -------------------------------------------------------------------
 Sun Aug 29 17:51:12 UTC 2010 - cristian.rodriguez@opensuse.org
 
-- Do not hardcode build dates in binaries 
+- Do not hardcode build dates in binaries
 
 -------------------------------------------------------------------
 Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
@@ -163,17 +172,17 @@ Tue Mar  9 16:16:54 UTC 2010 - lnussel@suse.de
 Wed Dec 16 17:55:40 UTC 2009 - crrodriguez@opensuse.org
 
 - take over the package
-- Import patches from Ubuntu 
+- Import patches from Ubuntu
 
 -------------------------------------------------------------------
 Thu Aug 28 17:00:30 CEST 2008 - ro@suse.de
 
-- add ncurses include to cflags 
+- add ncurses include to cflags
 
 -------------------------------------------------------------------
 Tue Jul 22 22:38:34 CEST 2008 - crrodriguez@suse.de
 
-- fix build 
+- fix build
 
 -------------------------------------------------------------------
 Mon Jun  9 14:10:39 CEST 2008 - mmarek@suse.cz
@@ -194,7 +203,7 @@ Fri Mar 28 15:40:10 CET 2008 - mmarek@suse.cz
 -------------------------------------------------------------------
 Fri Mar 30 01:43:01 CEST 2007 - ro@suse.de
 
-- added ncurses-devel to buildreq 
+- added ncurses-devel to buildreq
 
 -------------------------------------------------------------------
 Thu Oct 19 20:47:44 CEST 2006 - mjancar@suse.cz
@@ -213,7 +222,7 @@ Thu Oct 19 20:47:44 CEST 2006 - mjancar@suse.cz
 Thu Aug 24 12:29:57 CEST 2006 - mkoenig@suse.de
 
 - reverted last change (moving scripts from aux/)
-- changed gettext issues to fix build 
+- changed gettext issues to fix build
 
 -------------------------------------------------------------------
 Tue Aug 22 18:13:50 CEST 2006 - mkoenig@suse.de
@@ -295,7 +304,7 @@ Wed Sep 18 01:49:24 CEST 2002 - ro@suse.de
 -------------------------------------------------------------------
 Thu Apr  4 13:03:06 CEST 2002 - ro@suse.de
 
-- build with current automake/autoconf/gettext 
+- build with current automake/autoconf/gettext
 
 -------------------------------------------------------------------
 Thu Dec  6 12:42:11 CET 2001 - uli@suse.de

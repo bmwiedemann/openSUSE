@@ -1,7 +1,7 @@
 #
 # spec file for package minicom
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           minicom
 Version:        2.7.1
 Release:        0
 Summary:        A Terminal Program
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Hardware/Modem
-Url:            http://alioth.debian.org/projects/minicom/
+URL:            http://alioth.debian.org/projects/minicom/
 Source0:        https://alioth.debian.org/frs/download.php/latestfile/3/%{name}-%{version}.tar.gz
 Patch0:         minicom-2.2-defaults.diff
 Patch2:         03norzsz.diff
@@ -30,6 +30,9 @@ Patch4:         minicom-2.3-no-build-date.patch
 Patch5:         minicom-2.4-norootsetup.diff
 # PATCH-FIX-UPSTREAM increase permitted length of serial device (bnc#707860)
 Patch6:         minicom-2.5-serial_device_path_length.patch
+Patch7:         fix-upstream-gcc10-build1.patch
+Patch8:         fix-upstream-gcc10-build2.patch
+Patch9:         fix-upstream-gcc10-build3.patch
 BuildRequires:  ckermit
 BuildRequires:  gettext-devel
 BuildRequires:  lockdev-devel
@@ -57,6 +60,9 @@ of the uucp group.
 %patch4
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
 
 %build
 export CFLAGS="%{optflags} $(ncursesw6-config --cflags)"

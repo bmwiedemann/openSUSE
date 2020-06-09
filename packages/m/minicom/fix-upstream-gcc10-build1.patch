@@ -1,0 +1,56 @@
+From db269bba2a68fde03f5df45ac8372a8f1248ca96 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ond=C5=99ej=20Lyson=C4=9Bk?= <olysonek@redhat.com>
+Date: Mon, 3 Feb 2020 16:04:54 +0100
+Subject: [PATCH] Drop superfluous global variable definitions
+
+The file minicom.c, by including the minicom.h header, already defines
+the global variables 'dial_user' and 'dial_pass'. The object file
+minicom.o is always linked to dial.o. Thus the definitions in dial.c
+can be dropped.
+
+This fixes linking with gcc 10 which uses -fno-common by default,
+disallowing multiple global variable definitions.
+---
+ src/dial.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+Index: minicom-2.7.1/src/dial.c
+===================================================================
+--- minicom-2.7.1.orig/src/dial.c
++++ minicom-2.7.1/src/dial.c
+@@ -137,7 +137,7 @@ struct dver {
+ /* Forward declaration */
+ static void writedialdir(void);
+ 
+-#define dialentno(di, no) ((struct dialent *)((char *)(di) + ((no) * sizeof(struct dialent))))  
++#define dialentno(di, no) ((struct dialent *)((char *)(di) + ((no) * sizeof(struct dialent))))
+ 
+ static struct dialent *dialents;
+ static struct dialent *d_man;
+@@ -146,8 +146,6 @@ static int newtype;
+ /* Access to ".dialdir" denied? */
+ static int dendd = 0;
+ static char *tagged;
+-char *dial_user;
+-char *dial_pass;
+ 
+ /* Change the baud rate.  Treat all characters in the given array as if
+  * they were key presses within the comm parameters dialog (C-A P) and
+@@ -1370,7 +1368,7 @@ static void prdir(WIN *dialw, int top, i
+     if (d == (struct dialent *)0)
+       break;
+     mc_wprintf(dialw, fmt, f+1+top, (d->flags & FL_TAG) ? '>' : ' ',
+-            d->name, d->number, d->lastdate, d->lasttime, 
++            d->name, d->number, d->lastdate, d->lasttime,
+             d->count, d->script);
+   }
+   dirflush = 1;
+@@ -1480,7 +1478,7 @@ static void dial_entry(struct dialent *d
+   /* Now that everything has been set, dial. */
+   if ((nb = dial(d, &d2)) < 0)
+     return;
+-  
++
+   if (d2 != (struct dialent *)NULL)
+     d = d2;	/* jl 22.09.97 */
+ 
