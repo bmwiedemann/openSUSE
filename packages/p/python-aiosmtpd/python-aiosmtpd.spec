@@ -33,6 +33,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-atpublic
 Requires:       user(nobody)
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module atpublic}
@@ -54,16 +56,23 @@ cp %{SOURCE1} .
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/aiosmtpd
 %python_expand rm -r %{buildroot}%{$python_sitelib}/examples
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative aiosmtpd
+
+%postun
+%python_uninstall_alternative aiosmtpd
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE-2.0.txt
-%python3_only %{_bindir}/aiosmtpd
+%python_alternative %{_bindir}/aiosmtpd
 %{python_sitelib}/*
 
 %changelog

@@ -15,4 +15,12 @@
     <comment>- Do not install examples in generic examples folder in sitelib</comment>
     <requestid>760353</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>99f40e501734457852728a94cbb2f308</srcmd5>
+    <version>1.2.1</version>
+    <time>1591742622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809818</requestid>
+  </revision>
 </revisionlist>
