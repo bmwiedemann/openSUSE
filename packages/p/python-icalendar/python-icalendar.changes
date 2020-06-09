@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  2 16:19:43 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.0.6:
+  - Use ``vText`` as default type, when convert recurrence definition to ical string. [kam193] 
+
+-------------------------------------------------------------------
 Mon May 25 10:59:22 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

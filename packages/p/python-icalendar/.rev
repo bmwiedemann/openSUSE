@@ -281,4 +281,13 @@
     <comment></comment>
     <requestid>808791</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>19231e985038694612bf6b1539b51ce4</srcmd5>
+    <version>4.0.6</version>
+    <time>1591742728</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.6:
+  - Use ``vText`` as default type, when convert recurrence definition to ical string. [kam193]</comment>
+    <requestid>810895</requestid>
+  </revision>
 </revisionlist>
