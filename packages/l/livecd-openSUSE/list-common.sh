@@ -267,7 +267,6 @@ install xfsdump
 install xfsprogs
 install xz
 install yast2-trans-cs
-install yast2-trans-da
 install yast2-trans-de
 install yast2-trans-es
 install yast2-trans-ja

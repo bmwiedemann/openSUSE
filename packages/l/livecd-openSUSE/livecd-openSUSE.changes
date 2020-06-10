@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 10 10:06:51 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop yast2-trans-da from the Live images: we need a little bit of
+  space.
+
+-------------------------------------------------------------------
 Sat May  9 12:45:00 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - list-common: drop xf86-video-ast and -cirrus: obsoleted by

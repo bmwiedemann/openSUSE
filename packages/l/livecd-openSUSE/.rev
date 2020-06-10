@@ -868,4 +868,12 @@
     <comment>- list-common: drop xf86-video-ast and -cirrus: obsoleted by
   xorg-x11-server.</comment>
   </revision>
+  <revision rev="105" vrev="105">
+    <srcmd5>7ed1b8575ddf2b83ea6d4c67bc103c40</srcmd5>
+    <version>unknown</version>
+    <time>1591783650</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop yast2-trans-da from the Live images: we need a little bit of
+  space.</comment>
+  </revision>
 </revisionlist>
