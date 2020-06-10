@@ -876,4 +876,12 @@
     <comment>- Drop yast2-trans-da from the Live images: we need a little bit of
   space.</comment>
   </revision>
+  <revision rev="106" vrev="106">
+    <srcmd5>3869173d1c0d5a16db37e5a754767477</srcmd5>
+    <version>unknown</version>
+    <time>1591786281</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop yast2-trans-{cs,da,sv} from the Live images: we need a
+  little bit of space.</comment>
+  </revision>
 </revisionlist>
