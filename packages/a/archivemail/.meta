@@ -1,8 +1,0 @@
-<package name="archivemail" project="openSUSE:Factory">
-  <title>Tool for archiving and compressing old email in mailboxes</title>
-  <description>archivemail is a tool for archiving and compressing old email in mailboxes. It
-moves messages older than the specified number of days to a separate mbox
-format mailbox that is compressed with gzip. It can also just delete old email
-rather than archive it.</description>
-  <devel project="server:mail" package="archivemail"/>
-</package>
