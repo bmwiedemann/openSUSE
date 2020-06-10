@@ -3020,12 +3020,12 @@
     <package name="libyaml-0-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libyaml-cpp0_6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libyelp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libyui-ncurses-pkg11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libyui-ncurses11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libyui-qt-graph11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libyui-qt-pkg11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libyui-qt11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libyui11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libyui-ncurses-pkg12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libyui-ncurses12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libyui-qt-graph12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libyui-qt-pkg12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libyui-qt12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libyui12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libz1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libzapojit-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libzbar0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3555,8 +3555,6 @@
     <package name="perl-XML-Parser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-XML-SAX" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-XML-SAX-Base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="perl-XML-SAX-Expat" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="perl-XML-Simple" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-XML-Twig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-XML-Writer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="perl-YAML" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
@@ -4317,7 +4315,7 @@
     <package name="ruby2.7-rubygem-mimemagic" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-mini_magick" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-mini_mime" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-mini_portile2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-mini_portile2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ruby2.7-rubygem-mini_portile2-2_3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-minitar" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-mixlib-authentication" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4350,7 +4348,7 @@
     <package name="ruby2.7-rubygem-net-ssh-multi-1_1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-netrc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-nio4r" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-nokogiri" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-nokogiri" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ruby2.7-rubygem-nori" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-oauth" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-oauth2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5275,9 +5273,8 @@
     <package name="yast2-trans-da" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="yast2-trans-de" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="yast2-trans-el" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="yast2-trans-en" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="yast2-trans-en_GB" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="yast2-trans-en_US" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <!-- yast2-trans-en_US not found on i586,x86_64-->
     <package name="yast2-trans-es" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="yast2-trans-et" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-et -->
     <package name="yast2-trans-fa" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-fa -->
@@ -5361,7 +5358,7 @@
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nodejs10-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <!-- patterns-media-rest_dvd uninstallable: nothing provides pattern() = apparmor_opt needed by patterns-media-rest_dvd-20170319-23.3.i586-->
+    <!-- patterns-media-rest_dvd uninstallable: nothing provides yast2-trans-en_US needed by patterns-media-rest_dvd-20170319-23.3.i586-->
   </packagelist>
 </group>
 <group name="dvd.x86_64">
@@ -5574,7 +5571,7 @@
     <package name="pam_mount-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="pam_pwquality-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="pam_ssh-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <!-- patterns-media-rest_dvd uninstallable: nothing provides pattern() = apparmor_opt needed by patterns-media-rest_dvd-20170319-23.3.x86_64-->
+    <!-- patterns-media-rest_dvd uninstallable: nothing provides yast2-trans-en_US needed by patterns-media-rest_dvd-20170319-23.3.x86_64-->
     <package name="patterns-server-xen_server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="plasma-browser-integration" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="plasma-browser-integration-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

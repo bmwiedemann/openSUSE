@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
+  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -665,7 +665,6 @@ unsorted:
   - arc 
   - arc-icon-theme 
   - arcanist 
-  - archivemail 
   - archivemount 
   - argon2 
   - argon2-devel 
@@ -2624,7 +2623,7 @@ unsorted:
   - eb-devel 
   - eb-garamond-fonts 
   - eb-lang 
-  - ebiso 
+  - ebiso: [x86_64] 
   - ebizzy 
   - eblook 
   - ebook-tools 
@@ -5582,8 +5581,6 @@ unsorted:
   - howl 
   - hp-drive-guard 
   - hpack 
-  - hping 
-  - hping-doc 
   - hplip-devel 
   - hplip-scan-utils 
   - hppc 
@@ -7349,7 +7346,7 @@ unsorted:
   - leveldb-devel-static 
   - lha 
   - lhasa-devel 
-  - lib3270-5_2 
+  - lib3270-5_3 
   - lib3270-devel 
   - lib3ds-1-3 
   - lib3ds-devel 
@@ -10218,6 +10215,7 @@ unsorted:
   - liblightstep_tracer0 
   - liblilv-0-0-32bit: [x86_64] 
   - liblilv-0-devel 
+  - liblime0 
   - liblinbox0 
   - liblinebreak-devel 
   - liblinebreak2 
@@ -10833,11 +10831,9 @@ unsorted:
   - libopenmpi_1_10_7-gnu-hpc 
   - libopenmpi_2_1_6-gnu-hpc 
   - libopenmpi_3_1_6-gnu-hpc 
-  - libopenmpi_4_0_2-gnu-hpc 
+  - libopenmpi_4_0_3-gnu-hpc 
   - libopenmpt-devel 
   - libopenmpt0-32bit: [x86_64] 
-  - libopenmpt_modplug1 
-  - libopenmpt_modplug1-32bit: [x86_64] 
   - libopenobex2 
   - libopenraw-devel 
   - libopenraw1-32bit: [x86_64] 
@@ -11261,7 +11257,6 @@ unsorted:
   - libpurple-plugin-gnome-keyring 
   - libpurple-plugin-pack-extras 
   - libpurple-plugin-sametime 
-  - libpw3270-5_2 
   - libpwquality-devel 
   - libpwquality-tools 
   - libpythia8 
@@ -11967,6 +11962,12 @@ unsorted:
   - libsoc-common 
   - libsoc-devel 
   - libsoc2 
+  - libsoci_core4_0 
+  - libsoci_empty4_0 
+  - libsoci_mysql4_0 
+  - libsoci_odbc4_0 
+  - libsoci_postgresql4_0 
+  - libsoci_sqlite3-4_0 
   - libsocketcan-devel 
   - libsocketcan2 
   - libsocketxx1_2 
@@ -12452,7 +12453,7 @@ unsorted:
   - libuv-devel 
   - libuv1-32bit: [x86_64] 
   - libuwac0-0 
-  - libv3270-5_2 
+  - libv3270-5_3 
   - libv3270-devel 
   - libv4l-32bit: [x86_64] 
   - libv4l-devel 
@@ -12586,7 +12587,6 @@ unsorted:
   - libvpd2-32bit: [x86_64] 
   - libvpd2-devel 
   - libvpd2-devel-32bit: [x86_64] 
-  - libvpp0: [x86_64] 
   - libvpx-devel 
   - libvpx6-32bit: [x86_64] 
   - libvshadow-devel 
@@ -12691,56 +12691,71 @@ unsorted:
   - libwtdbopostgres4_2_2 
   - libwv-1_2-4 
   - libwv2-4 
+  - libwx_baseu-suse-nostl3_1_3 
   - libwx_baseu-suse3_0_4 
   - libwx_baseu-suse3_0_4-32bit: [x86_64] 
   - libwx_baseu-suse3_1_3 
+  - libwx_baseu_net-suse-nostl3_1_3 
   - libwx_baseu_net-suse3_0_4 
   - libwx_baseu_net-suse3_0_4-32bit: [x86_64] 
   - libwx_baseu_net-suse3_1_3 
+  - libwx_baseu_xml-suse-nostl3_1_3 
   - libwx_baseu_xml-suse3_0_4 
   - libwx_baseu_xml-suse3_0_4-32bit: [x86_64] 
   - libwx_baseu_xml-suse3_1_3 
+  - libwx_gtk2u_adv-suse-nostl3_1_3 
   - libwx_gtk2u_adv-suse3_0_4 
   - libwx_gtk2u_adv-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_adv-suse3_1_3 
   - libwx_gtk2u_aui-suse-nostl3_0_4 
+  - libwx_gtk2u_aui-suse-nostl3_1_3 
   - libwx_gtk2u_aui-suse3_0_4 
   - libwx_gtk2u_aui-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_aui-suse3_1_3 
+  - libwx_gtk2u_core-suse-nostl3_1_3 
   - libwx_gtk2u_core-suse3_0_4 
   - libwx_gtk2u_core-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_core-suse3_1_3 
   - libwx_gtk2u_gl-suse-nostl3_0_4 
+  - libwx_gtk2u_gl-suse-nostl3_1_3 
   - libwx_gtk2u_gl-suse3_0_4 
   - libwx_gtk2u_gl-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_gl-suse3_1_3 
+  - libwx_gtk2u_html-suse-nostl3_1_3 
   - libwx_gtk2u_html-suse3_0_4 
   - libwx_gtk2u_html-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_html-suse3_1_3 
   - libwx_gtk2u_media-suse-nostl3_0_4 
+  - libwx_gtk2u_media-suse-nostl3_1_3 
   - libwx_gtk2u_media-suse3_0_4 
   - libwx_gtk2u_media-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_media-suse3_1_3 
   - libwx_gtk2u_propgrid-suse-nostl3_0_4 
+  - libwx_gtk2u_propgrid-suse-nostl3_1_3 
   - libwx_gtk2u_propgrid-suse3_0_4 
   - libwx_gtk2u_propgrid-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_propgrid-suse3_1_3 
+  - libwx_gtk2u_qa-suse-nostl3_1_3 
   - libwx_gtk2u_qa-suse3_0_4 
   - libwx_gtk2u_qa-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_qa-suse3_1_3 
   - libwx_gtk2u_ribbon-suse-nostl3_0_4 
+  - libwx_gtk2u_ribbon-suse-nostl3_1_3 
   - libwx_gtk2u_ribbon-suse3_0_4 
   - libwx_gtk2u_ribbon-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_ribbon-suse3_1_3 
   - libwx_gtk2u_richtext-suse-nostl3_0_4 
+  - libwx_gtk2u_richtext-suse-nostl3_1_3 
   - libwx_gtk2u_richtext-suse3_0_4 
   - libwx_gtk2u_richtext-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_richtext-suse3_1_3 
   - libwx_gtk2u_stc-suse-nostl3_0_4 
+  - libwx_gtk2u_stc-suse-nostl3_1_3 
   - libwx_gtk2u_stc-suse3_0_4 
   - libwx_gtk2u_stc-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_stc-suse3_1_3 
   - libwx_gtk2u_xrc-suse-nostl3_0_4 
+  - libwx_gtk2u_xrc-suse-nostl3_1_3 
   - libwx_gtk2u_xrc-suse3_0_4 
   - libwx_gtk2u_xrc-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_xrc-suse3_1_3 
@@ -12968,7 +12983,7 @@ unsorted:
   - libyui-ncurses-pkg-devel 
   - libyui-ncurses-pkg-doc 
   - libyui-ncurses-rest-api-devel 
-  - libyui-ncurses-rest-api11 
+  - libyui-ncurses-rest-api12 
   - libyui-ncurses-tools 
   - libyui-qt-devel 
   - libyui-qt-doc 
@@ -12977,9 +12992,9 @@ unsorted:
   - libyui-qt-pkg-devel 
   - libyui-qt-pkg-doc 
   - libyui-qt-rest-api-devel 
-  - libyui-qt-rest-api11 
+  - libyui-qt-rest-api12 
   - libyui-rest-api-devel 
-  - libyui-rest-api11 
+  - libyui-rest-api12 
   - libz3-4_8 
   - libzapojit-devel 
   - libzbar-devel 
@@ -13080,6 +13095,7 @@ unsorted:
   - lilypond-emmentaler-fonts 
   - lilypond-fonts-common 
   - lilypond-texgy-fonts 
+  - lime-devel 
   - limesuite 
   - limesuite-devel 
   - limesuite-udev 
@@ -14000,6 +14016,7 @@ unsorted:
   - mhvtl 
   - mhvtl-kmp-pae: [i586] 
   - miao-fonts 
+  - microcom 
   - microdnf 
   - microos-tools: [i586] 
   - midori 
@@ -14784,7 +14801,6 @@ unsorted:
   - nanum-fonts 
   - nanum-gothic-coding-fonts 
   - nasc 
-  - nast 
   - native-maven-plugin 
   - native-platform 
   - native-platform-javadoc 
@@ -15658,6 +15674,7 @@ unsorted:
   - onboard 
   - onboard-data 
   - onboard-lang 
+  - onefetch 
   - oneko 
   - oniguruma-devel 
   - ooRexx 
@@ -15907,12 +15924,12 @@ unsorted:
   - openmpi_3_1_6-gnu-hpc-docs 
   - openmpi_3_1_6-gnu-hpc-macros-devel 
   - openmpi_3_1_6-gnu-hpc-testsuite 
-  - openmpi_4_0_2-gnu-hpc 
-  - openmpi_4_0_2-gnu-hpc-devel 
-  - openmpi_4_0_2-gnu-hpc-devel-static 
-  - openmpi_4_0_2-gnu-hpc-docs 
-  - openmpi_4_0_2-gnu-hpc-macros-devel 
-  - openmpi_4_0_2-gnu-hpc-testsuite 
+  - openmpi_4_0_3-gnu-hpc 
+  - openmpi_4_0_3-gnu-hpc-devel 
+  - openmpi_4_0_3-gnu-hpc-devel-static 
+  - openmpi_4_0_3-gnu-hpc-docs 
+  - openmpi_4_0_3-gnu-hpc-macros-devel 
+  - openmpi_4_0_3-gnu-hpc-testsuite 
   - openmpt123 
   - openmw 
   - opennlp 
@@ -17674,9 +17691,11 @@ unsorted:
   - perl-XML-Parser-Lite 
   - perl-XML-RSS 
   - perl-XML-RegExp 
+  - perl-XML-SAX-Expat 
   - perl-XML-SAX-ExpatXS 
   - perl-XML-SAX-Writer 
   - perl-XML-SemanticDiff 
+  - perl-XML-Simple 
   - perl-XML-SimpleObject-LibXML 
   - perl-XML-Stream 
   - perl-XML-Structured 
@@ -18439,7 +18458,6 @@ unsorted:
   - pv 
   - pw3270 
   - pw3270-branding 
-  - pw3270-devel 
   - pybugz-common 
   - pydf 
   - pyenv 
@@ -18671,9 +18689,7 @@ unsorted:
   - python2-moviepy 
   - python2-mraa: [i586] 
   - python2-opencensus-ext-threading 
-  - python2-osc-tiny 
   - python2-pip 
-  - python2-proliantutils 
   - python2-pycairo-common-devel 
   - python2-pycairo-devel 
   - python2-python-dotenv 
@@ -18924,6 +18940,7 @@ unsorted:
   - python3-aiobotocore 
   - python3-aiodns 
   - python3-aioeventlet 
+  - python3-aiofiles 
   - python3-aioftp 
   - python3-aiohttp 
   - python3-aiohttp-socks 
@@ -20299,6 +20316,7 @@ unsorted:
   - python3-nemo 
   - python3-neovim 
   - python3-neovim-remote 
+  - python3-nest-asyncio 
   - python3-net-snmp 
   - python3-netCDF4 
   - python3-netmiko 
@@ -20572,7 +20590,6 @@ unsorted:
   - python3-proglog 
   - python3-progress 
   - python3-progressbar2 
-  - python3-proliantutils 
   - python3-prometheus_client 
   - python3-promise 
   - python3-prompt_toolkit 
@@ -20582,6 +20599,7 @@ unsorted:
   - python3-pscript 
   - python3-psychtoolbox 
   - python3-psycopg2 
+  - python3-psycopg2cffi 
   - python3-ptpython 
   - python3-ptpython-ptipython 
   - python3-ptr 
@@ -24447,6 +24465,12 @@ unsorted:
   - soapysdr0.7-module-xtrx 
   - sobby 
   - socat: [i586] 
+  - soci-devel 
+  - soci-empty-devel 
+  - soci-mysql-devel 
+  - soci-odbc-devel 
+  - soci-postgresql-devel 
+  - soci-sqlite3-devel 
   - socket_wrapper 
   - sof-firmware 
   - sofia-sip 
@@ -24980,7 +25004,9 @@ unsorted:
   - termsyn-bitmap-fonts 
   - terraform: [x86_64] 
   - terraform-provider-aws 
+  - terraform-provider-null 
   - terraform-provider-openstack 
+  - terraform-provider-template 
   - terraform-provider-vsphere 
   - teseq 
   - tesla-polyglot 
@@ -33675,11 +33701,6 @@ unsorted:
   - votca-xtp-doc 
   - voxelands 
   - vpcs 
-  - vpp: [x86_64] 
-  - vpp-api-lua: [x86_64] 
-  - vpp-api-python: [x86_64] 
-  - vpp-devel: [x86_64] 
-  - vpp-plugins: [x86_64] 
   - vpx-tools 
   - vsqlite++-devel 
   - vst-lsp-plugins 
@@ -33705,6 +33726,7 @@ unsorted:
   - vtk-qt 
   - vtkdata 
   - vulkan-devel 
+  - vulkan-devel-32bit: [x86_64] 
   - vulkan-headers 
   - vulkan-tools 
   - vulkan-validationlayers 
@@ -33876,6 +33898,7 @@ unsorted:
   - wxWidgets-3_0-plugin-sound_sdlu-3_0 
   - wxWidgets-3_0-plugin-sound_sdlu-3_0-32bit: [x86_64] 
   - wxWidgets-3_2-devel 
+  - wxWidgets-3_2-nostl-devel 
   - wxWidgets-3_2-plugin-sound_sdlu-3_2 
   - wxWidgets-docs 
   - wxhexeditor 
