@@ -149,8 +149,8 @@
     <ignore name="make"/>
     <package name="aaa_base" replaces="netpbm"/>
     <ignore name="netpbm"/>
-    <package name="aaa_base" replaces="p7zip"/>
-    <ignore name="p7zip"/>
+    <package name="aaa_base" replaces="p7zip-full"/>
+    <ignore name="p7zip-full"/>
     <package name="aaa_base" replaces="busybox-static"/>
     <ignore name="busybox-static"/>
     <package name="aaa_base" replaces="inxi"/>

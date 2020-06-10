@@ -891,4 +891,11 @@
     <user>dimstar_suse</user>
     <comment>Revert to rev 104 - we're growing, not shrinking?</comment>
   </revision>
+  <revision rev="108" vrev="108">
+    <srcmd5>eee932cb59c893ec57c39d70010b913c</srcmd5>
+    <version>unknown</version>
+    <time>1591797069</time>
+    <user>dimstar_suse</user>
+    <comment>- Ignore p7zip-full instead of p7zip</comment>
+  </revision>
 </revisionlist>

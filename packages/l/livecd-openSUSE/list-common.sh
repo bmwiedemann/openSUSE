@@ -44,7 +44,7 @@ buildignore patterns-office-office_opt
 buildignore patterns-base-x11_opt
 buildignore make
 buildignore netpbm
-buildignore p7zip
+buildignore p7zip-full
 buildignore busybox-static
 buildignore inxi
 
