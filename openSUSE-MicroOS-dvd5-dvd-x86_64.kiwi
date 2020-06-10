@@ -1066,9 +1066,9 @@
       <repopackage name="libyajl2" arch="x86_64"/>
       <repopackage name="libyaml-0-2" arch="x86_64"/>
       <repopackage name="libyelp0" arch="x86_64"/>
-      <repopackage name="libyui-ncurses11" arch="x86_64"/>
-      <repopackage name="libyui-qt11" arch="x86_64"/>
-      <repopackage name="libyui11" arch="x86_64"/>
+      <repopackage name="libyui-ncurses12" arch="x86_64"/>
+      <repopackage name="libyui-qt12" arch="x86_64"/>
+      <repopackage name="libyui12" arch="x86_64"/>
       <repopackage name="libz1"/>
       <repopackage name="libzbar0" arch="x86_64"/>
       <repopackage name="libzck1" arch="x86_64"/>

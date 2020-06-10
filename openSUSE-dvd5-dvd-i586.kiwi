@@ -3028,12 +3028,12 @@
       <repopackage name="libyaml-0-2"/>
       <repopackage name="libyaml-cpp0_6"/>
       <repopackage name="libyelp0"/>
-      <repopackage name="libyui-ncurses-pkg11"/>
-      <repopackage name="libyui-ncurses11"/>
-      <repopackage name="libyui-qt-graph11"/>
-      <repopackage name="libyui-qt-pkg11"/>
-      <repopackage name="libyui-qt11"/>
-      <repopackage name="libyui11"/>
+      <repopackage name="libyui-ncurses-pkg12"/>
+      <repopackage name="libyui-ncurses12"/>
+      <repopackage name="libyui-qt-graph12"/>
+      <repopackage name="libyui-qt-pkg12"/>
+      <repopackage name="libyui-qt12"/>
+      <repopackage name="libyui12"/>
       <repopackage name="libz1"/>
       <repopackage name="libzapojit-0_0-0"/>
       <repopackage name="libzbar0"/>
@@ -3616,8 +3616,6 @@
       <repopackage name="perl-XML-Parser"/>
       <repopackage name="perl-XML-SAX"/>
       <repopackage name="perl-XML-SAX-Base"/>
-      <repopackage name="perl-XML-SAX-Expat"/>
-      <repopackage name="perl-XML-Simple"/>
       <repopackage name="perl-XML-Twig"/>
       <repopackage name="perl-XML-Writer"/>
       <repopackage name="perl-YAML"/>
@@ -5329,9 +5327,7 @@
       <repopackage name="yast2-trans-da"/>
       <repopackage name="yast2-trans-de"/>
       <repopackage name="yast2-trans-el"/>
-      <repopackage name="yast2-trans-en"/>
       <repopackage name="yast2-trans-en_GB"/>
-      <repopackage name="yast2-trans-en_US"/>
       <repopackage name="yast2-trans-es"/>
       <repopackage name="yast2-trans-et"/>
       <repopackage name="yast2-trans-fa"/>
