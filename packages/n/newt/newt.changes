@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 10 07:39:52 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Split doc build into separate spec file
+- As the example scripts are "pointless", just don't install them
+
+-------------------------------------------------------------------
 Thu Apr 23 08:18:18 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.52.21:

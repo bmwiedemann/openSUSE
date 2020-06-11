@@ -31,19 +31,11 @@ Source:         https://fedorahosted.org/releases/n/e/newt/%{name}-%{version}.ta
 Source2:        baselibs.conf
 Source10:       %{name}-rpmlintrc
 Patch0:         newt-0.52.20-implicit-pointer-decl.patch
-# needed for tutorial.pdf
-BuildRequires:  docbook-toys
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
 BuildRequires:  python3-devel
 BuildRequires:  slang-devel
-BuildRequires:  texlive-courier
-BuildRequires:  texlive-dvips
-BuildRequires:  texlive-ec
-BuildRequires:  texlive-helvetic
-BuildRequires:  texlive-jadetex
-BuildRequires:  texlive-times
 %if %{with python2}
 BuildRequires:  python-devel
 %endif
@@ -90,22 +82,6 @@ Newt is a development library for text mode user interfaces.
 Install newt-devel if you want to develop applications which depend on
 newt.
 
-%package doc
-Summary:        Tutorial for Nifty Erik's Windowing Toolkit
-# the examples need the main package:
-License:        LGPL-2.1-or-later
-Group:          Documentation/Howto
-Recommends:     %{name} = %{version}
-BuildArch:      noarch
-
-%description doc
-This package contains a tutorial about the Newt windowing toolkit.
-
-Newt is a programming library for color text-mode, widget-based user
-interfaces.  Newt can be used to add stacked windows, entry widgets,
-check boxes, radio buttons, labels, plain text fields, scrollbars,
-etc., to text mode user interfaces. Newt is based on the slang library.
-
 %package static
 # Please keep the static package as this is requested by another
 # vendor for his tool. It shouldn't be a problem to keep this
@@ -150,8 +126,7 @@ The python3-newt package contains the Python 3 bindings for the newt library
 providing a python API for creating text mode interfaces.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -160,7 +135,6 @@ providing a python API for creating text mode interfaces.
 %configure --without-tcl
 ## make depend
 make CPPFLAGS="%{optflags} -fPIC" %{?_smp_mflags} all
-#docbook2txt tutorial.sgml
 chmod 0644 peanuts.py popcorn.py
 
 %install
@@ -176,22 +150,6 @@ for lang in ast bal sr@latin wo; do
   rm -rf %{buildroot}%{_datadir}/locale/$lang
 done
 
-# prepare defaultdocdir with examples and scripts
-#
-install -d -m 755 %{buildroot}%{_defaultdocdir}/%{name}/examples
-# install COPYING file
-install -m 644 COPYING %{buildroot}%{_defaultdocdir}/%{name}/
-# install example scripts
-install -m 755 peanuts.py %{buildroot}%{_defaultdocdir}/%{name}/examples/
-install -m 755 popcorn.py %{buildroot}%{_defaultdocdir}/%{name}/examples/
-#
-# create tutorial.pdf documentation
-#
-install -m 644 tutorial.sgml %{buildroot}%{_defaultdocdir}/%{name}/
-pushd %{buildroot}%{_defaultdocdir}/%{name}/ 1>/dev/null
-db2pdf tutorial.sgml
-rm tutorial.{aux,log,out} CATALOG.* *.dsl
-popd 1>/dev/null
 %find_lang %{name}
 
 %if %{with python2}
@@ -201,20 +159,13 @@ popd 1>/dev/null
 %py3_compile %{buildroot}/%{python3_sitearch}
 %py3_compile -O %{buildroot}/%{python3_sitearch}
 %fdupes %{buildroot}/%{python3_sitearch}
-# pointless examples
-rm %{buildroot}%{_defaultdocdir}/%{name}/examples/*.py
 
 %post -n %{libsoname} -p /sbin/ldconfig
 %postun -n %{libsoname} -p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%dir %{_defaultdocdir}/%{name}
-%if 0%{?suse_version} >= 01500
-%license %{_defaultdocdir}/%{name}/COPYING
-%else
-%license %{_defaultdocdir}/%{name}/COPYING
-%endif
+%license COPYING
 %{_bindir}/whiptail
 %{_mandir}/man1/whiptail.1%{?ext_man}
 
@@ -227,10 +178,6 @@ rm %{buildroot}%{_defaultdocdir}/%{name}/examples/*.py
 %{_includedir}/%{name}.h
 %{_libdir}/%{libname}.so
 %{_libdir}/pkgconfig/*.pc
-
-%files doc
-%defattr(-,root,root)
-%doc %{_defaultdocdir}/%{name}/tutorial.*
 
 %files static
 %defattr(-,root,root)
