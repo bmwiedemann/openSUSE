@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 29 19:13:55 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 15.0.13:
+  * Preserve modification time of source files
+- Mark COPYING as %license on suse_version > 1500
+
+-------------------------------------------------------------------
 Sat Nov 16 05:45:43 UTC 2019 - jkowalczyk@suse.com
 
 - Update to version 15.0.12:
