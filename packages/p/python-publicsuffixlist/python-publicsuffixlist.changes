@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun  3 11:14:04 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 0.7.2:
+ * Fix PSL file timestamp offset caused by TZ.
+- Update to version 0.7.1:
+ * Update PSL.
+- Update to version 0.7.0:
+ * Drop Python 2.5 support.
+ * Use file context managers.
+- Update to version to 0.6.15:
+ * Update PSL.
+- Update to version 0.6.14:
+ * Use privatesuffix instead of its alias.
+ * Fix typo.
+
+-------------------------------------------------------------------
 Thu Mar 19 09:32:59 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.6.13

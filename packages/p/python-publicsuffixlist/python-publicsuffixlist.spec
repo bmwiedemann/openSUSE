@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-publicsuffixlist
-Version:        0.6.13
+Version:        0.7.2
 Release:        0
 Summary:        Public suffix list implementaion in Python
 License:        MPL-2.0
