@@ -1,7 +1,7 @@
 #
 # spec file for package python-ptyprocess
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,16 +23,12 @@ Release:        0
 Summary:        Run a subprocess in a pseudo terminal
 License:        ISC
 Group:          Development/Languages/Python
-Url:            https://github.com/pexpect/ptyprocess
+URL:            https://github.com/pexpect/ptyprocess
 Source:         https://files.pythonhosted.org/packages/source/p/ptyprocess/ptyprocess-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module nose}
-# /SECTION
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -56,7 +52,7 @@ If you need to automate these things, running the process in a pseudo terminal
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+%python_exec -m unittest discover
 
 %files %{python_files}
 %doc README.rst

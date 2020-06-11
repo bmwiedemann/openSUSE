@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  8 14:14:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- replace nose with unittest
+
+-------------------------------------------------------------------
 Tue Dec  4 12:51:47 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
