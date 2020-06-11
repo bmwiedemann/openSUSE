@@ -2,7 +2,7 @@
 # spec file for package lammps
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2017-2019 Christoph Junghans
+# Copyright (c) 2017-2020 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,15 +33,17 @@
 %endif
 
 Name:           lammps
-Version:        20200303
+Version:        20200505
 Release:        0
-%define         uversion stable_3Mar2020
+%define         uversion patch_5May2020
 Summary:        Molecular Dynamics Simulator
 License:        GPL-2.0-only AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Chemistry
 URL:            https://lammps.sandia.gov
 Source0:        https://github.com/lammps/lammps/archive/%{uversion}.tar.gz#/%{name}-%{uversion}.tar.gz
 Source1:        https://github.com/lammps/lammps-testing/archive/%{uversion}.tar.gz#/%{name}-testing-%{uversion}.tar.gz
+# PATCH-FIX-UPSTREAM disable_noopt.patch, gcc flags a false positive [gh#lammps/lammps#2078]
+Patch0:         disable_noopt.patch 
 BuildRequires:  %{mpiver}
 BuildRequires:  %{mpiver}-devel
 BuildRequires:  cmake
@@ -58,6 +60,10 @@ BuildRequires:  opencl-headers
 BuildRequires:  python-devel
 BuildRequires:  voro++-devel
 BuildRequires:  zlib-devel
+%ifnarch ppc64 %ix86
+%global         with_kokkos 1
+BuildRequires:  kokkos-devel >= 3.1
+%endif
 Requires:       %{name}-data
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -157,6 +163,12 @@ This subpackage contains LAMMPS's potential files
 
 %prep
 %setup -a 1 -q -n %{name}-%{uversion}
+%patch0 -p1
+# see [gh#lammps/lammps#2079], this is a bug in older version 
+# of the ocl package, compare [GCC#58241]
+%ifarch ppc64le
+sed -i '/CMAKE_CXX_EXTENSIONS/s/OFF/ON/' cmake/CMakeLists.txt
+%endif
 
 %build
 source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
@@ -164,8 +176,11 @@ source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
 %{cmake} \
   -C ../cmake/presets/all_on.cmake \
   -C ../cmake/presets/nolib.cmake \
+  -DCMAKE_Fortran_COMPILER="$(type -p gfortran)" \
   -DBUILD_TOOLS=ON \
-  -DBUILD_LIB=ON -DBUILD_MPI=ON -DPKG_PYTHON=ON \
+  -DBUILD_OMP=ON \
+  %{?with_kokkos:-DPKG_KOKKOS=ON -DEXTERNAL_KOKKOS=ON} \
+  -DBUILD_MPI=ON -DPKG_PYTHON=ON \
   -DPKG_KIM=ON -DENABLE_TESTING=ON -DPKG_VORONOI=ON \
   -DPKG_GPU=ON -DGPU_API=OpenCL -DFFT=FFTW3 \
   -DPYTHON_INSTDIR=%{python_sitearch} -DCMAKE_INSTALL_SYSCONFDIR=/etc \
@@ -173,19 +188,19 @@ source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
   -DPKG_USER-INTEL=OFF \
 %endif  
   -DLAMMPS_TESTING_SOURCE_DIR=$(echo $PWD/../lammps-testing-*) ../cmake
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
 
 %check
-LD_LIBRARY_PATH='%{buildroot}/%{_libdir}:%{_libdir}/mpi/gcc/%{mpiver}/%{_lib}' make -C build %{?_smp_mflags} test CTEST_OUTPUT_ON_FAILURE=1
+export LD_LIBRARY_PATH='%{buildroot}%{_libdir}:%{_libdir}/mpi/gcc/%{mpiver}/%{_lib}'
+%ctest
 
 %post -n liblammps0 -p /sbin/ldconfig
 %postun -n liblammps0 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc README
 %license LICENSE
 %{_bindir}/lmp
@@ -196,24 +211,19 @@ LD_LIBRARY_PATH='%{buildroot}/%{_libdir}:%{_libdir}/mpi/gcc/%{mpiver}/%{_lib}' m
 %{_bindir}/chain.x
 
 %files -n liblammps0
-%defattr(-,root,root,-)
 %{_libdir}/liblammps.so.*
 
 %files devel
-%defattr(-,root,root)
 %license LICENSE
 %{_includedir}/%{name}
 %{_libdir}/liblammps.so
 %{_libdir}/pkgconfig/liblammps.pc
-%dir %{_datadir}/cmake/Modules
-%{_datadir}/cmake/Modules/FindLAMMPS.cmake
+%{_libdir}/cmake/LAMMPS
 
 %files -n python-%{name}
-%defattr(-,root,root,-)
 %{python_sitearch}/%{name}.py
 
 %files data
-%defattr(-,root,root,-)
 %license LICENSE
 %{_datadir}/%{name}
 %config %{_sysconfdir}/profile.d/lammps.*
