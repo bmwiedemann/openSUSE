@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  3 10:56:35 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Disable Python 2 build because build dependencies do not resolve.
+
+-------------------------------------------------------------------
 Mon Apr 20 09:16:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not generate docu, fails with new sphinx and till now used

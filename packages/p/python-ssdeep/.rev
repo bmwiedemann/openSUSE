@@ -25,4 +25,12 @@
   py2 version for that</comment>
     <requestid>795733</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b200ffc62a79d9bb42a4c2c15acf4dad</srcmd5>
+    <version>3.4</version>
+    <time>1591862879</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>813196</requestid>
+  </revision>
 </revisionlist>
