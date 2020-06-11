@@ -536,4 +536,713 @@ _______________________________________________________________________________<
     <comment></comment>
     <requestid>794244</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>fb6362ec24a879e04e8d515070299c56</srcmd5>
+    <version>6.45</version>
+    <time>1591879416</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.45
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.45      2020-06-08 14:51:28Z
+      - Fix Client-Warning: Internal response sometimes reset (GH#341) (Jonathan
+        Dahan and Julien Fiegehenn)
+- updated to 6.44
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.44      2020-04-14 19:37:45Z
+      - Support basic authentication charset per RFC 7617 (GH#339) (Ville Skytt)
+      - Fixed POD mistake. (GH PR#338. Sebastian Paaske Tørholm)
+- updated to 6.43
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.43      2019-11-26 13:54:43Z
+      - Continue trying different Authentication challenge schemes if 
+        credentials are wrong (Roman Galeev, Julien Fiegehenn)
+- updated to 6.42
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.42      2019-11-20 17:40:52Z
+      - Add retry handling for a stale nonce with digest authentication (marmotil
+        and Frank Maas) (GH#40, GH#313, GH#321)
+      - Add the patch method to LWP::UserAgent. (GH#334) (Chase Whitener)
+      - Fix docs to match keep_alive =&gt; undef behavior, add some trivial tests
+        (GH#333) (Ville Skyttä)
+      - Documentation grammar fixes (GH#331) (Ville Skyttä)
+- updated to 6.41
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.41      2019-10-28 14:42:06Z
+      - Allow mirroring to files called '0' (GH#329) (Mark Fowler)
+- updated to 6.40
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.40      2019-10-24 12:55:45Z
+      - Let Digest authentication act on nonce expiry (GH#313) (Frank Maas)
+      - Make file arg for mirror mandatory #304 (GH#326) (Julien Fiegehenn)
+      - Doc fix: fields starting with &quot;:&quot; have to be quoted (GH#324) (Slaven
+        Rezić)
+      - Fix documentation for removing all handlers (GH#319) (leedo)
+      - Ensure proper version of Dist::Zilla::Plugin::MakeMaker::Awesome
+      - Add TravisCI testing for Perl v5.30
+      - Clean up .perltidyrc
+- updated to 6.39
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.39      2019-05-06 14:18:39Z
+      - Document current best practices (GH#314) (Olaf Alders)
+      - Document order in which handlers fire (GH#315) (Olaf Alders)
+      - SKIP nntp test for now (GH#317) (Olaf Alders)
+- updated to 6.38
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.38      2019-03-25 18:58:58Z
+      - Update Net::HTTP dependency from 6.07 to 6.18 (GH#310) (Olaf Alders)
+      - Remove s.c.o. from SYNOPSIS (GH#308) (Olaf Alders)
+- updated to 6.37
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.37      2019-03-06 20:49:26Z
+      - Improve -&gt;add_handler documentation (GH #272) (Julien Fiegehenn)
+      - Alter our rule set to allow IPv6 proxy hosts beginning with [. (GH #237)
+      - Add a jigsaw test for 307 redirects (GH#285) (Nik LaBelle)
+- updated to 6.36
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.36      2018-10-10 02:20:58Z
+      - fix broken link https://metacpan.org/pod/LWP::Simple by fixing pod
+        header (thanks for the report, traumschule!)
+- updated to 6.35
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.35      2018-07-16 04:48:54Z
+      - fix file descriptor leak in LWP::Protocol (introduced in version 6.17)
+        that occurs for perl versions earlier than 5.18. (GH #296)
+- updated to 6.34
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.34      2018-06-05 18:48:59Z
+      - timeout() documentation has more details about the response (thanks,
+        Andrew Grangaard!)
+      - HTTP::Status is now upgraded to 6.18 if 6.17 is installed (which had a
+        bug).
+- updated to 6.33
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.33      2018-02-27 03:51:36Z
+      - Fix send_te change from previous release, which was breaking
+        LWP::Parallel::UserAgent and Test::Override::UserAgent (GH #281) (Doug
+        Bell)
+- updated to 6.32
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.32      2018-02-20 19:39:20Z
+      - Suggest LWP::ConsoleLogger as an alternative to the deprecated LWP::Debug (GH#278) (Olaf Alders)
+      - add send_te configuration to disable sending the TE header (GH#126) (Doug Bell)
+      - Added a developer feature to the http.t tests. (GH#257) (colinnewell)
+- updated to 6.31
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.31      2017-12-11 01:55:53Z
+      - fix version numbering (RT#123841)
+- updated to 6.30
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.30      2017-12-07
+      - Use tr/// instead of s/// where appropriate (Ville Skyttä) (GH #265)
+      - Use parent -norequire instead of base to not look for external
+        dependencies (Fabian Zeindler) (GH #259)
+      - Fix run_handlers to allow assigning to the request / response (Gianni
+        Ceccarelli) (GH #274)
+- updated to 6.29
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.29      2017-11-06
+      - Fix some version numbers
+  
+  6.28      2017-11-06
+      - Remove last use of Geopt::Std (Sergey Remanov) (GH #267)
+      - Include unmatched connect error in status string (Patrik Lundin) (GH #269)
+      - Fix insecure open FILEHANDLE,EXPR (Takumi Akiyama) (GH #270)
+- updated to 6.27
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.27      2017-09-21
+      - Switch to Getopt::Long in lwp-download (GH #262)
+      - Fix lwp-request -C (GH #261)
+      - Hide LWP::Protocol::http::Socket, LWP::Protocol::http::SocketMethods and
+        LWP::Debug::TraceHTTP::Socket from PAUSE
+      - Add tests for the &quot;get&quot; &amp; &quot;head&quot; functions (GH #252)
+      - Update lwpcook.pod (GH #256)
+      - Handle undefined values in -&gt;credentials (GH #157)
+      - Fix lwp-mirror options checks.
+      - Update bin/ scripts to use $LWP::VERSION instead of -&gt;Version()
+      - Improve lwp-download --help (GH #262)
+- updated to 6.26
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.26      2017-04-12
+      - Perltidy all apps in the bin/ directory
+      - Make all apps in bin/ use strict and warnings (RT #92633)
+      - Fix bug tracker URL in metadata
+- updated to 6.25
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.25      2017-04-03
+      - Fix LWP::UserAgent docs for request and request_simple that pointed to
+        functions in LWP::Simple rather than LWP::UserAgent
+      - Moved the official bug tracker to GitHub rather than RT.
+- updated to 6.24
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.24      2017-03-14
+      - Document clone methods inability to clone cookie jars (RT #13542)
+      - It is now possible to set the proxy and no_proxy attributes from the
+        constructor of LWP::UserAgent. (GH #124)
+- updated to 6.23
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.23      2017-03-06
+      - Fix bug where Protocol::NNTP called undef on a variable before being done
+        using it. (GH PR #121)
+      - Ran perltidy on LWP::Protocol::NNTP
+      - Re-organized current documentation set.
+- updated to 6.22
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.22      2017-03-01
+      - Update Travis-CI to test on minimum versions of prereqs. (GH PR #109)
+      - Fix tests that depended on a newer version of HTTP::Message (GH PR #119)
+      - Update documentation to reflect behavior difference in -&gt;put() depending
+        on the version of HTTP::Message installed. (GH PR #120)
+- updated to 6.21
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.21      2017-02-21
+      - Ensure that LWP::Simple re-exports some HTTP::Status functions
+  
+  6.20      2017-02-21
+      - Converted to use Dist::Zilla
+      - Moved several tests to xt/author
+- updated to 6.19
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+- updated to 6.18
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+- updated to 6.15
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  Change history for libwww-perl
+- disable disable-ghttp.diff
+- updated to 6.13
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  2015-02-14  Release 6.13
+  
+  Karen Etheridge (1):
+      - fixed Makefile.PL compatibility with older ExtUtils::MakeMaker (from
+        release 6.12)
+  
+  _______________________________________________________________________________
+  2015-02-13  Release 6.12
+  
+  Karen Etheridge (1):
+      - fixed prereq declarations in release 6.11
+  
+  _______________________________________________________________________________
+  2015-02-13  Release 6.11
+  
+  Graham Knop (1):
+      - cleanup of the test running mechanism; allowing greater flexibility and
+        should also resolve RT#102083
+  
+  _______________________________________________________________________________
+  2015-02-12  Release 6.10
+  
+  Karen Etheridge (1):
+      - lower runtime prereqs recommendation on LWP::Protocol::https to suggests,
+        to work around a circular dependency in CPAN clients when the 'install
+        recommendations' option is enabled (RT#101732)
+  
+  _______________________________________________________________________________
+  2015-02-09  Release 6.09
+  
+  Steffen Ullrich (1):
+      - checks for EINTR now also check EWOULDBLOCK (they sometimes differ on
+        MSWin32)
+  
+  Daina Pettit (1):
+      - fixed pod syntax
+  
+  Jason A Fesler (2):
+      - Fixed checking the % character in address regex
+      - Improved regex for literal IPv6 addresses
+  
+  _______________________________________________________________________________
+  2014-07-24  Release 6.08
+  
+  Mike Schilli (1):
+        Requiring Net::HTTP 6.07 to fix IPv6 support 
+          (RT#75618 and https://github.com/libwww-perl/net-http/pull/10)
+  
+  Jason A Fesler (2):
+        When the hostname is an IPv6 literal, encapsulate it with [brackets] 
+          before calling Net::HTTP  [rt.cpan.org #29468]
+        Extra steps to make sure that the host address that has a &quot;:&quot; contains 
+          only characters appropriate for an IPv6 address.
+  
+  John Wittkoski (1):
+        Fix doc typo for cookie_jar
+  
+  _______________________________________________________________________________
+  2014-07-01  Release 6.07
+  
+  Mike Schilli (5):
+        Removed Data::Dump references in test suite and dependency in Makefile.PL
+        Added MANIFEST.SKIP to enable &quot;make manifest&quot;.
+        release script now checks for MacOS to avoid incompatible tarballs
+        Bumped version number to 6.07
+        Fixed gnu-incompatible tarball problem ([rt.cpan.org #94844])
+  
+  _______________________________________________________________________________
+  2014-04-16  Release 6.06
+  
+  Ville Skyttä (3):
+        Merge pull request #44 from dsteinbrunner/master
+        Spelling fixes.
+        Merge pull request #55 from oalders/master
+  
+  Karen Etheridge (2):
+        Merge pull request #38 from mbeijen/typo-sting
+        Merge pull request #43 from dsteinbrunner/master
+  
+  David Steinbrunner (2):
+        Spelling corrections
+  
+  Olaf Alders (1):
+        Typo fixes.
+  
+  Steffen Ullrich (1):
+        correct behavior for https_proxy,
+        e.g. don't send plain https:// requests to proxy, but instead establish
+        CONNECT tunnel and then send requests inside tunnel.
+        This change does together with a change in LWP::Protocol::https.
+        The change supports LWP::Protocol::https with the default
+        IO::Socket::SSL backend, but also with Net::SSL. Also:
+        - proxy authorization is supported (http://user:pass@host:port as proxy
+          URL, Net::SSL still needs special HTTPS_PROXY_* environemt variables,
+          as before)
+        - CONNECT request does not need to be the first request inside the
+          tunnel (not with Net::SSL)
+        - conn_cache is read and written inside request(), instead of writing in
+          request() and reading in _new_socket(). If a https tunnel is
+          established the cache_key no longer depends only on proxy host,port
+          but also on the tunnel endpoint
+        - CONNECT is a proxy request and must always use Proxy-Authorization,
+          not Authorization header
+  
+  turugina (1):
+        fix: auth-header of Digest auth did not conform to 
+        RFC 2617 when WWW-Authenticate has 'qop' parameter.
+  
+  Gisle Aas (1):
+        SSL libs might trigger ENOTTY on read
+  
+  Michiel Beijen (1):
+        Small typo.
+  
+  _______________________________________________________________________________
+- update to 6.05
+ Karen Etheridge (3):
+       Derive message from status code if it was not provided
+       fix typo in comment
+ 
+ Ville Skyttä (3):
+       Spelling fixes.
+       Spelling fix.
+ 
+ Gisle Aas (3):
+       Update repo URL
+       With Net::HTTP 6.04 we don't need our own can_read() and sysread override
+       $ENV{HTTP_PROXY} might override our test setup [RT#81381]
+ 
+ Vyacheslav Matyukhin (1):
+       fix github url in perldoc
+ 
+ Slaven Rezic (1):
+       * Pod is utf-8
+ 
+ Peter Rabbitson (1):
+       Match required perl in Makefile.PL
+ 
+ Tom Hukins (1):
+       Fix Github URLs
+ 
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+- update to 6.04
+Gisle Aas (4):
+      Typo fix; envirionment [RT#72386]
+      Implement $ua-&gt;is_online test
+      Add separate option to enable the live jigsaw tests
+      Merge pull request #10 from trcjr/master
+Theodore Robert Campbell Jr (3):
+      now with put and delete helpers
+      updated POD
+      unit tests for ua-&gt;put and ua-&gt;delete
+Peter Rabbitson (1):
+      These modules work with 5.8.1
+_______________________________________________________________________________
+- update to 6.03
+Ville Skyttä (7):
+      Link updates.
+      Attribute documentation wording improvements.
+      Don't parse robots.txt response content unless it's textual.
+      Decode robots.txt response content before attempting to parse it.
+      RobotUA robots.txt response parsing cleanups.
+      Don't parse HEAD of robots.txt responses.
+      Request handler doc grammar fixes.
+Gisle Aas (6):
+      Pass on HTTP/1.0 if set as request protocol
+      Remove outdated docs (not touched since 1996 :-)
+      Merge pull request #22 from madsen/RT67947-verify_hostname
+      PERL_LWP_ENV_PROXY tweaks
+      lwp-request didn't respect -H Content-type [RT#70488]
+      lwp-request -H didn't allow repeated headers
+Christopher J. Madsen (2):
+      verify_hostname defaults to 0 if ssl_opts provided [RT#67947]
+      Test verify_hostname setting
+Bryan Cardillo (1):
+      Fix expect header support to work with content refs.
+Moritz Onken (1):
+      add PERL_LWP_ENV_PROXY env variable to enable env_proxy globally
+_______________________________________________________________________________
+- moved system CA patch to package perl-LWP-Protocol-https
+- update to 6.02
+This is the release where we try to help the CPAN-toolchain be able to install
+the modules required for https-support in LWP.  We have done this by unbundling
+the LWP::Protocol::https module from the libwww-perl distribution.  In order to
+have https support you now need to install (or depend on) 'LWP::Protocol::https'
+and then this will make sure that all the prerequsite modules comes along.
+See [RT#66838].
+This release also removes the old http10 modules that has really been
+deprecated since v5.60.  These should have been removed at the v6.00 jump, but
+I forgot.
+Christopher J. Madsen (1):
+      Ignores env variables when ssl_opts provided [RT#66663]
+Gisle Aas (4):
+      Fix typo; Authen::NTLM [RT#66884]
+Yury Zavarin (1):
+      Support LWP::ConnCache-&gt;new(total_capacity =&gt; undef)
+- use system CAs in /etc/ssl/certs
+- fix deps
+  o add several missing deps
+- upgrade to 6.01 
+  Unbundled all modules not in the LWP:: namespace from the libwww-perl
+  distribution.  The new broken out CPAN distribtions are File-Listing,
+  HTML-Form, HTTP-Cookies, HTTP-Daemon, HTTP-Date, HTTP-Message, HTTP-Negotiate,
+  Net-HTTP, and WWW-RobotRules.  libwww-perl-6 require these to be installed.
+  This release also drops the unmaintained lwp-rget script from the distribution.
+  Perl v5.8.8 or better is now required.
+  Support internationalized URLs from command line scripts and in the proxy
+  environment variables.
+  The lwp-dump script got new --request option.
+  The lwp-request script got new -E option, contributed by Tony Finch.
+  Protocol handlers and callbacks can raise HTTP::Response objects as exceptions.
+  This will abort the current request and make LWP return the raised response.
+- disable HTTP:GHTTP and ran spec-cleaner
+- switch to perl_requires macro
+- update to 5.837
+ * Fix for Encode 2.40
+ * Fix Perl syntax error in synopsis
+ * Allow ISO 8601 date strings when parsing Apache file listings
+- fix deps
+  o added missing IO::{Unc,C}ompress::* stuff
+- update to 5.836
+Gisle Aas (1):
+  * Fix problem where $resp-&gt;base would downcase its return value
+- 2010-05-05  Release 5.835
+  * simple string can be simplified
+  * Make $mess-&gt;decoded_content remove XML encoding declarations [RT#52572]
+  * Don't allow saving to filenames starting with '.' suggested by server
+  * Avoid race between testing for existence of output file and opening the file
+  * Minor doc fixup -- wrongly ucfirsted word
+  * Use decoded_content in HTTP:Response synopsis [RT#54139]
+  * sun.com is no more. rip!
+  * Trivial layout tweak to reduce variable scope.
+  * Add 'make test_hudson' target
+  * Implement alt_charset parameter for decoded_content()
+  * Test decoding with different charset parameters
+  * lwp-download now needs the -s option to honor the Content-Disposition header
+  * Make LWP::MediaTypes::media_suffix case insensitive.
+  * Skip XML decoding tests if XML::Simple is not available.
+  * Documentation fixes.
+  * Fix m_media_type =&gt; &quot;xhtml&quot; matching.
+  * Make parse_head() apply to data: requests.
+  * Documentation spelling fixes.
+  * Documentation grammar fixes.
+  * Use $uri-&gt;secure in m_secure if available.
+  * Fix handling of multiple (same) base headers, and parameters in them.
+  * Strip out empty lines separated by CRLF
+  * Best Practice: avoid indirect object notation
+  * Speed up as_string by 4% by having _sorted_field_names return a reference
+  * Speed up scan() a bit. as_string() from this branch is now 6% faster
+  * Port over as_string() optimizations from HTTP::Headers::Fast
+  * Link to referenced documentation.
+  * Update repository location.
+  * Remove needless (and actually harmful) local $_
+  * &quot;Perl &amp; LWP&quot; is available online
+- recreated by cpanspec 1.78
+- noarch
+- removed obsolete patch (Content-Disposition)
+- fixed filename vulnerability in lwp-download (bnc#606321) 
+- update to 5.834
+ * Check for sane default_headers argument [RT#50393]
+ * Add $ua-&gt;local_address attribute [RT#40912]
+ * Test that generation of boundary works [RT#49396]
+ * Page does not display the &quot;standard&quot; apache listing any more
+ * Remove unneeded executable permissions.
+ * Switch compression/decompression to use the IO::Compress/IO::Uncompress and
+ *     Compress::Raw::Zlib family of modules.
+ * lwp-request should use stderr for auth [RT#21620]
+ * Deal with cookies that expire far into the future [RT#50147]
+ * Deal with cookies that expire at or before epoch [RT#49467]
+ * Pass separate type for https to LWP::ConnCache [RT#48899]
+ * Improved handling of the User-Agent header [RT#48461]
+ * HTTP::Cookies add_cookie_header previous Cookies [RT#46106]
+ * Improve diagnostics from LWP::UserAgent::mirror [RT#48869]
+ * mirror should die in case X-Died is set [RT#48236]
+ * Increase default Net::HTTP max line length to 8k.
+ * Fix net test suite.
+ * Comment spelling fixes.
+ * Fix links to old Netscape cookie specification.
+ * Documentation spelling fixes.
+ * Improve max line length exceeded/read error messages.
+ * Do not warn about seemingly wellformed but unrecognized robots.txt lines.
+ * $mess-&gt;content_charset would fail for empty content
+ * Further restrict what variables env_proxy() process
+ * Fix bzip2 content encoding/decoding.
+ * send_te() doc grammar fix.
+ * Document time2str() behavior with an undefined argument.
+ * HTML::Message's content_charset trigger warnings from HTML::Parser [RT#48621]
+- update to 5.830
+ * This release removes callback handlers that were left over on 
+   the returned HTTP::Responses. This was problematic because it 
+   created reference loops preventing the Perl garbage collector 
+   from releasing their memory. Another problem was that Storable 
+   by default would not serialize these objects any more.
+ * This release also adds support for locating HTML::Form inputs by id
+   or class attribute; for instance $form-&gt;value(&quot;#foo&quot;, 42) will set 
+   the value on the input with the ID of &quot;foo&quot;.
+ * bugfixes
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+- update to 5.828
+  * Less noisy behaviour when we can't download the documents
+  * Restore perl-5.6 compatiblity [RT#47054]
+  * Don't decode US-ASCII and ISO-8859-1 content
+  * Some versions of Encode don't support UTF-16-BE [RT#47152]
+  * Spelling fixes.
+- update to 5.827
+  * Added lwp-dump script
+  * Replace calls to $req-&gt;url with $req-&gt;uri
+  * Also need to encode strings in the latin1 range
+  * Ignore the value set for file inputs [RT#46911]
+  * Add docs to lwp-dump
+  * Don't let lwp-dump follow redirects
+  * Support --method options
+  * Implement the --agent option
+  * Dictionary order for the option docs; document --method
+  * Merge branch 'dump'
+  * Files are passed as an array and we must not stringify it.
+  * Add content_charset method to HTTP::Message
+  * Start guessing the charset for a message
+  * Let content_charset guess the charset to use for decoded_content
+  * Specify what's missing for the XML and HTML case
+  * Provide charset parameter for HTML::Form-&gt;parse()
+  * Make content_charset sniff for &lt;meta&gt; elements specifying the charset.
+  * Determine charset of XML documents
+  * Get rid of the _trivial_http_get() implementation
+  * Update the bundled media.types file
+  * LWP::Simple::get() now returns decoded_content [RT#44435]
+  * Implement content_type_charset method for HTTP::Headers
+  * Implement content_is_text method for HTTP::Headers
+  * Make use of content_is_text and content_type_charset in decoded_content
+  * Don't let the parse_head callback append to the HTTP headers
+  * Don't set Range header on request when max_size is used [RT#17208]
+  * Still show client headers for internal responses
+  * Document Client-Warning: Internal response
+  * Don't use 'no' as example domain for no_proxy docs [RT#43728]
+  * Drop exit from the Makefile.PL [RT#43060]
+  * Merge branch 'content_charset'
+  * Support &quot;accept-charset&quot; attribute in HTML::Form
+  * new tests for max_size and 206 responses [RT#46230]
+  * Reformulation of Client-Warning: Internal documentation
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+- spec mods
+  o fixed deps
+- update to 5.826
+ * Avoid returning stale Content-Type header after message parts
+   have been updated
+ * Don't let content saved to file be affected by the $\ setting
+ * Issues around multipart boundaries
+ * Ignore random _proxy env variables, allow only valid schemes
+ * README.SSL is not anymore available at the linpro.no URL.
+ * Make LWP::UserAgent constructor honor the default_headers
+   option
+- update to 5.825 
+ * Fixup test failure with perl-5.8.8 and older; qr/$/m doesn't work
+ * Make format_request() ensure that it returns bytes [RT#42396]
+ * Force bytes in all the format_* methods.
+ * Ignore Sitemap: lines in robots.txt [RT#42420]
+ * Refactor; use variable to hold the test port
+ * Add redirects method to HTTP::Message
+ * Setting $ua-&gt;max_redirect(0) didn't work [RT#40260]
+ * Convert files to UTF-8
+ * HTTP::Cookies destructor should not clobber $! and other globals.
+ * Deal with the Encode module distributed with perl-5.8.0
+ * Avoid failure if 127.0.0.1:8333 is in use [RT#42866]
+ * Documentation improvements, spelling fixes.
+- update to 5.823
+ * Bring back the LWP::Debug code
+ * Add documentation section about 'Network traffic monitoring'.
+ * Typo fixes
+ * Want to ensure we get a single value back here.
+- update to 5.822
+      Various bug fixes
+      Should store &quot;wire&quot; headers field names with _ without translation.
+      Test HTTP::Request-&gt;parse().
+      Rename the HTTP::Status constants to have HTTP_ prefix
+      Add strict mode to HTML::Form
+      Add content_is_xml method
+      Make split_header_words() lower case returned tokens/keys
+      Add decode() method to HTTP::Message
+      Add encode() method to HTTP::Message
+      Allow multiple fields to be set with push_header().
+      Faster push_header()
+      Add dump method to HTTP::Message.
+      Add support for x-bzip2 encoding; fix bzip2 decoding.
+      Add send_header method to HTTP::Daemon
+      Make the lwp-request User-Agent string include the LWP version.
+      Calculation of current_age with missing Client-Date.
+      More correct matching of 'max-age' in freshness_lifetime method
+      The freshness_lifetime method now support options to control its heuristics
+      The Content-Length and Content-MD5 headers are no longer valid after encode/decode
+      Skip LWP test when fork() is unimplemented
+      A more modern user_agent example.
+      Make it possible to unset the proxy settings again
+      Deprecate LWP::Debug
+- fix https losing characters (bnc#445601,
+  http://rt.cpan.org/Public/Bug/Display.html?id=40187)
+- update to 5.816
+ * Add missing binmode()
+ * Doc tweaks
+ * We don't need to build the docs to run the tests.
+ * Style tweaks.
+ * The jigsaw service isn't up to much good these days.
+ * HTTP::Cookies produces warnings for undefined cookie param names
+ * Typo fix; HTTP::Message will never include x-bzip2 in
+   Accept-Encoding
+ * Added HTTP::Config module
+ * Add methods to configure processing handlers.
+ * 100 Continue response not complete.
+ * Use 3-arg open when response content to files.
+ * Make the show_progress attribute official (by documenting it).
+ * Start using handlers for driving the inner logic of LWP::UserAgent.
+ * Expose the content_is_html and content_is_xhtml methods
+   from HTTP::Headers.
+ * Make credentials method able to get/set values.
+ * An auth handler per realm.
+ * Match proxy setting for request.
+ * Set up separate handler for adding proxy authentication.
+ * Add request_preprepare to be able to initialize proxy early enough.
+ * Smarter get_my_handler() that can also create handlers.
+ * Refactor; introduce run_handlers method
+ * Pass in handler hash to the handler callback.
+ * Don't let version=1 override behaviour if specified with a plan
+   Set-Cookie header.
+ * Remove handler when we don't have a username/password for the realm.
+ * Make tests use Test.pm
+ * Double-check that username or password has changed after
+   a failed login.
+ * Update Digest Authen to subclass Basic.
+ * Avoid running out of filehandles with DYNAMIC_FILE_UPLOAD.
+ * Fixed parsing of header values starting with ':'
+ * Documentation typo fixes
+- update to 5.814
+ * Typo fix.
+ * Add HTTP::Message::decodable()
+ * Use decoded_content in the synposis
+ * Avoid adding an empty first part in $mess-&gt;add_part()
+ * Get rid of all the manual dependency tests.
+ * Simplify the Makefile.PL (no interactivity)
+ * Provide DELETE method in HTTP::Request::Common
+ * Checkbox picks up nearby text in description of alternates
+ * HTML::Form::possible_values() should not returned disabled values
+ * File::Listing documentation claimed only 'unix' format was supported
+ * File::Listing only support English locales
+ * Make common-req.t use Test.pm
+ * Typo; CAN_TALK_TO_OUTSELF
+ * Fix up File::Listings fallback to dosftp
+ * File::Listing parse failure on BSD Linux based systems
+- update to 5.813
+ * RobotUA constructor ignores delay, use_sleep
+ * Add HTTP::Response-&gt;filename
+ * Better diagnostics when the HTML::TokeParser constructor fails
+ * Multiple forms with same-named &lt;select&gt; parse wrongly
+ * Simplified Net::HTTP::Methods constructor call.
+ * Croak if Net::HTTP constructor called with no argument.
+ * Avoid calling $self-&gt;peerport to figure out what the port is.
+ * Wrong treatment of qop value in Digest Authentication
+ * Avoid &quot;used only once&quot; warning for $Config::Config.
+ * Make HTTP::Request::Common::PUT set Content-Length header
+ * Added the add_content_utf8 method to HTTP::Message.
+ * Retry syscalls when they fail with EINTR or EAGAIN
+ * Allow HTTP::Content content that can be downgraded to bytes.
+ * HTML::Form does not recognise multiple select items with same 
+   name
+ * Document how HTTP::Status codes correspond to the classification 
+   functions
+ * Allow 100, 204, 304 responses to have content
+ * HTTP::Request::Common::POST suppressed filename=&quot;0&quot; in 
+   Content-Disposition
+- update to 5.810
+ * Small documentation issues
+ * Explain $netloc argument to $ua-&gt;credentials
+ * Make lwp-request honour option -b while dumping links
+ * Ignore params for date convenience methods
+ * Get rid of all the old CVS $Keyword:...$ templates.
+   Set $VERSION to 5.810.
+ * Complement the HTTP::Status codes
+ * Don't allow HTTP::Message content to be set to Unicode strings.
+ * Refactor test for Encode.pm
+ * Trigger HTML::HeadParser for XHTML
+ * Escape status line in error_as_HTML, convert to lowercase
+ * Protocol/file.pm: postpone load of URI::Escape and HTML::Entities
+ * HTML::Form Module and &lt;button&gt; element clicks
+ * HTTP::Cookies handle malformed empty Set-Cookie badly
+ * [HTTP::Request::Common] Does not handle filenames containing &quot;
+ * Allow malformed chars in $mess-&gt;decoded_content
+ * Croak if LWP::UserAgent is constructed with hash ref as argument
+ * Disabled, checked radiobutton being submitted
+ * warn if TextInput's maxlength exceeded
+- update to 5.808 
+  *  Get rid of t/live/validator test.  Too much JavaScript madness
+     for it to be a sane LWP test.
+  * bugfixes
+- update to 5.806 
+ * Added progress callback to LWP::UserAgent.
+ * Add support for HTTP Expect header to HTTP::Daemon 
+ * Fix t/base/message.t so tests are skipped if Encode is not
+   installed.
+ * Add HTML::Tagset as a prerequisite to Makefile.PL
+ * bugfixes
+- add perl-Crypt-SSLeay to Recommends (#211537) 
+- converted neededforbuild to BuildRequires
+- update to 5.805 
+- update top 5.803
+update to 5.76
+- update to 5.73
+- require the perl version we build with
+- adapt to perl-5.8.1
+- use %perl_process_packlist
+- fix filelist
+- update to 5.69
+- don't package MANIFEST
+- remove perllocal.pod 
+- Fixed neededforbuild for perl-5.8.0
+- update to version 5.65
+- enabled make test
+- remove race in .packlist generation
+- fixed needeforbuild, disabled make test
+- update to version 5.63
+- update to version 5.53
+- on ia64 removed tests which starts and then connect
+  server
+- added make test
+- update to version 5.50
+- renamed perl_lw3 -&gt; perl-libwww-perl
+- updated to version 5.48
+- bzipped sources
+- adapted for perl-5.6
+- fixed bug with sort
+-  fixed requires and neededforbuild 
+- package created 
+</comment>
+    <requestid>813192</requestid>
+  </revision>
 </revisionlist>

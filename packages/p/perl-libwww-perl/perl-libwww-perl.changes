@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  9 03:17:25 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.45
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.45      2020-06-08 14:51:28Z
+      - Fix Client-Warning: Internal response sometimes reset (GH#341) (Jonathan
+        Dahan and Julien Fiegehenn)
+
+-------------------------------------------------------------------
 Wed Apr 15 03:14:14 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 6.44
@@ -1052,4 +1062,3 @@ Mon Jun 19 16:05:19 CEST 2000 - ro@suse.de
 Mon Jun 19 14:42:28 CEST 2000 - cihlar@suse.cz
 
 - package created 
-
