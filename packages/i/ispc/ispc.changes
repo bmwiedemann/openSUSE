@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Sun Apr 26 17:36:00 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Use lto option "thin"
+
+-------------------------------------------------------------------
+Sun Apr 26 10:25:02 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Switch to full llvm compilation (remove gcc enforcement)
+
+-------------------------------------------------------------------
+Sat Apr 25 16:42:59 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix llvm version dependency tweaking
+- Exclude %{ix86} for now
+
+-------------------------------------------------------------------
+Sat Apr 25 15:43:20 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Clarify cmake dependency
+
+-------------------------------------------------------------------
+Fri Apr 24 15:40:01 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Version 1.13.0: initial release
+- Add patch 0001-Link-against-libclang-cpp.so.patch 
+- Add patch 0002-fix-compiler-flags.patch
+- Conditional to build with older clang as well
