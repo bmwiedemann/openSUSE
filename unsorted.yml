@@ -1813,6 +1813,18 @@ unsorted:
   - cobbler-web 
   - coccigrep 
   - coccinelle 
+  - cockpit 
+  - cockpit-bridge 
+  - cockpit-dashboard 
+  - cockpit-doc 
+  - cockpit-kdump 
+  - cockpit-networkmanager 
+  - cockpit-packagekit 
+  - cockpit-pcp 
+  - cockpit-storaged 
+  - cockpit-system 
+  - cockpit-tests 
+  - cockpit-ws 
   - codec2 
   - codec2-devel 
   - codec2-examples 
@@ -2169,6 +2181,7 @@ unsorted:
   - cryptctl: [x86_64] 
   - crystalhd-firmware 
   - cscope 
+  - cscreen 
   - csindex 
   - csmith 
   - csound 
@@ -3688,7 +3701,6 @@ unsorted:
   - geda-gsymcheck 
   - geda-symbols 
   - geda-utils 
-  - geda-xgsch2pcb 
   - geda-xorn 
   - gedit-devel 
   - gedit-latex-lang 
@@ -8521,7 +8533,6 @@ unsorted:
   - libcblas3 
   - libcblas3-32bit: [x86_64] 
   - libcbor-devel 
-  - libcbor0_7 
   - libccrtp3 
   - libcdata-devel 
   - libcdata1 
@@ -9158,7 +9169,6 @@ unsorted:
   - libfftw3_threads3-32bit: [x86_64] 
   - libfguid-devel 
   - libfguid1 
-  - libfido2-1 
   - libfido2-devel 
   - libfido2-utils 
   - libfife0_4_2 
@@ -9459,6 +9469,9 @@ unsorted:
   - libgnomecanvas-lang 
   - libgnomekbd-devel 
   - libgnomesu-devel 
+  - libgnt-devel 
+  - libgnt0 
+  - libgnt0-32bit: [x86_64] 
   - libgnuastro9 
   - libgnuradio-3_8_1 
   - libgnuradio-fcdproplus-devel 
@@ -9829,7 +9842,6 @@ unsorted:
   - libhfstospell11 
   - libhfstospell11-32bit: [x86_64] 
   - libhidapi-devel 
-  - libhidapi-hidraw0 
   - libhidapi-libusb0 
   - libhinawa-devel 
   - libhinawa1 
@@ -10316,9 +10328,9 @@ unsorted:
   - liblz4-devel 
   - liblzo2-2-32bit: [x86_64] 
   - libm17n0-32bit: [x86_64] 
-  - libm4ri-0_0_20140914 
+  - libm4ri-0_0_20200125 
   - libm4ri-devel 
-  - libm4rie-0_0_20150908 
+  - libm4rie-0_0_20200125 
   - libm4rie-devel 
   - libmaa-devel 
   - libmaa-doc 
@@ -10833,7 +10845,9 @@ unsorted:
   - libopenmpi_3_1_6-gnu-hpc 
   - libopenmpi_4_0_3-gnu-hpc 
   - libopenmpt-devel 
+  - libopenmpt-modplug-devel 
   - libopenmpt0-32bit: [x86_64] 
+  - libopenmpt_modplug1 
   - libopenobex2 
   - libopenraw-devel 
   - libopenraw1-32bit: [x86_64] 
@@ -12397,9 +12411,6 @@ unsorted:
   - libunistring-devel 
   - libunistring-devel-32bit: [x86_64] 
   - libunity-devel 
-  - libunity-gtk-parser-devel 
-  - libunity-gtk2-parser0-32bit: [x86_64] 
-  - libunity-gtk3-parser0-32bit: [x86_64] 
   - libunity-tools 
   - libunity9 
   - libunity9-32bit: [x86_64] 
@@ -13079,7 +13090,6 @@ unsorted:
   - lighttpd-mod_vhostdb_mysql 
   - lighttpd-mod_vhostdb_pgsql 
   - lighttpd-mod_webdav 
-  - lilo 
   - lilv 
   - lilypond 
   - lilypond-doc 
@@ -13523,8 +13533,6 @@ unsorted:
   - maildir-utils 
   - mailgraph 
   - mailimporter-devel 
-  - mailnag 
-  - mailnag-lang 
   - mailprocessing 
   - mailutils-devel 
   - mailutils-imap4d 
@@ -14606,21 +14614,21 @@ unsorted:
   - mvapich2-psm2-gnu-hpc-devel: [x86_64] 
   - mvapich2-psm2-gnu-hpc-doc: [x86_64] 
   - mvapich2-psm2-gnu-hpc-macros-devel: [x86_64] 
-  - mvapich2-psm2_2_3_3-gnu-hpc: [x86_64] 
-  - mvapich2-psm2_2_3_3-gnu-hpc-devel: [x86_64] 
-  - mvapich2-psm2_2_3_3-gnu-hpc-devel-static: [x86_64] 
-  - mvapich2-psm2_2_3_3-gnu-hpc-doc: [x86_64] 
-  - mvapich2-psm2_2_3_3-gnu-hpc-macros-devel: [x86_64] 
-  - mvapich2-psm_2_3_3-gnu-hpc 
-  - mvapich2-psm_2_3_3-gnu-hpc-devel 
-  - mvapich2-psm_2_3_3-gnu-hpc-devel-static 
-  - mvapich2-psm_2_3_3-gnu-hpc-doc 
-  - mvapich2-psm_2_3_3-gnu-hpc-macros-devel 
-  - mvapich2_2_3_3-gnu-hpc 
-  - mvapich2_2_3_3-gnu-hpc-devel 
-  - mvapich2_2_3_3-gnu-hpc-devel-static 
-  - mvapich2_2_3_3-gnu-hpc-doc 
-  - mvapich2_2_3_3-gnu-hpc-macros-devel 
+  - mvapich2-psm2_2_3_4-gnu-hpc: [x86_64] 
+  - mvapich2-psm2_2_3_4-gnu-hpc-devel: [x86_64] 
+  - mvapich2-psm2_2_3_4-gnu-hpc-devel-static: [x86_64] 
+  - mvapich2-psm2_2_3_4-gnu-hpc-doc: [x86_64] 
+  - mvapich2-psm2_2_3_4-gnu-hpc-macros-devel: [x86_64] 
+  - mvapich2-psm_2_3_4-gnu-hpc 
+  - mvapich2-psm_2_3_4-gnu-hpc-devel 
+  - mvapich2-psm_2_3_4-gnu-hpc-devel-static 
+  - mvapich2-psm_2_3_4-gnu-hpc-doc 
+  - mvapich2-psm_2_3_4-gnu-hpc-macros-devel 
+  - mvapich2_2_3_4-gnu-hpc 
+  - mvapich2_2_3_4-gnu-hpc-devel 
+  - mvapich2_2_3_4-gnu-hpc-devel-static 
+  - mvapich2_2_3_4-gnu-hpc-doc 
+  - mvapich2_2_3_4-gnu-hpc-macros-devel 
   - mwic 
   - mx4j 
   - mxml-devel 
@@ -18176,26 +18184,17 @@ unsorted:
   - postgresql11-test 
   - postgresql11-timescaledb 
   - postgresql12-devel 
+  - postgresql12-devel-mini 
   - postgresql12-docs 
   - postgresql12-pg_cron 
   - postgresql12-pg_cron-llvmjit 
   - postgresql12-plperl 
   - postgresql12-plpython 
+  - postgresql12-plr 
+  - postgresql12-plr-doc 
   - postgresql12-pltcl 
   - postgresql12-server-devel 
   - postgresql12-test 
-  - postgresql94 
-  - postgresql94-contrib 
-  - postgresql94-devel 
-  - postgresql94-docs 
-  - postgresql94-pgagent 
-  - postgresql94-plperl 
-  - postgresql94-plpython 
-  - postgresql94-plr 
-  - postgresql94-plr-doc 
-  - postgresql94-pltcl 
-  - postgresql94-server 
-  - postgresql94-test 
   - postgresql95 
   - postgresql95-contrib 
   - postgresql95-devel 
@@ -20443,7 +20442,6 @@ unsorted:
   - python3-oslo.utils 
   - python3-oslo.versionedobjects 
   - python3-oslo.vmware 
-  - python3-oslosphinx 
   - python3-oslotest 
   - python3-osmviz 
   - python3-osprofiler 
@@ -20493,6 +20491,7 @@ unsorted:
   - python3-pathspec 
   - python3-pathtools 
   - python3-pathvalidate 
+  - python3-patiencediff 
   - python3-patsy 
   - python3-pbkdf2 
   - python3-pcp 
@@ -21493,7 +21492,6 @@ unsorted:
   - python3-xsge_tmx 
   - python3-xvfbwrapper 
   - python3-xxhash 
-  - python3-xyzpy 
   - python3-yacron 
   - python3-yafe 
   - python3-yamldoc 
@@ -34332,7 +34330,6 @@ unsorted:
   - xz-java 
   - xz-java-javadoc 
   - xz-static-devel 
-  - xzgv 
   - yafc 
   - yaics 
   - yajl 

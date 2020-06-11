@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20200610" schemaversion="4.1">
+<image name="OBS__openSUSE___20200611" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200610</productvar>
+      <productvar name="VERSION">20200611</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200610,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200611,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200610/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200611/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -665,6 +665,7 @@
       <repopackage name="ghostscript-fonts-grops"/>
       <repopackage name="ghostscript-fonts-other"/>
       <repopackage name="ghostscript-fonts-std"/>
+      <repopackage name="ghostscript-fonts-std-converted"/>
       <repopackage name="ghostscript-x11"/>
       <repopackage name="gimp"/>
       <repopackage name="gimp-lang"/>
@@ -1606,6 +1607,7 @@
       <repopackage name="libcap2"/>
       <repopackage name="libcapi20-3"/>
       <repopackage name="libcares2"/>
+      <repopackage name="libcbor0_7"/>
       <repopackage name="libccolamd2"/>
       <repopackage name="libcdda_interface0"/>
       <repopackage name="libcdda_paranoia0"/>
@@ -1788,6 +1790,7 @@
       <repopackage name="libffi8-32bit" arch="x86_64"/>
       <repopackage name="libfftw3-3"/>
       <repopackage name="libfftw3_threads3"/>
+      <repopackage name="libfido2-1"/>
       <repopackage name="libfile1_0"/>
       <repopackage name="libfind4_0"/>
       <repopackage name="libfl-devel"/>
@@ -2021,6 +2024,7 @@
       <repopackage name="libharfbuzz0"/>
       <repopackage name="libharfbuzz0-32bit" arch="x86_64"/>
       <repopackage name="libhavege1"/>
+      <repopackage name="libhidapi-hidraw0"/>
       <repopackage name="libhiredis0_13"/>
       <repopackage name="libhivex0" arch="x86_64"/>
       <repopackage name="libhogweed6"/>
@@ -2957,8 +2961,6 @@
       <repopackage name="libunique-1_0-0"/>
       <repopackage name="libunistring2"/>
       <repopackage name="libunistring2-32bit" arch="x86_64"/>
-      <repopackage name="libunity-gtk2-parser0"/>
-      <repopackage name="libunity-gtk3-parser0"/>
       <repopackage name="libunwind"/>
       <repopackage name="libupnp16"/>
       <repopackage name="libupower-glib3"/>
@@ -5189,9 +5191,6 @@
       <repopackage name="unbound-anchor" arch="x86_64"/>
       <repopackage name="unclutter"/>
       <repopackage name="units"/>
-      <repopackage name="unity-gtk-module-common"/>
-      <repopackage name="unity-gtk2-module"/>
-      <repopackage name="unity-gtk3-module"/>
       <repopackage name="unixODBC"/>
       <repopackage name="unrar_wrapper"/>
       <repopackage name="unzip"/>
