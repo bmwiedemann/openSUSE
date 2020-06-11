@@ -1,7 +1,7 @@
-From 281a613295988be038f61b4198b6f513aad9f963 Mon Sep 17 00:00:00 2001
+From d7f4ceb4b6dc0c9e1dbb006260e7fa0ba85ec561 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Mon, 13 Jan 2020 11:27:06 +0100
-Subject: [PATCH 04/10] Unbundle mathjax and pandoc
+Subject: [PATCH 04/11] Unbundle mathjax and pandoc
 
 Use find_file() & find_program() functions to find the dependencies in the
 dependencies/ subdirectory first. If they are not there, use the system paths
@@ -11,7 +11,7 @@ instead.
  1 file changed, 21 insertions(+), 13 deletions(-)
 
 diff --git a/src/cpp/session/CMakeLists.txt b/src/cpp/session/CMakeLists.txt
-index 1fd7718254..b0a9515fb9 100644
+index 8ba9c0f56e..3e2caa1b2e 100644
 --- a/src/cpp/session/CMakeLists.txt
 +++ b/src/cpp/session/CMakeLists.txt
 @@ -22,11 +22,26 @@ add_subdirectory(workers)
@@ -71,5 +71,5 @@ index 1fd7718254..b0a9515fb9 100644
             PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
             DESTINATION  ${RSTUDIO_INSTALL_BIN}/pandoc)
 -- 
-2.25.1
+2.26.2
 

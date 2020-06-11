@@ -24,9 +24,9 @@
 %global bundled_mathjax_short_version 26
 %global rstudio_version_major 1
 %global rstudio_version_minor 2
-%global rstudio_version_patch 5033
+%global rstudio_version_patch 5042
 # commit of the tag belonging to %%{version}
-%global rstudio_git_revision_hash 330255ddec489e7a147ace3e8a9a3e4157d8d5ad
+%global rstudio_git_revision_hash e4a1c219cbf6c10d9aec41461d80171ab3009bef
 Name:           rstudio
 Version:        %{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}
 Release:        0
@@ -64,6 +64,7 @@ Patch6:         0007-Remove-PauseChanged-related-handler-from-DownloadHel.patch
 Patch7:         0008-Don-t-install-pandoc-and-mathjax.patch
 Patch8:         0009-Fix-rstudio-exec-path.patch
 Patch9:         0010-fix-STL-access-undefined-behaviour.patch
+Patch10:        0011-R_Slave-R_NoEcho-for-non-Windows.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  R-core-devel
 BuildRequires:  ant
@@ -178,6 +179,7 @@ on a server has a number of benefits, including:
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 
 # TW & Leap 15.2 specific patches
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} == 150200

@@ -1,7 +1,7 @@
-From a981ad4af4cd9aef344cbc0b6accda48926bd23c Mon Sep 17 00:00:00 2001
+From 03aace0d96edc298c7c9e4fbfb88574d83493e4f Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?I=C3=B1aki=20=C3=9Acar?= <iucar@fedoraproject.org>
 Date: Sun, 16 Feb 2020 19:31:47 +0100
-Subject: [PATCH 10/10] fix STL access undefined behaviour
+Subject: [PATCH 10/11] fix STL access undefined behaviour
 
 (cherry picked from commit 42bbb21db66d10e9fd824b812e4f88e9c8cae532)
 ---
@@ -29,5 +29,5 @@ index a509c100cf..11c80155a7 100644
     }
     
 -- 
-2.25.1
+2.26.2
 

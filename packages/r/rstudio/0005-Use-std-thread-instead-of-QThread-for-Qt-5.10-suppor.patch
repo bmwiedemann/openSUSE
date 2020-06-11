@@ -1,7 +1,7 @@
-From 5682be6d2e4c7020bf8395486dfeba81b16ab9f5 Mon Sep 17 00:00:00 2001
+From 39fef0fb8724c9067321b8eef5159a450c201e41 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Mon, 13 Jan 2020 15:05:12 +0100
-Subject: [PATCH 05/10] Use std::thread instead of QThread for Qt < 5.10
+Subject: [PATCH 05/11] Use std::thread instead of QThread for Qt < 5.10
  support
 
 ---
@@ -55,5 +55,5 @@ index b72b4e9888..cf27b90f64 100644
  #endif
  }
 -- 
-2.25.1
+2.26.2
 

@@ -1,7 +1,7 @@
-From 9c45e92e88d1efb405c60f0d5907f3a38f4a63e6 Mon Sep 17 00:00:00 2001
+From 18576119e8756ff8c6997ae46cc50fa7b6353316 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Mon, 13 Jan 2020 15:48:54 +0100
-Subject: [PATCH 07/10] Remove PauseChanged related handler from DownloadHelper
+Subject: [PATCH 07/11] Remove PauseChanged related handler from DownloadHelper
  for Qt < 5.10
 
 ---
@@ -47,5 +47,5 @@ index 0338aabe05..a59003e49c 100644
     
  private:
 -- 
-2.25.1
+2.26.2
 

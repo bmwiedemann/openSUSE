@@ -1,7 +1,7 @@
-From 6ec5616ce3dbbd059aff4012599f2706f6e6fb1a Mon Sep 17 00:00:00 2001
+From 80c16b98b7fdaa0659d6a82f2991c8280ec637e2 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Mon, 13 Jan 2020 10:43:27 +0100
-Subject: [PATCH 02/10] Bump bundled gwt version
+Subject: [PATCH 02/11] Bump bundled gwt version
 
 ---
  src/gwt/build.xml | 2 +-
@@ -21,5 +21,5 @@ index d02babe0a7..497236f096 100644
     <property name="gwt.extra.args" value=""/>
     <property name="gwt.main.module" value="org.rstudio.studio.RStudio"/>
 -- 
-2.25.1
+2.26.2
 

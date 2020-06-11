@@ -1,7 +1,7 @@
-From 4c41e7d8cb820da3d57036ec894103a1c54606d9 Mon Sep 17 00:00:00 2001
+From 5611cde8a9e008e39cc9c3759584061aa69e59e2 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Mon, 13 Jan 2020 15:22:35 +0100
-Subject: [PATCH 06/10] Add explicit #include <mutex> for gcc 7 to
+Subject: [PATCH 06/11] Add explicit #include <mutex> for gcc 7 to
  DesktopWebpage.cpp
 
 ---
@@ -21,5 +21,5 @@ index 814829e1ea..0e052826c8 100644
  #include <QFileDialog>
  #include <QWebEngineSettings>
 -- 
-2.25.1
+2.26.2
 

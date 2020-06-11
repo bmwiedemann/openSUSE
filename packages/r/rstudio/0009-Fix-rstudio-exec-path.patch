@@ -1,7 +1,7 @@
-From 66bd4b40e24d67068ac4b326a011aa862bf22c0b Mon Sep 17 00:00:00 2001
+From 4b93f9c3bf16ce1fddbfdd85e7a4560f9bcea1da Mon Sep 17 00:00:00 2001
 From: Marco Varlese <marco.varlese@suse.com>
 Date: Mon, 27 Jan 2020 14:29:40 +0100
-Subject: [PATCH 09/10] Fix rstudio exec path
+Subject: [PATCH 09/11] Fix rstudio exec path
 
 Fix the path to the rstudio executable in the rstudio.desktop file.
 ---
@@ -20,5 +20,5 @@ index 0a1a387fd2..e8f68277e2 100644
  Type=Application
  Terminal=false
 -- 
-2.25.1
+2.26.2
 

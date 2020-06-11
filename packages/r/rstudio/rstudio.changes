@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Apr 29 12:27:11 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.2.5042
+
+  Rebase patches:
+  * 0001-First-pass-at-Boost-1.70-support.patch
+  * 0002-Bump-bundled-gwt-version.patch
+  * 0003-Remove-boost-signals-from-the-required-Boost-librari.patch
+  * 0004-Unbundle-mathjax-and-pandoc.patch
+  * 0005-Use-std-thread-instead-of-QThread-for-Qt-5.10-suppor.patch
+  * 0006-Add-explicit-include-mutex-for-gcc-7-to-DesktopWebpa.patch
+  * 0007-Remove-PauseChanged-related-handler-from-DownloadHel.patch
+  * 0008-Don-t-install-pandoc-and-mathjax.patch
+  * 0009-Fix-rstudio-exec-path.patch
+  * 0010-fix-STL-access-undefined-behaviour.patch
+
+  Add patch:
+  * 0011-R_Slave-R_NoEcho-for-non-Windows.patch
+    (fixes FTBFS with newest version of R)
+
+-------------------------------------------------------------------
 Tue Mar 10 11:51:03 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Add 0010-fix-STL-access-undefined-behaviour.patch & fix double rebuild
