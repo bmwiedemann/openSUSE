@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 10 21:21:29 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0.1
+  * New bugfix release
+- Changes since 5.19.0:
+  * Use new name for dbus interface too
+  * Don't prefix value output with mount point
+
+-------------------------------------------------------------------
 Thu Jun  4 13:27:11 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.0
