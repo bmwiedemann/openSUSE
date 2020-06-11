@@ -4,11 +4,9 @@ Date:   Fri Mar 8 17:56:58 2013 +0100
 
     + SET LC_
 
-diff --git a/src/test/regress/expected/int8.out b/src/test/regress/expected/int8.out
-index 811d6a5..e67be7d 100644
---- a/src/test/regress/expected/int8.out
-+++ b/src/test/regress/expected/int8.out
-@@ -580,6 +580,7 @@ SELECT '' AS to_char_12, to_char(q2, 'FM9999999999999999.000') FROM INT8_TBL;
+--- src/test/regress/expected/int8.out.orig
++++ src/test/regress/expected/int8.out
+@@ -580,6 +580,7 @@ SELECT '' AS to_char_12, to_char(q2, 'FM
              | -4567890123456789.000
  (5 rows)
  
@@ -16,11 +14,9 @@ index 811d6a5..e67be7d 100644
  SELECT '' AS to_char_13, to_char(q2, 'L9999999999999999.000')  FROM INT8_TBL;
   to_char_13 |        to_char         
  ------------+------------------------
-diff --git a/src/test/regress/expected/numeric.out b/src/test/regress/expected/numeric.out
-index 71c520e..8b3b4a2 100644
---- a/src/test/regress/expected/numeric.out
-+++ b/src/test/regress/expected/numeric.out
-@@ -1034,6 +1034,7 @@ SELECT '' AS to_char_15, to_char(val, 'FM9999999990999999.099999999999999') 	FRO
+--- src/test/regress/expected/numeric.out.orig
++++ src/test/regress/expected/numeric.out
+@@ -1055,6 +1055,7 @@ SELECT '' AS to_char_15, to_char(val, 'F
              | -24926804.04504742
  (10 rows)
  
@@ -28,11 +24,9 @@ index 71c520e..8b3b4a2 100644
  SELECT '' AS to_char_16, to_char(val, 'L9999999999999999.099999999999999')	FROM num_data;
   to_char_16 |              to_char               
  ------------+------------------------------------
-diff --git a/src/test/regress/sql/int8.sql b/src/test/regress/sql/int8.sql
-index 27e0696..6c2c610 100644
---- a/src/test/regress/sql/int8.sql
-+++ b/src/test/regress/sql/int8.sql
-@@ -116,6 +116,7 @@ SELECT '' AS to_char_9,  to_char(q2, '0999999999999999')       FROM INT8_TBL;
+--- src/test/regress/sql/int8.sql.orig
++++ src/test/regress/sql/int8.sql
+@@ -116,6 +116,7 @@ SELECT '' AS to_char_9,  to_char(q2, '09
  SELECT '' AS to_char_10, to_char(q2, 'S0999999999999999')      FROM INT8_TBL;
  SELECT '' AS to_char_11, to_char(q2, 'FM0999999999999999')     FROM INT8_TBL;
  SELECT '' AS to_char_12, to_char(q2, 'FM9999999999999999.000') FROM INT8_TBL;
@@ -40,11 +34,9 @@ index 27e0696..6c2c610 100644
  SELECT '' AS to_char_13, to_char(q2, 'L9999999999999999.000')  FROM INT8_TBL;
  SELECT '' AS to_char_14, to_char(q2, 'FM9999999999999999.999') FROM INT8_TBL;
  SELECT '' AS to_char_15, to_char(q2, 'S 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 . 9 9 9') FROM INT8_TBL;
-diff --git a/src/test/regress/sql/numeric.sql b/src/test/regress/sql/numeric.sql
-index b2dc46f..9893e95 100644
---- a/src/test/regress/sql/numeric.sql
-+++ b/src/test/regress/sql/numeric.sql
-@@ -755,6 +755,7 @@ SELECT '' AS to_char_12, to_char(val, 'FM9999999999999999.099999999999999') 	FRO
+--- src/test/regress/sql/numeric.sql.orig
++++ src/test/regress/sql/numeric.sql
+@@ -763,6 +763,7 @@ SELECT '' AS to_char_12, to_char(val, 'F
  SELECT '' AS to_char_13, to_char(val, 'FM9999999999990999.990999999999999') 	FROM num_data;
  SELECT '' AS to_char_14, to_char(val, 'FM0999999999999999.999909999999999') 	FROM num_data;
  SELECT '' AS to_char_15, to_char(val, 'FM9999999990999999.099999999999999') 	FROM num_data;

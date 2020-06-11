@@ -240,4 +240,12 @@
     <comment>update for CVE-2020-1720 (forwarded request 774444 from darix)</comment>
     <requestid>774449</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e34c0b7e625e2662d893720b220a7c14</srcmd5>
+    <version>9.5.22</version>
+    <time>1591862248</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811582</requestid>
+  </revision>
 </revisionlist>
