@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  8 02:55:54 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add gnome-software-failed-offline-update-notification.patch:
+  plugin-loader: handle offline update errors properly(bsc#1161095,
+  glgo#GNOME/gnome-software!471).
+
+-------------------------------------------------------------------
 Fri May 22 18:13:46 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.1:

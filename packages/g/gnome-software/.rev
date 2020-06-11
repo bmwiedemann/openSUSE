@@ -663,4 +663,12 @@ cd - (forwarded request 199127 from Zaitor)</comment>
     <comment>New stable rel, not buildtested (forwarded request 808307 from iznogood)</comment>
     <requestid>811414</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>f8beaa2a3500501f1b43169a862ba39e</srcmd5>
+    <version>3.36.1</version>
+    <time>1591879658</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813315</requestid>
+  </revision>
 </revisionlist>

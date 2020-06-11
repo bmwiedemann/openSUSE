@@ -29,6 +29,8 @@ Source0:        https://download.gnome.org/sources/gnome-software/3.36/%{name}-%
 # PATCH-FIX-OPENSUSE gnome-software-launch-gpk-update-viewer-for-updates.patch bsc#1077332 boo#1090042 sckang@suse.com -- Don't launch gnome-software when clicking the updates notification. Launch gpk-update-viewer instead.
 Patch0:         gnome-software-launch-gpk-update-viewer-for-updates.patch
 %endif
+# PATCH-FIX-UPSTREAM gnome-software-failed-offline-update-notification.patch bsc#1161095 glgo#GNOME/gnome-software!471 sckang@suse.com -- plugin-loader: handle offline update errors properly.
+Patch1:         gnome-software-failed-offline-update-notification.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.47.0
