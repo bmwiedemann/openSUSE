@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 10 10:10:35 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Only modify /etc/vimrc in config.sh if it exists
+
+-------------------------------------------------------------------
 Fri Mar 20 13:57:46 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Fix boo#1167232: use the virtio driver on aarch64 for the mouse

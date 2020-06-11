@@ -75,8 +75,12 @@ rm -rf /opt/kde*
 #======================================
 # only basic version of vim is
 # installed; no syntax highlighting
+# only perform the modification if
+# /etc/vimrc is actually there
 #--------------------------------------
-sed -i -e's/^syntax on/" syntax on/' /etc/vimrc
+if [ -f /etc/vimrc ]; then
+    sed -i -e's/^syntax on/" syntax on/' /etc/vimrc
+fi
 
 function vagrantSetup {
     # This function configures the image to work as a vagrant box.
