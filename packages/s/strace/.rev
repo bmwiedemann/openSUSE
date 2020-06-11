@@ -1104,4 +1104,28 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
     * Implemented decoding of openat2 and pidfd_getfd syscalls. (forwarded request 791997 from Andreas_Schwab)</comment>
     <requestid>791998</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>06b820666001386154e0c039f710e3e9</srcmd5>
+    <version>5.7</version>
+    <time>1591879138</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 5.7
+  * Improvements
+    * Implemented interval specification in &quot;when=&quot; subexpression of syscall
+      tampering expressions.
+    * Added -e trace=%clock option for tracing syscalls reading of modifying
+      system clocks.
+    * Implemented decoding of BPF_LINK_CREATE and BPF_LINK_UPDATE bpf
+      syscall commands.
+    * Updated decoding of clone3 syscall to match Linux 5.7.
+    * Updated lists of BPF_*, BTRFS_*, CLONE_*, FAN_*, IORING_*, KVM_*,
+      LWTUNNEL_*, MREMAP_*, PERF_*, SECCOMP_*, UFFDIO_*, V4L2_*, and XDP_*
+      constants.
+    * Updated lists of ioctl commands from Linux 5.7.
+  * Bug fixes
+    * Fixed decoding of getdents and getdents64 syscalls when they return
+      a lot of directory entries.
+    * Fixed pathtrace matching of openat2 syscall. (forwarded request 810688 from AndreasSchwab)</comment>
+    <requestid>810689</requestid>
+  </revision>
 </revisionlist>

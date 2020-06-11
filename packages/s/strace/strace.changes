@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun  1 22:09:59 UTC 2020 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Update to strace 5.7
+  * Improvements
+    * Implemented interval specification in "when=" subexpression of syscall
+      tampering expressions.
+    * Added -e trace=%clock option for tracing syscalls reading of modifying
+      system clocks.
+    * Implemented decoding of BPF_LINK_CREATE and BPF_LINK_UPDATE bpf
+      syscall commands.
+    * Updated decoding of clone3 syscall to match Linux 5.7.
+    * Updated lists of BPF_*, BTRFS_*, CLONE_*, FAN_*, IORING_*, KVM_*,
+      LWTUNNEL_*, MREMAP_*, PERF_*, SECCOMP_*, UFFDIO_*, V4L2_*, and XDP_*
+      constants.
+    * Updated lists of ioctl commands from Linux 5.7.
+  * Bug fixes
+    * Fixed decoding of getdents and getdents64 syscalls when they return
+      a lot of directory entries.
+    * Fixed pathtrace matching of openat2 syscall.
+
+-------------------------------------------------------------------
 Tue Apr  7 13:01:18 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Update to strace 5.6
