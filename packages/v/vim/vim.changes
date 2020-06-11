@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 28 12:05:51 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- remove duplicated settings in defaults.vim from SUSE vimrc
+- move SUSE vim settings to /usr in data-common package so leave
+  /etc/vimrc to the admin.
+- require data-common in vim-small so it gets the settings
+- install spec file template as plugin as vim-small doesn't support
+  it
+
+-------------------------------------------------------------------
 Thu May 21 15:16:53 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
 
 - apparmor.vim: update from latest AppArmor 2.13 branch:

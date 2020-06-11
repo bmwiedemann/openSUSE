@@ -4520,4 +4520,12 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>808015</requestid>
   </revision>
+  <revision rev="261" vrev="4">
+    <srcmd5>45d3618f5b02d02ebb9f3413e825a777</srcmd5>
+    <version>8.2.0701</version>
+    <time>1591862301</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811885</requestid>
+  </revision>
 </revisionlist>

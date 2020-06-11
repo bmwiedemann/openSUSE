@@ -5,74 +5,14 @@
 " version: 2017/04/28
 " commented lines start with `"'
 
-function! SKEL_spec()
-        0r /usr/share/vim/current/skeletons/skeleton.spec
-        language time en_US
-        if $USER != ''
-            let login = $USER
-        elseif $LOGNAME != ''
-            let login = $LOGNAME
-        else
-            let login = 'unknown'
-        endif
-        let newline = stridx(login, "\n")
-        if newline != -1
-            let login = strpart(login, 0, newline)
-        endif
-        if $HOSTNAME != ''
-            let hostname = $HOSTNAME
-        else
-            let hostname = system('hostname -f')
-            if v:shell_error
-                let hostname = 'localhost'
-            endif
-        endif
-        let newline = stridx(hostname, "\n")
-        if newline != -1
-            let hostname = strpart(hostname, 0, newline)
-        endif
-        exe "%s/specCURRENT_YEAR/" . strftime("%Y") . "/ge" 
-        exe "%s/specRPM_CREATION_DATE/" . strftime("%a\ %b\ %d\ %Y") . "/ge"
-        exe "%s/specRPM_CREATION_AUTHOR_MAIL/" . login . "@" . hostname . "/ge"
-        exe "%s/specRPM_CREATION_NAME/" . expand("%:t:r") . "/ge"
-        setf spec
-endfunction
-
-" enable syntax highlighting
-syntax on
-
-" automatically indent lines (default)
-" set noautoindent
-
-" select case-insenitiv search (not default)
-" set ignorecase
-
-" show cursor line and column in the status line
-set ruler
-
 " show matching brackets
 set showmatch
 
 " display mode INSERT/REPLACE/...
 set showmode
 
-" changes special characters in search patterns (default)
-" set magic
-
 " Required to be able to use keypad keys and map missed escape sequences
 set esckeys
-
-" get easier to use and more user friendly vim defaults
-" CAUTION: This option breaks some vi compatibility. 
-"          Switch it off if you prefer real vi compatibility
-set nocompatible
-
-" allow backspacing over everything in insert mode 
-set backspace=indent,eol,start
-
-" Complete longest common string, then each full match
-" enable this for bash compatible behaviour
-" set wildmode=longest,full
 
 " Try to get the correct main terminal type
 if &term =~ "xterm"
@@ -82,11 +22,13 @@ elseif &term =~ "screen"
 else
     let myterm =  &term
 endif
-let myterm = substitute(myterm, "cons[0-9][0-9].*$",  "linux", "")
-let myterm = substitute(myterm, "cons[0-9][0-9].*$",  "linux", "")
-let myterm = substitute(myterm, "vt1[0-9][0-9].*$",   "vt100", "")
-let myterm = substitute(myterm, "vt2[0-9][0-9].*$",   "vt220", "")
-let myterm = substitute(myterm, "\\([^-]*\\)[_-].*$", "\\1",   "")
+if has('eval')
+    let myterm = substitute(myterm, "cons[0-9][0-9].*$",  "linux", "")
+    let myterm = substitute(myterm, "cons[0-9][0-9].*$",  "linux", "")
+    let myterm = substitute(myterm, "vt1[0-9][0-9].*$",   "vt100", "")
+    let myterm = substitute(myterm, "vt2[0-9][0-9].*$",   "vt220", "")
+    let myterm = substitute(myterm, "\\([^-]*\\)[_-].*$", "\\1",   "")
+endif
 
 " Here we define the keys of the NumLock in keyboard transmit mode of xterm
 " which misses or hasn't activated Alt/NumLock Modifiers.  Often not defined
@@ -340,9 +282,6 @@ endif " has("autocmd")
 " Changed default required by SuSE security team--be aware if enabling this
 " that it potentially can open for malicious users to do harmful things.
 set nomodeline
-
-" Skeleton for spec files
-autocmd BufNewFile      *.spec  call SKEL_spec()
 
 " get easier to use and more user friendly vim defaults
 " /etc/vimrc ends here

@@ -41,6 +41,7 @@ Source14:       vitmp.1
 Source15:       vim132
 Source19:       gvim.desktop
 Source20:       spec.skeleton
+Source21:       spec.vim
 Source23:       apparmor.vim
 Source24:       gvim.svg
 Source25:       gvim_24.png
@@ -130,7 +131,7 @@ Group:          Productivity/Text/Editors
 BuildArch:      noarch
 
 %description data-common
-This package contains common runtime & syntax files for vim and gvim.
+This package contains basic runtime & syntax files for vim
 
 %package -n gvim
 Summary:        A GUI for Vi
@@ -161,6 +162,7 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Provides:       vi
 Provides:       vim_client
+Requires:       vim-data-common = %{version}-%{release}
 
 %description small
 Vim compiled with reduced feature set such as no script
@@ -328,7 +330,8 @@ install -m 0755 %{SOURCE15} %{buildroot}%{_datadir}/vim/%{VIM_SUBDIR}/tools/vim1
 ln -s -f %{VIM_SUBDIR} %{buildroot}%{_datadir}/vim/current
 
 # additional files
-install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/vimrc
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_datadir}/vim/current/suse.vimrc
+install -D -m 0644 /dev/null %{buildroot}%{_sysconfdir}/vimrc
 install -D -m 0644 %{SOURCE8} %{buildroot}%{_sysconfdir}/gvimrc
 
 # create site wide runtime directory
@@ -344,7 +347,8 @@ mkdir -m 0755 %{buildroot}%{_datadir}/vim/current/skeletons
 mkdir -m 0755 %{buildroot}%{_sysconfdir}/skel
 
 # install spec helper
-install -m 0644 %{SOURCE20}  %{buildroot}%{_datadir}/vim/current/skeletons/skeleton.spec
+install -m 0644 %{SOURCE20} %{buildroot}%{_datadir}/vim/current/skeletons/skeleton.spec
+install -m 0644 %{SOURCE21} %{buildroot}%{_datadir}/vim/current/plugin/spec.vim
 
 # desktop file for gvim
 install -D -m 0644 %{SOURCE19} %{buildroot}%{_datadir}/applications/gvim.desktop
@@ -439,7 +443,6 @@ fi
 %{_sbindir}/update-alternatives --remove vim %{_bindir}/vim-small
 
 %files
-%config(noreplace) %{_sysconfdir}/vimrc
 %ghost %{_sysconfdir}/alternatives/vim
 %{_bindir}/vim-nox11
 %{_bindir}/vim
@@ -546,6 +549,8 @@ fi
 %{_datadir}/vim/%{VIM_SUBDIR}/tutor/*
 
 %files data-common
+%ghost %config(noreplace) %{_sysconfdir}/vimrc
+%{_datadir}/vim/%{VIM_SUBDIR}/suse.vimrc
 %{_datadir}/vim/%{VIM_SUBDIR}/autoload/dist/ft.vim
 %{_datadir}/vim/%{VIM_SUBDIR}/syntax/nosyntax.vim
 %{_datadir}/vim/%{VIM_SUBDIR}/syntax/resolv.vim
