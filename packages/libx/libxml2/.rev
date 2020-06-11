@@ -854,4 +854,12 @@
   multibuild directly clashes with that.</comment>
     <requestid>785542</requestid>
   </revision>
+  <revision rev="98" vrev="4">
+    <srcmd5>9a0bfc200c096fd9efc383c633f23717</srcmd5>
+    <version>2.9.10</version>
+    <time>1591879093</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810571</requestid>
+  </revision>
 </revisionlist>

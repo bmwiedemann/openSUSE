@@ -49,6 +49,10 @@ Patch2:         libxml2-python3-string-null-check.patch
 Patch3:         libxml2-make-XPATH_MAX_NODESET_LENGTH-configurable.patch
 # PATCH-FIX-UPSTREAM bsc#1157450 This commit breaks perl-XML-LibXSLT
 Patch4:         libxml2-xmlFreeNodeList-recursive.patch
+# PATCH-FIX-UPSTREAM bsc#1161517 CVE-2020-7595 Infinite loop in xmlStringLenDecodeEntities
+Patch5:         libxml2-CVE-2020-7595.patch
+# PATCH-FIX-UPSTREAM bsc#1159928 CVE-2019-19956 Revert usptream commit
+Patch6:         libxml2-CVE-2019-19956.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 %if !%{with python}
@@ -169,6 +173,8 @@ either at parse time or later once the document has been modified.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1 -R
+%patch5 -p1
+%patch6 -p1 -R
 
 %build
 %if !%{with python}

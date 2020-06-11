@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 27 12:09:35 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Fix invalid xmlns references since the fix for CVE-2019-19956 [bsc#1172021]
+- Revert upstream commit 5a02583c7e683896d84878bd90641d8d9b0d0549
+  * Add patch libxml2-CVE-2019-19956.patch
+
+-------------------------------------------------------------------
+Mon Mar 16 12:02:39 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Security fix: [bsc#1161517, CVE-2020-7595]
+  * xmlStringLenDecodeEntities in parser.c has an infinite loop in
+    a certain end-of-file situation
+- Add libxml2-CVE-2020-7595.patch
+
+-------------------------------------------------------------------
 Mon Mar 16 10:01:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not pull in the non-python deps on the python build
