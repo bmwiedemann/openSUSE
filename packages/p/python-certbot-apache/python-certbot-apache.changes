@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 11 12:12:06 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.5.0
+  * Improved error message in apache installer when mod_ssl is not available.
+
+-------------------------------------------------------------------
 Thu May 14 08:49:00 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 1.4.0
