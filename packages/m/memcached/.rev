@@ -402,4 +402,12 @@ bsc#1007869) (CVE-2016-8706)</comment>
 - disable lto until the 2 settings structs are resolved</comment>
     <requestid>795535</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>3cd211d2e71ac95d9e314a7fafa780f4</srcmd5>
+    <version>1.6.6</version>
+    <time>1591879651</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813310</requestid>
+  </revision>
 </revisionlist>

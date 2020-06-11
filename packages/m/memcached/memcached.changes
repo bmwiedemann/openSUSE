@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun  6 05:37:41 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.6.6:
+  * Fix crash on shutdown when handling signals with TLS enabled
+  * Disable aarch64 hw crc32 function for now
+  * Pull in BigEndian-compatible crc32c
+  * minimum libevent version is 2.x
+  
+-------------------------------------------------------------------
 Mon Apr 13 19:08:36 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to version 1.6.5

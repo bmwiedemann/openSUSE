@@ -28,7 +28,7 @@
 %endif
 
 Name:           memcached
-Version:        1.6.5
+Version:        1.6.6
 Release:        0
 Summary:        A high-performance, distributed memory object caching system
 License:        BSD-3-Clause
@@ -42,7 +42,7 @@ Source4:        memcached.service
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cyrus-sasl-devel
-BuildRequires:  libevent-devel
+BuildRequires:  libevent-devel >= 2.0
 BuildRequires:  libtool
 %if %{with tls}
 BuildRequires:  openssl-devel >= 1.1.0
