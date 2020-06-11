@@ -28,8 +28,8 @@ Source:         https://github.com/novnc/websockify/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module jwcrypto}
 BuildRequires:  %{python_module mox3}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module simplejson}
@@ -88,7 +88,7 @@ sed -i '1 { /^#!/ d }' websockify/websock*.py
 %python_clone -a %{buildroot}%{_bindir}/websockify
 
 %check
-%python_exec setup.py nosetests
+%pytest
 
 %post
 %python_install_alternative websockify
