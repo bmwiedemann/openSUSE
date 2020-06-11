@@ -1207,4 +1207,13 @@ Feel free to use or reject (forwarded request 397400 from dimstar)</comment>
   * permissions fixed profile: utempter: reinstate libexec compatibility entry (forwarded request 807566 from mgerstner)</comment>
     <requestid>807568</requestid>
   </revision>
+  <revision rev="136" vrev="16">
+    <srcmd5>ea5fea41334ffe9a2aa8bd6ef7ab8f43</srcmd5>
+    <version>unknown</version>
+    <time>1591879246</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200526:
+  * profiles: add entries for enlightenment (bsc#1171686)</comment>
+    <requestid>810755</requestid>
+  </revision>
 </revisionlist>
