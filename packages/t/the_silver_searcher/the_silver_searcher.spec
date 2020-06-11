@@ -1,7 +1,7 @@
 #
 # spec file for package the_silver_searcher
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,6 +27,8 @@ Source:         http://geoff.greer.fm/ag/releases/%{name}-%{version}.tar.gz
 Source2:        http://geoff.greer.fm/ag/releases/%{name}-%{version}.tar.gz.asc
 Source3:        %{name}.keyring
 Source4:        %{name}.changes
+# PATCH-FIX-UPSTREAM the_silver_searcher-2.2.0-portabilityfixes.patch gh#ggreer/the_silver_searcher#1377 -- Fix multiple global symbols definitions
+Patch0:         the_silver_searcher-2.2.0-portabilityfixes.patch
 BuildRequires:  pkgconfig >= 0.9.0
 Requires:       bash-completion
 %if 0%{?suse_version} > 1110
@@ -44,6 +46,7 @@ A code searching tool similar to ack, with a focus on speed.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure

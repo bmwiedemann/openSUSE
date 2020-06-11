@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 10 12:00:30 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
+
+- Add the_silver_searcher-2.2.0-portabilityfixes.patch to fix
+  build with latest gcc/glibc (gh#ggreer/the_silver_searcher#1377).
+
+-------------------------------------------------------------------
 Mon Aug 13 09:10:41 UTC 2018 - astieger@suse.com
 
 - update to 2.2.0:
