@@ -1,0 +1,13 @@
+Index: osdl-aim-7/src/Makefile.am
+===================================================================
+--- osdl-aim-7.orig/src/Makefile.am
++++ osdl-aim-7/src/Makefile.am
+@@ -8,7 +8,7 @@ bin_PROGRAMS = reaim
+ LIBADD_READLINE =
+ # endif
+ 
+-reaim_LDADD = $(top_builddir)/lib/libltp.a $(LIBADD_READLINE)
++reaim_LDADD = $(top_builddir)/lib/libltp.a $(LIBADD_READLINE) -laio
+ reaim_SOURCES = driver.c suite.h files.h ram.c aimlist.h \
+ 	rand.c times_ms.c testerr.h add.c creat_clo.c drv_funcs.c \
+ 	div.c disk_funcs.c pipe_test.c mul.c num_fcns.c int_fcns.c \

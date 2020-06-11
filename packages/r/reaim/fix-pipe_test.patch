@@ -1,0 +1,34 @@
+Index: osdl-aim-7/src/pipe_test.c
+===================================================================
+--- osdl-aim-7.orig/src/pipe_test.c
++++ osdl-aim-7/src/pipe_test.c
+@@ -194,7 +194,8 @@ static int tcp_test(int argc, char **arg
+ 	 */
+ 	memset(&wr_in, 0, sizeof(wr_in));	/* clear it to zeros */
+ 	wr_in.sin_family = AF_INET;	/* set family of socket */
+-	memcpy((void *) &wr_in.sin_addr.s_addr, (void *) hp->h_addr, hp->h_length);	/* ignore addresses */
++	//memcpy((void *) &wr_in.sin_addr.s_addr, (void *) hp->h_addr, hp->h_length);	/* ignore addresses */
++	wr_in.sin_addr.s_addr = INADDR_ANY;
+ 	wr_in.sin_port = 0;	/* set write port (make kernel choose) */
+ 	status = bind(wr, (struct sockaddr *) &wr_in, sizeof(wr_in));	/* do the bind */
+ 	if (status < 0)
+@@ -301,7 +302,8 @@ static int udp_test(int argc, char **arg
+ 	 */
+ 	memset(&wr_in, 0, sizeof(wr_in));	/* clear it to zeros */
+ 	wr_in.sin_family = AF_INET;	/* set family of socket */
+-	memcpy((void *) &wr_in.sin_addr.s_addr, (void *) hp->h_addr, hp->h_length);	/* ignore addresses */
++	//memcpy((void *) &wr_in.sin_addr.s_addr, (void *) hp->h_addr, hp->h_length);	/* ignore addresses */
++	wr_in.sin_addr.s_addr = INADDR_ANY;
+ 	wr_in.sin_port = 0;	/* set write port (make kernel choose) */
+ 	status = bind(wr, (struct sockaddr *) &wr_in, sizeof(wr_in));	/* do the bind */
+ 	if (status < 0)
+@@ -324,7 +326,8 @@ static int udp_test(int argc, char **arg
+ 	 */
+ 	memset(&rd_in, 0, sizeof(rd_in));	/* clear it to zeros */
+ 	rd_in.sin_family = AF_INET;	/* set family of socket */
+-	memcpy((void *) &rd_in.sin_addr.s_addr, (void *) hp->h_addr, hp->h_length);	/* ignore addresses */
++	//memcpy((void *) &rd_in.sin_addr.s_addr, (void *) hp->h_addr, hp->h_length);	/* ignore addresses */
++	rd_in.sin_addr.s_addr = INADDR_ANY;
+ 	rd_in.sin_port = 0;	/* set write port (make kernel choose) */
+ 	status = bind(rd, (struct sockaddr *) &rd_in, sizeof(rd_in));	/* do the bind */
+ 	if (status < 0)
