@@ -1,7 +1,7 @@
 #
 # spec file for package python-passlib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://bitbucket.org/ecollins/passlib
 Source:         https://files.pythonhosted.org/packages/source/p/passlib/passlib-%{version}.tar.gz
-# test requirements
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -51,7 +50,7 @@ applications.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_version} -v
+%pytest
 
 %files %{python_files}
 %license LICENSE

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  9 06:39:47 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- replace nose with pytest
+
+-------------------------------------------------------------------
 Wed Jan  1 22:15:42 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Removed obsolete patches:
