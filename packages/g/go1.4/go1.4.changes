@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  8 08:22:07 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Ensure ARM arch is set properly - boo#1169832
+
+-------------------------------------------------------------------
 Fri Jan 24 13:43:31 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildREquire pkgconfig(systemd) instead of systemd: allow OBS to

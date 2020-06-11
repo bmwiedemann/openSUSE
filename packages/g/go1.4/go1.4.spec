@@ -193,6 +193,15 @@ cp ../compiler-rt*/lib/tsan/go/race_linux_%{go_arch}.syso src/runtime/race/race_
 %endif
 
 # Now, compile Go.
+# Ensure ARM arch is set properly - boo#1169832
+%ifarch armv6l armv6hl
+export GOARCH=arm
+export GOARM=6
+%endif
+%ifarch armv7l armv7hl
+export GOARCH=arm
+export GOARM=7
+%endif
 export GOROOT="`pwd`"
 export GOROOT_FINAL=%{_libdir}/%{name}
 export GOBIN="$GOROOT/bin"
