@@ -350,11 +350,11 @@ fi
 %attr(0755,root,root) %{_libexecdir}/man-db/man
 %attr(0755,root,root) %{_libexecdir}/man-db/whatis
 %attr(0755,root,root) %{_libexecdir}/man-db/mandb
-%attr(0755,man,man) %{_libexecdir}/man-db/manconv
-%attr(0755,man,man) %{_libexecdir}/man-db/globbing
+%attr(0755,root,root) %{_libexecdir}/man-db/manconv
+%attr(0755,root,root) %{_libexecdir}/man-db/globbing
 %attr(0755,root,root) %{_libexecdir}/man-db/wrapper
 %if 0%{?suse_version} >= 1500
-%attr(0744,man,man) %{_libexecdir}/man-db/do_mandb
+%attr(0744,root,root) %{_libexecdir}/man-db/do_mandb
 %endif
 %{_sbindir}/accessdb
 %{_libdir}/libman*.so
