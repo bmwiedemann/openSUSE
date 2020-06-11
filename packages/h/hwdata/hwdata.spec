@@ -17,14 +17,14 @@
 
 
 Name:           hwdata
-Version:        0.335
+Version:        0.336
 Release:        0
 Summary:        Hardware identification and configuration data
 License:        GPL-2.0-or-later
 URL:            https://github.com/vcrhonek/hwdata
 Source:         https://github.com/vcrhonek/hwdata/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Provides:       pciutils-ids = 20190109
-Obsoletes:      pciutils-ids < 20190109
+Provides:       pciutils-ids = 20200529
+Obsoletes:      pciutils-ids < 20200529
 BuildArch:      noarch
 
 %description
