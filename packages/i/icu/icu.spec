@@ -65,6 +65,7 @@ This subpackage contains the runtime programs for interacting with ICU.
 Summary:        International Components for Unicode
 Group:          System/Libraries
 Requires:       timezone
+Provides:       libicu = %version
 %if %be_platform
 Requires:       libicu%aversion-bedata = %version
 %else

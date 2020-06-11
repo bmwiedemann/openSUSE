@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 31 16:50:18 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Add the provides for libicu to Make .Net core can install 
+  successfully. (bsc#1167603, bsc#1161007) 
+
+-------------------------------------------------------------------
 Thu Apr 23 04:20:04 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 67.1
