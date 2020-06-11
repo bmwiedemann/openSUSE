@@ -26,6 +26,7 @@ Group:          System/Daemons
 URL:            https://code.guido-berhoerster.org/projects/package-update-indicator
 Source:         https://code.guido-berhoerster.org/projects/package-update-indicator/downloads/%{name}-%{version}.tar.gz
 Source1:        10_opensuse_update_command.gschema.override
+Patch0:         org.guido-berhoerster.code.package-update-indicator.desktop.in.patch
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  gettext >= 0.19
 BuildRequires:  libxml2-tools

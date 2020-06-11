@@ -1,0 +1,8 @@
+--- org.guido-berhoerster.code.package-update-indicator.desktop.in	2019-08-30 13:34:56.000000000 +0200
++++ org.guido-berhoerster.code.package-update-indicator.desktop.in.2	2020-06-10 16:16:58.114986650 +0200
+@@ -7,4 +7,4 @@
+ Terminal=false
+ Type=Application
+ Categories=Utility;GTK;TrayIcon;
+-NotShowIn=GNOME;
++NotShowIn=GNOME;KDE;

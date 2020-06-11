@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 10 14:26:33 UTC 2020 - Vinzenz Vietzke <vinz@vinzv.de>
+
+- Adding patch org.guido-berhoerster.code.package-update-indicator.desktop.in.patch 
+  fixing package-update-indicator should not start within 
+  Gnome or KDE (boo#1172623)
+
+-------------------------------------------------------------------
 Sun Sep  1 14:25:56 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - update to version 5:

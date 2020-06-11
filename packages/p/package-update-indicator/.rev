@@ -39,4 +39,15 @@
     <comment></comment>
     <requestid>728044</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b89891b040b69b1beee39e179176b3e1</srcmd5>
+    <version>5</version>
+    <time>1591880072</time>
+    <user>dimstar_suse</user>
+    <comment>- Adding patch org.guido-berhoerster.code.package-update-indicator.desktop.in.patch 
+  fixing package-update-indicator should not start within 
+  Gnome or KDE (boo#1172623)
+</comment>
+    <requestid>813464</requestid>
+  </revision>
 </revisionlist>
