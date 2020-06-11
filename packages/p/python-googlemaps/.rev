@@ -25,4 +25,12 @@
   * no upstream changelog (forwarded request 685349 from scarabeus_iv)</comment>
     <requestid>685350</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8ec91f6089bd1e2c2949c8bf3c121194</srcmd5>
+    <version>4.4.1</version>
+    <time>1591862609</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813101</requestid>
+  </revision>
 </revisionlist>
