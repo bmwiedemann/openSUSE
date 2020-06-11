@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May  7 17:55:24 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.2.6:
+  * queueing-1.2.7 contains new features
+  * Added computation of state occupancy probabilities to functions
+    qsmm1(), qsmm1k(), qsmminf(), qsmmm(), qsmmmk()
+  * Function qncmmvaap() has been deprecated and renamed to qncmmvabs()
+  * The following deprecated functions have been removed: qnvisits(),
+    qnopensingle(), qnopenmulti(), qnopenbsb(), qnopenab(), qnmvapop(),
+    qnmvablo(), qnjackson(), qnconvolution(), qnconvolutionld(),
+    qncmva(), qnclosedsinglemva(), qnclosedsinglemvald(), qnclosedpb(),
+    qnclosedmultimva(), qnclosedab(), qnclosedbsb(), qnclosedgb(),
+    qnclosedmultimvaapprox(), qnclosedsinglemvaapprox(), qnmg1(),
+    qnmh1(), qnmm1(), qnmminf(), qnmmmk(), qnmmm(), qnmm1k(), qnammm(),
+    ctmc_bd(), ctmc_exps(), ctmc_fpt(), ctmc_mtta(), ctmc_taexps(),
+    dtmc_bd(), dtmc_exps(), dtmc_fpt(), dtmc_mtta(), dtmc_taexps(),
+    population_mix(), dtmc_is_irreducible(), ctmc_check_Q(),
+    dtmc_check_P()
+
+-------------------------------------------------------------------
 Wed Nov 27 11:51:39 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.2.6:
