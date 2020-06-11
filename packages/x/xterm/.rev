@@ -1500,4 +1500,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
   - fix some gcc, cppcheck, clang and coverity warnings.</comment>
     <requestid>788540</requestid>
   </revision>
+  <revision rev="120" vrev="2">
+    <srcmd5>a0eff5dba90d09a6513e0f43cbe7a994</srcmd5>
+    <version>353</version>
+    <time>1591862450</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812017</requestid>
+  </revision>
 </revisionlist>

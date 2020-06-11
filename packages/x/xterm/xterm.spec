@@ -101,7 +101,7 @@ bunzip2 %{basename:%{SOURCE8}} %{basename:%{SOURCE9}}
 %build
 %define xappdefs   %{_datadir}/X11/app-defaults
 %define xfontsd    %{_datadir}/fonts
-%define xterminfo  %{_libexecdir}/X11%{_sysconfdir}
+%define xterminfo  /usr/lib/X11%{_sysconfdir}
 
 %configure \
     --enable-256-color \
