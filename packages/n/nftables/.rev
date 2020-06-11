@@ -153,4 +153,12 @@
     <comment>- Add anonset-crashfix.patch [boo#1171321]</comment>
     <requestid>801122</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>613439e5faaa8ec43cfb465c03a06c67</srcmd5>
+    <version>0.9.5</version>
+    <time>1591862471</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.9.5</comment>
+    <requestid>812117</requestid>
+  </revision>
 </revisionlist>

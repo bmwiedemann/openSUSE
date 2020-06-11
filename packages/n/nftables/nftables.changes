@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun  6 12:03:35 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.9.5
+  * Support for set counters.
+  * Support for restoring set element counters via nft -f.
+  * Counter support for flowtables.
+  * typeof concatenations support for sets.
+  * Support for concatenated ranges in anonymous sets.
+  * Allow to reject packets with 802.1q from the bridge family.
+  * Support for matching on the conntrack ID.
+- Drop anonset-crashfix.patch (upstream solved differently)
+
+-------------------------------------------------------------------
 Thu May  7 11:41:07 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add anonset-crashfix.patch [boo#1171321]
