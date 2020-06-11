@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 30 23:53:01 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.3.0:
+  * Fix ipython display imports (:ghpull:`509`)
+  * Skip test_unc_paths if OS is not Windows (:ghpull:`507`)
+  * Allow interrupting input() on Windows, as part of effort to make
+    pdb interruptible (:ghpull:`498`)
+  * Add Trio Loop (:ghpull:`479`)
+  * Flush from process even without newline (:ghpull:`478`)
+
+-------------------------------------------------------------------
 Sat Apr 18 21:29:00 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 5.2.1:
