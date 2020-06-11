@@ -84,4 +84,12 @@
   * arb_shading_language_include: fix crash in process isolation</comment>
     <requestid>755563</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2f0b70309e675ec5cbf0df4a0a0bc2fd</srcmd5>
+    <version>1~20191210.603cfb975</version>
+    <time>1591880018</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with gcc10</comment>
+    <requestid>813424</requestid>
+  </revision>
 </revisionlist>

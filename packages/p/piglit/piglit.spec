@@ -1,7 +1,7 @@
 #
 # spec file for package piglit
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -109,6 +109,7 @@ be generated, including the ability to compare different test runs.
   -DPIGLIT_BUILD_GL_ES2_TESTS=OFF \
   -DPIGLIT_BUILD_GL_ES3_TESTS=OFF \
 %endif
+  -DCMAKE_C_FLAGS="%{optflags} -fcommon -DNDEBUG" \
   -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now" \
   -DCMAKE_SKIP_RPATH:BOOL=OFF \
   -DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=ON \
