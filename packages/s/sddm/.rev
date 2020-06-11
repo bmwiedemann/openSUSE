@@ -579,4 +579,14 @@ https://github.com/sddm/sddm/commit/1bc813d08b8130e458a6550ec47fb2bfbe6de080 (fo
   + 0001-Use-C-scoping-for-handling-buffer-deletion.patch no longer required</comment>
     <requestid>796293</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>7654831db4252ddfc91cdad87150a257</srcmd5>
+    <version>0.18.1</version>
+    <time>1591879393</time>
+    <user>dimstar_suse</user>
+    <comment>Why did I never submit this?
+
+- Do not restart sddm on upgrades (boo#1161826) (forwarded request 813171 from Vogtinator)</comment>
+    <requestid>813173</requestid>
+  </revision>
 </revisionlist>

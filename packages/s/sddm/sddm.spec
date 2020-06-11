@@ -209,7 +209,8 @@ fi
 %service_del_preun sddm.service
 
 %postun
-%service_del_postun sddm.service
+# Don't restart on upgrades (boo#1161826)
+%service_del_postun -n sddm.service
 [ -f %{_libexecdir}/X11/displaymanagers/sddm ] || %{_sbindir}/update-alternatives \
   --remove default-displaymanager %{_libexecdir}/X11/displaymanagers/sddm
 

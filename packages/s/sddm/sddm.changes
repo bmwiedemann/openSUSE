@@ -20,6 +20,11 @@ Fri Mar  6 10:33:37 UTC 2020 - Dr. Werner Fink <werner@suse.de>
   (currently in glibc), and the groupadd (currently in shadow)
 
 -------------------------------------------------------------------
+Sat Jan 25 23:13:48 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Do not restart sddm on upgrades (boo#1161826)
+
+-------------------------------------------------------------------
 Mon Oct 14 15:58:24 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Pickup UID_MIN/UID_MAX default values from the new %_distconfdir
