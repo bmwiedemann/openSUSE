@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 30 19:14:09 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Properly configure luajit
+
+-------------------------------------------------------------------
 Mon May 25 14:52:43 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Clean rpmlintrc as request in SR#805514 

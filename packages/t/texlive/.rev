@@ -805,4 +805,12 @@
 - TeXLive 2020 requires harfbuzz &gt;= 2.6</comment>
     <requestid>808817</requestid>
   </revision>
+  <revision rev="67" vrev="70">
+    <srcmd5>286193a85d0bdbb27faf6d5d691a68ab</srcmd5>
+    <version>unknown</version>
+    <time>1591879193</time>
+    <user>dimstar_suse</user>
+    <comment>- Properly configure luajit (forwarded request 810398 from Andreas_Schwab)</comment>
+    <requestid>810732</requestid>
+  </revision>
 </revisionlist>

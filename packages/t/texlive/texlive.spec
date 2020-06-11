@@ -39,7 +39,7 @@
 #                                          https://github.com/LuaJIT/LuaJIT/issues/42
 #	    Compare with libs/luajit/LuaJIT-<version>/src/lj_arch.h
 #
-%ifarch %ix86 x86_64 ppc %arml aarch64 mips
+%ifarch %ix86 x86_64 %arml aarch64 mips
 %global         with_LuaJIT 1
 %endif
 %bcond_with	LuaJIT
@@ -3987,9 +3987,11 @@ fi
 	    --enable-shared			\
 %if %{with LuaJIT}
 	    --enable-luajittex			\
+	    --enable-luajithbtex		\
 	    --enable-mfluajit			\
 %else
 	    --disable-luajittex			\
+	    --disable-luajithbtex		\
 	    --disable-mfluajit			\
 %endif
 	    --with-gnu-ld			\
