@@ -1,7 +1,7 @@
 #
 # spec file for package FlightGear
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,22 @@
 #
 
 
-%define main_version 2018.3
+%define main_version 2020.1
 Name:           FlightGear
-Version:        %{main_version}.4
+Version:        %{main_version}.1
 Release:        0
 Summary:        Flight Simulator
 License:        GPL-2.0-only
 Group:          Amusements/Games/3D/Simulation
-Url:            http://www.flightgear.org/
+URL:            https://www.flightgear.org/
 Source0:        https://sourceforge.net/projects/flightgear/files/release-%{main_version}/flightgear-%{version}.tar.bz2
-Source1:        %{name}.desktop
 
 BuildRequires:  SimGear-devel = %{version}
 BuildRequires:  cmake
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libboost_headers-devel
 BuildRequires:  pkgconfig
 BuildRequires:  plib-devel
 BuildRequires:  sqlite3-devel
@@ -39,17 +39,9 @@ BuildRequires:  update-desktop-files
 # Required for screensaver inhibition
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(xi)
-BuildRequires:  pkgconfig(xmu)
-%if 0%{?suse_version} > 1330
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
 
 # Additional dependencies to enable FlightGear's new Qt launcher interface
 BuildRequires:  cmake(Qt5Network)
@@ -57,9 +49,8 @@ BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
-
+# If not installed, FG downloads the data on launch
 Recommends:     FlightGear-data = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The FlightGear project is working to create a sophisticated flight
@@ -76,15 +67,6 @@ for ext in Cygwin IRIX Joystick Linux MSVC MSVC8 MacOS SimGear Unix Win32-X auto
 done
 
 %build
-modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
-DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
-TIME="\"$(date -d "${modified}" "+%%R")\""
-# sed -i -e "s@__DATE__@$DATE@g" -e "s@__TIME__@$TIME@g" utils/fgcom/fgcom.cxx src/FDM/JSBSim/FGJSBBase.cpp
-
-# remove FlightGear's default .desktop file (we ship our own)
-rm package/org.flightgear.FlightGear.desktop
-echo "# .desktop file removed for openSUSE" > package/CMakeLists.txt
-
 %cmake \
     -DFG_DATA_DIR:STRING="%{_datadir}/flightgear" \
     -DSYSTEM_SQLITE:BOOL=ON \
@@ -95,7 +77,7 @@ echo "# .desktop file removed for openSUSE" > package/CMakeLists.txt
     -DENABLE_FGVIEWER:BOOL=OFF \
     -DENABLE_FGELEV:BOOL=OFF \
     -DENABLE_METAR:BOOL=OFF
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
@@ -105,12 +87,11 @@ pushd icons
 cp -r -t %{buildroot}%{_datadir}/icons/hicolor/ 16x16 32x32 48x48 64x64 128x128 scalable
 popd
 # install desktop file
-%suse_update_desktop_file -i %{name}
+%suse_update_desktop_file org.flightgear.FlightGear
 # remove obsolete utilities
 cd %{buildroot}%{_bindir} && rm -f GPSsmooth MIDGsmooth UGsmooth metar yasim yasim-proptest
 
 %files
-%defattr(-,root,root,-)
 %doc AUTHORS ChangeLog NEWS README Thanks docs-mini/*
 %license COPYING
 %{_mandir}/man1/*
