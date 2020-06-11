@@ -33,4 +33,22 @@
     <comment></comment>
     <requestid>652175</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>468b20366c9931638199ac5220c5f36c</srcmd5>
+    <version>2.9</version>
+    <time>1591879978</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.9
+  * New configuration variable DEFAULT_PIDFILE_NAME
+    Use it to alter the default pidfile location, e.g.:
+    ./configure DEFAULT_PIDFILE_NAME=/var/dico/dicod.pid
+  * Fix compilation on 32-bit systems
+- Changes for version 2.8&quot;
+  * Fix out-of-boundary memory access in metaphone2 encoder
+  * Fix eventual access to freed memory block
+  * Rewrite utf8_iterator to work with non zero terminated strings.
+  * Fix the build on OpenBSD
+- Fix building with gcc10</comment>
+    <requestid>813458</requestid>
+  </revision>
 </revisionlist>

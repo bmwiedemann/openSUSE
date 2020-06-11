@@ -1,7 +1,7 @@
 #
 # spec file for package dico
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         sover 2
 %define         lib_name lib%{name}%{sover}
 Name:           dico
-Version:        2.7
+Version:        2.9
 Release:        0
 Summary:        Flexible modular implementation of DICT server (RFC 2229)
 License:        GPL-3.0-or-later
@@ -30,6 +30,7 @@ Source1:        https://ftp.gnu.org/gnu/dico/dico-%{version}.tar.xz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
 BuildRequires:  groff
 BuildRequires:  guile-devel
+BuildRequires:  libtool
 BuildRequires:  m4
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
@@ -44,9 +45,7 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       m4
 Requires(post): info
 Requires(preun): info
-Recommends:     %{name}-lang
 Recommends:     %{name}-modules
-%lang_package
 
 %description
 GNU Dico is a flexible modular implementation of DICT server (RFC 2229). In
@@ -93,18 +92,18 @@ This package contains extensions and modules for %{name}.
 %setup -q
 
 %build
+export CFLAGS="%{optflags} -fcommon"
 %configure \
   PYTHON=%{_bindir}/python3 \
   PYTHON_CONFIG=%{_bindir}/python3-config \
   DEFAULT_DICT_SERVER=dict.org \
   --libexecdir=%{_bindir} \
   --enable-static=no
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f \( -name '*.a' -o -name '*.la' \) -delete -print
-%find_lang %{name}
 
 %post -n %{lib_name} -p /sbin/ldconfig
 %postun -n %{lib_name} -p /sbin/ldconfig
@@ -130,8 +129,6 @@ find %{buildroot} -type f \( -name '*.a' -o -name '*.la' \) -delete -print
 %{_mandir}/man1/dico.1%{?ext_man}
 %{_mandir}/man5/dicod.conf.5%{?ext_man}
 %{_mandir}/man8/dicod.8%{?ext_man}
-
-%files lang -f %{name}.lang
 
 %files -n %{lib_name}
 %{_libdir}/libdico.so.%{sover}*

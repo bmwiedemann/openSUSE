@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 11 10:13:35 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.9
+  * New configuration variable DEFAULT_PIDFILE_NAME
+    Use it to alter the default pidfile location, e.g.:
+    ./configure DEFAULT_PIDFILE_NAME=/var/dico/dicod.pid
+  * Fix compilation on 32-bit systems
+- Changes for version 2.8"
+  * Fix out-of-boundary memory access in metaphone2 encoder
+  * Fix eventual access to freed memory block
+  * Rewrite utf8_iterator to work with non zero terminated strings.
+  * Fix the build on OpenBSD
+- Fix building with gcc10
+
+-------------------------------------------------------------------
 Wed Nov 21 16:03:45 UTC 2018 - jbrielmaier@suse.de
 
  BuildRequire guile-devel to make transition to Guile 2.2 easier
