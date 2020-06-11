@@ -65,6 +65,8 @@ Patch0:         xine-ui-various.diff
 #PATCH_FIX-OPENSUSE xine-ui-desktop.patch davejplater@gmail.com - remove desktop file errors
 Patch1:         xine-ui-desktop.patch
 Patch2:         xine-ui-lirc.diff
+# PATCH-FIX-UPSTREAM
+Patch3:         fix-crashes.patch
 # *** SUSE only changes
 Patch50:        xine-ui-crippled-LOCAL.diff
 Patch60:        xine-ui-AUTOMAKE.diff
@@ -86,6 +88,7 @@ Authors:
 echo %{with distributable}
 %setup -q
 %patch2 -p1
+%patch3 -p1
 %patch0
 #%%patch22 -p1
 %patch50 -p0

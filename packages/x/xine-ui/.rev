@@ -277,4 +277,12 @@
     <comment>fix  crash</comment>
     <requestid>767928</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>c8866e3d60a24896611fd284147c1e73</srcmd5>
+    <version>0.99.12</version>
+    <time>1591862686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813085</requestid>
+  </revision>
 </revisionlist>

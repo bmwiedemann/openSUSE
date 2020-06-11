@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 10 04:51:41 UTC 2020 - wbauer@tmo.at
+
+- Add fix-crashes.patch to fix crashes when using older skins
+
+-------------------------------------------------------------------
 Tue Jan 28 06:51:56 UTC 2020 - wbauer@tmo.at
 
 - Update xine-ui-crippled-LOCAL.diff to fix a crash when changing
