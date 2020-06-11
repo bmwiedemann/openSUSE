@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 10 13:51:24 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST: import AutoInstall only when needed (related to
+  bsc#1171335).
+- 4.3.5
+
+-------------------------------------------------------------------
+Wed Jun 10 08:57:22 UTC 2020 - Stefan Schubert <schubi@suse.com>
+
+- AutoYaST: Cleanup/improve issue handling (bsc#1171335).
+- 4.3.4
+
+-------------------------------------------------------------------
 Wed Jun  3 08:54:07 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
 
 - update comments in /etc/sysconfig/bootloader (bsc#1171912)
