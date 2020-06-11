@@ -35,7 +35,7 @@ Recommends:     python-defusedxml
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module defusedxml}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -62,7 +62,7 @@ mv %{buildroot}%{_bindir}/runxlrd.py %{buildroot}%{_bindir}/runxlrd
 %python_uninstall_alternative runxlrd
 
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
 %doc README.md

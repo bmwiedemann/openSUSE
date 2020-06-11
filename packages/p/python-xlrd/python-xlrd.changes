@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 29 10:47:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Replace nose with python
+
+-------------------------------------------------------------------
 Fri May 15 09:23:16 UTC 2020 - pgajdos@suse.com
 
 - %python3_only -> %python_alternative
