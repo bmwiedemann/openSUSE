@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 11 12:06:37 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.5.0
+  * Fix TLS-ALPN test that fails when run with newer versions of OpenSSL.
+
+-------------------------------------------------------------------
 Thu May 14 08:22:21 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 1.4.0
