@@ -1,5 +1,0 @@
-<package name="mailnag" project="openSUSE:Factory">
-  <title>Mailnag</title>
-  <description>An extensible mail notification daemon.</description>
-  <devel project="server:mail" package="mailnag"/>
-</package>

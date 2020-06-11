@@ -39,9 +39,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with python2}
-BuildRequires:  python2-unittest2
-%endif
 Requires:       python-Babel >= 2.0
 Requires:       python-future
 Requires:       python-isodate >= 0.5.4

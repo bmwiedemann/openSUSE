@@ -36,6 +36,7 @@ Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.
 Source1:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2.sig
 Source2:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2.sha1
 Source3:        %name.keyring
+Patch0:         0001-bitbang-Fix-FTBFS-with-GCC-10.patch
 BuildRequires:  autoconf >= 2.64
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -81,6 +82,7 @@ This package provides hardware description files and documentation.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %if !%{external_jimtcl}

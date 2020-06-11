@@ -1,0 +1,49 @@
+From 3bdef6d1aa1f64c03816af68bd5fb2bd1bbb29be Mon Sep 17 00:00:00 2001
+From: Prasanna Kumar Kalever <prasanna.kalever@redhat.com>
+Date: Fri, 29 May 2020 15:05:35 +0530
+Subject: [PATCH 3/4] saveconfig: set right perms on backup dir
+
+Signed-off-by: Prasanna Kumar Kalever <prasanna.kalever@redhat.com>
+---
+ targetcli/ui_root.py | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/targetcli/ui_root.py b/targetcli/ui_root.py
+index 6e99b8cfcb78..b24c789f213d 100644
+--- a/targetcli/ui_root.py
++++ b/targetcli/ui_root.py
+@@ -109,12 +109,21 @@ class UIRoot(UINode):
+         backupfile = backup_dir + backup_name
+         backup_error = None
+ 
++        mode = stat.S_IRUSR | stat.S_IWUSR # 0o600
++        umask = 0o777 ^ mode  # Prevents always downgrading umask to 0
++
+         if not os.path.exists(backup_dir):
++            umask_original = os.umask(umask)
+             try:
+-                os.makedirs(backup_dir)
++                os.makedirs(backup_dir, mode)
+             except OSError as exe:
+                 raise ExecutionError("Cannot create backup directory [%s] %s."
+                                      % (backup_dir, exe.strerror))
++            finally:
++                os.umask(umask_original)
++        else:
++            if (os.stat(backup_dir).st_mode & 0o777) != mode:
++                os.chmod(backup_dir, mode)
+ 
+         # Only save backups if savefile exits
+         if not os.path.exists(savefile):
+@@ -125,8 +134,6 @@ class UIRoot(UINode):
+ 
+         # Save backup if backup dir is empty, or savefile is differnt from recent backup copy
+         if not backed_files_list or not self._compare_files(backed_files_list[-1], savefile):
+-            mode = stat.S_IRUSR | stat.S_IWUSR # 0o600
+-            umask = 0o777 ^ mode  # Prevents always downgrading umask to 0
+             umask_original = os.umask(umask)
+             try:
+                 with open(savefile, 'rb') as f_in, gzip.open(backupfile, 'wb') as f_out:
+-- 
+2.26.2
+

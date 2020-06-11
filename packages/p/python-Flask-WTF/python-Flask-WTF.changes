@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 10 08:30:32 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- replace nose with pytest
+
+-------------------------------------------------------------------
 Sat Feb  8 20:58:05 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

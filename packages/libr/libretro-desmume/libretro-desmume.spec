@@ -29,6 +29,8 @@ BuildRequires:  Mesa-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libpcap-devel
 BuildRequires:  make
+# On Arm, only armv7 is supported
+ExcludeArch:    aarch64 armv6l armv6hl
 
 %description
 DeSmuME is a Nintendo DS emulator. This package is for
@@ -39,7 +41,12 @@ RetroArch/libretro front-end.
 
 %build
 cd desmume/src/frontend/libretro
-make -f Makefile.libretro
+make \
+%ifarch armv7l armv7hl
+  platform=classic_armv7_a7 \
+  LDFLAGS="$LDFLAGS -pthread " \
+%endif
+  -f Makefile.libretro
 
 %install
 mkdir -p %{buildroot}%{_libdir}/libretro

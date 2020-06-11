@@ -27,10 +27,8 @@ URL:            https://lkiesow.github.io/python-feedgen
 # Use GitHub tarball as PyPI release lacks tests
 Source:         https://github.com/lkiesow/python-feedgen/archive/v%{version}.tar.gz#/feedgen-%{version}.tar.gz
 # Source:         https://files.pythonhosted.org/packages/source/f/feedgen/feedgen-%%{version}.tar.gz
-BuildRequires:  %{python_module bandit}
-BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -55,11 +53,7 @@ format. It has support for extensions.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py develop --user
-%make_build test
-%python_exec -m feedgen
-%python_exec -m feedgen atom
-%python_exec -m feedgen rss
+%pytest
 
 %files %{python_files}
 %{python_sitelib}/*

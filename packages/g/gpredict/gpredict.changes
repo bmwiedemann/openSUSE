@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 10 10:29:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Set CFLAGS+=-fcommon to workaround gcc10 errors (boo#1160244)
+
+-------------------------------------------------------------------
 Mon Jan 22 19:10:40 UTC 2018 - mardnh@gmx.de
 
 - Update to version 2.2.1

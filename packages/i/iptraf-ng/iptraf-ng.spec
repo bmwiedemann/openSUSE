@@ -17,7 +17,7 @@
 
 
 Name:           iptraf-ng
-Version:        1.1.4
+Version:        1.2.0
 Release:        0
 Summary:        TCP/IP Network Monitor
 License:        GPL-2.0-or-later
@@ -25,9 +25,7 @@ Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/iptraf-ng/iptraf-ng/
 
 Source:         https://github.com/iptraf-ng/iptraf-ng/archive/v%version.tar.gz
-Patch1:         iptraf-ng-1.1.4-fix-Floating-point-exception-in-tcplog_flowra.patch
-Patch2:         build-use-wide-version-of-lpanel-when-needed.patch
-Patch3:         0001-ifstats-make-sort-by-ifname-the-only-mode-of-operati.patch
+Patch1:         0001-Revert-TPACKET_V3-mlock-mmap-ed-address-space-into-R.patch
 Obsoletes:      iptraf < 4
 # Just pick a number that is >3
 Provides:       iptraf = 4
@@ -45,12 +43,10 @@ breakdowns, and LAN station packet and byte counts.
 %autosetup -n %name-%version -p1
 
 %build
-if [ ! -e configure ]; then autoreconf -fi; fi
-%configure
-make %{?_smp_mflags}
+make %{?_smp_mflags} CFLAGS="%optflags -D_GNU_SOURCE" V=1
 
 %install
-%make_install
+%make_install prefix="%_prefix" V=1
 b="%buildroot"
 install -dm 0755 "$b/%_localstatedir/lib/iptraf-ng"
 ln -s iptraf-ng "$b/%_sbindir/iptraf"
@@ -58,9 +54,7 @@ ln -s iptraf-ng.8 "$b/%_mandir/man8/iptraf.8"
 
 %files
 %_sbindir/iptraf*
-%_sbindir/rvnamed*
 %_mandir/man8/iptraf*
-%_mandir/man8/rvnamed*
 %_localstatedir/lib/iptraf-ng
 
 %changelog

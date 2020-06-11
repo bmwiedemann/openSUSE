@@ -1,7 +1,7 @@
 #
 # spec file for package pam_csync
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,16 +21,14 @@ BuildRequires:  cmake
 BuildRequires:  libcsync-devel
 BuildRequires:  libiniparser-devel
 BuildRequires:  pam-devel
-Version:        0.42.0
+Version:        0.43.0
 Release:        0
 Summary:        A PAM module for roaming home directories
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Libraries
-Url:            http://www.csync.org/
-Source0:        %{name}-%{version}.tar.bz2
+URL:            http://www.csync.org/
+Source0:        https://gitlab.com/csync/pam_csync/-/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM 0001-Remove-backward-compatibility-option-for-newer-cmake.patch
-Patch1:         0001-Remove-backward-compatibility-option-for-newer-cmake.patch
 # PATCH-FIX-UPSTREAM 0002-Update-FSF-address.patch
 Patch2:         0002-Update-FSF-address.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -49,40 +47,18 @@ Authors:
 
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
-if test ! -d "build"; then
-  mkdir build
-fi
-pushd build
-cmake \
-  -DCMAKE_C_FLAGS:STRING="%{optflags}" \
-  -DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo \
-  -DCMAKE_SKIP_RPATH:BOOL=ON \
-  -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
-  -DSYSCONF_INSTALL_DIR:PATH=%{_sysconfdir} \
-%if %{_lib} == lib64
-  -DLIB_SUFFIX=64 \
-%endif
-  %{_builddir}/%{name}-%{version}
-
-%__make %{?jobs:-j%jobs} VERBOSE=1
-popd
+%cmake
+%cmake_build
 
 %install
-pushd build
-make DESTDIR=%{buildroot} install
-popd
-
-%clean
-%__rm -rf %{buildroot}
+%cmake_install
 
 %files
-%defattr(-,root,root)
-%doc COPYING FAQ README
+%doc FAQ README
+%license COPYING
 /%{_lib}/security/pam_csync.so
 %dir %{_sysconfdir}/security
 %config(noreplace) %{_sysconfdir}/security/pam_csync.conf

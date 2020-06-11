@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 11 00:58:07 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
+
+- update version 4.6.1
+  * CI: Use specific job tags
+  * use debhelper 11 for integrated meson support
+  * CI: Target Mint 20 and LMDE 4
+  
+-------------------------------------------------------------------
 Mon Mar 16 14:42:30 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - update version 4.4.1

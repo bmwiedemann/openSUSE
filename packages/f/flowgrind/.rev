@@ -26,4 +26,12 @@
     + Traffic Generation: contradicting examples</comment>
     <requestid>482585</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c719636b10855b71c9bc19e23247c638</srcmd5>
+    <version>0.8.0</version>
+    <time>1591863122</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with gcc10</comment>
+    <requestid>813393</requestid>
+  </revision>
 </revisionlist>

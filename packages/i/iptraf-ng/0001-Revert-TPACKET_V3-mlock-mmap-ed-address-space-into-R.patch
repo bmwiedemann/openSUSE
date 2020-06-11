@@ -1,0 +1,40 @@
+From 3eca8d3c345f6fff90111cac7ef707da7cb7cb80 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Wed, 10 Jun 2020 17:04:00 +0200
+Subject: [PATCH] Revert "TPACKET_V3: mlock() mmap()ed address space into RAM"
+References: https://github.com/iptraf-ng/iptraf-ng/issues/26
+
+This reverts commit 043b0387fbd11670b8b09fc5bde168345648d32d.
+---
+ src/capt-mmap-v3.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/src/capt-mmap-v3.c b/src/capt-mmap-v3.c
+index 1b2b652..fd0bf50 100644
+--- a/src/capt-mmap-v3.c
++++ b/src/capt-mmap-v3.c
+@@ -101,8 +101,6 @@ static void capt_cleanup_mmap_v3(struct capt *capt)
+ 	struct capt_data_mmap_v3 *data = capt->priv;
+ 
+ 	free(data->pbds);
+-
+-	munlock(data->mmap, data->mmap_size);
+ 	munmap(data->mmap, data->mmap_size);
+ 
+ 	memset(data, 0, sizeof(*data));
+@@ -140,11 +138,7 @@ int capt_setup_mmap_v3(struct capt *capt)
+ 	void *map = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, capt->fd, 0);
+ 	if (map == MAP_FAILED)
+ 		return -1;
+-
+-	if (mlock(map, size) != 0) {
+-		munmap(map, size);
+-		return -1;
+-	}
++	/* mlock() ??? */
+ 
+ 	struct capt_data_mmap_v3 *data = xmallocz(sizeof(struct capt_data_mmap_v3));
+ 
+-- 
+2.26.2
+

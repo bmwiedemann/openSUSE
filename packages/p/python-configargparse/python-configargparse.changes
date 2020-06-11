@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 10 15:57:44 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Remove unnecessary dependency on unittest2
+
+-------------------------------------------------------------------
 Mon Jun  1 11:01:45 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.2.3

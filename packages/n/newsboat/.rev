@@ -507,4 +507,12 @@ run -osc service localrun format_spec_file to fix copyright
     (Alexander Batischev) (Kudos to Marcos Cruz)</comment>
     <requestid>787373</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>89bb6b8fa05ce6da261c3b3bf0f31781</srcmd5>
+    <version>2.19</version>
+    <time>1591862774</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813127</requestid>
+  </revision>
 </revisionlist>

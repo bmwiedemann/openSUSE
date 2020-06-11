@@ -556,4 +556,15 @@
     <comment></comment>
     <requestid>811176</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>bb6eaabda393349acdffc3793e175791</srcmd5>
+    <version>1.4.6</version>
+    <time>1591863062</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.6
+  * Installer: Fix regression in SMTP test section (#7417)
+- renamed roundcubemail-1.4.5-config_dir.patch to
+  roundcubemail-1.4.6-config_dir.patch</comment>
+    <requestid>813299</requestid>
+  </revision>
 </revisionlist>

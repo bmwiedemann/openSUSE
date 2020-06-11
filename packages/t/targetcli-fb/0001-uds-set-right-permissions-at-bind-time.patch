@@ -1,0 +1,53 @@
+From e347f7ea20547052e8fc1b65cba5e3f3ef2bf3d8 Mon Sep 17 00:00:00 2001
+From: Prasanna Kumar Kalever <prasanna.kalever@redhat.com>
+Date: Fri, 29 May 2020 18:31:21 +0530
+Subject: [PATCH 1/4] uds: set right permissions at bind() time
+
+We fixed it earlier with commit 6e4f39357a90a914d11bac21cc2d2b52c07c213d
+but that fixes the issue when someone run the targetclid with systemd
+only.
+
+If we don't use targetclid.socket and want to run `targetclid` from
+command line, then socket.bind() will create the file with default
+permissions.
+
+Hence its good if we can guard the permissions right at the time of .bind()
+
+Signed-off-by: Prasanna Kumar Kalever <prasanna.kalever@redhat.com>
+---
+ daemon/targetclid | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/daemon/targetclid b/daemon/targetclid
+index 329cede5da87..9bf8ae7ed14e 100755
+--- a/daemon/targetclid
++++ b/daemon/targetclid
+@@ -28,6 +28,7 @@ from threading import Thread
+ 
+ import os
+ import sys
++import stat
+ import socket
+ import struct
+ import fcntl
+@@ -238,12 +239,17 @@ def main():
+         # save socket so a signal can clea it up
+         to.sock = sock
+ 
++        mode = stat.S_IRUSR | stat.S_IWUSR # 0o600
++        umask = 0o777 ^ mode  # Prevents always downgrading umask to 0
++        umask_original = os.umask(umask)
+         # Bind the socket path
+         try:
+             sock.bind(to.socket_path)
+         except socket.error as err:
+             to.display(to.render(err.strerror, 'red'))
+             sys.exit(1)
++        finally:
++            os.umask(umask_original)
+ 
+         # Listen for incoming connections
+         try:
+-- 
+2.26.2
+

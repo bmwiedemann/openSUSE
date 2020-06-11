@@ -67,6 +67,25 @@ firmware files for Raspberry Pi 4
 mkdir -p %{buildroot}/boot/vc
 cp -a boot/*.elf boot/*.bin boot/*.dat boot/LICENCE.broadcom %{buildroot}/boot/vc
 
+mkdir -p %{buildroot}%{_prefix}/lib/sysctl.d/
+cat > %{buildroot}%{_prefix}/lib/sysctl.d/50-rpi3.conf <<-'EOF'
+	# Avoid running out of DMA pages for smsc95xx (bsc#1012449)
+	vm.min_free_kbytes = 2048
+EOF
+
+mkdir -p %{buildroot}%{_prefix}/lib/modprobe.d/
+cat > %{buildroot}%{_prefix}/lib/modprobe.d/50-rpi3.conf <<-'EOF'
+	# Prevent too many page allocations (bsc#1012449)
+	options smsc95xx turbo_mode=N
+EOF
+
+mkdir -p %{buildroot}%{_prefix}/lib/dracut/dracut.conf.d/
+cat > %{buildroot}%{_prefix}/lib/dracut/dracut.conf.d/raspberrypi_modules.conf <<-'EOF'
+	# Add necessary kernel modules to the initrd
+	add_drivers+=" bcm2835_dma dwc2 " # bsc#1084272
+	add_drivers+=" pcie-brcmstb " # boo#1162669
+EOF
+
 %post
 if mountpoint -q /boot/efi && [[ ! -L /boot/efi ]]; then
   for f in start.elf start4.elf fixup.dat fixup4.dat bootcode.bin; do
@@ -114,17 +133,22 @@ if [ $1 -eq 0 ] && mountpoint -q /boot/efi && [[ ! -L /boot/efi ]]; then
 fi
 
 %files
-%defattr(-,root,root)
+%license /boot/vc/LICENCE.broadcom
 %dir /boot/vc
 /boot/vc/start.elf
 /boot/vc/start4.elf
 /boot/vc/fixup.dat
 /boot/vc/fixup4.dat
 /boot/vc/bootcode.bin
-%license /boot/vc/LICENCE.broadcom
+%dir %{_prefix}/lib/dracut/
+%dir %{_prefix}/lib/dracut/dracut.conf.d/
+%{_prefix}/lib/dracut/dracut.conf.d/raspberrypi_modules.conf
+%dir %{_prefix}/lib/modprobe.d/
+%{_prefix}/lib/modprobe.d/50-rpi3.conf
+%dir %{_prefix}/lib/sysctl.d/
+%{_prefix}/lib/sysctl.d/50-rpi3.conf
 
 %files extra
-%defattr(-,root,root)
 /boot/vc/start_cd.elf
 /boot/vc/start_db.elf
 /boot/vc/start_x.elf
@@ -133,7 +157,6 @@ fi
 /boot/vc/fixup_x.dat
 
 %files extra-pi4
-%defattr(-,root,root)
 /boot/vc/start4cd.elf
 /boot/vc/start4db.elf
 /boot/vc/start4x.elf

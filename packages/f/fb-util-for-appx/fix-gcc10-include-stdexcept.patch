@@ -1,0 +1,28 @@
+From: Jeff Kowalczyk <jkowalczyk@suse.com>
+Date: Wed, 10 Jun 2020 10:00:20 -0700
+Subject: [PATCH] Add File.h #include <stdexcept> to compile with gcc10
+References: boo#1172654
+Upstream: dead
+
+Add #include <stdexcept> to PrivateHeaders/APPX/File.h to fix
+compilation errors with gcc10.
+
+---
+ PrivateHeaders/APPX/File.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/PrivateHeaders/APPX/File.h b/PrivateHeaders/APPX/File.h
+index 3af3eba..76d7541 100644
+--- a/PrivateHeaders/APPX/File.h
++++ b/PrivateHeaders/APPX/File.h
+@@ -15,6 +15,7 @@
+ #include <errno.h>
+ #include <memory>
+ #include <string>
++#include <stdexcept>
+ 
+ namespace facebook {
+ namespace appx {
+-- 
+2.26.2
+

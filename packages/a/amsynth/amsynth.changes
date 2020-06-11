@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  9 19:52:51 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.10.0:
+  + Implemented smoothing / de-zippering to improve sound quality
+    while adjusting parameters.
+  + amsynth user files (config, banks, etc.) now live in
+    XDG-compliant directories.
+  + Added jack_autoconnect configuration option.
+  + Disabled VST GUI in REAPER.
+
+-------------------------------------------------------------------
 Thu Oct 17 13:07:01 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove obsolete Groups tag (fate#326485)

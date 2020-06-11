@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  9 15:29:13 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid OOM errors seen in Tumbleweed
+
+-------------------------------------------------------------------
 Mon Jul 29 22:15:18 CDT 2019 - relliott@umn.edu
 
 - Update to 2019-07-25

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 10 07:44:05 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.10:
+  * mu4e-headers: require mule-util for truncate-string-ellipsis 
+
+-------------------------------------------------------------------
 Mon Jun  8 07:50:12 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.9:

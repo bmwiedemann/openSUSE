@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun  7 14:27:25 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to 1.4.6
+  * Installer: Fix regression in SMTP test section (#7417)
+- renamed roundcubemail-1.4.5-config_dir.patch to
+  roundcubemail-1.4.6-config_dir.patch
+
+-------------------------------------------------------------------
 Wed Jun  3 08:20:49 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
 
 - update to 1.4.5

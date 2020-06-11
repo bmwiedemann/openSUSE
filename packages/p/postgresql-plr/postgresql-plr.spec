@@ -1,7 +1,7 @@
 #
 # spec file for package postgresql-plr
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@
 %endif
 # Thanks upstream :-)
 %define sname plr
-%define sversion REL8_3_0_18
+%define sversion REL8_4
 # Make our path like what postgresql packager decide
 
 %if 0%{?sles_version} == 11
@@ -36,14 +36,14 @@ Summary:        PL/R - R Procedural Language for PostgreSQL
 License:        GPL-2.0-or-later
 Group:          Productivity/Databases/Servers
 Name:           %{pgname}-%{sname}
-Version:        8.3.0.18
+Version:        8.4
 Release:        1.0
 Source:         https://github.com/postgres-plr/plr/archive/%{sversion}.tar.gz
 Source1:        readme.SUSE
 Source2:        plr-US.pdf
 Source99:       series
 Patch0:         patch-Makefile-ldflags.patch
-Url:            https://github.com/postgres-plr/plr/
+URL:            https://github.com/postgres-plr/plr/
 BuildRequires:  %{pgname}-server
 BuildRequires:  %{pgname}-server-devel
 BuildRequires:  R-base
@@ -95,7 +95,7 @@ This package contain the associated documentation
 %patch0 -p1
 # Need to fix spurious rights in doc and root
 find ./ -type f -exec chmod 0644 {} \;
-cp -v %{S:2} doc/
+cp -v %{S:2} .
 
 %build
 export PATH="$PATH:/usr/lib/%{pgname}/bin"
@@ -134,8 +134,8 @@ cp -a %{S:1} .
 
 %files
 %defattr(644, root, root, 0755)
-%doc README.plr 
-%doc readme.SUSE 
+%doc README.md
+%doc readme.SUSE
 %dir %{extensiondir}/
 %{extensiondir}/%{sname}.control
 %{extensiondir}/%{sname}*.sql
@@ -144,9 +144,9 @@ cp -a %{S:1} .
 %dir %{pkglibs}
 %{pkglibs}/%{sname}.so
 
-%files doc 
+%files doc
 %defattr(644, root, root, 0755)
-%doc doc/*
+%doc *pdf
 %doc expected/plr.out
 
 %changelog

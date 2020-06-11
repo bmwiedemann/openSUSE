@@ -19,7 +19,7 @@
 %define mod_name rq
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rq
-Version:        1.3.0
+Version:        1.4.2
 Release:        0
 Summary:        Easy Job Queues for Python
 License:        Apache-2.0
@@ -34,6 +34,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  psmisc
 BuildRequires:  python-rpm-macros
+BuildRequires:  redis
 Requires:       python-click >= 3.0
 Requires:       python-redis >= 3.0.0
 Requires(post): update-alternatives

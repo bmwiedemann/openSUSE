@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 10 01:25:12 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Added 4 upstream commits for CVE-2020-13867 (bsc#1172743),
+  adding patches:
+  * 0001-uds-set-right-permissions-at-bind-time.patch
+  * 0002-saveconfig-set-0o600-perms-on-backupfiles.patch
+  * 0003-saveconfig-set-right-perms-on-backup-dir.patch
+  * 0004-saveconfig-set-right-perms-on-etc-target-dir.patch
+
+-------------------------------------------------------------------
 Thu May 21 17:38:48 UTC 2020 - lduncan@suse.com
 
 - Update to version 2.1.52:

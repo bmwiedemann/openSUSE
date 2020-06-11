@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_with     test
+%bcond_without     test
 Name:           python-Flask-WTF
 Version:        0.14.3
 Release:        0
@@ -40,7 +40,7 @@ BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module WTForms}
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module itsdangerous}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
 
@@ -60,7 +60,7 @@ Adds WTForms support to your Flask application
 %if %{with test}
 %check
 export LANG=en_US.UTF-8
-%python_expand nosetests-%{$python_bin_suffix} tests
+%pytest tests
 %endif
 
 %files %{python_files}

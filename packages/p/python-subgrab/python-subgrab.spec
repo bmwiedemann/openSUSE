@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-subgrab
-Version:        0.17
+Version:        1.0.4
 Release:        0
 Summary:        Script to download subtitles for media files
 License:        GPL-3.0-only
 URL:            https://github.com/RafayGhafoor/Subscene-Subtitle-Grabber
-Source:         https://files.pythonhosted.org/packages/source/s/subgrab/subgrab-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/s/subgrab/subgrab-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

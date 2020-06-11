@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  5 14:06:09 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Move config tweaks to this package (boo#1172387)
+
+-------------------------------------------------------------------
 Wed Apr  8 15:40:48 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Add cma-default option to vc4-kms-v3d overlay to mimic the previous default

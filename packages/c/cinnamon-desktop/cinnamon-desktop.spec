@@ -23,7 +23,7 @@
 %define typelib typelib-1_0-CinnamonDesktop-3_0
 %define typelib_cvc typelib-1_0-Cvc-1_0
 Name:           cinnamon-desktop
-Version:        4.4.1
+Version:        4.6.1
 Release:        0
 Summary:        Libcinnamon-desktop API
 License:        GPL-2.0-or-later AND MIT

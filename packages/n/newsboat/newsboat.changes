@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  9 15:07:47 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on non-x86:
+  * newsboat-fix-json-hpp.patch
+
+-------------------------------------------------------------------
 Mon Mar 23 08:59:21 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.19:

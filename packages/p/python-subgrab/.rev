@@ -35,4 +35,14 @@
     <comment></comment>
     <requestid>807159</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9d0ba8d9594535ba2fe3e6e48161c111</srcmd5>
+    <version>1.0.4</version>
+    <time>1591863148</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.4:
+  * No changelog.
+- URL changed to a tarball.</comment>
+    <requestid>813362</requestid>
+  </revision>
 </revisionlist>

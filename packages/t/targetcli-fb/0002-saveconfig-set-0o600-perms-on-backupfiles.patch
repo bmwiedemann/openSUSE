@@ -1,0 +1,35 @@
+From 1940a17986deaab92e6be395f20ee55dac0ac2bd Mon Sep 17 00:00:00 2001
+From: Prasanna Kumar Kalever <prasanna.kalever@redhat.com>
+Date: Fri, 29 May 2020 14:51:28 +0530
+Subject: [PATCH 2/4] saveconfig: set 0o600 perms on backupfiles
+
+Signed-off-by: Prasanna Kumar Kalever <prasanna.kalever@redhat.com>
+---
+ targetcli/ui_root.py | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/targetcli/ui_root.py b/targetcli/ui_root.py
+index 26815bd2b8fa..6e99b8cfcb78 100644
+--- a/targetcli/ui_root.py
++++ b/targetcli/ui_root.py
+@@ -125,12 +125,17 @@ class UIRoot(UINode):
+ 
+         # Save backup if backup dir is empty, or savefile is differnt from recent backup copy
+         if not backed_files_list or not self._compare_files(backed_files_list[-1], savefile):
++            mode = stat.S_IRUSR | stat.S_IWUSR # 0o600
++            umask = 0o777 ^ mode  # Prevents always downgrading umask to 0
++            umask_original = os.umask(umask)
+             try:
+                 with open(savefile, 'rb') as f_in, gzip.open(backupfile, 'wb') as f_out:
+                     shutil.copyfileobj(f_in, f_out)
+                     f_out.flush()
+             except IOError as ioe:
+                 backup_error = ioe.strerror or "Unknown error"
++            finally:
++                os.umask(umask_original)
+ 
+             if backup_error == None:
+                 # remove excess backups
+-- 
+2.26.2
+

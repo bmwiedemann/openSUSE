@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jun 11 05:04:56 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.4.2:
+  * RQ 1.4.2 (2020-05-26)
+    + Reverted changes to hmset command which causes workers on Redis server < 4 to crash. Thanks @selwin!
+    + Merged in more groundwork to enable jobs with multiple dependencies. Thanks @thomasmatecki!
+  * RQ 1.4.1 (2020-05-16)
+    + Default serializer now uses pickle.HIGHEST_PROTOCOL for backward compatibility reasons. Thanks @bbayles!
+    + Avoid deprecation warnings on redis-py >= 3.5.0. Thanks @bbayles!
+  * RQ 1.4.0 (2020-05-13)
+    + Custom serializer is now supported. Thanks @solababs!
+    + delay() now accepts job_id argument. Thanks @grayshirt!
+    + Fixed a bug that may cause early termination of scheduled or requeued jobs. Thanks @rmartin48!
+    + When a job is scheduled, always add queue name to a set containing active RQ queue names. Thanks @mdawar!
+    + Added --sentry-ca-certs and --sentry-debug parameters to rq worker CLI. Thanks @kichawa!
+    + Jobs cleaned up by StartedJobRegistry are given an exception info. Thanks @selwin!
+
+-------------------------------------------------------------------
+Wed Jun 10 16:49:11 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- BR redis to make the testsuite work 
+
+-------------------------------------------------------------------
 Tue May 19 09:27:47 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

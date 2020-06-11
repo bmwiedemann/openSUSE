@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 10 08:55:21 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.4.1
+  - Fixes compilation issues with GCC10
+- Disable parallel build to avoid OoM errors in OBS
+
+-------------------------------------------------------------------
 Wed Feb  5 13:21:34 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Cleanup spec file

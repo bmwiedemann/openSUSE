@@ -34,6 +34,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 %if %{with python2}
+# Required because of otherwise missing assertWarns
 BuildRequires:  python2-unittest2
 %endif
 BuildRequires:  fdupes

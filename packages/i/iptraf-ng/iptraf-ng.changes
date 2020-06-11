@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 10 14:44:22 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.0
+  * A set of minor bugfixes.
+  * Fix CPU hogging if the interface gets removed [rhbz#1572750]
+- Drop iptraf-ng-1.1.4-fix-Floating-point-exception-in-tcplog_flowra.patch,
+  build-use-wide-version-of-lpanel-when-needed.patch,
+  0001-ifstats-make-sort-by-ifname-the-only-mode-of-operati.patch
+  (merged)
+- Add 0001-Revert-TPACKET_V3-mlock-mmap-ed-address-space-into-R.patch
+
+-------------------------------------------------------------------
 Sun Jan 12 14:45:33 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Employ new homepage URLs.

@@ -1,7 +1,7 @@
 #
 # spec file for package gpredict
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           gpredict
 Version:        2.2.1
 Release:        0
 Summary:        Realtime satellite tracking and orbit prediction application
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Hamradio/Other
-Url:            http://gpredict.oz9aec.net/
+URL:            http://gpredict.oz9aec.net/
 Source:         https://github.com/csete/gpredict/releases/download/v%{version}/gpredict-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -55,6 +55,7 @@ satellite, and provide you with detailed information about each pass.
 %setup -q
 
 %build
+export CFLAGS="%optflags -fcommon"
 %configure \
     --disable-silent-rules
 make %{?_smp_mflags}

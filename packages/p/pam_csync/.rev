@@ -134,4 +134,14 @@ the wrong document for their rejection reason.
     <comment>1</comment>
     <requestid>293434</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6fae04af53b2eed92e49ef076a2b1c3e</srcmd5>
+    <version>0.43.0</version>
+    <time>1591862828</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.43.0
+- Removed 0001-Remove-backward-compatibility-option-for-newer-cmake.patch
+</comment>
+    <requestid>813156</requestid>
+  </revision>
 </revisionlist>

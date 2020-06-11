@@ -1,7 +1,7 @@
 #
 # spec file for package r128gain
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           r128gain
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Fast audio loudness (ReplayGain / R128) scanner & tagger
 License:        LGPL-2.0-only

@@ -32,4 +32,12 @@
     <comment>- add python_38.patch to fix python3.8 build</comment>
     <requestid>782820</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>13f8cb9af399df022b90962e961dd0a8</srcmd5>
+    <version>0.201</version>
+    <time>1591863167</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813400</requestid>
+  </revision>
 </revisionlist>

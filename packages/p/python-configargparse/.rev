@@ -79,4 +79,12 @@
     <comment></comment>
     <requestid>810601</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>a5b0f2bd7311fad0b76e59b6cbf63a90</srcmd5>
+    <version>1.2.3</version>
+    <time>1591863014</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unnecessary dependency on unittest2</comment>
+    <requestid>813281</requestid>
+  </revision>
 </revisionlist>

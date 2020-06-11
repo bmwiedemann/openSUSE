@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-leveldb
-Version:        0.20
+Version:        0.201
 Release:        0
 Summary:        Python bindings for leveldb database library
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            http://code.google.com/p/py-leveldb/
 Source:         https://files.pythonhosted.org/packages/source/l/leveldb/leveldb-%{version}.tar.gz
-Patch0:         python_38.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -39,7 +38,6 @@ Python bindings for leveldb database library.
 
 %prep
 %setup -q -n leveldb-%{version}
-%patch0 -p1
 chmod -x README
 
 %build

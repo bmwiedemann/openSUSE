@@ -1,7 +1,7 @@
 #
 # spec file for package fb-util-for-appx
 #
-# Copyright (c) 2017 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           fb-util-for-appx
 Version:        0.1
 Release:        0
-License:        BSD-3-Clause
 Summary:        Tool creating APPX packages
-Url:            https://github.com/facebook/%{name}
+License:        BSD-3-Clause
 Group:          Development/Libraries/Other
+URL:            https://github.com/facebook/%{name}
 Source:         https://github.com/facebook/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         fix-gcc10-include-stdexcept.patch
 BuildRequires:  cmake >= 3.0
+BuildRequires:  gcc-c++
 BuildRequires:  libopenssl-devel
 BuildRequires:  zlib-devel
-BuildRequires:  gcc-c++
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -34,6 +36,9 @@ Tool to create and optionally sign Microsoft Windows APPX packages.
 
 %prep
 %setup -q
+
+# PATCH-FIX-UPSTREAM fix-gcc10-include-stdexcept.patch boo#1172654
+%patch0 -p1
 
 %build
 %cmake

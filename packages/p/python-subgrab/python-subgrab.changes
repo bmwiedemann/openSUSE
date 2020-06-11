@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 11 04:08:36 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.4:
+  * No changelog.
+- URL changed to a tarball. 
+
+-------------------------------------------------------------------
 Tue May 19 08:03:06 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

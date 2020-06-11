@@ -1,7 +1,7 @@
 #
 # spec file for package amsynth
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           amsynth
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        Analog modelling (a.k.a virtual analog) software synthesizer
 License:        GPL-2.0-or-later
 URL:            http://amsynth.github.io/
-Source:         https://github.com/amsynth/amsynth/releases/download/release-%{version}/%{name}-%{version}.tar.bz2
+Source:         https://github.com/amsynth/amsynth/releases/download/release-%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme

@@ -1,17 +1,17 @@
-Index: plr-REL8_3_0_18/Makefile
+Index: plr-REL8_4/Makefile
 ===================================================================
---- plr-REL8_3_0_18.orig/Makefile
-+++ plr-REL8_3_0_18/Makefile
+--- plr-REL8_4.orig/Makefile
++++ plr-REL8_4/Makefile
 @@ -21,7 +21,7 @@ MODULE_big	= plr
  PG_CPPFLAGS	+= $(r_includespec)
  SRCS		+= plr.c pg_conversion.c pg_backend_support.c pg_userfuncs.c pg_rsupport.c
  OBJS		:= $(SRCS:.c=.o)
 -SHLIB_LINK	+= -L$(r_libdir1x) -L$(r_libdir2x) -lR
-+SHLIB_LINK  += -L$(r_libdir1x) -L$(r_libdir2x) -lR $(LDFLAGS)
- DATA_built	= plr.sql
- DATA		= plr--8.3.0.18.sql plr--unpackaged--8.3.0.18.sql
- DOCS		= README.plr
-@@ -72,6 +72,7 @@ ifneq (,$(findstring yes, $(shared_libr)
++SHLIB_LINK	+= -L$(r_libdir1x) -L$(r_libdir2x) -lR $(LDFLAGS)
+ DATA		= plr--8.4.sql plr--8.3.0.18--8.4.sql plr--unpackaged--8.4.sql
+ REGRESS		= plr bad_fun opt_window do out_args
+ 
+@@ -69,6 +69,7 @@ ifneq (,$(findstring yes, $(shared_libr)
  override CPPFLAGS := -I"$(srcdir)" -I"$(r_includespec)" $(CPPFLAGS)
  override CPPFLAGS += -DPKGLIBDIR=\"$(pkglibdir)\" -DDLSUFFIX=\"$(DLSUFFIX)\"
  override CPPFLAGS += -DR_HOME_DEFAULT=\"$(rhomedef)\"

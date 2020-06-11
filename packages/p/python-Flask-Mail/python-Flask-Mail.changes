@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 10 08:35:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- replace nose (and spec-cleaner)
+
+-------------------------------------------------------------------
 Wed Oct 10 14:58:31 UTC 2018 - Antonio Larrosa <alarrosa@suse.com> - 0.9.1
 
 - Remove conditional test variable from spec file and keep it enabled

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Mail
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-Mail
 Version:        0.9.1
 Release:        0
-License:        BSD-3-Clause
 Summary:        Flask extension for sending email
-Url:            https://github.com/rduplain/flask-mail
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://github.com/rduplain/flask-mail
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Mail/Flask-Mail-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 # Test requirements
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module speaklater}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module blinker}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module speaklater}
 # End of test requirements
-Requires:       python-blinker
 Requires:       python-Flask
+Requires:       python-blinker
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -54,7 +53,7 @@ A Flask extension for sending email messages.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec %{_bindir}/nosetests
+%python_exec -m unittest discover
 
 %files %{python_files}
 %doc README.rst

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 10 16:20:24 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Explain necessity of unittest2 for python2
+
+-------------------------------------------------------------------
 Tue Jun  2 15:03:59 UTC 2020 - pgajdos@suse.com
 
 - drop dependency on unittest2 for python3

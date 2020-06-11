@@ -103,4 +103,12 @@ Fri Feb  13 13:13:13 UTC 2015 - bruno@ioda-net.ch
     <comment>Seems this was forgotten to be submitted - would finally drop the ggsql93 flavor - and add pgsql11</comment>
     <requestid>726728</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d9c84348df6255a731868113622dc726</srcmd5>
+    <version>8.4</version>
+    <time>1591862733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813108</requestid>
+  </revision>
 </revisionlist>

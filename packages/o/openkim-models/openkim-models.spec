@@ -1,6 +1,7 @@
 #
 # spec file for package openkim-models
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018--2019 Christoph Junghans, Ryan S. Elliott
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,23 +13,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%define         uversion 2019-07-25
 Name:           openkim-models
 Version:        2019.07.25
-%define         uversion 2019-07-25
 Release:        0
 Summary:        Open Knowledgebase of Interatomic Models
-License:        CDDL-1.0 and Apache-2.0 and MPL-2.0 and GPL-3.0-only and LGPL-3.0-only
+License:        CDDL-1.0 AND Apache-2.0 AND MPL-2.0 AND GPL-3.0-only AND LGPL-3.0-only
 Group:          Productivity/Scientific/Chemistry
-Url:            https://openkim.org
+URL:            https://openkim.org
 Source0:        https://s3.openkim.org/archives/collection/openkim-models-%{uversion}.txz
+BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
-BuildRequires:  cmake >= 3.4
 BuildRequires:  kim-api-devel >= 2.1.2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 OpenKIM is an online framework for making molecular simulations reliable,

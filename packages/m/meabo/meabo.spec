@@ -1,7 +1,7 @@
 #
 # spec file for package meabo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,10 +50,11 @@ multi-threaded, all within the same run of the application.
 %setup -q
 
 %build
-make %{?_smp_mflags} CC="cc %{optflags}"
+%make_build CC="cc %{optflags} -fcommon"
 
 %install
-install -D -p -m 0755 %{name}.default %{buildroot}%{_bindir}/%{name}
+install -Dpm 0755 %{name}.default \
+  %{buildroot}%{_bindir}/%{name}
 
 %files
 %license LICENSE.txt

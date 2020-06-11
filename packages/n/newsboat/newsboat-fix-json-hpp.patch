@@ -1,0 +1,11 @@
+--- newsboat-2.19.orig/3rd-party/json.hpp	2020-06-09 15:05:17.108969818 +0000
++++ newsboat-2.19/3rd-party/json.hpp	2020-06-09 15:06:00.207716630 +0000
+@@ -8491,7 +8491,7 @@ scan_number_done:
+         std::string result;
+         for (const auto c : token_string)
+         {
+-            if ('\x00' <= c and c <= '\x1F')
++            if (static_cast<unsigned char>(c) <= '\x1F')
+             {
+                 // escape control characters
+                 std::array<char, 9> cs{{}};

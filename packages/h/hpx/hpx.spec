@@ -18,7 +18,7 @@
 
 
 Name:           hpx
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        General Purpose C++ Runtime System
 License:        BSL-1.0
@@ -85,7 +85,7 @@ This package contains libraries for the hpx package.
 %cmake -DLIB=%{_lib} %{?cmake_opts:%cmake_opts} \
  -DHPX_WITH_BUILD_BINARY_PACKAGE=ON \
  -DHPX_WITH_EXAMPLES=OFF
-make %{?_smp_mflags}
+make -j1
 
 %install
 make -C build install DESTDIR=%{buildroot}

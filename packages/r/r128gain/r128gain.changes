@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 10 10:44:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.2:
+  * Better handling of non unicode filenames
+  * Pass ffmpeg verbosity flags
+
+-------------------------------------------------------------------
 Sun Feb  2 13:51:04 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.1

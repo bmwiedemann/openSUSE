@@ -23,7 +23,9 @@ Summary:        Visual Process Manager
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Monitoring
 URL:            https://github.com/lxqt/qps/
-Source0:        https://github.com/lxqt/qps/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/lxqt/qps/releases/download/%{version}/qps-%{version}.tar.xz
+Source1:        https://github.com/lxqt/qps/releases/download/%{version}/qps-%{version}.tar.xz.asc
+Source2:        qps.keyring
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
 BuildRequires:  glibc

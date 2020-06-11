@@ -27,39 +27,37 @@
 %define enable_gcl 0
 %define gcl_flags --disable-gcl
 
+# Inhibit automatic compressing of info files. Compressed info
+# files break maxima's internal help.
+%define __os_install_post %{_prefix}/lib/rpm/brp-suse
+
 Name:           maxima
-Version:        5.43.2
+Version:        5.44.0
 Release:        0
-%define major_version 5.43
 Summary:        Symbolic Computation Program/Computer Algebra System
 License:        GPL-2.0-or-later
-Group:          Productivity/Scientific/Math
 URL:            http://maxima.sourceforge.net/
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        http://download.sourceforge.net/maxima/%{name}-%{version}.tar.gz
 Source1:        maxima-rpmlintrc
 # PATCH-FIX-UPSTREAM maxima-python3.patch badshah400@gmail.com -- Use python3 instead of python(2) when importing vtk modules and building help; this allows maxima to be built with python3 instead of python2.
 Patch0:         maxima-python3.patch
-%if 0%{?suse_version}
-PreReq:         %install_info_prereq
-%endif
 BuildRequires:  bash-completion
+BuildRequires:  fdupes
 BuildRequires:  gzip
 BuildRequires:  makeinfo
 BuildRequires:  python3
+BuildRequires:  update-desktop-files
 Requires:       gnuplot
 Requires:       maxima_exec
 Requires:       plotutils
-BuildRequires:  fdupes
-BuildRequires:  update-desktop-files
+ExcludeArch:    ppc64 ppc64le
+%if 0%{?suse_version} <= 1500
+Requires(post): /sbin/install-info
+Requires(postun): /sbin/install-info
+%endif
 %if 0%{?enable_clisp}
 BuildRequires:  clisp >= 2.34.0
 %endif
-ExcludeArch:    ppc64 ppc64le
-
-# Inhibit automatic compressing of info files. Compressed info
-# files break maxima's internal help.
-%define __os_install_post /usr/lib/rpm/brp-suse
 
 %description
 Maxima is a full symbolic computation program.  It is full featured
@@ -72,11 +70,13 @@ It comes with hundreds of self tests.
 
 %package xmaxima
 Summary:        Tcl/Tk interface to Maxima
-Group:          Development/Languages/Other
-PreReq:         %install_info_prereq
 Requires:       maxima = %{version}
 Requires:       tk
 Provides:       xmaxima = %{version}
+%if 0%{?suse_version} <= 1500
+Requires(post): /sbin/install-info
+Requires(postun): /sbin/install-info
+%endif
 
 %description xmaxima
 A graphical interface to the Maxima symbolic computation program. It
@@ -89,7 +89,6 @@ Xmaxima is written in the Tcl/Tk language.
 %if 0%{?enable_clisp}
 %package        exec-clisp
 Summary:        Maxima compiled with clisp
-Group:          Development/Languages/Other
 BuildRequires:  clisp
 Requires:       maxima = %{version}
 Provides:       maxima_exec = %{version}
@@ -101,7 +100,6 @@ Maxima compiled with Common Lisp.
 %if 0%{?enable_cmucl}
 %package exec-cmucl
 Summary:        Maxima compiled with CMUCL
-Group:          Development/Languages/Other
 Requires:       maxima = %{version}
 Provides:       maxima_exec = %{version}
 
@@ -112,7 +110,6 @@ Maxima compiled with CMUCL.
 %if 0%{?enable_sbcl}
 %package exec-sbcl
 Summary:        Maxima compiled with SBCL
-Group:          Development/Languages/Other
 Requires:       maxima = %{version}
 Requires:       sbcl
 Provides:       maxima_exec = %{version}
@@ -124,7 +121,6 @@ Maxima compiled with SBCL.
 %if 0%{?enable_gcl}
 %package exec-gcl
 Summary:        Maxima compiled with GCL
-Group:          Development/Languages/Other
 Requires:       maxima = %{version}
 Provides:       maxima_exec = %{version}
 
@@ -134,40 +130,48 @@ Maxima compiled with Gnu Common Lisp.
 
 %package lang-de-utf8
 Summary:        Maxima German UTF-8 language pack
-Group:          Productivity/Scientific/Math
-PreReq:         %install_info_prereq
 Requires:       maxima = %{version}
 Provides:       locale(maxima:de)
+%if 0%{?suse_version} <= 1500
+Requires(post): /sbin/install-info
+Requires(postun): /sbin/install-info
+%endif
 
 %description lang-de-utf8
 Maxima German language support (in UTF-8).
 
 %package lang-es-utf8
 Summary:        Maxima Spanish UTF-8 language pack
-Group:          Productivity/Scientific/Math
-PreReq:         %install_info_prereq
 Requires:       maxima = %{version}
 Provides:       locale(maxima:es)
+%if 0%{?suse_version} <= 1500
+Requires(post): /sbin/install-info
+Requires(postun): /sbin/install-info
+%endif
 
 %description lang-es-utf8
 Maxima Spanish language support (in UTF-8).
 
 %package lang-pt-utf8
 Summary:        Maxima Portuguese UTF-8 language pack
-Group:          Productivity/Scientific/Math
-PreReq:         %install_info_prereq
 Requires:       maxima = %{version}
 Provides:       locale(maxima:pt)
+%if 0%{?suse_version} <= 1500
+Requires(post): /sbin/install-info
+Requires(postun): /sbin/install-info
+%endif
 
 %description lang-pt-utf8
 Maxima Portuguese language support (in UTF-8).
 
 %package lang-pt_BR-utf8
 Summary:        Maxima Brazilian Portuguese UTF-8 language pack
-Group:          Productivity/Scientific/Math
-PreReq:         %install_info_prereq
 Requires:       maxima = %{version}
 Provides:       locale(maxima:pt_BR)
+%if 0%{?suse_version} <= 1500
+Requires(post): /sbin/install-info
+Requires(postun): /sbin/install-info
+%endif
 
 %description lang-pt_BR-utf8
 Maxima Brazilian Portuguese language support (in UTF-8).
@@ -184,13 +188,13 @@ Maxima Brazilian Portuguese language support (in UTF-8).
             --enable-lang-pt-utf8 \
             --enable-lang-pt_BR-utf8 \
             --disable-recode
-make %{?_smp_mflags}
+%make_build
 
 %install
 %makeinstall install-info
   make \
     prefix=%{?buildroot:%{buildroot}}%{_prefix} \
-    exec_prefix=%{?buildroot:%{buildroot}}%{_exec_prefix} \
+    exec_prefix=%{?buildroot:%{buildroot}}%{_prefix} \
     bindir=%{?buildroot:%{buildroot}}%{_bindir} \
     sbindir=%{?buildroot:%{buildroot}}%{_sbindir} \
     sysconfdir=%{?buildroot:%{buildroot}}%{_sysconfdir} \
@@ -209,7 +213,8 @@ rm -f %{buildroot}%{_infodir}/dir
 # set executable rights for example scripts
 chmod +x %{buildroot}%{_datadir}/%{name}/%{version}/share/contrib/lurkmathml/mathmltest
 # zip the manpage
-gzip %{buildroot}%{_mandir}/*/*
+gzip %{buildroot}%{_mandir}/man1/maxima.1
+gzip %{buildroot}%{_mandir}/*/man1/maxima.1
 # reduce space, create symlinks
 %fdupes -s %{buildroot}/%{_datadir}/%{name}/%{version}/share %{buildroot}/%{_datadir}/%{name}/%{version}/src
 
@@ -217,21 +222,12 @@ gzip %{buildroot}%{_mandir}/*/*
 
 %suse_update_desktop_file net.sourceforge.maxima.xmaxima
 
-# REMOVE SOME BACKUP FILES INSTALLED BY MISTAKE
-rm %{buildroot}%{_datadir}/%{name}/%{version}/share/draw/gnuplot.lisp.orig \
-   %{buildroot}%{_datadir}/%{name}/%{version}/share/finance/finance.mac.orig \
-   %{buildroot}%{_datadir}/%{name}/%{version}/share/vector/vect.mac.orig
-
-# REMOVE UNNECESSARY BINARY AND DEVEL FILE
-rm %{buildroot}%{_datadir}/%{name}/%{version}/share/test_encodings/escape-double-quote \
-   %{buildroot}%{_datadir}/%{name}/%{version}/share/test_encodings/escape-double-quote.c
-
-# FIXME CHECKS TAKE TOO LONG AND TIME-OUT
+# FIXME CHECKS TAKE TOO LONG AND TIME-OUT (LAST CHECK: VERSION 5.44.0)
 #%%check
 #make check
 # /FIXME
 
-%if 0%{?suse_version}
+%if 0%{?suse_version} <= 1500
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/maxima.info
 
@@ -274,10 +270,10 @@ rm %{buildroot}%{_datadir}/%{name}/%{version}/share/test_encodings/escape-double
 %endif
 
 %files
-%defattr(-,root,root,-)
 %license COPYING
 %doc AUTHORS NEWS README README.*
-%{_mandir}/man1/maxima.1*
+%{_mandir}/man1/maxima.1%{?ext_man}
+%{_mandir}/*/man1/maxima.1%{?ext_man}
 %dir %{_datadir}/maxima
 %dir %{_datadir}/maxima/%{version}
 %dir %{_libdir}/maxima
@@ -308,7 +304,6 @@ rm %{buildroot}%{_datadir}/%{name}/%{version}/share/test_encodings/escape-double
 %{_datadir}/emacs/site-lisp/*
 
 %files xmaxima
-%defattr(-,root,root,-)
 %dir %{_datadir}/maxima/%{version}/xmaxima
 %{_bindir}/xmaxima
 %{_datadir}/maxima/%{version}/xmaxima/*
@@ -321,27 +316,22 @@ rm %{buildroot}%{_datadir}/%{name}/%{version}/share/test_encodings/escape-double
 
 %if 0%{?enable_clisp}
 %files exec-clisp
-%defattr(-,root,root,-)
 %dir %{_libdir}/maxima/%{version}/binary-clisp/
-%defattr(-,root,root,-)
 %{_libdir}/maxima/%{version}/binary-clisp/*
 %endif
 
 %if 0%{?enable_cmucl}
 %files exec-cmucl
-%defattr(-,root,root,-)
 %{_libdir}/maxima/%{version}/binary-cmucl/*
 %endif
 
 %if 0%{?enable_sbcl}
 %files exec-sbcl
-%defattr(-,root,root,-)
 %{_libdir}/maxima/%{version}/binary-sbcl/*
 %endif
 
 %if 0%{?enable_gcl}
 %files exec-gcl
-%defattr(-,root,root,-)
 %{_libdir}/maxima/%{version}/binary-gcl/*
 %endif
 

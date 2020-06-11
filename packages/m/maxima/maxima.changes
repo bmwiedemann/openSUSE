@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun  9 20:18:03 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.44.0:
+  * Long list of changes, see
+    https://sourceforge.net/p/maxima/code/ci/master/tree/ChangeLog-5.44.md
+- Run gzip over additional locale-specific man files.
+- Replace PreReq tags with Requires(post) tags, that too only for
+  openSUSE <= 1500; for newer openSUSE, install-info is
+  automatically handled by rpm.
+- Run spec-cleaner to clean up specfile.
+- Drop commands deleting spurious files that are no longer
+  installed.
+- Drop Group tags in packages.
+- Drop BuildRoot tag: no longer needed.
+- Drop defattr in file lists: no longer needed.
+
+-------------------------------------------------------------------
 Wed Jan 29 11:17:22 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Switch to python3:

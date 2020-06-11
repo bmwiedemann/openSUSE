@@ -1,7 +1,7 @@
 #
 # spec file for package icedtea-web
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,10 +29,10 @@
 %bcond_without docs
 %bcond_with plugin
 Name:           icedtea-web
-Version:        1.7.2
+Version:        1.8
 Release:        0
 Summary:        Java Web Start implementation
-License:        GPL-2.0-with-classpath-exception
+License:        GPL-2.0-only WITH Classpath-exception-2.0
 Group:          Development/Languages/Java
 URL:            https://icedtea.classpath.org
 Source0:        http://icedtea.classpath.org/download/source/icedtea-web-%{version}.tar.gz
@@ -43,11 +43,11 @@ Patch1002:      CVE-2019-10182_2.patch
 Patch1003:      CVE-2019-10185.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  bc
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  hamcrest
 BuildRequires:  java-devel >= 1.8
-# owns javadocdir
 BuildRequires:  javapackages-tools
 BuildRequires:  junit
 BuildRequires:  libtool
@@ -128,6 +128,8 @@ export bashcompdir=%{_datadir}/bash-completion/completions
 %else
     --disable-native-plugin \
 %endif
+    --enable-shell-launchers \
+	--with-itw-libs=BUNDLED \
 %if %{with docs}
     --enable-docs \
 %else

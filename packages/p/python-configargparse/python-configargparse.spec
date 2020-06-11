@@ -37,7 +37,6 @@ Requires:       python-setuptools
 BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python2-devel
-BuildRequires:  python2-unittest2
 %endif
 %python_subpackages
 

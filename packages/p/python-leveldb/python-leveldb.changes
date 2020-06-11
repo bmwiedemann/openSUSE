@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 15 13:32:57 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.201
+  * support Python 3.8
+  * drop Python 3.4
+  * small fixes
+- Drop python_38.patch
+
+-------------------------------------------------------------------
 Mon Mar  9 08:28:58 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - add python_38.patch to fix python3.8 build 

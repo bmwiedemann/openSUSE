@@ -44,4 +44,12 @@ Required for python-puppetboard SR# 263316</comment>
     <comment></comment>
     <requestid>772539</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4fb698363ed7c0a9eae6740d7db28905</srcmd5>
+    <version>0.14.3</version>
+    <time>1591863220</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813387</requestid>
+  </revision>
 </revisionlist>
