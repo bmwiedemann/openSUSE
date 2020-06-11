@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  5 16:21:42 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.2.3:
+  * Stable bug fix release, mainly codecs and format fixes.
+- Drop 0001-avcodec-cbs_jpeg-Check-length-for-SOS.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Thu May 28 06:48:37 UTC 2020 - Jiri Slaby <jslaby@suse.com>
 
 - libfdk-aac is now .so.2, not .so.1.

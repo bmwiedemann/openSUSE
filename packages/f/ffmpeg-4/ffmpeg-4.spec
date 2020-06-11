@@ -92,7 +92,7 @@
 %define _major_version 4
 %define _major_expected 5
 Name:           ffmpeg-4
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 Summary:        Library for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -118,7 +118,6 @@ Patch6:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch7:         ffmpeg4_swscale_replace_illegal_vector_keyword.patch
 Patch8:         ffmpeg4_swscale_fix_altivec_vsx_recent_gcc.patch
 Patch9:         929e5159bc13da374b83f5627879c607acce180b.patch
-Patch10:        0001-avcodec-cbs_jpeg-Check-length-for-SOS.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel
