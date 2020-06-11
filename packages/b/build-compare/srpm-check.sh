@@ -87,7 +87,7 @@ check_single_file()
 }
 
 ret=0
-for file in $files; do
+for file in "${files[@]}"; do
    if ! check_single_file $file; then
        ret=1
        if test -z "$check_all"; then

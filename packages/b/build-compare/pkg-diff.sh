@@ -761,6 +761,7 @@ compare_archive()
   local f
   local -a content
   local -i ret=1
+  local -a filelist
 
   "${handler}" 'f' "${file}" || return 1
 
@@ -783,8 +784,12 @@ compare_archive()
         "${handler}" 'x' "${new}" || return 1
         popd > /dev/null
       fi
-      readarray -t content < 'cn'
-      for f in "${content[@]}"
+      while read
+      do
+        : "${REPLY}"
+        filelist+=( "${REPLY}" )
+      done < 'cn'
+      for f in "${filelist[@]}"
       do
         if ! check_single_file "${file}/${f}"
         then
@@ -1157,6 +1162,10 @@ fi
 echo "Comparing `basename $oldpkg` to `basename $newpkg`"
 
 case $oldpkg in
+  *.deb|*.ipk)
+    : cmp_deb_meta missing
+    RES=0
+  ;;
   *.rpm)
     cmp_rpm_meta "$rename_script" "$oldpkg" "$newpkg"
     RES=$?
@@ -1192,17 +1201,14 @@ unpackage $newpkg $dir/new
 case $oldpkg in
   *.deb|*.ipk)
     adjust_controlfile $dir/old $dir/new
+    files=()
+    while read
+    do
+      : "${REPLY}"
+      files+=( "${REPLY}" )
+    done < <(cd ${dir} ; find old new -type f | sed -e 's/^...//' | sort -u)
   ;;
 esac
-
-# files is set in cmp_rpm_meta for rpms, so if RES is empty we should assume
-# it wasn't an rpm and pick all files for comparison.
-if [ -z $RES ]; then
-  oldfiles=`cd $dir/old; find . -type f`
-  newfiles=`cd $dir/new; find . -type f`
-
-  files=`echo -e "$oldfiles\n$newfiles" | sort -u`
-fi
 
 cd $dir
 bash $rename_script
@@ -1218,8 +1224,7 @@ fi
 
 # preserve cmp_rpm_meta result for check_all runs
 ret=$RES
-readarray -t filesarray <<<"$files"
-for file in "${filesarray[@]}"; do
+for file in "${files[@]}"; do
    if ! check_single_file "$file"; then
        ret=1
        if test -z "$check_all"; then

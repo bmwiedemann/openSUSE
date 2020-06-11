@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 29 19:20:21 UTC 2020 - olaf@aepfle.de
+
+- Remove usage of readarray to remain compatible with bash3
+
+-------------------------------------------------------------------
+Fri May 29 07:30:51 UTC 2020 - olaf@aepfle.de
+
+- Colltect a list of known rpm tags and use it to build the
+  queryformat string for the tags listed below (bsc#1172232)
+  conflict obsolete oldsuggests provide recommend require suggest supplement
+
+-------------------------------------------------------------------
 Thu May 14 07:07:07 UTC 2020 - olaf@aepfle.de
 
 - Trim first line of man page to catch overly verbose tools (now Pandoc)

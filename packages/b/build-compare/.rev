@@ -995,4 +995,12 @@ In home:RedDwarf/kdenlive makes a difference. You can see the openSUSE_Factory/x
 - compare also posttrans scripts, and pretrans + verifyscript</comment>
     <requestid>805486</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>5cef8dbdb3421f041c4a007010aee30e</srcmd5>
+    <version>20200529T212652.102d844</version>
+    <time>1591879310</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>811920</requestid>
+  </revision>
 </revisionlist>

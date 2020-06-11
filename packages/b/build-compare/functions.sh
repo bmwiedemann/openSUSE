@@ -10,36 +10,59 @@
 
 RPM="rpm -qp --nodigest --nosignature"
 
+declare -a rpm_querytags
+collect_rpm_querytags() {
+  rpm_querytags=( $(rpm --querytags) )
+}
+# returns 0 if tag is known, returns 1 if unknown
+rpmtag_known() {
+  local needle="\<${1}\>"
+  local haystack="${rpm_querytags[@]}"
+  [[ "${haystack}" =~ ${needle} ]]
+  return $?
+}
+
 set_rpm_meta_global_variables() {
 
   local pkg=$1
   local rpm_tags=
   local out=`mktemp`
+  local t v qt
+  local -a type variant list
 
 # Name, Version, Release
 QF_NAME="%{NAME}"
 QF_VER_REL="%{VERSION}-%{RELEASE}"
 QF_NAME_VER_REL="%{NAME}-%{VERSION}-%{RELEASE}"
 
-# provides destroy this because at least the self-provide includes the
-# -buildnumber :-(
-QF_PROVIDES="[%{PROVIDENAME} %{PROVIDEFLAGS} %{PROVIDEVERSION}\\n]\\n"
-QF_PROVIDES="${QF_PROVIDES}[%{REQUIRENAME} %{REQUIREFLAGS} %{REQUIREVERSION}\\n]\\n"
-QF_PROVIDES="${QF_PROVIDES}[%{CONFLICTNAME} %{CONFLICTFLAGS} %{CONFLICTVERSION}\\n]\\n"
-QF_PROVIDES="${QF_PROVIDES}[%{OBSOLETENAME} %{OBSOLETEFLAGS} %{OBSOLETEVERSION}\\n]\\n"
-
-rpm_tags="%{RECOMMENDNAME} %{RECOMMENDFLAGS} %{RECOMMENDVERSION}"
-check_header "%{NAME} ${rpm_tags}" > "${out}"
-if test -s "${out}"
-then
-  QF_PROVIDES="${QF_PROVIDES}[${rpm_tags}\\n]\\n"
-fi
-rpm_tags="%{SUPPLEMENTNAME} %{SUPPLEMENTFLAGS} %{SUPPLEMENTVERSION}"
-check_header "%{NAME} ${rpm_tags}" > "${out}"
-if test -s "${out}"
-then
-  QF_PROVIDES="${QF_PROVIDES}[${rpm_tags}\\n]\\n"
-fi
+QF_PROVIDES=
+type=(
+  CONFLICT
+  OBSOLETE
+  OLDSUGGESTS
+  PROVIDE
+  RECOMMEND
+  REQUIRE
+  SUGGEST
+  SUPPLEMENT
+)
+variant=(
+  NAME
+  FLAGS
+  VERSION
+)
+for t in "${type[@]}"
+do
+  unset list
+  list=()
+  for v in "${variant[@]}"
+  do
+    qt="${t}${v}"
+    rpmtag_known "${qt}" || continue
+    list+=("%{${qt}}")
+  done
+  QF_PROVIDES+="${t}\\n[${list[@]}\\n]\\n"
+done
 
 # don't look at RELEASE, it contains our build number
 QF_TAGS="%{NAME} %{VERSION} %{EPOCH}\\n"
@@ -54,24 +77,36 @@ QF_TAGS="${QF_TAGS}%{PAYLOADFORMAT} %{PAYLOADCOMPRESSOR} %{PAYLOADFLAGS}\\n"
 # XXX We also need to check the existence (but not the content (!))
 # of SIGGPG (and perhaps the other SIG*)
 # XXX We don't look at triggers
-QF_TAGS="${QF_TAGS}[%{VERIFYSCRIPTPROG} %{VERIFYSCRIPT}]\\n"
 # Only the first ChangeLog entry; should be enough
 QF_TAGS="${QF_TAGS}%{CHANGELOGTIME} %{CHANGELOGNAME} %{CHANGELOGTEXT}\\n"
 
 # scripts, might contain release number
-script_types='
-PRETRANS
-PREIN
-POSTIN
-PREUN
-POSTUN
-POSTTRANS
-VERIFYSCRIPT
-'
 QF_SCRIPT=
-for script_type in ${script_types}
+type=(
+  PRETRANS
+  PREIN
+  POSTIN
+  PREUN
+  POSTUN
+  POSTTRANS
+  VERIFYSCRIPT
+)
+variant=(
+  PROG
+  FLAGS
+  ''
+)
+for t in "${type[@]}"
 do
-  QF_SCRIPT="${QF_SCRIPT}[%{${script_type}PROG} %{${script_type}FLAGS} %{${script_type}}\\n]\\n"
+  unset list
+  list=()
+  for v in "${variant[@]}"
+  do
+    qt="${t}${v}"
+    rpmtag_known "${qt}" || continue
+    list+=("%{${qt}}")
+  done
+  QF_SCRIPT+="${t}\\n[${list[@]}\\n]\\n"
 done
 
 # Now the files. We leave out mtime and size.  For normal files
@@ -241,7 +276,7 @@ function set_regex() {
 # 0 in case of same content
 # 1 in case of errors or difference
 # 2 in case of differences that need further investigation
-# Sets $files with list of files that need further investigation
+# Sets ${files[@]} array with list of files that need further investigation
 function cmp_rpm_meta ()
 {
     local RES
@@ -256,6 +291,7 @@ function cmp_rpm_meta ()
     rpm_meta_old=`mktemp`
     rpm_meta_new=`mktemp`
 
+    collect_rpm_querytags
     set_rpm_meta_global_variables $oldrpm
 
     check_header "$QF_ALL" $oldrpm > $rpm_meta_old
@@ -330,13 +366,18 @@ function cmp_rpm_meta ()
     get_value QF_CHECKSUM $rpm_meta_new | grep -v " 64$" | trim_release_new > $file2
     RES=2
     # done if the same
+    files=()
     echo "comparing file checksum"
     if cmp -s $file1 $file2; then
       RES=0
+    else
+      # Get only files with different MD5sums
+      while read
+      do
+        : "${REPLY}"
+        files+=( "${REPLY}" )
+      done < <(diff -U0 $file1 $file2 | sed -E -n -e '/^-\//{s/^-//;s/ [0-9a-f]+ [0-9]+$//;p}')
     fi
-
-    # Get only files with different MD5sums
-    files=`diff -U0 $file1 $file2 | fgrep -v +++ | grep ^+ | cut -b2- | sed -E -e 's/ [0-9a-f]+ [0-9]+$//'`
 
     if test -n "$sh"; then
       echo "creating rename script"
