@@ -1,7 +1,7 @@
 #
 # spec file for package libicns
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2011 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,22 +13,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define         libname %{name}1
+%define sover   1
 Name:           libicns
-Version:        0.8.1
+Version:        0.8.1+git20190323
 Release:        0
 Summary:        Application for manipulation of the Mac OS icns
-License:        LGPL-2.1-or-later
-Group:          Productivity/Graphics/Convertors
-Url:            http://icns.sourceforge.net/
-Source0:        http://download.sourceforge.net/icns/%{name}-%{version}.tar.gz
-BuildRequires:  pkg-config
+License:        LGPL-2.1-or-later AND LGPL-2.0-or-later AND GPL-2.0-or-later
+URL:            https://icns.sourceforge.io/
+Source0:        %{name}-%{version}.tar.xz
+BuildRequires:  automake
+BuildRequires:  libtool
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpng)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Recommends:     unar
 
 %description
 It can read and write files from the Mac OS X icns format, as well as
@@ -43,7 +45,6 @@ The package contains icns2png, png2icns and icontainer2icns.
 %package -n icns-utils
 Summary:        Application for manipulation of the Mac OS icns
 License:        GPL-2.0-only
-Group:          Productivity/Graphics/Convertors
 
 %description -n icns-utils
 Utilities to convert to and from icns files using %{name}:
@@ -51,58 +52,58 @@ Utilities to convert to and from icns files using %{name}:
     2. icns2png: Tool to convert icns icons to png, and
     3. icontainer2icns: Tool for extracting icns files from icontainers.
 
-%package -n %{libname}
+%package -n %{name}%{sover}
 Summary:        System libraries for %{name}
 License:        LGPL-2.1-only
-Group:          System/Libraries
 
-%description -n %{libname}
+%description -n %{name}%{sover}
 System libraries file for %{name}.
 
 %package devel
 Summary:        Development files for %{name}
 License:        LGPL-2.1-only
-Group:          Development/Libraries/Other
-Requires:       %{libname} = %{version}
-Provides:       %{libname}-devel = %{version}
+Requires:       %{name}%{sover} = %{version}
 Requires:       glibc-devel
 
 %description devel
 Libraries and header files for developing applications that use libicns.
 
 %prep
-%setup -q
+%autosetup
 
 %build
+autoreconf -fiv
 %configure \
   --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %{libname} -p /sbin/ldconfig
+%post -n %{name}%{sover} -p /sbin/ldconfig
 
-%postun -n %{libname} -p /sbin/ldconfig
+%postun -n %{name}%{sover} -p /sbin/ldconfig
 
 %files -n icns-utils
-%defattr(-,root,root)
-%doc README COPYING* ChangeLog NEWS TODO
-%{_bindir}/png2icns
+%license COPYING*
+%doc README ChangeLog NEWS TODO
 %{_bindir}/icns2png
+%{_bindir}/icnsutil
 %{_bindir}/icontainer2icns
-%{_mandir}/man1/*.gz
+%{_bindir}/png2icns
+%{_mandir}/man1/icns2png.1%{?ext_man}
+%{_mandir}/man1/icnsutil.1%{?ext_man}
+%{_mandir}/man1/icontainer2icns.1%{?ext_man}
+%{_mandir}/man1/png2icns.1%{?ext_man}
 
-%files -n %{libname}
-%defattr(-,root,root)
-%{_libdir}/*.so.*
+%files -n %{name}%{sover}
+%{_libdir}/%{name}.so.%{sover}*
 
 %files devel
-%defattr(-,root,root)
 %doc src/apidocs.* DEVNOTES
-%{_includedir}/*
-%{_libdir}/*.so
+%{_includedir}/icns.h
+%{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog

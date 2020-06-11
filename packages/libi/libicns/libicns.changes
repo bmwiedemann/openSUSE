@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu May  7 13:28:35 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to current git version 0.8.1+git20190323
+  * Update and correct documentation
+  * Added icnsutil, a libicns clone of the Darwin iconutil, to
+    work with 'retina' icon (should also work both ways)
+  * Fixed conversion of images with dimensions of 256x256 or
+    greater.
+  * Clean up build system
+  * Support OpenJPEG 2
+  * Remove dead code and warnings
+  * Several minor fixes
+- Added _service file
+- Link to OpenJPEG2
+- Drop Group tags
+- Drop useless Provides
+- Add automake/libtool build requirement because the tarball
+  no longer comes with a configure file
+- Add openjpeg build requirement to support 256x256 and up icons
+- Add pkgconfig build requirement to allow proper indexing of
+  the .pc file
+- Recommend unar to uncompress old StuffIt archives (as per
+  documentation)
+- Use autosetup macro
+- Spec cleanup
+
+-------------------------------------------------------------------
 Mon Sep  2 11:30:47 UTC 2019 - mvetter@suse.com
 
 - bsc#1144246 - Drop jasper dependency from libicns:
