@@ -1,0 +1,25 @@
+From: Egbert Eich <eich@suse.com>
+Date: Fri May 15 07:36:22 2020 +0200
+Subject: Remove empty unused static function
+Patch-mainline: never
+Git-commit: 44da66e04ab8b6d7df463ecd4263b0c54899d9c4
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ compat/ModuleCmd_Avail.c | 3 ---
+ 1 file changed, 3 deletions(-)
+diff --git a/compat/ModuleCmd_Avail.c b/compat/ModuleCmd_Avail.c
+index 6aca17f..2487a20 100644
+--- a/compat/ModuleCmd_Avail.c
++++ b/compat/ModuleCmd_Avail.c
+@@ -688,9 +688,6 @@ static	int	check_cache( char *dir)
+ #endif
+ 
+ 
+-static int	test_version_dir(	struct dirent	*dp)
+-{
+-}
+ /*++++
+  ** ** Function-Header ***************************************************** **
+  ** 									     **

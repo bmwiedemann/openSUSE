@@ -1,7 +1,7 @@
 #
 # spec file for package Modules
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           Modules
 BuildRequires:  automake
+BuildRequires:  fdupes
 BuildRequires:  less
 BuildRequires:  procps
 BuildRequires:  tcl-devel
 # xorg-x11-devel
-Url:            http://modules.sourceforge.net/
-Version:        4.1.2
+URL:            http://modules.sourceforge.net/
+Version:        4.5.0
 Release:        0
 Summary:        Change environment at runtime
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Management
 Requires:       tcl
 Source:         https://download.sourceforge.net/project/modules/Modules/modules-%{version}/modules-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM modules-4.1.2-return.patch
-Patch1:         modules-4.1.2-return.patch
-# PATCH-FIX-UPSTREAM modules-4.1.2-fix-bashisms.patch
-Patch2:         modules-4.1.2-fix-bashisms.patch
+Patch1:         Remove-empty-unused-static-function.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       environment-modules
-Obsoletes:      environment-modules < %{version}
 %if 0%{?suse_version}
 Recommends:     %{name}-doc
 %endif
@@ -75,11 +72,15 @@ may be shared by many users on a system and users may have their own
 collection to supplement or replace the shared module files.  The
 modules environment is common on SGI/Crays and many workstation farms.
 
+%define vimdatadir %{_datadir}/vim/site
+
 %prep
 %setup -q -n modules-%{version}
-%patch1
-%patch2
-sed -i 's@/usr/bin/env bash@/bin/bash@' contrib/envml
+%patch1 -p1
+# This is debatable:
+# if the replace 'bash' consecutive calls to 'modules' would still
+# run with the original bash. Maybe not intended.
+sed -i 's@/usr/bin/env bash@/bin/bash@' script/envml
 
 %build
 CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -DUSE_INTERP_RESULT -DUSE_INTERP_ERRORLINE" \
@@ -93,15 +94,32 @@ CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -DUSE_INTERP_RESULT -DUSE_INTERP_ERR
                 --with-etc-path="%_sysconfdir" \
                 --with-skel-path="%_sysconfdir/skel" \
 		--with-tcl=%{_libdir} \
-		--without-x
-make
+		--without-x \
+		%{?!vimdatadir: --disable-vim-addons} \
+		%{?vimdatadir: --vimdatadir=%{vimdatadir}} \
+                --etcdir=%{_sysconfdir}/%{name} \
+                --libdir=%{_libdir}/%{name}
+make %{?_smp_mflags}
 
 %install
-install -d $RPM_BUILD_ROOT/usr/share/modules
-install -d $RPM_BUILD_ROOT/etc/profile.d
-make DESTDIR=$RPM_BUILD_ROOT install
-install -d $RPM_BUILD_ROOT/usr/bin
-mv $RPM_BUILD_ROOT/usr/share/doc doc_dir
+install -d %{buildroot}/usr/share/modules
+install -d %{buildroot}/etc/profile.d
+make DESTDIR=%{buildroot} install
+install -d %{buildroot}/usr/bin
+mv %{buildroot}/usr/share/doc doc_dir
+%fdupes -s %{buildroot}%{_datadir}
+
+%post
+[ -e %{_sysconfdir}/profiles.d/modules.sh ] || \
+    ln -sf %{_datadir}/Modules/init/profile.sh %{_sysconfdir}/profile.d/modules.sh
+[ -e %{_sysconfdir}/profiles.d/modules.sh ] || \
+    ln -sf %{_datadir}/Modules/init/profile.csh %{_sysconfdir}/profile.d/modules.csh 
+
+%postun
+[ -e %{_sysconfdir}/profiles.d/modules.sh ] || \
+      rm -f %{_sysconfdir}/profile.d/modules.sh
+[ -e %{_sysconfdir}/profiles.d/modules.csh ] || \
+      rm -f %{_sysconfdir}/profile.d/modules.csh
 
 %files
 %defattr(-,root,root)
@@ -109,15 +127,21 @@ mv $RPM_BUILD_ROOT/usr/share/doc doc_dir
 %dir %{_libdir}/%{name}
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/modules
+%config %{_sysconfdir}/%{name}
 %{_bindir}/add.modules
 %{_bindir}/envml
 %{_bindir}/mkroot
 %{_bindir}/modulecmd
+%{_bindir}/createmodule.py
 %{_datadir}/%{name}/init
+%{?vimdatadir:%dir %{dirname:%{?vimdatadir}}}
+%{?vimdatadir}
 %{_libdir}/%{name}/modulecmd-compat
 %{_libdir}/%{name}/modulecmd.tcl
+%{_libdir}/%{name}/libtclenvmodules.so
 %{_datadir}/modules/*
 %{_mandir}/man1/module-compat.1*
+%{_mandir}/man1/ml.1*
 %{_mandir}/man1/module.1*
 %{_mandir}/man4/modulefile-compat.4*
 %{_mandir}/man4/modulefile.4*

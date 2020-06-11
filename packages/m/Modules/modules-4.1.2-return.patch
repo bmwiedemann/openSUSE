@@ -1,12 +1,0 @@
-Index: compat/ModuleCmd_Avail.c
-===================================================================
---- compat/ModuleCmd_Avail.c.orig	2018-03-31 18:22:47.000000000 +0200
-+++ compat/ModuleCmd_Avail.c	2018-04-16 21:08:24.521845828 +0200
-@@ -690,6 +690,7 @@ static	int	check_cache( char *dir)
- 
- static int	test_version_dir(	struct dirent	*dp)
- {
-+	return 0;
- }
- /*++++
-  ** ** Function-Header ***************************************************** **

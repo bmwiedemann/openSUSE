@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 15 05:39:32 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Update to version 4.5.0
+  Check https://github.com/cea-hpc/modules/releases/tag/v4.5.0
+  for details.
+- Install profile script to set aliases (boo#1100410)
+- Add: Remove-empty-unused-static-function.patch
+         replaces: modules-4.1.2-return.patch
+- Remove: modules-4.1.2-fix-bashisms.patch
+  BOGUS: applied to a csh context.
+- Install .vim files to /usr/share/vim/site.
+
+-------------------------------------------------------------------
 Tue Apr 17 11:13:53 UTC 2018 - boris@steki.net
 
 - rolled back change from /usr/share/Modules (package name) to old 
