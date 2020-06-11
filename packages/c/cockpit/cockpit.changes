@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Tue Jun  9 12:11:54 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 220:
+  https://cockpit-project.org/blog/cockpit-220.html
+
+-------------------------------------------------------------------
+Tue Jun  9 08:46:59 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- disable selinux, sosreport and machines subpackages due to missing
+  dependencies
+
+-------------------------------------------------------------------
+Wed Apr 29 13:26:03 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- remove badness overrides to allow Factory submission
+
+-------------------------------------------------------------------
+Wed Apr 29 07:50:41 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- remove branding with stale symlinks. Can't rely on /etc/os-release as OBS may
+  use the dummy-release package.
+
+-------------------------------------------------------------------
+Tue Apr 28 09:18:22 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- use pkgconfig(systemd) and pkgconfig(krb5)
+- fix build with glib update (0001-bridge-Pass-connectable-to-TLS-client-connection.patch)
+
+-------------------------------------------------------------------
+Fri Mar 27 10:50:51 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 215
+
+-------------------------------------------------------------------
+Thu Aug 22 09:50:14 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 200
+
+-------------------------------------------------------------------
+Fri Jun 21 13:44:05 UTC 2019 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest release 195  
+
+-------------------------------------------------------------------
+Thu Mar  7 13:23:36 UTC 2019 - Alex <aevseev@gmail.com>
+
+- New upstream version - 189
+
+-------------------------------------------------------------------
+Mon Feb  4 18:24:55 UTC 2019 - aevseev@gmail.com
+
+- New upstream version - 186
+
+-------------------------------------------------------------------
+Wed Oct 24 13:37:31 UTC 2018 - aevseev@gmail.com
+
+- New upstream version - 180
+
+-------------------------------------------------------------------
+Fri Sep  7 10:24:09 UTC 2018 - aevseev@gmail.com
+
+- New upstream version - 177
+
+-------------------------------------------------------------------
+Mon Aug 27 08:28:01 UTC 2018 - aevseev@gmail.com
+
+- First build. Version - 176.
+
+-------------------------------------------------------------------
+Tue Oct 13 11:41:44 UTC 2015 - kkaempf@suse.com
+
+- Update to 0.79
+  * Vagrant file for Cockpit development
+  * Use libvirt for testing
+  * Display only last lines of Kubernetes container logs
+
+  See https://github.com/cockpit-project/cockpit/releases
+
+- Add branding-symlinks.patch, SUSE doesn't carry Fedora pixmaps
+
+-------------------------------------------------------------------
+Sat Feb  7 13:22:23 UTC 2015 - kkaempf@suse.com
+
+- Initial release 0.38
