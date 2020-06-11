@@ -17,7 +17,7 @@
 
 
 Name:           yast2-proxy
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        YaST2 - Proxy Configuration
 License:        GPL-2.0-or-later

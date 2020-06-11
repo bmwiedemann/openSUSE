@@ -1,5 +1,11 @@
 -------------------------------------------------------------------
-Tue May 12 14:38:07 UTC 2020 - josef Reidinger <jreidinger@localhost>
+Tue Jun  9 20:31:51 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Reduce autoyast profile size if proxy is disabled (bsc#1172749)
+- 4.3.1
+
+-------------------------------------------------------------------
+Tue May 12 14:38:07 UTC 2020 - josef Reidinger <jreidinger@suse.com>
 
 - Autoyast schema: Allow optional types for string and map objects
   (bsc#1170886)
