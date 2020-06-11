@@ -25,9 +25,12 @@ License:        SUSE-GPL-2.0-with-FLOSS-exception
 Group:          Development/Languages/Python
 URL:            http://dev.mysql.com/doc/connector-python/en/index.html
 Source:         https://cdn.mysql.com//Downloads/Connector-Python/mysql-connector-python-%{version}.tar.gz
+Patch0:         remove-require-version-constraint.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-dnspython
+Requires:       python-protobuf
 BuildArch:      noarch
 %python_subpackages
 
@@ -36,6 +39,7 @@ MySQL driver written in Python which does not depend on MySQL C client libraries
 
 %prep
 %setup -q -n mysql-connector-python-%{version}
+%patch0 -p1
 
 %build
 %python_build

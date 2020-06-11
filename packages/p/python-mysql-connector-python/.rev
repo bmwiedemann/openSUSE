@@ -68,4 +68,12 @@
   - BUG#27897881: Empty LONG BLOB throws an IndexError</comment>
     <requestid>786223</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>a2d5bd27eac8412e183f3756d8231514</srcmd5>
+    <version>8.0.19</version>
+    <time>1591880471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813485</requestid>
+  </revision>
 </revisionlist>

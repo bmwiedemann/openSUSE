@@ -1,0 +1,8 @@
+--- mysql-connector-python-8.0.19/setupinfo.py.orig	2019-12-17 13:31:58.000000000 +0100
++++ mysql-connector-python-8.0.19/setupinfo.py	2020-06-11 10:42:54.011938623 +0200
+@@ -139,4 +139,4 @@
+     'Topic :: Software Development :: Libraries :: Application Frameworks',
+     'Topic :: Software Development :: Libraries :: Python Modules'
+ ]
+-install_requires = ["protobuf==3.6.1", "dnspython==1.16.0"]
++install_requires = ["protobuf", "dnspython"]

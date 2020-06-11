@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 11 09:01:23 UTC 2020 - Rolf Krahl <rolf@rotkraut.de>
+
+- Add requirement on python-dnspython and python-protobuf (bsc#1172784)
+- Add remove-require-version-constraint.patch
+
+-------------------------------------------------------------------
 Wed Mar 18 15:46:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 8.0.19 (bsc#1122204 - CVE-2019-2435):
