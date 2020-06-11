@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May 19 11:32:22 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3.0
+  * SSSD can now handle hosts and networks nsswitch databases
+    (see resolve_provider option).
+  * By default, authentication request only refresh user's
+    initgroups if it is expired or there is not active user's
+    session (see pam_initgroups_scheme option).
+  * OpenSSL is used as default crypto provider, NSS is deprecated.
+  * The AD provider now defaults to GSS-SPNEGO SASL mechanism
+    (see ldap_sasl_mech option).
+  * The AD provider can now be configured to use only ldaps port
+    (see ad_use_ldaps option).
+  * SSSD now accepts host entries from GPO's security filter.
+  * New debug level (0x10000) added for low level LDB messages
+    only (see sssd.conf man page).
+- Drop sssd-gpo_host_security_filter-2.2.2.patch,
+  0001-Resolve-computer-lookup-failure-when-sam-cn.patch,
+  0001-AD-use-getaddrinfo-with-AI_CANONNAME-to-find-the-FQD.patch (merged)
+- Drop 0001-Fix-build-failure-against-samba-4.12.0rc1.patch
+  (unapplicable)
+
+-------------------------------------------------------------------
 Tue Mar 24 10:49:17 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to 2.2.3

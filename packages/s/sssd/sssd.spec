@@ -18,22 +18,18 @@
 %define _buildshell /bin/bash
 
 Name:           sssd
-Version:        2.2.3
+Version:        2.3.0
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0-or-later and LGPL-3.0-or-later
 Group:          System/Daemons
 URL:            https://pagure.io/SSSD/sssd
 #Git-Clone:	https://pagure.io/SSSD/sssd
-Source:         https://releases.pagure.org/SSSD/sssd/%name-%version.tar.gz
-Source2:        https://releases.pagure.org/SSSD/sssd/%name-%version.tar.gz.asc
+Source:         https://github.com/SSSD/sssd/releases/download/sssd-2_3_0/%name-%version.tar.gz
+Source2:        https://github.com/SSSD/sssd/releases/download/sssd-2_3_0/%name-%version.tar.gz.asc
 Source3:        baselibs.conf
 Source5:        %name.keyring
 Patch1:         krb-noversion.diff
-Patch2:         sssd-gpo_host_security_filter-2.2.2.patch
-Patch3:         0001-Resolve-computer-lookup-failure-when-sam-cn.patch
-Patch4:         0001-AD-use-getaddrinfo-with-AI_CANONNAME-to-find-the-FQD.patch
-Patch5:         0001-Fix-build-failure-against-samba-4.12.0rc1.patch
 
 %define servicename	sssd
 %define sssdstatedir	%_localstatedir/lib/sss
@@ -45,23 +41,23 @@ Patch5:         0001-Fix-build-failure-against-samba-4.12.0rc1.patch
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
 BuildRequires:  bind-utils
+BuildRequires:  check-devel
 BuildRequires:  cifs-utils-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  krb5-devel >= 1.12
+BuildRequires:  libcmocka-devel
 BuildRequires:  libsmbclient-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-tools
 BuildRequires:  libxslt-tools
 BuildRequires:  nscd
+BuildRequires:  nss_wrapper
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkg-config >= 0.21
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  libcmocka-devel
-BuildRequires:  nss_wrapper
 BuildRequires:  uid_wrapper
-BuildRequires:  check-devel
 BuildRequires:  pkgconfig(augeas) >= 1.0.0
 BuildRequires:  pkgconfig(collection) >= 0.5.1
 BuildRequires:  pkgconfig(dbus-1) >= 1.0.0
@@ -447,7 +443,7 @@ rm -Rfv "$b/usr/lib/debug/usr/lib/sssd/p11_child-1.16.2-0.x86_64.debug"
 
 %check
 # sss_config-tests fails
-make %{?_smp_mflags} check ||:
+make %{?_smp_mflags} check || :
 
 %pre
 %service_add_pre sssd.service sssd-autofs.service sssd-autofs.socket sssd-nss.service sssd-nss.socket sssd-pac.service sssd-pac.socket sssd-pam-priv.socket sssd-pam.service sssd-pam.socket sssd-ssh.service sssd-ssh.socket sssd-sudo.service sssd-sudo.socket
@@ -606,7 +602,6 @@ rm -f /var/lib/sss/db/*.ldb
 %_libdir/cifs-utils/
 %_libdir/krb5/
 %_libdir/%name/modules/sssd_krb5_localauth_plugin.so
-%_mandir/??/man8/pam_sss.8*
 %_mandir/??/man8/sssd_krb5_locator_plugin.8*
 %_mandir/man8/pam_sss.8*
 %_mandir/man8/sssd_krb5_locator_plugin.8*

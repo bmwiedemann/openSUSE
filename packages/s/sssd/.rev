@@ -920,4 +920,12 @@
 - Add 0001-Fix-build-failure-against-samba-4.12.0rc1.patch</comment>
     <requestid>787787</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>1b2b4185147fd22b629e5757bea7dc39</srcmd5>
+    <version>2.3.0</version>
+    <time>1591879254</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.3.0</comment>
+    <requestid>810768</requestid>
+  </revision>
 </revisionlist>
