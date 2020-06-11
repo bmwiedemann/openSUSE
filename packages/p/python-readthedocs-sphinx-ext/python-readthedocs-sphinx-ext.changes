@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 30 23:26:29 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.0.4:
+  * Re-add proxied_api_host to allow overriding it
+
+-------------------------------------------------------------------
 Fri Apr 24 15:22:12 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:
