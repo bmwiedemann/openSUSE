@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  9 19:43:21 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Reduce autoyast profile size if kdump is disabled (bsc#1172749)
+- 4.3.1
+
+-------------------------------------------------------------------
 Tue May 12 09:10:14 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Autoyast schema: Allow optional types for string and map objects
