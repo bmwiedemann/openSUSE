@@ -9,8 +9,8 @@ set -o errexit
 
 source ${0%create-tlst-step1-list-all-po-projects.sh}create-tlst.conf
 
-for i in $BINARY_REPO/*/{$BINARY_ARCH,noarch}/*.rpm ; do rpm -q --queryformat=%{name} -p $i ; echo : ; rpm -qlp $i | grep LC_MESSAGES || : ; done |
-	sed "s~^$BINARY_REPO/suse/($BINARY_ARCH|noarch)~~" >create-tlst-temp-all-po-files.lst
+for i in $BINARY_REPO/{$BINARY_ARCH,noarch}/*.rpm ; do rpm -q --queryformat=%{name} -p $i ; echo : ; rpm -qlp $i | grep LC_MESSAGES || : ; done |
+	sed "s~^$BINARY_REPO/($BINARY_ARCH|noarch)~~" >create-tlst-temp-all-po-files.lst
 
 cat create-tlst-temp-all-po-files.lst |
 sed '

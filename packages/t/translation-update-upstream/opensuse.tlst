@@ -1,6 +1,6 @@
 # package                           domain                      method repository dir                                branch option
 cracklib                            cracklib                            lcn - cracklib/po
 gnome-packagekit                    gnome-packagekit                    lcn - gnome-packagekit/po
-linuxrc                             linuxrc                             lcn - linuxrc/po
+#LOST-I18N-SUPPORT: linuxrc                             linuxrc                             lcn - linuxrc/po
 pam-config                          pam-config                          lcn - pam-config/po
 pam_krb5                            pam_krb5                            lcn - pam_krb5/po

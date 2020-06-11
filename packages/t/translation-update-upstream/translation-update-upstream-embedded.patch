@@ -1,14 +1,14 @@
---- translation-update-upstream-embedded.sh	2018-12-10 22:58:17.369805285 +0100
-+++ translation-update-upstream-embedded.sh	2018-12-10 23:01:32.309607787 +0100
-@@ -74,6 +74,7 @@
- 	fi
+--- translation-update-upstream-embedded.sh	2020-01-22 22:19:22.911348880 +0100
++++ translation-update-upstream-embedded.sh	2020-01-22 22:39:26.134577525 +0100
+@@ -85,6 +85,7 @@
+ 	USE_INTLTOOL=true
      fi
  fi
 +BASE_DIR=$PWD
  DIR=${1:-po}
  
  if test -z "$3" ; then
-@@ -202,7 +203,7 @@
+@@ -259,7 +260,7 @@
  		echo "WARNING: Missing $DOMAIN in translation-update-upstream configuration! No updates available."
  	    fi
  	else

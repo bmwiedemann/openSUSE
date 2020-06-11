@@ -3,4 +3,4 @@
 ibus                        ibus10                     git  https://github.com/ibus/ibus.git                            ibus/po
 eiciel                      eiciel                     git  https://github.com/rofirrim/eiciel.git                      eiciel/po
 libgnomesu                  libgnomesu-1.0             git  https://github.com/openSUSE/libgnomesu.git                  libgnomesu/po
-virt-manager                virt-manager               git  https://github.com/virt-manager/virt-manager.git            virt-manager/po
+#UNSUPPORTED-POT: virt-manager                virt-manager               git  https://github.com/virt-manager/virt-manager.git            virt-manager/po

@@ -355,4 +355,12 @@ It will have no impact to binary RPM, just will provide actual source RPM.</comm
     <comment></comment>
     <requestid>663737</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>ccedc12c4e71a320c3a82012fa8ac7f2</srcmd5>
+    <version>20200601</version>
+    <time>1591879148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810691</requestid>
+  </revision>
 </revisionlist>

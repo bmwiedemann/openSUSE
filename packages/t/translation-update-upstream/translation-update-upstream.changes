@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Mar 10 14:37:34 CET 2020 - sbrabec@suse.com
+
+- Reset outdated translations and turn translate-update-upstream
+  into dummy (bsc#1172337, boo#1172367).
+- Drop SLE / Leap discrimination code.
+- translation-update-upstream.in:
+  * Disable msgmerge. Never cause translation regression, even at
+    cost of superfluous strings (bsc#1160114).
+  * Implement new heuristic: use xgettext. Make it the default
+    (bsc#1160114).
+  * translation-update-upstream-embedded.patch: Update.
+- upstream-collect.sh supplementary script: Port
+  translation-update-upstream.in changes.
+
+-------------------------------------------------------------------
+Tue Nov  5 18:49:52 CET 2019 - sbrabec@suse.com
+
+- upstream-collect.sh supplementary script: Port meson support to
+  the fallback pot extractor (bsc#1095368#c9).
+- upstream-collect.sh, upstream-collect.conf supplementary script:
+  Evaluate %is_opensuse for target system instead of host
+  (bsc#1095368#c8).
+
+-------------------------------------------------------------------
+Wed Oct  2 02:48:55 CEST 2019 - sbrabec@suse.com
+
+- Update to version 20191002 (bsc#1095361, bsc#1095364,
+  bsc#1095368, bsc#1095371, bsc#1095377, bsc#1095379):
+  * Update configuration to be SLE15 SP1 Update compatible.
+  * Add new upstream branches to tlst files.
+  * Update create-tlst-step2-create-gnome_gtp.sh to cover new
+    upstream branches.
+  * Update all strings from upstream and LCN.
+- upstream-collect.sh supplementary script: Make paths compatible
+  with Tumbleweed.
+
+-------------------------------------------------------------------
+Fri Mar 29 00:41:19 CET 2019 - sbrabec@suse.com
+
+- Update to version 20190328:
+  * Translation updates.
+
+-------------------------------------------------------------------
 Mon Dec 10 22:58:25 CET 2018 - sbrabec@suse.com
 
 - translation-update-upstream.in: Restore time stamp to prevent

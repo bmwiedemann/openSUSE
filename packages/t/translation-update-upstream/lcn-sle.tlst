@@ -2,4 +2,4 @@
 #NOT-IN-SLE: NetworkManager-vpnc                 NetworkManager-vpnc                 lcn - NetworkManager-vpnc/po                  SLE12-SP4
 #NOT-IN-SLE: krb5-ticket-watcher                 krb5-ticket-watcher                 lcn - krb5-ticket-watcher/po                  SLE12-SP4
 libgnomesu                          libgnomesu-1.0                      lcn - libgnomesu/po                           SLE12-SP4
-linuxrc                             linuxrc                             lcn - linuxrc/po                              SLE12-SP4
+#LOST-I18N-SUPPORT: linuxrc                             linuxrc                             lcn - linuxrc/po                              SLE12-SP4

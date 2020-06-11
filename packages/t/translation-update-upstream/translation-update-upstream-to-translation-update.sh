@@ -27,7 +27,8 @@ mkdir\
  TRANSLATION_UPDATE TRANSLATION_UPDATE/translation-update TRANSLATION_UPDATE/TUU\
  TRANSLATION_UPDATE/NOT_UPDATED \
  TRANSLATION_UPDATE/UPDATED \
- TRANSLATION_UPDATE/complete TRANSLATION_UPDATE/rebuilt
+ TRANSLATION_UPDATE/complete TRANSLATION_UPDATE/rebuilt \
+ TRANSLATION_UPDATE/complete/translation-update TRANSLATION_UPDATE/rebuilt/translation-update
 
 # more tarballs are available => use the latest one
 # FIXME: Fix 20090213.10 < 20090213.9

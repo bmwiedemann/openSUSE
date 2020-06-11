@@ -22,6 +22,9 @@ WORK_DIR=$PWD
 set -o errexit
 shopt -s nullglob
 
+rpm -q obs-service-tar >/dev/null
+rpm -q obs-service-recompress >/dev/null
+
 source ${0%.sh}.conf
 
 function get_pot_name {
@@ -76,8 +79,19 @@ EOF
 	# Modify some requirements to work without relevant packages installed.
 	s/%{xulrunner_version}/dummy/g
 	s/%{mozilla_ver}/dummy/g
+	s/%{glib2_gsettings_schema_requires}/Requires: dummy/g
+	s/%glib2_gsettings_schema_requires/Requires: dummy/g
+	s/%{gtk2_immodule_requires}/Requires: dummy/g
+	s/%{gtk3_immodule_requires}/Requires: dummy/g
+	s/%{py_requires}/Requires: dummy/g
+	s/%py_requires/Requires: dummy/g
 	s/%kde4_runtime_requires/Requires: dummy/g
 	s/%systemd_requires/Requires: dummy/g
+	s/%gconf_schemas_prereq/Requires: dummy/g
+	s/%{gconf_schemas_prereq}/Requires: dummy/g
+	s/%glib2_gio_module_requires/Requires: dummy/g
+	s/%{glib2_gio_module_requires}/Requires: dummy/g
+	s/%{_bluezVersion}/0/g
 	' *.spec
     eval rpmbuild --macros=/usr/lib/rpm/macros:/usr/lib/rpm/suse_macros:/usr/lib/rpm/suse/macros:/usr/lib/rpm/macros.d/macros.systemd:/usr/lib/rpm/platform/$(uname -i)-linux/macros:/etc/rpm/\\\*:$RPMDIR/macros --nodeps -bp ${*:-*.spec}
     rm -rf $RPMDIR
@@ -117,20 +131,45 @@ mkdir -p ~/.upstream-collect.tmp
 cat >~/.upstream-collect.tmp/translation-update-upstream <<EOF
 #!/bin/sh
 echo "Dummy translation-update-upstream for upstream-collect.sh. Skipping merge of old translations."
+
+DOMAIN=\$2
 USE_MESON=false
-if test -f meson.build -a ! \( -f \${1:-po}/Makefile.in.in -o -f \${1:-po}/Makefile.in -o -f \${1:-po}/Makefile \); then
-    echo "Switching to meson style pot file extraction."
-    if test -n "\$2" ; then
-        DOMAIN="\$2"
-    else
+if test -f meson.build -a ! \( -f \${1:-po}/Makefile.in.in -o -f \${1:-po}/Makefile.in -o -f \${1:-po}/Makefile \) ; then
+    echo "Switching to meson style pot file extraction." >&2
+    USE_MESON=true
+    if test -z "\$DOMAIN" ; then
 	MESON_PROJECT="\$(sed -n "/^project(/,+1{1{h;d};2{x;G}};s/^project[[:space:]]*([[:space:]]*'\([^']*\)'.*/\1/p" <meson.build)"
-	DOMAIN="\$(sed -n "s/meson.project_name[[:space:]]*([[:space:]]*)/'\$MESON_PROJECT'/g;s/.*\\\\.set_quoted[[:space:]]*('GETTEXT_PACKAGE',[[:space:]]'\([^']*\)').*/\1/p" <meson.build)"
+	DOMAIN="\$(sed -n "s/meson.project_name[[:space:]]*([[:space:]]*)/'\$MESON_PROJECT'/g;s/.*\.set_quoted[[:space:]]*('GETTEXT_PACKAGE',[[:space:]]'\([^']*\)').*/\1/p" <meson.build)"
+	if test -z "\$DOMAIN" ; then
+	    if ! grep -q GETTEXT_PACKAGE meson.build ; then
+		DOMAIN="\$MESON_PROJECT"
+	    else
+		echo "Error: Gettext domain cannot be determined." >&2
+		exit 1
+	    fi
+	fi
     fi
-    if test -f \${1:-po}/POTFILES ; then
-	POTFILES="\$PWD/\${1:-po}/POTFILES"
-    else
-	POTFILES="\$PWD/\${1:-po}/POTFILES.in"
+fi
+USE_INTLTOOL=false
+if test -f configure.ac ; then
+    if grep PROG_INTLTOOL configure.ac ; then
+	USE_INTLTOOL=true
     fi
+fi
+if test -f configure.in ; then
+    if grep PROG_INTLTOOL configure.in ; then
+	USE_INTLTOOL=true
+    fi
+fi
+DIR=\${1:-po}
+
+if test -z "\$3" ; then
+    if \$USE_MESON ; then
+	if test -f POTFILES ; then
+	    POTFILES="\$PWD/\${1:-po}/POTFILES"
+	else
+	    POTFILES="\$PWD/\${1:-po}/POTFILES.in"
+	fi
     echo "cd \\"\$PWD\\"
 xgettext --package-name=\\"\$DOMAIN\\"\\\\
 	-p \\"\$PWD\\"\\\\
@@ -155,8 +194,34 @@ xgettext --package-name=\\"\$DOMAIN\\"\\\\
 	--keyword=g_dpgettext2:2c,3\\\\
 	--keyword=_\\\\
 	--keyword=g_dcgettext:2" >\${1:-po}/.translation-update-upstream-implemented
+    else
+	if \$USE_INTLTOOL ; then
+	    if test -z "\$DOMAIN" ; then
+		echo "intltool-update --pot" >\${1:-po}/.translation-update-upstream-implemented
+	    else
+		intltool-update --gettext-package=\$DOMAIN --pot
+		echo "intltool-update --gettext-package=\$DOMAIN --pot" >\${1:-po}/.translation-update-upstream-implemented
+	    fi
+	else
+	# Fallback: use xgettext with default options except those that we
+	# cannot guess (it can stil fail, as options can be customized).
+	    echo "cd \\"\$DIR\\"
+	    if test -z \\"\$DOMAIN\\" ; then
+		## Ugly hack! intltool could return invalid po, but its
+		## FindPackageName() can guess domain.  Call it to get it.
+		intltool-update --pot
+		for POT in *.pot ; do
+		    DOMAIN=\\\${POT%.pot}
+		done
+	    fi
+	    xgettext --default-domain=\\"\$DOMAIN\\" --directory=\\"\$OLDPWD\\" \\\\
+		     --add-comments=TRANSLATORS: --from-code=UTF-8 --keyword=_ --keyword=N_ --keyword=C_:1c,2 --keyword=NC_:1c,2 --keyword=g_dngettext:2,3 --add-comments \\\\
+		     --files-from=./POTFILES.in
+	    mv \\"\\\$DOMAIN.po\\" \\"\\\$DOMAIN.pot\\"" >\${1:-po}/.translation-update-upstream-implemented
+	fi
+    fi
 else
-    echo \${3:-intltool-update\${2+ --gettext-package=\$2} --pot} >\${1:-po}/.translation-update-upstream-implemented
+    echo \$3 >\${1:-po}/.translation-update-upstream-implemented
 fi
 cd \${1:-po}
 # Generate and save a copy of the pot file now and compare later.
@@ -310,6 +375,15 @@ for TLST in *.tlst ; do
 		    echo "Trying to check-out PACKAGES $PACKAGE from $OSC_REPOSITORY..."
 		    # FIXME: When obs-service-download_url appears in Factory, use --source-service-files
 		    if osc ${OSC_APIURL:+--apiurl=$OSC_APIURL} checkout --server-side-source-service-files --expand-link $OSC_REPOSITORY $PACKAGE >gnome-patch-translation-collect-tmp.log 2>&1 ; then
+			cd $OSC_REPOSITORY/$PACKAGE
+			if test -f _service ; then
+			    for FILE in *.obscpio ; do
+				cpio -d -i <$FILE
+			    done
+			    sed -i '/<service .*mode="disabled"\(\|.*[^\/]\)>/,/<\/service>/d;/<service .*mode="disabled".*\/>/d;s/mode="buildtime"//' _service
+			    osc service runall
+			fi
+			cd "$OLDPWD"
 			mv $OSC_REPOSITORY/$PACKAGE $WORK_DIR/PACKAGES/
 			for FILE in $WORK_DIR/PACKAGES/$PACKAGE/_service\:download_url\:* ; do
 				mv "$FILE" "${FILE/_service:download_url:/}"
@@ -383,19 +457,89 @@ for TLST in *.tlst ; do
 	else
 	    echo "$RPMPODIR: Missing or incorrect translation-update-upstream in the spec file."
 	    # translation-update-upstream is implemented, try the default with the upstream domain:
-	    if intltool-update --gettext-package=$DOMAIN --pot ; then
-	    	get_pot_name
+	    cd ..
+	    RC=0
+	    if test -f meson.build -a ! \( -f po/Makefile.in.in -o -f po/Makefile.in -o -f po/Makefile \); then
+		echo "Switching to meson style pot file extraction."
+		MESON_PROJECT="$(sed -n "/^project(/,+1{1{h;d};2{x;G}};s/^project[[:space:]]*([[:space:]]*'\([^']*\)'.*/\1/p" <meson.build)"
+		DOMAIN="$(sed -n "s/meson.project_name[[:space:]]*([[:space:]]*)/'$MESON_PROJECT'/g;s/.*\\.set_quoted[[:space:]]*('GETTEXT_PACKAGE',[[:space:]]'\([^']*\)').*/\1/p" <meson.build)"
+		if test -f po/POTFILES ; then
+		POTFILES="$PWD/po/POTFILES"
+		else
+		POTFILES="$PWD/po/POTFILES.in"
+		fi
+		xgettext --package-name="$DOMAIN"\
+			-p "$PWD"\
+			-f "$POTFILES"\
+			-D "$PWD"\
+			-k_ -o "$PWD/po/$DOMAIN.pot"\
+			--keyword=NC_:1c,2\
+			--flag=g_strdup_printf:1:c-format\
+			--flag=g_set_error:4:c-format\
+			--flag=g_dngettext:2:pass-c-format\
+			--flag=g_string_printf:2:c-format\
+			--add-comments\
+			--from-code=UTF-8\
+			--keyword=C_:1c,2\
+			--flag=N_:1:pass-c-format\
+			--flag=g_string_append_printf:2:c-format\
+			--flag=C_:2:pass-c-format\
+			--keyword=N_\
+			--flag=g_error_new:3:c-format\
+			--flag=NC_:2:pass-c-format\
+			--keyword=g_dngettext:2,3\
+			--keyword=g_dpgettext2:2c,3\
+			--keyword=_\
+			--keyword=g_dcgettext:2
+		RC=$?
+		cd -
+	    else
+		cd -
+		USE_INTLTOOL=false
+		if test -f configure.ac ; then
+		    if grep PROG_INTLTOOL configure.ac ; then
+			USE_INTLTOOL=true
+		    fi
+		fi
+		if test -f configure.in ; then
+		    if grep PROG_INTLTOOL configure.in ; then
+			USE_INTLTOOL=true
+		    fi
+		fi
+		if $USE_INTLTOOL ; then
+		    if test -z "$DOMAIN" ; then
+			intltool-update --pot
+		    else
+			intltool-update --gettext-package=$DOMAIN --pot
+		    fi
+		else
+		    # Fallback: use xgettext with default options except those that we
+		    # cannot guess (it can stil fail, as options can be customized).
+		    if test -z "$DOMAIN" ; then
+			## Ugly hack! intltool could return invalid po, but its
+			## FindPackageName() can guess domain.  Call it to get it.
+			if ! intltool-update --pot ; then
+			    echo >>$WORK_DIR/upstream-collect.log "package=$PACKAGE domain=$DOMAIN method=$METHOD repository=$REPO directory=$DIR branch=${BRANCH:(default)}: packaging error, package does not call translation-update-upstream properly and intltool-update fails, no way to update"
+			    STATUS=TUU_BROKEN
+			    mkdir -p $WORK_DIR/STAMPS/$PACKAGE/$DOMAIN/$METHOD/${REPO//[\/:.]/_}/$REPODIR/${BRANCH:-__HEAD__}
+			    # However we cannot do anything, build dir is successfully processed.
+			    touch $WORK_DIR/STAMPS/$PACKAGE/.builddir_ok
+			    continue
+			fi
+			for POT in *.pot ; do
+			    DOMAIN=${POT%.pot}
+			done
+		    fi
+		    xgettext --default-domain="$DOMAIN" --directory="$OLDPWD" \
+			     --add-comments=TRANSLATORS: --from-code=UTF-8 --keyword=_ --keyword=N_ --keyword=C_:1c,2 --keyword=NC_:1c,2 --keyword=g_dngettext:2,3 --add-comments \
+			     --files-from=./POTFILES.in
+		    mv "$DOMAIN.po" "$DOMAIN.pot"
+		fi
+		get_pot_name
 		REAL_DOMAIN=${POT%.pot}
 		echo >>$WORK_DIR/upstream-collect.log "package=$PACKAGE domain=$DOMAIN gettext-package=$REAL_DOMAIN method=$METHOD repository=$REPO directory=$DIR branch=${BRANCH:(default)}: packaging error, package does not call translation-update-upstream properly"
 		STATUS=TUU_NOT_CALLED
 		cp -a $DOMAIN.pot $WORK_DIR/pot/
-	    else
-		echo >>$WORK_DIR/upstream-collect.log "package=$PACKAGE domain=$DOMAIN method=$METHOD repository=$REPO directory=$DIR branch=${BRANCH:(default)}: packaging error, package does not call translation-update-upstream properly and intltool-update fails, no way to update"
-		STATUS=TUU_BROKEN
-		mkdir -p $WORK_DIR/STAMPS/$PACKAGE/$DOMAIN/$METHOD/${REPO//[\/:.]/_}/$REPODIR/${BRANCH:-__HEAD__}
-		# However we cannot do anything, build dir is successfully processed.
-		touch $WORK_DIR/STAMPS/$PACKAGE/.builddir_ok
-		continue
 	    fi
 	fi
 
@@ -440,10 +584,10 @@ for TLST in *.tlst ; do
 		    cgit )
 			# Some tricks to be able to recycle git:// URI
 			CGIT_URI=$REPO
-			CGIT_URI=${CGIT_URI/git:\/\/anongit./http://cgit.}
-			CGIT_URI=${CGIT_URI/git:\/\//http://}
+			CGIT_URI=${CGIT_URI/git:\/\/anongit./https://cgit.}
+			CGIT_URI=${CGIT_URI/git:\/\//https://}
 			CGIT_BRANCH=${BRANCH:+?id=$BRANCH}
-			CGIT_SERVER=${CGIT_URI#http://}
+			CGIT_SERVER=${CGIT_URI#https://}
 			CGIT_SERVER=${CGIT_SERVER%%/*}
 			curl $CGIT_URI/tree/${REPODIR#*/}$CGIT_BRANCH | sed -n 's:^.*class='\''ls-blob[^'\'']*'\'' href='\''\([^'\'']*\)'\''.*$:\1:p' |
 			    while read ; do

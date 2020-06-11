@@ -1,5 +1,8 @@
 #! /bin/bash
 
+echo "No translation-update-upstream data available. Keeping existing translation."
+exit 0
+
 set -o errexit
 shopt -s nullglob
 
@@ -74,6 +77,17 @@ if test -f meson.build -a ! \( -f ${1:-po}/Makefile.in.in -o -f ${1:-po}/Makefil
 	fi
     fi
 fi
+USE_INTLTOOL=false
+if test -f configure.ac ; then
+    if grep PROG_INTLTOOL configure.ac ; then
+	USE_INTLTOOL=true
+    fi
+fi
+if test -f configure.in ; then
+    if grep PROG_INTLTOOL configure.in ; then
+	USE_INTLTOOL=true
+    fi
+fi
 DIR=${1:-po}
 
 if test -z "$3" ; then
@@ -107,10 +121,27 @@ if test -z "$3" ; then
 	cd $DIR
     else
 	cd $DIR
-	if test -z "$DOMAIN" ; then
-	    intltool-update --pot
+	if $USE_INTLTOOL ; then
+	    if test -z "$DOMAIN" ; then
+		intltool-update --pot
+	    else
+		intltool-update --gettext-package=$DOMAIN --pot
+	    fi
 	else
-	    intltool-update --gettext-package=$DOMAIN --pot
+	# Fallback: use xgettext with default options except those that we
+	# cannot guess (it can stil fail, as options can be customized).
+	    if test -z "$DOMAIN" ; then
+		## Ugly hack! intltool could return invalid po, but its
+		## FindPackageName() can guess domain.  Call it to get it.
+		intltool-update --pot
+		for POT in *.pot ; do
+		    DOMAIN=${POT%.pot}
+		done
+	    fi
+	    xgettext --default-domain="$DOMAIN" --directory="$OLDPWD" \
+		     --add-comments=TRANSLATORS: --from-code=UTF-8 --keyword=_ --keyword=N_ --keyword=C_:1c,2 --keyword=NC_:1c,2 --keyword=g_dngettext:2,3 --add-comments \
+		     --files-from=./POTFILES.in
+	    mv "$DOMAIN.po" "$DOMAIN.pot"
 	fi
     fi
 else
@@ -151,13 +182,29 @@ for POT in *.pot ; do
 			# Swap $PO_PATH and $PO to disable this behavior.
 			msgcat --use-first $PO_PATH $PO -o $PO.new
 			# Return .po file notes that are not present in the update file.
-			msgmerge --no-fuzzy-matching --compendium=$PO_PATH -o $PO.new2 $PO.new $POT
+			## In theory, we should call msgmerge here, as the
+			## imported file might be outdated. But we have to live
+			## with the fact that the pot file heuristic above
+			## might be incorrect, and the generated pot file is
+			## incomplete. Never make things worse, and skip
+			## msgmerge. Superfluous strings are better than
+			## deleted strings.
+			## In time of writing the priginal code, --compendium
+			## worked around the fact that msgcat prefers empty
+			## string from the first file over translated string
+			## from the second file. Now msgcat behaves logically,
+			## so this step is not needed.
+			#msgmerge --no-fuzzy-matching --compendium=$PO_PATH -o $PO.new2 $PO.new $POT
 			# And finally, synthesize header that not change every time.
-			if @LIBEXECDIR@/translation-update-upstream/msgheadermerge $PO $PO.new2 $PO.header --mergemode ; then
-			    msgcat --use-first $PO.header $PO.new2 -o $PO
-			    rm $PO.new $PO.new2 $PO.header
+			#if @LIBEXECDIR@/translation-update-upstream/msgheadermerge $PO $PO.new2 $PO.header --mergemode ; then
+			if @LIBEXECDIR@/translation-update-upstream/msgheadermerge $PO $PO.new $PO.header --mergemode ; then
+			    #msgcat --use-first $PO.header $PO.new2 -o $PO
+			    msgcat --use-first $PO.header -o $PO
+			    #rm $PO.new $PO.new2 $PO.header
+			    rm $PO.new $PO.header
 			else
-			    rm $PO.new $PO.new2
+			    #rm $PO.new $PO.new2
+			    rm $PO.new
 			    echo "WARNING: Update of $PO for $DOMAIN is older than data in package. Skipping."
 			fi
 		    else
@@ -183,13 +230,28 @@ for POT in *.pot ; do
 			# Swap $PO_PATH and $PO to disable this behavior.
 			msgcat --use-first $PO_PATH $PO -o $PO.new
 			# Return .po file notes that are not present in the update file.
-			msgmerge --no-fuzzy-matching --compendium=$PO_PATH -o $PO.new2 $PO.new $POT
+			## In theory, we should call msgmerge here, as the
+			## imported file might be outdated. But we have to live
+			## with the fact that the pot file heuristic above
+			## might be incorrect, and the generated pot file is
+			## incomplete. Never make things worse, and skip
+			## msgmerge. Superfluous strings are better than
+			## deleted strings.
+			## In time of writing the priginal code, --compendium
+			## worked around the fact that msgcat prefers empty
+			## string from the first file over translated string
+			## from the second file. Now msgcat behaves logically,
+			## so this step is not needed.
+			#msgmerge --no-fuzzy-matching --compendium=$PO_PATH -o $PO.new2 $PO.new $POT
 			# And finally, synthesize header that not change every time.
-			if ! @LIBEXECDIR@/translation-update-upstream/msgheadermerge $PO $PO.new2 $PO.header --mergemode --continue ; then
+			#if ! @LIBEXECDIR@/translation-update-upstream/msgheadermerge $PO $PO.new2 $PO.header --mergemode --continue ; then
+			if ! @LIBEXECDIR@/translation-update-upstream/msgheadermerge $PO $PO.new $PO.header --mergemode --continue ; then
 			    echo "WARNING: Mandatory update of $PO for $DOMAIN is older than data in package or upstream snapshot. Using anyway!"
 			fi
-			msgcat --use-first $PO.header $PO.new2 -o $PO
-			rm $PO.new $PO.new2 $PO.header
+			#msgcat --use-first $PO.header $PO.new2 -o $PO
+			msgcat --use-first $PO.header $PO.new -o $PO
+			#rm $PO.new $PO.new2 $PO.header
+			rm $PO.new $PO.header
 		    else
 			echo "Adding $PO from translation-update-upstream mandatory source."
 			cp -a $PO_PATH $PO

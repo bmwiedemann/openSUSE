@@ -2,9 +2,9 @@
 # Already latest version:
 #pidgin                     pidgin                    tbz  http://downloads.sourceforge.net/pidgin/pidgin-2.13.0.tar.bz2 pidgin-2.13.0/po
 pam                         Linux-PAM                 git  https://github.com/linux-pam/linux-pam.git                   linux-pam/po
-firewalld                   firewalld                 git  https://github.com/firewalld/firewalld.git                   firewalld/po
-virt-manager                virt-manager              git  https://github.com/virt-manager/virt-manager.git             virt-manager/po
-eiciel                      eiciel                    git  https://github.com/rofirrim/eiciel.git                       eiciel/po
+#BROKEN: firewalld                   firewalld                 git  https://github.com/firewalld/firewalld.git                   firewalld/po
+#DUP: virt-manager                virt-manager              git  https://github.com/virt-manager/virt-manager.git             virt-manager/po
+#DUP: eiciel                      eiciel                    git  https://github.com/rofirrim/eiciel.git                       eiciel/po
 # package                   domain                  method repository                                                   dir                 branch
 pam                         Linux-PAM                 cvs  pam.cvs.sourceforge.net:/cvsroot/pam                         Linux-PAM/po
 # Already latest version, and will probably never update:

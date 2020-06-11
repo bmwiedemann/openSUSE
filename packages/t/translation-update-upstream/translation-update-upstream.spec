@@ -1,7 +1,7 @@
 #
 # spec file for package translation-update-upstream
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           translation-update-upstream
-Version:        20181128
+Version:        20200601
 Release:        0
 Summary:        Tool for Translation Update from Upstream
 # Ignore cracklib, as it causes build loop cracklib <-> translation-update-upstream
@@ -93,10 +93,7 @@ sed 's/@LIBEXECDIR@/\$BASE_DIR/g;s:@DATADIR@/translation-update-upstream:\$BASE_
 chmod +x translation-update-upstream-embedded.sh
 
 %build
-%if ! 0%{?is_opensuse}
-echo "This is a openSUSE only package! Please use SLE version."
-exit 1
-%endif
+. %{_sourcedir}/upstream-collect.conf
 
 %install
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/%{name} $RPM_BUILD_ROOT%{_prefix}/lib/translation-update-upstream
@@ -137,7 +134,7 @@ set +x
 cd $RPM_BUILD_ROOT%{_datadir} ;
 echo translation*/*/*.po | sed 's:.*/::;s:\.po$::' | sort -u
 for LOCALE in $(set +x ; cd $RPM_BUILD_ROOT%{_datadir} ; ls -1 translation*/*/*/*.po | sed 's:.*/::;s:\.po$::' | sort -u) ; do
-	if ! test -d /usr/share/locale/$LOCALE ; then
+        if ! test -d /usr/share/locale/$LOCALE ; then
            for file in $RPM_BUILD_ROOT%{_datadir}/translation*/*/*/$LOCALE.po; do
                # fake it so it looks like removed from %%find_lang
                package=$(echo $file | sed -e 's,.*translation[^/]*/po/,,; s,/[^/]*.po,,')

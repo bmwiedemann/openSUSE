@@ -17,10 +17,10 @@ for REPOSITORY in ${OSC_REPOSITORIES[@]} ; do
 done | sort -u >create-tlst-temp-osc-projects.lst
 
 # branches tried for all apps:
-KNOWN_BRANCHES="gnome-3-30|gnome-3-26"
+KNOWN_BRANCHES="gnome-3-34|gnome-3-36"
 # branches tried apps with the same name base:
 # Do not forget hardcoded strings in the code below!
-APP_BRANCHES="gimp-2-10|gimp-2-8|gtk-3-24|gtk-3-22|gtk-2-24|glib-2-54"
+APP_BRANCHES="|gimp-2-8|gimp-2-10|gtk-3-22|gtk-3-24|gtk-2-24|glib-2.62|glib-2.64"
 # FIXME: support for libgda:release-3-0-branch gnome-background:gnome-2-22
 
 echo "# This file was generated $(LANG=C LC_ALL=C date) by create-tlst-step2-create-gnome_gtp.sh." >upstream-gnome_gtp.tlst
@@ -53,23 +53,19 @@ curl https://l10n.gnome.org/POT/ | sed -n 's:^.*href="\([^"]*\)/".*$:\1:p' | sed
 	for LBRANCH in $KNOWN_BRANCHES master ; do
 	    echo gconf gconf2 GConf2 $LBRANCH
 	done
-	echo glib glib2 glib20 glib-2-54
+	echo glib glib2 glib20 glib-2-62
+	echo glib glib2 glib20 glib-2-64
 	echo glib glib2 glib20 master
 	echo gtk+ gtk2 gtk20 gtk-2-24
 	echo gtk+ gtk2 gtk20 master
 	echo gtk+ gtk2 gtk20-properties gtk-2-24
 	echo gtk+ gtk2 gtk20-properties master
 	echo gtk+ gtk3 gtk30 gtk-3-24
-	echo gtk+ gtk3 gtk30 gtk-3-22
 	echo gtk+ gtk3 gtk30 master
 	echo gtk+ gtk3 gtk30-properties gtk-3-24
-	echo gtk+ gtk3 gtk30-properties gtk-3-22
 	echo gtk+ gtk3 gtk30-properties master
-	echo libgweather libgweather libgweather-locations gnome-3-30
-	echo libgweather libgweather libgweather-locations gnome-3-26
-	echo libgweather libgweather libgweather-locations master
-	echo gnome-phone-manager phonemgr gnome-phone-manager gnome-3-30
-	echo gnome-phone-manager phonemgr gnome-phone-manager gnome-3-26
+	echo gnome-phone-manager phonemgr gnome-phone-manager gnome-3-34
+	echo gnome-phone-manager phonemgr gnome-phone-manager gnome-3-36
 	echo gnome-phone-manager phonemgr gnome-phone-manager master
 	echo network-manager-applet NetworkManager-gnome nm-applet master
 	echo udisks udisks2 udisks2 master
