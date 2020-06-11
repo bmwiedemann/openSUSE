@@ -212,7 +212,7 @@ test -n "$versionlist" || versionlist=none
 versionlist=${versionlist# }
 # always use glibc's setenv
 options="$options -Accflags='-DPERL_USE_SAFE_PUTENV'"
-options="$options -Dotherlibdirs=%{_libexecdir}/perl5/site_perl -Dinc_version_list='$versionlist'"
+options="$options -Dotherlibdirs=/usr/lib/perl5/site_perl -Dinc_version_list='$versionlist'"
 chmod 755 ./configure.gnu
 ./configure.gnu --prefix=%{_prefix} -Dvendorprefix=%{_prefix} -Dinstallusrbinperl -Dusethreads -Di_db -Di_dbm -Di_ndbm -Di_gdbm -Dd_dbm_open -Duseshrplib=\'true\' $options
 make %{?_smp_mflags}
@@ -232,8 +232,8 @@ TEST_JOBS="%{jobs}" make %{?_smp_mflags} test
 
 %install
 %make_install
-cp -a %{buildroot}%{_libexecdir}/perl5/site_perl %{buildroot}%{_libexecdir}/perl5/vendor_perl
-cpa=`echo %{buildroot}%{_libexecdir}/perl5/*/*/CORE | sed -e 's@/CORE$@@'`
+cp -a %{buildroot}/usr/lib/perl5/site_perl %{buildroot}/usr/lib/perl5/vendor_perl
+cpa=`echo %{buildroot}/usr/lib/perl5/*/*/CORE | sed -e 's@/CORE$@@'`
 cp=`echo "$cpa" | sed -e 's@/[^/]*$@@'`
 vpa=`echo $cpa | sed -e 's@/perl5/@/perl5/vendor_perl/@'`
 vp=`echo "$vpa" | sed -e 's@/[^/]*$@@'`
@@ -256,89 +256,89 @@ popd
 d="`gcc -print-file-name=include`"
 test -f "$d/stdarg.h" && (cd $d ; %{buildroot}%{_bindir}/perl -I$cp -I$cpa %{buildroot}%{_bindir}/h2ph -d $vpa stdarg.h stddef.h float.h)
 # remove broken pm - we don't have the module
-rm -f %{buildroot}%{_libexecdir}/perl5/*/Pod/Perldoc/ToTk.pm
+rm -f %{buildroot}/usr/lib/perl5/*/Pod/Perldoc/ToTk.pm
 # we don't need this in here
-rm -f %{buildroot}%{_libexecdir}/perl5/*/*/CORE/libperl.a
+rm -f %{buildroot}/usr/lib/perl5/*/*/CORE/libperl.a
 # test CVE-2007-5116
 %{buildroot}%{_bindir}/perl -e '$r=chr(128)."\\x{100}";/$r/'
 # test perl-regexp-refoverflow.diff, should not crash or hang
 %{buildroot}%{_bindir}/perl -e 'eval "/\\6666666666/"'
 cat << EOF > perl-base-filelist
-%{_libexecdir}/perl5/%{pversion}/B/Deparse.pm
-%{_libexecdir}/perl5/%{pversion}/Carp.pm
-%{_libexecdir}/perl5/%{pversion}/Carp/
-%{_libexecdir}/perl5/%{pversion}/Class/
-%{_libexecdir}/perl5/%{pversion}/Config/
-%{_libexecdir}/perl5/%{pversion}/Digest.pm
-%{_libexecdir}/perl5/%{pversion}/Digest/
-%{_libexecdir}/perl5/%{pversion}/English.pm
-%{_libexecdir}/perl5/%{pversion}/Exporter.pm
-%{_libexecdir}/perl5/%{pversion}/Exporter/
-%{_libexecdir}/perl5/%{pversion}/File/
-%{_libexecdir}/perl5/%{pversion}/Getopt/
-%{_libexecdir}/perl5/%{pversion}/IPC/
-%{_libexecdir}/perl5/%{pversion}/Text/
-%{_libexecdir}/perl5/%{pversion}/Tie/Hash.pm
-%{_libexecdir}/perl5/%{pversion}/XSLoader.pm
-%{_libexecdir}/perl5/%{pversion}/warnings.pm
-%{_libexecdir}/perl5/%{pversion}/warnings/
-%{_libexecdir}/perl5/%{pversion}/AutoLoader.pm
-%{_libexecdir}/perl5/%{pversion}/FileHandle.pm
-%{_libexecdir}/perl5/%{pversion}/SelectSaver.pm
-%{_libexecdir}/perl5/%{pversion}/Symbol.pm
-%{_libexecdir}/perl5/%{pversion}/base.pm
-%{_libexecdir}/perl5/%{pversion}/bytes.pm
-%{_libexecdir}/perl5/%{pversion}/bytes_heavy.pl
-%{_libexecdir}/perl5/%{pversion}/constant.pm
-%{_libexecdir}/perl5/%{pversion}/fields.pm
-%{_libexecdir}/perl5/%{pversion}/feature.pm
-%{_libexecdir}/perl5/%{pversion}/integer.pm
-%{_libexecdir}/perl5/%{pversion}/locale.pm
-%{_libexecdir}/perl5/%{pversion}/overload.pm
-%{_libexecdir}/perl5/%{pversion}/overloading.pm
-%{_libexecdir}/perl5/%{pversion}/parent.pm
-%{_libexecdir}/perl5/%{pversion}/strict.pm
-%{_libexecdir}/perl5/%{pversion}/unicore/Heavy.pl
-%{_libexecdir}/perl5/%{pversion}/utf8.pm
-%{_libexecdir}/perl5/%{pversion}/utf8_heavy.pl
-%{_libexecdir}/perl5/%{pversion}/vars.pm
-%{_libexecdir}/perl5/%{pversion}/version.pm
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/Data/
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/Digest/
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/File/
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/List/
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/Scalar/
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/IO.pm
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/IO/Dir.pm
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/IO/File.pm
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/IO/Handle.pm
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/IO/Pipe.pm
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/IO/Poll.pm
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/IO/Seekable.pm
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/IO/Select.pm
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/IO/Socket.pm
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/IO/Socket/
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/B.pm
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/Config.pm
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/Config_heavy.pl
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/Cwd.pm
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/DynaLoader.pm
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/Errno.pm
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/Fcntl.pm
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/POSIX.pm
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/Socket.pm
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/attributes.pm
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/auto/Data/
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/auto/Digest/
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/auto/Fcntl/
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/auto/File/
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/auto/IO/
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/auto/List/
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/auto/Cwd/
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/auto/Socket/
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/auto/POSIX/POSIX.so
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/lib.pm
-%{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/re.pm
+/usr/lib/perl5/%{pversion}/B/Deparse.pm
+/usr/lib/perl5/%{pversion}/Carp.pm
+/usr/lib/perl5/%{pversion}/Carp/
+/usr/lib/perl5/%{pversion}/Class/
+/usr/lib/perl5/%{pversion}/Config/
+/usr/lib/perl5/%{pversion}/Digest.pm
+/usr/lib/perl5/%{pversion}/Digest/
+/usr/lib/perl5/%{pversion}/English.pm
+/usr/lib/perl5/%{pversion}/Exporter.pm
+/usr/lib/perl5/%{pversion}/Exporter/
+/usr/lib/perl5/%{pversion}/File/
+/usr/lib/perl5/%{pversion}/Getopt/
+/usr/lib/perl5/%{pversion}/IPC/
+/usr/lib/perl5/%{pversion}/Text/
+/usr/lib/perl5/%{pversion}/Tie/Hash.pm
+/usr/lib/perl5/%{pversion}/XSLoader.pm
+/usr/lib/perl5/%{pversion}/warnings.pm
+/usr/lib/perl5/%{pversion}/warnings/
+/usr/lib/perl5/%{pversion}/AutoLoader.pm
+/usr/lib/perl5/%{pversion}/FileHandle.pm
+/usr/lib/perl5/%{pversion}/SelectSaver.pm
+/usr/lib/perl5/%{pversion}/Symbol.pm
+/usr/lib/perl5/%{pversion}/base.pm
+/usr/lib/perl5/%{pversion}/bytes.pm
+/usr/lib/perl5/%{pversion}/bytes_heavy.pl
+/usr/lib/perl5/%{pversion}/constant.pm
+/usr/lib/perl5/%{pversion}/fields.pm
+/usr/lib/perl5/%{pversion}/feature.pm
+/usr/lib/perl5/%{pversion}/integer.pm
+/usr/lib/perl5/%{pversion}/locale.pm
+/usr/lib/perl5/%{pversion}/overload.pm
+/usr/lib/perl5/%{pversion}/overloading.pm
+/usr/lib/perl5/%{pversion}/parent.pm
+/usr/lib/perl5/%{pversion}/strict.pm
+/usr/lib/perl5/%{pversion}/unicore/Heavy.pl
+/usr/lib/perl5/%{pversion}/utf8.pm
+/usr/lib/perl5/%{pversion}/utf8_heavy.pl
+/usr/lib/perl5/%{pversion}/vars.pm
+/usr/lib/perl5/%{pversion}/version.pm
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/Data/
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/Digest/
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/File/
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/List/
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/Scalar/
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/IO.pm
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/IO/Dir.pm
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/IO/File.pm
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/IO/Handle.pm
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/IO/Pipe.pm
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/IO/Poll.pm
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/IO/Seekable.pm
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/IO/Select.pm
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/IO/Socket.pm
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/IO/Socket/
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/B.pm
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/Config.pm
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/Config_heavy.pl
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/Cwd.pm
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/DynaLoader.pm
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/Errno.pm
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/Fcntl.pm
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/POSIX.pm
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/Socket.pm
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/attributes.pm
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/auto/Data/
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/auto/Digest/
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/auto/Fcntl/
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/auto/File/
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/auto/IO/
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/auto/List/
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/auto/Cwd/
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/auto/Socket/
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/auto/POSIX/POSIX.so
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/lib.pm
+/usr/lib/perl5/%{pversion}/*-linux-thread-multi*/re.pm
 EOF
 {
   sed -e 's/^/%%exclude /' perl-base-filelist
@@ -352,12 +352,12 @@ EOF
 
 %files base -f perl-base-filelist
 %license Copying Artistic
-%dir %{_libexecdir}/perl5
-%dir %{_libexecdir}/perl5/%{pversion}
-%dir %{_libexecdir}/perl5/%{pversion}/B
-%dir %{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*
-%dir %{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/auto
-%dir %{_libexecdir}/perl5/%{pversion}/*-linux-thread-multi*/auto/POSIX
+%dir /usr/lib/perl5
+%dir /usr/lib/perl5/%{pversion}
+%dir /usr/lib/perl5/%{pversion}/B
+%dir /usr/lib/perl5/%{pversion}/*-linux-thread-multi*
+%dir /usr/lib/perl5/%{pversion}/*-linux-thread-multi*/auto
+%dir /usr/lib/perl5/%{pversion}/*-linux-thread-multi*/auto/POSIX
 %{_bindir}/perl
 %{_bindir}/perl%{pversion}
 %{_mandir}/man1/perl.1%{?ext_man}
@@ -366,15 +366,15 @@ EOF
 %exclude %{_bindir}/perl
 %exclude %{_bindir}/perl%{pversion}
 %{_bindir}/*
-%{_libexecdir}/perl5/*
+/usr/lib/perl5/*
 %config %{_sysconfdir}/rpm/macros.perl
 
 %files doc
 %doc README.macros
 %exclude %{_mandir}/man1/perl.1.gz
-%exclude %{_libexecdir}/perl5/*/pod/perldiag.pod
+%exclude /usr/lib/perl5/*/pod/perldiag.pod
 %{_mandir}/man1/*
 %{_mandir}/man3/*
-%doc %{_libexecdir}/perl5/*/pod
+%doc /usr/lib/perl5/*/pod
 
 %changelog

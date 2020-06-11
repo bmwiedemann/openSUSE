@@ -962,4 +962,12 @@ e.g. https://build.opensuse.org/package/show/devel:languages:perl/perl-Pod-Parse
     <comment></comment>
     <requestid>756750</requestid>
   </revision>
+  <revision rev="116" vrev="4">
+    <srcmd5>aad014a470f24339d4d1db1067b49467</srcmd5>
+    <version>5.30.1</version>
+    <time>1591862317</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for %_libexecdir changing to /usr/libexec (forwarded request 811779 from gmbr3)</comment>
+    <requestid>811783</requestid>
+  </revision>
 </revisionlist>
