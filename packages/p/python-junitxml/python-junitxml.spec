@@ -1,7 +1,7 @@
 #
 # spec file for package python-junitxml
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,8 @@ License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/pyjunitxml
 Source:         https://files.pythonhosted.org/packages/source/j/junitxml/junitxml-%{version}.tar.gz
+# tests are failing
 Patch0:         junitxml-tests.patch
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildArch:      noarch
@@ -55,8 +55,7 @@ A Python unittest TestResult that outputs JUnit compatible XML.
 %python_uninstall_alternative pyjunitxml
 
 %check
-# tests are failing
-%python_expand nosetests-%{$python_version}
+%python_exec -m unittest discover
 
 %files %{python_files}
 %license COPYING
