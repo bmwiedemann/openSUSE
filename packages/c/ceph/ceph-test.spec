@@ -44,25 +44,20 @@
 %global _remote_tarball_prefix https://download.ceph.com/tarballs/
 %endif
 %if 0%{?suse_version}
-%bcond_with selinux
-%bcond_with cephfs_java
 %bcond_with amqp_endpoint
+%bcond_with cephfs_java
 %bcond_with kafka_endpoint
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-%global _fillupdir /var/adm/fillup-templates
-%endif
-%if 0%{?is_opensuse}
-%bcond_without libradosstriper
-%bcond_without ocf
-%else
 %bcond_with libradosstriper
-%bcond_with ocf
-%endif
 %ifarch x86_64 aarch64 ppc64le
 %bcond_without lttng
 %else
 %bcond_with lttng
+%endif
+%bcond_with ocf
+%bcond_with selinux
+#Compat macro for _fillupdir macro introduced in Nov 2017
+%if ! %{defined _fillupdir}
+%global _fillupdir /var/adm/fillup-templates
 %endif
 %endif
 %bcond_with seastar
@@ -104,7 +99,7 @@
 # main package definition
 #################################################################################
 Name: ceph-test
-Version: 15.2.0.108+g8cf4f02b08
+Version: 15.2.3.252+gf2237253cd
 Release: 0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch: 2
@@ -120,7 +115,7 @@ License: LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group: System/Filesystems
 %endif
 URL: http://ceph.com/
-Source0: %{?_remote_tarball_prefix}ceph-15.2.0-108-g8cf4f02b08.tar.bz2
+Source0: %{?_remote_tarball_prefix}ceph-15.2.3-252-gf2237253cd.tar.bz2
 %if 0%{?suse_version}
 Source96: checkin.sh
 Source97: README-checkin.txt
@@ -423,6 +418,8 @@ This package contains Ceph benchmarks and test tools.
 %if 0%{?suse_version}
 %endif
 %if 0%{?fedora} || 0%{?rhel}
+%if 0%{?weak_deps}
+%endif
 %endif
 %if 0%{?suse_version}
 %endif
@@ -547,7 +544,7 @@ This package contains Ceph benchmarks and test tools.
 %if 0%{?suse_version}
 %endif
 %prep
-%autosetup -p1 -n ceph-15.2.0-108-g8cf4f02b08
+%autosetup -p1 -n ceph-15.2.3-252-gf2237253cd
 
 %build
 # LTO can be enabled as soon as the following GCC bug is fixed:
@@ -801,6 +798,7 @@ rm -rf %{buildroot}%{_mandir}/man8/osdmaptool.8*
 rm -rf %{buildroot}%{_mandir}/man8/monmaptool.8*
 rm -rf %{buildroot}%{_mandir}/man8/ceph-kvstore-tool.8*
 rm -rf %{buildroot}%{_sbindir}/cephadm
+rm -rf %{buildroot}%{_mandir}/man8/cephadm.8*
 rm -rf %{buildroot}%{_sysconfdir}/sudoers.d/cephadm
 rm -rf %{buildroot}%{_sharedstatedir}/cephadm/.ssh/authorized_keys
 rm -rf %{buildroot}%doc
@@ -826,6 +824,7 @@ rm -rf %{buildroot}%{_tmpfilesdir}/ceph-common.conf
 rm -rf %{buildroot}%{_mandir}/man8/ceph-authtool.8*
 rm -rf %{buildroot}%{_mandir}/man8/ceph-conf.8*
 rm -rf %{buildroot}%{_mandir}/man8/ceph-dencoder.8*
+rm -rf %{buildroot}%{_mandir}/man8/ceph-diff-sorted.8*
 rm -rf %{buildroot}%{_mandir}/man8/ceph-rbdnamer.8*
 rm -rf %{buildroot}%{_mandir}/man8/ceph-syn.8*
 rm -rf %{buildroot}%{_mandir}/man8/ceph-post-file.8*
@@ -838,6 +837,7 @@ rm -rf %{buildroot}%{_mandir}/man8/rbdmap.8*
 rm -rf %{buildroot}%{_mandir}/man8/rbd-replay.8*
 rm -rf %{buildroot}%{_mandir}/man8/rbd-replay-many.8*
 rm -rf %{buildroot}%{_mandir}/man8/rbd-replay-prep.8*
+rm -rf %{buildroot}%{_mandir}/man8/rgw-orphan-list.8*
 rm -rf %{buildroot}%{_datadir}/ceph/known_hosts_drop.ceph.com
 rm -rf %{buildroot}%{_datadir}/ceph/id_rsa_drop.ceph.com
 rm -rf %{buildroot}%{_datadir}/ceph/id_rsa_drop.ceph.com.pub
@@ -909,10 +909,12 @@ rm -rf %{buildroot}%{_unitdir}/ceph-immutable-object-cache@.service
 rm -rf %{buildroot}%{_unitdir}/ceph-immutable-object-cache.target
 rm -rf %{buildroot}%{_bindir}/rbd-nbd
 rm -rf %{buildroot}%{_mandir}/man8/rbd-nbd.8*
+rm -rf %{buildroot}%{_bindir}/ceph-diff-sorted
 rm -rf %{buildroot}%{_bindir}/radosgw
 rm -rf %{buildroot}%{_bindir}/radosgw-token
 rm -rf %{buildroot}%{_bindir}/radosgw-es
 rm -rf %{buildroot}%{_bindir}/radosgw-object-expirer
+rm -rf %{buildroot}%{_bindir}/rgw-orphan-list
 rm -rf %{buildroot}%{_libdir}/libradosgw.so*
 rm -rf %{buildroot}%{_mandir}/man8/radosgw.8*
 rm -rf %{buildroot}%{_unitdir}/ceph-radosgw@.service
@@ -984,7 +986,7 @@ rm -rf %{buildroot}%{python3_sitearch}/rbd.cpython*.so
 rm -rf %{buildroot}%{python3_sitearch}/rbd-*.egg-info
 rm -rf %{buildroot}%{_libdir}/libcephfs.so.*
 rm -rf %{buildroot}%{_includedir}/cephfs/libcephfs.h
-rm -rf %{buildroot}%{_includedir}/cephfs/ceph_statx.h
+rm -rf %{buildroot}%{_includedir}/cephfs/ceph_ll_client.h
 rm -rf %{buildroot}%{_libdir}/libcephfs.so
 rm -rf %{buildroot}%{python3_sitearch}/cephfs.cpython*.so
 rm -rf %{buildroot}%{python3_sitearch}/cephfs-*.egg-info
@@ -1197,7 +1199,7 @@ rm -rf %{buildroot}
 %if 0%{with cephfs_java}
 %endif
 %if 0%{with selinux}
-%endif # with selinux
+%endif
 %if 0%{?suse_version}
 %endif
 %if 0%{?suse_version}

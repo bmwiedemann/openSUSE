@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Jun  8 14:18:25 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Up ceph-test disk constraint to address "no space left on device"
+  build error seen in OBS
+
+-------------------------------------------------------------------
+Fri Jun  5 09:36:19 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.2.3-252-gf2237253cd: 
+  + rebase on tip of upstream "octopus" branch, SHA1 22279597fa9ca40ba2f05af9f186a99ce73a6047
+    * upstream v15.2.3 release
+      https://ceph.io/releases/v15-2-3-octopus-released/
+
+-------------------------------------------------------------------
+Mon May 25 12:57:39 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.2.2-60-gf5864377ab:
+  + rebase on tip of upstream "octopus" branch, SHA1 9e890709ef53ce29006c6fc754dd80e25df186d0
+
+-------------------------------------------------------------------
+Tue May 19 15:00:23 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.2.2-18-g1dbcddb5d8:
+  + rebase on tip of upstream "octopus" branch, SHA1 0c857e985a29d90501a285f242ea9c008df49eb8
+    * Upstream v15.2.2 release
+      https://ceph.io/releases/v15-2-2-octopus-released/
+    * mon, mgr: require all caps for pre-octopus tell commands (bsc#1170021, CVE-2020-10736)
+
+-------------------------------------------------------------------
+Tue May  5 12:00:09 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.2.1-277-g17d346932e:
+  + rebase on tip of upstream "octopus" branch, SHA1 752b293586d0c8749483e60e43c7a98c1e0d7b19
+    * rpm: drop "is_opensuse" conditional in SUSE-specific bcond block
+      (jsc#SLE-11802)
+
+-------------------------------------------------------------------
+Mon May  4 17:27:20 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.2.1-246-g66cd0e5497:
+  + rebase on tip of upstream "octopus" branch, SHA1 939661f696d3d9eb4d31e998a3ad1487852a4741
+
+-------------------------------------------------------------------
+Mon Apr 13 18:19:49 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.2.1-16-gb3a86250a6:
+  + rebase on tip of upstream "octopus" branch, SHA1 9fd2f65f91d9246fae2c841a6222d34d121680ee
+    * upstream 15.2.1 release
+      https://ceph.io/releases/v15-2-1-octopus-released/
+      + fix Nonce reuse in msgr V2 secure mode (bsc#1166403, CVE-2020-1759)
+      + prevent RGW GetObject header-splitting XSS (bsc#1166484, CVE-2020-1760)
+
+-------------------------------------------------------------------
 Mon Mar 30 13:08:29 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 15.2.0-108-g8cf4f02b08:
