@@ -1,29 +1,11 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/golang/go</param>
-    <param name="scm">git</param>
-    <param name="exclude">.git</param>
-    <param name="versionformat">1.13+git%cd.%h</param>
-    <param name="revision">master</param>
-    <param name="changesgenerate">enable</param>
-  </service>
-  <service name="recompress" mode="disabled">
-    <param name="file">go-*.tar</param>
-    <param name="compression">xz</param>
-  </service>
-  <service name="set_version" mode="disabled">
-    <param name="basename">go</param>
-  </service>
-  <service name="tar_scm" mode="disabled">
     <param name="url">https://git.llvm.org/git/compiler-rt.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
 	<!-- [boo#1052528] Always make sure this is kept up to date with src/runtime/race/README. -->
     <param name="versionformat">g%H</param>
     <param name="revision">fe2c72c59aa7f4afa45e3f65a5d16a374b6cce26</param>
-  </service>
-  <service name="download_files" mode="disabled">
-    <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">compiler-rt-*.tar</param>

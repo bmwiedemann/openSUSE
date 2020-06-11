@@ -65,14 +65,16 @@
 #!BuildIgnore: gcc-PIE
 %endif
 
-# By default we don't include tsan. It's only supported on amd64.
+# Build go-race only on platforms where it's supported (only amd64 for now).
 %define tsan_arch x86_64
 
 # Go has precompiled versions of LLVM's compiler-rt inside their source code.
 # We cannot ship pre-compiled binaries so we have to recompile said source,
 # however they vendor specific commits from upstream. This value comes from
 # src/runtime/race/README (and we verify that it matches in check).
-# See boo#1052528 for more details.
+#
+# In order to update the TSAN version, modify _service. See boo#1052528 for
+# more details.
 %define tsan_commit fe2c72c59aa7f4afa45e3f65a5d16a374b6cce26
 
 %define go_api 1.13
@@ -237,10 +239,11 @@ find . -type f -name '*.syso' -print -delete
 # First, compile LLVM's TSAN, and replace the built-in with it. We can only do
 # this for amd64.
 %ifarch %{tsan_arch}
-pushd ../compiler-rt*/lib/tsan/go
+TSAN_DIR="../compiler-rt-g%{tsan_commit}/lib/tsan/go"
+pushd "$TSAN_DIR"
 ./buildgo.sh
 popd
-cp ../compiler-rt*/lib/tsan/go/race_linux_%{go_arch}.syso src/runtime/race/race_linux_%{go_arch}.syso
+cp -v "$TSAN_DIR/race_linux_%{go_arch}.syso" src/runtime/race/
 %endif
 
 # Now, compile Go.
@@ -248,6 +251,15 @@ cp ../compiler-rt*/lib/tsan/go/race_linux_%{go_arch}.syso src/runtime/race/race_
 export GOROOT_BOOTSTRAP=%{_prefix}
 %else
 export GOROOT_BOOTSTRAP=%{_libdir}/%{go_bootstrap_version}
+%endif
+# Ensure ARM arch is set properly - boo#1169832
+%ifarch armv6l armv6hl
+export GOARCH=arm
+export GOARM=6
+%endif
+%ifarch armv7l armv7hl
+export GOARCH=arm
+export GOARM=7
 %endif
 export GOROOT="`pwd`"
 export GOROOT_FINAL=%{_libdir}/go/%{go_api}
@@ -269,7 +281,7 @@ bin/go install -buildmode=shared -linkshared std
 %check
 %ifarch %{tsan_arch}
 # Make sure that we have the right TSAN checked out.
-grep "%{tsan_commit}" src/runtime/race/README
+grep "^race_linux_%{go_arch}.syso built with LLVM %{tsan_commit}" src/runtime/race/README
 %endif
 
 %install
