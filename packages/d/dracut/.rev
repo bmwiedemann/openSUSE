@@ -1720,4 +1720,13 @@ Add:  dracut_git_v034_to_head.patch</comment>
   * Run format_spec_file</comment>
     <requestid>811476</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>d94cfd751d5e5dcd404f72962139d972</srcmd5>
+    <version>050+suse.66.g76431c83</version>
+    <time>1591879664</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 050+suse.66.g76431c83:
+  * 95iscsi: fix missing space when compiling cmdline args (bsc#1172816)</comment>
+    <requestid>813324</requestid>
+  </revision>
 </revisionlist>
