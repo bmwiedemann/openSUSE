@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Jun  9 17:32:52 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.14.4 (released 2020-06-01) includes fixes to the go doc command,
+  the runtime, and the encoding/json and os packages.
+  Refs boo#1164903 go1.14 release tracking
+  * go#39158 os: opening an existing file with O_CREATE|O_TRUNC and permission 0 changes file to be read-only on Windows
+  * go#38993 cmd/doc: -src flag misbehaves on some systems
+  * go#38933 runtime: preemption in startTemplateThread may cause infinite hang
+  * go#38178 encoding/json: marshal result of string type struct field with ",string" option change in go1.14
+  * go#38106 encoding/json: mangled unmarshal string result
+
+-------------------------------------------------------------------
+Mon Jun  8 08:22:07 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Ensure ARM arch is set properly - boo#1169832
+
+-------------------------------------------------------------------
+Sat Jun  6 01:46:13 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update compiler-rt snapshot to 0fb8a5356214c47bbb832e89fbb3da1c755eeb73
+  which is needed for go1.14.3 to build on amd64.
+- Change compiler-rt git repo url to new location in LLVM project.
+- Allow go-race to be built on arm64 and ppc64le.
+- Document (and clean up) LLVM snapshotting for go-race.
+- Update _service to no longer fetch Go from git.
+
+-------------------------------------------------------------------
+Fri May 15 19:42:01 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.14.3 (released 2020-05-14) includes fixes to cgo, the compiler,
+  the runtime, and the go/doc and math/big packages.
+  Refs boo#1164903 go1.14 release tracking
+  * go#38856 runtime: scavenger freezes up in Go 1.14 in Windows due to coarse time granularity
+  * go#38606 runtime: pageAlloc.allocToCache updates pageAlloc.searchAddr in an invalid way
+  * go#38443 cmd/compile: unexpected nil dereference on s390x
+  * go#38426 cmd/cgo: types regression for anonymous structs
+  * go#38418 go/doc: whole file is used as example even when there are tests or benchmarks
+  * go#38321 runtime/race: race_linux_amd64.syso now depends on glibc 2.16
+  * go#38123 cmd/compile: conversion from int/float typed constant to complex variable changed in 1.14
+  * go#37501 math/big: panic in big.ParseFloat (off by one access)
+
+-------------------------------------------------------------------
 Wed Apr 29 13:20:06 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Requires binutils-gold for %arm and aarch64 - boo#1170826

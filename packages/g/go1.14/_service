@@ -1,30 +1,15 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/golang/go</param>
+    <param name="url">https://github.com/llvm/llvm-project.git</param>
     <param name="scm">git</param>
-    <param name="exclude">.git</param>
-    <param name="revision">go1.14rc1</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="changesgenerate">enable</param>
-    <param name="versionrewrite-pattern">go(.*)</param>
-  </service>
-  <service name="set_version" mode="disabled">
-    <param name="basename">go</param>
+    <param name="include">compiler-rt</param>
+    <!-- [boo#1052528] Always make sure this is kept up to date with src/runtime/race/README. -->
+    <param name="revision">0fb8a5356214c47bbb832e89fbb3da1c755eeb73</param>
+    <param name="versionformat">%H</param>
+    <param name="filename">llvm</param>
   </service>
   <service name="recompress" mode="disabled">
-    <param name="file">go-*.tar</param>
-    <param name="compression">xz</param>
-  </service>
-  <service name="tar_scm" mode="disabled">
-    <param name="url">https://git.llvm.org/git/compiler-rt.git</param>
-    <param name="scm">git</param>
-    <param name="exclude">.git</param>
-	<!-- [boo#1052528] Always make sure this is kept up to date with src/runtime/race/README. -->
-    <param name="revision">810ae8ddac890a6613d814c0b5415c7fcb7f5cca</param>
-    <param name="versionformat">g%H</param>
-  </service>
-  <service name="recompress" mode="disabled">
-    <param name="file">compiler-rt-*.tar</param>
+    <param name="file">llvm-*.tar</param>
     <param name="compression">xz</param>
   </service>
 </services>

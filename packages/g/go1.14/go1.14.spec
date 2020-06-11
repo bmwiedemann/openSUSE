@@ -65,15 +65,25 @@
 #!BuildIgnore: gcc-PIE
 %endif
 
-# By default we don't include tsan. It's only supported on amd64.
-%define tsan_arch x86_64
+# Build go-race only on platforms where it's supported (both amd64 and aarch64
+# requires SLE15-or-later because of C++14, and ppc64le doesn't build at all
+# on openSUSE yet).
+%if 0%{suse_version} >= 1500 || 0%{?sle_version} >= 150000
+%define tsan_arch x86_64 aarch64
+%else
+# Cannot use {nil} here (ifarch doesn't like it) so just make up a fake
+# architecture that no build will ever match.
+%define tsan_arch openSUSE_FAKE_ARCH
+%endif
 
 # Go has precompiled versions of LLVM's compiler-rt inside their source code.
 # We cannot ship pre-compiled binaries so we have to recompile said source,
 # however they vendor specific commits from upstream. This value comes from
 # src/runtime/race/README (and we verify that it matches in check).
-# See boo#1052528 for more details.
-%define tsan_commit 810ae8ddac890a6613d814c0b5415c7fcb7f5cca
+#
+# In order to update the TSAN version, modify _service. See boo#1052528 for
+# more details.
+%define tsan_commit 0fb8a5356214c47bbb832e89fbb3da1c755eeb73
 
 %define go_api 1.14
 
@@ -118,7 +128,7 @@
 %endif
 
 Name:           go1.14
-Version:        1.14.2
+Version:        1.14.4
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -129,7 +139,7 @@ Source1:        go-rpmlintrc
 Source4:        README.SUSE
 Source6:        go.gdbinit
 # We have to compile TSAN ourselves. boo#1052528
-Source100:      compiler-rt-g%{tsan_commit}.tar.xz
+Source100:      llvm-%{tsan_commit}.tar.xz
 # PATCH-FIX-OPENSUSE enable writing tools outside $GOROOT/pkg/tool for packaging
 Patch5:         tools-packaging.patch
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org - find /usr/bin/go-5 when bootstrapping with gcc5-go
@@ -210,8 +220,8 @@ Go runtime race detector libraries. Install this package if you wish to use the
 
 %prep
 %ifarch %{tsan_arch}
-# compiler-rt
-%setup -q -T -b 100 -n compiler-rt-g%{tsan_commit}
+# compiler-rt (from LLVM)
+%setup -q -T -b 100 -n llvm-%{tsan_commit}
 %endif
 # go
 %setup -q -n go
@@ -235,10 +245,11 @@ find . -type f -name '*.syso' -print -delete
 # First, compile LLVM's TSAN, and replace the built-in with it. We can only do
 # this for amd64.
 %ifarch %{tsan_arch}
-pushd ../compiler-rt*/lib/tsan/go
+TSAN_DIR="../llvm-%{tsan_commit}/compiler-rt/lib/tsan/go"
+pushd "$TSAN_DIR"
 ./buildgo.sh
 popd
-cp ../compiler-rt*/lib/tsan/go/race_linux_%{go_arch}.syso src/runtime/race/race_linux_%{go_arch}.syso
+cp -v "$TSAN_DIR/race_linux_%{go_arch}.syso" src/runtime/race/
 %endif
 
 # Now, compile Go.
@@ -246,6 +257,15 @@ cp ../compiler-rt*/lib/tsan/go/race_linux_%{go_arch}.syso src/runtime/race/race_
 export GOROOT_BOOTSTRAP=%{_prefix}
 %else
 export GOROOT_BOOTSTRAP=%{_libdir}/%{go_bootstrap_version}
+%endif
+# Ensure ARM arch is set properly - boo#1169832
+%ifarch armv6l armv6hl
+export GOARCH=arm
+export GOARM=6
+%endif
+%ifarch armv7l armv7hl
+export GOARCH=arm
+export GOARM=7
 %endif
 export GOROOT="`pwd`"
 export GOROOT_FINAL=%{_libdir}/go/%{go_api}
@@ -267,7 +287,7 @@ bin/go install -buildmode=shared -linkshared std
 %check
 %ifarch %{tsan_arch}
 # Make sure that we have the right TSAN checked out.
-grep "%{tsan_commit}" src/runtime/race/README
+grep "^race_linux_%{go_arch}.syso built with LLVM %{tsan_commit}" src/runtime/race/README
 %endif
 
 %install
