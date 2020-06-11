@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  9 18:19:31 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.49
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.49 2020-06-08
+
+      [ FIX ]
+      - remove deprecation warning as no longer in core (GH #221)
+
+-------------------------------------------------------------------
 Tue Jun  2 15:31:48 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.48
