@@ -140,9 +140,6 @@ mv %{buildroot}%{_sysconfdir}/logrotate.d/iscsiuiolog %{buildroot}%{_sysconfdir}
 
 %post
 %{?regenerate_initrd_post}
-if [ ! -f %{_sysconfdir}/iscsi/initiatorname.iscsi ] ; then
-    /sbin/iscsi-gen-initiatorname
-fi
 %service_add_post iscsi.service iscsid.service iscsid.socket
 
 %posttrans
@@ -186,6 +183,7 @@ fi
 %{_sysconfdir}/iscsid.conf
 %{_unitdir}/iscsid.service
 %{_unitdir}/iscsid.socket
+%{_unitdir}/iscsi-init.service
 %{_unitdir}/iscsi.service
 %{_systemdgeneratordir}/ibft-rule-generator
 %{_sbindir}/rciscsi

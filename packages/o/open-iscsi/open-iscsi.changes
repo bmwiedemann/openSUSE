@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jun  8 16:42:42 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Merged in latest upstream. Summary:
+ * Let initiator name be created by iscsi-init.service.
+ * iscsi: fix fd leak
+ * iscsi: Add break to while loop
+ * Fix compiler complaint about string copy in iscsiuio
+ * Fix a compiler complaint about writing one byte
+ * Fix issue with zero-length arrays at end of struct
+ * Add iscsi-init.service
+ * Proper disconnect of TCP connection
+ * Fix SIGPIPE loop in signal handler
+ * Update iscsi-iname.c
+ * log:modify iSCSI shared memory permissions for logs
+ * Ignore iface.example in iface match checks
+ * More changes for musl.
+ * Fix type mismatch under musl.
+ * Change include of <sys/poll.h> to <poll.h>
+ * iscsi-iname: fix iscsi-iname -p access NULL pointer without given IQN prefix
+
+ Note that the "Add iscsi-init.service" change adds a new systemd
+ service called "iscsi-init", that creates the iSCSI initiator name
+ file /etc/iscsi/initiatorname.iscsi, if and only if it does not
+ exist. This obviates the need to do this from the SPEC file, now
+ updated.
+
+ Since this was not a version-number update, in addition to modifying
+ the SPEC file, also updates:
+  * open-iscsi-SUSE-latest.diff.bz2
+
+-------------------------------------------------------------------
 Sat May  2 15:06:18 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Update SPEC file to handle the fact that the
