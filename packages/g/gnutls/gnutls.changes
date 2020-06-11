@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Jun  8 15:41:46 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Fix a memory leak that could lead to a DoS attack against Samba
+  servers (bsc#1172663)
+  * add 0001-crypto-api-always-allocate-memory-when-serializing-i.patch
+- Temporarily disable broken guile reauth test (bsc#1171565)
+  * add gnutls-temporarily_disable_broken_guile_reauth_test
+
+-------------------------------------------------------------------
+Thu Jun  4 09:39:58 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Update to 3.6.14
+  * libgnutls: Fixed insecure session ticket key construction, since 3.6.4.
+    The TLS server would not bind the session ticket encryption key with a
+    value supplied by the application until the initial key rotation, allowing
+    attacker to bypass authentication in TLS 1.3 and recover previous
+    conversations in TLS 1.2 (#1011). (bsc#1172506, CVE-2020-13777)
+    [GNUTLS-SA-2020-06-03, CVSS: high]
+  * libgnutls: Fixed handling of certificate chain with cross-signed
+    intermediate CA certificates (#1008). (bsc#1172461)
+  * libgnutls: Fixed reception of empty session ticket under TLS 1.2 (#997).
+  * libgnutls: gnutls_x509_crt_print() is enhanced to recognizes commonName
+    (2.5.4.3), decodes certificate policy OIDs (!1245), and prints Authority
+    Key Identifier (AKI) properly (#989, #991).
+  * certtool: PKCS #7 attributes are now printed with symbolic names (!1246).
+  * libgnutls: Use accelerated AES-XTS implementation if possible (!1244).
+    Also both accelerated and non-accelerated implementations check key block
+    according to FIPS-140-2 IG A.9 (!1233).
+  * libgnutls: Added support for AES-SIV ciphers (#463).
+  * libgnutls: Added support for 192-bit AES-GCM cipher (!1267).
+  * libgnutls: No longer use internal symbols exported from Nettle (!1235)
+  * API and ABI modifications:
+    GNUTLS_CIPHER_AES_128_SIV: Added
+    GNUTLS_CIPHER_AES_256_SIV: Added
+    GNUTLS_CIPHER_AES_192_GCM: Added
+    gnutls_pkcs7_print_signature_info: Added
+- Add key D605848ED7E69871: public key "Daiki Ueno <ueno@unixuser.org>" to
+  the keyring
+- Drop gnutls-fips_correct_nettle_soversion.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Apr  2 09:32:01 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
 
 - Use correct nettle .so version when looking for a FIPS checksum

@@ -1,0 +1,13 @@
+Index: gnutls-3.6.14/guile/Makefile.in
+===================================================================
+--- gnutls-3.6.14.orig/guile/Makefile.in	2020-06-03 15:05:54.000000000 +0200
++++ gnutls-3.6.14/guile/Makefile.in	2020-06-09 09:03:17.267773380 +0200
+@@ -1850,7 +1850,7 @@ CLEANFILES = modules/gnutls.scm $(am__ap
+ TESTS = tests/anonymous-auth.scm tests/session-record-port.scm \
+ 	tests/pkcs-import-export.scm tests/errors.scm \
+ 	tests/x509-certificates.scm tests/x509-auth.scm \
+-	tests/reauth.scm tests/priorities.scm $(am__append_2)
++	tests/priorities.scm $(am__append_2)
+ TESTS_ENVIRONMENT = \
+   GUILE_AUTO_COMPILE=0				\
+   GUILE_WARN_DEPRECATED=detailed

@@ -1380,4 +1380,16 @@ bsc#901857 (forwarded request 493933 from AndreasStieger)</comment>
     <comment></comment>
     <requestid>790857</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>8d1f46892fe494e1f2088e0e6d58693c</srcmd5>
+    <version>3.6.14</version>
+    <time>1591862485</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix a memory leak that could lead to a DoS attack against Samba
+  servers (bsc#1172663)
+  * add 0001-crypto-api-always-allocate-memory-when-serializing-i.patch
+- Temporarily disable broken guile reauth test (bsc#1171565)
+  * add gnutls-temporarily_disable_broken_guile_reauth_test (forwarded request 812788 from vitezslav_cizek)</comment>
+    <requestid>812790</requestid>
+  </revision>
 </revisionlist>
