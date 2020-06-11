@@ -840,4 +840,13 @@ it wants then though.</comment>
     <user>dimstar_suse</user>
     <comment>Add dup helper flag to MicroOS</comment>
   </revision>
+  <revision rev="116" vrev="114">
+    <srcmd5>05a9b0002056eb932b09785924941445</srcmd5>
+    <version>unknown</version>
+    <time>1591879424</time>
+    <user>dimstar_suse</user>
+    <comment>Add explicitely some patterns for ppc64le to investigate why
+&quot;no providers can be installed&quot; for basesystem and bootloader</comment>
+    <requestid>813239</requestid>
+  </revision>
 </revisionlist>
