@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 07:36:38 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- correct license statement (library itself is no GPL-3.0)
+
+-------------------------------------------------------------------
 Mon Jan 27 08:46:57 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Remove broken packaged libgmp.a just containing LTO bytecode.

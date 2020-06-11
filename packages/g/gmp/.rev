@@ -498,4 +498,12 @@ discover that breaks ...
     <comment>- Remove broken packaged libgmp.a just containing LTO bytecode.</comment>
     <requestid>767589</requestid>
   </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>f8c27eb7ff267d476d83a4a730b14023</srcmd5>
+    <version>6.2.0</version>
+    <time>1591879023</time>
+    <user>dimstar_suse</user>
+    <comment>- correct license statement (library itself is no GPL-3.0) (forwarded request 808934 from coolo)</comment>
+    <requestid>809593</requestid>
+  </revision>
 </revisionlist>

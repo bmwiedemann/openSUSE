@@ -20,7 +20,7 @@ Name:           gmp
 Version:        6.2.0
 Release:        0
 Summary:        A library for calculating huge numbers
-License:        GPL-3.0-or-later AND LGPL-3.0-or-later
+License:        GPL-3.0-or-later AND (LGPL-3.0-or-later OR GPL-2.0-or-later)
 Group:          Development/Libraries/C and C++
 URL:            https://gmplib.org/
 Source0:        https://gmplib.org/download/%{name}/%{name}-%{version}.tar.xz
@@ -39,6 +39,7 @@ available memory in the machine GMP runs on.
 
 %package -n libgmp10
 Summary:        A library for calculating huge numbers
+License:        LGPL-3.0-or-later OR GPL-2.0-or-later
 Group:          System/Libraries
 
 %description -n libgmp10
@@ -47,6 +48,7 @@ signed integers, rational numbers, and floating-point numbers.
 
 %package -n libgmpxx4
 Summary:        C++ bindings for the GNU MP Library
+License:        LGPL-3.0-or-later OR GPL-2.0-or-later
 Group:          System/Libraries
 Requires:       libgmp10 >= %{version}
 
@@ -58,6 +60,7 @@ This package contains C++ bindings for the GNU MP Library.
 
 %package devel
 Summary:        Include Files and Libraries for Development with the GNU MP Library
+License:        GPL-3.0-or-later AND (LGPL-3.0-or-later OR GPL-2.0-or-later)
 Group:          Development/Languages/C and C++
 Requires:       libgmp10 = %{version}
 Requires:       libgmpxx4 = %{version}
