@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jun  3 17:36:27 UTC 2020 - Reinhard Max <max@suse.com>
+
+- update to 12.3 (bsc#1171924).
+  https://www.postgresql.org/about/news/2038/
+  https://www.postgresql.org/docs/12/release-12-3.html
+- Unify the spec file to work across all current PostgreSQL
+  versions to simplify future maintenance.
+- Move from the "libs" build flavour to a "mini" package that will
+  only be used inside the build service and not get shipped, to
+  avoid confusion with the debuginfo packages (bsc#1148643).
+
+-------------------------------------------------------------------
+Fri May 15 10:13:58 UTC 2020 - Namor Barcode <z1trus@gmx.com>
+
+- update to 12.3
+  https://www.postgresql.org/about/news/2038/
+  https://www.postgresql.org/docs/12/release-12-3.html
+
+-------------------------------------------------------------------
+Tue Mar 31 14:23:52 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Temporarily disable JIT support on SLE until support status of
+  clang has been clarified.
+- We only need clang for LLVM, not clang-devel.
+
+-------------------------------------------------------------------
 Thu Feb 27 08:58:37 UTC 2020 - Reinhard Max <max@suse.com>
 
 - Fix a few mistakes in the spec file.
