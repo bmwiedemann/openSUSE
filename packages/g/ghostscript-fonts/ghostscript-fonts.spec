@@ -54,6 +54,12 @@ Source1:        ghostscript-fonts-other-6.0.tar.gz
 #
 # Patch100...Patch999 is for patches from SUSE which are not intended for upstream:
 #
+BuildRequires:  ttf-converter
+# An older fontforge version should work, but 20200314 fixes bugs
+# that appear when converting n021023l.pfb from
+# ghostscript-fonts-std
+BuildRequires:  fontforge >= 20200314
+BuildRequires:  fontpackages-devel
 # The main-package ghostscript-fonts alone is useless because it does not contain any font file.
 # The font files are provided via its sub-packages. Nevertheless when a user selects only
 # the main-package to be installed, he probably wants "all Ghostscript's free fonts"
@@ -107,6 +113,22 @@ from traditional printer or display fonts;
 you can read about them in more detail in
 the documentation on Hershey fonts.
 
+%package std-converted
+Summary:        Basic Fonts for Ghostscript converted to truetype
+Group:          Productivity/Publishing/PS
+Requires(post): fonts-config
+Requires(posttrans): fonts-config
+Requires(postun): fonts-config
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+# In TW and SLE 15 SP2/Leap 15.2 we have pango >= 1.44.0 which
+# doesn't support Type1 fonts (boo1169444)
+Supplements:    packageand(ghostscript-fonts-std:libpango-1_0-0)
+%endif
+
+%description std-converted
+This package contains the Type1 (.pfb) fonts from
+ghostscript-fonts-std converted to TrueType format, so they can
+be used by applications that don't support Type1 fonts.
 
 %prep
 # Be quiet when unpacking and
@@ -116,6 +138,11 @@ the documentation on Hershey fonts.
 
 %build
 # There is nothing to "make" as the sources contain plain font files.
+ttf-converter --input-dir fonts/ --output-dir generated
+
+# There's already a version of these fonts included in xorg-x11-fonts-converted
+rm generated/CharterBT-*
+rm generated/Utopia-*
 
 %install
 # Install the fonts into the /usr/share/ghostscript/fonts/ directory
@@ -140,6 +167,10 @@ install -d -m 755 %{buildroot}%{_datadir}/fonts
 # gets the intended symbolic link /usr/share/fonts/ghostscript -> ../ghostscript/fonts
 ln -s %{_datadir}/ghostscript/fonts %{buildroot}%{_datadir}/fonts/ghostscript
 
+# Install also the fonts converted to truetype format
+mkdir -p %{buildroot}/%{_datadir}/fonts/truetype
+cp generated/*.ttf %{buildroot}/%{_datadir}/fonts/truetype
+
 # Use traditional bash scriptlet with an explicite "exit 0" line at the end to be fail safe
 # see http://en.opensuse.org/openSUSE:Packaging_scriptlet_snippets
 # Only if suse_version > 1220 it BuildRequires fontpackages-devel which provides reconfigure_fonts_post.
@@ -158,6 +189,8 @@ then %run_suseconfig -m pango
 fi
 %endif
 exit 0
+
+%reconfigure_fonts_scriptlets -n ghostscript-fonts-std-converted
 
 # Use traditional bash scriptlet with an explicite "exit 0" line at the end to be fail safe
 # see http://en.opensuse.org/openSUSE:Packaging_scriptlet_snippets
@@ -400,5 +433,19 @@ exit 0
 %{_datadir}/ghostscript/fonts/fkarw.pfm
 %{_datadir}/ghostscript/fonts/u003043t.pfm
 %{_datadir}/ghostscript/fonts/u004006t.pfm
+
+%files std-converted
+%defattr(0644,root,root,0755)
+%dir %{_datadir}/fonts/truetype
+%{_datadir}/fonts/truetype/CenturySchL-*.ttf
+%{_datadir}/fonts/truetype/Dingbats.ttf
+%{_datadir}/fonts/truetype/NimbusMonL-*.ttf
+%{_datadir}/fonts/truetype/NimbusRomNo9L-*.ttf
+%{_datadir}/fonts/truetype/NimbusSanL-*.ttf
+%{_datadir}/fonts/truetype/StandardSymL.ttf
+%{_datadir}/fonts/truetype/URWBookmanL-*.ttf
+%{_datadir}/fonts/truetype/URWChanceryL-MediItal.ttf
+%{_datadir}/fonts/truetype/URWGothicL-*.ttf
+%{_datadir}/fonts/truetype/URWPalladioL-*.ttf
 
 %changelog

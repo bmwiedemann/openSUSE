@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  8 15:09:01 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add a ghostscript-fonts-std-converted subpackage with fonts from
+  ghostscript-fonts-std converted to TrueType format (boo#1169444)
+
+-------------------------------------------------------------------
 Fri Feb 28 11:21:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Add "Provides: urw-fonts" to ghostscript-fonts-std since some
