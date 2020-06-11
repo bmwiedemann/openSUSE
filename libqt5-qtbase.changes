@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 10 12:31:44 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix tool menu placement (boo#1172754, QTBUG-84462):
+  * 0001-Fix-QToolButton-menus-showing-on-primary-screens-in-.patch
+
+-------------------------------------------------------------------
 Wed May 27 08:48:52 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to avoid behaviour change causing crashes (kde#419526):
