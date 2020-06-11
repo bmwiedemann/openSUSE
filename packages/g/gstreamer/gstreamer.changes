@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 30 09:28:45 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- adjust / ship more 32bit stuff for Wine usage (bsc#1172304)
+
+-------------------------------------------------------------------
 Thu Apr 30 15:45:40 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Fix file-list, needed due to libexecdir move, and our previously
