@@ -1,0 +1,16 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">git://github.com/openSUSE/cscreen.git</param>
+    <param name="scm">git</param>
+    <param name="revision">master</param>
+    <param name="versionformat">0.7</param>
+    <param name="extract">cscreen.spec</param>
+    <param name="extract">cscreen-rpmlintrc</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+  <service mode="disabled" name="tar"/>
+  <service mode="disabled" name="recompress">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>

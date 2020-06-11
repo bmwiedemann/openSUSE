@@ -1,0 +1,118 @@
+-------------------------------------------------------------------
+Wed Jun 10 09:45:43 UTC 2020 - Thomas Renninger <trenn@suse.de>
+
+- Do not try to chmod  /run/uscreens/S-cscreen on update
+- avoid bashism in postun
+- Require(postun) rm instead of coreutils
+
+-------------------------------------------------------------------
+Tue Jun  9 19:32:56 UTC 2020 - Thomas Renninger <trenn@suse.de>
+
+- Use %{?systemd_ordering}, pkgconfig(systemd)
+- Only recommend logrotate, do not require it
+- In case of update try to chmod to _cscreen user instead of
+  deleting /run/uscreens/S-cscreen
+
+-------------------------------------------------------------------
+Tue Jun  9 16:07:33 UTC 2020 - Thomas Renninger <trenn@suse.de>
+
+- Pushed cscreen stuff to https://github.com/openSUSE/cscreen
+  added _service file and pumped version to latest release v0.7
+
+-------------------------------------------------------------------
+Wed May 13 07:02:17 UTC 2020 - Thomas Renninger <trenn@suse.de>
+
+- Introduce cscreen to run as _cscreen user instead of root
+- Update to version 0.6
+
+-------------------------------------------------------------------
+Mon May 11 18:23:35 UTC 2020 - Thomas Renninger <trenn@suse.de>
+
+- Run through spec-cleaner
+- Update to version 0.5
+
+-------------------------------------------------------------------
+Thu May  7 16:35:29 UTC 2020 - ohering@suse.de
+
+- Usage of cscreen requires sudo
+- Remove stale comments, mark cscreenrc as ready to use
+
+-------------------------------------------------------------------
+Fri Nov  7 13:53:25 UTC 2019 - trenn@suse.de
+
+- Add live updating possibilities (adding, removing windows actively)
+  which is needed for orthos
+
+-------------------------------------------------------------------
+Mon Oct 21 08:43:44 UTC 2019 - Lars.Vogdt@suse.com
+ 
+- try to exit screen normally first, before killing (init script only)
+
+-------------------------------------------------------------------
+Thu Oct 25 01:27:20 CEST 2018 - ro@suse.de
+
+- add autofs.service to After: list in systemd unit file 
+
+-------------------------------------------------------------------
+Mon Oct 22 13:46:08 CEST 2018 - ro@suse.de
+
+- fix cscreen script to read sysconfig/cscreen
+- link rcfile to service 
+
+-------------------------------------------------------------------
+Mon Apr  9 14:46:21 CEST 2018 - ro@suse.de
+
+- fix fillup dir usage 
+
+-------------------------------------------------------------------
+Mon Aug 21 02:18:42 UTC 2017 - lrupp@suse.de
+
+- adapt config:
+  + defscrollback is now 20000 per default
+  + disable startup message
+  + enable logging
+- remove cscreen.1 manpage snipplets: manpage is missing anyway
+
+-------------------------------------------------------------------
+Mon Jan 23 11:43:37 UTC 2017 - Lars.Vogdt@suse.com
+
+- add fillup_only for the sysconfig script
+
+-------------------------------------------------------------------
+Fri Jul 22 08:30:21 UTC 2016 - mcaj@suse.com
+
+- added working systemd file for cscreen.
+
+-------------------------------------------------------------------
+Fri Feb 12 16:23:21 CET 2016 - ro@suse.de
+
+- update cscreen with code from sconsole1 to allow cscreen -u 
+
+-------------------------------------------------------------------
+Thu Jul 17 11:39:00 UTC 2014 - mcaj@suse.com
+
+- Fixed licence warning.
+- added %preun and %postun parts.
+
+-------------------------------------------------------------------
+Wed Nov 23 08:49:06 UTC 2011 - lrupp@suse.de
+
+- use olddir /var/log/screen/old
+- use /etc/cscreenrc as config
+- added cscreen.sysconfig to have the configuration configurable
+
+-------------------------------------------------------------------
+Tue Jul 12 20:35:20 UTC 2011 - lrupp@suse.de
+
+- add /usr/bin/cscreen
+
+-------------------------------------------------------------------
+Fri Jan 14 07:48:56 UTC 2011 - lrupp@suse.de
+
+- own and create /var/log/screen
+
+-------------------------------------------------------------------
+Sun Nov 21 21:35:26 CET 2010 - lrupp@suse.de
+
+- initial version 0.1
+
