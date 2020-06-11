@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 29 05:13:50 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add conflicts: mawk to busybox-gawk 
+
+-------------------------------------------------------------------
 Mon May 18 13:42:58 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add conclicts: msmtp-mta to busybox-sendmail: there is one more

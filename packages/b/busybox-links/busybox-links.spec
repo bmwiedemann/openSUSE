@@ -208,6 +208,7 @@ This package contains the symlinks to replace iproute2 with busybox.
 Summary:        Busybox applets replacing gawk
 Requires:       busybox = %{version}
 Conflicts:      gawk
+Conflicts:      mawk
 
 %description -n busybox-gawk
 This package contains the symlinks to replace gawk with busybox.
