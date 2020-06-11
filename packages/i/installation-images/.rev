@@ -803,4 +803,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>813006</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>2c821a645f3aa825324666f6a3e42dcb</srcmd5>
+    <version>15.5</version>
+    <time>1591879399</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>813178</requestid>
+  </revision>
 </revisionlist>
