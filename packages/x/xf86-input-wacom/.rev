@@ -299,4 +299,13 @@
   n_04-Log-BUTTON-HIGH-LEVEL-events.patch</comment>
     <requestid>724824</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>a88953e423a3efb815abdbab1c050149</srcmd5>
+    <version>0.37.0</version>
+    <time>1591879493</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Change-default-gesture-mode-touchpad-on-touchscreen-.patch
+  * disable gesture mode on Touchscreens by default (boo#1172669)</comment>
+    <requestid>812710</requestid>
+  </revision>
 </revisionlist>

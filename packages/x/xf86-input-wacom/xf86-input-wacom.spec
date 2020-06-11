@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-input-wacom
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,13 @@ Release:        0
 Summary:        Wacom input driver for the Xorg X server
 License:        GPL-2.0-or-later
 Group:          System/X11/Servers/XF86_4
-Url:            https://github.com/linuxwacom/xf86-input-wacom
+URL:            https://github.com/linuxwacom/xf86-input-wacom
 Source0:        https://github.com/linuxwacom/xf86-input-wacom/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2
 Patch7:         n_01-Add-option-to-enable-logging.patch
 Patch8:         n_02-Log-PROXIMITY-LOW-LEVEL-events.patch
 Patch9:         n_03-Log-PRESSURE-low-level-events.patch
 Patch10:        n_04-Log-BUTTON-HIGH-LEVEL-events.patch
+Patch11:        U_Change-default-gesture-mode-touchpad-on-touchscreen-.patch
 # For directory ownership
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -77,6 +78,7 @@ wacom is an X input driver and utilities for Wacom devices.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 %build
 autoreconf -fi

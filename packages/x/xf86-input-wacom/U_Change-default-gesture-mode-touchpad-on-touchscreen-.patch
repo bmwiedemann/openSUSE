@@ -1,0 +1,58 @@
+From 31a5405f7d9405bc514585709161287b0c67386e Mon Sep 17 00:00:00 2001
+From: Jason Gerecke <killertofu@gmail.com>
+Date: Mon, 9 Sep 2019 15:32:17 -0700
+Subject: [PATCH] Change default gesture mode: touchpad=on, touchscreen=off
+
+A large number of users run the GNOME desktop which has its own gesture
+engine that performs actions on touchscreens. These gestures are much
+better than the ones we provide, so lets disable our engine by default
+for touchscreens. Note that GNOME doesn't do anything with touchpad
+gestures, so we leave them enabled by default.
+
+Note that this change will effectively cause a feature regression for
+users of other environments that do *not* have their own gesture
+engines (Cinnamon, KDE, MATE, XFCE, etc.). Users will want to add an
+xorg.conf.d snippet with `Option "Gesture" "on"` to bring back the
+functionality.
+
+Signed-off-by: Jason Gerecke <jason.gerecke@wacom.com>
+---
+ src/wcmValidateDevice.c | 7 ++-----
+ src/xf86WacomDefs.h     | 1 -
+ 2 files changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/src/wcmValidateDevice.c b/src/wcmValidateDevice.c
+index 0b20bd7..6176139 100644
+--- a/src/wcmValidateDevice.c
++++ b/src/wcmValidateDevice.c
+@@ -1019,13 +1019,10 @@ Bool wcmPreInitParseOptions(InputInfoPtr pInfo, Bool is_primary,
+ 	if (TabletHasFeature(common, WCM_2FGT))
+ 	{
+ 		int gesture_is_on;
+-
+-		/* GestureDefault was off for all devices
+-		 * except when multi-touch is supported */
+-		common->wcmGestureDefault = 1;
++		Bool gesture_default = TabletHasFeature(priv->common, WCM_LCD) ? FALSE : TRUE;
+ 
+ 		gesture_is_on = xf86SetBoolOption(pInfo->options, "Gesture",
+-					    common->wcmGestureDefault);
++					    gesture_default);
+ 
+ 		if (is_primary || IsTouch(priv))
+ 			common->wcmGesture = gesture_is_on;
+diff --git a/src/xf86WacomDefs.h b/src/xf86WacomDefs.h
+index 566211e..3305740 100644
+--- a/src/xf86WacomDefs.h
++++ b/src/xf86WacomDefs.h
+@@ -459,7 +459,6 @@ struct _WacomCommonRec
+ 	int wcmTouch;	             /* disable/enable touch event */
+ 	int wcmTouchDefault;	     /* default to disable when not supported */
+ 	int wcmGesture;	     	     /* disable/enable touch gesture */
+-	int wcmGestureDefault;       /* default touch gesture to disable when not supported */
+ 	int wcmGestureMode;	       /* data is in Gesture Mode? */
+ 	WacomDeviceState wcmGestureState[MAX_FINGERS]; /* inital state when in gesture mode */
+ 	WacomGesturesParameters wcmGestureParameters;
+-- 
+2.16.4
+
