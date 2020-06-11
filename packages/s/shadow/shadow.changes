@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 22 11:21:15 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Use pure #!/bin/sh in:
+  * useradd.local
+  * userdel-post.local
+  * userdel-pre.local
+
+-------------------------------------------------------------------
 Fri Jan 24 08:09:23 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.8.1:

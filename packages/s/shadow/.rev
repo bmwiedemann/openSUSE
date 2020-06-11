@@ -548,4 +548,12 @@
 - Remove shadow-4.8-selinux-include.patch: upstreamed</comment>
     <requestid>767297</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>dcb2c6b0c353ad258783c69ce473af5a</srcmd5>
+    <version>4.8.1</version>
+    <time>1591879028</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809695</requestid>
+  </revision>
 </revisionlist>
