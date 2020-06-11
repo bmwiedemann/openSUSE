@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
+%define pgmajor 12
 %define defaultpackage postgresql%version
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
@@ -28,11 +29,18 @@
 %bcond_with     systemd
 %endif
 
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1500 && %pgmajor >= 11 && %pgmajor < 90
+%bcond_without  llvm
+%else
+# LLVM is currently unsupported on SLE, so don't use it
+%bcond_with     llvm
+%endif
+
 Name:           postgresql
 Summary:        Basic Clients and Utilities for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
-Version:        12
+Version:        %pgmajor
 Release:        0
 Url:            https://www.postgresql.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -40,6 +48,15 @@ Provides:       postgresql-noarch = %version-%release
 Requires:       postgresql-implementation
 Requires:       update-alternatives
 Recommends:     %defaultpackage
+%if 0%{?sle_version}
+# At this point we changed the package layout on SLE and conflict with
+# older releases to get a clean cut.
+Conflicts:      postgresql95 < 9.5.22
+Conflicts:      postgresql96 < 9.6.18
+Conflicts:      postgresql10 < 10.13
+Conflicts:      postgresql11 < 11.8
+Conflicts:      postgresql12 < 12.3
+%endif
 BuildArch:      noarch
 Source0:        postgresql-init
 Source1:        postgresql-sysconfig
@@ -426,9 +443,11 @@ fi
 %defattr(-,root,root,-)
 %doc README
 
+%if %{with llvm}
 %files llvmjit
 %defattr(-,root,root,-)
 %doc README
+%endif
 
 %files plperl
 %defattr(-,root,root,-)

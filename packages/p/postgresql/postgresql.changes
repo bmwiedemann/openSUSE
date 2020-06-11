@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  3 08:17:46 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Disable LLVM on SLE (bsc#1172274).
+- Conflict with versions of the binary packages prior to the
+  May 2020 update, because we changed the package layout at that
+  point and need a clean cutover.
+
+-------------------------------------------------------------------
 Tue Dec 17 10:27:02 UTC 2019 - Reinhard Max <max@suse.com>
 
 - Fix a mistake in the creation of /var/lib/pgsql/.bash_profile
