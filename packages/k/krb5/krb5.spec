@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           krb5
-Version:        1.18.1
+Version:        1.18.2
 Release:        0
 Summary:        MIT Kerberos5 implementation
 License:        MIT
@@ -286,6 +286,9 @@ rm -f  %{_mandir}/man1/tmac.doc* html/.doctrees/environment.pickle
 rm -rf %{buildroot}%{_prefix}/lib/mit/share/examples
 # manually remove test plugin since configure doesn't support disabling it at build time
 rm -f %{buildroot}/%{_libdir}/krb5/plugins/preauth/test.so
+
+# Don't add the lto flags to the public link flags.
+sed -i "s/%{_lto_cflags}//" %{buildroot}%{_prefix}/lib/mit/bin/krb5-config
 
 %find_lang mit-krb5
 

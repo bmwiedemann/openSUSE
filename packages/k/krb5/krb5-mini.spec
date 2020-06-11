@@ -24,7 +24,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           krb5-mini
-Version:        1.18.1
+Version:        1.18.2
 Release:        0
 Summary:        MIT Kerberos5 implementation and libraries with minimal dependencies
 License:        MIT
@@ -208,6 +208,9 @@ rm -rf %{buildroot}%{_prefix}/lib/mit/share/examples
 rm -f %{buildroot}/%{_libdir}/krb5/plugins/preauth/otp.so
 rm -f %{buildroot}/%{_libdir}/krb5/plugins/preauth/spake.so
 rm -f %{buildroot}/%{_libdir}/krb5/plugins/preauth/test.so
+
+# Don't add the lto flags to the public link flags.
+sed -i "s/%{_lto_cflags}//" %{buildroot}%{_prefix}/lib/mit/bin/krb5-config
 
 %find_lang mit-krb5
 

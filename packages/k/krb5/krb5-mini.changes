@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri May 29 08:38:37 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 1.18.2
+  * Fix a SPNEGO regression where an acceptor using the default credential
+    would improperly filter mechanisms, causing a negotiation failure.
+  * Fix a bug where the KDC would fail to issue tickets if the local krbtgt
+    principal's first key has a single-DES enctype.
+  * Add stub functions to allow old versions of OpenSSL libcrypto to link
+    against libkrb5.
+  * Fix a NegoEx bug where the client name and delegated credential might
+    not be reported.
+
+-------------------------------------------------------------------
+Thu May 28 15:21:46 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
+
+- Update logrotate script, call systemd to reload the services
+  instead of init-scripts. (boo#1169357)
+
+-------------------------------------------------------------------
+Tue May 26 15:36:25 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Don't add the lto flags to the public link options. (boo#1172038)
+
+-------------------------------------------------------------------
 Mon May  4 09:24:21 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
 
 - Upgrade to 1.18.1
