@@ -1,5 +1,15 @@
 -------------------------------------------------------------------
-Fri Apr 24 08:02:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+Fri Jun  5 10:19:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- timezone modifies a file below /usr/share (boo#1172521)
+
+-------------------------------------------------------------------
+Mon May 25 12:26:47 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- zdump --version reported "unknown" (boo#1172055)
+
+-------------------------------------------------------------------
+Fri Apr 24 08:01:01 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - timezone update 2020a (bsc#1169582)
   * Morocco springs forward on 2020-05-31, not 2020-05-24.
@@ -8,27 +18,27 @@ Fri Apr 24 08:02:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
   * zic now supports expiration dates for leap second lists.
 
 -------------------------------------------------------------------
-Thu Sep 12 07:01:00 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+Thu Sep 12 06:58:19 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - timezone update 2019c (bsc#1150451)
   * Fiji observes DST from 2019-11-10 to 2020-01-12.
   * Norfolk Island starts observing Australian-style DST.
 
 -------------------------------------------------------------------
-Tue Jul  2 07:53:08 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+Tue Jul  2 07:49:42 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - timezone update 2019b (bsc#1140016):
-  * Brazil no longer observes DST.
+  * Brazil no longer observes DST. 
   * 'zic -b slim' outputs smaller TZif files.
   * Palestine's 2019 spring-forward transition was on 03-29, not 03-30.
   * Add info about the Crimea situation in zone1970.tab and zone.tab.
 
 -------------------------------------------------------------------
-Tue Mar 26 11:32:44 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+Tue Mar 26 11:27:21 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - timezone update 2019a:
   * Palestine "springs forward" on 2019-03-30 instead of 2019-03-23
-  * Metlakatla "fell back" to rejoin Alaska Time on 2019-01-20 at
+  * Metlakatla "fell back" to rejoin Alaska Time on 2019-01-20 at 
     02:00
   * Israel observed DST in 1980 (08-02/09-13) and 1984 (05-05/08-25)
   * zic now has an -r option to limit the time range of output data

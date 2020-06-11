@@ -1228,4 +1228,20 @@ bsc#1024677</comment>
   * zic now supports expiration dates for leap second lists.</comment>
     <requestid>796820</requestid>
   </revision>
+  <revision rev="128" vrev="2">
+    <srcmd5>c5b3f243cd2550dc372579d1139844b4</srcmd5>
+    <version>2020a</version>
+    <time>1591879305</time>
+    <user>dimstar_suse</user>
+    <comment>- timezone modifies a file below /usr/share (boo#1172521)
+
+- zdump --version reported &quot;unknown&quot; (boo#1172055)
+
+  * Brazil no longer observes DST. 
+  * Metlakatla &quot;fell back&quot; to rejoin Alaska Time on 2019-01-20 at 
+- timezone modifies a file below /usr/share (boo#1172521)
+
+- zdump --version reported &quot;unknown&quot; (boo#1172055)</comment>
+    <requestid>811896</requestid>
+  </revision>
 </revisionlist>

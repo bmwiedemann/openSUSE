@@ -21,7 +21,6 @@ Summary:        Time Zone Descriptions
 License:        BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/Base
 URL:            http://www.iana.org/time-zones
-PreReq:         filesystem, coreutils
 # COMMON-BEGIN
 Version:        2020a
 Release:        0
@@ -55,6 +54,8 @@ can select an appropriate time zone for your system with YaST.
 sed -ri 's@/usr/local/etc/zoneinfo@%{_datadir}/zoneinfo@g' *.[1358]
 # COMMON-PREP-END
 
+touch version
+
 %build
 unset ${!LC_*}
 LANG=POSIX
@@ -62,7 +63,7 @@ LC_ALL=POSIX
 AREA=%{AREA}
 ZONE=%{ZONE}
 export AREA LANG LC_ALL ZONE
-make %{?_smp_mflags} TZDIR=%{_datadir}/zoneinfo CFLAGS="%{optflags} -DHAVE_GETTEXT=1 -DTZDEFAULT='\"/etc/localtime\"' -DTM_GMTOFF=tm_gmtoff -DTM_ZONE=tm_zone -Dlint" AWK=awk
+make %{?_smp_mflags} TZDIR=%{_datadir}/zoneinfo CFLAGS="%{optflags} -DHAVE_GETTEXT=1 -DTZDEFAULT='\"/etc/localtime\"' -DTM_GMTOFF=tm_gmtoff -DTM_ZONE=tm_zone -Dlint" AWK=awk BUGEMAIL="opensuse-support@opensuse.org"
 make %{?_smp_mflags} TZDIR=zoneinfo AWK=awk zones
 # Generate posixrules
 ./zic -y ./yearistype -d zoneinfo -p %{AREA}/%{ZONE}
@@ -88,19 +89,9 @@ install -D -m 755 tzselect %{buildroot}%{_bindir}/tzselect
 install -D -m 755 zdump    %{buildroot}%{_sbindir}/zdump
 install -D -m 755 zic      %{buildroot}%{_sbindir}/zic
 
-%post
-if [ ! -L /usr/share/zoneinfo/posixrules ]; then
-   rm -f /usr/share/zoneinfo/posixrules
-   ln -sf /etc/localtime /usr/share/zoneinfo/posixrules
-fi
-if [ -e /usr/share/zoneinfo/posixrules.rpmnew ]; then
-   rm -f /usr/share/zoneinfo/posixrules.rpmnew
-fi
-
 %files
 %defattr(-,root,root)
 %verify(not link md5 size mtime) %config(missingok,noreplace) /etc/localtime
-%verify(not link md5 size mtime) %{_datadir}/zoneinfo/posixrules
 %{_datadir}/zoneinfo
 %{_bindir}/tzselect
 %{_sbindir}/zdump

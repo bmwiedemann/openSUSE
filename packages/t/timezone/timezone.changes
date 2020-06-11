@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun  5 10:19:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- timezone modifies a file below /usr/share (boo#1172521)
+
+-------------------------------------------------------------------
+Mon May 25 12:26:47 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- zdump --version reported "unknown" (boo#1172055)
+
+-------------------------------------------------------------------
 Fri Apr 24 08:01:01 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - timezone update 2020a (bsc#1169582)
