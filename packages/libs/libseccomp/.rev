@@ -247,4 +247,12 @@
   * SNR_ppoll.patch (forwarded request 774797 from scarabeus_iv)</comment>
     <requestid>774875</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ab8b7f17f81fc2e0fb675114f1121e2d</srcmd5>
+    <version>2.4.3</version>
+    <time>1591862389</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.4.3</comment>
+    <requestid>811834</requestid>
+  </revision>
 </revisionlist>

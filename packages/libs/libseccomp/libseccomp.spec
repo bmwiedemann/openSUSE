@@ -18,20 +18,16 @@
 
 %define lname   libseccomp2
 Name:           libseccomp
-Version:        2.4.2
+Version:        2.4.3
 Release:        0
 Summary:        A Seccomp (mode 2) helper library
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/seccomp/libseccomp
 Source:         https://github.com/seccomp/libseccomp/releases/download/v%version/libseccomp-%version.tar.gz
-# no fitting key found
-#Source2:        https://github.com/seccomp/libseccomp/releases/download/v%version/libseccomp-%version.tar.gz.asc
+Source2:        https://github.com/seccomp/libseccomp/releases/download/v%version/libseccomp-%version.tar.gz.asc
 Source3:        %name.keyring
 Source99:       baselibs.conf
-Patch1:         no-static.diff
-Patch2:         libseccomp-fix_aarch64-test.patch
-Patch3:         SNR_ppoll.patch
 BuildRequires:  autoconf
 BuildRequires:  automake >= 1.11
 BuildRequires:  fdupes

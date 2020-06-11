@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun  5 13:12:29 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.4.3
+  * Add list of authorized release signatures to README.md
+  * Fix multiplexing issue with s390/s390x shm* syscalls
+  * Remove the static flag from libseccomp tools compilation
+  * Add define for __SNR_ppoll
+  * Fix potential memory leak identified by clang in the
+    scmp_bpf_sim tool
+- Drop no-static.diff, libseccomp-fix_aarch64-test.patch,
+  SNR_ppoll.patch (merged)
+
+-------------------------------------------------------------------
 Mon Feb 17 08:10:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix ntpsec and others build (accidental drop of symbols):
