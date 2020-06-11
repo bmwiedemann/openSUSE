@@ -374,4 +374,12 @@ New package for Factory, dependency for gnome-boxes. Hardware seems to be the be
     <comment></comment>
     <requestid>770568</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>af71c67d8c823bfb99fb27dc5a9d6b5d</srcmd5>
+    <version>1.8.0</version>
+    <time>1591879506</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>812735</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun  1 12:44:42 MDT 2020 - carnold@suse.com
+
+- Update to version 1.8.0
+  Changes in this release include:
+  * Several CI improvements
+  * Several release scripts improvements
+  * Several translations improvements
+  * Several syntax-check improvements
+  * Code cleanup in order to modernize the GObject usage
+  * Add API to get whether a firmware is supported or not
+  * Add API to get "cloud-image-username"
+
+-------------------------------------------------------------------
 Tue Feb  4 22:10:00 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - No longer recommend -lang: supplements are in use.
