@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  9 13:08:12 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Autoyast User Scripts Improvements:
+  - ensure all artifacts are copied to system (bsc#1145269)
+  - show warning if script returns non zero value
+  - show warning if there are two scripts that overwrite each other
+  - allow any interpreter to be used
+- 4.3.11
+
+-------------------------------------------------------------------
 Tue Jun  9 12:17:51 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Do not crash when the partitioning section is not specified
