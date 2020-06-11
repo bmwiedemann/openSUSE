@@ -1,7 +1,7 @@
 #
 # spec file for package uchardet
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define major   0
 Name:           uchardet
-Version:        0.0.6
+Version:        0.0.7
 Release:        0
 Summary:        Universal Charset Detection Library
 License:        MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later
@@ -91,18 +91,15 @@ rm -f %{buildroot}%{_libdir}/libuchardet.a
 %postun -n libuchardet%{major} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %license COPYING
 %doc AUTHORS
 %{_bindir}/%{name}
 %{_mandir}/man?/*
 
 %files -n libuchardet%{major}
-%defattr(-,root,root,-)
 %{_libdir}/*.so.*
 
 %files -n libuchardet-devel
-%defattr(-,root,root,-)
 %license COPYING
 %doc AUTHORS
 %{_includedir}/%{name}

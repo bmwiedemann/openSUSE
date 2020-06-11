@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Jun  5 11:44:24 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.0.7
+  * New supports:
+    + Croatian - ISO-8859-2, ISO-8859-13, ISO-8859-16, IBM852,
+      Windows-1250 and MAC-CENTRALEUROPE
+    + Czech - Windows-1250, ISO-8859-2, IBM852 and
+      Mac-CentralEurope.
+    + Estonian - ISO-8859-4, ISO-8859-13, ISO-8859-13,
+      Windows-1252 and Windows-1257.
+    + Finnish - ISO-8859-1, ISO-8859-4, ISO-8859-9, ISO-8859-13,
+      ISO-8859-15 and WINDOWS-1252.
+    + Irish Gaelic - ISO-8859-1, ISO-8859-9, ISO-8859-15 and
+      WINDOWS-1252.
+    + Italian - ISO-8859-1, ISO-8859-3, ISO-8859-9, ISO-8859-15
+      and WINDOWS-1252.
+    + Latvian - ISO-8859-4, ISO-8859-10 and ISO-8859-13
+    + Lithuanian - ISO-8859-4, IISO-8859-10 and SO-8859-13
+    + Maltese - ISO-8859-3.
+    + Polish - ISO-8859-2, ISO-8859-13, ISO-8859-16,
+      Windows-1250, IBM852, MAC-CENTRALEUROPE.
+    + Portuguese - ISO-8859-1, ISO-8859-9, ISO-8859-15 and
+      Windows-1252.
+    + Romanian - ISO-8859-2, ISO-8859-16, Windows-1250 and
+      IBM852.
+    + Slovak - Windows-1250, ISO-8859-2, IBM852 and
+      Mac-CentralEurope.
+    + Slovene - ISO-8859-2, ISO-8859-16, Windows-1250, IBM852
+      and MAC-CENTRALEUROPE.
+    + Swedish - ISO-8859-1, ISO-8859-4, ISO-8859-9, ISO-8859-15
+      and WINDOWS-1252.
+  * EUC-KR now returned as UHC: despite differences, mostly
+    upward compatible. Let's return UHC until separate detection
+    machines are implemented.
+  * uchardet CLI tool now supports the end-of-options -- option
+    to be able to process any file starting with a dash.
+  * uchardet_handle_data() API considers an empty string input
+    as successful processing to improve automatic detection from
+    random input sources.
+  * Repository code now requires C++1 standard.
+  * Several bugs fixed.
+
+-------------------------------------------------------------------
 Wed Feb 28 20:22:45 UTC 2018 - dimstar@opensuse.org
 
 - Modernize spec-file by calling spec-cleaner
