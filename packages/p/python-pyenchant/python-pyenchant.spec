@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pyenchant
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        Python bindings for the Enchant spellchecking system
 License:        LGPL-2.1-or-later
@@ -66,8 +66,7 @@ rm -rf website .github archive tools
 %check
 export LANG=en_US.UTF-8
 %python_exec -c 'import enchant; print(vars(enchant.Dict()))'
-# gh#pyenchant/pyenchant#203
-%pytest -k 'not test_docstrings'
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt
