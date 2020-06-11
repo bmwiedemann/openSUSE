@@ -38,8 +38,8 @@
 
 %endif
 
-%define osu_ver  5.6.2
-%define imb_ver  2019.5
+%define osu_ver  5.6.3
+%define imb_ver  2019.6
 %define imb_dir  mpi-benchmarks-IMB-v%{imb_ver}
 %define osu_dir  osu-micro-benchmarks-%{osu_ver}
 

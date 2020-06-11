@@ -81,4 +81,13 @@
     <comment></comment>
     <requestid>786755</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>a5bab5b22dad22446c537f2fc953ef23</srcmd5>
+    <version>3.2</version>
+    <time>1591879925</time>
+    <user>dimstar_suse</user>
+    <comment>- Update OSU micro benchmark to 5.6.3
+- Update Intel MPI Benchmarks to v2019.6</comment>
+    <requestid>813106</requestid>
+  </revision>
 </revisionlist>
