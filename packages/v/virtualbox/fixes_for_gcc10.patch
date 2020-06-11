@@ -1,7 +1,7 @@
-Index: VirtualBox-6.1.8/Config.kmk
+Index: VirtualBox-6.1.10/Config.kmk
 ===================================================================
---- VirtualBox-6.1.8.orig/Config.kmk
-+++ VirtualBox-6.1.8/Config.kmk
+--- VirtualBox-6.1.10.orig/Config.kmk
++++ VirtualBox-6.1.10/Config.kmk
 @@ -2684,8 +2684,16 @@ else
   # The reason for this hack is that the windows kmk_ash cannot deal with $((1+1)).
   # Some versions of gcc (e.g. openSUSE11) return only major.minor on `gcc -dumpversion`.
@@ -21,13 +21,13 @@ Index: VirtualBox-6.1.8/Config.kmk
  endif
  
  # YASM macros
-Index: VirtualBox-6.1.8/src/VBox/Debugger/DBGCDumpImage.cpp
+Index: VirtualBox-6.1.10/src/VBox/Debugger/DBGCDumpImage.cpp
 ===================================================================
---- VirtualBox-6.1.8.orig/src/VBox/Debugger/DBGCDumpImage.cpp
-+++ VirtualBox-6.1.8/src/VBox/Debugger/DBGCDumpImage.cpp
-@@ -468,7 +468,7 @@ static const char *dbgcMachoCpuType(uint
+--- VirtualBox-6.1.10.orig/src/VBox/Debugger/DBGCDumpImage.cpp
++++ VirtualBox-6.1.10/src/VBox/Debugger/DBGCDumpImage.cpp
+@@ -468,7 +468,7 @@ static const char *dbgcMachoCpuType(int3
  {
-     switch (uType)
+     switch (iType)
      {
 -        case CPU_TYPE_ANY:          return "CPU_TYPE_ANY";
 +        default:		    return "CPU_TYPE_ANY";

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jun  5 20:42:04 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Version bump to 6.1.10 (released June 05 2020 by Oracle)
+
+  This is a maintenance release. The following items were fixed and/or added:
+
+  GUI: Fixed crash when using Qt on Xwayland sessions (bug #19583)
+  GUI: Fixed mouse pointer doesn't work properly in Windows guests when scaling is on (bug #19597)
+  VBoxManage: Fixed crash of 'VBoxManage internalcommands repairhd' when processing invalid input (bug #19579)
+  Settings: disable audio input and audio output by default for new VMs (bug #19527)
+  Guest Additions: Fixed resizing and multi monitor handling for Wayland guests. (bug #19496)
+  Guest Additions: Fixed VBoxClient error: The parent session seems to be non-X11. (bug #19590)
+  Linux host and guest: Linux kernel version 5.7 support. (bug #19516
+
+  File "fix_wayland_crash.patch" is removed - fixed upstream.
+
+-------------------------------------------------------------------
+Fri May 29 14:59:11 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Gsoap 2.8.103 changes the way that "soap_socket_errno" is handled.
+  File "handle_gsoap_208103.patch" is added.
+  Handle case where Wayland chooses wrong video. File "fix_wayland_crash.patch" is added. 
+
+-------------------------------------------------------------------
 Sat May 16 00:52:34 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
 
 - Version bump to 6.1.8 (released May 15 2020 by Oracle)

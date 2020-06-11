@@ -1980,4 +1980,12 @@ Linux hosts and guests: fix for building kernel modules against Linux 5.0. Thank
     <comment></comment>
     <requestid>806046</requestid>
   </revision>
+  <revision rev="199" vrev="1">
+    <srcmd5>dadcbd6fa672d6b36c5e2c0433a5cdbf</srcmd5>
+    <version>6.1.10</version>
+    <time>1591879315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811977</requestid>
+  </revision>
 </revisionlist>
