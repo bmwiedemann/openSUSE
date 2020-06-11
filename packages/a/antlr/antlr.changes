@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  7 19:43:34 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Build antlr-manual package without examples files [bsc#1120360]
+- Remove not needed files
+
+-------------------------------------------------------------------
 Mon Jan  6 09:32:44 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Not only provide python-antlr, but also obsolete it

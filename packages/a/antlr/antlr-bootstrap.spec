@@ -24,7 +24,7 @@ Release:        0
 Summary:        Antlr for bootstrapping purposes
 License:        BSD-3-Clause AND SUSE-Public-Domain
 Group:          Development/Libraries/Java
-URL:            http://www.antlr.org
+URL:            https://www.antlr.org
 Source0:        antlr-%{version}.tar.bz2
 Source1:        manifest.antlr
 BuildRequires:  java-devel >= 1.8

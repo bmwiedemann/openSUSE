@@ -23,7 +23,7 @@ Release:        0
 Summary:        Another Tool for Language Recognition
 License:        GPL-2.0-or-later AND SUSE-Public-Domain AND MIT
 Group:          Development/Tools/Other
-URL:            http://www.antlr.org/
+URL:            https://www.antlr.org/
 Source0:        antlr-%{version}.tar.bz2
 Source1:        %{name}-build.xml
 Source2:        %{name}-script
@@ -33,7 +33,6 @@ Patch0:         %{name}-jedit.patch
 Patch1:         gcc45fix.diff
 Patch2:         fix-docpath.diff
 BuildRequires:  ant
-BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
@@ -77,7 +76,7 @@ language tool that provides a framework for constructing recognizers,
 compilers, and translators from grammatical descriptions containing C++
 or Java actions (you can use PCCTS 1.xx to generate C-based parsers).
 
-This package provides the manual and examples for antlr.
+This package provides the manual for antlr.
 
 %package        devel
 Summary:        ANother Tool for Language Recognition (c++ runtime)
@@ -112,6 +111,8 @@ Haefelinger and Marq Kole.
 %setup -q
 # remove all binary libs
 find . -name "*.jar" -exec rm -f {} \;
+find . -name "*.exe" -exec rm -f {} \;
+find . -name "*.dll" -exec rm -f {} \;
 find . -name Makefile.in | xargs chmod 0644
 %patch0
 cp -p %{SOURCE1} build.xml
@@ -128,8 +129,9 @@ ant \
     -Dj2se.apidoc=%{_javadocdir}/java \
     -Dant.build.javac.source=8 -Dant.build.javac.target=8 \
     jar
-%configure
+%configure --without-examples
 make -j1
+
 %if %{with python2}
 %py_compile lib/python/antlr
 %endif
@@ -165,11 +167,9 @@ install -m 0755 lib/cpp/src/lib%{name}.a %{buildroot}%{_libdir}
 install -d -m 0755 %{buildroot}%{_includedir}/%{name}
 install -m 0644 lib/cpp/%{name}/*hpp %{buildroot}%{_includedir}/%{name}
 
-### find duplicates ###
-find examples -type f | xargs chmod 0644
-%fdupes -s examples
+### doc permissions ###
+rm doc/{Makefile,Makefile.in}
 find doc -type f | xargs chmod 0644
-%fdupes -s doc
 
 %files
 %license LICENSE.txt
@@ -190,7 +190,7 @@ find doc -type f | xargs chmod 0644
 %endif
 
 %files manual
-%doc doc examples
+%doc doc
 
 %files devel
 %{_libdir}/libantlr.a

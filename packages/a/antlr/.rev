@@ -371,4 +371,12 @@
     <comment>Obsolete python-antlr</comment>
     <requestid>761091</requestid>
   </revision>
+  <revision rev="50" vrev="121">
+    <srcmd5>af52ebdce1556816292bb00e8f821eac</srcmd5>
+    <version>2.7.7</version>
+    <time>1591879039</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810165</requestid>
+  </revision>
 </revisionlist>
