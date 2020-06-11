@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 11 09:50:19 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building with gcc10
+
+-------------------------------------------------------------------
 Mon Feb  3 14:36:00 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Small packaging improvements

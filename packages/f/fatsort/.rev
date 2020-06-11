@@ -47,4 +47,12 @@
     <comment>- Small packaging improvements</comment>
     <requestid>769617</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>6dab6f5784dc9854973d4e945f36cfe6</srcmd5>
+    <version>1.6.2.605</version>
+    <time>1591880054</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with gcc10</comment>
+    <requestid>813439</requestid>
+  </revision>
 </revisionlist>

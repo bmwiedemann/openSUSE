@@ -35,7 +35,7 @@ transmitted to the device. FATSort can help here.
 %autosetup
 
 %build
-%make_build CFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags} -fcommon"
 
 %install
 install -Dpm 0755 -p src/%{name}   \
