@@ -31,15 +31,13 @@
 %define __builder ninja
 
 Name:           telegram-desktop
-Version:        2.1.1
+Version:        2.1.10
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/telegramdesktop/tdesktop
 Source0:        https://github.com/telegramdesktop/tdesktop/releases/download/v%{version}/tdesktop-%{version}-full.tar.gz
-# curl https://codeload.github.com/ericniebler/range-v3/zip/master -o range-v3-master.zip
-Source1:        range-v3-master.zip
 # PATCH-FIX-OPENSUSE
 Patch0:         0000-gtk2-default.patch
 # PATCH-FIX-OPENSUSE
@@ -66,7 +64,6 @@ BuildRequires:  libqt5-qtimageformats-devel
 BuildRequires:  memory-constraints
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  unzip
 BuildRequires:  xorg-x11-devel
 BuildRequires:  xxhash-devel
 BuildRequires:  xz
@@ -143,9 +140,6 @@ The service also provides APIs to independent developers.
 %prep
 %setup -q -n tdesktop-%{version}-full
 
-unzip %{_sourcedir}/range-v3-master.zip -d %{_builddir}/Libraries/
-mv %{_builddir}/Libraries/range-v3-master %{_builddir}/Libraries/range-v3
-
 %patch0 -p1
 %patch1 -p1
 
@@ -165,9 +159,9 @@ export CXX=/usr/bin/g++-9
       -DDESKTOP_APP_USE_PACKAGED=ON \
       -DDESKTOP_APP_USE_PACKAGED_GSL=OFF \
       -DDESKTOP_APP_USE_PACKAGED_EXPECTED=OFF \
-      -DTDESKTOP_USE_PACKAGED_TGVOIP=OFF \
       -DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF \
       -DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF \
+      -DTDESKTOP_USE_PACKAGED_TGVOIP=OFF \
       -DDESKTOP_APP_USE_PACKAGED_FONTS=ON \
       -DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON \
       -DTDESKTOP_DISABLE_AUTOUPDATE=ON \

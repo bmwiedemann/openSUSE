@@ -1,18 +1,11 @@
---- a/cmake/external/ranges/CMakeLists.txt.orig	2020-02-06 12:12:05.613006285 +0100
-+++ b/cmake/external/ranges/CMakeLists.txt	2020-02-06 12:12:20.200020349 +0100
+--- tdesktop-2.1.5-full/cmake/external/ranges/CMakeLists.txt.orig	2020-05-13 19:24:13.765240115 +0000
++++ tdesktop-2.1.5-full/cmake/external/ranges/CMakeLists.txt	2020-05-13 19:25:44.062788903 +0000
 @@ -7,7 +7,7 @@
  add_library(external_ranges INTERFACE IMPORTED GLOBAL)
  add_library(desktop-app::external_ranges ALIAS external_ranges)
  
--if (DESKTOP_APP_USE_PACKAGED)
-+if (!DESKTOP_APP_USE_PACKAGED)
+-if (DESKTOP_APP_USE_PACKAGED AND NOT DESKTOP_APP_USE_PACKAGED_LAZY)
++if (NOT DESKTOP_APP_USE_PACKAGED)
      find_package(range-v3 REQUIRED)
      target_link_libraries(external_ranges INTERFACE range-v3::range-v3)
  else()
-@@ -23,4 +23,4 @@ if (WIN32)
-         /experimental:preprocessor # need for range-v3 see https://github.com/ericniebler/range-v3#supported-compilers
-         /wd5105 # needed for `/experimental:preprocessor`, suppressing C5105 "macro expansion producing 'defined' has undefined behavior"
-     )
--endif()
-\ No newline at end of file
-+endif()

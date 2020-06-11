@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Jun  5 20:20:20 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- update to 2.1.10
+  * Improve memory usage.
+  * Add support for full group message history export.
+  * Allow export of a single chat message history in JSON format.
+
+-------------------------------------------------------------------
+Wed Jun  3 18:41:46 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.1.8 (beta)
+  * Add support for full group message history export.
+  * Allow export of a single chat message history in JSON format.
+- Rebased 0000-gtk2-default.patch
+
+-------------------------------------------------------------------
+Sun May 24 15:48:54 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.1.7
+  * Fix the Fcitx input method plugin.
+
+-------------------------------------------------------------------
+Wed May 13 19:04:30 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.1.5
+  * Disable the taskbar icon flash or the dock icon bounce in
+    Settings > Notifications.
+  * View messages containing long monospace texts in wide bubbles.
+  * Bug fixes and other minor improvements.
+- rebased 0001-use-bundled-range.patch
+
+-------------------------------------------------------------------
+Sat May  9 16:23:13 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.1.4
+  * Improve bold font selection.
+
+-------------------------------------------------------------------
+Fri May  8 18:38:40 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.1.3
+  * Added support for new emoji.
+  * Channels to which you can't post will no longer be suggested
+    when forwarding.
+  * Improved font selection and bold font support for CJK and Farsi.
+  * Fix polls and quizes results viewing.
+  * Fix memory leak in web page previews with autoplayed videos.
+  * Fix running on OS X 10.10.
+  * Other minor bug fixes and improvements.
+- removed range-v3-master.zip, range is now bundled in the
+  upstream source
+- rebased 0001-use-bundled-range.patch
+
+-------------------------------------------------------------------
 Sat May  2 01:03:59 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 2.1.1
