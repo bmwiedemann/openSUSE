@@ -1,7 +1,7 @@
 #
 # spec file for package mm-common
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           mm-common
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Common build files of the GNOME C++ bindings
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://gtkmm.org
-Source:         http://download.gnome.org/sources/%{name}/1.0/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/%{name}/1.0/%{name}-%{version}.tar.xz
 Source99:       mm-common-rpmlintrc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
