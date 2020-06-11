@@ -1,7 +1,7 @@
 #
 # spec file for package alttab
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,10 @@ alttab is a X11 window switcher designed for minimalistic window managers or sta
 %setup -q
 
 %build
+# workaround for GCC10 build failure
+export CFLAGS="%(echo %{optflags}) -fcommon"
+export CXXFLAGS="$CFLAGS"
+
 ./bootstrap.sh
 %configure
 make %{?_smp_mflags}
