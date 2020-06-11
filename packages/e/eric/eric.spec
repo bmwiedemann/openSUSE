@@ -20,7 +20,7 @@
 %define distname eric6
 
 Name:           eric
-Version:        20.4
+Version:        20.5
 Release:        0
 Summary:        Python IDE based on Qt5
 License:        GPL-3.0-or-later

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  9 13:47:28 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 20.5:
+  - MicroPython
+    -- added support for Calliope mini
+  - Third Party packages
+    -- updated Pygments to 2.3.1
+-------------------------------------------------------------------
 Sun Apr  5 15:47:56 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to version 20.4:
