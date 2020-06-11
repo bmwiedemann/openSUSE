@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 29 12:52:40 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add upstream patches to fix possible crash when closing a session
+  in KonsolePart (boo#1169408, kde#420817, kde#420695, kde#415762):
+  * Fix-crash-when-closing-session-in-KonsolePart-via-menu.patch
+  * Fix-konsolepart-segfault-when-closing-after-showing-context-menu.patch
+
+-------------------------------------------------------------------
 Fri May 15 15:41:48 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.1
