@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  9 07:53:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.1.0:
+  * Add pytest plugin. Thanks @malefice.
+  * Fix phone numbers for es_ES. Thanks @pablofm.
+  * Fix uuid provider to return a uuid4 object when cast_to is set to None. Thanks @rodrigondec.
+  * Update names for es_ES person provider. Thanks @mondeja.
+  * Add provider for sk_SK birth_number. Thanks @eumiro.
+  * Add day_of_week and month_name for de_DE provider. Thanks @eumiro.
+
+-------------------------------------------------------------------
 Mon May  4 08:37:02 UTC 2020 - Johannes Grassler <johannes.grassler@suse.com>
 
 - update to 4.0.3:

@@ -178,4 +178,18 @@
     <comment></comment>
     <requestid>800000</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>bf45c8c10cce5604c95701b93c183de9</srcmd5>
+    <version>4.1.0</version>
+    <time>1591879521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.0:
+  * Add pytest plugin. Thanks @malefice.
+  * Fix phone numbers for es_ES. Thanks @pablofm.
+  * Fix uuid provider to return a uuid4 object when cast_to is set to None. Thanks @rodrigondec.
+  * Update names for es_ES person provider. Thanks @mondeja.
+  * Add provider for sk_SK birth_number. Thanks @eumiro.
+  * Add day_of_week and month_name for de_DE provider. Thanks @eumiro.</comment>
+    <requestid>812811</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %define oldpython python
 %global skip_python2 1
 Name:           python-Faker
-Version:        4.0.3
+Version:        4.1.0
 Release:        0
 Summary:        Python package that generates fake data
 License:        MIT
@@ -60,7 +60,6 @@ testing, and data anonymization from production services.
 # Remove pre-existing bytecode files in the sdist
 find . -name '*.py[co]' -delete
 # do not hardcode versions
-sed -i -e 's:"pytest>=3.8.0,<3.9":"pytest>=3.8.0":g' setup.py
 sed -i -e 's:==:>=:g' setup.py
 
 %build
