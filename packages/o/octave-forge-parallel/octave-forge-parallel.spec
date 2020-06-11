@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-parallel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,21 @@
 
 %define octpkg  parallel
 Name:           octave-forge-%{octpkg}
-Version:        3.1.3
+Version:        4.0.0
 Release:        0
 Summary:        Parallel Computing for Octave
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.net
+URL:            https://octave.sourceforge.io/%{octpkg}/index.html
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE octave-forge-parallel-build-with-octave5.patch badshah400@gmail.com -- fix building against octave >= 5; patch taken from upstream mercurial commits
-Patch0:         octave-forge-parallel-build-with-octave5.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gnutls-devel >= 3.4.0
 BuildRequires:  hdf5-devel
 BuildRequires:  octave-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
-Requires:       octave-cli >= 3.8.0
+Requires:       octave-cli >= 4.0.0
 Requires:       octave-forge-struct >= 1.0.12
-# SECTION FOR PATCH0
-BuildRequires:  autoconf
-BuildRequires:  automake
-# /SECTION
 
 %description
 Parallel execution package.
@@ -46,10 +40,6 @@ This is part of Octave-Forge project.
 
 %prep
 %setup -q -c %{name}-%{version}
-pushd %{octpkg}-%{version}
-%patch0 -p1
-cd src && ./bootstrap
-popd
 %octave_pkg_src
 
 %build
