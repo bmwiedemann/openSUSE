@@ -1,7 +1,7 @@
 #
 # spec file for package libm4rie
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,37 +12,37 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libm4rie
 # Note that libm4rie is not always updated in lockstep with libm4ri,
 # and that is absolutely normal.
-%define date	20150908
+%define date	20200125
 %define lname	libm4rie-0_0_%date
 Version:        0~%date
 Release:        0
-Summary:        Library for fast linear arithmetic over GF(2^e)
-License:        GPL-2.0+
+Summary:        Library for linear arithmetic over GF(2^e)
+License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            https://bitbucket.org/malb/m4rie
+URL:            https://bitbucket.org/malb/m4rie
 
 #Git-Clone:	https://bitbucket.org/malb/m4rie.git
 Source:         https://bitbucket.org/malb/m4rie/downloads/m4rie-%date.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  libm4ri-devel
+BuildRequires:  pkg-config
 
 %description
-M4RIE is a library for fast arithmetic with dense matrices over the
+M4RIE is a library for arithmetic with dense matrices over the
 Galois Field GF(2^e).
 
 %package -n %lname
-Summary:        Library for fast linear arithmetic over GF(2^e)
+Summary:        Library for linear arithmetic over GF(2^e)
 Group:          System/Libraries
 
 %description -n %lname
-M4RIE is a library for fast arithmetic with dense matrices over the
+M4RIE is a library for arithmetic with dense matrices over the
 Galois Field GF(2^e).
 
 %package devel
@@ -51,14 +51,14 @@ Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
 %description devel
-M4RIE is a library for fast arithmetic with dense matrices over the
+M4RIE is a library for arithmetic with dense matrices over the
 Galois Field GF(2^e).
 
 This subpackage contains libraries and header files for developing
 applications that want to make use of libm4rie.
 
 %prep
-%setup -qn m4rie-%date
+%autosetup -n m4rie-%date
 
 %build
 %configure --disable-static
@@ -68,13 +68,15 @@ make %{?_smp_mflags}
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
+%post   -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
+
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libm4rie-0.0.%date.so
 
 %files devel
-%defattr(-,root,root)
 %_libdir/libm4rie.so
+%_libdir/pkgconfig/*.pc
 %_includedir/m4rie/
 
 %changelog
