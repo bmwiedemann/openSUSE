@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jun 10 19:00:30 UTC 2020 - i@guoyunhe.me
+
+- Add BuildRequires: Mesa-libGLESv3-devel to fix arm build
+- Update to version 0~git20200610:
+  * Fedora32 build fix
+  * std::string needs #include <string>
+  * std::runtime_error needs #include <stdexcept>
+  * std::runtime_error needs #include <stdexcept>
+  * Make sure sticky flags arrive at the proper time.
+  * Add test to check sticky flag handling.
+  * Handle VU branching peculiarities found in Star Ocean 3.
+  * Formatting niceties.
+  * Implement ERSADD.
+  * Spice up test case.
+  * Add VU branch test.
+  * Add label support in VuAssembler.
+  * Cleanup.
+  * Fix build error.
+  * Fix formatting.
+  * Enable linear filtering in some scenarios.
+  * Linear texture sampling (not enabled yet).
+  * Fix warnings.
+  * Apply (0.5, 0.5) offset to snap on pixel grid.
+  * Implement HWREG.
+  * Add support for some missing pixel formats.
+
+-------------------------------------------------------------------
 Thu May 28 12:23:46 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200525:
