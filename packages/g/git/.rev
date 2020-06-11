@@ -2202,4 +2202,12 @@ git 2.12.3
     <comment>- Protocol v2 in_vain fixes (bsc#1170741, bsc#1170939).</comment>
     <requestid>799281</requestid>
   </revision>
+  <revision rev="251" vrev="1">
+    <srcmd5>8e2218a04325478071acf1be77ff4300</srcmd5>
+    <version>2.27.0</version>
+    <time>1591879126</time>
+    <user>dimstar_suse</user>
+    <comment>git 2.27.0</comment>
+    <requestid>810679</requestid>
+  </revision>
 </revisionlist>

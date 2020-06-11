@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jun  1 20:32:59 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.27.0:
+   * "git describe" will always use the "long" version when giving
+      its output based misplaced tags
+   * "git pull" issues a warning message until the pull.rebase
+     configuration variable is explicitly given
+   * The transport protocol version 2, which was promoted to the
+     default in Git 2.26 release, turned out to have some remaining
+     rough edges, so it has been demoted from the default
+   * A handful of options to configure SSL when talking to proxies
+     have been added
+   * Smudge/clean conversion filters are now given more information
+   * many bug fixes, improvements, and additional workflow options
+- drop upstreamed patches:
+  * 0001-fetch-pack-return-enum-from-process_acks.patch
+  * 0002-fetch-pack-in-protocol-v2-in_vain-only-after-ACK.patch
+  * 0003-fetch-pack-in-protocol-v2-reset-in_vain-upon-ACK.patch
+- drop unneeded patches:
+  * 0001-DOC-Move-to-DocBook-5-when-using-asciidoctor.patch
+  * 0002-Also-use-DocBook-5-stylesheet-when-generating-HTML-o.patch
+
+-------------------------------------------------------------------
 Tue Apr 28 17:42:18 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
 
 - Protocol v2 in_vain fixes (bsc#1170741, bsc#1170939).

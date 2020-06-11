@@ -36,7 +36,7 @@
 %endif
 
 Name:           git
-Version:        2.26.2
+Version:        2.27.0
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -61,11 +61,6 @@ Patch6:         git-tcsh-completion-fixes.diff
 Patch7:         git-zsh-completion-fixes.diff
 Patch8:         git-asciidoc.patch
 Patch10:        setup-don-t-fail-if-commondir-reference-is-deleted.patch
-Patch11:        0001-DOC-Move-to-DocBook-5-when-using-asciidoctor.patch
-Patch13:        0002-Also-use-DocBook-5-stylesheet-when-generating-HTML-o.patch
-Patch14:        0001-fetch-pack-return-enum-from-process_acks.patch
-Patch15:        0002-fetch-pack-in-protocol-v2-in_vain-only-after-ACK.patch
-Patch16:        0003-fetch-pack-in-protocol-v2-reset-in_vain-upon-ACK.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gpg2
@@ -293,11 +288,6 @@ directory /git/ that calls the cgi script.
 %patch7 -p1
 %patch8 -p1
 %patch10 -p1
-%patch11 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
 
 %build
 cat > .make <<'EOF'
