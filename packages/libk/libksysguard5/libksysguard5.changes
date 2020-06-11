@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 10 21:21:30 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0.1
+  * New bugfix release
+- Changes since 5.19.0:
+  * Use new name for dbus interface
+
+-------------------------------------------------------------------
 Thu Jun  4 13:27:12 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.0
