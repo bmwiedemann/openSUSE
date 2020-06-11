@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 30 12:19:40 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add patch configure_PYTHON_FOR_REGEN.patch which makes
+  configure.ac to consider the correct version of
+  PYTHON_FO_REGEN (bsc#1078326).
+
+-------------------------------------------------------------------
 Mon Apr 27 06:56:55 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Use python3-Sphinx on anything more recent than SLE-15 (inclusive).

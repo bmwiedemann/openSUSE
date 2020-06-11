@@ -1417,4 +1417,14 @@ distutils.spawn. [bsc#1109663, CVE-2018-1000802]</comment>
 - Use python3-Sphinx on anything more recent than SLE-15 (inclusive).</comment>
     <requestid>798115</requestid>
   </revision>
+  <revision rev="151" vrev="2">
+    <srcmd5>5665e7646a43e8c89d17ca95b3f1a90a</srcmd5>
+    <version>2.7.18</version>
+    <time>1591879051</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch configure_PYTHON_FOR_REGEN.patch which makes
+  configure.ac to consider the correct version of
+  PYTHON_FO_REGEN (bsc#1078326).</comment>
+    <requestid>810400</requestid>
+  </revision>
 </revisionlist>

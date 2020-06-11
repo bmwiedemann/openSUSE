@@ -96,6 +96,9 @@ Patch58:        CVE-2020-8492-urllib-ReDoS.patch
 # PATCH-FIX-UPSTREAM CVE-2019-9674-zip-bomb.patch bsc#1162825 mcepl@suse.com
 # Improve documentation warning against the possible zip bombs
 Patch59:        CVE-2019-9674-zip-bomb.patch
+# PATCH-FIX-UPSTREAM configure_PYTHON_FOR_REGEN.patch bsc#1078326 mcepl@suse.com
+# PYTHON_FOR_REGEN value is set very weird upstream
+Patch60:        configure_PYTHON_FOR_REGEN.patch
 # COMMON-PATCH-END
 BuildRequires:  automake
 BuildRequires:  db-devel
@@ -276,6 +279,7 @@ that rely on earlier non-verification behavior.
 %patch56 -p1
 %patch58 -p1
 %patch59 -p1
+%patch60 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^version_required/dnl version_required/' configure.ac
