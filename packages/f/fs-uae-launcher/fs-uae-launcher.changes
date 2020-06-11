@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 25 05:58:45 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.0.5
+  * No changes, version bump only to sync with fs-uae and -arcade
+
+-------------------------------------------------------------------
+Thu Apr 23 22:36:08 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.0.4
+  * No changes, version bump only to sync with fs-uae and -arcade
+
+-------------------------------------------------------------------
 Tue Mar 10 19:41:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Fixed crash when starting the Launcher in a KDE environment
