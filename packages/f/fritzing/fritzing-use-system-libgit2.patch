@@ -1,0 +1,26 @@
+diff -Nurd fritzing-app-CD-498/phoenix.pro fritzing-app-CD-498.new/phoenix.pro
+--- fritzing-app-CD-498/phoenix.pro	2019-12-01 14:05:45.000000000 +0100
++++ fritzing-app-CD-498.new/phoenix.pro	2020-05-06 20:36:12.869380287 +0200
+@@ -166,7 +166,7 @@
+ RESOURCES += phoenixresources.qrc
+ 
+ # Disable this if you have (and want) libgit2 dynamically
+-LIBGIT_STATIC = true
++LIBGIT_STATIC = false
+ include(pri/libgit2detect.pri)
+ 
+ include(pri/boostdetect.pri)
+diff -Nurd fritzing-app-CD-498/src/version/partschecker.cpp fritzing-app-CD-498.new/src/version/partschecker.cpp
+--- fritzing-app-CD-498/src/version/partschecker.cpp	2019-12-01 14:05:45.000000000 +0100
++++ fritzing-app-CD-498.new/src/version/partschecker.cpp	2020-05-06 20:44:30.824507804 +0200
+@@ -115,8 +115,8 @@
+ 	/**
+ 	 * Connect to the remote.
+ 	 */
+-#if LIBGIT2_VER_MINOR > 24
+-	error = git_remote_connect(remote, GIT_DIRECTION_FETCH, &callbacks, NULL, NULL);
++#if LIBGIT2_VER_MINOR > 24 || LIBGIT2_VER_MAJOR >= 1
++    error = git_remote_connect(remote, GIT_DIRECTION_FETCH, &callbacks, NULL, NULL);
+ #elif LIBGIT2_VER_MINOR == 24
+ 	error = git_remote_connect(remote, GIT_DIRECTION_FETCH, &callbacks, NULL);
+ #else

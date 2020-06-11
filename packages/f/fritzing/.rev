@@ -173,4 +173,30 @@ now depends on Qt 4.8 (forwarded request 148324 from Heinervdm)</comment>
     <comment></comment>
     <requestid>567967</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>70cd639f8ec7eaec12a05daf3ae774d5</srcmd5>
+    <version>0.9.4</version>
+    <time>1591879949</time>
+    <user>dimstar_suse</user>
+    <comment>- update version to 0.9.4 
+  * fixed memory corruption in autorouter
+  * dropped Qt4 support
+  * new parts were added
+  * A memory leak was fixed
+  * translations were updated
+  * File handling in parts editor was improved
+- Drop patch fritzing-libgit-0.24.patch
+  This patch is applyed upstream ensures
+- Drop patch fritzing-folderutils-fix.patch
+  This patch is applyed upstream
+- Drop patch fritzing-cleanup-build-files.patch
+  This patch is applyed upsteam
+- Drop patch fritzing-restore-qt5.1-compatibility.patch
+  Qt 5.1 support is not needed anymore
+- Add appdata.xml provided by upstream
+- Add patch fritzing-use-system-libgit2.patch
+  Use system libgit2 instead of bundled lib
+</comment>
+    <requestid>813312</requestid>
+  </revision>
 </revisionlist>

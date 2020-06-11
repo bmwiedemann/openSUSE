@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Jun 10 18:16:39 UTC 2020 - Thomas Zimmermann <bugs@vdm-design.de>
+
+- Remove version requirement for fritzing-parts,
+  no new parts package was released.
+
+-------------------------------------------------------------------
+Wed May  6 19:21:41 UTC 2020 - Thomas Zimmermann <bugs@vdm-design.de>
+
+- update version to 0.9.4 
+  * fixed memory corruption in autorouter
+  * dropped Qt4 support
+  * new parts were added
+  * A memory leak was fixed
+  * translations were updated
+  * File handling in parts editor was improved
+- Drop patch fritzing-libgit-0.24.patch
+  This patch is applyed upstream ensures
+- Drop patch fritzing-folderutils-fix.patch
+  This patch is applyed upstream
+- Drop patch fritzing-cleanup-build-files.patch
+  This patch is applyed upsteam
+- Drop patch fritzing-restore-qt5.1-compatibility.patch
+  Qt 5.1 support is not needed anymore
+- Add appdata.xml provided by upstream
+- Add patch fritzing-use-system-libgit2.patch
+  Use system libgit2 instead of bundled lib
+
+-------------------------------------------------------------------
 Sun Jan 21 10:39:43 UTC 2018 - bugs@vdm-design.de
 
 - update parameters of %%suse_update_desktop_file

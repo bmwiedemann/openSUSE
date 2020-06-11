@@ -1,7 +1,7 @@
 #
 # spec file for package fritzing
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define cdversion CD-498
 Name:           fritzing
-Version:        0.9.3b
+Version:        0.9.4
 Release:        0
 Summary:        Electronic Design Automation platform featuring prototype to product
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
-Url:            http://fritzing.org/
-Source0:        https://github.com/fritzing/fritzing-app/archive/%{version}.tar.gz
-#PATCH-FIX-UPSTREAM fritzing-restore-qt5.1-compatibility.patch -- this patch restores compatibility with Qt5.1
-Patch0:         fritzing-restore-qt5.1-compatibility.patch
-#PATCH-FIX-UPSTREAM fritzing-libgit-0.24.patch -- make fritzing compatible with libgit2 > 0.23
-Patch1:         fritzing-libgit-0.24.patch
-#PATCH-FIX-UPSTREAM fritzing-cleanup-build-files.patch -- use system boost, libgit and clean up build files
-Patch2:         fritzing-cleanup-build-files.patch
-#PATCH-FIX-UPSTREAM fritzing-folderutils-fix.patch -- fix folderutils to properly return parts folder
-Patch3:         fritzing-folderutils-fix.patch
+URL:            http://fritzing.org/
+Source0:        https://github.com/fritzing/fritzing-app/archive/%{cdversion}.tar.gz
+#PATCH-FIX-OPENSUSE fritzing-use-system-libgit2.patch -- use system libgit, upstream wants to use bundled version
+Patch0:         fritzing-use-system-libgit2.patch
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_headers-devel
 %else
@@ -51,11 +46,12 @@ BuildRequires:  libqt5-qtserialport-devel
 BuildRequires:  libqt5-qtsvg-devel
 Requires:       libQt5Sql5-sqlite
 %endif
-Requires:       fritzing-parts = %{version}
+Requires:       fritzing-parts
 Requires(post):    shared-mime-info
 Requires(postun):  shared-mime-info
 Requires(post):    desktop-file-utils
 Requires(postun):  desktop-file-utils
+BuildRequires:  appstream-glib
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -67,13 +63,10 @@ allow users to document their Arduino and other electronic-based
 prototypes, and to create a PCB layout for manufacturing.
 
 %prep
-%setup -q -n %{name}-app-%{version}
-%patch0 -p2
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%setup -q -n %{name}-app-%{cdversion}
+%patch0 -p1
 sed -i 's/\r$//' LICENSE.CC-BY-SA
-chmod -x LICENSE* readme.md Fritzing.1
+chmod -x LICENSE* README.md Fritzing.1
 
 %build
 # QMAKE_CFLAGS_ISYSTEM= added to work around gcc6 build problems
@@ -82,29 +75,26 @@ make %{?_smp_mflags}
 
 %install
 make INSTALL_ROOT=%{buildroot} install
-install -d %{buildroot}%{_datadir}/pixmaps/
-mv %{buildroot}%{_datadir}/icons/fritzing.png %{buildroot}%{_datadir}/pixmaps/
-sed -i '/X-SuSE-translate=false/d' fritzing.desktop
-sed -i '/Version=/d' fritzing.desktop
-sed -i '/Categories=/d' fritzing.desktop
-sed -i 's/icons\/fritzing_icon.png/fritzing/g' fritzing.desktop
-%suse_update_desktop_file -i -r %name Development IDE
+sed -i '/Categories=/d' org.fritzing.Fritzing.desktop
+%suse_update_desktop_file -i -r org.fritzing.Fritzing Development IDE
 find %{buildroot}%{_datadir}/%{name}/ -type f -exec chmod -x {} \;
-rm -rf %{buildroot}%{_datadir}/%{name}/parts
+#rm -rf %{buildroot}%{_datadir}/%{name}/parts
 %fdupes %{buildroot}%{_datadir}/%{name}/sketches
+appstream-util validate-relax --nonet org.fritzing.Fritzing.appdata.xml
 
 %clean
 rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%doc readme.md LICENSE.GPL2 LICENSE.GPL3 LICENSE.CC-BY-SA
+%doc README.md LICENSE.GPL2 LICENSE.GPL3 LICENSE.CC-BY-SA
 %{_bindir}/Fritzing
 %{_datadir}/%{name}/
 %{_datadir}/pixmaps/%{name}.png
-%{_datadir}/applications/fritzing.desktop
+%{_datadir}/applications/org.fritzing.Fritzing.desktop
 %{_mandir}/man1/Fritzing.*
 %{_datadir}/mime/packages/*.xml
+%{_datadir}/metainfo/org.fritzing.Fritzing.appdata.xml
 
 %post
 %desktop_database_post
