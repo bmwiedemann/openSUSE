@@ -607,4 +607,41 @@
   - CFL-S        P0       6-9e-c/22 000000a2-&amp;gt;000000c6 Core Gen9 Desktop (forwarded request 749412 from msmeissn)</comment>
     <requestid>749414</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>3874703eb8a98c970c4ac654f62ee660</srcmd5>
+    <version>20200609</version>
+    <time>1591879608</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated Intel CPU Microcode to 20200609 (bsc#1172466)
+  Fixes for:
+  - CVE-2020-0543: Fixed a side channel attack against special registers
+    which could have resulted in leaking of read values to cores other
+    than the one which called it.  This attack is known as Special Register
+    Buffer Data Sampling (SRBDS) or &quot;CrossTalk&quot; (bsc#1154824).
+  - CVE-2020-0548,CVE-2020-0549: Additional ucode updates were supplied to
+    mitigate the Vector Register and L1D Eviction Sampling aka &quot;CacheOutAttack&quot;
+    attacks. (bsc#1156353)
+  == 20200602_DEMO Release ==
+  -- Updates upon 20200520 release --
+  Processor             Identifier     Version       Products
+  Model        Stepping F-MO-S/PI      Old-&amp;gt;New
+  ---- new platforms ----------------------------------------
+  ---- updated platforms ------------------------------------
+  HSW          C0       6-3c-3/32 00000027-&amp;gt;00000028 Core Gen4
+  BDW-U/Y      E0/F0    6-3d-4/c0 0000002e-&amp;gt;0000002f Core Gen5
+  HSW-U        C0/D0    6-45-1/72 00000025-&amp;gt;00000026 Core Gen4
+  HSW-H        C0       6-46-1/32 0000001b-&amp;gt;0000001c Core Gen4
+  BDW-H/E3     E0/G0    6-47-1/22 00000021-&amp;gt;00000022 Core Gen5
+  SKL-U/Y      D0       6-4e-3/c0 000000d6-&amp;gt;000000dc Core Gen6 Mobile
+  SKL-U23e     K1       6-4e-3/c0 000000d6-&amp;gt;000000dc Core Gen6 Mobile
+  SKX-SP       B1       6-55-3/97 01000151-&amp;gt;01000157 Xeon Scalable
+  SKX-SP       H0/M0/U0 6-55-4/b7 02000065-&amp;gt;02006906 Xeon Scalable
+  SKX-D        M1       6-55-4/b7 02000065-&amp;gt;02006906 Xeon D-21xx
+  CLX-SP       B0       6-55-6/bf 0400002c-&amp;gt;04002f01 Xeon Scalable Gen2
+  CLX-SP       B1       6-55-7/bf 0500002c-&amp;gt;04002f01 Xeon Scalable Gen2
+  SKL-H/S      R0/N0    6-5e-3/36 000000d6-&amp;gt;000000dc Core Gen6; Xeon E3 v5
+  AML-Y22      H0       6-8e-9/10 000000ca-&amp;gt;000000d6 Core Gen8 Mobile
+  KBL-U/Y      H0       6-8e-9/c0 000000ca-&amp;gt;000000d6 Core Gen7 Mobile (forwarded request 813007 from msmeissn)</comment>
+    <requestid>813008</requestid>
+  </revision>
 </revisionlist>
