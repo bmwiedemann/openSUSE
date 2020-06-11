@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu May 28 09:30:33 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Import commit a6d31d1a02c2718a064bbbc40d003668acf72769
+
+  bb6e2f7906 pid1: update manager settings on reload too (bsc#1163109)
+  e9e8907b06 watchdog: reduce watchdog pings in timeout interval
+  385a8f9846 udev: rename the persistent link for ATA devices (bsc#1164538)
+  66018a12ae tmpfiles: remove unnecessary assert (bsc#1171145)
+
+-------------------------------------------------------------------
+Mon May 25 08:47:22 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Disable bump of /proc/sys/fs/nr-open
+
+  Hopefully a _temporary_ workaround until bsc#1165351 is fixed
+  otherwise user instances crashes the system is using NIS (and the
+  nscd cache is empty).
+
+-------------------------------------------------------------------
 Mon Apr 27 15:45:50 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Drop legacy /sbin/{udevd,udevadm) symlinks hopefully for good

@@ -24,7 +24,7 @@
 %define bootstrap 0
 %define mini %nil
 %define min_kernel_version 4.5
-%define suse_version +suse.117.g08cd65ac38
+%define suse_version +suse.122.ga6d31d1a02
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -504,6 +504,7 @@ ntp_servers=({0..3}.suse.pool.ntp.org)
         -Ddefault-kill-user-processes=false \
         -Dntp-servers="${ntp_servers[*]}" \
         -Drc-local=/etc/init.d/boot.local \
+        -Dbump-proc-sys-fs-nr-open=false \
         -Ddebug-shell=/bin/bash \
         -Dseccomp=auto \
         -Dselinux=auto \
