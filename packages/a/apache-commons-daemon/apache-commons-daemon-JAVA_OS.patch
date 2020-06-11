@@ -1,17 +1,6 @@
---- commons-daemon-1.0.10-src/src/native/unix/configure.orig	2012-03-29 18:11:47.739291747 -0500
-+++ commons-daemon-1.0.10-src/src/native/unix/configure	2012-03-29 18:12:15.287452463 -0500
-@@ -2818,7 +2818,7 @@
- echo "${ECHO_T}jni_md.h found in $JAVA_HOME/$JAVA_INC" >&6
-   INCLUDES="$INCLUDES -I$JAVA_HOME/include -I$JAVA_HOME/$JAVA_INC"
- else
--  INCLUDES="$INCLUDES -I$JAVA_HOME/include -I$JAVA_HOME/include/$supported_os"
-+  INCLUDES="$INCLUDES -I$JAVA_HOME/include -I$JAVA_HOME/include/$JAVA_OS"
- fi
- 
- if test "$GCC" = "yes"
---- commons-daemon-1.0.10-src/src/native/unix/configure.in.orig	2012-03-29 18:11:18.244119358 -0500
-+++ commons-daemon-1.0.10-src/src/native/unix/configure.in	2012-03-29 18:11:35.745221681 -0500
-@@ -94,7 +94,7 @@
+--- commons-daemon-1.2.2-src.orig/src/native/unix/configure.in
++++ commons-daemon-1.2.2-src/src/native/unix/configure.in
+@@ -98,7 +98,7 @@ then
    AC_MSG_RESULT([jni_md.h found in $JAVA_HOME/$JAVA_INC])
    INCLUDES="$INCLUDES -I$JAVA_HOME/include -I$JAVA_HOME/$JAVA_INC"
  else

@@ -1,21 +1,3 @@
-Index: commons-daemon-1.0.15-src/src/native/unix/configure
-===================================================================
---- commons-daemon-1.0.15-src.orig/src/native/unix/configure
-+++ commons-daemon-1.0.15-src/src/native/unix/configure
-@@ -2692,6 +2692,11 @@ echo "$as_me: error: Unsupported operati
-     supported_os="s390"
-     HOST_CPU=s390
-     ;;
-+  s390x)
-+    CFLAGS="$CFLAGS -DCPU=\\\"s390x\\\""
-+    supported_os="s390x"
-+    HOST_CPU=s390x
-+    ;;
-   arm*)
-     CFLAGS="$CFLAGS -DCPU=\\\"arm\\\""
-     supported_os="arm"
-Index: commons-daemon-1.0.15-src/src/native/unix/support/apsupport.m4
-===================================================================
 --- commons-daemon-1.0.15-src.orig/src/native/unix/support/apsupport.m4
 +++ commons-daemon-1.0.15-src/src/native/unix/support/apsupport.m4
 @@ -161,6 +161,11 @@ AC_DEFUN(AP_SUPPORTED_HOST,[

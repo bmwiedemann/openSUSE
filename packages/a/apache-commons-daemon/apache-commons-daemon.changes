@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Tue Jun  9 07:26:21 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Generate ant build file and customize it in order to be able to
+  build this ring package without cycles. Ring packages cannot be
+  built using maven.
+- Modified patches:
+  * apache-commons-daemon-JAVA_OS.patch
+  * apache-commons-daemon-riscv64.patch
+  * apache-commons-daemon-s390x.patch
+    + Do not patch configure file itself, since we generate it
+      during the build
+
+-------------------------------------------------------------------
+Fri Jun  5 10:54:00 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 1.2.2
+  * Release 1.2.2 - 2019-10-04
+    - Fix: Procrun. Correct a regression in the fix for DAEMON-401
+      that prevented the service from starting unless support for the
+      universal C runtime had been installed.
+    - Update: Update Commons-Parent to version 49.
+  * Release 1.2.1 - 2019-09-09
+    - Fix: jsvc. Correct debug log message that reports change in umask.
+    - Fix: Procrun. Correct a regression in the previous fix for this
+      issue that caused 32-bit services to crash on start-up. Fixes DAEMON-401.
+    - Fix: Procrun. Correct a regression in the fix for DAEMON-391
+      that caused the GUI to mix-up the WARN and INFO logging levels.
+  * Release 1.2.0 - 2019-07-02
+    - Fix: Procrun. Only set the global shutdown event if the event is created.
+    - Fix: Unable to build with Java 9 using ant; dropped Ant build files.
+    - Fix: Procrun. prunsrv stopping with error due to hard-coded timeout.
+    - Fix: Update config.guess and config.sub.
+    - Fix: Jsvc. Set the sun.java.command system property when starting via jsvc
+      so that tools like jconsole show something meaningful for the process name.
+    - Fix: Procrun. Correct the level name used in the GUI for WARN so that
+      changes made via the GUI are recognised. Order the log levels in the
+      drop-down from ERROR to DEBUG.
+    - Fix: Procrun. Correct reversed code comments for JRE and JDK locations
+      in the registry.
+    - Fix: Procrun. Fix a bug that meant a value provided for LibraryPath
+      replaced the value of the PATH environment variable rather than prepended to it.
+    - Fix: Procrun. Ensure that the java.library.path environment variable is
+      correctly configured when running on a JRE that depends on the Universal CRT.
+    - Add: Procrun. Log the error code returned if JVM creation fails to aid debugging.
+    - Fix: Procrun. Ensure that environment variables set via prunsrv are visible
+      to native libraries that depend on the Universal CRT.
+    - Fix: Procrun. Remove the code that removed quotes from configured Java and
+       Java 9 Options.
+    - Add: Procrun. Add an option to configure the service to use the 'Automatic
+      (Delayed Start)' startup mode.
+    - Add: Procrun. When running in jre mode, if the standard Java registry
+      entries for JavaHome and RuntimeLib are not present, attempt to use the
+      Procrun JavaHome key to find the runtime library.
+    - Add: jsvc. Include the full path to the jsvc executable in the debug log.
+  * Release 1.1.0 - 2017-11-15
+    - Update: Update the minimum Java requirement from version 5 to 6.
+    - Update: Add AArch64 support to src/native/unix/support/apsupport.m4.
+    - Fix: Remove calls to explicit garbage collection during daemon start and stop.
+    - Fix: Update config.guess and config.sub to add support, amongst others,
+      for the 64-bit PowerPC Little-Endian architecture.
+    - Update: Update Commons-Parent to version 41.
+    - Fix: Update apsupport.m4 add support for 64-bit PowerPC architectures.
+    - Fix: Suppress spurious "The data area passed to a system call is too small"
+      error message in the log when Procrun fails to stop the service.
+    - Fix: Enable jsvc to start when running on Java 9.
+    - Fix: Fix a resource leak opening the JVM configuration file.
+    _ Fix: Improve the jsvc code that restarts the process if the JVM crashes so
+      that if the JVM crashes after a signal has been received to shut down jsvc
+      does not attempt to restart the JVM.
+    - Fix: Ensure that the child process is started with the correct umask.
+    - Fix: Correct conflicting information for the behaviour of Procrun when
+      using jvm mode.
+    - Fix: Ensure that, when using Procrun in java or exe mode, the service
+      process waits for the stop process to complete before starting clean-up
+      to avoid a crash in the stop process.
+    - Fix: Enable jsvc to find the jvm when running on AIX.
+    - Fix: Ensure that Procrun treats JVM crashes as service failures so the
+      recovery options will apply.
+    - Fix: Ensure that the //MQ command closes the prunmgr process even if
+      the configuration dialog is open when the //MQ command is used.
+    - Fix: Add support for Java 9 command line arguments to jsvc.
+    - Add: Add a restarts options to jsvc to control the number of permitted
+      restarts after a system crash.
+    - Remove: Remove support for building Procrun for the Itanium platform.
+    - Fix: Fix race conditions in PID file handling in jsvc.
+- Remove patches:
+  * apache-commons-daemon-ppc64.patch
+  * apache-commons-daemon-aarch64.patch
+- Refresh patches:
+  * apache-commons-daemon-riscv64.patch
+  * apache-commons-daemon-JAVA_OS.patch
+- Update project keyring.
+
+-------------------------------------------------------------------
 Mon Mar 25 17:35:22 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Remove pom parent, since we don't use it when not building with

@@ -132,4 +132,12 @@
     <comment>Disregard the pom parent</comment>
     <requestid>689045</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>987536c9f78d5855e503a3641e2ec973</srcmd5>
+    <version>1.2.2</version>
+    <time>1591879519</time>
+    <user>dimstar_suse</user>
+    <comment>1.2.2</comment>
+    <requestid>812796</requestid>
+  </revision>
 </revisionlist>
