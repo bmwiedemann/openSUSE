@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 27 16:11:09 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- Add split provides for upgrade from old dracut (boo#1168727).
+
+-------------------------------------------------------------------
 Sun Mar  8 08:46:45 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Set build architecture to noarch.
