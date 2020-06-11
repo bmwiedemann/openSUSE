@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May 31 10:09:34 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.38:
+  * New option parser features to implement system wide
+    configuration files
+  * New functions to build file names
+  * New function to help reallocating arrays
+  * Protect gpgrt_inc_errorcount against counter overflow
+- drop needless autotools build dependencies that were added for
+  gawk5.patch
+
+-------------------------------------------------------------------
 Mon Feb 17 16:34:09 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update to 1.37

@@ -17,7 +17,7 @@
 
 
 Name:           libgpg-error
-Version:        1.37
+Version:        1.38
 Release:        0
 Summary:        Library That Defines Common Error Values for All GnuPG Components
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -28,9 +28,6 @@ Source1:        ftp://ftp.gnupg.org/gcrypt/libgpg-error/%{name}-%{version}.tar.b
 # http://www.gnupg.org/signature_key.en.html
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 
 %description
@@ -63,14 +60,13 @@ Requires(preun): info
 Files needed for software development using libgpg-error.
 
 %prep
-%setup -q -n libgpg-error-%{version}
+%setup -q
 
 %build
-autoreconf -fvi
 %configure \
 	--disable-static \
 	--with-pic
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -81,9 +77,7 @@ rm -r %{buildroot}%{_datadir}/common-lisp
 %find_lang %{name}
 
 %check
-make check %{?_smp_mflags}
-%{buildroot}/%{_bindir}/gpg-error-config --libs | grep -q -v "\-pthread"
-%{buildroot}/%{_bindir}/gpg-error-config --mt --libs | grep -q "\-pthread"
+%make_build check
 
 %post -n libgpg-error0 -p /sbin/ldconfig
 %post devel
