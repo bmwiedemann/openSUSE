@@ -41,7 +41,7 @@ Source10:       nfacctd.conf
 Source11:       pmacctd.conf
 Source12:       sfacctd.conf
 Source20:       pmacct.1
-Patch0:		pmacct-fix-overflow.patch
+Patch0:         pmacct-fix-overflow.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libmysqlclient-devel
@@ -81,7 +81,7 @@ chmod -x sql/pmacct-*
 
 %build
 autoreconf -fiv
-export CFLAGS="%{optflags} -Wno-return-type"
+export CFLAGS="%{optflags} -Wno-return-type -fcommon"
 %configure \
     --sysconfdir=%{_sysconfdir}/%{name} \
     --docdir="%{_docdir}/%{name}" \

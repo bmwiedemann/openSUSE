@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  7 20:37:36 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Set CFLAGS+=-fcommon
+
+-------------------------------------------------------------------
 Mon Mar 30 07:47:03 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - pmacct-fix-overflow.patch: fixed bufferoverflow in sfacctd.
