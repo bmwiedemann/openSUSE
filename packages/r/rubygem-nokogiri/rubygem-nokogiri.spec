@@ -33,7 +33,6 @@ Release:        0
 %define rb_build_versions ruby25 ruby26
 %define rb_build_ruby_abis ruby:2.5.0 ruby:2.6.0
 %endif
-BuildRequires:  %{rubygem mini_portile2:2.3}
 BuildRequires:  %{rubygem pkg-config}
 BuildRequires:  libxml2-devel >= 2.6.21
 BuildRequires:  libxslt-devel
@@ -60,10 +59,25 @@ or CSS3 selectors.
 
 %prep
 
+
 %build
 
 %install
 # MANUAL
+%gem_unpack
+#########################################################################
+#
+# IMPORTANT!
+#
+# This is not covered by our gem2rpm automation yet. If you see it removed
+# in the diff please add it back
+#
+# IMPORTANT!
+#
+#########################################################################
+sed -i -e 's/.*mini_portile.*//g' %{mod_full_name}.gemspec
+find -type f -print0 | xargs -0 touch -r %{S:0}
+%gem_build
 export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 # /MANUAL
 %gem_install \
@@ -72,7 +86,7 @@ export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
   -f
 %gem_cleanup
 # MANUAL
-rm -rf %{buildroot}%{_libdir}/ruby/gems/%{rb_ver}/gems/%{mod_full_name}/ports
+rm -rvf %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_full_name}/ports
 # /MANUAL
 
 %gem_packages

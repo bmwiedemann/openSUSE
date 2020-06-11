@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  8 16:33:00 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- add fix so we no longer need mini_portile2. This is only needed
+  when not building against system libraries (boo#1171881) 
+  https://github.com/sparklemotion/nokogiri/issues/2033
+
+-------------------------------------------------------------------
 Tue Mar  3 10:39:16 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.10.9

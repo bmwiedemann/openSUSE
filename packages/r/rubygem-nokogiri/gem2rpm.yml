@@ -22,12 +22,12 @@
   %endif
   BuildRequires:  libxml2-devel >= 2.6.21
   BuildRequires:  libxslt-devel
-  BuildRequires:  %{rubygem mini_portile2:2.3}
   BuildRequires:  %{rubygem pkg-config}
 #   BuildRequires: foobar
 #   Requires: foobar
 # ## used by gem2rpm
-#:patches
+# :patches:
+#  no-more-mini_portile.patch: -p0
 :sources:
   - rubygem-nokogiri-rpmlintrc
 # - foo.desktop
@@ -35,9 +35,23 @@
 # :gem_install_args: '....'
 # ## used by gem2rpm
 :pre_install: |-
+  %gem_unpack
+  #########################################################################
+  #
+  # IMPORTANT!
+  #
+  # This is not covered by our gem2rpm automation yet. If you see it removed
+  # in the diff please add it back
+  #
+  # IMPORTANT!
+  #
+  #########################################################################
+  sed -i -e 's/.*mini_portile.*//g' %{mod_full_name}.gemspec
+  find -type f -print0 | xargs -0 touch -r %{S:0}
+  %gem_build
   export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 :post_install: |-
-  rm -rf %{buildroot}%{_libdir}/ruby/gems/%{rb_ver}/gems/%{mod_full_name}/ports
+  rm -rvf %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_full_name}/ports
 #   %if 0%{?use_system_libev}
 #   export USE_VENDORED_LIBEV="no"
 #   %endif
