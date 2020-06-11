@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun  6 06:05:45 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libzip 1.7.0:
+  * Add support for encrypting using traditional PKWare encryption
+  * Add functions for querying supported compression and encryption
+    methods
+  * Add the ZIP_SOURCE_GET_FILE_ATTRIBUTES` source command
+  * Refactor stdio file backend
+  * Add CMake find_project() support
+
+-------------------------------------------------------------------
 Mon Feb 24 08:26:07 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - version update to 1.6.1

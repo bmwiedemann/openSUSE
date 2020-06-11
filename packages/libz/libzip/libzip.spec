@@ -18,7 +18,7 @@
 
 %define sover 5
 Name:           libzip
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 Summary:        C library for reading, creating, and modifying zip archives
 License:        BSD-3-Clause
@@ -84,7 +84,7 @@ archives, and merging multiple archives together, respectively.
 
 %build
 %cmake -DDOCUMENTATION_FORMAT=man
-make %{?_smp_mflags} 
+%make_build
 
 %install
 %cmake_install
@@ -117,6 +117,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 %{_includedir}/zip.h
 %{_includedir}/zipconf.h
 %{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/cmake
 %{_mandir}/man3/*.3%{?ext_man}
 
 %changelog

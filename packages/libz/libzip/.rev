@@ -402,4 +402,12 @@
   * Bugfix for double-free in zipcmp(1) during cleanup. (forwarded request 778695 from polslinux)</comment>
     <requestid>779940</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>5b23576e536ffa301eef420ca158a3fd</srcmd5>
+    <version>1.7.0</version>
+    <time>1591879404</time>
+    <user>dimstar_suse</user>
+    <comment>libzip 1.7.0 (forwarded request 812015 from AndreasStieger)</comment>
+    <requestid>813180</requestid>
+  </revision>
 </revisionlist>
