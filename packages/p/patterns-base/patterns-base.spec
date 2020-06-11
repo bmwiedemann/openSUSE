@@ -172,6 +172,8 @@ Recommends:     issue-generator
 %endif
 # hint for aaa_base requiring /usr/bin/xz
 Suggests:       xz
+# if anything wants to recommend an MTA, openSUSE defaults to postfix (boo#1136078)
+Suggests:       postfix
 
 %description base
 This is the base runtime system.  It contains only a minimal multiuser booting system. For running on real hardware, you need to add additional packages and pattern to make this pattern useful on its own.

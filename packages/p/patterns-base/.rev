@@ -490,4 +490,17 @@
     <comment></comment>
     <requestid>811481</requestid>
   </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>adeca2352a269abff7343ecb64320f38</srcmd5>
+    <version>20200505</version>
+    <time>1591879430</time>
+    <user>dimstar_suse</user>
+    <comment>- Suggest postfix from the basesystem pattern: suggested packages
+  are not flagged for installation, but give the solver a hint. So
+  in case something wants an MTA (smtp_daemon), openSUSE installs
+  will all default to postfix (as the base pattern is generally
+  installed). Users are still free to switch as they wish
+  (boo#1136078).</comment>
+    <requestid>813244</requestid>
+  </revision>
 </revisionlist>

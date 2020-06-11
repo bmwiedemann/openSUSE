@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 10 13:07:04 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Suggest postfix from the basesystem pattern: suggested packages
+  are not flagged for installation, but give the solver a hint. So
+  in case something wants an MTA (smtp_daemon), openSUSE installs
+  will all default to postfix (as the base pattern is generally
+  installed). Users are still free to switch as they wish
+  (boo#1136078).
+
+-------------------------------------------------------------------
 Mon Jun  1 12:35:44 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
 
 - re-add ppc64-diag on ppc64le (bsc#1098849).
