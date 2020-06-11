@@ -2849,4 +2849,41 @@
   + fix a typo in tput.1; &quot;columns&quot; should be &quot;cols&quot;.</comment>
     <requestid>799983</requestid>
   </revision>
+  <revision rev="174" vrev="5">
+    <srcmd5>0bc0e2c94a4756d9c01bda7bacffedc0</srcmd5>
+    <version>6.2.MACRO</version>
+    <time>1591879176</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20200531
+  + correct configure version-check/warnng for g++ to allow for 10.x
+  + re-enable &quot;bel&quot; in konsole-base (report by Nia Huang)
+  + add linux-s entry (patch by Alexandre Montaron).
+  + drop long-obsolete convert_configure.pl 
+  + add test/test_parm.c, for checking tparm changes.
+  + improve parameter-checking for tparm, adding function _nc_tiparm() to
+    handle the most-used case, which accepts only numeric parameters
+    (report/testcase by &quot;puppet-meteor&quot;).
+  + use a more conservative estimate of the buffer-size in lib_tparm.c's
+    save_text() and save_number(), in case the sprintf() function
+    passes-through unexpected characters from a format specifier
+    (report/testcase by &quot;puppet-meteor&quot;).
+  + add a check for end-of-string in cvtchar to handle a malformed
+    string in infotocap (report/testcase by &quot;puppet-meteor&quot;).
+
+- Add ncurses patch 20200523
+  + update version-check for gnat to allow for gnat 10.x to 99.x
+  + fix an uninitialized variable in lib_mouse.c changes (cf: 20200502)
+  + add a check in EmitRange to guard against repeat_char emitting digits
+    which could be interpreted as BSD-style padding when --enable-bsdpad 
+    is configured (report/patch by Hiltjo Posthuma).
+  + add --disable-pkg-ldflags to suppress EXTRA_LDFLAGS from the
+    generated pkg-config and ncurses*-config files, to simplify
+    configuring in the case where rpath is used but the packager wants
+    to hide the feature (report by Michael Stapelberg).
+  &gt; fixes for building with Visual Studio C++ and msys2 (patches by
+    &quot;Maarten Anonymous&quot;):
+  + modify CF_SHARED_OPTS to generate a script which translates linker
+    options into Visual Studio's dialect.</comment>
+    <requestid>810717</requestid>
+  </revision>
 </revisionlist>
