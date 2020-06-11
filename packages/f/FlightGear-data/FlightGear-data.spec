@@ -1,7 +1,7 @@
 #
 # spec file for package FlightGear-data
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,23 @@
 #
 
 
-%define main_version 2018.3
+%define main_version 2020.1
 Name:           FlightGear-data
-Version:        %{main_version}.4
+Version:        %{main_version}.1
 Release:        0
 Summary:        FlightGear base scenery and data files
 License:        GPL-2.0-only
 Group:          Amusements/Games/3D/Simulation
-Url:            http://www.flightgear.org/
+URL:            https://www.flightgear.org/
 Source0:        https://downloads.sourceforge.net/project/flightgear/release-%{main_version}/FlightGear-%{version}-data.tar.bz2
 # Remove warnings about hidden files to make other rpmlint warnings readable.
 Source1:        FlightGear-data-rpmlintrc
 NoSource:       0
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
+BuildRequires:  liberation-fonts
+BuildRequires:  optipng
 BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 Recommends:     FlightGear-docs-%{version}
 Requires:       liberation-fonts
@@ -55,7 +56,7 @@ dos2unix -c ascii Docs/model-combined.eff/README.model-combined.eff
 # Remove no longer used textures
 rm -Rf ./Textures/Unused
 # Remove texture sources in GIMP format
-find . -type f -name \*\.xcf.gz -print -delete
+find . -type f \( -name \*\.xcf\.gz -o -name \*\.xcf \) -print -delete
 # Delete some build/maintenance scripts
 find . -type f -a \( -name \*\.pl -o -name \*\.py -o -name \*\.sh \) -print -delete
 # Delete DOS/WINDOWS startup scripts
@@ -66,8 +67,13 @@ rm -Rf ./Aircraft/c172p/dev/
 find . -type f -name \*FlightGear-nonQt.xlf -print -delete
 # More source files
 find . -type f -name \*\.zip -print -delete
+find . -type f -name \*\.blend -print -delete
 # Unbundle fonts
-rm -Rf ./Fonts/LiberationFonts/
+pushd ./Fonts/LiberationFonts/
+for font in Liberation*ttf ; do
+  rm $font 
+  ln -s %{_datadir}/fonts/truetype/$font $font
+done
 
 %build
 # nothing to do
@@ -93,6 +99,9 @@ find %{buildroot}%{_defaultdocdir}/%{name} -type f -empty -print -delete
 
 %fdupes -s %{buildroot}/%{_datadir}/flightgear
 %fdupes -s %{buildroot}%{_defaultdocdir}/%{name}
+
+# Recompress png files - do this after deduplication
+find %{buildroot} -type f -name '*.png' -print0 | xargs -0 -n 10 -P 0 optipng 2>&1 | grep -E 'Processing:|Output\ file'
 
 %files
 %license COPYING

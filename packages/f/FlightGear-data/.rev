@@ -123,4 +123,17 @@ Required for FlightGear</comment>
     <comment></comment>
     <requestid>725118</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b7c35b111b24b68ecdaa685212ac3a3c</srcmd5>
+    <version>2020.1.1</version>
+    <time>1591879778</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2020.1.1, for details see
+  https://www.flightgear.org/news/flightgear-2020-1-released/
+- Update to 2018.3.5, no changelog provided
+- Remove some more sources from data package
+- Recompress PNG files with optipng
+</comment>
+    <requestid>805268</requestid>
+  </revision>
 </revisionlist>
