@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun  9 07:43:57 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Rebase and re-add tidy-up-embeddedfile.patch, it was only partially merged
+  upstream.
+
+-------------------------------------------------------------------
+Fri Jun  5 09:03:56 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 5.4.3
+ * Paths appearing in error messages are now correct in case the current working
+     directory has changed since the start of the session.
+ * Support deleting paths longer than 260 characters on windows created inside tmpdir.
+ * Prevent pytest from printing ConftestImportFailure traceback to stdout.
+ * Prevent hiding the underlying exception when ConfTestImportFailure is raised.
+ * Fix regression where running with --pdb would call the tearDown methods
+     of unittest.TestCase subclasses for skipped tests.
+
+-------------------------------------------------------------------
 Tue May 12 08:49:45 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 5.4.2

@@ -832,4 +832,22 @@
 - Remove merged patch tidy-up-embeddedfile.patch</comment>
     <requestid>802880</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>c76ca008fef7608f07e31ed3d8e9b56f</srcmd5>
+    <version>5.4.3</version>
+    <time>1591862476</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase and re-add tidy-up-embeddedfile.patch, it was only partially merged
+  upstream.
+
+- update to 5.4.3
+ * Paths appearing in error messages are now correct in case the current working
+     directory has changed since the start of the session.
+ * Support deleting paths longer than 260 characters on windows created inside tmpdir.
+ * Prevent pytest from printing ConftestImportFailure traceback to stdout.
+ * Prevent hiding the underlying exception when ConfTestImportFailure is raised.
+ * Fix regression where running with --pdb would call the tearDown methods
+     of unittest.TestCase subclasses for skipped tests.</comment>
+    <requestid>813080</requestid>
+  </revision>
 </revisionlist>

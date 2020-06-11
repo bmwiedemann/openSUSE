@@ -27,12 +27,13 @@
 %endif
 %define skip_python2 1
 Name:           python-pytest%{psuffix}
-Version:        5.4.2
+Version:        5.4.3
 Release:        0
 Summary:        Python testing tool with autodiscovery and detailed asserts
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest
 Source:         https://files.pythonhosted.org/packages/source/p/pytest/pytest-%{version}.tar.gz
+Patch0:         tidy-up-embeddedfile.patch
 BuildRequires:  %{python_module setuptools >= 40.0}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
@@ -87,6 +88,7 @@ pytest is a cross-project Python testing tool. It provides:
 
 %prep
 %setup -q -n pytest-%{version}
+%autopatch -p1
 
 %build
 %python_build
