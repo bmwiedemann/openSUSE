@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  9 18:52:06 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop postgresql94 flavor: pgsql 9.4 is EOL.
+
+-------------------------------------------------------------------
+Tue Oct 22 15:34:15 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- adding postgresql12 to _multibuild
+
+-------------------------------------------------------------------
 Wed Mar 13 15:00:19 UTC 2019 - Reinhard Max <max@suse.com>
 
 - Remove postgresql93 from multibuild and add postgresql11.

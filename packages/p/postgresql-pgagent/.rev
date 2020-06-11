@@ -16,4 +16,12 @@
 - Fix build with PostgreSQL 11.</comment>
     <requestid>684714</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2b0656f9c7aa98efe6c460cdb6c8b277</srcmd5>
+    <version>4.0.0</version>
+    <time>1591880457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813447</requestid>
+  </revision>
 </revisionlist>
