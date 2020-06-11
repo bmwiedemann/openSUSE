@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 10 10:41:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- replace nose
+
+-------------------------------------------------------------------
 Wed Apr 22 10:05:27 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

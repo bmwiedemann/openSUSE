@@ -128,4 +128,12 @@
     <comment>- Fix build without python2</comment>
     <requestid>796254</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>106dbc55b550f62b39e28e1a422d4f84</srcmd5>
+    <version>3.23.0</version>
+    <time>1591862890</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813213</requestid>
+  </revision>
 </revisionlist>

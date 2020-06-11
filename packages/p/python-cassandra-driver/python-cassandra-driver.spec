@@ -33,7 +33,6 @@ BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module geomet >= 0.1}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pure-sasl}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module scales}
@@ -87,7 +86,7 @@ export CASS_DRIVER_NO_EXTENSIONS=1
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_expand PYTHONPATH="$(pwd)" nosetests-%{$python_version} -v
+%python_expand PYTHONPATH="$(pwd)" $python -m unittest discover -v
 
 %files %{python_files}
 %license LICENSE
