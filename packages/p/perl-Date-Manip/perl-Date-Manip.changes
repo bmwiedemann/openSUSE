@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  2 03:14:01 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 6.82
+   see /usr/share/doc/packages/perl-Date-Manip/Changes
+
+  6.82  2020-06-01
+    -  Time zone fixes
+           Newest zoneinfo data (tzdata 2020a).
+  
+
+-------------------------------------------------------------------
 Tue Mar  3 03:12:58 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 6.81
