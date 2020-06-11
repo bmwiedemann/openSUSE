@@ -1264,4 +1264,12 @@
   b20503aaf5b6595a-adapt-FTS-tests-for-big-endian.patch (forwarded request 768317 from StefanBruens)</comment>
     <requestid>768339</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>8d7ea7c7ac22ca9ffaee50e8699638ab</srcmd5>
+    <version>3.32.2</version>
+    <time>1591879288</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811818</requestid>
+  </revision>
 </revisionlist>

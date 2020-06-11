@@ -18,9 +18,9 @@
 
 %bcond_with icu
 %define oname sqlite
-%define tarversion 3310100
+%define tarversion 3320200
 Name:           sqlite3
-Version:        3.31.1
+Version:        3.32.2
 Release:        0
 Summary:        Embeddable SQL Database Engine
 License:        SUSE-Public-Domain
@@ -29,10 +29,6 @@ URL:            http://www.sqlite.org/
 Source0:        http://www.sqlite.org/2020/sqlite-src-%{tarversion}.zip
 Source1:        baselibs.conf
 Source2:        http://www.sqlite.org/2020/sqlite-doc-%{tarversion}.zip
-# PATCH-FIX-UPSTREAM -- Fix errors on s390
-Patch0:         04885763c4cd00cb-s390-compatibility.patch
-# PATCH-FIX-UPSTREAM -- Fix FTS test failures on big endian archs
-Patch1:         b20503aaf5b6595a-adapt-FTS-tests-for-big-endian.patch
 BuildRequires:  automake
 %if %{with icu}
 BuildRequires:  libicu-devel
@@ -111,8 +107,6 @@ other documentation found on sqlite.org. The files can be found in
 
 %prep
 %setup -q -n sqlite-src-%{tarversion} -a2
-%patch0 -p0
-%patch1 -p0
 
 rm -v sqlite-doc-%{tarversion}/releaselog/current.html
 ln -sv `echo %{version} | sed "s/\./_/g"`.html sqlite-doc-%{tarversion}/releaselog/current.html

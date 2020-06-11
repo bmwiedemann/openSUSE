@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Jun  5 12:57:51 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- SQLite 3.32.2:
+  * Fix a long-standing bug in the byte-code engine that can cause
+    a COMMIT command report as success when in fact it failed to commit
+
+-------------------------------------------------------------------
+Tue May 26 09:15:39 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- SQLite 3.32.1:
+  * CVE-2020-13435: Malicious SQL statements could have crashed the
+    process that is running SQLite (boo#1172091)
+
+-------------------------------------------------------------------
+Sun May 24 06:03:29 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- SQLite 3.32.0:
+  * Add support for approximate ANALYZE using the PRAGMA
+    analysis_limit command
+  * Add the bytecode virtual table
+  * Add the checksum VFS shim to the set of run-time loadable
+    extensions included in the source tree
+  * Add the iif() SQL function.
+  * INSERT and UPDATE statements now always apply column affinity
+    before computing CHECK constraints
+  * Increase the default upper bound on the number of parameters
+    from 999 to 32766
+  * Add code for the UINT collating sequence as an optional
+    loadable extension
+  * multiple enhancements to the CLI
+- drop upstreamed patches:
+  * 04885763c4cd00cb-s390-compatibility.patch
+  * b20503aaf5b6595a-adapt-FTS-tests-for-big-endian.patch
+  
+-------------------------------------------------------------------
 Wed Jan 29 12:59:23 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix a regression on ppc64be and s390x, found by the fuzzing
