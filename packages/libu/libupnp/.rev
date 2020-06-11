@@ -176,4 +176,12 @@
     <comment>- Update to version 1.12.1:</comment>
     <requestid>796545</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>dfb004d9c2f7c1a73450b12edb7e4f57</srcmd5>
+    <version>1.12.1</version>
+    <time>1591862283</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Fixes-177-NULL-pointer-dereference-in-FindServiceCon.patch [boo#1172625]</comment>
+    <requestid>813025</requestid>
+  </revision>
 </revisionlist>
