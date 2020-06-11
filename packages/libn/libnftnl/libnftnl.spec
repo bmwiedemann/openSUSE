@@ -18,7 +18,7 @@
 
 Name:           libnftnl
 %define lname	libnftnl11
-Version:        1.1.6
+Version:        1.1.7
 Release:        0
 Summary:        Userspace library to access the nftables Netlink interface
 License:        GPL-2.0-or-later
@@ -71,11 +71,9 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libnftnl.so.11*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/%name/
 %_libdir/libnftnl.so
 %_libdir/pkgconfig/libnftnl.pc

@@ -135,4 +135,12 @@
     <comment>- Update to release 1.1.6</comment>
     <requestid>790692</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e5c4aff7962d32ff3ab3408fbb2190f9</srcmd5>
+    <version>1.1.7</version>
+    <time>1591862366</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.1.7</comment>
+    <requestid>811811</requestid>
+  </revision>
 </revisionlist>
