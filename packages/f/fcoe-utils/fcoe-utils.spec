@@ -17,7 +17,7 @@
 
 
 Name:           fcoe-utils
-URL:            http://www.open-fcoe.org
+URL:            https://github.com/openSUSE/fcoe-utils
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libpciaccess-devel
@@ -25,31 +25,20 @@ BuildRequires:  libtool
 BuildRequires:  open-lldp-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libsystemd)
+PreReq:         %fillup_prereq
 Requires:       device-mapper
 Requires:       iproute
 Requires:       open-lldp
+Requires:       pkgconfig(systemd)
 %systemd_ordering
-Version:        1.0.32
+Version:        1.0.33
 Release:        0
 Summary:        FCoE userspace management tools
-# git://open-fcoe.org/fcoe/fcoe-utils.git
 License:        GPL-2.0-only
 Group:          System/Daemons
-Source0:        %{name}-%{version}.tar.xz
-
-# Patches to be upstreamed
-Patch3:         0003-systemctl-cannot-start-fcoemon.socket.patch
-Patch4:         0004-fcoemon-Correctly-handle-options-in-the-service-file.patch
-Patch5:         0005-fcoe.service-Add-foreground-to-prevent-fcoemon-to-be.patch
-Patch6:         0006-fipvlan-fixup-return-value-on-error.patch
-Patch8:         0008-Use-correct-socket-for-fcoemon.socket.patch
-Patch9:         0009-disable-Werror-building.patch
-Patch12:        0012-fcoemon-Retry-fcm_link_getlink-on-EBUSY.patch
-Patch15:        %{name}-stop-using-ifconfig.patch
-
-# Patches from Fedora
-Patch101:       fcoe-utils-1.0.29-make.patch
+Source:         %{name}-%{version}.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%{?systemd_requires}
 
 %description
 Userspace tools to manage FibreChannel over Ethernet (FCoE)
@@ -58,15 +47,6 @@ connections.
 
 %prep
 %setup -q
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch8 -p1
-%patch9 -p1
-%patch12 -p1
-%patch15 -p1
-%patch101 -p1
 
 %build
 autoreconf -vi
@@ -90,21 +70,17 @@ for file in \
 done
 
 %pre
-%service_add_pre fcoe.service
-exit 0
+%service_add_pre fcoe.service fcoemon.socket
 
 %post
-%service_add_post fcoe.service
+%service_add_post fcoe.service fcoemon.socket
 %fillup_only -n fcoe
-exit 0
 
 %preun
-%service_del_preun fcoe.service
-exit 0
+%service_del_preun fcoe.service fcoemon.socket
 
 %postun
-%service_del_postun fcoe.service
-exit 0
+%service_del_postun fcoe.service fcoemon.socket
 
 %files
 %defattr(-,root,root,-)
@@ -117,7 +93,7 @@ exit 0
 %{_sysconfdir}/fcoe/
 %config(noreplace) %{_sysconfdir}/fcoe/config
 %config(noreplace) %{_sysconfdir}/fcoe/cfg-ethx
-%config %{_sysconfdir}/bash_completion.d/
+%{_datadir}/bash-completion/completions/
 %{_libexecdir}/fcoe/
 
 %changelog

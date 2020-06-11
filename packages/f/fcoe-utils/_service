@@ -1,10 +1,10 @@
 <services>
 	<service name="tar_scm" mode="disabled">
-		<param name="url">https://github.com/morbidrsa/fcoe-utils.git</param>
+		<param name="url">https://github.com/openSUSE/fcoe-utils.git</param>
 		<param name="scm">git</param>
 		<param name="filename">fcoe-utils</param>
-		<param name="versionformat">1.0.32</param>
-		<param name="revision">v1.0.32</param>
+		<param name="versionformat">1.0.33</param>
+		<param name="revision">v1.0.33</param>
 		<param name="exclude">.git</param>
 	</service>
 	<service name="recompress" mode="disabled">

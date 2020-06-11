@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jun  9 15:57:49 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Updated with latest upstream v1.0.33 from v1.0.32:
+  * Added "-Wextra" and enabled "-Werror" for compiling
+  * Ignore auto-generated files
+  * Update systemd service files (several updates)
+  * A bunch of gcc-10-related fixes, such as marking unused
+    arguments, fixing strncpy()s, string truncation/overflow
+  * better error handling/retry for link issues (like EBUSY)
+  * replace use of "ifconfig" with "ip" in debug scripts
+  * fix long-standing issue with netlink buffer resizing
+  * move bash completions to proper system directory
+  This replaces fcoe-utils-v1.0.32.tar.xz with
+  fcoe-utils-v1.0.33.tar.xz, and it does away with the
+  following patches, since they are all fixed upstream:
+  * 0003-systemctl-cannot-start-fcoemon.socket.patch
+  * 0004-fcoemon-Correctly-handle-options-in-the-service-file.patch
+  * 0005-fcoe.service-Add-foreground-to-prevent-fcoemon-to-be.patch
+  * 0006-fipvlan-fixup-return-value-on-error.patch
+  * 0008-Use-correct-socket-for-fcoemon.socket.patch
+  * 0012-fcoemon-Retry-fcm_link_getlink-on-EBUSY.patch
+  * fcoe-utils-1.0.29-make.patch
+  * fcoe-utils-stop-using-ifconfig.patch
+  And the following patch was removed because we can
+  successfully compile with "-Werror" now:
+  * 0009-disable-Werror-building.patch
+
+-------------------------------------------------------------------
 Fri Apr  3 01:50:30 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Change use of "ifconfig" to "ip", since ifconfig is no
