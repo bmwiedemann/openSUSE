@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun  9 11:21:59 CEST 2020 - tiwai@suse.de
+
+- Update to alsa-utils 1.2.3:
+  including previous fixes, see the detailed changes at:
+  https://www.alsa-project.org/wiki/Detailed_changes_v1.2.2_v1.2.3
+- Dropped obsoleted patches:
+  0001-alsaloop-reduce-cumulative-error-caused-by-non-atomi.patch
+  0002-alsactl-don-t-exit-on-EINTR-from-epoll_wait.patch
+  0003-alsactl-avoid-needless-wakeups-in-monitor-loop.patch
+  0004-alsactl-fix-error-handling-for-sched_setscheduler-ca.patch
+  0005-alsa-info.sh-add-ALT-to-DISTRO-list.patch
+  0006-alsa-info-initial-rpm-deb-package-info.patch
+  0007-alsa-info.sh-increase-version-to-0.4.65.patch
+
+-------------------------------------------------------------------
 Wed May  6 12:19:02 CEST 2020 - tiwai@suse.de
 
 - Backport upstream fixes: some improvements in alsa-info.sh:

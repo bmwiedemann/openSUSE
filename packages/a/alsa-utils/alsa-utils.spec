@@ -16,10 +16,10 @@
 #
 
 
-%define do_autoreconf 1
+%define do_autoreconf 0
 %define _udevdir %(pkg-config --variable=udevdir udev)
 Name:           alsa-utils
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Advanced Linux Sound Architecture Utilities
 License:        GPL-2.0-or-later
@@ -29,13 +29,6 @@ Source:         ftp://ftp.alsa-project.org/pub/utils/alsa-utils-%{version}.tar.b
 Source1:        01beep.conf
 Source2:        sound-extra.service
 Source5:        load-sound-modules.sh
-Patch1:         0001-alsaloop-reduce-cumulative-error-caused-by-non-atomi.patch
-Patch2:         0002-alsactl-don-t-exit-on-EINTR-from-epoll_wait.patch
-Patch3:         0003-alsactl-avoid-needless-wakeups-in-monitor-loop.patch
-Patch4:         0004-alsactl-fix-error-handling-for-sched_setscheduler-ca.patch
-Patch5:         0005-alsa-info.sh-add-ALT-to-DISTRO-list.patch
-Patch6:         0006-alsa-info-initial-rpm-deb-package-info.patch
-Patch7:         0007-alsa-info.sh-increase-version-to-0.4.65.patch
 Patch101:       alsa-utils-configure-version-revert.patch
 BuildRequires:  alsa-devel
 BuildRequires:  alsa-topology-devel
@@ -76,13 +69,6 @@ and test audio before and after PM state changes.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
 %if 0%{?do_autoreconf}
 %patch101 -p1
 # fix stupid automake's automatic action
