@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Jun 09 20:27:50 UTC 2020 - mrueckert@suse.de
+
+- Update to version 2.1.7+git0.8bebf80fb:
+  * [RELEASE] Released version 2.1.7
+
+-------------------------------------------------------------------
+Mon Jun 08 22:04:10 UTC 2020 - mrueckert@suse.de
+
+- Update to version 2.1.6+git1.661c88907:
+  * BUG/MAJOR: http-htx: Don't forget to copy error messages from defaults sections
+
+-------------------------------------------------------------------
+Mon Jun 08 21:58:40 UTC 2020 - mrueckert@suse.de
+
+- Update to version 2.1.6+git0.34db76106:
+  * [RELEASE] Released version 2.1.6
+  * BUG/MINOR: mworker: fix a memleak when execvp() failed
+  * BUG/MINOR: ssl: fix a trash buffer leak in some error cases
+  * BUG/MEDIUM: mworker: fix the reload with an -- option
+  * BUG/MINOR: init: -S can have a parameter starting with a dash
+  * BUG/MINOR: init: -x can have a parameter starting with a dash
+  * BUG/MEDIUM: mworker: fix the copy of options in copy_argv()
+  * BUG/MEDIUM: contrib/prometheus-exporter: Properly set flags to dump metrics
+  * BUG/MEDIUM: hlua: Lock pattern references to perform set/add/del operations
+  * BUG/MEDIUM: http-htx: Duplicate error messages as raw data instead of string
+  * BUG/MEDIUM: lua: Reset analyse expiration timeout before executing a lua action
+  * BUG/MINOR: peers: fix internal/network key type mapping.
+  * SCRIPTS: publish-release: pass -n to gzip to remove timestamp
+  * Revert "BUG/MEDIUM: connections: force connections cleanup on server changes"
+
+-------------------------------------------------------------------
 Fri May 29 11:28:18 UTC 2020 - mrueckert@suse.de
 
 - Update to version 2.1.5+git0.36e14bd31:
