@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-pandas
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
@@ -99,6 +99,7 @@ block for doing data analysis in Python.
 
 %prep
 %setup -q -n pandas-%{version}
+sed -i -e 's/\r//g'  pandas/tests/reshape/merge/test_merge.py
 %patch0 -p1
 sed -i -e '/^#!\//, 1d' pandas/core/computation/eval.py
 sed -i -e '/^#!\//, 1d' pandas/tests/io/generate_legacy_storage_files.py
