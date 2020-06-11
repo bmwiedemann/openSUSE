@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  9 19:08:27 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Fixes-177-NULL-pointer-dereference-in-FindServiceCon.patch
+  [boo#1172625]
+
+-------------------------------------------------------------------
 Tue Apr 21 17:37:33 UTC 2020 - Michal Vyskocil <mvyskocil@opensuse.org>
 
 - Update to version 1.12.1:

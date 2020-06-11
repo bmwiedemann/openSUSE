@@ -26,11 +26,12 @@ Summary:        An implementation of Universal Plug and Play (UPnP)
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/pupnp/pupnp
-Source0:        https://github.com/pupnp/pupnp/releases/download/release-%version/%name-%version.tar.bz2
-Source1:        https://github.com/pupnp/pupnp/releases/download/release-%version/%name-%version.tar.bz2.sha1
-Source42:       baselibs.conf
+Source:         https://github.com/pupnp/pupnp/releases/download/release-%version/%name-%version.tar.bz2
+Source2:        https://github.com/pupnp/pupnp/releases/download/release-%version/%name-%version.tar.bz2.sha1
+Source3:        baselibs.conf
+Patch1:         0001-Fixes-177-NULL-pointer-dereference-in-FindServiceCon.patch
 BuildRequires:  libtool
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 
 %description
 The Portable Universal Plug and Play (UPnP) SDK provides support for building
@@ -66,7 +67,7 @@ UPnP-compliant control points, devices, and bridges on several operating
 systems.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # the openssl simply does not compile
