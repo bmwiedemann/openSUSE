@@ -26,7 +26,7 @@
 %endif
 
 Name:           alsa
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Advanced Linux Sound Architecture
 License:        LGPL-2.1-or-later
@@ -47,28 +47,6 @@ Source30:       all_notes_off
 Source31:       all_notes_off.bin
 Source32:       all_notes_off.mid
 Source34:       alsa-init.sh
-# upstream fixes
-Patch1:         0001-conf-change-the-order-of-PCM-devices-in-alsa.conf.patch
-Patch2:         0002-conf-namehint-add-omit_noargs-to-the-hint-section.patch
-Patch3:         0003-Change-PCM-device-number-of-Asus-Xonar-U5.patch
-Patch4:         0004-configure-add-embed-for-python3-config-python-3.8.patch
-Patch5:         0005-conf-USB-Audio-Add-C-Media-USB-Headphone-Set-to-the-.patch
-Patch6:         0006-topology-add-back-asrc-to-widget_map-in-dapm.c.patch
-Patch7:         0007-ucm-clarify-the-index-syntax-for-the-device-names.patch
-Patch8:         0008-ucm-fix-uc_mgr_scan_master_configs.patch
-Patch9:         0009-namehint-remember-the-direction-from-the-upper-level.patch
-Patch10:        0010-conf-fix-namehint-for-pcm.front-and-pcm.iec958.patch
-Patch11:        0011-pcm-add-chmap-option-to-route-plugin.patch
-Patch12:        0012-usecase-allow-indexes-also-for-modifier-names.patch
-Patch13:        0013-ucm-fix-the-device-remove-operation.patch
-Patch14:        0014-ucm-fix-copy-n-paste-typo-RemoveDevice-list.patch
-Patch15:        0015-pcm-dmix-fix-sw_params-handling-of-timestamp-types-i.patch
-Patch16:        0016-conf-USB-Audio-Fix-S-PDIF-output-of-ASUS-Xonar-AE.patch
-Patch17:        0017-pcm-rate-fix-the-remaining-size-calculation-in-snd_p.patch
-Patch18:        0018-use-case.h-add-USB-as-allowed-device-name.patch
-Patch19:        0019-topology-Use-bool-parser-to-parse-boolean-value.patch
-Patch20:        0020-fix-infinite-draining-of-the-rate-plugin-in-SND_PCM_.patch
-Patch21:        0021-test-pcm_min-add-snd_pcm_drain-call-and-indentation-.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen
@@ -153,30 +131,6 @@ This package contains the library for ALSA topology support.
 
 %prep
 %setup -q -n alsa-lib-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-# causing a regression for capture streams on some apps (boo#1171044)
-%if 0
-%patch10 -p1
-%endif
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch20 -p1
-%patch21 -p1
 %patch101 -p1
 
 %build

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jun  9 11:15:28 CEST 2020 - tiwai@suse.de
+
+- Update to alsa-lib 1.2.3:
+  including previous fixes, see the detailed changes at:
+  https://www.alsa-project.org/wiki/Detailed_changes_v1.2.2_v1.2.3
+- Drop obsoleted patches:
+  0001-conf-change-the-order-of-PCM-devices-in-alsa.conf.patch
+  0002-conf-namehint-add-omit_noargs-to-the-hint-section.patch
+  0003-Change-PCM-device-number-of-Asus-Xonar-U5.patch
+  0004-configure-add-embed-for-python3-config-python-3.8.patch
+  0005-conf-USB-Audio-Add-C-Media-USB-Headphone-Set-to-the-.patch
+  0006-topology-add-back-asrc-to-widget_map-in-dapm.c.patch
+  0007-ucm-clarify-the-index-syntax-for-the-device-names.patch
+  0008-ucm-fix-uc_mgr_scan_master_configs.patch
+  0009-namehint-remember-the-direction-from-the-upper-level.patch
+  0010-conf-fix-namehint-for-pcm.front-and-pcm.iec958.patch
+  0011-pcm-add-chmap-option-to-route-plugin.patch
+  0012-usecase-allow-indexes-also-for-modifier-names.patch
+  0013-ucm-fix-the-device-remove-operation.patch
+  0014-ucm-fix-copy-n-paste-typo-RemoveDevice-list.patch
+  0015-pcm-dmix-fix-sw_params-handling-of-timestamp-types-i.patch
+  0016-conf-USB-Audio-Fix-S-PDIF-output-of-ASUS-Xonar-AE.patch
+  0017-pcm-rate-fix-the-remaining-size-calculation-in-snd_p.patch
+  0018-use-case.h-add-USB-as-allowed-device-name.patch
+  0019-topology-Use-bool-parser-to-parse-boolean-value.patch
+  0020-fix-infinite-draining-of-the-rate-plugin-in-SND_PCM_.patch
+  0021-test-pcm_min-add-snd_pcm_drain-call-and-indentation-.patch
+
+-------------------------------------------------------------------
 Wed May  6 16:01:32 CEST 2020 - tiwai@suse.de
 
 - Revert a problematic namehint change (boo#1171044)
