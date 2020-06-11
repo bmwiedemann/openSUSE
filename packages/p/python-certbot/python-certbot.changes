@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 11 12:10:12 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 1.5.0
+  * Require explicit confirmation of snap plugin permissions before connecting.
+  * Add support for OCSP responses which use a public key hash ResponderID, 
+    fixing interoperability with Sectigo CAs.
+
+-------------------------------------------------------------------
 Thu May 14 08:28:51 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 1.4.0
