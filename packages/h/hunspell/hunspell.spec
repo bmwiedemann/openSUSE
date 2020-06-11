@@ -1,7 +1,7 @@
 #
 # spec file for package hunspell
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Group:          Productivity/Office/Other
 URL:            https://hunspell.github.io
 Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+# CVE-2019-16707 [bsc#1151867], invalid read operation in SuggestMgr:leftcommonsubstring in suggestmgr.cxx
+Patch0:         hunspell-CVE-2019-16707.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -80,6 +82,7 @@ Includes and definitions for developing with hunspell.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 # latest released tarball does not contain generated configure
