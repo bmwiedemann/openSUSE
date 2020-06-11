@@ -1,7 +1,7 @@
 #
 # spec file for package kid3
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kid3
-Version:        3.8.2
+Version:        3.8.3
 Release:        0
 Summary:        Efficient ID3 Tag Editor
 License:        GPL-2.0-or-later
@@ -216,24 +216,22 @@ rm %{buildroot}%{_libdir}/kid3/libkid3-*.so
 %{_kf5_bindir}/kid3
 %{_kf5_iconsdir}/hicolor/*/apps/kid3.*
 %{_kf5_kxmlguidir}/kid3/
-%{_kf5_applicationsdir}/net.sourceforge.kid3.desktop
-%{_kf5_appstreamdir}/net.sourceforge.kid3.appdata.xml
+%{_kf5_applicationsdir}/org.kde.kid3.desktop
+%{_kf5_appstreamdir}/org.kde.kid3.appdata.xml
 
 %files qt
 %dir %{_datadir}/metainfo
-%{_datadir}/applications/net.sourceforge.kid3-qt.desktop
-%{_datadir}/metainfo/net.sourceforge.kid3-qt.appdata.xml
+%{_datadir}/applications/org.kde.kid3-qt.desktop
+%{_datadir}/metainfo/org.kde.kid3-qt.appdata.xml
 %{_bindir}/kid3-qt
 %{_datadir}/icons/hicolor/*/apps/kid3-qt.*
 %{_mandir}/man1/kid3-qt.1%{ext_man}
-%{_mandir}/de/man1/kid3-qt.1%{ext_man}
-%{_mandir}/pt/man1/kid3-qt.1%{ext_man}
+%{_mandir}/*/man1/kid3-qt.1%{ext_man}
 
 %files cli
 %{_bindir}/kid3-cli
 %{_mandir}/man1/kid3-cli.1%{ext_man}
-%{_mandir}/de/man1/kid3-cli.1%{ext_man}
-%{_mandir}/pt/man1/kid3-cli.1%{ext_man}
+%{_mandir}/*/man1/kid3-cli.1%{ext_man}
 
 %files core
 %doc AUTHORS ChangeLog README
@@ -241,15 +239,12 @@ rm %{buildroot}%{_libdir}/kid3/libkid3-*.so
 %{_libdir}/kid3/
 %{_libdir}/qt5/qml/kid3/
 %config %{_sysconfdir}/ld.so.conf.d/kid3.conf
-%{_datadir}/dbus-1/interfaces/net.sourceforge.Kid3.xml
+%{_datadir}/dbus-1/interfaces/org.kde.Kid3.xml
 %{_mandir}/man1/kid3.1%{ext_man}
-%{_mandir}/de/man1/kid3.1%{ext_man}
-%{_mandir}/pt/man1/kid3.1%{ext_man}
+%{_mandir}/*/man1/kid3.1%{ext_man}
 
 %files doc
-%doc %{_kf5_htmldir}/de/kid3/
-%doc %{_kf5_htmldir}/en/kid3/
-%doc %{_kf5_htmldir}/pt/kid3/
+%doc %{_kf5_htmldir}/*/kid3/
 
 %files qt-doc
 %{_docdir}/kid3-qt/
