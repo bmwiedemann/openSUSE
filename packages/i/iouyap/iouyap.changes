@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  9 10:38:55 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Set CFLAGS+=-fcommon to workaround gcc10 errors (boo#1160244)
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Sat Mar 12 15:21:39 UTC 2016 - andrea@opensuse.org
 
 - new upstream version 0.97

@@ -1,7 +1,7 @@
 #
 # spec file for package iouyap
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,19 +20,18 @@ Name:           iouyap
 Version:        0.97
 Release:        0
 Summary:        Bridge IOU to TAP, UDP and Ethernet
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/Emulators/Other
-Url:            https://github.com/GNS3/iouyap
+URL:            https://github.com/GNS3/iouyap
 Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc
 BuildRequires:  glibc-devel
+Requires(pre):  shadow
 %if 0%{?suse_version}
-Requires(pre):	permissions
+Requires(pre):  permissions
 %endif
-Requires(pre):  %{_sbindir}/groupadd
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Bridge IOU to TAP, UDP and Ethernet, mainly used by gns3server
@@ -45,7 +44,7 @@ In order to use iouyap as non-root user, the user needs to be member of the iouy
 %build
 bison --yacc -dv netmap_parse.y
 flex netmap_scan.l
-gcc -I -Wall -fPIE %optflags *.c iniparser/*.c -o %{name} -lpthread -pie
+gcc -I -Wall -fPIE %optflags -fcommon *.c iniparser/*.c -o %{name} -lpthread -pie
 
 %install
 %__mkdir_p %{buildroot}/%{_libexecdir}
@@ -65,8 +64,8 @@ ln -sf %{_libexecdir}/%{name} %{buildroot}/%{_bindir}/%{name}
 %endif
 
 %files
-%defattr(-,root,root)
-%doc LICENSE README.rst
+%license LICENSE
+%doc README.rst
 %verify(not caps) %attr(0750,root,iouyap) %{_libexecdir}/%{name}
 %{_bindir}/%{name}
 
