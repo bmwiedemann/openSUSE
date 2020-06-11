@@ -1,8 +1,6 @@
 # Workaround https://bugzilla.opensuse.org/show_bug.cgi?id=1125775#c9 - until firewalld is fixed.
 Ignore: firewall-macros:firewalld
 
-BuildFlags: excludebuild:postgresql-pgagent:postgresql94
-
 # Help python-subinit to win until python-python-subunit is gone
 Prefer: python3-subunit
 
