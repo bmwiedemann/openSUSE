@@ -19,27 +19,34 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
-%bcond_without test
 %define psuffix -%{flavor}
+%bcond_without test
 %else
-%bcond_with test
 %define psuffix %{nil}
+%bcond_with test
 %endif
+%bcond_without python2
 Name:           python-wcwidth%{psuffix}
-Version:        0.1.9
+Version:        0.2.3
 Release:        0
 Summary:        Number of Terminal column cells of wide-character codes
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jquast/wcwidth
-Source:         https://files.pythonhosted.org/packages/source/w/wcwidth/wcwidth-%{version}.tar.gz
-%if %{with test}
-BuildRequires:  %{python_module pytest}
-%endif
+Source:         https://github.com/jquast/wcwidth/archive/%{version}.tar.gz#/wcwidth-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wcwidth >= %{version}}
+%if %{with python2}
+BuildRequires:  python-backports.functools_lru_cache >= 1.2.1
+%endif
+%endif
+%ifpython2
+Requires:       python-backports.functools_lru_cache >= 1.2.1
+%endif
 %python_subpackages
 
 %description
@@ -57,6 +64,7 @@ release files, which this project aims to track.
 
 %prep
 %setup -q -n wcwidth-%{version}
+sed -i 's/--cov[-=a-z]*//g' tox.ini
 
 %build
 %python_build
@@ -64,22 +72,17 @@ release files, which this project aims to track.
 %install
 %if ! %{with test}
 %python_install
-
-# Remove tests from runtime
-%{python_expand rm -r %{buildroot}%{$python_sitelib}/wcwidth/tests/
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %check
 %if %{with test}
-%pytest
+%pytest tests
 %endif
 
 %if ! %{with test}
-
 %files %{python_files}
-%license LICENSE.txt
+%license LICENSE
 %doc README.rst
 %{python_sitelib}/*
 %endif

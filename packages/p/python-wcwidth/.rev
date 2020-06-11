@@ -64,4 +64,23 @@
     <comment>- Convert to multibuild to break a self-requires loop.</comment>
     <requestid>800655</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>59fd589878a03104fd87a4ff8c19d543</srcmd5>
+    <version>0.2.3</version>
+    <time>1591879335</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.3
+  * add tests
+
+- Add missing python2 dependency for Leap to work
+
+- Update to version 0.2.2
+  * Enhancement: Unicode version may be selected by exporting the 
+    Environment variable UNICODE_VERSION, such as 13.0, or 6.3.0. 
+    See the jquast/ucs-detect CLI utility for automatic detection.
+  * Enhancement: API Documentation is published to readthedocs.org.
+  * Updated tables for all Unicode Specifications with files published 
+    in a programmatically consumable format.</comment>
+    <requestid>812628</requestid>
+  </revision>
 </revisionlist>
