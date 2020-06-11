@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  5 08:21:21 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints for ppc/ppc64le that need more than 3GB to build
+
+-------------------------------------------------------------------
 Wed May 20 07:57:58 UTC 2020 - Robert Frohl <rfrohl@suse.com>
 
 - wireshark 3.2.4
