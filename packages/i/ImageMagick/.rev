@@ -2657,4 +2657,26 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     https://github.com/ImageMagick/ImageMagick/discussions/2007#discussioncomment-13546).</comment>
     <requestid>807383</requestid>
   </revision>
+  <revision rev="209" vrev="1">
+    <srcmd5>fd745bfcf0da8a4424c8db67f05551ef</srcmd5>
+    <version>7.0.10.18</version>
+    <time>1591879355</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.10.18
+  * Colorspace change will remove ICC profile (reference
+    https://github.com/ImageMagick/ImageMagick6/issues/82).
+
+- version update to 7.0.10.17
+  * Free up memory after a ICC profile is removed.
+
+- version update to 7.0.10.16
+  * Don't check for incompatible ICC profiles when writing PDF images, instead
+    the user is expected to provide compatible image colorspaces or strip the
+    ICC profile with, for example, the -strip option.
+  * Clipping was not returning expected results (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/2061).
+  * Don't write a ICC profile to PDF if the image is gray (reference
+    https://github.com/ImageMagick/ImageMagick/issues/2070).</comment>
+    <requestid>813394</requestid>
+  </revision>
 </revisionlist>

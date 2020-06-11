@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jun 11 07:08:42 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.10.18
+  * Colorspace change will remove ICC profile (reference
+    https://github.com/ImageMagick/ImageMagick6/issues/82).
+
+-------------------------------------------------------------------
+Mon Jun  8 08:55:01 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.10.17
+  * Free up memory after a ICC profile is removed.
+
+-------------------------------------------------------------------
+Mon Jun  1 08:00:46 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.10.16
+  * Don't check for incompatible ICC profiles when writing PDF images, instead
+    the user is expected to provide compatible image colorspaces or strip the
+    ICC profile with, for example, the -strip option.
+  * Clipping was not returning expected results (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/2061).
+  * Don't write a ICC profile to PDF if the image is gray (reference
+    https://github.com/ImageMagick/ImageMagick/issues/2070).
+
+-------------------------------------------------------------------
 Tue May 19 17:02:15 UTC 2020 - pgajdos@suse.com
 
 - use --quiet option to update-alternatives [bsc#1171431]
