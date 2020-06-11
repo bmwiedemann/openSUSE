@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jun  9 11:25:16 CEST 2020 - tiwai@suse.de
+
+- Update to alsa-ucm-conf 1.2.3:
+  including previous fixes, see the detailed changes at:
+  https://www.alsa-project.org/wiki/Detailed_changes_v1.2.2_v1.2.3
+- Dropped obsoleted patches:
+  0001-sof-bdw-rt5677-initial-port-to-UCM2.patch
+  0002-ucm2-treewide-JackHWMute-fixes.patch
+  0003-sof-hda-dsp-Support-systems-without-integrated-graph.patch
+  0004-hda-dsp-add-basic-ucm-config.patch
+  0005-update-README-files.patch
+  0006-bytcr-rt5651-Fix-dmic-check-in-HiFi-Components.conf.patch
+  0007-chtrt5645-Add-ASUSTeKCOMPUTERINC.-T100HAN-1.0-symlin.patch
+  0008-chtrt5645-Add-MEDION-E1239TMD60568-0.1-Wingman.conf-.patch
+  0009-chtrt5645-Remove-bogus-JackHWMute-settings.patch
+  0010-sof-hda-dsp-change-Headphones2-to-Mic2.patch
+  0011-ucm2-remove-empty-enable-disable-sequence-sections.patch
+  0012-ucm2-fix-indentation-use-tabs.patch
+  0013-Add-initial-support-for-Realtek-ALC1220-TRX40-mother.patch
+  0014-ucm2-fix-chtrt5650-configuration-ucm-validator.patch
+  0015-bytcr-rt5651-fix-the-cfg-mic-in1-cfg-mic-in12-match-.patch
+  0016-ucm-fix-wrong-If-in-sequence-in-HiFi-dual.conf.patch
+  0100-ucm2-Add-profile-for-Chromebook-Asus-C300.patch
+
+-------------------------------------------------------------------
 Wed May 27 08:21:26 CEST 2020 - tiwai@suse.de
 
 - More catch up of upstream fixes: mostly cosmetic style fixes:
