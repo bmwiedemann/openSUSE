@@ -4,17 +4,17 @@ FIPS 140-2 compliance. Perform selftests on start and use only FIPS approved
 algorithms.
 
 diff --git a/Makefile.in b/Makefile.in
-index 1d2b2d9..7488595 100644
+index 62cd072..d5c37b5 100644
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -103,6 +103,8 @@ LIBSSH_OBJS=${LIBOPENSSH_OBJS} \
- 	platform-pledge.o platform-tracing.o platform-misc.o
+@@ -114,6 +114,8 @@ LIBSSH_OBJS=${LIBOPENSSH_OBJS} \
  
+ SKOBJS=	ssh-sk-client.o
  
 +LIBSSH_OBJS += fips.o
 +
  SSHOBJS= ssh.o readconf.o clientloop.o sshtty.o \
- 	sshconnect.o sshconnect2.o mux.o
+ 	sshconnect.o sshconnect2.o mux.o $(SKOBJS)
  
 diff --git a/cipher-ctr.c b/cipher-ctr.c
 index 32771f2..b66f92f 100644
@@ -39,7 +39,7 @@ index 32771f2..b66f92f 100644
  	return (&aes_ctr);
  }
 diff --git a/cipher.c b/cipher.c
-index 25f98ba..acca752 100644
+index 8195199..2f5430b 100644
 --- a/cipher.c
 +++ b/cipher.c
 @@ -51,6 +51,9 @@
@@ -123,7 +123,7 @@ index 25f98ba..acca752 100644
  		if ((c->flags & CFLAG_INTERNAL) != 0)
  			continue;
  		if (auth_only && c->auth_len == 0)
-@@ -196,7 +243,7 @@ const struct sshcipher *
+@@ -207,7 +254,7 @@ const struct sshcipher *
  cipher_by_name(const char *name)
  {
  	const struct sshcipher *c;
@@ -401,10 +401,10 @@ index 0000000..a115a61
 +#endif
 +
 diff --git a/hmac.c b/hmac.c
-index 3268887..b905a1e 100644
+index 7b58801..5a92074 100644
 --- a/hmac.c
 +++ b/hmac.c
-@@ -146,7 +146,7 @@ hmac_test(void *key, size_t klen, void *m, size_t mlen, u_char *e, size_t elen)
+@@ -145,7 +145,7 @@ hmac_test(void *key, size_t klen, void *m, size_t mlen, u_char *e, size_t elen)
  	size_t			 i;
  	u_char			 digest[16];
  
@@ -414,10 +414,10 @@ index 3268887..b905a1e 100644
  	if (ssh_hmac_init(ctx, key, klen) < 0 ||
  	    ssh_hmac_update(ctx, m, mlen) < 0 ||
 diff --git a/kex.c b/kex.c
-index 49d7015..1f82c2e 100644
+index b09fbac..a5e4be7 100644
 --- a/kex.c
 +++ b/kex.c
-@@ -60,6 +60,8 @@
+@@ -63,6 +63,8 @@
  #include "sshbuf.h"
  #include "digest.h"
  
@@ -426,7 +426,7 @@ index 49d7015..1f82c2e 100644
  /* prototype */
  static int kex_choose_conf(struct ssh *);
  static int kex_input_newkeys(int, u_int32_t, struct ssh *);
-@@ -83,7 +85,7 @@ struct kexalg {
+@@ -86,7 +88,7 @@ struct kexalg {
  	int ec_nid;
  	int hash_alg;
  };
@@ -435,7 +435,7 @@ index 49d7015..1f82c2e 100644
  #ifdef WITH_OPENSSL
  	{ KEX_DH1, KEX_DH_GRP1_SHA1, 0, SSH_DIGEST_SHA1 },
  	{ KEX_DH14_SHA1, KEX_DH_GRP14_SHA1, 0, SSH_DIGEST_SHA1 },
-@@ -114,6 +116,47 @@ static const struct kexalg kexalgs[] = {
+@@ -117,6 +119,47 @@ static const struct kexalg kexalgs[] = {
  	{ NULL, 0, -1, -1},
  };
  
@@ -483,7 +483,7 @@ index 49d7015..1f82c2e 100644
  char *
  kex_alg_list(char sep)
  {
-@@ -121,7 +164,7 @@ kex_alg_list(char sep)
+@@ -124,7 +167,7 @@ kex_alg_list(char sep)
  	size_t nlen, rlen = 0;
  	const struct kexalg *k;
  
@@ -492,7 +492,7 @@ index 49d7015..1f82c2e 100644
  		if (ret != NULL)
  			ret[rlen++] = sep;
  		nlen = strlen(k->name);
-@@ -141,7 +184,7 @@ kex_alg_by_name(const char *name)
+@@ -144,7 +187,7 @@ kex_alg_by_name(const char *name)
  {
  	const struct kexalg *k;
  
@@ -501,7 +501,7 @@ index 49d7015..1f82c2e 100644
  		if (strcmp(k->name, name) == 0)
  			return k;
  	}
-@@ -161,7 +204,10 @@ kex_names_valid(const char *names)
+@@ -164,7 +207,10 @@ kex_names_valid(const char *names)
  	for ((p = strsep(&cp, ",")); p && *p != '\0';
  	    (p = strsep(&cp, ","))) {
  		if (kex_alg_by_name(p) == NULL) {
@@ -595,21 +595,8 @@ index f3dda66..90d71c8 100644
  		if (strcmp(name, m->name) != 0)
  			continue;
  		if (mac != NULL)
-diff --git a/myproposal.h b/myproposal.h
-index 34bd10c..e6be484 100644
---- a/myproposal.h
-+++ b/myproposal.h
-@@ -144,6 +144,8 @@
- 
- #else /* WITH_OPENSSL */
- 
-+#error "OpenSSL support is needed for FIPS mode to compile"
-+
- #define KEX_SERVER_KEX		\
- 	"curve25519-sha256," \
- 	"curve25519-sha256@libssh.org"
 diff --git a/readconf.c b/readconf.c
-index f78b4d6..228f481 100644
+index 26e80c5..595f053 100644
 --- a/readconf.c
 +++ b/readconf.c
 @@ -68,6 +68,8 @@
@@ -621,7 +608,7 @@ index f78b4d6..228f481 100644
  /* Format of the configuration file:
  
     # Configuration data is parsed as follows:
-@@ -1837,6 +1839,23 @@ option_clear_or_none(const char *o)
+@@ -1908,6 +1910,23 @@ option_clear_or_none(const char *o)
  	return o == NULL || strcasecmp(o, "none") == 0;
  }
  
@@ -645,40 +632,50 @@ index f78b4d6..228f481 100644
  /*
   * Initializes options to special values that indicate that they have not yet
   * been set.  Read_config_file will only set options with this value. Options
-@@ -2116,6 +2135,8 @@ fill_default_options(Options * options)
+@@ -2196,6 +2215,9 @@ fill_default_options(Options * options)
  		options->canonicalize_hostname = SSH_CANONICALISE_NO;
  	if (options->fingerprint_hash == -1)
  		options->fingerprint_hash = SSH_FP_HASH_DEFAULT;
 +	options->fingerprint_hash =
 +		fips_correct_dgst(options->fingerprint_hash);
- 	if (options->update_hostkeys == -1)
- 		options->update_hostkeys = 0;
- 
-@@ -2143,6 +2164,7 @@ fill_default_options(Options * options)
++
+ #ifdef ENABLE_SK_INTERNAL
+ 	if (options->sk_provider == NULL)
+ 		options->sk_provider = xstrdup("internal");
+@@ -2229,6 +2251,7 @@ fill_default_options(Options * options)
+ 	ASSEMBLE(pubkey_key_types, def_key, all_key);
+ 	ASSEMBLE(ca_sign_algorithms, def_sig, all_sig);
+ #undef ASSEMBLE
++
+ 	free(all_cipher);
+ 	free(all_mac);
  	free(all_kex);
- 	free(all_key);
- 	free(all_sig);
-+	filter_fips_algorithms(options);
+@@ -2240,6 +2263,8 @@ fill_default_options(Options * options)
+ 	kex_default_pk_alg_filtered = def_key; /* save for later use */
+ 	free(def_sig);
  
++	filter_fips_algorithms(options);
++
  #define CLEAR_ON_NONE(v) \
  	do { \
+ 		if (option_clear_or_none(v)) { \
 diff --git a/readconf.h b/readconf.h
-index 8e36bf3..67111e9 100644
+index e143a10..ef18d5c 100644
 --- a/readconf.h
 +++ b/readconf.h
-@@ -197,6 +197,7 @@ typedef struct {
+@@ -199,6 +199,7 @@ typedef struct {
  #define SSH_STRICT_HOSTKEY_YES	2
  #define SSH_STRICT_HOSTKEY_ASK	3
  
 +void	 filter_fips_algorithms(Options *o);
- void     initialize_options(Options *);
- void     fill_default_options(Options *);
- void	 fill_default_options_for_canonicalization(Options *);
+ const char *kex_default_pk_alg(void);
+ char	*ssh_connection_hash(const char *thishost, const char *host,
+     const char *portstr, const char *user);
 diff --git a/servconf.c b/servconf.c
-index f58fecb..a8833a9 100644
+index 6be7274..9a51bfb 100644
 --- a/servconf.c
 +++ b/servconf.c
-@@ -64,6 +64,7 @@
+@@ -69,6 +69,7 @@
  #include "auth.h"
  #include "myproposal.h"
  #include "digest.h"
@@ -686,7 +683,7 @@ index f58fecb..a8833a9 100644
  
  static void add_listen_addr(ServerOptions *, const char *,
      const char *, int);
-@@ -190,6 +191,23 @@ option_clear_or_none(const char *o)
+@@ -200,6 +201,23 @@ option_clear_or_none(const char *o)
  	return o == NULL || strcasecmp(o, "none") == 0;
  }
  
@@ -710,16 +707,16 @@ index f58fecb..a8833a9 100644
  static void
  assemble_algorithms(ServerOptions *o)
  {
-@@ -219,6 +237,8 @@ assemble_algorithms(ServerOptions *o)
- 	free(all_kex);
- 	free(all_key);
- 	free(all_sig);
+@@ -241,6 +259,8 @@ assemble_algorithms(ServerOptions *o)
+ 	free(def_kex);
+ 	free(def_key);
+ 	free(def_sig);
 +
 +	filter_fips_algorithms_s(o);
  }
  
  static void
-@@ -424,6 +444,8 @@ fill_default_server_options(ServerOptions *options)
+@@ -453,6 +473,8 @@ fill_default_server_options(ServerOptions *options)
  		options->fwd_opts.streamlocal_bind_unlink = 0;
  	if (options->fingerprint_hash == -1)
  		options->fingerprint_hash = SSH_FP_HASH_DEFAULT;
@@ -729,19 +726,19 @@ index f58fecb..a8833a9 100644
  		options->disable_forwarding = 0;
  	if (options->expose_userauth_info == -1)
 diff --git a/ssh-keygen.c b/ssh-keygen.c
-index 8c829ca..da63fb0 100644
+index 944faca..c1ecc54 100644
 --- a/ssh-keygen.c
 +++ b/ssh-keygen.c
-@@ -64,6 +64,8 @@
- #include "authfd.h"
- #include "sshsig.h"
+@@ -66,6 +66,8 @@
+ #include "ssh-sk.h"
+ #include "sk-api.h" /* XXX for SSH_SK_USER_PRESENCE_REQD; remove */
  
 +#include "fips.h"
 +
  #ifdef WITH_OPENSSL
  # define DEFAULT_KEY_TYPE_NAME "rsa"
  #else
-@@ -1002,11 +1004,13 @@ do_fingerprint(struct passwd *pw)
+@@ -1032,11 +1034,13 @@ do_fingerprint(struct passwd *pw)
  static void
  do_gen_all_hostkeys(struct passwd *pw)
  {
@@ -757,7 +754,7 @@ index 8c829ca..da63fb0 100644
  #ifdef WITH_OPENSSL
  		{ "rsa", "RSA" ,_PATH_HOST_RSA_KEY_FILE },
  		{ "dsa", "DSA", _PATH_HOST_DSA_KEY_FILE },
-@@ -1021,6 +1025,17 @@ do_gen_all_hostkeys(struct passwd *pw)
+@@ -1051,6 +1055,17 @@ do_gen_all_hostkeys(struct passwd *pw)
  		{ NULL, NULL, NULL }
  	};
  
@@ -775,9 +772,9 @@ index 8c829ca..da63fb0 100644
  	u_int32_t bits = 0;
  	int first = 0;
  	struct stat st;
-@@ -1029,6 +1044,12 @@ do_gen_all_hostkeys(struct passwd *pw)
+@@ -1058,6 +1073,12 @@ do_gen_all_hostkeys(struct passwd *pw)
+ 	char comment[1024], *prv_tmp, *pub_tmp, *prv_file, *pub_file;
  	int i, type, fd, r;
- 	FILE *f;
  
 +	if (fips_mode()) {
 +		key_types = key_types_fips140_2;
@@ -788,7 +785,7 @@ index 8c829ca..da63fb0 100644
  	for (i = 0; key_types[i].key_type; i++) {
  		public = private = NULL;
  		prv_tmp = pub_tmp = prv_file = pub_file = NULL;
-@@ -3215,6 +3236,15 @@ main(int argc, char **argv)
+@@ -3532,6 +3553,15 @@ main(int argc, char **argv)
  		key_type_name = DEFAULT_KEY_TYPE_NAME;
  
  	type = sshkey_type_from_name(key_type_name);
@@ -805,10 +802,10 @@ index 8c829ca..da63fb0 100644
  
  	if (!quiet)
 diff --git a/ssh_config.5 b/ssh_config.5
-index 02a8789..f0cb291 100644
+index c45fb8d..55d4b5e 100644
 --- a/ssh_config.5
 +++ b/ssh_config.5
-@@ -664,6 +664,8 @@ Valid options are:
+@@ -669,6 +669,8 @@ Valid options are:
  and
  .Cm sha256
  (the default).
@@ -818,12 +815,12 @@ index 02a8789..f0cb291 100644
  Specifies whether the connection to the authentication agent (if any)
  will be forwarded to the remote machine.
 diff --git a/sshd.c b/sshd.c
-index 6b55ef7..c8086cd 100644
+index a24241c..e18078f 100644
 --- a/sshd.c
 +++ b/sshd.c
-@@ -127,6 +127,8 @@
- #include "version.h"
+@@ -128,6 +128,8 @@
  #include "ssherr.h"
+ #include "sk-api.h"
  
 +#include "fips.h"
 +
@@ -831,10 +828,10 @@ index 6b55ef7..c8086cd 100644
  #define REEXEC_DEVCRYPTO_RESERVED_FD	(STDERR_FILENO + 1)
  #define REEXEC_STARTUP_PIPE_FD		(STDERR_FILENO + 2)
 diff --git a/sshd_config.5 b/sshd_config.5
-index 0707b47..8818ea5 100644
+index 52552d2..35affe5 100644
 --- a/sshd_config.5
 +++ b/sshd_config.5
-@@ -605,6 +605,8 @@ and
+@@ -594,6 +594,8 @@ and
  .Cm sha256 .
  The default is
  .Cm sha256 .

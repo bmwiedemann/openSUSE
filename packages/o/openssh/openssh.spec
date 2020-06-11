@@ -1,7 +1,7 @@
 #
 # spec file for package openssh
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           openssh
-Version:        8.1p1
+Version:        8.3p1
 Release:        0
 Summary:        Secure Shell Client and Server (Remote Login Program)
 License:        BSD-2-Clause AND MIT
@@ -77,7 +77,6 @@ Patch18:        openssh-7.7p1-cavstest-ctr.patch
 Patch19:        openssh-7.7p1-cavstest-kdf.patch
 # Local FIPS patchset
 Patch20:        openssh-7.7p1-fips_checks.patch
-Patch21:        openssh-7.7p1-seed-prng.patch
 # https://bugzilla.mindrot.org/show_bug.cgi?id=2641
 Patch22:        openssh-7.7p1-systemd-notify.patch
 Patch23:        openssh-8.0p1-gssapi-keyex.patch
@@ -112,6 +111,7 @@ BuildRequires:  openssl-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(libfido2)
 BuildRequires:  pkgconfig(libsystemd)
 Requires(post): %fillup_prereq
 Requires(pre):  shadow
@@ -211,6 +211,7 @@ export LDFLAGS CFLAGS CXXFLAGS CPPFLAGS
     --with-ldap \
     --with-xauth=%{_bindir}/xauth \
     --with-libedit \
+    --with-security-key-builtin \
     --target=%{_target_cpu}-suse-linux
 
 %make_build

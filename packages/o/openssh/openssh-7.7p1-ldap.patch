@@ -125,19 +125,19 @@ index 0000000..831d399
 +  - Finlay dobbie.
 +  - Stefan Fisher.
 diff --git a/Makefile.in b/Makefile.in
-index 750aada..1baf5c6 100644
+index 6010d1c..f54348b 100644
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -24,6 +24,8 @@ ASKPASS_PROGRAM=$(libexecdir)/ssh-askpass
- SFTP_SERVER=$(libexecdir)/sftp-server
+@@ -25,6 +25,8 @@ SFTP_SERVER=$(libexecdir)/sftp-server
  SSH_KEYSIGN=$(libexecdir)/ssh-keysign
  SSH_PKCS11_HELPER=$(libexecdir)/ssh-pkcs11-helper
+ SSH_SK_HELPER=$(libexecdir)/ssh-sk-helper
 +SSH_LDAP_HELPER=$(libexecdir)/ssh-ldap-helper
 +SSH_LDAP_WRAPPER=$(libexecdir)/ssh-ldap-wrapper
  CAVSTEST_CTR=$(libexecdir)/cavstest-ctr
  CAVSTEST_KDF=$(libexecdir)/cavstest-kdf
  PRIVSEP_PATH=@PRIVSEP_PATH@
-@@ -66,6 +68,9 @@ TARGETS=ssh$(EXEEXT) sshd$(EXEEXT) ssh-add$(EXEEXT) ssh-keygen$(EXEEXT) ssh-keys
+@@ -74,6 +76,9 @@ TARGETS=ssh$(EXEEXT) sshd$(EXEEXT) ssh-add$(EXEEXT) ssh-keygen$(EXEEXT) ssh-keys
  
  TARGETS += cavstest-ctr$(EXEEXT) cavstest-kdf$(EXEEXT)
  
@@ -147,28 +147,28 @@ index 750aada..1baf5c6 100644
  XMSS_OBJS=\
  	ssh-xmss.o \
  	sshkey-xmss.o \
-@@ -127,8 +132,8 @@ SSHDOBJS=sshd.o auth-rhosts.o auth-passwd.o \
- 	sandbox-seccomp-filter.o sandbox-capsicum.o sandbox-pledge.o \
- 	sandbox-solaris.o uidswap.o
+@@ -158,8 +163,8 @@ SFTPSERVER_OBJS=sftp-common.o sftp-server.o sftp-server-main.o
  
--MANPAGES	= moduli.5.out scp.1.out ssh-add.1.out ssh-agent.1.out ssh-keygen.1.out ssh-keyscan.1.out ssh.1.out sshd.8.out sftp-server.8.out sftp.1.out ssh-keysign.8.out ssh-pkcs11-helper.8.out sshd_config.5.out ssh_config.5.out
--MANPAGES_IN	= moduli.5 scp.1 ssh-add.1 ssh-agent.1 ssh-keygen.1 ssh-keyscan.1 ssh.1 sshd.8 sftp-server.8 sftp.1 ssh-keysign.8 ssh-pkcs11-helper.8 sshd_config.5 ssh_config.5
-+MANPAGES       = moduli.5.out scp.1.out ssh-add.1.out ssh-agent.1.out ssh-keygen.1.out ssh-keyscan.1.out ssh.1.out sshd.8.out sftp-server.8.out sftp.1.out ssh-keysign.8.out ssh-pkcs11-helper.8.out sshd_config.5.out ssh_config.5.out ssh-ldap-helper.8.out ssh-ldap.conf.5.out
-+MANPAGES_IN    = moduli.5 scp.1 ssh-add.1 ssh-agent.1 ssh-keygen.1 ssh-keyscan.1 ssh.1 sshd.8 sftp-server.8 sftp.1 ssh-keysign.8 ssh-pkcs11-helper.8 sshd_config.5 ssh_config.5 ssh-ldap-helper.8 ssh-ldap.conf.5
+ SFTP_OBJS=	sftp.o sftp-client.o sftp-common.o sftp-glob.o progressmeter.o
+ 
+-MANPAGES	= moduli.5.out scp.1.out ssh-add.1.out ssh-agent.1.out ssh-keygen.1.out ssh-keyscan.1.out ssh.1.out sshd.8.out sftp-server.8.out sftp.1.out ssh-keysign.8.out ssh-pkcs11-helper.8.out ssh-sk-helper.8.out sshd_config.5.out ssh_config.5.out
+-MANPAGES_IN	= moduli.5 scp.1 ssh-add.1 ssh-agent.1 ssh-keygen.1 ssh-keyscan.1 ssh.1 sshd.8 sftp-server.8 sftp.1 ssh-keysign.8 ssh-pkcs11-helper.8 ssh-sk-helper.8 sshd_config.5 ssh_config.5
++MANPAGES	= moduli.5.out scp.1.out ssh-add.1.out ssh-agent.1.out ssh-keygen.1.out ssh-keyscan.1.out ssh.1.out sshd.8.out sftp-server.8.out sftp.1.out ssh-keysign.8.out ssh-pkcs11-helper.8.out ssh-sk-helper.8.out sshd_config.5.out ssh_config.5.out ssh-ldap-helper.8.out ssh-ldap.conf.5.out
++MANPAGES_IN	= moduli.5 scp.1 ssh-add.1 ssh-agent.1 ssh-keygen.1 ssh-keyscan.1 ssh.1 sshd.8 sftp-server.8 sftp.1 ssh-keysign.8 ssh-pkcs11-helper.8 ssh-sk-helper.8 sshd_config.5 ssh_config.5 ssh-ldap-helper.8 ssh-ldap.conf.5
  MANTYPE		= @MANTYPE@
  
  CONFIGFILES=sshd_config.out ssh_config.out moduli.out
-@@ -208,6 +213,9 @@ ssh-pkcs11-helper$(EXEEXT): $(LIBCOMPAT) libssh.a ssh-pkcs11-helper.o ssh-pkcs11
- ssh-keyscan$(EXEEXT): $(LIBCOMPAT) libssh.a ssh-keyscan.o
- 	$(LD) -o $@ ssh-keyscan.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS)
+@@ -242,6 +247,9 @@ ssh-sk-helper$(EXEEXT): $(LIBCOMPAT) libssh.a $(SKHELPER_OBJS)
+ ssh-keyscan$(EXEEXT): $(LIBCOMPAT) libssh.a $(SSHKEYSCAN_OBJS)
+ 	$(LD) -o $@ $(SSHKEYSCAN_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS)
  
 +ssh-ldap-helper$(EXEEXT): $(LIBCOMPAT) libssh.a ldapconf.o ldapbody.o ldapmisc.o ldap-helper.o
 +	$(LD) -o $@ ldapconf.o ldapbody.o ldapmisc.o ldap-helper.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh -lopenbsd-compat $(LIBS)
 +
- sftp-server$(EXEEXT): $(LIBCOMPAT) libssh.a sftp.o sftp-common.o sftp-server.o sftp-realpath.o sftp-server-main.o
- 	$(LD) -o $@ sftp-server.o sftp-common.o sftp-realpath.o sftp-server-main.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh -lopenbsd-compat $(LIBS)
+ sftp-server$(EXEEXT): $(LIBCOMPAT) libssh.a $(SFTPSERVER_OBJS)
+ 	$(LD) -o $@ $(SFTPSERVER_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS)
  
-@@ -363,6 +371,10 @@ install-files:
+@@ -406,6 +414,10 @@ install-files:
  	$(INSTALL) -m 0755 $(STRIP_OPT) sshd$(EXEEXT) $(DESTDIR)$(sbindir)/sshd$(EXEEXT)
  	$(INSTALL) -m 4711 $(STRIP_OPT) ssh-keysign$(EXEEXT) $(DESTDIR)$(SSH_KEYSIGN)$(EXEEXT)
  	$(INSTALL) -m 0755 $(STRIP_OPT) ssh-pkcs11-helper$(EXEEXT) $(DESTDIR)$(SSH_PKCS11_HELPER)$(EXEEXT)
@@ -176,10 +176,10 @@ index 750aada..1baf5c6 100644
 +		$(INSTALL) -m 0755 $(STRIP_OPT) ssh-ldap-helper $(DESTDIR)$(SSH_LDAP_HELPER) ; \
 +		$(INSTALL) -m 0755 ssh-ldap-wrapper $(DESTDIR)$(SSH_LDAP_WRAPPER) ; \
 +	fi
+ 	$(INSTALL) -m 0755 $(STRIP_OPT) ssh-sk-helper$(EXEEXT) $(DESTDIR)$(SSH_SK_HELPER)$(EXEEXT)
  	$(INSTALL) -m 0755 $(STRIP_OPT) sftp$(EXEEXT) $(DESTDIR)$(bindir)/sftp$(EXEEXT)
  	$(INSTALL) -m 0755 $(STRIP_OPT) sftp-server$(EXEEXT) $(DESTDIR)$(SFTP_SERVER)$(EXEEXT)
- 	$(INSTALL) -m 0755 $(STRIP_OPT) cavstest-ctr$(EXEEXT) $(DESTDIR)$(libexecdir)/cavstest-ctr$(EXEEXT)
-@@ -381,6 +393,10 @@ install-files:
+@@ -425,6 +437,10 @@ install-files:
  	$(INSTALL) -m 644 sftp-server.8.out $(DESTDIR)$(mandir)/$(mansubdir)8/sftp-server.8
  	$(INSTALL) -m 644 ssh-keysign.8.out $(DESTDIR)$(mandir)/$(mansubdir)8/ssh-keysign.8
  	$(INSTALL) -m 644 ssh-pkcs11-helper.8.out $(DESTDIR)$(mandir)/$(mansubdir)8/ssh-pkcs11-helper.8
@@ -187,10 +187,10 @@ index 750aada..1baf5c6 100644
 +		$(INSTALL) -m 644 ssh-ldap-helper.8.out $(DESTDIR)$(mandir)/$(mansubdir)8/ssh-ldap-helper.8 ; \
 +		$(INSTALL) -m 644 ssh-ldap.conf.5.out $(DESTDIR)$(mandir)/$(mansubdir)5/ssh-ldap.conf.5 ; \
 +	fi
+ 	$(INSTALL) -m 644 ssh-sk-helper.8.out $(DESTDIR)$(mandir)/$(mansubdir)8/ssh-sk-helper.8
  
  install-sysconf:
- 	$(MKDIR_P) $(DESTDIR)$(sysconfdir)
-@@ -404,6 +420,13 @@ install-sysconf:
+@@ -449,6 +465,13 @@ install-sysconf:
  	else \
  		echo "$(DESTDIR)$(sysconfdir)/moduli already exists, install will not overwrite"; \
  	fi
@@ -204,28 +204,28 @@ index 750aada..1baf5c6 100644
  
  host-key: ssh-keygen$(EXEEXT)
  	@if [ -z "$(DESTDIR)" ] ; then \
-@@ -441,6 +464,8 @@ uninstall:
- 	-rm -r $(DESTDIR)$(SFTP_SERVER)$(EXEEXT)
+@@ -487,6 +510,8 @@ uninstall:
  	-rm -f $(DESTDIR)$(SSH_KEYSIGN)$(EXEEXT)
  	-rm -f $(DESTDIR)$(SSH_PKCS11_HELPER)$(EXEEXT)
+ 	-rm -f $(DESTDIR)$(SSH_SK_HELPER)$(EXEEXT)
 +	-rm -f $(DESTDIR)$(SSH_LDAP_HELPER)$(EXEEXT)
 +	-rm -f $(DESTDIR)$(SSH_LDAP_WRAPPER)$(EXEEXT)
  	-rm -f $(DESTDIR)$(mandir)/$(mansubdir)1/ssh.1
  	-rm -f $(DESTDIR)$(mandir)/$(mansubdir)1/scp.1
  	-rm -f $(DESTDIR)$(mandir)/$(mansubdir)1/ssh-add.1
-@@ -452,6 +477,7 @@ uninstall:
- 	-rm -f $(DESTDIR)$(mandir)/$(mansubdir)8/sftp-server.8
+@@ -499,6 +524,7 @@ uninstall:
  	-rm -f $(DESTDIR)$(mandir)/$(mansubdir)8/ssh-keysign.8
  	-rm -f $(DESTDIR)$(mandir)/$(mansubdir)8/ssh-pkcs11-helper.8
+ 	-rm -f $(DESTDIR)$(mandir)/$(mansubdir)8/ssh-sk-helper.8
 +	-rm -f $(DESTDIR)$(mandir)/$(mansubdir)8/ssh-ldap-helper.8
  
  regress-prep:
  	$(MKDIR_P) `pwd`/regress/unittests/test_helper
 diff --git a/configure.ac b/configure.ac
-index 20a1884..ff9c11a 100644
+index 4ddf539..1fd0b17 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1651,6 +1651,106 @@ AC_ARG_WITH([audit],
+@@ -1688,6 +1688,106 @@ AC_ARG_WITH([audit],
  	esac ]
  )
  

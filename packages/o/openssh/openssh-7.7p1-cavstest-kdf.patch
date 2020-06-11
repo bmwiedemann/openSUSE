@@ -3,27 +3,27 @@
 CAVS test for KDF implementation in OpenSSH
 
 diff --git a/Makefile.in b/Makefile.in
-index d426006..85818f4 100644
+index 5d4fcd2..9eab827 100644
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -25,6 +25,7 @@ SFTP_SERVER=$(libexecdir)/sftp-server
- SSH_KEYSIGN=$(libexecdir)/ssh-keysign
+@@ -26,6 +26,7 @@ SSH_KEYSIGN=$(libexecdir)/ssh-keysign
  SSH_PKCS11_HELPER=$(libexecdir)/ssh-pkcs11-helper
+ SSH_SK_HELPER=$(libexecdir)/ssh-sk-helper
  CAVSTEST_CTR=$(libexecdir)/cavstest-ctr
 +CAVSTEST_KDF=$(libexecdir)/cavstest-kdf
  PRIVSEP_PATH=@PRIVSEP_PATH@
  SSH_PRIVSEP_USER=@SSH_PRIVSEP_USER@
  STRIP_OPT=@STRIP_OPT@
-@@ -63,7 +64,7 @@ MKDIR_P=@MKDIR_P@
+@@ -71,7 +72,7 @@ MKDIR_P=@MKDIR_P@
  
- TARGETS=ssh$(EXEEXT) sshd$(EXEEXT) ssh-add$(EXEEXT) ssh-keygen$(EXEEXT) ssh-keyscan${EXEEXT} ssh-keysign${EXEEXT} ssh-pkcs11-helper$(EXEEXT) ssh-agent$(EXEEXT) scp$(EXEEXT) sftp-server$(EXEEXT) sftp$(EXEEXT)
+ TARGETS=ssh$(EXEEXT) sshd$(EXEEXT) ssh-add$(EXEEXT) ssh-keygen$(EXEEXT) ssh-keyscan${EXEEXT} ssh-keysign${EXEEXT} ssh-pkcs11-helper$(EXEEXT) ssh-agent$(EXEEXT) scp$(EXEEXT) sftp-server$(EXEEXT) sftp$(EXEEXT) ssh-sk-helper$(EXEEXT)
  
 -TARGETS += cavstest-ctr$(EXEEXT)
 +TARGETS += cavstest-ctr$(EXEEXT) cavstest-kdf$(EXEEXT)
  
  XMSS_OBJS=\
  	ssh-xmss.o \
-@@ -217,6 +218,9 @@ sftp$(EXEEXT): $(LIBCOMPAT) libssh.a sftp.o sftp-client.o sftp-common.o sftp-glo
+@@ -251,6 +252,9 @@ sftp$(EXEEXT): $(LIBCOMPAT) libssh.a $(SFTP_OBJS)
  cavstest-ctr$(EXEEXT): $(LIBCOMPAT) libssh.a cavstest-ctr.o
  	$(LD) -o $@ cavstest-ctr.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS)
  
@@ -33,7 +33,7 @@ index d426006..85818f4 100644
  # test driver for the loginrec code - not built by default
  logintest: logintest.o $(LIBCOMPAT) libssh.a loginrec.o
  	$(LD) -o $@ logintest.o $(LDFLAGS) loginrec.o -lopenbsd-compat -lssh $(LIBS)
-@@ -362,6 +366,7 @@ install-files:
+@@ -406,6 +410,7 @@ install-files:
  	$(INSTALL) -m 0755 $(STRIP_OPT) sftp$(EXEEXT) $(DESTDIR)$(bindir)/sftp$(EXEEXT)
  	$(INSTALL) -m 0755 $(STRIP_OPT) sftp-server$(EXEEXT) $(DESTDIR)$(SFTP_SERVER)$(EXEEXT)
  	$(INSTALL) -m 0755 $(STRIP_OPT) cavstest-ctr$(EXEEXT) $(DESTDIR)$(libexecdir)/cavstest-ctr$(EXEEXT)

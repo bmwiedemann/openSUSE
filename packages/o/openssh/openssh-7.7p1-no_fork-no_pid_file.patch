@@ -2,15 +2,11 @@
 # Parent  bad0c8b3b8d72abb6960ed85b57ee42352371738
 Do not write a PID file when not daemonizing (e.g. when running from systemd)
 
-diff --git a/openssh-7.7p1/sshd.c b/openssh-7.7p1/sshd.c
---- openssh-7.7p1/sshd.c
-+++ openssh-7.7p1/sshd.c
-@@ -1996,17 +1996,17 @@ main(int ac, char **av)
- 		signal(SIGCHLD, main_sigchld_handler);
- 		signal(SIGTERM, sigterm_handler);
- 		signal(SIGQUIT, sigterm_handler);
- 
- 		/*
+diff --git a/sshd.c b/sshd.c
+index f3ccc3a..eadc1b3 100644
+--- a/sshd.c
++++ b/sshd.c
+@@ -2076,7 +2076,7 @@ main(int ac, char **av)
  		 * Write out the pid file after the sigterm handler
  		 * is setup and the listen sockets are bound
  		 */
@@ -19,8 +15,3 @@ diff --git a/openssh-7.7p1/sshd.c b/openssh-7.7p1/sshd.c
  			FILE *f = fopen(options.pid_file, "w");
  
  			if (f == NULL) {
- 				error("Couldn't create pid file \"%s\": %s",
- 				    options.pid_file, strerror(errno));
- 			} else {
- 				fprintf(f, "%ld\n", (long) getpid());
- 				fclose(f);

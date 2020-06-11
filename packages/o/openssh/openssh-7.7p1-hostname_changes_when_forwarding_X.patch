@@ -3,14 +3,12 @@
 # -- uset do be called '-xauthlocalhostname'
 handle hostname changes when forwarding X
 
-bnc#98627
-
 diff --git a/session.c b/session.c
-index 94d7438..d81060c 100644
+index 18cdfa8..85a9ee2 100644
 --- a/session.c
 +++ b/session.c
-@@ -981,7 +981,7 @@ copy_environment(char **source, char ***env, u_int *envsize)
- }
+@@ -985,7 +985,7 @@ copy_environment(char **source, char ***env, u_int *envsize)
+ #endif
  
  static char **
 -do_setup_env(struct ssh *ssh, Session *s, const char *shell)
@@ -18,7 +16,7 @@ index 94d7438..d81060c 100644
  {
  	char buf[256];
  	size_t n;
-@@ -1191,6 +1191,8 @@ do_setup_env(struct ssh *ssh, Session *s, const char *shell)
+@@ -1195,6 +1195,8 @@ do_setup_env(struct ssh *ssh, Session *s, const char *shell)
  		for (i = 0; env[i]; i++)
  			fprintf(stderr, "  %.200s\n", env[i]);
  	}
@@ -27,7 +25,7 @@ index 94d7438..d81060c 100644
  	return env;
  }
  
-@@ -1199,7 +1201,7 @@ do_setup_env(struct ssh *ssh, Session *s, const char *shell)
+@@ -1203,7 +1205,7 @@ do_setup_env(struct ssh *ssh, Session *s, const char *shell)
   * first in this order).
   */
  static void
@@ -36,7 +34,7 @@ index 94d7438..d81060c 100644
  {
  	FILE *f = NULL;
  	char cmd[1024];
-@@ -1254,12 +1256,20 @@ do_rc_files(struct ssh *ssh, Session *s, const char *shell)
+@@ -1258,12 +1260,20 @@ do_rc_files(struct ssh *ssh, Session *s, const char *shell)
  		    options.xauth_location);
  		f = popen(cmd, "w");
  		if (f) {
@@ -57,7 +55,7 @@ index 94d7438..d81060c 100644
  		} else {
  			fprintf(stderr, "Could not run %s\n",
  			    cmd);
-@@ -1515,6 +1525,7 @@ do_child(struct ssh *ssh, Session *s, const char *command)
+@@ -1519,6 +1529,7 @@ do_child(struct ssh *ssh, Session *s, const char *command)
  	char **env, *argv[ARGV_MAX], remote_id[512];
  	const char *shell, *shell0;
  	struct passwd *pw = s->pw;
@@ -65,7 +63,7 @@ index 94d7438..d81060c 100644
  	int r = 0;
  
  	sshpkt_fmt_connection_id(ssh, remote_id, sizeof(remote_id));
-@@ -1571,7 +1582,7 @@ do_child(struct ssh *ssh, Session *s, const char *command)
+@@ -1575,7 +1586,7 @@ do_child(struct ssh *ssh, Session *s, const char *command)
  	 * Make sure $SHELL points to the shell from the password file,
  	 * even if shell is overridden from login.conf
  	 */
@@ -74,7 +72,7 @@ index 94d7438..d81060c 100644
  
  #ifdef HAVE_LOGIN_CAP
  	shell = login_getcapstr(lc, "shell", (char *)shell, (char *)shell);
-@@ -1635,7 +1646,7 @@ do_child(struct ssh *ssh, Session *s, const char *command)
+@@ -1639,7 +1650,7 @@ do_child(struct ssh *ssh, Session *s, const char *command)
  
  	closefrom(STDERR_FILENO + 1);
  
@@ -82,4 +80,4 @@ index 94d7438..d81060c 100644
 +	do_rc_files(ssh, s, shell, env, &env_size);
  
  	/* restore SIGPIPE for child */
- 	signal(SIGPIPE, SIG_DFL);
+ 	ssh_signal(SIGPIPE, SIG_DFL);

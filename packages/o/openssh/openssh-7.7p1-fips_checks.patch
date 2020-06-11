@@ -7,7 +7,7 @@
 # FIPS mode). SHA-2 seems to be a reasonable choice.
 #
 # The logic of the checks is as follows: decide whether FIPS mode is mandated
-# (either by checking /proc/sys/crypto/fips_enabled or envoroinment variable
+# (either by checking /proc/sys/crypto/fips_enabled or environment variable
 # SSH_FORCE_FIPS. In FIPS mode, checksums are required to match (inability to
 # retrieve pre-calculated hash is a fatal error). In non-FIPS mode the checks
 # still must be performed, unless the hashes are not installed. Thus if the hash
@@ -410,7 +410,7 @@ index a115a61..3404684 100644
  #endif
 -
 diff --git a/sftp-server.c b/sftp-server.c
-index b133cbc..c3086b6 100644
+index 359204f..d6395fd 100644
 --- a/sftp-server.c
 +++ b/sftp-server.c
 @@ -53,6 +53,8 @@
@@ -422,7 +422,7 @@ index b133cbc..c3086b6 100644
  /* Our verbosity */
  static LogLevel log_level = SYSLOG_LEVEL_ERROR;
  
-@@ -1595,6 +1597,9 @@ sftp_server_main(int argc, char **argv, struct passwd *user_pw)
+@@ -1576,6 +1578,9 @@ sftp_server_main(int argc, char **argv, struct passwd *user_pw)
  	extern char *optarg;
  	extern char *__progname;
  
@@ -433,7 +433,7 @@ index b133cbc..c3086b6 100644
  	log_init(__progname, log_level, log_facility, log_stderr);
  
 diff --git a/ssh.c b/ssh.c
-index ee51823..882d1da 100644
+index 98b6ce7..dce28fd 100644
 --- a/ssh.c
 +++ b/ssh.c
 @@ -113,6 +113,8 @@
@@ -445,9 +445,9 @@ index ee51823..882d1da 100644
  extern char *__progname;
  
  /* Saves a copy of argv for setproctitle emulation */
-@@ -596,6 +598,10 @@ main(int ac, char **av)
- 	struct ssh_digest_ctx *md;
- 	u_char conn_hash[SSH_DIGEST_MAX_LENGTH];
+@@ -630,6 +632,10 @@ main(int ac, char **av)
+ 	struct addrinfo *addrs = NULL;
+ 	size_t n, len;
  
 +	/* initialize fips - can go before ssh_malloc_init(), since that is a
 +	 * OpenBSD-only thing (as of OpenSSH 7.6p1) */
@@ -457,10 +457,10 @@ index ee51823..882d1da 100644
  	sanitise_stdfd();
  
 diff --git a/sshd.c b/sshd.c
-index c8086cd..bb20eec 100644
+index b2146a6..6092f0f 100644
 --- a/sshd.c
 +++ b/sshd.c
-@@ -1443,6 +1443,10 @@ main(int ac, char **av)
+@@ -1505,6 +1505,10 @@ main(int ac, char **av)
  	Authctxt *authctxt;
  	struct connection_info *connection_info = NULL;
  

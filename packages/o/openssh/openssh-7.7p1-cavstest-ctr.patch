@@ -3,29 +3,29 @@
 CAVS test for OpenSSH's own CTR encryption mode implementation
 
 diff --git a/Makefile.in b/Makefile.in
-index 7488595..d426006 100644
+index d5c37b5..5d4fcd2 100644
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -24,6 +24,7 @@ ASKPASS_PROGRAM=$(libexecdir)/ssh-askpass
- SFTP_SERVER=$(libexecdir)/sftp-server
+@@ -25,6 +25,7 @@ SFTP_SERVER=$(libexecdir)/sftp-server
  SSH_KEYSIGN=$(libexecdir)/ssh-keysign
  SSH_PKCS11_HELPER=$(libexecdir)/ssh-pkcs11-helper
+ SSH_SK_HELPER=$(libexecdir)/ssh-sk-helper
 +CAVSTEST_CTR=$(libexecdir)/cavstest-ctr
  PRIVSEP_PATH=@PRIVSEP_PATH@
  SSH_PRIVSEP_USER=@SSH_PRIVSEP_USER@
  STRIP_OPT=@STRIP_OPT@
-@@ -62,6 +63,8 @@ MKDIR_P=@MKDIR_P@
+@@ -70,6 +71,8 @@ MKDIR_P=@MKDIR_P@
  
- TARGETS=ssh$(EXEEXT) sshd$(EXEEXT) ssh-add$(EXEEXT) ssh-keygen$(EXEEXT) ssh-keyscan${EXEEXT} ssh-keysign${EXEEXT} ssh-pkcs11-helper$(EXEEXT) ssh-agent$(EXEEXT) scp$(EXEEXT) sftp-server$(EXEEXT) sftp$(EXEEXT)
+ TARGETS=ssh$(EXEEXT) sshd$(EXEEXT) ssh-add$(EXEEXT) ssh-keygen$(EXEEXT) ssh-keyscan${EXEEXT} ssh-keysign${EXEEXT} ssh-pkcs11-helper$(EXEEXT) ssh-agent$(EXEEXT) scp$(EXEEXT) sftp-server$(EXEEXT) sftp$(EXEEXT) ssh-sk-helper$(EXEEXT)
  
 +TARGETS += cavstest-ctr$(EXEEXT)
 +
  XMSS_OBJS=\
  	ssh-xmss.o \
  	sshkey-xmss.o \
-@@ -210,6 +213,10 @@ sftp-server$(EXEEXT): $(LIBCOMPAT) libssh.a sftp.o sftp-common.o sftp-server.o s
- sftp$(EXEEXT): $(LIBCOMPAT) libssh.a sftp.o sftp-client.o sftp-common.o sftp-glob.o progressmeter.o
- 	$(LD) -o $@ progressmeter.o sftp.o sftp-client.o sftp-common.o sftp-glob.o $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS) $(LIBEDIT)
+@@ -244,6 +247,10 @@ sftp-server$(EXEEXT): $(LIBCOMPAT) libssh.a $(SFTPSERVER_OBJS)
+ sftp$(EXEEXT): $(LIBCOMPAT) libssh.a $(SFTP_OBJS)
+ 	$(LD) -o $@ $(SFTP_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS) $(LIBEDIT)
  
 +# FIPS tests
 +cavstest-ctr$(EXEEXT): $(LIBCOMPAT) libssh.a cavstest-ctr.o
@@ -34,8 +34,8 @@ index 7488595..d426006 100644
  # test driver for the loginrec code - not built by default
  logintest: logintest.o $(LIBCOMPAT) libssh.a loginrec.o
  	$(LD) -o $@ logintest.o $(LDFLAGS) loginrec.o -lopenbsd-compat -lssh $(LIBS)
-@@ -354,6 +361,7 @@ install-files:
- 	$(INSTALL) -m 0755 $(STRIP_OPT) ssh-pkcs11-helper$(EXEEXT) $(DESTDIR)$(SSH_PKCS11_HELPER)$(EXEEXT)
+@@ -398,6 +405,7 @@ install-files:
+ 	$(INSTALL) -m 0755 $(STRIP_OPT) ssh-sk-helper$(EXEEXT) $(DESTDIR)$(SSH_SK_HELPER)$(EXEEXT)
  	$(INSTALL) -m 0755 $(STRIP_OPT) sftp$(EXEEXT) $(DESTDIR)$(bindir)/sftp$(EXEEXT)
  	$(INSTALL) -m 0755 $(STRIP_OPT) sftp-server$(EXEEXT) $(DESTDIR)$(SFTP_SERVER)$(EXEEXT)
 +	$(INSTALL) -m 0755 $(STRIP_OPT) cavstest-ctr$(EXEEXT) $(DESTDIR)$(libexecdir)/cavstest-ctr$(EXEEXT)
@@ -263,7 +263,7 @@ index 0000000..f81cb72
 +	return 0;
 +}
 diff --git a/cipher.c b/cipher.c
-index acca752..b67a4ff 100644
+index 2f5430b..599b54a 100644
 --- a/cipher.c
 +++ b/cipher.c
 @@ -58,15 +58,6 @@
@@ -274,7 +274,7 @@ index acca752..b67a4ff 100644
 -	int	plaintext;
 -	int	encrypt;
 -	EVP_CIPHER_CTX *evp;
--	struct chachapoly_ctx cp_ctx; /* XXX union with evp? */
+-	struct chachapoly_ctx *cp_ctx;
 -	struct aesctr_ctx ac_ctx; /* XXX union with evp? */
 -	const struct sshcipher *cipher;
 -};
@@ -283,7 +283,7 @@ index acca752..b67a4ff 100644
  	char	*name;
  	u_int	block_size;
 diff --git a/cipher.h b/cipher.h
-index 5843aab..d7d8c89 100644
+index 1a591cd..10ccb28 100644
 --- a/cipher.h
 +++ b/cipher.h
 @@ -48,7 +48,15 @@
@@ -295,7 +295,7 @@ index 5843aab..d7d8c89 100644
 +	int	plaintext;
 +	int	encrypt;
 +	EVP_CIPHER_CTX *evp;
-+	struct chachapoly_ctx cp_ctx; /* XXX union with evp? */
++	struct chachapoly_ctx *cp_ctx; /* XXX union with evp? */
 +	struct aesctr_ctx ac_ctx; /* XXX union with evp? */
 +	const struct sshcipher *cipher;
 +};

@@ -2,12 +2,11 @@
 # Parent  60bdbe6dd8d6bc011883472363d56e1d97f68835
 Put back sftp client diagnostic messages in batch mode
 
-bsc#1023275
 diff --git a/sftp.1 b/sftp.1
-index a52c1cf..7333de8 100644
+index a305b37..6e802ec 100644
 --- a/sftp.1
 +++ b/sftp.1
-@@ -278,6 +278,9 @@ Specifies the port to connect to on the remote host.
+@@ -282,6 +282,9 @@ Specifies the port to connect to on the remote host.
  .It Fl p
  Preserves modification times, access times, and modes from the
  original files transferred.
@@ -18,7 +17,7 @@ index a52c1cf..7333de8 100644
  Quiet mode: disables the progress meter as well as warning and
  diagnostic messages from
 diff --git a/sftp.c b/sftp.c
-index b66037f..6c94a38 100644
+index 2799e4a..52b2c23 100644
 --- a/sftp.c
 +++ b/sftp.c
 @@ -85,6 +85,9 @@ static volatile pid_t sshpid = -1;
@@ -31,16 +30,16 @@ index b66037f..6c94a38 100644
  /* This is set to 0 if the progressmeter is not desired. */
  int showprogress = 1;
  
-@@ -2406,7 +2409,7 @@ main(int argc, char **argv)
+@@ -2409,7 +2412,7 @@ main(int argc, char **argv)
  	infile = stdin;
  
  	while ((ch = getopt(argc, argv,
--	    "1246afhpqrvCc:D:i:l:o:s:S:b:B:F:J:P:R:")) != -1) {
-+	    "1246afhpQqrvCc:D:i:l:o:s:S:b:B:F:J:P:R:")) != -1) {
+-	    "1246afhNpqrvCc:D:i:l:o:s:S:b:B:F:J:P:R:")) != -1) {
++	    "1246afhNpQqrvCc:D:i:l:o:s:S:b:B:F:J:P:R:")) != -1) {
  		switch (ch) {
  		/* Passed through to ssh(1) */
  		case '4':
-@@ -2423,6 +2426,9 @@ main(int argc, char **argv)
+@@ -2426,6 +2429,9 @@ main(int argc, char **argv)
  			addargs(&args, "-%c", ch);
  			addargs(&args, "%s", optarg);
  			break;
@@ -50,7 +49,7 @@ index b66037f..6c94a38 100644
  		case 'q':
  			ll = SYSLOG_LEVEL_ERROR;
  			quiet = 1;
-@@ -2506,6 +2512,8 @@ main(int argc, char **argv)
+@@ -2510,6 +2516,8 @@ main(int argc, char **argv)
  			usage();
  		}
  	}

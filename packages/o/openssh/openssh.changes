@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Fri Jun  5 00:36:08 UTC 2020 - Hans Petter Jansson <hpj@suse.com>
+
+- Version update to 8.3p1:
+  = Potentially-incompatible changes
+  * sftp(1): reject an argument of "-1" in the same way as ssh(1) and
+    scp(1) do instead of accepting and silently ignoring it.
+
+  = New features
+  * sshd(8): make IgnoreRhosts a tri-state option: "yes" to ignore
+    rhosts/shosts, "no" allow rhosts/shosts or (new) "shosts-only"
+    to allow .shosts files but not .rhosts.
+  * sshd(8): allow the IgnoreRhosts directive to appear anywhere in a
+    sshd_config, not just before any Match blocks.
+  * ssh(1): add %TOKEN percent expansion for the LocalFoward and
+    RemoteForward keywords when used for Unix domain socket forwarding.
+  * all: allow loading public keys from the unencrypted envelope of a
+    private key file if no corresponding public key file is present.
+  * ssh(1), sshd(8): prefer to use chacha20 from libcrypto where
+    possible instead of the (slower) portable C implementation included
+    in OpenSSH.
+  * ssh-keygen(1): add ability to dump the contents of a binary key
+    revocation list via "ssh-keygen -lQf /path".
+
+- Additional changes from 8.2p1 release:
+  = Potentially-incompatible changes
+  * ssh(1), sshd(8), ssh-keygen(1): this release removes the "ssh-rsa"
+    (RSA/SHA1) algorithm from those accepted for certificate signatures
+    (i.e. the client and server CASignatureAlgorithms option) and will
+    use the rsa-sha2-512 signature algorithm by default when the
+    ssh-keygen(1) CA signs new certificates.
+  * ssh(1), sshd(8): this release removes diffie-hellman-group14-sha1
+    from the default key exchange proposal for both the client and
+    server.
+  * ssh-keygen(1): the command-line options related to the generation
+    and screening of safe prime numbers used by the
+    diffie-hellman-group-exchange-* key exchange algorithms have
+    changed. Most options have been folded under the -O flag.
+  * sshd(8): the sshd listener process title visible to ps(1) has
+    changed to include information about the number of connections that
+    are currently attempting authentication and the limits configured
+    by MaxStartups.
+  * ssh-sk-helper(8): this is a new binary. It is used by the FIDO/U2F
+    support to provide address-space isolation for token middleware
+    libraries (including the internal one). It needs to be installed
+    in the expected path, typically under /usr/libexec or similar.
+
+  = New features
+  * This release adds support for FIDO/U2F hardware authenticators to
+    OpenSSH. U2F/FIDO are open standards for inexpensive two-factor
+    authentication hardware that are widely used for website
+    authentication.  In OpenSSH FIDO devices are supported by new public
+    key types "ecdsa-sk" and "ed25519-sk", along with corresponding
+    certificate types.
+  * sshd(8): add an Include sshd_config keyword that allows including
+    additional configuration files via glob(3) patterns.
+  * ssh(1)/sshd(8): make the LE (low effort) DSCP code point available
+    via the IPQoS directive.
+  * ssh(1): when AddKeysToAgent=yes is set and the key contains no
+    comment, add the key to the agent with the key's path as the
+    comment.
+  * ssh-keygen(1), ssh-agent(1): expose PKCS#11 key labels and X.509
+    subjects as key comments, rather than simply listing the PKCS#11
+    provider library path.
+  * ssh-keygen(1): allow PEM export of DSA and ECDSA keys.
+  * ssh(1), sshd(8): make zlib compile-time optional, available via the
+    Makefile.inc ZLIB flag on OpenBSD or via the --with-zlib configure
+    option for OpenSSH portable.
+  * sshd(8): when clients get denied by MaxStartups, send a
+    notification prior to the SSH2 protocol banner according to
+    RFC4253 section 4.2.
+  * ssh(1), ssh-agent(1): when invoking the $SSH_ASKPASS prompt
+    program, pass a hint to the program to describe the type of
+    desired prompt.  The possible values are "confirm" (indicating
+    that a yes/no confirmation dialog with no text entry should be
+    shown), "none" (to indicate an informational message only), or
+    blank for the original ssh-askpass behaviour of requesting a
+    password/phrase.
+  * ssh(1): allow forwarding a different agent socket to the path
+    specified by $SSH_AUTH_SOCK, by extending the existing ForwardAgent
+    option to accepting an explicit path or the name of an environment
+    variable in addition to yes/no.
+  * ssh-keygen(1): add a new signature operations "find-principals" to
+    look up the principal associated with a signature from an allowed-
+    signers file.
+  * sshd(8): expose the number of currently-authenticating connections
+    along with the MaxStartups limit in the process title visible to
+    "ps".
+
+- Rebased patches:
+  * openssh-7.7p1-cavstest-ctr.patch
+  * openssh-7.7p1-cavstest-kdf.patch
+  * openssh-7.7p1-fips.patch
+  * openssh-7.7p1-fips_checks.patch
+  * openssh-7.7p1-ldap.patch
+  * openssh-7.7p1-no_fork-no_pid_file.patch
+  * openssh-7.7p1-sftp_print_diagnostic_messages.patch
+  * openssh-8.0p1-gssapi-keyex.patch
+  * openssh-8.1p1-audit.patch
+  * openssh-8.1p1-seccomp-clock_nanosleep.patch
+
+- Removed openssh-7.7p1-seed-prng.patch (bsc#1165158).
+
+-------------------------------------------------------------------
 Sun May 31 11:25:07 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - add upstream signing key to actually verify source signature
