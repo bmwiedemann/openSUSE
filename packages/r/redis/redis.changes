@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 10 15:18:18 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- redis 6.0.5:
+  * Fix handling of speical chars in ACL LOAD
+  * Make Redis Cluster more robust about operation errors that may
+    lead to two clusters to mix together
+  * Revert the sendfile() implementation of RDB transfer
+  * Fix TLS certificate loading for chained certificates
+  * Fix AOF rewirting of KEEPTTL SET option
+  * Fix MULTI/EXEC behavior during -BUSY script errors
+
+-------------------------------------------------------------------
 Thu May 28 18:38:17 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - redis 6.0.4:
