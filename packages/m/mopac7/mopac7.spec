@@ -73,6 +73,9 @@ This package contains development files.
 autoreconf -fiv
 # http://www.bioinformatics.org/pipermail/ghemical-devel/2008-August/000763.html
 export FFLAGS="%{optflags} -std=legacy -fno-automatic"
+%ifarch aarch64 %arm
+export FFLAGS="%{optflags} -fPIC"
+%endif
 %configure \
   --disable-static
 %make_build
