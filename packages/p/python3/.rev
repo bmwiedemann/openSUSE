@@ -1161,4 +1161,18 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html</comment>
     <comment></comment>
     <requestid>806764</requestid>
   </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>cc38e661737d3e48b4029c270bf24054</srcmd5>
+    <version>3.8.3</version>
+    <time>1591879350</time>
+    <user>dimstar_suse</user>
+    <comment>- add requires python3-base on libpython subpackage (bsc#1167008)
+
+- build against Sphinx 2.x until python is compatible with
+  Sphinx 3.x (see gh#python/cpython#19397, bpo#40204)
+
+- Fix build with SQLite 3.32 (bpo#40783)
+  add bpo40784-Fix-sqlite3-deterministic-test.patch</comment>
+    <requestid>812851</requestid>
+  </revision>
 </revisionlist>

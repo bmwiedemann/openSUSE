@@ -82,7 +82,7 @@ Source0:        http://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar
 Source1:        http://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz.asc
 Source99:       python.keyring
 BuildRequires:  libqt5-qttools
-BuildRequires:  python3-Sphinx >= 1.8
+BuildRequires:  python3-Sphinx < 3.0
 BuildRequires:  python3-python-docs-theme
 BuildRequires:  python3-sphinxcontrib-qthelp >= 1.0.2
 BuildRequires:  xz
@@ -138,6 +138,9 @@ Patch29:        bpo-31046_ensurepip_honours_prefix.patch
 # PATCH-FIX-UPSTREAM bsc1167501-invalid-alignment.patch gh#python/cpython#19133 mcepl@suse.com
 # Fix wrong misalignment of pointer to vectorcallfunc
 Patch31:        bsc1167501-invalid-alignment.patch
+# PATCH-FIX-UPSTREAM bpo40784-Fix-sqlite3-deterministic-test.patch bpo#40784 Andreas.Stieger@gmx.de
+# Fix tests with SQLite 3.32
+Patch32:        bpo40784-Fix-sqlite3-deterministic-test.patch
 ### COMMON-PATCH-END ###
 
 %description
@@ -184,6 +187,7 @@ Python, and Macintosh Module Reference in format for devhelp.
 %patch28 -p1
 %patch29 -p1
 %patch31 -p1
+%patch32 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

@@ -1,5 +1,22 @@
 -------------------------------------------------------------------
-Sun May 17 15:40:53 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+Mon Jun  8 14:26:00 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- add requires python3-base on libpython subpackage (bsc#1167008)
+
+-------------------------------------------------------------------
+Fri Jun  5 06:08:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- build against Sphinx 2.x until python is compatible with
+  Sphinx 3.x (see gh#python/cpython#19397, bpo#40204)
+
+-------------------------------------------------------------------
+Fri May 29 19:59:01 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix build with SQLite 3.32 (bpo#40783)
+  add bpo40784-Fix-sqlite3-deterministic-test.patch
+
+-------------------------------------------------------------------
+Sun May 17 15:37:35 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Update to version 3.8.3:
   - Complete list of changes is available at

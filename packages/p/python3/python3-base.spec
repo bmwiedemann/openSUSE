@@ -101,7 +101,7 @@ Source101:      python3-base-rpmlintrc
 Source102:      pre_checkin.sh
 Source103:      skipped_tests.py
 ##### REQURES, PROVIDES, OBSOLETES #####
-Requires:       libpython%{so_version} == %{version}-%{release}
+Requires:       libpython%{so_version} = %{version}-%{release}
 Requires:       python-rpm-macros
 Recommends:     python3 = %{version}
 #Recommends:     python3-ensurepip
@@ -204,6 +204,9 @@ Patch29:        bpo-31046_ensurepip_honours_prefix.patch
 # PATCH-FIX-UPSTREAM bsc1167501-invalid-alignment.patch gh#python/cpython#19133 mcepl@suse.com
 # Fix wrong misalignment of pointer to vectorcallfunc
 Patch31:        bsc1167501-invalid-alignment.patch
+# PATCH-FIX-UPSTREAM bpo40784-Fix-sqlite3-deterministic-test.patch bpo#40784 Andreas.Stieger@gmx.de
+# Fix tests with SQLite 3.32
+Patch32:        bpo40784-Fix-sqlite3-deterministic-test.patch
 ### COMMON-PATCH-END ###
 
 %description
@@ -260,6 +263,7 @@ They are a documented part of stdlib, as a module 'test'.
 %package -n libpython%{so_version}
 Summary:        Python Interpreter shared library
 Group:          Development/Languages/Python
+Requires:       python3-base >= %{version}
 
 %description -n libpython%{so_version}
 Python is an interpreted, object-oriented programming language, and is
@@ -298,6 +302,7 @@ other applications.
 %patch28 -p1
 %patch29 -p1
 %patch31 -p1
+%patch32 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
