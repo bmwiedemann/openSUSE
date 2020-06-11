@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://git.kernel.org/pub/scm/linux/kernel/git/jejb/sbsigntools.git</param>
+              <param name="changesrevision">fe88da5f66241d959b7aeca7502d401ad88df410</param></service></servicedata>

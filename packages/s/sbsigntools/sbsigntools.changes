@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Mon Apr 27 11:50:40 UTC 2020 - Martin Loviska <mloviska@suse.com>
+
+- Remove GROUP from spec file 
+
+-------------------------------------------------------------------
+Fri Apr 24 12:47:49 UTC 2020 - fvogt@suse.com
+
+- Update to version 0.9.3:
+  * Version 0.9.3
+  * README: update git location and add mailing list information
+  * sbvarsign: fix "EFI_VARIABLE_AUTHENTICATION_2.TimeStamp.Year" assignment
+  * Fix PE/COFF checksum calculation
+  * Version 0.9.2
+  * src/image.c: remove alignment of regions
+  * sbvarsign: use SignedData instead of PKCS7 for authenticated updates
+  * Fix Fedora Build
+  * Version 0.9.1
+  * sbsign, sbvarsign: support engine based private keys
+
