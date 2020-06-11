@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  5 11:33:26 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.4
+  * Add new nfq_get_skbinfo() helper. This allows to detect when
+    packet checksums have been validated already or if they will
+    be filled in by tx checksum offload on transmit later on.
+
+-------------------------------------------------------------------
 Mon Nov 13 15:28:18 UTC 2017 - jengelh@inai.de
 
 - Update to new upstream release 1.0.3

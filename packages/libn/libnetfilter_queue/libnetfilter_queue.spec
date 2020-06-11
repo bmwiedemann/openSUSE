@@ -1,7 +1,7 @@
 #
 # spec file for package libnetfilter_queue
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libnetfilter_queue
 %define lname	%{name}1
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        Userspace library for packets that have been queued by the kernel packet filter
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
-Url:            http://netfilter.org/projects/libnetfilter_queue/
+URL:            http://netfilter.org/projects/libnetfilter_queue/
 
 #Git-Clone:	git://git.netfilter.org/libnetfilter_queue
 #DL-URL:	http://netfilter.org/projects/libnetfilter_queue/files/
@@ -31,8 +31,6 @@ Source:         http://ftp.netfilter.org/pub/libnetfilter_queue/%name-%version.t
 Source2:        http://ftp.netfilter.org/pub/libnetfilter_queue/%name-%version.tar.bz2.sig
 Source3:        baselibs.conf
 Source4:        %name.keyring
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-#BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.21
 BuildRequires:  pkgconfig(libmnl) >= 1.0.3
 BuildRequires:  pkgconfig(libnfnetlink) >= 0.0.41
@@ -83,11 +81,9 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libnetfilter_queue.so.1*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/%name/
 %_libdir/libnetfilter_queue.so
 %_libdir/pkgconfig/libnetfilter_queue.pc
