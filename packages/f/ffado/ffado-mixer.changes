@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 29 15:12:31 UTC 2020 - Edgar Aichinger <edogawa@aon.at>
+
+- update to release 2.4.3
+- removed unneeded Patch (fixed upstream):
+  ffado-mixer-fixbuild.patch
+
+-------------------------------------------------------------------
 Thu Jan  2 09:40:57 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace pkgconfig(libxml++-2.6) with pkgconfig(libxml++-3.0)

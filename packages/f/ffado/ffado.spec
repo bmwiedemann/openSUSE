@@ -20,7 +20,7 @@
 %define gcc7 0
 %define tname libffado
 Name:           ffado
-Version:        2.4.1
+Version:        2.4.3
 Release:        0
 Summary:        FireWire 1394 support for audio devices, svn snapshot
 License:        GPL-2.0-or-later
