@@ -17,13 +17,14 @@
 # needssslcertforbuild
 
 
-%if ! 0%{?is_opensuse}
+# RT enabled in Leap15.2(but not in Tumbleweed)
+%if ! 0%{?is_opensuse} || 0%{?sle_version} >= 150200
 %ifarch x86_64
 %define buildrt 1
 %endif
 %endif
 Name:           drbd
-Version:        9.0.22~1+git.fe2b5983
+Version:        9.0.23~1+git.d16bfab7
 Release:        0
 Summary:        Linux driver for the "Distributed Replicated Block Device"
 License:        GPL-2.0-or-later
@@ -37,7 +38,6 @@ Patch1:         fix-resync-finished-with-syncs-have-bits-set.patch
 Patch2:         rely-on-sb-handlers.patch
 Patch3:         drbd-fix-zero-metadata-limit-by-page-size-misaligned.patch
 #In 61ff72f401680(v5.5-rc2), pr_warning is removed
-Patch4:         without_pr_warning.patch
 Patch99:        suse-coccinelle.patch
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
 BuildRequires:  coccinelle >= 1.0.8
@@ -74,7 +74,6 @@ installed kernel.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 %patch99 -p1
 
 mkdir source

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Jun 10 03:33:22 UTC 2020 - nick wang <nwang@suse.com>
+
+- bsc#1172761, Update to drbd-9.0.23-1
+ * fix a deadlock (regression introduced in 9.0.22) that can happen when
+   new current UUID is generated while a connection gets established
+ * Do not create a new data generation if the node has
+   'allow-remote-read = no' set, is primary, and the local disk fails
+   (because it has no access to good data anyome)
+ * fix a deadlock (regression introduced in 9.0.22) that can be
+   triggered if a minor is added into a resource with an established
+   connection
+ * generate new UUID immediately if a primary loses a disk due to an IO
+   error
+ * fix read requests on diskless nodes that hit a read error on a
+   diskful node; the retry on another diskful node works, but a bug
+   could lead to a log-storm on the diskless node
+ * fix removal of diskless nodes from clusters with quorum enabled
+   (initiated from the diskless itself)
+ * fix wrongly declined state changes if connections are established
+   concurrently
+ * fix continuation of initial resync; before that the initial resync
+   always started from the beginning if it was interrupted
+ * use rwsem _non_owner() operations to avoid false positives of
+   lock-dep when running on a debug kernel
+ * fix a sometimes missed resync if only a diskless node was primary
+   since the day0 UUID
+ * fix a corner case where a SyncSource node does not recognise
+   that a SyncTarget node declared the resync as finished
+ * update compat up to Linux 5.6
+- Remove patch without_pr_warning.patch since change in 7e6a20f7
+
+-------------------------------------------------------------------
+Wed Jun 10 02:55:39 UTC 2020 - nick wang <nwang@suse.com>
+
+- jsc#11801, enable buildrt for Leap15.2 but Tumbleweed.
+
+-------------------------------------------------------------------
 Tue Mar 10 09:03:04 UTC 2020 - nick wang <nwang@suse.com>
 
 - bsc#1166298, Update to drbd-9.0.22-1
