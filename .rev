@@ -105,4 +105,12 @@
     <comment>Drop armv6l.patch to fix build on armv6 (forwarded request 769212 from Guillaume_G)</comment>
     <requestid>769284</requestid>
   </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>2f0870be58e727d86dc74fb5f46816e4</srcmd5>
+    <version>1.9.7</version>
+    <time>1591879567</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure ARM arch is set properly - boo#1169832 (forwarded request 812467 from Guillaume_G)</comment>
+    <requestid>812948</requestid>
+  </revision>
 </revisionlist>

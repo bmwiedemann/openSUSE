@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  8 08:22:07 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Ensure ARM arch is set properly - boo#1169832
+
+-------------------------------------------------------------------
 Fri Jan 31 12:29:31 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Drop armv6l.patch to fix build on armv6
