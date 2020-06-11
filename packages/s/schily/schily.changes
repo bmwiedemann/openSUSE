@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun  9 23:17:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.06.09
+  * star: A new option -one-file has been added that causes star
+    to exit after a single file has been extracted as a result
+    from a pattern match or command line argument match.
+  * star: A new option iskip=# has been introduced. The argument
+    is the number of bytes to skip before looking for the first
+    archive header in the first tape block read after star
+    started.
+  * star: A new option mtskip=# has been introduced. This option
+    causes star to issue a "mt fsr xxx" equivalent on a tape
+    archive.
+
+-------------------------------------------------------------------
 Tue May 26 11:32:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.05.25
