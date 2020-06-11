@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-instrument-control
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define octpkg  instrument-control
 Name:           octave-forge-%{octpkg}
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Instrument Control for Octave
 License:        GPL-3.0-or-later
@@ -59,7 +59,6 @@ popd
 %octave --eval "pkg rebuild"
 
 %files
-%defattr(-,root,root)
 %{octpackages_dir}/%{octpkg}-%{version}
 %{octlib_dir}/%{octpkg}-%{version}
 
