@@ -1322,4 +1322,12 @@ http://weekly.golang.org/doc/devel/weekly.html#2012-02-07
     <comment>- Requires binutils-gold for %arm and aarch64 - boo#1170826 (forwarded request 798918 from Guillaume_G)</comment>
     <requestid>799324</requestid>
   </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>6c966890796b4b8dceb6234143fb0381</srcmd5>
+    <version>1.11.13</version>
+    <time>1591879445</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure ARM arch is set properly - boo#1169832 (forwarded request 813234 from Guillaume_G)</comment>
+    <requestid>813269</requestid>
+  </revision>
 </revisionlist>
