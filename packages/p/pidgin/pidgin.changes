@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Jun 10 15:19:12 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.14.0:
+  + General:
+    * Fixed a memory leak in search results (pidgin.im#17292).
+    * Support SNI with GnuTLS (pidgin.im#17300 tiagosalem).
+    * Add additional error handling to NSS and GnuTLS.
+  + libpurple:
+    * Add invisible buddy support to support presence/name/photos
+      for non-buddies (pidgin.im#17295).
+    * Make purple-remote compatible with both Python 2 and Python 3.
+    * Fix some leaky deprecation warnings.
+    * Fix HTML logs which were writing invalid HTML
+      (pidgin.im#17280).
+    * Fix use after free in purple_smiley_set_data_impl.
+    * Added the chat_send_file ability to protocol plugins.
+  + Pidgin:
+    * Treat <p> tags as line breaks when pasting.
+    * Reverted pidgin.im#17232.
+      It caused more harm than good.
+  + Bonjour:
+    * Always use port fallback for IPv4 addresses.
+  + XMPP:
+    * Support for XEP-0198 Stream Management.
+    * Decrease delay for file transfer using streamhosts.
+  + Voice & Video:
+    * Improve webcam failure handling.
+    * Show error when creating media pipeline fails.
+    * Clip audio level reporting (pidgin.im#14426).
+    * Keep track of devices managed by GstDeviceMonitor.
+    * Ignore PulseAudio monitors.
+    * Backport native Voice & Video prefs from 3.0.
+    * Fix building against GStreamer 0.10.
+    * Fix initial delay on incoming audio.
+    * Properly cleanup timeouts.
+    * Add an audio mixer so mixed sources don't cause a pipe
+      failure.
+    * Add screen share support for Wayland via XDP Portal.
+    * Handle unplug and replug events of selected media device.
+- Rebase pidgin-nonblock-common.patch.
+- Drop pidgin-enable-sni-gnutls.patch,
+  pidgin-Leaky-deprecation-clean-ups.patch: fixed upstream.
+- Drop pidgin-ncurses-6.0-accessors.patch: moved to the libgnt
+  package.
+- Drop support for openSUSE older than Leap 15.0.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:18:56 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

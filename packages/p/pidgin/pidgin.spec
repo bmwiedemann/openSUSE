@@ -1,7 +1,7 @@
 #
 # spec file for package pidgin
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define _name   Pidgin
 Name:           pidgin
-Version:        2.13.0
+Version:        2.14.0
 Release:        0
 Summary:        Multiprotocol Instant Messaging Client
 License:        GPL-2.0-only
@@ -34,14 +34,8 @@ Patch0:         pidgin-nonblock-common.patch
 Patch1:         pidgin-nonblock-gwim.patch
 # PATCH-FIX-OPENSUSE pidgin-fix-perl-build.patch vuntz@opensuse.org -- Revert https://bitbucket.org/pidgin/main/commits/a083625 as it breaks the build.
 Patch2:         pidgin-fix-perl-build.patch
-# PATCH-FIX-UPSTREAM pidgin-ncurses-6.0-accessors.patch pidgin.im#16764 dimstar@opensuse.org -- Fix build with NCurses 6.0 with WINDOW_OPAQUE set to 1.
-Patch3:         pidgin-ncurses-6.0-accessors.patch
 # PATCH-FIX-SLE pidgin-use-default-alsa.patch bsc#886670 tiwai@suse.de -- Use ALSA as a default for avoiding broken volume control.
-Patch4:         pidgin-use-default-alsa.patch
-# PATCH-FIX-UPSTREAM pidgin-enable-sni-gnutls.patch bsc#1086439 pidgin.im#17300 fezhang@suse.com -- Enable SNI extension in GnuTLS connections.
-Patch5:         pidgin-enable-sni-gnutls.patch
-# PATCH-FIX-UPSTREAM pidgin-Leaky-deprecation-clean-ups.patch pidgin.im#17415 fezhang@suse.com -- Fix warnings of deprecation of GParameter
-Patch6:         pidgin-Leaky-deprecation-clean-ups.patch
+Patch3:         pidgin-use-default-alsa.patch
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -58,8 +52,13 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(avahi-glib)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
+BuildRequires:  pkgconfig(farstream-0.2) >= 0.2.7
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gnt) >= 2.14.0
 BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gstreamer-app-1.0)
+BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(gtkspell-2.0)
 BuildRequires:  pkgconfig(libgadu)
@@ -80,17 +79,7 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xscrnsaver)
 Requires:       ca-certificates-mozilla
 Requires:       perl-base >= %{perl_version}
-%if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 120200 || (0%{?sle_version} >= 120100 && 0%{?is_opensuse})
-BuildRequires:  pkgconfig(farstream-0.2) >= 0.2.7
-BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  pkgconfig(gstreamer-app-1.0)
-BuildRequires:  pkgconfig(gstreamer-video-1.0)
 Recommends:     gstreamer-plugins-good
-%else
-BuildRequires:  pkgconfig(gstreamer-0.10)
-BuildRequires:  pkgconfig(gstreamer-interfaces-0.10)
-Recommends:     gstreamer-0_10-plugins-good
-%endif
 %if 0%{?suse_version} >= 1500 && !0%{?is_opensuse}
 Recommends:     purple-import-empathy
 %endif
@@ -127,11 +116,7 @@ Requires:       cyrus-sasl-plain
 Requires:       libpurple-branding
 Requires:       perl >= %{perl_version}
 # Needed for purple-url-handler.
-%if 0%{?suse_version} >= 1500
 Requires:       python3-dbus-python
-%else
-Requires:       dbus-1-python3
-%endif
 
 %description -n libpurple
 libpurple is a library intended to be used by programmers seeking
@@ -148,7 +133,7 @@ support many more with plugins.
 Summary:        GLib-based Instant Messenger Library -- Upstream default configuration
 Group:          System/Libraries
 Requires:       libpurple = %{version}
-Supplements:    packageand(libpurple:branding-upstream)
+Supplements:    (libpurple and branding-upstream)
 Conflicts:      otherproviders(libpurple-branding)
 Provides:       libpurple-branding = %{version}
 BuildArch:      noarch
@@ -183,7 +168,7 @@ client.
 Summary:        TCL Plugin Support for Pidgin
 Group:          Productivity/Networking/Instant Messenger
 Requires:       libpurple = %{version}
-Supplements:    packageand(libpurple:tcl)
+Supplements:    (libpurple and tcl)
 
 %description -n libpurple-tcl
 TCL plugin loader for Pidgin. This package will allow you to write
@@ -231,12 +216,9 @@ translation-update-upstream
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 %if 0%{?sle_version} >= 120000 && !0%{?is_opensuse}
-%patch4 -p1
+%patch3 -p1
 %endif
-%patch5 -p1
-%patch6 -p1
 
 cp -f %{SOURCE3} %{name}-prefs.xml
 
@@ -260,20 +242,15 @@ autoreconf -fi
   --enable-cyrus-sasl \
   --enable-dbus \
   --enable-gstreamer \
-%if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 120200
   --with-gstreamer=1.0 \
   --enable-vv \
-%else
-  --with-gstreamer=0.10 \
-  --disable-vv \
-%endif
   --disable-nm \
   --enable-dbus \
   --enable-devhelp \
   --with-tclconfig=%{_libdir} \
   --with-tkconfig=%{_libdir} \
   --with-system-ssl-certs=%{_sysconfdir}/ssl/certs/
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -298,22 +275,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %postun -n finch -p /sbin/ldconfig
 
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
-
 %files
-%if 0%{?suse_version} >= 1500
 %license COPYING
-%else
-%doc COPYING
-%endif
 %doc AUTHORS COPYRIGHT ChangeLog README doc/the_penguin.txt
 %{_bindir}/%{name}
 %{_libdir}/%{name}/
@@ -371,16 +334,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n finch
 %{_bindir}/finch
 %{_libdir}/finch/
-%{_libdir}/libgnt.so.*
-%{_libdir}/gnt/
 %dir %{_libdir}/finch/
 %{_mandir}/man1/finch.1%{?ext_man}
 
 %files -n finch-devel
 %{_includedir}/finch/
-%{_includedir}/gnt/
-%{_libdir}/libgnt.so
 %{_libdir}/pkgconfig/finch.pc
-%{_libdir}/pkgconfig/gnt.pc
 
 %changelog

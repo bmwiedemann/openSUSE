@@ -6,21 +6,21 @@
  	ft.c \
 +	purple-fifo.c \
 +	purple-io.c \
+ 	glibcompat.c \
  	idle.c \
  	imgstore.c \
- 	log.c \
-@@ -114,6 +116,8 @@ purple_coreheaders = \
+@@ -115,6 +117,8 @@ purple_coreheaders = \
  	desktopitem.h \
  	eventloop.h \
  	ft.h \
 +	purple-fifo.h \
 +	purple-io.h \
  	gaim-compat.h \
+ 	glibcompat.h \
  	idle.h \
- 	imgstore.h \
 --- a/libpurple/plugins/ssl/ssl-gnutls.c
 +++ b/libpurple/plugins/ssl/ssl-gnutls.c
-@@ -435,8 +435,6 @@ ssl_gnutls_close(PurpleSslConnection *gs
+@@ -439,8 +439,6 @@ ssl_gnutls_close(PurpleSslConnection *gs
  	if (gnutls_data->handshake_timer)
  		purple_timeout_remove(gnutls_data->handshake_timer);
  
@@ -29,7 +29,7 @@
  	gnutls_deinit(gnutls_data->session);
  
  	g_free(gnutls_data);
-@@ -524,6 +522,22 @@ ssl_gnutls_read(PurpleSslConnection *gsc
+@@ -529,6 +527,22 @@ ssl_gnutls_read(PurpleSslConnection *gsc
  }
  
  static size_t
@@ -52,7 +52,7 @@
  ssl_gnutls_write(PurpleSslConnection *gsc, const void *data, size_t len)
  {
  	PurpleSslGnutlsData *gnutls_data = PURPLE_SSL_GNUTLS_DATA(gsc);
-@@ -1296,6 +1310,23 @@ static PurpleCertificateScheme x509_gnut
+@@ -1301,6 +1315,23 @@ static PurpleCertificateScheme x509_gnut
  	x509_compare_pubkeys,            /* Compare public keys */
  };
  
@@ -76,7 +76,7 @@
  static PurpleSslOps ssl_ops =
  {
  	ssl_gnutls_init,
-@@ -1303,7 +1334,9 @@ static PurpleSslOps ssl_ops =
+@@ -1308,7 +1339,9 @@ static PurpleSslOps ssl_ops =
  	ssl_gnutls_connect,
  	ssl_gnutls_close,
  	ssl_gnutls_read,
@@ -88,7 +88,7 @@
  	/* padding */
 --- a/libpurple/plugins/ssl/ssl-nss.c
 +++ b/libpurple/plugins/ssl/ssl-nss.c
-@@ -1235,6 +1235,8 @@ static PurpleSslOps ssl_ops =
+@@ -1174,6 +1174,8 @@ static PurpleSslOps ssl_ops =
  	ssl_nss_connect,
  	ssl_nss_close,
  	ssl_nss_read,
