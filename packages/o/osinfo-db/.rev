@@ -304,4 +304,12 @@
     <comment>bsc#1172008 - Add support for openSUSE Leap 15.2 to the database</comment>
     <requestid>808302</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>29a332d7c3d5d8b20ffa7a2769d339d9</srcmd5>
+    <version>20200529</version>
+    <time>1591879501</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>812733</requestid>
+  </revision>
 </revisionlist>

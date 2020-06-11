@@ -1,6 +1,8 @@
---- osinfo-db-20200214/os/suse.com/sles-12.2.xml.orig	2020-03-05 12:41:10.502641607 -0700
-+++ osinfo-db-20200214/os/suse.com/sles-12.2.xml	2020-03-05 12:39:25.061288659 -0700
-@@ -41,6 +41,8 @@
+Index: osinfo-db-20200529/os/suse.com/sles-12.2.xml
+===================================================================
+--- osinfo-db-20200529.orig/os/suse.com/sles-12.2.xml
++++ osinfo-db-20200529/os/suse.com/sles-12.2.xml
+@@ -44,6 +44,8 @@
        <device id="http://pcisig.com/pci/8086/293e"/> 
      </devices>
  
@@ -9,9 +11,11 @@
      <media arch="x86_64">
        <iso>
          <system-id>LINUX</system-id>
---- osinfo-db-20200214/os/suse.com/sled-12.2.xml.orig	2020-03-05 12:38:06.540298601 -0700
-+++ osinfo-db-20200214/os/suse.com/sled-12.2.xml	2020-03-05 12:39:11.861122217 -0700
-@@ -41,6 +41,8 @@
+Index: osinfo-db-20200529/os/suse.com/sled-12.2.xml
+===================================================================
+--- osinfo-db-20200529.orig/os/suse.com/sled-12.2.xml
++++ osinfo-db-20200529/os/suse.com/sled-12.2.xml
+@@ -44,6 +44,8 @@
        <device id="http://pcisig.com/pci/8086/293e"/> 
      </devices>
  

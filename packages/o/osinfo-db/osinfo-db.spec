@@ -17,7 +17,7 @@
 
 
 Name:           osinfo-db
-Version:        20200214
+Version:        20200529
 Release:        0
 Summary:        Osinfo database files
 License:        LGPL-2.1+ and GPL-2.0+
@@ -25,7 +25,6 @@ Group:          System/Management
 BuildArch:      noarch
 Url:            https://releases.pagure.org/libosinfo/
 Source:         https://releases.pagure.org/libosinfo/%{name}-%{version}.tar.xz
-Patch1:         5bbe30db-opensuse-add-info-about-UEFI-support.patch
 Patch21:        add-oes-support.patch
 Patch22:        add-caasp40-support.patch
 Patch23:        add-sle15sp2-support.patch
@@ -43,7 +42,6 @@ provisioning of new virtual machines
 
 %prep
 %setup -q
-%patch1 -p1
 %patch21 -p1
 %patch22 -p1
 %patch23 -p1

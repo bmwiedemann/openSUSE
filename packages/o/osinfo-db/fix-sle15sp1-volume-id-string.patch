@@ -1,8 +1,8 @@
-Index: osinfo-db-20200214/os/suse.com/sle-15.1.xml
+Index: osinfo-db-20200529/os/suse.com/sle-15.1.xml
 ===================================================================
---- osinfo-db-20200214.orig/os/suse.com/sle-15.1.xml
-+++ osinfo-db-20200214/os/suse.com/sle-15.1.xml
-@@ -26,7 +26,7 @@
+--- osinfo-db-20200529.orig/os/suse.com/sle-15.1.xml
++++ osinfo-db-20200529/os/suse.com/sle-15.1.xml
+@@ -29,7 +29,7 @@
      <media arch="x86_64">
        <iso>
          <system-id>LINUX</system-id>
@@ -11,7 +11,7 @@ Index: osinfo-db-20200214/os/suse.com/sle-15.1.xml
        </iso>
        <kernel>boot/x86_64/loader/linux</kernel>
        <initrd>boot/x86_64/loader/initrd</initrd>
-@@ -35,7 +35,7 @@
+@@ -38,7 +38,7 @@
      <media arch="aarch64">
        <iso>
          <system-id>LINUX</system-id>
@@ -20,7 +20,7 @@ Index: osinfo-db-20200214/os/suse.com/sle-15.1.xml
        </iso>
        <kernel>boot/aarch64/linux</kernel>
        <initrd>boot/aarch64/initrd</initrd>
-@@ -44,7 +44,7 @@
+@@ -47,7 +47,7 @@
      <media arch="ppc64">
        <iso>
          <system-id>LINUX</system-id>
@@ -29,7 +29,7 @@ Index: osinfo-db-20200214/os/suse.com/sle-15.1.xml
        </iso>
        <kernel>boot/ppc64le/linux</kernel>
        <initrd>boot/ppc64le/initrd</initrd>
-@@ -53,7 +53,7 @@
+@@ -56,7 +56,7 @@
      <media arch="s390x">
        <iso>
          <system-id>LINUX</system-id>
@@ -38,7 +38,7 @@ Index: osinfo-db-20200214/os/suse.com/sle-15.1.xml
        </iso>
        <kernel>boot/s390x/linux</kernel>
        <initrd>boot/s390x/initrd</initrd>
-@@ -72,4 +72,4 @@
+@@ -75,4 +75,4 @@
        </recommended>
      </resources>
    </os>
