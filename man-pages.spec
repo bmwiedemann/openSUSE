@@ -17,7 +17,7 @@
 
 
 Name:           man-pages
-Version:        5.06
+Version:        5.07
 Release:        0
 Summary:        Linux  Manual Pages
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
@@ -27,7 +27,6 @@ URL:            https://www.kernel.org/doc/man-pages/download.html
 #Git-Web:	http://git.kernel.org/cgit/docs/man-pages/man-pages.git/
 Source:         https://git.kernel.org/pub/scm/docs/man-pages/man-pages.git/snapshot/man-pages-%{version}.tar.gz
 Patch0:         %{name}.eal3.diff
-Patch1:         %{name}-remove-ioctl_list-reference.patch
 Patch3:         %{name}_gai.conf-reference.patch
 Patch5:         %{name}-tty_ioctl.patch
 # [bsc#1154701]
@@ -49,16 +48,12 @@ only).
 %prep
 %setup -q
 %patch0 -p2
-%patch1 -p1
 %patch3
 %patch5 -p1
 %patch6 -p1
 find -name "*.orig" | xargs rm -fv
 
 %build
-# not current anymore (list of ioctl calls in Linux/i386 kernel 1.3.27)
-# remove-ioctl_list-reference.patch removes references from ioctl.2
-rm man2/ioctl_list.2
 # glibc
 rm man3/{getifaddrs.3,freeifaddrs.3,crypt.3,crypt_r.3}
 # remove .so link to bzero.3, conflicts with libbsd
