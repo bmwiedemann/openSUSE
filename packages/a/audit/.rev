@@ -749,4 +749,13 @@ use in the latter.
 Fix bz#1160384</comment>
     <requestid>765091</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>bf35b5f27b3a6dd442a9edc976d7921f</srcmd5>
+    <version>2.8.5</version>
+    <time>1591879119</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix specfile to require libauparse0 and libaudit1 after splitting
+  audit-libs (bsc#1172295)</comment>
+    <requestid>810662</requestid>
+  </revision>
 </revisionlist>

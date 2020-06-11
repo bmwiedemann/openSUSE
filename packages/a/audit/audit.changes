@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  1 17:11:49 UTC 2020 - Enzo Matsumiya <ematsumiya@suse.com>
+
+- Fix specfile to require libauparse0 and libaudit1 after splitting
+  audit-libs (bsc#1172295)
+
+-------------------------------------------------------------------
 Mon Jan 13 17:39:03 UTC 2020 - Tony Jones <tonyj@suse.com>
 
 - Update to version 2.6.5:

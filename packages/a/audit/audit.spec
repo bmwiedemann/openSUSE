@@ -32,7 +32,8 @@ BuildRequires:  kernel-headers >= 2.6.30
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  tcpd-devel
-Requires:       %{name}-libs = %{version}
+Requires:       libaudit1 = %{version}
+Requires:       libauparse0 = %{version}
 
 %description
 The audit package contains the user space utilities for storing and
