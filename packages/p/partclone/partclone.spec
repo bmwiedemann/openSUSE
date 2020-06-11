@@ -1,7 +1,7 @@
 #
 # spec file for package partclone
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Mariusz Fik <fisiu@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -49,6 +49,7 @@ ext2/3, reiserfs, reiser4, xfs, hfs+ file systems
 %autosetup
 
 %build
+export CFLAGS="%{optflags} -fcommon"
 autoreconf -fiv
 %configure \
   --enable-ncursesw \
@@ -66,7 +67,7 @@ autoreconf -fiv
   --enable-minix \
   --enable-reiserfs \
   --enable-exfat
-make %{?_smp_mflags} LIBS="-lncursesw -lpthread -lfuse"
+%make_build LIBS="-lncursesw -lpthread -lfuse"
 
 %install
 %make_install INSTLIBDIR=%{buildroot}%{_datadir}/%{name}
