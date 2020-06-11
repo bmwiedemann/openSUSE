@@ -43,10 +43,10 @@ frequency ranges for 802.11 wireless drivers.
 %doc README
 /lib/firmware/regulatory.db
 /lib/firmware/regulatory.db.p7s
-%dir %{_libexecdir}/crda
-%{_libexecdir}/crda/regulatory.bin
-%dir %{_libexecdir}/crda/pubkeys
-%{_libexecdir}/crda/pubkeys/*pem
+%dir /usr/lib/crda
+/usr/lib/crda/regulatory.bin
+%dir /usr/lib/crda/pubkeys
+/usr/lib/crda/pubkeys/*pem
 %{_mandir}/man5/regulatory.db.5%{?ext_man}
 %{_mandir}/man5/regulatory.bin.5%{?ext_man}
 

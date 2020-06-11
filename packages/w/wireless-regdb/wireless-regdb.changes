@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  5 12:07:01 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec
+
+-------------------------------------------------------------------
 Wed May  6 10:52:49 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20200429:
