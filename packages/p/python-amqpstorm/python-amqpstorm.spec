@@ -26,9 +26,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/eandersson/amqpstorm
 Source:         https://files.pythonhosted.org/packages/source/A/AMQPStorm/AMQPStorm-%{version}.tar.gz
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose-timer}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pamqp >= 2.0.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -65,7 +64,7 @@ export LANG="en_US.UTF8"
 
 %check
 # test_heartbeat_basic_raise_on_missed_heartbeats randomly fails
-%python_expand nosetests-%{$python_bin_suffix} -v amqpstorm/tests/unit -e test_heartbeat_basic_raise_on_missed_heartbeats
+%pytest amqpstorm/tests/unit/* -k "not test_heartbeat_basic_raise_on_missed_heartbeats"
 
 %files %{python_files}
 %license LICENSE
