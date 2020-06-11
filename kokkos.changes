@@ -1,0 +1,139 @@
+-------------------------------------------------------------------
+Wed May  6 01:58:29 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- drop fix-StackTraceTest.patch, merged upstream
+- Version bump to 3.1.01: 
+  see https://github.com/kokkos/kokkos/blob/master/CHANGELOG.md
+  * Fixed bugs:
+    - Fix complex_double misalignment in reduce, clang+CUDA
+      [gh#kokkos/kokkos#2989]
+    - Fix compilation fails when profiling disabled and CUDA
+      enabled [gh#kokkos/kokkos#3001]
+    - Fix cuda reduction of non-trivial scalars of size 4
+      [gh#kokkos/kokkos#2990]
+    - Configure and install version file when building in Trilinos
+      [gh#kokkos/kokkos#2957]
+    - Fix OpenMPTarget build missing include and namespace
+      [gh#kokkos/kokkos#3000]
+    - fix typo in KOKKOS_SET_EXE_PROPERTY() [gh#kokkos/kokkos#2959]
+    - Fix non-zero span subviews of zero sized subviews
+      [gh#kokkos/kokkos#2979]
+
+-------------------------------------------------------------------
+Wed Apr 22 12:57:15 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- add missing Conflicts: marker
+
+-------------------------------------------------------------------
+Fri Apr 17 15:20:27 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- added fix-StackTraceTest.patch to fix StackTraceTest test
+- Version bump to 3.1.00:
+  see https://github.com/kokkos/kokkos/blob/master/CHANGELOG.md
+  * Features:
+    - HIP Support for AMD
+    - OpenMPTarget Support with clang
+    - Windows VS19 (Serial) Support [gh#kokkos/kokkos#1533]
+  * Implemented enhancements:
+    - generate_makefile.bash should allow tests to be disabled
+      [gh#kokkos/kokkos#2886]
+    - clang/7+cuda/9 build -Werror-unused parameter error in
+      nightly test [gh#kokkos/kokkos#2884]
+    - ScatterView memory space is not user settable
+      [gh#kokkos/kokkos#2826]
+    - clang/8+cuda/10.0 build error with c++17
+      [gh#kokkos/kokkos#2809]
+    - warnings.... [gh#kokkos/kokkos#2805]
+    - Kokkos version in cpp define [gh#kokkos/kokkos#2787]
+    - Remove Defunct QThreads Backend [gh#kokkos/kokkos#2751]
+    - Improve Kokkos::fence behavior with multiple execution
+      spaces [gh#kokkos/kokkos#2659]
+    - polylithic(?) initialization of Kokkos
+      [gh#kokkos/kokkos#2658]
+    - Unnecessary(?) check for host execution space initialization
+      from Cuda initialization [gh#kokkos/kokkos#2652]
+    - Kokkos error reporting failures with CUDA GPUs in exclusive
+      mode [gh#kokkos/kokkos#2471]
+    - atomicMax equivalent (and other atomics)
+      [gh#kokkos/kokkos#2401]
+    - Fix alignment for Kokkos::complex [gh#kokkos/kokkos#2255]
+    - Warnings with Cuda 10.1 [gh#kokkos/kokkos#2206]
+    - dual view with Kokkos::ViewAllocateWithoutInitializing
+      [gh#kokkos/kokkos#2188]
+    - Check error code from
+      cudaOccupancyMaxActiveBlocksPerMultiprocessor
+      [gh#kokkos/kokkos#2172]
+    - Add non-member Kokkos::resize/realloc for DualView
+      [gh#kokkos/kokkos#2170]
+    - Construct DualView without initialization
+      [gh#kokkos/kokkos#2046]
+    - Expose is_assignable to determine if one view can be
+      assigned to another [gh#kokkos/kokkos#1936]
+    - profiling label [gh#kokkos/kokkos#1935]
+    - team_broadcast of bool failed on CUDA backend
+      [gh#kokkos/kokkos#1908]
+    - View static_extent [gh#kokkos/kokkos#660]
+    - Misleading Kokkos::Cuda::initialize ERROR message when
+      compiled for wrong GPU architecture [gh#kokkos/kokkos#1944]
+    - Cryptic Error When Malloc Fails [gh#kokkos/kokkos#2164]
+    - Drop support for intermediate standards in CMake
+      [gh#kokkos/kokkos#2336]
+  * Fixed bugs:
+    - DualView sync_device with length zero creates cuda errors
+      [gh#kokkos/kokkos#2946]
+    - building with nvcc and clang (or clang based XL) as host
+      compiler: "Kokkos::atomic_fetch_min(volatile int *, int)"
+      has already been defined [gh#kokkos/kokkos#2903]
+    - Cuda 9.1,10.1 debug builds failing due to
+      -Werror=unused-parameter [gh#kokkos/kokkos#2880]
+    - clang -Werror: Kokkos_FixedBufferMemoryPool.hpp:140:28:
+      error: unused parameter 'alloc_size' [gh#kokkos/kokkos#2869]
+    - intel/16.0.1, intel/17.0.1 nightly build failures with
+      debugging enabled [gh#kokkos/kokkos#2867]
+    - intel/16.0.1 debug build errors [gh#kokkos/kokkos#2863]
+    - xl/16.1.1 with cpp14, openmp build, nightly test failures
+      [gh#kokkos/kokkos#2856]
+    - Intel nightly test failures: team_vector
+      [gh#kokkos/kokkos#2852]
+    - Kokkos Views with intmax/2<N<intmax can hang during
+      construction [gh#kokkos/kokkos#2850]
+    - workgraph_fib test seg-faults with threads backend and hwloc
+      [gh#kokkos/kokkos#2797]
+    - cuda.view_64bit test hangs on Power8+Kepler37 system -
+      develop and 2.9.00 branches [gh#kokkos/kokkos#2771]
+    - device_type for Kokkos_Random ? [gh#kokkos/kokkos#2693]
+    - "More than one tag given" error in Experimental::require()
+      [gh#kokkos/kokkos#2608]
+    - Segfault on Marvell from our finalization stack
+      [gh#kokkos/kokkos#2542]
+
+-------------------------------------------------------------------
+Thu Feb 27 21:47:22 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- Version bump to 3.0.00 - see https://github.com/kokkos/kokkos/blob/master/CHANGELOG.md
+  Implemented enhancements:
+  + BuildSystem: Standalone Modern CMake Support #2104
+  + StyleFormat: ClangFormat Style #2157
+  + Documentation: Document build system and CMake philosophy #2263
+  + BuildSystem: Add Alias with Namespace Kokkos:: to Interal Libraries #2530
+  + BuildSystem: Universal Kokkos find_package #2099
+  + BuildSystem: Dropping support for Kokkos_{DEVICES,OPTIONS,ARCH} in CMake #2329
+  + BuildSystem: Set Kokkos_DEVICES and Kokkos_ARCH variables in exported CMake configuration #2193
+  + BuildSystem: Drop support for CUDA 7 and CUDA 8 #2489
+  + BuildSystem: Drop CMake option SEPARATE_TESTS #2266
+  + BuildSystem: Support expt-relaxed-constexpr same as expt-extended-lambda #2411
+  + BuildSystem: Add Xnvlink to command line options allowed in nvcc_wrapper #2197
+  + BuildSystem: Install Kokkos config files and target files to lib/cmake/Kokkos #2162
+  + BuildSystem: nvcc_wrappers and c++ 14 #2035
+  + BuildSystem: Kokkos version major/version minor (Feature request) #1930
+  + BuildSystem: CMake namespaces (and other modern cmake cleanup) #1924
+  + BuildSystem: Remove capability to install Kokkos via GNU Makefiles #2332
+  + Documentation: Remove PDF ProgrammingGuide in Kokkos replace with link #2244
+  + View: Add Method to Resize View without Initialization #2048
+  + Vector: implement “insert” method for Kokkos_Vector (as a serial function on host) #2437
+
+-------------------------------------------------------------------
+Tue Feb  4 17:45:52 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- Initial commit
+
