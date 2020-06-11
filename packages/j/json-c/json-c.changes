@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Apr 28 07:45:45 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- json-c 0.14:
+  * bits.h has been removed
+  * lh_abort() has been removed
+  * lh_table_lookup() has been removed, use lh_table_lookup_ex() instead.
+  * Remove TRUE and FALSE defines, use 1 and 0 instead.
+  * Switch to cmake
+  * Build fixes
+  * Doc updates
+  * Added a json_tokener_get_parse_end() function to replace
+    direct access of tok->char_offset
+  * json_tokener_parse_ex() now accepts a new JSON_TOKENER_VALIDATE_UTF8 flag
+    to validate that input is UTF8
+  * Add support for unsigned 64-bit integers
+  * A total of 7 new functions were added:
+    * json_object_get_uint64 ( struct json_object const* jso )
+    * json_object_new_uint64 ( uint64_t i )
+    * json_object_set_uint64 ( struct json_object* jso, uint64_t new_value )
+    * json_parse_uint64 ( char const* buf, uint64_t* retval )
+        * See description of uint64 support, above.
+    * json_tokener_get_parse_end ( struct json_tokener* tok )
+        * See details under "json_tokener changes", above.
+    * json_object_from_fd_ex ( int fd, int in_depth )
+        * Allows the max nesting depth to be specified.
+    * json_object_new_null ( )
+        * Simply returns NULL.  Its use is not recommended.
+  * The size of struct json_object has decreased from 96 bytes to 88 bytes.
+
+-------------------------------------------------------------------
 Tue Mar 13 01:21:57 UTC 2018 - avindra@opensuse.org
 
 - json-c 0.13.1

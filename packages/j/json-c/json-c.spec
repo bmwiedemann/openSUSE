@@ -1,7 +1,7 @@
 #
 # spec file for package json-c
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define libname libjson-c
-%define libsoname %{libname}4
+%define libsoname %{libname}5
 %define oldlibname libjson
 Name:           json-c
-Version:        0.13.1
+Version:        0.14
 Release:        0
 Summary:        JSON implementation in C
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/json-c/json-c/wiki
+URL:            https://github.com/json-c/json-c/wiki
 #Git-Clone	git://github.com/json-c/json-c
 Source0:        https://s3.amazonaws.com/json-c_releases/releases/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -92,14 +93,19 @@ This package includes the json-c documentation.
 sed -i 's/-Werror //g' Makefile.am.inc
 autoreconf -fiv
 %endif
-%configure --disable-static --with-pic --disable-oldname-compat
-make %{?_smp_mflags}
+%cmake \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=%{_libdir} \
+    -DENABLE_THREADING=ON \
+    -DENABLE_RDRAND=ON
 
 %check
-make %{?_smp_mflags} check
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
+%ctest
 
 %install
-%make_install
+%cmake_install
 find %{buildroot} -type f -name "*.la" -delete -print
 # create a compatibilty pkg-config file for software needing it
 (cd %{buildroot}%{_libdir}/pkgconfig && ln -s json-c.pc json.pc)
@@ -118,6 +124,10 @@ cp -R doc/html "%{buildroot}%{_docdir}/%{name}-doc"
 %{_libdir}/%{libname}.so
 %{_includedir}/json-c
 %{_libdir}/pkgconfig/*.pc
+%dir %{_libdir}/cmake/json-c
+%{_libdir}/cmake/json-c/json-c-config.cmake
+%{_libdir}/cmake/json-c/json-c-targets-none.cmake
+%{_libdir}/cmake/json-c/json-c-targets.cmake
 
 %files -n %{libname}-doc
 %license COPYING
