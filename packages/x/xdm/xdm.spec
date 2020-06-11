@@ -21,7 +21,7 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-%define _dminitdir %{_libexecdir}/X11/displaymanagers
+%define _dminitdir /usr/lib/X11/displaymanagers
 %if 0%{?suse_version} > 1230
 %define with_systemd 1
 %else
@@ -211,9 +211,9 @@ chmod 0755 %{buildroot}%{_sbindir}/rcxdm
 # prepare for defaul-dm to be chosen by means of update-alternatives
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-displaymanager
-ln -s %{_sysconfdir}/alternatives/default-displaymanager %{buildroot}%{_libexecdir}/X11/displaymanagers/default-displaymanager
+ln -s %{_sysconfdir}/alternatives/default-displaymanager %{buildroot}/usr/lib/X11/displaymanagers/default-displaymanager
 # Inject a dummy 'console' selection - which used to be choice in /etc/sysconfig/displaymanager
-touch %{buildroot}%{_libexecdir}/X11/displaymanagers/console
+touch %{buildroot}/usr/lib/X11/displaymanagers/console
 %endif
 
 %post
@@ -224,10 +224,10 @@ touch %{buildroot}%{_libexecdir}/X11/displaymanagers/console
 %{fillup_only -n displaymanager}
 %endif
 %if 0%{?suse_version} >= 1330
-%{_sbindir}/update-alternatives --install %{_libexecdir}/X11/displaymanagers/default-displaymanager \
-  default-displaymanager %{_libexecdir}/X11/displaymanagers/console 5
-%{_sbindir}/update-alternatives --install %{_libexecdir}/X11/displaymanagers/default-displaymanager \
-  default-displaymanager %{_libexecdir}/X11/displaymanagers/xdm 10
+%{_sbindir}/update-alternatives --install /usr/lib/X11/displaymanagers/default-displaymanager \
+  default-displaymanager /usr/lib/X11/displaymanagers/console 5
+%{_sbindir}/update-alternatives --install /usr/lib/X11/displaymanagers/default-displaymanager \
+  default-displaymanager /usr/lib/X11/displaymanagers/xdm 10
 # get rid of DISPLAYMANAGER in /etc/sysconfig/displaymanager (boo#1125040)
 sed -i 's/DISPLAYMANAGER=.*//g' /etc/sysconfig/displaymanager
 %endif
@@ -248,10 +248,10 @@ sed -i 's/DISPLAYMANAGER=.*//g' /etc/sysconfig/displaymanager
 %service_del_postun -n display-manager.service
 %endif
 %if 0%{?suse_version} >= 1330
-[ -f %{_libexecdir}/X11/displaymanagers/console ] || %{_sbindir}/update-alternatives \
-  --remove default-displaymanager %{_libexecdir}/X11/displaymanagers/console
-[ -f %{_libexecdir}/X11/displaymanagers/xdm ] || %{_sbindir}/update-alternatives \
-  --remove default-displaymanager %{_libexecdir}/X11/displaymanagers/xdm
+[ -f /usr/lib/X11/displaymanagers/console ] || %{_sbindir}/update-alternatives \
+  --remove default-displaymanager /usr/lib/X11/displaymanagers/console
+[ -f /usr/lib/X11/displaymanagers/xdm ] || %{_sbindir}/update-alternatives \
+  --remove default-displaymanager /usr/lib/X11/displaymanagers/xdm
 %endif
 
 %preun
@@ -267,7 +267,7 @@ sed -i 's/DISPLAYMANAGER=.*//g' /etc/sysconfig/displaymanager
 %{_dminitdir}/xdm
 %if 0%{?suse_version} >= 1330
 %{_dminitdir}/console
-%{_libexecdir}/X11/displaymanagers/default-displaymanager
+/usr/lib/X11/displaymanagers/default-displaymanager
 %ghost %{_sysconfdir}/alternatives/default-displaymanager
 %endif
 %if %dm_fallbacks
@@ -281,19 +281,19 @@ sed -i 's/DISPLAYMANAGER=.*//g' /etc/sysconfig/displaymanager
 %config %{_sysconfdir}/X11/xdm/
 %dir %{_sysconfdir}/X11/xdm/scripts
 %if 0%{?suse_version} > 1320
-%dir %{_libexecdir}/firewalld
-%dir %{_libexecdir}/firewalld/services
-%{_libexecdir}/firewalld/services/x11.xml
+%dir /usr/lib/firewalld
+%dir /usr/lib/firewalld/services
+/usr/lib/firewalld/services/x11.xml
 %else
 %config(noreplace) %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/xdmcp
 %endif
 %if 0%{?suse_version} < 1315
 %{_sysconfdir}/init.d/xdm
-%exclude %{_libexecdir}/X11/display-manager
+%exclude /usr/lib/X11/display-manager
 %else
 %exclude %{_sysconfdir}/init.d/xdm
 %{_unitdir}/display-manager.service
-%{_libexecdir}/X11/display-manager
+/usr/lib/X11/display-manager
 %endif
 %config %{_sysconfdir}/logrotate.d/xdm
 %config(noreplace) %{_sysconfdir}/pam.d/xdm

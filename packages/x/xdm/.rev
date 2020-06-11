@@ -772,4 +772,12 @@
   enable xdmcp for xdm (boo#1167293)</comment>
     <requestid>787134</requestid>
   </revision>
+  <revision rev="80" vrev="6">
+    <srcmd5>296806b047e3a46db2d022f66583bbbb</srcmd5>
+    <version>1.1.12</version>
+    <time>1591862372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811813</requestid>
+  </revision>
 </revisionlist>
