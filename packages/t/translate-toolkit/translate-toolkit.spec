@@ -61,6 +61,7 @@ BuildRequires:  git-core
 BuildRequires:  iso-codes
 BuildRequires:  python-rpm-macros
 Requires:       gettext-runtime
+Requires:       python
 Requires:       python-lxml
 Requires:       python-pycountry >= 18.12.8
 Requires:       python-pyenchant

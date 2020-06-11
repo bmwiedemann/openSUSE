@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 10 11:41:50 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- We need full python interpreter bsc#1172650
+
+-------------------------------------------------------------------
 Wed May 13 07:38:17 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Clean up, rewrite to single-spec style, and use %pytest macro.

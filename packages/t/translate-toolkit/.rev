@@ -299,4 +299,12 @@
     <comment></comment>
     <requestid>807150</requestid>
   </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>4f6e8b46de8ff2ce3de21f4a4db1d09d</srcmd5>
+    <version>2.5.0</version>
+    <time>1591879422</time>
+    <user>dimstar_suse</user>
+    <comment>- We need full python interpreter bsc#1172650</comment>
+    <requestid>813204</requestid>
+  </revision>
 </revisionlist>
