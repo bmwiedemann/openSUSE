@@ -8,14 +8,15 @@
     <param name="versionrewrite-pattern">\+0$</param>
     <param name="versionrewrite-replacement"></param>
     <param name="revision">master</param>
-    <param name="exclude">*.spec</param>
     <param name="exclude">*.rpmlintrc</param>
   </service>
-  <service mode="disabled" name="set_version">
-    <param name="basename">suse-module-tools</param>
-  </service>
-  <service mode="disabled" name="recompress">
+<service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="extract_file">
+    <param name="archive">*.tar.xz</param>
+    <param name="files">*/suse-module-tools.spec</param>
+    <param name="outfilename">suse-module-tools.spec</param>
   </service>
 </services>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun  5 15:28:50 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Reverted back to tar_scm source service
+  (obs_scm doesn't work well for Ring0 packages)
+
+-------------------------------------------------------------------
+Wed May 27 20:49:04 UTC 2020 - mwilck@suse.com
+
+- Update to version 15.3.3:
+  * spec: remove SLE/openSUSE difference in allow_unsupported_modules
+  (jsc#SLE-12255)
+  * spec: use same fs_blacklist on SLE and openSUSE
+  (jsc#SLE-12255, jsc#SLE-3926)
+  * spec: use br_netfilter softdep only for SLE12
+  (jsc#SLE-12255, bsc#1166531, boo#1158817, bsc#937216)
+
+-------------------------------------------------------------------
 Fri Apr 17 15:32:54 UTC 2020 - mwilck@suse.com
 
 - Update to version 15.3.2:

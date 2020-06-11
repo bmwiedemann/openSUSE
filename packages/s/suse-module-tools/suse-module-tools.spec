@@ -21,19 +21,14 @@
 %define modules_load_dir /usr/lib/modules-load.d
 
 # List of legacy file systems to be blacklisted by default
-%if 0%{?is_opensuse}
 %global fs_blacklist adfs affs bfs befs cramfs efs erofs exofs freevxfs f2fs hfs hpfs jfs minix nilfs2 ntfs omfs qnx4 qnx6 sysv ufs
-%else
-# SLE only ships a few of them
-%global fs_blacklist cramfs ufs
-%endif
 
-%if 0%{?sle_version} >= 120200 && 0%{?is_opensuse} == 0
+%if 0%{?sle_version} >= 120200 && 0%{?sle_version} < 150000
 %global softdep_br_netfilter 1
 %endif
 
 Name:           suse-module-tools
-Version:        15.3.2
+Version:        15.3.3
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
@@ -81,10 +76,6 @@ SLE 11 and later.
 %setup -q
 
 %build
-%if 0%{?is_opensuse} == 0
-sed -ri 's/^( *allow_unsupported_modules *) 1/\1 0/' \
-	10-unsupported-modules.conf
-%endif
 
 %install
 # now assemble the parts for modprobe.conf

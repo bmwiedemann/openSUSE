@@ -338,4 +338,13 @@
   (bsc#1168661)</comment>
     <requestid>794962</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a09bae022fcd214ad9849cc0fa7f45f1</srcmd5>
+    <version>15.3.3</version>
+    <time>1591879298</time>
+    <user>dimstar_suse</user>
+    <comment>- Reverted back to tar_scm source service
+  (obs_scm doesn't work well for Ring0 packages) (forwarded request 811878 from mwilck)</comment>
+    <requestid>811879</requestid>
+  </revision>
 </revisionlist>
