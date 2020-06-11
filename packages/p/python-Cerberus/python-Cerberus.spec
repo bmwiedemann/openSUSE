@@ -1,7 +1,7 @@
 #
 # spec file for package python-Cerberus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-Cerberus
 Version:        1.3.2
 Release:        0
 Summary:        Extensible schema and data validation tool for Python dictionaries
 License:        ISC
 Group:          Development/Languages/Python
-Url:            http://github.com/nicolaiarocci/cerberus
+URL:            http://github.com/nicolaiarocci/cerberus
 Source:         https://files.pythonhosted.org/packages/source/C/Cerberus/Cerberus-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros

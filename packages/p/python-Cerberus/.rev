@@ -87,4 +87,12 @@
   - Docs: Examples were added for the min- and maxlength rules. (#509)</comment>
     <requestid>747462</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>601db6b75eb2fa61806c2ae31678d92e</srcmd5>
+    <version>1.3.2</version>
+    <time>1591879418</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>813194</requestid>
+  </revision>
 </revisionlist>
