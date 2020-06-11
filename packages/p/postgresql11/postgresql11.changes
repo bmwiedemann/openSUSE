@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun  3 17:35:11 UTC 2020 - Reinhard Max <max@suse.com>
+
+- update to 11.8 (bsc#1171924).
+  https://www.postgresql.org/about/news/2038/
+  https://www.postgresql.org/docs/11/release-11-8.html
+- Unify the spec file to work across all current PostgreSQL
+  versions to simplify future maintenance.
+
+-------------------------------------------------------------------
 Sat Feb 15 03:10:12 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 11.7: (CVE-2020-1720) 

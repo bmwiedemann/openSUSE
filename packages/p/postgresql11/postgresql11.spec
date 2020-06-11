@@ -16,30 +16,15 @@
 #
 
 
-%if 0%{?suse_version} >= 1300
-%bcond_without  systemd
-%else
-%bcond_with     systemd
-%endif
-%if 0%{?suse_version} >= 1500
-%bcond_without  systemd_notify
-%bcond_without  llvm
-%else
-%bcond_with     systemd_notify
-%bcond_with     llvm
-%endif
-
-%bcond_without  selinux
-%bcond_without  icu
-%ifnarch %arm
-%bcond_without  check
-%else
-%bcond_with     check
-%endif
-
+%define pgversion 11.8
 %define pgmajor 11
-%define pgname postgresql%pgmajor
-%define priority %{pgmajor}
+%define pgsuffix %pgmajor
+%define buildlibs 0
+%define tarversion %{pgversion}
+
+### CUT HERE ###
+%define pgname postgresql%pgsuffix
+%define priority %pgsuffix
 %define libpq libpq5
 %define libecpg libecpg6
 %define libpq_so libpq.so.5
@@ -55,30 +40,64 @@
 %define pgcontribdir %pgdatadir/contrib
 %define pgmandir %_mandir
 
-%if "@BUILD_FLAVOR@" == "libs"
-Name:           %pgname-libs
-%define buildmain 0
-%define buildlibs 0
-%define builddevel 1
-%else
 Name:           %pgname
-%define buildmain 1
-%define buildlibs 0
-%define builddevel 0
+%if "@BUILD_FLAVOR@" == "mini"
+%define devel devel-mini
+%define mini 1
+%else
+%define devel devel
+%define mini 0
 %endif
 
-%if %buildmain
+# Use Python 2 for PostgreSQL 9.x on all platforms and for PostgreSQL 10 on SLE12.
+# Use Python 3 for everything else.
+%if %pgsuffix < 90 && ( 0%{?is_opensuse} || 0%{?sle_version} >= 150000 || %pgsuffix > 10 )
+%define python python3
+%else
+%define python python
+%endif
+
+%if %mini
+%bcond_with  selinux
+%bcond_with  icu
+%else
+BuildRequires:  %{python}-devel
 BuildRequires:  docbook_4
 BuildRequires:  gettext-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  pam-devel
-BuildRequires:  python3-devel
 BuildRequires:  readline-devel
 BuildRequires:  tcl-devel
 BuildRequires:  timezone
 BuildRequires:  zlib-devel
-# 
+%bcond_without  selinux
+%bcond_without  icu
+%if 0%{?suse_version} >= 1300
+%bcond_without  systemd
+%bcond_without  systemd_notify
+%else
+%bcond_with     systemd
+%bcond_with     systemd_notify
+%endif
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1500 && %pgsuffix >= 11 && %pgsuffix < 90
+%bcond_without  llvm
+%else
+# LLVM is currently unsupported on SLE, so don't use it
+%bcond_with     llvm
+%endif
+%endif
+
+%ifnarch %arm
+%bcond_without  check
+%else
+%bcond_with     check
+%endif
+
+%if ( %pgsuffix >= 11 && %pgsuffix < 90 ) || %mini
+%bcond_without server_devel
+%else
+%bcond_with server_devel
 %endif
 
 BuildRequires:  fdupes
@@ -89,7 +108,7 @@ BuildRequires:  libicu-devel
 BuildRequires:  libselinux-devel
 %endif
 %if %{with llvm}
-BuildRequires:  clang-devel
+BuildRequires:  clang
 BuildRequires:  gcc-c++
 BuildRequires:  llvm-devel
 %endif
@@ -97,11 +116,7 @@ BuildRequires:  libxslt-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
-%if 0%{?suse_version} == 1110
-BuildRequires:  krb5-devel
-%else
 BuildRequires:  pkgconfig(krb5)
-%endif
 %if %{with systemd_notify}
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
@@ -109,13 +124,14 @@ BuildRequires:  pkgconfig(systemd)
 #!BuildIgnore:  %pgname
 #!BuildIgnore:  %pgname-server
 #!BuildIgnore:  postgresql-implementation
+#!BuildIgnore:  postgresql-server-implementation
 Summary:        Basic Clients and Utilities for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
-Version:        11.7
+Version:        %pgversion
 Release:        0
-Source0:        https://ftp.postgresql.org/pub/source/v%{version}/postgresql-%{version}.tar.bz2
-Source1:        https://ftp.postgresql.org/pub/source/v%{version}/postgresql-%{version}.tar.bz2.sha256
+Source0:        https://ftp.postgresql.org/pub/source/v%{version}/postgresql-%{tarversion}.tar.bz2
+Source1:        https://ftp.postgresql.org/pub/source/v%{version}/postgresql-%{tarversion}.tar.bz2.sha256
 Source2:        baselibs.conf
 Source3:        postgresql-README.SUSE
 Source17:       postgresql-rpmlintrc
@@ -187,20 +203,65 @@ and functions.
 This package provides the runtime library of the embedded SQL C
 preprocessor for PostgreSQL.
 
-%if %builddevel
-%package -n %pgname-devel
+%package %devel
 Summary:        PostgreSQL client development header files and libraries
 Group:          Development/Libraries/C and C++
+Provides:       postgresql-devel = %version-%release
 Provides:       postgresql-devel-implementation = %version-%release
+%if %mini
+Requires:       this-is-only-for-build-envs
+Provides:       %pgname-devel = %version-%release
+%else
 Requires:       %libecpg >= %version
 Requires:       %libpq >= %version
-Requires(post): postgresql-noarch >= %pgmajor
-Requires(postun): postgresql-noarch >= %pgmajor
+%endif
 # Installation of postgresql??-devel is exclusive
 Provides:       postgresql-devel-exclusive = %pgmajor
 Conflicts:      postgresql-devel-exclusive < %pgmajor
 
-%description -n %pgname-devel
+%if %{with server_devel}
+%package server-devel
+Summary:        PostgreSQL server development header files and utilities
+Group:          Development/Libraries/C and C++
+%else
+Provides:       %pgname-server-devel = %version-%release
+%endif
+Provides:       postgresql-server-devel = %version-%release
+Provides:       postgresql-server-devel-implementation = %version-%release
+Requires(post): postgresql-server-noarch >= %pgmajor
+Requires(postun): postgresql-server-noarch >= %pgmajor
+Requires:       %pgname-devel = %version
+Requires:       %pgname-server = %version-%release
+# Installation of postgresql??-devel is exclusive
+Provides:       postgresql-server-devel-exclusive = %pgmajor
+Conflicts:      postgresql-server-devel-exclusive < %pgmajor
+%if %{with llvm}
+Requires:       clang
+Requires:       llvm
+%endif
+Requires:       libxslt-devel
+Requires:       openssl-devel
+Requires:       pam-devel
+Requires:       readline-devel
+Requires:       zlib-devel
+Requires:       pkgconfig(krb5)
+%if %{with selinux}
+Requires:       libselinux-devel
+%endif
+
+%if %{with server_devel}
+%description server-devel
+PostgreSQL is an advanced object-relational database management system
+that supports an extended subset of the SQL standard, including
+transactions, foreign keys, subqueries, triggers, and user-defined
+types and functions.
+
+This package contains the header files and libraries needed to compile
+C extensions that link into the PostgreSQL server. For building client
+applications, see the postgresql%pgsuffix-devel package.
+%endif
+
+%description %devel
 PostgreSQL is an advanced object-relational database management system
 that supports an extended subset of the SQL standard, including
 transactions, foreign keys, subqueries, triggers, and user-defined
@@ -213,11 +274,7 @@ need to install this package if you want to develop applications in C
 which will interact with a PostgreSQL server.
 
 For building PostgreSQL server extensions, see the
-postgresql%pgmajor-server-devel package.
-
-%endif
-
-%if %buildmain
+postgresql%pgsuffix-server-devel package.
 
 %package server
 Summary:        The Programs Needed to Create and Run a PostgreSQL Server
@@ -226,6 +283,9 @@ PreReq:         /sbin/chkconfig
 PreReq:         postgresql = %version
 Requires:       glibc-locale
 Requires:       timezone
+%if %{with llvm}
+Recommends:     %{name}-llvmjit
+%endif
 Provides:       postgresql-server-implementation = %version-%release
 Requires:       %libpq >= %version
 Requires(pre):  postgresql-server-noarch >= %pgmajor
@@ -244,46 +304,6 @@ This package includes the programs needed to create and run a
 PostgreSQL server, which will in turn allow you to create and maintain
 PostgreSQL databases.
 
-%package server-devel
-Summary:        PostgreSQL server development header files and utilities
-Group:          Development/Libraries/C and C++
-Provides:       postgresql-server-devel = %version-%release
-Provides:       postgresql-server-devel-implementation = %version-%release
-Requires(post): postgresql-server-noarch >= %pgmajor
-Requires(postun): postgresql-server-noarch >= %pgmajor
-Requires:       %pgname-devel = %version
-Requires:       %pgname-server = %version-%release
-# Installation of postgresql??-devel is exclusive
-Provides:       postgresql-server-devel-exclusive = %pgmajor
-Conflicts:      postgresql-server-devel-exclusive < %pgmajor
-%if %{with llvm}
-Requires:       clang-devel
-%endif
-Requires:       libxslt-devel
-Requires:       openssl-devel
-Requires:       pam-devel
-Requires:       readline-devel
-Requires:       zlib-devel
-%if 0%{?suse_version} == 1110
-Requires:       krb5-devel
-%else
-Requires:       pkgconfig(krb5)
-%endif
-%if %{with selinux}
-Requires:       libselinux-devel
-%endif
-
-%description server-devel
-PostgreSQL is an advanced object-relational database management system
-that supports an extended subset of the SQL standard, including
-transactions, foreign keys, subqueries, triggers, and user-defined
-types and functions.
-
-This package contains the header files and libraries needed to compile
-C extensions that link into the PostgreSQL server. For building client
-applications, see the postgresql%pgmajor-devel package.
-
-%if %{with llvm}
 %package llvmjit
 Summary:        Just-in-time compilation support for PostgreSQL
 Group:          Productivity/Databases/Servers
@@ -301,7 +321,6 @@ This package contains support for just-in-time compiling parts of
 PostgreSQL queries. Using LLVM it compiles e.g. expressions and tuple
 deforming into native code, with the goal of accelerating analytics
 queries.
-%endif
 
 %package test
 Summary:        The test suite for PostgreSQL
@@ -320,9 +339,7 @@ Summary:        HTML Documentation for PostgreSQL
 Group:          Productivity/Databases/Tools
 Provides:       postgresql-docs-implementation = %version-%release
 Requires:       postgresql-docs-noarch >= %pgmajor
-%if 0%{?suse_version} >= 1120
 BuildArch:      noarch
-%endif
 
 %description docs
 PostgreSQL is an advanced object-relational database management system
@@ -377,8 +394,8 @@ Summary:        The PL/Python Procedural Languages for PostgreSQL
 Group:          Productivity/Databases/Servers
 Provides:       postgresql-plpython-implementation = %version-%release
 Requires:       %pgname-server = %version-%release
+Requires:       %python
 Requires:       postgresql-plpython-noarch >= %pgmajor
-Requires:       python
 
 %description plpython
 PostgreSQL is an advanced object-relational database management system
@@ -414,17 +431,15 @@ and triggers.
 PostgreSQL also offers the built-in procedural language PL/SQL which is
 included in the postgresql-server package.
 
-%endif
-
 %prep
-%setup -q -n postgresql-%version
+%setup -q -n postgresql-%tarversion
 # Keep the timestamp of configure, because patching it would otherwise
 # confuse PostgreSQL's build system
 touch -r configure tmp
 %patch1
 %patch2
 %patch4
-%patch6 -p1
+%patch6
 %patch8 -p1
 %patch9
 touch -r tmp configure
@@ -434,7 +449,7 @@ find -name .gitignore -delete
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-export PYTHON=python3
+export PYTHON=%python
 %ifarch %arm
 export USE_ARMV8_CRC32C=0
 %endif
@@ -449,7 +464,7 @@ PACKAGE_TARNAME=%pgname %configure \
         --enable-nls \
         --enable-thread-safety \
         --enable-integer-datetimes \
-%if %buildmain
+%if !%mini
         --with-python \
         --with-perl \
         --with-tcl \
@@ -478,8 +493,8 @@ PACKAGE_TARNAME=%pgname %configure \
         --with-gssapi \
         --with-krb5 \
         --with-system-tzdata=/usr/share/zoneinfo
-%if !%buildmain
-make -C src/interfaces %{?_smp_mflags}
+%if %mini
+make -C src/interfaces %{?_smp_mflags} PACKAGE_TARNAME=%pgname
 %else
 make %{?_smp_mflags} PACKAGE_TARNAME=%pgname
 
@@ -501,12 +516,20 @@ make check || {
 %endif
 
 %install
-%if %buildmain
+VLANG=${RPM_PACKAGE_VERSION%%.*}
+VSO=${RPM_PACKAGE_VERSION%%%%.*}
+%if %mini
+make DESTDIR=%buildroot PACKAGE_TARNAME=%pgname -C src/include install
+make DESTDIR=%buildroot PACKAGE_TARNAME=%pgname -C src/interfaces install
+rm -rf %buildroot%pgincludedir/server
+%else
 make DESTDIR=%buildroot PACKAGE_TARNAME=%pgname install install-docs
+%if 0
 mv %buildroot%pgincludedir/{server,..}
 make DESTDIR=%buildroot PACKAGE_TARNAME=%pgname -C src/interfaces uninstall
 rm -rf %buildroot%pgincludedir/*
 mv %buildroot%pgincludedir{/../server,}
+%endif
 
 # {{{ the test package
 mkdir -p %buildroot%pgtestdir/regress
@@ -517,11 +540,6 @@ for i in  src/test/regress/{data,expected,input,output,sql}; do
 done
 install -m 0644 src/test/regress/{serial,parallel}_schedule %buildroot%pgtestdir/regress
 # }}}
-%endif
-%if %builddevel || %buildlibs
-make DESTDIR=%buildroot PACKAGE_TARNAME=%pgname -C src/include install
-make DESTDIR=%buildroot PACKAGE_TARNAME=%pgname -C src/interfaces install
-rm -rf %buildroot%pgincludedir/server
 %endif
 
 # The client libraries go to libdir
@@ -535,7 +553,8 @@ find %buildroot%_libdir/pkgconfig -type f -exec sed -i 's, -L%pglibdir,,' '{}' +
 # Don't ship static libraries,
 # libpgport.a and libpgcommon.a are needed, though.
 rm -f $(ls %buildroot/%_libdir/*.a %buildroot%pglibdir/*.a | grep -F -v -e libpgport.a -e libpgcommon.a)
-%if %buildmain
+
+%if !%mini
 #
 # Install and collect the contrib stuff
 #
@@ -548,11 +567,11 @@ rm flag
 install -d -m 750 %buildroot/var/lib/pgsql
 install -d -m755 %buildroot%pgdocdir
 cp doc/KNOWN_BUGS doc/MISSING_FEATURES COPYRIGHT \
-   README HISTORY doc/bug.template %buildroot%pgdocdir
+   README HISTORY  %buildroot%pgdocdir
 cp -a %SOURCE3 %buildroot%pgdocdir/README.SUSE
 # Use versioned names for the man pages:
 for f in %buildroot%pgmandir/man*/*; do
-        mv $f ${f}pg%pgmajor
+        mv $f ${f}pg%pgsuffix
 done
 %endif
 
@@ -578,28 +597,70 @@ genlists ()
         echo "%ghost $ALTBIN" >> $PKG.files
         test -e %buildroot$MAN &&
             echo "%doc $MAN" >> $PKG.files
-        %find_lang $f-%pgmajor $PKG.files ||:
+        %find_lang $f-$VLANG $PKG.files ||:
     done
 }
-%if %buildmain
+%if !%mini
 genlists main \
-        createdb clusterdb createuser dropdb \
-        dropuser pg_dump pg_dumpall pg_restore pg_rewind psql vacuumdb \
-        reindexdb pg_basebackup pg_receivewal pg_isready pg_recvlogical pg_verify_checksums
-%find_lang plpgsql-%pgmajor main.files
-%find_lang pgscripts-%pgmajor main.files
+	createdb \
+	clusterdb \
+	createuser \
+	dropdb \
+	dropuser \
+	pg_dump \
+	pg_dumpall \
+	pg_restore \
+	pg_rewind \
+	psql \
+	vacuumdb \
+	reindexdb \
+	pg_basebackup \
+%if %pgsuffix < 90
+	pg_receivewal \
+%else
+	createlang \
+	droplang \
+	pg_receivexlog \
+%endif
+	pg_isready \
+	pg_recvlogical \
+%if %pgsuffix == 11
+	pg_verify_checksums \
+%endif
+%if %pgsuffix == 12
+	pg_checksums
+%endif
+
+%find_lang plpgsql-$VLANG main.files
+%find_lang pgscripts-$VLANG main.files
 
 genlists server \
-        initdb pg_ctl pg_controldata pg_resetwal pg_waldump  postgres postmaster
-
-genlists server-devel \
-        pg_config
+	initdb \
+	pg_ctl \
+	pg_controldata \
+%if %pgsuffix < 90
+	pg_resetwal \
+	pg_waldump \
+%else
+	pg_resetxlog \
+%endif
+	postgres \
+	postmaster
 
 genlists contrib \
-        oid2name pg_archivecleanup pg_standby pg_test_fsync pg_upgrade \
-        pgbench vacuumlo pg_test_timing
+%if %pgsuffix > 90
+	pg_xlogdump \
+%endif
+	oid2name \
+	pg_archivecleanup \
+	pg_standby \
+	pg_test_fsync \
+	pg_upgrade \
+        pgbench \
+	vacuumlo \
+	pg_test_timing
 for pl in plperl plpython pltcl; do
-    %find_lang $pl-%{pgmajor} $pl.lang
+    %find_lang $pl-$VLANG $pl.lang
 done
 ln -s /etc/alternatives/postgresql %buildroot/usr/lib/postgresql
 touch %buildroot/etc/alternatives/postgresql
@@ -608,49 +669,72 @@ touch %buildroot/etc/alternatives/postgresql
 sed -i '/^LIBS = /s/= .*/=/' %buildroot/%pglibdir/pgxs/src/Makefile.global
 %endif
 
-%if %builddevel
 # Make sure we can also link agaist newer versions
 pushd %buildroot%_libdir
 for f in *.so; do
     ln -sf $f.? $f
 done
+%if 0
+for long in *.so.*.*; do
+    short=${long%%.*}
+    so=${short%%.*}
+    ln -sf $long $short
+    ln -sf $short $so
+done
+%endif
 popd
+
 mkdir -p %buildroot%pgmandir/man1
-cp -a doc/src/sgml/man1/ecpg.1 %buildroot%pgmandir/man1/ecpg.1pg%pgmajor
-genlists devel ecpg
+cp -a doc/src/sgml/man1/ecpg.1 %buildroot%pgmandir/man1/ecpg.1pg%pgsuffix
+%find_lang ecpg-$VLANG devel.files
+ln -s %pgbindir/ecpg %buildroot%_bindir/ecpg
+
+%if !%mini
+%find_lang pg_config-$VLANG server-devel.files
+ln -s %pgbindir/pg_config %buildroot%_bindir/pg_config
+%endif
+
+%if %{without server_devel}
+cat server-devel.files >> devel.files
+%endif
 
 # Build up the file lists for the libpq and libecpg packages
 cat > libpq.files <<EOF
 %defattr(-,root,root)
 %dir %pgdatadir
-%_libdir/libpq.so.5
-%_libdir/libpq.so.5.%pgmajor
 %pgdatadir/pg_service.conf.sample 
 EOF
-%find_lang libpq5-%{pgmajor} libpq.files
+find %buildroot -name 'libpq*.so.*' -printf '/%%P\n' >> libpq.files
+%find_lang libpq5-$VLANG libpq.files
 
 cat > libecpg.files <<EOF
 %defattr(-,root,root)
-%_libdir/libecpg.so.6
-%_libdir/libecpg.so.6.%pgmajor
-%_libdir/libecpg_compat.so.3
-%_libdir/libecpg_compat.so.3.%pgmajor
-%_libdir/libpgtypes.so.3
-%_libdir/libpgtypes.so.3.%pgmajor
 EOF
-%find_lang ecpglib6-%{pgmajor} libecpg.files
+find %buildroot \( -name 'libecpg*.so.*' -o -name 'libpgtypes.so.*' \) -printf '/%%P\n' >> libecpg.files
+%find_lang ecpglib6-$VLANG libecpg.files
 
 %if !%buildlibs
-# Delete the contents of the libs and devel packages, if we don't want to build them
+# Delete the contents of the library packages, if we don't want to build them
 awk -v P=%buildroot '/^(%lang|[^%])/{print P $NF}' libpq.files libecpg.files | xargs rm
-%endif
-%else # !devel
-rm -f %buildroot%pgmandir/man1/ecpg.*
 %endif
 
 %fdupes %buildroot
 
-%if %buildmain
+%post %devel
+/sbin/ldconfig
+%if %{with server_devel}
+%post server-devel
+%endif
+/usr/share/postgresql/install-alternatives %priority
+
+%postun %devel
+/sbin/ldconfig
+%if %{with server_devel}
+%postun server-devel
+%endif
+/usr/share/postgresql/install-alternatives %priority
+
+%if !%mini
 
 %postun
 /usr/share/postgresql/install-alternatives %priority
@@ -711,22 +795,6 @@ fi
 %postun contrib
 /usr/share/postgresql/install-alternatives %priority
 
-%post -n %pgname-server-devel
-/usr/share/postgresql/install-alternatives %priority
-
-%postun -n %pgname-server-devel
-/usr/share/postgresql/install-alternatives %priority
-%endif
-
-%if %builddevel
-
-%post -n %pgname-devel
-/usr/share/postgresql/install-alternatives %priority
-
-%postun -n %pgname-devel
-/usr/share/postgresql/install-alternatives %priority
-%endif
-
 %if %buildlibs
 %post -n %libpq -p /sbin/ldconfig
 
@@ -737,8 +805,6 @@ fi
 %postun -n %libecpg -p /sbin/ldconfig
 %endif
 
-%if %buildmain
-
 %files -f main.files
 %defattr(-,root,root)
 %dir %pgbindir
@@ -746,7 +812,6 @@ fi
 %docdir %pgdocdir
 %dir %pgdocdir
 %pgdocdir/[[:upper:]]*
-%pgdocdir/bug.template
 %dir %pglibdir
 /usr/lib/postgresql
 %ghost /etc/alternatives/postgresql
@@ -776,7 +841,9 @@ fi
 %dir %pgbasedir
 %dir %pgextensiondir
 %dir %pglibdir
+%if %pgsuffix < 90
 %pglibdir/pgoutput.so
+%endif
 %pglibdir/plpgsql.so
 %pglibdir/dict_snowball.so
 %pgdatadir/tsearch_data
@@ -788,7 +855,9 @@ fi
 %if %buildlibs
 %exclude %pgdatadir/pg_service.conf.sample
 %endif
-#exclude %pgdatadir/*.pltcl
+%if %pgsuffix > 90
+%exclude %pgdatadir/*.pltcl
+%endif
 %pglibdir/*_and_*.so
 %pglibdir/euc2004_sjis2004.so
 %pglibdir/libpqwalreceiver.so
@@ -804,18 +873,14 @@ fi
 %pglibdir/bitcode/*
 %endif
 
-%files server-devel -f server-devel.files
-%defattr(-,root,root)
-%pgincludedir
-%pglibdir/pgxs
-%_libdir/lib*.a
-
 %files pltcl -f pltcl.lang
 %defattr(-,root,root)
 %pgextensiondir/pltcl*
 %pglibdir/pltcl.so
-#pgdatadir/*.pltcl
-#pgbindir/pltcl*
+%if %pgsuffix > 90
+%pgdatadir/*.pltcl
+%pgbindir/pltcl*
+%endif
 
 %files plperl -f plperl.lang
 %defattr(-,root,root)
@@ -828,24 +893,43 @@ fi
 %pglibdir/plpython*.so
 
 %endif
-%if %buildlibs
 
+%if %buildlibs && !%mini
 %files -n %libpq -f libpq.files
 
 %files -n %libecpg -f libecpg.files
-
 %endif
 
-%if %builddevel
+%if %buildlibs && %mini
+%files %devel -f devel.files -f libpq.files -f libecpg.files
+%else
+%files %devel -f devel.files
+%endif
 
-%files -n %pgname-devel -f devel.files
 %defattr(-,root,root)
 %dir %pgbasedir
 %dir %pgbindir
+%_bindir/ecpg
 %_libdir/pkgconfig/*
 %_libdir/lib*.so
+%pgbindir/ecpg
 %pgincludedir
+%if %{with server_devel}
+%exclude %pgincludedir/server
+%endif
+%doc %pgmandir/man1/ecpg.1*
 
+%if !%mini
+%if %{with server_devel}
+%files server-devel -f server-devel.files
+%endif
+%defattr(-,root,root)
+%_bindir/pg_config
+%pgbindir/pg_config
+%pgincludedir/server
+%pglibdir/pgxs
+%_libdir/lib*.a
+%doc %pgmandir/man1/pg_config.1*
 %endif
 
 %changelog

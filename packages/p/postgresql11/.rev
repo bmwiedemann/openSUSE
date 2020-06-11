@@ -81,4 +81,12 @@
     <comment>update for CVE-2020-1720 (forwarded request 774442 from darix)</comment>
     <requestid>774448</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1e8eaa71f0ece90cbd03fe77f8532d3e</srcmd5>
+    <version>11.8</version>
+    <time>1591862260</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811584</requestid>
+  </revision>
 </revisionlist>

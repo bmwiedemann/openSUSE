@@ -4,10 +4,8 @@ Date:   Fri Mar 8 17:56:58 2013 +0100
 
     + SET LC_
 
-Index: postgresql-11beta1/src/test/regress/expected/int8.out
-===================================================================
---- postgresql-11beta1.orig/src/test/regress/expected/int8.out
-+++ postgresql-11beta1/src/test/regress/expected/int8.out
+--- src/test/regress/expected/int8.out.orig
++++ src/test/regress/expected/int8.out
 @@ -580,6 +580,7 @@ SELECT '' AS to_char_12, to_char(q2, 'FM
              | -4567890123456789.000
  (5 rows)
@@ -16,10 +14,8 @@ Index: postgresql-11beta1/src/test/regress/expected/int8.out
  SELECT '' AS to_char_13, to_char(q2, 'L9999999999999999.000')  FROM INT8_TBL;
   to_char_13 |        to_char         
  ------------+------------------------
-Index: postgresql-11beta1/src/test/regress/expected/numeric.out
-===================================================================
---- postgresql-11beta1.orig/src/test/regress/expected/numeric.out
-+++ postgresql-11beta1/src/test/regress/expected/numeric.out
+--- src/test/regress/expected/numeric.out.orig
++++ src/test/regress/expected/numeric.out
 @@ -1079,6 +1079,7 @@ SELECT '' AS to_char_15, to_char(val, 'F
              | -24926804.04504742
  (10 rows)
@@ -28,10 +24,8 @@ Index: postgresql-11beta1/src/test/regress/expected/numeric.out
  SELECT '' AS to_char_16, to_char(val, 'L9999999999999999.099999999999999')	FROM num_data;
   to_char_16 |              to_char               
  ------------+------------------------------------
-Index: postgresql-11beta1/src/test/regress/sql/int8.sql
-===================================================================
---- postgresql-11beta1.orig/src/test/regress/sql/int8.sql
-+++ postgresql-11beta1/src/test/regress/sql/int8.sql
+--- src/test/regress/sql/int8.sql.orig
++++ src/test/regress/sql/int8.sql
 @@ -116,6 +116,7 @@ SELECT '' AS to_char_9,  to_char(q2, '09
  SELECT '' AS to_char_10, to_char(q2, 'S0999999999999999')      FROM INT8_TBL;
  SELECT '' AS to_char_11, to_char(q2, 'FM0999999999999999')     FROM INT8_TBL;
@@ -40,10 +34,8 @@ Index: postgresql-11beta1/src/test/regress/sql/int8.sql
  SELECT '' AS to_char_13, to_char(q2, 'L9999999999999999.000')  FROM INT8_TBL;
  SELECT '' AS to_char_14, to_char(q2, 'FM9999999999999999.999') FROM INT8_TBL;
  SELECT '' AS to_char_15, to_char(q2, 'S 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 . 9 9 9') FROM INT8_TBL;
-Index: postgresql-11beta1/src/test/regress/sql/numeric.sql
-===================================================================
---- postgresql-11beta1.orig/src/test/regress/sql/numeric.sql
-+++ postgresql-11beta1/src/test/regress/sql/numeric.sql
+--- src/test/regress/sql/numeric.sql.orig
++++ src/test/regress/sql/numeric.sql
 @@ -773,6 +773,7 @@ SELECT '' AS to_char_12, to_char(val, 'F
  SELECT '' AS to_char_13, to_char(val, 'FM9999999999990999.990999999999999') 	FROM num_data;
  SELECT '' AS to_char_14, to_char(val, 'FM0999999999999999.999909999999999') 	FROM num_data;
