@@ -318,6 +318,7 @@ Ignore: jdk-bootstrap:this-is-only-for-build-envs
 Ignore: libsystemd0-mini:this-is-only-for-build-envs
 Ignore: libudev-mini1:this-is-only-for-build-envs
 Ignore: libunbound-devel-mini:this-is-only-for-build-envs
+Ignore: postgresql12-devel-mini:this-is-only-for-build-envs
 Ignore: systemd-mini:this-is-only-for-build-envs
 Ignore: udev-mini:this-is-only-for-build-envs
 
@@ -614,6 +615,7 @@ Prefer: xmlgraphics-commons:apache-commons-io
 # the -32bit stuff provides things it shouldn't (hopefully temporary)
 Prefer: -typelib-1_0-GdkPixbuf-2_0-32bit -typelib-1_0-Pango-1_0-32bit -glib2-devel-32bit -typelib-1_0-Gst-1_0-32bit
 Prefer: postgresql postgresql-server postgresql-devel
+Prefer: postgresql12-devel-mini
 # only needed to bootstrap 11, but leave it - 12 will come at some point :)
 Prefer: -postgresql94 -postgresql95 -postgresql95-server -postgresql94-server
 Prefer: -unzip-rcc
