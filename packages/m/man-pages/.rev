@@ -1778,4 +1778,41 @@
   etc., see Changes</comment>
     <requestid>793754</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>87201f5b5c2c3f804e70ea1b17f815aa</srcmd5>
+    <version>5.07</version>
+    <time>1591879386</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 5.07
+  New and rewritten pages
+  -----------------------
+  ioctl_fslabel.2
+          New page documenting filesystem get/set label ioctl(2) operations
+  Removed pages
+  -------------
+  ioctl_list.2
+          This page was first added more than 20 years ago. Since
+          that time it has seen hardly any update, and is by now
+          very much out of date, as reported by Heinrich Schuchardt
+          and confirmed by Eugene Syromyatnikov.
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+  adjtimex.2
+          Document clock_adjtime(2)
+  
+  clock_getres.2
+          Explain dynamic clocks
+  clone.2
+          Document the clone3() CLONE_INTO_CGROUP flag
+  mremap.2
+          Document MREMAP_DONTUNMAP
+  open.2
+          Document fs.protected_fifos and fs.protected_regular
+  prctl.2
+          Add PR_SPEC_INDIRECT_BRANCH for SPECULATION_CTRL prctls
+          Add PR_SPEC_DISABLE_NOEXEC for SPECULATION_CTRL prctls
+          Add PR_PAC_RESET_KEYS (arm64)
+  ptrace.2</comment>
+    <requestid>813102</requestid>
+  </revision>
 </revisionlist>
