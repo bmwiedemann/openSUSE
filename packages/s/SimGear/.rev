@@ -109,4 +109,20 @@ Depends on SR 556011</comment>
     <comment></comment>
     <requestid>738484</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>797c52b48c7d0ed605c1ec965fadc1c2</srcmd5>
+    <version>2020.1.1</version>
+    <time>1591879773</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2020.1.1
+  * changelog: http://wiki.flightgear.org/Changelog_2020.1
+- Drop upstream patches:
+  * 0001-Always-add-PROJECT_BINARY_DIR-to-include_directories.patch
+  * 0001-Remove-deprecated-boost-utility.patch
+  * 0001-boost-enable_if-Support-Boost-versions-1.56.patch
+- Update to 2018.3.5
+  * changelog: http://wiki.flightgear.org/Changelog_2018.3#2018.3.5_point_release
+</comment>
+    <requestid>805267</requestid>
+  </revision>
 </revisionlist>

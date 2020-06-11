@@ -1,7 +1,7 @@
 #
 # spec file for package SimGear
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,35 +20,29 @@
 # in our requirements, i.e. the same version we have built against
 %define openscenegraph_version %(rpm -qa --nosignature --nodigest libOpenSceneGraph\*-devel | sed 's/.*-devel-\\(.*\\)-.*/\\1/')
 
-%define libname libSimGearCore-2018_3_4
-%define main_version 2018.3
+%define libname libSimGearCore-2020_1_1
+%define main_version 2020.1
 Name:           SimGear
-Version:        %{main_version}.4
+Version:        %{main_version}.1
 Release:        0
 Summary:        Simulator Construction Gear
 # https://sourceforge.net/p/flightgear/codetickets/1940/
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND MIT
 Group:          Amusements/Games/3D/Simulation
-Url:            http://www.flightgear.org/
+URL:            https://www.flightgear.org/
 Source0:        https://sourceforge.net/projects/flightgear/files/release-%{main_version}/simgear-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM 0001-Remove-deprecated-boost-utility.patch
-Patch1:         0001-Remove-deprecated-boost-utility.patch
-# PATCH-FIX-UPSTREAM 0001-boost-enable_if-Support-Boost-versions-1.56.patch
-Patch2:         0001-boost-enable_if-Support-Boost-versions-1.56.patch
-# PATCH-FIX-UPSTREAM 
-Patch3:         0001-Always-add-PROJECT_BINARY_DIR-to-include_directories.patch
+Source99:       SimGear-rpmlintrc
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libOpenSceneGraph-devel < 3.6
-BuildConflicts: libOpenSceneGraph-devel < 3.2
+BuildRequires:  libOpenSceneGraph-devel
 BuildRequires:  libboost_headers-devel
 BuildRequires:  pkgconfig
+BuildRequires:  udns-devel
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  udns-devel
 
 %description
 SimGear is a set of open-source libraries designed to be used as building
@@ -88,9 +82,6 @@ SimGear.
 
 %prep
 %setup -q -n simgear-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
 export CFLAGS="%{optflags}"

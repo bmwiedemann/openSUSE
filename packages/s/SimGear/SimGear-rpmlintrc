@@ -1,0 +1,2 @@
+# The plugins version has to be the same version as the OpenSceneGraph library
+addFilter("libSimGearCore-.*: E: shlib-fixed-dependency.*OpenSceneGraph-plugins")
