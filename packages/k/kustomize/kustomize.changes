@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 29 14:04:41 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 3.6.1
+  - pin kustomize to cmd/kubectl_v0_1_0
+- Refresh vendor.tar.xz
+
+-------------------------------------------------------------------
 Mon Jan 13 09:42:00 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 3.5.4
