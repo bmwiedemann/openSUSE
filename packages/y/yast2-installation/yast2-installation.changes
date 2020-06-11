@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 10 12:43:33 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed yupdate script to correctly install the needed Ruby gems
+  (bsc#1172793)
+- 4.3.2
+
+-------------------------------------------------------------------
 Tue May 12 08:39:02 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Autoyast schema: Allow optional types for string and map objects
