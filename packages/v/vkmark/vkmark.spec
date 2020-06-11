@@ -1,7 +1,7 @@
 #
 # spec file for package vkmark
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018-2019 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           vkmark
-Version:        2017.08+git.20191115
+Version:        2017.08+git.20200521
 Release:        0
 Summary:        Vulkan benchmark utility
 License:        LGPL-2.1-or-later
@@ -26,12 +26,13 @@ URL:            https://github.com/vkmark/vkmark
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  gcc-c++
 BuildRequires:  glm-devel
-BuildRequires:  meson
+BuildRequires:  meson >= 0.45
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(assimp)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(vulkan)
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-icccm)
 ExcludeArch:    %{arm} %{ix86}

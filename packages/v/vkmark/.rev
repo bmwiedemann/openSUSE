@@ -31,4 +31,23 @@
     <comment>- Update dependencies (add Mesa-libVulkan-devel)</comment>
     <requestid>758253</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>23259df3162e37f23de18b658d6b4de5</srcmd5>
+    <version>2017.08+git.20200521</version>
+    <time>1591880027</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2017.08+git.20200521:
+  * core: Use generated map of pixel formats to handle --pixel-format option
+  * core: Fix crash with newer vulkan-hpp
+  * doc: Update README.md with new wayland dependencies
+  * ci: Update packages dependencies for wayland
+  * wayland: Port to xdg-shell
+  * wayland: Mark the whole surface as opaque
+  * wayland: Retain native size in hidpi scaled outputs
+  * ci: Add build and test github workflow
+  * Fix build against glm-0.9.9.6
+  * build: Specify meson version as 0.45
+</comment>
+    <requestid>813427</requestid>
+  </revision>
 </revisionlist>
