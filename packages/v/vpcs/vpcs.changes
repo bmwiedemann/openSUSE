@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun  8 21:28:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Set CFLAGS+=-fcommon to workaround gcc10 errors (boo#1160244)
+
+-------------------------------------------------------------------
+Wed Jun  3 16:30:53 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Specfile cleanup
+- Add patch:
+  * 0001-revert-from-r124.patch
+    Fix bug "enter" is executed after the second typed character
+    See: https://github.com/GNS3/vpcs/issues/10
+    
+-------------------------------------------------------------------
 Mon Jan 15 13:06:02 UTC 2018 - crrodriguez@opensuse.org
 
 - vpcs-0.8-no-static.patch: extend so binaries are not stripped.

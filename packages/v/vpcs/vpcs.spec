@@ -1,7 +1,7 @@
 #
 # spec file for package vpcs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,12 +22,10 @@ Release:        0
 Summary:        Virtual PC Simulator
 License:        BSD-2-Clause
 Group:          System/Emulators/Other
-Url:            http://sourceforge.net/projects/vpcs/
+URL:            https://sourceforge.net/projects/vpcs/
 Source0:        %{name}-%{version}-src.tbz
 Patch0:         %{name}-0.8-no-static.patch
-BuildRequires:  gcc
-BuildRequires:  make
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch1:         0001-revert-from-r124.patch
 
 %description
 The VPCS can simulate up to 9 PCs. You can ping/traceroute them, or ping/traceroute
@@ -40,28 +38,25 @@ replace the routers or VMware boxes which are used as PCs in the Dynamips networ
 Try VPCS, it can save your CPU/Memory. It is very small.
 
 Now, VPCS can be run in udp or ether mode. In the udp mode, VPCS sends or receives
-the packets via udp. In the ether mode, via /dev/tap, not support on the Windows. 
+the packets via udp. In the ether mode, via /dev/tap, not support on the Windows.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1
+%autosetup -p1
 
 %build
 cd src
 rm getopt.*
-export CFLAGS="$RPM_OPT_FLAGS -D_GNU_SOURCE -fno-strict-aliasing"
-make -f Makefile.linux CPUTYPE=%_target_cpu
+export CFLAGS="%{optflags} -D_GNU_SOURCE -fno-strict-aliasing -fcommon"
+%make_build -f Makefile.linux CPUTYPE=%_target_cpu
 
 %install
-%__mkdir -p %buildroot/%_bindir
-%__mkdir -p %buildroot/%_mandir/man1
-%__cp src/vpcs %buildroot/%_bindir/
-%__cp man/vpcs.1 %buildroot/%_mandir/man1/
+install -D -m0755 src/vpcs %{buildroot}%{_bindir}/vpcs
+install -D -m0644 man/vpcs.1 %{buildroot}%{_mandir}/man1/vpcs.1
 
 %files
-%defattr(-,root,root)
-%doc readme.txt COPYING
-%_bindir/vpcs
-%_mandir/man1/*
+%license COPYING
+%doc readme.txt
+%{_bindir}/vpcs
+%{_mandir}/man1/vpcs.1%{ext_man}
 
 %changelog

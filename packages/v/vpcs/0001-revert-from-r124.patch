@@ -1,0 +1,25 @@
+From 815da920f3a32e92ccfdfd4999fd0008f92320c6 Mon Sep 17 00:00:00 2001
+From: mirnshi <mirnshi@285c826d-31ef-41a9-a5b6-d2a4949dcdf2>
+Date: Sun, 15 Nov 2015 13:50:11 +0000
+Subject: [PATCH 1/2] "revert from r124"
+
+git-svn-id: https://svn.code.sf.net/p/vpcs/code/trunk@125 285c826d-31ef-41a9-a5b6-d2a4949dcdf2
+---
+ src/readline.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/readline.c b/src/readline.c
+index 778371f..1bb22be 100644
+--- a/src/readline.c
++++ b/src/readline.c
+@@ -452,7 +452,6 @@ printf("\n%2.2x - %2.2x - %2.2x - %2.2x - %2.2x - %2.2x - %2.2x - %2.2x\n",
+ 			rls->kbuffer[rls->pos] = kb[0];
+ 			rls->kbuffer[rls->pos + 1] = '\0';
+ 			vprint(rls->fdout, &kb[0], 1);
+-			break;
+ 		}
+ 		rls->pos++;
+ 	} while (kb[0] != CTRLP);
+-- 
+2.26.2
+
