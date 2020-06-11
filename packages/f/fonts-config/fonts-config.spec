@@ -22,7 +22,7 @@
 %endif
 
 Name:           fonts-config
-Version:        20190119
+Version:        20200609+git0.42e2b1b
 Release:        0
 Summary:        Script to configure fonts for X Windows and other applications
 # MIT for infinality
@@ -101,6 +101,28 @@ for conf in 	10-group-tt-hinted-fonts.conf \
 done
 
 %post
+if [ -f %{_sysconfdir}/sysconfig/fonts-config ]; then
+  update=$(grep "^FORCE_MODIFY_DEFAULT_FONT_SETTINGS_IN_NEXT_UPDATE=" %{_sysconfdir}/sysconfig/fonts-config | sed -e 's/.*="//;s/"$//')
+  if [ -z "$update" -o "$update" = "yes" ]; then
+     echo "Updating default font settings..."
+     force_hintstyle=$(grep "^FORCE_HINTSTYLE=" /usr/share/fillup-templates/sysconfig.fonts-config | sed -e 's/.*=//')
+     use_lcdfilter=$(grep "^USE_LCDFILTER=" /usr/share/fillup-templates/sysconfig.fonts-config | sed -e 's/.*=//')
+     use_rgba=$(grep "^USE_RGBA=" /usr/share/fillup-templates/sysconfig.fonts-config | sed -e 's/.*=//')
+     if [ ! -f %{_sysconfdir}/sysconfig/fonts-config.rpmsave ]; then
+         cp %{_sysconfdir}/sysconfig/fonts-config %{_sysconfdir}/sysconfig/fonts-config.rpmsave
+     fi
+     sed -i -e '14,16s/^## Default:     none$/## Default:     '"$force_hintstyle"/ \
+            -e 's/^FORCE_HINTSTYLE="none"$/FORCE_HINTSTYLE='"$force_hintstyle"/ \
+            -e 's/^## Default:     lcdnone$/## Default:     '"$use_lcdfilter"/ \
+            -e 's/^USE_LCDFILTER="lcdnone"$/USE_LCDFILTER='"$use_lcdfilter"/ \
+            -e '76,78s/^## Default:     none$/## Default:     '"$use_rgba"/ \
+            -e 's/^USE_RGBA="none"$/USE_RGBA='"$use_rgba"/ \
+               %{_sysconfdir}/sysconfig/fonts-config
+  fi
+fi
+# Note that the above code should run before fillup merges the (maybe new)
+# FORCE_MODIFY_DEFAULT_FONT_SETTINGS_IN_NEXT_UPDATE variable
+# in a system being updated.
 %{fillup_only -n fonts-config}
 %reconfigure_fonts_post -c
 exit 0

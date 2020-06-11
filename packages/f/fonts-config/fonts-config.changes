@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun  9 09:45:34 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add a _service file
+- Add code in %post to check the value of
+  FORCE_MODIFY_DEFAULT_FONT_SETTINGS_IN_NEXT_UPDATE and if it's
+  set to yes, empty or it doesn't exist, then update the values
+  of FORCE_HINTSTYLE, USE_LCDFILTER and USE_RGBA in
+  /etc/sysconfig/fonts-config to use the default settings
+  established in the 20181211 release (boo#1172022)
+- Update to 20200609+git0.42e2b1b:
+  * Add variable to allow fonts-config to update default settings
+  * Fix en-US, en-GB font matching
+
+-------------------------------------------------------------------
 Sat Jan 19 13:43:32 UTC 2019 - Karl Cheng <qantas94heavy@gmail.com>
 
 - Update to 20190119
