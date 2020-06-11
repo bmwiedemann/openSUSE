@@ -38,7 +38,7 @@
 %define _sysdir usr/lib
 
 Name:           multipath-tools
-Version:        0.8.4+31+suse.8f53764
+Version:        0.8.4+43+suse.908383f
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only
@@ -53,12 +53,12 @@ Source3:        dm-parts.conf
 Source4:        libmpathpersist-example.c
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
-BuildRequires:  device-mapper-devel
+BuildRequires:  pkgconfig(devmapper)
 BuildRequires:  libaio-devel
 %if 0%{?with_libdmmp} == 1
-BuildRequires:  libjson-c-devel
+BuildRequires:  pkgconfig(json-c)
 %endif
-BuildRequires:  liburcu-devel
+BuildRequires:  pkgconfig(liburcu)
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
@@ -67,9 +67,10 @@ BuildRequires:  pkgconfig(udev)
 %if 0%{?with_check} == 1
 BuildRequires:  pkgconfig(cmocka)
 %endif
-# For regenerate_initrd_posttrans macro
-BuildRequires:  suse-module-tools
 # For regenerate-initrd-posttrans
+# For now, we still need to require suse-module-tools
+# See https://github.com/openSUSE/rpm-config-SUSE/pull/6
+BuildRequires:	suse-module-tools
 Requires(post):	suse-module-tools
 Requires:       device-mapper >= 1.2.78
 Requires:       kpartx

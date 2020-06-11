@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun 10 10:56:49 UTC 2020 - mwilck@suse.com
+
+- Update to version 0.8.4+43+suse.908383f:
+  * enable negated regular expression syntax in conf file
+  * change default devnode blacklist to 
+    '!^(sd[a-z]|dasd[a-z]|nvme[0-9])'
+
+-------------------------------------------------------------------
+Mon Jun 08 16:13:31 UTC 2020 - mwilck@suse.com
+
+- Update to version 0.8.4+40+suse.b06c2e5a:
+- Fix udev rule processing during coldplug (bsc#1172157)
+  * 11-dm-mpath.rules: Fix udev rule processing during coldplug
+- Fix compilation with gcc-10
+  * fix boolean value with json-c 0.14
+  * libmultipath: fix condlog NULL argument in uevent_get_env_var
+- Reviewed upstream changes:
+  * simplify failed_wwid code
+  * centralize path validation code
+- Use pkgconfig for BuildRequires
+
+-------------------------------------------------------------------
 Tue May 12 20:17:49 UTC 2020 - mwilck@suse.com
 
 - Update to version 0.8.4+31+suse.8f53764:
