@@ -48,4 +48,17 @@
   built master branch called nodejs42</comment>
     <requestid>760050</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>15dc0bb0ddb496605a7519adb4559b80</srcmd5>
+    <version>4.0</version>
+    <time>1591879601</time>
+    <user>dimstar_suse</user>
+    <comment>- Add nodejs-default, npm-default and nodejs-devel-default subpackages
+  to provide latest, best supported nodejs for current architecture
+  and codestream.
+  nodejs-default       - nodejs runtime only
+  npm-default          - if you need npm + nodejs
+  nodejs-devel-default - if you need npm + nodejs + compile modules</comment>
+    <requestid>812981</requestid>
+  </revision>
 </revisionlist>

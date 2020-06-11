@@ -1,7 +1,7 @@
 #
 # spec file for package nodejs-common
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,40 @@
 #
 ###########################################################
 
+%define NODEJS_LTS      12
+%define NODEJS_CURRENT  14
+
+# logic for default version
+# OBSOLETE ARCHES
+%ifarch %ix86
+%define default_node_ver 10
+%else
+
+# GENERAL SUPPORT ARCHES
+
+# SLE-12 variants
+%if 0%{?suse_version} < 1500
+%define default_node_ver %NODEJS_LTS
+%endif
+
+# TW
+%if 0%{?suse_version} > 1500
+%define default_node_ver %NODEJS_CURRENT
+%endif
+
+# SLE-15 variants, variation based on SP
+%if 0%{?sle_version} >= 150000 && 0%{?sle_version} < 150200
+%define default_node_ver 10
+%endif
+%if 0%{?sle_version} >= 150200
+%define default_node_ver %NODEJS_LTS
+%endif
+
+# END - GENERAL ARCHES
+%endif
+
 Name:           nodejs-common
-Version:        3.0
+Version:        4.0
 Release:        0
 Summary:        Common files for the NodeJS ecosystem
 License:        MIT
@@ -45,6 +77,36 @@ BuildRequires:  gcc
 Common NodeJS files that allow recursive invocation of Node executable
 while retaining the same codestream version.
 
+%package -n nodejs-default
+Summary:        Default version of nodejs
+Group:          Development/Languages/NodeJS
+Requires:       nodejs%{default_node_ver}
+Requires:       nodejs-common
+
+%description -n nodejs-default
+Depends on the most current and recommended version of nodejs for
+the current architecture and codestream.
+
+%package -n npm-default
+Summary:        Default version of npm
+Group:          Development/Languages/NodeJS
+Requires:       nodejs-default
+Requires:       npm%{default_node_ver}
+
+%description -n npm-default
+Depends on the npm version associated with the current default
+version of nodejs for the current architecture and codestream.
+
+%package -n nodejs-devel-default
+Summary:        Headers for default version of nodejs
+Group:          Development/Languages/NodeJS
+Requires:       nodejs%{default_node_ver}-devel
+Requires:       npm-default
+
+%description -n nodejs-devel-default
+Depends on the most current and up-to-date version of nodejs for
+the current architecture and codestream.
+
 %prep
 %build
 cp %{S:2} .
@@ -60,5 +122,11 @@ ln node %{buildroot}%{_bindir}/npx
 %{_bindir}/node
 %{_bindir}/npm
 %{_bindir}/npx
+
+%files -n nodejs-default
+
+%files -n npm-default
+
+%files -n nodejs-devel-default
 
 %changelog

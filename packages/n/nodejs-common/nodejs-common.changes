@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  9 10:35:06 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Add nodejs-default, npm-default and nodejs-devel-default subpackages
+  to provide latest, best supported nodejs for current architecture
+  and codestream.
+
+  nodejs-default       - nodejs runtime only
+  npm-default          - if you need npm + nodejs
+  nodejs-devel-default - if you need npm + nodejs + compile modules
+
+-------------------------------------------------------------------
 Mon Dec 30 13:49:36 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
 - Bump max supported version to 42 to account for automatically
