@@ -262,4 +262,16 @@
   * Fix miscalculation in highlighting of mult-iline CSS values</comment>
     <requestid>800245</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8ab10c6fed83e5be72411d7d9497d113</srcmd5>
+    <version>0.14.2</version>
+    <time>1591881316</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.2:
+  * Overrode Qt's default behavior when the Home key is pressed.
+  * Fixed a bug that allowed cutting of read-only texts.
+  * Fixes for Yaml, CSS and JavaScript.
+  * Updated the code for Qt 5.15 (backward compatibly).</comment>
+    <requestid>813500</requestid>
+  </revision>
 </revisionlist>

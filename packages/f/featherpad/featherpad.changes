@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 11 12:08:12 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.2:
+  * Overrode Qt's default behavior when the Home key is pressed.
+  * Fixed a bug that allowed cutting of read-only texts.
+  * Fixes for Yaml, CSS and JavaScript.
+  * Updated the code for Qt 5.15 (backward compatibly).
+
+-------------------------------------------------------------------
 Tue May  5 07:16:05 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14.1:
