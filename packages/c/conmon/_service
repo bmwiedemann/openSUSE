@@ -2,8 +2,8 @@
 <service name="tar_scm" mode="disabled">
 <param name="url">https://github.com/containers/conmon</param>
 <param name="scm">git</param>
-<param name="versionformat">2.0.16</param>
-<param name="revision">v2.0.16</param>
+<param name="versionformat">2.0.17</param>
+<param name="revision">v2.0.17</param>
 </service>
 <service name="recompress" mode="disabled">
 <param name="file">conmon-*.tar</param>
