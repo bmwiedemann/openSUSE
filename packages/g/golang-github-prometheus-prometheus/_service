@@ -3,8 +3,8 @@
     <param name="url">https://github.com/prometheus/prometheus.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">2.11.1</param>
-    <param name="revision">v2.11.1</param>
+    <param name="versionformat">2.18.0</param>
+    <param name="revision">v2.18.0</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">prometheus-*.tar</param>

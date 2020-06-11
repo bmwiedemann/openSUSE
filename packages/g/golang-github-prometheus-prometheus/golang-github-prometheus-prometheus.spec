@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-prometheus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017 Silvio Moioli <moio@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,12 +32,12 @@
 %{go_nostrip}
 
 Name:           golang-github-prometheus-prometheus
-Version:        2.11.1
+Version:        2.18.0
 Release:        0
 Summary:        The Prometheus monitoring system and time series database
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://prometheus.io/
+URL:            https://prometheus.io/
 Source:         prometheus-%{version}.tar.xz
 Source1:        prometheus.service
 Source2:        prometheus.yml
@@ -54,7 +54,7 @@ BuildRequires:  glibc-devel-static
 BuildRequires:  golang-github-prometheus-promu
 BuildRequires:  golang-packaging
 BuildRequires:  xz
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  golang(API) = 1.14
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 Requires(pre):  shadow

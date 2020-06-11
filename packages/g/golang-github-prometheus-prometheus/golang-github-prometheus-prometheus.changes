@@ -1,4 +1,212 @@
 -------------------------------------------------------------------
+Wed Jun  3 15:59:05 UTC 2020 - Joao Cavalheiro <jcavalheiro@suse.com>
+
+- Update change log and spec file
+  + Modified spec file: default to golang 1.14 to avoid "have choice" build issues in OBS. 
+  + Rebase and update patches for version 2.18.0
+  + Changed:  
+    * 0001-Do-not-force-the-pure-Go-name-resolver.patch
+    * 0002-Default-settings.patch Changed
+    * 0003-Add-Uyuni-service-discovery.patch
+
+- Update to 2.18.0 
+  + Features 
+    * Tracing: Added experimental Jaeger support #7148
+  + Changes
+    * Federation: Only use local TSDB for federation (ignore remote read). #7096
+    * Rules: `rule_evaluations_total` and `rule_evaluation_failures_total` have a `rule_group` label now. #7094
+  + Enhancements
+    * TSDB: Significantly reduce WAL size kept around after a block cut. #7098
+    * Discovery: Add `architecture` meta label for EC2. #7000
+  + Bug fixes
+    * UI: Fixed wrong MinTime reported by /status. #7182
+    * React UI: Fixed multiselect legend on OSX. #6880
+    * Remote Write: Fixed blocked resharding edge case. #7122
+    * Remote Write: Fixed remote write not updating on relabel configs change. #7073
+
+- Changes from 2.17.2
+  + Bug fixes
+    * Federation: Register federation metrics #7081
+    * PromQL: Fix panic in parser error handling #7132
+    * Rules: Fix reloads hanging when deleting a rule group that is being evaluated #7138
+    * TSDB: Fix a memory leak when prometheus starts with an empty TSDB WAL #7135
+    * TSDB: Make isolation more robust to panics in web handlers #7129 #7136
+
+- Changes from 2.17.1
+  + Bug fixes
+    * TSDB: Fix query performance regression that increased memory and CPU usage #7051
+
+- Changes from 2.17.0
+  + Features 
+    * TSDB: Support isolation #6841
+    * This release implements isolation in TSDB. API queries and recording rules are
+      guaranteed to only see full scrapes and full recording rules. This comes with a
+      certain overhead in resource usage. Depending on the situation, there might be
+      some increase in memory usage, CPU usage, or query latency.
+  + Enhancements
+    * PromQL: Allow more keywords as metric names #6933
+    * React UI: Add normalization of localhost URLs in targets page #6794
+    * Remote read: Read from remote storage concurrently #6770
+    * Rules: Mark deleted rule series as stale after a reload #6745
+    * Scrape: Log scrape append failures as debug rather than warn #6852
+    * TSDB: Improve query performance for queries that partially hit the head #6676
+    * Consul SD: Expose service health as meta label #5313
+    * EC2 SD: Expose EC2 instance lifecycle as meta label #6914
+    * Kubernetes SD: Expose service type as meta label for K8s service role #6684
+    * Kubernetes SD: Expose label_selector and field_selector #6807
+    * Openstack SD: Expose hypervisor id as meta label #6962
+  + Bug fixes
+    * PromQL: Do not escape HTML-like chars in query log #6834 #6795
+    * React UI: Fix data table matrix values #6896
+    * React UI: Fix new targets page not loading when using non-ASCII characters #6892
+    * Remote read: Fix duplication of metrics read from remote storage with external labels #6967 #7018
+    * Remote write: Register WAL watcher and live reader metrics for all remotes, not just the first one #6998
+    * Scrape: Prevent removal of metric names upon relabeling #6891
+    * Scrape: Fix 'superfluous response.WriteHeader call' errors when scrape fails under some circonstances #6986
+    * Scrape: Fix crash when reloads are separated by two scrape intervals #7011
+
+- Changes from 2.16.0
+  + Features 
+    * React UI: Support local timezone on /graph #6692
+    * PromQL: add absent_over_time query function #6490
+    * Adding optional logging of queries to their own file #6520
+  + Enhancements
+    * React UI: Add support for rules page and "Xs ago" duration displays #6503
+    * React UI: alerts page, replace filtering togglers tabs with checkboxes #6543
+    * TSDB: Export metric for WAL write errors #6647
+    * TSDB: Improve query performance for queries that only touch the most recent 2h of data. #6651
+    * PromQL: Refactoring in parser errors to improve error messages #6634
+    * PromQL: Support trailing commas in grouping opts #6480
+    * Scrape: Reduce memory usage on reloads by reusing scrape cache #6670
+    * Scrape: Add metrics to track bytes and entries in the metadata cache #6675
+    * promtool: Add support for line-column numbers for invalid rules output #6533
+    * Avoid restarting rule groups when it is unnecessary #6450
+  + Bug fixes
+    * React UI: Send cookies on fetch() on older browsers #6553
+    * React UI: adopt grafana flot fix for stacked graphs #6603
+    * React UI: broken graph page browser history so that back button works as expected #6659
+    * TSDB: ensure compactionsSkipped metric is registered, and log proper error if one is returned from head.Init #6616
+    * TSDB: return an error on ingesting series with duplicate labels #6664
+    * PromQL: Fix unary operator precedence #6579
+    * PromQL: Respect query.timeout even when we reach query.max-concurrency #6712
+    * PromQL: Fix string and parentheses handling in engine, which affected React UI #6612
+    * PromQL: Remove output labels returned by absent() if they are produced by multiple identical label matchers #6493
+    * Scrape: Validate that OpenMetrics input ends with `# EOF` #6505
+    * Remote read: return the correct error if configs can't be marshal'd to JSON #6622
+    * Remote write: Make remote client `Store` use passed context, which can affect shutdown timing #6673
+    * Remote write: Improve sharding calculation in cases where we would always be consistently behind by tracking pendingSamples #6511
+    * Ensure prometheus_rule_group metrics are deleted when a rule group is removed #6693
+
+- Changes from 2.15.2
+  + Bug fixes
+    * TSDB: Fixed support for TSDB blocks built with Prometheus before 2.1.0. #6564
+    * TSDB: Fixed block compaction issues on Windows. #6547
+
+- Changes from 2.15.1
+  + Bug fixes
+    * TSDB: Fixed race on concurrent queries against same data. #6512
+
+- Changes from 2.15.0
+  + Features 
+    * API: Added new endpoint for exposing per metric metadata `/metadata`. #6420 #6442
+  + Changes
+    * Discovery: Removed `prometheus_sd_kubernetes_cache_*` metrics. Additionally `prometheus_sd_kubernetes_workqueue_latency_seconds` and `prometheus_sd_kubernetes_workqueue_work_duration_seconds` metrics now show correct values in seconds. #6393
+    * Remote write: Changed `query` label on `prometheus_remote_storage_*` metrics to `remote_name` and `url`. #6043
+  + Enhancements
+    * TSDB: Significantly reduced memory footprint of loaded TSDB blocks. #6418 #6461
+    * TSDB: Significantly optimized what we buffer during compaction which should result in lower memory footprint during compaction. #6422 #6452 #6468 #6475
+    * TSDB: Improve replay latency. #6230
+    * TSDB: WAL size is now used for size based retention calculation. #5886
+    * Remote read: Added query grouping and range hints to the remote read request #6401
+    * Remote write: Added `prometheus_remote_storage_sent_bytes_total` counter per queue. #6344
+    * promql: Improved PromQL parser performance. #6356
+    * React UI: Implemented missing pages like `/targets` #6276, TSDB status page #6281 #6267 and many other fixes and performance improvements.
+    * promql: Prometheus now accepts spaces between time range and square bracket. e.g `[ 5m]` #6065  
+  + Bug fixes
+    * Config: Fixed alertmanager configuration to not miss targets when configurations are similar. #6455
+    * Remote write: Value of `prometheus_remote_storage_shards_desired` gauge shows raw value of desired shards and it's updated correctly. #6378
+    * Rules: Prometheus now fails the evaluation of rules and alerts where metric results collide with labels specified in `labels` field. #6469
+    * API: Targets Metadata API `/targets/metadata` now accepts empty `match_targets` parameter as in the spec. #6303
+
+- Changes from 2.14.0
+  + Features 
+    * API: `/api/v1/status/runtimeinfo` and `/api/v1/status/buildinfo` endpoints added for use by the React UI. #6243
+    * React UI: implement the new experimental React based UI. #5694 and many more
+      * Can be found by under `/new`.
+      * Not all pages are implemented yet.
+    * Status: Cardinality statistics added to the Runtime & Build Information page. #6125
+  + Enhancements
+    * Remote write: fix delays in remote write after a compaction. #6021
+    * UI: Alerts can be filtered by state. #5758
+  + Bug fixes
+    * Ensure warnings from the API are escaped. #6279
+    * API: lifecycle endpoints return 403 when not enabled. #6057
+    * Build: Fix Solaris build. #6149
+    * Promtool: Remove false duplicate rule warnings when checking rule files with alerts. #6270
+    * Remote write: restore use of deduplicating logger in remote write. #6113
+    * Remote write: do not reshard when unable to send samples. #6111
+    * Service discovery: errors are no longer logged on context cancellation. #6116, #6133
+    * UI: handle null response from API properly. #6071
+
+- Changes from 2.13.1
+  + Bug fixes
+    * Fix panic in ARM builds of Prometheus. #6110
+    * promql: fix potential panic in the query logger. #6094
+    * Multiple errors of http: superfluous response.WriteHeader call in the logs. #6145
+
+- Changes from 2.13.0
+  + Enhancements
+    * Metrics: renamed prometheus_sd_configs_failed_total to prometheus_sd_failed_configs and changed to Gauge #5254
+    * Include the tsdb tool in builds. #6089
+    * Service discovery: add new node address types for kubernetes. #5902
+    * UI: show warnings if query have returned some warnings. #5964
+    * Remote write: reduce memory usage of the series cache. #5849
+    * Remote read: use remote read streaming to reduce memory usage. #5703
+    * Metrics: added metrics for remote write max/min/desired shards to queue manager. #5787
+    * Promtool: show the warnings during label query. #5924
+    * Promtool: improve error messages when parsing bad rules. #5965
+    * Promtool: more promlint rules. #5515
+  + Bug fixes
+    * UI: Fix a Stored DOM XSS vulnerability with query history [CVE-2019-10215](http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-10215). #6098
+    * Promtool: fix recording inconsistency due to duplicate labels. #6026
+    * UI: fixes service-discovery view when accessed from unhealthy targets. #5915
+    * Metrics format: OpenMetrics parser crashes on short input. #5939
+    * UI: avoid truncated Y-axis values. #6014
+
+- Changes from 2.12.0
+  + Features 
+    * Track currently active PromQL queries in a log file. #5794
+    * Enable and provide binaries for `mips64` / `mips64le` architectures. #5792
+  + Enhancements
+    * Improve responsiveness of targets web UI and API endpoint. #5740
+    * Improve remote write desired shards calculation. #5763
+    * Flush TSDB pages more precisely. tsdb#660
+    * Add `prometheus_tsdb_retention_limit_bytes` metric. tsdb#667
+    * Add logging during TSDB WAL replay on startup. tsdb#662
+    * Improve TSDB memory usage. tsdb#653, tsdb#643, tsdb#654, tsdb#642, tsdb#627
+  + Bug fixes
+    * Check for duplicate label names in remote read. #5829
+    * Mark deleted rules' series as stale on next evaluation. #5759
+    * Fix JavaScript error when showing warning about out-of-sync server time. #5833
+    * Fix `promtool test rules` panic when providing empty `exp_labels`. #5774
+    * Only check last directory when discovering checkpoint number. #5756
+    * Fix error propagation in WAL watcher helper functions. #5741
+    * Correctly handle empty labels from alert templates. #5845
+
+-------------------------------------------------------------------
+Wed May 13 10:12:43 UTC 2020 - Joao Cavalheiro <jcavalheiro@suse.com>
+
+- Update Uyuni/SUSE Manager service discovery patch
+  + Modified 0003-Add-Uyuni-service-discovery.patch:
+  + Adapt service discovery to the new Uyuni API endpoints
+  + Modified spec file: force golang 1.12 to fix build issues in SLE15SP2
+
+-------------------------------------------------------------------
+Mon Jan 27 12:12:44 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update to Prometheus 2.11.2
+
+-------------------------------------------------------------------
 Mon Nov 25 14:59:24 UTC 2019 - Joao Cavalheiro <jcavalheiro@suse.com>
 
 - Patch macros on spec file to support builds on SLE 12 

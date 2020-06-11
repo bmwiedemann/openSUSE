@@ -9,10 +9,10 @@ Signed-off-by: Jan Fajerski <jfajerski@suse.com>
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/cmd/prometheus/main.go b/cmd/prometheus/main.go
-index 5529f0d..d6a18ff 100644
+index 2b70381..03af484 100644
 --- a/cmd/prometheus/main.go
 +++ b/cmd/prometheus/main.go
-@@ -133,7 +133,7 @@ func main() {
+@@ -143,7 +143,7 @@ func main() {
  	a.HelpFlag.Short('h')
  
  	a.Flag("config.file", "Prometheus configuration file path.").
@@ -21,7 +21,7 @@ index 5529f0d..d6a18ff 100644
  
  	a.Flag("web.listen-address", "Address to listen on for UI, API, and telemetry.").
  		Default("0.0.0.0:9090").StringVar(&cfg.web.ListenAddress)
-@@ -163,10 +163,10 @@ func main() {
+@@ -173,10 +173,10 @@ func main() {
  		Default("false").BoolVar(&cfg.web.EnableAdminAPI)
  
  	a.Flag("web.console.templates", "Path to the console template directory, available at /consoles.").
@@ -34,7 +34,7 @@ index 5529f0d..d6a18ff 100644
  
  	a.Flag("web.page-title", "Document title of Prometheus instance.").
  		Default("Prometheus Time Series Collection and Processing Server").StringVar(&cfg.web.PageTitle)
-@@ -175,7 +175,7 @@ func main() {
+@@ -185,7 +185,7 @@ func main() {
  		Default(".*").StringVar(&cfg.corsRegexString)
  
  	a.Flag("storage.tsdb.path", "Base path for metrics storage.").

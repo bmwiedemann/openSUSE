@@ -15,18 +15,16 @@ Signed-off-by: Jan Fajerski <jfajerski@suse.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/.promu.yml b/.promu.yml
-index 5937513b..468ba2b5 100644
+index 0541bec..ad6cc78 100644
 --- a/.promu.yml
 +++ b/.promu.yml
-@@ -10,7 +10,7 @@ build:
-           path: ./cmd/prometheus
-         - name: promtool
+@@ -12,7 +12,7 @@ build:
            path: ./cmd/promtool
--    flags: -mod=vendor -a -tags netgo
-+    flags: -mod=vendor -a
+         - name: tsdb
+           path: ./tsdb/cmd/tsdb
+-    flags: -mod=vendor -a -tags netgo,builtinassets
++    flags: -mod=vendor -a -tags builtinassets
      ldflags: |
          -X github.com/prometheus/common/version.Version={{.Version}}
          -X github.com/prometheus/common/version.Revision={{.Revision}}
--- 
-2.20.1
 
