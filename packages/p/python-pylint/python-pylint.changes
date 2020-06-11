@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jun  8 19:33:50 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Update to 2.5.3
+  * Fix a regression where disable comments that have checker names with numbers in them are not parsed correctly
+    Close #3666
+  * `property-with-parameters` properly handles abstract properties
+    Close #3600
+  * `continue-in-finally` no longer emitted on Python 3.8 where it's now valid
+    Close #3612
+  * Fix a regression where messages with dash are not fully parsed
+    Close #3604
+  * In a TOML configuration file, it's now possible to use rich (non-string) types, such as list, integer or boolean instead of strings. For example, one can now define a *list* of message identifiers to enable like this::
+      enable = [
+          "use-symbolic-message-instead",
+          "useless-suppression",
+      ]
+    Close #3538
+  * Fix a regression where the score was not reported with multiple jobs
+    Close #3547
+  * Protect against `AttributeError` when checking `cell-var-from-loop`
+    Close #3646
+
+-------------------------------------------------------------------
 Mon May 18 17:38:20 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 2.5.2 
