@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun  5 16:42:16 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec
+
+-------------------------------------------------------------------
+Thu May 28 08:35:20 MDT 2020 - carnold@suse.com
+
+- bsc#1172205 - VUL-0: CVE-2020-0543: xen: Special Register Buffer
+  Data Sampling (SRBDS) aka "CrossTalk" (XSA-320)
+  xsa320-1.patch
+  xsa320-2.patch
+
+-------------------------------------------------------------------
 Mon May 18 10:55:26 MDT 2020 - carnold@suse.com
 
 - Update to Xen 4.13.1 bug fix release (bsc#1027519)

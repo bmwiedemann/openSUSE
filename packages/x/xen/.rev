@@ -2451,4 +2451,12 @@
     <comment>Update Xen to bug fix release 4.13.1 with a couple spec file cleanups</comment>
     <requestid>808027</requestid>
   </revision>
+  <revision rev="286" vrev="2">
+    <srcmd5>e122a9ff34e31b8c31e71a4662ea0a70</srcmd5>
+    <version>4.13.1_02</version>
+    <time>1591879617</time>
+    <user>dimstar_suse</user>
+    <comment>Security update for Xen for bsc#1172205 CVE-2020-0543 - CrossTalk vulnerability</comment>
+    <requestid>813013</requestid>
+  </revision>
 </revisionlist>

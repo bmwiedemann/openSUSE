@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 # needssslcertforbuild
 
@@ -165,6 +165,8 @@ Source99:       baselibs.conf
 Patch1:         5eb51be6-cpupool-fix-removing-cpu-from-pool.patch
 Patch2:         5eb51caa-sched-vcpu-pause-flags-atomic.patch
 Patch3:         5ec2a760-x86-determine-MXCSR-mask-always.patch
+Patch100:       xsa320-1.patch
+Patch101:       xsa320-2.patch
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch
@@ -299,7 +301,7 @@ Authors:
 %ifarch x86_64
 %package tools-xendomains-wait-disk
 Summary:        Adds a new xendomains-wait-disks.service
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/Kernel
 Requires:       %{name}-tools = %{version}-%{release}
 Requires:       coreutils
@@ -393,6 +395,8 @@ Authors:
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch100 -p1
+%patch101 -p1
 # Our platform specific patches
 %patch400 -p1
 %patch401 -p1
@@ -794,12 +798,12 @@ make -C xen clean
 # /usr/bin/qemu-system-i386
 # Using qemu-system-x86_64 will result in an incompatible VM
 %ifarch x86_64
-cat > %{buildroot}/usr/lib/xen/bin/qemu-system-i386 << 'EOF'
+cat > %{buildroot}%{_libexecdir}/xen/bin/qemu-system-i386 << 'EOF'
 #!/bin/sh
 
 exec %{_bindir}/qemu-system-i386 "$@"
 EOF
-chmod 0755 %{buildroot}/usr/lib/xen/bin/qemu-system-i386
+chmod 0755 %{buildroot}%{_libexecdir}/xen/bin/qemu-system-i386
 #
 unit='%{_libexecdir}/%{name}/bin/xendomains-wait-disks'
 mkdir -vp '%{buildroot}%{_libexecdir}/%{name}/bin'
@@ -943,7 +947,7 @@ find %{buildroot} -type f -size 0 -delete -print
 # 32 bit hypervisor no longer supported.  Remove dom0 tools.
 rm -rf %{buildroot}/%{_datadir}/doc
 rm -rf %{buildroot}/%{_datadir}/man
-rm -rf %{buildroot}/%{_libdir}/xen
+rm -rf %{buildroot}/%{_libexecdir}/xen
 rm -rf %{buildroot}/%{_libdir}/python*
 rm -rf %{buildroot}/%{_libdir}/ocaml*
 rm -rf %{buildroot}/%{_unitdir}
