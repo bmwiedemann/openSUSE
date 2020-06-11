@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr 25 05:55:23 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.0.5
+  * Packaging change to satisfy Apple's changed notarization process (sigh)
+
+-------------------------------------------------------------------
+Thu Apr 23 22:26:16 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.0.4
+  * Fix compilation of sana2.cpp with GCC 10
+  * Fix OpenGL shaders with multiple passes on macOS
+  * Updated the GLAD OpenGL loader
+
+-------------------------------------------------------------------
 Tue Mar 10 19:45:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.3

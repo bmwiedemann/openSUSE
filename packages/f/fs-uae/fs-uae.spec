@@ -17,7 +17,7 @@
 
 
 Name:           fs-uae
-Version:        3.0.3
+Version:        3.0.5
 Release:        0
 Summary:        Amiga emulator with on-screen GUI and online play support
 License:        GPL-2.0-or-later
