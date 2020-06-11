@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jun  4 18:44:45 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.48.7:
+  + Fix failing tests.
+
+-------------------------------------------------------------------
+Tue Jun  2 17:47:36 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.48.6:
+  + Fix build on big-endian machines.
+
+-------------------------------------------------------------------
+Fri May 29 21:52:57 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.48.5:
+  + Support multiple fonts in the font-family property. Previously
+    in font-family="Foo, Bar, Baz" only Foo would get used.
+  + Catch overflow when rendering files with a huge viewBox.
+  + Don't panic with an empty objectBoundingBox for a mask.
+  + Fix introspection data for rsvg_handle_set_stylesheet.
+  + Fixes to the librsvg_crate documentation.
+  + Loading raster images for inclusion in an SVG and producing
+    GdkPixbufs is now faster.
+
+-------------------------------------------------------------------
 Thu Apr 23 17:35:02 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.48.4:

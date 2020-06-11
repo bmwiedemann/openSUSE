@@ -796,4 +796,12 @@
     <comment>New stable release, not buildtested (forwarded request 796655 from iznogood)</comment>
     <requestid>798332</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>0a18586504eb29aa4a541da6b6cc3733</srcmd5>
+    <version>2.48.7</version>
+    <time>1591862430</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811866</requestid>
+  </revision>
 </revisionlist>
