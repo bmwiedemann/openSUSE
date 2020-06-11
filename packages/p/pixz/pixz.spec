@@ -1,7 +1,7 @@
 #
 # spec file for package pixz
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%if ( 0%{?centos_version} && 0%{?centos_version} < 700 ) || ( 0%{?rhel_version} && 0%{?rhel_version} <= 700 )
-%define use_static_libarchive 1
-%else
-%define use_static_libarchive 0
-%endif
-
-%if ( 0%{?centos_version} && 0%{?centos_version} < 700 ) || ( 0%{?rhel_version} && 0%{?rhel_version} < 700 )
-%define use_static_lzma 1
-%else
-%define use_static_lzma 0
-%endif
 
 Name:           pixz
 Version:        1.0.6
@@ -34,30 +22,13 @@ Release:        0
 Summary:        Parallel, indexing version of XZ
 License:        BSD-2-Clause
 Group:          Productivity/Archiving/Compression
-Url:            https://github.com/vasi/pixz
+URL:            https://github.com/vasi/pixz
 Source:         https://github.com/vasi/pixz/releases/download/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if %{use_static_libarchive}
-BuildRequires:  libarchive-static-devel >= 2.8
-%else
-%if 0%{?suse_version} <= 1110
-BuildRequires:  libarchive-devel >= 2.8
-%else
-BuildRequires:  pkgconfig(libarchive) >= 2.8
-%endif
-%endif
-%if %{use_static_lzma}
-BuildRequires:  xz-static-devel >= 4.999.9-beta-212
-%else
-%if 0%{?suse_version} <= 1110
-BuildRequires:  xz-devel >= 4.999.9-beta-212
-%else
-BuildRequires:  pkgconfig(liblzma) >= 4.999.9-beta-212
-%endif
-%endif
+BuildRequires:  pkgconfig
 # compatibility tests run classic xz
 BuildRequires:  xz
+BuildRequires:  pkgconfig(libarchive) >= 2.8
+BuildRequires:  pkgconfig(liblzma) >= 4.999.9-beta-212
 
 %description
 The existing XZ Utils provide great compression in the .xz file format, but
@@ -72,25 +43,20 @@ using all available CPU cores.
 %setup -q
 
 %build
-%if %{use_static_libarchive}
-export LIBARCHIVE_LIBS="-Wl,-Bstatic -larchive -Wl,-Bdynamic,-lbz2"
-%endif
-%if %{use_static_lzma}
-export LZMA_LIBS="-Wl,-Bstatic -llzma -Wl,-Bdynamic"
-%endif
+export CFLAGS="%{optflags} -fcommon"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 
 %check
-make check
+%make_build check
 
 %files
-%defattr(-,root,root)
-%doc NEWS TODO README.md LICENSE
+%license LICENSE
+%doc NEWS TODO README.md
 %{_bindir}/pixz
-%{_mandir}/man1/pixz.1.gz
+%{_mandir}/man1/pixz.1%{?ext_man}
 
 %changelog
