@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  9 16:06:22 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.3:
+  + pdf: Revert "support 'de facto' tooltip feature"
+    (glgo#GNOME/evince#1414). Reopens issues
+    (glgo#GNOME/evince#1409 and glgo#GNOME/evince#1410).
+
+-------------------------------------------------------------------
 Sun May 31 19:55:12 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.2:
