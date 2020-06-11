@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  8 08:22:07 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Ensure ARM arch is set properly - boo#1169832
+
+-------------------------------------------------------------------
 Wed Apr 29 13:24:07 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Requires binutils-gold for %arm and aarch64 - boo#1170826

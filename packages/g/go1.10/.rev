@@ -1025,4 +1025,12 @@ go#29903 crypto/elliptic: CPU DoS vulnerability affecting P-521 and P-384 (forwa
     <comment>- Requires binutils-gold for %arm and aarch64 - boo#1170826 (forwarded request 798922 from Guillaume_G)</comment>
     <requestid>799322</requestid>
   </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>b15c0095cba574dd7e3b0f89fb8ccae4</srcmd5>
+    <version>1.10.8</version>
+    <time>1591879439</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure ARM arch is set properly - boo#1169832 (forwarded request 813230 from Guillaume_G)</comment>
+    <requestid>813268</requestid>
+  </revision>
 </revisionlist>

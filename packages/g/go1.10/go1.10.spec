@@ -260,6 +260,15 @@ export GOROOT_BOOTSTRAP=%{_prefix}
 %else
 export GOROOT_BOOTSTRAP=%{_libdir}/go1.4
 %endif
+# Ensure ARM arch is set properly - boo#1169832
+%ifarch armv6l armv6hl
+export GOARCH=arm
+export GOARM=6
+%endif
+%ifarch armv7l armv7hl
+export GOARCH=arm
+export GOARM=7
+%endif
 export GOROOT="`pwd`"
 export GOROOT_FINAL=%{_libdir}/go/%{go_api}
 export GOBIN="$GOROOT/bin"
