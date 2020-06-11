@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  9 14:38:20 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints to make it more readable and request
+  more memory for aarch64 to avoid occasionnal OOM errors on %check
+
+-------------------------------------------------------------------
 Wed Jun  3 13:32:46 UTC 2020 - pgajdos@suse.com
 
 - rpm macros: $TEST_USER identified by $TEST_PASS is actually user

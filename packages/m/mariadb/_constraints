@@ -1,29 +1,24 @@
 <constraints>
+  <hardware>
+    <disk>
+      <size unit="G">18</size>
+    </disk>
+    <memory>
+      <size unit="G">8</size>
+    </memory>
+  </hardware>
+    
   <overwrite>
     <conditions>
       <arch>i586</arch>
       <arch>x86_64</arch>
+      <arch>aarch64</arch>
       <arch>ppc64le</arch>
     </conditions>
     <hardware>
       <physicalmemory>
         <size unit="G">10</size>
       </physicalmemory>
-      <memory>
-        <size unit="G">10</size>
-      </memory>
-    </hardware>
-  </overwrite>
-
-  <overwrite>
-    <conditions/>
-    <hardware>
-      <disk>
-        <size unit="G">18</size>
-      </disk>
-      <memory>
-        <size unit="G">8</size>
-      </memory>
     </hardware>
   </overwrite>
 </constraints>
