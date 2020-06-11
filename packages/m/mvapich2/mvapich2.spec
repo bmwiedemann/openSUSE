@@ -19,8 +19,8 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname mvapich2
-%define vers  2.3.3
-%define _vers 2_3_3
+%define vers  2.3.4
+%define _vers 2_3_4
 
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build
@@ -168,8 +168,13 @@ Patch2:         mvapich2-arm-support.patch
 # It's been merged upstream, should be removed with the next release
 Patch3:         0001-Drop-GCC-check.patch
 Patch4:         reproducible.patch
+Patch5:         fix-missing-return-code.patch
+Patch6:         wrapper-revert-ldflag-order-change.patch
+## Armv7 specific patches
 # PATCH-FIX-UPSTREAM 0001-Drop-real128.patch (https://github.com/pmodels/mpich/issues/4005)
-Patch5:         0001-Drop-real128.patch
+Patch50:        0001-Drop-real128.patch
+Patch51:        0001-Drop-Real-16.patch
+
 URL:            http://mvapich.cse.ohio-state.edu/overview/mvapich2/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -182,6 +187,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  automake
 BuildRequires:  bison
+BuildRequires:  flex
 %ifnarch s390 s390x %{arm}
 BuildRequires:  libnuma-devel
 %endif
@@ -301,14 +307,24 @@ is based on MPICH2 and MVICH. This package contains the static libraries
 %patch2
 %patch3
 %patch4 -p1
-# Only apply this patch on Armv7
+%patch5
+%patch6
+
+# Only apply these patches on Armv7
 %ifarch armv7hl
-%patch5 -p1
+%patch50 -p1
+%patch51
 %endif
 cp /usr/share/automake*/config.* .
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+
+# GCC10 needs an extra flag to allow badly passed parameters
+%if 0%{?suse_version} > 1500
+export FFLAGS="-fallow-argument-mismatch $FFLAGS"
+%endif
+
 PERL_USE_UNSAFE_INC=1 ./autogen.sh
 %if %{with hpc}
 %{hpc_setup}

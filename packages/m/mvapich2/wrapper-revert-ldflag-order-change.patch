@@ -1,0 +1,115 @@
+commit 5818871a4afed52944ece7688f5ad316407be482
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Tue Jun 9 22:46:54 2020 +0200
+
+    wrapper revert ldflag order change
+    
+    For some reason v2.3.4 changed flag order in mpi** wrappers which
+     causes legacy stuff to not link unless a -lmpi is added
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git src/env/mpicc.bash.in src/env/mpicc.bash.in
+index aa65f27a4e5e..21517c0abfef 100644
+--- src/env/mpicc.bash.in
++++ src/env/mpicc.bash.in
+@@ -268,7 +268,7 @@ if [ "$linking" = yes ] ; then
+         $Show $CC ${final_cppflags} $PROFILE_INCPATHS ${final_cflags} ${final_ldflags} "${allargs[@]}" -I$includedir
+         rc=$?
+     else
+-        $Show $CC ${final_cppflags} $PROFILE_INCPATHS ${final_cflags} -l@MPILIBNAME@ ${final_ldflags} "${allargs[@]}" -I$includedir $ITAC_OPTIONS -L$libdir $PROFILE_PRELIB $PROFILE_FOO $rpath_flags @LPMPILIBNAME@ $PROFILE_POSTLIB ${final_libs}
++        $Show $CC ${final_cppflags} $PROFILE_INCPATHS ${final_cflags} ${final_ldflags} "${allargs[@]}" -I$includedir $ITAC_OPTIONS -L$libdir $PROFILE_PRELIB $PROFILE_FOO $rpath_flags -l@MPILIBNAME@ @LPMPILIBNAME@ $PROFILE_POSTLIB ${final_libs}
+         rc=$?
+     fi
+ else
+diff --git src/env/mpicc.sh.in src/env/mpicc.sh.in
+index dceab90cc3f2..f6e433d2f0f5 100644
+--- src/env/mpicc.sh.in
++++ src/env/mpicc.sh.in
+@@ -277,7 +277,7 @@ if [ "$linking" = yes ] ; then
+         $Show $CC ${final_cppflags} $PROFILE_INCPATHS ${final_cflags} ${final_ldflags} $allargs -I$includedir
+         rc=$?
+     else
+-        $Show $CC ${final_cppflags} $PROFILE_INCPATHS ${final_cflags} -l@MPILIBNAME@ ${final_ldflags} $allargs -I$includedir $ITAC_OPTIONS -L$libdir $PROFILE_PRELIB $PROFILE_FOO $rpath_flags @LPMPILIBNAME@ $PROFILE_POSTLIB ${final_libs}
++        $Show $CC ${final_cppflags} $PROFILE_INCPATHS ${final_cflags} ${final_ldflags} $allargs -I$includedir $ITAC_OPTIONS -L$libdir $PROFILE_PRELIB $PROFILE_FOO $rpath_flags -l@MPILIBNAME@ @LPMPILIBNAME@ $PROFILE_POSTLIB ${final_libs}
+         rc=$?
+     fi
+ else
+diff --git src/env/mpicxx.bash.in src/env/mpicxx.bash.in
+index 5d4e1639e02f..35a581bd3515 100644
+--- src/env/mpicxx.bash.in
++++ src/env/mpicxx.bash.in
+@@ -266,7 +266,7 @@ if [ "$linking" = yes ] ; then
+         $Show $CXX ${final_cppflags} $PROFILE_INCPATHS ${final_cxxflags} ${final_ldflags} "${allargs[@]}" -I$includedir
+         rc=$?
+     else
+-        $Show $CXX ${final_cppflags} $PROFILE_INCPATHS ${final_cxxflags} $cxxlibs -l@MPILIBNAME@ ${final_ldflags} "${allargs[@]}" -I$includedir $ITAC_OPTIONS -L$libdir $PROFILE_PRELIB $PROFILE_FOO $rpath_flags @LPMPILIBNAME@ $PROFILE_POSTLIB ${final_libs}
++        $Show $CXX ${final_cppflags} $PROFILE_INCPATHS ${final_cxxflags} ${final_ldflags} "${allargs[@]}" -I$includedir $ITAC_OPTIONS -L$libdir $cxxlibs $PROFILE_PRELIB $PROFILE_FOO $rpath_flags -l@MPILIBNAME@ @LPMPILIBNAME@ $PROFILE_POSTLIB ${final_libs}
+         rc=$?
+     fi
+ else
+diff --git src/env/mpicxx.sh.in src/env/mpicxx.sh.in
+index 0186905368e1..e2eed50f0660 100644
+--- src/env/mpicxx.sh.in
++++ src/env/mpicxx.sh.in
+@@ -275,7 +275,7 @@ if [ "$linking" = yes ] ; then
+         $Show $CXX ${final_cppflags} $PROFILE_INCPATHS ${final_cxxflags} ${final_ldflags} $allargs -I$includedir
+         rc=$?
+     else
+-        $Show $CXX ${final_cppflags} $PROFILE_INCPATHS ${final_cxxflags} $cxxlibs -l@MPILIBNAME@ ${final_ldflags} $allargs -I$includedir $ITAC_OPTIONS -L$libdir $PROFILE_PRELIB $PROFILE_FOO $rpath_flags @LPMPILIBNAME@ $PROFILE_POSTLIB ${final_libs}
++        $Show $CXX ${final_cppflags} $PROFILE_INCPATHS ${final_cxxflags} ${final_ldflags} $allargs -I$includedir $ITAC_OPTIONS -L$libdir $cxxlibs $PROFILE_PRELIB $PROFILE_FOO $rpath_flags -l@MPILIBNAME@ @LPMPILIBNAME@ $PROFILE_POSTLIB ${final_libs}
+         rc=$?
+     fi
+ else
+diff --git src/env/mpif77.bash.in src/env/mpif77.bash.in
+index 05b3e540de78..4d357a502d94 100644
+--- src/env/mpif77.bash.in
++++ src/env/mpif77.bash.in
+@@ -318,7 +318,7 @@ if [ "$linking" = yes ] ; then
+         $Show $F77 $PROFILE_INCPATHS ${final_fflags} ${final_ldflags} "${allargs[@]}" -I$includedir
+         rc=$?
+     else
+-        $Show $F77 $PROFILE_INCPATHS ${final_fflags} -l@MPILIBNAME@ ${final_ldflags} "${allargs[@]}" -I$includedir $ITAC_OPTIONS -L$libdir $f77libs $PROFILE_PRELIB $PROFILE_FOO $rpath_flags @LPMPILIBNAME@ $PROFILE_POSTLIB ${final_libs} @F77_OTHER_LIBS@
++        $Show $F77 $PROFILE_INCPATHS ${final_fflags} ${final_ldflags} "${allargs[@]}" -I$includedir $ITAC_OPTIONS -L$libdir $f77libs $PROFILE_PRELIB $PROFILE_FOO $rpath_flags -l@MPILIBNAME@ @LPMPILIBNAME@ $PROFILE_POSTLIB ${final_libs} @F77_OTHER_LIBS@
+         rc=$?
+     fi
+ else
+diff --git src/env/mpif77.sh.in src/env/mpif77.sh.in
+index 070b0be24722..0ec77e627b53 100644
+--- src/env/mpif77.sh.in
++++ src/env/mpif77.sh.in
+@@ -340,7 +340,7 @@ if [ "$linking" = yes ] ; then
+         $Show $F77 $PROFILE_INCPATHS ${final_fflags} ${final_ldflags} $allargs -I$includedir
+         rc=$?
+     else
+-        $Show $F77 $PROFILE_INCPATHS ${final_fflags} -l@MPILIBNAME@ ${final_ldflags} $allargs -I$includedir $ITAC_OPTIONS -L$libdir $f77libs $PROFILE_PRELIB $PROFILE_FOO $rpath_flags @LPMPILIBNAME@ $PROFILE_POSTLIB ${final_libs} @F77_OTHER_LIBS@
++        $Show $F77 $PROFILE_INCPATHS ${final_fflags} ${final_ldflags} $allargs -I$includedir $ITAC_OPTIONS -L$libdir $f77libs $PROFILE_PRELIB $PROFILE_FOO $rpath_flags -l@MPILIBNAME@ @LPMPILIBNAME@ $PROFILE_POSTLIB ${final_libs} @F77_OTHER_LIBS@
+         rc=$?
+     fi
+ else
+diff --git src/env/mpifort.bash.in src/env/mpifort.bash.in
+index 73da0e866e48..c36dddf78553 100644
+--- src/env/mpifort.bash.in
++++ src/env/mpifort.bash.in
+@@ -359,7 +359,7 @@ if [ "$linking" = yes ] ; then
+         $Show $FC $PROFILE_INCPATHS ${final_fcflags} ${final_ldflags} "${allargs[@]}"
+         rc=$?
+     else
+-        $Show $FC $PROFILE_INCPATHS ${final_fcflags} -l@MPIFCLIBNAME@ -l@MPILIBNAME@ ${final_ldflags} "${allargs[@]}" $FCINCDIRS $FCMODDIRS $ITAC_OPTIONS -L$libdir $PROFILE_PRELIB $PROFILE_FOO $rpath_flags @LPMPILIBNAME@ $PROFILE_POSTLIB ${final_libs} @FC_OTHER_LIBS@
++        $Show $FC $PROFILE_INCPATHS ${final_fcflags} ${final_ldflags} "${allargs[@]}" $FCINCDIRS $FCMODDIRS $ITAC_OPTIONS -L$libdir -l@MPIFCLIBNAME@ $PROFILE_PRELIB $PROFILE_FOO $rpath_flags -l@MPILIBNAME@ @LPMPILIBNAME@ $PROFILE_POSTLIB ${final_libs} @FC_OTHER_LIBS@
+         rc=$?
+     fi
+ else
+diff --git src/env/mpifort.sh.in src/env/mpifort.sh.in
+index 5ee8a148f8ff..c5620c4b61a2 100644
+--- src/env/mpifort.sh.in
++++ src/env/mpifort.sh.in
+@@ -375,7 +375,7 @@ if [ "$linking" = yes ] ; then
+         $Show $FC $PROFILE_INCPATHS ${final_fcflags} ${final_ldflags} $allargs
+         rc=$?
+     else
+-        $Show $FC $PROFILE_INCPATHS ${final_fcflags} -l@MPIFCLIBNAME@ -l@MPILIBNAME@ ${final_ldflags} $allargs $FCINCDIRS $FCMODDIRS $ITAC_OPTIONS -L$libdir $PROFILE_PRELIB $PROFILE_FOO $rpath_flags @LPMPILIBNAME@ $PROFILE_POSTLIB ${final_libs} @FC_OTHER_LIBS@
++        $Show $FC $PROFILE_INCPATHS ${final_fcflags} ${final_ldflags} $allargs $FCINCDIRS $FCMODDIRS $ITAC_OPTIONS -L$libdir -l@MPIFCLIBNAME@ $PROFILE_PRELIB $PROFILE_FOO $rpath_flags -l@MPILIBNAME@ @LPMPILIBNAME@ $PROFILE_POSTLIB ${final_libs} @FC_OTHER_LIBS@
+         rc=$?
+     fi
+ else

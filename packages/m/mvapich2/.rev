@@ -179,4 +179,18 @@
     <comment>- Update to mvapich2 2.3.3 (jsc#SLE-8497)</comment>
     <requestid>767611</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ce3bc37d50032b072315c6c29a1d53ae</srcmd5>
+    <version>2.3.4</version>
+    <time>1591862559</time>
+    <user>dimstar_suse</user>
+    <comment>- Update so mvapich2 2.3.4
+  - See CHANGELOG for fixes and new features
+- Add fix-missing-return-code.patch to fix compilation errors
+- Add 0001-Drop-Real-16.patch to disable Real(16) support on Armv7
+- Add wrapper-revert-ldflag-order-change.patch to revert LDFLAGS order
+  change done in 2.3.4.
+  This allows legacy builds to work without adding a -lmpi flag</comment>
+    <requestid>813107</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,281 @@
+commit 55d03ccf1f3969b185f00e5572c5a0675e000264
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Fri Jun 5 10:11:12 2020 +0200
+
+    0001 Drop Real(16)
+    
+    Real(16) does not work on armv7
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git src/binding/fortran/mpif_h/Makefile.mk src/binding/fortran/mpif_h/Makefile.mk
+index d2de6bc779ac..73049dbd9379 100644
+--- src/binding/fortran/mpif_h/Makefile.mk
++++ src/binding/fortran/mpif_h/Makefile.mk
+@@ -390,7 +390,6 @@ mpi_f77_sources += src/binding/fortran/mpif_h/sendf.c \
+ 	src/binding/fortran/mpif_h/null_type_copy_fnf.c 
+ mpi_core_sources += src/binding/fortran/mpif_h/fdebug.c \
+ 		src/binding/fortran/mpif_h/setbot.c \
+-        src/binding/fortran/mpif_h/fortran_ops.F \
+ 		src/binding/fortran/mpif_h/setbotf.f
+ mpi_sources += src/binding/fortran/mpif_h/statusf2c.c src/binding/fortran/mpif_h/statusc2f.c
+ 
+diff --git src/binding/fortran/mpif_h/buildiface src/binding/fortran/mpif_h/buildiface
+index 2b7a77f22c90..9eebc69a4359 100755
+--- src/binding/fortran/mpif_h/buildiface
++++ src/binding/fortran/mpif_h/buildiface
+@@ -1045,7 +1045,6 @@ EOT
+     print MAKEFD <<EOT;
+ mpi_core_sources += src/binding/fortran/mpif_h/fdebug.c \\
+ 		src/binding/fortran/mpif_h/setbot.c \\
+-        src/binding/fortran/mpif_h/fortran_ops.F \\
+ 		src/binding/fortran/mpif_h/setbotf.f
+ mpi_sources += src/binding/fortran/mpif_h/statusf2c.c src/binding/fortran/mpif_h/statusc2f.c
+ 
+diff --git src/mpi/coll/opland.c src/mpi/coll/opland.c
+index 2fecd3d5fc59..59b208809471 100644
+--- src/mpi/coll/opland.c
++++ src/mpi/coll/opland.c
+@@ -79,7 +79,7 @@ void MPIR_LAND (
+ #undef MPIR_OP_TYPE_MACRO
+         /* --BEGIN ERROR HANDLING-- */
+ #ifdef HAVE_FORTRAN_BINDING
+-#ifndef __PGI
++#if !defined(__PGI) && !defined(__ARM_ARCH_7A__)
+         /* As of v20.1, PGI compilers only support real8 */
+         case (MPI_REAL16):
+ #ifdef __ibmxl__
+@@ -88,7 +88,7 @@ void MPIR_LAND (
+             real16_land_(invec, inoutvec, Len);
+ #endif
+             break;
+-#endif /*ifndef __PGI*/
++#endif /*if !defined(__PGI) && !defined(__ARM_ARCH_7A__) */
+ #endif /*#ifdef HAVE_FORTRAN_BINDING*/
+         default: {
+             MPID_THREADPRIV_DECL;
+@@ -123,10 +123,10 @@ int MPIR_LAND_check_dtype ( MPI_Datatype type )
+         MPIR_OP_TYPE_GROUP(FLOATING_POINT)
+         MPIR_OP_TYPE_GROUP(FLOATING_POINT_EXTRA)
+ #ifdef HAVE_FORTRAN_BINDING
+-#ifndef __PGI
++#if !defined(__PGI) && !defined(__ARM_ARCH_7A__)
+         /* As of v20.1, PGI compilers only support real8 */
+         case (MPI_REAL16):
+-#endif /*ifndef __PGI*/
++#endif /*if !defined(__PGI) && !defined(__ARM_ARCH_7A__) */
+ #endif /*#ifdef HAVE_FORTRAN_BINDING*/
+ #undef MPIR_OP_TYPE_MACRO
+             return MPI_SUCCESS;
+diff --git src/mpi/coll/oplor.c src/mpi/coll/oplor.c
+index cd340db11edf..81ba1a166cf7 100644
+--- src/mpi/coll/oplor.c
++++ src/mpi/coll/oplor.c
+@@ -79,7 +79,7 @@ void MPIR_LOR (
+ #undef MPIR_OP_TYPE_MACRO
+ 	/* --BEGIN ERROR HANDLING-- */
+ #ifdef HAVE_FORTRAN_BINDING
+-#ifndef __PGI
++#if !defined(__PGI) && !defined(__ARM_ARCH_7A__)
+         /* As of v20.1, PGI compilers only support real8 */
+         case (MPI_REAL16):
+ #ifdef __ibmxl__
+@@ -88,7 +88,7 @@ void MPIR_LOR (
+             real16_lor_(invec, inoutvec, Len);
+ #endif
+             break;
+-#endif /*ifndef __PGI*/
++#endif /*if !defined(__PGI) && !defined(__ARM_ARCH_7A__) */
+ #endif /*#ifdef HAVE_FORTRAN_BINDING*/
+         default: {
+             MPID_THREADPRIV_DECL;
+@@ -124,10 +124,10 @@ int MPIR_LOR_check_dtype ( MPI_Datatype type )
+         MPIR_OP_TYPE_GROUP(FLOATING_POINT_EXTRA)
+ #undef MPIR_OP_TYPE_MACRO
+ #ifdef HAVE_FORTRAN_BINDING
+-#ifndef __PGI
++#if !defined(__PGI) && !defined(__ARM_ARCH_7A__)
+         /* As of v20.1, PGI compilers only support real8 */
+         case (MPI_REAL16):
+-#endif /*ifndef __PGI*/
++#endif /*if !defined(__PGI) && !defined(__ARM_ARCH_7A__) */
+ #endif /*#ifdef HAVE_FORTRAN_BINDING*/
+             return MPI_SUCCESS;
+ 	/* --BEGIN ERROR HANDLING-- */
+diff --git src/mpi/coll/opmax.c src/mpi/coll/opmax.c
+index fde306a32512..c933bdd1ab18 100644
+--- src/mpi/coll/opmax.c
++++ src/mpi/coll/opmax.c
+@@ -45,7 +45,7 @@ void MPIR_MAXF(
+ #undef MPIR_OP_TYPE_MACRO
+         /* --BEGIN ERROR HANDLING-- */
+ #ifdef HAVE_FORTRAN_BINDING
+-#ifndef __PGI
++#if !defined(__PGI) && !defined(__ARM_ARCH_7A__)
+         /* As of v20.1, PGI compilers only support real8 */
+         case MPI_REAL16:
+ #ifdef __ibmxl__
+@@ -54,7 +54,7 @@ void MPIR_MAXF(
+             real16_max_(invec, inoutvec, Len);
+ #endif
+             break;
+-#endif /*ifndef __PGI*/
++#endif /*if !defined(__PGI) && !defined(__ARM_ARCH_7A__) */
+ #endif /*#ifdef HAVE_FORTRAN_BINDING*/
+         default: {
+             MPID_THREADPRIV_DECL;
+@@ -84,10 +84,10 @@ int MPIR_MAXF_check_dtype( MPI_Datatype type )
+         MPIR_OP_TYPE_GROUP(FORTRAN_INTEGER_EXTRA)
+         MPIR_OP_TYPE_GROUP(FLOATING_POINT_EXTRA)
+ #ifdef HAVE_FORTRAN_BINDING
+-#ifndef __PGI
++#if !defined(__PGI) && !defined(__ARM_ARCH_7A__)
+         /* As of v20.1, PGI compilers only support real8 */
+         case (MPI_REAL16):
+-#endif /*ifndef __PGI*/
++#endif /*if !defined(__PGI) && !defined(__ARM_ARCH_7A__) */
+ #endif /*#ifdef HAVE_FORTRAN_BINDING*/
+ #undef MPIR_OP_TYPE_MACRO
+             return MPI_SUCCESS;
+diff --git src/mpi/coll/opmaxloc.c src/mpi/coll/opmaxloc.c
+index 56387843bdc8..036e50f02dea 100644
+--- src/mpi/coll/opmaxloc.c
++++ src/mpi/coll/opmaxloc.c
+@@ -146,7 +146,7 @@ void MPIR_MAXLOC(
+     case MPI_2INTEGER:          MPIR_MAXLOC_F_CASE(MPI_Fint);
+     case MPI_2REAL:             MPIR_MAXLOC_F_CASE(MPIR_FC_REAL_CTYPE);
+     case MPI_2DOUBLE_PRECISION: MPIR_MAXLOC_F_CASE(MPIR_FC_DOUBLE_CTYPE);
+-#ifndef __PGI
++#if !defined(__PGI) && !defined(__ARM_ARCH_7A__)
+         /* As of v20.1, PGI compilers only support real8 */
+     case MPI_REAL16:
+ #ifdef __ibmxl__
+@@ -155,7 +155,7 @@ void MPIR_MAXLOC(
+         real16_maxloc_(invec, inoutvec, &flen);
+ #endif
+         break;
+-#endif /*ifndef __PGI*/
++#endif /*if !defined(__PGI) && !defined(__ARM_ARCH_7A__) */
+ #endif
+ #endif
+ 	/* --BEGIN ERROR HANDLING-- */
+@@ -196,11 +196,11 @@ int MPIR_MAXLOC_check_dtype( MPI_Datatype type )
+     case MPI_2INTEGER: 
+     case MPI_2REAL: 
+     case MPI_2DOUBLE_PRECISION: 
+-#ifndef __PGI
++#if !defined(__PGI) && !defined(__ARM_ARCH_7A__)
+         /* As of v20.1, PGI compilers only support real8 */
+     case MPI_REAL16:
+         break;
+-#endif /*ifndef __PGI*/
++#endif /*if !defined(__PGI) && !defined(__ARM_ARCH_7A__) */
+ #endif
+ #endif
+ 
+diff --git src/mpi/coll/opmin.c src/mpi/coll/opmin.c
+index a9da3e9f1736..1468ae7dba72 100644
+--- src/mpi/coll/opmin.c
++++ src/mpi/coll/opmin.c
+@@ -43,7 +43,7 @@ void MPIR_MINF (
+ #undef MPIR_OP_TYPE_MACRO
+         /* --BEGIN ERROR HANDLING-- */
+ #ifdef HAVE_FORTRAN_BINDING
+-#ifndef __PGI
++#if !defined(__PGI) && !defined(__ARM_ARCH_7A__)
+         /* As of v20.1, PGI compilers only support real8 */
+         case MPI_REAL16:
+ #ifdef __ibmxl__
+@@ -52,7 +52,7 @@ void MPIR_MINF (
+             real16_min_(invec, inoutvec, Len);
+ #endif
+             break;
+-#endif /*ifndef __PGI*/
++#endif /*if !defined(__PGI) && !defined(__ARM_ARCH_7A__) */
+ #endif /*#ifdef HAVE_FORTRAN_BINDING*/
+         default: {
+             MPID_THREADPRIV_DECL;
+@@ -82,10 +82,10 @@ int MPIR_MINF_check_dtype ( MPI_Datatype type )
+         MPIR_OP_TYPE_GROUP(FORTRAN_INTEGER_EXTRA)
+         MPIR_OP_TYPE_GROUP(FLOATING_POINT_EXTRA)
+ #ifdef HAVE_FORTRAN_BINDING
+-#ifndef __PGI
++#if !defined(__PGI) && !defined(__ARM_ARCH_7A__)
+         /* As of v20.1, PGI compilers only support real8 */
+         case (MPI_REAL16):
+-#endif /*ifndef __PGI*/
++#endif /*if !defined(__PGI) && !defined(__ARM_ARCH_7A__) */
+ #endif /*#ifdef HAVE_FORTRAN_BINDING*/
+ #undef MPIR_OP_TYPE_MACRO
+             return MPI_SUCCESS;
+diff --git src/mpi/coll/opminloc.c src/mpi/coll/opminloc.c
+index ccbfb15fa472..fbbe028aaeb6 100644
+--- src/mpi/coll/opminloc.c
++++ src/mpi/coll/opminloc.c
+@@ -146,7 +146,7 @@ void MPIR_MINLOC(
+     case MPI_2INTEGER:          MPIR_MINLOC_F_CASE(MPI_Fint);
+     case MPI_2REAL:             MPIR_MINLOC_F_CASE(MPIR_FC_REAL_CTYPE);
+     case MPI_2DOUBLE_PRECISION: MPIR_MINLOC_F_CASE(MPIR_FC_DOUBLE_CTYPE);
+-#ifndef __PGI
++#if !defined(__PGI) && !defined(__ARM_ARCH_7A__)
+         /* As of v20.1, PGI compilers only support real8 */
+     case MPI_REAL16:
+ #ifdef __ibmxl__
+@@ -155,7 +155,7 @@ void MPIR_MINLOC(
+         real16_minloc_(invec, inoutvec, &flen);
+ #endif
+         break;
+-#endif /*ifndef __PGI*/
++#endif /*if !defined(__PGI) && !defined(__ARM_ARCH_7A__) */
+ #endif
+ #endif
+ 	/* --BEGIN ERROR HANDLING-- */
+@@ -198,11 +198,11 @@ int MPIR_MINLOC_check_dtype( MPI_Datatype type )
+     case MPI_2INTEGER: 
+     case MPI_2REAL: 
+     case MPI_2DOUBLE_PRECISION: 
+-#ifndef __PGI
++#if !defined(__PGI) && !defined(__ARM_ARCH_7A__)
+         /* As of v20.1, PGI compilers only support real8 */
+     case MPI_REAL16:
+         break;
+-#endif /*ifndef __PGI*/
++#endif /*if !defined(__PGI) && !defined(__ARM_ARCH_7A__) */
+ #endif
+ #endif
+ 
+diff --git src/mpi/coll/opsum.c src/mpi/coll/opsum.c
+index 43b0f24687af..6f446dd26b1c 100644
+--- src/mpi/coll/opsum.c
++++ src/mpi/coll/opsum.c
+@@ -66,7 +66,7 @@ void MPIR_SUM (
+ #define MPIR_OP_C_COMPLEX_TYPE_MACRO(mpi_type_,c_type_,type_name_) MPIR_OP_TYPE_MACRO(mpi_type_,c_type_,type_name_)
+         /* --BEGIN ERROR HANDLING-- */
+ #ifdef HAVE_FORTRAN_BINDING
+-#ifndef __PGI
++#if !defined(__PGI) && !defined(__ARM_ARCH_7A__)
+         /* As of v20.1, PGI compilers only support real8 */
+         case MPI_REAL16:
+ #ifdef __ibmxl__
+@@ -75,7 +75,7 @@ void MPIR_SUM (
+             real16_sum_(invec, inoutvec, Len);
+ #endif
+             break;
+-#endif /*ifndef __PGI*/
++#endif /*if !defined(__PGI) && !defined(__ARM_ARCH_7A__) */
+ #endif /*#ifdef HAVE_FORTRAN_BINDING*/
+         default: {
+             MPID_THREADPRIV_DECL;
+@@ -108,10 +108,10 @@ int MPIR_SUM_check_dtype( MPI_Datatype type )
+         MPIR_OP_TYPE_GROUP(COMPLEX)
+         MPIR_OP_TYPE_GROUP(COMPLEX_EXTRA)
+ #ifdef HAVE_FORTRAN_BINDING
+-#ifndef __PGI
++#if !defined(__PGI) && !defined(__ARM_ARCH_7A__)
+         /* As of v20.1, PGI compilers only support real8 */
+         case (MPI_REAL16):
+-#endif /*ifndef __PGI*/
++#endif /*if !defined(__PGI) && !defined(__ARM_ARCH_7A__) */
+ #endif /*#ifdef HAVE_FORTRAN_BINDING*/
+ #undef MPIR_OP_TYPE_MACRO
+             return MPI_SUCCESS;

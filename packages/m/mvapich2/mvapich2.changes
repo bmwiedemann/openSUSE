@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun  3 08:13:07 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update so mvapich2 2.3.4
+  - See CHANGELOG for fixes and new features
+- Add fix-missing-return-code.patch to fix compilation errors
+- Add 0001-Drop-Real-16.patch to disable Real(16) support on Armv7
+- Add wrapper-revert-ldflag-order-change.patch to revert LDFLAGS order
+  change done in 2.3.4.
+  This allows legacy builds to work without adding a -lmpi flag
+
+-------------------------------------------------------------------
 Tue Jan 21 08:17:00 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to mvapich2 2.3.3 (jsc#SLE-8497)

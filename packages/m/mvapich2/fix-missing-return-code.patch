@@ -1,0 +1,50 @@
+commit 60ccf8e31bcc2fca9e9332721336992934d644da
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Wed Jun 3 12:01:54 2020 +0200
+
+    fix missing return code
+    
+    src/pmi/upmi/upmi.c: In function 'UPMI_GET_LOCAL_RANK':
+    src/pmi/upmi/upmi.c:746:1: error: control reaches end of non-void function [-Werror=return-type]
+      746 | }
+          | ^
+    src/pmi/upmi/upmi.c: In function 'UPMI_GET_LOCAL_SIZE':
+    src/pmi/upmi/upmi.c:764:1: error: control reaches end of non-void function [-Werror=return-type]
+      764 | }
+          | ^
+    src/pmi/upmi/upmi.c: In function 'UPMI_GET_LOWEST_RANK':
+    src/pmi/upmi/upmi.c:782:1: error: control reaches end of non-void function [-Werror=return-type]
+      782 | }
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git src/pmi/upmi/upmi.c src/pmi/upmi/upmi.c
+index 693e6395cbf8..6b1f045c6d5d 100644
+--- src/pmi/upmi/upmi.c
++++ src/pmi/upmi/upmi.c
+@@ -742,6 +742,8 @@ int UPMI_GET_LOCAL_RANK(int rank, int *size) {
+     }
+     *size= val->data.uint16;
+     return convert_err(rc);
++    #else
++	return 0;
+     #endif
+ }
+ 
+@@ -760,6 +762,8 @@ int UPMI_GET_LOCAL_SIZE(int *size) {
+     }
+     *size= val->data.uint32;
+     return convert_err(rc);
++    #else
++	return 0;
+     #endif
+ }
+ 
+@@ -778,5 +782,7 @@ int UPMI_GET_LOWEST_RANK(int *rank) {
+     }
+     *rank= val->data.uint32;
+     return convert_err(rc);
++    #else
++	return 0;
+     #endif
+ }
