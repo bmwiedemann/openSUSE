@@ -135,4 +135,20 @@
     <comment>- Skip test_cover_looponfail as it fails with new pytest</comment>
     <requestid>764659</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d6664350166a51182c657bf973cf364e</srcmd5>
+    <version>2.9.0</version>
+    <time>1591879534</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9.0:
+  * Fixed RemovedInPytest4Warning when using Pytest 3.10. Contributed by Michael Manganiello in #354.
+  * Made pytest startup faster when plugin not active by lazy-importing. Contributed by Anders Hovmöller in #339.
+  * Various CI improvements. Contributed by Daniel Hahler in #363 and #364.
+  * Various Python support updates (drop EOL 3.4, test against 3.8 final). Contributed by Hugo van Kemenade in #336 and #367.
+  * Changed --cov-append to always enable data_suffix (a coverage setting). Contributed by Harm Geerts in #387.
+  * Changed --cov-append to handle loading previous data better (fixes various path aliasing issues).
+  * Various other testing improvements, github issue templates, example updates.
+  * Fixed internal failures that are caused by tests that change the current working directory by ensuring a consistent working directory when coverage is called. See #306 and coveragepy#881</comment>
+    <requestid>812819</requestid>
+  </revision>
 </revisionlist>
