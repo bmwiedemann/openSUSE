@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 11 09:58:53 UTC 2020 - Florian Besser <fbesser@gmail.com>
+
+- Bump to version 0.6.1
+- Fix gcc10 build, adding -fcommon to CPPFLAGS 
+
+-------------------------------------------------------------------
 Tue May 15 02:09:14 UTC 2018 - avindra@opensuse.org
 
 - Update to 0.5.9
