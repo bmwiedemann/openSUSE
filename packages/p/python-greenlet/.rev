@@ -306,4 +306,15 @@
     <comment></comment>
     <requestid>636119</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1b9e45c72beaf0dc6c09035d612764fc</srcmd5>
+    <version>0.4.16</version>
+    <time>1591879499</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.16:
+  - Support for DEC Alpha architecture
+  - Support for Python 3.9
+  - Support for Python 3.10a0</comment>
+    <requestid>812725</requestid>
+  </revision>
 </revisionlist>
