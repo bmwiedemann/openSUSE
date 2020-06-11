@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs10
-Version:        10.20.1
+Version:        10.21.0
 Release:        0
 
 %define node_version_number 10
@@ -158,8 +158,10 @@ BuildRequires:  binutils-gold
 %endif
 
 BuildRequires:  pkg-config
+BuildRequires:  config(netcfg)
 
-# Node.js 4/6/7 requires GCC 4.8.5+.
+# SLE-11 target only
+# Node.js 6 requires GCC 4.8.5+.
 #
 # For Node.js 8.x, upstream requires GCC 4.9.4+, as GCC 4.8 may have
 # slightly buggy C++11 support: https://github.com/nodejs/node/pull/13466
@@ -176,15 +178,26 @@ BuildRequires:  gcc5-c++
 BuildRequires:  gcc48-c++
 %define cc_exec  gcc-4.8
 %define cpp_exec g++-4.8
-%endif # node >= 8
-%endif # sles == 11
+%endif
+%endif
+# sles == 11 block
 
-# Use GCC 7, since it is in SLE-12:Update
-%if %node_version_number >= 8 && 0%{?suse_version} == 1315
+# Pick and stick with "latest" compiler at time of LTS release
+# for SLE-12:Update targets
+%if 0%{?suse_version} == 1315
+%if %node_version_number >= 14
+BuildRequires:  gcc9-c++
+%define cc_exec  gcc-9
+%define cpp_exec g++-9
+%else
+%if %node_version_number >= 8
 BuildRequires:  gcc7-c++
 %define cc_exec  gcc-7
 %define cpp_exec g++-7
-%endif # node >= 8 and sle == 12
+%endif
+%endif
+%endif
+# compiler selection
 
 # No special version defined, use default.
 %if ! 0%{?cc_exec:1}
@@ -196,6 +209,7 @@ BuildRequires:  procps
 BuildRequires:  xz
 BuildRequires:  zlib-devel
 
+# Python dependencies
 %if %node_version_number > 12
 BuildRequires:  netcfg
 BuildRequires:  python3
@@ -236,7 +250,7 @@ BuildRequires:  pkgconfig(icu-i18n) >= 57
 %endif
 
 %if ! 0%{with intree_nghttp2}
-BuildRequires:  libnghttp2-devel >= 1.39.2
+BuildRequires:  libnghttp2-devel >= 1.41.0
 %endif
 
 %if 0%{with valgrind_tests}
@@ -290,7 +304,9 @@ This package provides development headers for Node.js.
 %package -n npm10
 Summary:        Package manager for Node.js
 Group:          Development/Languages/NodeJS
-Requires:       %{name}-devel = %{version}
+Requires:       %{name} = %{version}
+Requires:       nodejs-common
+Recommends:     %{name}-devel = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
@@ -526,6 +542,9 @@ export CXX=%{?cpp_exec}
 %endif
 
 export NODE_TEST_NO_INTERNET=1
+%if %{node_version_number} >= 14
+find test \( -name \*.out -or -name \*.js \) -exec sed -i 's,Use `node ,Use `node%{node_version_number} ,' {} \;
+%endif
 
 ln addon-rpm.gypi deps/npm/node_modules/node-gyp/addon-rpm.gypi
 # Tarball doesn't have eslint package distributed, so disable some tests
