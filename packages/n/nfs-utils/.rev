@@ -1442,4 +1442,12 @@
     <comment>- Remove obsolete useradd call (forwarded request 791188 from kukuk)</comment>
     <requestid>791592</requestid>
   </revision>
+  <revision rev="155" vrev="16">
+    <srcmd5>081b747620c09e83d416c09e16b2a5fb</srcmd5>
+    <version>unknown</version>
+    <time>1591879157</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>810693</requestid>
+  </revision>
 </revisionlist>

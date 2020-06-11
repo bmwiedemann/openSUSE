@@ -33,7 +33,6 @@ Source0:        http://kernel.org/pub/linux/utils/nfs-utils/%{version}/nfs-utils
 # Source1:        ftp://nfs.sourceforge.net/pub/nfs/nfs.doc.tar.bz2
 Source1:        nfs.doc.tar.bz2
 Source4:        sysconfig.nfs
-Source6:        README.NFSv4
 Source11:       idmapd.conf
 Source12:       statd-user.conf
 Source13:       nfs-utils.rpmlintrc
@@ -146,8 +145,6 @@ This package contains additional NFS documentation.
 %setup -q -a 1
 %patch0 -p1
 %patch1 -p1
-
-cp %{SOURCE6} .
 
 %build
 autoreconf -fvi
@@ -394,6 +391,6 @@ fi
 
 %files -n nfs-doc
 %defattr(-,root,root)
-%doc nfs/*.html nfs/*.ps README.NFSv4
+%doc nfs/*.html nfs/*.ps
 
 %changelog

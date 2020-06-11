@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 26 04:43:19 UTC 2020 - Neil Brown <nfbrown@suse.com>
+
+- Remove README.NFSv4.  It is out dated and not useful.  All
+  the configation described is now done automatically.
+  (bsc#1171448)
+
+-------------------------------------------------------------------
 Fri Apr  3 11:04:11 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove obsolete useradd call
