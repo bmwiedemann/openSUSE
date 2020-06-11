@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu May  7 18:01:05 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.4.2:
+  * canoncorr: allow more variables than observations
+  * fitgmdist: return fitgmdist parameters (Bug #57917)
+  * gamfit: invert parameter per docs (Bug #57849)
+  * geoXXX: update docs 'number of failures (X-1)' =>
+    'number of failures (X)' (Bug #57606)
+  * kolmogorov_smirnov_test.m: update function handle usage from
+    octave6+ (Bug #57351)
+  * linkage.m: fix octave6+ parse error (Bug #57348)
+  * unifrnd: changed unifrnd(a,a) to return a 0 rather than
+    NaN (Bug #56342)
+  * updates for usage of deprecated octave functions
+- Drop obsolete
+  octave-bug-50365-Wrong-distance-results-from-kmeans-and-wrong-centers.patch
+
+-------------------------------------------------------------------
 Thu Jul  4 20:04:00 2019 UTC - hiwatari.seiji@gmail.com
 
 - Update to version 1.4.1:

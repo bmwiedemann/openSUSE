@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-statistics
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %define octpkg  statistics
 Name:           octave-forge-%{octpkg}
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Additional statistics functions for Octave
 License:        GPL-3.0-or-later AND SUSE-Public-Domain
 Group:          Productivity/Scientific/Math
-Url:            http://octave.sourceforge.net
-Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM octave-bug-50365-Wrong-distance-results-from-kmeans-and-wrong-centers.patch https://savannah.gnu.org/bugs/?func=detailitem&item_id=50365 ajuanpi+dev@gmail.com -- fix bug #50365. Update distances and classes to best replica
-Patch0:         octave-bug-50365-Wrong-distance-results-from-kmeans-and-wrong-centers.patch
+URL:            https://octave.sourceforge.io
+Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  octave-devel
 Requires:       octave-cli >= 4.0.0
@@ -39,7 +37,6 @@ This is part of Octave-Forge project.
 %prep
 %setup -q -c %{name}-%{version}
 %octave_pkg_src
-%patch0 -p1
 
 %build
 %octave_pkg_build
@@ -57,7 +54,6 @@ This is part of Octave-Forge project.
 %octave --eval "pkg rebuild"
 
 %files
-%defattr(-,root,root)
 %{octpackages_dir}/%{octpkg}-%{version}
 
 %changelog
