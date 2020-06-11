@@ -1,7 +1,7 @@
 #
 # spec file for package libm4ri
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,36 +12,35 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libm4ri
-%define date	20140914
+%define date	20200125
 %define lname	libm4ri-0_0_%date
 Version:        0~%date
 Release:        0
-Summary:        Library for fast linear arithmetic over GF(2)
-License:        GPL-2.0+
+Summary:        Library for linear arithmetic over GF(2)
+License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            https://bitbucket.org/malb/m4ri
+URL:            https://bitbucket.org/malb/m4ri
 
 #Git-Clone:	https://bitbucket.org/malb/m4ri.git
 Source:         https://bitbucket.org/malb/m4ri/downloads/m4ri-%date.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libpng)
 
 %description
-M4RI is a library for fast arithmetic with dense matrices over the
+M4RI is a library for arithmetic with dense matrices over the
 Galois Field GF(2).
 
 %package -n %lname
-Summary:        Library for fast linear arithmetic over GF(2)
+Summary:        Library for linear arithmetic over GF(2)
 Group:          System/Libraries
 
 %description -n %lname
-M4RI is a library for fast arithmetic with dense matrices over the
+M4RI is a library for arithmetic with dense matrices over the
 Galois Field GF(2).
 
 %package devel
@@ -50,14 +49,14 @@ Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
 %description devel
-M4RI is a library for fast arithmetic with dense matrices over the
+M4RI is a library for arithmetic with dense matrices over the
 Galois Field GF(2).
 
 This subpackage contains libraries and header files for developing
 applications that want to make use of libm4ri.
 
 %prep
-%setup -qn m4ri-%date
+%autosetup -n m4ri-%date
 
 %build
 #
@@ -67,7 +66,7 @@ applications that want to make use of libm4ri.
 #
 # 2. Set cache size manually, because, otherwise, it will pick whatever the
 # build host had, which is dumb. 32K:128K matches AMD T-Bred, and is also
-# fitting within Core i7. Let's hope that's ok.
+# fitting within Core i7-2600. Let's hope that's ok.
 #
 %configure --disable-static \
 %ifnarch x86_64
@@ -80,12 +79,13 @@ make %{?_smp_mflags}
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
+%post   -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
+
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libm4ri-0.0.%date.so
 
 %files devel
-%defattr(-,root,root)
 %_libdir/libm4ri.so
 %_libdir/pkgconfig/m4ri.pc
 %_includedir/m4ri/

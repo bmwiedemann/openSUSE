@@ -60,4 +60,12 @@
     <comment>- Update with new homepage URLs and in-spec comment updates.</comment>
     <requestid>344372</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>67e48aa36ba551444818de705a3ca645</srcmd5>
+    <version>0~20200125</version>
+    <time>1591862853</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20200125</comment>
+    <requestid>813175</requestid>
+  </revision>
 </revisionlist>
