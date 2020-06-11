@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 09 15:08:08 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 0.1.2+3:
+  * Validate that gpgme_op_verify_result() returned at least one
+    signature (CVE-2020-10759).
+
+-------------------------------------------------------------------
 Wed Jun 03 15:43:21 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 0.1.2:
