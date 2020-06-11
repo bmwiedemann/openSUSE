@@ -126,4 +126,13 @@
  * Dropped support for Django 1.11.</comment>
     <requestid>812910</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>418d31fff284891571ad2a2540a3b7d4</srcmd5>
+    <version>3.0.1</version>
+    <time>1591862925</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.1
+ * no changelog</comment>
+    <requestid>813221</requestid>
+  </revision>
 </revisionlist>
