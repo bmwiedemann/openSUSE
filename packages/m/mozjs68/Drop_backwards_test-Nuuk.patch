@@ -1,0 +1,10 @@
+--- firefox-68.9.0-orig/js/src/tests/non262/Intl/DateTimeFormat/timeZone_backward_links.js	2020-05-28 02:01:51.000000000 +0200
++++ firefox-68.9.0/js/src/tests/non262/Intl/DateTimeFormat/timeZone_backward_links.js	2020-06-05 13:38:22.645892749 +0200
+@@ -17,7 +17,6 @@
+     "America/Catamarca": "America/Argentina/Catamarca",
+     "America/Cordoba": "America/Argentina/Cordoba",
+     "America/Fort_Wayne": "America/Indiana/Indianapolis",
+-    "America/Godthab": "America/Nuuk",
+     "America/Indianapolis": "America/Indiana/Indianapolis",
+     "America/Jujuy": "America/Argentina/Jujuy",
+     "America/Knox_IN": "America/Indiana/Knox",

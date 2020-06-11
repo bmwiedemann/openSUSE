@@ -18,7 +18,7 @@
 
 %global major   68
 Name:           mozjs%{major}
-Version:        68.7.0
+Version:        68.9.0
 Release:        0
 Summary:        MozJS, or SpiderMonkey, is Mozilla's JavaScript engine written in C and C++
 License:        MPL-2.0
@@ -37,9 +37,9 @@ Patch7:         tests-Adapt-formatted-strings-results-to-system-ICU.patch
 Patch8:         TestingFunctions-Update-ICU-s-default-tz-when-setting-TZ.patch
 Patch9:         Skip-time-zone-tests-that-fails-with-system-ICU.patch
 Patch10:        Skip-tests-expected-fail-i586-ppc64.patch
-Patch11:        gcc10-include-fix.patch
 Patch12:        mozilla-disable-wasm-emulate-arm-unaligned-fp-access.patch
 Patch13:        Remove-unused-LLVM-and-Rust-build-dependencies.patch
+Patch14:        Drop_backwards_test-Nuuk.patch
 
 BuildRequires:  autoconf213
 BuildRequires:  gcc-c++

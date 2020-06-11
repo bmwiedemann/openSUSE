@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jun  5 09:41:37 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 68.9.0esr:
+  * CVE-2020-12399: Timing attack on DSA signatures in NSS library
+  * CVE-2020-12405: Use-after-free in SharedWorkerService
+  * CVE-2020-12406: JavaScript Type confusion with NativeTypes
+  * CVE-2020-12410: Memory safety bugs fixed in Firefox 77 and
+    Firefox ESR 68.9
+- Changes from version 68.8.0esr:
+  * CVE-2020-12387: Use-after-free during worker shutdown
+  * CVE-2020-12388: Sandbox escape with improperly guarded Access
+    Tokens
+  * CVE-2020-12389: Sandbox escape with improperly separated
+    process types
+  * CVE-2020-6831: Buffer overflow in SCTP chunk input validation
+  * CVE-2020-12392: Arbitrary local file access with 'Copy as cURL'
+  * CVE-2020-12393: Devtools' 'Copy as cURL' feature did not fully
+    escape website-controlled data, potentially leading to command
+    injection
+  * CVE-2020-12395: Memory safety bugs fixed in Firefox 76 and
+    Firefox ESR 68.8
+- Drop gcc10-include-fix.patch: Fixed upstream.
+- Add Drop_backwards_test-Nuuk.patch: This is now Nuuk in tzdata.
+
+-------------------------------------------------------------------
 Wed May 13 08:04:50 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Increase memory for PowerPC in _constraints file
