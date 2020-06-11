@@ -19,17 +19,19 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-imbox
-Version:        0.9.7
+Version:        0.9.8
 Release:        0
 Summary:        Python IMAP for Human beings
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/martinrusev/imbox
 Source:         https://files.pythonhosted.org/packages/source/i/imbox/imbox-%{version}.tar.gz
+BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-chardet
 %python_subpackages
 
 %description

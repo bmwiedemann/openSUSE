@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun  3 11:09:51 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.9.8:
+ - IMPROVEMENTS:
+ - Fix imbox.delete regression ([#138](https://github.com/martinrusev/imbox/issues/138))
+ - Fixed handling for attachments with filenames longer than 76 characters ([#186](https://github.com/martinrusev/imbox/pull/186)) -  Contributed by @nirdrabkin
+ - Improved character encoding detection ([#184](https://github.com/martinrusev/imbox/pull/184)) -  Contributed by @py-radicz
+
+-------------------------------------------------------------------
 Sun May  3 13:06:36 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 0.9.7:
