@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-netcdf
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define octpkg  netcdf
 Name:           octave-forge-%{octpkg}
-Version:        1.0.12
+Version:        1.0.13
 Release:        0
 Summary:        NetCDF interface for Octave
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://octave.sourceforge.net
-Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+URL:            https://octave.sourceforge.io
+Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  netcdf-devel
-BuildRequires:  octave-devel
-Requires:       octave-cli >= 3.4.0
+BuildRequires:  octave-devel >= 3.8.0
+Requires:       octave-cli >= 3.8.0
 
 %description
 A MATLAB compatible NetCDF interface for Octave.
@@ -54,7 +54,6 @@ This is part of Octave-Forge project.
 %octave --eval "pkg rebuild"
 
 %files
-%defattr(-,root,root)
 %{octpackages_dir}/%{octpkg}-%{version}
 %{octlib_dir}/%{octpkg}-%{version}
 
