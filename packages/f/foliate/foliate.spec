@@ -16,11 +16,12 @@
 #
 
 
+%global __requires_exclude typelib\\(Handy\\) = 1
 %define oname com.github.johnfactotum.Foliate
 Name:           foliate
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
-Summary:        A simple and modern GTK eBook reader
+Summary:        A GTK eBook reader
 License:        GPL-3.0-only
 Group:          Productivity/Office/Other
 URL:            https://johnfactotum.github.io/foliate/
@@ -34,7 +35,7 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildArch:      noarch
 
 %description
-A simple and modern GTK eBook viewer, built with GJS and Epub.js.
+A GTK eBook viewer, built with GJS and Epub.js.
 
 %lang_package
 
@@ -48,13 +49,11 @@ A simple and modern GTK eBook viewer, built with GJS and Epub.js.
 %install
 %meson_install
 
-find {README.md,COPYING} -type f -perm /111 -exec chmod 644 {} \;
-find %{buildroot}/%{_datadir}/. -type f -executable -exec chmod -x "{}" \;
+chmod a-x README.md COPYING
+find %{buildroot}/%{_datadir} -type f -executable -exec chmod -x "{}" +
 rm %{buildroot}/%{_datadir}/com.github.johnfactotum.Foliate/assets/.eslintrc.json
 
-for file in %{buildroot}%{_datadir}/com.github.johnfactotum.Foliate/assets/KindleUnpack/*; do
-   chmod a-x $file
-done
+chmod a-x %{buildroot}/%{_datadir}/com.github.johnfactotum.Foliate/assets/KindleUnpack/*
 
 pushd %{buildroot}%{_datadir}/com.github.johnfactotum.Foliate/assets/KindleUnpack/
 sed -i -e '/^#!/, 1d' *.py
