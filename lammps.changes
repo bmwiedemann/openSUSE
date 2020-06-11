@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed May 13 13:42:58 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- fix build on ppc64le by enabling gnu extensions, see
+  [gh#lammps/lammps#2079], this is a bug in older version of the
+  ocl package, compare [GCC#58241].
+
+-------------------------------------------------------------------
+Sun May 10 16:59:26 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- gcc flags an issue on leap 15.1 that is a false positive, see
+  [gh#lammps/lammps#2078], so disabling lammps custom no optimzation 
+  flags, using disable_noopt.patch
+
+-------------------------------------------------------------------
+Wed May  6 14:54:14 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- bump version to 20200505 (patch)
+  - update of the bundled Kokkos library to version 3.1 (Stan
+    Moore and the Kokkos developers, SNL) [gh#lammps/lammps#2004],
+    [gh#lammps/lammps#2054]
+  - new Kokkos styles compute orientorder/atom and coord/atom and
+    some related bugfixes/improvements (Stan Moore, SNL)
+    [gh#lammps/lammps#1895], [gh#lammps/lammps#1902],
+    [gh#lammps/lammps#1906], [gh#lammps/lammps#2033]
+  - new fix accelerate/cos and compute viscosity/cos in USER-MISC
+    as yet another method to compute viscosity (Zheng Gong, École
+    normale supérieure de Lyon) [gh#lammps/lammps#2019]
+  - update of the polymorphic pair style with bug fixes and a new
+    feature (Xiaoweng Zhou, SNL) [gh#lammps/lammps#2000]
+  - added option to create a dummy fix as a placeholder early in
+    an input to guarantee placement at the top of the list of
+    fixes. (Steve Plimpton, SNL) [gh#lammps/lammps#1760]
+  - update to fix bond/react to allow using equal style variables
+    a probability input (Wolfgang Verestek, U Stuttgart)
+    [gh#lammps/lammps#2013]
+  - small update to internal commands in kim_interactions to
+    improve KIM simulator model handling (Ronald Miller Carleton
+    U, Ryan S. Elliott U Minn), [gh#lammps/lammps#2014]
+  - many small fixes and updates to source code (mainly for the
+    KOKKOS package), cmake scripts, and documentation to address
+    issues with recent changes and minor long-standing issues.
+    (multiple authors) [gh#lammps/lammps#2003],
+    [gh#lammps/lammps#2006], [gh#lammps/lammps#2010],
+    [gh#lammps/lammps#2015], [gh#lammps/lammps#2022],
+    [gh#lammps/lammps#2023], [gh#lammps/lammps#2026],
+    [gh#lammps/lammps#2027], [gh#lammps/lammps#2030],
+    [gh#lammps/lammps#2032], [gh#lammps/lammps#2035],
+    [gh#lammps/lammps#2036], [gh#lammps/lammps#2041],
+    [gh#lammps/lammps#2043], [gh#lammps/lammps#2044],
+    [gh#lammps/lammps#2045], [gh#lammps/lammps#2046],
+    [gh#lammps/lammps#2047], [gh#lammps/lammps#2048],
+    [gh#lammps/lammps#2049], [gh#lammps/lammps#2051],
+    [gh#lammps/lammps#2053], [gh#lammps/lammps#2055]
+- enable kokkos and OpenMP
+
+-------------------------------------------------------------------
 Wed Mar  4 21:56:52 UTC 2020 - Christoph Junghans <junghans@votca.org>
 
 - bump versoin to 20200303 (stable)
