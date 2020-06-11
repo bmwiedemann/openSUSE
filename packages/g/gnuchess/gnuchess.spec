@@ -17,7 +17,7 @@
 
 
 Name:           gnuchess
-Version:        6.2.6
+Version:        6.2.7
 Release:        0
 Summary:        GNU Chess Program
 License:        GPL-3.0-or-later
