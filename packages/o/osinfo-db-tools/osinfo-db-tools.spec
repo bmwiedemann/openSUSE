@@ -1,7 +1,7 @@
 #
 # spec file for package osinfo-db-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           osinfo-db-tools
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Tools for managing the osinfo database
 License:        LGPL-2.1+ and GPL-2.0+
