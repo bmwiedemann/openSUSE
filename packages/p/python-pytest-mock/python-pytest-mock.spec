@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-mock
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        Thin-wrapper around the mock package for easier use with pytest
 License:        MIT
@@ -51,9 +51,7 @@ of a test
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
-# disable current failing tests
-%pytest -k 'not test_assert_called_args_with_introspection and not test_assert_called_kwargs_with_introspection and not test_detailed_introspection'
+%pytest
 
 %files %{python_files}
 %doc CHANGELOG.rst

@@ -176,4 +176,14 @@
     in other scopes</comment>
     <requestid>798138</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>261ccf57931f2125d587079fc781998b</srcmd5>
+    <version>3.1.1</version>
+    <time>1591879528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.1:
+  * Fixed performance regression caused by the ValueError raised
+    when mocker is used as context manager (#191).</comment>
+    <requestid>812814</requestid>
+  </revision>
 </revisionlist>
