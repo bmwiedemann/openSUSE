@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun  8 13:29:28 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.6.0:
+  - Implement speedups in cython (#311)
+  - Updated some tests & code improvements
+  - Separate logger for Connection.heartbeat_tick method
+  - Cython generic content (#315)
+  - Improve documentation a_global parameter of basic_qos() method.
+  - Fix saving partial read buffer on windows during socket timeout. (#321)
+  - Fix deserialization of long string field values that are not utf-8.
+  - Added simple cythonization of abstract_channel.py
+  - Speedups of serialization.py are more restrictive
+
+-------------------------------------------------------------------
 Wed Oct  9 08:40:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.5.2:

@@ -275,4 +275,21 @@
   - Improved tests and testing environments</comment>
     <requestid>736422</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>47972070a56784e63a59515d76ee0cb9</srcmd5>
+    <version>2.6.0</version>
+    <time>1591879477</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.0:
+  - Implement speedups in cython (#311)
+  - Updated some tests &amp; code improvements
+  - Separate logger for Connection.heartbeat_tick method
+  - Cython generic content (#315)
+  - Improve documentation a_global parameter of basic_qos() method.
+  - Fix saving partial read buffer on windows during socket timeout. (#321)
+  - Fix deserialization of long string field values that are not utf-8.
+  - Added simple cythonization of abstract_channel.py
+  - Speedups of serialization.py are more restrictive</comment>
+    <requestid>812617</requestid>
+  </revision>
 </revisionlist>
