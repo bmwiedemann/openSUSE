@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  7 20:04:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Set CFLAGS+=-fcommon
+
+-------------------------------------------------------------------
 Sat May 16 12:49:11 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.5

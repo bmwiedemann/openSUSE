@@ -1,6 +1,7 @@
 #
 # spec file for package gensio
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -14,6 +15,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %global sover   0
 %global libname libgensio%{sover}
@@ -102,6 +104,7 @@ abscration.
 %setup -q
 
 %build
+export CFLAGS="%optflags -fcommon"
 autoreconf -fiv
 %configure --disable-static
 %make_build
