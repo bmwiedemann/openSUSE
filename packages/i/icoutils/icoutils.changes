@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun  1 07:09:23 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.32.3:
+  * Fixed a segfault. (Martin Gieseking, Savannah bug 52319)
+  * Updated Gnulib stuff.
+- Changes for version 0.32.2
+  * Corrected fix for savannah bug 52308 (caused wrestool to always
+    fail).
+  * Added support for PE32+ binaries.
+- Changes fo version 0.32.1:
+  * Fixed multiple issues found by Hanno Böck <hanno@hboeck.de>
+    via fuzzing. (Savannah bugs 52307, 52308, 52313)
+- Changes for version 0.32.0:
+  * Fixed issues found by Jerzy Kramarz:
+    + Invalid memory allocation in icotool with malformed input.
+    + Infinite recursion in wrestool with malformed input.
+  * Added ability to specify minimum bit depth per image.
+  * Added ability to specify cursor hotspot per image.
+
+-------------------------------------------------------------------
 Thu Jul 27 04:03:31 UTC 2017 - lazy.kent@opensuse.org
 
 - Update to 0.31.3.

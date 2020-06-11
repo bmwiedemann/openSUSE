@@ -1,7 +1,7 @@
 #
 # spec file for package icoutils
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           icoutils
-Version:        0.31.3
+Version:        0.32.3
 Release:        0
 Summary:        Extracting and Converting Microsoft Icon and Cursor Files
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Convertors
-Url:            http://www.nongnu.org/icoutils/
+URL:            https://www.nongnu.org/icoutils/
 Source0:        http://savannah.nongnu.org/download/icoutils/%{name}-%{version}.tar.bz2
 Source1:        http://savannah.nongnu.org/download/icoutils/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpng)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The icoutils are a set of programs for extracting and converting images
@@ -43,14 +42,14 @@ libraries (.dll-files).
 # Don't compile strange locales en@boldquot and en@quot.
 # Otherwise, remove '--disable-nls'.
 %configure --disable-nls
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root,-)
-%doc AUTHORS COPYING NEWS README TODO
+%license COPYING
+%doc AUTHORS NEWS README TODO
 %{_bindir}/*
 %{_mandir}/man?/*
 
