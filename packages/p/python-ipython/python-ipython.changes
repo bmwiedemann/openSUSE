@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat May 30 23:53:32 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * removed opensuse-disable-net-test.patch, wikipedia file is not accessed anymore
+
+- update to version 7.15.0:
+  * Misc Noticeable changes:
+    + Long completion name have better elision in terminal
+      :ghpull:`12284`
+    + I've started to test on Python 3.9 :ghpull:`12307` and fix some
+      errors.
+    + Hi DPI scaling of figures when using qt eventloop
+      :ghpull:`12314`
+    + Document the ability to have systemwide configuration for
+      IPython. :ghpull:`12328`
+    + Fix issues with input autoformatting :ghpull:`12336`
+    + IPython.core.debugger.Pdb is now interruptible (:ghpull:`12168`,
+      in 7.14 but forgotten in release notes)
+    + Video HTML attributes (:ghpull:`12212`, in 7.14 but forgotten in
+      release notes)
+  * Reproducible Build
+  * NEP29: Last version to support Python 3.6
+  * Highlighted features
+    + Increase Tab Completion Menu Height
+    + Autoformat Code in the terminal
+
+-------------------------------------------------------------------
 Sat May  2 14:44:45 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 7.14.0
