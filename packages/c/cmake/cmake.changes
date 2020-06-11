@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun  1 08:22:45 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- DCMAKE_MODULES_INSTALL_DIR should be %{_libdir}/cmake/%{name}
+- Set CMAKE_INSTALL_LIBEXECDIR=%{_libexecdir}
+- Use -DCMAKE_SKIP_INSTALL_RPATHS:BOOL=ON instead of completely
+  removing rpaths. boo#1172331
+
+-------------------------------------------------------------------
+Sat May 30 18:31:12 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cmake 3.17.3:
+  * Selection of the Objective C or C++ compiler now considers the
+    CC or CXX environment variable if the OBJC or OBJCXX
+    environment variable is not set
+  * The FindPkgConfig module now extracts include directories
+    prefixed with -isystem into the *_INCLUDE_DIRS variables and
+    INTERFACE_INCLUDE_DIRECTORIES target properties
+  * FindOpenSSL: Detect OpenSSL 3.0.0 (bsc#1172267)
+
+-------------------------------------------------------------------
 Sat May  2 21:50:30 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cmake 3.17.2:

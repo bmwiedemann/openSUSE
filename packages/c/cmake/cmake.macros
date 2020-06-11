@@ -24,6 +24,7 @@
         -DSYSCONF_INSTALL_DIR:PATH=%{_sysconfdir} \\\
         -DSHARE_INSTALL_PREFIX:PATH=%{_datadir} \\\
         -DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir} \\\
+        -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir} \\\
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \\\
         -DCMAKE_C_FLAGS="${CFLAGS:-%optflags} -DNDEBUG" \\\
         -DCMAKE_CXX_FLAGS="${CXXFLAGS:-%optflags} -DNDEBUG" \\\
@@ -35,14 +36,14 @@
         -DLIB_SUFFIX=64 \\\
 %endif \
 %if %suse_version <= 1500 \
-        -DCMAKE_SKIP_RPATH:BOOL=ON \\\
+        -DCMAKE_SKIP_INSTALL_RPATHS:BOOL=ON \\\
 %endif \
         -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \\\
         -DBUILD_SHARED_LIBS:BOOL=ON \\\
         -DBUILD_STATIC_LIBS:BOOL=OFF \\\
         -DCMAKE_COLOR_MAKEFILE:BOOL=OFF \\\
         -DCMAKE_INSTALL_DO_STRIP:BOOL=OFF \\\
-        -DCMAKE_MODULES_INSTALL_DIR=%{_datadir}/cmake/Modules
+        -DCMAKE_MODULES_INSTALL_DIR=%{_libdir}/cmake/%{name}
 
 %__builder_verbose \
 %if "%__builder" == "%__make" \
