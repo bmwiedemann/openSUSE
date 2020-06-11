@@ -287,4 +287,13 @@
     Should protect against `q/uit` or ` /quit`.</comment>
     <requestid>812969</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>09e219d363344b67347c46de167705f8</srcmd5>
+    <version>0.9.1</version>
+    <time>1591879935</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.1:
+  * Make legacy auth optional (#1360) (@pasis)</comment>
+    <requestid>813415</requestid>
+  </revision>
 </revisionlist>

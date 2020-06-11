@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 11 08:13:42 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.1:
+  * Make legacy auth optional (#1360) (@pasis)
+
+-------------------------------------------------------------------
 Tue Jun  9 15:08:34 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.0:
