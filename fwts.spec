@@ -17,7 +17,7 @@
 
 
 Name:           fwts
-Version:        20.03.01
+Version:        20.05.00
 Release:        0
 Summary:        Firmware Test Suite
 License:        GPL-2.0-or-later
@@ -73,6 +73,7 @@ rm -f "%{buildroot}/%{_libdir}/%{name}"/*.so
 
 %files
 %doc README README_ACPICA.txt README_SOURCE.txt ./data/README_JSON.txt
+%doc debian/changelog
 %{_bindir}/fwts
 %{_bindir}/kernelscan
 %{_libdir}/fwts
