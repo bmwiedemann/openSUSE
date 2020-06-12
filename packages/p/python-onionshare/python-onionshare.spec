@@ -1,8 +1,8 @@
 #
 # spec file for package python-onionshare
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2018 Dr. Axel Braun
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2018-2020 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define modname onionshare
+%define oldpython python
 Name:           python-%{modname}
 Version:        2.2
 Release:        0
@@ -41,6 +42,7 @@ BuildRequires:  %{python_module stem}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files
+Requires:       %{oldpython}-%{modname}-data
 Requires:       python-Flask
 Requires:       python-Flask-HTTPAuth
 Requires:       python-pycrypto
@@ -48,10 +50,24 @@ Requires:       python-pytest
 Requires:       python-qt5
 Requires:       python-stem
 Requires:       tor
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
 %description
+OnionShare lets the user share files securely and anonymously. It
+works by starting a web server, making it accessible as a Tor Onion
+Service, and generating an unguessable URL to access and download the
+files. It does not require setting up a separate server or using a
+third party file-sharing service. Files are hosted on the machine the
+program is run on. The receiving user just needs to open the URL in
+Tor Browser to download the file.
+
+%package -n python-onionshare-data
+Summary:        Self-hosting Tor Onion Service based file sharing
+
+%description -n python-onionshare-data
 OnionShare lets the user share files securely and anonymously. It
 works by starting a web server, making it accessible as a Tor Onion
 Service, and generating an unguessable URL to access and download the
@@ -69,6 +85,8 @@ cp %{SOURCE1} .
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/%{modname}
+%python_clone -a %{buildroot}%{_bindir}/%{modname}-gui
 
 mkdir -p %{buildroot}%{_datadir}/pixmaps
 cp install/%{modname}80.xpm %{buildroot}%{_datadir}/pixmaps/%{modname}80.xpm
@@ -81,13 +99,25 @@ desktop-file-install --dir %{buildroot}%{_datadir}/applications/ %{modname}.desk
 %check
 %pytest tests
 
+%post
+%python_install_alternative %{modname} %{modname}-gui
+
+%postun
+%python_uninstall_alternative %{modname}
+
 %files %{python_files}
-%python3_only %{_bindir}/%{modname}*
-%{_datadir}/%{modname}*
-%{_datadir}/pixmaps/*
-%{_datadir}/*
+%python_alternative %{_bindir}/%{modname}
+%python_alternative %{_bindir}/%{modname}-gui
 %license LICENSE
 %doc README.md
 %{python_sitelib}/*
+
+%files -n python-onionshare-data
+%{_datadir}/%{modname}*
+%{_datadir}/pixmaps/*
+%{_datadir}/applications/*
+%{_datadir}/icons/*
+%{_datadir}/metainfo/*
+%{_datadir}/nautilus-python/*
 
 %changelog

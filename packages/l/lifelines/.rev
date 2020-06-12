@@ -219,4 +219,12 @@
     <comment>- Avoid -m64 on aarch64 (and also -m32 on arm) as gcc does not know about</comment>
     <requestid>791951</requestid>
   </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>1b9ff4a1263425e57ca8f48eb7b936f3</srcmd5>
+    <version>3.1.1+3ad4571</version>
+    <time>1591991038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814102</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 12 10:25:03 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Resolve the mess with different
+  patches. different_pytest_name.patch has been
+  replaced by prog-in-description.patch from
+  gh#alex-rudakov/sphinx-argparse#121
+
+-------------------------------------------------------------------
 Fri Dec 13 12:19:37 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add different_pytest_name.patch to use environmental variable

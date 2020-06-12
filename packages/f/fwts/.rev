@@ -540,4 +540,13 @@
   * Small fixes</comment>
     <requestid>804965</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>4a7e39ceb21ca01f0fbdab83b60f85a1</srcmd5>
+    <version>20.05.00</version>
+    <time>1591990633</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.05.00:
+  * See provided changelog for detailed list of changes</comment>
+    <requestid>809010</requestid>
+  </revision>
 </revisionlist>

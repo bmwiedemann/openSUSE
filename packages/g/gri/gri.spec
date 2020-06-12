@@ -1,7 +1,7 @@
 #
 # spec file for package gri
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        A language for scientific illustration
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Other
-Url:            http://gri.sourceforge.net
+URL:            http://gri.sourceforge.net
 Source:         %{name}-%{version}.tar.bz2
 Patch0:         gfi-2.2.23-perl.patch
 Patch1:         gri-texinfo-5.0.patch
@@ -41,7 +41,9 @@ BuildRequires:  readline-devel
 BuildRequires:  texinfo
 BuildRequires:  texlive-dvips
 BuildRequires:  perl(Time::CTime)
+%if 0%{?suse_version} <= 1500
 Requires(post): /sbin/install-info
+%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -97,11 +99,13 @@ make
 sed -i "s/<!-- [A-Z].. [A-Z].. .. ..:..:.. .... -->//" %{buildroot}%{_datadir}/%{name}/doc/html/index.html
 %fdupes %{buildroot}%{_datadir}/%{name}/
 
+%if 0%{?suse_version} <= 1500
 %post
 /sbin/install-info %{_infodir}/gri.info %{_infodir}/dir
 
 %postun
 /sbin/install-info --delete %{_infodir}/gri.info %{_infodir}/dir
+%endif
 
 %files
 %defattr(-,root,root)

@@ -134,4 +134,12 @@
 - Drop python2 bindings</comment>
     <requestid>798509</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>0572fe559d12132eda115f9c0f0183d6</srcmd5>
+    <version>2.1.0</version>
+    <time>1591991029</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with gcc10</comment>
+    <requestid>814100</requestid>
+  </revision>
 </revisionlist>

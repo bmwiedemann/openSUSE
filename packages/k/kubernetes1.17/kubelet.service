@@ -3,6 +3,7 @@ Description=kubelet: The Kubernetes Node Agent
 Documentation=https://kubernetes.io/docs/
 After=network.target network-online.target
 Wants=docker.service crio.service
+ConditionPathExists=/var/lib/kubelet/config.yaml
 
 [Service]
 ExecStartPre=/bin/bash -c "findmnt -t bpf --mountpoint /sys/fs/bpf || mount bpffs /sys/fs/bpf -t bpf"

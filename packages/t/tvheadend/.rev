@@ -87,4 +87,12 @@
     <comment></comment>
     <requestid>787809</requestid>
   </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>2cce8740b6014cefa4d0d99ecd83a046</srcmd5>
+    <version>4.2.8</version>
+    <time>1591991167</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with gcc10</comment>
+    <requestid>814161</requestid>
+  </revision>
 </revisionlist>

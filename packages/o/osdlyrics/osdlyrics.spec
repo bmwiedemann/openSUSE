@@ -19,10 +19,10 @@
 %define  with_mpd     0
 # %define  commit       18cc4a872c3a18e99a33ac233f7c8cb2f5dfc624
 # %define  shortcommit  18cc4a8
-%define _version 0.5.5-rc1
+%define _version 0.5.5-rc2
 
 Name:           osdlyrics
-Version:        0.4.99.1
+Version:        0.4.99.2
 Release:        0
 Summary:        A third-party lyrics display program
 License:        GPL-3.0-or-later

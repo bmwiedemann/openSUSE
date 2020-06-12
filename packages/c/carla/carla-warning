@@ -1,0 +1,3 @@
+WARNING: This version of Carla has VST support but if
+you wish to use it you will need to install carla-vst.
+This is to prevent an unnecessary dependency on wine.

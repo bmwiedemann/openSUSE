@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  8 01:25:25 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add HepMC-type-mismatch-error.patch: Fix type mismatch between
+  function definition and function call flagged by GCC 10.
+- Use autosetup to setup build dir and automatically apply patch.
+
+-------------------------------------------------------------------
 Wed Apr 22 10:11:25 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update Licensing:

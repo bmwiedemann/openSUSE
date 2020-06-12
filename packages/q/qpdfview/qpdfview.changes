@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 12 12:11:46 UTC 2020 - Kyrill Detinov <lazy.kent@opensuse.org>
+
+- Add qpdfview-qt5.15.patch: fix build with Qt 5.15.
+
+-------------------------------------------------------------------
 Thu Jul 25 18:47:03 UTC 2019 - Kyrill Detinov <lazy.kent@opensuse.org>
 
 - Update to 0.4.18.

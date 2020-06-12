@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Jun 11 19:09:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.1.1+git.20200602:
+  * lib: revert implementing RGB233 mode
+  * lib: fix hang on exit
+  * lib: reuse hint message when zero-copy buffer alloc fails
+  * lib: fixed rgb332 macros
+  * lib: added utility macros for rgb332 mode
+  * lib: implement enabling RGB332 mode
+  * lib: fall back to iface 1 in case iface 0 altsetting 1 fails
+  * lib: use interface 0 altsetting 1 instead of interface 1
+  * set CMake policy CMP0075 if it exists
+  * fix compiler warnings
+  * fl2k_tcp: don't free buffer while lib still uses it
+  * improve exit handling on device removal
+  * lib: wait for sample worker thread before freeing buffers
+  * fl2k_file: check read return value before repeating
+  * fl2k_fm: make inline functions static
+  * contrib/jenkins.sh: osmo-fl2k build verification
+  * lib: Add workaround for Linux usbfs mmap() bug
+  * lib: add I2C support
+  * fix sleep durations on Windows
+  * debian: build-dep on dh-autoreconf for Ubuntu 16.04/Debian8
+  * debian: Attempt to down-grade the debhelper version requirement
+  * Add Debian packaging information
+  * enable multiarch build by means of GNUInstallDirs
+  * libusb-1.0.22 deprecated libusb_set_debug() with
+    libusb_set_option()
+  * fl2k_file: support reading from stdin
+  * lib: update output on zero-copy allocation
+  * lib: free zero-copy buffers in case of error
+
+-------------------------------------------------------------------
+Sat Apr 28 20:33:02 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.1.1+git.20180428:
+  * fl2k_test: fix build on Mac OS
+  * fl2k_fm: add missing help text for stereo and rds
+  * update version to 0.1.1
+  * set version to 0.1git
+
+-------------------------------------------------------------------
 Tue Apr 24 19:50:00 UTC 2018 - mardnh@gmx.de
 
 - Update to version 0.1.0+git.20180424:

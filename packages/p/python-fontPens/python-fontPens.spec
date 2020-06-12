@@ -24,6 +24,7 @@ Summary:        A collection of classes implementing the pen protocol for manipu
 License:        BSD-3-Clause
 URL:            https://github.com/robofab-developers/fontPens
 Source:         https://files.pythonhosted.org/packages/source/f/fontPens/fontPens-%{version}.zip
+Patch0:         fix-fp-issue.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,6 +43,7 @@ A collection of classes implementing the pen protocol for manipulating glyphs.
 
 %prep
 %setup -q -n fontPens-%{version}
+%patch0 -p1
 
 %build
 %python_build

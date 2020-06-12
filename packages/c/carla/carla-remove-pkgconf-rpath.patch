@@ -1,0 +1,33 @@
+Index: carla-2.1.1/data/carla-standalone.pc
+===================================================================
+--- carla-2.1.1.orig/data/carla-standalone.pc	2020-06-12 12:53:06.368008569 +0200
++++ carla-2.1.1/data/carla-standalone.pc	2020-06-12 12:54:21.982914944 +0200
+@@ -5,5 +5,5 @@ includedir=X-INCLUDEDIR-X/carla
+ Name: carla-standalone
+ Version: 2.1.1
+ Description: Carla Host Standalone
+-Libs: -Wl,-rpath,${libdir} -L${libdir} -lcarla_standalone2
++Libs: -L${libdir} -lcarla_standalone2
+ Cflags: -DREAL_BUILD -I${includedir} -I${includedir}/includes
+Index: carla-2.1.1/data/carla-utils.pc
+===================================================================
+--- carla-2.1.1.orig/data/carla-utils.pc	2020-06-12 12:53:06.368008569 +0200
++++ carla-2.1.1/data/carla-utils.pc	2020-06-12 12:55:07.736672962 +0200
+@@ -5,5 +5,5 @@ includedir=X-INCLUDEDIR-X/carla
+ Name: carla-utils
+ Version: 2.1.1
+ Description: Carla Host Utilities
+-Libs: -Wl,-rpath,${libdir} -L${libdir} -lcarla_utils
++Libs: -L${libdir} -lcarla_utils
+ Cflags: -DREAL_BUILD -I${includedir} -I${includedir}/includes -I${includedir}/utils
+Index: carla-2.1.1/data/carla-native-plugin.pc
+===================================================================
+--- carla-2.1.1.orig/data/carla-native-plugin.pc	2020-06-12 12:53:06.368008569 +0200
++++ carla-2.1.1/data/carla-native-plugin.pc	2020-06-12 12:56:32.123914260 +0200
+@@ -5,5 +5,5 @@ includedir=X-INCLUDEDIR-X/carla
+ Name: carla-native-plugin
+ Version: 2.1.1
+ Description: Carla Native Plugin
+-Libs: -Wl,-rpath,${libdir} -L${libdir} -lcarla_native-plugin
++Libs: -L${libdir} -lcarla_native-plugin
+ Cflags: -DREAL_BUILD -I${includedir} -I${includedir}/includes

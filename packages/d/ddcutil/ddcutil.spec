@@ -1,7 +1,7 @@
 #
 # spec file for package ddcutil
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,17 @@
 
 
 Name:           ddcutil
-Version:        0.9.5
+Version:        0.9.8
 Release:        0
 Summary:        Utility to query and update monitor settings
 License:        GPL-2.0-or-later
 Group:          System/GUI/Other
-Url:            http://github.com/rockowitz/ddctool
+URL:            http://github.com/rockowitz/ddctool
 Source:         https://github.com/rockowitz/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
+# Directory not owned by package error
+BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  i2c-tools
 BuildRequires:  libtool
@@ -48,11 +50,11 @@ effect, e.g. red gain.  ddcutil allows color related settings to be saved at
 the time a monitor is calibrated, and then restored when the calibration is
 applied.
 
-%package -n libddcutil0
+%package -n libddcutil2
 Summary:        Shared library to query and update monitor settings
 Group:          System/Libraries
 
-%description -n libddcutil0
+%description -n libddcutil2
 Shared library version of ddcutil, exposing a C API.
 
 ddcutil communicates with monitors implementing MCCS (Monitor Control Command
@@ -62,7 +64,7 @@ Device on USB.
 %package -n libddcutil-devel
 Summary:        Development files for libddcutil
 Group:          Development/Libraries/C and C++
-Requires:       libddcutil0 = %{version}
+Requires:       libddcutil2 = %{version}
 
 %description -n libddcutil-devel
 Header files and pkgconfig control file for libddcutil.
@@ -81,9 +83,12 @@ make %{?_smp_mflags} check
 
 %install
 %make_install
+# Move cmake file to the right location
+mkdir -p %{buildroot}%{_libdir}/cmake/%{name}/
+mv %{buildroot}%{_datadir}/cmake/Modules/FindDDCUtil.cmake %{buildroot}%{_libdir}/cmake/%{name}/
 
-%post   -n libddcutil0 -p /sbin/ldconfig
-%postun -n libddcutil0 -p /sbin/ldconfig
+%post   -n libddcutil2 -p /sbin/ldconfig
+%postun -n libddcutil2 -p /sbin/ldconfig
 
 %files
 %doc AUTHORS NEWS.md README.md ChangeLog
@@ -95,7 +100,7 @@ make %{?_smp_mflags} check
 %{_mandir}/man1/ddcutil.1*
 %{_bindir}/ddcutil
 
-%files -n libddcutil0
+%files -n libddcutil2
 %doc AUTHORS NEWS.md README.md ChangeLog
 %license COPYING
 %{_libdir}/libddcutil.so.*
@@ -106,9 +111,9 @@ make %{?_smp_mflags} check
 %{_includedir}/ddcutil_macros.h
 %{_includedir}/ddcutil_status_codes.h
 %{_libdir}/pkgconfig/ddcutil.pc
+%{_libdir}/cmake/%{name}/
 %{_libdir}/libddcutil.so
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/data/
-%{_datadir}/%{name}/data/FindDDCUtil.cmake
 
 %changelog

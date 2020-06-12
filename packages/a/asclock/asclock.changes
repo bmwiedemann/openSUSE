@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 12 11:49:03 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building with gcc10
+- Modernise spec file with spec-cleaner
+- Honor optflags
+- Reduce duplicities using fdupes
+
+-------------------------------------------------------------------
 Tue Nov  4 14:23:07 UTC 2014 - crrodriguez@opensuse.org
 
 - Due to broken prjconf I missed adding imake as buildRequire 

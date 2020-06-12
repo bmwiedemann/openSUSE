@@ -1,0 +1,31 @@
+https://github.com/kubernetes/kubernetes/pull/89136
+
+From d70d04f92b0bcc277c759c3bfb05cb1ec911b500 Mon Sep 17 00:00:00 2001
+From: Davanum Srinivas <davanum@gmail.com>
+Date: Sun, 15 Mar 2020 20:39:34 -0400
+Subject: [PATCH] zero out the build id for reproducible builds
+
+We have been having issues with making builds reproducible, especially
+with the `.note.go.buildid` ELF section. One tip from a golang issue was
+to set `-ldflags=-buildid=` which seems to work well. You can confirm
+that the buildid is set to empty by inspecting the binaries with the go
+command example `go tool buildid _output/local/go/bin/kubectl`
+
+Signed-off-by: Davanum Srinivas <davanum@gmail.com>
+---
+ hack/lib/golang.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hack/lib/golang.sh b/hack/lib/golang.sh
+index b646bbe2edfdc..f1c0a3e10ef7a 100755
+--- a/hack/lib/golang.sh
++++ b/hack/lib/golang.sh
+@@ -784,7 +784,7 @@ kube::golang::build_binaries() {
+     # Disable SC2153 for this, as it will throw a warning that the local
+     # variable goldflags will exist, and it suggest changing it to this.
+     # shellcheck disable=SC2153
+-    goldflags="${GOLDFLAGS=-s -w} $(kube::version::ldflags)"
++    goldflags="${GOLDFLAGS=-s -w -buildid=} $(kube::version::ldflags)"
+     goasmflags="-trimpath=${KUBE_ROOT}"
+     gogcflags="${GOGCFLAGS:-} -trimpath=${KUBE_ROOT}"
+ 

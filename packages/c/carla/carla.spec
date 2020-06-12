@@ -1,7 +1,7 @@
 #
 # spec file for package carla
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,33 @@
 #
 
 
+%define rev 9249bebbf5a8f2358cb912a5b8c429bc0c5b479b
+
 %define __provides_exclude_from ^%{_libdir}/carla/jack/.*.so.0$
 Name:           carla
-Version:        2.0.0+git20190321.20cc5244
+#NOTE: to update this package please change these two version fields in "_service" <param name="revision">v2.1.1</param> and
+#<param name="versionformat">2.1.1</param> to the version that you want and execute "osc service runall"
+# It will even fill in the .changes file. Please don't touch the Version: in the spec file, it will be filled automaticaly.
+Version:        2.1.1
 Release:        0
 Summary:        An audio plugin host
-License:        GPL-2.0-or-later
+License:        GPL-2.0-or-later AND BSD-2-Clause AND BSD-3-Clause
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://kxstudio.linuxaudio.org/Applications:Carla
-Source:         Carla-%{version}.tar.xz
+#https://github.com/falkTX/Carla/archive/v%%{version}.tar.gz#/
+
+Source0:        %{name}-%{version}.tar.xz
+Source1:        carla-warning
+Source2:        bsd-2-clause.txt
+# PATCH-FIX-OPENSUSE -- Use system flac/vorbis/ogg
 Patch0:         carla-systemlibs.patch
-# PATCH-FIX-UPSTREAM -- Fix build with GCC9
-Patch1:         0001-Place-Qt-stuff-outside-of-custom-namespace.patch
+# PATCH-FIX-OPENSUSE -- Remove rpath from .pc files davejplater@gmail.com
+Patch1:         carla-remove-pkgconf-rpath.patch
 BuildRequires:  fdupes
 BuildRequires:  file-devel
+BuildRequires:  filesystem
 BuildRequires:  libqt5-qtbase-devel
+BuildRequires:  memory-constraints
 # for extra native plugins
 BuildRequires:  non-ntk-fluid
 BuildRequires:  pkgconfig
@@ -55,6 +67,22 @@ BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(vorbisenc)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
+#Wine
+#!BuildIgnore:  sane-backends-32bit
+BuildRequires:  gcc-32bit
+BuildRequires:  gcc-c++-32bit
+BuildRequires:  glibc-devel-32bit
+BuildRequires:  libX11-devel-32bit
+BuildRequires:  libstdc++-devel-32bit
+%if 0%{?suse_version} >= 1550
+BuildRequires:  mingw32-cross-gcc
+BuildRequires:  mingw32-cross-gcc-c++
+BuildRequires:  wine
+BuildRequires:  wine-devel
+BuildRequires:  wine-devel-32bit
+Suggests:       %{name}-vst = %{version}
+%endif
+#End wine
 Requires:       python3-base
 Requires:       python3-qt5
 ExclusiveArch:  x86_64
@@ -69,7 +97,8 @@ It futher supports bridging Window plugins using Wine.
 %package devel
 Summary:        Header files to access Carla's API
 Group:          Development/Libraries/C and C++
-BuildRequires:  pkgconfig
+Requires:       carla = %{version}
+Requires:       pkgconfig
 
 %description devel
 This package contains header files needed when writing software using
@@ -78,15 +107,21 @@ Carla's several APIs.
 %package vst
 Summary:        CarlaRack and CarlaPatchbay VST plugins
 Group:          Productivity/Multimedia/Sound/Utilities
+Requires:       %{name} = %{version}
 
 %description vst
 This package contanis Carla VST plugins, including CarlaPatchbayFX,
-CarlaPatchbay, CarlaRackFX, and CarlaRack.
+CarlaPatchbay, CarlaRackFX, and CarlaRack. It also contains the
+win32 and wine32 binaries for handling ms win32 vst plugins
 
 %prep
-%autosetup -p1 -n Carla-%{version}
+%autosetup -p1
+#for i in `grep -rl "/usr/bin/env python3"`;do $(sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i}; chmod +x ${i}) ;done
 
 %build
+#remove -m64 from the build
+%define optflags -O2 -Wall -D_FORTIFY_SOURCE=2 -funwind-tables -fasynchronous-unwind-tables -Werror=return-type -flto=auto
+%limit_build -m 1000
 export CXXFLAGS="%{optflags}"
 export CFLAGS="%{optflags}"
 
@@ -94,34 +129,59 @@ export CFLAGS="%{optflags}"
 make features
 
 # bulding with high -j numbers often results in build failures, thus we're disabling _smp_flags for now 
-make \
+make %{_smp_mflags} \
 %ifnarch %{ix86} x86_64
 	BASE_OPTS= \
 %endif
 	--trace
+#Makes 32bit plugin capabilities
+make posix32
+#missing /usr/lib64/gcc/i686-w64-mingw32/9.2.0/libssp.a
+%if 0%{?suse_version} >= 1550
+export CFLAGS=`echo $CFLAGS | sed s/\-flto=auto//`
+export CXXFLAGS=`echo $CXXFLAGS | sed s/\-flto=auto//`
+echo $CFLAGS
+echo $CXXFLAGS
+make --trace win32 CC=i686-w64-mingw32-gcc CXX=i686-w64-mingw32-g++ LIBDIR=%{_libdir} CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS"
+make --trace wine32 LIBDIR=%{_libdir} CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS"
+%endif
 
 %install
 make install DESTDIR=%{buildroot} PREFIX="%{_prefix}" LIBDIR="%{_libdir}"
-# Move arch depended files (wrong installed)
-mv %{buildroot}%{_datadir}/carla/resources/zynaddsubfx-ui %{buildroot}%{_libdir}/carla
-ln -s %{_libdir}/carla/zynaddsubfx-ui %{buildroot}%{_datadir}/carla/resources/zynaddsubfx-ui
-# flags
-for file in carla carla-control carla-jack-multi carla-jack-single carla-patchbay carla-rack carla_app.py carla_backend.py carla_backend_qt.py carla_config.py carla_control.py carla_database.py carla_host.py carla_shared.py carla_skin.py carla_utils.py carla_widgets.py carla_settings.py externalui.py ladspa_rdf.py patchcanvas.py patchcanvas_theme.py resources_rc.py; do
-	chmod +x "%{buildroot}%{_datadir}/carla/$file"
-done
+
+pushd %{buildroot}
+for i in `grep -rl "/usr/bin/env python"`;do $(sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i}; chmod +x ${i}) ;done
+for i in `grep -rl "/usr/bin/env python3"`;do $(sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i}; chmod +x ${i}) ;done
+for i in `grep -rl "/usr/bin/python3"`;do chmod +x ${i} ;done
+popd
+
+cp -v source/modules/lilv/serd-0.24.0/tests/TurtleTests/LICENSE LICENSE.TurtleTests
+
 # SUSE specific
 %if 0%{?suse_version}
  %suse_update_desktop_file -r carla AudioVideo Music
  %suse_update_desktop_file -r carla-control AudioVideo Music
  %fdupes -s %{buildroot}%{_datadir}
+ %fdupes -s %{buildroot}%{_includedir}
 %endif
+mkdir -p %{buildroot}%{_localstatedir}/adm/update-messages/
+#%%{name}-warning
+cp %{S:1}  %{buildroot}%{_localstatedir}/adm/update-messages/
+cp %{S:2} .
 
 %files
-%license doc/GPL.txt doc/LGPL.txt
+%license doc/GPL.txt doc/LGPL.txt LICENSE.TurtleTests bsd-2-clause.txt
 %doc INSTALL.md README.md doc/Carla-TestCases
 %{_bindir}/*
 %dir %{_libdir}/carla
 %{_libdir}/carla/*
+%exclude %{_libdir}/carla/carla-bridge-posix32
+%exclude %{_libdir}/carla/carla-discovery-posix32
+%if 0%{?suse_version} >= 1550
+%exclude %{_libdir}/carla/jackbridge-wine32.dll
+%exclude %{_libdir}/carla/carla-bridge-win32.exe
+%exclude %{_libdir}/carla/carla-discovery-win32.exe
+%endif
 %dir %{_libdir}/lv2
 %dir %{_libdir}/lv2/carla.lv2
 %{_libdir}/lv2/carla.lv2/*
@@ -130,10 +190,21 @@ done
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/
 %{_datadir}/mime/packages/carla.xml
+%{_localstatedir}/adm/update-messages/%{name}-warning
+
+%post
+cat %{_localstatedir}/adm/update-messages/%{name}-warning
 
 %files vst
 %dir %{_libdir}/vst
 %dir %{_libdir}/vst/carla.vst
+%{_libdir}/carla/carla-bridge-posix32
+%{_libdir}/carla/carla-discovery-posix32
+%if 0%{?suse_version} >= 1550
+%{_libdir}/carla/jackbridge-wine32.dll
+%{_libdir}/carla/carla-bridge-win32.exe
+%{_libdir}/carla/carla-discovery-win32.exe
+%endif
 %{_libdir}/vst/carla.vst/*
 
 %files devel

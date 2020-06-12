@@ -5114,4 +5114,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.6.14 &amp; 5.6.13 &amp; other fixes</comment>
     <requestid>807538</requestid>
   </revision>
+  <revision rev="544" vrev="1">
+    <srcmd5>5492c1ea0d0e9ce9378dd44a7699718e</srcmd5>
+    <version>5.7.1</version>
+    <time>1591990620</time>
+    <user>dimstar_suse</user>
+    <comment>truncate fix &amp; 5.7.1 &amp; 5.7</comment>
+    <requestid>813222</requestid>
+  </revision>
 </revisionlist>

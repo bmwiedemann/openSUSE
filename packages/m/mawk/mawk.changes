@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed May 20 08:16:30 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 1.3.4-20200120 
+  * fix typos found with codespell.
+  * when reading input in interactive mode, provide for extending the
+    buffer size for very long lines (Original-Mawk #59).
+  * correct line-number shown in too-many-arguments error message for
+    the case where the function is a forward reference (report by "mukti").
+  * fix install for manpage when configure --srcdir option is used
+    (report by Rajeev V Pillai).
+  * use both CFLAGS/LDFLAGS when linking in makefile (report by Rajeev V Pillai).
+  * fix clang-9 warning in bi_funct.c (report by Rajeev V Pillai).
+  * minor improvement to gcc warning options, from vile
+  * improve manpage formatting, e.g., for man2html
+  * improve debug-traces
+  * eliminate non-portable tdestroy() from zmalloc no-leaks code.
+  * revert a change for memory-leaks which made the forced-exit via a
+    user function inconsistent with earlier versions (report by Sihera Andre).
+  * amend a change for memory-leaks to avoid a double-free (Original-Mawk #56).
+
+-------------------------------------------------------------------
 Wed Jul 11 07:58:17 UTC 2018 - mpluskal@suse.com
 
 - Update to version 1.3.4-20171017:

@@ -17,8 +17,8 @@
 # needssslcertforbuild
 
 
-%define srcversion 5.6
-%define patchversion 5.6.14
+%define srcversion 5.7
+%define patchversion 5.7.1
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -65,9 +65,9 @@ Name:           kernel-lpae
 Summary:        Kernel for LPAE enabled systems
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.6.14
+Version:        5.7.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb0ab48a
+Release:        <RELEASE>.g6a549f6
 %else
 Release:        0
 %endif
@@ -92,6 +92,8 @@ BuildRequires:  modutils
 # Used to sign the kernel in the buildservice
 BuildRequires:  openssl
 BuildRequires:  pesign-obs-integration
+# for CONFIG_DEBUG_INFO_BTF - ToDo: make it conditional
+BuildRequires:  pahole
 # for objtool
 BuildRequires:  libelf-devel
 Provides:       %name = %version-%source_rel
@@ -174,10 +176,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-b0ab48a9ace68fa3774ae8579deef7eb7d56d444
-Provides:       kernel-srchash-b0ab48a9ace68fa3774ae8579deef7eb7d56d444
+Provides:       kernel-%build_flavor-base-srchash-6a549f6dd07f682dbe4308ce21c26c40dca1ffa2
+Provides:       kernel-srchash-6a549f6dd07f682dbe4308ce21c26c40dca1ffa2
 # END COMMON DEPS
-Provides:       %name-srchash-b0ab48a9ace68fa3774ae8579deef7eb7d56d444
+Provides:       %name-srchash-6a549f6dd07f682dbe4308ce21c26c40dca1ffa2
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source2:        source-post.sh

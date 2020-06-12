@@ -3,6 +3,8 @@ From: Qin Su <qsu@ti.com>
 Date: Fri, 22 Feb 2019 14:10:07 -0500
 Subject: [PATCH] add more test command line arguments
 
+Updated by Guillaume_G to apply properly (s/BOOST_ASSERT/ARMNN_ASSERT/)
+
 Upstream-Status: Inappropriate [TI only test code]
 Signed-off-by: Qin Su <qsu@ti.com>
 ---
@@ -14,9 +16,9 @@ index 538720b..6fd21b8 100644
 --- a/tests/InferenceTest.inl
 +++ b/tests/InferenceTest.inl
 @@ -326,6 +326,55 @@ int ClassifierInferenceTestMain(int argc,
-     BOOST_ASSERT(modelFilename);
-     BOOST_ASSERT(inputBindingName);
-     BOOST_ASSERT(outputBindingName);
+     ARMNN_ASSERT(modelFilename);
+     ARMNN_ASSERT(inputBindingName);
+     ARMNN_ASSERT(outputBindingName);
 +    int count;
 +    const char *p_input;
 +    char inmodelname[500];

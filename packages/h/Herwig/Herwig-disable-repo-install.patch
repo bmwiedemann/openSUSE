@@ -1,8 +1,8 @@
-Index: Herwig-7.1.1/src/Makefile.am
+Index: Herwig-7.2.1/src/Makefile.am
 ===================================================================
---- Herwig-7.1.1.orig/src/Makefile.am
-+++ Herwig-7.1.1/src/Makefile.am
-@@ -174,11 +174,6 @@ THEPEGREPO=$(THEPEGLIBPATH)/ThePEGDefaul
+--- Herwig-7.2.1.orig/src/Makefile.am
++++ Herwig-7.2.1/src/Makefile.am
+@@ -177,11 +177,6 @@ THEPEGREPO=$(THEPEGLIBPATH)/ThePEGDefaul
  
  install-data-hook:
  	@echo Creating repository

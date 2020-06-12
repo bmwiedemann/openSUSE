@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 12 05:24:23 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building with gcc10
+
+-------------------------------------------------------------------
 Thu Mar 14 05:25:11 UTC 2019 - seanlew@opensuse.org
 
 - Update to version 4.3.2

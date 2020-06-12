@@ -367,4 +367,14 @@
 </comment>
     <requestid>812250</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>1f4af1008e5cd3bc93c50248cfd89ccf</srcmd5>
+    <version>2.1.11</version>
+    <time>1591990799</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.11
+  * Fix launching on old Linux systems.
+</comment>
+    <requestid>813541</requestid>
+  </revision>
 </revisionlist>

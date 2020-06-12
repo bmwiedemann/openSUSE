@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 11 03:10:36 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 8.53
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.53  2020-06-09
+    - Added EXPERIMENTAL extname method to Mojo::File.
+    - Fixed a bug in Mojolicious::Types where dotfiles would be considered file extensions.
+
+-------------------------------------------------------------------
 Thu Jun  4 03:10:36 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 8.52

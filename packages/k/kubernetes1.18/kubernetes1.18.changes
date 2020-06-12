@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Jun 10 11:57:57 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Remove %{?_smp_mflags} to make build more reliable [boo#1172744] 
+
+-------------------------------------------------------------------
+Wed Jun 10 03:52:54 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible-buildid.patch to make package build reproducible
+
+-------------------------------------------------------------------
+Tue Jun 09 14:41:32 UTC 2020 - rbrown@suse.com
+
+- Update to version 1.18.3:
+  * Move nfs-provisioner from quay.io/kubernetes_incubator to staging-csi
+  * Use staging-csi to work around quay.io availability
+  * Azure: support non-VMSS instances removal
+  * deps: Use debian-base:v2.1.0 and debian-iptables:v12.1.0
+  * build: Add build-image OWNERS to debian-{base,iptables} and pause dirs
+  * count no nodes scheduling failure as unschedulable instead of error
+  * kubeadm: fix flakes when performing etcd MemberAdd on slower setups
+  * base-images: Update to kube-cross:v1.13.9-5
+  * build: Alpha-sort dependencies.yaml
+  * fix: azure disk dangling attach issue
+  * kube-proxy: increase the session affinity timeout to ensure that the test passes in ipvs mode
+  * cluster: ipvs conntrack module vs kernel version
+  * allow k8s.io/kubernetes/third_party/forked/ipvs in e2e test framework import restrictions (transitive dep from pkg/kubemark)
+  * add license headers for third_party/forked/ipvs
+  * third_party/forked/ipvs: check the address family if the netlink address family attribute is not set
+  * run hack/update-vendor.sh to remove github.com/docker/libnetwork
+  * remove github.com/docker/libnetwork from go.mod
+  * update pkg/util/ipvs to use third_party/forked/ipvs
+  * move github.com/docker/libnetwork/ipvs to third_party/forked
+  * fix backoff manager timer initialization race
+  * fix: ACR auth fails in private azure clouds
+  * Restore cache-control header filter
+  * kube-scheduler: compatibility with ServerSideApply
+  * bugfix: initcontainer wasn't considered when calculate resource request
+  * fix: azure file csi migration failure
+  * Fix flaws in Azure CSI translation
+  * Revert "stop defaulting kubeconfig to http://localhost:8080"
+  * Update CHANGELOG/CHANGELOG-1.18.md for v1.18.2
+  * Fix Node initialization for GCP cloud provider
+  * Simplify unregistration of csiplugin
+  * Unregister csiplugin even if socket path is gone
+  * Move PSP tests behind a feature tag
+  * kube-openapi bump to release-1.18
+  * Preserve int/float distinction when decoding raw values
+  * Check Annotations map against nil for ConfigMapLock#Update()
+  * Fix CSINodeInfo startup
+  * Wait for APIServer 'ok' forever during CSINode initialization during Kubelet init
+
+-------------------------------------------------------------------
+Mon Jun  8 15:33:30 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Add ConditionPathExists=/var/lib/kubelet/config.yaml to kubelet.service [boo#1146372] 
+
+-------------------------------------------------------------------
 Wed May 20 11:15:04 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Run sysctl -a --system before kubelet to ensure sysctl parameters are correctly loaded [boo#1171770] 

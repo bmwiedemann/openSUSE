@@ -101,4 +101,15 @@
     <comment>1</comment>
     <requestid>260126</requestid>
   </revision>
+  <revision rev="16" vrev="312">
+    <srcmd5>acca7dba4fab0ec6df46470424a04426</srcmd5>
+    <version>2.0.12</version>
+    <time>1591991109</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with gcc10
+- Modernise spec file with spec-cleaner
+- Honor optflags
+- Reduce duplicities using fdupes</comment>
+    <requestid>814146</requestid>
+  </revision>
 </revisionlist>

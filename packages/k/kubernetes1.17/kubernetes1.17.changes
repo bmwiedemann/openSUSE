@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Jun 10 11:57:57 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Add reproducible-buildid.patch to make package build reproducible
+- Remove %{?_smp_mflags} to make build more reliable [boo#1172744] 
+
+-------------------------------------------------------------------
+Tue Jun 09 14:41:36 UTC 2020 - rbrown@suse.com
+
+- Update to version 1.17.6:
+  * Azure: support non-VMSS instances removal
+  * deps: Use debian-base:v2.1.0 and debian-iptables:v12.1.0
+  * build: Add build-image OWNERS to debian-{base,iptables} and pause dirs
+  * count no nodes scheduling failure as unschedulable instead of error
+  * base-images: Update to kube-cross:v1.13.9-5
+  * build: Alpha-sort dependencies.yaml
+  * Work-around for missing metrics on CRI-O exited containers
+  * fix: azure disk dangling attach issue
+  * fix: ACR auth fails in private azure clouds
+  * Restore cache-control header filter
+  * bugfix: initcontainer wasn't considered when calculate resource request
+  * fix: azure file csi migration failure
+  * Fix flaws in Azure CSI translation
+  * Update CHANGELOG/CHANGELOG-1.17.md for v1.17.5
+  * Move PSP tests behind a feature tag
+  * Fix code for 1.17
+  * kube-openapi bump to release-1.17
+  * Do not reset managedFields in status update strategy
+  * Use discovery to test apply all status
+  * Preserve int/float distinction when decoding raw values
+  * All check for instanceID
+  * Fix AWS eventual consistency of AttachDisk
+  * fix: update max azure disk max count
+  * Fix cherry-pick errors
+  * Fix CSINodeInfo startup
+  * Wait for APIServer 'ok' forever during CSINode initialization during Kubelet init
+
+-------------------------------------------------------------------
+Mon Jun  8 15:33:30 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Add ConditionPathExists=/var/lib/kubelet/config.yaml to kubelet.service [boo#1146372] 
+
+-------------------------------------------------------------------
 Wed Jun  3 12:49:13 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Avoid unncessary kubernetes1.17-kubelet package removal [boo#1168390] 

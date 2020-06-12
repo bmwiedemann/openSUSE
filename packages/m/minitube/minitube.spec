@@ -17,7 +17,7 @@
 
 
 Name:           minitube
-Version:        3.4
+Version:        3.4.2
 Release:        0
 Summary:        Native YouTube Client
 License:        GPL-3.0-or-later
@@ -28,10 +28,6 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        minitube.1
 # PATCH-FIX-OPENSUSE minitube-no-update-check.patch sur5r@sur5r.net -- Disable update check.
 Patch0:         %{name}-no-update-check.patch
-# PATCH-FIX-UPSTREAM minitube-fix-for-upstream-missing-qthelper.hpp-in-newer-mpv-version.patch- gh#flaviotordini/minitube/#157
-Patch1:         %{name}-fix-for-upstream-missing-qthelper.hpp-in-newer-mpv-version.patch
-# PATCH-FIX-UPSTREAM minitube-fix_audio_playback.patch - gh#flaviotordini/minitube/#155
-Patch2:  %{name}-fix_audio_playback.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
@@ -62,8 +58,6 @@ it strives to create a new TV-like experience.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 # Remove build time references so build-compare can do its work
 FAKE_BUILDDATE="$(LC_ALL=C date -u -d "@${SOURCE_DATE_EPOCH}" '+%%b %%e %%Y')"

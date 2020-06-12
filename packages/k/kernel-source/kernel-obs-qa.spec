@@ -17,7 +17,7 @@
 # needsrootforbuild
 
 
-%define patchversion 5.6.14
+%define patchversion 5.7.1
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -28,7 +28,7 @@ BuildRequires:  kernel-default
 # here as well to avoid that qa and build package build parallel
 BuildRequires:  kernel-obs-build
 BuildRequires:  modutils
-ExclusiveArch:  aarch64 armv6hl armv7hl %ix86 ppc64 ppc64le s390x x86_64
+ExclusiveArch:  aarch64 armv6hl armv7hl %ix86 ppc64 ppc64le riscv64 s390x x86_64
 %if 0%{?suse_version} < 1200
 # for SLE 11
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -36,9 +36,9 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Basic QA tests for the kernel
 License:        GPL-2.0
 Group:          SLES
-Version:        5.6.14
+Version:        5.7.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb0ab48a
+Release:        <RELEASE>.g6a549f6
 %else
 Release:        0
 %endif

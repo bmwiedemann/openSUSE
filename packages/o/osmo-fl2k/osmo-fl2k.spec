@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-fl2k
 #
-# # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sover	0
 %define libname libosmo-fl2k%{sover}
 Name:           osmo-fl2k
-Version:        0.1.0+git.20180424
+Version:        0.1.1+git.20200602
 Release:        0
 Summary:        SDR driver for FL2000 based USB 3.0 to VGA adapters
 License:        GPL-2.0-or-later

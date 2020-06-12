@@ -1,7 +1,7 @@
 #
 # spec file for package qpdfview
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://launchpad.net/qpdfview
 Source:         https://launchpad.net/%{name}/trunk/%{version}/+download/%{name}-%{version}.tar.gz
 Source1:        https://launchpad.net/%{name}/trunk/%{version}/+download/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM qpdfview-qt5.15.patch -- fix build with Qt 5.15
+Patch0:         qpdfview-qt5.15.patch
 BuildRequires:  cups-devel
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -111,12 +113,13 @@ This plugin is required to read PostScript documents
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %global _libqt5_qmake %{_libqt5_qmake} -makefile %{name}.pro
 %{_libqt5_bindir}/lrelease translations/*.ts
 %qmake5 PLUGIN_INSTALL_PATH=%{_libdir}/%{name}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %qmake5_install

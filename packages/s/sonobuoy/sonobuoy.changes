@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri May 15 14:14:34 UTC 2020 - Michal Jura <mjura@suse.com>
+
+- Update to version 0.18.2:
+  * Prepare v0.18.2 release (#1117)
+  * Include custom status in results report (#1116)
+  * Add GitHub links to team member list (#1115)
+  * Prepare v0.18.1 release (#1114)
+  * Add documentation for manual results type (#1112)
+  * Add verbose flag when creating kind cluster (#1113)
+  * Upgrade to go 1.14 (#1111)
+  * Upgrade to Kind 0.7.0 (#1110)
+  * Add a new results format: manual (#1090)
+  * Fix crash when running sonobuoy in serverless kubernetes cluster (#1108)
+  * Fix missing registry for E2E test image (#1105)
+  * Ensure consistent windows image names (#1104)
+  * Ensure all CI steps are run for tags (#1103)
+  * Use v1.18.0 kind image (#1102)
+  * Prepare v0.18.0 release (#1101)
+  * Simplify installation instructions (#1100)
+  * Use passed VERSION when generating image manifest (#1099)
+  * Don't error if build directory already exists (#1098)
+  * Persist images for all targets (#1097)
+  * Remove deprecated --systemd-logs-flag flag (#1096)
+  * Attach workspace before loading docker images (#1093)
+  * Minor tweak after last commit (#1092)
+  * Currently in a beta state, we are experimenting with building (#1081)
+  * Add kubernetes-version flag to images subcommands (#1085)
+  * Fix 1.13 resource-consumer image tag (#1083)
+  * Change M2 from project to product mgr (#1080)
+  * Decouple building binaries from images (#1078)
+  * Update Code of Conduct (#1077)
+
+-------------------------------------------------------------------
 Thu Feb 27 08:52:18 UTC 2020 - Michal Jura <mjura@suse.com>
 
 - Update to version 0.17.2:

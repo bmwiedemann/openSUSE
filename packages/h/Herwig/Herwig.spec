@@ -19,7 +19,7 @@
 %define _lto_cflags %{nil}
 %define so_name Herwig-libs
 Name:           Herwig
-Version:        7.2.0
+Version:        7.2.1
 Release:        0
 Summary:        Multi-purpose event generator for high-energy physics
 License:        GPL-2.0-only
@@ -29,6 +29,8 @@ Source0:        http://www.hepforge.org/archive/herwig/%{name}-%{version}.tar.bz
 Source1:        %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE Herwig-disable-repo-install.patch badshah400@gmail.com -- Disable post-install hooks intended to set up the Herwig repo, this doesn't work inside the build script because of missing LHAPDF data that needs to be installed by the user; the install-hook doesn't serve any purpose while building the rpm and users can easily set this up on their own
 Patch0:         Herwig-disable-repo-install.patch
+# PATCH-FIX-UPSTREAM Herwig-type-mismatch-fix.patch badshah400@gmail.com -- Fix a type mismatch error in fortran flagged by GCC 10
+Patch1:         Herwig-type-mismatch-fix.patch
 BuildRequires:  HepMC2-devel
 BuildRequires:  LHAPDF-devel
 BuildRequires:  Rivet-devel
@@ -105,11 +107,11 @@ This package provides the header and source libraries for development
 with %{name}.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
-# REMOVE A SPURIOUS BACKUP FILE
+# REMOVE SPURIOUS BACKUP FILES
 rm Models/Feynrules/python/ufo2peg/converter.py.rej~
+rm Models/Feynrules/python/ufo2peg/vertices.py.orig
 
 # FIX ENV BASED HASHBANG
 sed -i "1{s|/usr/bin/env bash|/bin/bash|}" src/herwig-config.in
@@ -117,7 +119,7 @@ sed -i "1{s|/usr/bin/env bash|/bin/bash|}" src/herwig-config.in
 %build
 autoreconf -fvi
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

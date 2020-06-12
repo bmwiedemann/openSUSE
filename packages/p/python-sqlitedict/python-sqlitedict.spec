@@ -1,7 +1,7 @@
 #
 # spec file for package python-sqlitedict
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Summary:        Persistent dict in Python backed by sqlite3
 License:        Apache-2.0
 URL:            https://github.com/piskvorky/sqlitedict
 Source:         https://files.pythonhosted.org/packages/source/s/sqlitedict/sqlitedict-%{version}.tar.gz
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
@@ -52,7 +52,7 @@ sed -i -e '/^#!\//, 1d' sqlitedict.py
 %{python_expand # db needs to be regenerated
 rm -rf tests/db
 mkdir -p tests/db
-nosetests-%{$python_bin_suffix} -v
+PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix}
 }
 
 %files %{python_files}

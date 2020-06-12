@@ -92,4 +92,12 @@
 </comment>
     <requestid>812078</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>ea1968fdd044cdca757ea0e74159e3f6</srcmd5>
+    <version>1.0.0</version>
+    <time>1591990590</time>
+    <user>dimstar_suse</user>
+    <comment>- Add busybox-adduser (forwarded request 814042 from kukuk)</comment>
+    <requestid>814043</requestid>
+  </revision>
 </revisionlist>

@@ -75,4 +75,12 @@
   - Fixed bsc#1152987 `CVE-2019-16328`_ which was caused by a missing protocol security check</comment>
     <requestid>805821</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>dd81536a8b178e47c05beb051214105e</srcmd5>
+    <version>4.1.5</version>
+    <time>1591990668</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811140</requestid>
+  </revision>
 </revisionlist>

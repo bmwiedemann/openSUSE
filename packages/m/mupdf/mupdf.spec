@@ -1,7 +1,7 @@
 #
 # spec file for package mupdf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2011 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@ Release:        0
 Summary:        PDF and XPS Viewer and Parser and Rendering Library
 License:        AGPL-3.0-or-later
 Group:          Productivity/Office/Other
-Url:            https://mupdf.com/
+URL:            https://mupdf.com/
 Source0:        https://mupdf.com/downloads/archive/%{name}-%{version}-source.tar.xz
 Source1:        %{name}.desktop
 Source2:        %{name}-gl.desktop
@@ -94,8 +94,8 @@ echo > user.make "\
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-export XCFLAGS="%{optflags} -fPIC -DJBIG_NO_MEMENTO -DTOFU -DTOFU_CJK"
-make %{?_smp_mflags} build=release verbose=yes
+export XCFLAGS="%{optflags} -fcommon -fPIC -DJBIG_NO_MEMENTO -DTOFU -DTOFU_CJK"
+%make_build build=release verbose=yes
 
 %install
 %make_install build=release prefix=%{_prefix} libdir=%{_libdir}
@@ -130,7 +130,7 @@ cd %{buildroot}/%{_bindir} && ln -s %{name}-x11 %{name}
 %{_datadir}/icons/hicolor/scalable
 %{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/scalable/apps/*
-%{_mandir}/man1/*.1.gz
+%{_mandir}/man1/*.1%{?ext_man}
 
 %files devel-static
 %{_includedir}/%{name}

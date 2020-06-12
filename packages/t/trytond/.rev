@@ -349,4 +349,12 @@
     <comment></comment>
     <requestid>783276</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>17a5a5c13246e6095d6a3f618a2655aa</srcmd5>
+    <version>5.0.23</version>
+    <time>1591990813</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix release</comment>
+    <requestid>813783</requestid>
+  </revision>
 </revisionlist>

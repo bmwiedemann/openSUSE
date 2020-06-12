@@ -1,7 +1,7 @@
 #
 # spec file for package tcpreplay
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,18 +22,18 @@ Release:        0
 Summary:        Network analysis and testing tools
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Diagnostic
-Url:            http://tcpreplay.appneta.com/
+URL:            http://tcpreplay.appneta.com/
 Source0:        https://github.com/appneta/tcpreplay/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/appneta/tcpreplay/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 BuildRequires:  dbus-1-devel
 BuildRequires:  libdnet-devel
 BuildRequires:  libpcap-devel
+BuildRequires:  tcpdump
+Requires:       tcpdump
 %if 0%{?suse_version} > 1110
 BuildRequires:  libnl3-devel
 %endif
-BuildRequires:  tcpdump
-Requires:       tcpdump
 # only needed for suse_version < 1130 (i.e. SLE11)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -48,6 +48,8 @@ supports switches, routers and IP Flow/NetFlow appliances.
 %setup -q
 
 %build
+# fix building with gcc10
+export CFLAGS="%{optflags} -fcommon"
 %configure \
   --enable-dynamic-link
 make %{?_smp_mflags} V=1

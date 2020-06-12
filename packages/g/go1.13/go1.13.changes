@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 12 12:34:48 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Add Prefer-etc-hosts-over-DNS.patch to ensure /etc/hosts is used if /etc/nsswitch.conf is not present boo#1172868 gh#golang/go#35305
+
+-------------------------------------------------------------------
 Mon Jun  8 08:22:07 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Ensure ARM arch is set properly - boo#1169832

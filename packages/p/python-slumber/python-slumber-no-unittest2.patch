@@ -1,0 +1,26 @@
+Index: slumber-0.7.1/tests/resource.py
+===================================================================
+--- slumber-0.7.1.orig/tests/resource.py	2015-05-14 17:53:16.000000000 +0200
++++ slumber-0.7.1/tests/resource.py	2020-06-03 11:50:53.965257547 +0200
+@@ -4,7 +4,7 @@ import mock
+ import requests
+ import slumber
+ import slumber.serialize
+-import unittest2 as unittest
++import unittest
+ 
+ from slumber import exceptions
+ 
+Index: slumber-0.7.1/tests/utils.py
+===================================================================
+--- slumber-0.7.1.orig/tests/utils.py	2015-05-14 17:53:16.000000000 +0200
++++ slumber-0.7.1/tests/utils.py	2020-06-03 11:51:10.837350476 +0200
+@@ -1,7 +1,7 @@
+ # -*- coding: utf-8 -*-
+ import sys
+ 
+-import unittest2 as unittest
++import unittest
+ import slumber
+ 
+ 

@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 5.6.14
+%define patchversion 5.7.1
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -45,14 +45,14 @@ BuildRequires:  util-linux
 %endif
 %endif
 %endif
-BuildRequires:  kernel%kernel_flavor-srchash-b0ab48a9ace68fa3774ae8579deef7eb7d56d444
+BuildRequires:  kernel%kernel_flavor-srchash-6a549f6dd07f682dbe4308ce21c26c40dca1ffa2
 
 %if 0%{?rhel_version}
 BuildRequires:  kernel
 %define kernel_flavor ""
 %endif
 
-ExclusiveArch:  aarch64 armv6hl armv7hl %ix86 ppc64 ppc64le s390x x86_64
+ExclusiveArch:  aarch64 armv6hl armv7hl %ix86 ppc64 ppc64le riscv64 s390x x86_64
 %if 0%{?suse_version} < 1315
 # For SLE 11
 BuildRequires:  mkinitrd
@@ -64,9 +64,9 @@ BuildRequires:  dracut
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0
 Group:          SLES
-Version:        5.6.14
+Version:        5.7.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb0ab48a
+Release:        <RELEASE>.g6a549f6
 %else
 Release:        0
 %endif

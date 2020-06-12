@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Jun  3 08:24:47 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.6.1:
+  * A portable version of types.CodeType was rewritten.
+  * Python 3.8-ish `replace()` method has been added to the portable code types
+  * Portable code type classes `Code13`, `Code15` have been added to more precisely distinguish Python 1.3 and 1.5 code types. The other portable code classes are `Code2`, `Code3`, and `Code38`.
+  * the to_native() conversts a portable code type into a native code type
+  * the `decode_lineno_tab()` method on portable code types from Python 1.5 on decompresses the Python encode line number table into a dictionary mapping offset to line number.
+  * The module `xdis.code` has been remamed to `xdis.codetype`.
+  * `load_module()` and `load_module_from_file_object()` now return
+   a couple more parameters.
+  * --asm option fixes
+  * Show sip hash in 3.7+ when that is used
+  * Handle PEP 552 bytecode-file variations more properly
+  * Detect more intermediate Python versions in `load_code_from_file_object()`
+  * 3.8+ posonlyargcount in assembly...  rename Kw-only field to Keyword-only
+  * Add 3.5 canonic bytecode version Marshal `dumps()`
+  * convert from byte() to str() in dumps() when needed in 3.x
+  * to_native() convert to bytes from string when needed in 3.x.
+  * clean up loading code by using float version values rather than magic values
+  * `stack_effects()` checked against Python 3.4+ is now in place.
+  * Added `stack_effects()` function to `std.py` since this is part of the API
+  * `cross_xdis.py` file/module now has `dis.py` functions split off from `bytecod
+  e.py`
+  * `Instructions` class is in its own module too.
+  * Python 2.7.18 added into magics.
+  * Fix bug in marshal for 3.8+ (include posonlyargcount)
+  * Go over stack effects from 2.5 to 3.4 using and idea from Maynard
+  * Expand stack-effect testing
+  * 3.8.3 added as a valid 3.8 release
+  * command program `pydisasm` disassembles more Python source files now
+  * Add better arguemnt formatting on `CALL_FUNCTION` and `MAKE_FUNCTION`
+  * bytecode.py now has `distb`
+  * opcode modules now have variable `python_implemenation` which is either "CPyth
+  on" or "PyPY"
+  * Reformat a number of files using blacken, and lint using flymake
+  * Update `__init__.py` exports based on what is used in projects `uncompyle6`, `
+  decompyle3`, `trepan3k`,
+    `xasm` and `x-python`
+  * Remove duplicate `findlinestarts()` code. Remove testing on the Python version and simplify
+    this where possible.
+  * get_opcode_module allows either a float and string datatype for the version, and coverts
+    the bytecode datatype when needed
+  * Fix a bugs in marshal and unmarshal
+  * Go over magics numbers, yet again
+  * Fix a bad bug in handling byte constants in 3.x. 
+- Skip a flaky test.
+
+-------------------------------------------------------------------
 Thu Apr 16 07:33:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 4.2.4:

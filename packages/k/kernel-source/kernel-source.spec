@@ -17,8 +17,8 @@
 # icecream 0
 
 
-%define srcversion 5.6
-%define patchversion 5.6.14
+%define srcversion 5.7
+%define patchversion 5.7.1
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -30,9 +30,9 @@ Name:           kernel-source
 Summary:        The Linux Kernel Sources
 License:        GPL-2.0
 Group:          Development/Sources
-Version:        5.6.14
+Version:        5.7.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb0ab48a
+Release:        <RELEASE>.g6a549f6
 %else
 Release:        0
 %endif
@@ -43,7 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-b0ab48a9ace68fa3774ae8579deef7eb7d56d444
+Provides:       %name-srchash-6a549f6dd07f682dbe4308ce21c26c40dca1ffa2
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
@@ -130,6 +130,7 @@ Recommends:     bison
 Recommends:     flex
 Recommends:     libelf-devel
 Recommends:     openssl-devel
+%obsolete_rebuilds %name
 
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
@@ -144,6 +145,7 @@ Linux kernel sources with many fixes and improvements.
 
 %source_timestamp
 %package -n kernel-devel%variant
+%obsolete_rebuilds kernel-devel%variant
 Summary:        Development files needed for building kernel modules
 Group:          Development/Sources
 AutoReqProv:    off
@@ -171,6 +173,7 @@ This package provides the rpm macros and templates for Kernel Module Pakcages
 %source_timestamp
 
 %package vanilla
+%obsolete_rebuilds %name-vanilla
 Summary:        Vanilla Linux kernel sources with minor build fixes
 Group:          Development/Sources
 AutoReqProv:    off

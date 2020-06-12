@@ -41,9 +41,10 @@ interface of BlueZ.
 %setup -q
 
 %build
+export CFLAGS="%{optflags} -fcommon"
 autoreconf -fi
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install

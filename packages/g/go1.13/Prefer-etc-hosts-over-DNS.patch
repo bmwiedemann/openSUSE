@@ -1,0 +1,29 @@
+From c738f669adda7f285f2974fb03f30e9ff78e99e5 Mon Sep 17 00:00:00 2001
+From: Richard Brown <rbrownccb@opensuse.org>
+Date: Fri, 12 Jun 2020 14:21:56 +0200
+Subject: [PATCH 1/1] Prefer /etc/hosts over DNS when files not present
+ golang/go#35305
+
+---
+ src/net/conf.go | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/src/net/conf.go b/src/net/conf.go
+index 971b1a399a..f8f9aa70e4 100644
+--- a/src/net/conf.go
++++ b/src/net/conf.go
+@@ -203,9 +203,8 @@ func (c *conf) hostLookupOrder(r *Resolver, hostname string) (ret hostLookupOrde
+ 			return fallbackOrder
+ 		}
+ 		if c.goos == "linux" {
+-			// glibc says the default is "dns [!UNAVAIL=return] files"
+-			// https://www.gnu.org/software/libc/manual/html_node/Notes-on-NSS-Configuration-File.html.
+-			return hostLookupDNSFiles
++			// Workaround issues identified in https://github.com/golang/go/issues/35305
++			return hostLookupFilesDNS
+ 		}
+ 		return hostLookupFilesDNS
+ 	}
+-- 
+2.26.2
+

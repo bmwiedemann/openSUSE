@@ -1,0 +1,38 @@
+From d4b7d5a7f86c11fde6ca764a02719fa4ea9ba915 Mon Sep 17 00:00:00 2001
+From: Michal Rostecki <mrostecki@opensuse.org>
+Date: Wed, 26 Feb 2020 23:48:02 +0100
+Subject: [PATCH] datapath: Switch to upstream bpftool, remove additional
+ arguments
+
+[ upstream commit 35bbe48c86fdfc430de47f7f4c488f3fb1d9b711 ]
+
+Upstream bpftool does not run probes which emit dmesg messages by
+default anymore. Additional arguments for filtering out probes are not
+needed anymore.
+
+Link: https://lore.kernel.org/bpf/20200226165941.6379-1-mrostecki@opensuse.org/T/
+
+Signed-off-by: Michal Rostecki <mrostecki@opensuse.org>
+---
+ pkg/datapath/linux/probes/probes.go | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/pkg/datapath/linux/probes/probes.go b/pkg/datapath/linux/probes/probes.go
+index b989f29ab..c967b15c4 100644
+--- a/pkg/datapath/linux/probes/probes.go
++++ b/pkg/datapath/linux/probes/probes.go
+@@ -133,9 +133,8 @@ func NewProbeManager() *ProbeManager {
+ 	newProbeManager := func() {
+ 		var features Features
+ 		out, err := exec.WithTimeout(
+-			defaults.ExecTimeout, "bpftool", "-j", "feature",
+-			"probe", "filter_out",
+-			"\\(trace\\|write_user\\)",
++			defaults.ExecTimeout,
++			"bpftool", "-j", "feature", "probe",
+ 		).CombinedOutput(log, true)
+ 		if err != nil {
+ 			log.WithError(err).Fatal("could not run bpftool")
+-- 
+2.26.2
+

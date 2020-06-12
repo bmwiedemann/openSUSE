@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-argparse
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ribozz/sphinx-argparse
 Source0:        https://files.pythonhosted.org/packages/source/s/sphinx-argparse/sphinx-argparse-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/alex-rudakov/sphinx-argparse/%{version}/LICENSE#/LICENSE-sphinx-argparse
-# PATCH-FIX-UPSTREAM different_pytest_name.patch gh#alex-rudakov/sphinx-argparse#121 mcepl@suse.com
-# Use environmental variable PYTEST_NAME for different names of the pytest executable
-Patch0:         different_pytest_name.patch
+# PATCH-FIX-UPSTREAM prog-in-description.patch gh#alex-rudakov/sphinx-argparse#113 mcepl@suse.com
+# Substitute %(prog)s in description and epilog
+Patch0:         prog-in-description.patch
 BuildRequires:  %{python_module CommonMark}
 BuildRequires:  %{python_module Sphinx >= 1.2.0}
 BuildRequires:  %{python_module pytest}

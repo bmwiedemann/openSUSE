@@ -1,21 +1,20 @@
+<!-- Downloads revision vx.x and removes proprietary data/windows -->
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="tar_scm" mode="disabled">
     <param name="url">https://github.com/falkTX/Carla.git</param>
     <param name="scm">git</param>
-    <param name="submodules">enable</param>
     <param name="exclude">.git</param>
-	<param name="filename">Carla</param>
-    <param name="versionformat">2.0.0+git%cd.%h</param>
-    <param name="revision">20cc5244</param>
-    <param name="changesgenerate">disable</param>	
-  </service>
-  <service name="tar" mode="disabled">
+    <param name="exclude">data/windows</param>
+    <param name="exclude">source/native-plugins/external/*</param>
+    <param name="revision">v2.1.1</param>
+    <param name="versionformat">2.1.1</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">carla</param>
   </service>
   <service name="recompress" mode="disabled">
-    <param name="file">Carla-*.tar</param>
+    <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
   <service name="set_version" mode="disabled">
-    <param name="basename">Carla</param>
   </service>
 </services>

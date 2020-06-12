@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 12 07:54:57 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.7.8
+  * finally be able strip the rendered content
+  * -pd for command line to include custom plugin directories
+  * Non-textual source files should default to copy
+
+-------------------------------------------------------------------
 Mon May 25 06:50:48 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

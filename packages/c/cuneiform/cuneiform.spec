@@ -1,7 +1,7 @@
 #
 # spec file for package cuneiform
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        OCR System
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
-URL:            http://launchpad.net/cuneiform-linux
+URL:            https://launchpad.net/cuneiform-linux
 Source0:        http://launchpad.net/cuneiform-linux/1.1/1.1/+download/%{name}-linux-%{version}.tar.bz2
 Source1:        cuneiform.1
 Patch0:         cuneiform-1.1.0-c-assert.patch
@@ -66,16 +66,15 @@ Requires:       libcuneiform%{major} = %{version}
 Development files for the package cuneiform.
 
 %prep
-%setup -q -n %{name}-linux-%{version}
-%autopatch -p1
+%autosetup -n %{name}-linux-%{version} -p1
 
 %build
 # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=85788
 export CXXFLAGS="%{optflags} -Wno-stringop-overflow"
-export CFLAGS="%{optflags} -Wno-stringop-overflow"
+export CFLAGS="%{optflags} -Wno-stringop-overflow -fcommon"
 %cmake \
     -DBUILD_TESTING=ON
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
@@ -91,7 +90,8 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}${LD_LIBRARY_PATH:+:${LD_LIBRARY_PA
 %postun -n lib%{name}%{major} -p /sbin/ldconfig
 
 %files
-%doc readme.txt issues.txt cuneiform_src/Kern/license.txt
+%license cuneiform_src/Kern/license.txt
+%doc readme.txt issues.txt
 %{_datadir}/%{name}
 %{_bindir}/%{name}
 %{_mandir}/man?/*

@@ -1,20 +1,8 @@
-diff -up carla/source/backend/Makefile.systemlibs carla/source/backend/Makefile
---- carla/source/backend/Makefile.systemlibs	2018-11-08 20:25:26.000000000 +0100
-+++ carla/source/backend/Makefile	2018-11-12 12:09:41.077718615 +0100
-@@ -56,6 +56,9 @@ STANDALONE_LINK_FLAGS += $(MAGIC_LIBS)
- STANDALONE_LINK_FLAGS += $(FLUIDSYNTH_LIBS)
- STANDALONE_LINK_FLAGS += $(X11_LIBS)
- 
-+STANDALONE_LINK_FLAGS += $(FLAC_LIBS)
-+STANDALONE_LINK_FLAGS += $(VORBIS_LIBS)
-+
- # ----------------------------------------------------------------------------------------------------------------------------
- 
- all: $(TARGETS)
-diff -up carla/source/backend/utils/Makefile.systemlibs carla/source/backend/utils/Makefile
---- carla/source/backend/utils/Makefile.systemlibs	2018-11-08 20:25:26.000000000 +0100
-+++ carla/source/backend/utils/Makefile	2018-11-12 12:11:43.501736201 +0100
-@@ -25,6 +25,8 @@ LIBS += $(MODULEDIR)/water.files.a
+Index: carla-2.1.1/source/backend/utils/Makefile
+===================================================================
+--- carla-2.1.1.orig/source/backend/utils/Makefile	2020-06-10 23:38:43.000000000 +0200
++++ carla-2.1.1/source/backend/utils/Makefile	2020-06-12 12:45:36.674697400 +0200
+@@ -42,6 +42,8 @@ endif
  
  LINK_FLAGS += $(LILV_LIBS)
  LINK_FLAGS += $(WATER_LIBS)
@@ -23,10 +11,11 @@ diff -up carla/source/backend/utils/Makefile.systemlibs carla/source/backend/uti
  
  ifeq ($(HAVE_X11),true)
  LINK_FLAGS += $(X11_LIBS)
-diff -up carla/source/bridges-plugin/Makefile.systemlibs carla/source/bridges-plugin/Makefile
---- carla/source/bridges-plugin/Makefile.systemlibs	2018-11-08 20:25:26.000000000 +0100
-+++ carla/source/bridges-plugin/Makefile	2018-11-12 12:16:05.041847461 +0100
-@@ -78,6 +78,11 @@ NATIVE_LINK_FLAGS  += $(FLUIDSYNTH_LIBS)
+Index: carla-2.1.1/source/bridges-plugin/Makefile
+===================================================================
+--- carla-2.1.1.orig/source/bridges-plugin/Makefile	2020-06-10 23:38:43.000000000 +0200
++++ carla-2.1.1/source/bridges-plugin/Makefile	2020-06-12 12:45:36.674697400 +0200
+@@ -152,6 +152,11 @@ NATIVE_LINK_FLAGS  += $(FLUIDSYNTH_LIBS)
  
  NATIVE_LINK_FLAGS  += $(MAGIC_LIBS)
  
@@ -38,9 +27,10 @@ diff -up carla/source/bridges-plugin/Makefile.systemlibs carla/source/bridges-pl
  LIBS_native        += $(MODULEDIR)/audio_decoder.a
  LIBS_native        += $(MODULEDIR)/native-plugins.a
  LIBS_native        += $(MODULEDIR)/sfzero.a
-diff -up carla/source/bridges-ui/Makefile.systemlibs carla/source/bridges-ui/Makefile
---- carla/source/bridges-ui/Makefile.systemlibs	2018-08-04 16:35:52.000000000 +0200
-+++ carla/source/bridges-ui/Makefile	2018-11-12 12:21:34.637973676 +0100
+Index: carla-2.1.1/source/bridges-ui/Makefile
+===================================================================
+--- carla-2.1.1.orig/source/bridges-ui/Makefile	2020-06-10 23:38:43.000000000 +0200
++++ carla-2.1.1/source/bridges-ui/Makefile	2020-06-12 12:45:36.674697400 +0200
 @@ -37,10 +37,10 @@ BUILD_QT4_FLAGS     = $(BUILD_CXX_FLAGS)
  LINK_QT4_FLAGS      = $(LINK_FLAGS) $(shell pkg-config --libs QtCore QtGui) $(LIBDL_LIBS)
  
@@ -65,12 +55,13 @@ diff -up carla/source/bridges-ui/Makefile.systemlibs carla/source/bridges-ui/Mak
 +LINK_QT4_FLAGS += $(FLAC_LIBS) $(VORBIS_LIBS)
  endif
  
- # ---------------------------------------------------------------------------------------------------------------------
-diff -up carla/source/Makefile.mk.systemlibs carla/source/Makefile.mk
---- carla/source/Makefile.mk.systemlibs	2018-11-08 20:25:26.000000000 +0100
-+++ carla/source/Makefile.mk	2018-11-12 12:03:16.933663447 +0100
-@@ -413,6 +413,14 @@ FLUIDSYNTH_FLAGS = $(shell pkg-config $(
- FLUIDSYNTH_LIBS  = $(shell pkg-config $(PKG_CONFIG_FLAGS) --libs fluidsynth)
+ ifeq ($(TESTBUILD),true)
+Index: carla-2.1.1/source/Makefile.mk
+===================================================================
+--- carla-2.1.1.orig/source/Makefile.mk	2020-06-10 23:38:43.000000000 +0200
++++ carla-2.1.1/source/Makefile.mk	2020-06-12 12:45:36.674697400 +0200
+@@ -436,6 +436,14 @@ QT5_FLAGS = $(shell $(PKG_CONFIG) $(PKG_
+ QT5_LIBS  = $(shell $(PKG_CONFIG) $(PKG_CONFIG_FLAGS) --libs Qt5Core Qt5Gui Qt5Widgets)
  endif
  
 +FLAC_FLAGS  = $(shell pkg-config --cflags flac)
@@ -82,14 +73,15 @@ diff -up carla/source/Makefile.mk.systemlibs carla/source/Makefile.mk
 +BASE_FLAGS += $(VORBIS_FLAGS)
 +
  ifeq ($(HAVE_SNDFILE),true)
- SNDFILE_FLAGS = $(shell pkg-config $(PKG_CONFIG_FLAGS) --cflags sndfile)
- SNDFILE_LIBS  = $(shell pkg-config $(PKG_CONFIG_FLAGS) --libs sndfile)
-diff -up carla/source/plugin/Makefile.systemlibs carla/source/plugin/Makefile
---- carla/source/plugin/Makefile.systemlibs	2018-11-08 20:25:26.000000000 +0100
-+++ carla/source/plugin/Makefile	2018-11-12 12:24:06.390012077 +0100
-@@ -73,6 +73,9 @@ LINK_FLAGS += $(LIBLO_LIBS)
- LINK_FLAGS += $(MAGIC_LIBS)
- LINK_FLAGS += $(X11_LIBS)
+ SNDFILE_FLAGS = $(shell $(PKG_CONFIG) $(PKG_CONFIG_FLAGS) --cflags sndfile)
+ SNDFILE_LIBS  = $(shell $(PKG_CONFIG) $(PKG_CONFIG_FLAGS) --libs sndfile)
+Index: carla-2.1.1/source/plugin/Makefile
+===================================================================
+--- carla-2.1.1.orig/source/plugin/Makefile	2020-06-10 23:38:43.000000000 +0200
++++ carla-2.1.1/source/plugin/Makefile	2020-06-12 12:45:36.674697400 +0200
+@@ -109,6 +109,9 @@ LINK_FLAGS += $(JUCE_GUI_EXTRA_LIBS)
+ endif
+ endif
  
 +LINK_FLAGS += $(FLAC_LIBS)
 +LINK_FLAGS += $(VORBIS_LIBS)
@@ -97,3 +89,16 @@ diff -up carla/source/plugin/Makefile.systemlibs carla/source/plugin/Makefile
  ifeq ($(MACOS),true)
  SYMBOLS_NATIVE  = -Wl,-exported_symbol,_carla_get_native_rack_plugin
  SYMBOLS_NATIVE += -Wl,-exported_symbol,_carla_get_native_patchbay_plugin
+Index: carla-2.1.1/source/backend/Makefile
+===================================================================
+--- carla-2.1.1.orig/source/backend/Makefile	2020-06-10 23:38:43.000000000 +0200
++++ carla-2.1.1/source/backend/Makefile	2020-06-12 12:45:36.674697400 +0200
+@@ -67,6 +67,8 @@ STANDALONE_LINK_FLAGS += $(LIBLO_LIBS)
+ STANDALONE_LINK_FLAGS += $(MAGIC_LIBS)
+ STANDALONE_LINK_FLAGS += $(FLUIDSYNTH_LIBS)
+ STANDALONE_LINK_FLAGS += $(X11_LIBS)
++STANDALONE_LINK_FLAGS += $(FLAC_LIBS)
++STANDALONE_LINK_FLAGS += $(VORBIS_LIBS)
+ 
+ ifeq ($(USING_JUCE),true)
+ STANDALONE_LINK_FLAGS += $(JUCE_AUDIO_BASICS_LIBS)

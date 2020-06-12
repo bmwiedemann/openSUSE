@@ -90,4 +90,15 @@
     <comment></comment>
     <requestid>687820</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>47783368c373c4387a81b0e3d5ac9ed7</srcmd5>
+    <version>0.9.9</version>
+    <time>1591991064</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 0.9.9 
+ * no upstream changelog
+
+- Add -fcommon to CPPFLAGS to make it build with gcc10</comment>
+    <requestid>814130</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 11 09:48:18 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Create own busybox-adduser sub-package
+
+-------------------------------------------------------------------
 Fri May 29 05:13:50 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Add conflicts: mawk to busybox-gawk 

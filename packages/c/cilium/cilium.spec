@@ -62,10 +62,16 @@ Patch6:         0006-allow-to-configure-bpf-nat-global-max-using-helm.patch
 Patch7:         0007-reduce-default-number-for-TCP-CT-and-NAT-table-max-entries.patch
 # PATCH-FIX-UPSTREAM 0008-add-option-to-dynamically-size-BPF-maps-based-on-system-memory.patch
 Patch8:         0008-add-option-to-dynamically-size-BPF-maps-based-on-system-memory.patch
+# PATCH-FIX-UPSTREAM 0002-bpf-re-add-a-proper-types.h-mapper.patch
+Patch10:        0002-bpf-re-add-a-proper-types.h-mapper.patch
+# PATCH-FIX-UPSTREAM 0001-build-Avoid-using-git-if-not-in-a-git-repo.patch
+Patch11:        0001-build-Avoid-using-git-if-not-in-a-git-repo.patch
+# PATCH-FIX-UPSTREAM 0001-datapath-Switch-to-upstream-bpftool-remove-additiona.patch
+Patch12:        0001-datapath-Switch-to-upstream-bpftool-remove-additiona.patch
 # Cilium needs to be aware of the version string of cilium-proxy
 BuildRequires:  cilium-proxy
 BuildRequires:  clang
-BuildRequires:  git
+BuildRequires:  git-core
 BuildRequires:  golang-github-jteeuwen-go-bindata
 BuildRequires:  golang-packaging
 %if 0%{?suse_version} > 1510 && 0%{?is_opensuse}
@@ -193,6 +199,10 @@ containers in a Kubernetes cluster.
 %prep
 %autosetup -p1
 
+# generate the BPF_SRCFILES which is normally part of the release tarballs but
+# not when we generate it from git (but don't run the dist scripts)
+find bpf/ -type f | grep -v .gitignore | tr "\n" ' ' > BPF_SRCFILES
+
 %build
 %goprep %{provider_prefix}
 export GOPATH=%{_builddir}/go
@@ -316,6 +326,7 @@ getent group cilium >/dev/null || groupadd -r cilium
 %{_bindir}/cilium-map-migrate
 %{_bindir}/cilium-node-monitor
 %{_bindir}/maptool
+%{_localstatedir}/lib/cilium
 %license LICENSE
 
 %files cni

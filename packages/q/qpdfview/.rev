@@ -63,4 +63,13 @@
     <comment></comment>
     <requestid>718656</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c9074e5a740837add0c7830877be640d</srcmd5>
+    <version>0.4.18</version>
+    <time>1591991179</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with Qt 5.15
+</comment>
+    <requestid>814198</requestid>
+  </revision>
 </revisionlist>

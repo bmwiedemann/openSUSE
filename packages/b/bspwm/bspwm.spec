@@ -1,7 +1,7 @@
 #
 # spec file for package bspwm
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017 Luke Jones, luke.nukem.jones@gmail.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,17 +13,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           bspwm
-Version:        0.9.7
+Version:        0.9.9
 Release:        0
 Summary:        A tiling window manager based on binary space partitioning
 License:        BSD-2-Clause
 Group:          System/GUI/Other
-Url:            https://github.com/baskerville/bspwm
+URL:            https://github.com/baskerville/bspwm
 Source0:        https://github.com/baskerville/bspwm/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        bspwm.desktop
 BuildRequires:  pkgconfig
@@ -85,7 +85,7 @@ Fish completion for bspc
 sed -i 's,^#! /usr/bin/env ,#!/usr/bin/,' ./examples/receptacles/{extract_canvas,induce_rules}
 
 %build
-export CPPFLAGS="%{optflags}"
+export CPPFLAGS="%{optflags} -fcommon"
 make %{?_smp_mflags} V=1
 
 %install

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  9 09:31:58 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop obsolete install-info post(un) scriptlets (also drop
+  Requires(post): install-info) for openSUSE > 1500.
+
+-------------------------------------------------------------------
 Sat Nov 30 03:05:28 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add gri-texinfo-6.7-compat.patch to explicitly specify correct 

@@ -1,0 +1,21 @@
+Index: HepMC3-3.2.1/examples/Pythia6Example/main63.f
+===================================================================
+--- HepMC3-3.2.1.orig/examples/Pythia6Example/main63.f
++++ HepMC3-3.2.1/examples/Pythia6Example/main63.f
+@@ -140,13 +140,13 @@ C...Note: no explicit XS uncertainty
+ C...The values below are not always meaningful     
+           HEPMC3STATUS=HepMC3_set_attribute_int(OUTID(ICA),-1,
+      &   'mpi'//char(0))
+-          HEPMC3STATUS=HepMC3_set_attribute_int(OUTID(ICA),MSUB,
++          HEPMC3STATUS=HepMC3_set_attribute_int(OUTID(ICA),MSUB(1),
+      &   'signal_process_id'//char(0))
+           HEPMC3STATUS=HepMC3_set_attribute_int(OUTID(ICA),MRPY(1),
+      &   'random_states1'//char(0))
+-          HEPMC3STATUS=HepMC3_set_attribute_double(OUTID(ICA),-1,
++          HEPMC3STATUS=HepMC3_set_attribute_double(OUTID(ICA),-1.0D0,
+      &   'alphaEM'//char(0))
+-          HEPMC3STATUS=HepMC3_set_attribute_double(OUTID(ICA),-1,
++          HEPMC3STATUS=HepMC3_set_attribute_double(OUTID(ICA),-1.0D0,
+      &   'alphaQCD'//char(0))
+           HEPMC3STATUS=HepMC3_set_attribute_double(OUTID(ICA),q2pdfeval,
+      &   'event_scale'//char(0))      

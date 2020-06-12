@@ -29,6 +29,8 @@ License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://hepmc.web.cern.ch/hepmc/
 Source:         http://hepmc.web.cern.ch/hepmc/releases/%{name}3-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM HepMC-type-mismatch-error.patch badshah400@gmail.com -- Fix type mismatch between function definition and function call flagged by GCC 10
+Patch0:         HepMC-type-mismatch-error.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -104,7 +106,7 @@ HEPEVT, the Fortran HEP standard, are supported.
 This package provides the python module for coding with HepMC.
 
 %prep
-%setup -q -n %{name}3-%{version}
+%autosetup -p1 -n %{name}3-%{version}
 
 %build
 %cmake -DHEPMC3_ENABLE_ROOTIO:BOOL=%{?with_rootio:ON}%{!?with_rootio:OFF} \

@@ -69,10 +69,7 @@ ccls, which originates from cquery, is a C/C++/Objective-C language server.
 - semantic navigation: $ccls/navigate
 
 %prep
-%setup -q
-%if 0%{?sle_version} != 150200
-%autopatch -p1
-%endif
+%autosetup -p1
 rm -rf third_party/rapidjson
 
 %build

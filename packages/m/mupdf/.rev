@@ -516,4 +516,12 @@
     <comment></comment>
     <requestid>729872</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>ca392e82daba35ccc9f6a389bc9388e4</srcmd5>
+    <version>1.16.1</version>
+    <time>1591991004</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with gcc10</comment>
+    <requestid>814107</requestid>
+  </revision>
 </revisionlist>

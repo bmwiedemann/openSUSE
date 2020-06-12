@@ -1,4 +1,381 @@
 -------------------------------------------------------------------
+Wed Jun 10 13:51:14 CEST 2020 - jslaby@suse.cz
+
+- syscalls: fix offset type of ksys_ftruncate (bsc#1172699).
+- commit 8d4977c
+
+-------------------------------------------------------------------
+Tue Jun  9 15:57:54 CEST 2020 - dmueller@suse.com
+
+- armv7/ararch64: Update config files.
+  Enable IOMMU_DEFAULT_PASSTHROUGH; per jsc#SLE-5568 this should be on by
+  default, like on x86_64.
+- commit bb34387
+
+-------------------------------------------------------------------
+Mon Jun  8 13:09:55 CEST 2020 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/jbd2-avoid-leaking-transaction-credits-when-unreserv.patch.
+  Update upstream status.
+- commit c3ae43f
+
+-------------------------------------------------------------------
+Mon Jun  8 13:01:33 CEST 2020 - jslaby@suse.cz
+
+- KVM: x86/mmu: Set mmio_value to '0' if reserved #PF can't be
+  generated (bsc#1171904).
+- KVM: x86: only do L1TF workaround on affected processors
+  (bsc#1171904).
+- commit 16721c7
+
+-------------------------------------------------------------------
+Mon Jun  8 07:34:57 CEST 2020 - jslaby@suse.cz
+
+- Linux 5.7.1 (bnc#1012628).
+- airo: Fix read overflows sending packets (bnc#1012628).
+- net: dsa: mt7530: set CPU port to fallback mode (bnc#1012628).
+- media: staging: ipu3-imgu: Move alignment attribute to field
+  (bnc#1012628).
+- media: Revert "staging: imgu: Address a compiler warning on
+  alignment" (bnc#1012628).
+- mmc: fix compilation of user API (bnc#1012628).
+- kernel/relay.c: handle alloc_percpu returning NULL in relay_open
+  (bnc#1012628).
+- crypto: api - Fix use-after-free and race in crypto_spawn_alg
+  (bnc#1012628).
+- mt76: mt76x02u: Add support for newer versions of the XBox
+  One wifi adapter (bnc#1012628).
+- p54usb: add AirVasT USB stick device-id (bnc#1012628).
+- HID: i2c-hid: add Schneider SCL142ALM to descriptor override
+  (bnc#1012628).
+- HID: multitouch: enable multi-input as a quirk for some devices
+  (bnc#1012628).
+- HID: sony: Fix for broken buttons on DS3 USB dongles
+  (bnc#1012628).
+- mm: Fix mremap not considering huge pmd devmap (bnc#1012628).
+- media: dvbdev: Fix tuner->demod media controller link
+  (bnc#1012628).
+- commit cc2f849
+
+-------------------------------------------------------------------
+Thu Jun  4 15:37:08 CEST 2020 - mkubecek@suse.cz
+
+- config: refresh with gcc10
+  gcc10 is default in Tumbleweed now.
+- commit 0b1e86b
+
+-------------------------------------------------------------------
+Wed Jun  3 08:50:36 CEST 2020 - jslaby@suse.cz
+
+- Revert "Update config files."
+  This reverts commit 34be040b91701c047e592935bc2dbb46a3947a56. We now
+  have a fix (previous commit) in place, so change the configuration back
+  (bsc#1156053).
+- commit f4546fe
+
+-------------------------------------------------------------------
+Wed Jun  3 08:08:47 CEST 2020 - jslaby@suse.cz
+
+- usercopy: mark dma-kmalloc caches as usercopy caches
+  (bsc#1156053).
+- commit d3b5ce7
+
+-------------------------------------------------------------------
+Tue Jun  2 09:49:21 CEST 2020 - jslaby@suse.cz
+
+- jbd2: avoid leaking transaction credits when unreserving handle
+  (bnc#1169774).
+- commit 8599ef4
+
+-------------------------------------------------------------------
+Tue Jun  2 09:14:29 CEST 2020 - jslaby@suse.cz
+
+- jbd2: avoid leaking transaction credits when unreserving handle
+  (bnc#1169774).
+- Delete
+  patches.suse/Revert-ext4-make-dioread_nolock-the-default.patch.
+  Replace revert by the upstream fix.
+- commit bfa465b
+
+-------------------------------------------------------------------
+Tue Jun  2 08:38:39 CEST 2020 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/drm-nouveau-Fix-regression-by-audio-component-transition.patch.
+  Update upstream status.
+- commit 3000ce5
+
+-------------------------------------------------------------------
+Mon Jun  1 06:22:03 CEST 2020 - mkubecek@suse.cz
+
+- config: enable DEBUG_INFO_BTF
+  This was disabled when the option was introduced in 5.2-rc1 but it turned
+  out there are interesting use cases for having it enabled.
+  Add pahole to build time dependencies as it is used to extracth the BTF
+  data. Once we figure out how to make it conditional (only if DEBUG_INFO_BTF
+  exists and is enabled), it should be done in packaging branch.
+- commit 9ddab66
+
+-------------------------------------------------------------------
+Mon Jun  1 06:14:45 CEST 2020 - mkubecek@suse.cz
+
+- Updated to 5.7 final
+- refresh configs
+- commit 7cd0da5
+
+-------------------------------------------------------------------
+Thu May 28 09:58:58 CEST 2020 - jslaby@suse.cz
+
+- Update config files.
+- commit 6dba057
+
+-------------------------------------------------------------------
+Thu May 28 09:39:21 CEST 2020 - jslaby@suse.cz
+
+- Revert "virtio-balloon: Revert "virtio-balloon: Switch back to
+  OOM handler for VIRTIO_BALLOON_F_DEFLATE_ON_OOM"" (virtio fix).
+- commit fe7831e
+
+-------------------------------------------------------------------
+Thu May 28 08:59:08 CEST 2020 - jslaby@suse.cz
+
+- Linux 5.6.15 (bnc#1012628).
+- blacklist.conf: remove one entry
+- sched/fair: Fix enqueue_task_fair() warning some more
+  (bnc#1012628).
+- sched/fair: Fix reordering of enqueue/dequeue_task_fair()
+  (bnc#1012628).
+- sched/fair: Reorder enqueue/dequeue_task_fair path
+  (bnc#1012628).
+- bpf: Prevent mmap()'ing read-only maps as writable
+  (bnc#1012628).
+- rxrpc: Fix ack discard (bnc#1012628).
+- rxrpc: Trace discarded ACKs (bnc#1012628).
+- x86/unwind/orc: Fix unwind_get_return_address_ptr() for inactive
+  tasks (bnc#1012628).
+- flow_dissector: Drop BPF flow dissector prog ref on netns
+  cleanup (bnc#1012628).
+- s390/kexec_file: fix initrd location for kdump kernel
+  (bnc#1012628).
+- tpm: check event log version before reading final events
+  (bnc#1012628).
+- rxrpc: Fix a memory leak in rxkad_verify_response()
+  (bnc#1012628).
+- rxrpc: Fix the excessive initial retransmission timeout
+  (bnc#1012628).
+- iio: imu: st_lsm6dsx: unlock on error in
+  st_lsm6dsx_shub_write_raw() (bnc#1012628).
+- z3fold: fix use-after-free when freeing handles (bnc#1012628).
+- sparc32: fix page table traversal in srmmu_nocache_init()
+  (bnc#1012628).
+- sparc32: use PUD rather than PGD to get PMD in
+  srmmu_nocache_init() (bnc#1012628).
+- sh: include linux/time_types.h for sockios (bnc#1012628).
+- kasan: disable branch tracing for core runtime (bnc#1012628).
+- rapidio: fix an error in get_user_pages_fast() error handling
+  (bnc#1012628).
+- device-dax: don't leak kernel memory to user space after
+  unloading kmem (bnc#1012628).
+- s390/kaslr: add support for R_390_JMP_SLOT relocation type
+  (bnc#1012628).
+- s390/pci: Fix s390_mmio_read/write with MIO (bnc#1012628).
+- ipack: tpci200: fix error return code in tpci200_register()
+  (bnc#1012628).
+- mei: release me_cl object reference (bnc#1012628).
+- tty: serial: add missing spin_lock_init for SiFive serial
+  console (bnc#1012628).
+- misc: rtsx: Add short delay after exit from ASPM (bnc#1012628).
+- driver core: Fix handling of SYNC_STATE_ONLY + STATELESS device
+  links (bnc#1012628).
+- driver core: Fix SYNC_STATE_ONLY device link implementation
+  (bnc#1012628).
+- iio: adc: ti-ads8344: Fix channel selection (bnc#1012628).
+- iio: dac: vf610: Fix an error handling path in
+  'vf610_dac_probe()' (bnc#1012628).
+- iio: sca3000: Remove an erroneous 'get_device()' (bnc#1012628).
+- iio: adc: stm32-dfsdm: fix device used to request dma
+  (bnc#1012628).
+- iio: adc: stm32-adc: fix device used to request dma
+  (bnc#1012628).
+- staging: greybus: Fix uninitialized scalar variable
+  (bnc#1012628).
+- staging: kpc2000: fix error return code in kp2000_pcie_probe()
+  (bnc#1012628).
+- staging: wfx: unlock on error path (bnc#1012628).
+- staging: iio: ad2s1210: Fix SPI reading (bnc#1012628).
+- kbuild: Remove debug info from kallsyms linking (bnc#1012628).
+- tools/bootconfig: Fix apply_xbc() to return zero on success
+  (bnc#1012628).
+- Revert "driver core: platform: Initialize dma_parms for platform
+  devices" (bnc#1012628).
+- virtio-balloon: Revert "virtio-balloon: Switch back to OOM
+  handler for VIRTIO_BALLOON_F_DEFLATE_ON_OOM" (bnc#1012628).
+- Revert "gfs2: Don't demote a glock until its revokes are
+  written" (bnc#1012628).
+- drm/i915: Propagate error from completed fences (bnc#1012628).
+- drm/i915/gvt: Init DPLL/DDI vreg for virtual display instead
+  of inheritance (bnc#1012628).
+- vsprintf: don't obfuscate NULL and error pointers (bnc#1012628).
+- dmaengine: owl: Use correct lock in owl_dma_get_pchan()
+  (bnc#1012628).
+- dmaengine: idxd: fix interrupt completion after unmasking
+  (bnc#1012628).
+- dmaengine: dmatest: Restore default for channel (bnc#1012628).
+- drm/etnaviv: Fix a leak in submit_pin_objects() (bnc#1012628).
+- dmaengine: tegra210-adma: Fix an error handling path in
+  'tegra_adma_probe()' (bnc#1012628).
+- apparmor: Fix aa_label refcnt leak in policy_update
+  (bnc#1012628).
+- apparmor: fix potential label refcnt leak in aa_change_profile
+  (bnc#1012628).
+- apparmor: Fix use-after-free in aa_audit_rule_init
+  (bnc#1012628).
+- pinctrl: qcom: Add affinity callbacks to msmgpio IRQ chip
+  (bnc#1012628).
+- drm/etnaviv: fix perfmon domain interation (bnc#1012628).
+- powerpc/64s: Disable STRICT_KERNEL_RWX (bnc#1012628).
+- arm64: Fix PTRACE_SYSEMU semantics (bnc#1012628).
+- scsi: target: Put lun_ref at end of tmr processing
+  (bnc#1012628).
+- scsi: qla2xxx: Do not log message when reading port speed via
+  sysfs (bnc#1012628).
+- ALSA: hda/realtek - Add more fixup entries for Clevo machines
+  (bnc#1012628).
+- ALSA: hda/realtek - Fix silent output on Gigabyte X570 Aorus
+  Xtreme (bnc#1012628).
+- ALSA: pcm: fix incorrect hw_base increase (bnc#1012628).
+- ALSA: iec1712: Initialize STDSP24 properly when using the
+  model=staudio option (bnc#1012628).
+- bpf: Add bpf_probe_read_{user, kernel}_str() to
+  do_refine_retval_range (bnc#1012628).
+- bpf: Restrict bpf_probe_read{, str}() only to archs where they
+  work (bnc#1012628).
+- Update config files.
+- ALSA: hda/realtek: Enable headset mic of ASUS UX581LV with
+  ALC295 (bnc#1012628).
+- ALSA: hda/realtek - Enable headset mic of ASUS UX550GE with
+  ALC295 (bnc#1012628).
+- ALSA: hda/realtek - Enable headset mic of ASUS GL503VM with
+  ALC295 (bnc#1012628).
+- ALSA: hda/realtek: Add quirk for Samsung Notebook (bnc#1012628).
+- ALSA: hda/realtek - Add HP new mute led supported for ALC236
+  (bnc#1012628).
+- ALSA: hda/realtek - Add supported new mute Led for HP
+  (bnc#1012628).
+- scripts/gdb: repair rb_first() and rb_last() (bnc#1012628).
+- tools/bootconfig: Fix resource leak in apply_xbc()
+  (bnc#1012628).
+- ARM: futex: Address build warning (bnc#1012628).
+- KVM: selftests: Fix build for evmcs.h (bnc#1012628).
+- drm/amd/display: Prevent dpcd reads with passive dongles
+  (bnc#1012628).
+- drm/amd/display: fix counter in wait_for_no_pipes_pending
+  (bnc#1012628).
+- iommu/amd: Call domain_flush_complete() in update_domain()
+  (bnc#1012628).
+- iommu/amd: Do not loop forever when trying to increase address
+  space (bnc#1012628).
+- platform/x86: asus-nb-wmi: Do not load on Asus T100TA and T200TA
+  (bnc#1012628).
+- USB: core: Fix misleading driver bug report (bnc#1012628).
+- stmmac: fix pointer check after utilization in stmmac_interrupt
+  (bnc#1012628).
+- ceph: fix double unlock in handle_cap_export() (bnc#1012628).
+- HID: quirks: Add HID_QUIRK_NO_INIT_REPORTS quirk for Dell K12A
+  keyboard-dock (bnc#1012628).
+- gtp: set NLM_F_MULTI flag in gtp_genl_dump_pdp() (bnc#1012628).
+- x86/apic: Move TSC deadline timer debug printk (bnc#1012628).
+- selftests: fix kvm relocatable native/cross builds and installs
+  (bnc#1012628).
+- ftrace/selftest: make unresolved cases cause failure if
+  --fail-unresolved set (bnc#1012628).
+- ibmvnic: Skip fatal error reset after passive init
+  (bnc#1012628).
+- HID: i2c-hid: reset Synaptics SYNA2393 on resume (bnc#1012628).
+- scsi: ibmvscsi: Fix WARN_ON during event pool release
+  (bnc#1012628).
+- net/ena: Fix build warning in ena_xdp_set() (bnc#1012628).
+- component: Silence bind error on -EPROBE_DEFER (bnc#1012628).
+- aquantia: Fix the media type of AQC100 ethernet controller in
+  the driver (bnc#1012628).
+- vhost/vsock: fix packet delivery order to monitoring devices
+  (bnc#1012628).
+- configfs: fix config_item refcnt leak in configfs_rmdir()
+  (bnc#1012628).
+- scsi: qla2xxx: Delete all sessions before unregister local
+  nvme port (bnc#1012628).
+- scsi: qla2xxx: Fix hang when issuing nvme disconnect-all in NPIV
+  (bnc#1012628).
+- HID: alps: ALPS_1657 is too specific; use U1_UNICORN_LEGACY
+  instead (bnc#1012628).
+- HID: alps: Add AUI1657 device ID (bnc#1012628).
+- HID: logitech: Add support for Logitech G11 extra keys
+  (bnc#1012628).
+- HID: multitouch: add eGalaxTouch P80H84 support (bnc#1012628).
+- gcc-common.h: Update for GCC 10 (bnc#1012628).
+- net: drop_monitor: use IS_REACHABLE() to guard
+  net_dm_hw_report() (bnc#1012628).
+- kbuild: avoid concurrency issue in parallel building dtbs and
+  dtbs_check (bnc#1012628).
+- iommu: Fix deferred domain attachment (bnc#1012628).
+- mtd: Fix mtd not registered due to nvmem name collision
+  (bnc#1012628).
+- afs: Don't unlock fetched data pages until the op completes
+  successfully (bnc#1012628).
+- ubi: Fix seq_file usage in detailed_erase_block_info debugfs
+  file (bnc#1012628).
+- i2c: mux: demux-pinctrl: Fix an error handling path in
+  'i2c_demux_pinctrl_probe()' (bnc#1012628).
+- evm: Fix a small race in init_desc() (bnc#1012628).
+- iommu/amd: Fix get_acpihid_device_id() (bnc#1012628).
+- iommu/amd: Fix over-read of ACPI UID from IVRS table
+  (bnc#1012628).
+- i2c: fix missing pm_runtime_put_sync in i2c_device_probe
+  (bnc#1012628).
+- ubifs: remove broken lazytime support (bnc#1012628).
+- pipe: Fix pipe_full() test in opipe_prep() (bnc#1012628).
+- fix multiplication overflow in copy_fdtable() (bnc#1012628).
+- mtd: spinand: Propagate ECC information to the MTD structure
+  (bnc#1012628).
+- ACPI: EC: PM: Avoid flushing EC work when EC GPE is inactive
+  (bnc#1012628).
+- ubifs: fix wrong use of crypto_shash_descsize() (bnc#1012628).
+- ovl: potential crash in ovl_fid_to_fh() (bnc#1012628).
+- ima: Fix return value of ima_write_policy() (bnc#1012628).
+- evm: Check also if *tfm is an error pointer in init_desc()
+  (bnc#1012628).
+- ima: Set file->f_mode instead of file->f_flags in
+  ima_calc_file_hash() (bnc#1012628).
+- ARC: [plat-hsdk]: fix USB regression (bnc#1012628).
+- i2c: dev: Fix the race between the release of i2c_dev and cdev
+  (bnc#1012628).
+- commit 5afc154
+
+-------------------------------------------------------------------
+Tue May 26 17:13:18 CEST 2020 - trenn@suse.com
+
+- Update config files.
+  Remove ACPI_PROCFS_POWER
+  This should all be in sysfs nowadays. If this is in Tumbleweed for a while,
+  a patch to totally remove this code will be sent mainline.
+  Related to bsc#1160977
+- commit 96731f2
+
+-------------------------------------------------------------------
+Tue May 26 12:47:50 CEST 2020 - msuchanek@suse.de
+
+- rpm/kernel-source.spec.in: Add obsolete_rebuilds (boo#1172073).
+- commit 6524463
+
+-------------------------------------------------------------------
+Mon May 25 06:33:58 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.7-rc7
+- refresh configs (ARCH_HAS_STRICT_KERNEL_RWX=n on ppc64/ppc64le)
+- commit 67f7fb5
+
+-------------------------------------------------------------------
 Wed May 20 10:32:48 CEST 2020 - jslaby@suse.cz
 
 - Linux 5.6.14 (bnc#1012628).
@@ -328,6 +705,12 @@ Tue May 19 09:38:03 CEST 2020 - jslaby@suse.cz
 - commit 3c26bf7
 
 -------------------------------------------------------------------
+Tue May 19 09:26:14 CEST 2020 - afaerber@suse.com
+
+- config: armv7hl: Update to 5.7-rc6
+- commit 8e7f5b8
+
+-------------------------------------------------------------------
 Mon May 18 09:46:00 CEST 2020 - bp@suse.de
 
 - Replace gcc10 fix with the upstream one
@@ -340,6 +723,20 @@ Mon May 18 08:36:47 CEST 2020 - jslaby@suse.cz
   patches.suse/ipc-util.c-sysvipc_find_ipc-incorrectly-updates-posi.patch.
   Update upstream status.
 - commit f322baa
+
+-------------------------------------------------------------------
+Mon May 18 06:25:59 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.7-rc6
+- eliminated 2 patches
+- refresh configs
+- commit 3603fcd
+
+-------------------------------------------------------------------
+Sun May 17 00:36:35 CEST 2020 - afaerber@suse.com
+
+- config: armv6hl: Update to 5.7-rc5
+- commit 2a4b8c3
 
 -------------------------------------------------------------------
 Thu May 14 18:32:37 CEST 2020 - tiwai@suse.de
@@ -666,6 +1063,19 @@ Mon May 11 08:48:40 CEST 2020 - jslaby@suse.cz
 - commit 7501758
 
 -------------------------------------------------------------------
+Mon May 11 06:33:26 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.7-rc5
+- refresh configs
+- commit 298ea3d
+
+-------------------------------------------------------------------
+Thu May  7 23:15:04 CEST 2020 - afaerber@suse.com
+
+- config: arm64: Update to 5.7-rc4
+- commit 47279b9
+
+-------------------------------------------------------------------
 Thu May  7 20:12:13 CEST 2020 - jzerebecki@suse.com
 
 - kernel-docs: Change Requires on python-Sphinx to earlier than version 3
@@ -811,7 +1221,13 @@ Wed May  6 11:02:16 CEST 2020 - jslaby@suse.cz
 
 - ipc/util.c: sysvipc_find_ipc() incorrectly updates position
   index (bnc#1171211).
-- commit cff4a7c
+- commit 31ea4f6
+
+-------------------------------------------------------------------
+Mon May  4 06:23:10 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.7-rc4
+- commit 9761f3e
 
 -------------------------------------------------------------------
 Sat May  2 20:18:50 CEST 2020 - jslaby@suse.cz
@@ -1009,7 +1425,7 @@ Thu Apr 30 19:34:58 CEST 2020 - tiwai@suse.de
 
 - drm/nouveau: Fix regression by audio component transition
   (bsc#1170951).
-- commit 8ab5528
+- commit 779158b
 
 -------------------------------------------------------------------
 Thu Apr 30 12:47:01 CEST 2020 - jslaby@suse.cz
@@ -1304,6 +1720,13 @@ Wed Apr 29 21:46:49 CEST 2020 - jslaby@suse.cz
 - commit 58238cd
 
 -------------------------------------------------------------------
+Wed Apr 29 15:41:17 CEST 2020 - ykaukab@suse.de
+
+- config: arm64: enable coresight support
+  Coresight is already enabled in armv7hl
+- commit f6f465c
+
+-------------------------------------------------------------------
 Wed Apr 29 08:57:05 CEST 2020 - tiwai@suse.de
 
 - Make the "Reducing compressed framebufer size" message be
@@ -1316,6 +1739,14 @@ Mon Apr 27 08:11:21 CEST 2020 - tiwai@suse.de
 - ALSA: pcm: oss: Place the plugin buffer overflow checks
   correctly (bsc#1170522).
 - commit 00d8515
+
+-------------------------------------------------------------------
+Mon Apr 27 06:27:57 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.7-rc3
+- eliminated 1 patch
+- refresh configs
+- commit 888b015
 
 -------------------------------------------------------------------
 Sun Apr 26 08:37:44 CEST 2020 - jslaby@suse.cz
@@ -1756,6 +2187,27 @@ Wed Apr 22 06:15:55 CEST 2020 - jslaby@suse.cz
 - commit c11f000
 
 -------------------------------------------------------------------
+Tue Apr 21 14:22:09 CEST 2020 - schwab@suse.de
+
+- config: riscv64: enable left out config options
+  Enable some config options to reduce difference with x86 config
+- commit ffb4ebb
+
+-------------------------------------------------------------------
+Tue Apr 21 14:13:11 CEST 2020 - mkubecek@suse.cz
+
+- series.conf: cleanup
+- fix Patch-mainline and move to more appropriate place:
+  patches.suse/s390-export-symbols-for-crash-kmp.patch
+- commit d3c6449
+
+-------------------------------------------------------------------
+Mon Apr 20 13:35:14 CEST 2020 - tiwai@suse.de
+
+- Update config files: revert CONFIG_SND_HDA_PREALLOC_SIZE changes (bsc#1169471)
+- commit 438882a
+
+-------------------------------------------------------------------
 Mon Apr 20 12:49:40 CEST 2020 - jslaby@suse.cz
 
 - Revert "ACPI: EC: Do not clear boot_ec_is_ecdt in acpi_ec_add()"
@@ -1763,11 +2215,25 @@ Mon Apr 20 12:49:40 CEST 2020 - jslaby@suse.cz
 - commit 1bdcfdf
 
 -------------------------------------------------------------------
+Mon Apr 20 06:16:42 CEST 2020 - mkubecek@suse.cz
+
+- config: enable PCIE_EDR (bsc#1169263)
+  (x86 only)
+- commit e781722
+
+-------------------------------------------------------------------
+Mon Apr 20 06:11:03 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.7-rc2
+- eliminated 2 patches
+- commit 487485c
+
+-------------------------------------------------------------------
 Mon Apr 20 02:02:43 CEST 2020 - mbrugger@suse.com
 
 - armv7hl: Update config files.
   Build MediaTek watchdog as built-in.
-- commit 8ab6aae
+- commit dfe578b
 
 -------------------------------------------------------------------
 Fri Apr 17 19:32:50 CEST 2020 - jslaby@suse.cz
@@ -2247,6 +2713,12 @@ Wed Apr 15 10:57:46 CEST 2020 - tiwai@suse.de
 - commit 2cd7ffd
 
 -------------------------------------------------------------------
+Tue Apr 14 21:43:55 CEST 2020 - schwab@suse.de
+
+- Add config files for riscv64
+- commit b85c09e
+
+-------------------------------------------------------------------
 Mon Apr 13 20:13:10 CEST 2020 - jslaby@suse.cz
 
 - Linux 5.6.4 (bnc#1012628).
@@ -2317,6 +2789,137 @@ Mon Apr 13 20:13:10 CEST 2020 - jslaby@suse.cz
 - cxgb4: fix MPS index overwrite when setting MAC address
   (bnc#1012628).
 - commit e42da4f
+
+-------------------------------------------------------------------
+Mon Apr 13 02:01:33 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.7-rc1
+- eliminated 70 patches (66 stable, 4 other)
+- disable ARM architectures (need config update)
+- refresh
+  - patches.suse/supported-flag
+  - patches.suse/supported-flag-external
+  - patches.suse/supported-flag-modverdir
+  - patches.suse/vfs-add-super_operations-get_inode_dev
+  - patches.suse/acpi_thinkpad_introduce_acpi_root_table_boot_param.patch
+  - patches.suse/btrfs-btrfs-use-the-new-VFS-super_block_dev.patch
+- fix s390x build:
+  patches.suse/tty-sysrq-Export-sysrq_mask.patch
+- new config options:
+- General setup
+  - CONFIG_SCHED_THERMAL_PRESSURE=y
+  - CONFIG_BPF_LSM=y
+- Power management and ACPI options
+  - CONFIG_ACPI_TINY_POWER_BUTTON=m
+  - CONFIG_ACPI_TINY_POWER_BUTTON_SIGNAL=38
+- Memory Management options
+  - CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZO=y
+  - CONFIG_ZSWAP_ZPOOL_DEFAULT_ZBUD=y
+  - CONFIG_ZSWAP_DEFAULT_ON=n
+- Networking support
+  - CONFIG_IPV6_RPL_LWTUNNEL=y
+- File systems
+  - CONFIG_EXFAT_FS=m
+  - CONFIG_EXFAT_DEFAULT_IOCHARSET="utf8"
+- Cryptographic API
+  - CONFIG_CHELSIO_TLS_DEVICE=y
+- Kernel hacking
+  - CONFIG_MAGIC_SYSRQ_SERIAL_SEQUENCE=""
+  - CONFIG_TEST_LOCKUP=n
+  - CONFIG_TEST_MIN_HEAP=n
+- PCI
+  - CONFIG_PCIE_EDR=n
+- Network device drivers
+  - CONFIG_BAREUDP=m
+  - CONFIG_MLX5_TC_CT=y
+  - CONFIG_DWMAC_INTEL=m
+  - CONFIG_MDIO_MVUSB=m
+  - CONFIG_BCM84881_PHY=m
+  - PHY_CADENCE_TORRENT=m (i386, ppc64(le))
+- PTP clock support
+  - CONFIG_PTP_1588_CLOCK_IDT82P33=m
+  - CONFIG_PTP_1588_CLOCK_VMW=m
+- Graphics
+  - CONFIG_DRM_I915_MAX_REQUEST_BUSYWAIT=8000
+  - CONFIG_TINYDRM_ILI9486=n
+  - DRM_PANEL_BOE_TV101WUM_NL6=n
+  - DRM_PANEL_ELIDA_KD35T133=n
+  - DRM_PANEL_FEIXIN_K101_IM2BA02=n
+  - DRM_PANEL_NOVATEK_NT35510=n
+  - DRM_PANEL_SAMSUNG_S6E88A0_AMS452EF01=n
+  - DRM_DISPLAY_CONNECTOR=n
+  - DRM_PARADE_PS8640=n
+  - DRM_SIMPLE_BRIDGE=n
+  - DRM_TOSHIBA_TC358768=n
+  - DRM_TI_TPD12S015=n
+- Sound
+  - CONFIG_SND_SOC_AMD_RV_RT5682_MACH=m
+  - CONFIG_SND_BCM63XX_I2S_WHISTLER=n
+  - CONFIG_SND_SOC_INTEL_SOF_PCM512x_MACH=m
+  - CONFIG_SND_SOC_SOF_DEBUG_PROBES=n
+  - CONFIG_SND_SOC_RT5682_SDW=n
+  - CONFIG_SND_SOC_TLV320ADCX140=n
+- Input
+  - CONFIG_HID_GLORIOUS=m
+  - CONFIG_HID_MCP2221=m
+  - CONFIG_KEYBOARD_IQS62X=m
+- USB
+  - CONFIG_APPLE_MFI_FASTCHARGE=m
+  - CONFIG_TYPEC_MUX_INTEL_PMC=m
+- Virtio drivers
+  - CONFIG_VIRTIO_VDPA=m
+  - CONFIG_VDPA_MENU=y
+  - CONFIG_VDPA_SIM=m
+  - CONFIG_IFCVF=m
+  - CONFIG_VHOST_MENU=y
+  - CONFIG_VHOST_VDPA=m
+- Platform drivers
+  - CONFIG_SURFACE_3_POWER_OPREGION=m
+  - CONFIG_CROS_EC_TYPEC=m
+  - CONFIG_CROS_USBPD_NOTIFY=m
+- Industrial I/O
+  - CONFIG_HMC425=n
+  - CONFIG_AD5770R=n
+  - CONFIG_AL3010=n
+  - CONFIG_GP2AP002=n
+  - CONFIG_ICP10100=n
+  - CONFIG_IQS621_ALS=n
+  - CONFIG_IQS624_POS=n
+  - CONFIG_IQS620AT_TEMP=n
+- Misc drivers
+  - CONFIG_MHI_BUS=m
+  - CONFIG_UACCE=m
+  - CONFIG_ATA_FORCE=y
+  - CONFIG_SERIAL_SPRD=m
+  - CONFIG_SPI_MUX=m
+  - CONFIG_PINCTRL_DA9062=m
+  - CONFIG_SENSORS_AXI_FAN_CONTROL=m
+  - CONFIG_MFD_IQS62X=m
+  - CONFIG_VIDEO_IMX219=m
+  - CONFIG_MMC_HSQ=m
+  - CONFIG_DMABUF_MOVE_NOTIFY=n
+  - CONFIG_PWM_DEBUG=n
+  - CONFIG_MUX_ADG792A=n
+  - CONFIG_MUX_ADGS1408=n
+  - CONFIG_MUX_GPIO=n
+- i386
+  - REGULATOR_MP541=m
+  - REGULATOR_MP886X=m
+- ppc64
+  - PMU_SYSFS=y
+  - FSL_ENETC=m
+  - FSL_ENETC_VF=m
+  - FSL_ENETC_PTP_CLOCK=m
+  - FSL_ENETC_QOS=y
+  - SPI_FSI=m
+  - REGULATOR_MP5416=m
+  - REGULATOR_MP886X=m
+- s390x
+  - XILINX_LL_TEMAC=m
+  - MDIO_XPCS=m
+  - QETH_OSN=y
+  - QETH_OSX=y
+- commit 84ddad4
 
 -------------------------------------------------------------------
 Sun Apr 12 10:56:48 CEST 2020 - mkubecek@suse.cz
@@ -47816,6 +48419,12 @@ Thu Aug 17 07:30:12 CEST 2017 - jslaby@suse.cz
 
 - Linux 4.12.8 (bnc#1012628).
 - commit 4d7933a
+
+-------------------------------------------------------------------
+Wed Aug 16 14:05:44 CEST 2017 - msuchanek@suse.de
+
+- s390: export symbols for crash-kmp (bsc#1053915).
+- commit 7dd9b75
 
 -------------------------------------------------------------------
 Tue Aug 15 13:41:13 CEST 2017 - hare@suse.de

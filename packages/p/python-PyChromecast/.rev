@@ -107,4 +107,12 @@
   * Log as info, not warning if connection re-established. (#358)</comment>
     <requestid>809126</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c564cbc99b625fa42b7e76c59661adee</srcmd5>
+    <version>6.0.0</version>
+    <time>1591990973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814086</requestid>
+  </revision>
 </revisionlist>

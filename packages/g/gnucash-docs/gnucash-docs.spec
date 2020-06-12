@@ -17,13 +17,13 @@
 
 
 Name:           gnucash-docs
-Version:        3.3
+Version:        3.10
 Release:        0
 Summary:        Documentation Module for GnuCash
 License:        GFDL-1.1-only AND GPL-2.0-or-later
 Group:          Productivity/Office/Finance
 URL:            https://www.gnucash.org/
-Source:         https://download.sourceforge.net/gnucash/gnucash-docs-%{version}.tar.gz
+Source:         https://sourceforge.net/projects/gnucash/files/gnucash%20(stable)/%{version}/gnucash-docs-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  sgml-skel
 BuildRequires:  xsltproc

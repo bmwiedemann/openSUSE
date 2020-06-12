@@ -54,6 +54,7 @@ BuildRequires:  util-linux
 BuildRequires:  which
 BuildRequires:  xz
 Requires:       busybox = %{version}
+Requires:       busybox-adduser = %{version}
 Requires:       busybox-ash = %{version}
 Requires:       busybox-attr = %{version}
 Requires:       busybox-bind-utils = %{version}
@@ -105,7 +106,6 @@ Conflicts:      lsof
 Conflicts:      lsscsi
 Conflicts:      nbd
 Conflicts:      netcat-openbsd
-Conflicts:      shadow
 Conflicts:      sysvinit-tools
 Conflicts:      telnet
 Conflicts:      tftp
@@ -378,6 +378,16 @@ Conflicts:      msmtp-mta
 %description -n busybox-sendmail
 This package contains the symlinks to replace sendmail with busybox.
 
+%package -n busybox-adduser
+Summary:        Busybox applets containing adduser and some shadow tools
+Requires:       busybox = %{version}
+Conflicts:      shadow
+
+%description -n busybox-adduser
+This package contains the symlinks for adduser and some tools from the
+shadow suite.
+
+
 %prep
 %setup -q -c -T
 
@@ -392,7 +402,7 @@ rm apps/rpm apps/rpm2cpio
 rm -f apps/linuxrc
 # Does not really fit
 rm apps/[[
-for package in coreutils diffutils findutils grep util-linux iputils iproute2 gzip sed cpio procps xz bzip2 psmisc kbd sharutils hostname net-tools net-tools-deprecated traceroute ncurses-utils kmod tar gawk patch attr which bind-utils man sendmail; do
+for package in coreutils diffutils findutils grep util-linux iputils iproute2 gzip sed cpio procps xz bzip2 psmisc kbd sharutils hostname net-tools net-tools-deprecated traceroute ncurses-utils kmod tar gawk patch attr which bind-utils man sendmail shadow; do
     for i in `rpm -ql $package |grep "bin/"` ; do
 	prog=`basename $i`
 	if [ -f apps/$prog ]; then
@@ -413,6 +423,9 @@ echo -e "/usr/bin/sh\n/bin/sh" > filelist-sh.txt
 touch used/sh
 echo -e "/sbin/loadkmap\n/usr/sbin/loadfont" >> filelist-kbd.txt
 touch used/loadkmap used/loadfont
+
+echo -e "/usr/sbin/addgroup\n/usr/sbin/adduser\n/usr/sbin/delgroup\n/usr/sbin/deluser" >> filelist-shadow.txt
+touch used/addgroup used/adduser used/delgroup used/deluser
 
 for i in `/bin/ls used/` ; do
     rm apps/$i
@@ -453,6 +466,7 @@ fi
 
 %files
 
+%files -n busybox-adduser -f filelist-shadow.txt
 %files -n busybox-ash -f filelist-ash.txt
 %files -n busybox-attr -f filelist-attr.txt
 %files -n busybox-bind-utils -f filelist-bind-utils.txt

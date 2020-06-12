@@ -42,8 +42,8 @@ Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module gevent}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module plumbum >= 1.2}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rpyc = %{version}}
 %endif
 %python_subpackages
@@ -76,7 +76,7 @@ mv %{buildroot}%{_bindir}/rpyc_registry.py %{buildroot}%{_bindir}/rpyc_registry
 
 %if %{with test}
 %check
-%python_expand nosetests-%{$python_bin_suffix} -v -I test_deploy -I test_gevent_server -I test_ssh -I test_registry -I test_win32pipes
+%pytest -k 'not (TestDeploy or Test_Ssh or TestUdpRegistry or win32pipes)'
 %endif
 
 %if !%{with test}

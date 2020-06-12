@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 12 11:38:55 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building with gcc10
+
+-------------------------------------------------------------------
 Tue Jan  7 11:01:33 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.1.38+git20190428 (changes since

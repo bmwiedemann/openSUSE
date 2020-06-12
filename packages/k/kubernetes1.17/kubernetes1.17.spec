@@ -23,7 +23,7 @@
 %define baseversion 1.17
 
 Name:           kubernetes%{baseversion}
-Version:        1.17.5
+Version:        1.17.6
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -48,6 +48,8 @@ Patch2:         kubeadm-opensuse-registry.patch
 Patch3:         opensuse-version-checks.patch
 # Patch to change the default flexvolume path in kubeadm to match that used by our kubelet, else kubeadm tries to write to /usr when kubelet is already looking at a path on /var thanks to the fix to bsc#1084766
 Patch4:         kubeadm-opensuse-flexvolume.patch
+# PATCH-FIX-UPSTREAM https://github.com/kubernetes/kubernetes/pull/89136
+Patch5:         reproducible-buildid.patch
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  git
@@ -171,6 +173,7 @@ Kubernetes client tools like kubectl.
 %patch2 -p0
 %patch3 -p1
 %patch4 -p0
+%patch5 -p1
 
 %build
 # This is fixing bug bsc#1065972
@@ -186,7 +189,7 @@ export GOLDFLAGS='-linkmode=external'
 %endif
 
 #TEST
-make %{?_smp_mflags} WHAT="cmd/kube-apiserver cmd/kube-controller-manager cmd/kube-scheduler cmd/kube-proxy cmd/kubelet cmd/kubectl cmd/kubeadm" GOFLAGS="-buildmode=pie"
+make WHAT="cmd/kube-apiserver cmd/kube-controller-manager cmd/kube-scheduler cmd/kube-proxy cmd/kubelet cmd/kubectl cmd/kubeadm" GOFLAGS="-buildmode=pie"
 
 # The majority of the documentation has already been moved into
 # http://kubernetes.io/docs/admin, and most of the files stored in the `docs`

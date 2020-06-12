@@ -1,7 +1,7 @@
 #
 # spec file for package gnugo
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gnugo
-Version:        3.9.1+git20130613.84a32e9
+Version:        1371149103.84a32e9c
 Release:        0
 Summary:        Chinese Board Game "Go"
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Other
-Url:            http://www.gnu.org/software/gnugo/gnugo.html
+URL:            https://savannah.gnu.org/projects/gnugo
 Source:         %{name}-%{version}.tar.xz
 Source1:        suse-start-gnugo.el
 Source2:        xemacs-auto-autoloads.el
@@ -33,7 +33,7 @@ BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
 BuildRequires:  xemacs
 BuildRequires:  xz
-Requires(pre):	%{install_info_prereq}
+Requires(pre):	info
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -45,6 +45,8 @@ Chinese ancient board game.
 %patch1 -p1
 
 %build
+export CFLAGS="%{optflags} -fcommon"
+export CXXFLAGS="%{optflags} -fcommon"
 %configure --prefix=%{_prefix}
 make %{?_smp_mflags}
 pushd  interface/xpms
@@ -87,7 +89,8 @@ install -m 644 %{SOURCE2} \
 
 %files
 %defattr(-,root,root)
-%doc COPYING AUTHORS THANKS ChangeLog TODO README NEWS
+%doc AUTHORS THANKS ChangeLog TODO README NEWS
+%license COPYING
 %{_bindir}/%{name}
 %{_infodir}/gnugo.info*.gz
 %{_mandir}/man6/gnugo.6.gz

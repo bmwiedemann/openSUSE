@@ -144,6 +144,7 @@ This package contains examples for %{name}.
 
 %build
 %cmake \
+  -DCMAKE_C_FLAGS="%{optflags} -fcommon -DNDEBUG" \
   -DINSTALLTOOLS=yes \
   -DINSTALLGPIOTOOL=yes \
   -DUSBPLAT=yes \

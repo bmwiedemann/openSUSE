@@ -79,6 +79,7 @@ echo %{version} > rpm/version
 
 %build
 export CFLAGS_NO_WERROR="yes"
+export CFLAGS="%{optflags} -fcommon"
 %configure \
   --python=%{_bindir}/python3 \
   --disable-ffmpeg_static \

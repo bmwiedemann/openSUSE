@@ -8,7 +8,7 @@
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">8b4a8cd34cb33f3eb89c22adc46243e9df19d7b0</param>
+    <param name="revision">56470b4aba18c886fe843daffd80e09ac3fb4bf0</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">openmpi*.tar</param>

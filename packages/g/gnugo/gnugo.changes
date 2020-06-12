@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Jun 11 16:48:20 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Enable -fcommon which is not default with GCC10.
+
+-------------------------------------------------------------------
+Thu Jun 11 10:39:24 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 1371149103.84a32e9c:
+  * Avoid crashing due to registering an invalid loss move reason.
+  * Change pieces to stones in board output in ascii mode.
+  * Update copyright notices for 2011.
+  * gunnar_9_2.1. Remove tactical semeai reading. (#228)
+  * Removed built joseki *.db files from EXTRA_DIST.
+  * Replaced .cvsignore files with .gitignore files.
+  * rel-3-9-1
+  * reran automake to finish remove of automake-1.4
+  * removed automake-1.4.patch from doc/Makefile.am
+  * removed automake-1.4
+
+-------------------------------------------------------------------
+Thu Jun 11 10:34:03 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 20130613.84a32e9c:
+  * Avoid crashing due to registering an invalid loss move reason.
+  * Change pieces to stones in board output in ascii mode.
+  * Update copyright notices for 2011.
+  * gunnar_9_2.1. Remove tactical semeai reading. (#228)
+  * Removed built joseki *.db files from EXTRA_DIST.
+  * Replaced .cvsignore files with .gitignore files.
+  * reran automake to finish remove of automake-1.4
+  * removed automake-1.4.patch from doc/Makefile.am
+  * removed automake-1.4
+
+-------------------------------------------------------------------
 Sun Aug 23 05:33:42 UTC 2015 - i@marguerite.su
 
 - Update to version 3.9.1+git20130613.84a32e9:

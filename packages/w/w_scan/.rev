@@ -16,4 +16,12 @@
   * No upstream changelog available</comment>
     <requestid>481020</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1e2c138b5dc85b877cd24c15f33e9223</srcmd5>
+    <version>20170107</version>
+    <time>1591990878</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with gcc10</comment>
+    <requestid>814046</requestid>
+  </revision>
 </revisionlist>

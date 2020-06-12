@@ -20,7 +20,7 @@
 %define majorver 5.0
 %define base_name tryton
 Name:           trytond
-Version:        %{majorver}.19
+Version:        %{majorver}.23
 Release:        0
 Summary:        An Enterprise Resource Planning (ERP) system
 License:        GPL-3.0-or-later

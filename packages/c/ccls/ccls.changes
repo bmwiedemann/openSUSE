@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  5 17:10:44 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Drop conditional macro application for Leap 15.2
+
+-------------------------------------------------------------------
 Tue Apr 14 08:34:23 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Fix build failures with LLVM 10

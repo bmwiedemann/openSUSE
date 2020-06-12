@@ -372,4 +372,14 @@
     <comment></comment>
     <requestid>661480</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>725cfc3b3dd933e25902fe8a8c47c8e2</srcmd5>
+    <version>3.10</version>
+    <time>1591990736</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.10
+  + Download URL changed
+  + For changes of the packet see https://www.gnucash.org/news.phtml (forwarded request 810510 from felle)</comment>
+    <requestid>811408</requestid>
+  </revision>
 </revisionlist>

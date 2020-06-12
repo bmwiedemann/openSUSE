@@ -1,7 +1,7 @@
 #
 # spec file for package python-slumber
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ URL:            https://github.com/samgiles/slumber
 Source:         https://github.com/samgiles/slumber/archive/%{version}.tar.gz
 # https://github.com/samgiles/slumber/issues/151
 Patch0:         python-slumber-disable-test_yaml_get_serializer-subtest.patch
+# https://github.com/samgiles/slumber/pull/153
+Patch1:         python-slumber-no-unittest2.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,6 +55,7 @@ and processing requests.
 %prep
 %setup -q -n slumber-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %python_build

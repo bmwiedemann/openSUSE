@@ -94,4 +94,12 @@
   * python-slumber-disable-test_yaml_get_serializer-subtest.patch</comment>
     <requestid>692782</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>cbbd70b2876b5a0a8a665d66f615871d</srcmd5>
+    <version>0.7.1</version>
+    <time>1591990655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811139</requestid>
+  </revision>
 </revisionlist>

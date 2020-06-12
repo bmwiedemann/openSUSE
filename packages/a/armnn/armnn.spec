@@ -41,14 +41,14 @@
 %else
 %bcond_with armnn_tests
 %endif
-# Extra tests require opencv(3)-devel, but it is broken for Leap 15.x - boo#1154091
-%if 0%{?suse_version} > 1500
+# Extra tests require opencv(3)-devel, but it is broken for Leap 15.1 - boo#1154091
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 %bcond_without armnn_extra_tests
 %else
 %bcond_with armnn_extra_tests
 %endif
-# flatbuffers-devel is available on Leap 15.2+
-%if 0%{?suse_version} > 1500 || ( 0%{?sle_version} >= 150200 && 0%{?is_opensuse} )
+# flatbuffers-devel is available on Leap 15.2+/SLE15SP2+
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 %bcond_without armnn_flatbuffers
 %else
 %bcond_with armnn_flatbuffers
@@ -63,14 +63,15 @@
 %else  # suse_version
 %bcond_with armnn_tf
 %endif # suse_version
-# ONNX is available on Leap 15.2+
-%if 0%{?suse_version} > 1500 || ( 0%{?sle_version} >= 150200 && 0%{?is_opensuse} )
+# ONNX is available on Leap 15.2+/SLE15SP2+
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 %bcond_without armnn_onnx
 %else
 %bcond_with armnn_onnx
 %endif
 %define version_major 20
-%define version_minor 02
+%define version_minor 05
+%define version_lib 21
 # Do not package ArmnnConverter and ArmnnQuantizer, by default
 %bcond_with armnn_tools
 # Enable CAFFE
@@ -84,8 +85,8 @@ Group:          Development/Libraries/Other
 URL:            https://developer.arm.com/products/processors/machine-learning/arm-nn
 Source0:        https://github.com/ARM-software/armnn/archive/v%{version}.tar.gz#/armnn-%{version}.tar.gz
 Source1:        armnn-rpmlintrc
-# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/commit/6445cfff7519effd1df04eac88ae17d6e4e6693b
-Patch1:         armnn-enable-use-of-arm-compute-shared-library.patch
+# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/398
+Patch01:        armnn-fix-catch.patch
 # PATCHES to add downstream ArmnnExamples binary - https://layers.openembedded.org/layerindex/recipe/87610/
 Patch200:       0003-add-more-test-command-line-arguments.patch
 Patch201:       0005-add-armnn-mobilenet-test-example.patch
@@ -101,7 +102,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  valgrind-devel
 BuildRequires:  vim
 # Make armnn-opencl pulls lib*-opencl, and armnn pulls non opencl libs
-Requires:       libarmnn%{version_major}%{?package_suffix} = %{version}
+Requires:       libarmnn%{version_lib}%{?package_suffix} = %{version}
 ExcludeArch:    %ix86
 %if 0%{?suse_version} < 1330
 BuildRequires:  boost-devel >= 1.59
@@ -156,17 +157,17 @@ BuildRequires:  tensorflow-devel
 Recommends:     Mesa-libOpenCL
 %endif
 %if %{with armnn_flatbuffers}
-Requires:       libarmnnSerializer%{version_major}%{?package_suffix} = %{version}
-Requires:       libarmnnTfLiteParser%{version_major}%{?package_suffix} = %{version}
+Requires:       libarmnnSerializer%{version_lib}%{?package_suffix} = %{version}
+Requires:       libarmnnTfLiteParser%{version_lib}%{?package_suffix} = %{version}
 %endif
 %if %{with armnn_caffe}
-Requires:       libarmnnCaffeParser%{version_major}%{?package_suffix} = %{version}
+Requires:       libarmnnCaffeParser%{version_lib}%{?package_suffix} = %{version}
 %endif
 %if %{with armnn_onnx}
-Requires:       libarmnnOnnxParser%{version_major}%{?package_suffix} = %{version}
+Requires:       libarmnnOnnxParser%{version_lib}%{?package_suffix} = %{version}
 %endif
 %if %{with armnn_tf}
-Requires:       libarmnnTfParser%{version_major}%{?package_suffix} = %{version}
+Requires:       libarmnnTfParser%{version_lib}%{?package_suffix} = %{version}
 %endif
 # Make sure we do not install both openCL and non-openCL (CPU only) versions.
 %if "%{target}" == "opencl"
@@ -187,7 +188,9 @@ Summary:        Development headers and libraries for armnn
 # Make sure we do not install both openCL and non-openCL (CPU only) versions.
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
-Requires:       libarmnn%{version_major}%{?package_suffix} = %{version}
+Requires:       libarmnn%{version_lib}%{?package_suffix} = %{version}
+Requires:       libarmnnBasePipeServer%{version_lib}%{?package_suffix} = %{version}
+Requires:       libtimelineDecoder%{version_lib}%{?package_suffix} = %{version}
 # Make sure we do not install both openCL and non-openCL (CPU only) versions.
 %if "%{target}" == "opencl"
 Conflicts:      armnn-devel
@@ -195,17 +198,17 @@ Conflicts:      armnn-devel
 Conflicts:      armnn-opencl-devel
 %endif
 %if %{with armnn_flatbuffers}
-Requires:       libarmnnSerializer%{version_major}%{?package_suffix} = %{version}
-Requires:       libarmnnTfLiteParser%{version_major}%{?package_suffix} = %{version}
+Requires:       libarmnnSerializer%{version_lib}%{?package_suffix} = %{version}
+Requires:       libarmnnTfLiteParser%{version_lib}%{?package_suffix} = %{version}
 %endif
 %if %{with armnn_caffe}
-Requires:       libarmnnCaffeParser%{version_major}%{?package_suffix} = %{version}
+Requires:       libarmnnCaffeParser%{version_lib}%{?package_suffix} = %{version}
 %endif
 %if %{with armnn_onnx}
-Requires:       libarmnnOnnxParser%{version_major}%{?package_suffix} = %{version}
+Requires:       libarmnnOnnxParser%{version_lib}%{?package_suffix} = %{version}
 %endif
 %if %{with armnn_tf}
-Requires:       libarmnnTfParser%{version_major}%{?package_suffix} = %{version}
+Requires:       libarmnnTfParser%{version_lib}%{?package_suffix} = %{version}
 %endif
 
 %description devel
@@ -240,16 +243,16 @@ modification – across Arm Cortex CPUs and Arm Mali GPUs.
 This package contains additionnal downstream tests for armnn.
 %endif
 
-%package -n libarmnn%{version_major}%{?package_suffix}
+%package -n libarmnn%{version_lib}%{?package_suffix}
 Summary:        libarmnn from armnn
 Group:          Development/Libraries/C and C++
 %if "%{target}" == "opencl"
-Conflicts:      libarmnn%{version_major}
+Conflicts:      libarmnn%{version_lib}
 %else
-Conflicts:      libarmnn%{version_major}-opencl
+Conflicts:      libarmnn%{version_lib}-opencl
 %endif
 
-%description -n libarmnn%{version_major}%{?package_suffix}
+%description -n libarmnn%{version_lib}%{?package_suffix}
 Arm NN is an inference engine for CPUs, GPUs and NPUs.
 It bridges the gap between existing NN frameworks and the underlying IP.
 It enables efficient translation of existing neural network frameworks,
@@ -258,17 +261,53 @@ modification – across Arm Cortex CPUs and Arm Mali GPUs.
 
 This package contains the libarmnn library from armnn.
 
+%package -n libarmnnBasePipeServer%{version_lib}%{?package_suffix}
+Summary:        libarmnn from armnn
+Group:          Development/Libraries/C and C++
+%if "%{target}" == "opencl"
+Conflicts:      libarmnnBasePipeServer%{version_lib}
+%else
+Conflicts:      libarmnnBasePipeServer%{version_lib}-opencl
+%endif
+
+%description -n libarmnnBasePipeServer%{version_lib}%{?package_suffix}
+Arm NN is an inference engine for CPUs, GPUs and NPUs.
+It bridges the gap between existing NN frameworks and the underlying IP.
+It enables efficient translation of existing neural network frameworks,
+such as TensorFlow and Caffe, allowing them to run efficiently – without
+modification – across Arm Cortex CPUs and Arm Mali GPUs.
+
+This package contains the libarmnnBasePipeServer library from armnn.
+
+%package -n libtimelineDecoder%{version_lib}%{?package_suffix}
+Summary:        libarmnn from armnn
+Group:          Development/Libraries/C and C++
+%if "%{target}" == "opencl"
+Conflicts:      libtimelineDecoder%{version_lib}
+%else
+Conflicts:      libtimelineDecoder%{version_lib}-opencl
+%endif
+
+%description -n libtimelineDecoder%{version_lib}%{?package_suffix}
+Arm NN is an inference engine for CPUs, GPUs and NPUs.
+It bridges the gap between existing NN frameworks and the underlying IP.
+It enables efficient translation of existing neural network frameworks,
+such as TensorFlow and Caffe, allowing them to run efficiently – without
+modification – across Arm Cortex CPUs and Arm Mali GPUs.
+
+This package contains the libtimelineDecoder library from armnn.
+
 %if %{with armnn_flatbuffers}
-%package -n libarmnnSerializer%{version_major}%{?package_suffix}
+%package -n libarmnnSerializer%{version_lib}%{?package_suffix}
 Summary:        libarmnnSerializer from armnn
 Group:          Development/Libraries/C and C++
 %if "%{target}" == "opencl"
-Conflicts:      libarmnnSerializer%{version_major}
+Conflicts:      libarmnnSerializer%{version_lib}
 %else
-Conflicts:      libarmnnSerializer%{version_major}-opencl
+Conflicts:      libarmnnSerializer%{version_lib}-opencl
 %endif
 
-%description -n libarmnnSerializer%{version_major}%{?package_suffix}
+%description -n libarmnnSerializer%{version_lib}%{?package_suffix}
 Arm NN is an inference engine for CPUs, GPUs and NPUs.
 It bridges the gap between existing NN frameworks and the underlying IP.
 It enables efficient translation of existing neural network frameworks,
@@ -277,16 +316,16 @@ modification – across Arm Cortex CPUs and Arm Mali GPUs.
 
 This package contains the libarmnnSerializer library from armnn.
 
-%package -n libarmnnTfLiteParser%{version_major}%{?package_suffix}
+%package -n libarmnnTfLiteParser%{version_lib}%{?package_suffix}
 Summary:        libarmnnTfLiteParser from armnn
 Group:          Development/Libraries/C and C++
 %if "%{target}" == "opencl"
-Conflicts:      libarmnnTfLiteParser%{version_major}
+Conflicts:      libarmnnTfLiteParser%{version_lib}
 %else
-Conflicts:      libarmnnTfLiteParser%{version_major}-opencl
+Conflicts:      libarmnnTfLiteParser%{version_lib}-opencl
 %endif
 
-%description -n libarmnnTfLiteParser%{version_major}%{?package_suffix}
+%description -n libarmnnTfLiteParser%{version_lib}%{?package_suffix}
 Arm NN is an inference engine for CPUs, GPUs and NPUs.
 It bridges the gap between existing NN frameworks and the underlying IP.
 It enables efficient translation of existing neural network frameworks,
@@ -297,16 +336,16 @@ This package contains the libarmnnTfLiteParser library from armnn.
 %endif
 
 %if %{with armnn_tf}
-%package -n libarmnnTfParser%{version_major}%{?package_suffix}
+%package -n libarmnnTfParser%{version_lib}%{?package_suffix}
 Summary:        libarmnnTfParser from armnn
 Group:          Development/Libraries/C and C++
 %if "%{target}" == "opencl"
-Conflicts:      libarmnnTfParser%{version_major}
+Conflicts:      libarmnnTfParser%{version_lib}
 %else
-Conflicts:      libarmnnTfParser%{version_major}-opencl
+Conflicts:      libarmnnTfParser%{version_lib}-opencl
 %endif
 
-%description -n libarmnnTfParser%{version_major}%{?package_suffix}
+%description -n libarmnnTfParser%{version_lib}%{?package_suffix}
 Arm NN is an inference engine for CPUs, GPUs and NPUs.
 It bridges the gap between existing NN frameworks and the underlying IP.
 It enables efficient translation of existing neural network frameworks,
@@ -317,16 +356,16 @@ This package contains the libarmnnTfParser library from armnn.
 %endif
 
 %if %{with armnn_caffe}
-%package -n libarmnnCaffeParser%{version_major}%{?package_suffix}
+%package -n libarmnnCaffeParser%{version_lib}%{?package_suffix}
 Summary:        libarmnnCaffeParser from armnn
 Group:          Development/Libraries/C and C++
 %if "%{target}" == "opencl"
-Conflicts:      libarmnnCaffeParser%{version_major}
+Conflicts:      libarmnnCaffeParser%{version_lib}
 %else
-Conflicts:      libarmnnCaffeParser%{version_major}-opencl
+Conflicts:      libarmnnCaffeParser%{version_lib}-opencl
 %endif
 
-%description -n libarmnnCaffeParser%{version_major}%{?package_suffix}
+%description -n libarmnnCaffeParser%{version_lib}%{?package_suffix}
 Arm NN is an inference engine for CPUs, GPUs and NPUs.
 It bridges the gap between existing NN frameworks and the underlying IP.
 It enables efficient translation of existing neural network frameworks,
@@ -337,16 +376,16 @@ This package contains the libarmnnCaffeParser library from armnn.
 %endif
 
 %if %{with armnn_onnx}
-%package -n libarmnnOnnxParser%{version_major}%{?package_suffix}
+%package -n libarmnnOnnxParser%{version_lib}%{?package_suffix}
 Summary:        libarmnnOnnxParser from armnn
 Group:          Development/Libraries/C and C++
 %if "%{target}" == "opencl"
-Conflicts:      libarmnnOnnxParser%{version_major}
+Conflicts:      libarmnnOnnxParser%{version_lib}
 %else
-Conflicts:      libarmnnOnnxParser%{version_major}-opencl
+Conflicts:      libarmnnOnnxParser%{version_lib}-opencl
 %endif
 
-%description -n libarmnnOnnxParser%{version_major}%{?package_suffix}
+%description -n libarmnnOnnxParser%{version_lib}%{?package_suffix}
 Arm NN is an inference engine for CPUs, GPUs and NPUs.
 It bridges the gap between existing NN frameworks and the underlying IP.
 It enables efficient translation of existing neural network frameworks,
@@ -510,30 +549,36 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 ./build/UnitTests $UnitTestFlags
 %endif
 
-%post -n libarmnn%{version_major}%{?package_suffix} -p /sbin/ldconfig
-%postun -n libarmnn%{version_major}%{?package_suffix} -p /sbin/ldconfig
+%post -n libarmnn%{version_lib}%{?package_suffix} -p /sbin/ldconfig
+%postun -n libarmnn%{version_lib}%{?package_suffix} -p /sbin/ldconfig
+
+%post -n libarmnnBasePipeServer%{version_lib}%{?package_suffix} -p /sbin/ldconfig
+%postun -n libarmnnBasePipeServer%{version_lib}%{?package_suffix} -p /sbin/ldconfig
+
+%post -n libtimelineDecoder%{version_lib}%{?package_suffix} -p /sbin/ldconfig
+%postun -n libtimelineDecoder%{version_lib}%{?package_suffix} -p /sbin/ldconfig
 
 %if %{with armnn_flatbuffers}
-%post -n libarmnnSerializer%{version_major}%{?package_suffix} -p /sbin/ldconfig
-%postun -n libarmnnSerializer%{version_major}%{?package_suffix} -p /sbin/ldconfig
+%post -n libarmnnSerializer%{version_lib}%{?package_suffix} -p /sbin/ldconfig
+%postun -n libarmnnSerializer%{version_lib}%{?package_suffix} -p /sbin/ldconfig
 
-%post -n libarmnnTfLiteParser%{version_major}%{?package_suffix} -p /sbin/ldconfig
-%postun -n libarmnnTfLiteParser%{version_major}%{?package_suffix} -p /sbin/ldconfig
+%post -n libarmnnTfLiteParser%{version_lib}%{?package_suffix} -p /sbin/ldconfig
+%postun -n libarmnnTfLiteParser%{version_lib}%{?package_suffix} -p /sbin/ldconfig
 %endif
 
 %if %{with armnn_tf}
-%post -n libarmnnTfParser%{version_major}%{?package_suffix} -p /sbin/ldconfig
-%postun -n libarmnnTfParser%{version_major}%{?package_suffix} -p /sbin/ldconfig
+%post -n libarmnnTfParser%{version_lib}%{?package_suffix} -p /sbin/ldconfig
+%postun -n libarmnnTfParser%{version_lib}%{?package_suffix} -p /sbin/ldconfig
 %endif
 
 %if %{with armnn_caffe}
-%post -n libarmnnCaffeParser%{version_major}%{?package_suffix} -p /sbin/ldconfig
-%postun -n libarmnnCaffeParser%{version_major}%{?package_suffix} -p /sbin/ldconfig
+%post -n libarmnnCaffeParser%{version_lib}%{?package_suffix} -p /sbin/ldconfig
+%postun -n libarmnnCaffeParser%{version_lib}%{?package_suffix} -p /sbin/ldconfig
 %endif
 
 %if %{with armnn_onnx}
-%post -n libarmnnOnnxParser%{version_major}%{?package_suffix} -p /sbin/ldconfig
-%postun -n libarmnnOnnxParser%{version_major}%{?package_suffix} -p /sbin/ldconfig
+%post -n libarmnnOnnxParser%{version_lib}%{?package_suffix} -p /sbin/ldconfig
+%postun -n libarmnnOnnxParser%{version_lib}%{?package_suffix} -p /sbin/ldconfig
 %endif
 
 %files
@@ -570,29 +615,35 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %{_bindir}/ArmnnExamples
 %endif
 
-%files -n libarmnn%{version_major}%{?package_suffix}
+%files -n libarmnn%{version_lib}%{?package_suffix}
 %{_libdir}/libarmnn.so.*
 
+%files -n libarmnnBasePipeServer%{version_lib}%{?package_suffix}
+%{_libdir}/libarmnnBasePipeServer.so.*
+
+%files -n libtimelineDecoder%{version_lib}%{?package_suffix}
+%{_libdir}/libtimelineDecoder.so.*
+
 %if %{with armnn_flatbuffers}
-%files -n libarmnnSerializer%{version_major}%{?package_suffix}
+%files -n libarmnnSerializer%{version_lib}%{?package_suffix}
 %{_libdir}/libarmnnSerializer.so.*
 
-%files -n libarmnnTfLiteParser%{version_major}%{?package_suffix}
+%files -n libarmnnTfLiteParser%{version_lib}%{?package_suffix}
 %{_libdir}/libarmnnTfLiteParser.so.*
 %endif
 
 %if %{with armnn_tf}
-%files -n libarmnnTfParser%{version_major}%{?package_suffix}
+%files -n libarmnnTfParser%{version_lib}%{?package_suffix}
 %{_libdir}/libarmnnTfParser.so.*
 %endif
 
 %if %{with armnn_caffe}
-%files -n libarmnnCaffeParser%{version_major}%{?package_suffix}
+%files -n libarmnnCaffeParser%{version_lib}%{?package_suffix}
 %{_libdir}/libarmnnCaffeParser.so.*
 %endif
 
 %if %{with armnn_onnx}
-%files -n libarmnnOnnxParser%{version_major}%{?package_suffix}
+%files -n libarmnnOnnxParser%{version_lib}%{?package_suffix}
 %{_libdir}/libarmnnOnnxParser.so.*
 %endif
 
@@ -607,6 +658,8 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %{_includedir}/armnn/backends/profiling/*.hpp
 %dir %{_includedir}/armnn/profiling
 %{_includedir}/armnn/profiling/*.hpp
+%dir %{_includedir}/armnn/utility
+%{_includedir}/armnn/utility/*.hpp
 %dir %{_includedir}/armnnUtils
 %{_includedir}/armnnUtils/*.hpp
 %dir %{_includedir}/armnnCaffeParser/
@@ -624,6 +677,8 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %dir %{_includedir}/armnnSerializer/
 %{_includedir}/armnnSerializer/ISerializer.hpp
 %{_libdir}/libarmnn.so
+%{_libdir}/libarmnnBasePipeServer.so
+%{_libdir}/libtimelineDecoder.so
 %if %{with armnn_flatbuffers}
 %{_libdir}/libarmnnSerializer.so
 %{_libdir}/libarmnnTfLiteParser.so

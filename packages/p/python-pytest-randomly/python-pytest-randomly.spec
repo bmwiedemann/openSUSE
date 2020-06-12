@@ -19,28 +19,27 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-randomly
-Version:        3.3.1
+Version:        3.4.0
 Release:        0
 Summary:        Pytest plugin to randomly order tests and control random.seed
 License:        BSD-3-Clause
 URL:            https://github.com/pytest-dev/pytest-randomly
 Source:         https://github.com/pytest-dev/pytest-randomly/archive/%{version}.tar.gz
-BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-importlib-metadata
 Requires:       python-pytest
-Recommends:     python-Faker
+Recommends:     python-Faker >= 4.1.0
 Suggests:       python-numpy
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Faker}
+BuildRequires:  %{python_module Faker >= 4.1.0}
 BuildRequires:  %{python_module factory_boy}
+BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 
@@ -77,7 +76,6 @@ sed -i '/python_requires/d' setup.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PYTHONDONTWRITEBYTECODE=true
 # test_entrypoint_injection needs installed module for pytest to use
 %pytest -k 'not test_entrypoint_injection and not test_passing_nonsense_for_randomly_seed'
 

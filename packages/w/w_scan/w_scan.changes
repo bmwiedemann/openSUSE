@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 12 05:18:44 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building with gcc10
+
+-------------------------------------------------------------------
 Sat Mar 18 13:00:10 UTC 2017 - mpluskal@suse.com
 
 - Update to version 20170107:

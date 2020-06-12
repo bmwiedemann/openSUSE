@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-moban
-Version:        0.7.5
+Version:        0.7.8
 Release:        0
 Summary:        Yet another jinja2 CLI for static text generation
 License:        MIT

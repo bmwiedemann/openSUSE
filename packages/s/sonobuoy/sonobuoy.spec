@@ -18,7 +18,7 @@
 
 %define project github.com/vmware-tanzu/sonobuoy
 Name:           sonobuoy
-Version:        0.17.2
+Version:        0.18.2
 Release:        0
 Summary:        Conformance test suite for diagnosing a Kubernetes cluster
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Group:          Development/Languages/Other
 URL:            https://github.com/vmware-tanzu/sonobuoy
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.12
 BuildRequires:  golang-packaging
+BuildRequires:  golang(API) >= 1.12
 %{go_nostrip}
 %{go_provides}
 

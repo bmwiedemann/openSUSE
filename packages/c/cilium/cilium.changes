@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 10 19:44:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add 0002-bpf-re-add-a-proper-types.h-mapper.patch
+- add 0001-build-Avoid-using-git-if-not-in-a-git-repo.patch
+- add 0001-datapath-Switch-to-upstream-bpftool-remove-additiona.patch
+- build BPF_SRCFILES to get the list of bpf files to install
+
+-------------------------------------------------------------------
 Wed Apr 29 20:14:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - enable build for all 64 bit arches (adds ppc64le, s390x)

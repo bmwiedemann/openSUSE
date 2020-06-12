@@ -1,7 +1,7 @@
 #
 # spec file for package asclock
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,51 +12,53 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           asclock
-BuildRequires:  imake
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(xpm)
-Provides:       astools:/usr/X11R6/bin/asclock
 Version:        2.0.12
 Release:        0
 Summary:        AfterStep digital clock
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Amusements/Toys/Clocks
-Url:            http://www.tigr.net/afterstep/
+URL:            http://www.tigr.net/afterstep/
 Source:         asclock-%{version}.tar.bz2
-Patch:          gcc4.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch0:         gcc4.diff
+BuildRequires:  fdupes
+BuildRequires:  imake
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xpm)
+Provides:       astools:%{_prefix}/X11R6/bin/asclock
 
 %description
 A swallowable applet shows clock and calendar. Supports themes for
 different looks.
 
 %prep
-%setup -q
-%patch
+%autosetup -p0
 
 %build
 rm -f languages/english/*~
-./configure <<EOF
+# not a autotools configure
+%configure <<EOF
 shaped
 1
 EOF
-make %{?_smp_mflags}
+%make_build CC="cc %{optflags} -fcommon"
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT install
-mkdir -p $RPM_BUILD_ROOT/usr/share/asclock
-cp -ar themes $RPM_BUILD_ROOT/usr/share/asclock/
-cp -ar languages $RPM_BUILD_ROOT/usr/share/asclock/
+%make_install
+mkdir -p %{buildroot}%{_datadir}/asclock
+cp -ar themes %{buildroot}%{_datadir}/asclock/
+cp -ar languages %{buildroot}%{_datadir}/asclock/
+
+%fdupes %{buildroot}
 
 %files
-%defattr(-,root,root)
-/usr/bin/asclock
-/usr/share/asclock
+%{_bindir}/asclock
+%{_datadir}/asclock
 
 %changelog

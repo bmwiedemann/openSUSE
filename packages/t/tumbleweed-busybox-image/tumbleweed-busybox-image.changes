@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 11 09:41:26 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add busybox-adduser
+
+-------------------------------------------------------------------
 Fri Jun  5 13:46:26 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add replaces "bc" for ppc64 to busybox-misc

@@ -1,4 +1,4 @@
 <servicedata>
 <service name="tar_scm">
-            <param name="url">http://git.savannah.gnu.org/r/gnugo.git</param>
-          <param name="changesrevision">84a32e9cee2a70c0ec6ef58c1be279fed84a9a53</param></service></servicedata>
+                <param name="url">https://git.savannah.gnu.org/git/gnugo.git</param>
+              <param name="changesrevision">84a32e9cee2a70c0ec6ef58c1be279fed84a9a53</param></service></servicedata>

@@ -145,6 +145,8 @@ Patch5:         tools-packaging.patch
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org - find /usr/bin/go-5 when bootstrapping with gcc5-go
 Patch8:         gcc6-go.patch
 Patch9:         gcc7-go.patch
+# PATCH-FIX-UPSTREAM prefer /etc/hosts over DNS when /etc/nsswitch.conf not present boo#1172868 gh#golang/go#35305
+Patch12:        Prefer-etc-hosts-over-DNS.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # boostrap
 %if %{with gccgo}
@@ -226,6 +228,7 @@ Go runtime race detector libraries. Install this package if you wish to use the
 # go
 %setup -q -n go
 %patch5 -p1
+%patch12 -p1
 %if %{with gccgo}
 %if 0%{?gcc_go_version} == 6
 %patch8 -p1

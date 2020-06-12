@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 11 15:58:53 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 6.0.0:
+  * BREAKING CHANGE Refactor start_discovery to fix race (#370)
+  * Support zeroconf 0.27 (#368)
+  * Don't ignore zeroconf errors (#367)
+  * BREAKING CHANGE Add support to CastListener for service updates (#366)
+
+-------------------------------------------------------------------
 Wed May 27 05:35:16 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.3.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package w_scan
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           w_scan
 Version:        20170107
 Release:        0
 Summary:        Tool for scanning DVB transponders
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Hardware/TV
-Url:            http://wirbel.htpc-forum.de/w_scan/index2.html
+URL:            http://wirbel.htpc-forum.de/w_scan/index2.html
 Source0:        http://wirbel.htpc-forum.de/w_scan/w_scan-%{version}.tar.bz2
 BuildRequires:  linux-kernel-headers
 
@@ -37,17 +37,18 @@ heavily changed and has different features.
 %setup -q
 
 %build
+export CFLAGS="%{optflags} -fcommon"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING README
+%license COPYING
+%doc AUTHORS ChangeLog README
 %doc doc/README.file_formats doc/README_VLC_DVB doc/rotor.conf
 %{_bindir}/w_scan
-%{_mandir}/man1/w_scan.1%{ext_man}
+%{_mandir}/man1/w_scan.1%{?ext_man}
 
 %changelog

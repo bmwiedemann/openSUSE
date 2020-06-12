@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 12 12:34:48 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Add Prefer-etc-hosts-over-DNS.patch to ensure /etc/hosts is used if /etc/nsswitch.conf is not present boo#1172868 gh#golang/go#35305
+
+-------------------------------------------------------------------
 Tue Jun  9 17:32:52 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.14.4 (released 2020-06-01) includes fixes to the go doc command,

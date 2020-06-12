@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jun 12 08:58:22 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.13:
+  * Update README.md
+  * configure.ac: use ax_cxx_compile_stdcxx instead
+  * po: regenerate gettext files
+  * Enable support for DNV
+  * intel_cpus: Fix ICX definition
+  * configure.ac: add missing checks from autoscan
+  * gettext: update to 0.20.2
+  * remove INSTALL relic
+  * Doxyfile.in: refresh for version 1.8.18
+  * Doxyfile.in: modernize configuration
+  * intel_cpus: Fix SKY-X definition
+  * Dropped unused variable "entry" detected by Coverity
+  * intel_cpus.cpp: Only call closedir() if opened
+- Add BuildRequires for autoconf, autoconf-archive, automake, libtool
+  because each release they forget to create a release tarball
+  until I ping them
+
+-------------------------------------------------------------------
 Tue Apr 21 06:13:05 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.12:

@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Fri Jun 12 10:23:37 UTC 2020 - davejplater@gmail.com
+
+- Update to version 2.1.1 and remove incorporated patches:
+  0001-Fix-a-const-variable.patch and 
+  0001-Add-missing-QPainterPath-include.patch
+- Upstream changes:
+  * Use CARLA_CATCH_UNWIND in the base utils
+  * Fix build with EXTERNAL_PLUGINS=false
+  * Bump version to 2.1.1
+  * Fixup macOS 10.12 packaging
+  * Fix carla-control not handling CLI arg for custom address
+  * Fix carla-control adding more than 1 plugin
+  * Fix a couple of issues with carla-plugin
+  * Improve performance of inline display rendering
+  * patchcanvas: Fix ports text width calculation
+  * Fix wrong assertion with size 1 MIDI messages in JACK code path
+
+-------------------------------------------------------------------
+Tue Jun  2 08:08:45 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Fix factory build with patch from git:
+  0001-Add-missing-QPainterPath-include.patch
+- Added patch from git:
+  0001-Fix-a-const-variable.patch
+
+-------------------------------------------------------------------
+Thu May 28 11:55:14 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Use service file to remove data/windows directory from tarball.
+
+-------------------------------------------------------------------
+Wed Apr 22 12:56:21 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Update license field and added bsd-2-clause.txt
+
+-------------------------------------------------------------------
+Thu Apr 16 09:53:23 UTC 2020 - Edgar Aichinger <edogawa@aon.at>
+
+- update to version 2.1 final
+- update carla-remove-pkgconf-rpath.patch for version 2.1
+- remove carla-link-mingw.patch (solved upstream)
+
+-------------------------------------------------------------------
+Sat Apr 11 13:05:03 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Update to git snapshot version 2.0.0+git20200331 aka v2.1-rc2.
+- Build posix32, wine32 and win32 plugins and plugin utils for
+  Tumbleweed see boo#1168659
+- Added carla-link-mingw.patch to fix win32 build.
+- Upstream changes:
+  *bigmeter plugin does not need fixed buffers fixes #1050
+  *Can always drag&drop vst3 files because of bridges
+  *Increase default size of plugin RT data pool
+  *Fix missing idle in native plugins, leading to no post rt events
+  *Fix jack metadata usage for multiple carla instances
+  *Focus bridged UI when shown #954
+
+-------------------------------------------------------------------
+Fri Apr  3 09:09:07 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Add %post message carla-warning.
+
+-------------------------------------------------------------------
+Fri Mar 27 10:02:24 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Update to git snapshot version 2.0.0+git20200310 and remove
+  incorporated patch:
+  0001-Place-Qt-stuff-outside-of-custom-namespace.patch
+- Added carla-remove-pkgconf-rpath.patch to remove rpath in pc files
+- Rebased carla-systemlibs.patch
+- Fix Factory build.
+- Many upstream fixes and improvements
+
+-------------------------------------------------------------------
 Mon Dec  9 12:47:15 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add 0001-Place-Qt-stuff-outside-of-custom-namespace.patch to fix

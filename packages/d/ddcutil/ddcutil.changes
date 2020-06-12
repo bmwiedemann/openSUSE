@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon May 25 07:26:37 UTC 2020 - Simon Lees <simonf.lees@suse.com>
+
+- Update to ddcutil 0.9.8
+  * A new command line option, --sleep-multiplier, adjusts the time ddcutil
+    pauses between sending a request to the monitor and reading from the
+    monitor.
+    Many monitors work successfully with shorter sleep durations than required
+    by the DDC/CI specification, in which case ddcutil execution time can be
+    considerably reduced. On the other hand, some monitors having communication
+    difficulty may work with longer sleep durations than required by the DDC/CI
+    specification.
+  * A bug fix for the situation where certain mice would lock up during
+    display detection.
+  * libddcutil api break and move to v2
+  * The libddcutil shared library API has some minor extensions.
+- cmake files installed to right location
+- Update to ddcutil 0.9.7
+  * Fixed the cause of a segfault during display detection if a monitor
+    appearing to support the USB Monitor Control Class Specification, i.e. one
+    that uses USB to communicate monitor settings, is connected to the system.
+  * The release also contains some minor code cleanup.
+- Update to ddcutil 0.9.6
+  * SONAME support is enabled for libddcutil.
+  * Other minor enhancements, bug fixes, and API changes.
+
+-------------------------------------------------------------------
 Tue Feb 26 10:39:09 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to ddcutil 0.9.5
@@ -257,7 +283,7 @@ Wed Dec 13 16:49:45 UTC 2017 - alarrosa@suse.com
     byte 24 (x14), the supported features bitmap. This is purely informational.
   * Ongoing work to make functions thread safe.
   * Code cleanup.
-  * The full list of changes can be read at 
+  * The full list of changes can be read at
     http://www.ddcutil.com/release_notes/
 
 -------------------------------------------------------------------

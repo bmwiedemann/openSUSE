@@ -17,17 +17,23 @@
 
 
 Name:           powertop
-Version:        2.12
+Version:        2.13
 Release:        0
-#Git-Clone:	git://github.com/fenrus75/powertop
 Summary:        A Linux Tool to Find out What is Using Power on a Laptop
 License:        GPL-2.0-only
 Group:          System/Monitoring
 URL:            https://01.org/powertop/
-Source0:        https://01.org/sites/default/files/downloads/powertop-%{version}.tar.gz
+Source0:        https://github.com/fenrus75/powertop/archive/v2.13.tar.gz
 Source1:        powertop.service
+# they repeatedly forget to upload a release tarball and only have the one from
+# GitHub which doesnt contain configure thus adding:
+# autoconf, autoconf-archive, automake, libtool
+BuildRequires:  autoconf
+BuildRequires:  autoconf-archive
+BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
+BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
@@ -51,9 +57,10 @@ doing in terms of power savings.
 find . -name '*.o' -delete
 
 %build
+autoreconf -fi
 export CFLAGS="%{optflags} -D_GNU_SOURCE"
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -80,7 +87,7 @@ touch %{_localstatedir}/cache/powertop/saved_results.powertop
 
 %files
 %license COPYING
-%doc README
+%doc README.md
 %dir %{_localstatedir}/cache/powertop
 %ghost %{_localstatedir}/cache/powertop/saved_parameters.powertop
 %ghost %{_localstatedir}/cache/powertop/saved_results.powertop

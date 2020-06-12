@@ -1,17 +1,16 @@
 <services>
-  <service name="tar_scm" mode="disabled">
-    <param name="url">http://git.savannah.gnu.org/r/gnugo.git</param>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">https://git.savannah.gnu.org/git/gnugo.git</param>
     <param name="scm">git</param>
-    <param name="exclude">.git</param>
-    <param name="versionformat">3.9.1+git%cd.%h</param>
-    <param name="revision">master</param>
     <param name="changesgenerate">enable</param>
+    <param name="filename">gnugo</param>
+    <param name="changesauthor">mcepl@cepl.eu</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service mode="disabled" name="recompress">
     <param name="file">gnugo-*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="disabled">
+  <service mode="disabled" name="set_version">
     <param name="basename">gnugo</param>
   </service>
 </services>

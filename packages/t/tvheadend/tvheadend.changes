@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 12 12:49:02 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building with gcc10
+
+-------------------------------------------------------------------
 Tue Mar 24 13:35:39 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Switch to py3 (build time dependency)

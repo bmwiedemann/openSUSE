@@ -1,3 +1,4 @@
 # glibc-devel* packages are needed as a runtime dependency, cilium uses them to
 # compile BPF programs.
+addFilter("cilium.* devel-file-in-non-devel-package ")
 addFilter("cilium.* devel-dependency")

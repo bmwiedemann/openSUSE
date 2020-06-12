@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun  4 09:51:23 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Unify Leap/SLE options
+- Update to 20.05:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v20.05
+- Drop upstream patch:
+  * armnn-enable-use-of-arm-compute-shared-library.patch
+- Refresh patch:
+  * 0003-add-more-test-command-line-arguments.patch
+- Add new patch to fix build with gcc10:
+  * armnn-fix-catch.patch
+- Package new libtimelineDecode and libarmnnBasePipeServer
+
+-------------------------------------------------------------------
 Thu May 28 15:10:11 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Apply boost link fixes only for armnn_extra_tests
