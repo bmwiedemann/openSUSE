@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 12 08:19:17 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop yast2-trans-cs from the x11 live cd (space constraints).
+
+-------------------------------------------------------------------
 Wed Jun 10 13:49:35 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Ignore p7zip-full instead of p7zip
