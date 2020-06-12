@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 13 10:19:22 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix sfdisk not reading its own scripts:
+  * libfdisk-script-accept-sector-size.patch
+- Use %autopatch
+
+-------------------------------------------------------------------
+Fri May  8 07:54:57 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Fix verification of mount, su and umount (bsc#1166948)
+
+-------------------------------------------------------------------
 Mon Apr  6 23:07:48 CEST 2020 - Stanislav Brabec <sbrabec@suse.com>
 
 - Update to version 2.35.1:

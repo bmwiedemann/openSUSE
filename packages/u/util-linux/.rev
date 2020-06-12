@@ -2197,4 +2197,30 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment></comment>
     <requestid>791866</requestid>
   </revision>
+  <revision rev="244" vrev="2">
+    <srcmd5>d9c7cb976e8b4f1a523ddb841de261be</srcmd5>
+    <version>2.35.1</version>
+    <time>1591990502</time>
+    <user>dimstar_suse</user>
+    <comment>Important fix for JeOS and  MicroOS images.
+
+- Add patch to fix sfdisk not reading its own scripts:
+  * libfdisk-script-accept-sector-size.patch
+- Use %autopatch
+
+- Fix verification of mount, su and umount (bsc#1166948)
+
+- Add patch to fix sfdisk not reading its own scripts:
+  * libfdisk-script-accept-sector-size.patch
+- Use %autopatch
+
+- Fix verification of mount, su and umount (bsc#1166948)
+
+- Add patch to fix sfdisk not reading its own scripts:
+  * libfdisk-script-accept-sector-size.patch
+- Use %autopatch
+
+- Fix verification of mount, su and umount (bsc#1166948)</comment>
+    <requestid>812861</requestid>
+  </revision>
 </revisionlist>

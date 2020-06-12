@@ -148,6 +148,7 @@ Patch1:         libmount-print-a-blacklist-hint-for-unknown-filesyst.patch
 Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
 Patch3:         libeconf.patch
 Patch4:         libmount-Avoid-triggering-autofs-in-lookup_umount_fs.patch
+Patch5:         libfdisk-script-accept-sector-size.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
 %if %build_util_linux
@@ -409,11 +410,7 @@ library.
 %prep
 %setup -q -n %{_name}-%{version}
 cp -a %{S:2} .
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autopatch -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -952,7 +949,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 /sbin/chcpu
 #EndUsrMerge
 %{_bindir}/kill
-%{_bindir}/su
+%verify(not mode) %{_bindir}/su
 %{_bindir}/eject
 %{_bindir}/cal
 %{_bindir}/chmem
@@ -990,7 +987,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_bindir}/mcookie
 %{_bindir}/mesg
 %{_bindir}/more
-%{_bindir}/mount
+%verify(not mode) %{_bindir}/mount
 %{_bindir}/namei
 %{_bindir}/nsenter
 %{_bindir}/prlimit
@@ -1005,7 +1002,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_bindir}/setsid
 %{_bindir}/taskset
 %{_bindir}/ul
-%{_bindir}/umount
+%verify(not mode) %{_bindir}/umount
 %{_bindir}/unshare
 %{_bindir}/mountpoint
 %{_bindir}/utmpdump
