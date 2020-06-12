@@ -610,7 +610,7 @@
       <repopackage name="libICE6" arch="x86_64"/>
       <repopackage name="libicu67" arch="x86_64"/>
       <repopackage name="libicu67-ledata" arch="x86_64"/>
-      <repopackage name="libidn2-0" arch="x86_64"/>
+      <repopackage name="libidn2-0"/>
       <repopackage name="libIex-2_4-24" arch="x86_64"/>
       <repopackage name="libIlmImf-2_4-24" arch="x86_64"/>
       <repopackage name="libIlmThread-2_4-24" arch="x86_64"/>
@@ -630,7 +630,7 @@
       <repopackage name="libjbig2" arch="x86_64"/>
       <repopackage name="libjcat1" arch="x86_64"/>
       <repopackage name="libjpeg8" arch="x86_64"/>
-      <repopackage name="libjson-c4"/>
+      <repopackage name="libjson-c5"/>
       <repopackage name="libjson-glib-1_0-0" arch="x86_64"/>
       <repopackage name="libkaccounts1" arch="x86_64"/>
       <repopackage name="libkate1" arch="x86_64"/>
@@ -958,7 +958,7 @@
       <repopackage name="libtwolame0" arch="x86_64"/>
       <repopackage name="libudev1"/>
       <repopackage name="libudisks2-0" arch="x86_64"/>
-      <repopackage name="libunistring2" arch="x86_64"/>
+      <repopackage name="libunistring2"/>
       <repopackage name="libunwind" arch="x86_64"/>
       <repopackage name="libupower-glib3" arch="x86_64"/>
       <repopackage name="liburcu6" arch="x86_64"/>

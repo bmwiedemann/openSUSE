@@ -1598,7 +1598,6 @@ unsorted:
   - ceph-osd: [x86_64] 
   - ceph-prometheus-alerts: [x86_64] 
   - ceph-radosgw: [x86_64] 
-  - ceph-resource-agents: [x86_64] 
   - ceph-test: [x86_64] 
   - cephadm: [x86_64] 
   - cephfs-shell: [x86_64] 
@@ -2023,7 +2022,6 @@ unsorted:
   - cracklib-devel 
   - cracklib-devel-32bit: [x86_64] 
   - cracklib-dict-small: [i586] 
-  - cram-common 
   - crash 
   - crash-devel 
   - crash-doc 
@@ -2412,7 +2410,6 @@ unsorted:
   - dianara 
   - dico 
   - dico-devel 
-  - dico-lang 
   - dico-modules 
   - dictd 
   - dictd-devel 
@@ -3691,17 +3688,6 @@ unsorted:
   - geary 
   - geary-lang 
   - gebaar-libinput 
-  - geda-base 
-  - geda-doc 
-  - geda-examples 
-  - geda-gaf 
-  - geda-gattrib 
-  - geda-gnetlist 
-  - geda-gschem 
-  - geda-gsymcheck 
-  - geda-symbols 
-  - geda-utils 
-  - geda-xorn 
   - gedit-devel 
   - gedit-latex-lang 
   - gedit-plugin-bookmarks 
@@ -5141,6 +5127,7 @@ unsorted:
   - gstreamer-1_0-plugins-buzztrax 
   - gstreamer-32bit: [x86_64] 
   - gstreamer-devel 
+  - gstreamer-devel-32bit: [x86_64] 
   - gstreamer-doc 
   - gstreamer-editing-services 
   - gstreamer-editing-services-devel 
@@ -5956,6 +5943,7 @@ unsorted:
   - iso-codes-devel 
   - iso-country-flags-png 
   - isorelax 
+  - ispc: [x86_64] 
   - ispell-bulgarian 
   - ispell-catalan 
   - ispell-dutch 
@@ -6881,6 +6869,7 @@ unsorted:
   - knotifyconfig-devel-32bit: [x86_64] 
   - kochmorse 
   - kohsuke-pom 
+  - kokkos-devel: [x86_64] 
   - kolor-manager 
   - kompare-devel 
   - kompose 
@@ -7877,7 +7866,7 @@ unsorted:
   - libSampleICC1 
   - libSavitar-devel 
   - libSavitar0 
-  - libSimGearCore-2018_3_4 
+  - libSimGearCore-2020_1_1 
   - libSoQt20 
   - libSoapyOsmoSDR0 
   - libSoundTouch1-32bit: [x86_64] 
@@ -9364,11 +9353,6 @@ unsorted:
   - libgdruntime76-gcc9 
   - libgdruntime76-gcc9-32bit: [x86_64] 
   - libgeany0 
-  - libgeda-data 
-  - libgeda-devel 
-  - libgeda46 
-  - libgedacairo-devel 
-  - libgedacairo1 
   - libgee-0_8-2-32bit: [x86_64] 
   - libgee-devel 
   - libgee06-devel 
@@ -10139,6 +10123,7 @@ unsorted:
   - libknet1-crypto-plugins-all 
   - libknet1-devel 
   - libknet1-plugins-all 
+  - libkokkos3: [x86_64] 
   - libkolabxml-devel 
   - libkomparediff2-devel 
   - libkonkretcmpi0 
@@ -11503,7 +11488,6 @@ unsorted:
   - libradcli4 
   - librados-devel: [x86_64] # devel package of dvd:librados2 
   - libradospp-devel: [x86_64] # devel package of dvd:librados2 
-  - libradosstriper-devel: [x86_64] # devel package of dvd:librados2 
   - libraft0 
   - libragel0 
   - libraptor-devel 
@@ -12929,8 +12913,6 @@ unsorted:
   - libxmltooling8 
   - libxmp-devel 
   - libxmp4 
-  - libxornstorage-devel 
-  - libxornstorage0 
   - libxosd2 
   - libxplayer-plparser-mini18 
   - libxplayer-plparser-mini18-32bit: [x86_64] 
@@ -15064,6 +15046,8 @@ unsorted:
   - nmon 
   - nnn 
   - no-more-secrets 
+  - nodejs-default 
+  - nodejs-devel-default 
   - nodejs-packaging 
   - nodejs-underscore 
   - nodejs10: [x86_64] 
@@ -15313,6 +15297,7 @@ unsorted:
   - novprog-lang 
   - nping 
   - npkg 
+  - npm-default 
   - npm10: [x86_64] 
   - npm12: [x86_64] 
   - npm8 
@@ -18188,6 +18173,7 @@ unsorted:
   - postgresql12-docs 
   - postgresql12-pg_cron 
   - postgresql12-pg_cron-llvmjit 
+  - postgresql12-pgagent 
   - postgresql12-plperl 
   - postgresql12-plpython 
   - postgresql12-plr 
@@ -18674,7 +18660,6 @@ unsorted:
   - python2-ayatana-appindicator 
   - python2-azure-datalake-store 
   - python2-clustershell 
-  - python2-cram 
   - python2-efl 
   - python2-efl-doc 
   - python2-efl-examples 
@@ -19432,7 +19417,6 @@ unsorted:
   - python3-cpplint 
   - python3-cppy 
   - python3-cracklib 
-  - python3-cram 
   - python3-crayons 
   - python3-crcmod 
   - python3-cron-descriptor 
@@ -21789,6 +21773,7 @@ unsorted:
   - readline5-devel-32bit: [x86_64] 
   - readline6-devel 
   - readline6-devel-32bit: [x86_64] 
+  - reaim 
   - realmd 
   - realmd-lang 
   - rear 
@@ -24054,6 +24039,7 @@ unsorted:
   - sblim-testsuite 
   - sblim-tools-libra-devel 
   - sblim-wbemcli 
+  - sbsigntools 
   - sbt 
   - sbt-bootstrap 
   - sbt-launcher 
@@ -33202,6 +33188,7 @@ unsorted:
   - typelib-1_0-GrlPls-0_3 
   - typelib-1_0-Grss-0_7 
   - typelib-1_0-Gsf-1 
+  - typelib-1_0-Gst-1_0-32bit: [x86_64] 
   - typelib-1_0-GstAllocators-1_0 
   - typelib-1_0-GstApp-1_0 
   - typelib-1_0-GstGL-1_0 

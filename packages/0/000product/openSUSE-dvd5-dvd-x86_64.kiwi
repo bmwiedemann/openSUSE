@@ -2093,8 +2093,8 @@
       <repopackage name="libjpeg-turbo"/>
       <repopackage name="libjpeg8"/>
       <repopackage name="libjpeg8-32bit" arch="x86_64"/>
-      <repopackage name="libjson-c4"/>
-      <repopackage name="libjson-c4-32bit" arch="x86_64"/>
+      <repopackage name="libjson-c5"/>
+      <repopackage name="libjson-c5-32bit" arch="x86_64"/>
       <repopackage name="libjson-glib-1_0-0"/>
       <repopackage name="libjsonrpc-glib-1_0-1"/>
       <repopackage name="libjte1"/>

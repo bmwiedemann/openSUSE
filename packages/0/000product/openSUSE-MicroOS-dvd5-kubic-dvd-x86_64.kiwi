@@ -299,13 +299,13 @@
       <repopackage name="libhidapi-hidraw0" arch="x86_64"/>
       <repopackage name="libibverbs" arch="x86_64"/>
       <repopackage name="libibverbs1" arch="x86_64"/>
-      <repopackage name="libidn2-0" arch="x86_64"/>
+      <repopackage name="libidn2-0"/>
       <repopackage name="libimaevm1" arch="x86_64"/>
       <repopackage name="libini_config5" arch="x86_64"/>
       <repopackage name="libip4tc2" arch="x86_64"/>
       <repopackage name="libip6tc2" arch="x86_64"/>
       <repopackage name="libipset13" arch="x86_64"/>
-      <repopackage name="libjson-c4"/>
+      <repopackage name="libjson-c5"/>
       <repopackage name="libkeyutils1"/>
       <repopackage name="libkmod2"/>
       <repopackage name="libksba8" arch="x86_64"/>
@@ -364,7 +364,6 @@
       <repopackage name="libpython3_8-1_0" arch="x86_64"/>
       <repopackage name="libqrencode4"/>
       <repopackage name="librados2" arch="x86_64"/>
-      <repopackage name="libradosstriper1" arch="x86_64"/>
       <repopackage name="librbd1" arch="x86_64"/>
       <repopackage name="librdmacm1" arch="x86_64"/>
       <repopackage name="libreadline8"/>
@@ -405,7 +404,7 @@
       <repopackage name="libtirpc3"/>
       <repopackage name="libtls20" arch="x86_64"/>
       <repopackage name="libudev1"/>
-      <repopackage name="libunistring2" arch="x86_64"/>
+      <repopackage name="libunistring2"/>
       <repopackage name="libunwind" arch="x86_64"/>
       <repopackage name="liburcu6" arch="x86_64"/>
       <repopackage name="libusb-1_0-0" arch="x86_64"/>
