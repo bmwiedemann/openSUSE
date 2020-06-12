@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 12 17:02:10 UTC 2020 - Tony Jones <tonyj@suse.com>
+
+- Fix build breakage on aarch64 and armv7 (bsc#1172741)
+  New patch: perf-cs-etm-move-definition-of-traceid_list-global-variable-from-header-file.patch
+
+-------------------------------------------------------------------
 Wed Oct 30 13:41:51 UTC 2019 - Jiri Slaby <jslaby@suse.com>
 
 - perf does not link with LTO, so define _lto_cflags %{nil}

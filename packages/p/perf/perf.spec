@@ -1,7 +1,7 @@
 #
 # spec file for package perf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Release:        0
 Summary:        Performance Monitoring Tools for Linux
 License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
-Url:            https://perf.wiki.kernel.org/
+URL:            https://perf.wiki.kernel.org/
 BuildRequires:  audit-devel
 BuildRequires:  binutils-devel
 BuildRequires:  bison
@@ -61,6 +61,8 @@ Requires:       libebl
 Requires:       kernel >= 2.6.31
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
+Patch1:         perf-cs-etm-move-definition-of-traceid_list-global-variable-from-header-file.patch
+
 %description
 This package provides a userspace tool 'perf', which monitors performance for
 either unmodified binaries or the entire system. It requires a Linux kernel
@@ -75,6 +77,8 @@ chmod +x tools/perf/util/generate-cmdlist.sh
 
 # don't error out on deprecated definitions in gtk2.h
 sed -i 's@ignored "-Wstrict-prototypes"@&\n#pragma GCC diagnostic ignored "-Wdeprecated-declarations"@' tools/build/feature/test-gtk2.c
+
+%autopatch -p1
 
 %build
 cd tools/perf
