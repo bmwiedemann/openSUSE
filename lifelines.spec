@@ -31,6 +31,8 @@ Source1:        %{name}-rpmlintrc
 Patch0:         lifelines-%{commit}.dif
 # PATCH-FIX-SUSE avoid memory leak as well as no initialized array
 Patch1:         lifelines-%{commit}-array.dif
+# PATCH-FIX-UPSTREAM https://github.com/lifelines/lifelines/pull/389
+Patch2:         reproducible.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  dblatex
@@ -73,6 +75,7 @@ system but requires knowledge in the ll format.
 tar -x  --strip-components=1 -z -f %{SOURCE0} 
 %patch0 -p0 -b .p0
 %patch1 -p0 -b .p1
+%patch2 -p1 -b .p2
 
 %build
 if test $(getconf LONG_BIT) -gt 32
