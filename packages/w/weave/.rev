@@ -75,4 +75,20 @@
     <comment>- Use file requires for modprobe (to be able to use busybox-kmod) (forwarded request 795700 from kukuk)</comment>
     <requestid>795701</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b18662466e40f07e5db178f5b31c975c</srcmd5>
+    <version>2.6.4</version>
+    <time>1591990515</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.4
+  - Improve the iptables rule to block just the Weave Net control port,
+    and avoid blocking other uses of 127.0.0.1. #3811
+
+- Update to version 2.6.3
+  - Block non-local traffic to the Weave control port #3805
+  - Tell Linux not to accept router advisory messages #3801
+  - NPC: add a metric to show errors while operating #3804
+  - NPC: don't treat named port as a fatal error #3790</comment>
+    <requestid>810360</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat May 30 11:24:10 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.6.4
+  - Improve the iptables rule to block just the Weave Net control port,
+    and avoid blocking other uses of 127.0.0.1. #3811
+
+-------------------------------------------------------------------
+Thu May 28 13:51:32 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.6.3
+  - Block non-local traffic to the Weave control port #3805
+  - Tell Linux not to accept router advisory messages #3801
+  - NPC: add a metric to show errors while operating #3804
+  - NPC: don't treat named port as a fatal error #3790
+
+-------------------------------------------------------------------
 Mon Apr 20 08:32:37 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use file requires for modprobe (to be able to use busybox-kmod)

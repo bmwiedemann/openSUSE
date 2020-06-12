@@ -17,7 +17,7 @@
 
 
 Name:           weave
-Version:        2.6.2
+Version:        2.6.4
 Release:        0
 Summary:        Pod Network Add-On
 License:        Apache-2.0
@@ -33,7 +33,7 @@ Patch0:         Makefile.diff
 Patch1:         disable-iptables-setup.patch
 BuildRequires:  binutils-gold
 BuildRequires:  libpcap-devel
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  golang(API) >= 1.13
 ExcludeArch:    s390 %{ix86}
 
 %description
