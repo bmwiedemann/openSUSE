@@ -1,7 +1,7 @@
 #
 # spec file for package john
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(openssl)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 John the Ripper is a password cracker (password security auditing
@@ -60,10 +59,11 @@ perl -pi -e 's#^(\#define JOHN_SYSTEMWIDE_EXEC)\s.+$#$1\t\"%{johndir}\"#g' $RPM_
 perl -pi -e 's#^(\#define CFG_FULL_NAME)\s.+$#$1\t\"%{_sysconfdir}/john.conf\"#g' $RPM_BUILD_DIR/%{name}-%{version}/src/params.h
 perl -pi -e 's#^(\#define CFG_ALT_NAME)\s.+$#$1\t\"%{_sysconfdir}/john.conf\"#g' $RPM_BUILD_DIR/%{name}-%{version}/src/params.h
 perl -pi -e 's#^(\#define WORDLIST_NAME)\s.+$#$1\t\"%{johndir}/password.lst\"#g' $RPM_BUILD_DIR/%{name}-%{version}/src/params.h
-perl -pi -e 's#^(\#define LOG_NAME)\s.+$#$1\t\"/var/log/john/john.log\"#g' $RPM_BUILD_DIR/%{name}-%{version}/src/params.h
+perl -pi -e 's#^(\#define LOG_NAME)\s.+$#$1\t\"%{_localstatedir}/log/john/john.log\"#g' $RPM_BUILD_DIR/%{name}-%{version}/src/params.h
 perl -pi -e 's#^(\#define JOHN_SYSTEMWIDE_HOME)\s.+$#$1\t\"%{johndir}\"#g' $RPM_BUILD_DIR/%{name}-%{version}/src/params.h
 
 %build
+export CFLAGS="%{optflags} -fcommon"
 pushd src
 %configure --with-systemwide \
            --disable-openmp \
@@ -74,19 +74,19 @@ pushd src
             --enable-simd=avx \
 %endif
            --disable-native-tests
-make -s clean
-make %{?_smp_mflags}
+%make_build -s clean
+%make_build
 popd
 # fix shebang
-sed -i 's|#!/usr/bin/env perl|#!/usr/bin/perl|' run/*.pl
-sed -i 's|#! /usr/bin/env perl|#!/usr/bin/perl|' run/*.pl
-sed -i 's|#!/usr/bin/env python|#!/usr/bin/python|' run/*.py
-sed -i 's|#! /usr/bin/env python|#!/usr/bin/python|' run/*.py
-sed -i 's|#!/usr/bin/env perl|#!/usr/bin/perl|' run/relbench
+sed -i 's|#!%{_bindir}/env perl|#!%{_bindir}/perl|' run/*.pl
+sed -i 's|#! %{_bindir}/env perl|#!%{_bindir}/perl|' run/*.pl
+sed -i 's|#!%{_bindir}/env python|#!%{_bindir}/python|' run/*.py
+sed -i 's|#! %{_bindir}/env python|#!%{_bindir}/python|' run/*.py
+sed -i 's|#!%{_bindir}/env perl|#!%{_bindir}/perl|' run/relbench
 
 %install
 mkdir -p %{buildroot}{%{_bindir},%{johndir},%{johndir}/wordlists,%{_sysconfdir},%{_mandir}/man8}
-mkdir -p %{buildroot}/var/log/john
+mkdir -p %{buildroot}%{_localstatedir}/log/john
 install -m 755 run/john %{buildroot}%{_bindir}/
 install -m 755 run/*.py %{buildroot}%{_bindir}/
 install -m 755 run/*.pl %{buildroot}%{_bindir}/
@@ -134,6 +134,6 @@ dos2unix %{buildroot}%{_defaultdocdir}/%{name}/README.krb5tgs-17-18-23.md
 %attr(644,root,root) %{johndir}/r*.conf
 %config (noreplace) %{_sysconfdir}/john.conf
 %config (noreplace) %{johndir}/john.local.conf
-%attr(775,root,users) %dir /var/log/john
+%attr(775,root,users) %dir %{_localstatedir}/log/john
 
 %changelog
