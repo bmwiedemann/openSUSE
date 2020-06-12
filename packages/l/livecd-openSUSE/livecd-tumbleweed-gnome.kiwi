@@ -386,16 +386,7 @@
     <package name="xfsdump"/>
     <package name="xfsprogs"/>
     <package name="xz"/>
-    <package name="yast2-trans-cs"/>
-    <package name="yast2-trans-da"/>
     <package name="yast2-trans-de"/>
-    <package name="yast2-trans-es"/>
-    <package name="yast2-trans-ja"/>
-    <package name="yast2-trans-pl"/>
-    <package name="yast2-trans-ru"/>
-    <package name="yast2-trans-sv"/>
-    <package name="yast2-trans-zh_CN"/>
-    <package name="yast2-trans-zh_TW"/>
     <package name="zd1211-firmware"/>
     <package name="zip"/>
     <package name="aaa_base" replaces="ntp"/>
