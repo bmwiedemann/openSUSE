@@ -4,8 +4,6 @@ Documentation=man:mandb(8) man:catman(8)
 ConditionACPower=true
 
 [Service]
-User=man
-Group=man
 Type=oneshot
 Nice=5
 IOSchedulingClass=idle
