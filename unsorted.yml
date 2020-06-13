@@ -37,6 +37,7 @@ unsorted:
   - ComputeLibrary-devel: [x86_64] 
   - ComputeLibrary-sample-data: [x86_64] 
   - CoreFreq: [x86_64] 
+  - CoreFreq-kmp-default: [x86_64] 
   - CorsixTH 
   - Crystalcursors 
   - DVDStyler 
@@ -1353,6 +1354,7 @@ unsorted:
   - bumblebee-status-module-mpd 
   - bumblebee-status-module-redshift 
   - bumpversion 
+  - busybox-adduser 
   - busybox-ash 
   - busybox-attr 
   - busybox-bind-utils 
@@ -2027,6 +2029,7 @@ unsorted:
   - crash-doc 
   - crash-eppic 
   - crash-gcore 
+  - crash-kmp-default: [x86_64] 
   - crawl 
   - crawl-data 
   - crawl-sdl 
@@ -2547,6 +2550,7 @@ unsorted:
   - dpdk-devel: [x86_64] 
   - dpdk-doc: [x86_64] 
   - dpdk-examples: [x86_64] 
+  - dpdk-kmp-default: [x86_64] 
   - dpdk-tools: [x86_64] 
   - dpic 
   - dpic-doc 
@@ -6107,6 +6111,7 @@ unsorted:
   - java-jwt 
   - java-jwt-javadoc 
   - java-libkolabxml1 
+  - java-mraa: [x86_64] 
   - javacc 
   - javacc-bootstrap 
   - javacc-demo 
@@ -6940,6 +6945,7 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
+  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -8111,21 +8117,23 @@ unsorted:
   - libarchive13-32bit: [x86_64] 
   - libargtable2-0 
   - libargtable2-devel 
-  - libarm_compute18: [x86_64] 
+  - libarm_compute19: [x86_64] 
   - libarmadillo9 
   - libarmadillo9-32bit: [x86_64] 
-  - libarmnn20: [x86_64] 
-  - libarmnn20-opencl: [x86_64] 
-  - libarmnnCaffeParser20: [x86_64] 
-  - libarmnnCaffeParser20-opencl: [x86_64] 
-  - libarmnnOnnxParser20: [x86_64] 
-  - libarmnnOnnxParser20-opencl: [x86_64] 
-  - libarmnnSerializer20: [x86_64] 
-  - libarmnnSerializer20-opencl: [x86_64] 
-  - libarmnnTfLiteParser20: [x86_64] 
-  - libarmnnTfLiteParser20-opencl: [x86_64] 
-  - libarmnnTfParser20: [x86_64] 
-  - libarmnnTfParser20-opencl: [x86_64] 
+  - libarmnn21: [x86_64] 
+  - libarmnn21-opencl: [x86_64] 
+  - libarmnnBasePipeServer21: [x86_64] 
+  - libarmnnBasePipeServer21-opencl: [x86_64] 
+  - libarmnnCaffeParser21: [x86_64] 
+  - libarmnnCaffeParser21-opencl: [x86_64] 
+  - libarmnnOnnxParser21: [x86_64] 
+  - libarmnnOnnxParser21-opencl: [x86_64] 
+  - libarmnnSerializer21: [x86_64] 
+  - libarmnnSerializer21-opencl: [x86_64] 
+  - libarmnnTfLiteParser21: [x86_64] 
+  - libarmnnTfLiteParser21-opencl: [x86_64] 
+  - libarmnnTfParser21: [x86_64] 
+  - libarmnnTfParser21-opencl: [x86_64] 
   - libarpack2 
   - libarpack2-32bit: [x86_64] 
   - libarprec0 
@@ -8849,7 +8857,7 @@ unsorted:
   - libdd_opentracing0 
   - libddccontrol0 
   - libddcutil-devel 
-  - libddcutil0 
+  - libddcutil2 
   - libdebuginfod-devel 
   - libdebuginfod1 
   - libdecoration0 
@@ -10518,6 +10526,7 @@ unsorted:
   - libmpx2-gcc7-32bit: [x86_64] 
   - libmpxwrappers2-gcc7 
   - libmpxwrappers2-gcc7-32bit: [x86_64] 
+  - libmraa2: [x86_64] 
   - libmrss-devel 
   - libmrss0 
   - libmrss0-32bit: [x86_64] 
@@ -10826,7 +10835,7 @@ unsorted:
   - libopenmpi_1_10_7-gnu-hpc 
   - libopenmpi_2_1_6-gnu-hpc 
   - libopenmpi_3_1_6-gnu-hpc 
-  - libopenmpi_4_0_3-gnu-hpc 
+  - libopenmpi_4_0_4-gnu-hpc 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
   - libopenmpt0-32bit: [x86_64] 
@@ -12248,6 +12257,8 @@ unsorted:
   - libtiger-devel 
   - libtiger5 
   - libtiled1 
+  - libtimelineDecoder21: [x86_64] 
+  - libtimelineDecoder21-opencl: [x86_64] 
   - libtimezonemap1 
   - libtimidity-devel 
   - libtimidity2 
@@ -13274,6 +13285,7 @@ unsorted:
   - lsyncd 
   - ltrace-32bit: [x86_64] 
   - lttng-modules 
+  - lttng-modules-kmp-default 
   - lttng-modules-kmp-pae: [i586] 
   - lttng-tools 
   - lttng-tools-devel 
@@ -14427,6 +14439,9 @@ unsorted:
   - mpv-plugin-mpris 
   - mpv-zsh-completion 
   - mr 
+  - mraa: [x86_64] 
+  - mraa-devel: [x86_64] 
+  - mraa-examples: [x86_64] 
   - mrboom 
   - mrouted 
   - mrrescue 
@@ -15745,11 +15760,14 @@ unsorted:
   - openSUSE-release-usb-gnome 
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -15912,12 +15930,12 @@ unsorted:
   - openmpi_3_1_6-gnu-hpc-docs 
   - openmpi_3_1_6-gnu-hpc-macros-devel 
   - openmpi_3_1_6-gnu-hpc-testsuite 
-  - openmpi_4_0_3-gnu-hpc 
-  - openmpi_4_0_3-gnu-hpc-devel 
-  - openmpi_4_0_3-gnu-hpc-devel-static 
-  - openmpi_4_0_3-gnu-hpc-docs 
-  - openmpi_4_0_3-gnu-hpc-macros-devel 
-  - openmpi_4_0_3-gnu-hpc-testsuite 
+  - openmpi_4_0_4-gnu-hpc 
+  - openmpi_4_0_4-gnu-hpc-devel 
+  - openmpi_4_0_4-gnu-hpc-devel-static 
+  - openmpi_4_0_4-gnu-hpc-docs 
+  - openmpi_4_0_4-gnu-hpc-macros-devel 
+  - openmpi_4_0_4-gnu-hpc-testsuite 
   - openmpt123 
   - openmw 
   - opennlp 
@@ -18562,6 +18580,7 @@ unsorted:
   - python-notmuch-doc 
   - python-novaclient-doc 
   - python-octaviaclient-doc 
+  - python-onionshare-data 
   - python-openstack-doc-tools 
   - python-openstackclient-doc 
   - python-openstacksdk-doc 
@@ -19524,6 +19543,7 @@ unsorted:
   - python3-django-compressor 
   - python3-django-contrib-comments 
   - python3-django-cors-headers 
+  - python3-django-countries 
   - python3-django-coverage-plugin 
   - python3-django-crispy-forms 
   - python3-django-debreach 
@@ -19636,6 +19656,7 @@ unsorted:
   - python3-elasticsearch 
   - python3-elementpath 
   - python3-eliot 
+  - python3-email-reply-parser 
   - python3-email_validator 
   - python3-emoji 
   - python3-empy 
@@ -19735,7 +19756,7 @@ unsorted:
   - python3-flup 
   - python3-fontMath 
   - python3-fontParts 
-  - python3-fontPens: [x86_64] 
+  - python3-fontPens 
   - python3-forbiddenfruit 
   - python3-formats 
   - python3-freeipa 
@@ -19826,6 +19847,7 @@ unsorted:
   - python3-gr-iqbal 
   - python3-grab 
   - python3-graphene 
+  - python3-graphene-django 
   - python3-graphql-core 
   - python3-graphql-relay 
   - python3-graphviz 
@@ -19868,6 +19890,7 @@ unsorted:
   - python3-html5lib 
   - python3-htmlmin 
   - python3-httmock 
+  - python3-http-ece 
   - python3-http-parser 
   - python3-httpbin 
   - python3-httpie 
@@ -20239,6 +20262,7 @@ unsorted:
   - python3-mpi4py-devel 
   - python3-mplcursors 
   - python3-mpmath 
+  - python3-mraa: [x86_64] 
   - python3-mrcz 
   - python3-msal 
   - python3-msal-extensions 
@@ -21331,7 +21355,7 @@ unsorted:
   - python3-uamqp 
   - python3-ucsmsdk 
   - python3-ufoLib2 
-  - python3-ufoProcessor: [x86_64] 
+  - python3-ufoProcessor 
   - python3-ufonormalizer 
   - python3-ujson 
   - python3-unbound 
