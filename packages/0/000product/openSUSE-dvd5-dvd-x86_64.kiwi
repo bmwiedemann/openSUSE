@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20200611" schemaversion="4.1">
+<image name="OBS__openSUSE___20200612" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200611</productvar>
+      <productvar name="VERSION">20200612</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200611,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200612,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200611/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200612/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -347,7 +347,6 @@
       <repopackage name="colord-gtk-lang"/>
       <repopackage name="colord-lang"/>
       <repopackage name="command-not-found"/>
-      <repopackage name="CoreFreq-kmp-default" arch="x86_64"/>
       <repopackage name="coreutils"/>
       <repopackage name="coreutils-doc"/>
       <repopackage name="coreutils-lang"/>
@@ -360,7 +359,6 @@
       <repopackage name="cpupower"/>
       <repopackage name="cracklib"/>
       <repopackage name="cracklib-dict-full"/>
-      <repopackage name="crash-kmp-default" arch="x86_64"/>
       <repopackage name="crda"/>
       <repopackage name="createrepo_c"/>
       <repopackage name="cron"/>
@@ -445,7 +443,6 @@
       <repopackage name="dolphin-part-lang"/>
       <repopackage name="dos2unix"/>
       <repopackage name="dosfstools"/>
-      <repopackage name="dpdk-kmp-default" arch="x86_64"/>
       <repopackage name="dracut"/>
       <repopackage name="dragonplayer"/>
       <repopackage name="dragonplayer-lang"/>
@@ -1385,7 +1382,7 @@
       <repopackage name="kquickcharts"/>
       <repopackage name="krb5"/>
       <repopackage name="krb5-32bit" arch="x86_64"/>
-      <repopackage name="krb5-client"/>
+      <repopackage name="krb5-client" arch="x86_64"/>
       <repopackage name="krename"/>
       <repopackage name="kreversi"/>
       <repopackage name="kreversi-lang"/>
@@ -3266,7 +3263,6 @@
       <repopackage name="lsof"/>
       <repopackage name="lsscsi"/>
       <repopackage name="ltrace"/>
-      <repopackage name="lttng-modules-kmp-default"/>
       <repopackage name="lua53"/>
       <repopackage name="lua53-luasocket"/>
       <repopackage name="luit"/>
@@ -3562,9 +3558,6 @@
       <repopackage name="open-iscsi"/>
       <repopackage name="open-vm-tools"/>
       <repopackage name="open-vm-tools-desktop"/>
-      <repopackage name="openafs"/>
-      <repopackage name="openafs-client"/>
-      <repopackage name="openafs-kmp-default"/>
       <repopackage name="openal-soft-data"/>
       <repopackage name="opencc"/>
       <repopackage name="opencc-data"/>
