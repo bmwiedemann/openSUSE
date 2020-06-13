@@ -912,4 +912,11 @@
     <user>dimstar_suse</user>
     <comment>- Drop yast translations (space constraints).</comment>
   </revision>
+  <revision rev="111" vrev="111">
+    <srcmd5>174657fd703a7b811dc6456ead3b3d92</srcmd5>
+    <version>unknown</version>
+    <time>1592064677</time>
+    <user>dimstar_suse</user>
+    <comment>- Use vim-small on the rescue cd.</comment>
+  </revision>
 </revisionlist>

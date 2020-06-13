@@ -47,7 +47,9 @@ buildignore avahi
 buildignore fprintd
 buildignore accountsservice
 buildignore MozillaFirefox
+buildignore vim
 buildignore vim-data
+install vim-small
 buildignore tcpdump
 
 install gparted
