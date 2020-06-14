@@ -22,7 +22,7 @@
 %define govf_sover 0.1
 %define gfrdp_sover 0.1
 Name:           gnome-boxes
-Version:        3.36.4
+Version:        3.36.5
 Release:        0
 Summary:        A GNOME 3 application to access remote or virtual systems
 License:        LGPL-2.0-or-later
