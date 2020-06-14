@@ -17,7 +17,7 @@
 
 
 Name:           asciidoc
-Version:        9.0.0rc2
+Version:        9.0.0
 Release:        0
 Summary:        Text-Based Document Generation
 License:        GPL-2.0-or-later
@@ -65,20 +65,15 @@ pushd %{buildroot}%{_bindir}
 	mv a2x.py a2x
 popd
 
-# install vim files
-mkdir -p %{buildroot}%{_datadir}/vim/site/{syntax,ftdetect}
-install -m 0644 vim/syntax/* %{buildroot}%{_datadir}/vim/site/syntax
-
 %files
 %license COPYRIGHT
 %doc README.asciidoc BUGS.txt CHANGELOG.txt
 %config %{_sysconfdir}/%{name}
 %{_bindir}/%{name}
 %{_bindir}/a2x
-%{_datadir}/vim
 %{_mandir}/man1/*
 
 %files examples
-%doc doc examples
+%doc doc website
 
 %changelog

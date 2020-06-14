@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Jun  9 05:21:24 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 9.0.0:
+  * Port asciidoc to run on Python 3.5+
+  * Drop internal implementation of OrderedDict and use the
+    standard library collections.OrderedDict instead
+  * Implement Dockerfile for running asciidoc
+  * Add Catalan translation
+  * Add docbook5 backend
+  * Fix misspellings in various files and documents
+  * Use UTC for testing instead of Pacific/Auckland (which observes
+    daylight saving time)
+  * Use "with" context statement for opening and closing files
+    instead of older try/finally pattern
+  * Search sibling paths before system wide paths in asciidocapi
+  * Add manpage for testasciidoc.py
+  * Use argparse instead of optparse for argument parsing
+  * Add simplified Chinese translation (thanks @muirmok)
+  * vim-asciidoc: speed up the refresh process for big files 
+  * Allow specifying floatstyle attribute for figures, tables,
+    equations, examples in docbook (thanks @psaris)
+  * Use https://pypi.org/project/trans/[trans python module]
+    (if available) to better handle character decomposition to
+    ascii for ascii-ids (thanks @rkel)
+  * Use lru_cache to memoize repeated calls to macro look-up
+    giving potential ~15% speed-up on parsing
+  * Fix index terms requiring two characters instead of just one
+  * Properly capture and use colophon, dedication, and preface for
+    docbooks in Japanese (see #2 (comment))
+  * make install did not include the unwraplatex.py filter
+  * Fix a2x option collection from input file with non-ascii
+    encoding
+  * Fix options attribute not being properly parsed in Delimited
+    Blocks attribute list
+  * Migrate from hierarchical A-A-P build system to top-level
+    Makefile
+  * Add make help target that prints out usage message for make
+  * Fix double slash issue in Makefile when installing asciidoc
+    or its docs
+  * Commit generated test files to the repository for continuous
+    integration
+  * Test against Python 3.5+ on Travis-CI
+  * Remove symlink tests/asciidocapi.py in favor of just appending
+    to sys.path
+  * Add requires directive to testasciidoc.conf to indicate
+    necessary external dependencies (e.g. source-highlight)
+
+-------------------------------------------------------------------
 Thu Apr 23 12:00:49 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 - simplify requires - we don't need the full python3, but the
