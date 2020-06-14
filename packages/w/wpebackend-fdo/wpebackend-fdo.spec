@@ -19,7 +19,7 @@
 %define sover 1
 
 Name:           wpebackend-fdo
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        A WPE backend designed for Linux desktop systems
 License:        BSD-2-Clause

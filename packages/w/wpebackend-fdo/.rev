@@ -47,4 +47,12 @@
     <comment>Push forgotten glib2 update</comment>
     <requestid>795604</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bce3437b7e7bba4cfb8945cfbc537b88</srcmd5>
+    <version>1.6.1</version>
+    <time>1592151266</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813506</requestid>
+  </revision>
 </revisionlist>
