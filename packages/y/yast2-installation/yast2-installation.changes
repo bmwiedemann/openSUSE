@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 12 16:09:32 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Improve the UX of the Previously Used Repositories dialog by
+  using more accurate labels.
+
+-------------------------------------------------------------------
+
+Fri Jun 12 15:03:11 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Remove ssh_import section from AY when cloning (bsc#1172749)
+- 4.3.3
+
+-------------------------------------------------------------------
 Wed Jun 10 12:43:33 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
 
 - Fixed yupdate script to correctly install the needed Ruby gems
