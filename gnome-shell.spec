@@ -42,6 +42,8 @@ Patch4:         gnome-shell-fate324570-Make-GDM-background-image-configurable.pa
 Patch5:         gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
 # PATCH-FIX-UPSTREAM gnome-shell-Get-resource-scale-by-get_resource_scale.patch bsc#1169845 glgo#GNOME/gnome-shell!1206 xwang@suse.com -- Get resource scale by get_resource_scale
 Patch6:         gnome-shell-Get-resource-scale-by-get_resource_scale.patch
+# PATCH-FIX-UPSTREAM gnome-shell-disable-screensaver-user-switch-when-remote.patch bsc#1167276 glgo#GNOME/gnome-shell!1215 qkzhu@suse.com -- Set Switch User Button invisible when session is Remote
+Patch7:         gnome-shell-disable-screensaver-user-switch-when-remote.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gnome-shell-gdm-login-applet.patch fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
@@ -181,6 +183,7 @@ This package contains an optional extensions app for managing GNOME Shell extens
 #patch4 -p1
 #patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 translation-update-upstream
 

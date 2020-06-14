@@ -1,0 +1,65 @@
+From d2cf13eff4f91e60fbceb7e28573d80eb5b908bb Mon Sep 17 00:00:00 2001
+From: Chingkai <chuchingkai@gmail.com>
+Date: Sat, 25 Apr 2020 16:29:16 +0800
+Subject: [PATCH] unlockDialog: Set Switch User Button via
+ _updateUserSwitchVisibility
+
+This commit will set the button invisible when the user's can_switch
+is false (e.g. when the session is remote) or user-switch-enabled is
+disabled.
+
+https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/2687
+---
+ js/ui/unlockDialog.js | 29 ++++++++++++++++++++++++++---
+ 1 file changed, 26 insertions(+), 3 deletions(-)
+
+diff --git a/js/ui/unlockDialog.js b/js/ui/unlockDialog.js
+index f74f4be23..cbcc2e512 100644
+--- a/js/ui/unlockDialog.js
++++ b/js/ui/unlockDialog.js
+@@ -566,9 +566,17 @@ var UnlockDialog = GObject.registerClass({
+         this._otherUserButton.set_pivot_point(0.5, 0.5);
+         this._otherUserButton.connect('clicked', this._otherUserClicked.bind(this));
+ 
+-        let screenSaverSettings = new Gio.Settings({ schema_id: 'org.gnome.desktop.screensaver' });
+-        screenSaverSettings.bind('user-switch-enabled',
+-            this._otherUserButton, 'visible', Gio.SettingsBindFlags.GET);
++        this._screenSaverSettings = new Gio.Settings({ schema_id: 'org.gnome.desktop.screensaver' });
++
++        this._userSwitchEnabledId = 0;
++        this._userSwitchEnabledId = this._screenSaverSettings.connect('changed::user-switch-enabled',
++            this._updateUserSwitchVisibility.bind(this));
++
++        this._userLoadedId = 0;
++        this._userLoadedId = this._user.connect('notify::is-loaded',
++            this._updateUserSwitchVisibility.bind(this));
++
++        this._updateUserSwitchVisibility();
+ 
+         // Main Box
+         let mainBox = new St.Widget();
+@@ -828,6 +836,21 @@ var UnlockDialog = GObject.registerClass({
+             this._gdmClient = null;
+             delete this._gdmClient;
+         }
++
++        if (this._userLoadedId) {
++            this._user.disconnect(this._userLoadedId);
++            this._userLoadedId = 0;
++        }
++
++        if (this._userSwitchEnabledId) {
++            this._screenSaverSettings.disconnect(this._userSwitchEnabledId);
++            this._userSwitchEnabledId = 0;
++        }
++    }
++
++    _updateUserSwitchVisibility() {
++        this._otherUserButton.visible = this._userManager.can_switch() &&
++            this._screenSaverSettings.get_boolean('user-switch-enabled');
+     }
+ 
+     cancel() {
+-- 
+2.26.2
+
