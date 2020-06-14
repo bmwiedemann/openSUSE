@@ -1,7 +1,7 @@
 #
 # spec file for package tup
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,11 @@
 
 
 Name:           tup
-Version:        0.7.8
+Version:        0.7.9
 Release:        0
 Summary:        File-based build system
 License:        GPL-2.0-only
-Group:          Development/Tools/Building
-Url:            http://gittup.org/tup/
+URL:            http://gittup.org/tup/
 Source0:        https://github.com/gittup/tup/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       %{name}.rpmlintrc
 Patch0:         tup-add_archs.patch
@@ -41,7 +40,6 @@ to update dependent files.
 
 %package        doc
 Summary:        Documentation for %{name}
-Group:          Documentation/HTML
 Requires:       %{name} = %{version}
 BuildArch:      noarch
 
@@ -49,8 +47,7 @@ BuildArch:      noarch
 Documents and examples for %{name}
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 sed "s/\`git describe\`/%{version}/" -i src/tup/link.sh
 
 %build
