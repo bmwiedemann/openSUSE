@@ -20,7 +20,7 @@
 %define kf5_version 5.48.0
 %bcond_without lang
 Name:           elisa
-Version:        20.04.1
+Version:        20.04.2
 Release:        0
 Summary:        Music player and collection organizer
 License:        LGPL-3.0-or-later
