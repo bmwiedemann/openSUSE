@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-astral
-Version:        2.1
+Version:        2.2
 Release:        0
 Summary:        Calculations for the position of the sun and moon
 License:        Apache-2.0
@@ -55,9 +55,6 @@ For documentation see the http://astral.readthedocs.io/en/latest/index.html
 
 %install
 %python_install
-# do not install bogus doc module
-%python_expand rm -r %{buildroot}/%{$python_sitelib}/doc
-%python_expand rm -r %{buildroot}/%{$python_sitelib}/test
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}
 
 %check

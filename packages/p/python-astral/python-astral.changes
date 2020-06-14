@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 12 15:00:14 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 2.2:
+  * Fix for bug #48. As per the bug report the angle to adjust for
+    the effect of elevation should have been θ (not α).
+  * The sun functions can now also be passed the timezone as a
+    string. Previously only a pytz timezone was accepted.
+
+-------------------------------------------------------------------
 Fri Mar  6 18:24:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not install doc and test folders to sitelib
