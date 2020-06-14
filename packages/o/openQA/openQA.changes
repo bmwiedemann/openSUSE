@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 14 03:25:49 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1592022958.c44fca22c:
+  * Dependency cron 200613
+  * Allow flock on temporary files to fix support for monitoring with Mojolicious::Plugin::Status
+  * Add error message when openqa-clone-custom-git-refspec is called on invalid job
+
+-------------------------------------------------------------------
 Thu Jun 11 19:25:47 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1591782003.8d14b8990:
