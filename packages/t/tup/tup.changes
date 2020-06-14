@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun 13 12:52:31 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to verison 0.7.9
+ * !tup_preserve (to copy src files into variants) should now
+   work
+ * Progress toward better parallelism during the update phase
+- Drop Group tags
+
+-------------------------------------------------------------------
 Fri Sep 28 05:52:34 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.7.8
