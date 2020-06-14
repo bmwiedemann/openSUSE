@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 11 14:52:51 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- build with nodejs10 to be able to drop nodejs8 from TW
+- updated create-tar.sh
+
+-------------------------------------------------------------------
 Sat Jun  6 21:05:07 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Thunderbird 68.9.0

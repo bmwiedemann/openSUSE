@@ -62,7 +62,7 @@ Name:           %{pkgname}
 BuildRequires:  Mesa-devel
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf213
-BuildRequires:  dbus-1-glib-devel >= 0.60
+BuildRequires:  dbus-1-glib-devel
 BuildRequires:  fdupes
 %if 0%{?suse_version} <= 1320
 BuildRequires:  gcc7-c++
@@ -79,7 +79,7 @@ BuildRequires:  memory-constraints
 BuildRequires:  mozilla-nspr-devel >= 4.21
 BuildRequires:  mozilla-nss-devel >= 3.44.4
 BuildRequires:  nasm >= 2.13
-BuildRequires:  nodejs8 >= 8.11
+BuildRequires:  nodejs10 >= 10.19.0
 BuildRequires:  python-devel
 BuildRequires:  python2-xml
 BuildRequires:  python3 >= 3.5
@@ -144,7 +144,7 @@ Source4:        tar_stamps
 Source6:        suse-default-prefs.js
 Source7:        l10n-%{version}.tar.xz
 Source9:        thunderbird.appdata.xml
-Source14:       https://github.com/openSUSE/firefox-scripts/raw/8a54002/create-tar.sh
+Source14:       https://github.com/openSUSE/firefox-scripts/raw/5e54f4a/create-tar.sh
 Source20:       https://ftp.mozilla.org/pub/%{progname}/releases/%{orig_version}%{orig_suffix}/source/%{progname}-%{orig_version}%{orig_suffix}.source.tar.xz.asc
 Source21:       https://ftp.mozilla.org/pub/%{progname}/releases/%{orig_version}/KEY#/mozilla.keyring
 # Gecko/Toolkit

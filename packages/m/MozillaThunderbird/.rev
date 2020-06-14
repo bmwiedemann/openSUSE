@@ -3220,4 +3220,13 @@ But as always there are semi-relevant changes from the Gecko 60.4 baseline. Many
     <comment></comment>
     <requestid>812112</requestid>
   </revision>
+  <revision rev="233" vrev="2">
+    <srcmd5>64095bcbf99a3c57697ecbda742f26f2</srcmd5>
+    <version>68.9.0</version>
+    <time>1592151305</time>
+    <user>dimstar_suse</user>
+    <comment>- build with nodejs10 to be able to drop nodejs8 from TW
+- updated create-tar.sh</comment>
+    <requestid>813558</requestid>
+  </revision>
 </revisionlist>
