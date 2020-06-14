@@ -33,6 +33,9 @@ Source4:        README.SUSE
 # Upstream also made change to python3 in master. Because 2.3.1 is compatible with both
 # python2 and 3 we follow and switch to python3
 Patch0:         correct-shebang.patch
+# PATCH-FIX-UPSTREAM remove_python_shebang.patch mcepl@suse.com
+# remove all instances of python2 shebang lines
+Patch1:         remove_python_shebang.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bc
@@ -125,6 +128,7 @@ LyX uses ImageMagick to deal with images. For security reasons
 %prep
 %setup -q -n lyx-2.3.5-1
 %patch0 -p1
+%patch1 -p1
 
 %build
 #./autogen.sh

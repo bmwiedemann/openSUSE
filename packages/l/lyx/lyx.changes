@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun 13 20:57:10 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Don't use %autopatch, gives problems with patches in branched
+  packages.
+
+-------------------------------------------------------------------
+Sat Jun 13 16:02:54 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_python_shebang.patch to get rid of all remaining
+  python2 shebangs.
+
+-------------------------------------------------------------------
 Mon Jun  8 11:39:08 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Because of some packaging errors the name of the package now has

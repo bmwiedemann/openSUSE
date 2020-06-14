@@ -1,0 +1,177 @@
+--- a/development/cmake/doc/ReplaceValues.py
++++ b/development/cmake/doc/ReplaceValues.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/python3
+ 
+ from __future__ import print_function
+ 
+--- a/development/cmake/po/cat.py
++++ b/development/cmake/po/cat.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/python3
+ 
+ from __future__ import print_function
+ 
+--- a/development/cmake/po/unix2dos.py
++++ b/development/cmake/po/unix2dos.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/python3
+ 
+ ###############
+ import sys
+--- a/development/tools/gen_lfuns.py
++++ b/development/tools/gen_lfuns.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ 
+ # file gen_lfuns.py
+--- a/development/tools/generate_symbols_images.py
++++ b/development/tools/generate_symbols_images.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ 
+ # file generate_symbols_images.py
+--- a/development/tools/generate_symbols_list.py
++++ b/development/tools/generate_symbols_list.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ 
+ # file generate_symbols_images.py
+--- a/development/tools/mergepo.py
++++ b/development/tools/mergepo.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ 
+ # file mergepo.py
+--- a/development/tools/unicodesymbols.py
++++ b/development/tools/unicodesymbols.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ 
+ # file unciodesymbols.py
+--- a/development/tools/updatedocs.py
++++ b/development/tools/updatedocs.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ 
+ # file updatedocs.py
+--- a/development/tools/updatelayouts.py
++++ b/development/tools/updatelayouts.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ 
+ # file updatelayouts.py
+--- a/po/Makefile.in
++++ b/po/Makefile.in
+@@ -14,7 +14,7 @@ VERSION = 2.3.5-1
+ PACKAGE_BUGREPORT = lyx-devel@lists.lyx.org
+ 
+ # ADDED FOR LYX
+-PYTHON = /usr/bin/python
++PYTHON = /usr/bin/python3
+ 
+ SED = /usr/bin/sed
+ SHELL = /bin/sh
+--- a/po/lyx_pot.py
++++ b/po/lyx_pot.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ 
+ # file lyx_pot.py
+--- a/po/postats.py
++++ b/po/postats.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ # Copyright (C) 2007 Michael Gerz <michael.gerz@teststep.org>
+ # Copyright (C) 2007 José Matos <jamatos@lyx.org>
+--- a/src/tex2lyx/test/runtests.py
++++ b/src/tex2lyx/test/runtests.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ 
+ # file src/tex2lyx/test/runtests.py
+--- a/development/autotests/keytest.py
++++ b/development/autotests/keytest.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ # This script generates hundreds of random keypresses per second,
+ #  and sends them to the lyx window
+--- a/development/keystest/cache-bisect.py
++++ b/development/keystest/cache-bisect.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ 
+ import os
+--- a/development/keystest/keytest.py
++++ b/development/keystest/keytest.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ # This script generates hundreds of random keypresses per second,
+ #  and sends them to the lyx window
+--- a/development/keystest/make_screenshot_html.py
++++ b/development/keystest/make_screenshot_html.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ import re
+ import os
+--- a/lib/examples/listerrors.lyx
++++ b/lib/examples/listerrors.lyx
+@@ -347,7 +347,7 @@ status open
+ 
+ \begin_layout Plain Layout
+ 
+-#!/usr/bin/python -tt
++#!/usr/bin/python3 -tt
+ \end_layout
+ 
+ \begin_layout Plain Layout
+--- a/lib/scripts/gnuplot2pdf.py
++++ b/lib/scripts/gnuplot2pdf.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ from subprocess import Popen, PIPE
+ from sys import argv, stderr, exit
+--- a/src/graphics/GraphicsConverter.cpp
++++ b/src/graphics/GraphicsConverter.cpp
+@@ -287,7 +287,7 @@ static void build_script(string const &
+ 	LYXERR(Debug::GRAPHICS, "build_script ... ");
+ 	typedef Graph::EdgePath EdgePath;
+ 
+-	script << "#!/usr/bin/env python\n"
++	script << "#!/usr/bin/python3\n"
+ 		  "# -*- coding: utf-8 -*-\n"
+ 		  "import os, shutil, sys\n\n"
+ 		  "def unlinkNoThrow(file):\n"
