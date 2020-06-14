@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun  9 12:15:30 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-06-apps-update
+- Changes since 20.04.1:
+  * Fix lambda capture 'this' is not used
+  * Notify current cursor position might be changed to input methods (kde#420799)
+  * Fix SearchTask memleak
+  * Fix override switch-to-tab action in Yakuake (kde#420503)
+  * [SessionController] Fix crash caused by text encoding menu (kde#419526)
+  * Fix konsolepart segfault when closing after showing context menu (kde#415762)
+  * Fix crash when closing session in KonsolePart via menu (kde#420817)
+- Drop upstream patches:
+  * Fix-crash-when-closing-session-in-KonsolePart-via-menu.patch
+  * Fix-konsolepart-segfault-when-closing-after-showing-context-menu.patch
+
+-------------------------------------------------------------------
 Fri May 29 12:52:40 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add upstream patches to fix possible crash when closing a session
