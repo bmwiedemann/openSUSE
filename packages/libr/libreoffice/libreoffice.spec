@@ -117,6 +117,10 @@ Patch19:        bsc1165849-2.diff
 Patch20:        bsc1165849-3.diff
 # Bug 1146025 - LO-L3: Colored textboxes in PPTX look very odd (SmartArt)
 Patch21:        bsc1146025.diff
+# Bug 1157627 - LO-L3: Some XML-created shapes simply lost upon PPTX import (= earth loses countries)
+Patch22:        bsc1157627.diff
+# Bug 1172189 - LO-L3: Impress crashes midway opening a PPTX document
+Patch23:        bsc1172189.diff
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -987,6 +991,8 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch19 -p1
 %patch20 -p1
 %patch21 -p1
+%patch22 -p1
+%patch23 -p1
 %patch990 -p1
 %patch991 -p1
 

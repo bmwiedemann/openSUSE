@@ -2744,4 +2744,20 @@ Petr</comment>
     <comment></comment>
     <requestid>810707</requestid>
   </revision>
+  <revision rev="205" vrev="2">
+    <srcmd5>2428035b85d33f40442d1a973aab178b</srcmd5>
+    <version>6.4.4.2</version>
+    <time>1592151218</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix bsc#1172189 - LO-L3: Impress crashes midway opening a PPTX document
+  * bsc1172189.diff
+
+- Fix bsc#1157627 - LO-L3: Some XML-created shapes simply lost upon PPTX import (= earth loses countries)
+  * bsc1157627.diff
+
+- Update to 6.4.4.2 bsc#1172795 bsc#1172796:
+  * CVE-2020-12802: libreoffice: 'stealth mode' remote resource restrictions bypass
+  * CVE-2020-12803: libreoffice: forms in ODF documents can be submitted to file:// URIs</comment>
+    <requestid>813407</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 10 19:18:41 UTC 2020 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1172189 - LO-L3: Impress crashes midway opening a PPTX document
+  * bsc1172189.diff
+
+-------------------------------------------------------------------
+Wed Jun 10 16:17:32 UTC 2020 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1157627 - LO-L3: Some XML-created shapes simply lost upon PPTX import (= earth loses countries)
+  * bsc1157627.diff
+
+-------------------------------------------------------------------
 Mon Jun  1 18:25:46 UTC 2020 - Andras Timar <andras.timar@collabora.com>
 
 - Fix bsc#1146025 - LO-L3: Colored textboxes in PPTX look very odd (SmartArt)
@@ -15,7 +27,9 @@ Tue May 26 11:25:10 UTC 2020 - Andras Timar <andras.timar@collabora.com>
 -------------------------------------------------------------------
 Thu May 21 09:12:27 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
-- Update to 6.4.4.2:
+- Update to 6.4.4.2 bsc#1172795 bsc#1172796:
+  * CVE-2020-12802: libreoffice: 'stealth mode' remote resource restrictions bypass
+  * CVE-2020-12803: libreoffice: forms in ODF documents can be submitted to file:// URIs
   * 6.4.4 release
 - Remove merged patch bsc1160687-1.diff
 

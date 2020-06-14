@@ -1,0 +1,39 @@
+From d7f313b844be5394af2518fc5843aad80314b9f1 Mon Sep 17 00:00:00 2001
+From: nd101 <Fong@nd.com.cn>
+Date: Tue, 3 Mar 2020 15:19:07 +0800
+Subject: [PATCH] bsc1157627.diff
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+tdf#131082 fix missing fill property of grouped shapes
+
+When shapes are grouped together, and fill property is specified
+at the group level in MSO, it fails to work in IMPRESS.
+
+This fix is to set the fill property when it is being imported.
+
+Change-Id: I89920e71fc558f54d49ef7b065c549a732bc2b10
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/89862
+Tested-by: Jenkins
+Reviewed-by: Xisco Faulí <xiscofauli@libreoffice.org>
+---
+ oox/source/drawingml/shape.cxx | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/oox/source/drawingml/shape.cxx b/oox/source/drawingml/shape.cxx
+index cce8b9ba7bbc..8cb3d00df231 100644
+--- a/oox/source/drawingml/shape.cxx
++++ b/oox/source/drawingml/shape.cxx
+@@ -1042,6 +1042,8 @@ Reference< XShape > const & Shape::createAndInsert(
+             mpTablePropertiesPtr->pushToPropSet( rFilterBase, xSet, mpMasterTextListStyle );
+ 
+         FillProperties aFillProperties = getActualFillProperties(pTheme, &rShapeOrParentShapeFillProps);
++        if (getFillProperties().moFillType.has() && getFillProperties().moFillType.get() == XML_grpFill)
++            getFillProperties().assignUsed(aFillProperties);
+         if(!bIsCroppedGraphic)
+             aFillProperties.pushToPropMap( aShapeProps, rGraphicHelper, mnRotation, nFillPhClr, mbFlipH, mbFlipV );
+         LineProperties aLineProperties = getActualLineProperties(pTheme);
+-- 
+2.26.2
+
