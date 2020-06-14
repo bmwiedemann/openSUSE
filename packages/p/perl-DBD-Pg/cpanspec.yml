@@ -26,6 +26,17 @@ preamble: |-
 #skip_noarch: 1
 #custom_build: |-
 #./Build build flags=%{?_smp_mflags} --myflag
-#custom_test: |-
+
+# t/09arrays.t had a non-zero exit status on ppc64. Running with
+# HARNESS_VERBOSE=1 apparently fixes it
+# [   56s] t/09arrays.t ...........
+# ...
+# [   56s] All 203 subtests passed 
+# [   59s] -------------------
+# [   59s] t/09arrays.t         (Wstat: 11 Tests: 203 Failed: 0)
+# [   59s]   Non-zero wait status: 11
+# See also https://rt.cpan.org/Ticket/Display.html?id=132799
+custom_test: |-
+  HARNESS_TIMER=1 HARNESS_VERBOSE=1 make test
 #startserver && make test
 #ignore_requires: Bizarre::Module

@@ -17,7 +17,7 @@
 
 
 Name:           perl-DBD-Pg
-Version:        3.12.1
+Version:        3.12.3
 Release:        0
 %define cpan_name DBD-Pg
 Summary:        PostgreSQL database driver for the DBI module
@@ -33,7 +33,6 @@ BuildRequires:  perl(DBI) >= 1.614
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(version)
 Requires:       perl(DBI) >= 1.614
-Requires:       perl(Test::More) >= 0.88
 Requires:       perl(version)
 Recommends:     perl(Module::Signature) >= 0.50
 %{perl_requires}
@@ -59,7 +58,7 @@ perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
 make %{?_smp_mflags}
 
 %check
-make test
+HARNESS_TIMER=1 HARNESS_VERBOSE=1 make test
 
 %install
 %perl_make_install

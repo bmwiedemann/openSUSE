@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jun 10 16:03:22 UTC 2020 - Tina Müller <tina.mueller@suse.com>
+
+- Run tests in verbose mode. Fixes mysterious failure of t/09arrays.t
+   An issue exists: https://rt.cpan.org/Ticket/Display.html?id=132799
+
+-------------------------------------------------------------------
+Sat Jun  6 03:08:00 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.12.3
+   see /usr/share/doc/packages/perl-DBD-Pg/Changes
+
+  Version 3.12.3  (released June 5, 2020)
+  
+   - Prevent DBI from flipping AutoCommit to 'on' after a failed commit
+     [Greg Sabino Mullane]
+     (Github issue #57)
+  
+  
+  Version 3.12.2  (released June 4, 2020)
+  
+   - Revert overly aggressive testing shortcut as it can cause installs to fail
+     [Greg Sabino Mullane, with apologies]
+  
+  
+
+-------------------------------------------------------------------
 Thu Jun  4 03:07:49 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.12.1
