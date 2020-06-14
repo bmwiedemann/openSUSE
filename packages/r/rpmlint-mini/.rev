@@ -807,4 +807,17 @@ undo bootstrap workaround</comment>
   * cron-whitelist: follow-up whitelisting for nextcloud (bsc#1168964) (forwarded request 792759 from mgerstner)</comment>
     <requestid>792760</requestid>
   </revision>
+  <revision rev="101" vrev="18">
+    <srcmd5>d6e5deb6e2c0e85a5d3ac34db6a262bf</srcmd5>
+    <version>1.10</version>
+    <time>1592151377</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version master:
+  * cron-whitelist: adjust bug reference to point to real bug, not the sr#
+    (opa-ff bsc#1172859)
+
+- Update to version master:
+  * cron-whitelist: follow-up digest for opa-ff</comment>
+    <requestid>814109</requestid>
+  </revision>
 </revisionlist>

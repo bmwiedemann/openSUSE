@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 12 08:50:17 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version master:
+  * cron-whitelist: adjust bug reference to point to real bug, not the sr#
+    (opa-ff bsc#1172859)
+
+-------------------------------------------------------------------
+Wed Jun 10 08:57:19 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version master:
+  * cron-whitelist: follow-up digest for opa-ff
+
+-------------------------------------------------------------------
 Thu Apr 09 14:05:23 UTC 2020 - matthias.gerstner@suse.com
 
 - Update of security-whitelistings tarball:
