@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-uncompyle6
-Version:        3.6.5
+Version:        3.7.0
 Release:        0
 Summary:        Python cross-version byte-code decompiler
 License:        GPL-3.0-only

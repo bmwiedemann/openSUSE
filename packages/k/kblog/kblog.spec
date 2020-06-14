@@ -21,14 +21,14 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kblog
-Version:        20.04.1
+Version:        20.04.2
 Release:        0
 Summary:        Client-side support library for web application remote blogging APIs
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-BuildRequires:  extra-cmake-modules >= %{_kf5_version}
+BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5CalendarCore)

@@ -361,4 +361,12 @@ Needs KF 5.59 and SR 710707</comment>
     <comment>KDE Applications 20.04.1</comment>
     <requestid>806371</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>d156512a4a12150e66ffc9146f6fed0e</srcmd5>
+    <version>20.04.2</version>
+    <time>1592151957</time>
+    <user>dimstar_suse</user>
+    <comment>20.04.2 (+respins) (forwarded request 813365 from cgiboudeaux)</comment>
+    <requestid>813604</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun  9 12:16:24 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-06-apps-update
+- Changes since 20.04.1:
+  * Fix save keys. We can't have multi keys
+  * Allow to load cid element
+  * Add cidschemehandler
+  * Continue to fix loading image from cid scheme
+  * Make sure that resourceType is a QWebEngineUrlRequestInfo::ResourceTypeImage
+  * Fix Start to fix HTML content - mangled generation
+  * Disable line too
+  * Fix load header with qt5.15
+
+-------------------------------------------------------------------
 Fri May 15 15:42:19 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.1

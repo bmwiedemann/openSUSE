@@ -619,4 +619,12 @@ Fri May  9 17:13:53 UTC 2014 - tittiatcoke@gmail.com
     <comment>KDE Applications 20.04.1</comment>
     <requestid>806319</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>6da8f6bc6ee39ee66fa363a54cd4262a</srcmd5>
+    <version>20.04.2</version>
+    <time>1592151860</time>
+    <user>dimstar_suse</user>
+    <comment>20.04.2 (+respins) (forwarded request 813365 from cgiboudeaux)</comment>
+    <requestid>813578</requestid>
+  </revision>
 </revisionlist>

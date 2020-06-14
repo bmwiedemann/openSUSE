@@ -693,4 +693,12 @@
     <comment>KDE Applications 20.04.1</comment>
     <requestid>806425</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>4202bf6471a8e04c5607a2df9319f906</srcmd5>
+    <version>20.04.2</version>
+    <time>1592152027</time>
+    <user>dimstar_suse</user>
+    <comment>20.04.2 (+respins) (forwarded request 813365 from cgiboudeaux)</comment>
+    <requestid>813629</requestid>
+  </revision>
 </revisionlist>

@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           cantor
-Version:        20.04.1
+Version:        20.04.2
 Release:        0
 Summary:        Worksheet GUI for mathematical software
 License:        GPL-2.0-or-later
@@ -148,7 +148,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %files
 %doc README.md DESIGN .doc/*
 %license COPYING*
-%(config) %{_kf5_configdir}/*.knsrc
+%config %{_kf5_configdir}/*.knsrc
 %doc %lang(en) %{_kf5_htmldir}/en/*/
 %{_kf5_applicationsdir}/org.kde.cantor.desktop
 %{_kf5_appstreamdir}/

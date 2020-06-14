@@ -987,4 +987,12 @@ before the switch to 4.8 and the KR47 repo. (forwarded request 91020 from christ
     <comment>KDE Applications 20.04.1</comment>
     <requestid>806695</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>bd3962c631fd650b056b96809ab798c3</srcmd5>
+    <version>20.04.2</version>
+    <time>1592151829</time>
+    <user>dimstar_suse</user>
+    <comment>20.04.2 (+respins) (forwarded request 813365 from cgiboudeaux)</comment>
+    <requestid>813767</requestid>
+  </revision>
 </revisionlist>
