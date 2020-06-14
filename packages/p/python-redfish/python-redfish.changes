@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 13 11:56:01 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.6
+  * Added support for leveraging the 'HTTP_PROXY' and 'HTTPS_PROXY'
+    environment variables to set up proxy information
+
+-------------------------------------------------------------------
 Thu Mar 19 05:02:34 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.1.5:
