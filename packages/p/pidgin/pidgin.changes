@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 11 19:47:14 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.14.1:
+  * Fix an issue that caused the Mercurial revision in the About
+    box to be "unknown".
+
+-------------------------------------------------------------------
 Wed Jun 10 15:19:12 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.14.0:
