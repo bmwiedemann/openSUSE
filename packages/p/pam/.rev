@@ -796,4 +796,41 @@
     <comment></comment>
     <requestid>791095</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>d816ea564c275659509876fd33a00826</srcmd5>
+    <version>1.4.0</version>
+    <time>1592151190</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to final 1.4.0 release
+  - includes pam-check-user-home-dir.patch
+  - obsoletes fix-man-links.dif
+
+- common-password: remove pam_cracklib, as that is deprecated.
+
+- pam_setquota.so:
+  When setting quota, don't apply any quota if the user's $HOME is
+  a mountpoint (ie the user has a partition of his/her own).
+  [bsc#1171721, pam-check-user-home-dir.patch]
+
+- Update to current Linux-PAM snapshot
+  - pam_tally* and pam_cracklib got deprecated
+- Disable pam_faillock and pam_setquota until they are whitelisted
+
+- Adapted patch pam-hostnames-in-access_conf.patch for new version
+  New version obsoleted patch use-correct-IP-address.patch
+  [pam-hostnames-in-access_conf.patch,
+   use-correct-IP-address.patch]
+
+- Update to current Linux-PAM snapshot
+  - Obsoletes pam_namespace-systemd.diff
+
+- Update to current Linux-PAM snapshot
+  - Add pam_faillock
+  - Multiple minor bug fixes and documentation improvements
+  - Fixed grammar of messages printed via pam_prompt
+  - Added support for a vendor directory and libeconf
+  - configure: Allowed disabling documentation through --disable-doc
+  - pam_get_authtok_verify: Avoid duplicate password verification</comment>
+    <requestid>812631</requestid>
+  </revision>
 </revisionlist>

@@ -16,26 +16,25 @@
 #
 
 
+#
+%define enable_selinux 1
+%define libpam_so_version 0.85.1
+%define libpam_misc_so_version 0.82.1
+%define libpamc_so_version 0.82.1
 %if ! %{defined _distconfdir}
   %define _distconfdir %{_sysconfdir}
   %define config_noreplace 1
 %endif
-
-#
-%define enable_selinux 1
-%define libpam_so_version 0.84.2
-%define libpam_misc_so_version 0.82.1
-%define libpamc_so_version 0.82.1
 Name:           pam
 #
-Version:        1.3.1+git20190923.ea78d67
+Version:        1.4.0
 Release:        0
 Summary:        A Security Tool that Provides Authentication for Applications
 License:        GPL-2.0-or-later OR BSD-3-Clause
 Group:          System/Libraries
 URL:            http://www.linux-pam.org/
-Source:         linux-pam-%{version}.tar.xz
-Source1:        Linux-PAM-1.3.1-docs.tar.xz
+Source:         Linux-PAM-%{version}.tar.xz
+Source1:        Linux-PAM-%{version}-docs.tar.xz
 Source3:        other.pamd
 Source4:        common-auth.pamd
 Source5:        common-account.pamd
@@ -46,24 +45,19 @@ Source9:        baselibs.conf
 Source10:       unix2_chkpwd.c
 Source11:       unix2_chkpwd.8
 Source12:       pam-login_defs-check.sh
-Patch0:         fix-man-links.dif
 Patch2:         pam-limit-nproc.patch
 Patch4:         pam-hostnames-in-access_conf.patch
-Patch5:         use-correct-IP-address.patch
 BuildRequires:  audit-devel
-# Remove with next version update:
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  cracklib-devel
 BuildRequires:  flex
 BuildRequires:  libtool
+BuildRequires:  xz
+Requires(post): permissions
 # All login.defs variables require support from shadow side.
 # Upgrade this symbol version only if new variables appear!
 # Verify by shadow-login_defs-check.sh from shadow source package.
 Recommends:     login_defs-support-for-pam >= 1.3.1
-Requires(post): permissions
-BuildRequires:  xz
 %if 0%{?suse_version} > 1320
 BuildRequires:  pkgconfig(libeconf)
 BuildRequires:  pkgconfig(libnsl)
@@ -84,7 +78,7 @@ having to recompile programs that do authentication.
 
 %package extra
 Summary:        PAM module to authenticate against a separate database
-Group:          System/Libraries%description
+Group:          System/Libraries
 BuildRequires:  libdb-4_8-devel
 BuildRequires:  pam-devel
 
@@ -125,18 +119,29 @@ having to recompile programs which do authentication.
 This package contains header files and static libraries used for
 building both PAM-aware applications and modules for use with PAM.
 
+%package deprecated
+Summary:        Deprecated PAM Modules
+Group:          System/Libraries
+Provides:       pam:/%{_lib}/security/pam_cracklib.so
+Provides:       pam:/%{_lib}/security/pam_tally2.so
+
+%description deprecated
+PAM (Pluggable Authentication Modules) is a system security tool that
+allows system administrators to set authentication policies without
+having to recompile programs that do authentication.
+
+This package contains deprecated extra modules like pam_cracklib and
+pam_tally2, which are no longer supported upstream and will be completly
+removed with one of the next releases.
+
 %prep
-%setup -q -n linux-pam-%{version} -b 1
-cp -av ../Linux-PAM-1.3.1/* .
+%setup -q -n Linux-PAM-%{version} -b 1
 cp -a %{SOURCE12} .
-%patch0 -p1
 %patch2 -p1
-%patch4
-%patch5 -p1
+%patch4 -p1
 
 %build
 bash ./pam-login_defs-check.sh
-./autogen.sh
 export CFLAGS="%{optflags} -DNDEBUG"
 %configure \
 	--sbindir=/sbin \
@@ -147,12 +152,13 @@ export CFLAGS="%{optflags} -DNDEBUG"
         --libdir=/%{_lib} \
 	--enable-isadir=../../%{_lib}/security \
         --enable-securedir=/%{_lib}/security \
-	--enable-vendordir=%{_distconfdir}
+	--enable-vendordir=%{_distconfdir} \
+	--enable-tally2 --enable-cracklib
 make %{?_smp_mflags}
-gcc -fwhole-program -fpie -pie -D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE %{optflags} -I%{_builddir}/linux-pam-%{version}/libpam/include %{SOURCE10} -o %{_builddir}/unix2_chkpwd -L%{_builddir}/linux-pam-%{version}/libpam/.libs/ -lpam
+gcc -fwhole-program -fpie -pie -D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE %{optflags} -I%{_builddir}/Linux-PAM-%{version}/libpam/include %{SOURCE10} -o %{_builddir}/unix2_chkpwd -L%{_builddir}/Linux-PAM-%{version}/libpam/.libs -lpam
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
@@ -204,13 +210,8 @@ for i in pam_*/README; do
 	cp -fpv "$i" "$DOC/modules/README.${i%/*}"
 done
 popd
-#
-# pam_tally is deprecated since ages
-#
-rm -f %{buildroot}/%{_lib}/security/pam_tally.so
-rm -f %{buildroot}/sbin/pam_tally
-rm -f %{buildroot}%{_mandir}/man8/pam_tally.8*
-rm -f %{buildroot}%{_defaultdocdir}/pam/modules/README.pam_tally
+# XXX Remove until whitelisted
+rm %{buildroot}/%{_lib}/security/pam_faillock.so
 # Install unix2_chkpwd
 install -m 755 %{_builddir}/unix2_chkpwd %{buildroot}/sbin/
 install -m 644 %{_sourcedir}/unix2_chkpwd.8 %{buildroot}/%{_mandir}/man8/
@@ -227,16 +228,15 @@ install -m 644 %{_sourcedir}/unix2_chkpwd.8 %{buildroot}/%{_mandir}/man8/
 %set_permissions /sbin/unix2_chkpwd
 
 %postun -p /sbin/ldconfig
-
 %pre
 for i in securetty pam.d/other pam.d/common-account pam.d/common-auth pam.d/common-password pam.d/common-session ; do
-  test -f /etc/${i}.rpmsave && mv -v /etc/${i}.rpmsave /etc/${i}.rpmsave.old ||:
+  test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
 done
 
 %posttrans
 # Migration to /usr/etc.
 for i in securetty pam.d/other pam.d/common-account pam.d/common-auth pam.d/common-password pam.d/common-session ; do
-  test -f /etc/${i}.rpmsave && mv -v /etc/${i}.rpmsave /etc/${i} ||:
+  test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
 
 %files -f Linux-PAM.lang
@@ -258,6 +258,7 @@ done
 %config(noreplace) %{_sysconfdir}/environment
 %config(noreplace) %{_sysconfdir}/security/access.conf
 %config(noreplace) %{_sysconfdir}/security/group.conf
+%config(noreplace) %{_sysconfdir}/security/faillock.conf
 %config(noreplace) %{_sysconfdir}/security/limits.conf
 %config(noreplace) %{_sysconfdir}/security/pam_env.conf
 %if %{enable_selinux}
@@ -272,54 +273,57 @@ done
 %{_mandir}/man5/environment.5%{?ext_man}
 %{_mandir}/man5/*.conf.5%{?ext_man}
 %{_mandir}/man5/pam.d.5%{?ext_man}
-%{_mandir}/man8/mkhomedir_helper.8.gz
-%{_mandir}/man8/pam.8.gz
-%{_mandir}/man8/PAM.8.gz
-%{_mandir}/man8/pam_access.8.gz
-%{_mandir}/man8/pam_cracklib.8.gz
-%{_mandir}/man8/pam_debug.8.gz
-%{_mandir}/man8/pam_deny.8.gz
-%{_mandir}/man8/pam_echo.8.gz
-%{_mandir}/man8/pam_env.8.gz
-%{_mandir}/man8/pam_exec.8.gz
-%{_mandir}/man8/pam_faildelay.8.gz
-%{_mandir}/man8/pam_filter.8.gz
-%{_mandir}/man8/pam_ftp.8.gz
-%{_mandir}/man8/pam_group.8.gz
-%{_mandir}/man8/pam_issue.8.gz
-%{_mandir}/man8/pam_keyinit.8.gz
-%{_mandir}/man8/pam_lastlog.8.gz
-%{_mandir}/man8/pam_limits.8.gz
-%{_mandir}/man8/pam_listfile.8.gz
-%{_mandir}/man8/pam_localuser.8.gz
-%{_mandir}/man8/pam_loginuid.8.gz
-%{_mandir}/man8/pam_mail.8.gz
-%{_mandir}/man8/pam_mkhomedir.8.gz
-%{_mandir}/man8/pam_motd.8.gz
-%{_mandir}/man8/pam_namespace.8.gz
-%{_mandir}/man8/pam_nologin.8.gz
-%{_mandir}/man8/pam_permit.8.gz
-%{_mandir}/man8/pam_pwhistory.8.gz
-%{_mandir}/man8/pam_rhosts.8.gz
-%{_mandir}/man8/pam_rootok.8.gz
-%{_mandir}/man8/pam_securetty.8.gz
-%{_mandir}/man8/pam_selinux.8.gz
-%{_mandir}/man8/pam_sepermit.8.gz
-%{_mandir}/man8/pam_shells.8.gz
-%{_mandir}/man8/pam_succeed_if.8.gz
-%{_mandir}/man8/pam_tally2.8.gz
-%{_mandir}/man8/pam_time.8.gz
-%{_mandir}/man8/pam_timestamp.8.gz
-%{_mandir}/man8/pam_timestamp_check.8.gz
-%{_mandir}/man8/pam_tty_audit.8.gz
-%{_mandir}/man8/pam_umask.8.gz
-%{_mandir}/man8/pam_unix.8.gz
-%{_mandir}/man8/pam_warn.8.gz
-%{_mandir}/man8/pam_wheel.8.gz
-%{_mandir}/man8/pam_xauth.8.gz
-%{_mandir}/man8/unix_chkpwd.8.gz
-%{_mandir}/man8/unix2_chkpwd.8.gz
-%{_mandir}/man8/unix_update.8.gz
+%{_mandir}/man8/PAM.8%{?ext_man}
+%{_mandir}/man8/faillock.8%{?ext_man}
+%{_mandir}/man8/mkhomedir_helper.8%{?ext_man}
+%{_mandir}/man8/pam.8%{?ext_man}
+%{_mandir}/man8/pam_access.8%{?ext_man}
+%{_mandir}/man8/pam_debug.8%{?ext_man}
+%{_mandir}/man8/pam_deny.8%{?ext_man}
+%{_mandir}/man8/pam_echo.8%{?ext_man}
+%{_mandir}/man8/pam_env.8%{?ext_man}
+%{_mandir}/man8/pam_exec.8%{?ext_man}
+%{_mandir}/man8/pam_faildelay.8%{?ext_man}
+%{_mandir}/man8/pam_faillock.8%{?ext_man}
+%{_mandir}/man8/pam_filter.8%{?ext_man}
+%{_mandir}/man8/pam_ftp.8%{?ext_man}
+%{_mandir}/man8/pam_group.8%{?ext_man}
+%{_mandir}/man8/pam_issue.8%{?ext_man}
+%{_mandir}/man8/pam_keyinit.8%{?ext_man}
+%{_mandir}/man8/pam_lastlog.8%{?ext_man}
+%{_mandir}/man8/pam_limits.8%{?ext_man}
+%{_mandir}/man8/pam_listfile.8%{?ext_man}
+%{_mandir}/man8/pam_localuser.8%{?ext_man}
+%{_mandir}/man8/pam_loginuid.8%{?ext_man}
+%{_mandir}/man8/pam_mail.8%{?ext_man}
+%{_mandir}/man8/pam_mkhomedir.8%{?ext_man}
+%{_mandir}/man8/pam_motd.8%{?ext_man}
+%{_mandir}/man8/pam_namespace.8%{?ext_man}
+%{_mandir}/man8/pam_namespace_helper.8%{?ext_man}
+%{_mandir}/man8/pam_nologin.8%{?ext_man}
+%{_mandir}/man8/pam_permit.8%{?ext_man}
+%{_mandir}/man8/pam_pwhistory.8%{?ext_man}
+%{_mandir}/man8/pam_rhosts.8%{?ext_man}
+%{_mandir}/man8/pam_rootok.8%{?ext_man}
+%{_mandir}/man8/pam_securetty.8%{?ext_man}
+%{_mandir}/man8/pam_selinux.8%{?ext_man}
+%{_mandir}/man8/pam_sepermit.8%{?ext_man}
+%{_mandir}/man8/pam_setquota.8%{?ext_man}
+%{_mandir}/man8/pam_shells.8%{?ext_man}
+%{_mandir}/man8/pam_succeed_if.8%{?ext_man}
+%{_mandir}/man8/pam_time.8%{?ext_man}
+%{_mandir}/man8/pam_timestamp.8%{?ext_man}
+%{_mandir}/man8/pam_timestamp_check.8%{?ext_man}
+%{_mandir}/man8/pam_tty_audit.8%{?ext_man}
+%{_mandir}/man8/pam_umask.8%{?ext_man}
+%{_mandir}/man8/pam_unix.8%{?ext_man}
+%{_mandir}/man8/pam_usertype.8%{?ext_man}
+%{_mandir}/man8/pam_warn.8%{?ext_man}
+%{_mandir}/man8/pam_wheel.8%{?ext_man}
+%{_mandir}/man8/pam_xauth.8%{?ext_man}
+%{_mandir}/man8/unix2_chkpwd.8%{?ext_man}
+%{_mandir}/man8/unix_chkpwd.8%{?ext_man}
+%{_mandir}/man8/unix_update.8%{?ext_man}
 /%{_lib}/libpam.so.0
 /%{_lib}/libpam.so.%{libpam_so_version}
 /%{_lib}/libpamc.so.0
@@ -328,13 +332,13 @@ done
 /%{_lib}/libpam_misc.so.%{libpam_misc_so_version}
 %dir /%{_lib}/security
 /%{_lib}/security/pam_access.so
-/%{_lib}/security/pam_cracklib.so
 /%{_lib}/security/pam_debug.so
 /%{_lib}/security/pam_deny.so
 /%{_lib}/security/pam_echo.so
 /%{_lib}/security/pam_env.so
 /%{_lib}/security/pam_exec.so
 /%{_lib}/security/pam_faildelay.so
+#/%{_lib}/security/pam_faillock.so
 /%{_lib}/security/pam_filter.so
 %dir /%{_lib}/security/pam_filter
 /%{_lib}/security//pam_filter/upperLOWER
@@ -361,10 +365,10 @@ done
 /%{_lib}/security/pam_selinux.so
 /%{_lib}/security/pam_sepermit.so
 %endif
+/%{_lib}/security/pam_setquota.so
 /%{_lib}/security/pam_shells.so
 /%{_lib}/security/pam_stress.so
 /%{_lib}/security/pam_succeed_if.so
-/%{_lib}/security/pam_tally2.so
 /%{_lib}/security/pam_time.so
 /%{_lib}/security/pam_timestamp.so
 /%{_lib}/security/pam_tty_audit.so
@@ -374,20 +378,31 @@ done
 /%{_lib}/security/pam_unix_auth.so
 /%{_lib}/security/pam_unix_passwd.so
 /%{_lib}/security/pam_unix_session.so
+/%{_lib}/security/pam_usertype.so
 /%{_lib}/security/pam_warn.so
 /%{_lib}/security/pam_wheel.so
 /%{_lib}/security/pam_xauth.so
+/sbin/faillock
 /sbin/mkhomedir_helper
-/sbin/pam_tally2
+/sbin/pam_namespace_helper
 /sbin/pam_timestamp_check
 %verify(not mode) %attr(4755,root,shadow) /sbin/unix_chkpwd
 %verify(not mode) %attr(4755,root,shadow) /sbin/unix2_chkpwd
 %attr(0700,root,root) /sbin/unix_update
+%{_unitdir}/pam_namespace.service
 
 %files extra
 %defattr(-,root,root,755)
-%attr(755,root,root) /%{_lib}/security/pam_userdb.so
-%attr(644,root,root) %doc %{_mandir}/man8/pam_userdb.8.gz
+/%{_lib}/security/pam_userdb.so
+%{_mandir}/man8/pam_userdb.8%{?ext_man}
+
+%files deprecated
+%defattr(-,root,root,755)
+/%{_lib}/security/pam_cracklib.so
+/%{_lib}/security/pam_tally2.so
+/sbin/pam_tally2
+%{_mandir}/man8/pam_cracklib.8%{?ext_man}
+%{_mandir}/man8/pam_tally2.8%{?ext_man}
 
 %files doc
 %defattr(644,root,root,755)
