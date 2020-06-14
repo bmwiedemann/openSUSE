@@ -125,4 +125,12 @@ Depends on SR 556011</comment>
 </comment>
     <requestid>805267</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d106dae7df77adc83989b64a30ae429b</srcmd5>
+    <version>2020.1.2</version>
+    <time>1592152329</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814219</requestid>
+  </revision>
 </revisionlist>
