@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 12 14:18:41 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Disable Python 2 bindings for Tumbleweed.
+
+-------------------------------------------------------------------
 Tue Jan 21 11:38:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop Jasper (i.e jpeg2k) support (boo#1130404, boo#1144260)
