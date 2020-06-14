@@ -636,7 +636,6 @@ xineplug_nsf
 # Philips claimed intellectual property on GSM 06.10
 xineplug_decode_gsm610
 %ifarch %{ix86}
-xineplug_decode_qt
 xineplug_decode_w32dll
 %endif
 xineplug_dxr3

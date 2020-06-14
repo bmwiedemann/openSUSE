@@ -566,4 +566,12 @@ Reason 1.1.x will not be supported to EOL of openSUSE 12.2, see also Bugzilla Bu
     <comment>- Fix build with xine-lib-dec_info_real.patch</comment>
     <requestid>811875</requestid>
   </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>102067ad2834e4ff1877709f489d27df</srcmd5>
+    <version>1.2.10</version>
+    <time>1592152335</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>814207</requestid>
+  </revision>
 </revisionlist>

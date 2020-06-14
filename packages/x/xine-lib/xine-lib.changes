@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  5 20:20:20 UTC 2020 - olaf@aepfle.de
+
+- Remove xineplug_decode_qt to fix i386 build
+
+-------------------------------------------------------------------
 Fri Jun  5 15:15:15 UTC 2020 - olaf@aepfle.de
 
 - Fix build with xine-lib-dec_info_real.patch
