@@ -18,7 +18,7 @@
 
 %define main_version 2020.1
 Name:           FlightGear
-Version:        %{main_version}.1
+Version:        %{main_version}.2
 Release:        0
 Summary:        Flight Simulator
 License:        GPL-2.0-only
