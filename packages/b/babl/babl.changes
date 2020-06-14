@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 11 06:53:18 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.1.78:
+  * Bugfix release - mutex and atomicity related issues.
+  * Wrap hue in HSV, HSL, HCY. Fix black pullout in non ICC CMYK
+    conversion. Added AV2 gamme u8->linear float conversions.  VAPI file generation
+    for vala integration. Adjusted strategy for conversion selection, trades back
+    warm-up time for missing some fast multi-step conversions.
+
+-------------------------------------------------------------------
 Tue Feb  4 21:09:20 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.1.74:

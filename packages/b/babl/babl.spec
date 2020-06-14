@@ -19,7 +19,7 @@
 %define debug_package_requires libbabl-0_1-0 = %{version}-%{release}
 
 Name:           babl
-Version:        0.1.74
+Version:        0.1.78
 Release:        0
 Summary:        Dynamic Pixel Format Translation Library
 License:        LGPL-3.0-or-later AND GPL-3.0-or-later
@@ -31,6 +31,7 @@ Source99:       baselibs.conf
 
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
+BuildRequires:  vala
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(lcms2)
 # None of these is needed for standard build:
@@ -102,5 +103,8 @@ babl is a dynamic, any to any, pixel format translation library.
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/gir-1.0/Babl-0.1.gir
+%dir %{_datadir}/vala/vapi
+%{_datadir}/vala/vapi/babl-0.1.deps
+%{_datadir}/vala/vapi/babl-0.1.vapi
 
 %changelog
