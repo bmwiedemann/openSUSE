@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 11 08:24:34 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Try to install the wireless-tools package when the package is
+  not installed and the wifi networks are scanned (bsc#1168479)
+- 4.3.5
+
+-------------------------------------------------------------------
+Wed Jun 10 11:10:29 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Avoid error when accessing to Bond Slaves in s390 (bsc#1172444).
+- 4.3.4
+
+-------------------------------------------------------------------
 Mon Jun  8 08:15:26 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - AutoYaST: Udev rules are written or copied to the target system

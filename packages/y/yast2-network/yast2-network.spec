@@ -17,7 +17,7 @@
 
 
 Name:           yast2-network
-Version:        4.3.3
+Version:        4.3.5
 Release:        0
 Summary:        YaST2 - Network Configuration
 License:        GPL-2.0-only
@@ -73,7 +73,7 @@ BuildArch:      noarch
 
 %build
 
-%description 
+%description
 This package contains the YaST2 component for network configuration.
 
 %prep
