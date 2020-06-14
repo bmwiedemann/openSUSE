@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 11 09:17:36 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add memory limit _constraints for ppc64le to avoid oom build failure
+
+-------------------------------------------------------------------
 Thu May  7 08:30:50 UTC 2020 - thod_@gmx.de
 
 - Fix inkscape-split-extensions-extra.py for older python versions.
