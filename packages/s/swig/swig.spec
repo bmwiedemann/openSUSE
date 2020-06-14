@@ -28,22 +28,15 @@ BuildRequires:  ruby
 BuildRequires:  ruby-devel
 %endif
 Name:           swig
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 Summary:        Simplified Wrapper and Interface Generator
 License:        GPL-3.0-or-later AND BSD-3-Clause
 Group:          Development/Languages/C and C++
 URL:            http://www.swig.org/
-Source:         https://github.com/%{name}/%{name}/archive/rel-%{version}.tar.gz
+Source:         http://prdownloads.sourceforge.net/swig/%{name}-%{version}.tar.gz
 Source1:        %{name}.rpmlintrc
 
-# ruby 2.7 support (cherry-picked from 4.0.2~pre)
-Patch1:         0001-Fix-code-generated-for-Ruby-global-variables.patch
-Patch2:         0002-Add-support-for-Ruby-2.7.patch
-Patch3:         0003-Move-new-macros-for-Ruby-to-their-dedicated-namespac.patch
-Patch4:         0004-Improve-description-of-cast-macros-for-Ruby.patch
-
-Patch300:       ruby-std-wstring-byte-order.patch
 Patch308:       swig308-isfinite.diff
 
 BuildRequires:  autoconf
@@ -119,7 +112,7 @@ This package contains SWIG examples, useful both for testing and
 understandig SWIG usage.
 
 %prep
-%setup -q -n %{name}-rel-%{version}
+%setup -q
 %autopatch -p1
 
 %build

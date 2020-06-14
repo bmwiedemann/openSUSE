@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun 10 07:27:02 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 4.0.2
+  - A few fixes around doxygen comment handling.
+  - Ruby 2.7 support added.
+  - Various minor improvements to C#, D, Java, OCaml, Octave, Python,
+    R, Ruby.
+  - Considerable performance improvement running SWIG on large
+    interface files.
+
+- drop upstreamed patches
+  ruby-std-wstring-byte-order.patch
+  0001-Fix-code-generated-for-Ruby-global-variables.patch
+  0002-Add-support-for-Ruby-2.7.patch
+  0003-Move-new-macros-for-Ruby-to-their-dedicated-namespac.patch
+  0004-Improve-description-of-cast-macros-for-Ruby.patch
+        
+-------------------------------------------------------------------
 Sat May 23 07:04:09 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Revert last change, drop 0005-disable_li_std_wstring.patch
