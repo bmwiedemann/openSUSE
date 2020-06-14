@@ -573,4 +573,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment>KDE Applications 20.04.1</comment>
     <requestid>806311</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>12950b3383010f1aab2bac62fa9c83b2</srcmd5>
+    <version>20.04.2</version>
+    <time>1592151456</time>
+    <user>dimstar_suse</user>
+    <comment>20.04.2 (+respins) (forwarded request 813365 from cgiboudeaux)</comment>
+    <requestid>813573</requestid>
+  </revision>
 </revisionlist>

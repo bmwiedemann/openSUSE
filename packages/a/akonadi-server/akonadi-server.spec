@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-server
-Version:        20.04.1
+Version:        20.04.2
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
