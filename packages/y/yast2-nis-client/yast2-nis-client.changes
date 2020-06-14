@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 11 11:29:59 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not export any setting if ypbind is not installed
+  (bsc#1172749).
+- Properly initialize NIS options when ypbind is not installed
+  (bsc#1172822).
+- 4.3.1
+
+-------------------------------------------------------------------
 Tue May 12 14:02:35 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Autoyast schema: Allow optional types for string and map objects
