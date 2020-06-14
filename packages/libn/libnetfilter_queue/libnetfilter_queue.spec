@@ -18,7 +18,7 @@
 
 Name:           libnetfilter_queue
 %define lname	%{name}1
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        Userspace library for packets that have been queued by the kernel packet filter
 License:        GPL-2.0-only
@@ -26,9 +26,9 @@ Group:          Productivity/Networking/Security
 URL:            http://netfilter.org/projects/libnetfilter_queue/
 
 #Git-Clone:	git://git.netfilter.org/libnetfilter_queue
-#DL-URL:	http://netfilter.org/projects/libnetfilter_queue/files/
-Source:         http://ftp.netfilter.org/pub/libnetfilter_queue/%name-%version.tar.bz2
-Source2:        http://ftp.netfilter.org/pub/libnetfilter_queue/%name-%version.tar.bz2.sig
+#DL-URL:	https://netfilter.org/projects/libnetfilter_queue/files/
+Source:         https://netfilter.org/projects/libnetfilter_queue/files/libnetfilter_queue-%version.tar.bz2
+Source2:        https://netfilter.org/projects/libnetfilter_queue/files/libnetfilter_queue-%version.tar.bz2.sig
 Source3:        baselibs.conf
 Source4:        %name.keyring
 BuildRequires:  pkgconfig >= 0.21
