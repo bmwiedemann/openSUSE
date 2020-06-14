@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  9 12:14:04 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-06-apps-update
+- Changes since 20.04.1:
+  * Show progress when duplicating items (kde#422335)
+  * use KSycoca for updating OpenPreferredSearchTool action
+  * Left-elide file/folders while keeping their extension visible (kde#404955)
+
+-------------------------------------------------------------------
 Fri May 15 15:40:57 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.1
