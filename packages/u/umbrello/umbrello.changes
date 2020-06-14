@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  9 12:16:37 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-06-apps-update
+- Changes since 20.04.1:
+  * Address https://bugs.kde.org/show_bug.cgi?id=56184#c94
+  * Fix 'Umbrello code importer does not import c++ header file wrapped with __cplusplus macro' (kde#422356)
+
+-------------------------------------------------------------------
 Fri May 15 15:42:26 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.1

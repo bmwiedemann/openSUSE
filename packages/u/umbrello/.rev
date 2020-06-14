@@ -1266,4 +1266,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>KDE Applications 20.04.1</comment>
     <requestid>806723</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>d57bd31d1e829a09852c8c04d8ef4b08</srcmd5>
+    <version>20.04.2</version>
+    <time>1592152245</time>
+    <user>dimstar_suse</user>
+    <comment>20.04.2 (+respins) (forwarded request 813365 from cgiboudeaux)</comment>
+    <requestid>813781</requestid>
+  </revision>
 </revisionlist>
