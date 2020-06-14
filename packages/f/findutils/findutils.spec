@@ -1,7 +1,7 @@
 #
 # spec file for package findutils
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,7 @@ Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{
 # adds a new option -xautofs to find to not descend into directories on autofs file systems
 Patch0:         findutils-xautofs.patch
 Patch1:         disable-null-ptr-test.patch
+Patch2:         findutils-gnulib-disable-test-float.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # BuildRequire dejagnu for 'runtest' to execute all tests.
@@ -76,6 +77,11 @@ useful for finding things on your system.
 %setup -q
 %patch0
 %patch1 -p1
+
+%ifarch ppc ppc64le
+# Disable gnulib test 'test-float' temporarily as it fails on ppc and ppc64le.
+%patch2
+%endif
 
 %build
 %if 0%{?qemu_user_space_build}

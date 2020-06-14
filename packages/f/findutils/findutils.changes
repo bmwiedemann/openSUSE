@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 11 11:54:57 UTC 2020 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- findutils.spec: Avoid conditional Patch definition as this breaks
+cross-platform building from source RPMs.
+
+-------------------------------------------------------------------
+Wed Jun 10 21:01:08 UTC 2020 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- findutils-gnulib-disable-test-float.patch: Add patch to temporarily
+  disable the gnulib test 'test-float' failing on ppc and ppc64le.
+- findutils.spec: Reference the patch.
+
+-------------------------------------------------------------------
 Wed Nov 20 15:03:07 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add disable-null-ptr-test.patch in order to fix boo#1157342.

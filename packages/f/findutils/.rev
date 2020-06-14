@@ -514,4 +514,17 @@ other affected packages to make sure the copies are refreshed.
     <comment></comment>
     <requestid>750033</requestid>
   </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>39a1790bf53a07cc24f4c92a77f693a2</srcmd5>
+    <version>4.7.0</version>
+    <time>1592151185</time>
+    <user>dimstar_suse</user>
+    <comment>- findutils.spec: Avoid conditional Patch definition as this breaks
+cross-platform building from source RPMs.
+- findutils-gnulib-disable-test-float.patch: Add patch to temporarily
+  disable the gnulib test 'test-float' failing on ppc and ppc64le.
+- findutils.spec: Reference the patch.
+</comment>
+    <requestid>814281</requestid>
+  </revision>
 </revisionlist>

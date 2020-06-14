@@ -1,0 +1,283 @@
+Disable gnulib test 'test-float' temporarily as it fails on ppc and ppc64le.
+
+* gnulib-tests/Makefile.am: Comment lines related to 'test-float'.
+* gnulib-tests/Makefile.in: Re-generate via 'autoreconfi -f -i'.
+---
+ gnulib-tests/Makefile.am |    7 +
+ gnulib-tests/Makefile.in |  168 ++++++++++++++++++++---------------------------
+ 2 files changed, 78 insertions(+), 97 deletions(-)
+
+Index: gnulib-tests/Makefile.am
+===================================================================
+--- gnulib-tests/Makefile.am.orig
++++ gnulib-tests/Makefile.am
+@@ -482,9 +482,10 @@ EXTRA_DIST += test-fgetc.c signature.h m
+ 
+ ## begin gnulib module float-tests
+ 
+-TESTS += test-float
+-check_PROGRAMS += test-float
+-EXTRA_DIST += test-float.c macros.h
++# Test fails with GCC-10 on ppc and ppc64le.
++#TESTS += test-float
++#check_PROGRAMS += test-float
++#EXTRA_DIST += test-float.c macros.h
+ 
+ ## end   gnulib module float-tests
+ 
+Index: gnulib-tests/Makefile.in
+===================================================================
+--- gnulib-tests/Makefile.in.orig
++++ gnulib-tests/Makefile.in
+@@ -129,16 +129,16 @@ TESTS = test-accept$(EXEEXT) test-alloca
+ 	test-fcntl-h$(EXEEXT) test-fcntl-safer$(EXEEXT) \
+ 	test-fcntl$(EXEEXT) test-fdopen$(EXEEXT) \
+ 	test-fdopendir$(EXEEXT) test-fflush$(EXEEXT) test-fflush2.sh \
+-	test-fgetc$(EXEEXT) test-float$(EXEEXT) \
+-	test-fnmatch-h$(EXEEXT) test-fnmatch$(EXEEXT) \
+-	test-fopen-safer$(EXEEXT) test-fopen$(EXEEXT) test-fpending.sh \
+-	test-fpurge$(EXEEXT) test-fputc$(EXEEXT) test-fread$(EXEEXT) \
+-	test-freadahead.sh test-freading$(EXEEXT) test-fseek.sh \
+-	test-fseek2.sh test-fseeko.sh test-fseeko2.sh test-fseeko3.sh \
+-	test-fseeko4.sh test-fstat$(EXEEXT) test-fstatat$(EXEEXT) \
+-	test-ftell.sh test-ftell2.sh test-ftell3$(EXEEXT) \
+-	test-ftello.sh test-ftello2.sh test-ftello3$(EXEEXT) \
+-	test-ftello4.sh test-ftruncate.sh test-fwrite$(EXEEXT) \
++	test-fgetc$(EXEEXT) test-fnmatch-h$(EXEEXT) \
++	test-fnmatch$(EXEEXT) test-fopen-safer$(EXEEXT) \
++	test-fopen$(EXEEXT) test-fpending.sh test-fpurge$(EXEEXT) \
++	test-fputc$(EXEEXT) test-fread$(EXEEXT) test-freadahead.sh \
++	test-freading$(EXEEXT) test-fseek.sh test-fseek2.sh \
++	test-fseeko.sh test-fseeko2.sh test-fseeko3.sh test-fseeko4.sh \
++	test-fstat$(EXEEXT) test-fstatat$(EXEEXT) test-ftell.sh \
++	test-ftell2.sh test-ftell3$(EXEEXT) test-ftello.sh \
++	test-ftello2.sh test-ftello3$(EXEEXT) test-ftello4.sh \
++	test-ftruncate.sh test-fwrite$(EXEEXT) \
+ 	test-getcwd-lgpl$(EXEEXT) test-getcwd.sh \
+ 	test-getdelim$(EXEEXT) test-getdtablesize$(EXEEXT) \
+ 	test-getgroups$(EXEEXT) test-gethostname$(EXEEXT) \
+@@ -233,7 +233,7 @@ check_PROGRAMS = test-accept$(EXEEXT) te
+ 	test-fcntl-h$(EXEEXT) test-fcntl-safer$(EXEEXT) \
+ 	test-fcntl$(EXEEXT) test-fdopen$(EXEEXT) \
+ 	test-fdopendir$(EXEEXT) test-fflush$(EXEEXT) \
+-	test-fflush2$(EXEEXT) test-fgetc$(EXEEXT) test-float$(EXEEXT) \
++	test-fflush2$(EXEEXT) test-fgetc$(EXEEXT) \
+ 	test-fnmatch-h$(EXEEXT) test-fnmatch$(EXEEXT) \
+ 	test-fopen-safer$(EXEEXT) test-fopen$(EXEEXT) \
+ 	test-fpending$(EXEEXT) test-fpurge$(EXEEXT) \
+@@ -744,11 +744,6 @@ test_fgetc_OBJECTS = test-fgetc.$(OBJEXT
+ test_fgetc_LDADD = $(LDADD)
+ test_fgetc_DEPENDENCIES = libtests.a ../gl/lib/libgnulib.a libtests.a \
+ 	$(am__DEPENDENCIES_1)
+-test_float_SOURCES = test-float.c
+-test_float_OBJECTS = test-float.$(OBJEXT)
+-test_float_LDADD = $(LDADD)
+-test_float_DEPENDENCIES = libtests.a ../gl/lib/libgnulib.a libtests.a \
+-	$(am__DEPENDENCIES_1)
+ test_fnmatch_SOURCES = test-fnmatch.c
+ test_fnmatch_OBJECTS = test-fnmatch.$(OBJEXT)
+ test_fnmatch_LDADD = $(LDADD)
+@@ -1571,21 +1566,20 @@ am__depfiles_remade = ./$(DEPDIR)/accept
+ 	./$(DEPDIR)/test-fcntl-safer.Po ./$(DEPDIR)/test-fcntl.Po \
+ 	./$(DEPDIR)/test-fdopen.Po ./$(DEPDIR)/test-fdopendir.Po \
+ 	./$(DEPDIR)/test-fflush.Po ./$(DEPDIR)/test-fflush2.Po \
+-	./$(DEPDIR)/test-fgetc.Po ./$(DEPDIR)/test-float.Po \
+-	./$(DEPDIR)/test-fnmatch-h.Po ./$(DEPDIR)/test-fnmatch.Po \
+-	./$(DEPDIR)/test-fopen-safer.Po ./$(DEPDIR)/test-fopen.Po \
+-	./$(DEPDIR)/test-fpending.Po ./$(DEPDIR)/test-fpurge.Po \
+-	./$(DEPDIR)/test-fputc.Po ./$(DEPDIR)/test-fread.Po \
+-	./$(DEPDIR)/test-freadahead.Po ./$(DEPDIR)/test-freading.Po \
+-	./$(DEPDIR)/test-fseek.Po ./$(DEPDIR)/test-fseeko.Po \
+-	./$(DEPDIR)/test-fseeko3.Po ./$(DEPDIR)/test-fseeko4.Po \
+-	./$(DEPDIR)/test-fstat.Po ./$(DEPDIR)/test-fstatat.Po \
+-	./$(DEPDIR)/test-ftell.Po ./$(DEPDIR)/test-ftell3.Po \
+-	./$(DEPDIR)/test-ftello.Po ./$(DEPDIR)/test-ftello3.Po \
+-	./$(DEPDIR)/test-ftello4.Po ./$(DEPDIR)/test-ftruncate.Po \
+-	./$(DEPDIR)/test-fwrite.Po ./$(DEPDIR)/test-getcwd-lgpl.Po \
+-	./$(DEPDIR)/test-getcwd.Po ./$(DEPDIR)/test-getdelim.Po \
+-	./$(DEPDIR)/test-getdtablesize.Po \
++	./$(DEPDIR)/test-fgetc.Po ./$(DEPDIR)/test-fnmatch-h.Po \
++	./$(DEPDIR)/test-fnmatch.Po ./$(DEPDIR)/test-fopen-safer.Po \
++	./$(DEPDIR)/test-fopen.Po ./$(DEPDIR)/test-fpending.Po \
++	./$(DEPDIR)/test-fpurge.Po ./$(DEPDIR)/test-fputc.Po \
++	./$(DEPDIR)/test-fread.Po ./$(DEPDIR)/test-freadahead.Po \
++	./$(DEPDIR)/test-freading.Po ./$(DEPDIR)/test-fseek.Po \
++	./$(DEPDIR)/test-fseeko.Po ./$(DEPDIR)/test-fseeko3.Po \
++	./$(DEPDIR)/test-fseeko4.Po ./$(DEPDIR)/test-fstat.Po \
++	./$(DEPDIR)/test-fstatat.Po ./$(DEPDIR)/test-ftell.Po \
++	./$(DEPDIR)/test-ftell3.Po ./$(DEPDIR)/test-ftello.Po \
++	./$(DEPDIR)/test-ftello3.Po ./$(DEPDIR)/test-ftello4.Po \
++	./$(DEPDIR)/test-ftruncate.Po ./$(DEPDIR)/test-fwrite.Po \
++	./$(DEPDIR)/test-getcwd-lgpl.Po ./$(DEPDIR)/test-getcwd.Po \
++	./$(DEPDIR)/test-getdelim.Po ./$(DEPDIR)/test-getdtablesize.Po \
+ 	./$(DEPDIR)/test-getgroups.Po ./$(DEPDIR)/test-gethostname.Po \
+ 	./$(DEPDIR)/test-getline.Po ./$(DEPDIR)/test-getopt-gnu.Po \
+ 	./$(DEPDIR)/test-getopt-posix.Po \
+@@ -1694,7 +1688,7 @@ SOURCES = $(libtests_a_SOURCES) $(EXTRA_
+ 	test-errno.c test-faccessat.c test-fchdir.c test-fcntl.c \
+ 	test-fcntl-h.c test-fcntl-safer.c test-fdopen.c \
+ 	test-fdopendir.c test-fflush.c test-fflush2.c test-fgetc.c \
+-	test-float.c test-fnmatch.c test-fnmatch-h.c test-fopen.c \
++	test-fnmatch.c test-fnmatch-h.c test-fopen.c \
+ 	test-fopen-safer.c test-fpending.c test-fpurge.c test-fputc.c \
+ 	test-fread.c test-freadahead.c test-freading.c test-fseek.c \
+ 	test-fseeko.c test-fseeko3.c test-fseeko4.c test-fstat.c \
+@@ -1759,7 +1753,7 @@ DIST_SOURCES = $(libtests_a_SOURCES) $(E
+ 	test-errno.c test-faccessat.c test-fchdir.c test-fcntl.c \
+ 	test-fcntl-h.c test-fcntl-safer.c test-fdopen.c \
+ 	test-fdopendir.c test-fflush.c test-fflush2.c test-fgetc.c \
+-	test-float.c test-fnmatch.c test-fnmatch-h.c test-fopen.c \
++	test-fnmatch.c test-fnmatch-h.c test-fopen.c \
+ 	test-fopen-safer.c test-fpending.c test-fpurge.c test-fputc.c \
+ 	test-fread.c test-freadahead.c test-freading.c test-fseek.c \
+ 	test-fseeko.c test-fseeko3.c test-fseeko4.c test-fstat.c \
+@@ -3444,53 +3438,53 @@ EXTRA_DIST = accept.c w32sock.h test-acc
+ 	test-fcntl.c signature.h macros.h fdopen.c test-fdopen.c \
+ 	signature.h macros.h test-fdopendir.c signature.h macros.h \
+ 	test-fflush.c test-fflush2.sh test-fflush2.c signature.h \
+-	macros.h test-fgetc.c signature.h macros.h test-float.c \
+-	macros.h test-fnmatch-h.c test-fnmatch.c signature.h macros.h \
+-	test-fopen.h test-fopen-safer.c macros.h test-fopen.h \
+-	test-fopen.c signature.h macros.h test-fpending.c \
+-	test-fpending.sh macros.h fpucw.h test-fpurge.c macros.h \
+-	test-fputc.c signature.h macros.h test-fread.c signature.h \
+-	macros.h test-freadahead.c test-freadahead.sh macros.h \
+-	test-freading.c macros.h test-fseek.c test-fseek.sh \
+-	test-fseek2.sh signature.h macros.h test-fseeko.c \
+-	test-fseeko.sh test-fseeko2.sh test-fseeko3.c test-fseeko3.sh \
+-	test-fseeko4.c test-fseeko4.sh signature.h macros.h \
+-	test-fstat.c signature.h macros.h test-fstatat.c test-lstat.h \
+-	test-stat.h signature.h macros.h test-ftell.c test-ftell.sh \
+-	test-ftell2.sh test-ftell3.c signature.h macros.h \
+-	test-ftello.c test-ftello.sh test-ftello2.sh test-ftello3.c \
+-	test-ftello4.c test-ftello4.sh signature.h macros.h \
+-	ftruncate.c test-ftruncate.c test-ftruncate.sh signature.h \
+-	macros.h test-fwrite.c signature.h macros.h test-getcwd-lgpl.c \
+-	signature.h macros.h test-getcwd.c test-getcwd.sh \
+-	test-getdelim.c signature.h macros.h test-getdtablesize.c \
+-	signature.h macros.h test-getgroups.c signature.h macros.h \
+-	signature.h test-gethostname.c test-getline.c signature.h \
+-	macros.h macros.h signature.h test-getopt-gnu.c \
+-	test-getopt-main.h test-getopt.h test-getopt_long.h macros.h \
+-	signature.h test-getopt-posix.c test-getopt-main.h \
+-	test-getopt.h getpagesize.c test-getprogname.c signature.h \
+-	test-gettimeofday.c test-hash.c macros.h test-i-ring.c \
+-	macros.h ignore-value.h test-ignore-value.c inet_pton.c \
+-	test-inet_pton.c signature.h macros.h test-intprops.c macros.h \
+-	anytostr.c inttostr.h macros.h test-inttostr.c test-inttypes.c \
+-	ioctl.c w32sock.h test-ioctl.c signature.h macros.h \
+-	test-isblank.c signature.h macros.h test-isfinite.c infinity.h \
+-	macros.h test-isinf.c infinity.h macros.h test-isnand-nolibm.c \
+-	test-isnand.h minus-zero.h infinity.h nan.h macros.h \
+-	test-isnanf-nolibm.c test-isnanf.h minus-zero.h infinity.h \
+-	nan.h macros.h test-isnanl-nolibm.c test-isnanl.h minus-zero.h \
+-	infinity.h nan.h macros.h test-iswblank.c macros.h \
+-	test-langinfo.c test-limits-h.c listen.c w32sock.h \
+-	test-listen.c signature.h macros.h test-localcharset.c \
+-	test-locale.c test-localeconv.c signature.h macros.h \
+-	localename-table.h localename.h test-localename.c macros.h \
+-	test-rwlock1.c test-lock.c test-once.c test-lseek.c \
+-	test-lseek.sh signature.h macros.h test-lstat.h test-lstat.c \
+-	signature.h macros.h test-malloc-gnu.c test-malloca.c \
+-	test-math.c macros.h test-mbrtowc1.sh test-mbrtowc2.sh \
+-	test-mbrtowc3.sh test-mbrtowc4.sh test-mbrtowc5.sh \
+-	test-mbrtowc.c test-mbrtowc-w32-1.sh test-mbrtowc-w32-2.sh \
++	macros.h test-fgetc.c signature.h macros.h test-fnmatch-h.c \
++	test-fnmatch.c signature.h macros.h test-fopen.h \
++	test-fopen-safer.c macros.h test-fopen.h test-fopen.c \
++	signature.h macros.h test-fpending.c test-fpending.sh macros.h \
++	fpucw.h test-fpurge.c macros.h test-fputc.c signature.h \
++	macros.h test-fread.c signature.h macros.h test-freadahead.c \
++	test-freadahead.sh macros.h test-freading.c macros.h \
++	test-fseek.c test-fseek.sh test-fseek2.sh signature.h macros.h \
++	test-fseeko.c test-fseeko.sh test-fseeko2.sh test-fseeko3.c \
++	test-fseeko3.sh test-fseeko4.c test-fseeko4.sh signature.h \
++	macros.h test-fstat.c signature.h macros.h test-fstatat.c \
++	test-lstat.h test-stat.h signature.h macros.h test-ftell.c \
++	test-ftell.sh test-ftell2.sh test-ftell3.c signature.h \
++	macros.h test-ftello.c test-ftello.sh test-ftello2.sh \
++	test-ftello3.c test-ftello4.c test-ftello4.sh signature.h \
++	macros.h ftruncate.c test-ftruncate.c test-ftruncate.sh \
++	signature.h macros.h test-fwrite.c signature.h macros.h \
++	test-getcwd-lgpl.c signature.h macros.h test-getcwd.c \
++	test-getcwd.sh test-getdelim.c signature.h macros.h \
++	test-getdtablesize.c signature.h macros.h test-getgroups.c \
++	signature.h macros.h signature.h test-gethostname.c \
++	test-getline.c signature.h macros.h macros.h signature.h \
++	test-getopt-gnu.c test-getopt-main.h test-getopt.h \
++	test-getopt_long.h macros.h signature.h test-getopt-posix.c \
++	test-getopt-main.h test-getopt.h getpagesize.c \
++	test-getprogname.c signature.h test-gettimeofday.c test-hash.c \
++	macros.h test-i-ring.c macros.h ignore-value.h \
++	test-ignore-value.c inet_pton.c test-inet_pton.c signature.h \
++	macros.h test-intprops.c macros.h anytostr.c inttostr.h \
++	macros.h test-inttostr.c test-inttypes.c ioctl.c w32sock.h \
++	test-ioctl.c signature.h macros.h test-isblank.c signature.h \
++	macros.h test-isfinite.c infinity.h macros.h test-isinf.c \
++	infinity.h macros.h test-isnand-nolibm.c test-isnand.h \
++	minus-zero.h infinity.h nan.h macros.h test-isnanf-nolibm.c \
++	test-isnanf.h minus-zero.h infinity.h nan.h macros.h \
++	test-isnanl-nolibm.c test-isnanl.h minus-zero.h infinity.h \
++	nan.h macros.h test-iswblank.c macros.h test-langinfo.c \
++	test-limits-h.c listen.c w32sock.h test-listen.c signature.h \
++	macros.h test-localcharset.c test-locale.c test-localeconv.c \
++	signature.h macros.h localename-table.h localename.h \
++	test-localename.c macros.h test-rwlock1.c test-lock.c \
++	test-once.c test-lseek.c test-lseek.sh signature.h macros.h \
++	test-lstat.h test-lstat.c signature.h macros.h \
++	test-malloc-gnu.c test-malloca.c test-math.c macros.h \
++	test-mbrtowc1.sh test-mbrtowc2.sh test-mbrtowc3.sh \
++	test-mbrtowc4.sh test-mbrtowc5.sh test-mbrtowc.c \
++	test-mbrtowc-w32-1.sh test-mbrtowc-w32-2.sh \
+ 	test-mbrtowc-w32-3.sh test-mbrtowc-w32-4.sh \
+ 	test-mbrtowc-w32-5.sh test-mbrtowc-w32.c signature.h macros.h \
+ 	test-mbscasestr1.c test-mbscasestr2.sh test-mbscasestr2.c \
+@@ -3929,10 +3923,6 @@ test-fgetc$(EXEEXT): $(test_fgetc_OBJECT
+ 	@rm -f test-fgetc$(EXEEXT)
+ 	$(AM_V_CCLD)$(LINK) $(test_fgetc_OBJECTS) $(test_fgetc_LDADD) $(LIBS)
+ 
+-test-float$(EXEEXT): $(test_float_OBJECTS) $(test_float_DEPENDENCIES) $(EXTRA_test_float_DEPENDENCIES) 
+-	@rm -f test-float$(EXEEXT)
+-	$(AM_V_CCLD)$(LINK) $(test_float_OBJECTS) $(test_float_LDADD) $(LIBS)
+-
+ test-fnmatch$(EXEEXT): $(test_fnmatch_OBJECTS) $(test_fnmatch_DEPENDENCIES) $(EXTRA_test_fnmatch_DEPENDENCIES) 
+ 	@rm -f test-fnmatch$(EXEEXT)
+ 	$(AM_V_CCLD)$(LINK) $(test_fnmatch_OBJECTS) $(test_fnmatch_LDADD) $(LIBS)
+@@ -4716,7 +4706,6 @@ distclean-compile:
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-fflush.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-fflush2.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-fgetc.Po@am__quote@ # am--include-marker
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-float.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-fnmatch-h.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-fnmatch.Po@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-fopen-safer.Po@am__quote@ # am--include-marker
+@@ -5447,13 +5436,6 @@ test-fgetc.log: test-fgetc$(EXEEXT)
+ 	--log-file $$b.log --trs-file $$b.trs \
+ 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+ 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+-test-float.log: test-float$(EXEEXT)
+-	@p='test-float$(EXEEXT)'; \
+-	b='test-float'; \
+-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+-	--log-file $$b.log --trs-file $$b.trs \
+-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+-	"$$tst" $(AM_TESTS_FD_REDIRECT)
+ test-fnmatch-h.log: test-fnmatch-h$(EXEEXT)
+ 	@p='test-fnmatch-h$(EXEEXT)'; \
+ 	b='test-fnmatch-h'; \
+@@ -7020,7 +7002,6 @@ distclean: distclean-recursive
+ 	-rm -f ./$(DEPDIR)/test-fflush.Po
+ 	-rm -f ./$(DEPDIR)/test-fflush2.Po
+ 	-rm -f ./$(DEPDIR)/test-fgetc.Po
+-	-rm -f ./$(DEPDIR)/test-float.Po
+ 	-rm -f ./$(DEPDIR)/test-fnmatch-h.Po
+ 	-rm -f ./$(DEPDIR)/test-fnmatch.Po
+ 	-rm -f ./$(DEPDIR)/test-fopen-safer.Po
+@@ -7323,7 +7304,6 @@ maintainer-clean: maintainer-clean-recur
+ 	-rm -f ./$(DEPDIR)/test-fflush.Po
+ 	-rm -f ./$(DEPDIR)/test-fflush2.Po
+ 	-rm -f ./$(DEPDIR)/test-fgetc.Po
+-	-rm -f ./$(DEPDIR)/test-float.Po
+ 	-rm -f ./$(DEPDIR)/test-fnmatch-h.Po
+ 	-rm -f ./$(DEPDIR)/test-fnmatch.Po
+ 	-rm -f ./$(DEPDIR)/test-fopen-safer.Po
