@@ -1567,4 +1567,15 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment> (forwarded request 811369 from iznogood)</comment>
     <requestid>811438</requestid>
   </revision>
+  <revision rev="182" vrev="2">
+    <srcmd5>9150fd087f76d18b56d54538fbc1ec90</srcmd5>
+    <version>3.36.3</version>
+    <time>1592151271</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gnome-shell-disable-screensaver-user-switch-when-remote.patch: 
+  This patch will set the button invisible when the user's can_switch
+  is false (e.g. when the session is remote) or user-switch-enabled is
+  disabled (bsc#1167276 glgo#GNOME/gnome-shell!1215). (forwarded request 813360 from qkzhu)</comment>
+    <requestid>813529</requestid>
+  </revision>
 </revisionlist>
