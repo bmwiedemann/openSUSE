@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkdegames
-Version:        20.04.1
+Version:        20.04.2
 Release:        0
 Summary:        General Data for KDE Games
 License:        GPL-2.0-or-later
@@ -135,8 +135,6 @@ Summary:        Further Card Decks for KDE Games
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 Requires:       kdegames-carddecks-default = %{version}
-#don't obsolete kdegames4-carddecks-other yet, lskat is still KDE4 based
-#Obsoletes:      kdegames4-carddecks-other < %{version}
 BuildArch:      noarch
 
 %description -n kdegames-carddecks-other
@@ -144,8 +142,6 @@ This package contains several further card deck set for KDE games.
 
 %package -n kdegames-carddecks-default
 Summary:        Default Card Decks for KDE Games
-#don't obsolete kdegames4-carddecks-default yet, lskat is still KDE4 based and is broken without it
-#Obsoletes:      kdegames4-carddecks-default < %{version}
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 BuildArch:      noarch
