@@ -87,4 +87,16 @@
   * Various small bugfixes.</comment>
     <requestid>786709</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>291c993a31b9ce0136e7f8ca2c841f2d</srcmd5>
+    <version>3.9.2</version>
+    <time>1592151394</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.9.2
+  * Remove obsolete workarounds in examples.
+  * Do not require C++ compiler for building.
+  * Minor bugfixes.
+- Drop BR on c++_compiler</comment>
+    <requestid>814191</requestid>
+  </revision>
 </revisionlist>

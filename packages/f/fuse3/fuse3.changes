@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 11 14:26:17 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 3.9.2
+  * Remove obsolete workarounds in examples.
+  * Do not require C++ compiler for building.
+  * Minor bugfixes.
+- Drop BR on c++_compiler
+
+-------------------------------------------------------------------
 Fri Mar 20 06:15:34 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 3.9.1
