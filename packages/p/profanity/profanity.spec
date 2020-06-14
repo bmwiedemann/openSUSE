@@ -17,7 +17,7 @@
 
 
 Name:           profanity
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        Console-based XMPP client
 License:        SUSE-GPL-3.0+-with-openssl-exception
@@ -29,6 +29,7 @@ BuildRequires:  glib2-devel >= 2.56
 BuildRequires:  gtk2-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libexpat-devel
+BuildRequires:  libgcrypt-devel >= 1.7.0
 BuildRequires:  libgpgme-devel
 BuildRequires:  libmesode-devel >= 0.9.3
 BuildRequires:  libnotify-devel

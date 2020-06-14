@@ -296,4 +296,15 @@
   * Make legacy auth optional (#1360) (@pasis)</comment>
     <requestid>813415</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fb10b77a1f1481d8fc88978dde5779d1</srcmd5>
+    <version>0.9.2</version>
+    <time>1592152451</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.2:
+  * Dont manipulate pointer from getenv (#1357)
+  * Fix reading/writing linked files (#1362)
+  * Use gnu99 C standard (#1357)</comment>
+    <requestid>814317</requestid>
+  </revision>
 </revisionlist>
