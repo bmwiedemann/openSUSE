@@ -129,7 +129,7 @@
   boo#1172430: '20200612'
   boo#1172436: '20200602'
   boo#1172451: '20200612'
-  boo#1172599: '20200611'
+  boo#1172599: '20200612'
   boo#1172763: '20200612'
   boo#1172822: '20200612'
   bsc#1114673: '20191202'
@@ -348,7 +348,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20200612</value>
+    <value>20200614</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
