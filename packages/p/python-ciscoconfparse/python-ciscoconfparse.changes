@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 13 18:24:01 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.5
+  * Beta-test new function: find_object_branches()
+- Update to version 1.5.4
+  * Modify IPv4Obj().__add__() and IPv6Obj().__add__() (and __sub__())
+    methods return IPv4Obj()/IPv6Obj() objects.
+  * Add support for int(), bin() and hex() on the IPv4Obj() and IPv6Obj() 
+
+-------------------------------------------------------------------
 Thu Apr 23 11:24:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
