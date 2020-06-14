@@ -26,7 +26,11 @@
 %bcond_with tests
 %bcond_without gapi
 %bcond_without ffmpeg
+%if %{suse_version} < 1550
 %bcond_without python2
+%else
+%bcond_with    python2
+%endif
 %bcond_without python3
 %bcond_without openblas
 Name:           opencv

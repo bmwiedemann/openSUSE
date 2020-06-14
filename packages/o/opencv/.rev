@@ -1269,4 +1269,12 @@
     <comment></comment>
     <requestid>767987</requestid>
   </revision>
+  <revision rev="82" vrev="4">
+    <srcmd5>1cca17ce2af72f3e5b383c5f3b3adf2d</srcmd5>
+    <version>4.2.0</version>
+    <time>1592151405</time>
+    <user>dimstar_suse</user>
+    <comment>Fix GCC10 build failure</comment>
+    <requestid>814224</requestid>
+  </revision>
 </revisionlist>
