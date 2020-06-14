@@ -367,4 +367,12 @@
     <comment></comment>
     <requestid>809005</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>37ec7cf3ee5d7cb520df7b1c73328060</srcmd5>
+    <version>20.04.2</version>
+    <time>1592151509</time>
+    <user>dimstar_suse</user>
+    <comment>20.04.2 (+respins) (forwarded request 813365 from cgiboudeaux)</comment>
+    <requestid>813602</requestid>
+  </revision>
 </revisionlist>
