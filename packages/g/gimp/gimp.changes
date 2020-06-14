@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 11 06:40:36 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 2.10.20:
+  * Tool-group menus can now expand on hover
+  * Non-destructive cropping now available by cropping the canvas
+    rather than actual pixels
+  * Better PSD support: exporting of 16-bit files now available,
+    reading/writing channels in the right order
+  * On-canvas controls for the Vignette filter
+  * New filters: Bloom, Focus Blur, Lens Blur, Variable Blur
+  * Blending options now built into filter dialogs
+  * Over 30 bugfixes
+
+-------------------------------------------------------------------
 Mon Feb 24 22:52:03 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - disable update check 

@@ -19,7 +19,7 @@
 %global abiver 4
 %global apiver 2.0
 Name:           gimp
-Version:        2.10.18
+Version:        2.10.20
 Release:        0
 Summary:        The GNU Image Manipulation Program
 License:        GPL-3.0-or-later
@@ -63,12 +63,12 @@ BuildRequires:  python-gtk-devel >= 2.10.4
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(atk) >= 2.2.0
-BuildRequires:  pkgconfig(babl) >= 0.1.72
+BuildRequires:  pkgconfig(babl) >= 0.1.78
 BuildRequires:  pkgconfig(cairo) >= 1.12.2
 BuildRequires:  pkgconfig(cairo-pdf) >= 1.12.2
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.70
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.30.8
-BuildRequires:  pkgconfig(gegl-0.4) >= 0.4.18
+BuildRequires:  pkgconfig(gegl-0.4) >= 0.4.24
 BuildRequires:  pkgconfig(gexiv2) >= 0.10.6
 BuildRequires:  pkgconfig(glib-2.0) >= 2.54.2
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.24.10
