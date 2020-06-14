@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Jun 11 06:45:46 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.4.24
+  + Build:
+    - CI creation and caching of container images for build
+  + Buffer:
+    - Fixed integer overflow in u32 bilinear blit scaler.
+    - Changed cubic interpolation to be a bit softer, reducing
+      induced moire seen in issue #167
+    - Gracefully fail when running out of swap space
+  + Operations:
+    - Meta-operations now have an additional vfunc, update(),
+      which gets invoked on property changes
+    - crop: with no parameters set, infer rectangle to crop from
+      graph.
+    - crop: cropping rectangle can be implied from graph.
+    - hue-chroma: avoid modifying hue/chroma of neutrals
+    - dropshadow: added option for shadow growing
+    - median-blur: accept negative radius values
+    - rgb-clip: add parameters for specifying clipping ranges
+    - vignette: new shapes, horizontal and vertical.
+    - imgcmp: make max-diff property conform to gobject standard.
+    - save-pixbuf: use a GObject for consumer read instead of
+      pointer property.
+    - gegl-graph: add a gegl-chain tutorial as default script.
+    - border-align: place a buffer within the borders of another
+      one.
+    - pack: joins two buffers into one, with optional gap.
+    - bloom: adds a glow around highlights.
+    - piecewise-blend: uses a grayscale map as index into array of
+      buffers used as LUT.
+    - variable-blur: uses piecewise-blend piecewise-blend and
+      gaussian blur to approximate blurs with per-pixel blur
+      radius.
+    - focus-blur: a vignetting blur, using variable-blur.
+    - reset-origin: moves upper left of extent to 0,0
+    - band-tune: parametric band equalizer for tuning frequency
+      bands of image.
+
+-------------------------------------------------------------------
 Mon Feb 24 09:39:21 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 0.4.22: 
