@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 14 03:25:07 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1591983506.fc57286c:
+  * Handle sound in QEMU via -audiodev as required for qemu 4.2+ - poo#66667
+
+-------------------------------------------------------------------
 Thu Jun 11 19:25:06 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1591792386.f38e8b17:
