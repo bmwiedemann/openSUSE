@@ -443,4 +443,12 @@ Newer versions will have the correct headers.</comment>
     <comment>KDE Applications 20.04.1</comment>
     <requestid>806435</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>ad22e8381896fea72720a3d22747ec26</srcmd5>
+    <version>20.04.2</version>
+    <time>1592151560</time>
+    <user>dimstar_suse</user>
+    <comment>20.04.2 (+respins) (forwarded request 813365 from cgiboudeaux)</comment>
+    <requestid>813637</requestid>
+  </revision>
 </revisionlist>
