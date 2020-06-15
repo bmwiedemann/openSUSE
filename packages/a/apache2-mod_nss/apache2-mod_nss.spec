@@ -81,7 +81,7 @@ security library.
 touch nss_expr_*.[chyl]
 
 %build
-CFLAGS="%{optflags}"
+CFLAGS="%{optflags} -fcommon"
 export CFLAGS
 NSPR_INCLUDE_DIR=`%{_bindir}/pkg-config --variable=includedir nspr`
 NSPR_LIB_DIR=`%{_bindir}/pkg-config --variable=libdir nspr`

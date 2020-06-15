@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 11 09:53:59 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add -fcommon in order to fix building with GCC10 
+
+-------------------------------------------------------------------
 Tue May 12 08:41:45 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
 
 - Set the minimal apache version to 2.4.18 which is required since

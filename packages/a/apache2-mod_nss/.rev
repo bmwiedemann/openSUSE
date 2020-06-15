@@ -365,4 +365,12 @@
   1.0.18 (mod_nss needs conn_rec-&amp;gt;master field) (forwarded request 802933 from vitezslav_cizek)</comment>
     <requestid>805249</requestid>
   </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>757acfb7f16df056b1f3a07e590e988d</srcmd5>
+    <version>1.0.18</version>
+    <time>1592245834</time>
+    <user>dimstar_suse</user>
+    <comment>- Add -fcommon in order to fix building with GCC10 (forwarded request 813442 from polslinux)</comment>
+    <requestid>814638</requestid>
+  </revision>
 </revisionlist>
