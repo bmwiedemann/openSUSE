@@ -21,7 +21,7 @@
 Name:           python-IMAPClient
 Version:        2.1.0
 Release:        0
-Summary:        Easy-to-use, Pythonic and complete IMAP client library
+Summary:        Pythonic IMAP client library
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/mjs/imapclient/
@@ -37,14 +37,14 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-IMAPClient is an easy-to-use, Pythonic and complete IMAP client library.
+IMAPClient is a Pythonic IMAP client library.
 
 Features:
     * Arguments and return values are natural Python types.
-    * IMAP server responses are fully parsed and readily usable.
-    * IMAP unique message IDs (UIDs) are handled transparently.
-    * Internationalised mailbox names are transparently handled.
-    * Time zones are correctly handled.
+    * IMAP server responses are parsed and readily usable.
+    * IMAP unique message IDs (UIDs) and internationalised
+      mailbox names are handled transparently.
+    * Time zones are handled.
     * Convenience methods are provided for commonly used functionality.
     * Exceptions are raised when errors occur.
 
