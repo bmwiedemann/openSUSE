@@ -1,7 +1,7 @@
 #
 # spec file for package php7-lzf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %define pkg_sname   lzf
 
 Name:           php7-lzf
-Version:        1.6.7
+Version:        1.6.8
 Release:        0
 Summary:        LZF compression
 License:        PHP-3.01
 Group:          Productivity/Networking/Web/Servers
-Url:            https://pecl.php.net/package/%{pkg_name}
+URL:            https://pecl.php.net/package/%{pkg_name}
 Source:         https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 BuildRequires:  php7-devel
 Provides:       php-%{pkg_sname} = %{version}
