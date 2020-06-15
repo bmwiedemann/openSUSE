@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 14 21:06:49 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- new upstream release 1.10.8
+  * Fix encoding issues with ISO-2022-JP-MS input labelled with
+    ISO-2022-JP
+
+-------------------------------------------------------------------
 Fri Mar 20 19:07:14 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - new upstream release 1.10.7

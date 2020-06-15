@@ -19,7 +19,7 @@
 %define pear_name  Mail_Mime
 
 Name:           php-pear-Mail_Mime
-Version:        1.10.7
+Version:        1.10.8
 Release:        0
 Summary:        PHP classes to create MIME messages
 License:        BSD-3-Clause
