@@ -18,13 +18,16 @@
 
 %global	pgadmin4instdir %{_libdir}/pgadmin4-%{version}
 Name:           pgadmin4
-Version:        4.21
+Version:        4.22
 Release:        0
 Summary:        Management tool for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
 URL:            http://www.pgadmin.org
 Source0:        https://download.postgresql.org/pub/pgadmin/%{name}/v%{version}/source/%{name}-%{version}.tar.gz
+Source10:       https://download.postgresql.org/pub/pgadmin/%{name}/v%{version}/source/%{name}-%{version}.tar.gz.asc
+# https://www.pgadmin.org/download/pgadmin-4-source-code/
+Source11:       %{name}.keyring
 Source1:        %{name}.conf
 Source2:        %{name}.service.in
 Source3:        %{name}.tmpfiles.d
@@ -142,6 +145,7 @@ chmod -x docs/en_US/theme/pgadmin4/theme.conf
 cd runtime
 export PYTHON_CONFIG=%{_bindir}/python3-config
 export PYTHON_VERSION=%{python3_version}
+export PGADMIN_PYTHON_DIR=%{_prefix}
 export CFLAGS=%{RPM_OPT_FLAGS}
 qmake-qt5 -o Makefile pgAdmin4.pro
 make %{?_smp_mflags} VERBOSE=1

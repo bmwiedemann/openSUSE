@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Jun 15 08:10:53 UTC 2020 - Michal Vyskocil <mvyskocil@opensuse.org>
+
+- Update to 4.22
+  - New features
+     * Added connected pgAdmin user and connection name in the log file.
+     * Show the startup log as well as the server log in the runtime's log
+       viewer.
+  - Bugfixes
+	 * Gracefully informed the user that the database is already connected when
+	   they click on "Connect Database...".
+	 * Fixed an issue where clicking on the cross button of the alert box on
+	   the login page is not working.
+     * Fixed the SQL help issue for EDB Postgres Advanced Server.
+	 * Ensure that maintenance job should be worked properly for indexes under
+	   a materialized view.
+     * Ensure that file browse "home" button should point to $HOME rather than /.
+	 * Ensure that 'With OID' option should be disabled while taking backup of
+	   database server version 12 and above.
+	 * Fixed invalid literal issue when removing the connection limit for the
+	   existing role.
+	 * Fixed internal server error when clicking on Triggers -> 'Enable All'
+	   for partitions.
+     * Fixed generated SQL issue for auto vacuum options.
+     * Ensure that the dependencies tab shows correct information for Synonyms.
+	 * Fixed an issue where the newly added table is not alphabetically added
+	   to the tree.
+     * Fixed list sorting issue in the schema diff tool.
+	 * Fixed an issue while comparing the two identical schemas using the
+	   schema diff tool.
+     * Fixed an issue when renaming the column not added in the proper order.
+	 * Correct ipv4 "all interfaces" address in the container docs, per Frank
+	   Limpert.
+	 * Fixed an issue where select2 hover is inconsistent for the SSL field in
+	   create server dialog.
+	 * Fixed post-login redirect location when running in server mode under a
+	   non-default root.
+	 * Fixed an issue where the background job creation fails if there is only
+	   a version-specific python binary available in PATH.
+	 * Fixed data truncation issue when updating the data of type character
+       with length.
+	 * Fixed an issue where if LDAP_SEARCH_BASE_DN is not set then, the value
+       for LDAP_BASE_DN will be considered.
+	 * Fixed an issue where clicking on Select All button, not selecting all
+       the options in pgAgent job scheduler.
+	 * Clarify and correct the docs on enabling the pl/debugger plugin on the
+       server.
+     * Fixed Unicode decode error 'utf-8' codec can't decode byte.
+- Packaging:
+  * refresh fix-python-lib.patch
+  * add keyring e8697e2eef76c02d3a6332778881b2a8210976f2 enabling
+    GPG source tarballs verification
+
+-------------------------------------------------------------------
 Thu May 14 16:25:22 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Decrease requirements to build in SLE/Leap:

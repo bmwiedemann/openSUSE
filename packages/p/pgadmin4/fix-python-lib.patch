@@ -5,32 +5,29 @@ Python 3.8's python3-config doesn't seem to include the python3.8 library anymor
 we have to add it ourselves. Use an environment variable (just as in the Windows case)
 to find out the library version to link to.
 
-Index: pgadmin4-4.19/runtime/pgAdmin4.pro
+Index: pgadmin4-4.22/runtime/pgAdmin4.pro
 ===================================================================
---- pgadmin4-4.19.orig/runtime/pgAdmin4.pro
-+++ pgadmin4-4.19/runtime/pgAdmin4.pro
-@@ -55,6 +55,7 @@ else {
-     # Find and configure Python
-     # Environment setting
-     PYTHON_CONFIG = $$(PYTHON_CONFIG)
-+    PYTHON_VERSION = $$(PYTHON_VERSION)
- 
-     # Python 2?
-     isEmpty(PYTHON_CONFIG) {
-@@ -71,11 +72,15 @@ else {
-         error(The python-config executable could not be found. Ensure Python is installed and in the system path.)
+--- pgadmin4-4.22/runtime/pgAdmin4.pro.orig	2020-06-15 09:57:31.503298807 +0200
++++ pgadmin4-4.22/runtime/pgAdmin4.pro	2020-06-15 10:02:06.335072806 +0200
+@@ -78,6 +78,12 @@
+     } else {
+         error(No suitable python-config could be found in $${PYTHON_DIR}/bin.)
      }
- 
++
++    PYTHON_VERSION = $$(PYTHON_VERSION)
 +    isEmpty(PYTHON_VERSION) {
 +        error(Please set the PYTHON_VERSION environment variable to the version of python to link to.)
 +    }
 +
-     message(Using $$PYTHON_CONFIG)
+     message(Python config: $$PYTHON_CONFIG)
  
-     QMAKE_CXXFLAGS += $$system($$PYTHON_CONFIG --includes)
+     PYTHON_EMBED = $$system($$PYTHON_CONFIG --help 2>&1 | grep -o \'\\-\\-embed\')
+@@ -88,7 +94,7 @@
      QMAKE_LFLAGS += $$system($$PYTHON_CONFIG --ldflags)
--    LIBS += $$system($$PYTHON_CONFIG --libs)
-+    LIBS += $$system($$PYTHON_CONFIG --libs) -lpython$$PYTHON_VERSION
+     message(LDFLAGS: $$QMAKE_LFLAGS)
  
-     contains( LIBS, -lpython2.* ) {
-        DEFINES += PYTHON2
+-    LIBS += $$system($$PYTHON_CONFIG --libs $$PYTHON_EMBED)
++    LIBS += $$system($$PYTHON_CONFIG --libs $$PYTHON_EMBED) -lpython$$PYTHON_VERSION
+     message(LIBS: $$LIBS)
+ }
+ 
