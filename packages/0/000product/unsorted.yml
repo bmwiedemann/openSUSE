@@ -7871,7 +7871,7 @@ unsorted:
   - libSampleICC1 
   - libSavitar-devel 
   - libSavitar0 
-  - libSimGearCore-2020_1_1 
+  - libSimGearCore-2020_1_2 
   - libSoQt20 
   - libSoapyOsmoSDR0 
   - libSoundTouch1-32bit: [x86_64] 
@@ -16209,8 +16209,11 @@ unsorted:
   - palette 
   - palette-lang 
   - palm-db-tools 
+  - pam-deprecated 
+  - pam-deprecated-32bit: [x86_64] 
   - pam-devel-32bit: [x86_64] 
   - pam-extra 
+  - pam-extra-32bit: [x86_64] 
   - pam-test 
   - pam_ccreds 
   - pam_ccreds-32bit: [x86_64] 
