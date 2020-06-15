@@ -1,7 +1,7 @@
 #
 # spec file for package python-junos-eznc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-junos-eznc
-Version:        2.3.1
+Version:        2.4.1
 Release:        0
 Summary:        Junos 'EZ' automation for non-programmers
 License:        Apache-2.0
 URL:            https://www.github.com/Juniper/py-junos-eznc
 Source:         https://github.com/Juniper/py-junos-eznc/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# https://github.com/Juniper/py-junos-eznc/pull/1040
+Patch0:         python-junos-eznc-no-unittest2.patch
 BuildRequires:  %{python_module Jinja2 >= 2.7.1}
 BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module lxml >= 3.2.4}
@@ -32,6 +35,7 @@ BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module ncclient >= 0.6.3}
 BuildRequires:  %{python_module netaddr}
 BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module ntc-templates}
 BuildRequires:  %{python_module paramiko >= 1.15.2}
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module pyserial}
@@ -40,7 +44,6 @@ BuildRequires:  %{python_module selectors2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module transitions}
-BuildRequires:  %{python_module unittest2 >= 0.5.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 2.7.1
@@ -48,6 +51,7 @@ Requires:       python-PyYAML >= 5.1
 Requires:       python-lxml >= 3.2.4
 Requires:       python-ncclient >= 0.6.3
 Requires:       python-netaddr
+Requires:       python-ntc-templates
 Requires:       python-paramiko >= 1.15.2
 Requires:       python-pyparsing
 Requires:       python-pyserial
@@ -72,6 +76,7 @@ These capabilities include, but are not limited to:
 
 %prep
 %setup -q -n py-junos-eznc-%{version}
+%patch0 -p1
 sed -i -e '/yamlordereddictloader/d' requirements.txt
 # requires deprecated and not working yamlordereddictloader
 rm tests/unit/factory/test_cmdtable.py
