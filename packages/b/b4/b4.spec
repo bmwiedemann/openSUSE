@@ -17,14 +17,14 @@
 
 
 %define skip_python2 1
-%define version_unconverted 0.5.0+git20200526.ga926bac9e6c2
+%define version_unconverted 0.5.0+git20200528.g204416b80fbb
 Name:           b4
-Version:        0.5.0+git20200526.ga926bac9e6c2
+Version:        0.5.0+git20200528.g204416b80fbb
 Release:        0
 Summary:        Helper scripts for kernel.org patches
 License:        GPL-2.0-or-later
-URL:            https://git.kernel.org/pub/scm/utils/b4/b4.git
 Group:          Development/Tools/Other
+URL:            https://git.kernel.org/pub/scm/utils/b4/b4.git
 Source0:        %{name}-%{version}.tar.xz
 BuildArch:      noarch
 BuildRequires:  %{python_module setuptools}
