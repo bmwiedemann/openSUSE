@@ -1,7 +1,7 @@
 #
 # spec file for package opa-ff
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define git_ver .1.1.0.73b52d17053f
+%define git_ver .0.35.0.bd8b24a56fcb
 %define opamgt_major 0
 %define opasadb_major 1_0_0
 
@@ -24,16 +24,17 @@
 %define opasysconfdir %{_sysconfdir}/opa/
 
 Name:           opa-ff
-Version:        10.9.3
+Version:        10.10.1
 Release:        0
 Summary:        Intel Omni-Path basic tools and libraries for fabric managment
 License:        BSD-3-Clause OR GPL-2.0-only
 Group:          Productivity/Networking/System
-Url:            https://github.com/intel/opa-ff
+URL:            https://github.com/intel/opa-ff
 Source0:        %{name}-%{version}%{git_ver}.tar.gz
 Source1:        opa-ff.rpmlintrc
 Patch1:         opa-ff-add-shebang-for-exp-files.patch
 Patch2:         opa-ff-suse-build-fixes.patch
+Patch3:         workaround-bsc-1172755.patch
 BuildRequires:  gcc-c++
 BuildRequires:  infiniband-diags-devel
 BuildRequires:  libexpat-devel
@@ -127,6 +128,7 @@ Tools for parsing information from provided snapshot files and issuing packets t
 %setup -q -n  %{name}-%{version}%{git_ver}
 %patch1
 %patch2
+%patch3
 
 %build
 export RPM_OPT_FLAGS="$RPM_OPT_FLAGS -Wno-address-of-packed-member"
@@ -178,7 +180,7 @@ cp -t %{buildroot}%{pseudo_opt}/samples/opamgt $opamgt_examples
 
 cd ../bin
 cp -t %{buildroot}/%{pseudo_opt}/tools/ ${ff_tools_opt}
-cp -t %{buildroot}/%{pseudo_opt}/tools/ ${opasnapconfig_bin}
+#cp -t %{buildroot}/%{pseudo_opt}/tools/ ${opasnapconfig_bin}
 
 cd ../fastfabric
 cp -t %{buildroot}%{_sbindir} ${ff_tools_sbin}
