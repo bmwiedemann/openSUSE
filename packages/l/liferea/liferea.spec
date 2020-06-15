@@ -17,13 +17,13 @@
 
 
 Name:           liferea
-Version:        1.12.6
+Version:        1.12.8
 Release:        0
 Summary:        Linux Feed Reader
 License:        GPL-2.0-only
 Group:          Productivity/Other
 URL:            https://lzone.de/liferea/
-Source0:        https://github.com/lwindolf/liferea/releases/download/v%{version}/%{name}-%{version}b.tar.bz2
+Source0:        https://github.com/lwindolf/liferea/releases/download/v%{version}/%{name}-%{version}.tar.bz2
 # PATCH-FEATURE-OPENSUSE liferea-opensuse-feeds.patch -- Add openSUSE feeds to default feeds
 Patch0:         liferea-opensuse-feeds.patch
 
@@ -60,7 +60,7 @@ news aggregator for GTK and GNOME.
 %lang_package
 
 %prep
-%setup -q -n %{name}-%{version}b
+%setup -q -n %{name}-%{version}
 %patch0
 
 %build

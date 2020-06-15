@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 12 13:35:30 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.12.8:
+  * Fixes #734: crash when selecting empty nodes
+  * Fixes #727: Out-dated documentation on Firefox live bookmarks
+  * Fixes headline large images/videos or images with margins
+    causing horizontal scrolling in headline view
+  * Fixes #840: OPML source subfolders not working
+  * Update of French translation
+
+-------------------------------------------------------------------
 Thu May 14 09:08:37 UTC 2020 - Max Lin <mlin@suse.com>
 
 - Export WEBKIT_DISABLE_COMPOSITING_MODE=1 on Leap 15.2 build
