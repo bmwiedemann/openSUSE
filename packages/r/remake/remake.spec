@@ -1,7 +1,7 @@
 #
 # spec file for package remake
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,9 @@ Name:           remake
 Version:        4.2.1_1.4
 Release:        0
 Summary:        A gnu make version including a debuger
-License:        GPL-3.0+
-Group:          Development/Tools/Building
 Summary(de):    Eine gnu make Version inklusive Debugger
+License:        GPL-3.0-or-later
+Group:          Development/Tools/Building
 URL:            http://bashdb.sourceforge.net/remake/
 Source0:        https://downloads.sourceforge.net/project/bashdb/remake/%{base_version}/remake-%{pkg_version}.tar.bz2
 Patch1:         glob-lstat.patch
@@ -32,7 +32,6 @@ Patch2:         glob-interface.patch
 BuildRequires:  readline-devel
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
-Recommends:     %{name}-lang = %{version}
 
 %description
 remake is a patched and modernized version of GNU make utility that
@@ -48,13 +47,12 @@ eingebaut.
 %lang_package
 
 %prep
-%setup -q -n "%{name}-%{pkg_version}"
-%patch1 -p1
-%patch2 -p1
+%autosetup -n %{name}-%{pkg_version} -p1
 
 %build
+export CFLAGS="%{optflags} -fcommon"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -70,10 +68,11 @@ rm -f %{buildroot}/%{_infodir}/make* \
 %install_info_delete --info-dir="%{_infodir}" "%{_infodir}"/remake.info*
 
 %files
-%doc AUTHORS ChangeLog COPYING NEWS README
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README
 %{_bindir}/remake
-%{_mandir}/man1/remake.1%{ext_man}
-%{_infodir}/remake.info%{ext_info}
+%{_mandir}/man1/remake.1%{?ext_man}
+%{_infodir}/remake.info%{?ext_info}
 
 %files lang -f %{name}.lang
 

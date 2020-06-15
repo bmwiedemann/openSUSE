@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 15 12:43:56 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building with gcc10
+
+-------------------------------------------------------------------
 Thu Feb 15 12:06:26 UTC 2018 - aloisio@gmx.com
 
 - Set license field back to GPL-3.0+
