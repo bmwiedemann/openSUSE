@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 11 14:32:22 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add -fcommon to allow building against GCC10 
+
+-------------------------------------------------------------------
 Fri Jan 24 16:56:14 CET 2020 - mls@suse.de
 
 - change user to news before touching files in /var/log/news

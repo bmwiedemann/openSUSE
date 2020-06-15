@@ -1,7 +1,7 @@
 #
 # spec file for package inn
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ BuildRequires:  gdbm-devel
 BuildRequires:  pam-devel
 BuildRequires:  postfix
 BuildRequires:  zlib-devel
-Url:            http://www.isc.org/software/inn/
+URL:            http://www.isc.org/software/inn/
 Summary:        InterNetNews
 License:        GPL-2.0-or-later AND BSD-4-Clause
 Group:          Productivity/Networking/News/Servers
@@ -87,7 +87,7 @@ cp -a $RPM_SOURCE_DIR/pubring.pgp .
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-LDFLAGS="-pie" CFLAGS="$RPM_OPT_FLAGS -pipe -fno-strict-aliasing -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -fPIE -fstack-protector" ./configure \
+LDFLAGS="-pie" CFLAGS="$RPM_OPT_FLAGS -pipe -fno-strict-aliasing -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -fPIE -fstack-protector -fcommon" ./configure \
 		--enable-dual-socket \
 		--enable-uucp-rnews \
 		--enable-setgid-inews \
