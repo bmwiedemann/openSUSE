@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 14 20:44:26 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- disable march=native optimization by setting empty 
+  CMAKE_TUNE_FLAGS
+
+-------------------------------------------------------------------
 Wed May 13 13:42:58 UTC 2020 - Christoph Junghans <junghans@votca.org>
 
 - fix build on ppc64le by enabling gnu extensions, see
