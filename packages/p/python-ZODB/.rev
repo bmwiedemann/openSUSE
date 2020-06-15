@@ -87,4 +87,19 @@
   * transaction3.patch</comment>
     <requestid>800021</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ee5947d37a4e54ac71bc92f54040dd5b</srcmd5>
+    <version>5.6.0</version>
+    <time>1592245937</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.6.0:
+  * Fix tests with transaction 3.0 (remove patch).
+    + transaction3.patch
+  * Fix race with invalidations when starting a new transaction.
+  * Fix inconsistent resolution order with zope.interface v5.
+  * Drop support for Python 3.4.
+  * Add support for Python 3.8.
+  * See CHANGES.rst for more.</comment>
+    <requestid>814667</requestid>
+  </revision>
 </revisionlist>

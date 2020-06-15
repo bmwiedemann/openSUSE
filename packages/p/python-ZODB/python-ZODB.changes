@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 12 03:50:06 UTC 2020 - Jason Craig <os-dev@jacraig.com>
+
+- Update to 5.6.0:
+  * Fix tests with transaction 3.0 (remove patch).
+    + transaction3.patch
+  * Fix race with invalidations when starting a new transaction.
+  * Fix inconsistent resolution order with zope.interface v5.
+  * Drop support for Python 3.4.
+  * Add support for Python 3.8.
+  * See CHANGES.rst for more.
+
+-------------------------------------------------------------------
 Mon May  4 10:50:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to work with transaction 3.x:
