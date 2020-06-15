@@ -38,7 +38,7 @@
 %bcond_with opencv
 %endif
 Name:           gmic
-Version:        2.9.0
+Version:        2.9.1
 Release:        0
 Summary:        GREYC's Magick for Image Computing (denoise and others)
 # gmic-qt is GPL-3.0-or-later, zart is CECILL-2.0, libgmic and cli program are
@@ -49,7 +49,9 @@ URL:            https://gmic.eu
 # Git URL:      https://framagit.org/dtschump/gmic
 Source0:        https://gmic.eu/files/source/gmic_%{version}.tar.gz
 Source1:        gmic_qt.png
-BuildRequires:  cmake > 3.8
+# PATCH-FIX-UPSTREAM
+Patch:          0001-Don-t-use-CMake-commands-not-available-in-CMake-3.9.patch
+BuildRequires:  cmake >= 3.9.4
 BuildRequires:  fftw3-threads-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -72,12 +74,12 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(zlib)
 %if %{with opencv}
-# in openSUSE >= 15.2, opencv-devel is opencv4 and pkgconfig(opencv) is opencv3
-# ...and opencv3-devel doesn't exist in leap 15.0 and 15.1
-%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150200
-BuildRequires:  opencv-devel
-%else
+# gmic first looks for opencv 4 first and falls back to opencv 3 if not found.
+# opencv in not available in leap <= 15.2
+%if 0%{?suse_version} <= 1500
 BuildRequires:  pkgconfig(opencv)
+%else
+BuildRequires:  pkgconfig(opencv4)
 %endif
 %endif
 
@@ -150,16 +152,21 @@ the G'MIC image processing language by offering the choice of several
 manipulations on a video stream acquired from a webcam. In other words, ZArt is
 a GUI for G'MIC real-time manipulations on the output of a webcam.
 
+%package bash-completion
+Summary:        Bash completion for gmic
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+
+%description bash-completion
+This package contain de bash completion command for gmic.
+
 %prep
-%setup -q
+%autosetup -p1
+
 # Generated file that should not be there
 rm -f zart/.qmake.stash
 
 %build
-
-# Leap 15.0 doesn't know %%cmake_build
-%{?!cmake_build:%define cmake_build() make %{?_smp_mflags} VERBOSE=1}
-
 # Build gmic
 %cmake \
     -DENABLE_DYNAMIC_LINKING=ON \
@@ -230,9 +237,6 @@ install -D -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/pixmaps/gmic_qt.png
 
 %suse_update_desktop_file -c gmic_qt "G'Mic Qt" "G'MIC Qt GUI" "gmic_qt %%F" gmic_qt "Qt;Graphics;Photography;"
 
-install -d -m 0755 %{buildroot}%{_datadir}/bash-completion/completions
-install -m 0644 build/resources/gmic_bashcompletion.sh %{buildroot}%{_datadir}/bash-completion/completions
-
 # Film color lookup tables
 install -d -m 0755 %{buildroot}%{_gimpplugindir}
 install -m 0644 resources/gmic_cluts.gmz %{buildroot}%{_gimpplugindir}/gmic_cluts.gmz
@@ -272,9 +276,6 @@ popd
 %{_bindir}/gmic_qt
 %{_mandir}/man1/gmic.1%{?ext_man}
 %{_datadir}/applications/gmic_qt.desktop
-%dir %{_datadir}/bash-completion
-%dir %{_datadir}/bash-completion/completions
-%{_datadir}/bash-completion/completions/gmic_bashcompletion.sh
 %{_datadir}/pixmaps/gmic_qt.png
 
 %if %{with opencv}
@@ -307,5 +308,9 @@ popd
 %{_includedir}/gmic.h
 %{_libdir}/libgmic.so
 %{_libdir}/cmake/gmic/
+
+%files bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/gmic
 
 %changelog

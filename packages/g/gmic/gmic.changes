@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 14 09:25:43 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.9.1. No changelog.
+- Add patch to allow building gmic with older CMake versions:
+  * 0001-Don-t-use-CMake-commands-not-available-in-CMake-3.9.patch
+- Move the bash completion file to its own package
+
+-------------------------------------------------------------------
 Sat Mar 28 19:04:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.9.0. No changelog.

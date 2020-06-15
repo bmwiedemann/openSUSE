@@ -71,4 +71,15 @@
     <comment>- Update to 2.9.0. No changelog.</comment>
     <requestid>789376</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c25856165dd7c5db8bb1ac54b14ad66a</srcmd5>
+    <version>2.9.1</version>
+    <time>1592245762</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9.1. No changelog.
+- Add patch to allow building gmic with older CMake versions:
+  * 0001-Don-t-use-CMake-commands-not-available-in-CMake-3.9.patch
+- Move the bash completion file to its own package</comment>
+    <requestid>814571</requestid>
+  </revision>
 </revisionlist>

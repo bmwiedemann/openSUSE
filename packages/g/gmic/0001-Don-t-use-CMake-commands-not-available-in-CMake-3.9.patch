@@ -1,0 +1,66 @@
+From a913fd2cd5512723be26704d01d9a7e7039f3491 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Sun, 14 Jun 2020 14:57:05 +0200
+Subject: [PATCH] Don't use CMake commands not available in CMake 3.9
+
+---
+ cmake/FindCImg.cmake | 24 +++++++++++++++---------
+ 1 file changed, 15 insertions(+), 9 deletions(-)
+
+diff --git a/cmake/FindCImg.cmake b/cmake/FindCImg.cmake
+index fbc3f9c..47d1771 100644
+--- a/cmake/FindCImg.cmake
++++ b/cmake/FindCImg.cmake
+@@ -65,7 +65,8 @@ if(ENABLE_CURL)
+ 
+   if(CURL_FOUND)
+     list(APPEND COMPILE_FLAGS "cimg_use_curl")
+-    list(APPEND EXTRA_LIBRARY_TARGETS CURL::libcurl)
++    list(APPEND EXTRA_LIBRARY_TARGETS ${CURL_LIBRARIES})
++    list(APPEND HEADER_DIR ${CURL_INCLUDE_DIRS})
+   endif()
+ endif()
+ 
+@@ -74,10 +75,11 @@ if(ENABLE_X)
+   find_package(X11)
+ 
+   if(X11_FOUND)
+-    list(APPEND COMPILE_FLAGS "cimg_display=1" "cimg_appname=\"gmic\"")
+-    list(APPEND EXTRA_LIBRARY_TARGETS X11::X11)
++    list(APPEND COMPILE_FLAGS cimg_display=1 cimg_appname=\"gmic\")
++    list(APPEND EXTRA_LIBRARY_TARGETS ${X11_LIBRARIES})
++    list(APPEND HEADER_DIR ${X11_INCLUDE_DIR})
+   else()
+-    list(APPEND COMPILE_FLAGS "cimg_display=0" "cimg_appname=\"gmic\"")
++    list(APPEND COMPILE_FLAGS cimg_display=0 cimg_appname=\"gmic\")
+   endif()
+ 
+   if(ENABLE_XSHM AND X11_XShm_FOUND)
+@@ -142,7 +144,8 @@ if(ENABLE_JPEG)
+ 
+   if(JPEG_FOUND)
+     list(APPEND CLI_COMPILE_FLAGS "cimg_use_jpeg")
+-    list(APPEND EXTRA_LIBRARY_TARGETS JPEG::JPEG)
++    list(APPEND EXTRA_LIBRARY_TARGETS ${JPEG_LIBRARIES})
++    list(APPEND HEADER_DIR ${JPEG_INCLUDE_DIRS})
+   endif()
+ endif()
+ 
+@@ -169,7 +172,10 @@ endif()
+ 
+ add_library(CImg::CImg INTERFACE IMPORTED)
+ 
+-target_compile_definitions(CImg::CImg INTERFACE ${COMPILE_FLAGS} ${CLI_COMPILE_FLAGS})
+-target_link_options(CImg::CImg INTERFACE ${LINK_FLAGS})
+-target_link_libraries(CImg::CImg INTERFACE ${EXTRA_LIBRARY_TARGETS})
+-target_include_directories(CImg::CImg INTERFACE ${HEADER_DIR})
++set(CIMG_BUILD_FLAGS ${COMPILE_FLAGS} ${CLI_COMPILE_FLAGS})
++
++set_target_properties(CImg::CImg PROPERTIES
++  INTERFACE_COMPILE_DEFINITIONS "${CIMG_BUILD_FLAGS}"
++  INTERFACE_INCLUDE_DIRECTORIES "${HEADER_DIR}"
++  INTERFACE_LINK_LIBRARIES "${EXTRA_LIBRARY_TARGETS}"
++)
+-- 
+2.27.0
+
