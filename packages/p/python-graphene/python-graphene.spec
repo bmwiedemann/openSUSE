@@ -50,7 +50,7 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Graphene is a Python library for building GraphQL schemas/types fast and easily.
+Graphene is a Python library for building GraphQL schemas/types.
 
 %prep
 %setup -q -n graphene-%{version}
