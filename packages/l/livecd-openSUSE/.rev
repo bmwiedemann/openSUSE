@@ -919,4 +919,11 @@
     <user>dimstar_suse</user>
     <comment>- Use vim-small on the rescue cd.</comment>
   </revision>
+  <revision rev="112" vrev="112">
+    <srcmd5>84a11173b0f5b459197bec6af1fb8dbe</srcmd5>
+    <version>unknown</version>
+    <time>1592209564</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop thunar-lang from the Rescue CD - more hunt for space.</comment>
+  </revision>
 </revisionlist>
