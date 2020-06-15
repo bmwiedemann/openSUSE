@@ -862,4 +862,14 @@
     for the complete changelog.</comment>
     <requestid>813096</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>24a7f47dd94ea59572dc9573d4cc34d7</srcmd5>
+    <version>0.32.0+git.20200610T171643.c7fe4ae73a</version>
+    <time>1592245767</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200610T171643.c7fe4ae73a:
+  * vo_gpu: move coherent specifier to the correct location
+  * player: make unpausing directly after seek work with --keep-open (again)</comment>
+    <requestid>814562</requestid>
+  </revision>
 </revisionlist>

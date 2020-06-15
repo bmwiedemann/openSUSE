@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 14 10:40:46 UTC 2020 - idonmez@suse.com
+
+- Update to version 0.32.0+git.20200610T171643.c7fe4ae73a:
+  * vo_gpu: move coherent specifier to the correct location
+  * player: make unpausing directly after seek work with --keep-open (again)
+
+-------------------------------------------------------------------
 Wed Jun 10 06:18:37 UTC 2020 - idonmez@suse.com
 
 - Update to version 0.32.0+git.20200609T164905.d5de79d10f:
