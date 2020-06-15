@@ -1,7 +1,7 @@
 #
 # spec file for package picom
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           picom
-Version:        7.4+159.g9a88d97
+Version:        8
 Release:        0
 Summary:        Stand-alone compositor for X11
 License:        MPL-2.0 AND MIT
 Group:          System/X11/Utilities
 URL:            https://github.com/yshui/picom
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://github.com/yshui/picom/archive/v8.tar.gz
 Source1:        picom.desktop
 BuildRequires:  asciidoc
 BuildRequires:  c_compiler
@@ -77,7 +77,7 @@ rm %{buildroot}%{_datadir}/applications/compton.desktop
 cp %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files
-%license COPYING
+%license LICENSES/MPL-2.0 LICENSES/MIT COPYING
 %doc CONTRIBUTORS README.md README_orig.md picom.sample.conf
 %{_bindir}/*
 %{_datadir}/icons/hicolor/*/apps/%{name}*
