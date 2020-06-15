@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE-MicroOS___20200612" schemaversion="4.1">
+<image name="OBS__openSUSE-MicroOS___20200614" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200612</productvar>
+      <productvar name="VERSION">20200614</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20200612,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20200614,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20200612/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20200614/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -98,8 +98,8 @@
       <repopackage name="containers-systemd" arch="x86_64"/>
       <repopackage name="coreutils"/>
       <repopackage name="cpio"/>
-      <repopackage name="cracklib"/>
-      <repopackage name="cracklib-dict-full"/>
+      <repopackage name="cracklib" arch="x86_64"/>
+      <repopackage name="cracklib-dict-full" arch="x86_64"/>
       <repopackage name="cracklib-dict-small" arch="x86_64"/>
       <repopackage name="cri-o" arch="x86_64"/>
       <repopackage name="cri-o-kubeadm-criconfig" arch="x86_64"/>
@@ -255,7 +255,7 @@
       <repopackage name="libcom_err2"/>
       <repopackage name="libconfig11" arch="x86_64"/>
       <repopackage name="libcontainers-common" arch="x86_64"/>
-      <repopackage name="libcrack2"/>
+      <repopackage name="libcrack2" arch="x86_64"/>
       <repopackage name="libcrypt1"/>
       <repopackage name="libcrypto46" arch="x86_64"/>
       <repopackage name="libcryptsetup12"/>
