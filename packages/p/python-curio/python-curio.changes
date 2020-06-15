@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 15 11:58:37 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 1.2 
+ * Removed hard dependency on contextvars
+ * Added a default selector timeout of 1 second for Windows.
+ * First crack at a Curio repl.
+ * Added a pytest plugin
+ * Slight refinement to TaskGroup result reporting.
+
+-------------------------------------------------------------------
 Thu Mar  5 12:44:25 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to make tests reproducible and not depend on a race condition:

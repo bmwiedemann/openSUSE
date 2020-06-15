@@ -35,4 +35,17 @@
     <comment></comment>
     <requestid>781852</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8a45d28fd08ac9613e430b3aa3e2b75a</srcmd5>
+    <version>1.2</version>
+    <time>1592245991</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2 
+ * Removed hard dependency on contextvars
+ * Added a default selector timeout of 1 second for Windows.
+ * First crack at a Curio repl.
+ * Added a pytest plugin
+ * Slight refinement to TaskGroup result reporting.</comment>
+    <requestid>814701</requestid>
+  </revision>
 </revisionlist>
