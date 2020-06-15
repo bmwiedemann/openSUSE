@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Thu May  7 17:25:28 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.0
+
+-------------------------------------------------------------------
+Thu Oct 24 11:01:32 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Sun Nov 25 11:46:25 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 0.8:
+  Based on 0.7-state from webassets core repository.
+  - Staticfiles integration now allows for globbing.
+  - Better document staticfiles support.
+  - Fix encoding errors raised by the template filter (Nikolai
+    Prokoschenko).
+- Regenerate spec file.
+
+-------------------------------------------------------------------
+Thu Dec 10 00:30:02 UTC 2009 - alexandre@exatati.com.br
+
+- Initial package (0.2) for openSUSE.
