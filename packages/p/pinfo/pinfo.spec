@@ -1,7 +1,7 @@
 #
 # spec file for package pinfo
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           pinfo
 Version:        0.6.10
 Release:        0
 Summary:        Lynx-style Info Browser
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/Texinfo
-Url:            https://alioth.debian.org/projects/pinfo/
+URL:            https://alioth.debian.org/projects/pinfo/
 Source:         https://alioth.debian.org/frs/download.php/file/3351/%{name}-%{version}.tar.bz2
 Patch1:         pinfo-0.6.9-nul-strings.patch
 Patch2:         pinfo-0.6.10-tinfo.patch
@@ -34,7 +34,6 @@ BuildRequires:  makeinfo
 BuildRequires:  ncurses-devel
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Pinfo is a curses based, Lynx-style info browser.
@@ -46,16 +45,14 @@ Pinfo is a curses based, Lynx-style info browser.
 %patch3 -p1
 
 %build
-# This package failed when testing with -Wl,-as-needed being default.
-# So we disable it here, if you want to retest, just delete this comment and the line below.
-export SUSE_ASNEEDED=0
+export CFLAGS="%{optflags} -fcommon"
 autoreconf -fiv
 %configure \
 	--with-curses=%{_prefix}
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot}/ install
+%make_install
 %find_lang %{name}
 
 %post
@@ -65,10 +62,10 @@ make DESTDIR=%{buildroot}/ install
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
 
 %files -f %{name}.lang
-%defattr(-, root, root)
-%doc AUTHORS COPYING ChangeLog NEWS README
-%{_mandir}/man1/pinfo.1%{ext_man}
-%{_infodir}/pinfo.info%{ext_info}
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README
+%{_mandir}/man1/pinfo.1%{?ext_man}
+%{_infodir}/pinfo.info%{?ext_info}
 %config %{_sysconfdir}/pinforc
 %{_bindir}/pinfo
 
