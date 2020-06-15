@@ -5,7 +5,7 @@ Adaption gdcm 3.0.x Axel Braun <DocB@openSUSE.org>
 diff -ur gdcm/CMakeLists.txt gdcm-2.8.8/CMakeLists.txt
 --- gdcm/CMakeLists.txt	2019-01-13 08:57:04.807970487 +0100
 +++ gdcm-2.8.8/CMakeLists.txt	2019-01-13 08:51:36.459974494 +0100
-@@ -358,7 +358,7 @@
+@@ -357,7 +357,7 @@
  
  if(GDCM_USE_SYSTEM_CHARLS)
    find_package(CharLS 2.0.0 REQUIRED)

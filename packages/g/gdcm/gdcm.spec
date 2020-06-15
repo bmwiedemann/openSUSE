@@ -1,8 +1,8 @@
 #
 # spec file for package gdcm
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2019 Dr. Axel Braun
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2019-2020 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         soname  3_0
 %define         libsocksoname  libsocketxx1_2
 Name:           gdcm
-Version:        3.0.5
+Version:        3.0.6
 Release:        0
 Summary:        Grassroots DiCoM is a C++ library to parse DICOM medical files
 License:        BSD-3-Clause
@@ -29,8 +29,7 @@ URL:            http://gdcm.sourceforge.net/wiki/index.php/Main_Page
 Source0:        http://sourceforge.net/projects/gdcm/files/gdcm%203.x/GDCM%20%{version}/%{name}-%{version}.tar.bz2
 Patch1:         gdcm-2.4.0-usecopyright.patch
 Patch2:         fix_charls_2.patch
-Patch3:         poppler_api.patch
-Patch4:         gdcm-2.8.8-dont_use_EOF.patch
+Patch3:         gdcm-2.8.8-dont_use_EOF.patch
 BuildRequires:  CharLS-devel >= 2.0
 BuildRequires:  cmake
 BuildRequires:  docbook5-xsl-stylesheets

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  9 15:31:56 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.0.6
+  * no changelog available
+  * poppler_api.patch removed (included in source)
+
+-------------------------------------------------------------------
 Mon Jun  8 18:55:02 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix build on aarch64:
@@ -13,7 +20,7 @@ Tue Apr 14 18:59:21 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 -------------------------------------------------------------------
 Sun Mar 29 14:24:37 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
-- poppler_api.patch added to fix API changes in poppler 
+- poppler_api.patch added to fix API changes in poppler in TW
 
 -------------------------------------------------------------------
 Tue Feb 18 20:51:19 UTC 2020 - Axel Braun <axel.braun@gmx.de>
