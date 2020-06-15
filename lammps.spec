@@ -177,6 +177,7 @@ source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
   -C ../cmake/presets/all_on.cmake \
   -C ../cmake/presets/nolib.cmake \
   -DCMAKE_Fortran_COMPILER="$(type -p gfortran)" \
+  -DCMAKE_TUNE_FLAGS='' \
   -DBUILD_TOOLS=ON \
   -DBUILD_OMP=ON \
   %{?with_kokkos:-DPKG_KOKKOS=ON -DEXTERNAL_KOKKOS=ON} \
