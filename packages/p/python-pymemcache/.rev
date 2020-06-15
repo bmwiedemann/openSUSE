@@ -103,4 +103,13 @@
   * Fix corner case when dead hashed server comes back alive.</comment>
     <requestid>802871</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0724ffccc09ca7c80da7dbccf8c2cc36</srcmd5>
+    <version>3.2.0</version>
+    <time>1592245737</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.0:
+  * ``PooledClient`` and ``HashClient`` now support custom ``Client`` classes</comment>
+    <requestid>814553</requestid>
+  </revision>
 </revisionlist>

@@ -92,4 +92,13 @@
     <comment></comment>
     <requestid>794253</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7eff5cc3360281c1a5fa809575c7d2ba</srcmd5>
+    <version>3.0.4</version>
+    <time>1592245743</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.4
+  * minor changes</comment>
+    <requestid>814554</requestid>
+  </revision>
 </revisionlist>

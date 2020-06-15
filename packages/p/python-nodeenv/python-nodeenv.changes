@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 14 09:34:58 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.4.0:
+  *  a new way of the mirroring; some fixes
+
+-------------------------------------------------------------------
 Thu May 21 10:56:37 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

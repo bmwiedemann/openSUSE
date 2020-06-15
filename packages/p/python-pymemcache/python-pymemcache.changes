@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 14 09:30:56 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * ``PooledClient`` and ``HashClient`` now support custom ``Client`` classes
+
+-------------------------------------------------------------------
 Tue May 12 08:26:33 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.1.0:

@@ -20,7 +20,7 @@
 %global modname pysaml2
 %global skip_python2 1
 Name:           python-pysaml2
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 Summary:        Python implementation of SAML Version 2 to be used in a WSGI environment
 License:        Apache-2.0
@@ -95,10 +95,10 @@ done
 %endif
 
 %post
-%python_install_alternative make_metadata.py parse_xsd2.py mdexport.py merge_metadata.py 
+%python_install_alternative make_metadata.py parse_xsd2.py mdexport.py merge_metadata.py
 
 %postun
-%python_uninstall_alternative make_metadata.py parse_xsd2.py mdexport.py merge_metadata.py 
+%python_uninstall_alternative make_metadata.py parse_xsd2.py mdexport.py merge_metadata.py
 
 %files %{python_files}
 %license LICENSE

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-docker
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 Summary:        Docker API Client
 License:        Apache-2.0

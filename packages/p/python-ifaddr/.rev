@@ -33,4 +33,17 @@
     <comment>- Fix build without python2</comment>
     <requestid>795811</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c37007e6c378d395179008b7ba37ef33</srcmd5>
+    <version>0.1.7</version>
+    <time>1592245729</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.7:
+  * Fixed Python 3 compatibility in the examples, thanks to Tristan Stenner and Josef Schlehofer
+   * Exposed network interface indexes in Adapter.index, thanks to Dmitry Tantsur
+  * Added the license file to distributions on PyPI, thanks to Tomáš Chvátal
+  * Fixed Illumos/Solaris compatibility based on a patch proposed by Jorge Schrauwen
+  * Set up universal wheels, ifaddr will have both source and wheel distributions on PyPI from now on</comment>
+    <requestid>814551</requestid>
+  </revision>
 </revisionlist>

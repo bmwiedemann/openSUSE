@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-smmap
-Version:        3.0.2
+Version:        3.0.4
 Release:        0
 Summary:        A pure git implementation of a sliding window memory map manager
 License:        BSD-2-Clause

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  8 13:35:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.2.1:
+  - Add option on when to use `tls` on Context constructor
+  - Make context orchestrator field optional
+
+-------------------------------------------------------------------
 Sun Feb  9 16:47:09 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

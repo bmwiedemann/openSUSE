@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-ifaddr
-Version:        0.1.6
+Version:        0.1.7
 Release:        0
 Summary:        Module for enumerating IP addresses on system network adapters
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pydron/ifaddr
 Source:         https://files.pythonhosted.org/packages/source/i/ifaddr/ifaddr-%{version}.tar.gz
-Source99:       https://raw.githubusercontent.com/pydron/ifaddr/master/LICENSE.txt
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -50,7 +49,6 @@ IP addresses assigned to the system.
 
 %prep
 %setup -q -n ifaddr-%{version}
-cp %{SOURCE99} .
 sed -i -e "s/install_requires = \['ipaddress'\],//" setup.py
 dos2unix README.rst
 
