@@ -1,7 +1,7 @@
 #
 # spec file for package bmake
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
 Name:           bmake
-Version:        20181221
+Version:        20200606
 Release:        0
 Summary:        The NetBSD make(1) tool
 License:        BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause

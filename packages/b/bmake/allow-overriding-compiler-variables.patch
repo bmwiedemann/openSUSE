@@ -1,6 +1,6 @@
---- bmake/mk/sys/Linux.mk	2017-05-05 20:02:34.000000000 +0200
-+++ Linux.mk	2017-05-19 10:44:59.644349103 +0200
-@@ -8,78 +8,95 @@
+--- bmake/mk/sys/Linux.mk	2020-04-18 00:08:31.000000000 +0300
++++ Linux.mk	2020-05-16 19:05:25.000000000 +0300
+@@ -8,76 +8,95 @@
  ROOT_GROUP=	root
  
  # would be better to work out where it is...
@@ -100,8 +100,6 @@
 -COMPILE.p=	${PC} ${PFLAGS} ${CPPFLAGS} -c
 -LINK.p=		${PC} ${PFLAGS} ${CPPFLAGS} ${LDFLAGS}
 -
--SHELL=		sh
--
 -YACC=		yacc
 -YFLAGS=		-d
 -YACC.y=		${YACC} ${YFLAGS}
@@ -157,7 +155,7 @@
  
  # C
  .c:
-@@ -90,6 +107,8 @@
+@@ -88,6 +107,8 @@
  	${COMPILE.c} ${.IMPSRC}
  	${AR} ${ARFLAGS} $@ $*.o
  	rm -f $*.o

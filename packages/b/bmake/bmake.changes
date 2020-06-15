@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Sun Jun 14 17:07:15 UTC 2020 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Updated allow-overriding-compiler-variables.patch.
+- Update to version 20200606:
+  * make.1: cleanup
+  * Makefile: fix depends for main.o which broke MAKE_VERSION
+  * dir.c: cached_stats - don't confuse stat and lstat results.
+  * var.c: add :Or for reverse sort.
+  * configure.in: add AC_PROG_CC_C99 for mipspro compiler
+    also if --with-filemon= specifies path to filemon.h
+    set use_filemon=dev
+  * dirname.c: remove include of namespace.h
+  * modified dollar tests to avoid shell dependencies
+  * new tests for .INCLUDEFROM
+  * unit-tests/dollar.mk: tweak  '1 dollar literal' test
+    to not depend so much on shell behavior
+  * unit test for dollar handling
+  * str.c: empty string does not match % pattern
+    plus unit-test changes
+  * var.c: import handling of old sysV style modifier using '%'
+  * str.c: refactor brk_string
+  * unit-tests: add test case for lazy conditions
+  * configure.in: use_makefile=no for cygwin et al.
+    case insensitive filesystems just don't work if both
+    makefile and Makefile exist.
+  * meta.c: meta_oodate, CHECK_VALID_META is too aggressive for CMD
+    a blank command is perfectly valid.
+  * make.h: extern debug_file
+  * meta.c: meta_oodate, check for corrupted meta file
+    earlier and more often.
+  * boot-strap: unset MAKEFLAGS
+  * meta.c: meta_compat_parent check for USE_FILEMON
+    patch from Soeren Tempel
+  * meta.c: fix compat mode, need to call meta_job_output()
+  * job.c: extra fds for meta mode not needed if using filemon_dev
+  * meta.c: avoid passing NULL to filemon_*() when meta_needed()
+    returns FALSE.
+  * filemon/filemon_{dev,ktrace}.c: allow selection of
+    filemon implementation.  filemon_dev.c uses the kernel module
+    while filemon_ktrace.c leverages the fktrace api available in
+    NetBSD.  filemon_ktrace.c can hopefully form the basis for
+    adding support for other tracing mechanisms such as strace on
+    Linux.
+  * meta.c: when target is out-of-date per normal make rules
+    record value of .OODATE in meta file.
+  * parse.c: don't pass NULL to realpath(3)
+    some versions cannot handle it.
+  * parse.c: ParseDoDependency: free paths rather than assert
+  * configure.in: add --without-makefile to avoid generating
+    makefile and make-bootstrap.sh
+  * include Makefile.inc if it exists
+  * Use Makefile and Makefile.config.in in unit-tests
+    so we can use just: make obj && make && make test
+    when bmake is already available.
+    We add --without-makefile to CONFIGURE_ARGS in this case.
+  * tweak bsd.after-import.mk (captures Makefile.config etc
+    after import to FreeBSD for example) to cope with all the above. 
+  * parse.c: ParseVErrorInternal use .PARSEDIR
+    and apply if relative, and then use .PARSEFILE
+    for consistent result.
+  * parse.c: ParseVErrorInternal use .CURDIR if .PARSEDIR
+    is relative
+  * var.c: avoid SEGFAULT in .unexport-env
+    when MAKELEVEL is not set
+  * fix for unit-tests/varquote.mk on Debian
+  * var.c: add :q
+  * dir.c: cleanup caching of stats
+  * Makefile.config.in: use += where it makes sense.
+
+-------------------------------------------------------------------
 Wed Sep 11 12:52:21 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20181221:
