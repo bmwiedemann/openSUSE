@@ -1,0 +1,277 @@
+Index: py-junos-eznc-2.3.1/development.txt
+===================================================================
+--- py-junos-eznc-2.3.1.orig/development.txt	2019-12-10 07:54:12.000000000 +0100
++++ py-junos-eznc-2.3.1/development.txt	2020-06-02 09:22:40.050714175 +0200
+@@ -6,4 +6,3 @@ nose         # http://nose.readthedocs.o
+ pep8	     # https://github.com/jcrocholl/pep8
+ pyflakes	 # https://launchpad.net/pyflakes
+ coveralls	 # https://coveralls.io/
+-unittest2>=0.5.1  # https://pypi.python.org/pypi/unittest2
+Index: py-junos-eznc-2.3.1/tests/functional/test_core.py
+===================================================================
+--- py-junos-eznc-2.3.1.orig/tests/functional/test_core.py	2019-12-10 07:54:12.000000000 +0100
++++ py-junos-eznc-2.3.1/tests/functional/test_core.py	2020-06-02 09:24:17.503246419 +0200
+@@ -1,6 +1,9 @@
+ __author__ = "rsherman, vnitinv"
+ 
+-import unittest2 as unittest
++try:
++    import unittest2 as unittest
++except ImportError:
++    import unittest
+ from nose.plugins.attrib import attr
+ from jnpr.junos.exception import RpcTimeoutError
+ 
+Index: py-junos-eznc-2.3.1/tests/functional/test_table.py
+===================================================================
+--- py-junos-eznc-2.3.1.orig/tests/functional/test_table.py	2019-12-10 07:54:12.000000000 +0100
++++ py-junos-eznc-2.3.1/tests/functional/test_table.py	2020-06-02 09:24:46.555405079 +0200
+@@ -1,6 +1,9 @@
+ __author__ = "rsherman, vnitinv"
+ 
+-import unittest2 as unittest
++try:
++    import unittest2 as unittest
++except ImportError:
++    import unittest
+ from nose.plugins.attrib import attr
+ 
+ from jnpr.junos.op.routes import RouteTable
+Index: py-junos-eznc-2.3.1/tests/unit/factory/test_to_json.py
+===================================================================
+--- py-junos-eznc-2.3.1.orig/tests/unit/factory/test_to_json.py	2019-12-10 07:54:12.000000000 +0100
++++ py-junos-eznc-2.3.1/tests/unit/factory/test_to_json.py	2020-06-02 09:37:16.499457233 +0200
+@@ -1,6 +1,9 @@
+ __author__ = "Rick Sherman"
+ 
+-import unittest2 as unittest
++try:
++    import unittest2 as unittest
++except ImportError:
++    import unittest
+ from nose.plugins.attrib import attr
+ from mock import patch
+ import os
+Index: py-junos-eznc-2.3.1/tests/unit/facts/test__init__.py
+===================================================================
+--- py-junos-eznc-2.3.1.orig/tests/unit/facts/test__init__.py	2019-12-10 07:54:12.000000000 +0100
++++ py-junos-eznc-2.3.1/tests/unit/facts/test__init__.py	2020-06-02 09:38:06.663731374 +0200
+@@ -1,7 +1,10 @@
+ __author__ = "Stacy Smith"
+ __credits__ = "Jeremy Schulman, Nitin Kumar"
+ 
+-import unittest2 as unittest
++try:
++    import unittest2 as unittest
++except ImportError:
++    import unittest
+ from nose.plugins.attrib import attr
+ import importlib
+ import sys
+Index: py-junos-eznc-2.3.1/tests/unit/facts/test_swver.py
+===================================================================
+--- py-junos-eznc-2.3.1.orig/tests/unit/facts/test_swver.py	2019-12-10 07:54:12.000000000 +0100
++++ py-junos-eznc-2.3.1/tests/unit/facts/test_swver.py	2020-06-04 12:31:16.270468805 +0200
+@@ -1,7 +1,11 @@
+ __author__ = "Stacy Smith"
+ __credits__ = "Jeremy Schulman, Nitin Kumar"
+ 
+-import unittest2 as unittest
++import six
++try:
++    import unittest2 as unittest
++except:
++    import unittest
+ from nose.plugins.attrib import attr
+ 
+ from jnpr.junos.facts.swver import version_info, get_facts
+@@ -9,17 +13,18 @@ from jnpr.junos.facts.swver import versi
+ 
+ @attr('unit')
+ class TestVersionInfo(unittest.TestCase):
+-
++    if six.PY2:
++        assertCountEqual = unittest.TestCase.assertItemsEqual
+     def test_version_info_after_type_len_else(self):
+         self.assertEqual(version_info('12.1X46-D10').build, None)
+ 
+     def test_version_info_X_type_non_hyphenated(self):
+-        self.assertItemsEqual(
++        self.assertCountEqual(
+             version_info('11.4X12.2'),
+             [('build', 2), ('major', (11, 4)), ('minor', '12'), ('type', 'X')])
+ 
+     def test_version_info_X_type_non_hyphenated_nobuild(self):
+-        self.assertItemsEqual(
++        self.assertCountEqual(
+             version_info('11.4X12'),
+             [('build', None), ('major', (11, 4)), ('minor', '12'), ('type', 'X')])
+ 
+@@ -61,12 +66,12 @@ class TestVersionInfo(unittest.TestCase)
+             "build: 5\nmajor: !!python/tuple\n- 11\n- 4\nminor: '7'\ntype: R\n")
+ 
+     def test_version_iter(self):
+-        self.assertItemsEqual(
++        self.assertCountEqual(
+             version_info('11.4R7.5'),
+             [('build', 5), ('major', (11, 4)), ('minor', '7'), ('type', 'R')])
+ 
+     def test_version_feature_velocity(self):
+-        self.assertItemsEqual(
++        self.assertCountEqual(
+             version_info('15.4F7.5'),
+             [('build', 5), ('major', (15, 4)), ('minor', '7'), ('type', 'F')])
+ 
+Index: py-junos-eznc-2.3.1/tests/unit/ofacts/test_swver.py
+===================================================================
+--- py-junos-eznc-2.3.1.orig/tests/unit/ofacts/test_swver.py	2019-12-10 07:54:12.000000000 +0100
++++ py-junos-eznc-2.3.1/tests/unit/ofacts/test_swver.py	2020-06-02 09:39:36.380221690 +0200
+@@ -1,7 +1,10 @@
+ __author__ = "Nitin Kumar, Rick Sherman"
+ __credits__ = "Jeremy Schulman"
+ 
+-import unittest2 as unittest
++try:
++    import unittest2 as unittest
++except ImportError:
++    import unittest
+ from nose.plugins.attrib import attr
+ from mock import patch, MagicMock
+ import os
+Index: py-junos-eznc-2.3.1/tests/unit/test_console.py
+===================================================================
+--- py-junos-eznc-2.3.1.orig/tests/unit/test_console.py	2019-12-10 07:54:12.000000000 +0100
++++ py-junos-eznc-2.3.1/tests/unit/test_console.py	2020-06-02 09:40:33.860535824 +0200
+@@ -1,4 +1,7 @@
+-import unittest2 as unittest
++try:
++    import unittest2 as unittest
++except ImportError:
++    import unittest
+ from jnpr.junos.utils.config import Config
+ from nose.plugins.attrib import attr
+ from mock import patch, MagicMock, call
+Index: py-junos-eznc-2.3.1/tests/unit/test_decorators.py
+===================================================================
+--- py-junos-eznc-2.3.1.orig/tests/unit/test_decorators.py	2019-12-10 07:54:12.000000000 +0100
++++ py-junos-eznc-2.3.1/tests/unit/test_decorators.py	2020-06-02 09:40:56.432659185 +0200
+@@ -1,4 +1,7 @@
+-import unittest2 as unittest
++try:
++    import unittest2 as unittest
++except ImportError:
++    import unittest
+ from nose.plugins.attrib import attr
+ 
+ from lxml.etree import XML
+Index: py-junos-eznc-2.3.1/tests/unit/test_device.py
+===================================================================
+--- py-junos-eznc-2.3.1.orig/tests/unit/test_device.py	2019-12-10 07:54:12.000000000 +0100
++++ py-junos-eznc-2.3.1/tests/unit/test_device.py	2020-06-02 09:41:17.232772861 +0200
+@@ -1,4 +1,7 @@
+-import unittest2 as unittest
++try:
++    import unittest2 as unittest
++except ImportError:
++    import unittest
+ from nose.plugins.attrib import attr
+ from mock import MagicMock, patch, mock_open, call
+ import os
+Index: py-junos-eznc-2.3.1/tests/unit/test_factcache.py
+===================================================================
+--- py-junos-eznc-2.3.1.orig/tests/unit/test_factcache.py	2019-12-10 07:54:12.000000000 +0100
++++ py-junos-eznc-2.3.1/tests/unit/test_factcache.py	2020-06-02 09:42:15.129089270 +0200
+@@ -1,4 +1,7 @@
+-import unittest2 as unittest
++try:
++    import unittest2 as unittest
++except ImportError:
++    import unittest
+ from nose.plugins.attrib import attr
+ from mock import patch, MagicMock, call
+ from jnpr.junos.exception import FactLoopError
+Index: py-junos-eznc-2.3.1/tests/unit/transport/test_serial.py
+===================================================================
+--- py-junos-eznc-2.3.1.orig/tests/unit/transport/test_serial.py	2019-12-10 07:54:12.000000000 +0100
++++ py-junos-eznc-2.3.1/tests/unit/transport/test_serial.py	2020-06-02 09:44:13.877738198 +0200
+@@ -1,4 +1,7 @@
+-import unittest2 as unittest
++try:
++    import unittest2 as unittest
++except ImportError:
++    import unittest
+ from nose.plugins.attrib import attr
+ from mock import MagicMock, patch
+ import sys
+Index: py-junos-eznc-2.3.1/tests/unit/transport/test_tty_netconf.py
+===================================================================
+--- py-junos-eznc-2.3.1.orig/tests/unit/transport/test_tty_netconf.py	2019-12-10 07:54:12.000000000 +0100
++++ py-junos-eznc-2.3.1/tests/unit/transport/test_tty_netconf.py	2020-06-02 09:44:54.209958559 +0200
+@@ -1,4 +1,7 @@
+-import unittest2 as unittest
++try:
++    import unittest2 as unittest
++except ImportError:
++    import unittest
+ from nose.plugins.attrib import attr
+ from mock import MagicMock, patch
+ from jnpr.junos.transport.tty_netconf import tty_netconf
+Index: py-junos-eznc-2.3.1/tests/unit/transport/test_tty.py
+===================================================================
+--- py-junos-eznc-2.3.1.orig/tests/unit/transport/test_tty.py	2019-12-10 07:54:12.000000000 +0100
++++ py-junos-eznc-2.3.1/tests/unit/transport/test_tty.py	2020-06-02 09:44:28.917820369 +0200
+@@ -1,5 +1,8 @@
+ import logging
+-import unittest2 as unittest
++try:
++    import unittest2 as unittest
++except ImportError:
++    import unittest
+ 
+ from nose.plugins.attrib import attr
+ from mock import MagicMock, patch
+Index: py-junos-eznc-2.3.1/tests/unit/transport/test_tty_ssh.py
+===================================================================
+--- py-junos-eznc-2.3.1.orig/tests/unit/transport/test_tty_ssh.py	2019-12-10 07:54:12.000000000 +0100
++++ py-junos-eznc-2.3.1/tests/unit/transport/test_tty_ssh.py	2020-06-02 09:45:28.666146801 +0200
+@@ -1,6 +1,9 @@
+ import socket
+ import sys
+-import unittest2 as unittest
++try:
++    import unittest2 as unittest
++except ImportError:
++    import unittest
+ from nose.plugins.attrib import attr
+ from mock import MagicMock, patch
+ from jnpr.junos.transport.tty_ssh import SSH
+Index: py-junos-eznc-2.3.1/tests/unit/transport/test_tty_telnet.py
+===================================================================
+--- py-junos-eznc-2.3.1.orig/tests/unit/transport/test_tty_telnet.py	2019-12-10 07:54:12.000000000 +0100
++++ py-junos-eznc-2.3.1/tests/unit/transport/test_tty_telnet.py	2020-06-02 09:48:57.923290082 +0200
+@@ -1,5 +1,8 @@
+ import sys
+-import unittest2 as unittest
++try:
++    import unittest2 as unittest
++except ImportError:
++    import unittest
+ from nose.plugins.attrib import attr
+ from mock import MagicMock, patch
+ from jnpr.junos.transport.tty_telnet import Telnet
+Index: py-junos-eznc-2.3.1/tests/unit/utils/test_sw.py
+===================================================================
+--- py-junos-eznc-2.3.1.orig/tests/unit/utils/test_sw.py	2019-12-10 07:54:12.000000000 +0100
++++ py-junos-eznc-2.3.1/tests/unit/utils/test_sw.py	2020-06-02 09:43:36.313532958 +0200
+@@ -2,7 +2,10 @@ from __future__ import print_function
+ import os
+ import sys
+ from six import StringIO
+-import unittest2 as unittest
++try:
++    import unittest2 as unittest
++except ImportError:
++    import unittest
+ from nose.plugins.attrib import attr
+ from contextlib import contextmanager
+ from jnpr.junos import Device
