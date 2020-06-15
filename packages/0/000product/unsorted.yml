@@ -12403,10 +12403,6 @@ unsorted:
   - libunique1-devel 
   - libunistring-devel 
   - libunistring-devel-32bit: [x86_64] 
-  - libunity-devel 
-  - libunity-tools 
-  - libunity9 
-  - libunity9-32bit: [x86_64] 
   - libunshield0 
   - libunwind-32bit: [x86_64] 
   - libunwind-devel 
@@ -18686,7 +18682,6 @@ unsorted:
   - python2-keyrings.alt 
   - python2-libfwsi 
   - python2-libguestfs: [x86_64] 
-  - python2-libunity 
   - python2-moviepy 
   - python2-opencensus-ext-threading 
   - python2-pip 
@@ -20152,7 +20147,6 @@ unsorted:
   - python3-libstoragemgmt 
   - python3-libstoragemgmt-clibs 
   - python3-libtorrent-rasterbar 
-  - python3-libunity 
   - python3-libusb1 
   - python3-libvhdi 
   - python3-libvmdk 
@@ -33279,8 +33273,6 @@ unsorted:
   - typelib-1_0-UDisks-2_0 
   - typelib-1_0-Uhm-0_0 
   - typelib-1_0-Unique-1_0 
-  - typelib-1_0-Unity-7_0 
-  - typelib-1_0-UnityExtras-7_0 
   - typelib-1_0-Urfkill-0_0 
   - typelib-1_0-Vips-8_9 
   - typelib-1_0-WebKit2WebExtension-4_0 
