@@ -7,4 +7,12 @@
     <comment>still usefull package</comment>
     <requestid>502838</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>253e85f62b7d9d84f1acf89fc82d28ed</srcmd5>
+    <version>1.1.1</version>
+    <time>1592245963</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with gcc10</comment>
+    <requestid>814675</requestid>
+  </revision>
 </revisionlist>

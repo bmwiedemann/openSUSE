@@ -1,7 +1,7 @@
 #
 # spec file for package btar
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           btar
 Version:        1.1.1
 Release:        0
 Summary:        Featureful tar-Compatible Archiver and Compressor
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Backup
-Url:            http://freecode.com/projects/btar
+URL:            http://freecode.com/projects/btar
 Source:         http://vicerveza.homeunix.net/~viric/soft/btar/btar-%{version}.tar.gz
 # pbleser: fix various things about the Makefile, such as proper place of LFLAGS,
 # overridable OPTFLAGS, DESTDIR support
@@ -38,20 +38,18 @@ compression, input and output serialisation, and tolerance to partial
 archive errors.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
-make %{?_smp_mflags} OPTFLAGS="%{optflags} -D_GNU_SOURCE" \
+%make_build OPTFLAGS="%{optflags} -fcommon -D_GNU_SOURCE" \
 
 %install
 %make_install PREFIX="%{_prefix}"
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING doc/*
+%license COPYING
+%doc AUTHORS doc/*
 %{_bindir}/btar
-%{_mandir}/man1/btar.1*
+%{_mandir}/man1/btar.1%{?ext_man}
 
 %changelog
