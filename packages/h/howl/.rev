@@ -68,4 +68,12 @@
   * Respect use_tabs option when commenting</comment>
     <requestid>691758</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>552c4bcbdd24a3ffe944553ed1663cdb</srcmd5>
+    <version>0.6</version>
+    <time>1592245896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814647</requestid>
+  </revision>
 </revisionlist>

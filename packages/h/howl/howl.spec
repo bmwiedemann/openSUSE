@@ -32,6 +32,8 @@ BuildRequires:  gtk3-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
 Requires:       luajit
+# Bundled LuaJIT-2.1.0-beta3 failed to compile with this architectures
+ExcludeArch:    aarch64 ppc64 ppc64le s390x
 
 %description
 Howl is a general purpose editor that is customizable. It is built on
