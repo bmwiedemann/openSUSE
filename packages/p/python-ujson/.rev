@@ -65,4 +65,21 @@
     <comment></comment>
     <requestid>789362</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bd70acc33ae3979488d0b9ff8c65fad4</srcmd5>
+    <version>3.0.0</version>
+    <time>1592245756</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0:
+  * Build Windows, macOS and manylinux wheels on CI and deploy to PyPI
+  * Breaking change: New reject_bytes option to raise on bytes,
+   defaults to True to align with json library. Set to False for
+   old behaviour (#266) @elelay
+  * Breaking change: Add an allow_nan keyword argument to dumps,
+  defaults to True to align with json library. Set to False for old
+  behaviour (#327) @segfault
+  Specify setuptools_scm config in pyproject.toml (#399) @BenjaminSchubert
+  * Remove python 2.x support</comment>
+    <requestid>814556</requestid>
+  </revision>
 </revisionlist>
