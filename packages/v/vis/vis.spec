@@ -16,14 +16,16 @@
 #
 
 
+%define test_version 0.4
 Name:           vis
-Version:        0.5+git.1590819266.c37f09e
+Version:        0.6
 Release:        0
 Summary:        An editor combining the strengths of both vi(m) and sam
 License:        ISC
 Group:          Productivity/Text/Editors
 URL:            https://github.com/martanne/vis
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://github.com/martanne/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        https://github.com/martanne/vis-test/releases/download/v%{test_version}/vis-test-%{test_version}.tar.gz
 BuildRequires:  libtermkey-devel
 BuildRequires:  lua-devel
 BuildRequires:  lua-lpeg
@@ -39,11 +41,12 @@ Vis aims to be a modern, legacy free, simple yet efficient editor combining the 
 It extends vi's modal editing with built-in support for multiple cursors/selections and combines it with sam's structural regular expression based command language.
 
 %prep
-%autosetup
+%setup -q
+tar -xC test/ --strip-components 1 -f %{SOURCE1}
 
 %build
-# FIXME: you should use the %%configure macro
-./configure --prefix="%{_prefix}"
+export CFLAGS="%{optflags} -fcommon"
+%configure
 %make_build debug
 
 %install

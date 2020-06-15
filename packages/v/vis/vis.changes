@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Jun 15 07:25:48 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to the released version 0.6 (all changes since 0.5):
+  - bounded time syntax highlighting using the :set redrawtime
+    option
+  - support optional count for sam's text commands e.g. :i3/-/
+  - make <C-n> in visual mode match next occurence of existing
+    selection
+  - warn when attempting to write to an existing file
+  - improved file change detection based on inode instead of path
+    information
+  - fix file saves with modifications in file pre-save events
+  - fix save on file systems without fsync(2) support on
+    directory descriptors
+  - do not unlink file~ when saving file
+  - introduce distinct vis-menu(1) exit codes
+  - modify Lua package.path to include /init.lua
+  - performance improvements for the HTML, XML and YAML lexers
+  - new Julia and Elm lexers, better defaults for standard text
+    lexer
+  - support optional exit status in :q and :qall commands
+  - better temporary file creation using mkstemp(2)
+  - performance improvements in highlight matching parentheses
+  - improved behavior of ^ and $ in searches and looping commands
+  - improved search wrap around behavior
+  - new :set layout option to specify window orientation
+  - improved filetype detection by matching known filenames
+    exactly
+  - support DragonFly BSD in configure script
+  - better manual page, fixed warnings
+  - removed gp, gP, gq
+  - implement g~, gu and gU using tr(1), they are no longer
+    operators
+  - removed v and V in operator pending mode
+  - avoid crash if $TERM is unset
+  - keep selections after :> command
+  - normalize selections after : command execution
+  - show pending input queue content in status bar
+  - make r<Enter> insert a new line
+  - new :set loadmethod option, valid values are read, mmap or
+    auto
+  - always apply :| command to existing selections
+  - fix terminal UI on serial console
+  - various code cleanups, removal of VLA
+  - resets count, if applicable
+  - fix :X and :Y commands which were interchanged
+  - don't strip executables by default, provide install-strip
+    target
+
+-------------------------------------------------------------------
 Fri Jun 05 13:33:07 UTC 2020 - mcepl@cepl.eu
 
 - Update to version 0.5+git.1590819266.c37f09e:
