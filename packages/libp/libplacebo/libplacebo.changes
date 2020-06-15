@@ -1,4 +1,150 @@
 -------------------------------------------------------------------
+Sun Jun 14 15:37:17 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Update to version 2.72.0
+This is a major release with several key additions, most notably
+being the support for custom, mpv-style "user shaders" (.hook),
+giving us access to a large variety of pre-existing user shaders
+such as RAVU, FSRCNNX, Anime4K, SSimSuperRes, KrigBilateral,
+NNEDI3, and more.
+
+In addition to this, major additions include a completely
+refactored and fixed AV1 grain generation shader, support for
+Vulkan versions higher than 1.0, support for GPU-based timers,
+and improved interop APIs for both Vulkan and OpenGL, and new
+and improved aspect ratio handling.
+
+Finally, this release also brings with it a major change to the way
+HDR and SDR content are mapped between each other, including a new
+tone-mapping function based on the industry-standard
+ITU-R BT.2390 EETF.
+
+Additions:
+  * add pl_swapchain_hdr_metadata, to set HDR metadata on supported
+    swapchains (currently only vulkan with VK_EXT_hdr_metadata)
+  * add support for vulkan versions higher than 1.0, communicated
+    via the new fields api_version and max_api_version
+  * add support for GPU-assisted validation and best practices
+    layers, via the new field pl_vk_inst_params.debug_extra
+  * add helper functions for working with pl_rects, including new
+    aspect ratio handling helpers (pl_rect2df_aspect_*)
+  * add field pl_vulkan_params.device_uuid to allow choosing the
+    vulkan device by its UUID
+  * add function pl_vulkan_hold_raw, to hold images without
+    actually transitioning its layout and access mode
+  * add function pl_vulkan_import, to allow directly re-using an
+    existing VkDevice rather than creating a new one; this requires
+    communicating metadata about how the device was created
+  * add field pl_vulkan_params.features to allow loading optional
+    extra device features at device creation time
+  * add support for mpv-style custom user shaders (.hook),
+    using the set of functions in <libplacebo/shaders/custom.h>
+  * add pl_render_high_quality_params, enabling debanding and
+    EWA scaling
+  * add pl_timer GPU resource type and associated API functions,
+    allowing the GPU execution time of shaders and texture transfer
+    operations to be measured directly
+  * add PL_SHADER_SIG_SAMPLER, allowing generated sampling shaders
+    to directly accept the sampler to use as function parameters
+  * add pl_image_set_chroma_location to automatically apply the
+    correct chroma location to any subsampled planes
+  * add PL_TONE_MAPPING_BT_2390, a tone mapping function based on
+    the EETF from ITU-R Report BT.2390 (and make it the default)
+  * add pl_peak_detect_params.overshoot_margin to help combat
+    clipping on certain types of rapid scene fade-ins
+  * add pl_sampler_type to allow encoding non-standard sampler
+    types such as sampler2DRect, and also generalize samplers to
+    allow e.g. usampler2D or isampler3D
+  * add pl_opengl_wrap and pl_opengl_unwrap, to allow directly
+    mapping between OpenGL textures and the pl_tex abstraction
+
+Changes:
+  * deprecate pl_image.width/height, which are now inferred
+    automatically from the actual planes
+  * pl_vulkan_wrap now takes a pl_vulkan_wrap_params struct
+    instead of directly accepting its parameters, including new
+    fields sample_mode and address_mode to configure the created
+    sampler
+  * change pl_dispatch_compute to allow optionally passing in a
+    simulated framebuffer width/height, which will be used to
+    translate vertex attributes (if any)
+  * undefine disabled config.h features, instead of defining them
+    as 0
+  * remove debanding from pl_render_default_params
+  * refactor HDR<->SDR mapping; PL_COLOR_REF_WHITE has been removed
+    and replaced by PL_COLOR_SDR_WHITE (203 cd/m^2)
+    and PL_COLOR_SDR_WHITE_HLG (75% HLG), respectively
+  * completely refactor pl_shader_av1_grain`, which now samples
+    directly from the passed texture rather than requiring the
+    color be pre-sampled
+  * pl_render_image now infers the image primaries based on
+    resolution, rather than always hard-coding
+    PL_COLOR_SPACE_UNKNOWN as BT.709
+  * change pl_render_target.dst_rect from pl_rect2d to pl_rect2df,
+    allowing more accurate aspect ratio handling, and correctly
+    compensate for subpixel scaling ratios
+  * require python3-mako as a dependency of the vulkan feature
+  * pl_chroma_location_offset now treats PL_CHROMA_UNKNOWN as
+    PL_CHROMA_LEFT, the de-facto standard chroma location
+  * the default value of pl_color_map_params.tone_mapping_algo
+    is now PL_TONE_MAPPING_BT_2390
+
+Fixes and performance improvements:
+  * fix shader generation when the GLSL version is explicitly
+    overridden
+  * properly mark some shader failures (pl_shader_is_failed)
+  * fix texture invalidation on OpenGL
+  * correctly respect pl_swapchain_frame.flipped in
+    pl_render_target_from_swapchain
+  * correctly validate descriptor uniqueness in pl_pass_create
+  * skip redundant matrix multiplication in pl_shader_encode_color
+    wherever possible
+  * work around driver bugs w.r.t out-of-order buffer offsets by
+    sorting all buffer variables by offset
+  * fix edge cases in vulkan swapchain usage flag checks
+  * fix excessive CPU usage in pl_tex_download
+  * reduce the number of unnecessary GPU flushes caused by
+    pl_buf_poll
+  * fix issue where blending did not work on some drivers
+    (e.g. nvidia)
+  * make the framebuffer discard check more aggressive
+  * fix computation of anti-aliased resizable orthogonal filters,
+    e.g. when downscaling using pl_filter_lanczos
+  * fix external image memory barriers for exclusive mode images
+  * fix failure path of pl_swapchain_submit_frame
+  * fix various GLSL compatibility issues with av1 grain generation
+  * reduce maximum vulkan memory allocation slab size to conform to
+    AMD recommendations
+  * fix build error when lcms is not available
+  * fix double-application of texture scale for e.g.
+    10-bit content when using separable scalers
+  * fix a multitude of bugs affecting av1 grain generation,
+    especially for chroma planes
+  * fix segfault on vulkan device oom
+  * fix invalid shader generation on some platforms
+  * fix a multitude of bugs, edge cases and subtle off-by-ones
+    related to chroma scaling and plane alignment
+  * add fallback code for edge case w.r.t chroma scaling and gpu
+    resource exhaustion
+  * correctly load VK_KHR_swapchain in all circumstances that
+    require accessing its functions
+  * minimize fbo usage inside pl_renderer, by re-using unused fbos
+  * tweak the work group size for polar scaling to perform better
+    on modern GPUs (tested on RDNA)
+  * transparently upgrade fragment shaders to compute shaders on
+    environments with async compute
+  * pick a more reasonable size for the dummy gpu's
+    max_group_threads
+  * forbid 10-bit linear transfer functions from vulkan swapchains
+  * fix segfault when re-executing previously failed shaders
+  * fix swapchain creation errors on GLES 2
+  * explicitly mark all shader resources as non-aliased
+  * correctly specify shader storage buffers as coherent for
+    shaders that require them
+  * fix various memory barrier synchronization issues for opengl
+
+
+-------------------------------------------------------------------
 Wed May  6 04:56:38 UTC 2020 - Mia Herkt <mia@0x0.st>
 
 - Update to version 2.43.1

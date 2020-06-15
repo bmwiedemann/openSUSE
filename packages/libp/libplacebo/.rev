@@ -500,4 +500,41 @@ Other changes:
 </comment>
     <requestid>800533</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>797d7e31a6fa1fa29bc1407e1a76c185</srcmd5>
+    <version>2.72.0</version>
+    <time>1592245805</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.72.0
+This is a major release with several key additions, most notably
+being the support for custom, mpv-style &quot;user shaders&quot; (.hook),
+giving us access to a large variety of pre-existing user shaders
+such as RAVU, FSRCNNX, Anime4K, SSimSuperRes, KrigBilateral,
+NNEDI3, and more.
+In addition to this, major additions include a completely
+refactored and fixed AV1 grain generation shader, support for
+Vulkan versions higher than 1.0, support for GPU-based timers,
+and improved interop APIs for both Vulkan and OpenGL, and new
+and improved aspect ratio handling.
+Finally, this release also brings with it a major change to the way
+HDR and SDR content are mapped between each other, including a new
+tone-mapping function based on the industry-standard
+ITU-R BT.2390 EETF.
+Additions:
+  * add pl_swapchain_hdr_metadata, to set HDR metadata on supported
+    swapchains (currently only vulkan with VK_EXT_hdr_metadata)
+  * add support for vulkan versions higher than 1.0, communicated
+    via the new fields api_version and max_api_version
+  * add support for GPU-assisted validation and best practices
+    layers, via the new field pl_vk_inst_params.debug_extra
+  * add helper functions for working with pl_rects, including new
+    aspect ratio handling helpers (pl_rect2df_aspect_*)
+  * add field pl_vulkan_params.device_uuid to allow choosing the
+    vulkan device by its UUID
+  * add function pl_vulkan_hold_raw, to hold images without
+    actually transitioning its layout and access mode
+  * add function pl_vulkan_import, to allow directly re-using an
+    existing VkDevice rather than creating a new one; this requires</comment>
+    <requestid>814574</requestid>
+  </revision>
 </revisionlist>

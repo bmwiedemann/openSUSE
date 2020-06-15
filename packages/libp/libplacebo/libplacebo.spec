@@ -16,9 +16,9 @@
 #
 
 
-%define sover 43
+%define sover 72
 Name:           libplacebo
-Version:        2.43.1
+Version:        2.72.0
 Release:        0
 Summary:        Library for GPU-accelerated video/image rendering primitives
 License:        LGPL-2.1-or-later
@@ -29,6 +29,7 @@ BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
+BuildRequires:  python3-mako
 BuildRequires:  shaderc-devel
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(lcms2)
