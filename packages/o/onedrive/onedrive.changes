@@ -1,0 +1,463 @@
+-------------------------------------------------------------------
+Mon Jun 15 11:42:37 UTC 2020 - Enno Gotthold <egotthold@suse.com>
+
+- Modified service file to exclude bad file 
+
+-------------------------------------------------------------------
+Wed May 27 09:35:51 UTC 2020 - dmacvicar@suse.com
+
+- Update to version 2.4.2:
+  * Release files for 2.4.2 (#933)
+  * Update known-issues.md
+  * Update logging output of skipped files (#932)
+  * Strengthen data preservation checks & update how bypass preservation is set (#931)
+  * Add developer option to display sync options (#924)
+  * Add file validation for moved / renamed files (#929)
+  * Add debugging output for retry wait time (#928)
+  * Change monitor interval default to 300 seconds (#923)
+  * Implement 'bypass_data_preservation' enhancement (Issue #824) (#831)
+  * Remove double scan of OneDrive when using --monitor --resync at application startup (#920)
+  * Resolve issues identified by Valgrind (#910)
+  * Check if configuration file exists before trying to load it (#909)
+  * Fix module std.digest.digest is deprecated (#916)
+  * Update enforce statement for parent id database query (Issue #912) (#913)
+  * Update README.md
+  * Catch unhandled MonitorException when inotify throws an error (Issue #903) (#905)
+  * Better handle out-of-space message (#907)
+  * Release 2.4.2 Dev Prep (#904)
+  * Release files for 2.4.1 (#883)
+  * Update how './' is stripped from a path before check if excluded (Issue #901) (#902)
+  * Update handling of fullScanRequired and syncListConfiguredFullScanOverride (Issue #896) (#899)
+  * Update #658 & #865 handling as when to setOneDriveFullScanTrigger (Issue #896) (#898)
+  * Fix assertion when attempting to compute complex path (Issue #890) (#891)
+  * Update progress bar to be more accurate when downloading large files (#888)
+  * Update known-issues.md (#889)
+  * Catch unhandled curl exception on operationTimeout being exceeded (#886)
+  * Fix Codacy issues (#881)
+  * Move build-rpm-howto.md to docs directory (#880)
+  * Update CentOS Dockerfile (Issue #878) (#879)
+  * Update README.md
+  * Update README.md
+  * Implement resync in config option (Issue #874) (#875)
+  * Add known-issues.md (#877)
+  * Update USAGE.md
+  * Update README.md
+  * Update RPM spec file (Issue #871) (#873)
+  * Differenciate between OneNote objects and other unsupported objects (#870)
+  * Perform full scan of OneDrive when required to ensure consistent local state (Issue #865) (#867)
+  * Update handling of folders that cannot be read if parent should be skipped (#866)
+  * Update link to new microsoft documentation (#861)
+  * Update skip_dotfiles handling of .folders when in monitor mode (#848)
+  * Update error logging output to be consistent (#860)
+  * Handle zero-byte modified files for OneDrive Business (#854)
+  * Handle .nosync directive when downloading new files (Issue #827) (#842)
+  * Update --single-directory handling for --dry-run and --resync (#856)
+  * Fix Alpine automated builds on Docker (#855)
+  * Update application output when using --dry-run and --resync and database is corrupt (Issue#844) (#845)
+  * Handle renaming dotfiles to another dotfile when skip_dotfile=true in monitor mode (#843)
+  * Escape parentheses from path or file names (#841)
+  * Handle renaming files to a name starting with a dot when skip_dotfile=true (#838)
+  * Release 2.4.1 Dev Prep (#839)
+
+-------------------------------------------------------------------
+Wed May 27 09:31:52 UTC 2020 - Duncan Mac-Vicar <dmacvicar@suse.com>
+
+- Update to 2.4.2:
+  * Catch unhandled MonitorException when inotify throws an error (#905)
+  * Better handle out-of-space message (#907)
+  * Check if configuration file exists before trying to load it (#909)
+  * Resolve issues identified by Valgrind (#910)
+  * Update enforce statement for parent id database query (#913)
+  * Fix module std.digest.digest is deprecated (#916)
+  * Remove double scan of OneDrive when using --monitor --resync at application startup (#920)
+  * Change monitor interval default to 300 seconds (#923)
+  * Add developer option to display sync options (#924)
+  * Add debugging output for retry wait time (#928)
+  * Add file validation for moved / renamed files (#929)
+  * Strengthen data preservation checks & update how bypass preservation is set (#931)
+  * Update logging output of skipped files (#932)
+- Changes from 2.4.1:
+  * Update documentation files (various)
+  * Handle renaming files to a name starting with a dot when skip_dotfile=true (#838)
+  * Escape parentheses from path or file names (#841)
+  * Handle renaming dotfiles to another dotfile when skip_dotfile=true in monitor mode (#843)
+  * Update application output when using --dry-run and --resync and database is corrupt (#845)
+  * Fix Alpine automated builds on Docker (#855)
+  * Update --single-directory handling for --dry-run and --resync (#856)
+  * Handle .nosync directive when downloading new files (#842)
+  * Handle zero-byte modified files for OneDrive Business (#854)
+  * Update error logging output to be consistent (#860)
+  * Update skip_dotfiles handling of .folders when in monitor mode (#848)
+  * Update link to new Microsoft documentation (#861)
+  * Update handling of folders that cannot be read if parent should be skipped (#866)
+  * Perform full scan of OneDrive when required to ensure consistent local state (#867)
+  * Differentiate between OneNote objects and other unsupported objects (#870)
+  * Update RPM sample spec file (#873)
+  * Implement --resync in config option (#875)
+  * Update CentOS Dockerfile (#879)
+  * Fix Codacy reported issues (#881)
+  * Catch unhandled curl exception on operationTimeout being exceeded (#886)
+  * Validate that the download progress bar is working for large files (#888)
+  * Fix assertion when attempting to compute complex path (#891)
+  * Update #658 & #865 handling as when to setOneDriveFullScanTrigger (#898)
+  * Update handling of fullScanRequired and syncListConfiguredFullScanOverride (#899)
+  * Update how './' is stripped from a path before check if excluded via skip_dir (#902)
+
+
+-------------------------------------------------------------------
+Tue May  5 07:05:04 UTC 2020 - Enno Gotthold <egotthold@suse.com>
+
+- _service: Exclude the testfolder as it contains files not readable
+- Specfile: Change logrotate Require to Recommends
+
+-------------------------------------------------------------------
+Thu Apr 23 15:26:03 UTC 2020 - Boris Manojlovic <boris@steki.net>
+
+- corrected spec file: moved configure macro into build section 
+
+-------------------------------------------------------------------
+Wed Apr 22 08:15:49 UTC 2020 - Boris Manojlovic <boris@steki.net>
+
+- updated spec file with license and documentation fixes
+- removed redundant tar.gz file
+- changed _service to buildtime
+
+-------------------------------------------------------------------
+Thu Apr 16 09:11:46 UTC 2020 - Enno Gotthold <egotthold@suse.com>
+
+- Changed the service & spec file so updates are done easier.
+
+-------------------------------------------------------------------
+Thu Apr 16 08:53:01 UTC 2020 - egotthold@suse.com
+
+- Update to version 2.4.0:
+  * Release files for 2.4.0 (#833)
+  * Update client identifier and auth scopes (Issue #769) (#770)
+  * Update INSTALL.md (#834)
+  * Update INSTALL.md
+  * Update regex parsing of response URI (#830)
+  * Update error response handling for catching HTTP 429 responses - activityLimitReached (Issue #815) (#816)
+  * Handle moving files into a skipped .folder when skip_dotfiles = true (#828)
+  * Update logging output (Issue #818) (#819)
+  * Update application output when just authorising application (Issue #820) (#821)
+  * Update ldc installation repo for alpine (#814)
+  * Always log when a file is skipped due to the item being invalid (Issue #811)
+  * Update USAGE.md
+  * Catch when OneDrive throws an error response on initialising (Issue #802) (#804)
+  * Update INSTALL.md
+  * Update file handling when a failed download has occured due to CTRL-C (#800)
+  * Update completions to include the --force-http-2 option (#799)
+  * Update USAGE.md to clarify path when setting up multiple daemons (#798)
+  * Catch 429 HTTPS return code when query for oneDriveRootDetails fails (#796)
+  * Dockerfile for Raspberry Pi / ARM (#789)
+  * Update how the 'username' is determined from the running process for logfile naming (Issue #786) (#787)
+  * Implement #699 - Perform skip_dir explicit match only (#768)
+  * Add NixOS installation instructions (#785)
+  * Implement #763 - Delete local files after sync (#767)
+  * Fix Docker alpine by adding ldc-runtime to output build (#778)
+  * Update INSTALL.md
+  * Fix Office 365 file name in README (#766)
+  * Update USAGE.md
+  * Update README.md
+  * Implement warning on big deletes to safeguard data on OneDrive (#621)
+  * Update Dockerfile-alpine file to fix Docker build issue (#764)
+  * Release-2.4.0-dev prep (#761)
+  * Release files for 2.3.13 (#760)
+  * Fix --dry-run output to be consistent when using --upload-only & --no-remote-delete (Issue #758)
+  * Change synclist override flag to false as default when not using sync_list (#745)
+  * Update INSTALL.md build instructions for CentOS platforms (#754)
+  * Update INSTALL.md with details of Linux packages (#752)
+  * Update Ubuntu 16.x i386 instructions (#749)
+  * Release-2.3.13-dev prep (#746)
+
+-------------------------------------------------------------------
+Wed Dec 25 08:57:31 UTC 2019 - boris@steki.net
+
+- Update to version 2.3.12:
+  * Release files for 2.3.12 (#742)
+  * Update INSTALL.md (#741)
+  * Update Ubuntu i386 build instructions (#739)
+  * Fix rebuilding of onedrive, but ensure version is properly updated (#731)
+  * Fix where an item now out of scope should be flagged for local delete (#733)
+  * Catch DNS resolution error (#730)
+  * Check database for excluded sync_list items previously in scope (Issue #723) (#724)
+  * Add debug message to when a message is sent to dbus or notification daemon (#728)
+  * docker guide fixes, add multiple account setup instructions (#729)
+  * Update Microsoft restriction and limitations (#725)
+  * Retry session upload fragment when transient errors occur to prevent silent upload failure (#721)
+  * Release 2.3.12-dev prep (#722)
+  * Release files for 2.3.11 (#717)
+  * Only monitor top level single directory + its children if using --single-directory (Issue #709)
+  * Fix --monitor when used with --download-only (#708)
+  * Catch a 412 response when moving files (Issue #706) (#707)
+  * Fix unhandled monitor initialisation exception (Issue #704) (#705)
+  * Revert "Fix unhandled monitor initialisation exception"
+  * Fix unhandled monitor initialisation exception
+  * Fix call from --monitor to observe --no-remote-delete (#703)
+  * Fix 'Key not found: name' when computing skip_dir path (#701)
+  * Reduce change scan impact of fix for #658 (#691)
+  * Update skip_dir pattern matching when using wildcards (Issue #689) (#692)
+  * Fix typo - retrySucess -> retrySuccess
+  * Handle curl exceptions and timeouts better with backoff/retry logic (Issue #693) (#695)
+  * Update JSON logging output (#696)
+  * Remove unused and unexported SED variable in Makefile.in (#687)
+  * Modify 'Processing X changes' output to be more reflective of actual activity (Issue #679) (#680)
+  * Fix log output to be consistent
+  * Fix typo - skip_list -> sync_list
+  * Fix handling of skip_dir, skip_file & sync_list config options (#686)
+  * Fixing typo in USAGE.md (#682)
+  * Release 2.3.11-dev prep (#681)
+  * Release files for 2.3.10 (#678)
+  * Update config and usage.md (Issues #657, #675) (#676)
+  * Make user-agent string a configuration option (#673)
+  * Update entrypoint.sh with additional environment variables (#672)
+  * Return remote name when 'case-insensitive match' (#670)
+  * Fix crash when resume_upload file is not a valid JSON (#664)
+  * Update OneDrive API status code 500 handling (#661)
+  * Query for all changes if using sync_list file (#659)
+  * Move logging of 'initialisation' to actually when the attempt to initialise is performed (#656)
+  * Docker - Make --verbose optional based on environment variable (#651)
+  * Fix downloading of files from OneDrive Personal Shared Folders (Issue #635) (#637)
+  * Fix Ubuntu i386 / i686 install requirements (#652)
+  * Revert "Make verbose logging output optional on Docker  (#638)"
+  * Update documentation (#646)
+  * Fix abnormal termination when no internet connection (#643)
+  * Fix 'key not found: name' when checking if item was synced (#645)
+  * Make verbose logging output optional on Docker  (#638)
+  * Release 2.3.10-dev prep (#640)
+  * Release files for 2.3.9 (#634)
+  * Fix handling of 5xx responses from OneDrive when uploading via a session (Issue #632) (#631)
+  * Add readme badges (#629)
+  * Remove redundant logging output (#627)
+  * Detect the need for --resync when config changes (#617)
+  * Add additional JSON object validation (#623)
+  * Fix unhandled error exceptions that cause application to exit / crash when uploading files (Issue #624) (#625)
+  * Change minimum version of LDC to v1.12.0 (#626)
+  * Remove double logging output for a OneDrive 412 error (#622)
+  * Catch a 403 Forbidden exception when querying Sharepoint Library Names (#620)
+  * Update for 2.3.9-dev (#618)
+  * Release files for 2.3.8 (#614)
+  * Implement --get-file-link (#612)
+  * Update README.md
+  * Catch error when creating sync dir fails (#608)
+  * Add a check to handle moving items out of sync scope & delete locally if true (#604)
+  * Resolve file / folder upload issues (Issue #598) (#602)
+  * Update onedrive_service.sh
+  * Add back CentOS 6 install & uninstall to Makefile (#601)
+  * Update USAGE.md
+  * Update USAGE.md
+  * Update Sharepoint modified file handling for files > 4Mb in size (#594)
+  * Add date tag on docker.hub (#584)
+  * Update USAGE.md (#588)
+  * Update Sharepoint Document Library modified file handling (#590)
+  * Add explicit check for hashes being returned from OneDrive (Issue #591) (#592)
+  * Update INSTALL.md (#589)
+  * Fix hidden directories in 'root' from having prefix removed (#586)
+  * Fix docker build error on stretch (#582)
+  * Fix entrypoint.sh to work with "sudo docker run" (#581)
+  * Update entrypoint.sh (#579)
+  * Remove -d shorthand for --download-only (#577)
+  * Update INSTALL.md
+  * Update INSTALL.md
+  * Update LDC to v1.16.0 (#574)
+  * Update bug_report.md
+  * Change unauthorized-api exit code to 3 (Issue #567) (#572)
+  * Fix unable to download all files (Issue #563) (#568)
+  * Update for 2.3.8-dev (#570)
+
+-------------------------------------------------------------------
+Mon Jul 08 21:00:29 UTC 2019 - boris@steki.net
+
+- Update to version 1562145247.ed19175:
+  * 
+
+-------------------------------------------------------------------
+Mon Jul 08 20:54:41 UTC 2019 - boris@steki.net
+
+- Update to version 2.3.7:
+  * Update LDC to v1.16.0 (#574)
+  * Update bug_report.md
+  * Change unauthorized-api exit code to 3 (Issue #567) (#572)
+  * Fix unable to download all files (Issue #563) (#568)
+  * Update for 2.3.8-dev (#570)
+  * Release files for 2.3.7 (#566)
+  * Fix not all files being downloaded due to query failure & false DB update (#564)
+  * Update to 2.3.7-dev (#565)
+  * Update release files for 2.3.6 (#562)
+  * Update fix for Issue #555 (#559)
+  * Add download size & hash check (Issue #558) (#560)
+  * Handle OneDrive error response on creating upload session (#556)
+  * Fixed some spelling/grammatical errors (#557)
+  * Fix building without git available (#554)
+  * Implement HTTP/2 downgrade by default (#549)
+  * Add object check for json value (#551)
+  * Update for new dev release (#548)
+  * Release files for 2.3.5 (#546)
+  * Check for supported version of D compiler
+  * Update issue #540 fix (#543)
+  * Update USAGE.md
+  * Update USAGE.md (#544)
+  * Size check should only be used if configured (Issue #540) (#541)
+  * fix broken autoconf code for --enable-XXX options (#539)
+  * get rid of forced root necessity during installation (#538)
+  * Handle a directory in the sync_dir when no permission to access (Issue #532) (#536)
+  * Update to v2.3.5-dev (#531)
+  * Update files for release 2.3.4 (#530)
+  * Fix building on docker hub and older install programs (#529)
+  * Update gitignore (#528)
+  * Install doc files without sub-directory (#527)
+  * Rework directory layout and refactor MD files for readability (#523)
+  * Support file based authorization (Issue: #524) (#525)
+  * Update Dockerfile (#522)
+  * fix docker entrypoint failures when gid is defined but not uid (#521)
+  * implement skip_size (Issue #213) (#517)
+  * Update missing cTag patch (Issue #512) (#515)
+  * Handle OneDrive API response when cTag key is missing (Issue #512) (#513)
+  * Enhance error message for curl CA SSL issue (Issue #507) (#508)
+  * Check timestamp to ensure that latest timestamp is used when comparing OneDrive changes (Issue #505) (#506)
+  * Update README.md
+  * Catch a curl timeout exception (#499)
+  * Check to ensure that file downloaded and is present locally before setting times (Issue #496)
+  * Update sync.d (#493)
+  * Update Makefile for RHEL/CentOS 7 systemd locations & fix uninstall of unit files (Issue #495) (#496)
+  * Implement --sync-root-files when using a sync_list file (Issue #491) (#492)
+  * Fix dry run reports "Deleting item from one drive" for remotely created file (Issue #489) (#490)
+  * Better handling for initialisation errors (Issue #483) (#484)
+  * Fix 'Local files not deleted' when using bad 'skip_file' entry (#480)
+  * remove Makefile (#477)
+  * Update Makefile (#475)
+  * autoconf based build system (#287)
+  * Update release files for 2.3.3 (#471)
+  * Add logging as to why resume upload failed (Issue #468) (#470)
+  * Update 'resume_upload' handling in the event of bad OneDrive response (Issue #468) (#469)
+  * Update 'min_notif_changes' to 'min_notify_changes' (#467)
+  * Add 'quota' check for valid value (#466)
+  * Handle object error response from OneDrive (Issue #464) (#465)
+  * config options for command line switches (#449)
+  * Update onedrive.logrotate (#463)
+  * Add completion support (Issue: #454) (#460)
+  * Add debugging for --get-O365-drive-id (#462)
+  * Update 'root' item identification handling (#457)
+  * Add --upload-only check for sharepoint fix (Issue #452) (#453)
+  * Implement more meaningful 5xx error responses (Issue #445) (#451)
+  * Update release files for 2.3.2 (#448)
+  * Issue #432 and #441 combined (#447)
+  * Roll back to v2.3.1 (#446)
+  * Resolve file creation loop when working directly in the synced folder with libreoffice (#442)
+  * Reduce scanning of local filesystem needlessly every sync in monitor mode (#433)
+  * fixes to the merge routine
+  * move verbose check to first getopt to make it available early on
+  * config directory management fixes
+  * remove unnecessary code, cleanup
+  * update log.verbose from options
+  * remove work-around from previous versions
+  * order getopt call options alphabetically
+  * clean up, move help function
+  * move more parts of the getopt calls into config module
+  * config options: working version
+  * more playing around
+  * some playground
+  * initial work on various config options for cmd line options
+
+-------------------------------------------------------------------
+Tue Mar 26 10:38:22 UTC 2019 - boris@steki.net
+
+- Update to version 2.3.1:
+  * Update release files for 2.3.1 (#440)
+  * Update Makefile (#439)
+  * Update .travis-ci.sh (#435)
+  * Update release files for 2.3.0 (#434)
+  * Resolve high CPU usage when performing DB reads (#419)
+  * Prevent use of --synchronize & --monitor together (#431)
+  * Update 'skip_dir' handling to check against OneDrive new downloads (#427)
+  * ignore a path containing multiple dirs in skip_dir
+  * Fix JSONValue is not an object crash when a 5xx error is returned when uploading files (#426)
+  * Declare version as phony (always outdated) target to guarantee update (#429)
+
+-------------------------------------------------------------------
+Mon Mar 18 21:54:51 UTC 2019 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest release 2.2.6
+  + Add support for install & uninstall on RHEL / CentOS 6.x (#353)
+  + Add support for when notifications are enabled, display the number
+    of OneDrive changes to process if any are found (#355)
+  + Add 'config' option 'min_notif_changes' for minimum number
+    of changes to notify on, default = 5 (#355)
+  + Add additional Docker container builds utilising a smaller OS footprint (#369)
+  + Add configurable interval of logging in monitor mode (#391)
+  + Implement new CLI option --skip-dot-files to skip .files
+    and .folders if option is used (#386)
+  + Implement new CLI option --check-for-nosync to ignore folder
+    when special file (.nosync) present (#390)
+  + Implement new CLI option --dry-run (#337)
+  + Resolve application crash when unable to delete remote folders
+    when business retention policies are enabled (#338)
+  + Resolve deprecation warning: loop index implicitly converted
+    from size_t to int (#350)
+  + Resolve warnings regarding 'bashisms' (#349)
+  + Resolve handling of notification failure is dbus server has
+    not started or available (#365)
+  + Resolve handling of response JSON to ensure that 'id' key
+    element is always checked for (#372)
+  + Resolve excessive & needless logging in monitor mode (#373)
+  + Resolve compiling with LDC on Alpine as musl lacks some standard interfaces (#369)
+  + Resolve notification issues when offline and cannot act on changes (#385)
+  + Resolve Docker entrypoint.sh to accept command line arguments (#387)
+  + Resolve to create a new upload session on reinit (#379)
+  + Resolve where on OneDrive query failure, default root
+    and drive id is used if a response is not returned (#397)
+  + Resolve Key not found: nextExpectedRanges when attempting
+    session uploads and incorrect response is returned (#409)
+  + Resolve application crash when re-using an authentication
+    URI twice after previous --logout (#410)
+  + Resolve creating a folder on a shared personal folder appears
+    successful but returns a JSON error (#397)
+  + Resolve to treat mv of new file as upload of mv target (#357)
+  + Update Debian i386 build dependencies (#374)
+  + Update handling of --get-O365-drive-id to print out all 'site names'
+    that match the explicit search entry rather than just the last match (#354)
+  + Update Docker readme & documentation (#363)
+  + Update handling of validating local file permissions for new file uploads (#407)
+  + Update --display-config to display sync_list if configured (#327)
+  + Add --force-http-1.1 flag to downgrade any HTTP/2 curl operations to HTTP 1.1 protocol (#327)
+  + Update handling of 'remote' folder designation as 'root' items (#328)
+  + Add a check for 'id' key on metadata update to prevent
+    'std.json.JSONException@std/json.d(494): Key not found: id' (#329)
+  + Update handling of HTTP 412 - Precondition Failed errors (#329)
+  + Fix items highlighted by codacy review (#332)
+  + Ensure that remote deletes are handled correctly (#333)
+  + Handle 'Item not found' exception when unable to query
+    OneDrive 'root' for changes (#336)
+  + Support building with ldc2 and usage of pkg-config for lib finding (#334)
+  + Add handling for JSON response error when OneDrive API
+    returns a 404 due to OneDrive API regression (#340)
+  + OneDrive API Issue - Creating a folder on a shared personal folder appears
+    successful but returns a JSON error (#339 / OneDrive/onedrive-api-docs#976)
+
+
+-------------------------------------------------------------------
+Mon Jan  7 01:58:08 UTC 2019 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest release 2.2.4 
+
+-------------------------------------------------------------------
+Tue Oct 23 09:13:34 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
+
+- switch to significantly advanced abraunegg fork
+- spec cleanup and adjustments
+
+-------------------------------------------------------------------
+Wed Apr 11 08:52:59 UTC 2018 - boris@steki.net
+
+- added patch crash when the delta link is expired
+
+-------------------------------------------------------------------
+Wed Feb 14 10:09:46 UTC 2018 - boris@steki.net
+
+- added released version 1.1.1 
+
+-------------------------------------------------------------------
+Tue Jul  4 18:40:41 UTC 2017 - boris@steki.net
+
+- repack of git version as there are no more 
+  standard tagged releases 
