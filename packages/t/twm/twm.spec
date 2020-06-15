@@ -1,7 +1,7 @@
 #
 # spec file for package twm
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           twm
-Version:        1.0.10
+Version:        1.0.11
 Release:        0
 Summary:        Tab Window Manager for the X Window System
 License:        HPND
 Group:          System/X11/Utilities
-Url:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+URL:            http://xorg.freedesktop.org/
+Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 Source1:        twm.desktop
 Patch1:         twm-suse.diff
 BuildRequires:  bison
@@ -63,7 +63,7 @@ install -m0644 -D %{SOURCE1} %{buildroot}%{_datadir}/xsessions/twm.desktop
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog COPYING README
+%doc ChangeLog COPYING README.md
 %{_bindir}/twm
 %{_datadir}/X11/twm/
 %{_datadir}/xsessions/twm.desktop
