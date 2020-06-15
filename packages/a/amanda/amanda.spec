@@ -1,7 +1,7 @@
 #
 # spec file for package amanda
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Patch4:         amanda-3.3.2-returnvalues.patch
 Patch5:         amanda-timestamp.patch
 Patch6:         amanda-3.5-no_return_in_nonvoid_fnc.patch
 Patch7:         amanda-libnsl.patch
+Patch8:         amanda-3.5.1-GCC10_extern.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -90,6 +91,7 @@ rm -r patches
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 ./autogen

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  8 13:04:22 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- add amanda-3.5.1-GCC10_extern.patch to fix build with GCC10
+
+-------------------------------------------------------------------
 Thu Nov 28 15:25:56 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
 
 - change %{_libexecdir}/amanda/application/ owner to root otherwise
