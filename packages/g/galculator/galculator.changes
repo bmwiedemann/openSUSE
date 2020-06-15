@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 11 14:48:02 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add -fcommon to allow building against GCC10 
+
+-------------------------------------------------------------------
 Sun Dec 29 23:01:00 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Removed Provide and obsolete mate-calc. Galculator is NOT a replacement 
