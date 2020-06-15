@@ -40,9 +40,9 @@ Requires:       terraform >= 0.12.0
 BuildRequires:  golang
 %endif
 %if 0%{?suse_version}
-BuildRequires:  golang(API) >= 1.14
 BuildRequires:  golang-packaging
 BuildRequires:  xz
+BuildRequires:  golang(API) >= 1.14
 %endif
 %endif
 %if 0%{?suse_version}
