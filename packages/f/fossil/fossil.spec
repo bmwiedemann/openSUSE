@@ -30,6 +30,8 @@ Group:          Development/Tools/Version Control
 URL:            https://www.fossil-scm.org/
 Source:         https://www.fossil-scm.org/index.html/uv/%{name}-src-%{version}.tar.gz
 Patch1:         fossil-2.7-remove_date_time.patch
+# PATCH-FIX-UPSTREAM https://fossil-scm.org/fossil/info/1a894c08206f4c71bcc3
+Patch2:         fossil-2.11-reproducible.patch
 BuildRequires:  fuse-devel
 BuildRequires:  gcc
 BuildRequires:  openssl-devel
@@ -53,9 +55,10 @@ these features:
 # test package version and source version match
 grep -qFx %{version} VERSION
 %patch1 -p1
+%patch2 -p1
 
 %build
-export CFLAGS="%{optflags}"
+export CFLAGS="%{optflags} -DFOSSIL_BUILD_EPOCH=${SOURCE_DATE_EPOCH:-42}"
 # FIXME: you should use the %%configure macro
 ./configure \
         --prefix=%{_prefix} \
