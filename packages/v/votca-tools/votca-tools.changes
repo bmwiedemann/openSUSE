@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Jun 15 08:03:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move the miscellaneous manpages from the library package to the
+  main package. SLPP disallows non-versioned files in the
+  shared-library package as it makes them non-parallel installable
+  to newer versions. Additionally, the man page does not provide
+  information of pure library users.
+- Have the main package conflict with the old library package
+  (libvotca_tools5) that contained the man page.
+
+-------------------------------------------------------------------
+Sat Apr 18 04:33:29 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- Update to 1.6
+  * fix clang-10 warnings ([gh#votca/tools#217])
+  * clean up VOTCARC.* ([gh#votca/tools#220])
+  * fix exported target with mkl ([gh#votca/tools#223],
+  * [gh#votca/tools#224])
+  
+-------------------------------------------------------------------
+Mon Feb 10 16:29:24 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- Update to 1.6_rc2
+  * fix inheritance bug in cmake files ([gh#votca/tools#197])
+  * fix bug in table class ([gh#votca/tools#196])
+  * fix build on 32-bit archs ([gh#votca/tools#199])
+  * remove old doxygen target ([gh#votca/tools#211])
+
+-------------------------------------------------------------------
+Thu Dec  5 11:02:55 UTC 2019 - Christoph Junghans <junghans@votca.org>
+
+- Update to 1.6_rc1
+  * replaced fftw with Eigen3 fft
+  * replaced random with std::random implementation
+  * added many unit tests
+  * formated code with clang-format
+  * major cmake refactor
+
+-------------------------------------------------------------------
 Thu Nov 21 14:52:47 UTC 2019 - Christoph Junghans <junghans@votca.org>
 
 - Upgrade to 1.5.1
