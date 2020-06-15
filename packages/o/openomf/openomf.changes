@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 13 18:17:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch to workaround gcc10 compilation errors (boo#1160244):
+  * openomf-set-cflags.patch
+
+-------------------------------------------------------------------
 Thu Feb  7 10:28:31 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace storytelling by an actual description.

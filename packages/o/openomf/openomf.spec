@@ -1,7 +1,7 @@
 #
 # spec file for package openomf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,8 +29,10 @@ URL:            http://www.openomf.org
 Source:         %{name}-%{version}.tar.xz
 Source2:        %{name}.README.SUSE
 Patch0:         libshadowdive-soversion.patch
+Patch1:         openomf-set-cflags.patch
 BuildRequires:  ImageMagick
 BuildRequires:  cmake
+BuildRequires:  enet-devel
 BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpng16-compat-devel
@@ -39,7 +41,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(argtable2)
 BuildRequires:  pkgconfig(cunit)
 BuildRequires:  pkgconfig(libconfuse)
-BuildRequires:  pkgconfig(libenet)
 BuildRequires:  pkgconfig(libxmp)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(sdl2)
@@ -86,6 +87,7 @@ Development and header files for libShadowDive.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %cmake \
