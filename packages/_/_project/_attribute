@@ -297,7 +297,7 @@
   poo#66373: '20200502'
   poo#66580: '20200612'
   poo#66784: '20200612'
-  poo#67183: '20200612'
+  poo#67183: '20200614'
   poo#67216: '20200526'
   poo#67234: '20200612'
   poo#67288: '20200609'
@@ -528,7 +528,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20200612'
 publishing: '20200612'
-testing: '20200612'
+testing: '20200614'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
