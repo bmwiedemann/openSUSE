@@ -30,7 +30,9 @@ Source0:        https://github.com/BenLangmead/bowtie2/archive/v%{version}.tar.g
 Source1:        simde-0.0~git20190101.422ed9c.tar.xz
 # PATCH-FIX-UPSTREAM bowtie2-cmake-install-targets.patch gh#BenLangmead/bowtie2#292 badshah400@gmail.com -- Add install targets to cmake scripts and fix tests; patch taken from upstream git
 Patch0:         bowtie2-cmake-install-targets.patch
+Patch1:         bowtie2-processor_support.patch
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
@@ -50,6 +52,7 @@ supports gapped, local, and paired-end alignment modes.
 %setup -q
 %setup -q -b 1
 %patch0 -p1
+%patch1 -p1
 pushd third_party
 rmdir simde
 ln -s ../../simde-*/ simde
@@ -76,6 +79,8 @@ sed -i -e 's/-m64//' CMakeLists.txt
 perlbin=`which perl`
 sed -i "s:%{_bindir}/env perl:${perlbin}:" %{buildroot}%{_bindir}/bowtie2
 sed -i "s:%{_bindir}/env python:%{_bindir}/python:" %{buildroot}%{_bindir}/bowtie2-{build,inspect}
+
+%fdupes %{buildroot}%{_bindir}
 
 %files
 %doc AUTHORS MANUAL NEWS TUTORIAL VERSION
