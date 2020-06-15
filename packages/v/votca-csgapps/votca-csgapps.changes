@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Apr 18 04:55:57 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- Upgrade to 1.6
+  - details: https://github.com/votca/csg/blob/stable/CHANGELOG.md
+- Drop support for older Suse Version
+
+-------------------------------------------------------------------
+Mon Feb 10 17:21:08 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- Upgrade to 1.6_rc2
+  - details: https://github.com/votca/csg/blob/stable/CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Dec  5 17:21:08 UTC 2019 - Christoph Junghans <junghans@votca.org>
+
+- Upgrade to 1.6_rc1
+  - update related to Eigen3 move
+  - details: https://github.com/votca/csg/blob/stable/CHANGELOG.md
+
+-------------------------------------------------------------------
 Thu Nov 21 14:59:55 UTC 2019 - Christoph Junghans <junghans@votca.org>
 
 - Upgrade to 1.5.1

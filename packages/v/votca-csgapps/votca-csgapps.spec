@@ -1,8 +1,8 @@
 #
 # spec file for package votca-csgapps
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2013-2019 Christoph Junghans
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2013-2020 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 #
 
 Name:       votca-csgapps
-Version:    1.5.1
+Version:    1.6
 %define     uversion %{version}
 Release:    0
 Summary:    VOTCA coarse-graining engine applications
@@ -31,11 +31,7 @@ BuildRequires:  gromacs-devel
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  fdupes
-%if 0%{?suse_version} > 1325
 BuildRequires:  libboost_program_options-devel
-%else
-BuildRequires:  boost-devel >= 1.39.0
-%endif
 BuildRequires:  votca-csg-devel = %{version}
 BuildRequires:  votca-tools-devel = %{version}
 BuildRequires:  cmake
@@ -52,10 +48,10 @@ This package contains sample applications of the VOTCA Coarse Graining Engine.
 
 %build
 %{cmake} -DENABLE_TESTING=ON
-make %{?_smp_mflags}
+%cmake_build
 
 %install
-make -C build install DESTDIR=%{buildroot}
+%cmake_install
 
 %fdupes %{buildroot}%{_prefix}
 
@@ -63,8 +59,7 @@ make -C build install DESTDIR=%{buildroot}
 make -C build test CTEST_OUTPUT_ON_FAILURE=1
 
 %files
-%defattr(-,root,root,-)
-%doc README
+%doc README.md
 %{_bindir}/*
 
 %changelog
