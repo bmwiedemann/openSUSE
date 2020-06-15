@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname caldav
 Name:           python-%{modname}
-Version:        0.6.2
+Version:        0.7.1
 Release:        0
 Summary:        CalDAV (RFC4791) client library for Python
 License:        GPL-3.0-or-later AND Apache-2.0
@@ -27,14 +27,12 @@ Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/%{modname}
 Source:         https://files.pythonhosted.org/packages/source/c/caldav/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module vobject}
 BuildRequires:  python-rpm-macros
 Requires:       python-lxml
-Requires:       python-nose
 Requires:       python-requests
 Requires:       python-six
 Requires:       python-vobject

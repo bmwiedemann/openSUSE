@@ -47,4 +47,21 @@
     <comment></comment>
     <requestid>766864</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>190614cb953f13590e96a0251a948788</srcmd5>
+    <version>0.7.1</version>
+    <time>1592245907</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.1:
+  * Some tweaks to support newer versions of Zimbra and other caldav server implementations with slightly twisted support for the RFC.
+  * API change: add_event, add_todo and add_journal methods are now deprecated and aliases of save_. New attributes no_create and no_overwrite if one wants to be sure the save_-methods does the right thing.
+  * Calendars can now be created without a display name
+  * Quite some minor bugfixes
+  * Some code refactoring, removing some duplicated code
+  * library will gracefully create an UID if fed with caldav data missing the UID field
+  * the code for calendar searches has been reorganized making it possible for &quot;power users&quot; to do custom calendar searches.
+- Drop nose from BuildRequires/Requires, we don't run the testsuite, and it
+  isn't listed in the requirements.</comment>
+    <requestid>814646</requestid>
+  </revision>
 </revisionlist>
