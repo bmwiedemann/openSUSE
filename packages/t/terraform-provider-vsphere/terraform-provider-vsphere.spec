@@ -1,7 +1,7 @@
 #
 # spec file for package terraform-provider-vsphere
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 # Make sure that the binary is not getting stripped.
 %if 0%{?suse_version}
@@ -21,20 +22,20 @@
 %endif
 
 Name:           terraform-provider-vsphere
-Version:        1.16.1
+Version:        1.18.3
 Release:        0
-License:        MPL-2.0
 Summary:        Terraform vSphere provider
-Url:            https://github.com/terraform-providers/terraform-provider-vsphere
+License:        MPL-2.0
 Group:          System/Management
+URL:            https://github.com/terraform-providers/terraform-provider-vsphere
 Source:         %{name}-%{version}.tar.xz
 %if 0%{?suse_version}
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.8
 BuildRequires:  xz
+BuildRequires:  golang(API) >= 1.8
 %endif
-Requires:       terraform >= 0.10.0
 Requires:       mkisofs
+Requires:       terraform >= 0.10.0
 BuildRequires:  git
 BuildRequires:  xz
 %if 0%{?suse_version}

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jun  8 07:26:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.18.3:
+  * resource/custom_attribute: Fix id in error message when category is missing. (#1088)
+  * resource/virtual_machine: Add vApp properties with OVF deployment. (#1082)
+  * resource/host & resource/compute_cluster: Add arguments for specifying if cluster management should be handled in host or compute_cluster resource. (#1085)
+  * resource/virtual_machine: Handle OVF argument validation during VM creation. (#1084)
+  * resource/host: Disconnect rather than entering maintenance mode when deleting. (#1083)
+  * resource/virtual_machine: Skip unexpected NIC entries. (#1067)
+  * Respect session_persistence for REST sessions. (#1077)
+  * resource/virtual_machine: Allow users to deploy OVF templates from both from local system and remote URL. (#1052)
+  * resource/virtual_machine: Mark product_key as sensitive. (#1045)
+  * resource/virtual_machine: Increase max hardware_version for vSphere v7.0. (#1056)
+  * resource/virtual_machine: Fix to disk bus sorting. (#1039)
+  * resource/virtual_machine: Only include hardware_version in CreateSpecs. (#1055)
+  * Use built in session persistence in govmomi. (#1050)
+  * resource/virtual_disk: Support VMDK files. (#987)
+  * resource/virtual_machine: Fix disk controller sorting. (#1032)
+  * resource/virtual_machine: Add support for hardware version tracking and upgrading. (#1020)
+  * data/vsphere_network: Handle cases of network port groups with same name using distributed_virtual_switch_uuid. (#1001)
+  * resource/virtual_machine: Fix working with orphaned devices. (#1005)
+  * resource/virtual_machine: Ignore guest_id with content library. (#1014)
+  * New Data Source: content_library (#985)
+  * New Data Source: content_library_item (#985)
+  * New Resource: content_library (#985)
+  * New Resource: content_library_item (#985)
+  * resource/virtual_machine: Add poweron_timeout option for the amount of time to give a VM to power on. (#990)
+  * resource/virtual_machine: Optimize OS family query. (#959)
+  * Migrate provider to Terraform plugin SDK. (#982)
+
+-------------------------------------------------------------------
 Sat Feb 22 11:05:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.16.1:
