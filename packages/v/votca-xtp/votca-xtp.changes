@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sat Apr 18 04:58:29 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- Update to 1.6
+  - fix 32-bit build ([gh#votca/xtp#381], [gh#votca/xtp#380])
+  - remove duplicated basissets ([gh#votca/xtp#384],
+    [gh#votca/xtp#386], [gh#votca/xtp#387])
+  - fix clang-10 warnings ([gh#votca/xtp#394])
+  - fix unit_test_eeinteractor on OpenSUSE ([gh#votca/xtp#341],
+    [gh#votca/xtp#428])
+- Drop doc package, upstream remove manual
+
+-------------------------------------------------------------------
+Mon Feb 10 17:27:05 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- Update to 1.6_rc2
+  - fix remove giant logo from tarball ([gh#votca/xtp#337])
+  - fix assertions related to GLIBCXX_ASSERTIONS
+    ([gh#votca/xtp#345])
+  - remove unused boost serialisation ([gh#votca/xtp#346])
+  - fix build on 32-bit archs ([gh#votca/xtp#347])
+  - add ENABLE_HIGH_MEMORY_TESTS cmake option ([gh#votca/xtp#356])
+  - fix copyright ([gh#votca/xtp#363])
+  - remove old doxygen target ([gh#votca/xtp#365])
+  - fix some gcc10 warnings ([gh#votca/xtp#376])
+  - Add external fields to dft calculations ([gh#votca/xtp#351],
+    [gh#votca/xtp#353])
+  - added def2 and cc basis sets ([gh#votca/xtp#355])
+  - added apdft ([gh#votca/xtp#350])
+  - added test to cubefile reader ([gh#votca/xtp#344])
+  - fix state tracker ([gh#votca/xtp#333])
+  - grid class refator ([gh#votca/xtp#335])
+  - changed ppm screening ([gh#votca/xtp#371])
+
+-------------------------------------------------------------------
+Thu Dec  5 17:24:22 UTC 2019 - Christoph Junghans <junghans@votca.org>
+
+- Update to 1.6_rc1
+  - completely new statefile in hdf5 format for larger systems
+  - new electrostatics with PCG solver
+  - new QM/MM engine with freely configurable regions
+  - exact GW-BSE for small systems
+  - new iterative matrix solvers for large systems
+  - full LAMMPS support
+  - improved testing
+  - deleted netbeans support
+  - removed old manual
+  - Major CMake refactor
+
+-------------------------------------------------------------------
 Wed Nov 27 15:11:27 UTC 2019 - Christoph Junghans <junghans@votca.org>
 
 - Fix python shebang
