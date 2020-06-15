@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun 15 05:47:09 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.7.2:
+  * Name the wheel file as non-universal (py3-only).
+  * [setup.py] Mark library as requiring Python 3.6+, or else pip2 will attempt to install it on Python 2.7, which is no longer supported (#293).
+  * Dropped support for Py2, now only Py3
+  * Updated documentation: #232
+  * Fixed docstring typos (thanks @Space0726!): #263
+  * added notification: Font.GuidelineWillBeAdded: #239
+  * Fixes for UFOZ (#209 testForExternalChanges and #218 glyphSet is required): #220
+  * Added close to font: #269
+  * Setting glyph.unicode will now set glyph.unicodes to a one member list: #258
+  * Add notifications for: Glyph.LeftMarginWillChange, Glyph.LeftMarginDidChange, Glyph.RightMarginWillChange, Glyph.RightMarginDidChange, Glyph.TopMarginWillChange, Glyph.TopMarginDidChange, Glyph.BottomMarginWillChange, Glyph.BottomMarginDidChange: #253
+  * Improved joinSegments: #259
+  * Added identifier to addComponent callback: #268
+  * Fix glyphs with components getting proper area value: #272
+  * Use ufoFormatTuple: #289
+  * Add ufoFormatVersionTuple property, deprecate ufoFormatVersion: #291
+
+-------------------------------------------------------------------
 Tue May 26 07:45:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix FontTool dep (camelcase)

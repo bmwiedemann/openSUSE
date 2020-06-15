@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-defcon
-Version:        0.6.0
+Version:        0.7.2
 Release:        0
 Summary:        A set of flexible objects for representing UFO data
 License:        MIT
@@ -28,11 +29,11 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-FontTools >= 3.31.0
+Requires:       python-FontTools >= 4.10.2
 Suggests:       python-fontPens >= 0.1.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module FontTools >= 3.31.0}
+BuildRequires:  %{python_module FontTools >= 4.10.2}
 BuildRequires:  %{python_module pytest >= 3.0.3}
 # /SECTION
 %python_subpackages
