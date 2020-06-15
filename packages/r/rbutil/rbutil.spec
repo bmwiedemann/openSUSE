@@ -1,7 +1,7 @@
 #
 # spec file for package rbutil
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,12 +13,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           rbutil
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Rockbox Firmware Manager
 License:        GPL-2.0-only
@@ -26,6 +26,7 @@ Group:          Hardware/Other
 URL:            https://www.rockbox.org/wiki/RockboxUtility
 Source:         http://download.rockbox.org/rbutil/source/RockboxUtility-v%{version}-src.tar.bz2
 Patch1:         rbutil-fix-versionstring.patch
+Patch2:         0001-imxtools-sbtools-fix-compilation-with-gcc-10.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtbase-common-devel
@@ -34,6 +35,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(cryptopp)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(speex)
 BuildRequires:  pkgconfig(zlib)
@@ -48,6 +50,7 @@ Firmware manager for Rockbox MP3 players.
 %prep
 %setup -q -n RockboxUtility-v%{version}
 %patch1 -p1
+%patch2 -p1
 
 %build
 cd rbutil/rbutilqt
