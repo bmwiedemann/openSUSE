@@ -2350,7 +2350,6 @@ unsorted:
   - debuginfod-client 
   - decentxml 
   - decentxml-javadoc 
-  - dee-devel 
   - deepin-calendar 
   - deepin-calendar-lang 
   - deepin-editor 
@@ -4632,6 +4631,7 @@ unsorted:
   - gmetrics 
   - gmetrics-javadoc 
   - gmic 
+  - gmic-bash-completion 
   - gmic-zart 
   - gmime-devel 
   - gmime2_6-devel 
@@ -4891,7 +4891,9 @@ unsorted:
   - golang-github-prometheus-prometheus 
   - golang-github-prometheus-promu 
   - golang-github-rogpeppe-godef 
+  - golang-github-shadowsocks-v2ray-plugin 
   - golang-github-shurcool-sanitized_anchor_name 
+  - golang-github-v2ray-v2ray-core 
   - golang-github-vpenso-prometheus_slurm_exporter 
   - golang-github-wrouesnel-postgres_exporter 
   - golang-gopkgin-check 
@@ -8862,7 +8864,6 @@ unsorted:
   - libdebuginfod1 
   - libdecoration0 
   - libdecoration0-32bit: [x86_64] 
-  - libdee-1_0-4 
   - libdevil-tools 
   - libdevmapper-event1_03-32bit: [x86_64] 
   - libdframeworkdbus-devel 
@@ -11112,7 +11113,7 @@ unsorted:
   - libpkcs11-helper1-32bit: [x86_64] 
   - libpkgconf-devel 
   - libplacebo-devel 
-  - libplacebo43 
+  - libplacebo72 
   - libplank1 
   - libplayerctl2 
   - libplib0 
@@ -12577,10 +12578,10 @@ unsorted:
   - libvorbis-doc 
   - libvorbisenc2-32bit: [x86_64] 
   - libvoro++0 
-  - libvotca_csg5 
+  - libvotca_csg6 
   - libvotca_ctp5 
-  - libvotca_tools5 
-  - libvotca_xtp5 
+  - libvotca_tools6 
+  - libvotca_xtp6 
   - libvotequorum8 
   - libvotequorum8-32bit: [x86_64] 
   - libvpd2 
@@ -15673,6 +15674,7 @@ unsorted:
   - onboard 
   - onboard-data 
   - onboard-lang 
+  - onedrive 
   - onefetch 
   - oneko 
   - oniguruma-devel 
@@ -18677,7 +18679,6 @@ unsorted:
   - python2-efl-doc 
   - python2-efl-examples 
   - python2-geopy 
-  - python2-gobject-Dee 
   - python2-hankel: [i586] 
   - python2-keyrings.alt 
   - python2-libfwsi 
@@ -19532,6 +19533,7 @@ unsorted:
   - python3-dj-database-url 
   - python3-django-allauth 
   - python3-django-appconf 
+  - python3-django-assets 
   - python3-django-auth-ldap 
   - python3-django-avatar 
   - python3-django-braces 
@@ -19584,6 +19586,7 @@ unsorted:
   - python3-django-sekizai 
   - python3-django-settings-toml 
   - python3-django-silk 
+  - python3-django-sortedm2m 
   - python3-django-storages 
   - python3-django-tagging 
   - python3-django-tastypie 
@@ -19817,7 +19820,6 @@ unsorted:
   - python3-gmsh 
   - python3-gns3fy 
   - python3-gnucash 
-  - python3-gobject-Dee 
   - python3-gobject-devel 
   - python3-gobject2 
   - python3-gobject2-devel 
@@ -20347,6 +20349,7 @@ unsorted:
   - python3-nox 
   - python3-npTDMS 
   - python3-nss 
+  - python3-ntc-templates 
   - python3-ntfy 
   - python3-ntlm-auth 
   - python3-ntp 
@@ -21746,6 +21749,7 @@ unsorted:
   - raspberrypi-firmware 
   - raspberrypi-firmware-config 
   - raspberrypi-firmware-dt 
+  - raspberrypi-firmware-eeprom 
   - raspberrypi-firmware-extra 
   - raspberrypi-firmware-extra-pi4 
   - rasqal 
@@ -24246,6 +24250,7 @@ unsorted:
   - shadowsocks-libev 
   - shadowsocks-libev-devel 
   - shadowsocks-libev-doc 
+  - shadowsocks-v2ray-plugin 
   - shairport-sync 
   - shapelib 
   - shared-color-targets 
@@ -24270,8 +24275,6 @@ unsorted:
   - showfoto 
   - shp 
   - shunit2 
-  - shutdownscheduler 
-  - shutdownscheduler-lang 
   - siege 
   - sierra-gtk-theme 
   - siga 
@@ -33138,7 +33141,6 @@ unsorted:
   - typelib-1_0-Dbusmenu-0_4 
   - typelib-1_0-DbusmenuGtk-0_4 
   - typelib-1_0-DbusmenuGtk3-0_4 
-  - typelib-1_0-Dee-1_0 
   - typelib-1_0-Devhelp-3_0 
   - typelib-1_0-EBackend-1_2 
   - typelib-1_0-EBook-1_2 
@@ -33479,6 +33481,7 @@ unsorted:
   - uwsgi-python3 
   - uwsgi-sqlite3 
   - uwsgi-xslt 
+  - v2ray-core 
   - v4l-tools 
   - v4l-utils 
   - v4l-utils-devel-tools 
@@ -33695,7 +33698,6 @@ unsorted:
   - votca-xtp 
   - votca-xtp-common 
   - votca-xtp-devel 
-  - votca-xtp-doc 
   - voxelands 
   - vpcs 
   - vpx-tools 
