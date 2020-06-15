@@ -123,4 +123,14 @@
     <comment></comment>
     <requestid>769751</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>b98320a1224e94cbcef09f92a4afef11</srcmd5>
+    <version>3.3.4</version>
+    <time>1592245678</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert back to the distro default compiler (i.e. GCC 10.1 on TW):
+  + export CFLAGS+=&quot;-fcommon&quot; until upstream makes this code
+    compatible to GCC10. (forwarded request 812982 from dimstar)</comment>
+    <requestid>813075</requestid>
+  </revision>
 </revisionlist>

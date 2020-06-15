@@ -52,21 +52,21 @@ BuildRequires:  asciidoc
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(systemd)
-Recommends:     simple-obfs
+Recommends:     shadowsocks-v2ray-plugin
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
 
 %description
-shadowsocks-libev is a lightweight secured SOCKS5 proxy
-for embedded devices and low-end boxes.
+shadowsocks-libev is a lightweight secured SOCKS5 proxy for embedded devices and
+low-end boxes.
 
 %package -n lib%{name}%{libver}
 Summary:        Libev port of Shadowsocks
 Group:          System/Libraries
 
 %description -n lib%{name}%{libver}
-shadowsocks-libev is a lightweight secured SOCKS5 proxy
-for embedded devices and low-end boxes.
+shadowsocks-libev is a lightweight secured SOCKS5 proxy for embedded devices and
+low-end boxes.
 
 This package provides libraries for it.
 
@@ -77,8 +77,8 @@ Requires:       %{name} = %{version}
 BuildArch:      noarch
 
 %description doc
-shadowsocks-libev is a lightweight secured SOCKS5 proxy
-for embedded devices and low-end boxes.
+shadowsocks-libev is a lightweight secured SOCKS5 proxy for embedded devices and
+low-end boxes.
 
 This package provides Documents for it.
 
@@ -88,8 +88,8 @@ Group:          Development/Libraries/C and C++
 Requires:       lib%{name}%{libver} = %{version}
 
 %description devel
-shadowsocks-libev is a lightweight secured SOCKS5 proxy
-for embedded devices and low-end boxes.
+shadowsocks-libev is a lightweight secured SOCKS5 proxy for embedded devices and
+low-end boxes.
 
 This package provides development headers for it.
 
@@ -97,8 +97,11 @@ This package provides development headers for it.
 %setup -q
 
 %build
-%configure --enable-shared
-make %{?_smp_mflags} V=1
+export CFLAGS="%{optflags} -fcommon"
+%configure \
+           --enable-shared 
+
+%make_build
 
 %install
 %make_install

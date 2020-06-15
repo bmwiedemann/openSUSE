@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun  9 16:03:02 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Revert back to the distro default compiler (i.e. GCC 10.1 on TW):
+  + export CFLAGS+="-fcommon" until upstream makes this code
+    compatible to GCC10.
+
+-------------------------------------------------------------------
+Sun Jun  7 11:16:33 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update Recommends tag: use shadowsocks-v2ray-plugin instead of simple-obfs 
+- Fix build on Tumbleweed: don't use gcc10!
+
+-------------------------------------------------------------------
 Mon Feb  3 16:29:38 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
