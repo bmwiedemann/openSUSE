@@ -874,4 +874,12 @@
   to fix a possible crash of plasmashell (boo#1171641, kde#421170) (forwarded request 805586 from wolfi323)</comment>
     <requestid>805589</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>5b92ab59788f3667a18306ffdd7b6e9d</srcmd5>
+    <version>5.71.0</version>
+    <time>1592307868</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.71.0</comment>
+    <requestid>814399</requestid>
+  </revision>
 </revisionlist>

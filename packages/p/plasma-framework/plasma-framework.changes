@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun  7 08:07:10 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.71.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.71.0
+- Too many changes since 5.70.0, only listing bugfixes:
+  * Avoid potential disconnect of all signals in IconItem (kde#421170)
+- Drop upstream patch:
+  * Avoid-potential-disconnect-of-all-signals-in-IconItem.patch
+
+-------------------------------------------------------------------
 Thu May 14 12:03:55 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Avoid-potential-disconnect-of-all-signals-in-IconItem.patch
