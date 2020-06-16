@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jun  7 08:06:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.71.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.71.0
+- Changes since 5.70.0:
+  * holidayparserdriverplan.cpp,holidayscannerplan_p.h - update urls
+  * holidayparserdriverplan_p.h,holidayscannerplan_p.h - explicit ctors
+  * .krazy - remove a lot of unnecessary SKIPs
+  * Update Taiwanese holidays
+  * holidayregion.cpp - provide translatable strings for the German regions.
+  * holidays_de-foo - set name field for all German holiday files
+  * holiday-de-<foo> - where foo is a region is Germany
+  * Add holiday file for DE-BE (Germany/Berlin)
+  * holidays/plan2/holiday_gb-sct_en-gb
+
+-------------------------------------------------------------------
 Sun May  3 09:39:58 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.70.0
