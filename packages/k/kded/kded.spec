@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.70
+%define _tar_path 5.71
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kded
-Version:        5.70.0
+Version:        5.71.0
 Release:        0
 Summary:        Central daemon of KDE workspaces
 License:        LGPL-2.1-or-later
@@ -40,6 +40,7 @@ BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Crash) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5DBusAddons) >= %{_kf5_bugfix_version}
@@ -53,9 +54,7 @@ BuildRequires:  cmake(Qt5Network) >= 5.12.0
 BuildRequires:  cmake(Qt5Test) >= 5.12.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
 BuildRequires:  cmake(Qt5Xml) >= 5.12.0
-%if %{with lang}
 Recommends:     %{name}-lang
-%endif
 
 %description
 KDED runs in the background and performs a number of small tasks.
@@ -89,8 +88,16 @@ Development files.
 %find_lang %{name} --with-man --all-name
 %endif
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%preun
+%systemd_user_preun plasma-kded.service
+
+%post 
+/sbin/ldconfig
+%systemd_user_post plasma-kded.service
+
+%postun
+/sbin/ldconfig
+%systemd_user_postun plasma-kded.service
 
 %if %{with lang}
 %files lang -f %{name}.lang
@@ -106,6 +113,7 @@ Development files.
 %doc %lang(en) %{_kf5_mandir}/*/kded5.*
 %{_kf5_debugdir}/kded.categories
 %{_kf5_applicationsdir}/org.kde.kded5.desktop
+%{_userunitdir}/plasma-kded.service
 
 %files devel
 %{_kf5_libdir}/cmake/KDED/
