@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun  7 08:07:00 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.71.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.71.0
+- Changes since 5.70.0:
+  * Add X-KDE-DBUS-Restricted-Interfaces to Application desktop entry fields
+  * Use KSERVICE_DEPRECATED_VERSION_BELATED
+  * Build with EXCLUDE_DEPRECATED_BEFORE_AND_AT=CURRENT
+  * Add missing compiler deprecation tag for 5-args KServiceAction constructor
+
+-------------------------------------------------------------------
 Sun May  3 09:40:12 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.70.0
