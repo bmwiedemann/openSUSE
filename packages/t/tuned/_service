@@ -3,9 +3,9 @@
     <param name="scm">git</param>
     <param name="url">https://github.com/redhat-performance/tuned</param>
     <!--
-    <param name="versionformat">2.22.0+git%cd.%h</param>
+    <param name="versionformat">2.13.0+git%cd.%h</param>
     -->
-    <param name="versionformat">2.22.0</param>
+    <param name="versionformat">2.13.0</param>
     <param name="changesgenerate">disable</param>
   </service>
   <service name="recompress" mode="disabled">

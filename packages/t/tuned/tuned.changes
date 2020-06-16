@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 11 14:34:09 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 2.13.0. Note that the previous version was not
+  in fact 2.22.0, but commit 8c9df99, 28 commits before 2.13.0.
+
+-------------------------------------------------------------------
 Mon Feb  3 09:37:57 UTC 2020 - trenn@suse.de
 
 - Add /etc/dbus-1/system.d directory to file section as done in other

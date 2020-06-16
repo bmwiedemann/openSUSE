@@ -1,7 +1,7 @@
 #
 # spec file for package tuned
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,13 @@
 %define         profile_dir %{_prefix}/lib/%{name}
 
 Name:           tuned
-Version:        2.22.0
+Version:        2.13.0
 Release:        0
 Summary:        A dynamic adaptive system tuning daemon
 License:        GPL-2.0-or-later
 Group:          System/Base
 URL:            https://github.com/redhat-performance/tuned
-#Source0:        https://github.com/redhat-performance/tuned/archive/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://github.com/redhat-performance/tuned/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        tuned.rpmlintrc
 # PATCH-FIX-OPENSUSE fix-allow-receive_sender-default.patch <allow receive_sender="com.redhat.com"/> allow receive_* is normally
 # not needed as that is the default --<p.drouand@gmail.com>
