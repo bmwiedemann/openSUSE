@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 14 17:51:14 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Updated to version 1.9.0
+  * SCardEndTransaction(): greatly improve performances (x300)
+  * tokenparser: accept any Unicode character in a reader name
+  * Use /run instead of /var/run by default
+  * Fix a memory leak from a polkit call
+  * Some other minor improvements
+
+-------------------------------------------------------------------
 Thu Jan 23 13:08:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libudev) instead of libudev-devel: allow

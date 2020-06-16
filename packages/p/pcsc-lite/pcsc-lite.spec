@@ -26,18 +26,18 @@
 %define PKG_USER	scard
 %define PKG_GROUP	scard
 Name:           pcsc-lite
-Version:        1.8.26
+Version:        1.9.0
 Release:        0
 Summary:        PC/SC Smart Cards Library
 License:        BSD-3-Clause AND GPL-3.0-or-later
 Group:          Productivity/Security
 URL:            https://pcsclite.apdu.fr/
-Source:         %{name}-%{version}.tar.bz2
+Source:         https://pcsclite.apdu.fr/files/%{name}-%{version}.tar.bz2
 Source1:        %{name}.sysconfig
 Source2:        README.SUSE
 Source4:        baselibs.conf
 Source6:        pcsc-lite-reader-conf
-Source7:        %{name}-%{version}.tar.bz2.asc
+Source7:        https://pcsclite.apdu.fr/files/%{name}-%{version}.tar.bz2.asc
 Source8:        %{name}.keyring
 Patch0:         systemd-service.patch
 # PATCH-FEATURE-SLE pcsc-lite-python3.patch bsc1082129 sbrabec@suse.com -- Use python3.
@@ -139,7 +139,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %pre
 getent group %{PKG_GROUP} >/dev/null || groupadd -r %{PKG_GROUP}
-getent passwd %{PKG_USER} >/dev/null || useradd -r -g %{PKG_GROUP} -s %{_sbindir}/nologin -c "Smart Card Reader" -d %{_localstatedir}/run/pcscd %{PKG_USER}
+getent passwd %{PKG_USER} >/dev/null || useradd -r -g %{PKG_GROUP} -s %{_sbindir}/nologin -c "Smart Card Reader" -d /run/pcscd %{PKG_USER}
 %service_add_pre pcscd.service pcscd.socket
 
 %post
