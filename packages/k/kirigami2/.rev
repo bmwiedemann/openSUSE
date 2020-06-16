@@ -338,4 +338,12 @@
   * fix-import-in-PlaceholderMessage.patch</comment>
     <requestid>809465</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>837c886629d8976cc6db25d02f471297</srcmd5>
+    <version>5.71.0</version>
+    <time>1592307786</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.71.0</comment>
+    <requestid>814369</requestid>
+  </revision>
 </revisionlist>
