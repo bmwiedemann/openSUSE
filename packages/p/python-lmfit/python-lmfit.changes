@@ -1,0 +1,157 @@
+-------------------------------------------------------------------
+Tue Jun 16 08:44:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip two failing tests that are borked on non 64bit intel
+
+-------------------------------------------------------------------
+Mon Jun  8 07:06:22 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.0.1
+  + New features:
+    - added thermal distribution model and lineshape (PR #620; @mpmdean)
+    - introduced a new argument ``max_nfev`` to uniformly specify the maximum
+      number of function evalutions (PR #610)
+      **Please note: all other arguments (e.g., ``maxfev``, ``maxiter``, ...)
+      will no longer be passed to the underlying solver. A warning will be emitted
+      stating that one should use ``max_nfev``.**
+    - the attribute ``call_kws`` was added to the ``MinimizerResult`` class and
+      contains the keyword arguments that are supplied to the solver in SciPy.
+  + Bug fixes:
+    - fixes to the ``load`` and ``__setstate__`` methods of the Parameter class
+    - fixed failure of ModelResult.dump() due to missing attributes
+      (Issue #611, PR #623; @mpmdean)
+    - ``guess_from_peak`` function now also works correctly with decreasing
+       x-values or when using pandas (PRs #627 and #629; @mpmdean)
+    - the ``Parameter.set()`` method now correctly first updates the boundaries
+      and then the value (Issue #636, PR #637; @arunpersaud)
+  + Various:
+    - fixed typo for the use of expressions in the documentation
+      (Issue #610; @jkrogager)
+    - removal of PY2-compatibility and unused code and improved test
+      coverage (PRs #619, #631, and #633)
+    - removed deprecated ``isParameter`` function and automatic conversion of
+      an ``uncertainties`` object (PR #626)
+    - inaccurate FWHM calculations were removed from built-in models, others
+      labeled as estimates (Issue #616 and PR #630)
+    - corrected spelling mistake for the Doniach lineshape and model
+      (Issue #634; @rayosborn)
+    - removed unsupported/untested code for IPython notebooks in lmfit/ui/*
+- from version 1.0.0
+  + New features:
+    - no new features are introduced in 1.0.0.
+  + Improvements:
+    - support for Python 2 and use of the ``six`` package are removed. (PR #612)
+  + Various:
+    - documentation updates to clarify the use of ``emcee``. (PR #614)
+- from version 0.9.15
+  + New features, improvements, and bug fixes:
+    - move application of parameter bounds to setter instead of getter (PR #587)
+    - add support for non-array Jacobian types in least_squares
+      (Issue #588, @ezwelty in PR #589)
+    - add more information (i.e., acor and acceptance_fraction) about
+      emcee fit (@j-zimmermann in PR #593)
+    - "name" is now a required positional argument for Parameter class,
+      update the magic methods (PR #595)
+    - fix nvars count and bound handling in confidence interval
+      calculations (Issue #597, PR #598)
+    - support Python 3.8; requires asteval >= 0.9.16 (PR #599)
+    - only support emcee version 3 (i.e., no PTSampler anymore) (PR #600)
+    - fix and refactor prob_bunc in confidence interval calculations (PR #604)
+    - fix adding Parameters with custom user-defined symbols
+      (Issue #607, PR #608; thanks to @gbouvignies for the report)
+  + Various:
+    - bump requirements to LTS version of SciPy/ NumPy and code clean-up (PR #591)
+    - documentation updates (PR #596, and others)
+    - improve test coverage and Travis CI updates (PR #595, and others)
+    - update pre-commit hooks and configuration in setup.cfg
+  + To-be deprecated:
+    - function Parameter.isParameter and conversion from
+      uncertainties.core.Variable to value in _getval (PR #595)
+- from version 0.9.14
+  + New features:
+    - the global optimizers ``shgo`` and ``dual_annealing`` (new in SciPy v1.2)
+      are now supported (Issue #527; PRs #545 and #556)
+    - ``eval`` method added to the Parameter class (PR #550 by @zobristnicholas)
+    - avoid ZeroDivisionError in ``printfuncs.params_html_table``
+      (PR #552 by @aaristov and PR #559)
+    - add parallelization to ``brute`` method (PR #564, requires SciPy v1.3)
+  + Bug fixes:
+    - consider only varying parameters when reporting potential issues with calculating
+      errorbars (PR #549) and compare ``value`` to both ``min`` and ``max`` (PR #571)
+    - guard against division by zero in lineshape functions and ``FWHM``
+      and ``height`` expression calculations (PR #545)
+    - fix issues with restoring a saved Model (Issue #553; PR #554)
+    - always set ``result.method`` for ``emcee`` algorithm (PR #558)
+    - more careful adding of parameters to handle out-of-order
+      constraint expressions (Issue #560; PR #561)
+    - make sure all parameters in Model.guess() use prefixes (PRs #567 and #569)
+    - use ``inspect.signature`` for PY3 to support wrapped functions
+      (Issue #570; PR #576)
+    - fix ``result.nfev``` for ``brute`` method when using parallelization
+      (Issue #578; PR #579)
+  + Various:
+    - remove "missing" in the Model class (replaced by nan_policy) and "drop"
+      as option to nan_policy (replaced by omit) deprecated since 0.9 (PR #565).
+    - deprecate 'report_errors' in printfuncs.py (PR #571)
+    - updates to the documentation to use ``jupyter-sphinx`` to include
+      examples/output (PRs #573 and #575)
+    - include a Gallery with examples in the documentation
+      using ``sphinx-gallery`` (PR #574 and #583)
+    - improve test-coverage (PRs #571, #572 and #585)
+    - add/clarify warning messages when NaN values are detected (PR #586)
+    - several updates to docstrings (Issue #584; PR #583, and others)
+    - update pre-commit hooks and several docstrings
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Wed Apr 24 08:42:15 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.9.13
+  New features:
+    Clearer warning message in fit reports when uncertainties should
+      but cannot be estimated, including guesses of which Parameters
+      to examine (#521, #543)
+    SplitLorenztianModel and split_lorentzian function (#523)
+    HTML representations for Parameter, MinimizerResult, and Model
+      so that they can be printed better with Jupyter (#524, #548)
+    support parallelization for differential evolution (#526)
+  Bug fixes:
+    delay import of matplotlib (and so, the selection of its backend)
+      as late as possible (#528, #529)
+    fix for saving, loading, and reloading ModelResults (#534)
+    fix to leastsq to report the best-fit values, not the values tried
+      last (#535, #536)
+    fix synchronization of all parameter values on Model.guess() (#539, #542)
+    improve deprecation warnings for outdated nan_policy keywords (#540)
+    fix for edge case in gformat() (#547)
+  Project managements:
+    using pre-commit framework to improve and enforce coding style (#533)
+    added code coverage report to github main page
+    updated docs, github templates, added several tests.
+    dropped support and testing for Python 3.4.
+- deleted patches
+  - lmfit-scipy.patch (upstreamed)
+
+-------------------------------------------------------------------
+Tue Mar  5 14:57:02 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix spurious unit test errors.
+
+-------------------------------------------------------------------
+Fri Jan 18 10:24:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Apply patch to fix build with new scipy:
+  * lmfit-scipy.patch
+
+-------------------------------------------------------------------
+Fri Jan 18 10:19:27 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.9.12:
+  * make exceptions explicit
+  * use inspect.getfullargspec for Python3
+  * test-suite: use pytest features, improve coverage, fix mistakes
+
+-------------------------------------------------------------------
+Thu Mar 22 04:46:08 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version
