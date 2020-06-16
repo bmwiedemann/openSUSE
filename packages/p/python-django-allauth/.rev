@@ -50,4 +50,12 @@
   to be present always anyway</comment>
     <requestid>761502</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>47fc12f574bd2966d20a0da20d3f4b75</srcmd5>
+    <version>0.42.0</version>
+    <time>1592308016</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>814882</requestid>
+  </revision>
 </revisionlist>

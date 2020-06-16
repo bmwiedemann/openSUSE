@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  9 10:00:44 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 0.42.0
+ * New providers: EDX, Yandex, Mixer.
+ * Fixed Twitch get_avatar_url() 
+ * The Facebook API version now defaults to v7.0.
+
+-------------------------------------------------------------------
 Tue Jan  7 09:59:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.41.0:

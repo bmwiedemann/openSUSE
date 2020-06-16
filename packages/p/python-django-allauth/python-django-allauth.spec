@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-allauth
-Version:        0.41.0
+Version:        0.42.0
 Release:        0
 Summary:        Django authentication, registration, account management
 License:        MIT
