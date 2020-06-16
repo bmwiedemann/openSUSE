@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 09 07:08:47 UTC 2020 - jslaby@suse.com
+
+- Update to version 2.1+20200606:
+  * [Module] Add testcase for inline asm lifting
+  * [Module] Disable lifting for inline asm resembling memory fences with return values
+  * Add test case from #1257 to reproduce behaviour
+  * [Solver:STP] Fix handling of array names
+  * docker: install KLEE headers in system include path
+  * Moved header files that were placed directly in include/klee/ into appropriate existing directories and a new directory Statistics; a few missing renames.
+  * Removed include/klee/util and moved header files to appropriate places
+  * Created include/klee/Core directory and moved appropriate files direc\ tly in lib/Core
+  * Move header files from lib/Expr to include/klee/Expr to eliminate includes using "../"
+  * Removed the Internal directory from include/klee
+
+-------------------------------------------------------------------
 Sat Apr 25 22:10:44 UTC 2020 - aaronpuchert@alice-dsl.net
 
 - Update to version 2.1+20200420:

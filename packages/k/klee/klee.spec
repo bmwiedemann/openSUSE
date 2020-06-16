@@ -19,7 +19,7 @@
 %define llvm_version_major 10
 %define llvm_version %{llvm_version_major}
 
-%define version_unconverted 2.1+20200420
+%define version_unconverted 2.1+20200606
 
 %ifarch %{ix86} x86_64
 %define with_uclibc 1
@@ -31,7 +31,7 @@ Name:           klee
 Summary:        LLVM Execution Engine
 License:        NCSA
 Group:          Development/Languages/Other
-Version:        2.1+20200420
+Version:        2.1+20200606
 Release:        0
 URL:            http://klee.github.io/
 Source0:        %{name}-%{version}.tar.xz
