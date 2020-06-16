@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jun  7 08:07:13 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.71.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.71.0
+- Changes since 5.70.0:
+  * Make Solid::Ifaces::Device::displayName virtual
+  * Add a QString Solid::Device::displayName,
+    used in Fstab Device for network mounts
+  * Port away from deprecated Qt Methods
+  * [DeviceManager] Port one foreach to range-for
+  * [Solid] Port foreach to range-for
+  * [Solid] Port foreach to range/index for
+
+-------------------------------------------------------------------
 Sun May  3 09:40:20 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.70.0
