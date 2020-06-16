@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun  7 08:06:58 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.71.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.71.0
+- Too many changes since 5.70.0, only listing bugfixes:
+  * support different long/short labels (kde#421578)
+
+-------------------------------------------------------------------
 Sun May  3 09:40:10 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.70.0
