@@ -16,18 +16,22 @@
 #
 
 
-# Soname should be bumped on API/ABI break
-# http://trac.osgeo.org/gdal/ticket/4543
-%define soversion 26
+%define soversion 27
 %define sourcename gdal
 # Uppercase GDAL is the canonical name for this package in Python
 %define pypi_package_name GDAL
+# Enable docs on Tumbleweed only - https://github.com/OSGeo/gdal/issues/2690
+%if 0%{?suse_version} > 1500
+%bcond_without docs
+%else
+%bcond_with docs
+%endif
 %bcond_with ecw_support
 %bcond_with ecw5_support
 %bcond_with fgdb_support
 %bcond_without python2
 Name:           gdal
-Version:        3.0.4
+Version:        3.1.0
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
 License:        MIT AND BSD-3-Clause AND SUSE-Public-Domain
@@ -37,9 +41,8 @@ Source1:        http://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{ver
 Patch0:         gdal-perl.patch
 # Fix occasional parallel build failure
 Patch1:         GDALmake.opt.in.patch
-# PATCH-FIX-UPSTREAM - https://github.com/OSGeo/gdal/commit/e5cb5406ea9090b2f17cffeeb7ba5fb49e7158f2 + dep commit
-Patch2:         gdal-ecwjp2-sdk-5.5_dep1.patch
-Patch3:         gdal-ecwjp2-sdk-5.5.patch
+# PATCH-FIX-UPSTREAM - https://github.com/OSGeo/gdal/pull/2678
+Patch2:         gdal-fix-docs.patch
 BuildRequires:  KEALib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -61,10 +64,6 @@ BuildRequires:  opencl-headers
 BuildRequires:  perl-ExtUtils-MakeMaker
 BuildRequires:  perl-macros
 BuildRequires:  pkgconfig
-%if %{with python2}
-BuildRequires:  python-numpy-devel
-BuildRequires:  python-setuptools
-%endif
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  swig
@@ -94,6 +93,21 @@ BuildRequires:  pkgconfig(spatialite)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(xerces-c)
 BuildRequires:  pkgconfig(zlib) >= 1.1.4
+%if %{with docs}
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-breathe
+BuildRequires:  texlive-dvips-bin
+BuildRequires:  texlive-latex-bin-bin
+BuildRequires:  texlive-newunicodechar
+%endif
+%if %{with python2}
+BuildRequires:  python-numpy-devel
+BuildRequires:  python-setuptools
+%if %{with docs}
+BuildRequires:  python-Sphinx
+BuildRequires:  python-breathe
+%endif
+%endif
 %if %{with fgdb_support}
 BuildRequires:  filegdb_api-devel
 %endif
@@ -165,11 +179,15 @@ The GDAL python modules provide support to handle multiple GIS file formats.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p2
-%patch3 -p2
 
 # Set the right (build) libproj.so version, use the upper found version.
 PROJSOVER=$(ls -1 %{_libdir}/libproj.so.?? | tail -n1 | awk -F '.' '{print $3}')
 sed -i "s,#  define LIBNAME \"libproj.so\",#  define LIBNAME \"libproj.so.${PROJSOVER}\",g" ogr/ogrct.cpp
+
+# --keep-going option not support on Leap/SLE
+%if 0%{?sle_version}  && 0%{?sle_version} <= 150200
+sed -i 's/--keep-going//' doc/Makefile
+%endif
 
 # Fix mandir
 sed -i "s|^mandir=.*|mandir='\${prefix}/share/man'|" configure
@@ -266,7 +284,16 @@ do
   make %{?_smp_mflags} -C swig/${M} generate
 done
 
-make %{?_smp_mflags} VERBOSE=1 all docs man
+# Force Doxygen generation
+rm doc/.doxygen_up_to_date
+pushd doc/
+make .doxygen_up_to_date
+popd
+
+make %{?_smp_mflags} VERBOSE=1 all \
+%if %{with docs}
+  docs man \
+%endif
 
 # Make Python 3 module
 pushd swig/python
@@ -281,15 +308,18 @@ pushd swig/python
   python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 popd
 
-make %{?_smp_mflags} install install-man \
+make %{?_smp_mflags} install \
+%if %{with docs}
+  install-man \
+%endif
   DESTDIR=%{buildroot} INST_MAN=%{_mandir}
 
 # Not on buildroot : broke everything with python3
 # If done got python3 needing python2 package heretic ..
 # Futhermore duplicates are only existing in src html dir
-%fdupes -s html
+%fdupes -s doc/build/html
 # Empty file
-rm -f html/do-not-remove
+rm -f doc/build/html/do-not-remove
 
 # chrpath must be removed here
 chmod 644 %{buildroot}%{perl_vendorarch}/auto/Geo/GDAL/Const/Const.so
@@ -316,6 +346,9 @@ rm -f %{buildroot}%{_datadir}/gdal/LICENSE.TXT
 
 # avoid PACKAGE redefines
 sed -i 's,\(#define PACKAGE_.*\),/* \1 */,' %{buildroot}%{_includedir}/gdal/cpl_config.h
+
+# Fix wrong /usr/bin/env phyton3
+find %{buildroot}%{_bindir} -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env python3,#!%{_bindir}/python3," {} \;
 
 %post -n lib%{name}%{soversion} -p /sbin/ldconfig
 %postun	-n lib%{name}%{soversion} -p /sbin/ldconfig
@@ -348,6 +381,7 @@ sed -i 's,\(#define PACKAGE_.*\),/* \1 */,' %{buildroot}%{_includedir}/gdal/cpl_
 %{_bindir}/gdal_retile.py
 %{_bindir}/gdal_sieve.py
 %{_bindir}/gdal_translate
+%{_bindir}/gdal_viewshed
 %{_bindir}/gdaladdo
 %{_bindir}/gdalbuildvrt
 %{_bindir}/gdalchksum.py
@@ -359,6 +393,8 @@ sed -i 's,\(#define PACKAGE_.*\),/* \1 */,' %{buildroot}%{_includedir}/gdal/cpl_
 %{_bindir}/gdalinfo
 %{_bindir}/gdallocationinfo
 %{_bindir}/gdalmanage
+%{_bindir}/gdalmdiminfo
+%{_bindir}/gdalmdimtranslate
 %{_bindir}/gdalmove.py
 %{_bindir}/gdalserver
 %{_bindir}/gdalsrsinfo
@@ -378,6 +414,7 @@ sed -i 's,\(#define PACKAGE_.*\),/* \1 */,' %{buildroot}%{_includedir}/gdal/cpl_
 %{_bindir}/rgb2pct.py
 %{_bindir}/testepsg
 %{_datadir}/gdal
+%if %{with docs}
 %{_mandir}/man1/gdal2tiles.1%{?ext_man}
 %{_mandir}/man1/gdal_calc.1%{?ext_man}
 %{_mandir}/man1/gdal_contour.1%{?ext_man}
@@ -392,7 +429,6 @@ sed -i 's,\(#define PACKAGE_.*\),/* \1 */,' %{buildroot}%{_includedir}/gdal/cpl_
 %{_mandir}/man1/gdal_retile.1%{?ext_man}
 %{_mandir}/man1/gdal_sieve.1%{?ext_man}
 %{_mandir}/man1/gdal_translate.1%{?ext_man}
-%{_mandir}/man1/gdal_utilities.1%{?ext_man}
 %{_mandir}/man1/gdaladdo.1%{?ext_man}
 %{_mandir}/man1/gdalbuildvrt.1%{?ext_man}
 %{_mandir}/man1/gdalcompare.1%{?ext_man}
@@ -405,29 +441,32 @@ sed -i 's,\(#define PACKAGE_.*\),/* \1 */,' %{buildroot}%{_includedir}/gdal/cpl_
 %{_mandir}/man1/gdaltindex.1%{?ext_man}
 %{_mandir}/man1/gdaltransform.1%{?ext_man}
 %{_mandir}/man1/gdalwarp.1%{?ext_man}
-%{_mandir}/man1/gnm_utilities.1%{?ext_man}
 %{_mandir}/man1/gnmanalyse.1%{?ext_man}
 %{_mandir}/man1/gnmmanage.1%{?ext_man}
 %{_mandir}/man1/nearblack.1%{?ext_man}
 %{_mandir}/man1/ogr2ogr.1%{?ext_man}
-%{_mandir}/man1/ogr_utilities.1%{?ext_man}
 %{_mandir}/man1/ogrinfo.1%{?ext_man}
 %{_mandir}/man1/ogrlineref.1%{?ext_man}
 %{_mandir}/man1/ogrmerge.1%{?ext_man}
 %{_mandir}/man1/ogrtindex.1%{?ext_man}
 %{_mandir}/man1/pct2rgb.1%{?ext_man}
 %{_mandir}/man1/rgb2pct.1%{?ext_man}
+%endif
 
 %files devel
 %license LICENSE.TXT
 %doc NEWS PROVENANCE.TXT
-%doc html
+%if %{with docs}
+%doc doc/build/html/
+%endif
 %attr(755,root,root) %{_bindir}/gdal-config
 %{_libdir}/libgdal.so
 %{_libdir}/pkgconfig/gdal.pc
 %dir %{_includedir}/gdal
 %{_includedir}/gdal/*.h
+%if %{with docs}
 %{_mandir}/man1/gdal-config.1%{?ext_man}
+%endif
 
 %files -n perl-%{name}
 %license LICENSE.TXT

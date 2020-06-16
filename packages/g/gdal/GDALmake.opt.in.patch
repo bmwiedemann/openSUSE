@@ -1,9 +1,8 @@
-diff -rup a/GDALmake.opt.in b/GDALmake.opt.in
---- a/GDALmake.opt.in	2018-09-21 11:01:50.000000000 +0200
-+++ b/GDALmake.opt.in	2018-09-29 15:21:42.993179662 +0200
-@@ -67,7 +67,7 @@ INST_DOCS	=	@exec_prefix@/doc
+--- a/GDALmake.opt.in	2020-05-25 15:09:29.892069150 +0200
++++ b/GDALmake.opt.in	2020-05-25 15:09:54.164285244 +0200
+@@ -74,7 +74,7 @@ INST_DOCS	=	@htmldir@
  INST_MAN	=	@mandir@
- INST_HTML	=	$(HOME)/www/gdal
+ INST_WEB	=	$(HOME)/www/gdal
  
 -CPPFLAGS	:= @CPPFLAGS@ -I$(GDAL_ROOT)/port @EXTRA_INCLUDES@ -DGDAL_COMPILATION
 +CPPFLAGS	:= @CPPFLAGS@ -I$(GDAL_ROOT)/gcore -I$(GDAL_ROOT)/port @EXTRA_INCLUDES@ -DGDAL_COMPILATION
