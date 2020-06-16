@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun  7 08:07:14 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.71.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.71.0
+- Changes since 5.70.0:
+  * Allow overriding to disable auto language detection (kde#394347)
+
+-------------------------------------------------------------------
 Thu May 28 21:04:29 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Support spell checking for Finnish using Voikko in the
