@@ -645,4 +645,12 @@ This sr depends on 222654 &amp; 222655</comment>
     <comment>KDE Frameworks 5.70</comment>
     <requestid>802053</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>7a13235ad1a4e4a6a1e0a6bdfce216ab</srcmd5>
+    <version>5.71.0</version>
+    <time>1592307557</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.71.0</comment>
+    <requestid>814327</requestid>
+  </revision>
 </revisionlist>
