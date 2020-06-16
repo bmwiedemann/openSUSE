@@ -5,4 +5,4 @@
   </service>
 <service name="tar_scm">
                 <param name="url">https://github.com/vmware-tanzu/sonobuoy.git</param>
-              <param name="changesrevision">f13b4cc6bbb9ed38a4bf593fd822886494cb6a92</param></service></servicedata>
+              <param name="changesrevision">3e8a10e5145f21840b308b76487f3e10b9c1261d</param></service></servicedata>

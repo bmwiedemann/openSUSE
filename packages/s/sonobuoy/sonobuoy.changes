@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 13 14:04:24 UTC 2020 - dmueller@suse.com
+
+- Update to version 0.18.3:
+  * Prepare v0.18.3 release (#1131)
+  * Allow arbitrary data in Details map in results (#1130)
+  * Improve E2E namespace cleanup (#1126)
+  * Change default value for E2E_PARALLEL (#1124)
+  * README.md: Fix broken link to docker (#1121)
+  * Add blog post for who-can plugin (#1120)
+
+-------------------------------------------------------------------
 Fri May 15 14:14:34 UTC 2020 - Michal Jura <mjura@suse.com>
 
 - Update to version 0.18.2:

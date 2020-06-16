@@ -18,7 +18,7 @@
 
 %define project github.com/vmware-tanzu/sonobuoy
 Name:           sonobuoy
-Version:        0.18.2
+Version:        0.18.3
 Release:        0
 Summary:        Conformance test suite for diagnosing a Kubernetes cluster
 License:        Apache-2.0
