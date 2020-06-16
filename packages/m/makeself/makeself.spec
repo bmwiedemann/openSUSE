@@ -1,7 +1,7 @@
 #
 # spec file for package makeself
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2011-2017 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,21 +13,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           makeself
-Version:        2.3.1
+Version:        2.4.2
 Release:        0
 Summary:        Make self-extractable archives on Unix
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Archiving/Compression
-Url:            http://www.megastep.org/makeself/
-Source0:        https://github.com/megastep/%{name}/archive/release-%{version}.tar.gz#/%{name}-release-%{version}.tar.gz
+URL:            https://makeself.io/
+Source0:        https://github.com/megastep/makeself/archive/release-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.rpmlintrc
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Small shell script that generates a self-extractable tar.gz archive from a
@@ -46,14 +45,17 @@ self-validation (CRC and/or MD5 checksums).
 %build
 
 %install
-install -Dm0755 makeself.sh  %{buildroot}%{_bindir}/makeself
-ln -s /usr/bin/makeself %{buildroot}%{_bindir}/makeself.sh
-install -Dm0755 makeself-header.sh  %{buildroot}%{_bindir}/makeself-header.sh
-install -Dm0644 makeself.1 %{buildroot}%{_mandir}/man1/makeself.1
+install -Dpm 0755 makeself.sh  \
+  %{buildroot}%{_bindir}/makeself
+ln -s %{_bindir}/makeself %{buildroot}%{_bindir}/makeself.sh
+install -Dpm 0755 makeself-header.sh  \
+  %{buildroot}%{_bindir}/makeself-header.sh
+install -Dpm 0644 makeself.1 \
+  %{buildroot}%{_mandir}/man1/makeself.1
 
 %files
-%defattr(-,root,root,-)
-%doc README.md COPYING
+%license COPYING
+%doc README.md
 %{_bindir}/makeself-header.sh
 %{_bindir}/makeself.sh
 %{_bindir}/makeself

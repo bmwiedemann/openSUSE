@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jun 16 06:33:37 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.4.2:
+  * New --cleanup and --cleanup-args arguments for cleanup scripts;
+  * Added threading support for supported compressors
+  * Now supports zstd compression.
+- Changes for version 2.4.0:
+  * Added new --sha256 argument to use a SHA256 checksum to verify
+    the integrity of archives. The shasum or sha256sum commands
+    need to be available on the targeted systems.
+  * Fixes for extracting to directories containing spaces.
+  * OpenSSL improvements.
+  * Base64 decoding support on macOS.
+  * Various documentation updates.
+
+-------------------------------------------------------------------
+Wed Nov 29 17:36:33 UTC 2017 - plinnell@opensuse.org
+
+- Adjust source URL for factory service run to fix factory-auto
+
+-------------------------------------------------------------------
 Sun Nov 26 23:56:23 UTC 2017 - malcolmlewis@opensuse.org
 
 - Fix source URL for factory service run.
