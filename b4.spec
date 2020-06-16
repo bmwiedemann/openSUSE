@@ -17,9 +17,9 @@
 
 
 %define skip_python2 1
-%define version_unconverted 0.5.0+git20200528.g204416b80fbb
+%define version_unconverted 0.5.0+git20200612.g5c4ec14b
 Name:           b4
-Version:        0.5.0+git20200528.g204416b80fbb
+Version:        0.5.0+git20200612.g5c4ec14b
 Release:        0
 Summary:        Helper scripts for kernel.org patches
 License:        GPL-2.0-or-later
@@ -40,6 +40,9 @@ precursor to Lore and Data in the Star Trek universe.
 
 %prep
 %autosetup -p1
+
+# ditch shebang from .py files, they are non-executables anyway
+sed -i.old '1{/#!.*/d}' b4/*.py
 
 %build
 %python_build

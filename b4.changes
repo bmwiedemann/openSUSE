@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 16 06:23:16 UTC 2020 - jslaby@suse.com
+
+- Update to version 0.5.0+git20200612.g5c4ec14b:
+  * Fix crash with unbalanced [] in subject
+  * Fix regression with oddball charsets
+  * Fix mbox naming inconsistencies
+  * Output less confusing trailer mismatch messages
+  * Fix bug with threading when cover ref is missing
+  * Fix body part parsing when '---' is not used
+  * Use proper charset when reading back mailinfo
+
+-------------------------------------------------------------------
 Mon Jun 08 10:57:26 UTC 2020 - jslaby@suse.com
 
 - Update to version 0.5.0+git20200528.g204416b80fbb:
