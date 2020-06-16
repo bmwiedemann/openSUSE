@@ -1,0 +1,38 @@
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Wed, 10 Jun 2020 13:47:34 +0200
+Subject: netlink: fix error message suppression
+Patch-mainline: v5.8
+Git-commit: a4d9db29f8326d68762dbc0f78ad6f1aa4f29887
+
+Rewrite of nlsock_process_reply() used a bool variable to store the value
+of nlctx->suppress_nlerr before passing to nlsock_process_ack(). This
+causes the value of 2 (suppress all error/warning messages) to be converted
+to 1 (suppress only -EOPNOTSUPP). As a result, -ENOENT returned by failed
+genetlink family lookup when running on kernel without ethtool netlink
+support is not ignored and misleading "netlink error: No such file or
+directory" message is issued even if the ioctl fallback works as expected.
+
+Fixes: 76bdf9372824 ("netlink: use pretty printing for ethtool netlink messages")
+Reported-by: Heiner Kallweit <hkallweit1@gmail.com>
+Signed-off-by: Michal Kubecek <mkubecek@suse.cz>
+---
+ netlink/nlsock.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/netlink/nlsock.c
++++ b/netlink/nlsock.c
+@@ -255,12 +255,12 @@ int nlsock_process_reply(struct nl_socket *nlsk, mnl_cb_t reply_cb, void *data)
+ 
+ 		nlhdr = (struct nlmsghdr *)buff;
+ 		if (nlhdr->nlmsg_type == NLMSG_ERROR) {
+-			bool silent = nlsk->nlctx->suppress_nlerr;
++			unsigned int suppress = nlsk->nlctx->suppress_nlerr;
+ 			bool pretty;
+ 
+ 			pretty = debug_on(nlsk->nlctx->ctx->debug,
+ 					  DEBUG_NL_PRETTY_MSG);
+-			return nlsock_process_ack(nlhdr, len, silent, pretty);
++			return nlsock_process_ack(nlhdr, len, suppress, pretty);
+ 		}
+ 
+ 		msgbuff->nlhdr = nlhdr;

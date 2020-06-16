@@ -1,21 +1,21 @@
 From: Michal Kubecek <mkubecek@suse.cz>
-Date: Tue, 12 May 2020 22:10:19 +0200
+Date: Fri, 29 May 2020 01:21:12 +0200
 Subject: netlink: fix build warnings
-Patch-mainline: Not yet, going to submit for 5.7 cycle
+Patch-mainline: v5.8
+Git-commit: a9b8685859075771887aad0328246e0afa089caf
 
 Depending on compiler version and options, some of these warnings may
 result in build failure.
 
 - gcc 4.8 wants __KERNEL_DIV_ROUND_UP defined before including ethtool.h
 - avoid pointer arithmetic on void *
-- do not use printf(s) if string is not a string literal
 
 Signed-off-by: Michal Kubecek <mkubecek@suse.cz>
+Tested-by: Heiko Thiery <heiko.thiery@gmail.com>
 ---
  netlink/desc-ethtool.c | 2 +-
  netlink/parser.c       | 2 +-
- netlink/settings.c     | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
 --- a/netlink/desc-ethtool.c
 +++ b/netlink/desc-ethtool.c
@@ -41,14 +41,3 @@ Signed-off-by: Michal Kubecek <mkubecek@suse.cz>
  		ret = parser->handler(nlctx, parser->type, parser->handler_data,
  				      msgbuff, param_dest);
  		if (ret < 0)
---- a/netlink/settings.c
-+++ b/netlink/settings.c
-@@ -375,7 +375,7 @@ static int dump_link_modes(struct nl_context *nlctx,
- after:
- 	if (first && if_none)
- 		printf("%s", if_none);
--	printf(after);
-+	fputs(after, stdout);
- 
- 	return 0;
- err:

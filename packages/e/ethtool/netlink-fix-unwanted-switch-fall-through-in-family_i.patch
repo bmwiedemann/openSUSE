@@ -1,0 +1,26 @@
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Sun, 7 Jun 2020 21:32:50 +0200
+Subject: netlink: fix unwanted switch fall through in family_info_cb()
+Patch-mainline: v5.8
+Git-commit: c07ea9e10498a09a08cc9b507704471d4d7f505b
+
+Recently added switch branch for CTRL_ATTR_OPS in family_info_cb() is
+missing final break statement so that it will fall through into
+CTRL_ATTR_MCAST_GROUPS.
+
+Fixes: 6c19c0d559c8 ("netlink: use genetlink ops information to decide about fallback")
+Signed-off-by: Michal Kubecek <mkubecek@suse.cz>
+---
+ netlink/netlink.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/netlink/netlink.c
++++ b/netlink/netlink.c
+@@ -211,6 +211,7 @@ static int family_info_cb(const struct nlmsghdr *nlhdr, void *data)
+ 			ret = genl_read_ops(nlctx, attr);
+ 			if (ret < 0)
+ 				return MNL_CB_ERROR;
++			break;
+ 		case CTRL_ATTR_MCAST_GROUPS:
+ 			find_mc_group(nlctx, attr);
+ 			break;

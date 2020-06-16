@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jun 12 10:19:38 UTC 2020 - Michal Kubecek <mkubecek@suse.cz>
+
+- prevent misleading netlink error message when running on kernel
+  without ethtool netlink support:
+  netlink-fix-error-message-suppression.patch
+
+-------------------------------------------------------------------
+Sun Jun  7 19:55:27 UTC 2020 - Michal Kubecek <mkubecek@suse.cz>
+
+- update to new upstream release 5.7
+  * support LLRS (Low Latency Reed Solomon) FEC mode
+  * accept long legacy flag names (-K)
+  * support for newer SFF-8024 compliance codes
+  * report transceiver when reported by kernel
+  * improve fallback from netlink to ioctl and error messages
+- drop patches present in 5.7 release:
+  netlink-show-netlink-error-even-without-extack.patch
+  features-accept-long-legacy-flag-names-when-setting-.patch
+  refactor-interface-between-ioctl-and-netlink-code.patch
+  netlink-use-genetlink-ops-information-to-decide-abou.patch
+- refresh
+  netlink-fix-build-warnings.patch
+- fix cherry picked from upstream git:
+  netlink-fix-unwanted-switch-fall-through-in-family_i.patch
+
+-------------------------------------------------------------------
 Fri May 15 20:12:57 UTC 2020 - Michal Kubecek <mkubecek@suse.cz>
 
 - update upstream references:
