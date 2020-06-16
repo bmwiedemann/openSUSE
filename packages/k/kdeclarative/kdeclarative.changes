@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jun  7 08:06:29 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.71.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.71.0
+- Changes since 5.70.0:
+  * Improve dox
+  * Fix #include guards
+  * Create kcmshell.openSystemSettings() and kcmshell.openInfoCenter() functions
+  * Port KKeySequenceItem to QQC2
+  * Pixel align children of GridViewInternal
+- Drop upstream patch:
+  * 0001-Pixel-align-children-of-GridViewInternal.patch
+
+-------------------------------------------------------------------
 Thu May  7 11:24:52 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch:
