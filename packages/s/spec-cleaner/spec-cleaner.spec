@@ -18,16 +18,16 @@
 
 
 Name:           spec-cleaner
-Version:        1.1.9
+Version:        1.2.0
 Release:        0
 Summary:        .spec file cleaner
 License:        BSD-3-Clause
-Group:          Development/Tools/Other
 URL:            https://github.com/openSUSE/spec-cleaner
 Source0:        https://github.com/openSUSE/%{name}/archive/%{name}-%{version}.tar.gz
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-cov
-BuildRequires:  python3-pytest-runner
+BuildRequires:  python3-pytest-isort
 BuildRequires:  python3-pytest-xdist
 BuildRequires:  python3-setuptools
 # For the pkg_resources used in the binary loader
@@ -41,7 +41,6 @@ will never be perfect.
 
 %package format_spec_file
 Summary:        Binding replacing OBS service format_spec_file
-Group:          Development/Tools/Other
 Requires:       %{name} = %{version}
 Conflicts:      obs-service-format_spec_file
 
@@ -53,14 +52,14 @@ user to use spec-cleaner rather than to stick to perl based format_spec_file.
 %setup -q -n %{name}-%{name}-%{version}
 
 %build
-python3 setup.py build
+%python3_build
 
 %check
 export LANG=en_US.UTF-8
 python3 -m pytest -k "not webtest"
 
 %install
-python3 setup.py install --root=%{buildroot}
+%python3_install
 
 %files
 %license COPYING

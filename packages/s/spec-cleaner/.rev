@@ -689,4 +689,14 @@
     <comment></comment>
     <requestid>788381</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>3b4460efca651b4862cec539c911e757</srcmd5>
+    <version>1.2.0</version>
+    <time>1592308002</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.0 bsc#1099674:
+  * Fix pypi rewritter to work with wheels
+  * Do not choke on multiline string macros</comment>
+    <requestid>814878</requestid>
+  </revision>
 </revisionlist>

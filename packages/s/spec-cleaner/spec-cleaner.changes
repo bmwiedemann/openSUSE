@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 16 10:46:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.2.0 bsc#1099674:
+  * Fix pypi rewritter to work with wheels
+  * Do not choke on multiline string macros
+
+-------------------------------------------------------------------
 Wed Mar 25 16:58:04 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - Update to 1.1.9 bsc#1099674:
