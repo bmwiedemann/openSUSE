@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jun  7 08:06:52 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.71.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.71.0
+- Changes since 5.70.0:
+  * Don't duplicate error messages in a passive notification (kde#421425)
+  * Port from runUrl to OpenUrlJob
+  * Fix incorrect colours in the KNS Quick messagebox (kde#421270)
+  * Do not mark entry as uninstalled if uninstallation script failed (kde#420312)
+  * KNS: Deprecate isRemote method and handle parse error properly
+  * KNS: Do not mark entry as installed if install script failed
+  * Fix showing updates when the option is selected (kde#416762)
+  * Fix update auto selection (kde#419959)
+  * Add KPackage support to KNewStuffCore (kde#418466)
+
+-------------------------------------------------------------------
 Sun May  3 09:40:06 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.70.0
