@@ -9347,7 +9347,8 @@ unsorted:
   - libgda-tools 
   - libgda-ui-5_0-tools 
   - libgda-xslt-5_0-4 
-  - libgdal26 
+  - libgdal26: [x86_64] 
+  - libgdal27: [i586] 
   - libgdamm-5_0-13 
   - libgdamm-devel 
   - libgdata-devel 
@@ -18679,7 +18680,6 @@ unsorted:
   - python2-efl-doc 
   - python2-efl-examples 
   - python2-geopy 
-  - python2-hankel: [i586] 
   - python2-keyrings.alt 
   - python2-libfwsi 
   - python2-libguestfs: [x86_64] 
@@ -18688,7 +18688,6 @@ unsorted:
   - python2-pip 
   - python2-pycairo-common-devel 
   - python2-pycairo-devel 
-  - python2-python-dotenv 
   - python2-setuptools 
   - python3-32bit: [x86_64] 
   - python3-APScheduler 
@@ -20170,6 +20169,7 @@ unsorted:
   - python3-llfuse 
   - python3-llvmlite 
   - python3-lmdb 
+  - python3-lmfit 
   - python3-lml 
   - python3-localzone 
   - python3-locket 
@@ -20881,7 +20881,6 @@ unsorted:
   - python3-python-datamatrix 
   - python3-python-dbusmock 
   - python3-python-docs-theme 
-  - python3-python-dotenv 
   - python3-python-fileinspector 
   - python3-python-gammu 
   - python3-python-gflags 
