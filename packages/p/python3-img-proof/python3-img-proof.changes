@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun  1 21:06:30 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v5.1.0 (2020-06-01)
+  + Ensure region hint is in cloudregister log.
+  + Enable guest attrs by default in GCE.
+  + Fix build requires in test clause in spec.
+  + Integrate OCI console history method.
+  + Pull disk source name not devicename.
+  + Pull public ssh key from file.
+
+-------------------------------------------------------------------
 Wed May 20 16:55:48 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
 
 - Update spec to fix build requires in with test clause. 

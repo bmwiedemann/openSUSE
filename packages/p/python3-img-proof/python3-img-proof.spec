@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           python3-img-proof
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 Summary:        Command line and API for testing custom images
 License:        GPL-3.0-or-later
@@ -31,16 +31,13 @@ BuildRequires:  python3-azure-mgmt-compute
 BuildRequires:  python3-azure-mgmt-network
 BuildRequires:  python3-azure-mgmt-resource
 BuildRequires:  python3-boto3
-BuildRequires:  python3-certifi
 BuildRequires:  python3-click
 BuildRequires:  python3-click-man
-BuildRequires:  python3-cryptography
 BuildRequires:  python3-devel
 BuildRequires:  python3-google-api-python-client
 BuildRequires:  python3-google-auth
 BuildRequires:  python3-oci-sdk
 BuildRequires:  python3-paramiko
-BuildRequires:  python3-pycryptodome
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-testinfra
@@ -54,18 +51,15 @@ Requires:       python3-azure-mgmt-compute
 Requires:       python3-azure-mgmt-network
 Requires:       python3-azure-mgmt-resource
 Requires:       python3-boto3
-Requires:       python3-certifi
 Requires:       python3-click
-Requires:       python3-cryptography
 Requires:       python3-google-api-python-client
 Requires:       python3-google-auth
 Requires:       python3-oci-sdk
 Requires:       python3-paramiko
-Requires:       python3-pycryptodome
 Requires:       python3-pytest
 Requires:       python3-testinfra
 BuildArch:      noarch
-Obsoletes:      python3-ipa < 5.0.0
+Obsoletes:      python3-ipa < 5.1.0
 
 %description
 img-proof provides a command line utility to test images in
@@ -76,7 +70,7 @@ Summary:        Infrastructure tests for img-proof
 Group:          Development/Languages/Python
 Requires:       python3-susepubliccloudinfo
 PreReq:         python3-img-proof = %{version}
-Obsoletes:      python3-ipa-tests < 5.0.0
+Obsoletes:      python3-ipa-tests < 5.1.0
 
 %description tests
 Directory of infrastructure tests for testing images.
