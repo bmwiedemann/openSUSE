@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-praatio
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        A library for working with praat
 License:        MIT
@@ -31,7 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     praat
 # SECTION test requirements
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildArch:      noarch
 %python_subpackages
@@ -65,15 +65,7 @@ sed -i 's/\r$//' examples/files/mary.TextGrid
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Reset examples after Python 2 test run
-cp -rp examples examples-orig
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-nosetests-%{$python_bin_suffix} --exe
-if [ -d examples-orig ]; then
-  rm -r examples
-  mv examples-orig examples
-fi
-}
+%pytest examples/test/*.py
 
 %files %{python_files}
 %license LICENSE
