@@ -1,7 +1,7 @@
 #
 # spec file for package s-tui
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           s-tui
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Terminal based CPU stress and monitoring utility
 License:        GPL-2.0-only
