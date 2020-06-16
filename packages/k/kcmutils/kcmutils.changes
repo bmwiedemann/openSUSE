@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jun  7 08:06:22 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.71.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.71.0
+- Changes since 5.70.0:
+  * Add X-KDE-KCM-Args as property, read property in module loader
+  * Repair kcmshell5 after previous commits, now with unittest
+  * Add test for a "normal" KCM with desktop file
+  * Rename KCModuleInfo unittest and extend it with the "fake KCM" testcase
+  * Fix crash when loading an external app KCM like yast (kde#421566)
+  * KSettings::Dialog: avoid duplicate entries due cascading $XDG_DATA_DIRS
+- Drop upstream patches:
+  * Fix-crash-when-loading-external-app.patch
+  * Rename-KCModuleInfo-unittest-and-extend-it-with-fake-KCM.patch
+  * Add-test-for-a-normal-KCM-with-desktop-file.patch
+  * Repair-kcmshell5-after-previous-commits.patch
+  * Port-these-two-to-KCModuleInfo_property-as-well.patch
+
+-------------------------------------------------------------------
 Fri May 22 14:53:24 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update Fix-crash-when-loading-external-app.patch to last version

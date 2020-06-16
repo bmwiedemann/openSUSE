@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5KCMUtils5
-%define _tar_path 5.70
+%define _tar_path 5.71
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcmutils
-Version:        5.70.0
+Version:        5.71.0
 Release:        0
 Summary:        Classes to work with KCModules
 License:        LGPL-2.1-or-later
@@ -36,13 +36,6 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch:          Fix-crash-when-loading-external-app.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         Rename-KCModuleInfo-unittest-and-extend-it-with-fake-KCM.patch
-Patch2:         Add-test-for-a-normal-KCM-with-desktop-file.patch
-Patch3:         Repair-kcmshell5-after-previous-commits.patch
-Patch4:         Port-these-two-to-KCModuleInfo_property-as-well.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
@@ -94,7 +87,6 @@ created with the KConfigWidgets framework. Development files.
 
 %prep
 %setup -q
-%autopatch -p1
 
 %build
   %cmake_kf5 -d build
