@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 16 08:23:04 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.0:
+  * Section needs to be explicitly defined
+  * Allow subsection in preamble
+  * Add basic working tests for line breaks parsing
+  * Fix parsing of line breaks without newline
+  * Fix parsing of line breaks followed by underlined text
+
+-------------------------------------------------------------------
 Mon Feb 17 10:07:06 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.10.1:

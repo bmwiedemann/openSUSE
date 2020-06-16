@@ -133,4 +133,17 @@
   * Fix `date --date` dependent test</comment>
     <requestid>774820</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3f611d3e17c77384ca94b08fb6a208fc</srcmd5>
+    <version>1.11.0</version>
+    <time>1592307968</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11.0:
+  * Section needs to be explicitly defined
+  * Allow subsection in preamble
+  * Add basic working tests for line breaks parsing
+  * Fix parsing of line breaks without newline
+  * Fix parsing of line breaks followed by underlined text</comment>
+    <requestid>814844</requestid>
+  </revision>
 </revisionlist>

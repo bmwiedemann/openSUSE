@@ -1,8 +1,8 @@
-diff -urEbw scdoc-1.10.1/Makefile scdoc-1.10.1.new/Makefile
---- scdoc-1.10.1/Makefile	2020-02-14 22:38:03.000000000 +0100
-+++ scdoc-1.10.1.new/Makefile	2020-02-17 11:06:51.216722039 +0100
+diff -urEbw scdoc-1.11.0/Makefile scdoc-1.11.0.new/Makefile
+--- scdoc-1.11.0/Makefile	2020-06-14 17:21:58.000000000 +0200
++++ scdoc-1.11.0.new/Makefile	2020-06-16 10:24:07.293848736 +0200
 @@ -1,6 +1,5 @@
- VERSION=1.10.1
+ VERSION=1.11.0
  CFLAGS+=-g -DVERSION='"$(VERSION)"' -Wall -Wextra -Werror -Wno-unused-parameter
 -LDFLAGS+=-static
  INCLUDE+=-Iinclude
