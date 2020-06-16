@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun  7 08:06:13 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.71.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.71.0
+- Changes since 5.70.0:
+  * Improve accuracy of battery percentage icons
+  * Fix KML mimetype icon
+  * Change mouse icon to have better dark theme contrast (kde#406453)
+  * Require in-source build (kde#421637)
+  * Add 48px places icons (kde#421144)
+  * Adds a missing LibreOffice icon shortcut
+
+-------------------------------------------------------------------
 Sun May  3 09:39:40 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.70.0
