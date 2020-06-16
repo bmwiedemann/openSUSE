@@ -19,26 +19,26 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-hankel
-Version:        1.0.2
+Version:        1.1.0
 Release:        0
 Summary:        Hankel Transformations using method of Ogata 2005
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/steven-murray/hankel
-Source:         https://github.com/steven-murray/hankel/archive/%{version}.tar.gz
+Source:         https://github.com/steven-murray/hankel/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-mpmath >= 0.18
-Requires:       python-numpy >= 1.6.1
-Requires:       python-scipy >= 0.12.0
+Requires:       python-mpmath >= 1.0.0
+Requires:       python-numpy >= 1.9.3
+Requires:       python-scipy >= 0.16.1
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module mpmath >= 0.18}
-BuildRequires:  %{python_module numpy >= 1.6.1}
+BuildRequires:  %{python_module mpmath >= 1.0.0}
+BuildRequires:  %{python_module numpy >= 1.9.3}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 0.12.0}
+BuildRequires:  %{python_module scipy >= 0.16.1}
 # /SECTION
 %python_subpackages
 
@@ -56,8 +56,11 @@ transformations using the method of Ogata 2005.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+# TESTS TAKE TOO LONG ON i586 LEADING TO OBS WORKER TIMING OUT
+%if "%{_lib}" != "lib"
 %check
 %pytest
+%endif
 
 %files %{python_files}
 %doc README.rst CHANGELOG.rst
