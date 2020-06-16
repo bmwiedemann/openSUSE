@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 15 11:03:32 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building with gcc10
+- Small spec file cleanup with spec-cleaner
+
+-------------------------------------------------------------------
 Mon Dec  4 18:28:08 UTC 2017 - crrodriguez@opensuse.org
 
 - Only BuildRequire pkgconfig(x11) not the full xorg-x11-devel 
