@@ -24,8 +24,8 @@ Index: src/internal.h
 +#pragma GCC visibility push(hidden)
  /* Configuration and constants */
  
- #define MAXSERVERS 5
-@@ -944,4 +945,5 @@ static inline int errno_resources(int e)
+ #define MAXSERVERS 5 /* do not increase beyond no. of bits in `unsigned'! */
+@@ -960,4 +961,5 @@ static inline int errno_resources(int e)
  		       (tv)|=GETIL_B(cb),		\
  		       (tv) )
  

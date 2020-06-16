@@ -18,7 +18,7 @@
 
 %define lname	libadns1
 Name:           adns
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        Advanced Easy-to-Use Asynchronous-Capable DNS Utilities
 License:        GPL-2.0-or-later
@@ -32,7 +32,6 @@ Source4:        baselibs.conf
 Patch0:         adns-1.4-destdir.patch
 Patch1:         adns-1.4-configure.patch
 Patch2:         adns-visibility.patch
-Patch3:         adns-1.5.1-gcc10.patch
 BuildRequires:  autoconf
 
 %description
@@ -64,7 +63,6 @@ programs with libads support.
 %patch0
 %patch1
 %patch2
-%patch3 -p1
 cp %{SOURCE3} .
 
 %build
@@ -73,7 +71,12 @@ autoreconf -fiv
 %make_build all
 
 %install
-%make_install
+make install \
+    prefix=%{buildroot}%{_prefix} \
+    bindir=%{buildroot}%{_bindir} \
+    includedir=%{buildroot}%{_includedir} \
+    libdir=%{buildroot}%{_libdir} \
+
 # FIXME: --disable-static not available
 rm %{buildroot}%{_libdir}/*.a
 

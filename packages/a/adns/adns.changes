@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Jun 15 12:40:37 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to 1.6.0
+- Changes in 1.6.0:
+  * Bugfixes
+    * adnshost: Support --reverse in -f mode input stream
+    * timeout robustness against clock skew: track query start time and
+      duration.  Clock instability may now only cause spurious timeouts
+      rather than indefinite hangs or even assertion failures.
+  * New features:
+    * adnshost: Offer ability to set adns checkc flags
+    * adnslogres: Honour --checkc-freq (if it comes first)
+    * adnsresfilter: Honour --checkc-freq and --checkc-entex
+    * time handling: Support use of CLOCK_MONOTONIC via an init flag.
+    * adns_str* etc.: Improve robustness; more allowable inputs values.
+  * Internal changes:
+    * adnshost: adh-opts.c: Whitespace adjustments to option table
+  * Build system and tests improvements
+- Changes in 1.5.2
+  * Important security fixes:
+    CVE-2017-9103 CVE-2017-9104 CVE-2017-9105 CVE-2017-9109:
+      Vulnerable applications: all adns callers.
+      Exploitable by: the local recursive resolver.
+      Likely worst case: Remote code execution.
+    CVE-2017-9106:
+      Vulnerable applications: those that make SOA queries.
+      Exploitable by: upstream DNS data sources.
+      Likely worst case: DoS (crash of the adns-using application)
+    CVE-2017-9107:
+      Vulnerable applications: those that use adns_qf_quoteok_query.
+      Exploitable by: sources of query domain names.
+      Likely worst case: DoS (crash of the adns-using application)
+    CVE-2017-9108:
+      Vulnerable applications: adnshost.
+      Exploitable by: code responsible for framing the input.
+      Likely worst case: DoS (adnshost crashes at EOF).
+  * Bugfixes:
+    * Do not include spurious external symbol `data' (fixes GCC10 build).
+    * If server sends TC flag over TCP, bail rather than retrying.
+    * Do not crash on certain strange resolv.conf contents.
+    * Fix various crashes if a global system failure occurs, or
+      adns_finish is called with outstanding queries.
+    * Correct a parsing error message very slightly.
+    * DNS packet parsing: Slight fix when packet is truncated.
+    * Fix ABI compatibility in string conversion of certain RR types.
+    * internal.h: Use `unsigned' for nextid; fixes theoretical C UB.
+  * Portability fix:
+    * common.make.in: add -Wno-unused-value.  Fixes build with GCC9.
+  * Internal changes:
+    * Additional comments describing some internal code restrions.
+    * Robustness assert() against malfunctioning write() system call.
+- It fixes the following CVEs [bsc#1172265]
+  CVE-2017-9103, CVE-2017-9104, CVE-2017-9105, CVE-2017-9106,
+  CVE-2017-9107, CVE-2017-9108, CVE-2017-9109
+- refresh adns-visibility.patch
+- drop adns-1.5.1-gcc10.patch that is no longer needed 
+
+-------------------------------------------------------------------
 Tue Jun  2 12:48:11 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - add adns-1.5.1-gcc10.patch to fix build with GCC10
