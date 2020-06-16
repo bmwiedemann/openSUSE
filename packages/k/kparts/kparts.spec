@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Parts5
-%define _tar_path 5.70
+%define _tar_path 5.71
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kparts
-Version:        5.70.0
+Version:        5.71.0
 Release:        0
 Summary:        Plugin framework for user interface components
 License:        LGPL-2.1-or-later
@@ -119,23 +119,22 @@ elaborate widgets with a user-interface defined in terms of actions
 
 %files -n %{lname}
 %license COPYING*
-%{_kf5_libdir}/libKF5Parts.so.*
-#{_kf5_plugindir}/notepadpart.so
-#{_kf5_plugindir}/spellcheckplugin.so
 %dir %{_kf5_servicetypesdir}
+%{_kf5_debugdir}/kparts.categories
+%{_kf5_libdir}/libKF5Parts.so.*
 %{_kf5_servicetypesdir}/browserview.desktop
 %{_kf5_servicetypesdir}/kpart.desktop
 %{_kf5_servicetypesdir}/krop.desktop
 %{_kf5_servicetypesdir}/krwp.desktop
 
 %files devel
-%{_kf5_libdir}/libKF5Parts.so
-%{_kf5_libdir}/cmake/KF5Parts/
-%{_kf5_includedir}/*.h
 %dir %{_kf5_includedir}/*/
-%{_kf5_includedir}/*/
-%{_kf5_mkspecsdir}/qt_KParts.pri
 %dir %{_kf5_sharedir}/kdevappwizard
+%{_kf5_includedir}/*.h
+%{_kf5_includedir}/*/
+%{_kf5_libdir}/cmake/KF5Parts/
+%{_kf5_libdir}/libKF5Parts.so
+%{_kf5_mkspecsdir}/qt_KParts.pri
 %{_kf5_sharedir}/kdevappwizard/templates/
 
 %changelog
