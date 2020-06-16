@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun  7 08:07:05 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.71.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.71.0
+- Changes since 5.70.0:
+  * Be noisy about deprecated KPageWidgetItem::setHeader(empty-non-null string)
+  * Use UI marker context in more tr() calls
+
+-------------------------------------------------------------------
 Sun May  3 09:40:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.70.0
