@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun  7 08:06:24 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.71.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.71.0
+- Changes since 5.70.0:
+  * Don't try to initalize deprecated SaveOptions enum value
+  * Add KStandardShortcut::findByName(const QString&) and deprecate find(const char*)
+  * Fix KStandardShortcut::find(const char*)
+  * Adjust name of internally-exported method as suggested in D29347
+  * KAuthorized: export method to reload restrictions
+
+-------------------------------------------------------------------
 Sun May  3 09:39:47 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.70.0
