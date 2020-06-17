@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun 16 11:40:03 UTC 2020 - Robert Frohl <rfrohl@suse.com>
+
+- update to 0.7.8
+  + Fixed segfaults with rules.d feature
+- update to 0.7.7
+  + Added readwritepath to service file
+  + Added match-all keyword to rules language
+  + Added rules.d feature: daemon can load multiple rule files from rules.d/
+  + Included with-connect-type in dbus signal
+  + Fixed sigwaitinfo handling
+  + Fixed possible data corruption on stack with appendRule via dbus
+  + Fixed ENOBUFS errno handling on netlink socket: daemon can survive and wait until socket is readable again
+  + Dropped unused PIDFile from service file
+  + Dropped deprecated dbus-glib dependency
+
+-------------------------------------------------------------------
 Thu Jan 30 18:26:34 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 0.7.6
