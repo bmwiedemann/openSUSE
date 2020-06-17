@@ -94,6 +94,7 @@ Patch0036:      bug-1150021_05-bcache-bcache_invalidate_fd-only-remove-prefixes-
 Patch0037:      bug-1150021_06-fix-dev_unset_last_byte-after-write-error.patch
 Patch0038:      bug-1157736-add-suggestion-message-for-mirror-LVs.patch
 Patch0039:      bug-1171907-lvremove-remove-attached-cachevol-with-removed-LV.patch
+Patch0040:      bug-1172566_cachevol-use-cachepool-code-for-metadata-size.patch
 # SUSE patches: 1000+ for LVM
 # Never upstream
 Patch1001:      cmirrord_remove_date_time_from_compilation.patch
@@ -187,6 +188,7 @@ Volume Manager.
 %patch0037 -p1
 %patch0038 -p1
 %patch0039 -p1
+%patch0040 -p1
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1

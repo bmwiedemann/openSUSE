@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 12 01:28:08 UTC 2020 - heming.zhao@suse.com
+
+- problem with LVM cache (data loss) (bsc#1172566)
+  + bug-1172566_cachevol-use-cachepool-code-for-metadata-size.patch
+
+-------------------------------------------------------------------
 Wed May 27 13:00:58 UTC 2020 - heming.zhao@suse.com
 
 - removing LVM cache with cache volume does not remove the cache volume (bsc#1171907)
