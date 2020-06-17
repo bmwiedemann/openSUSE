@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 17 06:46:49 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add compiler flag -fallow-argument-mismatch to allow build with
+  gcc10.
+
+-------------------------------------------------------------------
 Sat Mar 28 08:13:18 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Remove blacs HPC master packages: the libblacs has been removed

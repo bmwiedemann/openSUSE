@@ -187,4 +187,13 @@
   (boo#1167949). (forwarded request 789285 from eeich)</comment>
     <requestid>789303</requestid>
   </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>7f546929fc7601b525fa2e16826ab50f</srcmd5>
+    <version>2.1.0</version>
+    <time>1592398614</time>
+    <user>dimstar_suse</user>
+    <comment>- Add compiler flag -fallow-argument-mismatch to allow build with
+  gcc10. (forwarded request 815394 from eeich)</comment>
+    <requestid>815395</requestid>
+  </revision>
 </revisionlist>

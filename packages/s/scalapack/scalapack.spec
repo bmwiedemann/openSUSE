@@ -481,7 +481,14 @@ EOF
 module load openblas
 %endif
 
-RPM_OPT_FLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing"
+%if "%version" == "2.1.0"
+XTRA_FCFLAGS=-fallow-argument-mismatch
+%else
+# On version update check whether -fallow-argument-mismatch is
+# still required for gcc10. New versions may set this in the code.
+%error "Check if -fallow-argument-mismatch is still required for gcc10"
+%endif
+RPM_OPT_FLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing $XTRA_FCFLAGS"
 %if %{without hpc}
 echo $PATH | grep -q %{mpi_flavor}%{?mpi_ext} || \
     PATH=/usr/%_lib/mpi/gcc/%{mpi_flavor}%{?mpi_ext}/bin:$PATH
