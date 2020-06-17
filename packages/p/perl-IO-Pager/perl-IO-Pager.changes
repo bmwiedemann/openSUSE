@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Jun 14 03:09:36 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.03
+   see /usr/share/doc/packages/perl-IO-Pager/CHANGES
+
+  1.03    Jun 13 2020
+  	Fix destruction warnings in Buffered
+  	Fix version number in Unbuffered
+  	Fix undefined warnings in unrealistically spartan environments.
+  	::Perl Add ability to save buffer to file
+  	::Perl Add search wrapping
+  	::Perl Add navigation for multi-file viewing in tp.
+  	::Perl Add flush buffer command to complement --tail.
+  	::Perl Actually publish v1.02 changes for tp, they were made
+  	       to a copy of the file not included in the distribution
+  	::Perl Add experimental/incomplete grep mode; grep is lost
+  	       on backwards scroll or dialog
+  	::Perl Fix pause behavior in tp.
+  	::Perl Fix folding; Text::Wrap was loaded at the wrong time.
+  	::Perl Fix P, ^b and M-v, and add a bunch more command aliases.
+  	::Perl Add work around for use of +OCRNL TTY mode to prevent
+  	       status bar ghosting when using Enter to downline
+  	::Perl restore Esc+x input
+  	::Perl Remove unused (debugging) code.
+
+-------------------------------------------------------------------
 Mon Jun  8 03:11:41 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.02

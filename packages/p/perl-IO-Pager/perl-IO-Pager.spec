@@ -17,7 +17,7 @@
 
 
 Name:           perl-IO-Pager
-Version:        1.02
+Version:        1.03
 Release:        0
 %define cpan_name IO-Pager
 Summary:        Select a pager (possibly perl-based) & pipe it text if a TTY
