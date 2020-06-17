@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-msrest
-Version:        0.6.11
+Version:        0.6.16
 Release:        0
 Summary:        AutoRest swagger generator Python client runtime
 License:        MIT

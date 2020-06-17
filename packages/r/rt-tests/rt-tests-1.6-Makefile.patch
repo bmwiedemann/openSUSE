@@ -1,0 +1,64 @@
+Index: rt-tests-1.6/Makefile
+===================================================================
+--- rt-tests-1.6/Makefile	
++++ rt-tests-1.6/Makefile	
+@@ -11,6 +11,7 @@
+ 	  pmqtest.c \
+ 	  ptsematest.c \
+ 	  rt-migrate-test.c \
++	  sendme.c \
+ 	  signaltest.c \
+ 	  sigwaittest.c \
+ 	  svsematest.c  \
+@@ -27,6 +28,7 @@
+ prefix  ?= /usr/local
+ bindir  ?= $(prefix)/bin
+ mandir	?= $(prefix)/share/man
++srcdir	?= $(prefix)/src
+ 
+ CFLAGS ?= -Wall -Wno-nonnull
+ CPPFLAGS += -D_GNU_SOURCE -Isrc/include
+@@ -87,6 +89,7 @@
+ VPATH	+= src/sched_deadline:
+ VPATH	+= src/queuelat:	
+ VPATH	+= src/ssdd:
++VPATH	+= src/backfire:
+ 
+ $(OBJDIR)/%.o: %.c | $(OBJDIR)
+ 	$(CC) -D VERSION=$(VERSION) -c $< $(CFLAGS) $(CPPFLAGS) -o $@
+@@ -138,6 +141,9 @@
+ pmqtest: $(OBJDIR)/pmqtest.o $(OBJDIR)/librttest.a
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< $(LIBS) $(RTTESTLIB) $(EXTRA_LIBS)
+ 
++sendme: $(OBJDIR)/sendme.o $(OBJDIR)/librttest.a
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< $(LIBS) $(RTTESTLIB) $(EXTRA_LIBS)
++
+ pip_stress: $(OBJDIR)/pip_stress.o $(OBJDIR)/librttest.a
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< $(LIBS) $(RTTESTLIB)
+ 
+@@ -176,10 +182,13 @@
+ 
+ .PHONY: install
+ install: all install_hwlatdetect
+-	mkdir -p "$(DESTDIR)$(bindir)" "$(DESTDIR)$(mandir)/man8"
++	mkdir -p "$(DESTDIR)$(bindir)" "$(DESTDIR)$(mandir)/man4"
++	mkdir -p "$(DESTDIR)$(srcdir)" "$(DESTDIR)$(mandir)/man8"
+ 	cp $(TARGETS) "$(DESTDIR)$(bindir)"
+-	install src/queuelat/get_cpuinfo_mhz.sh "$(DESTDIR)$(bindir)"
+-	install src/queuelat/determine_maximum_mpps.sh "${DESTDIR}${bindir}"
++	install -m 755 src/queuelat/get_cpuinfo_mhz.sh "${DESTDIR}${bindir}"
++	install -m 755 src/queuelat/determine_maximum_mpps.sh "${DESTDIR}${bindir}"
++	install -D -m 644 src/backfire/backfire.c "$(DESTDIR)$(srcdir)/backfire/backfire.c"
++	install -m 644 src/backfire/Makefile "$(DESTDIR)$(srcdir)/backfire/Makefile"
+ 	gzip -c src/cyclictest/cyclictest.8 >"$(DESTDIR)$(mandir)/man8/cyclictest.8.gz"
+ 	gzip -c src/pi_tests/pi_stress.8 >"$(DESTDIR)$(mandir)/man8/pi_stress.8.gz"
+ 	gzip -c src/ptsematest/ptsematest.8 >"$(DESTDIR)$(mandir)/man8/ptsematest.8.gz"
+@@ -193,6 +202,8 @@
+ 	gzip -c src/queuelat/queuelat.8 >"$(DESTDIR)$(mandir)/man8/queuelat.8.gz"
+ 	gzip -c src/sched_deadline/deadline_test.8 >"$(DESTDIR)$(mandir)/man8/deadline_test.8.gz"
+ 	gzip -c src/ssdd/ssdd.8 >"$(DESTDIR)$(mandir)/man8/ssdd.8.gz"
++	gzip -c src/backfire/backfire.4 >"$(DESTDIR)$(mandir)/man4/backfire.4.gz"
++	gzip -c src/backfire/sendme.8 >"$(DESTDIR)$(mandir)/man8/sendme.8.gz"
+ 
+ .PHONY: install_hwlatdetect
+ install_hwlatdetect: hwlatdetect

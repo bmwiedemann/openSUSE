@@ -8,4 +8,26 @@
 </comment>
     <requestid>647280</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4f0da808f0b1408e0914f18538c9d3ca</srcmd5>
+    <version>1.6</version>
+    <time>1592398305</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6:
+  * New feature to get a snapshot of a running instance of cyclictest without stopping it by 
+    sending SIGUSR2 to the PID and reading a shared memory segment. This is especially useful 
+    if running cyclictest over a long period of time
+  * Add SPDX tags V3
+  * Some fixes
+- Changes from version 1.5
+  * Mostly small clean-ups and bug fixes
+- Changes from version 1.4
+  * Added a number of new programs to the rt-tests suite
+    - queuelat : simulates a network queue checking for latency violations in packet processing.
+    - cyclicdeadline : used to test the deadline scheduler (SCHED_DEADLINE)
+    - deadline_test : tests the deadline scheduler in a cyclictest manner
+    - ssdd : a tracer to do a bunch of PTRACE_SINGLESTEPs
+- Add rt-tests-1.6-Makefile.patch</comment>
+    <requestid>815274</requestid>
+  </revision>
 </revisionlist>

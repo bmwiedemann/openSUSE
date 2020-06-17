@@ -1390,4 +1390,14 @@
 - Replace shebangs which use env interpreter.</comment>
     <requestid>813034</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>195a4874c13390490aec22d9d8ccb612</srcmd5>
+    <version>1.3.2</version>
+    <time>1592398402</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.2:
+  * Fix an issue with ListenBrainz.
+  * Fix Last.fm scrobbling (glgo#World/lollypop#2452).</comment>
+    <requestid>815297</requestid>
+  </revision>
 </revisionlist>

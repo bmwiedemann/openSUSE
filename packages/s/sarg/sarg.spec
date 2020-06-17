@@ -1,7 +1,7 @@
 #
 # spec file for package sarg
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,11 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
-%endif
 
 Name:           sarg
 Version:        2.4.0
@@ -60,21 +55,19 @@ reports in html, with fields such as: users, IP Addresses, bytes,
 sites, and times.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 cp %{SOURCE2} .
 
 %build
 chmod a+x user_limit_block
 cp %{_datadir}/gettext/po/Makefile.in.in po
 autoreconf -fvi
+export CFLAGS="%{optflags} -fcommon"
 %configure \
-        --sysconfdir=%{_datadir}/%{name} \
-        --mandir=%{_mandir}/ \
-        --localedir=%{_datadir}/sarg/languages \
-        --enable-sargphp=/srv/www/htdocs
-make %{?_smp_mflags}
+  --sysconfdir=%{_datadir}/%{name} \
+  --localedir=%{_datadir}/sarg/languages \
+  --enable-sargphp=/srv/www/htdocs
+%make_build
 
 %install
 install -d  %{buildroot}/srv/www/htdocs
@@ -106,7 +99,6 @@ install -m 644 %{SOURCE8} %{buildroot}%{_mandir}/man8
 %{fillup_only -n sarg}
 
 %files
-%defattr(-,root,root)
 %config(noreplace) %{_sysconfdir}/sarg.conf
 %dir %{_sysconfdir}/cron.daily
 %dir %{_sysconfdir}/cron.weekly
@@ -116,8 +108,8 @@ install -m 644 %{SOURCE8} %{buildroot}%{_mandir}/man8
 %{_sysconfdir}/cron.weekly/suse.de-sarg
 %{_sysconfdir}/cron.daily/suse.de-sarg
 %{_sysconfdir}/cron.monthly/suse.de-sarg
-%dir /etc/apache2
-%dir /etc/apache2/conf.d
+%dir %{_sysconfdir}/apache2
+%dir %{_sysconfdir}/apache2/conf.d
 %config(noreplace) %{_sysconfdir}/apache2/conf.d/sarg-apache.conf
 %{_bindir}/sarg
 %{_sbindir}/sarg-reports

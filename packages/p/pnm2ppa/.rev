@@ -7,4 +7,13 @@
     <comment>New boring package</comment>
     <requestid>308177</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>86b23831ef983640a2c7dd3015e8329e</srcmd5>
+    <version>1.13</version>
+    <time>1592398527</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with gcc10
+- Modernise spec file with spec-cleaner</comment>
+    <requestid>815366</requestid>
+  </revision>
 </revisionlist>

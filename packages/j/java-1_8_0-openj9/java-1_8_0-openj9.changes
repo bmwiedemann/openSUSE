@@ -4,6 +4,9 @@ Fri Apr 24 06:26:21 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 - Update to OpenJDK 8u252 build 09 with OpenJ9 0.20.0 virtual
   machine
   * including Oracle April 2020 CPU changes (bsc#1169511)
+    + fixes: CVE-2020-2754, CVE-2020-2755, CVE-2020-2756,
+      CVE-2020-2757, CVE-2020-2773, CVE-2020-2781, CVE-2020-2800,
+      CVE-2020-2803, CVE-2020-2805 and CVE-2020-2830
   * OpenJ9 changes,
     see https://www.eclipse.org/openj9/docs/version0.20
 

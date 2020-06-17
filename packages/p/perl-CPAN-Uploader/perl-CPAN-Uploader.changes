@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun  8 03:08:32 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.103014
+   see /usr/share/doc/packages/perl-CPAN-Uploader/Changes
+
+  0.103014  2020-06-07 13:40:36-04:00 America/New_York
+          - add a --retries option to make multiple upload attempts in the face
+            of a 500 error (thanks, PERLANCAR)
+
+-------------------------------------------------------------------
 Thu Sep  8 05:06:53 UTC 2016 - coolo@suse.com
 
 - updated to 0.103013
@@ -96,4 +106,3 @@ Mon Jan 17 15:53:17 UTC 2011 - coolo@novell.com
 
 - initial package 0.102150
   * created by cpanspec 1.78.03
-

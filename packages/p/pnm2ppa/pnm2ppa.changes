@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 17 06:47:03 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building with gcc10
+- Modernise spec file with spec-cleaner
+
+-------------------------------------------------------------------
 Sun Apr 12 18:17:04 UTC 2015 - mpluskal@suse.com
 
 - Use url for source

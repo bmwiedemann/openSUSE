@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 16 13:00:51 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.13
+  * Fixes bsc#1172961, CVE-2019-17566
+  * BATIK-1276: Allow blocking of external resources
+  * BATIK-1275: Refactor shared resources.
+
+-------------------------------------------------------------------
 Fri Apr  3 09:26:49 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.12

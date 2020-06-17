@@ -1,7 +1,7 @@
 #
 # spec file for package 4store
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,10 @@ BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
 
 %description
-4store was designed by Steve Harris and developed at Garlik to underpin their Semantic Web applications. It has been providing the base platform for around 3 years. At times holding and running queries over databases of 15GT, supporting a Web application used by thousands of people.
+4store was designed by Steve Harris and developed at Garlik to underpin
+their Semantic Web applications. It has been providing the base platform
+for around 3 years. At times holding and running queries over databases of
+15GT, supporting a Web application used by thousands of people.
 
 %package -n lib4store%{major}
 Summary:        4store RDF Storage Library
@@ -66,14 +69,16 @@ This package provides 4store RDF storage development files.
 %build
 # configure script is not shipped since v1.1.6, generation is required
 echo %{version} > .version && ./autogen.sh
+# needed for building with gcc10
+export CFLAGS="%{optflags} -fcommon"
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-sed -i 's:/usr/bin/env bash:/bin/bash:' %{buildroot}%{_bindir}/4s-*
-sed -i 's:/usr/bin/env perl:/usr/bin/perl:' %{buildroot}%{_bindir}/4s-*
+sed -i 's:%{_bindir}/env bash:/bin/bash:' %{buildroot}%{_bindir}/4s-*
+sed -i 's:%{_bindir}/env perl:%{_bindir}/perl:' %{buildroot}%{_bindir}/4s-*
 
 %post -n lib4store%{major} -p /sbin/ldconfig
 %postun -n lib4store%{major} -p /sbin/ldconfig

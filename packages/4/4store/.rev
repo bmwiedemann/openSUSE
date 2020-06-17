@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>739256</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>717a5de7cd0f32474c88dfcde7b0b4fb</srcmd5>
+    <version>1.1.6</version>
+    <time>1592398504</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with gcc10</comment>
+    <requestid>815363</requestid>
+  </revision>
 </revisionlist>

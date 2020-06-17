@@ -81,4 +81,13 @@
     <comment>- Don't use %python3_only command, but properly use alternatives.</comment>
     <requestid>800682</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>16bc68da3c434e64804104c005a0a87a</srcmd5>
+    <version>2.0.0</version>
+    <time>1592398459</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.0:
+  * Drop support for Python 2.7 and 3.4.</comment>
+    <requestid>815335</requestid>
+  </revision>
 </revisionlist>

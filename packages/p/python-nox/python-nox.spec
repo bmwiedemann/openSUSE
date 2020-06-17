@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-nox
-Version:        2019.11.9
+Version:        2020.5.24
 Release:        0
 Summary:        Flexible test automation
 License:        Apache-2.0

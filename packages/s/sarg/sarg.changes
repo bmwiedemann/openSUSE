@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 17 06:43:01 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building with gcc10
+- Spec file modernisation using spec-cleaner
+
+-------------------------------------------------------------------
 Thu Feb 27 13:33:54 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - replace the three nearly identical cron job scripts by a central one

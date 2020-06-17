@@ -1,7 +1,7 @@
 #
 # spec file for package smilutils
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           smilutils
 Version:        0.3.2+cvs20070731
 Release:        0
 Summary:        Tools for converting and editing digital video (DV) data
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
-Url:            http://www.kinodv.org/article/view/70/1/7
+URL:            http://www.kinodv.org/article/view/70/1/7
 Source0:        %{name}-%{version}.tar.bz2
 Patch0:         abuild.diff
 # PATCH-FIX-UPSTREAM smilutils-gcc4.3.patch vuntz@opensuse.org -- Taken from Debian and Mandriva, fix build with gcc 4.3
@@ -50,23 +50,22 @@ More details can be found using "man smilutils" and at:
 http://users.pandora.be/acp/kino/smilutils.html
 
 %prep
-%setup -q -n %{name}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -n %{name} -p1
 
 %build
 autoreconf -fiv
+export CFLAGS="%{optflags} -fcommon"
 %configure \
   --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
-%doc AUTHORS COPYING ChangeLog README
+%license COPYING
+%doc AUTHORS ChangeLog README
 %{_bindir}/image2raw
 %{_bindir}/ppm2raw
 %{_bindir}/ppm2webcam
@@ -84,19 +83,19 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/tga2raw
 %{_bindir}/xwd2raw
 %{_libdir}/kino
-%{_mandir}/man1/image2raw.1%{ext_man}
-%{_mandir}/man1/ppm2raw.1%{ext_man}
-%{_mandir}/man1/ppm2webcam.1%{ext_man}
-%{_mandir}/man1/raw2dv.1%{ext_man}
-%{_mandir}/man1/raw2image.1%{ext_man}
-%{_mandir}/man1/raw2webcam.1%{ext_man}
-%{_mandir}/man1/raw2yuv.1%{ext_man}
-%{_mandir}/man1/rawmultiply.1%{ext_man}
-%{_mandir}/man1/rawplay.1%{ext_man}
-%{_mandir}/man1/smil2raw.1%{ext_man}
-%{_mandir}/man1/smil2wav.1%{ext_man}
-%{_mandir}/man1/smil2yuv.1%{ext_man}
-%{_mandir}/man1/smilutils.1%{ext_man}
-%{_mandir}/man1/xwd2raw.1%{ext_man}
+%{_mandir}/man1/image2raw.1%{?ext_man}
+%{_mandir}/man1/ppm2raw.1%{?ext_man}
+%{_mandir}/man1/ppm2webcam.1%{?ext_man}
+%{_mandir}/man1/raw2dv.1%{?ext_man}
+%{_mandir}/man1/raw2image.1%{?ext_man}
+%{_mandir}/man1/raw2webcam.1%{?ext_man}
+%{_mandir}/man1/raw2yuv.1%{?ext_man}
+%{_mandir}/man1/rawmultiply.1%{?ext_man}
+%{_mandir}/man1/rawplay.1%{?ext_man}
+%{_mandir}/man1/smil2raw.1%{?ext_man}
+%{_mandir}/man1/smil2wav.1%{?ext_man}
+%{_mandir}/man1/smil2yuv.1%{?ext_man}
+%{_mandir}/man1/smilutils.1%{?ext_man}
+%{_mandir}/man1/xwd2raw.1%{?ext_man}
 
 %changelog

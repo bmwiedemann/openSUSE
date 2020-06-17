@@ -1,0 +1,28 @@
+From: Michel Normand <normand@linux.vnet.ibm.com>
+Subject: remove 2 backslashes in shell call
+Date: Fri, 12 Jun 2020 17:26:40 +0200
+
+Remove 2 backslashes in shell call
+
+To avoid make failure.
+Seems to start failing in OBS hardware project
+between 2020-04-05 and 2020-04-08
+
+Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
+---
+ Makefile |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: libcxl-1.7/Makefile
+===================================================================
+--- libcxl-1.7.orig/Makefile
++++ libcxl-1.7/Makefile
+@@ -19,7 +19,7 @@ HAS_WGET = $(shell /bin/which wget > /de
+ HAS_CURL = $(shell /bin/which curl > /dev/null 2>&1 && echo y || echo n)
+ 
+ # Update this to test a single feature from the most recent header we require:
+-CHECK_CXL_HEADER_IS_UP_TO_DATE = $(shell /bin/echo -e \\\#include $(1)\\\nint i = CXL_START_WORK_TID\; | \
++CHECK_CXL_HEADER_IS_UP_TO_DATE = $(shell /bin/echo -e \#include $(1)\\\nint i = CXL_START_WORK_TID\; | \
+                  $(CC) $(CFLAGS) -Werror -x c -S -o /dev/null - >/dev/null 2>&1 && echo y || echo n)
+ 
+ check_cxl_header:

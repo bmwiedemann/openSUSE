@@ -133,4 +133,64 @@
     <comment>1</comment>
     <requestid>426310</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e60b27ab3eac25ef32541a053a3b2681</srcmd5>
+    <version>0.103014</version>
+    <time>1592398331</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.103014
+   see /usr/share/doc/packages/perl-CPAN-Uploader/Changes
+  0.103014  2020-06-07 13:40:36-04:00 America/New_York
+          - add a --retries option to make multiple upload attempts in the face
+            of a 500 error (thanks, PERLANCAR)
+- updated to 0.103013
+   see /usr/share/doc/packages/perl-CPAN-Uploader/Changes
+  0.103013  2016-09-06 19:18:12-04:00 America/New_York
+          - the cpan-uploader program now skips directories, while the
+            upload_file method throws an exception on non-files; thanks to
+            Vincent Pit for reporting the weird behavior when trying to upload a
+            directory
+- updated to 0.103012
+   see /usr/share/doc/packages/perl-CPAN-Uploader/Changes
+  0.103012  2015-12-31 21:41:09-05:00 America/New_York
+          - don't chomp undef (Graham Knop)
+- updated to 0.103011
+   see /usr/share/doc/packages/perl-CPAN-Uploader/Changes
+  0.103011  2015-10-05 21:45:26-04:00 America/New_York
+          - document the availability of Config::Identity-based encrypted config
+- updated to 0.103010
+   see /usr/share/doc/packages/perl-CPAN-Uploader/Changes
+  0.103010  2015-08-10 22:23:25-04:00 America/New_York
+          - add --md5 option to print md5sum of uploaded files (Vincent Pit)
+- updated to 0.103009
+   see /usr/share/doc/packages/perl-CPAN-Uploader/Changes
+  0.103009  2015-05-27 13:56:16-04:00 America/New_York
+          - Do (minor) validation on the user in the config file (Mark Fowler)
+- updated to 0.103008
+   see /usr/share/doc/packages/perl-CPAN-Uploader/Changes
+  0.103008  2015-02-08 22:09:59-05:00 America/New_York
+          - fix documentation link to cpan-upload/CONFIGURATION (Kent Fredric)
+          - you can now &quot;cpan-upload http://some.cool/file.tgz&quot; (Barbie)
+          - add --ignore-errors for cpan-upload (perlancar)
+  
+  0.103007  2014-04-04 22:02:22-04:00 America/New_York
+          - added &quot;-c&quot; option to cpan-uploader to specify an alternate config
+- updated to 0.103006
+          update bugtracker and repo metadata
+          Use Config::Identity to permit GPG-encrypting on-disk credentials
+          (thanks, Mike Doherty)
+- updated to 0.103004
+          like 0.103003, but a production release
+          use https by default (thanks, Mike Doherty)
+          cpan-uploader now can take a list of filenames to upload (Thanks,
+          Gabor Szabo!)
+- updated to 0.103001
+ * Small fixes about upload_uri usage (Getty)
+- updated to 0.103000
+ * allow an alternate upload_uri via constructor arg or env var
+- initial package 0.102150
+  * created by cpanspec 1.78.03
+</comment>
+    <requestid>815285</requestid>
+  </revision>
 </revisionlist>

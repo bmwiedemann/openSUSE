@@ -1,7 +1,7 @@
 #
 # spec file for package libcxl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,8 +23,9 @@ Release:        0
 Summary:        Coherent accelerator interface
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/ibm-capi/libcxl
+URL:            https://github.com/ibm-capi/libcxl
 Source:         %{name}-%{version}.tar.gz
+Patch1:         remove_2_backslashes_in_shell_call.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  glibc
 ExclusiveArch:  ppc64 ppc64le
@@ -68,6 +69,7 @@ only for development purposes.
 
 %prep
 %setup -q
+%patch1 -p1
 
 %build
 make CFLAGS="%{optflags} -fPIC" V=1

@@ -4136,4 +4136,24 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   boo#1171855.</comment>
     <requestid>809625</requestid>
   </revision>
+  <revision rev="382" vrev="254">
+    <srcmd5>4c999cf629e999e1c88ffde85aecd07d</srcmd5>
+    <version>unknown</version>
+    <time>1592397979</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.1.1
+  * first bugfix release for the 20.1 branch
+  * fixes issue affecting Unreal Engine 4 games on i965 
+
+- update to 20.1.0
+  * first release for the 20.1 branch
+  * One already known issue is that Unreal Engine 4 has a bug in
+    its usage of glDrawRangeElements() causing it to be called
+    with a number of vertices in place of the `end` parameter,
+    that was recently revealed. This is an annoying bug that we 
+    haven't worked around yet. For more details:
+    https://gitlab.freedesktop.org/mesa/mesa/-/issues/2917
+- supersedes U_add-lifetime-dse-fix.patch</comment>
+    <requestid>814751</requestid>
+  </revision>
 </revisionlist>

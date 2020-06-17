@@ -19,7 +19,7 @@
 
 %global classpath xmlgraphics-batik:rhino:xml-commons-apis:xml-commons-apis-ext:xmlgraphics-commons
 Name:           xmlgraphics-batik
-Version:        1.12
+Version:        1.13
 Release:        0
 Summary:        Scalable Vector Graphics for Java
 License:        Apache-2.0
@@ -222,7 +222,7 @@ cp -p pom.xml %{buildroot}%{_mavenpomdir}/%{name}/parent.pom
 cp -p batik-all/pom.xml %{buildroot}%{_mavenpomdir}/%{name}-all.pom
 %add_maven_depmap %{name}-all.pom %{name}-all.jar
 
-for i in anim awt-util bridge codec constants dom ext extension gvt i18n parser script svg-dom svgbrowser svggen svgrasterizer swing transcoder util gui-util xml;
+for i in anim awt-util bridge codec constants dom ext extension gvt i18n parser script shared-resources svg-dom svgbrowser svggen svgrasterizer swing transcoder util gui-util xml;
 do
   cp -p batik-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
   %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar

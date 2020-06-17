@@ -57,23 +57,17 @@
 
 # used for %setup only
 # leave upstream tar-balls untouched for integrity checks.
-%define upstream_version 1.8.6~pre1a
+%define upstream_version git-7cd24908de4b65d9972bd3dca85b049f495bb1bd
 
 Name:           openafs
 
-Version:        1.8.6~pre1a
+Version:        1.8.6~pre2a
 Release:        0
 Summary:        OpenAFS Distributed File System
 License:        IPL-1.0
 Group:          System/Filesystems
 URL:            http://www.openafs.org/
 
-#Source0:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2
-#Source1:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2
-#Source2:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.md5
-#Source3:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.md5
-#Source4:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.sha256
-#Source5:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.sha256
 Source0:        openafs-%{version}-src.tar.bz2
 Source1:        openafs-%{version}-doc.tar.bz2
 Source2:        openafs-%{version}-src.tar.bz2.md5
@@ -82,7 +76,6 @@ Source4:        openafs-%{version}-src.tar.bz2.sha256
 Source5:        openafs-%{version}-doc.tar.bz2.sha256
 Source10:       README.SUSE.openafs
 Source15:       logrotate.openafs-server
-Source16:       ld.conf.openafs
 Source18:       RELNOTES-%{upstream_version}
 Source19:       ChangeLog
 Source20:       kernel-source.build-modules.sh
@@ -104,8 +97,10 @@ Patch3:         dir_layout.patch
 Patch4:         openafs-1.8.x.ncurses6.patch
 # PATCH-SUSE-SPECIFIC make KMP work again 
 Patch5:         add_arch_to_linux_kernel_make.patch
-# PATCH-FIX-i586-BUILD
-Patch99:        fix_timeval_i586.patch
+# PATCH-FIX-afsmonitor
+Patch99:        4c4bdde.diff
+# PATCH-FIX-GCC-10-BUILD
+Patch100:       d3c7f75.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 #
@@ -318,6 +313,7 @@ done
 %patch4 -p1
 %patch5 -p1
 %patch99 -p1
+%patch100 -p1
 
 ./regen.sh
 
@@ -381,12 +377,17 @@ for flavor in %flavors_to_build; do
     rm -rf obj/$flavor
     cp -a libafs_tree obj/$flavor
     pushd obj/$flavor
+%if 0%{?suse_version} > 1500 && %{_arch} == x86_64
+    ./configure  --with-linux-kernel-build=/usr/src/linux-obj/%{_target_cpu}/$flavor --with-linux-kernel-headers=/usr/src/linux \
+        --disable-transarc-paths
+%else
     find . -name "*.c" -exec sed -i '/MODULE_LICENSE(/a MODULE_INFO(retpoline, "Y");' "{}" "+"
     ./configure  --with-linux-kernel-build=/usr/src/linux-obj/%{_target_cpu}/$flavor --with-linux-kernel-headers=/usr/src/linux \
         --disable-transarc-paths
     export EXTRA_CFLAGS='-DVERSION=\"%version\"'
 %ifnarch aarch64
     export KCFLAGS='-mindirect-branch=thunk-inline -mindirect-branch-register'
+%endif
 %endif
     export LINUX_MAKE_ARCH="ARCH=%{_arch}"
     make
@@ -471,7 +472,7 @@ cp -a %{S:10} README.SUSE
 cp -a %{S:18} RELNOTES
 cp -a %{S:19} ChangeLog
 mkdir -p %{buildroot}/etc/ld.so.conf.d
-cp -a %{S:16} %{buildroot}/etc/ld.so.conf.d/openafs.conf
+echo %{_libdir}/openafs > %{buildroot}/etc/ld.so.conf.d/openafs.conf
 
 # move some bin to sbin
 mv %{buildroot}/%{_bindir}/asetkey %{buildroot}/%{_sbindir}/asetkey

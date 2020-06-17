@@ -21,7 +21,7 @@ Name:           s-tui
 Version:        1.0.1
 Release:        0
 Summary:        Terminal based CPU stress and monitoring utility
-License:        GPL-2.0-only
+License:        GPL-2.0-or-later
 URL:            https://github.com/amanusk/s-tui
 Source:         https://github.com/amanusk/s-tui/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 16 16:03:13 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 1.3.2:
+  * Fix an issue with ListenBrainz.
+  * Fix Last.fm scrobbling (glgo#World/lollypop#2452).
+
+-------------------------------------------------------------------
 Tue Jun 09 18:32:42 UTC 2020 - antoine.belvire@opensuse.org
 
 - Update to version 1.3.1:

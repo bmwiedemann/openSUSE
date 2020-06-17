@@ -18,11 +18,11 @@
 
 #
 %define pname tensorflow2
-%define vers 2.1.0
-%define _vers 2_1_0
+%define vers 2.1.1
+%define _vers 2_1_1
 %define libmaj 2
 %define libmin 1
-%define libref 0
+%define libref 1
 %define python_ver_hack python3.[0-9]
 
 %global flavor @BUILD_FLAVOR@%{nil}

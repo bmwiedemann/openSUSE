@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 16 09:27:33 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- updated to 2.1.1 which is a bug fix release mostly for external
+  sources which are not part of this package (sqlite,libjpeg-turbo,
+  Apache Spark)
+  * Fixes a versioning bug which causes Keras layers from TF 1.x to 
+  be used instead of those from TF 2.x
+
+-------------------------------------------------------------------
 Mon May 25 15:44:40 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - fixed broken builds which were caused due to missing dependency

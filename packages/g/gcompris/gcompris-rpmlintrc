@@ -1,2 +1,0 @@
-addFilter("invalid-desktopfile .*/usr/share/applications/gcompris.*");
-addFilter("devel-file-in-non-devel-package.*/usr/lib.*/gcompris/libgoocanvas.so");

@@ -1,7 +1,7 @@
 #
 # spec file for package dtkwidget
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,10 +25,12 @@ Release:        0
 Summary:        Deepin graphical user interface library
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
-Url:            https://github.com/linuxdeepin/dtkwidget
+URL:            https://github.com/linuxdeepin/dtkwidget
 Source0:        https://github.com/linuxdeepin/dtkwidget/archive/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTEAM dtkwidget-fix-lost-pkgconfig.patch hillwood@opensuse.org - fix lost pkgconfig
 Patch0:         dtkwidget-fix-lost-pkgconfig.patch
+# PATCH-FIX-UPSTEAM dtkwidget-qt-5_15.patch hillwood@opensuse.org - Support Qt 5.15
+Patch1:         dtkwidget-qt-5_15.patch 
 BuildRequires:  fdupes
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtbase-private-headers-devel
@@ -76,13 +78,16 @@ docs for dtkcore.
 %prep
 %setup -q
 %patch0 -p1
+%if 0%{?suse_version} > 1500
+%patch1 -p1
+%endif
 
 %build
 # sed -i "s/lrelease/lrelease-qt5/g" tools/translate_generation.*
 %qmake5 DEFINES+=QT_NO_DEBUG_OUTPUT \
         PREFIX=%{_prefix} \
         LIB_INSTALL_DIR=%{_libdir}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %qmake5_install

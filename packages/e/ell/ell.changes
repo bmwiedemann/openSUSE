@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jun 15 16:14:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.32
+  * dbus: call destroy function in l_dbus_remove_watch
+
+-------------------------------------------------------------------
+Wed Apr 15 08:40:36 CEST 2020 - Harry ten Berge <htenberge@gmail.com>
+
+- ver 0.31:
+  * Fix issue with verification of the second certificate in chain.
+  * Fix issue with handling trusted CA matching in verification.
+
+-------------------------------------------------------------------
+Thu Mar 26 10:57:12 CET 2020 - Harry ten Berge <htenberge@gmail.com> 
+
+- ver 0.30:
+  * Fix issue with missing export of RTNL helper functions.
+
+- ver 0.29:
+  * Fix issue with time overflow on 32-bit systems.
+  * Add support for RTNL helper functionality.
+
+-------------------------------------------------------------------
+Mon Feb 10 09:57:36 CET 2020 - Harry ten Berge <htenberge@gmail.com>
+
+- ver 0.28:
+  * Fix issue with NULL check of D-Bus proxy for method calls.
+  * Add support for emitting D-Bus property changes on demand.
+  * Add support for reporting file attribute changes.
+
+-------------------------------------------------------------------
 Thu Jan  2 11:25:54 UTC 2020 - Harry ten Berge <htenberge@gmail.com>
 
 - ver 0.27:

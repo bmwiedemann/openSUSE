@@ -1,16 +1,14 @@
-From 3a8d6f13328bae398fe61b2f58b27ae1eb4b68dc Mon Sep 17 00:00:00 2001
+From 81700042e3a4ceef3351c5569e785f91e54ab8e3 Mon Sep 17 00:00:00 2001
 From: Christian Goll <cgoll@suse.de>
 Date: Wed, 15 Jan 2020 14:09:40 +0100
-Subject: [PATCH 1/2] removed docker tools
+Subject: [PATCH] removed docker tools
 
 ---
- WORKSPACE                                     | 55 -------------
- .../preconfig/generate/workspace.bzl          | 77 -------------------
- 2 files changed, 132 deletions(-)
- delete mode 100644 third_party/toolchains/preconfig/generate/workspace.bzl
+ WORKSPACE | 55 -------------------------------------------------------
+ 1 file changed, 55 deletions(-)
 
 diff --git a/WORKSPACE b/WORKSPACE
-index babb14b509..d5a9e1ba68 100644
+index bcdd4f46e2..d5a9e1ba68 100644
 --- a/WORKSPACE
 +++ b/WORKSPACE
 @@ -29,61 +29,6 @@ load("//third_party/toolchains/preconfig/generate:archives.bzl",
@@ -55,7 +53,7 @@ index babb14b509..d5a9e1ba68 100644
 -http_archive(
 -    name = "bazel_skylib",
 -    sha256 = "1dde365491125a3db70731e25658dfdd3bc5dbdfd11b840b3e987ecf043c7ca0",
--    urls = ["https://github.com/bazelbuild/bazel-skylib/releases/download/0.9.0/bazel-skylib.0.9.0.tar.gz"],
+-    urls = ["https://github.com/bazelbuild/bazel-skylib/releases/download/0.9.0/bazel_skylib-0.9.0.tar.gz"],
 -)  # https://github.com/bazelbuild/bazel-skylib/releases
 -http_archive(
 -    name = "com_github_apple_swift_swift_protobuf",
@@ -75,89 +73,6 @@ index babb14b509..d5a9e1ba68 100644
  
  # We must check the bazel version before trying to parse any other BUILD
  # files, in case the parsing of those build files depends on the bazel
-diff --git a/third_party/toolchains/preconfig/generate/workspace.bzl b/third_party/toolchains/preconfig/generate/workspace.bzl
-deleted file mode 100644
-index 81b57dfa8a..0000000000
---- a/third_party/toolchains/preconfig/generate/workspace.bzl
-+++ /dev/null
-@@ -1,77 +0,0 @@
--load(
--    "@io_bazel_rules_docker//repositories:repositories.bzl",
--    container_repositories = "repositories",
--)
--load(
--    "@io_bazel_rules_docker//container:container.bzl",
--    "container_pull",
--)
--load(":containers.bzl", "container_digests")
--
--def _remote_config_workspace():
--    container_repositories()
--
--    container_pull(
--        name = "centos6",
--        registry = "gcr.io",
--        repository = "tensorflow-testing/nosla-centos6",
--        digest = container_digests["centos6"],
--    )
--
--    container_pull(
--        name = "ubuntu16.04",
--        registry = "gcr.io",
--        repository = "tensorflow-testing/nosla-ubuntu16.04",
--        digest = container_digests["ubuntu16.04"],
--    )
--
--    container_pull(
--        name = "cuda10.0-cudnn7-ubuntu14.04",
--        registry = "gcr.io",
--        repository = "tensorflow-testing/nosla-cuda10.0-cudnn7-ubuntu14.04",
--        digest = container_digests["cuda10.0-cudnn7-ubuntu14.04"],
--    )
--
--    container_pull(
--        name = "cuda10.0-cudnn7-centos6",
--        registry = "gcr.io",
--        repository = "tensorflow-testing/nosla-cuda10.0-cudnn7-centos6",
--        digest = container_digests["cuda10.0-cudnn7-centos6"],
--    )
--
--    container_pull(
--        name = "cuda10.1-cudnn7-centos6",
--        registry = "gcr.io",
--        repository = "tensorflow-testing/nosla-cuda10.1-cudnn7-centos6",
--        digest = container_digests["cuda10.1-cudnn7-centos6"],
--    )
--
--    container_pull(
--        name = "ubuntu16.04-manylinux2010",
--        registry = "gcr.io",
--        repository = "tensorflow-testing/nosla-ubuntu16.04-manylinux2010",
--        digest = container_digests["ubuntu16.04-manylinux2010"],
--    )
--
--    container_pull(
--        name = "cuda10.0-cudnn7-ubuntu16.04-manylinux2010",
--        registry = "gcr.io",
--        repository = "tensorflow-testing/nosla-cuda10.0-cudnn7-ubuntu16.04-manylinux2010",
--        digest = container_digests["cuda10.0-cudnn7-ubuntu16.04-manylinux2010"],
--    )
--
--    container_pull(
--        name = "cuda10.1-cudnn7-ubuntu16.04-manylinux2010",
--        registry = "gcr.io",
--        repository = "tensorflow-testing/nosla-cuda10.1-cudnn7-ubuntu16.04-manylinux2010",
--        digest = container_digests["cuda10.1-cudnn7-ubuntu16.04-manylinux2010"],
--    )
--
--    container_pull(
--        name = "rocm-ubuntu16.04",
--        registry = "gcr.io",
--        repository = "tensorflow-testing/nosla-rocm-ubuntu16.04",
--        digest = container_digests["rocm-ubuntu16.04"],
--    )
--
--remote_config_workspace = _remote_config_workspace
 -- 
-2.24.1
+2.25.0
 

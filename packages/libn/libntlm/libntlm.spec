@@ -1,7 +1,7 @@
 #
 # spec file for package libntlm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,19 @@
 
 Name:           libntlm
 %define lname	libntlm0
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        Implementation of Microsoft's NTLMv1 authentication
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.nongnu.org/libntlm/
+URL:            http://www.nongnu.org/libntlm/
 
-#Git-Clone:	git://git.savannah.nongnu.org/libntlm
+#Git-Clone:	https://gitlab.com/jas/libntlm.git/
 #DL-URL:	http://www.nongnu.org/libntlm/releases/
 Source:         http://www.nongnu.org/libntlm/releases/%name-%version.tar.gz
 Source2:        http://www.nongnu.org/libntlm/releases/%name-%version.tar.gz.sig
 Source3:        %name.keyring
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 
 %description
 Libntlm provides routines to manipulate the structures used for the
@@ -74,12 +74,10 @@ make check
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %license COPYING
 %_libdir/libntlm.so.0*
 
 %files devel
-%defattr(-,root,root)
 %doc ChangeLog NEWS README
 %_includedir/ntlm.h
 %_libdir/libntlm.so

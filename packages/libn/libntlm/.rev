@@ -67,4 +67,12 @@
     <comment>- Update to new upstream release 1.5</comment>
     <requestid>725215</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b52876af5ba3788e9269a7eeb8ca5343</srcmd5>
+    <version>1.6</version>
+    <time>1592398010</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>815315</requestid>
+  </revision>
 </revisionlist>

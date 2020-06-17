@@ -160,4 +160,12 @@
 - Slit language package. (forwarded request 786659 from hillwood)</comment>
     <requestid>786660</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e409a29f9452e8e5cc003a9dcb22cfdb</srcmd5>
+    <version>2.1.1</version>
+    <time>1592398317</time>
+    <user>dimstar_suse</user>
+    <comment>- Add dtkwidget-qt-5_15.patch, Support Qt 5.15 (forwarded request 815280 from hillwood)</comment>
+    <requestid>815281</requestid>
+  </revision>
 </revisionlist>
