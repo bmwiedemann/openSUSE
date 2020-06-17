@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 17 07:39:51 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.4.0+git.20200617.20d10d4:
+  * Add --no-renaming option.
+  * Fix interestingness test error message.
+  * Record LLVM version in Bug report.
+  * Fix use of uninitialized members.
+
+-------------------------------------------------------------------
 Tue Jun  9 07:29:21 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - No need to use pytest4; just pytest is good enough
