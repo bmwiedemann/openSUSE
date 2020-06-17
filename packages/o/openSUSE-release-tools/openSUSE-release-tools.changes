@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 10 09:47:58 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200610.3c1b0160:
+  * Fix flake error F541 in tests/origin_tests.py
+  * Fix osc.core.repository_path_expand
+
+-------------------------------------------------------------------
 Sun May 17 14:04:58 UTC 2020 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20200517.e09639bc:
