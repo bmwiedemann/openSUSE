@@ -117,8 +117,8 @@
   boo#1170587: '20200520'
   boo#1170588: '20200512'
   boo#1171055: '20200615'
-  boo#1171319: '20200615'
-  boo#1171412: '20200615'
+  boo#1171319: '20200616'
+  boo#1171412: '20200616'
   boo#1171521: '20200513'
   boo#1171556: '20200511'
   boo#1171714: '20200602'
@@ -275,7 +275,7 @@
   poo#63775: '20200222'
   poo#63778: '20200301'
   poo#63880: '20200226'
-  poo#63892: '20200615'
+  poo#63892: '20200616'
   poo#63910: '20200307'
   poo#64069: '20200229'
   poo#64102: '20200314'
@@ -298,12 +298,12 @@
   poo#66373: '20200502'
   poo#66580: '20200615'
   poo#66784: '20200615'
-  poo#67183: '20200615'
+  poo#67183: '20200616'
   poo#67216: '20200526'
   poo#67234: '20200615'
   poo#67288: '20200609'
   poo#67447: '20200528'
-  poo#67660: '20200614'
+  poo#67660: '20200616'
   poo#67987: '20200615'
   poo#67990: '20200615'
   poo#68116: '20200615'
@@ -316,7 +316,7 @@ splitter-whitelist = B C D E F G H I J
 # now just for testing
 source_projects_expand = devel:languages:haskell
 
-devel-whitelist = KDE:Qt:5.14 KDE:Qt:5.15 Cloud:Seafile systemsmanagement:cockpit
+devel-whitelist = KDE:Qt:5.15 Cloud:Seafile M17N:l10n.opensuse.org
  
 # packagelist generator related configuration
 pkglistgen-archs = i586 x86_64
