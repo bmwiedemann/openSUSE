@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jun 16 12:56:21 UTC 2020 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- remove fix_timeval_i586.patch 
+
+-------------------------------------------------------------------
+Tue Jun 16 12:55:14 UTC 2020 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- disable retpol line for TW x86_64. It does not compile. 
+
+-------------------------------------------------------------------
+Mon Jun 15 08:24:17 UTC 2020 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- update to HEAD of git branch openafs-stable-1_8_x.
+  * 1.8.6pre3 is not out yet. 
+  * disable source URLs, none are present
+- Fix build with GCC-10
+  * add patch 4c4bdde.diff
+  * add patch d3c7f75.diff
+- create ld.so.conf-file dynamically 
+
+-------------------------------------------------------------------
+Sat Apr 18 07:07:48 UTC 2020 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- update to 1.8.6pre2
+- disable fix_timeval_i586.patch 
+
+-------------------------------------------------------------------
 Fri Apr 10 06:36:58 UTC 2020 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - update to HEAD of git branch openafs-stable-1_8_x.
