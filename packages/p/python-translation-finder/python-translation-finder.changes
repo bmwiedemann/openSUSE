@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 16 12:13:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.1:
+  * Added discovery support for formats newly supported by Weblate (HTML, IDML, OpenDocument, InnoSetup and INI).
+
+-------------------------------------------------------------------
 Wed Apr 15 09:43:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.0:

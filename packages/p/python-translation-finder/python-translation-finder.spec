@@ -21,7 +21,7 @@
 %define modname translation-finder
 %define skip_python2 1
 Name:           python-translation-finder
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        Translation Files Finder
 License:        GPL-3.0-or-later

@@ -87,4 +87,13 @@
   * Improved detection of monolingual templates.</comment>
     <requestid>794138</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e4440a82277a4b557daa1c2ddf118b0c</srcmd5>
+    <version>2.1</version>
+    <time>1592398091</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1:
+  * Added discovery support for formats newly supported by Weblate (HTML, IDML, OpenDocument, InnoSetup and INI).</comment>
+    <requestid>815234</requestid>
+  </revision>
 </revisionlist>
