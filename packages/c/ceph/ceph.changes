@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 16 13:33:00 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.2.3-455-g04541bbb8e:
+  + rebase on tip of upstream "octopus" branch, SHA1 ec315386e94adb4f844f6f3b7ce519e8f7789213
+    * python-common: only validate host_pattern if present
+
+-------------------------------------------------------------------
 Mon Jun  8 14:18:25 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Up ceph-test disk constraint to address "no space left on device"
