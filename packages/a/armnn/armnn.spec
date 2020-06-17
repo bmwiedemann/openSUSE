@@ -175,6 +175,7 @@ Conflicts:      armnn
 %else
 Conflicts:      armnn-opencl
 %endif
+ExclusiveArch:  aarch64 armv7l armv7hl x86_64
 
 %description
 Arm NN is an inference engine for CPUs, GPUs and NPUs.

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 17 07:19:10 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build only where ComputeLibrary is built: 
+  aarch64 armv7 and x86_64
+
+-------------------------------------------------------------------
 Thu Jun  4 09:51:23 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Unify Leap/SLE options
