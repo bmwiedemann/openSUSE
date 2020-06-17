@@ -1,9 +1,10 @@
-diff -Naurp sh-1.12.14.orig/sh.py sh-1.12.14/sh.py
---- sh-1.12.14.orig/sh.py	2017-06-06 21:51:42.000000000 -0500
-+++ sh-1.12.14/sh.py	2017-06-07 08:49:59.350791975 -0500
-@@ -3519,14 +3519,9 @@ if __name__ == "__main__": # pragma: no
+Index: sh-1.13.1/sh.py
+===================================================================
+--- sh-1.13.1.orig/sh.py
++++ sh-1.13.1/sh.py
+@@ -3785,14 +3785,9 @@ if __name__ == "__main__": # pragma: no
  
-     if action in ("test", "travis"):
+     if action in ("test", "travis", "tox"):
          import test
 -        coverage = None
 -        if test.HAS_UNICODE_LITERAL:
@@ -16,10 +17,11 @@ diff -Naurp sh-1.12.14.orig/sh.py sh-1.12.14/sh.py
  
          # if we're testing locally, run all versions of python on the system
          if action == "test":
-diff -Naurp sh-1.12.14.orig/test.py sh-1.12.14/test.py
---- sh-1.12.14.orig/test.py	2017-06-06 21:51:42.000000000 -0500
-+++ sh-1.12.14/test.py	2017-06-07 08:49:59.351791993 -0500
-@@ -6,31 +6,6 @@ IS_PY3 = sys.version_info[0] == 3
+Index: sh-1.13.1/test.py
+===================================================================
+--- sh-1.13.1.orig/test.py
++++ sh-1.13.1/test.py
+@@ -6,34 +6,6 @@ IS_PY3 = sys.version_info[0] == 3
  IS_PY2 = not IS_PY3
  MINOR_VER = sys.version_info[1]
  
@@ -32,26 +34,29 @@ diff -Naurp sh-1.12.14.orig/test.py sh-1.12.14/test.py
 -    run_idx = int(os.environ.pop("SH_TEST_RUN_IDX", "0"))
 -    first_run = run_idx == 0
 -
--    import coverage
+-    try:
+-        import coverage
+-    except ImportError:
+-        pass
+-    else:
+-        # for some reason, we can't run auto_data on the first run, or the coverage
+-        # numbers get really screwed up
+-        auto_data = True
+-        if first_run:
+-            auto_data = False
 -
--    # for some reason, we can't run auto_data on the first run, or the coverage
--    # numbers get really screwed up
--    auto_data = True
--    if first_run:
--        auto_data = False
+-        cov = coverage.Coverage(auto_data=auto_data)
 -
--    cov = coverage.Coverage(auto_data=auto_data)
+-        if first_run:
+-            cov.erase()
 -
--    if first_run:
--        cov.erase()
--
--    cov.start()
+-        cov.start()
 -
 -
  from os.path import exists, join, realpath, dirname, split
  import unittest
  try:
-@@ -3045,6 +3020,4 @@ if __name__ == "__main__":
+@@ -3230,6 +3202,4 @@ if __name__ == "__main__":
                  exit(1)
  
      finally:

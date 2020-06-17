@@ -1,14 +1,14 @@
-Index: sh-1.12.14/test.py
+Index: sh-1.13.1/test.py
 ===================================================================
---- sh-1.12.14.orig/test.py
-+++ sh-1.12.14/test.py
+--- sh-1.13.1.orig/test.py
++++ sh-1.13.1/test.py
 @@ -1,4 +1,4 @@
 -# -*- coding: utf8 -*-
 +# -*- coding: utf-8 -*-
  import sys
  import os
  
-@@ -2048,7 +2048,8 @@ time.sleep(3)
+@@ -2174,7 +2174,8 @@ time.sleep(3)
  """)
  
          parent = create_tmp_test("""
@@ -16,5 +16,5 @@ Index: sh-1.12.14/test.py
 +import os, sys
 +sys.path.insert(0, os.getcwd())
  import sh
- system_python = sh.Command(sh.which("python%d.%d" % sys.version_info[:2]))
- p = system_python("{child_file}", _bg=True, _new_session=False)
+ python = sh.Command(sys.executable)
+ p = python("{child_file}", _bg=True, _new_session=False)

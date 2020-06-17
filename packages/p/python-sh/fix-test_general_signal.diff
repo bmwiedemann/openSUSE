@@ -1,8 +1,8 @@
-Index: sh-1.12.14/test.py
+Index: sh-1.13.1/test.py
 ===================================================================
---- sh-1.12.14.orig/test.py
-+++ sh-1.12.14/test.py
-@@ -1374,10 +1374,9 @@ for i in range(5):
+--- sh-1.13.1.orig/test.py
++++ sh-1.13.1/test.py
+@@ -1449,10 +1449,9 @@ for i in range(5):
          self.assertTrue("4" not in stdout)
  
      def test_general_signal(self):
@@ -14,16 +14,7 @@ Index: sh-1.12.14/test.py
  import sys
  import os
  import time
-@@ -1386,7 +1385,7 @@ import signal
- def sig_handler(sig, frame):
-     print(10)
-     exit(0)
--    
-+
- signal.signal(signal.SIGINT, sig_handler)
- 
- for i in range(5):
-@@ -1403,7 +1402,7 @@ for i in range(5):
+@@ -1478,7 +1477,7 @@ for i in range(5):
                  process.signal(SIGINT)
                  return True
  

@@ -1,0 +1,13 @@
+Index: sh-1.13.1/test.py
+===================================================================
+--- sh-1.13.1.orig/test.py
++++ sh-1.13.1/test.py
+@@ -1974,7 +1974,7 @@ sys.stdout.write("line1")
+         try:
+             sh.sleep(sleep_for, _timeout=timeout).wait()
+         except sh.TimeoutException as e:
+-            self.assertEqual(e.full_cmd, '/bin/sleep 3')
++            self.assertEqual(e.full_cmd, '/usr/bin/sleep 3')
+         else:
+             self.fail("no timeout exception")
+         elapsed = time() - started
