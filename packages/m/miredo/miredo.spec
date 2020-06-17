@@ -27,8 +27,8 @@ Source0:        http://www.remlab.net/files/miredo/miredo-%{version}.tar.xz
 Source4:        miredo-client.service
 Source5:        miredo-server.service
 Patch0:         reread-resolv-before-resolv-ipv4.patch
-## PATCH-FIX-UPSTREAM marguerite@opensuse.org -- remove __DATE__ from main.c
-Patch1:         miredo-no-build-date.patch
+## PATCH-FIX-UPSTREAM
+Patch1:         reproducible.patch
 BuildRequires:  judy-devel
 BuildRequires:  libcap-devel
 BuildRequires:  systemd-rpm-macros

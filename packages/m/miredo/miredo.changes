@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  9 12:22:35 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to drop build host name (boo#1084909)
+- Drop miredo-no-build-date.patch - not needed because of gcc patch
+
+-------------------------------------------------------------------
 Wed May  6 09:57:25 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Set LogLevel to info in the systemd service files to prevent
