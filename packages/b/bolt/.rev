@@ -70,4 +70,12 @@ privileges and the file did not have any effect. (boo#1125425)</comment>
     <comment></comment>
     <requestid>759291</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4f9be07f645b1110d3194428dae94d50</srcmd5>
+    <version>0.9</version>
+    <time>1592398152</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815250</requestid>
+  </revision>
 </revisionlist>

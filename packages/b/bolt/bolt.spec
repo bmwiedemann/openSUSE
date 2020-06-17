@@ -1,7 +1,7 @@
 #
 # spec file for package bolt
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global _hardened_build 1
 Name:           bolt
-Version:        0.8
+Version:        0.9
 Release:        0
 Summary:        Thunderbolt 3 device manager
 License:        GPL-2.0-or-later
