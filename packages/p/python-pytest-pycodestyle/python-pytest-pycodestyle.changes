@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Tue Jun 16 08:32:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Provide and obsolete pytest-codestyle as we are the replacement
+
+-------------------------------------------------------------------
+Sun Mar 29 07:40:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, redone package formerly known as pytest-codestyle
