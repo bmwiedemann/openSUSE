@@ -49,9 +49,9 @@ BuildRequires:  gcc-c++
 BuildRequires:  gnome-vfs2-devel
 BuildRequires:  gstreamer-devel
 BuildRequires:  gstreamer-plugins-base-devel
-BuildRequires:  gtk2-devel
-%define gtk_version 2
+%define gtk_version 3
 %define toolkit gtk%gtk_version
+BuildRequires:  gtk%{gtk_version}-devel
 BuildRequires:  libSM-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libjpeg-devel
@@ -222,13 +222,6 @@ Group:          System/Libraries
 The XML-based resource system of wxWidgets, known as XRC, allows user
 interface elements such as dialogs, menu bars and toolbars, to be
 stored in text files and loaded into the application at run-time.
-
-%package plugin-sound_sdlu-3_2
-Summary:        wxWidgets SDL Plugin
-Group:          System/Libraries
-
-%description plugin-sound_sdlu-3_2
-SDL based sound plugin for the wxWidgets cross-platform GUI.
 
 %package devel
 Summary:        Development files for GTK2-backed wxWidgets 3.2

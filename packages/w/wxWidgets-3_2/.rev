@@ -73,4 +73,12 @@
     <comment></comment>
     <requestid>812918</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>8fe873617ee92817243c86b878c42716</srcmd5>
+    <version>3.1.3</version>
+    <time>1592398244</time>
+    <user>dimstar_suse</user>
+    <comment>- Build nostl package against gtk3, audacity crashes with gtk2</comment>
+    <requestid>815260</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 16 10:04:20 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Build nostl package against gtk3, audacity crashes with gtk2
+
+-------------------------------------------------------------------
 Tue Jun  9 12:05:18 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Add nostl package for audacity
