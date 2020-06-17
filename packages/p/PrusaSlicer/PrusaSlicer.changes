@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 16 12:09:13 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- This is mainly a cosmetic update so that the package gets rebuilt
+  in Factory. Rebuild is needed because of wxWidgets - boo#1172750
+- Add openvdb-tools package for better cmake reporting.
+- Make the 32-bit floating point workaround more readable.
+  gh#prusa3d/PrusaSlicer#3781
+
+-------------------------------------------------------------------
 Fri Apr 24 07:24:26 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libudev) instead of libudev-devel: allow

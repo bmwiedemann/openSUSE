@@ -48,6 +48,7 @@ BuildRequires:  libexpat-devel
 BuildRequires:  memory-constraints
 BuildRequires:  nlopt-devel
 BuildRequires:  openvdb-devel >= 5
+BuildRequires:  openvdb-tools
 BuildRequires:  tbb-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  wxWidgets-devel >= 3.1
@@ -67,13 +68,12 @@ sed -i 's/UNKNOWN/OpenSUSE/' version.inc
 
 %build
 %limit_build -m 4096
-# sse2 flags: see upstream github issue#3781
-%cmake -DSLIC3R_FHS=1 \
-%ifarch i686 i586 i386
-       -DCMAKE_C_FLAGS:STRING="%optflags -mfpmath=sse -msse2" \
-       -DCMAKE_CXX_FLAGS:STRING="%optflags  -mfpmath=sse -msse2"
+# sse2 flags for 32-bit: see gh#prusa3d/PrusaSlicer#3781 
+%ifarch %ix86
+  export CFLAGS="%optflags -mfpmath=sse -msse2"
+  export CXXFLAGS="$CFLAGS"
 %endif
-
+%cmake -DSLIC3R_FHS=1
 %cmake_build
 
 %install
