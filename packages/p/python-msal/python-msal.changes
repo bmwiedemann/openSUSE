@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jun 16 13:11:05 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.3.0
+  + New feature: class ```ClientApplication``` accepts a new optional parameter
+    ```http_client```. You can provide your own HTTP client to have different
+    behavior. (#169) Please refer to API Reference doc.
+  + New feature: method ```get_authorization_request_url()``` accepts a new optional
+    parameter ```domain_hint```. (#158, #181)
+    Please refer to API Reference doc.
+  + New feature: A new method ```acquire_token_by_refresh_token()``` to help migrating
+    refresh tokens from elsewhere to MSAL Python. (#193)
+    Its usage is demonstrated in this sample.
+- from version 1.2.0
+  + New ```nonce``` parameter is provided in ```both get_authorization_request_url(..., nonce=...)```
+    and ```acquire_token_by_authorization_code(..., nonce=...)``` method, so
+    that you can use them to mitigate replay attacks, per OIDC specs. (#128, #173).
+- from version 1.1.0
+    + New ```acquire_token_silent_with_error(...)``` method to expose conditional
+      access error classifications (#143, closes #57).
+    + App developers can opt in to provide their app's name and version for Microsoft
+      Telemetry, so that we can understand your usage pattern and serve you better.
+      (#136 closes #130)
+    + Internally,
+      * Collect anonymous telemetry data to help us improve MSAL Python (#103)
+      * Test cases cover ADFS 2019 on-premise scenarios (#142, closes #132)
+      * Switched to our latest lab apis for better test infrastructure (#108, #133, #134, #135)
+
+-------------------------------------------------------------------
 Tue Feb 18 11:18:31 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Initial build
