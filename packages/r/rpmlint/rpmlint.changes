@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 12 16:00:00 UTC 2020 - cunix@mail.de
+
+- Add 'dnscrypt' to StandardGroups and StandardUsers for package dnscrypt-proxy
+
+-------------------------------------------------------------------
 Thu Jun  4 09:33:26 UTC 2020 - matthias.gerstner@suse.com
 
 - whitelist pam_setquota (bsc#1171563)

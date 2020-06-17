@@ -3011,4 +3011,12 @@ will self heal once rpmlint-mini is rebuild
 - Add '_gns3' to StandardGroups and StandardUsers</comment>
     <requestid>811762</requestid>
   </revision>
+  <revision rev="337" vrev="26">
+    <srcmd5>84aa3b9c9f53a1301e8daba8ebd09c57</srcmd5>
+    <version>1.11</version>
+    <time>1592397970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814771</requestid>
+  </revision>
 </revisionlist>
