@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Mon Jun 15 09:20:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Install license file
+
+-------------------------------------------------------------------
+Thu Jun 11 08:32:54 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add destdir.patch to fix pc file and includes install
+
+-------------------------------------------------------------------
+Thu Jun 11 08:06:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.1:
+  * Fixes the py3.8 builds
+
+-------------------------------------------------------------------
+Mon May 28 14:18:49 UTC 2018 - t.gruner@katodev.de
+
+- Initial release 1.0
+
