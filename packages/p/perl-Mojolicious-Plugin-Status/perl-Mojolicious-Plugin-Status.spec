@@ -17,7 +17,7 @@
 
 
 Name:           perl-Mojolicious-Plugin-Status
-Version:        1.11
+Version:        1.12
 Release:        0
 %define cpan_name Mojolicious-Plugin-Status
 Summary:        Mojolicious server status
