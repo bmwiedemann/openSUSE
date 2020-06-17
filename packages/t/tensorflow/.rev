@@ -155,4 +155,12 @@
 - added patch: fix-google-absl-memory.patch (forwarded request 808952 from mslacken)</comment>
     <requestid>808980</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>93471ae421cca736b037ffa7496c863d</srcmd5>
+    <version>1.15.3</version>
+    <time>1592398574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815371</requestid>
+  </revision>
 </revisionlist>

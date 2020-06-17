@@ -1,15 +1,15 @@
-From b652b8e2a93b0562f8c186d6cc25dba9c0d19de4 Mon Sep 17 00:00:00 2001
+From b28deb04e0bc65f530afe754c9ef701f9642d3c8 Mon Sep 17 00:00:00 2001
 From: Christian Goll <cgoll@suse.de>
 Date: Wed, 11 Mar 2020 10:30:57 +0100
 Subject: [PATCH] fix lite Use the system flatbnuffer library instead of a
  downloaded one
 
 ---
- tensorflow/lite/tools/make/Makefile | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ tensorflow/lite/tools/make/Makefile | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
 diff --git a/tensorflow/lite/tools/make/Makefile b/tensorflow/lite/tools/make/Makefile
-index 73c50d3272..93d769d716 100644
+index 91cc5c999c..93d769d716 100644
 --- a/tensorflow/lite/tools/make/Makefile
 +++ b/tensorflow/lite/tools/make/Makefile
 @@ -38,15 +38,15 @@ INCLUDES := \
@@ -30,11 +30,12 @@ index 73c50d3272..93d769d716 100644
  -lstdc++ \
  -lpthread \
  -lm \
-@@ -121,8 +121,7 @@ $(wildcard tensorflow/lite/kernels/internal/optimized/*.cc) \
+@@ -121,9 +121,7 @@ $(wildcard tensorflow/lite/kernels/internal/optimized/*.cc) \
  $(wildcard tensorflow/lite/kernels/internal/reference/*.cc) \
  $(PROFILER_SRCS) \
  tensorflow/lite/tools/make/downloads/farmhash/src/farmhash.cc \
 -tensorflow/lite/tools/make/downloads/fft2d/fftsg.c \
+-tensorflow/lite/tools/make/downloads/fft2d/fftsg2d.c \
 -tensorflow/lite/tools/make/downloads/flatbuffers/src/util.cpp
 +tensorflow/lite/tools/make/downloads/fft2d/fftsg.c 
  endif

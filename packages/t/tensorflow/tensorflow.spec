@@ -18,11 +18,11 @@
 
 #
 %define pname tensorflow
-%define vers 1.15.2
-%define _vers 1_15_2
+%define vers 1.15.3
+%define _vers 1_15_3
 %define libmaj 1
 %define libmin 15
-%define libref 2
+%define libref 3
 %define python_ver_hack python3.[0-9]
 %global flavor @BUILD_FLAVOR@%{nil}
 # Build tensorflow, not Tensorflow-lite
