@@ -95,4 +95,12 @@
     <comment>- ver 0.27:</comment>
     <requestid>760500</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d6e426dce9986582a2a2c632bc02c045</srcmd5>
+    <version>0.32</version>
+    <time>1592397944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.32</comment>
+    <requestid>814762</requestid>
+  </revision>
 </revisionlist>
