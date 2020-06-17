@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 16 13:46:05 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Update to version 1.1.0
+   Requires Linux headers >= 4.18 to compile
+   Add support for POWER9 wake_host_thread/wait
+   Generate warnings on ignored return values
+   Use opaque structs rather than void pointers for ocxl handles
+   Verified GCC 4-8 & Clang 3.6.2-6.0.1 produce correct machine code for OpenCAPI, and whitelisted them
+   Verify & enforce that we compile with strict ANSI C (2011)
+  -details upstream https://github.com/OpenCAPI/libocxl/releases
+- Add remove_2_backslashes_in_shell_call.patch
+- Add add_missing_ocxl_header_from_glibc_devel_in_leap.patch
+
+-------------------------------------------------------------------
 Mon Apr 16 12:39:10 UTC 2018 - jengelh@inai.de
 
 - Update RPM groups. Rename doc subpackage to -doc for

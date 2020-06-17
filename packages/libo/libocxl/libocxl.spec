@@ -1,7 +1,7 @@
 #
 # spec file for package libocxl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define soversion 1
-%define realver 1.0.0-beta2
 Name:           libocxl
-Version:        1.0.0~beta2
+Version:        1.1.0
 Release:        0%{?dist}
 Summary:        Allows to implement a user-space driver for an OpenCAPI accelerator
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/OpenCAPI/libocxl
-Source:         %{name}-%{realver}.tar.gz
+Source:         %{name}-%{version}.tar.gz
+Patch1:         remove_2_backslashes_in_shell_call.patch
+Patch2:         add_missing_ocxl_header_from_glibc_devel_in_leap.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -62,7 +63,7 @@ The *-docs package contains doxygen pages for
 developing applications that use %{name}.
 
 %prep
-%autosetup -p1 -n %{name}-%{realver}
+%autosetup -p1
 
 %build
 CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" make %{?_smp_mflags} V=1
