@@ -99,7 +99,7 @@
 # main package definition
 #################################################################################
 Name:		ceph
-Version:	15.2.3.252+gf2237253cd
+Version:	15.2.3.455+g04541bbb8e
 Release:	0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch:		2
@@ -115,7 +115,7 @@ License:	LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group:		System/Filesystems
 %endif
 URL:		http://ceph.com/
-Source0:	%{?_remote_tarball_prefix}ceph-15.2.3-252-gf2237253cd.tar.bz2
+Source0:	%{?_remote_tarball_prefix}ceph-15.2.3-455-g04541bbb8e.tar.bz2
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x
@@ -649,9 +649,11 @@ Requires:       python%{python3_pkgversion}-remoto
 Requires:       cephadm = %{_epoch_prefix}%{version}-%{release}
 %if 0%{?suse_version}
 Requires:       openssh
+Requires:       python%{python3_pkgversion}-Jinja2
 %endif
 %if 0%{?rhel} || 0%{?fedora}
 Requires:       openssh-clients
+Requires:       python%{python3_pkgversion}-jinja2
 %endif
 %description mgr-cephadm
 ceph-mgr-cephadm is a ceph-mgr module for orchestration functions using
@@ -1121,7 +1123,7 @@ This package provides Ceph’s default alerts for Prometheus.
 # common
 #################################################################################
 %prep
-%autosetup -p1 -n ceph-15.2.3-252-gf2237253cd
+%autosetup -p1 -n ceph-15.2.3-455-g04541bbb8e
 
 %build
 # LTO can be enabled as soon as the following GCC bug is fixed:
