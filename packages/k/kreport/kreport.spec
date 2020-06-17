@@ -25,6 +25,8 @@ License:        LGPL-2.0-only
 Group:          Productivity/Office/Other
 URL:            https://community.kde.org/KReport
 Source0:        https://download.kde.org/stable/%{name}/src/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         Fix-kexi-build-with-GCC-10.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kproperty-devel
 BuildRequires:  python-base
@@ -67,6 +69,7 @@ Development package for the Report Creation and Generation framework
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %cmake_kf5 -d build
