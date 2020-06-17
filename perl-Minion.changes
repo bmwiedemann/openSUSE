@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 17 03:12:09 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 10.07
+   see /usr/share/doc/packages/perl-Minion/Changes
+
+  10.07  2020-06-16
+    - Removed experimental status from Minion::Iterator module.
+    - Removed experimental status from jobs and workers methods in Minion.
+    - Removed experimental status from before options of list_jobs and list_workers methods in Minion::Backend and
+      Minion::Backend::Pg.
+    - Updated project metadata.
+    - Improved admin ui to allow sending TERM signals.
+    - Fixed a bug in Minion::Job where CHLD, INT, TERM and QUIT signals would be ignored by job processes.
+
+-------------------------------------------------------------------
 Wed Jun  3 03:09:49 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 10.06
