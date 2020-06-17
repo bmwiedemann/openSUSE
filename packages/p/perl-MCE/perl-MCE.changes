@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 16 03:09:55 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.872
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.872 Sun Jun 14 22:30:00 EST 2020
+    * Added open to required dependencies.
+    * Set default encodings on standard filehandles in tests using UTF-8.
+    * Bumped minimal Perl version to 5.8.1.
+    * Bumped MCE version to 1.872 to align with MCE::Shared.
+    * The MCE project is completed.
+
+-------------------------------------------------------------------
 Tue May 12 03:10:55 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 1.868
