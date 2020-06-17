@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 17 06:06:06 UTC 2020 - olaf@aepfle.de
+
+- Fix gcc10 build with ocaml-lablgtk3.ml_table_extension_events.patch
+
+-------------------------------------------------------------------
 Tue Jan 28 18:19:20 UTC 2020 - olaf@aepfle.de
 
 - Initial version 3.1.0

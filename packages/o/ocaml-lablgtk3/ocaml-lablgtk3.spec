@@ -24,6 +24,7 @@ License:        LGPL-3.0+
 Group:          Development/Languages/OCaml
 Url:            https://github.com/garrigue/lablgtk
 Source:         %{name}-%{version}.tar.xz
+Patch0:         ocaml-lablgtk3.ml_table_extension_events.patch
 BuildRequires:  ocaml(ocaml_base_version) >= 4.05
 BuildRequires:  ocaml-dune
 BuildRequires:  ocaml-rpm-macros >= 20191101
