@@ -226,4 +226,12 @@
   filename conflicts with rpm-build.rpm (bsc#1154874)</comment>
     <requestid>805739</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>8990fa7f39fa05158893ca00ac354b3c</srcmd5>
+    <version>2.18.10</version>
+    <time>1592398562</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix gcc10 build with ocaml-lablgtk2.ml_table_extension_events.patch</comment>
+    <requestid>815369</requestid>
+  </revision>
 </revisionlist>

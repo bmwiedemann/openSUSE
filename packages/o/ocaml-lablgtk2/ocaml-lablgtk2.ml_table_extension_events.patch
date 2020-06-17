@@ -1,0 +1,22 @@
+https://github.com/garrigue/lablgtk/pull/105
+--- a/src/ml_gdk.c
++++ b/src/ml_gdk.c
+@@ -47,6 +47,7 @@
+ #include "ml_gdkpixbuf.h"
+ #include "gdk_tags.h"
+ 
++lookup_info *ml_table_extension_events;
+ 
+ #ifndef HASGTK22
+ #define GDK_WINDOW_TYPE_HINT_SPLASHSCREEN GDK_WINDOW_TYPE_HINT_NORMAL
+--- a/src/ml_gdk.h
++++ b/src/ml_gdk.h
+@@ -102,7 +102,7 @@ CAMLexport value Val_GdkEvent (GdkEvent
+ CAMLexport int OptFlags_GdkModifier_val (value);
+ CAMLexport int Flags_GdkModifier_val (value);
+ CAMLexport int Flags_Event_mask_val (value);
+-CAMLexport lookup_info *ml_table_extension_events;
++CAMLextern lookup_info *ml_table_extension_events;
+ #define Extension_events_val(key) ml_lookup_to_c(ml_table_extension_events,key)
+ 
+ #define GdkDragContext_val(val) check_cast(GDK_DRAG_CONTEXT,val)

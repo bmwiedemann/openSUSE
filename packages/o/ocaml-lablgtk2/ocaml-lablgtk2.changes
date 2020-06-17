@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 17 06:06:06 UTC 2020 - olaf@aepfle.de
+
+- Fix gcc10 build with ocaml-lablgtk2.ml_table_extension_events.patch
+
+-------------------------------------------------------------------
 Thu May 14 14:14:14 UTC 2020 - ohering@suse.de
 
 - The filename for rpm *.attr files and the tag used within these

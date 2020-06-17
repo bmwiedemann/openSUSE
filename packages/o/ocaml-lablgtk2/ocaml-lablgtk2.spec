@@ -24,6 +24,7 @@ Release:        0
 %global __ocaml_requires_opts -i GtkSourceView2_types
 Name:           ocaml-lablgtk2
 Source0:        %{name}-%{version}.tar.xz
+Patch0:         ocaml-lablgtk2.ml_table_extension_events.patch
 BuildRequires:  gtk2-devel
 BuildRequires:  gtksourceview2-devel
 BuildRequires:  gtkspell-devel
