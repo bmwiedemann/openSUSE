@@ -74,4 +74,12 @@
     <comment>- Please move into openSUSE:Factory:Staging:adi:27</comment>
     <requestid>793747</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>59226d4dbf67e39d25e78c6ffd6cea92</srcmd5>
+    <version>3.0.0rc13</version>
+    <time>1592469042</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815581</requestid>
+  </revision>
 </revisionlist>
