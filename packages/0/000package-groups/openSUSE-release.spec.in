@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSE-release.spec
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,10 +31,10 @@ BuildRequires:  skelcd-control-openSUSE
 BuildRequires:  skelcd-openSUSE
 Suggests:       branding-openSUSE
 Suggests:       distribution-logos-openSUSE-Tumbleweed
-Suggests:       openSUSE-build-key
 Suggests:       java-11-openjdk
 Suggests:       mariadb
 Suggests:       mariadb-client
+Suggests:       openSUSE-build-key
 Suggests:       openssl-1_1
 Conflicts:      core-release <= 10
 Conflicts:      distribution-release

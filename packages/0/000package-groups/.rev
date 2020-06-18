@@ -849,4 +849,12 @@ it wants then though.</comment>
 &quot;no providers can be installed&quot; for basesystem and bootloader</comment>
     <requestid>813239</requestid>
   </revision>
+  <revision rev="117" vrev="115">
+    <srcmd5>3dc9d2dfbae9763a597a9d81b3fef8bf</srcmd5>
+    <version>unknown</version>
+    <time>1592469357</time>
+    <user>dimstar_suse</user>
+    <comment>Have a bootable system for RPi3/4 - boo#1172574</comment>
+    <requestid>815261</requestid>
+  </revision>
 </revisionlist>

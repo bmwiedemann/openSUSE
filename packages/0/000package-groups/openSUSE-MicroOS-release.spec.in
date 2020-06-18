@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSE-MicroOS-release.spec
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,8 +42,6 @@ Provides:       product-update() = dup
 # With more than one product in the FTP tree, yast needs to know which products are installable
 # The name is referenced by the control file as well
 Provides:       system-installation() = openSUSE-MicroOS
-# this package should only be available for the "basearchs" of a product
-ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64 %arm
 # bnc#826592
 Provides:       weakremover(kernel-default) < 3.11
 Provides:       weakremover(kernel-desktop) < 4.2
@@ -168,6 +166,8 @@ Provides:       weakremover(libxtables11)
 Provides:       weakremover(libzip4)
 Provides:       weakremover(mt_st)
 Provides:       weakremover(openssl-debuginfo)
+# this package should only be available for the "basearchs" of a product
+ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64 %arm
 %include %{SOURCE100}
 ___PRODUCT_PROVIDES___
 ___PRODUCT_DEPENDENCIES___

@@ -351,6 +351,13 @@ dvd:
   - inkscape
   - autoyast2
 
+  # Have a bootable system for RPi3/4 - boo#1172574
+  - raspberrypi-firmware: [aarch64]  # bsc 1130015
+  - raspberrypi-firmware-config: [aarch64]  # bsc 1130015
+  - raspberrypi-firmware-dt: [aarch64]  # bsc 1130015
+  - u-boot-rpiarm64: [aarch64]  # bsc 1130015, jsc SLE-7276 / bsc 1164080
+  - u-boot-rpiarm64-doc: [aarch64]  # jsc SLE-7276 / bsc 1164080
+
 opensuse_microos:
   - dummy-release: [locked]
   - openSUSE-release: [locked]
@@ -384,6 +391,12 @@ opensuse_microos:
   - grub2-powerpc-ieee1275: [ppc64le]
   - patterns-microos-basesystem: [ppc64le]
   - patterns-base-bootloader: [ppc64le]
+  # Have a bootable system for RPi3/4 - boo#1172574
+  - raspberrypi-firmware: [aarch64]  # bsc 1130015
+  - raspberrypi-firmware-config: [aarch64]  # bsc 1130015
+  - raspberrypi-firmware-dt: [aarch64]  # bsc 1130015
+  - u-boot-rpiarm64: [aarch64]  # bsc 1130015, jsc SLE-7276 / bsc 1164080
+  - u-boot-rpiarm64-doc: [aarch64]  # jsc SLE-7276 / bsc 1164080
 
 opensuse_kubic:
   - patterns-microos-desktop-kde: [locked]
