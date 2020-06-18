@@ -41,6 +41,7 @@ Patch10:        pico-fix-spurious-undef-warnings.diff
 Patch20:        pine-expression-warnings.diff
 Patch60:        signal-and-panic-improvements.diff
 Patch61:        return-values.diff
+Patch62:        extern.diff
 #
 # Eduardo Chappa's patches.
 # http://patches.freeiz.com/alpine/
@@ -144,6 +145,7 @@ fi
 %patch20 -p1
 %patch60 -p1
 %patch61 -p1
+%patch62 -p1
 %endif # End of "if !{build_vanilla}"
 
 %build
@@ -274,7 +276,8 @@ fi
 %doc %{_mandir}/man1/alpine.*
 %doc %{_mandir}/man1/rpdump.*
 %doc %{_mandir}/man1/rpload.*
-%doc README NOTICE LICENSE
+%doc README
+%license LICENSE NOTICE
 %doc doc/mailcap.unx doc/mime.types doc/tech-notes/tech-notes.txt doc/tech-notes/*.html
 %{_bindir}/*pine
 %{_bindir}/alpinef
