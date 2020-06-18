@@ -17,7 +17,7 @@
 
 
 Name:           sysbench
-Version:        1.0.19
+Version:        1.0.20
 Release:        0
 Summary:        A MySQL benchmarking tool
 License:        GPL-2.0-only

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 17 12:17:02 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add -fcommon to allow building against GCC10 
+
+-------------------------------------------------------------------
 Tue May 19 09:21:48 UTC 2020 - Thomas Renninger <trenn@suse.de>
 
 - Update to latest:

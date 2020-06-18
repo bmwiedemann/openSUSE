@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 17 11:57:34 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add fix-qpainterpath.patch
+- Add -fcommon to allow building against GCC10
+
+-------------------------------------------------------------------
+Fri Jun 12 05:39:25 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.20.0:
+  * See https://github.com/bitcoin/bitcoin/blob/master/doc/release-notes/release-notes-0.20.0.md
+
+-------------------------------------------------------------------
 Thu Mar 26 20:57:22 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Fix build on aarch64.

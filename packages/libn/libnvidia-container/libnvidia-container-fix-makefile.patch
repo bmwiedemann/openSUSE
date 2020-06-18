@@ -1,0 +1,14 @@
+diff --git a/Makefile b/Makefile
+index 0070ada..76790d4 100644
+--- a/Makefile
++++ b/Makefile
+@@ -132,6 +132,9 @@ ifeq ($(WITH_TIRPC), yes)
+ LIB_CPPFLAGS       += -isystem $(DEPS_DIR)$(includedir)/tirpc -DWITH_TIRPC
+ LIB_LDLIBS_STATIC  += -l:libtirpc.a
+ LIB_LDLIBS_SHARED  += -lpthread
++else
++CPPFLAGS           += -I/usr/include/tirpc
++LIB_LDLIBS_SHARED  += -lpthread -ltirpc
+ endif
+ ifeq ($(WITH_SECCOMP), yes)
+ LIB_CPPFLAGS       += -DWITH_SECCOMP $(shell pkg-config --cflags libseccomp)

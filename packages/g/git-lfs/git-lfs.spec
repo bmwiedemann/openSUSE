@@ -31,13 +31,13 @@ BuildRequires:  %{rubygem ronn}
 %endif
 BuildRequires:  curl
 BuildRequires:  fdupes
-BuildRequires:  git >= 1.8.2
+BuildRequires:  git-core >= 1.8.2
 BuildRequires:  go1.14
 BuildRequires:  golang-packaging
 BuildRequires:  which
-Requires:       git >= 1.8.2
-Requires(post): git >= 1.8.2
-Requires(preun): git >= 1.8.2
+Requires:       git-core >= 1.8.2
+Requires(post): git-core >= 1.8.2
+Requires(preun): git-core >= 1.8.2
 %{go_nostrip}
 %{go_provides}
 
@@ -59,6 +59,12 @@ storing the file contents on a remote server.
 %install
 %{goinstall}
 %{gosrc}
+%if 0%{?suse_version} >= 1550 || (0%{?suse_version} >= 1500 && 0%{?is_opensuse})
+mkdir -p -m 755 %{buildroot}%{_mandir}/man1
+mkdir -p -m 755 %{buildroot}%{_mandir}/man5
+install -D -m 644 man/*.1 %{buildroot}%{_mandir}/man1
+install -D -m 644 man/*.5 %{buildroot}%{_mandir}/man5
+%endif
 
 %fdupes -s %{buildroot}
 
@@ -85,5 +91,8 @@ rm -rf ${GIT_LFS_TEST_DIR}
 %{_bindir}/git-lfs
 %license LICENSE.md
 %doc README.md
+%if 0%{?suse_version} >= 1550 || (0%{?suse_version} >= 1500 && 0%{?is_opensuse})
+%{_mandir}/man*/*
+%endif
 
 %changelog

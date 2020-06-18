@@ -25,6 +25,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://github.com/linuxdeepin/deepin-music
 Source0:        https://github.com/linuxdeepin/deepin-music/archive/%{version}/deepin-music-%{version}.tar.gz
+Patch0:         deepin-music-Qt-5_15.patch
 # Fix boo#1131464
 Source1:        %{name}-rpmlintrc
 BuildRequires:  QtAV-devel
@@ -37,7 +38,6 @@ BuildRequires:  libqt5-qtdeclarative-devel
 BuildRequires:  libqt5-qtmultimedia-devel
 BuildRequires:  libqt5-qtsvg-devel
 BuildRequires:  libqt5-qtx11extras-devel
-BuildRequires:  python
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dtkcore)
 BuildRequires:  pkgconfig(dtkwidget)
@@ -49,7 +49,8 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcue)
 BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(xext)
-Provides:       deepin-music
+Provides:       deepin-music = %{version}-%{release}
+Obsoletes:      deepin-music < %{version}-%{release}
 Recommends:     deepin-music-libnetease-meta-search = %{version}-%{release}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -116,6 +117,9 @@ docs for libmpris.
 
 %prep
 %setup -q -n deepin-music-%{version}
+%if 0%{?suse_version} > 1500
+%patch0 -p1
+%endif
 
 sed -i '/%1/s|lib|%{_lib}|' src/music-player/core/pluginmanager.cpp
 sed -i '/target.path/s|lib|%{_lib}|' src/libdmusic/libdmusic.pro \

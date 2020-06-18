@@ -1,7 +1,7 @@
 #
 # spec file for package cpupower
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Author: Thomas Renninger <trenn@suse.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -116,12 +116,12 @@ cp %{SOURCE5} Makefile
 
 %build
 CONF="PACKAGE_BUGREPORT=https://bugs.opensuse.org mandir=%{_mandir} libdir=%{_libdir} CPUFRQ_BENCH=true VERSION=%{version}"
-export CFLAGS="%{optflags} -I ."
+export CFLAGS="%{optflags} -fcommon -I ."
 make $CONF %{?_smp_mflags}
 
 %ifarch ix86 x86_64
 cd ../turbostat-%{tsversion}
-export CFLAGS="%{optflags} -I ."
+export CFLAGS="%{optflags} -fcommon -I ."
 make %{?_smp_mflags}
 cd ../x86_energy_perf_policy-%{pbversion}
 make %{?_smp_mflags}

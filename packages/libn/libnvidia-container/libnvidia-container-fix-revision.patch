@@ -1,0 +1,17 @@
+diff --git a/mk/common.mk b/mk/common.mk
+index 5f76560..d624832 100644
+--- a/mk/common.mk
++++ b/mk/common.mk
+@@ -17,11 +17,11 @@ OBJCPY   ?= objcopy
+ RPCGEN   ?= rpcgen
+ BMAKE    ?= MAKEFLAGS= bmake
+ DOCKER   ?= docker
++REVISION ?= $(shell git rev-parse HEAD)
+ 
+ UID      := $(shell id -u)
+ GID      := $(shell id -g)
+ DATE     := $(shell date -u --iso-8601=minutes)
+-REVISION := $(shell git rev-parse HEAD)
+ COMPILER := $(realpath $(shell which $(CC)))
+ PLATFORM ?= $(shell uname -m)
+ 

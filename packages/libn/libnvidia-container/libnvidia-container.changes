@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Wed Jun  3 20:21:39 UTC 2020 - Colleen Murphy <comurphy@suse.com>
+
+- Update to version 1.1.1
+- Fix libnvidia-container-fix-makefile.patch for SLE15
+
+-------------------------------------------------------------------
+Tue May 26 11:32:08 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Cleanup the spec file, fully unbundle elftoolchain part.
+- Add no-manual-debuginfo.patch, we automatically generate it.
+
+-------------------------------------------------------------------
+Tue May 19 22:39:11 UTC 2020 - Colleen Murphy <comurphy@suse.com>
+
+- Fix libnvidia-container-tools runtime dependencies
+
+-------------------------------------------------------------------
+Wed Apr 22 09:33:35 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Remove vendored libtirpc and add
+  libnvidia-container-fix-makefile.patch as substitution
+
+-------------------------------------------------------------------
+Wed Apr  8 13:10:21 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to version 1.0.6
+- Fix build for tumbleweed
+
+-------------------------------------------------------------------
+Tue Feb 11 11:07:31 UTC 2020 - jmassaguerpla@suse.com
+
+- Update to version 1.0.5:
+  * Fix release number in rpms
+  * Fix changelog
+  * Bump version to 1.0.5
+  * Add pkg-config package to fix build
+  * Bump version to 1.0.4
+  * Update DSL to output the first element instead of the last in case of failure
+  * opensuse-leap: ensure /mnt is writeable by the unprivileged user
+  * mk/nvidia-modprobe: fix parallel build issue
+  * add support for openSUSE Leap 15
+  * Add initial support for Optix

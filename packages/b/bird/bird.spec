@@ -1,7 +1,7 @@
 #
 # spec file for package bird
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -91,7 +91,7 @@ This package holds the HTML documentation.
 # gcc detects overflow in strncpy at proto/rip/packets.c:215:5
 # but it's false alarm, relax gcc (-D_FORTIFY_SOURCE=1)
 # see http://bird.network.cz/pipermail/bird-users/2016-May/010380.html
-export CFLAGS="${RPM_OPT_FLAGS//-D_FORTIFY_SOURCE=2/-D_FORTIFY_SOURCE=0} -fpic -DPIC -fno-strict-aliasing -Wno-parentheses -Wno-pointer-sign"
+export CFLAGS="${RPM_OPT_FLAGS//-D_FORTIFY_SOURCE=2/-D_FORTIFY_SOURCE=0} -fpic -DPIC -fno-strict-aliasing -Wno-parentheses -Wno-pointer-sign -fcommon"
 export LDFLAGS="-Wl,-z,relro -pie"
 %define _configure ../configure
 mkdir 4 6

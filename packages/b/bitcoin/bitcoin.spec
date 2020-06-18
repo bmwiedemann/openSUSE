@@ -24,7 +24,7 @@
 %define consensus 1
 %define is_base 1
 Name:           bitcoin
-Version:        0.19.1
+Version:        0.20.0
 Release:        0
 Summary:        P2P Digital Currency
 License:        MIT
@@ -34,6 +34,7 @@ Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%
 Source1:        %{base}d.service
 Source3:        %{base}d.conf
 Source4:        %{base}.conf
+Patch0:         fix-qpainterpath.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -170,11 +171,12 @@ This package provides automated tests for %{name}-qt5 and %{name}d.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 autoreconf -fiv
-export CXXFLAGS="%{optflags} -fPIE -fPIC"
-export CFLAGS="%{optflags} -fPIE -fPIC"
+export CXXFLAGS="%{optflags} -fPIE -fPIC -fcommon"
+export CFLAGS="%{optflags} -fPIE -fPIC -fcommon"
 export LDFLAGS="-pie"
 
 # Autodetecting if assembly optimizazions for secp256k1 can be used does not

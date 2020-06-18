@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 17 12:10:56 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.20:
+  * build/CI/packaging: Add arm64 to Travis CI matrix (#358)
+  * build/CI/packaging: add Ubuntu Focal
+  * build/CI/packaging: remove Fedora Rawhide from CI matrix
+  * build/CI/packaging: fix regression tests to work with MySQL 8.0.19+
+  * build/CI/packaging: fix macOS builds in Travis
+  * build/CI/packaging: remove Ubuntu Disco (EOL)
+
+-------------------------------------------------------------------
 Sun Mar 15 02:29:55 UTC 2020 - Max Lin <mlin@suse.com>
 
 - BuildRequires postgresql-server-devel on Leap >= 15.2 as well

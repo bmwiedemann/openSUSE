@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-docker-compose
-Version:        1.25.4
+Version:        1.26.0
 Release:        0
 Summary:        Tool to define and run complex applications using Docker
 License:        Apache-2.0
@@ -30,11 +30,13 @@ Patch0:         no-restrict-upper.patch
 BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module cached-property >= 1.2.0}
 BuildRequires:  %{python_module ddt >= 1.2.2}
+BuildRequires:  %{python_module distro >= 1.5.0}
 BuildRequires:  %{python_module docker >= 3.7.0}
 BuildRequires:  %{python_module dockerpty >= 0.4.1}
 BuildRequires:  %{python_module docopt >= 0.6.1}
 BuildRequires:  %{python_module jsonschema >= 2.6}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-dotenv >= 0.13.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.3.0}
 BuildRequires:  %{python_module texttable >= 0.9.1}
@@ -46,12 +48,14 @@ Requires:       python-PySocks >= 1.5.6
 Requires:       python-PyYAML >= 3.10
 Requires:       python-cached-property >= 1.3.0
 Requires:       python-chardet >= 3.0.4
+Requires:       python-distro >= 1.5.0
 Requires:       python-docker >= 3.7.0
 Requires:       python-docker-pycreds >= 0.3.0
 Requires:       python-dockerpty >= 0.4.1
 Requires:       python-docopt >= 0.6.2
 Requires:       python-idna >= 2.5
 Requires:       python-jsonschema >= 2.6.0
+Requires:       python-python-dotenv >= 0.13.0
 Requires:       python-requests >= 2.20.0
 Requires:       python-six >= 1.3.0
 Requires:       python-texttable >= 0.9.1

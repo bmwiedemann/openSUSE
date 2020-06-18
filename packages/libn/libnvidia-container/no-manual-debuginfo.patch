@@ -1,0 +1,36 @@
+Index: libnvidia-container-1.0.6/Makefile
+===================================================================
+--- libnvidia-container-1.0.6.orig/Makefile
++++ libnvidia-container-1.0.6/Makefile
+@@ -182,22 +182,14 @@ $(BIN_OBJS): %.o: %.c | shared
+ -include $(DEPENDENCIES)
+ 
+ $(LIB_SHARED): $(LIB_OBJS)
+-	$(MKDIR) -p $(DEBUG_DIR)
+ 	$(CC) $(LIB_CFLAGS) $(LIB_CPPFLAGS) $(LIB_LDFLAGS) $(OUTPUT_OPTION) $^ $(LIB_SCRIPT) $(LIB_LDLIBS)
+-	$(OBJCPY) --only-keep-debug $@ $(LIB_SONAME)
+-	$(OBJCPY) --add-gnu-debuglink=$(LIB_SONAME) $@
+-	$(MV) $(LIB_SONAME) $(DEBUG_DIR)
+-	$(STRIP) --strip-unneeded -R .comment $@
+ 
+ $(LIB_STATIC_OBJ): $(LIB_OBJS)
+ 	# FIXME Handle user-defined LDFLAGS and LDLIBS
+ 	$(LD) -d -r --exclude-libs ALL -L$(DEPS_DIR)$(libdir) $(OUTPUT_OPTION) $^ $(LIB_LDLIBS_STATIC)
+-	$(OBJCPY) --localize-hidden $@
+-	$(STRIP) --strip-unneeded -R .comment $@
+ 
+ $(BIN_NAME): $(BIN_OBJS)
+ 	$(CC) $(BIN_CFLAGS) $(BIN_CPPFLAGS) $(BIN_LDFLAGS) $(OUTPUT_OPTION) $^ $(BIN_SCRIPT) $(BIN_LDLIBS)
+-	$(STRIP) --strip-unneeded -R .comment $@
+ 
+ ##### Public rules #####
+ 
+@@ -236,8 +228,6 @@ install: all
+ 	$(INSTALL) -m 755 $(LIB_SHARED) $(DESTDIR)$(libdir)
+ 	$(LN) -sf $(LIB_SONAME) $(DESTDIR)$(libdir)/$(LIB_SYMLINK)
+ 	$(LDCONFIG) -n $(DESTDIR)$(libdir)
+-	# Install debugging symbols
+-	$(INSTALL) -m 644 $(DEBUG_DIR)/$(LIB_SONAME) $(DESTDIR)$(libdbgdir)
+ 	# Install configuration files
+ 	$(MAKE_DIR)/$(LIB_PKGCFG).in "$(strip $(VERSION))" "$(strip $(LIB_LDLIBS_SHARED))" > $(DESTDIR)$(pkgconfdir)/$(LIB_PKGCFG)
+ 	# Install binary files

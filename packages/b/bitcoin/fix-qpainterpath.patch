@@ -1,0 +1,10 @@
+--- bitcoin-0.20.0/src/qt/trafficgraphwidget.cpp.orig	2020-06-17 13:42:31.658215250 +0200
++++ bitcoin-0.20.0/src/qt/trafficgraphwidget.cpp	2020-06-17 13:42:39.286235611 +0200
+@@ -7,6 +7,7 @@
+ #include <qt/clientmodel.h>
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QColor>
+ #include <QTimer>
+ 

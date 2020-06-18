@@ -1,0 +1,16 @@
+<services>
+<service name="tar_scm" mode="disabled">
+<param name="url">https://github.com/NVIDIA/container-toolkit</param>
+<param name="scm">git</param>
+<param name="versionprefix">0.0+git</param>
+<param name="versionformat">%ct.%h</param>
+<param name="revision">60f165ad6901f85b0c3acbf7ce2c66cd759c4fb8</param>
+</service>
+<service name="recompress" mode="disabled">
+<param name="file">container-toolkit-*.tar</param>
+<param name="compression">xz</param>
+</service>
+<service name="set_version" mode="disabled">
+<param name="basename">container-toolkit</param>
+</service>
+</services>

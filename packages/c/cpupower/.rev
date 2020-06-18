@@ -411,4 +411,12 @@ M rapl_monitor.patch</comment>
     <comment></comment>
     <requestid>807180</requestid>
   </revision>
+  <revision rev="48" vrev="5">
+    <srcmd5>940e07c97dcd71e8d3d45cf85ec3be59</srcmd5>
+    <version>5.5</version>
+    <time>1592468734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815512</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,33 @@
+diff -Nur deepin-music-5.0.1/src/music-player/view/lyricwidget.cpp deepin-music-5.0.1-new/src/music-player/view/lyricwidget.cpp
+--- deepin-music-5.0.1/src/music-player/view/lyricwidget.cpp	2019-06-01 14:20:13.000000000 +0800
++++ deepin-music-5.0.1-new/src/music-player/view/lyricwidget.cpp	2020-06-17 20:34:12.950660815 +0800
+@@ -29,6 +29,7 @@
+ #include <QHBoxLayout>
+ #include <QListView>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QResizeEvent>
+ #include <QPaintEvent>
+ #include <QStringListModel>
+diff -Nur deepin-music-5.0.1/src/music-player/view/widget/cover.cpp deepin-music-5.0.1-new/src/music-player/view/widget/cover.cpp
+--- deepin-music-5.0.1/src/music-player/view/widget/cover.cpp	2019-06-01 14:20:13.000000000 +0800
++++ deepin-music-5.0.1-new/src/music-player/view/widget/cover.cpp	2020-06-17 20:34:40.078624269 +0800
+@@ -23,6 +23,7 @@
+ 
+ #include <QDebug>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QGraphicsDropShadowEffect>
+ 
+ static auto borderPenWidth = 1.0;
+diff -Nur deepin-music-5.0.1/src/music-player/view/widget/soundvolume.cpp deepin-music-5.0.1-new/src/music-player/view/widget/soundvolume.cpp
+--- deepin-music-5.0.1/src/music-player/view/widget/soundvolume.cpp	2019-06-01 14:20:13.000000000 +0800
++++ deepin-music-5.0.1-new/src/music-player/view/widget/soundvolume.cpp	2020-06-17 20:35:00.610598544 +0800
+@@ -23,6 +23,7 @@
+ 
+ #include <QDebug>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QWheelEvent>
+ #include <QGraphicsDropShadowEffect>
+ #include <QVBoxLayout>
