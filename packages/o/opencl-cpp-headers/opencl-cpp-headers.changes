@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 17 21:46:05 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 2.0.12.
+  * Relicense under Apache 2.0
+  * Remove deprecated cl.hpp
+  * Add support for cl_khr_extended_versioning
+  * Various fixes / clean ups
+
+-------------------------------------------------------------------
 Sat Mar 14 17:17:59 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 2.0.11.

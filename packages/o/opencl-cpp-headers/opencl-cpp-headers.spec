@@ -18,10 +18,10 @@
 
 
 Name:           opencl-cpp-headers
-Version:        2.0.11
+Version:        2.0.12
 Release:        0
 Summary:        OpenCL C++ headers
-License:        MIT
+License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://www.khronos.org/registry/OpenCL/
 Source:         https://github.com/KhronosGroup/OpenCL-CLHPP/archive/v%{version}.tar.gz
@@ -48,11 +48,10 @@ find -type f -exec dos2unix {} \;
 
 %install
 install -d -m 0755 %{buildroot}%{_includedir}/CL
-install -p -m 0644 include/CL/cl.hpp %{buildroot}%{_includedir}/CL
 install -p -m 0644 include/CL/cl2.hpp %{buildroot}%{_includedir}/CL
 
 %files
 %dir %{_includedir}/CL
-%{_includedir}/CL/*.hpp
+%{_includedir}/CL/cl2.hpp
 
 %changelog
