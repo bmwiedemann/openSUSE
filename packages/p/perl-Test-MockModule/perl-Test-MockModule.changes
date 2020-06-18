@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun 13 03:15:05 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.173.0
+   see /usr/share/doc/packages/perl-Test-MockModule/Changes
+
+  v0.173.0
+  - 4dacd82 Add warning when 'unmock' called without arguments - Matthew Hughes
+  - b20dc7c import warns when using unknown argument - Nicolas R
+  - 3b217ba Fix windows CI by installing SUPER - Nicolas R
+  - 0ef70c5 Add .whitesource configuration file - whitesource-bolt-for-github[bot]
+
+-------------------------------------------------------------------
 Thu Feb 20 03:09:39 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.172.0
