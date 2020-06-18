@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 16 02:07:15 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-pkcon-exit-with-retval-5.patch: pkcon: exit with
+  retval 5 if no packages needed be installed
+  (gh#/hughsie/PackageKit#405 bsc#1170562).
+
+-------------------------------------------------------------------
 Tue May 26 02:37:45 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add PackageKit-zypp-ensure-ResPool-before-is_tumbleweed.patch:

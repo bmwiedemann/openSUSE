@@ -1677,4 +1677,14 @@ Library portions are LGPL-2.1+ licensed (forwarded request 132611 from dimstar)<
   (gh#/hughsie/PackageKit/commit/5c0fd7d7). (forwarded request 808875 from JonathanKang)</comment>
     <requestid>811416</requestid>
   </revision>
+  <revision rev="202" vrev="6">
+    <srcmd5>c11fdf2346f33f7984ed98a6a32b1a9c</srcmd5>
+    <version>1.1.13</version>
+    <time>1592469342</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PackageKit-pkcon-exit-with-retval-5.patch: pkcon: exit with
+  retval 5 if no packages needed be installed
+  (gh#/hughsie/PackageKit#405 bsc#1170562). (forwarded request 814795 from JonathanKang)</comment>
+    <requestid>815257</requestid>
+  </revision>
 </revisionlist>
