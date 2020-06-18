@@ -1150,4 +1150,12 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment>Conditionally apply patch 100</comment>
     <requestid>805500</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>20581ffd91178ae5da7d4800d1841661</srcmd5>
+    <version>3.0.11</version>
+    <time>1592469432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815288</requestid>
+  </revision>
 </revisionlist>
