@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 11 09:45:20 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add -fcommon to allow package to build with GCC10 
+
+-------------------------------------------------------------------
 Tue Mar  6 12:18:16 UTC 2012 - aj@suse.de
 
 - Remove obsolete suse_update_config call

@@ -1,7 +1,7 @@
 #
 # spec file for package amtu
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-
 Name:           amtu
-Url:            http://sourceforge.net/projects/amtueal/
-License:        CPL-1.0
-Group:          Productivity/Security
+URL:            http://sourceforge.net/projects/amtueal/
 Requires:       audit >= 1.2.9
 Version:        1.0.8
 Release:        0
 Summary:        Abstract Machine Test Utility
+License:        CPL-1.0
+Group:          Productivity/Security
 Source:         %{name}-%{version}.tar.gz
 Patch0:         amtu-1.0.8_memsep_fclose_bnc523353.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -46,7 +45,7 @@ http://www.radium.csc.mil/tpep/library/protection_profiles/CAPP-1.d.pdf
 %patch0 -p1
 
 %build
-CFLAGS="$RPM_OPT_FLAGS -D_GNU_SOURCE -Wall -pipe"
+CFLAGS="$RPM_OPT_FLAGS -D_GNU_SOURCE -Wall -pipe -fcommon"
     CC=gcc
 export CC CFLAGS
   ./configure                           \
@@ -56,7 +55,6 @@ export CC CFLAGS
   make %{?_smp_mflags}
 
 %install
-#  rm -rf %{_defaultdocdir}/amtu
 mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/amtu
 make DESTDIR=$RPM_BUILD_ROOT install-strip
 install -m 644 doc/amtu.8    $RPM_BUILD_ROOT/%{_mandir}/man8/amtu.8
