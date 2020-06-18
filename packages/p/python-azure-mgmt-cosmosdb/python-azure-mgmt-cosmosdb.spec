@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-cosmosdb
-Version:        0.14.0
+Version:        0.15.0
 Release:        0
 Summary:        Microsoft Azure Cosmos DB Management Client Library
 License:        MIT
