@@ -28,7 +28,7 @@
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
 %bcond_with     setuptools
 Name:           meson%{name_ext}
-Version:        0.54.2
+Version:        0.54.3
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
