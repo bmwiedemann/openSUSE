@@ -51,4 +51,17 @@
 - Update %description from README.rst (forwarded request 767748 from glaubitz)</comment>
     <requestid>767837</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5ecf71de18e241582ad9f3a78f14319e</srcmd5>
+    <version>2.2.0</version>
+    <time>1592469078</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.2.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section (forwarded request 815537 from glaubitz)</comment>
+    <requestid>815585</requestid>
+  </revision>
 </revisionlist>
