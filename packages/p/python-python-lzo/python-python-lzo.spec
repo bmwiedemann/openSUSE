@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-lzo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,14 +23,13 @@ Release:        0
 Summary:        Python bindings for the LZO data compression library
 License:        GPL-2.0-only
 Group:          Development/Languages/Python
-Url:            https://github.com/jd-boyd/python-lzo
+URL:            https://github.com/jd-boyd/python-lzo
 Source:         https://files.pythonhosted.org/packages/source/p/python-lzo/python-lzo-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  lzo-devel
 BuildRequires:  python-rpm-macros
-
 %python_subpackages
 
 %description
@@ -52,9 +51,7 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-nosetests-%{$python_bin_suffix}
-}
+%pytest_arch tests/test.py
 
 %files %{python_files}
 %doc NEWS
