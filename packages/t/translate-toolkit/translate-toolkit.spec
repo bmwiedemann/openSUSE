@@ -27,33 +27,31 @@
 %define modname translate-toolkit
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define binaries pocompile build_firefox.sh build_tmdb buildxpi.py csv2po csv2tbx flatxml2po get_moz_enUS.py html2po ical2po idml2po ini2po json2po junitmsgfmt l20n2po moz2po mozlang2po odf2xliff oo2po oo2xliff php2po phppo2pypo po2csv po2flatxml po2html po2ical po2idml po2ini po2json po2l20n po2moz po2mozlang po2oo po2php po2prop po2rc po2resx po2sub po2symb po2tiki po2tmx po2ts po2txt po2web2py po2wordfast po2xliff po2yaml poclean pocommentclean pocompendium poconflicts pocount podebug pofilter pogrep pomerge pomigrate2 popuretext poreencode porestructure posegment posplit poswap pot2po poterminology pretranslate prop2po pydiff pypo2phppo rc2po resx2po sub2po symb2po tbx2po tiki2po tmserver ts2po txt2po web2py2po xliff2odf xliff2oo xliff2po yaml2po
+%define binaries pocompile build_firefox.sh build_tmdb buildxpi.py csv2po csv2tbx flatxml2po get_moz_enUS.py html2po ical2po idml2po ini2po json2po junitmsgfmt moz2po mozlang2po odf2xliff oo2po oo2xliff php2po phppo2pypo po2csv po2flatxml po2html po2ical po2idml po2ini po2json po2moz po2mozlang po2oo po2php po2prop po2rc po2resx po2sub po2symb po2tiki po2tmx po2ts po2txt po2web2py po2wordfast po2xliff po2yaml poclean pocommentclean pocompendium poconflicts pocount podebug pofilter pogrep pomerge pomigrate2 popuretext poreencode porestructure posegment posplit poswap pot2po poterminology pretranslate prop2po pydiff pypo2phppo rc2po resx2po sub2po symb2po tbx2po tiki2po tmserver ts2po txt2po web2py2po xliff2odf xliff2oo xliff2po yaml2po
 %define manpages pocompile build_firefox.sh csv2po csv2tbx flatxml2po html2po idml2po ini2po json2po junitmsgfmt moz2po mozlang2po odf2xliff oo2po oo2xliff phppo2pypo po2csv po2flatxml po2html po2idml po2ini po2json po2moz po2mozlang po2oo po2prop po2rc po2resx po2sub po2symb po2tiki po2tmx po2ts po2txt po2web2py po2wordfast po2xliff poclean poconflicts podebug pofilter pogrep pomerge porestructure posegment poswap pot2po poterminology pretranslate prop2po pypo2phppo rc2po resx2po sub2po symb2po tbx2po tiki2po translatetoolkit ts2po txt2po web2py2po xliff2odf xliff2oo xliff2po
 Name:           translate-toolkit%{psuffix}
-Version:        2.5.0
+Version:        3.0.0
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
 License:        GPL-2.0-or-later
-Group:          Development/Tools/Other
 URL:            https://toolkit.translatehouse.org/
 Source:         https://github.com/translate/translate/releases/download/%{version}/%{modname}-%{version}.tar.gz
-# Repacked https://github.com/translate/sphinx-themes ; no commits since 2013
-# Often not included in the release tag so just ship it
-Source1:        sphinx-themes.tar.xz
-Patch0:         sphinx-intersphinx.patch
-Patch2:         xliff-xsd-no-network.patch
-Patch3:         test-mo-endian.patch
+Patch0:         xliff-xsd-no-network.patch
 # PATCH-FIX-UPSTREAM versioned_executables.patch mcepl@suse.com
 # Use versioned partially installed executables
-Patch4:         versioned_executables.patch
+Patch1:         versioned_executables.patch
+Patch2:         sphinx-intersphinx.patch
 BuildRequires:  %{python_module Levenshtein >= 0.12}
 BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module iniparse}
-BuildRequires:  %{python_module l20n}
-BuildRequires:  %{python_module lxml >= 3.5.0}
+BuildRequires:  %{python_module beautifulsoup4 >= 4.3}
+# extra modules here are needed for manpages
+BuildRequires:  %{python_module cheroot >= 8.3.0}
+BuildRequires:  %{python_module iniparse >= 0.5}
+BuildRequires:  %{python_module lxml >= 4.0}
+BuildRequires:  %{python_module phply >= 1.2.5}
+BuildRequires:  %{python_module ruamel.yaml >= 0.16.10}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.11.0}
-BuildRequires:  %{python_module vobject}
+BuildRequires:  %{python_module vobject >= 0.9.6.1}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gettext-runtime
@@ -62,41 +60,38 @@ BuildRequires:  iso-codes
 BuildRequires:  python-rpm-macros
 Requires:       gettext-runtime
 Requires:       python
-Requires:       python-lxml
-Requires:       python-pycountry >= 18.12.8
-Requires:       python-pyenchant
+Requires:       python-lxml >= 4.0
+Requires:       python-pycountry >= 19.8.18
+Requires:       python-pyenchant >= 3.1.1
 Requires:       python-setuptools
-Requires:       python-six >= 1.11.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # The following are for the full experience of translate-toolkit
 Recommends:     gaupol
 Recommends:     iso-codes
-Recommends:     python-Levenshtein
-Recommends:     python-aeidon
-Recommends:     python-chardet
-Recommends:     python-cheroot
-Recommends:     python-iniparse
-Recommends:     python-l20n
-Recommends:     python-phply
-Recommends:     python-pycountry
-Recommends:     python-ruamel.yaml
-Recommends:     python-vobject
+Recommends:     python-Levenshtein >= 0.12
+Recommends:     python-aeidon >= 1.7.0
+Recommends:     python-beautifulsoup4 >= 4.3
+Recommends:     python-chardet >= 3.0.4
+Recommends:     python-cheroot >= 8.3.0
+Recommends:     python-iniparse >= 0.5
+Recommends:     python-phply >= 1.2.5
+Recommends:     python-pyparsing >= 2.4.7
+Recommends:     python-ruamel.yaml >= 0.16.10
+Recommends:     python-vobject >= 0.9.6.1
 Provides:       translate-toolkit = %{version}-%{release}
 Obsoletes:      translate-toolkit < %{version}-%{release}
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Babel}
-BuildRequires:  %{python_module chardet}
-BuildRequires:  %{python_module iniparse}
-BuildRequires:  %{python_module pycountry >= 18.12.8}
-BuildRequires:  %{python_module pyenchant}
+BuildRequires:  %{python_module aeidon >= 1.7.0}
+BuildRequires:  %{python_module chardet >= 3.0.4}
+BuildRequires:  %{python_module pycountry >= 19.8.18}
+BuildRequires:  %{python_module pyenchant >= 3.1.1}
+BuildRequires:  %{python_module pyparsing >= 2.4.7}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module translate-toolkit >= %{version}}
 BuildRequires:  %{python_module xml}
 BuildRequires:  subversion
-%if "%{python_flavor}" == "python2"
-BuildRequires:  python2-backports.csv
-%endif
 %endif
 %python_subpackages
 
@@ -121,7 +116,6 @@ translations and perform various checks on translation files.
 
 %package devel-doc
 Summary:        Tools and API to assist with translation and software localization
-Group:          Development/Libraries/Python
 Requires:       %{name} = %{version}
 Provides:       %{name}-devel = %{version}
 Obsoletes:      %{name}-devel < %{version}
@@ -135,10 +129,6 @@ toolkit or to use the libraries in other localization tools.
 %setup -q -n %{modname}-%{version}
 %autopatch -p1
 
-pushd docs/_themes
-tar -xJf %{SOURCE1} --strip 1
-popd
-
 sed -i 296"s|'share'|'translate/share'|" setup.py
 
 #Fix for shebang errors:
@@ -149,15 +139,19 @@ done
 find . -name jquery.js -exec dos2unix '{}' \;
 
 %build
+%if !%{with test}
 %python_build
+
 pushd docs
 # Can't use parallel build here!
 %make_build -j1 html man
 #no hidden files
 find _build -name '.?*' -delete
 popd
+%endif
 
 %install
+%if !%{with test}
 %python_install
 
 # create manpages
@@ -193,16 +187,16 @@ done
 for binary in %{binaries} ; do
 %python_clone -a %{buildroot}%{_bindir}/$binary
 done
+%endif
 
 %check
 %if %{with test}
 export PYTHONDONTWRITEBYTECODE=1
-export PATH=$PATH:%{buildroot}%{_bindir}
-%pytest tests
-rm -rf %{buildroot}
+%pytest
 %endif
 
 %post
+
 %define my_install_alternatives() %{lua:\
     function file_exists(path) \
     	local f = io.open(path) \
@@ -234,8 +228,7 @@ rm -rf %{buildroot}
     -- we need to remove the last backslash and EOL \
     print(ua_cmd:sub(1, -3)) \
 }
-%my_install_alternatives %{_rec_macro_helper}%{lua:expand_macro("version")} %binaries
-
+%my_install_alternatives %{_rec_macro_helper}%{lua:expand_macro("version")} %{binaries}
 
 %postun
 if [ ! -f %{_mandir}/man1/translatetoolkit-%{_rec_macro_helper}%{lua:expand_macro("version")}.1%{?ext_man} ] ; then

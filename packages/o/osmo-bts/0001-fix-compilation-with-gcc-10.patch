@@ -1,0 +1,229 @@
+From 187f7c8713eb3cbcf3bc7a524c4b8e13671695f8 Mon Sep 17 00:00:00 2001
+From: Harald Welte <laforge@osmocom.org>
+Date: Mon, 20 Apr 2020 20:09:24 +0200
+Subject: [PATCH] fix compilation with gcc-10
+
+/usr/bin/ld: /home/laforge/projects/git/osmo-bts/tests/sysmobts/../../src/osmo-bts-sysmo/tch.c:584: undefined reference to `femtobts_tch_pl_names'
+/usr/bin/ld: l1_transp_hw.o:/home/laforge/projects/git/osmo-bts/src/osmo-bts-sysmo/femtobts.h:108: multiple definition of `pdch_msu_size'; main.o:/home/laforge/projects/git/osmo-bts/src/osmo-bts-sysmo/femtobts.h:108: first defined here
+/usr/bin/ld: l1_transp_hw.o:/home/laforge/projects/git/osmo-bts/src/osmo-bts-sysmo/femtobts.h:71: multiple definition of `femtobts_l1prim_type'; main.o:/home/laforge/projects/git/osmo-bts/src/osmo-bts-sysmo/femtobts.h:71: first defined here
+
+see also: https://alioth-lists.debian.net/pipermail/debian-mobcom-maintainers/Week-of-Mon-20200413/000651.html
+
+Change-Id: I4a9896153876fcda496365776883827746205f00
+---
+ include/osmo-bts/gsm_data_shared.h   |  8 ++++----
+ include/osmo-bts/scheduler_backend.h |  4 ++--
+ src/osmo-bts-litecell15/lc15bts.h    | 20 +++++++++----------
+ src/osmo-bts-oc2g/oc2gbts.h          | 22 ++++++++++----------
+ src/osmo-bts-sysmo/femtobts.h        | 30 ++++++++++++++--------------
+ tests/sysmobts/Makefile.am           |  1 +
+ 6 files changed, 43 insertions(+), 42 deletions(-)
+
+diff --git a/include/osmo-bts/gsm_data_shared.h b/include/osmo-bts/gsm_data_shared.h
+index 33166700..53a6d7a3 100644
+--- a/include/osmo-bts/gsm_data_shared.h
++++ b/include/osmo-bts/gsm_data_shared.h
+@@ -342,13 +342,13 @@ static inline const char *lchan_ciph_state_name(uint8_t state) {
+ 	return get_value_string(lchan_ciph_state_names, state);
+ }
+ 
+-enum {
++enum gsm_bts_trx_ts_flags {
+ 	TS_F_PDCH_ACTIVE =		0x1000,
+ 	TS_F_PDCH_ACT_PENDING =		0x2000,
+ 	TS_F_PDCH_DEACT_PENDING =	0x4000,
+ 	TS_F_PDCH_PENDING_MASK =	0x6000 /*<
+ 			TS_F_PDCH_ACT_PENDING | TS_F_PDCH_DEACT_PENDING */
+-} gsm_bts_trx_ts_flags;
++};
+ 
+ /* One Timeslot in a TRX */
+ struct gsm_bts_trx_ts {
+@@ -799,8 +799,8 @@ enum gsm_bts_type_variant str2btsvariant(const char *arg);
+ const char *btsvariant2str(enum gsm_bts_type_variant v);
+ 
+ extern const struct value_string gsm_chreq_descs[];
+-const struct value_string gsm_pchant_names[13];
+-const struct value_string gsm_pchant_descs[13];
++extern const struct value_string gsm_pchant_names[13];
++extern const struct value_string gsm_pchant_descs[13];
+ const char *gsm_pchan_name(enum gsm_phys_chan_config c);
+ enum gsm_phys_chan_config gsm_pchan_parse(const char *name);
+ const char *gsm_lchant_name(enum gsm_chan_t c);
+diff --git a/include/osmo-bts/scheduler_backend.h b/include/osmo-bts/scheduler_backend.h
+index 4959853e..201b48c3 100644
+--- a/include/osmo-bts/scheduler_backend.h
++++ b/include/osmo-bts/scheduler_backend.h
+@@ -38,8 +38,8 @@ extern const struct trx_chan_desc trx_chan_desc[_TRX_CHAN_MAX];
+ 
+ extern const ubit_t _sched_tsc[8][26];
+ extern const ubit_t _sched_egprs_tsc[8][78];
+-const ubit_t _sched_fcch_burst[148];
+-const ubit_t _sched_sch_train[64];
++extern const ubit_t _sched_fcch_burst[148];
++extern const ubit_t _sched_sch_train[64];
+ 
+ struct msgb *_sched_dequeue_prim(struct l1sched_trx *l1t, int8_t tn, uint32_t fn,
+ 				 enum trx_chan_type chan);
+diff --git a/src/osmo-bts-litecell15/lc15bts.h b/src/osmo-bts-litecell15/lc15bts.h
+index 4c40db0f..31ca9239 100644
+--- a/src/osmo-bts-litecell15/lc15bts.h
++++ b/src/osmo-bts-litecell15/lc15bts.h
+@@ -23,24 +23,24 @@ enum l1prim_type {
+ };
+ 
+ enum l1prim_type lc15bts_get_l1prim_type(GsmL1_PrimId_t id);
+-const struct value_string lc15bts_l1prim_names[GsmL1_PrimId_NUM+1];
++extern const struct value_string lc15bts_l1prim_names[GsmL1_PrimId_NUM+1];
+ GsmL1_PrimId_t lc15bts_get_l1prim_conf(GsmL1_PrimId_t id);
+ 
+ enum l1prim_type lc15bts_get_sysprim_type(Litecell15_PrimId_t id);
+-const struct value_string lc15bts_sysprim_names[Litecell15_PrimId_NUM+1];
++extern const struct value_string lc15bts_sysprim_names[Litecell15_PrimId_NUM+1];
+ Litecell15_PrimId_t lc15bts_get_sysprim_conf(Litecell15_PrimId_t id);
+ 
+-const struct value_string lc15bts_l1sapi_names[GsmL1_Sapi_NUM+1];
+-const struct value_string lc15bts_l1status_names[GSML1_STATUS_NUM+1];
++extern const struct value_string lc15bts_l1sapi_names[GsmL1_Sapi_NUM+1];
++extern const struct value_string lc15bts_l1status_names[GSML1_STATUS_NUM+1];
+ 
+-const struct value_string lc15bts_tracef_names[29];
+-const struct value_string lc15bts_tracef_docs[29];
++extern const struct value_string lc15bts_tracef_names[29];
++extern const struct value_string lc15bts_tracef_docs[29];
+ 
+-const struct value_string lc15bts_tch_pl_names[15];
++extern const struct value_string lc15bts_tch_pl_names[15];
+ 
+-const struct value_string lc15bts_clksrc_names[10];
++extern const struct value_string lc15bts_clksrc_names[10];
+ 
+-const struct value_string lc15bts_dir_names[6];
++extern const struct value_string lc15bts_dir_names[6];
+ 
+ enum pdch_cs {
+ 	PDCH_CS_1,
+@@ -59,6 +59,6 @@ enum pdch_cs {
+ 	_NUM_PDCH_CS
+ };
+ 
+-const uint8_t pdch_msu_size[_NUM_PDCH_CS];
++extern const uint8_t pdch_msu_size[_NUM_PDCH_CS];
+ 
+ #endif /* LC15BTS_H */
+diff --git a/src/osmo-bts-oc2g/oc2gbts.h b/src/osmo-bts-oc2g/oc2gbts.h
+index 9eb87452..80fd1d59 100644
+--- a/src/osmo-bts-oc2g/oc2gbts.h
++++ b/src/osmo-bts-oc2g/oc2gbts.h
+@@ -39,26 +39,26 @@ enum oc2g_auto_pwr_adjust_mode{
+ };
+ 
+ enum l1prim_type oc2gbts_get_l1prim_type(GsmL1_PrimId_t id);
+-const struct value_string oc2gbts_l1prim_names[GsmL1_PrimId_NUM+1];
++extern const struct value_string oc2gbts_l1prim_names[GsmL1_PrimId_NUM+1];
+ GsmL1_PrimId_t oc2gbts_get_l1prim_conf(GsmL1_PrimId_t id);
+ 
+ enum l1prim_type oc2gbts_get_sysprim_type(Oc2g_PrimId_t id);
+-const struct value_string oc2gbts_sysprim_names[Oc2g_PrimId_NUM+1];
++extern const struct value_string oc2gbts_sysprim_names[Oc2g_PrimId_NUM+1];
+ Oc2g_PrimId_t oc2gbts_get_sysprim_conf(Oc2g_PrimId_t id);
+ 
+-const struct value_string oc2gbts_l1sapi_names[GsmL1_Sapi_NUM+1];
+-const struct value_string oc2gbts_l1status_names[GSML1_STATUS_NUM+1];
++extern const struct value_string oc2gbts_l1sapi_names[GsmL1_Sapi_NUM+1];
++extern const struct value_string oc2gbts_l1status_names[GSML1_STATUS_NUM+1];
+ 
+-const struct value_string oc2gbts_tracef_names[29];
+-const struct value_string oc2gbts_tracef_docs[29];
++extern const struct value_string oc2gbts_tracef_names[29];
++extern const struct value_string oc2gbts_tracef_docs[29];
+ 
+-const struct value_string oc2gbts_tch_pl_names[15];
++extern const struct value_string oc2gbts_tch_pl_names[15];
+ 
+-const struct value_string oc2gbts_clksrc_names[10];
++extern const struct value_string oc2gbts_clksrc_names[10];
+ 
+-const struct value_string oc2gbts_dir_names[6];
++extern const struct value_string oc2gbts_dir_names[6];
+ 
+-const struct value_string oc2gbts_rsl_ho_causes[IPAC_HO_RQD_CAUSE_MAX];
++extern const struct value_string oc2gbts_rsl_ho_causes[IPAC_HO_RQD_CAUSE_MAX];
+ 
+ enum pdch_cs {
+ 	PDCH_CS_1,
+@@ -77,7 +77,7 @@ enum pdch_cs {
+ 	_NUM_PDCH_CS
+ };
+ 
+-const uint8_t pdch_msu_size[_NUM_PDCH_CS];
++extern const uint8_t pdch_msu_size[_NUM_PDCH_CS];
+ 
+ /* OC2G default parameters */
+ #define OC2G_BTS_MAX_CELL_SIZE_DEFAULT	166	/* 166 qbits is default  value */
+diff --git a/src/osmo-bts-sysmo/femtobts.h b/src/osmo-bts-sysmo/femtobts.h
+index 9163ebbf..b048fc4e 100644
+--- a/src/osmo-bts-sysmo/femtobts.h
++++ b/src/osmo-bts-sysmo/femtobts.h
+@@ -68,25 +68,25 @@ enum uperfemto_clk_src {
+ };
+ #endif
+ 
+-const enum l1prim_type femtobts_l1prim_type[GsmL1_PrimId_NUM];
+-const struct value_string femtobts_l1prim_names[GsmL1_PrimId_NUM+1];
+-const GsmL1_PrimId_t femtobts_l1prim_req2conf[GsmL1_PrimId_NUM];
++extern const enum l1prim_type femtobts_l1prim_type[GsmL1_PrimId_NUM];
++extern const struct value_string femtobts_l1prim_names[GsmL1_PrimId_NUM+1];
++extern const GsmL1_PrimId_t femtobts_l1prim_req2conf[GsmL1_PrimId_NUM];
+ 
+-const enum l1prim_type femtobts_sysprim_type[SuperFemto_PrimId_NUM];
+-const struct value_string femtobts_sysprim_names[SuperFemto_PrimId_NUM+1];
+-const SuperFemto_PrimId_t femtobts_sysprim_req2conf[SuperFemto_PrimId_NUM];
++extern const enum l1prim_type femtobts_sysprim_type[SuperFemto_PrimId_NUM];
++extern const struct value_string femtobts_sysprim_names[SuperFemto_PrimId_NUM+1];
++extern const SuperFemto_PrimId_t femtobts_sysprim_req2conf[SuperFemto_PrimId_NUM];
+ 
+-const struct value_string femtobts_l1sapi_names[GsmL1_Sapi_NUM+1];
+-const struct value_string femtobts_l1status_names[GSML1_STATUS_NUM+1];
++extern const struct value_string femtobts_l1sapi_names[GsmL1_Sapi_NUM+1];
++extern const struct value_string femtobts_l1status_names[GSML1_STATUS_NUM+1];
+ 
+-const struct value_string femtobts_tracef_names[29];
+-const struct value_string femtobts_tracef_docs[29];
++extern const struct value_string femtobts_tracef_names[29];
++extern const struct value_string femtobts_tracef_docs[29];
+ 
+-const struct value_string femtobts_tch_pl_names[15];
+-const struct value_string femtobts_chcomb_names[8];
+-const struct value_string femtobts_clksrc_names[10];
++extern const struct value_string femtobts_tch_pl_names[15];
++extern const struct value_string femtobts_chcomb_names[8];
++extern const struct value_string femtobts_clksrc_names[10];
+ 
+-const struct value_string femtobts_dir_names[6];
++extern const struct value_string femtobts_dir_names[6];
+ 
+ enum pdch_cs {
+ 	PDCH_CS_1,
+@@ -105,6 +105,6 @@ enum pdch_cs {
+ 	_NUM_PDCH_CS
+ };
+ 
+-const uint8_t pdch_msu_size[_NUM_PDCH_CS];
++extern const uint8_t pdch_msu_size[_NUM_PDCH_CS];
+ 
+ #endif /* FEMTOBTS_H */
+diff --git a/tests/sysmobts/Makefile.am b/tests/sysmobts/Makefile.am
+index 0829ca52..53180d11 100644
+--- a/tests/sysmobts/Makefile.am
++++ b/tests/sysmobts/Makefile.am
+@@ -13,5 +13,6 @@ sysmobts_test_SOURCES = sysmobts_test.c $(top_srcdir)/src/osmo-bts-sysmo/utils.c
+ 		$(top_srcdir)/src/osmo-bts-sysmo/calib_file.c \
+ 		$(top_srcdir)/src/osmo-bts-sysmo/calib_fixup.c \
+ 		$(top_srcdir)/src/osmo-bts-sysmo/misc/sysmobts_par.c \
++		$(top_srcdir)/src/osmo-bts-sysmo/femtobts.c \
+ 		$(top_srcdir)/src/osmo-bts-sysmo/eeprom.c
+ sysmobts_test_LDADD = $(top_builddir)/src/common/libbts.a $(LIBOSMOABIS_LIBS) $(LDADD)
+-- 
+2.26.2
+

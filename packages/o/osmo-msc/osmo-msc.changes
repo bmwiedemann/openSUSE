@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 11 18:36:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Set CFLAGS+=-fcommon to workaround gcc10 errors (boo#1160244)
+
+-------------------------------------------------------------------
 Thu Jan  9 22:16:22 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 1.6.1

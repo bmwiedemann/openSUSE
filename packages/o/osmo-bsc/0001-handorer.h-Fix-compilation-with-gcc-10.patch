@@ -1,0 +1,30 @@
+From 74632859941d51a4f645d844cbb58709a8473443 Mon Sep 17 00:00:00 2001
+From: Harald Welte <laforge@osmocom.org>
+Date: Mon, 20 Apr 2020 19:58:53 +0200
+Subject: [PATCH] handorer.h: Fix compilation with gcc-10
+
+/usr/bin/ld: bsc_subscr_conn_fsm.o:/home/laforge/projects/git/osmo-bsc/src/osmo-bsc/../../include/osmocom/bsc/handover.h:26: multiple definition of `mr'; abis_rsl.o:/home/laforge/projects/git/osmo-bsc/src/osmo-bsc/../../include/osmocom/bsc/handover.h:26: first defined here
+
+See also https://alioth-lists.debian.net/pipermail/debian-mobcom-maintainers/Week-of-Mon-20200413/000649.html
+
+Change-Id: Ic21af84f2a6de48d220940f30dad02a0e7683ce8
+---
+ include/osmocom/bsc/handover.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/osmocom/bsc/handover.h b/include/osmocom/bsc/handover.h
+index b00ee60f8..d22ac8696 100644
+--- a/include/osmocom/bsc/handover.h
++++ b/include/osmocom/bsc/handover.h
+@@ -23,7 +23,7 @@ struct gsm_network;
+ struct gsm_lchan;
+ struct gsm_bts;
+ struct gsm_subscriber_connection;
+-struct gsm_meas_rep mr;
++struct gsm_meas_rep;
+ 
+ enum handover_result {
+ 	HO_RESULT_OK,
+-- 
+2.26.2
+

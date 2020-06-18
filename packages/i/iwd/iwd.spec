@@ -17,16 +17,15 @@
 
 
 Name:           iwd
-Version:        1.4
+Version:        1.8
 Release:        0
 Summary:        Wireless daemon for Linux
 License:        LGPL-2.1-or-later
 URL:            https://git.kernel.org/pub/scm/network/wireless/iwd.git
 Source:         https://kernel.org/pub/linux/network/wireless/%{name}-%{version}.tar.xz
-Source2:        https://kernel.org/pub/linux/network/wireless/%{name}-%{version}.tar.sign
+Source1:        https://kernel.org/pub/linux/network/wireless/%{name}-%{version}.tar.sign
 # https://kernel.org/doc/wot/holtmann.html
-Source3:        %{name}.keyring
-
+Source2:        %{name}.keyring
 # Disable openssl as we have disabled the tests on obs
 # needed for the tests to generate certificates
 #BuildRequires:  openssl
@@ -34,7 +33,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(ell) >= 0.27
+BuildRequires:  pkgconfig(ell) >= 0.32
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 
@@ -62,7 +61,7 @@ ln -s service %{buildroot}%{_sbindir}/rc%{name}
 
 # Disable tests as they fail on the obs, but works on a checkout
 #%%check
-#make %%{?_smp_mflags} check
+#%%make_build check
 
 %pre
 %service_add_pre %{name}.service
@@ -88,12 +87,8 @@ ln -s service %{buildroot}%{_sbindir}/rc%{name}
 %dir %{_libexecdir}/systemd/network
 %{_libexecdir}/systemd/network/80-iwd.link
 %{_unitdir}/%{name}.service
-%if 0%{?suse_version} >= 1500
 %dir %{_datadir}/dbus-1/system.d/
 %{_datadir}/dbus-1/system.d/%{name}*.conf
-%else
-%{_sysconfdir}/dbus-1/system.d/%{name}*.conf
-%endif
 %{_datadir}/dbus-1/system-services/*%{name}.service
 %{_mandir}/man1/iwctl.1%{?ext_man}
 %{_mandir}/man1/iwmon.1%{?ext_man}

@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-bsc
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,7 @@ License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Hardware/Mobile
 URL:            https://osmocom.org/projects/openbsc/wiki/Osmo-bsc
 Source:         %{name}-%{version}.tar.xz
+Patch0:         0001-handorer.h-Fix-compilation-with-gcc-10.patch
 BuildRequires:  automake >= 1.9
 BuildRequires:  libtool >= 2
 BuildRequires:  pkgconfig >= 0.20
@@ -88,6 +89,7 @@ This package contains utilities for handling OsmoBSC's measurement reports
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 echo "%{version}" >.tarball-version

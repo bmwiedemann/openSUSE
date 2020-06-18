@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-msc
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -70,6 +70,7 @@ be translated to MAP if needed.
 %build
 echo "%{version}" >.tarball-version
 autoreconf -fi
+export CFLAGS="%optflags -fcommon"
 %configure \
 %if %{with_iu}
   --enable-iu \

@@ -121,4 +121,12 @@
   * Add support for radio resource management.</comment>
     <requestid>761073</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4d3657640ec26fc583ef261fcc35ee87</srcmd5>
+    <version>1.8</version>
+    <time>1592468934</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.</comment>
+    <requestid>815552</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-bts
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,7 @@ License:        AGPL-3.0-or-later AND GPL-2.0-only
 Group:          Productivity/Telephony/Servers
 URL:            https://osmocom.org/projects/osmobts/wiki/Wiki
 Source:         %{name}-%{version}.tar.xz
+Patch0:         0001-fix-compilation-with-gcc-10.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -64,6 +65,7 @@ we currently have no A-bis OML implementation, but only a RSL one.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 echo "%{version}" >.tarball-version
