@@ -179,7 +179,6 @@ rm -Rf %{buildroot}%{_libexecdir}/systemd/user-environment-generators/
 %endif
 
 mkdir -p %{buildroot}%{_sysconfdir}/flatpak/remotes.d
-mkdir -p %{buildroot}%{_localstatedir}/lib/flatpak/repo
 
 %find_lang %{name}
 
@@ -195,6 +194,11 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/flatpak/repo
 
 %post
 %service_add_post flatpak-system-helper.service
+# Remove any empty repo directory, which is seen as invalid by flatpak. After that, create a skeleton repository using "flatpak remotes".
+if [ -e "%{_localstatedir}/lib/flatpak/repo" ] && [ -z "$(ls -A %{_localstatedir}/lib/flatpak/repo)" ]; then
+rm -r %{_localstatedir}/lib/flatpak/repo
+fi
+%{_bindir}/flatpak remotes 1> /dev/null
 
 %postun
 %service_del_postun flatpak-system-helper.service
@@ -240,8 +244,7 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/flatpak/repo
 %{_sbindir}/rcflatpak-system-helper
 %{_userunitdir}/flatpak-session-helper.service
 %{_userunitdir}/flatpak-portal.service
-%dir %{_localstatedir}/lib/flatpak
-%dir %{_localstatedir}/lib/flatpak/repo
+%ghost %dir %{_localstatedir}/lib/flatpak
 %if %{support_environment_generators}
 %dir %{_libexecdir}/systemd/user-environment-generators
 %{_libexecdir}/systemd/user-environment-generators/60-flatpak

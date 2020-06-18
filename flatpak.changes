@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 16 02:21:39 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Create a skeleton flatpak repo using "flatpak remotes" instead
+  of a manually created directory (bsc#1172316, bsc#1169619,
+  bsc#1170416).
+
+-------------------------------------------------------------------
 Mon May 18 08:53:10 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
 - When SLE uses GNOME desktop environment, GNOME Software is

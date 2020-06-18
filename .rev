@@ -544,4 +544,14 @@
     <comment></comment>
     <requestid>808837</requestid>
   </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>84fc85b608201e9cb4641ef26fbc3271</srcmd5>
+    <version>1.6.3</version>
+    <time>1592469348</time>
+    <user>dimstar_suse</user>
+    <comment>- Create a skeleton flatpak repo using &quot;flatpak remotes&quot; instead
+  of a manually created directory (bsc#1172316, bsc#1169619,
+  bsc#1170416). (forwarded request 814803 from yfjiang)</comment>
+    <requestid>815258</requestid>
+  </revision>
 </revisionlist>
