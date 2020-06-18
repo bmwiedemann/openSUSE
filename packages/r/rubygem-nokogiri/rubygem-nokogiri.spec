@@ -59,25 +59,15 @@ or CSS3 selectors.
 
 %prep
 
-
 %build
 
 %install
 # MANUAL
 %gem_unpack
-#########################################################################
-#
-# IMPORTANT!
-#
-# This is not covered by our gem2rpm automation yet. If you see it removed
-# in the diff please add it back
-#
-# IMPORTANT!
-#
-#########################################################################
 sed -i -e 's/.*mini_portile.*//g' %{mod_full_name}.gemspec
 find -type f -print0 | xargs -0 touch -r %{S:0}
 %gem_build
+cd ..
 export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 # /MANUAL
 %gem_install \

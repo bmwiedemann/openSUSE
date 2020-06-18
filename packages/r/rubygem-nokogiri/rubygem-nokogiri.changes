@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  8 23:10:55 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Switch to the proper directory so it actually finds the patched
+  gem.
+
+-------------------------------------------------------------------
 Mon Jun  8 16:33:00 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - add fix so we no longer need mini_portile2. This is only needed
