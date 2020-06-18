@@ -25,7 +25,7 @@ License:        BSD-3-Clause
 URL:            https://github.com/pyradius/pyrad
 Source0:        https://github.com/pyradius/pyrad/archive/%{version}.tar.gz
 BuildRequires:  %{python_module netaddr}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  netcfg
@@ -49,7 +49,7 @@ them and decoding responses.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v
+%pytest -v -s pyrad/tests/*.py
 
 %files %{python_files}
 %license LICENSE.txt
