@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-iothub
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        Microsoft Azure IoTHub Management Client Library
 License:        MIT
