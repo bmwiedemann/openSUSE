@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 11 15:14:24 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- get rid of old pytest, launch tests with simple unittest instead
+
+-------------------------------------------------------------------
 Mon Jun  8 10:55:38 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - run tests with older pytest as pytest 5.x+ fails

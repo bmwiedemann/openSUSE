@@ -28,7 +28,6 @@ Source:         https://files.pythonhosted.org/packages/source/j/jsonpath-rw-ext
 BuildRequires:  %{python_module jsonpath-rw >= 1.2.0}
 BuildRequires:  %{python_module oslotest >= 1.10.0}
 BuildRequires:  %{python_module pbr}
-BuildRequires:  %{python_module pytest < 5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testscenarios >= 0.4}
 BuildRequires:  fdupes
@@ -55,7 +54,7 @@ and will stay here only if they are refused.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%python_exec -m unittest discover -v
 
 %files %{python_files}
 %license LICENSE
