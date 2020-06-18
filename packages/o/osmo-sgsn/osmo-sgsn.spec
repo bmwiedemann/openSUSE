@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-sgsn
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,7 @@ License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Productivity/Telephony/Servers
 URL:            https://osmocom.org/projects/osmosgsn/wiki/OsmoSGSN
 Source:         %{name}-%{version}.tar.xz
+Patch0:         0001-gtphub_test-Fix-compilation-with-gcc-10.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -72,6 +73,7 @@ BSS's and present them in one Gb link to the SGSN.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 echo "%{version}" >.tarball-version

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 11 19:03:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch to fix gcc10 compilation errors (boo#1160244)
+  * 0001-gtphub_test-Fix-compilation-with-gcc-10.patch
+
+-------------------------------------------------------------------
 Sat Jan  4 10:51:56 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 1.6.0

@@ -1,0 +1,31 @@
+From 9d550cb36972173fadaaa1e1c8f3d4428106079e Mon Sep 17 00:00:00 2001
+From: Harald Welte <laforge@osmocom.org>
+Date: Mon, 20 Apr 2020 19:47:19 +0200
+Subject: [PATCH] gtphub_test: Fix compilation with gcc-10
+
+/usr/bin/ld: ../../src/gtphub/gtphub.o:/home/laforge/projects/git/osmo-sgsn/src/gtphub/gtphub.c:50: multiple definition of `osmo_gtphub_ctx'; gtphub_test.o:/home/laforge/projects/git/osmo-sgsn/tests/gtphub/gtphub_test.c:57: first defined here
+collect2: error: ld returned 1 exit status
+
+See also https://alioth-lists.debian.net/pipermail/debian-mobcom-maintainers/Week-of-Mon-20200413/000653.html
+
+Change-Id: I19c1eef6649d2747f0b624f5292d7ae47c4ca839
+---
+ tests/gtphub/gtphub_test.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/gtphub/gtphub_test.c b/tests/gtphub/gtphub_test.c
+index 2e48bb10..ed461762 100644
+--- a/tests/gtphub/gtphub_test.c
++++ b/tests/gtphub/gtphub_test.c
+@@ -54,7 +54,7 @@
+ void gtphub_init(struct gtphub *hub);
+ void gtphub_free(struct gtphub *hub);
+ 
+-void *osmo_gtphub_ctx;
++extern void *osmo_gtphub_ctx;
+ 
+ static void nr_mapping_free(struct expiring_item *e)
+ {
+-- 
+2.26.2
+
