@@ -10710,6 +10710,10 @@ unsorted:
   - libnuma1-32bit: [x86_64] 
   - libnumbertext-devel 
   - libnumbertext-tools 
+  - libnvidia-container-devel: [x86_64] 
+  - libnvidia-container-static: [x86_64] 
+  - libnvidia-container-tools: [x86_64] 
+  - libnvidia-container1: [x86_64] 
   - libnxml-devel 
   - libnxml0 
   - libnxml0-32bit: [x86_64] 
@@ -15327,6 +15331,7 @@ unsorted:
   - nut-devel 
   - nut-drivers-net 
   - nvdock 
+  - nvidia-container-toolkit 
   - nvidia-texture-tools 
   - nvme-cli 
   - nvme-cli-regress-script 
@@ -20209,6 +20214,7 @@ unsorted:
   - python3-missingno 
   - python3-mistralclient 
   - python3-mistune 
+  - python3-mitmproxy 
   - python3-mizani 
   - python3-mlt 
   - python3-moban 
@@ -20588,6 +20594,7 @@ unsorted:
   - python3-py-multihash 
   - python3-py-radix 
   - python3-py-ubjson 
+  - python3-py-vapid 
   - python3-py2pack 
   - python3-py3c 
   - python3-py3dns 
@@ -20921,6 +20928,7 @@ unsorted:
   - python3-pyvips 
   - python3-pyviz-comms 
   - python3-pyvmomi 
+  - python3-pywebpush 
   - python3-pywinrm 
   - python3-pyxattr 
   - python3-pyzmq-devel 
@@ -22574,6 +22582,7 @@ unsorted:
   - ruby2.6-rubygem-mini_magick-doc 
   - ruby2.6-rubygem-mini_mime 
   - ruby2.6-rubygem-mini_mime-doc 
+  - ruby2.6-rubygem-mini_portile2 
   - ruby2.6-rubygem-mini_portile2-2_3 
   - ruby2.6-rubygem-mini_portile2-doc 
   - ruby2.6-rubygem-mini_portile2-doc-2_3 
