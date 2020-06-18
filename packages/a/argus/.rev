@@ -185,4 +185,12 @@ Based on audit of 3.0.6.1 (forwarded request 155892 from babelworx)</comment>
     <comment></comment>
     <requestid>687290</requestid>
   </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>edec869a7817badfd2719b4afb5904f9</srcmd5>
+    <version>3.0.8.2</version>
+    <time>1592468897</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815544</requestid>
+  </revision>
 </revisionlist>

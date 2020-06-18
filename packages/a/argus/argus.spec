@@ -1,7 +1,7 @@
 #
 # spec file for package argus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Network Monitoring Tool
 License:        GPL-2.0-only AND LGPL-2.1-only AND BSD-3-Clause AND MIT
 Group:          Productivity/Networking/Diagnostic
-Url:            http://www.qosient.com/argus/
+URL:            http://www.qosient.com/argus/
 Source:         http://qosient.com/argus/src/%{name}-%{version}.tar.gz
 Source3:        README.SUSE
 Source4:        argus_linux.8.gz
@@ -62,7 +62,7 @@ cp %{SOURCE4} man/man8/
 
 %build
 #autoreconf -fiv
-export CFLAGS="%{optflags} -fno-strict-aliasing"
+export CFLAGS="%{optflags} -fno-strict-aliasing -fcommon"
 %configure --with-pic
 make %{?_smp_mflags}
 
@@ -103,7 +103,8 @@ chmod a+x support/{Archive/argusarchive,Startup/argus}
 
 %files server
 %defattr(-,root,root)
-%doc doc COPYING MANIFEST README.* support
+%doc doc MANIFEST README.* support
+%license COPYING
 %{_mandir}/man*/*
 %config %{_sysconfdir}/argus.conf
 %{_unitdir}/argus.service
