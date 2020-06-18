@@ -452,4 +452,22 @@
 </comment>
     <requestid>749011</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>411aeda58fcd8fe70056bbd362058627</srcmd5>
+    <version>15.2.4</version>
+    <time>1592469116</time>
+    <user>dimstar_suse</user>
+    <comment>- upgraded to 15.2.4.
+  * 15.2.4
+    * Set Leap 15.2 as default (latest stable)
+  * 15.2.3
+    * Revert 15.2.2's change; when compiling with mingw, there is
+      an impact that not working with older (Vista or earlier)
+      Windows.
+  * 15.2.2
+    * Fix for compiling with mingw; libwinpthread-1.dll is
+      required to run
+</comment>
+    <requestid>815617</requestid>
+  </revision>
 </revisionlist>

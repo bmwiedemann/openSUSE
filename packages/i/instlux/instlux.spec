@@ -1,7 +1,7 @@
 #
 # spec file for package instlux
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,8 @@ Name:           instlux
 Summary:        Windows openSUSE installer
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Url:            http://en.opensuse.org/Instlux
-Version:        15.2.1
+URL:            http://en.opensuse.org/Instlux
+Version:        15.2.4
 Release:        0
 AutoReqProv:    off
 BuildRequires:  dos2unix

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 18 04:32:50 UTC 2020 - Yasuhiko Kamata <belphegor@belbel.or.jp>
+
+- upgraded to 15.2.4.
+  * 15.2.4
+    * Set Leap 15.2 as default (latest stable)
+  * 15.2.3
+    * Revert 15.2.2's change; when compiling with mingw, there is
+      an impact that not working with older (Vista or earlier)
+      Windows.
+  * 15.2.2
+    * Fix for compiling with mingw; libwinpthread-1.dll is
+      required to run
+
+-------------------------------------------------------------------
 Sat Nov 16 00:12:44 UTC 2019 - Yasuhiko Kamata <belphegor@belbel.or.jp>
 
 - upgraded to 15.2.1.
