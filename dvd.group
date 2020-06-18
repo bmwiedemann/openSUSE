@@ -4042,7 +4042,6 @@
     <package name="ruby2.6-rubygem-listen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-loofah" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-method_source" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-mini_portile2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-msgpack" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-nio4r" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-nokogiri" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4316,7 +4315,7 @@
     <package name="ruby2.7-rubygem-mimemagic" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-mini_magick" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-mini_mime" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-mini_portile2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="ruby2.7-rubygem-mini_portile2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-mini_portile2-2_3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-minitar" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-mixlib-authentication" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
