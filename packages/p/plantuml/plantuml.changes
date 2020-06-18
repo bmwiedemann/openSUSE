@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 17 20:02:42 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Documentation fix: [bsc#1169765]
+  * Fetch the PlantUML_Language_Reference_Guide_en.pdf instead of
+    a web page that wraps the PDF in javascript feeding ads.
+
+-------------------------------------------------------------------
+Wed Jun 17 14:12:00 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- update to version 1.2020.13
+  See http://plantuml.com/de/changes for all changes
+
+-------------------------------------------------------------------
 Wed Jun 10 10:58:22 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2020.12

@@ -17,7 +17,7 @@
 
 
 Name:           plantuml
-Version:        1.2020.12
+Version:        1.2020.13
 Release:        0
 Summary:        Java UML Tool
 License:        GPL-3.0-or-later
@@ -28,7 +28,7 @@ Source1:        %{name}.script
 Source2:        %{name}.xml
 Source10:       example01.uml
 Source11:       example02.uml
-Source20:       http://plantuml.com/PlantUML_Language_Reference_Guide.pdf
+Source20:       http://pdf.plantuml.net/PlantUML_Language_Reference_Guide_en.pdf
 BuildRequires:  ant
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  java-devel >= 1.5
