@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 16 11:14:23 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
 Wed May  6 10:06:40 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Downgrade to version 2.6.3.0. Upstream has retracted 2.7.0.0.
