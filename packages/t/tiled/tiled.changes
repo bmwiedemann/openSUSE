@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Thu Jun 18 08:55:10 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.0:
+  * Added support for projects (#1665[1])
+  * Added object reference property type (with Steve Le Roy Harris and
+  Phlosioneer, #707[2])
+  * Added world editing tool for adding/removing and moving around maps in a
+  world (with Nils Kübler, #2208[3])
+  * Added a quick "Open file in Project" (Ctrl+P) action
+  * Added new Object Alignment property to Tileset (with Phlosioneer, #91[4])
+  * Added layer tint color (by Gnumaru, #2687[5])
+  * Added support for using maps as images (with Phlosioneer, #2708[6])
+  * Added 'Open with System Editor' action for custom file properties
+  (#2172[7])
+  * Added option to render object names when exporting as image (#2216[8])
+  * Added 'Replace Tileset' action to Tilesets view
+  * Added shortcut to tooltips for all registered actions
+  * Added automatic reloading of object templates (by Phlosioneer, #2699[9])
+  * Added 'Clear Console' button and context menu action (#2220[10])
+  * Added 'Reopen Closed File' (Ctrl+Shift+T) action
+  * Added status bar button to toggle the Console view
+  * Added a border around the tile selection highlight
+  * Switch current tileset tab if all selected tiles are from the same
+  tileset (by Mitch Curtis, #2792[11])
+  * Made tileset dynamic wrapping toggle persistent
+  * Properties view: Added action for adding a property to context menu
+  (#2796[12])
+  * Optimized loading of CSV tile layer data (by Phlosioneer, #2701[13])
+  * Improved map positioning when toggling 'Clear View'
+  * Remember the preferred format used for saving
+  * Normalize rotation values when rotating objects (#2775[14])
+  * Removed the Maps view (replaced by Project view)
+  * Removed file system hierarchy from Templates view (replaced by Project
+  view)
+  * Fixed potential crash when triggering AutoMap (#2766[15])
+  * Fixed the status bar placement to be always at the bottom of the window
+  * Fixed potential issue with automatic reloading of files (#1904[16])
+  * Fixed issue where image layer images cannot be loaded from Qt resource
+  files (by obeezzy, #2711[17])
+  * GmxPlugin: Added support for layer tint color
+  * Scripting: Assign global variables to console script evaluations (by
+  Phlosioneer, #2724[18])
+  * Scripting: Added coordinate conversion to TileMap
+  * Scripting: Added support for custom "file" properties
+  * Scripting: Added checks for nullptr arguments (by Phlosioneer, #2736[19])
+  * Scripting: Added some missing tileset related properties
+  * Scripting: Added FileInfo API with various file path operations (with
+  David Konsumer, #2822[20])
+  * Scripting: Provide access to registered file formats (by Phlosioneer,
+  #2716[21])
+  * Scripting: Enabled scripted formats to be used on the command-line
+  * Scripting: Added functions to access inherited properties (by Bill Clark,
+  #2813[22])
+  * Scripting: Introduced __filename global value (with konsumer)
+  * Scripting: Fixed ObjectGroup.insertObjectAt to use the index
+  * docs: Clarify "can contain" documentation and error handling (by
+  Phlosioneer, #2702[23])
+  * docs: Document all optional attributes, update some docs (by Phlosioneer,
+  #2705[24])
+  * docs: Alphabetize scripting API reference (by Phlosioneer, #2720[25])
+  * docs: Added missing BinaryFile constructor docs (by Phlosioneer,
+  #2732[26])
+  * docs: Enabled Algolia powered search
+  * Updated Bulgarian, Chinese (Simplified), Czech, Finnish, French,
+  Norwegian Bokmål, Portuguese (Portugal) and Turkish translations
+
+-------------------------------------------------------------------
 Wed May 27 20:28:05 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.3.5:

@@ -17,7 +17,7 @@
 
 
 Name:           tiled
-Version:        1.3.5
+Version:        1.4.0
 Release:        0
 Summary:        A tilemap editor
 License:        GPL-2.0-or-later
