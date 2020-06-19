@@ -39,7 +39,7 @@
 %endif
 
 # PEGTL IN LEAP 15.1 IS TOO OLD (< 2.0.0)
-# cmake STILL CHECKS FOR JAVAH (AND CHEATING WITH %{_bindir}/true NO LONGER WORKS)
+# cmake STILL CHECKS FOR JAVAH (AND CHEATING WITH {_bindir}/true NO LONGER WORKS)
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150100
 %bcond_with    java
 %bcond_with    pegtl
