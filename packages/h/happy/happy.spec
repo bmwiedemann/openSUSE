@@ -1,7 +1,7 @@
 #
 # spec file for package happy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,7 +53,7 @@ cd doc
 autoreconf
 # FIXME: you should use the %%configure macro
 ./configure
-make %{?_smp_mflags} html
+%make_build html
 
 %install
 %ghc_bin_install
