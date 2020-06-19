@@ -69,13 +69,14 @@ Source33:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-u
 Source34:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-75dpi-1.0.4.tar.bz2
 Source35:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-type1-1.0.4.tar.bz2
 Source36:       http://xorg.freedesktop.org/archive/individual/font/font-alias-1.0.3.tar.bz2
+Source100:      README.converted
 %if "%{flavor}" == "converted"
 Source1000:     https://pwu.fedorapeople.org/fonts/convertbitmap/convertfont.py
 BuildRequires:  fontpackages-devel
 BuildRequires:  fonttosfnt
 BuildRequires:  ftdump
 BuildRequires:  ttf-converter
-BuildRequires:  xorg-x11-fonts
+BuildRequires:  xorg-x11-fonts-legacy
 Requires(post): fonts-config
 Requires(posttrans): fonts-config
 Requires(postun): fonts-config
@@ -93,13 +94,11 @@ BuildRequires:  mkfontscale
 BuildRequires:  font-util
 PreReq:         fonts-config
 Requires:       %{name}-core
-Provides:       xorg-x11-fonts-100dpi
-Provides:       xorg-x11-fonts-75dpi
+Recommends:     %{name}-converted
+Recommends:     %{name}-legacy
 Provides:       xorg-x11-fonts-cyrillic
 Provides:       xorg-x11-fonts-scalable
 Provides:       xorg-x11-fonts-syriac
-Obsoletes:      xorg-x11-fonts-100dpi
-Obsoletes:      xorg-x11-fonts-75dpi
 Obsoletes:      xorg-x11-fonts-cyrillic
 Obsoletes:      xorg-x11-fonts-scalable
 Obsoletes:      xorg-x11-fonts-syriac
@@ -124,13 +123,27 @@ Provides:       xorg-x11:/usr/X11R6/lib/X11/fonts/misc/cursor.pcf.gz
 This package contains the 'fixed' and 'cursor' font required for any X
 Server.
 
+%package legacy
+Summary:        Core Fonts for X.Org
+Group:          System/X11/Fonts
+PreReq:         fonts-config
+Requires:       xorg-x11-fonts
+Provides:       xorg-x11-fonts-100dpi
+Provides:       xorg-x11-fonts-75dpi
+Obsoletes:      xorg-x11-fonts-100dpi
+Obsoletes:      xorg-x11-fonts-75dpi
 
+%description legacy
+This package contains the original Type1 and bitmap fonts that are converted
+to truetype format in the xorg-x11-fonts-converted package
 
 %prep
 %setup -n . -T -D
 %if "%{flavor}" != "converted"
 rm -rf $RPM_BUILD_DIR/*
 for i in $RPM_SOURCE_DIR/*.tar.bz2; do tar xjf $i; done
+%else
+cp %{SOURCE100} .
 %endif
 
 %build
@@ -164,6 +177,7 @@ cp %{S:1000} .
 ttf-converter --input-dir /usr/share/fonts/Type1/ --output-dir generated
 cd generated
 python3 ../convertfont.py /usr/share/fonts/75dpi/*.pcf.gz /usr/share/fonts/100dpi/*.pcf.gz
+python3 ../convertfont.py /usr/share/fonts/misc/arabic24.pcf.gz /usr/share/fonts/misc/cu[^r]*.pcf.gz /usr/share/fonts/misc/cl*.pcf.gz /usr/share/fonts/misc/[dghjo]*.pcf.gz
 
 # Luxi Mono, Luxi Sans and Luxi Serif are already distributed in ttf format
 rm Luxi*.ttf
@@ -197,16 +211,41 @@ cd generated
 mkdir -p %{buildroot}/%{_datadir}/fonts/truetype
 cp *.ttf %{buildroot}/%{_datadir}/fonts/truetype
 
-cp Adobe-Courier*.otb %{buildroot}/%{_datadir}/fonts/truetype
-cp Adobe-Helvetica*.otb %{buildroot}/%{_datadir}/fonts/truetype
-cp Adobe-New-Century-Schoolbook*.otb %{buildroot}/%{_datadir}/fonts/truetype
-cp Adobe-Symbol.otb %{buildroot}/%{_datadir}/fonts/truetype
-cp Adobe-Times*.otb %{buildroot}/%{_datadir}/fonts/truetype
-cp Adobe-Utopia*.otb %{buildroot}/%{_datadir}/fonts/truetype
-cp B\&H-LucidaBright*.otb %{buildroot}/%{_datadir}/fonts/truetype
-cp B\&H-Lucida-Sans*.otb %{buildroot}/%{_datadir}/fonts/truetype
-cp B\&H-LucidaTypewriter-Sans*.otb %{buildroot}/%{_datadir}/fonts/truetype
-cp Bitstream-Charter*.otb %{buildroot}/%{_datadir}/fonts/truetype
+for filename in Adobe-Courier*.otb \
+   Adobe-Helvetica*.otb \
+   Adobe-New-Century-Schoolbook*.otb \
+   Adobe-Symbol.otb \
+   Adobe-Times*.otb \
+   Adobe-Utopia*.otb \
+   B\&H-LucidaBright*.otb \
+   B\&H-Lucida-Sans*.otb \
+   B\&H-LucidaTypewriter-Sans*.otb \
+   Bitstream-Charter*.otb \
+   Arabic-Newspaper.otb \
+   MUTT-ClearlyU-Alternate-Glyphs-Wide.otb \
+   MUTT-ClearlyU-Arabic-Extra.otb \
+   MUTT-ClearlyU-Devangari-Extra.otb \
+   MUTT-ClearlyU-Ligature-Wide.otb \
+   MUTT-ClearlyU-PUA.otb \
+   MUTT-ClearlyU-Wide.otb \
+   MUTT-ClearlyU-Devanagari.otb \
+   Schumacher-Clean-Bold.otb \
+   Schumacher-Clean-Wide-Bold.otb \
+   Schumacher-Clean-Italic.otb \
+   Schumacher-Clean-Wide-Italic.otb \
+   Schumacher-Clean.otb \
+   Schumacher-Clean-Wide.otb \
+   ISAS-Fangsong-ti-Wide.otb \
+   ISAS-Song-ti-Wide.otb \
+   Daewoo-Gothic-Wide.otb \
+   Daewoo-Mincho-Wide.otb \
+   JIS-Fixed-Wide.otb \
+   Sun-OPEN-LOOK-cursor-Wide.otb \
+   Sun-OPEN-LOOK-glyph-Wide.otb \
+   Sun-OPEN-LOOK-glyph.otb ; do
+    cp "$filename"  %{buildroot}/%{_datadir}/fonts/truetype
+done
+
 %endif
 
 %clean
@@ -217,28 +256,17 @@ rm -rf "$RPM_BUILD_ROOT"
 
 %if "%{flavor}" != "converted"
 %reconfigure_fonts_scriptlets -n xorg-x11-fonts-core
+%reconfigure_fonts_scriptlets -n xorg-x11-fonts-legacy
 
 %files
 %defattr(-,root,root)
-%dir /usr/share/fonts/100dpi
 %dir /usr/share/fonts/Type1
 %dir /usr/share/fonts/cyrillic
 %dir /usr/share/fonts/truetype
-%ghost /usr/share/fonts/100dpi/encodings.dir
-%ghost /usr/share/fonts/100dpi/fonts.dir
-%ghost /usr/share/fonts/100dpi/fonts.scale
-%ghost %verify(not mode) /usr/share/fonts/100dpi/.fonts-config-timestamp
-/usr/share/fonts/100dpi/fonts.alias
-/usr/share/fonts/100dpi/*.pcf.gz
-/usr/share/fonts/75dpi/fonts.alias
-/usr/share/fonts/75dpi/*-ISO8859-*.pcf.gz
 %ghost /usr/share/fonts/Type1/encodings.dir
 %ghost /usr/share/fonts/Type1/fonts.dir
 %ghost /usr/share/fonts/Type1/fonts.scale
 %ghost %verify(not mode) /usr/share/fonts/Type1/.fonts-config-timestamp
-/usr/share/fonts/Type1/*.afm
-/usr/share/fonts/Type1/*.pfa
-/usr/share/fonts/Type1/*.pfb
 %ghost /usr/share/fonts/cyrillic/encodings.dir
 %ghost /usr/share/fonts/cyrillic/fonts.dir
 %ghost /usr/share/fonts/cyrillic/fonts.scale
@@ -252,14 +280,9 @@ rm -rf "$RPM_BUILD_ROOT"
 /usr/share/fonts/truetype/*.otf
 /usr/share/fonts/truetype/*.ttf
 
-%files core -f files.%{name}-core
+%files core
 %defattr(-,root,root)
 %dir /usr/share/fonts/misc
-%dir /usr/share/fonts/75dpi
-%ghost /usr/share/fonts/75dpi/encodings.dir
-%ghost /usr/share/fonts/75dpi/fonts.dir
-%ghost /usr/share/fonts/75dpi/fonts.scale
-%ghost %verify(not mode) /usr/share/fonts/75dpi/.fonts-config-timestamp
 %dir /usr/share/fonts/encodings
 %dir /usr/share/fonts/encodings/large
 /usr/share/fonts/encodings/*.enc.gz
@@ -269,12 +292,39 @@ rm -rf "$RPM_BUILD_ROOT"
 %ghost /usr/share/fonts/misc/fonts.scale
 %ghost %verify(not mode) /usr/share/fonts/misc/.fonts-config-timestamp
 /usr/share/fonts/misc/fonts.alias
-/usr/share/fonts/misc/*.pcf.gz
+/usr/share/fonts/misc/[1-9k]*.pcf.gz
+/usr/share/fonts/misc/cursor.pcf.gz
+/usr/share/fonts/misc/micro.pcf.gz
+/usr/share/fonts/misc/nil2.pcf.gz
+
+%files legacy -f files.%{name}-core
+%dir /usr/share/fonts/75dpi
+%ghost /usr/share/fonts/75dpi/encodings.dir
+%ghost /usr/share/fonts/75dpi/fonts.dir
+%ghost /usr/share/fonts/75dpi/fonts.scale
+%ghost %verify(not mode) /usr/share/fonts/75dpi/.fonts-config-timestamp
+%dir /usr/share/fonts/100dpi
+%ghost /usr/share/fonts/100dpi/encodings.dir
+%ghost /usr/share/fonts/100dpi/fonts.dir
+%ghost /usr/share/fonts/100dpi/fonts.scale
+%ghost %verify(not mode) /usr/share/fonts/100dpi/.fonts-config-timestamp
+/usr/share/fonts/75dpi/fonts.alias
+/usr/share/fonts/75dpi/*-ISO8859-*.pcf.gz
+/usr/share/fonts/100dpi/fonts.alias
+/usr/share/fonts/100dpi/*.pcf.gz
+/usr/share/fonts/misc/arabic24.pcf.gz
+/usr/share/fonts/misc/cu[^r]*.pcf.gz
+/usr/share/fonts/misc/cl*.pcf.gz
+/usr/share/fonts/misc/[dghjo]*.pcf.gz
+/usr/share/fonts/Type1/*.afm
+/usr/share/fonts/Type1/*.pfa
+/usr/share/fonts/Type1/*.pfb
 
 %else
 # "%%{flavor}" == "converted"
 %files
 %defattr(-,root,root)
+%doc README.converted
 %dir %{_datadir}/fonts/truetype
 %{_datadir}/fonts/truetype/CharterBT-*.ttf
 %{_datadir}/fonts/truetype/Courier10PitchBT-*.ttf
@@ -293,6 +343,28 @@ rm -rf "$RPM_BUILD_ROOT"
 %{_datadir}/fonts/truetype/B&H-Lucida-Sans*.otb
 %{_datadir}/fonts/truetype/B&H-LucidaTypewriter-Sans*.otb
 %{_datadir}/fonts/truetype/Bitstream-Charter*.otb
+%{_datadir}/fonts/truetype/Arabic-Newspaper.otb
+%{_datadir}/fonts/truetype/MUTT-ClearlyU-Alternate-Glyphs-Wide.otb
+%{_datadir}/fonts/truetype/MUTT-ClearlyU-Arabic-Extra.otb
+%{_datadir}/fonts/truetype/MUTT-ClearlyU-Devangari-Extra.otb
+%{_datadir}/fonts/truetype/MUTT-ClearlyU-Ligature-Wide.otb
+%{_datadir}/fonts/truetype/MUTT-ClearlyU-PUA.otb
+%{_datadir}/fonts/truetype/MUTT-ClearlyU-Wide.otb
+%{_datadir}/fonts/truetype/MUTT-ClearlyU-Devanagari.otb
+%{_datadir}/fonts/truetype/Schumacher-Clean-Bold.otb
+%{_datadir}/fonts/truetype/Schumacher-Clean-Wide-Bold.otb
+%{_datadir}/fonts/truetype/Schumacher-Clean-Italic.otb
+%{_datadir}/fonts/truetype/Schumacher-Clean-Wide-Italic.otb
+%{_datadir}/fonts/truetype/Schumacher-Clean.otb
+%{_datadir}/fonts/truetype/Schumacher-Clean-Wide.otb
+%{_datadir}/fonts/truetype/ISAS-Fangsong-ti-Wide.otb
+%{_datadir}/fonts/truetype/ISAS-Song-ti-Wide.otb
+%{_datadir}/fonts/truetype/Daewoo-Gothic-Wide.otb
+%{_datadir}/fonts/truetype/Daewoo-Mincho-Wide.otb
+%{_datadir}/fonts/truetype/JIS-Fixed-Wide.otb
+%{_datadir}/fonts/truetype/Sun-OPEN-LOOK-cursor-Wide.otb
+%{_datadir}/fonts/truetype/Sun-OPEN-LOOK-glyph-Wide.otb
+%{_datadir}/fonts/truetype/Sun-OPEN-LOOK-glyph.otb
 %endif
 
 %changelog

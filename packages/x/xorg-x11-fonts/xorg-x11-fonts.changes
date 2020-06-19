@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun  9 15:19:43 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add Recommends: xorg-x11-fonts-converted and xorg-x11-fonts-legacy
+  so the packages get installed automatically (and users can remove
+  any of them or both)
+
+-------------------------------------------------------------------
+Mon Jun  8 14:48:41 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add a legacy subpackage that provides the bitmap and Type1 fonts
+  under /usr/share/fonts/(75dpi|100dpi|Type1) so the user can
+  choose if installing the original fonts (the legacy subpackage),
+  the fonts converted to TrueType format (the converted subpackage)
+  or both.
+- Add some pcf fonts too from /usr/share/fonts/misc to the legacy
+  subpackage and make them available as TrueType in the converted
+  package (boo#1169444)
+
+-------------------------------------------------------------------
 Mon May  4 08:29:42 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Differentiate also Requires, BuildRequires, Obsoletes and more
