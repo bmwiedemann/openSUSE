@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-extra
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name extra
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.7.1
+Version:        1.7.3
 Release:        0
 Summary:        Extra functions I use
 License:        BSD-3-Clause
@@ -31,7 +31,6 @@ BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-semigroups-devel
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-unix-devel
 %if %{with tests}

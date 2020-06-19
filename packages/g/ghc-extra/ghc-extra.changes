@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun  9 09:10:56 UTC 2020 - psimons@suse.com
+
+- Update extra to version 1.7.3.
+  1.7.3, released 2020-05-30
+      #58, add disjointOrd and disjointOrdBy
+  1.7.2, released 2020-05-25
+      #56, add zipWithLongest
+      #57, make duration in MonadIO
+      Simplify and optimise Barrier
+      Mark modules that are empty as DEPRECATED
+      Remove support for GHC 7.10
+
+-------------------------------------------------------------------
 Wed May  6 06:54:11 UTC 2020 - psimons@suse.com
 
 - Update extra to version 1.7.1.
