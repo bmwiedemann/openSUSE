@@ -1,7 +1,7 @@
 #
 # spec file for package xmobar
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name xmobar
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.33
+Version:        0.34
 Release:        0
 Summary:        A Minimalistic Text Based Status Bar
 License:        BSD-3-Clause
@@ -29,18 +29,23 @@ BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-X11-devel
 BuildRequires:  ghc-X11-xft-devel
+BuildRequires:  ghc-alsa-core-devel
+BuildRequires:  ghc-alsa-mixer-devel
 BuildRequires:  ghc-async-devel
 BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-cereal-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-dbus-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-extensible-exceptions-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-hinotify-devel
+BuildRequires:  ghc-http-client-tls-devel
 BuildRequires:  ghc-http-conduit-devel
 BuildRequires:  ghc-http-types-devel
-BuildRequires:  ghc-iwlib-devel
+BuildRequires:  ghc-libmpd-devel
 BuildRequires:  ghc-mtl-devel
+BuildRequires:  ghc-netlink-devel
 BuildRequires:  ghc-old-locale-devel
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-parsec-numbers-devel
@@ -57,7 +62,6 @@ BuildRequires:  ghc-utf8-string-devel
 BuildRequires:  libXpm-devel
 BuildRequires:  libXrandr-devel
 BuildRequires:  libXrender-devel
-BuildRequires:  libiw-devel
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-temporary-devel
@@ -82,7 +86,6 @@ Requires:       ghc-compiler = %{ghc_version}
 Requires:       libXpm-devel
 Requires:       libXrandr-devel
 Requires:       libXrender-devel
-Requires:       libiw-devel
 Requires(post): ghc-compiler = %{ghc_version}
 Requires(postun): ghc-compiler = %{ghc_version}
 
@@ -91,10 +94,10 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %setup -q
-cabal-tweak-dep-ver base '< 4.14' '< 5'
+cabal-tweak-dep-ver timezone-olson '== 0.1.*' '< 1'
 
 %build
-%define cabal_configure_options -fwith_datezone -fwith_dbus -fwith_inotify -fwith_iwlib -fwith_mpris -fwith_thread -fwith_utf8 -fwith_xft -fwith_xpm
+%define cabal_configure_options -fall_extensions
 %ghc_lib_build
 
 %install
