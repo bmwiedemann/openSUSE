@@ -1,7 +1,7 @@
 #
 # spec file for package python3-gcemetadata
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Python module for collecting instance metadata from GCE
 License:        GPL-3.0-or-later
 Group:          System/Management
-Url:            https://github.com/SUSE/Enceladus
+URL:            https://github.com/SUSE/Enceladus
 Source0:        %{upstream_name}-%{version}.tar.bz2
 Requires:       python3
 BuildRequires:  python3-setuptools
