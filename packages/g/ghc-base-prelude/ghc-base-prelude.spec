@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-base-prelude
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name base-prelude
 Name:           ghc-%{pkg_name}
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        The most complete prelude formed solely from the "base" package
 License:        MIT
