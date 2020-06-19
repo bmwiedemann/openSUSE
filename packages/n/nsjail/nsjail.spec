@@ -1,7 +1,7 @@
 #
 # spec file for package nsjail
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          System/GUI/Other
 URL:            https://nsjail.com
 Source0:        nsjail-%{version}.tar.gz
 Source1:        kafel.tar.gz
+Patch0:         remove_werror.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  flex
@@ -43,6 +44,7 @@ seccomp-bpf syscall filters (with help of the kafel bpf language)
 
 %prep
 %setup -qa1
+%patch0 -p1
 
 %build
 %define _lto_cflags %{nil}

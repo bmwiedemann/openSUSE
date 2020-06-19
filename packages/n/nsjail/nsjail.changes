@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 18 13:59:19 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
+
+- Add remove_werror.patch to prevent build errors due to deprecation
+  warnings. I expect this can be removed with 3.0
+
+-------------------------------------------------------------------
 Mon Feb  3 09:34:09 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
 
 - Update to version 2.9. Notable changes:

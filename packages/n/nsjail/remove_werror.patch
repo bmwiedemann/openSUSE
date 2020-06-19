@@ -1,0 +1,13 @@
+Index: nsjail-2.9/Makefile
+===================================================================
+--- nsjail-2.9.orig/Makefile
++++ nsjail-2.9/Makefile
+@@ -28,7 +28,7 @@ COMMON_FLAGS += -O2 -c \
+ 	-D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 \
+ 	-fPIE \
+ 	-Wformat -Wformat-security -Wno-format-nonliteral \
+-	-Wall -Wextra -Werror \
++	-Wall -Wextra \
+ 	-Ikafel/include
+ 
+ CXXFLAGS += $(COMMON_FLAGS) $(shell pkg-config --cflags protobuf) \
