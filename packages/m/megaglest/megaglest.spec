@@ -1,7 +1,7 @@
 #
 # spec file for package megaglest
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Customizable 3D real-time strategy game
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Strategy/Real Time
-Url:            http://megaglest.org/
+URL:            https://megaglest.org/
 Source:         https://github.com/MegaGlest/megaglest-source/releases/download/%{version}/%{name}-source-%{version}.tar.xz
 # for grepping a constant build time to recieve reproducible builds
 Source99:       %{name}.changes
@@ -67,18 +67,7 @@ Requires:       freefont
 Requires:       gnu-free-fonts
 Requires:       linux-libertine-fonts
 Requires:       megaglest-data >= %{version}
-# Remove when p7zip-full is in all products
-%if 0%{suse_version} > 1500
 Requires:       p7zip-full
-%else
-Requires:       p7zip
-%endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?suse_version} <= 1320
-  # wxWidgets < 3 needs this, so only Leap since Factory uses wxWidgets 3
-  %define _use_internal_dependency_generator 0
-  %define __find_requires %{wx_requires}
-%endif
 
 %description
 MegaGlest takes place in a context that could be compared to that of
@@ -93,23 +82,16 @@ enemies.
 
 %prep
 %setup -q
-%if 0%{?suse_version} > 1320
 %patch0 -p1
-%endif
-# no need to add build time to binaries
-modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
-DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
-TIME="\"$(date -d "${modified}" "+%%R")\""
-find . -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
 
 %build
+export CFLAGS="%{optflags} -fcommon"
 %cmake \
-    -DWANT_SVN_STAMP=OFF \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo
+  -DWANT_SVN_STAMP=OFF
 # unforce link against libcurl.a
 find . -name link.txt -exec sed -ie 's!%{_libexecdir}/libcurl.a!-lcurl!g' {} \;
 find . -name link.txt -exec sed -ie 's!%{_libdir}/libcurl.a!-lcurl!g' {} \;
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
@@ -126,7 +108,6 @@ done
 %suse_update_desktop_file -c g3dviewer        g3dviewer          "Glest 3D Graphics Viewer" megaglest_g3dviewer megaglest_g3dviewer Graphics Viewer
 
 %files
-%defattr(-, root, root)
 %{_bindir}/*
 %{_datadir}/%{name}/
 %{_datadir}/icons/hicolor/*/apps/megaglest_*.png

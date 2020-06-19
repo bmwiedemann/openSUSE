@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 17 14:21:53 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building with gcc10
+- Modernise spec file
+
+-------------------------------------------------------------------
 Fri Jun 29 13:23:58 UTC 2018 - kstreitova@suse.com
 
 - require p7zip-full for TW as 7z/7za binaries needed by megaglest
