@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jun 19 05:41:22 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.19.0
+  * New Features
+    - Manage authors dialog: Improve performance in very large
+      libraries
+  * Bug Fixes
+    - Book details panel: Fix a regression that caused right
+      clicking on an author name to manage it not opening with that
+      name selected.
+    - calibredb set_metadata: When converting a string into
+      a datetime if the string is a full ISO 8601 date with
+      timezone do not adjust the date to make it timezone neutral.
+    - Edit book: Fix Check book spuriously reporting incorrect mime
+      type warnings for fonts after upgrading a book from EPUB 2 to
+      EPUB 3.
+    - Book details panel: Dont show sizes less than 0.01MB as zero.
+    - Viewer: Fix jump to previous section not working when viewer 
+      is on last section
+
+-------------------------------------------------------------------
 Fri Jun  5 05:46:59 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.18.0
