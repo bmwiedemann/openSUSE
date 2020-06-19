@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 17 18:54:15 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.0.0
+   see /usr/share/doc/packages/perl-Minion-Backend-SQLite/Changes
+
+  v5.0.0    2020-06-17 01:22:45 EDT
+    - Minion requirement bumped to 10.03.
+    - Changed reset method to require options for what to reset and allow for
+      locks to be reset without resetting the whole queue.
+    - Added before options to list_jobs and list_workers methods to support
+      iterating jobs and workers.
+
+-------------------------------------------------------------------
 Tue Aug  6 05:14:29 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 4.005

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Minion-Backend-SQLite
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,26 @@
 
 
 Name:           perl-Minion-Backend-SQLite
-Version:        4.005
+Version:        5.0.0
 Release:        0
 %define cpan_name Minion-Backend-SQLite
 Summary:        SQLite backend for Minion job queue
 License:        Artistic-2.0
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-v%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Minion) >= 9.0
+BuildRequires:  perl(Minion) >= 10.03
 BuildRequires:  perl(Module::Build::Tiny) >= 0.034
 BuildRequires:  perl(Module::Metadata)
 BuildRequires:  perl(Mojo::SQLite) >= 3.000
 BuildRequires:  perl(Mojolicious) >= 7.29
-BuildRequires:  perl(Test::More) >= 0.88
-Requires:       perl(Minion) >= 9.0
+BuildRequires:  perl(Test::More) >= 0.96
+Requires:       perl(Minion) >= 10.03
 Requires:       perl(Mojo::SQLite) >= 3.000
 Requires:       perl(Mojolicious) >= 7.29
 %{perl_requires}
@@ -48,7 +48,7 @@ named 'minion'. If no connection string or ':temp:' is provided, the
 database will be created in a temporary directory.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%setup -q -n %{cpan_name}-v%{version}
 
 %build
 perl Build.PL --installdirs=vendor
