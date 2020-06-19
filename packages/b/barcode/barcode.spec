@@ -1,7 +1,7 @@
 #
 # spec file for package barcode
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@ Patch5:         %{name}-0.98-leak-fix.patch
 # PATCH-FIX-UPSTREAM barcode-fix-renamed-include.patch malcolmlewis@opensuse.org -- Fix renamed gettext include header reference.
 Patch6:         barcode-fix-renamed-include.patch
 BuildRequires:  makeinfo
-BuildRequires:  xz
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
 
@@ -63,8 +62,9 @@ Encapsulated PostScript format.
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+export CFLAGS="%{optflags} -fcommon"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
