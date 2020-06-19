@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 17 08:04:43 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Add upstream fix for boo#1173022
+  * Added patch 0001-Detect-broken-RDRAND-during-initialization.patch
+  * use URL from the releases page on github
+  * run spec-cleaner over the spec file
+
+-------------------------------------------------------------------
 Tue Apr 28 07:45:45 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - json-c 0.14:

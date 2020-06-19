@@ -25,10 +25,11 @@ Release:        0
 Summary:        JSON implementation in C
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            https://github.com/json-c/json-c/wiki
-#Git-Clone	git://github.com/json-c/json-c
-Source0:        https://s3.amazonaws.com/json-c_releases/releases/%{name}-%{version}.tar.gz
+URL:            https://github.com/json-c/json-c
+Source0:        %{URL}/archive/%{name}-%{version}-20200419.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+# fix for boo#1173022
+Patch0:         https://patch-diff.githubusercontent.com/raw/json-c/json-c/pull/624.patch#/0001-Detect-broken-RDRAND-during-initialization.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libtool
@@ -86,7 +87,7 @@ representation of JSON objects.
 This package includes the json-c documentation.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %if 0%{?suse_version} <= 1110
@@ -95,7 +96,7 @@ autoreconf -fiv
 %endif
 %cmake \
     -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DCMAKE_INSTALL_LIBDIR=%{_libdir} \
     -DENABLE_THREADING=ON \
     -DENABLE_RDRAND=ON
