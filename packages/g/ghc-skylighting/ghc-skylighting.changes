@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  9 09:10:53 UTC 2020 - psimons@suse.com
+
+- Update skylighting to version 0.8.4.
+  ## 0.8.4
+
+    * HTML output: use aria-hidden="true" on empty a elements
+      unless numberLines is specified (in which case the element
+      is still empty but will have content added by CSS).
+      This is to avoid excess noise when the code blocks are
+      read by screen readers.  See jgm/pandoc#6352.
+
+-------------------------------------------------------------------
 Wed May  6 06:52:10 UTC 2020 - psimons@suse.com
 
 - Update skylighting to version 0.8.3.4.

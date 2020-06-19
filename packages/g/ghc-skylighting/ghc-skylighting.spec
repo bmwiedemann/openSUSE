@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-skylighting
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name skylighting
 Name:           ghc-%{pkg_name}
-Version:        0.8.3.4
+Version:        0.8.4
 Release:        0
 Summary:        Syntax highlighting library
 License:        GPL-2.0-or-later
