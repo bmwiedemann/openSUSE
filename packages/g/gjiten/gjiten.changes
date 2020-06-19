@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 18 08:49:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer package /usr/share/application-registry: GNOME 1 is
+  long gone and this is only dead bytes (boo#1062631).
+
+-------------------------------------------------------------------
 Wed Aug 21 12:51:47 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - As a result of port-to-GSettings.patch(?), gjiten no longer found

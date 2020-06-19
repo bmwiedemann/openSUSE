@@ -1,7 +1,7 @@
 #
 # spec file for package gjiten
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,12 +81,13 @@ mkdir "$b/%_datadir/%name/dics"
 for i in %_datadir/edict/*; do
 	ln -s "$i" "$b/%_datadir/%name/dics/"
 done
+# Drop legacy GNOME 1 content
+rm -rf %{buildroot}%_datadir/application-registry/
 %find_lang %name
 %suse_update_desktop_file %name Office Dictionary
 
 %files -f %name.lang
 %_bindir/%name
-%_datadir/application-registry/
 %_datadir/applications/*
 %_datadir/doc/*
 %_datadir/GConf/
