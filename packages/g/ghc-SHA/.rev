@@ -62,4 +62,12 @@ dep of pandoc</comment>
     <comment>version update</comment>
     <requestid>759324</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>a60a089e4e648d5a71cf4dc75771fa76</srcmd5>
+    <version>1.6.4.4</version>
+    <time>1592579239</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815020</requestid>
+  </revision>
 </revisionlist>
