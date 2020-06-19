@@ -1,7 +1,7 @@
 #
 # spec file for package pandoc
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -141,6 +141,10 @@ This package provides the Haskell %{name} library development files.
 %prep
 %setup -q
 cabal-tweak-dep-ver haddock-library '< 1.9' '< 2'
+cabal-tweak-dep-ver aeson '< 1.5' '< 2'
+cabal-tweak-dep-ver http-client '< 0.7' '< 1'
+cabal-tweak-dep-ver base64-bytestring '< 1.1' '< 2'
+cabal-tweak-dep-ver hslua '< 1.1' '< 2'
 
 %build
 %ghc_lib_build
