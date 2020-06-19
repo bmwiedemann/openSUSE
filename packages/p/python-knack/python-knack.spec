@@ -18,15 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-%define realver 0.7.0rc4
 Name:           python-knack
-Version:        0.7.0~rc4
+Version:        0.7.1
 Release:        0
 Summary:        A Command-Line Interface framework
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/microsoft/knack
-Source:         https://files.pythonhosted.org/packages/source/k/knack/knack-%{realver}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/k/knack/knack-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module argcomplete}
 BuildRequires:  %{python_module colorama}
@@ -54,7 +53,7 @@ BuildArch:      noarch
 A Command-Line Interface framework
 
 %prep
-%setup -q -n knack-%{realver}
+%setup -q -n knack-%{version}
 
 %build
 %python_build
