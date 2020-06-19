@@ -16,28 +16,26 @@
 #
 
 
+%define mod_name i18n
+%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
-
 Name:           rubygem-i18n
-Version:        1.8.2
+Version:        1.8.3
 Release:        0
-%define mod_name i18n
-%define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.3.0}
-BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
-URL:            https://github.com/ruby-i18n/i18n
-Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
 Summary:        New wave Internationalization support for Ruby
 License:        MIT
 Group:          Development/Languages/Ruby
+URL:            https://github.com/ruby-i18n/i18n
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
+BuildRequires:  %{ruby >= 2.3.0}
+BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  ruby-macros >= 5
 
 %description
 New wave Internationalization support for Ruby.

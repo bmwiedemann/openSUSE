@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jun  5 10:15:22 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.8.3
+
+  Features / Improvements
+
+  * Memory and speed improvements - #527+ #528
+  * Add option to disable fallbacks for I18n.exists? check - #482
+  * Add an on_fallback hook to allow users to be notified when a fallback happens - #520
+
+  Bug Fixes
+
+  * Fix an issue with deep_merge and chain fallback backends - #499 & #509
+  * Fix an issue with Rails ordinal number proc and keyword splatting - #521
+  * Pass options as keyword arguments to translation procs - #529
+  * Fix pluralize on unknown locale with attributes - #519
+
+-------------------------------------------------------------------
 Tue Jan 14 09:52:29 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 1.8.2
