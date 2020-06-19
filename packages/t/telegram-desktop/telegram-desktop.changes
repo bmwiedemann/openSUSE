@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 18 08:38:42 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.1.12
+  * Fix sticker and video results in inline bots.
+  * Fix clipboard issues in Linux.
+  * Fix several crashes.
+
+-------------------------------------------------------------------
 Mon Jun  8 13:12:59 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 2.1.11
