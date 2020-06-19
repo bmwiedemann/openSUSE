@@ -260,4 +260,19 @@
     <comment>- Add Require for nodejs12 when intalling npm12. (bsc#1172728)</comment>
     <requestid>812979</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>574786efb76400335e54584de60e4718</srcmd5>
+    <version>12.18.1</version>
+    <time>1592580209</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream LTS version 12.18.1:
+  + deps:
+    * V8: cherry-pick 548f6c81d424 (Dominykas Blyžė) #33484
+    * update to uvwasi 0.0.9 (Colin Ihrig) #33445
+    * upgrade to libuv 1.38.0 (Colin Ihrig) #33446
+    * upgrade npm to 6.14.5 (Ruy Adorno) #33239
+- skip_no_console.patch: refreshed and mostly upstreamed
+- versioned.patch: refreshed</comment>
+    <requestid>815756</requestid>
+  </revision>
 </revisionlist>

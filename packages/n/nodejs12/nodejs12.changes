@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 18 14:14:40 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 12.18.1:
+  + deps:
+    * V8: cherry-pick 548f6c81d424 (Dominykas Blyžė) #33484
+    * update to uvwasi 0.0.9 (Colin Ihrig) #33445
+    * upgrade to libuv 1.38.0 (Colin Ihrig) #33446
+    * upgrade npm to 6.14.5 (Ruy Adorno) #33239
+
+- skip_no_console.patch: refreshed and mostly upstreamed
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
 Tue Jun  9 11:34:55 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Add Require for nodejs12 when intalling npm12. (bsc#1172728)

@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs12
-Version:        12.18.0
+Version:        12.18.1
 Release:        0
 
 %define node_version_number 12
@@ -540,7 +540,7 @@ export CXX=%{?cpp_exec}
 %endif
 
 export NODE_TEST_NO_INTERNET=1
-%if %{node_version_number} >= 14
+%if %{node_version_number} >= 12
 find test \( -name \*.out -or -name \*.js \) -exec sed -i 's,Use `node ,Use `node%{node_version_number} ,' {} \;
 %endif
 
