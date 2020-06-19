@@ -23,7 +23,7 @@
 %define import_path github.com/lxc/lxd
 
 Name:           lxd
-Version:        4.0.1
+Version:        4.2
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -45,7 +45,9 @@ BuildRequires:  libcap-devel
 BuildRequires:  patchelf
 BuildRequires:  pkg-config
 BuildRequires:  rsync
-BuildRequires:  golang(API) >= 1.10
+# Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
+# for 'golang(API) >= 1.13' here, so just require 1.13 exactly. bsc#1172608
+BuildRequires:  golang(API) = 1.13
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(lxc) >= 3.0.0
 # Needed to build the sqlite fork and dqlite.

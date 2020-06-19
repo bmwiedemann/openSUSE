@@ -134,4 +134,25 @@ seemed okay with the last submission. *fingers crossed*</comment>
     <comment></comment>
     <requestid>796787</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b11902f0daa9771373e438cb35702e7f</srcmd5>
+    <version>4.2</version>
+    <time>1592578143</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to LXD 4.2. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-2-has-been-released/8071
+  bsc#1172605
+
+  + VLAN filtering on bridges
+  * Expanded network state information
+  + Support for custom search domains
+  + New IPv4 and IPv6 columns in network lists
+  * mips &amp; riscv64 support for containers and s390x support for VMs
+  * Using pidfds for all container subprocesses
+  * LVM volumes only active when needed
+  + DB query tracing support
+  * Better cluster life-cycle handling
+  * Cleaned up database functions</comment>
+    <requestid>812999</requestid>
+  </revision>
 </revisionlist>

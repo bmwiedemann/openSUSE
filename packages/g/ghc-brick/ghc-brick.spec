@@ -1,7 +1,7 @@
 #
-# spec file for package ghc-project-template
+# spec file for package ghc-brick
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,37 +16,60 @@
 #
 
 
-%global pkg_name project-template
+%global pkg_name brick
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.0.1
+Version:        0.54
 Release:        0
-Summary:        Specify Haskell project templates and generate files
+Summary:        A declarative terminal user interface library
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-base64-bytestring-devel
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-conduit-devel
-BuildRequires:  ghc-conduit-extra-devel
+BuildRequires:  ghc-config-ini-devel
 BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-contravariant-devel
+BuildRequires:  ghc-data-clist-devel
+BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-directory-devel
+BuildRequires:  ghc-dlist-devel
+BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-filepath-devel
-BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-resourcet-devel
+BuildRequires:  ghc-microlens-devel
+BuildRequires:  ghc-microlens-mtl-devel
+BuildRequires:  ghc-microlens-th-devel
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-stm-devel
+BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-text-zipper-devel
 BuildRequires:  ghc-transformers-devel
+BuildRequires:  ghc-unix-devel
+BuildRequires:  ghc-vector-devel
+BuildRequires:  ghc-vty-devel
+BuildRequires:  ghc-word-wrap-devel
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
-BuildRequires:  ghc-hspec-devel
 %endif
 
 %description
-See initial blog post for explanation:
-<http://www.yesodweb.com/blog/2012/09/project-templates>.
+Write terminal user interfaces (TUIs) painlessly with 'brick'! You write an
+event handler and a drawing function and the library does the rest.
+
+> module Main where > > import Brick > > ui :: Widget () > ui = str "Hello,
+world!" > > main :: IO () > main = simpleMain ui
+
+To get started, see:
+
+* <https://github.com/jtdaugherty/brick/blob/master/README.md The README>
+
+* The <https://github.com/jtdaugherty/brick/blob/master/docs/guide.rst Brick
+user guide>
+
+* The demonstration programs in the 'programs' directory
+
+This package deprecates <http://hackage.haskell.org/package/vty-ui vty-ui>.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -56,12 +79,10 @@ Requires(post): ghc-compiler = %{ghc_version}
 Requires(postun): ghc-compiler = %{ghc_version}
 
 %description devel
-This package provides the Haskell %{pkg_name} library development
-files.
+This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
@@ -82,6 +103,6 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 %license LICENSE
 
 %files devel -f %{name}-devel.files
-%doc ChangeLog.md README.md
+%doc CHANGELOG.md README.md docs
 
 %changelog

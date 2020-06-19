@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jun  5 23:58:50 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.2. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-2-has-been-released/8071
+  bsc#1172605
+
+  + VLAN filtering on bridges
+  * Expanded network state information
+  + Support for custom search domains
+  + New IPv4 and IPv6 columns in network lists
+  * mips & riscv64 support for containers and s390x support for VMs
+  * Using pidfds for all container subprocesses
+  * LVM volumes only active when needed
+  + DB query tracing support
+  * Better cluster life-cycle handling
+  * Cleaned up database functions
+
+-------------------------------------------------------------------
+Sat May  9 03:45:46 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.1. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-1-has-been-released/7737
+
+  + Push and relay support for images
+  + Routing table support for routed NIC devices
+  + L2 mode for ipvlan NIC devices
+  * Tweaks to the resources API
+  * Addition of OS data in the server information
+  + New lxd cluster remove-raft-node command
+  * Improved table sorting in the command line tool
+
+-------------------------------------------------------------------
 Fri Apr 24 06:58:55 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 4.0.1. The full upstream changelog is available from:
