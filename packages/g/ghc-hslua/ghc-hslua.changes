@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Tue Jun  9 09:10:54 UTC 2020 - psimons@suse.com
+
+- Update hslua to version 1.1.1.
+  ### 1.1.1
+
+  Released 2020-06-02
+
+  - New module Foreign.Lua.Push: provides functions which marshal
+    and push Haskell values onto Lua's stack.
+
+    Most functions in Foreign.Lua.Types.Pushable are now defined
+    using functions from this module.
+
+  - New module Foreign.Lua.Peek: provides functions which unmarshal
+    and retrieve Haskell values from Lua's stack. Contrary to `peek`
+    from Foreign.Lua.Types.Peekable, the peeker functions in this
+    module will never throw errors, but use an `Either` type to
+    signal retrieval failure.
+
+    The error type `PeekError` should not be considered final and
+    will likely be subject to change in later versions.
+
+  - Module Foreign.Lua.Utf8: never throw errors when decoding UTF-8
+    strings. Invalid UTF-8 input bytes no longer cause exceptions,
+    but are replaced with the Unicode replacement character U+FFFD.
+
+  - Fixed missing and faulty Haddock documentation.
+
+  - Fixed a bug which caused unnecessary use of strings to represent
+    floating point numbers under certain configurations.
+
+  ### 1.1.0
+
+  Released 2020-03-25.
+
+  **WARNING:** The changes in this release are experimental. It is
+  recommended to skip this release unless the newly introduced
+  features are required.
+
+  - Allow custom error handling: conversion of Lua errors to
+    Haskell exceptions and back is made configurable. Users can
+    define their own exception/error handling strategies, even
+    opening up the option to pass arbitrary exceptions through Lua.
+
+      - New types exported from `Foreign.Lua.Types`:
+
+          - `ErrorConversion`: defines the ways in which exceptions
+            and errors are handled and converted.
+          - `LuaEnvironment`: environment in which Lua computations
+            are evaluated. Contains the Lua interpreter state and
+            the error conversion strategy.
+
+      - The environment of the `Lua` type is changed from a plain
+        Lua `State` to the above mentioned `LuaEnvironment`.
+
+      - New functions `run'` is exported from `Foreign.Lua.Util`
+        and `Foreign.Lua`: it is analogous to `run`, but allows to
+        run computations with a custom error conversion strategy.
+
+      - New function `runWithConverter` exported from
+        `Foreign.Lua.Core.Types` and `Foreign.Lua.Core`; like
+        `run'`, but takes a custom state.
+
+      - New function `unsafeRunWith` exported from
+        `Foreign.Lua.Core.Types` and `Foreign.Lua.Core`; runs a
+        computation without proper error handling.
+
+      - New function `errorConversion` exported from
+        `Foreign.Lua.Core.Types` and `Foreign.Lua.Core`: extract
+        the error conversion strategy from the Lua type.
+
+      - New function `throwErrorAsException` exported from
+        `Foreign.Lua.Core.Error` and `Foreign.Lua.Core`: throws a
+        Lua error as Haskell exception, using the current error
+        conversion strategy.
+
+  - Function `runWith` is moved from module `Foreign.Lua.Core` to
+    `Foreign.Lua.Util`.
+
+  - The module `Foreign.Lua.Utf8` is now exported.
+
+-------------------------------------------------------------------
 Fri Nov  8 16:13:53 UTC 2019 - Peter Simons <psimons@suse.com>
 
 - Drop obsolete group attributes.

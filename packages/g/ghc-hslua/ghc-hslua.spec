@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hslua
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name hslua
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.0.3.2
+Version:        1.1.1
 Release:        0
 Summary:        Bindings to Lua, an embeddable scripting language
 License:        MIT
@@ -29,7 +29,6 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-exceptions-devel
-BuildRequires:  ghc-fail-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
