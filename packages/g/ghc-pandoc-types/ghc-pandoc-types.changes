@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 16 11:14:26 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
 Thu May  7 07:48:19 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Drop obsolete %setup hack to work around a missing Setup.hs file.
