@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 18 14:24:12 UTC 2020 - Eduardo Navarro <enavarro@suse.com>
+
+- updated to version 2.2.3
+ see installed CHANGELOG.md
+
+  ## [2.2.3] - 2020-06-15
+
+    [CVE-2020-8184] Only decode cookie values
+
+-------------------------------------------------------------------
 Tue Feb 18 15:21:41 UTC 2020 - Eduardo Navarro <enavarro@suse.com>
 
 - updated to version 2.2.2
