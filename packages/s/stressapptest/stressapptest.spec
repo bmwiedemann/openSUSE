@@ -24,6 +24,7 @@ License:        Apache-2.0
 Group:          System/Benchmark
 URL:            https://github.com/stressapptest/stressapptest
 Source:         https://github.com/stressapptest/stressapptest/archive/v%{version}.tar.gz
+Patch0:         reproducible.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -36,6 +37,7 @@ hardware devices in a computer.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 autoreconf -fvi

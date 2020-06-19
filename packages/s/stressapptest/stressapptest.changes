@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  9 14:09:24 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to override build date (boo#1047218)
+  and to drop build host name (boo#1084909)
+
+-------------------------------------------------------------------
 Thu Aug 30 11:35:01 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Format with spec-cleaner

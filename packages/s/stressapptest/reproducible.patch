@@ -1,0 +1,37 @@
+https://github.com/stressapptest/stressapptest/pull/65
+
+From 39525214f68479a3844960477089d34f29a72596 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Sun, 9 Sep 2018 05:34:37 +0200
+Subject: [PATCH] Allow to override build date with SOURCE_DATE_EPOCH
+
+in order to make builds reproducible.
+See https://reproducible-builds.org/ for why this is good
+and https://reproducible-builds.org/specs/source-date-epoch/
+for the definition of this variable.
+This date call works with all variants of date (GNU,BSD,Solaris).
+
+Also do not capture build user+host in this case
+to allow to get the same build results anywhere and anytime.
+---
+ configure.ac | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index ede7d26..0164878 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -88,6 +88,13 @@ timestamp=$(date)
+ AC_MSG_CHECKING([current timestamp])
+ AC_MSG_RESULT([$timestamp])
+ 
++if test -n "$SOURCE_DATE_EPOCH"
++then
++  timestamp=$(date -u -d "@$SOURCE_DATE_EPOCH" 2>/dev/null || date -u -r "$SOURCE_DATE_EPOCH" 2>/dev/null || date -u)
++  username=reproducible
++  hostname=reproducible
++fi
++
+ AC_DEFINE_UNQUOTED([STRESSAPPTEST_TIMESTAMP],
+                    "$username @ $hostname on $timestamp",
+                    [Timestamp when ./configure was executed])
