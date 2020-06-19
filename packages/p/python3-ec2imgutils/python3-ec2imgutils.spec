@@ -19,7 +19,7 @@
 %define upstream_name ec2imgutils
 
 Name:           python3-ec2imgutils
-Version:        8.1.1
+Version:        8.1.2
 Release:        0
 Summary:        Image management utilities for AWS EC2
 License:        GPL-3.0-or-later
