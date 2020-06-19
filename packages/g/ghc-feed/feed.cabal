@@ -1,0 +1,144 @@
+name:                feed
+version:             1.3.0.1
+x-revision: 1
+license:             BSD3
+license-file:        LICENSE
+category:            Text
+synopsis:            Interfacing with RSS (v 0.9x, 2.x, 1.0) + Atom feeds.
+description:         Interfacing with RSS (v 0.9x, 2.x, 1.0) + Atom feeds.
+                     .
+                     To help working with the multiple feed formats we've
+                     ended up with, this set of modules provides parsers,
+                     pretty printers and some utility code for querying
+                     and just generally working with a concrete representation
+                     of feeds in Haskell.
+                     .
+                     See here for an example of how to create an Atom feed:
+                     <https://github.com/bergmark/feed/blob/master/tests/Example/CreateAtom.hs>
+                     .
+                     For basic reading and editing of feeds, consult
+                     the documentation of the Text.Feed.* hierarchy.
+author:              Sigbjorn Finne <sof@forkIO.com>
+maintainer:          Adam Bergmark <adam@bergmark.nl>
+homepage:            https://github.com/bergmark/feed
+bug-reports:         https://github.com/bergmark/feed/issues
+cabal-version:       >= 1.8
+build-type:          Simple
+tested-with:
+    GHC == 7.4.2
+  , GHC == 7.6.3
+  , GHC == 7.8.4
+  , GHC == 7.10.3
+  , GHC == 8.0.2
+  , GHC == 8.2.2
+  , GHC == 8.4.4
+  , GHC == 8.6.5
+  , GHC == 8.8.1
+data-files:
+  tests/files/*.xml
+extra-source-files:
+  README.md
+  CHANGELOG.md
+
+source-repository head
+  type:              git
+  location:          https://github.com/bergmark/feed.git
+
+library
+  ghc-options:       -Wall
+  hs-source-dirs:    src
+  extensions:
+    NoImplicitPrelude
+    OverloadedStrings
+  exposed-modules:
+    Text.Atom.Feed
+    Text.Atom.Feed.Export
+    Text.Atom.Feed.Import
+    Text.Atom.Feed.Link
+    Text.Atom.Feed.Validate
+    Text.Atom.Pub
+    Text.Atom.Pub.Export
+    Text.DublinCore.Types
+    Text.Feed.Constructor
+    Text.Feed.Export
+    Text.Feed.Import
+    Text.Feed.Query
+    Text.Feed.Translate
+    Text.Feed.Types
+    Text.Feed.Util
+    Text.RSS.Export
+    Text.RSS.Import
+    Text.RSS.Syntax
+    Text.RSS1.Export
+    Text.RSS1.Import
+    Text.RSS1.Syntax
+    Text.RSS1.Utils
+  other-modules:
+    Data.Text.Util
+    Data.XML.Compat
+  build-depends:
+      base >= 4 && < 4.15
+    , base-compat >= 0.9 && < 0.12
+    , bytestring >= 0.9 && < 0.11
+    , old-locale == 1.0.*
+    , old-time >= 1 && < 1.2
+    , safe == 0.3.*
+    , text < 1.3
+    , time < 1.10
+    , time-locale-compat == 0.1.*
+    , utf8-string < 1.1
+    , xml-types >= 0.3.6 && < 0.4
+    , xml-conduit >= 1.3 && < 1.10
+
+test-suite tests
+  ghc-options:       -Wall
+  hs-source-dirs:    tests
+  main-is:           Main.hs
+  type:              exitcode-stdio-1.0
+  extensions:
+    NoImplicitPrelude
+    OverloadedStrings
+  other-modules:
+    Paths_feed
+    Example
+    Example.CreateAtom
+    ImportExport
+    Text.Atom.Tests
+    Text.Atom.Validate.Tests
+    Text.Feed.Util.Tests
+    Text.RSS.Equals
+    Text.RSS.Export.Tests
+    Text.RSS.Import.Tests
+    Text.RSS.Tests
+    Text.RSS.Utils
+  build-depends:
+      base >= 4 && < 4.15
+    , base-compat >= 0.9 && < 0.12
+    , HUnit >= 1.2 && < 1.7
+    , feed
+    , old-time >= 1 && < 1.2
+    , syb
+    , test-framework == 0.8.*
+    , test-framework-hunit == 0.3.*
+    , text < 1.3
+    , time < 1.10
+    , xml-types >= 0.3.6 && < 0.4
+    , xml-conduit >= 1.3 && < 1.10
+
+test-suite readme
+  ghc-options:       -Wall -pgmL markdown-unlit
+  main-is:           README.lhs
+  extensions:
+    NoImplicitPrelude
+    OverloadedStrings
+  type:              exitcode-stdio-1.0
+  build-depends:
+      base >= 4 && < 4.15
+    , base-compat >= 0.9 && < 0.12
+    , text
+    , xml-types
+    , feed
+    , xml-conduit
+    , xml-types
+  build-tool-depends:
+    markdown-unlit:markdown-unlit >= 0.4 && < 0.6
