@@ -1,7 +1,7 @@
 #
 # spec file for package cabal2spec
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name cabal2spec
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.6
+Version:        2.6.1
 Release:        0
 Summary:        Convert Cabal files into rpm spec files
 License:        GPL-3.0-or-later
