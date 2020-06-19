@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-dbus
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name dbus
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.2.14
+Version:        1.2.15.1
 Release:        0
 Summary:        A client library for the D-Bus IPC system
 License:        Apache-2.0
