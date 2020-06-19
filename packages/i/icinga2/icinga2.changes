@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jun 18 08:55:44 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.11.4
+  Version 2.11.4 fixes a crash during a heartbeat timeout with
+  clients not yet signed. It also resolves an issue with endpoints
+  not reconnecting after a reload/deploy, which caused a lot of 
+  UNKNOWN states.
+
+  * Bugfixes
+    + Cluster
+      - Fix segfault during heartbeat timeout with clients not yet signed #7997
+      - Fix endpoints not reconnecting after reload (UNKNOWN hosts/services after reload) #8043
+    + Setup
+      - Fix exception on trusted cert not readable during node setup #8044
+      - prepare-dirs: Only set permissions during directory creation #8046
+    + DSL
+      - Fix segfault on missing compare function in Array functions (sort, map, reduce, filter, any, all) #8054
+
+-------------------------------------------------------------------
 Tue Mar  3 10:56:56 UTC 2020 - ecsos@opensuse.org
 
 - Update to 2.11.3

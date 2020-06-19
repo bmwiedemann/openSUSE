@@ -86,7 +86,7 @@ Group:          System/Monitoring
 %else
 %endif # suse
 Name:           icinga2
-Version:        2.11.3
+Version:        2.11.4
 Release:        %{revision}%{?dist}
 URL:            https://www.icinga.com/
 Source:         https://github.com/Icinga/%{name}/archive/v%{version}.tar.gz
