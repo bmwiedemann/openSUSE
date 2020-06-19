@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-splitmix
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name splitmix
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.0.4
+Version:        0.0.5
 Release:        0
 Summary:        Fast Splittable PRNG
 License:        BSD-3-Clause
@@ -34,8 +34,13 @@ BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-async-devel
 BuildRequires:  ghc-base-compat-batteries-devel
+BuildRequires:  ghc-base-compat-devel
 BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-math-functions-devel
 BuildRequires:  ghc-process-devel
+BuildRequires:  ghc-test-framework-devel
+BuildRequires:  ghc-test-framework-hunit-devel
 BuildRequires:  ghc-tf-random-devel
 BuildRequires:  ghc-vector-devel
 %endif
