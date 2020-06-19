@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jun 18 10:41:05 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.29.0
+  + Features
+    * add *generation*match args into Blob.compose() (#122)
+    * add Bucket.reload() and Bucket.update() wrappers to restrict
+      generation match args (#153), closes (#127)
+    * add helper for bucket bound hostname URLs (#137), closes (#121)
+    * add if*generation*match support for Bucket.rename_blob() (#141)
+    * add if*generation*Match support, pt1 (#123)
+    * add offset and includeTrailingPrefix options to list_blobs (#125)
+    * Create CODEOWNERS (#135)
+  + Bug Fixes
+    * **storage:** add documentaion of list_blobs with user project (#147)
+    * **storage:** add projection parameter to blob.reload method (#146)
+    * **storage:** add unused variables to method generation match (#152)
+    * **storage:** change the method names in snippets file (#161)
+    * **storage:** fix upload object with bucket cmek enabled (#158)
+    * set default POST policy scheme to "http" (#172)
+- from version 1.28.0
+  + Bug Fixes
+    * **storage:** anonymous credentials for private bucket (#107)
+    * add bucket name into POST policy conditions (#118)
+
+-------------------------------------------------------------------
 Tue Apr 28 07:48:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.28.0:
