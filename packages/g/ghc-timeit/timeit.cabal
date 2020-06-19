@@ -1,0 +1,41 @@
+Name:               timeit
+Version:            2.0
+x-revision: 1
+
+Homepage:           https://github.com/merijn/timeit
+Bug-Reports:        https://github.com/merijn/timeit/issues
+
+Author:             Lennart Augustsson
+Maintainer:         Merijn Verstraaten <merijn@inconsistent.nl>, Lennart Augustsson
+Copyright:          Copyright © 2009, Lennart Augustsson
+
+License:            BSD3
+License-File:       LICENSE
+
+Category:           System
+Cabal-Version:      >= 1.10
+Build-Type:         Simple
+Tested-With:        GHC == 7.6.3, GHC == 7.8.4, GHC == 7.10.3, GHC == 8.0.2,
+                    GHC == 8.2.2, GHC == 8.4.1, GHC == 8.5.*
+
+Extra-Source-Files: CHANGELOG.md
+
+Synopsis:           Time monadic computations with an IO base.
+
+Description:
+    A simple wrapper to show the used CPU time of monadic computation with an
+    IO base.
+
+Library
+  Default-Language:     Haskell2010
+  GHC-Options:          -Wall
+
+  Exposed-Modules:      System.TimeIt
+  Build-Depends:        base >= 3 && < 5
+
+  if impl(ghc < 8.0)
+    Build-Depends:      transformers >= 0.2 && < 0.6
+
+Source-Repository head
+  Type:     git
+  Location: ssh://github.com:merijn/timeit.git
