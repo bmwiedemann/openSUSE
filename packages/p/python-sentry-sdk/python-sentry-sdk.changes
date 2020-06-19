@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 18 16:32:19 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- update to 0.14.4
+  * Fix bugs in transport rate limit enforcement for specific data
+    categories.
+  * The bug should not have affected anybody because we do not yet
+    emit rate limits for specific event types/data categories.
+  * Fix a bug in capture_event where it would crash if given
+    additional kwargs.
+  * Fix a bug where contextvars from the request handler were
+    inaccessible in AIOHTTP error handlers.
+  * Fix a bug where the Celery integration would crash if newrelic
+    instrumented Celery as well.
+
+-------------------------------------------------------------------
 Thu Mar 26 12:36:49 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.14.3

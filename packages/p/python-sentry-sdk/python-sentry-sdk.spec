@@ -20,7 +20,7 @@
 # nothing provides python2-venusian >= 1.0 needed by python2-pyramid
 %define skip_python2 1
 Name:           python-sentry-sdk
-Version:        0.14.3
+Version:        0.14.4
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
@@ -76,9 +76,10 @@ export PYTHONDONTWRITEBYTECODE=1
 export PYTEST_ADDOPTS="-W ignore::DeprecationWarning"
 # do not test integration:
 rm -r tests/integrations
-# test_transport_works stucks
+# test_transport_works / test_transport_infinite_loop / test_simple_rate_limits/ test_data_category_limits / test_complex_limits_without_data_category stucks
+
 # test_auto_enabling_integrations_catches_import_error asert False where False = ..., not sure
-%pytest -k 'not (test_transport_works or test_auto_enabling_integrations_catches_import_error or test_filename)'
+%pytest -k 'not (test_transport_works or test_auto_enabling_integrations_catches_import_error or test_filename or test_transport_infinite_loop or test_simple_rate_limits or test_data_category_limits or test_complex_limits_without_data_category)'
 
 %files %{python_files}
 %doc README.md CHANGES.md
