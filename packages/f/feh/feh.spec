@@ -67,6 +67,7 @@ cp %{SOURCE3} .
     debug=0 \
     exif=1 \
     app=1 \
+    inotify=1 \
     OPTFLAGS="%{optflags} -Wall -Wextra"
 
 gcc %{optflags} -fwhole-program jpegexiforient.c -o jpegexiforient

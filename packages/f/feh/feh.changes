@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 19 07:35:10 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Enable inotify support for automatic reload. 
+
+-------------------------------------------------------------------
 Mon Jun  1 08:33:22 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.4.1
