@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  9 09:10:52 UTC 2020 - psimons@suse.com
+
+- Update http-client to version 0.7.0.
+  ## 0.7.0
+
+  * Remove Eq instances for Cookie, CookieJar, Response, Ord instance for Cookie [#435](https://github.com/snoyberg/http-client/pull/435)
+
+-------------------------------------------------------------------
 Wed May  6 06:54:13 UTC 2020 - psimons@suse.com
 
 - Update http-client to version 0.6.4.1.
