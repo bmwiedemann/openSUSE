@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 16 11:14:04 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
 Thu May  7 07:47:10 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Tweak dependency information to fix building with ghc-8.10.x.
