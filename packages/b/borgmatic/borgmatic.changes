@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed May 27 08:58:21 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.5.5
+  * #314: Fix regression in support for PostgreSQL's "directory" dump format. Unlike other dump
+    formats, the "directory" dump format does not stream directly to/from Borg.
+  * #315: Fix enabled database hooks to implicitly set one_file_system configuration option to true.
+  * This prevents Borg from reading devices like /dev/zero and hanging.
+  * #316: Fix hang when streaming a database dump to Borg with implicit duplicate source directories
+    by deduplicating them first.
+  * #319: Fix error message when there are no MySQL databases to dump for "all" databases.
+  * Improve documentation around the installation process. Specifically, making borgmatic commands
+    runnable via the system PATH and offering a global install option.
+- Update to 1.5.4
+  * #310: Fix legitimate database dump command errors (exit code 1) not being treated as errors by
+    borgmatic.
+  * For database dumps, replace the named pipe on every borgmatic run. This prevent hangs on stale
+    pipes left over from previous runs.
+  * Fix error handling to handle more edge cases when executing commands.
+- Update to 1.5.3
+  * #258: Stream database dumps and restores directly to/from Borg without using any additional
+    filesystem space. This feature is automatic, and works even on restores from archives made with
+    previous versions of borgmatic.
+  * #293: Documentation on macOS launchd permissions issues with work-around for Full Disk Access.
+  * Remove "borgmatic restore --progress" flag, as it now conflicts with streaming database restores.
+- Update to 1.5.2
+  * #301: Fix MySQL restore error on "all" database dump by excluding system tables.
+  * Fix PostgreSQL restore error on "all" database dump by using "psql" for the restore instead of
+    "pg_restore".
+- Add skip-tests.patch
+
+-------------------------------------------------------------------
 Mon May 25 17:13:21 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Comment the LogRateLimitIntervalSec option in the systemd service

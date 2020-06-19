@@ -17,7 +17,7 @@
 
 
 Name:           borgmatic
-Version:        1.5.1
+Version:        1.5.5
 Release:        0
 Summary:        Automation tool for borgbackup
 License:        GPL-3.0-only
@@ -25,6 +25,7 @@ Group:          Productivity/Archiving/Backup
 URL:            https://torsion.org/borgmatic/
 Source:         https://github.com/witten/borgmatic/archive/%{version}.tar.gz#/borgmatic-%{version}.tar.gz
 Patch0:         remove-invalid-test.patch
+Patch1:         skip-tests.patch
 # testing requirements
 BuildRequires:  borgbackup
 # To create the manpage
@@ -75,6 +76,7 @@ common errors.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 sed -i -e "s/colorama>=0.4.1,<0.5/colorama>=0.3.9/" setup.py
 %if 0%{?suse_version} <= 1500
