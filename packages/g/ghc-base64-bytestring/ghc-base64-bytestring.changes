@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  9 09:10:56 UTC 2020 - psimons@suse.com
+
+- Update base64-bytestring to version 1.1.0.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/base64-bytestring-1.1.0.0/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Tue Jan 14 03:03:06 UTC 2020 - psimons@suse.com
 
 - Update base64-bytestring to version 1.0.0.3.
