@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jun 18 08:29:08 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.6.3.14058
+  * Restart the client after an update
+  * Wizard is hidden behind the browser
+  * Add branding option to disable experimental features
+  * Client sometimes does not show up when started by a user
+  * Fix several wrong colored icons in dark mode
+  * Fixed bug in public link with password required
+  * Fixed editing public link expiration date
+  * Expand file tree also when no folders are synced
+  * Fixed bug saving the cookies
+  * Fixed crash in the setup wizard
+  * Fixed bug in the Virtual File warning dialog
+  * Fixed a potential crash while discovering moves
+  * Add Folder Sync Connection sometimes does not warn
+  * Resize the buttons in the settings view dynamically
+  * Fix status icon after move errors
+  * Fixed a potential crash on cancelation of discovery jobs
+  * Fix a potential crash on Windows VFS
+  * Fixed OAuth2 login of user with +
+  * On Windows the share dialog does not open as the top most window
+  * Client sometimes crashes when a placeholder file was moved
+  * Don't override cookies with old values
+  * Closing prompt has the same effect as accepting
+  * Crash on migration of old settings
+- Add fix-qpainterpath.patch
+
+-------------------------------------------------------------------
 Tue Feb 11 20:17:04 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
 
 - Removed some unused parts from tarball as described in README.

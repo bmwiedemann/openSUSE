@@ -18,21 +18,23 @@
 
 Name:           owncloud-client
 
-Version:        2.6.1.13407 
+Version:        2.6.3.14058
 Release:        0
 
 Summary:        The ownCloud synchronization client
 License:        GPL-2.0-only AND GPL-3.0-only
 Group:          Productivity/Networking/Other
 URL:            https://owncloud.org/download
-Source0:        owncloudclient-%{version}.tar.xz
-Source1:        101-sync-inotify.conf
-Source2:        README.source
+Source0:        https://download.owncloud.com/desktop/stable/owncloudclient-%{version}.tar.xz
+Source1:        https://download.owncloud.com/desktop/stable/owncloudclient-%{version}.tar.xz.asc
+Source2:        101-sync-inotify.conf
+Source3:        README.source
 
 # PATCH-FIX-UPSTREAM fix position of systray menu https://github.com/owncloud/client/issues/5968
 # for all except tumbleweed and ongoing, as the Qt bug is fixed in there.
 Patch0:         fix-systray-menu-pos.patch
 Patch1:         no_theme_icons.patch
+Patch2:         fix-qpainterpath.patch
 
 %define cmake_args -DSYSCONF_INSTALL_DIR=%{_sysconfdir}
 
@@ -55,6 +57,7 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  qtkeychain-qt5-devel >= %{keychain_version}
 
+BuildRequires:  libcloudproviders-devel
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
@@ -202,14 +205,20 @@ Framework 5 based Dolphin filemanager to display overlay icons.
 %endif
 
 %prep
-%setup -q -n owncloudclient-%{version}
+%setup -q -n owncloudclient-%{version} 
 
 %if 0%{?suse_version} <= 1500
 %patch0 -p1
 %endif
 %patch1 -p1
+%patch2 -p1
 
 %build
+# see README.source
+rm -rf src/3rdparty/libcrashreporter-qt
+rm -rf shell_integration/windows
+rm -rf shell_integration/MacOSX
+
 echo suse_version   0%{?suse_version}
 
 # http://www.cmake.org/Wiki/CMake_RPATH_handling#Default_RPATH_settings
@@ -285,7 +294,7 @@ done
 %{_libdir}/ownCloud/plugins/owncloudsync_vfs_suffix.so
 %dir %{_libdir}/ownCloud/
 %dir %{_libdir}/ownCloud/plugins
-%doc CONTRIBUTING.md ChangeLog README.md README.source
+%doc CONTRIBUTING.md README.md 
 %license COPYING COPYING.documentation
 
 %config /etc/ownCloud
