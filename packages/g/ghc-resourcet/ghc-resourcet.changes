@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  9 09:10:54 UTC 2020 - psimons@suse.com
+
+- Update resourcet to version 1.2.4.1.
+  ## 1.2.4.1
+
+  * Document risk of using `forkIO` within a `ResourceT` [#441](https://github.com/snoyberg/conduit/pull/441)
+
+  ## 1.2.4
+
+  * Add `allocate_` [#437](https://github.com/snoyberg/conduit/pull/437)
+
+-------------------------------------------------------------------
 Wed May  6 06:54:13 UTC 2020 - psimons@suse.com
 
 - Update resourcet to version 1.2.4.
