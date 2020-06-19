@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 16 11:13:57 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
 Thu May  7 08:08:20 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Update Cabal file to get more accurate dependency information.
