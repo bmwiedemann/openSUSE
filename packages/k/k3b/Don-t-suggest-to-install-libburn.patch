@@ -13,11 +13,11 @@ People who want to use cdrskin instead can still install it.
  src/k3bsystemproblemdialog.cpp | 6 ------
  1 file changed, 6 deletions(-)
 
-Index: k3b-17.11.80/src/k3bsystemproblemdialog.cpp
-===================================================================
---- k3b-17.11.80.orig/src/k3bsystemproblemdialog.cpp
-+++ k3b-17.11.80/src/k3bsystemproblemdialog.cpp
-@@ -293,13 +293,6 @@ void K3b::SystemProblemDialog::checkSyst
+diff --git a/src/k3bsystemproblemdialog.cpp b/src/k3bsystemproblemdialog.cpp
+index 805e3354c..1abcb27c8 100644
+--- a/src/k3bsystemproblemdialog.cpp
++++ b/src/k3bsystemproblemdialog.cpp
+@@ -291,13 +291,6 @@ void K3b::SystemProblemDialog::checkSystem(QWidget* parent, NotificationLevel le
  #endif
          }
  

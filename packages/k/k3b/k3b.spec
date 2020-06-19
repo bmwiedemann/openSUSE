@@ -21,17 +21,13 @@
 %bcond_without lame
 %bcond_without mad
 Name:           k3b
-Version:        19.12.3
+Version:        20.04.2
 Release:        0
 Summary:        CD/DVD/Blu-ray Burning Application for KDE
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/CD/Record
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 # PATCH-FIX-OPENSUSE
 Patch1:         Don-t-suggest-to-install-libburn.patch
 # PATCH-FIX-OPENSUSE
@@ -87,6 +83,10 @@ Recommends:     vcdimager
 Provides:       kde4-k3b = 4.2.2.svn951754
 Obsoletes:      k3b-codecs
 Obsoletes:      kde4-k3b < 4.2.2.svn951754
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 %if %{with ffmpeg}
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
@@ -130,22 +130,7 @@ CXXFLAGS="%{optflags} -fno-strict-aliasing"
 %kf5_makeinstall -C build
 %if %{with lang}
   %find_lang %{name} --with-man --all-name
-  %if 0%{?suse_version} > 1320 || 0%{?sle_version} >= 120300
   %{kf5_find_htmldocs}
-  %else
-  # %%kf5_find_htmldocs is only defined since Leap 42.3
-  CURDIR=`pwd`
-  pushd %{buildroot}%{_kf5_htmldir}
-  for i in *; do
-    if ! [ -d "%{_datadir}/locale/${i}" ]; then
-        echo "Removing unsupported translation %{_kf5_htmldir}/${i}"
-        rm -rf "$i"
-    elif [ "$i" != "en" ]; then
-        echo "%doc %lang($i) %{_kf5_htmldir}/${i}" >> $CURDIR/%{name}.lang
-    fi
-  done
-  popd
-  %endif
 %endif
 
 %suse_update_desktop_file -r org.kde.k3b Qt KDE AudioVideo DiscBurning

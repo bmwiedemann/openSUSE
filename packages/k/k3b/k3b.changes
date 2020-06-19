@@ -1,10 +1,53 @@
 -------------------------------------------------------------------
+Tue Jun  9 12:14:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-06-apps-update
+- No code change since 20.04.1
+
+-------------------------------------------------------------------
+Fri May 15 15:41:03 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- Changes since 20.04.0:
+  * Fix k3b not finishing if started without splash screen (kde#419105)
+
+-------------------------------------------------------------------
+Thu Apr 23 12:21:58 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * Fix k3b not finishing if started without splash screen (kde#419105)
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:43 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+- No code change since 20.03.80
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:39 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Thu Mar  5 20:35:47 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.3
+  * https://kde.org/announcements/releases/2020-03-apps-update
 - Changes since 19.12.2:
   * appdata: use canonical cdn screenshot location
   * Fix libsoundfiledecoder with files with non whole second length (kde#418079)
@@ -23,7 +66,7 @@ Wed Feb  5 06:28:49 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.2
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.2
+  * https://kde.org/announcements/releases/2020-02-apps-update
 - Changes since 19.12.1:
   * Accept WAV files in K3bLibsndfileDecoderFactory::canDecode (kde#399056)
   * Fix adding multiple symlinks to a data project (kde#416487)
