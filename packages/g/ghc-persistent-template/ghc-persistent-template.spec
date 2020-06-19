@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-persistent-template
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,6 +62,7 @@ files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
+cabal-tweak-dep-ver aeson '< 1.5' '< 2'
 
 %build
 %ghc_lib_build
