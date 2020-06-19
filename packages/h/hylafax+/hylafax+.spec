@@ -1,7 +1,7 @@
 #
 # spec file for package hylafax+
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -219,7 +219,7 @@ rm -f %{buildroot}%{faxspool}/COPYRIGHT
 %{_sbindir}/rchylafax-faxq
 %{_sbindir}/rchylafax-hfaxd
 %{_sbindir}/rchylafax
-%defattr(-,uucp,uucp,-)
+%defattr(-,root,root)
 %doc CHANGES CONTRIBUTORS COPYRIGHT README TODO VERSION README.SUSE sendonly.conf
 %exclude %{_libdir}/libfaxutil*
 %{_libdir}/libfax*
@@ -284,6 +284,7 @@ rm -f %{buildroot}%{faxspool}/COPYRIGHT
 %{_mandir}/man8/ondelay.8c%{ext_man}
 %{_mandir}/man8/probemodem.8c%{ext_man}
 %{_mandir}/man8/typetest.8c%{ext_man}
+%defattr(-,uucp,uucp,-)
 %dir %{_sysconfdir}/hylafax
 %dir %{_sysconfdir}/hylafax/faxmail
 %dir %{_sysconfdir}/hylafax/faxmail/application
@@ -377,6 +378,7 @@ rm -f %{buildroot}%{faxspool}/COPYRIGHT
 %config(noreplace) %{faxspool}%{_sysconfdir}/hosts.hfaxd
 
 %files -n libfaxutil%{lib_version}
+%defattr(-,root,root,-)
 %{_libdir}/libfaxutil*
 
 %files client
