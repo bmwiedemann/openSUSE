@@ -325,6 +325,7 @@ BuildRequires:  cron
 BuildRequires:  cryptsetup
 BuildRequires:  cups-libs
 BuildRequires:  curl
+BuildRequires:  dash
 BuildRequires:  dbus-1-x11
 BuildRequires:  dd_rescue
 BuildRequires:  dejavu-fonts
@@ -504,6 +505,7 @@ BuildRequires:  xkbcomp
 BuildRequires:  xkeyboard-config
 BuildRequires:  xmodmap
 BuildRequires:  xorg-x11-fonts
+BuildRequires:  xorg-x11-fonts-legacy
 BuildRequires:  xorg-x11-server
 BuildRequires:  xrandr
 BuildRequires:  xrefresh
@@ -637,7 +639,7 @@ ExcludeArch:    %arm
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0+
 Group:          Metapackages
-Version:        15.5
+Version:        15.6
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
