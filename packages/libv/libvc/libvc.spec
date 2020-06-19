@@ -57,13 +57,11 @@ Development files for libvc.
 
 %build
 autoreconf -fi
-%configure
+%configure --disable-static
 %make_build
 
 %install
 %make_install
-
-find %{buildroot} -type f -name "*.a"  -delete -print
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{c_lib} -p /sbin/ldconfig
