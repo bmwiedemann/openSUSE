@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-th-lift-instances
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name th-lift-instances
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.14
+Version:        0.1.17
 Release:        0
 Summary:        Lift instances for template-haskell for common data types
 License:        BSD-3-Clause
@@ -39,9 +39,9 @@ BuildRequires:  ghc-QuickCheck-devel
 %endif
 
 %description
-Most data types in haskell platform do not have Lift instances. This package
-provides orphan instances for containers, text, bytestring and vector.
-It also acts as a compat instances, definining instances not existing in
+Most data types in the haskell platform do not have Lift instances.
+This package provides orphan instances for containers, text, bytestring and
+vector. It also provides compat instances for older versions of
 'template-haskell'
 
 Note that <https://hackage.haskell.org/package/th-lift th-lift> package
