@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-xml-types
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name xml-types
 Name:           ghc-%{pkg_name}
-Version:        0.3.6
+Version:        0.3.7
 Release:        0
 Summary:        Basic types for representing XML
 License:        MIT
@@ -31,6 +31,16 @@ BuildRequires:  ghc-text-devel
 
 %description
 Basic types for representing XML.
+
+The idea is to have a full set of appropriate types, which various XML
+libraries can share. Instead of having equivalent-but-incompatible types for
+every binding, parser, or client, they all share the same types can can thus
+interoperate easily.
+
+This library contains complete types for most parts of an XML document,
+including the prologue, node tree, and doctype. Some basic combinators are
+included for common tasks, including traversing the node tree and filtering
+children.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -58,7 +68,7 @@ This package provides the Haskell %{pkg_name} library development files.
 %ghc_pkg_recache
 
 %files -f %{name}.files
-%license license.txt
+%license COPYING
 
 %files devel -f %{name}-devel.files
 

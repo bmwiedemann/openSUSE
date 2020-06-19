@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  9 09:10:54 UTC 2020 - psimons@suse.com
+
+- Update xml-types to version 0.3.7.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Fri Nov  8 16:15:16 UTC 2019 - Peter Simons <psimons@suse.com>
 
 - Drop obsolete group attributes.
