@@ -1,0 +1,18 @@
+<services>
+    <service name="tar_scm" mode="disabled">
+        <param name="url">git://github.com/ClusterLabs/ha_cluster_exporter.git</param>
+        <param name="scm">git</param>
+        <param name="revision">140c2fa9b0519219c216ef4c508a8f850ef33f7a</param>
+        <param name="include">dashboards</param>
+        <param name="include">LICENSE</param>
+        <param name="versionformat">1.0.0+git.%ct.%h</param>
+        <param name="filename">grafana-ha-cluster-dashboards</param>
+    </service>
+    <service name="set_version" mode="disabled">
+        <param name="file">grafana-ha-cluster-dashboards.spec</param>
+    </service>
+    <service name="recompress" mode="disabled">
+        <param name="file">*.tar</param>
+        <param name="compression">gz</param>
+    </service>
+</services>
