@@ -1,7 +1,7 @@
 #
 # spec file for package lynis
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2009-2013 Sascha Manns <saigkill@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,12 +23,12 @@
 %define _pluginsdir       %{_datadir}/lynis/plugins
 %define _dbdir            %{_datadir}/lynis/db
 Name:           lynis
-Version:        2.7.5
+Version:        3.0.0
 Release:        0
 Summary:        Security and System auditing tool
 License:        GPL-3.0-only
 Group:          System/Monitoring
-Url:            https://cisofy.com/lynis/
+URL:            https://cisofy.com/lynis/
 Source0:        https://cisofy.com/files/%{name}-%{version}.tar.gz
 Source2:        tests_binary_rpath
 Source3:        tests_file_permissionsDB

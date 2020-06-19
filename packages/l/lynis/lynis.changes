@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jun 18 12:17:36 UTC 2020 - Robert Frohl <rfrohl@suse.com>
+
+- Update to 3.0.0 
+  * Security issues
+    - CVE-2020-13882: incorrect Access Control because of a TOCTOU race condition (boo#1173141).
+    - CVE-2019-13033: local disclosure of license key when data is uploaded (boo#1173142).
+  * Breaking change: Non-interactive by default
+    - Lynis now runs non-interactive by default, to be more in line with the Unix
+      philosophy. So the previously used '--quick' option is now default, and the tool
+      will only wait when using the '--wait' option.
+  * Breaking change: Deprecated options
+    - Option: -c
+    - Option: --check-update/--info
+    - Option: --dump-options
+    - Option: --license-key
+  * Breaking change: Profile options
+    - The format of all profile options are converted (from key:value to key=value).
+      You may have to update the changes you made in your custom.prf.
+  * Security
+    - An important focus area for this release is on security. We added several
+      measures to further tighten any possible misuse.
+  * New: DevOps, Forensics, and pentesting mode
+    - This release adds initial support to allow defining a specialized type of audit
+      Using the relevant options, the scan will change base on the intended goal.
+- Further features, bug fixes and details about the release listed in
+  https://raw.githubusercontent.com/CISOfy/lynis/3.0.0/CHANGELOG.md
+
+-------------------------------------------------------------------
 Tue Jun 25 07:32:29 UTC 2019 - Robert Frohl <rfrohl@suse.com>
 
 - Update to 2.7.5
