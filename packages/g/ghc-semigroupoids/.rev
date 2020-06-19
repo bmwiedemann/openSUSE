@@ -139,4 +139,12 @@ A 'Category' is any 'Semigroupoid' for which the Yoneda lemma holds.</comment>
     <comment>version update</comment>
     <requestid>759502</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>46de4e69464068d60ffa6d0d117e0e11</srcmd5>
+    <version>5.3.4</version>
+    <time>1592579866</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815169</requestid>
+  </revision>
 </revisionlist>
