@@ -1,7 +1,7 @@
 #
 # spec file for package squidGuard
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,13 @@
 %define sg_config %{_sysconfdir}/squidguard.conf
 %define cgidir    /srv/www/cgi-bin
 %define imgdir    /srv/www/htdocs/images
-
 Name:           squidGuard
 Version:        1.4
 Release:        0
 Summary:        Filter plugin for squid
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Web/Proxy
-Url:            http://www.squidguard.org/
+URL:            http://www.squidguard.org/
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        README.SUSE
 Source2:        squidGuard.logrotate
@@ -93,6 +92,7 @@ for i in test*.conf.in; do
 done
 
 %build
+export CFLAGS="%{optflags} -fcommon"
 gettextize
 %configure \
 	--with-squiduser=squid \
@@ -103,9 +103,9 @@ gettextize
 	--with-sg-dbhome=%{sg_dbhome} \
 	--with-sg-logdir=%{sg_logdir} \
 	--with-ldap
-make %{?_smp_mflags}
+%make_build
 pushd contrib
-make %{?_smp_mflags}
+%make_build
 popd
 
 %install

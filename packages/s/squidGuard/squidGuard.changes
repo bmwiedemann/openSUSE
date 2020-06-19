@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 19 05:21:26 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building with gcc10
+
+-------------------------------------------------------------------
 Mon Jul  8 12:49:28 UTC 2019 - Martin Wilck <mwilck@suse.com>
 
 - Use "su" directive in logrotate conf file (boo#1104856)
