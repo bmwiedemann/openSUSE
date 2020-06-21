@@ -20,7 +20,7 @@
 %define         cni_doc_dir  %{_docdir}/cni-plugins
 
 Name:           cni-plugins
-Version:        0.8.4
+Version:        0.8.6
 Release:        0
 Summary:        Container Network Interface plugins
 License:        Apache-2.0

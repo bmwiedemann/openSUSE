@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Jun 17 08:38:27 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.6 (bsc#1172410)
+  * New features
+    * Support device id in host device plugin (#471).
+    * win-bridge: add support for portMappings capability (#475).
+    * Make host-device to work with virtio net device (#453).
+  * Small improvements
+    * ptp, bridge: disable accept_ra on the host-side interface (#484).
+    * modify the error url of windowscontainer (#460).
+    * portmap: Apply the DNAT hairpin to the whole subnet (#469). The DNAT hairpin
+      rule only allow the * container itself to access the ports it is exposing thru
+      the host IP. Other containers in the same subnet might also want to access this
+      service via the host IP, so apply this rule to the whole subnet instead of just
+      for the container.
+    * Unlock OS thread after netns is restored (#455).
+  * Bugfixes
+    * plugins/meta/sbr: Adjusted ipv6 address mask to /128 (#479). A /64 mask was used
+      which routed an entire cidr based on source, not only the bound address.
+    * check bridge's port state (#468). fix #463
+    * Reset the route flag before moving the rule (#472).
+    * replace juju/errors because of CNCF license scan (#458). ref to #457
+    * loopback: Fix ipv6 address checks (#442). Fixes a minor bug in loopback plugin.
+      The IPv6 address check loops over IPv4 addresses.
+- from version 0.8.5
+  * Bugfixes
+    * bridge: Fix for the case where kernel doesn't have CONFIG_BRIDGE_VLAN_FILTERING
+      (#434) fixes #370.
+    * vlan: Fix vlan plugin returning error when device is already removed (#438).
+  * Improvements
+    * sysctl: Improve support of sysctl name separators (#437).
+
+-------------------------------------------------------------------
 Thu Jan  9 13:24:41 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to version 0.8.4 (bsc#1160460):
