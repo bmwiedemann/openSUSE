@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 19 07:35:16 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.1.4
+  * Fix scaling for versions above qt59
+- Remove SOURCE2 since file LICENSE is now included in the tarball
+
+-------------------------------------------------------------------
 Wed Feb 26 13:53:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.1.1
