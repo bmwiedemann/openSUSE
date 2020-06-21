@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 14 09:00:42 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.2.4
+  * minor "bugfix" to avoid using pkg_resources module on import, 7918f58
+  * may help xonsh xonsh/xonsh#3607
+
+-------------------------------------------------------------------
 Mon Jun  8 13:45:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.2.3

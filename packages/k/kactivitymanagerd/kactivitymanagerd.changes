@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 16 14:34:49 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.1.php
+- Changes since 5.19.0:
+  * Fix removing of icons and activity settings for new and existing setups (kde#385814)
+  * Remove too strict Qt/KF5 deprecation rule
+
+-------------------------------------------------------------------
 Thu Jun  4 13:27:11 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.0

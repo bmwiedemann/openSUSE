@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Jun 19 14:34:32 UTC 2020 - dakechi@suse.com
+
+- Update to version 4.5.2+git.1592573838.1eee0863:
+  * fence_azure_arm: fixes to make MSI support work
+  * fence_azure_arm: log metadata when debugging
+  * fence_vmware_soap: log exception message for SSLError exception
+  * build: add PHONY target to use directory dependencies for parallel builds
+  * fence_aws: improve boto3_debug boolean handling
+  * fence_aws: catch ConnectionError and suppress traceback for caught exceptions
+  * fence_vmware_rest: support UTF-8 VM names
+  * fence_openstack: import novaclient and keystone only when needed
+  * build: add directory dependencies to avoid edge-case where generating manpages could happen before fencing.py was generated
+  * fence_vmware_rest: dont fail when receiving more than 1000 VM error during monitor-action
+  * fence_scsi: add readonly parameter
+  * fence_vmware_rest: fix exception and remove default value for filter parameter (which was shown in the manpage)
+  * fence_compute/fence_evacuate: fix --insecure parameter
+  * fence_vmware_rest: add filter parameter
+  * fence_vmware_cloud: improve exception handling in send_command()
+  * fence_vmware_rest: improve exception handling in send_command()
+  * Disable google api cache discovery
+  * fence_aws: fix Python 3 encoding issue
+  * fence_aws: Fix fence race, logging improvement and new debug option (#323)
+  * fence_aws: improve connect parameter logic, so region can be specified as parameter, while using role or keys from ~/.aws/config
+  * configure: fix agent filtering
+  * fence_mpath: fix --reserve parameter typo
+  * fence_vmware_rest: fix encoding to avoid issues with UTF-8 encoded comments
+  * fence_aws: improve logging and metadata/usage text
+  * fence_redfish/fence_vmware_soap: suppress warnings correctly with new python-requests
+  * fence_scsi use clusterwide nodeID instead of local nodelist ID of node (#289)
+  * fencing: only use inetX_only parameters for SSH based agents and fence_zvmip, and fixed syntax issue for Gawk v5+
+  * spec: fix openstack BuildRequires for distros without Python 3
+  * fence_virsh: fix status-based actions
+  * fence_vbox: fix status-based actions
+  * fix shortopt in fence-compute / fence_evacuate help messages
+  * spec: add missing BuildRequires found when backporting to Fedora
+  * fence_rhevm: added cookie file management (#304)
+  * fence_compute: Invert the force-down/service disable order
+  * fence_vmware_rest: improve logging
+  * spec: only build OpenStack agents on x86_64/ppc64le, and avoid pulling in openstack via ironic from all subpackage
+  * spec: add openstack subpackage
+  * fence_openstack: fix fail_usage() issue and a couple of other minor issues w/the newly added plug/port parameter
+  * fence_mpath: fix fail_usage() issue and a couple of other minor issues w/the newly added plug/port parameter
+  * fence_sbd: support errors on stderr
+  * CI: improve metadata check/update dependencies
+  * fence_mpath: use -n/--plug/port parameter to be able to use pcmk_host_map
+  * High: mpath: Correction of failure detection behavior from watchdog service.
+  * fence_zvmip: fix Python 3 issues
+
+-------------------------------------------------------------------
 Thu Sep 12 10:04:23 UTC 2019 - dakechi@suse.com
 
 - Update to version 4.4.0+git.1568100905.307de6f2:

@@ -222,4 +222,14 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     <comment>doesn't break new pylint anymore</comment>
     <requestid>807183</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>cdbb1c5adac5f551248b2693a21764a0</srcmd5>
+    <version>2.4.2</version>
+    <time>1592758310</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.2:
+  * `FunctionDef.is_generator` properly handles `yield` nodes in `While` tests
+  * Properly construct the arguments of infered property descriptors</comment>
+    <requestid>814800</requestid>
+  </revision>
 </revisionlist>

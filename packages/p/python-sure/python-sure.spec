@@ -1,7 +1,7 @@
 #
 # spec file for package python-sure
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,7 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/gabrielfalcao/sure
 Source:         https://files.pythonhosted.org/packages/source/s/sure/sure-%{version}.tar.gz
 BuildRequires:  %{python_module mock >= 2.0.0}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10.0}
 BuildRequires:  fdupes
@@ -52,7 +52,9 @@ sed -i '/^#!/d' sure/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+# requires nose
+rm tests/test_old_api.py
+%pytest
 
 %files %{python_files}
 %license COPYING

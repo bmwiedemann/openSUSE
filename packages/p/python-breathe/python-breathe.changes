@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Jun 15 10:33:19 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use tag, not random sha
+
+-------------------------------------------------------------------
+Sun Jun 14 09:41:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.19.1:
+  * Mark package as compatible with Sphinx 3.1.
+  * Refactoring. #528
+  * Make debug config variables available in conf.py. #533
+  * Fix warning formatting for function lookup. #535
+  * Correctly reverse nested namespaces in get_qualification. #540
+
+-------------------------------------------------------------------
+Tue Jun  2 12:57:04 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Increase required version of Sphinx to the one where module
+  cstructobject was introduced. (bsc#1168627)
+
+-------------------------------------------------------------------
+Wed May 27 12:01:04 UTC 2020 - pgajdos@suse.com
+
+- version update to 4.18.1
+  * 2020-05-10 - Breathe v4.18.1
+    - Fix friend class rendering and allow friend struct. #522
+    - Add extern examples to doc and remove variable hack. #526
+    - Render function candidates without using Sphinx directives. #524
+  * 2020-05-02 - Breathe v4.18.0
+    - Support tiles in verbatim blocks. #517
+  * 2020-05-01 - Breathe v4.17.0
+    - Scoped rendering, better integration with Sphinx, misc fixes. #512
+  * 2020-04-19 - Breathe v4.16.0
+    - Strictly depend on Sphinx's minor version. #498
+    - Simplifications and fixes, use more of modern Sphinx natively. #503
+    - Add section option to the doxygen(auto)file directive. #501
+    - Fix link generation when enum is inside a group (enum FQDN). #508
+    - Fix creation of LaTeX math formulas. #506
+    - Improve documentation for doxygen(auto)file section option. #509
+  * 2020-04-07 - Breathe v4.15.0
+    - Add license file to distribution. #492
+    - Update for Sphinx 3. #491
+
+-------------------------------------------------------------------
+Wed May 27 09:36:31 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Tue Apr 14 08:59:32 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.14.2:

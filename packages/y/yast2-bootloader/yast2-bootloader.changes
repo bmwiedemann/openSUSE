@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 18 08:37:58 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Avoid random failure in unit tests when there is a serial
+  console.
+- Related to bsc#1172390.
+- 4.3.6
+
+-------------------------------------------------------------------
 Wed Jun 10 13:51:24 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - AutoYaST: import AutoInstall only when needed (related to

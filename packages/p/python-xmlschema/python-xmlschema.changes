@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 11 03:46:21 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to version 1.2.0:
+  * Add ColumnarConverter class
+  * Add command-line interface utility for document API
+  * Fix a stable public API for XSD types, elements and attributes
+  * Add security modes for accessing URLs
+  * Clean component parsing
+  * Fix namespace loading for chameleon schemas
+  * Fix UPA checks with nested choice/all models
+- Install new binaries
+
+-------------------------------------------------------------------
 Tue Mar 24 15:10:44 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.1.2

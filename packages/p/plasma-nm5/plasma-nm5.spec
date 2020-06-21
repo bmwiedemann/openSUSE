@@ -19,22 +19,19 @@
 %bcond_without lang
 %define mm_support 1
 Name:           plasma-nm5
-Version:        5.19.0
+Version:        5.19.1
 Release:        0
 Summary:        Plasma applet written in QML for managing network connections
 License:        (LGPL-2.1-only OR LGPL-3.0-only) AND (GPL-2.0-only OR GPL-3.0-only)
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         plasma-nm-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/plasma-nm-%{version}.tar.xz
 %if %{with lang}
-Source1:        plasma-nm-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-nm-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-OPENSUSE
-Patch0:         0001-Revert-Show-correct-current-download-and-upload-spee.patch
-Patch1:         0001-Revert-Require-NM-1.4.0-and-newer.patch
-Patch2:         0001-Revert-Use-NetworkManager-DeviceStatistics-instead-o.patch
-Patch3:         0001-Revert-Inform-about-missing-NetworkManager-VPN-plugi.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-WIP-applet-Fix-inline-password-field-component-not-w.patch
 BuildRequires:  NetworkManager-devel >= 0.9.8.4
 BuildRequires:  extra-cmake-modules >= 1.3.0
 BuildRequires:  fdupes
@@ -261,11 +258,9 @@ Provides:       NetworkManager-fortisslvpn-frontend
 FortiGate SSL VPN plugin for plasma-nm components.
 
 %lang_package
+
 %prep
-%setup -q -n plasma-nm-%{version}
-%if 0%{?suse_version} < 1500
-%autopatch -p1
-%endif
+%autosetup -p1 -n plasma-nm-%{version}
 
 %build
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}

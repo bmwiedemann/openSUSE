@@ -83,4 +83,14 @@
     in a programmatically consumable format.</comment>
     <requestid>812628</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>60cf810927a0eba98585ae748f1ef532</srcmd5>
+    <version>0.2.4</version>
+    <time>1592758241</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.4
+  * minor &quot;bugfix&quot; to avoid using pkg_resources module on import, 7918f58
+  * may help xonsh xonsh/xonsh#3607</comment>
+    <requestid>814544</requestid>
+  </revision>
 </revisionlist>

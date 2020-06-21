@@ -86,4 +86,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>792824</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f587aa003c016c3fdabb658be14fae67</srcmd5>
+    <version>2.0.1</version>
+    <time>1592758257</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.1:
+  - **FIX**: Remove unused code.</comment>
+    <requestid>814548</requestid>
+  </revision>
 </revisionlist>

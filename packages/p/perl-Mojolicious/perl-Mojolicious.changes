@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 18 11:22:56 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 8.55
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.55  2020-06-18
+    - Fixed a regression in Mojo::DOM::CSS that caused some selectors to not be valid anymore.
+
+-------------------------------------------------------------------
 Mon Jun 15 03:12:12 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 8.54

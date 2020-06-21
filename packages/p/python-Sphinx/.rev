@@ -606,4 +606,41 @@
   kernel documentation. bsc#1166965</comment>
     <requestid>791929</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>db3631b77eda6205fa4454d7d8894f11</srcmd5>
+    <version>3.0.4</version>
+    <time>1592758107</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.0.4:
+  * Bugs fixed
+    + #7567: autodoc: parametrized types are shown twice for generic
+       types
+    + #7637: autodoc: system defined TypeVars are shown in Python 3.9
+    + #7611: md5 fails when OpenSSL FIPS is enabled
+    + #7626: release package does not contain &quot;CODE_OF_CONDUCT&quot;
+
+- Add python3.inv as a specific Source.
+- update to version 3.0.3
+  * Features added
+    * C, parse array declarators with static, qualifiers, and VLA specification.
+  * Bugs fixed
+    * #7516: autodoc: crashes if target object raises an error on accessing
+      its attributes
+- update to version 3.0.2
+  * Features added
+    * C, parse attributes and add :confval:`c_id_attributes`
+      and :confval:`c_paren_attributes` to support user-defined attributes.
+  * Bugs fixed
+    * #7461: py domain: fails with IndexError for empty tuple in type annotation
+    * #7510: py domain: keyword-only arguments are documented as having a default of
+      None
+    * #7418: std domain: :rst:role:`term` role could not match case-insensitively
+    * #7461: autodoc: empty tuple in type annotation is not shown correctly
+    * #7479: autodoc: Sphinx builds has been slower since 3.0.0 on mocking
+    * C++, fix spacing issue in east-const declarations.
+    * #7414: LaTeX: Xindy language options were incorrect
+    * sphinx crashes with ImportError on python3.5.1
+- update to 3.0.1</comment>
+    <requestid>811095</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jun 19 13:48:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Move files LICENSE, CHANGELOG.md and README.md into
+  package kImageAnnotator.
+
+-------------------------------------------------------------------
+Fri Jun 19 07:46:28 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3.0
+  New:
+  * Add option to translate UI.
+  * Saved image expand to include annotations out of border.
+  * Add support for stickers.
+  * Add tab context menu for close all tabs and close other tabs.
+  * Add Number with Arrow/pointer tool.
+  Changed:
+  * Make dropdown buttons show popup on click.
+  * Hide unavailable setting widgets.
+  * Make arrow size decrease with stroke size.
+  Fixed:
+  * Using select tool marks image as changed.
+  * Emoticon selector shows a half of current emoticon.
+  * FillPicker text or icon sometimes not visible.
+  * Wrong image scaling on hdpi screen.
+  * Copy area size differs from last capture.
+  * Number Tool not reset when switching between tabs.
+- Remove patches (fixed upstream):
+  * 0001-Improve-kcolorpicker-linking.patch
+  * 0001-Don-t-use-lowercase-Qt-keywords-in-public-headers.patch
+- Package language files
+
+-------------------------------------------------------------------
 Thu Apr 16 09:17:11 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patches to fix building against libkImageAnnotator:

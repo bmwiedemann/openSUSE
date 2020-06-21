@@ -70,4 +70,16 @@
 - use github tarball for tests</comment>
     <requestid>688684</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4931355f02538f540a8d1ec159935c93</srcmd5>
+    <version>2.2.2</version>
+    <time>1592758250</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.2
+  * Add &quot;small slice&quot; optimization to SortedList.__getitem__.
+  * Silence warning when testing SortedList.iloc.
+  * Fix a warning regarding classifiers in setup.py.
+  * Change SortedDict to avoid cycles for CPython reference counting.</comment>
+    <requestid>814546</requestid>
+  </revision>
 </revisionlist>

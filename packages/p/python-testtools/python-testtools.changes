@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 11 08:21:52 UTC 2020 - pgajdos@suse.com
+
+- move testsuite run to main package, remove -doc
+- added patches
+  unittest2 is not neccessary to run testsuite
+  + python-testtools-no-unittest2.patch
+
+-------------------------------------------------------------------
+Tue Jun  9 09:31:13 UTC 2020 - pgajdos@suse.com
+
+- remove unittest2 runtime dependency
+
+-------------------------------------------------------------------
 Mon Mar 16 10:57:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.4.0:

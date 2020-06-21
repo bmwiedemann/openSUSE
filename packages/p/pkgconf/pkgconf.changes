@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Jun 15 08:30:00 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to 1.7.3
+ - Bug fixes:
+  + Fix a possible out of boundary write when evaluating dependencies.
+    Patch by Tobias Stöckmann.
+  + Fix escaping logic on Windows.  Patch by Vincent Torri.
+  + Fix out of boundary reads and writes with a malformed fragment.
+    Patches by Tobias Stöckmann.
+  + Fix a possible out of boundary write when evaluating tuples.
+    Patch by Tobias Stöckmann.
+  + Fix a windows-specific crash relating to path fixups.
+  + Fix a possible out of boundary access in the parser for the
+    cross-compile database.  Patch by Tobias Stöckmann.
+  + Missing files for building with Meson are now included in the
+    tarball.  Patch by Neal Gompa.
+  + Fix calculation of package atoms on Windows with paths that
+    use both directory separator characters.
+  + Fix a possible buffer overflow involving newline escaping.
+    Patch by Tobias Stöckmann.
+  + Fix an out of boundary access in the parser.
+    Patch by Tobias Stöckmann.
+  + Fix leakage of strcmp() result value in pkgconf_compare_version()
+    responses.
+  + Return the default personality if loading a cross-compile
+    personality file failed.
+  + Do not complain about newlines when validating package versions.
+  + Properly detect strndup() on Windows when building with Meson.
+ - Enhancements:
+  + A new --shared option and WantDefaultStatic cross-compile
+    configuration option have been added.  This allows for toolchains
+    to specify that static linking should be used by default.
+  + Support for the PKG_CONFIG_MSVC_SYNTAX environment variable has
+    been added.  Patch by Dan Kegel.
+  + Support for the PKGCONF_PKG_PKGF_DONT_MERGE_SPECIAL_FRAGMENTS
+    client flag which disables emulation of freedesktop.org pkg-config
+    fragment merging semantics has been added.
+    Patch by Karen Arutyunov.
+
+-------------------------------------------------------------------
 Mon Aug 12 09:35:34 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 1.6.3

@@ -882,4 +882,13 @@
     <comment>KDE Frameworks 5.71.0</comment>
     <requestid>814399</requestid>
   </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>d619f524a4e1c36d759a5a8c4c7046e1</srcmd5>
+    <version>5.71.0</version>
+    <time>1592676743</time>
+    <user>dimstar_suse</user>
+    <comment>- Add new API needed by fix for plasma-nm5 (kde#423093):
+  * 0001-Add-property-to-access-the-ExpandableListItem-loader.patch</comment>
+    <requestid>815805</requestid>
+  </revision>
 </revisionlist>

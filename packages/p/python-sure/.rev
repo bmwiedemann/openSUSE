@@ -48,4 +48,12 @@
   * Reading the version dynamically was causing import errors that caused error when installing package. Refs #144</comment>
     <requestid>632155</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b526920dcbe9f47fe8e7ee162b4db77e</srcmd5>
+    <version>1.4.11</version>
+    <time>1592758234</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814132</requestid>
+  </revision>
 </revisionlist>

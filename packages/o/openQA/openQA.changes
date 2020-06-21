@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 18 19:25:32 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1592454623.560f44635:
+  * Prevent schedule from being reread unnecessarily
+  * Fix order of arguments in script/openqa-worker-cacheservice-minion
+  * Fix logic for changed schedule
+  * Reset locks when restarting the cache service Minion worker
+  * t: Attempt to fix sporadic timeout in basic.t in circleci
+  * Attempt to fix sporadically missing test modules due to 0d1061af
+
+-------------------------------------------------------------------
 Tue Jun 16 11:25:40 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1592287553.6689377a6:

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-xmlschema
-Version:        1.1.2
+Version:        1.2.0
 Release:        0
 Summary:        An XML Schema validator and decoder
 License:        MIT
@@ -33,6 +33,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-elementpath >= 1.4.0
 Requires:       python-lxml
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,6 +58,10 @@ export LANG="en_US.UTF8"
 export LANG="en_US.UTF8"
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+# Prepare for update-alternatives usage
+for p in json2xml validate xml2json; do 
+    %python_clone -a %{buildroot}%{_bindir}/xmlschema-$p
+done
 
 %check
 # test_element_tree_import_script is (easily workaroundable) https://github.com/sissaschool/xmlschema/issues/167
@@ -63,9 +69,22 @@ export LANG="en_US.UTF8"
 export LANG="en_US.UTF8"
 %pytest -k "not (test_element_tree_import_script or tests_factory)" tests
 
+%post
+%python_install_alternative xmlschema-json2xml
+%python_install_alternative xmlschema-validate
+%python_install_alternative xmlschema-xml2json
+
+%postun
+%python_uninstall_alternative xmlschema-json2xml
+%python_uninstall_alternative xmlschema-validate
+%python_uninstall_alternative xmlschema-xml2json
+
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license LICENSE
 %{python_sitelib}/*
+%python_alternative %{_bindir}/xmlschema-json2xml
+%python_alternative %{_bindir}/xmlschema-validate
+%python_alternative %{_bindir}/xmlschema-xml2json
 
 %changelog

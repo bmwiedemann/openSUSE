@@ -40,14 +40,15 @@ user location test, flooding test, etc
 %setup -q
 
 %build
+export CFLAGS="%optflags -fcommon"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %files
 %license COPYING

@@ -17,13 +17,15 @@
 
 
 Name:           breezy
-Version:        3.0.2
+Version:        3.1.0
 Release:        0
 Summary:        Friendly distributed version control system
 License:        GPL-2.0-or-later
 URL:            https://www.breezy-vcs.org/
 Source:         https://files.pythonhosted.org/packages/source/b/breezy/breezy-%{version}.tar.gz
-Patch0:         fix-tests.patch
+# PATCH-FIX-UPSTREAM 7531_7530.diff lp#1882589 mcepl@suse.com
+# Fix handling of a particular kind of broken committer id
+Patch1:         7531_7530.diff
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
@@ -31,6 +33,7 @@ BuildRequires:  python3-setuptools
 Requires:       python3-configobj
 Requires:       python3-dulwich >= 0.19.11
 Requires:       python3-fastimport >= 0.9.8
+Requires:       python3-patiencediff
 Requires:       python3-six >= 1.9.0
 Suggests:       python3-launchpadlib >= 1.6.3
 Provides:       bzr = %{version}
@@ -40,6 +43,7 @@ BuildRequires:  python3-configobj
 BuildRequires:  python3-dulwich >= 0.19.11
 BuildRequires:  python3-fastimport >= 0.9.8
 BuildRequires:  python3-fixtures >= 1.3.0
+BuildRequires:  python3-patiencediff
 BuildRequires:  python3-python-subunit
 BuildRequires:  python3-six >= 1.9.0
 BuildRequires:  python3-testtools
@@ -50,7 +54,7 @@ Friendly distributed version control system
 
 %prep
 %setup -q -n breezy-%{version}
-%patch0 -p1
+%autopatch -p1
 sed -ie "s,man/man1,share/man/man1," setup.py
 
 %build
@@ -80,7 +84,7 @@ export LANG=en_US.UTF8
   -x breezy.tests.test__dirstate_helpers.TestPackStat.test_ancient_ctime \
   -x breezy.tests.test__dirstate_helpers.TestPackStat.test_ancient_mtime \
 %endif
-%ifarch %arm
+%ifarch %{arm}
   -x breezy.tests.test__dirstate_helpers.TestPackStat.test_distant_ctime \
   -x breezy.tests.test__dirstate_helpers.TestPackStat.test_distant_mtime \
 %endif

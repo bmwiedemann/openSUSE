@@ -1,0 +1,33 @@
+=== modified file 'a/breezy/git/mapping.py'
+--- a/breezy/git/mapping.py
++++ b/breezy/git/mapping.py
+@@ -107,6 +107,8 @@ def fix_person_identifier(text):
+     if b"<" not in text and b">" not in text:
+         username = text
+         email = text
++    elif b">" not in text:
++        return text + b">"
+     else:
+         if text.rindex(b">") < text.rindex(b"<"):
+             raise ValueError(text)
+--- a/breezy/git/tests/test_mapping.py
++++ b/breezy/git/tests/test_mapping.py
+@@ -442,9 +442,14 @@ class FixPersonIdentifierTests(tests.Tes
+                          fix_person_identifier(b"bar@blah.nl"))
+ 
+     def test_fix(self):
+-        self.assertEqual(b"person <bar@blah.nl>",
+-                         fix_person_identifier(b"somebody <person <bar@blah.nl>>"))
+-        self.assertEqual(b"person <bar@blah.nl>",
+-                         fix_person_identifier(b"person<bar@blah.nl>"))
++        self.assertEqual(
++            b"person <bar@blah.nl>",
++            fix_person_identifier(b"somebody <person <bar@blah.nl>>"))
++        self.assertEqual(
++            b"person <bar@blah.nl>",
++            fix_person_identifier(b"person<bar@blah.nl>"))
++        self.assertEqual(
++            b'Rohan Garg <rohangarg@kubuntu.org>',
++            fix_person_identifier(b'Rohan Garg <rohangarg@kubuntu.org'))
+         self.assertRaises(ValueError,
+                           fix_person_identifier, b"person >bar@blah.nl<")

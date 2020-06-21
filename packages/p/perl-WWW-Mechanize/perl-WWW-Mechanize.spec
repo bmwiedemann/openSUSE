@@ -17,7 +17,7 @@
 
 
 Name:           perl-WWW-Mechanize
-Version:        1.97
+Version:        2.00
 Release:        0
 %define cpan_name WWW-Mechanize
 Summary:        Handy web browsing in a Perl object
@@ -36,14 +36,15 @@ BuildRequires:  perl(HTML::HeadParser)
 BuildRequires:  perl(HTML::TokeParser)
 BuildRequires:  perl(HTML::TreeBuilder) >= 5
 BuildRequires:  perl(HTTP::Cookies)
-BuildRequires:  perl(HTTP::Daemon) >= 6.05
+BuildRequires:  perl(HTTP::Daemon) >= 6.12
 BuildRequires:  perl(HTTP::Request) >= 1.30
 BuildRequires:  perl(HTTP::Request::Common)
 BuildRequires:  perl(HTTP::Response)
 BuildRequires:  perl(HTTP::Server::Simple::CGI)
 BuildRequires:  perl(LWP)
 BuildRequires:  perl(LWP::Simple)
-BuildRequires:  perl(LWP::UserAgent) >= 5.827
+BuildRequires:  perl(LWP::UserAgent) >= 6.45
+BuildRequires:  perl(Path::Tiny)
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
@@ -60,7 +61,7 @@ Requires:       perl(HTML::TreeBuilder) >= 5
 Requires:       perl(HTTP::Cookies)
 Requires:       perl(HTTP::Request) >= 1.30
 Requires:       perl(HTTP::Request::Common)
-Requires:       perl(LWP::UserAgent) >= 5.827
+Requires:       perl(LWP::UserAgent) >= 6.45
 Requires:       perl(URI::URL)
 Requires:       perl(URI::file)
 %{perl_requires}

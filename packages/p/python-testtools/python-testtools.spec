@@ -17,7 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-testtools
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-testtools%{psuffix}
 Version:        2.4.0
 Release:        0
 Summary:        Extensions to the Python Standard Library Unit Testing Framework
@@ -25,7 +33,10 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/testing-cabal/testtools
 Source:         https://files.pythonhosted.org/packages/source/t/testtools/testtools-%{version}.tar.gz
-BuildRequires:  %{python_module extras >= 1.0.0}
+# unittest2 is not neccessary to run testsuite
+# removing unittest2 entirely:
+# https://github.com/testing-cabal/testtools/pull/277
+Patch0:         python-testtools-no-unittest2.patch
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -35,8 +46,14 @@ Requires:       python-pbr >= 0.11
 Requires:       python-python-mimeparse
 Requires:       python-six >= 1.4.0
 Requires:       python-traceback2
-Requires:       python-unittest2 >= 1.1.0
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module extras >= 1.0.0}
+BuildRequires:  %{python_module python-mimeparse}
+BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module testscenarios}
+BuildRequires:  %{python_module traceback2}
+%endif
 %if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24
 Recommends:     python-fixtures >= 1.3.0
 %endif
@@ -50,18 +67,31 @@ also ports recent unittest changes all the way back to Python 2.4.
 
 %prep
 %setup -q -n testtools-%{version}
+%patch0 -p1
+sed -i '/unittest2/d' requirements.txt setup.cfg
 
+%if !%{with test}
 %build
 %python_build
+%endif
 
+%if !%{with test}
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
+%check
+%python_exec -m testtools.run testtools.tests.test_suite
+%endif
+
+%if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc NEWS README.rst
 %{python_sitelib}/testtools
 %{python_sitelib}/testtools-%{version}-py*.egg-info
+%endif
 
 %changelog

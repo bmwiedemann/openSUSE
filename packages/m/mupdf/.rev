@@ -524,4 +524,12 @@
     <comment>- Fix building with gcc10</comment>
     <requestid>814107</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>7f357d22387f140a5da055f9fe1ed2cc</srcmd5>
+    <version>1.17.0</version>
+    <time>1592758330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815901</requestid>
+  </revision>
 </revisionlist>

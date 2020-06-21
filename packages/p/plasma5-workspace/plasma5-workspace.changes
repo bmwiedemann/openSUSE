@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun 16 14:34:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.1.php
+- Changes since 5.19.0:
+  * Fix race in loading DBus activatable applets
+  * [applets/systemtray] Fix SNI "Always shown" restore (kde#422837)
+  * center align battery icon in compact representation (kde#421038)
+  * Fix actions for application search results
+  * Fix desktop actions for recently used applications
+  * Fix absolute icon paths
+  * Make hidden plasmoids vertically centered in the System Tray popup applet (kde#422685)
+  * Make KRunner KCM open in System Settings (kde#421427)
+  * Guard QQmldebuggingEnabled by an env var (kde#422228)
+  * fix confirmLogout setting for SessionManagement
+
+-------------------------------------------------------------------
 Thu Jun  4 13:27:14 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.0

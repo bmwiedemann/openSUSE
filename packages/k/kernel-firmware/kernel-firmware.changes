@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 15 09:54:47 UTC 2020 - tiwai@suse.com
+
+- Update to version 20200610 (git commit 887d2a103c2b):
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9260
+  * Mellanox: Add new mlxsw_spectrum firmware xx.2007.1168
+  * rtw88: RTL8822C: update firmware version to v9.9
+  * cxgb4: Update firmware to revision 1.24.17.0
+  * mrvl: add firmware for Prestera ASIC devices
+- Update topics list for prestra f/w (maybe better to split to a
+  new subpkg?)
+- Update copyright notice in template
+- Update aliases from 5.7 kernels
+
+-------------------------------------------------------------------
 Thu Jun  4 14:25:52 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Don't require coreutils, only mkdir and touch are used

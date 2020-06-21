@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 16 14:34:52 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.1.php
+- Changes since 5.19.0:
+  * Fix layouting bug for kicker in top panel (kde#399554)
+  * Fix too small result list when favorites are added (kde#422398)
+  * Fix unprintable characters
+
+-------------------------------------------------------------------
 Thu Jun  4 13:27:13 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.0

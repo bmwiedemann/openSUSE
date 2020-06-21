@@ -29,7 +29,7 @@ Name:           fence-agents
 Summary:        Fence Agents for High Availability
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Productivity/Clustering/HA
-Version:        4.4.0+git.1568100905.307de6f2
+Version:        4.5.2+git.1592573838.1eee0863
 Release:        0
 Url:            https://github.com/ClusterLabs/fence-agents
 Source0:        %{name}-%{version}.tar.xz

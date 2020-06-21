@@ -1,7 +1,7 @@
 #
 # spec file for package libserf
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -101,7 +101,7 @@ scons \
 	OPENSSL=%{_prefix} \
 	ZLIB=%{_prefix} \
 %if %{with gssapi}
-	GSSAPI=%{_prefix}/lib/mit \
+	GSSAPI=$(krb5-config --prefix) \
 %endif
 	DEBUG=yes \
 	CFLAGS="%{optflags}" \

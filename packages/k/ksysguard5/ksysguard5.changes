@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 16 14:34:50 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.1.php
+- Changes since 5.19.0.1:
+  * Add units to disk/all/{read,write} (kde#422643,kde#422644)
+
+-------------------------------------------------------------------
 Wed Jun 10 21:21:29 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.0.1

@@ -1,5 +1,5 @@
 #
-# spec file for package kwayland
+# spec file for package kwayland-server
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -24,15 +24,15 @@
 
 %bcond_without lang
 Name:           kwayland-server
-Version:        5.19.0
+Version:        5.19.1
 Release:        0
 Summary:        KDE Wayland server library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
-Source:         kwayland-server-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/kwayland-server-%{version}.tar.xz
 %if %{with lang}
-Source1:        kwayland-server-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/kwayland-server-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.5
@@ -59,7 +59,7 @@ kwayland-server provides a Qt-style server library wrapper for the Wayland libra
 
 %package -n %lname
 Summary:        KDE Wayland server library
-License:        LGPL-2.1-or-later
+Group:          Development/Libraries/KDE
 
 %description -n %lname
 kwayland-server provides a Qt-style server library wrapper for the Wayland libraries.

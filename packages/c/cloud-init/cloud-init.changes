@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 18 12:11:49 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Disable testing to aid elimination of unittest2 in Factory
+
+-------------------------------------------------------------------
 Wed May 20 11:23:04 UTC 2020 - Martin Loviska <mloviska@suse.com>
 
 - bsc#1170154: rsyslog warning, '~' is deprecated 

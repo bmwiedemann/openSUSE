@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Jun 19 07:25:11 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.0
+  New:
+  * Pasting image or path to image from clipboard.
+  * Save to same file when editing existing image.
+  * Support for PrtScrn hotkey.
+  * Auto save new screenshot.
+  * Remember file for already saved images.
+  * Add support for drag and drop images into ksnip.
+  * Insert embedded image into an existing screenshot.
+  * Show screenshots in tabs.
+  * Add Maximize Window Button in Print Preview.
+  * Click on toast message opens content.
+  * Remember last used folder in the save file dialog.
+  * Custom script for upload images.
+  * Disable single global hotkey by clearing the shortcut.
+  * Run ksnip as single instance.
+  * Add option for disabling tabs.
+  * Add count wildcard format for filename.
+  * Allow to change upload imgur URI.
+  * Support for adding custom stickers.
+  Changed:
+  * Save As option was added and useInstantSave config was removed.
+  * Disable scroll down with zero value in timeout widget.
+  * Disable unsupported capture modes in settings.
+  Fixed:
+  * Compilation error with Qt 5.15.
+  * Undo and redo translation reverts back to English.
+  * When 'Capture Save Location' is not set, ksnip fails to save.
+  * Connections that required ssl not working on AppImages.
+  * Main window hangs when pressing Esc on selecting screenshot
+    area state.
+  * Unable to resize ksnip window.
+  * Rectangle picker is not closed with -r -s switches when mouse
+    button is released.
+- Remove patch (fixed upstream):
+  * 0001-Fix-compilation-error-with-Qt-5.15-279.patch
+
+-------------------------------------------------------------------
 Fri Jun  5 18:29:58 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.6.2

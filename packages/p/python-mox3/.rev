@@ -151,4 +151,15 @@
     <comment></comment>
     <requestid>810901</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2af09668a35e337733110ae4c82dd722</srcmd5>
+    <version>1.1.0</version>
+    <time>1592758263</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * Bump default tox env from py37 to py38
+  * Add py38 package metadata
+  * Add Python3 victoria unit tests</comment>
+    <requestid>814550</requestid>
+  </revision>
 </revisionlist>

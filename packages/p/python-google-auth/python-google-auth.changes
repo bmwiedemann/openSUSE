@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jun 18 10:30:04 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.17.2
+  + Bug Fixes
+    * narrow acceptable RSA versions to maintain Python 2 compatability (#528)
+- from version 1.17.1
+  + Features
+    * add quota_project_id to service accounts; add with_quota_project methods (#519)
+- from version 1.16.1
+  + Bug Fixes
+    * fix impersonated cred exception doc (#521)
+    * replace environment variable GCE_METADATA_ROOT with GCE_METADATA_HOST (#433)
+- from version 1.16.0
+  + Features
+    * add helper func to for default encrypted cert (#514)
+  + Bug Fixes
+    * fix impersonated cred for gcloud (#516)
+
+-------------------------------------------------------------------
 Mon May 25 11:24:30 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.15.0:

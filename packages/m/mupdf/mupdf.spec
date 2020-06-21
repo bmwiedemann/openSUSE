@@ -18,17 +18,18 @@
 
 
 Name:           mupdf
-Version:        1.16.1
+Version:        1.17.0
 Release:        0
 Summary:        PDF and XPS Viewer and Parser and Rendering Library
 License:        AGPL-3.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://mupdf.com/
-Source0:        https://mupdf.com/downloads/archive/%{name}-%{version}-source.tar.xz
+Source0:        %{URL}/downloads/archive/%{name}-%{version}-source.tar.xz
 Source1:        %{name}.desktop
 Source2:        %{name}-gl.desktop
 Patch0:         mupdf-no-strip.patch
 BuildRequires:  Mesa-libGL-devel
+BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
@@ -69,9 +70,7 @@ This package contains development files needed for developing applications
 based on mupdf.
 
 %prep
-%setup -q -n %{name}-%{version}-source
-
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{version}-source
 
 for d in $(ls thirdparty | grep -v -e freeglut -e lcms2 -e mujs)
 do
@@ -110,6 +109,7 @@ chmod 0644 %{buildroot}%{_libdir}/*.a
 find %{buildroot}/%{_mandir} -type f -exec chmod 0644 {} \;
 find %{buildroot}/%{_includedir} -type f -exec chmod 0644 {} \;
 cd %{buildroot}/%{_bindir} && ln -s %{name}-x11 %{name}
+%fdupes %{buildroot}%{_datadir}
 
 %suse_update_desktop_file mupdf
 

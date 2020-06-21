@@ -27,7 +27,7 @@
 %endif
 %bcond_without python2
 Name:           python-wcwidth%{psuffix}
-Version:        0.2.3
+Version:        0.2.4
 Release:        0
 Summary:        Number of Terminal column cells of wide-character codes
 License:        MIT

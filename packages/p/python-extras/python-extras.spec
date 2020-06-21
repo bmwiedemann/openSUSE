@@ -1,7 +1,7 @@
 #
 # spec file for package python-extras
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# A build cycle exists between python-extras and python-testtools. Thus, only
-# enable testing with a build conditional (off by default):
-%bcond_with tests
-Name:           python-extras
+# A build cycle exists between python-extras and python-testtools.
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-extras%{psuffix}
 Version:        1.0.0
 Release:        0
 Summary:        Extra bits for Python
@@ -34,8 +40,7 @@ BuildRequires:  python-rpm-macros
 #!BuildIgnore:  python-extras
 BuildArch:      noarch
 # Test requirements:
-%if %{with tests}
-BuildRequires:  %{python_module nose}
+%if %{with test}
 BuildRequires:  %{python_module testtools}
 %endif
 %python_subpackages
@@ -52,18 +57,22 @@ general use outside of a testing context.
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-%if %{with tests}
-%check
-%python_exec %{_bindir}/nosetests
 %endif
 
+%if %{with test}
+%check
+%python_exec -m unittest discover
+%endif
+
+%if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc NEWS README.rst
 %{python_sitelib}/extras
 %{python_sitelib}/extras-%{version}-py%{python_version}.egg-info/
+%endif
 
 %changelog

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jun 18 15:50:33 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix the inline password field (kde#423093):
+  * 0001-WIP-applet-Fix-inline-password-field-component-not-w.patch
+- Drop patches for Leap 42.3:
+  * 0001-Revert-Show-correct-current-download-and-upload-spee.patch
+  * 0001-Revert-Inform-about-missing-NetworkManager-VPN-plugi.patch
+  * 0001-Revert-Use-NetworkManager-DeviceStatistics-instead-o.patch
+  * 0001-Revert-Require-NM-1.4.0-and-newer.patch
+
+-------------------------------------------------------------------
+Tue Jun 16 14:34:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.1.php
+- Changes since 5.19.0:
+  * openvpn: avoid enabling TCP if the remote has been set on another line
+  * Testing AccessPoint::Privacy flag is not enough to check whether AP is secured (kde#422740)
+
+-------------------------------------------------------------------
 Thu Jun  4 13:27:14 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.0

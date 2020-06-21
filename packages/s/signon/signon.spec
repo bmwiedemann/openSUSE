@@ -1,7 +1,7 @@
 #
 # spec file for package signon
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ URL:            https://gitlab.com/accounts-sso/signond
 Source:         https://gitlab.com/accounts-sso/%{_tarbasename}/-/archive/VERSION_%{version}/%{_tarbasename}-%{_version}.tar.bz2
 Source99:       baselibs.conf
 Patch0:         0001_Multilib.patch
+# PATCH-FIX-UPSTREAM https://gitlab.com/accounts-sso/signond/-/merge_requests/27
+Patch1:         0001-Don-t-use-fno-rtti.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  graphviz
@@ -133,10 +135,8 @@ This package contains the documentation for the Single Sign On Framework's
 plugins.
 
 %prep
-%setup -q -n %{_tarbasename}-%{_version}
+%autosetup -p1 -n %{_tarbasename}-%{_version}
 
-# Use correct libdir
-%patch0 -p1 -b .multilib
 sed -i 's|@LIB@|%{_lib}|g' \
   lib/plugins/signon-plugins.pc.in \
   lib/plugins/signon-plugins-common/signon-plugins-common.pc.in \

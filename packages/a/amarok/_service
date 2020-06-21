@@ -2,7 +2,7 @@
   <service name="tar_scm" mode="disabled">
    <param name="changesgenerate">enable</param>
    <param name="versionformat">2.9.70git.%ci~%h</param>
-   <param name="url">git://anongit.kde.org/amarok</param>
+   <param name="url">https://invent.kde.org/multimedia/amarok.git</param>
    <param name="scm">git</param>
    <param name="filename">amarok</param>
   </service>

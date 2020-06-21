@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 17 10:59:36 UTC 2020 - wbauer@tmo.at
+
+- Update to version 2.9.70git.20200617T113036~a69c9418b4:
+  * Fix activeTrackChanged connect in playlist navigators
+    (kde#418643,kde#389138)
+  * Fix Increase/Decrease Volume shortcuts (boo#1152751)
+  * Extract messages from QML
+  * Make include compatible with mariadb
+
+-------------------------------------------------------------------
 Sat May 09 10:13:26 UTC 2020 - christophe@krop.fr
 
 - Update to version 2.9.70git.20200505T221221~fd05592cd8:

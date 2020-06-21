@@ -52,4 +52,20 @@
     <comment></comment>
     <requestid>787856</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4399816d6b6121d5a9ac2603218f3aa6</srcmd5>
+    <version>1.2.0</version>
+    <time>1592758134</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0:
+  * Add ColumnarConverter class
+  * Add command-line interface utility for document API
+  * Fix a stable public API for XSD types, elements and attributes
+  * Add security modes for accessing URLs
+  * Clean component parsing
+  * Fix namespace loading for chameleon schemas
+  * Fix UPA checks with nested choice/all models
+- Install new binaries</comment>
+    <requestid>813363</requestid>
+  </revision>
 </revisionlist>

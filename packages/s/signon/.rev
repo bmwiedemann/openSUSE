@@ -47,4 +47,12 @@
     <comment>- Update to 8.60. No changelog available (boo#1157142)</comment>
     <requestid>749529</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4e882830f2d154829d4a40c6215507da</srcmd5>
+    <version>8.60</version>
+    <time>1592676737</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815697</requestid>
+  </revision>
 </revisionlist>

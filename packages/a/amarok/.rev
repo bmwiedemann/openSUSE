@@ -1069,4 +1069,12 @@ https://git.reviewboard.kde.org/r/104878/ (forwarded request 116659 from StefanB
 - Rebase 0001-Work-around-QTBUG-75797-for-openQA.patch</comment>
     <requestid>802611</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>2ed46e617870de443724550acc77abbe</srcmd5>
+    <version>2.9.70git.20200617T113036~a69c9418b4</version>
+    <time>1592676732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815528</requestid>
+  </revision>
 </revisionlist>

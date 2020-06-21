@@ -95,4 +95,12 @@
 - Co-own aclocal directory to avoid requiring autoconf-archive</comment>
     <requestid>722625</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a6277a531cce5bb7c1735e2ead47da32</srcmd5>
+    <version>1.7.3</version>
+    <time>1592759020</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814689</requestid>
+  </revision>
 </revisionlist>

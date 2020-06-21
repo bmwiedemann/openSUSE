@@ -1,7 +1,7 @@
 #
 # spec file for package python-Routes
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/R/Routes/Routes-%
 BuildRequires:  %{python_module WebOb}
 BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module repoze.lru}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
@@ -51,7 +51,7 @@ A Routing package for Python that matches URL's to dicts and vice versa.
 %python_install
 
 %check
-%python_exec %{_bindir}/nosetests
+%pytest --doctest-modules routes
 
 %files %{python_files}
 %license LICENSE.txt

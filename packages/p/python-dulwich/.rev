@@ -318,4 +318,31 @@
   them</comment>
     <requestid>790036</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b37b8a1b5235d1fbc40d18712ebcf759</srcmd5>
+    <version>0.20.2</version>
+    <time>1592758183</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.20.2:
+   * Brown bag release to fix uploads of Windows wheels.
+   * Publish binary wheels for: Windows, Linux, Mac OS X.
+     (Jelmer Vernooĳ, #711, #710, #629)
+   * Drop support for Python 2. (Jelmer Vernooĳ)
+   * Only return files from the loose store that look like git objects.
+   * Ignore agent= capability if sent by client.
+   * Don't break when encountering block devices.
+   * Decode URL paths in HttpGitClient using utf-8 rather than file system
+   * Fix pushing from a shallow clone.
+   * Don't send &quot;deepen None&quot; to server if graph walker
+     supports shallow. (Jelmer Vernooĳ, #747)
+   * Support tweaking the compression level for
+     loose objects through the &quot;core.looseCompression&quot; and
+     &quot;core.compression&quot; settings. (Jelmer Vernooĳ)
+   * Support tweaking the compression level for
+     pack objects through the &quot;core.packCompression&quot; and
+     &quot;core.compression&quot; settings. (Jelmer Vernooĳ)
+   * Add a &quot;dulwich.contrib.diffstat&quot; module.
+     (Kevin Hendricks)</comment>
+    <requestid>813452</requestid>
+  </revision>
 </revisionlist>

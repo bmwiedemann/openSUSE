@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Fri Jun 12 19:07:00 CEST 2020 - bp@suse.de
+
+- x86/speculation: PR_SPEC_FORCE_DISABLE enforcement for indirect
+  branches (bsc#1172783 CVE-2020-10768).
+- commit 3bb02b8
+
+-------------------------------------------------------------------
+Fri Jun 12 11:47:42 CEST 2020 - bp@suse.de
+
+- x86/speculation: Prevent rogue cross-process SSBD shutdown
+  (bsc#1172781 CVE-2020-10766).
+- commit 765c970
+
+-------------------------------------------------------------------
+Fri Jun 12 10:21:21 CEST 2020 - jslaby@suse.cz
+
+- iwl: fix crash in iwl_dbg_tlv_alloc_trigger (iwlwifi crash).
+- commit 6645a57
+
+-------------------------------------------------------------------
+Thu Jun 11 18:18:57 CEST 2020 - bp@suse.de
+
+- x86/speculation: Avoid force-disabling IBPB based on STIBP
+  and enhanced IBRS (bsc#1172782 CVE-2020-10767).
+- commit 5c5774f
+
+-------------------------------------------------------------------
+Thu Jun 11 09:35:04 CEST 2020 - jslaby@suse.cz
+
+- Linux 5.7.2 (bnc#1012628).
+- uprobes: ensure that uprobe->offset and ->ref_ctr_offset are
+  properly aligned (bnc#1012628).
+- x86/speculation: Add Ivy Bridge to affected list (bnc#1012628).
+- x86/speculation: Add SRBDS vulnerability and mitigation
+  documentation (bnc#1012628).
+- x86/speculation: Add Special Register Buffer Data Sampling
+  (SRBDS) mitigation (bnc#1012628).
+- x86/cpu: Add 'table' argument to cpu_matches() (bnc#1012628).
+- x86/cpu: Add a steppings field to struct x86_cpu_id
+  (bnc#1012628).
+- nvmem: qfprom: remove incorrect write support (bnc#1012628).
+- CDC-ACM: heed quirk also in error handling (bnc#1012628).
+- staging: rtl8712: Fix IEEE80211_ADDBA_PARAM_BUF_SIZE_MASK
+  (bnc#1012628).
+- tty: hvc_console, fix crashes on parallel open/close
+  (bnc#1012628).
+- vt: keyboard: avoid signed integer overflow in k_ascii
+  (bnc#1012628).
+- serial: 8250: Enable 16550A variants by default on non-x86
+  (bnc#1012628).
+- usb: musb: jz4740: Prevent lockup when CONFIG_SMP is set
+  (bnc#1012628).
+- usb: musb: Fix runtime PM imbalance on error (bnc#1012628).
+- usb: musb: start session in resume for host port (bnc#1012628).
+- iio: adc: stm32-adc: fix a wrong error message when probing
+  interrupts (bnc#1012628).
+- iio:chemical:pms7003: Fix timestamp alignment and prevent data
+  leak (bnc#1012628).
+- iio: vcnl4000: Fix i2c swapped word reading (bnc#1012628).
+- iio:chemical:sps30: Fix timestamp alignment (bnc#1012628).
+- USB: serial: ch341: fix lockup of devices with limited prescaler
+  (bnc#1012628).
+- USB: serial: ch341: add basis for quirk detection (bnc#1012628).
+- USB: serial: option: add Telit LE910C1-EUX compositions
+  (bnc#1012628).
+- USB: serial: usb_wwan: do not resubmit rx urb on fatal errors
+  (bnc#1012628).
+- USB: serial: qcserial: add DW5816e QDL support (bnc#1012628).
+- commit 936fe4f
+
+-------------------------------------------------------------------
 Wed Jun 10 13:51:14 CEST 2020 - jslaby@suse.cz
 
 - syscalls: fix offset type of ksys_ftruncate (bsc#1172699).

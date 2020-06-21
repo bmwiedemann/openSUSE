@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 15 11:48:02 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Autodetect krb5/mit prefix using krb5-config: prepare for future
+  changes on krb5 packaging.
+
+-------------------------------------------------------------------
 Tue Sep 18 08:18:49 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use %license for license install

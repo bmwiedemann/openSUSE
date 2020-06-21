@@ -894,4 +894,12 @@
     <comment></comment>
     <requestid>810865</requestid>
   </revision>
+  <revision rev="73" vrev="8">
+    <srcmd5>a98a4ca6bca0459f1edb5410a1196ce0</srcmd5>
+    <version>19.4</version>
+    <time>1592758326</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable testing to aid elimination of unittest2 in Factory</comment>
+    <requestid>815739</requestid>
+  </revision>
 </revisionlist>

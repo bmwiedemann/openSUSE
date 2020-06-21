@@ -16,26 +16,27 @@
 #
 
 
-%define sover   0_2_1
+%define sover   0_3_0
 %define libname libkImageAnnotator%{sover}
 Name:           kImageAnnotator
-Version:        0.2.1
+Version:        0.3.0
 Release:        0
 Summary:        Tool for annotating images
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://github.com/ksnip/kImageAnnotator
 Source:         https://github.com/ksnip/kImageAnnotator/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Improve-kcolorpicker-linking.patch
-Patch2:         0001-Don-t-use-lowercase-Qt-keywords-in-public-headers.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  kColorPicker-devel >= 0.1.1
+BuildRequires:  kColorPicker-devel >= 0.1.4
+BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(x11)
+
+%lang_package
 
 %description
 kImageAnnotator is a tool for annotating images.
@@ -56,27 +57,35 @@ Requires:       %{libname} = %{version}
 Development files for %{name} including headers and libraries
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 %cmake \
-    -DBUILD_EXAMPLE=ON
+    -DBUILD_EXAMPLE=ON \
+    -DCMAKE_INSTALL_DATAROOTDIR="share" 
 make %{?_smp_mflags}
 
 %install
 %cmake_install
+%find_lang %{name} --with-qt
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
-%files -n %{libname}
+%files
 %license LICENSE
+%doc CHANGELOG.md README.md
+
+%files -n %{libname}
 %{_libdir}/lib%{name}.so.%{version}
 
 %files devel
-%doc CHANGELOG.md README.md
 %{_libdir}/lib%{name}.so
 %{_libdir}/cmake/%{name}
 %{_includedir}/%{name}
+
+%files lang -f %{name}.lang
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/translations
 
 %changelog

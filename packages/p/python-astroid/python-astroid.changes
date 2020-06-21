@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 16 02:59:27 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.4.2:
+  * `FunctionDef.is_generator` properly handles `yield` nodes in `While` tests
+  * Properly construct the arguments of infered property descriptors 
+
+-------------------------------------------------------------------
 Thu May  7 04:36:24 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.4.1:

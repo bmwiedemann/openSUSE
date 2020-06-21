@@ -16,17 +16,16 @@
 #
 
 
-%define sover   0_1_1
+%define sover   0_1_4
 %define libname libkColorPicker%{sover}
 Name:           kColorPicker
-Version:        0.1.1
+Version:        0.1.4
 Release:        0
 Summary:        Qt based Color Picker with popup menu
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://github.com/DamirPorobic/kColorPicker
 Source:         https://github.com/DamirPorobic/kColorPicker/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/DamirPorobic/kColorPicker/master/LICENSE
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -57,7 +56,6 @@ Development files for %{name} including headers and libraries
 
 %prep
 %setup -q
-cp %{SOURCE1} .
 
 %build
 %cmake

@@ -17,7 +17,7 @@
 
 
 Name:           ksnip
-Version:        1.6.2
+Version:        1.7.0
 Release:        0
 Summary:        Screenshot tool
 License:        GPL-2.0-or-later
@@ -25,12 +25,11 @@ Group:          Productivity/Graphics/Other
 URL:            https://github.com/DamirPorobic/ksnip
 Source:         https://github.com/DamirPorobic/ksnip/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-compilation-error-with-Qt-5.15-279.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  kColorPicker-devel
-BuildRequires:  kImageAnnotator-devel >= 0.2.1
+BuildRequires:  kImageAnnotator-devel >= 0.2.2
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5LinguistTools)
@@ -38,6 +37,7 @@ BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
+BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)

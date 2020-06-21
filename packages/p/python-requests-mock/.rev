@@ -148,4 +148,37 @@
     <comment></comment>
     <requestid>731152</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fb87179d716d55072533a01b265e7ccf</srcmd5>
+    <version>1.8.0</version>
+    <time>1592758256</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.0:
+  * Remove requests 2.3 compatibility code
+  * Add release notes for reset function
+  * Add release note for session scoped mock
+  * Allow passing session as postiional argument
+  * Create bound method instead of a wrapper
+  * Added reset\_mock to \_RequestHistoryTracker and Adapter (#139)
+  * doc on session Mockers
+  * doc on nesting Mockers
+  * fix README.rst typo
+  * suggest Mocker for users unfamiliar with adapters
+  * update examples to mount adapter on 'mock://'
+  * fix global/session mock interactions and real\_http
+  * Added installation instructions
+  * Add release note for nested mocking
+  * fix redirects (#105) and mock nesting (#116)
+  * Mark IOReader object closed when using a stream
+  * Add the default response reason if not set
+  * Don't check that proxies are set in test
+  * Add StackOverflow tag to README
+  * Mention pytest fixture on the README
+  * Add background information to pytest doc
+  * docs: update examples to match Read the Docs
+  * Expose real\_http as a public property
+  * fix py27 error
+  * easier session scoped mock</comment>
+    <requestid>814547</requestid>
+  </revision>
 </revisionlist>

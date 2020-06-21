@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 18 15:48:02 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add new API needed by fix for plasma-nm5 (kde#423093):
+  * 0001-Add-property-to-access-the-ExpandableListItem-loader.patch
+
+-------------------------------------------------------------------
 Sun Jun  7 08:07:10 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.71.0

@@ -125,7 +125,7 @@ sed -i 's/\(link_all_deplibs=\)unknown/\1no/' configure
     --with-nss \
 %endif
 %endif
-    --with-gssapi=%{_libexecdir}/mit \
+    --with-gssapi=$(krb5-config --prefix) \
     --with-libidn2 \
     --with-libssh \
     --with-libmetalink \

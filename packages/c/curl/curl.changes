@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 12 09:07:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Change with-gssapi configure parameter: krb5 is changing location
+  in the future: ask krb5-config about the correct prefix values.
+
+-------------------------------------------------------------------
 Wed Apr 29 07:45:48 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 7.70.0

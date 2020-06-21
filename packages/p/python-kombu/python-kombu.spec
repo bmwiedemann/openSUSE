@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-kombu
-Version:        4.6.8
+Version:        4.6.10
 Release:        0
 Summary:        AMQP Messaging Framework for Python
 License:        BSD-3-Clause

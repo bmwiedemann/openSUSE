@@ -286,4 +286,12 @@
 - remove testtools-py37.patch: merged upstream</comment>
     <requestid>785593</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>be60b7631299b9391600931ee296fc05</srcmd5>
+    <version>2.4.0</version>
+    <time>1592758226</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813502</requestid>
+  </revision>
 </revisionlist>

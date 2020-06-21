@@ -1,0 +1,120 @@
+Index: testtools-2.4.0/testtools/tests/twistedsupport/test_matchers.py
+===================================================================
+--- testtools-2.4.0.orig/testtools/tests/twistedsupport/test_matchers.py	2018-04-05 01:27:14.000000000 +0200
++++ testtools-2.4.0/testtools/tests/twistedsupport/test_matchers.py	2020-06-11 11:53:14.265535365 +0200
+@@ -205,5 +205,10 @@ class FailureResultTests(NeedsTwistedTes
+ 
+ 
+ def test_suite():
+-    from unittest2 import TestLoader, TestSuite
++    from extras import try_imports
++    try:
++        import unittest2 as unittest
++    except ImportError:
++        import unittest
++    from unittest import TestLoader, TestSuite
+     return TestLoader().loadTestsFromName(__name__)
+Index: testtools-2.4.0/testtools/tests/twistedsupport/test_deferred.py
+===================================================================
+--- testtools-2.4.0.orig/testtools/tests/twistedsupport/test_deferred.py	2018-04-05 01:27:14.000000000 +0200
++++ testtools-2.4.0/testtools/tests/twistedsupport/test_deferred.py	2020-06-11 11:55:46.398407913 +0200
+@@ -52,5 +52,9 @@ class TestExtractResult(NeedsTwistedTest
+ 
+ 
+ def test_suite():
+-    from unittest2 import TestLoader, TestSuite
++    try:
++        import unittest2 as unittest
++    except ImportError:
++        import unittest
++    from unittest import TestLoader, TestSuite
+     return TestLoader().loadTestsFromName(__name__)
+Index: testtools-2.4.0/testtools/tests/twistedsupport/test_runtest.py
+===================================================================
+--- testtools-2.4.0.orig/testtools/tests/twistedsupport/test_runtest.py	2018-04-05 01:27:14.000000000 +0200
++++ testtools-2.4.0/testtools/tests/twistedsupport/test_runtest.py	2020-06-11 11:56:56.142811412 +0200
+@@ -1016,7 +1016,11 @@ class TestCaptureTwistedLogs(NeedsTwiste
+ 
+ 
+ def test_suite():
+-    from unittest2 import TestLoader, TestSuite
++    try:
++        import unittest2 as unittest
++    except ImportError:
++        import unittest
++    from unittest import TestLoader, TestSuite
+     return TestLoader().loadTestsFromName(__name__)
+ 
+ 
+Index: testtools-2.4.0/testtools/tests/test_testsuite.py
+===================================================================
+--- testtools-2.4.0.orig/testtools/tests/test_testsuite.py	2018-04-05 01:27:14.000000000 +0200
++++ testtools-2.4.0/testtools/tests/test_testsuite.py	2020-06-11 11:41:10.153375835 +0200
+@@ -5,7 +5,10 @@
+ import doctest
+ from pprint import pformat
+ import unittest
+-import unittest2
++try:
++    import unittest2
++except ImportError:
++    unittest2 = None
+ 
+ from extras import try_import
+ 
+@@ -16,6 +19,7 @@ from testtools import (
+     PlaceHolder,
+     TestByTestResult,
+     TestCase,
++    skipUnless
+     )
+ from testtools.compat import _u
+ from testtools.matchers import DocTestMatches, Equals
+@@ -214,6 +218,7 @@ TypeError: run() takes ...1 ...argument.
+         tests = list(enumerate(iterate_tests(suite)))
+         return [(test, _u(str(pos))) for pos, test in tests]
+ 
++    @skipUnless(unittest2, "requries unittest2")
+     def test_setupclass_skip(self):
+         # We should support setupclass skipping using cls.skipException.
+         # Because folk have used that.
+@@ -231,6 +236,7 @@ TypeError: run() takes ...1 ...argument.
+         suite.run(result)
+         self.assertEqual(['addSkip'], [item[0] for item in log])
+ 
++    @skipUnless(unittest2, "requries unittest2")
+     def test_setupclass_upcall(self):
+         # Note that this is kindof-a-case-test, kindof-suite, because
+         # setUpClass is linked between them.
+Index: testtools-2.4.0/testtools/tests/test_run.py
+===================================================================
+--- testtools-2.4.0.orig/testtools/tests/test_run.py	2015-11-07 18:27:33.000000000 +0100
++++ testtools-2.4.0/testtools/tests/test_run.py	2020-06-11 11:34:41.815147077 +0200
+@@ -10,7 +10,10 @@ from textwrap import dedent
+ from extras import try_import
+ fixtures = try_import('fixtures')
+ testresources = try_import('testresources')
+-import unittest2
++try:
++    import unittest2
++except ImportError:
++    unittest2 = None
+ 
+ import testtools
+ from testtools import TestCase, run, skipUnless
+@@ -191,6 +194,7 @@ class TestRun(TestCase):
+ testtools.runexample.TestFoo.test_quux
+ """, out.getvalue())
+ 
++    @skipUnless(unittest2, "requries unittest2")
+     def test_run_list_failed_import(self):
+         broken = self.useFixture(SampleTestFixture(broken=True))
+         out = StringIO()
+@@ -337,6 +341,7 @@ OK
+ """)))
+ 
+     @skipUnless(fixtures, "fixtures not present")
++    @skipUnless(unittest2, "requries unittest2")
+     def test_issue_16662(self):
+         # unittest's discover implementation didn't handle load_tests on
+         # packages. That is fixed pending commit, but we want to offer it

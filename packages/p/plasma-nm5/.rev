@@ -881,4 +881,26 @@
     <comment>Plasma 5.19.0</comment>
     <requestid>812335</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>154e0696f3405378fa32159887f775df</srcmd5>
+    <version>5.19.1</version>
+    <time>1592676742</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the inline password field (kde#423093):
+  * 0001-WIP-applet-Fix-inline-password-field-component-not-w.patch
+- Drop patches for Leap 42.3:
+  * 0001-Revert-Show-correct-current-download-and-upload-spee.patch
+  * 0001-Revert-Inform-about-missing-NetworkManager-VPN-plugi.patch
+  * 0001-Revert-Use-NetworkManager-DeviceStatistics-instead-o.patch
+  * 0001-Revert-Require-NM-1.4.0-and-newer.patch
+
+- Update to 5.19.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.1.php
+- Changes since 5.19.0:
+  * openvpn: avoid enabling TCP if the remote has been set on another line
+  * Testing AccessPoint::Privacy flag is not enough to check whether AP is secured (kde#422740)</comment>
+    <requestid>815804</requestid>
+  </revision>
 </revisionlist>
