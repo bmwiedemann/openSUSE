@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 16 14:34:50 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.1.php
+- Changes since 5.19.0:
+  * Address trailing newline and spaces (kde#422968)
+  * usb: parse version from sysfs entries correctly (kde#422610)
+
+-------------------------------------------------------------------
 Thu Jun  4 13:27:11 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.0
