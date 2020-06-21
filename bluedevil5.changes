@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 16 14:34:49 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.1.php
+- Changes since 5.19.0:
+  * [applet] Fix tooltip showing wrong name for connected device (kde#422691)
+
+-------------------------------------------------------------------
 Thu Jun  4 13:27:10 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.0
