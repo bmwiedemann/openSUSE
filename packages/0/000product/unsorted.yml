@@ -1403,6 +1403,7 @@ unsorted:
   - c-toxcore 
   - c-toxcore-daemon 
   - c-toxcore-devel 
+  - c2hs 
   - c3p0 
   - c3p0-javadoc 
   - c_count 
@@ -3787,6 +3788,10 @@ unsorted:
   - ghc 
   - ghc-Cabal 
   - ghc-Cabal-devel 
+  - ghc-DAV 
+  - ghc-DAV-devel 
+  - ghc-Decimal 
+  - ghc-Decimal-devel 
   - ghc-Diff 
   - ghc-Diff-devel 
   - ghc-Glob 
@@ -3799,8 +3804,12 @@ unsorted:
   - ghc-HsYAML-aeson 
   - ghc-HsYAML-aeson-devel 
   - ghc-HsYAML-devel 
+  - ghc-IfElse 
+  - ghc-IfElse-devel 
   - ghc-JuicyPixels 
   - ghc-JuicyPixels-devel 
+  - ghc-Only 
+  - ghc-Only-devel 
   - ghc-QuickCheck 
   - ghc-QuickCheck-devel 
   - ghc-SDL 
@@ -3811,6 +3820,8 @@ unsorted:
   - ghc-SDL-mixer-devel 
   - ghc-SHA 
   - ghc-SHA-devel 
+  - ghc-SafeSemaphore 
+  - ghc-SafeSemaphore-devel 
   - ghc-ShellCheck 
   - ghc-ShellCheck-devel 
   - ghc-StateVar 
@@ -3825,12 +3836,18 @@ unsorted:
   - ghc-aeson-devel 
   - ghc-aeson-pretty 
   - ghc-aeson-pretty-devel 
+  - ghc-alsa-core 
+  - ghc-alsa-core-devel 
+  - ghc-alsa-mixer 
+  - ghc-alsa-mixer-devel 
   - ghc-annotated-wl-pprint 
   - ghc-annotated-wl-pprint-devel 
   - ghc-ansi-terminal 
   - ghc-ansi-terminal-devel 
   - ghc-ansi-wl-pprint 
   - ghc-ansi-wl-pprint-devel 
+  - ghc-appar 
+  - ghc-appar-devel 
   - ghc-array 
   - ghc-array-devel 
   - ghc-asn1-encoding 
@@ -3839,6 +3856,8 @@ unsorted:
   - ghc-asn1-parse-devel 
   - ghc-asn1-types 
   - ghc-asn1-types-devel 
+  - ghc-assoc 
+  - ghc-assoc-devel 
   - ghc-async 
   - ghc-async-devel 
   - ghc-attoparsec 
@@ -3847,6 +3866,8 @@ unsorted:
   - ghc-attoparsec-iso8601-devel 
   - ghc-auto-update 
   - ghc-auto-update-devel 
+  - ghc-aws 
+  - ghc-aws-devel 
   - ghc-base 
   - ghc-base-compat 
   - ghc-base-compat-batteries 
@@ -3865,6 +3886,8 @@ unsorted:
   - ghc-base64-bytestring-devel 
   - ghc-basement 
   - ghc-basement-devel 
+  - ghc-bencode 
+  - ghc-bencode-devel 
   - ghc-bifunctors 
   - ghc-bifunctors-devel 
   - ghc-binary 
@@ -3879,11 +3902,21 @@ unsorted:
   - ghc-blaze-html-devel 
   - ghc-blaze-markup 
   - ghc-blaze-markup-devel 
+  - ghc-bloomfilter 
+  - ghc-bloomfilter-devel 
   - ghc-bootstrap 
   - ghc-bootstrap-helpers 
+  - ghc-brick 
+  - ghc-brick-devel 
+  - ghc-bsb-http-chunked 
+  - ghc-bsb-http-chunked-devel 
   - ghc-byteable 
   - ghc-byteable-devel 
+  - ghc-byteorder 
+  - ghc-byteorder-devel 
   - ghc-bytestring 
+  - ghc-bytestring-builder 
+  - ghc-bytestring-builder-devel 
   - ghc-bytestring-devel 
   - ghc-cabal-doctest 
   - ghc-cabal-doctest-devel 
@@ -3893,8 +3926,16 @@ unsorted:
   - ghc-call-stack-devel 
   - ghc-case-insensitive 
   - ghc-case-insensitive-devel 
+  - ghc-cassava 
+  - ghc-cassava-devel 
+  - ghc-cassava-megaparsec 
+  - ghc-cassava-megaparsec-devel 
   - ghc-cereal 
   - ghc-cereal-devel 
+  - ghc-cipher-aes 
+  - ghc-cipher-aes-devel 
+  - ghc-clientsession 
+  - ghc-clientsession-devel 
   - ghc-clock 
   - ghc-clock-devel 
   - ghc-cmark-gfm 
@@ -3906,12 +3947,16 @@ unsorted:
   - ghc-comonad 
   - ghc-comonad-devel 
   - ghc-compiler 
+  - ghc-concurrent-output 
+  - ghc-concurrent-output-devel 
   - ghc-conduit 
   - ghc-conduit-combinators 
   - ghc-conduit-combinators-devel 
   - ghc-conduit-devel 
   - ghc-conduit-extra 
   - ghc-conduit-extra-devel 
+  - ghc-config-ini 
+  - ghc-config-ini-devel 
   - ghc-connection 
   - ghc-connection-devel 
   - ghc-constraints 
@@ -3920,18 +3965,38 @@ unsorted:
   - ghc-containers-devel 
   - ghc-contravariant 
   - ghc-contravariant-devel 
+  - ghc-control-monad-free 
+  - ghc-control-monad-free-devel 
   - ghc-cookie 
   - ghc-cookie-devel 
+  - ghc-cprng-aes 
+  - ghc-cprng-aes-devel 
+  - ghc-crypto-api 
+  - ghc-crypto-api-devel 
+  - ghc-crypto-cipher-types 
+  - ghc-crypto-cipher-types-devel 
+  - ghc-crypto-random 
+  - ghc-crypto-random-devel 
   - ghc-cryptohash 
   - ghc-cryptohash-conduit 
   - ghc-cryptohash-conduit-devel 
   - ghc-cryptohash-devel 
+  - ghc-cryptohash-md5 
+  - ghc-cryptohash-md5-devel 
+  - ghc-cryptohash-sha1 
+  - ghc-cryptohash-sha1-devel 
   - ghc-cryptohash-sha256 
   - ghc-cryptohash-sha256-devel 
   - ghc-cryptonite 
   - ghc-cryptonite-conduit 
   - ghc-cryptonite-conduit-devel 
   - ghc-cryptonite-devel 
+  - ghc-css-text 
+  - ghc-css-text-devel 
+  - ghc-csv 
+  - ghc-csv-devel 
+  - ghc-data-clist 
+  - ghc-data-clist-devel 
   - ghc-data-default 
   - ghc-data-default-class 
   - ghc-data-default-class-devel 
@@ -3950,6 +4015,8 @@ unsorted:
   - ghc-digest-devel 
   - ghc-directory 
   - ghc-directory-devel 
+  - ghc-disk-free-space 
+  - ghc-disk-free-space-devel 
   - ghc-distribution-opensuse 
   - ghc-distribution-opensuse-devel 
   - ghc-distributive 
@@ -3970,10 +4037,14 @@ unsorted:
   - ghc-edit-distance-devel 
   - ghc-either 
   - ghc-either-devel 
+  - ghc-email-validate 
+  - ghc-email-validate-devel 
   - ghc-emojis 
   - ghc-emojis-devel 
   - ghc-enclosed-exceptions 
   - ghc-enclosed-exceptions-devel 
+  - ghc-entropy 
+  - ghc-entropy-devel 
   - ghc-erf 
   - ghc-erf-devel 
   - ghc-errors 
@@ -3988,11 +4059,19 @@ unsorted:
   - ghc-fail-devel 
   - ghc-fast-logger 
   - ghc-fast-logger-devel 
+  - ghc-fdo-notify 
+  - ghc-fdo-notify-devel 
+  - ghc-feed 
+  - ghc-feed-devel 
+  - ghc-fgl 
+  - ghc-fgl-devel 
   - ghc-file-embed 
   - ghc-file-embed-devel 
   - ghc-filelock 
   - ghc-filelock-devel 
   - ghc-filepath 
+  - ghc-filepath-bytestring 
+  - ghc-filepath-bytestring-devel 
   - ghc-filepath-devel 
   - ghc-foldl 
   - ghc-foldl-devel 
@@ -4024,12 +4103,22 @@ unsorted:
   - ghc-haddock-library-devel 
   - ghc-hashable 
   - ghc-hashable-devel 
+  - ghc-hashtables 
+  - ghc-hashtables-devel 
   - ghc-haskeline 
   - ghc-haskeline-devel 
+  - ghc-haskell-lexer 
+  - ghc-haskell-lexer-devel 
   - ghc-hi-file-parser 
   - ghc-hi-file-parser-devel 
   - ghc-hinotify 
   - ghc-hinotify-devel 
+  - ghc-hjsmin 
+  - ghc-hjsmin-devel 
+  - ghc-hledger 
+  - ghc-hledger-devel 
+  - ghc-hledger-lib 
+  - ghc-hledger-lib-devel 
   - ghc-hostname 
   - ghc-hostname-devel 
   - ghc-hourglass 
@@ -4042,6 +4131,8 @@ unsorted:
   - ghc-hs-bibutils-devel 
   - ghc-hsemail 
   - ghc-hsemail-devel 
+  - ghc-hslogger 
+  - ghc-hslogger-devel 
   - ghc-hslua 
   - ghc-hslua-devel 
   - ghc-hslua-module-system 
@@ -4058,6 +4149,8 @@ unsorted:
   - ghc-hspec-expectations-devel 
   - ghc-hspec-smallcheck 
   - ghc-hspec-smallcheck-devel 
+  - ghc-html 
+  - ghc-html-devel 
   - ghc-http-api-data 
   - ghc-http-api-data-devel 
   - ghc-http-client 
@@ -4066,8 +4159,12 @@ unsorted:
   - ghc-http-client-tls-devel 
   - ghc-http-conduit 
   - ghc-http-conduit-devel 
+  - ghc-http-date 
+  - ghc-http-date-devel 
   - ghc-http-types 
   - ghc-http-types-devel 
+  - ghc-http2 
+  - ghc-http2-devel 
   - ghc-hxt 
   - ghc-hxt-charproperties 
   - ghc-hxt-charproperties-devel 
@@ -4082,6 +4179,8 @@ unsorted:
   - ghc-integer-logarithms-devel 
   - ghc-invariant 
   - ghc-invariant-devel 
+  - ghc-iproute 
+  - ghc-iproute-devel 
   - ghc-ipynb 
   - ghc-ipynb-devel 
   - ghc-iso8601-time 
@@ -4092,10 +4191,16 @@ unsorted:
   - ghc-jira-wiki-markup-devel 
   - ghc-kan-extensions 
   - ghc-kan-extensions-devel 
+  - ghc-language-c 
+  - ghc-language-c-devel 
+  - ghc-language-javascript 
+  - ghc-language-javascript-devel 
   - ghc-lens 
   - ghc-lens-devel 
   - ghc-libiserv 
   - ghc-libiserv-devel 
+  - ghc-libmpd 
+  - ghc-libmpd-devel 
   - ghc-libraries 
   - ghc-libxml-sax 
   - ghc-libxml-sax-devel 
@@ -4107,8 +4212,12 @@ unsorted:
   - ghc-lifted-base-devel 
   - ghc-logict 
   - ghc-logict-devel 
+  - ghc-lucid 
+  - ghc-lucid-devel 
   - ghc-lukko 
   - ghc-lukko-devel 
+  - ghc-magic 
+  - ghc-magic-devel 
   - ghc-managed 
   - ghc-managed-devel 
   - ghc-math-functions 
@@ -4119,10 +4228,20 @@ unsorted:
   - ghc-memory-devel 
   - ghc-microlens 
   - ghc-microlens-devel 
+  - ghc-microlens-ghc 
+  - ghc-microlens-ghc-devel 
+  - ghc-microlens-mtl 
+  - ghc-microlens-mtl-devel 
+  - ghc-microlens-platform 
+  - ghc-microlens-platform-devel 
+  - ghc-microlens-th 
+  - ghc-microlens-th-devel 
   - ghc-mime-types 
   - ghc-mime-types-devel 
   - ghc-mintty 
   - ghc-mintty-devel 
+  - ghc-mmorph 
+  - ghc-mmorph-devel 
   - ghc-monad-control 
   - ghc-monad-control-devel 
   - ghc-monad-logger 
@@ -4131,6 +4250,8 @@ unsorted:
   - ghc-monad-loops-devel 
   - ghc-mono-traversable 
   - ghc-mono-traversable-devel 
+  - ghc-mountpoints 
+  - ghc-mountpoints-devel 
   - ghc-mtl 
   - ghc-mtl-devel 
   - ghc-mustache 
@@ -4139,8 +4260,18 @@ unsorted:
   - ghc-mwc-random-devel 
   - ghc-neat-interpolation 
   - ghc-neat-interpolation-devel 
+  - ghc-netlink 
+  - ghc-netlink-devel 
   - ghc-network 
+  - ghc-network-bsd 
+  - ghc-network-bsd-devel 
+  - ghc-network-byte-order 
+  - ghc-network-byte-order-devel 
   - ghc-network-devel 
+  - ghc-network-info 
+  - ghc-network-info-devel 
+  - ghc-network-multicast 
+  - ghc-network-multicast-devel 
   - ghc-network-uri 
   - ghc-network-uri-devel 
   - ghc-old-locale 
@@ -4181,18 +4312,28 @@ unsorted:
   - ghc-pem-devel 
   - ghc-persistent 
   - ghc-persistent-devel 
+  - ghc-persistent-sqlite 
+  - ghc-persistent-sqlite-devel 
   - ghc-persistent-template 
   - ghc-persistent-template-devel 
+  - ghc-postgresql-libpq 
+  - ghc-postgresql-libpq-devel 
+  - ghc-postgresql-simple 
+  - ghc-postgresql-simple-devel 
   - ghc-pretty 
   - ghc-pretty-devel 
+  - ghc-pretty-hex 
+  - ghc-pretty-hex-devel 
+  - ghc-pretty-show 
+  - ghc-pretty-show-devel 
   - ghc-primitive 
   - ghc-primitive-devel 
   - ghc-process 
   - ghc-process-devel 
   - ghc-profunctors 
   - ghc-profunctors-devel 
-  - ghc-project-template 
-  - ghc-project-template-devel 
+  - ghc-psqueues 
+  - ghc-psqueues-devel 
   - ghc-quickcheck-io 
   - ghc-quickcheck-io-devel 
   - ghc-random 
@@ -4231,8 +4372,14 @@ unsorted:
   - ghc-rpm-macros-extra 
   - ghc-safe 
   - ghc-safe-devel 
+  - ghc-safe-exceptions 
+  - ghc-safe-exceptions-devel 
+  - ghc-sandi 
+  - ghc-sandi-devel 
   - ghc-scientific 
   - ghc-scientific-devel 
+  - ghc-securemem 
+  - ghc-securemem-devel 
   - ghc-semigroupoids 
   - ghc-semigroupoids-devel 
   - ghc-semigroups 
@@ -4241,10 +4388,16 @@ unsorted:
   - ghc-setenv-devel 
   - ghc-setlocale 
   - ghc-setlocale-devel 
+  - ghc-shakespeare 
+  - ghc-shakespeare-devel 
   - ghc-shelly 
   - ghc-shelly-devel 
   - ghc-silently 
   - ghc-silently-devel 
+  - ghc-simple-sendfile 
+  - ghc-simple-sendfile-devel 
+  - ghc-skein 
+  - ghc-skein-devel 
   - ghc-skylighting 
   - ghc-skylighting-core 
   - ghc-skylighting-core-devel 
@@ -4271,12 +4424,22 @@ unsorted:
   - ghc-system-fileio-devel 
   - ghc-system-filepath 
   - ghc-system-filepath-devel 
+  - ghc-tabular 
+  - ghc-tabular-devel 
   - ghc-tagged 
   - ghc-tagged-devel 
   - ghc-tagsoup 
   - ghc-tagsoup-devel 
   - ghc-tar 
   - ghc-tar-devel 
+  - ghc-tasty 
+  - ghc-tasty-devel 
+  - ghc-tasty-hunit 
+  - ghc-tasty-hunit-devel 
+  - ghc-tasty-quickcheck 
+  - ghc-tasty-quickcheck-devel 
+  - ghc-tasty-rerun 
+  - ghc-tasty-rerun-devel 
   - ghc-template-haskell 
   - ghc-template-haskell-devel 
   - ghc-temporary 
@@ -4293,6 +4456,10 @@ unsorted:
   - ghc-text-devel 
   - ghc-text-metrics 
   - ghc-text-metrics-devel 
+  - ghc-text-short 
+  - ghc-text-short-devel 
+  - ghc-text-zipper 
+  - ghc-text-zipper-devel 
   - ghc-tf-random 
   - ghc-tf-random-devel 
   - ghc-th-abstraction 
@@ -4309,18 +4476,28 @@ unsorted:
   - ghc-th-reify-many-devel 
   - ghc-th-utilities 
   - ghc-th-utilities-devel 
+  - ghc-these 
+  - ghc-these-devel 
   - ghc-time 
   - ghc-time-compat 
   - ghc-time-compat-devel 
   - ghc-time-devel 
   - ghc-time-locale-compat 
   - ghc-time-locale-compat-devel 
+  - ghc-time-manager 
+  - ghc-time-manager-devel 
+  - ghc-timeit 
+  - ghc-timeit-devel 
   - ghc-timezone-olson 
   - ghc-timezone-olson-devel 
   - ghc-timezone-series 
   - ghc-timezone-series-devel 
   - ghc-tls 
   - ghc-tls-devel 
+  - ghc-tls-session-manager 
+  - ghc-tls-session-manager-devel 
+  - ghc-torrent 
+  - ghc-torrent-devel 
   - ghc-transformers 
   - ghc-transformers-base 
   - ghc-transformers-base-devel 
@@ -4333,6 +4510,10 @@ unsorted:
   - ghc-type-equality-devel 
   - ghc-typed-process 
   - ghc-typed-process-devel 
+  - ghc-uglymemo 
+  - ghc-uglymemo-devel 
+  - ghc-unbounded-delays 
+  - ghc-unbounded-delays-devel 
   - ghc-unicode-transforms 
   - ghc-unicode-transforms-devel 
   - ghc-unix 
@@ -4349,8 +4530,14 @@ unsorted:
   - ghc-unordered-containers-devel 
   - ghc-utf8-string 
   - ghc-utf8-string-devel 
+  - ghc-utility-ht 
+  - ghc-utility-ht-devel 
+  - ghc-uuid 
+  - ghc-uuid-devel 
   - ghc-uuid-types 
   - ghc-uuid-types-devel 
+  - ghc-vault 
+  - ghc-vault-devel 
   - ghc-vector 
   - ghc-vector-algorithms 
   - ghc-vector-algorithms-devel 
@@ -4363,6 +4550,26 @@ unsorted:
   - ghc-vector-th-unbox-devel 
   - ghc-void 
   - ghc-void-devel 
+  - ghc-vty 
+  - ghc-vty-devel 
+  - ghc-wai 
+  - ghc-wai-app-static 
+  - ghc-wai-app-static-devel 
+  - ghc-wai-devel 
+  - ghc-wai-extra 
+  - ghc-wai-extra-devel 
+  - ghc-wai-logger 
+  - ghc-wai-logger-devel 
+  - ghc-warp 
+  - ghc-warp-devel 
+  - ghc-warp-tls 
+  - ghc-warp-tls-devel 
+  - ghc-wcwidth 
+  - ghc-wcwidth-devel 
+  - ghc-wizards 
+  - ghc-wizards-devel 
+  - ghc-word-wrap 
+  - ghc-word-wrap-devel 
   - ghc-word8 
   - ghc-word8-devel 
   - ghc-x509 
@@ -4379,6 +4586,8 @@ unsorted:
   - ghc-xml-conduit 
   - ghc-xml-conduit-devel 
   - ghc-xml-devel 
+  - ghc-xml-hamlet 
+  - ghc-xml-hamlet-devel 
   - ghc-xml-types 
   - ghc-xml-types-devel 
   - ghc-xmobar 
@@ -4387,8 +4596,20 @@ unsorted:
   - ghc-xmonad-contrib 
   - ghc-xmonad-contrib-devel 
   - ghc-xmonad-devel 
+  - ghc-xss-sanitize 
+  - ghc-xss-sanitize-devel 
   - ghc-yaml 
   - ghc-yaml-devel 
+  - ghc-yesod 
+  - ghc-yesod-core 
+  - ghc-yesod-core-devel 
+  - ghc-yesod-devel 
+  - ghc-yesod-form 
+  - ghc-yesod-form-devel 
+  - ghc-yesod-persistent 
+  - ghc-yesod-persistent-devel 
+  - ghc-yesod-static 
+  - ghc-yesod-static-devel 
   - ghc-zip-archive 
   - ghc-zip-archive-devel 
   - ghc-zlib 
@@ -4449,6 +4670,8 @@ unsorted:
   - gio-sharp3 
   - gio-sharp3-devel 
   - girara-devel 
+  - git-annex 
+  - git-annex-bash-completion 
   - git-arch 
   - git-bz 
   - git-cola 
@@ -4979,6 +5202,7 @@ unsorted:
   - gradle-bootstrap 
   - gradle-local 
   - grafana 
+  - grafana-ha-cluster-dashboards 
   - grafana-piechart-panel 
   - grafana-status-panel 
   - grail 
@@ -5539,6 +5763,9 @@ unsorted:
   - hivex 
   - hivex-devel 
   - hivex-lang 
+  - hledger 
+  - hledger-interest 
+  - hledger-ui 
   - hmaccalc 
   - hmcfgusb 
   - hmconv 
@@ -6472,7 +6699,9 @@ unsorted:
   - k3s 
   - k3s-hyperkube 
   - kColorPicker-devel 
+  - kImageAnnotator 
   - kImageAnnotator-devel 
+  - kImageAnnotator-lang 
   - kaccounts-integration-32bit: [x86_64] 
   - kaccounts-integration-devel 
   - kaccounts-integration-devel-32bit: [x86_64] 
@@ -10008,8 +10237,8 @@ unsorted:
   - libjte-devel 
   - libjthread1_3_3 
   - libjxrglue0 
-  - libkColorPicker0_1_1 
-  - libkImageAnnotator0_2_1 
+  - libkColorPicker0_1_4 
+  - libkImageAnnotator0_3_0 
   - libkaccounts1-32bit: [x86_64] 
   - libkate-devel 
   - libkate-tools 
@@ -22807,14 +23036,10 @@ unsorted:
   - ruby2.6-rubygem-raindrops 
   - ruby2.6-rubygem-raindrops-doc 
   - ruby2.6-rubygem-raindrops-testsuite 
-  - ruby2.6-rubygem-rake-11_3 
-  - ruby2.6-rubygem-rake-12.3 
   - ruby2.6-rubygem-rake-12_0 
   - ruby2.6-rubygem-rake-compiler 
   - ruby2.6-rubygem-rake-compiler-doc 
   - ruby2.6-rubygem-rake-compiler-testsuite 
-  - ruby2.6-rubygem-rake-doc-11_3 
-  - ruby2.6-rubygem-rake-doc-12.3 
   - ruby2.6-rubygem-rake-doc-12_0 
   - ruby2.6-rubygem-rb-fsevent-doc 
   - ruby2.6-rubygem-rb-inotify-doc 
@@ -23672,8 +23897,6 @@ unsorted:
   - ruby2.7-rubygem-raindrops-testsuite 
   - ruby2.7-rubygem-rake-compiler-doc 
   - ruby2.7-rubygem-rake-compiler-testsuite 
-  - ruby2.7-rubygem-rake-doc-11_3 
-  - ruby2.7-rubygem-rake-doc-12.3 
   - ruby2.7-rubygem-rake-doc-12_0 
   - ruby2.7-rubygem-rb-fsevent-doc 
   - ruby2.7-rubygem-rb-inotify-doc 
