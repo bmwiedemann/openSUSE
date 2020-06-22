@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 19 15:01:38 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to 1.11.1:
+  agent:
+    * device: Do not allow container access to the nvdimm rootfs
+  osbuilder:
+    * image-builder: disable reflink
+
+-------------------------------------------------------------------
 Thu May 28 16:13:31 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Update to 1.11.0:

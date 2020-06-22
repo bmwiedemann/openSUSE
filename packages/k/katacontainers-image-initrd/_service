@@ -6,8 +6,8 @@
     <param name="url">https://github.com/kata-containers/osbuilder.git</param>
     <param name="filename">osbuilder</param>
     <!--- versionformat defines the name of the tarball. -->
-    <param name="versionformat">1.11.0</param>
-    <param name="revision">1.11.0</param>
+    <param name="versionformat">1.11.1</param>
+    <param name="revision">1.11.1</param>
   </service>
 
   <service name="tar_scm" mode="disabled">
@@ -15,8 +15,8 @@
     <param name="url">https://github.com/kata-containers/agent.git</param>
     <param name="filename">agent</param>
     <!--- versionformat defines the name of the tarball. -->
-    <param name="versionformat">1.11.0</param>
-    <param name="revision">1.11.0</param>
+    <param name="versionformat">1.11.1</param>
+    <param name="revision">1.11.1</param>
   </service>
 
   <service name="recompress" mode="disabled">

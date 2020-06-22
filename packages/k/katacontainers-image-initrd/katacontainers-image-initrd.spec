@@ -44,7 +44,7 @@
 %endif
 
 Name:           katacontainers-image-initrd
-Version:        1.11.0
+Version:        1.11.1
 Release:        0
 Summary:        Kata Containers image (initrd) and kernel
 License:        Apache-2.0
