@@ -83,6 +83,9 @@
 
 %if 0%{with_opencl}
 %define have_gallium 1
+%if 0%{?suse_version} < 1550
+  %define _distconfdir /etc
+%endif
 %else
 %define have_gallium 0
 %endif
@@ -792,6 +795,7 @@ egl_platforms=x11,drm,surfaceless,wayland
 %endif
 %if 0%{with_opencl}
             -Dgallium-opencl=icd \
+            --sysconfdir=%{_distconfdir} \
 %endif
             -Ddri-search-path=%{_libdir}/dri \
 %if 0%{with_llvm}
@@ -1170,9 +1174,9 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 
 %if 0%{with_opencl}
 %files -n Mesa-libOpenCL
-%dir %{_sysconfdir}/OpenCL
-%dir %{_sysconfdir}/OpenCL/vendors
-%{_sysconfdir}/OpenCL/vendors/mesa.icd
+%dir %{_distconfdir}/OpenCL
+%dir %{_distconfdir}/OpenCL/vendors
+%{_distconfdir}/OpenCL/vendors/mesa.icd
 %{_libdir}/libMesaOpenCL.so*
 %endif
 

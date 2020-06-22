@@ -4156,4 +4156,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - supersedes U_add-lifetime-dse-fix.patch</comment>
     <requestid>814751</requestid>
   </revision>
+  <revision rev="383" vrev="255">
+    <srcmd5>08d3884af24642cb53a2931a20927f37</srcmd5>
+    <version>unknown</version>
+    <time>1592840616</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to /usr/etc/OpenCL/vendors for mesa.icd OpenCL file
+  location (boo#1173005)</comment>
+    <requestid>815765</requestid>
+  </revision>
 </revisionlist>
