@@ -283,4 +283,37 @@
   - New Site: scifistories.com (extends finestories.com).</comment>
     <requestid>799911</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f2ae9cf3d13dd36dedc5738ec1365d6a</srcmd5>
+    <version>3.20.1</version>
+    <time>1592840758</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.20.1:
+  - Add more URLs to cover_exclusion_regexp for
+    base_xenforoforum.
+  - Fix for is_adult needing &amp;showRestricted URL in
+    adapter_harrypotterfanfictioncom.
+  - Better auth page parsing due to own-favorite story in
+    adapter_harrypotterfanfictioncom.
+  - Add characters and increased category collection for
+    adapter_fanfiktionde.
+  - Suppress output_css on CLI -z
+  - Fix numWords parsing in adapter_fanficsme.
+  - Update translations, add Russian.
+  - Fix broken series parsing in adapter_adastrafanficcom
+    &amp; adapter_lotrgficcom.
+  - New Site: www.silmarillionwritersguild.org, thanks Alistair!
+  - Allow /post/ story URLs with adapter_gravitytalescom.
+  - Change to
+  - in chapter text adapter_adultfanfictionorg
+  - Now actually use translated strings in prefs.py.
+  - Need to include prefs.py in messages.pot for translation.
+  - Update Translations.
+  - Catch exception in exception handling for French user.
+  - Remove '.' from numWords in adapter_fanfiktionde
+  - Fix for adapter_bloodshedversecom site changes.
+  - Find both 'Translator' and 'TranslatorS', except in Russian.
+    adapter_fanficsme</comment>
+    <requestid>816234</requestid>
+  </revision>
 </revisionlist>
