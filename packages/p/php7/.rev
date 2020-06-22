@@ -889,4 +889,13 @@
   several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.6 (forwarded request 805519 from adkorte)</comment>
     <requestid>805521</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>278c1ef0c4a3db6de7ab579ad64a6d4a</srcmd5>
+    <version>7.4.7</version>
+    <time>1592840499</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.4.7: This is a security release which also contains
+  several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.7 (forwarded request 813559 from adkorte)</comment>
+    <requestid>814637</requestid>
+  </revision>
 </revisionlist>
