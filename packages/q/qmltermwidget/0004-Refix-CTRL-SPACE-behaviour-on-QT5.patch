@@ -1,0 +1,28 @@
+From 2233b6f998b2e8ca05761aaeefa59a77f3bf1b64 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Kent=20Engstr=C3=B6m?= <kent@nsc.liu.se>
+Date: Mon, 17 Jun 2019 11:15:17 +0200
+Subject: [PATCH 4/5] Refix CTRL+SPACE behaviour on QT5.
+
+As per discussion in Swordfish90/cool-retro-term issue #165, revert
+later change back to the state after commit 490eeaf, "Fix CTRL+SPACE
+behaviour on QT5."
+---
+ lib/Vt102Emulation.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/Vt102Emulation.cpp b/lib/Vt102Emulation.cpp
+index 1d6998b..bd18ca4 100644
+--- a/lib/Vt102Emulation.cpp
++++ b/lib/Vt102Emulation.cpp
+@@ -1230,7 +1230,7 @@ void Vt102Emulation::sendKeyEvent( QKeyEvent* origEvent )
+         }
+         else if ( !entry.text().isEmpty() )
+         {
+-            textToSend += _codec->fromUnicode(QString::fromUtf8(entry.text(true,modifiers)));
++            textToSend += entry.text(true,modifiers);
+         }
+         else if((modifiers & Qt::ControlModifier) && event->key() >= 0x40 && event->key() < 0x5f) {
+             textToSend += (event->key() & 0x1f);
+-- 
+2.27.0
+

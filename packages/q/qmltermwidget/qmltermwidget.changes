@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 13 14:26:26 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Add patches to fix Tumbleweed compilation issues:
+  * 0001-Fix-missing-includes-in-TerminalCharacterDecoder-27.patch
+  * 0004-Refix-CTRL-SPACE-behaviour-on-QT5.patch
+  * 0005-QMAKE_POST_LINK-doesn-t-work-in-Qt-5.5.-10.patch
+
+-------------------------------------------------------------------
 Wed Jan 23 23:38:41 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim future goals from description.
