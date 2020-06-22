@@ -1,4 +1,13 @@
 --------------------------------------------------------------------
+Mon Jun 15 15:29:03 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/gfxboot#48
+- add 'default' and 'https' install methods (bsc#1171018)
+- adjust config file description
+- add https dialog title
+- 4.5.70
+
+--------------------------------------------------------------------
 Wed May 27 16:23:58 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/gfxboot#46
