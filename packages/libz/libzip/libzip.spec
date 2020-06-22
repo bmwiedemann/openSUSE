@@ -16,9 +16,10 @@
 #
 
 
+%{!?make_build: %global make_build make %{?_smp_mflags}}
 %define sover 5
 Name:           libzip
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        C library for reading, creating, and modifying zip archives
 License:        BSD-3-Clause
@@ -26,18 +27,20 @@ Group:          Development/Libraries/C and C++
 URL:            https://libzip.org/
 Source0:        https://libzip.org/download/libzip-%{version}.tar.xz
 Source1:        baselibs.conf
+Source2:        %{name}-rpmlintrc
 Patch2:         pkgconfig.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.0.2
 BuildRequires:  fdupes
 BuildRequires:  groff
-BuildRequires:  libbz2-devel
-BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 # for tests
 BuildRequires:  timezone
 # for tests
 BuildRequires:  unzip
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(zlib) >= 1.1.2
 Provides:       libzip-util = %{version}
 Obsoletes:      libzip-util < %{version}
 
@@ -100,6 +103,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 %postun -n libzip%{sover} -p /sbin/ldconfig
 
 %files tools
+%license LICENSE
 %{_bindir}/zipcmp
 %{_bindir}/zipmerge
 %{_bindir}/ziptool
@@ -112,6 +116,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 %{_libdir}/libzip.so.%{sover}*
 
 %files devel
+%license LICENSE
 %doc AUTHORS NEWS.md THANKS
 %{_libdir}/%{name}.so
 %{_includedir}/zip.h

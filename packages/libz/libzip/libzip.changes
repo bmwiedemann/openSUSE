@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 14 06:41:41 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libzip 1.7.1:
+  * Restore LIBZIP_VERSION_{MAJOR,MINOR,MICRO} symbols.
+  * Add LIBZIP_DO_INSTALL build setting to make it easier to use
+    libzip as subproject
+- build with LZMA to support XZ compressed files
+- switch to upstream preferred provider of AES support: GnuTLS
+ 
+-------------------------------------------------------------------
 Sat Jun  6 06:05:45 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libzip 1.7.0:
