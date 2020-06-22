@@ -17,7 +17,7 @@
 
 
 Name:           tcpreplay
-Version:        4.3.2
+Version:        4.3.3
 Release:        0
 Summary:        Network analysis and testing tools
 License:        GPL-3.0-only
@@ -48,8 +48,6 @@ supports switches, routers and IP Flow/NetFlow appliances.
 %setup -q
 
 %build
-# fix building with gcc10
-export CFLAGS="%{optflags} -fcommon"
 %configure \
   --enable-dynamic-link
 make %{?_smp_mflags} V=1
