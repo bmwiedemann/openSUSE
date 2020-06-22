@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  7 20:12:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Set CFLAGS+=-fcommon
+
+-------------------------------------------------------------------
 Sun Nov 25 13:05:49 UTC 2018 - mardnh@gmx.de
 
 - Initial package, version 1.5

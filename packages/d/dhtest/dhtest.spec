@@ -1,6 +1,7 @@
 #
 # spec file for package dhtest
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +21,9 @@ Name:           dhtest
 Version:        1.5
 Release:        0
 Summary:        A DHCP client simulation tool
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Diagnostic
-Url:            https://github.com/saravana815
+URL:            https://github.com/saravana815
 #Git-Clone:     https://github.com/saravana815/dhtest.git
 Source:         https://github.com/saravana815/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
@@ -35,7 +36,7 @@ requires layer2 raw socket for sending and receiving DHCP packets.
 %setup -q
 
 %build
-make CFLAGS='%{optflags}' %{?_smp_mflags}
+make CFLAGS='%{optflags} -fcommon' %{?_smp_mflags}
 
 %install
 install -Dpm 0755 dhtest %{buildroot}/%{_sbindir}/dhtest
