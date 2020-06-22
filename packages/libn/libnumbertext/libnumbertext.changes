@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 18 12:05:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.0.6:
+  * minor fixes and fuzzer fixes
+
+-------------------------------------------------------------------
 Mon Oct 29 12:38:41 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Drop libnumbertext-boost.patch and rather rely on new gcc, safer

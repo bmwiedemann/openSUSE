@@ -1,7 +1,7 @@
 #
 # spec file for package libnumbertext
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %define libname libnumbertext-1_0-0
 Name:           libnumbertext
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        Language-neutral NUMBERTEXT and MONEYTEXT functions
 License:        MPL-2.0
-Group:          Productivity/Publishing/Word
 URL:            https://github.com/Numbertext/libnumbertext
 Source:         https://github.com/Numbertext/libnumbertext/archive/%{version}.tar.gz
 BuildRequires:  autoconf
@@ -39,7 +38,6 @@ Language-neutral NUMBERTEXT and MONEYTEXT functions for LibreOffice Calc
 
 %package -n %{libname}
 Summary:        Language-neutral NUMBERTEXT and MONEYTEXT functions
-Group:          System/Libraries
 Requires:       %{name}-data >= %{version}
 
 %description -n %{libname}
@@ -47,7 +45,6 @@ Language-neutral NUMBERTEXT and MONEYTEXT functions for LibreOffice Calc
 
 %package devel
 Summary:        Files for Developing with libnumbertext
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel
@@ -57,7 +54,6 @@ This package contains the libnumbertext development files.
 
 %package tools
 Summary:        Tools to work with NUMBERTEXT and MONEYTEXT functions
-Group:          Productivity/Publishing/Word
 Requires:       %{name}-data >= %{version}
 
 %description tools
@@ -65,7 +61,6 @@ This package contains tools to work with NUMBERTEXT and MONEYTEXT functions
 
 %package data
 Summary:        Language data for numbertext
-Group:          Productivity/Publishing/Word
 
 %description data
 This package contains data providing information for localized nubertext
@@ -84,7 +79,7 @@ export CXX=g++-7
 	--disable-static \
 	--disable-silent-rules \
 	%{nil}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
