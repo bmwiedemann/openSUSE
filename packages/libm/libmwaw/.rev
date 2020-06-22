@@ -261,4 +261,16 @@
   * Fuzzing fixes</comment>
     <requestid>697021</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>90134c96b3ed7b7d12094a3d1830be84</srcmd5>
+    <version>0.3.16</version>
+    <time>1592840562</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.16:
+  - remove the QuarkXPress parser (must be in libqxp)
+  - retrieve the annotation in MsWord 5 document
+  - try to better understand RagTime 5-6 document
+  - add a parser for QuarkXPress v1-2 files</comment>
+    <requestid>815732</requestid>
+  </revision>
 </revisionlist>

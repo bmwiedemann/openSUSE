@@ -1,7 +1,7 @@
 #
 # spec file for package libmwaw
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,11 @@
 
 %define libname libmwaw-0_3-3
 Name:           libmwaw
-Version:        0.3.15
+Version:        0.3.16
 Release:        0
 Summary:        Pre Mac OSX text file formats parser library
 License:        (LGPL-2.1-or-later OR MPL-2.0) AND GPL-2.0-or-later
-Group:          Productivity/Publishing/Word
-Url:            http://sourceforge.net/p/libmwaw/wiki/Home/
+URL:            https://sourceforge.net/p/libmwaw/wiki/Home/
 Source:         http://dev-www.libreoffice.org/src/%{name}-%{version}.tar.xz
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -44,14 +43,12 @@ Libmwaw is a project for converting many pre-OSX MAC text formats.
 
 %package -n %{libname}
 Summary:        Pre Mac OSX text file formats parser library
-Group:          System/Libraries
 
 %description -n %{libname}
 Libmwaw is a new project for converting many pre-OSX MAC text formats.
 
 %package devel
 Summary:        Files for Developing with libmwaw
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel
@@ -60,7 +57,6 @@ This package contains the libmwaw development files.
 
 %package devel-doc
 Summary:        Documentation for the libmwaw API
-Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description devel-doc
@@ -68,7 +64,6 @@ This package contains documentation for the libmwaw API.
 
 %package tools
 Summary:        Tools to work with publications in pre MAC OSX text file-formats
-Group:          Productivity/Publishing/Word
 
 %description tools
 Command line tools to work with publications in pre MAC OSX text file-formats.
@@ -87,7 +82,7 @@ export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
 	--disable-werror \
 	--disable-static \
 	--docdir=%{_docdir}/%{name}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

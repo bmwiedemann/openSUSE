@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 18 11:29:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.3.16:
+  - remove the QuarkXPress parser (must be in libqxp)
+  - retrieve the annotation in MsWord 5 document
+  - try to better understand RagTime 5-6 document
+  - add a parser for QuarkXPress v1-2 files
+
+-------------------------------------------------------------------
 Tue Apr 23 09:06:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.3.15:
