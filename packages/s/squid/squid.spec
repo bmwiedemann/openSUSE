@@ -19,7 +19,7 @@
 %define         squidlibdir %{_libdir}/squid
 %define         squidconfdir %{_sysconfdir}/squid
 Name:           squid
-Version:        4.11
+Version:        4.12
 Release:        0
 Summary:        Caching and forwarding HTTP web proxy
 License:        GPL-2.0-or-later
@@ -65,18 +65,18 @@ BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(nettle)
-Recommends:     logrotate
 Requires(pre):  permissions
+Recommends:     logrotate
 Provides:       http_proxy
 # due to package rename
 # Wed Aug 15 17:40:30 UTC 2012
 Provides:       %{name}3 = %{version}
 Obsoletes:      %{name}3 < %{version}
 %{?systemd_ordering}
+%sysusers_requires
 %if 0%{?suse_version} >= 1330
 BuildRequires:  libnsl-devel
 %endif
-%sysusers_requires
 
 %description
 Squid is a caching proxy for the Web supporting HTTP(S), FTP, and
@@ -92,7 +92,7 @@ cp %{SOURCE10} .
 # upstream patches after RELEASE
 perl -p -i -e 's|%{_prefix}/local/bin/perl|%{_bindir}/perl|' `find -name "*.pl"`
 %patch1 -p1
-%if %{suse_version} < 1500
+%if 0%{?suse_version} < 1500
 %patch2 -p1
 %endif
 
@@ -144,7 +144,7 @@ export LDFLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-z,relro,-z,now -pie"
 	--disable-arch-native \
 	--enable-security-cert-generators \
 	--enable-security-cert-validators
-make SAMBAPREFIX=%{_prefix} %{?_smp_mflags}
+%make_build SAMBAPREFIX=%{_prefix}
 %sysusers_generate_pre %{SOURCE12} squid
 
 %install
@@ -207,7 +207,7 @@ install -m 644 %{SOURCE12} %{buildroot}%{_sysusersdir}/
 
 %check
 # Fails in chroot environment
-make %{?_smp_mflags} check
+%make_build check
 
 %pre -f squid.pre
 %service_add_pre %{name}.service
