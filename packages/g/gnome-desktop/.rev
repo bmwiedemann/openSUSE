@@ -1155,4 +1155,19 @@
     <comment>New stable release, not buildtested! (forwarded request 798813 from iznogood)</comment>
     <requestid>799168</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>179a412ad3d0e11c3207af5f412abb5e</srcmd5>
+    <version>3.36.3.1</version>
+    <time>1592840548</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.36.3.1:
+  + Bump meson version.
+- Changes from version 3.36.3:
+  + Thumbnails: keep the original file name
+  + Fix encoding issue when translating locale modifiers
+  + Update wallclock reftest expectations
+  + Update Hebrew wallclock expectation
+  + Updated translations.</comment>
+    <requestid>814836</requestid>
+  </revision>
 </revisionlist>
