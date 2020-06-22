@@ -1,7 +1,7 @@
 #
 # spec file for package jxrlib
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,11 +12,11 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define sover 0
 
+%define sover 0
 Name:           jxrlib
 Version:        1.1
 Release:        0
@@ -24,8 +24,7 @@ Summary:        Open source implementation of jpegxr
 # See JPEGXR_DPK_Spec_1.0.doc. Upstream request for plain text license file at
 # https://jxrlib.codeplex.com/workitem/13
 License:        BSD-2-Clause
-Group:          Productivity/Graphics/Other
-Url:            https://jxrlib.codeplex.com/
+URL:            https://jxrlib.codeplex.com/
 Source0:        %{name}_1_1.zip
 # Use CMake to build to facilitate creation of shared libraries
 # See https://jxrlib.codeplex.com/workitem/13
@@ -43,7 +42,6 @@ This package contains the encoder and the decoder tools.
 
 %package -n libjpegxr%{sover}
 Summary:        Open source implementation of jpegxr
-Group:          System/Libraries
 
 %description -n libjpegxr%{sover}
 This is an open source implementation of the jpegxr image format standard.
@@ -52,7 +50,6 @@ This package the libjpegexr shared library
 
 %package -n libjxrglue%{sover}
 Summary:        Open source implementation of jpegxr
-Group:          System/Libraries
 
 %description -n libjxrglue%{sover}
 This is an open source implementation of the jpegxr image format standard.
@@ -61,7 +58,6 @@ This package the libjxrglue shared library
 
 %package        devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/Other
 Requires:       libjpegxr%{sover} = %{version}-%{release}
 Requires:       libjxrglue%{sover} = %{version}-%{release}
 
@@ -86,35 +82,29 @@ rm -rf bin
 cp -a %{SOURCE1} .
 
 %build
-%cmake 
-make %{?_smp_mflags}
+%cmake
+%cmake_build
 
 %install
-cd build
-%make_install
+%cmake_install
 
-%post -n libjpegxr%{sover} -p /sbin/ldconfig 
+%post -n libjpegxr%{sover} -p /sbin/ldconfig
 %post -n libjxrglue%{sover} -p /sbin/ldconfig
-
 %postun -n libjpegxr%{sover} -p /sbin/ldconfig
 %postun -n libjxrglue%{sover} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc doc/readme.txt
 %{_bindir}/JxrEncApp
 %{_bindir}/JxrDecApp
 
 %files -n libjpegxr%{sover}
-%defattr(-,root,root)
 %{_libdir}/libjpegxr.so.*
 
 %files -n libjxrglue%{sover}
-%defattr(-,root,root)
 %{_libdir}/libjxrglue.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/jxrlib/
 %{_libdir}/libjpegxr.so
 %{_libdir}/libjxrglue.so
