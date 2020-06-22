@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 17 06:07:24 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated Intel CPU Microcode to 20200616 official release (bsc#1172856)
+  - revert 06-4e-03 Skylake U/Y, U23e ucode back to 000000d6 release
+  - revert 06-5e-03 Skylake H/S ucode back to 000000d6 release,
+    as both cause stability issues.  (bsc#1172856)
+
+-------------------------------------------------------------------
 Wed Jun  3 14:44:24 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated Intel CPU Microcode to 20200609 (bsc#1172466)

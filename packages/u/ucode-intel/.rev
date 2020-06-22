@@ -644,4 +644,15 @@
   KBL-U/Y      H0       6-8e-9/c0 000000ca-&amp;gt;000000d6 Core Gen7 Mobile (forwarded request 813007 from msmeissn)</comment>
     <requestid>813008</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>fce91bf0504e97e33ffef650631f53ff</srcmd5>
+    <version>20200616</version>
+    <time>1592840553</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated Intel CPU Microcode to 20200616 official release (bsc#1172856)
+  - revert 06-4e-03 Skylake U/Y, U23e ucode back to 000000d6 release
+  - revert 06-5e-03 Skylake H/S ucode back to 000000d6 release,
+    as both cause stability issues.  (bsc#1172856)</comment>
+    <requestid>815412</requestid>
+  </revision>
 </revisionlist>
