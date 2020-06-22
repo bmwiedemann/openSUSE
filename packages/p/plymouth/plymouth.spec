@@ -1,7 +1,7 @@
 #
 # spec file for package plymouth
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ Release:        0
 Summary:        Graphical Boot Animation and Logger
 License:        GPL-2.0-or-later
 Group:          System/Base
-Url:            http://www.freedesktop.org/wiki/Software/Plymouth
+URL:            http://www.freedesktop.org/wiki/Software/Plymouth
 
 Source0:        %{name}-%{version}.tar.xz
 Source1:        boot-duration
@@ -44,10 +44,8 @@ Patch1:         plymouth-some-greenish-openSUSE-colors.patch
 Patch2:         plymouth-correct-runtime-dir.patch
 # PATCH-FIX-UPSTREAM plymouth-manpages.patch bnc#871419 idoenmez@suse.de  -- Fix man page installation
 Patch3:         plymouth-manpages.patch
-# PATCH-FIX-OPENSUSE plymouth-only_use_fb_for_cirrus_bochs.patch bnc#888590 fvogt@suse.com -- force fb for cirrus and bochs, force drm otherwise. replace removal of framebuffer driver and plymouth-ignore-cirrusdrm.patch with single patch.
-Patch4:         plymouth-only_use_fb_for_cirrus_bochs.patch
 # PATCH-FIX-OPENSUSE plymouth-avoid-umount-hanging-shutdown.patch bnc#1105688, bnc#1129386, bnc#1134660 qzhao@opensuse.org -- Drop grantpt() to avoid system failed to unmount /var during shutdown.
-Patch5:         plymouth-avoid-umount-hanging-shutdown.patch
+Patch4:         plymouth-avoid-umount-hanging-shutdown.patch
 
 # PATCH-FIX-UPSTREAM 0001-Add-label-ft-plugin.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
 Patch1000:      0001-Add-label-ft-plugin.patch
@@ -140,10 +138,10 @@ Requires:       %{name} = %{version}
 %if %{with x11_renderer}
 Requires:       %{name}-x11-renderer = %{version}
 %endif
+Requires:       libply%{soversion} = %{version}
 Requires:       libply-boot-client%{soversion} = %{version}
 Requires:       libply-splash-core%{soversion} = %{version}
 Requires:       libply-splash-graphics%{soversion} = %{version}
-Requires:       libply%{soversion} = %{version}
 Requires:       pkgconfig
 
 %description devel
@@ -206,9 +204,9 @@ graphical boot splashes using FreeTyoe
 %package plugin-fade-throbber
 Summary:        Plymouth "Fade-Throbber" plugin
 Group:          System/Base
+Requires:       libply%{soversion} = %{version}
 Requires:       libply-splash-core%{soversion} = %{version}
 Requires:       libply-splash-graphics%{soversion} = %{version}
-Requires:       libply%{soversion} = %{version}
 
 %description plugin-fade-throbber
 This package contains the "Fade-In" boot splash plugin for
@@ -219,9 +217,9 @@ while other images pulsate around during system boot up.
 Summary:        Plymouth "Throbgress" plugin
 Group:          System/Base
 Requires:       %{name}-plugin-label = %{version}
+Requires:       libply%{soversion} = %{version}
 Requires:       libply-splash-core%{soversion} = %{version}
 Requires:       libply-splash-graphics%{soversion} = %{version}
-Requires:       libply%{soversion} = %{version}
 
 %description plugin-throbgress
 This package contains the "throbgress" boot splash plugin for
@@ -233,9 +231,9 @@ the screen.
 Summary:        Plymouth "space-flares" plugin
 Group:          System/Base
 Requires:       %{name}-plugin-label = %{version}
+Requires:       libply%{soversion} = %{version}
 Requires:       libply-splash-core%{soversion} = %{version}
 Requires:       libply-splash-graphics%{soversion} = %{version}
-Requires:       libply%{soversion} = %{version}
 
 %description plugin-space-flares
 This package contains the "space-flares" boot splash plugin for
@@ -244,9 +242,9 @@ Plymouth. It features a corner image with animated flares.
 %package plugin-two-step
 Summary:        Plymouth "two-step" plugin
 Group:          System/Base
+Requires:       libply%{soversion} = %{version}
 Requires:       libply-splash-core%{soversion} = %{version}
 Requires:       libply-splash-graphics%{soversion} = %{version}
-Requires:       libply%{soversion} = %{version}
 Requires:       plymouth-plugin-label = %{version}
 
 %description plugin-two-step
@@ -258,9 +256,9 @@ short, fast one-shot animation.
 %package plugin-script
 Summary:        Plymouth "script" plugin
 Group:          System/Base
+Requires:       libply%{soversion} = %{version}
 Requires:       libply-splash-core%{soversion} = %{version}
 Requires:       libply-splash-graphics%{soversion} = %{version}
-Requires:       libply%{soversion} = %{version}
 
 %description plugin-script
 This package contains the "script" boot splash plugin for
@@ -271,9 +269,9 @@ boot splash themes.
 %package plugin-tribar
 Summary:        Plymouth "script" plugin
 Group:          System/Base
+Requires:       libply%{soversion} = %{version}
 Requires:       libply-splash-core%{soversion} = %{version}
 Requires:       libply-splash-graphics%{soversion} = %{version}
-Requires:       libply%{soversion} = %{version}
 
 %description plugin-tribar
 This package contains the "tribar" boot splash plugin for

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 15 13:54:25 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Drop plymouth-only_use_fb_for_cirrus_bochs.patch: openSUSE user 
+  are using emu-5.0.0 on MacOS-X with HVF acceleration, the 
+  Plymouth theme with script module fails to go to graphic mode 
+  with this patch(boo#1172028).
+
+-------------------------------------------------------------------
 Wed Oct 30 19:21:08 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Avoid inconsistencies in library package names causing unresolvable
