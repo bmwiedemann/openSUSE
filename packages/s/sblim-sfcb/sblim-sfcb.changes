@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 18 10:25:37 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building with gcc10
+
+-------------------------------------------------------------------
 Mon Feb  3 16:28:46 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

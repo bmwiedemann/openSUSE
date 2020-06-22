@@ -194,7 +194,7 @@ export SYSTEMDDIR=%{_unitdir}
 # SLE 10 fails on -fgnu89-inline
 export CFLAGS="%optflags"
 %else
-export CFLAGS="%optflags -fgnu89-inline"
+export CFLAGS="%optflags -fgnu89-inline -fcommon"
 %endif
 %endif
 %configure --enable-debug --enable-ssl --enable-pam --enable-ipv6 \
