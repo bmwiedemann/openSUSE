@@ -9,7 +9,7 @@ Mon Apr  8 12:56:09 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 - Update to 2.8
   * removed DynScale flag and support
   * removed support for multi-line headers (both input and output)
-  * fixed potential request smuggling via fudged headers
+  * CVE-2018-21245: fixed potential request smuggling via fudged headers (boo#1173075)
 - Add add-openssl_1.1-support.patch to fix bnc#1116061
   (Patch from https://github.com/graygnuorg/pound, mentioned here:
   http://www.apsis.ch/pound/pound_list/archive/2019/2019-02/1550768278000#1550768278000)
