@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 22 13:07:13 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building with gcc10
+- Modernise spec file with spec-cleaner
+
+-------------------------------------------------------------------
 Tue Mar  8 18:13:12 UTC 2016 - bwiedemann@suse.com
 
 - drop build time from png file to fix build-compare

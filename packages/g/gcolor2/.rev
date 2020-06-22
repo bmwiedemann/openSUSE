@@ -22,4 +22,13 @@
     <comment>1</comment>
     <requestid>369087</requestid>
   </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>0205abab9a1930a4e1a44089a7b02792</srcmd5>
+    <version>0.4</version>
+    <time>1592840808</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with gcc10
+- Modernise spec file with spec-cleaner</comment>
+    <requestid>816364</requestid>
+  </revision>
 </revisionlist>
