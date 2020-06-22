@@ -6,8 +6,8 @@
     <param name="url">https://github.com/kata-containers/runtime.git</param>
     <param name="filename">runtime</param>
     <!--- versionformat defines the name of the tarball. -->
-    <param name="versionformat">1.11.0</param>
-    <param name="revision">1.11.0</param>
+    <param name="versionformat">1.11.1</param>
+    <param name="revision">1.11.1</param>
   </service>
 
   <service name="tar_scm" mode="disabled">
@@ -15,8 +15,8 @@
     <param name="url">https://github.com/kata-containers/proxy.git</param>
     <param name="filename">proxy</param>
     <!--- versionformat defines the name of the tarball. -->
-    <param name="versionformat">1.11.0</param>
-    <param name="revision">1.11.0</param>
+    <param name="versionformat">1.11.1</param>
+    <param name="revision">1.11.1</param>
   </service>
 
   <service name="tar_scm" mode="disabled">
@@ -24,8 +24,8 @@
     <param name="url">https://github.com/kata-containers/shim.git</param>
     <param name="filename">shim</param>
     <!--- versionformat defines the name of the tarball. -->
-    <param name="versionformat">1.11.0</param>
-    <param name="revision">1.11.0</param>
+    <param name="versionformat">1.11.1</param>
+    <param name="revision">1.11.1</param>
   </service>
 
   <service name="tar_scm" mode="disabled">
@@ -33,8 +33,8 @@
     <param name="url">https://github.com/kata-containers/ksm-throttler.git</param>
     <param name="filename">ksm-throttler</param>
     <!--- versionformat defines the name of the tarball. -->
-    <param name="versionformat">1.11.0</param>
-    <param name="revision">1.11.0</param>
+    <param name="versionformat">1.11.1</param>
+    <param name="revision">1.11.1</param>
   </service>
 
   <service name="recompress" mode="disabled">
