@@ -128,8 +128,8 @@ find %{buildroot} -name '*.a' -delete
 find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}/%{_fillupdir}
 install -m 644 %{SOURCE4} %{buildroot}/%{_fillupdir}/sysconfig.xrdp
-mkdir -p %{buildroot}/%{_prefix}/lib/initscripts/legacy-actions/xrdp
-install -m 755 %{SOURCE5} %{buildroot}/%{_prefix}/lib/initscripts/legacy-actions/xrdp/force_stop
+mkdir -p %{buildroot}/%{_libexecdir}/initscripts/legacy-actions/xrdp
+install -m 755 %{SOURCE5} %{buildroot}/%{_libexecdir}/initscripts/legacy-actions/xrdp/force_stop
 
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcxrdp
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcxrdp-sesman
@@ -193,7 +193,7 @@ exit 0
 %{_mandir}/man1/*
 %{_mandir}/man5/*
 %{_mandir}/man8/*
-%{_prefix}/lib/initscripts/legacy-actions/xrdp
+%{_libexecdir}/initscripts/legacy-actions/xrdp
 %{_sbindir}/rc*
 %{_sbindir}/xrdp*
 %{_sysconfdir}/xrdp/km*.ini

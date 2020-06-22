@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 17 08:36:17 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %{_libexecdir} to install the legacy initscript actions to.
+
+-------------------------------------------------------------------
 Fri Apr 24 07:49:42 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
 - Enable SLE only patches for Leap (jsc#SLE-11850).
