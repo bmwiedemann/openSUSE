@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Jun 22 08:12:17 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.0:
+  * Allow multiple overlay windows per normal window
+  * Add an option confirm_os_window_close to ask for confirmation when
+    closing an OS window with multiple kitty windows.
+  * Tall and Fat layouts: Add a mirrored option to put the full size
+    window on the opposite edge of the screen (#2654)
+  * Tall and Fat layouts: Add mappable actions to increase or
+    decrease the number of full size windows (#2688)
+  * Allow sending arbitrary signals to the current foreground process
+    in a window using either a mapping in kitty.conf or via remote
+    control (#2778)
+  * Allow sending the back and forward mouse buttons to terminal
+    applications (#2742)
+  * Backwards incompatibility: The numbers used to encode mouse
+    buttons for the send_mouse_event function that can be used in
+    kittens have been changed (see Sending mouse events).
+  * Add a new mappable quit action to quit kitty completely.
+  * Fix marks using different colors with regexes using only
+    a single color (#2663)
+  * Linux: Workaround for broken Nvidia drivers for old cards (#456)
+  * Wayland: Fix kitty being killed on some Wayland compositors
+    if a hidden window has a lot of output (#2329)
+  * Add support for the CSI REP escape code (#2702)
+  * Wayland: Fix mouse cursor rendering on HiDPI screens (#2709)
+  * X11: Recompile keymaps on XkbNewKeyboardNotify events (#2726)
+  * X11: Reduce startup time by ~25% by only querying GLX for
+    framebuffer configurations once (#2754)
+  * Fix the kitty shell launched via a mapping needlessly requiring
+    allow_remote_control to be turned on.
+
+-------------------------------------------------------------------
 Mon May 11 06:51:36 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.17.4:
