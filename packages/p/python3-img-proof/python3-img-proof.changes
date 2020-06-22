@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 19 21:29:50 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v5.2.0 (2020-06-19)
+  + Add arg in API to provide logger instance.
+  + Remove file handler for logging which causes message duplication.
+  + Add Red Hat family distro module and Fedora distro module.
+
+-------------------------------------------------------------------
 Mon Jun  1 21:06:30 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
 
 - Update to v5.1.0 (2020-06-01)
