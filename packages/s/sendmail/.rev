@@ -847,4 +847,14 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>779008</requestid>
   </revision>
+  <revision rev="95" vrev="23">
+    <srcmd5>88c391bc0c478a384819edd8c388eca5</srcmd5>
+    <version>8.15.2</version>
+    <time>1592840511</time>
+    <user>dimstar_suse</user>
+    <comment>- sendmail-suse.tar.bz2: fix rpmlint warning W: permissions-dir-without-slash
+  for /var/spool/clientmqueue. This wasn't noticed before, because the
+  directory is not packaged by sendmail but by system-user-mail. (forwarded request 813250 from mgerstner)</comment>
+    <requestid>814660</requestid>
+  </revision>
 </revisionlist>

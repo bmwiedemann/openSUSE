@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 10 13:24:21 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- sendmail-suse.tar.bz2: fix rpmlint warning W: permissions-dir-without-slash
+  for /var/spool/clientmqueue. This wasn't noticed before, because the
+  directory is not packaged by sendmail but by system-user-mail.
+
+-------------------------------------------------------------------
 Thu Jan 30 10:36:21 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream patch 8.15.2.mci.p0 (boo#1164084)
