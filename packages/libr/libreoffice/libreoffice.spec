@@ -50,7 +50,7 @@
 %bcond_with system_gpgme
 %endif
 Name:           libreoffice
-Version:        6.4.4.2
+Version:        7.0.0.0.beta2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -88,9 +88,11 @@ Source2004:     %{external_url}/35c94d2df8893241173de1d16b6034c0-swingExSrc.zip
 Source2005:     %{external_url}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zip
 # Needed for integration tests
 Source2006:     https://dev-www.libreoffice.org/extern/8249374c274932a21846fa7629c2aa9b-officeotron-0.7.4-master.jar
-Source2007:     https://dev-www.libreoffice.org/extern/odfvalidator-1.2.0-incubating-SNAPSHOT-jar-with-dependencies-971c54fd38a968f5860014b44301872706f9e540.jar
+Source2007:     https://dev-www.libreoffice.org/extern/odfvalidator-0.9.0-RC2-SNAPSHOT-jar-with-dependencies-2726ab578664434a545f8379a01a9faffac0ae73.jar
 # PDFium is bundled everywhere
-Source2008:     %{external_url}/pdfium-3963.tar.bz2
+Source2008:     %{external_url}/pdfium-4137.tar.bz2
+# Single C file with patches from LO
+Source2009:     %{external_url}/dtoa-20180411.tgz
 # change user config dir name from ~/.libreoffice/3 to ~/.libreoffice/3-suse
 # to avoid BerkleyDB incompatibility with the plain build
 Patch1:         scp2-user-config-suse.diff
@@ -98,29 +100,8 @@ Patch1:         scp2-user-config-suse.diff
 # FIXME: the right fix is to compile the help and produce the .db_, .ht_, and other files
 Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
-Patch6:         fix_old_boost_spirit_namespace.patch
-Patch7:         poppler-0.86.patch
-Patch8:         replace-boost-bimap-in-sdext-pdfimport.patch
-# Bug 1165870 - LO-L3: Image shadow that should be invisible shown as extraneous line below
-Patch9:         bsc1165870.diff
-# Bug 1160687 - LO-L3: Elements on title page mixed up
-Patch11:        bsc1160687-2.diff
-Patch12:        bsc1160687-3.diff
-Patch13:        bsc1160687-4.diff
-Patch14:        bsc1160687-5.diff
-Patch15:        bsc1160687-6.diff
-Patch16:        bsc1160687-7.diff
-Patch17:        bsc1160687-8.diff
-# Bug 1165849 - LO-L3: Shadow size for rectangle is only a fraction of Office 365
-Patch18:        bsc1165849-1.diff
-Patch19:        bsc1165849-2.diff
-Patch20:        bsc1165849-3.diff
-# Bug 1146025 - LO-L3: Colored textboxes in PPTX look very odd (SmartArt)
-Patch21:        bsc1146025.diff
-# Bug 1157627 - LO-L3: Some XML-created shapes simply lost upon PPTX import (= earth loses countries)
-Patch22:        bsc1157627.diff
-# Bug 1172189 - LO-L3: Impress crashes midway opening a PPTX document
-Patch23:        bsc1172189.diff
+Patch4:         poppler-0.86.patch
+Patch5:         pyuno-nopwd.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -150,7 +131,7 @@ BuildRequires:  graphviz
 BuildRequires:  hyphen-devel
 # genbrk binary is required
 BuildRequires:  icu
-BuildRequires:  java-devel >= 1.8
+BuildRequires:  java-devel >= 9.0
 BuildRequires:  junit4
 BuildRequires:  libbase
 BuildRequires:  libcppunit-devel >= 1.14.0
@@ -214,7 +195,7 @@ BuildRequires:  pkgconfig(libexttextcat) >= 3.1.1
 BuildRequires:  pkgconfig(libfreehand-0.1)
 BuildRequires:  pkgconfig(liblangtag)
 BuildRequires:  pkgconfig(libmspub-0.1) >= 0.1
-BuildRequires:  pkgconfig(libmwaw-0.3) >= 0.3.15
+BuildRequires:  pkgconfig(libmwaw-0.3) >= 0.3.16
 BuildRequires:  pkgconfig(libnumbertext) >= 1.0.5
 BuildRequires:  pkgconfig(libodfgen-0.1) >= 0.1.4
 BuildRequires:  pkgconfig(liborcus-0.15)
@@ -223,11 +204,11 @@ BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(libqxp-0.0)
 BuildRequires:  pkgconfig(librevenge-0.0) >= 0.0.1
 BuildRequires:  pkgconfig(librsvg-2.0)
-BuildRequires:  pkgconfig(libstaroffice-0.0) >= 0.0.6
+BuildRequires:  pkgconfig(libstaroffice-0.0) >= 0.0.7
 BuildRequires:  pkgconfig(libvisio-0.1) >= 0.1
 BuildRequires:  pkgconfig(libwpd-0.10) >= 0.10
 BuildRequires:  pkgconfig(libwpg-0.3)
-BuildRequires:  pkgconfig(libwps-0.4) >= 0.4.10
+BuildRequires:  pkgconfig(libwps-0.4) >= 0.4.11
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(libzmf-0.0)
@@ -315,6 +296,7 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  pkgconfig(xcb-icccm)
 %else
 Provides:       %{name}-kde4 = %{version}
 Obsoletes:      %{name}-kde4 < %{version}
@@ -596,7 +578,7 @@ Requires:       gcc-c++
 Requires:       make
 Requires:       ucpp
 Requires:       zip
-Recommends:     java-devel >= 1.8
+Recommends:     java-devel >= 9.0
 Provides:       libreoffice-ure-devel = %{version}
 Obsoletes:      libreoffice-ure-devel < %{version}
 
@@ -655,10 +637,10 @@ Requires:       libreoffice-pyuno = %{version}
 Requires(pre):  libreoffice = %{version}
 # the watchWindow extension is written in java
 %ifarch %{ix86}
-Requires:       jre-32 >= 1.8
+Requires:       jre-32 >= 9.0
 %endif
 %ifarch x86_64 aarch64 ppc64le
-Requires:       jre-64 >= 1.8
+Requires:       jre-64 >= 9.0
 %endif
 
 %description calc-extensions
@@ -675,10 +657,10 @@ Requires:       libreoffice-writer = %{version}
 Requires(pre):  libreoffice = %{version}
 # the wiki extension is written in java
 %ifarch %{ix86}
-Requires:       jre-32 >= 1.8
+Requires:       jre-32 >= 9.0
 %endif
 %ifarch x86_64 aarch64 ppc64le
-Requires:       jre-64 >= 1.8
+Requires:       jre-64 >= 9.0
 %endif
 
 %description writer-extensions
@@ -884,6 +866,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %langpack -l fa -n Farsi -s ctl -X
 %langpack -l fi -n Finnish -r libreoffice-voikko -X -T
 %langpack -l fr -n French -X -m fr_FR -T
+%langpack -l fur -n Friulian
 %langpack -l fy -n Frisian -X
 %langpack -l ga -n Irish -X
 %langpack -l gd -n Gaelic -m gd_GB -X
@@ -976,23 +959,8 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %endif # Leap 42/SLE-12
 %patch2
 %patch3
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch20 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
+%patch4 -p1
+%patch5 -p1
 %patch990 -p1
 %patch991 -p1
 
@@ -1147,7 +1115,9 @@ export NOCONFIGURE=yes
         --disable-coinmp \
         --enable-symbols \
         --with-gdrive-client-secret="${google_default_client_secret}" \
-        --with-gdrive-client-id="${google_default_client_id}"
+        --with-gdrive-client-id="${google_default_client_id}" \
+	--disable-skia
+# no reason to build skia at the moment for us with gtk ui
 # no coinormp packages for coinmp
 
 # just call make here as we added the jobs in configure
@@ -1219,8 +1189,14 @@ for dir in `find %{buildroot}/%{_datadir}/icons/gnome -type d` ; do
     dir=`echo $dir | sed -e "s|%{buildroot}||"`
     echo "%dir $dir" >>file-lists/common_list.txt
 done
-echo "%dir %{_datadir}/application-registry" >>file-lists/common_list.txt
-echo "%dir %{_datadir}/mime-info" >>file-lists/common_list.txt
+
+# remove obsolete content bsc#1062631
+rm -r %{buildroot}%{_datadir}/application-registry
+rm -r %{buildroot}%{_datadir}/mime-info
+grep -v %{_datadir}/mime-info file-lists/common_list.txt > tmplist
+mv tmplist file-lists/common_list.txt
+grep -v %{_datadir}/application-registry file-lists/common_list.txt > tmplist
+mv tmplist file-lists/common_list.txt
 
 #################################
 # Move split noarch data to share
@@ -1269,8 +1245,10 @@ mkdir -p %{buildroot}/%{_datadir}/%{name}/program/shell
 echo "%{_datadir}/%{name}/program/shell" >> file-lists/branding_upstream.txt
 for file in sofficerc \
             intro.png \
-            flat_logo.svg \
-            shell/about.svg ; do
+            intro-highres.png \
+            shell/about.svg \
+            shell/logo.svg \
+            shell/logo_inverted.svg; do
     mv "%{buildroot}%{_libdir}/%{name}/program/$file" "%{buildroot}%{_datadir}/%{name}/program/$file"
     ln -sf "%{_datadir}/%{name}/program/$file" "%{buildroot}/%{_libdir}/%{name}/program/$file"
     echo "%{_datadir}/%{name}/program/$file" >> file-lists/branding_upstream.txt
@@ -1464,7 +1442,6 @@ exit 0
 %files -f file-lists/common_list.txt
 # ignore helper files for brp-symlink check
 %exclude %{_datadir}/%{name}/program/sofficerc
-%exclude %{_datadir}/%{name}/program/flat_logo.svg
 %exclude %{_datadir}/%{name}/program/*.png
 %exclude %{_datadir}/%{name}/program/shell/*.svg
 %if 0%{?suse_version} < 1330
@@ -1570,22 +1547,7 @@ exit 0
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/share
 %dir %{_datadir}/%{name}/share/config
-%{_datadir}/%{name}/share/config/images_breeze.zip
-%{_datadir}/%{name}/share/config/images_breeze_dark.zip
-%{_datadir}/%{name}/share/config/images_breeze_dark_svg.zip
-%{_datadir}/%{name}/share/config/images_elementary.zip
-%{_datadir}/%{name}/share/config/images_colibre.zip
-%{_datadir}/%{name}/share/config/images_karasa_jaga.zip
-%{_datadir}/%{name}/share/config/images_karasa_jaga_svg.zip
-%{_datadir}/%{name}/share/config/images_sifr.zip
-%{_datadir}/%{name}/share/config/images_sifr_dark.zip
-%{_datadir}/%{name}/share/config/images_sifr_dark_svg.zip
-%{_datadir}/%{name}/share/config/images_sifr_svg.zip
-%{_datadir}/%{name}/share/config/images_tango.zip
-%{_datadir}/%{name}/share/config/images_helpimg.zip
-%{_datadir}/%{name}/share/config/images_breeze_svg.zip
-%{_datadir}/%{name}/share/config/images_colibre_svg.zip
-%{_datadir}/%{name}/share/config/images_elementary_svg.zip
+%{_datadir}/%{name}/share/config/images_*.zip
 
 %files -f file-lists/branding_upstream.txt branding-upstream
 

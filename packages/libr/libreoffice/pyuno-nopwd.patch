@@ -1,0 +1,50 @@
+From 844af02198cace3c8f7776602810d8433d0b71d1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Caol=C3=A1n=20McNamara?= <caolanm@redhat.com>
+Date: Fri, 19 Jun 2020 11:32:00 +0100
+Subject: [PATCH] tdf#121384 don't leave a bare trailing : in PYTHONPATH
+
+Change-Id: I8d8183485f457c3e4385181fee07390c4bfef603
+---
+ pyuno/source/loader/pyuno_loader.cxx | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/pyuno/source/loader/pyuno_loader.cxx b/pyuno/source/loader/pyuno_loader.cxx
+index 8556dfdde11f..ebb0b7ce5c8d 100644
+--- a/pyuno/source/loader/pyuno_loader.cxx
++++ b/pyuno/source/loader/pyuno_loader.cxx
+@@ -140,6 +140,7 @@ static void setPythonHome ( const OUString & pythonHome )
+ static void prependPythonPath( const OUString & pythonPathBootstrap )
+ {
+     OUStringBuffer bufPYTHONPATH( 256 );
++    bool bAppendSep = false;
+     sal_Int32 nIndex = 0;
+     while( true )
+     {
+@@ -153,17 +154,23 @@ static void prependPythonPath( const OUString & pythonPathBootstrap )
+         {
+             fileUrl = pythonPathBootstrap.copy(nIndex, nNew - nIndex);
+         }
++        if (bAppendSep)
++            bufPYTHONPATH.append( static_cast<sal_Unicode>(SAL_PATHSEPARATOR) );
+         OUString systemPath;
+         osl_getSystemPathFromFileURL( fileUrl.pData, &(systemPath.pData) );
+         bufPYTHONPATH.append( systemPath );
+-        bufPYTHONPATH.append( static_cast<sal_Unicode>(SAL_PATHSEPARATOR) );
++        bAppendSep = true;
+         if( nNew == -1 )
+             break;
+         nIndex = nNew + 1;
+     }
+     const char * oldEnv = getenv( "PYTHONPATH");
+     if( oldEnv )
++    {
++        if (bAppendSep)
++            bufPYTHONPATH.append( static_cast<sal_Unicode>(SAL_PATHSEPARATOR) );
+         bufPYTHONPATH.append( OUString(oldEnv, strlen(oldEnv), osl_getThreadTextEncoding()) );
++    }
+ 
+     OUString envVar("PYTHONPATH");
+     OUString envValue(bufPYTHONPATH.makeStringAndClear());
+-- 
+2.27.0
+

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Jun 19 12:38:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix bsc#1116658:
+  * pyuno-nopwd.patch
+
+-------------------------------------------------------------------
+Thu Jun 18 11:40:25 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 7.0.0.0.beta2:
+  * Beta candidate with all the new 7.0 series content
+- Remove merged patches:
+  * bsc1146025.diff
+  * bsc1157627.diff
+  * bsc1160687-2.diff
+  * bsc1160687-3.diff
+  * bsc1160687-4.diff
+  * bsc1160687-5.diff
+  * bsc1160687-6.diff
+  * bsc1160687-7.diff
+  * bsc1160687-8.diff
+  * bsc1165849-1.diff
+  * bsc1165849-2.diff
+  * bsc1165849-3.diff
+  * bsc1165870.diff
+  * bsc1172053.diff
+  * bsc1172189.diff
+  * replace-boost-bimap-in-sdext-pdfimport.patch
+  * fix_old_boost_spirit_namespace.patch
+- Rebase patch install-with-hardlinks.diff
+
+-------------------------------------------------------------------
+Thu Jun 18 07:58:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove mime-info and application-registry dirs bsc#1062631
+
+-------------------------------------------------------------------
+Mon Jun 15 15:05:08 UTC 2020 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1172053 - LO-L3: Image disappears during roundtrip 365->Impress->365
+  * bsc1172053.diff
+
+-------------------------------------------------------------------
 Wed Jun 10 19:18:41 UTC 2020 - Andras Timar <andras.timar@collabora.com>
 
 - Fix bsc#1172189 - LO-L3: Impress crashes midway opening a PPTX document

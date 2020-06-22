@@ -2760,4 +2760,40 @@ Petr</comment>
   * CVE-2020-12803: libreoffice: forms in ODF documents can be submitted to file:// URIs</comment>
     <requestid>813407</requestid>
   </revision>
+  <revision rev="206" vrev="1">
+    <srcmd5>989e5f62bb933530b9ae22f70cf7ea0e</srcmd5>
+    <version>7.0.0.0.beta2</version>
+    <time>1592840621</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix bsc#1116658:
+  * pyuno-nopwd.patch
+
+- Update to 7.0.0.0.beta2:
+  * Beta candidate with all the new 7.0 series content
+- Remove merged patches:
+  * bsc1146025.diff
+  * bsc1157627.diff
+  * bsc1160687-2.diff
+  * bsc1160687-3.diff
+  * bsc1160687-4.diff
+  * bsc1160687-5.diff
+  * bsc1160687-6.diff
+  * bsc1160687-7.diff
+  * bsc1160687-8.diff
+  * bsc1165849-1.diff
+  * bsc1165849-2.diff
+  * bsc1165849-3.diff
+  * bsc1165870.diff
+  * bsc1172053.diff
+  * bsc1172189.diff
+  * replace-boost-bimap-in-sdext-pdfimport.patch
+  * fix_old_boost_spirit_namespace.patch
+- Rebase patch install-with-hardlinks.diff
+
+- Remove mime-info and application-registry dirs bsc#1062631
+
+- Fix bsc#1172053 - LO-L3: Image disappears during roundtrip 365-&gt;Impress-&gt;365
+  * bsc1172053.diff</comment>
+    <requestid>815949</requestid>
+  </revision>
 </revisionlist>

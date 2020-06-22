@@ -1,8 +1,9 @@
-diff -urN libreoffice-4.1.0.0.beta1.old/solenv/bin/modules/installer/worker.pm libreoffice-4.1.0.0.beta1/solenv/bin/modules/installer/worker.pm
---- libreoffice-4.1.0.0.beta1.old/solenv/bin/modules/installer/worker.pm	2013-05-27 14:04:19.186304208 +0200
-+++ libreoffice-4.1.0.0.beta1/solenv/bin/modules/installer/worker.pm	2013-05-27 15:10:46.283303732 +0200
-@@ -377,7 +377,7 @@
-             symlink (readlink ("$sourcepath"), "$destdir$destination") || die "Can't symlink $destdir$destination -> " . readlink ("$sourcepath") . "$!";
+Index: libreoffice-7.0.0.0.beta2/solenv/bin/modules/installer/worker.pm
+===================================================================
+--- libreoffice-7.0.0.0.beta2.orig/solenv/bin/modules/installer/worker.pm
++++ libreoffice-7.0.0.0.beta2/solenv/bin/modules/installer/worker.pm
+@@ -347,7 +347,7 @@ sub install_simple ($$$$$$)
+             `mkdir -p "$destdir$destination"`;
          }
          else {
 -            copy ("$sourcepath", "$destdir$destination") || die "Can't copy file: $sourcepath -> $destdir$destination $!";
