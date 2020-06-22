@@ -1,0 +1,27 @@
+From 907ba17242490b767c21cec877dd3ad322526ef6 Mon Sep 17 00:00:00 2001
+From: Pierre-Yves Chibon <pingou@pingoured.fr>
+Date: Wed, 3 Jun 2020 20:23:45 +0200
+Subject: [PATCH] Fix the title of the graph showing the evolution of the
+ number of open tickets on a project
+
+Signed-off-by: Pierre-Yves Chibon <pingou@pingoured.fr>
+---
+ pagure/static/issues_stats.js | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pagure/static/issues_stats.js b/pagure/static/issues_stats.js
+index 32b4c2a9..5e81a3ab 100644
+--- a/pagure/static/issues_stats.js
++++ b/pagure/static/issues_stats.js
+@@ -70,7 +70,7 @@ function issues_history_stats_plot(data) {
+       },
+       title: {
+         display: true,
+-        text: 'Evolution of the number of commits over the last year'
++        text: 'Evolution of the number of open tickets over the last year'
+       }
+     }
+   });
+-- 
+2.26.2
+

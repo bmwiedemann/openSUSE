@@ -306,4 +306,34 @@
   + Patch: 0001-Add-support-for-smtp-server-requiring-starttls-to-wo.patch</comment>
     <requestid>807849</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>bb3dafb62548559f3344a3e0d917c5e8</srcmd5>
+    <version>5.10.0</version>
+    <time>1592840745</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport fixes for STARTTLS support
+  + Patch: 0002-starttls-support-via-SMTP_STARTTLS-provide-additiona.patch
+  + Patch: 0001-Do-not-assume-there-is-a-SMTP_STARTTLS-configuration.patch
+- Backport fix for docs repo access grant
+  + Patch: 0001-Fix-repotype-spelling.patch
+- Backport fix for visual bug on API docs formatting
+  + Patch: 0001-api-fix-apidoc-format-on-api_view_issues_history_det.patch
+- Backport fix to changing pull mirror settings
+  + Patch: 0001-Allow-editing-the-URL-a-project-is-mirrored-from.patch
+- Backport fix to add descriptions to API scopes
+  + Patch: 0001-Show-the-ACL-name-in-addition-to-the-description-whe.patch
+- Backport fix to make heatmap UI functional again
+  + Patch: 0001-Bring-back-JS-library-used-for-the-heatmap.patch
+- Backport fix for handling headers
+  + Patch: 0001-Ensure-the-title-name-of-the-headers-are-strings.patch
+- Backport fix for burndown graph title
+  + Patch: 0001-Fix-the-title-of-the-graph-showing-the-evolution-of-.patch
+- Backport fix for permissions on authorized_keys file
+  + Patch: 0001-Make-sure-authorized_keys-file-has-mode-600.patch
+- Add patch to use whitenoise for rendering static assets
+  + Patch: 0101-Use-WhiteNoise-to-serve-static-assets-for-the-Pagure.patch
+- Refresh default configuration patch
+  + Patch: pagure-5.0-default-example-cfg.patch</comment>
+    <requestid>816227</requestid>
+  </revision>
 </revisionlist>

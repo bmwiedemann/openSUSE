@@ -1,6 +1,6 @@
 diff -rup pagure/files/gitolite3.rc pagure.cfg-defs/files/gitolite3.rc
---- pagure/files/gitolite3.rc	2020-05-08 21:32:56.673172022 -0400
-+++ pagure.cfg-defs/files/gitolite3.rc	2020-05-08 21:37:03.018641878 -0400
+--- pagure/files/gitolite3.rc	2020-06-21 09:19:34.924187087 -0400
++++ pagure.cfg-defs/files/gitolite3.rc	2020-06-21 09:20:06.922455887 -0400
 @@ -16,7 +16,7 @@
  
      # ------------------------------------------------------------------
@@ -11,8 +11,8 @@ diff -rup pagure/files/gitolite3.rc pagure.cfg-defs/files/gitolite3.rc
      # default umask gives you perms of '0700'; see the rc file docs for
      # how/why you might change this
 diff -rup pagure/files/pagure-apache-httpd.conf pagure.cfg-defs/files/pagure-apache-httpd.conf
---- pagure/files/pagure-apache-httpd.conf	2020-05-08 21:33:38.860594994 -0400
-+++ pagure.cfg-defs/files/pagure-apache-httpd.conf	2020-05-08 21:39:33.815153778 -0400
+--- pagure/files/pagure-apache-httpd.conf	2020-06-21 09:19:34.926187104 -0400
++++ pagure.cfg-defs/files/pagure-apache-httpd.conf	2020-06-21 09:20:06.923455896 -0400
 @@ -29,9 +29,9 @@
    ## Use secure TLSv1.1 and TLSv1.2 ciphers
    #Header always add Strict-Transport-Security "max-age=15768000; includeSubDomains; preload"
@@ -24,9 +24,9 @@ diff -rup pagure/files/pagure-apache-httpd.conf pagure.cfg-defs/files/pagure-apa
 +  #SSLCertificateChainFile /etc/ssl/....intermediate.crt
 +  #SSLCertificateKeyFile /etc/ssl/....key
  
-   #Alias /static /usr/lib/pythonX.Y/site-packages/pagure/static/
- 
-@@ -60,9 +60,9 @@
+   #<Location />
+     #WSGIProcessGroup paguredocs
+@@ -58,9 +58,9 @@
    ## Use secure TLSv1.1 and TLSv1.2 ciphers
    #Header always add Strict-Transport-Security "max-age=15768000; includeSubDomains; preload"
  
@@ -37,9 +37,9 @@ diff -rup pagure/files/pagure-apache-httpd.conf pagure.cfg-defs/files/pagure-apa
 +  #SSLCertificateChainFile /etc/ssl/....intermediate.crt
 +  #SSLCertificateKeyFile /etc/ssl/....key
  
-   #Alias /static /usr/lib/pythonX.Y/site-packages/pagure/static/
    #Alias /releases /var/www/releases
-@@ -97,7 +97,7 @@
+ 
+@@ -94,7 +94,7 @@
     #</IfModule>
    #</Location>
  
@@ -49,8 +49,8 @@ diff -rup pagure/files/pagure-apache-httpd.conf pagure.cfg-defs/files/pagure-apa
    #</Directory>
  
 diff -rup pagure/files/pagure.cfg.sample pagure.cfg-defs/files/pagure.cfg.sample
---- pagure/files/pagure.cfg.sample	2020-05-08 21:32:56.679172082 -0400
-+++ pagure.cfg-defs/files/pagure.cfg.sample	2020-05-08 22:03:36.961622933 -0400
+--- pagure/files/pagure.cfg.sample	2020-06-21 09:19:34.927187112 -0400
++++ pagure.cfg-defs/files/pagure.cfg.sample	2020-06-21 09:20:06.923455896 -0400
 @@ -72,25 +72,33 @@ DOC_APP_URL = 'http://docs.localhost.loc
  
  ### The URL to use to clone git repositories.
@@ -121,10 +121,9 @@ diff -rup pagure/files/pagure.cfg.sample pagure.cfg-defs/files/pagure.cfg.sample
  
  ### Path to the gitolite.rc file
  GL_RC = None
-Only in pagure.cfg-defs/files: pagure.cfg.sample.orig
 diff -rup pagure/files/pagure_docs_web.service pagure.cfg-defs/files/pagure_docs_web.service
---- pagure/files/pagure_docs_web.service	2020-05-08 21:33:38.862595014 -0400
-+++ pagure.cfg-defs/files/pagure_docs_web.service	2020-05-08 21:41:42.996448966 -0400
+--- pagure/files/pagure_docs_web.service	2020-06-21 09:19:34.928187121 -0400
++++ pagure.cfg-defs/files/pagure_docs_web.service	2020-06-21 09:20:06.924455904 -0400
 @@ -5,7 +5,7 @@ Documentation=https://pagure.io/pagure
  
  
@@ -135,8 +134,8 @@ diff -rup pagure/files/pagure_docs_web.service pagure.cfg-defs/files/pagure_docs
  User=git
  Group=git
 diff -rup pagure/files/pagure-nginx.conf pagure.cfg-defs/files/pagure-nginx.conf
---- pagure/files/pagure-nginx.conf	2020-05-08 21:33:38.860594994 -0400
-+++ pagure.cfg-defs/files/pagure-nginx.conf	2020-05-08 21:43:48.199704257 -0400
+--- pagure/files/pagure-nginx.conf	2020-06-21 09:19:34.926187104 -0400
++++ pagure.cfg-defs/files/pagure-nginx.conf	2020-06-21 09:20:06.924455904 -0400
 @@ -12,15 +12,15 @@
      #access_log  /var/log/nginx/pagure_docs.access.log;
      #error_log  /var/log/nginx/pagure_docs.error.log;
@@ -156,7 +155,7 @@ diff -rup pagure/files/pagure-nginx.conf pagure.cfg-defs/files/pagure-nginx.conf
      #}
  
      #location / {
-@@ -48,15 +48,15 @@
+@@ -43,15 +43,15 @@
      #access_log  /var/log/nginx/pagure.access.log;
      #error_log  /var/log/nginx/pagure.error.log;
  
@@ -175,7 +174,7 @@ diff -rup pagure/files/pagure-nginx.conf pagure.cfg-defs/files/pagure-nginx.conf
      #}
  
      #location / {
-@@ -68,7 +68,7 @@
+@@ -59,7 +59,7 @@
      #}
  
      #location /releases {
@@ -185,8 +184,8 @@ diff -rup pagure/files/pagure-nginx.conf pagure.cfg-defs/files/pagure-nginx.conf
      #}
  
 diff -rup pagure/files/pagure_web.service pagure.cfg-defs/files/pagure_web.service
---- pagure/files/pagure_web.service	2020-05-08 21:33:38.862595014 -0400
-+++ pagure.cfg-defs/files/pagure_web.service	2020-05-08 21:41:26.941287994 -0400
+--- pagure/files/pagure_web.service	2020-06-21 09:19:34.928187121 -0400
++++ pagure.cfg-defs/files/pagure_web.service	2020-06-21 09:20:06.924455904 -0400
 @@ -5,7 +5,7 @@ Documentation=https://pagure.io/pagure
  
  

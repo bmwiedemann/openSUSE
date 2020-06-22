@@ -1,0 +1,30 @@
+From 86c9a6f729968432b9f0dd785548fbe8065f6f4b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lubom=C3=ADr=20Sedl=C3=A1=C5=99?= <lsedlar@redhat.com>
+Date: Fri, 22 May 2020 11:49:10 +0200
+Subject: [PATCH] Fix repotype spelling
+
+---
+ pagure/internal/__init__.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pagure/internal/__init__.py b/pagure/internal/__init__.py
+index 4f106e8b..3fa7edfa 100644
+--- a/pagure/internal/__init__.py
++++ b/pagure/internal/__init__.py
+@@ -157,11 +157,11 @@ def check_ssh_access():
+         return flask.jsonify({"access": False})
+     _log.info("Checking ACLs on project: %s" % project.fullname)
+ 
+-    if repotype not in ["main", "doc"] and not pagure.utils.is_repo_user(
++    if repotype not in ["main", "docs"] and not pagure.utils.is_repo_user(
+         project, remoteuser
+     ):
+         # Deploy keys are not allowed on ticket and PR repos but they are
+-        # allowed for main and doc repos.
++        # allowed for main and docs repos.
+         _log.info("%s is not a contributor to this project" % remoteuser)
+         return flask.jsonify({"access": False})
+ 
+-- 
+2.26.1
+
