@@ -1,7 +1,7 @@
-Index: VirtualBox-6.1.4/src/VBox/HostDrivers/linux/Makefile
+Index: VirtualBox-6.1.10/src/VBox/HostDrivers/linux/Makefile
 ===================================================================
---- VirtualBox-6.1.4.orig/src/VBox/HostDrivers/linux/Makefile
-+++ VirtualBox-6.1.4/src/VBox/HostDrivers/linux/Makefile
+--- VirtualBox-6.1.10.orig/src/VBox/HostDrivers/linux/Makefile
++++ VirtualBox-6.1.10/src/VBox/HostDrivers/linux/Makefile
 @@ -35,9 +35,6 @@ endif
  ifneq ($(wildcard $(CURDIR)/vboxnetadp/Makefile),)
   obj-m += vboxnetadp/
@@ -34,7 +34,7 @@ Index: VirtualBox-6.1.4/src/VBox/HostDrivers/linux/Makefile
 -	    if [ -f vboxdrv/Module.symvers ]; then \
 -	        cp vboxdrv/Module.symvers vboxnetflt; \
 -	    fi; \
-+	    export KBUILD_EXTRA_SYMBOLS=${PWD}/vboxnetflt/Module.symvers; \
++	    export KBUILD_EXTRA_SYMBOLS=${PWD}/vboxdrv/Module.symvers; \
  	    echo "=== Building 'vboxnetflt' module ==="; \
 -	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) KBUILD_EXTRA_SYMBOLS=$(abspath vboxnetflt/Module.symvers) -C vboxnetflt || exit 1; \
 +	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) KBUILD_EXTRA_SYMBOLS=$(abspath vboxdrv/Module.symvers) -C vboxnetflt || exit 1; \
@@ -47,10 +47,10 @@ Index: VirtualBox-6.1.4/src/VBox/HostDrivers/linux/Makefile
 -	    if [ -f vboxdrv/Module.symvers ]; then \
 -	        cp vboxdrv/Module.symvers vboxnetadp; \
 -	    fi; \
-+	    export KBUILD_EXTRA_SYMBOLS=${PWD}/vboxnetadp/Module.symvers; \
++	    export KBUILD_EXTRA_SYMBOLS=${PWD}/vboxdrv/Module.symvers; \
  	    echo "=== Building 'vboxnetadp' module ==="; \
 -	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) KBUILD_EXTRA_SYMBOLS=$(abspath vboxnetadp/Module.symvers) -C vboxnetadp || exit 1; \
-+            $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) KBUILD_EXTRA_SYMBOLS=$(abspath vboxdrv/Module.symvers) -C vboxnetadp || exit 1; \
++	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) KBUILD_EXTRA_SYMBOLS=$(abspath vboxdrv/Module.symvers) -C vboxnetadp || exit 1; \
  	    cp vboxnetadp/vboxnetadp.ko .; \
  	    echo; \
  	fi
@@ -69,11 +69,11 @@ Index: VirtualBox-6.1.4/src/VBox/HostDrivers/linux/Makefile
  install:
  	@$(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) -C vboxdrv install
  	@if [ -d vboxnetflt ]; then \
-+	    export KBUILD_EXTRA_SYMBOLS=${PWD}/vboxnetflt/Module.symvers; \
++	    export KBUILD_EXTRA_SYMBOLS=${PWD}/vboxdrv/Module.symvers; \
  	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) -C vboxnetflt install; \
  	fi
  	@if [ -d vboxnetadp ]; then \
-+	    export KBUILD_EXTRA_SYMBOLS=${PWD}/vboxnetadp/Module.symvers; \
++	    export KBUILD_EXTRA_SYMBOLS=${PWD}/vboxdrv/Module.symvers; \
  	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) -C vboxnetadp install; \
  	fi
 -	@if [ -d vboxpci ]; then \
@@ -117,10 +117,10 @@ Index: VirtualBox-6.1.4/src/VBox/HostDrivers/linux/Makefile
  		if test -f $$module.ko; then \
  			echo "Installing $$module module"; \
  			/sbin/insmod $$module.ko; \
-Index: VirtualBox-6.1.4/src/VBox/Additions/linux/Makefile
+Index: VirtualBox-6.1.10/src/VBox/Additions/linux/Makefile
 ===================================================================
---- VirtualBox-6.1.4.orig/src/VBox/Additions/linux/Makefile
-+++ VirtualBox-6.1.4/src/VBox/Additions/linux/Makefile
+--- VirtualBox-6.1.10.orig/src/VBox/Additions/linux/Makefile
++++ VirtualBox-6.1.10/src/VBox/Additions/linux/Makefile
 @@ -24,6 +24,7 @@ obj-m = vboxguest/ vboxsf/ vboxvideo/
  else # ! KERNELRELEASE
  
@@ -157,10 +157,10 @@ Index: VirtualBox-6.1.4/src/VBox/Additions/linux/Makefile
  	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) -C vboxvideo install; \
  	fi
  
-Index: VirtualBox-6.1.4/include/iprt/x86.h
+Index: VirtualBox-6.1.10/include/iprt/x86.h
 ===================================================================
---- VirtualBox-6.1.4.orig/include/iprt/x86.h
-+++ VirtualBox-6.1.4/include/iprt/x86.h
+--- VirtualBox-6.1.10.orig/include/iprt/x86.h
++++ VirtualBox-6.1.10/include/iprt/x86.h
 @@ -840,37 +840,59 @@ typedef const X86CPUIDFEATEDX *PCX86CPUI
   *          reserved flags.
   * @{ */
@@ -762,10 +762,10 @@ Index: VirtualBox-6.1.4/include/iprt/x86.h
  /** North bridge config? See BIOS & Kernel dev guides for
   * details. */
  #define MSR_K8_NB_CFG                       UINT32_C(0xc001001f)
-Index: VirtualBox-6.1.4/include/VBox/vmm/hm_vmx.h
+Index: VirtualBox-6.1.10/include/VBox/vmm/hm_vmx.h
 ===================================================================
---- VirtualBox-6.1.4.orig/include/VBox/vmm/hm_vmx.h
-+++ VirtualBox-6.1.4/include/VBox/vmm/hm_vmx.h
+--- VirtualBox-6.1.10.orig/include/VBox/vmm/hm_vmx.h
++++ VirtualBox-6.1.10/include/VBox/vmm/hm_vmx.h
 @@ -1473,7 +1473,9 @@ AssertCompileSize(VMXABORT, 4);
  /** VMCS (and related regions) memory type - Uncacheable. */
  #define VMX_BASIC_MEM_TYPE_UC                                   0
@@ -776,11 +776,11 @@ Index: VirtualBox-6.1.4/include/VBox/vmm/hm_vmx.h
  /** Width of physical addresses used for VMCS and associated memory regions
   *  (1=32-bit, 0=processor's physical address width). */
  #define VMX_BASIC_PHYSADDR_WIDTH_32BIT                          RT_BIT_64(48)
-Index: VirtualBox-6.1.4/src/VBox/Additions/linux/drm/vbox_drv.h
+Index: VirtualBox-6.1.10/src/VBox/Additions/linux/drm/vbox_drv.h
 ===================================================================
---- VirtualBox-6.1.4.orig/src/VBox/Additions/linux/drm/vbox_drv.h
-+++ VirtualBox-6.1.4/src/VBox/Additions/linux/drm/vbox_drv.h
-@@ -83,10 +83,8 @@
+--- VirtualBox-6.1.10.orig/src/VBox/Additions/linux/drm/vbox_drv.h
++++ VirtualBox-6.1.10/src/VBox/Additions/linux/drm/vbox_drv.h
+@@ -86,10 +86,8 @@
  # endif
  #endif
  

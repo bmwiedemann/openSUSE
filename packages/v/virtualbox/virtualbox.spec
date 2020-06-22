@@ -148,14 +148,16 @@ Patch130:       fixes_for_Leap42.3.patch
 Patch132:       fixes_for_qt5.13.patch
 # Fixes for openSUSE Leap 15.2
 Patch133:       fixes_for_leap15.2.patch
-# Fixes for API changes in kernel 5.6
-Patch134:       fixes_for_5.5.patch
+# Fixes for kernel modules Makefile used at boot time
+Patch134:       fixes_for_makefile.patch
 # Fix build for Qt 5.15
 Patch135:       fix-missing-includes-with-qt-5.15.patch
 # Fix builds with GCC10
 Patch136:       fixes_for_gcc10.patch
-# Fix for chanes in GSOAP 2.8.103
+# Fix for changes in GSOAP 2.8.103
 Patch137:       handle_gsoap_208103.patch
+# Fixes for kernel 5.8
+Patch138:       fixes_for_5.8.patch
 Patch999:       virtualbox-fix-ui-background-color.patch
 #
 BuildRequires:  LibVNCServer-devel
@@ -461,6 +463,7 @@ as an "extpack" for VirtualBox. The implementation is licensed under GPL.
 %patch135 -p1
 %patch136 -p1
 %patch137 -p1
+%patch138 -p1
 # make VB UI background colors look sane again
 %patch999 -p1
 

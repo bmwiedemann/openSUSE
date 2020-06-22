@@ -1,0 +1,236 @@
+Fixes needed to build vboxdrv with kernel 5.8. The changes handle the following kernel API changes:
+
+1. In struct mm_struct, member mmap_sem was renamed to mmap_lock.
+2. The information in cpu_tlbstate is no longer exported.
+3. The routines __get_vm_area() and map_vm_area() no longer exist and their
+   replacements are not exported. Two fixes have been attempted:
+   a. The missing routines were not available until kernel 2.6.23, thus the code was
+      changed to revert back to the "old" method. Unfortunately, this did not work, and
+      likely it will require Oracle to make the changes.
+   b. The replacements for __get_vm_area() and map_vm_area() are implemented. The resulting
+      code builds but gets missing globals on loading. For testing, the kernel is modified.
+      This change cannot be permanent, but it can be temporary.
+
+Index: VirtualBox-6.1.10/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
+===================================================================
+--- VirtualBox-6.1.10.orig/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
++++ VirtualBox-6.1.10/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
+@@ -222,9 +222,17 @@ static void *rtR0MemObjLinuxDoMmap(RTR3P
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 5, 0)
+         ulAddr = vm_mmap(NULL, R3PtrFixed, cb, fLnxProt, MAP_SHARED | MAP_ANONYMOUS | MAP_FIXED, 0);
+ #else
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
+         down_write(&pTask->mm->mmap_sem);
++#else
++        down_write(&pTask->mm->mmap_lock);
++#endif
+         ulAddr = do_mmap(NULL, R3PtrFixed, cb, fLnxProt, MAP_SHARED | MAP_ANONYMOUS | MAP_FIXED, 0);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
+         up_write(&pTask->mm->mmap_sem);
++#else
++        up_write(&pTask->mm->mmap_lock);
++#endif
+ #endif
+     }
+     else
+@@ -232,9 +240,17 @@ static void *rtR0MemObjLinuxDoMmap(RTR3P
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 5, 0)
+         ulAddr = vm_mmap(NULL, 0, cb, fLnxProt, MAP_SHARED | MAP_ANONYMOUS, 0);
+ #else
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
+         down_write(&pTask->mm->mmap_sem);
++#else
++        down_write(&pTask->mm->mmap_lock);
++#endif
+         ulAddr = do_mmap(NULL, 0, cb, fLnxProt, MAP_SHARED | MAP_ANONYMOUS, 0);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
+         up_write(&pTask->mm->mmap_sem);
++#else
++        up_write(&pTask->mm->mmap_lock);
++#endif
+ #endif
+         if (    !(ulAddr & ~PAGE_MASK)
+             &&  (ulAddr & (uAlignment - 1)))
+@@ -269,13 +285,29 @@ static void rtR0MemObjLinuxDoMunmap(void
+     Assert(pTask == current); RT_NOREF_PV(pTask);
+     vm_munmap((unsigned long)pv, cb);
+ #elif defined(USE_RHEL4_MUNMAP)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
+     down_write(&pTask->mm->mmap_sem);
++#else
++    down_write(&pTask->mm->mmap_lock);
++#endif
+     do_munmap(pTask->mm, (unsigned long)pv, cb, 0); /* should it be 1 or 0? */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
+     up_write(&pTask->mm->mmap_sem);
+ #else
++    up_write(&pTask->mm->mmap_lock);
++#endif
++#else
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
+     down_write(&pTask->mm->mmap_sem);
++#else
++    down_write(&pTask->mm->mmap_lock);
++#endif
+     do_munmap(pTask->mm, (unsigned long)pv, cb);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
+     up_write(&pTask->mm->mmap_sem);
++#else
++    up_write(&pTask->mm->mmap_lock);
++#endif
+ #endif
+ }
+ 
+@@ -593,7 +625,11 @@ DECLHIDDEN(int) rtR0MemObjNativeFree(RTR
+                 size_t              iPage;
+                 Assert(pTask);
+                 if (pTask && pTask->mm)
+-                    down_read(&pTask->mm->mmap_sem);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
++		    down_read(&pTask->mm->mmap_sem);
++#else
++		    down_read(&pTask->mm->mmap_lock);
++#endif
+ 
+                 iPage = pMemLnx->cPages;
+                 while (iPage-- > 0)
+@@ -608,7 +644,11 @@ DECLHIDDEN(int) rtR0MemObjNativeFree(RTR
+                 }
+ 
+                 if (pTask && pTask->mm)
+-                    up_read(&pTask->mm->mmap_sem);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
++		    up_read(&pTask->mm->mmap_sem);
++#else
++		    up_read(&pTask->mm->mmap_lock);
++#endif
+             }
+             /* else: kernel memory - nothing to do here. */
+             break;
+@@ -1076,7 +1116,11 @@ DECLHIDDEN(int) rtR0MemObjNativeLockUser
+     papVMAs = (struct vm_area_struct **)RTMemAlloc(sizeof(*papVMAs) * cPages);
+     if (papVMAs)
+     {
+-        down_read(&pTask->mm->mmap_sem);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
++	down_read(&pTask->mm->mmap_sem);
++#else
++	down_read(&pTask->mm->mmap_lock);
++#endif
+ 
+         /*
+          * Get user pages.
+@@ -1162,7 +1206,11 @@ DECLHIDDEN(int) rtR0MemObjNativeLockUser
+                 papVMAs[rc]->vm_flags |= VM_DONTCOPY | VM_LOCKED;
+             }
+ 
+-            up_read(&pTask->mm->mmap_sem);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
++	    up_read(&pTask->mm->mmap_sem);
++#else
++	    up_read(&pTask->mm->mmap_lock);
++#endif
+ 
+             RTMemFree(papVMAs);
+ 
+@@ -1189,7 +1237,11 @@ DECLHIDDEN(int) rtR0MemObjNativeLockUser
+ #endif
+         }
+ 
+-        up_read(&pTask->mm->mmap_sem);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
++	up_read(&pTask->mm->mmap_sem);
++#else
++	up_read(&pTask->mm->mmap_lock);
++#endif
+ 
+         RTMemFree(papVMAs);
+         rc = VERR_LOCK_FAILED;
+@@ -1604,7 +1656,11 @@ DECLHIDDEN(int) rtR0MemObjNativeMapUser(
+             const size_t    cPages    = (offSub + cbSub) >> PAGE_SHIFT;
+             size_t          iPage;
+ 
+-            down_write(&pTask->mm->mmap_sem);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
++	    down_write(&pTask->mm->mmap_sem);
++#else
++	    down_write(&pTask->mm->mmap_lock);
++#endif
+ 
+             rc = VINF_SUCCESS;
+             if (pMemLnxToMap->cPages)
+@@ -1721,7 +1777,11 @@ DECLHIDDEN(int) rtR0MemObjNativeMapUser(
+             }
+ #endif /* CONFIG_NUMA_BALANCING */
+ 
+-            up_write(&pTask->mm->mmap_sem);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
++	    up_write(&pTask->mm->mmap_sem);
++#else
++	    up_write(&pTask->mm->mmap_lock);
++#endif
+ 
+             if (RT_SUCCESS(rc))
+             {
+Index: VirtualBox-6.1.10/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c
+===================================================================
+--- VirtualBox-6.1.10.orig/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c
++++ VirtualBox-6.1.10/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c
+@@ -757,12 +757,19 @@ EXPORT_SYMBOL(SUPDrvLinuxIDC);
+ RTCCUINTREG VBOXCALL supdrvOSChangeCR4(RTCCUINTREG fOrMask, RTCCUINTREG fAndMask)
+ {
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 20, 0)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
+     RTCCUINTREG uOld = this_cpu_read(cpu_tlbstate.cr4);
++#else
++    RTCCUINTREG uOld = __read_cr4();
++#endif
+     RTCCUINTREG uNew = (uOld & fAndMask) | fOrMask;
+     if (uNew != uOld)
+     {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
+         this_cpu_write(cpu_tlbstate.cr4, uNew);
+         __write_cr4(uNew);
++#endif
++        ASMSetCR4(uNew);
+     }
+ #else
+     RTCCUINTREG uOld = ASMGetCR4();
+Index: VirtualBox-6.1.10/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
+===================================================================
+--- VirtualBox-6.1.10.orig/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
++++ VirtualBox-6.1.10/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
+@@ -168,7 +168,12 @@ static PRTMEMHDR rtR0MemAllocExecVmArea(
+     struct vm_struct   *pVmArea;
+     size_t              iPage;
+ 
++# if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 8, 0)
++    pVmArea = __get_vm_area_caller(cbAlloc, VM_ALLOC, MODULES_VADDR, MODULES_END,
++				  __builtin_return_address(0));
++#else
+     pVmArea = __get_vm_area(cbAlloc, VM_ALLOC, MODULES_VADDR, MODULES_END);
++#endif
+     if (!pVmArea)
+         return NULL;
+     pVmArea->nr_pages = 0;    /* paranoia? */
+@@ -201,6 +206,12 @@ static PRTMEMHDR rtR0MemAllocExecVmArea(
+ # endif
+         pVmArea->nr_pages = cPages;
+         pVmArea->pages    = papPages;
++# if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 8, 0)
++	unsigned long start = (unsigned long)pVmArea->addr;
++	unsigned long size = get_vm_area_size(pVmArea);
++
++	if (!map_kernel_range(start, size, PAGE_KERNEL_EXEC, papPages))
++#else
+         if (!map_vm_area(pVmArea, PAGE_KERNEL_EXEC,
+ # if LINUX_VERSION_CODE < KERNEL_VERSION(3, 17, 0)
+                          &papPagesIterator
+@@ -208,6 +219,7 @@ static PRTMEMHDR rtR0MemAllocExecVmArea(
+                          papPages
+ # endif
+                          ))
++#endif
+         {
+             PRTMEMLNXHDREX pHdrEx = (PRTMEMLNXHDREX)pVmArea->addr;
+             pHdrEx->pVmArea     = pVmArea;

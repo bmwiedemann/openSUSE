@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 13 18:42:48 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Add fixes to build with kernel 5.8. File "fixes_for_5.8.patch" is added.
+- Remove file "fixes_for_5.5.patch". Fixed upstream.
+-`Add file "fixes_for_makefile.patch" to clean up the Makefile used from the
+  vboxdrv service routine when modules are not available.
+
+-------------------------------------------------------------------
 Fri Jun  5 20:42:04 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
 
 - Version bump to 6.1.10 (released June 05 2020 by Oracle)
