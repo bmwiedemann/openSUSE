@@ -73,7 +73,7 @@ The netsniff-ng toolkit consists of the following utilities:
 export NACL_LIB=sodium
 export NACL_INC_DIR=/usr/include/sodium
 ./configure --disable-geoip
-make %{?_smp_mflags} ETCDIR=%{_sysconfdir} Q= STRIP=: CFLAGS="%{optflags}"
+make %{?_smp_mflags} ETCDIR=%{_sysconfdir} Q= STRIP=: CFLAGS="%{optflags} -fcommon"
 
 %install
 make install PREFIX=%{_prefix} ETCDIR=%{_sysconfdir} DESTDIR=%{buildroot}
