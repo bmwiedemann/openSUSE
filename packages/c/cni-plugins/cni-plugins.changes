@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Jun 17 08:38:27 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
-- Update to version 0.8.6 (bsc#1172410)
+- Update to version 0.8.6 (bsc#1172410 CVE-2020-10749)
   * New features
     * Support device id in host device plugin (#471).
     * win-bridge: add support for portMappings capability (#475).
