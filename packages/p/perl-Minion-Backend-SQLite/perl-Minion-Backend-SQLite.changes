@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 19 03:08:26 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.0.1
+   see /usr/share/doc/packages/perl-Minion-Backend-SQLite/Changes
+
+  v5.0.1    2020-06-17 23:20:46 EDT
+    - Fixed tests to be less sensitive to error message contents.
+
+-------------------------------------------------------------------
 Wed Jun 17 18:54:15 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.0.0

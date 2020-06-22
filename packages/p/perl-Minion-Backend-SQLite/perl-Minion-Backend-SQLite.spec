@@ -17,7 +17,7 @@
 
 
 Name:           perl-Minion-Backend-SQLite
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 %define cpan_name Minion-Backend-SQLite
 Summary:        SQLite backend for Minion job queue
