@@ -367,4 +367,15 @@
   * all: support complex encoding</comment>
     <requestid>649285</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>d22ecdd00a16a3e0950b2800766d9ea8</srcmd5>
+    <version>0.4.11</version>
+    <time>1592840573</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.11:
+  - XYWrite: add a parser to .fil v2,v4 files
+  - wks,wk1: try to correct some problems when
+    retrieving cell's reference.</comment>
+    <requestid>815734</requestid>
+  </revision>
 </revisionlist>

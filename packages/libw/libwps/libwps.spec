@@ -1,7 +1,7 @@
 #
 # spec file for package libwps
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,17 @@
 
 %define libname libwps-0_4-4
 Name:           libwps
-Version:        0.4.10
+Version:        0.4.11
 Release:        0
 Summary:        Library for the Microsoft Works text and spreadsheet formats
 License:        LGPL-2.1-or-later AND MPL-2.0+
-Group:          Productivity/Publishing/Word
 URL:            http://libwps.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/libwps/libwps/libwps-%{version}/libwps-%{version}.tar.xz
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(librevenge-0.0)
-%if 0%{?suse_version} > 1325
+%if 0%{?suse_version} >= 1500
 BuildRequires:  libboost_headers-devel
 %else
 BuildRequires:  boost-devel
@@ -41,7 +40,6 @@ and spreadsheet file format.
 
 %package -n %{libname}
 Summary:        Library for the Microsoft Works text and spreadsheet formats
-Group:          System/Libraries
 
 %description -n %{libname}
 libwps is a library for importing the Microsoft Works word processor
@@ -49,7 +47,6 @@ and spreadsheet file format.
 
 %package devel
 Summary:        Files for Developing with libwps
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel
@@ -60,7 +57,6 @@ This package contains the libwps development files.
 
 %package tools
 Summary:        Tools for converting the Microsoft Works text and spreadsheet formats
-Group:          Productivity/Publishing/Word
 
 %description tools
 Tools to work with the Microsoft Works word processor and spreadsheet
@@ -76,7 +72,7 @@ export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
 	--disable-werror \
 	--disable-static \
 	--docdir=%{_docdir}/%{name}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

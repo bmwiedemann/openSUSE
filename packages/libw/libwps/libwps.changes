@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 18 11:32:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.4.11:
+  - XYWrite: add a parser to .fil v2,v4 files
+  - wks,wk1: try to correct some problems when
+    retrieving cell's reference.
+
+-------------------------------------------------------------------
 Thu Nov 15 13:32:42 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Version update to 0.4.10:
