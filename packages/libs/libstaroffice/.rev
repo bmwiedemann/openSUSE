@@ -58,4 +58,14 @@
   * .sdw: retrieve more attachments.</comment>
     <requestid>612994</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>242a08fac0667ed0d84cafb81fb037a1</srcmd5>
+    <version>0.0.7</version>
+    <time>1592840582</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.0.7:
+  * fix various compilation's warnings
+  * fix text:sender-lastname when creating meta-data</comment>
+    <requestid>815735</requestid>
+  </revision>
 </revisionlist>

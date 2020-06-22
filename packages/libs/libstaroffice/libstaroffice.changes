@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 18 11:37:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.0.7:
+  * fix various compilation's warnings
+  * fix text:sender-lastname when creating meta-data
+
+-------------------------------------------------------------------
 Tue May 29 13:57:13 UTC 2018 - tchvatal@suse.com
 
 - Update to 0.0.6:
