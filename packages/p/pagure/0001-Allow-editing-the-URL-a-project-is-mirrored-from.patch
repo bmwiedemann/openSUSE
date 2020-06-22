@@ -1,0 +1,206 @@
+From c78ea50ecfb6cb9c2be7aa9eabedf1f5c6292e84 Mon Sep 17 00:00:00 2001
+From: Pierre-Yves Chibon <pingou@pingoured.fr>
+Date: Sat, 30 May 2020 22:30:54 +0200
+Subject: [PATCH] Allow editing the URL a project is mirrored from
+
+When a project is mirrored from a remote location to a local pagure
+instance, we so far had no way to edit this url, for example for
+when the upstream project changes location.
+With this commit we're able to fix this.
+
+Fixes https://pagure.io/pagure/issue/4647
+
+Signed-off-by: Pierre-Yves Chibon <pingou@pingoured.fr>
+---
+ pagure/forms.py                               |   4 +
+ pagure/templates/settings.html                |   9 ++
+ pagure/ui/repo.py                             |   2 +
+ ...test_pagure_flask_ui_repo_mirrored_from.py | 128 ++++++++++++++++++
+ 4 files changed, 143 insertions(+)
+ create mode 100644 tests/test_pagure_flask_ui_repo_mirrored_from.py
+
+diff --git a/pagure/forms.py b/pagure/forms.py
+index 228a0206..6daa8a81 100644
+--- a/pagure/forms.py
++++ b/pagure/forms.py
+@@ -159,6 +159,10 @@ class ProjectFormSimplified(PagureForm):
+     private = wtforms.BooleanField(
+         "Private", [wtforms.validators.Optional()], false_values=FALSE_VALUES
+     )
++    mirrored_from = wtforms.StringField(
++        "Mirrored from",
++        [wtforms.validators.optional(), wtforms.validators.Length(max=255)],
++    )
+ 
+ 
+ class ProjectForm(ProjectFormSimplified):
+diff --git a/pagure/templates/settings.html b/pagure/templates/settings.html
+index a09d722d..55df03a0 100644
+--- a/pagure/templates/settings.html
++++ b/pagure/templates/settings.html
+@@ -160,6 +160,15 @@
+                         <span class="c-indicator"></span>
+                     </fieldset>
+                 {% endif %}
++                {% if repo.mirrored_from %}
++                    <fieldset class="form-group">
++                      <label for="tags">Mirrored from</label>
++                      <input class="form-control" name="mirrored_from" value="{{ repo.mirrored_from }}" />
++                      <small class="text-muted">
++                        The (public) url from which this repository is mirrored.
++                      </small>
++                    </fieldset>
++                {% endif %}
+                 <button class="btn btn-primary" type="submit" title="Update description">
+                   Update
+                 </button>
+diff --git a/pagure/ui/repo.py b/pagure/ui/repo.py
+index 5b522b5a..040b2bc5 100644
+--- a/pagure/ui/repo.py
++++ b/pagure/ui/repo.py
+@@ -1421,6 +1421,8 @@ def update_project(repo, username=None, namespace=None):
+             repo.url = form.url.data.strip()
+             if repo.private:
+                 repo.private = form.private.data
++            if repo.mirrored_from:
++                repo.mirrored_from = form.mirrored_from.data
+             pagure.lib.query.update_tags(
+                 flask.g.session,
+                 repo,
+diff --git a/tests/test_pagure_flask_ui_repo_mirrored_from.py b/tests/test_pagure_flask_ui_repo_mirrored_from.py
+new file mode 100644
+index 00000000..2c33053a
+--- /dev/null
++++ b/tests/test_pagure_flask_ui_repo_mirrored_from.py
+@@ -0,0 +1,128 @@
++# -*- coding: utf-8 -*-
++
++"""
++ (c) 2020 - Copyright Red Hat Inc
++
++ Authors:
++   Pierre-Yves Chibon <pingou@pingoured.fr>
++
++"""
++
++from __future__ import unicode_literals, absolute_import
++
++import datetime
++import os
++import shutil
++import sys
++import tempfile
++import time
++import unittest
++
++import pygit2
++import six
++from mock import patch, MagicMock, ANY, call
++
++sys.path.insert(
++    0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
++)
++
++import pagure.lib.git
++import tests
++
++from pagure.lib.repo import PagureRepo
++
++
++class PagureUiRepoMirroredFromTests(tests.Modeltests):
++    """ Tests for pagure project that are mirrored from a remote location
++    """
++
++    maxDiff = None
++
++    def setUp(self):
++        """ Set up the environnment, ran before every tests. """
++        super(PagureUiRepoMirroredFromTests, self).setUp()
++
++        tests.create_projects(self.session)
++        tests.create_projects_git(os.path.join(self.path, "repos"), bare=True)
++
++        # Make the test project mirrored from elsewhere
++        self.project = pagure.lib.query.get_authorized_project(
++            self.session, "test"
++        )
++        self.project.mirrored_from = "https://example.com/foo/bar.git"
++        self.session.add(self.project)
++        self.session.commit()
++
++    def test_settings_shows(self):
++        """ Ensure that the box to edit the mirrored from value shows up
++        in the settings.
++        """
++        user = tests.FakeUser(username="pingou")
++        with tests.user_set(self.app.application, user):
++            output = self.app.get("/test/settings")
++            self.assertEqual(output.status_code, 200)
++            output_text = output.get_data(as_text=True)
++            self.assertIn(
++                '<input class="form-control" name="mirrored_from" '
++                'value="https://example.com/foo/bar.git" />',
++                output_text,
++            )
++            self.assertIn(
++                "The (public) url from which this repository is mirrored.",
++                output_text,
++            )
++
++    def test_settings_not_show(self):
++        """ Ensure that the box to edit the mirrored from value does not
++        show up in the settings when it shouldn't.
++        """
++        user = tests.FakeUser(username="pingou")
++        with tests.user_set(self.app.application, user):
++            output = self.app.get("/test2/settings")
++            self.assertEqual(output.status_code, 200)
++            output_text = output.get_data(as_text=True)
++            self.assertNotIn(
++                '<input class="form-control" name="mirrored_from" ',
++                output_text,
++            )
++            self.assertNotIn(
++                "The (public) url from which this repository is mirrored.",
++                output_text,
++            )
++
++    def test_edit_mirrored_from(self):
++        """ Ensure that we can successfully edit the content of the
++        mirrored_from field.
++        """
++        user = tests.FakeUser(username="pingou")
++        with tests.user_set(self.app.application, user):
++            output = self.app.get("/test/settings")
++            self.assertEqual(output.status_code, 200)
++            output_text = output.get_data(as_text=True)
++            self.assertIn(
++                '<input class="form-control" name="mirrored_from" '
++                'value="https://example.com/foo/bar.git" />',
++                output_text,
++            )
++
++            csrf_token = self.get_csrf(output=output)
++
++            data = {
++                "csrf_token": csrf_token,
++                "description": "test repo",
++                "mirrored_from": "https://example2.com/bar.git",
++            }
++            output = self.app.post(
++                "/test/update", data=data, follow_redirects=True
++            )
++            self.assertEqual(output.status_code, 200)
++            output_text = output.get_data(as_text=True)
++            self.assertIn(
++                '<input class="form-control" name="mirrored_from" '
++                'value="https://example2.com/bar.git" />',
++                output_text,
++            )
++
++
++if __name__ == "__main__":
++    unittest.main(verbosity=2)
+-- 
+2.26.1
+

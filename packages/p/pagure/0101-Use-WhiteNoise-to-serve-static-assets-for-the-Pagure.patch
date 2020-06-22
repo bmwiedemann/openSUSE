@@ -1,0 +1,179 @@
+From 89f18ee38de1e6cb3ac482f865e6352ed340d763 Mon Sep 17 00:00:00 2001
+From: Neal Gompa <ngompa13@gmail.com>
+Date: Sun, 31 May 2020 11:56:38 -0400
+Subject: [PATCH] Use WhiteNoise to serve static assets for the Pagure web
+ interface
+
+In order to make it easier to run Pagure in a containerized environment,
+the web frontend needs to be capable of serving all of the frontend static
+files. This change introduces WhiteNoise as a dependency that would enable
+the Flask application itself to serve the static assets correctly.
+
+This makes it possible to run a Pagure server without Apache or Nginx at all
+in a containerized environment for all of the main functions.
+
+Note that the releases folder is still not served through WhiteNoise, and
+deployments that have uploading releases enabled will need something to
+serve them.
+
+Signed-off-by: Neal Gompa <ngompa13@gmail.com>
+---
+ files/pagure-apache-httpd.conf |  3 ---
+ files/pagure-nginx.conf        |  9 ---------
+ files/pagure.spec              | 13 ++-----------
+ pagure/docs_server.py          |  9 +++++++++
+ pagure/flask_app.py            |  7 +++++++
+ requirements.txt               |  1 +
+ 6 files changed, 19 insertions(+), 23 deletions(-)
+
+diff --git a/files/pagure-apache-httpd.conf b/files/pagure-apache-httpd.conf
+index cf61e7f4..5724deb4 100644
+--- a/files/pagure-apache-httpd.conf
++++ b/files/pagure-apache-httpd.conf
+@@ -33,8 +33,6 @@
+   #SSLCertificateChainFile /etc/pki/tls/....intermediate.crt
+   #SSLCertificateKeyFile /etc/pki/tls/....key
+ 
+-  #Alias /static /usr/lib/pythonX.Y/site-packages/pagure/static/
+-
+   #<Location />
+     #WSGIProcessGroup paguredocs
+     #<IfModule mod_authz_core.c>
+@@ -64,7 +62,6 @@
+   #SSLCertificateChainFile /etc/pki/tls/....intermediate.crt
+   #SSLCertificateKeyFile /etc/pki/tls/....key
+ 
+-  #Alias /static /usr/lib/pythonX.Y/site-packages/pagure/static/
+   #Alias /releases /var/www/releases
+ 
+   ## Section used to support cloning git repo over http (https in this case)
+diff --git a/files/pagure-nginx.conf b/files/pagure-nginx.conf
+index fe3ff832..a5d196a6 100644
+--- a/files/pagure-nginx.conf
++++ b/files/pagure-nginx.conf
+@@ -27,11 +27,6 @@
+         #try_files $uri @pagure_docs;
+     #}
+ 
+-    #location /static {
+-        #alias /usr/lib/pythonX.Y/site-packages/pagure/static/;
+-        #try_files $uri $uri/;
+-    #}
+-
+ #}
+ 
+ #server {
+@@ -63,10 +58,6 @@
+         #try_files $uri @pagure;
+     #}
+ 
+-    #location /static {
+-        #alias /usr/lib/pythonX.Y/site-packages/pagure/static/;
+-    #}
+-
+     #location /releases {
+         #alias /var/www/releases/;
+         #autoindex on;
+diff --git a/files/pagure.spec b/files/pagure.spec
+index 5c084436..24fd5b37 100644
+--- a/files/pagure.spec
++++ b/files/pagure.spec
+@@ -75,6 +75,7 @@ Requires:           python%{python_pkgversion}-requests
+ Requires:           python%{python_pkgversion}-six
+ Requires:           python%{python_pkgversion}-sqlalchemy >= 0.8
+ Requires:           python%{python_pkgversion}-straight-plugin
++Requires:           python%{python_pkgversion}-whitenoise
+ Requires:           python%{python_pkgversion}-wtforms
+ %endif
+ 
+@@ -365,22 +366,12 @@ sed -e "s|#!/usr/bin/env python|#!%{__python}|" -i \
+ # Switch interpreter for systemd units
+ sed -e "s|/usr/bin/python|%{__python}|g" -i $RPM_BUILD_ROOT/%{_unitdir}/*.service
+ 
+-%if 0%{?rhel} && 0%{?rhel} < 8
+-# Change to correct static file path for apache httpd and nginx
+-sed -e "s/pythonX.Y/python%{python2_version}/g" -i \
+-    $RPM_BUILD_ROOT/%{_sysconfdir}/httpd/conf.d/pagure.conf \
+-    $RPM_BUILD_ROOT/%{_sysconfdir}/nginx/conf.d/pagure.conf
+-%else
++%if ! (0%{?rhel} && 0%{?rhel} < 8)
+ # Switch all systemd units to use the correct celery
+ sed -e "s|/usr/bin/celery|/usr/bin/celery-3|g" -i $RPM_BUILD_ROOT/%{_unitdir}/*.service
+ 
+ # Switch all systemd units to use the correct gunicorn
+ sed -e "s|/usr/bin/gunicorn|/usr/bin/gunicorn-3|g" -i $RPM_BUILD_ROOT/%{_unitdir}/*.service
+-
+-# Change to correct static file path for apache httpd and nginx
+-sed -e "s/pythonX.Y/python%{python3_version}/g" -i \
+-    $RPM_BUILD_ROOT/%{_sysconfdir}/httpd/conf.d/pagure.conf \
+-    $RPM_BUILD_ROOT/%{_sysconfdir}/nginx/conf.d/pagure.conf
+ %endif
+ 
+ # Make log directories
+diff --git a/pagure/docs_server.py b/pagure/docs_server.py
+index fd7b2778..dc5e297b 100644
+--- a/pagure/docs_server.py
++++ b/pagure/docs_server.py
+@@ -17,6 +17,7 @@ import flask
+ import pygit2
+ 
+ from binaryornot.helpers import is_binary_string
++from whitenoise import WhiteNoise
+ 
+ import pagure.config
+ import pagure.doc_utils
+@@ -29,6 +30,14 @@ import pagure.forms
+ # Create the application.
+ APP = flask.Flask(__name__)
+ 
++# Setup WhiteNoise for serving static files
++here = os.path.abspath(
++    os.path.join(os.path.dirname(os.path.abspath(__file__)))
++)
++APP.wsgi_app = WhiteNoise(
++    APP.wsgi_app, root=os.path.join(here, "static"), prefix="/static"
++)
++
+ # set up FAS
+ APP.config = pagure.config.reload_config()
+ 
+diff --git a/pagure/flask_app.py b/pagure/flask_app.py
+index 7d533b63..34eb4783 100644
+--- a/pagure/flask_app.py
++++ b/pagure/flask_app.py
+@@ -21,6 +21,8 @@ import warnings
+ import flask
+ import pygit2
+ 
++from whitenoise import WhiteNoise
++
+ import pagure.doc_utils
+ import pagure.exceptions
+ import pagure.forms
+@@ -188,6 +190,11 @@ def create_app(config=None):
+     app.jinja_loader = jinja2.ChoiceLoader(templ_loaders)
+     app.register_blueprint(themeblueprint)
+ 
++    # Setup WhiteNoise for serving static files
++    app.wsgi_app = WhiteNoise(
++        app.wsgi_app, root=os.path.join(here, "static"), prefix="/static"
++    )
++
+     app.before_request(set_request)
+     app.after_request(after_request)
+     app.teardown_request(end_request)
+diff --git a/requirements.txt b/requirements.txt
+index dcde36ce..fa538676 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -33,6 +33,7 @@ sqlalchemy >= 0.8
+ # 1.4.0 is broken, 1.4.0-post-1 works but gives odd results on newer setuptools
+ # the latest version 1.5.0 is also known to work
+ straight.plugin
++whitenoise
+ wtforms
+ 
+ # Required only for the `oidc` authentication backend
+-- 
+2.26.2
+

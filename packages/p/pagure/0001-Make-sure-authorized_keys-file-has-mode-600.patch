@@ -1,0 +1,30 @@
+From 2691e9d47d45be9a72798bd84166d09b5c3c8d82 Mon Sep 17 00:00:00 2001
+From: Sergio Durigan Junior <sergiodj@sergiodj.net>
+Date: Sun, 7 Jun 2020 17:16:15 -0400
+Subject: [PATCH] Make sure authorized_keys file has mode 600.
+
+Only the pagure user needs to be able to read and write the file.
+---
+ pagure/lib/tasks.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/pagure/lib/tasks.py b/pagure/lib/tasks.py
+index eaef5cdb..73323ef7 100644
+--- a/pagure/lib/tasks.py
++++ b/pagure/lib/tasks.py
+@@ -1270,6 +1270,7 @@ def add_key_to_authorized_keys(self, session, ssh_folder, username, sshkey):
+                 sshkey.strip(),
+             )
+         )
++    os.chmod(fullpath, 0o600)
+ 
+ 
+ @conn.task(queue=pagure_config.get("AUTHORIZED_KEYS_QUEUE", None), bind=True)
+@@ -1294,3 +1295,4 @@ def remove_key_from_authorized_keys(self, session, ssh_folder, sshkey):
+ 
+     with open(fullpath, "w") as stream:
+         stream.write("\n".join(output))
++    os.chmod(fullpath, 0o600)
+-- 
+2.26.2
+

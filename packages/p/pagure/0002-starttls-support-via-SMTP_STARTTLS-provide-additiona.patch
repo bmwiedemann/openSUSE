@@ -1,0 +1,40 @@
+From 27ab4efb3bfad27e036602e88c7d5de666c3d80b Mon Sep 17 00:00:00 2001
+From: midipix <writeonce@midipix.org>
+Date: Thu, 21 May 2020 15:09:30 +0000
+Subject: [PATCH 2/2] starttls support via SMTP_STARTTLS: provide additional
+ documentation.
+
+---
+ doc/configuration.rst | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/doc/configuration.rst b/doc/configuration.rst
+index 25dee387..942aeb83 100644
+--- a/doc/configuration.rst
++++ b/doc/configuration.rst
+@@ -938,6 +938,8 @@ sending emails.
+ 
+ Defaults to: ``localhost``.
+ 
++See also the SMTP_STARTTLS section.
++
+ 
+ SMTP_PORT
+ ^^^^^^^^^
+@@ -967,6 +969,13 @@ SMTP_STARTTLS
+ This configuration key specifies instructs pagure to starts connecting to
+ the SMTP server via a `starttls` command.
+ 
++When enabling STARTTLS in conjunction with a local smtp server, you should
++replace ``localhost`` with a host name that is included in the server's
++certificate. If the server only relays messages originating from ``localhost``,
++then you should also ensure that the above host name resolves to the same
++tcp address as ``localhost``, for instance by adding an appropriate record
++to */etc/hosts*.
++
+ Defaults to: ``False``
+ 
+ 
+-- 
+2.26.1
+

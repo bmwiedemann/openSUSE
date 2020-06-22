@@ -1,0 +1,25 @@
+From 656ef585dce90201f6e5e13f527284672a5fd7ee Mon Sep 17 00:00:00 2001
+From: Julen Landa Alustiza <jlanda@fedoraproject.org>
+Date: Wed, 27 May 2020 13:18:17 +0200
+Subject: [PATCH] api: fix apidoc format on
+ api_view_issues_history_detailed_stats Fixes web api doc view template issues
+
+---
+ pagure/api/issue.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/pagure/api/issue.py b/pagure/api/issue.py
+index 99e3c7e6..3f9af2a6 100644
+--- a/pagure/api/issue.py
++++ b/pagure/api/issue.py
+@@ -1568,6 +1568,7 @@ def api_view_issues_history_detailed_stats(
+     ^^^^^^^^^^^^^^^
+ 
+     ::
++
+         {
+           "stats": {
+             "2020-03-26T19:21:51.348451": {
+-- 
+2.26.1
+

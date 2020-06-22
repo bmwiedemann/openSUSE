@@ -1,0 +1,30 @@
+From a5a0e792e8491f416d3188c42861ba0c62e94a79 Mon Sep 17 00:00:00 2001
+From: Pierre-Yves Chibon <pingou@pingoured.fr>
+Date: Wed, 3 Jun 2020 20:19:48 +0200
+Subject: [PATCH] Do not assume there is a SMTP_STARTTLS configuration key set
+
+This is a new key that was introduced in 5.10.0 and that isn't set
+in the default_config. So we cannot assume it is defined and thus
+the code needs to not make this assumption either.
+
+Signed-off-by: Pierre-Yves Chibon <pingou@pingoured.fr>
+---
+ pagure/lib/notify.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pagure/lib/notify.py b/pagure/lib/notify.py
+index 2c4ee30f..0c124db9 100644
+--- a/pagure/lib/notify.py
++++ b/pagure/lib/notify.py
+@@ -506,7 +506,7 @@ def send_email(
+                         pagure_config["SMTP_PORT"],
+                     )
+ 
+-            if pagure_config["SMTP_STARTTLS"]:
++            if pagure_config.get("SMTP_STARTTLS"):
+                 context = ssl.create_default_context()
+                 keyfile = pagure_config.get("SMTP_KEYFILE") or None
+                 certfile = pagure_config.get("SMTP_CERTFILE") or None
+-- 
+2.26.2
+

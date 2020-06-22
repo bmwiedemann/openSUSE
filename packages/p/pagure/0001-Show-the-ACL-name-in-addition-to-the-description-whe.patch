@@ -1,0 +1,33 @@
+From 98d320cad34ed2defadeb4828a9d5d7690a06ffd Mon Sep 17 00:00:00 2001
+From: Pierre-Yves Chibon <pingou@pingoured.fr>
+Date: Sun, 31 May 2020 21:16:36 +0200
+Subject: [PATCH] Show the ACL name in addition to the description when
+ creating API tokens
+
+So in addition to the description of the ACL, we will now show the
+actual name of the ACL, which hopefully will help people when they
+meet documentation that says: create a token with the update_issue ACL.
+
+Relates to https://pagure.io/pagure/issue/4765
+
+Signed-off-by: Pierre-Yves Chibon <pingou@pingoured.fr>
+---
+ pagure/templates/add_token.html | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pagure/templates/add_token.html b/pagure/templates/add_token.html
+index 02f5a80a..bf8a571b 100644
+--- a/pagure/templates/add_token.html
++++ b/pagure/templates/add_token.html
+@@ -44,7 +44,7 @@
+             <label class="c-input c-checkbox">
+               <input type="checkbox" name="acls" value="{{ acl.name }}">
+               <span class="c-indicator"></span>
+-              {{ acl.description }}
++              {{ acl.description }} <span class="small">({{ acl.name }})</span>
+             </label>
+           </div>
+           {% endfor %}
+-- 
+2.26.1
+

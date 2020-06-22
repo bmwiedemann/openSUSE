@@ -1,0 +1,28 @@
+From 8f8e201bf25e5ee1fd359ecf97eb41d09320bcb2 Mon Sep 17 00:00:00 2001
+From: Pierre-Yves Chibon <pingou@pingoured.fr>
+Date: Wed, 3 Jun 2020 20:21:31 +0200
+Subject: [PATCH] Ensure the title/name of the headers are strings
+
+Whether this is running py2 or py3, the headers should be strings.
+
+Signed-off-by: Pierre-Yves Chibon <pingou@pingoured.fr>
+---
+ pagure/ui/clone.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pagure/ui/clone.py b/pagure/ui/clone.py
+index 61615cc8..33732a41 100644
+--- a/pagure/ui/clone.py
++++ b/pagure/ui/clone.py
+@@ -205,7 +205,7 @@ def proxy_raw_git(project):
+                 break
+             header = line.split(b": ", 1)
+             header[0] = header[0].decode("utf-8")
+-            headers[header[0].lower()] = header[1]
++            headers[str(header[0].lower())] = header[1]
+ 
+         if len(headers) == 0:
+             raise Exception("No response at all received")
+-- 
+2.26.2
+
