@@ -1,0 +1,335 @@
+diff -Naru festival_orig/src/arch/festival/wave.cc festival/src/arch/festival/wave.cc
+--- festival_orig/src/arch/festival/wave.cc	2017-09-05 00:54:08.000000000 +0900
++++ festival/src/arch/festival/wave.cc	2020-06-19 16:25:48.142264235 +0900
+@@ -421,7 +421,8 @@
+     EST_Item *s;
+     EST_Track f0;
+     float p = 0.0;
+-    float length = u->relation("Segment")->rlast()->f("end");
++    EST_Val undef;
++    float length = ((u->relation("Segment")->rlast() != NULL) ? u->relation("Segment")->rlast()->f("end") : undef);
+     int i,frames = (int)(length / 0.010);
+     f0.resize(frames,4);
+     
+diff -Naru festival_orig/src/modules/Intonation/duffint.cc festival/src/modules/Intonation/duffint.cc
+--- festival_orig/src/modules/Intonation/duffint.cc	2017-09-05 00:54:08.000000000 +0900
++++ festival/src/modules/Intonation/duffint.cc	2020-06-19 16:41:26.710269735 +0900
+@@ -83,6 +83,7 @@
+     LISP params;
+     float start,end;
+     int n_frames;
++    EST_Val undef;
+     
+     *cdebug << "Intonation duff module\n";
+ 
+@@ -91,7 +92,7 @@
+     start = get_param_float("start",params,130.0);
+     end = get_param_float("end",params,110.0);
+ 
+-    pm = track(u->relation(get_c_string(relname))->head()->f("coefs"));
++    pm = track((u->relation(get_c_string(relname))->head() != NULL) ? u->relation(get_c_string(relname))->head()->f("coefs") : undef);
+ 
+     float pp = 1.0/start;
+     //    float end_time = ((float)pm->num_frames()) * pp;
+diff -Naru festival_orig/src/modules/Intonation/int_aux.cc festival/src/modules/Intonation/int_aux.cc
+--- festival_orig/src/modules/Intonation/int_aux.cc	2017-09-05 00:54:08.000000000 +0900
++++ festival/src/modules/Intonation/int_aux.cc	2020-06-19 17:04:28.152883387 +0900
+@@ -95,7 +95,7 @@
+     EST_Item *s;
+     int i;
+ 
+-    f0.resize(int(ceil(last_leaf(targ.first())->F("pos",0) / shift)), 1);
++    f0.resize(int(ceil( ((targ.first() != NULL) ? last_leaf(targ.first())->F("pos",0) : 0) / shift)), 1);
+     f0.fill_time(shift);
+ 
+     s = first_leaf(targ.first());
+@@ -108,8 +108,8 @@
+ 	f0.a(i) = 0.0;
+     }
+ 
+-    prev_pos = s->F("pos",0);
+-    prev_f0 = s->F("f0",0);
++    prev_pos = ((s != NULL) ? s->F("pos",0) : 0);
++    prev_f0 = ((s != NULL) ? s->F("f0",0) : 0);
+ 
+     s = next_leaf(s);
+ 
+diff -Naru festival_orig/src/modules/UniSyn/UniSyn.cc festival/src/modules/UniSyn/UniSyn.cc
+--- festival_orig/src/modules/UniSyn/UniSyn.cc	2017-09-05 00:54:08.000000000 +0900
++++ festival/src/modules/UniSyn/UniSyn.cc	2020-06-19 16:44:48.575201760 +0900
+@@ -161,11 +161,13 @@
+     if (seg.load(seg_file) != format_ok)
+ 	return NIL;
+ 
+-    if (!ph_is_silence(seg.tail()->f("name")))
+-    {
++    if (seg.tail() != NULL) {
++      if (!ph_is_silence(seg.tail()->f("name")))
++      {
+ 	EST_Item *n = seg.tail()->insert_after();
+ 	n->set("name", ph_silence());
+ 	n->set("end", iprev(seg.tail())->F("end") + 0.1);
++      }
+     }
+ 
+     us_get_copy_wave(*utt, *sig, *pm, seg);
+@@ -182,13 +184,14 @@
+     EST_Relation *f0_rel=0, *pm_rel=0;
+     EST_Track *f0=0, *pm=0;
+     EST_Item *a;
++    EST_Val undef;
+ 
+     float end_time = (l_end_time == NIL) ? -1 : get_c_float(l_end_time);
+ 
+     f0_rel = utt->relation(get_c_string(l_f0_name), 1);
+     pm_rel = utt->create_relation(get_c_string(l_pm_name));
+ 
+-    f0 = track(f0_rel->head()->f("f0"));
++    f0 = track((f0_rel->head() != NULL) ? f0_rel->head()->f("f0") : undef);
+     pm = new EST_Track;
+ 
+     a = pm_rel->append();
+@@ -198,7 +201,7 @@
+     if (utt->relation_present("SourceCoef"))
+     {
+ 	EST_Track *source_coef = 
+-	    track(utt->relation("SourceCoef")->head()->f("coefs"));
++	    track((utt->relation("SourceCoef")->head() != NULL) ? utt->relation("SourceCoef")->head()->f("coefs") : undef);
+ 	num_channels = source_coef->num_channels();
+     }
+ 
+@@ -214,11 +217,12 @@
+     EST_Track *source_pm = 0;
+     EST_Track *target_pm = 0;
+     EST_IVector *map = 0;
++    EST_Val undef;
+     target_pm = 
+-	track(utt->relation(get_c_string(ltarget_name))->head()->f("coefs"));
++	track((utt->relation(get_c_string(ltarget_name))->head() != NULL) ? utt->relation(get_c_string(ltarget_name))->head()->f("coefs") : undef);
+     source_pm = 
+-	track(utt->relation(get_c_string(lsource_name))->head()->f("coefs"));
+-    map = ivector(utt->relation("US_map")->head()->f("map"));
++	track((utt->relation(get_c_string(lsource_name))->head() != NULL) ? utt->relation(get_c_string(lsource_name))->head()->f("coefs") : undef);
++    map = ivector((utt->relation("US_map")->head() != NULL) ? utt->relation("US_map")->head()->f("map") : undef);
+ 
+     utt->create_relation(get_c_string(lrel_name));
+ 
+diff -Naru festival_orig/src/modules/UniSyn/ps_synthesis.cc festival/src/modules/UniSyn/ps_synthesis.cc
+--- festival_orig/src/modules/UniSyn/ps_synthesis.cc	2017-09-05 00:54:08.000000000 +0900
++++ festival/src/modules/UniSyn/ps_synthesis.cc	2020-06-19 16:54:37.105919050 +0900
+@@ -55,18 +55,19 @@
+     EST_Track *source_coef, *target_coef;
+     EST_Wave *sig, *res;
+     EST_FVector gain;
++    EST_Val undef;
+ 
+-    frames = wavevector(utt.relation("SourceCoef", 1)->head()->f("frame"));
++    frames = wavevector((utt.relation("SourceCoef", 1)->head() != NULL) ? utt.relation("SourceCoef", 1)->head()->f("frame") : undef);
+ 
+-    source_coef = track(utt.relation("SourceCoef", 1)->head()->f("coefs"));
+-    target_coef = track(utt.relation("TargetCoef", 1)->head()->f("coefs"));
++    source_coef = track((utt.relation("SourceCoef", 1)->head() != NULL) ? utt.relation("SourceCoef", 1)->head()->f("coefs") : undef);
++    target_coef = track((utt.relation("TargetCoef", 1)->head() != NULL) ? utt.relation("TargetCoef", 1)->head()->f("coefs") : undef);
+ 
+-    map = ivector(utt.relation("US_map", 1)->head()->f("map"));
++    map = ivector((utt.relation("US_map", 1)->head() != NULL) ? utt.relation("US_map", 1)->head()->f("map") : undef);
+ 
+     sig = new EST_Wave;
+   
+     if ( ola_method == "asymmetric_window" ){
+-      frame_pm_indices = ivector(utt.relation("SourceCoef", 1)->head()->f("pm_indices"));
++      frame_pm_indices = ivector((utt.relation("SourceCoef", 1)->head() != NULL) ? utt.relation("SourceCoef", 1)->head()->f("pm_indices") : undef);
+       asymmetric_window_td_synthesis( *frames, *target_coef, *sig, *map, *frame_pm_indices );
+     }
+     else if ( ola_method == "synth_period" )
+@@ -80,7 +81,8 @@
+         // Save residual for external prcessing 
+         res = new EST_Wave;
+         res->copy(*sig);
+-        utt.relation("TargetCoef", 1)->head()->set_val("residual",est_val(res));
++	if (utt.relation("TargetCoef", 1)->head() != NULL)
++          utt.relation("TargetCoef", 1)->head()->set_val("residual",est_val(res));
+ 	// fast version
+ 	lpc_filter_fast(*target_coef, *sig, *sig);
+ 	// slower version (but cleaner)
+diff -Naru festival_orig/src/modules/UniSyn/us_mapping.cc festival/src/modules/UniSyn/us_mapping.cc
+--- festival_orig/src/modules/UniSyn/us_mapping.cc	2017-09-05 00:54:08.000000000 +0900
++++ festival/src/modules/UniSyn/us_mapping.cc	2020-06-19 16:57:05.190611832 +0900
+@@ -114,12 +114,12 @@
+     s_i_start = t_i_start = 0;
+ 
+     if (target_pm.t(target_pm.num_frames() - 1) < 
+-        source_lab.tail()->F("end",0))
++        ((source_lab.tail() != NULL) ? source_lab.tail()->F("end",0) : 0))
+     {
+         EST_warning("Target pitchmarks end before end of target segment "
+                     "timings (%f vs %f). Expect a truncated utterance\n",
+                     target_pm.t(target_pm.num_frames() - 1),
+-                    source_lab.tail()->F("end",0.0));
++                    ((source_lab.tail() != NULL) ? source_lab.tail()->F("end",0.0) : 0.0));
+     }
+   
+   
+@@ -246,7 +246,7 @@
+ {
+   // would be good if this parameter was available from the current
+   // voice...
+-  float wav_srate = wave(units.head()->f("sig"))->sample_rate();
++  float wav_srate = (units.head() != NULL) ? wave(units.head()->f("sig"))->sample_rate() : 0;
+ 
+   // currently, the pitchmarks are just moved, there's no deletion or
+   // insertion
+@@ -261,8 +261,8 @@
+   // handle special case of first half of first diphone unit
+   EST_Item *diphone_left = units.head();
+ 
+-  int left_start_index = diphone_left->I("middle_frame");
+-  int left_end_index = source_pm.index(diphone_left->F("end"));
++  int left_start_index = ((diphone_left != NULL) ? diphone_left->I("middle_frame") : 0);
++  int left_end_index = ((diphone_left != NULL ) ? source_pm.index(diphone_left->F("end")) : 0);
+ 
+   for( int i=0; i<left_start_index; ++i ){
+     target_pm.t(i) = source_pm.t(i);
+@@ -438,7 +438,7 @@
+ {
+   // would be good if this parameter was available from the current
+   // voice...
+-  float wav_srate = wave(units.head()->f("sig"))->sample_rate();
++  float wav_srate = (units.head() != NULL) ? wave(units.head()->f("sig"))->sample_rate() : 0;
+ 
+   // currently, the pitchmarks are just moved, there's no deletion or
+   // insertion
+@@ -453,8 +453,8 @@
+   // handle special case of first half of first diphone unit
+   EST_Item *diphone_left = units.head();
+ 
+-  int left_start_index = diphone_left->I("middle_frame");
+-  int left_end_index = source_pm.index(diphone_left->F("end"));
++  int left_start_index = ((diphone_left != NULL) ? diphone_left->I("middle_frame") : 0);
++  int left_end_index = ((diphone_left != NULL) ? source_pm.index(diphone_left->F("end")) : 0);
+ 
+   for( int i=0; i<left_start_index; ++i ){
+     target_pm.t(i) = source_pm.t(i);
+@@ -611,9 +611,10 @@
+     EST_Relation *source_lab, *target_lab;
+     EST_IVector *map;
+     EST_Track *source_coef=0, *target_coef=0;
++    EST_Val undef;
+ 
+-    source_coef = track(utt.relation("SourceCoef")->head()->f("coefs"));
+-    target_coef = track(utt.relation("TargetCoef")->head()->f("coefs"));
++    source_coef = track((utt.relation("SourceCoef")->head() != NULL) ? utt.relation("SourceCoef")->head()->f("coefs") : undef);
++    target_coef = track((utt.relation("TargetCoef")->head() != NULL) ? utt.relation("TargetCoef")->head()->f("coefs") : undef);
+ 
+     map = new EST_IVector;
+     
+diff -Naru festival_orig/src/modules/UniSyn/us_unit.cc festival/src/modules/UniSyn/us_unit.cc
+--- festival_orig/src/modules/UniSyn/us_unit.cc	2017-09-05 00:54:08.000000000 +0900
++++ festival/src/modules/UniSyn/us_unit.cc	2020-06-19 16:49:35.840528086 +0900
+@@ -565,8 +565,9 @@
+ 
+ void us_linear_smooth_amplitude( EST_Utterance *utt )
+ {
+-  EST_WaveVector *pp = wavevector(utt->relation("SourceCoef")->first()->f("frame"));
+-  EST_Track *pm = track(utt->relation("SourceCoef")->first()->f("coefs"));
++  EST_Val undef;
++  EST_WaveVector *pp = wavevector((utt->relation("SourceCoef")->first() != NULL) ? utt->relation("SourceCoef")->first()->f("frame") : undef);
++  EST_Track *pm = track((utt->relation("SourceCoef")->first() != NULL) ? utt->relation("SourceCoef")->first()->f("coefs") : undef);
+ 
+   EST_Track *energy = us_pitch_period_energy_contour( *pp, *pm );
+   energy->save( "./energy_track.est", "est" );
+diff -Naru festival_orig/src/modules/UniSyn_diphone/us_diphone_unit.cc festival/src/modules/UniSyn_diphone/us_diphone_unit.cc
+--- festival_orig/src/modules/UniSyn_diphone/us_diphone_unit.cc	2017-09-05 00:54:08.000000000 +0900
++++ festival/src/modules/UniSyn_diphone/us_diphone_unit.cc	2020-06-19 16:15:22.975110424 +0900
+@@ -63,25 +63,30 @@
+     const float pause_duration = 0.1;
+ 
+     t = segment.head();
+-    if (!ph_is_silence(t->f("name")))
+-    {
++    if (t != NULL) {
++      if (!ph_is_silence(t->f("name")))
++      {
+ 	n = t->insert_before();
+ 	n->set("name", ph_silence());
+ 	n->set("dur", pause_duration);
+ 	shift += pause_duration;
++      }
+     }
+ 
+     t = segment.tail();
+-    if (!ph_is_silence(t->S("name")))
+-    {
++    if (t != NULL) {
++      if (!ph_is_silence(t->S("name")))
++      {
+ 	n = t->insert_after();
+ 	n->set("name", ph_silence());
+ 	n->set("dur", pause_duration);
+ 	shift += pause_duration;
++      }
+     }
+     dur_to_end(segment);
+ 
+-    target.tail()->set("pos", (target.tail()->F("pos") + shift));
++    if (target.tail() != NULL)
++      target.tail()->set("pos", (target.tail()->F("pos") + shift));
+ }
+ 
+ void add_end_silences(EST_Relation &segment)
+@@ -89,18 +94,22 @@
+   EST_Item *t, *n;
+   
+   t = segment.head();
+-  if (!ph_is_silence(t->S("name")))
++  if (t != NULL) {
++    if (!ph_is_silence(t->S("name")))
+     {
+       n = t->insert_before();
+       n->set("name", ph_silence());
+     }
++  }
+   
+   t = segment.tail();
+-  if (!ph_is_silence(t->S("name")))
++  if (t != NULL) {
++    if (!ph_is_silence(t->S("name")))
+     {
+       n = t->insert_after();
+       n->set("name", ph_silence());
+     }
++  }
+ }
+ 
+ void parse_diphone_times(EST_Relation &diphone_stream, 
+diff -Naru festival_orig/src/modules/clunits/cljoin.cc festival/src/modules/clunits/cljoin.cc
+--- festival_orig/src/modules/clunits/cljoin.cc	2017-09-05 00:54:08.000000000 +0900
++++ festival/src/modules/clunits/cljoin.cc	2020-06-19 16:29:25.463181614 +0900
+@@ -107,12 +107,12 @@
+ //    printf("source_lab relations is %s\n",(const char *)source_lab.name());
+ 
+     if (target_pm.t(target_pm.num_frames() - 1) < 
+-	source_lab.tail()->F("end",0))
++	((source_lab.tail() != NULL) ? source_lab.tail()->F("end",0) : 0))
+     {
+ 	EST_warning("Target pitchmarks end before end of target segment "
+ 		    "timings (%f vs %f). Expect a truncated utterance\n",
+ 		    target_pm.t(target_pm.num_frames() - 1),
+-	            source_lab.tail()->F("end",0.0));
++	            ((source_lab.tail() != NULL) ? source_lab.tail()->F("end",0.0) : 0.0));
+     }
+ 
+     n_i = 0;
+@@ -170,9 +170,10 @@
+     EST_IVector *map;
+     EST_Track *source_coef=0, *target_coef=0;
+     float dur_impose_factor, f0_impose_factor;
++    EST_Val undef;
+ 
+-    source_coef = track(utt.relation("SourceCoef")->head()->f("coefs"));
+-    target_coef = track(utt.relation("TargetCoef")->head()->f("coefs"));
++    source_coef = track((utt.relation("SourceCoef")->head() != NULL) ? utt.relation("SourceCoef")->head()->f("coefs") : undef);
++    target_coef = track((utt.relation("TargetCoef")->head() != NULL) ? utt.relation("TargetCoef")->head()->f("coefs") : undef);
+     target_lab = utt.relation("Segment");
+     
+     map = new EST_IVector;

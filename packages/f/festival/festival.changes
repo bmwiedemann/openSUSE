@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 19 08:16:21 UTC 2020 - Yasuhiko Kamata <belphegor@belbel.or.jp>
+
+- Added speech_tools-null-fragile.patch and
+  festival-null-fragile.patch to fix NULL dereference problem
+  (EST_Item's method may be called even though "this" is NULL);
+  it causes SIGSEGV in text2wave (boo#1173193).
+
+-------------------------------------------------------------------
 Sat Jun  6 23:02:27 UTC 2020 - Yasuhiko Kamata <belphegor@belbel.or.jp>
 
 - Added speech_tools-remove-errneous-decl.patch to fix build error

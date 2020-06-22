@@ -261,4 +261,15 @@ into sibling directories. (forwarded request 163507 from Andreas_Schwab)</commen
     <comment></comment>
     <requestid>812125</requestid>
   </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>7e37ac22f6d93a9e33755dccf25392be</srcmd5>
+    <version>2.5.0</version>
+    <time>1592840755</time>
+    <user>dimstar_suse</user>
+    <comment>- Added speech_tools-null-fragile.patch and
+  festival-null-fragile.patch to fix NULL dereference problem
+  (EST_Item's method may be called even though &quot;this&quot; is NULL);
+  it causes SIGSEGV in text2wave (boo#1173193). (forwarded request 816237 from belphegor_belbel)</comment>
+    <requestid>816238</requestid>
+  </revision>
 </revisionlist>

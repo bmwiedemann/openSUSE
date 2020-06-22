@@ -54,6 +54,8 @@ Patch12:        speech_tools-1.2.95-config.patch
 # PATCH-FIX-UPSTREAM speech_tools-no-LD_LIBRARY_PATH-extension.patch vuntz@opensuse.org -- Do not change LD_LIBRARY_PATH in binaries, to avoid any risks
 Patch17:        speech_tools-no-LD_LIBRARY_PATH-extension.patch
 Patch18:        speech_tools-remove-errneous-decl.patch
+Patch19:        speech_tools-null-fragile.patch
+Patch20:        festival-null-fragile.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
@@ -91,6 +93,9 @@ cd ../speech_tools
 %patch12
 %patch17 -p1
 %patch18 -p1
+%patch19 -p1
+cd ../festival
+%patch20 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
