@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jun 10 10:47:13 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7
+  Changes
+  * Convert all man pages to mdoc format
+  Fixes
+  * Fix #6: Skip sleep/delay when sending only one frame,
+    i.e. default
+  * Fix #9: Call correct exit function in nemesis-dhcp
+  * Fix missing S: to getopt() in nemesis-dhcp
+  * Fix network byte ordering problem with CIADDR, YIADDR, SIADDR,
+    and GIADDR in nemesis-dhcp
+  * Fix command line parsing of client MAC address, Ethernet
+    source MAC address, and Ethernet destination MAC address in
+    nemesis-dhcp
+  * Fix missing newline in nemesis-dhcp usage text
+  * Fix invalid call to close(), found by Valgrind
+
+-------------------------------------------------------------------
+Sun Jun  7 19:35:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Set CFLAGS+=-fcommon
+
+-------------------------------------------------------------------
 Mon Jun 17 16:35:52 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6

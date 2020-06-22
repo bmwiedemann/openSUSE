@@ -1,7 +1,7 @@
 #
 # spec file for package nemesis
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           nemesis
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        TCP/IP Packet Injection Suite
 License:        BSD-4-Clause
@@ -44,6 +44,7 @@ Key features:
 %setup -q
 
 %build
+export CFLAGS="%optflags -fcommon"
 autoreconf -fiv
 %configure
 make %{?_smp_mflags}
