@@ -1,0 +1,118 @@
+-------------------------------------------------------------------
+Mon Jun  8 09:52:37 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.7.1
+
+  ### Fixed
+
+  - Support for literals that include the unescaped delimiters `{`, `}`, and `]`. These
+    delimiters are informally supported by various regexp engines.
+
+-------------------------------------------------------------------
+Tue Mar  3 10:35:34 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.7.0
+
+  ### Added
+
+  - `Expression#each_expression` and `#traverse` can now be called without a block
+    * this returns an `Enumerator` and allows chaining, e.g. `each_expression.select`
+    * thanks to [Masataka Kuwabara](https://github.com/pocke)
+
+  ### Fixed
+
+  - `MatchLength#each` no longer ignores the given `limit:` when called without a block
+
+-------------------------------------------------------------------
+Fri Jul 19 07:28:44 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.6.0
+
+  ### Added
+
+  - Added support for 16 new unicode properties introduced in Ruby 2.6.2 and 2.6.3
+
+-------------------------------------------------------------------
+Mon Jul  8 08:21:50 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.5.1
+
+  ### Fixed
+
+  - Fixed `#options` (and thus `#i?`, `#u?` etc.) not being set for some expressions:
+    * this affected posix classes as well as alternation, conditional, and intersection branches
+    * `#options` was already correct for all child expressions of such branches
+    * this only made an operational difference for posix classes as they respect encoding flags
+  - Fixed `#options` not respecting all negative options in weird cases like '(?u-m-x)'
+  - Fixed `Group#option_changes` not accounting for indirectly disabled (overridden) encoding flags
+  - Fixed `Scanner` allowing negative encoding options if there were no positive options, e.g. '(?-u)'
+  - Fixed `ScannerError` for some valid meta/control sequences such as '\\C-\\\\'
+  - Fixed `Expression#match` and `#=~` not working with a single argument
+
+-------------------------------------------------------------------
+Fri May 17 11:50:20 UTC 2019 - Lukas Krause <lukas.krause@suse.com>
+
+- update to version 1.5.0
+ see installed CHANGELOG.md
+
+  ### [1.5.0] - 2019-05-14 - Janosch Müller
+
+  ### Added
+
+  - Added #referenced_expression for backrefs, subexp calls and conditionals
+    * returns the Group expression that is being referenced via name or number
+
+  - Added Expression#repetitions
+    * returns a Range of allowed repetitions (1..1 if there is no quantifier)
+    * like #quantity but with a more uniform interface
+
+  - Added Expression#match_length
+    * allows to inspect and iterate over String lengths matched by the Expression
+
+  ### Fixed
+
+  - Fixed Expression#clone "direction"
+    * it used to dup ivars onto the callee, leaving only the clone referencing the original objects
+    * this will affect you if you call #eql?/#equal? on expressions or use them as Hash keys
+  
+  - Fixed #clone results for Sequences, e.g. alternations and conditionals
+    * the inner #text was cloned onto the Sequence and thus duplicated
+    * e.g. Regexp::Parser.parse(/(a|bc)/).clone.to_s # => (aa|bcbc)
+
+  - Fixed inconsistent #to_s output for Sequences
+    * it used to return only the "specific" text, e.g. "|" for an alternation
+    * now it includes nested expressions as it does for all other Subexpressions
+
+  - Fixed quantification of codepoint lists with more than one entry (\u{62 63 64}+)
+    * quantifiers apply only to the last entry, so this token is now split up if quantified
+
+-------------------------------------------------------------------
+Sun May  5 09:41:53 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.4.0
+ see installed CHANGELOG.md
+
+  ### [1.4.0] - 2019-04-02 - [Janosch Müller](mailto:janosch84@gmail.com)
+  
+  ### Added
+  
+  - Added support for 19 new unicode properties introduced in Ruby 2.6.0
+
+-------------------------------------------------------------------
+Tue Nov 20 07:47:16 UTC 2018 - mschnitzer@suse.com
+
+- updated to version 1.3.0
+
+  ### Added
+
+  - `Syntax#features` returns a `Hash` of all types and tokens supported by a given `Syntax`
+
+  ### Fixed
+
+  - Thanks to [Akira Matsuda](https://github.com/amatsuda)
+    * eliminated warning "assigned but unused variable - testEof"
+
+-------------------------------------------------------------------
+Tue Nov  6 10:39:36 UTC 2018 - mschnitzer@suse.com
+
+- initial package release
