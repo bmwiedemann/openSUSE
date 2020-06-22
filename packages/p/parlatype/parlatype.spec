@@ -18,15 +18,13 @@
 
 %define c_lib   libparlatype3
 Name:           parlatype
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        GNOME audio player for transcriptions
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://gkarsay.github.io/parlatype/
 Source:         https://github.com/gkarsay/parlatype/releases/download/v%{version}/parlatype-%{version}.tar.gz
-# https://github.com/gkarsay/parlatype/commit/7d22ead13ef7578f99d24146663cc1bdb7d8c2a9
-Patch0:         parlatype-2.0-asr.patch
 BuildRequires:  AppStream-devel
 BuildRequires:  automake
 BuildRequires:  gobject-introspection-devel
@@ -66,7 +64,6 @@ Parlatype ships its own library, libparlatype, which provides a GStreamer backen
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %meson -Dasr=false
@@ -76,7 +73,7 @@ Parlatype ships its own library, libparlatype, which provides a GStreamer backen
 %meson_install
 
 %find_lang %{name}
-%find_lang libparlatype
+%find_lang libparlatype3
 
 %post -n %{c_lib} -p /sbin/ldconfig
 %postun -n %{c_lib} -p /sbin/ldconfig
@@ -103,6 +100,6 @@ Parlatype ships its own library, libparlatype, which provides a GStreamer backen
 
 %files lang -f %{name}.lang
 
-%files lang -f libparlatype.lang
+%files lang -f libparlatype3.lang
 
 %changelog
