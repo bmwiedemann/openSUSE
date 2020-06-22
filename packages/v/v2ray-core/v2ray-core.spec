@@ -1,7 +1,7 @@
 #
 # spec file for package v2ray-core
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define   provider        github
 %define   provider_tld    com
@@ -24,11 +25,11 @@
 %define   import_path     v2ray.com/core
 
 Name:           v2ray-core
-Version:        4.23.4
+Version:        4.25.0
 Release:        0
 Summary:        Project V
-Group:          Productivity/Networking/Web/Proxy
 License:        MIT
+Group:          Productivity/Networking/Web/Proxy
 URL:            https://github.com/v2ray/v2ray-core
 Source0:        https://github.com/v2ray/v2ray-core/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
@@ -40,8 +41,8 @@ Source99:       %{name}-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 # This package can be built with go version < 1.13
-BuildRequires:  golang(API) = 1.14
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  golang(API) = 1.14
 BuildRequires:  pkgconfig(systemd)
 AutoReqProv:    Off
 Provides:       %{project} = %{version}-%{release}
@@ -59,7 +60,6 @@ our website for more information.
 Summary:        Additional mobile libraries
 Group:          Development/Languages/Golang
 BuildArch:      noarch
-AutoReqProv:    On
 
 %description -n golang-%{provider}-%{project}-%{repo}
 Project V is a set of network tools that help you to build your own computer

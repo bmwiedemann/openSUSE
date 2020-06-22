@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jun 21 09:05:14 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version  to 4.25.0
+  * VMess's new header format experiment begins. You can now enable VMessAEAD to
+    be better protected. Documents EN CH are updated. See extra-VMessAEADdoc.zip
+    for a more detailed explanation available in both Chinese and English.
+  * mKCP can now be encrypted to resist recognition, address issue mentioned in
+    #2530 #2253 #2131. Documents EN CH are updated.
+  * Updated Golang tool-chain. Thanks @rprx
+  * LocalAddr() in UDP workers will now return correct local addr. Thanks
+    @zhuobixin
+  * Further remove the identity leakage with TLS ClientHello from #2521 thank
+    @darhwa
+  * Fix UDP stability issue in Socks5 inbound, Shadowsocks inbound, and
+    Dokodemo( TProxy ) inbound. This should alleviate unnecessary CPU, memory
+    usage, and premature disconnection issue typically triggered by playing
+    games, video conference, and Torrenting. See #2565 thank @JimHan75d8c5
+    @xiaokangwang and Other testers @1265578519 @zhj9709 @Kylejustknows etc
+  * Added ARM v5 binary in the release. This should allow legacy ARM devices to
+    run V2Ray correctly. See #2536
+
+-------------------------------------------------------------------
 Sun Jun  7 02:44:52 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
 
 - initial package for version 4.23.4 
