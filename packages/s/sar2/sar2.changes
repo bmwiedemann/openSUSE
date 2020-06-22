@@ -1,10 +1,28 @@
 -------------------------------------------------------------------
+Sun Jun 21 02:00:00 UTC 2020 - code@hector.link
+
+- Update to version 2.5.0:
+  * Add preliminary OSX support.
+  * Improve lagging on touch-down event.
+  * Fix crash when loading Free Flight mode.
+  * Add wind support and aerodynamic drag.
+  * Add 2 training missions in windy weather.
+  * Add support for wind gusts.
+  * Rework airplane physics and stalling conditions.
+  * Adjust models for more realistic speed and service ceiling conditions.
+  * Allow a minimum helicopter throotle to 25% (previously it was 50%).
+  * Let smoke be carried by the wind.
+  * Add a switch in simulation options to enable/disable Wind.
+  * Add wind conditions to all Guadarrama missions.
+
+
+-------------------------------------------------------------------
 Sun Apr 26 13:30:00 UTC 2020 - code@hector.link
 
 - Update to version 2.4.0:
   * Improvements to the Joystick system, adding new Rudder+Brakes mode, moving to libSDL2 and cleaning up unused menu settings.
   * Fix lagging when aircraft is landed.
-  *  Honor wheel brake coefficient.
+  * Honor wheel brake coefficient.
 
 -------------------------------------------------------------------
 Tue Jun 12 21:09:13 UTC 2018 - antoine.belvire@opensuse.org

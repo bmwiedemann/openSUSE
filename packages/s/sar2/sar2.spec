@@ -17,7 +17,7 @@
 
 
 Name:           sar2
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Rescue Helicopter Simulator
 License:        GPL-2.0-only
@@ -29,6 +29,7 @@ BuildRequires:  fdupes
 BuildRequires:  freealut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libSDL2-devel
+BuildRequires:  libXxf86vm-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  openal-soft-devel
 BuildRequires:  scons
@@ -45,19 +46,13 @@ Requires(postun): update-desktop-files
 %endif
 
 %description
-Search and Rescue II is a rescue helicopter simulator for Linux.
-It features several missions where the player pilots a
-helicopter in order to rescue people in distress. There are
-several scenarios and helicopter models.
+Search and Rescue II (SaR II) is an open source helicopter simulator game for
+Linux and OSX. In it you can fly several helicopter and airplane models in
+some basic scenarios.
 
-SaR II has a strong focus on realistic physics and low graphics requirements
-and it is a fork of the game "Search and Rescue"
-
-Among the improvements of SaR II are:
-* OpenAL sound effects
-* Smoother graphics
-* Full SDL Joystick support
-* Full playable music
+SaR II has low graphic requirements while still provides a fun and demanding
+gameplay where the player needs to locate, pick-up and rescue victims of all
+sorts in steep mountains, burning buildings or in the sea.
 
 %package data
 Summary:        Data files for sar2
@@ -101,7 +96,7 @@ install -D -m 0644 extra/sar2.appdata.xml %{buildroot}%{_datadir}/appdata/%{name
 %endif
 
 %files
-%doc AUTHORS CHANGELOG HACKING README
+%doc AUTHORS CHANGELOG.md HACKING README.md
 %license LICENSE
 %{_mandir}/man6/%{name}.6%{?ext_man}
 %{_bindir}/%{name}
