@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 10 15:32:29 UTC 2020 - Rolf Krahl <rolf@rotkraut.de>
+
+- Python: Add requirement on python-six
+
+-------------------------------------------------------------------
 Fri Mar  6 10:05:22 UTC 2020 - Nico Kruber <nico.kruber@gmail.com>
 
 - Update to version 3.11.4; notable changes since 3.9.2:

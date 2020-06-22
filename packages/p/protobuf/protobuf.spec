@@ -129,6 +129,7 @@ Summary:        Python2 Bindings for Google Protocol Buffers
 Group:          Development/Libraries/Python
 Provides:       python-%{name} = %{version}
 Obsoletes:      python-%{name} < %{version}
+Requires:       python2-six >= 1.9
 
 %description -n python2-%{name}
 This package contains the Python bindings for Google Protocol Buffers.
@@ -136,6 +137,7 @@ This package contains the Python bindings for Google Protocol Buffers.
 %package -n python3-%{name}
 Summary:        Python3 Bindings for Google Protocol Buffers
 Group:          Development/Libraries/Python
+Requires:       python3-six >= 1.9
 
 %description -n python3-%{name}
 This package contains the Python bindings for Google Protocol Buffers.
