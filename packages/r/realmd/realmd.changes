@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 15 11:46:59 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use proper unitdir macro to specify location of systemd units.
+
+-------------------------------------------------------------------
 Wed Jan 22 11:01:28 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Adjust BuildRequires to allow OBS to shortcut through -mini
