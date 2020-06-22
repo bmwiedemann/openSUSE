@@ -1,7 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun 17 17:07:03 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to version 1.7.1 bugfix
+  https://github.com/timescale/timescaledb/releases/tag/1.7.1
+  Please note that with the release of 1.7, support for PostgreSQL
+  9.6.x and 10.x are deprecated. version 2 will only support 11,12
+- Packaging : 
+  + Activate postgresql12 supported now
+  + Modifiy download url to grab a nice named tar.gz
+
+-------------------------------------------------------------------
+Tue May  5 00:40:49 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.7.0
+  https://github.com/timescale/timescaledb/releases/tag/1.7.0
+
+-------------------------------------------------------------------
 Tue Mar 31 20:07:40 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
-- update to 1.6.1
   https://github.com/timescale/timescaledb/releases/tag/1.6.1
   https://github.com/timescale/timescaledb/releases/tag/1.6.0
   https://github.com/timescale/timescaledb/releases/tag/1.5.1

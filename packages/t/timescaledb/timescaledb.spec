@@ -19,13 +19,13 @@
 %define         pgname  @BUILD_FLAVOR@%{nil}
 %define         sname   timescaledb
 %define         priority    %{pgname}
-Version:        1.6.1
+Version:        1.7.1
 Release:        0
 Summary:        A time-series database extension for PostgreSQL
 License:        Apache-2.0
 Group:          Productivity/Databases/Tools
 URL:            https://www.timescale.com/
-Source:         https://github.com/timescale/%{sname}/archive/%{version}.tar.gz
+Source:         https://github.com/timescale/%{sname}/archive/%{version}/%{sname}-%{version}.tar.gz
 Patch0:         clang-format9_support.diff
 BuildRequires:  %{pgname}-server
 BuildRequires:  %{pgname}-server-devel
