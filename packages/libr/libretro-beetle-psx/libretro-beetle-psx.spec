@@ -17,7 +17,7 @@
 
 
 Name:           libretro-beetle-psx
-Version:        0~git20200529
+Version:        0~git20200610
 Release:        0
 Summary:        Mednafen PSX libretro core for Sony PlayStation emulation
 License:        GPL-3.0-only
@@ -25,7 +25,8 @@ Group:          System/Emulators/Other
 URL:            http://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz
 
-BuildRequires:  gcc-c++
+# GCC 4.8 bug only fixed in 4.9 https://gcc.gnu.org/bugzilla/show_bug.cgi?id=58016
+BuildRequires:  gcc-c++ >= 4.9
 BuildRequires:  make
 
 %description
