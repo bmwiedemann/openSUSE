@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 22 08:45:50 UTC 2020 - maiku.fabian@gmail.com
+
+- Update to 2.9.3
+- Translation updates from Weblate for he
+- Fix wrong indentation of push_context() in _commit_string()
+
+-------------------------------------------------------------------
 Mon Jun 08 08:12:58 UTC 2020 - maiku.fabian@gmail.com
 
 - Update to 2.9.2
