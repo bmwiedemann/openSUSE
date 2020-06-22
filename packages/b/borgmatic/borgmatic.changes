@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun 15 17:22:18 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 1.5.6
+  * #292: Allow before_backup and similiar hooks to exit with a
+    soft failure without altering the monitoring status on
+    Healthchecks or other providers. Support this by waiting to
+    ping monitoring services with a "start" status until after
+    before_* hooks finish. Failures in before_* hooks still trigger
+    a monitoring "fail" status.
+  * #316: Fix hang when a stale database dump named pipe from an
+    aborted borgmatic run remains on disk.
+  * #323: Fix for certain configuration options like ssh_command
+    impacting Borg invocations for separate configuration files.
+  * #324: Add "borgmatic extract --strip-components" flag to remove
+    leading path components when extracting an archive.
+  * Tweak comment indentation in generated configuration file for
+    clarity.
+  * Link to Borgmacator GNOME AppIndicator from monitoring
+    documentation.
+
+-------------------------------------------------------------------
 Wed May 27 08:58:21 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.5.5
