@@ -1,8 +1,8 @@
-diff --git a/c_check b/c_check
-index d93b756d..0b0bb426 100644
---- a/c_check
-+++ b/c_check
-@@ -10,7 +10,7 @@ $hostarch = "x86_64" if ($hostarch eq "amd64");
+Index: OpenBLAS-0.3.10/c_check
+===================================================================
+--- OpenBLAS-0.3.10.orig/c_check
++++ OpenBLAS-0.3.10/c_check
+@@ -10,7 +10,7 @@ $hostarch = "x86_64" if ($hostarch eq "a
  $hostarch = "arm" if ($hostarch =~ /^arm.*/);
  $hostarch = "arm64" if ($hostarch eq "aarch64");
  $hostarch = "power" if ($hostarch =~ /^(powerpc|ppc).*/);
@@ -11,10 +11,10 @@ index d93b756d..0b0bb426 100644
  
  #$tmpf = new File::Temp( UNLINK => 1 );
  $binary = $ENV{"BINARY"};
-diff --git a/ctest.c b/ctest.c
-index 5e869b90..13252b46 100644
---- a/ctest.c
-+++ b/ctest.c
+Index: OpenBLAS-0.3.10/ctest.c
+===================================================================
+--- OpenBLAS-0.3.10.orig/ctest.c
++++ OpenBLAS-0.3.10/ctest.c
 @@ -117,7 +117,7 @@ ARCH_X86_64
  ARCH_POWER
  #endif
@@ -24,11 +24,11 @@ index 5e869b90..13252b46 100644
  ARCH_ZARCH
  #endif
  
-diff --git a/getarch.c b/getarch.c
-index 4d960356..5fa1063b 100644
---- a/getarch.c
-+++ b/getarch.c
-@@ -1138,7 +1138,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Index: OpenBLAS-0.3.10/getarch.c
+===================================================================
+--- OpenBLAS-0.3.10.orig/getarch.c
++++ OpenBLAS-0.3.10/getarch.c
+@@ -1200,7 +1200,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  #define OPENBLAS_SUPPORTED
  #endif
  
