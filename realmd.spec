@@ -60,7 +60,7 @@ authentication and user account lookups.
 %build
 # krb5-config is hidden
 PATH=$PATH:%{_prefix}/lib/mit/bin
-%configure --with-distro=suse --with-systemd-unit-dir=%{_prefix}/lib/systemd/system --with-systemd-journal=no
+%configure --with-distro=suse --with-systemd-unit-dir=%{_unitdir} --with-systemd-journal=no
 make %{?_smp_mflags}
 
 %install
