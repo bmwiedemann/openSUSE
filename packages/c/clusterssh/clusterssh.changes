@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 22 09:02:26 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Update to new upstream release v4.16
+  * Further fix for 'resolve_names' error when adding hosts via the UI
+  * Fix missing space separator for ssh_args (thanks to Petr Vorel)
+- removed obsolete backport patch
+  0001-helper-Fix-missing-space-separator-for-ssh_args.patch
+
+-------------------------------------------------------------------
 Tue May 26 20:51:17 UTC 2020 - Petr Vorel <pvorel@suse.cz>
 
 - Backport fix for #133

@@ -17,8 +17,8 @@
 
 
 Name:           clusterssh
-%define dullver 4.15
-Version:        4.15
+%define dullver 4.16
+Version:        4.16
 Release:        0
 Summary:        Multiplex SSH sessions onto many hosts using multiple terminals
 License:        GPL-1.0-or-later OR Artistic-1.0
@@ -27,7 +27,6 @@ URL:            https://github.com/duncs/clusterssh/wiki
 Source:         https://github.com/duncs/clusterssh/archive/v%dullver.tar.gz
 Source2:        %name-rpmlintrc
 Patch1:         perl_shebang.patch
-Patch2:         0001-helper-Fix-missing-space-separator-for-ssh_args.patch
 BuildArch:      noarch
 BuildRequires:  fdupes
 BuildRequires:  perl
