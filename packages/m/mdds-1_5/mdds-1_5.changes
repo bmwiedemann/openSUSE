@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 18 12:11:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.6.0:
+  * switched to using binary search on block position lookup, which
+    significantly improves element access performance in general, at the
+    expense of slight performance degradation on block shifting.
+
+-------------------------------------------------------------------
 Thu Aug 15 21:10:14 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Version update to 1.5.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package mdds-1_5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,12 +21,12 @@
 %define _apiver 1.5
 %define _oname mdds
 Name:           %{_oname}-1_5
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        A collection of multi-dimensional data structure and indexing algorithm
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://gitlab.com/mdds/mdds
+URL:            https://gitlab.com/mdds/mdds
 Source:         http://kohei.us/files/%{_oname}/src/%{_oname}-%{version}.tar.bz2
 BuildRequires:  gcc-c++
 BuildRequires:  libstdc++-devel
