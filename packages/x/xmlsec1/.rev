@@ -127,4 +127,15 @@
   * Several other small fixes (more details).</comment>
     <requestid>697800</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1af5670b9f95847f3174bb5195e52588</srcmd5>
+    <version>1.2.30</version>
+    <time>1592840606</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.30:
+  * Enabled XML_PARSE_HUGE for all xml parsers.
+  * Various build and tests fixes and improvements.
+  * Move remaining private header files away from xmlsec/include/ folder.</comment>
+    <requestid>815741</requestid>
+  </revision>
 </revisionlist>

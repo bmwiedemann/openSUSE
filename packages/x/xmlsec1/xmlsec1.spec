@@ -1,7 +1,7 @@
 #
 # spec file for package xmlsec1
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,11 @@
 %global libgnutls  libxmlsec1-gnutls1
 %global libnss     libxmlsec1-nss1
 Name:           xmlsec1
-Version:        1.2.28
+Version:        1.2.30
 Release:        0
 Summary:        Library providing support for "XML Signature" and "XML Encryption" standards
 License:        MIT
-Group:          Productivity/Security
-URL:            http://www.aleksey.com/xmlsec/
+URL:            https://www.aleksey.com/xmlsec/
 Source0:        http://www.aleksey.com/xmlsec/download/xmlsec1-%{version}.tar.gz
 Source99:       xmlsec1-rpmlintrc
 BuildRequires:  libgcrypt-devel
@@ -50,7 +49,6 @@ standards "XML Digital Signature" and "XML Encryption".
 
 %package -n %{libname}
 Summary:        Library providing support for "XML Signature" and "XML Encryption" standards
-Group:          System/Libraries
 
 %description -n %{libname}
 XML Security Library is a C library based on LibXML2  and OpenSSL.
@@ -59,7 +57,6 @@ standards "XML Digital Signature" and "XML Encryption".
 
 %package -n %{libgcrypt}
 Summary:        GCrypt crypto plugin for XML Security Library
-Group:          System/Libraries
 Requires:       %{libname} = %{version}
 
 %description -n %{libgcrypt}
@@ -68,7 +65,6 @@ for the xmlsec library.
 
 %package -n %{libgnutls}
 Summary:        GNUTls crypto plugin for XML Security Library
-Group:          System/Libraries
 Requires:       %{libname} = %{version}
 
 %description -n %{libgnutls}
@@ -77,7 +73,6 @@ for the xmlsec library.
 
 %package -n %{libnss}
 Summary:        NSS crypto plugin for XML Security Library
-Group:          System/Libraries
 Requires:       %{libname} = %{version}
 
 %description -n %{libnss}
@@ -86,7 +81,6 @@ for the xmlsec library.
 
 %package -n %{libopenssl}
 Summary:        OpenSSL crypto plugin for XML Security Library
-Group:          System/Libraries
 Requires:       %{libname} = %{version}
 
 %description -n %{libopenssl}
@@ -95,7 +89,6 @@ for the xmlsec library.
 
 %package devel
 Summary:        Libraries, includes for XML Signatures/Encryption
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       libxml2-devel >= 2.6.0
 Requires:       libxslt-devel >= 1.1.0
@@ -108,7 +101,6 @@ Signatures and XML Encryption support.
 
 %package openssl-devel
 Summary:        OpenSSL crypto plugin for XML Security Library
-Group:          Development/Libraries/C and C++
 Requires:       %{libopenssl} = %{version}
 Requires:       %{name}-devel = %{version}
 
@@ -117,7 +109,6 @@ Libraries, includes, etc. for developing XML Security applications with OpenSSL
 
 %package gcrypt-devel
 Summary:        GCrypt crypto plugin for XML Security Library
-Group:          Development/Libraries/C and C++
 Requires:       %{libgcrypt} = %{version}
 Requires:       %{name}-devel = %{version}
 
@@ -126,7 +117,6 @@ Libraries, includes, etc. for developing XML Security applications with GCrypt.
 
 %package gnutls-devel
 Summary:        GNUTls crypto plugin for XML Security Library
-Group:          Development/Libraries/C and C++
 Requires:       %{libgnutls} = %{version}
 Requires:       %{name}-devel = %{version}
 Requires:       %{name}-openssl-devel = %{version}
@@ -138,7 +128,6 @@ Libraries, includes, etc. for developing XML Security applications with GNUTls.
 
 %package nss-devel
 Summary:        NSS crypto plugin for XML Security Library
-Group:          Development/Libraries/C and C++
 Requires:       %{libnss} = %{version}
 Requires:       %{name}-devel = %{version}
 Requires:       mozilla-nspr-devel
@@ -154,7 +143,7 @@ Libraries, includes, etc. for developing XML Security applications with NSS.
 %configure \
     --disable-static \
     --disable-silent-rules
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -166,7 +155,7 @@ mv %{buildroot}%{_datadir}/doc/xmlsec1/* __tmp_doc
 rmdir %{buildroot}%{_datadir}/doc/xmlsec1
 
 %check
-make %{?_smp_mflags} check check-keys check-dsig check-enc
+%make_build -j1 check check-keys check-dsig check-enc
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -216,9 +205,7 @@ make %{?_smp_mflags} check check-keys check-dsig check-enc
 %{_bindir}/xmlsec1-config
 %dir %{_includedir}/xmlsec1
 %dir %{_includedir}/xmlsec1/xmlsec
-%dir %{_includedir}/xmlsec1/xmlsec/private
 %{_includedir}/xmlsec1/xmlsec/*.h
-%{_includedir}/xmlsec1/xmlsec/private/*.h
 %{_libdir}/libxmlsec1.so
 %{_libdir}/pkgconfig/xmlsec1.pc
 %{_libdir}/xmlsec1Conf.sh
