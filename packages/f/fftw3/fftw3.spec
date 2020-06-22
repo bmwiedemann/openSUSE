@@ -1,7 +1,7 @@
 #
 # spec file for package fftw3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -197,7 +197,7 @@ Release:        0
 Summary:        Discrete Fourier Transform (DFT) C Subroutine Library
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://www.fftw.org
+URL:            http://www.fftw.org
 Source:         ftp://ftp.fftw.org/pub/fftw/fftw-%{version}%{?pl_ext:-%{pl_ext}}.tar.gz
 Source1:        %{pname}-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -541,7 +541,8 @@ EOF
 %if %{without hpc}
 %files -n libfftw3_threads3
 %defattr(-,root,root)
-%endif #%%{without hpc}
+%endif
+# ENDIF FOR {without hpc}
 %{package_libdir}/libfftw3_threads.so.3*
 %{package_libdir}/libfftw3f_threads.so.3*
 %{package_libdir}/libfftw3l_threads.so.3*
@@ -551,7 +552,8 @@ EOF
 %defattr(-,root,root)
 %else
 %hpc_modules_files
-%endif #%%{without hpc}
+%endif
+# ENDIF FOR {without hpc}
 %{package_libdir}/libfftw3_omp.so.3*
 %{package_libdir}/libfftw3f_omp.so.3*
 %{package_libdir}/libfftw3l_omp.so.3*
@@ -561,17 +563,20 @@ EOF
 %if %{without hpc}
 %files -n libfftw3_mpi3
 %defattr(-,root,root)
-%endif #%%{without hpc}
+%endif
+# ENDIF FOR {without hpc}
 %{package_libdir}/libfftw3_mpi.so.3*
 %{package_libdir}/libfftw3f_mpi.so.3*
 %{package_libdir}/libfftw3l_mpi.so.3*
-%endif #%%(with mpi)
-%endif #%%(s390 s390x)
+%endif
+# ENDIF FOR {without mpi}
+%endif
+# ENDIF FOR ARCH s390 s390x
 
 %files devel
 %defattr(-,root,root)
 %if %{with hpc}
-%{package_infodir}/dir
+%{package_infodir}/
 %hpc_dirs
 %dir %package_libdir/pkgconfig
 %dir %package_includedir
@@ -602,7 +607,8 @@ EOF
 %if %{without hpc}
 %files threads-devel
 %defattr(-,root,root)
-%endif #%%{without hpc}
+%endif
+# ENDIF FOR {without hpc}
 %{package_libdir}/libfftw3_threads.so
 %{package_libdir}/libfftw3f_threads.so
 %{package_libdir}/libfftw3l_threads.so
@@ -610,7 +616,8 @@ EOF
 %if %{without hpc}
 %files openmp-devel
 %defattr(-,root,root)
-%endif #%%{without hpc}
+%endif
+# ENDIF FOR {without hpc}
 %{package_libdir}/libfftw3_omp.so
 %{package_libdir}/libfftw3f_omp.so
 %{package_libdir}/libfftw3l_omp.so
@@ -620,14 +627,17 @@ EOF
 %if %{without hpc}
 %files mpi-devel
 %defattr(-,root,root)
-%endif #%%{without hpc}
+%endif
+# ENDIF FOR {without hpc}
 %{package_libdir}/libfftw3_mpi.so
 %{package_libdir}/libfftw3f_mpi.so
 %{package_libdir}/libfftw3l_mpi.so
 %{package_includedir}/fftw3-mpi.*
 %{package_includedir}/fftw3l-mpi.f03
-%endif #%%(with mpi)
-%endif #%%(s390 s390x)
+%endif
+# ENDIF FOR {with mpi}
+%endif
+# ENDIF FOR arch s390 s390x
 
 %if %{with hpc}
 %files  devel-static
