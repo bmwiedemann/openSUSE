@@ -153,4 +153,22 @@
   * add some decorations from v2.2 standard</comment>
     <requestid>777343</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>46838066552e64237be6c88296087909</srcmd5>
+    <version>8.14.9</version>
+    <time>1592840769</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.14.9:
+  * fix: bad natural accidental when %%MIDI temperamentequal
+
+- Update to 8.14.8:
+  * fix: no respect the width in %%staffbreak
+  * fix: don't draw a staff when only %%staffbreak inside
+  * fix: bad repeat bracket when continued on next line, line starting by a bar
+  * fix: bad tuplet bracket again when at end of a voice overlay sequence
+  * fix: bad tuplet bracket when at end of a voice overlay sequence
+  * handle '%%MIDI temperamentequal '
+  * accept '^1' and '_1' as microtone accidentals</comment>
+    <requestid>816280</requestid>
+  </revision>
 </revisionlist>
