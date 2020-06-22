@@ -179,4 +179,12 @@ which is only a reflection of such policy since gnome-shell pomodoro extension
 doesn't work anyway. (forwarded request 796279 from develop7)</comment>
     <requestid>798370</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>005d52e31bd44849408056f134f751e4</srcmd5>
+    <version>0.17.0</version>
+    <time>1592840821</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816397</requestid>
+  </revision>
 </revisionlist>

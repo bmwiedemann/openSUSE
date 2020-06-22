@@ -35,7 +35,6 @@ BuildRequires:  gnome-shell >= 3.36.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.28
 BuildRequires:  pkgconfig(appstream-glib) >= 0.7.3
-BuildRequires:  pkgconfig(ayatana-appindicator3-0.1)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.10.1
