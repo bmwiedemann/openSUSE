@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 12 19:23:08 UTC 2020 - i@guoyunhe.me
+
+- Require GCC >= 4.9 because of a bug in 4.8. See
+  https://gcc.gnu.org/bugzilla/show_bug.cgi?id=58016
+- Update to version 0~git20200610:
+  * When HAVE_SHM, include <sys/stat.h> for S_IRUSR and S_IWUSR
+  * lightrec: fix race that could cause a freeze
+  * Maintain Solaris compat + restore IllumOS build
+  * Don't use fprintf - go through logging interface
+  * allow using system libs
+
+-------------------------------------------------------------------
 Sat May 30 16:34:11 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200529:
