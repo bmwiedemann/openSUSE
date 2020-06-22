@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 22 10:33:14 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 0.21.24
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.21.24/NEWS
+  * protocol: "tagtypes" requires no permissions
+  * database: simple: fix crash when mounting twice
+  * decoder
+    * modplug: fix Windows build failure
+    * wildmidi: attempt to detect WildMidi using pkg-config
+    * wildmidi: fix Windows build failure
+  * player: don't restart current song if seeking beyond end
+  * fix unit test failure
+
+-------------------------------------------------------------------
 Sat Apr 25 18:01:18 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 0.21.23

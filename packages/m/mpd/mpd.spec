@@ -20,7 +20,7 @@
 %bcond_with    faad
 %bcond_without mpd_iso9660
 Name:           mpd
-Version:        0.21.23
+Version:        0.21.24
 Release:        0
 Summary:        Music Player Daemon
 License:        GPL-2.0-or-later
