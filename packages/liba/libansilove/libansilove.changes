@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun 21 07:48:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.4
+  * Use size_t in for loops setting color palettes
+  * Remove unneeded gdImageFill() call when using Workbench mode
+  * Define _GNU_SOURCE in CMakeLists.txt to avoid cluttering
+    source files
+  * Use size_t type for variables used to loop over arrays
+  * Separate RGB values for palettes, makes color allocation code
+    more readable and efficient
+  * Move ADF color mapping array to config.h
+
+-------------------------------------------------------------------
 Mon May 25 17:30:14 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.3
