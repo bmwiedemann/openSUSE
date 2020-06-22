@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 21 04:44:10 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1592629510.d2cc1989:
+  * t: Fix 10-test-image-conversion-benchmark.t
+  * CI: Install possibly new dependencies
+  * Fix the issue could not find `ssh_VMwareServer` in ssh_credentials
+
+-------------------------------------------------------------------
 Thu Jun 18 04:29:56 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1592454585.b7070d24:
