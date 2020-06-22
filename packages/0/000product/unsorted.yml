@@ -4857,6 +4857,9 @@ unsorted:
   - gnome-calendar 
   - gnome-calendar-lang 
   - gnome-colors-icon-theme 
+  - gnome-commander 
+  - gnome-commander-doc 
+  - gnome-commander-lang 
   - gnome-common 
   - gnome-control-center-devel 
   - gnome-devel-docs 
@@ -18865,7 +18868,6 @@ unsorted:
   - python-svm 
   - python-swiftclient-doc 
   - python-tables-doc 
-  - python-testtools-doc 
   - python-tk 
   - python-tooz-doc 
   - python-translationstring-doc 
@@ -20700,7 +20702,6 @@ unsorted:
   - python3-pathspec 
   - python3-pathtools 
   - python3-pathvalidate 
-  - python3-patiencediff 
   - python3-patsy 
   - python3-pbkdf2 
   - python3-pcp 
