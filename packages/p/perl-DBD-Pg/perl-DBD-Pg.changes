@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jun 18 03:07:43 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.13.0
+   see /usr/share/doc/packages/perl-DBD-Pg/Changes
+
+  Version 3.13.0  (released June 17, 2020)
+   - Redo the "last_result" internals in dbdimp.c, which
+       fixes a memory leak.
+     [Greg Sabino Mullane]
+     (RT ticket #132812)
+   - Fix regression in Perl length() for returned query results
+     [Jon Jensen]
+     (Github issue #72)
+   - Make $sth->finish() do a little less. Notably, even
+       after calling finish(), pg_error_field will still work
+       on the last action performed.
+     [Greg Sabino Mullane]
+   - Tweak tests so Windows boxes pass
+     [Greg Sabino Mullane]
+
+-------------------------------------------------------------------
 Wed Jun 10 16:03:22 UTC 2020 - Tina Müller <tina.mueller@suse.com>
 
 - Run tests in verbose mode. Fixes mysterious failure of t/09arrays.t
