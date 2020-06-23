@@ -220,7 +220,7 @@ Recommends:     %{python}-six
 Recommends:     sshpass
 %endif
 Name:           ansible
-Version:        2.9.9
+Version:        2.9.10
 Release:        0
 Summary:        SSH-based configuration management, deployment, and task execution system
 License:        GPL-3.0-or-later
@@ -229,9 +229,6 @@ URL:            https://ansible.com/
 Source:         https://releases.ansible.com/ansible/ansible-%{version}.tar.gz
 Source1:        https://releases.ansible.com/ansible/ansible-%{version}.tar.gz.sha
 Source99:       ansible-rpmlintrc
-# PATCH-FIX-UPSTREAM CVE-2020-1744_avoid_mkdir_p.patch bsc#1171823 mcepl@suse.com
-# gh#ansible/ansible#67791 avoid race condition and insecure directory creation
-Patch0:         CVE-2020-1744_avoid_mkdir_p.patch
 BuildArch:      noarch
 # extented documentation
 %if 0%{?with_docs}
@@ -291,7 +288,6 @@ automatically.
 
 %prep
 %setup -q -n ansible-%{version}
-%autopatch -p1
 
 for file in .git_keep .travis.yml ; do
   find . -name "$file" -delete

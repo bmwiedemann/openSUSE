@@ -755,4 +755,12 @@ numbers for further reference.
     <comment></comment>
     <requestid>810048</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>768c2864ed67c186954366c46b6eee1a</srcmd5>
+    <version>2.9.10</version>
+    <time>1592939162</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.9.10</comment>
+    <requestid>816464</requestid>
+  </revision>
 </revisionlist>
