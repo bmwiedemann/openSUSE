@@ -20,7 +20,7 @@
 
 Name:           libinput
 %define lname	libinput10
-Version:        1.15.5
+Version:        1.15.6
 Release:        0
 Summary:        Input device and event processing library
 License:        MIT

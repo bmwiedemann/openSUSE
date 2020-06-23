@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 22 12:08:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.15.6
+  * Add HP stream x360 11 ModelTabletModeNoSuspend keyboard quirk                                             
+  * Add quirks file for Sony Vaio Laptop                                                                              
+  * tablet: use the AttrPressureRange quirk for tablets too
+
+-------------------------------------------------------------------
 Sat Apr 11 08:14:39 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.15.5
