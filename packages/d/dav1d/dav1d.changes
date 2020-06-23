@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 22 08:13:31 UTC 2020 - aloisio@gmx.com
+
+- Update to version 0.7.1
+  * ARM32 NEON optimizations for itxfm, which can give up to 28%
+    speedup, and MSAC
+  * SSE2 optimizations for prep_bilin and prep_8tap
+  * AVX2 optimizations for MC scaled
+  * Fix a clamping issue in motion vector projection
+  * Fix an issue on some specific Haswell CPU on ipred_z AVX2
+    functions
+  * Improvements on the dav1dplay utility player to support
+    resizing
+
+-------------------------------------------------------------------
 Wed May 20 16:50:41 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to verison 0.7.0
