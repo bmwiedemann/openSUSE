@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/libratbag/piper.git</param>
     <param name="scm">git</param>
-    <param name="revision">0.5</param>
+    <param name="revision">0.5.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
   </service>

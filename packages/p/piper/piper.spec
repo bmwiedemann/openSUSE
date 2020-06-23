@@ -18,7 +18,7 @@
 
 
 Name:           piper
-Version:        0.5
+Version:        0.5.1
 Release:        0
 Summary:        Configuration UI for gaming mice
 License:        GPL-2.0-only
@@ -73,5 +73,6 @@ devices.
 %{_datadir}/metainfo/org.freedesktop.Piper.appdata.xml
 %{_datadir}/piper
 %{python3_sitelib}/*
+%doc %_mandir/man1/piper.1.gz
 
 %changelog

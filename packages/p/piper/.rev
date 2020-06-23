@@ -111,4 +111,14 @@ changes incompatibly.</comment>
     + German</comment>
     <requestid>812104</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3fe80bd31ea70a52478d9f60d44baa9c</srcmd5>
+    <version>0.5.1</version>
+    <time>1592939158</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.1:
+  * Add missing man page
+  * Use SPDX 3 license identifiers in the code</comment>
+    <requestid>816455</requestid>
+  </revision>
 </revisionlist>
