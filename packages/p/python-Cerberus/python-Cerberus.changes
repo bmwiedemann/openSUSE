@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 20 08:15:08 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update in SLE-15 (bsc#1121858)
+
+-------------------------------------------------------------------
 Wed Jun  3 10:49:23 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Disable Python 2 build, dependencies do not resolve.
@@ -87,6 +92,14 @@ Tue Jan 15 20:55:55 UTC 2019 - Michael Vetter <mvetter@suse.com>
   * CI: Reactivate testing on PyPy3. (Frank Sachsenheim)
 
 -------------------------------------------------------------------
+Mon Jan  7 15:23:21 UTC 2019 - ms@suse.com
+
+- Submission to SUSE:SLE-15:Update
+
+  This commit tracks the submission for fate#326575
+  and bsc#1103542
+
+-------------------------------------------------------------------
 Wed Dec  5 01:19:48 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure neutrality of description.
@@ -95,6 +108,14 @@ Wed Dec  5 01:19:48 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 Tue Dec  4 12:46:32 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Aug 14 08:59:57 UTC 2018 - ms@suse.com
+
+- Submission to SUSE:SLE-12-SP3:Update:PubClouds
+    
+  This commit tracks the submission for fate#326575
+  and bsc#1103542
 
 -------------------------------------------------------------------
 Tue Feb  6 10:29:01 UTC 2018 - sebix+novell.com@sebix.at
