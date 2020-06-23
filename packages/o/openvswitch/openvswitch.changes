@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 15 13:21:22 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
+
+- Fix preserving old default OVS_USER_ID for users that removed the
+  override at /etc/sysconfig/openvswitch or for users affected by
+  fillup bug below (bsc#1172861).
+- Add patch to workaround a possible fillup issue that could cause
+  existing openvswitch configuration to be unintendedly altered during
+  upgrades (bsc#1172929).
+  * 0001-Use-double-hash-for-OVS_USER_ID-comment.patch
+
+-------------------------------------------------------------------
 Wed Jun  3 14:53:21 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 
 - add missing provides/obsoletes for python3-openvswitch-test 

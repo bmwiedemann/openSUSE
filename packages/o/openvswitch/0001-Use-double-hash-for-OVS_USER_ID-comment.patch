@@ -1,0 +1,22 @@
+From e007ba2d276530db6aa8a242b069f356395cd8e5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jaime=20Caama=C3=B1o=20Ruiz?= <jcaamano@suse.com>
+Date: Mon, 15 Jun 2020 15:15:53 +0200
+Subject: [PATCH] Use double hash for OVS_USER_ID comment
+
+---
+ rhel/usr_share_openvswitch_scripts_systemd_sysconfig.template | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/rhel/usr_share_openvswitch_scripts_systemd_sysconfig.template b/rhel/usr_share_openvswitch_scripts_systemd_sysconfig.template
+index c467d02db..10b841679 100644
+--- a/rhel/usr_share_openvswitch_scripts_systemd_sysconfig.template
++++ b/rhel/usr_share_openvswitch_scripts_systemd_sysconfig.template
+@@ -28,4 +28,4 @@
+ OPTIONS=""
+ 
+ # Uncomment and set the OVS User/Group value
+-#OVS_USER_ID="openvswitch:openvswitch"
++## OVS_USER_ID="openvswitch:openvswitch"
+-- 
+2.26.1
+

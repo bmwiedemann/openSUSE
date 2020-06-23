@@ -68,6 +68,8 @@ Patch1:         0001-Run-openvswitch-as-openvswitch-openvswitch.patch
 Patch2:         0001-Don-t-change-permissions-of-dev-hugepages.patch
 # PATCH-FIX-UPSTREAM: 0001-rhel-Fix-reload-of-OVS_USER_ID-on-startup.patch
 Patch3:         0001-rhel-Fix-reload-of-OVS_USER_ID-on-startup.patch
+# PATCH-FIX-OPENSUSE: 0001-Use-double-hash-for-OVS_USER_ID-comment.patch
+Patch4:         0001-Use-double-hash-for-OVS_USER_ID-comment.patch
 #OVN patches
 # PATCH-FIX-OPENSUSE: 0001-Run-ovn-as-openvswitch-openvswitch.patch
 Patch20:        0001-Run-ovn-as-openvswitch-openvswitch.patch
@@ -387,6 +389,7 @@ Devel libraries and headers for Open Virtual Network.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 cd %{ovn_dir}
 %patch20 -p1
 
@@ -825,19 +828,47 @@ if [ -e %{rpmstate}openvswitch ]; then
     systemctl enable openvswitch.service
 fi
 
+ovsdbdir_regex="^[[:space:]]*OVS_DBDIR[[:space:]]*="
+ovsuserid_regex="^[[:space:]]*OVS_USER_ID[[:space:]]*="
+ovsvar_valueregex="[^=]*=[[:space:]]*["'"'"']{0,1}([^"'"'"']*)["'"'"']{0,1}[[:space:]]*$"
+conf="%{_sysconfdir}/sysconfig/openvswitch"
+ovsdbdir=$(grep -E "${ovsdbdir_regex}" "${conf}" | tail -1 | sed -E --posix 's|'"${ovsvar_valueregex}"'|\1|')
+ovsuserid=$(grep -E "${ovsuserid_regex}" "${conf}" | tail -1 | sed -E --posix 's|'"${ovsvar_valueregex}"'|\1|')
+
 # Default DB path changed from /etc/openvswitch to /var/lib/openvswitch.
 # But try to keep the old path for upgraded users already making use of it.
-ovsdbpid=$(systemctl is-active --quiet ovsdb-server && systemctl show -p MainPID --value ovsdb-server || echo 0)
-if [ $ovsdbpid -gt 0 ] && [ -n "$(find /proc/$ovsdbpid/fd/ -type l -lname '%{_sysconfdir}/openvswitch/conf.db')" ]; then
-    # We have ovsdb-server pid from the unit file with DB open at the old path.
-    # If we did not override OVS_DBDIR already, do it.
-    if ! grep -qE "^OVS_DBDIR=" %{_sysconfdir}/sysconfig/openvswitch; then
-        sed -i -e '1{r /dev/stdin' -e 'N}' %{_sysconfdir}/sysconfig/openvswitch << EOF
+if [ -z "$ovsdbdir" ]; then
+    ovsdbpid=$(systemctl is-active --quiet ovsdb-server && systemctl show -p MainPID --value ovsdb-server || echo 0)
+    if [ $ovsdbpid -gt 0 ] && [ -n "$(find /proc/$ovsdbpid/fd/ -type l -lname '%{_sysconfdir}/openvswitch/conf.db')" ]; then
+        # We have ovsdb-server pid from the unit file with DB open at the old path.
+        ovsdbdir="%{_sysconfdir}/openvswitch"
+        sed -i -e '1{r /dev/stdin' -e 'N}' "%{_sysconfdir}/sysconfig/openvswitch" << EOF
+
 # OVS_DBDIR was automatically inserted here on openvswitch package upgrade to
 # preserve the currently used /etc/openvswitch as the database directory.
 # Note that new installs use /var/lib/openvswitch as the default database
 # directory by omission.
-OVS_DBDIR=%{_sysconfdir}/openvswitch
+OVS_DBDIR="%{_sysconfdir}/openvswitch"
+
+EOF
+    fi
+fi
+
+# Default OVS user changed from root:root to openvswitch:openvswitch.
+# But try to keep root:root for upgraded users already making use of it.
+# Use .conf.db.~lock~ instead of conf.db as conf.db might have been moved
+# to a backup on a previous run attempt.
+if [ -z "$ovsuserid" -a -n "$ovsdbdir" -a -f "$ovsdbdir/.conf.db.~lock~" ]; then
+    ovsuserid=$(stat -c "%U:%G" "$ovsdbdir/.conf.db.~lock~")
+    if [ "$ovsuserid" = "root:root" ]; then
+        sed -i -e '1{r /dev/stdin' -e 'N}' "%{_sysconfdir}/sysconfig/openvswitch" << EOF
+
+# OVS_USER_ID was automatically inserted here on openvswitch package upgrade to
+# preserve the currently used root:root as the openvswitch running credentials.
+# Note that new installs use openvswitch:openvswitch as the default openvswitch
+# running credentials by omission.
+OVS_USER_ID="root:root"
+
 EOF
     fi
 fi
