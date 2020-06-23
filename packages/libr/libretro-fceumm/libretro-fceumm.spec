@@ -17,10 +17,10 @@
 
 
 Name:           libretro-fceumm
-Version:        0~git20200106
+Version:        0~git20200604
 Release:        0
 Summary:        FCE Ultra mappers modified libretro core
-License:        GPL-2.0
+License:        GPL-2.0-only
 URL:            http://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz
 

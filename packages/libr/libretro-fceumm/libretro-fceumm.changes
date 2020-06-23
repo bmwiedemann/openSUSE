@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Tue Jun 16 09:29:58 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200604:
+  * Fix input not working on big-endian systems (regression fix)
+  * Add CICD for ps2-platform
+  * Adapt ps2 port to latest SDK Status
+  * MSVC2010 buildfix
+  * Buildfix
+  * reduce max zapper tolerance to 20
+  * ines-correct.h: Fix MMC1 overrides
+  * Update Makefile.libretro
+  * Update Makefile.libretro
+  * Use proper geometry when switching ntsc filter on or off
+  * Fix build when compiling without NTSC filter support
+  * adjust Zapper tolerance; make Zapper input tolerance circular rather than rectangular by default
+  * libretro.c: Input updates
+  * Fix timing when changing from PAL/Dendy to NTSC
+  * Ntsc: Remove height doubling/scanline effect
+  * ines.c: Simplify rom info logs and cleanup
+  * Fk23c: Fix chr issues for some games
+  * Update ines-correct.h
+  * Move overrides out of some mappers
+  * Move battery-backed prg ram override to ines-correct.h
+  * Start expanding internal override database (ines-correct.h)
+  * Fix unable to load some unif carts
+  * m274: Update
+  * Add 42-in-80000 multicart (m380)
+  * Add mapper 389 (Caltron 9-in-1)
+  * Fix https://github.com/libretro/libretro-fceumm/issues/346
+  * Add Mortal Kombat Trilogy - 8 People (M1274) (Ch) [!].nes to ines-correct.h
+  * Merge unif board BMC-Super24in1SC03 to BMC-FK23C
+  * m176: Minor tweak to chr mixed ram/rom logic check and others
+  * Simplify dipswitch options for Nintendo World Championships 1990 cart
+  * MMC3: Make sure to free any allocated memory when using MMC3 as an external module.
+  * Misc mapper updates
+  * m269: Move chr unscrambling to mapper init
+  * Unif: Show raw values for prg/chr rom size in logs
+  * Remove unneeded code in BMC-Super24in1SC03
+  * Cleanup
+  * Remove duplicate code in bmc-fk23c
+  * Rewrite BMC-FK23C/A (m176) based on updated notes and testing
+  * Fix incompatible pointer type warning
+  * Add 168-in-1 New Contra Function 16 to ines-correct.h
+  * unif.c: Align board map struct
+  * ines.c: Cleanup mapper struct and iNESLoad()
+  * Fix unterminated savestate struct
+  * Update mapper 79
+  * vrc2and4: Fix mapper 22 games not working (regression) and refactoring
+  * Update ines-correct.h
+  * m369: Update and reworked
+  * Revert "Simplify DoLine"
+  * Add mapper 369 (BMC-N49C-300)
+  * mapper201: Add support for 21-in-1 (CF-043) (2006-V) (Unl) [p1]
+  * Fix mirroring on KS7030 board
+  * Update chr banking in mapper 217
+  * Update ines-correct.h
+  * Fix mirroring in mapper 200
+  * Allow FDS conversion mappers to use FDS APU
+  * Mapper42: Support for 256K prg rom fds conversion of Green Beret
+  * Fix size inconsistency for prg and chr
+  * iNes:  Prevent invalidating rom when size does not match header
+  * Update .gitignore
+  * Better detection of mapper numbers based on NES header version
+  * Update ines-correct.h - override some mapper 27 roms to use mapper 23
+  * MMC1: Fix some NES 2.0 games not saving or loading battery backup files
+  * Use FCEU_free instead of free for mappers
+  * libretro.c: Change indents from tabs to spaces
+  * C89 buildfix
+  * Move overscan after rendering the NTSC frame, add ntsc scanlines
+  * Mapper 235 update support for 1MB/2MB carts and cart with unrom block
+  * cnrom: Minor database cleanup
+  * mappers: Change indents from spaces to tabs
+  * m269: Deallocate memory on exit
+  * Cleanup unused code and variables
+  * Update mapper 15 based on latest notes - bit 7 acts as A13 only on mode 2 - prg mask now 0x3F of data latche etc. - unrolled loops
+  * Merge mapper 225 and 255, re-implement extra RAM
+  * Fix colour emphasis support for NTSC filter & raw palette + nes decoder shader
+  * NtscFilter: Fix palette for VS. System games and cleanup
+  * Fix colour emphasis when using palette presets
+  * (3DS) Disable NTSC filter
+  * Android: Add nes ntsc filters
+  * Implement blargg ntsc filters
+  * Fix duplicate log info for CHR-RAM
+  * Add mapper 218
+  * Silence warnings
+  * m227: Implement chr-ram write protect
+  * Silence warnings and fixes
+  * Add UNIF BMC-WX-KB4K (m134) to supported boards
+  * Buildfix
+  * Update implementation of some unlicensed mappers
+  * Update mapper 91
+  * Add mappers 111, 356, 269, 353
+  * Add BMC-SB-5013 (m359) and UNL-82112C (m540)
+  * Add mapper 543, 550, 516
+  * MMC1: Better work ram and battery saves support for size greater than 8K
+  * Add mappers 382, 534, 539
+  * Update mapper 150/243 (unif UNL-Sachen-74LS374N)
+  * Update mapper 45
+  * Add mappers 360, 533
+  * C89 build fixes
+  * Add header guards
+  * Silence warnings
+  * Fix alignment
+  * Rename some cart info variables that indicates size (readability)
+  * Add prg and chr checksums and rearrange rom info logs
+  * Fix crc32 computation when buffer is NULL
+  * Minimize core options shown by default - This creates 2 new advance core options to minimize the number of core options shown -- Advance System Options contains: --- Overclock --- RAM power on state --- no-sprite limit --- simultaneous opposing direction press --- zapper crosshairs -- Advance Sound Options contains: --- Master volume --- Sound quality --- on/off for NES' 5-channel apu - This also re-arranges the core options when advance options are shown, system options on top,   gfx/palette/geometry options next, input etc.
+  * Update region overrides and overclocking - ines.c - misc cleanups - Fix Dendy not restored when changing overrides back to auto mode - directly apply new scanlines and additional scanlines when changing overclock settings - (readability) change variable name overlock_state to overclock_enabled
+  * Unif: Pass iNES mapper number to cart struct  when available
+  * Add mapper 297 - also add appropriate input overrides since cart is light gun based
+  * Add mapper 294 (m134)
+  * m313: Fix incorrect bank sizes
+  * Add mapper 267
+  * Add mapper 390
+  * Add mapper 374
+  * Update BMC-RESET-TXROM (m313) - add support for submappers 1, 2, 3 and 4
+  * Add mapper 288 - dipswitch, menu based
+  * Add mapper 381
+  * Add mapper 538
+  * Add mapper 541
+  * Add mapper 372
+  * Add mapper 357
+  * Buildfix for MSVC 2010
+  * C89 buildfix
+  * Cleanup FCEU_MakeFName
+  * Remove unused variables
+  * Sanitize UNIF boardnames - removes whitespaces on boardnames - as stated, some names can have whitespaces - ignore character case when comparing - similar to above, boardnames can also be   uppercase or lowercase in some.
+  * Update libretro api headers
+  * (fds.c) backport new fds disk handling
+  * Buildfix
+  * Fix C89 build
+  * Fix savestates - prevent possible issue on big-endian by adding mask - specify correct variable size to state struct
+  * Add new mappers
+  * Update vrc2and4.c - support for big bank CHR (Contra 3) matched by hash
+  * Update unif SUPER24IN1SC03 (179 variant)
+  * Update mapper 319 (BMC-HP898F) - submapper support added
+  * Update mapper 213
+  * Add -fomit-frame-pointer to gcw0 target
+
+-------------------------------------------------------------------
 Sun Jan 12 14:20:34 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Initial version
