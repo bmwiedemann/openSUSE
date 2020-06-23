@@ -36,16 +36,16 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-py3c helps you port C extensions to Python 3.
+py3c helps porting C extensions to Python 3.
 
-It provides a detailed guide, and a set of macros to make porting easy
+It provides a guide, and a set of macros to facilitate porting
 and reduce boilerplate.
 
 %package -n py3c-devel
 Summary:        Development files for py3c
 
 %description -n py3c-devel
-py3c helps you port C extensions to Python 3.
+py3c helps porting C extensions to Python 3.
 
 %prep
 %setup -q -n py3c-%{version}
