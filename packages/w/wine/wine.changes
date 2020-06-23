@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun 20 08:01:30 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 5.11 development release
+  - Wine Mono engine updated to 5.1.0, with WpfGfx library support.
+  - More work on the separate Unix library for NTDLL.
+  - Beginnings of a NetIO kernel driver implementation.
+  - Initial support for the Print Ticket API.
+  - Removal of the obsolete 32-bit PowerPC architecture.
+  - Various bug fixes.
+- update staging to 5.11 release
+
+-------------------------------------------------------------------
 Sat Jun  6 06:38:19 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 5.10 development release

@@ -3577,4 +3577,19 @@
 - update staging to 5.10 release</comment>
     <requestid>812079</requestid>
   </revision>
+  <revision rev="310" vrev="1">
+    <srcmd5>fa875f53275ea27fd10c8995c831fffc</srcmd5>
+    <version>5.11</version>
+    <time>1592939112</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 5.11 development release
+  - Wine Mono engine updated to 5.1.0, with WpfGfx library support.
+  - More work on the separate Unix library for NTDLL.
+  - Beginnings of a NetIO kernel driver implementation.
+  - Initial support for the Print Ticket API.
+  - Removal of the obsolete 32-bit PowerPC architecture.
+  - Various bug fixes.
+- update staging to 5.11 release</comment>
+    <requestid>816139</requestid>
+  </revision>
 </revisionlist>
