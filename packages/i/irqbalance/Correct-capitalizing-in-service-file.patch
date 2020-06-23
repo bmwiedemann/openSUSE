@@ -1,0 +1,13 @@
+Index: irqbalance-1.6.0+git20200317.0348a3b/misc/irqbalance.service
+===================================================================
+--- irqbalance-1.6.0+git20200317.0348a3b.orig/misc/irqbalance.service
++++ irqbalance-1.6.0+git20200317.0348a3b/misc/irqbalance.service
+@@ -5,7 +5,7 @@ Documentation=https://github.com/Irqbala
+ ConditionVirtualization=!container
+ 
+ [Service]
+-Environmentfile=-/usr/lib/irqbalance/defaults.env
++EnvironmentFile=-/usr/lib/irqbalance/defaults.env
+ EnvironmentFile=-/path/to/irqbalance.env
+ ExecStart=/usr/sbin/irqbalance --foreground $IRQBALANCE_ARGS
+ CapabilityBoundingSet=

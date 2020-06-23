@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 18 11:10:20 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Corrected mis-spelling (wrong CamelCase) of "EnvironmentFile"
+  in misc/irqbalance.service
+  [bsc#1172665, Correct-capitalizing-in-service-file.patch]
+
+-------------------------------------------------------------------
 Tue May 26 14:48:21 UTC 2020 - Thomas Renninger <trenn@suse.de>
 
 - Update to latest git HEAD version 0348a3b.
