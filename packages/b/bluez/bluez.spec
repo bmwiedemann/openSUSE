@@ -71,7 +71,7 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(dbus-1) >= 1.6
 %if 0%{?suse_version} >= 1550
-BuildRequires:  pkgconfig(ell) >= 0.3
+BuildRequires:  pkgconfig(ell) >= 0.28
 %endif
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28
 # libgio-2_0-0 has a runtime dependency on shared-mime-info, which is not
@@ -224,6 +224,9 @@ autoreconf -fi
 %endif
 	--enable-datafiles	\
 	--enable-sixaxis	\
+%if 0%{?suse_version} >= 1550
+	--enable-external-ell	\
+%endif
 	--with-systemdsystemunitdir=%{_unitdir}		\
 	--with-systemduserunitdir=%{_userunitdir}
 

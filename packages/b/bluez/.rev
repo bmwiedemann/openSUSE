@@ -1325,4 +1325,12 @@ If we cannot get this in, we need to push an security update for the current blu
     <comment>Pull in python3 instead of python2 packags for bluez-test (forwarded request 794637 from seife)</comment>
     <requestid>794638</requestid>
   </revision>
+  <revision rev="170" vrev="3">
+    <srcmd5>ceb597f82d08cb4ccc949c7cee593159</srcmd5>
+    <version>5.54</version>
+    <time>1592939022</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815899</requestid>
+  </revision>
 </revisionlist>
