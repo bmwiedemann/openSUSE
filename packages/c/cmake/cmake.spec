@@ -113,11 +113,10 @@ build system.
 # The publisher doesn't sign the source tarball, but a signatures file containing multiple hashes.
 # Verify hashes in that file against source tarball.
 echo "`grep cmake-%{version}.tar.gz %{SOURCE5} | grep -Eo '^[0-9a-f]+'`  %{SOURCE0}" | sha256sum -c
-%setup -q -n cmake-%{version}
-%autopatch -p1
-cp %{SOURCE99} .
+%autosetup -p1 -n cmake-%{version}
 
 %build
+cp %{SOURCE99} .
 %if "%{flavor}" != ""
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"

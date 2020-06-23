@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 19 08:08:08 UTC 2020 - olaf@aepfle.de
+
+- Use plain autosetup
+
+-------------------------------------------------------------------
 Mon Jun  1 08:22:45 UTC 2020 - Simon Lees <sflees@suse.de>
 
 - DCMAKE_MODULES_INSTALL_DIR should be %{_libdir}/cmake/%{name}
