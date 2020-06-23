@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 12 09:56:23 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building with gcc10
+- Spec file cleanup with spec-cleaner
+
+-------------------------------------------------------------------
 Sat Oct  4 01:27:23 UTC 2014 - crrodriguez@opensuse.org
 
 - Only xproto is required not xorg-x11-devel 

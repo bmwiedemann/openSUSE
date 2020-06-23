@@ -1,7 +1,7 @@
 #
 # spec file for package asusfan
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           asusfan
-Url:            http://www.consultmatt.co.uk/asusfan/
-BuildRequires:  automake
-BuildRequires:  pkgconfig(xproto)
 Version:        0.1
 Release:        0
 Summary:        Fan Control for Nvidia-Based ASUS Graphics Cards
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
+URL:            http://www.consultmatt.co.uk/asusfan/
 Source:         asusfan-0.1-nodocs.tar.bz2
-Patch:          asusfan-0.1.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  %ix86 x86_64
+Patch0:         asusfan-0.1.patch
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(xproto)
+ExclusiveArch:  %{ix86} x86_64
 
 %description
 This command line tool allows you to control the speed of your graphics
@@ -38,24 +37,26 @@ well.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
-%configure --disable-static --with-pic
-make %{?_smp_mflags}
+export CFLAGS="%{optflags} -fcommon"
+%configure \
+  --disable-static \
+  --with-pic
+%make_build
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT
-%{__rm} -f %{buildroot}%{_libdir}/*.la
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog INSTALL NEWS README
-/usr/bin/asusfan
-%_libdir/libasus*
+%license COPYING
+%doc AUTHORS ChangeLog INSTALL NEWS README
+%{_bindir}/asusfan
+%{_libdir}/libasus*
 
 %changelog
