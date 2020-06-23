@@ -1,7 +1,7 @@
-From 6f533168004d9bdc7be259e0b0860bc6b4792936 Mon Sep 17 00:00:00 2001
+From 7fc312d45653e8d3247ba8cc2ad6f50bab6c99c9 Mon Sep 17 00:00:00 2001
 From: Michal Rostecki <mrostecki@opensuse.org>
 Date: Mon, 24 Feb 2020 19:57:31 +0100
-Subject: [PATCH 4/4] helm: Allow variables for compatibility with openSUSE
+Subject: [PATCH 04/10] helm: Allow variables for compatibility with openSUSE
  images
 
 tl;dr: Few minor variables, which have no impact for users of Cilium
@@ -48,7 +48,7 @@ Signed-off-by: Michal Rostecki <mrostecki@opensuse.org>
  2 files changed, 12 insertions(+), 9 deletions(-)
 
 diff --git a/install/kubernetes/cilium/charts/agent/templates/daemonset.yaml b/install/kubernetes/cilium/charts/agent/templates/daemonset.yaml
-index fe99c9e53..de24ad7c4 100644
+index 975f9d5c3..03444ea46 100644
 --- a/install/kubernetes/cilium/charts/agent/templates/daemonset.yaml
 +++ b/install/kubernetes/cilium/charts/agent/templates/daemonset.yaml
 @@ -136,12 +136,12 @@ spec:
@@ -116,5 +116,5 @@ index 233d3e068..788bde816 100644
  # Specifies the maximum number of Pods that can be unavailable during the
  # update process.
 -- 
-2.25.1
+2.26.2
 

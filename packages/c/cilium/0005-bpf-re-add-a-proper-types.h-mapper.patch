@@ -1,7 +1,7 @@
-From 1b9593941d7c8e35e4c1a9dc7385cc59413cdc70 Mon Sep 17 00:00:00 2001
+From f590267aed3d373586e9ac8fff5bf63cc4bb10a1 Mon Sep 17 00:00:00 2001
 From: Daniel Borkmann <daniel@iogearbox.net>
 Date: Thu, 19 Mar 2020 23:36:15 +0100
-Subject: [PATCH 2/2] bpf: re-add a proper types.h mapper
+Subject: [PATCH 05/10] bpf: re-add a proper types.h mapper
 
 Commit a1d93e044c1f ("bpf: don't use fixed size integer types from
 stdint.h") removed the types.h mapper to avoid dependency on stdint.h

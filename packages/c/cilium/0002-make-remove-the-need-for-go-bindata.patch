@@ -1,7 +1,7 @@
-From 4ffd46ee1f8d0f71165d6538283456fae44496b7 Mon Sep 17 00:00:00 2001
+From d80e4fbf8c2b522700adc054f31bcbefc04e85e3 Mon Sep 17 00:00:00 2001
 From: Tobias Klauser <tklauser@distanz.ch>
 Date: Thu, 13 Feb 2020 11:09:40 +0100
-Subject: [PATCH 2/4] make: remove the need for go-bindata
+Subject: [PATCH 02/10] make: remove the need for go-bindata
 
 Use of go-bindata dates back from times when people ran Cilium as static
 binary. This has become uncommon and users either use the container
@@ -28,7 +28,6 @@ Signed-off-by: Tobias Klauser <tklauser@distanz.ch>
 ---
  .travis/prepare.sh                            |  1 -
  CODEOWNERS                                    | 43 +++++++++++++++++++
- Dockerfile                                    |  2 +-
  Dockerfile.builder                            |  6 +--
  .../contributing/development/dev_setup.rst    |  2 -
  Makefile                                      | 14 +++---
@@ -46,7 +45,7 @@ Signed-off-by: Tobias Klauser <tklauser@distanz.ch>
  pkg/datapath/linux/requirements.go            |  3 ++
  test/docker-compose.yml                       |  2 +-
  test/packet/scripts/install.sh                |  1 -
- 21 files changed, 73 insertions(+), 157 deletions(-)
+ 19 files changed, 72 insertions(+), 154 deletions(-)
  delete mode 100755 contrib/scripts/bindata.sh
  delete mode 100755 contrib/scripts/fix-sha.sh
  delete mode 100644 daemon/bpf.sha
@@ -116,21 +115,8 @@ index 2ca3943f5..18d3a89ca 100644
  pkg/apisocket/ @cilium/api
  pkg/monitor/payload @cilium/api
  pkg/policy/api/ @cilium/api
-diff --git a/Dockerfile b/Dockerfile
-index 538baaba1..25e9278cb 100644
---- a/Dockerfile
-+++ b/Dockerfile
-@@ -13,7 +13,7 @@ FROM quay.io/cilium/cilium-envoy:c31482c3e49670980c05cafc914320f7949b266f as cil
- # versions to be built while allowing the new versions to make changes
- # that are not backwards compatible.
- #
--FROM quay.io/cilium/cilium-builder:2020-02-13 as builder
-+FROM quay.io/cilium/cilium-builder:2020-02-19 as builder
- LABEL maintainer="maintainer@cilium.io"
- WORKDIR /go/src/github.com/cilium/cilium
- COPY . ./
 diff --git a/Dockerfile.builder b/Dockerfile.builder
-index e51853892..6f53d2261 100644
+index 5190100af..78bf0e752 100644
 --- a/Dockerfile.builder
 +++ b/Dockerfile.builder
 @@ -56,8 +56,4 @@ RUN curl -sfL https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz | tar
@@ -144,12 +130,12 @@ index e51853892..6f53d2261 100644
 -        go install github.com/cilium/go-bindata/go-bindata
 +        go install
 diff --git a/Documentation/contributing/development/dev_setup.rst b/Documentation/contributing/development/dev_setup.rst
-index 82b691766..2fdfd6b21 100644
+index 4bd8e59b7..e9d0371b6 100644
 --- a/Documentation/contributing/development/dev_setup.rst
 +++ b/Documentation/contributing/development/dev_setup.rst
 @@ -30,8 +30,6 @@ contribute to Cilium:
  +----------------------------------------------------------------------------------+--------------------------+-------------------------------------------------------------------------------+
- | `go <https://golang.org/dl/>`_                                                   | 1.13.8                   | N/A (OS-specific)                                                             |
+ | `go <https://golang.org/dl/>`_                                                   | |GO_RELEASE|             | N/A (OS-specific)                                                             |
  +----------------------------------------------------------------------------------+--------------------------+-------------------------------------------------------------------------------+
 -| `go-bindata <https://github.com/cilium/go-bindata>`_                             | ``a0ff2567cfb``          | ``go get -u github.com/cilium/go-bindata/...``                                |
 -+----------------------------------------------------------------------------------+--------------------------+-------------------------------------------------------------------------------+
@@ -157,7 +143,7 @@ index 82b691766..2fdfd6b21 100644
  +----------------------------------------------------------------------------------+--------------------------+-------------------------------------------------------------------------------+
  + `gomega <https://github.com/onsi/gomega>`_                                       | >= 1.2.0                 | ``go get -u github.com/onsi/gomega``                                          |
 diff --git a/Makefile b/Makefile
-index 6086de77f..a91fa53ae 100644
+index 829d78832..0977c664e 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -1,5 +1,4 @@
@@ -447,17 +433,17 @@ index ddbd83de2..8f2c5e9c8 100644
 -	$(GO_BINDATA) -o ./bindata.go $(BPF_FILES)
 diff --git a/daemon/bpf.sha b/daemon/bpf.sha
 deleted file mode 100644
-index d846a53a0..000000000
+index a60ff9fbd..000000000
 --- a/daemon/bpf.sha
 +++ /dev/null
 @@ -1,2 +0,0 @@
--GO_BINDATA_SHA1SUM=cbfa4658613722c813e201abf9cab36a5653b20f
+-GO_BINDATA_SHA1SUM=b251f59546cc7ea8afebc6214c4c8c53b476f038
 -BPF_FILES=../bpf/COPYING ../bpf/Makefile ../bpf/Makefile.bpf ../bpf/bpf_alignchecker.c ../bpf/bpf_features.h ../bpf/bpf_hostdev_ingress.c ../bpf/bpf_ipsec.c ../bpf/bpf_lxc.c ../bpf/bpf_netdev.c ../bpf/bpf_network.c ../bpf/bpf_overlay.c ../bpf/bpf_sock.c ../bpf/bpf_xdp.c ../bpf/cilium-map-migrate.c ../bpf/filter_config.h ../bpf/include/bpf/api.h ../bpf/include/elf/elf.h ../bpf/include/elf/gelf.h ../bpf/include/elf/libelf.h ../bpf/include/iproute2/bpf_elf.h ../bpf/include/linux/bpf.h ../bpf/include/linux/bpf_common.h ../bpf/include/linux/byteorder.h ../bpf/include/linux/byteorder/big_endian.h ../bpf/include/linux/byteorder/little_endian.h ../bpf/include/linux/icmp.h ../bpf/include/linux/icmpv6.h ../bpf/include/linux/if_arp.h ../bpf/include/linux/if_ether.h ../bpf/include/linux/if_packet.h ../bpf/include/linux/in.h ../bpf/include/linux/in6.h ../bpf/include/linux/ioctl.h ../bpf/include/linux/ip.h ../bpf/include/linux/ipv6.h ../bpf/include/linux/perf_event.h ../bpf/include/linux/swab.h ../bpf/include/linux/tcp.h ../bpf/include/linux/type_mapper.h ../bpf/include/linux/udp.h ../bpf/init.sh ../bpf/lib/arp.h ../bpf/lib/common.h ../bpf/lib/config.h ../bpf/lib/conntrack.h ../bpf/lib/conntrack_map.h ../bpf/lib/conntrack_test.h ../bpf/lib/csum.h ../bpf/lib/dbg.h ../bpf/lib/drop.h ../bpf/lib/encap.h ../bpf/lib/eps.h ../bpf/lib/eth.h ../bpf/lib/events.h ../bpf/lib/icmp6.h ../bpf/lib/identity.h ../bpf/lib/ipv4.h ../bpf/lib/ipv6.h ../bpf/lib/ipv6_test.h ../bpf/lib/l3.h ../bpf/lib/l4.h ../bpf/lib/lb.h ../bpf/lib/lxc.h ../bpf/lib/maps.h ../bpf/lib/metrics.h ../bpf/lib/nat.h ../bpf/lib/nat46.h ../bpf/lib/nodeport.h ../bpf/lib/policy.h ../bpf/lib/signal.h ../bpf/lib/tailcall.h ../bpf/lib/trace.h ../bpf/lib/utils.h ../bpf/lib/xdp.h ../bpf/lxc_config.h ../bpf/netdev_config.h ../bpf/node_config.h ../bpf/probes/raw_change_tail.t ../bpf/probes/raw_fib_lookup.t ../bpf/probes/raw_insn.h ../bpf/probes/raw_invalidate_hash.t ../bpf/probes/raw_lpm_map.t ../bpf/probes/raw_lru_map.t ../bpf/probes/raw_main.c ../bpf/probes/raw_max_insn.t ../bpf/probes/raw_sock_cookie.t ../bpf/run_probes.sh ../bpf/sockops/Makefile ../bpf/sockops/bpf_redir.c ../bpf/sockops/bpf_sockops.c ../bpf/sockops/bpf_sockops.h ../bpf/sockops/sockops_config.h 
 diff --git a/daemon/daemon_main.go b/daemon/daemon_main.go
-index b778722fe..7e7c89374 100644
+index 5acb48281..4b3a933a4 100644
 --- a/daemon/daemon_main.go
 +++ b/daemon/daemon_main.go
-@@ -718,9 +718,9 @@ func init() {
+@@ -743,9 +743,9 @@ func init() {
  	viper.BindPFlags(flags)
  }
  
@@ -469,7 +455,7 @@ index b778722fe..7e7c89374 100644
  	fileList := []string{}
  	err := filepath.Walk(searchDir, func(path string, f os.FileInfo, err error) error {
  		for _, pattern := range patterns {
-@@ -881,20 +881,11 @@ func initEnv(cmd *cobra.Command) {
+@@ -918,20 +918,11 @@ func initEnv(cmd *cobra.Command) {
  	if err := os.MkdirAll(option.Config.LibDir, defaults.RuntimePathRights); err != nil {
  		scopedLog.WithError(err).Fatal("Could not create library directory")
  	}
@@ -522,7 +508,7 @@ index dd3381aac..907403167 100644
        - "./../:/go/src/github.com/cilium/cilium/"
      privileged: true
 diff --git a/test/packet/scripts/install.sh b/test/packet/scripts/install.sh
-index d5181b0e1..ffd1038e2 100644
+index 23a7ddd0e..c320e40d7 100644
 --- a/test/packet/scripts/install.sh
 +++ b/test/packet/scripts/install.sh
 @@ -65,7 +65,6 @@ sudo ln -s /usr/local/go/bin/* /usr/local/bin/
@@ -534,5 +520,5 @@ index d5181b0e1..ffd1038e2 100644
  go get -u github.com/onsi/ginkgo/ginkgo
  go get -u github.com/onsi/gomega/...
 -- 
-2.25.1
+2.26.2
 

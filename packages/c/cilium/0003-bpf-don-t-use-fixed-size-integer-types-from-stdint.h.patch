@@ -1,7 +1,7 @@
-From 9ca0ca84f5db2ae24fca015c9d048037e7dec2b7 Mon Sep 17 00:00:00 2001
+From 7daa01fc7a23f83f6088b6eb43917cefa9944937 Mon Sep 17 00:00:00 2001
 From: Tobias Klauser <tklauser@distanz.ch>
 Date: Mon, 17 Feb 2020 11:58:32 +0100
-Subject: [PATCH 3/4] bpf: don't use fixed size integer types from stdint.h
+Subject: [PATCH 03/10] bpf: don't use fixed size integer types from stdint.h
 
 Use stddef.h to get size_t, use kernel definitions for fixed size types
 where appropriate (e.g. uint32_t -> __u32)
@@ -81,7 +81,7 @@ Signed-off-by: Tobias Klauser <tklauser@distanz.ch>
  delete mode 100644 bpf/include/linux/type_mapper.h
 
 diff --git a/.travis.yml b/.travis.yml
-index f9f5a027b..a2556c327 100644
+index 1d4c88d5f..3e4f815b9 100644
 --- a/.travis.yml
 +++ b/.travis.yml
 @@ -11,7 +11,7 @@ if: branch = master OR type = pull_request
@@ -107,7 +107,7 @@ index ce1afe6f8..0c79a23ce 100644
  before_install: ./.travis/prepare.sh
  
 diff --git a/Documentation/contributing/development/dev_setup.rst b/Documentation/contributing/development/dev_setup.rst
-index 2fdfd6b21..aa5c853a9 100644
+index e9d0371b6..903b2f363 100644
 --- a/Documentation/contributing/development/dev_setup.rst
 +++ b/Documentation/contributing/development/dev_setup.rst
 @@ -20,8 +20,6 @@ contribute to Cilium:
@@ -182,7 +182,7 @@ index 11c6379d6..e5c882f0a 100644
  #include "lib/dbg.h"
  
 diff --git a/bpf/bpf_lxc.c b/bpf/bpf_lxc.c
-index 3fe9dc329..81f11c1c8 100644
+index 497edf48c..41a951c38 100644
 --- a/bpf/bpf_lxc.c
 +++ b/bpf/bpf_lxc.c
 @@ -22,9 +22,6 @@
@@ -196,7 +196,7 @@ index 3fe9dc329..81f11c1c8 100644
  #include <linux/if_packet.h>
  
 diff --git a/bpf/bpf_netdev.c b/bpf/bpf_netdev.c
-index a1cefd8dd..dfa70e128 100644
+index 4291794ff..9c0ec50d5 100644
 --- a/bpf/bpf_netdev.c
 +++ b/bpf/bpf_netdev.c
 @@ -29,9 +29,6 @@
@@ -238,7 +238,7 @@ index 7894cfc26..1a2494e96 100644
  
  #include "lib/tailcall.h"
 diff --git a/bpf/bpf_sock.c b/bpf/bpf_sock.c
-index 57dded0ac..874d427dd 100644
+index 7ab29f0a8..965df6a6b 100644
 --- a/bpf/bpf_sock.c
 +++ b/bpf/bpf_sock.c
 @@ -21,9 +21,6 @@
@@ -275,7 +275,7 @@ index 5eda135a3..169489bd6 100644
  #include <linux/if_ether.h>
  
 diff --git a/bpf/include/bpf/api.h b/bpf/include/bpf/api.h
-index c7e0f1e8a..a71854f4e 100644
+index b13c9347e..7cfda0ba8 100644
 --- a/bpf/include/bpf/api.h
 +++ b/bpf/include/bpf/api.h
 @@ -8,7 +8,7 @@
@@ -289,11 +289,11 @@ index c7e0f1e8a..a71854f4e 100644
  
 @@ -111,14 +111,14 @@
  /* Map access/manipulation */
- static void *BPF_FUNC(map_lookup_elem, void *map, const void *key);
- static int BPF_FUNC(map_update_elem, void *map, const void *key,
+ static void *BPF_FUNC(map_lookup_elem, const void *map, const void *key);
+ static int BPF_FUNC(map_update_elem, const void *map, const void *key,
 -		    const void *value, uint32_t flags);
 +		    const void *value, __u32 flags);
- static int BPF_FUNC(map_delete_elem, void *map, const void *key);
+ static int BPF_FUNC(map_delete_elem, const void *map, const void *key);
  
  /* Time access */
 -static uint64_t BPF_FUNC(ktime_get_ns);
@@ -676,10 +676,10 @@ index 989633ff6..ab05413c9 100644
  struct udphdr {
  	__be16	source;
 diff --git a/bpf/init.sh b/bpf/init.sh
-index 71326b47f..56f253daf 100755
+index 8d18c4145..5036ca3f7 100755
 --- a/bpf/init.sh
 +++ b/bpf/init.sh
-@@ -56,6 +56,8 @@ rm $RUNDIR/encap.state 2> /dev/null || true
+@@ -57,6 +57,8 @@ rm $RUNDIR/encap.state 2> /dev/null || true
  # This directory was created by the daemon and contains the per container header file
  DIR="$PWD/globals"
  
@@ -688,7 +688,7 @@ index 71326b47f..56f253daf 100755
  function setup_dev()
  {
  	local -r NAME=$1
-@@ -269,6 +271,7 @@ function bpf_compile()
+@@ -270,6 +272,7 @@ function bpf_compile()
  
  	clang -O2 -g -target bpf -emit-llvm				\
  	      -Wno-address-of-packed-member -Wno-unknown-warning-option	\
@@ -697,7 +697,7 @@ index 71326b47f..56f253daf 100755
  	      -D__NR_CPUS__=$(nproc)					\
  	      -DENABLE_ARP_RESPONDER					\
 diff --git a/bpf/lib/common.h b/bpf/lib/common.h
-index 136375c29..5aed79e0e 100644
+index bde713507..ace0561dc 100644
 --- a/bpf/lib/common.h
 +++ b/bpf/lib/common.h
 @@ -23,8 +23,8 @@
@@ -710,7 +710,7 @@ index 136375c29..5aed79e0e 100644
  
  // FIXME: GH-3239 LRU logic is not handling timeouts gracefully enough
  // #ifndef HAVE_LRU_MAP_TYPE
-@@ -695,7 +695,7 @@ static inline int redirect_self(struct __sk_buff *skb)
+@@ -698,7 +698,7 @@ static inline int redirect_self(struct __sk_buff *skb)
  #endif
  }
  
@@ -883,7 +883,7 @@ index 308462960..69e7dfb4e 100644
  /**
   * update_metrics
 diff --git a/bpf/lib/nat.h b/bpf/lib/nat.h
-index 42afca5bd..6836904e9 100644
+index 67be931c5..a8ccff000 100644
 --- a/bpf/lib/nat.h
 +++ b/bpf/lib/nat.h
 @@ -70,20 +70,21 @@ static __always_inline __be16 __snat_clamp_port_range(__u16 start, __u16 end,
@@ -1022,10 +1022,10 @@ index 42afca5bd..6836904e9 100644
  	int ret = TC_ACT_OK;
  
 diff --git a/bpf/lib/nodeport.h b/bpf/lib/nodeport.h
-index e579fc6b8..f511fcf6b 100644
+index 9ac89419b..50cc42890 100644
 --- a/bpf/lib/nodeport.h
 +++ b/bpf/lib/nodeport.h
-@@ -754,8 +754,8 @@ static __always_inline int handle_dsr_v4(struct __sk_buff *skb, bool *dsr)
+@@ -758,8 +758,8 @@ static __always_inline int handle_dsr_v4(struct __sk_buff *skb, bool *dsr)
  	// Check whether IPv4 header contains a 64-bit option (IPv4 header
  	// w/o option (5 x 32-bit words) + the DSR option (2 x 32-bit words))
  	if (ip4->ihl == 0x7) {
@@ -1248,7 +1248,7 @@ index a72db2ce8..47b37dec3 100644
  int bpf_redir_proxy(struct sk_msg_md *msg)
  {
 diff --git a/bpf/sockops/bpf_sockops.c b/bpf/sockops/bpf_sockops.c
-index e45749562..6cb92d921 100644
+index 2a9bbcd6f..87cf42530 100644
 --- a/bpf/sockops/bpf_sockops.c
 +++ b/bpf/sockops/bpf_sockops.c
 @@ -22,9 +22,6 @@
@@ -1512,5 +1512,5 @@ index 87876ec19..6d5acfc63 100644
  
  #include "lib/conntrack_test.h"
 -- 
-2.25.1
+2.26.2
 

@@ -35,7 +35,7 @@
 %endif
 
 Name:           cilium
-Version:        1.7.0
+Version:        1.7.5
 Release:        0
 Summary:        Linux Native, HTTP Aware Networking and Security for Containers
 License:        Apache-2.0 AND GPL-2.0-or-later
@@ -45,29 +45,27 @@ Source1:        %{name}-rpmlintrc
 Source2:        cilium-cni-install
 Source3:        cilium-cni-uninstall
 # PATCH-FIX-UPSTREAM 0001-option-mark-keep-bpf-templates-as-deprecated.patch
-Patch0:         0001-option-mark-keep-bpf-templates-as-deprecated.patch
+Patch1:         0001-option-mark-keep-bpf-templates-as-deprecated.patch
 # PATCH-FIX-UPSTREAM 0002-make-remove-the-need-for-go-bindata.patch
-Patch1:         0002-make-remove-the-need-for-go-bindata.patch
+Patch2:         0002-make-remove-the-need-for-go-bindata.patch
 # PATCH-FIX-UPSTREAM 0003-bpf-don-t-use-fixed-size-integer-types-from-stdint.h.patch
-Patch2:         0003-bpf-don-t-use-fixed-size-integer-types-from-stdint.h.patch
+Patch3:         0003-bpf-don-t-use-fixed-size-integer-types-from-stdint.h.patch
 # PATCH-FIX-OPENSUSE 0004-helm-Allow-variables-for-compatibility-with-openSUSE.patch
 # TODO(mrostecki): Submit it upstream after we confirm that our images work 100%
 # fine, also on aarch64.
-Patch3:         0004-helm-Allow-variables-for-compatibility-with-openSUSE.patch
-# PATCH-FIX-UPSTREAM 0005-rename-PolicyMapMaxEntries-to-PolicyMapEntries-and-define-policy-map-size-limits-as-consts.patch
-Patch5:         0005-rename-PolicyMapMaxEntries-to-PolicyMapEntries-and-define-policy-map-size-limits-as-consts.patch
-# PATCH-FIX-UPSTREAM 0006-add-option-to-dynamically-size-BPF-maps-based-on-system-memory.patch
-Patch6:         0006-allow-to-configure-bpf-nat-global-max-using-helm.patch
-# PATCH-FIX-UPSTREAM 0007-reduce-default-number-for-TCP-CT-and-NAT-table-max-entries.patch
-Patch7:         0007-reduce-default-number-for-TCP-CT-and-NAT-table-max-entries.patch
-# PATCH-FIX-UPSTREAM 0008-add-option-to-dynamically-size-BPF-maps-based-on-system-memory.patch
-Patch8:         0008-add-option-to-dynamically-size-BPF-maps-based-on-system-memory.patch
-# PATCH-FIX-UPSTREAM 0002-bpf-re-add-a-proper-types.h-mapper.patch
-Patch10:        0002-bpf-re-add-a-proper-types.h-mapper.patch
-# PATCH-FIX-UPSTREAM 0001-build-Avoid-using-git-if-not-in-a-git-repo.patch
-Patch11:        0001-build-Avoid-using-git-if-not-in-a-git-repo.patch
-# PATCH-FIX-UPSTREAM 0001-datapath-Switch-to-upstream-bpftool-remove-additiona.patch
-Patch12:        0001-datapath-Switch-to-upstream-bpftool-remove-additiona.patch
+Patch4:         0004-helm-Allow-variables-for-compatibility-with-openSUSE.patch
+# PATCH-FIX-UPSTREAM 0005-bpf-re-add-a-proper-types.h-mapper.patch
+Patch5:         0005-bpf-re-add-a-proper-types.h-mapper.patch
+# PATCH-FIX-UPSTREAM 0006-build-Avoid-using-git-if-not-in-a-git-repo.patch
+Patch6:         0006-build-Avoid-using-git-if-not-in-a-git-repo.patch
+# PATCH-FIX-UPSTREAM 0007-option-rename-PolicyMapMaxEntries-to-PolicyMapEntrie.patch 
+Patch7:         0007-option-rename-PolicyMapMaxEntries-to-PolicyMapEntrie.patch 
+# PATCH-FIX-UPSTREAM 0008-helm-allow-to-configure-bpf-nat-global-max-using-Hel.patch
+Patch8:         0008-helm-allow-to-configure-bpf-nat-global-max-using-Hel.patch
+# PATCH-FIX-UPSTREAM 0009-option-reduce-default-number-for-TCP-CT-and-NAT-tabl.patch
+Patch9:         0009-option-reduce-default-number-for-TCP-CT-and-NAT-tabl.patch
+# PATCH-FIX-UPSTREAM 0010-daemon-add-option-to-dynamically-size-BPF-maps-based.patch
+Patch10:        0010-daemon-add-option-to-dynamically-size-BPF-maps-based.patch
 # Cilium needs to be aware of the version string of cilium-proxy
 BuildRequires:  cilium-proxy
 BuildRequires:  clang
@@ -263,8 +261,8 @@ sed -i \
     -e 's|tag: v%{version}|tag: %{version}|' \
     %{buildroot}%{_datadir}/k8s-helm/cilium/values.yaml
 sed -i \
-    -e 's|cniInstallScript: /cni-install.sh|cilium-cni-install|' \
-    -e 's|cniUninstallScript: /cni-uninstall.sh|cilium-cni-uninstall|' \
+    -e 's|cniInstallScript: /cni-install.sh|cniInstallScript: cilium-cni-install|' \
+    -e 's|cniUninstallScript: /cni-uninstall.sh|cniUninstallScript: cilium-cni-uninstall|' \
     -e 's|initScript: /init-container.sh|initScript: cilium-init|' \
     %{buildroot}%{_datadir}/k8s-helm/cilium/charts/agent/values.yaml
 sed -i \

@@ -1,7 +1,7 @@
-From 0c80bde138150fc7f5a275b075995ad8ba11caa9 Mon Sep 17 00:00:00 2001
+From adcb5e534caacbd369ddac63c6fe2c4734bb7e99 Mon Sep 17 00:00:00 2001
 From: Jarno Rajahalme <jarno@covalent.io>
 Date: Fri, 15 May 2020 17:33:01 -0700
-Subject: [PATCH] build: Avoid using git if not in a git repo
+Subject: [PATCH 06/10] build: Avoid using git if not in a git repo
 
 Do not use git if not in a git repo.
 
@@ -14,14 +14,14 @@ git.
 
 Signed-off-by: Jarno Rajahalme <jarno@covalent.io>
 ---
- .gitignore    |  1 +
- Makefile      |  9 ++++++---
- Makefile.defs | 11 ++++++++---
- 3 files changed, 15 insertions(+), 6 deletions(-)
+ Makefile.defs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/Makefile.defs b/Makefile.defs
+index 2e472a839..c32a5e02f 100644
 --- a/Makefile.defs
 +++ b/Makefile.defs
-@@ -38,7 +38,7 @@
+@@ -38,7 +38,7 @@ GOLDFLAGS += -X "github.com/cilium/cilium/pkg/envoy.RequiredEnvoyVersionSHA=$(CI
  
  BPF_FILES_EVAL := $(shell git ls-files $(ROOT_DIR)/bpf/ | grep -v .gitignore | tr "\n" ' ')
  BPF_FILES ?= $(BPF_FILES_EVAL)
@@ -30,3 +30,6 @@ Signed-off-by: Jarno Rajahalme <jarno@covalent.io>
  
  CILIUM_DATAPATH_SHA=$(shell cat $(BPF_FILES) | sha1sum | awk '{print $$1}')
  GOLDFLAGS += -X "github.com/cilium/cilium/pkg/datapath/loader.DatapathSHA=$(CILIUM_DATAPATH_SHA)"
+-- 
+2.26.2
+

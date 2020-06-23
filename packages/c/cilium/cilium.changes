@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jun 15 16:13:44 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Fix cniInstallScript and cniUninstallScript values in helm chart.
+
+-------------------------------------------------------------------
+Fri Jun 12 14:00:51 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- Update to 1.7.5
+  + Too many bugfixes to list here, see
+  https://github.com/cilium/cilium/releases/tag/v1.7.5
+  https://github.com/cilium/cilium/releases/tag/v1.7.4
+  https://github.com/cilium/cilium/releases/tag/v1.7.3
+  https://github.com/cilium/cilium/releases/tag/v1.7.2
+  https://github.com/cilium/cilium/releases/tag/v1.7.1
+
+- rename 0002-bpf-re-add-a-proper-types.h-mapper.patch to
+  0005-bpf-re-add-a-proper-types.h-mapper.patch
+- rename 0001-build-Avoid-using-git-if-not-in-a-git-repo.patch to
+  0006-build-Avoid-using-git-if-not-in-a-git-repo.patch
+- rename 0005-rename-PolicyMapMaxEntries-to-PolicyMapEntries-and-define-policy-map-size-limits-as-consts.patch to
+  0007-option-rename-PolicyMapMaxEntries-to-PolicyMapEntrie.patch
+- rename 0006-allow-to-configure-bpf-nat-global-max-using-helm.patch to
+  0008-helm-allow-to-configure-bpf-nat-global-max-using-Hel.patch
+- rename 0007-reduce-default-number-for-TCP-CT-and-NAT-table-max-entries.patch to
+  0009-option-reduce-default-number-for-TCP-CT-and-NAT-tabl.patch
+- rename 0008-add-option-to-dynamically-size-BPF-maps-based-on-system-memory.patch to
+  0010-daemon-add-option-to-dynamically-size-BPF-maps-based.patch
+- remove 0001-datapath-Switch-to-upstream-bpftool-remove-additiona.patch
+
+-------------------------------------------------------------------
 Wed Jun 10 19:44:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add 0002-bpf-re-add-a-proper-types.h-mapper.patch

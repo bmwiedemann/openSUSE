@@ -1,7 +1,7 @@
-From 58eb131a65d85735b44d5a2151d2fc554df30b84 Mon Sep 17 00:00:00 2001
+From 467b6d5ad568809fc217dae3879890857bb3c32c Mon Sep 17 00:00:00 2001
 From: Tobias Klauser <tklauser@distanz.ch>
 Date: Wed, 12 Feb 2020 14:07:41 +0100
-Subject: [PATCH 1/4] option: mark --keep-bpf-templates as deprecated
+Subject: [PATCH 01/10] option: mark --keep-bpf-templates as deprecated
 
 With go-bindata being removed, the flag becomes a no-op. Mark it as
 deprecated and announce removal in v1.9.
@@ -16,22 +16,22 @@ Signed-off-by: Tobias Klauser <tklauser@distanz.ch>
  3 files changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/Documentation/cmdref/cilium-agent.md b/Documentation/cmdref/cilium-agent.md
-index 9853f7f25..c99206643 100644
+index 1f51903dc..8925944db 100644
 --- a/Documentation/cmdref/cilium-agent.md
 +++ b/Documentation/cmdref/cilium-agent.md
-@@ -111,7 +111,6 @@ cilium-agent [flags]
-       --k8s-require-ipv6-pod-cidr                             Require IPv6 PodCIDR to be specified in node resource
-       --k8s-watcher-endpoint-selector string                  K8s endpoint watcher will watch for these k8s endpoints (default "metadata.name!=kube-scheduler,metadata.name!=kube-controller-manager,metadata.name!=etcd-operator,metadata.name!=gcp-controller-manager")
-       --k8s-watcher-queue-size uint                           Queue size used to serialize each k8s event type (default 1024)
--      --keep-bpf-templates                                    Do not restore BPF template files from binary
-       --keep-config                                           When restoring state, keeps containers' configuration in place
-       --kube-proxy-replacement string                         auto-enable available features for kube-proxy replacement ("probe"), or enable only selected features (will panic if any selected feature cannot be enabled) ("partial") or enable all features (will panic if any feature cannot be enabled) ("strict"), or completely disable it (ignores any selected feature) ("disabled") (default "partial")
-       --kvstore string                                        Key-value store type
+@@ -117,7 +117,6 @@ cilium-agent [flags]
+       --k8s-require-ipv6-pod-cidr                     Require IPv6 PodCIDR to be specified in node resource
+       --k8s-watcher-endpoint-selector string          K8s endpoint watcher will watch for these k8s endpoints (default "metadata.name!=kube-scheduler,metadata.name!=kube-controller-manager,metadata.name!=etcd-operator,metadata.name!=gcp-controller-manager")
+       --k8s-watcher-queue-size uint                   Queue size used to serialize each k8s event type (default 1024)
+-      --keep-bpf-templates                            Do not restore BPF template files from binary
+       --keep-config                                   When restoring state, keeps containers' configuration in place
+       --kube-proxy-replacement string                 auto-enable available features for kube-proxy replacement ("probe"), or enable only selected features (will panic if any selected feature cannot be enabled) ("partial") or enable all features (will panic if any feature cannot be enabled) ("strict"), or completely disable it (ignores any selected feature) ("disabled") (default "partial")
+       --kvstore string                                Key-value store type
 diff --git a/daemon/daemon_main.go b/daemon/daemon_main.go
-index a07d757d9..b778722fe 100644
+index 89dd07b54..5acb48281 100644
 --- a/daemon/daemon_main.go
 +++ b/daemon/daemon_main.go
-@@ -453,6 +453,7 @@ func init() {
+@@ -461,6 +461,7 @@ func init() {
  
  	flags.Bool(option.KeepBPFTemplates, false, "Do not restore BPF template files from binary")
  	option.BindEnv(option.KeepBPFTemplates)
@@ -40,7 +40,7 @@ index a07d757d9..b778722fe 100644
  	flags.String(option.KVStore, "", "Key-value store type")
  	option.BindEnv(option.KVStore)
 diff --git a/pkg/option/config.go b/pkg/option/config.go
-index 525bfc340..77b661d4d 100644
+index 630dc2fda..52e05a0ef 100644
 --- a/pkg/option/config.go
 +++ b/pkg/option/config.go
 @@ -223,6 +223,8 @@ const (
@@ -53,5 +53,5 @@ index 525bfc340..77b661d4d 100644
  
  	// KVStore key-value store type
 -- 
-2.25.1
+2.26.2
 
