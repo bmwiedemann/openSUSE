@@ -201,4 +201,12 @@
     requires clang-format</comment>
     <requestid>808137</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>3bf652d70d25cfa55af56d129a05e5c4</srcmd5>
+    <version>1.8.4</version>
+    <time>1592938805</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816356</requestid>
+  </revision>
 </revisionlist>

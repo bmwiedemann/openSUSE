@@ -316,18 +316,18 @@ make %{?_smp_mflags} V=1
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-install -d -m755 %{buildroot}/%{_sbindir}
+install -d -m755 %{buildroot}%{_sbindir}
 
 install -Dpm 0644 packaging/daemon/libstoragemgmt.service \
-    %{buildroot}/%{_unitdir}/libstoragemgmt.service
+    %{buildroot}%{_unitdir}/libstoragemgmt.service
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 #Files for udev handling
-install -d %{buildroot}/%{_udevrulesdir}
+install -d %{buildroot}%{_udevrulesdir}
 install -m 644 tools/udev/90-scsi-ua.rules \
-    %{buildroot}/%{_udevrulesdir}/90-scsi-ua.rules
+    %{buildroot}%{_udevrulesdir}/90-scsi-ua.rules
 install -m 755 tools/udev/scan-scsi-target \
-    %{buildroot}/%{_libexecdir}/udev/scan-scsi-target
+    %{buildroot}%{_prefix}/lib/udev/scan-scsi-target
 
 # find all duplicates
 %fdupes -s %{buildroot}%{python_sitelib}
@@ -502,7 +502,7 @@ fi
 %ghost %dir /run/lsm/ipc
 
 %files udev
-%{_libexecdir}/udev/scan-scsi-target
+%{_prefix}/lib/udev/scan-scsi-target
 %{_udevrulesdir}/90-scsi-ua.rules
 
 %files -n %{libname}
