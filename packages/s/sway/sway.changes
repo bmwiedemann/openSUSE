@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun  22 17:14:07 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- package shouldn't require specific branding version, just a package
+
+-------------------------------------------------------------------
 Fri Jun  5 14:43:57 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - Add -fno-common patch in order to address boo#1160244

@@ -51,7 +51,7 @@ BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(xkbcommon)
-Requires:       %{name}-branding >= %{version}
+Requires:       %{name}-branding
 Requires:       ImageMagick
 Requires:       ffmpeg
 %if 0%{?suse_version}
