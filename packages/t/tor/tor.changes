@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 15 18:58:11 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tor 0.4.3.5:
+  * first stable release in the 0.4.3.x series
+  * implement functionality needed for OnionBalance with v3 onion
+    services
+  * significant refactoring of our configuration and controller
+    functionality
+  * Add support for banning a relay's ed25519 keys in the
+    approved-routers file in support for migrating away from RSA
+  * support OR connections through a HAProxy server
+
+-------------------------------------------------------------------
 Wed Mar 18 20:52:20 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - tor 0.4.2.7

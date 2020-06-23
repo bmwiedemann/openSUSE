@@ -1,7 +1,7 @@
 #
 # spec file for package tor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define torgroup %{name}
 %define home_dir %{_localstatedir}/lib/empty
 Name:           tor
-Version:        0.4.2.7
+Version:        0.4.3.5
 Release:        0
 Summary:        Anonymizing overlay network for TCP (The onion router)
 License:        BSD-3-Clause
@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       logrotate
 Requires(post): %fillup_prereq
 Recommends:     torsocks
-%{systemd_ordering}
+%systemd_ordering
 
 %description
 Tor is a connection-based low-latency anonymous communication system.
@@ -120,7 +120,7 @@ install -D -m 644 contrib/operator-tools/tor.logrotate %{buildroot}/%{_sysconfdi
 
 %check
 %ifnarch ppc ppc64 ppc64le aarch64 armv7l
-make %{?_smp_mflags} check || (
+%make_build check || (
 	find -type f -name test-suite.log -print -exec cat {} \;
 	exit 42
 )
