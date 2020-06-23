@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sat Jun 13 22:03:12 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.3.0
+  * DNN module:
+    + Improved layers / activations / supported more models:
+      - ONNX: LSTM, Broadcasting, Algebra over constants, Slice with
+	multiple inputs
+      - DarkNet: grouped convolutions, sigmoid, swish, scale_channels
+      - MobileNet-SSD v3: #16760
+    + New samples / demos:
+      - Clothes parts segmentation and CP-VTON
+      - DaSiamRPN tracker
+      Intel® Inference Engine backend (OpenVINO™):
+      - added support for custom layers through nGraph OpenVINO
+	API: #16628
+      - nGraph OpenVINO API is used by default: #16746
+    + Many fixes and optimizations in CUDA backend (thanks to
+      @YashasSamaga)
+    + OPEN AI LAB team submitted the patch that accelerates OpenCV
+      DNN on ARM using their Tengine library
+  * G-API module:
+    + Introduced a new graph-level data type GOpaque<T>. This type
+      can be used to pass arbitrary user data types between G-API
+      nodes in the graph (supported for CPU/OpenCV backend only).
+    + Introduced a way to declare G-API CPU (OpenCV) kernels in-place
+    + Added a new sample "Privacy masking camera", combining Deep
+      Learning with traditional Image Processing (link)
+    + Added more operations in the default library: WarpAffine,
+      WarpPerspective, NV12toGray.
+  * Performance improvements:
+    + IPP-ICV library with CPU optimizations has been updated to
+      version 2020.0.0 Gold
+    + SIMD intrinsics: integral, resize, (opencv_contrib) RLOF
+      implementation #2476
+  * And many other great contributions from OpenCV community:
+    + (opencv_contrib) Computer Vision based Alpha Matting
+      (GSoC 2019) #2306
+    + calib3d: findChessboardCornersSB improvements: #16625
+    + calib3d: updated documentation for RT matrices: #16860
+    + core: improved getNumberOfCPUs(): #16268
+    + imgproc: new algorithm HOUGH_GRADIENT_ALT is added to
+      HoughCircles() function #16561. It has much better recall
+      and precision
+    + imgcodecs: added initial support for OpenJPEG library
+      (version 2+): #16494
+    + highgui(Qt): added Copy to clipboard: #16677
+    + dnn: TensorFlow, Darknet and ONNX importers improvements
+      by @ashishkrshrivastava
+    + (opencv_contrib) added rapid module for silhouette based 3D
+      object tracking: #2356
+    + (opencv_contrib) SIFT detector is enabled by default due
+      patents expiration (without requirement of NONFREE build
+      option)
+    + help materials: OpenCV Cheat Sheet in Python: #4875
+  * Changes that can potentially break compatibility:
+    + image filtering functions throws exception on empty input
+      (voting results)
+- Packaging changes:
+  * Stop mangling CMake diagnostic output, no dependency versions
+    end up in the packages anyway, drop opencv-build-compare.patch
+  * Set empty OPENCV_DOWNLOAD_TRIES_LIST, skip downloads even when
+    network is available during builds (e.g. local build).
+  * Drop upstream GLES patches:
+    + 0001-Do-not-include-glx.h-when-using-GLES.patch
+    + opencv-gles.patch
+
+-------------------------------------------------------------------
 Fri Jun 12 14:18:41 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Disable Python 2 bindings for Tumbleweed.
