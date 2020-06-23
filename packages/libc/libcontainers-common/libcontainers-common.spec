@@ -88,15 +88,6 @@ go-md2man -in docs/source/markdown/containers-mounts.conf.5.md -out docs/source/
 go-md2man -in pkg/hooks/docs/oci-hooks.5.md -out pkg/hooks/docs/oci-hooks.5
 cd ..
 
-%if 0%{?is_opensuse}
-# no default mounts
-%else
-cat >>%{SOURCE5} <<EOL
-/etc/SUSEConnect:/etc/SUSEConnect
-/etc/zypp/credentials.d/SCCcredentials:/etc/zypp/credentials.d/SCCcredentials
-EOL
-%endif
-
 %install
 cd ..
 install -d -m 0755 %{buildroot}/%{_sysconfdir}/containers

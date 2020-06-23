@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 19 09:57:44 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Remove remaining difference between SLE and openSUSE package and
+  ship the some mounts.conf default configuration on both platforms.
+  As the sources for the mount point do not exist on openSUSE by
+  default this config will basically have no effect on openSUSE.
+  (jsc#SLE-12122)
+
+-------------------------------------------------------------------
 Wed Jun  3 14:37:20 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Update to image 5.4.4
