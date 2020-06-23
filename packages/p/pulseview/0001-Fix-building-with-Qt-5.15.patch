@@ -1,0 +1,34 @@
+From fecfc3ff03168681f08dabec807ad9b8ab2c3057 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Mon, 22 Jun 2020 20:33:02 +0200
+Subject: [PATCH] Fix building with Qt 5.15
+
+---
+ pv/util.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pv/util.cpp b/pv/util.cpp
+index 9a9a5065..afc54597 100644
+--- a/pv/util.cpp
++++ b/pv/util.cpp
+@@ -137,7 +137,7 @@ QString format_time_si(const Timestamp& v, SIPrefix prefix,
+ 	QString s;
+ 	QTextStream ts(&s);
+ 	if (sign && !v.is_zero())
+-		ts << forcesign;
++		ts.setNumberFlags(ts.numberFlags() | QTextStream::ForceSign);
+ 	ts << qSetRealNumberPrecision(precision) << (v * multiplier);
+ 	ts << ' ' << prefix << unit;
+ 
+@@ -175,7 +175,7 @@ QString format_value_si(double v, SIPrefix prefix, unsigned precision,
+ 	QString s;
+ 	QTextStream ts(&s);
+ 	if (sign && (v != 0))
+-		ts << forcesign;
++		ts.setNumberFlags(ts.numberFlags() | QTextStream::ForceSign);
+ 	ts.setRealNumberNotation(QTextStream::FixedNotation);
+ 	ts.setRealNumberPrecision(precision);
+ 	ts << (v * multiplier) << ' ' << prefix << unit;
+-- 
+2.27.0
+

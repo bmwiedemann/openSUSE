@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 22 18:36:42 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build, add 0001-Fix-building-with-Qt-5.15.patch
+
+-------------------------------------------------------------------
 Wed Apr  1 17:02:33 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
-- Update to version 0.4.1
+- Update to version 0.4.2
   * PulseView session setups can now be saved/restored to and
     from *.pvs files.
   * Translation support was added to the GUI elements (and a first

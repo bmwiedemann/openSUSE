@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            https://sigrok.org
 Source0:        https://sigrok.org/download/source/pulseview/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE
+Patch0:         0001-Fix-building-with-Qt-5.15.patch
 BuildRequires:  cmake
 BuildRequires:  glib2-devel
 BuildRequires:  libboost_filesystem-devel
@@ -48,11 +50,12 @@ PulseView is a Qt-based GUI for sigrok.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 export CXXFLAGS="%{optflags} -fpermissive"
 %cmake -DDISABLE_WERROR=TRUE ..
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
