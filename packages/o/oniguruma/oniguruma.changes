@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 15 21:57:36 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 6.9.5.1
+  - Fixed Issue #192
+  - POSIX API disabled by default for Unix (* Enabled by: configure
+    --enable-posix-api=yes)
+  - Update Unicode version 13.0.0
+  - NEW: Code point sequence notation \x{HHHH HHHH ...}, \o{OOOO
+    OOOO ...}
+  - NEW API: retry limit in search functions
+  - NEW API: maximum nesting level of subexp call
+  - Fixed behavior of isolated options in Perl and Java syntaxes.
+    /...(?i).../
+  - fix a problem (found by oss-fuzz test on my PC)
+- add --enable-posix-api to keep the posix API enabled.
+
+-------------------------------------------------------------------
 Wed Mar  4 21:23:36 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 6.9.4
