@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun 20 17:49:44 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.0.1:
+  * Improve merge efficiency
+  * git_worktree_prune_init_options restored for backward
+    compatibility
+  * Configuration files that are unreadable due to permissions are
+    now silently ignored, and treated as if they do not exist
+  * v4 index files are now correctly written
+  * Improve compatibility with some servers including Gerrit
+
+-------------------------------------------------------------------
 Wed Apr  1 17:12:03 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.0.0:

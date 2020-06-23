@@ -18,9 +18,8 @@
 
 
 %define sover 1_0
-
 Name:           libgit2
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        C git library
 License:        GPL-2.0 WITH GCC-exception-2.0
@@ -28,7 +27,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://libgit2.github.com/
 Source0:        https://github.com/libgit2/libgit2/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-
 BuildRequires:  cmake >= 2.8
 BuildRequires:  http-parser-devel
 BuildRequires:  pkgconfig
