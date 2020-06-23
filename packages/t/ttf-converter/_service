@@ -2,7 +2,7 @@
   <service name="tar_scm" mode="disabled">
     <param name="url">https://github.com/antlarr-suse/ttf-converter</param>
     <param name="filename">ttf-converter</param>
-    <param name="version">1.0</param>
+    <param name="version">1.0.3</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
   </service>

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jun 22 09:54:07 UTC 2020 - alarrosa@suse.com
+
+- Update to version 1.0.3:
+  * Bump version to 1.0.3
+  * Add a --force-monospaced argument instead of hardcoding
+    font names
+  * Fix print format
+  * Convert `BoldCond` subfamily to `Bold Condensed`
+
+-------------------------------------------------------------------
+Fri Jun 19 16:25:09 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.0.2 (boo#1169444 #c41)
+  * Fixes for Monospaced fonts and force the Nimbus Mono L font
+    to be Monospaced
+  * Add a --version argument
+
+-------------------------------------------------------------------
+Fri Jun 19 11:25:07 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.0.1 (boo#1169444 #c41)
+  * Fix subfamily names so the converted font's subfamily match
+    the original ones
+
+-------------------------------------------------------------------
 Mon Apr 20 07:45:35 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Initial release of ttf-converter 1.0 (boo#1169444)

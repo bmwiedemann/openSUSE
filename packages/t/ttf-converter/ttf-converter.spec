@@ -17,7 +17,7 @@
 
 
 Name:           ttf-converter
-Version:        1.0
+Version:        1.0.3
 Release:        0
 Summary:        Python script that converts fonts to TrueType format
 License:        GPL-3.0-only
