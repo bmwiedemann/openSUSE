@@ -40,6 +40,8 @@ Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
 Source4:        plasmafullwayland.desktop
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Port-applets-to-use-PlasmaExtras.PlaceholderMessage.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch

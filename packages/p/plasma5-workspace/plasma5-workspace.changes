@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 20 09:29:58 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix label appearance (kde#422684):
+  * 0001-Port-applets-to-use-PlasmaExtras.PlaceholderMessage.patch
+
+-------------------------------------------------------------------
 Tue Jun 16 14:34:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.1
