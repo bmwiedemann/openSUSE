@@ -217,4 +217,23 @@
     <comment></comment>
     <requestid>773615</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9636286863d23d6625d5d9e637bdd21e</srcmd5>
+    <version>1.9.3</version>
+    <time>1592938971</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.3&quot;
+  * Fixes to JSON_USE_EXCEPTION--some bugs creeped in breaking this
+    flag in pre-release.
+  * Fixes to build system--improvements have been make for code
+    correctness.
+  * Compile errors for various platforms have been resolved.
+  * Fuzzing has been fixed.
+  * Various bugs in the Reader and Writer code have been corrected.
+  * CPPTL support has been dropped.
+  * Various code improvements and optimizations.
+- Drop no longer needed patch:
+  * jsoncpp-f11611c8785082ead760494cba06196f14a06dcb.patch</comment>
+    <requestid>815823</requestid>
+  </revision>
 </revisionlist>

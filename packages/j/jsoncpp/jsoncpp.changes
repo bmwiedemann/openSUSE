@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun 19 06:00:24 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9.3"
+  * Fixes to JSON_USE_EXCEPTION--some bugs creeped in breaking this
+    flag in pre-release.
+  * Fixes to build system--improvements have been make for code
+    correctness.
+  * Compile errors for various platforms have been resolved.
+  * Fuzzing has been fixed.
+  * Various bugs in the Reader and Writer code have been corrected.
+  * CPPTL support has been dropped.
+  * Various code improvements and optimizations.
+- Drop no longer needed patch:
+  * jsoncpp-f11611c8785082ead760494cba06196f14a06dcb.patch
+
+-------------------------------------------------------------------
 Wed Feb 12 07:46:21 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on non-x86 architectures - boo#1163385
