@@ -17,7 +17,7 @@
 
 
 Name:           courier-imap
-Version:        5.0.10
+Version:        5.0.11
 Release:        0
 Summary:        An IMAP and POP3 Server for Maildir MTAs
 License:        GPL-3.0-or-later
@@ -44,11 +44,9 @@ Patch2:         %{name}-ulimit_conf.patch
 ### Patch for upstream:
 ## fixes typo in Makefile.am
 Patch3:         %{name}-Makefile.patch
-# PATCH-FIX-SLE courier-imap-stdc.patch - rewrite C99 construction to C89 as GCC 4.8 doesn't enable C99 by default
-Patch4:         %{name}-stdc.patch
 BuildRequires:  audit-libs
-BuildRequires:  courier-authlib-devel >= 0.68
-BuildRequires:  courier-unicode-devel >= 2.0
+BuildRequires:  courier-authlib-devel >= 0.71
+BuildRequires:  courier-unicode-devel >= 2.1
 BuildRequires:  db-devel
 BuildRequires:  gamin-devel
 BuildRequires:  gcc-c++
@@ -62,7 +60,7 @@ BuildRequires:  procps
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(systemd)
-Requires:       courier-authlib >= 0.68
+Requires:       courier-authlib >= 0.71
 Requires:       fam-server
 Requires:       gdbm
 Requires:       openssl
@@ -103,7 +101,6 @@ install the entire Courier server.
 %patch0
 %patch2
 %patch3
-%patch4
 
 %build
 %configure \
