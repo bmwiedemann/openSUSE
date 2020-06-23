@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 22 12:18:02 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- Update to 1.6.1
+  - add support for cma-3 ([gh#votca/csg#158])
+  - allow special characters in build directory
+    ([gh#votca/csg#521])
+  - fix CI on Ubuntu-20.04 ([gh#votca/csg#526])
+  - drop support for gmx 2016 ([gh#votca/csg#529],
+    [gh#votca/csg#547])
+  - fix csg_reupdate and add tests ([gh#votca/csg#525])
+  - fix detection of lmp and gmx in cmake ([gh#votca/csg#540])
+  - add test for lammpsdata reader ([gh#votca/csg#544])
+
+-------------------------------------------------------------------
 Thu Jun 11 08:49:05 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move the miscellaneous manpages from the library package to the
