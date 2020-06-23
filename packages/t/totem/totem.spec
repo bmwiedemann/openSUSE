@@ -25,8 +25,6 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://wiki.gnome.org/Apps/Videos
 Source0:        https://download.gnome.org/sources/totem/3.34/%{name}-%{version}.tar.xz
-# PATCH-FEATURE-OPENSUSE totem-revert-vaapi-disable.patch -- Revert upstreams disabling of vaapi support
-Patch0:         totem-revert-vaapi-disable.patch
 # PATCH-FIX-UPSTREAM totem-Fix-bracket-keys-and-backspace.patch -- variable-rate: Fix bracket keys and backspace not working
 Patch1:         totem-Fix-bracket-keys-and-backspace.patch
 

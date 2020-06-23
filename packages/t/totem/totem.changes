@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 18 16:46:26 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop totem-revert-vaapi-disable.patch: Changes elsewhere in the
+  stack have again broken vaapi support in totem, remove patch at
+  least for now.
+
+-------------------------------------------------------------------
 Thu Apr 16 09:48:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop gnome-dvb-daemon Suggests: Pulls in extra packages on the
