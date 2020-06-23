@@ -27,7 +27,10 @@ Source0:        http://download.savannah.nongnu.org/releases/%{name}/%{name}-%{v
 Source1:        http://download.savannah.nongnu.org/releases/%{name}/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}-rpmlintrc
 Source3:        memberlist-gpgkeys.gpg
+# Partially taken from https://savannah.nongnu.org/bugs/?58101, won't be needed with next version update
+Patch0:         add-neon-031-support.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  automake >= 1.16
 BuildRequires:  fuse-devel >= 2.2
 BuildRequires:  neon-devel
 BuildRequires:  pwdutils
@@ -48,6 +51,7 @@ supporting TLS/SSL and access via proxy servers.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0
 cd src
 
 %build
@@ -60,7 +64,7 @@ dav_group="%{name}" \
 PIE="-fPIE"
 pie="-pie"
 %endif
-make AM_CFLAGS="-Wall %{optflags} $PIE" AM_LDFLAGS="$pie" %{?_smp_mflags}
+make AM_CFLAGS="-Wall %{optflags} $PIE -fcommon" AM_LDFLAGS="$pie" %{?_smp_mflags}
 
 %install
 %make_install
