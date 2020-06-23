@@ -1,7 +1,7 @@
 #
 # spec file for package zoo
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,6 +22,7 @@ Release:        0
 Summary:        Pack Program
 License:        SUSE-Public-Domain
 Group:          Productivity/Archiving/Compression
+URL:            https://en.wikipedia.org/wiki/Zoo_(file_format)
 Source:         zoo.tar.gz
 Patch0:         zoo.patch
 Patch1:         zoo-%{version}-tempfile.patch
@@ -40,36 +41,26 @@ compression rate of gzip is not reached, and thus zoo should only be used
 for decompressing old archives.
 
 %prep
-%setup -q -n zoo
-%patch0
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6
-%patch7
-%patch8
+%autosetup -n zoo -p0
 
 %build
-make %{?_smp_mflags} linux OPTIM="%{optflags}"
+%make_build linux OPTIM="%{optflags}"
 
 %install
 install -Dpm 0755 zoo \
-  %{buildroot}%{_prefix}/bin/zoo
+  %{buildroot}%{_bindir}/zoo
 install -Dpm 0755 fiz \
-  %{buildroot}%{_prefix}/bin/fiz
+  %{buildroot}%{_bindir}/fiz
 install -Dpm 0644 zoo.1 \
   %{buildroot}/%{_mandir}/man1/zoo.1
 install -Dpm 0644 fiz.1 \
   %{buildroot}/%{_mandir}/man1/fiz.1
 
 %files
-%defattr(-,root,root)
-%doc Copyright
+%license Copyright
 %{_bindir}/fiz
 %{_bindir}/zoo
-%{_mandir}/man1/fiz.1%{ext_man}
-%{_mandir}/man1/zoo.1%{ext_man}
+%{_mandir}/man1/fiz.1%{?ext_man}
+%{_mandir}/man1/zoo.1%{?ext_man}
 
 %changelog

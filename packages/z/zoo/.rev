@@ -147,4 +147,12 @@
     <comment>- Small packaging adjustements</comment>
     <requestid>504696</requestid>
   </revision>
+  <revision rev="22" vrev="1027">
+    <srcmd5>251ea2794922f11959ee85913c0f9827</srcmd5>
+    <version>2.10</version>
+    <time>1592939227</time>
+    <user>dimstar_suse</user>
+    <comment>- Use wikipedia as url</comment>
+    <requestid>816582</requestid>
+  </revision>
 </revisionlist>
