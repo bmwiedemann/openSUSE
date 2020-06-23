@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  9 11:02:07 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add Recommends: xorg-x11-fonts-legacy, since the default font
+  is now available in that package. If the font is not available
+  it will fall back to use a font installed in xorg-x11-fonts
+  and it can also use truetype fonts, thus the Recommends instead
+  of a Requires (related to boo#1169444)
+
+-------------------------------------------------------------------
 Fri Jun  5 13:03:22 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec

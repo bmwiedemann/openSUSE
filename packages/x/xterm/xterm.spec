@@ -67,6 +67,7 @@ BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xft)
 Requires:       luit
+Recommends:     xorg-x11-fonts-legacy
 %if 0%{?suse_version} > 1220
 %reconfigure_fonts_prereq
 %endif
