@@ -1,7 +1,7 @@
 #
 # spec file for package rear
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,9 @@ Name:           rear
 # When there are SUSE specific patches, add a trailing letter 'a' 'b' 'c' ...
 # to the rear upstrea, version (e.g. "Version: 1.18.a"
 # see https://github.com/rear/rear/issues/666
-Version:        2.3
+Version:        2.6
 Release:        0
-%define upstream_version 2.3
+%define upstream_version 2.6
 # Automatic version upgrades are not possible in practice.
 # The user must explicitly specify his intended version.
 # When users have a working disaster recovery procedure, they should not upgrade
@@ -41,8 +41,6 @@ Provides:       rear = %{version}
 Conflicts:      rear < %{version}
 Conflicts:      rear > %{version}
 Summary:        Relax-and-Recover (abbreviated rear) is a Linux Disaster Recovery framework
-License:        GPL-2.0+ and GPL-3.0
-Group:          Productivity/Archiving/Backup
 # Currently (as of this writing Tue Apr 26 2016) rear contains many files
 # with explicit GPL-2.0+ or GPL-2.1+ licensing notes of the form
 #   either version 2 of the License, or (at your option) any later version
@@ -50,10 +48,12 @@ Group:          Productivity/Archiving/Backup
 # so that some (older) rear files are still "GPL-2.0+" but some (newer) rear files are "GPL-3.0"
 # according to the current COPYING file in rear that was changed from GPL version 2 (up to rear 1.17.2)
 # to GPL version 3 (since rear 1.18) see the rear upstream issue https://github.com/rear/rear/pull/739
-Url:            http://relax-and-recover.org/
+License:        GPL-2.0-or-later AND GPL-3.0-only
+Group:          Productivity/Archiving/Backup
+URL:            http://relax-and-recover.org/
 # As GitHub stopped with download section we need to go back to Sourceforge for downloads.
 # How to download Source0 from Sourceforge:
-# wget --no-check-certificate -O rear-2.3.tar.gz http://sourceforge.net/projects/rear/files/rear/2.3/rear-2.3.tar.gz
+# wget --no-check-certificate -O rear-2.6.tar.gz http://sourceforge.net/projects/rear/files/rear/2.6/rear-2.6.tar.gz
 Source0:        http://sourceforge.net/projects/rear/files/rear/%{upstream_version}/rear-%{upstream_version}.tar.gz
 # Source999 rear-rpmlintrc filters false positives rpmlint warning messages, see
 # https://en.opensuse.org/openSUSE:Packaging_checks#Building_Packages_despite_of_errors
@@ -289,9 +289,11 @@ for details see the GNU General Public License.
 %setup -q -n rear-%{upstream_version}
 # Add a specific os.conf to not depend on LSB dependencies
 # (otherwise it calls "lsb_release" in /usr/share/rear/lib/config-functions.sh)
-# for the suse_version values see the listing at
+# for the suse_version values see the listings at
+# https://en.opensuse.org/openSUSE:Packaging_for_Leap#RPM_Distro_Version_Macros
+# and
 # http://en.opensuse.org/openSUSE:Build_Service_cross_distribution_howto
-# in particular see there the "Note" that reads
+# in particular in the latter see there the "Note" that reads
 # "sles_version is no longer set in SLES 11. Use suse_version == 1110 instead."
 # and use that also for all older SUSE distributions:
 %if 0%{?suse_version} <= 1110
@@ -302,18 +304,22 @@ OS_VERSION="11"
 # openSUSE 13.1
 OS_VERSION="13.1"
 %endif
-%if 0%{?suse_version} == 1315
-# SLE 12 and openSUSE Leap 42.x
-OS_VERSION="12"
-%endif
 %if 0%{?suse_version} == 1320
 # openSUSE 13.2
 OS_VERSION="13.2"
 %endif
-%if 0%{?suse_version} > 1320
-# openSUSE Factory - current upcoming release (changing)
-# treat it same as SLE 12 and openSUSE Leap 42.x:
+%if 0%{?suse_version} == 1315
+# SLE 12 and openSUSE Leap 42.x
 OS_VERSION="12"
+%endif
+%if 0%{?suse_version} == 1500
+# SLE 15 and openSUSE Leap 15.x
+OS_VERSION="15"
+%endif
+%if 0%{?suse_version} > 1500
+# openSUSE Factory - current upcoming release (changing)
+# treat it same as SLE 15 and openSUSE Leap 15.x:
+OS_VERSION="15"
 %endif
 echo -e "OS_VENDOR=SUSE_LINUX\nOS_VERSION=$OS_VERSION" >etc/rear/os.conf
 

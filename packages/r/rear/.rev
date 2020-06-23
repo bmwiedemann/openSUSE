@@ -270,4 +270,12 @@
     <comment>ReaR version upgrade to 2.3 (fate#323930 fate#323931 fate#323932) with newest rear-2.3.tar.gz tarball from sourceforge plus changelog entry about it (forwarded request 559076 from jsmeix)</comment>
     <requestid>559078</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>54462152024e6a751a8ec21b52feb318</srcmd5>
+    <version>2.6</version>
+    <time>1592939197</time>
+    <user>dimstar_suse</user>
+    <comment>ReaR version upgrade to 2.6</comment>
+    <requestid>816563</requestid>
+  </revision>
 </revisionlist>

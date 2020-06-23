@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Tue Jun 23 13:10:19 CEST 2020 - jsmeix@suse.de
+
+- Using rear-2.6.tar.gz tarball from sourceforge to match Source0:
+  http://sourceforge.net/projects/rear/files/rear/2.6/rear-2.6.tar.gz
+
+-------------------------------------------------------------------
+Tue Jun 23 09:48:51 CEST 2020 - jsmeix@suse.de
+
+- Version upgrade to 2.6
+  New features, bigger enhancements
+  and possibly backward incompatible changes:
+  * Initial preliminary first basic support for IBM Z architecture
+    "s390x" (a.k.a. "z Systems", "System/390", "s390").
+  * New BACKUP=CDM method to support
+    Rubrik Cloud Data Management (CDM).
+  * New use-case for BLOCKCLONE backup method with the
+    "multiple backups" approach for a more complex LUKS setup
+    with different passphrases or keys.
+  * Initial draft implementation of the new 'mountonly' workflow
+    to use ReaR as rescue system, therein mount the filesystems
+    of the target system so that one can manually repair it.
+  * Enable creation of non consecutive partitions.
+  * Improved handling of partition label type for multipath disks
+    plus including of multipath disks in backup.
+  * Enhanced default AUTOEXCLUDE_PATH=( /media /run /mnt /tmp )
+    to automatically exclude temporarily mounted things
+    (e.g. USB devices).
+  * Now we have CLONE_ALL_USERS_GROUPS="true" by default.
+    See the explanation in default.conf what that means.
+  * Replaced grub-mkimage with grub-mkstandalone when building
+    GRUB2 image for using GRUB2 as recovery system UEFI bootloader.
+  A detailed list can be found in the rear-release-notes.txt file.
+- Version upgrade to 2.5
+  New features, bigger enhancements
+  and possibly backward incompatible changes:
+  * Enhancements to better support mmcblk/eMMC disks.
+  * Now there is in default.conf MODULES=( 'all_modules' )
+    which means that now by default all kernel modules
+    get included in the recovery system.
+  * The new verify script .../950_verify_disklayout_file.sh
+    verifies the disklayout.conf file that is created
+    by "rear mkrescue/mkbackup".
+  * Basic support for EFISTUB booting.
+  * The whole 'rear dump' output format need to be changed
+    to improve it to clearly distinguish array elements.
+  * Now during "rear mkrescue/mkbackup" md5sums are created
+    for all regular files in in the recovery system. During
+    recovery system startup it verifies those md5sums.
+  * GRUB2 installation on x86 and ppc64le architecture
+    was completely rewritten and enhanced.
+  A detailed list can be found in the rear-release-notes.txt file.
+- Version upgrade to 2.4
+  New features, bigger enhancements
+  and possibly backward incompatible changes:
+  * Major rework and changed default behaviour how ReaR behaves
+    in migration mode when partitions can or must be resized
+    to fit on replacement disks with different size. The new
+    default behaviour is that only the partition end value of the
+    last partition on a disk (and therefore its partition size)
+    may get changed.
+  * Network setup was completely reworked to support bonding,
+    bridges, vlans and teaming.
+  * Initial (limited) support for certain ARM based hardware. It
+    should work with Raspberry Pis, most TI and Allwinner devices.
+  * Simplified and enhanced TSM restore
+    plus first draft of TSM backup.
+  * EMC Avamar support has been added.
+  * Duplicity backup has been seriously enhanced.
+  * Support for TCG Opal 2-compliant self-encrypting disks
+    and RAWDISK output.
+  A detailed list can be found in the rear-release-notes.txt file.
+
+-------------------------------------------------------------------
 Thu Dec 21 13:28:39 CET 2017 - jsmeix@suse.de
 
 - Using newest rear-2.3.tar.gz tarball from sourceforge
@@ -32,7 +105,7 @@ Wed Dec 20 16:56:11 CET 2017 - jsmeix@suse.de
     MIGRATION_MODE where manual disk layout configuration happens
     via several user dialogs so that by default 'rear recover'
     shows more often user dialogs
-  A detailed list can be found in the rear-release-notes.txt file
+  A detailed list can be found in the rear-release-notes.txt file.
 
 -------------------------------------------------------------------
 Wed Jul 26 12:58:25 CEST 2017 - jsmeix@suse.de
