@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 18 20:50:15 UTC 2020 - dmueller@suse.com
+
+- Update to version 1.18.2:
+  * Bump version to v1.18.2
+  * criocli: Avoid parsing the config twice
+  * StringSliceTrySplit: return a copy of the underlying slice
+  * Restore version output from crio --version
+  * Add info logs for image pull and status CRI calls
+  * managed_ns: deflake tests
+  * bump containers image to 5.4.4  (fixes gh#containers/image/issues/898)
+
+-------------------------------------------------------------------
 Mon May 18 07:26:55 UTC 2020 - sgrunert@suse.com
 
 - Update to version 1.18.1:
