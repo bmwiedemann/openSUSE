@@ -1,31 +1,7 @@
-Index: audacity-Audacity-2.3.3/src/AboutDialog.cpp
+Index: audacity-Audacity-2.4.0/lib-src/portaudio-v19/qa/loopback/src/paqa.c
 ===================================================================
---- audacity-Audacity-2.3.3.orig/src/AboutDialog.cpp	2019-11-15 13:14:55.000000000 +0200
-+++ audacity-Audacity-2.3.3/src/AboutDialog.cpp	2020-02-02 15:40:57.718746982 +0200
-@@ -65,7 +65,7 @@ hold information about one contributor t
- #ifdef REV_LONG
- #define REV_IDENT wxString( "[[https://github.com/audacity/audacity/commit/" )+ REV_LONG + "|" + wxString( REV_LONG ).Left(6) + "]] of " +  REV_TIME 
- #else
--#define REV_IDENT wxT("No revision identifier was provided")
-+#define REV_IDENT wxT("Official openSUSE Build")
- #endif
- 
- extern wxString FormatHtmlText( const wxString & Text );
-@@ -604,8 +604,8 @@ void AboutDialog::PopulateInformationPag
-    informationStr += _("Build Information");
-    informationStr += wxT("</h3>\n<table>");
- 
--   // Current date
--   AddBuildinfoRow(&informationStr, _("Program build date: "), __TDATE__);
-+   /*/ Current date
-+   AddBuildinfoRow(&informationStr, _("Program build date: "), __TDATE__);*/
-    AddBuildinfoRow(&informationStr, _("Commit Id:"), REV_IDENT );
- 
-    // Not translated in 2.3.1.
-Index: audacity-Audacity-2.3.3/lib-src/portaudio-v19/qa/loopback/src/paqa.c
-===================================================================
---- audacity-Audacity-2.3.3.orig/lib-src/portaudio-v19/qa/loopback/src/paqa.c	2019-11-15 13:14:55.000000000 +0200
-+++ audacity-Audacity-2.3.3/lib-src/portaudio-v19/qa/loopback/src/paqa.c	2020-02-02 15:40:57.718746982 +0200
+--- audacity-Audacity-2.4.0.orig/lib-src/portaudio-v19/qa/loopback/src/paqa.c	2020-05-18 12:54:40.106763016 +0200
++++ audacity-Audacity-2.4.0/lib-src/portaudio-v19/qa/loopback/src/paqa.c	2020-05-18 12:55:07.291841573 +0200
 @@ -1460,7 +1460,7 @@ int main( int argc, char **argv )
  	int justMath = 0;
      char *executableName = argv[0];
@@ -35,3 +11,27 @@ Index: audacity-Audacity-2.3.3/lib-src/portaudio-v19/qa/loopback/src/paqa.c
  
  	if( argc > 1 ){
  		printf("running with arguments:");
+Index: audacity-Audacity-2.4.0/src/AboutDialog.cpp
+===================================================================
+--- audacity-Audacity-2.4.0.orig/src/AboutDialog.cpp	2020-05-18 12:55:07.291841573 +0200
++++ audacity-Audacity-2.4.0/src/AboutDialog.cpp	2020-05-18 13:03:11.727062253 +0200
+@@ -69,7 +69,7 @@ hold information about one contributor t
+ #endif
+ 
+ #ifdef REV_LONG
+-#define REV_IDENT wxString( "[[https://github.com/audacity/audacity/commit/" )+ REV_LONG + "|" + wxString( REV_LONG ).Left(6) + "]] of " +  REV_TIME 
++#define REV_IDENT wxString( "Official openSUSE Build" )+ REV_LONG + "|" + wxString( REV_LONG ).Left(6) + "]] of " +  REV_TIME
+ #else
+ #define REV_IDENT (XO("No revision identifier was provided").Translation())
+ #endif
+@@ -701,8 +701,8 @@ void AboutDialog::PopulateInformationPag
+       << XO("Build Information")
+       << wxT("</h3>\n<table>");
+ 
+-   // Current date
+-   AddBuildinfoRow(&informationStr, XO("Program build date:"), __TDATE__);
++   /*/ Current date
++   AddBuildinfoRow(&informationStr, XO("Program build date:"), __TDATE__);*/
+    AddBuildinfoRow(&informationStr, XO("Commit Id:"), REV_IDENT );
+ 
+    auto buildType =

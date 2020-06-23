@@ -1,0 +1,17 @@
+Index: b/lib-src/libnyquist/nyquist/xlisp/security.c
+===================================================================
+--- a/lib-src/libnyquist/nyquist/xlisp/security.c	2020-06-15 10:39:50.030730823 +0200
++++ b/lib-src/libnyquist/nyquist/xlisp/security.c	2020-06-15 10:59:45.779010172 +0200
+@@ -4,12 +4,7 @@
+  */
+ 
+ #include <stdlib.h>
+-#if defined(UNIX) || defined(__APPLE__)
+ #include <unistd.h>
+-#endif
+-#ifdef WIN32
+-#include <direct.h>
+-#endif
+ #include <string.h>
+ #include <xlisp.h>
+ 

@@ -16,14 +16,8 @@
 #
 
 
-%if 0%{?suse_version} >= 1330 || 0%{?leap_version} >= 420300
-%bcond_without mad
-%else
-%bcond_with mad
-%endif
-
 Name:           audacity
-Version:        2.3.3
+Version:        2.4.1
 Release:        0
 Summary:        A Multi Track Digital Audio Editor
 License:        GPL-2.0-or-later
@@ -40,22 +34,18 @@ Patch1:         audacity-flacversion.patch
 Patch2:         audacity-misc-errors.patch
 # PATCH-FIX-UPSTREAM audacity-no_return_in_nonvoid.patch
 Patch3:         audacity-no_return_in_nonvoid.patch
+# PATCH-FIX-OPENSUSE audacity-implicit-fortify-decl.patch davejplater@gmail.com -- Leap:15.1's build misses "UNIX" definition in nyquist/xlisp/security.c
+Patch4:         audacity-implicit-fortify-decl.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
-#Audacity only builds with gcc >= 4.9
-# WARNING: Anything built against wxWidgets with gcc >= 5 needs widgets built with relax-abi.diff and gcc >= 5
-%if 0%{?suse_version} == 1315
-BuildRequires:  cpp7
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
-%else
 BuildRequires:  gcc-c++
-%endif
 #!BuildIgnore:  gstreamer-0_10-plugins-base
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  wxWidgets-3_0-nostl-devel
+BuildRequires:  libmp3lame-devel
+BuildRequires:  libwx_gtk3u_core-suse-nostl3_1_3
+BuildRequires:  wxWidgets-3_2-nostl-devel
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(flac) >= 1.3.1
@@ -67,27 +57,25 @@ BuildRequires:  pkgconfig(libavformat) >= 52.12
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(lilv-0) >= 0.16
 BuildRequires:  pkgconfig(lv2)
+BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(shared-mime-info)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(soundtouch)
 BuildRequires:  pkgconfig(soxr)
 BuildRequires:  pkgconfig(suil-0) >= 0.8.2
+BuildRequires:  pkgconfig(twolame)
 BuildRequires:  pkgconfig(vamp-hostsdk)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisenc)
 BuildRequires:  pkgconfig(vorbisfile)
-%if %{with mad}
-BuildRequires:  libmp3lame-devel
-BuildRequires:  pkgconfig(mad)
-BuildRequires:  pkgconfig(twolame)
-%endif
 # This would require to patch our portaudio package with "PortMixer"... an extra API that never got integrated in PortAudio.
 #BuildRequires:  portaudio-devel
 Recommends:     %{name}-lang
 # WARNING Nothing provides libavutil without a suffix
 Requires:       ffmpeg
 Recommends:     libmp3lame0
+Requires:       %{name}-plugins = %{version}
 Requires:       libFLAC++6 >= 1.3.1
 Requires:       libFLAC8 >= 1.3.1
 
@@ -100,27 +88,27 @@ physical memory size can be edited.
 
 %lang_package
 
+%package plugins
+Summary:        Enhancments for Audacity
+Group:          Productivity/Multimedia/Sound
+Requires:       %{name} =  %{version}
+
+%description plugins
+This package contains extra plugins for audacity.
+
+
 %prep
 %setup -q -n %{name}-Audacity-%{version}
 %autopatch -p1
 
 cp -f %{SOURCE1} LICENSE_NYQUIST.txt
 # Make sure we use the system versions.
-rm -rf lib-src/{expat,libvamp,libsoxr,ffmpeg}/
-%if %{with mad}
-rm -rf lib-src/lame
-%endif
+rm -rf lib-src/{expat,libvamp,libsoxr,ffmpeg,lame}/
 
 %build
-%if 0%{suse_version} == 1315
-# WARNING: Do not alter, only for Leap.
-export CC="%{_bindir}/gcc-7"
-export CXX="%{_bindir}/g++-7"
-export CPP="%{_bindir}/cpp-7"
-%endif
-
-export CFLAGS="%{optflags} -fno-strict-aliasing"
+export CFLAGS="%{optflags} -fno-strict-aliasing -ggdb"
 export CXXFLAGS="$CFLAGS -std=gnu++11"
+%if 1 == 1
 aclocal -I m4
 autoconf
 %configure \
@@ -131,15 +119,13 @@ autoconf
   --disable-dynamic-loading \
   %endif
   --with-ffmpeg=system \
-%if %{with mad}
   --with-libmad=system \
   --with-libtwolame=system \
   --with-lame=system \
-%else
-  --without-libmad \
-  --without-libtwolame \
-%endif
   --docdir=%{_docdir}/%{name}/
+%else
+%cmake
+%endif
 
 make %{?_smp_mflags}
 
@@ -152,22 +138,18 @@ mv -f %{buildroot}%{_datadir}/pixmaps/gnome-mime-application-x-audacity-project.
   %{buildroot}%{_datadir}/icons/hicolor/48x48/mimetypes/application-x-audacity-project.xpm
 rm -rf %{buildroot}%{_datadir}/pixmaps/
 rm %{buildroot}%{_docdir}/%{name}/LICENSE.txt
+cp -v lib-src/portmixer/LICENSE.txt portmixer.LICENSE.txt
 %find_lang %{name}
 
-%post
-%desktop_database_post
-%icon_theme_cache_post
-%mime_database_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%mime_database_postun
+%files plugins
+%license LICENSE.txt
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/libsuil*.so
 
 %files
 %defattr(-,root,root)
 %doc README.txt
-%license LICENSE.txt LICENSE_NYQUIST.txt
+%license LICENSE.txt LICENSE_NYQUIST.txt portmixer.LICENSE.txt
 %doc %{_docdir}/%{name}/
 %{_bindir}/%{name}
 %{_datadir}/%{name}/

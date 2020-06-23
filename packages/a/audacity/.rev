@@ -802,4 +802,15 @@ Added audacity-misc-errors.patch to fix various errors picked up by rpmlint.
     <comment></comment>
     <requestid>774252</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>c13239e3cc0e614e3e5ae273b7911f55</srcmd5>
+    <version>2.4.1</version>
+    <time>1592939070</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Leap:15.1 build with audacity-implicit-fortify-decl.patch.
+- Update to release 2.4.1 and remove:
+  0001-Bug2436-Cross-project-paste-should-duplicate-block-f.patch
+- Now needs wxWidgets &gt;=3.1.1 to build.</comment>
+    <requestid>815625</requestid>
+  </revision>
 </revisionlist>

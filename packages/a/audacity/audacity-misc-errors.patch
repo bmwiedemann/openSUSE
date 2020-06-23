@@ -23,10 +23,10 @@ I: Program uses operation a <= b <= c, which is not well defined.
 E: audacity mathmeaning SplashDialog.cpp:148
 
 
-Index: audacity-Audacity-2.3.3/lib-src/portmidi/pm_linux/finddefault.c
+Index: audacity-Audacity-2.4.1/lib-src/portmidi/pm_linux/finddefault.c
 ===================================================================
---- audacity-Audacity-2.3.3.orig/lib-src/portmidi/pm_linux/finddefault.c	2019-11-15 13:14:55.000000000 +0200
-+++ audacity-Audacity-2.3.3/lib-src/portmidi/pm_linux/finddefault.c	2020-02-02 15:41:26.235929851 +0200
+--- audacity-Audacity-2.4.1.orig/lib-src/portmidi/pm_linux/finddefault.c	2020-05-19 11:43:53.000000000 +0200
++++ audacity-Audacity-2.4.1/lib-src/portmidi/pm_linux/finddefault.c	2020-06-08 11:50:49.379072582 +0200
 @@ -5,6 +5,8 @@
  #include <stdlib.h>
  #include <stdio.h>
@@ -36,10 +36,10 @@ Index: audacity-Audacity-2.3.3/lib-src/portmidi/pm_linux/finddefault.c
  #include "portmidi.h"
  
  #define STRING_MAX 256
-Index: audacity-Audacity-2.3.3/include/audacity/EffectAutomationParameters.h
+Index: audacity-Audacity-2.4.1/include/audacity/EffectAutomationParameters.h
 ===================================================================
---- audacity-Audacity-2.3.3.orig/include/audacity/EffectAutomationParameters.h	2019-11-15 13:14:55.000000000 +0200
-+++ audacity-Audacity-2.3.3/include/audacity/EffectAutomationParameters.h	2020-02-02 15:41:26.235929851 +0200
+--- audacity-Audacity-2.4.1.orig/include/audacity/EffectAutomationParameters.h	2020-05-19 11:43:53.000000000 +0200
++++ audacity-Audacity-2.4.1/include/audacity/EffectAutomationParameters.h	2020-06-08 11:50:49.379072582 +0200
 @@ -135,7 +135,7 @@ public:
  
     bool ReadFloat(const wxString & key, float *pf) const

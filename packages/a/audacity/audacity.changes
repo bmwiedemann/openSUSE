@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Jun 15 09:28:20 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Fix Leap:15.1 build with audacity-implicit-fortify-decl.patch.
+
+-------------------------------------------------------------------
+Mon Jun  8 09:37:32 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Update to release 2.4.1 and remove:
+  0001-Bug2436-Cross-project-paste-should-duplicate-block-f.patch
+- Now needs wxWidgets >=3.1.1 to build.
+- Upstream changes:
+  * A new Time Toolbar showing current record/playback time has been
+    split from the Selection Toolbar.  It can be resized large.
+  * Presets for more effects can be imported and exported.
+  * A new Multi-View mode for tracks.  In this mode both 
+    spectrogram and waveform views are shown at the same time.
+  * Opus available as a new audio export format on Windows and Linux.
+  * Easier to convert labels between point labels and range labels.
+  * New Loudness Normalization effect.
+  * New RMS measurement analyzer.
+  * New Noise Gate effect.
+  * New Spectral Delete effect.
+  * 2237 - Equalization effects have no Import or Export for curves
+  * 2261 - Graphic EQ sliders have no frequency labels
+  * 2265 - Track heights are reset to default on project re-opening
+  * 2303 - Playback does not start at the saved cursor position on
+    reopening a saved project.
+  * 2314 - Zoom in fail when playing
+  See also: 
+  https://wiki.audacityteam.org/wiki/New_features_in_Audacity_2.4.1
+
+-------------------------------------------------------------------
+Mon May 18 11:11:10 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Update to release 2.4.0 and rebase audacity-no_buildstamp.patch.
+- Add patch from git:
+  0001-Bug2436-Cross-project-paste-should-duplicate-block-f.patch
+- Add plugins sub package.
+- Upstream changes:
+  *have split the recording/playing time off from the selection
+   toolbar and it can now be dragged to make it larger.
+  *added a new optional mode for viewing audio. In this new mode
+   you can see both the waveform and a spectrogram at the same time.
+   Previously you would switch back and forth between them if you
+   wanted both.
+
+-------------------------------------------------------------------
 Thu Feb 13 14:51:29 CET 2020 - sbrabec@suse.com
 
 - Fix invalid RPM group.
