@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-bashate
-Version:        1.0.0
+Version:        2.0.0
 Release:        0
 Summary:        A PEP8 equivalent for bash scripts
 License:        Apache-2.0

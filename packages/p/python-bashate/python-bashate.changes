@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 23 15:25:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * Add Python 3.5 support
+
+-------------------------------------------------------------------
 Wed May 27 09:36:25 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

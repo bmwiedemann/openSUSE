@@ -51,4 +51,13 @@
     <comment></comment>
     <requestid>809805</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5c528f6d3957db38417cf532c28a3c07</srcmd5>
+    <version>2.0.0</version>
+    <time>1592939234</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.0:
+  * Add Python 3.5 support</comment>
+    <requestid>816620</requestid>
+  </revision>
 </revisionlist>
