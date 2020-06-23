@@ -1,8 +1,8 @@
 #
 # spec file for package forked-daapd
 #
-# Copyright (c) 2018 Scott Shambarger
 # Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2018 Scott Shambarger
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,6 +87,7 @@ forked-daapd is a complete rewrite of mt-daapd (Firefly Media Server).
 %setup -q
 
 %build
+export CFLAGS="%optflags -fcommon"
 %configure \
   --with%{!?with_alsa:out}-alsa --with%{!?with_pulseaudio:out}-pulseaudio \
   --with-libcurl --with-libwebsockets --with-libsodium --with-libplist \
