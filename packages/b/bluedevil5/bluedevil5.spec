@@ -30,6 +30,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/bluedevil-%{ve
 Source1:        https://download.kde.org/stable/plasma/%{version}/bluedevil-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Port-applet-to-use-PlasmaExtras.PlaceholderMessage.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  shared-mime-info
@@ -64,8 +66,9 @@ Requires(postun): shared-mime-info
 Bluetooth daemon for KDE Plasma, handling connections.
 
 %lang_package
+
 %prep
-%setup -q -n bluedevil-%{version}
+%autosetup -p1 -n bluedevil-%{version}
 
 %build
 %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
