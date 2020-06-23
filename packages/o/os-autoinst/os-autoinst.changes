@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 23 11:25:13 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1592908950.5038d8c2:
+  * Add support for TPMv2 emulation via swtpm
+  * Separate lint requires from test requires, don't include in spec
+
+-------------------------------------------------------------------
 Sun Jun 21 04:44:10 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1592629510.d2cc1989:
