@@ -134,4 +134,12 @@
 - Switch to python3, no need to keep python2 around</comment>
     <requestid>492639</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9eec9e08e487850327f5a7e0fdef7fd9</srcmd5>
+    <version>0.13.9</version>
+    <time>1592939171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816509</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Fri Jun 12 07:28:55 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use update-alternatives for the tx binary so users can
+  install in the same system transifex-client and python3-afdko
+
+-------------------------------------------------------------------
+Fri Jun 12 07:04:35 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 0.13.9:
+  * Change symlink loop prevention approach
+
+- Update to 0.13.8:
+  * Tx-client is now able to follow any symbolic links while
+    pushing content to Transifex.
+
+- Update to 0.13.7:
+  * Loosen up dependency versions and support Python 3.8
+  * Add missing description content type in setup.py
+
+- Update to 0.13.6:
+  * Extend Python support
+
+- Update to 0.13.5:
+  * Pin dependencies to avoid incompatibilities between packages
+
+- Update to 0.13.4:
+  * Support Python 3.7
+  * Make the wizard handle unknown file formats gracefully
+
+- Update to 0.13.3:
+  * Use the TX_TOKEN environment variable to set your Transifex API
+    token. This essentially replaces the --token argument in the tx
+    init command, and does not write any credentials in the
+    .transifexrc file.
+  * Add the --no-interactive argument in the tx pull command, for
+    the case where no user input is required. This is needed in
+    some cases where a CI does not want to proceed with user input
+    and needs to fail silently.
+
+- Update to 0.13.2:
+  * Push and pull files more quickly by using the new --parallel
+    option with tx push and tx pull to make parallel requests. This
+    is a beta feature - be careful when using it with many files as
+    it may cause you to hit your API rate limits.
+
+  * --expression is now a named argument for tx config mapping so
+    it’s consistent with the tx config mapping-bulk command with
+    regard to how you pass a file path expression.
+
+  * The algorithm for locating translation files has been optimized
+    to improve performance in cases where you have many files in
+    your working directory.
+
+- Update to 0.13.1:
+  * Fix some python 3 compatibility issues
+  * Fix CI for python 3
+  * Add Python 3.6 in the supported versions
+
+- Update to 0.13.0:
+  * Rename set command to config while maintaining backwards
+    compatibility.
+  * --auto-local, --auto-remote options have become mapping and
+    mapping-remote subcommands. Backwards compatibility has been
+    maintained and the options (and subcommands) are supported both
+    when using tx set and tx config commands.
+  * Introduce mapping-bulk subcommand to tx config command.
+    mapping-bulk is similar to mapping but configures a whole
+    directory of files and not a single file.
+  * Support branch specific push / pull using the --branch option.
+  * Add interactive wizard for tx config command. Interactive wizard
+    is triggered by default after tx init if --skipsetup option is
+    not passed and by the tx config if called without any options
+    or subcommands.
+
+- Update to 0.12.5:
+  * Support for Basic Authentication when using the client behind
+    a proxy
+  * Support for sourceastranslation and onlyreviewed modes when
+    pulling files
+  * Return non-zero exit codes on errors
+  * tx --version now includes information about the Python version
+    and architecture you’re running
+  * Some updates and minor fixes in logging/error messages
+
+-------------------------------------------------------------------
 Wed May  3 12:37:29 UTC 2017 - tchvatal@suse.com
 
 - Version update to 0.12.4:
