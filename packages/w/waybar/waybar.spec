@@ -54,7 +54,7 @@ BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-protocols)
 # requires branding
-Requires:       %{name}-branding >= %{version}
+Requires:       %{name}-branding
 # optional: sway integration
 Recommends:     sway
 

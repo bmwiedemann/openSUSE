@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun  22 17:11:07 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- package shouldn't require specific branding version, just a package
+
+-------------------------------------------------------------------
 Sat Jun  6 07:29:07 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - Add separate branding package
