@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 22 12:27:47 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- Update to 1.6.1
+  - fix warnings on Ubuntu 20.04 ([gh#votca/xtp#438],
+    [gh#votca/xtp#460])
+  - remove obsolete boost define ([gh#votca/xtp#440])
+
+-------------------------------------------------------------------
 Sat Apr 18 04:58:29 UTC 2020 - Christoph Junghans <junghans@votca.org>
 
 - Update to 1.6
