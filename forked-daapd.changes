@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 23 12:00:39 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- fix compile with gcc10 by using -fcommon
+
+-------------------------------------------------------------------
 Wed May 20 06:46:17 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - initial package of version 27.1
