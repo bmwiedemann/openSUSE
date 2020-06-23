@@ -177,4 +177,41 @@ various additional features.</comment>
     <comment></comment>
     <requestid>769355</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a9423d0eeaea58db551050615f89bbc0</srcmd5>
+    <version>1.52.1</version>
+    <time>1592939060</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.52.1
+  * VFS
+    - Fix OS vs Unix path confusion - fixes ChangeNotify on Windows (Nick Craig-Wood)
+  * Drive
+    - Fix missing items when listing using --fast-list / ListR (Nick Craig-Wood)
+  * Putio
+    - Fix panic on Object.Open (Cenk Alti)
+  * S3
+    - Fix upload of single files into buckets without create permission (Nick Craig-Wood)
+    - Fix --header-upload (Nick Craig-Wood)
+  * Tardigrade
+    - Fix listing bug by upgrading to v1.0.7
+    - Set UserAgent to rclone (Caleb Case)
+
+- Update to version 1.52.0
+  * New backends
+    - Tardigrade backend for use with storj.io (Caleb Case)
+    - Union re-write to have multiple writable remotes (Max Sum)
+    - Seafile for Seafile server (Fred @creativeprojects)
+  * New commands
+    - backend: command for backend specific commands (see backends) (Nick Craig-Wood)
+    - cachestats: Deprecate in favour of rclone backend stats cache: (Nick Craig-Wood)
+    - dbhashsum: Deprecate in favour of rclone hashsum DropboxHash (Nick Craig-Wood)
+  * New Features
+    - Add --header-download and --header-upload flags for setting HTTP headers when uploading/downloading (Tim Gallant)
+    - Add --header flag to add HTTP headers to every HTTP transaction (Nick Craig-Wood)
+    - Add --check-first to do all checking before starting transfers (Nick Craig-Wood)
+    - Add --track-renames-strategy for configurable matching criteria for --track-renames (Bernd Schoolmann)
+    - Add --cutoff-mode hard,soft,catious (Shing Kit Chan &amp; Franklyn Tackitt)
+    - Filter flags (eg --files-from -) can read from stdin (fishbullet)</comment>
+    <requestid>813292</requestid>
+  </revision>
 </revisionlist>
