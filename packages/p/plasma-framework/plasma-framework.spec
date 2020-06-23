@@ -38,6 +38,7 @@ Source2:        frameworks.keyring
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Add-property-to-access-the-ExpandableListItem-loader.patch
+Patch2:         0001-Introduce-PlaceholderMessage.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem

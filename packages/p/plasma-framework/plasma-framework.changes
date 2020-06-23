@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 20 09:28:28 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add new component needed to fix label appearance (kde#422684):
+  * 0001-Introduce-PlaceholderMessage.patch
+
+-------------------------------------------------------------------
 Thu Jun 18 15:48:02 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add new API needed by fix for plasma-nm5 (kde#423093):
