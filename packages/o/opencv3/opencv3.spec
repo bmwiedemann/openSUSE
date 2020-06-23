@@ -1,7 +1,7 @@
 #
 # spec file for package opencv3
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,26 @@
 #
 
 
+%define srcname opencv
+%define libname lib%{srcname}
+%define soname 3_4
 # Build failure with LTO enabled on ppc64le boo#1146096
 %ifarch ppc64le
 %define _lto_cflags %{nil}
 %endif
-
-%define srcname opencv
-%define libname lib%{srcname}
-%define soname 3_4
 # disabled by default as many fail
 %bcond_with tests
 %bcond_without qt5
 %bcond_without ffmpeg
+%if 0%{?suse_version} < 1550
 %bcond_without python2
+%else
+%bcond_with    python2
+%endif
 %bcond_without python3
 %bcond_without openblas
-
 Name:           opencv3
-Version:        3.4.9
+Version:        3.4.10
 Release:        0
 Summary:        Collection of algorithms for computer vision
 # GPL-2.0 AND Apache-2.0 files are in 3rdparty/ittnotify which is not build
@@ -43,12 +45,8 @@ URL:            https://opencv.org/
 Source0:        https://github.com/opencv/opencv/archive/%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
 # This is the FACE module from the opencv_contrib package. Packaged separately to prevent too much unstable modules
 Source1:        https://github.com/opencv/opencv_contrib/archive/%{version}.tar.gz#/opencv_contrib-%{version}.tar.gz
-# PATCH-FIX-OPENCSUSE opencv-gles.patch -- Make sure PERSPECTIVE_CORRECTION_HINT is validated first, https://github.com/opencv/opencv/issues/9171
-Patch0:         opencv-gles.patch
 # PATCH-FIX-OPENSUSE opencv-build-compare.patch -- avoid republish if some random external version number changes
 Patch1:         opencv-build-compare.patch
-# PATCH-FIX-OPENSUSE 0001-Do-not-include-glx.h-when-using-GLES.patch -- Fix build error on 32bit ARM, due to incompatible pointer types, https://github.com/opencv/opencv/issues/9171
-Patch2:         0001-Do-not-include-glx.h-when-using-GLES.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libeigen3-devel
@@ -67,9 +65,9 @@ BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libv4lconvert)
 BuildRequires:  pkgconfig(zlib)
+Conflicts:      opencv
 Provides:       opencv-qt5 = %{version}
 Obsoletes:      opencv-qt5 < %{version}
-Conflicts:      opencv
 %if %{with openblas}
 BuildRequires:  openblas-devel
 %endif
@@ -122,9 +120,9 @@ Requires:       pkgconfig(ice)
 Requires:       pkgconfig(sm)
 Requires:       pkgconfig(x11)
 Requires:       pkgconfig(xext)
+Conflicts:      opencv-devel
 Provides:       opencv-qt5-devel = %{version}
 Obsoletes:      opencv-qt5-devel < %{version}
-Conflicts:      opencv-devel
 
 %description devel
 This package contains the OpenCV C/C++ library and header files, as well as
@@ -135,11 +133,11 @@ use the OpenCV library.
 Summary:        Python 2 bindings for apps which use OpenCV
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
+Conflicts:      python2-opencv
 Provides:       python-opencv = %{version}-%{release}
 Obsoletes:      python-opencv < %{version}-%{release}
 Provides:       python-opencv-qt5 = %{version}
 Obsoletes:      python-opencv-qt5 < %{version}
-Conflicts:      python2-opencv
 
 %description -n python2-%{name}
 This package contains Python 2 bindings for the OpenCV library.
@@ -148,9 +146,9 @@ This package contains Python 2 bindings for the OpenCV library.
 Summary:        Python 3 bindings for apps which use OpenCV
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
+Conflicts:      python3-opencv
 Provides:       python3-opencv-qt5 = %{version}
 Obsoletes:      python3-opencv-qt5 < %{version}
-Conflicts:      python3-opencv
 
 %description -n python3-%{name}
 This package contains Python 3 bindings for the OpenCV library.

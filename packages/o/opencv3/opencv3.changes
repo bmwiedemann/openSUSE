@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun 19 12:27:16 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 3.4.10
+  For details, see https://github.com/opencv/opencv/wiki/ChangeLog#version3410
+- Remove obsolete patches:
+  * opencv-gles.patch
+  * 0001-Do-not-include-glx.h-when-using-GLES.patch
+  * opencv-gcc10.patch
+- Disable Python 2 bindings for Tumbleweed
+
+-------------------------------------------------------------------
+Wed Jun  3 07:17:20 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build with GCC10:
+  * opencv-gcc10.patch
+
+-------------------------------------------------------------------
 Wed Feb 19 13:48:01 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Drop Jasper (i.e jpeg2k) support (boo#1130404, boo#1144260)
