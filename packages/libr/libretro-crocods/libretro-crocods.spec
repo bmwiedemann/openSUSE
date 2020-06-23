@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-crocods
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libretro-crocods
-Version:        0~git20190902
+Version:        0~git20200508
 Release:        0
 Summary:        CrocoDS libretro core for Amstrad emulation
 License:        MIT

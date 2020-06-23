@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jun 16 09:27:37 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200508:
+  * psl1ght support
+  * NGC, Wii and WiiU support
+  * Filter-out identical calls to SET_GEOMETRY
+  * Fix disk-reading routines on big-endian
+  * Optimize byteswap
+  * Fix big-endian video rendering
+  * Disk endianness fix
+  * Support big-endian systems
+  * Fix arguments to ReadPort/WritePort
+  * Use retro_endianness instead of SDL_BYTEORDER
+  * Add psp includes
+  * Vita support
+  * Fix 3DS compilation
+  * Fix compilation for android and use retro_endianness.h
+  * hardware keyboard support
+  * New crtc core, OSD keyboard, new menu and much more improvments
+
+-------------------------------------------------------------------
 Tue Oct 22 22:14:00 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
 
 - Initial version
