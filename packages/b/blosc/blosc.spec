@@ -19,7 +19,7 @@
 %define major   1
 %define libname lib%{name}%{major}
 Name:           blosc
-Version:        1.18.1
+Version:        1.19.0
 Release:        0
 Summary:        A blocking, shuffling and lossless compression library
 License:        MIT AND BSD-3-Clause AND BSD-2-Clause
@@ -75,7 +75,8 @@ for %{libname}.
   -DPREFER_EXTERNAL_SNAPPY=ON \
   -DPREFER_EXTERNAL_ZLIB=ON \
   -DPREFER_EXTERNAL_ZSTD=ON \
-  -DPREFER_EXTERNAL_LZ4=ON
+  -DPREFER_EXTERNAL_LZ4=ON \
+  -DBUILD_STATIC=OFF
 %cmake_build
 
 %install
