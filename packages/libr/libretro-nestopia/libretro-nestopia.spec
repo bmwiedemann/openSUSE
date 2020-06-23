@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-nestopia
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libretro-nestopia
-Version:        1.50~git20190921
+Version:        1.50~git20200510
 Release:        0
 Summary:        Nintendo NES / FDS Emulator for Retro-based frontends
 License:        GPL-2.0-only

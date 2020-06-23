@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 16 06:41:17 UTC 2020 - i@guoyunhe.me
+
+- Update to version 1.50~git20200510:
+  * Fix scratchy audio in SMB3 and others
+  * Core options typo fix
+  * Fix MSVC2017
+  * Added gcw0 platform target
+  * Update libretro Makefile
+  * Added support for MMC3 Big CHR-RAM Board
+
+-------------------------------------------------------------------
 Thu Oct 03 20:05:18 UTC 2019 - i@guoyunhe.me
 
 - Update to version 1.50~git20190921
