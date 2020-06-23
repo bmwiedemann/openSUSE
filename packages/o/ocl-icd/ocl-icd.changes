@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 18 10:20:08 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- switch to /usr/etc/OpenCL/vendors for vendor specific .icd files
+  (boo#1173005); currently I'm only aware of Mesa using it (taking
+  care about adjusting this myself); NVIDIA is using its own
+  libOpenCL ...
+
+-------------------------------------------------------------------
 Wed Jun  3 10:56:53 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add ocl-icd-gcc10.patch: Fix build with gcc10 (boo#1172436).

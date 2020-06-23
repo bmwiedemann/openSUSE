@@ -16,6 +16,10 @@
 #
 
 
+%if 0%{?suse_version} < 1550
+  %define _distconfdir /etc
+%endif
+
 Name:           ocl-icd
 Version:        2.2.12
 Release:        0
@@ -73,7 +77,7 @@ use ocl-icd for ICD functionality.
 
 %build
 ./bootstrap
-%configure
+%configure --enable-custom-vendordir=%{_distconfdir}/OpenCL/vendors
 %make_build stamp-generator stamp-generator-dummy
 %make_build
 
