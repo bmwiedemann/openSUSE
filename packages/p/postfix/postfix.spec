@@ -53,7 +53,7 @@
 %bcond_with    libnsl
 %endif
 Name:           postfix
-Version:        3.5.2
+Version:        3.5.3
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        IPL-1.0 OR EPL-2.0

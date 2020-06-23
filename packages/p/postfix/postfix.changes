@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 15 16:09:57 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Update to 3.5.3:
+  * TLS handshake failure in the Postfix SMTP server during SNI
+    processing, after the server-side TLS engine sent a TLSv1.3
+    HelloRetryRequest (HRR) to a remote SMTP client.
+  * The command "postfix tls deploy-server-cert" did not handle a
+    missing optional argument. This bug was introduced in Postfix
+    3.1.
+
+-------------------------------------------------------------------
 Sun May 17 19:57:57 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to 3.5.2:
