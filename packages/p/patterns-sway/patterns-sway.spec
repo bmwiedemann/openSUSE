@@ -19,7 +19,7 @@
 %bcond_with betatest
 
 Name:           patterns-sway
-Version:        20200526
+Version:        20200619
 Release:        0
 Summary:        Patterns for Installation (Sway)
 License:        MIT
@@ -55,7 +55,7 @@ Requires:       swaybg
 Requires:       swayidle
 Requires:       swaylock
 Requires:       waybar
-#Requires:       wofi
+Requires:       wofi
 Requires:       Mesa
 Requires:       alacritty
 Requires:       dmenu
@@ -66,6 +66,10 @@ Recommends:     pulseaudio-utils
 
 Recommends:     system-config-printer
 Recommends:     desktop-data-openSUSE
+
+#openSUSEway brandings
+Recommends:     sway-branding-openSUSE
+Recommends:     waybar-branding-openSUSE
 
 %description sway
 Sway Tiling Wayland Compositor and related tools.

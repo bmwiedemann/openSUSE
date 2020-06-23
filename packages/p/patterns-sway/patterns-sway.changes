@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  19 20:55:10 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Add openSUSEway branding packages as Recomends
+- wofi has landed to the Factory, adding it
+
+-------------------------------------------------------------------
 Thu Jun  5 08:50:08 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - Add dmenu requirement as it is default menu in sway config
