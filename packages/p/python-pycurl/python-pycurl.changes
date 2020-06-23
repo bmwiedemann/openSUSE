@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 22 08:25:46 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec
+
+-------------------------------------------------------------------
 Wed Apr  8 12:05:25 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not pull in py2 package on doc subpkg

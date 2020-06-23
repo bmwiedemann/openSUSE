@@ -114,7 +114,7 @@ fi
 %{python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} \
 nosetests-%{$python_bin_suffix} -v --with-flaky -a "$test_flags" -e 'test_getinfo'
 }
-rm -rf %{buildroot}%{_libexecdir}/debug %{buildroot}%{_libdir}/python*
+rm -rf %{buildroot}%{_prefix}/lib/debug %{buildroot}%{_libdir}/python*
 %endif # test
 
 %if ! %{with test}
