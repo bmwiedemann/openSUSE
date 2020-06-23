@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun 22 22:53:01 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.57.5:
+  * Release v3.57.5
+  * Add logout --other option, to log out from other sessions (#947)
+  * Add redeploy warnings to the user:add and user:delete commands (#946)
+  * Add a couple more user:add examples
+  * Only prompt to add an SSH key if one isn't found locally
+  * Release v3.57.4
+  * Fix: exclude API token session IDs from the autocomplete list
+  * Release v3.57.3
+  * Fix: do not reuse session file storage when an API token is set
+  * Release v3.57.2
+  * Improve session info after logout
+  * Clean the whole session directory on logout
+  * Release v3.57.1
+  * Better ensure the legacy session SSH config file is removed
+  * Silence SSH certificate reload
+
+-------------------------------------------------------------------
 Tue Jun 09 18:55:18 UTC 2020 - jimmy@boombatower.com
 
 - Update to version 3.57.0:
