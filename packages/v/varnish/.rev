@@ -247,4 +247,15 @@
     <comment>- Update to release 6.4.0</comment>
     <requestid>785931</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>16f4a75af8472ffca59be63deec784e8</srcmd5>
+    <version>6.4.0</version>
+    <time>1592939177</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable LTO, this randomly fails during link stage.
+
+- Update Git-Web repository link
+- Set CFLAGS+=-fcommon.</comment>
+    <requestid>816511</requestid>
+  </revision>
 </revisionlist>

@@ -32,8 +32,7 @@ Summary:        Accelerator for HTTP services
 License:        BSD-2-Clause
 Group:          Productivity/Networking/Web/Proxy
 URL:            http://varnish-cache.org/
-#Git-Clone:	git://git.varnish-cache.org/varnish-cache
-#Git-Web:	https://varnish-cache.org/trac/browser
+#Git-Web:	https://github.com/varnishcache/varnish-cache
 Source:         https://varnish-cache.org/_downloads/%name-%version.tgz
 Source3:        varnish.sysconfig
 Source5:        varnish.logrotate
@@ -52,9 +51,7 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 Requires:       c_compiler
 Requires(pre):	%_sbindir/useradd %_sbindir/groupadd
-%if 0%{?suse_version} >= 1010
 Recommends:     logrotate
-%endif
 
 %description
 Varnish is an HTTP accelerator. Often called Reverse Proxy, it is an
@@ -98,7 +95,8 @@ This package holds the development files for varnish.
 %autosetup -p1
 
 %build
-export CFLAGS="%optflags -fstack-protector -Wno-error=clobbered -Werror=maybe-uninitialized"
+%define _lto_cflags %nil
+export CFLAGS="%optflags -fcommon -fstack-protector -Wno-error=clobbered -Werror=maybe-uninitialized"
 %ifarch %ix86
 export CFLAGS="$CFLAGS -ffloat-store -fexcess-precision=standard"
 %endif

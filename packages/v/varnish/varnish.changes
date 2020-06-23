@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 23 07:35:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Disable LTO, this randomly fails during link stage.
+
+-------------------------------------------------------------------
+Tue Jun  9 19:33:32 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update Git-Web repository link
+- Set CFLAGS+=-fcommon.
+
+-------------------------------------------------------------------
 Tue Mar 17 12:59:44 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.4.0
