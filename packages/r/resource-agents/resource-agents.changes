@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Jun 19 14:30:30 UTC 2020 - dakechi@suse.com
+
+- Update to version 4.6.1+git2.b2dcccf1:
+  * mdraid: fix bashism
+  * build: update ChangeLog for 4.6.1
+  * dummypy: make Python 2 compatible
+  * dummypy: build fixes to generate the agent from the .in and generate manpage
+  * build: update ChangeLog for 4.6.0
+  * pgsql: use XML output for better backward and forward compatibility, and "Promoted" keyword to be ready for Pacemaker 2.1
+  * build: fix failing to link if link already exists
+  * ocf_is_ms(): also check OCF_RESKEY_CRM_meta_promotable to make it work w/Pacemaker 2.x
+  * ldirectord: add support for ldaps
+  * exportfs: fix ocft script failure
+  * exportfs: fix bashism
+  * aws-vpc-move-ip: fix bashism
+  * aliyun-vpc-move-ip: fix bashism
+  * podman: fix bashism
+  * docker-compose: fix bashism
+  * mdraid: fix bashism
+  * crypt: fix bashism
+  * Filesystem: set "fast_stop" default to "no" for GFS2 filesystems as they are likely to use more than 6 seconds to stop
+  * build: update ChangeLog for 4.6.0-rc1
+  * Fix _default variables in clvm RA.
+  * exportfs: fix monitor-action in symlink-logic for when directory doesnt exist
+  * nfsserver: prevent error messages when /etc/sysconfig/nfs does not exist
+  * aliyun-vpc-move-ip: Add error log output (#1504)
+  * High: docker-compose: new resource agent (#1499)
+  * podman: make sure to remove containers with lingering exec sessions
+  * tomcat: only create directory during start action
+  * gcp-pd-move: fixes and improvements
+  * nfsserver: fix NFSv4-only support
+  * Medium: Squid: made squid_opts parameter available.
+  * azure-events: handle exceptions in urlopen (#1496)
+  * db2: HADR add STANDBY/REMOTE_CATCHUP_PENDING/DISCONNECTED to correctly promote standby node when master node disappears (e.g. via fencing)
+  * Increase the rabbitmqctl wait timeout during start()
+  * exportfs: add symlink support
+  * Dummy RA in Python (#1490)
+  * Eliminated logging.basicConfig() That method installed a root logger to be used with logging methods. The root logger is a stream logger which sends output to stderr, so every log data ended up in stderr as well
+  * pgsql: support to crm_mon output for Pacemaker-2.0.3.
+  * Replace aws command line with OCF_RESKEY_awscli property. (#1483)
+  * mdraid: new resource agent
+  * crypt: new resource agent (#1477)
+  * Disable google api cache discovery
+  * Importforce should not be a unique parameter.
+  * Mid: postfix: Fixed ocf_exit_reason calling mistake.
+  * Mid: dovecot: Fixed ocf_exit_reason calling mistake.
+  * aws-vpc-move-ip: delete remaining route entries
+  * Increase the security of monitor user in oracle
+  * aws-vpc-route53: add support for public and secondary private IPs
+  * aws-vpc-route53: cleanup and improvements
+  * galera: Fix value used for connecting with the empty password.
+  * ocf-shellfuncs: ocf_is_clone: update comment based on clone-max fix in previous commit
+  * Fix audit issue with secure tmp file (#1468)
+  * ocf-shellfuncs: fix ocf_is_clone() (clone_max can be 0 with cloned resources)
+  * Make secure tmp files (#1467)
+  * redis: run validate-action during start
+
+-------------------------------------------------------------------
 Mon Mar 23 12:27:56 UTC 2020 - dakechi@suse.com
 
 - Update to version 4.5.0+git2.32821fe4:
