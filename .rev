@@ -275,4 +275,12 @@
     <comment>- Do not pull in py2 package on doc subpkg</comment>
     <requestid>792436</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>8158c6406c2a8b1450f49ccf04b75b7b</srcmd5>
+    <version>7.43.0.5</version>
+    <time>1592938874</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816392</requestid>
+  </revision>
 </revisionlist>
