@@ -30,6 +30,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/plasma-vault-%
 Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-vault-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Port-applet-to-use-PlasmaExtras.PlaceholderMessage.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  cmake(KF5Activities) >= %{kf5_version}
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
@@ -82,7 +84,7 @@ This package pulls in dependencies for the plasma-vault cryfs backend.
 %endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build

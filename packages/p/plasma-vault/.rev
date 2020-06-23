@@ -452,4 +452,13 @@
     <comment>Plasma 5.19.1</comment>
     <requestid>815476</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>ac1732e2089f7f087dded9264339b67a</srcmd5>
+    <version>5.19.1</version>
+    <time>1592939120</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix label appearance (kde#422684):
+  * 0001-Port-applet-to-use-PlasmaExtras.PlaceholderMessage.patch</comment>
+    <requestid>816411</requestid>
+  </revision>
 </revisionlist>
