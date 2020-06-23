@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 17 08:40:18 UTC 2020 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- make sure UTF8 locale is used when runnning tests
+  * Sometimes functional tests executed in python3 failed if stdout was not
+    set to UTF-8. The error message was:
+      ValueError: underlying buffer has been detached
+
+-------------------------------------------------------------------
 Mon May 18 07:25:32 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

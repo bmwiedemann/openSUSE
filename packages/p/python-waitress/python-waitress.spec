@@ -75,6 +75,9 @@ python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
 %check
 # Tests require a network connection
 rm waitress/tests/test_adjustments.py
+# make sure utf8 locale is set or tests could fail with:
+#    ValueError: underlying buffer has been detached
+export LANG=en_US.UTF8
 %python_exec setup.py test
 
 %post
