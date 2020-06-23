@@ -1,7 +1,7 @@
 #
 # spec file for package mhvtl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,14 +25,12 @@
 %define mhvtl_home_dir /var/lib/mhvtl
 
 Name:           mhvtl
-Url:            http://sites.google.com/site/linuxvtl2/
-PreReq:         %insserv_prereq %fillup_prereq
+URL:            http://sites.google.com/site/linuxvtl2/
 Version:        1.62
 Release:        0
 Requires:       mhvtl-kmp
 Requires:       module-init-tools
 Requires:       sg3_utils
-BuildRequires:  insserv-compat
 %if 0%{buildkmp} == 1
 BuildRequires:  kernel-syms
 BuildRequires:  module-init-tools
