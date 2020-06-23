@@ -21,7 +21,7 @@
 %endif
 
 %define libname lib%{name}
-%define soname 4_2
+%define soname 4_3
 # disabled by default as many fail
 %bcond_with tests
 %bcond_without gapi
@@ -34,7 +34,7 @@
 %bcond_without python3
 %bcond_without openblas
 Name:           opencv
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        Collection of algorithms for computer vision
 # GPL-2.0 AND Apache-2.0 files are in 3rdparty/ittnotify which is not build
@@ -44,12 +44,6 @@ URL:            https://opencv.org/
 Source0:        https://github.com/opencv/opencv/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # This is the FACE module from the opencv_contrib package. Packaged separately to prevent too much unstable modules
 Source1:        https://github.com/opencv/opencv_contrib/archive/%{version}.tar.gz#/opencv_contrib-%{version}.tar.gz
-# PATCH-FIX-OPENCSUSE opencv-gles.patch -- Make sure PERSPECTIVE_CORRECTION_HINT is validated first, https://github.com/opencv/opencv/issues/9171
-Patch0:         opencv-gles.patch
-# PATCH-FIX-OPENSUSE opencv-build-compare.patch -- avoid republish if some random external version number changes
-Patch1:         opencv-build-compare.patch
-# PATCH-FIX-OPENSUSE 0001-Do-not-include-glx.h-when-using-GLES.patch -- Fix build error on 32bit ARM, due to incompatible pointer types, https://github.com/opencv/opencv/issues/9171
-Patch2:         0001-Do-not-include-glx.h-when-using-GLES.patch
 # PATCH-FIX-OPENSUSE opencv-includedir.patch -- Fix wrong include path in pkgconfig file
 Patch3:         opencv-includedir.patch
 BuildRequires:  cmake
@@ -58,6 +52,8 @@ BuildRequires:  libeigen3-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  memory-constraints
+# OpenJPEGTargets.cmake erroneously requires the binaries
+BuildRequires:  openjpeg2
 BuildRequires:  tbb-devel
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(IlmBase)
@@ -66,6 +62,7 @@ BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(libdc1394-2)
 BuildRequires:  pkgconfig(libgphoto2)
+BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libv4l2)
@@ -235,6 +232,7 @@ rm -f doc/packaging.txt
       -DOPENCV_SKIP_PYTHON_LOADER=ON \
       -DOPENCV_PYTHON2_INSTALL_PATH=%{python2_sitearch} \
       -DOPENCV_PYTHON3_INSTALL_PATH=%{python3_sitearch} \
+      -DOPENCV_DOWNLOAD_TRIES_LIST:STRING="" \
       -DWITH_JASPER=OFF \
 
 make %{?_smp_mflags} VERBOSE=1
