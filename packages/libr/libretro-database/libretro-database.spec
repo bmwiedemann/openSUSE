@@ -17,14 +17,14 @@
 
 
 Name:           libretro-database
-Version:        1.8.7
+Version:        1.8.8
 Release:        0
 Summary:        RetroArch Database
 License:        MIT
 Group:          System/Emulators/Other
 URL:            https://github.com/libretro/%{name}
 
-Source:         https://github.com/libretro/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/libretro/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  fdupes
 BuildRequires:  make
