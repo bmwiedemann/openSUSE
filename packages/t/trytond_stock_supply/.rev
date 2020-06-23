@@ -80,4 +80,12 @@
     <comment>bufix release</comment>
     <requestid>791427</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0e14d7039ac9f14d38a2c6b6383eae0c</srcmd5>
+    <version>5.0.6</version>
+    <time>1592939138</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>816469</requestid>
+  </revision>
 </revisionlist>
