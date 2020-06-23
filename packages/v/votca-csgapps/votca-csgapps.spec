@@ -17,7 +17,7 @@
 #
 
 Name:       votca-csgapps
-Version:    1.6
+Version:    1.6.1
 %define     uversion %{version}
 Release:    0
 Summary:    VOTCA coarse-graining engine applications
