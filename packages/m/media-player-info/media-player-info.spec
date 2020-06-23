@@ -1,7 +1,7 @@
 #
 # spec file for package media-player-info
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %define _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d
-
 Name:           media-player-info
-Version:        23
+Version:        24
 Release:        0
 Summary:        Media Player Information
 # Note on license: some files in the tools subdirectories are GPL-2.0+ (or
@@ -27,17 +26,12 @@ Summary:        Media Player Information
 # Hence, the binary package is indeed still BSD-3-Clause.
 License:        BSD-3-Clause
 Group:          System/GUI/Other
-Url:            http://hal.freedesktop.org/releases/
-Source:         http://www.freedesktop.org/software/media-player-info/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM reproducible.patch bwiedemann@suse.com -- Make build reproducible.
-Patch0:         reproducible.patch
-BuildRequires:  pkg-config
+URL:            https://www.freedesktop.org/wiki/Software/media-player-info/
+Source:         https://www.freedesktop.org/software/media-player-info/%{name}-%{version}.tar.gz
+BuildRequires:  pkgconfig
 BuildRequires:  python3
-BuildRequires:  pkgconfig(udev)
-%if 0%{?suse_version} > 1230
 BuildRequires:  pkgconfig(systemd)
-%endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(udev)
 BuildArch:      noarch
 
 %description
@@ -49,38 +43,31 @@ in the 10-usb-music-players.fdi file but had to be moved elsewhere as part
 of the big HALectomy.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup
 
 %build
 %configure
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
-%makeinstall
+%make_install
 
-%if 0%{?suse_version} > 1230
 %post
-%udev_hwdb_update
+%{udev_hwdb_update}
 %udev_rules_update
 
 %postun
 if [ $1 -eq 0 ]; then
-        %udev_hwdb_update
+        %{udev_hwdb_update}
         %udev_rules_update
 fi
-%endif
 
 %files
-%defattr(-, root, root)
-%doc AUTHORS COPYING NEWS README
-## WARNING: if adding other files to the package, check their license (see note above License tag)
+%license COPYING
+%doc AUTHORS NEWS
 %dir %{_datadir}/media-player-info
 %{_datadir}/media-player-info/*.mpi
-%if 0%{?suse_version} > 1230
 %{_udevhwdbdir}/20-usb-media-players.hwdb
-%endif
 %{_udevrulesdir}/40-usb-media-players.rules
-## WARNING: if adding other files to the package, check their license (see note above License tag)
 
 %changelog
