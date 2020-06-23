@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-craft
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           libretro-craft
-Version:        1.0~git20190627
+Version:        1.0~git20200504
 Release:        0
 Summary:        Craft libretro core
-License:        GPL-3.0
+License:        GPL-3.0-only
 URL:            http://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz
 Patch1:         tinycthread.patch
 
+BuildRequires:  Mesa-devel
 BuildRequires:  gcc
 BuildRequires:  make
-BuildRequires:  Mesa-devel
 
 %description
 Minecraft clone for Windows, Mac OS X and Linux. Just a few thousand lines of C using modern OpenGL (shaders). Online multiplayer support is included using a Python-based server.
