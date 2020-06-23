@@ -1,0 +1,24 @@
+diff -u -r cmrt-1.0.6.orig/src/Makefile.am cmrt-1.0.6/src/Makefile.am
+--- cmrt-1.0.6.orig/src/Makefile.am	2016-09-08 01:51:38.000000000 +0200
++++ cmrt-1.0.6/src/Makefile.am	2020-06-22 19:25:53.324412000 +0200
+@@ -110,7 +110,7 @@
+ libcmrt_la_LTLIBRARIES	= libcmrt.la
+ libcmrt_ladir		= $(libdir)
+ cmrtincludedir		= $(includedir)
+-cmrtconfdir		= $(sysconfdir)
++cmrtconfdir		= /usr/etc
+ libcmrt_la_CFLAGS	= $(cmrt_cflags)
+ libcmrt_la_CXXFLAGS	= -fpermissive $(cmrt_cflags)
+ libcmrt_la_LDFLAGS	= $(cmrt_ldflags)
+diff -u -r cmrt-1.0.6.orig/src/readconf.cpp cmrt-1.0.6/src/readconf.cpp
+--- cmrt-1.0.6.orig/src/readconf.cpp	2016-09-08 01:51:38.000000000 +0200
++++ cmrt-1.0.6/src/readconf.cpp	2020-06-22 18:02:56.253756000 +0200
+@@ -57,6 +57,8 @@
+         const char* filename = SYSCONFDIR"/cmrt.conf";
+ 
+         std::ifstream file(filename);
++	if (!file)
++	    std::ifstream file("/usr/etc/cmrt.conf");
+         char line[1024];
+         while (file.getline(line, 1024))
+         {

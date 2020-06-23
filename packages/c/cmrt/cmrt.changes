@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 23 07:35:00 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update Group lines.
+
+-------------------------------------------------------------------
+Mon Jun 22 17:43:31 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- n_UsrEtc.patch
+  * switch to /usr/etc location for cmrt.conf (boo#1173035)
+
+-------------------------------------------------------------------
 Thu Sep 21 12:20:24 UTC 2017 - sndirsch@suse.com
 
 - fixed build on Leap (apparently there is no %make_build macro yet) 

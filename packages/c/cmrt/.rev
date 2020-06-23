@@ -7,4 +7,15 @@
     <comment>Initial packaging of cmrt in openSUSE, version 1.0.6, needed by intel-hybrid-driver</comment>
     <requestid>528051</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>96068f349de08daeef302bb2aa6744b9</srcmd5>
+    <version>1.0.6</version>
+    <time>1592939081</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Group lines.
+
+- n_UsrEtc.patch
+  * switch to /usr/etc location for cmrt.conf (boo#1173035)</comment>
+    <requestid>816544</requestid>
+  </revision>
 </revisionlist>
