@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Jun 19 05:49:18 UTC 2020 - rbrown@suse.com
+
+- Update to version 1.17.7:
+  * Fix fieldType being dropped by older go-clients
+  * FieldManager: Reset if we receive nil or a list with one empty item
+  * enable floating IP for IPv6
+  * Extend AWS azToRegion method to support Local Zones and other partitions
+  * kubelet: block non-forwarded packets from crossing the localhost boundary
+  * Deflake port-forward e2e test
+  * Skip Pod Conditions from scheduling queue updates
+  * add test for finalizers
+  * skip unnecessary scheduling attempt when pod's finalizers change
+  * set dest prefix and port for IPv6 sg rule
+  * Create class to call function at most every given period
+  * fieldManager: Ignore and log all errors when updating managedFields
+  * Make kubectl tolerate other versions of the CSR API
+  * Changes to ManagedFields is not mutation for GC
+  * fix a number of unbounded dimensions in request metrics
+  * build: Use debian-hyperkube-base@v1.0.0 image
+  * Source CNI plugins from gs://k8s-artifacts-cni/release
+  * Update CNI to v0.8.6
+  * releng: Remove debian-hyperkube-base image building from this branch
+  * Fix public IP not shown issues after assigning public IP to Azure VMs
+  * fix: formating and typo
+  * fix: address test failure and review comments
+  * fix: add unit tests for truncate long subnet name on lb ip configuration
+  * fix: should truncate long subnet name on lb rules
+  * Update CHANGELOG/CHANGELOG-1.17.md for v1.17.6
+  * kubeadm: fix flakes when performing etcd MemberAdd on slower setups
+  * Add back anti-affinity to kube-dns pods.
+  * Check for empty zone string
+  * Azure - do not use 0 zone or empty string for zone when creating PVs
+  * Fix client-ca dynamic reload in apiserver
+  * Make updateAllocatedDevices() as a public method and call it in podresources api
+
+-------------------------------------------------------------------
 Wed Jun 10 11:57:57 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Add reproducible-buildid.patch to make package build reproducible
