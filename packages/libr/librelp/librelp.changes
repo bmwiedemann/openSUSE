@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 18 13:54:50 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- librelp 1.6.0:
+  * fix namespace pollution
+  * replsess: fix double free of sendbuf in some cases
+  * improve support for libressl
+  * Modified GnuTLS priority according to standard crypto-policy
+    guideline
+  * tcp: Missing pUsr Copy to relpTcp Pointer fixed in
+    relpTcpAcceptConnReq
+  * report io errors for plain tcp connections
+
+-------------------------------------------------------------------
 Tue Feb 25 19:49:40 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - librelp 1.5.0:
