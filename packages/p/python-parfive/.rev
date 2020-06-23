@@ -15,4 +15,24 @@
     <comment></comment>
     <requestid>726053</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0f23b89b43fafa48435da026c1bc943f</srcmd5>
+    <version>1.1.0</version>
+    <time>1592939175</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Features
+    + Add concurent requests to parfive. This feature splits the download of a single file into multiple parts if the server the file is being downloaded from supports ranged requests. This should improve the performance of all downloads under these circumstances, and also make parfive useful even if downloading a single file. No changes are needed to use this feature, files will be downloaded using 12 concurrent requests by default. To change the number of concurrent requests you can pass max_splits to parfive.Downloader.enqueue_file. (#15)
+    + Added CLI interface to Parfive. (#16)
+    + Parfive now only supports Python 3.6+. (#22)
+    + Support for specifying headers to be used for all requests to parfive.Downloader has been added. (#32)
+    + Support for HTTP_PROXY and HTTPS_PROXY environment variables have been added. (#32)
+  * Bugfixes
+    + Fix a bug where running parfive in the notebook would error if ipywidgets was not installed. (#25)
+    + Remove use of the deprecated loop= keyword argument to aiohttp.ClientSession. (#30)
+    + Update the notebook detection function due to changes in tqdm (#36)
+    + Reduce the number of parallel connections to 25 (5 parallel files, 5 parallel downloads per file). (#37)
+- Sprinkle in update-alternatives for parfive wrapper.</comment>
+    <requestid>816513</requestid>
+  </revision>
 </revisionlist>
