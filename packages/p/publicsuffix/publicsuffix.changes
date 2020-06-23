@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jun 19 13:47:32 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20200616:
+  * Fix broken links in nic.lk (#1053)
+  * Remove fastpanel.direct for FASTVPS EESTI OU (#1024)
+  * Add gitpage.si to private domains section (#1013)
+  * add hostyhosting.io (#1046)
+  * Add wien.funkfeuer.at to private section (#1041)
+  * Update public_suffix_list.dat (#1029)
+  * Update public_suffix_list.dat (#1050)
+  * Add plesk.page and pleskns.com suffix to private section (#1048)
+  * gTLD autopull: 2020-06-11 (#1049)
+  * gTLD autopull: 2020-06-05 (#1047)
+  * gTLD autopull: 2020-05-28 (#1045)
+  * gTLD autopull: 2020-05-27 (#1044)
+  * add g.vbrplsbx.io domain (#994)
+  * Jelastic public domains are added (#1023)
+  * Add vercel.app and vercel.dev and update now.sh listing in private section (#1019)
+  * Add *.backyards.banzaicloud.io and *.banzai.cloud (#1025)
+  * add seidat.net private domain (#974)
+  * Added gentlentapis.com (#984)
+  * Update public_suffix_list.dat (#1037)
+  * Remove bitballoon.com and netlify.com (#1020)
+  * Add *.owo.codes (#973)
+  * Add plesk.page and pdns.page suffix to private section (#1022)
+  * Add kasserver.com to Private Section (#1016)
+  * Update Linode PSL entries (#1026)
+  * Add fly.io suffixes (#1015)
+  * Update public_suffix_list.dat (#1000)
+  * Add Voxel.sh DNS public suffixes (#1014)
+
+-------------------------------------------------------------------
 Mon May 18 08:27:57 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20200506 (bsc#1171819):
