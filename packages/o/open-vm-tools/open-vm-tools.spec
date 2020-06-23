@@ -37,11 +37,6 @@
 # X modules are lower prio upstream and once in a while fail. Offer an easy way to enable/disable them.
 %define with_X 1
 
-# VMware has asked to not build the service discovery plugin until they have
-# removed the netstat dependency.
-%define         with_sdmp 0
-%define         arg_servicediscovery --without-servicediscovery
-
 Name:           open-vm-tools
 %define subname open-vm-tools
 %define tarname open-vm-tools
@@ -142,6 +137,9 @@ ExclusiveArch:  %ix86 x86_64
 #Upstream patches
 Patch0:         gcc10-warning.patch
 Patch1:         pam-vmtoolsd.patch
+Patch2:         sdmp-warnings.patch
+Patch3:         sdmp-get-version.patch
+Patch4:         sdmp-netstat-to-ss.patch
 
 %if 0%{?suse_version} >= 1500
 %systemd_ordering
@@ -190,7 +188,6 @@ This package contains only the user-space programs and libraries of
 machines.
 %endif
 
-%if %{with_sdmp}
 %package        sdmp
 Summary:        Service Discovery Plugin
 Group:          System Environment/Libraries
@@ -198,7 +195,6 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description      sdmp
 Service Discovery Plugin
-%endif
 
 %package -n libvmtools0
 Summary:        Open Virtual Machine Tools - shared library
@@ -225,6 +221,9 @@ sed -i -e "s/\r//" README
 #Upstream patches
 %patch0 -p2
 %patch1 -p2
+%patch2 -p2
+%patch3 -p2
+%patch4 -p2
 
 %build
 %if %{with_X}
@@ -260,7 +259,7 @@ chmod 755 configure
     %{?arg_xerces} \
     --with-udev-rules-dir=%{_udevrulesdir} \
     --enable-resolutionkms \
-    %{?arg_servicediscovery} \
+    --enable-servicediscovery \
     --disable-static
 make
 
@@ -358,10 +357,8 @@ install -D -m 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/modprobe.d/50-vmnics.co
 
 %endif
 
-%if %{with_sdmp}
 %post sdmp
 systemctl try-restart vmtoolsd.service || :
-%endif
 
 %preun
 %service_del_preun vmtoolsd.service
@@ -383,11 +380,9 @@ fi
 %endif
 /sbin/ldconfig
 
-%if %{with_sdmp}
 %postun sdmp
 # restart tools without plugin
 systemctl try-restart vmtoolsd.service || :
-%endif
 
 %post -n libvmtools0 -p /sbin/ldconfig
 
@@ -482,7 +477,6 @@ rm -rf %{buildroot}
 
 %endif
 
-%if %{with_sdmp}
 %files sdmp
 %dir %{_libdir}/%{name}/serviceDiscovery/
 %dir %{_libdir}/%{name}/serviceDiscovery/scripts/
@@ -491,7 +485,6 @@ rm -rf %{buildroot}
 %{_libdir}/%{name}/serviceDiscovery/scripts/get-listening-process-info.sh
 %{_libdir}/%{name}/serviceDiscovery/scripts/get-listening-process-perf-metrics.sh
 %{_libdir}/%{name}/serviceDiscovery/scripts/get-versions.sh
-%endif
 
 %files -n libvmtools0
 %defattr(-, root, root)

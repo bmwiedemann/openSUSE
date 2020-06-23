@@ -1,0 +1,25 @@
+commit 2141bda9c0c424b8a1407940642676b2b8d53499
+Author: Oliver Kurth <okurth@vmware.com>
+Date:   Wed Jun 10 12:05:45 2020 -0700
+
+    SDMP plugin logs warning message every 5 minute if there is no
+    Namespace DB instance created on a VM.  Changing the log level to
+    debug to solve the problem.
+
+diff --git a/open-vm-tools/services/plugins/serviceDiscovery/serviceDiscovery.c b/open-vm-tools/services/plugins/serviceDiscovery/serviceDiscovery.c
+index 87dd5893..c6c2e1dc 100644
+--- a/open-vm-tools/services/plugins/serviceDiscovery/serviceDiscovery.c
++++ b/open-vm-tools/services/plugins/serviceDiscovery/serviceDiscovery.c
+@@ -381,9 +381,9 @@ ReadData(ToolsAppCtx *ctx,
+    status = SendRpcMessage(ctx, DynBuf_Get(&buf), DynBuf_GetSize(&buf),
+                            resultData, resultDataLen);
+    if (!status) {
+-      g_warning("%s: Read over RPC failed, result: %s, resultDataLen: %" FMTSZ
+-                "u\n", __FUNCTION__, (*resultData != NULL) ?
+-                *resultData : "(null)", *resultDataLen);
++      g_debug("%s: Read over RPC failed, result: %s, resultDataLen: %" FMTSZ
++              "u\n", __FUNCTION__, (*resultData != NULL) ?
++              *resultData : "(null)", *resultDataLen);
+    }
+ done:
+    DynBuf_Destroy(&buf);

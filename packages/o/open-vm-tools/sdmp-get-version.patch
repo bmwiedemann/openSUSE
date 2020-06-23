@@ -1,0 +1,44 @@
+commit 99a1a5ea0db308b88301f3c37c8458a255b8c473
+Author: Oliver Kurth <okurth@vmware.com>
+Date:   Tue May 26 15:32:58 2020 -0700
+
+    serviceDiscovery: Updating 'get-versions.sh' script
+    
+    The following changes have been made:
+    
+    1. Environment variable 'ALIVE_BASE' is used to construct the path of
+       the file where vcops version is stored.  The variable is not avialable
+       when running the script inside serviceDiscovery plugin process, so a
+       hardcoded path is used.
+    
+    2. Added command to retrieve tcserver version
+
+diff --git a/open-vm-tools/services/plugins/serviceDiscovery/get-versions.sh b/open-vm-tools/services/plugins/serviceDiscovery/get-versions.sh
+index 496c95eb..b74d1715 100644
+--- a/open-vm-tools/services/plugins/serviceDiscovery/get-versions.sh
++++ b/open-vm-tools/services/plugins/serviceDiscovery/get-versions.sh
+@@ -23,7 +23,7 @@ get_version() {
+ }
+ 
+ get_vcops_version() {
+-  cat $ALIVE_BASE/user/conf/lastbuildversion.txt 2>/dev/null
++  cat /usr/lib/vmware-vcops/user/conf/lastbuildversion.txt 2>/dev/null
+ }
+ 
+ get_srm_mgt_server_version() {
+@@ -76,10 +76,15 @@ get_db2_version() {
+   db2level 2>/dev/null | grep "DB2 v"
+ }
+ 
++get_tcserver_version() {
++  command -v tcserver >/dev/null 2>&1 && { tcserver version 2>/dev/null; }
++}
++
+ echo VERSIONSTART "vcops_version" "$(get_vcops_version)" VERSIONEND
+ echo VERSIONSTART "srm_mgt_server_version" "$(get_srm_mgt_server_version)" VERSIONEND
+ echo VERSIONSTART "vcenter_appliance_version" "$(get_vcenter_appliance_version)" VERSIONEND
+ echo VERSIONSTART "db2_version" "$(get_db2_version)" VERSIONEND
++echo VERSIONSTART "tcserver_version" "$(get_tcserver_version)" VERSIONEND
+ 
+ get_version "/\S+/(httpd-prefork|httpd|httpd2-prefork)($|\s)" -v
+ get_version "/usr/(bin|sbin)/apache\S*" -v

@@ -1,6 +1,6 @@
 --- a/open-vm-tools/scripts/linux/pam.d/vmtoolsd
 +++ b/open-vm-tools/scripts/linux/pam.d/vmtoolsd
-@@ -1,7 +1,6 @@
+@@ -1,7 +1,5 @@
  #%PAM-1.0
 -auth       required         pam_shells.so
 -auth       sufficient       pam_unix.so shadow
@@ -10,6 +10,5 @@
 -account    required         pam_unix_acct.so
 +auth     required       pam_shells.so
 +auth     requisite      pam_nologin.so
-+auth     [user_unknown=ignore success=ok ignore=ignore auth_err=die default=bad]    pam_securetty.so
 +auth     include        common-auth
 +account  include        common-account
