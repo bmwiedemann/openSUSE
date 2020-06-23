@@ -1,7 +1,7 @@
 #
 # spec file for package bumblebee-status
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           bumblebee-status
-Version:        1.6.1
+Version:        2.0.2
 Release:        0
 Summary:        Modular, theme-able status line generator for the i3 window manager
 License:        MIT
@@ -36,77 +36,22 @@ Requires:       python3-requests
 Recommends:     fontaweseome-fonts
 Recommends:     powerline-fonts
 BuildArch:      noarch
+Provides:       bumblebee-status-module-cmus = 1.6.1
+Obsoletes:      bumblebee-status-module-cmus <= 1.6.1
+Provides:       bumblebee-status-module-dnf = 1.6.1
+Obsoletes:      bumblebee-status-module-dnf <= 1.6.1
+Provides:       bumblebee-status-module-mocp = 1.6.1
+Obsoletes:      bumblebee-status-module-mocp <= 1.6.1
+Provides:       bumblebee-status-module-mpd = 1.6.1
+Obsoletes:      bumblebee-status-module-mpd <= 1.6.1
+Provides:       bumblebee-status-module-redshift = 1.6.1
+Obsoletes:      bumblebee-status-module-redshift <= 1.6.1
 
 %description
 bumblebee-status is a modular, themeable status line generator for the i3 window manager.
 It supports theming and does not require any configuration files.
 
 You can use the mouse wheel up/down to switch workspaces forward and back everywhere throughout the bar.
-
-%package module-cmus
-Summary:        Widget to show information about the current song in cmus
-Group:          System/Monitoring
-Requires:       cmus
-Supplements:    packageand(%{name}:cmus)
-BuildArch:      noarch
-
-%description module-cmus
-Displays information about the current song in cmus via cmus-remote.
-
-It takes a parameter (cmus.format) which customizes how the song
-is displayed. Tag values can be put in curly brackets, (i.e., {artist}).
-
-%package module-dnf
-Summary:        Widget to display DNF package update information
-Group:          System/Monitoring
-Requires:       dnf
-Supplements:    packageand(%{name}:dnf)
-BuildArch:      noarch
-
-%description module-dnf
-Displays DNF package update information (<security>/<bugfixes>/<enhancements>/<other>)
-via dnf.
-
-It takes a parameter (dnf.interval) which controls the time in seconds
-between two consecutive update checks (default = 30 minutes)
-
-%package module-mpd
-Summary:        Widget to display information about the current song in mpd
-Group:          System/Monitoring
-Requires:       mpclient
-Supplements:    packageand(%{name}:mpd)
-BuildArch:      noarch
-
-%description module-mpd
-Displays information about the current song in mpd (via mpc)
-
-Takes two parameters:
-  * mpd.format: Format string for the song information. Tag values can
-    be put in curly brackets (i.e. {artist})
-  * mpd.host: MPD host to connect to. (mpc behaviour by default)
-
-%package module-redshift
-Summary:        Widget to display the current color temperature of redshift
-Group:          System/Monitoring
-Requires:       redshift
-Supplements:    packageand(%{name}:redshift)
-BuildArch:      noarch
-
-%description module-redshift
-Displays the current color temperature of redshift. Takes no parameters.
-
-%package module-mocp
-Summary:        Widget to display information about the current song in moc
-Group:          System/Monitoring
-Requires:       moc
-Supplements:    packageand(%{name}:moc)
-BuildArch:      noarch
-
-%description module-mocp
-Displays information about the current song in moc, via mocp.
-
-Takes one parameter (mocp.format) that formats song information. Tag values can
-be put in curly brackets (i.e. {artist})
 
 %prep
 %setup -q
@@ -130,103 +75,24 @@ ln -s %{_datadir}/%{name}/%{name} %{buildroot}%{_bindir}/%{name}
 # 2. remove modules:
 #    * pacman (only usable on arch linux)
 #    * stock (relies on deprecated Yahoo API)
-rm -f bumblebee/modules/{pacman,stock}.py
+#    * apt (debian)
+rm -f bumblebee/modules/{pacman,stock,apt}.py
 
 # 3. copy files from source
-cp -a --parents %{name} bumblebee/{,modules/}*.py themes/{,icons/}*.json \
+cp -a --parents %{name} bumblebee_status/{,modules/}*.py themes/{,icons/}*.json \
 %{buildroot}%{_datadir}/%{name}
 
 %files
 %license LICENSE
 %doc README.md
 %dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/bumblebee
-%dir %{_datadir}/%{name}/bumblebee/modules
 %dir %{_datadir}/%{name}/themes
 %dir %{_datadir}/%{name}/themes/icons
 %dir %{_datadir}/licenses/%{name}
 %{_bindir}/%{name}
-%{_datadir}/%{name}/%{name}
-%{_datadir}/%{name}/bumblebee/__init__.py
-%{_datadir}/%{name}/bumblebee/config.py
-%{_datadir}/%{name}/bumblebee/engine.py
-%{_datadir}/%{name}/bumblebee/error.py
-%{_datadir}/%{name}/bumblebee/input.py
-%{_datadir}/%{name}/bumblebee/modules/__init__.py
-%{_datadir}/%{name}/bumblebee/modules/amixer.py
-%{_datadir}/%{name}/bumblebee/modules/battery.py
-%{_datadir}/%{name}/bumblebee/modules/bluetooth.py
-%{_datadir}/%{name}/bumblebee/modules/brightness.py
-%{_datadir}/%{name}/bumblebee/modules/caffeine.py
-%{_datadir}/%{name}/bumblebee/modules/cpu.py
-%{_datadir}/%{name}/bumblebee/modules/currency.py
-%{_datadir}/%{name}/bumblebee/modules/datetime.py
-%{_datadir}/%{name}/bumblebee/modules/disk.py
-%{_datadir}/%{name}/bumblebee/modules/error.py
-%{_datadir}/%{name}/bumblebee/modules/getcrypto.py
-%{_datadir}/%{name}/bumblebee/modules/github.py
-%{_datadir}/%{name}/bumblebee/modules/gpmdp.py
-%{_datadir}/%{name}/bumblebee/modules/kernel.py
-%{_datadir}/%{name}/bumblebee/modules/layout-xkb.py
-%{_datadir}/%{name}/bumblebee/modules/layout.py
-%{_datadir}/%{name}/bumblebee/modules/load.py
-%{_datadir}/%{name}/bumblebee/modules/memory.py
-%{_datadir}/%{name}/bumblebee/modules/nic.py
-%{_datadir}/%{name}/bumblebee/modules/nvidiagpu.py
-%{_datadir}/%{name}/bumblebee/modules/ping.py
-%{_datadir}/%{name}/bumblebee/modules/publicip.py
-%{_datadir}/%{name}/bumblebee/modules/pulseaudio.py
-%{_datadir}/%{name}/bumblebee/modules/sensors.py
-%{_datadir}/%{name}/bumblebee/modules/spacer.py
-%{_datadir}/%{name}/bumblebee/modules/spotify.py
-%{_datadir}/%{name}/bumblebee/modules/taskwarrior.py
-%{_datadir}/%{name}/bumblebee/modules/test.py
-%{_datadir}/%{name}/bumblebee/modules/title.py
-%{_datadir}/%{name}/bumblebee/modules/todo.py
-%{_datadir}/%{name}/bumblebee/modules/traffic.py
-%{_datadir}/%{name}/bumblebee/modules/weather.py
-%{_datadir}/%{name}/bumblebee/modules/xrandr.py
-%{_datadir}/%{name}/bumblebee/modules/hipchat.py
-%{_datadir}/%{name}/bumblebee/modules/rotation.py
-%{_datadir}/%{name}/bumblebee/modules/shortcut.py
-%{_datadir}/%{name}/bumblebee/modules/uptime.py
-%{_datadir}/%{name}/bumblebee/modules/zpool.py
-%{_datadir}/%{name}/bumblebee/output.py
-%{_datadir}/%{name}/bumblebee/popup.py
-%{_datadir}/%{name}/bumblebee/store.py
-%{_datadir}/%{name}/bumblebee/theme.py
-%{_datadir}/%{name}/bumblebee/util.py
-%{_datadir}/%{name}/themes/sac_red.json
-%{_datadir}/%{name}/themes/wal-powerline.json
-%{_datadir}/%{name}/themes/default.json
-%{_datadir}/%{name}/themes/gruvbox-powerline.json
-%{_datadir}/%{name}/themes/gruvbox.json
-%{_datadir}/%{name}/themes/icons/ascii.json
-%{_datadir}/%{name}/themes/icons/awesome-fonts.json
-%{_datadir}/%{name}/themes/icons/paxy97.json
-%{_datadir}/%{name}/themes/icons/test.json
-%{_datadir}/%{name}/themes/greyish-powerline.json
-%{_datadir}/%{name}/themes/powerline.json
-%{_datadir}/%{name}/themes/solarized-dark-awesome.json
-%{_datadir}/%{name}/themes/solarized-powerline.json
-%{_datadir}/%{name}/themes/solarized.json
-%{_datadir}/%{name}/themes/test.json
-%{_datadir}/%{name}/themes/test_cycle.json
-%{_datadir}/%{name}/themes/test_invalid.json
-
-%files module-cmus
-%{_datadir}/%{name}/bumblebee/modules/cmus.py
-
-%files module-dnf
-%{_datadir}/%{name}/bumblebee/modules/dnf.py
-
-%files module-mpd
-%{_datadir}/%{name}/bumblebee/modules/mpd.py
-
-%files module-redshift
-%{_datadir}/%{name}/bumblebee/modules/redshift.py
-
-%files module-mocp
-%{_datadir}/%{name}/bumblebee/modules/mocp.py
+%{_datadir}/%{name}/bumblebee-status
+%{_datadir}/%{name}/bumblebee_status/
+%{_datadir}/%{name}/themes/*.json
+%{_datadir}/%{name}/themes/icons/*.json
 
 %changelog

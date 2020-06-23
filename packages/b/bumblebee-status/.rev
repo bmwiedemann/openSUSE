@@ -87,4 +87,41 @@
 </comment>
     <requestid>597602</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3ca5b5742c12e4c792ee2774873dbf42</srcmd5>
+    <version>2.0.2</version>
+    <time>1592939110</time>
+    <user>dimstar_suse</user>
+    <comment>- Obsolute/provide old submodules:
+  * bumblebee-status-module-cmus
+  * bumblebee-status-module-dnf
+  * bumblebee-status-module-mocp
+  * bumblebee-status-module-mpd
+  * bumblebee-status-module-redshift
+
+- Update to 2.0.2:
+  * #660 - fix problems in nic when using wireguard tunnels
+
+- Update to 2.0.1:
+  * fixing #658 (regression in shell module)
+
+- Update to 2.0.0:
+  * The changes in this release are really too big to list
+    it's a rewrite of bumblebee-status, with a focus on greater
+	extensibility and better code testing coverage.
+	The documentation is much nicer now.
+  * This release probably contains numerous bugs and regressions.
+
+- Update to 1.10.4:
+  Modules:
+  * libvirtvms - thanks to @rriggs-pk / @maxpivo
+  * bluetooth2 - thanks to @martindoublem
+  * smartstatus - thanks to @martindoublem
+  * watson - thanks to @bendardenne
+  Themes:
+  * added nord-powerline - thanks to @jsy1001
+  Improvements:
+  * i3 output refactoring - thanks to @somospocos</comment>
+    <requestid>816535</requestid>
+  </revision>
 </revisionlist>

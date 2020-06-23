@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Tue Jun 23 09:30:27 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Obsolute/provide old submodules:
+  * bumblebee-status-module-cmus
+  * bumblebee-status-module-dnf
+  * bumblebee-status-module-mocp
+  * bumblebee-status-module-mpd
+  * bumblebee-status-module-redshift
+
+-------------------------------------------------------------------
+Tue Jun 23 09:25:38 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.2:
+  * #660 - fix problems in nic when using wireguard tunnels
+
+-------------------------------------------------------------------
+Mon Jun 22 08:37:58 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.1:
+  * fixing #658 (regression in shell module)
+
+-------------------------------------------------------------------
+Mon Jun 22 08:36:25 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.0:
+  * The changes in this release are really too big to list
+    it's a rewrite of bumblebee-status, with a focus on greater
+	extensibility and better code testing coverage.
+	The documentation is much nicer now.
+  * This release probably contains numerous bugs and regressions.
+
+-------------------------------------------------------------------
+Fri May 22 09:02:20 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.4:
+  Modules:
+  * libvirtvms - thanks to @rriggs-pk / @maxpivo
+  * bluetooth2 - thanks to @martindoublem
+  * smartstatus - thanks to @martindoublem
+  * watson - thanks to @bendardenne
+  Themes:
+  * added nord-powerline - thanks to @jsy1001
+  Improvements:
+  * i3 output refactoring - thanks to @somospocos
+  * added experimental pango support - thanks to @somospocos
+  * new tool bumblebee-ctl to trigger mouse events via CLI
+  * add option to align scrolling left/right/center
+  * cpu2 theme colors - thanks to @somospocos
+  * better docker_ps output - thanks to @martindoublem
+  * improvements to sun module - thanks to @soykan
+  * improvements to sensors2 - thanks to @martindoublem
+  * misc small improvements - thanks to @soykan
+  Bugfixes:
+  * pulseaudio: only start daemon if it's not running already
+  * pomodoro: refresh bugfix - thanks to @RomainGehrig
+
+-------------------------------------------------------------------
+Tue Mar 31 10:39:03 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.3:
+  * Bugfix release to make PIP/PyPI packaging work correctly.
+- Changes from 1.10.0:
+  New modules:
+  * pomodoro (thanks to @martindoublem and @karthink )
+  * deezer (thanks to @wwmoraes )
+  * battery-upower (thanks to @martindoublem )
+  * shell (thanks to @rrhuffy )
+  * hddtemp (thanks to @somospocos)
+  * layout-xkbswitch (thanks to @somospocos)
+  * cpu2 (thanks to @somospocos)
+  * braille support (thanks to @somospocos)
+  * horizontal/vertical chart support (thanks to @somospocos)
+  New themes:
+  * dracula-powerline (thanks to @xsteadfastx )
+  New features:
+  * docker support (thanks to @brianlechthaler )
+  * spotify is now scrollable (thanks to @joshbarrass )
+  * pip module! (thanks to @tony )
+  Bugfixes and improvements:
+  * deadbeef improvements (thanks to @joshbarrass )
+  * zfs improvements (thanks to @Ninpo )
+  * vpn improvements (thanks to Stijn van Campenhout)
+  * timezone handling improvements (thanks to @cphyc )
+  * cpu improvements (thanks to Ivan Chinenov)
+  * bluetooth improvements (thanks to @piyueh )
+  * mpd improvements (thanks to @somospocos)
+  * weather improvements (thanks to @CPrompt )
+  * battery improvements (@hoamer )
+  * apt improvements (thanks to Piotr Piorkowski)
+  * pacman module improvements
+- Remove subpackages: there are too many modules in bumblebee-status
+  adding each as a subpackage will become a chore and the package will
+  never get updated by anybody
+
+-------------------------------------------------------------------
 Tue Apr 17 11:48:45 UTC 2018 - jengelh@inai.de
 
 - Ensure summaries are noun phrases
