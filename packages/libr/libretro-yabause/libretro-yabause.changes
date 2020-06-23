@@ -1,4 +1,454 @@
 -------------------------------------------------------------------
+Tue Jun 16 05:53:50 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200605:
+  * Restore IllumOS build
+  * enable Solaris build
+  * (libretro) Oops, fix a typo
+  * (MSVC 2017/Libretro) Buildfix
+  * Update Makefile
+  * Enable Haiku build
+  * (iOS/tvOS) support building
+  * (libretro) disable debug tools
+  * (libretro) update cd-libretro.c
+  * Add Classic consoles
+  * Turkish Language Option
+  * libretro/Makefile: add platform unix if platform armv
+  * (libretro) some more fix/refactoring
+  * (libretro) some more fix/refactoring
+  * (libretro) remove stupid rule in gitignore
+  * (libretro) trying to enable jit
+  * (libretro) update jni
+  * (libretro) rebase port against latest yabause sources
+  * Fixed gtk port compilation
+  * Fix qt 5.11 (#422)
+  * Updating translations for yabause/l10n/yabause_es_419.yts
+  * Fixed Cocoa port
+  * Added YAB_WANT_GLUT compile option
+  * Fixed emulator's internal backup memory data access. This problem was happening only with saves having a specific data size. (#410)
+  * Add translation and fix mistranslation for Korean
+  * Add translation for Korean
+  * Updating translations for yabause/l10n/yabause_tr.yts
+  * Updating translations for yabause/l10n/yabause_nl.yts
+  * Apparently clang agrees with me
+  * Added doxygen function documentation for all functions in netlink.c
+  * Fixed a couple of issues relating to travis-ci compiling
+  * Added doxygen function documentation for all functions in cs2.c
+  * Fix issue with not conforming to ISO C90 standards
+  * Enumerate each command table in QT VDP1 debug window
+  * ygles: avoid potentially calling strstr on a null pointer
+  * ygl.h: avoid multiple GL header include warning
+  * Updating translations for yabause/l10n/yabause_ru.yts
+  * Detection of OpenGL failure and fallback
+  * Turning off dynarec by default
+  * fix wrong Category and building in openSUSE OBS (#355)
+  * Updating translations for yabause/l10n/yabause_sv.yts
+  * Updating translations for yabause/l10n/yabause_es.yts
+  * Updating translations for yabause/l10n/yabause_de.yts
+  * Support for different Android platforms (#351)
+  * Rewrote thread sleep/wake for Linux (#348)
+  * Handling runtime permissions for Android >= 6 (#346)
+  * Moved linux default data dir to sane location
+  * Added prohibited color mode 6 (#341)
+  * Enable all color calculation modes for RGB (#339)
+  * Fixed button positions for new images
+  * Added new icons for resources
+  * Added arm64-v8a ABI and fixed a bug in CMakeLists
+  * Storing read result in a size_t is not a good idea
+  * Using QFile::encodeName to convert paths (#336)
+  * Made it possible to choose android ABI (#335)
+  * Improve Android build (#332)
+  * peripheral/qt: add support for virtual on twin sticks
+  * Fixed various problems in Android port (#328)
+  * Move to gradle build system (#327)
+  * Updating translations for yabause/l10n/yabause_pl_PL.yts
+  * Updating translations for yabause/l10n/yabause_el.yts
+  * Updating translations for yabause/l10n/yabause_da.yts
+  * Older gcc (4.8) doesn't supports enough CXX11 for Codegen
+  * Updating translations for yabause/l10n/yabause_pt_BR.yts
+  * Updated installed languages list
+  * Sync all translations from Transifex
+  * Updating translations for yabause/l10n/yabause_fr.yts
+  * i18n: add missing text
+  * Removed useless CMAKE_FIND_ROOT_PATH
+  * sh1: add dynarec
+  * Small tweak to cd block play position end
+  * scu dsp jit: optimize ct load/store, sign extension
+  * Fixed C variable declaration
+  * ReadTOC10 implementation for Linux
+  * 68k: make musashi the default core for non-dreamcast ports
+  * scsp dsp jit: optimize constant array offsets
+  * 3.2 SCU DMA interrupt start factor (#297)
+  * refs #29 Grandia red Screen. (#298)
+  * fix #154 no background sound on SEGA RALLY CHAMPIONSHIP
+  * scu dsp jit: optimize alu flags, get/set md
+  * scu: add dsp dynarec
+  * scsp/build: add dsp dynarec, play codegen library
+  * update version number
+  * update authors and changelog
+  * qt: undo change that made all settings menu text bold
+  * cocoa: add cdb lle option
+  * cocoa: add new scsp option
+  * cocoa: add multithreading option
+  * cocoa: add musashi 68k to core list
+  * cocoa: fix compilation when c68k is disabled
+  * cocoa: enable opening mds, ccd images
+  * cocoa: initialize yinit struct
+  * perdx: fix mismatched xinput scan/poll key codes
+  * i18n: add missing strings, rename master file to csv
+  * qt: improve bios emulation option description
+  * perdx: fix build when xinput isn't available
+  * qt: allow LT and RT to be used as digital buttons
+  * peripheral: avoid dereferencing null pointers for Press and Release
+  * perdx: make LT and RT usable as digital buttons
+  * perdx: convert xinput axis values to 0-255 saturn format
+  * perdx: delete reset that would clear controller config each startup
+  * perdx: check for xbox one controller id
+  * Fixed issue where Yabause would crash when using XInput and loaded a different game. Fixed XInput connection check while running game
+  * qt: fix peripheral add bug resulting in multiple extra additions
+  * Changed DirectX interface name to "DirectX/XInput Input Interface" if XInput support is compiled in
+  * Fix for Xinput: It should now correctly detect controllers that support it and use it accordingly. Special Thanks to AmonX for the fix.
+  * qt: better description for new scsp option, enable by default
+  * i18n: update translations
+  * build: remove old doc from cocoa install script
+  * i18n: magneto csv parsing, convert yts files, add missing strings
+  * add some info to the github readme
+  * travis: build qt port on os x
+  * build: remove old doc from install script
+  * Fixed LLE TOC reading for windows cd interface
+  * Restricted SH1 core selection so dynarec isn't used.
+  * qt: update cdb lle requirements info
+  * update documentation
+  * gtk: fix compile errors
+  * sh2: fix trace logging
+  * sh2 dynarec: fix 32-bit compile error
+  * scsp: add missing regs, fixes booting some fantastic pinball versions
+  * update changelog
+  * Added Documentation menu item in Qt port, adjusted controller icons and one menu icon.
+  * SCU DMA timing, SH2 DMA timing and SH2 cache are forced enabled if CD Block LLE emulation is enabled. Made SH1 ROM and real bios required for CD Block LLE.
+  * gdb stub: fix compile errors
+  * gdb stub: fix compile errors
+  * runner: fix compile error
+  * yabauseut: fix compile error
+  * qt: support 3x pixel scaling
+  * fix clang warnings
+  * add message to qt port explaining cdb lle requirements
+  * improve sh2 write timing
+  * add sh2 write timing test
+  * re-implement sh2 memory access timing
+  * remove incorrect cd data read
+  * better get/put sector fix, fifo pointer reset fix
+  * fix put/get sector dma
+  * fix to keep travis-ci and msvc happy
+  * Revised Put Sector Data test so it verifies data written
+  * improve audio sector timing
+  * convert track number to bcd
+  * improve cd drive logging
+  * add scu dma increment tests
+  * scu dma fixes
+  * scu dsp dma fixes
+  * finish a-bus dsp dma test
+  * Added 1MB/4MB dram cart tests
+  * update scu dsp dma tests
+  * dsp dma wait, ct fix
+  * scu dsp dma updates
+  * scu dsp dma test updates
+  * scu dsp dma timing wip
+  * ignore fifo writes depending on transfer_ctrl
+  * improve scu dma status flags
+  * fix put sector
+  * disable sh2 tracing by default
+  * fix compilation with sh2 tracing off
+  * sh1 timer optimization
+  * fix sh1 disassembly
+  * implement scu dma operation flags
+  * improve fifo wait checking
+  * Added hle cd commands: Open Tray, Get CD Device Connection, Get Filter Range, Get Filter Connection. Added shell functions for Scan Disc, Exec FAD Search, Get FAD Search Results, and Copy Sector Data, Move Sector Data
+  * more dynarec fixes
+  * mingw compile fix
+  * dynarec fixes
+  * sh2 cache cleanups
+  * make cache a runtime option, remove sh2 timing
+  * improve ygr a-bus mapping
+  * fix indirect scu dma bug
+  * break on empty fifo
+  * implement sh2 dma wait
+  * fix scu dma indirect bug
+  * fix sh2 dma bug
+  * put sh2 dma timing call back into sh2exec
+  * implement mpeg mosaic
+  * mpeg window offset/size work
+  * implement mpeg framebuffer offset
+  * improve sound
+  * covert yuv to rgb, audio work
+  * more fixes
+  * more build fixes
+  * build fixes
+  * integrate ffmpeg
+  * add ygr response regs
+  * Fixed mpeg play command test and added get time code test
+  * Added sample mpg files and enabled mpeg files in test disc
+  * update mpeg pseudocode
+  * changes to make get interrupt test pass
+  * make mpeg init and get status tests return expected output
+  * Added function for dumping of lsi registers to yabauseut
+  * update regs + pseudocode
+  * update mpeg pseudo code
+  * update mpeg reg info
+  * Added tests for mpeg command set/get stream, set/get connection, and play.
+  * update pseudocode
+  * update mpeg registers
+  * Fixed issue with disassembler on SH1 code beyond ROM area and reworked memory editor so allows for different mapping depending on the processor that's being debugged.
+  * add mosaic/blur
+  * add some notes and debug prints
+  * add window x, y registers
+  * Added tests for several more mpeg commands
+  * add border color register and debug prints
+  * Fix for toc's with more than 9 tracks
+  * Small compilation fix
+  * mpeg video irq pseudocode update
+  * add mpeg jump debug print
+  * add missing ygr registers
+  * Added a few mpeg command tests to yabauseut. Should be useful for early testing.
+  * Added pseudo code for toc code
+  * update mpeg pseudocode
+  * more mpeg reversing
+  * Adjusted TOC test and expanded test disc to 50 tracks
+  * implement mpeg rom loading
+  * fixes to get up to mpeg overlay loading
+  * mpeg self tests succeed up to mpeg_initcall3
+  * add pseudocode for failing mpeg test
+  * assert mpeg irqs so that detection works
+  * implement sh1 dma for debug interpreter
+  * initial mpeg card work
+  * rework sh1 dma to be cycle-level
+  * fixes
+  * add fifo log writing and verification
+  * fix mbx test
+  * get then delete command test fixed
+  * Fixed issue with get sector data test
+  * Last remaining cd block commands added(with exception of set sector length) and a few more test fixes
+  * implement a-bus wait for SH2movll and SH2movll
+  * revert "fix get hardware info test" and "fix get toc test"
+  * Fixed a few bugs with cdb tests and added cdb tests up to get then delete sector command
+  * add basic cd audio support
+  * fix play test, prevent scan crash, improve cd drive logging
+  * fix get toc test
+  * Fixed and reworked timing on a few tests. Results should be reliable now.
+  * fix get hardware info test
+  * handle command 5 by going to idle. fixes init cd system test
+  * A few more fixes
+  * Reworked error logging to dump data to lwram, added additional information to log on error
+  * add cdb status debug logging
+  * Fix for compiling on older msvc and apparently linux test build
+  * Oops, this change shouldn't have been included
+  * Should be using track 3 for audio test
+  * Added a bunch of new cd block tests, revised the tests system to allow for more tests to be displayed, a test cd image can now be built as an option
+  * add sh2 access timing for most areas
+  * add sh2 cache refill function
+  * fix warning
+  * memory refactoring, add sh2 dma access function
+  * add scu dma a/b access function
+  * wrap ygr functions
+  * wrap b-bus read/write functions for sh2
+  * add scu dma timing option and tests
+  * fix 16 byte sh2 dma bug and add tests
+  * add sh2 dma timing option
+  * Fixed a warning with arg being passed to function without args
+  * Yet more warning/error fixes
+  * Another round of warning/error fixes
+  * More warnings/errors fixes
+  * Linux CD interface fixes
+  * Fixed tsunami typo
+  * One more tsunami fix
+  * tsunami non-win32 fixes
+  * More fixes for toc reading for cd images. All images that hle cd block supports should be supported now.
+  * Missed setting toc number for bin/cue
+  * Revised ReadTOC10 so there's no duplicate entries and added ReadTOC10 support to bin/cue
+  * Some fixes so I can compile again
+  * add missing declaration and turn off some logging
+  * cd_drive: fix ToC and leadout handling some more
+  * ygr: stall the SH2 when the SH1 doesn't have data ready
+  * sh7034: add a missing switch break
+  * cd_drive: detect/report data vs. audio  sectors
+  * cd_drive: seek after receiving read commands
+  * cd_drive: handle tracks & leadout better
+  * Tweaks to variable names and tweaks to ring data reading
+  * seek ring improvements
+  * fix missing slash
+  * work on ring seeking
+  * Added ring data generation from jhl
+  * Fix for reading sectors in leadin area. Based on jhl's fix
+  * improve timers
+  * A couple of fixes to sector reading. More are needed
+  * improve timer comparison
+  * Made tweaks to cd sector read timing. With this it should try setting dma registers
+  * updates to read command
+  * add missing transfer control reg write
+  * implement dma channel 1 dreq to ygr fifo
+  * Just trying to flesh out the read cd command for future implementation
+  * 1x/2x speed changing, improve idle ticking, convert toc to bcd
+  * implement pause and stop commands
+  * refactor some duplicated code
+  * fixes to seeking
+  * seeking updates
+  * seeking improvements
+  * some more work on seeking
+  * some progress towards disc seeking
+  * add dummy cd-windows readtoc10
+  * add missing qt ccd filter
+  * Forgot to take into account the duplicate toc entries
+  * Added new function cd interface and toc reading to lle cd block
+  * implement toc read continuation
+  * cd drive preparation for reading the toc
+  * fix incorrect 14th OE interrupt
+  * more task6 reversing
+  * task6 reversing work
+  * rewrite cd drive timing / add tsunami selectable variable sizes
+  * Few more clean ups and notes for pseudo code
+  * add tsunami vcd debugging
+  * add tsunami original files
+  * fixed unknown
+  * 9776, 9784 proofed
+  * Merging of pseudo code plus a couple of tweaks
+  * Added pseudo code for oe interrupt
+  * update credits
+  * improve output enable interrupt triggering
+  * sh7034: fix SCI double buffering
+  * sh7034: add bit constants for SCI control/status bits
+  * Even more dynarec fixes
+  * More dynarec fixes
+  * Fixed compilation of MappedMemory functions in SH2 dynarec
+  * Fixed compilation issue with static function
+  * Couple of code tweaks so I can compile
+  * improve resets
+  * rewrite serial communication so that the sh1 is the master device
+  * add serial transmission from sh1
+  * Added cd command logging to lle cd block for commands written from the SH2 end.
+  * implement command write interrupt
+  * improve hirq mapping
+  * add "no disc" drive status
+  * add serial transfer buffer, cr response and serial debug info
+  * de-assert start more correctly
+  * improve packet transfer protocol
+  * Added test for cd block mbx
+  * set mbx status when cr4 is read
+  * add dma functions, fix start pin, better comms start point
+  * turn cd drive communication into a state machine
+  * set start pin when starting a transfer
+  * serial communication work
+  * cd drive output enable work
+  * serial debug info
+  * port debug work
+  * timer 3/4 work
+  * hook up timer interrupt
+  * work on timer 4
+  * Fixed issue with Qt code not fetching use_cd_block_lle setting correctly on startup
+  * fixes for pbdr
+  * trace logging, connect ygr to a-bus
+  * -SH1 breakpoint fixes -Made use_cd_block_lle configurable in settings -Added reset code
+  * Some code tweaks so I can compile in vs2010
+  * hook up execution and memory handlers
+  * -Fixed issue with qt SH debugger code -Added dialog for SH1 debugging
+  * -Reworked memory mapping code for SH2's so it's more modular. -SH1 core is now being initialized and rom loaded if available
+  * add a-bus cs2 read/write replacements, more memory map work
+  * add ygr files, memory map work
+  * onchip long write improvements
+  * onchip read word improvements
+  * improve onchip word writes
+  * SH fetching and opcode decoding pointers now properly separated per cpu.
+  * onchip byte read work
+  * onchip register read/write work
+  * My preliminary changes for SH1/SH2 code reusable code
+  * initial sh1 work
+  * smpc: improve world heroes perfect controls
+  * sh2 cache: implement 2-way mode, enable execution from data array
+  * Added hooks for MIDI ports input/output. Saturn Music School 1/2 should be playable with a MIDI keyboard once the different sound cores are updated.
+  * sh2 cache: fix astal when using a real bios
+  * ci/appveyor: only upload builds that are not pull requests
+  * sh2 cache: implement associative purge
+  * sh2 cache: implement v bit, pseudo lru, addess/data read/write
+  * sh2: merge devmiyax sh2 cache implementation
+  * Added feature to Qt port to toggle bios emulation. Fixes issue #240
+  * new scsp: improve radiant silvergun reverb volume and scorcher echo program
+  * fix visual studio warnings
+  * ci: compile release builds
+  * Fixed issue with vdp2 layer toggling in software renderer
+  * peripheral/qt: add double mission stick support
+  * Some travis-ci yabause.org upload adjustments, added appveyor msys2 build to yabause.org upload (#239)
+  * yabauseut: add mission stick to peripheral test
+  * peripheral/qt: add mission stick
+  * android file upload path fix
+  * -Disabled mac os x and windows build uploading for now since they're not complete -Uploading android apk instead now. I apologize for any errors since it's difficult to test this out.
+  * build: use system glew if available
+  * fix more coverity defects
+  * Fix for when sh2 tracing is disabled
+  * Fix for missing prototype
+  * Missed one more set of commits
+  * Missed commit for function rename
+  * Added travis-ci option to upload builds
+  * vidsoft: improve winter heat screen transitions
+  * ci: build musashi on msys2 and android
+  * Fixed build on MSVC
+  * Musashi: cross-compilation and Android
+  * ci: enable -Werror for linux builds
+  * ci: add android port to travis
+  * Fixed leak when failing to load a screenshot
+  * Removed remaining calls to ScspSetFrameAccurate
+  * fix coverity defects
+  * build: fix warnings on gcc/clang linux
+  * Save states in the Android port
+  * new scsp: run sound subsystem at sample-level timing
+  * Added message for scsp channels window in case new scsp isn't being used. It should be removed once the new scsp is finished.
+  * smpc/qt: add wheel peripheral support
+  * Fixed compilation on Android when using SSF
+  * Added missing INLINE keywords in musashi
+  * Fixed issue where 68k reset instruction didn't reset cpu.
+  * Another fix for PLSZ parsing code for VDP2 debugging. Removed duplicate code
+  * Added proper support for CDB Put Sector Data command
+  * scsp/qt: add new scsp option to settings, fix minissf loading, fix out of bounds read
+  * Fixed PLSZ parsing code for VDP2 debugging so it matches actual emulation code.
+  * -Fix for vdp2 register read issue(issue #167) in Qt version memory editor
+  * Fixed issue #206
+  * 68k: add musashi as a 68k core option
+  * new scsp: fix crash on 32 bit systems
+  * new scsp / qt: add plfo, alfo, ssf playing
+  * new scsp: improve reset reliability
+  * new scsp/qt :improve send levels and add channel debug dialog
+  * new scsp: prevent incorrect key-ons and reduce clipping
+  * new scsp: implement mixing, cd audio, dsp saturation
+  * vidsoft: improve sprite window bounds checking
+  * new scsp: implement dsp
+  * scsp: implement new slot generation method with fm support
+  * -Fixed an issue with emulated mouse not handling x/y offsets of 0 correctly. -Reworked emulated mouse on qt port. Now cursor is held by window on mouse click and released on ESC press.
+  * qt/vidsoft: add integer video scaling option in windowed mode
+  * vidsoft: fix sonic r and all star baseball 97 backgrounds
+  * vidsoft: improve sonic 2 two player mode
+  * vidsoft: fix sprite window in cotton boomerang and winter heat
+  * add msys2 x86_64 build to appveyor
+  * vidsoft: improve user and system clipping
+  * vidsoft: fix incorrect colors on characters in dead or alive
+  * Removed useless headers
+  * Show game name instead of filename in android port
+  * vidsoft: fix f1 challenge map when zoomed out
+  * improve 68000 savestates
+  * add vdp1 framebuffer and more scsp slot variables to savestates
+  * runner: add automated game testing
+  * Immersive mode for the emulation activity
+  * Fix and improvements of Android on-screen pad
+  * Fixed a few bugs in Android port
+  * Fixed black screen on OSX Cocoa
+  * Initialize Android port init structure
+  * vidsoft: fix vdp1 thread race condition
+  * vidsoft: fix dracula x water and fade outs
+  * Make Coverity Happy Monday
+  * Added bounds checking on sprite_window_mask
+  * vidsoft: add sprite thread and compile threading by default
+  * vidsoft: fix night warriors sprites
+  * vidsoft: implement vdp1 pre-clipping optimization
+  * Openal sound core from pthreads to yabause threads
+
+-------------------------------------------------------------------
 Thu Sep 26 11:35:17 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
 
 - Initial version from old_core branch. master branch is not working yet.

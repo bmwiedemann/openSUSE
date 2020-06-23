@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-yabause
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libretro-yabause
-Version:        0~git20190825
+Version:        0~git20200605
 Release:        0
 Summary:        Yabause libretro core for Sega Saturn emulation
 License:        GPL-3.0-only
@@ -25,10 +25,10 @@ Group:          System/Emulators/Other
 URL:            http://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz
 
-BuildRequires:  gcc-c++
-BuildRequires:  make
 BuildRequires:  Mesa-devel
+BuildRequires:  gcc-c++
 BuildRequires:  glu-devel
+BuildRequires:  make
 
 %description
 Yabause is a Sega Saturn emulator. This package is for RetroArch/libretro
@@ -38,12 +38,12 @@ front-end.
 %setup -q
 
 %build
-cd libretro
+cd yabause/src/libretro
 make
 
 %install
 mkdir -p %{buildroot}%{_libdir}/libretro
-cp libretro/yabause_libretro.so %{buildroot}%{_libdir}/libretro
+cp yabause/src/libretro/yabause_libretro.so %{buildroot}%{_libdir}/libretro
 
 %files
 %dir %{_libdir}/libretro

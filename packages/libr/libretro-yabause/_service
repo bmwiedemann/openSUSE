@@ -2,7 +2,7 @@
   <service name="tar_scm" mode="localonly">
     <param name="scm">git</param>
     <param name="url">https://github.com/libretro/yabause.git</param>
-    <param name="revision">old_core</param>
+    <param name="revision">master</param>
     <param name="filename">libretro-yabause</param>
     <param name="versionformat">0~git%cd</param>
     <param name="changesgenerate">enable</param>
