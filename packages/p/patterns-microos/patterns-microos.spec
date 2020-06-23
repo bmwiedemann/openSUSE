@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_with betatest
 
 Name:           patterns-microos
@@ -51,6 +52,8 @@ Provides:       pattern-category() = MicroOS
 Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 9010
 Provides:       pattern-visible()
+Requires:       pattern() = bootloader
+Requires:       pattern() = minimal_base
 %if %{with betatest}
 # need to require it as recommends are off
 Requires:       pattern() = update_test
@@ -58,77 +61,62 @@ Requires:       pattern() = update_test
 #Obsolete CaaSP Patterns
 Provides:       patterns-caasp-MicroOS
 Obsoletes:      patterns-caasp-MicroOS <= 4.0
+### openSUSE base system
 Requires:       aaa_base
-Requires:       audit
 Requires:       bash
-Requires:       btrfsmaintenance
+Requires:       branding-openSUSE
 Requires:       btrfsprogs
 Requires:       ca-certificates
 Requires:       ca-certificates-mozilla
-Requires:       chrony
 Requires:       coreutils
-Requires:       cracklib-dict-small
+Requires:       login
+Requires:       openSUSE-build-key
+Requires:       pam
+Requires:       procps
+Requires:       rebootmgr
+Requires:       rpm
+Requires:       shadow
+Requires:       snapper
+Requires:       systemd
+Requires:       wicked
+Requires:       zypper
+####
+Requires:       audit
+Requires:       btrfsmaintenance
+Requires:       chrony
+# prefer small variant
+Suggests:       cracklib-dict-small
 Requires:       dosfstools
-Requires:       dracut
-Requires:       elfutils
-Requires:       filesystem
-Requires:       glibc
 Requires:       haveged
 Requires:       health-checker
 Requires:       health-checker-plugins-MicroOS
 Requires:       hwinfo
 Requires:       iputils
 Requires:       issue-generator
-Requires:       kbd
 Requires:       kdump
-Requires:       kernel-base
-Requires:       kmod
 Requires:       kubic-locale-archive
 Requires:       less
-Requires:       libnss_usrfiles2
-Requires:       login
-Requires:       logrotate
 Requires:       microos-tools
 Requires:       nano
-Requires:       net-tools
+Requires:       openSUSE-MicroOS-release
 Requires:       openssh
-Requires:       pam
 Requires:       parted
-Requires:       pkg-config
-Requires:       procps
-Requires:       rebootmgr
-Requires:       rpm
-Requires:       shadow
-Requires:       snapper
 Requires:       sudo
 Requires:       supportutils
-Requires:       sysconfig
-Requires:       sysfsutils
-Requires:       systemd
+Requires:       system-group-wheel
 Requires:       systemd-presets-branding-MicroOS
 Requires:       tallow
 Requires:       terminfo
 Requires:       timezone
 Requires:       transactional-update
 Requires:       transactional-update-zypp-config
-Requires:       udev
 Requires:       vlan
-Requires:       which
-Requires:       wicked
 Requires:       xfsprogs
 Requires:       yast2-logs
-Requires:       zypper
 Requires:       zypper-needs-restarting
-Requires:       pattern() = bootloader
 Conflicts:      gettext-runtime-mini
 Conflicts:      krb5-mini
-Requires:       openSUSE-MicroOS-release
-Requires:       openSUSE-build-key
 Obsoletes:      suse-build-key < 12.1
-Requires:       branding-openSUSE
-Requires:       system-group-hardware
-Requires:       system-group-wheel
-Requires:       system-user-nobody
 
 %description base
 This is the openSUSE MicroOS runtime system. It contains only a minimal multiuser
