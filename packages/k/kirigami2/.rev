@@ -346,4 +346,14 @@
     <comment>KDE Frameworks 5.71.0</comment>
     <requestid>814369</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>70392d7f46c5f827e72efdc8a10bd57c</srcmd5>
+    <version>5.71.0</version>
+    <time>1592939026</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix crashes of several settings modules, with Qt
+  5.12 at least (boo#1167690, kde#419008):
+  * 0001-Revert-Watch-for-language-change-events-and-forward-.patch (forwarded request 815929 from wolfi323)</comment>
+    <requestid>815931</requestid>
+  </revision>
 </revisionlist>

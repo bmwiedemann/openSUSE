@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 19 10:28:31 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add patch to fix crashes of several settings modules, with Qt
+  5.12 at least (boo#1167690, kde#419008):
+  * 0001-Revert-Watch-for-language-change-events-and-forward-.patch
+
+-------------------------------------------------------------------
 Sun Jun  7 08:06:46 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.71.0

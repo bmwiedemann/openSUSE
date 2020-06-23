@@ -35,6 +35,8 @@ Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
+# PATCH-FIX-OPENSUSE
+Patch:          0001-Revert-Watch-for-language-change-events-and-forward-.patch
 BuildRequires:  extra-cmake-modules >= %{_tar_path}
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(Qt5Concurrent) >= 5.12.0
