@@ -1,0 +1,13 @@
+Index: b/libeppic/eppic.h
+===================================================================
+--- a/libeppic/eppic.h
++++ b/libeppic/eppic.h
+@@ -467,7 +467,7 @@ type_t  *eppic_addstorage(type_t *t1, ty
+ type_t  *eppic_getvoidstruct(int ctype);
+ 
+ extern int lineno, needvar, instruct, nomacs, eppic_legacy;
+-node_t *lastv;
++extern node_t *lastv;
+ 
+ #define NULLNODE ((node_t*)0)
+ 

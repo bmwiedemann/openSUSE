@@ -1,7 +1,7 @@
 #
 # spec file for package eppic
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,10 +29,11 @@ Group:          Development/Libraries/C and C++
 Source:         %{name}-git%{git_commit}.tar.bz2
 Patch1:         %{name}-fix-install.patch
 Patch2:         %{name}-no-return.patch
+Patch3:         %{name}-use-extern-in-devel-declaration.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  ncurses-devel
-Url:            http://code.google.com/p/eppic/
+URL:            http://code.google.com/p/eppic/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -59,6 +60,7 @@ This package provides the include files and libraries needed for development.
 %setup -n %{name}-git%{git_commit}
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

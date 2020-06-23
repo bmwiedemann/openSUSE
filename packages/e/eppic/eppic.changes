@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  9 13:58:20 UTC 2020 - David Mair <dmair@suse.com>
+
+- eppic-use-extern-in-devel-declaration.patch: Use extern for
+  declaration of lastv in libeppic/eppic.h. The file is used as the
+  devel eppic.h and if used in multiple sources for the same devel
+  link target and using gcc 10 the default behavior is to treat the
+  mutiple declarations as a link error.
+
+-------------------------------------------------------------------
 Fri Aug  2 06:59:17 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use FAT LTO objects in order to provide proper static library.
