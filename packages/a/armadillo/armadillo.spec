@@ -18,7 +18,7 @@
 
 %define soname libarmadillo9
 Name:           armadillo
-Version:        9.880.1
+Version:        9.900.1
 Release:        0
 Summary:        C++ matrix library with interfaces to LAPACK and ATLAS
 License:        Apache-2.0
@@ -33,7 +33,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  lapack-devel
 BuildRequires:  pkgconfig
 BuildRequires:  superlu-devel >= 5.2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Armadillo is a C++ linear algebra library (matrix maths).
@@ -100,24 +99,20 @@ sed -i 's/\r$//' NOTICE.txt
 for i in `ls examples/*.cpp`; do sed -i 's/\r$//' $i; done
 
 %build
-cmake . \
-        -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix}\
-        -DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir}
-make %{?_smp_mflags}
+%cmake
+%cmake_build
 
 %install
-make DESTDIR=%{buildroot} install
+%cmake_install
 rm -f examples/Makefile.cmake
 rm -rf examples/example1_win64.*
 rm -rf examples/example2_win64.*
 rm -rf examples/lib_win64
 
 %post -n %{soname} -p /sbin/ldconfig
-
 %postun -n %{soname} -p /sbin/ldconfig
 
 %files -n %{soname}
-%defattr(-,root,root)
 %{_libdir}/*.so.*
 
 %files doc
