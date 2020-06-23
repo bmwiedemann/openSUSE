@@ -531,4 +531,12 @@ mtime and ctime values are now stored in the manifest files only when sloppy_fil
     <comment>- Add symlink for nvidia cuda compiler as well</comment>
     <requestid>812204</requestid>
   </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>9ff8e52dfec04149ddfd81ef965b4179</srcmd5>
+    <version>3.7.9</version>
+    <time>1592938860</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816389</requestid>
+  </revision>
 </revisionlist>

@@ -17,9 +17,9 @@
 #
 
 
-%global version_current 1.43.0
-%global version_previous 1.42.0
-%global version_bootstrap 1.42.0
+%global version_current 1.43.1
+%global version_previous 1.43.0
+%global version_bootstrap 1.43.0
 
 # some sub-packages are versioned independently
 %global rustfmt_version 1.4.12

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 22 12:00:57 UTC 2020 - Sumit Jamgade <sjamgade@suse.com>
+
+- Added patch for another cleanup mechanism based on age of file:
+  * 0001-Add-another-cleanup-mechanism-evict-older-than.patch
+
+-------------------------------------------------------------------
 Sun Jun  7 10:07:00 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Add symlink for nvidia cuda compiler as well

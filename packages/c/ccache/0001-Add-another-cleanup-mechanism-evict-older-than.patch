@@ -1,0 +1,172 @@
+From bf47731a54561497e0c4cfcc8c0bf4242a6fe43e Mon Sep 17 00:00:00 2001
+From: Sumit Jamgade <sjamgade@suse.com>
+Date: Mon, 22 Jun 2020 12:52:33 +0200
+Subject: [PATCH] Add another cleanup mechanism - evict-older-than
+
+The argument adds another mechanism to control contents of cache directory. And
+is based on the LRU tracking behaviour.
+
+As of now there is no way for ccache to eliminate files which were
+are no longer needed. As a result these files stay and are kept around until
+either max_files/max_size is reached.
+
+If a particular project is being built regularly but for some reason is allowed
+to grow in size, then under such circumstances using the LRU mechanism to control
+cache size, lends as perfect solution.
+
+The argument takes a parameter N and performs a cleanup.
+While performing cleanup the oldest file in ccache can
+only be N seconds old. However this cleanup will not take max_files and
+max_old into consideration
+---
+ src/ccache.c             | 43 ++++++++++++++++++++++++++++---------------
+ src/ccache.h             |  1 +
+ src/cleanup.c            | 16 +++++++++++++++-
+ test/suites/cleanup.bash | 11 +++++++++++
+ 4 files changed, 55 insertions(+), 16 deletions(-)
+
+diff --git a/src/ccache.c b/src/ccache.c
+index 0e66468..0db96e1 100644
+--- a/src/ccache.c
++++ b/src/ccache.c
+@@ -64,6 +64,8 @@ static const char USAGE_TEXT[] =
+ 	"                              (normally not needed as this is done\n"
+ 	"                              automatically)\n"
+ 	"    -C, --clear               clear the cache completely (except configuration)\n"
++    "    -e, --evict-older-than N  delete files older than N seconds (this will not\n"
++    "                              take max_files, max_size into consideration)\n"
+ 	"    -F, --max-files=N         set maximum number of files in cache to N (use 0\n"
+ 	"                              for no limit)\n"
+ 	"    -M, --max-size=SIZE       set maximum size of cache to SIZE (use 0 for no\n"
+@@ -4164,25 +4166,26 @@ ccache_main_options(int argc, char *argv[])
+ 		PRINT_STATS,
+ 	};
+ 	static const struct option options[] = {
+-		{"cleanup",       no_argument,       0, 'c'},
+-		{"clear",         no_argument,       0, 'C'},
+-		{"dump-manifest", required_argument, 0, DUMP_MANIFEST},
+-		{"get-config",    required_argument, 0, 'k'},
+-		{"hash-file",     required_argument, 0, HASH_FILE},
+-		{"help",          no_argument,       0, 'h'},
+-		{"max-files",     required_argument, 0, 'F'},
+-		{"max-size",      required_argument, 0, 'M'},
+-		{"print-stats",   no_argument,       0, PRINT_STATS},
+-		{"set-config",    required_argument, 0, 'o'},
+-		{"show-config",   no_argument,       0, 'p'},
+-		{"show-stats",    no_argument,       0, 's'},
+-		{"version",       no_argument,       0, 'V'},
+-		{"zero-stats",    no_argument,       0, 'z'},
++		{"cleanup",          no_argument,       0, 'c'},
++		{"clear",            no_argument,       0, 'C'},
++		{"evict-older-than", required_argument, 0, 'e'},
++		{"dump-manifest",    required_argument, 0, DUMP_MANIFEST},
++		{"get-config",       required_argument, 0, 'k'},
++		{"hash-file",        required_argument, 0, HASH_FILE},
++		{"help",             no_argument,       0, 'h'},
++		{"max-files",        required_argument, 0, 'F'},
++		{"max-size",         required_argument, 0, 'M'},
++		{"print-stats",      no_argument,       0, PRINT_STATS},
++		{"set-config",       required_argument, 0, 'o'},
++		{"show-config",      no_argument,       0, 'p'},
++		{"show-stats",       no_argument,       0, 's'},
++		{"version",          no_argument,       0, 'V'},
++		{"zero-stats",       no_argument,       0, 'z'},
+ 		{0, 0, 0, 0}
+ 	};
+ 
+ 	int c;
+-	while ((c = getopt_long(argc, argv, "cCk:hF:M:po:sVz", options, NULL))
++	while ((c = getopt_long(argc, argv, "cCe:k:hF:M:po:sVz", options, NULL))
+ 	       != -1) {
+ 		switch (c) {
+ 		case DUMP_MANIFEST:
+@@ -4223,6 +4226,16 @@ ccache_main_options(int argc, char *argv[])
+ 			printf("Cleared cache\n");
+ 			break;
+ 
++        case 'e': // --evict-older-than
++			initialize();
++            int32_t seconds = atoi(optarg);
++            if (seconds < 0) {
++				fatal("seconds cannot be negative: %d", seconds);
++            }
++            clean_old(conf, (time_t)seconds);
++			printf("Cleared old files\n");
++            break;
++
+ 		case 'h': // --help
+ 			fputs(USAGE_TEXT, stdout);
+ 			x_exit(0);
+diff --git a/src/ccache.h b/src/ccache.h
+index 0d6be60..3f6c44b 100644
+--- a/src/ccache.h
++++ b/src/ccache.h
+@@ -247,6 +247,7 @@ void exitfn_call(void);
+ void clean_up_dir(struct conf *conf, const char *dir, double limit_multiple);
+ void clean_up_all(struct conf *conf);
+ void wipe_all(struct conf *conf);
++void clean_old(struct conf *conf, time_t max_old);
+ 
+ // ----------------------------------------------------------------------------
+ // execute.c
+diff --git a/src/cleanup.c b/src/cleanup.c
+index 0b66caf..6f650b3 100644
+--- a/src/cleanup.c
++++ b/src/cleanup.c
+@@ -31,6 +31,7 @@ static uint64_t cache_size;
+ static size_t files_in_cache;
+ static uint64_t cache_size_threshold;
+ static size_t files_in_cache_threshold;
++static time_t oldest_mtime_threshold;
+ 
+ // File comparison function that orders files in mtime order, oldest first.
+ static int
+@@ -124,7 +125,9 @@ sort_and_clean(void)
+ 		if ((cache_size_threshold == 0
+ 		     || cache_size <= cache_size_threshold)
+ 		    && (files_in_cache_threshold == 0
+-		        || files_in_cache <= files_in_cache_threshold)) {
++		        || files_in_cache <= files_in_cache_threshold)
++		    && (oldest_mtime_threshold == 0
++		        || oldest_mtime_threshold <= files[i]->mtime)) {
+ 			break;
+ 		}
+ 
+@@ -268,3 +271,14 @@ void wipe_all(struct conf *conf)
+ 	// Fix the counters.
+ 	clean_up_all(conf);
+ }
++
++//clean all files older than (now-max_old) secs
++void clean_old(struct conf *conf, time_t max_old)
++{
++    oldest_mtime_threshold = time(NULL) - max_old;
++	for (int i = 0; i <= 0xF; i++) {
++		char *dname = format("%s/%1x", conf->cache_dir, i);
++		clean_up_dir(conf, dname, 0.0);
++		free(dname);
++	}
++}
+diff --git a/test/suites/cleanup.bash b/test/suites/cleanup.bash
+index a907ac4..cac4f9c 100644
+--- a/test/suites/cleanup.bash
++++ b/test/suites/cleanup.bash
+@@ -228,4 +228,15 @@ SUITE_cleanup() {
+     $CCACHE -c >/dev/null
+     expect_file_count 1 '.nfs*' $CCACHE_DIR
+     expect_stat 'files in cache' 30
++
++    # -------------------------------------------------------------------------
++    TEST "cleanup of files older than n seconds"
++                                                                                
++    prepare_cleanup_test_dir $CCACHE_DIR/a
++                                                                                
++    touch $CCACHE_DIR/a/now.result
++    $CCACHE -F 0 -M 0 >/dev/null
++    $CCACHE -e 10 >/dev/null
++    expect_file_count 1 '*.result' $CCACHE_DIR
++    expect_stat 'files in cache' 1
+ }
+-- 
+2.16.4
+

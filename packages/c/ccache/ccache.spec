@@ -25,6 +25,8 @@ URL:            https://ccache.dev/
 Source0:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz#/%{name}-%{version}.tar.xz
 Source1:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz.asc#/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+# PATCH-FEATURE-UPSTREAM 0001-Add-another-cleanup-mechanism-evict-older-than.patch https://github.com/ccache/ccache/pull/605
+Patch0:         0001-Add-another-cleanup-mechanism-evict-older-than.patch
 BuildRequires:  zlib-devel
 Provides:       distcc:%{_bindir}/ccache
 
@@ -36,6 +38,7 @@ Objective-C++.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \
