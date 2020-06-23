@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 23 09:40:06 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.12:
+  * scale and crop to triple display width / height;
+  * split vertical images vertically (is_horizontal = width >= height);
+  * detect which screen Azote window is displayed on; the screen
+    dimensions will be used as the base of the Scale and crop to
+	double/triple screen width/height option. This may be useful
+	if you use multiple-headed setup with various screen resolutions.
+  * added some error handling on colour definitions missing from
+    the allacritty.yml file.
+
+-------------------------------------------------------------------
 Wed Jun  3 04:44:59 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.7.11:
