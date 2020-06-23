@@ -117,4 +117,17 @@
 </comment>
     <requestid>802463</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>baa224e0026b3640f50e7c145be833a1</srcmd5>
+    <version>1.6.0</version>
+    <time>1592939076</time>
+    <user>dimstar_suse</user>
+    <comment>- Update License
+- Remove Group
+- Add Source URL
+- Update CMake options
+- Split language packages
+</comment>
+    <requestid>808344</requestid>
+  </revision>
 </revisionlist>
