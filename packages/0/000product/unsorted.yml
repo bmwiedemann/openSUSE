@@ -2600,6 +2600,7 @@ unsorted:
   - dummy-release 
   - dump 
   - dump1090 
+  - dump1090-fa 
   - dumpvdl2 
   - dunelegacy 
   - dunst 
@@ -11019,10 +11020,10 @@ unsorted:
   - libopenblas-gnu-hpc-devel 
   - libopenblas-pthreads-gnu-hpc 
   - libopenblas-pthreads-gnu-hpc-devel 
-  - libopenblas-pthreads_0_3_9-gnu-hpc 
-  - libopenblas-pthreads_0_3_9-gnu-hpc-devel 
-  - libopenblas_0_3_9-gnu-hpc 
-  - libopenblas_0_3_9-gnu-hpc-devel 
+  - libopenblas-pthreads_0_3_10-gnu-hpc 
+  - libopenblas-pthreads_0_3_10-gnu-hpc-devel 
+  - libopenblas_0_3_10-gnu-hpc 
+  - libopenblas_0_3_10-gnu-hpc-devel 
   - libopenblas_openmp-devel 
   - libopenblas_openmp0 
   - libopenblas_pthreads-devel 
@@ -11804,6 +11805,7 @@ unsorted:
   - libreoffice-l10n-eu 
   - libreoffice-l10n-fa 
   - libreoffice-l10n-fi 
+  - libreoffice-l10n-fur: [x86_64] 
   - libreoffice-l10n-fy 
   - libreoffice-l10n-ga 
   - libreoffice-l10n-gd 
@@ -15988,8 +15990,8 @@ unsorted:
   - openbabel-devel 
   - openblas-devel 
   - openblas-devel-headers 
-  - openblas-pthreads_0_3_9-gnu-hpc-devel-static 
-  - openblas_0_3_9-gnu-hpc-devel-static 
+  - openblas-pthreads_0_3_10-gnu-hpc-devel-static 
+  - openblas_0_3_10-gnu-hpc-devel-static 
   - openblas_openmp-devel-static 
   - openblas_pthreads-devel-static 
   - openblas_serial-devel-static 
@@ -18404,6 +18406,7 @@ unsorted:
   - postgresql12-pltcl 
   - postgresql12-server-devel 
   - postgresql12-test 
+  - postgresql12-timescaledb 
   - postgresql95 
   - postgresql95-contrib 
   - postgresql95-devel 
@@ -23054,6 +23057,9 @@ unsorted:
   - ruby2.6-rubygem-rdoc-4 
   - ruby2.6-rubygem-rdoc-doc-4 
   - ruby2.6-rubygem-rdoc-testsuite-4 
+  - ruby2.6-rubygem-regexp_parser 
+  - ruby2.6-rubygem-regexp_parser-doc 
+  - ruby2.6-rubygem-regexp_parser-testsuite 
   - ruby2.6-rubygem-responders 
   - ruby2.6-rubygem-responders-doc 
   - ruby2.6-rubygem-rest-client 
@@ -23109,6 +23115,8 @@ unsorted:
   - ruby2.6-rubygem-rspec-support-doc 
   - ruby2.6-rubygem-rspec-support-doc-3_5 
   - ruby2.6-rubygem-rubocop 
+  - ruby2.6-rubygem-rubocop-ast 
+  - ruby2.6-rubygem-rubocop-ast-doc 
   - ruby2.6-rubygem-rubocop-doc 
   - ruby2.6-rubygem-ruby-augeas 
   - ruby2.6-rubygem-ruby-augeas-doc 
@@ -23908,6 +23916,8 @@ unsorted:
   - ruby2.7-rubygem-rdiscount-testsuite 
   - ruby2.7-rubygem-rdoc-doc-4 
   - ruby2.7-rubygem-rdoc-testsuite-4 
+  - ruby2.7-rubygem-regexp_parser-doc 
+  - ruby2.7-rubygem-regexp_parser-testsuite 
   - ruby2.7-rubygem-responders-doc 
   - ruby2.7-rubygem-rest-client-doc 
   - ruby2.7-rubygem-rest-client-testsuite 
@@ -23939,6 +23949,7 @@ unsorted:
   - ruby2.7-rubygem-rspec-rails-doc-3.9 
   - ruby2.7-rubygem-rspec-support-doc 
   - ruby2.7-rubygem-rspec-support-doc-3_5 
+  - ruby2.7-rubygem-rubocop-ast-doc 
   - ruby2.7-rubygem-rubocop-doc 
   - ruby2.7-rubygem-ruby-augeas-doc 
   - ruby2.7-rubygem-ruby-dbus-doc 
