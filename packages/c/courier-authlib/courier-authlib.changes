@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jun 19 07:49:28 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 0.71.0
+  * userdb: Make userdb script accept UTF-8 domain names. Document
+    it in the man page.
+  * Configure and installed versioned shared libraries, both shared
+    and the authentication modules.
+  * Update INSTALL. Remove obsolete pre-courier authlib migration
+    script and documentation. It's been long enough.
+  * Add _meta API functions with an extra auth_meta parameter,
+    keep the original functions as wrappers that provide a stub meta
+    parameter. Use this to pass arbitrary variables to authdaemon.
+  * authdaemond.c: retrieve the TCPREMOTEIP variable if it's provided.
+  * authpam.c: TCPREMOTEIP, if set, sets PAM_RHOST.
+  * Makefile.am (commonldflags): Link all libraries with the
+    --enable-new-dtags flag.
+- rpmlint
+  o addFilter shared-lib-calls-exit
+
+-------------------------------------------------------------------
 Thu May 28 11:30:36 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 0.70.0

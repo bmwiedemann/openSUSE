@@ -17,7 +17,7 @@
 
 
 Name:           courier-authlib
-Version:        0.70.0
+Version:        0.71.0
 Release:        0
 Summary:        Courier authentication library
 License:        SUSE-GPL-3.0-with-openssl-exception
@@ -25,13 +25,13 @@ Group:          Productivity/Networking/Email/Servers
 URL:            https://www.courier-mta.org/imap/
 Source0:        https://downloads.sourceforge.net/project/courier/authlib/%{version}/%{name}-%{version}.tar.bz2
 Source1:        https://downloads.sourceforge.net/project/courier/authlib/%{version}/%{name}-%{version}.tar.bz2.sig
-# Keyring downloaded from https://www.courier-mta.org/KEYS.bin#/%{name}.keyring
+# Keyring downloaded from https://www.courier-mta.org/KEYS.bin#/%%{name}.keyring
 Source2:        %{name}.keyring
 Source3:        courier-authdaemon-rpmlintrc
 Source12:       courier-authdaemon.service
 Source13:       courier-authlib.tmpfile
 Patch0:         %{name}-authdaemonrc.patch
-BuildRequires:  courier-unicode-devel >= 2.0
+BuildRequires:  courier-unicode-devel >= 2.1
 BuildRequires:  expect
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
@@ -141,7 +141,6 @@ make %{?_smp_mflags}
 mv %{buildroot}%{_libdir}/%{name}/lib*.so* %{buildroot}%{_libdir}
 rm -f %{buildroot}/%{_libdir}/%{name}/*.{a,la}
 install -m 755 sysconftool %{buildroot}/%{_prefix}/lib/%{name}
-install -m 755 authmigrate %{buildroot}/%{_prefix}/lib/%{name}
 install -D -m 0644 %{SOURCE12} %{buildroot}/%{_unitdir}/courier-authdaemon.service
 # systemd need to create a tmp dir: /run/courier-authlib
 install -d -m755 %{buildroot}%{_tmpfilesdir}
@@ -164,7 +163,6 @@ fi
 
 %post
 /sbin/ldconfig
-%{_prefix}/lib/%{name}/authmigrate >/dev/null
 %{_prefix}/lib/%{name}/sysconftool %{_sysconfdir}/authlib/*.dist >/dev/null
 %service_add_post courier-authdaemon.service
 %tmpfiles_create %{_prefix}/lib/tmpfiles.d/%{name}.conf
@@ -200,17 +198,16 @@ fi
 %{_sbindir}/courierlogger
 %{_sbindir}/rccourier-authdaemon
 %dir %{_prefix}/lib/%{name}
-%{_prefix}/lib/%{name}/authmigrate
 %{_prefix}/lib/%{name}/sysconftool
 %{_prefix}/lib/%{name}/authdaemond
 %{_prefix}/lib/%{name}/authsystem.passwd
 %{_prefix}/lib/%{name}/makedatprog
-%{_libdir}/libauthcustom.so
-%{_libdir}/libauthpam.so
-%{_libdir}/libcourierauth.so
-%{_libdir}/libcourierauthcommon.so
-%{_libdir}/libcourierauthsasl.so
-%{_libdir}/libcourierauthsaslclient.so
+%{_libdir}/libauthcustom.so.*
+%{_libdir}/libauthpam.so.*
+%{_libdir}/libcourierauth.so.*
+%{_libdir}/libcourierauthcommon.so.*
+%{_libdir}/libcourierauthsasl.so.*
+%{_libdir}/libcourierauthsaslclient.so.*
 %{_mandir}/man1/*
 %{_unitdir}/courier-authdaemon.service
 %{_prefix}/lib/tmpfiles.d/%{name}.conf
@@ -221,6 +218,7 @@ fi
 %doc authlib.html auth_*.html
 %{_bindir}/courierauthconfig
 %{_includedir}/*
+%{_libdir}/*.so
 %{_mandir}/man3/*
 
 %files userdb
@@ -230,28 +228,28 @@ fi
 %{_sbindir}/userdb
 %{_sbindir}/userdb-test-cram-md5
 %{_sbindir}/userdbpw
-%{_libdir}/libauthuserdb.so
+%{_libdir}/libauthuserdb.so.*
 %{_mandir}/man8/*userdb*
 
 %files ldap
 %defattr(-,root,root,-)
 %doc README.ldap authldap.schema
-%{_libdir}/libauthldap.so
+%{_libdir}/libauthldap.so.*
 
 %files mysql
 %defattr(-,root,root,-)
-%{_libdir}/libauthmysql.so
+%{_libdir}/libauthmysql.so.*
 
 %files pgsql
 %defattr(-,root,root,-)
-%{_libdir}/libauthpgsql.so
+%{_libdir}/libauthpgsql.so.*
 
 %files pipe
 %defattr(-,root,root,-)
-%{_libdir}/libauthpipe.so
+%{_libdir}/libauthpipe.so.*
 
 %files sqlite
 %defattr(-,root,root,-)
-%{_libdir}/libauthsqlite.so
+%{_libdir}/libauthsqlite.so.*
 
 %changelog

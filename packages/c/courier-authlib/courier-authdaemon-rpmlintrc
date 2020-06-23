@@ -1,3 +1,4 @@
 addFilter("shlib-policy-name-error")
 addFilter("incoherent-init-script-name courier-authdaemon")
 addFilter("shlib-policy-missing-suffix")
+addFilter("shared-lib-calls-exit")
