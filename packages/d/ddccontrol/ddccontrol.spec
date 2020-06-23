@@ -28,6 +28,7 @@ Source0:        %{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 Source2:        90-ddccontrol-i2c.rules
 Patch50:        0002_cerrors.patch
+Patch51:        gcc10.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExcludeArch:    s390 s390x
 BuildRequires:  autoconf
@@ -98,6 +99,7 @@ This is the HTML documentation for ddccontrol.
 %prep
 %setup -q
 %patch50 -p1
+%patch51 -p1
 
 %build
 ./autogen.sh

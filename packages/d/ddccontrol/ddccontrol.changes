@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  9 10:06:00 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- gcc10.patch
+  * fixed build against gcc10, which uses -fno-common by default
+    (patch picked from https://bugs.gentoo.org/707184) 
+
+-------------------------------------------------------------------
 Mon Feb  3 12:23:43 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(udev) instead of udev: allow OBS to
