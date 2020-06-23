@@ -141,4 +141,14 @@ Note: socket_wrapper fails if built on 'lamb'</comment>
 </comment>
     <requestid>787796</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>82328a946515b85edd6eb885c5ad3d72</srcmd5>
+    <version>1.2.5</version>
+    <time>1592938896</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.5
+  * https://gitlab.com/cwrap/socket_wrapper/-/blob/master/CHANGELOG
+</comment>
+    <requestid>816408</requestid>
+  </revision>
 </revisionlist>
