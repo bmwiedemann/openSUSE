@@ -1,7 +1,7 @@
 #
 # spec file for package minikube
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           minikube
-Version:        1.5.2
+Version:        1.11.0
 Release:        0
 Summary:        Tool to run Kubernetes locally
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/kubernetes/minikube
-Source:         https://github.com/kubernetes/minikube/archive/v%{version}.tar.gz
+Source:         https://github.com/kubernetes/minikube/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        minikube-rpmlintrc
 BuildRequires:  git-core
@@ -33,6 +33,7 @@ BuildRequires:  libvirt-devel >= 1.2.14
 BuildRequires:  pkgconfig
 BuildRequires:  python
 BuildRequires:  wget
+BuildRequires:  golang(API) = 1.14
 Recommends:     docker-machine-driver-kvm2
 Recommends:     kubernetes-client
 Recommends:     libvirt

@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Jun 22 19:17:48 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Update to 1.11.0:
+  Features:
+  * add 'defaults' sub-command to minikube config
+  * addons: add OLM addon
+  * addons:: Add Ambassador Ingress controller addon
+  * bump oldest k8s version supported to 1.13
+  * bump default kubernetes version to 1.18.3
+  * Bump helm-tiller 2.16.7 and promote tiller ClusterRoleBinding to v1
+  Minor Improvements:
+  * docker/podman drivers: add fall back image in docker hub
+  * docker/podman drivers: exit with usage when need login to registry
+  * multinode: copy apiserver certs only to control plane
+  * docker-env: restart dockerd inside minikube on failure
+  * wait for kubernetes components on soft start
+  * improve minikube status display for one node
+  * improve solution message for wrong kuberentes-version format
+  Bug fixes:
+  * fix HTTP_PROXY env not being passed to docker engine
+  * honor --image-repository even if --image-mirror-country is set
+  * parallels driver: fix HostIP implementation
+  * addon registry: avoid getting stuck on registry port 443
+  * respect native-ssh param properly
+  * fixed parsing kubernetes version for keywords "latest" or "stable"
+  * multinode: make sure multinode clusters survive restarts
+  * multinode: delete docker volumes when deleting a node
+  * multinode: delete worker volumes for docker driver
+  * multinode: recreate existing control plane node correctly
+
+-------------------------------------------------------------------
+Wed Dec 25 13:35:27 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Update to 1.6.2:
+  * Update default k8s version to v1.17.0
+  * Make Kubernetes version sticky for a cluster instead of auto-upgrading
+  * cache add: load images to all profiles & skip previously cached images
+  * Update dashboard to 2.0.0b8 and pre-cache it again
+  * Pre-cache the latest kube-addon-manager
+  * Add sch_netem kernel module for network emulation
+  * Don't use bash as the entrypoint for docker
+  * Make lock names uid and path specific to avoid conflicts
+  * Remove deprecated annotation storageclass.beta.kubernetes.io
+  * show status in profile list
+  * Use newer gvisor version
+  * Adds dm-crypt support
+  * Add performance analysis packages to minikube ISO
+  * Offline: always transfer image if lookup fails, always download drivers
+  * Update ingress-dns addon
+  * Fix update-context to use KUBECONFIG when the env is set
+  * Fixed IPv6 format for SSH
+  * Add hyperkit version check whether user's hyperkit is newer
+  * start: Remove create/delete retry loop
+  * Change error text to encourage better issue reports
+
+-------------------------------------------------------------------
 Mon Nov 11 14:01:25 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.5.2:
