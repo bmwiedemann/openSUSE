@@ -425,4 +425,12 @@
 - Run testsuite in verbose mode (forwarded request 802755 from Andreas_Schwab)</comment>
     <requestid>802756</requestid>
   </revision>
+  <revision rev="52" vrev="6">
+    <srcmd5>76b20fed407555430a23cfeecc11f89b</srcmd5>
+    <version>5.18.16</version>
+    <time>1592938797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816329</requestid>
+  </revision>
 </revisionlist>

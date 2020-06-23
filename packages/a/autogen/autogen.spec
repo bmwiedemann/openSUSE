@@ -102,6 +102,7 @@ touch aclocal.m4 configure Makefile.in config-h.in
 make %{?_smp_mflags}
 
 %install
+export MAN_PAGE_DATE=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%s)} -I)
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes -s %{buildroot}%{_datadir}
