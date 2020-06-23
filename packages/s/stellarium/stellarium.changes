@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 22 17:51:55 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 0.20.2
+  * Many changes in AstroCalc tool and core of Stellarium
+  * Many changes in scripting engline and Script Console
+  * Many changes in Oculars and Satellites plugins
+  * Updated DSO catalog
+- The parallel build in Qt 5.15 or GCC10 seems to take too much
+  resources to complete the build on Tumbleweed (build on a single
+  core only to limit memory usage)
+- The (optional) libgps library is only available in openSUSE,
+  adjust BuildRequires accordingly to build for SLE as well
+
+-------------------------------------------------------------------
 Mon Apr 20 14:20:51 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 0.20.1

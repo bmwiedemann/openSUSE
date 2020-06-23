@@ -17,7 +17,7 @@
 
 
 Name:           stellarium
-Version:        0.20.1
+Version:        0.20.2
 Release:        0
 Summary:        Astronomical Sky Simulator
 License:        GPL-2.0-or-later
@@ -32,22 +32,24 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5MultimediaWidgets) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Network) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Positioning) >= 5.6.0
+BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5Gui) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5MultimediaWidgets) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5Network) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5Positioning) >= 5.7.0
 BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Script) >= 5.5.0
+BuildRequires:  pkgconfig(Qt5Script) >= 5.7.0
 BuildRequires:  pkgconfig(Qt5SerialPort)
-BuildRequires:  pkgconfig(Qt5Test) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5UiTools) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.6.0
+BuildRequires:  pkgconfig(Qt5Test) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5UiTools) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.7.0
 BuildRequires:  pkgconfig(dri)
 BuildRequires:  pkgconfig(glu)
+%if 0%{?is_opensuse}
 BuildRequires:  pkgconfig(libgps)
+%endif
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -62,7 +64,11 @@ binoculars or a small telescope.
 export QT_HASH_SEED=0
 %cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_POLICY_DEFAULT_CMP0063=NEW \
        -DCMAKE_CXX_VISIBILITY_PRESET=hidden -DCMAKE_VISIBILITY_INLINES_HIDDEN=1
+%if 0%{?suse_version} >= 1550
+%make_jobs -j1
+%else
 %make_jobs
+%endif
 
 %install
 %cmake_install
@@ -72,7 +78,7 @@ export QT_HASH_SEED=0
 rm %{buildroot}%{_datadir}/pixmaps/%{name}.xpm
 
 %suse_update_desktop_file -c stellarium Stellarium "Planetarium in your computer" stellarium stellarium Science Astronomy
-mkdir -p %{buildroot}/%{_datadir}/stellarium/data/script_internet_update
+mkdir -p %{buildroot}%{_datadir}/%{name}/data/script_internet_update
 %fdupes %{buildroot}%{_datadir}/%{name}
 
 #%%find_lang %%{name}
