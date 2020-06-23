@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Jun 22 14:07:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- avoid verbose diagnostic print on start of kubelet 
+
+-------------------------------------------------------------------
+sc 
+Thu Jun 18 21:59:49 UTC 2020 - dmueller@suse.com
+
+- Update to version 1.18.4:
+  * enable floating IP for IPv6
+  * Extend AWS azToRegion method to support Local Zones and other partitions
+  * kubelet: block non-forwarded packets from crossing the localhost boundary
+  * Deflake port-forward e2e test
+  * Fix fieldType being dropped by older go-clients
+  * FieldManager: Reset if we receive nil or a list with one empty item
+  * set dest prefix and port for IPv6 sg rule
+  * fieldManager: Ignore and log all errors when updating managedFields
+  * Make kubectl tolerate other versions of the CSR API
+  * Changes to ManagedFields is not mutation for GC
+  * fix a number of unbounded dimensions in request metrics
+  * build: Use debian-hyperkube-base@v1.0.0 image
+  * Check for GCE finalizer in GetLoadBalancer.
+  * Fix csi-provisioner image for pd csi driver
+  * hyperkube: Build v1.0.0 image
+  * build: Add dependency entries for debian-hyperkube-base
+  * Update CNI to v0.8.6
+  * Fix public IP not shown issues after assigning public IP to Azure VMs
+  * Skip Pod Conditions from scheduling queue updates
+  * add test for finalizers
+  * skip unnecessary scheduling attempt when pod's finalizers change
+  * Update CHANGELOG/CHANGELOG-1.18.md for v1.18.3
+  * Add back anti-affinity to kube-dns pods.
+  * Check for empty zone string
+  * Azure - do not use 0 zone or empty string for zone when creating PVs
+  * Fix client-ca dynamic reload in apiserver
+  * Fix exclusive CPU allocations being deleted at container restart
+  * Update strategy used to reuse CPUs from init containers in CPUManager
+
+-------------------------------------------------------------------
 Wed Jun 10 11:57:57 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Remove %{?_smp_mflags} to make build more reliable [boo#1172744] 

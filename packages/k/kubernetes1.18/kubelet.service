@@ -6,7 +6,7 @@ Wants=docker.service crio.service
 ConditionPathExists=/var/lib/kubelet/config.yaml
 
 [Service]
-ExecStartPre=/bin/bash -c "findmnt -t bpf --mountpoint /sys/fs/bpf || mount bpffs /sys/fs/bpf -t bpf"
+ExecStartPre=/bin/bash -c "findmnt -t bpf --mountpoint /sys/fs/bpf > /dev/null || mount bpffs /sys/fs/bpf -t bpf"
 ExecStart=/usr/bin/kubelet
 Restart=always
 StartLimitInterval=0
