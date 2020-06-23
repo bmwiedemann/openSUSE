@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Mon Jun 22 16:02:30 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- New 0.3 release
+  * fixes double status bar issue
+- Remove uneeded Requires for branding packages
+
+-------------------------------------------------------------------
+Fri Jun 19 19:56:45 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Fix typo in the Source URL 
+
+-------------------------------------------------------------------
+Fri Jun  5 14:21:35 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Add waybar branding package
+- Add alacritty customization 
+
+-------------------------------------------------------------------
+Fri Jun  5 13:50:14 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Add metapackage in order to store more brandings packages under
+
+-------------------------------------------------------------------
+Fri Jun  5 10:03:12 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Add wofi config and style to sysconfdir
+  * wofi doesn't support distibution specific dirs from package
+  * spec seds distro specific dirs to sway config for wofi 
+
+-------------------------------------------------------------------
+Fri Jun  5 09:28:00 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Add Source URL and build from archive 
+
+-------------------------------------------------------------------
+Fri May 29 15:09:04 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Initial package to brand Sway in openSUSE way
