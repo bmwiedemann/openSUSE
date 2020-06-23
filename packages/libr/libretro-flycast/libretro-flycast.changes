@@ -1,4 +1,217 @@
 -------------------------------------------------------------------
+Tue Jun 16 06:16:58 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200609:
+  * fix div matching. make it the default. remove exceptions
+  * Raspberry Pi 4 64-bit userspace build recipe
+  * fix xxhash pkg-config lines
+  * libzip: use public api for zip_fopen_by_crc and move it out of deps
+  * allow using system libs
+  * faster naomi gdrom loading
+  * Fix crash when boot to bios is enabled and loading naomi/aw game
+  * get rid of wchar
+  * maple: fix vmu reset in BIOS
+  * Disable -flto on all platforms (HAVE_LTCG=0)
+  * naomi: sega marine fishing STD inputs
+  * aica: Fix armwrestler MOV and LDR errors. Better cycle counting
+  * modem: fix isp settings in flash
+  * naomi: force lightgun for games that need it. Fix gundmct going left
+  * Add puyofevp naomi rom
+  * (NAOMI) fix pokasuka romset
+  * oops, better that way or d3d won't auto-switch
+  * improve context request
+  * naomi/aw widescreen cheats
+  * disable -flto on rockpro64
+  * dsp: proper MIXS input shift
+  * gdrom: disable bios region patching
+  * don't reset frameskip to 0 at init
+  * Fix Haiku build
+  * Disable LTO for RockPro64 (32bits)
+  * disable LTO for classic_armv8_a35
+  * remove rpi4 workaround
+  * Correct last commit to disable LTO for ODroid XU3/4
+  * dsp: fix output shift
+  * arm64: check CpuRunning at end of each timeslice
+  * Rewrite nvidia jetson nano build
+  * naomi: wrungp inputs. support inverted axis for naomi
+  * make threaded rendering the default on all platforms
+  * naomi: add tokyo bus guide
+  * Log VMU files loading
+  * custom tex: const char* isn't writable
+  * custom tex: support jpeg format. Get rid of libpng and use stb_image
+  * fix mouse state not being updated
+  * pvr: update palette when PAL_RAM_CTRL is updated
+  * rend: use original palette data to compute palette hash
+  * pvr: textured background plane
+  * ODroid, disable LTO because this will segfault the emulator when linked to mali's libGLESv2
+  * ODroid cleaning up Makefile
+  * fix crash when TR poly count is 0
+  * sort triangles even with 1 poly
+  * support multi-session cue/bin. mipmap D-adjust only to increase LoD
+  * pvr: don't reset tile clipping value on each frame
+  * pvr: #ifdef switch work-around
+  * Use -O2 for YUV_Block8x8 due to UB
+  * [Switch] Iterate each Page for Permission set - Prevent memory state conflicts
+  * vmem: unprotect vram when releasing memory if NO_VMEM
+  * pvr: reserve more opaque polys. Don't crash on TA overrun
+  * ta: defer index building and strip merging, filter out infinite vertices
+  * [CI/CD] Add .gitlab-ci.yml
+  * [Switch] Initial Port
+  * Protect ram and vram when vmem is disabled
+  * naomi: VMU support (vonot, sf3zu). Fix otrigger inputs.
+  * Alien Front Naomi needs Div matching disabled
+  * gdrom: don't resume cdda if not playing. stop if cur > end
+  * renderer: decrease MipmapD bias
+  * custom texture: stop loader thread before loading state
+  * renderer: generate mipmaps for custom textures
+  * input: only use R2/L2 for trigger input even with digital triggers
+  * (NAOMI) add sfz3ugd button labels
+  * nvmem: generate console ID at startup. rec-x64: Call stack alignment
+  * fix alignment issues reported by ubsan on x64
+  * dsp x64: use returned code buffer ptr on windows cuz it's reallocated
+  * x64 DSP jit compiler
+  * pvr: avoid using List::head() in loops
+  * recreate the gl/vk texture when loading a custom one
+  * (NAOMI) add ringout eeprom + some crcs
+  * naomi: parent rom name was incorrect for gdroms
+  * OSX build fix
+  * android/arm32 build fix
+  * Handle mipmap D-adjust param. Change custom tex hash and fix dump issue
+  * gl (es) 2 build fix
+  * disable div matching for Donald Duck Goin Quackers
+  * users now cannot force enable div matching
+  * vulkan: corrupted textures with mipmap and xBRZ
+  * fix crash when enabling xBRZ filtering
+  * use glGetStringi instead of glGetString to get GL extensions
+  * gles 2 build fix
+  * pvr2 filter: cap textureSize.y to 720
+  * gl4: add missing glSamplerParameterf function
+  * gl, gl4: anisotropic filtering for gl renderers
+  * fix crash for 1x1 TW textures
+  * restore previous twiddle table for non-square tex
+  * upload all texture mipmap levels to gpu
+  * vulkan oit: pass native blend function values to shader, not vulkan ones
+  * Update postprocess.cpp - leilei says to change it to this
+  * pvr2 filter: more compliant type conversions to help with GLES
+  * Init aica int mask/level at HLE boot
+  * pvr2 filter: limit interlace blend to 3 lines
+  * don't fix texture bleeding for repeating textures
+  * disable RGB component for some games
+  * stop cdda when reading sector
+  * fix simple texture bleeding case when upscaling
+  * force HLE off to boot BIOS. Avoid crash when loading invalid content
+  * New widescreen cheats: Suzuki Racing, Nightmare Creatures, Rent a hero
+  * reios: support disk eject/change
+  * naomi: don't scale trigger for wldkicks
+  * maple: refactor controller to avoid code dup
+  * better joystick handling for wldkicks. fix blockpong controls
+  * maple: safely reconnect vmus when changing per-game vmus option
+  * naomi: don't count first_player twice
+  * naomi: emulate World Kicks and World Kicks PCB inputs
+  * naomi: fix reboot. clean up
+  * naomi: emulate mazan inputs
+  * Add disk control interface v1 support
+  * ignore trilinear filtering if texture isn't mipmapped
+  * gl,gl4: powervr2 post-processing filter from leilei
+  * gl4: fix blending issue when autosort=0
+  * gl4: don't use extra depth scale in fog calc
+  * disable div matching for more games
+  * pvr: better saturate colors when converting tex to higher precision
+  * disable div matching for Aqua GT. add input config for Mazan
+  * gl & gl4: recreate vmu and crosshair textures at context reset
+  * arm32: fix xtrct dynarec implementation
+  * Get rid of the pregap for .CUE audio tracks
+  * arm64: fix xtrct dynarec implementation
+  * cue: Set proper CTRL value
+  * build fix
+  * build fix
+  * reduce savestates size by 20mb
+  * vmem: unmap all reserved vmem space on unload
+  * vulkan: only use oit pass in autosort mode
+  * awave: use light guns for Ranger Mission
+  * vulkan: VMU screens and lightgun crosshairs support
+  * gl4: only use oit pass in autosort mode
+  * aica: generate samples when arm is disabled (dynarec)
+  * (NAOMI) eeprom for spawn
+  * (NAOMI) force region for mushi2k4
+  * (NAOMI) eeprom for hmgeo
+  * vulkan: typo on adreno test
+  * pvr: raise Object List Overflow interrupt if TA data buffer full
+  * vulkan: workaround for Intel driver bug when depth write is disabled
+  * pvr: avoid TA data buffer overflow
+  * pvr: fix crash when content loading fails
+  * naomi/aw: load failure when mixing / and \ in content path on windows
+  * Set back default Cable Type to TV (Composite)
+  * vulkan: disable translucent modifier volumes on adreno
+  * Add anisotropic filtering option (vulkan). Remove RTT option.
+  * fix wince regression from 6dd6013ead6cbfc5c101c91e54276b1c756ff3b5
+  * Fix FLAC__NO_DLL preprocessor flag in Makefile
+  * vulkan: use frontend-specified physical device if not nil
+  * pvr: force background plane not textured
+  * Custom Textures / Dump Textures supports NAOMI also
+  * rec-cpp: Add missing opcode call classes and allow for immediate args
+  * dynarec: set correct sign on result if float conv returns indefinite
+  * dyna: use xxhash instead of sha1 to hash code blocks
+  * better sh4 regs init. Clean up
+  * mmu: missing template instances in the slow mmu
+  * DMAC: Add LMMODE1 for ch2-dma, add basic DMAC based dma support
+  * better serial port emulation
+  * aica: Add G2 Dev Device DMA. LFORE is not cleared automatically
+  * flash: don't abort on invalid access size
+  * vulkan: fix mali crash
+  * vulkan: arm32 build fix
+  * vulkan: enable per-pixel on all platforms
+  * vulkan: enable on android. fix crash when recreating context
+  * vulkan: enable for android
+  * android build error when !HAVE_TEXUPSCALE
+  * vulkan: use libretro nego interface to enable fragmentStoresAndAtomics
+  * renderer: add 32bpp conversion routines for bump map textures
+  * Disable startx/starty crt shifts for now. vk: fix OIT buffer size issue
+  * vulkan: copy provoking vertex. crash when rtt2vram. rtt vram stride
+  * vulkan: delay destroying in-flight images
+  * (NAOMI) force region & eeprom for kick4csh
+  * vulkan: fix inside clipping
+  * texture corruptions with some wince games
+  * vulkan: don't use anisotropic filtering with nearest. Set max to 4
+  * vulkan: don't use depth equal function if depth buffer write is disabled
+  * vulkan: fix modifier volumes
+  * (NAOMI) reduce warning msg duration for bad format
+  * vulkan: fix clipping (alpilot black screen)
+  * vulkan: allocate oit buffers in device-local mem. NVidia fixes
+  * vulkan: share pixel_buffer_size with gl. Shaders use version 450
+  * vulkan: oit renderer
+  * vulkan renderer
+  * some more const and static
+  * gles: refactor stuff out of gles renderer
+  * gl: reset texture params cache on reset
+  * gles: clear texture cache on init
+  * gl: delete fog texture on term so it's properly recreated if needed
+  * gles2: calculate fog depth in vertex shader in case highp not supported
+  * gles: use glcache to select modvol shader
+  * Use proper Haiku #def symbol
+  * vmu: avoid flash buffer overflow if game writes past the end
+  * pvr: use vclk_div to compute the pixel clock instead of ntsc/vga mode
+  * use doubles to emulate FIPR on x86
+  * Crc matching (#704)
+  * add sun8i mainline
+  * Disable frame count check for CHD to allow patched/homebrew
+  * texture upscaling was missing some paletted alpha channel formats
+  * Re-enable Haiku build
+  * Update input descriptions for King of Fighters XI
+  * rec-arm32: support 64b immediate mem writes
+  * gles: fix depth issue when drawing quads on gles2
+  * Updates to Makefile
+  * Fix mingw cross-compile again
+  * Add config Nvidia jetson nano dev kit Support
+  * widescreen cheats: remove non 4:3 internal res. Fix screen width.
+  * widescreen cheats
+  * aica arm: mask pc using max aica ram, not actual, in entry points
+  * arm64: support 64b immediate mem reads
+  * (NAOMI) Trigger inputs are always classified as 'Half'
+  * (NAOMI) Fix analog trigger input range
+  * gl: use GL_UNSIGNED_BYTE instead of GL_UNSIGNED_INT_8_8_8_8
+
+-------------------------------------------------------------------
 Wed Sep 25 14:55:19 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
 
 - Initial version
