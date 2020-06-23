@@ -1,7 +1,7 @@
 #
 # spec file for package phpPgAdmin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,16 +28,19 @@ Name:           phpPgAdmin
 Summary:        Administration of PostgreSQL over the web
 License:        GPL-2.0-or-later
 Group:          Productivity/Databases/Tools
-Version:        5.6.0
+Version:        7.12.1
 Release:        0
-Url:            http://phppgadmin.sourceforge.net
-Source0:        https://github.com/%{lc_name}/%{lc_name}/releases/download/REL_5-6-0/%{name}-%{version}.tar.bz2
+#define rel_version %(/usr/bin/sed -e "s/\./-/g" <<<%{version})
+%define rel_version REL_7-12-1
+URL:            http://phppgadmin.sourceforge.net
+Source0:        https://github.com/%{lc_name}/%{lc_name}/releases/download/%{rel_version}/%{name}-%{version}.tar.bz2
 Source1:        %{name}.http
-Patch0:         %{name}-4.2.3-config.inc.patch
+Patch0:         %{name}-config.inc.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  apache2-devel
 Requires:       mod_php_any
+Requires:       php >= 7.1
 Requires:       php-pgsql
 
 %description
@@ -47,7 +50,7 @@ perfect for PostgreSQL DBAs, newbies and hosting services.
 Features
 
 * Administer multiple servers
-* Support for PostgreSQL 8.4.x, 9.x.x, 10.x, 11.x
+* Support for PostgreSQL 9.x.x, 10.x, 11.x, 12.x
 * Manage all aspects of:
 	o Users & groups
 	o Databases
@@ -66,11 +69,11 @@ Features
 * Excellent language support:
 	o Available in 27 languages
 	o No encoding conflicts. Edit Russian data using a Japanese interface!
-* Easy to install and configur
+* Easy to install and configure
 
 %prep
 %setup -q
-%patch0 -p1
+%patch0
 
 %build
 

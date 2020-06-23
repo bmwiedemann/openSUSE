@@ -1,5 +1,37 @@
 -------------------------------------------------------------------
-Sat Jan 19 13:08:04 UTC 2019 - Christian Wittmer <chris@computersalat.de>
+Mon Mar  2 20:01:15 UTC 2020 - chris@computersalat.de
+
+- Version 7.12.1 (December 10, 2019)
+  Features:
+    * Add support for granting USAGE on sequences
+    * Update French translation 
+  Bugs: 
+    * Fix issues with OID removal in Postgres 12+
+    * Remove broken tree branch from table/view browse option
+    * Properly escape identifiers when browsing tables/views/schemas
+    * Fix truncation of long multibyte strings 
+    * Clean up a number of misspellings and typos from codespell report
+  Incompatabilities:
+    * Require mbstring module support in PHP
+- Version 7.12.0 (September 28, 2019)
+  Features
+    * Add Support for PHP 7.x 
+    * Add Support for Postgres 12
+    * Update Bootstrap to version 3.3.7 (wisekeep)
+  Bugs
+    * Fix several issues with CSS files (wisekeep)
+    * Clean up file permissions (nirgal) 
+    * Fixed Reflected XSS vulnerability (om3rcitak)
+    * Fixes with sequence visbility and permission handling.
+  Incompatabilities:
+    * We no longer support php5 (>= 7.1) 
+    * Change in version numbering system
+- rebase patch
+  * rename phpPgAdmin-4.2.3-config.inc.patch to phpPgAdmin-config.inc.patch
+- fix changes file
+
+-------------------------------------------------------------------
+Sat Jan 19 13:08:04 UTC 2019 - chris@computersalat.de
 
 - update to 5.6.0
   - fix for boo#1094772

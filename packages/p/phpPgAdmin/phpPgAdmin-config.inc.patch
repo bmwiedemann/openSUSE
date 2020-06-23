@@ -1,6 +1,7 @@
-diff -ruN phpPgAdmin-4.2.3-orig/libraries/lib.inc.php phpPgAdmin-4.2.3/libraries/lib.inc.php
---- phpPgAdmin-4.2.3-orig/libraries/lib.inc.php	2010-03-28 23:46:17.000000000 +0200
-+++ phpPgAdmin-4.2.3/libraries/lib.inc.php	2011-02-19 00:50:02.000000000 +0100
+Index: libraries/lib.inc.php
+===================================================================
+--- libraries/lib.inc.php.orig
++++ libraries/lib.inc.php
 @@ -27,12 +27,12 @@
  		exit(sprintf('Version of PHP not supported. Please upgrade to version %s or later.', $phpMinVer));
  
