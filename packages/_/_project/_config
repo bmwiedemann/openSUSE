@@ -273,8 +273,10 @@ Prefer: PackageKit:PackageKit-branding-upstream
 Prefer: plasma5-desktop:plasma5-desktop-branding-upstream
 Prefer: plasma5-workspace:plasma5-workspace-branding-upstream
 Prefer: sddm:sddm-branding-upstream
+Prefer: sway:sway-branding-upstream
 Prefer: systemd-presets-branding-openSUSE
 Prefer: wallpaper-branding-openSUSE
+Prefer: waybar:waybar-branding-upstream
 Prefer: xfce4-notifyd:xfce4-notifyd-branding-upstream
 Prefer: xfce4-settings:xfce4-settings-branding-upstream
 Prefer: xfdesktop:xfdesktop-branding-upstream
