@@ -18,7 +18,7 @@
 
 
 Name:           votca-tools
-Version:        1.6
+Version:        1.6.1
 Release:        0
 %define         uversion %{version}
 %define         sover 6
@@ -102,7 +102,8 @@ make -C build test CTEST_OUTPUT_ON_FAILURE=1 %{?testargs}
 %postun -n libvotca_tools%sover -p /sbin/ldconfig
 
 %files -n libvotca_tools%sover
-%doc LICENSE NOTICE
+%doc NOTICE README.md CHANGELOG.md
+%license LICENSE
 %{_libdir}/libvotca_tools.so.%{sover}
 
 %files devel

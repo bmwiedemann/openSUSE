@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 22 12:11:56 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- Update to 1.6.1
+  - fix build with mkl ([gh#votca/tools#229])
+  - fix build with non-system libfftw ([gh#votca/tools#234])
+  - fix CI on Ubuntu-20.04 ([gh#votca/tools#237])
+  - fix bug related to calling c abs instead of c++ fabs
+    ([gh#votca/tools#248])
+  - updated floating point comparison in akimaspline.h
+    ([gh#votca/tools#248])
+  - fix compile error in structure parameters by adding hash
+    function ([gh#votca/tools#248])
+
+-------------------------------------------------------------------
 Mon Jun 15 08:03:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move the miscellaneous manpages from the library package to the
