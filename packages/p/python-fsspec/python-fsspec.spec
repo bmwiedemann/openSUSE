@@ -1,7 +1,7 @@
 #
 # spec file for package python-fsspec
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-fsspec
-Version:        0.6.0
+Version:        0.7.4
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/intake/filesystem_spec
 Source:         https://github.com/intake/filesystem_spec/archive/%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -32,6 +31,7 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module fusepy}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
