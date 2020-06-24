@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 24 02:11:31 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.1:
+  * Fix newline escaping in plain-text formatters (ascii, double, github)
+  * Use built-in unittest.mock instead of mock.
+  * Remove Python 2.7 and 3.5.
+  * Style config for missing value. 
+
+-------------------------------------------------------------------
 Thu Apr 23 11:20:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not pull python2 deps without python2

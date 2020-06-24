@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-cli-helpers
-Version:        1.2.1
+Version:        2.0.1
 Release:        0
 Summary:        Helpers for building command-line apps
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/dbcli/cli_helpers
 Source:         https://files.pythonhosted.org/packages/source/c/cli_helpers/cli_helpers-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}

@@ -42,4 +42,16 @@
     <comment>- Do not pull python2 deps without python2</comment>
     <requestid>796513</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7c4c2c99c0ed7bacab9d18ea47e4f366</srcmd5>
+    <version>2.0.1</version>
+    <time>1593006562</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.1:
+  * Fix newline escaping in plain-text formatters (ascii, double, github)
+  * Use built-in unittest.mock instead of mock.
+  * Remove Python 2.7 and 3.5.
+  * Style config for missing value.</comment>
+    <requestid>816741</requestid>
+  </revision>
 </revisionlist>
