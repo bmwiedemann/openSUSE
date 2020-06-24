@@ -1,0 +1,12 @@
+<!-- See https://en.opensuse.org/openSUSE:Build_Service_Concept_SourceService -->
+<!-- for more details on the syntax -->
+
+<services>
+        <service name="tar_scm" mode="disabled">
+                <param name="scm">git</param>
+                <param name="url">https://github.com/Mellanox/rshim-user-space.git</param>
+                <param name="filename">rshim</param>
+		<param name="versionrewrite-pattern">rshim(.*)</param>
+		<param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@</param>
+        </service>
+</services>
