@@ -895,4 +895,14 @@ require bash-completion for iproute2-bash-completion]</comment>
     <comment>- Update to release 5.7</comment>
     <requestid>811258</requestid>
   </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>ec046b3e20bf9b4b417e0a27db583248</srcmd5>
+    <version>5.7.0</version>
+    <time>1593006457</time>
+    <user>dimstar_suse</user>
+    <comment>- remove bpf-bss-section-poc.patch, bpf-data-section-support-poc.patch:
+  * these patches should be obsolete with cilium 1.7 and they never
+  went upstream, so we can drop it (jsc#SLE-9813) (forwarded request 815490 from dirkmueller)</comment>
+    <requestid>815505</requestid>
+  </revision>
 </revisionlist>

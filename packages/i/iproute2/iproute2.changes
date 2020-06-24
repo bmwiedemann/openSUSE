@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 17 10:50:43 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- remove bpf-bss-section-poc.patch, bpf-data-section-support-poc.patch:
+  * these patches should be obsolete with cilium 1.7 and they never
+  went upstream, so we can drop it (jsc#SLE-9813)
+
+-------------------------------------------------------------------
 Wed Jun  3 19:39:59 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.7
