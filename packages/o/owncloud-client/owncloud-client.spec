@@ -250,7 +250,7 @@ env LD_RUN_PATH=%{_libdir}/owncloud:%{_libdir}/owncloud make %{?_smp_mflags} VER
 %cmake_install
 
 # Copy the source README here to be picked up by doc macro
-cp %{SOURCE2} .
+cp %{SOURCE3} .
 
 if [ -d %{buildroot}%{_mandir}/man1 ]; then
   gzip %{buildroot}%{_mandir}/man1/*.1
@@ -262,7 +262,7 @@ test -f %{extdir}/ownCloud.pyo && mv %{extdir}/ownCloud.pyo %{extdir}/owncloud.p
 test -f %{extdir}/ownCloud.pyc && mv %{extdir}/ownCloud.pyc %{extdir}/owncloud.pyc || true
 
 # https://github.com/owncloud/client/issues/4107
-install -m 0755 -D %{SOURCE1} %{buildroot}/etc/sysctl.d/101-sync-inotify.conf
+install -m 0755 -D %{SOURCE2} %{buildroot}/etc/sysctl.d/101-sync-inotify.conf
 
 %suse_update_desktop_file -n owncloud
 # workaround for https://github.com/owncloud/ownbrander/issues/322
