@@ -180,6 +180,7 @@
       <repopackage name="attr"/>
       <repopackage name="audacity"/>
       <repopackage name="audacity-lang"/>
+      <repopackage name="audacity-plugins"/>
       <repopackage name="audit"/>
       <repopackage name="audit-devel"/>
       <repopackage name="augeas"/>
@@ -1682,6 +1683,7 @@
       <repopackage name="libefa1"/>
       <repopackage name="libefivar1"/>
       <repopackage name="libelf1"/>
+      <repopackage name="libell0"/>
       <repopackage name="libenca0"/>
       <repopackage name="libenchant-2-2"/>
       <repopackage name="libenchant1"/>
@@ -2745,7 +2747,6 @@
       <repopackage name="libstorage-ng-lang"/>
       <repopackage name="libstorage-ng-ruby"/>
       <repopackage name="libstorage-ng1"/>
-      <repopackage name="libsuil-0-0"/>
       <repopackage name="libsuitesparseconfig5"/>
       <repopackage name="libsunpinyin3"/>
       <repopackage name="libsvn_auth_gnome_keyring-1-0"/>
@@ -2908,13 +2909,12 @@
       <repopackage name="libwps-0_4-4"/>
       <repopackage name="libwrap0"/>
       <repopackage name="libwsutil11"/>
-      <repopackage name="libwx_baseu-suse-nostl3_0_4"/>
-      <repopackage name="libwx_baseu_net-suse-nostl3_0_4"/>
-      <repopackage name="libwx_baseu_xml-suse-nostl3_0_4"/>
-      <repopackage name="libwx_gtk2u_adv-suse-nostl3_0_4"/>
-      <repopackage name="libwx_gtk2u_core-suse-nostl3_0_4"/>
-      <repopackage name="libwx_gtk2u_html-suse-nostl3_0_4"/>
-      <repopackage name="libwx_gtk2u_qa-suse-nostl3_0_4"/>
+      <repopackage name="libwx_baseu-suse-nostl3_1_3"/>
+      <repopackage name="libwx_baseu_net-suse-nostl3_1_3"/>
+      <repopackage name="libwx_baseu_xml-suse-nostl3_1_3"/>
+      <repopackage name="libwx_gtk3u_core-suse-nostl3_1_3"/>
+      <repopackage name="libwx_gtk3u_html-suse-nostl3_1_3"/>
+      <repopackage name="libwx_gtk3u_qa-suse-nostl3_1_3"/>
       <repopackage name="libX11-6"/>
       <repopackage name="libX11-data"/>
       <repopackage name="libX11-devel"/>

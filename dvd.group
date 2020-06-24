@@ -178,6 +178,7 @@
     <package name="attr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="audacity" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="audacity-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="audacity-plugins" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="audit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="audit-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="augeas" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1964,6 +1965,7 @@
     <package name="libefa1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="libefivar1" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="libelf1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libell0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libenca0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libenchant-2-2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libenchant1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2786,7 +2788,6 @@
     <package name="libstorage-ng-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libstorage-ng-ruby" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libstorage-ng1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libsuil-0-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libsuitesparseconfig5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsunpinyin3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsvn_auth_gnome_keyring-1-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -2947,13 +2948,12 @@
     <package name="libwps-0_4-4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libwrap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwsutil11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
-    <package name="libwx_baseu-suse-nostl3_0_4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libwx_baseu_net-suse-nostl3_0_4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libwx_baseu_xml-suse-nostl3_0_4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libwx_gtk2u_adv-suse-nostl3_0_4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libwx_gtk2u_core-suse-nostl3_0_4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libwx_gtk2u_html-suse-nostl3_0_4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libwx_gtk2u_qa-suse-nostl3_0_4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libwx_baseu-suse-nostl3_1_3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libwx_baseu_net-suse-nostl3_1_3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libwx_baseu_xml-suse-nostl3_1_3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libwx_gtk3u_core-suse-nostl3_1_3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libwx_gtk3u_html-suse-nostl3_1_3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libwx_gtk3u_qa-suse-nostl3_1_3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libx86emu3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libxapian30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libxapp1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->

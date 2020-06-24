@@ -100,7 +100,6 @@
       <repopackage name="cpio"/>
       <repopackage name="cracklib" arch="x86_64"/>
       <repopackage name="cracklib-dict-full" arch="x86_64"/>
-      <repopackage name="cracklib-dict-small" arch="x86_64"/>
       <repopackage name="cri-o" arch="x86_64"/>
       <repopackage name="cri-o-kubeadm-criconfig" arch="x86_64"/>
       <repopackage name="cri-tools" arch="x86_64"/>

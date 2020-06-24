@@ -500,6 +500,7 @@ unsorted:
   - ant-xz 
   - anthy 
   - anthy-devel 
+  - antijingoist-opendyslexic-fonts 
   - antimicro 
   - antlr 
   - antlr-bootstrap 
@@ -1348,11 +1349,6 @@ unsorted:
   - buildstream 
   - bumblebee 
   - bumblebee-status 
-  - bumblebee-status-module-cmus 
-  - bumblebee-status-module-dnf 
-  - bumblebee-status-module-mocp 
-  - bumblebee-status-module-mpd 
-  - bumblebee-status-module-redshift 
   - bumpversion 
   - busybox-adduser 
   - busybox-ash 
@@ -2024,7 +2020,7 @@ unsorted:
   - cpustat-bash-completion 
   - cracklib-devel 
   - cracklib-devel-32bit: [x86_64] 
-  - cracklib-dict-small: [i586] 
+  - cracklib-dict-small 
   - crash 
   - crash-devel 
   - crash-doc 
@@ -9214,7 +9210,6 @@ unsorted:
   - libelf-devel 
   - libelf-devel-32bit: [x86_64] 
   - libelf1-32bit: [x86_64] 
-  - libell0 
   - libelocation1 
   - libelput1 
   - libelua1 
@@ -10237,7 +10232,7 @@ unsorted:
   - libjson-c-devel 
   - libjson-c-doc 
   - libjson-glib-1_0-0-32bit: [x86_64] 
-  - libjsoncpp22 
+  - libjsoncpp24 
   - libjte-devel 
   - libjthread1_3_3 
   - libjxrglue0 
@@ -11032,7 +11027,7 @@ unsorted:
   - libopencascade7 
   - libopencsg1 
   - libopencv3_4 
-  - libopencv4_2 
+  - libopencv4_3 
   - libopendkim10 
   - libopenhpi4 
   - libopenjp2-7-32bit: [x86_64] 
@@ -12314,6 +12309,7 @@ unsorted:
   - libsubtitleeditor-devel 
   - libsubtitleeditor0 
   - libsubunit0 
+  - libsuil-0-0 
   - libsundials3 
   - libsundials3-mvapich2 
   - libsundials3-openmpi1 
@@ -12905,18 +12901,19 @@ unsorted:
   - libwtdbopostgres4_2_2 
   - libwv-1_2-4 
   - libwv2-4 
-  - libwx_baseu-suse-nostl3_1_3 
+  - libwx_baseu-suse-nostl3_0_4 
   - libwx_baseu-suse3_0_4 
   - libwx_baseu-suse3_0_4-32bit: [x86_64] 
   - libwx_baseu-suse3_1_3 
-  - libwx_baseu_net-suse-nostl3_1_3 
+  - libwx_baseu_net-suse-nostl3_0_4 
   - libwx_baseu_net-suse3_0_4 
   - libwx_baseu_net-suse3_0_4-32bit: [x86_64] 
   - libwx_baseu_net-suse3_1_3 
-  - libwx_baseu_xml-suse-nostl3_1_3 
+  - libwx_baseu_xml-suse-nostl3_0_4 
   - libwx_baseu_xml-suse3_0_4 
   - libwx_baseu_xml-suse3_0_4-32bit: [x86_64] 
   - libwx_baseu_xml-suse3_1_3 
+  - libwx_gtk2u_adv-suse-nostl3_0_4 
   - libwx_gtk2u_adv-suse3_0_4 
   - libwx_gtk2u_adv-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_adv-suse3_1_3 
@@ -12924,6 +12921,7 @@ unsorted:
   - libwx_gtk2u_aui-suse3_0_4 
   - libwx_gtk2u_aui-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_aui-suse3_1_3 
+  - libwx_gtk2u_core-suse-nostl3_0_4 
   - libwx_gtk2u_core-suse3_0_4 
   - libwx_gtk2u_core-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_core-suse3_1_3 
@@ -12931,6 +12929,7 @@ unsorted:
   - libwx_gtk2u_gl-suse3_0_4 
   - libwx_gtk2u_gl-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_gl-suse3_1_3 
+  - libwx_gtk2u_html-suse-nostl3_0_4 
   - libwx_gtk2u_html-suse3_0_4 
   - libwx_gtk2u_html-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_html-suse3_1_3 
@@ -12942,6 +12941,7 @@ unsorted:
   - libwx_gtk2u_propgrid-suse3_0_4 
   - libwx_gtk2u_propgrid-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_propgrid-suse3_1_3 
+  - libwx_gtk2u_qa-suse-nostl3_0_4 
   - libwx_gtk2u_qa-suse3_0_4 
   - libwx_gtk2u_qa-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_qa-suse3_1_3 
@@ -12965,17 +12965,14 @@ unsorted:
   - libwx_gtk3u_adv-suse3_1_3 
   - libwx_gtk3u_aui-suse-nostl3_1_3 
   - libwx_gtk3u_aui-suse3_1_3 
-  - libwx_gtk3u_core-suse-nostl3_1_3 
   - libwx_gtk3u_core-suse3_1_3 
   - libwx_gtk3u_gl-suse-nostl3_1_3 
   - libwx_gtk3u_gl-suse3_1_3 
-  - libwx_gtk3u_html-suse-nostl3_1_3 
   - libwx_gtk3u_html-suse3_1_3 
   - libwx_gtk3u_media-suse-nostl3_1_3 
   - libwx_gtk3u_media-suse3_1_3 
   - libwx_gtk3u_propgrid-suse-nostl3_1_3 
   - libwx_gtk3u_propgrid-suse3_1_3 
-  - libwx_gtk3u_qa-suse-nostl3_1_3 
   - libwx_gtk3u_qa-suse3_1_3 
   - libwx_gtk3u_ribbon-suse-nostl3_1_3 
   - libwx_gtk3u_ribbon-suse3_1_3 
@@ -15913,6 +15910,7 @@ unsorted:
   - open-isns-devel 
   - open-lldp: [i586] 
   - open-lldp-devel 
+  - open-vm-tools-sdmp 
   - openCryptoki 
   - openCryptoki-32bit: [i586] 
   - openCryptoki-64bit: [x86_64] 
@@ -16745,6 +16743,31 @@ unsorted:
   - pcsc-tools 
   - pcsc-towitoko-devel 
   - pcsx2: [i586] 
+  - pcsx2-lang-ar: [i586] 
+  - pcsx2-lang-ca: [i586] 
+  - pcsx2-lang-cs: [i586] 
+  - pcsx2-lang-da: [i586] 
+  - pcsx2-lang-de: [i586] 
+  - pcsx2-lang-es: [i586] 
+  - pcsx2-lang-fi: [i586] 
+  - pcsx2-lang-fr: [i586] 
+  - pcsx2-lang-hr: [i586] 
+  - pcsx2-lang-hu: [i586] 
+  - pcsx2-lang-id: [i586] 
+  - pcsx2-lang-it: [i586] 
+  - pcsx2-lang-ja: [i586] 
+  - pcsx2-lang-ko: [i586] 
+  - pcsx2-lang-lt: [i586] 
+  - pcsx2-lang-nb: [i586] 
+  - pcsx2-lang-nl: [i586] 
+  - pcsx2-lang-pl: [i586] 
+  - pcsx2-lang-pt_BR: [i586] 
+  - pcsx2-lang-ru: [i586] 
+  - pcsx2-lang-sv: [i586] 
+  - pcsx2-lang-th: [i586] 
+  - pcsx2-lang-tr: [i586] 
+  - pcsx2-lang-zh_CN: [i586] 
+  - pcsx2-lang-zh_TW: [i586] 
   - pdf2djvu 
   - pdf2djvu-lang 
   - pdf2svg 
@@ -18841,6 +18864,7 @@ unsorted:
   - python-pyserial-doc 
   - python-pysnmp-doc 
   - python-python-openid 
+  - python-python-rtmidi-doc 
   - python-qscintilla-qt5-sip 
   - python-qt3d-qt5-api 
   - python-qt3d-qt5-examples 
@@ -21127,6 +21151,7 @@ unsorted:
   - python3-python-redis-lock 
   - python3-python-redmine 
   - python3-python-rpm-spec 
+  - python3-python-rtmidi 
   - python3-python-slugify 
   - python3-python-snappy 
   - python3-python-sofa 
@@ -24988,6 +25013,7 @@ unsorted:
   - svn2git 
   - svxlink-server 
   - sway 
+  - sway-branding-openSUSE 
   - sway-branding-upstream 
   - swaybg 
   - swayidle 
@@ -33982,6 +34008,7 @@ unsorted:
   - wavpack 
   - wavpack-devel 
   - waybar 
+  - waybar-branding-openSUSE 
   - waybar-branding-upstream 
   - wayland-devel 
   - wayland-devel-32bit: [x86_64] 
