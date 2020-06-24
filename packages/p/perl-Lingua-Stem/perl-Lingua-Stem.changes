@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 21 03:10:46 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.30
+   see /usr/share/doc/packages/perl-Lingua-Stem/Changes
+
+          2.30 2020.06020 - Cleanup for initial upload to GitHub. Version
+                            numbers for all sub-modules synced on 2.30 for
+                            consistency. Maintainer updated. Build.PL and
+                            Makefile.PL updates. Addition of 'use warnings'
+                            to all files. POD encoding error fix.
+
+-------------------------------------------------------------------
 Wed Dec  3 09:34:10 UTC 2014 - coolo@suse.com
 
 - redo packaging
