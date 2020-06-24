@@ -1,7 +1,7 @@
 #
 # spec file for package bcm20702a1-firmware
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,11 +64,14 @@ else
         -o BCM20702A1-05ac-21e1.hcd
     hex2hcd BCM_DriverOnly/64/BCM20702A1_001.002.014.1483.1669.hex \
         -o BCM20702A1-0a5c-21e6.hcd
+    hex2hcd BCM_DriverOnly/64/BCM20702A1_001.002.014.1443.1467.hex \
+        -o BCM20702A1-050d-065a.hcd
     mkdir -p /lib/firmware/brcm/
     install -m644 BCM20702A1-0b05-17cb.hcd /lib/firmware/brcm/BCM20702A1-0b05-17cb.hcd
     install -m644 BCM20702A1-0b05-17cf.hcd /lib/firmware/brcm/BCM20702A1-0b05-17cf.hcd
     install -m644 BCM20702A1-05ac-21e1.hcd /lib/firmware/brcm/BCM20702A1-05ac-21e1.hcd
     install -m644 BCM20702A1-0a5c-21e6.hcd /lib/firmware/brcm/BCM20702A1-0a5c-21e6.hcd
+    install -m644 BCM20702A1-050d-065a.hcd /lib/firmware/brcm/BCM20702A1-050d-065a.hcd
 fi
 # Another variant: bsc#1087996
 wget -q https://s3.amazonaws.com/plugable/bin/fw-0a5c_21e8.hcd || :
@@ -86,6 +89,7 @@ rm -f /lib/firmware/brcm/BCM20702A1-0b05-17cf.hcd
 rm -f /lib/firmware/brcm/BCM20702A1-05ac-21e1.hcd
 rm -f /lib/firmware/brcm/BCM20702A1-0a5c-21e6.hcd
 rm -f /lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd
+rm -f /lib/firmware/brcm/BCM20702A1-050d-065a.hcd
 exit 0
 
 %files
@@ -94,5 +98,6 @@ exit 0
 %ghost /lib/firmware/brcm/BCM20702A1-05ac-21e1.hcd
 %ghost /lib/firmware/brcm/BCM20702A1-0a5c-21e6.hcd
 %ghost /lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd
+%ghost /lib/firmware/brcm/BCM20702A1-050d-065a.hcd
 
 %changelog

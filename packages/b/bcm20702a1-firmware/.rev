@@ -31,4 +31,12 @@
     <comment>- Use https to fetch the archive bsc#1154083</comment>
     <requestid>743731</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>836fbddf7e8c7723c459f44a97530bc6</srcmd5>
+    <version>1201650</version>
+    <time>1593006608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816804</requestid>
+  </revision>
 </revisionlist>
