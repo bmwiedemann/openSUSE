@@ -96,6 +96,8 @@ systems.
 
 %prep
 %setup -q
+sed -i 's|actiondir="/usr/lib/initscripts/legacy-actions"|actiondir="%{_libexecdir}/initscripts/legacy-actions"|' \
+    files/usr/sbin/service
 
 %build
 make CFLAGS="$RPM_OPT_FLAGS" CC="%{__cc}" %{?_smp_mflags}
@@ -126,7 +128,7 @@ for i in boot.local after.local halt.local ; do
   chmod 755 $RPM_BUILD_ROOT/etc/init.d/$i
 done
 #
-install -d -m 755 %buildroot/usr/lib/initscripts/legacy-actions
+install -d -m 755 %buildroot%{_libexecdir}/initscripts/legacy-actions
 # keep as ghost for migration
 touch %buildroot/etc/inittab
 
@@ -224,8 +226,8 @@ mkdir -p %{buildroot}%{_fillupdir}
 /usr/share/man/man8/safe-rmdir.8*
 /usr/share/man/man8/service.8*
 /usr/lib/sysctl.d/*.conf
-%dir /usr/lib/initscripts
-%dir /usr/lib/initscripts/legacy-actions
+%dir %{_libexecdir}/initscripts
+%dir %{_libexecdir}/initscripts/legacy-actions
 %{_fillupdir}/sysconfig.language
 %{_fillupdir}/sysconfig.proxy
 %{_fillupdir}/sysconfig.windowmanager

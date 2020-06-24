@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 16 12:37:10 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Properly adjust usr/bin/service to look for legacy-action
+  initscripts in %{_libexecdir}/initscripts/legacy-action, no
+  matter what the value of %{_libexecdir} is (planned to change
+  from /usr/lib to /usr/libexec)
+
+-------------------------------------------------------------------
 Wed May 13 08:28:06 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - move shell aliases back to main package. They don't cost anything
