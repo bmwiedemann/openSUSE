@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 24 07:47:56 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.1:
+  * macOS: Fix for diff kitten not working with python 3.8 (#2780)
+
+-------------------------------------------------------------------
 Mon Jun 22 08:12:17 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.18.0:

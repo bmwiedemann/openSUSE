@@ -320,4 +320,13 @@
     allow_remote_control to be turned on.</comment>
     <requestid>816276</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>59428893ec2ac4f0e495cc3130350473</srcmd5>
+    <version>0.18.1</version>
+    <time>1593006591</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.1:
+  * macOS: Fix for diff kitten not working with python 3.8 (#2780)</comment>
+    <requestid>816793</requestid>
+  </revision>
 </revisionlist>
