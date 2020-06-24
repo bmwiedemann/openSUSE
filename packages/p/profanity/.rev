@@ -307,4 +307,18 @@
   * Use gnu99 C standard (#1357)</comment>
     <requestid>814317</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>206c1a26d5071c41eabb2f390008c019</srcmd5>
+    <version>0.9.4</version>
+    <time>1593006497</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.4:
+  * Fix NULL terminated list (#1367)
+  * Add missing string.h (#1372)
+  * Fix gcc warnings for cygwin (#1373)
+
+- Update to 0.9.3:
+  * Fix expansion in eval_password (#1364)</comment>
+    <requestid>816823</requestid>
+  </revision>
 </revisionlist>

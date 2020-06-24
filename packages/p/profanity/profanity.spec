@@ -17,7 +17,7 @@
 
 
 Name:           profanity
-Version:        0.9.2
+Version:        0.9.4
 Release:        0
 Summary:        Console-based XMPP client
 License:        SUSE-GPL-3.0+-with-openssl-exception

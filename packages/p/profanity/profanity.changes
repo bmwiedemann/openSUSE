@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 24 12:03:31 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.4:
+  * Fix NULL terminated list (#1367)
+  * Add missing string.h (#1372)
+  * Fix gcc warnings for cygwin (#1373)
+
+-------------------------------------------------------------------
+Fri Jun 19 18:36:16 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.3:
+  * Fix expansion in eval_password (#1364)
+
+-------------------------------------------------------------------
 Sat Jun 13 16:45:17 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.2:
