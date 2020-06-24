@@ -1,7 +1,7 @@
 #
 # spec file for package ssdp-responder
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,12 +13,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ssdp-responder
-Version:        1.5
+Version:        1.7
 Release:        0
 Summary:        SSDP responder for Linux
 License:        ISC
@@ -28,6 +28,7 @@ URL:            https://github.com/troglobit/ssdp-responder
 Source:         https://github.com/troglobit/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
+%{?systemd_requires}
 
 %description
 ssdpd is a stand-alone daemon that implements the Simple Service
@@ -42,16 +43,32 @@ announced.
 
 %build
 autoreconf -fiv
-%configure
-make %{?_smp_mflags}
+%configure --with-systemd=%{_unitdir}
+%make_build
 
 %install
 %make_install
 rm -rf %{buildroot}/%{_datadir}/doc
 
+%preun
+%service_del_preun ssdpd.service
+
+%postun
+%service_del_postun ssdpd.service
+
+%pre
+%service_add_pre ssdpd.service
+
+%post
+%service_add_post ssdpd.service
+
 %files
 %doc README.md
 %license LICENSE
+%{_bindir}/ssdp-scan
 %{_sbindir}/ssdpd
+%{_mandir}/man1/ssdp-scan.1%{?ext_man}
+%{_mandir}/man8/ssdpd.8%{?ext_man}
+%{_unitdir}/ssdpd.service
 
 %changelog

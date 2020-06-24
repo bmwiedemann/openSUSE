@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun 10 11:06:00 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Package systemd service file
+- Update to version 1.7
+  * Use /etc/os-release as base for SSDP server string,
+    distribution release information is primarily stored in this
+    file, some Linux systems still use /etc/lsb-release, on real
+    UNIX systems we can use uname(1)
+  * Update ssdpd(8) man page
+
+- Update to version 1.6
+  * Fix CVE-2019-14323
+  * Refactor socket handling, enable SO_REUSEADDR + SO_REUSEPORT
+  * Change default behavior, must now use -n to run in foreground
+  * Add ssdp-scan tool, similar to mdns-scan
+  * Add systemd unit file
+
+-------------------------------------------------------------------
 Sun Jul 29 10:46:07 UTC 2018 - jengelh@inai.de
 
 - Fix write style of description.
