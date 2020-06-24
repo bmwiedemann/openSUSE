@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 24 04:27:25 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.9.0:
+  * Adds support for Patchwork API v1.2 and introduces five new commands:
+    + bundle create
+    + bundle update
+    + bundle delete
+    + bundle add
+    + bundle remove 
+
+-------------------------------------------------------------------
 Tue Mar 31 16:43:11 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.8.1: fixing the bug we filed.

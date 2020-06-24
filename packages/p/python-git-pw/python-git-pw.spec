@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname git-pw
 Name:           python-git-pw
-Version:        1.8.1
+Version:        1.9.0
 Release:        0
 Summary:        A tool for integrating Git with Patchwork
 License:        MIT
