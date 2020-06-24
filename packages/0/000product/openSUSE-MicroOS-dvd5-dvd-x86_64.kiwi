@@ -123,7 +123,6 @@
       <repopackage name="cpp10" arch="x86_64"/>
       <repopackage name="cracklib" arch="x86_64"/>
       <repopackage name="cracklib-dict-full" arch="x86_64"/>
-      <repopackage name="cracklib-dict-small" arch="x86_64"/>
       <repopackage name="cryptsetup" arch="x86_64"/>
       <repopackage name="cups-config" arch="x86_64"/>
       <repopackage name="curl" arch="x86_64"/>
@@ -481,6 +480,7 @@
       <repopackage name="libeditorconfig0" arch="x86_64"/>
       <repopackage name="libefivar1" arch="x86_64"/>
       <repopackage name="libelf1"/>
+      <repopackage name="libell0" arch="x86_64"/>
       <repopackage name="libenchant-2-2" arch="x86_64"/>
       <repopackage name="libepoxy0" arch="x86_64"/>
       <repopackage name="libepub0" arch="x86_64"/>
