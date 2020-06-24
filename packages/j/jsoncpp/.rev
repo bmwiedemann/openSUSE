@@ -236,4 +236,11 @@
   * jsoncpp-f11611c8785082ead760494cba06196f14a06dcb.patch</comment>
     <requestid>815823</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>8eddbf1f70e2c5d86d73d4ffc3d5c0fa</srcmd5>
+    <version>1.9.2</version>
+    <time>1593005915</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1173314</comment>
+  </revision>
 </revisionlist>

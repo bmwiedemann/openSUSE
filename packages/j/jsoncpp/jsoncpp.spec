@@ -16,15 +16,17 @@
 #
 
 
-%define sover   24
+%define sover   22
 Name:           jsoncpp
-Version:        1.9.3
+Version:        1.9.2
 Release:        0
 Summary:        C++ library that allows manipulating with JSON
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/open-source-parsers/jsoncpp
 Source0:        https://github.com/open-source-parsers/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - https://github.com/open-source-parsers/jsoncpp/commit/f11611c8785082ead760494cba06196f14a06dcb
+Patch1:         jsoncpp-f11611c8785082ead760494cba06196f14a06dcb.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
@@ -67,10 +69,11 @@ existing comment in unserialization/serialization steps, making it a convenient
 format to store user input files.
 
 %prep
-%autosetup
+%setup -q
+%patch1 -p1
 
 %build
-%meson
+%meson \
 %meson_build
 
 %install
