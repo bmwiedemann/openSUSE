@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-av
-Version:        7.0.1
+Version:        8.0.2
 Release:        0
 Summary:        Python bindings for FFmpeg's libraries
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/mikeboers/PyAV
 Source:         https://files.pythonhosted.org/packages/source/a/av/av-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
