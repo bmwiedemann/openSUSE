@@ -1,7 +1,7 @@
 #
 # spec file for package bzflag
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,12 @@
 %endif
 
 Name:           bzflag
-Version:        2.4.18
+Version:        2.4.20
 Release:        0
 Summary:        3D Networked Multiplayer Tank Battle Game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Shoot
-Url:            http://bzflag.org/
+URL:            https://www.bzflag.org/
 Source:         https://download.bzflag.org/bzflag/source/%{version}/bzflag-%{version}.tar.gz
 Source2:        rc.bzflagserver
 Source3:        %{name}-maps.tar.bz2
