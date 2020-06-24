@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-network
-Version:        10.1.0
+Version:        10.2.0
 Release:        0
 Summary:        Microsoft Azure Network Management Client Library
 License:        MIT
