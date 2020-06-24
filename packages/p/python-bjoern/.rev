@@ -60,4 +60,15 @@
     <comment></comment>
     <requestid>714016</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b68284539e96e94b3c2e36876740c29c</srcmd5>
+    <version>3.1.0</version>
+    <time>1593006558</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0:
+  * #169 Fix blocking accept() (Ionut Negru)
+  * #164 Add support for statsd metrics/events (Mohammad Gufran)
+  * #162 Fix Expect: 100-Continue support (Tom Brennan)</comment>
+    <requestid>816735</requestid>
+  </revision>
 </revisionlist>

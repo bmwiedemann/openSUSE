@@ -1,7 +1,7 @@
 #
 # spec file for package python-bjoern
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,11 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bjoern
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        A screamingly fast Python 2 + 3 WSGI server written in C
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
-Url:            https://github.com/jonashaag/bjoern
+URL:            https://github.com/jonashaag/bjoern
 Source:         https://files.pythonhosted.org/packages/source/b/bjoern/bjoern-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
