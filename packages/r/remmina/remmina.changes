@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 24 05:38:37 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to release 1.4.7 (boo#1173296)
+
+  * Allow compilation with libwinpr (FreeRDP) pre commit 8c5d96784d !2083 @giox069
+  * Bugfixing v1.4.6 !2082 @antenore
+  * Spelling: Automatic negotiation !2084 @kingu
+  * Spelling: GNOME Shell, opt-in desc, comments !2085 @kingu
+  * Memory leak fixes !2086 @antenore and @giox069
+  * RDP: Replacing deprecated FreeRDP function VeryfyCertificate !2087 @antenore
+
+-------------------------------------------------------------------
 Tue Jun  9 09:23:58 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to release 1.4.6
