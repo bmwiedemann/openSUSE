@@ -35,8 +35,6 @@ Patch2:         use-sysconf-_SC_CLK_TCK-if-HZ-undefined.patch
 Patch3:         add-explicit-typecast-to-avoid-gcc-warning.patch
 Patch4:         xfrm-support-displaying-transformations-used-for-Mob.patch
 Patch6:         split-link-and-compile-steps-for-binaries.patch
-Patch201:       bpf-data-section-support-poc.patch
-Patch202:       bpf-bss-section-poc.patch
 BuildRequires:  bison
 BuildRequires:  db-devel
 BuildRequires:  fdupes
