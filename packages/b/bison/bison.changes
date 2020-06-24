@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 16 19:50:24 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU bison 3.6.4:
+  * In glr.cc some internal macros leaked in the user's code, and
+    could damage access to the token kinds
+
+-------------------------------------------------------------------
 Thu Jun  4 07:36:26 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU bison 3.6.3:
