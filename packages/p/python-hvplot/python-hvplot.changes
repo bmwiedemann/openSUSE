@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jun 24 02:26:24 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.6.0
+  + New features:
+    * Added (a start to) a reference gallery (#302, #357, #359, #360, #361)
+    * Improved save and show utilities (#451)
+    * Improved compatibility for tab completion (#411)
+    * Major performance enhancement with Datashader in some cases (#465)
+    * Add support for cuDF (#454, #466)
+    * Support by argument for categorical aggregation (#461)
+    * Support color_key alias (#446, #458)
+    * Support spatialpandas for large sets of polygons (#459)
+    * Add fontscale keyword (#397)
+    * Added heat and trees example to topics (#378)
+  + Bug fixes and compatibility:
+    * Fixed 'title_format' deprecation warning (#428)
+    * Fix networkx documentation (#476)
+    * Avoid sorting overlays, to make color cycles consistent (#475)
+    * Replaced sphinx_pyviz_theme with sphinx_holoviz_theme (#366)
+    * Removed references to pyviz (#373)
+    * Update environment.yml (#356)
+    * Misc bugfixes/updates (#387, #403, #408, #439, #447, #448, #449, #450, #452, #453, #456, #467)
+
+-------------------------------------------------------------------
 Mon May 25 10:59:20 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
