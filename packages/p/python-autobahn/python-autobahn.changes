@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jun 15 04:37:00 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 20.6.1:
+  * new: massive expansion of XBR CLI and EIP712 helpers
+  * new: more (exhaustive) serializer cross-tripping tests
+  * fix: some code quality and bug-risk issues (#1379)
+  * fix: removed externalPort assignment when not set (#1378)
+  * fix: docs link in README (#1381)
+  * fix: docs typo frameword -> framework (#1380)
+  * fix: improve logging; track results on observable mixin
+  * new: add environmental variable that strips xbr. (#1374)
+  * fix: trollius is gone (#1373)
+  * new: added ability to disable TLS channel binding (#1368)
+- Correct BuildRequires/Requires (boo#1172126)
+
+-------------------------------------------------------------------
+Sun Jun 14 08:49:49 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 20.4.3:
+  * new: XBR CLI (#1367)
+  * fix: add missing XBR dependency py-multihash
+
+-------------------------------------------------------------------
+Wed May 27 09:36:10 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Mon Apr 20 05:41:32 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 20.4.2:

@@ -108,4 +108,29 @@
 - Update BuildRequires.</comment>
     <requestid>795683</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bd4d5178aaf801356d2a5813e02e199d</srcmd5>
+    <version>20.6.1</version>
+    <time>1593006476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.6.1:
+  * new: massive expansion of XBR CLI and EIP712 helpers
+  * new: more (exhaustive) serializer cross-tripping tests
+  * fix: some code quality and bug-risk issues (#1379)
+  * fix: removed externalPort assignment when not set (#1378)
+  * fix: docs link in README (#1381)
+  * fix: docs typo frameword -&gt; framework (#1380)
+  * fix: improve logging; track results on observable mixin
+  * new: add environmental variable that strips xbr. (#1374)
+  * fix: trollius is gone (#1373)
+  * new: added ability to disable TLS channel binding (#1368)
+- Correct BuildRequires/Requires (boo#1172126)
+
+- update to 20.4.3:
+  * new: XBR CLI (#1367)
+  * fix: add missing XBR dependency py-multihash
+
+- %python3_only -&gt; %python_alternative</comment>
+    <requestid>814607</requestid>
+  </revision>
 </revisionlist>
