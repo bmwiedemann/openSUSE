@@ -1,7 +1,7 @@
 #
 # spec file for package qhexedit2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _libver 4
 Name:           qhexedit2
-Version:        0.8.6
+Version:        0.8.7
 Release:        0
 Summary:        Qt-based hex editor
 License:        LGPL-2.0-only
