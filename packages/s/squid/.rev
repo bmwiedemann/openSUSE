@@ -833,4 +833,15 @@ from the squid 3.x changelog</comment>
     <comment></comment>
     <requestid>816284</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>2e8ad767e1c35f85706f51c193ae3dd2</srcmd5>
+    <version>4.12</version>
+    <time>1593006624</time>
+    <user>dimstar_suse</user>
+    <comment>Add bug references only  
+
+* Fixes a potential Denial of Service when processing TLS certificates
+    during HTTPS or SSL-Bump connections (CVE-2020-14059, bsc#1173304)</comment>
+    <requestid>816822</requestid>
+  </revision>
 </revisionlist>

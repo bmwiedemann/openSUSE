@@ -2,6 +2,8 @@
 Sun Jun 21 05:28:33 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - squid 4.12:
+  * Fixes a potential Denial of Service when processing TLS certificates
+    during HTTPS or SSL-Bump connections (CVE-2020-14059, bsc#1173304)
   * Regression Fix: Revert to slow search for new SMP shm pages
   * Fix Negative responses are never cached
   * HTTP: validate Content-Length value prefix
