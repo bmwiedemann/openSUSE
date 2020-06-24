@@ -1216,4 +1216,16 @@ Feel free to use or reject (forwarded request 397400 from dimstar)</comment>
   * profiles: add entries for enlightenment (bsc#1171686)</comment>
     <requestid>810755</requestid>
   </revision>
+  <revision rev="137" vrev="17">
+    <srcmd5>c71a6c36207a6647b60d3fe293929045</srcmd5>
+    <version>unknown</version>
+    <time>1593006447</time>
+    <user>dimstar_suse</user>
+    <comment>- dbus-1: adjust to new libexec dir location (bsc#1171164). This is
+  temporarily done through the patch in dbus-libexec.patch because
+  we are not completely certain the stability of current git.
+- run chkstat test suite during RPM build
+</comment>
+    <requestid>815295</requestid>
+  </revision>
 </revisionlist>

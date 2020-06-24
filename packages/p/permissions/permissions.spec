@@ -28,17 +28,20 @@ Group:          Productivity/Security
 URL:            http://github.com/openSUSE/permissions
 Source:         permissions-%{VERSION_DATE}.tar.xz
 Source1:        fix_version.sh
+Patch0:         dbus-libexec.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
 BuildRequires:  tclap
+# test suite
+BuildRequires:  python3-base
 Requires:       chkstat
 Requires:       permissions-config
 Recommends:     permissions-doc
 Provides:       aaa_base:%{_datadir}/permissions
 
 %prep
-%setup -q -n permissions-%{VERSION_DATE}
+%autosetup -p1 -n permissions-%{VERSION_DATE}
 
 %build
 make %{?_smp_mflags} CFLAGS="-W -Wall %{optflags}" FSCAPS_DEFAULT_ENABLED=0
@@ -46,9 +49,8 @@ make %{?_smp_mflags} CFLAGS="-W -Wall %{optflags}" FSCAPS_DEFAULT_ENABLED=0
 %install
 %make_install fillupdir=%{_fillupdir}
 
-# regression tests disabled for the moment, needs adjustment for the new /usr/share world
-#%check
-#tests/regtest.py
+%check
+tests/regtest.py --skip-make > /dev/null
 
 %description
 Permission settings of files and directories depending on the local

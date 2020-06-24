@@ -1,0 +1,36 @@
+Index: permissions-20200526/profiles/permissions.easy
+===================================================================
+--- permissions-20200526.orig/profiles/permissions.easy
++++ permissions-20200526/profiles/permissions.easy
+@@ -267,6 +267,7 @@
+ /lib64/dbus-1/dbus-daemon-launch-helper                 root:messagebus   4750
+ # dbus-1 in /usr #1056764)
+ /usr/lib/dbus-1/dbus-daemon-launch-helper               root:messagebus   4750
++/usr/libexec/dbus-1/dbus-daemon-launch-helper           root:messagebus   4750
+ /usr/lib64/dbus-1/dbus-daemon-launch-helper             root:messagebus   4750
+ 
+ # policycoreutils (#440596)
+Index: permissions-20200526/profiles/permissions.paranoid
+===================================================================
+--- permissions-20200526.orig/profiles/permissions.paranoid
++++ permissions-20200526/profiles/permissions.paranoid
+@@ -278,6 +278,7 @@
+ /lib64/dbus-1/dbus-daemon-launch-helper                 root:messagebus   0750
+ # dbus-1 in /usr #1056764)
+ /usr/lib/dbus-1/dbus-daemon-launch-helper               root:messagebus   0750
++/usr/libexec/dbus-1/dbus-daemon-launch-helper           root:messagebus   0750
+ /usr/lib64/dbus-1/dbus-daemon-launch-helper             root:messagebus   0750
+ 
+ # policycoreutils (#440596)
+Index: permissions-20200526/profiles/permissions.secure
+===================================================================
+--- permissions-20200526.orig/profiles/permissions.secure
++++ permissions-20200526/profiles/permissions.secure
+@@ -308,6 +308,7 @@
+ /lib64/dbus-1/dbus-daemon-launch-helper                 root:messagebus   4750
+ # dbus-1 in /usr #1056764)
+ /usr/lib/dbus-1/dbus-daemon-launch-helper               root:messagebus   4750
++/usr/libexec/dbus-1/dbus-daemon-launch-helper           root:messagebus   4750
+ /usr/lib64/dbus-1/dbus-daemon-launch-helper             root:messagebus   4750
+ 
+ # policycoreutils (#440596)

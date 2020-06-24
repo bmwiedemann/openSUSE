@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 16 13:23:23 UTC 2020 - malte.kraus@suse.com
+
+- dbus-1: adjust to new libexec dir location (bsc#1171164). This is
+  temporarily done through the patch in dbus-libexec.patch because
+  we are not completely certain the stability of current git.
+- run chkstat test suite during RPM build
+
+-------------------------------------------------------------------
 Tue May 26 13:03:52 UTC 2020 - matthias.gerstner@suse.com
 
 - Update to version 20200526:
