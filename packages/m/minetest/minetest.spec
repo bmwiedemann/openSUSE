@@ -1,7 +1,7 @@
 #
 # spec file for package minetest
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -37,6 +37,8 @@ URL:            https://minetest.net/
 Source:         https://github.com/minetest/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        minetest-rpmlintrc
 Source2:        minetest@.service
+# PATCH-FIX-UPSTREAM - minetest-fix-luajit-include-path.diff -- Fixes the FindLuaJIT CMake module so it also looks for moonjit’s include path
+Patch0:         minetest-fix-luajit-include-path.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  doxygen
@@ -49,11 +51,11 @@ BuildRequires:  google-cousine-fonts
 BuildRequires:  google-droid-fonts
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  irrlicht-devel
-BuildRequires:  libjpeg-devel
 BuildRequires:  libXxf86vm-devel
+BuildRequires:  libjpeg-devel
 BuildRequires:  ncurses-devel
-BuildRequires:  spatialindex-devel
 BuildRequires:  pkgconfig
+BuildRequires:  spatialindex-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(bzip2)
@@ -134,9 +136,10 @@ This package contains data for minetest and minetestserver.
 
 %prep
 %setup -q
+%autopatch -p1
 
-# Purge bundled jsoncpp and lua.
-rm -rf src/json src/lua src/gmp
+# Purge bundled libraries.
+rm -rf lib
 
 %build
 %cmake \
@@ -165,7 +168,7 @@ rm -rf src/json src/lua src/gmp
 %else
   -DENABLE_POSTGRESQL=OFF
 %endif
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %cmake_install
