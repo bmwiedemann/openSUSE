@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 22 12:41:37 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- spec-cleaner
+- Make sure the package does not build with bundled libraries
+- Add minetest-fix-luajit-include-path.patch
+  Fixes the FindLuaJIT CMake module so it also looks for the
+  moonjit include path
+
+-------------------------------------------------------------------
 Mon Apr  6 13:54:06 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
 
 - Update to version 5.2.0

@@ -123,4 +123,17 @@ New upstream version.</comment>
     <comment></comment>
     <requestid>791906</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>fa218d1501d38ef9aa725161ee1c481e</srcmd5>
+    <version>5.2.0</version>
+    <time>1593006510</time>
+    <user>dimstar_suse</user>
+    <comment>- spec-cleaner
+- Make sure the package does not build with bundled libraries
+- Add minetest-fix-luajit-include-path.patch
+  Fixes the FindLuaJIT CMake module so it also looks for the
+  moonjit include path
+</comment>
+    <requestid>816473</requestid>
+  </revision>
 </revisionlist>
