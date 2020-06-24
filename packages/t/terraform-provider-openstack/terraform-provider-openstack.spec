@@ -48,7 +48,7 @@ BuildRequires:  xz
 BuildRequires:  golang(API) >= 1.14
 %endif
 Requires:       mkisofs
-Requires:       terraform >= 0.12.20
+Requires:       terraform >= 0.12.0
 BuildRequires:  xz
 %endif
 %if 0%{?suse_version}
