@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Jun 24 07:31:57 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 7.3.2
+  CODE
+  * Various fixes
+  FILE MANAGER
+  * Added support to more file extensions:
+    + .cramfs compressed ROM/RAM file system images
+    + .ext, .ext2, .ext3, and .ext4 filesystem images
+    + .hfsx filesystem images
+    + .qcow, and .qcow2c QEMU disk images
+    + .scap, and .uefif firmware files
+    + .mub, .pkg, and .ppmd compressed files
+  * Archive browser now will automatically ask for password to
+    open files with unreadable TOC, for all formats supporting
+    TOC encryption, e.g. archives encrypted with "Encrypt also
+    file names" option
+  * Fixed browsing of encrypted ARC files
+  * Fixed: can now delete files within WIM archives
+  EXTRACTION and ARCHIVING
+  * Setting Custom compression type optionally aut-configures
+    PeaZip to use RarLab's Rar.exe as compressor; if
+    libre_directive option is set to 2 (most restrictive, not
+    allowing closed archive formats), rar creation will be not
+    allowed in any case
+  * Rar.exe will be set to use PeaZip's work dir as other
+    backend binaries
+  * For RAR archives it is possible to set
+    compression level, from store to maximum
+    + action: new archive, add, update, freshen, sync with disk
+    + spanning in multiple volumes password, optionally with two
+      factor authentication (password + keyfile)
+    + create RAR5 or legacy RAR4 archive
+    + (RAR5) set dictionary size 1..1024 MB
+    + (RAR5) use BLAKE2 hash instead of CRC checksum
+    + Create self extracting RAR
+    + Solid archive
+    + Recovery records
+    + Save files open for writing
+    + Save NT security information
+    + Save NTFS streams
+    + Set archive time to last modified object
+  * Improved support for more RAR options is planned in future,
+    to allow efficient RAR creation from PeaZip GUI, providing
+    RarLab's WinRar is installed in the system and Rar.exe is
+    available.
+
+-------------------------------------------------------------------
 Tue Jun  2 11:39:38 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 7.3.1
