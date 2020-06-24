@@ -1,7 +1,7 @@
-Index: bind-9.14.7/bin/Makefile.in
+Index: bind-9.16.4/bin/Makefile.in
 ===================================================================
---- bind-9.14.7.orig/bin/Makefile.in
-+++ bind-9.14.7/bin/Makefile.in
+--- bind-9.16.4.orig/bin/Makefile.in
++++ bind-9.16.4/bin/Makefile.in
 @@ -15,4 +15,8 @@ SUBDIRS =	named rndc dig delv dnssec too
  		@NZD_TOOLS@ @PYTHON_TOOLS@ @PKCS11_TOOLS@ plugins tests
  TARGETS =
@@ -11,13 +11,13 @@ Index: bind-9.14.7/bin/Makefile.in
  @BIND9_MAKE_RULES@
 +
 +LDFLAGS   += -pie
-Index: bind-9.14.7/bin/check/Makefile.in
+Index: bind-9.16.4/bin/check/Makefile.in
 ===================================================================
---- bind-9.14.7.orig/bin/check/Makefile.in
-+++ bind-9.14.7/bin/check/Makefile.in
-@@ -51,8 +51,12 @@ HTMLPAGES =	named-checkconf.html named-c
- 
- MANOBJS =	${MANPAGES} ${HTMLPAGES}
+--- bind-9.16.4.orig/bin/check/Makefile.in
++++ bind-9.16.4/bin/check/Makefile.in
+@@ -46,8 +46,12 @@ TARGETS =	named-checkconf@EXEEXT@ named-
+ # Alphabetically
+ SRCS =		named-checkconf.c named-checkzone.c check-tool.c
  
 +EXT_CFLAGS = -fPIE -static
 +
@@ -28,11 +28,11 @@ Index: bind-9.14.7/bin/check/Makefile.in
  named-checkconf.@O@: named-checkconf.c
  	${LIBTOOL_MODE_COMPILE} ${CC} ${ALL_CFLAGS} \
  		-DVERSION=\"${VERSION}\" \
-Index: bind-9.14.7/bin/confgen/Makefile.in
+Index: bind-9.16.4/bin/confgen/Makefile.in
 ===================================================================
---- bind-9.14.7.orig/bin/confgen/Makefile.in
-+++ bind-9.14.7/bin/confgen/Makefile.in
-@@ -61,8 +61,12 @@ MANOBJS =	${MANPAGES} ${HTMLPAGES}
+--- bind-9.16.4.orig/bin/confgen/Makefile.in
++++ bind-9.16.4/bin/confgen/Makefile.in
+@@ -55,8 +55,12 @@ TARGETS =	rndc-confgen@EXEEXT@ ddns-conf
  
  UOBJS =		unix/os.@O@
  
@@ -45,10 +45,10 @@ Index: bind-9.14.7/bin/confgen/Makefile.in
  rndc-confgen.@O@: rndc-confgen.c
  	${LIBTOOL_MODE_COMPILE} ${CC} ${ALL_CFLAGS} \
  		-DRNDC_KEYFILE=\"${sysconfdir}/rndc.key\" \
-Index: bind-9.14.7/bin/confgen/unix/Makefile.in
+Index: bind-9.16.4/bin/confgen/unix/Makefile.in
 ===================================================================
---- bind-9.14.7.orig/bin/confgen/unix/Makefile.in
-+++ bind-9.14.7/bin/confgen/unix/Makefile.in
+--- bind-9.16.4.orig/bin/confgen/unix/Makefile.in
++++ bind-9.16.4/bin/confgen/unix/Makefile.in
 @@ -25,4 +25,8 @@ SRCS =		os.c
  
  TARGETS =	${OBJS}
@@ -58,13 +58,13 @@ Index: bind-9.14.7/bin/confgen/unix/Makefile.in
  @BIND9_MAKE_RULES@
 +
 +LDFLAGS   += -pie
-Index: bind-9.14.7/bin/dig/Makefile.in
+Index: bind-9.16.4/bin/dig/Makefile.in
 ===================================================================
---- bind-9.14.7.orig/bin/dig/Makefile.in
-+++ bind-9.14.7/bin/dig/Makefile.in
-@@ -62,10 +62,14 @@ HTMLPAGES =	dig.html host.html nslookup.
+--- bind-9.16.4.orig/bin/dig/Makefile.in
++++ bind-9.16.4/bin/dig/Makefile.in
+@@ -57,10 +57,14 @@ UOBJS =
  
- MANOBJS =	${MANPAGES} ${HTMLPAGES}
+ SRCS =		dig.c dighost.c host.c nslookup.c
  
 +EXT_CFLAGS = -fPIE -static
 +
@@ -77,13 +77,13 @@ Index: bind-9.14.7/bin/dig/Makefile.in
  dig@EXEEXT@: dig.@O@ dighost.@O@ ${UOBJS} ${DEPLIBS}
  	export BASEOBJS="dig.@O@ dighost.@O@ ${UOBJS}"; \
  	export LIBS0="${DNSLIBS} ${IRSLIBS}"; \
-Index: bind-9.14.7/bin/dnssec/Makefile.in
+Index: bind-9.16.4/bin/dnssec/Makefile.in
 ===================================================================
---- bind-9.14.7.orig/bin/dnssec/Makefile.in
-+++ bind-9.14.7/bin/dnssec/Makefile.in
-@@ -59,8 +59,12 @@ HTMLPAGES =	dnssec-cds.html dnssec-dsfro
- 
- MANOBJS =	${MANPAGES} ${HTMLPAGES}
+--- bind-9.16.4.orig/bin/dnssec/Makefile.in
++++ bind-9.16.4/bin/dnssec/Makefile.in
+@@ -50,8 +50,12 @@ SRCS =		dnssec-cds.c dnssec-dsfromkey.c
+ 		dnssec-settime.c dnssec-signzone.c dnssec-verify.c \
+ 		dnssectool.c
  
 +EXT_CFLAGS = -fPIE -static
 +
@@ -94,13 +94,13 @@ Index: bind-9.14.7/bin/dnssec/Makefile.in
  dnssec-cds@EXEEXT@: dnssec-cds.@O@ ${OBJS} ${DEPLIBS}
  	export BASEOBJS="dnssec-cds.@O@ ${OBJS}"; \
  	${FINALBUILDCMD}
-Index: bind-9.14.7/bin/named/Makefile.in
+Index: bind-9.16.4/bin/named/Makefile.in
 ===================================================================
---- bind-9.14.7.orig/bin/named/Makefile.in
-+++ bind-9.14.7/bin/named/Makefile.in
-@@ -117,8 +117,12 @@ HTMLPAGES =	named.html named.conf.html
- 
- MANOBJS =	${MANPAGES} ${HTMLPAGES}
+--- bind-9.16.4.orig/bin/named/Makefile.in
++++ bind-9.16.4/bin/named/Makefile.in
+@@ -117,8 +117,12 @@ SRCS =		builtin.c config.c control.c \
+ 		tkeyconf.c tsigconf.c zoneconf.c \
+ 		${DLZDRIVER_SRCS} ${DBDRIVER_SRCS}
  
 +EXT_CFLAGS = -fPIE -static
 +
@@ -111,11 +111,11 @@ Index: bind-9.14.7/bin/named/Makefile.in
  main.@O@: main.c
  	${LIBTOOL_MODE_COMPILE} ${CC} ${ALL_CFLAGS} \
  		-DVERSION=\"${VERSION}\" \
-Index: bind-9.14.7/bin/named/unix/Makefile.in
+Index: bind-9.16.4/bin/named/unix/Makefile.in
 ===================================================================
---- bind-9.14.7.orig/bin/named/unix/Makefile.in
-+++ bind-9.14.7/bin/named/unix/Makefile.in
-@@ -26,4 +26,8 @@ SRCS =		os.c dlz_dlopen_driver.c
+--- bind-9.16.4.orig/bin/named/unix/Makefile.in
++++ bind-9.16.4/bin/named/unix/Makefile.in
+@@ -27,4 +27,8 @@ SRCS =		os.c dlz_dlopen_driver.c
  
  TARGETS =	${OBJS}
  
@@ -124,13 +124,13 @@ Index: bind-9.14.7/bin/named/unix/Makefile.in
  @BIND9_MAKE_RULES@
 +
 +LDFLAGS   += -pie
-Index: bind-9.14.7/bin/nsupdate/Makefile.in
+Index: bind-9.16.4/bin/nsupdate/Makefile.in
 ===================================================================
---- bind-9.14.7.orig/bin/nsupdate/Makefile.in
-+++ bind-9.14.7/bin/nsupdate/Makefile.in
-@@ -64,8 +64,12 @@ HTMLPAGES =	nsupdate.html
+--- bind-9.16.4.orig/bin/nsupdate/Makefile.in
++++ bind-9.16.4/bin/nsupdate/Makefile.in
+@@ -59,8 +59,12 @@ UOBJS =
  
- MANOBJS =	${MANPAGES} ${HTMLPAGES}
+ SRCS =		nsupdate.c
  
 +EXT_CFLAGS = -fPIE -static
 +
@@ -141,13 +141,13 @@ Index: bind-9.14.7/bin/nsupdate/Makefile.in
  nsupdate.@O@: nsupdate.c
  	${LIBTOOL_MODE_COMPILE} ${CC} ${ALL_CFLAGS} \
  		-DSESSION_KEYFILE=\"${localstatedir}/run/named/session.key\" \
-Index: bind-9.14.7/bin/rndc/Makefile.in
+Index: bind-9.16.4/bin/rndc/Makefile.in
 ===================================================================
---- bind-9.14.7.orig/bin/rndc/Makefile.in
-+++ bind-9.14.7/bin/rndc/Makefile.in
-@@ -51,8 +51,12 @@ HTMLPAGES =	rndc.html rndc.conf.html
+--- bind-9.16.4.orig/bin/rndc/Makefile.in
++++ bind-9.16.4/bin/rndc/Makefile.in
+@@ -45,8 +45,12 @@ SRCS=		rndc.c
  
- MANOBJS =	${MANPAGES} ${HTMLPAGES}
+ TARGETS =	rndc@EXEEXT@
  
 +EXT_CFLAGS = -fPIE -static
 +
@@ -158,13 +158,13 @@ Index: bind-9.14.7/bin/rndc/Makefile.in
  rndc.@O@: rndc.c
  	${LIBTOOL_MODE_COMPILE} ${CC} ${ALL_CFLAGS} \
  		-DVERSION=\"${VERSION}\" \
-Index: bind-9.14.7/bin/tools/Makefile.in
+Index: bind-9.16.4/bin/tools/Makefile.in
 ===================================================================
---- bind-9.14.7.orig/bin/tools/Makefile.in
-+++ bind-9.14.7/bin/tools/Makefile.in
-@@ -61,8 +61,12 @@ HTMLPAGES =	arpaname.html dnstap-read.ht
- 
- MANOBJS =	${MANPAGES} ${HTMLPAGES}
+--- bind-9.16.4.orig/bin/tools/Makefile.in
++++ bind-9.16.4/bin/tools/Makefile.in
+@@ -54,8 +54,12 @@ SRCS =		arpaname.c named-journalprint.c
+ 		nsec3hash.c mdig.c \
+ 		@DNSTAPSRCS@ @NZDSRCS@
  
 +EXT_CFLAGS = -fPIE -static
 +

@@ -60,7 +60,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.16.3
+Version:        9.16.4
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
@@ -79,7 +79,6 @@ Source60:       dlz-schema.txt
 Source70:       bind.conf
 Source71:       bind-chrootenv.conf
 Source72:       named.conf
-Patch1:         Makefile.in.diff
 Patch51:        pie_compile.diff
 Patch52:        named-bootconf.diff
 Patch56:        bind-ldapdump-use-valid-host.patch
@@ -95,7 +94,7 @@ BuildRequires:  python3-ply
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(json)
 BuildRequires:  pkgconfig(krb5)
-BuildRequires:  pkgconfig(libidn)
+BuildRequires:  pkgconfig(libidn2)
 BuildRequires:  pkgconfig(libmaxminddb)
 BuildRequires:  pkgconfig(libuv)
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -274,7 +273,6 @@ This package provides a module which allows commands to be sent to rndc directly
 
 %prep
 %setup -q -a1
-%patch1 -p1
 %patch51 -p1
 %patch52 -p1
 %patch56 -p1
@@ -311,6 +309,7 @@ export CFLAGS="%{optflags} -DNO_VERSION_DATE"
 	--with-libtool \
 	--with-libxml2 \
 	--with-libjson \
+	--with-libidn2 \
 	--with-dlz-mysql \
 	--with-dlz-ldap \
 	--with-randomdev=/dev/urandom \
@@ -521,7 +520,6 @@ fi
 %{_mandir}/man8/named-checkconf.8%{ext_man}
 %{_mandir}/man8/named-checkzone.8%{ext_man}
 %{_mandir}/man8/named.8%{ext_man}
-%{_mandir}/man8/named-compilezone.8%{ext_man}
 %{_mandir}/man8/filter-aaaa.8%{ext_man}
 %dir %{_datadir}/bind
 %{_datadir}/bind/createNamedConfInclude
@@ -643,6 +641,7 @@ fi
 %{_mandir}/man1/mdig.1%{ext_man}
 %{_mandir}/man1/nslookup.1%{ext_man}
 %{_mandir}/man1/nsupdate.1%{ext_man}
+%{_mandir}/man1/dnstap-read.1%{ext_man}
 %{_mandir}/man5/rndc.conf.5%{ext_man}
 %{_mandir}/man8/ddns-confgen.8%{ext_man}
 %{_mandir}/man8/dnssec-dsfromkey.8%{ext_man}
@@ -657,13 +656,13 @@ fi
 %{_mandir}/man8/dnssec-coverage.8%{ext_man}
 %{_mandir}/man8/dnssec-keymgr.8%{ext_man}
 %{_mandir}/man8/dnssec-cds.8%{ext_man}
+%{_mandir}/man8/named-nzd2nzf.8%{ext_man}
 # %%{_mandir}/man8/genrandom.8%%{ext_man}
 # %%{_mandir}/man8/isc-hmac-fixup.8%%{ext_man}
 %{_mandir}/man8/named-journalprint.8%{ext_man}
 %{_mandir}/man8/nsec3hash.8%{ext_man}
 %{_mandir}/man8/rndc.8%{ext_man}
 %{_mandir}/man8/rndc-confgen.8%{ext_man}
-%{_mandir}/man8/tsig-keygen.8%{ext_man}
 
 %files -n python3-bind
 %{python3_sitelib}/isc

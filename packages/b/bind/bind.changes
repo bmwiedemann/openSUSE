@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jun 18 06:35:35 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to version bind-9.16.4
+  Fixing two security problems: 
+  * It was possible to trigger an INSIST when determining
+    whether a record would fit into a TCP message buffer.
+    (CVE-2020-8618)
+  * It was possible to trigger an INSIST in
+    lib/dns/rbtdb.c:new_reference() with a particular zone
+    content and query patterns. (CVE-2020-8619)
+  Also the following functional changes:
+  * Reject DS records at the zone apex when loading
+    master files. Log but otherwise ignore attempts to
+    add DS records at the zone apex via UPDATE.
+  * The default value of "max-stale-ttl" has been changed
+    from 1 week to 12 hours.
+  * Zone timers are now exported via statistics channel.
+    Thanks to Paul Frieden, Verizon Media.
+  Added support for idn2 to spec file (Thanks to Holger Bruenjes
+  <holgerbruenjes@gmx.net>).
+  More internal changes see the CHANGES file in the source RPM
+  This update obsoletes Makefile.in.diff
+  [bsc#1172958, CVE-2020-8618, CVE-2020-8619, Makefile.in.diff
+   bind.spec]
+
+-------------------------------------------------------------------
 Fri May 15 13:43:46 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - Upgrade to version bind-9.16.3
