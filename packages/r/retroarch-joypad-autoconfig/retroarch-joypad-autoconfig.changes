@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jun 23 19:30:42 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200622:
+  * comment pid on EasySMX to avoid conflict with generic 360 pads
+  * comment vid:pid on Switch Pro xinputs to avoid conflicts with generic xinput virtual gamepads
+  * Add comments on start button + R3
+  * Give Google Nexus Controller a start button
+  * Create Xbox_360_Wireless_RF_Module_RF01.cfg
+  * Delete force_run
+  * no message
+  * - Add new autoconfigurations - Update Retrobit 8 Button Arcade Pad file to indicate that it is for Saturn as well
+  * Fix up a few more bad button bindings
+  * Add d-pad up to the Google Nexus Gamepad config
+  * Create Pro Controller.cfg
+  * Create HORI CO.,LTD. HORIPAD mini4.cfg
+  * Add support for Xin-Mo Dual Arcade config based on Playstation and Playstation 2 key legend provided by X-arcade manual here https://ibb.co/yVfsdyb
+  * Add mappings for odroidgo2 v1.1
+  * Create EasySMX_Wireless_Controller.cfg
+  * DualShock 3 autoconfig to OUYA
+
+-------------------------------------------------------------------
 Sat May 23 13:05:23 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200513:
