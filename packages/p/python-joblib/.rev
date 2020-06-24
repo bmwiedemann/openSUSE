@@ -112,4 +112,34 @@
     <comment></comment>
     <requestid>781870</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>48c23c257482233ac460b9da16edd5d8</srcmd5>
+    <version>0.15.1</version>
+    <time>1593006473</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15.1:
+  - Make joblib work on Python 3 installation that do not ship with the lzma
+    package in their standard library.
+  - Drop support for Python 2 and Python 3.5. All objects in
+    ``joblib.my_exceptions`` and ``joblib.format_stack`` are now deprecated and
+    will be removed in joblib 0.16. Note that no deprecation warning will be
+    raised for these objects Python &lt; 3.7.
+    https://github.com/joblib/joblib/pull/1018
+  - Fix many bugs related to the temporary files and folder generated when
+    automatically memory mapping large numpy arrays for efficient inter-process
+    communication. In particular, this would cause `PermissionError` exceptions
+    to be raised under Windows and large leaked files in `/dev/shm` under Linux
+    in case of crash.
+    https://github.com/joblib/joblib/pull/966
+  - Make the dask backend collect results as soon as they complete
+    leading to a performance improvement:
+    https://github.com/joblib/joblib/pull/1025
+  - Fix the number of jobs reported by ``effective_n_jobs`` when ``n_jobs=None``
+    called in a parallel backend context.
+    https://github.com/joblib/joblib/pull/985
+  - Upgraded vendored cloupickle to 1.4.1 and loky to 2.8.0. This allows for
+    Parallel calls of dynamically defined functions with type annotations
+    in particular.</comment>
+    <requestid>810898</requestid>
+  </revision>
 </revisionlist>
