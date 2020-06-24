@@ -26,36 +26,36 @@
 ##### WARNING: please do not edit this auto generated spec file. Use the systemd.spec! #####
 %define mini -mini
 %define min_kernel_version 4.5
-%define suse_version +suse.122.ga6d31d1a02
+%define suse_version +suse.48.gb12cd8b89b
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
 %bcond_with     coredump
-%bcond_with     sysvcompat
-%bcond_with     machined
 %bcond_with     importd
+%bcond_with     journal_remote
+%bcond_with     machined
 %bcond_with     networkd
 %bcond_with     portabled
 %bcond_with     resolved
-%bcond_with     journal_remote
+%bcond_with     sysvcompat
 %else
 %bcond_without  coredump
-%bcond_without  sysvcompat
-%bcond_without  machined
-%bcond_without  importd
-%bcond_without  networkd
-%bcond_without  portabled
-%bcond_without  resolved
-%bcond_without  journal_remote
 %ifarch %{ix86} x86_64
 %bcond_without  gnuefi
 %endif
+%bcond_without  importd
+%bcond_without  journal_remote
+%bcond_without  machined
+%bcond_without  networkd
+%bcond_without  portabled
+%bcond_without  resolved
+%bcond_without  sysvcompat
 %endif
 %bcond_with     parentpathid
 
 Name:           systemd-mini
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        245
+Version:        245.6
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -492,7 +492,7 @@ ntp_servers=({0..3}.suse.pool.ntp.org)
 
 # keep split-usr until all packages have moved their systemd rules to /usr
 %meson \
-        -Dversion-tag=%{suse_version} \
+        -Dversion-tag=%{version}%{suse_version} \
         -Ddocdir=%{_docdir}/systemd \
         -Drootprefix=/usr \
         -Dsplit-usr=true \
@@ -861,15 +861,18 @@ fi
 # This includes all hacks needed when upgrading from SysV.
 %{_prefix}/lib/systemd/scripts/upgrade-from-pre-210.sh || :
 
-# Migrate i18n settings that could be previously configured in
-# /etc/sysconfig but now is defined only in the systemd official
-# places (/etc/locale.conf, /etc/vconsole.conf, etc...). This is done
-# only once usually during package updates but might be also needed
-# during installations when we upgrade from a distro using SysV init.
-test -e %{_prefix}/lib/systemd/scripts/.migrate-sysconfig-i18n.sh~done || {
+# Migrate old i18n settings previously configured in /etc/sysconfig to
+# the new locations used by systemd (/etc/locale.conf,
+# /etc/vconsole.conf, ...). Recent versions of systemd parse the new
+# locations only.
+#
+# This is needed both at package updates and package installations
+# because we might be upgrading from a system which was running SysV
+# init (systemd package is being installed).
+if ! test -e %{_prefix}/lib/systemd/scripts/.migrate-sysconfig-i18n.sh~done; then
         %{_prefix}/lib/systemd/scripts/migrate-sysconfig-i18n.sh &&
         touch %{_prefix}/lib/systemd/scripts/.migrate-sysconfig-i18n.sh~done || :
-}
+fi
 
 %postun
 %systemd_postun
@@ -900,13 +903,11 @@ rm -f /etc/udev/rules.d/{20,55,65}-cdrom.rules
 
 %postun -n udev%{?mini}
 %regenerate_initrd_post
-systemctl daemon-reload || :
-# On package update: the restart of the socket units will probably
-# fail as the daemon is most likely running. It's not really an issue
-# since we restart systemd-udevd right after and that will pull in the
-# socket units again. We should be informed at that time if something
-# really went wrong the first time we started the socket units.
-%systemd_postun_with_restart systemd-udevd-{control,kernel}.socket 2>/dev/null
+# Restarting udevd sockets means also stopping the daemon. But we
+# don't want the sockets and the daemon to be inactive at the same
+# time because we might loose new events sent by the kernel during the
+# package update otherwise. Hence we accept the fact that the socket
+# properties might not be updated. They are unlikely changed anyway.
 %systemd_postun_with_restart systemd-udevd.service
 
 %posttrans -n udev%{?mini}
@@ -1499,7 +1500,8 @@ fi
 
 %files logger
 %defattr(-,root,root)
-%dir %attr(2755,root,systemd-journal) %{_localstatedir}/log/journal/
+# package without explicit setgid bit / attrs (see bsc#1172550)
+%dir %{_localstatedir}/log/journal/
 %doc %{_localstatedir}/log/README
 
 %files -n nss-myhostname
@@ -1569,8 +1571,6 @@ fi
 %{_unitdir}/systemd-networkd.service
 %{_unitdir}/systemd-networkd.socket
 %{_unitdir}/systemd-networkd-wait-online.service
-%{_prefix}/lib/systemd/systemd-resolved
-%{_unitdir}/systemd-resolved.service
 %endif
 %if %{with resolved}
 %{_bindir}/resolvectl
@@ -1580,6 +1580,8 @@ fi
 %{_datadir}/dbus-1/system-services/org.freedesktop.resolve1.service
 %{_datadir}/polkit-1/actions/org.freedesktop.resolve1.policy
 %{_prefix}/lib/systemd/resolv.conf
+%{_prefix}/lib/systemd/systemd-resolved
+%{_unitdir}/systemd-resolved.service
 %endif
 %endif
 

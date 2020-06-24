@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Jun 19 09:59:29 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Include in the package version the stable minor (if any).
+
+  Also update the version shown by various command such as 'systemctl
+  --version' to show the stable number.
+
+-------------------------------------------------------------------
+Wed Jun 17 18:54:11 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Don't restart udevd sockets during package update
+
+  Otherwise we might miss kernel events as the daemon need to be
+  stopped as well.
+
+-------------------------------------------------------------------
+Wed Jun 17 09:03:40 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Import commit b12cd8b89b4bccfcf972b47153a2b01cd7775932 (include merge of v245.6)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/a6d31d1a02c2718a064bbbc40d003668acf72769...b12cd8b89b4bccfcf972b47153a2b01cd7775932
+
+-------------------------------------------------------------------
+Thu Jun  4 15:29:03 UTC 2020 - matthias.gerstner@suse.com
+
+- no longer explicitly package setgid directory /var/log/journal (bsc#1172550).
+  The bit will be set during %post by way of the systemd-tmpfiles invocation.
+  This avoids a conflict with the permissions package and an rpmlint error
+  popping up.
+
+-------------------------------------------------------------------
+Fri May 29 14:32:41 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Fix build when resolved is disabled
+
+  While at it sort the build conditionals.
+
+-------------------------------------------------------------------
 Thu May 28 09:30:33 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Import commit a6d31d1a02c2718a064bbbc40d003668acf72769
