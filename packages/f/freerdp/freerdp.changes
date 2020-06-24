@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Jun 22 12:59:59 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
-- Updated to release 2.1.2
+- Updated to release 2.1.2 (boo#1173247)
   * CVE-2020-4033 Out of bound read in RLEDECOMPRESS
   * CVE-2020-4031 Use-After-Free in gdi_SelectObject
   * CVE-2020-4032 Integer casting vulnerability in `update_recv_secondary_order`
@@ -23,7 +23,7 @@ Mon Jun 22 12:59:59 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 -------------------------------------------------------------------
 Wed May 20 15:14:52 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
-- Updated to release 2.1.1
+- Updated to release 2.1.1 (boo#1171441)
   * CVE-2020-13396: GHSL-2020-100 OOB Read in ntlm_read_ChallengeMessage
   * CVE-2020-13397: GHSL-2020-101 OOB Read in security_fips_decrypt due to uninitialized value
   * CVE-2020-13398: GHSL-2020-102 OOB Write in crypto_rsa_common
@@ -46,7 +46,7 @@ Wed May 20 12:34:27 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 -------------------------------------------------------------------
 Fri May  8 09:51:06 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
-- Updated to release 2.1.0
+- Updated to release 2.1.0 (boo#1171441)
 
   * Fixed CVEs:
     - CVE-2020-11039
