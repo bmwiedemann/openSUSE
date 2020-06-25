@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Tue Jun  2 14:04:02 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 3.4.0
+  * [makeotf] STAT table support
+  * [makeotf] Support multiple chained lookups per position
+  * [makeotf] Allow UTF-8 input for name strings
+  * [spot] prevent string overflow
+  * [spec] Update STAT examples, multiple lookup documentation,
+    fix broken links
+  * [sfntedit] Use portable rename
+  * [absfont, ttread] Initialize variables before use
+
+- Remove patches already included by upstream:
+  * 0001-Update-checkoutlinesufo.py-fix-UfoFormatVersion.patch
+  * 0002-tests-update-GSUBVar.ttx.patch
+  * initialize-variables.patch
+
+-------------------------------------------------------------------
+Mon May 25 15:50:30 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix test_rvrn_vf from failing:
+  (gh#adobe-type-tools/afdko#1142)
+  * 0002-tests-update-GSUBVar.ttx.patch
+
+-------------------------------------------------------------------
+Fri May 22 17:26:06 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix UFOFormatVersion errors:
+  * 0001-Update-checkoutlinesufo.py-fix-UfoFormatVersion.patch
+
+-------------------------------------------------------------------
+Fri May 22 09:30:34 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to initialize variables (gh#adobe-type-tools/afdko#1141)
+  * initialize-variables.patch
+
+-------------------------------------------------------------------
+Mon Apr 27 10:46:37 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Initial release of python-afdko 3.3.0 (also known as adobe-afdko)
