@@ -102,8 +102,7 @@ mv misc examples
 
 %build
 autoreconf -fiv
-
-CFLAGS="%{optflags} -D_REENTRANT -fno-strict-aliasing" \
+CFLAGS="%{optflags} -D_REENTRANT -fno-strict-aliasing -fcommon" \
 %configure \
     --enable-shared \
     --with-gnu-ld \
