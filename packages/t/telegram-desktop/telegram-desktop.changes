@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 24 08:38:24 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.1.13
+  * Fix photos loading.
+  * Fix Picture-in-Picture window movement on Wayland in Linux.
+
+-------------------------------------------------------------------
 Thu Jun 18 08:38:42 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 2.1.12
