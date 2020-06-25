@@ -82,4 +82,18 @@
   * separated bass, midtones and treble in to separate fftw operations</comment>
     <requestid>809688</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ed44821da8e198a9ce2c37e7bcc5cb5f</srcmd5>
+    <version>0.7.1</version>
+    <time>1593090549</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.1:
+  improvements:
+  * set default gradient colors instead of exiting when not defined.
+  bugfixes:
+  * minor memory leak in ncurses
+  * fix warnings when building on macos
+  * updated macos building instructions</comment>
+    <requestid>816962</requestid>
+  </revision>
 </revisionlist>

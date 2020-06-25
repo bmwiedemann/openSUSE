@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 25 07:03:38 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.1:
+  improvements:
+  * set default gradient colors instead of exiting when not defined.
+  bugfixes:
+  * minor memory leak in ncurses
+  * fix warnings when building on macos
+  * updated macos building instructions
+
+-------------------------------------------------------------------
 Wed May 27 20:35:15 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update 0.7.0:

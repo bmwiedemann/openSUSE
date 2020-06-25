@@ -17,7 +17,7 @@
 
 
 Name:           cava
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Console-based Audio Visualizer for Alsa
 License:        MIT
