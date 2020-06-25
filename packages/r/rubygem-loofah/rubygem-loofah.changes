@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 25 10:01:00 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.6.0
+
+  * Allow CSS border-style keywords. [#188] (Thanks, @tarcisiozf!)
+
+-------------------------------------------------------------------
 Mon Apr 27 12:54:33 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 2.5.0
