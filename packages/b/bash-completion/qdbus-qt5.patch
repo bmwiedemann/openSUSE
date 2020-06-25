@@ -15,27 +15,6 @@ Index: bash-completion-2.10/completions/qdbus
 +complete -F _qdbus qdbus qdbus-qt5 dcop
  
  # ex: filetype=sh
-Index: bash-completion-2.10/completions/Makefile.in
-===================================================================
---- bash-completion-2.10.orig/completions/Makefile.in
-+++ bash-completion-2.10/completions/Makefile.in
-@@ -892,6 +892,7 @@ CLEANFILES = \
- 	pyvenv-3.6 \
- 	pyvenv-3.7 \
- 	pyvenv-3.8 \
-+	qdbus-qt5 \
- 	qemu-kvm \
- 	qemu-system-i386 \
- 	qemu-system-x86_64 \
-@@ -1324,7 +1325,7 @@ symlinks: $(DATA)
- 	$(ss) pyvenv \
- 		pyvenv-3.4 pyvenv-3.5 pyvenv-3.6 pyvenv-3.7 pyvenv-3.8
- 	$(ss) qdbus \
--		dcop
-+		dcop qdbus-qt5
- 	$(ss) qemu \
- 		qemu-kvm qemu-system-i386 qemu-system-x86_64
- 	$(ss) quota \
 Index: bash-completion-2.10/completions/Makefile.am
 ===================================================================
 --- bash-completion-2.10.orig/completions/Makefile.am

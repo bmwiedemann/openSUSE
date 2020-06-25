@@ -60,6 +60,7 @@ Patch13:        bash-completion-fix-missing-directory-completion-with-filename-p
 BuildRequires:  asciidoc
 BuildRequires:  libxslt-tools
 %endif
+BuildRequires:  libtool
 BuildRequires:  pkg-config
 %if %build_core
 BuildRequires:  cmake
@@ -113,6 +114,7 @@ package bash-completion.
 %patch13 -b .p13 -p1
 
 %build
+autoreconf -fiv
 %configure
 %if %build_core
 make %{?_smp_mflags}

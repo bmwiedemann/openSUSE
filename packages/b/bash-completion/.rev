@@ -481,4 +481,18 @@
     <comment>- fix extra tokens at the end of %endif directive build errors</comment>
     <requestid>802888</requestid>
   </revision>
+  <revision rev="49" vrev="7">
+    <srcmd5>6774000f965f0f3c5813155b0db29a52</srcmd5>
+    <version>2.10</version>
+    <time>1593096452</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify qdbus-qt5.patch: only modify Makefile.am; Makefile.in is
+  auto-generated based on the .am file.
+- Add libtool BuildRequires and explicitly call autoreconf: unless
+  we do this, there is a chance that the build modifies the above
+  mentioned .am and .in files with different timestamps, which in
+  turn triggers an implicit autoreconf. Without libtool present
+  though, this will fail. (forwarded request 816725 from dimstar)</comment>
+    <requestid>816779</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 23 13:01:29 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Modify qdbus-qt5.patch: only modify Makefile.am; Makefile.in is
+  auto-generated based on the .am file.
+- Add libtool BuildRequires and explicitly call autoreconf: unless
+  we do this, there is a chance that the build modifies the above
+  mentioned .am and .in files with different timestamps, which in
+  turn triggers an implicit autoreconf. Without libtool present
+  though, this will fail.
+
+-------------------------------------------------------------------
 Tue May 12 08:20:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - fix extra tokens at the end of %endif directive build errors
