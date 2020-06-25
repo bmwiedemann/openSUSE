@@ -150,4 +150,12 @@ eplacement for google-api-python-client, follow our naming convention</comment>
     <comment></comment>
     <requestid>810641</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>e92961dfc078ab05d5f970ece57e366e</srcmd5>
+    <version>1.8.4</version>
+    <time>1593090689</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817036</requestid>
+  </revision>
 </revisionlist>

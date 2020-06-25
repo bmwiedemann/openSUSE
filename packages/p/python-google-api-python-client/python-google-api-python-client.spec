@@ -36,7 +36,6 @@ BuildRequires:  %{python_module oauth2client}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.6.1}
-BuildRequires:  %{python_module unittest2}
 BuildRequires:  %{python_module uritemplate  >= 3.0.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

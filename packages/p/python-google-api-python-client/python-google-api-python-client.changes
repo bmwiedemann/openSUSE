@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 25 10:42:58 UTC 2020 - pgajdos@suse.com
+
+- so remove the dependency on unittest2 from BuildRequires, too
+
+-------------------------------------------------------------------
 Mon Jun  1 13:53:40 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.8.4
