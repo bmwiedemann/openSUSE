@@ -223,8 +223,8 @@ This package provides the shared libraries for VTK.
 
 %package        devel
 Summary:        VTK header files for building C++ code
-# not strictly necessary, but required by VTKs cmake files
 Group:          Development/Libraries/C and C++
+# not strictly necessary, but required by VTKs cmake files
 Requires:       %{name}-java = %{version}
 Requires:       %{shlib} = %{version}
 Requires:       R-core-devel
@@ -370,7 +370,6 @@ languages.
 grep -rl '\.\./\.\./\.\./\.\./VTKData' . | xargs -r perl -pi -e's,\.\./\.\./\.\./\.\./VTKData,%{_datadir}/vtkdata,g'
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %if %{with mpi}
 source %{mpiprefix}/bin/mpivars.sh
 export CC=mpicc
