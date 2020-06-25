@@ -1,7 +1,7 @@
 #
 # spec file for package update-test-trivial
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           update-test-trivial
-Version:        5
+Version:        5.1
 Release:        0
 Summary:        Package for testing the update stack during product development
-License:        GPL-2.0-or-later
+License:        GPL-2.0+
 Group:          System/YaST
 Source0:        %{name}.tar.bz2
 Source1:        baselibs.conf
@@ -52,6 +52,16 @@ Package for testing the update stack during product development.
 An update for this package should inform the user that a session
 restart (re-login) is necessary. This is used, for example, in
 window manager updates.
+
+%package -n update-test-retracted
+Summary:        Test update that should be marked as retracted
+Group:          System/YaST
+
+%description -n update-test-retracted
+Package for testing the update stack during product development.
+
+An update for this package should mark the update as retracted
+in zypper.
 
 %package -n update-test-interactive
 Summary:        Test update that requires confirmation
@@ -186,6 +196,10 @@ done
 %files -n update-test-relogin-suggested
 %defattr(-,root,root)
 %doc README.update-test-relogin-suggested
+
+%files -n update-test-retracted
+%defattr(-,root,root)
+%doc README.update-test-retracted
 
 %files -n update-test-32bit-pkg
 %defattr(-,root,root)
