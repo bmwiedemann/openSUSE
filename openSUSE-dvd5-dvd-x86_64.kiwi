@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20200623" schemaversion="4.1">
+<image name="OBS__openSUSE___20200624" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200623</productvar>
+      <productvar name="VERSION">20200624</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200623,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200624,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200623/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200624/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -118,10 +118,10 @@
       <repopackage name="amtk-5-lang"/>
       <repopackage name="analitza"/>
       <repopackage name="analitza-lang"/>
-      <repopackage name="anjuta"/>
-      <repopackage name="anjuta-extras"/>
-      <repopackage name="anjuta-extras-lang"/>
-      <repopackage name="anjuta-lang"/>
+      <repopackage name="anjuta" arch="x86_64"/>
+      <repopackage name="anjuta-extras" arch="x86_64"/>
+      <repopackage name="anjuta-extras-lang" arch="x86_64"/>
+      <repopackage name="anjuta-lang" arch="x86_64"/>
       <repopackage name="apache-commons-logging"/>
       <repopackage name="apache-parent"/>
       <repopackage name="apache2"/>
@@ -196,7 +196,7 @@
       <repopackage name="autoconf"/>
       <repopackage name="autoconf-el"/>
       <repopackage name="autofs"/>
-      <repopackage name="autogen"/>
+      <repopackage name="autogen" arch="x86_64"/>
       <repopackage name="automake"/>
       <repopackage name="autotrace"/>
       <repopackage name="autoyast2"/>
@@ -476,7 +476,7 @@
       <repopackage name="emacs-flim"/>
       <repopackage name="emacs-info"/>
       <repopackage name="emacs-nox"/>
-      <repopackage name="emacs-plugin-devhelp"/>
+      <repopackage name="emacs-plugin-devhelp" arch="x86_64"/>
       <repopackage name="emacs-w3m"/>
       <repopackage name="emacs-x11"/>
       <repopackage name="enchant-1-backends"/>
@@ -1474,7 +1474,7 @@
       <repopackage name="libamd2"/>
       <repopackage name="libamtk-5-0"/>
       <repopackage name="libAnalitza5"/>
-      <repopackage name="libanjuta-3-0"/>
+      <repopackage name="libanjuta-3-0" arch="x86_64"/>
       <repopackage name="libao-plugins4"/>
       <repopackage name="libao4"/>
       <repopackage name="libaom2"/>
@@ -1844,12 +1844,12 @@
       <repopackage name="libgcrypt20-32bit" arch="x86_64"/>
       <repopackage name="libgcrypt20-hmac"/>
       <repopackage name="libgd3"/>
-      <repopackage name="libgda-5_0-4"/>
-      <repopackage name="libgda-5_0-4-lang"/>
-      <repopackage name="libgda-5_0-bdb"/>
-      <repopackage name="libgda-5_0-sqlite"/>
-      <repopackage name="libgda-ui-5_0-4"/>
-      <repopackage name="libgda-ui-5_0-plugins"/>
+      <repopackage name="libgda-5_0-4" arch="x86_64"/>
+      <repopackage name="libgda-5_0-4-lang" arch="x86_64"/>
+      <repopackage name="libgda-5_0-bdb" arch="x86_64"/>
+      <repopackage name="libgda-5_0-sqlite" arch="x86_64"/>
+      <repopackage name="libgda-ui-5_0-4" arch="x86_64"/>
+      <repopackage name="libgda-ui-5_0-plugins" arch="x86_64"/>
       <repopackage name="libgdata-lang"/>
       <repopackage name="libgdata22"/>
       <repopackage name="libgdbm6"/>
@@ -2501,7 +2501,7 @@
       <repopackage name="libopenssl1_1"/>
       <repopackage name="libopenssl1_1-32bit" arch="x86_64"/>
       <repopackage name="libopenssl1_1-hmac"/>
-      <repopackage name="libopts25"/>
+      <repopackage name="libopts25" arch="x86_64"/>
       <repopackage name="libopus0"/>
       <repopackage name="libopusfile0"/>
       <repopackage name="liborc-0_4-0"/>
