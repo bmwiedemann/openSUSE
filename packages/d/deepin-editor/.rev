@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>717229</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5b4a600bffae9baeb38473e0532bf875</srcmd5>
+    <version>1.2.9</version>
+    <time>1593090494</time>
+    <user>dimstar_suse</user>
+    <comment>- Add deepin-editor-Qt-5_15.patch (forwarded request 816912 from hillwood)</comment>
+    <requestid>816913</requestid>
+  </revision>
 </revisionlist>
