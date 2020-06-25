@@ -5130,4 +5130,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>3 CVE fixes &amp; 5.7.2 &amp; iwlwifi crash fix</comment>
     <requestid>814606</requestid>
   </revision>
+  <revision rev="546" vrev="1">
+    <srcmd5>d4f814109e99179aaad76a21183c559b</srcmd5>
+    <version>5.7.5</version>
+    <time>1593090387</time>
+    <user>dimstar_suse</user>
+    <comment>5.7.5 &amp; 5.7.4 &amp; 5.7.3 &amp; few fixes</comment>
+    <requestid>816499</requestid>
+  </revision>
 </revisionlist>

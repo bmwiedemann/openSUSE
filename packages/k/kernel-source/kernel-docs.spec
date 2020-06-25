@@ -17,7 +17,7 @@
 
 
 %define srcversion 5.7
-%define patchversion 5.7.2
+%define patchversion 5.7.5
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -31,9 +31,9 @@ Name:           kernel-docs
 Summary:        Kernel Documentation
 License:        GPL-2.0
 Group:          Documentation/Man
-Version:        5.7.2
+Version:        5.7.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ga96d63c
+Release:        <RELEASE>.ga1775d0
 %else
 Release:        0
 %endif
@@ -63,7 +63,7 @@ BuildRequires:  texlive-zapfding
 %endif
 Url:            http://www.kernel.org/
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-a96d63c5f6033d80d0d23e591f21ee0fda8d4e5b
+Provides:       %name-srchash-a1775d0843b12327f00c719acc05a8224f9ef596
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
