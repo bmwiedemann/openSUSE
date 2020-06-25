@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed May 27 09:57:20 UTC 2020 - Stefan Haas <stefan.haas@suse.com>
+
+- Update to v1.3.4:
+  * Finalizer for OBC cleanup (#5436)
+  * Remove invalid MDS deactivate command during upgrade (#5278)
+  * Enable verbose logging for LVM commands (#5515)
+  * Set external creds if admin key is available (#5507)
+  * Fail more gracefully for an unsupported Ceph version (#5503)
+  * Set pg_num_min on new rgw metadata pools (#5489)
+  * Object store deployment failed to start on openshift (#5468)
+  * Relax OBC error handling and user deletion (#5465)
+  * Create missing secret on external cluster (#5450)
+  * Python script to generate needed external cluster resources (#5388)
+  * Docs: clarify required version of helm for upgrades (#5445)
+  * CSI priority class example update (#5443)
+  * Set test default pool size to one (#5428)
+  * Remove invalid verbose params from lv activate (#5438)
+
+-------------------------------------------------------------------
+Wed Apr 22 10:32:40 UTC 2020 - Stefan Haas <stefan.haas@suse.com>
+
+- Update to v1.3.1:
+  * Stop the pool controller from staying in a reconcile loop (#5173)
+  * Update the rgw service port during upgrade (#5228)
+
+-------------------------------------------------------------------
+Mon Apr 20 14:56:07 UTC 2020 - Stefan Haas <stefan.haas@suse.com>
+
+- Update to v1.3.0:
+  * Ceph: revert mgr to minimal privilege (#5183)
+  * Enable the Ceph CSI v2.0.1 driver by default in Rook (#5162)
+  * ceph: add liveness probe to mon, mds and osd daemons (#5128)
+  * Ceph: prevent pre-existing lvms from wipe (#4966)
+- Removed orchestrator-cli-rename.patch as it got merged
+
+-------------------------------------------------------------------
 Tue Mar 31 14:02:05 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
 
 - Update to v1.2.7 (bsc#1168160):

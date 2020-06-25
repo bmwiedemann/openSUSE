@@ -217,4 +217,12 @@
   * Upgrade doc clarification for RBAC related to the helm chart (#5054)</comment>
     <requestid>790202</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>226e386b62e815c50debed375677c678</srcmd5>
+    <version>1.3.4+git0.ga5114030</version>
+    <time>1593096372</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>811075</requestid>
+  </revision>
 </revisionlist>

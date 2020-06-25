@@ -17,7 +17,7 @@
 
 
 Name:           rook
-Version:        1.2.7+git0.g1acfd182
+Version:        1.3.4+git0.ga5114030
 Release:        0
 Summary:        Orchestrator for distributed storage systems in cloud-native environments
 License:        Apache-2.0
@@ -40,8 +40,6 @@ Patch0:         csi-dummy-images.patch
 Patch1:         csi-template-paths.patch
 # Change the default FlexVolume dir path to support Kubic.
 Patch2:         flexvolume-dir.patch
-# Orchestrator CLI renamed from orchestrator -> orch
-Patch3:         orchestrator-cli-rename.patch
 
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
@@ -49,9 +47,9 @@ ExclusiveArch:  x86_64 aarch64 ppc64 ppc64le
 %endif
 
 # Go and spec requirements
-BuildRequires:  go
 BuildRequires:  golang-packaging
 BuildRequires:  xz
+BuildRequires:  golang(API) >= 1.14
 
 # Rook requirements
 BuildRequires:  curl
@@ -156,11 +154,10 @@ argument to [-test.run]. All Ceph test suites can be run with the argument
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 # determine image names to use in manifests depending on the base os type
 # %CEPH_VERSION% is replaced at build time by the _service
-%global rook_container_version 1.2.7.0  # this is updated by update-tarball.sh
+%global rook_container_version 1.3.4.0  # this is updated by update-tarball.sh
 %if 0%{?is_opensuse}
 %global rook_image     registry.opensuse.org/opensuse/rook/ceph:%{rook_container_version}.%{release}
 %global ceph_image     registry.opensuse.org/opensuse/ceph/ceph:%CEPH_VERSION%
@@ -192,6 +189,7 @@ linker_flags=(
 build_flags=("-ldflags" "${linker_flags[*]}")
 
 %goprep github.com/rook/rook
+mv %{_builddir}/pkg %{_builddir}/go/
 %gobuild "${build_flags[@]}" cmd/rook
 %gobuild "${build_flags[@]}" cmd/rookflex
 

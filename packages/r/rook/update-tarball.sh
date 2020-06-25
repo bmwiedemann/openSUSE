@@ -3,7 +3,7 @@
 set -xEeuo pipefail
 
 ROOK_REPO="github.com/rook/rook"
-ROOK_REV="v1.2.7"
+ROOK_REV="v1.3.4"
 
 if ! command -V go;
 then
@@ -26,6 +26,7 @@ fi
 WORK_DIR=$(mktemp -d -t)
 function clean_up {
     echo "cleaning up..."
+    chmod -R +w $WORK_DIR
     rm -rf $WORK_DIR
 }
 trap clean_up EXIT SIGINT SIGTERM
@@ -80,10 +81,10 @@ tar -C "$GOPATH_ROOK/.." -cJf rook-$VERSION.tar.xz rook/
 cd "$GOPATH_ROOK"
 
 echo "Getting dependencies...might take a while"
-GOPATH=$WORK_DIR make vendor
+GOPATH=$WORK_DIR make mod.check
 
 cd $PKG_DIR
-tar -C "$GOPATH_ROOK/.." -cJf rook-$VERSION-vendor.tar.xz rook/vendor
+tar -C "$WORK_DIR" -cJf rook-$VERSION-vendor.tar.xz pkg
 
 
 # update spec file versions

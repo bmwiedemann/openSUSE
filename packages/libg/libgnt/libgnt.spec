@@ -38,14 +38,14 @@ BuildRequires:  pkgconfig(libxml-2.0)
 
 %description
 GNT is an ncurses toolkit for creating text-mode graphical user
-interfaces in a fast and easy way.
+interfaces.
 
 %package -n %{name}%{sover}
 Summary:        TUI Toolkit based on GLib and ncurses
 
 %description -n %{name}%{sover}
 GNT is an ncurses toolkit for creating text-mode graphical user
-interfaces in a fast and easy way.
+interfaces.
 
 %package -n %{name}-devel
 Summary:        Development files of GNT
@@ -53,7 +53,7 @@ Requires:       %{name}%{sover} = %{version}
 
 %description -n %{name}-devel
 GNT is an ncurses toolkit for creating text-mode graphical user
-interfaces in a fast and easy way.
+interfaces.
 
 The GNT development package includes the header files, libraries,
 and development tools necessary for compiling and linking
