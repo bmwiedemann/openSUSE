@@ -25,7 +25,7 @@
 %bcond_without mediabackend_tests
 
 Name:           libzypp
-Version:        17.23.6
+Version:        17.23.7
 Release:        0
 URL:            https://github.com/openSUSE/libzypp
 Summary:        Library for package, patch, pattern and product management
