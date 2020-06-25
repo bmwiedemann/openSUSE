@@ -800,4 +800,12 @@ Fri Sep 26 09:09:31 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.19.1</comment>
     <requestid>815471</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>feb319c3fa54f71e196dd9defa30536f</srcmd5>
+    <version>5.19.2</version>
+    <time>1593090340</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.2</comment>
+    <requestid>816688</requestid>
+  </revision>
 </revisionlist>
