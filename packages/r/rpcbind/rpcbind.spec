@@ -73,7 +73,7 @@ export LDFLAGS="-pie -Wl,-z,relro,-z,now"
 	    --sbindir=/sbin \
 	    --enable-libwrap \
 	    --enable-warmstarts \
-	    --disable-debug \
+	    --enable-debug \
 	    --with-statedir=%{_rundir}/%{name} \
 	    --with-rpcuser=rpc \
 	    --with-systemdsystemunitdir=%{_unitdir}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  5 05:49:51 UTC 2020 - Petr Vorel <pvorel@suse.cz>
+
+- Enable debug (--enable-debug, needed for getting messages with -d)
+
+-------------------------------------------------------------------
 Mon Mar  9 08:54:14 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - rpc-user.conf: use sysusers method to create rpc user
