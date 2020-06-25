@@ -1,0 +1,47 @@
+From a0f2b0f820c9eb734029984887e7bab5fb0b9aea Mon Sep 17 00:00:00 2001
+From: Werner Fink <wfink@users.sf.net>
+Date: Sat, 20 Jun 2020 10:02:40 -0700
+Subject: [PATCH] qt: Suppress error messages "QList index out of range"
+
+In three places gnuplot_qt was appending an element to an existing
+list by insertiong using an index greater than the current list size.
+This works but starting with Qt 5.15 an error message is given.
+Replace with append() or insert(list_size, ...)
+Bug #2280
+---
+ src/qtterminal/QtGnuplotScene.cpp | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff --git src/qtterminal/QtGnuplotScene.cpp src/qtterminal/QtGnuplotScene.cpp
+index f98151b63..a72e6aa8f 100644
+--- src/qtterminal/QtGnuplotScene.cpp
++++ src/qtterminal/QtGnuplotScene.cpp
+@@ -167,9 +167,7 @@ void QtGnuplotScene::flushCurrentPointsItem()
+ void QtGnuplotScene::update_key_box(const QRectF rect)
+ {
+ 	if (m_currentPlotNumber > m_key_boxes.count()) {
+-		// DEBUG Feb 2018 should no longer trigger
+-		// because m_key_box insertion is done in layer code for GEAfterPlot
+-		m_key_boxes.insert(m_currentPlotNumber, QtGnuplotKeybox(rect));
++		m_key_boxes.insert(m_currentPlotNumber-1, QtGnuplotKeybox(rect));
+ 	} else if (m_key_boxes[m_currentPlotNumber-1].isEmpty()) {
+ 		// Retain the visible/hidden flag when re-initializing the Keybox
+ 		bool tmp = m_key_boxes[m_currentPlotNumber-1].ishidden();
+@@ -515,12 +513,12 @@ void QtGnuplotScene::processEvent(QtGnuplotEventType type, QDataStream& in)
+ 			if (0 < m_currentPlotNumber && m_currentPlotNumber <= m_key_boxes.count())
+ 				newgroup->setVisible( !(m_key_boxes[m_currentPlotNumber-1].ishidden()) );
+ 			// Store it in an ordered list so we can toggle it by index
+-			m_plot_group.insert(m_currentPlotNumber, newgroup);
++			m_plot_group.insert(m_currentPlotNumber-1, newgroup);
+ 		} 
+ 
+ 		if (m_currentPlotNumber >= m_key_boxes.count()) {
+ 			QRectF empty( QPointF(0,0), QPointF(0,0));
+-			m_key_boxes.insert(m_currentPlotNumber,  empty);
++			m_key_boxes.append(empty);
+ 			m_key_boxes[m_currentPlotNumber-1].resetStatus();
+ 		}
+ 
+-- 
+2.26.2
+

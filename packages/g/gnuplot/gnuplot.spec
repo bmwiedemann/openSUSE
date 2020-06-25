@@ -1,7 +1,7 @@
 #
 # spec file for package gnuplot
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -96,6 +96,7 @@ Patch4:         gnuplot-4.6.0-demo.diff
 Patch5:         gnuplot-wx3.diff
 Patch6:         gnuplot-QtCore-PIC.dif
 Patch7:         gnuplot-gd.patch
+Patch8:         gnuplot-QtIndexedList.dif
 %define _x11lib     %{_libdir}
 %define _x11data    %{_datadir}/X11
 %define _libx11     %{_exec_prefix}/lib/X11
@@ -130,6 +131,7 @@ cp %{_sourcedir}/picins.sty docs
 %patch5 -p1 -b .w3x
 %patch6 -p0 -b .pic
 %patch7 -p1 -b .gd
+%patch8 -p0 -b .qtlist
 
 %build
 autoreconf -fi

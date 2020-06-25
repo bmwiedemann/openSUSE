@@ -817,4 +817,15 @@
   * FIX gd: incorrect line spacing of multiline label (Bug #2215)</comment>
     <requestid>753096</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>2528dc7f5e3f26d0b11b5d9031ac5c9a</srcmd5>
+    <version>5.2.8</version>
+    <time>1593096447</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch gnuplot-QtIndexedList.dif to avoid warnings reported
+  with boo#1172565 
+
+- Disable warning messages from Qt5(.15 and up) (boo#1172565)</comment>
+    <requestid>816758</requestid>
+  </revision>
 </revisionlist>
