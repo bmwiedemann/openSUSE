@@ -73,4 +73,13 @@
   * Add ability of deleting a pull request (#472)</comment>
     <requestid>786623</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7a0b7e2d24cd9f53e445794d9a1dcd92</srcmd5>
+    <version>1.16.0</version>
+    <time>1593090504</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.16.0:
+  * New release with new methods for the Jira, Bamboo, Bitbucket methods.</comment>
+    <requestid>816909</requestid>
+  </revision>
 </revisionlist>

@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-atlassian-python-api
-Version:        1.15.6
+Version:        1.16.0
 Release:        0
 Summary:        Python Atlassian REST API Wrapper
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/atlassian-api/atlassian-python-api
 Source:         https://files.pythonhosted.org/packages/source/a/atlassian-python-api/atlassian-python-api-%{version}.tar.gz
 BuildRequires:  %{python_module kerberos}
