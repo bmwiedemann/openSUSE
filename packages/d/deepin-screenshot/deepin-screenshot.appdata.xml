@@ -25,8 +25,14 @@
   <project_license>GPL-3.0+</project_license>
   <developer_name>Linux Deepin</developer_name>
   <screenshots>
-    <screenshot type="default">http://api.lastore.deepin.org/static/deepin-screenshot/meta/screenshots/zh_CN/phpPz5DPq.jpg</screenshot>
-    <screenshot type="default">http://api.lastore.deepin.org/static/deepin-screenshot/meta/screenshots/zh_CN/php6aIjJo.jpg</screenshot>
-    <screenshot type="default">http://api.lastore.deepin.org/static/deepin-screenshot/meta/screenshots/zh_CN/phplSPFcv.jpg</screenshot>
+    <screenshot type="default">
+      <image>http://api.lastore.deepin.org/static/deepin-screenshot/meta/screenshots/zh_CN/phpPz5DPq.jpg</image>
+    </screenshot>
+    <screenshot type="default">
+      <image>http://api.lastore.deepin.org/static/deepin-screenshot/meta/screenshots/zh_CN/php6aIjJo.jpg</image>
+    </screenshot>
+    <screenshot type="default">
+      <image>http://api.lastore.deepin.org/static/deepin-screenshot/meta/screenshots/zh_CN/phplSPFcv.jpg</image>
+    </screenshot>
   </screenshots>
 </component>

@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-screenshot
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,38 +12,41 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           deepin-screenshot
-Version:        4.1.11
+Version:        4.2.2
 Release:        0
 Summary:        Deepin Screenshot
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Convertors
-Url:            https://github.com/linuxdeepin/deepin-screenshot
+URL:            https://github.com/linuxdeepin/deepin-screenshot
 Source0:        https://github.com/linuxdeepin/deepin-screenshot/archive/%{version}/%{name}-%{version}.tar.gz
-Source1:        %{name}-appdata.xml
+Source1:        %{name}.appdata.xml
+# PATCH-FIX-UPSTEAM deepin-screenshot-Qt-5_15.patch hillwood@opensuse.org - Support Qt 5.15
+Patch0:         %{name}-Qt-5_15.patch
+BuildRequires:  appstream-glib
+BuildRequires:  cmake
+BuildRequires:  deepin-gettext-tools
 BuildRequires:  fdupes
-BuildRequires:  pkgconfig(dtkwidget)
-BuildRequires:  pkgconfig(dtkwm)
-BuildRequires:  pkgconfig(xtst)
-BuildRequires:  pkgconfig(xcb-util)
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  libqt5-linguist
+BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  libqt5-linguist
-BuildRequires:  appstream-glib
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  update-desktop-files
-BuildRequires:  deepin-gettext-tools
-BuildRequires:  cmake
-Requires:       desktop-file-utils
+BuildRequires:  pkgconfig(dtkwidget)
+BuildRequires:  pkgconfig(dtkwm)
+BuildRequires:  pkgconfig(xcb-util)
+BuildRequires:  pkgconfig(xtst)
 Requires:       deepin-turbo
+Requires:       desktop-file-utils
 Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -57,12 +60,15 @@ Provide a quite easy-to-use screenshot tool. Features:
 
 %prep
 %setup -q
+%if 0%{?suse_version} > 1500
+%patch0 -p1
+%endif
 sed -i 's/lrelease/lrelease-qt5/g' generate_translations.sh
 sed -i 's/Delay_Screenshot/X-Delay_Screenshot/g;s/Full_Screenshot/X-Full_Screenshot/g' %{name}.desktop
 
 %build
 %cmake
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
