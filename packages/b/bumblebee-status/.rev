@@ -124,4 +124,15 @@
   * i3 output refactoring - thanks to @somospocos</comment>
     <requestid>816535</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2e21ee23b4e0cb957e45bacd2163776a</srcmd5>
+    <version>2.0.3</version>
+    <time>1593090560</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.3:
+  * fixed #661 - collapsing modules via middle mouse was missing
+  * fixed #662 - regression that broke the pulseaudio module
+    when using non-english locales</comment>
+    <requestid>816965</requestid>
+  </revision>
 </revisionlist>
