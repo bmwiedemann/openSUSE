@@ -1409,4 +1409,11 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>815953</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>4d3b71fc27cf61a7f35af28cb80f5cb3</srcmd5>
+    <version>9.20.16</version>
+    <time>1593090001</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1173356</comment>
+  </revision>
 </revisionlist>
