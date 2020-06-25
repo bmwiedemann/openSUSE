@@ -24,9 +24,11 @@ License:        GPL-3.0-only
 Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/deepin-system-monitor
 Source0:        https://github.com/linuxdeepin/deepin-system-monitor/archive/%{version}/%{name}-%{version}.tar.gz
-Source1:        %{name}-appdata.xml
+Source1:        %{name}.appdata.xml
 # PATCH-FIX-UPSTEAM Fix-redefinition-error.patch hillwood@opensuse.org - Fix redefinition of 'struct std::hash<QString>' error
 Patch0:         Fix-redefinition-error.patch
+# PATCH-FIX-UPSTEAM deepin-system-monitor-Qt-5_15.patch hillwood@opensuse.org - Support Qt 5.15
+Patch1:         %{name}-Qt-5_15.patch
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  dtkcore
@@ -62,6 +64,9 @@ Deepin Desktop.
 %prep
 %setup -q
 %patch0 -p1
+%if 0%{?suse_version} > 1500
+%patch1 -p1
+%endif
 sed -i 's/lrelease/lrelease-qt5/g' translations/translate_generation.sh
 
 %build

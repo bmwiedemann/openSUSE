@@ -25,8 +25,14 @@
   <project_license>GPL-3.0</project_license>
   <developer_name>Linux Deepin</developer_name>
   <screenshots>
-    <screenshot type="default">https://www.deepin.org/wp-content/uploads/2017/06/deepin-system-monitor_en-1.png</screenshot>
-    <screenshot type="default">https://www.deepin.org/wp-content/uploads/2017/06/deepin-system-monitor_en-2.png</screenshot>
-    <screenshot type="default">https://www.deepin.org/wp-content/uploads/2017/06/deepin-system-monitor_en-3.png</screenshot>
+    <screenshot type="default">
+      <image>https://www.deepin.org/wp-content/uploads/2017/06/deepin-system-monitor_en-1.png</image>
+    </screenshot>
+    <screenshot type="default">
+      <image>https://www.deepin.org/wp-content/uploads/2017/06/deepin-system-monitor_en-2.png</image>
+    </screenshot>
+    <screenshot type="default">
+      <image>https://www.deepin.org/wp-content/uploads/2017/06/deepin-system-monitor_en-3.png</image>
+    </screenshot>
   </screenshots>
 </component>
