@@ -458,7 +458,11 @@ unsorted:
   - android-udev-rules 
   - angelscript 
   - angelscript-devel 
+  - anjuta: [i586] # suggested by dvd:suggested:patterns-gnome-gnome_ide 
   - anjuta-devel 
+  - anjuta-extras: [i586] # suggested by dvd:suggested:patterns-gnome-gnome_ide 
+  - anjuta-extras-lang: [i586] 
+  - anjuta-lang: [i586] 
   - anki 
   - ansible 
   - ansible-cmdb 
@@ -883,6 +887,7 @@ unsorted:
   - autoconf213 
   - autocutsel 
   - autofdo 
+  - autogen: [i586] 
   - autojump 
   - autonym-fonts 
   - autoopts 
@@ -2723,6 +2728,7 @@ unsorted:
   - emacs-color-theme 
   - emacs-completion-golang 
   - emacs-el 
+  - emacs-plugin-devhelp: [i586] # suggested by dvd:suggested:patterns-gnome-gnome_ide 
   - emacs-scheme48 
   - emacs-semi 
   - embree-devel-static: [x86_64] 
@@ -2844,6 +2850,7 @@ unsorted:
   - erlang-src 
   - erlang-wx 
   - erlang-wx-src 
+  - esc 
   - espeak-devel 
   - espeak-ng 
   - espeak-ng-compat 
@@ -3516,6 +3523,7 @@ unsorted:
   - ganglia-gmond 
   - ganglia-gmond-modules-python 
   - ganglia-web 
+  - gangway 
   - garlic 
   - garlic-doc 
   - gasnet 
@@ -6284,7 +6292,7 @@ unsorted:
   - java-15-openjdk-accessibility 
   - java-15-openjdk-demo 
   - java-15-openjdk-devel 
-  - java-15-openjdk-headless 
+  - java-15-openjdk-headless: [x86_64] 
   - java-15-openjdk-javadoc 
   - java-15-openjdk-jmods 
   - java-15-openjdk-src 
@@ -8291,6 +8299,7 @@ unsorted:
   - libalut0-32bit: [x86_64] 
   - libamd-doc 
   - libangelscript2_34_0 
+  - libanjuta-3-0: [i586] 
   - libansilove-devel 
   - libansilove1 
   - libanthy0 
@@ -9532,6 +9541,9 @@ unsorted:
   - libgcrypt-devel-32bit: [x86_64] 
   - libgcrypt20-hmac-32bit: [x86_64] 
   - libgd3-32bit: [x86_64] 
+  - libgda-5_0-4: [i586] 
+  - libgda-5_0-4-lang: [i586] 
+  - libgda-5_0-bdb: [i586] 
   - libgda-5_0-devel 
   - libgda-5_0-doc 
   - libgda-5_0-firebird 
@@ -9541,10 +9553,13 @@ unsorted:
   - libgda-5_0-mysql 
   - libgda-5_0-postgres 
   - libgda-5_0-sqlcipher 
+  - libgda-5_0-sqlite: [i586] 
   - libgda-5_0-tools 
   - libgda-5_0-web 
   - libgda-report-5_0-4 
   - libgda-tools 
+  - libgda-ui-5_0-4: [i586] 
+  - libgda-ui-5_0-plugins: [i586] 
   - libgda-ui-5_0-tools 
   - libgda-xslt-5_0-4 
   - libgdal26: [x86_64] 
@@ -10232,7 +10247,7 @@ unsorted:
   - libjson-c-devel 
   - libjson-c-doc 
   - libjson-glib-1_0-0-32bit: [x86_64] 
-  - libjsoncpp24 
+  - libjsoncpp22 
   - libjte-devel 
   - libjthread1_3_3 
   - libjxrglue0 
@@ -11083,6 +11098,7 @@ unsorted:
   - liboping-devel-32bit: [x86_64] 
   - liboping0 
   - liboping0-32bit: [x86_64] 
+  - libopts25: [i586] 
   - libopus-devel 
   - libopus0-32bit: [x86_64] 
   - libopusenc-devel 
@@ -22178,6 +22194,7 @@ unsorted:
   - rrdtool-devel 
   - rrdtool-doc 
   - rscsi 
+  - rshim 
   - rsnapshot 
   - rsocket 
   - rsocket-32bit: [x86_64] 

@@ -112,10 +112,6 @@
     <package name="amtk-5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="analitza" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="analitza-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="anjuta" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="anjuta-extras" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="anjuta-extras-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="anjuta-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="apache-commons-logging" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="apache-parent" supportstatus="unsupported"/> <!-- reason: dvd:apache-parent -->
     <package name="apache2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
@@ -186,7 +182,6 @@
     <package name="autoconf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="autoconf-el" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="autofs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="autogen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="automake" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="autotrace" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="autoyast2" supportstatus="unsupported"/> <!-- reason: dvd:autoyast2 -->
@@ -461,7 +456,6 @@
     <package name="emacs-flim" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="emacs-info" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="emacs-nox" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="emacs-plugin-devhelp" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="emacs-w3m" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="emacs-x11" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="enchant-1-backends" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1730,7 +1724,6 @@
     <package name="libaio1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libamd2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libamtk-5-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libanjuta-3-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libao-plugins4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libao4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libaom2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2055,12 +2048,6 @@
     <package name="libgcrypt20" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgcrypt20-hmac" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgd3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libgda-5_0-4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libgda-5_0-4-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libgda-5_0-bdb" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libgda-5_0-sqlite" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libgda-ui-5_0-4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libgda-ui-5_0-plugins" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgdata-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgdata22" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgdbm6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2483,7 +2470,6 @@
     <package name="libopenraw1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libopenssl1_1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libopenssl1_1-hmac" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libopts25" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libopus0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libopusfile0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="liborc-0_4-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -5354,6 +5340,7 @@
   <conditional name="only_i586"/>
   <packagelist relationship="recommends">
     <package name="elinks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="java-15-openjdk-headless" supportstatus="unsupported"/> <!-- reason: dvd:apache-parent -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nodejs10-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5369,14 +5356,20 @@
     <package name="MozillaFirefox-translations-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="alsa-oss-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="alsa-plugins-pulse-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="anjuta" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="anjuta-extras" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="anjuta-extras-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="anjuta-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="apulse" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="apulse-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="autogen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="checkpolicy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="chrome-gnome-shell" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="drbd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="efibootmgr" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
+    <package name="emacs-plugin-devhelp" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="fprintd-pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="gdk-pixbuf-query-loaders-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="glibc-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5409,6 +5402,7 @@
     <package name="libXrandr2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libXrender1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libacl1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libanjuta-3-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libapparmor1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libargon2-1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libasound2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5450,6 +5444,12 @@
     <package name="libfstrm0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgcc_s1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgcrypt20-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libgda-5_0-4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libgda-5_0-4-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libgda-5_0-bdb" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libgda-5_0-sqlite" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libgda-ui-5_0-4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libgda-ui-5_0-plugins" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgdk_pixbuf-2_0-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgio-2_0-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libglib-2_0-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5495,6 +5495,7 @@
     <package name="libnss_nis2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libogg0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libopenssl1_1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libopts25" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libp11-kit0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libpango-1_0-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libpcre1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
