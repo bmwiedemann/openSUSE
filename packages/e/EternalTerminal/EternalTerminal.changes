@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 24 14:21:42 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Build with DISABLE_CRASH_LOG=ON to prevent segfault upon abort
+  See https://github.com/MisterTea/EternalTerminal/issues/324
+
+-------------------------------------------------------------------
 Wed Mar  4 06:50:04 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 6.0.7:

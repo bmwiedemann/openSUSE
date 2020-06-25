@@ -46,7 +46,7 @@ interrupting the session.
 %autosetup -n EternalTerminal-et-v%{version}
 
 %build
-%cmake
+%cmake -DDISABLE_CRASH_LOG=ON
 
 %install
 %cmake_install
