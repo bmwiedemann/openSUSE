@@ -72,7 +72,11 @@ BuildRequires:  pkgconfig(xtrans)
 BuildRequires:  firewall-macros
 %endif
 Requires:       /sbin/pidof
+%if 0%{?with_systemd}
+Requires:       %fillup_prereq
+%else
 Requires:       insserv-compat
+%endif
 Requires:       logrotate
 Requires:       sessreg
 Requires:       xconsole

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 22 18:56:47 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Require fillup_prereq not insserv-compat when using systemd 
+
+-------------------------------------------------------------------
 Fri Jun  5 12:12:52 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec
