@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 22 15:59:31 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- own some dirs in vim-data-common so installation of vim-small
+  doesn't leave not owned directories (boo#1173256)
+
+-------------------------------------------------------------------
 Thu May 28 12:05:51 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - remove duplicated settings in defaults.vim from SUSE vimrc

@@ -489,10 +489,6 @@ fi
 %license LICENSE
 %doc %{_docdir}/vim
 #
-%{_datadir}/vim/current
-%dir %{_datadir}/vim/
-%dir %{_datadir}/vim/%{VIM_SUBDIR}/
-%dir %{_datadir}/vim/%{VIM_SUBDIR}/autoload/
 %dir %{_datadir}/vim/%{VIM_SUBDIR}/colors/
 %dir %{_datadir}/vim/%{VIM_SUBDIR}/compiler/
 %dir %{_datadir}/vim/%{VIM_SUBDIR}/doc/
@@ -550,6 +546,12 @@ fi
 
 %files data-common
 %ghost %config(noreplace) %{_sysconfdir}/vimrc
+%{_datadir}/vim/current
+%dir %{_datadir}/vim/
+%dir %{_datadir}/vim/%{VIM_SUBDIR}/
+%dir %{_datadir}/vim/%{VIM_SUBDIR}/autoload/
+%dir %{_datadir}/vim/%{VIM_SUBDIR}/autoload/dist/
+%dir %{_datadir}/vim/%{VIM_SUBDIR}/syntax/
 %{_datadir}/vim/%{VIM_SUBDIR}/suse.vimrc
 %{_datadir}/vim/%{VIM_SUBDIR}/autoload/dist/ft.vim
 %{_datadir}/vim/%{VIM_SUBDIR}/syntax/nosyntax.vim
