@@ -6,7 +6,7 @@
 
 --- init.h
 +++ init.h	2020-01-14 13:12:26.725982952 +0000
-@@ -3078,6 +3078,13 @@ struct option_t MuttVars[] = {
+@@ -3155,6 +3155,13 @@ struct option_t MuttVars[] = {
    ** .pp
    ** Also see the $$force_name variable.
    */
@@ -22,7 +22,7 @@
    ** .pp
 --- mutt.h
 +++ mutt.h	2020-01-14 13:07:33.727426389 +0000
-@@ -509,6 +509,7 @@ enum
+@@ -515,6 +515,7 @@ enum
    OPTSAVEADDRESS,
    OPTSAVEEMPTY,
    OPTSAVENAME,
@@ -32,7 +32,7 @@
    OPTSIDEBAR,
 --- send.c
 +++ send.c	2020-01-14 13:07:33.727426389 +0000
-@@ -679,9 +679,12 @@ int mutt_fetch_recips (ENVELOPE *out, EN
+@@ -681,9 +681,12 @@ int mutt_fetch_recips (ENVELOPE *out, EN
          (!in->mail_followup_to || hmfupto != MUTT_YES))
      {
        /* if (!mutt_addr_is_user(in->to)) */

@@ -42,7 +42,7 @@
  	}
  	break;
  
-@@ -1580,7 +1580,7 @@ void mutt_decode_attachment (BODY *b, ST
+@@ -1588,7 +1588,7 @@ void mutt_decode_attachment (BODY *b, ST
   * strip all trailing spaces to improve interoperability;
   * if $text_flowed is unset, simply verbatim copy input
   */

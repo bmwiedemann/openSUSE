@@ -20,7 +20,7 @@
      return -1;
 --- mutt.h
 +++ mutt.h	2020-01-14 13:31:51.368358811 +0000
-@@ -759,7 +759,7 @@ typedef struct body
+@@ -766,7 +766,7 @@ typedef struct body
    PARAMETER *parameter;         /* parameters of the content-type */
    char *description;            /* content-description */
    char *form_name;		/* Content-Disposition form-data name param */

@@ -6,7 +6,7 @@
 
 --- globals.h
 +++ globals.h	2020-01-14 13:37:00.770606718 +0000
-@@ -270,6 +270,8 @@ WHERE char *PgpDefaultKey;
+@@ -275,6 +275,8 @@ WHERE char *PgpDefaultKey;
  WHERE char *PgpSignAs;
  WHERE long  PgpTimeout;
  WHERE char *PgpEntryFormat;
@@ -17,7 +17,7 @@
  WHERE char *PgpVerifyCommand;
 --- init.h
 +++ init.h	2020-01-14 13:41:15.145875625 +0000
-@@ -3461,9 +3461,18 @@ struct option_t MuttVars[] = {
+@@ -3538,9 +3538,18 @@ struct option_t MuttVars[] = {
    ** a line quoted text if it also matches $$smileys. This mostly
    ** happens at the beginning of a line.
    */
@@ -41,7 +41,7 @@
    ** .pp
 --- pgp.c
 +++ pgp.c	2020-01-14 13:42:29.880485319 +0000
-@@ -1360,7 +1360,8 @@ BODY *pgp_sign_message (BODY *a)
+@@ -1366,7 +1366,8 @@ BODY *pgp_sign_message (BODY *a)
    t->disposition = DISPNONE;
    t->encoding = ENC7BIT;
    t->unlink = 1; /* ok to remove this file after sending. */

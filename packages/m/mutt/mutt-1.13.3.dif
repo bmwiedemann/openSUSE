@@ -16,7 +16,7 @@
                                  CPPFLAGS="$CPPFLAGS -I${withval}/include"
                          fi
                          LDFLAGS="$LDFLAGS -L${withval}/lib"
-@@ -766,8 +766,12 @@ AC_ARG_WITH(ssl, AS_HELP_STRING([--with-
+@@ -799,8 +799,12 @@ AC_ARG_WITH(ssl, AS_HELP_STRING([--with-
  	  else
              if test "$with_ssl" != "yes"
              then
@@ -31,7 +31,7 @@
              fi
              saved_LIBS="$LIBS"
  
-@@ -854,8 +858,12 @@ AC_ARG_WITH(sasl, AS_HELP_STRING([--with
+@@ -887,8 +891,12 @@ AC_ARG_WITH(sasl, AS_HELP_STRING([--with
  
            if test "$with_sasl" != "yes"
            then

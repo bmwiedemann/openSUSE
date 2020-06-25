@@ -9,7 +9,7 @@ Index: mutt-1.5.21/init.c
 
 --- init.c
 +++ init.c	2019-01-02 13:25:20.795634552 +0000
-@@ -3577,7 +3577,7 @@ void mutt_init (int skip_sys_rc, LIST *c
+@@ -3620,7 +3620,7 @@ void mutt_init (int skip_sys_rc, LIST *c
    else
    {
      /* Default search path from RFC1524 */

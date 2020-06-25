@@ -4,7 +4,7 @@
 
 --- browser.c
 +++ browser.c	2020-01-14 14:51:44.927127369 +0000
-@@ -969,6 +969,16 @@ void _mutt_buffer_select_file (BUFFER *f
+@@ -974,6 +974,16 @@ void _mutt_buffer_select_file (BUFFER *f
  
          mutt_buffer_strcpy (f, state.entry[menu->current].full_path);
  

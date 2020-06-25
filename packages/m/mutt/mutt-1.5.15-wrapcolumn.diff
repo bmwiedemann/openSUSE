@@ -6,7 +6,7 @@ Index: init.h
 
 --- init.h
 +++ init.h	2020-01-14 13:28:27.408149074 +0000
-@@ -4345,6 +4345,7 @@ struct option_t MuttVars[] = {
+@@ -4423,6 +4423,7 @@ struct option_t MuttVars[] = {
    ** printing, or replying to messages.
    */
    { "wrap",             DT_NUM,  R_PAGER, {.p=&Wrap}, {.l=0} },

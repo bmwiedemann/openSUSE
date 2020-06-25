@@ -8,7 +8,7 @@ ask when sending list message replies to author only - Armin Wolfermann (aw)
 
 --- init.h
 +++ init.h	2020-01-14 13:35:13.352604037 +0000
-@@ -1745,6 +1745,13 @@ struct option_t MuttVars[] = {
+@@ -1819,6 +1819,13 @@ struct option_t MuttVars[] = {
    ** from your spool mailbox to your $$mbox mailbox, or as a result of
    ** a ``$mbox-hook'' command.
    */
@@ -24,7 +24,7 @@ ask when sending list message replies to author only - Armin Wolfermann (aw)
    ** .pp
 --- mutt.h
 +++ mutt.h	2020-01-14 13:32:27.595685455 +0000
-@@ -338,6 +338,7 @@ enum
+@@ -337,6 +337,7 @@ enum
  #endif
    OPT_SUBJECT,
    OPT_VERIFYSIG,      /* verify PGP signatures */
@@ -34,7 +34,7 @@ ask when sending list message replies to author only - Armin Wolfermann (aw)
    OPT_MAX
 --- send.c
 +++ send.c	2020-01-14 13:32:27.599685379 +0000
-@@ -565,6 +565,7 @@ static int include_reply (CONTEXT *ctx,
+@@ -567,6 +567,7 @@ static int include_reply (CONTEXT *ctx,
  static int default_to (ADDRESS **to, ENVELOPE *env, int flags, int hmfupto)
  {
    char prompt[STRING];
@@ -42,7 +42,7 @@ ask when sending list message replies to author only - Armin Wolfermann (aw)
  
    if (flags && env->mail_followup_to && hmfupto == MUTT_YES)
    {
-@@ -578,6 +579,23 @@ static int default_to (ADDRESS **to, ENV
+@@ -580,6 +581,23 @@ static int default_to (ADDRESS **to, ENV
    if (flags & SENDLISTREPLY)
      return 0;
  

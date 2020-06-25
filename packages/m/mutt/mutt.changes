@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Jun 22 13:57:52 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Update to 1.14.4 - bug-fix release (boo#1173197, CVE-2020-14954) 
+  * Fix STARTTLS response injection attack.
+
+-------------------------------------------------------------------
+Mon Jun 15 15:05:52 UTC 2020 - Werner Fink <werner@suse.de>
+
+- Update to 1.14.3 - bug-fix release (boo#1172906, boo#1172935,
+  CVE-2020-14093, CVE-2020-14154)
+  * Prevent possible IMAP MITM via PREAUTH response.
+  * expired where certs not properly rejected with GnuTLS
+  * Fix GnuTLS interactive prompt short-circuiting.
+  * Abort GnuTLS certificate check if a cert in the chain is rejected.
+  * Fix GnuTLS tls_verify_peers() checking.
+  * Fix GNUTLS_E_NO_CERTIFICATE_FOUND check to be against verify_ret
+    instead of certstat.
+  * Fix gnutls_strerror() call to use verify_ret instead of certstat.
+- Modify/refresh patches
+  * aw.listreply.diff
+  * bsc907453-CVE-2014-9116-jessie.patch
+  * bug-676388-largefile.patch
+  * mutt-1.10.1-imap.patch
+  * mutt-1.13.3.dif
+  * mutt-1.5.15-wrapcolumn.diff
+  * mutt-1.5.20-sendgroupreplyto.diff
+  * mutt-1.5.21-mailcap.diff
+  * mutt-1.5.23-carriage-return.path
+  * mutt-1.5.9i-pgpewrap.diff
+  * mutt-1.6.1-opennfs.dif
+  * mutt-Fix-SIGQUIT-handling.patch
+  * patch-1.5.24.vk.pgp_verbose_mime
+  * widechar.sidebar.dif
+
+-------------------------------------------------------------------
 Mon May 25 11:54:08 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.14.1:

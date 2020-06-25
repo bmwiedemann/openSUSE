@@ -40,7 +40,7 @@ Signed-off-by: Michal Suchanek <msuchanek@suse.de>
    sigaction (SIGINT, &act, NULL);
  #if defined (USE_SLANG_CURSES) || defined (HAVE_RESIZETERM)
    sigaction (SIGWINCH, &act, NULL);
-@@ -215,6 +216,7 @@ void mutt_block_signals (void)
+@@ -213,6 +214,7 @@ void mutt_block_signals (void)
      sigaddset (&Sigset, SIGTERM);
      sigaddset (&Sigset, SIGHUP);
      sigaddset (&Sigset, SIGTSTP);
@@ -48,7 +48,7 @@ Signed-off-by: Michal Suchanek <msuchanek@suse.de>
      sigaddset (&Sigset, SIGINT);
  #if defined (USE_SLANG_CURSES) || defined (HAVE_RESIZETERM)
      sigaddset (&Sigset, SIGWINCH);
-@@ -289,5 +291,6 @@ void mutt_allow_interrupt (int dispositi
+@@ -287,5 +289,6 @@ void mutt_allow_interrupt (int dispositi
    if (disposition == 0)
      sa.sa_flags |= SA_RESTART;
  #endif

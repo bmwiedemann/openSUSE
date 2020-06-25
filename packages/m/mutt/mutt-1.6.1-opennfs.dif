@@ -19,7 +19,7 @@
  	postpone.c query.c recvattach.c recvcmd.c \
  	rfc822.c rfc1524.c rfc2047.c rfc2231.c rfc3676.c \
  	score.c send.c sendlib.c signal.c sort.c \
-@@ -89,7 +89,7 @@ mutt_dotlock_SOURCES = mutt_dotlock.c
+@@ -94,7 +94,7 @@ mutt_dotlock_SOURCES = mutt_dotlock.c
  mutt_dotlock_LDADD = $(LIBOBJS)
  mutt_dotlock_DEPENDENCIES = $(LIBOBJS)
  
@@ -73,7 +73,7 @@
        {
 --- mutt.h
 +++ mutt.h	2020-01-14 13:28:45.787807571 +0000
-@@ -1169,4 +1169,7 @@ typedef struct
+@@ -1183,4 +1183,7 @@ typedef struct
  #include "lib.h"
  #include "globals.h"
  
@@ -83,7 +83,7 @@
  #endif /*MUTT_H*/
 --- muttlib.c
 +++ muttlib.c	2020-01-14 13:28:45.787807571 +0000
-@@ -2391,6 +2391,10 @@ int safe_open (const char *path, int fla
+@@ -2496,6 +2496,10 @@ int safe_open (const char *path, int fla
    BUFFER *safe_file = NULL;
    BUFFER *safe_dir = NULL;
  
@@ -94,7 +94,7 @@
    if (flags & O_EXCL)
    {
      safe_file = mutt_buffer_pool_get ();
-@@ -2419,7 +2423,7 @@ int safe_open (const char *path, int fla
+@@ -2524,7 +2528,7 @@ int safe_open (const char *path, int fla
  
    if ((fd = open (path, flags & ~O_EXCL, 0600)) < 0)
      goto cleanup;
@@ -230,7 +230,7 @@
 +}
 --- sendlib.c
 +++ sendlib.c	2020-01-14 13:28:45.787807571 +0000
-@@ -2489,7 +2489,11 @@ send_msg (const char *path, char **args,
+@@ -2496,7 +2496,11 @@ send_msg (const char *path, char **args,
        if (SendmailWait >= 0 && tempfile && *tempfile)
        {
  	/* *tempfile will be opened as stdout */

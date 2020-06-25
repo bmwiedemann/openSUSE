@@ -4,7 +4,7 @@
 
 --- pgpewrap.c
 +++ pgpewrap.c	2019-11-13 13:00:01.256398592 +0000
-@@ -65,6 +65,11 @@ int main(int argc, char **argv)
+@@ -57,6 +57,11 @@ int main(int argc, char **argv)
    }
    *opt = NULL;
  

@@ -19,7 +19,7 @@
      }
 --- lib.c
 +++ lib.c	2019-11-13 13:42:00.245189313 +0000
-@@ -718,6 +718,17 @@ int mutt_strcmp(const char *a, const cha
+@@ -722,6 +722,17 @@ int mutt_strcmp(const char *a, const cha
    return strcmp(NONULL(a), NONULL(b));
  }
  
@@ -49,7 +49,7 @@
  int mutt_strcoll (const char *, const char *);
 --- pager.c
 +++ pager.c	2019-11-13 13:48:32.257845120 +0000
-@@ -826,7 +826,7 @@ resolve_types (char *buf, char *raw, str
+@@ -829,7 +829,7 @@ resolve_types (char *buf, char *raw, str
      lineInfo[n].type = MT_COLOR_NORMAL;
    else if (check_attachment_marker ((char *) raw) == 0)
      lineInfo[n].type = MT_COLOR_ATTACHMENT;
@@ -116,7 +116,7 @@
  	key = 1;
      }
    }
-@@ -1297,9 +1297,9 @@ BODY *pgp_sign_message (BODY *a)
+@@ -1303,9 +1303,9 @@ BODY *pgp_sign_message (BODY *a)
     */
    while (fgets (buffer, sizeof (buffer) - 1, pgpout) != NULL)
    {
