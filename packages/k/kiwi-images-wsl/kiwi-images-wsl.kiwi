@@ -41,6 +41,7 @@
     <package name="wget"/>
     <package name="screen"/>
     <package name="less"/>
+    <package name="lsof"/>
     <package name="man"/>
     <package name="zip"/>
     <package name="bzip2"/>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 24 11:13:02 UTC 2020 - Lubos Kocman <lubos.kocman@suse.com>
+
+- add lsof to the package list
+  Our openqa uses `zypper ps` that fails on lsof not being present
+
+-------------------------------------------------------------------
 Thu Jan 30 09:11:06 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - don't install the special apache config anymore as we don't know what it's
