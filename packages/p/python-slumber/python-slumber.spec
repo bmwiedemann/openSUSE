@@ -38,7 +38,6 @@ BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module unittest2}
 # /SECTION
 Requires:       python-requests
 Suggests:       python-PyYAML
