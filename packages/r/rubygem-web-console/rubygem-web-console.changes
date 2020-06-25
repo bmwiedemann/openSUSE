@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 25 09:48:09 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 4.0.3
+
+  * [#291](https://github.com/rails/web-console/pull/291) Deprecate config.web_console.whitelisted_ips ([@JuanitoFatas])
+  * [#290](https://github.com/rails/web-console/pull/290) Fix Content-Length for rack >= 2.1.0 ([@p8])
+
+-------------------------------------------------------------------
 Thu May  7 21:40:50 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 4.0.2
