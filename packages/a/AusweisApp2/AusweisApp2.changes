@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jun 24 21:17:59 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.20.1
+    * Password-protected proxy servers can now also be used from
+      the new user interface.
+    * A new option for mobile devices now allows switching between
+      portrait and landscape viewing mode.
+    * On Android, canceling the authentication process should now
+      be faster and the previously occurring crash was fixed.
+    * On Windows, a progress bar is now also shown during the
+      authentication process when using the new user interface.
+    * Small bug fixes.
+    * Enterprise installations using the MSI package have gained the possibility
+      to enable on-site-readout and providing a proxy configuration.
+    * The mobile app now allows enabling and disabling debug mode when retrieving
+      one's own personal ID data by tapping the magnifier icon ten times.
+    * Also in the mobile app, tapping the version number in the about dialog
+      ten times will now activate the advanced settings dialog which allows
+      one to enable the on-site-readout.
+- Drop patches for issues fixed upstream
+  + 0001-disable-vendor-name.patch
+  + 0002-fix-desktop-icon-path.patch
+
+-------------------------------------------------------------------
 Sat Jan 18 06:19:08 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Add Requires on libqt5-qtgraphicaleffects and libqt5-qtquickcontrols2

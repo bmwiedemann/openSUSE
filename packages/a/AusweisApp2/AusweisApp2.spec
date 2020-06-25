@@ -17,15 +17,13 @@
 
 
 Name:           AusweisApp2
-Version:        1.20.0
+Version:        1.20.1
 Release:        0
 Summary:        Official authentication app for German ID cards and residence permits
 License:        EUPL-1.2
 Group:          Productivity/Security
 URL:            https://www.ausweisapp.bund.de
 Source0:        https://github.com/Governikus/AusweisApp2/archive/%{version}.tar.gz
-Patch0:         0001-disable-vendor-name.patch
-Patch1:         0002-fix-desktop-icon-path.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -56,8 +54,6 @@ reader or compatible NFC smart phone is required.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 export CFLAGS="%{optflags} -fPIC"
@@ -70,7 +66,7 @@ ninja
 %cmake_install
 
 %suse_update_desktop_file com.governikus.ausweisapp2 X-SuSE-DesktopUtility
-install -DTm644 %{_builddir}/%{name}-%{version}/resources/images/npa_docs.png %{buildroot}/%{_datadir}/icons/hicolor/96x96/apps/AusweisApp2.png
+install -DTm644 %{_builddir}/%{name}-%{version}/resources/images/npa.png %{buildroot}/%{_datadir}/icons/hicolor/96x96/apps/AusweisApp2.png
 
 %fdupes -s %{buildroot}/%{_prefix}
 
