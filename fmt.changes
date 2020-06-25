@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 23 16:02:53 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add fmt-6.2.1-fix_pkgconfig_paths.patch (fix for boo#1173270)
+
+-------------------------------------------------------------------
 Sat May  9 17:53:02 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 6.2.1
