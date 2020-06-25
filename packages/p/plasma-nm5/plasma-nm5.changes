@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 23 13:26:18 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.2
+- Changes since 5.19.1:
+  * [applet] Remove styled text support from list items (kde#423020)
+
+-------------------------------------------------------------------
 Thu Jun 18 15:50:33 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Fix the inline password field (kde#423093):
