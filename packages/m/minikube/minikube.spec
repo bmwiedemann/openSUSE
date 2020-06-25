@@ -39,6 +39,7 @@ Recommends:     kubernetes-client
 Recommends:     libvirt
 Recommends:     libvirt-daemon-qemu
 Recommends:     qemu-kvm
+ExclusiveArch:  %{ix86} x86_64 aarch64
 
 %description
 Minikube is a tool that allows running Kubernetes locally. Minikube
@@ -77,7 +78,11 @@ git add -f .dummy .gitignore
 git commit -m "trick hack/get_k8s_version.py"
 make %{?_smp_mflags} out/minikube
 %ifnarch i586
+%ifarch aarch64
+make %{?_smp_mflags} out/docker-machine-driver-kvm2-arm64
+%else
 make %{?_smp_mflags} out/docker-machine-driver-kvm2
+%endif
 %endif
 
 %check
@@ -91,7 +96,13 @@ binaries=(minikube)
 install -m 755 -d %{buildroot}%{_bindir}
 install -p -m 755 -t %{buildroot}%{_bindir} ${output_path}/minikube
 %ifnarch i586
-install -p -m 755 -t %{buildroot}%{_bindir} ${output_path}/docker-machine-driver-kvm2
+install -p -m 755 -t %{buildroot}%{_bindir} ${output_path}/docker-machine-driver-kvm2*
+%ifarch aarch64
+# Add a symlink without '-arm64' suffix
+pushd %{buildroot}%{_bindir}
+ln -s docker-machine-driver-kvm2* docker-machine-driver-kvm2
+popd
+%endif
 %endif
 
 %files
@@ -102,7 +113,7 @@ install -p -m 755 -t %{buildroot}%{_bindir} ${output_path}/docker-machine-driver
 %ifnarch i586
 %files -n docker-machine-driver-kvm2
 %license LICENSE
-%{_bindir}/docker-machine-driver-kvm2
+%{_bindir}/docker-machine-driver-kvm2*
 %endif
 
 %changelog

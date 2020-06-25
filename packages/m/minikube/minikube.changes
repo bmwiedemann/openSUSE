@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 24 09:40:23 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64
+- Build only on supported architectures: x86 x86_64 aarch64
+
+-------------------------------------------------------------------
 Mon Jun 22 19:17:48 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
 
 - Update to 1.11.0:
