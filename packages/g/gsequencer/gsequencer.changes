@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Jun 24 21:19:55 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.4.6 fixed sscanf call with wrong signed integer
+  in ags_sfz_synth_util.c
+- fixed not intialized sound_scope in ags_audio_loop.c
+- minor improvements
+
+-------------------------------------------------------------------
+Tue Jun 23 18:58:11 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.4.5 improved ags_filter_util.c to use projection
+  during 2nd pitch rewrite.
+
+-------------------------------------------------------------------
+Sun Jun 21 18:12:46 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.4.4 improved ags_audio_buffer_util.c copy
+  AgsComplex and fixed potential SIGSEGV because of buffer-overflow
+
+-------------------------------------------------------------------
+Sun Jun 21 13:18:28 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.4.3 fixed missing include in
+  ags_xml_authentication.c
+- new since v3.4.0 SF2 and SFZ synth generator able to pitch
+  missing samples.
+
+-------------------------------------------------------------------
 Fri Jun 12 14:41:05 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.3.16 fixed ags-fx-ladspa and ags-fx-lv2.
