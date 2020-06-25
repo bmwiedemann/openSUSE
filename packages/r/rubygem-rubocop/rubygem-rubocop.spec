@@ -25,7 +25,7 @@
 # of those fields
 #
 Name:           rubygem-rubocop
-Version:        0.83.0
+Version:        0.86.0
 Release:        0
 Summary:        Automatic Ruby code style checking tool
 License:        MIT
@@ -44,8 +44,8 @@ Patch0:         0001-Use-usr-bin-bash-instead-of-env-as-the-shebang.patch
 # /MANUAL
 
 %description
-Automatic Ruby code style checking tool.
-Aims to enforce the community-driven Ruby Style Guide.
+RuboCop is a Ruby code style checking and code formatting tool.
+It aims to enforce the community-driven Ruby Style Guide.
 
 %prep
 %gem_unpack
