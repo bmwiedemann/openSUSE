@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Jun 23 12:44:32 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.2:
+  + Added:
+    * Python 3.8 support.
+    * sshpass support.
+    * Auto sudoers file (#269).
+    * option for latency control buffer size.
+  + Removed:
+    * Python 2.6 support.
+    * Python 2.7 support.
+  + Fixed:
+    * Leave use of default port to ssh command.
+    * Remove unwanted references to Python 2.7 in docs.
+    * Replace usage of deprecated imp.
+    * Fix connection with @ sign in username.
+    * Remove debug message for getpeername failure.
+    * Fix crash triggered by port scans closing socket.
+    * Added "Running as a service" to docs.
+    * Systemd integration.
+    * Trap UnicodeError to handle cases where hostnames returned by DNS are invalid.
+    * Formatting error in CHANGES.rst
+    * Various errors in documentation.
+    * Nftables based method.
+    * Make hostwatch locale-independent (#379).
+    * Add tproxy udp port mark filter that was missed in #144, fixes #367.
+    * Capturing of local DNS servers.
+    * Crashing on ECONNABORTED.
+    * Size of pf_rule, which grew in OpenBSD 6.4.
+    * Use prompt for sudo, not needed for doas.
+    * Arch linux installation instructions.
+    * tests for existing PR-312 (#337).
+    * Hyphen in hostname.
+    * Assembler import (#319)
+  - add fix-pytest.patch
+
+-------------------------------------------------------------------
 Mon Apr  8 23:42:06 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add the missing build dependency for openSUSE Factory.

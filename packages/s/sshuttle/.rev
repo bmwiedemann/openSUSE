@@ -32,4 +32,41 @@ Doesn't require admin. Works with Linux and MacOS. Supports DNS tunneling.</comm
     <comment></comment>
     <requestid>697853</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>450baeec39bb349511ffa0c77d93b2cb</srcmd5>
+    <version>1.0.2</version>
+    <time>1593090470</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.2:
+  + Added:
+    * Python 3.8 support.
+    * sshpass support.
+    * Auto sudoers file (#269).
+    * option for latency control buffer size.
+  + Removed:
+    * Python 2.6 support.
+    * Python 2.7 support.
+  + Fixed:
+    * Leave use of default port to ssh command.
+    * Remove unwanted references to Python 2.7 in docs.
+    * Replace usage of deprecated imp.
+    * Fix connection with @ sign in username.
+    * Remove debug message for getpeername failure.
+    * Fix crash triggered by port scans closing socket.
+    * Added &quot;Running as a service&quot; to docs.
+    * Systemd integration.
+    * Trap UnicodeError to handle cases where hostnames returned by DNS are invalid.
+    * Formatting error in CHANGES.rst
+    * Various errors in documentation.
+    * Nftables based method.
+    * Make hostwatch locale-independent (#379).
+    * Add tproxy udp port mark filter that was missed in #144, fixes #367.
+    * Capturing of local DNS servers.
+    * Crashing on ECONNABORTED.
+    * Size of pf_rule, which grew in OpenBSD 6.4.
+    * Use prompt for sudo, not needed for doas.
+    * Arch linux installation instructions.
+    * tests for existing PR-312 (#337).</comment>
+    <requestid>816894</requestid>
+  </revision>
 </revisionlist>

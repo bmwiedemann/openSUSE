@@ -1,7 +1,7 @@
 #
 # spec file for package sshuttle
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,25 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           sshuttle
-Version:        0.78.4
+Version:        1.0.2
 Release:        0
 Summary:        VPN over an SSH tunnel
 License:        LGPL-2.1-only
 Group:          Development/Languages/Python
 URL:            https://github.com/sshuttle/sshuttle
 Source0:        https://files.pythonhosted.org/packages/source/s/sshuttle/sshuttle-%{version}.tar.gz
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest-runner}
-BuildRequires:  %{python_module setuptools}
-Requires:       python3-setuptools
+Patch0:         fix-pytest.patch
+BuildRequires:  python3-mock
+BuildRequires:  python3-pytest-runner
+BuildRequires:  python3-setuptools
+BuildArch:      noarch
 %if (0%{?suse_version} >= 1320 || 0%{?suse_version} == 1310)
 BuildRequires:  python3-Sphinx
 %endif
 %if 0%{?suse_version} >= 1550
-BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  python3-setuptools_scm
 %endif
-BuildArch:      noarch
 
 %description
 Transparent proxy server that works as a poor man's VPN. Forwards over ssh.
@@ -53,6 +52,7 @@ sshuttle is a program that solves the following case:
 
 %prep
 %setup -q -n sshuttle-%{version}
+%patch0
 
 %build
 %if (0%{?suse_version} >= 1320 || 0%{?suse_version} == 1310)
@@ -60,7 +60,7 @@ sshuttle is a program that solves the following case:
 cd docs/;
 sed -i '/_scm/d' conf.py
 sed -ri 's/(version = )get_version.*/\1 "%{version}"/g' conf.py
-make %{?_smp_mflags} man
+%make_build man
 )
 %endif
 %python3_build
@@ -74,11 +74,12 @@ install -m0644 docs/_build/man/sshuttle.1 %{buildroot}/%{_mandir}/man1/
 %endif
 
 %check
-pytest
+%pytest
 
 %files
 %{python3_sitelib}/sshuttle*
 %{_bindir}/sshuttle
+%{_bindir}/sudoers-add
 %if (0%{?suse_version} >= 1320 || 0%{?suse_version} == 1310)
 %{_mandir}/man1/sshuttle.1%{?ext_man}
 %endif
