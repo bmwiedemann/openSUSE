@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-actionview-6.0
-Version:        6.0.3.1
+Version:        6.0.3.2
 Release:        0
 %define mod_name actionview
 %define mod_full_name %{mod_name}-%{version}
