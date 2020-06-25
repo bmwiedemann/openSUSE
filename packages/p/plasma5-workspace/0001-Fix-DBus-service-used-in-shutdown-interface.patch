@@ -1,0 +1,37 @@
+From 1c787f7698b5078779c043b3b5ff98800679d0ec Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Tue, 23 Jun 2020 16:17:44 +0100
+Subject: [PATCH] Fix DBus service used in shutdown interface
+
+During Plasma 5.18, ksmserver was cleverly split so it hosted the new
+new interface registering both services names org.kde.ksmserver and
+org.kde.Shutdown.
+
+This way we could do a gradual port, update the libs, and migrate the
+final code without any breakages. It was a good plan in theory.
+
+In 5.19 we did the final actual splitting, unfortunately in
+libkworkspace on the path where we skip logout confirmation had the
+wrong name.
+
+BUG: 423391
+---
+ libkworkspace/sessionmanagement.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libkworkspace/sessionmanagement.cpp b/libkworkspace/sessionmanagement.cpp
+index 943b4c4c6..b9d868548 100644
+--- a/libkworkspace/sessionmanagement.cpp
++++ b/libkworkspace/sessionmanagement.cpp
+@@ -47,7 +47,7 @@ class ShutdownIface : public OrgKdeShutdownInterface
+     Q_OBJECT
+ public:
+     ShutdownIface()
+-        : OrgKdeShutdownInterface(QStringLiteral("org.kde.ksmserver"), QStringLiteral("/Shutdown"), QDBusConnection::sessionBus())
++        : OrgKdeShutdownInterface(QStringLiteral("org.kde.Shutdown"), QStringLiteral("/Shutdown"), QDBusConnection::sessionBus())
+     {
+     }
+ };
+-- 
+2.25.1
+

@@ -27,7 +27,7 @@ Name:           plasma5-workspace
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.19.1
+Version:        5.19.2
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
@@ -42,6 +42,7 @@ Source3:        baselibs.conf
 Source4:        plasmafullwayland.desktop
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Port-applets-to-use-PlasmaExtras.PlaceholderMessage.patch
+Patch2:         0001-Fix-DBus-service-used-in-shutdown-interface.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch

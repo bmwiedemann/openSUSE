@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jun 23 20:24:28 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix power actions (kde#423391):
+  * 0001-Fix-DBus-service-used-in-shutdown-interface.patch
+
+-------------------------------------------------------------------
+Tue Jun 23 13:26:18 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.2
+- Changes since 5.19.1:
+  * [Notifications] Support description where only a value is set (kde#423218)
+  * Fix case of monitored service in startplasma's shutdown (kde#422870)
+  * Fix faint outline for notification timeout indicator with newer charts (kde#423079)
+  * [applets/appmenu] Listen to more signals to ensure that appmenu applet can reliably catch the active window changing (kde#422786,kde#422260)
+  * Fix KRunner positioning on X11 with High DPI and Qt scaling on Plasma (kde#422578)
+  * [lock screen] Stop timer when interacting with media controls (kde#422707)
+
+-------------------------------------------------------------------
 Sat Jun 20 09:29:58 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix label appearance (kde#422684):
