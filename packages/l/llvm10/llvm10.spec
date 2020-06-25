@@ -115,6 +115,8 @@ Patch22:        llvm-better-detect-64bit-atomics-support.patch
 Patch24:        opt-viewer-Find-style-css-in-usr-share.patch
 # Proposed fix for https://bugs.llvm.org/show_bug.cgi?id=45272.
 Patch25:        ValueLattice-Add-new-state-for-undef-constants.patch
+# PATCH-FIX-OPENSUSE lld-default-sha1.patch
+Patch26:        lld-default-sha1.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -536,6 +538,7 @@ This package contains the development files for Polly.
 %patch22 -p1
 %patch24 -p1
 %patch25 -p2
+%patch26 -p1
 
 pushd clang-%{version}.src
 %patch2 -p1

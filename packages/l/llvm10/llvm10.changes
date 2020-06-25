@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 23 07:18:55 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add lld-default-sha1.patch to make lld generate SHA1 build-ids by
+  default, otherwise our tools cannot process the debuginfo.
+
+-------------------------------------------------------------------
 Tue Mar 24 22:30:06 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 10.0.0.
