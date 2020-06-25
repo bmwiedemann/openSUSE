@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Jun 24 16:04:34 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mkdud#33
+- add --sign-key-id option to allow specifying a gpg signing key by id
+- 1.49
+
+--------------------------------------------------------------------
 Wed Mar 4 14:13:49 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mkdud#32
