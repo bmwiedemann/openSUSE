@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Mon Jun 22 09:14:45 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Update to version 0.8.4
+
+  Security
+  --------
+
+  * config.def.h: add an option allowwindowops, by default off (secure).
+
+    Similar to the xterm AllowWindowOps option.
+    The sequence for base64-encoded clipboard copy is now guarded and off by
+    default because it allows a sequence written to the terminal to manipulate the
+    clipboard of the (other) running user non-interactively.
+
+  Features
+  --------
+
+  * Integrate auto-sync: draw on idle to avoid flicker/tearing by avih.
+    st could easily tear/flicker with animation or other unattended
+    output. This commit eliminates most of the tear/flicker.
+
+  * Optimize column width calculation and UTF-8 encode for the common-case ASCII.
+    In particular on glibc and OpenBSD the wcwidth() call is more expensive.
+    On musl there is no/little difference.
+
+  * Add support for REP (repeat) escape sequence and xterm compatibility, by
+    avih.  The capability is not exposed yet due to some issues with
+    applications.
+
+  * Call xsetcursor to set win.cursor in main, by Steve Ward.
+    Allowing to set the st snowman cursor extension dynamically.
+
+  Fixes and other changes
+  -----------------------
+
+  * Fix unicode glitch in DCS strings, by Tim Allen.
+    The related sixel stub code is now removed also.
+
+  * Fix for incorrect (partial) written sequences when libc wcwidth() == -1
+    and using st -o.
+
+  * Mouse selection fixes, by Jakub
+
+  * Make shift+wheel behaves as shift+Prev/Next, patch by k0ga
+    This patch adds a new hack, making shift+wheel returning the
+    same sequences than shift+Prev/Next, meaning that scroll or
+    any other similar program will not be able to differentiate
+    between them.
+
+  * Expose rin terminfo capability.
+    Tianlin Qu discovered that st is missing rin (scroll back #1 lines).
+
+  * Replace exit(3) by _exit(2) in signal handler sigchld(), by Jan.
+    This change prevents st to crash and dump core in some situations.
+
+  * FAQ: add details and a patch example for single-buffering (for the w3mimg
+    hack).
+
+- Update to version 0.8.3
+  * Update XIM cursor position only if changed
+  * just remove the EOF message
+  * Add st-mono terminfo entry
+  * config.def.h: add a comment for the scroll variable
+  * Fix small typos
+  * Launch scroll program with the default shell
+  * Update FAQ with the last modifications
+  * Add terminfo entries for backspace mode
+  * Fix style issue
+  * ttyread: test for EOF while reading tty
+  * Add support for scroll(1)
+  * make argv0 not static, fixes a warning with tcc
+  * mouseshortcuts: fix custom modifier on release
+  * Remove explicit XNFocusWindow
+  * x: fix XIM handling
+  * x: check we still have an XIC context before accessing it
+  * x: do not instantiate a new nested list on each cursor move
+  * x: move IME variables into XWindow ime embedded struct
+  * Increase XmbLookupString buffer
+  * update FAQ
+  * OSC 52 - copy to clipboard: don't limit to 382 bytes
+  * CSIEscape, STREscape: use size_t for buffer length
+  * STREscape: don't trim prematurely
+  * base64dec: don't read out of bounds
+  * Fix tmux terminfo extensions Se and Ss
+  * apply hints before initial mapping (ICCCM)
+  * mouse shortcuts: allow using forcemousemod (e.g. shift)
+  * mouse shortcuts: don't hardcode selpaste
+  * mouse shortcuts: allow override for all shortcuts
+  * mouse shortcuts: allow same functions as kb shortcuts
+  * config.def.h: remove crlf value section
+  * FAQ: add entry about color emoji Xft bug
+  * selection: fix view to match actual selection on first cell
+  * revert part of commit add0211522737b79dad990ccd65c8af63b5cc1dd
+  * dont print color warning on color reset OSC 104 without parameter
+  * minor code-style, initialize var at the top of function
+  * config.def.h: tweak extra worddelimiters
+  * use iswspace()/iswpunct() to find word delimiters
+  * replace utf8strchr with wcschr
+  * be silent about explicitly unhandled mouse modes
+  * simplify (greedy) font caching allocating a bit
+  * style: remove double empty newlines
+  * fix use after free in font caching algorithm
+  * better Input Method Editor (IME) support
+
+-------------------------------------------------------------------
 Wed Mar 25 14:54:40 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Update to version 0.8.2

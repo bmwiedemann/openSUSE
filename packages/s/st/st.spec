@@ -18,7 +18,7 @@
 
 
 Name:           st
-Version:        0.8.2
+Version:        0.8.4
 Release:        0
 Summary:        Simple Terminal Implementation for X
 License:        MIT
@@ -55,7 +55,7 @@ export CLAGS="%{optflags}"
 export LDFLAGS="${RPM_LD_FLAGS}"
 %endif
 
-%make_build \
+%{?make_build}%{?!make_build:make -j %{?_smp_mflags}} \
     X11INC="%{_includedir}" \
     X11LIB="%{_libdir}" \
     CC="gcc"
