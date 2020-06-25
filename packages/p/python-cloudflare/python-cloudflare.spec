@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cloudflare
-Version:        2.6.3
+Version:        2.8.3
 Release:        0
 Summary:        Python wrapper for the Cloudflare v4 API
 License:        MIT
@@ -52,21 +52,26 @@ Python wrapper for the Cloudflare Client API v4.
 
 %install
 %python_install
+mkdir -p %{buildroot}%{_mandir}/man1
+mv %{buildroot}/usr/man/man1/cli4.man %{buildroot}%{_mandir}/man1/cli4.1
+rm -rf %{buildroot}/usr/man
 %python_clone -a %{buildroot}%{_bindir}/cli4
+%python_clone -a %{buildroot}%{_mandir}/man1/cli4.1
 # remove examples from sitelib
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/examples
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %post
-%python_install_alternative cli4
+%python_install_alternative cli4 cli4.1
 
 %postun
-%python_uninstall_alternative cli4
+%python_uninstall_alternative cli4 cli4.1
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/cli4
+%python_alternative %{_mandir}/man1/cli4.1%{?ext_man}
 %{python_sitelib}/*
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 25 04:20:35 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.8.3:
+  * No upstream changelog
+- Add alternative for new manpage. 
+
+-------------------------------------------------------------------
 Wed May 27 09:36:45 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
