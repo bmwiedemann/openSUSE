@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 23 18:02:26 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- move mesa.icd from /usr/etc/OpenCL/vendors to 
+  /usr/share/OpenCL/vendors (boo#1173005)
+
+-------------------------------------------------------------------
 Thu Jun 18 11:02:23 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - switch to /usr/etc/OpenCL/vendors for mesa.icd OpenCL file

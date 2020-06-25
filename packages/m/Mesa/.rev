@@ -4165,4 +4165,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   location (boo#1173005)</comment>
     <requestid>815765</requestid>
   </revision>
+  <revision rev="384" vrev="256">
+    <srcmd5>01c26efea41231074c8ec0d7fd1d01a8</srcmd5>
+    <version>unknown</version>
+    <time>1593096427</time>
+    <user>dimstar_suse</user>
+    <comment>- move mesa.icd from /usr/etc/OpenCL/vendors to 
+  /usr/share/OpenCL/vendors (boo#1173005)</comment>
+    <requestid>816652</requestid>
+  </revision>
 </revisionlist>
