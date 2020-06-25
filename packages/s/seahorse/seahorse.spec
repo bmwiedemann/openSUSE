@@ -17,7 +17,7 @@
 
 
 Name:           seahorse
-Version:        3.36
+Version:        3.36.2
 Release:        0
 Summary:        GNOME interface for gnupg
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GFDL-1.1-only

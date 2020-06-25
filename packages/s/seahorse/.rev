@@ -813,4 +813,12 @@ A couple of patches for this are competing for upstream approval at bgo#659834 -
     <comment>Scripted push of project GNOME:Next (forwarded request 795105 from iznogood)</comment>
     <requestid>795250</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>2837ffc4d2533c4cd6c770815309d057</srcmd5>
+    <version>3.36.2</version>
+    <time>1593096442</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816722</requestid>
+  </revision>
 </revisionlist>
