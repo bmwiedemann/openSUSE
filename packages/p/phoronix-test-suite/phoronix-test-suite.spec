@@ -1,7 +1,7 @@
 #
 # spec file for package phoronix-test-suite
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,33 +12,34 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           phoronix-test-suite
-Version:        7.8.0
+Version:        9.6.0
 Release:        0
 Summary:        Comprehensive test and benchmarking platform
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          System/Benchmark
-Url:            http://www.phoronix-test-suite.com/
-Source0:        http://www.phoronix.net/downloads/phoronix-test-suite/releases/%{name}-%{version}.tar.gz
+URL:            http://www.phoronix-test-suite.com/
+Source0:        https://phoronix-test-suite.com/releases/phoronix-test-suite-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  shared-mime-info
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
-Requires:       php
-Requires:       php-curl
-Requires:       php-dom
-Requires:       php-gd
-Requires:       php-json
-Requires:       php-openssl
-Requires:       php-pcntl
-Requires:       php-posix
-Requires:       php-sockets
-Requires:       php-zip
+Requires:       php7
+Requires:       php7-curl
+Requires:       php7-dom
+Requires:       php7-gd
+Requires:       php7-json
+Requires:       php7-openssl
+Requires:       php7-pcntl
+Requires:       php7-posix
+Requires:       php7-sockets
+Requires:       php7-zip
+Requires:       php7-zlib
 Requires:       xdg-utils
 BuildArch:      noarch
 %systemd_requires
@@ -55,6 +56,7 @@ tests and 20 suites.
 
 %prep
 %setup -q -n %{name}
+find ob-cache -type f -name *.sh -exec chmod +x {} \;
 
 %build
 
@@ -95,7 +97,8 @@ rm  %{buildroot}%{_datadir}/%{name}/pts-core/external-test-dependencies/scripts/
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog README.md
+%license COPYING
+%doc AUTHORS ChangeLog README.md
 %doc %{_datadir}/doc/%{name}
 %{_mandir}/man1/%{name}.1.gz
 %{_bindir}/%{name}
