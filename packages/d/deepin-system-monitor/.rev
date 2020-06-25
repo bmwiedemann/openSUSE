@@ -32,4 +32,13 @@
   * Fix redefinition of 'struct std::hash&lt;QString&gt;' error</comment>
     <requestid>767303</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>2b8801f76990a1f1df888747238595fe</srcmd5>
+    <version>1.5.2</version>
+    <time>1593090571</time>
+    <user>dimstar_suse</user>
+    <comment>- Add deepin-system-monitor-Qt-5_15.patch
+  * Support Qt 5.15 (forwarded request 816971 from hillwood)</comment>
+    <requestid>816972</requestid>
+  </revision>
 </revisionlist>

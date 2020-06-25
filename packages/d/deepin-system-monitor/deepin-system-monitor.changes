@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 25 07:32:37 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add deepin-system-monitor-Qt-5_15.patch
+  * Support Qt 5.15
+
+-------------------------------------------------------------------
 Sat Jan 25 12:44:30 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add Fix-redefinition-error.patch.
