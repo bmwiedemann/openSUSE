@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 23 13:26:14 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.2
+- Changes since 5.19.1:
+  * Confirm reboot action with the user
+  * odrs: improve the chances to find the crash (kde#419273)
+  * appstream: Try harder at de-duplicating v2
+
+-------------------------------------------------------------------
 Tue Jun 16 14:34:49 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.1
