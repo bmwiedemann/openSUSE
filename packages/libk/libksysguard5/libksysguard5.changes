@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 23 13:26:16 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.2
+- Changes since 5.19.1:
+  * Remove leftPadding/rightPadding
+  * add missing ids
+  * Make Sensor::shortName property actually return shortName
+  * Fix searching in FacesConfig (kde#422835)
+  * expose better size hints (kde#422669,kde#422888)
+  * reset the page when reloaded (kde#422871)
+
+-------------------------------------------------------------------
 Tue Jun 16 14:34:51 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.1
