@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-ffi
-Version:        1.12.2
+Version:        1.13.1
 Release:        0
 %define mod_name ffi
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ Release:        0
 BuildRequires:  libffi-devel
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel >= 2.0}
+BuildRequires:  %{rubydevel >= 2.3}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
