@@ -46,4 +46,13 @@
 - Fix build on Qt 5.13.0, add Fix-build-on-Qt-5_13_0.patch (forwarded request 786652 from hillwood)</comment>
     <requestid>786653</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7ff12fc43c59cf190545f42de7e6296f</srcmd5>
+    <version>3.2.24.3</version>
+    <time>1593090441</time>
+    <user>dimstar_suse</user>
+    <comment>- Add deepin-movie-Qt-5_15.patch
+  * Support Qt 5.15 (forwarded request 816858 from hillwood)</comment>
+    <requestid>816864</requestid>
+  </revision>
 </revisionlist>

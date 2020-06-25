@@ -27,10 +27,12 @@ Group:          Productivity/Multimedia/Video/Players
 URL:            https://github.com/linuxdeepin/deepin-movie-reborn
 Source:         https://github.com/linuxdeepin/deepin-movie-reborn/archive/%{version}/%{name}-reborn-%{version}.tar.gz
 # PATCH-FIX-UPSTEAM deepin-movie-reborn-add-pkgconfig-check.patch hillwood@opensuse.org - fix lost pkgconfig check
-Patch0:         deepin-movie-reborn-add-pkgconfig-check.patch
+Patch0:         %{name}-reborn-add-pkgconfig-check.patch
 # PATCH-FIX-UPSTEAM deepin-movie-add-qthelper.patch hillwood@opensuse.org
 # qthelper.hpp was removed from mpv project, move this api in this project.
-Patch1:         deepin-movie-add-qthelper.patch
+Patch1:         %{name}-add-qthelper.patch
+# PATCH-FIX-UPSTEAM deepin-movie-qt-5_15.patch hillwood@opensuse.org - Support Qt 5.15
+Patch2:         %{name}-Qt-5_15.patch
 BuildRequires:  dtkcore
 BuildRequires:  fdupes
 BuildRequires:  glslang-devel
@@ -93,11 +95,14 @@ deepin movie.
 %setup -q -n %{name}-reborn-%{version}
 %patch0 -p1
 %patch1 -p1
+%if 0%{?suse_version} > 1500
+%patch2 -p1
+%endif
 sed -i 's,/usr/lib/dtk2/dtk-settings-tool,/usr/bin/dtk-settings-tool,g' src/CMakeLists.txt
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=Release
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install

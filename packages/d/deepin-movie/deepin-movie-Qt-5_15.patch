@@ -1,0 +1,22 @@
+diff -Nur deepin-movie-reborn-3.2.24.3/src/common/utility.h deepin-movie-reborn-3.2.24.3-new/src/common/utility.h
+--- deepin-movie-reborn-3.2.24.3/src/common/utility.h	2019-07-31 09:24:18.000000000 +0800
++++ deepin-movie-reborn-3.2.24.3-new/src/common/utility.h	2020-06-17 21:48:28.863244192 +0800
+@@ -32,6 +32,7 @@
+ 
+ #include <QImage>
+ #include <QList>
++#include <QPainterPath>
+ 
+ #include <xcb/xproto.h>
+ 
+diff -Nur deepin-movie-reborn-3.2.24.3/src/widgets/tip.cpp deepin-movie-reborn-3.2.24.3-new/src/widgets/tip.cpp
+--- deepin-movie-reborn-3.2.24.3/src/widgets/tip.cpp	2019-07-31 09:24:18.000000000 +0800
++++ deepin-movie-reborn-3.2.24.3-new/src/widgets/tip.cpp	2020-06-24 22:09:38.094202195 +0800
+@@ -33,6 +33,7 @@
+ #include <QHBoxLayout>
+ #include <QLabel>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QGraphicsDropShadowEffect>
+ #include <QPropertyAnimation>
+ #include <QGraphicsOpacityEffect>
