@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Thu Jun 18 06:20:22 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix RPM groups, grammatically incorrect descriptions, and
+  upgrade the boilerplate summary of openscd-devel.
+
+-------------------------------------------------------------------
+Thu Jun 18 05:55:26 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Rename spec file to match upstream project name
+- Small packaging cleanups
+
+-------------------------------------------------------------------
+Wed Jun 17 11:41:49 UTC 2020 - Mian Yousaf Kaukab <yousaf.kaukab@suse.com>
+
+- Package API documentation
+
+-------------------------------------------------------------------
+Wed Jun 17 10:15:56 UTC 2020 - Mian Yousaf Kaukab <yousaf.kaukab@suse.com>
+
+- New SUSE package for opencsd library v0.14.2 
