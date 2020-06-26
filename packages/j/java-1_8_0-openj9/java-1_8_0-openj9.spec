@@ -126,7 +126,11 @@ Patch202:       system-libpng.patch
 Patch203:       system-lcms.patch
 Patch205:       link-with-as-needed.patch
 
+Patch210:       openj9-no-werror.patch
+Patch211:       gcc10.patch
+
 Patch300:       alternative-path-to-tzdb_dat.patch
+
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -153,7 +157,7 @@ BuildRequires:  liblcms2-devel
 BuildRequires:  libnuma-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libxslt
-BuildRequires:  nasm
+BuildRequires:  nasm >= 2.11
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
@@ -363,6 +367,9 @@ rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/lcms2*
 %patch202 -p1
 %patch203 -p1
 %patch205 -p1
+
+%patch210
+%patch211 -p1
 
 %patch1 -p1
 %patch2 -p1

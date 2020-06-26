@@ -1,0 +1,48 @@
+--- openj9/runtime/makelib/targets.mk.linux.inc.ftl	2020-04-15 02:48:00.000000000 +0200
++++ openj9/runtime/makelib/targets.mk.linux.inc.ftl	2020-06-26 07:37:18.255678364 +0200
+@@ -459,18 +459,18 @@
+   ifndef UMA_SUPPRESS_WARNINGS_AS_ERRORS
+     <#if uma.spec.processor.ppc>
+       <#if uma.spec.flags.env_gcc.enabled>
+-        CFLAGS += -Wreturn-type -Werror
+-        CXXFLAGS += -Wreturn-type -Werror
++        CFLAGS += -Wreturn-type
++        CXXFLAGS += -Wreturn-type
+       <#else>
+         CFLAGS += -qhalt=w
+         CXXFLAGS += -qhalt=w
+       </#if>
+       ifdef USE_PPC_GCC
+-        PPC_GCC_CXXFLAGS += -Wreturn-type -Werror
++        PPC_GCC_CXXFLAGS += -Wreturn-type
+       endif
+     <#else>
+-      CFLAGS += -Wimplicit -Wreturn-type -Werror
+-      CXXFLAGS += -Wreturn-type -Werror
++      CFLAGS += -Wimplicit -Wreturn-type
++      CXXFLAGS += -Wreturn-type
+     </#if>
+   endif
+ endif
+--- omr/omrmakefiles/rules.linux.mk	2020-04-14 14:43:05.000000000 +0200
++++ omr/omrmakefiles/rules.linux.mk	2020-06-26 08:19:16.264774446 +0200
+@@ -348,15 +348,15 @@
+ ifeq ($(OMR_WARNINGS_AS_ERRORS),1)
+     ifeq (ppc,$(OMR_HOST_ARCH))
+         ifeq (gcc,$(OMR_TOOLCHAIN))
+-            GLOBAL_CFLAGS += -Wreturn-type -Werror
+-            GLOBAL_CXXFLAGS += -Wreturn-type -Werror
++            GLOBAL_CFLAGS += -Wreturn-type
++            GLOBAL_CXXFLAGS += -Wreturn-type
+         else
+             GLOBAL_CFLAGS += -qhalt=w
+             GLOBAL_CXXFLAGS += -qhalt=w
+         endif
+     else
+-        GLOBAL_CFLAGS+=-Wimplicit -Wreturn-type -Werror
+-        GLOBAL_CXXFLAGS+=-Wreturn-type -Werror
++        GLOBAL_CFLAGS+=-Wimplicit -Wreturn-type
++        GLOBAL_CXXFLAGS+=-Wreturn-type
+     endif
+ endif
+ 

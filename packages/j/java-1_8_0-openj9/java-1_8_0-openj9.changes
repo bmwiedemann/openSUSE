@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 26 09:12:17 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Added patches:
+  * gcc10.patch
+    + Fix dupplicate global pointer variables with gcc 10
+  + openj9-no-werror.patch
+    + Do not build with warnings as errors the OpenJ9 parts, since
+      that would mean broken build with new warnings from gcc 10
+
+-------------------------------------------------------------------
 Fri Apr 24 06:26:21 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 8u252 build 09 with OpenJ9 0.20.0 virtual

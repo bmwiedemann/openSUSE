@@ -1,0 +1,120 @@
+diff -urEbwB openjdk.orig/jdk/src/share/native/sun/security/jgss/wrapper/GSSLibStub.c openjdk/jdk/src/share/native/sun/security/jgss/wrapper/GSSLibStub.c
+--- openjdk.orig/jdk/src/share/native/sun/security/jgss/wrapper/GSSLibStub.c	2020-06-26 09:42:58.999803937 +0200
++++ openjdk/jdk/src/share/native/sun/security/jgss/wrapper/GSSLibStub.c	2020-06-26 09:59:50.543324257 +0200
+@@ -29,6 +29,9 @@
+ #include "jlong.h"
+ #include <jni.h>
+ 
++/* global GSS function table */
++GSS_FUNCTION_TABLE_PTR ftab;
++
+ /* Constants for indicating what type of info is needed for inquiries */
+ const int TYPE_CRED_NAME = 10;
+ const int TYPE_CRED_TIME = 11;
+diff -urEbwB openjdk.orig/jdk/src/solaris/native/java/lang/childproc.c openjdk/jdk/src/solaris/native/java/lang/childproc.c
+--- openjdk.orig/jdk/src/solaris/native/java/lang/childproc.c	2020-06-26 09:42:59.039804239 +0200
++++ openjdk/jdk/src/solaris/native/java/lang/childproc.c	2020-06-26 10:31:35.896900177 +0200
+@@ -33,6 +33,11 @@
+ 
+ #include "childproc.h"
+ 
++/**
++ * The cached and split version of the JDK's effective PATH.
++ * (We don't support putenv("PATH=...") in native code)
++ */
++const char * const *parentPathv;
+ 
+ ssize_t
+ restartableWrite(int fd, const void *buf, size_t count)
+diff -urEbwB openjdk.orig/jdk/src/solaris/native/java/lang/childproc.h openjdk/jdk/src/solaris/native/java/lang/childproc.h
+--- openjdk.orig/jdk/src/solaris/native/java/lang/childproc.h	2020-06-26 09:42:59.039804239 +0200
++++ openjdk/jdk/src/solaris/native/java/lang/childproc.h	2020-06-26 10:29:56.588194377 +0200
+@@ -119,7 +119,7 @@
+  * The cached and split version of the JDK's effective PATH.
+  * (We don't support putenv("PATH=...") in native code)
+  */
+-const char * const *parentPathv;
++extern const char * const *parentPathv;
+ 
+ ssize_t restartableWrite(int fd, const void *buf, size_t count);
+ int restartableDup2(int fd_from, int fd_to);
+diff -urEbwB openjdk.orig/jdk/src/solaris/native/sun/nio/ch/sctp/Sctp.h openjdk/jdk/src/solaris/native/sun/nio/ch/sctp/Sctp.h
+--- openjdk.orig/jdk/src/solaris/native/sun/nio/ch/sctp/Sctp.h	2020-06-26 09:42:59.047804301 +0200
++++ openjdk/jdk/src/solaris/native/sun/nio/ch/sctp/Sctp.h	2020-06-26 10:48:28.280138949 +0200
+@@ -322,12 +322,12 @@
+ 
+ #endif /* __linux__ */
+ 
+-sctp_getladdrs_func* nio_sctp_getladdrs;
+-sctp_freeladdrs_func* nio_sctp_freeladdrs;
+-sctp_getpaddrs_func* nio_sctp_getpaddrs;
+-sctp_freepaddrs_func* nio_sctp_freepaddrs;
+-sctp_bindx_func* nio_sctp_bindx;
+-sctp_peeloff_func* nio_sctp_peeloff;
++extern sctp_getladdrs_func* nio_sctp_getladdrs;
++extern sctp_freeladdrs_func* nio_sctp_freeladdrs;
++extern sctp_getpaddrs_func* nio_sctp_getpaddrs;
++extern sctp_freepaddrs_func* nio_sctp_freepaddrs;
++extern sctp_bindx_func* nio_sctp_bindx;
++extern sctp_peeloff_func* nio_sctp_peeloff;
+ 
+ jboolean loadSocketExtensionFuncs(JNIEnv* env);
+ 
+diff -urEbwB openjdk.orig/jdk/src/solaris/native/sun/nio/ch/sctp/SctpNet.c openjdk/jdk/src/solaris/native/sun/nio/ch/sctp/SctpNet.c
+--- openjdk.orig/jdk/src/solaris/native/sun/nio/ch/sctp/SctpNet.c	2020-06-26 09:42:59.047804301 +0200
++++ openjdk/jdk/src/solaris/native/sun/nio/ch/sctp/SctpNet.c	2020-06-26 10:48:01.103944370 +0200
+@@ -51,6 +51,13 @@
+ static int preCloseFD = -1;     /* File descriptor to which we dup other fd's
+                                    before closing them for real */
+ 
++sctp_getladdrs_func* nio_sctp_getladdrs;
++sctp_freeladdrs_func* nio_sctp_freeladdrs;
++sctp_getpaddrs_func* nio_sctp_getpaddrs;
++sctp_freepaddrs_func* nio_sctp_freepaddrs;
++sctp_bindx_func* nio_sctp_bindx;
++sctp_peeloff_func* nio_sctp_peeloff;
++
+ /**
+  * Loads the native sctp library that contains the socket extension
+  * functions, as well as locating the individual functions.
+diff -urEbwB openjdk.orig/jdk/src/solaris/native/sun/security/jgss/wrapper/NativeFunc.h openjdk/jdk/src/solaris/native/sun/security/jgss/wrapper/NativeFunc.h
+--- openjdk.orig/jdk/src/solaris/native/sun/security/jgss/wrapper/NativeFunc.h	2020-06-26 09:42:59.047804301 +0200
++++ openjdk/jdk/src/solaris/native/sun/security/jgss/wrapper/NativeFunc.h	2020-06-26 09:43:05.211851045 +0200
+@@ -265,6 +265,6 @@
+ typedef GSS_FUNCTION_TABLE *GSS_FUNCTION_TABLE_PTR;
+ 
+ /* global GSS function table */
+-GSS_FUNCTION_TABLE_PTR ftab;
++extern GSS_FUNCTION_TABLE_PTR ftab;
+ 
+ #endif
+diff -urEbwB openjdk.orig/openj9/runtime/tests/jvmtitests/src/com/ibm/jvmti/tests/verboseGC/vgc001.c openjdk/openj9/runtime/tests/jvmtitests/src/com/ibm/jvmti/tests/verboseGC/vgc001.c
+--- openjdk.orig/openj9/runtime/tests/jvmtitests/src/com/ibm/jvmti/tests/verboseGC/vgc001.c	2020-06-26 09:43:37.492095839 +0200
++++ openjdk/openj9/runtime/tests/jvmtitests/src/com/ibm/jvmti/tests/verboseGC/vgc001.c	2020-06-26 09:41:42.243256411 +0200
+@@ -31,7 +31,7 @@
+ static jvmtiExtensionFunction subscribe  = NULL;
+ static jvmtiExtensionFunction unsubscribe  = NULL;
+ 
+-void *subscriptionID;
++void *subscriptionID1;
+ volatile static jint bufferCount = 0;
+ volatile static int alarmed = 0;
+ 
+@@ -131,7 +131,7 @@
+ 	jvmtiError err;
+ 	jvmtiEnv *jvmti_env = env->jvmtiEnv;
+ 
+-	err = subscribe(jvmti_env, "vgc001 subscriber", vgc001Callback, vgc001Alarm, NULL, &subscriptionID);
++	err = subscribe(jvmti_env, "vgc001 subscriber", vgc001Callback, vgc001Alarm, NULL, &subscriptionID1);
+ 	if (err != JVMTI_ERROR_NONE) {
+ 		error(env, err, "RegisterVerboseGCSubscriber failed");
+ 		return FALSE;
+@@ -147,7 +147,7 @@
+ 	jvmtiError err = JVMTI_ERROR_NONE;
+ 	jvmtiEnv *jvmti_env = env->jvmtiEnv;
+ 
+-	err = unsubscribe(jvmti_env, subscriptionID, NULL);
++	err = unsubscribe(jvmti_env, subscriptionID1, NULL);
+ 	if (err != JVMTI_ERROR_NONE && err != JVMTI_ERROR_NOT_AVAILABLE) {
+ 		error(env, err, "DeregisterVerboseGCSubscriber failed");
+ 		return -1;
