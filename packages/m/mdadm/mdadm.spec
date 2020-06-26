@@ -107,7 +107,10 @@ Patch62:        0067-mdadm.8-add-note-information-for-raid0-growing-opera.patch
 Patch63:        0068-Remove-the-legacy-whitespace.patch
 Patch64:        0069-imsm-pass-subarray-id-to-kill_subarray-function.patch
 Patch65:        0070-imsm-Remove-dump-restore-implementation.patch
+Patch66:        0071-Monitor-improve-check_one_sharer-for-checking-duplic.patch
+Patch67:        0072-Detail-adding-sync-status-for-cluster-device.patch
 Patch1001:      1001-display-timeout-status.patch
+Patch1002:      1002-OnCalendar-format-fix-of-mdcheck_start-timer.patch
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %define _systemdshutdowndir %{_unitdir}/../system-shutdown
 
@@ -182,7 +185,10 @@ mdadm is a program that can be used to control Linux md devices.
 %patch63 -p1
 %patch64 -p1
 %patch65 -p1
+%patch66 -p1
+%patch67 -p1
 %patch1001 -p1
+%patch1002 -p1
 
 %build
 make %{?_smp_mflags} CC="%__cc" CXFLAGS="%{optflags} -Wno-error" SUSE=yes

@@ -1,0 +1,25 @@
+From: Ali Abdallah <ali.abdallah@suse.com>
+Subject: OnCalendar format fix of mdcheck_start.timer
+Patch-mainline: in-house patch at this moment, will post to upstream in future
+References: bsc#1173137
+
+This patch includes the fix of the OnCalendar format, changing the format of
+mdcheck_start.timer [Timer] section,
+from OnCalendar=Sun *-*-1..7 1:00:00
+to   OnCalendar=Sun *-*-* 1:00:00
+
+Signed-off-by:  Ali Abdallah <ali.abdallah@suse.com>
+Acked-by: Coly Li <colyli@suse.de>
+Index: mdadm-4.1/systemd/mdcheck_start.timer
+===================================================================
+--- mdadm-4.1.orig/systemd/mdcheck_start.timer
++++ mdadm-4.1/systemd/mdcheck_start.timer
+@@ -9,7 +9,7 @@
+ Description=MD array scrubbing
+ 
+ [Timer]
+-OnCalendar=Sun *-*-1..7 1:00:00
++OnCalendar=Sun *-*-* 1:00:00
+ 
+ [Install]
+ WantedBy= mdmonitor.service

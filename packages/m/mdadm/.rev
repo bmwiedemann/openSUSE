@@ -1234,4 +1234,12 @@ which haven't landed upstream yet
   (jsc#SLE-10078, jsc#SLE-9348)</comment>
     <requestid>788735</requestid>
   </revision>
+  <revision rev="122" vrev="7">
+    <srcmd5>a9e2faee0985a1cf74274c13c207311a</srcmd5>
+    <version>4.1</version>
+    <time>1593200728</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816923</requestid>
+  </revision>
 </revisionlist>

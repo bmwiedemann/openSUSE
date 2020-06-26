@@ -1,0 +1,88 @@
+From 1c294b5d960abeeb9e0f188af294d019bc82b20e Mon Sep 17 00:00:00 2001
+From: Lidong Zhong <lidong.zhong@suse.com>
+Date: Tue, 14 Apr 2020 16:19:41 +0800
+Subject: [PATCH] Detail: adding sync status for cluster device
+Git-commit: 1c294b5d960abeeb9e0f188af294d019bc82b20e
+Patch-mainline: mdadm-4.1+
+References: bsc#1163727
+
+On the node with /proc/mdstat is
+
+Personalities : [raid1]
+md0 : active raid1 sdb[4] sdc[3] sdd[2]
+      1046528 blocks super 1.2 [3/2] [UU_]
+        recover=REMOTE
+      bitmap: 1/1 pages [4KB], 65536KB chunk
+
+Let's change the 'State' of 'mdadm -Q -D' accordingly
+State : clean, degraded
+With this patch, it will be
+State : clean, degraded, recovering (REMOTE)
+
+Signed-off-by: Lidong Zhong <lidong.zhong@suse.com>
+Acked-by: Guoqing Jiang <guoqing.jiang@cloud.ionos.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+---
+ Detail.c | 9 ++++++---
+ mdadm.h  | 3 ++-
+ mdstat.c | 2 ++
+ 3 files changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/Detail.c b/Detail.c
+index daec4f1..24eeba0 100644
+--- a/Detail.c
++++ b/Detail.c
+@@ -498,17 +498,20 @@ int Detail(char *dev, struct context *c)
+ 			} else
+ 				arrayst = "active";
+ 
+-			printf("             State : %s%s%s%s%s%s \n",
++			printf("             State : %s%s%s%s%s%s%s \n",
+ 			       arrayst, st,
+ 			       (!e || (e->percent < 0 &&
+ 				       e->percent != RESYNC_PENDING &&
+-				       e->percent != RESYNC_DELAYED)) ?
++				       e->percent != RESYNC_DELAYED &&
++				       e->percent != RESYNC_REMOTE)) ?
+ 			       "" : sync_action[e->resync],
+ 			       larray_size ? "": ", Not Started",
+ 			       (e && e->percent == RESYNC_DELAYED) ?
+ 			       " (DELAYED)": "",
+ 			       (e && e->percent == RESYNC_PENDING) ?
+-			       " (PENDING)": "");
++			       " (PENDING)": "",
++			       (e && e->percent == RESYNC_REMOTE) ?
++			       " (REMOTE)": "");
+ 		} else if (inactive && !is_container) {
+ 			printf("             State : inactive\n");
+ 		}
+diff --git a/mdadm.h b/mdadm.h
+index d94569f..399478b 100644
+--- a/mdadm.h
++++ b/mdadm.h
+@@ -1815,7 +1815,8 @@ enum r0layout {
+ #define RESYNC_NONE -1
+ #define RESYNC_DELAYED -2
+ #define RESYNC_PENDING -3
+-#define RESYNC_UNKNOWN -4
++#define RESYNC_REMOTE  -4
++#define RESYNC_UNKNOWN -5
+ 
+ /* When using "GET_DISK_INFO" it isn't certain how high
+  * we need to check.  So we impose an absolute limit of
+diff --git a/mdstat.c b/mdstat.c
+index 7e600d0..20577a3 100644
+--- a/mdstat.c
++++ b/mdstat.c
+@@ -257,6 +257,8 @@ struct mdstat_ent *mdstat_read(int hold, int start)
+ 					ent->percent = RESYNC_DELAYED;
+ 				if (l > 8 && strcmp(w+l-8, "=PENDING") == 0)
+ 					ent->percent = RESYNC_PENDING;
++				if (l > 7 && strcmp(w+l-7, "=REMOTE") == 0)
++					ent->percent = RESYNC_REMOTE;
+ 			} else if (ent->percent == RESYNC_NONE &&
+ 				   w[0] >= '0' &&
+ 				   w[0] <= '9' &&
+-- 
+2.25.0
+

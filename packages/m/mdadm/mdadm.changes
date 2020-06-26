@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 22 16:12:47 UTC 2020 - Coly Li <colyli@suse.com>
+
+- OnCalendar format fix of mdcheck_start.timer (bsc#1173137)
+  1002-OnCalendar-format-fix-of-mdcheck_start-timer.patch
+
+-------------------------------------------------------------------
+Mon Jun 22 15:33:44 UTC 2020 - Coly Li <colyli@suse.com>
+
+- Detail: adding sync status for cluster device
+  (bsc#1163727)
+  0072-Detail-adding-sync-status-for-cluster-device.patch
+- Monitor: improve check_one_sharer() for checking duplicated process
+  (bsc#1168953)
+  0071-Monitor-improve-check_one_sharer-for-checking-duplic.patch
+
+-------------------------------------------------------------------
 Fri Mar 27 03:52:47 UTC 2020 - Neil Brown <nfbrown@suse.com>
 
 - Don't list XX@.services even for sevice_del_preun
