@@ -1,39 +1,12 @@
-From 079c8e9862550ef7d2c6b1f134efdfdebc67c45e Mon Sep 17 00:00:00 2001
-From: Tom Stellard <tstellar@redhat.com>
-Date: Thu, 26 Sep 2019 15:33:58 -0700
-Subject: [PATCH] Link against libclang-cpp.so when linking with shared
- libraries
-
-libclang-cpp.so is a new shared object in clang-9.0.0 which
-contains all the clang components in one library.  Doing this will
-save us from having to update cmake when there is a new clang component
-and may provide better performance in LTO builds of clang.
----
- cmake/LLVM.cmake | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
-
-diff --git a/cmake/LLVM.cmake b/cmake/LLVM.cmake
-index a02e2ba74..591b12424 100644
---- a/cmake/LLVM.cmake
-+++ b/cmake/LLVM.cmake
-@@ -219,10 +219,16 @@ string(REPLACE " -pedantic" "" LLVM_CXXFLAGS "${LLVM_CXXFLAGS}")
+diff -u -r pocl-1.5.orig/cmake/LLVM.cmake pocl-1.5/cmake/LLVM.cmake
+--- pocl-1.5.orig/cmake/LLVM.cmake	2020-06-25 12:22:37.500539000 +0200
++++ pocl-1.5/cmake/LLVM.cmake	2020-06-25 12:23:23.091551000 +0200
+@@ -219,7 +219,7 @@
  string(REGEX REPLACE "-W[^ ]*" "" LLVM_CXXFLAGS "${LLVM_CXXFLAGS}")
  
  # Llvm-config does not include clang libs
--set(CLANG_LIBNAMES clangCodeGen clangFrontendTool clangFrontend clangDriver clangSerialization
--    clangParse clangSema clangRewrite clangRewriteFrontend
--    clangStaticAnalyzerFrontend clangStaticAnalyzerCheckers
--    clangStaticAnalyzerCore clangAnalysis clangEdit clangAST clangASTMatchers clangLex clangBasic)
-+if(8 LESS LLVM_MAJOR AND LLVM_LIB_IS_SHARED MATCHES "shared")
-+  # Link against a single shared library instead of multiple component shared
-+  # libraries.
-+  set(CLANG_LIBNAMES clang-cpp)
-+else()
-+  set(CLANG_LIBNAMES clangCodeGen clangFrontendTool clangFrontend clangDriver clangSerialization
-+      clangParse clangSema clangRewrite clangRewriteFrontend
-+      clangStaticAnalyzerFrontend clangStaticAnalyzerCheckers
-+      clangStaticAnalyzerCore clangAnalysis clangEdit clangAST clangASTMatchers clangLex clangBasic)
-+endif()
- 
- foreach(LIBNAME ${CLANG_LIBNAMES})
-   find_library(C_LIBFILE_${LIBNAME} NAMES "${LIBNAME}" HINTS "${LLVM_LIBDIR}")
+-if((9 LESS LLVM_MAJOR) AND (LLVM_LIB_IS_SHARED MATCHES "shared"))
++if((8 LESS LLVM_MAJOR) AND (LLVM_LIB_IS_SHARED MATCHES "shared"))
+   # Link against a single shared library instead of multiple component shared
+   # libraries.
+   set(CLANG_LIBNAMES clang-cpp)

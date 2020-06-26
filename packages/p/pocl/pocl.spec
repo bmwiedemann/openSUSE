@@ -1,7 +1,7 @@
 #
 # spec file for package pocl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 Guillaume GARDET <guillaume@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define sover  2.4.0
+%define sover  2.5.0
 Name:           pocl
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Portable Computing Language - an OpenCL implementation
 # The whole code is under MIT
@@ -30,9 +30,8 @@ Group:          Development/Tools/Other
 URL:            http://portablecl.org/
 Source0:        https://github.com/pocl/pocl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       pocl-rpmlintrc
-# PATCH-FIX-UPSTREAM -- https://github.com/pocl/pocl/pull/779
 Patch0:         link_against_libclang-cpp_so.patch
-BuildConflicts: clang-devel >= 10
+BuildConflicts: clang-devel >= 11
 BuildRequires:  clang-devel >= 6
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -95,7 +94,7 @@ This subpackage provides the development files needed for pocl.
 %cmake \
   -DENABLE_CUDA=0 \
   -DENABLE_ICD=ON \
-  -DPOCL_INSTALL_ICD_VENDORDIR=%{_sysconfdir}/OpenCL/vendors \
+  -DPOCL_INSTALL_ICD_VENDORDIR=%{_datadir}/OpenCL/vendors \
 %ifarch %{ix86} x86_64
   -DKERNELLIB_HOST_CPU_VARIANTS=distro \
 %endif
@@ -107,13 +106,16 @@ This subpackage provides the development files needed for pocl.
 %endif
   -DWITH_LLVM_CONFIG=%{_bindir}/llvm-config
 
+sed -i 's/-Wl,--no-undefined//g' CMakeCache.txt
+sed -i 's/-Wl,--no-undefined//g' build.ninja
+
 %make_jobs
 
 %install
 %cmake_install
 # FIXME - should be handled upstream
 mv %{buildroot}%{_prefix}%{_libdir} %{buildroot}%{_libdir}
-sed -i 's|%{_prefix}%{_prefix}/|%{_prefix}/|g' %{buildroot}%{_sysconfdir}/OpenCL/vendors/pocl.icd
+sed -i 's|%{_prefix}%{_prefix}/|%{_prefix}/|g' %{buildroot}%{_datadir}/OpenCL/vendors/pocl.icd
 # Unbundle vecmath
 #rm -vf %%{buildroot}/%%{_libdir}/pocl/vecmath/
 #ln -vs %%{_includedir}/vecmath %%{buildroot}/%%{_libdir}/pocl/vecmath
@@ -125,9 +127,9 @@ sed -i 's|%{_prefix}%{_prefix}/|%{_prefix}/|g' %{buildroot}%{_sysconfdir}/OpenCL
 %files
 %doc CHANGES README doc/sphinx/source/*.rst
 %license LICENSE
-%dir %{_sysconfdir}/OpenCL/
-%dir %{_sysconfdir}/OpenCL/vendors
-%{_sysconfdir}/OpenCL/vendors/pocl.icd
+%dir %{_datadir}/OpenCL/
+%dir %{_datadir}/OpenCL/vendors
+%{_datadir}/OpenCL/vendors/pocl.icd
 %{_bindir}/poclcc
 %dir %{_libdir}/pocl/
 %{_libdir}/pocl/libllvmopencl.so

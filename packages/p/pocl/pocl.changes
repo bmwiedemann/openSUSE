@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 26 11:05:12 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- moved pocl.icd to /usr/share/OpenCL/vendors for real ... 
+
+-------------------------------------------------------------------
+Thu Jun 25 09:53:25 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.5
+  * Added support for LLVM/Clang 10.0 
+- adjusted link_against_libclang-cpp_so.patch
+- move pocl.icd from /usr/etc/OpenCL/vendors to 
+  /usr/share/OpenCL/vendors (boo#1173005)
+
+-------------------------------------------------------------------
 Mon Nov  4 20:04:34 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.4
