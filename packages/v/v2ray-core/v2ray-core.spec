@@ -27,7 +27,7 @@
 Name:           v2ray-core
 Version:        4.25.0
 Release:        0
-Summary:        Project V
+Summary:        Network tools for building a computer network
 License:        MIT
 Group:          Productivity/Networking/Web/Proxy
 URL:            https://github.com/v2ray/v2ray-core
@@ -52,9 +52,8 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
 
 %description
-Project V is a set of network tools that help you to build your own computer
-network. It secures your network connections and thus protects your privacy. See
-our website for more information.
+Project V is a set of network tools for building a computer network.
+It secures network connections and protects privacy.
 
 %package -n golang-%{provider}-%{project}-%{repo}
 Summary:        Additional mobile libraries
@@ -62,9 +61,8 @@ Group:          Development/Languages/Golang
 BuildArch:      noarch
 
 %description -n golang-%{provider}-%{project}-%{repo}
-Project V is a set of network tools that help you to build your own computer
-network. It secures your network connections and thus protects your privacy. See
-our website for more information.
+Project V is a set of network tools for building a computer network.
+It secures network connections and protects privacy.
 
 This package provide source code for %{repo}
 
@@ -111,7 +109,6 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcv2ray
 %service_del_postun %{project}.service
 
 %files
-%defattr(-,root,root)
 %doc README.md
 %license LICENSE
 %{_bindir}/v2ray
@@ -122,7 +119,6 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcv2ray
 %{_sbindir}/rcv2ray
 
 %files -n golang-%{provider}-%{project}-%{repo} -f file.lst
-%defattr(-,root,root)
 %doc README.md
 %license LICENSE
 
