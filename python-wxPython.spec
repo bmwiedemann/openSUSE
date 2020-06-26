@@ -62,6 +62,7 @@ BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xtst)
 Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun): update-alternatives

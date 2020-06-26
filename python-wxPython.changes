@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 29 22:21:35 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add explicit libXtst build dependency, required for Leap 15.1
+  (already implicit on Leap 15.2 and TW).
+
+-------------------------------------------------------------------
 Tue Apr 28 09:01:51 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 4.1.0:
