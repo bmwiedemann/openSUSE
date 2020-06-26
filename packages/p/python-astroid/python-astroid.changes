@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 23 16:52:52 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add part_rm_dep_imp.patch to replace missing `imp` package
+  (gh#PyCQA/astroid#686).
+
+-------------------------------------------------------------------
 Tue Jun 16 02:59:27 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.4.2:

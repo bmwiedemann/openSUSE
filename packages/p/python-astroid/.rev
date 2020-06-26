@@ -232,4 +232,13 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
   * Properly construct the arguments of infered property descriptors</comment>
     <requestid>814800</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>d60ac611d8e3f5ab674d5c85c170a223</srcmd5>
+    <version>2.4.2</version>
+    <time>1593200655</time>
+    <user>dimstar_suse</user>
+    <comment>- Add part_rm_dep_imp.patch to replace missing `imp` package
+  (gh#PyCQA/astroid#686).</comment>
+    <requestid>816653</requestid>
+  </revision>
 </revisionlist>

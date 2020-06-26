@@ -26,6 +26,8 @@ License:        LGPL-2.1-or-later
 URL:            https://github.com/pycqa/astroid
 Source:         https://files.pythonhosted.org/packages/source/a/astroid/astroid-%{version}.tar.gz
 Patch0:         unpin-deps.patch
+# PATCH-FIX-UPSTREAM part_rm_dep_imp.patch gh#PyCQA/astroid#686 mcepl@suse.com
+Patch1:         part_rm_dep_imp.patch
 BuildRequires:  %{python_module lazy-object-proxy >= 1.4}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
@@ -59,7 +61,7 @@ objects.
 
 %prep
 %setup -q -n astroid-%{version}
-%patch0 -p1
+%autopatch -p1
 
 %build
 %python_build
