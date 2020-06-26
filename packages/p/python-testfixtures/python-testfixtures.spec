@@ -71,6 +71,7 @@ chmod a-x docs/*.txt
 
 %check
 export DJANGO_SETTINGS_MODULE=testfixtures.tests.test_django.settings
+export PYTHONPATH=$(pwd)
 %pytest testfixtures/tests
 
 %files %{python_files}
