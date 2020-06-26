@@ -26,6 +26,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Pylons/pastedeploy
 Source:         https://github.com/Pylons/pastedeploy/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM rm_nspace_pkgs.patch gh#Pylons/pastedeploy#27 mcepl@suse.com
+# Package uses namespace_packages, when it shouldn't.
+Patch0:         rm_nspace_pkgs.patch
 BuildRequires:  %{python_module Paste}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -49,6 +52,7 @@ provides commands to serve applications based on this configuration file.
 
 %prep
 %setup -q -n pastedeploy-%{version}
+%autopatch -p1
 
 %build
 %python_build

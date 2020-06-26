@@ -131,4 +131,13 @@
   * pytest-runner removed, use tox to run tests</comment>
     <requestid>785066</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>9b1b17372f723a3d19ff22f796205f9e</srcmd5>
+    <version>2.1.0</version>
+    <time>1593200624</time>
+    <user>dimstar_suse</user>
+    <comment>- Add rm_nspace_pkgs.patch to poorly used namespace_packages
+  (gh#Pylons/pastedeploy#27)</comment>
+    <requestid>816627</requestid>
+  </revision>
 </revisionlist>

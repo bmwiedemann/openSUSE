@@ -1,0 +1,10 @@
+--- a/setup.py
++++ b/setup.py
+@@ -48,7 +48,6 @@ setup(
+         "Issue Tracker": "https://github.com/Pylons/pastedeploy/issues",
+     },
+     license="MIT",
+-    namespace_packages=["paste"],
+     packages=find_packages(exclude=["tests"]),
+     include_package_data=True,
+     zip_safe=False,

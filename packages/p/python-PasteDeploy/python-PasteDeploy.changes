@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 23 16:24:08 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add rm_nspace_pkgs.patch to poorly used namespace_packages
+  (gh#Pylons/pastedeploy#27)
+
+-------------------------------------------------------------------
 Sat Mar 14 15:42:42 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.1.0:
