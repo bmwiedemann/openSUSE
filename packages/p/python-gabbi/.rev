@@ -102,4 +102,16 @@
     <comment></comment>
     <requestid>722785</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>00c13583bb116225b0a2ede6f0368613</srcmd5>
+    <version>2.0.3</version>
+    <time>1593200931</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.3:
+  * remove universal wheel creation
+  * Declare package as Python3-only (#281)
+  * Correct defaults being copied between suites
+  * Drop support for py2 and remove testtools (#279)</comment>
+    <requestid>817197</requestid>
+  </revision>
 </revisionlist>

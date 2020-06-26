@@ -1,7 +1,7 @@
 #
 # spec file for package python-gabbi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gabbi
-Version:        1.49.0
+Version:        2.0.3
 Release:        0
 Summary:        Declarative HTTP testing library
 License:        Apache-2.0
@@ -42,7 +42,6 @@ Requires:       python-colorama
 Requires:       python-jsonpath-rw-ext >= 1.0.0
 Requires:       python-pytest
 Requires:       python-six
-Requires:       python-testtools
 Requires:       python-urllib3 >= 1.11.0
 Requires:       python-wsgi_intercept >= 1.8.1
 Requires(post): update-alternatives

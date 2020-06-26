@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 26 07:18:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.0.3:
+  * remove universal wheel creation
+  * Declare package as Python3-only (#281)
+  * Correct defaults being copied between suites
+  * Drop support for py2 and remove testtools (#279)
+
+-------------------------------------------------------------------
 Mon Aug 12 13:46:41 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.49.0
