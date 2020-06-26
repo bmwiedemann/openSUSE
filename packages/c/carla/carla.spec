@@ -142,7 +142,7 @@ export CFLAGS=`echo $CFLAGS | sed s/\-flto=auto//`
 export CXXFLAGS=`echo $CXXFLAGS | sed s/\-flto=auto//`
 echo $CFLAGS
 echo $CXXFLAGS
-make --trace win32 CC=i686-w64-mingw32-gcc CXX=i686-w64-mingw32-g++ LIBDIR=%{_libdir} CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS"
+make --trace win32 CC=i686-w64-mingw32-gcc CXX=i686-w64-mingw32-g++ LIBDIR=%{_libdir} CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="-Wl,--no-insert-timestamp"
 make --trace wine32 LIBDIR=%{_libdir} CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS"
 %endif
 

@@ -135,4 +135,12 @@
   0001-Add-missing-QPainterPath-include.patch</comment>
     <requestid>814173</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>de7bd145a3fe5634d45f0c64bd30f487</srcmd5>
+    <version>2.1.1</version>
+    <time>1593200889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817061</requestid>
+  </revision>
 </revisionlist>
