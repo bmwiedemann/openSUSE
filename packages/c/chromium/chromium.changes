@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Thu Jun 25 07:12:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable the LTO again as it still OOMs quite often
+
+-------------------------------------------------------------------
+Wed Jun 24 07:40:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to work with new ffmpeg wrt bsc#1173292:
+  * chromium-84-mediaalloc.patch
+
+-------------------------------------------------------------------
+Tue Jun 23 14:20:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add multimedia fix for disabled location and also try one
+  additional patch from Debian on the same issue bsc#1173107
+  Update patch:
+  * no-location-leap151.patch
+
+-------------------------------------------------------------------
+Tue Jun 23 08:20:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch from Fedora to avoid attribute overrides in skia:
+  * chromium-83.0.4103.97-skia-gcc-no_sanitize-fixes.patch
+
+-------------------------------------------------------------------
+Tue Jun 23 08:08:08 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to hopefully fix bsc#1173107:
+  * chromium-dev-shm.patch
+
+-------------------------------------------------------------------
+Tue Jun 23 07:51:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 83.0.4103.116 bsc#1173251:
+  * CVE-2020-6509: Use after free in extensions
+
+-------------------------------------------------------------------
+Fri Jun 19 07:34:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Reduce constraints to say 20 GB disk space is enough
+
+-------------------------------------------------------------------
+Fri Jun 19 07:13:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable wayland integration on 15.x bsc#1173187 bsc#1173188
+  bsc#1173254
+
+-------------------------------------------------------------------
+Thu Jun 18 07:39:50 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Enforce to not use system borders bsc#1173063
+
+-------------------------------------------------------------------
+Wed Jun 17 08:32:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 83.0.4103.106 bsc#1173029:
+  * CVE-2020-6505: Use after free in speech
+  * CVE-2020-6506: Insufficient policy enforcement in WebView
+  * CVE-2020-6507: Out of bounds write in V8
+
+-------------------------------------------------------------------
+Mon Jun 15 14:05:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Another attempt on the location handling for Leap 15.1:
+  * no-location-leap151.patch
+
+-------------------------------------------------------------------
+Thu Jun 11 16:31:50 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Attempt to build with wayland/ozone enabled
+
+-------------------------------------------------------------------
+Thu Jun 11 12:14:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Enable more system libs on 15.2+
+- Remove the chromium-83-gcc-location-revert.patch as it is wrong
+  approach to fix the problem
+
+-------------------------------------------------------------------
+Thu Jun 11 09:05:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update _constraints to match up LTO enablement
+
+-------------------------------------------------------------------
+Wed Jun 10 12:20:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- With GCC 10 released we should be able to enable LTO again
+
+-------------------------------------------------------------------
 Thu Jun  4 06:28:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 83.0.4103.97 bsc#1172496:

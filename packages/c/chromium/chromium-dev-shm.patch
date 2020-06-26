@@ -1,0 +1,81 @@
+From 128c6f2ce4ff5330340e54b93fa177657896e8e7 Mon Sep 17 00:00:00 2001
+From: Daniel Cheng <dcheng@chromium.org>
+Date: Tue, 9 Jun 2020 23:31:36 +0000
+Subject: [PATCH] Propagate --disable-dev-shm-usage to child processes.
+
+Processes that directly allocate shared memory need to know about this
+flag; otherwise, they will use the wrong allocation strategy and
+potentially encounter OOM failures.
+
+Most processes are sandboxed by default on Linux, so shared memory
+creation is brokered through the browser process, which already knows
+about this flag; however, any processes which aren't sandboxed will have
+this problem.
+
+The unsupported --no-sandbox flag compounds this issue, since all
+renderer processes begin allocating shared memory directly as well. If
+/dev/shm is limited in size (often the case in containerized
+environments), then the renderer will start encountering OOM crashes
+when shared memory creation fails due to the size constraints.
+
+(cherry picked from commit 5e2363b351562d9ffe6181f5458ac0240cefe762)
+
+Fixed: 1085829
+Change-Id: I5f321ba5f91360b72524614e1e91e0e5d805d4c7
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/2220891
+Reviewed-by: Ken Rockot <rockot@google.com>
+Reviewed-by: Matt Falkenhagen <falken@chromium.org>
+Commit-Queue: Daniel Cheng <dcheng@chromium.org>
+Cr-Original-Commit-Position: refs/heads/master@{#774047}
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/2238868
+Reviewed-by: Lei Zhang <thestig@chromium.org>
+Cr-Commit-Position: refs/branch-heads/4147@{#559}
+Cr-Branched-From: 16307825352720ae04d898f37efa5449ad68b606-refs/heads/master@{#768962}
+---
+ content/browser/gpu/gpu_process_host.cc                   | 3 +++
+ content/browser/renderer_host/render_process_host_impl.cc | 3 +++
+ content/browser/utility_process_host.cc                   | 3 +++
+ 3 files changed, 9 insertions(+)
+
+diff --git a/content/browser/gpu/gpu_process_host.cc b/content/browser/gpu/gpu_process_host.cc
+index ae8f3b6597193..d39f52a896c0f 100644
+--- a/content/browser/gpu/gpu_process_host.cc
++++ b/content/browser/gpu/gpu_process_host.cc
+@@ -215,6 +215,9 @@ static const char* const kSwitchNames[] = {
+     service_manager::switches::kGpuSandboxFailuresFatal,
+     service_manager::switches::kDisableGpuSandbox,
+     service_manager::switches::kNoSandbox,
++#if defined(OS_LINUX) && !defined(OS_CHROMEOS)
++    switches::kDisableDevShmUsage,
++#endif
+ #if defined(OS_WIN)
+     switches::kDisableHighResTimer,
+ #endif  // defined(OS_WIN)
+diff --git a/content/browser/renderer_host/render_process_host_impl.cc b/content/browser/renderer_host/render_process_host_impl.cc
+index e7530931e0672..a37c3125a3431 100644
+--- a/content/browser/renderer_host/render_process_host_impl.cc
++++ b/content/browser/renderer_host/render_process_host_impl.cc
+@@ -3232,6 +3232,9 @@ void RenderProcessHostImpl::PropagateBrowserCommandLineToRenderer(
+     service_manager::switches::kDisableInProcessStackTraces,
+     service_manager::switches::kDisableSeccompFilterSandbox,
+     service_manager::switches::kNoSandbox,
++#if defined(OS_LINUX) && !defined(OS_CHROMEOS)
++    switches::kDisableDevShmUsage,
++#endif
+ #if defined(OS_MACOSX)
+     // Allow this to be set when invoking the browser and relayed along.
+     service_manager::switches::kEnableSandboxLogging,
+diff --git a/content/browser/utility_process_host.cc b/content/browser/utility_process_host.cc
+index 313e00d752351..8ccfbf0a60258 100644
+--- a/content/browser/utility_process_host.cc
++++ b/content/browser/utility_process_host.cc
+@@ -420,6 +420,9 @@ bool UtilityProcessHost::StartProcess() {
+       network::switches::kNetLogCaptureMode,
+       network::switches::kExplicitlyAllowedPorts,
+       service_manager::switches::kNoSandbox,
++#if defined(OS_LINUX) && !defined(OS_CHROMEOS)
++      switches::kDisableDevShmUsage,
++#endif
+       service_manager::switches::kEnableAudioServiceSandbox,
+ #if defined(OS_MACOSX)
+       service_manager::switches::kEnableSandboxLogging,

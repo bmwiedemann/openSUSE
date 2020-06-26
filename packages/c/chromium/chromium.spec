@@ -19,12 +19,19 @@
 %define rname chromium
 # bsc#1108175
 %define __provides_exclude ^lib.*\\.so.*$
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_vesrion} > 1500
 %bcond_without system_icu
+%bcond_without system_vpx
+%bcond_without wayland
+%else
+%bcond_with system_icu
+%bcond_with system_vpx
+%bcond_with wayland
+%endif
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200     
 %bcond_without system_harfbuzz
 %bcond_without pipewire
 %else
-%bcond_with system_icu
 %bcond_with system_harfbuzz
 %bcond_with pipewire
 %endif
@@ -42,11 +49,9 @@
 %else
 %bcond_with lto
 %endif
-%bcond_with system_vpx
 %bcond_with clang
-%bcond_with wayland
 Name:           chromium
-Version:        83.0.4103.97
+Version:        83.0.4103.116
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -89,9 +94,13 @@ Patch26:        chromium-83-gcc-iterator.patch
 Patch27:        chromium-83-gcc-include.patch
 Patch28:        chromium-83-gcc-10.patch
 Patch29:        chromium-81-re2-0.2020.05.01.patch
-Patch30:        chromium-83-gcc-location-revert.patch
 # Do not use unrar code, it is non-free
-Patch31:        chromium-norar.patch
+Patch30:        chromium-norar.patch
+# specific patch to disable location on Leap; works on 15.2 but not on 15.1
+Patch31:        no-location-leap151.patch
+Patch32:        chromium-dev-shm.patch
+Patch33:        chromium-83.0.4103.97-skia-gcc-no_sanitize-fixes.patch
+Patch34:        chromium-84-mediaalloc.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -232,9 +241,9 @@ BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(wayland-server)
-%else
-BuildRequires:  pkgconfig(libva)
+BuildRequires:  pkgconfig(xkbcommon)
 %endif
+BuildRequires:  pkgconfig(libva)
 %ifnarch aarch64
 # Current tcmalloc does not support AArch64
 BuildRequires:  pkgconfig(libtcmalloc)
@@ -243,10 +252,10 @@ BuildRequires:  pkgconfig(libtcmalloc)
 BuildRequires:  pkgconfig(harfbuzz) > 2.3.0
 %endif
 %if %{with system_icu}
-BuildRequires:  pkgconfig(icu-i18n) >= 63.0
+BuildRequires:  pkgconfig(icu-i18n) >= 67.0
 %endif
 %if %{with system_vpx}
-BuildRequires:  pkgconfig(vpx) >= 1.6.1
+BuildRequires:  pkgconfig(vpx) >= 1.8.2
 %endif
 %if %{with clang}
 BuildRequires:  clang >= 5.0.0
@@ -446,7 +455,6 @@ keeplibs=(
     third_party/swiftshader/third_party/subzero
     third_party/swiftshader/third_party/SPIRV-Headers/include/spirv/unified1
     third_party/tcmalloc
-    third_party/unrar
     third_party/usrsctp
     third_party/vulkan
     third_party/web-animations-js
@@ -473,7 +481,8 @@ keeplibs=(
 )
 %if %{with wayland}
 keeplibs+=(
-    third_party/mingbm
+    third_party/libdrm/src/include
+    third_party/v4l-utils
     third_party/wayland
     third_party/wayland-protocols
 )
@@ -528,6 +537,10 @@ export CXXFLAGS="${CXXFLAGS} -Wno-attributes -Wno-subobject-linkage"
 export CXXFLAGS="${CXXFLAGS} -Wno-ignored-attributes"
 # ingore new gcc 8 warnings that aren't yet handled upstream
 export CXXFLAGS="${CXXFLAGS} -Wno-address -Wno-dangling-else -Wno-class-memaccess -Wno-invalid-offsetof -Wno-packed-not-aligned"
+%if %{with wayland}
+# for wayland
+export CXXFLAGS="${CXXFLAGS} -I/usr/include/libxkbcommon"
+%endif
 export CFLAGS="${CXXFLAGS}"
 export CC=gcc
 export CXX=g++
@@ -638,7 +651,9 @@ myconf_gn+=" rtc_use_pipewire_version=\"0.3\""
 %endif
 # ozone stuff
 %if %{with wayland}
-myconf_gn+=" use_ozone=true use_xkbcommon=true use_v4lplugin=true use_v4l2_codec=true use_linux_v4l2_only=true"
+myconf_gn+=" use_ozone=true ozone_platform=\"x11\" ozone_platform_x11=true"
+# use_v4l2_codec - uses patches in kernel-headers present on chromeos only
+myconf_gn+=" use_v4lplugin=true use_v4l2_codec=false use_linux_v4l2_only=true"
 %endif
 %if %{with clang}
 myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"

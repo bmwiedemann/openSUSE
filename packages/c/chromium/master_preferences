@@ -16,7 +16,8 @@
   },
   "browser": {
      "show_home_button": true,
-     "check_default_browser": false
+     "check_default_browser": false,
+     "custom_chrome_frame": true
   },
   "bookmark_bar": {
      "show_on_all_tabs": true

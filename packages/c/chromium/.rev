@@ -2969,4 +2969,41 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment>up</comment>
     <requestid>811311</requestid>
   </revision>
+  <revision rev="259" vrev="1">
+    <srcmd5>b73429b28e014285196d10e4f64798e3</srcmd5>
+    <version>83.0.4103.116</version>
+    <time>1593200745</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable the LTO again as it still OOMs quite often
+
+- Add patch to work with new ffmpeg wrt bsc#1173292:
+  * chromium-84-mediaalloc.patch
+
+- Add multimedia fix for disabled location and also try one
+  additional patch from Debian on the same issue bsc#1173107
+  Update patch:
+  * no-location-leap151.patch
+
+- Add patch from Fedora to avoid attribute overrides in skia:
+  * chromium-83.0.4103.97-skia-gcc-no_sanitize-fixes.patch
+
+- Add patch to hopefully fix bsc#1173107:
+  * chromium-dev-shm.patch
+
+- Update to 83.0.4103.116 bsc#1173251:
+  * CVE-2020-6509: Use after free in extensions
+
+- Reduce constraints to say 20 GB disk space is enough
+
+- Disable wayland integration on 15.x bsc#1173187 bsc#1173188
+  bsc#1173254
+
+- Enforce to not use system borders bsc#1173063
+
+- Update to 83.0.4103.106 bsc#1173029:
+  * CVE-2020-6505: Use after free in speech
+  * CVE-2020-6506: Insufficient policy enforcement in WebView
+  * CVE-2020-6507: Out of bounds write in V8</comment>
+    <requestid>816970</requestid>
+  </revision>
 </revisionlist>
