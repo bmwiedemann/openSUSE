@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 26 11:52:23 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 0.16
+  - ch-grow and ch-tug: updates to work with external repositories
+  - ch-grow: COPY semantics now match Docker
+  - miscellaneous bug fixes and improvements
+  - Full changelog at https://groups.io/g/charliecloud/message/103
+
+-------------------------------------------------------------------
 Wed Apr 15 09:06:58 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to version 0.15
