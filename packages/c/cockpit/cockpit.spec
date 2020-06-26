@@ -76,7 +76,7 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        220
+Version:        222
 %if %{defined wip}
 Release:        1.%{wip}%{?dist}
 Source0:        cockpit-%{version}.tar.xz
@@ -143,7 +143,7 @@ Recommends: cockpit-packagekit
 Suggests: cockpit-pcp
 
 %ifarch x86_64 %{arm} aarch64 ppc64le i686 s390x
-%if 0%{?fedora} == 31 && 0%{?build_optional}
+%if (0%{?fedora} == 31 || 0%{?suse_version}) && 0%{?build_optional}
 %define build_docker 1
 Recommends: (cockpit-docker if /usr/bin/docker)
 %endif
@@ -186,7 +186,13 @@ exec 2>&1
 %define testsuite_fail || true
 %endif
 %endif
-make -j4 check %{?testsuite_fail}
+# HACK: RHEL i686 builders hang after running all tests; not a supported architecture, so don't bother
+%if 0%{?rhel} >= 8
+%ifarch i686
+%define testsuite_skip #
+%endif
+%endif
+%{?testsuite_skip} make -j4 check %{?testsuite_fail}
 
 %install
 make install DESTDIR=%{buildroot}
@@ -312,6 +318,7 @@ sed -i "s|%{buildroot}||" *.list
 # the distro.
 pushd %{buildroot}/%{_datadir}/cockpit/branding
 find -L * -type l -printf "%H\n" | sort -u | xargs rm -rv
+ln -s opensuse-tumbleweed opensuse-microos
 popd
 # need this in SUSE as post build checks dislike stale symlinks
 install -m 644 -D /dev/null %{buildroot}/run/cockpit/motd
@@ -731,6 +738,7 @@ The Cockpit components for interacting with Docker and user interface.
 This package is not yet complete.
 
 %files -n cockpit-docker -f docker.list
+%dir %{_datadir}/cockpit/docker/images
 %{_datadir}/metainfo/org.cockpit-project.cockpit-docker.metainfo.xml
 %endif
 
