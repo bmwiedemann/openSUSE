@@ -1,3 +1,12 @@
+ADAL Python 1.2.4
+
+    Update project metadata on PyPI (#231 )
+
+ADAL Python 1.2.3
+
+    Enabled dynamic whitelisting of dSTS endpoints (#215 )
+    World wide authority updated from login.windows.net to login.microsoftonline.com (#227 )
+
 ADAL Python 1.2.2
 
     Adjust the public cert input to accept a pem-format content with or without those -----BEGIN CERTIFICATE----- tag lines. (#199, #207)

@@ -1,7 +1,7 @@
 #
 # spec file for package python-adal
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-adal
-Version:        1.2.2
+Version:        1.2.4
 Release:        0
 Summary:        Azure Active Directory library
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/AzureAD/azure-activedirectory-library-for-python
+URL:            https://github.com/AzureAD/azure-activedirectory-library-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/adal/adal-%{version}.tar.gz
 Source1:        HISTORY.txt
 BuildRequires:  %{python_module devel}
