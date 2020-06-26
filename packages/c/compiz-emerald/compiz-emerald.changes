@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 26 12:03:00 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not package /usr/share/mime-info: this was from the times of
+  GNOME 1 and is no longer used (boo#1062631).
+
+-------------------------------------------------------------------
 Sat Apr  4 22:34:57 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.8.18:

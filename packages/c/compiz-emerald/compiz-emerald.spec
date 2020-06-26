@@ -86,6 +86,8 @@ NOCONFIGURE=1 ./autogen.sh
 
 %install
 %make_install
+# /usr/share/mime-info was GNOME 1 infrastructure. These times are long gone
+rm -rf %{buildroot}%{_datadir}/mime-info
 %suse_update_desktop_file %{_name}-theme-manager DesktopSettings
 find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes %{buildroot}%{_datadir}/
@@ -104,8 +106,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/%{_name}/
 %{_datadir}/icons/hicolor/*/mimetypes/*%{_name}*
 %{_datadir}/mime/packages/%{_name}.xml
-%dir %{_datadir}/mime-info/
-%{_datadir}/mime-info/%{_name}.mime
 %{_mandir}/man1/%{_name}.1%{?ext_man}
 
 %files lang -f %{_name}.lang
