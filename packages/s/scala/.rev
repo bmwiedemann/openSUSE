@@ -39,4 +39,12 @@
     <comment>Stop overriding default patch fuzz in spec file</comment>
     <requestid>757444</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>9aad9400b86e7de080c0b4378791ddfd</srcmd5>
+    <version>2.10.7</version>
+    <time>1593200994</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817260</requestid>
+  </revision>
 </revisionlist>

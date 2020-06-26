@@ -1,7 +1,7 @@
 #
 # spec file for package scala
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,8 +41,6 @@ Source1:        scala-library-2.10.0-bnd.properties
 # git log --pretty=format:"%H%n%ci" v%{version} | head -n 2 | sed -e 's/\-//g' -e 's/\s\+.*//g'
 Source3:        scala.gitinfo
 Source4:        http://www.scala-lang.org/files/archive/%{base_name}-%{version}.tgz
-Source21:       scala.keys
-Source22:       scala.mime
 Source23:       scala-mime-info.xml
 Source24:       scala.ant.d
 # Change the default classpath (SCALA_HOME)
@@ -243,9 +241,6 @@ install -d %{buildroot}%{_sysconfdir}/ant.d
 install -p -m 644 %{SOURCE24} %{buildroot}%{_sysconfdir}/ant.d/scala
 %endif
 
-install -d %{buildroot}%{_datadir}/mime-info
-install -p -m 644 %{SOURCE21} %{SOURCE22} %{buildroot}%{_datadir}/mime-info/
-
 install -d %{buildroot}%{_datadir}/mime/packages/
 install -p -m 644 %{SOURCE23} %{buildroot}%{_datadir}/mime/packages/
 
@@ -262,7 +257,6 @@ install -p -m 644 build/scaladoc/manual/man/man1/* %{buildroot}%{_mandir}/man1
 %dir %{_datadir}/%{base_name}/lib
 %{_datadir}/%{base_name}/lib/*.jar
 %exclude %{_datadir}/%{base_name}/lib/scala-swing.jar
-%{_datadir}/mime-info
 %{_datadir}/mime/packages/*
 %license docs/LICENSE
 %if %{without bootstrap}
