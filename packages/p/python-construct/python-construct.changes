@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 23 14:27:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Add source dir to PYTHONPATH just as upstream does.
+  Necessary due change in pytest macro gh#openSUSE/python-rpm-macros#48 
+- don't benchmark, just run the tests once
+
+-------------------------------------------------------------------
 Wed Feb 12 11:59:37 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.10.56:

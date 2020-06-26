@@ -78,7 +78,9 @@ rm -rf tests/deprecated_gallery
 
 %check
 %if %{with test}
-%pytest
+# local source dir is needed for tests
+export PYTHONPATH=$(pwd)
+%pytest --benchmark-disable
 %endif
 
 %if %{without test}
