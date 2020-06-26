@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 17 14:38:52 UTC 2020 - daniel.molkentin@suse.com
+
+- Update to version 050+suse.67.g28be2f36:
+  * 35network-legacy: Fix dual stack setups (bsc#1172807)
+
+-------------------------------------------------------------------
 Wed Jun 10 20:39:37 UTC 2020 - daniel.molkentin@suse.com
 
 - Update to version 050+suse.66.g76431c83:
