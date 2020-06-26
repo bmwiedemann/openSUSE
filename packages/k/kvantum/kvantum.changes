@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 24 22:39:09 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 0.16.0
+
+- Set the scroll indicator size of tabs to that of toolbar buttons.
+- Fixed a rare issue in the frame size of grouped elements.
+- Added an option to Kvantum Manager for enabling window translucency with non-integer scale factors after showing a warning.
+- A workaround for a rare case of Qt's contradicting QStyle in drawing spin boxes.
+- Fixed the height of combo menu separators.
+- Reset widget palettes on changing style from and to Kvantum. This fixes several problems with on-the-fly style changes, so that an app restart won't be needed in most cases.
+- Updated the code for Qt 5.15.
+- Added a workaround for a regression in Qt 5.15, which results in QStyleOptionTab reporting an incorrect tab position.
+
+-------------------------------------------------------------------
 Wed May 13 02:47:25 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Version 0.15.3
