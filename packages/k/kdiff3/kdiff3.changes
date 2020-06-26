@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 25 11:49:33 UTC 2020 - wbauer@tmo.at
+
+- Update to 1.8.3:
+  * Fixed reload on Windows (kde#423001)
+  * Fixed error handling during directory compare
+  * Only give one error message per directory compare operation
+  * Fix crash when clipboard is not available (kde#419722)
+  * Rework initial window display and full screen toggling
+  * Treat /dev/null as non-existant as git expects (kde#421048)
+
+-------------------------------------------------------------------
 Mon Mar 30 09:57:57 UTC 2020 - wbauer@tmo.at
 
 - Update to 1.8.2:
