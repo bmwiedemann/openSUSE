@@ -41,4 +41,16 @@
     <comment></comment>
     <requestid>791676</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>414d669bab4f5f9078f25e121979a144</srcmd5>
+    <version>1.4.6</version>
+    <time>1593200673</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.6:
+  * Fix XPathContext to let the subclasses replace the XPath nodes iterator function
+  * Fix tokenizer and parsers for ambiguities between symbols and names
+  * Improve XPath context and axes processing
+  * Integrate pull requests and fix bug on predicate selector</comment>
+    <requestid>816748</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 24 03:51:04 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.4.6:
+  * Fix XPathContext to let the subclasses replace the XPath nodes iterator function
+  * Fix tokenizer and parsers for ambiguities between symbols and names
+  * Improve XPath context and axes processing
+  * Integrate pull requests and fix bug on predicate selector 
+
+-------------------------------------------------------------------
 Mon Apr  6 08:06:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.4.3
