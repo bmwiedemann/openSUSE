@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 23 15:39:12 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Version 2.22
+  - Use pkgconf to determine installation paths
+  - Enable SSL connections in update shell
+    [boo#1149131] & [boo#1133891]
+
+-------------------------------------------------------------------
 Mon Apr  6 08:02:55 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Version 2.21.1

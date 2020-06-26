@@ -17,7 +17,7 @@
 
 
 Name:           transactional-update
-Version:        2.21.1
+Version:        2.22
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later
@@ -34,6 +34,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-lxml
 BuildRequires:  rpm-devel
 BuildRequires:  suse-module-tools
+BuildRequires:  pkgconfig(dracut)
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(udev)
 Requires:       attr
 Requires:       bc
 Requires:       btrfsprogs
