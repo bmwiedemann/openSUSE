@@ -63,4 +63,24 @@
   * openxcom-abs.patch</comment>
     <requestid>687918</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e1c0cc34f31a8bb28b16099cc39041e7</srcmd5>
+    <version>1.0.0.1592170963.8ae998af3</version>
+    <time>1593200902</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.0.1592170963.8ae998af3:
+  * Fix potential leak in window position option
+  * Don't load sounds when audio is disabled
+  * Typo
+  * Make demigod difficulty a mod setting
+  * add demigod to new battle mode
+  * add 6th difficulty to stats page
+  * restore vanilla superhuman difficulty and add demigod level
+  * unify crash/destruction checks for UFOs
+  * Fix encoding
+  * Revert &quot;game loop: reduce idle cpu burn&quot;
+
+- Switch to github service as there was no release since 2014</comment>
+    <requestid>817078</requestid>
+  </revision>
 </revisionlist>

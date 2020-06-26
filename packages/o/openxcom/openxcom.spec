@@ -1,7 +1,7 @@
 #
 # spec file for package openxcom
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,11 @@
 
 
 Name:           openxcom
-Version:        1.0.0.1552426261.8a4b13d65
+Version:        1.0.0.1592170963.8ae998af3
 Release:        0
 Summary:        An open source reimplementation of the original X-Com game
 License:        GPL-3.0-only
-Group:          Amusements/Games/Strategy/Turn Based
-URL:            http://openxcom.org/
+URL:            https://openxcom.org/
 Source:         OpenXcom-%{version}.tar.xz
 BuildRequires:  Mesa-devel
 BuildRequires:  autoconf
@@ -54,7 +53,6 @@ installed to ~/.local/share/openxcom/data/
 
 %package doc
 Summary:        Documentation files for %{name}
-Group:          Amusements/Games/Strategy/Turn Based
 Requires:       %{name} = %{version}
 
 %description doc
@@ -75,7 +73,7 @@ autoreconf -fvi
 	--disable-werror \
 	--disable-silent-rules \
 	--with-docs --docdir="%{_docdir}/%{name}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

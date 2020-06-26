@@ -1,7 +1,22 @@
 -------------------------------------------------------------------
+Thu Jun 25 14:48:54 UTC 2020 - tchvatal@suse.com
+
+- Update to version 1.0.0.1592170963.8ae998af3:
+  * Fix potential leak in window position option
+  * Don't load sounds when audio is disabled
+  * Typo
+  * Make demigod difficulty a mod setting
+  * add demigod to new battle mode
+  * add 6th difficulty to stats page
+  * restore vanilla superhuman difficulty and add demigod level
+  * unify crash/destruction checks for UFOs
+  * Fix encoding
+  * Revert "game loop: reduce idle cpu burn"
+
+-------------------------------------------------------------------
 Sat Mar 23 16:47:40 UTC 2019 - tchvatal@suse.com
 
-- Switch to github service as there was n o release since 2014
+- Switch to github service as there was no release since 2014
   and there are simply too many fixes in the git repository
 - Update to version 1.0.0.1552426261.8a4b13d65:
   * Update links
