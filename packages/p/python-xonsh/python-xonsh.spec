@@ -69,7 +69,8 @@ The language is a superset of Python 3.5+ with additional shell primitives.
 export PATH=$PATH:%{buildroot}%{_bindir}
 # test_man_completion needs installed manpages
 # test_xonsh_no_close_fds the makefile fails to compile
-%pytest -k 'not (test_man_completion or test_xonsh_no_close_fds)'
+%{python_expand export PYTHONPATH=":%{buildroot}%{$python_sitelib}"
+$python -m xonsh run-tests.xsh -k 'not (test_man_completion or test_xonsh_no_close_fds)'}
 
 %post
 %python_install_alternative xonsh-cat

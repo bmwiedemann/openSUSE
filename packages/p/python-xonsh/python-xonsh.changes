@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 23 19:56:57 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- add local source dir to PYTHONPATH gh#openSUSE/python-rpm-macros#48 
+- switch to upstreams way of running the tests (%pytest fails without
+  extra workarounds, see gh#xonsh/xonsh#3633)
+
+-------------------------------------------------------------------
 Fri May 15 12:55:14 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
