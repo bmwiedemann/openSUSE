@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 24 13:00:10 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.5.1:
+  * Update URLs. Remove ref. to translations.x.o (bxo#16162)
+  * Allow compilation with panel 4.15
+  * Replace GtkStock buttons
+  * Improve spacing (bxo#14664)
+  * Make build less verbose
+  * AC_CONFIG_MACRO_DIR -> AC_CONFIG_MACRO_DIRS
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Aug 16 12:30:28 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file
