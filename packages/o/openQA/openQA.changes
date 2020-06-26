@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 25 19:25:40 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1593091364.60cb15b8d:
+  * Remove versioned chromedriver install again
+  * Fix running Selenium tests within CI
+  * Improve wording in Docker/CI-related documentation
+  * Improve Docker/CI-related documentation
+  * Use relative path in test-with-database target so it works easier within Docker
+
+-------------------------------------------------------------------
 Tue Jun 23 06:47:48 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1592865598.88eb8f02c:
