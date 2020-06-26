@@ -135,6 +135,8 @@ find ./ -type f -name \*.py -exec sed -i  \
 # the 4 skipped test rely on the bundled packages but they are
 # not available on virtualenv; this is expected behaviour
 export LANG=en_US.UTF-8
+# tests need imports local source dir
+export PYTHONPATH=$(pwd)
 %pytest -k 'not (test_clean_env_install or test_pip_upgrade_from_source or test_test_command_install_requirements or test_no_missing_dependencies)'
 %endif
 

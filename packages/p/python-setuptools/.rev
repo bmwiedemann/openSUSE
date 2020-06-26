@@ -715,4 +715,12 @@
     <comment>- Fix License to the correct MIT</comment>
     <requestid>791828</requestid>
   </revision>
+  <revision rev="60" vrev="4">
+    <srcmd5>91d080e0cfe947356245d303c28e61c2</srcmd5>
+    <version>44.0.0</version>
+    <time>1593200632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816632</requestid>
+  </revision>
 </revisionlist>

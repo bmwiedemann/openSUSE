@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 23 15:41:14 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- use local source dir for pytest imports
+  gh#openSUSE/python-rpm-macros#48 
+
+-------------------------------------------------------------------
 Mon Apr  6 17:14:11 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Fix License to the correct MIT
