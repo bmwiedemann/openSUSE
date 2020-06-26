@@ -673,4 +673,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment></comment>
     <requestid>809216</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>63bb5f3e73a98a5ad73aedb5ed927d6b</srcmd5>
+    <version>9.0.36</version>
+    <time>1593200966</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2020-11996 (bsc#1173389)</comment>
+    <requestid>817202</requestid>
+  </revision>
 </revisionlist>

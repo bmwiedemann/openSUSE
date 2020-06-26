@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 26 08:03:01 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to Tomcat 9.0.36. See changelog at
+  https://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.36_(markt)
+- Fixed CVEs:
+  CVE-2020-11996 (bsc#1173389)
+
+-------------------------------------------------------------------
 Tue May 26 14:58:13 UTC 2020 - Matei Albu <malbu@suse.com>
 
 - Update to Tomcat 9.0.35. See changelog at
