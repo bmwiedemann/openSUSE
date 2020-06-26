@@ -646,4 +646,12 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
 - Remove the qt4 code support as we do just Qt5 everywhere</comment>
     <requestid>811473</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>7bec0c2704271ab89758fa3597715b21</srcmd5>
+    <version>3.2.2</version>
+    <time>1593200666</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816747</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun 24 02:32:47 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- update to version 3.2.2:
+  * Unit converters recognize subclasses
+  * imsave accepts metadata and PIL options
+  * cbook.normalize_kwargs
+  * FontProperties accepts os.PathLike
+  * Gouraud-shading alpha channel in PDF backend
+  * Kerning adjustments now use correct values
+  * bar3d lightsource shading
+  * Shifting errorbars
+  * Improvements in Logit scale ticker and formatter
+  * rcParams for axes title location and color
+  * 3-digit and 4-digit hex colors
+
+-------------------------------------------------------------------
 Thu Jun  4 12:59:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip tests that randomly fail

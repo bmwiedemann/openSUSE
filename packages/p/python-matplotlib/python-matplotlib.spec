@@ -29,7 +29,7 @@
 %bcond_with test
 %endif
 Name:           python-matplotlib%{psuffix}
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
@@ -76,6 +76,7 @@ BuildRequires:  pkgconfig(libpng) >= 1.2
 BuildRequires:  pkgconfig(tcl)
 # /SECTION
 %if %{with test}
+BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
