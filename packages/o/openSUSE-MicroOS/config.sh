@@ -76,14 +76,6 @@ ETHTOOL_OPTIONS=''
 USERCONTROL='no'
 EOF
 
-#======================================
-# Enable cloud-init
-#--------------------------------------
-suseInsertService cloud-init-local
-suseInsertService cloud-init
-suseInsertService cloud-config
-suseInsertService cloud-final
-
 # Enable chrony
 suseInsertService chronyd
 
@@ -112,13 +104,6 @@ done
 if [ -x /usr/sbin/add-yast-repos ]; then
 	add-yast-repos
 	zypper --non-interactive rm -u live-add-yast-repos
-fi
-
-#======================================
-# Enable kubelet if installed
-#--------------------------------------
-if [ -e /usr/lib/systemd/system/kubelet.service ]; then
-	suseInsertService kubelet
 fi
 
 # Adjust zypp conf

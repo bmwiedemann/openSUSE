@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 18 16:06:24 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- use/rely on systemd presets for default enabled services
+
+-------------------------------------------------------------------
 Thu Jun  4 09:29:19 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Use firmware="efi" for RPi2 (boo#1172473)
