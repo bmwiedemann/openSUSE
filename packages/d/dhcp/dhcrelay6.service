@@ -6,8 +6,8 @@ After=remote-fs.target network.target nss-lookup.target time-sync.target ldap.se
 [Service]
 Type=forking
 Restart=on-abort
-ExecStart=/usr/lib/dhcp/dhcrelay -6 start
-ExecStop=/usr/lib/dhcp/dhcrelay -6 stop
+ExecStart=@LIBEXECDIR@/dhcp/dhcrelay -6 start
+ExecStop=@LIBEXECDIR@/dhcp/dhcrelay -6 stop
 
 [Install]
 WantedBy=multi-user.target

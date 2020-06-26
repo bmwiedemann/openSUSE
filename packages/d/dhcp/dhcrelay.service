@@ -6,8 +6,8 @@ After=remote-fs.target network.target nss-lookup.target time-sync.target ldap.se
 [Service]
 Type=forking
 Restart=on-abort
-ExecStart=/usr/lib/dhcp/dhcrelay -4 start
-ExecStop=/usr/lib/dhcp/dhcrelay -4 stop
+ExecStart=@LIBEXECDIR@/dhcp/dhcrelay -4 start
+ExecStop=@LIBEXECDIR@/dhcp/dhcrelay -4 stop
 PIDFile=/var/run/dhcrelay.pid
 
 [Install]

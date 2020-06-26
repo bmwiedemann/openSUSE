@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 23 15:22:00 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- insserv is not required anymore 
+
+-------------------------------------------------------------------
+Thu Jun 11 15:46:50 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec
+
+-------------------------------------------------------------------
 Wed Apr 15 06:32:20 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use sysusers.d instead of shadow

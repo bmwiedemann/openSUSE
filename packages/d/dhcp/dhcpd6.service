@@ -6,8 +6,8 @@ After=remote-fs.target network.target nss-lookup.target time-sync.target slapd.s
 [Service]
 Type=forking
 Restart=on-abort
-ExecStart=/usr/lib/dhcp/dhcpd -6 start
-ExecStop=/usr/lib/dhcp/dhcpd -6 stop
+ExecStart=@LIBEXECDIR@/dhcp/dhcpd -6 start
+ExecStop=@LIBEXECDIR@/dhcp/dhcpd -6 stop
 
 [Install]
 WantedBy=multi-user.target

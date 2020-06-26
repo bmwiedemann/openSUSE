@@ -101,11 +101,6 @@ BuildRequires:  sysuser-tools
 %package server
 Summary:        ISC DHCP Server
 Group:          Productivity/Networking/Boot/Servers
-%if 0%{?suse_version} > 1500
-# Workaround: require insserv-compat, until this package is
-# converted to be shipping proper systemd units (boo#1133632)
-Requires:       insserv-compat
-%endif
 Requires:       dhcp = %{version}
 %if 0%{?suse_version} < 1500
 Requires:       net-tools
@@ -326,6 +321,7 @@ install    -m0644 $RPM_SOURCE_DIR/dhcrelay.service          \
                   %{buildroot}%{_unitdir}/dhcrelay.service
 install    -m0644 $RPM_SOURCE_DIR/dhcrelay6.service         \
                   %{buildroot}%{_unitdir}/dhcrelay6.service
+sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{buildroot}%{_unitdir}/d*
 # rcservice links
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcdhcpd
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcdhcpd6
