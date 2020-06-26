@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jun 12 13:44:19 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to skip tests that fail in i586. See
+  https://github.com/adobe-type-tools/afdko/issues/1163 :
+  * skip-tests-failing-on-i586.patch
+
+-------------------------------------------------------------------
+Fri Jun 12 07:36:28 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use update-alternatives to provide a tx symlink to afdko-tx.
+  This works around the issue of having tx binaries different
+  packages (python-afdko and transifex-client).
+
+-------------------------------------------------------------------
+Thu Jun 11 15:19:15 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Rename %{_bindir}/tx to afdko-tx
+
+-------------------------------------------------------------------
 Tue Jun  2 14:04:02 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 3.4.0

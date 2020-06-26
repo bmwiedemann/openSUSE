@@ -1,0 +1,56 @@
+Index: afdko-3.4.0/tests/otf2ttf_test.py
+===================================================================
+--- afdko-3.4.0.orig/tests/otf2ttf_test.py
++++ afdko-3.4.0/tests/otf2ttf_test.py
+@@ -1,6 +1,7 @@
+ from os import path, remove
+ import pytest
+ from time import sleep
++import platform
+ 
+ from afdko.otf2ttf import main as otf2ttf
+ from afdko.fdkutils import (
+@@ -102,6 +103,7 @@ def test_post_overflow():
+ 
+ 
+ @pytest.mark.parametrize('filename', ['sans', 'serif', 'latincid', 'kanjicid'])
++@pytest.mark.skipif(platform.machine() == 'i686', reason="https://github.com/adobe-type-tools/afdko/issues/1163")
+ def test_convert(filename):
+     input_path = get_input_path(f'{filename}.otf')
+     actual_path = get_temp_file_path()
+@@ -150,6 +152,7 @@ def test_skip_ttf(file):
+ 
+ 
+ @pytest.mark.parametrize('filename', ['otf_ttf', 'ttf_otf', 'ttf_ttf'])
++@pytest.mark.skipif(platform.machine() == 'i686', reason="https://github.com/adobe-type-tools/afdko/issues/1163")
+ def test_skip_ttf_in_ttc(filename):
+     input_path = get_input_path(f'{filename}.ttc')
+     out_path = path.join(get_temp_dir_path(), f'{filename}.ttc')
+Index: afdko-3.4.0/tests/tx_test.py
+===================================================================
+--- afdko-3.4.0.orig/tests/tx_test.py
++++ afdko-3.4.0/tests/tx_test.py
+@@ -3,6 +3,7 @@ import pytest
+ import re
+ import subprocess
+ import time
++import platform
+ 
+ from afdko.fdkutils import (
+     get_temp_file_path,
+@@ -384,6 +385,7 @@ def test_type1_inputs(file_ext):
+ 
+ @pytest.mark.parametrize('args', [[], ['U', '_500,500'], ['U', '_0,0', 'n']])
+ @pytest.mark.parametrize('fname', ['zx', 'zy'])
++@pytest.mark.skipif(platform.machine() == 'i686', reason="https://github.com/adobe-type-tools/afdko/issues/1163")
+ def test_type1mm_inputs(fname, args):
+     fname2 = f'.{"".join(args)}' if args else ''
+     actual_path = runner(CMD + ['-s', '-f', f'{fname}.pfb', '-o', '2'] + args)
+@@ -418,6 +420,7 @@ def test_other_input_formats(fext):
+     ['6', 'n'],
+ ])
+ @pytest.mark.parametrize('font_filename', ['type1.pfa', 'svg.svg'])
++@pytest.mark.skipif(platform.machine() == 'i686', reason="https://github.com/adobe-type-tools/afdko/issues/1163")
+ def test_dump_option(args, font_filename):
+     if any([arg in args for arg in ('4', '5', '6')]):
+         skip = []

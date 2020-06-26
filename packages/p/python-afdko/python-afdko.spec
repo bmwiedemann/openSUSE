@@ -34,6 +34,7 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/adobe-type-tools/afdko
 Source:         https://files.pythonhosted.org/packages/source/a/afdko/afdko-%{version}.tar.gz
+Patch0:         skip-tests-failing-on-i586.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -81,6 +82,7 @@ Adobe Font Development Kit for OpenType
 
 %prep
 %setup -q -n afdko-%{version}
+%patch0 -p1
 
 %if %{with test}
 %check
@@ -95,34 +97,46 @@ export TMPDIR=tmp
 
 %install
 %python_install
+mv %{buildroot}%{_bindir}/tx  %{buildroot}%{_bindir}/afdko-tx
 
 for binary in detype1 makeotfexe mergefonts rotatefont sfntdiff sfntedit \
-              spot tx type1 autohint buildcff2vf buildmasterotfs \
+              spot afdko-tx type1 autohint buildcff2vf buildmasterotfs \
               comparefamily checkoutlinesufo makeotf makeinstancesufo \
               otc2otf otf2otc otf2ttf stemhist ttfcomponentizer \
               ttfdecomponentizer ttxn charplot digiplot fontplot \
               fontplot2 fontsetplot hintplot waterfallplot ; do
    %python_clone -a %{buildroot}%{_bindir}/$binary
 done
+
+ln -s -f %{_sysconfdir}/alternatives/tx %{buildroot}%{_bindir}/tx
+
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %post
 %{python_install_alternative makeotf detype1 makeotfexe mergefonts rotatefont
-  sfntdiff sfntedit spot tx type1 autohint buildcff2vf buildmasterotfs
+  sfntdiff sfntedit spot afdko-tx type1 autohint buildcff2vf buildmasterotfs
   comparefamily checkoutlinesufo makeinstancesufo otc2otf otf2otc otf2ttf
   stemhist ttfcomponentizer ttfdecomponentizer ttxn charplot digiplot
   fontplot fontplot2 fontsetplot hintplot waterfallplot}
 
+%{_sbindir}/update-alternatives --install %{_bindir}/tx tx %{_bindir}/afdko-tx 20
+
 %postun
 %{python_uninstall_alternative makeotf detype1 makeotfexe mergefonts rotatefont
-  sfntdiff sfntedit spot tx type1 autohint buildcff2vf buildmasterotfs
+  sfntdiff sfntedit spot afdko-tx type1 autohint buildcff2vf buildmasterotfs
   comparefamily checkoutlinesufo makeinstancesufo otc2otf otf2otc otf2ttf
   stemhist ttfcomponentizer ttfdecomponentizer ttxn charplot digiplot
   fontplot fontplot2 fontsetplot hintplot waterfallplot}
+
+if [ ! -e %{_bindir}/afdko-tx ] ; then
+  %{_sbindir}/update-alternatives --remove tx %{_bindir}/afdko-tx
+fi
 
 %files %{python_files}
 %doc NEWS.md README.md
 %license LICENSE.md
+%ghost %{_sysconfdir}/alternatives/tx
+%{_bindir}/tx
 %python_alternative %{_bindir}/detype1
 %python_alternative %{_bindir}/makeotfexe
 %python_alternative %{_bindir}/mergefonts
@@ -130,7 +144,7 @@ done
 %python_alternative %{_bindir}/sfntdiff
 %python_alternative %{_bindir}/sfntedit
 %python_alternative %{_bindir}/spot
-%python_alternative %{_bindir}/tx
+%python_alternative %{_bindir}/afdko-tx
 %python_alternative %{_bindir}/type1
 %python_alternative %{_bindir}/autohint
 %python_alternative %{_bindir}/buildcff2vf
