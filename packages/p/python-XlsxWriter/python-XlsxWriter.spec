@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 Name:           python-XlsxWriter
-Version:        1.2.7
+Version:        1.2.9
 Release:        0
 Summary:        Python module for writing OOXML spreadsheet files
 License:        BSD-2-Clause
@@ -44,13 +44,13 @@ Provides:       python3-xlsxwriter = %{version}
 Obsoletes:      python3-xlsxwriter < %{version}
 %endif
 
+%python_subpackages
+
 %description
 XlsxWriter is a Python module for writing files in the Microsoft
 Office Open XML spreadsheet format. It can be used to write text,
 numbers, formulas and hyperlinks to multiple worksheets and it
 supports features such as formatting and many more.
-
-%python_subpackages
 
 %prep
 %setup -q -n XlsxWriter-RELEASE_%{version}
