@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymacaroons
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,14 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/ecordell/pymacaroons
 Source:         https://github.com/ecordell/pymacaroons/archive/v%{version}/%{name}-%{version}.tar.gz
+# https://github.com/ecordell/pymacaroons/pull/54/
+Patch0:         python-pymacaroons-remove-nose.patch
 BuildRequires:  %{python_module PyNaCl < 2.0}
 BuildRequires:  %{python_module PyNaCl >= 1.1.2}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.8.0}
 BuildRequires:  fdupes
@@ -59,6 +61,7 @@ This is a Python implementation of Macaroons.
 
 %prep
 %setup -q -n pymacaroons-%{version}
+%patch0 -p1
 # requires too old hypothesis
 rm -f tests/property_tests/macaroon_property_tests.py
 
@@ -70,7 +73,7 @@ rm -f tests/property_tests/macaroon_property_tests.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand %{_bindir}/nosetests-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
 %license LICENSE
