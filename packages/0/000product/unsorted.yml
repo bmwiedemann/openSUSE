@@ -19174,6 +19174,7 @@ unsorted:
   - python3-aeidon 
   - python3-aenum 
   - python3-aexpect 
+  - python3-afdko 
   - python3-affine 
   - python3-agate 
   - python3-agate-dbf 
@@ -21627,7 +21628,6 @@ unsorted:
   - python3-uniseg 
   - python3-unittest-mixins 
   - python3-unittest-xml-reporting 
-  - python3-unittest2 
   - python3-unpaddedbase64 
   - python3-untokenize 
   - python3-upm 
@@ -33675,6 +33675,7 @@ unsorted:
   - update-test-optional 
   - update-test-reboot-needed 
   - update-test-relogin-suggested 
+  - update-test-retracted 
   - update-test-security 
   - update-test-trivial 
   - uperf 
