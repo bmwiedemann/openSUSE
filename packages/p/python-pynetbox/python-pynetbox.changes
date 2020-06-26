@@ -1,8 +1,46 @@
 -------------------------------------------------------------------
+Fri Jun 26 08:08:29 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0.1
+  * Fixes #240 by adding an Api.openapi() method that returns a
+    dictionary of the entire OpenAPI spec.
+  Breaking Changes
+  * Fixes #239, #229, #219, #209, #189, and #166 by allowing
+    Api.http_session to be overridden by user-supplied custom
+    requests.Session() objects to more precisely control certain
+    requests behavior. While this was possible before, it wasn't
+    applied to all requests. For example, getting session keys
+    was done in Api().__init__() which wouldn't respect a custom
+    http_session. This behavior has been changed and will now
+    only occur when the secrets endpoint is called.
+  * Note: this change removes the ssl_verify kwarg passed to
+    .api() that controlled certificate validation in previous
+    versions. Please see the docs for the new method.
+  * Fixes #241 where the same objects failed equality tests if one
+    was derived from a nested object vs directly from that endpoint
+  * Fixes an inconsistency noted in #224 by making Endpoint.get()
+    and Endpoint.filter() behave similarly (return None) when the
+    resource isn't found.
+  * Fixes #144 by returning proper objects from .create() on detail
+    endpoint routes like available-ips and available-prefixes.
+
+-------------------------------------------------------------------
+Sat Jun 13 10:50:27 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+
+- Use github source URL
+- Update to version 4.3.2
+  * Adds support for the rack elevation endpoint in NetBox 2.8
+- Update to version 4.3.1
+  * Makes config_contex on virtualization record objects a
+    JsonField.
+
+-------------------------------------------------------------------
 Mon Mar 23 14:49:20 UTC 2020 - pgajdos@suse.com
 
 - version update to 4.3.0
-  * Adds the ability to thread calls to NetBox from .filter() and .all() methods. (PR #216)
+  * Adds the ability to thread calls to NetBox from .filter() and
+    .all() methods. (PR #216)
 
 -------------------------------------------------------------------
 Tue Feb 11 06:39:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
