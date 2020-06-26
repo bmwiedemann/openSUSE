@@ -1,7 +1,7 @@
 #
 # spec file for package libnjb
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
-# norootforbuild
 
 
 Name:           libnjb
-BuildRequires:  libtool libusb-devel zlib-devel
-Url:            http://libnjb.sourceforge.net
+Version:        2.2.7
+Release:        0
+Summary:        Nomad Jukebox API
 License:        BSD-3-Clause
 Group:          Development/Libraries/Other
-Version:        2.2.7
-Release:        1
-Summary:        Nomad Jukebox API
+URL:            http://libnjb.sourceforge.net
 Source:         %{name}-%{version}.tar.gz
-Patch:          libnjb-no_m4_dir.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch0:         libnjb-no_m4_dir.diff
+BuildRequires:  libtool
+BuildRequires:  libusb-devel
+BuildRequires:  zlib-devel
 Requires:       dbus-1
 
 %description
 Nomad Jukebox API
 
 %package -n libnjb5
-License:        BSD-3-Clause
 Summary:        Nomad Jukebox API
 Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
@@ -44,10 +42,8 @@ Requires:       %{name} = %{version}
 Nomad Jukebox API
 
 %package devel
-License:        BSD-3-Clause
-Group:          Development/Libraries/Other
-AutoReqProv:    on
 Summary:        Nomad Jukebox API
+Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
 Requires:       libusb-devel
 
@@ -56,37 +52,31 @@ Nomad Jukebox API
 
 %prep
 %setup -q
-%patch
+%patch0
 
 %build
 autoreconf -fiv
 %configure --program-prefix=njb- --disable-static --with-pic
-%{__make} %{?jobs:-j%jobs}
+%make_build
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT
-rm %{buildroot}%{_libdir}/*.la
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libnjb5 -p /sbin/ldconfig
-
 %postun -n libnjb5 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS FAQ README LICENSE
+%license LICENSE
+%doc AUTHORS FAQ README
 %{_bindir}/njb-*
 
 %files -n libnjb5
-%defattr (-, root, root)
 %{_libdir}/libnjb.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/libnjb.so
-%{_prefix}/include/libnjb.h
+%{_includedir}/libnjb.h
 %{_libdir}/pkgconfig/libnjb.pc
 
 %changelog

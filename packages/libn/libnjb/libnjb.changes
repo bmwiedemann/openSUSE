@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 23 09:14:47 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Clean spec-file using spec-cleaner; mainly move LICENSE from %doc
+  to %license (boo#1082318).
+
+-------------------------------------------------------------------
 Thu May  2 12:14:06 UTC 2013 - p.drouand@gmail.com
 
 - Removed AC_CONFIG_MACRO_DIR([m4]) from configure.ac to fix
