@@ -1,7 +1,7 @@
 #
 # spec file for package libmbim
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           libmbim
-Version:        1.22.0
+Version:        1.24.0
 Release:        0
 Summary:        Mobile Broadband Interface Model (MBIM) protocol
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -30,32 +30,33 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.36
+BuildRequires:  pkgconfig(glib-2.0) >= 2.48
 BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gudev-1.0) >= 147
 
 %description
 libmbim is a glib-based library for talking to WWAN modems and devices
-which speak the Mobile Interface Broadband Model (MBIM) protocol.
+which speak the Mobile Broadband Interface Model (MBIM) protocol.
 
 %package -n libmbim-glib4
-Summary:        Mobile Interface Broadband Model (MBIM) protocol
+Summary:        Mobile Broadband Interface Model (MBIM) protocol
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 
 %description -n libmbim-glib4
 libmbim is a glib-based library for talking to WWAN modems and devices
-which speak the Mobile Interface Broadband Model (MBIM) protocol.
+which speak the Mobile Broadband Interface Model (MBIM) protocol.
 
 %package devel
-Summary:        Mobile Interface Broadband Model (MBIM) protocol - Development files
+Summary:        Mobile Broadband Interface Model (MBIM) protocol - Development files
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/C and C++
 Requires:       libmbim-glib4 = %{version}
 
 %description devel
 libmbim is a glib-based library for talking to WWAN modems and devices
-which speak the Mobile Interface Broadband Model (MBIM) protocol.
+which speak the Mobile Broadband Interface Model (MBIM) protocol.
 
 %package -n mbimcli-bash-completion
 Summary:        Bash completion for mbimcli
@@ -68,6 +69,17 @@ Supplements:    packageand(%{name}:bash-completion)
 %description -n mbimcli-bash-completion
 This package contain de bash completion command for mbimcli tools.
 
+%package -n typelib-1_0-Mbim-1_0
+Summary:        Introspection bindings for libmbim
+License:        GPL-2.0-or-later AND LGPL-2.0-or-later
+Group:          System/Libraries
+
+%description -n typelib-1_0-Mbim-1_0
+libmbim is a glib-based library for talking to WWAN modems and devices
+which speak the Mobile Broadband Interface Model (MBIM) protocol.
+
+This package provides the GObject Introspection bindings for libmbim.
+
 %prep
 %autosetup -p1
 
@@ -77,6 +89,7 @@ sed -i "s|env python|python3|g" build-aux/mbim-codegen/*
 %configure \
 	--with-udev \
 	--disable-static \
+	--enable-introspection=yes \
 	%{nil}
 %make_build
 
@@ -110,11 +123,15 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_datadir}/gtk-doc
 %dir %{_datadir}/gtk-doc/html
 %doc %{_datadir}/gtk-doc/html/libmbim-glib/
+%{_datadir}/gir-1.0/*.gir
 %{_includedir}/libmbim-glib/
 %{_libdir}/libmbim-glib.so
 %{_libdir}/pkgconfig/mbim-glib.pc
 
 %files -n mbimcli-bash-completion
 %{_datadir}/bash-completion/completions/mbimcli
+
+%files -n typelib-1_0-Mbim-1_0
+%{_libdir}/girepository-1.0/Mbim-1.0.typelib
 
 %changelog
