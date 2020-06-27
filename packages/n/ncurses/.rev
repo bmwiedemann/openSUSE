@@ -2886,4 +2886,25 @@
     options into Visual Studio's dialect.</comment>
     <requestid>810717</requestid>
   </revision>
+  <revision rev="175" vrev="6">
+    <srcmd5>6fa2a4093f7cadc1ea318bfefc1e186f</srcmd5>
+    <version>6.2.MACRO</version>
+    <time>1593292843</time>
+    <user>dimstar_suse</user>
+    <comment>- Run ldconfig local on %buildroot %_lib to get links done (boo#1173222)
+
+- Add ncurses patch 20200606
+  + add xterm+256color2, xterm+88color2, to deprecate nonstandard usage 
+    in xterm+256color, xterm+88color -TD
+  + add shifted Linux console keys in linux+sfkeys entry for
+    screen.linux (report by Alexandre Montaron).
+  + use vt100+enq in screen (report by Alexandre Montaron).
+  + add screen.linux-s alias (suggested by Alexandre Montaron).
+- Add ncurses patch 20200613
+  + update list of functions in ncurses.3x
+  + move dlclose() call from lib_mouse.c to delscreen() to avoid a case
+    in the former which could be called from SIGTSTP handler (Debian
+    #961097).</comment>
+    <requestid>816433</requestid>
+  </revision>
 </revisionlist>

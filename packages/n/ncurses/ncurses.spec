@@ -873,6 +873,7 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 	    esac
 	done
     done
+    /sbin/ldconfig -r %{buildroot}/ -n -v /%{_lib}
 %if 0
     lnk=%{buildroot}%{_libdir}/libtermcap.so
     echo '/* GNU ld script */'		>  ${lnk}

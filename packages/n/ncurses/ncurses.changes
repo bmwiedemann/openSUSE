@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun 22 16:58:17 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Run ldconfig local on %buildroot %_lib to get links done (boo#1173222)
+
+-------------------------------------------------------------------
+Mon Jun 15 11:05:42 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200606
+  + add xterm+256color2, xterm+88color2, to deprecate nonstandard usage 
+    in xterm+256color, xterm+88color -TD
+  + add shifted Linux console keys in linux+sfkeys entry for
+    screen.linux (report by Alexandre Montaron).
+  + use vt100+enq in screen (report by Alexandre Montaron).
+  + add screen.linux-s alias (suggested by Alexandre Montaron).
+- Add ncurses patch 20200613
+  + update list of functions in ncurses.3x
+  + move dlclose() call from lib_mouse.c to delscreen() to avoid a case
+    in the former which could be called from SIGTSTP handler (Debian
+    #961097).
+
+-------------------------------------------------------------------
 Tue Jun  2 06:24:20 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20200531
