@@ -1,4 +1,26 @@
 --------------------------------------------------------------------
+Thu Jun 25 13:12:14 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/installation-images#390
+- updated list of branches
+- 15.9
+
+--------------------------------------------------------------------
+Wed Jun 24 12:41:28 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#389
+- aarch64: add ipa kernel module
+- add system-group-wheel to rescue system
+- 15.8
+
+--------------------------------------------------------------------
+Fri Jun 19 14:39:15 UTC 2020 - jlopez@suse.com
+
+- merge gh#openSUSE/installation-images#387
+- Add YaST dir (workaround for bsc#1172898)
+- 15.7
+
+--------------------------------------------------------------------
 Wed Jun 17 11:59:52 UTC 2020 - mvidner@suse.cz
 
 - merge gh#openSUSE/installation-images#386
