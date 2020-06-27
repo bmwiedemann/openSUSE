@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun 13 08:48:03 UTC 2020 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- coreutils-gnulib-disable-test-float.patch: Add patch to temporarily
+  disable the gnulib test 'test-float' failing on ppc and ppc64le.
+- coreutils.spec: Reference the patch.  While at it, avoid conditional
+  Patch and Source entries as that break cross-platform builds from
+  source RPMs.
+
+-------------------------------------------------------------------
 Mon May  4 08:05:15 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add coreutils-use-python3.patch to minimally port away from

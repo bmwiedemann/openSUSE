@@ -1090,4 +1090,12 @@ then, coreutils doesn't need this patch from the kernel v4.10-rc1. (forwarded re
   python 2.x use of pyinotify in the testsuite</comment>
     <requestid>799984</requestid>
   </revision>
+  <revision rev="134" vrev="3">
+    <srcmd5>7c7a354d384b556ee43f4386f3d1a1dd</srcmd5>
+    <version>8.32</version>
+    <time>1593292819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816056</requestid>
+  </revision>
 </revisionlist>

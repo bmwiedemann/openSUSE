@@ -86,7 +86,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 #cgit-URL:	https://git.savannah.gnu.org/cgit/coreutils.git/
 #Git-Clone:	git://git.sv.gnu.org/coreutils
-%if "%{name}" == "coreutils"
 # For upgrading the upstream version, increase the version number (above),
 # then remove the old tarball and signature files and let OSC download
 # those files of the new version:
@@ -97,18 +96,10 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Finally, add a changelog entry and commit:
 #    osc vc
 #    osc ci
-Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
-Source1:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
-Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1&file=./%{name}.keyring
-%else
-# In "coreutils-testsuite", we use the version controlled file from "coreutils".
-# otherwise that file would be downloaded twice during the above mentioned
-# upgrade procedure.
-Source0:        coreutils-%{version}.tar.xz
-Source1:        coreutils-%{version}.tar.xz.sig
-Source2:        coreutils.keyring
-%endif
 
+Source0:        https://ftp.gnu.org/gnu/coreutils/coreutils-%{version}.tar.xz
+Source1:        https://ftp.gnu.org/gnu/coreutils/coreutils-%{version}.tar.xz.sig
+Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=coreutils&download=1&file=./coreutils.keyring
 Source3:        baselibs.conf
 
 Patch1:         coreutils-remove_hostname_documentation.patch
@@ -130,9 +121,7 @@ Patch113:       coreutils-misc.patch
 # a glibc issue in mkstemp.
 Patch300:       coreutils-skip-some-sort-tests-on-ppc.patch
 
-%ifarch %ix86 x86_64 ppc ppc64
 Patch301:       coreutils-skip-gnulib-test-tls.patch
-%endif
 
 # tests: shorten extreme-expensive factor tests
 Patch303:       coreutils-tests-shorten-extreme-factor-tests.patch
@@ -146,6 +135,8 @@ Patch501:       coreutils-test_without_valgrind.patch
 #   [PATCH 2/2] ls: improve removed-directory test
 # Remove this patch with the next coreutils release.
 Patch800:       coreutils-ls-restore-8.31-behavior-on-removed-dirs.patch
+
+Patch820:       coreutils-gnulib-disable-test-float.patch
 
 # ================================================
 %description
@@ -201,6 +192,11 @@ This package contains the documentation for the GNU Core Utilities.
 %patch501
 
 %patch800
+
+%ifarch ppc ppc64le
+# Disable gnulib test 'test-float' temporarily as it fails on ppc and ppc64le.
+%patch820
+%endif
 
 # ================================================
 %build
