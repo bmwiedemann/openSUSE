@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 23 08:08:11 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Add support for using Linux Foundation Bugzilla and Github issues
+  references in the changelog (github#yast/yast-theme#128).
+- 1.4.11
+
+-------------------------------------------------------------------
 Thu Sep  5 13:58:25 UTC 2019 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Unified spec_version (bsc#1149618)

@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-packaging_rake_tasks
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rubygem-packaging_rake_tasks
-Version:        1.4.10
+Version:        1.4.11
 Release:        0
 %define mod_name packaging_rake_tasks
 %define mod_full_name %{mod_name}-%{version}
@@ -26,7 +26,7 @@ BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 Suggests:       %{rubygem parallel}
-Url:            http://github.org/openSUSE/packaging_tasks
+URL:            http://github.org/openSUSE/packaging_tasks
 Source:         http://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Rake tasks providing tasks to package project in git and integration
