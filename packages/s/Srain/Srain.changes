@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 27 08:02:25 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.1.1
+  Changes:
+  * Improve auto-scroll policy of message list
+  Bug fixes:
+  * Fix TLS certificate verification error on glib-networking
+    2.64.3
+  * Fix crash when connecting to an invalid host
+
+-------------------------------------------------------------------
 Sun May 24 10:45:25 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.1.0
