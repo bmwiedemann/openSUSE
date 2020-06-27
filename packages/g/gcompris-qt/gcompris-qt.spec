@@ -1,8 +1,8 @@
 #
 # spec file for package gcompris-qt
 #
-# Copyright (c) 2019 SUSE LLC
-# Copyright (c) 2019 Ioda-Net Sàrl, Charmoille, Switzerland. Bruno Friedmann
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 Ioda-Net Sàrl, Charmoille, Switzerland. Bruno Friedmann
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           gcompris-qt
-Version:        0.97
+Version:        0.97.1
 Release:        0
 Summary:        Multiactivity educational software for children aged 2–10 (Qt version)
 License:        GPL-3.0-or-later

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 27 14:07:48 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Upgrade to version 0.97.1
+  + bugfix version for system using qt > 5.12 
+- Packaging
+  + spec-cleaner minimal
+
+-------------------------------------------------------------------
 Tue Dec 10 07:29:54 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Upgrade to version 0.97
