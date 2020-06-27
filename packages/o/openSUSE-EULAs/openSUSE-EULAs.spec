@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSE-EULAs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %bcond_without  java
 
 Name:           openSUSE-EULAs
-Version:        84.87.20190503.6ae4bbd
+Version:        84.87.20200511.4de0f73
 Release:        0
-Url:            https://github.com/openSUSE/openSUSE-EULAs
+URL:            https://github.com/openSUSE/openSUSE-EULAs
 Summary:        Collection of EULAs for openSUSE
 License:        MIT
 Group:          Development/Other
