@@ -3690,4 +3690,12 @@
     <comment>submit new version 4.3.8</comment>
     <requestid>815784</requestid>
   </revision>
+  <revision rev="485" vrev="1">
+    <srcmd5>ddcfa31cf2d5b590ad58dc1e6494a668</srcmd5>
+    <version>4.3.9</version>
+    <time>1593292914</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.3.9</comment>
+    <requestid>816572</requestid>
+  </revision>
 </revisionlist>
