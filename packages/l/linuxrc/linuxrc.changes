@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Wed Jun 24 12:01:57 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#225
+- s390: set rd.zdev=no-auto if auto-config has been turned off
+  (bsc#1168036)
+- 7.0.18
+
+--------------------------------------------------------------------
 Wed Jun 3 12:56:12 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#224
