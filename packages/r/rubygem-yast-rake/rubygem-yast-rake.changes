@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 23 11:47:03 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- :sle_latest is SLE15-SP3 now (bsc#1173266).
+- 0.2.39
+
+-------------------------------------------------------------------
 Wed May 13 10:13:35 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
 
 - Enhanced "check:pot" task to check for "%<foo>" tags in
