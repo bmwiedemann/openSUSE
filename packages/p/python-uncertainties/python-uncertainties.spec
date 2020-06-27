@@ -1,7 +1,7 @@
 #
 # spec file for package python-uncertainties
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,23 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-uncertainties
-Version:        3.1.2
+Version:        3.1.4
 Release:        0
 Summary:        Uncertainties on the Quantities Involved (aka "Error Propagation")
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/lebigot/uncertainties/
 Source:         https://files.pythonhosted.org/packages/source/u/uncertainties/uncertainties-%{version}.tar.gz
+BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module testsuite}
+BuildRequires:  %{python_module tools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-testsuite
-BuildRequires:  python3-tools
 BuildArch:      noarch
+Requires:       python-future
 %if 0%{?suse_version}
 Recommends:     python-numpy
 %endif
@@ -45,9 +47,6 @@ involving numbers with uncertainties can also be evaluated directly.
 
 %prep
 %setup -q -n uncertainties-%{version}
-# crazy directory layout
-rm -r uncertainties-py23
-mv uncertainties-py27 uncertainties
 sed -i -e '/^#!\//, 1d' uncertainties/1to2.py
 sed -i -e '/^#!\//, 1d' uncertainties/lib1to2/test_1to2.py
 
