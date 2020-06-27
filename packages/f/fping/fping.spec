@@ -1,7 +1,7 @@
 #
 # spec file for package fping
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           fping
-Version:        4.1
+Version:        4.2
 Release:        0
 Summary:        A program to ping multiple hosts
 License:        MIT
 Group:          Productivity/Networking/Diagnostic
-Url:            http://www.fping.org
+URL:            http://www.fping.org
 Source:         http://fping.org/dist/%{name}-%{version}.tar.gz
+Patch0:         fping-4.2-gcc10-extern.patch
+%if 0%{?suse_version} >= 1500
 Requires(pre):  permissions
+%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -47,24 +50,33 @@ designed to be easy to parse.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure
 make %{?_smp_mflags}
 
 %install
-%make_install
+make install DESTDIR="%{buildroot}"
 
+%if 0%{?suse_version} >= 1500
 %post
 %set_permissions %{_sbindir}/fping
 
 %verifyscript
 %verify_permissions -e %{_sbindir}/fping
+%endif
 
 %files
 %defattr(-,root,root)
-%doc CHANGELOG.md INSTALL
-%{_mandir}/man8/fping.8%{ext_man}
+%doc CHANGELOG.md 
+%if 0%{?suse_version} >= 1500
+%license COPYING
 %verify(not mode caps) %attr(0755,root,root) %{_sbindir}/fping
+%else
+%doc COPYING
+%{_sbindir}/fping
+%endif
+%{_mandir}/man8/fping.8%{ext_man}
 
 %changelog

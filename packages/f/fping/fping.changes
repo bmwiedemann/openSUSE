@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Jun 14 15:45:06 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
+
+- correct download URL (upstream is using .gz instead of bz2)
+- refreshed fping-4.2-gcc10-extern.patch
+
+-------------------------------------------------------------------
+Mon Jun  8 12:49:08 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- add fping-4.2-gcc10-extern.patch to fix build with GCC10
+
+-------------------------------------------------------------------
+Wed Mar  6 13:09:14 UTC 2019 - lars@linux-schulserver.de
+
+- bzip2 the sources
+- package COPYING file instead of INSTALL file
+- use permission settings only on SLE-15 and newer
+
+-------------------------------------------------------------------
+Sat Feb 23 06:58:48 UTC 2019 - seanlew@opensuse.org
+
+- Update to version 4.2
+  * Allow decimal numbers for -t -i -p and -Q
+  * New option -x/--reachable to check # of reachable hosts
+  * Fix build with --disable-ipv6 (#134)
+  * Fix hang with '-6' if the binary is named 'fping6'
+  * Get rid of warning 'timeout -t value' (#142)
+
+-------------------------------------------------------------------
 Thu Sep 20 10:21:39 UTC 2018 - kstreitova@suse.com
 
 - Update to version 4.1

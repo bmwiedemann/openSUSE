@@ -270,4 +270,24 @@
     <comment></comment>
     <requestid>637024</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ed182640467042cb3c3d1f7af9574ad7</srcmd5>
+    <version>4.2</version>
+    <time>1593292938</time>
+    <user>dimstar_suse</user>
+    <comment>- correct download URL (upstream is using .gz instead of bz2)
+- refreshed fping-4.2-gcc10-extern.patch
+- add fping-4.2-gcc10-extern.patch to fix build with GCC10
+- bzip2 the sources
+- package COPYING file instead of INSTALL file
+- use permission settings only on SLE-15 and newer
+- Update to version 4.2
+  * Allow decimal numbers for -t -i -p and -Q
+  * New option -x/--reachable to check # of reachable hosts
+  * Fix build with --disable-ipv6 (#134)
+  * Fix hang with '-6' if the binary is named 'fping6'
+  * Get rid of warning 'timeout -t value' (#142)
+</comment>
+    <requestid>814570</requestid>
+  </revision>
 </revisionlist>
