@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  2 18:41:21 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.9.7: 
+  + fix a buffer overflow processing long words.
+- Drop 0003-overflow-processing-gecos.patch and
+  0004-overflow-processing-long-words.patch: fixed upstream.
+- Update source URI.
+- Remove use of translation-update-upstream. It cannot be added to
+  ring 0 on leap, and 2.9.7 has some translation fixes
+  (bsc#1172396).
+
+-------------------------------------------------------------------
 Fri May 22 16:06:54 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Enable translation-update-upstream on leap, to remove the use of

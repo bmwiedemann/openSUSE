@@ -17,30 +17,25 @@
 
 
 Name:           cracklib
-Version:        2.9.6
+Version:        2.9.7
 Release:        0
 Summary:        Library to crack passwords using dictionaries
 License:        LGPL-2.1-only
 Group:          System/Libraries
 URL:            http://sourceforge.net/projects/cracklib
-Source:         https://github.com/%{name}/%{name}/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
 # PATCH-FIX-OPENSUSE (should be upstreamed)
 # Remove support for broken 64bit indexes from magic entry [bnc#106007]
 Patch1:         0001-cracklib-magic.diff
 # PATCH-FIX-OPENSUSE Hide non-public functions
 Patch2:         0002-cracklib-2.9.2-visibility.patch
-Patch3:         0003-overflow-processing-gecos.patch
-Patch4:         0004-overflow-processing-long-words.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gzip
 BuildRequires:  libtool
 BuildRequires:  zlib-devel
 Requires:       cracklib-dict
-%if 0%{?sle_version}
-BuildRequires:  translation-update-upstream
-%endif
 
 %description
 CrackLib tests passwords to determine whether they match
@@ -87,13 +82,8 @@ This package contains a small dictionay file used by cracklib.
 
 %prep
 %setup -q
-%if 0%{?sle_version}
-translation-update-upstream
-%endif
 %patch1
 %patch2
-%patch3 -p1
-%patch4 -p1
 
 %build
 AUTOPOINT=true autoreconf -fi
