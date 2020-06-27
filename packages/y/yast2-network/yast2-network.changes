@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Jun 26 08:00:33 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- AutoYaST schema: add the setup_before_proposal element to the
+  schema (bsc#1171922)
+- 4.3.10
+
+-------------------------------------------------------------------
+Wed Jun 24 11:52:46 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Do not export network when not requested (bsc#1172552)
+- 4.3.9
+
+-------------------------------------------------------------------
+Fri Jun 19 18:24:34 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not export any settings when NetworkManager is the network
+  backend (bsc#1172822).
+- 4.3.8
+
+-------------------------------------------------------------------
+Fri Jun 19 08:52:54 UTC 2020 - Martin Vidner <mvidner@suse.com>
+
+- Save inst-sys memory by ending ag_udev_persistent after use
+  (bsc#1172139).
+- 4.3.7
+
+-------------------------------------------------------------------
+Mon Jun 15 11:53:03 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not export interfaces <aliases> section when there are no
+  aliases to export (bsc#1172922).
+- 4.3.6
+
+-------------------------------------------------------------------
 Thu Jun 11 08:24:34 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Try to install the wireless-tools package when the package is
