@@ -24,7 +24,7 @@
 %define ca_bundle %{_localstatedir}/lib/ca-certificates/ca-bundle.pem
 
 Name:           godot
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -76,8 +76,8 @@ BuildRequires:  pkgconfig(miniupnpc)
 %else
 %if 0%{?is_opensuse}
 # SLES seems not to have wslay and miniupnpc
-BuildRequires:  pkgconfig(libwslay)
 BuildRequires:  libminiupnpc-devel
+BuildRequires:  pkgconfig(libwslay)
 %if 0%{?sle_version} >= 150200
 BuildRequires:  mbedtls-devel
 %endif
@@ -99,36 +99,35 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 # Has some modifications for IPv6 support, upstream enet is unresponsive
 # Should not be unbundled.
-Provides:       bundled(enet) = 1.3.14
+Provides:       bundled(enet) = 1.3.15
 
 # Has custom changes to support seeking in zip archives
 # Should not be unbundled.
 Provides:       bundled(minizip) = 1.2.11
 
+Provides:       bundled(FastLZ)
+Provides:       bundled(Tangent_Space_Normal_Maps)
 Provides:       bundled(cvtt)
+Provides:       bundled(easing)
 Provides:       bundled(etc2comp)
-Provides:       bundled(noto-sans-fonts)
-Provides:       bundled(hack-fonts)
-Provides:       bundled(google-droid-fonts)
 Provides:       bundled(glad)
+Provides:       bundled(google-droid-fonts)
+Provides:       bundled(hack-fonts)
+Provides:       bundled(hqx)
+Provides:       bundled(ifaddrs-android)
 Provides:       bundled(jpeg-compressor)
 Provides:       bundled(libsimplewebm)
-Provides:       bundled(polyclipping)
-Provides:       bundled(FastLZ)
-Provides:       bundled(hqx)
+Provides:       bundled(noto-sans-fonts)
 Provides:       bundled(open-simplex-noise-in-c)
 Provides:       bundled(pcg)
-Provides:       bundled(smaz)
+Provides:       bundled(polyclipping)
 Provides:       bundled(polypartition)
-Provides:       bundled(curl_hostcheck)
-Provides:       bundled(yuv2rgb)
-Provides:       bundled(ifaddrs-android)
-Provides:       bundled(easing)
-Provides:       bundled(Tangent_Space_Normal_Maps)
-Provides:       bundled(stb)
 Provides:       bundled(pvrtccompressor)
+Provides:       bundled(smaz)
+Provides:       bundled(stb)
 Provides:       bundled(tinyexr)
 Provides:       bundled(vhacd)
+Provides:       bundled(yuv2rgb)
 
 # Can be unbundled if packaged
 Provides:       bundled(nanosvg)
@@ -142,10 +141,10 @@ Provides:       bundled(assimp)
 
 %if 0%{?suse_version} > 1500
 %else
-Provides:       bundled(bullet) = 2.89
+Provides:       bundled(bullet) = 2.90
 Provides:       bundled(libzstd)
 %if 0%{?sle_version} < 150200
-Provides:       bundled(mbedtls) = 2.16.5
+Provides:       bundled(mbedtls) = 2.16.6
 %endif
 %if !0%{?is_opensuse}
 # SLES seems not to have miniupnpc and wslay
@@ -220,6 +219,9 @@ cp thirdparty/README.md thirdparty_README.md
 
 # actual doc location in openSUSE
 sed -i 's/\/usr\/share\/doc\/godot\//\/usr\/share\/doc\/packages\/godot\//' misc/dist/linux/godot.6
+
+# rpmlint considers file invalid without "X-" prefix
+sed -i 's/PrefersNonDefaultGPU=true/X-PrefersNonDefaultGPU=true/' misc/dist/linux/org.godotengine.Godot.desktop
 
 # disarm shebang
 sed -i '1s/#!/##/' misc/dist/shell/godot.bash-completion

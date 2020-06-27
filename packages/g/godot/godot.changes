@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Jun 26 21:00:00 UTC 2020 - cunix@mail.de
+
+- In .desktop file "PrefersNonDefaultGPU" prefixed with "X-"
+
+-------------------------------------------------------------------
+Fri Jun 26 17:23:58 UTC 2020 - Max Mitschke <maxmitschke@fastmail.com>
+
+- Update to 3.2.2
+
+  Highlights:
+  * 2D batching for the GLES2 renderer
+  * C# support for the iOS platform
+  * Re-architecture of the Android plugin system
+  * DTLS support and ENet integration
+  * Better handling of Variants pointing to released Objects
+  * Updated and localized documentation
+
+  Added:
+  * 2D: MODULATE builtin for canvas item shaders
+  * Editor: rotation widget in 3D viewport
+  * Editor: Allow duplicating files when holding Control
+  * GLES2/GLES3: support for OpenGL external textures
+  * Import: support for glTF lights
+  * Input: keyboard layout enumeration / set / get functions
+  * Object: has_signal method
+  * RegEx: Enable Unicode support for RegEx class
+  * Shaders: shader time scaling
+  * Add 'custom_modules' build option to compile external user modules
+  * SCons: Allow to read 'custom_modules' option via a file
+  * Provide the ability for clients of the Godot library
+    to add their own command line arguments
+  * Request the dedicated GPU when starting Godot from the '.desktop' file
+  * set_frame, pause, and oneshot to AnimatedTexture
+  * selection outline to locked nodes
+
+  Fixed:
+  * Audio: volume interpolation in positional audio nodes
+  * Import: changing the import type of multiple files at once
+  * Particles: uninitialized memory in CPUParticles and CPUParticles2D
+  * Physics: Make soft body completely stiff to attachment point
+  * Physics: Normalize up direction vector in move_and_slide()
+  * Account for file deletion and renaming in Export Presets
+  * can't convert Transform -> Transform2D
+  * Emit signal when animation ends by seek
+  * Othographic camera in-editor now uses Z near/far settings
+    instead of a hardcoded value
+  * Editor 2D: Change pixel alignment strategy, jittering in high zoom
+  * Allow single quotes in comments
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.2.2/Godot_v3.2.2-stable_changelog_chrono.txt
+
+- "linker_pie_flag.patch" adjusted.
+
+-------------------------------------------------------------------
 Tue Mar 10 16:00:00 UTC 2020 - cunix@mail.de
 
 - Update to 3.2.1
