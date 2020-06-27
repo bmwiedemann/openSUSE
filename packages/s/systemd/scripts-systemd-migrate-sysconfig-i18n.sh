@@ -128,8 +128,18 @@ migrate_language () {
 	fi
 }
 
-migrate_locale;   rv1=$?
-migrate_keyboard; rv2=$?
-migrate_language; rv3=$?
 
-test $((rv1 + rv2 + rv3)) -eq 0
+# The marker could have been incorrectly put in /usr/lib. In this case
+# move it to its new place.
+mv /usr/lib/systemd/scripts/.migrate-sysconfig-i18n.sh~done \
+   /var/lib/systemd/i18n-migrated &>/dev/null
+
+if ! test -e /var/lib/systemd/i18n-migrated; then
+	declare -i rv=0
+
+	migrate_locale;   rv+=$?
+	migrate_keyboard; rv+=$?
+	migrate_language; rv+=$?
+
+	test $rv -eq 0 && touch /var/lib/systemd/i18n-migrated
+fi

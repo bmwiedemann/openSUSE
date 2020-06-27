@@ -670,10 +670,6 @@ mkdir -p %{buildroot}%{_sysconfdir}/X11/xorg.conf.d
 mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/coredump
 mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/catalog
 
-# Create ghost databases
-touch %{buildroot}%{_localstatedir}/lib/systemd/catalog/database
-touch %{buildroot}%{_sysconfdir}/udev/hwdb.bin
-
 # Make sure the NTP units dir exists
 mkdir -p %{buildroot}%{_ntpunitsdir}
 
@@ -722,8 +718,16 @@ EOF
 install -m 644 %{S:11} %{buildroot}%{_unitdir}/
 ln -s ../after-local.service %{buildroot}%{_unitdir}/multi-user.target.wants/
 
+# ghost directories with default permissions.
 mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/backlight
-mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/random-seed
+
+# ghost files with default permisssions.
+touch %{buildroot}%{_sysconfdir}/X11/xorg.conf.d/00-keyboard.conf
+touch %{buildroot}%{_sysconfdir}/vconsole.conf
+touch %{buildroot}%{_sysconfdir}/locale.conf
+touch %{buildroot}%{_sysconfdir}/machine-info
+touch %{buildroot}%{_localstatedir}/lib/systemd/catalog/database
+touch %{buildroot}%{_localstatedir}/lib/systemd/i18n-migrated
 
 %fdupes -s %{buildroot}%{_mandir}
 
@@ -867,10 +871,9 @@ fi
 # This is needed both at package updates and package installations
 # because we might be upgrading from a system which was running SysV
 # init (systemd package is being installed).
-if ! test -e %{_prefix}/lib/systemd/scripts/.migrate-sysconfig-i18n.sh~done; then
-        %{_prefix}/lib/systemd/scripts/migrate-sysconfig-i18n.sh &&
-        touch %{_prefix}/lib/systemd/scripts/.migrate-sysconfig-i18n.sh~done || :
-fi
+#
+# It's run only once.
+%{_prefix}/lib/systemd/scripts/migrate-sysconfig-i18n.sh || :
 
 %postun
 %systemd_postun
@@ -1240,12 +1243,8 @@ fi
 %ghost %config(noreplace) %{_sysconfdir}/X11/xorg.conf.d/00-keyboard.conf
 %ghost %config(noreplace) %{_sysconfdir}/vconsole.conf
 %ghost %config(noreplace) %{_sysconfdir}/locale.conf
-%ghost %config(noreplace) %{_sysconfdir}/machine-id
 %ghost %config(noreplace) %{_sysconfdir}/machine-info
-%ghost %config(noreplace) %{_sysconfdir}/systemd/system/runlevel2.target
-%ghost %config(noreplace) %{_sysconfdir}/systemd/system/runlevel3.target
-%ghost %config(noreplace) %{_sysconfdir}/systemd/system/runlevel4.target
-%ghost %config(noreplace) %{_sysconfdir}/systemd/system/runlevel5.target
+%ghost %attr(0444,root,root) %config(noreplace) %{_sysconfdir}/machine-id
 
 %{_datadir}/systemd
 %{_datadir}/factory
@@ -1317,7 +1316,8 @@ fi
 %endif
 %ghost %{_localstatedir}/lib/systemd/catalog/database
 %ghost %{_localstatedir}/lib/systemd/backlight
-%ghost %{_localstatedir}/lib/systemd/random-seed
+%ghost %{_localstatedir}/lib/systemd/i18n-migrated
+%ghost %attr(0600,root,root) %{_localstatedir}/lib/systemd/random-seed
 
 %dir %{_datadir}/bash-completion
 %dir %{_datadir}/bash-completion/completions

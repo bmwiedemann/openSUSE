@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jun 24 06:33:33 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- migrate-sysconfig-i18n.sh: fix marker handling  (bsc#1173229)
+
+  The marker is used to make sure the script is run only once. Instead
+  of storing it in /usr, use /var which is more appropriate for such
+  file.
+
+  Also make it owned by systemd package.
+
+-------------------------------------------------------------------
+Tue Jun 23 13:29:18 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Fix inconsistent file modes for some ghost files (bsc#1173227)
+
+  Ghost files are assumed by rpm to have mode 000 by default which is
+  not consistent with file permissions set at runtime.
+
+  Also /var/lib/systemd/random-seed was tracked wrongly as a
+  directory.
+
+  Also don't track (ghost) /etc/systemd/system/runlevel*.target
+  aliases since we're not supposed to track units or aliases user
+  might define/override.
+
+-------------------------------------------------------------------
 Fri Jun 19 09:59:29 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Include in the package version the stable minor (if any).
