@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <services>
-  <service name="obs_scm" mode="localonly">
+  <service name="obs_scm" mode="disabled">
     <param name="filename">foliate</param>
     <param name="url">https://github.com/johnfactotum/foliate.git</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/2.2.1</param>
+    <param name="revision">refs/tags/2.3.0</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
-  <service mode="localonly" name="set_version"/>
+  <service mode="disabled" name="set_version"/>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="compression">gz</param>

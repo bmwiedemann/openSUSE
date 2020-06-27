@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jun 19 05:42:17 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 2.3.0:
+  * OPDS catalogs:
+    - Catalogs are now opened in the main library window (#403)
+    - View current location
+    - Go to catalog start page
+    - Reload catalog
+    - Add current feed to catalogs
+    - HTTP authentication support (#421)
+  * Other changes:
+    - Fixed unique identifier extraction for 
+      FictionBook (.fb2, .fb2.zip) files (#462)
+    - Fixed newlines being ignored when copying text (#463)
+    - “Turn page on tap” is now disabled in 
+      non-paginated layouts (#464)
+    - Opening a book from the library view now closes the 
+      library window (#446)
+    - Language and publication dates in metadata are now parsed 
+      and formatted
+    - Export annotations from the library view
+
+-------------------------------------------------------------------
 Thu Jun 11 09:44:58 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Filter "typelib(Handy) = 1" dependency. We use handy 0.0.
