@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-branding
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define flavor @BUILD_FLAVOR@
 %if "%{flavor}" == ""
@@ -31,7 +32,7 @@ ExclusiveArch:  %{nil}
 Name:           NetworkManager-branding%{?dash}%{branding_name}
 Version:        42.1
 Release:        0
-Summary:        Default ${branding_name} branding for %{_sysconfdir}/NetworkManager/NetworkManager.conf
+Summary:        Default %{branding_name} branding for %{_sysconfdir}/NetworkManager/NetworkManager.conf
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            http://www.gnome.org/projects/NetworkManager/

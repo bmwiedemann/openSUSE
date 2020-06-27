@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 25 12:31:23 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix summary variable expansion: use %rpm style instead of $shell
+  style (boo#1172773).
+
+-------------------------------------------------------------------
 Tue Nov 26 09:05:10 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
 
 - Switch package to _multibuild.
