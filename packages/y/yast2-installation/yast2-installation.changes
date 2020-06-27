@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jun 25 13:24:45 UTC 2020 - Martin Vidner <mvidner@suse.com>
+
+- Fix "Cmdline: parameter not set" for virt-install (bsc#1172139)
+- 4.3.7
+
+-------------------------------------------------------------------
+Thu Jun 25 11:07:53 CEST 2020 - aschnell@suse.com
+
+- copy NVMe hostnqn and hostid from installation system to target
+  system during installation (bsc#1172853)
+- 4.3.6
+
+-------------------------------------------------------------------
+Wed Jun 24 09:18:28 UTC 2020 - Martin Vidner <mvidner@suse.com>
+
+- memsample: at install time sample memory consumption each 5s,
+  enabling CSV and PNG reports (bsc#1172139)
+- startup/common/network.sh: remove bashisms to enable
+  switching inst_setup to dash
+- 4.3.5
+
+-------------------------------------------------------------------
+Tue Jun 23 10:53:54 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Do not export to autoyast profile image deployment unless
+  requested (bsc#1172552)
+- 4.3.4
+
+-------------------------------------------------------------------
 Fri Jun 12 16:09:32 UTC 2020 - David Diaz <dgonzalez@suse.com>
 
 - Improve the UX of the Previously Used Repositories dialog by
