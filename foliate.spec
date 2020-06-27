@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(Handy\\) = 1
 %define oname com.github.johnfactotum.Foliate
 Name:           foliate
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        A GTK eBook reader
 License:        GPL-3.0-only
@@ -51,7 +51,6 @@ A GTK eBook viewer, built with GJS and Epub.js.
 
 chmod a-x README.md COPYING
 find %{buildroot}/%{_datadir} -type f -executable -exec chmod -x "{}" +
-rm %{buildroot}/%{_datadir}/com.github.johnfactotum.Foliate/assets/.eslintrc.json
 
 chmod a-x %{buildroot}/%{_datadir}/com.github.johnfactotum.Foliate/assets/KindleUnpack/*
 
