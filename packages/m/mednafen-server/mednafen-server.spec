@@ -1,7 +1,7 @@
 #
 # spec file for package mednafen-server
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,16 +39,14 @@ Network play server for mednafen
 %setup -q -n %{name}
 
 %build
-export CFLAGS="%{optflags} -O3 -fomit-frame-pointer -pipe"
-export CXXFLAGS="$CFLAGS"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 mkdir -p %{buildroot}%{_sbindir}
 ln -fs %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{_user}
-install -Dm644 %{SOURCE1} %{buildroot}%{_libexecdir}/systemd/system/%{_user}.service
+install -Dm644 %{SOURCE1} %{buildroot}%{_unitdir}/%{_user}.service
 install -Dm664 standard.conf %{buildroot}%{_home}/%{name}.conf
 install -Dm644 %{SOURCE2} %{buildroot}%{_libexecdir}/firewalld/services/%{_user}.xml
 
@@ -67,11 +65,10 @@ getent passwd %{_user} >/dev/null 2>/dev/null || %{_sbindir}/useradd -rc 'User f
 %service_del_postun %{_user}.service
 
 %files
-%defattr(0644,root,root,-)
 %config(noreplace) %attr(0664,%{_user},%{_group}) %{_home}/%{name}.conf
 %license COPYING
 %doc ChangeLog
-%attr(0755,root,root) %{_bindir}/%{name}
+%{_bindir}/%{name}
 %{_sbindir}/rc%{_user}
 %{_unitdir}/%{_user}.service
 %dir %{_libexecdir}/firewalld

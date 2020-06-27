@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 27 16:28:29 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Add %make_build and %{_unitdir} macros.
+- Remove manual CFLAGS correction and %defattr, %attr macros.
+
+-------------------------------------------------------------------
 Tue Jan 29 09:51:13 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Refresh spec-file via spec-cleaner.
