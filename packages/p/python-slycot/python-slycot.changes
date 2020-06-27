@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 26 15:59:21 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- break test loop before test matrices are too ill-conditioned for
+  the ppc architecture
+- remove python2 support: there is no python2-scikit-build
+- requires cmake >= 3.11 (no leap 15.1)
+
+-------------------------------------------------------------------
 Sat May 30 14:03:41 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 0.4.0.0 

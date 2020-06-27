@@ -27,7 +27,7 @@
 %endif
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
 %define eggversion 0.4.0
 Name:           python-slycot
 Version:        0.4.0.0
@@ -43,14 +43,11 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scikit-build}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.11
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-fortran
 BuildRequires:  python-rpm-macros
-%if %{with python2}
-BuildRequires:  python2-configparser
-%endif
 %if %{with openblas}
 BuildRequires:  openblas-devel
 %else
@@ -65,6 +62,10 @@ Slycot is a wrapper for the SLICOT control and systems library.
 
 %prep
 %setup -q -n slycot-%{version}
+# break test loop before test matrices are too ill-conditioned for the architecture
+%ifarch ppc64 ppc64le
+  sed -i 's/for t in range(0, 50, 10)/for t in range(0, 20, 10)/' slycot/tests/test_sg03ad.py
+%endif
 
 %build
 export CFLAGS="%{optflags}"

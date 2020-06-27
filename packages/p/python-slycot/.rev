@@ -82,4 +82,12 @@
 - remove obsolete patches fix-test-sg03ad.patch and fix-test-td04ad.patch</comment>
     <requestid>810372</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>41fe0bfe4e1effea683e586d1a28b814</srcmd5>
+    <version>0.4.0.0</version>
+    <time>1593292956</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817306</requestid>
+  </revision>
 </revisionlist>
