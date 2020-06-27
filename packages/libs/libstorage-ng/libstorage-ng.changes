@@ -1,4 +1,28 @@
 --------------------------------------------------------------------
+Mon Jun 22 08:23:32 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#751
+- fixed order of exceptions
+- extended utility to check order of exceptions
+- allow to query max partition size for pools
+- updated documentation
+- work on pools
+- 4.3.28
+
+--------------------------------------------------------------------
+Mon Jun 15 10:26:26 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#750
+- added support for pools
+- added integration tests
+- extended documentation
+- simplyfied code
+- updated file dependencies for bindings
+- updated list of headers to install
+- fixed typos
+- 4.3.27
+
+--------------------------------------------------------------------
 Fri Jun 5 14:54:02 UTC 2020 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#749
