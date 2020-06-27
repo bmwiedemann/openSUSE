@@ -18,7 +18,7 @@
 
 
 Name:           flacon
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        Audio File Encoder
 License:        LGPL-2.1-or-later

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun 27 10:50:20 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.1.0
+  * Save TOTALDISCS and DISCNUMBER tags to the output CUE file.
+  * Now the program removes temporary files more carefully.
+  * Imporove main menu items.
+  * Because freedb.org died, the program uses gnudb.org instead.
+    Added a graphical interface for selecting other CDDB
+    servers.
+  * Translations updated.
+
+-------------------------------------------------------------------
 Sun May 31 11:14:30 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 - Update to version 6.0.0
   * Added support of profiles, you can have different encoding
