@@ -324,11 +324,13 @@ fi
     mkdir -p %{buildroot}%{_fillupdir}
 %if %{without sysvinit}
     mkdir -p %{buildroot}%{_unitdir}
-    mkdir -p %{buildroot}/%{_mailcnfdir}/system
+    mkdir -p %{buildroot}%{_mailcnfdir}/system
 %endif
     make \
 	DESTDIR=%{buildroot} \
 	SUBDIRS="%{SUBDIRS}" \
+	EBINDIR=%{_libexecdir}/sendmail.d/bin \
+	HFDIR=%{_libexecdir}/sendmail.d \
 	MANROOTMAN=%{_mandir}/man \
 	MANROOT=%{_mandir}/cat \
 	install
@@ -491,10 +493,10 @@ fi
     install -m 0644 %{S:3} %{buildroot}%{_unitdir}/
     install -m 0644 %{S:4} %{buildroot}%{_unitdir}/
     install -m 0644 %{S:5} %{buildroot}%{_unitdir}/
-    install -m 0644 %{S:6} %{buildroot}/%{_mailcnfdir}/system/sm.pre
-    install -m 0644 %{S:7} %{buildroot}/%{_mailcnfdir}/system/sm-client.pre
-    chmod 0755 %{buildroot}/%{_mailcnfdir}/system/sm.pre
-    chmod 0755 %{buildroot}/%{_mailcnfdir}/system/sm-client.pre
+    install -m 0644 %{S:6} %{buildroot}%{_mailcnfdir}/system/sm.pre
+    install -m 0644 %{S:7} %{buildroot}%{_mailcnfdir}/system/sm-client.pre
+    chmod 0755 %{buildroot}%{_mailcnfdir}/system/sm.pre
+    chmod 0755 %{buildroot}%{_mailcnfdir}/system/sm-client.pre
 %endif
     #
     # Documentation for libmilter

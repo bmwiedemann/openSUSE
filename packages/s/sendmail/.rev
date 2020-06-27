@@ -857,4 +857,13 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
   directory is not packaged by sendmail but by system-user-mail. (forwarded request 813250 from mgerstner)</comment>
     <requestid>814660</requestid>
   </revision>
+  <revision rev="96" vrev="24">
+    <srcmd5>a9bba2db9fbae312dd9e391a28476ea3</srcmd5>
+    <version>8.15.2</version>
+    <time>1593292865</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for %_libexecdir changing to /usr/libexec
+- Spec file cleanups (forwarded request 816723 from gmbr3)</comment>
+    <requestid>816802</requestid>
+  </revision>
 </revisionlist>
