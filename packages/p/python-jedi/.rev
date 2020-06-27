@@ -240,4 +240,20 @@
     <comment>- Skip two tests on leap not just sp1+</comment>
     <requestid>808522</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d75dbc75ae2b4c910c133cb4d626754a</srcmd5>
+    <version>0.17.1</version>
+    <time>1593292835</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.17.1
+  * Django ``Model`` meta class support
+  * Django Manager support (completion on Managers/QuerySets)
+  * Added Django Stubs to Jedi, thanks to all contributors of the
+    `Django Stubs &lt;https://github.com/typeddjango/django-stubs&gt;`_ project
+  * Added ``SyntaxError.get_message``
+  * Python 3.9 support
+  * Bugfixes (mostly towards Generics) 
+- drop jedi-pr1543-sorttest.patch merged upstream</comment>
+    <requestid>816146</requestid>
+  </revision>
 </revisionlist>

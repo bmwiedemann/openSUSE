@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun 20 12:15:53 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 0.17.1
+  * Django ``Model`` meta class support
+  * Django Manager support (completion on Managers/QuerySets)
+  * Added Django Stubs to Jedi, thanks to all contributors of the
+    `Django Stubs <https://github.com/typeddjango/django-stubs>`_ project
+  * Added ``SyntaxError.get_message``
+  * Python 3.9 support
+  * Bugfixes (mostly towards Generics) 
+- drop jedi-pr1543-sorttest.patch merged upstream
+
+-------------------------------------------------------------------
 Sun May 24 08:30:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip two tests on leap not just sp1+
