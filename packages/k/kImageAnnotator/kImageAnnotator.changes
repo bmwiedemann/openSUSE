@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 25 19:27:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3.1
+  Fixed:
+  * Crashes after undoing a number annotation.
+  * Text overlapping when resizing text box.
+  * Snap lines to degrees not working when CTRL pressed before
+    clicking annotation area.
+  * Undo removes several or all items.
+  * Marker Rect and Ellipse draw only border but no fill.
+
+-------------------------------------------------------------------
 Fri Jun 19 13:48:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Move files LICENSE, CHANGELOG.md and README.md into
