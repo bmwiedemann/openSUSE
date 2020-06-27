@@ -136,6 +136,9 @@ unsorted:
   - NetworkManager-strongswan-gnome 
   - NetworkManager-strongswan-lang 
   - OOKiedokie 
+  - OpenCSD 
+  - OpenCSD-devel 
+  - OpenCSD-doc 
   - OpenColorIO 
   - OpenColorIO-devel 
   - OpenColorIO-doc 
@@ -1820,6 +1823,7 @@ unsorted:
   - cockpit-bridge 
   - cockpit-dashboard 
   - cockpit-doc 
+  - cockpit-docker: [x86_64] 
   - cockpit-kdump 
   - cockpit-networkmanager 
   - cockpit-packagekit 
@@ -10247,7 +10251,7 @@ unsorted:
   - libjson-c-devel 
   - libjson-c-doc 
   - libjson-glib-1_0-0-32bit: [x86_64] 
-  - libjsoncpp22 
+  - libjsoncpp24 
   - libjte-devel 
   - libjthread1_3_3 
   - libjxrglue0 
@@ -11040,6 +11044,8 @@ unsorted:
   - libopenblas_serial-devel 
   - libopenblas_serial0 
   - libopencascade7 
+  - libopencsd0 
+  - libopencsd_c_api0 
   - libopencsg1 
   - libopencv3_4 
   - libopencv4_3 
@@ -15896,6 +15902,7 @@ unsorted:
   - okteta-part 
   - okteta-part-lang 
   - okular-devel 
+  - omemo-utils 
   - omnisharp-server 
   - omping 
   - onboard 
@@ -18231,6 +18238,8 @@ unsorted:
   - plasma-wayland-protocols 
   - plasma5-addons-devel 
   - plasma5-applet-suse-prime 
+  - plasma5-nano 
+  - plasma5-nano-lang 
   - plasma5-sdk 
   - plasma5-sdk-lang 
   - plasma5-workspace-devel 
