@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 26 14:02:34 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Ensure consistent removal of LVM snapshots when the origin LV
+  is deleted (related to bsc#1120410).
+- 4.3.9
+
+-------------------------------------------------------------------
+Wed Jun 10 14:26:28 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Partitioner: does not warn the user when the BIOS Boot partition
+  is missing in a XEN guest.
+
+-------------------------------------------------------------------
 Thu May 19 15:22:56 CEST 2020 - schubi@suse.de
 
 - AutoYaST: Cleanup/improve issue handling (bsc#1171335).
