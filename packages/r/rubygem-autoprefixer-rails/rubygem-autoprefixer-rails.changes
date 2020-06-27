@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jun 27 18:33:43 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 9.8.4
+
+  ## 9.8.4
+  * Reduce JS bundle size.
+
+  ## 9.8.3
+  * Update Can I Use data.
+
+  ## 9.8.2
+  * Update Can I Use data.
+
+  ## 9.8.1
+  * Replace `chalk` to `kleur` (by Luke Edwards).
+
+  ## 9.8 “Vigilo Confido”
+  * Add `:placeholder-shown` support (by Tanguy Krotoff).
+
+-------------------------------------------------------------------
 Mon Apr 27 13:23:09 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 9.7.6
