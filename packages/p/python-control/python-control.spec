@@ -25,11 +25,14 @@ Summary:        Python control systems library
 License:        BSD-3-Clause
 URL:            http://python-control.sourceforge.net
 Source:         https://files.pythonhosted.org/packages/source/c/control/control-%{version}.tar.gz
+Source1:        %{name}-rpmlintrc
 Patch0:         pr365-copy-PR-320-for-robust_array_test.patch
 Patch1:         pr366-ease-precision-tolerance.patch
+Patch2:         pr380-fix-pytest-discovery.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-matplotlib
 Requires:       python-numpy
 Requires:       python-scipy
 Recommends:     python-slycot
@@ -37,12 +40,12 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module matplotlib-qt5}
 BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest-xvfb}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module slycot}
 BuildRequires:  libjemalloc2
-BuildRequires:  xvfb-run
 # /SECTION
 %python_subpackages
 
@@ -54,6 +57,9 @@ operations for analysis and design of feedback control systems.
 %setup -q -n control-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+#remove shebang
+sed -i '1{\@^#!/usr/bin/env python@ d}' control/tests/*.py
 
 %build
 %python_build
@@ -64,21 +70,27 @@ operations for analysis and design of feedback control systems.
 
 %check
 # The default Agg backend does not define the toolbar attribute in the Figure
-# Manager used by some tests, so we run the tests with the Qt5 backend in a
-# virtual X server environment
+# Manager used by some tests, so we run the tests with the Qt5 backend
+export MPLBACKEND="Qt5Agg"
 %if %{_arch} == i386
     # preload malloc library to avoid free() error on i586 architecture
     export LD_PRELOAD="%{_libdir}/libjemalloc.so.2"
 %endif
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-export MPLBACKEND="Qt5Agg"
-xvfb-run -a $python setup.py test 
-}
+%if %{_arch} == ppc64 || %{_arch} == ppc64le
+    %define skiptests -k "not TestMixsyn"
+%endif
+cat >> setup.cfg <<EOL
+[tool:pytest]
+filterwarnings =
+    ignore:.*matrix subclass:PendingDeprecationWarning
+    ignore:.*scipy:DeprecationWarning
+EOL
+%pytest %{?skiptests}
 
 %files %{python_files}
 %doc ChangeLog README.rst
 %license LICENSE
 %{python_sitelib}/control
-%{python_sitelib}/control-*-py*.egg-info
+%{python_sitelib}/control-%{version}-py*.egg-info
 
 %changelog

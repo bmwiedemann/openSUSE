@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 26 15:29:50 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- move to pytest, ignore deprecation warnings for scipy functions
+  and matrix type during tests gh#python-control/python-control#423 
+- fix invalid test discovery by pr380-fix-pytest-discovery.patch
+  gh#python-control/python-control#380
+- skip mixsyn test on PowerPC boo#1172555 
+
+-------------------------------------------------------------------
 Sat Jan 18 01:18:39 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - update to version 0.8.3

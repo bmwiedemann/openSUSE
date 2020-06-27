@@ -1,0 +1,25 @@
+diff --git a/control/tests/discrete_test.py b/control/tests/discrete_test.py
+index f08a5fa5..6598e3a8 100644
+--- a/control/tests/discrete_test.py
++++ b/control/tests/discrete_test.py
+@@ -5,7 +5,9 @@
+ 
+ import unittest
+ import numpy as np
+-from control import *
++from control import StateSpace, TransferFunction, feedback, step_response, \
++    isdtime, timebase, isctime, sample_system, bode, impulse_response, \
++    timebaseEqual, forced_response
+ from control import matlab
+ 
+ class TestDiscrete(unittest.TestCase):
+@@ -382,9 +384,6 @@ def test_discrete_bode(self):
+         np.testing.assert_array_almost_equal(mag_out, np.absolute(H_z))
+         np.testing.assert_array_almost_equal(phase_out, np.angle(H_z))
+ 
+-def suite():
+-   return unittest.TestLoader().loadTestsFromTestCase(TestDiscrete)
+-
+ 
+ if __name__ == "__main__":
+     unittest.main()
