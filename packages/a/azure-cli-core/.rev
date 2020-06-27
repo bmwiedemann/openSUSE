@@ -111,4 +111,16 @@
     <comment></comment>
     <requestid>801209</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5ff86a53acb17ba7e64f175679dc19f7</srcmd5>
+    <version>2.7.0</version>
+    <time>1593292940</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.7.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Update Requires from setup.py (forwarded request 815568 from glaubitz)</comment>
+    <requestid>815589</requestid>
+  </revision>
 </revisionlist>

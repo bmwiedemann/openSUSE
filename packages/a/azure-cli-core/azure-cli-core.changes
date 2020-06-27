@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 17 16:19:20 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.7.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Thu May  7 07:46:57 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
