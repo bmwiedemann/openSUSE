@@ -1325,4 +1325,12 @@
     <comment>submit new version 4.3.0</comment>
     <requestid>803200</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>28d9ea6375a778797f7b5c8c8de500d0</srcmd5>
+    <version>4.3.1</version>
+    <time>1593292897</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.3.1</comment>
+    <requestid>815970</requestid>
+  </revision>
 </revisionlist>

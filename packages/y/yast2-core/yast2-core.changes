@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 19 07:53:36 UTC 2020 - Martin Vidner <mvidner@suse.com>
+
+- Save memory by SCR.UnmountAgent telling other-process agents
+  to terminate (bsc#1172139)
+- 4.3.1
+
+-------------------------------------------------------------------
 Tue May 12 11:15:20 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Fixed building with new bison 3.6 (bsc#1171505)
