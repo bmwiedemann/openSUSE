@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 15 09:10:31 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Update gnome-initial-setup.spec: Start gnome-initial-setup via
+  xdg autostart as an alternative to systemd user units on
+  SLE-15-SP2 and Leap 15.2 (bsc#1172910).
+
+-------------------------------------------------------------------
 Thu Jun  4 10:33:50 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.3:

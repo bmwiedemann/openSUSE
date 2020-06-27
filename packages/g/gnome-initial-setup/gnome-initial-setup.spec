@@ -77,6 +77,9 @@ Initial assistant, helping you to get the system up and running.
 %build
 %meson \
         -Dparental_controls=disabled \
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+        -Dsystemd=false \
+%endif
 	%{nil}
 %meson_build
 
@@ -109,6 +112,7 @@ useradd -rM -d /run/gnome-initial-setup/ -s /sbin/nologin %{name} || :
 %{_libexecdir}/gnome-initial-setup-copy-worker
 %{_sysconfdir}/xdg/autostart/gnome-initial-setup-copy-worker.desktop
 %{_sysconfdir}/xdg/autostart/gnome-initial-setup-first-login.desktop
+%if !0%{?sle_version} || 0%{?sle_version} >= 160000
 %{_userunitdir}/gnome-initial-setup-copy-worker.service
 %{_userunitdir}/gnome-initial-setup-first-login.service
 %{_userunitdir}/gnome-initial-setup.service
@@ -119,6 +123,7 @@ useradd -rM -d /run/gnome-initial-setup/ -s /sbin/nologin %{name} || :
 %{_userunitdir}/gnome-session.target.wants/gnome-welcome-tour.service
 %dir %{_userunitdir}/gnome-session@gnome-initial-setup.target.wants
 %{_userunitdir}/gnome-session@gnome-initial-setup.target.wants/gnome-initial-setup.service
+%endif
 %if 0%{?sle_version} < 150200
 %{_libexecdir}/gnome-welcome-tour
 %{_sysconfdir}/xdg/autostart/gnome-welcome-tour.desktop
