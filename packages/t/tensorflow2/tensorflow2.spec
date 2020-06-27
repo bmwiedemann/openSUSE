@@ -220,7 +220,7 @@ BuildRequires:  cuda-cusparse-dev-10-1
 BuildRequires:  cuda-libraries-10-1
 BuildRequires:  libcublas-devel
 BuildRequires:  libcudnn7-devel
-BuildRequires:  libnccl2-devel
+BuildRequires:  libnccl-devel
 %endif
 %if %{with opencl}
 Requires:       Mesa-libOpenCL
@@ -308,12 +308,7 @@ Conflicts:      %{package_name_conflict}
 %if "%flavor" == ""
 ExclusiveArch:  do_not_build
 %endif
-%if 0%{is_opensuse}
-%if "%{flavor}" == "cuda-10-1"
-# openSUSE has no CUDA package
-ExclusiveArch:  do_not_build
-%endif
-%endif
+
 %if %{is_lite}
 ExcludeArch:    %ix86
 %else
@@ -551,12 +546,12 @@ export TF_SYSTEM_LIBS="\
     zlib_archive"
 
 %if %{with cuda}
-export PATH=PATH=/usr/lib/cuda-10.1/bin/:${PATH}
-export CUDA_HOME="/usr/lib/cuda-10.1,/usr"
-export CUDA_TOOLKIT_PATH=/"usr/lib/cuda-10.1,/usr"
-export TF_CUDA_PATHS="/usr/lib/cuda-10.1,/usr"
+export PATH=PATH="/usr/local/cuda-10.1/bin/:${PATH}"
+export CUDA_HOME="/usr/local/cuda-10.1,/usr"
+export CUDA_TOOLKIT_PATH=/"usr/local/cuda-10.1,/usr"
+export TF_CUDA_PATHS="/usr/local/cuda-10.1,/usr"
 export TF_NEED_CUDA=1 
-export TF_NCCL_VERSION=2.5.7
+export TF_NCCL_VERSION=2.7.3
 %else
 export TF_NEED_CUDA=0
 %endif
@@ -578,7 +573,7 @@ export ANDROID_NDK_HOME=0
 mkdir %{_topdir}/bin
 cd %{_topdir}/bin
 ln -s $(which python3) python
-%if 0%{?suse_version} < 1500
+%if 0%{?suse_version} > 1500
 %if %{with cuda}
 ln -s $(which gcc-7) gcc
 ln -s $(which g++-7) g++

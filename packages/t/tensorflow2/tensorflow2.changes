@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 19 11:21:59 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- fixed local CUDA builds 
+
+-------------------------------------------------------------------
 Tue Jun 16 09:27:33 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - updated to 2.1.1 which is a bug fix release mostly for external
