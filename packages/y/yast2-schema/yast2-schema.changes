@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 26 08:11:23 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Add the setup_before_proposal element to the networking section
+  (bsc#1171922)
+- 4.3.2
+
+-------------------------------------------------------------------
 Fri Jun  5 14:58:19 UTC 2020 - Martin Vidner <mvidner@suse.com>
 
 - Remove SUSE Linux 9.3 compatibility to improve error messages
