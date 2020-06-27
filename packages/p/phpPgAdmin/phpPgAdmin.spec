@@ -22,7 +22,8 @@ Name:           phpPgAdmin
 %define apxs %{_sbindir}/apxs2
 %define ap_sysconfdir %(%{apxs} -q SYSCONFDIR)
 %define ap_serverroot %(%{apxs} -q PREFIX)
-%define ap_docroot %(%{apxs} -q PREFIX)/htdocs
+%define ap_docroot_old %(%{apxs} -q PREFIX)/htdocs
+%define ap_docroot %{_datadir}
 %define ppa_config %{_sysconfdir}/%{name}/config.inc.php
 
 Summary:        Administration of PostgreSQL over the web
@@ -30,15 +31,16 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Databases/Tools
 Version:        7.12.1
 Release:        0
-#define rel_version %(/usr/bin/sed -e "s/\./-/g" <<<%{version})
 %define rel_version REL_7-12-1
 URL:            http://phppgadmin.sourceforge.net
 Source0:        https://github.com/%{lc_name}/%{lc_name}/releases/download/%{rel_version}/%{name}-%{version}.tar.bz2
 Source1:        %{name}.http
+Source2:        %{name}.http.inc
 Patch0:         %{name}-config.inc.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  apache2-devel
+BuildRequires:  fdupes
 Requires:       mod_php_any
 Requires:       php >= 7.1
 Requires:       php-pgsql
@@ -75,45 +77,81 @@ Features
 %setup -q
 %patch0
 
+### remove not needed files
+pushd lang
+rm -f README langcheck synch
+popd
+
 %build
 
 %install
 %{__install} -d %{buildroot}%{ap_docroot}/%{name}
-%{__cp} -dR *.php *.js classes help images lang libraries plugins themes xloadtree \
+%{__cp} -dR *.php *.js classes help images js lang libraries plugins themes xloadtree \
 %{buildroot}%{ap_docroot}/%{name}
 
 # install config to config dir
 %{__install} -D -m0640 conf/config.inc.php-dist \
 %{buildroot}%{ppa_config}
 
+# generate file list
+find %{buildroot}%{ap_docroot}/%{name} -mindepth 1 -maxdepth 1 -type d | grep -v 'conf' | sed -e "s@$RPM_BUILD_ROOT@@" > FILELIST
+find %{buildroot}%{ap_docroot}/%{name} -maxdepth 1 -type f | grep -v 'config.inc.php-dist' | sed -e "s@$RPM_BUILD_ROOT@@" >> FILELIST
+
 # install config for apache
 %{__install} -D -m0644 %{S:1} %{buildroot}%{ap_sysconfdir}/conf.d/%{name}.conf
+%{__install} -D -m0644 %{S:2} %{buildroot}%{ap_sysconfdir}/conf.d/%{name}.inc
 
 # fix paths in http config
 %{__sed} -i -e "s,@ap_docroot@,%{ap_docroot},g" -e "s,@name@,%{name},g" \
--e "s,@docdir@,%{_docdir},g" %{buildroot}%{ap_sysconfdir}/conf.d/%{name}.conf
+-e "s,@docdir@,%{_docdir},g" -e "s,@ap_sysconfdir@,%{ap_sysconfdir},g" %{buildroot}%{ap_sysconfdir}/conf.d/%{name}.conf
 
-# remove not needed files from lang/
-for i in Makefile convert.awk langcheck php2po po2php synch; do
-%{__rm} -f %{buildroot}%{ap_docroot}/%{name}/lang/${i}
-done
+# rpmlint stuff
+%fdupes %{buildroot}%{ap_docroot}/%{name}
 
-%postun
+%post
+# enable phpPgAdmin flag
+if [ -x %{_sbindir}/a2enflag ]; then
+  flag_find=$(grep -cw /etc/sysconfig/apache2 -e "^APACHE_SERVER_FLAGS=.*%{name}.*")
+  if [ $flag_find -eq 0 ]; then
+    echo "info: adding %{name} to APACHE_SERVER_FLAGS"
+    a2enflag %{name}
+  fi
+fi
+# We changed ap_docroot from {ap_docroot_old} to {ap_docroot} (/srv/www/htdocs to /usr/share)
+# If someone did 'manually' change the config file it won't be replaced by rpm
+# Hence we backup the existing and place the new one
+find=0
+find=$(grep -cw %{ap_sysconfdir}/conf.d/%{name}.conf -e "%{ap_docroot_old}/%{name}") || :
+if [ $find -gt 0 ]; then
+  ap_date="$(date '+%Y%m%d-%H%M')"
+  echo "creating backup of %{ap_sysconfdir}/conf.d/%{name}.conf to %{ap_sysconfdir}/conf.d/%{name}.conf.backup-${ap_date}"
+  cp -a %{ap_sysconfdir}/conf.d/%{name}.conf %{ap_sysconfdir}/conf.d/%{name}.conf.backup-${ap_date}
+  echo "copying %{ap_sysconfdir}/conf.d/%{name}.conf.rpmnew to %{ap_sysconfdir}/conf.d/%{name}.conf"
+  cp -a %{ap_sysconfdir}/conf.d/%{name}.conf.rpmnew %{ap_sysconfdir}/conf.d/%{name}.conf
+fi
 %restart_on_update apache2
 
-%clean
-%{__rm} -rf %{buildroot}
+%postun
+# only do on uninstall, not on update
+if [ $1 -eq 0 ]; then
+  # disable phpPgAdmin flag
+  if [ -x %{_sbindir}/a2enflag ]; then
+    flag_find=$(grep -cw /etc/sysconfig/apache2 -e "^APACHE_SERVER_FLAGS=.*%{name}.*")
+    if [ $flag_find -eq 1 ]; then
+      echo "info: removing %{name} from APACHE_SERVER_FLAGS"
+      a2enflag -d %{name}
+    fi
+  fi
+fi
+%restart_on_update apache2
 
-%files
+%files -f FILELIST
 %defattr(0644,root,root,0755)
-%if 0%{?suse_version} >= 1500
-%license LICENSE
-%else
-%doc LICENSE
-%endif
 %doc CREDITS DEVELOPERS FAQ HISTORY TODO TRANSLATORS
-%{ap_docroot}/%{name}
+%license LICENSE
+%dir %{ap_docroot}/%{name}
 %config(noreplace) %{ap_sysconfdir}/conf.d/%{name}.conf
+%config(noreplace) %{ap_sysconfdir}/conf.d/%{name}.inc
 %dir %attr(0750,wwwrun,root) %{_sysconfdir}/%{name}
 %config(noreplace) %attr(0640,root,www) %{ppa_config}
 

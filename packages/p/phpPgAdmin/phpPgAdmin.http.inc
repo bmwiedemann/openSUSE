@@ -1,0 +1,6 @@
+php_admin_flag register_globals off
+php_admin_flag magic_quotes_gpc off
+php_admin_flag allow_url_include off
+php_admin_flag allow_url_fopen off
+php_admin_flag zend.ze1_compatibility_mode off
+php_admin_flag safe_mode off

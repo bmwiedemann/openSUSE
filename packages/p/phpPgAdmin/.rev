@@ -175,4 +175,12 @@
     <comment>update to 7.12.1 (forwarded request 816160 from computersalat)</comment>
     <requestid>816161</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>d83c2bfe5dfdb078132a1111c146976c</srcmd5>
+    <version>7.12.1</version>
+    <time>1593292989</time>
+    <user>dimstar_suse</user>
+    <comment>change ap_docroot from /srv/www/htdocs to /usr/share (forwarded request 817388 from computersalat)</comment>
+    <requestid>817389</requestid>
+  </revision>
 </revisionlist>

@@ -1,44 +1,45 @@
+# By default the /@name@ Alias is enabled for all vhosts.
+# To disable the /@name@ Alias, run
+#     a2enflag -d @name@ && rcapache2 restart
+# This will make /@name@ unavailable on any vhosts.
+#
+# If you want to have the /@name@ Alias only on a specific
+# vhost, add the Alias to the config of that vhost.
+
+<IfDefine @name@>
+    <IfModule mod_alias.c>
+        Alias /@name@ @ap_docroot@/@name@
+    </IfModule>
+</IfDefine>
+
 <Directory @ap_docroot@/@name@>
     Options FollowSymLinks
     AllowOverride None
 
-    <IfModule mod_php5.c>
-        php_admin_flag register_globals off
-        php_admin_flag magic_quotes_gpc off
-        php_admin_flag allow_url_include off
-        php_admin_flag allow_url_fopen off
-        php_admin_flag zend.ze1_compatibility_mode off
-        php_admin_flag safe_mode Off
-        php_admin_value open_basedir "@ap_docroot@/@name@:/var/lib/php5:/tmp:@docdir@/@name@:/etc/@name@"
-    </IfModule>
-
-    <IfModule mod_php7.c>
-        php_admin_flag register_globals off
-        php_admin_flag magic_quotes_gpc off
-        php_admin_flag allow_url_include off
-        php_admin_flag allow_url_fopen off
-        php_admin_flag zend.ze1_compatibility_mode off
-        php_admin_flag safe_mode Off
-        php_admin_value open_basedir "@ap_docroot@/@name@:/var/lib/php7:/tmp:@docdir@/@name@:/etc/@name@"
-    </IfModule>
-
-</Directory>
-<Directory @ap_docroot@/@name@/libraries>
-
     <IfVersion < 2.4>
-        Order allow,deny
-        Deny from all
+        Order Allow,Deny
+        Allow from all
     </IfVersion>
 
     <IfVersion >= 2.4>
         <IfModule !mod_access_compat.c>
-            Require all denied
+            Require all granted
         </IfModule>
         <IfModule mod_access_compat.c>
-            Order deny,allow
-            Deny from all
+            Order Allow,Deny
+            Allow from all
         </IfModule>
     </IfVersion>
+
+    <IfModule mod_php5.c>
+        Include @ap_sysconfdir@/conf.d/@name@.inc
+        php_admin_value open_basedir "@ap_docroot@/@name@:/var/lib/php5:/tmp:@docdir@/@name@:/etc/@name@"
+    </IfModule>
+
+    <IfModule mod_php7.c>
+        Include @ap_sysconfdir@/conf.d/@name@.inc
+        php_admin_value open_basedir "@ap_docroot@/@name@:/var/lib/php7:/tmp:@docdir@/@name@:/etc/@name@"
+    </IfModule>
 
 </Directory>
 

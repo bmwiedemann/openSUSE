@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun 20 22:13:04 UTC 2020 - chris@computersalat.de
+
+- change ap_docroot from /srv/www/htdocs to /usr/share
+  if phpPgAdmin.conf for apache was changed by local admin, we will
+  create a backup and replace the original file with the new version
+  sorry admins, but you need to apply your changes again
+- needed Alias /phpPgAdmin is an enabled APACHE_SERVER_FLAGS default
+    for more info have a look into /etc/apache2/conf.d/phpPgAdmin.conf
+- add phpPgAdmin.http.inc
+- some rpmlint fixes
+
+-------------------------------------------------------------------
 Mon Mar  2 20:01:15 UTC 2020 - chris@computersalat.de
 
 - Version 7.12.1 (December 10, 2019)
