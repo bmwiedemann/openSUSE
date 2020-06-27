@@ -16,23 +16,20 @@
 #
 
 
-%bcond_with icu
 %define oname sqlite
-%define tarversion 3320200
+%define tarversion 3320300
+%bcond_with icu
 Name:           sqlite3
-Version:        3.32.2
+Version:        3.32.3
 Release:        0
 Summary:        Embeddable SQL Database Engine
 License:        SUSE-Public-Domain
 Group:          Productivity/Databases/Servers
-URL:            http://www.sqlite.org/
+URL:            https://www.sqlite.org/
 Source0:        http://www.sqlite.org/2020/sqlite-src-%{tarversion}.zip
 Source1:        baselibs.conf
 Source2:        http://www.sqlite.org/2020/sqlite-doc-%{tarversion}.zip
 BuildRequires:  automake
-%if %{with icu}
-BuildRequires:  libicu-devel
-%endif
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
@@ -41,6 +38,9 @@ BuildRequires:  unzip
 BuildRequires:  pkgconfig(zlib)
 Provides:       %{oname} = %{version}
 Obsoletes:      %{oname} < %{version}
+%if %{with icu}
+BuildRequires:  libicu-devel
+%endif
 
 %description
 SQLite is a C library that implements an embeddable SQL database
@@ -144,11 +144,11 @@ export CFLAGS="%{optflags} \
   --enable-json1 \
   --enable-update-limit \
   --enable-rtree
-make %{?_smp_mflags} sqlite3.c
-make %{?_smp_mflags}
+%make_build sqlite3.c
+%make_build
 
 %check
-make %{?_smp_mflags} test
+%make_build test
 
 %install
 %make_install

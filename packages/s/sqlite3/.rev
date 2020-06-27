@@ -1272,4 +1272,13 @@
     <comment></comment>
     <requestid>811818</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>69f567588736a0c59564970ad360419b</srcmd5>
+    <version>3.32.3</version>
+    <time>1593292829</time>
+    <user>dimstar_suse</user>
+    <comment>SQLite 3.32.3
+CVE-2020-13871 boo#1172646</comment>
+    <requestid>816145</requestid>
+  </revision>
 </revisionlist>

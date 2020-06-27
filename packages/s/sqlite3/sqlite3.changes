@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 20 11:11:01 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- SQLite 3.32.3:
+  * Fix Heap Buffer Overflow in multiSelectOrderBy
+  * Fix Assertion `flags3==pIn3->flags' failed
+  * Fix Assertion `pExpr->pAggInfo==pAggInfo' failed
+  * Fix Segfault in sqlite3Select 
+  * Fix Use after free in resetAccumulator
+    CVE-2020-13871 boo#1172646
+
+-------------------------------------------------------------------
 Fri Jun  5 12:57:51 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - SQLite 3.32.2:
@@ -29,6 +40,13 @@ Sun May 24 06:03:29 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
   * Add code for the UINT collating sequence as an optional
     loadable extension
   * multiple enhancements to the CLI
+  * CVE-2020-13434 boo#1172115: integer overflow in
+    sqlite3_str_vappendf
+  * CVE-2020-13630 boo#1172234: use-after-free in fts3EvalNextRow
+  * CVE-2020-13631 boo#1172236: virtual table allowed to be renamed
+    to one of its shadow tables
+  * CVE-2020-13632 boo#1172240: NULL pointer dereference via
+    crafted matchinfo() query
 - drop upstreamed patches:
   * 04885763c4cd00cb-s390-compatibility.patch
   * b20503aaf5b6595a-adapt-FTS-tests-for-big-endian.patch
