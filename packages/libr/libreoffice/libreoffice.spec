@@ -93,6 +93,8 @@ Source2007:     https://dev-www.libreoffice.org/extern/odfvalidator-0.9.0-RC2-SN
 Source2008:     %{external_url}/pdfium-4137.tar.bz2
 # Single C file with patches from LO
 Source2009:     %{external_url}/dtoa-20180411.tgz
+# Skia is part of chromium and bundled everywhere as by google only way is monorepo way
+Source2010:     %{external_url}/skia-m84-c1baf6e1c2a5454148adb516f0f833483b5a0353.tar.xz
 # change user config dir name from ~/.libreoffice/3 to ~/.libreoffice/3-suse
 # to avoid BerkleyDB incompatibility with the plain build
 Patch1:         scp2-user-config-suse.diff
@@ -1116,8 +1118,7 @@ export NOCONFIGURE=yes
         --enable-symbols \
         --with-gdrive-client-secret="${google_default_client_secret}" \
         --with-gdrive-client-id="${google_default_client_id}" \
-	--disable-skia
-# no reason to build skia at the moment for us with gtk ui
+	--enable-skia
 # no coinormp packages for coinmp
 
 # just call make here as we added the jobs in configure

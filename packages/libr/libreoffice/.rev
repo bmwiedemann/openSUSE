@@ -2796,4 +2796,12 @@ Petr</comment>
   * bsc1172053.diff</comment>
     <requestid>815949</requestid>
   </revision>
+  <revision rev="207" vrev="2">
+    <srcmd5>82b058b3d4d24067cf214f4a9a3d5d31</srcmd5>
+    <version>7.0.0.0.beta2</version>
+    <time>1593292871</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable skia build; building with gcc atm</comment>
+    <requestid>816819</requestid>
+  </revision>
 </revisionlist>
