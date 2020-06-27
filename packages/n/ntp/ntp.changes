@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Thu Jun 25 13:56:55 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Update to 4.2.8p15
+- Fixed security issues:
+  * bsc#1169740, CVE-2020-11868:
+    DoS on client ntpd using server mode packet
+  * bsc#1171355, CVE-2018-8956: remote attackers may prevent a
+    broadcast client from synchronizing its clock with a broadcast
+    NTP server via spoofed mode 3 and mode 5 packets.
+  * bsc#1172651, CVE-2020-13817: vulnerable to off-path attack
+  * bsc#1173334, CVE-2020-15025: Remote DoS when CMAC key is used
+- Bugfixes in 4.2.8p15 and 4.2.8p14 include:
+  * [Bug 3667] decodenetnum fails with numeric port
+  * [Bug 3666] avoid unlimited receive buffer allocation
+  * [Bug 3660] Manycast orphan mode startup discovery problem.
+  * [Bug 3655] ntpdc memstats hash counts
+  * [Bug 3653] Refclock jitter RMS calculation
+  * [Bug 3646] Avoid sync with unsync orphan
+  * [Bug 3644] Unsynchronized server [...] selected as candidate
+  * [Bug 3636] NMEA: combine time/date from multiple sentences
+  * [Bug 3635] Make leapsecond file hash check optional
+  * [Bug 3628] raw DCF decoding - improve robustness
+  * [Bug 3620] memory leak in ntpq sysinfo
+  * [Bug 3619] Honour drefid setting in cooked mode and sysinfo
+  * [Bug 3617] Add support for ACE III and Copernicus II receivers
+  * [Bug 3615] accelerate refclock startup
+  * [Bug 3613] Propagate noselect to mobilized pool servers
+  * [Bug 3612] Use-of-uninitialized-value in receive function
+  * [Bug 3611] NMEA time interpreted incorrectly
+  * [Bug 3609] Fixing wrong falseticker in case of non-statistic jitter
+  * [Bug 3604] Wrong param byte order passing into
+    record_raw_stats() in ntp_io.c
+  * [Bug 3594] ntpd discards messages coming through nmead
+  * [Bug 3593] ntpd discards silently nmea messages after the 5th string
+  * [Bug 3590] Update refclock_oncore.c to the new GPS date API
+  * [Bug 3583] synchronization error - set clock to base date
+    if system time is before that limit
+  * [Bug 3582] gpsdjson refclock fudgetime1 adjustment is doubled
+  * [Bug 3580] Possible bug ntpq-subs (NULL dereference in dogetassoc)
+  * [Bug 3577] Update refclock_zyfer.c to the new GPS date API
+  * [Bug 3576] New GPS date function API
+  * [Bug 3573] nptdate: missleading error message
+  * [Bug 3569] cleanup MOD_NANO/STA_NANO handling for 'ntpadjtimex()'
+  * [Bug 3550] Reproducible build: Respect SOURCE_DATE_EPOCH
+  * [Bug 3542] ntpdc monlist parameters cannot be set
+  * [Bug 3533] ntpdc peer_info ipv6 issues
+  * [Bug 3531] make check: test-decodenetnum fails
+  * [Bug 3515] Refactor ntpdmain() dispatcher loop and group
+    common code
+  * [Bug 3491] Signed values of LFP datatypes should always
+    display a sign
+  * [Bug 3490] Patch to support Trimble Resolution Receivers
+  * [Bug 3473] RefID of refclocks should always be text format
+  * [Bug 3094] ntpd trying to listen for broadcasts on a
+    completely ipv6 network
+  * [Bug 2420] ntpd doesn't run and exits with retval 0 when
+    invalid user is specified with -u
+  * [Bug 1433] runtime check whether the kernel really supports
+    capabilities
+  * Provide more detail on unrecognized config file parser tokens.
+  * Startup log improvements.
+- Obsoleted patches:
+  * ntp-4.2.6p2-ntpq-speedup-782060.patch
+  * ntp-daemonize.patch
+  * ntp-reproducible.patch
+- Silence an OpenSSL version warning (bsc#992038,
+  ntp-openssl-version.patch).
+
+-------------------------------------------------------------------
+Wed Jun 17 08:26:47 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Properly use %{_libexecdir} to package the legacy initscript
+  action scripts.
+
+-------------------------------------------------------------------
 Tue Jan 28 15:25:58 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove not used Pre/Post requires

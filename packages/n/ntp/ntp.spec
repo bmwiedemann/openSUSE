@@ -23,7 +23,7 @@
 
 %define ntpfaqversion 3.4
 Name:           ntp
-Version:        4.2.8p13
+Version:        4.2.8p15
 Release:        0
 Summary:        Network Time Protocol daemon (version 4)
 License:        (MIT AND BSD-3-Clause AND BSD-4-Clause) AND GPL-2.0-only
@@ -53,12 +53,10 @@ Patch16:        MOD_NANO.diff
 Patch18:        bnc#574885.diff
 Patch19:        ntp-ENOBUFS.patch
 Patch20:        ntp-sntp-dst.patch
-Patch21:        ntp-4.2.6p2-ntpq-speedup-782060.patch
-Patch24:        ntp-daemonize.patch
+Patch23:        ntp-openssl-version.patch
 Patch27:        ntp-netlink.patch
 Patch29:        ntp-pathfind.patch
 Patch30:        ntp-move-kod-file.patch
-Patch32:        ntp-reproducible.patch
 Patch33:        ntp-sntp-libevent.patch
 
 BuildRequires:  avahi-compat-mDNSResponder-devel
@@ -129,12 +127,10 @@ cp %{SOURCE12} .
 %patch18
 %patch19 -p1
 %patch20 -p1
-%patch21
-%patch24
+%patch23
 %patch27
 %patch29
 %patch30
-%patch32 -p1
 %patch33
 
 # fix DOS line breaks
@@ -195,9 +191,9 @@ install -m 0644 -D %{SOURCE3} %{buildroot}/%{_unitdir}/ntpd.service
 install -m 0644 -D %{SOURCE9} %{buildroot}/%{_unitdir}/ntp-wait.service
 install -d %{buildroot}%{_prefix}/sbin
 install -m 755 -D %{SOURCE8} %{buildroot}%{_sbindir}/start-ntpd
-%__install -d %{buildroot}/usr/lib/initscripts/legacy-actions/ntpd
+%__install -d %{buildroot}%{_libexecdir}/initscripts/legacy-actions/ntpd
 for f in ntptimeset addserver; do
-	F=%{buildroot}/usr/lib/initscripts/legacy-actions/ntpd/$f
+	F=%{buildroot}%{_libexecdir}/initscripts/legacy-actions/ntpd/$f
 	cat >$F <<-EOF
 		#!/bin/bash
 		exec /usr/sbin/start-ntpd $f "\$@"
@@ -379,7 +375,7 @@ fi
 %{_sbindir}/*
 %{_datadir}/ntp
 %if 0%{?suse_version} > 1310
-/usr/lib/initscripts/legacy-actions/ntpd
+%{_libexecdir}/initscripts/legacy-actions/ntpd
 %else
 /usr/lib/initscripts
 %endif

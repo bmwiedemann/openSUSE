@@ -1144,4 +1144,41 @@ Properly categorise licenses and sync with Fedora declaration (forwarded request
     <comment></comment>
     <requestid>768084</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>fac52aa7d1721712f1bfdd68c3b9676e</srcmd5>
+    <version>4.2.8p15</version>
+    <time>1593292893</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.8p15
+- Fixed security issues:
+  * bsc#1169740, CVE-2020-11868:
+    DoS on client ntpd using server mode packet
+  * bsc#1171355, CVE-2018-8956: remote attackers may prevent a
+    broadcast client from synchronizing its clock with a broadcast
+    NTP server via spoofed mode 3 and mode 5 packets.
+  * bsc#1172651, CVE-2020-13817: vulnerable to off-path attack
+  * bsc#1173334, CVE-2020-15025: Remote DoS when CMAC key is used
+- Bugfixes in 4.2.8p15 and 4.2.8p14 include:
+  * [Bug 3667] decodenetnum fails with numeric port
+  * [Bug 3666] avoid unlimited receive buffer allocation
+  * [Bug 3660] Manycast orphan mode startup discovery problem.
+  * [Bug 3655] ntpdc memstats hash counts
+  * [Bug 3653] Refclock jitter RMS calculation
+  * [Bug 3646] Avoid sync with unsync orphan
+  * [Bug 3644] Unsynchronized server [...] selected as candidate
+  * [Bug 3636] NMEA: combine time/date from multiple sentences
+  * [Bug 3635] Make leapsecond file hash check optional
+  * [Bug 3628] raw DCF decoding - improve robustness
+  * [Bug 3620] memory leak in ntpq sysinfo
+  * [Bug 3619] Honour drefid setting in cooked mode and sysinfo
+  * [Bug 3617] Add support for ACE III and Copernicus II receivers
+  * [Bug 3615] accelerate refclock startup
+  * [Bug 3613] Propagate noselect to mobilized pool servers
+  * [Bug 3612] Use-of-uninitialized-value in receive function
+  * [Bug 3611] NMEA time interpreted incorrectly
+  * [Bug 3609] Fixing wrong falseticker in case of non-statistic jitter
+  * [Bug 3604] Wrong param byte order passing into
+    record_raw_stats() in ntp_io.c</comment>
+    <requestid>817085</requestid>
+  </revision>
 </revisionlist>
