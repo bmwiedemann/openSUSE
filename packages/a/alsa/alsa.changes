@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 19 16:06:40 CEST 2020 - tiwai@suse.de
+
+- Update to alsa-lib 1.2.3.1:
+  a bug fix release, see the detailed changes at:
+  https://www.alsa-project.org/wiki/Changes_v1.2.3_v1.2.3.1
+
+-------------------------------------------------------------------
 Tue Jun  9 11:15:28 CEST 2020 - tiwai@suse.de
 
 - Update to alsa-lib 1.2.3:
