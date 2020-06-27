@@ -19,7 +19,7 @@
 %global commit_hx3compat f1f18201e5c0479cb5adf5f6028788b37f37b730
 
 Name:           haxe
-Version:        4.1.1
+Version:        4.1.2
 Release:        0
 Summary:        Multiplatform programming language
 License:        GPL-2.0+ and MIT
