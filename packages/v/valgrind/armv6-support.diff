@@ -1,7 +1,5 @@
-Index: configure.ac
-===================================================================
---- configure.ac.orig
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -252,7 +252,7 @@ case "${host_cpu}" in
          ARCH_MAX="s390x"
          ;;

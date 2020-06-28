@@ -1,0 +1,34 @@
+From fb6f7abcbc92506d302fb18a2c5fc853d2929248 Mon Sep 17 00:00:00 2001
+From: Carl Love <cel@us.ibm.com>
+Date: Tue, 9 Jun 2020 10:42:03 -0500
+Subject: [PATCH] Power PC Fix extraction of the L field for sync instruction
+
+The L field is currently a two bit[22:21] field in ISA 3.0. The size of the
+L field has changed over time.
+
+Currently the ISA 3.0 Valgrind sync instruction support code sets the
+flag_L for the instruction L field to a five bit value that includes bits
+that are marked reserved the sync instruction.  This patch fixes the issue for ISA 3.0
+to only setting flag_L the specified two bits.
+
+Valgrind bugzilla:   https://bugs.kde.org/show_bug.cgi?id=422677
+---
+ VEX/priv/guest_ppc_toIR.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/VEX/priv/guest_ppc_toIR.c b/VEX/priv/guest_ppc_toIR.c
+index 582c59ec0..c4965a19e 100644
+--- a/VEX/priv/guest_ppc_toIR.c
++++ b/VEX/priv/guest_ppc_toIR.c
+@@ -8777,7 +8777,7 @@ static Bool dis_memsync ( UInt theInstr )
+    /* X-Form, XL-Form */
+    UChar opc1    = ifieldOPC(theInstr);
+    UInt  b11to25 = IFIELD(theInstr, 11, 15);
+-   UChar flag_L  = ifieldRegDS(theInstr);
++   UChar flag_L  = IFIELD(theInstr, 21, 2);   //ISA 3.0
+    UInt  b11to20 = IFIELD(theInstr, 11, 10);
+    UInt  M0      = IFIELD(theInstr, 11, 5);
+    UChar rD_addr = ifieldRegDS(theInstr);
+-- 
+2.27.0
+

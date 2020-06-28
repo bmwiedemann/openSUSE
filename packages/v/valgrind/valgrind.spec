@@ -29,7 +29,7 @@
 %bcond_without docs
 
 Name:           valgrind%{?psuffix}
-Version:        3.15.0
+Version:        3.16.0
 Release:        0
 Summary:        Memory Management Debugger
 License:        GPL-2.0-or-later AND GFDL-1.2-only
@@ -39,15 +39,9 @@ Source0:        ftp://sourceware.org/pub/valgrind/valgrind-%{version}.tar.bz2
 # https://bugs.kde.org/show_bug.cgi?id=390553
 # https://github.com/olafhering/valgrind/compare/olh-base-master...olh-fixes-master
 Patch0:         valgrind.xen.patch
+# PATCH-FIX-UPSTREAM 0001-Power-PC-Fix-extraction-of-the-L-field-for-sync-inst.patch
+Patch1:         0001-Power-PC-Fix-extraction-of-the-L-field-for-sync-inst.patch
 Patch2:         armv6-support.diff
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-Add-newer-constants-for-prctl-syscall.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         0002-Add-support-for-PR_CAPBSET_READ-and-_DROP-syscalls.patch
-Patch5:         0001-Fix-makefile-consistency-check.patch
-Patch6:         0001-s390x-Add-models-z14-and-z14-ZR1.patch
-Patch7:         0001-s390x-Clean-up-s390-check-opcodes.pl.patch
-Patch8:         0001-s390x-Add-CPU-model-for-z15.patch
 Patch9:         parallel-lto.patch
 Patch10:        dhat-use-datadir.patch
 %if "%{flavor}" == ""
@@ -158,16 +152,7 @@ but it has been successfully used to optimize several KDE applications.
 
 %prep
 %setup -q -n valgrind-%{version}
-%patch0 -p1
-%patch2
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
+%autopatch -p1
 
 %build
 %if "%{flavor}" == ""
