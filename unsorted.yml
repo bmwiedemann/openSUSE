@@ -10256,7 +10256,7 @@ unsorted:
   - libjthread1_3_3 
   - libjxrglue0 
   - libkColorPicker0_1_4 
-  - libkImageAnnotator0_3_0 
+  - libkImageAnnotator0_3_1 
   - libkaccounts1-32bit: [x86_64] 
   - libkate-devel 
   - libkate-tools 
@@ -11822,7 +11822,7 @@ unsorted:
   - libreoffice-l10n-eu 
   - libreoffice-l10n-fa 
   - libreoffice-l10n-fi 
-  - libreoffice-l10n-fur: [x86_64] 
+  - libreoffice-l10n-fur 
   - libreoffice-l10n-fy 
   - libreoffice-l10n-ga 
   - libreoffice-l10n-gd 
@@ -33518,6 +33518,7 @@ unsorted:
   - typelib-1_0-MateMenu-2_0 
   - typelib-1_0-MatePanelApplet-4_0 
   - typelib-1_0-Matekbd-1_0 
+  - typelib-1_0-Mbim-1_0 
   - typelib-1_0-Midori-0_6 
   - typelib-1_0-ModemManager-1_0 
   - typelib-1_0-Modulemd-2_0 
@@ -34708,6 +34709,7 @@ unsorted:
   - youtube-dl-gui 
   - youtube-dl-gui-lang 
   - youtube-dl-zsh-completion 
+  - ytree 
   - yubico-piv-tool 
   - yubikey-manager 
   - yubikey-manager-qt 
