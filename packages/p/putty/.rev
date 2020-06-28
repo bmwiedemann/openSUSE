@@ -195,4 +195,12 @@
 - Update to release 0.73</comment>
     <requestid>734492</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>eee22ea9e78005c09f5e26a520875df4</srcmd5>
+    <version>0.74</version>
+    <time>1593378431</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.74</comment>
+    <requestid>817510</requestid>
+  </revision>
 </revisionlist>

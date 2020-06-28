@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 22 11:34:33 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec
+
+-------------------------------------------------------------------
 Sun Jun  7 17:17:45 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - for libpulse-devel-32bit, require libpulse0-32bit + libpulse-mainloop-glib0-32bit

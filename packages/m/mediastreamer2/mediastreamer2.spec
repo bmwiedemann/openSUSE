@@ -17,9 +17,9 @@
 
 
 %define sobase  libmediastreamer
-%define sover   10
+%define sover   11
 Name:           mediastreamer2
-Version:        4.3.1
+Version:        4.4.0
 Release:        0
 Summary:        Audio/Video real-time streaming
 License:        GPL-2.0-or-later
@@ -113,15 +113,18 @@ develop programs using the mediastreamer2 library.
 %patch0 -p1
 
 %build
-%cmake -DCMAKE_SHARED_LINKER_FLAGS="-flto=auto -Wl,--as-needed -Wl,-z,now" \
+export CFLAGS="%(echo %{optflags}) -fcommon -Wno-implicit-function-declaration"
+export CXXFLAGS="$CFLAGS"
+%cmake \
+    -DCMAKE_SHARED_LINKER_FLAGS="-flto=auto -Wl,--as-needed -Wl,-z,now" \
     -DENABLE_STATIC=NO
-make 
+%cmake_build
 
 %install
 %cmake_install
 
 mkdir -p %{buildroot}%{_docdir}/%{name}/
-mv -T %{buildroot}%{_datadir}/doc/%{name}-4.3.0/ \
+mv -T %{buildroot}%{_datadir}/doc/%{name}-%{version}/ \
   %{buildroot}%{_docdir}/%{name}/
 
 %post -n %{sobase}%{sover} -p /sbin/ldconfig

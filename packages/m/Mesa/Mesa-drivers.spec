@@ -46,7 +46,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 20.1.1
+%define _version 20.1.2
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -114,7 +114,7 @@
 %endif
 
 Name:           Mesa-drivers
-Version:        20.1.1
+Version:        20.1.2
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -158,6 +158,7 @@ BuildRequires:  pkgconfig(libdrm_radeon) >= 2.4.71
 %if 0%{?libglvnd}
 BuildRequires:  pkgconfig(libglvnd) >= 0.1.0
 %endif
+BuildRequires:  valgrind-devel
 BuildRequires:  pkgconfig(libkms) >= 1.0.0
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(presentproto)
@@ -833,6 +834,7 @@ egl_platforms=x11,drm,surfaceless,wayland
             -Ddri-drivers=swrast \
             -Dgallium-drivers= \
 %endif
+            -Dvalgrind=true \
             -Db_ndebug=true \
             -Dc_args="%{optflags}" \
             -Dcpp_args="%{optflags}"

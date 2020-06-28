@@ -2679,4 +2679,24 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     https://github.com/ImageMagick/ImageMagick/issues/2070).</comment>
     <requestid>813394</requestid>
   </revision>
+  <revision rev="210" vrev="1">
+    <srcmd5>070f1ddefac2424b212db4d7960bded2</srcmd5>
+    <version>7.0.10.21</version>
+    <time>1593378264</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.10.21
+  * new image property, %N, only report the # of frames in an image sequence,
+    just once rather than on a per frame basis
+  * problems converting CMYK to RGB regression (reference
+    https://github.com/ImageMagick/ImageMagick6/issues/83)
+  * Added support for 32 bit zip with prediction format to the PSD decoder
+    (reference https://github.com/ImageMagick/ImageMagick/issues/455).
+  * Fix out-of-bounds vulnerability when reading sixel images (reference
+    https://github.com/ImageMagick/ImageMagick/issues/2143).
+  * Fix incorrect parsing of font family list (reference
+    https://github.com/ImageMagick/ImageMagick/issues/2153).
+  * Improve checking for write failures (reference
+    https://github.com/ImageMagick/ImageMagick/pull/2081).</comment>
+    <requestid>817194</requestid>
+  </revision>
 </revisionlist>

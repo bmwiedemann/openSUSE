@@ -68,7 +68,6 @@ ExclusiveArch:  do-not-build
 %endif
 %if "%{cross_arch}" == "arm-none"
 %define binutils_target arm
-%define build_cp 0
 %endif
 %if "%{cross_arch}" == "riscv64-elf"
 %define binutils_target riscv64
@@ -116,7 +115,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        10.1.1+git40
+Version:        10.1.1+git290
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -141,6 +140,7 @@ Patch16:        gcc9-reproducible-builds.patch
 Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
+Patch52:        gcc10-foffload-default.patch
 # Some patches taken from Debian
 Patch60:        gcc44-textdomain.patch
 Patch61:        gcc44-rename-info-files.patch
@@ -296,6 +296,7 @@ ln -s newlib-3.3.0/newlib .
 %patch16
 %patch17 -p1
 %patch51
+%patch52
 %patch60
 %patch61
 
@@ -859,7 +860,7 @@ fi
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-c++
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-g++
 %if 0%{!?gcc_libc_bootstrap:1}
-%if %{cross_arch} == "avr" || 0%{?gcc_target_newlib:1} || 0%{?gcc_target_glibc:1}
+%if "%{cross_arch}" == "avr" || 0%{?gcc_target_newlib:1} || 0%{?gcc_target_glibc:1}
 %{_prefix}/include/c++
 %endif
 %endif

@@ -18,7 +18,7 @@
 
 %define sover   1
 Name:           bctoolbox
-Version:        4.3.1
+Version:        4.4.0
 Release:        0
 Summary:        Utility library for software from Belledonne Communications
 License:        GPL-2.0-or-later
@@ -92,16 +92,16 @@ This package the contains shared library for testing component.
 %postun -n lib%{name}-tester%{sover} -p /sbin/ldconfig
 
 %files -n lib%{name}%{sover}
-%license COPYING
+%license LICENSE.txt
 %{_libdir}/lib%{name}.so.%{sover}*
 
 %files -n lib%{name}-tester%{sover}
-%license COPYING
+%license LICENSE.txt
 %{_libdir}/lib%{name}-tester.so.%{sover}*
 
 %files devel
-%license COPYING
-%doc AUTHORS README.md
+%license LICENSE.txt
+%doc README.md
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/lib%{name}.so
 %{_datadir}/%{name}/

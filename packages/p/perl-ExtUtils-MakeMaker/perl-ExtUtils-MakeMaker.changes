@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun 24 03:08:16 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 7.46
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+
+  7.46  Tue 23 Jun 10:19:40 BST 2020
+      No changes since v7.45_01
+  7.45_01 Thu 28 May 17:29:45 BST 2020
+      Bug fixes:
+      - Always link to $Config{libs} on cygwin
+      Test fixes:
+      - Fix testing how some versions should be parsed
+      QA fixes:
+      - Add libnsl-devel to Cygwin packages we need
+
+-------------------------------------------------------------------
 Wed Jan 15 03:09:01 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 7.44

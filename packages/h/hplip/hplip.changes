@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Thu Jun 25 15:47:36 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- hplip-3.20.6.tar.gz has been updated on HP download server,
+  causing the OBS download_files bot to fail. Fix it.
+- postscriptdriver provides are now enabled indirectly via cups-devel
+  (boo#1172407)
+
+-------------------------------------------------------------------
+Thu Jun 18 09:16:25 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.20.6
+  Add support for the following printers:
+  * HP Color LaserJet Managed MFP E78223a
+  * HP Color LaserJet Managed MFP E78223dv
+  * HP Color LaserJet Managed MFP E78223dn
+  * HP Color LaserJet Mngd MFP E78223dn Plus
+  * HP Color LaserJet Mngd MFP E78223dn CN
+  * HP Color LaserJet Managed MFP E78228dn
+  * HP Color LaserJet Managed MFP E78228dn Plus
+  * HP Color LaserJet Managed MFP E78228dn CN
+  * HP Color LaserJet Managed Flow MFP E78330z Plus
+  * HP Color LaserJet Managed Flow MFP E78330z CN
+  * HP Color LaserJet Managed MFP E78330dn
+  * HP Color LaserJet Mngd MFP E78330dn Plus
+  * HP Color LaserJet Mngd MFP E78330dn CN
+  * HP Color LaserJet Managed MFP E78330z
+  * HP Color LaserJet Managed Flow MFP E78325z Plus
+  * HP Color LaserJet Managed Flow MFP E78325dn CN
+  * HP Color LaserJet Managed Flow MFP E78325z CN
+  * HP Color LaserJet Managed MFP E78325dn
+  * HP Color LaserJet Managed MFP E78325z
+  * HP Color LaserJet Managed Flow MFP E78323z
+  * HP Color LaserJet Mgd Flw MFPE78323Z Plus
+  * HP Color LaserJet Mgd Flw MFPE78323z CN
+  * HP Color LaserJet Managed MFP E78323dn
+  * HP Color LaserJet Mngd MFP E78323dn Plus
+  * HP Color LaserJet Mngd MFP E78323dn CN
+  * HP DeskJet 1200
+  * HP DeskJet Ink Advantage 1200
+  * HP DeskJet 2300 All-in-One
+  * HP DeskJet Ink Advantage 2300 All-in-One
+  * HP ENVY 6000 series
+  * HP DeskJet Plus 6000 series
+  * HP ENVY Pro 6400 series
+  * HP DeskJet Plus 6400 series
+  * HP DeskJet 2700 All-in-One Printer series
+  * HP DeskJet Ink Advantage 2700 All-in-One Printer series
+  * HP DeskJet Plus 4100 All-in-One Printer series
+  * HP DeskJet Ink Advantage 4100 All-in-One Printer series
+  * HP LaserJet Enterprise M610dn
+  * HP LaserJet Enterprise M611dn
+  * HP LaserJet Enterprise M611x
+  * HP LaserJet Enterprise M612dn
+  * HP LaserJet Enterprise M612x
+  * HP LaserJet Enterprise MFP M634dn
+  * HP LaserJet Enterprise MFP M634z
+  * HP LaserJet Enterprise Flow MFP M634h
+  * HP LaserJet Enterprise MFP M635h
+  * HP LaserJet Enterprise MFP M635fht
+  * HP LaserJet Enterprise Flow MFP M635z
+  * HP LaserJet Enterprise MFP M636fh
+  * HP LaserJet Enterprise Flow MFP M636z
+  * HP Neverstop Laser MFP 1200n
+  * HP Neverstop Laser MFP 1201n
+  * HP Neverstop Laser MFP 1200nw
+  * HP Neverstop Laser MFP 1202nw
+  * HP Laser NS MFP 1005n
+  * HP Neverstop Laser 1000n
+  * HP Neverstop Laser 1001nw
+  * HP Laser NS 1020n
+  * HP ScanJet Pro 2000 s2
+  * HP ScanJet Pro 3000 s4
+  * HP ScanJet Pro N4000 snw1
+  * HP ScanJet Enterprise Flow 5000 s5
+  * HP ScanJet Enterprise Flow N7000 snw1
+
+-------------------------------------------------------------------
 Mon Mar 16 13:40:14 UTC 2020 - Martin Wilck <mwilck@suse.com>
 
 - Use LSB fallback if distro determination fails (bsc#1166623)

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 26 14:48:23 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- ofpathname: Fix lookup of disk partitions (bsc#1173403 ltc#186427)
+  * Added ofpathname-make-goto_dir-canonicalize-directory-argu.patch
+
+-------------------------------------------------------------------
 Mon May 25 12:27:30 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
 
 - Add patch metadata, refresh to upstream version where available.

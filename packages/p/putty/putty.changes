@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 28 11:02:18 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.74
+  * Fixed a possible vulnerability [boo#1173442]
+  * Added a new configuration option to mitigate a minor
+    information leak in SSH host key policy.
+- Remove empty %post/%postun (says rpmlint)
+
+-------------------------------------------------------------------
 Tue Oct  1 07:43:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.73

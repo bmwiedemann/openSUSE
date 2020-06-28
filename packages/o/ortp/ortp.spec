@@ -18,10 +18,9 @@
 
 
 %define soname  libortp
-%define sover   14
-%define docver  4.3
+%define sover   15
 Name:           ortp
-Version:        4.3.2
+Version:        4.4.0
 Release:        0
 Summary:        Real-time Transport Protocol Stack
 License:        GPL-2.0-or-later
@@ -31,7 +30,6 @@ Source:         https://github.com/BelledonneCommunications/ortp/archive/%{versi
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE deps.diff
 Patch0:         deps.diff
-Patch1:         fix-cmakelists.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -68,7 +66,6 @@ develop programs using the oRTP library.
 %prep
 %setup -q -n %{name}-%{version}
 %patch0 -p1
-%patch1 -p1
 
 %build
 %cmake -DENABLE_STATIC=OFF
@@ -78,8 +75,13 @@ make %{?_smp_mflags}
 %cmake_install
 
 mkdir -p %{buildroot}%{_docdir}/%{name}/
-mv -T %{buildroot}%{_datadir}/doc/%{name}-%{docver}/ \
+mv -T %{buildroot}%{_datadir}/doc/%{name}-%{version}/ \
   %{buildroot}%{_docdir}/%{name}/
+
+mv %{buildroot}%{_datadir}/doc/%{name}-./LICENSE.txt %{buildroot}%{_docdir}/%{name}/
+mv %{buildroot}%{_datadir}/doc/%{name}-./AUTHORS.md %{buildroot}%{_docdir}/%{name}/
+mv %{buildroot}%{_datadir}/doc/%{name}-./README.md %{buildroot}%{_docdir}/%{name}/
+mv %{buildroot}%{_datadir}/doc/%{name}-./CHANGELOG.md %{buildroot}%{_docdir}/%{name}/
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
 
@@ -88,6 +90,9 @@ mv -T %{buildroot}%{_datadir}/doc/%{name}-%{docver}/ \
 %files
 %doc %{_docdir}/%{name}/
 %license %{_docdir}/%{name}/LICENSE.txt
+%{_docdir}/%{name}/README.md
+%{_docdir}/%{name}/CHANGELOG.md
+%{_docdir}/%{name}/AUTHORS.md
 
 %files -n %{soname}%{sover}
 %{_libdir}/%{soname}.so.%{sover}*

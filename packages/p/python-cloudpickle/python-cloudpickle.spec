@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-cloudpickle
-Version:        1.3.0
+Version:        1.4.1
 Release:        0
 Summary:        Extended pickling support for Python objects
 License:        BSD-3-Clause

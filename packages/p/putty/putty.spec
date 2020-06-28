@@ -1,7 +1,7 @@
 #
 # spec file for package putty
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           putty
-Version:        0.73
+Version:        0.74
 Release:        0
 Summary:        SSH client with optional GTK-based terminal emulator frontend
 License:        MIT
 Group:          System/X11/Utilities
-Url:            http://www.chiark.greenend.org.uk/~sgtatham/putty/
+URL:            http://www.chiark.greenend.org.uk/~sgtatham/putty/
 
 #Git-Web:	http://tartarus.org/~simon-git/gitweb/?p=putty.git
 #Git-Clone:	git://git.tartarus.org/simon/putty
@@ -31,7 +31,6 @@ Source2:        http://the.earth.li/~sgtatham/putty/latest/%name-%version.tar.gz
 Source4:        %name.keyring
 Patch1:         putty-03-config.diff
 Patch2:         reproducible.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  ImageMagick
 BuildRequires:  gtk3-devel
 BuildRequires:  krb5-devel
@@ -88,14 +87,7 @@ install -m644 icons/putty-32.png "$b/%_datadir/pixmaps/putty.png"
 %check
 make check
 
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-
 %files
-%defattr(-,root,root)
 %doc LICENCE doc/*.html
 %doc %_mandir/man*/*
 %_bindir/*

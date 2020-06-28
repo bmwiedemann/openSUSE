@@ -146,4 +146,19 @@
     <comment></comment>
     <requestid>790248</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c33f1f8de3adf0e1cb03194beed07274</srcmd5>
+    <version>1.4.1</version>
+    <time>1593378236</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.1:
+  * Fix incompatibilities between cloudpickle 1.4.0 and Python 3.5.0/1/2 introduced by the new support of cloudpickle for pickling typing constructs. (issue #360)
+  * Restore compat with loading dynamic classes pickled with cloudpickle version 1.2.1 that would reference the types.ClassType attribute. (PR #359)
+  * This version requires Python 3.5 or later
+  * cloudpickle can now all pickle all constructs from the typing module and the typing_extensions library in Python 3.5+ (PR #318)
+  * Stop pickling the annotations of a dynamic class for Python &lt; 3.6 (follow up on #276) (issue #347)
+  * Fix a bug affecting the pickling of dynamic TypeVar instances on Python 3.7+, and expand the support for pickling TypeVar instances (dynamic or non-dynamic) to Python 3.5-3.6 (PR #350)
+  * Add support for pickling dynamic classes subclassing typing.Generic instances on Python 3.7+ (PR #351)</comment>
+    <requestid>817136</requestid>
+  </revision>
 </revisionlist>

@@ -1,6 +1,6 @@
-diff -urN a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	2020-02-12 08:32:20.000000000 +0100
-+++ b/CMakeLists.txt	2020-03-04 14:54:53.220925208 +0100
+diff -ru a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2020-06-15 19:27:04.000000000 +0200
++++ b/CMakeLists.txt	2020-06-26 11:13:58.863403760 +0200
 @@ -114,6 +114,21 @@
  option(ENABLE_JPEG "Enable JPEG support" YES)
  cmake_dependent_option(ENABLE_QRCODE "Enable QRCode support" YES "ENABLE_VIDEO" NO)
@@ -20,12 +20,12 @@ diff -urN a/CMakeLists.txt b/CMakeLists.txt
 +configure_file(${CMAKE_CURRENT_SOURCE_DIR}/mediastreamer.pc.in ${CMAKE_CURRENT_BINARY_DIR}/mediastreamer.pc)
 +install(FILES ${CMAKE_CURRENT_BINARY_DIR}/mediastreamer.pc DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
 +
- set(CMAKE_CXX_STANDARD 11)
+ set(CMAKE_CXX_STANDARD 14)
  set(CMAKE_CXX_EXTENSIONS NO)
  
-diff -urN a/mediastreamer.pc.in b/mediastreamer.pc.in
---- a/mediastreamer.pc.in	2020-02-12 08:32:20.000000000 +0100
-+++ b/mediastreamer.pc.in	2020-03-04 14:57:06.385621735 +0100
+diff -ru a/mediastreamer.pc.in b/mediastreamer.pc.in
+--- a/mediastreamer.pc.in	2020-06-15 19:27:04.000000000 +0200
++++ b/mediastreamer.pc.in	2020-06-26 11:14:44.219319903 +0200
 @@ -5,7 +5,8 @@
  
  Name: mediastreamer 

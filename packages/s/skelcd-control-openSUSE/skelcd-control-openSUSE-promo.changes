@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 25 10:49:55 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Add release-notes dependency (bsc#1167866).
+- 20200625
+
+-------------------------------------------------------------------
 Wed May 13 12:40:28 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - Require enhanced_base for serverro (poo#66105)

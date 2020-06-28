@@ -46,7 +46,6 @@ ExclusiveArch: do-not-build
 %endif
 %if "%{cross_arch}" == "arm-none"
 %define binutils_target arm
-%define build_cp 0
 %endif
 %if "%{cross_arch}" == "riscv64-elf"
 %define binutils_target riscv64
@@ -431,7 +430,7 @@ fi
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-c++
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-g++
 %if 0%{!?gcc_libc_bootstrap:1}
-%if %{cross_arch} == "avr" || 0%{?gcc_target_newlib:1} || 0%{?gcc_target_glibc:1}
+%if "%{cross_arch}" == "avr" || 0%{?gcc_target_newlib:1} || 0%{?gcc_target_glibc:1}
 %{_prefix}/include/c++
 %endif
 %endif

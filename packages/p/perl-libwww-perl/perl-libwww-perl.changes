@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 25 03:11:35 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.46
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.46      2020-06-23 21:19:26Z
+      - Fix a looping regression in 6.45 for redirect responses without
+        a Location header (GH PR#342, Niko Tyni)
+
+-------------------------------------------------------------------
 Tue Jun  9 03:17:25 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.45

@@ -467,7 +467,7 @@ rm -rf \
 rm -rf "%{buildroot}%{_libdir}"/*.a
 
 # system-wide service (optional)
-install -D -m 0644 %{SOURCE5} %{buildroot}%{_libexecdir}/systemd/system/%{name}.service
+install -D -m 0644 %{SOURCE5} %{buildroot}%{_unitdir}/%{name}.service
 mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
@@ -803,8 +803,7 @@ exit 0
 
 %files system-wide
 %{_sbindir}/rc%{name}
-%dir %{_libexecdir}/systemd/system
-%{_libexecdir}/systemd/system/%{name}.service
+%{_unitdir}/%{name}.service
 
 %files bash-completion
 %dir %{_datadir}/bash-completion

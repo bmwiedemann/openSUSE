@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 26 11:43:50 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 20.1.2
+  * second bugfix release for the 20.1 branch
+  * most of the fixes here are to the AMD drivers, and the rest
+    is scattered over the tree.
+
+-------------------------------------------------------------------
+Fri Jun 26 01:20:27 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- enable valgrind support (boo#1173355)
+
+-------------------------------------------------------------------
 Tue Jun 23 18:02:26 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - move mesa.icd from /usr/etc/OpenCL/vendors to 

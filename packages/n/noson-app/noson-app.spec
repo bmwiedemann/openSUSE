@@ -17,7 +17,7 @@
 
 
 Name:           noson-app
-Version:        4.2.6
+Version:        4.4.1
 Release:        0
 Summary:        SONOS device controller
 License:        GPL-3.0-or-later

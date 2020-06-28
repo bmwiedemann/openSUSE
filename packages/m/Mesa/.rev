@@ -4174,4 +4174,17 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   /usr/share/OpenCL/vendors (boo#1173005)</comment>
     <requestid>816652</requestid>
   </revision>
+  <revision rev="385" vrev="257">
+    <srcmd5>6279e1b0b1617fd0275646d355ef5210</srcmd5>
+    <version>unknown</version>
+    <time>1593378330</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.1.2
+  * second bugfix release for the 20.1 branch
+  * most of the fixes here are to the AMD drivers, and the rest
+    is scattered over the tree.
+
+- enable valgrind support (boo#1173355)</comment>
+    <requestid>817253</requestid>
+  </revision>
 </revisionlist>

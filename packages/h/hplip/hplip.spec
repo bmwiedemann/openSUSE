@@ -23,11 +23,8 @@
 %define pyver %{py3_ver}
 %define pyexe %{_bindir}/python3
 %global use_qt5 1
-# Set _with_new_pycups in prjconf if cups-rpm-helper is available
-# (for auto-generated printer driver Provides:)
-%bcond_with new_pycups
 Name:           hplip
-Version:        3.19.12
+Version:        3.20.6
 Release:        0
 Summary:        HP's Printing, Scanning, and Faxing Software
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
@@ -157,11 +154,9 @@ Obsoletes:      hplip17
 Provides:       hplip3 = 3.9.5
 Obsoletes:      hplip3 < 3.9.5
 Recommends:     python3-reportlab
-%if 0%{?with_new_pycups}
-# All printer driver packages should have "BuildRequires: cups-rpm-helper"
-# for automatic generation of Provides: tags.
-BuildRequires:  cups-rpm-helper
-%endif
+# cups-rpm-helper is now pulled in indirectly via cups-devel.
+# This causes the "postscriptdriver" provides to be generated.
+# To avoid that, put "Ignore: cups-devel: cups-rpm-helper in the prjconf.
 
 %description
 The Hewlett-Packard Linux Imaging and Printing project (HPLIP) provides

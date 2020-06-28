@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-transitions
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        A lightweight, object-oriented Python state machine implementation
 License:        MIT

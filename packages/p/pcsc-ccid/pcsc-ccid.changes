@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun 27 08:27:04 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Version 1.4.33
+  * added support for
+    Genesys Logic CCID Card Reader (idProduct: 0x0771)
+    Swissbit Secure USB PU-50n SE/PE
+    TOPPAN FORMS CO.,LTD TC63CUT021
+  * Update PCSC submodule to get Unicode support
+  * Some minor improvements
+
+-------------------------------------------------------------------
 Sun May 24 08:00:02 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
-- Version 1.4.32 
+- Version 1.4.32
   * Various bugfixes
   * added support for
     CHERRY SECURE BOARD 1.0

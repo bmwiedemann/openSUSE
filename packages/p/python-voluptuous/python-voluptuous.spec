@@ -1,7 +1,7 @@
 #
 # spec file for package python-voluptuous
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            http://github.com/alecthomas/voluptuous
 Source:         https://files.pythonhosted.org/packages/source/v/voluptuous/voluptuous-%{version}.tar.gz
-BuildRequires:  %{python_module nose}
+# https://github.com/alecthomas/voluptuous/pull/422
+Patch0:         python-voluptuous-remove-nose.patch
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -38,6 +40,7 @@ coming into Python as JSON, YAML, etc.
 
 %prep
 %setup -q -n voluptuous-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -47,7 +50,7 @@ coming into Python as JSON, YAML, etc.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec %{_bindir}/nosetests -v
+%pytest
 
 %files %{python_files}
 %license COPYING

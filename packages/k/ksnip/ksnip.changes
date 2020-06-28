@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 25 19:32:59 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.1
+  Fixed:
+  * User not prompted to save when taking new screenshot without
+    tabs.
+
+-------------------------------------------------------------------
 Fri Jun 19 07:25:11 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.0

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 26 05:02:58 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 3.15.2:
+  - Add an option to allow a process to suicide before sending the
+    SIGTERM.
+  - PyPy 7.3.1 on Windows uses the 'Script' folder instead of
+    'bin'.
+
+-------------------------------------------------------------------
 Wed May 20 15:40:00 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - version update to 3.15.1

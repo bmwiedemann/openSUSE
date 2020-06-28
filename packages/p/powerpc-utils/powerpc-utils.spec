@@ -39,6 +39,7 @@ Patch9:         bsc1164726-search-only-part-of-sys.patch
 Patch10:        bsc1171892-get-rid-of-trainling-NUL.patch
 Patch11:        Fix-ofpathname-Could-not-retrieve-logical-device-nam.patch
 Patch12:        ofpathname-Fix-udevadm-location.patch
+Patch13:        ofpathname-make-goto_dir-canonicalize-directory-argu.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  librtas-devel
@@ -77,6 +78,7 @@ utilities for maintaining and enabling certain features of Linux on Power.
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
+%patch13 -p1
 
 %build
 autoreconf -fvi

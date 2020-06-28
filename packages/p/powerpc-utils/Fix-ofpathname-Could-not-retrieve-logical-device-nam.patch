@@ -1,11 +1,11 @@
-From e77d74c81ec01abf14c2da96d22314e3088b50d1 Mon Sep 17 00:00:00 2001
+From 5a1e57363554fb609c27e18e9163956580f6632c Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
-Date: Mon, 25 May 2020 15:18:12 +0200
+Date: Wed, 27 May 2020 09:52:05 -0700
 Subject: [PATCH] Fix ofpathname: Could not retrieve logical device name for
  Open Firmware path
 
-Upstream: submitted https://github.com/ibm-power-utilities/powerpc-utils/pull/40
-References: bsc#1164068
+Upstream: pending - expected 1.3.8
+Git-commit: 5a1e57363554fb609c27e18e9163956580f6632c
 
 With commit 73839d6bab4d ("powerpc-utils: Suppress errors reading kernel files")
 the return status of tr rather than ofpathname is tested.
@@ -13,6 +13,7 @@ the return status of tr rather than ofpathname is tested.
 Fixes: 73839d6bab4d ("powerpc-utils: Suppress errors reading kernel files")
 
 Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
 ---
  scripts/bootlist | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)

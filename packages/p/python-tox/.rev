@@ -396,4 +396,16 @@ please add to Staging:E, should fix the tox failure</comment>
     <comment></comment>
     <requestid>807945</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b08ac4a635e1af7a648ceabbe41ca4cb</srcmd5>
+    <version>3.15.2</version>
+    <time>1593378247</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.15.2:
+  - Add an option to allow a process to suicide before sending the
+    SIGTERM.
+  - PyPy 7.3.1 on Windows uses the 'Script' folder instead of
+    'bin'.</comment>
+    <requestid>817143</requestid>
+  </revision>
 </revisionlist>
