@@ -19,7 +19,7 @@
 
 %bcond_with restricted
 Name:           smtube
-Version:        20.1.0
+Version:        20.6.0
 Release:        0
 Summary:        Small YouTube Browser
 License:        GPL-2.0-or-later
@@ -40,7 +40,7 @@ Suggests:       gnome-mplayer
 Suggests:       mpv
 Suggests:       totem
 Suggests:       vlc
-Suggests:       youtube-dl
+Requires:       youtube-dl
 %if 0%{?suse_version} >= 1320 || (0%{?sle_version} >= 120100 && 0%{?is_opensuse})
 BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig(Qt5Gui)

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 28 10:09:17 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 20.6.0:
+  * New option in preferences to select the site to use as homepage.
+  * The internal youtube code has been removed and now smtube just
+    uses youtube-dl to get the video urls.
+  * New option in the help menu to help install youtube-dl. 
+- Youtube-dl is not required, so changed Suggest: youtube-dl to 
+  Required: youtube-dl
+
+-------------------------------------------------------------------
 Wed Jan 29 10:06:53 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Update to version 20.1.0:
