@@ -36,7 +36,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-rdflib
 Requires:       python-urllib3
-ExclusiveArch:  %{ix86} x86_64
+ExclusiveArch:  %{ix86} x86_64 %arm aarch64
 %python_subpackages
 
 %description
@@ -56,7 +56,7 @@ supported, as well as the Selenium 1.0 bindings.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # Avoid 64bit runtime dependencies on 32bit architectures:
-%ifarch %{ix86}
+%ifarch %{ix86} %arm
 %python_expand rm %{buildroot}%{$python_sitelib}/selenium/webdriver/firefox/amd64/x_ignore_nofocus.so
 %endif
 
