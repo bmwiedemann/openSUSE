@@ -1175,4 +1175,12 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html</comment>
   add bpo40784-Fix-sqlite3-deterministic-test.patch</comment>
     <requestid>812851</requestid>
   </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>ea56cde26572c2c19de80587f09fbb78</srcmd5>
+    <version>3.8.3</version>
+    <time>1593378185</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816829</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 17 18:42:51 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Replace OBS_dev-shm.patch with the upstream PR#20944
+
+-------------------------------------------------------------------
 Mon Jun  8 14:26:00 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - add requires python3-base on libpython subpackage (bsc#1167008)
