@@ -1257,4 +1257,12 @@
     <comment>- Update to release 2020.06.06</comment>
     <requestid>812121</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>f3f8540a3e0e438a81e71881685a343e</srcmd5>
+    <version>2020.06.16.1</version>
+    <time>1593378475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817540</requestid>
+  </revision>
 </revisionlist>

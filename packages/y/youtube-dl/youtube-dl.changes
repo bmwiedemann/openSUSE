@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jun 28 14:38:22 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to release 2020.06.16.1
+  * [youtube] Force old layout (#25682, #25683, #25680, #25686)
+  * [youtube] Fix categories and improve tags extraction
+
+- Update to version 2020.06.16
+  * [youtube] Fix uploader id and uploader URL extraction
+  * [youtube] Improve view count extraction
+  * [youtube] Fix upload date extraction (#25677)
+  * [youtube] Fix thumbnails extraction (#25676)
+  * [youtube] Fix playlist and feed extraction (#25675)
+  * [facebook] Add support for single-video ID links
+  * [youtube] Extract chapters from JSON (#24819)
+  * [kaltura] Add support for multiple embeds on a webpage (#25523)
+
+-------------------------------------------------------------------
 Sat Jun  6 23:01:22 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.06.06
