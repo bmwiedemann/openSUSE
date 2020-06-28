@@ -115,4 +115,24 @@
   * Various fixes to combining marks placement.</comment>
     <requestid>782727</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>22b331d71a04cb2621187dadb8b472f3</srcmd5>
+    <version>6.12</version>
+    <time>1593378495</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.12:
+  * Increase right side bearing of math italic R’s (#304).
+  * Add glyph variants for floor and ceiling, to make their sizing
+    consistent with other delimiters.
+  * Remove kerning and other glyph positioning features, combining
+    marks and other non-keycap glyphs from Libertinus Keyboard font.
+  * Fix size and shape of U+2639, U+263A and U+263B (frowning &amp;
+    smiling faces).
+  * Add “smcp”/“c2sc” variants for letters with macron (#303).
+  * Make U+2223-2226 the same height as bar (#324).
+  * Drop “sinf” feature, it just duplicates “subs” feature.
+  * Improve sizing and spacing of math over accents.
+ *  Building the fonts no longer use FontForge.</comment>
+    <requestid>817551</requestid>
+  </revision>
 </revisionlist>

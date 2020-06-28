@@ -18,7 +18,7 @@
 
 %define fontname Libertinus
 Name:           libertinus-fonts
-Version:        6.11
+Version:        6.12
 Release:        0
 Summary:        Libertinus font family
 License:        OFL-1.1
@@ -45,7 +45,7 @@ install -m 0644 *.otf %{buildroot}%{_ttfontsdir}
 %reconfigure_fonts_scriptlets
 
 %files
-%doc FONTLOG.txt OFL.txt README.txt
+%doc FONTLOG.txt OFL.txt README.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/*
 
