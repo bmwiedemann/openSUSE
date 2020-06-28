@@ -2318,4 +2318,14 @@ for more fun options (forwarded request 147495 from coolo)</comment>
 - Don't install gai.conf in /etc (forwarded request 807178 from Andreas_Schwab)</comment>
     <requestid>807179</requestid>
   </revision>
+  <revision rev="239" vrev="6">
+    <srcmd5>9be6cf3b0aa56ca7de2c472785fc3e1b</srcmd5>
+    <version>2.31</version>
+    <time>1593378146</time>
+    <user>dimstar_suse</user>
+    <comment>- long-double-alias.patch: Fix build with GCC 10 when long double = double
+- nscd-gc-cycle.patch: nscd: bump GC cycle during cache pruning
+  (bsc#1171878, BZ #26130) (forwarded request 816574 from Andreas_Schwab)</comment>
+    <requestid>816575</requestid>
+  </revision>
 </revisionlist>

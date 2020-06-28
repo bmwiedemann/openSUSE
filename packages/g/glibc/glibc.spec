@@ -263,6 +263,8 @@ Patch306:       glibc-fix-double-loopback.diff
 Patch1000:      riscv-syscall-clobber.patch
 # PATCH-FIX-UPSTREAM Avoid ldbl-96 stack corruption from range reduction of pseudo-zero (CVE-2020-10029, BZ #25487)
 Patch1001:      ldbl-96-rem-pio2l.patch
+# PATCH-FIX-UPSTREAM Fix build with GCC 10 when long double = double
+Patch1002:      long-double-alias.patch
 
 ### 
 # Patches awaiting upstream approval
@@ -273,6 +275,8 @@ Patch2000:      fix-locking-in-_IO_cleanup.patch
 Patch2001:      ldconfig-concurrency.patch
 # PATCH-FIX-UPSTREAM Fix buffer overrun in EUC-KR conversion module (BZ #24973)
 Patch2002:      euc-kr-overrun.patch
+# PATCH-FIX-UPSTREAM nscd: bump GC cycle during cache pruning (BZ #26130)
+Patch2003:      nscd-gc-cycle.patch
 
 # Non-glibc patches
 # PATCH-FIX-OPENSUSE Remove debianisms from manpages
@@ -475,10 +479,12 @@ makedb: A program to create a database for nss
 
 %patch1000 -p1
 %patch1001 -p1
+%patch1002 -p1
 
 %patch2000 -p1
 %patch2001 -p1
 %patch2002 -p1
+%patch2003 -p1
 
 %patch3000
 
@@ -690,7 +696,7 @@ configure_and_build_glibc() {
 # Build html documentation
 #
 %if %{build_html}
-make -C cc-base html
+make %{?_smp_mflags} -C cc-base html
 %endif
 
 %check
@@ -701,7 +707,7 @@ export SUSE_ASNEEDED=0
 export TIMEOUTFACTOR=16
 # The testsuite does its own malloc checking
 unset MALLOC_CHECK_
-make -C cc-base -k check || {
+make %{?_smp_mflags} -C cc-base -k check || {
   cd cc-base
   o=$-
   set +x

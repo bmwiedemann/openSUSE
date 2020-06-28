@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 23 08:32:23 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- long-double-alias.patch: Fix build with GCC 10 when long double = double
+- nscd-gc-cycle.patch: nscd: bump GC cycle during cache pruning
+  (bsc#1171878, BZ #26130)
+
+-------------------------------------------------------------------
 Mon May 18 12:25:49 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - glibc-nsswitch-usr.diff: read /usr/etc/nsswitch.conf if
