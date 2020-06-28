@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Wed Jun 24 07:13:22 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 7.71.0 [bsc#1173026, CVE-2020-8169][bsc#1173027, CVE-2020-8177]
+  * Changes:
+    - CURLOPT_SSL_OPTIONS: optional use of Windows' CA store (with openssl)
+    - setopt: add CURLOPT_PROXY_ISSUERCERT(_BLOB) for coherency
+    - setopt: support certificate options in memory with struct curl_blob
+    - tool: Add option --retry-all-errors to retry on any error 
+  * Bugfixes:
+    - *_sspi: fix bad uses of CURLE_NOT_BUILT_IN
+    - altsvc: bump to h3-29
+    - altsvc: fix 'dsthost' may be used uninitialized in this function
+    - altsvc: fix parser for lines ending with CRLF
+    - altsvc: remove the num field from the altsvc struct
+    - asyn-*: remove support for never-used NULL entry pointers
+    - azure: use matrix strategy to avoid configuration redundancy
+    - build: disable more code/data when built without proxy support
+    - buildconf: remove -print from the find command that removes files
+    - checksrc: enhance the ASTERISKSPACE and update code accordingly
+    - cirrus: disable SFTP and SCP tests
+    - CMake: add ENABLE_ALT_SVC option
+    - CMake: add HTTP/3 support (ngtcp2+nghttp3, quiche)
+    - CMake: add libssh build support
+    - configure: fix pthread check with static boringssl
+    - configure: for wolfSSL, check for the DES func needed for NTLM
+    - configure: only strip first -L from LDFLAGS
+    - configure: repair the check if argv can be written to
+    - configure: the wolfssh backend does not provide SCP
+    - connect: improve happy eyeballs handling
+    - connect: make happy eyeballs work for QUIC (again)
+    - curl: remove -J "informational" written on stdout
+    - Curl_addrinfo: use one malloc instead of three
+    - dynbuf: introduce internal generic dynamic buffer functions
+    - easy: fix dangling pointer on easy_perform fail
+    - examples/ephiperfifo: turn off interval when setting timerfd
+    - examples/http2-down/upload: add error checks
+    - FILEFORMAT: add more features that tests can depend on
+    - FILEFORMAT: describe verify/stderr
+    - ftp: make domore_getsock() return the secondary socket properly
+    - ftp: mark return-ignoring calls to Curl_GetFTPResponse with (void)
+    - ftp: shut down the secondary connection properly when SSL is used
+    - GnuTLS: Backend support for CURLINFO_SSL_VERIFYRESULT
+    - hostip: make Curl_printable_address not return anything
+    - http2: keep trying to send pending frames after req.upload_done
+    - http2: simplify and clean up trailer handling
+    - http: move header storage to Curl_easy from connectdata
+    - libssh2: improved error output for wrong quote syntax
+    - libssh2: keep sftp errors as 'unsigned long'
+    - libssh2: set the expected total size in SCP upload init
+    - multi: add defensive check on data->multi->num_alive
+    - multi: implement wait using winsock events
+    - ngtcp2: cleanup memory when failing to connect
+    - ngtcp2: fix build with current ngtcp2 master implementing draft 28
+    - ngtcp2: fix happy eyeballs quic connect crash
+    - ngtcp2: introduce qlog support
+    - ngtcp2: never call fprintf() in lib code in release version
+    - ngtcp2: update with recent API changes
+    - ntlm: enable NTLM support with wolfSSL
+    - OpenSSL: have CURLOPT_CRLFILE imply CURLSSLOPT_NO_PARTIALCHAIN
+    - openssl: set FLAG_TRUSTED_FIRST unconditionally
+    - projects: Add crypt32.lib to dependencies for all OpenSSL configs
+    - quiche: clean up memory properly when failing to connect
+    - quiche: enable qlog output
+    - quiche: update SSLKEYLOGFILE support
+    - Revert "ssh: ignore timeouts during disconnect"
+    - select: fix overflow protection in Curl_socket_check
+    - sendf: make failf() use the mvsnprintf() return code
+    - server/sws: fix asan warning on use of uninitialized variable
+    - server/util: fix logmsg format using curl_off_t argument
+    - sha256: fixed potentially uninitialized variable
+    - share: don not set the share flag it something fails
+    - sockfilt: make select_ws stop waiting on exit signal event
+    - socks: detect connection close during handshake
+    - socks: fix expected length of SOCKS5 reply
+    - socks: remove unreachable breaks in socks.c and mime.c
+    - source cleanup: remove all custom typedef structs
+    - timeouts: change millisecond timeouts to timediff_t from time_t
+    - timeouts: move ms timeouts to timediff_t from int and long
+    - tool_cfgable: free login_options at exit
+    - tool_getparam: -i is not OK if -J is used
+    - tool_getparam: fix memory leak in parse_args
+    - tool_operate: fixed potentially uninitialized variables
+    - tool_paramhlp: fixed potentially uninitialized strtol() variable
+    - transfer: close connection after excess data has been read
+    - typecheck-gcc.h: CURLINFO_PRIVATE does not need a 'char *'
+    - unit1604.c: fix implicit conv from 'SANITIZEcode' to 'CURLcode'
+    - url: accept "any length" credentials for proxy auth
+    - url: alloc the download buffer at transfer start
+    - url: make the updated credentials URL-encoded in the URL
+    - url: reject too long input when parsing credentials
+    - url: sort the protocol schemes in rough popularity order
+    - urlapi: accept :: as a valid IPv6 address
+    - urldata: leave the HTTP method untouched in the set.* struct
+    - urlglob: treat literal IPv6 addresses with zone IDs as a host name
+    - user-agent.d: spell out what happens given a blank argument
+    - vauth/cleartext: fix theoretical integer overflow
+    - version.d: expanded and alpha-sorted
+    - vtls: Extract and simplify key log file handling from OpenSSL
+    - wolfssl: add SSLKEYLOGFILE support
+    - wording: avoid blacklist/whitelist stereotypes
+    - write-out.d: added "response_code" 
+
+-------------------------------------------------------------------
 Fri Jun 12 09:07:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Change with-gssapi configure parameter: krb5 is changing location
