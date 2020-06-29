@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Mon Jun 29 12:25:37 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Add _service file 
+
+-------------------------------------------------------------------
+Tue Mar 24 05:55:22 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Pass git tree status = clean to fix `velero version` output Git commit with trailing dash
+
+-------------------------------------------------------------------
+Wed Mar 11 02:46:41 UTC 2020 - Clark Hsu <clark.hsu@suse.com>
+
+- Bump version 1.3.1 
+
+-------------------------------------------------------------------
+Mon Mar  2 23:33:08 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Bump version 1.3.0
+
+-------------------------------------------------------------------
+Mon Feb 24 06:14:57 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Simplify rpm spec
+
+-------------------------------------------------------------------
+Fri Jan  3 09:13:35 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
+
+- fix velero-restic-restore-helper package name
+
+-------------------------------------------------------------------
+Fri Jan  3 09:13:20 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
+
+- Initial package v1.2.0
