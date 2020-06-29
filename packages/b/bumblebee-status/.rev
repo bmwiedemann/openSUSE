@@ -135,4 +135,20 @@
     when using non-english locales</comment>
     <requestid>816965</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>54af474b9a8a6876ed26fd65ccac1959</srcmd5>
+    <version>2.0.4</version>
+    <time>1593458223</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.4:
+  New modules:
+  * speedtest
+  Improvements:
+  * spotify buttons (#663)
+  Bugfixes:
+  * fixed CLI commands for sway (#628)
+  * re-enabled brightness reading via ACPI
+  * improved default location (see #664)</comment>
+    <requestid>817610</requestid>
+  </revision>
 </revisionlist>

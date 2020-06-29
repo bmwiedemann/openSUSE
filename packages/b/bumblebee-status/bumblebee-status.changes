@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 29 06:41:02 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.4:
+  New modules:
+  * speedtest
+  Improvements:
+  * spotify buttons (#663)
+  Bugfixes:
+  * fixed CLI commands for sway (#628)
+  * re-enabled brightness reading via ACPI
+  * improved default location (see #664)
+
+-------------------------------------------------------------------
 Thu Jun 25 07:12:18 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.3:
