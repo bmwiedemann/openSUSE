@@ -150,7 +150,6 @@ where <domainname> should be the name of the first column in domains.txt
 Limitations & Ceveats
 =====================
 
-* It is currently not possible to aqcuire Wildcard certificates
 * No EV- or OV-validated certificates
 * Certificates expire within weeks, not years. This is by design. Ensure that
   certificate renewal works and that daemons get reloaded frequently to pick
@@ -159,6 +158,13 @@ Limitations & Ceveats
   need to be provided as a script in /etc/dehydrated/postrun-hooks.d, which
   will be executed by the cron script / systemd timer *after* an update run
   has been performed.
+
+Upgrade Notes
+=============
+
+If you are upgrading from letsencrypt.sh, note that you need to move
+/etc/letsencrypt.sh to /etc/dehydrated and chown it to the "dehydrated"
+user.
 
 Links
 =====

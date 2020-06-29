@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 29 12:41:48 UTC 2020 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Update maintainer file and package description, remove features
+  that are better described in the (upstream maintained) man page.
+
+-------------------------------------------------------------------
+Mon Jun 29 12:38:31 UTC 2020 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Remove potentially harmful scriptlet (bsc#1154167). Documented
+  transition case in the maintainer README. Unlikely enough. The
+  versions that have not transitioned yet would be broken for more
+  than two years now.
+
+-------------------------------------------------------------------
 Wed May  6 12:34:56 UTC 2020 - Daniel Molkentin <daniel.molkentin@suse.com>
 
 - Removed lighttpd 1.x integration package. If you still would like

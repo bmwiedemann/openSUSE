@@ -108,14 +108,7 @@ It uses the openssl utility for everything related to actually
 handling keys and certificates, so you need to have that installed.
 
 Other dependencies are: curl, sed, grep, mktemp (all found on almost
-any system, curl being the only exception)
-
-Current features:
-
-* Signing of a list of domains
-* Signing of a CSR
-* Renewal if a certificate is about to expire or SAN (subdomains) changed
-* Certificate revocation
+any system, curl being the only exception).
 
 %package %{_apache}
 Summary:        Apache Integration for dehydrated
@@ -146,7 +139,6 @@ This adds a configuration file for dehydrated's acme-challenge to nginx.
 getent group %{_user} >/dev/null || %{_sbindir}/groupadd -r %{_user}
 getent passwd %{_user} >/dev/null || %{_sbindir}/useradd -g %{_user} \
 	-s /bin/false -r -c "%{_user}" -d %{_home} %{_user}
-if [ -d %{_sysconfdir}/letsencrypt.sh ]; then mv %{_sysconfdir}/letsencrypt.sh %{_sysconfdir}/dehydrated; chown -R %{_user} %{_sysconfdir}/dehydrated; fi
 if [ -e %{_sysconfdir}/dehydrated/config.sh ]; then mv %{_sysconfdir}/dehydrated/config.sh %{_sysconfdir}/dehydrated/config; fi
 
 %if %{with systemd}

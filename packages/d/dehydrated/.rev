@@ -169,4 +169,18 @@
   README.maintainers file.</comment>
     <requestid>800773</requestid>
   </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>be68f37dd154a4a3436cdad559d1fa59</srcmd5>
+    <version>0.6.5</version>
+    <time>1593458310</time>
+    <user>dimstar_suse</user>
+    <comment>- Update maintainer file and package description, remove features
+  that are better described in the (upstream maintained) man page.
+
+- Remove potentially harmful scriptlet (bsc#1154167). Documented
+  transition case in the maintainer README. Unlikely enough. The
+  versions that have not transitioned yet would be broken for more
+  than two years now.</comment>
+    <requestid>817721</requestid>
+  </revision>
 </revisionlist>
