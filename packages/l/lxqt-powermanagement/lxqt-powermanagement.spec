@@ -71,9 +71,6 @@ make %{?_smp_mflags}
 %doc AUTHORS README.md
 %{_bindir}/lxqt*
 %{_datadir}/applications/*.desktop
-%dir %{_datadir}/icons/hicolor
-%dir %{_datadir}/icons/hicolor/scalable
-%dir %{_datadir}/icons/hicolor/scalable/devices
 %{_datadir}/icons/hicolor/scalable/devices/*.svg
 %{_sysconfdir}/xdg/autostart/lxqt-powermanagement.desktop
 
