@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 # Copyright (c) 2002 SUSE GmbH Nuernberg, Germany.
 #
 # Author: Michael Schroeder <feedback@suse.de>
@@ -15,7 +15,7 @@ if test -s $packages -a \( ! -e $configcheckfile -o -s $configcheckfile -o ! $pa
 	test -e $configcheckfile && mv -f $configcheckfile $configcheckfile.old
 	rpm -qalc | sort | while read line; do
             for suffix in new orig save; do
-                [[ -e "${line}.rpm${suffix}" ]] && echo "${line}.rpm${suffix}"
+                [ -e "${line}.rpm${suffix}" ] && echo "${line}.rpm${suffix}"
             done
         done > $configcheckfile
     else

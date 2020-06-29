@@ -223,7 +223,7 @@ Requires:       python3-base
 
 %description build-python
 Provides and requires generator for .py files and modules.
-    
+
 %package build-perl
 Summary:        RPM dependency generator for Perl
 Group:          Development/Languages/Perl
@@ -256,7 +256,7 @@ cp config.guess config.sub db/dist/
 %patch -P 70 -P 71       -P 73       -P 75       -P 77 -P 78
 %patch                               -P 85
 %patch                   -P 93 -P 94                         -P 99
-%patch -P 100        -P 102 -P 103                            
+%patch -P 100        -P 102 -P 103
 %patch -P 109                                           -P 117
 %patch -P 118 -P 119 -P 120 -P 121 -P 122 -P 123 -P 124 -P 125
 
@@ -356,6 +356,7 @@ chmod 755 %{buildroot}/etc/rpm
 # remove some nonsense or non-working scripts
 pushd %{buildroot}/usr/lib/rpm/
 for f in rpm2cpio.sh rpm.daily rpmdiff* rpm.log rpm.xinetd freshen.sh u_pkg.sh \
+         ocaml-find-provides.sh ocaml-find-requires.sh fileattrs/ocaml.attr \
          magic magic.mgc magic.mime* rpmfile *.pl javadeps brp-redhat \
          brp-strip-static-archive vpkg-provides*.sh http.req sql.req tcl.req \
          brp-sparc64-linux brp-strip-comment-note brp-java-gcjcompile
