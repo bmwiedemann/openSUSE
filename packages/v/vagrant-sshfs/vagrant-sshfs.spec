@@ -31,7 +31,7 @@
 %define mod_name %{vagrant_plugin_name}
 %define mod_full_name %{vagrant_plugin_name}-%{version}
 Name:           %{vagrant_plugin_name}
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
 Summary:        SSHFS synced folder implementation for Vagrant
 License:        GPL-2.0-only
@@ -43,10 +43,8 @@ Source1:        %{URL}/releases/download/v%{version}/%{mod_full_name}.tar.gz.asc
 Source2:        https://keybase.io/dustymabe/pgp_keys.asc#/%{name}.keyring
 # custom script to automate the test suite run
 Source3:        testsuite.sh
-# https://github.com/dustymabe/vagrant-sshfs/pull/109
-Patch0:         0001-Use-var-run-run-symlink-for-tests.patch
 # FIX-OPENSUSE use the Tumbleweed.$(uname -m) vagrant box instead of fedora/*-cloud-base
-Patch1:         0002-Use-opensuse-Tumbleweed.-uname-m-box-instead-of-Fedo.patch
+Patch0:         0001-Use-opensuse-Tumbleweed.-uname-m-box-instead-of-Fedo.patch
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  vagrant >= 1.9.1
