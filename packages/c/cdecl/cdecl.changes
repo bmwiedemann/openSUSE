@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 29 15:40:42 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.3
+  * Explaining a declaration like: "explain void f(double (*a)[5])"
+    crashed; this was fixed.
+
+-------------------------------------------------------------------
 Thu Jun 18 09:19:55 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.2
