@@ -51,19 +51,19 @@ make %{?_smp_mflags}
 
 %install
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
-rm -f %{buildroot}%{_libexecdir}/mono/2.0/extract-source.exe*
-rm -f %{buildroot}%{_libexecdir}/mono/2.0/rt-console.exe*
-rm -f %{buildroot}%{_libexecdir}/mono/2.0/rt-execute.exe*
-rm -f %{buildroot}%{_libexecdir}/mono/2.0/rt.exe*
+rm -f %{buildroot}%{_prefix}/lib/mono/2.0/extract-source.exe*
+rm -f %{buildroot}%{_prefix}/lib/mono/2.0/rt-console.exe*
+rm -f %{buildroot}%{_prefix}/lib/mono/2.0/rt-execute.exe*
+rm -f %{buildroot}%{_prefix}/lib/mono/2.0/rt.exe*
 
 %files
 %defattr(-, root, root)
 %{_mandir}/man1/vbnc.1*
 %{_bindir}/vbnc*
-%{_libexecdir}/mono/4.5/vbnc*
-%{_libexecdir}/mono/*/Microsoft.VisualBasic.dll
-%{_libexecdir}/mono/*/Mono.Cecil.VB*.dll
-%{_libexecdir}/mono/gac/Microsoft.VisualBasic
-%{_libexecdir}/mono/gac/Mono.Cecil.VB*
+%{_prefix}/lib/mono/4.5/vbnc*
+%{_prefix}/lib/mono/*/Microsoft.VisualBasic.dll
+%{_prefix}/lib/mono/*/Mono.Cecil.VB*.dll
+%{_prefix}/lib/mono/gac/Microsoft.VisualBasic
+%{_prefix}/lib/mono/gac/Mono.Cecil.VB*
 
 %changelog
