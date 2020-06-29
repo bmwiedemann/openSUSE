@@ -54,7 +54,9 @@ BuildRequires:  go-go-md2man
 BuildRequires:  libbtrfs-devel >= 3.8
 BuildRequires:  libseccomp-devel >= 2.2
 BuildRequires:  pkg-config
-BuildRequires:  golang(API) >= 1.11
+# Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
+# for 'golang(API) >= 1.13' here, so just require 1.13 exactly. bsc#1172608
+BuildRequires:  go1.13
 # We provide a git revision so that Docker can require it properly.
 Provides:       %{name}-git = %{git_version}
 # Currently runc is the only supported runtime for containerd. We pin the same

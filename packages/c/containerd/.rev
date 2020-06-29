@@ -291,4 +291,12 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
   bsc#1172377</comment>
     <requestid>811117</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>6037c7c5e5057e69b109d957d0ff2ad7</srcmd5>
+    <version>1.2.13</version>
+    <time>1593458125</time>
+    <user>dimstar_suse</user>
+    <comment>- Use Go 1.13 for build.</comment>
+    <requestid>817376</requestid>
+  </revision>
 </revisionlist>
