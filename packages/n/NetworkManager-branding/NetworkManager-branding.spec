@@ -58,7 +58,7 @@ using DHCP, NetworkManager is intended to replace default routes,
 obtain IP addresses from a DHCP server, and change name servers
 whenever it sees fit.
 
-This package provides the default ${branding_name} configuration for
+This package provides the default %{branding_name} configuration for
 %{_sysconfdir}/NetworkManager/NetworkManager.conf, configured to
 check connectivity against http://conncheck.opensuse.org.
 
