@@ -1268,4 +1268,18 @@ comply with openSUSE policy
     <comment></comment>
     <requestid>798540</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>868302e277488484a6b45b7056ec2dab</srcmd5>
+    <version>0.15.0</version>
+    <time>1593458221</time>
+    <user>dimstar_suse</user>
+    <comment>- Dont BuildRequire Openbox and add %dir %{_sysconfdir}/xdg/openbox
+  again. Openbox is not a hard requirement and thus might not
+  be in dependency chain. The directory will then not be owned by
+  any package once it is instaled.
+
+- Don't package filesystem dirs
+- BuildRequires openbox to provide /etc/xdg/openbox</comment>
+    <requestid>817620</requestid>
+  </revision>
 </revisionlist>

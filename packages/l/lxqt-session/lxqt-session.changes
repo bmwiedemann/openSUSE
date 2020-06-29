@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 29 07:09:24 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Dont BuildRequire Openbox and add %dir %{_sysconfdir}/xdg/openbox
+  again. Openbox is not a hard requirement and thus might not
+  be in dependency chain. The directory will then not be owned by
+  any package once it is instaled.
+
+-------------------------------------------------------------------
+Wed Jun 24 10:48:05 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Don't package filesystem dirs
+- BuildRequires openbox to provide /etc/xdg/openbox
+
+-------------------------------------------------------------------
 Mon Apr 27 11:02:55 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Changed lxqt-session.keyring to tsujan's key

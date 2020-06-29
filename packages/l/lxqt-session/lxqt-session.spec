@@ -94,8 +94,6 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 %files
 %license LICENSE
 %doc AUTHORS
-%dir %{_sysconfdir}/xdg/
-%dir %{_sysconfdir}/xdg/autostart
 %dir %{_sysconfdir}/xdg/openbox
 %dir %{_datadir}/kdm/
 %dir %{_datadir}/kdm/sessions/
