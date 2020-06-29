@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-metadata
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        Pytest plugin for test session metadata
 License:        MPL-2.0
