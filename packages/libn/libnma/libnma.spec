@@ -20,14 +20,12 @@
 %define base_ver 1.8
 
 Name:           libnma
-Version:        1.8.28
+Version:        1.8.30
 Release:        0
 Summary:        Shared library for NetworkManager-applet
 License:        GPL-2.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/libnma
 Source0:        https://download.gnome.org/sources/%{name}/%{base_ver}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM libnma-fix-segment-fault.patch bsc#1168347 glgo#GNOME/libnma#7 sckang@suse.com -- nma-ws: properly dispose wireless security objects.
-Patch0:         libnma-fix-segment-fault.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson
