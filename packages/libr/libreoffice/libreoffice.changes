@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 29 12:51:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update SUSE.soc bsc#1173471 to match up current SUSE branding
+  colors
+
+-------------------------------------------------------------------
 Wed Jun 24 11:32:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Enable skia build; building with gcc atm

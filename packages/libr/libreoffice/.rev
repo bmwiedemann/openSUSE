@@ -2804,4 +2804,13 @@ Petr</comment>
     <comment>- Enable skia build; building with gcc atm</comment>
     <requestid>816819</requestid>
   </revision>
+  <revision rev="208" vrev="3">
+    <srcmd5>32530fb9b4261d2f842ee9474d4c1fb5</srcmd5>
+    <version>7.0.0.0.beta2</version>
+    <time>1593458237</time>
+    <user>dimstar_suse</user>
+    <comment>- Update SUSE.soc bsc#1173471 to match up current SUSE branding
+  colors</comment>
+    <requestid>817723</requestid>
+  </revision>
 </revisionlist>
