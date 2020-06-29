@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 29 07:44:57 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Exclude dependency to AyatanaAppIndicator3: this is no longer
+  maintained and building. The code is written in a way to work
+  with either Ayatana AppIndicator or the original version.
+  Previously, both were added as dependencies.
+
+-------------------------------------------------------------------
 Tue Mar  3 12:31:46 UTC 2020 - malcolmlewis@opensuse.org
 
 - Updated to version 0.8.3:

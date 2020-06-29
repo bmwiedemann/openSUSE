@@ -17,6 +17,7 @@
 #
 
 
+%global __requires_exclude typelib\\(AyatanaAppIndicator3\\)
 Name:           variety
 Version:        0.8.3
 Release:        0
