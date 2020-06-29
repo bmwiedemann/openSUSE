@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Jun 27 18:37:42 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.4.2
+
+  ## 1.4.2 / 2020-06-23
+
+  - Camille Drapier fixed a small issue with RuboCop configuration. [#59][]
+  - Applied another fix (and unit test) to fix an issue for the Chef team.
+    [#60][], [#61][]
+
+  ## 1.4.1 / 2020-06-23
+
+  - Fix an issue where diff sizes could be negative, and they should be. [#57][],
+    [#58][]
+
+  ## 1.4 / 2020-06-23
+
+  - Ruby versions lower than 2.4 are soft-deprecated and will not be run as
+    part of the CI process any longer.
+  - Akinora MUSHA (knu) added the ability for Diff::LCS::Change objects to be
+    implicitly treated arrays. Originally provided as pull request [#47][],
+    but it introduced a number of test failures as documented in [#48][], and
+    remediation of Diff::LCS itself was introduced in [#49][].
+  - Resolved [#5][] with some tests comparing output from `system` calls to
+    `bin/ldiff` with some pre-generated output. Resolved [#6][] with these
+    tests.
+  - Resolved a previously undetected `bin/ldiff` issue with `--context` output
+    not matching `diff --context` output.
+  - Resolved an issue with later versions of Ruby not working with an `OptParse`
+    specification of `Numeric`; this has been changed to `Integer`.
+  - Brandon Fish added truffleruby in [#52][].
+  - Fixed two missing classes as reported in [#53][].
+
+- Updated fix-interpreter.patch to apply again
+
+-------------------------------------------------------------------
 Thu Jan 19 05:31:17 UTC 2017 - coolo@suse.com
 
 - updated to version 1.3

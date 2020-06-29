@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-diff-lcs
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-diff-lcs
-Version:        1.3
+Version:        1.4.2
 Release:        0
 %define mod_name diff-lcs
 %define mod_full_name %{mod_name}-%{version}
@@ -34,14 +34,14 @@ BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-Url:            https://github.com/halostatue/diff-lcs
-Source:         http://rubygems.org/gems/%{mod_full_name}.gem
+URL:            https://github.com/halostatue/diff-lcs
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 # MANUAL
 Patch0:         fix-interpreter.patch
 # /MANUAL
 Summary:        Diff::LCS computes the difference between two Enumerable sequences
-License:        MIT and Artistic-2.0 and GPL-2.0
+License:        MIT AND Artistic-2.0 AND GPL-2.0-only
 Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
@@ -49,11 +49,14 @@ PreReq:         update-alternatives
 Diff::LCS computes the difference between two Enumerable sequences using the
 McIlroy-Hunt longest common subsequence (LCS) algorithm. It includes utilities
 to create a simple HTML diff output format and a standard diff-like tool.
-This is release 1.3, providing a tentative fix to a long-standing issue
-related
-to incorrect detection of a patch direction. Also modernizes the gem
-infrastructure, testing infrastructure, and provides a warning-free experience
-to Ruby 2.4 users.
+This is release 1.4, providing a simple extension that allows for
+Diff::LCS::Change objects to be treated implicitly as arrays. Ruby versions
+below 2.5 are soft-deprecated.
+This means that older versions are no longer part of the CI test suite. If any
+changes have been introduced that break those versions, bug reports and
+patches
+will be accepted, but it will be up to the reporter to verify any fixes prior
+to release. A future release will completely break compatibility.
 
 %prep
 %gem_unpack
