@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 29 10:00:24 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.4.2
+  * Fixed usage of deprecated pytest-xdist slave aliases (#20).
+  * Fixed failing tests on pytest 5
+  * Added support for pytest 2.6
+  * Fixed failing tests on pytest 2.6
+- Drop unneeded patch pytest5.patch
+
+-------------------------------------------------------------------
 Thu Mar  5 08:24:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch fixing testing with new pytest:

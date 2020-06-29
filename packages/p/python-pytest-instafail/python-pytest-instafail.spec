@@ -18,20 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-instafail
-Version:        0.4.1.post0
+Version:        0.4.2
 Release:        0
 Summary:        Pytest Plugin to Show Failures Instantly
 License:        BSD-2-Clause
 URL:            https://github.com/jpvanhal/pytest-instafail
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-instafail/pytest-instafail-%{version}.tar.gz
-Patch0:         pytest5.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest >= 2.9
+Requires:       python-pytest >= 2.6
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 2.9}
+BuildRequires:  %{python_module pytest >= 2.6}
 # /SECTION
 %python_subpackages
 
@@ -42,7 +41,6 @@ until the end of test session.
 
 %prep
 %setup -q -n pytest-instafail-%{version}
-%patch0 -p1
 
 %build
 %python_build
