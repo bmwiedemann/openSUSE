@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 28 19:01:44 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 4.1.0:
+  * Basic authentication with custom scheme (commit)
+
+-------------------------------------------------------------------
 Sat May  2 19:51:36 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:
