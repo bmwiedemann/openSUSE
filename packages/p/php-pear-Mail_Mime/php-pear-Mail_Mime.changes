@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 28 20:27:12 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- new upstream release 1.10.9
+  * Added a workaround for an opcache bug on OpenSuse 15.1
+
+-------------------------------------------------------------------
 Sun Jun 14 21:06:49 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - new upstream release 1.10.8
