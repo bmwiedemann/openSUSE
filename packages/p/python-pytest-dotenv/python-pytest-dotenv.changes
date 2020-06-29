@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 29 09:48:03 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.5.2
+  * Set env variables before starting pytest session
+
+-------------------------------------------------------------------
 Tue Jun  9 08:03:40 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to github archive for tests

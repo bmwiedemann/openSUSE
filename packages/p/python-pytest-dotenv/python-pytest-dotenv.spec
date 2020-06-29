@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-dotenv
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        A pytest plugin that parses environment files
 License:        MIT
