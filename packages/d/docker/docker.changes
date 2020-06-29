@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 25 21:54:46 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 19.03.12-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md.
+- Use Go 1.13 instead of Go 1.14 because Go 1.14 can cause all sorts of
+  spurrious errors due to Go returning -EINTR from I/O syscalls much more often
+  (due to Go 1.14's pre-emptive goroutine support).
+  - bsc1172377-0001-unexport-testcase.Cleanup-to-fix-Go-1.14.patch
+- Add BuildRequires for all -git dependencies so that we catch missing
+  dependencies much more quickly.
+
+-------------------------------------------------------------------
 Tue Jun  2 08:37:06 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 19.03.11-ce. See upstream changelog in the packaged

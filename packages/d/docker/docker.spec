@@ -42,17 +42,17 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_version 42e35e61f352
-%define git_commit_epoch 1591001995
+%define git_version 48a66213fe17
+%define git_commit_epoch 1592522265
 
 # These are the git commits required. We verify them against the source to make
 # sure we didn't miss anything important when doing upgrades.
 %define required_containerd 7ad184331fa3e55e52b890ea95e65ba581ae3429
 %define required_dockerrunc dc9208a3303feef5b3839f4323d9beb36df0a9dd
-%define required_libnetwork 153d0769a1181bf591a9637fd487a541ec7db1e6
+%define required_libnetwork 026aabaa659832804b01754aaadd2c0f420c68b6
 
 Name:           %{realname}%{name_suffix}
-Version:        19.03.11_ce
+Version:        19.03.12_ce
 Release:        0
 Summary:        The Moby-project Linux container runtime
 License:        Apache-2.0
@@ -83,8 +83,6 @@ Patch300:       packaging-0001-revert-Remove-docker-prefix-for-containerd-and-ru
 Patch401:       bsc1073877-0001-apparmor-clobber-docker-default-profile-on-start.patch
 # SUSE-BACKPORT: Backport of https://github.com/docker/docker/pull/39121. bsc#1122469
 Patch402:       bsc1122469-0001-apparmor-allow-readby-and-tracedby.patch
-# FIX-UPSTREAM: Backport of https://github.com/gotestyourself/gotest.tools/pull/169. bsc#1172377
-Patch410:       bsc1172377-0001-unexport-testcase.Cleanup-to-fix-Go-1.14.patch
 # SUSE-FEATURE: Add support to mirror inofficial/private registries
 #               (https://github.com/docker/docker/pull/34319)
 Patch500:       private-registry-0001-Add-private-registry-mirror-support.patch
@@ -106,14 +104,17 @@ Requires:       ca-certificates-mozilla
 # Required in order for networking to work. fix_bsc_1057743 is a work-around
 # for some old packaging issues (where rpm would delete a binary that was
 # installed by docker-libnetwork). See bsc#1057743 for more details.
-Requires:       docker-libnetwork%{name_suffix}-git = %{required_libnetwork}
+BuildRequires:  docker-libnetwork%{name_suffix}-git = %{required_libnetwork}
+%requires_eq    docker-libnetwork%{name_suffix}-git
 Requires:       fix_bsc_1057743
 # Containerd and runC are required as they are the only currently supported
 # execdrivers of Docker. NOTE: The version pinning here matches upstream's
 # vendor.conf to ensure that we don't use a slightly incompatible version of
 # runC or containerd (which would be bad).
-Requires:       containerd%{name_suffix}-git  = %{required_containerd}
-Requires:       docker-runc%{name_suffix}-git = %{required_dockerrunc}
+BuildRequires:  containerd%{name_suffix}-git  = %{required_containerd}
+%requires_eq    containerd%{name_suffix}-git
+BuildRequires:  docker-runc%{name_suffix}-git = %{required_dockerrunc}
+%requires_eq    docker-runc%{name_suffix}-git
 # Needed for --init support. We don't use "tini", we use our own implementation
 # which handles edge-cases better.
 Requires:       catatonit
@@ -138,7 +139,9 @@ Recommends:     git-core >= 1.7
 Conflicts:      lxc < 1.0
 ExcludeArch:    s390 ppc
 BuildRequires:  go-go-md2man
-BuildRequires:  golang(API) >= 1.13
+# We cannot use Go 1.14 because it breaks io.Copy (among other things) by
+# returning -EINTR from I/O syscalls much more often.
+BuildRequires:  go1.13
 # KUBIC-SPECIFIC: This was required when upgrading from the original kubic
 #                 packaging, when everything was renamed to -kubic. It also is
 #                 used to ensure that nothing complains too much when using
@@ -265,8 +268,6 @@ docker container runtime configuration for kubeadm
 %patch401 -p1
 # bsc#1122469
 %patch402 -p1
-# bsc#1172377
-%patch410 -p1
 %if "%flavour" == "kubic"
 # PATCH-SUSE: Mirror patch.
 %patch500 -p1

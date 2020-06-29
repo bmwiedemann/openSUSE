@@ -985,4 +985,19 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
   + bsc1172377-0001-unexport-testcase.Cleanup-to-fix-Go-1.14.patch</comment>
     <requestid>811118</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>764675d95c7af0a785f304ede4b000ca</srcmd5>
+    <version>19.03.12_ce</version>
+    <time>1593458110</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Docker 19.03.12-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md.
+- Use Go 1.13 instead of Go 1.14 because Go 1.14 can cause all sorts of
+  spurrious errors due to Go returning -EINTR from I/O syscalls much more often
+  (due to Go 1.14's pre-emptive goroutine support).
+  - bsc1172377-0001-unexport-testcase.Cleanup-to-fix-Go-1.14.patch
+- Add BuildRequires for all -git dependencies so that we catch missing
+  dependencies much more quickly.</comment>
+    <requestid>817374</requestid>
+  </revision>
 </revisionlist>
