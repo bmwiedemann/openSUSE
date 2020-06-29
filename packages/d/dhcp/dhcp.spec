@@ -101,6 +101,13 @@ BuildRequires:  sysuser-tools
 %package server
 Summary:        ISC DHCP Server
 Group:          Productivity/Networking/Boot/Servers
+%if 0%{?suse_version} > 1500
+# Workaround: require insserv-compat, until this package is
+# converted to be shipping proper systemd units (boo#1133632, boo#1173440)
+# There are .service units in place, but they call out to sysv init scripts
+# that source rc.status
+Requires:       insserv-compat
+%endif
 Requires:       dhcp = %{version}
 %if 0%{?suse_version} < 1500
 Requires:       net-tools

@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 29 07:11:52 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- The server package still requires insserv-compat: the .service
+  files only call out to legacy sysv init scripts that are still
+  sourcing /etc/rc.status (boo#1173440).
+
+-------------------------------------------------------------------
 Tue Jun 23 15:22:00 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
-- insserv is not required anymore 
+- insserv is not required anymore
 
 -------------------------------------------------------------------
 Thu Jun 11 15:46:50 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
