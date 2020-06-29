@@ -29,10 +29,10 @@
 %endif
 
 # MANUAL: Update the git_version and git_revision
-%define git_version 153d0769a1181bf591a9637fd487a541ec7db1e6
-%define git_short   153d0769a118
+%define git_version 026aabaa659832804b01754aaadd2c0f420c68b6
+%define git_short   026aabaa6598
 # git_revision=r$(git rev-list $COMMIT_ID | wc -l)
-%define git_revision r2902
+%define git_revision r2906
 
 %global provider        github
 %global provider_tld    com
@@ -59,7 +59,9 @@ Source1:        %{realname}-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  xz
-BuildRequires:  golang(API) >= 1.10
+# Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
+# for 'golang(API) >= 1.13' here, so just require 1.13 exactly. bsc#1172608
+BuildRequires:  go1.13
 ExcludeArch:    s390
 # KUBIC-SPECIFIC: This was required when upgrading from the original kubic
 #                 packaging, when everything was renamed to -kubic. It also is

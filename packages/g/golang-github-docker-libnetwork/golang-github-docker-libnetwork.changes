@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 25 22:29:28 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to libnetwork 026aabaa6598, which is required for Docker 19.03.12-ce.
+
+-------------------------------------------------------------------
 Tue Jun  2 11:26:38 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to libnetwork 153d0769a118, which is required for Docker 19.03.11-ce.
