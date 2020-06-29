@@ -24,4 +24,12 @@
     <comment>- Conflict with pymacaroon</comment>
     <requestid>677316</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>954aaf34c9955b912ed5904cc86f95de</srcmd5>
+    <version>0.9.3</version>
+    <time>1593458299</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817693</requestid>
+  </revision>
 </revisionlist>
