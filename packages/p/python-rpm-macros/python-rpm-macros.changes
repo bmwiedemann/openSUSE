@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Jun 24 22:05:31 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 20200625.e862151:
+  * fix pytest_arch PYTHONPATH
+  * expand calls pyproject* macros (revert #45)
+  * let the shell expand PYTHONPATH
+
+-------------------------------------------------------------------
+Tue Jun 23 12:14:22 UTC 2020 - tchvatal@suse.com
+
+- Update to version 20200623.3ea9b62:
+  * fix PYTHONPATH on pytest_arch macro
+
+-------------------------------------------------------------------
+Mon Jun 22 19:00:48 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 20200622.1919233:
+  * Expand %buildroot first (avoid endless cycle; bsc#1162743)
+
+-------------------------------------------------------------------
+Mon Jun 22 12:41:25 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 20200622.1f4c5d2:
+  * Add missing semicolon
+
+-------------------------------------------------------------------
+Wed Jun  3 12:01:30 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- For Factory change %system_python to python3.
+
+-------------------------------------------------------------------
+Wed Jun 03 08:16:36 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 20200603.503823c:
+  * Don't add empty path to PYTHONPATH setting.
+  * Do not expand macros, just print them unexpanded (for %pytest* and %pyproject* macros)
+  * Replace py.test -> pytest
+
+-------------------------------------------------------------------
 Fri May 29 15:28:22 UTC 2020 - mcepl@cepl.eu
 
 - Update to version 20200529.b301e36:

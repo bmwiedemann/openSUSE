@@ -17,7 +17,7 @@
 
 
 Name:           python-rpm-macros
-Version:        20200529.b301e36
+Version:        20200625.e862151
 Release:        0
 Summary:        RPM macros for building of Python modules
 License:        WTFPL
@@ -49,8 +49,13 @@ dependencies automatically.
 
 %prep
 %setup -q
+%autopatch -p1
+
 %if 0%{?suse_version} < 1330
 mv macros-default-pythons macros/035-default-pythons
+%endif
+%if 0%{?suse_version} >= 1550
+sed -i -e '/^%system_python/s/python2/python3/' macros/010-common-defs
 %endif
 
 %build
