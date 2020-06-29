@@ -1,7 +1,7 @@
 #
 # spec file for package nim
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nim
-Version:        1.0.2
+Version:        1.2.2
 Release:        0
 Summary:        A statically typed, imperative programming language
 License:        MIT
@@ -26,6 +26,27 @@ URL:            https://nim-lang.org/
 Source0:        https://nim-lang.org/download/nim-%{version}.tar.xz
 Source1:        nim-rpmlintrc
 BuildRequires:  binutils-devel
+# required for the testsuite
+BuildRequires:  gc-devel
+BuildRequires:  libopenssl-devel
+BuildRequires:  sqlite3-devel
+BuildRequires:  timezone
+BuildRequires:  valgrind
+%if 0%{?is_opensuse} || 0%{?is_backports}
+# node is not available on armv7l armv7hl
+%ifnarch armv7l armv7hl
+# Leap 42.3 node is too old, but SLE backports is ok
+%if 0%{?suse_version} >= 1500 || 0%{?is_backports}
+BuildRequires:  nodejs
+%endif
+%endif
+BuildRequires:  sfml2-devel
+%endif
+%if 0%{?suse_version} >= 1500
+# -std=c++14 requires gcc 5.2, SLE and old Leap do not have it
+BuildRequires:  gcc-c++ >= 5.2
+%endif
+#
 Recommends:     git
 ExclusiveArch:  %{ix86} x86_64 armv7l armv7hl aarch64 ppc64le
 
@@ -55,6 +76,67 @@ make %{?_smp_mflags} V=1 \
 ./koch boot -d:release $NIMFLAGS \
   -d:useGnuReadline
 ./koch tools -d:release $NIMFLAGS
+
+%check
+#cat <<EOT >> skip
+#tests/manyloc/keineschweine/keineschweine.nim
+#tests/manyloc/keineschweine/server/sg_lobby.nim
+#EOT
+
+cat <<EOT >> skip
+# FIXME list of tests that need to be reviewed and that are not passing
+#
+# Error: unhandled exception: No SSL/TLS CA certificates found. [IOError]
+tests/stdlib/thttpclient_ssl.nim
+#
+# code reloading test fails
+tests/dll/nimhcr_integration.nim
+#
+# [ 2047s] Failure: reTimeout
+tests/vm/tslow_tables.nim
+EOT
+
+%ifarch aarch64 armv7l armv7hl ppc64le
+cat <<EOT >> skip
+# fails because it includes immintrin.h
+tests/misc/tsizeof4.nim
+# other
+tests/dll/nimhcr_unit.nim
+tests/range/tcompiletime_range_checks.nim
+EOT
+%endif
+
+%if 0%{?sle_version} && 0%{?sle_version} < 150000
+cat <<EOT >> skip
+# compiler too old?
+tests/misc/tsizeof4.nim
+tests/destructor/tnewruntime_misc.nim
+EOT
+%endif
+
+%if 0%{?sle_version} && !0%{?is_opensuse} && !0%{?is_backports}
+cat <<EOT >> skip
+# no SFML in plain SLE
+tests/niminaction/Chapter8/sfml/sfml_test.nim
+EOT
+%endif
+
+%ifarch i586
+cat <<EOT >> skip
+# crashes on i586
+tests/destructor/tnewruntime_misc.nim
+EOT
+%endif
+
+# Tests as many targets as possible
+targets="c objc"
+if rpm -q --whatprovides nodejs; then
+    targets="$targets js"
+fi
+if rpm -q --whatprovides c++_compiler; then
+    targets="$targets c++"
+fi
+./koch tests --nim:$PWD/bin/nim --failing --colors:off --skipFrom:skip --targets:"$targets" all
 
 %install
 ./koch install %{buildroot}%{_libdir}
