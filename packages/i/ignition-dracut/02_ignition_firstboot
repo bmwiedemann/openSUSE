@@ -7,7 +7,7 @@ set flagpath="/boot/writable"
 # Determine if this is a first boot and set the variable
 # to be used later on the kernel command line.
 set ignition_firstboot=""
-if [ -f "${flagpath}/ignition.firstboot" ]; then
+if ! [ -f "${flagpath}/firstboot_happened" ]; then
     # default to dhcp networking parameters to be used with ignition 
     set ignition_network_kcmdline='rd.neednet=1 ip=dhcp'
 
@@ -16,7 +16,9 @@ if [ -f "${flagpath}/ignition.firstboot" ]; then
     # This override feature is primarily used by coreos-installer to
     # persist static networking config provided during install to the    
     # first boot of the machine.
-    source "${flagpath}/ignition.firstboot"
+    if [ -e "${flagpath}/ignition.firstboot" ]; then
+        source "${flagpath}/ignition.firstboot"
+    fi
     
     set ignition_firstboot="ignition.firstboot $ignition_network_kcmdline"
 fi

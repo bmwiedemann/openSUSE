@@ -25,6 +25,7 @@ Group:          System/Management
 URL:            https://github.com/dustymabe/ignition-dracut
 Source:         %{name}-%{version}.tar.xz
 Source1:        ignition-mount-initrd-fstab.service
+Source2:        ignition-dracut-rpmlintrc
 Source3:        ignition-suse-generator
 Source4:        module-setup.sh
 Source5:        02_ignition_firstboot
@@ -35,11 +36,9 @@ Source9:        prevent-boot-cycle.conf
 Source20:       ignition-userconfig-timeout.conf
 Source21:       ignition-userconfig-timeout-arm.conf
 Patch3:         0003-Disable-resetting-UUID.patch
-BuildRequires:  suse-module-tools
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-bootloader-rpm-macros
-PreReq:         sed
-PreReq:         grub2
-PreReq:         virt-what
+Requires:       %{name}-grub2
 Requires:       gptfdisk
 Requires:       ignition
 %{update_bootloader_requires}
@@ -53,9 +52,22 @@ On first boot, Ignition reads its configuration from a source of truth
 the configuration.
 This package contains the dracut scripts for this.
 
+%package grub2
+Summary:        Files to trigger ignition firstboot with grub2
+Group:          System/Management
+Requires:       grub2
+Requires(post): grub2
+Requires(post): sed
+Requires(post): virt-what
+
+%description grub2
+GRUB2 configuration which sets ignition.firstboot based on
+/boot/writable/firstboot_happened and ignition.firstboot and a matching service
+which creates firstboot_happened after the first boot.
+
 %prep
-%setup -q
-%patch3 -p1
+%autosetup -p1
+
 mkdir dracut/30ignition-microos grub
 chmod +x %{SOURCE3} %{SOURCE4} %{SOURCE8}
 cp %{SOURCE1} %{SOURCE3} %{SOURCE4} %{SOURCE8} %{SOURCE9} dracut/30ignition-microos/
@@ -80,19 +92,28 @@ cp -av dracut/[0-9]* %{buildroot}%{_prefix}/lib/dracut/modules.d/
 install -p -m 0644 systemd/*.service %{buildroot}%{_prefix}/lib/systemd/system/
 install -p -m 0644 systemd/*.conf %{buildroot}%{_prefix}/lib/systemd/system/ignition-firstboot-complete.service.d/
 
-%files
-%license LICENSE
-%doc README.SUSE
-%{_sysconfdir}/grub.d
-%{_prefix}/lib/dracut
-%{_prefix}/lib/systemd/system/*
-%config %{_sysconfdir}/grub.d/02_ignition_firstboot
-
-%pre
-%service_add_pre ignition-firstboot-complete.service
-
 %post
 %{?regenerate_initrd_post}
+# Trigger creating the firstboot_happened file (in posttrans) on upgrades.
+# This is needed for systems where the first boot happened before
+# firstboot_happened got introduced and can be removed in the future.
+if [ "$1" -ne 1 ]; then
+    mkdir -p %{_rundir}/ignition-dracut/
+    touch %{_rundir}/ignition-dracut/isupgrade
+fi
+
+%posttrans
+%{?regenerate_initrd_posttrans}
+if [ -f %{_rundir}/ignition-dracut/isupgrade ]; then
+    # Done in posttrans so that read-only-root-fs could create the subvol
+    mkdir -p /boot/writable
+    [ -e /boot/writable/firstboot_happened ] || touch /boot/writable/firstboot_happened
+fi
+
+%pre grub2
+%service_add_pre ignition-firstboot-complete.service
+
+%post grub2
 if [ "$1" = 1 ] ; then
     platform="$(virt-what)"
     case "${platform}" in
@@ -103,28 +124,37 @@ if [ "$1" = 1 ] ; then
     esac
     sed -i 's/^\(GRUB_CMDLINE_LINUX_DEFAULT="\)\(.*\)/\1ignition.platform.id='${platform}' \\$ignition_firstboot \2/' %{_sysconfdir}/default/grub
     %{?update_bootloader_refresh_post}
-    # Trigger setting firstboot flag (in posttrans) only on new installations
-    mkdir -p %{_rundir}/ignition-dracut/
-    touch %{_rundir}/ignition-dracut/newinstall
 fi
 %service_add_post ignition-firstboot-complete.service
 
-%preun
+%preun grub2
 %service_del_preun ignition-firstboot-complete.service
 
-%postun
+%postun grub2
 if [ "$1" = 0 ] ; then
     sed -i -E '/^GRUB_CMDLINE_LINUX_DEFAULT="/s/(\\\$)?ignition[._][^[:space:]"]+ ?//g' %{_sysconfdir}/default/grub
-    rm -f /boot/writable/ignition.firstboot
 fi
 %service_del_postun -n ignition-firstboot-complete.service
 
-%posttrans
-%{?regenerate_initrd_posttrans}
-if test -f %{_rundir}/ignition-dracut/newinstall; then
-    %{?update_bootloader_posttrans}
-    mkdir -p /boot/writable
-    touch /boot/writable/ignition.firstboot
-fi
+%posttrans grub2
+%{?update_bootloader_posttrans}
+
+%files
+%license LICENSE
+%doc README.SUSE
+%dir %{_prefix}/lib/dracut/
+%dir %{_prefix}/lib/dracut/modules.d/
+%{_prefix}/lib/dracut/modules.d/99journald-conf/
+%{_prefix}/lib/dracut/modules.d/99emergency-timeout/
+%{_prefix}/lib/dracut/modules.d/30ignition/
+%{_prefix}/lib/dracut/modules.d/30ignition-microos/
+
+%files grub2
+%license LICENSE
+%doc README.SUSE
+%dir %{_sysconfdir}/grub.d/
+%{_sysconfdir}/grub.d/02_ignition_firstboot
+/usr/lib/systemd/system/ignition-firstboot-complete.service
+/usr/lib/systemd/system/ignition-firstboot-complete.service.d/
 
 %changelog

@@ -1,0 +1,4 @@
+# Not meant to be run manually
+addFilter("suse-missing-rclink")
+# Content differs based on arch
+addFilter("no-binary")

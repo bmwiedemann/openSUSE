@@ -20,9 +20,9 @@ Changes for openSUSE / SLE:
   (https://github.com/coreos/coreos-assembler/pull/616); it is now used in a
   modified version adapted to SUSE's needs.
   This script will automatically set the kernel parameters to trigger an
-  Ignition run if a flag file is set (e.g. on first boot). To trigger an
-  Ignition run manually just create the file
-  "/boot/writable/ignition.firstboot".
+  Ignition run if a flag file does not exist (e.g. on first boot). To trigger
+  an Ignition run manually just delete the file
+  "/boot/writable/firstboot_happened".
 * 0003-Disable-resetting-UUID.patch / change-ignition-firstboot-path.conf:
   Remove / overwrite CoreOS specific script / path.
 * prevent-boot-cycle.conf:
