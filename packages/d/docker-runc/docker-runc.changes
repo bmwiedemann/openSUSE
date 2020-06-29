@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 25 22:34:03 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Switch to Go 1.13 for build.
+
+-------------------------------------------------------------------
 Tue Jun  2 11:21:30 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.0.0-rc10, which is required for Docker 19.03.11-ce.

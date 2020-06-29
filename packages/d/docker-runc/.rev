@@ -220,4 +220,12 @@ necessary for the Docker 17.07.0_ce update.</comment>
   * bsc1168481-0001-cgroup-devices-major-cleanups-and-minimal-transition.patch</comment>
     <requestid>811119</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>9b294fe9d931c603565cbf9f0c7ad7a9</srcmd5>
+    <version>1.0.0rc10+gitr3981_dc9208a3303f</version>
+    <time>1593458117</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to Go 1.13 for build.</comment>
+    <requestid>817375</requestid>
+  </revision>
 </revisionlist>
