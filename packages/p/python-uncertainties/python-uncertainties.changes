@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 29 12:05:59 UTC 2020 - pgajdos@suse.com
+
+- switch from nosetests to pytest
+
+-------------------------------------------------------------------
 Wed Jun 24 17:13:28 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 3.1.4

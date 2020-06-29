@@ -26,8 +26,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/lebigot/uncertainties/
 Source:         https://files.pythonhosted.org/packages/source/u/uncertainties/uncertainties-%{version}.tar.gz
 BuildRequires:  %{python_module future}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module tools}
@@ -58,7 +58,7 @@ sed -i -e '/^#!\//, 1d' uncertainties/lib1to2/test_1to2.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python setup.py nosetests -v
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt
