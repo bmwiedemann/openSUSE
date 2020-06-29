@@ -69,7 +69,6 @@ make %{?_smp_mflags}
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/%{name}_drop.desktop
-%dir %{_datadir}/appdata
 %{_datadir}/appdata/qterminal.appdata.xml
 %{_datadir}/icons/hicolor/64x64/apps/qterminal.png
 

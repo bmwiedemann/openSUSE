@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 24 10:57:05 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Don't package filesystem dirs 
+
+-------------------------------------------------------------------
 Mon Apr 27 11:25:38 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Changed qterminal.keyring to tsujan's key
