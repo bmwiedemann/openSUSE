@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Jun 24 13:24:58 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to v1.15.0
+  * Add CVE-2020-10696 to CHANGELOG.md and changelog.txt
+  * fix lighttpd example
+  * remove dependency on openshift struct
+  * Warn on unset build arguments
+  * vendor: update seccomp/containers-golang to v0.4.1
+  * Updated docs
+  * clean up comments
+  * update exit code for tests
+  * Implement commit for encryption
+  * implementation of encrypt/decrypt push/pull/bud/from
+  * fix resolve docker image name as transport
+  * Add preliminary profiling support to the CLI
+  * Evaluate symlinks in build context directory
+  * fix error info about get signatures for containerImageSource
+  * Add Security Policy
+  * Cirrus: Fixes from review feedback
+  * imagebuildah: stages shouldn't count as their base images
+  * Update containers/common v0.10.0
+  * Add registry to buildahimage Dockerfiles
+  * Cirrus: Use pre-installed VM packages + F32
+  * Cirrus: Re-enable all distro versions
+  * Cirrus: Update to F31 + Use cache images
+  * golangci-lint: Disable gosimple
+  * Lower number of golangci-lint threads
+  * Fix permissions on containers.conf
+  * Don't force tests to use runc
+  * Return exit code from failed containers
+  * cgroup_manager should be under [engine]
+  * Use c/common/pkg/auth in login/logout
+  * Cirrus: Temporarily disable Ubuntu 19 testing
+  * Add containers.conf to stablebyhand build
+  * Update gitignore to exclude test Dockerfiles
+  * Remove warning for systemd inside of container
+
+-------------------------------------------------------------------
 Mon Apr  6 06:39:00 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v1.14.6
