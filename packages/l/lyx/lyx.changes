@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 29 16:43:30 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- lyx 2.3.5.2:
+  * fix quotation marks being reversed in moving arguments when
+    hyperref is enabled
+
+-------------------------------------------------------------------
 Sat Jun 13 20:57:10 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Don't use %autopatch, gives problems with patches in branched
