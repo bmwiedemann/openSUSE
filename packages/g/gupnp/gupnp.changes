@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 23 07:49:08 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 1.2.3:
+  + Requires GSSDP 1.2.3
+  + Always build the gupnp-binding-tool manpage
+  + Fix static linking issue caused by libguul subproject
+  + Add mitigations for CVE-2020-12695 
+  + Implement UDA 2.0 April 17 2020 Addendum 
+
+-------------------------------------------------------------------
 Thu Jan  2 13:05:39 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.2.2:
