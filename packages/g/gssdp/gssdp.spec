@@ -21,7 +21,7 @@
 %define sover 1.2
 
 Name:           gssdp
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Library for resource discovery and announcement over SSDP
 License:        LGPL-2.0-or-later

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 23 07:52:56 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 1.2.3:
+  + Prevent crash if client is not initialized
+  + Fix critical if network device does not exists
+  + Fix ::1 multicast
+  + client. Add getter for network mask
+
+-------------------------------------------------------------------
 Thu Jan  2 13:01:55 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.2.2:
