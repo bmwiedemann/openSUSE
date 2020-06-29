@@ -17,7 +17,7 @@
 
 
 Name:           graphene
-Version:        1.10.0
+Version:        1.10.2
 Release:        0
 Summary:        Thin type layer for graphic libraries
 License:        MIT
