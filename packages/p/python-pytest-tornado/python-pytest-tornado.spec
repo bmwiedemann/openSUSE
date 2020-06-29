@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-tornado
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-tornado
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        A py.test plugin for tornado applications
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/eugeniy/pytest-tornado
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-tornado/pytest-tornado-%{version}.tar.gz
+Source:         https://github.com/eugeniy/pytest-tornado/archive/v%{version}.tar.gz#/pytest-tornado-%{version}.tar.gz
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -50,6 +50,9 @@ of asynchronous tornado applications.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %doc README.rst
