@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jun 29 12:39:00 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.8.1
+  * Case Sensitivity Problems
+    A fix in v2.8.0 led to users being not able to login if they
+    got their username's case wrong. A hostgroup name's case has
+    also been incorrectly taken into account despite using a CI 
+    labelled column in the servicegrid and other lists.
+    - Login usernames now case sensitive in 2.8 #4184
+    - Case insensitive hostgroup filter in service grid not working
+      #4178
+  * Issues With Numbers
+    An attempt to avoid misrepresenting environments in the 
+    tactical overview had an opposite effect by showing negative
+    numbers. Filtering for timestamps in the event history also 
+    showed no results because our filters couldn't cope with plain
+    numbers anymore.
+    - Tactical overview showing "-1 pending" hosts #4174
+    - Timestamp filters not working correctly in history views
+      #4182
+
+-------------------------------------------------------------------
 Mon Jun  8 13:22:08 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.8.0
