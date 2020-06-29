@@ -813,4 +813,24 @@ Added audacity-misc-errors.patch to fix various errors picked up by rpmlint.
 - Now needs wxWidgets &gt;=3.1.1 to build.</comment>
     <requestid>815625</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>31b45612aa9477953477977eba19e2f8</srcmd5>
+    <version>2.4.2</version>
+    <time>1593458183</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.2, now uses cmake to build.
+- Create lame.pc in spec file.
+- Remove audacity-implicit-fortify-decl.patch and
+  audacity-flacversion.patch, fixed upstream
+- Add two more false positives to
+  audacity-no_return_in_nonvoid.patch
+- Upstream changes:
+  *Over 30 bugs fixed since 2.4.1
+  *A new command has been added to the Tools menu:
+   Tools &gt; Reset Configuration.
+  *Audacity now supports LAME's gapless playback info, allowing
+   MP3s to be exported and imported without additional padding.
+</comment>
+    <requestid>817684</requestid>
+  </revision>
 </revisionlist>

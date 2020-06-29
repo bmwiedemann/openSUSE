@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jun 28 11:54:42 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Update to 2.4.2, now uses cmake to build.
+- Create lame.pc in spec file.
+- Remove audacity-implicit-fortify-decl.patch and
+  audacity-flacversion.patch, fixed upstream
+- Add two more false positives to
+  audacity-no_return_in_nonvoid.patch
+- Upstream changes:
+  *Over 30 bugs fixed since 2.4.1
+  *A new command has been added to the Tools menu:
+   Tools > Reset Configuration.
+  *Audacity now supports LAME's gapless playback info, allowing
+   MP3s to be exported and imported without additional padding.
+
+-------------------------------------------------------------------
 Mon Jun 15 09:28:20 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Fix Leap:15.1 build with audacity-implicit-fortify-decl.patch.

@@ -17,7 +17,7 @@
 
 
 Name:           audacity
-Version:        2.4.1
+Version:        2.4.2
 Release:        0
 Summary:        A Multi Track Digital Audio Editor
 License:        GPL-2.0-or-later
@@ -29,16 +29,10 @@ Source1:        audacity-license-nyquist
 Source2:        audacity-rpmlintrc
 # PATCH-FIX-OPENSUSE audacity-no_buildstamp.patch davejplater@gmail.com -- Remove the buildstamp.
 Patch0:         audacity-no_buildstamp.patch
-# PATCH-FIX-OPENSUSE audacity-flacversion.patch davejplater@gmail.com -- Patch to fix build against libflac 1.3.1+.
-Patch1:         audacity-flacversion.patch
 Patch2:         audacity-misc-errors.patch
-# PATCH-FIX-UPSTREAM audacity-no_return_in_nonvoid.patch
+# PATCH-FIX-UPSTREAM audacity-no_return_in_nonvoid.patch - Fix false positive errors Two new gcc10 ones ignoring assert
 Patch3:         audacity-no_return_in_nonvoid.patch
-# PATCH-FIX-OPENSUSE audacity-implicit-fortify-decl.patch davejplater@gmail.com -- Leap:15.1's build misses "UNIX" definition in nyquist/xlisp/security.c
-Patch4:         audacity-implicit-fortify-decl.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.15
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 #!BuildIgnore:  gstreamer-0_10-plugins-base
@@ -73,11 +67,11 @@ BuildRequires:  pkgconfig(vorbisfile)
 #BuildRequires:  portaudio-devel
 Recommends:     %{name}-lang
 # WARNING Nothing provides libavutil without a suffix
-Requires:       ffmpeg
-Recommends:     libmp3lame0
 Requires:       %{name}-plugins = %{version}
-Requires:       libFLAC++6 >= 1.3.1
-Requires:       libFLAC8 >= 1.3.1
+Requires:       ffmpeg
+Requires:       libmp3lame0
+#Doesn't build for 32 bit anymore
+ExcludeArch:    i586
 
 %description
 Audacity is a program that manipulates digital audio wave forms.
@@ -104,58 +98,64 @@ This package contains extra plugins for audacity.
 cp -f %{SOURCE1} LICENSE_NYQUIST.txt
 # Make sure we use the system versions.
 rm -rf lib-src/{expat,libvamp,libsoxr,ffmpeg,lame}/
+# Audacity's cmake can't find libmp3lame without a .pc file
+# This is a temporary workaround.
+if ! test -e %{_libdir}/pkgconfig/lame.pc
+then
+echo "creating lame.pc"
+cat << EOF > lame.pc
+prefix=%{_prefix}
+libdir=%{_libdir}
+includedir=%{_includedir}/lame
+
+Name: mp3lame
+Description: encoder that converts audio to the MP3 file format.
+Version: 3.100
+Libs: -L${libdir} -lmp3lame
+Cflags: -I${includedir}
+EOF
+fi
+
+#Included in src/AboutDialog.cpp but not supplied
+touch include/RevisionIdent.h
 
 %build
+if ! test -e %{_libdir}/pkgconfig/lame.pc
+then
+export PKG_CONFIG_PATH="`echo $PWD`:%{_libdir}/pkgconfig"
+fi
 export CFLAGS="%{optflags} -fno-strict-aliasing -ggdb"
 export CXXFLAGS="$CFLAGS -std=gnu++11"
-%if 1 == 1
-aclocal -I m4
-autoconf
-%configure \
-%ifnarch %ix86 x86_64
-  --disable-sse                \
-%endif
-%if 0%{?suse_version} > 1501
-  --disable-dynamic-loading \
-  %endif
-  --with-ffmpeg=system \
-  --with-libmad=system \
-  --with-libtwolame=system \
-  --with-lame=system \
-  --docdir=%{_docdir}/%{name}/
-%else
-%cmake
-%endif
+%cmake \
+       -Duse_lame:STRING=system
 
 make %{?_smp_mflags}
 
 %install
-%make_install
+%cmake_install
 
 # E-mail wrote to feedback@audacityteam.org.
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/48x48/mimetypes/
 mv -f %{buildroot}%{_datadir}/pixmaps/gnome-mime-application-x-audacity-project.xpm \
   %{buildroot}%{_datadir}/icons/hicolor/48x48/mimetypes/application-x-audacity-project.xpm
 rm -rf %{buildroot}%{_datadir}/pixmaps/
-rm %{buildroot}%{_docdir}/%{name}/LICENSE.txt
+rm -rf %{buildroot}%{_datadir}/doc
 cp -v lib-src/portmixer/LICENSE.txt portmixer.LICENSE.txt
 %find_lang %{name}
 
 %files plugins
 %license LICENSE.txt
 %dir %{_libdir}/%{name}
-%{_libdir}/%{name}/libsuil*.so
+%{_libdir}/%{name}/suil*.so
 
 %files
 %defattr(-,root,root)
 %doc README.txt
 %license LICENSE.txt LICENSE_NYQUIST.txt portmixer.LICENSE.txt
-%doc %{_docdir}/%{name}/
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.*
-%{_datadir}/icons/hicolor/*/mimetypes/*%{name}*
+%{_datadir}/icons/hicolor/*
 %{_datadir}/mime/packages/%{name}.xml
 %{_mandir}/man?/%{name}.?%{?ext_man}
 %dir %{_datadir}/appdata/

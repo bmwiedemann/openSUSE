@@ -1,8 +1,8 @@
-Index: audacity-Audacity-2.3.3/src/widgets/NumericTextCtrl.cpp
+Index: b/src/widgets/NumericTextCtrl.cpp
 ===================================================================
---- audacity-Audacity-2.3.3.orig/src/widgets/NumericTextCtrl.cpp	2019-11-15 13:14:55.000000000 +0200
-+++ audacity-Audacity-2.3.3/src/widgets/NumericTextCtrl.cpp	2020-02-02 15:41:21.663740215 +0200
-@@ -637,6 +637,7 @@ static const BuiltinFormatString Bandwid
+--- a/src/widgets/NumericTextCtrl.cpp	2020-06-19 17:16:47.000000000 +0200
++++ b/src/widgets/NumericTextCtrl.cpp	2020-06-28 11:27:53.709676198 +0200
+@@ -654,6 +654,7 @@ static const BuiltinFormatString Bandwid
           case NumericConverter::BANDWIDTH:
              return WXSIZEOF(BandwidthConverterFormats_);
        }
@@ -10,10 +10,10 @@ Index: audacity-Audacity-2.3.3/src/widgets/NumericTextCtrl.cpp
     }
  }
  
-Index: audacity-Audacity-2.3.3/lib-src/libnyquist/nyquist/xlisp/xlbfun.c
+Index: b/lib-src/libnyquist/nyquist/xlisp/xlbfun.c
 ===================================================================
---- audacity-Audacity-2.3.3.orig/lib-src/libnyquist/nyquist/xlisp/xlbfun.c	2019-11-15 13:14:55.000000000 +0200
-+++ audacity-Audacity-2.3.3/lib-src/libnyquist/nyquist/xlisp/xlbfun.c	2020-02-02 15:41:21.663740215 +0200
+--- a/lib-src/libnyquist/nyquist/xlisp/xlbfun.c	2020-06-19 17:16:47.000000000 +0200
++++ b/lib-src/libnyquist/nyquist/xlisp/xlbfun.c	2020-06-28 11:27:53.773678563 +0200
 @@ -603,7 +603,10 @@ LVAL xcleanup(void)
  {
      xllastarg();
@@ -26,3 +26,29 @@ Index: audacity-Audacity-2.3.3/lib-src/libnyquist/nyquist/xlisp/xlbfun.c
  }
  
  /* xtoplevel - special form 'top-level' */
+Index: b/lib-src/portsmf/allegro.cpp
+===================================================================
+--- a/lib-src/portsmf/allegro.cpp	2020-06-19 17:16:47.000000000 +0200
++++ b/lib-src/portsmf/allegro.cpp	2020-06-28 12:38:54.119640838 +0200
+@@ -2885,6 +2885,9 @@ Alg_event_ptr &Alg_seq::operator[](int i
+         tr++;
+     }
+     assert(false); // out of bounds
++    Alg_event_ptr ab_track;
++    return ab_track; // Fix false positive error: control reaches end of non-void function [-Werror=return-type]
++    // Ignores the assert A gcc bug?
+ }
+ #pragma warning(default: 4715)
+ 
+Index: b/lib-src/libnyquist/nyquist/cmupv/src/cmupv.c
+===================================================================
+--- a/lib-src/libnyquist/nyquist/cmupv/src/cmupv.c	2020-06-19 17:16:47.000000000 +0200
++++ b/lib-src/libnyquist/nyquist/cmupv/src/cmupv.c	2020-06-28 11:54:14.043499973 +0200
+@@ -596,6 +596,7 @@ double pv_get_effective_pos(Phase_vocode
+         return -(pv->ratio * pv->fftsize / 2.0);
+     } else { // I can't think of any other case.
+         assert(FALSE);
++	return -(pv->ratio * pv->fftsize / 2.0); //Another false positive ignoring assert as a return value
+     }
+ }
+ 
