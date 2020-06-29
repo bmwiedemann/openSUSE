@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 28 06:49:16 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- enigmail 2.1.7:
+  * display information about an upcoming release of Thunderbird 78
+  * Fix minor rendering problem with Deep Dark theme
+  * Fix running "Encrypt to key" filter fails silently
+  * Fix improper Content-Type setting for keyserver upload
+
+-------------------------------------------------------------------
 Wed Apr  8 09:10:47 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - enigmail 2.1.6:
