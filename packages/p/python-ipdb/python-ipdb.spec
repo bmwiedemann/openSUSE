@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-ipdb
-Version:        0.13.2
+Version:        0.13.3
 Release:        0
 Summary:        IPython-enabled pdb
 License:        BSD-3-Clause
@@ -30,9 +30,9 @@ BuildRequires:  %{python_module ipython >= 5.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-ipython >= 5.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Requires:       python-ipython >= 5.1
 Provides:       python-jupyter_ipdb = %{version}
 Obsoletes:      python-jupyter_ipdb < %{version}
 BuildArch:      noarch

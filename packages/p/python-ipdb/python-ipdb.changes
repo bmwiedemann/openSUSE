@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 29 13:31:09 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.13.3
+  * Allow runcall, runeval to also use set context value
+  * Add condition argument to set_trace
+  * Add option to set context via environment variable or configuration file
+
+-------------------------------------------------------------------
 Tue Mar  3 14:35:47 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.13.2
