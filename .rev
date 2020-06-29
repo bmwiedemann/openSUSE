@@ -329,4 +329,12 @@
   * macOS: Fix for diff kitten not working with python 3.8 (#2780)</comment>
     <requestid>816793</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>cda5af3f8ee49fd5ff5d7ebb1861d1ad</srcmd5>
+    <version>0.18.1</version>
+    <time>1593458312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817738</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 26 21:43:23 UTC 2020 - Philipp Seiler <p.seiler@linuxmail.org>
+
+- ported no-docs patch to 0.18.1
+- improved the sed line and added another one for python2
+
+-------------------------------------------------------------------
 Wed Jun 24 07:47:56 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.18.1:

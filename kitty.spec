@@ -49,7 +49,7 @@ BuildRequires:  wayland-devel
 BuildRequires:  wayland-protocols-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(dbus-1)
-%if 0%{?sle_version} > 150000 || 0%{?suse_version} >= 1550
+%if 0%{?sle_version} > 150100 || 0%{?suse_version} >= 1550
 BuildRequires:  python3-Sphinx >= 1.7
 %endif
 
@@ -61,11 +61,12 @@ bracketed paste and so on, and which can be controlled by scripts.
 
 %prep
 %setup -q
-%if 0%{?sle_version} <= 150000 && ! (0%{?suse_version} >= 1550)
+%if 0%{?sle_version} <= 150100 && ! (0%{?suse_version} >= 1550)
 %patch0 -p1
 %endif
 
-find . -type f -exec sed -i "s/#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/" {} +
+find . -type f -exec sed -i 's@#!/usr/bin/env python3$@#!/usr/bin/python3@' {} +
+find . -type f -exec sed -i 's@#!/usr/bin/env python$@#!/usr/bin/python@' {} +
 
 %build
 #tic -x -o/tmp/tmpWhatever terminfo/kitty.terminfo
@@ -87,7 +88,7 @@ python3 setup.py --verbose linux-package --prefix %{buildroot}%{_prefix}
 %dir %{_datadir}/icons/hicolor/256x256/
 %{_datadir}/icons/hicolor/256x256/apps/
 %{_datadir}/terminfo/x/xterm-kitty
-%if 0%{?sle_version} > 150000 || 0%{?suse_version} >= 1550
+%if 0%{?sle_version} > 150100 || 0%{?suse_version} >= 1550
 %{_mandir}/man1/kitty.1%{?ext_man}
 %{_datadir}/doc/kitty
 %endif
