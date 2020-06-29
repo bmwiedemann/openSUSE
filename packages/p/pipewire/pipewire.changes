@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun 16 09:04:18 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.3.6:
+  * Extensive memory leak fixing and stress testing was done.
+    A big leak in screen sharing with DMA-BUF was fixed.
+  * Compile fixes
+  * Stability improvements in jack and pulseaudio layers.
+  * Added the old portal module to make the Camera portal
+    work again. This will be moved to the session manager in
+    future versions.
+  * Improvements to the GStreamer source and sink shutdown.
+  * Fix compatibility with v2 clients again when negotiating
+    buffers.
+- Disable vulkan if the vulkan package is too old (as in
+  SLE 15 SP0 and SP1)
+- Add patch to build with meson >= 0.46.0 since 0.50.0 is not
+  really needed:
+  * fix-meson-required-version.patch
+
+-------------------------------------------------------------------
 Thu May 21 08:50:18 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Filter out libpulse.so.0 and libjack.so.0 automatic provides so

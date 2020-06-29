@@ -22,16 +22,21 @@
 %global provfind sh -c "grep -v -e 'libpulse.*\\.so' -e 'libjack.*\\.so' | %__find_provides"
 %global __find_provides %provfind
 
-%define sover 0_3_5
+%define sover 0_3_6
 %define apiver 0.3
 %define apiver_str 0_3
 %define spa_ver 0.2
 %define spa_ver_str 0_2
 
 %define libpipewire libpipewire-%{apiver_str}-0
+%if %{pkg_vcmp pkgconfig(vulkan) >= 1.1}
+%define with_vulkan 1
+%else
+%define with_vulkan 0
+%endif
 
 Name:           pipewire
-Version:        0.3.5
+Version:        0.3.6
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -41,6 +46,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Patch0:         fix-memfd_create-call.patch
 Patch1:         do-not-use-snd_pcm_ioplug_hw_avail.patch
+Patch2:         fix-meson-required-version.patch
 
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -254,6 +260,7 @@ This package contains documentation for the PipeWire media server.
 %if %{pkg_vcmp alsa-devel < 1.2.2}
 %patch1 -p1
 %endif
+%patch2 -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}
@@ -265,7 +272,11 @@ export CC=gcc-9
 	-Dgstreamer=true \
 	-Dffmpeg=true \
 	-Dsystemd=true \
+%if %{with_vulkan}
 	-Dvulkan=true \
+%else
+	-Dvulkan=false \
+%endif
 	-Dtest=true \
 	-Daudiotestsrc=true \
 	%{nil}
@@ -286,6 +297,11 @@ for wrapper in pw-pulse pw-jack ; do
     ln -s -f %{_sysconfdir}/alternatives/$wrapper %{buildroot}%{_bindir}/$wrapper
 done
 
+for manpage in pw-jack pw-pulse ; do
+    mv  %{buildroot}%{_mandir}/man1/$manpage.1 %{buildroot}%{_mandir}/man1/$manpage-%{apiver}.1
+    ln -s -f %{_sysconfdir}/alternatives/$manpage.1%{ext_man} %{buildroot}%{_mandir}/man1/$manpage.1%{ext_man}
+done
+
 %fdupes -s %{buildroot}/%{_datadir}/doc/pipewire/html
 
 %check
@@ -295,7 +311,8 @@ done
 %postun -n %{libpipewire} -p /sbin/ldconfig
 
 %post libpulse-%{apiver_str}
-%{_sbindir}/update-alternatives --install %{_bindir}/pw-pulse pw-pulse %{_bindir}/pw-pulse-%{apiver} 20
+%{_sbindir}/update-alternatives --install %{_bindir}/pw-pulse pw-pulse %{_bindir}/pw-pulse-%{apiver} 20 \
+    --slave %{_mandir}/man1/pw-pulse.1%{ext_man} pw-pulse.1%{ext_man} %{_mandir}/man1/pw-pulse-%{apiver}.1%{ext_man}
 
 %postun libpulse-%{apiver_str}
 if [ ! -e %{_bindir}/pw-pulse-%{apiver} ] ; then
@@ -303,7 +320,8 @@ if [ ! -e %{_bindir}/pw-pulse-%{apiver} ] ; then
 fi
 
 %post libjack-%{apiver_str}
-%{_sbindir}/update-alternatives --install %{_bindir}/pw-jack pw-jack %{_bindir}/pw-jack-%{apiver} 20
+%{_sbindir}/update-alternatives --install %{_bindir}/pw-jack pw-jack %{_bindir}/pw-jack-%{apiver} 20 \
+    --slave %{_mandir}/man1/pw-jack.1%{ext_man} pw-jack.1%{ext_man} %{_mandir}/man1/pw-jack-%{apiver}.1%{ext_man}
 
 %postun libjack-%{apiver_str}
 if [ ! -e %{_bindir}/pw-jack-%{apiver} ] ; then
@@ -342,8 +360,11 @@ fi
 %{_libdir}/pipewire-%{apiver}/jack/libjacknet.so*
 %{_libdir}/pipewire-%{apiver}/jack/libjackserver.so*
 %ghost %{_sysconfdir}/alternatives/pw-jack
+%ghost %{_sysconfdir}/alternatives/pw-jack.1%{ext_man}
 %{_bindir}/pw-jack-%{apiver}
 %{_bindir}/pw-jack
+%{_mandir}/man1/pw-jack-%{apiver}.1%{ext_man}
+%{_mandir}/man1/pw-jack.1%{ext_man}
 
 %files libpulse-%{apiver_str}
 %license pipewire-pulseaudio/LICENSE
@@ -352,8 +373,11 @@ fi
 %{_libdir}/pipewire-%{apiver}/pulse/libpulse-simple.so*
 %{_libdir}/pipewire-%{apiver}/pulse/libpulse-mainloop-glib.so*
 %ghost %{_sysconfdir}/alternatives/pw-pulse
+%ghost %{_sysconfdir}/alternatives/pw-pulse.1%{ext_man}
 %{_bindir}/pw-pulse-%{apiver}
 %{_bindir}/pw-pulse
+%{_mandir}/man1/pw-pulse-%{apiver}.1%{ext_man}
+%{_mandir}/man1/pw-pulse.1%{ext_man}
 
 %files -n gstreamer-plugin-pipewire
 %{_libdir}/gstreamer-1.0/libgstpipewire.so
@@ -390,6 +414,7 @@ fi
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-client-node.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-link-factory.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-metadata.so
+%{_libdir}/pipewire-%{apiver}/libpipewire-module-portal.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-profiler.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-protocol-native.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-rtkit.so
@@ -411,7 +436,9 @@ fi
 %{_libdir}/spa-%{spa_ver}/support/libspa-support.so
 %{_libdir}/spa-%{spa_ver}/v4l2/libspa-v4l2.so
 %{_libdir}/spa-%{spa_ver}/videoconvert/libspa-videoconvert.so
+%if %{with_vulkan}
 %{_libdir}/spa-%{spa_ver}/vulkan/libspa-vulkan.so
+%endif
 %{_libdir}/spa-%{spa_ver}/audiotestsrc/libspa-audiotestsrc.so
 %{_libdir}/spa-%{spa_ver}/test/libspa-test.so
 
@@ -426,7 +453,9 @@ fi
 %dir %{_libdir}/spa-%{spa_ver}/support
 %dir %{_libdir}/spa-%{spa_ver}/v4l2
 %dir %{_libdir}/spa-%{spa_ver}/videoconvert
+%if %{with_vulkan}
 %dir %{_libdir}/spa-%{spa_ver}/vulkan
+%endif
 %dir %{_libdir}/spa-%{spa_ver}/audiotestsrc
 %dir %{_libdir}/spa-%{spa_ver}/test
 
