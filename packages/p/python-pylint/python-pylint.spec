@@ -94,10 +94,14 @@ done
 %if %{with tests}
 %check
 export LC_ALL="en_US.UTF-8"
-%pytest -k "not test_do_not_import_files_from_local_directory"
-# workaround for gh#PyCQA/pylint#3636
-export PYTHONPATH="/"
-%pytest -k "test_do_not_import_files_from_local_directory"
+# this tests needs the local source dir for imports,
+# gh#openSUSE/python-rpm-macros#48
+export PYTHONPATH=$(pwd)
+%pytest -k test_version
+# others must not import from local source dir
+# gh#PyCQA/pylint#3636
+export PYTHONPATH=""
+%pytest -k "not test_version" --benchmark-disable
 %endif
 
 %files %{python_files}

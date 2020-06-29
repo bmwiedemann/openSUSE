@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 23 16:28:35 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- test import workarounds need rework
+  gh#openSUSE/python-rpm-macros#48
+  gh#PyCQA/pylint#3636 
+- do not benchmark, just run the tests once
+
+-------------------------------------------------------------------
 Mon Jun  8 19:33:50 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to 2.5.3
