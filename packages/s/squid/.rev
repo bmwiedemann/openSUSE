@@ -844,4 +844,14 @@ from the squid 3.x changelog</comment>
     during HTTPS or SSL-Bump connections (CVE-2020-14059, bsc#1173304)</comment>
     <requestid>816822</requestid>
   </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>1636c550c74e316960d10ec317fbc627</srcmd5>
+    <version>4.12</version>
+    <time>1593458233</time>
+    <user>dimstar_suse</user>
+    <comment>Only add missing CVE and bugnumber
+
+  * HTTP: validate Content-Length value prefix (CVE-2020-15049, bsc#1173455)</comment>
+    <requestid>817633</requestid>
+  </revision>
 </revisionlist>
