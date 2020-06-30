@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 30 11:39:40 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.4.0+git.20200630.58375a7:
+  * Fix crash in unifdef pass with float indices.
+
+-------------------------------------------------------------------
 Wed Jun 17 07:39:51 UTC 2020 - mliska@suse.cz
 
 - Update to version 1.4.0+git.20200617.20d10d4:
