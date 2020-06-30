@@ -1,7 +1,7 @@
 #
 # spec file for package python-pypet
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-# Tests take forever
-%bcond_with     test
+%bcond_without  test
 Name:           python-pypet
-Version:        0.4.3
+Version:        0.5.1
 Release:        0
 Summary:        Parameter exploration and storage of results for numerical simulations
 License:        BSD-3-Clause
@@ -36,7 +35,6 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module numpy >= 1.6.1}
 BuildRequires:  %{python_module pandas >= 0.15.0}
 BuildRequires:  %{python_module scipy >= 0.9.0}
-BuildRequires:  %{python_module scoop >= 0.7.1}
 BuildRequires:  %{python_module tables >= 3.1.1}
 %endif
 Requires:       python-numpy >= 1.6.1
@@ -74,11 +72,13 @@ export LANG=en_US.UTF-8
 %if %{with test}
 %check
 export LANG=en_US.UTF-8
-%python_exec setup.py test
+pushd pypet/tests
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
+$python -B all_single_core_tests.py
+}
 %endif
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.md
 %license LICENSE
 %{python_sitelib}/*

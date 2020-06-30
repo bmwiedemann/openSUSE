@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 23 20:05:26 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.5.1
+  * Updated package description to automatically convert md to rst for pypi
+  * Updated pngpath for Sphinx
+- Update to 0.5.0
+  * Fix to work with pandas 1.0
+  * Fix to work with brian2 2.3
+  * Fix to work with Python 3.7 and 3.8
+  * Removal `expectedrows` and `filters` option for HDF5Storage.put as this is no longer supported by pandas
+
+-------------------------------------------------------------------
 Fri Aug  3 03:47:08 UTC 2018 - toddrme2178@gmail.com
 
 - Update to 0.4.3
