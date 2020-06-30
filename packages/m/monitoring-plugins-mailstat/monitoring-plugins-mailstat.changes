@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 21 09:51:12 UTC 2020 - lars@linux-schulserver.de - 0.9.1
+
+- require perl(RRDs) for the images and mailgraph for the stats
+- add an example check_mailstat.cfg NRPE definition
+- added gpl-3.0.txt license file
+- ran spec-cleaner
+
+-------------------------------------------------------------------
 Wed Jul 30 19:17:09 UTC 2014 - lars@linux-schulserver.de
 
 - Renamed package to monitoring-plugins-mailstat
