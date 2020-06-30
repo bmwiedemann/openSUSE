@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jun 28 19:06:05 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 7.16.1:
+  * Noticeable changes:
+    + Exceptions are now (re)raised when running notebooks via the
+      :magic:`%run`, helping to catch issues in workflows and
+      pipelines. :ghpull:`12301`
+    + Fix inputhook for qt 5.15.0 :ghpull:`12355`
+    + Fix wx inputhook :ghpull:`12375`
+    + Add handling for malformed pathext env var (Windows)
+      :ghpull:`12367`
+    + use $SHELL in system_piped :ghpull:`12360` for uniform behavior
+      with ipykernel.
+  * Reproducible Build
+
+-------------------------------------------------------------------
 Sat May 30 23:53:32 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:
