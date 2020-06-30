@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 26 03:12:00 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.86
+   see /usr/share/doc/packages/perl-Module-Signature/Changes
+
+  [Changes for 0.86 - Thu Jun 25 21:06:24 CST 2020]
+  * Update PAUSE and ANDK keys to 2020. (@dweekly)
+  * Update documentation pertaining to SHA1. (@dweekly)
+  * Fix compatibility with Crypt::OpenPGP. (@niklasholm)
+
+-------------------------------------------------------------------
 Thu Aug 30 05:38:05 UTC 2018 - coolo@suse.com
 
 - updated to 0.83

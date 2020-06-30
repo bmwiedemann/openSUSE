@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Module-Signature
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Module-Signature
-Version:        0.83
+Version:        0.86
 Release:        0
 #Upstream: SUSE-Public-Domain
 %define cpan_name Module-Signature
 Summary:        Module signature file manipulation
 License:        CC0-1.0 AND (GPL-1.0-or-later OR Artistic-1.0)
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Module-Signature/
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -57,6 +57,11 @@ dist'. Be sure to delete the _SIGNATURE_ file afterwards.
 Please also see NOTES about _MANIFEST.SKIP_ issues, especially if you are
 using *Module::Build* or writing your own _MANIFEST.SKIP_.
 
+Signatures made with Module::Signature prior to version 0.82 used the SHA1
+algorithm by default. SHA1 is now considered broken, and therefore module
+authors are strongly encouraged to regenerate their _SIGNATURE_ files.
+Users verifying old SHA1 signature files will receive a warning.
+
 %prep
 %setup -q -n %{cpan_name}-%{version}
 # MANUAL BEGIN
@@ -64,11 +69,11 @@ sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' 
 # MANUAL END
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+PERL_USE_UNSAFE_INC=1 perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -77,6 +82,6 @@ sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' 
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc ANDK2018.pub AUDREYT2018.pub AUTHORS Changes NIKLASHOLM2018.pub PAUSE2019.pub README
+%doc ANDK2020.pub AUDREYT2018.pub AUTHORS Changes NIKLASHOLM2018.pub PAUSE2020.pub README
 
 %changelog
