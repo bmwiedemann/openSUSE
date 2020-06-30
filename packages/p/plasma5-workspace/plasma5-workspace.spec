@@ -43,6 +43,7 @@ Source4:        plasmafullwayland.desktop
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Port-applets-to-use-PlasmaExtras.PlaceholderMessage.patch
 Patch2:         0001-Fix-DBus-service-used-in-shutdown-interface.patch
+Patch3:         0001-mediacontroller-Use-half-the-samples-for-better-perf.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch

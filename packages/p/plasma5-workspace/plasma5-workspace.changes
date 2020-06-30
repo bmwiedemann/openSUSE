@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 27 09:57:16 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to speed up artwork shader compilation in VMs (boo#1172763):
+  * 0001-mediacontroller-Use-half-the-samples-for-better-perf.patch
+
+-------------------------------------------------------------------
 Tue Jun 23 20:24:28 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix power actions (kde#423391):
