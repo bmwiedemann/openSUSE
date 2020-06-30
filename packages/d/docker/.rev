@@ -1000,4 +1000,12 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
   dependencies much more quickly.</comment>
     <requestid>817374</requestid>
   </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>74a159003cb88553abeb8749c281f064</srcmd5>
+    <version>19.03.12_ce</version>
+    <time>1593550969</time>
+    <user>dimstar_suse</user>
+    <comment>- Emergency fix: %requires_eq does not work with provide symbols,
+  only effective package names. Convert back to regular Requires.</comment>
+  </revision>
 </revisionlist>

@@ -105,16 +105,16 @@ Requires:       ca-certificates-mozilla
 # for some old packaging issues (where rpm would delete a binary that was
 # installed by docker-libnetwork). See bsc#1057743 for more details.
 BuildRequires:  docker-libnetwork%{name_suffix}-git = %{required_libnetwork}
-%requires_eq    docker-libnetwork%{name_suffix}-git
+Requires:       docker-libnetwork%{name_suffix}-git = %{required_libnetwork}
 Requires:       fix_bsc_1057743
 # Containerd and runC are required as they are the only currently supported
 # execdrivers of Docker. NOTE: The version pinning here matches upstream's
 # vendor.conf to ensure that we don't use a slightly incompatible version of
 # runC or containerd (which would be bad).
 BuildRequires:  containerd%{name_suffix}-git  = %{required_containerd}
-%requires_eq    containerd%{name_suffix}-git
+Requires:       containerd%{name_suffix}-git = %{required_containerd}
 BuildRequires:  docker-runc%{name_suffix}-git = %{required_dockerrunc}
-%requires_eq    docker-runc%{name_suffix}-git
+Requires:       docker-runc%{name_suffix}-git = %{required_dockerrunc}
 # Needed for --init support. We don't use "tini", we use our own implementation
 # which handles edge-cases better.
 Requires:       catatonit
