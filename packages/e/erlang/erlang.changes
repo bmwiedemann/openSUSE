@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Fri Jun 12 07:24:09 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Changes for 23.0.2:
+  * erts: Fixed bug when sending an export fun (eg lists:reverse/1)
+    on a not yet established connection. It could cause VM crash.
+    Bug exists since OTP 23.0.
+  * megaco: The mini parser could not properly decode some IPv6
+    addresses.
+- Changes for 23.0.1:
+  * erts: The functionality utilized by BIFs for temporary
+    disabling of garbage collection while yielding could cause
+    system task queues to become inconsistent on a process
+    executing such a BIF. Process system tasks are for example
+    utilized when purging code, garbage collecting literal data,
+    and when issuing an ordinary garbage collection from another
+    process. The bug does not trigger frequently. Multiple code
+    purges in direct sequence makes it more likely that this bug is
+    triggered. In the cases observed, this has resulted in a
+    hanging code purge operation.
+  * erts: SCTP and UDP recv/2,3 hangs indefinitely if socket is
+    closed while recv is called (socket in passive mode).
+  * compiler: In rare circumstances, a guard using 'not' could
+    evaluate to the wrong boolean value.
+  * compiler: A guard expression that referenced a variable bound
+    to a boolean expression could evaluate to the wrong value.
+
+-------------------------------------------------------------------
+Fri Jun 12 06:36:45 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 23.0:
+- Potential Incompatibilities:
+  * SSL:Support for SSL 3.0 is completely removed. TLS 1.3 is added
+    to the list of default supported versions.
+  * erl_interface: Removed the deprecated parts of erl_interface
+    (erl_interface.h and essentially all C functions with prefix
+    erl_).
+  * The deprecated erlang:get_stacktrace/0 BIF now returns an empty
+    list instead of a stacktrace. erlang:get_stacktrace/0 is
+    scheduled for removal in OTP 24.
+- Improvements and new features:
+  * ssh: OpenSSH 6.5 introduced a new file representation of keys
+    called openssh-key-v1. This is now supported with the exception
+    of handling encrypted keys.
+  * Algorithm configuration could now be done in a .config file. This
+    is useful for example to enable an algorithm that is disabled by
+    default without need to change the code.
+  * SSL: Support for the middlebox compatibility mode makes the TLS
+    1.3 handshake look more like a TLS 1.2 handshake and increases
+    the chance of successfully establishing TLS 1.3 connections
+    through legacy middleboxes.
+  * Add support for key exchange with Edward curves and PSS-RSA
+    padding in signature verification
+  * The possibility to run Erlang distribution without relying on
+    EPMD has been extended.
+  * A first EXPERIMENTAL socket backend to gen_tcp and inet has been
+    implemented. gen_udp and gen_sctp will follow.
+  * Putting {inet_backend, socket} as first option to listen() or
+    connect() makes it easy to try this for existing code
+  * A new module erpc in kernel which implements an enhanced subset
+    of the operations provided by the rpc module. Enhanced in the
+    sense that it makes it possible to distinguish between returned
+    value, raised exceptions and other errors. erpc also has better
+    performance and scalability than the original rpc implementation.
+    This by utilizing the newly introduced spawn_request() BIF. Also
+    the rpc module benefits from these improvements by utilizing erpc
+    when possible.
+  * Scalability and performance Improvements plus new functionality
+    regarding distributed spawn operations.
+  * In binary matching, the size of the segment to be matched is now
+    allowed to be a guard expression (EEP-52)
+  * When matching with maps the keys can now be guard expressions
+    (EEP-52).
+  * ssh: support for TCP/IP port forwarding, a.k.a tunnelling a.k.a
+    as tcp-forward/direct-tcp is implemented. In the OpenSSH client,
+    this corresponds to the options -L and -R.
+  * Allow underscores in numeric literals to improve readability.
+    Examples: 123_456_789, 16#1234_ABCD.
+  * New functions in the shell for displaying documentation for
+    Erlang modules, functions and types.
+  * kernel: The module pg with a new implementation of distributed
+    named process groups is introduced. The old module pg2 is
+    deprecated and scheduled for removal in OTP 24.
+
+-------------------------------------------------------------------
 Wed Mar 25 08:48:44 UTC 2020 - g.santomaggio@gmail.com
 
 - Changes for 22.3:

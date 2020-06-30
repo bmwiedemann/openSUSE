@@ -23,7 +23,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           erlang
-Version:        22.3
+Version:        23.0.2
 Release:        0
 Summary:        General-purpose programming language and runtime environment
 License:        Apache-2.0
