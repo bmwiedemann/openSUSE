@@ -27,7 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-st
 BuildRequires:  %{python_module google-auth >= 1.11.0}
 BuildRequires:  %{python_module google-cloud-core >= 1.2.0}
 BuildRequires:  %{python_module google-resumable-media >= 0.5.0}
-BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module mock >= 3.0.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

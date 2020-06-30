@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 29 15:55:00 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
+
+- Update version requirement for mock package.
+  + The tests require at least version 3.0.0. 
+
+-------------------------------------------------------------------
 Thu Jun 18 10:41:05 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.29.0
