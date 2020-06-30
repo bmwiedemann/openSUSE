@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 25 21:10:14 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.4:
+  + This release backports some of the OCI authenticator fixes from
+    the 1.7 series, and should now be able to host flatpak images
+    on e.g. docker hub.
+  + Other changes:
+    - Fix a use-after free in libflatpak.
+    - Don't list p2p downgrades in list of available updates.
+
+-------------------------------------------------------------------
 Tue Jun 16 02:21:39 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
 - Create a skeleton flatpak repo using "flatpak remotes" instead
