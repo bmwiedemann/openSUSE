@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Mon Jun 15 19:27:12 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 5.1.0
+- Bugs fixed:
+  * OFX import leaves brokerage account field blank for nested
+    accounts (kde#350360)
+  * KF5 ofximporter "Map account" fails on MS Windows (kde#396286)
+  * report's chart mess with data if there are too many data
+    (kde#399261)
+  * Some ui files are not compilable after editing with designer
+    (kde#416534)
+  * Message Box Doesn't Size (kde#416577)
+  * Import a QFX file fails on MacOS (kde#416621)
+  * Missing german translation (kde#416711)
+  * Summary values are not updated for investment transaction of
+    type interest income (kde#416746)
+  * libofx dtd files are not found in AppImage (kde#416827)
+  * Investment reports should ignore setting for "Show equity
+    accounts" (kde#416902)
+  * After the migration to aq6 the change of views takes a long
+    time (kde#416963)
+  * cannot find yahoo finance under online quotes (kde#417142)
+  * Request: Use latest values to fill in transaction (kde#418334)
+  * Script based online quotes do not work in the AppImage version
+    (kde#418823)
+  * Backup (kde#419082)
+  * Data displayed in scheduled transaction and home page are
+    sometimes not consistent (kde#419113)
+  * Balance of budget is shown incorrect (kde#419554)
+  * MyMoneyStatementReader uses base currency instead brokerage
+    account's own when adding new price (kde#419974)
+  * When importing transactions, we're matching against the other
+    transactions also being imported (kde#419975)
+  * BUY/SELL information ignored when importing OFX investment
+    transactions (kde#420056)
+  * Startlogo not translated in french (kde#420082)
+  * Indian Rupee has new symbol since 7 years,it is ₹ (kde#420422)
+  * QIF importer ignores new investments (kde#420584)
+  * A sum of multiple rows selected is incorrect for securities
+    with fraction > 100 (kde#420593)
+  * Inaccurate decimal precision of South Korean Won (KRW)
+    (kde#420683)
+  * After upgrade from Fedora 31 to 32, one of my checking accounts
+    shows a huge negative "Cleared" balance (kde#420761)
+  * Incorrect ordinate axis labels when zooming a chart
+    (kde#420767)
+  * Crash in "Edit loan Wizard" (kde#420931)
+  * Freeze: logarithmic vertical axis and negative data range From
+    value (kde#421056)
+  * Logarithmic vertical axis has multiple zero labels (kde#421105)
+  * Securities Dialog "Market" field not populated with existing
+    data on edit (kde#421126)
+  * Networth "account balances by institution" provides incorrect
+    results (kde#421260)
+  * Account context menu's Reconcile option opens incorrect ledger
+    (kde#421307)
+  * New Account Wizard throws exception on empty payment method
+    selected (kde#421569)
+  * New Account Wizard is not asking if the user wants to add a new
+    payee (kde#421691)
+  * Scheduled monthly transaction will only change first date
+    (kde#421750)
+  * Anonymised files are no longer created (kde#421757)
+  * SEGFAULT occurring when marking an account as preferred
+    (kde#421900)
+  * Incorrect account hierarchy if an account is marked as
+    preferred (kde#422012)
+  * Budget view displays all account types (kde#422196)
+  * KMyMoney crashes when navigating backwards through CSV import
+    wizard (kde#422200)
+  * Search widget in the Budgets view ignores user input
+    (kde#422480)
+- Enhancements:
+  * Add option "Reverse charges and payments" to OFX import
+    (kde#416279)
+
+-------------------------------------------------------------------
 Mon Jan 20 09:07:42 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 5.0.8

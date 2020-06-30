@@ -28,7 +28,7 @@
 %bcond_with qtwebengine
 %endif
 Name:           kmymoney
-Version:        5.0.8
+Version:        5.1.0
 Release:        0
 Summary:        A Personal Finance Manager by KDE
 License:        GPL-2.0-only OR GPL-3.0-only

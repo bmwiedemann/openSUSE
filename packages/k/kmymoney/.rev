@@ -562,4 +562,12 @@
     <comment>Update to 5.0.8</comment>
     <requestid>766769</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>00b2ecd9f52fd9b13b76ffe0584a6c5d</srcmd5>
+    <version>5.1.0</version>
+    <time>1593546974</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814786</requestid>
+  </revision>
 </revisionlist>
