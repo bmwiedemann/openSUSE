@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 27 10:21:02 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.9.0:
+  * C/C++
+    - Removed framework project. Use Autopsy instead if you need an analysis framework.
+    - Various fixes from Google-based fuzzing.
+    - Ensure all reads (even big ones) are sector aligned when reading from Windows device.
+    - Ensure all command line tools support new pool command line arguments.
+    - Create virtual files for APFS unallocated space
+    - HFS fix to display type
+  * Java:
+    - More artifact helper methods
+    - More artifacts and attributes for drones and GPS coordinates
+    - Updated TimelineManager to insert GPS artifacts into events table
+
+-------------------------------------------------------------------
 Tue Jan 28 12:46:52 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - Update to 4.8.0:
