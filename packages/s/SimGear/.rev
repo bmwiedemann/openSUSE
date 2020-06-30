@@ -133,4 +133,12 @@ Depends on SR 556011</comment>
     <comment></comment>
     <requestid>814219</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7a182dc4e2ac501104824f0f653f65b1</srcmd5>
+    <version>2020.1.3</version>
+    <time>1593547079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817777</requestid>
+  </revision>
 </revisionlist>
