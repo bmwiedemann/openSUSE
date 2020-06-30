@@ -17,7 +17,7 @@
 
 
 Name:           bumblebee-status
-Version:        2.0.4
+Version:        2.0.5
 Release:        0
 Summary:        Modular, theme-able status line generator for the i3 window manager
 License:        MIT

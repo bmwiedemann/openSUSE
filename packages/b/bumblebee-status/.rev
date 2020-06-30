@@ -151,4 +151,15 @@
   * improved default location (see #664)</comment>
     <requestid>817610</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b6f62200a9cbd50a5bc2d897f1323c09</srcmd5>
+    <version>2.0.5</version>
+    <time>1593548729</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.5:
+  * fixed &quot;spamming&quot; of mouse click events (#668)
+  * fixed theme iconset handling (#666)
+  * improved spotify (#667)</comment>
+    <requestid>817901</requestid>
+  </revision>
 </revisionlist>

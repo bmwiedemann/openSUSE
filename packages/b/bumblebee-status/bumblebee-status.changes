@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 30 14:21:32 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.5:
+  * fixed "spamming" of mouse click events (#668)
+  * fixed theme iconset handling (#666)
+  * improved spotify (#667)
+
+-------------------------------------------------------------------
 Mon Jun 29 06:41:02 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.4:
