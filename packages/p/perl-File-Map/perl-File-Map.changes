@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 26 03:09:02 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.67
+   see /usr/share/doc/packages/perl-File-Map/Changes
+
+  0.67      2020-06-26 00:26:54+02:00 Europe/Amsterdam
+            - Fix unresolved symbol "madvise" on QNX NTO
+            - Fix regression that could cause empty maps to crash upon reuse.
+
+-------------------------------------------------------------------
 Wed Dec 19 06:07:02 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.66
