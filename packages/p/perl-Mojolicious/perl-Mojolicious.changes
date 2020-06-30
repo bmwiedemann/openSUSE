@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun 27 03:11:38 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 8.56
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.56  2020-06-19
+    - Fixed a bug that prevented "% end, begin" to work in Mojo::Template. (jberger)
+
+-------------------------------------------------------------------
 Thu Jun 18 11:22:56 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 8.55
