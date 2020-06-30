@@ -39,6 +39,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module future >= 0.16.0}
 BuildRequires:  %{python_module pyparsing >= 2.0.3}
 BuildRequires:  %{python_module pytest}
+# Required for assertLogs unavailable in 2.7 unittest
 %if %{with python2}
 BuildRequires:  python-unittest2
 %endif
