@@ -5,7 +5,7 @@
   sharedscripts
   rotate 7
   postrotate
-    /etc/init.d/speech-dispatcher reload >/dev/null
+    /usr/bin/systemctl try-restart speech-dispatcherd.service >/dev/null
   endscript
 }
 
@@ -16,6 +16,6 @@
   sharedscripts
   rotate 2
   postrotate
-    /etc/init.d/speech-dispatcher reload >/dev/null
+    /usr/bin/systemctl try-restart speech-dispatcherd.service >/dev/null
   endscript
 }
