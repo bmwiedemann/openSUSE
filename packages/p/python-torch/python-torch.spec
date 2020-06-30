@@ -21,8 +21,19 @@
 %define skip_python2 1
 %define pname torch
 
+%global flavor @BUILD_FLAVOR@%{nil}
+
+%if "%{flavor}" == "standard"
+%bcond_with cuda
+%endif
+
+%if "%{flavor}" == "cuda-10-2"
+%bcond_without cuda
+%define cudaver 10-2
+%endif
+
 Name:           python-torch
-Version:        1.4.0
+Version:        1.5.1
 Release:        0
 Summary:        Deep learning framework aka pytorch/Caffe2
 License:        BSD-2-Clause AND BSD-3-Clause AND MIT AND Zlib AND BSL-1.0 AND Apache-2.0
@@ -31,21 +42,21 @@ URL:            https://pytorch.org
 Source0:        https://github.com/pytorch/pytorch/archive/v%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
 Source1:        releases.html
 #License10: BSD-3-Clause
-Source10:       https://github.com/facebookincubator/gloo/archive/7c541247a6fa49e5938e304ab93b6da661823d0f.tar.gz#/gloo-7c541247a6fa49e5938e304ab93b6da661823d0f.tar.gz
+Source10:       https://github.com/facebookincubator/gloo/archive/113bde13035594cafdca247be953610b53026553.tar.gz#/gloo-113bde13035594cafdca247be953610b53026553.tar.gz
 #License12: BSD-2-Clause
-Source12:       https://github.com/pytorch/cpuinfo/archive/89fe1695edf9ee14c22f815f24bac45577a4f135.tar.gz#/cpuinfo-89fe1695edf9ee14c22f815f24bac45577a4f135.tar.gz
+Source12:       https://github.com/pytorch/cpuinfo/archive/0e6bde92b343c5fbcfe34ecd41abf9515d54b4a7.tar.gz#/cpuinfo-0e6bde92b343c5fbcfe34ecd41abf9515d54b4a7.tar.gz
 #License13: BSL-1.0
 Source13:       https://github.com/zdevito/sleef/archive/7f523de651585fe25cade462efccca647dcc8d02.tar.gz#/sleef-7f523de651585fe25cade462efccca647dcc8d02.tar.gz
 #License14: BSD-3-Clause
 Source14:       https://github.com/pybind/pybind11/archive/25abf7efba0b2990f5a6dfb0a31bc65c0f2f4d17.tar.gz#/pybind11-25abf7efba0b2990f5a6dfb0a31bc65c0f2f4d17.tar.gz
 # License15: MIT
-Source15:       https://github.com/onnx/onnx/archive/fea8568cac61a482ed208748fdc0e1a8e47f62f5.tar.gz#/onnx-fea8568cac61a482ed208748fdc0e1a8e47f62f5.tar.gz
+Source15:       https://github.com/onnx/onnx/archive/9fdae4c68960a2d44cd1cc871c74a6a9d469fa1f.tar.gz#/onnx-9fdae4c68960a2d44cd1cc871c74a6a9d469fa1f.tar.gz
 #License16: BSD-2-Clause
-Source16:       https://github.com/Maratyszcza/pthreadpool/archive/13da0b4c21d17f94150713366420baaf1b5a46f4.tar.gz#/pthreadpool-13da0b4c21d17f94150713366420baaf1b5a46f4.tar.gz
+Source16:       https://github.com/Maratyszcza/pthreadpool/archive/d465747660ecf9ebbaddf8c3db37e4a13d0c9103.tar.gz#/pthreadpool-d465747660ecf9ebbaddf8c3db37e4a13d0c9103.tar.gz
 # License17: MIT
 Source17:       https://github.com/Maratyszcza/FXdiv/archive/b742d1143724d646cd0f914646f1240eacf5bd73.tar.gz#/FXdiv-b742d1143724d646cd0f914646f1240eacf5bd73.tar.gz
 # License18: MIT
-Source18:       https://github.com/Maratyszcza/psimd/archive/90a938f30ba414ada2f4b00674ee9631d7d85e19.tar.gz#/psimd-90a938f30ba414ada2f4b00674ee9631d7d85e19.tar.gz
+Source18:       https://github.com/Maratyszcza/psimd/archive/10b4ffc6ea9e2e11668f86969586f88bc82aaefa.tar.gz#/psimd-10b4ffc6ea9e2e11668f86969586f88bc82aaefa.tar.gz
 # License19: MIT
 Source19:       https://github.com/Maratyszcza/FP16/archive/febbb1c163726b5db24bed55cc9dc42529068997.tar.gz#/FP16-febbb1c163726b5db24bed55cc9dc42529068997.tar.gz
 #License20: Apache-2.0
@@ -54,9 +65,13 @@ Source20:       https://github.com/google/gemmlowp/archive/3fb5c176c17c765a3492c
 Source21:       https://github.com/houseroad/foxi/archive/97fe555430a857581b9b826ecd955e4f0a3653f0.tar.gz#/foxi-97fe555430a857581b9b826ecd955e4f0a3653f0.tar.gz
 # License22: MIT
 Source22:       https://github.com/pytorch/QNNPACK/archive/7d2a4e9931a82adc3814275b6219a03e24e36b4c.tar.gz#/QNNPACK-7d2a4e9931a82adc3814275b6219a03e24e36b4c.tar.gz
+# License: BSD-3-Clause
+Source23:       https://github.com/google/XNNPACK/archive/7493bfb9d412e59529bcbced6a902d44cfa8ea1c.tar.gz#/XNNPACK-7493bfb9d412e59529bcbced6a902d44cfa8ea1c.tar.gz
 
 Patch0:         removed-peachpy-depedency.patch
 Patch1:         skip-third-party-check.patch
+Patch2:         fix-call-of-onnxInitGraph.patch
+Patch3:         fix-mov-operand-for-gcc.patch
 
 # A python call to cmake fails with a return code of 1 on this arch, disable it for now.
 ExcludeArch:    %ix86
@@ -96,6 +111,20 @@ BuildRequires:  openssl-devel
 BuildRequires:  protobuf-c
 BuildRequires:  protobuf-devel
 BuildRequires:  snappy-devel
+%if %{with cuda}
+BuildRequires:  cuda-compiler-%cudaver
+BuildRequires:  cuda-cudart-dev-%cudaver
+BuildRequires:  cuda-libraries-dev-%cudaver
+BuildRequires:  cuda-misc-headers-%cudaver
+BuildRequires:  cuda-nsight-%cudaver
+BuildRequires:  cuda-toolkit-%cudaver
+%if 0%{?suse_version} > 1500 
+BuildRequires:  gcc7
+BuildRequires:  gcc7-c++
+%endif
+BuildRequires:  libcudnn7-devel
+BuildRequires:  libnccl-devel
+%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       python-future
 Requires:       python-leveldb
@@ -105,6 +134,10 @@ Requires:       python-six
 
 Provides:       python-caffe2 = %version
 Provides:       python-pytorch = %version
+
+%if "%flavor" == ""
+ExclusiveArch:  do_not_build
+%endif
 
 %python_subpackages
 
@@ -176,39 +209,42 @@ rmdir python-peachpy/
 %make_depend_src %{SOURCE20} gemmlowp/gemmlowp
 %make_depend_src %{SOURCE21}
 %make_depend_src %{SOURCE22}
-# link system eigen to right place
-rmdir eigen
-ln -s /usr/include/eigen3 eigen
-cd ..
+%make_depend_src %{SOURCE23}
 
 %build
-#export CC=gcc-7
-#export CXX=g++-7
-export USE_NNPACK=0
-export USE_CUDNN=0
-export USE_TEST=0
-export USE_LEVELDB=ON
-export USE_LMDB=ON
-export USE_FBGEMM=0
-export USE_SYSTEM_LIB="tbb,fbgemm,fbgemm/third_party/asmjit,onnx/third_party/benchmark"
-export BUILD_CUSTOM_PROTOBUF=OFF
-export BUILD_TEST=0
+%define buildvars \
+  export USE_NNPACK=OFF \
+  %if %{with cuda} \
+  export USE_CUDNN=ON \
+  export USE_SYSTEM_NCCL=ON \
+  export PATH="/usr/local/cuda-10.1/bin:$PATH" \
+  export CPLUS_INCLUDE_PATH="/usr/local/cuda-10.1/include" \
+  export C_INCLUDE_PATH="/usr/local/cuda-10.1/include" \
+  export LD_LIBRARY_PATH="/usr/local/cuda-10.1/lib" \
+  export NCCL_INCLUDE_DIR="/usr/include/" \
+  %if 0%{?suse_version} > 1500  \
+  export CC=gcc-7 \
+  export CXX=g++-7 \
+  %endif \
+  %else \
+  export USE_CUDNN=OFF \
+  %endif \
+  export USE_TEST=OFF \
+  export USE_LEVELDB=ON \
+  export USE_LMDB=ON \
+  export USE_FBGEMM=OFF \
+  export USE_SYSTEM_LIB="tbb,fbgemm,fbgemm/third_party/asmjit,onnx/third_party/benchmark" \
+  export USE_SYSTEM_EIGEN_INSTALL=ON \
+  export BUILD_CUSTOM_PROTOBUF=OFF \
+  export BUILD_TEST=OFF \
+  export MAX_JOBS=%{?jobs} \
+
+%buildvars
 %limit_build -m 2000
-export MAX_JOBS=%{?jobs}
 %python_build
 
 %install
-export USE_NNPACK=0
-export USE_CUDNN=0
-export USE_TEST=0
-export USE_LEVELDB=ON
-export USE_LMDB=ON
-export USE_FBGEMM=0
-export USE_SYSTEM_LIB="tbb,fbgemm,fbgemm/third_party/asmjit,onnx/third_party/benchmark"
-export BUILD_CUSTOM_PROTOBUF=OFF
-export BUILD_TEST=1
-%limit_build -m 2000
-export MAX_JOBS=%{?jobs}
+%buildvars
 %python_install
 
 %python_expand %fdupes %{buildroot}%{$python_sitearch}

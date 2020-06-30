@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Jun 23 15:28:57 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- updated to new stable release 1.5.1 which has following changes:
+  This release includes several major new API additions and improvements. These
+  include new APIs for autograd allowing for easy computation of hessians and
+  jacobians, a significant update to the C++ frontend, ‘channels last’ memory
+  format for more performant computer vision models, a stable release of the
+  distributed RPC framework used for model parallel training, and a new API
+  that allows for the creation of Custom C++ Classes that was inspired by
+  PyBind. Additionally torch_xla 1.5 is now available and tested with the
+  PyTorch 1.5 release providing a mature Cloud TPU experience.
+  * see release.html for detailed information
+- added patches: 
+  * fix-call-of-onnxInitGraph.patch for API mismatch in onnx
+  * fix-mov-operand-for-gcc.patch for aarch64 operands
+
+- removed sources:
+  * cpuinfo-89fe1695edf9ee14c22f815f24bac45577a4f135.tar.gz
+  * gloo-7c541247a6fa49e5938e304ab93b6da661823d0f.tar.gz
+  * onnx-fea8568cac61a482ed208748fdc0e1a8e47f62f5.tar.gz
+  * psimd-90a938f30ba414ada2f4b00674ee9631d7d85e19.tar.gz
+  * pthreadpool-13da0b4c21d17f94150713366420baaf1b5a46f4.tar.gz
+- added sources:
+  * cpuinfo-0e6bde92b343c5fbcfe34ecd41abf9515d54b4a7.tar.gz
+  * gloo-113bde13035594cafdca247be953610b53026553.tar.gz
+  * onnx-9fdae4c68960a2d44cd1cc871c74a6a9d469fa1f.tar.gz
+  * psimd-10b4ffc6ea9e2e11668f86969586f88bc82aaefa.tar.gz
+  * pthreadpool-d465747660ecf9ebbaddf8c3db37e4a13d0c9103.tar.gz
+
+-------------------------------------------------------------------
+Tue Jun 23 09:25:06 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- updated to bugfix release 1.4.1 and added _multibuild file so 
+  that cuda versions can be build on commandline
+
+-------------------------------------------------------------------
 Thu Apr 23 14:30:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Make sure to pull py2/py3 package from the devel pkg
