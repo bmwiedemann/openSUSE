@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun 30 11:25:34 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1593514767.bedf7a0de:
+  * Avoid errors when serving job module results while they have just been finalized
+  * Update documentation regarding dependency handling
+  * Skip reading text files when reading job modules for label carry over
+  * Make details JSON globally readable when finalizing job module results
+  * Improve tests for finalizing job results
+  * Improve gathering job module results
+  * Simplify and improve code for finalizing results to optimize job details loading
+  * Add minion task to remove duplicate result text files
+  * Unify test module text output loading
+  * Optimize job details loading with empty disk cache
+  * Narrow down fixtures needed by ui tests
+  * script: Slightly simplify create_admin script
+
+-------------------------------------------------------------------
 Sun Jun 28 03:25:30 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1593255831.e90b9f499:
