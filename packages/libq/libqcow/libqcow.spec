@@ -1,7 +1,7 @@
 #
 # spec file for package libqcow
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 %define lname	libqcow1
-%define timestamp 20181227
+%define timestamp 20191221
 Name:           libqcow
 Version:        0~%{timestamp}
 Release:        0
 Summary:        Library and tooling to access the QEMU Copy-On-Write (QCOW) image format
 License:        LGPL-3.0-or-later AND GFDL-1.1-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libqcow/wiki
+URL:            https://github.com/libyal/libqcow/wiki
 Source:         https://github.com/libyal/libqcow/releases/download/%timestamp/%{name}-alpha-%{timestamp}.tar.gz
 Source2:        QEMU_Copy-On-Write_file_format.pdf
 BuildRequires:  pkg-config
