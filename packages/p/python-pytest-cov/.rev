@@ -151,4 +151,12 @@
   * Fixed internal failures that are caused by tests that change the current working directory by ensuring a consistent working directory when coverage is called. See #306 and coveragepy#881</comment>
     <requestid>812819</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>86b8693ba282fdf7028030e409e253fd</srcmd5>
+    <version>2.10.0</version>
+    <time>1593546851</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817668</requestid>
+  </revision>
 </revisionlist>

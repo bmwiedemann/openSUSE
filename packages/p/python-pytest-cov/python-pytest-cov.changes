@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 29 09:21:38 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.10.0
+  * Improved the --no-cov warning. Now it's only shown if --no-cov is present before --cov.
+  * Removed legacy pytest support. Changed setup.py so that pytest>=4.6 is required.
+
+-------------------------------------------------------------------
 Tue Jun  9 08:07:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.9.0:
