@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-dsp-comm
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-scikit-dsp-comm
-Version:        0.0.5
+Version:        1.1.0
 Release:        0
 Summary:        DSP and Comm package for Python
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 Url:            https://github.com/mwickert/scikit-dsp-comm
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-dsp-comm/scikit-dsp-comm-%{version}.tar.gz
-Source10:       https://raw.githubusercontent.com/mwickert/scikit-dsp-comm/v%{version}/LICENSE.md
 Source100:      python-scikit-dsp-comm-rpmlintrc
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -34,7 +33,6 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module tox}
@@ -55,7 +53,6 @@ The foundation for this package is scipy.signal.
 
 %prep
 %setup -q -n scikit-dsp-comm-%{version}
-cp %{SOURCE10} .
 
 %build
 %python_build
