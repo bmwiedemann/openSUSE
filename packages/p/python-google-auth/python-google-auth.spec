@@ -31,6 +31,7 @@ BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module oauth2client-gce}
 BuildRequires:  %{python_module oauth2client}
+BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pyasn1-modules >= 0.2.1}
 BuildRequires:  %{python_module pytest-localserver}
 BuildRequires:  %{python_module pytest}

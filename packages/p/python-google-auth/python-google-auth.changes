@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 29 16:21:32 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
+
+- Add missing pyOpenSSL test dependency which is listed upstream.
+
+-------------------------------------------------------------------
 Thu Jun 18 10:30:04 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.17.2
