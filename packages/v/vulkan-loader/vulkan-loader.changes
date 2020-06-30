@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 28 17:11:02 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to release 1.2.145
+  * scripts: Use named params for generator options
+  * loader: Fix crash in vkGetDeviceQueue2
+  * loader: Use MoltenVK in app bundle if found
+  * build: include system headers last
+
+-------------------------------------------------------------------
 Sun Jun  7 16:15:33 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - added vulkan-devel-xxBIT (bsc#1172301)
