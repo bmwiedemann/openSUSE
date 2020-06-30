@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Sun Jun 28 18:53:41 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.3.18:
+  * orm
+    + Improve error message when using Query.filter_by() in a query
+      where the first entity is not a mapped class.  References: #5326
+    + Added a new parameter query_expression.default_expr to the
+      query_expression() construct, which will be appled to queries
+      automatically if the with_expression() option is not used. Pull
+      request courtesy Haoyu Sun.  References: #5198
+  * engine
+    + Further refinements to the fixes to the “reset” agent fixed in
+      #5326, which now emits a warning when it is not being correctly
+      invoked and corrects for the behavior. Additional scenarios have
+      been identified and fixed where this warning was being emitted.
+      References: #5326
+    + Fixed issue in URL object where stringifying the object would
+      not URL encode special characters, preventing the URL from being
+      re-consumable as a real URL. Pull request courtesy Miguel
+      Grinberg.  References: #5341
+  * sql
+    + Added a “.schema” parameter to the table() construct, allowing
+      ad-hoc table expressions to also include a schema name. Pull
+      request courtesy Dylan Modesitt.  References: #5309
+    + Correctly apply self_group in type_coerce element.  The type
+      coerce element did not correctly apply grouping rules when using
+      in an expression References: #5344
+    + Added Select.with_hint() output to the generic SQL string that
+      is produced when calling str() on a statement. Previously, this
+      clause would be omitted under the assumption that it was dialect
+      specific. The hint text is presented within brackets to indicate
+      the rendering of such hints varies among backends.  References:
+      #5353
+    + Introduce IdentityOptions to store common parameters for
+      sequences and identity columns.  References: #5324
+    + Added .offset support to sybase dialect. Pull request courtesy
+      Alan D. Snow.  References: #5294
+  * schema
+    + Fixed issue where dialect_options were omitted when a database
+      object (e.g., Table) was copied using tometadata().  References:
+      #5276
+  * mysql
+    + Implemented row-level locking support for mysql. Pull request
+      courtesy Quentin Somerville.  References: #4860
+  * sqlite
+    + SQLite 3.31 added support for computed column. This change
+      enables their support in SQLAlchemy when targeting SQLite.
+      References: #5297
+    + Added “exists” to the list of reserved words for SQLite so that
+      this word will be quoted when used as a label or column
+      name. Pull request courtesy Thodoris Sotiropoulos.  References:
+      #5395
+  * mssql
+    + Refined the logic used by the SQL Server dialect to interpret
+      multi-part schema names that contain many dots, to not actually
+      lose any dots if the name does not have bracking or quoting
+      used, and additionally to support a “dbname” token that has many
+      parts including that it may have multiple,
+      independently-bracketed sections.  References: #5364, #5366
+    + Fixed an issue in the pyodbc connector such that a warning about
+      pyodbc “drivername” would be emitted when using a totally empty
+      URL. Empty URLs are normal when producing a non-connected
+      dialect object or when using the “creator” argument to
+      create_engine(). The warning now only emits if the driver name
+      is missing but other parameters are still present.  References:
+      #5346
+    + Fixed issue with assembling the ODBC connection string for the
+      pyodbc DBAPI. Tokens containing semicolons and/or braces “{}”
+      were not being correctly escaped, causing the ODBC driver to
+      misinterpret the connection string attributes.  References:
+      #5373
+    + Fixed issue where datetime.time parameters were being converted
+      to datetime.datetime, making them incompatible with comparisons
+      like >= against an actual TIME column.  References: #5339
+    + Fixed an issue where the is_disconnect function in the SQL
+      Server pyodbc dialect was incorrectly reporting the disconnect
+      state when the exception messsage had a substring that matched a
+      SQL Server ODBC error code.  References: #5359
+    + Moved the supports_sane_rowcount_returning = False requirement
+      from the PyODBCConnector level to the MSDialect_pyodbc since
+      pyodbc does work properly in some circumstances.  References:
+      #5321
+  * oracle
+    + Fixed bug in Oracle dialect where indexes that contain the full
+      set of primary key columns would be mistaken as the primary key
+      index itself, which is omitted, even if there were
+      multiples. The check has been refined to compare the name of the
+      primary key constraint against the index name itself, rather
+      than trying to guess based on the columns present in the index.
+      References: #5421
+  * misc
+    + Added new option --raw to the examples.performance suite which
+      will dump the raw profile test for consumption by any number of
+      profiling visualizer tools. Removed the “runsnake” option as
+      runsnake is very hard to build at this point;
+
+-------------------------------------------------------------------
 Sat May 23 19:53:51 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.3.17:
