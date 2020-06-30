@@ -1,7 +1,7 @@
 #
 # spec file for package lame
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,9 @@ Name:           lame
 Version:        3.100
 Release:        0
 Summary:        The LAME MP3 encoder
-License:        LGPL-2.0+
+License:        LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
-Url:            http://lame.sourceforge.net/
+URL:            http://lame.sourceforge.net/
 Source:         http://prdownloads.sourceforge.net/lame/lame-%{version}.tar.gz
 Source99:       lame-rpmlintrc
 Source1000:     baselibs.conf
@@ -75,12 +75,12 @@ Requires:       libmp3lame%{sover} = %{version}
 %description -n libmp3lame-devel
 Contains the header files for use with LAME's encoding library.
 
-%package -n lame-mp3rtp
+%package mp3rtp
 Summary:        MP3 Encoder for RTP Streaming
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
 Requires:       libmp3lame%{sover} >= %{version}
 
-%description -n lame-mp3rtp
+%description mp3rtp
 LAME is an encoder that converts audio to the MP3 file format. It has
 an improved psychoacoustic model and performs well in codec listening
 tests.
@@ -114,6 +114,23 @@ make test
 make install pkgdocdir=%{_defaultdocdir}/%{name}/ DESTDIR=%{buildroot}
 rm -f %{buildroot}%{_libdir}/libmp3lame.la
 
+#make package config file
+mkdir -p %{buildroot}%{_libdir}/pkgconfig
+cat << EOF > %{buildroot}%{_libdir}/pkgconfig/lame.pc
+prefix=%{_prefix}
+libdir=%{_libdir}
+includedir=%{_includedir}/lame
+
+Name: lame
+Description: encoder that converts audio to the MP3 file format.
+Version: %{version}
+Libs: -L${libdir} -lmp3lame
+Cflags: -I${includedir}
+EOF
+pushd %{buildroot}%{_libdir}/pkgconfig/
+ln -s lame.pc libmp3lame.pc
+popd
+
 for f in ChangeLog README TODO USAGE; do
     install -m0644 "$f" "%{buildroot}%{_defaultdocdir}/%{name}/"
 done
@@ -133,7 +150,7 @@ done
 
 %files -n libmp3lame%{sover}
 %defattr(0644,root,root,0755)
-%doc COPYING LICENSE
+%license COPYING LICENSE
 %{_libdir}/libmp3lame.so.%{sover}
 %{_libdir}/libmp3lame.so.%{sover}.*
 
@@ -142,8 +159,9 @@ done
 %doc API HACKING STYLEGUIDE
 %{_includedir}/lame/
 %{_libdir}/libmp3lame.so
+%{_libdir}/pkgconfig/*pc
 
-%files -n lame-mp3rtp
+%files mp3rtp
 %defattr(-,root,root)
 %{_bindir}/mp3rtp
 
