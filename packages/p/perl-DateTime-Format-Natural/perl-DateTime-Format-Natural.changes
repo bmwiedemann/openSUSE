@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 27 03:08:54 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.10
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.10  2020-06-26  <schubiger@cpan.org>
+   - Merged development version to stable.
+  1.09_01  2020-06-21  <schubiger@cpan.org>
+   - Support common unit abbreviations. [github #8 - grr]
+
+-------------------------------------------------------------------
 Mon May 18 03:09:33 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 1.09
