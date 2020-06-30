@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jun 25 11:53:11 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- guile 3.0.4:
+  * SONAME fix (relative to 3.0.3)
+- includes changes from 3.0.3:
+  * New baseline compiler
+  * New VM intrinsics to support baseline compiler
+  * Compiler support for warning and lowering passes
+  * Compiler support for choosing different compilation orders
+  * Better support for specifying optimization and warning levels
+  * Faster Guile build from source
+  * New 'pipeline' procedure in (ice-9 popen)
+  * Refreshed bitvector facility
+  * New bitvector-count, bitvector-count-bits, bitvector-position
+    procedures
+  * New bitvector-bit-set?, bitvector-bit-clear? procedures
+  * New bitvector-set-bit!, bitvector-clear-bit! procedures
+  * New bitvector-set-all-bits!, bitvector-clear-all-bits! procedures
+  * New bitvector-flip-all-bits! procedure
+  * New bitvector-set-bits!, bitvector-clear-bits! procedures
+  * various bug fixes
+  * deprecations: Old bitvector interfaces, accessing generic
+    arrays using the bitvector procedures, scm_istr2bve
+
+-------------------------------------------------------------------
 Tue May  5 09:21:02 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add gcc10-x86-disable-one-test.patch in order to fix

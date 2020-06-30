@@ -23,7 +23,7 @@
 %define libgver     1
 %define gsuff       %{guilemaj}_%{guilemin}-%{libgver}
 Name:           guile
-Version:        %{guilevers}.2
+Version:        %{guilevers}.4
 Release:        0
 Summary:        GNU's Ubiquitous Intelligent Language for Extension
 License:        GFDL-1.3-only AND GPL-3.0-or-later AND LGPL-3.0-or-later
