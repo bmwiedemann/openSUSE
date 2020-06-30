@@ -13,8 +13,8 @@ ExecStart=/usr/bin/turnserver -o -c /etc/coturn/turnserver.conf --pidfile /run/c
 Restart=on-abort
 ExecReload=/bin/kill -HUP $MAINPID
 
-# enable next line to make coturn able to bind to a port below 1024
-#AmbientCapabilities=CAP_NET_BIND_SERVICE
+# next line allows coturn to bind to a port below 1024
+AmbientCapabilities=CAP_NET_BIND_SERVICE
 
 LimitCORE=infinity
 LimitNOFILE=999999
