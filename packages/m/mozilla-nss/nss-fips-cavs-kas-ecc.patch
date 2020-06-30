@@ -1,0 +1,370 @@
+# HG changeset patch
+# User Hans Petter Jansson <hpj@cl.no>
+# Date 1574234615 -3600
+#      Wed Nov 20 08:23:35 2019 +0100
+# Node ID f5cf5d16deb68e65b5dd4e799d9e8e3098400d62
+# Parent  af7d3ee4e96cf685be0b95dff7aa5a1d3ab64a89
+[PATCH] 21
+From 4c27df62aa425745620f45710465b0264acacbb0 Mon Sep 17 00:00:00 2001
+---
+ nss/cmd/fipstest/fipstest.c | 304 ++++++++++++++++++++++++++++++++++++
+ nss/cmd/fipstest/kas.sh     |  22 +++
+ 2 files changed, 326 insertions(+)
+
+diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
+--- a/cmd/fipstest/fipstest.c
++++ b/cmd/fipstest/fipstest.c
+@@ -9092,6 +9092,301 @@
+     }
+ }
+ 
++typedef struct
++{
++    char param_name [2];
++    ECParams *ecparams;
++    int hash_len;
++    HASH_HashType hash_type;
++}
++ParamSpec;
++
++#define PARAM_SPECS_MAX 12
++
++static int
++find_free_param_spec (const ParamSpec *pspecs)
++{
++    int i;
++
++    for (i = 0; i < PARAM_SPECS_MAX; i++)
++    {
++        if (pspecs [i].param_name [0] == 0
++            && pspecs [i].param_name [1] == 0)
++            return i;
++    }
++
++    return 0;
++}
++
++static int
++find_param_spec (const ParamSpec *pspecs, char *name)
++{
++    int i;
++
++    for (i = 0; i < PARAM_SPECS_MAX; i++)
++    {
++        if (pspecs [i].param_name [0] == name [0]
++            && pspecs [i].param_name [1] == name [1])
++            return i;
++    }
++
++    return 0;
++}
++
++static void
++free_param_specs (ParamSpec *pspecs)
++{
++    int i;
++
++    for (i = 0; i < PARAM_SPECS_MAX; i++)
++    {
++        if (pspecs [i].ecparams)
++            PORT_FreeArena(pspecs [i].ecparams->arena, PR_FALSE);
++    }
++}
++
++#define CURVE_NAME_MAX 64
++
++static ECParams *
++get_and_decode_nistp_params (int n)
++{
++    char curve_name [CURVE_NAME_MAX];
++    SECItem *encodedparams;
++    ECParams *ecparams = NULL;
++
++    snprintf (curve_name, CURVE_NAME_MAX, "nistp%d", n);
++
++    encodedparams = getECParams (curve_name);
++    if (!encodedparams)
++        return NULL;
++
++    EC_DecodeParams (encodedparams, &ecparams);
++    SECITEM_FreeItem(encodedparams, PR_TRUE);
++    return ecparams;
++}
++
++void
++kas_ecc_test(char *reqfn, int do_validity)
++{
++    char buf[2048];
++    FILE *req;  /* input stream from the REQUEST file */
++    FILE *resp; /* output stream to the RESPONSE file */
++    ParamSpec pspecs [PARAM_SPECS_MAX];
++    SECItem x_ephem_cavs;
++    SECItem y_ephem_cavs;
++    SECItem x_ephem_iut;
++    SECItem y_ephem_iut;
++    SECItem d_ephem_iut;
++    SECItem cavs_hash_zz;
++    SECItem publicValue;
++    int current_pspec_def = -1;
++
++    req = fopen(reqfn, "r");
++    resp = stdout;
++    memset(&pspecs, 0, sizeof (pspecs));
++    memset(&x_ephem_cavs, 0, sizeof(x_ephem_cavs));
++    memset(&y_ephem_cavs, 0, sizeof(y_ephem_cavs));
++    memset(&x_ephem_iut, 0, sizeof(x_ephem_iut));
++    memset(&y_ephem_iut, 0, sizeof(y_ephem_iut));
++    memset(&d_ephem_iut, 0, sizeof(d_ephem_iut));
++    memset(&cavs_hash_zz, 0, sizeof(cavs_hash_zz));
++    memset(&publicValue, 0, sizeof(publicValue));
++
++    while (fgets(buf, sizeof buf, req) != NULL) {
++        /* [xx] or
++         * [xx - SHAxxx] or
++         * [SHA(s) supported (Used for hashing Z):  SHAxxx] */
++        if (buf[0] == '[') {
++            char tbuf [2];
++            int num;
++
++            if (strlen (buf) >= 4 && buf [3] == ']'
++                && sscanf(buf, "[%c%c]", &tbuf [0], &tbuf [1]) == 2) {
++                int i = current_pspec_def = find_free_param_spec (pspecs);
++                if (i < 0)
++                    goto out;
++
++                pspecs [i].param_name [0] = tbuf [0];
++                pspecs [i].param_name [1] = tbuf [1];
++
++                fputs(buf, resp);
++                continue;
++            }
++
++            if (strlen (buf) >= 6 && buf [3] == ' ' && buf [4] == '-'
++                && sscanf(buf, "[%c%c - ", &tbuf [0], &tbuf [1]) == 2) {
++                current_pspec_def = find_param_spec (pspecs, tbuf);
++                if (current_pspec_def < 0)
++                    goto out;
++
++                fputs(buf, resp);
++                continue;
++            }
++
++            if (!strncmp(buf, "[Curve selected:", strlen ("[Curve selected:"))) {
++                char *p = buf + strlen ("[Curve selected:");
++                p += strcspn (p, "0123456789");
++                if (!*p)
++                    goto out;
++                if (sscanf(p, "%d", &num) != 1)
++                    goto out;
++
++                if (current_pspec_def < 0)
++                    goto out;
++
++                pspecs [current_pspec_def].ecparams = get_and_decode_nistp_params (num);
++                if (!pspecs [current_pspec_def].ecparams)
++                    goto out;
++
++                fputs(buf, resp);
++                continue;
++            }
++
++            if (sscanf(buf, "[SHA(s) supported (Used for hashing Z): SHA%d", &num) == 1) {
++                if (current_pspec_def < 0)
++                    goto out;
++
++                pspecs [current_pspec_def].hash_len = num;
++                pspecs [current_pspec_def].hash_type = sha_get_hashType(num);
++                fputs(buf, resp);
++                continue;
++            }
++
++            fputs(buf, resp);
++            continue;
++        } else if (parse_secitem ("QeCAVSx", buf, &x_ephem_cavs)) {
++            fputs(buf, resp);
++            continue;
++        } else if (parse_secitem ("QeCAVSy", buf, &y_ephem_cavs)) {
++            fputs(buf, resp);
++
++            if (!do_validity) {
++                SECItem ZZ;
++                unsigned char ZZ_hash_buf [1024];
++                int field_len;
++                int len;
++                ECPrivateKey *privKey;
++
++                field_len = (pspecs [current_pspec_def].ecparams->fieldID.size + 7) >> 3;
++
++                if (EC_NewKey(pspecs [current_pspec_def].ecparams, &privKey) != SECSuccess)
++                    goto out;
++
++                len = privKey->publicValue.len;
++                if (len % 2 == 0) {
++                    goto out;
++                }
++                len = (len - 1) / 2;
++                if (privKey->publicValue.data[0] !=
++                    EC_POINT_FORM_UNCOMPRESSED) {
++                    goto out;
++                }
++
++                to_hex_str(buf, &privKey->publicValue.data[1], len);
++                fprintf (resp, "QeIUTx = %s\n", buf);
++                to_hex_str(buf, &privKey->publicValue.data[1 + len], len);
++                fprintf (resp, "QeIUTy = %s\n", buf);
++
++                SECITEM_AllocItem(NULL, &publicValue, 1 + 2 * field_len);
++                publicValue.len = 1 + 2 * field_len;
++                publicValue.data [0] = EC_POINT_FORM_UNCOMPRESSED;
++                memcpy (&publicValue.data [1], x_ephem_cavs.data + x_ephem_cavs.len - field_len, field_len);
++                memcpy (&publicValue.data [1 + field_len], y_ephem_cavs.data + y_ephem_cavs.len - field_len, field_len);
++
++                if (ECDH_Derive (&publicValue, pspecs [current_pspec_def].ecparams, &privKey->privateValue, PR_TRUE, &ZZ) != SECSuccess) {
++                    goto out;
++                }
++
++                SECITEM_ZfreeItem(&publicValue, PR_FALSE);
++                publicValue.data = NULL;
++
++                fips_hashBuf_zeropad(pspecs [current_pspec_def].hash_type, ZZ_hash_buf, ZZ.data, ZZ.len, len);
++
++                to_hex_str(buf, ZZ_hash_buf, pspecs [current_pspec_def].hash_len / 8);
++                fprintf (resp, "HashZZ = %s\n", buf);
++
++                PORT_FreeArena(privKey->ecParams.arena, PR_TRUE);
++            }
++
++            continue;
++        } else if (parse_secitem ("deIUT", buf, &d_ephem_iut)) {
++            fputs(buf, resp);
++            continue;
++        } else if (parse_secitem ("QeIUTx", buf, &x_ephem_iut)) {
++            fputs(buf, resp);
++            continue;
++        } else if (parse_secitem ("QeIUTy", buf, &y_ephem_iut)) {
++            fputs(buf, resp);
++            continue;
++        } else if (parse_secitem ("CAVSHashZZ", buf, &cavs_hash_zz)) {
++            if (do_validity) {
++                SECItem ZZ;
++                unsigned char ZZ_hash_buf [1024];
++                char Z_buf [1024];
++                int field_len;
++
++                field_len = (pspecs [current_pspec_def].ecparams->fieldID.size + 7) >> 3;
++
++                SECITEM_AllocItem(NULL, &publicValue, 1 + 2 * field_len);
++                publicValue.len = 1 + 2 * field_len;
++                publicValue.data [0] = EC_POINT_FORM_UNCOMPRESSED;
++                memcpy (&publicValue.data [1], x_ephem_cavs.data + x_ephem_cavs.len - field_len, field_len);
++                memcpy (&publicValue.data [1 + field_len], y_ephem_cavs.data + y_ephem_cavs.len - field_len, field_len);
++
++                if (ECDH_Derive (&publicValue, pspecs [current_pspec_def].ecparams, &d_ephem_iut, PR_TRUE, &ZZ) != SECSuccess) {
++                    goto out;
++                }
++
++                SECITEM_ZfreeItem(&publicValue, PR_FALSE);
++                publicValue.data = NULL;
++
++                fputs(buf, resp);
++
++                fips_hashBuf_zeropad(pspecs [current_pspec_def].hash_type, ZZ_hash_buf, ZZ.data, ZZ.len, field_len);
++                to_hex_str(Z_buf, ZZ_hash_buf, pspecs [current_pspec_def].hash_len / 8);
++                fprintf(resp, "IUTHashZZ = %s\n", Z_buf);
++
++                fprintf(resp, "Result = %s\n",
++                        (cavs_hash_zz.len == pspecs [current_pspec_def].hash_len / 8
++                         && memcmp (cavs_hash_zz.data, ZZ_hash_buf, pspecs [current_pspec_def].hash_len / 8) == 0) ? "P" : "F");
++            } else {
++                fputs(buf, resp);
++            }
++            continue;
++        } else {
++            /* Comments, blank lines, ... */
++            fputs(buf, resp);
++        }
++    }
++
++out:
++    fclose(req);
++
++    if (d_ephem_iut.data) {
++        SECITEM_ZfreeItem(&d_ephem_iut, PR_FALSE);
++    }
++    if (x_ephem_iut.data) {
++        SECITEM_ZfreeItem(&x_ephem_iut, PR_FALSE);
++    }
++    if (y_ephem_iut.data) {
++        SECITEM_ZfreeItem(&y_ephem_iut, PR_FALSE);
++    }
++    if (x_ephem_cavs.data) {
++        SECITEM_ZfreeItem(&x_ephem_cavs, PR_FALSE);
++    }
++    if (y_ephem_cavs.data) {
++        SECITEM_ZfreeItem(&y_ephem_cavs, PR_FALSE);
++    }
++    if (cavs_hash_zz.data) {
++        SECITEM_ZfreeItem(&cavs_hash_zz, PR_FALSE);
++    }
++    if (publicValue.data) {
++        SECITEM_ZfreeItem(&publicValue, PR_FALSE);
++    }
++
++    free_param_specs (pspecs);
++}
++
+ int
+ main(int argc, char **argv)
+ {
+@@ -9287,6 +9582,15 @@
+         } else {
+             kas_ffc_test(argv[3], PR_FALSE);
+         }
++    } else if (strcmp(argv[1], "kasecc") == 0) {
++        /***************/
++        /* KAS ECC */
++        /***************/
++        if (strcmp(argv[2], "validity") == 0) {
++            kas_ecc_test(argv[3], PR_TRUE);
++        } else {
++            kas_ecc_test(argv[3], PR_FALSE);
++        }
+     }
+     return 0;
+ }
+diff --git a/cmd/fipstest/kas.sh b/cmd/fipstest/kas.sh
+--- a/cmd/fipstest/kas.sh
++++ b/cmd/fipstest/kas.sh
+@@ -27,6 +27,16 @@
+ KASValidityTest_FFCEphem_NOKC_ZZOnly_resp.req
+ "
+ 
++kas_requests_ecc_function="
++KASFunctionTest_ECCEphemeralUnified_NOKC_ZZOnly_init.req
++KASFunctionTest_ECCEphemeralUnified_NOKC_ZZOnly_resp.req
++"
++
++kas_requests_ecc_validity="
++KASValidityTest_ECCEphemeralUnified_NOKC_ZZOnly_init.req
++KASValidityTest_ECCEphemeralUnified_NOKC_ZZOnly_resp.req
++"
++
+ if [ ${COMMAND} = "verify" ]; then
+     for request in $kas_requests; do
+ 	sh ./validate1.sh ${TESTDIR} $request
+@@ -45,3 +55,15 @@
+     echo $request $response
+     fipstest kasffc validity ${REQDIR}/$request > ${RSPDIR}/$response
+ done
++
++for request in $kas_requests_ecc_function; do
++    response=`echo $request | sed -e "s/req/rsp/"`
++    echo $request $response
++    fipstest kasecc function ${REQDIR}/$request > ${RSPDIR}/$response
++done
++
++for request in $kas_requests_ecc_validity; do
++    response=`echo $request | sed -e "s/req/rsp/"`
++    echo $request $response
++    fipstest kasecc validity ${REQDIR}/$request > ${RSPDIR}/$response
++done

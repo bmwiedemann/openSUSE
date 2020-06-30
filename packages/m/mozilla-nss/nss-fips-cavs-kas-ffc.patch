@@ -1,0 +1,284 @@
+# HG changeset patch
+# User Hans Petter Jansson <hpj@cl.no>
+# Date 1574234297 -3600
+#      Wed Nov 20 08:18:17 2019 +0100
+# Node ID af7d3ee4e96cf685be0b95dff7aa5a1d3ab64a89
+# Parent  5d6e015d1af40b5f5b990d0cf4d97932774c2a61
+[PATCH] 20
+From ac98082c3bc0c9f85213078b730980483062f25c Mon Sep 17 00:00:00 2001
+---
+ nss/cmd/fipstest/fipstest.c | 194 ++++++++++++++++++++++++++++++++++++
+ nss/cmd/fipstest/kas.sh     |  47 +++++++++
+ 2 files changed, 241 insertions(+)
+ create mode 100644 nss/cmd/fipstest/kas.sh
+
+diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
+--- a/cmd/fipstest/fipstest.c
++++ b/cmd/fipstest/fipstest.c
+@@ -2258,6 +2258,29 @@
+     return rv;
+ }
+ 
++SECStatus
++fips_hashBuf_zeropad(HASH_HashType type, unsigned char *hashBuf,
++                     unsigned char *msg, int len, int pad_to_len)
++{
++    unsigned char buf [8192];
++
++    if (pad_to_len > 8192)
++    {
++        fprintf (stderr, "Internal buffer too small.\n");
++        exit (1);
++    }
++
++    if (len > pad_to_len)
++    {
++        fprintf (stderr, "Value to hash exceeds maximum length.\n");
++        exit (1);
++    }
++
++    memset (buf, 0, pad_to_len - len);
++    memcpy (buf + (pad_to_len - len), msg, len);
++    return fips_hashBuf (type, hashBuf, buf, pad_to_len);
++}
++
+ int
+ fips_hashLen(HASH_HashType type)
+ {
+@@ -8907,6 +8930,168 @@
+     }
+ }
+ 
++static int
++parse_secitem (const char *name, const char *buf, SECItem *secitem)
++{
++    if (!strncmp (buf, name, strlen (name))) {
++        int i, j, len;
++
++        i = strlen (name);
++        while (isspace(buf[i]) || buf[i] == '=') {
++            i++;
++        }
++
++        len = strspn (&buf[i], "0123456789abcdefABCDEF");
++        if (!len)
++            return 0;
++
++        if (secitem->data) {
++            SECITEM_ZfreeItem(secitem, PR_FALSE);
++            secitem->data = NULL;
++        }
++
++        len = (len + 1) / 2;
++        SECITEM_AllocItem(NULL, secitem, len);
++        secitem->len = len;
++
++        memset(secitem->data, 0, secitem->len);
++        for (j = 0; j < secitem->len; i += 2, j++) {
++            hex_to_byteval(&buf[i], &secitem->data[j]);
++        }
++
++        return 1;
++    }
++
++    return 0;
++}
++
++void
++kas_ffc_test(char *reqfn, int do_validity)
++{
++    char buf[1024];
++    FILE *req;  /* input stream from the REQUEST file */
++    FILE *resp; /* output stream to the RESPONSE file */
++    PQGParams keyParams;
++    HASH_HashType hashType = HASH_AlgNULL;
++    int hashNum = 0;
++    SECItem y_ephem_cavs;
++    SECItem x_ephem_iut;
++    SECItem y_ephem_iut;
++    SECItem cavs_hash_zz;
++
++    req = fopen(reqfn, "r");
++    resp = stdout;
++    memset(&keyParams, 0, sizeof(keyParams));
++    memset(&y_ephem_cavs, 0, sizeof(y_ephem_cavs));
++    memset(&x_ephem_iut, 0, sizeof(x_ephem_iut));
++    memset(&y_ephem_iut, 0, sizeof(y_ephem_iut));
++    memset(&cavs_hash_zz, 0, sizeof(cavs_hash_zz));
++
++    while (fgets(buf, sizeof buf, req) != NULL) {
++        /* [xx] or
++         * [xx - SHAxxx] or
++         * [SHA(s) supported (Used for hashing Z):  SHAxxx] */
++        if (buf[0] == '[') {
++            unsigned char tbuf [2];
++
++            if (sscanf(buf, "[%c%c - SHA%d]", &tbuf [0], &tbuf [1],
++                       &hashNum) != 3) {
++                fputs(buf, resp);
++                continue;
++            }
++
++            fputs(buf, resp);
++
++            hashType = sha_get_hashType(hashNum);
++            if (hashType == HASH_AlgNULL) {
++                fprintf(resp, "ERROR: invalid hash (SHA-%d)", hashNum);
++                goto out;
++            }
++
++            continue;
++        } else if (parse_secitem ("YephemCAVS", buf, &y_ephem_cavs)) {
++            fputs(buf, resp);
++
++            if (!do_validity) {
++                SECItem ZZ;
++                unsigned char ZZ_hash_buf [1024];
++                DHParams dh_params;
++                DHPrivateKey *dh_privKey;
++
++                dh_params.prime = keyParams.prime;
++                dh_params.base = keyParams.base;
++
++                DH_NewKey (&dh_params, &dh_privKey);
++                DH_Derive(&y_ephem_cavs, &keyParams.prime, &dh_privKey->privateValue, &ZZ, 0);
++
++                fips_hashBuf_zeropad(hashType, ZZ_hash_buf, ZZ.data, ZZ.len, keyParams.prime.len);
++
++                to_hex_str(buf, dh_privKey->publicValue.data, dh_privKey->publicValue.len);
++                fprintf(resp, "YephemIUT = %s\n", buf);
++
++                to_hex_str(buf, ZZ_hash_buf, hashNum / 8);
++                fprintf(resp, "HashZZ = %s\n", buf);
++
++                PORT_FreeArena(dh_privKey->arena, PR_TRUE);
++            }
++
++            continue;
++        } else if (parse_secitem ("XephemIUT", buf, &x_ephem_iut)) {
++            fputs(buf, resp);
++            continue;
++        } else if (parse_secitem ("YephemIUT", buf, &y_ephem_iut)) {
++            fputs(buf, resp);
++            continue;
++        } else if (parse_secitem ("CAVSHashZZ", buf, &cavs_hash_zz)) {
++            if (do_validity) {
++                SECItem ZZ;
++                unsigned char ZZ_hash_buf [1024];
++                char Z_buf [1024];
++
++                DH_Derive(&y_ephem_cavs, &keyParams.prime, &x_ephem_iut, &ZZ, 0);
++
++                fputs(buf, resp);
++
++                to_hex_str(Z_buf, ZZ.data, ZZ.len);
++
++                fips_hashBuf_zeropad(hashType, ZZ_hash_buf, ZZ.data, ZZ.len, keyParams.prime.len);
++                to_hex_str(Z_buf, ZZ_hash_buf, hashNum / 8);
++                fprintf(resp, "IUTHashZZ = %s\n", Z_buf);
++
++                fprintf(resp, "Result = %s\n",
++                        (cavs_hash_zz.len == hashNum / 8 && memcmp (cavs_hash_zz.data, ZZ_hash_buf, hashNum / 8) == 0) ? "P" : "F");
++            } else {
++                fputs(buf, resp);
++            }
++            continue;
++        } else if (parse_secitem ("P", buf, &keyParams.prime)) {
++            fputs(buf, resp);
++            continue;
++        } else if (parse_secitem ("Q", buf, &keyParams.subPrime)) {
++            fputs(buf, resp);
++            continue;
++        } else if (parse_secitem ("G", buf, &keyParams.base)) {
++            fputs(buf, resp);
++            continue;
++        } else {
++            /* Comments, blank lines, ... */
++            fputs(buf, resp);
++        }
++    }
++
++out:
++    fclose(req);
++    if (keyParams.prime.data) { /* P */
++        SECITEM_ZfreeItem(&keyParams.prime, PR_FALSE);
++    }
++    if (keyParams.subPrime.data) { /* Q */
++        SECITEM_ZfreeItem(&keyParams.subPrime, PR_FALSE);
++    }
++    if (keyParams.base.data) { /* G */
++        SECITEM_ZfreeItem(&keyParams.base, PR_FALSE);
++    }
++}
++
+ int
+ main(int argc, char **argv)
+ {
+@@ -9093,6 +9278,15 @@
+         /* AES Keywrap */
+         /***************/
+         keywrap(argv[2]);
++    } else if (strcmp(argv[1], "kasffc") == 0) {
++        /***************/
++        /* KAS FFC */
++        /***************/
++        if (strcmp(argv[2], "validity") == 0) {
++            kas_ffc_test(argv[3], PR_TRUE);
++        } else {
++            kas_ffc_test(argv[3], PR_FALSE);
++        }
+     }
+     return 0;
+ }
+diff --git a/cmd/fipstest/kas.sh b/cmd/fipstest/kas.sh
+new file mode 100644
+--- /dev/null
++++ b/cmd/fipstest/kas.sh
+@@ -0,0 +1,47 @@
++#!/bin/sh
++# 
++# This Source Code Form is subject to the terms of the Mozilla Public
++# License, v. 2.0. If a copy of the MPL was not distributed with this
++# file, You can obtain one at http://mozilla.org/MPL/2.0/.
++#
++# A Bourne shell script for running the NIST RNG Validation Suite
++#
++# Before you run the script, set your PATH, LD_LIBRARY_PATH, ... environment
++# variables appropriately so that the fipstest command and the NSPR and NSS
++# shared libraries/DLLs are on the search path.  Then run this script in the
++# directory where the REQUEST (.req) files reside.  The script generates the
++# RESPONSE (.rsp) files in the same directory.
++BASEDIR=${1-.}
++TESTDIR=${BASEDIR}/KAS
++COMMAND=${2-run}
++REQDIR=${TESTDIR}/req
++RSPDIR=${TESTDIR}/resp
++
++kas_requests_ffc_function="
++KASFunctionTest_FFCEphem_NOKC_ZZOnly_init.req
++KASFunctionTest_FFCEphem_NOKC_ZZOnly_resp.req
++"
++
++kas_requests_ffc_validity="
++KASValidityTest_FFCEphem_NOKC_ZZOnly_init.req
++KASValidityTest_FFCEphem_NOKC_ZZOnly_resp.req
++"
++
++if [ ${COMMAND} = "verify" ]; then
++    for request in $kas_requests; do
++	sh ./validate1.sh ${TESTDIR} $request
++    done
++    exit 0
++fi
++
++for request in $kas_requests_ffc_function; do
++    response=`echo $request | sed -e "s/req/rsp/"`
++    echo $request $response
++    fipstest kasffc function ${REQDIR}/$request > ${RSPDIR}/$response
++done
++
++for request in $kas_requests_ffc_validity; do
++    response=`echo $request | sed -e "s/req/rsp/"`
++    echo $request $response
++    fipstest kasffc validity ${REQDIR}/$request > ${RSPDIR}/$response
++done

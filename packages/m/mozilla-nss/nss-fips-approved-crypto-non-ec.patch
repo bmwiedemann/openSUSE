@@ -1,0 +1,488 @@
+# HG changeset patch
+# User M. Sirringhaus <msirringhaus@suse.de>
+# Date 1590413430 -7200
+#      Mon May 25 15:30:30 2020 +0200
+# Node ID 2d4483f4a1259f965f32ff4c65436e92aef83be7
+# Parent  3f4d682c9a1e8b3d939c744ee249e23179db5191
+imported patch nss-fips-approved-crypto-non-ec.patch
+
+diff --git a/lib/freebl/alg2268.c b/lib/freebl/alg2268.c
+--- a/lib/freebl/alg2268.c
++++ b/lib/freebl/alg2268.c
+@@ -16,6 +16,8 @@
+ #include <stddef.h> /* for ptrdiff_t */
+ #endif
+ 
++#include "fips.h"
++
+ /*
+ ** RC2 symmetric block cypher
+ */
+@@ -119,6 +121,7 @@
+ RC2Context *
+ RC2_AllocateContext(void)
+ {
++    IN_FIPS_RETURN(NULL);
+     return PORT_ZNew(RC2Context);
+ }
+ SECStatus
+@@ -133,6 +136,8 @@
+ #endif
+     PRUint8 tmpB;
+ 
++    IN_FIPS_RETURN(SECFailure);
++
+     if (!key || !cx || !len || len > (sizeof cx->B) ||
+         efLen8 > (sizeof cx->B)) {
+         PORT_SetError(SEC_ERROR_INVALID_ARGS);
+@@ -204,7 +209,11 @@
+ RC2_CreateContext(const unsigned char *key, unsigned int len,
+                   const unsigned char *iv, int mode, unsigned efLen8)
+ {
+-    RC2Context *cx = PORT_ZNew(RC2Context);
++    RC2Context *cx;
++
++    IN_FIPS_RETURN(NULL);
++
++    cx = PORT_ZNew(RC2Context);
+     if (cx) {
+         SECStatus rv = RC2_InitContext(cx, key, len, iv, mode, efLen8, 0);
+         if (rv != SECSuccess) {
+@@ -456,7 +465,11 @@
+             unsigned int *outputLen, unsigned int maxOutputLen,
+             const unsigned char *input, unsigned int inputLen)
+ {
+-    SECStatus rv = SECSuccess;
++    SECStatus rv;
++
++    IN_FIPS_RETURN(SECFailure);
++
++    rv = SECSuccess;
+     if (inputLen) {
+         if (inputLen % RC2_BLOCK_SIZE) {
+             PORT_SetError(SEC_ERROR_INPUT_LEN);
+@@ -490,7 +503,11 @@
+             unsigned int *outputLen, unsigned int maxOutputLen,
+             const unsigned char *input, unsigned int inputLen)
+ {
+-    SECStatus rv = SECSuccess;
++    SECStatus rv;
++
++    IN_FIPS_RETURN(SECFailure);
++
++    rv = SECSuccess;
+     if (inputLen) {
+         if (inputLen % RC2_BLOCK_SIZE) {
+             PORT_SetError(SEC_ERROR_INPUT_LEN);
+diff --git a/lib/freebl/arcfour.c b/lib/freebl/arcfour.c
+--- a/lib/freebl/arcfour.c
++++ b/lib/freebl/arcfour.c
+@@ -13,6 +13,7 @@
+ 
+ #include "prtypes.h"
+ #include "blapi.h"
++#include "fips.h"
+ 
+ /* Architecture-dependent defines */
+ 
+@@ -108,6 +109,7 @@
+ RC4Context *
+ RC4_AllocateContext(void)
+ {
++    IN_FIPS_RETURN(NULL);
+     return PORT_ZNew(RC4Context);
+ }
+ 
+@@ -121,6 +123,8 @@
+     PRUint8 K[256];
+     PRUint8 *L;
+ 
++    IN_FIPS_RETURN(SECFailure);
++
+     /* verify the key length. */
+     PORT_Assert(len > 0 && len < ARCFOUR_STATE_SIZE);
+     if (len == 0 || len >= ARCFOUR_STATE_SIZE) {
+@@ -162,7 +166,11 @@
+ RC4Context *
+ RC4_CreateContext(const unsigned char *key, int len)
+ {
+-    RC4Context *cx = RC4_AllocateContext();
++    RC4Context *cx;
++
++    IN_FIPS_RETURN(NULL);
++
++    cx = RC4_AllocateContext();
+     if (cx) {
+         SECStatus rv = RC4_InitContext(cx, key, len, NULL, 0, 0, 0);
+         if (rv != SECSuccess) {
+@@ -176,6 +184,7 @@
+ void
+ RC4_DestroyContext(RC4Context *cx, PRBool freeit)
+ {
++    IN_FIPS_RETURN();
+     if (freeit)
+         PORT_ZFree(cx, sizeof(*cx));
+ }
+@@ -548,6 +557,8 @@
+             unsigned int *outputLen, unsigned int maxOutputLen,
+             const unsigned char *input, unsigned int inputLen)
+ {
++    IN_FIPS_RETURN(SECFailure);
++
+     PORT_Assert(maxOutputLen >= inputLen);
+     if (maxOutputLen < inputLen) {
+         PORT_SetError(SEC_ERROR_OUTPUT_LEN);
+@@ -571,6 +582,8 @@
+             unsigned int *outputLen, unsigned int maxOutputLen,
+             const unsigned char *input, unsigned int inputLen)
+ {
++    IN_FIPS_RETURN(SECFailure);
++
+     PORT_Assert(maxOutputLen >= inputLen);
+     if (maxOutputLen < inputLen) {
+         PORT_SetError(SEC_ERROR_OUTPUT_LEN);
+diff --git a/lib/freebl/deprecated/seed.c b/lib/freebl/deprecated/seed.c
+--- a/lib/freebl/deprecated/seed.c
++++ b/lib/freebl/deprecated/seed.c
+@@ -17,6 +17,8 @@
+ #include "seed.h"
+ #include "secerr.h"
+ 
++#include "../fips.h"
++
+ static const seed_word SS[4][256] = {
+     { 0x2989a1a8, 0x05858184, 0x16c6d2d4, 0x13c3d3d0,
+       0x14445054, 0x1d0d111c, 0x2c8ca0ac, 0x25052124,
+@@ -301,6 +303,8 @@
+     seed_word K0, K1, K2, K3;
+     seed_word t0, t1;
+ 
++    IN_FIPS_RETURN();
++
+     char2word(rawkey, K0);
+     char2word(rawkey + 4, K1);
+     char2word(rawkey + 8, K2);
+@@ -349,6 +353,8 @@
+     seed_word L0, L1, R0, R1;
+     seed_word t0, t1;
+ 
++    IN_FIPS_RETURN();
++
+     char2word(s, L0);
+     char2word(s + 4, L1);
+     char2word(s + 8, R0);
+@@ -385,6 +391,8 @@
+     seed_word L0, L1, R0, R1;
+     seed_word t0, t1;
+ 
++    IN_FIPS_RETURN();
++
+     char2word(s, L0);
+     char2word(s + 4, L1);
+     char2word(s + 8, R0);
+@@ -419,6 +427,8 @@
+                  size_t inLen,
+                  const SEED_KEY_SCHEDULE *ks, int enc)
+ {
++    IN_FIPS_RETURN();
++
+     if (enc) {
+         while (inLen > 0) {
+             SEED_encrypt(in, out, ks);
+@@ -445,6 +455,8 @@
+     unsigned char tmp[SEED_BLOCK_SIZE];
+     const unsigned char *iv = ivec;
+ 
++    IN_FIPS_RETURN();
++
+     if (enc) {
+         while (len >= SEED_BLOCK_SIZE) {
+             for (n = 0; n < SEED_BLOCK_SIZE; ++n) {
+@@ -528,6 +540,7 @@
+ SEEDContext *
+ SEED_AllocateContext(void)
+ {
++    IN_FIPS_RETURN(NULL);
+     return PORT_ZNew(SEEDContext);
+ }
+ 
+@@ -536,6 +549,8 @@
+                  unsigned int keylen, const unsigned char *iv,
+                  int mode, unsigned int encrypt, unsigned int unused)
+ {
++    IN_FIPS_RETURN(SECFailure);
++
+     if (!cx) {
+         PORT_SetError(SEC_ERROR_INVALID_ARGS);
+         return SECFailure;
+@@ -567,10 +582,14 @@
+ SEED_CreateContext(const unsigned char *key, const unsigned char *iv,
+                    int mode, PRBool encrypt)
+ {
+-    SEEDContext *cx = PORT_ZNew(SEEDContext);
+-    SECStatus rv = SEED_InitContext(cx, key, SEED_KEY_LENGTH, iv, mode,
+-                                    encrypt, 0);
++    SEEDContext *cx;
++    SECStatus rv;
+ 
++    IN_FIPS_RETURN(NULL);
++
++    cx = PORT_ZNew(SEEDContext);
++    rv = SEED_InitContext(cx, key, SEED_KEY_LENGTH, iv, mode,
++                          encrypt, 0);
+     if (rv != SECSuccess) {
+         PORT_ZFree(cx, sizeof *cx);
+         cx = NULL;
+@@ -595,6 +614,8 @@
+              unsigned int maxOutLen, const unsigned char *in,
+              unsigned int inLen)
+ {
++    IN_FIPS_RETURN(SECFailure);
++
+     if (!cx) {
+         PORT_SetError(SEC_ERROR_INVALID_ARGS);
+         return SECFailure;
+@@ -635,6 +656,8 @@
+              unsigned int maxOutLen, const unsigned char *in,
+              unsigned int inLen)
+ {
++    IN_FIPS_RETURN(SECFailure);
++
+     if (!cx) {
+         PORT_SetError(SEC_ERROR_INVALID_ARGS);
+         return SECFailure;
+diff --git a/lib/freebl/fips.h b/lib/freebl/fips.h
+--- a/lib/freebl/fips.h
++++ b/lib/freebl/fips.h
+@@ -8,8 +8,20 @@
+ #ifndef FIPS_H
+ #define FIPS_H
+ 
++#include "hasht.h"
++#include "secerr.h"
++
++#define IN_FIPS_RETURN(rv) \
++    do { \
++	if (FIPS_mode()) { \
++	    PORT_SetError(SEC_ERROR_INVALID_ALGORITHM); \
++	    return rv; \
++	} \
++    } while (0)
++
+ int	FIPS_mode(void);
+ char*	FIPS_rngDev(void);
++PRBool	FIPS_hashAlgApproved(HASH_HashType hashAlg);
+ 
+ #endif
+ 
+diff --git a/lib/freebl/md2.c b/lib/freebl/md2.c
+--- a/lib/freebl/md2.c
++++ b/lib/freebl/md2.c
+@@ -13,6 +13,8 @@
+ 
+ #include "blapi.h"
+ 
++#include "fips.h"
++
+ #define MD2_DIGEST_LEN 16
+ #define MD2_BUFSIZE 16
+ #define MD2_X_SIZE 48  /* The X array, [CV | INPUT | TMP VARS] */
+@@ -66,7 +68,11 @@
+ MD2_Hash(unsigned char *dest, const char *src)
+ {
+     unsigned int len;
+-    MD2Context *cx = MD2_NewContext();
++    MD2Context *cx;
++
++    IN_FIPS_RETURN(SECFailure);
++
++    cx = MD2_NewContext();
+     if (!cx) {
+         PORT_SetError(PR_OUT_OF_MEMORY_ERROR);
+         return SECFailure;
+@@ -81,7 +87,11 @@
+ MD2Context *
+ MD2_NewContext(void)
+ {
+-    MD2Context *cx = (MD2Context *)PORT_ZAlloc(sizeof(MD2Context));
++    MD2Context *cx;
++
++    IN_FIPS_RETURN(NULL);
++
++    cx = (MD2Context *)PORT_ZAlloc(sizeof(MD2Context));
+     if (cx == NULL) {
+         PORT_SetError(PR_OUT_OF_MEMORY_ERROR);
+         return NULL;
+@@ -99,6 +109,8 @@
+ void
+ MD2_Begin(MD2Context *cx)
+ {
++    IN_FIPS_RETURN();
++
+     memset(cx, 0, sizeof(*cx));
+     cx->unusedBuffer = MD2_BUFSIZE;
+ }
+@@ -196,6 +208,8 @@
+ {
+     PRUint32 bytesToConsume;
+ 
++    IN_FIPS_RETURN();
++
+     /* Fill the remaining input buffer. */
+     if (cx->unusedBuffer != MD2_BUFSIZE) {
+         bytesToConsume = PR_MIN(inputLen, cx->unusedBuffer);
+@@ -226,6 +240,9 @@
+         unsigned int *digestLen, unsigned int maxDigestLen)
+ {
+     PRUint8 padStart;
++
++    IN_FIPS_RETURN();
++
+     if (maxDigestLen < MD2_BUFSIZE) {
+         PORT_SetError(SEC_ERROR_INVALID_ARGS);
+         return;
+diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
+--- a/lib/freebl/md5.c
++++ b/lib/freebl/md5.c
+@@ -15,6 +15,8 @@
+ #include "blapi.h"
+ #include "blapii.h"
+ 
++#include "fips.h"
++
+ #define MD5_HASH_LEN 16
+ #define MD5_BUFFER_SIZE 64
+ #define MD5_END_BUFFER (MD5_BUFFER_SIZE - 8)
+@@ -195,6 +197,7 @@
+ SECStatus
+ MD5_Hash(unsigned char *dest, const char *src)
+ {
++    IN_FIPS_RETURN(SECFailure);
+     return MD5_HashBuf(dest, (const unsigned char *)src, PORT_Strlen(src));
+ }
+ 
+@@ -204,6 +207,8 @@
+     unsigned int len;
+     MD5Context cx;
+ 
++    IN_FIPS_RETURN(SECFailure);
++
+     MD5_Begin(&cx);
+     MD5_Update(&cx, src, src_length);
+     MD5_End(&cx, dest, &len, MD5_HASH_LEN);
+@@ -215,7 +220,11 @@
+ MD5_NewContext(void)
+ {
+     /* no need to ZAlloc, MD5_Begin will init the context */
+-    MD5Context *cx = (MD5Context *)PORT_Alloc(sizeof(MD5Context));
++    MD5Context *cx;
++
++    IN_FIPS_RETURN(NULL);
++
++    cx = (MD5Context *)PORT_Alloc(sizeof(MD5Context));
+     if (cx == NULL) {
+         PORT_SetError(PR_OUT_OF_MEMORY_ERROR);
+         return NULL;
+@@ -226,7 +235,8 @@
+ void
+ MD5_DestroyContext(MD5Context *cx, PRBool freeit)
+ {
+-    memset(cx, 0, sizeof *cx);
++    if (cx)
++        memset(cx, 0, sizeof *cx);
+     if (freeit) {
+         PORT_Free(cx);
+     }
+@@ -235,6 +245,8 @@
+ void
+ MD5_Begin(MD5Context *cx)
+ {
++    IN_FIPS_RETURN();
++
+     cx->lsbInput = 0;
+     cx->msbInput = 0;
+     /*  memset(cx->inBuf, 0, sizeof(cx->inBuf)); */
+@@ -425,6 +437,8 @@
+     PRUint32 inBufIndex = cx->lsbInput & 63;
+     const PRUint32 *wBuf;
+ 
++    IN_FIPS_RETURN();
++
+     /* Add the number of input bytes to the 64-bit input counter. */
+     addto64(cx->msbInput, cx->lsbInput, inputLen);
+     if (inBufIndex) {
+@@ -498,6 +512,8 @@
+     PRUint32 lowInput, highInput;
+     PRUint32 inBufIndex = cx->lsbInput & 63;
+ 
++    IN_FIPS_RETURN();
++
+     if (maxDigestLen < MD5_HASH_LEN) {
+         PORT_SetError(SEC_ERROR_INVALID_ARGS);
+         return;
+@@ -546,6 +562,8 @@
+ #endif
+     PRUint32 cv[4];
+ 
++    IN_FIPS_RETURN();
++
+     if (maxDigestLen < MD5_HASH_LEN) {
+         PORT_SetError(SEC_ERROR_INVALID_ARGS);
+         return;
+diff --git a/lib/freebl/nsslowhash.c b/lib/freebl/nsslowhash.c
+--- a/lib/freebl/nsslowhash.c
++++ b/lib/freebl/nsslowhash.c
+@@ -12,6 +12,7 @@
+ #include "plhash.h"
+ #include "nsslowhash.h"
+ #include "blapii.h"
++#include "fips.h"
+ 
+ struct NSSLOWInitContextStr {
+     int count;
+@@ -92,6 +93,12 @@
+ {
+     NSSLOWHASHContext *context;
+ 
++    /* return with an error if unapproved hash is requested in FIPS mode */
++    if (!FIPS_hashAlgApproved(hashType)) {
++	PORT_SetError(SEC_ERROR_INVALID_ALGORITHM);
++	return NULL;
++    }
++
+     if (post_failed) {
+         PORT_SetError(SEC_ERROR_PKCS11_DEVICE_ERROR);
+         return NULL;
+diff --git a/lib/freebl/rawhash.c b/lib/freebl/rawhash.c
+--- a/lib/freebl/rawhash.c
++++ b/lib/freebl/rawhash.c
+@@ -10,6 +10,7 @@
+ #include "hasht.h"
+ #include "blapi.h" /* below the line */
+ #include "secerr.h"
++#include "fips.h"
+ 
+ static void *
+ null_hash_new_context(void)
+@@ -146,7 +147,8 @@
+ const SECHashObject *
+ HASH_GetRawHashObject(HASH_HashType hashType)
+ {
+-    if (hashType <= HASH_AlgNULL || hashType >= HASH_AlgTOTAL) {
++    if (hashType <= HASH_AlgNULL || hashType >= HASH_AlgTOTAL
++        || (!FIPS_hashAlgApproved(hashType))) {
+         PORT_SetError(SEC_ERROR_INVALID_ARGS);
+         return NULL;
+     }
+diff --git a/lib/softoken/pkcs11c.c b/lib/softoken/pkcs11c.c
+--- a/lib/softoken/pkcs11c.c
++++ b/lib/softoken/pkcs11c.c
+@@ -7282,7 +7282,7 @@
+             } else {
+                 /* now allocate the hash contexts */
+                 md5 = MD5_NewContext();
+-                if (md5 == NULL) {
++                if (md5 == NULL && !isTLS) {
+                     crv = CKR_HOST_MEMORY;
+                     break;
+                 }

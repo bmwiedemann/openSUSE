@@ -1,0 +1,93 @@
+# HG changeset patch
+# User M. Sirringhaus <msirringhaus@suse.de>
+# Date 1584305671 -3600
+#      Sun Mar 15 21:54:31 2020 +0100
+# Node ID 715834d4a258c535f3abbf116d69d5e77392593b
+# Parent  4ddd7d49eeed4ea32850daf41a472ccb50dee45e
+commit facacdb9078693d7a4219e84f73ea7b8f977ddc2
+Author: Hans Petter Jansson <hpj@cl.no>
+    Patch 32: nss-fips-detect-fips-mode-fixes.patch
+
+diff --git a/lib/freebl/nsslowhash.c b/lib/freebl/nsslowhash.c
+--- a/lib/freebl/nsslowhash.c
++++ b/lib/freebl/nsslowhash.c
+@@ -2,10 +2,15 @@
+  * License, v. 2.0. If a copy of the MPL was not distributed with this
+  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ 
++#define _GNU_SOURCE 1
++#include <stdlib.h>
++
+ #ifdef FREEBL_NO_DEPEND
+ #include "stubs.h"
+ #endif
++
+ #include "prtypes.h"
++#include "prenv.h"
+ #include "secerr.h"
+ #include "blapi.h"
+ #include "hasht.h"
+@@ -24,6 +29,23 @@
+ };
+ 
+ #ifndef NSS_FIPS_DISABLED
++
++static PRBool
++getFIPSEnv(void)
++{
++    char *fipsEnv = secure_getenv("NSS_FIPS");
++    if (!fipsEnv) {
++        return PR_FALSE;
++    }
++    if ((strcasecmp(fipsEnv, "fips") == 0) ||
++        (strcasecmp(fipsEnv, "true") == 0) ||
++        (strcasecmp(fipsEnv, "on") == 0) ||
++        (strcasecmp(fipsEnv, "1") == 0)) {
++        return PR_TRUE;
++    }
++    return PR_FALSE;
++}
++
+ static int
+ nsslow_GetFIPSEnabled(void)
+ {
+@@ -45,6 +67,7 @@
+ #endif /* LINUX */
+     return 1;
+ }
++
+ #endif /* NSS_FIPS_DISABLED */
+ 
+ static NSSLOWInitContext dummyContext = { 0 };
+@@ -60,7 +83,7 @@
+ #ifndef NSS_FIPS_DISABLED
+     /* make sure the FIPS product is installed if we are trying to
+      * go into FIPS mode */
+-    if (nsslow_GetFIPSEnabled()) {
++    if (nsslow_GetFIPSEnabled() || getFIPSEnv()) {
+         if (BL_FIPSEntryOK(PR_TRUE) != SECSuccess) {
+             PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
+             post_failed = PR_TRUE;
+diff --git a/lib/sysinit/nsssysinit.c b/lib/sysinit/nsssysinit.c
+--- a/lib/sysinit/nsssysinit.c
++++ b/lib/sysinit/nsssysinit.c
+@@ -178,16 +178,16 @@
+     f = fopen("/proc/sys/crypto/fips_enabled", "r");
+     if (!f) {
+         /* if we don't have a proc flag, fall back to the
+-     * environment variable */
++         * environment variable */
+         return getFIPSEnv();
+     }
+ 
+     size = fread(&d, 1, 1, f);
+     fclose(f);
+     if (size != 1)
+-        return PR_FALSE;
++        return getFIPSEnv();
+     if (d != '1')
+-        return PR_FALSE;
++        return getFIPSEnv();
+     return PR_TRUE;
+ #else
+     return PR_FALSE;

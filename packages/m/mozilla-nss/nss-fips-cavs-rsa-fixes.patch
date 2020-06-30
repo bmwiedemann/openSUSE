@@ -1,0 +1,32 @@
+# HG changeset patch
+# User Hans Petter Jansson <hpj@cl.no>
+# Date 1574237297 -3600
+#      Wed Nov 20 09:08:17 2019 +0100
+# Node ID 3f4d682c9a1e8b3d939c744ee249e23179db5191
+# Parent  0e904e6179d1db21965df2c405c80c3fc0258658
+[PATCH] 25
+From 9b4636ad75add2ac09ce1844b3071785d563c275 Mon Sep 17 00:00:00 2001
+---
+ nss/cmd/fipstest/fipstest.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
+--- a/cmd/fipstest/fipstest.c
++++ b/cmd/fipstest/fipstest.c
+@@ -6536,7 +6536,7 @@
+             /* Output the signature */
+             fputs(buf, rsaresp);
+             to_hex_str(buf, rsa_computed_signature, rsa_bytes_signed);
+-            fprintf(rsaresp, "S = %s\n", buf);
++            fprintf(rsaresp, "S = %s\n\n", buf);
+ 
+             /* Perform RSA verification with the RSA public key. */
+             rv = RSA_HashCheckSign(shaOid,
+@@ -9536,6 +9536,7 @@
+     init_functions();
+     RNG_RNGInit();
+     SECOID_Init();
++    BL_Init();
+ 
+     /*************/
+     /*   TDEA    */

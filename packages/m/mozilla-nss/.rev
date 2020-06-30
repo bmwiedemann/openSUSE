@@ -2014,4 +2014,55 @@
     <comment></comment>
     <requestid>810949</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>84acc87f4bf338e79c31c0871a84ea19</srcmd5>
+    <version>3.53.1</version>
+    <time>1593546777</time>
+    <user>dimstar_suse</user>
+    <comment>- add FIPS mode patches from SLE stream
+  nss-fips-aes-keywrap-post.patch
+  nss-fips-approved-crypto-non-ec.patch
+  nss-fips-cavs-dsa-fixes.patch
+  nss-fips-cavs-general.patch
+  nss-fips-cavs-kas-ecc.patch
+  nss-fips-cavs-kas-ffc.patch
+  nss-fips-cavs-keywrap.patch
+  nss-fips-cavs-rsa-fixes.patch
+  nss-fips-combined-hash-sign-dsa-ecdsa.patch
+  nss-fips-constructor-self-tests.patch
+  nss-fips-detect-fips-mode-fixes.patch
+  nss-fips-dsa-kat.patch
+  nss-fips-gcm-ctr.patch
+  nss-fips-pairwise-consistency-check.patch
+  nss-fips-rsa-keygen-strictness.patch
+  nss-fips-tls-allow-md5-prf.patch
+  nss-fips-use-getrandom.patch
+  nss-fips-use-strong-random-pool.patch
+  nss-fips-zeroization.patch
+  nss-fix-dh-pkcs-derive-inverted-logic.patch
+- update to NSS 3.53.1
+  * required for Firefox 78
+  * CVE-2020-12402 - Use constant-time GCD and modular inversion in MPI.
+    (bmo#1631597, bsc#1173032)
+- Add ppc-old-abi-v3.patch as per upstream bug
+  https://bugzilla.mozilla.org/show_bug.cgi?id=1642174
+- update to NSS 3.53
+  Notable changes
+  * SEED is now moved into a new freebl directory freebl/deprecated
+    bmo#1636389
+  * SEED will be disabled by default in a future release of NSS. At
+    that time, users will need to set the compile-time flag
+    (bmo#1622033) to disable that deprecation in order to use the
+    algorithm.
+  * Algorithms marked as deprecated will ultimately be removed
+  * Several root certificates in the Mozilla program now set the
+    CKA_NSS_SERVER_DISTRUST_AFTER attribute, which NSS consumers
+    can query to further refine trust decisions. (bmo#1618404,
+    bmo#1621159). If a builtin certificate has a
+    CKA_NSS_SERVER_DISTRUST_AFTER timestamp before the SCT or
+    NotBefore date of a certificate that builtin issued, then clients
+    can elect not to trust it.
+</comment>
+    <requestid>817441</requestid>
+  </revision>
 </revisionlist>

@@ -1,25 +1,17 @@
-# HG changeset patch
-# Parent  bbf8e741ac966df6cf513ea042d1351eb279c122
-
 diff --git a/Makefile b/Makefile
+index eb4ed1a..de9c13d 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -42,17 +42,17 @@ include $(CORE_DEPTH)/coreconf/rules.mk
+@@ -48,12 +48,10 @@ include $(CORE_DEPTH)/coreconf/rules.mk
  #######################################################################
  
+ nss_build_all:
+-	$(MAKE) build_nspr
+ 	$(MAKE) all
+ 	$(MAKE) latest
  
- 
- #######################################################################
- # (7) Execute "local" rules. (OPTIONAL).                              #
- #######################################################################
- 
--nss_build_all: build_nspr all latest
-+nss_build_all: all latest
- 
- nss_clean_all: clobber_nspr clobber
+ nss_clean_all:
+-	$(MAKE) clobber_nspr
+ 	$(MAKE) clobber
  
  NSPR_CONFIG_STATUS = $(CORE_DEPTH)/../nspr/$(OBJDIR_NAME)/config.status
- NSPR_CONFIGURE = $(CORE_DEPTH)/../nspr/configure
- 
- #
- # Translate coreconf build options to NSPR configure options.

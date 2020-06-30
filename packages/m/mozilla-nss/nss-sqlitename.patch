@@ -1,32 +1,29 @@
 # HG changeset patch
-# Parent  b96f2a8d5f606fd982a8fe3655c4b71e282c3976
+# User M. Sirringhaus <msirringhaus@suse.de>
+# Date 1590407652 -7200
+#      Mon May 25 13:54:12 2020 +0200
+# Node ID b1d7045b31cf4090c0b78003c77a2eb6c8c57436
+# Parent  e3d3ed5e142b172289d9d4a1c7fc63dfd4359410
 Index: security/nss/lib/sqlite/manifest.mn
 ===================================================================
 RCS file: /cvsroot/mozilla/security/nss/lib/sqlite/manifest.mn,v
 retrieving revision 1.5
 
-diff --git a/lib/sqlite/manifest.mn b/lib/sqlite/manifest.mn
---- a/lib/sqlite/manifest.mn
-+++ b/lib/sqlite/manifest.mn
-@@ -1,19 +1,20 @@
- # 
- # This Source Code Form is subject to the terms of the Mozilla Public
- # License, v. 2.0. If a copy of the MPL was not distributed with this
- # file, You can obtain one at http://mozilla.org/MPL/2.0/.
- CORE_DEPTH = ../..
+diff -r e3d3ed5e142b -r b1d7045b31cf lib/sqlite/manifest.mn
+--- a/lib/sqlite/manifest.mn	Mon Sep 18 11:24:00 2017 +0200
++++ b/lib/sqlite/manifest.mn	Mon May 25 13:54:12 2020 +0200
+@@ -6,11 +6,11 @@
  
  MODULE = nss
  
 -LIBRARY_NAME = sqlite
 +LIBRARY_NAME = nsssqlite
  LIBRARY_VERSION = 3
- MAPFILE = $(OBJDIR)/sqlite.def
+-MAPFILE = $(OBJDIR)/$(LIBRARY_NAME).def
++MAPFILE = $(OBJDIR)/sqlite.def
+ RES = $(NULL)
+-
 +MAPFILE_SOURCE = sqlite.def
  DEFINES += -DSQLITE_THREADSAFE=1
  
- EXPORTS = \
- 	$(NULL)
- 
  PRIVATE_EXPORTS = \
- 	sqlite3.h \
- 	$(NULL)

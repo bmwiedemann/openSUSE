@@ -17,14 +17,14 @@
 #
 
 
-%global nss_softokn_fips_version 3.52
+%global nss_softokn_fips_version 3.53
 %define NSPR_min_version 4.25
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 Name:           mozilla-nss
-Version:        3.52.1
+Version:        3.53.1
 Release:        0
-%define underscore_version 3_52_1
+%define underscore_version 3_53_1
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
@@ -49,7 +49,33 @@ Patch4:         add-relro-linker-option.patch
 Patch5:         malloc.patch
 Patch6:         bmo-1400603.patch
 Patch7:         nss-sqlitename.patch
+Patch8:         ppc-old-abi-v3.patch
+Patch11:        nss-fips-use-getrandom.patch
+Patch13:        nss-fips-dsa-kat.patch
+Patch15:        nss-fips-pairwise-consistency-check.patch
+Patch16:        nss-fips-rsa-keygen-strictness.patch
+Patch19:        nss-fips-cavs-keywrap.patch
+Patch20:        nss-fips-cavs-kas-ffc.patch
+Patch21:        nss-fips-cavs-kas-ecc.patch
+Patch22:        nss-fips-gcm-ctr.patch
+Patch23:        nss-fips-constructor-self-tests.patch
+Patch24:        nss-fips-cavs-general.patch
+Patch25:        nss-fips-cavs-dsa-fixes.patch
+Patch26:        nss-fips-cavs-rsa-fixes.patch
+Patch27:        nss-fips-approved-crypto-non-ec.patch
+Patch29:        nss-fips-zeroization.patch
+Patch30:        nss-fips-tls-allow-md5-prf.patch
+Patch31:        nss-fips-use-strong-random-pool.patch
+Patch32:        nss-fips-detect-fips-mode-fixes.patch
+Patch34:        nss-fips-combined-hash-sign-dsa-ecdsa.patch
+Patch35:        nss-fix-dh-pkcs-derive-inverted-logic.patch
+Patch36:        nss-fips-aes-keywrap-post.patch
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
+# aarch64 + gcc4.8 fails to build on SLE-12 due to undefined references
+BuildRequires:  gcc9-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(nspr) >= %{NSPR_min_version}
 BuildRequires:  pkgconfig(sqlite3)
@@ -179,6 +205,30 @@ cd nss
 %endif
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
+
+# FIPS patches
+%patch11 -p1
+%patch13 -p1
+%patch15 -p1
+%patch16 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
+%patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
+%patch26 -p1
+%patch27 -p1
+%patch29 -p1
+%patch30 -p1
+%patch31 -p1
+%patch32 -p1
+%patch34 -p1
+%patch35 -p1
+%patch36 -p1
+
 # additional CA certificates
 #cd security/nss/lib/ckfw/builtins
 #cat %{SOURCE2} >> certdata.txt
@@ -190,6 +240,12 @@ cd nss
 %global _lto_cflags %{nil}
 %else
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%endif
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
+export CC=gcc-9
+# Yes, they use both...
+export CXX=g++-9
+export CCC=g++-9
 %endif
 cd nss
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE99}")"
@@ -211,7 +267,7 @@ export USE_64=1
 export NSS_USE_SYSTEM_SQLITE=1
 #export SQLITE_LIB_NAME=nsssqlite3
 MAKE_FLAGS="BUILD_OPT=1"
-make --jobs=1 nss_build_all $MAKE_FLAGS
+make %{?_smp_mflags} nss_build_all $MAKE_FLAGS
 # run testsuite
 %if 0%{?run_testsuite}
 export BUILD_OPT=1

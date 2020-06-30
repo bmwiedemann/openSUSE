@@ -1,0 +1,1450 @@
+commit d4f90dd0c5e15cfd9db416207d067cc3968b3a0c
+Author: Hans Petter Jansson <hpj@cl.no>
+Date:   Sun Mar 15 21:54:30 2020 +0100
+
+    Patch 23: nss-fips-constructor-self-tests.patch
+
+diff -r 3a9a84eee4a2 cmd/chktest/chktest.c
+--- a/cmd/chktest/chktest.c	Wed Nov 20 08:25:39 2019 +0100
++++ b/cmd/chktest/chktest.c	Fri May 29 09:13:35 2020 +0200
+@@ -38,7 +38,7 @@
+     }
+     RNG_SystemInfoForRNG();
+ 
+-    good_result = BLAPI_SHVerifyFile(argv[1]);
++    good_result = BLAPI_SHVerifyFile(argv[1], NULL);
+     printf("%s\n",
+            (good_result ? "SUCCESS" : "FAILURE"));
+     return (good_result) ? SECSuccess : SECFailure;
+diff -r 3a9a84eee4a2 cmd/shlibsign/shlibsign.c
+--- a/cmd/shlibsign/shlibsign.c	Wed Nov 20 08:25:39 2019 +0100
++++ b/cmd/shlibsign/shlibsign.c	Fri May 29 09:13:35 2020 +0200
+@@ -946,10 +946,12 @@
+             goto cleanup;
+         }
+ 
+-        if ((keySize == 0) && mechInfo.ulMaxKeySize >= 2048) {
+-            keySize = 2048;
+-        } else {
+-            keySize = 1024;
++        if (keySize == 0) {
++                if (mechInfo.ulMaxKeySize >= 2048) {
++                        keySize = 2048;
++                } else {
++                        keySize = 1024;
++                }
+         }
+     }
+ 
+diff -r 3a9a84eee4a2 lib/freebl/blapi.h
+--- a/lib/freebl/blapi.h	Wed Nov 20 08:25:39 2019 +0100
++++ b/lib/freebl/blapi.h	Fri May 29 09:13:35 2020 +0200
+@@ -1736,17 +1736,17 @@
+ /**************************************************************************
+  *  Verify a given Shared library signature                               *
+  **************************************************************************/
+-PRBool BLAPI_SHVerify(const char *name, PRFuncPtr addr);
++PRBool BLAPI_SHVerify(const char *name, PRFuncPtr addr, int *err);
+ 
+ /**************************************************************************
+  *  Verify a given filename's signature                               *
+  **************************************************************************/
+-PRBool BLAPI_SHVerifyFile(const char *shName);
++PRBool BLAPI_SHVerifyFile(const char *shName, int *err);
+ 
+ /**************************************************************************
+  *  Verify Are Own Shared library signature                               *
+  **************************************************************************/
+-PRBool BLAPI_VerifySelf(const char *name);
++PRBool BLAPI_VerifySelf(const char *name, int *err);
+ 
+ /*********************************************************************/
+ extern const SECHashObject *HASH_GetRawHashObject(HASH_HashType hashType);
+diff -r 3a9a84eee4a2 lib/freebl/fips-selftest.inc
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/lib/freebl/fips-selftest.inc	Fri May 29 09:13:35 2020 +0200
+@@ -0,0 +1,293 @@
++/*
++ * PKCS #11 FIPS Power-Up Self Test - common stuff.
++ *
++ * This Source Code Form is subject to the terms of the Mozilla Public
++ * License, v. 2.0. If a copy of the MPL was not distributed with this
++ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
++
++#ifndef FIPS_INC
++#define FIPS_INC
++
++/* common functions used for FIPS selftests. Due to the modular design of NSS
++ * putting these into libfreebl would mean either amending the API represented
++ * by FREEBLVectorStr - which might cause problems with newer applications, or
++ * extending the API with another similar function set. Thus, to make things
++ * less complicated in the binaries, we mess up the source a bit. */
++
++#include <errno.h>
++#include <fcntl.h>
++#include <stdarg.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <sys/stat.h>
++#include <unistd.h>
++#include <limits.h>
++
++#include <prtypes.h>
++#include <prerror.h>
++
++#include <prlink.h>
++
++#include "blapi.h"
++
++#define NSS_FORCE_FIPS_ENV  "NSS_FIPS"
++#define FIPS_PROC_PATH      "/proc/sys/crypto/fips_enabled"
++ 
++#define CHECKSUM_SUFFIX     ".chk"
++
++typedef enum fips_check_status {
++    CHECK_UNCHECKED = -1,
++    CHECK_OK = 0,
++    CHECK_FAIL,
++    CHECK_FAIL_CRYPTO,
++    CHECK_MISSING
++} fips_check_status;
++
++/* initial value of FIPS state is -1 */
++static int fips_state = -1;
++
++static int fips_wanted = -1;
++
++/* debug messages are sent to stderr */
++static void
++debug(const char *fmt,...)
++{
++#if 0
++    va_list args;
++
++    va_start(args, fmt);
++    vfprintf(stderr, fmt, args);
++    va_end(args);
++    fputc('\n', stderr);
++#endif
++    return;
++}
++
++/* Fatal messages ending with abort(); this function never returns */
++static void __attribute__ ((__noreturn__))
++fatal(const char *fmt,...)
++{
++    va_list args;
++
++    va_start(args, fmt);
++    vfprintf(stderr, fmt, args);
++    va_end(args);
++    fputc('\n', stderr);
++    abort();
++}
++
++/* check whether FIPS moode is mandated by the kernel */
++static int
++fips_isWantedProc(void)
++{
++    int my_fips_wanted = 0;
++    int fips_fd;
++    char fips_sys = 0;
++
++    struct stat dummy;
++    if (-1 == stat(FIPS_PROC_PATH, &dummy)) {
++	switch (errno) {
++	    case ENOENT:
++	    case EACCES:  /* Mozilla sandboxing returns EACCES instead of ENOENT */
++	    case ENOTDIR:
++		break;
++	    default:
++		fatal("Check for system-wide FIPS mode is required and %s cannot"
++		    " be accessed for reason other than non-existence - aborting"
++		    , FIPS_PROC_PATH);
++		break;
++	}
++    } else {
++	if (-1 == (fips_fd = open(FIPS_PROC_PATH, O_RDONLY))) {
++	    fatal("Check for system-wide FIPS mode is required and %s cannot"
++		" be opened for reading - aborting"
++		, FIPS_PROC_PATH);
++	}
++	if (1 > read(fips_fd, &fips_sys, 1)) {
++	    fatal("Check for system-wide FIPS mode is required and %s doesn't"
++		" return at least one character - aborting"
++		, FIPS_PROC_PATH);
++	}
++	close(fips_fd);
++	switch (fips_sys) {
++	    case '0':
++	    case '1':
++		my_fips_wanted = fips_sys - '0';
++		break;
++	    default:
++		fatal("Bogus character %c found in %s - aborting"
++		    , fips_sys, FIPS_PROC_PATH);
++	}
++    }
++    return my_fips_wanted;
++}
++
++/* "legacy" from lib/sysinit/nsssysinit.c */
++static PRBool
++getFIPSEnv(void)
++{
++    char *fipsEnv = getenv("NSS_FIPS");
++    if (!fipsEnv) {
++	return PR_FALSE;
++    }
++    if ((strcasecmp(fipsEnv,"fips") == 0) ||
++	(strcasecmp(fipsEnv,"true") == 0) ||
++	(strcasecmp(fipsEnv,"on") == 0) ||
++	(strcasecmp(fipsEnv,"1") == 0)) {
++	 return PR_TRUE;
++    }
++    return PR_FALSE;
++}
++
++static int
++fips_isWantedEnv(void)
++{
++    return getFIPSEnv() ? 1 : 0;
++}
++
++static int
++fips_isWanted(void)
++{
++    int fips_requests = 0;
++#ifdef LINUX
++    fips_requests += fips_isWantedProc();
++#endif
++    fips_requests += fips_isWantedEnv();
++    return fips_requests;
++}
++
++/* check integrity signatures (if present) */
++static fips_check_status
++fips_checkSignature(char *libName, PRFuncPtr addr)
++{
++    PRBool rv;
++    fips_check_status rv_check = CHECK_UNCHECKED;
++    int l = PATH_MAX;
++    int err = 0;
++    int err_NOENT = 0;
++    char full_lib_name[PATH_MAX+1];
++    full_lib_name[0] = '\0';
++
++    if (NULL == libName) {
++	err_NOENT = PR_FILE_NOT_FOUND_ERROR;
++	rv = BLAPI_VerifySelf(SHLIB_PREFIX"freebl"SHLIB_VERSION"."SHLIB_SUFFIX, &err);
++    } else {
++	err_NOENT = PR_FILE_NOT_FOUND_ERROR;
++	strncat(full_lib_name, SHLIB_PREFIX, l);
++	l -= strlen(SHLIB_PREFIX);
++	strncat(full_lib_name, libName, l);
++	l -= strlen(libName);
++	strncat(full_lib_name, SHLIB_VERSION"."SHLIB_SUFFIX, l);
++	l -= strlen(SHLIB_VERSION"."SHLIB_SUFFIX);
++#if 1
++	rv = BLAPI_SHVerify(full_lib_name, addr, &err);
++#else
++	rv = 1;
++#endif
++    }
++
++    if (rv) {
++	rv_check = CHECK_OK;
++    } else {
++	if (err_NOENT == err) {
++	    rv_check = CHECK_MISSING;
++	} else {
++	    rv_check = CHECK_FAIL;
++	}
++    }
++
++    return rv_check;
++}
++
++/* decide what to do depending on the results of tests and system/required FIPS
++ * mode */
++static int
++fips_resolve(fips_check_status check, char *libName)
++{
++    int state;
++
++    if (fips_wanted) {
++	switch (check) {
++	    case CHECK_OK:
++		debug("fips - %s: mandatory checksum ok"
++		    , (libName) ? libName : "freebl");
++		break;
++	    case CHECK_FAIL:
++		fatal("fips - %s: mandatory checksum failed - aborting"
++		    , (libName) ? libName : "freebl");
++		break;
++	    case CHECK_FAIL_CRYPTO:
++		fatal("fips - %s: mandatory crypto test failed - aborting"
++		    , (libName) ? libName : "freebl");
++		break;
++	    case CHECK_MISSING:
++		fatal("fips - %s: mandatory checksum data missing - aborting"
++		    , (libName) ? libName : "freebl");
++		break;
++	    default:
++		fatal("Fatal error: internal error at %s:%u"
++		    , __FILE__, __LINE__);
++		break;
++	}
++	state = 1;
++    } else {
++	switch (check) {
++	    case CHECK_OK:
++		debug("fips - %s: checksum ok"
++		    , (libName) ? libName : "freebl");
++		break;
++	    case CHECK_FAIL:
++#if 0
++		fatal("fips - %s: checksum failed - aborting"
++		    , (libName) ? libName : "freebl");
++#else
++		debug("fips - %s: checksum failed - not in FIPS mode; continuing"
++		    , (libName) ? libName : "freebl");
++#endif
++		break;
++	    case CHECK_FAIL_CRYPTO:
++		fatal("fips - %s: crypto test failed - aborting"
++		    , (libName) ? libName : "freebl");
++		break;
++	    case CHECK_MISSING:
++		debug("fips - %s: mandatory checksum data missing, but not required in non FIPS mode; continuing non-FIPS"
++		    , (libName) ? libName : "freebl");
++		break;
++	    default:
++		fatal("Fatal error: internal error at %s:%u"
++		    , __FILE__, __LINE__);
++		break;
++	}
++	state = 0;
++    }
++    return state;
++}
++
++/* generic selftest
++ * libName and addr are the name of shared object to check and a function
++ * contained therein; (NULL, NULL) performs selfcheck of freebl.
++ * crypto_check is callback that performs cryptographic algorithms checks; NULL
++ * for libraries that do not implement any cryptographic algorithms per se
++ */
++static int
++fips_initTest(char *libName, PRFuncPtr addr, fips_check_status cryptoCheck(void))
++{
++    fips_check_status check = CHECK_OK;
++
++    fips_wanted = fips_isWanted();
++
++    if (cryptoCheck) {
++	check = cryptoCheck();
++        debug("fips - %s: crypto check %s"
++	    , (libName) ? libName : "freebl"
++	    , (CHECK_OK == check) ? "ok" : "failed");
++    }
++
++    if (CHECK_OK == check) {
++	check = fips_checkSignature(libName, addr);
++    }
++
++    return fips_resolve(check, libName);
++}
++
++#endif
+diff -r 3a9a84eee4a2 lib/freebl/fips.c
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/lib/freebl/fips.c	Fri May 29 09:13:35 2020 +0200
+@@ -0,0 +1,7 @@
++/*
++ * PKCS #11 FIPS Power-Up Self Test.
++ *
++ * This Source Code Form is subject to the terms of the Mozilla Public
++ * License, v. 2.0. If a copy of the MPL was not distributed with this
++ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
++
+diff -r 3a9a84eee4a2 lib/freebl/fips.h
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/lib/freebl/fips.h	Fri May 29 09:13:35 2020 +0200
+@@ -0,0 +1,15 @@
++/*
++ * PKCS #11 FIPS Power-Up Self Test.
++ *
++ * This Source Code Form is subject to the terms of the Mozilla Public
++ * License, v. 2.0. If a copy of the MPL was not distributed with this
++ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
++
++#ifndef FIPS_H
++#define FIPS_H
++
++int	FIPS_mode(void);
++char*	FIPS_rngDev(void);
++
++#endif
++
+diff -r 3a9a84eee4a2 lib/freebl/fipsfreebl.c
+--- a/lib/freebl/fipsfreebl.c	Wed Nov 20 08:25:39 2019 +0100
++++ b/lib/freebl/fipsfreebl.c	Fri May 29 09:13:35 2020 +0200
+@@ -20,6 +20,13 @@
+ 
+ #include "ec.h" /* Required for EC */
+ 
++#include "fips-selftest.inc"
++
++#include "fips.h"
++
++#define RNG_DEV_FIPS0   "/dev/urandom"
++#define RNG_DEV_FIPS1   "/dev/random"
++
+ /*
+  * different platforms have different ways of calling and initial entry point
+  * when the dll/.so is loaded. Most platforms support either a posix pragma
+@@ -1774,9 +1781,8 @@
+         0x0a, 0x26, 0x21, 0xd0, 0x19, 0xcb, 0x86, 0x73,
+         0x10, 0x1f, 0x60, 0xd7
+     };
+-
+     SECStatus rng_status = SECSuccess;
+-    PRUint8 DSAX[FIPS_DSA_SUBPRIME_LENGTH];
++    PRUint8 DSAX[DSA1_SUBPRIME_LEN];
+ 
+     /*******************************************/
+     /*   Run the SP 800-90 Health tests        */
+@@ -1790,13 +1796,12 @@
+     /*******************************************/
+     /* Generate DSAX fow given Q.              */
+     /*******************************************/
+-
+     rng_status = FIPS186Change_ReduceModQForDSA(GENX, Q, DSAX);
+ 
+     /* Verify DSAX to perform the RNG integrity check */
+     if ((rng_status != SECSuccess) ||
+         (PORT_Memcmp(DSAX, rng_known_DSAX,
+-                     (FIPS_DSA_SUBPRIME_LENGTH)) != 0)) {
++                     (DSA1_SUBPRIME_LEN)) != 0)) {
+         PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
+         return SECFailure;
+     }
+@@ -1804,17 +1809,19 @@
+     return (SECSuccess);
+ }
+ 
++#if 0
+ static SECStatus
+ freebl_fipsSoftwareIntegrityTest(const char *libname)
+ {
+     SECStatus rv = SECSuccess;
+ 
+     /* make sure that our check file signatures are OK */
+-    if (!BLAPI_VerifySelf(libname)) {
++    if (!BLAPI_VerifySelf(libname, NULL)) {
+         rv = SECFailure;
+     }
+     return rv;
+ }
++#endif
+ 
+ #define DO_FREEBL 1
+ #define DO_REST 2
+@@ -1926,11 +1933,13 @@
+ static PRBool self_tests_freebl_success = PR_FALSE;
+ static PRBool self_tests_success = PR_FALSE;
+ 
++static PRBool freebl_only = PR_FALSE;
++
+ /*
+  * accessors for freebl
+  */
+ PRBool
+-BL_POSTRan(PRBool freebl_only)
++BL_POSTRan(PRBool my_freebl_only)
+ {
+     SECStatus rv;
+     /* if the freebl self tests didn't run, there is something wrong with
+@@ -1943,7 +1952,7 @@
+         return PR_TRUE;
+     }
+     /* if we only care about the freebl tests, we are good */
+-    if (freebl_only) {
++    if (my_freebl_only) {
+         return PR_TRUE;
+     }
+     /* run the rest of the self tests */
+@@ -1962,31 +1971,15 @@
+     return PR_TRUE;
+ }
+ 
++#if 0
+ #include "blname.c"
+-
+-/*
+- * This function is called at dll load time, the code tha makes this
+- * happen is platform specific on defined above.
+- */
+-static void
+-bl_startup_tests(void)
+-{
+-    const char *libraryName;
+-    PRBool freebl_only = PR_FALSE;
+-    SECStatus rv;
++#endif
+ 
+-    PORT_Assert(self_tests_freebl_ran == PR_FALSE);
+-    PORT_Assert(self_tests_success == PR_FALSE);
+-    self_tests_freebl_ran = PR_TRUE;      /* we are running the tests */
+-    self_tests_success = PR_FALSE;        /* force it just in case */
+-    self_tests_freebl_success = PR_FALSE; /* force it just in case */
+-
+-#ifdef FREEBL_NO_DEPEND
+-    rv = FREEBL_InitStubs();
+-    if (rv != SECSuccess) {
+-        freebl_only = PR_TRUE;
+-    }
+-#endif
++/* crypto algorithms selftest wrapper */
++static fips_check_status
++fips_checkCryptoFreebl(void)
++{
++    SECStatus rv;
+ 
+     self_tests_freebl_ran = PR_TRUE; /* we are running the tests */
+ 
+@@ -1999,20 +1992,55 @@
+     /* always run the post tests */
+     rv = freebl_fipsPowerUpSelfTest(freebl_only ? DO_FREEBL : DO_FREEBL | DO_REST);
+     if (rv != SECSuccess) {
+-        return;
++        return CHECK_FAIL_CRYPTO;
+     }
+ 
++#if 0
++    /* fips_initTest() does this for us by calling fips_checkSignature() */
+     libraryName = getLibName();
+     rv = freebl_fipsSoftwareIntegrityTest(libraryName);
+     if (rv != SECSuccess) {
+-        return;
++        return CHECK_FAIL_CRYPTO;
+     }
++#endif
+ 
+     /* posts are happy, allow the fips module to function now */
+     self_tests_freebl_success = PR_TRUE; /* we always test the freebl stuff */
+     if (!freebl_only) {
+         self_tests_success = PR_TRUE;
+     }
++
++    return CHECK_OK;
++}
++
++/*
++ * This function is called at dll load time, the code tha makes this
++ * happen is platform specific on defined above.
++ */
++static void
++bl_startup_tests(void)
++{
++    SECStatus rv;
++
++    PORT_Assert(self_tests_freebl_ran == PR_FALSE);
++    PORT_Assert(self_tests_success == PR_FALSE);
++    PORT_Assert(fips_mode_available == PR_FALSE);
++    self_tests_freebl_ran = PR_TRUE;      /* we are running the tests */
++    self_tests_success = PR_FALSE;        /* force it just in case */
++    self_tests_freebl_success = PR_FALSE; /* force it just in case */
++
++    freebl_only = PR_FALSE;
++
++#ifdef FREEBL_NO_DEPEND
++    rv = FREEBL_InitStubs();
++    if (rv != SECSuccess) {
++        freebl_only = PR_TRUE;
++    }
++#endif
++
++    /* Detect FIPS mode and verify checksums */
++    fips_state = fips_initTest(NULL, NULL, fips_checkCryptoFreebl);
++    debug("FIPS mode: %i\n", FIPS_mode());
+ }
+ 
+ /*
+@@ -2021,28 +2049,91 @@
+  * power on selftest failed.
+  */
+ SECStatus
+-BL_FIPSEntryOK(PRBool freebl_only)
++BL_FIPSEntryOK(PRBool my_freebl_only)
+ {
+-#ifdef NSS_NO_INIT_SUPPORT
+-    /* this should only be set on platforms that can't handle one of the INIT
+-    * schemes.  This code allows those platforms to continue to function,
+-    * though they don't meet the strict NIST requirements. If NSS_NO_INIT_SUPPORT
+-    * is not set, and init support has not been properly enabled, freebl
+-    * will always fail because of the test below
+-    */
++    /* For platforms that don't support on-load constructors */
+     if (!self_tests_freebl_ran) {
+         bl_startup_tests();
+     }
+-#endif
++
+     /* if the general self tests succeeded, we're done */
+     if (self_tests_success) {
+         return SECSuccess;
+     }
+     /* standalone freebl can initialize */
+-    if (freebl_only && self_tests_freebl_success) {
++    if (my_freebl_only && self_tests_freebl_success) {
+         return SECSuccess;
+     }
+     PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
+     return SECFailure;
+ }
++
++/* returns the FIPS mode we are running in or the one that we aspire to if the
++ * tests have not completed yet - which might happen during the crypto selftest
++ */
++int
++FIPS_mode(void)
++{
++    int fips;
++
++    if (fips_wanted < 0)
++        fips_wanted = fips_isWanted ();
++
++    /* until FIPS mode is cleared up, assume we are running in whatever is
++     * wanted by the environment */
++    fips = (-1 != fips_state) ? fips_state : fips_wanted;
++    switch (fips) {
++	case 0:
++	case 1:
++	    return fips;
++	default:
++	    fatal("Fatal error: internal error at %s:%u"
++		, __FILE__, __LINE__);
++    }
++}
++
++/* returns string specifying what system RNG file to use for seeding */
++char *
++FIPS_rngDev(void)
++{
++    switch (FIPS_mode()) {
++	case 0:
++            return RNG_DEV_FIPS0;
++	case 1:
++            return RNG_DEV_FIPS1;
++	default:
++	    fatal("Fatal error: internal error at %s:%u"
++		, __FILE__, __LINE__);
++    }
++}
++
++/* either returns the input or aborts if in FIPS and the algorithm is not
++ * approved */
++PRBool
++FIPS_hashAlgApproved(HASH_HashType hashAlg)
++{
++    PRBool rv = PR_FALSE;
++
++    switch (hashAlg) {
++	case HASH_AlgNULL:
++	case HASH_AlgSHA1:
++	case HASH_AlgSHA256:
++	case HASH_AlgSHA384:
++	case HASH_AlgSHA512:
++	case HASH_AlgSHA224:
++	    rv = PR_TRUE;
++	    break;
++	default:
++	    /*
++	    fatal("Fatal error: non-approved hash algorithm (id %i)"
++		"requested while running in FIPS mode"
++		, hashAlg);
++	    */
++	    if (!FIPS_mode())
++		rv = PR_TRUE;
++	    break;
++    }
++    return rv;
++}
++
+ #endif
+diff -r 3a9a84eee4a2 lib/freebl/loader.c
+--- a/lib/freebl/loader.c	Wed Nov 20 08:25:39 2019 +0100
++++ b/lib/freebl/loader.c	Fri May 29 09:13:35 2020 +0200
+@@ -1189,11 +1189,11 @@
+ }
+ 
+ PRBool
+-BLAPI_SHVerify(const char *name, PRFuncPtr addr)
++BLAPI_SHVerify(const char *name, PRFuncPtr addr, int *err)
+ {
+     if (!vector && PR_SUCCESS != freebl_RunLoaderOnce())
+         return PR_FALSE;
+-    return vector->p_BLAPI_SHVerify(name, addr);
++    return vector->p_BLAPI_SHVerify(name, addr, err);
+ }
+ 
+ /*
+@@ -1203,12 +1203,12 @@
+  * in freebl_LoadDSO) to p_BLAPI_VerifySelf.
+  */
+ PRBool
+-BLAPI_VerifySelf(const char *name)
++BLAPI_VerifySelf(const char *name, int *err)
+ {
+     PORT_Assert(!name);
+     if (!vector && PR_SUCCESS != freebl_RunLoaderOnce())
+         return PR_FALSE;
+-    return vector->p_BLAPI_VerifySelf(libraryName);
++    return vector->p_BLAPI_VerifySelf(libraryName, err);
+ }
+ 
+ /* ============== New for 3.006 =============================== */
+@@ -1804,11 +1804,11 @@
+ }
+ 
+ PRBool
+-BLAPI_SHVerifyFile(const char *name)
++BLAPI_SHVerifyFile(const char *name, int *err)
+ {
+     if (!vector && PR_SUCCESS != freebl_RunLoaderOnce())
+         return PR_FALSE;
+-    return vector->p_BLAPI_SHVerifyFile(name);
++    return vector->p_BLAPI_SHVerifyFile(name, err);
+ }
+ 
+ /* === new for DSA-2 === */
+diff -r 3a9a84eee4a2 lib/freebl/loader.h
+--- a/lib/freebl/loader.h	Wed Nov 20 08:25:39 2019 +0100
++++ b/lib/freebl/loader.h	Fri May 29 09:13:35 2020 +0200
+@@ -299,8 +299,8 @@
+ 
+     /* Version 3.004 came to here */
+ 
+-    PRBool (*p_BLAPI_SHVerify)(const char *name, PRFuncPtr addr);
+-    PRBool (*p_BLAPI_VerifySelf)(const char *name);
++    PRBool (*p_BLAPI_SHVerify)(const char *name, PRFuncPtr addr, int *err);
++    PRBool (*p_BLAPI_VerifySelf)(const char *name, int *err);
+ 
+     /* Version 3.005 came to here */
+ 
+@@ -556,7 +556,7 @@
+     SECStatus (*p_SHA224_Flatten)(SHA224Context *cx, unsigned char *space);
+     SHA224Context *(*p_SHA224_Resurrect)(unsigned char *space, void *arg);
+     void (*p_SHA224_Clone)(SHA224Context *dest, SHA224Context *src);
+-    PRBool (*p_BLAPI_SHVerifyFile)(const char *name);
++    PRBool (*p_BLAPI_SHVerifyFile)(const char *name, int *err);
+ 
+     /* Version 3.013 came to here */
+ 
+diff -r 3a9a84eee4a2 lib/freebl/manifest.mn
+--- a/lib/freebl/manifest.mn	Wed Nov 20 08:25:39 2019 +0100
++++ b/lib/freebl/manifest.mn	Fri May 29 09:13:35 2020 +0200
+@@ -97,6 +97,7 @@
+ 	ecl.h \
+ 	ecl-curve.h \
+ 	eclt.h \
++        fips.h \
+ 	$(NULL)
+ 
+ MPI_HDRS = mpi-config.h mpi.h mpi-priv.h mplogic.h mpprime.h logtab.h mp_gf2m.h
+@@ -179,6 +180,7 @@
+ 	shsign.h \
+ 	vis_proto.h \
+ 	seed.h \
++	fips.h \
+ 	$(NULL)
+ 
+ 
+diff -r 3a9a84eee4a2 lib/freebl/shvfy.c
+--- a/lib/freebl/shvfy.c	Wed Nov 20 08:25:39 2019 +0100
++++ b/lib/freebl/shvfy.c	Fri May 29 09:13:35 2020 +0200
+@@ -21,6 +21,8 @@
+ 
+ #ifndef NSS_FIPS_DISABLED
+ 
++#undef DEBUG_SHVERIFY
++
+ /*
+  * Most modern version of Linux support a speed optimization scheme where an
+  * application called prelink modifies programs and shared libraries to quickly
+@@ -230,8 +232,6 @@
+ }
+ #endif
+ 
+-/* #define DEBUG_SHVERIFY 1 */
+-
+ static char *
+ mkCheckFileName(const char *libName)
+ {
+@@ -286,19 +286,19 @@
+     return SECSuccess;
+ }
+ 
+-static PRBool blapi_SHVerifyFile(const char *shName, PRBool self);
++static PRBool blapi_SHVerifyFile(const char *shName, PRBool self, int *err);
+ 
+ static PRBool
+-blapi_SHVerify(const char *name, PRFuncPtr addr, PRBool self)
++blapi_SHVerify(const char *name, PRFuncPtr addr, PRBool self, int *err)
+ {
+     PRBool result = PR_FALSE; /* if anything goes wrong,
+-                   * the signature does not verify */
++                               * the signature does not verify */
+     /* find our shared library name */
+     char *shName = PR_GetLibraryFilePathname(name, addr);
+     if (!shName) {
+         goto loser;
+     }
+-    result = blapi_SHVerifyFile(shName, self);
++    result = blapi_SHVerifyFile(shName, self, err);
+ 
+ loser:
+     if (shName != NULL) {
+@@ -309,19 +309,19 @@
+ }
+ 
+ PRBool
+-BLAPI_SHVerify(const char *name, PRFuncPtr addr)
++BLAPI_SHVerify(const char *name, PRFuncPtr addr, int *err)
+ {
+-    return blapi_SHVerify(name, addr, PR_FALSE);
++    return blapi_SHVerify(name, addr, PR_FALSE, err);
+ }
+ 
+ PRBool
+-BLAPI_SHVerifyFile(const char *shName)
++BLAPI_SHVerifyFile(const char *shName, int *err)
+ {
+-    return blapi_SHVerifyFile(shName, PR_FALSE);
++    return blapi_SHVerifyFile(shName, PR_FALSE, err);
+ }
+ 
+ static PRBool
+-blapi_SHVerifyFile(const char *shName, PRBool self)
++blapi_SHVerifyFile(const char *shName, PRBool self, int *err)
+ {
+     char *checkName = NULL;
+     PRFileDesc *checkFD = NULL;
+@@ -339,7 +339,7 @@
+ #endif
+ 
+     PRBool result = PR_FALSE; /* if anything goes wrong,
+-                   * the signature does not verify */
++                               * the signature does not verify */
+     unsigned char buf[4096];
+     unsigned char hashBuf[HASH_LENGTH_MAX];
+ 
+@@ -366,14 +366,17 @@
+     /* open the check File */
+     checkFD = PR_Open(checkName, PR_RDONLY, 0);
+     if (checkFD == NULL) {
++        if (err) {
++            *err = PORT_GetError();
++        }
+ #ifdef DEBUG_SHVERIFY
+-        fprintf(stderr, "Failed to open the check file %s: (%d, %d)\n",
+-                checkName, (int)PR_GetError(), (int)PR_GetOSError());
++        fprintf(stderr, "Failed to open the check file %s: (%d)\n",
++                checkName, (int)PORT_GetError());
+ #endif /* DEBUG_SHVERIFY */
+         goto loser;
+     }
+ 
+-    /* read and Verify the headerthe header */
++    /* read and Verify the header */
+     bytesRead = PR_Read(checkFD, buf, 12);
+     if (bytesRead != 12) {
+         goto loser;
+@@ -414,7 +417,8 @@
+     if (rv != SECSuccess) {
+         goto loser;
+     }
+-    /* read the siganture */
++
++    /* read the signature */
+     rv = readItem(checkFD, &signature);
+     if (rv != SECSuccess) {
+         goto loser;
+@@ -429,7 +433,7 @@
+         goto loser;
+     }
+ 
+-/* open our library file */
++    /* open our library file */
+ #ifdef FREEBL_USE_PRELINK
+     shFD = bl_OpenUnPrelink(shName, &pid);
+ #else
+@@ -437,13 +441,13 @@
+ #endif
+     if (shFD == NULL) {
+ #ifdef DEBUG_SHVERIFY
+-        fprintf(stderr, "Failed to open the library file %s: (%d, %d)\n",
+-                shName, (int)PR_GetError(), (int)PR_GetOSError());
++        fprintf(stderr, "Failed to open the library file %s: (%d)\n",
++                shName, (int)PORT_GetError());
+ #endif /* DEBUG_SHVERIFY */
+         goto loser;
+     }
+ 
+-    /* hash our library file with SHA1 */
++    /* hash our library file */
+     hashcx = hashObj->create();
+     if (hashcx == NULL) {
+         goto loser;
+@@ -528,7 +532,7 @@
+ }
+ 
+ PRBool
+-BLAPI_VerifySelf(const char *name)
++BLAPI_VerifySelf(const char *name, int *err)
+ {
+     if (name == NULL) {
+         /*
+@@ -537,7 +541,7 @@
+          */
+         return PR_TRUE;
+     }
+-    return blapi_SHVerify(name, (PRFuncPtr)decodeInt, PR_TRUE);
++    return blapi_SHVerify(name, (PRFuncPtr)decodeInt, PR_TRUE, err);
+ }
+ 
+ #else /* NSS_FIPS_DISABLED */
+diff -r 3a9a84eee4a2 lib/softoken/fips.c
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/lib/softoken/fips.c	Fri May 29 09:13:35 2020 +0200
+@@ -0,0 +1,33 @@
++#include "../freebl/fips-selftest.inc"
++
++#include "fips.h"
++
++#include "softoken.h"
++
++#include <dlfcn.h>
++
++/* crypto algorithms selftest wrapper */
++static fips_check_status
++fips_checkCryptoSoftoken(void)
++{
++    if (CKR_OK == sftk_FIPSEntryOK()) {
++	return CHECK_OK;
++    } else {
++	return CHECK_FAIL_CRYPTO;
++    }
++
++    return CHECK_OK;
++}
++
++/* constructor - load-time selfchecks */
++static void __attribute__ ((constructor))
++fips_initTestSoftoken(void)
++{
++    fips_state = fips_initTest("softokn", (PRFuncPtr)fips_initTestSoftoken, fips_checkCryptoSoftoken);
++
++    /* The legacy DB must be checked unconditionally. The check is performed by
++     * its constructor. */
++    dlopen (SHLIB_PREFIX "nssdbm" SHLIB_VERSION "." SHLIB_SUFFIX, RTLD_LAZY);
++
++    return;
++}
+diff -r 3a9a84eee4a2 lib/softoken/fips.h
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/lib/softoken/fips.h	Fri May 29 09:13:35 2020 +0200
+@@ -0,0 +1,10 @@
++#ifndef FIPS_H
++#define FIPS_H
++
++#include "softoken.h"
++
++CK_RV FIPS_cryptoSelftestSoftoken(void);
++CK_RV sftk_fipsPowerUpSelfTest(void);
++
++#endif
++
+diff -r 3a9a84eee4a2 lib/softoken/fipstest.c
+--- a/lib/softoken/fipstest.c	Wed Nov 20 08:25:39 2019 +0100
++++ b/lib/softoken/fipstest.c	Fri May 29 09:13:35 2020 +0200
+@@ -581,6 +581,327 @@
+     return (SECFailure);
+ }
+ 
++#define FIPS_DSA_TYPE siBuffer
++#define FIPS_DSA_DIGEST_LENGTH 28    /*  224-bits */
++#define FIPS_DSA_SUBPRIME_LENGTH 28  /*  224-bits */
++#define FIPS_DSA_SIGNATURE_LENGTH 56 /*  448-bits */
++#define FIPS_DSA_PRIME_LENGTH 256    /* 2048-bits */
++#define FIPS_DSA_BASE_LENGTH 256     /* 2048-bits */
++
++/* Similar to freebl_fips_DSA_PowerUpSelfTest, but using DSA_HashSign() */
++static SECStatus
++sftk_fips_DSA_PowerUpSelfTest(void)
++{
++    /* DSA Known P (2048-bits), Q (224-bits), and G (2048-bits) Values. */
++    static const PRUint8 dsa_P[] = {
++        0xfe, 0x9f, 0xba, 0xff, 0x39, 0xa6, 0x00, 0x77, 
++        0x93, 0xfe, 0xa4, 0x58, 0x17, 0xf8, 0x37, 0x54, 
++        0x76, 0x39, 0x18, 0xcb, 0xbe, 0xca, 0x62, 0x8b, 
++        0x85, 0xbc, 0x60, 0x23, 0xf4, 0x7a, 0xb5, 0x75,
++        0x31, 0xf4, 0x82, 0x83, 0x63, 0xc2, 0xdb, 0x8e,
++        0x50, 0x67, 0xd6, 0xd9, 0xae, 0xa0, 0xd6, 0x13,
++        0xc2, 0x35, 0x5b, 0x76, 0xf1, 0x00, 0x9c, 0x37,
++        0xcb, 0x46, 0x3f, 0x6e, 0xef, 0xca, 0xff, 0xcc,
++        0x1e, 0x15, 0xa1, 0x96, 0x70, 0x4c, 0xc9, 0x4d,
++        0x7e, 0xde, 0x00, 0x1e, 0x76, 0x68, 0x35, 0x1c,
++        0x31, 0x25, 0x37, 0x91, 0x98, 0x64, 0x40, 0x4c,
++        0xf1, 0xc3, 0x0e, 0xf7, 0xf3, 0x16, 0x17, 0x79,
++        0x7a, 0xa3, 0x11, 0x9a, 0xba, 0x72, 0x67, 0xe9,
++        0x70, 0xd0, 0x16, 0x6a, 0x1a, 0x53, 0x4e, 0x1b,
++        0xca, 0xb2, 0x79, 0xd8, 0x8c, 0x60, 0x53, 0xdb,
++        0x48, 0x1c, 0x00, 0x2e, 0xd3, 0x29, 0x35, 0x14,
++        0x6d, 0xd6, 0x23, 0x7c, 0x1c, 0xf3, 0x0d, 0x6a,
++        0x7e, 0xb7, 0x09, 0x7d, 0xf2, 0x06, 0x29, 0x1c,
++        0x1a, 0xdf, 0xd9, 0xe6, 0xb9, 0x2e, 0xd6, 0xb8,
++        0xbf, 0xc5, 0xcd, 0xe7, 0xf4, 0xf9, 0x91, 0x38,
++        0x2f, 0x61, 0xf9, 0xfe, 0xce, 0x16, 0x85, 0xc8,
++        0xb7, 0xdd, 0x54, 0xe0, 0xa1, 0x54, 0x4f, 0xb3,
++        0xdb, 0x72, 0xf3, 0xb9, 0xaa, 0xfe, 0x7b, 0xdd,
++        0x5e, 0x59, 0x44, 0x6c, 0x4a, 0xfe, 0x67, 0x9b,
++        0xcf, 0x78, 0x05, 0xd4, 0xc8, 0x98, 0xb3, 0x60,
++        0x46, 0x44, 0x4e, 0x0b, 0xec, 0x19, 0x6c, 0xda,
++        0xd6, 0x40, 0x3c, 0xd9, 0x96, 0xc8, 0x4a, 0x3b,
++        0xc9, 0xb5, 0x52, 0x89, 0x2e, 0x68, 0xb9, 0xa0,
++        0xd3, 0xbc, 0xa8, 0xd7, 0x6a, 0x7d, 0xe1, 0xf4,
++        0x8c, 0x68, 0x3e, 0xc1, 0x5a, 0xac, 0x46, 0x6d,
++        0xad, 0xe3, 0x89, 0x7f, 0x92, 0xa6, 0x29, 0xb2,
++        0xc3, 0x3b, 0x20, 0x5f, 0x71, 0x00, 0x27, 0x87
++    };
++
++    static const PRUint8 dsa_Q[] = {
++        0xbc, 0xc9, 0xda, 0xca, 0xf9, 0x6b, 0xfa, 0x7e,
++        0xbd, 0x9b, 0xfb, 0x48, 0x35, 0x1e, 0xe5, 0x8c,
++        0x64, 0x46, 0xc7, 0x04, 0xb2, 0x44, 0x70, 0x9b,
++        0x0a, 0x3f, 0x03, 0x01
++    };
++
++    static const PRUint8 dsa_G[] = {
++        0x5d, 0x23, 0xd1, 0xc5, 0x2e, 0x7e, 0x22, 0x3b,
++        0x98, 0x03, 0xc3, 0xc0, 0x9d, 0xbe, 0x8f, 0x68,
++        0x6b, 0xd0, 0xbf, 0x72, 0x20, 0x89, 0x5c, 0x8f,
++        0x4c, 0x8e, 0x66, 0xfe, 0x8e, 0xfc, 0x02, 0x21,
++        0xf3, 0xea, 0xc5, 0x23, 0x96, 0x9b, 0xa4, 0x2e,
++        0xac, 0x35, 0x9f, 0x70, 0x90, 0x79, 0xd9, 0x42,
++        0xfa, 0x0e, 0x4c, 0x1f, 0x55, 0xcf, 0x8b, 0xb5,
++        0x98, 0x71, 0xfa, 0xf1, 0xbc, 0xfd, 0xc7, 0x2b,
++        0x5a, 0xa6, 0x53, 0x86, 0xf1, 0xa3, 0xd5, 0xbc,
++        0xad, 0x08, 0x80, 0x23, 0x40, 0xea, 0xc9, 0x2f,
++        0x58, 0xfb, 0xa9, 0xda, 0x8d, 0xc5, 0xfa, 0x46,
++        0x0a, 0x0a, 0xe8, 0x03, 0xef, 0x04, 0x53, 0x09,
++        0xc4, 0x7f, 0x69, 0x59, 0x68, 0xb5, 0x52, 0x91,
++        0x3d, 0xe1, 0xbc, 0xa0, 0x6b, 0x41, 0xec, 0x07,
++        0x0b, 0xf5, 0xf5, 0x62, 0xf5, 0xeb, 0xb7, 0x7e,
++        0xc5, 0x32, 0x3d, 0x1e, 0x03, 0xda, 0x75, 0x24,
++        0xb6, 0xe5, 0xb9, 0xfd, 0x36, 0x3d, 0xa4, 0xbf,
++        0xc4, 0xee, 0x3b, 0xb5, 0x14, 0x85, 0x5c, 0x2d,
++        0x80, 0xb2, 0x55, 0xb6, 0x70, 0x21, 0xf2, 0x94,
++        0x63, 0xa5, 0xc2, 0x6f, 0xee, 0x34, 0x81, 0xae,
++        0xc6, 0x0f, 0xf3, 0xef, 0xb4, 0xde, 0xa5, 0x58,
++        0x6f, 0x57, 0xc1, 0x51, 0x0a, 0xe4, 0x4e, 0xf0,
++        0xed, 0xee, 0x42, 0xdc, 0xff, 0x4b, 0x14, 0xa3,
++        0xcc, 0x6e, 0xa8, 0x0c, 0x29, 0x81, 0xdb, 0xce,
++        0x78, 0x4d, 0x43, 0xe0, 0xe1, 0x60, 0xc8, 0x3e,
++        0x54, 0x00, 0x29, 0x20, 0x25, 0x40, 0x22, 0xac,
++        0xfa, 0x75, 0xb1, 0x4e, 0xcc, 0x61, 0x54, 0x27,
++        0x2c, 0x95, 0xaf, 0x4c, 0x02, 0xa7, 0x55, 0xbd,
++        0xed, 0xe2, 0x25, 0xfc, 0xba, 0xd2, 0x5b, 0xd7,
++        0x33, 0xa1, 0xe9, 0xb4, 0x7f, 0x7e, 0xfe, 0xbb,
++        0xfa, 0x54, 0xce, 0x3c, 0xbc, 0xd1, 0x03, 0x50,
++        0x9d, 0xa9, 0x38, 0x9a, 0xf8, 0x67, 0xb1, 0xa3
++    };
++    /* DSA Known Random Values (known random key block is 224-bits)  */
++    static const PRUint8 dsa_known_random_key_block[] = {
++        "Mozilla Rules World! Always."
++    };
++    /* DSA Known Digest (224-bits) */
++    static const PRUint8 dsa_known_digest[] = { "DSA Signature Digest, Longer" };
++
++    /* DSA variables. */
++    DSAPrivateKey *dsa_private_key;
++    SECStatus dsa_status;
++    SECItem dsa_signature_item;
++    SECItem dsa_digest_item;
++    DSAPublicKey dsa_public_key;
++    PRUint8 dsa_computed_signature[FIPS_DSA_SIGNATURE_LENGTH];
++    static const PQGParams dsa_pqg = {
++        NULL,
++        { FIPS_DSA_TYPE, (unsigned char *)dsa_P, FIPS_DSA_PRIME_LENGTH },
++        { FIPS_DSA_TYPE, (unsigned char *)dsa_Q, FIPS_DSA_SUBPRIME_LENGTH },
++        { FIPS_DSA_TYPE, (unsigned char *)dsa_G, FIPS_DSA_BASE_LENGTH }
++    };
++    NSSLOWKEYPrivateKey lowkey_priv;
++
++    /******************************************/
++    /* Generate a DSA public/private key pair */
++    /******************************************/
++
++    /* Generate a DSA public/private key pair. */
++    dsa_status = DSA_NewKeyFromSeed(&dsa_pqg, dsa_known_random_key_block,
++                                    &dsa_private_key);
++
++    if (dsa_status != SECSuccess) {
++        PORT_SetError(SEC_ERROR_NO_MEMORY);
++        return (SECFailure);
++    }
++
++    /* construct public key from private key. */
++    dsa_public_key.params = dsa_private_key->params;
++    dsa_public_key.publicValue = dsa_private_key->publicValue;
++
++    /*********************************/
++    /* DSA pairwise consistency test */
++    /*********************************/
++
++    dsa_signature_item.data = dsa_computed_signature;
++    dsa_signature_item.len = sizeof dsa_computed_signature;
++
++    dsa_digest_item.data = (unsigned char *)dsa_known_digest;
++    dsa_digest_item.len = SHA224_LENGTH;
++
++    /* Perform DSA signature process. */
++    lowkey_priv.u.dsa = *dsa_private_key;
++    dsa_status = DSA_HashSign (SEC_OID_SHA224, &lowkey_priv,
++                               dsa_signature_item.data, &dsa_signature_item.len,
++                               sizeof dsa_computed_signature,
++                               dsa_digest_item.data, SHA224_LENGTH);
++
++    /* Check that operation succeeded and that signature is different from hash */
++    if ((dsa_status != SECSuccess) ||
++        (dsa_signature_item.len != FIPS_DSA_SIGNATURE_LENGTH) ||
++        (PORT_Memcmp(dsa_computed_signature, dsa_known_digest,
++                     PR_MIN (FIPS_DSA_SIGNATURE_LENGTH, FIPS_DSA_DIGEST_LENGTH)) == 0)) {
++        dsa_status = SECFailure;
++    } else {
++        /* Perform DSA verification process. */
++        dsa_status = DSA_VerifyDigest(&dsa_public_key,
++                                      &dsa_signature_item,
++                                      &dsa_digest_item);
++    }
++
++    PORT_FreeArena(dsa_private_key->params.arena, PR_TRUE);
++    /* Don't free public key, it uses same arena as private key */
++
++    /* Verify DSA signature. */
++    if (dsa_status != SECSuccess) {
++        PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
++        return SECFailure;
++    }
++
++    return (SECSuccess);
++}
++
++#define FIPS_ECDSA_DIGEST_LENGTH 28    /*  224-bits */
++#define FIPS_ECDSA_SIGNATURE_LENGTH 64 /*  512-bits */
++
++/* Similar to freebl_fips_ECDSA_PowerUpSelfTest, but using ECDSA_HashSign() */
++static SECStatus
++sftk_fips_ECDSA_PowerUpSelfTest(void)
++{
++    /* EC Known curve nistp256 == ECCCurve_X9_62_PRIME_256V1 params */
++    static const unsigned char p256_prime[] = {
++        0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00,
++        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
++        0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
++    };
++    static const unsigned char p256_a[] = {
++        0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00,
++        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
++        0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFC
++    };
++    static const unsigned char p256_b[] = {
++        0x5A, 0xC6, 0x35, 0xD8, 0xAA, 0x3A, 0x93, 0xE7, 0xB3, 0xEB, 0xBD, 0x55, 0x76,
++        0x98, 0x86, 0xBC, 0x65, 0x1D, 0x06, 0xB0, 0xCC, 0x53, 0xB0, 0xF6, 0x3B, 0xCE,
++        0x3C, 0x3E, 0x27, 0xD2, 0x60, 0x4B
++    };
++    static const unsigned char p256_base[] = {
++        0x04,
++        0x6B, 0x17, 0xD1, 0xF2, 0xE1, 0x2C, 0x42, 0x47, 0xF8, 0xBC, 0xE6, 0xE5, 0x63,
++        0xA4, 0x40, 0xF2, 0x77, 0x03, 0x7D, 0x81, 0x2D, 0xEB, 0x33, 0xA0, 0xF4, 0xA1,
++        0x39, 0x45, 0xD8, 0x98, 0xC2, 0x96,
++        0x4F, 0xE3, 0x42, 0xE2, 0xFE, 0x1A, 0x7F, 0x9B, 0x8E, 0xE7, 0xEB, 0x4A, 0x7C,
++        0x0F, 0x9E, 0x16, 0x2B, 0xCE, 0x33, 0x57, 0x6B, 0x31, 0x5E, 0xCE, 0xCB, 0xB6,
++        0x40, 0x68, 0x37, 0xBF, 0x51, 0xF5
++    };
++    static const unsigned char p256_order[] = {
++        0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
++        0xFF, 0xFF, 0xFF, 0xBC, 0xE6, 0xFA, 0xAD, 0xA7, 0x17, 0x9E, 0x84, 0xF3, 0xB9,
++        0xCA, 0xC2, 0xFC, 0x63, 0x25, 0x51
++    };
++    static const unsigned char p256_encoding[] = {
++        0x06, 0x08, 0x2a, 0x86, 0x48, 0xce, 0x3d, 0x03, 0x01, 0x07
++    };
++    static ECParams ec_known_P256_Params = {
++        NULL, ec_params_named,                                               /* arena, type */
++                                                                             /* fieldID */
++        { 256, ec_field_GFp,                                                 /* size and type */
++          { { siBuffer, (unsigned char *)p256_prime, sizeof(p256_prime) } }, /* u.prime */
++          0,
++          0,
++          0 },
++        /* curve */
++        { /* a = curvea b = curveb */
++          /* curve.a */
++          { siBuffer, (unsigned char *)p256_a, sizeof(p256_a) },
++          /* curve.b */
++          { siBuffer, (unsigned char *)p256_b, sizeof(p256_b) },
++          /* curve.seed */
++          { siBuffer, NULL, 0 } },
++        /* base  = 04xy*/
++        { siBuffer, (unsigned char *)p256_base, sizeof(p256_base) },
++        /* order */
++        { siBuffer, (unsigned char *)p256_order, sizeof(p256_order) },
++        1, /* cofactor */
++        /* DEREncoding */
++        { siBuffer, (unsigned char *)p256_encoding, sizeof(p256_encoding) },
++        ECCurve_X9_62_PRIME_256V1,
++        /* curveOID */
++        { siBuffer, (unsigned char *)(p256_encoding) + 2, sizeof(p256_encoding) - 2 },
++    };
++    /* ECDSA Known Seed info for curves nistp256 and nistk283  */
++    static const PRUint8 ecdsa_Known_Seed[] = {
++        0x6a, 0x9b, 0xf6, 0xf7, 0xce, 0xed, 0x79, 0x11,
++        0xf0, 0xc7, 0xc8, 0x9a, 0xa5, 0xd1, 0x57, 0xb1,
++        0x7b, 0x5a, 0x3b, 0x76, 0x4e, 0x7b, 0x7c, 0xbc,
++        0xf2, 0x76, 0x1c, 0x1c, 0x7f, 0xc5, 0x53, 0x2f
++    };
++    /* ECDSA Known Digest (224-bits) */
++    static const PRUint8 ecdsa_known_digest[] = { "ECDSA Signature Digest, Longer" };
++    /* ECDSA variables. */
++    ECPrivateKey *ecdsa_private_key;
++    SECStatus ecdsa_status;
++    SECItem ecdsa_signature_item;
++    SECItem ecdsa_digest_item;
++    ECPublicKey ecdsa_public_key;
++    PRUint8 ecdsa_computed_signature[2 * MAX_ECKEY_LEN];
++    NSSLOWKEYPrivateKey lowkey_priv;
++
++    /*********************************************/
++    /* Generate an ECDSA public/private key pair */
++    /*********************************************/
++
++    ecdsa_status = EC_NewKeyFromSeed(&ec_known_P256_Params,
++                                     &ecdsa_private_key,
++                                     ecdsa_Known_Seed,
++                                     sizeof (ecdsa_Known_Seed));
++
++    if (ecdsa_status != SECSuccess) {
++        PORT_SetError(SEC_ERROR_NO_MEMORY);
++        return (SECFailure);
++    }
++
++    /* Construct public key from private key. */
++    ecdsa_public_key.ecParams = ecdsa_private_key->ecParams;
++    ecdsa_public_key.publicValue = ecdsa_private_key->publicValue;
++
++    /* Validate public key value. */
++    ecdsa_status = EC_ValidatePublicKey(&ecdsa_public_key.ecParams,
++                                        &ecdsa_public_key.publicValue);
++    if (ecdsa_status != SECSuccess) {
++        goto loser;
++    }
++
++    /***********************************/
++    /* ECDSA pairwise consistency test */
++    /***********************************/
++
++    ecdsa_signature_item.data = ecdsa_computed_signature;
++    ecdsa_signature_item.len = sizeof ecdsa_computed_signature;
++
++    ecdsa_digest_item.data = (unsigned char *)ecdsa_known_digest;
++    ecdsa_digest_item.len = SHA224_LENGTH;
++
++    /* Perform ECDSA signature process. */
++    lowkey_priv.u.ec = *ecdsa_private_key;
++    ecdsa_status = ECDSA_HashSign (SEC_OID_SHA224, &lowkey_priv,
++                                   ecdsa_signature_item.data, &ecdsa_signature_item.len,
++                                   sizeof ecdsa_computed_signature,
++                                   ecdsa_digest_item.data, SHA224_LENGTH);
++
++    /* Check that operation succeeded and that signature is different from hash */
++    if ((ecdsa_status != SECSuccess) ||
++        (ecdsa_signature_item.len != FIPS_ECDSA_SIGNATURE_LENGTH) ||
++        (PORT_Memcmp(ecdsa_computed_signature, ecdsa_known_digest,
++                     PR_MIN (FIPS_ECDSA_SIGNATURE_LENGTH, FIPS_ECDSA_DIGEST_LENGTH)) == 0)) {
++        ecdsa_status = SECFailure;
++    } else {
++        /* Perform ECDSA verification process. */
++        ecdsa_status = ECDSA_VerifyDigest(&ecdsa_public_key,
++                                          &ecdsa_signature_item,
++                                          &ecdsa_digest_item);
++    }
++
++loser:
++    /* Free the memory for the private key arena */
++    PORT_FreeArena(ecdsa_private_key->ecParams.arena, PR_FALSE);
++
++    if (ecdsa_status != SECSuccess) {
++        PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
++        return SECFailure;
++    }
++
++    return (SECSuccess);
++}
++
+ static PRBool sftk_self_tests_ran = PR_FALSE;
+ static PRBool sftk_self_tests_success = PR_FALSE;
+ 
+@@ -592,7 +913,6 @@
+ sftk_startup_tests(void)
+ {
+     SECStatus rv;
+-    const char *libraryName = SOFTOKEN_LIB_NAME;
+ 
+     PORT_Assert(!sftk_self_tests_ran);
+     PORT_Assert(!sftk_self_tests_success);
+@@ -604,6 +924,7 @@
+     if (rv != SECSuccess) {
+         return;
+     }
++
+     /* make sure freebl is initialized, or our RSA check
+      * may fail. This is normally done at freebl load time, but it's
+      * possible we may have shut freebl down without unloading it. */
+@@ -621,12 +942,21 @@
+     if (rv != SECSuccess) {
+         return;
+     }
+-    if (!BLAPI_SHVerify(libraryName,
+-                        (PRFuncPtr)&sftk_fips_RSA_PowerUpSelfTest)) {
+-        /* something is wrong with the library, fail without enabling
+-         * the token */
++
++    /* check the DSA combined functions in softoken */
++    rv = sftk_fips_DSA_PowerUpSelfTest();
++    if (rv != SECSuccess) {
+         return;
+     }
++
++    /* check the ECDSA combined functions in softoken */
++    rv = sftk_fips_ECDSA_PowerUpSelfTest();
++    if (rv != SECSuccess) {
++        return;
++    }
++
++    /* Checksum is done by fips_initTestSoftoken() in fips.c */
++
+     rv = sftk_fips_IKE_PowerUpSelfTests();
+     if (rv != SECSuccess) {
+         return;
+@@ -642,17 +972,11 @@
+ CK_RV
+ sftk_FIPSEntryOK()
+ {
+-#ifdef NSS_NO_INIT_SUPPORT
+-    /* this should only be set on platforms that can't handle one of the INIT
+-     * schemes.  This code allows those platforms to continue to function,
+-     * though they don't meet the strict NIST requirements. If NSS_NO_INIT_SUPPORT
+-     * is not set, and init support has not been properly enabled, softken
+-     * will always fail because of the test below
+-     */
++    /* For platforms that don't support on-load constructors */
+     if (!sftk_self_tests_ran) {
+         sftk_startup_tests();
+     }
+-#endif
++
+     if (!sftk_self_tests_success) {
+         return CKR_DEVICE_ERROR;
+     }
+diff -r 3a9a84eee4a2 lib/softoken/legacydb/fips.c
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/lib/softoken/legacydb/fips.c	Fri May 29 09:13:35 2020 +0200
+@@ -0,0 +1,25 @@
++#include "../../freebl/fips-selftest.inc"
++
++#include "fips.h"
++
++/*** private per-module symbols ***/
++
++/* crypto algorithms selftest wrapper */
++static fips_check_status
++fips_checkCryptoDbm(void)
++{
++    /* no checks in dbm */
++    return CHECK_OK;
++}
++
++/* constructor - load-time selfchecks */
++static void __attribute__ ((constructor))
++fips_initTestDbm(void)
++{
++    fips_state = fips_initTest("nssdbm", (PRFuncPtr)fips_checkCryptoDbm, NULL);
++
++    return;
++}
++
++/*** public per-module symbols ***/
++
+diff -r 3a9a84eee4a2 lib/softoken/legacydb/fips.h
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/lib/softoken/legacydb/fips.h	Fri May 29 09:13:35 2020 +0200
+@@ -0,0 +1,5 @@
++#ifndef FIPS_H
++#define FIPS_H
++
++#endif
++
+diff -r 3a9a84eee4a2 lib/softoken/legacydb/lgfips.c
+--- a/lib/softoken/legacydb/lgfips.c	Wed Nov 20 08:25:39 2019 +0100
++++ b/lib/softoken/legacydb/lgfips.c	Fri May 29 09:13:35 2020 +0200
+@@ -90,7 +90,7 @@
+ 
+     /* no self tests required for the legacy db, only the integrity check */
+     /* check the integrity of our shared library */
+-    if (!BLAPI_SHVerify(libraryName, (PRFuncPtr)&lg_local_function)) {
++    if (!BLAPI_SHVerify(libraryName, (PRFuncPtr)&lg_local_function, NULL)) {
+         /* something is wrong with the library, fail without enabling
+          * the fips token */
+         return;
+diff -r 3a9a84eee4a2 lib/softoken/legacydb/manifest.mn
+--- a/lib/softoken/legacydb/manifest.mn	Wed Nov 20 08:25:39 2019 +0100
++++ b/lib/softoken/legacydb/manifest.mn	Fri May 29 09:13:35 2020 +0200
+@@ -12,7 +12,7 @@
+ LIBRARY_VERSION = 3
+ MAPFILE = $(OBJDIR)/$(LIBRARY_NAME).def
+ 
+-DEFINES += -DSHLIB_SUFFIX=\"$(DLL_SUFFIX)\" -DSHLIB_PREFIX=\"$(DLL_PREFIX)\" -DLG_LIB_NAME=\"$(notdir $(SHARED_LIBRARY))\"
++DEFINES += -DSHLIB_SUFFIX=\"$(DLL_SUFFIX)\" -DSHLIB_PREFIX=\"$(DLL_PREFIX)\" -DLG_LIB_NAME=\"$(notdir $(SHARED_LIBRARY))\" -DSHLIB_VERSION=\"$(LIBRARY_VERSION)\"
+ 
+ CSRCS = \
+ 	dbmshim.c \
+@@ -28,5 +28,6 @@
+ 	lowkey.c \
+ 	pcertdb.c \
+ 	pk11db.c \
++	fips.c \
+ 	$(NULL)
+ 
+diff -r 3a9a84eee4a2 lib/softoken/manifest.mn
+--- a/lib/softoken/manifest.mn	Wed Nov 20 08:25:39 2019 +0100
++++ b/lib/softoken/manifest.mn	Fri May 29 09:13:35 2020 +0200
+@@ -29,6 +29,7 @@
+ 	softkver.h \
+ 	sdb.h \
+ 	sftkdbt.h \
++	fips.h \
+ 	$(NULL)
+ 
+ CSRCS = \
+@@ -52,6 +53,7 @@
+ 	softkver.c  \
+ 	tlsprf.c   \
+ 	jpakesftk.c \
++	fips.c \
+ 	$(NULL)
+ 
+ ifndef NSS_DISABLE_DBM

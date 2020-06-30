@@ -1,0 +1,34 @@
+# HG changeset patch
+# User Hans Petter Jansson <hpj@cl.no>
+# Date 1574138371 -3600
+#      Tue Nov 19 05:39:31 2019 +0100
+# Node ID 557f9009507c9e70941dbe39965028049e1ef5a2
+# Parent  4ae6bed68a83c01f6d2ce7a37bdb0bdb0556416f
+[PATCH 07/22] 15
+From 2a162c34b7aad7399f33069cd9930fd92714861c Mon Sep 17 00:00:00 2001
+---
+ nss/lib/softoken/pkcs11c.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/lib/softoken/pkcs11c.c b/lib/softoken/pkcs11c.c
+--- a/lib/softoken/pkcs11c.c
++++ b/lib/softoken/pkcs11c.c
+@@ -4730,8 +4730,8 @@
+     return crv;
+ }
+ 
+-#define PAIRWISE_DIGEST_LENGTH SHA1_LENGTH /* 160-bits */
+-#define PAIRWISE_MESSAGE_LENGTH 20         /* 160-bits */
++#define PAIRWISE_DIGEST_LENGTH SHA224_LENGTH /* 224-bits */
++#define PAIRWISE_MESSAGE_LENGTH 20           /* 160-bits */
+ 
+ /*
+  * FIPS 140-2 pairwise consistency check utilized to validate key pair.
+@@ -5591,6 +5591,7 @@
+                             (PRUint32)crv);
+                 sftk_LogAuditMessage(NSS_AUDIT_ERROR, NSS_AUDIT_SELF_TEST, msg);
+             }
++            sftk_fatalError = PR_TRUE;
+         }
+     }
+ 

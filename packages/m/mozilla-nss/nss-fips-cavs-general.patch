@@ -1,0 +1,311 @@
+# HG changeset patch
+# User M. Sirringhaus <msirringhaus@suse.de>
+# Date 1590413427 -7200
+#      Mon May 25 15:30:27 2020 +0200
+# Node ID 969310ea4c573aac64bf08846b8938b8fa783870
+# Parent  60c5e5d73ce1177fa66d8fd6cf49d9b371ca9be4
+imported patch nss-fips-cavs-general.patch
+
+diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
+--- a/cmd/fipstest/fipstest.c
++++ b/cmd/fipstest/fipstest.c
+@@ -5,6 +5,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <ctype.h>
++#include <dlfcn.h>
+ 
+ #include "secitem.h"
+ #include "blapi.h"
+@@ -18,6 +19,9 @@
+ #include "lowkeyi.h"
+ #include "softoken.h"
+ #include "pkcs11t.h"
++
++#include "../../lib/freebl/fips.h"
++
+ #define __PASTE(x, y) x##y
+ #undef CK_PKCS11_FUNCTION_INFO
+ #undef CK_NEED_ARG_LIST
+@@ -55,6 +59,10 @@
+ #define RSA_MAX_TEST_EXPONENT_BYTES 8
+ #define PQG_TEST_SEED_BYTES 20
+ 
++SECStatus (*FREEBL_Test_PQG_ParamGenV2_p) (unsigned int L, unsigned int N, unsigned int seedBytes,
++                                           PQGParams **pParams, PQGVerify **pVfy,
++                                           SECItem *firstseed, HASH_HashType hashtype);
++
+ SECStatus
+ hex_to_byteval(const char *c2, unsigned char *byteval)
+ {
+@@ -168,6 +176,62 @@
+     return PR_TRUE;
+ }
+ 
++#if 0
++
++static void
++dump_secitem (FILE *out, SECItem *secitem)
++{
++    char buf [4096];
++
++    to_hex_str(buf, secitem->data, secitem->len);
++    fputs (buf, out);
++}
++
++static void
++dump_labeled_secitem (FILE *out, const char *name, SECItem *secitem)
++{
++    fprintf (out, "%s = ", name);
++    dump_secitem (out, secitem);
++    fputs ("\n", out);
++}
++
++#endif
++
++static int
++parse_secitem (const char *name, const char *buf, SECItem *secitem)
++{
++    if (!strncmp (buf, name, strlen (name))) {
++        int i, j, len;
++
++        i = strlen (name);
++        while (isspace(buf[i]) || buf[i] == '=') {
++            i++;
++        }
++
++        len = strspn (&buf[i], "0123456789abcdefABCDEF");
++        if (!len)
++            return 0;
++
++        if (secitem->data) {
++            SECITEM_ZfreeItem(secitem, PR_FALSE);
++            secitem->data = NULL;
++        }
++
++        len = (len + 1) / 2;
++        SECITEM_AllocItem(NULL, secitem, len);
++        secitem->len = len;
++
++        memset(secitem->data, 0, secitem->len);
++        for (j = 0; j < secitem->len; i += 2, j++) {
++            hex_to_byteval(&buf[i], &secitem->data[j]);
++        }
++
++        return 1;
++    }
++
++    return 0;
++}
++
+ SECStatus
+ tdea_encrypt_buf(
+     int mode,
+@@ -8930,41 +8994,6 @@
+     }
+ }
+ 
+-static int
+-parse_secitem (const char *name, const char *buf, SECItem *secitem)
+-{
+-    if (!strncmp (buf, name, strlen (name))) {
+-        int i, j, len;
+-
+-        i = strlen (name);
+-        while (isspace(buf[i]) || buf[i] == '=') {
+-            i++;
+-        }
+-
+-        len = strspn (&buf[i], "0123456789abcdefABCDEF");
+-        if (!len)
+-            return 0;
+-
+-        if (secitem->data) {
+-            SECITEM_ZfreeItem(secitem, PR_FALSE);
+-            secitem->data = NULL;
+-        }
+-
+-        len = (len + 1) / 2;
+-        SECITEM_AllocItem(NULL, secitem, len);
+-        secitem->len = len;
+-
+-        memset(secitem->data, 0, secitem->len);
+-        for (j = 0; j < secitem->len; i += 2, j++) {
+-            hex_to_byteval(&buf[i], &secitem->data[j]);
+-        }
+-
+-        return 1;
+-    }
+-
+-    return 0;
+-}
+-
+ void
+ kas_ffc_test(char *reqfn, int do_validity)
+ {
+@@ -9387,12 +9416,34 @@
+     free_param_specs (pspecs);
+ }
+ 
++static void
++init_functions (void)
++{
++    void *freebl_so;
++
++    freebl_so = dlopen ("libfreeblpriv3.so", RTLD_LAZY);
++    if (freebl_so == NULL)
++    {
++        fprintf (stderr, "Failed to load libfreeblpriv3.so.");
++        exit (1);
++    }
++
++    FREEBL_Test_PQG_ParamGenV2_p = dlsym (freebl_so, "FREEBL_Test_PQG_ParamGenV2");
++
++    if (FREEBL_Test_PQG_ParamGenV2_p == NULL)
++    {
++        fprintf (stderr, "Failed to bind FREEBL_TEST_PQG_ParamGenV2.");
++        exit (1);
++    }
++}
++
+ int
+ main(int argc, char **argv)
+ {
+     if (argc < 2)
+         exit(-1);
+ 
++    init_functions();
+     RNG_RNGInit();
+     SECOID_Init();
+ 
+diff --git a/lib/freebl/freebl.def b/lib/freebl/freebl.def
+--- a/lib/freebl/freebl.def
++++ b/lib/freebl/freebl.def
+@@ -21,6 +21,7 @@
+ LIBRARY freebl3 ;-
+ EXPORTS	;-
+ FREEBL_GetVector;
++FREEBL_Test_PQG_ParamGenV2;
+ ;+    local:
+ ;+       *;
+ ;+};
+diff --git a/lib/freebl/freebl_hash.def b/lib/freebl/freebl_hash.def
+--- a/lib/freebl/freebl_hash.def
++++ b/lib/freebl/freebl_hash.def
+@@ -21,6 +21,7 @@
+ LIBRARY freebl3 ;-
+ EXPORTS	;-
+ FREEBL_GetVector;
++FREEBL_Test_PQG_ParamGenV2;
+ ;+    local:
+ ;+       *;
+ ;+};
+diff --git a/lib/freebl/freebl_hash_vector.def b/lib/freebl/freebl_hash_vector.def
+--- a/lib/freebl/freebl_hash_vector.def
++++ b/lib/freebl/freebl_hash_vector.def
+@@ -21,6 +21,7 @@
+ LIBRARY freebl3 ;-
+ EXPORTS	;-
+ FREEBL_GetVector;
++FREEBL_Test_PQG_ParamGenV2;
+ ;+    local:
+ ;+       *;
+ ;+};
+diff --git a/lib/freebl/pqg.c b/lib/freebl/pqg.c
+--- a/lib/freebl/pqg.c
++++ b/lib/freebl/pqg.c
+@@ -1231,7 +1231,8 @@
+ **/
+ static SECStatus
+ pqg_ParamGen(unsigned int L, unsigned int N, pqgGenType type,
+-             unsigned int seedBytes, PQGParams **pParams, PQGVerify **pVfy)
++             unsigned int seedBytes, PQGParams **pParams, PQGVerify **pVfy,
++             SECItem *firstseed_out, HASH_HashType hashtype)
+ {
+     unsigned int n;       /* Per FIPS 186, app 2.2. 186-3 app A.1.1.2 */
+     unsigned int seedlen; /* Per FIPS 186-3 app A.1.1.2  (was 'g' 186-1)*/
+@@ -1239,7 +1240,6 @@
+     unsigned int offset;  /* Per FIPS 186, app 2.2. 186-3 app A.1.1.2 */
+     unsigned int outlen;  /* Per FIPS 186-3, appendix A.1.1.2. */
+     unsigned int maxCount;
+-    HASH_HashType hashtype = HASH_AlgNULL;
+     SECItem *seed; /* Per FIPS 186, app 2.2. 186-3 app A.1.1.2 */
+     PLArenaPool *arena = NULL;
+     PQGParams *params = NULL;
+@@ -1290,7 +1290,8 @@
+         /* fill in P Q,  */
+         SECITEM_TO_MPINT((*pParams)->prime, &P);
+         SECITEM_TO_MPINT((*pParams)->subPrime, &Q);
+-        hashtype = getFirstHash(L, N);
++        if (hashtype == HASH_AlgNULL)
++            hashtype = getFirstHash(L, N);
+         CHECK_SEC_OK(makeGfromIndex(hashtype, &P, &Q, &(*pVfy)->seed,
+                                     (*pVfy)->h.data[0], &G));
+         MPINT_TO_SECITEM(&G, &(*pParams)->base, (*pParams)->arena);
+@@ -1330,7 +1331,8 @@
+     /* Select Hash and Compute lengths. */
+     /* getFirstHash gives us the smallest acceptable hash for this key
+      * strength */
+-    hashtype = getFirstHash(L, N);
++    if (hashtype == HASH_AlgNULL)
++        hashtype = getFirstHash(L, N);
+     outlen = HASH_ResultLen(hashtype) * PR_BITS_PER_BYTE;
+ 
+     /* Step 3: n = Ceil(L/outlen)-1; (same as n = Floor((L-1)/outlen)) */
+@@ -1532,6 +1534,10 @@
+     verify->counter = counter;
+     *pParams = params;
+     *pVfy = verify;
++
++    if (firstseed_out)
++        SECITEM_CopyItem (NULL, firstseed_out, &firstseed);
++
+ cleanup:
+     if (pseed.data) {
+         PORT_Free(pseed.data);
+@@ -1576,7 +1582,7 @@
+     L = 512 + (j * 64); /* bits in P */
+     seedBytes = L / 8;
+     return pqg_ParamGen(L, DSA1_Q_BITS, FIPS186_1_TYPE, seedBytes,
+-                        pParams, pVfy);
++                        pParams, pVfy, NULL, HASH_AlgNULL);
+ }
+ 
+ SECStatus
+@@ -1591,7 +1597,7 @@
+     }
+     L = 512 + (j * 64); /* bits in P */
+     return pqg_ParamGen(L, DSA1_Q_BITS, FIPS186_1_TYPE, seedBytes,
+-                        pParams, pVfy);
++                        pParams, pVfy, NULL, HASH_AlgNULL);
+ }
+ 
+ SECStatus
+@@ -1609,7 +1615,26 @@
+         /* error code already set */
+         return SECFailure;
+     }
+-    return pqg_ParamGen(L, N, FIPS186_3_ST_TYPE, seedBytes, pParams, pVfy);
++    return pqg_ParamGen(L, N, FIPS186_3_ST_TYPE, seedBytes, pParams, pVfy, NULL, HASH_AlgNULL);
++}
++
++SECStatus
++FREEBL_Test_PQG_ParamGenV2 (unsigned int L, unsigned int N, unsigned int seedBytes,
++                            PQGParams **pParams, PQGVerify **pVfy, SECItem *firstseed_out,
++                            HASH_HashType hashtype)
++{
++    if (N == 0) {
++        N = pqg_get_default_N(L);
++    }
++    if (seedBytes == 0) {
++        /* seedBytes == L/8 for probable primes, N/8 for Shawe-Taylor Primes */
++        seedBytes = N / 8;
++    }
++    if (pqg_validate_dsa2(L, N) != SECSuccess) {
++        /* error code already set */
++        return SECFailure;
++    }
++    return pqg_ParamGen(L, N, FIPS186_3_ST_TYPE, seedBytes, pParams, pVfy, firstseed_out, hashtype);
+ }
+ 
+ /*

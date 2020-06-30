@@ -1,0 +1,235 @@
+# HG changeset patch
+# User Hans Petter Jansson <hpj@cl.no>
+# Date 1574234023 -3600
+#      Wed Nov 20 08:13:43 2019 +0100
+# Node ID 5d6e015d1af40b5f5b990d0cf4d97932774c2a61
+# Parent  2f570c6952d8edfc1ad9061cd3830f202eec1960
+[PATCH 1/2] 19
+From f4cbaf95fcf2519029bb3c4407b2f15aa27c94c1 Mon Sep 17 00:00:00 2001
+---
+ nss/cmd/fipstest/fipstest.c | 160 ++++++++++++++++++++++++++++++++++++
+ nss/cmd/fipstest/keywrap.sh |  40 +++++++++
+ 2 files changed, 200 insertions(+)
+ create mode 100644 nss/cmd/fipstest/keywrap.sh
+
+diff -r 2f570c6952d8 -r 5d6e015d1af4 cmd/fipstest/fipstest.c
+--- a/cmd/fipstest/fipstest.c	Sun Mar 15 21:54:30 2020 +0100
++++ b/cmd/fipstest/fipstest.c	Wed Nov 20 08:13:43 2019 +0100
+@@ -8752,6 +8752,161 @@
+     return;
+ }
+ 
++void
++keywrap (char *reqfn)
++{
++    char buf[1024];
++    FILE *req;  /* input stream from the REQUEST file */
++    FILE *resp; /* output stream to the RESPONSE file */
++    int i, j;
++    AESKeyWrapContext *ctx = NULL;
++    unsigned char key_data [1024];
++    int key_data_len = 0;
++
++    req = fopen(reqfn, "r");
++    resp = stdout;
++
++    while (fgets(buf, sizeof buf, req) != NULL) {
++        /* K = ... */
++        if (buf[0] == 'K') {
++            /* Skip to value */
++            for (i = 1; isspace(buf[i]) || buf[i] == '='; i++)
++                ;
++
++            if (i == 1) {
++                /* Unknown variable starting with 'K' */
++                fputs(buf, resp);
++                continue;
++            }
++
++            for (j = 0; isxdigit(buf[i]) && j < sizeof key_data; i += 2, j++) {
++                hex_to_byteval(&buf[i], &key_data[j]);
++            }
++
++            key_data_len = j;
++
++            fputs(buf, resp);
++            continue;
++        }
++        /* C = ... */
++        /* This means we're doing decryption */
++        /* Make sure we don't pick up COUNT = ... here */
++        else if (buf[0] == 'C' && (isspace (buf[1]) || buf[1] == '=')) {
++            unsigned char data_in [1024];
++            unsigned char data_out [1024];
++            unsigned int data_in_len, data_out_len;
++
++            if (key_data_len <= 0) {
++                fprintf(resp, "ERROR: No key specified\n");
++                goto out;
++            }
++
++            /* Skip to value */
++            for (i = 1; isspace(buf[i]) || buf[i] == '='; i++)
++                ;
++
++            if (i == 1) {
++                /* Unknown variable starting with 'C' */
++                fputs(buf, resp);
++                continue;
++            }
++
++            fputs(buf, resp);
++
++            for (j = 0; isxdigit(buf[i]) && j < sizeof data_in; i += 2, j++) {
++                hex_to_byteval(&buf[i], &data_in[j]);
++            }
++
++            data_in_len = j;
++
++            if (ctx) {
++                AESKeyWrap_DestroyContext (ctx, PR_TRUE);
++                ctx = NULL;
++            }
++
++            ctx = AESKeyWrap_CreateContext(key_data, NULL, PR_FALSE, key_data_len);
++            if (!ctx) {
++                fprintf(resp, "ERROR: Unable to create context\n");
++                goto out;
++            }
++
++            if (AESKeyWrap_Decrypt(ctx, data_out, &data_out_len, 1024, data_in, data_in_len)
++                != SECSuccess) {
++                fprintf(resp, "FAIL\n");
++                continue;
++            }
++
++            fputs("P = ", resp);
++            to_hex_str(buf, data_out, data_out_len);
++            fputs(buf, resp);
++            fputc('\n', resp);
++        }
++        /* P = ... */
++        /* This means we're doing encryption */
++        else if (buf[0] == 'P') {
++            unsigned char data_in [1024];
++            unsigned char data_out [1024];
++            unsigned int data_in_len, data_out_len;
++
++            if (key_data_len <= 0) {
++                fprintf(resp, "ERROR: No key specified\n");
++                goto out;
++            }
++
++            /* Skip to value */
++            for (i = 1; isspace(buf[i]) || buf[i] == '='; i++)
++                ;
++
++            if (i == 1) {
++                /* Unknown variable starting with 'P' */
++                fputs(buf, resp);
++                continue;
++            }
++
++            fputs(buf, resp);
++
++            for (j = 0; isxdigit(buf[i]) && j < sizeof data_in; i += 2, j++) {
++                hex_to_byteval(&buf[i], &data_in[j]);
++            }
++
++            data_in_len = j;
++
++            if (ctx) {
++                AESKeyWrap_DestroyContext (ctx, PR_TRUE);
++                ctx = NULL;
++            }
++
++            ctx = AESKeyWrap_CreateContext(key_data, NULL, PR_TRUE, key_data_len);
++            if (!ctx) {
++                fprintf(resp, "ERROR: Unable to create context\n");
++                goto out;
++            }
++
++            if (AESKeyWrap_Encrypt(ctx, data_out, &data_out_len, 1024, data_in, data_in_len)
++                != SECSuccess) {
++                fprintf(resp, "FAIL\n");
++                continue;
++            }
++
++            fputs("C = ", resp);
++            to_hex_str(buf, data_out, data_out_len);
++            fputs(buf, resp);
++            fputc('\n', resp);
++        }
++        /* Comments, blank lines, ... */
++        else {
++            fputs(buf, resp);
++            continue;
++        }
++    }
++
++out:
++    fclose(req);
++    if (ctx) {
++        AESKeyWrap_DestroyContext (ctx, PR_TRUE);
++    }
++}
++
+ int
+ main(int argc, char **argv)
+ {
+@@ -8933,6 +9088,11 @@
+         ikev2(argv[2]);
+     } else if (strcmp(argv[1], "kbkdf") == 0) {
+         kbkdf(argv[2]);
++    } else if (strcmp(argv[1], "keywrap") == 0) {
++        /***************/
++        /* AES Keywrap */
++        /***************/
++        keywrap(argv[2]);
+     }
+     return 0;
+ }
+diff -r 2f570c6952d8 -r 5d6e015d1af4 cmd/fipstest/keywrap.sh
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/cmd/fipstest/keywrap.sh	Wed Nov 20 08:13:43 2019 +0100
+@@ -0,0 +1,40 @@
++#!/bin/sh
++# 
++# This Source Code Form is subject to the terms of the Mozilla Public
++# License, v. 2.0. If a copy of the MPL was not distributed with this
++# file, You can obtain one at http://mozilla.org/MPL/2.0/.
++#
++# A Bourne shell script for running the NIST AES keywrap Algorithm Validation Suite
++#
++# Before you run the script, set your PATH, LD_LIBRARY_PATH, ... environment
++# variables appropriately so that the fipstest command and the NSPR and NSS
++# shared libraries/DLLs are on the search path.  Then run this script in the
++# directory where the REQUEST (.req) files reside.  The script generates the
++# RESPONSE (.rsp) files in the same directory.
++BASEDIR=${1-.}
++TESTDIR=${BASEDIR}/KeyWrap38F
++COMMAND=${2-run}
++REQDIR=${TESTDIR}/req
++RSPDIR=${TESTDIR}/resp
++
++keywrap_requests="
++KW_AD_128.req
++KW_AD_192.req
++KW_AD_256.req
++KW_AE_128.req
++KW_AE_192.req
++KW_AE_256.req
++"
++
++if [ ${COMMAND} = "verify" ]; then
++    for request in $keywrap_requests; do
++	sh ./validate1.sh ${TESTDIR} $request
++    done
++    exit 0
++fi
++
++for request in $keywrap_requests; do
++    response=`echo $request | sed -e "s/req/rsp/"`
++    echo $request $response
++    fipstest keywrap ${REQDIR}/$request > ${RSPDIR}/$response
++done

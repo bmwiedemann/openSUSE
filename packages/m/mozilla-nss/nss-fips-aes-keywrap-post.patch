@@ -1,0 +1,127 @@
+# HG changeset patch
+# User M. Sirringhaus <msirringhaus@suse.de>
+# Date 1589854460 -7200
+#      Tue May 19 04:14:20 2020 +0200
+# Node ID ce99bba6375432c55a73c1367f619dfef7c7e9fc
+# Parent  2b4f407fb1f8824fed4df9c4c3f15a2493e71677
+commit e78f5a6a2124ce88002796d6aaefc6232f132526
+Author: Hans Petter Jansson <hpj@cl.no>
+    AES Keywrap POST.
+
+diff --git a/lib/freebl/fipsfreebl.c b/lib/freebl/fipsfreebl.c
+--- a/lib/freebl/fipsfreebl.c
++++ b/lib/freebl/fipsfreebl.c
+@@ -110,6 +110,9 @@
+ #define FIPS_AES_192_KEY_SIZE 24   /* 192-bits */
+ #define FIPS_AES_256_KEY_SIZE 32   /* 256-bits */
+ 
++/* FIPS preprocessor directives for AES Keywrap */
++#define FIPS_AES_KEYWRAP_KNOWN_CIPHERTEXT_SIZE 24  /* 192-bits */
++
+ /* FIPS preprocessor directives for message digests             */
+ #define FIPS_KNOWN_HASH_MESSAGE_LENGTH 64 /* 512-bits */
+ 
+@@ -299,6 +302,9 @@
+ 
+     static const PRUint8 aes_gcm_known_aad[] = { "MozillaallizoM" };
+ 
++    /* AES Keywrap Known Initialization Vector (64 bits) */
++    static const PRUint8 aes_key_wrap_iv[] = { "WrapparW" };
++
+     /* AES Known Ciphertext (128-bit key). */
+     static const PRUint8 aes_ecb128_known_ciphertext[] = {
+         0x3c, 0xa5, 0x96, 0xf3, 0x34, 0x6a, 0x96, 0xc1,
+@@ -353,6 +359,25 @@
+         0xf4, 0xb0, 0xc1, 0x8c, 0x86, 0x51, 0xf5, 0xa1
+     };
+ 
++    /* AES Keywrap Known Ciphertexts. */
++    static const PRUint8 aes_kw128_known_ciphertext[] = {
++        0xd7, 0xec, 0x33, 0x3a, 0x35, 0x50, 0x91, 0x4d,
++        0x04, 0x69, 0x1f, 0xbc, 0x9b, 0x3a, 0x51, 0x9d,
++        0xf3, 0x45, 0x01, 0xec, 0xaa, 0x43, 0x33, 0x42
++    };
++
++    static const PRUint8 aes_kw192_known_ciphertext[] = {
++        0x18, 0x44, 0xab, 0x72, 0xbd, 0x35, 0x6c, 0x8f,
++        0x34, 0x34, 0x2e, 0x0b, 0xb0, 0x19, 0xd3, 0x46,
++        0x3e, 0x53, 0x4f, 0x2f, 0x43, 0xcc, 0xf5, 0x8c
++    };
++
++    static const PRUint8 aes_kw256_known_ciphertext[] = {
++        0x3e, 0xaf, 0xf3, 0x36, 0xaf, 0xc3, 0x68, 0xab,
++        0x5a, 0x07, 0xed, 0x64, 0x5b, 0xf8, 0x81, 0x0d,
++        0x9e, 0x67, 0x75, 0xbd, 0x66, 0xe1, 0x52, 0xdc
++    };
++
+     const PRUint8 *aes_ecb_known_ciphertext =
+         (aes_key_size == FIPS_AES_128_KEY_SIZE) ? aes_ecb128_known_ciphertext : (aes_key_size == FIPS_AES_192_KEY_SIZE) ? aes_ecb192_known_ciphertext : aes_ecb256_known_ciphertext;
+ 
+@@ -362,10 +387,14 @@
+     const PRUint8 *aes_gcm_known_ciphertext =
+         (aes_key_size == FIPS_AES_128_KEY_SIZE) ? aes_gcm128_known_ciphertext : (aes_key_size == FIPS_AES_192_KEY_SIZE) ? aes_gcm192_known_ciphertext : aes_gcm256_known_ciphertext;
+ 
++    const PRUint8 *aes_keywrap_known_ciphertext =
++        (aes_key_size == FIPS_AES_128_KEY_SIZE) ? aes_kw128_known_ciphertext : (aes_key_size == FIPS_AES_192_KEY_SIZE) ? aes_kw192_known_ciphertext : aes_kw256_known_ciphertext;
++
+     /* AES variables. */
+     PRUint8 aes_computed_ciphertext[FIPS_AES_ENCRYPT_LENGTH * 2];
+     PRUint8 aes_computed_plaintext[FIPS_AES_DECRYPT_LENGTH * 2];
+     AESContext *aes_context;
++    AESKeyWrapContext *aes_keywrap_context;
+     unsigned int aes_bytes_encrypted;
+     unsigned int aes_bytes_decrypted;
+     CK_NSS_GCM_PARAMS gcmParams;
+@@ -554,6 +583,52 @@
+         return (SECFailure);
+     }
+ 
++    /********************************/
++    /* AES Keywrap En/Decrypt Test. */
++    /********************************/
++
++    /* Create encryption context */
++    aes_keywrap_context = AESKeyWrap_CreateContext(aes_known_key, aes_key_wrap_iv, PR_TRUE,
++                                                   aes_key_size);
++    if (aes_keywrap_context == NULL) {
++        PORT_SetError(SEC_ERROR_NO_MEMORY);
++        return (SECFailure);
++    }
++
++    aes_status = AESKeyWrap_Encrypt(aes_keywrap_context,
++                                    aes_computed_ciphertext, &aes_bytes_encrypted,
++                                    FIPS_AES_ENCRYPT_LENGTH * 2,
++                                    aes_known_plaintext, FIPS_AES_ENCRYPT_LENGTH);
++
++    AESKeyWrap_DestroyContext(aes_keywrap_context, PR_TRUE);
++
++    if ((aes_status != SECSuccess) ||
++        (aes_bytes_encrypted != FIPS_AES_KEYWRAP_KNOWN_CIPHERTEXT_SIZE) ||
++        (PORT_Memcmp (aes_computed_ciphertext, aes_keywrap_known_ciphertext,
++                      FIPS_AES_KEYWRAP_KNOWN_CIPHERTEXT_SIZE) != 0)) {
++        PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
++        return (SECFailure);
++    }
++
++    /* Create decryption context */
++    aes_keywrap_context = AESKeyWrap_CreateContext(aes_known_key, aes_key_wrap_iv, PR_FALSE,
++                                                   aes_key_size);
++
++    aes_status = AESKeyWrap_Decrypt(aes_keywrap_context,
++                                    aes_computed_plaintext, &aes_bytes_decrypted,
++                                    FIPS_AES_ENCRYPT_LENGTH,
++                                    aes_computed_ciphertext, aes_bytes_encrypted);
++
++    AESKeyWrap_DestroyContext(aes_keywrap_context, PR_TRUE);
++
++    if ((aes_status != SECSuccess) ||
++        (aes_bytes_decrypted != FIPS_AES_ENCRYPT_LENGTH) ||
++        (PORT_Memcmp (aes_computed_plaintext, aes_known_plaintext,
++                      FIPS_AES_ENCRYPT_LENGTH) != 0)) {
++        PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
++        return (SECFailure);
++    }
++
+     return (SECSuccess);
+ }
+ 

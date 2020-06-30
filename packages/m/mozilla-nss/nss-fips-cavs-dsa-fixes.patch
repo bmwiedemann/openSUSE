@@ -1,0 +1,207 @@
+# HG changeset patch
+# User Hans Petter Jansson <hpj@cl.no>
+# Date 1574237264 -3600
+#      Wed Nov 20 09:07:44 2019 +0100
+# Node ID 0e904e6179d1db21965df2c405c80c3fc0258658
+# Parent  969310ea4c573aac64bf08846b8938b8fa783870
+[PATCH] 24
+From ef2620b770082c77dbbbccae2e773157897b005d Mon Sep 17 00:00:00 2001
+---
+ nss/cmd/fipstest/fipstest.c | 112 ++++++++++++++++++++++++++++++++----
+ 1 file changed, 101 insertions(+), 11 deletions(-)
+
+diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
+--- a/cmd/fipstest/fipstest.c
++++ b/cmd/fipstest/fipstest.c
+@@ -5576,7 +5576,7 @@
+ void
+ dsa_pqggen_test(char *reqfn)
+ {
+-    char buf[800]; /* holds one line from the input REQUEST file
++    char buf[2048]; /* holds one line from the input REQUEST file
+                          * or to the output RESPONSE file.
+                          * 800 to hold seed = (384 public key (x2 for HEX)
+                          */
+@@ -5592,6 +5592,13 @@
+     PQGVerify *vfy = NULL;
+     unsigned int keySizeIndex = 0;
+     dsa_pqg_type type = FIPS186_1;
++    SECItem P = { 0, 0, 0 };
++    SECItem Q = { 0, 0, 0 };
++    SECItem firstseed = { 0, 0, 0 };
++    SECItem pseed = { 0, 0, 0 };
++    SECItem qseed = { 0, 0, 0 };
++    SECItem index = { 0, 0, 0 };
++    HASH_HashType hashtype = HASH_AlgNULL;
+ 
+     dsareq = fopen(reqfn, "r");
+     dsaresp = stdout;
+@@ -5612,8 +5619,8 @@
+                 output_g = 1;
+                 exit(1);
+             } else if (strncmp(&buf[1], "A.2.3", 5) == 0) {
+-                fprintf(stderr, "NSS only Generates G with P&Q\n");
+-                exit(1);
++                type = A_2_3;
++                output_g = 1;
+             } else if (strncmp(&buf[1], "A.1.2.1", 7) == 0) {
+                 type = A_1_2_1;
+                 output_g = 0;
+@@ -5627,14 +5634,17 @@
+ 
+         /* [Mod = ... ] */
+         if (buf[0] == '[') {
++            int hashbits;
+ 
+             if (type == FIPS186_1) {
+                 N = 160;
+                 if (sscanf(buf, "[mod = %d]", &L) != 1) {
+                     goto loser;
+                 }
+-            } else if (sscanf(buf, "[mod = L=%d, N=%d", &L, &N) != 2) {
+-                goto loser;
++            } else if (sscanf(buf, "[mod = L=%d, N=%d, SHA-%d", &L, &N, &hashbits) != 3) {
++                goto loser;
++            } else {
++                hashtype = sha_get_hashType (hashbits);
+             }
+ 
+             fputs(buf, dsaresp);
+@@ -5656,7 +5666,7 @@
+             continue;
+         }
+         /* N = ... */
+-        if (buf[0] == 'N') {
++        if (buf[0] == 'N' && type != A_2_3) {
+             if (strncmp(buf, "Num", 3) == 0) {
+                 if (sscanf(buf, "Num = %d", &count) != 1) {
+                     goto loser;
+@@ -5671,7 +5681,10 @@
+                     rv = PQG_ParamGenSeedLen(keySizeIndex, PQG_TEST_SEED_BYTES,
+                                              &pqg, &vfy);
+                 } else {
+-                    rv = PQG_ParamGenV2(L, N, N, &pqg, &vfy);
++                    if (firstseed.data)
++                        SECITEM_ZfreeItem(&firstseed, PR_FALSE);
++
++                    rv = FREEBL_Test_PQG_ParamGenV2_p(L, N, 0, &pqg, &vfy, &firstseed, hashtype);
+                 }
+                 if (rv != SECSuccess) {
+                     fprintf(dsaresp,
+@@ -5682,6 +5695,10 @@
+                 fprintf(dsaresp, "P = %s\n", buf);
+                 to_hex_str(buf, pqg->subPrime.data, pqg->subPrime.len);
+                 fprintf(dsaresp, "Q = %s\n", buf);
++                if (firstseed.data) {
++                    to_hex_str(buf, firstseed.data, firstseed.len);
++                    fprintf(dsaresp, "firstseed = %s\n", buf);
++                }
+                 if (output_g) {
+                     to_hex_str(buf, pqg->base.data, pqg->base.len);
+                     fprintf(dsaresp, "G = %s\n", buf);
+@@ -5697,13 +5714,13 @@
+                     }
+                     fprintf(dsaresp, "%s\n", buf);
+                 } else {
+-                    unsigned int seedlen = vfy->seed.len / 2;
+-                    unsigned int pgen_counter = vfy->counter >> 16;
+-                    unsigned int qgen_counter = vfy->counter & 0xffff;
++                    unsigned int seedlen = (vfy->seed.len - firstseed.len) / 2;
++                    unsigned int pgen_counter = vfy->counter & 0xffff;
++                    unsigned int qgen_counter = vfy->counter >> 16;
+                     /*fprintf(dsaresp, "index = %02x\n", vfy->h.data[0]); */
+-                    to_hex_str(buf, vfy->seed.data, seedlen);
++                    to_hex_str(buf, vfy->seed.data + firstseed.len, seedlen);
+                     fprintf(dsaresp, "pseed = %s\n", buf);
+-                    to_hex_str(buf, vfy->seed.data + seedlen, seedlen);
++                    to_hex_str(buf, vfy->seed.data + firstseed.len + seedlen, seedlen);
+                     fprintf(dsaresp, "qseed = %s\n", buf);
+                     fprintf(dsaresp, "pgen_counter = %d\n", pgen_counter);
+                     fprintf(dsaresp, "qgen_counter = %d\n", qgen_counter);
+@@ -5723,12 +5740,85 @@
+                     vfy = NULL;
+                 }
+             }
+-
++            continue;
++        }
++
++        if (parse_secitem ("P", buf, &P)) {
++            fputs(buf, dsaresp);
++            continue;
++        }
++        if (parse_secitem ("Q", buf, &Q)) {
++            fputs(buf, dsaresp);
++            continue;
++        }
++        if (parse_secitem ("firstseed", buf, &firstseed)) {
++            fputs(buf, dsaresp);
++            continue;
++        }
++        if (parse_secitem ("pseed", buf, &pseed)) {
++            fputs(buf, dsaresp);
++            continue;
++        }
++        if (parse_secitem ("qseed", buf, &qseed)) {
++            fputs(buf, dsaresp);
++            continue;
++        }
++        if (parse_secitem ("index", buf, &index) && type == A_2_3) {
++            SECStatus rv;
++            PLArenaPool *arena;
++
++            fputs(buf, dsaresp);
++
++            arena = PORT_NewArena (NSS_FREEBL_DEFAULT_CHUNKSIZE);
++            pqg = (PQGParams *)PORT_ArenaZAlloc(arena, sizeof(PQGParams));
++            pqg->arena = arena;
++
++            arena = PORT_NewArena (NSS_FREEBL_DEFAULT_CHUNKSIZE);
++            vfy = (PQGVerify *)PORT_ArenaZAlloc(arena, sizeof(PQGVerify));
++            vfy->arena = arena;
++
++            SECITEM_CopyItem(pqg->arena, &pqg->prime, &P);
++            SECITEM_CopyItem(pqg->arena, &pqg->subPrime, &Q);
++
++            SECITEM_AllocItem(vfy->arena, &vfy->seed, firstseed.len + pseed.len + qseed.len);
++            memcpy (vfy->seed.data, firstseed.data, firstseed.len);
++            memcpy (vfy->seed.data + firstseed.len, pseed.data, pseed.len);
++            memcpy (vfy->seed.data + firstseed.len + pseed.len, qseed.data, qseed.len);
++
++            SECITEM_AllocItem(vfy->arena, &vfy->h, 1);
++            vfy->h.data [0] = index.data [0];
++
++            rv = FREEBL_Test_PQG_ParamGenV2_p(L, N, 0, &pqg, &vfy, &firstseed, hashtype);
++            if (rv != SECSuccess) {
++                fprintf(dsaresp,
++                        "ERROR: Unable to verify PQG parameters");
++                goto loser;
++            }
++
++            to_hex_str(buf, pqg->base.data, pqg->base.len);
++            fprintf(dsaresp, "G = %s\n\n", buf);
++
++            PQG_DestroyParams(pqg);
++            pqg = NULL;
++            PQG_DestroyVerify(vfy);
++            vfy = NULL;
+             continue;
+         }
+     }
+ loser:
+     fclose(dsareq);
++    if (P.data)
++        SECITEM_ZfreeItem(&P, PR_FALSE);
++    if (Q.data)
++        SECITEM_ZfreeItem(&Q, PR_FALSE);
++    if (firstseed.data)
++        SECITEM_ZfreeItem(&firstseed, PR_FALSE);
++    if (pseed.data)
++        SECITEM_ZfreeItem(&pseed, PR_FALSE);
++    if (qseed.data)
++        SECITEM_ZfreeItem(&qseed, PR_FALSE);
++    if (index.data)
++        SECITEM_ZfreeItem(&index, PR_FALSE);
+     if (pqg != NULL) {
+         PQG_DestroyParams(pqg);
+     }

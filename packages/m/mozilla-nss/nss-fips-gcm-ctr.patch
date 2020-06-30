@@ -1,0 +1,61 @@
+# HG changeset patch
+# User Hans Petter Jansson <hpj@cl.no>
+# Date 1574234739 -3600
+#      Wed Nov 20 08:25:39 2019 +0100
+# Node ID 5396ffb26887cc0cd42b9f12cc6c8e3dfdaf194b
+# Parent  f5cf5d16deb68e65b5dd4e799d9e8e3098400d62
+[PATCH] 22
+From 41dd171b242b0cb550d12760da110db7e2c21daf Mon Sep 17 00:00:00 2001
+---
+ nss/lib/freebl/gcm.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff -r f5cf5d16deb6 -r 5396ffb26887 lib/freebl/gcm.c
+--- a/lib/freebl/gcm.c	Wed Nov 20 08:23:35 2019 +0100
++++ b/lib/freebl/gcm.c	Wed Nov 20 08:25:39 2019 +0100
+@@ -532,8 +532,14 @@
+     unsigned char tagKey[MAX_BLOCK_SIZE];
+     PRBool ctr_context_init;
+     gcmIVContext gcm_iv;
++    unsigned long long gcm_iv_bytes;
+ };
+ 
++/* NIST SP-800-38D limits the use of GCM with a single IV to 2^39 - 256
++ * bits which translates to 2^32 - 2 128bit blocks or 2^36 - 32 bytes
++ */
++#define MAX_GCM_BYTES_PER_IV    ((1ULL << 36) - 32)
++
+ SECStatus gcm_InitCounter(GCMContext *gcm, const unsigned char *iv,
+                           unsigned int ivLen, unsigned int tagBits,
+                           const unsigned char *aad, unsigned int aadLen);
+@@ -669,6 +675,8 @@
+         goto loser;
+     }
+ 
++    gcm->gcm_iv_bytes = MAX_GCM_BYTES_PER_IV;
++
+     /* finally mix in the AAD data */
+     rv = gcmHash_Reset(ghash, aad, aadLen);
+     if (rv != SECSuccess) {
+@@ -766,6 +774,13 @@
+         return SECFailure;
+     }
+ 
++    /* bail out if this invocation requests processing more than what is
++     * considered to be a safe limit */
++    if (gcm->gcm_iv_bytes < (unsigned long long)inlen) {
++        PORT_SetError(SEC_ERROR_INPUT_LEN);
++        return SECFailure;
++    }
++
+     tagBytes = (gcm->tagBits + (PR_BITS_PER_BYTE - 1)) / PR_BITS_PER_BYTE;
+     if (UINT_MAX - inlen < tagBytes) {
+         PORT_SetError(SEC_ERROR_INPUT_LEN);
+@@ -794,6 +809,7 @@
+         *outlen = 0;
+         return SECFailure;
+     };
++    gcm->gcm_iv_bytes -= inlen;
+     *outlen += len;
+     return SECSuccess;
+ }
