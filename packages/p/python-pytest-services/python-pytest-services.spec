@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-pytest-services
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Services plugin for pytest testing framework
 License:        MIT
