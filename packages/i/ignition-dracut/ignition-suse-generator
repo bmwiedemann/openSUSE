@@ -6,22 +6,13 @@ set -e
 
 UNIT_DIR="${1:-/tmp}"
 
-add_requires() {
-    local name="$1"; shift
-    local requires_dir="${UNIT_DIR}/ignition-files.service.requires"
-    mkdir -p "${requires_dir}"
-    ln -sf "../${name}" "${requires_dir}/${name}"
-}
+# Call upstream generator
+. /usr/lib/systemd/system-generators/ignition-generator
+. /run/ignition.env
 
-add_requires ignition-mount-initrd-fstab.service
+add_requires ignition-mount-initrd-fstab.service ignition-files.service
 
-# Overwrite static /boot dependency by upstream igniton-dracut with a more
-# generic "ignition" device to fetch the user configuration; can not be put
-# into UNIT_DIR, as systemd generators are running simultaneously, so use a
-# directory with a higher priority. May still be overwritten by the admin by
-# putting the same file into /etc.
-mkdir -p "/run/systemd/system/ignition-setup-user.service.d"
-cat > "/run/systemd/system/ignition-setup-user.service.d/diskful.conf" <<EOF
+cat > "${UNIT_DIR}/ignition-setup-user.service.d/diskful.conf" <<EOF
 [Unit]
 Wants=dev-disk-by\x2dlabel-ignition.device
 After=dev-disk-by\x2dlabel-ignition.device
@@ -30,3 +21,14 @@ After=dev-disk-by\x2dlabel-ignition.device
 ExecStart=
 ExecStart=/usr/sbin/ignition-setup-user-suse
 EOF
+
+if [ -z "${PLATFORM_ID}" ]; then
+    platform="$(virt-what)"
+    case "${platform}" in
+        *vmware*)     platform="vmware" ;;
+        *virtualbox*) platform="virtualbox" ;;
+        *kvm*|*qemu*) platform="qemu" ;;
+        *)            platform="metal" ;;
+    esac
+    echo "PLATFORM_ID=${platform}" > /run/ignition.env
+fi

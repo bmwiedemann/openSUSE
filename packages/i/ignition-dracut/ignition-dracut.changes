@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 29 13:48:31 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Overwrite Ignition's systemd generator by putting a file of the
+  same name into /etc/systemd/systemd-generators (instead of
+  installing a second generator) and source the original generator
+  from there; this will remove some redundant code.
+- Move autodetection of platform from %post script to initrd
+  generator; this will remove the hack to modify /etc/default/grub
+  with sed [boo#1149701]
+- Overwrite generated diskful.conf instead of installing another
+  one with higher priority
+
+-------------------------------------------------------------------
 Fri Jun 19 11:54:02 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Split ignition.firstboot handling into a subpackage which does

@@ -1,19 +1,24 @@
 Changes for openSUSE / SLE:
 
-* ignition-mount-initrd-fstab.service / ignition-suse-generator:
-  By default Ignition will only mount partitions or subvolumes explicitly
-  mentioned in the Ignition configuration. On SUSE, however, the system
+* ignition-mount-initrd-fstab.service:
+  Upstream Ignition will only mount partitions or subvolumes explicitly
+  mentioned in the Ignition configuration. A default SUSE system, however,
   is split over several subvolumes, and most users won't want to define
-  all the partitions again. A lot of core functionality however (e.g.
+  all the partitions again. On the other hand a lot of core functionality (e.g.
   configuring a SSH certificate for the root user or adding a configuration
   file) requires access to those subvolumes.
   For better usability in addition to Ignition's own mount / umount stage all
-  files systems tagged for being mounted in the initrd ("x-initrd.mount mount
+  files systems tagged for being mounted in the initrd ("x-initrd.mount" mount
   flag) will automatically be mounted / umounted.
 * ignition-setup-user-suse.sh / ignition-userconfig-timeout*.conf:
   The user configuration can be stored on a device with the label "ignition"
   (e.g. by attaching a USB flash drive with that name) instead of putting the
   file onto the root partition.
+* ignition-suse-generator:
+  Supplements the upstream generator by adding dependencies to
+  ignition-setup-user-suse.sh and ignition-mount-initrd-fstab.service.
+  Additionally it will try to autodect the platform if it is not set on the
+  kernel command line.
 * 02_ignition_firstboot:
   This file has been part of upstream ignition-dracut, but has since then been
   moved to a static CoreOS specific configuration

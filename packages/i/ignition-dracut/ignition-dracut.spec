@@ -39,8 +39,10 @@ Patch3:         0003-Disable-resetting-UUID.patch
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-bootloader-rpm-macros
 Requires:       %{name}-grub2
+Requires:       dmidecode
 Requires:       gptfdisk
 Requires:       ignition
+Requires:       virt-what
 %{update_bootloader_requires}
 
 %description
@@ -58,7 +60,6 @@ Group:          System/Management
 Requires:       grub2
 Requires(post): grub2
 Requires(post): sed
-Requires(post): virt-what
 
 %description grub2
 GRUB2 configuration which sets ignition.firstboot based on
@@ -114,26 +115,12 @@ fi
 %service_add_pre ignition-firstboot-complete.service
 
 %post grub2
-if [ "$1" = 1 ] ; then
-    platform="$(virt-what)"
-    case "${platform}" in
-        *vmware*)     platform="vmware" ;;
-        *virtualbox*) platform="virtualbox" ;;
-        *kvm*|*qemu*) platform="qemu" ;;
-        *)            platform="metal" ;;
-    esac
-    sed -i 's/^\(GRUB_CMDLINE_LINUX_DEFAULT="\)\(.*\)/\1ignition.platform.id='${platform}' \\$ignition_firstboot \2/' %{_sysconfdir}/default/grub
-    %{?update_bootloader_refresh_post}
-fi
 %service_add_post ignition-firstboot-complete.service
 
 %preun grub2
 %service_del_preun ignition-firstboot-complete.service
 
 %postun grub2
-if [ "$1" = 0 ] ; then
-    sed -i -E '/^GRUB_CMDLINE_LINUX_DEFAULT="/s/(\\\$)?ignition[._][^[:space:]"]+ ?//g' %{_sysconfdir}/default/grub
-fi
 %service_del_postun -n ignition-firstboot-complete.service
 
 %posttrans grub2

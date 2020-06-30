@@ -14,10 +14,10 @@ install() {
     inst_simple "$moddir/prevent-boot-cycle.conf" \
 	"$systemdsystemunitdir/ignition-complete.target.d/prevent-boot-cycle.conf"
     inst_simple "$moddir/ignition-suse-generator" \
-        "$systemdutildir/system-generators/ignition-suse-generator"
+        "/etc/systemd/system-generators/ignition-generator"
     inst_script "$moddir/ignition-setup-user-suse.sh" \
         "/usr/sbin/ignition-setup-user-suse"
-    inst_multiple awk
+    inst_multiple awk virt-what /usr/lib/virt-what-cpuid-helper id which dmidecode
 }
 
 installkernel() {
