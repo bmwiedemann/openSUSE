@@ -18,13 +18,15 @@
 
 %define main_version 2020.1
 Name:           FlightGear
-Version:        %{main_version}.2
+Version:        %{main_version}.3
 Release:        0
 Summary:        Flight Simulator
 License:        GPL-2.0-only
 Group:          Amusements/Games/3D/Simulation
 URL:            https://www.flightgear.org/
 Source0:        https://sourceforge.net/projects/flightgear/files/release-%{main_version}/flightgear-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM
+Patch0:         Fix_language_detection.patch
 
 BuildRequires:  SimGear-devel = %{version}
 BuildRequires:  cmake
@@ -32,6 +34,7 @@ BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_headers-devel
+BuildRequires:  libevent-devel
 BuildRequires:  pkgconfig
 BuildRequires:  plib-devel
 BuildRequires:  sqlite3-devel
@@ -42,6 +45,8 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(speex)
+BuildRequires:  pkgconfig(speexdsp)
 
 # Additional dependencies to enable FlightGear's new Qt launcher interface
 BuildRequires:  cmake(Qt5Network)
@@ -60,6 +65,7 @@ expanded and improved upon by anyone interested in contributing
 
 %prep
 %setup -q -n flightgear-%{version}
+%patch0 -p1
 
 # remove some unneeded doc files
 for ext in Cygwin IRIX Joystick Linux MSVC MSVC8 MacOS SimGear Unix Win32-X autoconf mingw plib src xmlsyntax; do
@@ -76,7 +82,8 @@ done
     -DENABLE_GPSSMOOTH:BOOL=OFF \
     -DENABLE_FGVIEWER:BOOL=OFF \
     -DENABLE_FGELEV:BOOL=OFF \
-    -DENABLE_METAR:BOOL=OFF
+    -DOpenGL_GL_PREFERENCE=GLVND \
+    -DENABLE_METAR:BOOL=ON
 %cmake_build
 
 %install
