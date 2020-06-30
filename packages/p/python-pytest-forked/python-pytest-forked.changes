@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 29 09:51:58 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.2.0
+  * Add limited support for xfail marker (issue #33 / PR #34).
+  * Fix support for pytest 5.4.0+ (issue #30 / PR #32).
+  * Drop support for Python 3.4 as it is EOL (PR #39).
+- Drop patch pytest5-compat.patch
+
+-------------------------------------------------------------------
 Tue May 12 22:51:08 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add pytest5-compat.patch to make the test suite compatible
