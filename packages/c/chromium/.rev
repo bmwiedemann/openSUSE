@@ -3006,4 +3006,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
   * CVE-2020-6507: Out of bounds write in V8</comment>
     <requestid>816970</requestid>
   </revision>
+  <revision rev="260" vrev="2">
+    <srcmd5>9891fde67b22b15fbb52957c5fe6a71f</srcmd5>
+    <version>83.0.4103.116</version>
+    <time>1593546897</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817775</requestid>
+  </revision>
 </revisionlist>

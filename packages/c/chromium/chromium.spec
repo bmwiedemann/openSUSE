@@ -235,6 +235,7 @@ Obsoletes:      chromium-ffmpegsumo
 ExcludeArch:    %{ix86} %{arm} ppc ppc64 ppc64le s390 s390x
 %if %{with pipewire}
 BuildRequires:  pkgconfig(libpipewire-0.3)
+BuildRequires:  pkgconfig(libspa-0.2)
 %endif
 %if %{with wayland}
 BuildRequires:  pkgconfig(wayland-client)

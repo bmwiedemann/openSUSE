@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 28 02:27:12 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Refresh build-with-pipewire-0.3.patch to mirror similar patch
+  by Fedora for Firefox; screen-capture wasn't actually working
+  with the previous version of the patch.
+- Add BuildRequires: pkgconfig(libspa-2.0) when building with
+  pipewire support to guard against potential package splitting
+  off of pipewire-spa-devel from pipewire-devel.
+
+-------------------------------------------------------------------
 Thu Jun 25 07:12:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable the LTO again as it still OOMs quite often
