@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 30 00:36:12 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.2.0:
+  * before_sleep_log: Add an exc_info option to include exception tracebacks
+  * docs: fix duplicate function names (#226)
+  * AsyncRetrying can use an async iterator (#222)
+  * Add minimal type definitions for @retry decorator (#221)
+- Add typguard to BuildRequires
+
+-------------------------------------------------------------------
 Mon Apr 20 09:03:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

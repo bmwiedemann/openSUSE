@@ -123,4 +123,17 @@
     <comment>- Fix build without python2</comment>
     <requestid>795716</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>48dd6728ac7d35547842d9dd267a2e1b</srcmd5>
+    <version>6.2.0</version>
+    <time>1593547086</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.2.0:
+  * before_sleep_log: Add an exc_info option to include exception tracebacks
+  * docs: fix duplicate function names (#226)
+  * AsyncRetrying can use an async iterator (#222)
+  * Add minimal type definitions for @retry decorator (#221)
+- Add typguard to BuildRequires</comment>
+    <requestid>817787</requestid>
+  </revision>
 </revisionlist>

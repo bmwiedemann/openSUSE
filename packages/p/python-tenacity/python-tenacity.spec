@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  python2
 Name:           python-tenacity
-Version:        6.1.0
+Version:        6.2.0
 Release:        0
 Summary:        Python module for retrying code until it succeeeds
 License:        Apache-2.0
@@ -31,6 +31,7 @@ BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  %{python_module tornado}
+BuildRequires:  %{python_module typeguard}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six >= 1.9.0
