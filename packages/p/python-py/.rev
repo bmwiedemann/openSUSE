@@ -394,4 +394,12 @@
     Windows when dealing with symlinks.</comment>
     <requestid>761141</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8d532bc57a6615ce353f9a63553c116a</srcmd5>
+    <version>1.9.0</version>
+    <time>1593546855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817669</requestid>
+  </revision>
 </revisionlist>

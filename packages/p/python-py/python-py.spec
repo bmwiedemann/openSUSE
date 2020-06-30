@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-py%{psuffix}
-Version:        1.8.1
+Version:        1.9.0
 Release:        0
 Summary:        Library with cross-python path, ini-parsing, io, code, log facilities
 License:        MIT
