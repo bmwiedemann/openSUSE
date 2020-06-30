@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 29 11:43:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not disable py2 build for Leap
+- Use pytest directly, pytest-runner is deprecated upstream
+
+-------------------------------------------------------------------
 Sat Jun 20 08:15:08 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update in SLE-15 (bsc#1121858)

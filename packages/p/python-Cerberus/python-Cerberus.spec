@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-Cerberus
 Version:        1.3.2
 Release:        0
@@ -29,7 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/C/Cerberus/Cerber
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION tests
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 BuildArch:      noarch
@@ -52,9 +51,7 @@ validation.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_expand rm -rf _build*/ build/
-$python setup.py test
-}
+%pytest
 
 %files %{python_files}
 %doc README.rst UPGRADING.rst AUTHORS
