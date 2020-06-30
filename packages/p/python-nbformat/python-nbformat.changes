@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 28 19:07:15 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.0.7:
+  * Fixed a bug where default values for validator.get_validator()
+    failed with an import error
+
+-------------------------------------------------------------------
 Sat May  2 20:16:36 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 5.0.6:

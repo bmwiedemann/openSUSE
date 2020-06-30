@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define doc_ver 5.0.4
 Name:           python-nbformat
-Version:        5.0.6
+Version:        5.0.7
 Release:        0
 Summary:        The Jupyter Notebook format
 License:        BSD-3-Clause
