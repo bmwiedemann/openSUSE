@@ -32,7 +32,7 @@ of the installation source setup. Installation of this package does
 not make sense.
 
 %package kubeadm
-Summary:        kubeadm Stack
+Summary:        Kubernetes kubeadm Stack
 Group:          Metapackages
 Provides:       pattern() = kubeadm
 Provides:       pattern-category() = Containers
@@ -127,7 +127,7 @@ Requires:       pattern() = container_runtime_kubernetes
 Requires:       pattern() = kubeadm
 
 %description kubic_admin
-This pattern installs the the software required for an openSUSE Kubic Admin Node.
+This pattern installs the software required for an openSUSE Kubic Admin Node.
 
 %package kubic_worker
 Summary:        Kubic Worker Node

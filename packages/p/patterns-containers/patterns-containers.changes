@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 29 09:50:02 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Remove duplicate word in description of kubic_admin pattern
+- Fix Summary of kubeadm pattern to start with a capital letter 
+
+-------------------------------------------------------------------
 Wed Apr 22 15:43:20 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Require containers-systemd for container-runtime pattern 
