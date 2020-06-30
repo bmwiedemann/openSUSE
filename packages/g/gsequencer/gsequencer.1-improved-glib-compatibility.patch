@@ -1,6 +1,6 @@
---- configure.ac.orig	2020-06-07 00:44:49.780581237 +0200
-+++ configure.ac	2020-06-07 00:46:14.617504085 +0200
-@@ -340,23 +340,23 @@
+--- configure.ac.orig	2020-06-28 06:45:52.219135439 +0200
++++ configure.ac	2020-06-28 06:46:54.720493269 +0200
+@@ -340,11 +340,11 @@
  AC_SUBST(FFTW_CFLAGS)
  AC_SUBST(FFTW_LIBS)
  
@@ -14,8 +14,9 @@
  AC_SUBST(GOBJECT_CFLAGS)
  AC_SUBST(GOBJECT_LIBS)
  
- AC_DEFINE([HAVE_GLIB_2_6], [1], [GLib 2.6 available])
+@@ -352,12 +352,12 @@
  AC_DEFINE([HAVE_GLIB_2_44], [1], [GLib 2.44 available])
+ AC_DEFINE([HAVE_GLIB_2_52], [1], [GLib 2.52 available])
  AC_DEFINE([HAVE_GLIB_2_54], [1], [GLib 2.54 available])
 -AC_DEFINE([HAVE_GLIB_2_56], [1], [GLib 2.56 available])
 +AC_DEFINE([HAVE_GLIB_2_56], [0], [GLib 2.56 available])

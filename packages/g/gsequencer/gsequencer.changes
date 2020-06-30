@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 28 04:28:20 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.4.9 compute phase using fmod() in
+  ags_filter_util.c
+
+-------------------------------------------------------------------
 Wed Jun 24 21:19:55 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.4.6 fixed sscanf call with wrong signed integer
