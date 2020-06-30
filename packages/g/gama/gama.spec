@@ -1,7 +1,7 @@
 #
 # spec file for package gama
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gama
-Version:        2.07
+Version:        2.08
 Release:        0
 Summary:        Adjustment of geodetic networks
 License:        GPL-3.0-or-later
@@ -47,7 +47,7 @@ Adjustment in local Cartesian coordinate systems is fully supported by a command
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
