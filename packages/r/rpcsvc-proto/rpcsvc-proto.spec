@@ -1,7 +1,7 @@
 #
 # spec file for package rpcsvc-proto
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           rpcsvc-proto
-Version:        1.4
+Version:        1.4.2
 Release:        0
 Summary:        RPC protocol definitions
 License:        BSD-3-Clause
 Group:          System/Libraries
-Url:            http://github.com/thkukuk/rpcsvc-proto
+URL:            http://github.com/thkukuk/rpcsvc-proto
 Source:         %{name}-%{version}.tar.xz
 
 %description
