@@ -1733,4 +1733,13 @@
     <comment></comment>
     <requestid>815876</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>1f5c34d2610567c911c517859416ce94</srcmd5>
+    <version>3.5.4</version>
+    <time>1593546929</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.5.4
+successfully tested on Tumbleweed x86_64</comment>
+    <requestid>817783</requestid>
+  </revision>
 </revisionlist>

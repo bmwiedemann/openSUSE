@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun 29 18:44:13 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Update to 3.5.4:
+  * The connection_reuse attribute in smtp_tls_policy_maps always
+    resulted in an "invalid attribute name" error.
+  * SMTP over TLS connection reuse always failed for Postfix SMTP
+    client configurations that specify explicit trust anchors (remote
+    SMTP server certificates or public keys).
+  * The Postfix SMTP client's DANE implementation would always send
+    an SNI option with the name in a destination's MX record, even
+    if the MX record pointed to a CNAME record. MX records that
+    point to CNAME records are not conformant with RFC5321, and so
+    are rare.
+    Based on the DANE survey of ~2 million hosts it was found that
+    with the corrected SMTP client behavior, sending SNI with the
+    CNAME-expanded name, the SMTP server would not send a different
+    certificate. This fix should therefore be safe.
+
+-------------------------------------------------------------------
 Mon Jun 15 16:09:57 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to 3.5.3:
