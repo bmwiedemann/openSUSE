@@ -76,4 +76,12 @@
   * 0001-qstring-allocations-Fix-unit-tests-with-llvm-10.patch</comment>
     <requestid>800164</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d81f336fe18d0ecb4be026262ef5edf5</srcmd5>
+    <version>1.7</version>
+    <time>1593548741</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817925</requestid>
+  </revision>
 </revisionlist>

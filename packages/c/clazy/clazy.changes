@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun 30 09:18:36 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 1.7:
+  * New Checks:
+    - overloaded signal
+    - invalid JNI signatures
+    - qstring-comparison-to-implicit-char
+    - qt6-qlatin1string-to-u
+  * connect-non-signal: Fix case where it didn't find the pmf
+  * qstring-arg warns when using QLatin1String::arg(int), as it casts to QChar
+  * Building clazy itself is 30% faster
+  * heap-allocated-small-trivial-type: less false-positives
+- Drop patches merged upstream:
+  * cmake-clang-cpp.patch
+  * 0001-Fix-build-issues-using-llvm-10.0.0.patch
+  * 0001-qstring-allocations-Fix-unit-tests-with-llvm-10.patch
+
+-------------------------------------------------------------------
 Mon May  4 18:19:03 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch:

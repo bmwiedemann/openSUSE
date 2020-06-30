@@ -17,22 +17,17 @@
 
 
 Name:           clazy
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        Qt oriented code checker based on the Clang framework
 License:        LGPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://www.kdab.com/clazy-video/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
-Patch0:         cmake-clang-cpp.patch
-Patch1:         0001-Fix-build-issues-using-llvm-10.0.0.patch
-Patch2:         0001-qstring-allocations-Fix-unit-tests-with-llvm-10.patch
 BuildRequires:  clang
-BuildRequires:  clang-devel >= 3.9
-BuildRequires:  cmake >= 3.0
+BuildRequires:  clang-devel >= 5.0
+BuildRequires:  cmake >= 3.7
 BuildRequires:  libstdc++-devel
-BuildRequires:  pkgconfig(ncurses)
-BuildRequires:  pkgconfig(zlib)
 
 %description
 clazy is a compiler plugin which allows Clang to understand Qt semantics.
@@ -44,8 +39,6 @@ allocations to misusage of API, including fix-its for automatic refactoring.
 
 %build
 %define _lto_cflags %{nil}
-export CXXFLAGS="`echo %{optflags} | sed 's#-fstack-clash-protection##'`"
-export CFLAGS="$CXXFLAGS"
 
 %cmake
 
