@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jun 28 21:15:38 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Added a _service file, as per new OBS requirement
+- Added a patch to bring sysfsutils up to latest upstream, which
+  now is in place:
+  * sysfsutils-latest-changes.diff.gz
+- Added patches which have been submitted upstream but not yet
+  merged:
+  * 0001-Fix-compiler-complain-about-multiple-defs-of-my_stdo.patch
+  * 0002-Fix-compiler-complaint-about-string-truncation.patch
+  * 0003-Fix-more-string-issues-for-gcc-10.patch
+  And removing a patch that's subsumed by the above patches:
+  * sysfsutils-fix-compiler-issues.patch
+  Lastly, replaced the hand-rolled sysfsutils-2.1.0.tar.gz with
+  upstream archive file sysfsutils-sysfsutils-2_1_0.tar.gz
+  (retreived with OBS download service), though the contents
+  of the two are the same.
+
+-------------------------------------------------------------------
 Mon Apr 27 19:28:46 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Enable -fcommon in order to fix boo#1160295.
