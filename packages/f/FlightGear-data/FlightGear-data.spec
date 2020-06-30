@@ -18,7 +18,7 @@
 
 %define main_version 2020.1
 Name:           FlightGear-data
-Version:        %{main_version}.2
+Version:        %{main_version}.3
 Release:        0
 Summary:        FlightGear base scenery and data files
 License:        GPL-2.0-only
@@ -64,14 +64,14 @@ find . -type f -name \*\.bat -print -delete
 # Remove some development files for the Cessna C172p
 rm -Rf ./Aircraft/c172p/dev/
 # Translation sources (xliff)
-find . -type f -name \*FlightGear-nonQt.xlf -print -delete
+find . -type f -name \*FlightGear-*Qt.xlf -print -delete
 # More source files
 find . -type f -name \*\.zip -print -delete
 find . -type f -name \*\.blend -print -delete
 # Unbundle fonts
 pushd ./Fonts/LiberationFonts/
 for font in Liberation*ttf ; do
-  rm $font 
+  rm $font
   ln -s %{_datadir}/fonts/truetype/$font $font
 done
 
