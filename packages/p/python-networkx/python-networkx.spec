@@ -27,6 +27,7 @@ URL:            https://networkx.github.io/
 Source:         https://files.pythonhosted.org/packages/source/n/networkx/networkx-%{version}.tar.gz
 # UPSTREAM PATCH: gh#networkx/networkx#3724
 Patch0:         numpy-38-test.patch
+# UPSTREAM PATCH: gh#networkx/networkx#3697
 Patch1:         matplotlib.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module decorator >= 3.4.0}
@@ -101,9 +102,8 @@ popd
 }
 
 %check
-# test excluded because it leads to crashes on i586, gh#networkx/networkx#3304
-# TestKatzCentralityDirectedNumpy fails on git master atm too
-%pytest -n auto -k 'not test_subgraph_centrality_big_graph and not TestKatzCentralityDirectedNumpy'
+# gh#networkx/networkx#4030 TestKatzCentralityDirectedNumpy failing
+%pytest -n auto -k 'not TestKatzCentralityDirectedNumpy'
 
 %files %{python_files}
 %license LICENSE.txt

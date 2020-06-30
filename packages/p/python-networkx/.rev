@@ -202,4 +202,13 @@
 - Skip two tests that keep failing everywhere</comment>
     <requestid>790492</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>b731c4306b3a3b308b7c51aca12a36ac</srcmd5>
+    <version>2.4</version>
+    <time>1593546890</time>
+    <user>dimstar_suse</user>
+    <comment>- Skipping over test_subgraph_centrality_big_graph is not
+  necessary anymore (gh#networkx/networkx#3304)</comment>
+    <requestid>817741</requestid>
+  </revision>
 </revisionlist>
