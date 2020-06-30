@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue Jun 30 09:26:41 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add unpackaged LICENSE and test/eckey.pem file
+  (gh#Pr0Ger/PyAPNs2#110 and gh#Pr0Ger/PyAPNs2#111)
+
+-------------------------------------------------------------------
+Sun Jun  7 06:29:24 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.7.1
