@@ -1,7 +1,7 @@
 #
 # spec file for package python-infinity
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  test
 Name:           python-infinity
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        All-in-one infinity value for Python
 License:        BSD-3-Clause
@@ -58,7 +58,6 @@ All-in-one infinity value for Python. Can be compared to any object.
 %endif
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc CHANGES.rst README.rst
 %license LICENSE
 %{python_sitelib}/*
