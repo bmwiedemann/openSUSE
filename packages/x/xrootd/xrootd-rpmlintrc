@@ -1,0 +1,3 @@
+addFilter("devel-file-in-non-devel-package .*/libXrdPosixPreload.so")
+addFilter("no-soname .*/lib.*-[0-9]+.so")
+addFilter("xrootd.*-libs\..* shlib-policy-missing-suffix")

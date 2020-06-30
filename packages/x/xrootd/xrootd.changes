@@ -1,4 +1,184 @@
 -------------------------------------------------------------------
+Thu May 28 21:02:06 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.12.1:
+  * [XrdXrootdVoms] Fix run-time lib dependencies.
+  * [xrdcp] Don't create unwanted dir if --recursive option was
+    used and the source is a file.
+- Changes from version 4.12.0:
+  * New Features:
+    - [Server] User redirector to find directory to be listed (R5
+      backport).
+    - [XrdCl] More effective error recovery policy when the source
+      is a metalink.
+    - [xrdcp] Implement bandwidth limiting (--xrate option).
+    - [xrdcp] Implement ability to continue interrupted transfer
+      (--continue).
+    - [xrdcp/Python] Add an option (--zip-mtln-cksum) to use the
+      checksum from a metalink with files extracted from ZIP
+      archives.
+    - [xrdcp/Python] Automatically infer checksum type if asked
+      to.
+    - [xrdcp/Python] Add an option (--rm-bad-cksum) to
+      automatically remove destination file if the checksum check
+      failed.
+  * Bug fixes:
+    - [Server] Correct sequencing of an async close to prevent a
+      SEGV.
+    - [Server] Add missing initializer to avoid TPC SEGV on busy
+      systems.
+    - [Server] Initialize the XrdAccEntityInfo structure.
+    - [XrdHttp] Fix MKCOL response when we have an EEXIST.
+    - [XrdHttp] Periodically reload verify cert store.
+    - [XrdHttp] Disable session cache.
+    - [XrdCl] Don't set on-connection handler for local files.
+    - [XrdCl] Don't set the stream error window for auth errors.
+    - [XrdCl] Fix race condition resulting in dangling pointer to
+      SidMgr.
+    - [XrdCl] Make Channel operations thread-safe in respect to
+      ForceDisconnect.
+  * [CMake] Repleace XRootD find module with config module.
+  * [RPM/CMake] Don't build XrdCns.
+  * [Packaging] Add xrootd-voms and xrootd-voms-devel packages
+    equivalent.
+  * [Packaging] Add additional private headers for vomsxrd to the
+    vomsxrd packages.
+  * [Python] Support PyPy.
+- Only package the COPYING.LGPL file and drop all extraneous
+  COPYING* files; the LICENSE file makes it clear that the
+  software is licensed under LGPL-3.0-or-later.
+
+-------------------------------------------------------------------
+Fri Apr  3 01:40:54 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.11.3:
+  * [Server] Avoid SEGV when skipping over large if/else/fi
+    blocks.
+  * [XrdHttp] Fix curl speed limit to be really around 10KB/s.
+  * [xrootdfs] Make sure xrootdfs_create() checks return code of
+    xrootdfs_do_create().
+  * [XrdHttp] Change the default ssl cipher.
+  * [XrdHttp] Enable elliptic-curve support for OpenSSL 1.0.2+.
+  * [XrdHttp] Use Mozilla cipher list only with OpenSSL 1.0.2+.
+  * [XrdCl] When xrdcp reports an error refine the message so it
+    is clear whether the erros comes from the source or
+    destination.
+  * [XrdCl] Make sure on error local redirect is not retried
+    infinitely.
+  * [XrdXrootdConfig] Fixed wrong segsz parameter.
+  * [XrdHttp] Give a chance to map the issuer name in the case of
+    a proxy certificate (needed to accommodate systems that do
+    user mapping, e.g. eos)
+  * [XrdHttp] Fix the logic for determining SecEntity.name.
+  * [XrdHttp] Don't overwrite SecEntity.name after the gridmap
+    phase.
+  * [xrootdfs] Make sure xrootdfs_create() does check the return
+    code of xrootdfs_do_create().
+  * [XrdSecgsi] In the case of delegation, give client a chance to
+    use XrdSecGSISRVNAMES to limit where it is being redirected
+    to.
+  * [Python] Make rpath relative to the module.
+  * [Debian] Proper Debian pkg naming.
+  * [XrdCl] Use glibc semaphores for rhel>=7.
+  * [Server] Export pointers to Acc, Ofs, and Sfs plugin into the
+    XrdEnv.
+  * [XrdMacaroons] Use env ptrs to get authorize obj.
+- Changes from versions 4.11.0 through 4.11.2:
+  * See
+    https://github.com/xrootd/xrootd/blob/v4.11.3/docs/ReleaseNotes.txt.
+- Remove a spurious 'exit 0' line from %pre scriptlet.
+- Recommend logrotate for xrootd-server as it installs a file in
+  /etc/logrotate.d/.
+- Use ninja for building:
+  * Add BuildRequires: ninja.
+  * Use %cmake_build instead of make.
+  * Define __builder to ninja so cmake uses ninja instead of make
+    for building.
+
+-------------------------------------------------------------------
+Mon Aug 19 12:10:46 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.10.0:
+  * New Features
+    - [POSIX] Add methods to the cache mngt objecT to get status
+      of a cached file.
+    - [Server] Add xrd.network dyndns option for dynamic DNS
+      handling.
+    - [Server] Properly handle dynamic DNS environments.
+    - [Server] Add evict option to the prepare request.
+    - [Server] Allow better handling for proxy caching clusters.
+    - [Server] Allow configurable posc sync level.
+    - [Server] Implement framework for a kXR_prepare plug-in.
+    - [XrdCl] Implement streaming dirls, closes #225
+    - [XrdCl] Retry policy changes: see details in #950.
+    - [XrdCl] Add switch/flag to enforce zip archive listing.
+    - [XrdCl] Preserve tried/triedrc cgi info on redirect for
+      kXR_locate request, #closes #944
+    - [XrdCl] Implement prepare evict and expose in xrdfs.
+    - [XrdCl] Expose prepare abort and query prepare.
+    - [XrdCl] Add tpc.scgi if delegation is being used.
+    - [Python] Expose chunked dirlist API in Python.
+    - [Python] Support globbing.
+    - [XrdClHttp] Add XrdClHttp submodule.
+    - [XCache] Implement write-queue number of blocks / threads
+      config options. (#963)
+    - [CMake] Add switch for XrdCl builds only.
+  * Major bug fixes:
+    - [XrdCl] Allow to cancel classical copy jobs.
+    - [XrdCl] Fix race condition in error recovery.
+    - [XrdCl] Prevent race condition between Request T/O and
+      socket read.
+    - [XCache] Check for errors during XrdOssFile::FSync - do not
+      write cinfo file if it fails.
+    - [XCache] Deny write access to a file in initial Prepare()
+      call, fixes #663
+    - [XCache] Review and correct error handling in POSIX and
+      XCache, implement XCache::Unlink()
+    - [XrdTpc] Always query dual stack for HTTP TPC.
+    - [XrdTpc] Do not include authz header in the filename.
+    - [XrdTpc] Add curl handle cleanup on redirections or errors.
+    - [XrdHttp] Include provided opaque information in the
+      redirection.
+    - [XrdHttp] Fix digest names returned to clients.
+    - [XrdHttp] Fix opaque info handling on redirections.
+    - [XrdMacaroon] Fix macaroon authorization config.
+    - [XrdSecgsi] Make proxy cache path aware.
+    - [XrdSecgsi] XrdSecProtocolgsi::Encrypt - set IV correctly
+      and report correct size.
+  * Minor bug fixes and miscellaneous changes: see
+    https://github.com/xrootd/xrootd/blob/master/docs/ReleaseNotes.txt
+- Use github URL for source tarball.
+- Replace xrootd-devel by xroots-libs-devel for
+  xrootd-server-devel's Requires; xrootd-devel does not exist.
+
+-------------------------------------------------------------------
+Thu Jan 17 19:02:48 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Disable ceph since linking to it fails.
+
+-------------------------------------------------------------------
+Wed Dec 19 10:49:19 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim long repeated descriptions in subpackages.
+- Trim future aims. Run fdupes over all of the usr subvolume.
+
+-------------------------------------------------------------------
+Wed Dec  5 16:29:57 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 4.8.5
+- Remove upstream-included xrootd-gcc6-fix.patch
+- Remove unneeded xrootd-gcc8-fix.patch
+- Merge cl and cl-devel subpackages into client and client-devel
+  subpackages, respectively, to match upstream
+- Split client and server libraries into subpackages to simplify
+  dependencies, simplify installation, and better match upstream.
+- Switch to cmake-based install
+- Switch from sysv-init to systemd.
+- Build and package python3 bindings
+- Build and package ceph storage backend
+- Build and package documentation
+
+-------------------------------------------------------------------
 Sun Jul  1 08:16:43 UTC 2018 - bugs@vdm-design.de
 
 - Add patch xrootd-gcc8-fix.patch to fix build with gcc8

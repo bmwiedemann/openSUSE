@@ -1,7 +1,7 @@
 #
 # spec file for package xrootd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,412 +12,551 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+%bcond_with    ceph
+
+%if 0%{?sle_version} < 150000 && !0%{?is_opensuse}
+%bcond_with    libc_semaphore
+%else
+%bcond_without libc_semaphore
 %endif
 
+%define __builder ninja
+
 Name:           xrootd
-Version:        3.3.6
+Version:        4.12.1
 Release:        0
-Summary:        An eXtended Root Daemon (xrootd)
+%define plugver 4
+Summary:        An eXtended Root Daemon
 License:        LGPL-3.0-or-later
 Group:          System/Daemons
-Url:            http://xrootd.org/
-Source0:        http://xrootd.org/download/v%{version}/xrootd-%{version}.tar.gz
-Source1:        xrootd
-Source2:        cmsd
-Source3:        frm_xfrd
-Source4:        frm_purged
-# PATCH-FIX-OPENSUSE xrootd-gcc6-fix.patch bnc#985167 -- fixes build with gcc6, patch included in upstream version 4.3.0
-Patch0:         xrootd-gcc6-fix.patch
-# FATCH-FIX-OPENSUSE xrootd-gcc8-fix.patch -- fixes build with gcc8
-Patch1:         xrootd-gcc8-fix.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            http://xrootd.org/
+Source0:        https://github.com/xrootd/xrootd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source100:      xrootd-rpmlintrc
 BuildRequires:  cmake >= 2.8
+BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  fuse-devel
 BuildRequires:  gcc-c++
-BuildRequires:  glibc-devel
-BuildRequires:  krb5-devel
-BuildRequires:  libxml2-devel
+BuildRequires:  graphviz
+BuildRequires:  graphviz-gd
+BuildRequires:  graphviz-gnome
 BuildRequires:  ncurses-devel
-BuildRequires:  openssl-devel
+BuildRequires:  ninja
+BuildRequires:  pkgconfig
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  readline-devel
 BuildRequires:  swig
-BuildRequires:  zlib-devel
+BuildRequires:  systemd
+BuildRequires:  systemd-devel
+BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(fuse)
+BuildRequires:  pkgconfig(krb5)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(uuid)
+BuildRequires:  pkgconfig(zlib)
+%if %{with libc_semaphore}
+BuildRequires:  glibc-devel >= 2.21
+%else
+BuildRequires:  glibc-devel
+%endif
+%if %{with ceph}
+BuildRequires:  librados-devel
+BuildRequires:  libradosstriper-devel
+%endif
 %if 0%{?suse_version} >= 1500
-BuildRequires:  libtirpc-devel
+BuildRequires:  pkgconfig(libtirpc)
 %endif
 
 %description
-The eXtended Root Daemon
+The XROOTD project gives access to data repositories.
+The typical usage is to give access to file-based ones. It is
+based on a scalable architecture, a communication protocol, and
+a set of plugins and tools based on those. The ability to
+configure it and to make it scale (for size and performance)
+allows the deployment of data access clusters of virtually any
+size, which can include sophisticated features, like
+authentication/authorization, integrations with other systems,
+WAN data distribution, etc.
 
-%prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1
-%patch1 -p1
+The XRootD software framework is a generic suite for data access,
+which can serve natively any kind of data, organized as a
+hierarchical filesystem-like namespace, based on the concept
+of a directory.
 
-%build
-mkdir build
-cd build
-# openssl version of leap 15 is not supported by xrootd 3
-%if 0%{?suse_version} < 1500
-	cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_BUILD_TYPE=RelWithDebInfo ../
-%else
-	cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_BUILD_TYPE=RelWithDebInfo  -DENABLE_CRYPTO=FALSE ../
-%endif
-make %{?_smp_mflags}
 
-%install
-cd build
-rm -rf $RPM_BUILD_ROOT
-make %{?_smp_mflags} install DESTDIR=$RPM_BUILD_ROOT
-cd ..
-rm -rf $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/*
-
-mkdir -p $RPM_BUILD_ROOT%{_var}/log/%{name}
-mkdir -p $RPM_BUILD_ROOT%{_var}/run/%{name}
-mkdir -p $RPM_BUILD_ROOT%{_var}/spool/%{name}
-mkdir -p $RPM_BUILD_ROOT%{_fillupdir}/
-mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
-mkdir -p $RPM_BUILD_ROOT%{_initrddir}
-mkdir -p $RPM_BUILD_ROOT%{_sbindir}
-
-install -m 644 packaging/rhel/xrootd.sysconfig $RPM_BUILD_ROOT%{_fillupdir}/sysconfig.%{name}
-install -m 755 %{SOURCE2} $RPM_BUILD_ROOT%{_initrddir}/cmsd
-install -m 755 %{SOURCE4} $RPM_BUILD_ROOT%{_initrddir}/frm_purged
-install -m 755 %{SOURCE3} $RPM_BUILD_ROOT%{_initrddir}/frm_xfrd
-install -m 755 %{SOURCE1} $RPM_BUILD_ROOT%{_initrddir}/xrootd
-install -m 755 packaging/rhel/xrootd.functions $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/xrootd.functions
-install -m 644 packaging/common/xrootd-clustered.cfg $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/xrootd-clustered.cfg
-install -m 644 packaging/common/xrootd-standalone.cfg $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/xrootd-standalone.cfg
-
-ln -sf %{_initrddir}/xrootd $RPM_BUILD_ROOT%{_sbindir}/rcxrootd
-ln -sf %{_initrddir}/cmsd $RPM_BUILD_ROOT%{_sbindir}/rccmsd
-ln -sf %{_initrddir}/frm_purged $RPM_BUILD_ROOT%{_sbindir}/rcfrm_purged
-ln -sf %{_initrddir}/frm_xfrd $RPM_BUILD_ROOT%{_sbindir}/rcfrm_xfrd
-
-chmod -x $RPM_BUILD_ROOT%{_datadir}/%{name}/utils/XrdCmsNotify.pm
-chmod -x $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/xrootd.functions
-
-# Perl module
-mkdir -p $RPM_BUILD_ROOT%{perl_vendorarch}/auto/XrdClientAdmin
-mv $RPM_BUILD_ROOT/%{_libdir}/XrdClientAdmin.pm \
- $RPM_BUILD_ROOT%{perl_vendorarch}
-mv $RPM_BUILD_ROOT/%{_libdir}/XrdClientAdmin.so* \
- $RPM_BUILD_ROOT%{perl_vendorarch}/auto/XrdClientAdmin
-
-%fdupes $RPM_BUILD_ROOT%{_bindir}
-
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-%package cl
-Summary:        The new XRootD client
-Group:          Productivity/Clustering/Computing
-Requires:       %{name}-libs = %{version}-%{release}
-
-%description cl
-The new XRootD client software.
-
-%files cl
-%defattr(-,root,root,-)
-%{_libdir}/libXrdCl.so.*
-%{_bindir}/xrdcopy
-%{_bindir}/xrdfs
-%doc %{_mandir}/man1/xrdcopy.1.gz
-%doc %{_mandir}/man1/xrdfs.1.gz
-
-%post cl -p /sbin/ldconfig
-%postun cl -p /sbin/ldconfig
-
-%package cl-devel
-Summary:        Headers for compiling against xrootd-cl
-Group:          Development/Libraries/Other
-Requires:       %{name}-cl = %{version}-%{release}
-Requires:       %{name}-client = %{version}-%{release}
-Requires:       %{name}-libs = %{version}-%{release}
-Requires:       %{name}-libs-devel = %{version}-%{release}
-
-%description cl-devel
-Headers for compiling against xrootd-cl
-
-%files cl-devel
-%defattr(-,root,root,-)
-%{_includedir}/%{name}/XrdCl
-%{_libdir}/libXrdCl.so
-
-%package -n perl-xrood-client-admin
-Summary:        XRootD client administration Perl module
-Group:          Development/Libraries/Other
-Requires:       %{name}-client = %{version}-%{release}
-%if 0%{?suse_version} < 1140
-Requires:       perl = %{perl_version}
-%else
-%{perl_requires}
-%{?libperl_requires}
-%endif
-
-%description -n perl-xrood-client-admin
-This package contains a swig generated xrootd client administration
-Perl module.
-
-%files -n perl-xrood-client-admin
-%defattr(-,root,root,-)
-%{perl_vendorarch}/XrdClientAdmin.pm
-%dir %{perl_vendorarch}/auto/XrdClientAdmin/
-%{perl_vendorarch}/auto/XrdClientAdmin/XrdClientAdmin.so
-
-%package client
-Summary:        XRootD client
-Group:          Productivity/Clustering/Computing
-Requires:       %{name}-libs = %{version}-%{release}
-
-%description client
-The XRootD client software.
-%files client
-%defattr(-,root,root,-)
-%{_libdir}/libXrdClient.so.*
-%{_libdir}/libXrdPosix.so.*
-%{_libdir}/libXrdPosixPreload.so.*
-%{_libdir}/libXrdFfs.so.*
-%{_bindir}/xprep
-%{_bindir}/xrd
-%{_bindir}/xrdcp
-%{_bindir}/xrdcp-old
-%{_bindir}/xrdstagetool
-%{_bindir}/xrdadler32
-%doc %{_mandir}/man1/xprep.1.gz
-%doc %{_mandir}/man1/xrd.1.gz
-%doc %{_mandir}/man1/xrdadler32.1.gz
-%doc %{_mandir}/man1/xrdcp.1.gz
-%doc %{_mandir}/man1/xrdcp-old.1.gz
-%doc %{_mandir}/man1/xrdstagetool.1.gz
-%if 0%{?suse_version} < 1500
-%{_bindir}/xrdgsiproxy
-%doc %{_mandir}/man1/xrdgsiproxy.1.gz
-%endif
-
-%post client -p /sbin/ldconfig
-%postun client -p /sbin/ldconfig
-
-%package client-devel
-Summary:        XRootD-client development files
-Group:          Development/Libraries/Other
-Requires:       %{name}-client = %{version}-%{release}
-Requires:       %{name}-libs = %{version}-%{release}
-Requires:       %{name}-libs-devel = %{version}-%{release}
-
-%description client-devel
-Headers for compiling against xrootd-client
-%files client-devel
-%defattr(-,root,root,-)
-%{_libdir}/libXrdClient*.so
-%{_libdir}/libXrdPosix.so
-%{_libdir}/libXrdPosixPreload.so
-%{_libdir}/libXrdFfs.so
-%{_includedir}/%{name}/XrdClient
-%{_includedir}/%{name}/XrdPosix
-
-%package fuse
-Summary:        XRootD filesystem
+%package        ceph
+Summary:        Ceph back-end plug-in for XRootD
 Group:          System/Filesystems
-Requires:       %{name}-client = %{version}-%{release}
-Requires:       %{name}-libs   = %{version}-%{release}
+Requires:       %{name}-server = %{version}
+
+%description    ceph
+The XROOTD project gives access to data repositories.
+The typical usage is to give access to file-based ones.
+
+This package contains Ceph storage back-end plug-in for the
+XRootD server.
+
+
+%package        ceph-devel
+Summary:        Ceph back-end plug-in for XRootD
+Group:          Development/Libraries/C and C++
+Requires:       %{name}-ceph = %{version}
+Requires:       %{name}-server = %{version}
+
+%description    ceph-devel
+The XROOTD project gives access to data repositories.
+The typical usage is to give access to file-based ones.
+
+This package contains header files and development libraries
+for XRootD Ceph storage back-end plug-in development.
+
+
+%package        client
+Summary:        XRootD command line client tools
+Group:          Productivity/Clustering/Computing
+Requires:       %{name}-client-libs = %{version}
+Requires:       %{name}-libs = %{version}
+Provides:       %{name}-cl = %{version}
+Obsoletes:      %{name}-cl < %{version}
+
+%description    client
+The XROOTD project gives access to data repositories.
+The typical usage is to give access to file-based ones.
+
+This package contains the command line tools used to
+communicate with XRootD servers.
+
+
+%package        client-libs
+Summary:        Libraries used by XRootD clients
+Group:          System/Libraries
+Requires:       %{name}-libs = %{version}
+
+%description    client-libs
+The XROOTD project gives access to data repositories.
+The typical usage is to give access to file-based ones.
+
+This package contains libraries used by XRootD clients.
+
+
+%package        client-devel
+Summary:        Development files for XRootD clients
+Group:          Development/Libraries/C and C++
+Requires:       %{name}-client-libs = %{version}
+Requires:       %{name}-libs-devel = %{version}
+Provides:       %{name}-cl-devel = %{version}
+Obsoletes:      %{name}-cl-devel < %{version}
+Recommends:     %{name}-client = %{version}
+
+%description    client-devel
+The XROOTD project gives access to data repositories.
+The typical usage is to give access to file-based ones.
+
+This package contains header files and development libraries
+for XRootD client development
+
+
+%package        doc
+Summary:        Developer documentation for the XRootD libraries
+Group:          Documentation/Other
+BuildArch:      noarch
+
+%description    doc
+The XROOTD project gives access to data repositories.
+The typical usage is to give access to file-based ones.
+
+This package contains the API documentation of the XRootD
+libraries.
+
+
+%package        fuse
+Summary:        FUSE-based XRootD filesystem mount
+Group:          System/Filesystems
+Requires:       %{name}-client = %{version}
+Requires:       %{name}-libs = %{version}
 Requires:       fuse
 
-%description fuse
-Fuse driver for xrootd
-%files fuse
-%defattr(-,root,root,-)
-%{_bindir}/xrootdfs
-%doc %{_mandir}/man1/xrootdfs.1.gz
-%attr(-,daemon,daemon) %dir %{_sysconfdir}/%{name}/
+%description    fuse
+The XROOTD project gives access to data repositories.
+The typical usage is to give access to file-based ones.
 
-%package server
-Summary:        XRootD server
+This package contains the FUSE (file system in user space)
+XRootD mount tool.
+
+
+%package        libs
+Summary:        XRootD core libraries
+Group:          System/Libraries
+%if %{with libc_semaphore}
+Requires:       glibc >= 2.21
+%endif
+
+%description    libs
+The XROOTD project gives access to data repositories.
+The typical usage is to give access to file-based ones.
+
+This package contains libraries used by the XRootD servers and
+clients.
+
+
+%package        libs-devel
+Summary:        Development files for XRootD core libraries
+Group:          Development/Libraries/C and C++
+Requires:       %{name}-libs = %{version}
+
+%description    libs-devel
+The XROOTD project gives access to data repositories.
+The typical usage is to give access to file-based ones.
+
+This package contains header files and development libraries
+for XRootD development.
+
+
+%package        private-devel
+Summary:        Private XRootD development files
+Group:          Development/Libraries/C and C++
+Requires:       %{name}-libs = %{version}
+
+%description    private-devel
+The XROOTD project gives access to data repositories.
+The typical usage is to give access to file-based ones.
+
+This package contains some private XRootD headers and development
+libraries. The use of these fikles is strongly discouraged.
+Backwards compatibility between versions is not guaranteed for
+them.
+
+
+%package        server
+Summary:        XRootD (eXtended Root Daemon) server
 Group:          System/Daemons
-Requires:       %{name}-client = %{version}-%{release}
-Requires:       %{name}-libs = %{version}-%{release}
-Requires(pre): %insserv_prereq %fillup_prereq
+Requires:       %{name}-client-libs = %{version}
+Requires:       %{name}-libs = %{version}
+Requires:       %{name}-server-libs = %{version}
+Recommends:     logrotate
 
-%description server
-The XRootD server
+%description    server
+The XROOTD project gives access to data repositories.
+The typical usage is to give access to file-based ones.
+
+The XRootD (eXtended Root Daemon) server binaries.
+
+
+%package        server-libs
+Summary:        Libraries used by XRootD servers
+Group:          System/Daemons
+Requires:       %{name}-client-libs = %{version}
+Requires:       %{name}-libs = %{version}
+Requires:       logrotate
+Requires:       systemd
+Requires(pre):    systemd
+Requires(preun):  systemd
+Requires(post):   systemd
+Requires(postun): systemd
+
+%description    server-libs
+The XROOTD project gives access to data repositories.
+The typical usage is to give access to file-based ones.
+
+This package contains libraries used by XRootD servers.
+
+%package        server-devel
+Summary:        Development files for XRootD servers
+Group:          Development/Libraries/C and C++
+Requires:       %{name}-client-devel = %{version}
+Requires:       %{name}-libs-devel = %{version}
+Requires:       %{name}-server-libs = %{version}
+Recommends:     %{name}-server = %{version}
+
+%description    server-devel
+The XROOTD project gives access to data repositories.
+The typical usage is to give access to file-based ones.
+
+This package contains header files and development libraries
+for XRootD server development.
+
+
+%package     -n python3-%{name}
+Summary:        Python 3 bindings for XRootD
+Group:          Development/Libraries/Python
+Requires:       %{name}-client-libs = %{version}
+
+%description -n python3-xrootd
+The XROOTD project gives access to data repositories.
+The typical usage is to give access to file-based ones.
+
+This package provides the python 3 bindings for XRootD.
+
+
+%prep
+%setup -q
+
+%build
+%cmake \
+   -DBUILD_PYTHON:BOOL=ON \
+   -DPYTHON_EXECUTABLE:PATH=`which python3` \
+   -DPYTHON_LIBRARY:PATH=%{_libdir} \
+   -DPYTHON_INCLUDE_DIR:PATH=`python3 -c "from sysconfig import get_path;print(get_path('include'))"` \
+   -DENABLE_CEPH:BOOL=%{with ceph} \
+   -DUSE_LIBC_SEMAPHORE:BOOL=%{with libc_semaphore}
+
+%cmake_build
+
+cd ..
+doxygen Doxyfile
+
+%install
+%cmake_install
+rm -rf %{buildroot}%{_sysconfdir}/%{name}/*
+
+mkdir -p %{buildroot}%{_var}/log/%{name}
+mkdir -p %{buildroot}%{_var}/spool/%{name}
+
+install -Dm 0644 -t %{buildroot}%{_sysconfdir}/%{name}/ packaging/common/*.cfg
+install -Dm 0644 -t %{buildroot}%{_unitdir} packaging/common/{cmsd,frm_purged,frm_xfrd,xrootd}@.service
+install -Dm 0644 -t %{buildroot}%{_unitdir} packaging/common/{xrdhttp,xrootd}@.socket
+install -Dm 0644 packaging/rhel/xrootd.tmpfiles %{buildroot}%{_tmpfilesdir}/%{name}.conf
+install -Dm 0644 packaging/common/client.conf %{buildroot}%{_sysconfdir}/%{name}/client.conf
+install -p -Dm 0644 packaging/common/xrootd.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/xrootd
+install -Dm 0644 packaging/common/client-plugin.conf.example %{buildroot}%{_sysconfdir}/xrootd/client.plugins.d/client-plugin.conf.example
+
+install -Dm 644 README %{buildroot}%{_docdir}/%{name}/README
+cp -pr doxydoc/html %{buildroot}%{_docdir}/%{name}/
+
+chmod -x %{buildroot}%{_datadir}/%{name}/utils/XrdCmsNotify.pm
+
+sed -i 's|/usr/bin/env bash|%{_bindir}/bash|' %{buildroot}%{_bindir}/xrootd-config
+sed -i 's|/usr/bin/env perl|%{_bindir}/perl|' %{buildroot}%{_datadir}/%{name}/utils/XrdOlbMonPerf
+sed -i 's|/usr/bin/env perl|%{_bindir}/perl|' %{buildroot}%{_datadir}/%{name}/utils/netchk
+
+%fdupes %{buildroot}%{_prefix}
+
+%post libs -p /sbin/ldconfig
+%postun libs -p /sbin/ldconfig
+
+%post client-libs -p /sbin/ldconfig
+%postun client-libs -p /sbin/ldconfig
+
+%post server-libs -p /sbin/ldconfig
+%postun server-libs -p /sbin/ldconfig
+
+%if %{with ceph}
+%post ceph -p /sbin/ldconfig
+%postun ceph -p /sbin/ldconfig
+%endif
+
+%pre server
+getent group xrootd >/dev/null || groupadd -r xrootd
+getent passwd xrootd >/dev/null || \
+       useradd -r -g xrootd -c "XRootD runtime user" \
+       -s /sbin/nologin -d %{_localstatedir}/spool/xrootd xrootd
+%service_add_pre cmsd@.service frm_purged@.service frm_xfrd@.service xrootd@.service xrdhttp@.socket xrootd@.socket
+
+%post server
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
+%service_add_post cmsd@.service frm_purged@.service frm_xfrd@.service xrootd@.service xrdhttp@.socket xrootd@.socket
+
+%preun server
+%service_del_preun cmsd@.service frm_purged@.service frm_xfrd@.service xrootd@.service xrdhttp@.socket xrootd@.socket
+
+%postun server
+%service_del_postun cmsd@.service frm_purged@.service frm_xfrd@.service xrootd@.service xrdhttp@.socket xrootd@.socket
+
+%files client
+%license COPYING.LGPL LICENSE
+%{_bindir}/xprep
+%{_bindir}/xrd
+%{_bindir}/xrdadler32
+%{_bindir}/xrdcopy
+%{_bindir}/xrdcp
+%{_bindir}/xrdcp-old
+%{_bindir}/xrdfs
+%{_bindir}/xrdgsiproxy
+%{_bindir}/xrdstagetool
+%{_mandir}/man1/xprep.1%{?ext_man}
+%{_mandir}/man1/xrd.1%{?ext_man}
+%{_mandir}/man1/xrdadler32.1%{?ext_man}
+%{_mandir}/man1/xrdcopy.1%{?ext_man}
+%{_mandir}/man1/xrdcp.1%{?ext_man}
+%{_mandir}/man1/xrdcp-old.1%{?ext_man}
+%{_mandir}/man1/xrdfs.1%{?ext_man}
+%{_mandir}/man1/xrdgsiproxy.1%{?ext_man}
+%{_mandir}/man1/xrdstagetool.1%{?ext_man}
+
+%files client-libs
+%license COPYING.LGPL LICENSE
+%{_libdir}/libXrdCl.so.*
+%{_libdir}/libXrdClient.so.*
+%{_libdir}/libXrdFfs.so.*
+%{_libdir}/libXrdPosix.so.*
+%{_libdir}/libXrdPosixPreload.so.*
+# This lib may be used for LD_PRELOAD so the .so link needs to be included
+%{_libdir}/libXrdPosixPreload.so
+%dir %{_sysconfdir}/%{name}/
+%dir %{_sysconfdir}/%{name}/client.plugins.d/
+%config %{_sysconfdir}/%{name}/client.plugins.d/client-plugin.conf.example
+%config(noreplace) %{_sysconfdir}/%{name}/client.conf
+
+%files client-devel
+%license COPYING.LGPL LICENSE
+%{_bindir}/xrdgsitest
+%{_mandir}/man1/xrdgsitest.1%{?ext_man}
+%{_libdir}/libXrdCl.so
+%{_libdir}/libXrdClient*.so
+%{_libdir}/libXrdFfs.so
+%{_libdir}/libXrdPosix.so
+%dir %{_includedir}/%{name}/
+%{_includedir}/%{name}/XrdCl/
+%{_includedir}/%{name}/XrdClient/
+%{_includedir}/%{name}/XrdPosix/
+
+%files doc
+%license COPYING.LGPL LICENSE
+%{_docdir}/%{name}/
+
+%files fuse
+%license COPYING.LGPL LICENSE
+%{_bindir}/xrootdfs
+%{_mandir}/man1/xrootdfs.1%{?ext_man}
+
+%files libs
+%license COPYING.LGPL LICENSE
+%{_libdir}/libXrdAppUtils.so.*
+%{_libdir}/libXrdCrypto.so.*
+%{_libdir}/libXrdCryptoLite.so.*
+%{_libdir}/libXrdHttpUtils.so.*
+%{_libdir}/libXrdUtils.so.*
+%{_libdir}/libXrdXml.so.*
+%{_libdir}/libXrdClProxyPlugin-%{plugver}.so
+%{_libdir}/libXrdSec*-%{plugver}.so
+%{_libdir}/libXrdCksCalczcrc32-%{plugver}.so
+%{_libdir}/libXrdCryptossl-%{plugver}.so
+%{_libdir}/libXrdCmsRedirectLocal-%{plugver}.so
+
+%files libs-devel
+%license COPYING.LGPL LICENSE
+%{_bindir}/xrootd-config
+%{_libdir}/libXrdAppUtils.so
+%{_libdir}/libXrdCrypto.so
+%{_libdir}/libXrdCryptoLite.so
+%{_libdir}/libXrdHttpUtils.so
+%{_libdir}/libXrdUtils.so
+%{_libdir}/libXrdXml.so
+%dir %{_includedir}/%{name}/
+%{_includedir}/%{name}/XrdVersion.hh
+%{_includedir}/%{name}/XProtocol/
+%{_includedir}/%{name}/Xrd/
+%{_includedir}/%{name}/XrdCks/
+%{_includedir}/%{name}/XrdNet/
+%{_includedir}/%{name}/XrdOuc/
+%{_includedir}/%{name}/XrdOfs/
+%{_includedir}/%{name}/XrdSec/
+%{_includedir}/%{name}/XrdSys/
+%{_includedir}/%{name}/XrdXml/
+
+%files private-devel
+%license COPYING.LGPL LICENSE
+%{_libdir}/libXrdSsiLib.so
+%{_libdir}/libXrdSsiShMap.so
+%dir %{_includedir}/%{name}/
+%{_includedir}/%{name}/private/
+
 %files server
-%defattr(-,root,root,-)
+%license COPYING.LGPL LICENSE
 %{_bindir}/cconfig
 %{_bindir}/cmsd
-%{_bindir}/cns_ssi
 %{_bindir}/frm_admin
 %{_bindir}/frm_purged
 %{_bindir}/frm_xfragent
 %{_bindir}/frm_xfrd
 %{_bindir}/mpxstats
 %{_bindir}/wait41
-%{_bindir}/XrdCnsd
+%{_bindir}/xrdacctest
+%{_bindir}/xrdmapc
+%{_bindir}/xrdpfc_print
 %{_bindir}/xrdpwdadmin
 %{_bindir}/xrdsssadmin
 %{_bindir}/xrootd
-%{_libdir}/libXrdBwm.so.*
-%{_libdir}/libXrdPss*.so.*
-%{_libdir}/libXrdOfs*.so.*
+%{_mandir}/man8/cmsd.8*
+%{_mandir}/man8/frm_admin.8*
+%{_mandir}/man8/frm_purged.8*
+%{_mandir}/man8/frm_xfragent.8*
+%{_mandir}/man8/frm_xfrd.8*
+%{_mandir}/man8/mpxstats.8*
+%{_mandir}/man8/xrdpfc_print.8*
+%{_mandir}/man8/xrdpwdadmin.8*
+%{_mandir}/man8/xrdsssadmin.8*
+%{_mandir}/man8/xrootd.8*
+%{_mandir}/man1/xrdmapc.1*
+%{_datadir}/%{name}/
+%{_unitdir}/cmsd@.service
+%{_unitdir}/frm_purged@.service
+%{_unitdir}/frm_xfrd@.service
+%{_unitdir}/xrootd@.service
+%{_unitdir}/xrdhttp@.socket
+%{_unitdir}/xrootd@.socket
+%{_tmpfilesdir}/%{name}.conf
+%config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
+%dir %{_sysconfdir}/%{name}/
+%attr(-,xrootd,xrootd) %config(noreplace) %{_sysconfdir}/%{name}/xrootd-clustered.cfg
+%attr(-,xrootd,xrootd) %config(noreplace) %{_sysconfdir}/%{name}/xrootd-standalone.cfg
+%attr(-,xrootd,xrootd) %config(noreplace) %{_sysconfdir}/%{name}/xrootd-filecache-clustered.cfg
+%attr(-,xrootd,xrootd) %config(noreplace) %{_sysconfdir}/%{name}/xrootd-filecache-standalone.cfg
+%attr(-,xrootd,xrootd) %config(noreplace) %{_sysconfdir}/%{name}/xrootd-http.cfg
+%attr(-,xrootd,xrootd) %dir %{_var}/log/%{name}
+%attr(-,xrootd,xrootd) %dir %{_var}/spool/%{name}
+# %%ghost %%dir %%{_var}/run/%%{name}
+
+%files server-libs
+%license COPYING.LGPL LICENSE
 %{_libdir}/libXrdServer.so.*
-%{_libdir}/libXrdXrootd.so.*
-%doc %{_mandir}/man8/*
-%{_fillupdir}/sysconfig.%{name}
-%config(noreplace) %{_sysconfdir}/%{name}/xrootd-clustered.cfg
-%config(noreplace) %{_sysconfdir}/%{name}/xrootd-standalone.cfg
-%ghost%attr(-,daemon,daemon) %dir %{_var}/log/%{name}
-%attr(-,daemon,daemon) %dir %{_var}/spool/%{name}
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/utils
-%{_initrddir}/cmsd
-%{_initrddir}/frm_xfrd
-%{_initrddir}/frm_purged
-%{_initrddir}/xrootd
-%config %{_sysconfdir}/%{name}/xrootd.functions
-%{_sbindir}/rcxrootd
-%{_sbindir}/rccmsd
-%{_sbindir}/rcfrm_xfrd
-%{_sbindir}/rcfrm_purged
+%{_libdir}/libXrdSsiLib.so.*
+%{_libdir}/libXrdSsiShMap.so.*
+%{_libdir}/libXrdBlacklistDecision-%{plugver}.so
+%{_libdir}/libXrdBwm-%{plugver}.so
+%{_libdir}/libXrdFileCache-%{plugver}.so
+%{_libdir}/libXrdHttp-%{plugver}.so
+%{_libdir}/libXrdN2No2p-%{plugver}.so
+%{_libdir}/libXrdOssSIgpfsT-%{plugver}.so
+%{_libdir}/libXrdPss-%{plugver}.so
+%{_libdir}/libXrdSsi-%{plugver}.so
+%{_libdir}/libXrdSsiLog-%{plugver}.so
+%{_libdir}/libXrdThrottle-%{plugver}.so
+%{_libdir}/libXrdXrootd-%{plugver}.so
 
-%post server
-/sbin/ldconfig || exit 1
-%{fillup_and_insserv -n xrootd xrootd}
-%restart_on_update xrootd
-%fillup_and_insserv cmsd
-%restart_on_update cmsd
-%fillup_and_insserv frm_purged
-%restart_on_update frm_purged
-%fillup_and_insserv frm_xfrd
-%restart_on_update frm_xfrd
-%preun server
-%stop_on_removal xrootd
-%stop_on_removal cmsd
-%stop_on_removal frm_purged
-%stop_on_removal frm_xfrd
-%postun server
-/sbin/ldconfig || exit 1
-%insserv_cleanup xrootd
-%restart_on_update xrootd
-%insserv_cleanup cmsd
-%restart_on_update cmsd
-%insserv_cleanup frm_purged
-%restart_on_update frm_purged
-%insserv_cleanup frm_xfrd
-%restart_on_update frm xfrd
-
-%package server-devel
-Summary:        XRootD-server development files
-Group:          Development/Libraries/Other
-Requires:       %{name}-client = %{version}-%{release}
-Requires:       %{name}-client-devel = %{version}-%{release}
-Requires:       %{name}-libs = %{version}-%{release}
-Requires:       %{name}-libs-devel = %{version}-%{release}
-Requires:       %{name}-server = %{version}-%{release}
-
-%description server-devel
-Headers for compiling against xrootd-server
 %files server-devel
-%defattr(-,root,root,-)
-%{_libdir}/libXrdBwm.so
-%{_libdir}/libXrdPss*.so
-%{_libdir}/libXrdOfs*.so
+%license COPYING.LGPL LICENSE
 %{_libdir}/libXrdServer.so
-%{_libdir}/libXrdXrootd.so
-%{_includedir}/%{name}/XrdAcc
-%{_includedir}/%{name}/XrdCms
-%{_includedir}/%{name}/XrdOss
-%{_includedir}/%{name}/XrdSfs
-%{_includedir}/%{name}/XrdXrootd
+%dir %{_includedir}/%{name}/
+%{_includedir}/%{name}/XrdAcc/
+%{_includedir}/%{name}/XrdCms/
+%{_includedir}/%{name}/XrdFileCache/
+%{_includedir}/%{name}/XrdHttp/
+%{_includedir}/%{name}/XrdOss/
+%{_includedir}/%{name}/XrdSfs/
+%{_includedir}/%{name}/XrdXrootd/
 
-%package libs
-Summary:        XRootD core libraries
-Group:          System/Libraries
+%files -n python3-%{name}
+%license COPYING.LGPL LICENSE
+%{python3_sitearch}/XRootD/
+%{python3_sitearch}/pyxrootd/
+%{python3_sitearch}/xrootd-v%{version}-*.egg-info
 
-%description libs
-The XRootD core libraries
-%files libs
-%defattr(-,root,root,-)
-%{_libdir}/libXrdSec*.so.*
-%{_libdir}/libXrdCrypto*.so.*
-%{_libdir}/libXrdUtils.so.*
-%{_libdir}/libXrdCksCalc*.so.*
-%{_libdir}/libXrdMain.so.*
-%{_libdir}/libXrdAppUtils.so.*
-%post libs -p /sbin/ldconfig
-%postun libs -p /sbin/ldconfig
+%if %{with ceph}
+%files ceph
+%license COPYING.LGPL LICENSE
+%{_libdir}/libXrdCeph-%{plugver}.so
+%{_libdir}/libXrdCephXattr-%{plugver}.so
+%{_libdir}/libXrdCephPosix.so.*
 
-%package libs-devel
-Summary:        XRootD-lib development files
-Group:          Development/Libraries/Other
-Requires:       %{name}-libs = %{version}-%{release}
-
-%description libs-devel
-Headers for compiling against xrootd-libs
-%files libs-devel
-%defattr(-,root,root,-)
-%dir %{_includedir}/%{name}
-%{_libdir}/libXrdSec*.so
-%{_libdir}/libXrdCrypto*.so
-%{_libdir}/libXrdUtils.so
-%{_libdir}/libXrdMain.so
-%{_libdir}/libXrdCksCalc*.so
-%{_libdir}/libXrdAppUtils.so
-%{_includedir}/%{name}/XrdVersion.hh
-%{_includedir}/%{name}/XrdVersionPlugin.hh
-%{_includedir}/%{name}/XrdSec
-%{_includedir}/%{name}/XrdNet
-%{_includedir}/%{name}/XrdOuc
-%{_includedir}/%{name}/XrdSys
-%{_includedir}/%{name}/Xrd
-%{_includedir}/%{name}/XProtocol
-%{_includedir}/%{name}/XrdCks
-
-%package private-devel
-Summary:        Transitional package holding some private headers
-Group:          Development/Libraries/Other
-Requires:       %{name}-libs = %{version}-%{release}
-
-%description private-devel
-Transitional package holding some private headers
-
-%files private-devel
-%defattr(-,root,root,-)
-%dir %{_includedir}/%{name}/private/
-%dir %{_includedir}/%{name}/private/Xrd/
-%{_includedir}/%{name}/private/Xrd/XrdPoll.hh
-%dir %{_includedir}/%{name}/private/XrdClient/
-%{_includedir}/%{name}/private/XrdClient/XrdClientInputBuffer.hh
-%{_includedir}/%{name}/private/XrdClient/XrdClientLogConnection.hh
-%{_includedir}/%{name}/private/XrdClient/XrdClientMessage.hh
-%{_includedir}/%{name}/private/XrdClient/XrdClientPhyConnection.hh
-%{_includedir}/%{name}/private/XrdClient/XrdClientSock.hh
-%{_includedir}/%{name}/private/XrdClient/XrdClientConn.hh
-%{_includedir}/%{name}/private/XrdClient/XrdClientConnMgr.hh
-%{_includedir}/%{name}/private/XrdClient/XrdClientDebug.hh
-%{_includedir}/%{name}/private/XrdClient/XrdClientReadCache.hh
-%dir %{_includedir}/%{name}/private/XrdOfs/
-%{_includedir}/%{name}/private/XrdOfs/XrdOfs.hh
-%{_includedir}/%{name}/private/XrdOfs/XrdOfsEvr.hh
-%{_includedir}/%{name}/private/XrdOfs/XrdOfsHandle.hh
-%{_includedir}/%{name}/private/XrdOfs/XrdOfsTrace.hh
-%dir %{_includedir}/%{name}/private/XrdSys/
-%{_includedir}/%{name}/private/XrdSys/XrdSysPriv.hh
-%dir %{_includedir}/%{name}/private/XrdNet/
-%{_includedir}/%{name}/private/XrdNet/XrdNetBuffer.hh
-%{_includedir}/%{name}/private/XrdNet/XrdNetPeer.hh
-%dir %{_includedir}/%{name}/private/XrdOss/
-%{_includedir}/%{name}/private/XrdOss/XrdOssApi.hh
-%{_includedir}/%{name}/private/XrdOss/XrdOssConfig.hh
-%{_includedir}/%{name}/private/XrdOss/XrdOssError.hh
-%dir %{_includedir}/%{name}/private/XrdOuc/
-%{_includedir}/%{name}/private/XrdOuc/XrdOucExport.hh
-%{_includedir}/%{name}/private/XrdOuc/XrdOucPList.hh
+%files ceph-devel
+%license COPYING.LGPL LICENSE
+%{_libdir}/libXrdCephPosix.so
+%endif
 
 %changelog
