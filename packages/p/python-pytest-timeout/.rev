@@ -71,4 +71,12 @@
 - Drop merged patch pytest4.patch</comment>
     <requestid>762083</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>601285de98e4f990fb55b0d75fc0cdb4</srcmd5>
+    <version>1.4.1</version>
+    <time>1593546878</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817717</requestid>
+  </revision>
 </revisionlist>

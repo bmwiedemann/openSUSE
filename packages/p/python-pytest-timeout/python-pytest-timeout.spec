@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-timeout
-Version:        1.3.4
+Version:        1.4.1
 Release:        0
 Summary:        Pytest plugin to abort hanging tests
 License:        MIT
@@ -26,6 +26,7 @@ URL:            https://github.com/pytest-dev/pytest-timeout/
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-timeout/pytest-timeout-%{version}.tar.gz
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pytest >= 3.6.0}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
