@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri May 29 00:52:51 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 32
+  * New features:
+    + Improved VDMOS power transistor model including self-heating.
+    + ngspice now understands UNICODE: file and directory names as
+      well as texts for labeling images may use any valid UNICODE
+      character. Internally ngspice uses utf-8 string encoding and
+      UTF-16 for Windows I/O.
+    + The graphics output on native Windows, Postscript and X11 has
+      been updated considerably, concerning color and linewidth
+      selection and fonts for labeling.
+    + New commands have been added.
+    + Error messages have been improved, several crash scenarios
+      caused by input errors have been removed.
+    + For a list of all new features please have a look at the
+      NEWS feature in the ngspice tarball.
+  * Patches: More than 30 developer and user provided patches and
+    bug fixes have been applied. Other bugs and some memory leaks
+    have been removed as well.
+- Rebase ngspice-Use-gnuplot-terminal-auto-detection.patch
+
+-------------------------------------------------------------------
 Wed Nov 20 17:23:37 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 31
@@ -10,7 +33,7 @@ Wed Nov 20 17:23:37 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
     + variable 'nostepsizelimit' to speed up certain simulations
     + new command 'setcs'
     + vectors lin-tstart, lin-tstop, and lin-tstep enable the
-      'linearize' command to cut out a section of a result vector. 
+      'linearize' command to cut out a section of a result vector.
 - Spec file cleanup
   * only BuildRequire X11 devel packages for non-library package
   * only specify really required

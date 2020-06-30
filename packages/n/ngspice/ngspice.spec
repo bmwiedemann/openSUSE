@@ -1,7 +1,7 @@
 #
 # spec file for package ngspice
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,14 +27,14 @@
 
 Name:           %pname%{?build_shared:-shared}
 %define so_ver 0
-Version:        31
+Version:        32
 Release:        0
 Summary:        Mixed-level, Mixed-signal Circuit Simulator Based on spice3f5
 License:        BSD-2-Clause
 Group:          Productivity/Scientific/Electronics
 URL:            http://ngspice.sourceforge.net
 Source0:        http://downloads.sourceforge.net/%{pname}/%{pname}-%{version}.tar.gz
-Source1:        http://downloads.sourceforge.net/%{pname}/%{pname}-%{version}-manual.pdf
+Source1:        http://ngspice.sourceforge.net/docs/ngspice-%{version}-manual.pdf
 Patch1:         ngspice-Use-gnuplot-terminal-auto-detection.patch
 BuildRequires:  bison
 BuildRequires:  fftw3-devel
