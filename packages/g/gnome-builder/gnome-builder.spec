@@ -23,7 +23,7 @@
 %define basever 3.36
 
 Name:           gnome-builder
-Version:        3.36.0
+Version:        3.36.1
 Release:        0
 Summary:        A toolsmith for GNOME-based applications
 License:        GPL-3.0-or-later AND GPL-2.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later AND CC-BY-SA-3.0
