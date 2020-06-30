@@ -606,9 +606,12 @@ unsorted:
   - apache-pdfbox-javadoc 
   - apache-portlet-1_0-api 
   - apache-portlet-1_0-api-javadoc 
+  - apache-resource-bundles 
   - apache-rex 
   - apache-rpm-macros 
   - apache-rpm-macros-control 
+  - apache-sshd 
+  - apache-sshd-javadoc 
   - apache2-devel 
   - apache2-event 
   - apache2-icons-oxygen 
@@ -2686,6 +2689,8 @@ unsorted:
   - ecryptfs-utils-devel 
   - ecryptfs-utils-devel-32bit: [x86_64] 
   - ecwolf 
+  - ed25519-java 
+  - ed25519-java-javadoc 
   - edgar 
   - edgar-data 
   - edgar-lang 
@@ -3075,6 +3080,7 @@ unsorted:
   - ffcall 
   - fflas-ffpack-devel 
   - fflas-ffpack-doc 
+  - ffmpeg-4: [i586] 
   - ffmpeg-4-libavcodec-devel 
   - ffmpeg-4-libavdevice-devel 
   - ffmpeg-4-libavfilter-devel 
@@ -5992,6 +5998,7 @@ unsorted:
   - ignition 
   - ignition-config-transpiler 
   - ignition-dracut 
+  - ignition-dracut-grub2 
   - iio-sensor-proxy-doc 
   - ikiwiki 
   - ikiwiki-w3m 
@@ -6710,6 +6717,7 @@ unsorted:
   - k3b-devel 
   - k3s 
   - k3s-hyperkube 
+  - k8s-sidecar 
   - kColorPicker-devel 
   - kImageAnnotator 
   - kImageAnnotator-devel 
@@ -8426,6 +8434,7 @@ unsorted:
   - libavc1394-devel-32bit: [x86_64] 
   - libavc1394-tools 
   - libavcodec58-32bit: [x86_64] 
+  - libavdevice58: [i586] 
   - libavdevice58-32bit: [x86_64] 
   - libavfilter7-32bit: [x86_64] 
   - libavformat58-32bit: [x86_64] 
@@ -10621,8 +10630,8 @@ unsorted:
   - libmediainfo-devel 
   - libmediainfo0 
   - libmediainfo0-32bit: [x86_64] 
-  - libmediastreamer10 
-  - libmediastreamer10-32bit: [x86_64] 
+  - libmediastreamer11 
+  - libmediastreamer11-32bit: [x86_64] 
   - libmediawiki-devel 
   - libmedimport0: [x86_64] 
   - libmeep14 
@@ -11117,8 +11126,8 @@ unsorted:
   - liborigin-doc 
   - liborigin-tools 
   - liborigin3 
-  - libortp14 
-  - libortp14-32bit: [x86_64] 
+  - libortp15 
+  - libortp15-32bit: [x86_64] 
   - libosdCPU3_4_3 
   - libosinfo-devel 
   - liboslcomp1_11 
@@ -12708,6 +12717,7 @@ unsorted:
   - libvala-0_48-devel 
   - libvaladoc-0_48-0 
   - libvaladoc-0_48-devel 
+  - libvamp-hostsdk3: [i586] 
   - libvamp-hostsdk3-32bit: [x86_64] 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit: [x86_64] 
@@ -12924,14 +12934,17 @@ unsorted:
   - libwv-1_2-4 
   - libwv2-4 
   - libwx_baseu-suse-nostl3_0_4 
+  - libwx_baseu-suse-nostl3_1_3: [i586] 
   - libwx_baseu-suse3_0_4 
   - libwx_baseu-suse3_0_4-32bit: [x86_64] 
   - libwx_baseu-suse3_1_3 
   - libwx_baseu_net-suse-nostl3_0_4 
+  - libwx_baseu_net-suse-nostl3_1_3: [i586] 
   - libwx_baseu_net-suse3_0_4 
   - libwx_baseu_net-suse3_0_4-32bit: [x86_64] 
   - libwx_baseu_net-suse3_1_3 
   - libwx_baseu_xml-suse-nostl3_0_4 
+  - libwx_baseu_xml-suse-nostl3_1_3: [i586] 
   - libwx_baseu_xml-suse3_0_4 
   - libwx_baseu_xml-suse3_0_4-32bit: [x86_64] 
   - libwx_baseu_xml-suse3_1_3 
@@ -12987,14 +13000,17 @@ unsorted:
   - libwx_gtk3u_adv-suse3_1_3 
   - libwx_gtk3u_aui-suse-nostl3_1_3 
   - libwx_gtk3u_aui-suse3_1_3 
+  - libwx_gtk3u_core-suse-nostl3_1_3: [i586] 
   - libwx_gtk3u_core-suse3_1_3 
   - libwx_gtk3u_gl-suse-nostl3_1_3 
   - libwx_gtk3u_gl-suse3_1_3 
+  - libwx_gtk3u_html-suse-nostl3_1_3: [i586] 
   - libwx_gtk3u_html-suse3_1_3 
   - libwx_gtk3u_media-suse-nostl3_1_3 
   - libwx_gtk3u_media-suse3_1_3 
   - libwx_gtk3u_propgrid-suse-nostl3_1_3 
   - libwx_gtk3u_propgrid-suse3_1_3 
+  - libwx_gtk3u_qa-suse-nostl3_1_3: [i586] 
   - libwx_gtk3u_qa-suse3_1_3 
   - libwx_gtk3u_ribbon-suse-nostl3_1_3 
   - libwx_gtk3u_ribbon-suse3_1_3 
@@ -19810,6 +19826,7 @@ unsorted:
   - python3-django-debug-toolbar 
   - python3-django-environ 
   - python3-django-extensions 
+  - python3-django-extra-views 
   - python3-django-filter 
   - python3-django-formtools 
   - python3-django-grappelli 
@@ -19851,8 +19868,11 @@ unsorted:
   - python3-django-tagging 
   - python3-django-tastypie 
   - python3-django-threadedcomments 
+  - python3-django-treebeard 
+  - python3-django-utils-six 
   - python3-django-webpack-loader 
   - python3-django-webtest 
+  - python3-django-widget-tweaks 
   - python3-djangorestframework 
   - python3-djangorestframework-simplejwt 
   - python3-djet 
@@ -21616,6 +21636,7 @@ unsorted:
   - python3-txt2tags 
   - python3-txtorcon 
   - python3-typed-ast 
+  - python3-typeguard 
   - python3-typepy 
   - python3-typing_extensions 
   - python3-tzlocal 
@@ -33833,6 +33854,7 @@ unsorted:
   - vde2-cryptcab 
   - vde2-slirp 
   - ved 
+  - velero 
   - velocity 
   - velocity-demo 
   - velocity-javadoc 
@@ -34176,6 +34198,7 @@ unsorted:
   - wxWidgets-3_2-nostl-devel 
   - wxWidgets-3_2-plugin-sound_sdlu-3_2 
   - wxWidgets-docs 
+  - wxWidgets-lang: [i586] 
   - wxhexeditor 
   - wxhexeditor-lang 
   - wxlua 
