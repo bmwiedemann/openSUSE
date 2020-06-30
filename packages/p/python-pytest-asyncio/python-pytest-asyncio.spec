@@ -19,12 +19,12 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           python-pytest-asyncio
-Version:        0.12.0
+Version:        0.14.0
 Release:        0
 Summary:        Pytest support for asyncio
 License:        Apache-2.0
 URL:            https://github.com/pytest-dev/pytest-asyncio
-Source:         https://github.com/pytest-dev/pytest-asyncio/archive/v%{version}.tar.gz#./pytest-asyncio-%{version}.tar.gz
+Source:         https://github.com/pytest-dev/pytest-asyncio/archive/v%{version}.tar.gz#/pytest-asyncio-%{version}.tar.gz
 BuildRequires:  %{python_module async_generator >= 1.3}
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module hypothesis >= 5.7.1}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 29 09:10:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.14.0
+  * Fix #162, and event_loop fixture behavior now is coherent on all scopes.
+
+-------------------------------------------------------------------
 Tue Jun  9 08:13:59 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.12.0:
