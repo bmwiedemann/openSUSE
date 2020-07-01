@@ -444,9 +444,7 @@ mkdir -p %{bazeldir}
 %patch12 -p 1
 %patch13 -p 1
 %patch14 -p 1
-%if 0%{?suse_version} > 1500 
 %patch17 -p 1
-%endif
 %patch18 -p 1
 
 %if %{is_lite}

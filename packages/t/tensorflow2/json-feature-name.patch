@@ -1,17 +1,22 @@
-From 5325153ccbcc0e172b6af2e421cec79449beee14 Mon Sep 17 00:00:00 2001
+From 6efb1e3e8fe4ae50389ebb3fc37b0d6331c9c13e Mon Sep 17 00:00:00 2001
 From: Christian Goll <cgoll@suse.de>
 Date: Mon, 10 Feb 2020 17:21:41 +0100
-Subject: [PATCH 8/8] json feature name
+Subject: [PATCH 3/3] json feature name
 
 ---
- third_party/systemlibs/jsoncpp.BUILD | 2 ++
- 1 file changed, 2 insertions(+)
+ third_party/systemlibs/jsoncpp.BUILD | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/third_party/systemlibs/jsoncpp.BUILD b/third_party/systemlibs/jsoncpp.BUILD
-index 0816930309..7a293e6c68 100644
+index 0816930309..c15f515695 100644
 --- a/third_party/systemlibs/jsoncpp.BUILD
 +++ b/third_party/systemlibs/jsoncpp.BUILD
-@@ -13,6 +13,7 @@ HEADERS = [
+@@ -8,11 +8,11 @@ filegroup(
+ HEADERS = [
+     "include/json/allocator.h",
+     "include/json/assertions.h",
+-    "include/json/autolink.h",
+     "include/json/config.h",
      "include/json/features.h",
      "include/json/forwards.h",
      "include/json/json.h",
@@ -19,7 +24,7 @@ index 0816930309..7a293e6c68 100644
      "include/json/reader.h",
      "include/json/value.h",
      "include/json/version.h",
-@@ -27,6 +28,7 @@ genrule(
+@@ -27,6 +27,7 @@ genrule(
          i=$${i##*/}
          ln -sf $(INCLUDEDIR)/json/$$i $(@D)/include/json/$$i
        done

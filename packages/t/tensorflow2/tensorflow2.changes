@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 25 12:00:33 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- fixed build with json_cpp 1.9.3 (bsc#1173314)
+
+-------------------------------------------------------------------
 Fri Jun 19 11:21:59 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - fixed local CUDA builds 
