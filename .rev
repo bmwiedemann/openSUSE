@@ -1815,4 +1815,14 @@
   ptrace.2</comment>
     <requestid>813102</requestid>
   </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>f54674532a8f0d6cfaedffcbfc8b563b</srcmd5>
+    <version>5.07</version>
+    <time>1593620554</time>
+    <user>dimstar_suse</user>
+    <comment>- added patches
+  fix [bsc#1173382]
+  + man-pages-openat2.h-location.patch</comment>
+    <requestid>817898</requestid>
+  </revision>
 </revisionlist>

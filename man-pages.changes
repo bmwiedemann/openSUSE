@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 30 14:10:19 UTC 2020 - pgajdos@suse.com
+
+- added patches
+  fix [bsc#1173382]
+  + man-pages-openat2.h-location.patch
+
+-------------------------------------------------------------------
 Wed Jun 10 06:37:13 UTC 2020 - pgajdos@suse.com
 
 - version update to 5.07
