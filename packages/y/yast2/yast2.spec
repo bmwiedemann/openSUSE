@@ -1,7 +1,7 @@
 #
 # spec file for package yast2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
 Name:           yast2
-Version:        4.3.9
+Version:        4.3.12
 Release:        0
 Summary:        YaST2 Main Package
 License:        GPL-2.0-only
 Group:          System/YaST
-URL:            https://github.com/yast/yast-yast2
+Url:            https://github.com/yast/yast-yast2
 
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        yast2-rpmlintrc
