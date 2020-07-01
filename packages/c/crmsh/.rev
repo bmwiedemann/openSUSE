@@ -2049,4 +2049,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>807420</requestid>
   </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>9321c4e768a2246b103295baa324d914</srcmd5>
+    <version>4.2.0+git.1592790745.eaa14889</version>
+    <time>1593606413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817909</requestid>
+  </revision>
 </revisionlist>

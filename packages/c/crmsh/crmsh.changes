@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jun 22 02:04:50 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1592790745.eaa14889:
+  * Dev: behave: functional test for bootstrap network improvement
+  * Dev: unittest: unit test for bootstrap network improvement
+  * High: bootstrap: bootstrap network improvement
+
+-------------------------------------------------------------------
+Tue Jun 09 07:24:46 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1591686704.0b90c7c2:
+  * Revert "Fix: bootstrap: crmsh use its own specific ssh key(bsc#1169581)"
+  * Revert "Dev: hb_report: hb_report use crmsh key to ssh peer node"
+  * Revert "Dev: behave: related changes for functional test for using crmsh ssh key"
+  * Revert "Dev: unittest: related changes for unittest for using crmsh ssh key"
+
+-------------------------------------------------------------------
+Wed Jun 03 00:01:50 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1591141885.522c462b:
+  * Low: cibconfig: Avoid adding the ID attribute to select_* nodes
+
+-------------------------------------------------------------------
 Tue May 19 15:32:17 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1589895691.2fba0323:
