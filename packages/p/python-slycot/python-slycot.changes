@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 30 09:36:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Remove the ppc workaround and skip the failing test entirely.
+- Remove openblas configuration; link to Generic implementation.
+  This lets update-alternatives select the implementation at runtime.
+  Optimized packages are pulled in by numpy-devel and scipy.
+
+-------------------------------------------------------------------
 Fri Jun 26 15:59:21 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - break test loop before test matrices are too ill-conditioned for

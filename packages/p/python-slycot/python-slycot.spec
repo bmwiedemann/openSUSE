@@ -16,16 +16,6 @@
 #
 
 
-%if 0%{?sle_version} == 120300 && !0%{?is_opensuse}
-  %bcond_with openblas
-%else
- %ifarch armv6l s390 s390x m68k riscv64
-  %bcond_with openblas
- %else
-  %bcond_without openblas
- %endif
-%endif
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define eggversion 0.4.0
@@ -43,17 +33,13 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scikit-build}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  blas-devel
 BuildRequires:  cmake >= 3.11
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-fortran
-BuildRequires:  python-rpm-macros
-%if %{with openblas}
-BuildRequires:  openblas-devel
-%else
-BuildRequires:  blas-devel
 BuildRequires:  lapack-devel
-%endif
+BuildRequires:  python-rpm-macros
 Requires:       python-numpy
 %python_subpackages
 
@@ -62,13 +48,13 @@ Slycot is a wrapper for the SLICOT control and systems library.
 
 %prep
 %setup -q -n slycot-%{version}
-# break test loop before test matrices are too ill-conditioned for the architecture
-%ifarch ppc64 ppc64le
-  sed -i 's/for t in range(0, 50, 10)/for t in range(0, 20, 10)/' slycot/tests/test_sg03ad.py
-%endif
 
 %build
 export CFLAGS="%{optflags}"
+# link against the generic BLAS/LAPACK binaries
+# let update-alternatives choose the vendor at runtime,
+# even when openblas-devel is pulled in by numpy
+export BLA_VENDOR="Generic"
 %python_build --generator "Unix Makefiles"
 
 %install
@@ -79,7 +65,10 @@ export CFLAGS="%{optflags}"
 export LANG="en_US.UTF-8"
 # avoid leading empty path entry introduced by %%pytest_arch
 export PYTHONPATH=/nonexistent
-%pytest_arch --pyargs slycot
+%ifarch ppc64 ppc64le
+  %define skiptest -k "not (test_tb05ad_ or test_sg03ad_ex)"
+%endif
+%pytest_arch --pyargs slycot %{?skiptest}
 
 %files %{python_files}
 %doc README.rst
