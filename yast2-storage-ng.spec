@@ -17,7 +17,7 @@
 
 
 Name:           yast2-storage-ng
-Version:        4.3.9
+Version:        4.3.10
 Release:        0
 Summary:        YaST2 - Storage Configuration
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -26,8 +26,8 @@ Url:            https://github.com/yast/yast-storage-ng
 
 Source:         %{name}-%{version}.tar.bz2
 
-# RB_RESIZE_NOT_SUPPORTED_DUE_TO_SNAPSHOTS
-BuildRequires:  libstorage-ng-ruby >= 4.3.21
+# UF_PMEM and UF_NVME
+BuildRequires:  libstorage-ng-ruby >= 4.3.30
 BuildRequires:  update-desktop-files
 # AutoYaST issue handling
 BuildRequires:  yast2 >= 4.3.2
@@ -48,8 +48,8 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:parallel_tests)
 
 # findutils for xargs
 Requires:       findutils
-# RB_RESIZE_NOT_SUPPORTED_DUE_TO_SNAPSHOTS
-Requires:       libstorage-ng-ruby >= 4.3.21
+# UF_PMEM and UF_NVME
+Requires:       libstorage-ng-ruby >= 4.3.30
 # Updated Xen detection
 Requires:       yast2 >= 4.3.6
 # Y2Packager::Repository
