@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 30 12:54:05 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.6.5
+  - Fixes a bug that would leak memory every time a fast-datapath
+    connection was stopped.
+  - Avoid a crash when the machine has ipv6 disabled.
+- Refresh vendor.tar.xz
+
+-------------------------------------------------------------------
 Sat May 30 11:24:10 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.6.4
