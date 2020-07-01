@@ -18,7 +18,7 @@
 
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d }
 Name:           haveged
-Version:        1.9.8
+Version:        1.9.13
 Release:        0
 Summary:        Daemon for feeding entropy into the random pool
 License:        GPL-3.0-only
@@ -60,7 +60,7 @@ For more information, see http://www.issihosts.com/haveged/ .
 %package devel
 Summary:        Haveged development files
 Group:          Development/Libraries/C and C++
-Requires:       libhavege1 = %{version}
+Requires:       libhavege2 = %{version}
 
 %description devel
 Headers and for the haveged library
@@ -68,11 +68,11 @@ Headers and for the haveged library
 This package contains the haveged implementation of the HAVEGE
 algorithm and supporting features.
 
-%package -n libhavege1
+%package -n libhavege2
 Summary:        Haveged interface library
 Group:          System/Libraries
 
-%description -n libhavege1
+%description -n libhavege2
 Shared object for the haveged library.
 This package contains the haveged implementation of the HAVEGE
 algorithm and supporting features.
@@ -138,8 +138,8 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %service_del_preun %{name}.service
 %service_del_preun %{name}-switch-root.service
 
-%post -n libhavege1 -p /sbin/ldconfig
-%postun -n libhavege1 -p /sbin/ldconfig
+%post -n libhavege2 -p /sbin/ldconfig
+%postun -n libhavege2 -p /sbin/ldconfig
 
 %files
 %license COPYING
@@ -162,7 +162,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %doc contrib/build/havege_sample.c
 %{_libdir}/*.so
 
-%files -n libhavege1
+%files -n libhavege2
 %license COPYING
 %{_libdir}/*.so.*
 
