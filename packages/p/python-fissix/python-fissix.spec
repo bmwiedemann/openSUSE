@@ -1,7 +1,7 @@
 #
 # spec file for package python-fissix
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-fissix
-Version:        19.2b1
+Version:        20.5.1
 Release:        0
 Summary:        Backport of lib2to3, with enhancements
 License:        Python-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/jreese/fissix
 Source:         https://files.pythonhosted.org/packages/source/f/fissix/fissix-%{version}.tar.gz
 BuildRequires:  %{python_module appdirs}

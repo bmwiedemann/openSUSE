@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_with     test
 Name:           python-sympy
-Version:        1.5.1
+Version:        1.6
 Release:        0
 Summary:        Computer algebra system (CAS) in Python
 License:        BSD-3-Clause
@@ -31,6 +31,9 @@ BuildRequires:  %{python_module mpmath >= 0.19}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with test}
+BuildRequires:  %{python_module pytest}
+%endif
 Requires:       python-mpmath >= 0.19
 Requires:       python-setuptools
 Requires(post): update-alternatives
@@ -50,6 +53,7 @@ any external libraries.
 
 %prep
 %setup -q -n sympy-%{version}
+sed -i -e '/^#!\//, 1d' sympy/testing/tests/diagnose_imports.py
 
 %{python_expand cp -r examples examples-%{$python_bin_suffix}
 find examples-%{$python_bin_suffix} -name "*.py" -exec sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" {} \;
@@ -62,17 +66,13 @@ find examples-%{$python_bin_suffix} -name "*.py" -exec sed -i "s|^#! %{_bindir}/
 %install
 %python_install
 
-%{python_expand chmod a+x %{buildroot}%{$python_sitelib}/sympy/utilities/tests/diagnose_imports.py
-chmod a+x %{buildroot}%{$python_sitelib}/sympy/physics/mechanics/models.py
+%{python_expand chmod a+x %{buildroot}%{$python_sitelib}/sympy/physics/mechanics/models.py
 chmod a+x %{buildroot}%{$python_sitelib}/sympy/physics/optics/polarization.py
 chmod a+x %{buildroot}%{$python_sitelib}/sympy/benchmarks/bench_symbench.py
-sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" %{buildroot}%{$python_sitelib}/sympy/utilities/tests/diagnose_imports.py
 sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" %{buildroot}%{$python_sitelib}/sympy/physics/mechanics/models.py
 sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" %{buildroot}%{$python_sitelib}/sympy/physics/optics/polarization.py
 sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" %{buildroot}%{$python_sitelib}/sympy/benchmarks/bench_symbench.py
 # Deduplicating files can generate a RPMLINT warning for pyc mtime
-$python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/sympy/utilities/tests/
-$python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/sympy/utilities/tests/
 $python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/sympy/physics/mechanics/
 $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/sympy/physics/mechanics/
 $python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/sympy/benchmarks/
@@ -92,12 +92,12 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/sy
 %if %{with test}
 %check
 export LANG=en_US.UTF-8
-%python_exec setup.py test
+%pytest
 %endif
 
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS README.rst
+%doc AUTHORS README.md
 %doc examples-%{python_bin_suffix}/
 %python_alternative %{_bindir}/isympy
 %python_alternative %{_mandir}/man1/isympy.1%{ext_man}

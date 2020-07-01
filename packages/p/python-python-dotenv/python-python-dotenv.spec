@@ -36,7 +36,7 @@ Requires:       python-click >= 5.0
 # rubygem-dotenv also provides executable dotenv
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     python-jupyter_ipython
+Suggests:       python-jupyter_ipython
 # There is a very similar Python package which also used `dotenv` namespace
 Conflicts:      python-dotenv
 BuildArch:      noarch

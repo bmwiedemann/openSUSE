@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cpplint
-Version:        1.4.5
+Version:        1.5.2
 Release:        0
 Summary:        An automated checker to make sure a C++ file follows Google's C++ style guide
 License:        BSD-3-Clause
@@ -27,6 +27,7 @@ URL:            https://github.com/cpplint/cpplint
 Source:         https://files.pythonhosted.org/packages/source/c/cpplint/cpplint-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module testfixtures}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives

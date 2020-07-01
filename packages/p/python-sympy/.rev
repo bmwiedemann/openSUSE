@@ -175,4 +175,41 @@ Note: resubmit with fixed license</comment>
     <comment></comment>
     <requestid>764610</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>19d74e9df4218927a2451c3866903079</srcmd5>
+    <version>1.6</version>
+    <time>1593606448</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.6
+  + Backwards compatibility breaks and deprecations
+    &gt; assumptions
+      * Removed deprecated Q.bounded (use Q.finite instead). Deprecated since version 1.0 (issue: #9425) (#18390 by @Smit-create)
+      * Removed deprecated Q.infinitesimal (use Q.zero instead). Deprecated since version 1.0 (issue: #9675) (#18390 by @Smit-create)
+      * Removed deprecated Q.infinity (use Q.infinte instead). Deprecated since version 1.0 (issue: #9426) (#18390 by @Smit-create)
+    &gt; calculus
+      * Deprecated evaluate argument in differentiate_finite for making non-conservative finite differences. (#17881 by @vezeli)
+    &gt; combinatorics
+      * Using Permutation.print_cyclic will raise deprecation warnings (#18033 by @oscarbenjamin, @souravgl0, and @sylee957)
+    &gt; core
+      * Deprecated sympify automatically converting custom objects with __str__ or __repr__ implemented. (#19006 by @sylee957)
+      * BREAKING CHANGE: Basic.has no longer accepts strings as input. For example in SymPy 1.5 you could do Symbol('x').has('x') and the string 'x' passed to has would be sympified to a symbol so that the result would be True. In SymPy 1.6 this will raise an error because the string 'x' can not be sympified using strict sympification. (#19251 by @oscarbenjamin)
+      * Remove deprecated bounded, unbounded and infinitesimal. Deprecated since version 0.7.6 (issue #8071) (#18503 by @Smit-create)
+      * Relational is no longer a subclass of Expr and does not produce nonsensical results in arithmetic operations. This affects all Relational subclasses (Eq, Ne, Gt, Ge, Lt, Le). It is no longer possible to call meaningless Expr methods like as_coeff_Mul on Relational instances. (#18053 by @oscarbenjamin)
+      * Expr now uses cooperative dispatch for binary operations so it is possible for non-Expr Basic subclasses to override the behaviour of e.g. a + b where one of a or b is an instance of Expr. This also means that any non-Expr Basic subclasses can not depend on Expr.__add__ to create Add(a, b): if a class is not a subclass of Expr and wants to define binary operations with Expr it must do so explicitly in its own __add__ method. For classes depending on this this is not a backward compatible change. (#18116 by @oscarbenjamin)
+    &gt; matrices
+      * The Matrix.is_zero property has been renamed to Matrix.is_zero_matrix.
+      * Matrix.is_zero is now always False. This is because in general is_zero means the number zero so a matrix can never be zero.
+    &gt; To get the old behavior of M.is_zero in both old and new versions of sympy use from sympy.core.logic import fuzzy_and; fuzzy_and(m.is_zero for m in M). (#18464 by @sylee957)
+    &gt; polys
+      * BREAKING CHANGE: Poly and PurePoly now subclass Basic rather than Expr. This means that they no longer have various Expr methods such as expand that do not make sense for Poly. Use as_expr to convert the Poly to an Expr before using Expr methods. (#18613 by @oscarbenjamin)
+      * BREAKING CHANGE: Poly instances with different domains now always compare unequal with p1 == p2 and p1.eq(p2). Previously Poly instances that had the same expression and generators would compare equal even if the domains were different. In some cases it might be necessary to specify the domain when comparing e.g. if p == Poly(x, x, domain='QQ'). (#18613 by @oscarbenjamin)
+      * DEPRECATION: Mixing Poly with non-polynomial Expr in binary operations is now deprecated. For example Poly(x, x) * exp(x) will give a deprecation warning but still return the Expr x*exp(x) as before. If the Expr can be converted to Poly (e.g. Poly(x, x) * x) then a Poly will be returned. To get an Expr always use the as_expr method first to convert the Poly to an Expr. To get a Poly always use as_poly to convert the Expr to a Poly. (#18613 by @oscarbenjamin)
+      * DEPRECATION: Passing Poly as the integrand to the integrate function or Integral class is now deprecated. Use the integrate method instead e.g. Poly(x, x).integrate(x) (#18613 by @oscarbenjamin)
+    &gt; printing
+      * Removed deprecated Ccodeprinter (Use C89Printer or C99Printer instead). Deprecated since version 1.1 (Issue : #12220). (#18392 by @risubaba)
+      * Removed deprecated file viewer option in preview. Deprecated since version 0.7.3(Issue: #7018) (#18392 by @risubaba)
+      * Removed deprecated StringIO viewer option in preview. Deprecated since version 0.7.2(Issue: #7083) (#18392 by @risubaba)
+    &gt; sets</comment>
+    <requestid>818062</requestid>
+  </revision>
 </revisionlist>

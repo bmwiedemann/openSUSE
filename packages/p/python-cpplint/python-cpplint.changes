@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jul  1 04:34:56 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on textfixtures. 
+
+-------------------------------------------------------------------
+Thu Jun 25 04:44:48 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+-  Update to 1.5.2:
+   * Fix #83, output formats "sed" and "gsed" to auto-fix some issues
+   * Fix #92, new category "build/namespaces_headers" for unnamed namespaces in header file
+   * Sort list of files before processing
+   * Fix #144 Falso positive for indent when using QT macros "signals" and "slots"
+   * Fix #76 Parsing of class decorators that also use digits
+   * Fix #139 Add message "Relative paths like . and .. are not allowed"
+   * Revert #43 behavior change for include order from 1.5.0, and hide it behind command-line-flag --includeorder=standardcfirst. It turns out there is no easy objective way to tell c system headers from certain c++ library headers, and Google cpplint intentionally classifies some C++ header includes as C system header for simplicity.
+   * Libraries considered as C system headers using --includeorder=standardcfirst now also includes linux-specifc headers (glibc-devel, glibc-kernheaders, linux-libc-dev).
+   * Fix #43 false positives in header include order by checking includes against a list of c headers. Since this interprets certain include lines different than before, output about header include order changes.
+   * Fix #135: allow 'if constexpr' in readability/braces.
+   * Fix runtime warning: Close files after reading contents 
+
+-------------------------------------------------------------------
 Wed May 27 09:36:50 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

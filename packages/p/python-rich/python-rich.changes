@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue Jun 30 22:20:40 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.1
+  Added
+  * Added box.ASCII2
+  * Added markup argument to logging extra
+  Changed
+  * Setting a non-None width now implies expand=True
+
+-------------------------------------------------------------------
+Mon Jun 29 09:39:54 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Use dephell
+
+-------------------------------------------------------------------
+Mon Jun 29 08:00:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 3.0.0

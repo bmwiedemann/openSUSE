@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname distorm3
 Name:           python-%{modname}
-Version:        3.4.2
+Version:        3.5.0
 Release:        0
 Summary:        Disassembler Library For x86/AMD64
 License:        BSD-3-Clause

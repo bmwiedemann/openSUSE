@@ -1,7 +1,7 @@
 #
 # spec file for package mumps
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,6 +53,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "openmpi1"
+%{?DisOMPI1}
 %define mpi_family  openmpi
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
 %define mpi_ver 1
@@ -80,6 +81,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "scotch-openmpi1"
+%{?DisOMPI1}
 %define mpi_family  openmpi
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
 %define mpi_ver 1
@@ -578,7 +580,7 @@ module load openblas scalapack
 %if %{with mpi}
 # Set LD_LIBRARY_PATH and PATH
  %define C_C mpicc
- %define F_C mpif77
+ %define F_C mpif77 -std=legacy
  %define F_L mpif77
  %define SCALAP -lscalapack %{!?with_hpc:-lblacs}
  %define MUMPS_LIBF77 %{!?with_hpc:-L%{my_libdir}} %{?mumps_f77_mpilibs}
@@ -588,7 +590,7 @@ module load openblas scalapack
  %define LIBS \\\$(LIBPAR)
 %else # mpi
  %define C_C gcc
- %define F_C gfortran
+ %define F_C gfortran -std=legacy
  %define F_L gfortran
  %define LIBSEQNEEDED libseqneeded
  %define MUMPS_LIBF77 -lmpiseq%{?PLAT}

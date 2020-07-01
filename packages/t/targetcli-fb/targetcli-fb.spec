@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           targetcli-fb
-Version:        2.1.52
+Version:        2.1.53
 Release:        0
 Summary:        A command shell for managing the Linux LIO kernel target
 License:        Apache-2.0
@@ -60,12 +60,6 @@ Patch1:         Split-out-blockdev-readonly-state-detection-helper.patch
 Patch2:         rbd-support.patch
 Patch3:         fix-setup-install.patch
 
-# upstreamed patches
-Patch11:        0001-uds-set-right-permissions-at-bind-time.patch
-Patch12:        0002-saveconfig-set-0o600-perms-on-backupfiles.patch
-Patch13:        0003-saveconfig-set-right-perms-on-backup-dir.patch
-Patch14:        0004-saveconfig-set-right-perms-on-etc-target-dir.patch
-
 %python_subpackages
 
 %description
@@ -95,10 +89,6 @@ python2-targetcli-fb and python3-targetcli-fb.
 %patch2 -p1
 %endif
 %patch3 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
 
 %build
 %python_build

@@ -20,14 +20,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-junos-eznc
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        Junos 'EZ' automation for non-programmers
 License:        Apache-2.0
 URL:            https://www.github.com/Juniper/py-junos-eznc
 Source:         https://github.com/Juniper/py-junos-eznc/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# https://github.com/Juniper/py-junos-eznc/pull/1040
-Patch0:         python-junos-eznc-no-unittest2.patch
 BuildRequires:  %{python_module Jinja2 >= 2.7.1}
 BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module lxml >= 3.2.4}
@@ -76,7 +74,6 @@ These capabilities include, but are not limited to:
 
 %prep
 %setup -q -n py-junos-eznc-%{version}
-%patch0 -p1
 sed -i -e '/yamlordereddictloader/d' requirements.txt
 # requires deprecated and not working yamlordereddictloader
 rm tests/unit/factory/test_cmdtable.py

@@ -47,4 +47,25 @@
     <comment></comment>
     <requestid>809606</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>87ee14da42a419edb1551319d5bafc3a</srcmd5>
+    <version>1.5.2</version>
+    <time>1593606421</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires on textfixtures. 
+
+-  Update to 1.5.2:
+   * Fix #83, output formats &quot;sed&quot; and &quot;gsed&quot; to auto-fix some issues
+   * Fix #92, new category &quot;build/namespaces_headers&quot; for unnamed namespaces in header file
+   * Sort list of files before processing
+   * Fix #144 Falso positive for indent when using QT macros &quot;signals&quot; and &quot;slots&quot;
+   * Fix #76 Parsing of class decorators that also use digits
+   * Fix #139 Add message &quot;Relative paths like . and .. are not allowed&quot;
+   * Revert #43 behavior change for include order from 1.5.0, and hide it behind command-line-flag --includeorder=standardcfirst. It turns out there is no easy objective way to tell c system headers from certain c++ library headers, and Google cpplint intentionally classifies some C++ header includes as C system header for simplicity.
+   * Libraries considered as C system headers using --includeorder=standardcfirst now also includes linux-specifc headers (glibc-devel, glibc-kernheaders, linux-libc-dev).
+   * Fix #43 false positives in header include order by checking includes against a list of c headers. Since this interprets certain include lines different than before, output about header include order changes.
+   * Fix #135: allow 'if constexpr' in readability/braces.
+   * Fix runtime warning: Close files after reading contents</comment>
+    <requestid>817961</requestid>
+  </revision>
 </revisionlist>

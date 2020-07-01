@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 01 10:38:35 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.4.0+git.20200701.2dbaf41:
+  * Fix up RemoveUnusedEnumMember constructor.
+
+-------------------------------------------------------------------
+Wed Jul 01 09:42:32 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.4.0+git.20200701.485b700:
+  * Add new tests for remove-unused-enum-member.
+  * Make remove-unused-enum-member clangbinarypass.
+  * Make RemoveUnusedEnumMember to accept --to-counter.
+
+-------------------------------------------------------------------
 Tue Jun 30 11:39:40 UTC 2020 - mliska@suse.cz
 
 - Update to version 1.4.0+git.20200630.58375a7:

@@ -183,7 +183,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20200630</value>
+    <value>20200701</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -360,10 +360,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20200629'
+    <value>failed: ''
 published: '20200628'
 publishing: '20200628'
-testing: '20200629'
+testing: '20200630'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">

@@ -140,4 +140,13 @@
     <comment></comment>
     <requestid>790881</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9fde15b0771eebd47d308f241a04f9fc</srcmd5>
+    <version>3.5.0</version>
+    <time>1593606425</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.5.0:
+  * No upstream changelog.</comment>
+    <requestid>817970</requestid>
+  </revision>
 </revisionlist>
