@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 29 14:34:28 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Drop the /tmp subvolume in favor of tmpfs (boo#1173461)
+- Sync config.sh with kiwi-templates-JeOS
+- Drop bootsplash-theme, not used
+
+-------------------------------------------------------------------
 Thu Jun 18 16:06:24 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - use/rely on systemd presets for default enabled services

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2018 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -28,39 +28,28 @@ test -f /.profile && . /.profile
 
 set -euxo pipefail
 
-mkdir /var/lib/misc/reconfig_system
-
-#======================================
-# Greeting...
-#--------------------------------------
 echo "Configure image: [$kiwi_iname]-[$kiwi_profiles]..."
 
-#======================================
-# add missing fonts
-#--------------------------------------
-CONSOLE_FONT="eurlatgr.psfu"
+# Systemd controls the console font now
+echo FONT="eurlatgr.psfu" >> /etc/vconsole.conf
 
 #======================================
 # prepare for setting root pw, timezone
 #--------------------------------------
 echo ** "reset machine settings"
 sed -i 's/^root:[^:]*:/root:*:/' /etc/shadow
-rm /etc/machine-id
-rm /var/lib/zypp/AnonymousUniqueId
-rm /var/lib/systemd/random-seed
+rm -f /etc/machine-id \
+      /var/lib/zypp/AnonymousUniqueId \
+      /var/lib/systemd/random-seed \
+      /var/lib/dbus/machine-id
 
 #======================================
-# Setup baseproduct link
+# Specify default systemd target
 #--------------------------------------
-suseSetupProduct
+baseSetRunlevel multi-user.target
 
 #======================================
-# Specify default runlevel
-#--------------------------------------
-baseSetRunlevel 3
-
-#======================================
-# Add missing gpg keys to rpm
+# Import trusted rpm keys
 #--------------------------------------
 suseImportBuildKey
 
@@ -69,36 +58,8 @@ suseImportBuildKey
 #--------------------------------------
 cat >/etc/sysconfig/network/ifcfg-eth0 <<EOF
 BOOTPROTO='dhcp'
-MTU=''
-REMOTE_IPADDR=''
 STARTMODE='auto'
-ETHTOOL_OPTIONS=''
-USERCONTROL='no'
 EOF
-
-# Enable chrony
-suseInsertService chronyd
-
-#======================================
-# Sysconfig Update
-#--------------------------------------
-echo '** Update sysconfig entries...'
-
-echo FONT="$CONSOLE_FONT" >> /etc/vconsole.conf
-
-#======================================
-# SSL Certificates Configuration
-#--------------------------------------
-echo '** Rehashing SSL Certificates...'
-update-ca-certificates
-
-#======================================
-# Import trusted rpm keys
-#--------------------------------------
-for i in /usr/lib/rpm/gnupg/keys/gpg-pubkey*asc; do
-    # importing can fail if it already exists
-    rpm --import $i || true
-done
 
 # Add repos from /etc/YaST2/control.xml
 if [ -x /usr/sbin/add-yast-repos ]; then
@@ -107,8 +68,6 @@ if [ -x /usr/sbin/add-yast-repos ]; then
 fi
 
 # Adjust zypp conf
-sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = true/g' /etc/zypp/zypp.conf
-sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp/zypp.conf
 sed -i 's/^multiversion =.*/multiversion =/g' /etc/zypp/zypp.conf
 
 #=====================================
@@ -123,6 +82,13 @@ if [ "${kiwi_btrfs_root_is_snapshot-false}" = 'true' ]; then
 	sed -i'' 's/^TIMELINE_CREATE=.*$/TIMELINE_CREATE="no"/g' /etc/snapper/configs/root
 	sed -i'' 's/^NUMBER_LIMIT=.*$/NUMBER_LIMIT="2-10"/g' /etc/snapper/configs/root
 	sed -i'' 's/^NUMBER_LIMIT_IMPORTANT=.*$/NUMBER_LIMIT_IMPORTANT="4-10"/g' /etc/snapper/configs/root
+fi
+
+#=====================================
+# Enable chrony if installed
+#-------------------------------------
+if [ -f /etc/chrony.conf ]; then
+	suseInsertService chronyd
 fi
 
 # The %post script can't edit /etc/fstab sys due to https://github.com/OSInside/kiwi/issues/945
@@ -146,6 +112,16 @@ install_items+=" /usr/lib/systemd/systemd-growfs "
 EOF
 
 #======================================
+# Disable recommends on virtual images (keep hardware supplements, see bsc#1089498)
+#--------------------------------------
+sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = true/g' /etc/zypp/zypp.conf
+
+#======================================
+# Disable installing documentation
+#--------------------------------------
+sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp/zypp.conf
+
+#======================================
 # Configure Pine64 specifics
 #--------------------------------------
 if [[ "$kiwi_profiles" == *"Pine64" ]]; then
@@ -153,9 +129,9 @@ if [[ "$kiwi_profiles" == *"Pine64" ]]; then
 fi
 
 #======================================
-# Configure Raspberry Pi specifics
+# Configure Raspberry Pi specifics, unless done by raspberrypi-firmware already (on TW)
 #--------------------------------------
-if [[ "$kiwi_profiles" == *"RaspberryPi"* ]]; then
+if [[ "$kiwi_profiles" == *"RaspberryPi"* ]] && ! [[ -e /usr/lib/dracut/dracut.conf.d/raspberrypi_modules.conf ]]; then
 	# Add necessary kernel modules to initrd (will disappear with bsc#1084272)
 	echo 'add_drivers+=" bcm2835_dma dwc2 "' > /etc/dracut.conf.d/raspberrypi_modules.conf
 
