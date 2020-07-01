@@ -18,7 +18,7 @@
 
 %bcond_without grass
 Name:           qgis
-Version:        3.12.3
+Version:        3.14.0
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
@@ -28,8 +28,6 @@ Source:         https://qgis.org/downloads/%{name}-%{version}.tar.bz2
 Source1:        https://qgis.org/downloads/%{name}-%{version}.tar.bz2.sha256
 Source2:        %{name}.rpmlintrc
 Source3:        qgis_sample_data.zip
-# PATCH-FIX-UPSTREAM - Commit 31f586ec
-Patch1:         qgis-qt5.15.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  bison >= 2.4
 BuildRequires:  cmake >= 3.0.0
@@ -50,6 +48,7 @@ BuildRequires:  ocl-icd-devel
 BuildRequires:  opencl-cpp-headers
 BuildRequires:  pkgconfig
 BuildRequires:  poppler-tools
+BuildRequires:  protobuf-devel
 BuildRequires:  python-qscintilla-qt5-sip
 BuildRequires:  python3-GDAL
 BuildRequires:  python3-Jinja2
@@ -104,7 +103,8 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5XmlPatterns)
 BuildRequires:  pkgconfig(expat) >= 1.95
-BuildRequires:  pkgconfig(gdal) >= 3
+# Requires at least gdal 3.1 for GeoTIFF and Proj >= 6 - https://github.com/qgis/QGIS/issues/36699#issuecomment-633539864
+BuildRequires:  pkgconfig(gdal) >= 3.1
 BuildRequires:  pkgconfig(gsl) >= 1.8
 BuildRequires:  pkgconfig(libpq) > 9.4
 BuildRequires:  pkgconfig(libzip)
@@ -112,10 +112,12 @@ BuildRequires:  pkgconfig(proj) >= 6.3.1
 BuildRequires:  pkgconfig(python3) >= 3.4
 BuildRequires:  pkgconfig(qca2-qt5)
 BuildRequires:  pkgconfig(spatialite) >= 4.2.0
+# Force requires of those 3 main component.
 Requires:       libQt5Sql5-mysql
 Requires:       libQt5Sql5-postgresql
-# Force requires of those 3 main component.
 Requires:       libQt5Sql5-sqlite
+# proj.db is required
+Requires:       proj
 Requires:       python3-GDAL
 Requires:       python3-Jinja2
 Requires:       python3-OWSLib

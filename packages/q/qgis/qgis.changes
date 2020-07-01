@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jun 25 09:12:52 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- proj.db is required, so requires proj package
+
+-------------------------------------------------------------------
+Tue Jun 23 08:10:59 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 3.14.0, changes are documented at
+  https://changelog.qgis.org/en/qgis/version/3.14/
+- Drop upstream patch:
+  * qgis-qt5.15.patch
+
+-------------------------------------------------------------------
+Fri Jun 12 06:34:58 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Requires at least gdal 3.1 for GeoTIFF and Proj >= 6
+  https://github.com/qgis/QGIS/issues/36699#issuecomment-633539864
+
+-------------------------------------------------------------------
 Mon Jun  8 15:39:20 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 3.12.3 (bugfix)
