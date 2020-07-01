@@ -1,5 +1,4 @@
 unsorted:
-  - 0ad 
   - 0ad-data 
   - 2048-cli 
   - 2ping 
@@ -1006,8 +1005,6 @@ unsorted:
   - axel 
   - axis 
   - axis-manual 
-  - ayatana-appindicator-sharp 
-  - ayatana-appindicator-sharp-devel 
   - ayatana-ido-devel 
   - aytests-tests 
   - azote 
@@ -8094,7 +8091,7 @@ unsorted:
   - libSampleICC1 
   - libSavitar-devel 
   - libSavitar0 
-  - libSimGearCore-2020_1_2 
+  - libSimGearCore-2020_1_3 
   - libSoQt20 
   - libSoapyOsmoSDR0 
   - libSoundTouch1-32bit: [x86_64] 
@@ -8451,10 +8448,6 @@ unsorted:
   - libax25-common 
   - libax25-devel 
   - libax25io0 
-  - libayatana-appindicator-devel 
-  - libayatana-appindicator1 
-  - libayatana-appindicator3-1 
-  - libayatana-appindicator3-devel 
   - libayatana-ido3-0_4-0 
   - libayatana-ido3-0_4-0-32bit: [x86_64] 
   - libayatana-indicator-devel 
@@ -9575,8 +9568,7 @@ unsorted:
   - libgda-ui-5_0-plugins: [i586] 
   - libgda-ui-5_0-tools 
   - libgda-xslt-5_0-4 
-  - libgdal26: [x86_64] 
-  - libgdal27: [i586] 
+  - libgdal27 
   - libgdamm-5_0-13 
   - libgdamm-devel 
   - libgdata-devel 
@@ -18035,7 +18027,6 @@ unsorted:
   - perl-warewulf-provision: [x86_64] 
   - perl-warewulf-provision-server: [x86_64] 
   - perl-xfconf 
-  - perl-xrood-client-admin 
   - perl-yui 
   - permissions-zypp-plugin 
   - permlib-devel 
@@ -18949,7 +18940,6 @@ unsorted:
   - python2-aexpect 
   - python2-appindicator 
   - python2-arabic-reshaper 
-  - python2-ayatana-appindicator 
   - python2-azure-datalake-store 
   - python2-clustershell 
   - python2-efl 
@@ -19242,6 +19232,7 @@ unsorted:
   - python3-apache-libcloud 
   - python3-apipkg 
   - python3-apiron 
+  - python3-apns2 
   - python3-application 
   - python3-applicationinsights 
   - python3-apptools 
@@ -19847,6 +19838,7 @@ unsorted:
   - python3-django-oauth-toolkit 
   - python3-django-oidc-provider 
   - python3-django-pglocks 
+  - python3-django-phonenumber-field 
   - python3-django-picklefield 
   - python3-django-pipeline 
   - python3-django-pyscss 
@@ -21774,6 +21766,7 @@ unsorted:
   - python3-xmltodict 
   - python3-xonsh 
   - python3-xpybutil 
+  - python3-xrootd 
   - python3-xsge_gui 
   - python3-xsge_lighting 
   - python3-xsge_particle 
@@ -33405,8 +33398,6 @@ unsorted:
   - typelib-1_0-AtrilDocument-1_5_0 
   - typelib-1_0-AtrilView-1_5_0 
   - typelib-1_0-Avahi-0_6 
-  - typelib-1_0-AyatanaAppIndicator-0_1 
-  - typelib-1_0-AyatanaAppIndicator3-0_1 
   - typelib-1_0-AyatanaIdo3-0_4 
   - typelib-1_0-Babl-0_1 
   - typelib-1_0-Bamf-3_0 
@@ -34549,16 +34540,17 @@ unsorted:
   - xrefresh 
   - xrestop 
   - xroach 
-  - xrootd-cl 
-  - xrootd-cl-devel 
   - xrootd-client 
   - xrootd-client-devel 
+  - xrootd-client-libs 
+  - xrootd-doc 
   - xrootd-fuse 
   - xrootd-libs 
   - xrootd-libs-devel 
   - xrootd-private-devel 
   - xrootd-server 
   - xrootd-server-devel 
+  - xrootd-server-libs 
   - xscope 
   - xsd 
   - xsd-doc 
