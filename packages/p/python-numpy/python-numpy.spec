@@ -247,12 +247,14 @@ EOF
 
 %check
 %if %{without hpc}
-export PYTHONDONTWRITEBYTECODE=1
 export PATH="%{buildroot}%{_bindir}:$PATH"
 mkdir testing
 pushd testing
-%python_expand export PYTHONPATH=%{_python_sysconfig_path $python stdlib}:%{$python_sitearch}
-%pytest_arch -n auto --pyargs numpy %{buildroot}%{$python_sitearch}/numpy
+# boo#1148173 gh#numpy/numpy#14438
+%ifarch ppc64 ppc64le
+%define skiptest -k "not test_generalized_sq"
+%endif
+%pytest_arch -n auto --pyargs numpy %{buildroot}%{$python_sitearch}/numpy %{?skiptest}
 popd
 %endif
 %if %{without hpc}
