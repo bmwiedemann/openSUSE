@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun 30 19:33:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.0
+  Features Added
+  * Versioneer support added for the code.
+  * Changes for ansible actions of the reboot, shutdown to be
+    handled in PyEZ
+  Bugs Fixed
+  * sax parser filter generation generic logic
+  * Changes for the msg displayed in case of failure in software
+    update
+  * ntc_template latest version uses textfsm 1.1.0 #1042
+  * drop hard dependency on unittest2 #1040
+- Drop patch (fixed upstream)
+  * python-junos-eznc-no-unittest2.patch
+
+-------------------------------------------------------------------
 Thu Jun  4 11:04:08 UTC 2020 - pgajdos@suse.com
 
 - version update to 2.4.1
