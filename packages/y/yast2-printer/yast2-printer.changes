@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 30 13:55:10 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST: do not export printer settings if CUPS is disabled
+  (bsc#1172749).
+- 4.3.1
+
+-------------------------------------------------------------------
 Tue May 12 14:32:46 UTC 2020 - josef Reidinger <jreidinger@localhost>
 
 - Autoyast schema: Allow optional types for string and map objects
