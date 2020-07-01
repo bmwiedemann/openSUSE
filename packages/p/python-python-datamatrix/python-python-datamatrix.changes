@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  1 12:53:51 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.10.17
+  * srs.reduce_(): raise TypeError on invalid input
+  * Only use bytes() in safe_decode for Exceptions
+- added patches
+  fix do not depend on nose
+  + python-python-datamatrix-remove-nose.patch
+
+-------------------------------------------------------------------
 Thu Jan 30 17:28:19 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.10.15

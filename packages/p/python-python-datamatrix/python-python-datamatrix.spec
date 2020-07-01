@@ -19,22 +19,24 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-python-datamatrix
-Version:        0.10.15
+Version:        0.10.17
 Release:        0
 Summary:        A python library to work with tabular data
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/smathot/python-datamatrix
 Source:         https://github.com/smathot/python-datamatrix/archive/release/%{version}.tar.gz#/python-datamatrix-release-%{version}.tar.gz
+# https://github.com/smathot/python-datamatrix/pull/10
+Patch0:         python-python-datamatrix-remove-nose.patch
 BuildRequires:  %{python_module fastnumbers}
 BuildRequires:  %{python_module json_tricks}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module nibabel}
 BuildRequires:  %{python_module nilearn}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module openpyxl}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -59,6 +61,7 @@ Tabular data is datasets that consist of named columns and numbered rows.
 
 %prep
 %setup -q -n python-datamatrix-release-%{version}
+%patch0 -p1
 # wrong-file-end-of-line-encoding
 sed -i 's/\r$//' doc-pelican/data/fratescu-replication-data-exp1.csv
 
@@ -70,8 +73,7 @@ sed -i 's/\r$//' doc-pelican/data/fratescu-replication-data-exp1.csv
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# All test failures appear to be problematic, but are specific to input data types
-%python_expand nosetests-%{$python_bin_suffix} testcases -e '(test_memoize|test_group|test_io|test_intcolumn|test_seriescolumn)'
+%pytest -k 'not (test_memoize or test_group or test_io or test_intcolumn or test_seriescolumn)'
 
 %files %{python_files}
 %license copyright
