@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 29 03:09:15 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.25
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+
+  6.25      2020-06-28 17:52:12Z
+      - Don't run Changes test on master in GH actions
+      - move Clone from required to suggests prerequisite, to re-enable
+        fatpacking
+
+-------------------------------------------------------------------
 Tue May 12 03:09:10 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 6.24
