@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  1 13:11:06 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add back proper bootloader configuration code to grub2 post scripts
+
+-------------------------------------------------------------------
 Mon Jun 29 13:48:31 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Overwrite Ignition's systemd generator by putting a file of the

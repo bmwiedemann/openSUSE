@@ -115,12 +115,19 @@ fi
 %service_add_pre ignition-firstboot-complete.service
 
 %post grub2
+if [ "$1" = 1 ] ; then
+    sed -i 's/^\(GRUB_CMDLINE_LINUX_DEFAULT="\)\(.*\)/\1\\$ignition_firstboot \2/' %{_sysconfdir}/default/grub
+    %{?update_bootloader_refresh_post}
+fi
 %service_add_post ignition-firstboot-complete.service
 
 %preun grub2
 %service_del_preun ignition-firstboot-complete.service
 
 %postun grub2
+if [ "$1" = 0 ] ; then
+    sed -i -E '/^GRUB_CMDLINE_LINUX_DEFAULT="/s/(\\\$)?ignition[._][^[:space:]"]+ ?//g' %{_sysconfdir}/default/grub
+fi
 %service_del_postun -n ignition-firstboot-complete.service
 
 %posttrans grub2
