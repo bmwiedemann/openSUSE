@@ -85,6 +85,10 @@ License:        BSD-3-Clause
 Group:          System/Libraries
 URL:            https://github.com/opencollab/arpack-ng
 Source0:        https://github.com/opencollab/arpack-ng/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM arpack-ng-gcc10.patch gh#opencollab/arpack-ng#239 gh#opencollab/arpack-ng#245 badshah400@gmail.com -- Fix building against GCC 10, patches taken from upstream commits
+Patch0:         arpack-ng-gcc10.patch
+# PATCH-FIX-UPSTREAM arpack-ng-double-comparison.patch gh#opencollab/arpack-ng#269 badshah400@gmail.com -- Compare difference to zerop to test float equivalence in TESTS/bug_79_double_complex.f; fixes build failure for i586
+Patch1:         arpack-ng-double-comparison.patch
 %if %{with mpi}
 BuildRequires:  %{mpi_family}%{?mpi_ext}-devel
 %endif
@@ -137,6 +141,8 @@ library links used for building arpack based applications.
 
 %prep
 %setup -q -n arpack-ng-%{version}
+%patch0 -p1
+%patch1 -p1
 
 # create baselibs.conf based on flavor
 cat >  %{_sourcedir}/baselibs.conf <<EOF

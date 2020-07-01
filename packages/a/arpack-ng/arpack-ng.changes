@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 16 21:36:18 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add arpack-ng-double-comparison.patch: Add a tolerance for
+  testing float equivalence in TESTS/bug_79_double_complex.f;
+  fixes build failure for i586 [gh#opencollab/arpack-ng#269].
+
+-------------------------------------------------------------------
+Sat Jun  6 21:01:08 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add arpack-ng-gcc10.patch to fix build against GCC 10
+  [gh#opencollab/arpack-ng#239, gh#opencollab/arpack-ng#245].
+
+-------------------------------------------------------------------
 Fri Jan  3 14:14:12 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 3.7.0:
