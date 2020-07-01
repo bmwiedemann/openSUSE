@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jun 30 23:08:34 UTC 2020 - dmueller@suse.com
+
+- Update to version 1.4.3:
+  * bump and fix
+  * split matchLabels template
+  * restructured and improved service
+  * bumped kured to upcoming 1.4.3 fixed servicemonitor indent fixed quotes for arguments
+  * update things for 1.4.2 release
+  * Use GITHUB_TOKEN for releasing chart
+  * make markdownlint happier
+  * update version
+  * prepare chart-release for 1.4.1
+  * Revert #139
+- use obs-service for regenerating vendor.tar.gz
+
+-------------------------------------------------------------------
+Tue Jun 30 12:41:41 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.4.2
+  - Adding --annotation-ttl for automatic unlock
+- Refresh vendor.tar.xz
+
+-------------------------------------------------------------------
 Mon May 18 07:31:50 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - kured-imagePullPolicy.patch: always update the image
