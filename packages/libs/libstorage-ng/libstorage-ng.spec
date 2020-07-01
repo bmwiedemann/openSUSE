@@ -18,7 +18,7 @@
 
 %define libname %{name}1
 Name:           libstorage-ng
-Version:        4.3.28
+Version:        4.3.32
 Release:        0
 Summary:        Library for storage management
 License:        GPL-2.0-only
@@ -206,13 +206,13 @@ touch %{buildroot}/run/libstorage-ng/lock
 
 %files utils
 %defattr(-,root,root)
-%dir %{_libexecdir}/libstorage-ng
-%{_libexecdir}/libstorage-ng/utils
+%dir %{_prefix}/lib/libstorage-ng
+%{_prefix}/lib/libstorage-ng/utils
 
 %files integration-tests
 %defattr(-,root,root)
 %{python3_sitelib}/storageitu.py*
-%dir %{_libexecdir}/libstorage-ng
-%{_libexecdir}/libstorage-ng/integration-tests
+%dir %{_prefix}/lib/libstorage-ng
+%{_prefix}/lib/libstorage-ng/integration-tests
 
 %changelog
