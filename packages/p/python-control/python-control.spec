@@ -45,7 +45,9 @@ BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module slycot}
+%ifarch %ix86
 BuildRequires:  libjemalloc2
+%endif
 # /SECTION
 %python_subpackages
 
@@ -76,16 +78,13 @@ export MPLBACKEND="Qt5Agg"
     # preload malloc library to avoid free() error on i586 architecture
     export LD_PRELOAD="%{_libdir}/libjemalloc.so.2"
 %endif
-%if %{_arch} == ppc64 || %{_arch} == ppc64le
-    %define skiptests -k "not TestMixsyn"
-%endif
 cat >> setup.cfg <<EOL
 [tool:pytest]
 filterwarnings =
     ignore:.*matrix subclass:PendingDeprecationWarning
     ignore:.*scipy:DeprecationWarning
 EOL
-%pytest %{?skiptests}
+%pytest
 
 %files %{python_files}
 %doc ChangeLog README.rst

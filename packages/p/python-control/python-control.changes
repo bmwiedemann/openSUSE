@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 30 12:21:40 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- remove ppc workaround 
+- remove _service file
+
+-------------------------------------------------------------------
 Fri Jun 26 15:29:50 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - move to pytest, ignore deprecation warnings for scipy functions
