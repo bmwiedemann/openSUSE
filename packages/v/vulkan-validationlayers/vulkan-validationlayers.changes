@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 28 17:15:56 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to release 1.2.145
+  * layers: Label BindBuffer2 VUIDs
+  * layers: Raytracing VUIDs
+  * tests: Implement test for raytracing VUIDs
+  * layers: Clean up some variable name formatting issues
+  * layers: Add VUID 02840
+  * tests: Add VUID 02840
+  * corechecks: Add FB check for depth-stencil 3D image/imageviews
+  * tests: Added test for VUID-VkFBCreateInfo-pAttachments-00891
+  * layers: Fix VK_EXT_sample_locations bug
+  * tests: Add extra VK_EXT_sample_location test
+
+-------------------------------------------------------------------
 Thu May 28 14:29:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.141
