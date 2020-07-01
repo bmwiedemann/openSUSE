@@ -17,7 +17,7 @@
 
 
 Name:           yast2-users
-Version:        4.3.2
+Version:        4.3.3
 Release:        0
 Summary:        YaST2 - User and Group Configuration
 License:        GPL-2.0-only
@@ -32,8 +32,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  perl-Digest-SHA1
 BuildRequires:  update-desktop-files
-# CLI readonly
-BuildRequires:  yast2 >= 4.2.57
+# 'target' argument for Installation::AutoClient#export method
+BuildRequires:  yast2 >= 4.3.10
 BuildRequires:  yast2-core-devel
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-perl-bindings
@@ -57,8 +57,8 @@ Requires:       yast2-perl-bindings >= 2.18.0
 # this forces using yast2-ldap with correct LDAP object names (fate#303596)
 Requires:       yast2-ldap >= 3.1.2
 
-# CLI readonly
-Requires:       yast2 >= 4.2.57
+# 'target' argument for Installation::AutoClient#export method
+Requires:       yast2 >= 4.3.10
 # cryptsha256, cryptsha516
 Requires:       yast2-core >= 2.21.0
 

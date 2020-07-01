@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 29 15:28:01 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Honor the 'target' argument when cloning the system. If it is
+  set to 'compact', a reduced list of users and groups is generated
+  (bsc#1172749).
+- 4.3.3
+
+-------------------------------------------------------------------
 Wed May 27 11:55:44 UTC 2020 - David Diaz <dgonzalez@suse.com>
 
 - Dropped legacy testsuite (related to bsc#1138668).
