@@ -381,4 +381,41 @@
     already part of 0.9.12)</comment>
     <requestid>800071</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>2e891bd6e00aa539b2ff92d9793c0a9e</srcmd5>
+    <version>0.9.13</version>
+    <time>1593620528</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 0.9.13 [bsc#1173477]
+  ## Overall changes:
+    * Small tweaks to the CMake build system.
+    * The macOS server example was overhauled and is now the most feature-complete sample
+          application of the project, ready for real-world use.
+    * Lots of documentation updates and markdownifying.
+    * The TravisCI continuous integration now also build-checks cross-compilation from
+          Linux to Windows.
+    * Setup a [Gitter community chat](https://gitter.im/LibVNC/libvncserver) for the project.
+  ## LibVNCServer/LibVNCClient:
+    * Both LibVNCServer and LibVNCClient now support an additional platform, namely
+          Microsoft Windows. Building is supported with Visual Studio as well as MingGW.
+    * The separate crypto routines used by LibVNCClient and LibVNCServer were refactored
+          into an implementation common to both libraries.
+    * Several security issues got fixed.
+    * The bundled noVNC client is now at version 1.1.0 and included via a git submodule.
+  ## LibVNCClient:
+    * Added connect timeout as well as read timeout support thanks to Tobias Junghans.
+    * Both TLS backends now do proper locking of network operations when multi-threaded
+      thanks to Gaurav Ujjwal.
+    * Fixed regression in Tight/Raw decoding introduced in 0.9.12 thanks to DRC.
+    * Fixed encrypted connections to AnonTLS servers when using the OpenSSL back-end.
+          Made possible by the profound research done by Gaurav Ujjwal.
+  ## LibVNCServer:
+    * Added a hooking function (`clientFramebufferUpdateRequestHook`) to deliver
+          rfbFramebufferUpdateRequest messages from clients to the frame producer
+          thanks to Jae Hyun Yoo.
+    * Added SetDesktopSize/ExtendedDesktopSize support thanks to Floris Bos.
+    * Added multi-threading support for MS Windows.
+    * Fixed VNC repeater/proxy functionality that was broken in 0.9.12.</comment>
+    <requestid>817795</requestid>
+  </revision>
 </revisionlist>
