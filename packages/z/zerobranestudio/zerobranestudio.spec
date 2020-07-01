@@ -1,7 +1,7 @@
 #
 # spec file for package zerobranestudio
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define lua_version 5.1
 
 Name:           zerobranestudio
-Version:        1.70
+Version:        1.90
 Release:        0
 Summary:        Lightweight Lua IDE
 License:        MIT
 Group:          Development/Tools/IDE
-Url:            http://studio.zerobrane.com/
+URL:            http://studio.zerobrane.com/
 Source:         https://github.com/pkulchenko/ZeroBraneStudio/archive/%{version}.tar.gz
 # PATCH-FIX-OPENSUSE use system Lua
 Patch0:         zbstudio.patch
@@ -33,11 +33,19 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  lua51-copas
 BuildRequires:  lua51-devel
+BuildRequires:  lua51-lpeg
+BuildRequires:  lua51-luafilesystem
+BuildRequires:  lua51-luasec
 BuildRequires:  lua51-luasocket
 BuildRequires:  wxlua-devel
 Requires:       libwxlua
 Requires:       lua51-BitOp
+Requires:       lua51-copas
+Requires:       lua51-lpeg
+Requires:       lua51-luafilesystem
+Requires:       lua51-luasec
 Requires:       lua51-luasocket
 Requires:       Lua(API) = %lua_version
 Recommends:     luajit
@@ -77,18 +85,13 @@ EOF
 cp lualibs/lua_parser_loose.lua %{buildroot}%{_datadir}/zbstudio/lualibs/
 cp lualibs/lua_lexer_loose.lua %{buildroot}%{_datadir}/zbstudio/lualibs/
 
+# unbundle system provided libraries
+rm -rf %{buildroot}%{_datadir}/zbstudio/lualibs/{copas,coxpcall}
+
 # use the doc macro to put it in the right location
 rm -rf %{buildroot}%{_datadir}/doc
 
 %fdupes %{buildroot}%{_prefix}
-
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
 
 %files
 %defattr(-,root,root)
