@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 30 09:18:15 CEST 2020 - aschnell@suse.com
+
+- install nvme-cli if NVMe devices are present (bsc#1172866)
+- 4.3.10
+
+-------------------------------------------------------------------
 Fri Jun 26 14:02:34 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Ensure consistent removal of LVM snapshots when the origin LV
