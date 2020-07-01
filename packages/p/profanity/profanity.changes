@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  1 16:56:46 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.5:
+  * Fix segfault in /theme properties due to uninitialized
+    titlebar.scrollable (#1380)
+
+-------------------------------------------------------------------
 Wed Jun 24 12:03:31 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.4:

@@ -321,4 +321,14 @@
   * Fix expansion in eval_password (#1364)</comment>
     <requestid>816823</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c38894a322a67834c27053b2dc9ee08c</srcmd5>
+    <version>0.9.5</version>
+    <time>1593629043</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.5:
+  * Fix segfault in /theme properties due to uninitialized
+    titlebar.scrollable (#1380)</comment>
+    <requestid>818152</requestid>
+  </revision>
 </revisionlist>
