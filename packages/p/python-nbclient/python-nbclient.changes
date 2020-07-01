@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 30 13:37:24 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.4.0
+  * Use KernelManager's graceful shutdown rather than KILLing kernels
+  * Mimic an Output widget at the frontend so that the Output widget behaves correctly
+  * Nested asyncio is automatic, and works with Tornado
+  * async_execute now has a reset_kc argument to control if the client is reset upon execution request
+
+-------------------------------------------------------------------
 Tue Jun  9 08:49:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.3.1:
