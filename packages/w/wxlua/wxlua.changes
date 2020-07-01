@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 28 09:56:25 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Added wxMemoryBuffer.patch (will be fixed next release) 
+
+-------------------------------------------------------------------
+Sat Jun 13 17:52:29 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Drop desktop.patch (included upstream)
+- Update to version 3.0.0.8
+- Drop wx-webview.patch (it is disabled by default now)
+
+-------------------------------------------------------------------
 Tue Dec 12 06:18:57 UTC 2017 - mailaender@opensuse.org
 
 - Update to the 3.1 series fork
