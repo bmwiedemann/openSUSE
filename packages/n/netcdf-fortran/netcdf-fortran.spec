@@ -337,8 +337,8 @@ export LDFLAGS="-L$NETCDF_LIB -lnetcdf -L$HDF5_LIB -lhdf5"
 
 %if 0%{?mpi_flavor:1}
 export CC="mpicc"
-export FC="mpif90"
-export F77="mpif77"
+export FC="mpif90 -std=legacy"
+export F77="mpif77 -std=legacy"
 %endif
 %hpc_configure \
     --enable-shared \

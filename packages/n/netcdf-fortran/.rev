@@ -116,4 +116,13 @@
     <comment>- Enable mvapich2 build (boo#1167948). (forwarded request 789284 from eeich)</comment>
     <requestid>789302</requestid>
   </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>c556fe6ab2902df50640f556e80f9367</srcmd5>
+    <version>4.5.2</version>
+    <time>1593629046</time>
+    <user>dimstar_suse</user>
+    <comment>- Gfortran from gcc-10 requires -std=legacy to build the Fortran
+  code in netcdf-fortran (bsc#1173598). (forwarded request 818156 from eeich)</comment>
+    <requestid>818157</requestid>
+  </revision>
 </revisionlist>

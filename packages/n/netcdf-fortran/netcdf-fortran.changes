@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  1 15:36:46 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Gfortran from gcc-10 requires -std=legacy to build the Fortran
+  code in netcdf-fortran (bsc#1173598).
+
+-------------------------------------------------------------------
 Sat Mar 28 06:37:55 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Enable mvapich2 build (boo#1167948).
