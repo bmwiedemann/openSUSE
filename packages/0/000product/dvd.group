@@ -5337,7 +5337,7 @@
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nodejs10-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <!-- patterns-media-rest_dvd uninstallable: nothing provides yast2-trans-en_US needed by patterns-media-rest_dvd-20170319-23.3.i586-->
+    <!-- patterns-media-rest_dvd uninstallable: nothing provides yast2-trans-en_US needed by patterns-media-rest_dvd-20170319-24.1.i586-->
   </packagelist>
 </group>
 <group name="dvd.x86_64">
@@ -5573,7 +5573,7 @@
     <package name="pam_mount-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="pam_pwquality-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="pam_ssh-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <!-- patterns-media-rest_dvd uninstallable: nothing provides yast2-trans-en_US needed by patterns-media-rest_dvd-20170319-23.3.x86_64-->
+    <!-- patterns-media-rest_dvd uninstallable: nothing provides yast2-trans-en_US needed by patterns-media-rest_dvd-20170319-24.1.x86_64-->
     <package name="patterns-server-xen_server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="plasma-browser-integration" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="plasma-browser-integration-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
