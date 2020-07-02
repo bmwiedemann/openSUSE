@@ -10717,8 +10717,6 @@ unsorted:
   - libmovit8 
   - libmowgli-2-0 
   - libmowgli2-devel 
-  - libmozjs-38 
-  - libmozjs-38-32bit: [x86_64] 
   - libmozjs-52 
   - libmp3lame-devel 
   - libmp3lame0-32bit: [x86_64] 
@@ -14563,8 +14561,6 @@ unsorted:
   - mozilla-nss-sysinit 
   - mozilla-nss-sysinit-32bit: [x86_64] 
   - mozilla-nss-tools: [i586] 
-  - mozjs38 
-  - mozjs38-devel 
   - mozjs52 
   - mozjs52-devel 
   - mozjs60 
@@ -16977,6 +16973,7 @@ unsorted:
   - perl-Class-WhiteHole 
   - perl-Class-XPath 
   - perl-Class-XSAccessor 
+  - perl-Clone 
   - perl-Clone-Choose 
   - perl-Clone-PP 
   - perl-Code-DRY 
@@ -20966,6 +20963,7 @@ unsorted:
   - python3-pygments-ansi-color 
   - python3-pygments-pytest 
   - python3-pygments-style-railscasts 
+  - python3-pygn 
   - python3-pygraphviz: [i586] 
   - python3-pyhcl 
   - python3-pyhibp 
@@ -21303,6 +21301,7 @@ unsorted:
   - python3-rfc3986 
   - python3-rfc3987 
   - python3-rfc6555 
+  - python3-rich 
   - python3-rise 
   - python3-rjsmin 
   - python3-rnginline 
@@ -22572,6 +22571,22 @@ unsorted:
   - ruby2.6-rubygem-domain_name 
   - ruby2.6-rubygem-domain_name-doc 
   - ruby2.6-rubygem-domain_name-testsuite 
+  - ruby2.6-rubygem-dry-configurable 
+  - ruby2.6-rubygem-dry-configurable-doc 
+  - ruby2.6-rubygem-dry-container 
+  - ruby2.6-rubygem-dry-container-doc 
+  - ruby2.6-rubygem-dry-container-testsuite 
+  - ruby2.6-rubygem-dry-core 
+  - ruby2.6-rubygem-dry-core-doc 
+  - ruby2.6-rubygem-dry-equalizer 
+  - ruby2.6-rubygem-dry-equalizer-doc 
+  - ruby2.6-rubygem-dry-equalizer-testsuite 
+  - ruby2.6-rubygem-dry-inflector 
+  - ruby2.6-rubygem-dry-inflector-doc 
+  - ruby2.6-rubygem-dry-logic 
+  - ruby2.6-rubygem-dry-logic-doc 
+  - ruby2.6-rubygem-dry-types 
+  - ruby2.6-rubygem-dry-types-doc 
   - ruby2.6-rubygem-ed25519 
   - ruby2.6-rubygem-ed25519-doc 
   - ruby2.6-rubygem-em-websocket 
@@ -23624,6 +23639,15 @@ unsorted:
   - ruby2.7-rubygem-docile-testsuite-1_1 
   - ruby2.7-rubygem-domain_name-doc 
   - ruby2.7-rubygem-domain_name-testsuite 
+  - ruby2.7-rubygem-dry-configurable-doc 
+  - ruby2.7-rubygem-dry-container-doc 
+  - ruby2.7-rubygem-dry-container-testsuite 
+  - ruby2.7-rubygem-dry-core-doc 
+  - ruby2.7-rubygem-dry-equalizer-doc 
+  - ruby2.7-rubygem-dry-equalizer-testsuite 
+  - ruby2.7-rubygem-dry-inflector-doc 
+  - ruby2.7-rubygem-dry-logic-doc 
+  - ruby2.7-rubygem-dry-types-doc 
   - ruby2.7-rubygem-ed25519-doc 
   - ruby2.7-rubygem-em-websocket-doc 
   - ruby2.7-rubygem-em-websocket-testsuite 
