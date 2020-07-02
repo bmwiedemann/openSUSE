@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jul  1 11:09:54 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- avoid build dependency on yast2-network to break build loop
+  (bsc#1172749)
+- 4.3.6
+
+-------------------------------------------------------------------
+Tue Jun 30 13:43:43 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- drop autotools to fix more forgotten clients (bsc#1172749)
+- 4.3.5
+
+-------------------------------------------------------------------
+Fri Jun 26 13:00:19 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- package properly new client created in previous change
+  (bsc#1172749) 
+- 4.3.4
+
+-------------------------------------------------------------------
+Tue Jun 23 11:04:37 UTC 2020 - Stefan Schubert <schubi@suse.com>
+
+- Generating AY file: Generate only values which are not default
+  values (bsc#1172749).
+- 4.3.3  
+
+-------------------------------------------------------------------
+Tue Jun 23 10:04:37 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Avoid build-require of yast2-country-data subpackage
+  (bsc#1173253).
+- 4.3.2
+
+-------------------------------------------------------------------
 Mon Jun  1 07:11:31 UTC 2020 - Michal Filka <mfilka@suse.com>
 
 - bnc#1172180 

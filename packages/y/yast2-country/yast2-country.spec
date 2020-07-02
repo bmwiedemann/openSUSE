@@ -17,7 +17,7 @@
 
 
 Name:           yast2-country
-Version:        4.3.1
+Version:        4.3.6
 Release:        0
 Summary:        YaST2 - Country Settings (Language, Keyboard, and Timezone)
 License:        GPL-2.0-only
@@ -26,11 +26,9 @@ Url:            https://github.com/yast/yast-country
 
 Source0:        %{name}-%{version}.tar.bz2
 
-BuildRequires:  perl-XML-Writer
 BuildRequires:  update-desktop-files
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-perl-bindings
-BuildRequires:  yast2-testsuite
 # For tests
 BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
 BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
@@ -40,8 +38,6 @@ BuildRequires:  yast2-core >= 3.1.12
 BuildRequires:  yast2-ruby-bindings >= 3.1.26
 # Yast2::CommandLine readonly parameter
 BuildRequires:  yast2 >= 4.2.57
-# /usr/share/YaST2/data/languages
-BuildRequires:  yast2-country-data
 
 Requires:       timezone
 Requires:       yast2-perl-bindings
@@ -79,11 +75,13 @@ functions (Language module)
 %prep
 %setup -q
 
+%check
+rake test:unit
+
 %build
-%yast_build
 
 %install
-%yast_install
+rake install DESTDIR="%{buildroot}"
 
 %ifarch s390 s390x
 rm -f %{buildroot}%{yast_desktopdir}/org.opensuse.yast.Keyboard.desktop
@@ -107,6 +105,7 @@ mkdir -p %{buildroot}%{_datadir}/polkit-1/actions
 %{yast_clientdir}/*.rb
 %dir %{yast_libdir}/y2country
 %{yast_libdir}/y2country/widgets
+%{yast_libdir}/y2country/clients
 %{yast_libdir}/y2keyboard
 %{yast_ydatadir}/*.ycp
 %{yast_ydatadir}/*.json
