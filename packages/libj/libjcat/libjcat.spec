@@ -93,6 +93,8 @@ Files for development with %{name}.
 
 %install
 %meson_install
+# remove unreproducible signature file to make package build reproducible
+rm -f %{buildroot}%{_libexecdir}/installed-tests/libjcat/colorhug/firmware.bin.p7c
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
 %postun -n %{name}%{sover} -p /sbin/ldconfig

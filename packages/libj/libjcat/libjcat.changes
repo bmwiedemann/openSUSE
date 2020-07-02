@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 25 09:16:15 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- remove unreproducible signature file to make package build reproducible
+
+-------------------------------------------------------------------
 Tue Jun 09 15:08:08 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 0.1.2+3:
