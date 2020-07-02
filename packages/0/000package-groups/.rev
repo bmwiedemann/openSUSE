@@ -857,4 +857,11 @@ it wants then though.</comment>
     <comment>Have a bootable system for RPi3/4 - boo#1172574</comment>
     <requestid>815261</requestid>
   </revision>
+  <revision rev="118" vrev="116">
+    <srcmd5>62849a5d9e90f62635059654415c0531</srcmd5>
+    <version>unknown</version>
+    <time>1593730240</time>
+    <user>dimstar_suse</user>
+    <comment>add nvme</comment>
+  </revision>
 </revisionlist>

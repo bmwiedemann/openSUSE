@@ -184,6 +184,7 @@ dvd:
   - kernel-default
   - kexec-tools
   - quota-nfs
+  - nvme-cli
 
   - patterns-media-rest_dvd: [suggested]
   # all loggers
