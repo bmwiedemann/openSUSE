@@ -23,40 +23,26 @@
 %undefine _build_create_debug
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
-%define julia_ver            1.3.1
+%define julia_ver            1.4.2
 %define libjulia_sover_major 1
-%define libjulia_sover_minor 3
-%define libuv_ver    35b1504507a7a4168caae3d78db54d1121b121e1
-%define libwhich_ver 81e9723c0273d78493dc8c8ed570f68d9ce7e89e
-%define pkg_ver      f71e2c5a119b9c850f9b357fc8c56068f5b51cc0
-%define openlibm_ver ce69bf1f32d3e2e9791da36c9e33ba38670d5576
-%define utf8proc_ver 5c632c57426f2e4246e3b64dd2fd088d3920f9e5
-%define llvm_ver     6.0.1
+%define libjulia_sover_minor 4
 %if "@BUILD_FLAVOR@%{nil}" == "compat"
 %define compat_mode  1
 %else
 %define compat_mode  0
 %endif
-%define src_name     julia-tarball
-%define libgit2_ver  %(rpm -qa | grep -E "^libgit2-[0-9]" | head -n1 | cut -d'-' -f2)
-Version:        1.3.1
+Version:        1.4.2
 Release:        0
 URL:            http://julialang.org/
-Source0:        https://github.com/JuliaLang/julia/releases/download/v%{julia_ver}/julia-%{julia_ver}.tar.gz
-# external sources
-Source10:       https://api.github.com/repos/JuliaLang/libuv/tarball/%{libuv_ver}#/libuv-%{libuv_ver}.tar.gz
-Source11:       https://api.github.com/repos/vtjnash/libwhich/tarball/%{libwhich_ver}#/libwhich-%{libwhich_ver}.tar.gz
-Source12:       https://api.github.com/repos/JuliaLang/utf8proc/tarball/%{utf8proc_ver}#/utf8proc-%{utf8proc_ver}.tar.gz
-Source13:       https://llvm.org/releases/%{llvm_ver}/llvm-%{llvm_ver}.src.tar.xz
-Source14:       https://api.github.com/repos/JuliaLang/Pkg.jl/tarball/%{pkg_ver}#/Pkg-%{pkg_ver}.tar.gz
-Source15:       https://api.github.com/repos/JuliaMath/openlibm/tarball/%{openlibm_ver}#/openlibm-%{openlibm_ver}.tar.gz
+Source0:        https://github.com/JuliaLang/julia/releases/download/v1.4.2/julia-%{julia_ver}-full.tar.gz
 Source99:       juliabuildopts
 # PATCH-FIX-OPENSUSE julia-env-script-interpreter.patch ronisbr@gmail.com -- Change script interpreted to avoid errors in rpmlint.
 Patch0:         julia-env-script-interpreter.patch
+# PATCH-FIX-UPSTREAM llvm-8.0.1-gcc-10.patch ronisbr@gmail.com -- Fix LLVM 8.0.1 build using GCC 10 - https://reviews.llvm.org/D64937.
+Patch1:         llvm-8.0.1-gcc-10.patch
 BuildRequires:  arpack-ng-devel >= 3.3.0
 BuildRequires:  blas-devel
 BuildRequires:  cmake
-BuildRequires:  dSFMT-devel >= 2.2.3
 BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
 BuildRequires:  fftw3-threads-devel >= 3.3.4
@@ -65,7 +51,7 @@ BuildRequires:  gcc-fortran
 BuildRequires:  gmp-devel >= 6.1.2
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  lapack-devel >= 3.5.0
-BuildRequires:  libgit2-devel >= 0.28.2
+BuildRequires:  libcurl-devel
 BuildRequires:  libopenblas_openmp-devel >= 0.3.5
 BuildRequires:  libssh2-devel >= 1.9.0
 BuildRequires:  libunwind-devel >= 1.3.1
@@ -89,9 +75,7 @@ Requires:       libcamd2
 Requires:       libccolamd2
 Requires:       libcholmod3
 Requires:       libcolamd2
-Requires:       libdSFMT2_2 >= 2.2.3
 Requires:       libfftw3_threads3
-Requires:       libgit2-%{libgit2_ver}
 Requires:       libgmp10
 Requires:       libmpfr6
 Requires:       libopenblas_openmp0 >= 0.3.5
@@ -188,20 +172,14 @@ Contains the Julia manual, the reference documentation of the standard library.
 %setup -q -n julia-%{version}
 %patch0 -p1
 
+# Extract LLVM sources to apply the patch.
+make CFLAGS="%optflags" CXXFLAGS="%optflags" %{juliabuildopts} -C deps extract-llvm
+pushd deps/srccache/llvm-8.0.1
+    patch -p2 < %PATCH1
+popd
+
 # remove .gitignore
 find . -name ".git*" -exec rm {} \;
-
-pushd deps/
-mkdir -p srccache/
-pushd srccache/
-cp %{SOURCE10} ./
-cp %{SOURCE11} ./
-cp %{SOURCE12} ./
-cp %{SOURCE13} ./
-cp %{SOURCE14} ./
-cp %{SOURCE15} ./
-popd
-popd
 
 %build
 
@@ -316,6 +294,7 @@ rm %{buildroot}%{_datadir}/appdata/julia.appdata.xml
 %{_datadir}/julia/base
 %{_datadir}/julia/base.cache
 %{_datadir}/julia/stdlib
+%{_datadir}/julia/cert.pem
 %if !%{?compat_mode}
 %dir %{_datadir}/appdata/
 %{_datadir}/appdata/julia.appdata.xml
@@ -353,7 +332,6 @@ rm %{buildroot}%{_datadir}/appdata/julia.appdata.xml
 %files doc
 %{_docdir}/julia
 %exclude %{_docdir}/julia/CONTRIBUTING.md
-%exclude %{_docdir}/julia/LICENSE.md
 %exclude %{_docdir}/julia/NEWS.md
 %exclude %{_docdir}/julia/README.md
 %endif

@@ -1,7 +1,7 @@
 #
 # spec file for package fio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,21 +35,19 @@
 %else
 %bcond_without librdmacm
 %endif
-
 Name:           fio
-Version:        3.16
+Version:        3.20
 Release:        0
 Summary:        Flexible I/O tester
 License:        GPL-2.0-only
 Group:          System/Benchmark
-Url:            http://git.kernel.dk/?p=fio.git;a=summary
+URL:            http://git.kernel.dk/?p=fio.git;a=summary
 Source:         http://brick.kernel.dk/snaps/fio-%{version}.tar.bz2
-Patch0:         fio.python2.patch
-Patch1:         0001-Fix-compilation-error-with-gfio.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch0:         fio-gfio_main_ui.patch
 BuildRequires:  gtk2-devel
 BuildRequires:  libaio-devel
 BuildRequires:  libcurl-devel
+BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 Suggests:       gfio
@@ -73,7 +71,6 @@ BuildRequires:  libpmem-devel
 BuildRequires:  libpmemblk-devel
 %endif
 %endif
-BuildRequires:  openssl-devel
 %if %{with librdmacm}
 BuildRequires:  librdmacm-devel
 %endif
@@ -100,10 +97,10 @@ testers workstation whereas fio would be installed on the server.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 sed -i "s|%{_bindir}/bash|/bin/bash|g" tools/genfio
+sed -i "s|-O3||g" Makefile
 # Not autotools configure
 ./configure \
   --enable-gfio \
@@ -119,13 +116,16 @@ make \
 	prefix="%{_prefix}" \
 	mandir="%{_mandir}"
 
+# Drop py2 only tool
+rm %{buildroot}%{_bindir}/fio-histo-log-pctiles.py
+
 %check
 make %{?_smp_mflags} test
 
 %files
 %defattr(-, root, root)
 %if 0%{?sles_version} == 11
-%doc COPYING MORAL-LICENSE
+%license COPYING MORAL-LICENSE
 %else
 %license COPYING MORAL-LICENSE
 %endif

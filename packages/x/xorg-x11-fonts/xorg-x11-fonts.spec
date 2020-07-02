@@ -75,7 +75,7 @@ Source1000:     https://pwu.fedorapeople.org/fonts/convertbitmap/convertfont.py
 BuildRequires:  fontpackages-devel
 BuildRequires:  fonttosfnt
 BuildRequires:  ftdump
-BuildRequires:  ttf-converter
+BuildRequires:  ttf-converter >= 1.0.6
 BuildRequires:  xorg-x11-fonts-legacy
 Requires(post): fonts-config
 Requires(posttrans): fonts-config
@@ -175,16 +175,46 @@ done
 # "%%{flavor}" == "converted"
 cp %{S:1000} .
 ttf-converter --input-dir /usr/share/fonts/Type1/ --output-dir generated
+ttf-converter --bitmap-fonts /usr/share/fonts/misc/clB8x10.pcf.gz /usr/share/fonts/misc/clB8x12.pcf.gz /usr/share/fonts/misc/clB8x13.pcf.gz /usr/share/fonts/misc/clB8x14.pcf.gz /usr/share/fonts/misc/clB8x16.pcf.gz /usr/share/fonts/misc/clB9x15.pcf.gz /usr/share/fonts/misc/clI6x12.pcf.gz /usr/share/fonts/misc/clR6x12.pcf.gz  --output-dir generated/
+ttf-converter --bitmap-fonts /usr/share/fonts/misc/clR8x8.pcf.gz /usr/share/fonts/misc/clB8x8.pcf.gz /usr/share/fonts/misc/clI8x8.pcf.gz --output-dir generated/
+ttf-converter --bitmap-fonts /usr/share/fonts/75dpi/*.pcf.gz /usr/share/fonts/100dpi/*.pcf.gz /usr/share/fonts/misc/[dghjo]*.pcf.gz --output-dir generated/
+
+# Special case for B&H LucidaBright Italic and Bold Italic
+ttf-converter --bitmap-fonts --subfamily Italic /usr/share/fonts/75dpi/lubI08.pcf.gz /usr/share/fonts/75dpi/lubI10.pcf.gz /usr/share/fonts/75dpi/lubI12.pcf.gz /usr/share/fonts/75dpi/lubI14.pcf.gz /usr/share/fonts/75dpi/lubI18.pcf.gz /usr/share/fonts/75dpi/lubI19.pcf.gz /usr/share/fonts/75dpi/lubI24.pcf.gz /usr/share/fonts/100dpi/lubI08.pcf.gz /usr/share/fonts/100dpi/lubI10.pcf.gz /usr/share/fonts/100dpi/lubI12.pcf.gz /usr/share/fonts/100dpi/lubI14.pcf.gz /usr/share/fonts/100dpi/lubI18.pcf.gz /usr/share/fonts/100dpi/lubI19.pcf.gz /usr/share/fonts/100dpi/lubI24.pcf.gz --output-dir generated/
+ttf-converter --bitmap-fonts --subfamily "Bold Italic" /usr/share/fonts/75dpi/lubBI08.pcf.gz /usr/share/fonts/75dpi/lubBI10.pcf.gz /usr/share/fonts/75dpi/lubBI12.pcf.gz /usr/share/fonts/75dpi/lubBI14.pcf.gz /usr/share/fonts/75dpi/lubBI18.pcf.gz /usr/share/fonts/75dpi/lubBI19.pcf.gz /usr/share/fonts/75dpi/lubBI24.pcf.gz /usr/share/fonts/100dpi/lubBI08.pcf.gz /usr/share/fonts/100dpi/lubBI10.pcf.gz /usr/share/fonts/100dpi/lubBI12.pcf.gz /usr/share/fonts/100dpi/lubBI14.pcf.gz /usr/share/fonts/100dpi/lubBI18.pcf.gz /usr/share/fonts/100dpi/lubBI19.pcf.gz /usr/share/fonts/100dpi/lubBI24.pcf.gz --output-dir generated/
+
+ttf-converter --bitmap-fonts --subfamily Regular /usr/share/fonts/misc/cu12.pcf.gz /usr/share/fonts/misc/cu-alt12.pcf.gz --output-dir generated/
+ttf-converter --bitmap-fonts --subfamily Italic --bitmapTransform skew,1,3 /usr/share/fonts/misc/cu12.pcf.gz --output-dir generated/
+ttf-converter --bitmap-fonts --subfamily Regular --fix-glyph-unicode --replace-unicode-values 0x32AD,0x4EC --replace-unicode-values 0x32AE,0x4ED /usr/share/fonts/misc/cu-pua12.pcf.gz --output-dir generated/
+
+# Move arabic characters to the right unicode block
+ttf-converter --bitmap-fonts --subfamily Regular --shift-unicode-values 0,300,1530 /usr/share/fonts/misc/arabic24.pcf.gz --output-dir generated/
+ttf-converter --bitmap-fonts --subfamily Regular --shift-unicode-values 0,300,1530 /usr/share/fonts/misc/cuarabic12.pcf.gz --output-dir generated/
+
+# Move latin characters from fullwidth unicode block so they can be used.
+#ttf-converter --bitmap-fonts --shift-unicode-values 0xff01,0xff5d,-65248  /usr/share/fonts/misc/hanglg16.pcf.gz --output-dir generated/
+#ttf-converter --bitmap-fonts --shift-unicode-values 0xff01,0xff5d,-65248 --replace-unicode-values 0xffe0,0xa2 --replace-unicode-values 0xffe2,0xac --replace-unicode-values 0xffe1,0xa3 --replace-unicode-values 0xffe5,0xa5 /usr/share/fonts/misc/hanglm24.pcf.gz /usr/share/fonts/misc/hanglm16.pcf.gz --output-dir generated/
+#ttf-converter --bitmap-fonts --shift-unicode-values 0xff01,0xff5d,-65248 /usr/share/fonts/misc/gb16fs.pcf.gz --output-dir generated/
+
 cd generated
-python3 ../convertfont.py /usr/share/fonts/75dpi/*.pcf.gz /usr/share/fonts/100dpi/*.pcf.gz
-python3 ../convertfont.py /usr/share/fonts/misc/arabic24.pcf.gz /usr/share/fonts/misc/cu[^r]*.pcf.gz /usr/share/fonts/misc/cl*.pcf.gz /usr/share/fonts/misc/[dghjo]*.pcf.gz
 
 # Luxi Mono, Luxi Sans and Luxi Serif are already distributed in ttf format
 rm Luxi*.ttf
 
+# Bitstream-Charter-* is already converted to ttf format as CharterBT-*
+rm Bitstream-Charter-*.otb
+
+# Cursor.ttf just contains glyphs to be used as cursor, which isn't usable as ttf format
+rm Cursor.ttf
+
 # Bitstream-Terminal and DEC-Terminal are not converted correctly so we better remove them
 rm Bitstream-Terminal*.otb
 rm DEC-Terminal*.otb
+
+# The Sun-OPEN-LOOK fonts just contains bitmap patterns without unicode values. They're hardly useful
+rm Sun-OPEN-LOOK-cursor-Wide-Regular.otb
+rm Sun-OPEN-LOOK-glyph-Wide-Regular.otb
+rm Sun-OPEN-LOOK-glyph-Regular.otb
 %endif
 
 %install
@@ -214,35 +244,30 @@ cp *.ttf %{buildroot}/%{_datadir}/fonts/truetype
 for filename in Adobe-Courier*.otb \
    Adobe-Helvetica*.otb \
    Adobe-New-Century-Schoolbook*.otb \
-   Adobe-Symbol.otb \
+   Adobe-Symbol-Regular.otb \
    Adobe-Times*.otb \
    Adobe-Utopia*.otb \
    B\&H-LucidaBright*.otb \
    B\&H-Lucida-Sans*.otb \
    B\&H-LucidaTypewriter-Sans*.otb \
-   Bitstream-Charter*.otb \
-   Arabic-Newspaper.otb \
-   MUTT-ClearlyU-Alternate-Glyphs-Wide.otb \
-   MUTT-ClearlyU-Arabic-Extra.otb \
-   MUTT-ClearlyU-Devangari-Extra.otb \
-   MUTT-ClearlyU-Ligature-Wide.otb \
-   MUTT-ClearlyU-PUA.otb \
-   MUTT-ClearlyU-Wide.otb \
-   MUTT-ClearlyU-Devanagari.otb \
+   Arabic-Newspaper-Regular.otb \
+   MUTT-ClearlyU-Alternate-Glyphs-Wide-Regular.otb \
+   MUTT-ClearlyU-Arabic-Extra-Regular.otb \
+   MUTT-ClearlyU-PUA-Regular.otb \
+   MUTT-ClearlyU-Wide-Regular.otb \
+   MUTT-ClearlyU-Wide-Italic.otb \
    Schumacher-Clean-Bold.otb \
    Schumacher-Clean-Wide-Bold.otb \
    Schumacher-Clean-Italic.otb \
    Schumacher-Clean-Wide-Italic.otb \
-   Schumacher-Clean.otb \
-   Schumacher-Clean-Wide.otb \
-   ISAS-Fangsong-ti-Wide.otb \
-   ISAS-Song-ti-Wide.otb \
-   Daewoo-Gothic-Wide.otb \
-   Daewoo-Mincho-Wide.otb \
-   JIS-Fixed-Wide.otb \
-   Sun-OPEN-LOOK-cursor-Wide.otb \
-   Sun-OPEN-LOOK-glyph-Wide.otb \
-   Sun-OPEN-LOOK-glyph.otb ; do
+   Schumacher-Clean-Regular.otb \
+   Schumacher-Clean-Wide-Regular.otb \
+   ISAS-Fangsong-ti-Wide-Regular.otb \
+   ISAS-Song-ti-Wide-Regular.otb \
+   Daewoo-Gothic-Wide-Regular.otb \
+   Daewoo-Mincho-Wide-Regular.otb \
+   JIS-Fixed-Wide-Regular.otb \
+   ; do
     cp "$filename"  %{buildroot}/%{_datadir}/fonts/truetype
 done
 
@@ -330,41 +355,34 @@ rm -rf "$RPM_BUILD_ROOT"
 %{_datadir}/fonts/truetype/Courier10PitchBT-*.ttf
 %{_datadir}/fonts/truetype/Courier-*.ttf
 %{_datadir}/fonts/truetype/Courier.ttf
-%{_datadir}/fonts/truetype/Cursor.ttf
 %{_datadir}/fonts/truetype/Utopia-*.ttf
 %{_datadir}/fonts/truetype/B&H-LucidaTypewriter*.otb
 %{_datadir}/fonts/truetype/Adobe-Courier*.otb
 %{_datadir}/fonts/truetype/Adobe-Helvetica*.otb
 %{_datadir}/fonts/truetype/Adobe-New-Century-Schoolbook*.otb
-%{_datadir}/fonts/truetype/Adobe-Symbol.otb
+%{_datadir}/fonts/truetype/Adobe-Symbol-Regular.otb
 %{_datadir}/fonts/truetype/Adobe-Times*.otb
 %{_datadir}/fonts/truetype/Adobe-Utopia*.otb
 %{_datadir}/fonts/truetype/B&H-LucidaBright*.otb
 %{_datadir}/fonts/truetype/B&H-Lucida-Sans*.otb
 %{_datadir}/fonts/truetype/B&H-LucidaTypewriter-Sans*.otb
-%{_datadir}/fonts/truetype/Bitstream-Charter*.otb
-%{_datadir}/fonts/truetype/Arabic-Newspaper.otb
-%{_datadir}/fonts/truetype/MUTT-ClearlyU-Alternate-Glyphs-Wide.otb
-%{_datadir}/fonts/truetype/MUTT-ClearlyU-Arabic-Extra.otb
-%{_datadir}/fonts/truetype/MUTT-ClearlyU-Devangari-Extra.otb
-%{_datadir}/fonts/truetype/MUTT-ClearlyU-Ligature-Wide.otb
-%{_datadir}/fonts/truetype/MUTT-ClearlyU-PUA.otb
-%{_datadir}/fonts/truetype/MUTT-ClearlyU-Wide.otb
-%{_datadir}/fonts/truetype/MUTT-ClearlyU-Devanagari.otb
+%{_datadir}/fonts/truetype/Arabic-Newspaper-Regular.otb
+%{_datadir}/fonts/truetype/MUTT-ClearlyU-Alternate-Glyphs-Wide-Regular.otb
+%{_datadir}/fonts/truetype/MUTT-ClearlyU-Arabic-Extra-Regular.otb
+%{_datadir}/fonts/truetype/MUTT-ClearlyU-PUA-Regular.otb
+%{_datadir}/fonts/truetype/MUTT-ClearlyU-Wide-Regular.otb
+%{_datadir}/fonts/truetype/MUTT-ClearlyU-Wide-Italic.otb
+%{_datadir}/fonts/truetype/Schumacher-Clean-Regular.otb
 %{_datadir}/fonts/truetype/Schumacher-Clean-Bold.otb
-%{_datadir}/fonts/truetype/Schumacher-Clean-Wide-Bold.otb
 %{_datadir}/fonts/truetype/Schumacher-Clean-Italic.otb
+%{_datadir}/fonts/truetype/Schumacher-Clean-Wide-Regular.otb
+%{_datadir}/fonts/truetype/Schumacher-Clean-Wide-Bold.otb
 %{_datadir}/fonts/truetype/Schumacher-Clean-Wide-Italic.otb
-%{_datadir}/fonts/truetype/Schumacher-Clean.otb
-%{_datadir}/fonts/truetype/Schumacher-Clean-Wide.otb
-%{_datadir}/fonts/truetype/ISAS-Fangsong-ti-Wide.otb
-%{_datadir}/fonts/truetype/ISAS-Song-ti-Wide.otb
-%{_datadir}/fonts/truetype/Daewoo-Gothic-Wide.otb
-%{_datadir}/fonts/truetype/Daewoo-Mincho-Wide.otb
-%{_datadir}/fonts/truetype/JIS-Fixed-Wide.otb
-%{_datadir}/fonts/truetype/Sun-OPEN-LOOK-cursor-Wide.otb
-%{_datadir}/fonts/truetype/Sun-OPEN-LOOK-glyph-Wide.otb
-%{_datadir}/fonts/truetype/Sun-OPEN-LOOK-glyph.otb
+%{_datadir}/fonts/truetype/ISAS-Fangsong-ti-Wide-Regular.otb
+%{_datadir}/fonts/truetype/ISAS-Song-ti-Wide-Regular.otb
+%{_datadir}/fonts/truetype/Daewoo-Gothic-Wide-Regular.otb
+%{_datadir}/fonts/truetype/Daewoo-Mincho-Wide-Regular.otb
+%{_datadir}/fonts/truetype/JIS-Fixed-Wide-Regular.otb
 %endif
 
 %changelog

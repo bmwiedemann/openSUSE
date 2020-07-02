@@ -1,3 +1,17 @@
+commit 46a364bef04e8f5455f47fe7e330cf9077faf87a
+Author: Stephan Wiesand <stephan.wiesand@desy.de>
+Date:   Sat Jun 20 07:24:01 2020 +0200
+
+    Make OpenAFS 1.8.6
+    
+    Update version strings and NEWS for the 1.8.6 release.
+    
+    Change-Id: I0d4a17ce6b575c845bd13d9509788eb5cd8631e1
+    Reviewed-on: https://gerrit.openafs.org/14253
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
 commit 7cd24908de4b65d9972bd3dca85b049f495bb1bd
 Author: Stephan Wiesand <stephan.wiesand@desy.de>
 Date:   Fri May 22 17:25:14 2020 +0200

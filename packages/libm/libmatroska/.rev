@@ -384,4 +384,46 @@ KaxBlockGroup, KaxSimpleBlock: fixed writing the block header if the track numbe
     <comment></comment>
     <requestid>714710</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>657e21ab297fdd43fbc4a403789653ce</srcmd5>
+    <version>1.6.0</version>
+    <time>1593726942</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.0
+  * libEBML v1.4.0 is now required.
+  * Due to breaking ABI the soname version has been bumped to 
+    7.0.0.
+  * Default symbol visibility is now &quot;hidden&quot;, reducing binary 
+    size.
+  * Converted some things pointed out by cppcheck &amp; clang-tidy to
+    C++11.
+  * Fixed a lot of issues pointed out by clang-tidy.
+  * A C++11 compliant compiler is now required. Several of its
+    features are now used in the source.
+  * &quot;KaxCueData&quot; class: added &quot;PositionSet&quot; overrides taking
+    &quot;KaxSimpleBlock&quot; arguments.
+  * &quot;KaxSeekHead&quot; class: the &quot;IndexThis&quot; function now returns a
+    pointer to the newly allocated &quot;KaxSeek&quot; instance.
+  * &quot;KaxBlockData&quot; class: the &quot;SetReferencedTimecode&quot; function is
+    now public.
+  * Fixed classes for updates in the current specification:
+    KaxTrackTimecodeScale (can be written again), TimeSlice,
+    SliceLaceNumber, TrackAttachmentLink (these cannot be written
+    anymore), KaxContentEncAlgo (it's mandatory), 
+    KaxChapLanguageIETF (can occur multiple times),
+    KaxFileUsedStartTime, KaxFileUsedEndTime (DivX-related
+    elements, cannot be written anymore)
+  * Added classes for new elements from the current 
+    specification: KaxBlockAdditionMapping, KaxBlockAddIDValue, 
+    KaxBlockAddIDName, KaxBlockAddIDType, KaxBlockAddIDExtraData,
+    KaxContentEncAESSettings, KaxContentEncAESSettings.
+  * The MATROSKA_VERSION pre-processor definition has been
+    removed. You used to be able toe restrict compiling with only
+    those classes for elements contained in Matroska v1, but that
+    hasn't worked since 2010, so… yeah.
+- Track ABI Change
+- Spec cleanup
+</comment>
+    <requestid>818044</requestid>
+  </revision>
 </revisionlist>

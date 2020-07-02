@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Sun Jun 14 23:21:23 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package for pipewire version 0.2
+- Add pipewire0_2-bluez5-declare-as-extern.patch: Declare the
+  object spa_a2dp_sink_factory as extern to avoid conflict with a
+  previous declaration; patch taken from fedora
+- Add pipewire0_2-link-a2dp-codecs.patch: Actually link against
+  a2dp-codecs.o to prevent undefined references.

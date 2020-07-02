@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 25 08:23:34 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- gnuhealth-control updated to 3.6.5-openSUSE 
+  * change of translation server for language packs
+
+-------------------------------------------------------------------
 Thu May 21 09:06:00 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - fixed different behviour of bsdtar in script and shell (gnuhealth-control)

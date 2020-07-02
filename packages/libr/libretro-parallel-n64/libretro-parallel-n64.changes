@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Sun Jun 07 11:09:59 UTC 2020 - i@guoyunhe.me
+
+- Add aarch64 build
+- Update to version 0~git20200529:
+  * Update parallel-RDP.
+  * Update Android.mk
+  * Update Android.mk
+  * Add missing files.
+  * Update parallel-RDP.
+  * Update parallel-RDP.
+  * Update Android Application.mk
+  * Add README explaining how to dump.
+  * Update parallel-rdp.
+  * switch video driver according to gfx plugin
+  * Add amalgamated parallel-rdp build.
+  * Move to new paraLLEl-RDP.
+  * Add SI DMA Duration hack for Tetris 64
+  * Use separate cache for DRAM and hidden DRAM.
+  * Dump the hidden RDRAM as well.
+  * Add DRAM flush and fix VI_REGISTER_OUTPUT.
+  * Move RDP_DUMP over to Angrylion.
+  * Fix Seg Fault on Game Unload
+  * Makefile cleanups
+  * Revert "Backport https://github.com/ata4/angrylion-rdp-plus/commit/de4fe4f0ed4d849651639088c0dc36fcba70b8cc"
+  * Backport https://github.com/ata4/angrylion-rdp-plus/commit/de4fe4f0ed4d849651639088c0dc36fcba70b8cc
+  * Not necessary to set Quake 2 to Count Per Op 1
+  * Remove .d files
+  * Revert "Updates"
+  * Updates
+  * Set this to 1
+  * Get rid of -lversion now, no longer using LLVM
+  * Bake out Parallel RDP for Android right now
+
+-------------------------------------------------------------------
+Mon Feb 10 17:58:51 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200210:
+  * Added -DARM_FIX for rpi and odroid CPUFLAGS - fixes #544
+  * (Android) Take out x86/x64 for now - add Parallel RSP
+  * Update Application.mk
+  * Attempt to fix compilation on buildbot
+  * Buildfix
+  * git subrepo pull mupen64plus-rsp-paraLLEl
+  * Remove this - was never used + potential license issues
+  * git subrepo pull mupen64plus-rsp-paraLLEl
+  * git subrepo pull mupen64plus-rsp-paraLLEl
+  * git subrepo clone https://github.com/Themaister/parallel-rsp.git mupen64plus-rsp-paraLLEl
+  * Update Makefile for new parallel-rsp module.
+  * Remove old parallel-rsp implementation.
+  * Add Xena entries to CountPerOp=3
+  * Remove CountPerOp=1 for Star Wars Episode 1 Racer
+  * AL option to select number of threads
+  * Actually flip or dupe when using AL+ when needed.
+  * Change this too
+  * Thread sync level - set low as default
+  * Link in LLVM statically
+  * Link llvm in statically
+  * Add way to override LLVM
+  * parallel-RSP: Port over MFC0 timeout and some semaphore handling code.
+  * angrylion unfiltered width temp fix
+  * OSX Buildfix
+  * (Parallel N64) Add -lpthread
+  * VI overlay, more options.
+  * Backport https://github.com/mupen64plus/mupen64plus-core/pull/533 - setting Vigilante 8 games to CountPerOp 1 was apparently a bad idea, performance greatly increased with default framerate setting
+  * Backport https://github.com/mupen64plus/mupen64plus-core/pull/544/commits/03e16a93d773801f05715db9e0356374754746b7
+  * Update
+  * (Angrylion) interface.cpp was already C, so turn it into that - parallel_al.cpp remains the only C++ file
+  * We use MSB_FIRST instead of LSB_FIRST
+  * (Angrylion) remove unused functions
+  * (Angrylion) remove unused screen.c
+  * (Angrylion) Refactor setting dithering
+  * (Angrylion) Remove unused GL-specific vdac.c code
+  * video-angrylion: Make cache line striding a define.
+  * video-angrylion: Don't false share cachelines.
+  * video-angrylion: Move assign the task lambda.
+  * video-angrylion: Hack in an environment variable to tweak thread count.
+  * video-angrylion: Fix parallel thread scheduler for 64 threads.
+  * Resampler - update - should bring this in line with libretro-common repo later
+  * Update Makefile
+  * (Angrylion) Get rid of intermediate framebuffer copying
+  * parallel-RSP: Use __builtin_setjmp/longjmp.
+  * parallel-RSP: Fix linking order for Clang.
+  * Fix parallel-RSP build against modern LLVM.
+  * Change to a sane thread synchronization level.
+  * Fixed threading for sure. For best results turn down the thread sync.
+  * (Angrylion) C89/C90 buildfix
+  * Update
+  * Updates
+  * Add HAVE_THR_AL ifdefs
+  * (MSVC 2017) Buildfix
+  * Update interface.cpp
+  * Update.
+  * Added support for frontends not supporting GET_PREFERRED_HW_RENDER.
+  * fix byte order for libretro.
+  * now initializes, but runs slow.
+  * the api changed a fair bit, now need to specify rdram ptrs.
+  * fix typo.
+  * Add option for thread sync level. Useful for games that need to sync to framebuffer commands, such as CBFD.
+  * Update to newest Angrylion (WIP)
+  * Properly negotiating driver to use with frontend.
+  * allow compile for ios-arm64
+
+-------------------------------------------------------------------
 Tue Oct 08 20:40:37 UTC 2019 - i@guoyunhe.me
 
 - Update to version 0~git20190917:

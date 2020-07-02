@@ -1,0 +1,58 @@
+Index: dvdisaster-0.79.6/GNUmakefile.template
+===================================================================
+--- dvdisaster-0.79.6.orig/GNUmakefile.template	2020-06-05 14:14:02.994769910 +0200
++++ dvdisaster-0.79.6/GNUmakefile.template	2020-06-05 14:45:33.864641460 +0200
+@@ -67,19 +67,16 @@ OFILES = $(CFG_OFILES)
+ # Compilation related
+ ######################################################################
+ 
+-.PHONY : all help show locale time-stamp
++.PHONY : all help show locale
+ 
+ ${BUILDTMP}/%.o : %.c
+ 	@echo "Compiling:" $?
+ 	$(CC) $(COPTS) -c $? -o $@
+ 
+-all: time-stamp dvdisaster
++all: dvdisaster
+ 
+ # Building the dvdisaster binary
+ 
+-time-stamp:
+-	$(SRCDIR)/scripts/time-stamper.bash $(SRCDIR)/build.h
+-
+ dvdisaster: inlined-icons.h $(OFILES) 
+ 	@echo "Linking  : dvdisaster"
+ 	$(CC) $(LOPTS) $(OFILES) $(LIBS) -o dvdisaster
+@@ -140,13 +137,6 @@ untranslated:
+ simple-md5sum: md5.c
+ 	$(CC) $(COPTS) $(MUDFLAP_CFLAGS) -DSIMPLE_MD5SUM md5.c $(MUDFLAP_LFLAGS) $(MUDFLAP_LIBS) -o simple-md5sum
+ 
+-version.tex:
+-	@echo "\\newcommand{\\projectversion}{$(VERSION)}" >$(SRCDIR)/documentation/config/version.tex
+-
+-manual: version.tex
+-	@echo "Producing user manual... "
+-	$(MAKE) --no-print-directory -C documentation/user-manual manual.pdf
+-
+ manualclean:
+ 	@echo "Removing temporary user manual files... "
+ 	$(MAKE) --no-print-directory -C documentation/user-manual clean
+@@ -223,7 +213,7 @@ show:
+ .PHONY : install uninstall clean distclean arch
+ .PHONY : srcdist
+ 
+-install: dvdisaster manual
++install: dvdisaster
+ 	@echo "Installing package..."
+ 	install -d $(BUILDROOT)$(BINDIR)
+ 	install dvdisaster $(BUILDROOT)$(BINDIR)
+@@ -300,7 +290,7 @@ clean:
+ 	$(MAKE) --no-print-directory -C $(SRCDIR)/documentation/user-manual clean;
+ 
+ BUILD=`grep BUILD $(SRCDIR)/build.h | cut -d ' ' -f 3`
+-arch:	archclean time-stamp
++arch:	archclean
+ 	cd .. ; tar -c -z -f $(TAR_PREFIX)/$(PKGNAME)-$(BUILD).tgz $(PKGNAME)
+ 
+ INSTALL: documentation/install.template

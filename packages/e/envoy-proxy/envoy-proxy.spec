@@ -38,6 +38,10 @@ Patch6:         0004-server-Add-comments-pointing-out-implementation-deta.patch
 Patch7:         0005-server-Move-setInitManager-to-TransportSocketFactory.patch
 Patch8:         0006-fix-format.patch
 Patch9:         big-endian-support.patch
+# PATCH-FIX-OPENSUSE 0007-lua-Handle-the-default-case-in-scriptLog.patch
+# Submitted upstream, in review
+# https://github.com/envoyproxy/envoy/pull/11844
+Patch10:        0007-lua-Handle-the-default-case-in-scriptLog.patch
 BuildRequires:  abseil-cpp-source
 BuildRequires:  backward-cpp-devel
 BuildRequires:  bazel-apple-support-source

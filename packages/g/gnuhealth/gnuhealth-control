@@ -24,11 +24,10 @@
 #
 ##############################################################################
 
-VERSION="3.6.4-openSUSE"
+VERSION="3.6.5-openSUSE"
 
-TRANSLATE_URL="https://translate.gnusolidario.org"
+TRANSLATE_URL="https://hosted.weblate.org"
 GNUHEALTH_DIR=$(rpm -ql gnuhealth | egrep '^/usr/lib/python.\..{1,2}/site-packages$')
-
 UPDATE_DOWNLOAD_DIR=$(mktemp -d)
 
 usage()
@@ -247,9 +246,8 @@ getlang() {
 
     cd ${GNUHEALTH_DIR} || exit 1
     cli_msg "INFO" "Retrieving language pack file for ${lang_to_install}"
-    wget ${TRANSLATE_URL}/export/?path=/${lang_to_install}/GNUHEALTH/ -O $UPDATE_DOWNLOAD_DIR/${lang_file} || exit 1
+    wget ${TRANSLATE_URL}/download-language/${lang_to_install}/gnu-health/?format=zip -O $UPDATE_DOWNLOAD_DIR/${lang_file} || exit 1
     cli_msg "INFO" "Installing / Updating language files for ${lang_to_install} ..."
-
     bsdtar --strip-components 3 -xzf $UPDATE_DOWNLOAD_DIR/${lang_file} || exit 1
     cli_msg "INFO" "Language pack ${lang_to_install} sucessfully installed / updated"
     chmod -R a+r ${GNUHEALTH_DIR}

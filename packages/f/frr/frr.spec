@@ -30,15 +30,13 @@
 %define frr_daemondir %{_prefix}/lib/frr
 
 Name:           frr
-Version:        7.3.1
+Version:        7.4
 Release:        0
 Summary:        FRRouting Routing daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.frrouting.org
 #Git-Clone:     https://github.com/FRRouting/frr.git
-# PATCH-FIX-UPSTREAM: build-use-configfile-mode-in-init-script
-Patch1:		0001-build-use-configfile-mode-in-init-script.patch
 Source:         https://github.com/FRRouting/frr/archive/%{name}-%{version}.tar.gz
 Source1:        %{name}-tmpfiles.d
 BuildRequires:  %{python_module Sphinx}
@@ -172,7 +170,6 @@ developing OSPF-API and frr applications.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-%patch1 -p1
 
 %build
 # GCC LTO objects must be "fat" to avoid assembly errors
@@ -388,6 +385,7 @@ getent passwd %{frr_user} >/dev/null || useradd -r -g %{frr_group} -G %{frrvty_g
 %{_libdir}/frr/modules/zebra_irdp.so
 %{_libdir}/frr/modules/bgpd_rpki.so
 %{_libdir}/frr/modules/grpc.so
+%{_libdir}/frr/modules/dplane_fpm_nl.so
 %{_prefix}/lib/frr/vrrpd
 %{_prefix}/lib/frr/generate_support_bundle.py
 %{_libdir}/frr/modules/bgpd_bmp.so

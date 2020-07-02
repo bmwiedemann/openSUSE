@@ -20,12 +20,18 @@ Name:           sof-firmware
 Summary:        Firmware Data Files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        1.4.2
+Version:        1.5
 Release:        0
-Url:            https://www.sofproject.org/
+URL:            https://github.com/thesofproject/sof-bin
 BuildRequires:  fdupes
-Source:         ftp://ftp.alsa-project.org/pub/misc/sof/sof-firmware-%{version}.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# Created via git-archive manually from the git repo above with the tag;
+# Unforutnately the upstream repo doesn't contain the releases.
+# Note that this doesn't contain sources; the unsigned firmware can be built
+# from SOF sources with external toolchains, but we need signed firmware from
+# Intel, and hence the repo above collects the resultant binaries.
+Source:         sof-bin-%{version}.tar.xz
+# Temporary fix up for broken tplg files
+Source1:        ftp://ftp.alsa-project.org/pub/misc/sof/sof-bin-topology-1.5-dmic-20db-fix.tar.gz
 BuildArch:      noarch
 # Merrifield
 Supplements:    modalias(pci:v00008086d0000119Asv*sd*bc*sc*i*)
@@ -55,25 +61,41 @@ Supplements:    modalias(pci:v00008086d00004B55sv*sd*bc*sc*i*)
 Various firmware data files for SOF drivers.
 
 %prep
-%setup -q -c
-# fix up symlinks in 1.4.2 tarball
-ln -sf ../signed/sof-apl-signed-intel.ri usr/lib/firmware/intel/sof/gcc/sof-apl.ri
-ln -sf ../signed/sof-cnl-signed-intel.ri usr/lib/firmware/intel/sof/gcc/sof-cnl.ri
-ln -sf ../signed/sof-icl-signed-intel.ri usr/lib/firmware/intel/sof/gcc/sof-icl.ri
+%setup -q -n sof-bin
+# drop version number from sof-tplg directory
+mv lib/firmware/intel/sof-tplg-v%{version} lib/firmware/intel/sof-tplg
+# fix up for broken topology files
+tar -C lib/firmware/intel/sof-tplg/ -xf %{SOURCE1}
 
 %build
 
 %install
 mkdir -p %{buildroot}/lib/firmware/intel/
-cp -a usr/lib/firmware/intel/* %{buildroot}/lib/firmware/intel/
-rm -f %{buildroot}/lib/firmware/intel/*/LICENCE
-mkdir -p %{buildroot}%{_licensedir}/%{name}
-install -c -m0644 usr/lib/firmware/intel/sof/LICENCE %{buildroot}%{_licensedir}/%{name}
+cp -a lib/firmware/intel/* %{buildroot}/lib/firmware/intel/
+# create symlinks
+(cd %{buildroot}/lib/firmware/intel/sof
+for i in v%{version}/intel-signed/*.ri v%{version}/*.ri; do
+    f=${i%%-v%{version}.ri}
+    f=${f##*/}
+    ln -s $i $f.ri
+done
+
+# fix up the missing firmware for Commet Lake
+test -f sof-cml.ri || ln -s sof-cnl.ri sof-cml.ri
+
+mkdir -p debug
+cd debug
+for i in ../v%{version}/*.ldc; do
+    f=${i%%-v%{version}.ldc}
+    f=${f##*/}
+    ln -s $i $f.ldc
+done
+)
 %fdupes -s %{buildroot}
 
 %files
-%defattr(-, root, root)
-%license  %{_licensedir}/%{name}
+%license LICENCE.Intel
+%doc README.md README.Intel
 /lib/firmware/*
 
 %changelog

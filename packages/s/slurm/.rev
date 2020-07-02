@@ -600,4 +600,12 @@
  * Fix allocating more GRES than requested when asking for multiple GRES types.</comment>
     <requestid>808569</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>d770ef32a1fe797ee7a7e3ef3184f0bf</srcmd5>
+    <version>20.02.3</version>
+    <time>1593727625</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815491</requestid>
+  </revision>
 </revisionlist>

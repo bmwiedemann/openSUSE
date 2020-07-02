@@ -193,4 +193,12 @@
   * cli: syntax fixes</comment>
     <requestid>810907</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>c52af02783fbbe4efcc924a3a1fda9b9</srcmd5>
+    <version>0.5.12</version>
+    <time>1593728123</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818349</requestid>
+  </revision>
 </revisionlist>

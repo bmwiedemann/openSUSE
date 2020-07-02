@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Thu Jul  2 06:09:07 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.3.3
+ see installed CHANGELOG.md
+
+  ### 1.3.3 (2020/05/23)
+  
+  #### Features
+  
+  * [#2048](https://github.com/ruby-grape/grape/issues/2034): Grape Enterprise support is now available [via TideLift](https://tidelift.com/subscription/request-a-demo?utm_source=rubygems-grape&utm_medium=referral&utm_campaign=enterprise) - [@dblock](https://github.com/dblock).
+  * [#2039](https://github.com/ruby-grape/grape/pull/2039): Travis - update rails versions - [@ericproulx](https://github.com/ericproulx).
+  * [#2038](https://github.com/ruby-grape/grape/pull/2038): Travis - update ruby versions - [@ericproulx](https://github.com/ericproulx).
+  * [#2050](https://github.com/ruby-grape/grape/pull/2050): Refactor route public_send to AttributeTranslator - [@ericproulx](https://github.com/ericproulx).
+  
+  #### Fixes
+  
+  * [#2049](https://github.com/ruby-grape/grape/pull/2049): Coerce an empty string to nil in case of the bool type - [@dnesteryuk](https://github.com/dnesteryuk).
+  * [#2043](https://github.com/ruby-grape/grape/pull/2043): Modify declared for nested array and hash - [@kadotami](https://github.com/kadotami).
+  * [#2040](https://github.com/ruby-grape/grape/pull/2040): Fix a regression with Array of type nil - [@ericproulx](https://github.com/ericproulx).
+  * [#2054](https://github.com/ruby-grape/grape/pull/2054): Coercing of nested arrays - [@dnesteryuk](https://github.com/dnesteryuk).
+  * [#2050](https://github.com/ruby-grape/grape/pull/2053): Fix broken multiple mounts - [@Jack12816](https://github.com/Jack12816).
+  
+
+-------------------------------------------------------------------
+Thu May  7 20:51:17 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.3.2
+ see installed CHANGELOG.md
+
+  ### 1.3.2 (2020/04/12)
+  
+  #### Features
+  * [#2020](https://github.com/ruby-grape/grape/pull/2020): Reduce array allocation - [@ericproulx](https://github.com/ericproulx).
+  * [#2015](https://github.com/ruby-grape/grape/pull/2014): Reduce MatchData allocation - [@ericproulx](https://github.com/ericproulx).
+  * [#2014](https://github.com/ruby-grape/grape/pull/2014): Reduce total allocated arrays - [@ericproulx](https://github.com/ericproulx).
+  * [#2011](https://github.com/ruby-grape/grape/pull/2011): Reduce total retained regexes - [@ericproulx](https://github.com/ericproulx).
+  
+  #### Fixes
+  
+  * [#2033](https://github.com/ruby-grape/grape/pull/2033): Ensure `Float` params are correctly coerced to `BigDecimal` - [@tlconnor](https://github.com/tlconnor).
+  * [#2031](https://github.com/ruby-grape/grape/pull/2031): Fix a regression with an array of a custom type - [@dnesteryuk](https://github.com/dnesteryuk).
+  * [#2026](https://github.com/ruby-grape/grape/pull/2026): Fix a regression in `coerce_with` when coercion returns `nil` - [@misdoro](https://github.com/misdoro).
+  * [#2025](https://github.com/ruby-grape/grape/pull/2025): Fix Decimal type category - [@kdoya](https://github.com/kdoya).
+  * [#2019](https://github.com/ruby-grape/grape/pull/2019): Avoid coercing parameter with multiple types to an empty Array - [@stanhu](https://github.com/stanhu).
+  
+  ### 1.3.1 (2020/03/11)
+  
+  #### Features
+  
+  * [#2005](https://github.com/ruby-grape/grape/pull/2005): Content types registrable - [@ericproulx](https://github.com/ericproulx).
+  * [#2003](https://github.com/ruby-grape/grape/pull/2003): Upgraded Rubocop to 0.80.1 - [@ericproulx](https://github.com/ericproulx).
+  * [#2002](https://github.com/ruby-grape/grape/pull/2002): Objects allocation optimization (lazy_lookup) - [@ericproulx](https://github.com/ericproulx).
+  
+  #### Fixes
+  
+  * [#2006](https://github.com/ruby-grape/grape/pull/2006): Fix explicit rescue StandardError - [@ericproulx](https://github.com/ericproulx).
+  * [#2004](https://github.com/ruby-grape/grape/pull/2004): Rubocop fixes - [@ericproulx](https://github.com/ericproulx).
+  * [#1995](https://github.com/ruby-grape/grape/pull/1995): Fix: "undefined instance variables" and "method redefined" warnings - [@nbeyer](https://github.com/nbeyer).
+  * [#1994](https://github.com/ruby-grape/grape/pull/1993): Fix typos in README - [@bellmyer](https://github.com/bellmyer).
+  * [#1993](https://github.com/ruby-grape/grape/pull/1993): Lazy join allow header - [@ericproulx](https://github.com/ericproulx).
+  * [#1987](https://github.com/ruby-grape/grape/pull/1987): Re-add exactly_one_of mutually exclusive error message - [@ZeroInputCtrl](https://github.com/ZeroInputCtrl).
+  * [#1977](https://github.com/ruby-grape/grape/pull/1977): Skip validation for a file if it is optional and nil - [@dnesteryuk](https://github.com/dnesteryuk).
+  * [#1976](https://github.com/ruby-grape/grape/pull/1976): Ensure classes/modules listed for autoload really exist - [@dnesteryuk](https://github.com/dnesteryuk).
+  * [#1971](https://github.com/ruby-grape/grape/pull/1971): Fix BigDecimal coercion - [@FlickStuart](https://github.com/FlickStuart).
+  * [#1968](https://github.com/ruby-grape/grape/pull/1968): Fix args forwarding in Grape::Middleware::Stack#merge_with for ruby 2.7.0 - [@dm1try](https://github.com/dm1try).
+  * [#1988](https://github.com/ruby-grape/grape/pull/1988): Refactored the full_messages method and stop overriding full_message - [@hosseintoussi](https://github.com/hosseintoussi).
+
+-------------------------------------------------------------------
+Mon Feb 10 14:46:47 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.3.0
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
 Fri Jul 19 09:13:05 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 1.2.4

@@ -25,6 +25,10 @@
 %define DisOMPI3 ExclusiveArch:  do_not_build
 %endif
 
+%if 0%{?sle_version:1} && 0%{?sle_version} < 150300
+%define DisOMPI4 ExclusiveArch:  do_not_build
+%endif
+
 # Disable until resource issue is resolved.
 %bcond_with check
 
@@ -64,6 +68,13 @@ ExclusiveArch:  do_not_build
 %{?DisOMPI3}
 %global mpi_flavor openmpi
 %define mpi_vers 3
+%bcond_with hpc
+%endif
+
+%if "%{flavor}" == "openmpi4"
+%{?DisOMPI4}
+%global mpi_flavor openmpi
+%define mpi_vers 4
 %bcond_with hpc
 %endif
 
@@ -110,6 +121,15 @@ ExclusiveArch:  do_not_build
 %undefine c_f_ver
 %global mpi_flavor openmpi
 %define mpi_vers 3
+%endif
+
+%if "%{flavor}" == "gnu-openmpi4-hpc"
+%{?DisOMPI4}
+%bcond_without hpc
+%define compiler_family gnu
+%undefine c_f_ver
+%global mpi_flavor openmpi
+%define mpi_vers 4
 %endif
 
 %if "%{flavor}" == "gnu-mpich-hpc"

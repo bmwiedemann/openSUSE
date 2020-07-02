@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  2 12:37:03 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.2:
+  improvements:
+  * added key controls for noncurses mode #364
+  bugfixes:
+  * fix drawing of background color for noncurses mode
+  * fix install on macos #365
+
+-------------------------------------------------------------------
 Thu Jun 25 07:03:38 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.7.1:

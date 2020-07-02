@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 30 13:37:54 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Drop bootsplash-theme, not used
+- Don't touch /etc/default/grub in config.sh, kiwi overwrites it
+  anyway
+- RPi workarounds are part of the raspberrypi-firmware package now
+
+-------------------------------------------------------------------
 Mon May 18 08:16:29 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Drop some now redundant entries from the package list

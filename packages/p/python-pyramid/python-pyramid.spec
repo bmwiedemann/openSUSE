@@ -36,9 +36,9 @@ BuildRequires:  %{python_module PasteDeploy >= 1.5.0}
 BuildRequires:  %{python_module WebOb >= 1.8.3}
 BuildRequires:  %{python_module WebTest >= 1.3.1}
 BuildRequires:  %{python_module hupper >= 1.5}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module plaster-pastedeploy}
 BuildRequires:  %{python_module plaster}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module translationstring >= 0.4}
 BuildRequires:  %{python_module venusian >= 1.0}
@@ -92,7 +92,7 @@ done
 
 %check
 export LANG=en_US.UTF-8
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v
+%pytest tests/
 
 %post
 %python_install_alternative pcreate pdistreport prequest proutes pserve pshell ptweens pviews

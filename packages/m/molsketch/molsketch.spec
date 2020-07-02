@@ -21,7 +21,7 @@
 %define soname -qt5-%{sover}
 %define binname %{name}-qt5
 Name:           molsketch
-Version:        0.5.1
+Version:        0.6.0
 Release:        0
 Summary:        2D molecular structures editor
 License:        GPL-2.0-or-later
@@ -56,25 +56,11 @@ Features:
    formats
  * print and export your document to PDF
 
-%package -n     lib%{name}%{soname}
-Summary:        C++ library for %{name}
-Group:          System/Libraries
-Provides:       libobabeliface%{soname} = %{version}
-
-%description -n lib%{name}%{soname}
-2D molecular structures editor.
-
-This package provides the shared libraries.
-
-%package 	    devel
+%package 	devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
-Requires:       lib%{name}%{soname} = %{version}
-%if %{with qt4}
-Requires:       libqt4-devel-doc
-%else
+Provides:       lib%{name}%{soname} =  %{version}
 Requires:       libqt5-qttools
-%endif
 
 %description 	devel
 2D molecular structures editor.
@@ -94,16 +80,13 @@ Help documentation for %{name}.
 
 %prep
 %setup -q -n %{srcname}-%{version}
-
-dos2unix -k doc/cs/molsketch.adp
+dos2unix -k -c ascii doc/cs/%{name}.adp
 
 %build
 %cmake \
-  -DMSK_INSTALL_PREFIX=%{_prefix} \
-  -DMSK_INSTALL_DOCS=%{_docdir}/%{name} \
-  -DMSK_INSTALL_INCLUDES=%{_includedir}
+  -DMSK_INSTALL_DOCS="/share/doc/packages/%{name}"
 
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
@@ -119,21 +102,6 @@ done
 
 %fdupes -s %{buildroot}%{_datadir}
 
-%post -n lib%{name}%{soname} -p /sbin/ldconfig
-%postun -n lib%{name}%{soname} -p /sbin/ldconfig
-
-%if 0%{?suse_version} <= 1320
-%post
-%icon_theme_cache_post
-%desktop_database_post
-%mime_database_post
-
-%postun
-%icon_theme_cache_postun
-%desktop_database_postun
-%mime_database_postun
-%endif
-
 %files
 %license COPYING
 %doc CHANGELOG
@@ -141,25 +109,17 @@ done
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/molsketch.*
 %{_datadir}/pixmaps/molsketch.xpm
-%exclude %{_docdir}/%{name}/cs/
-%exclude %{_docdir}/%{name}/en/
-%exclude %{_docdir}/%{name}/nl/
-%{_datadir}/icons/hicolor/scalable/mimetypes/application-x-molsketch.svg
+%{_datadir}/icons/hicolor/scalable/mimetypes/*.svg
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/net.sourceforge.molsketch.appdata.xml
 %{_datadir}/mime/packages/molsketch.xml
 
-%files -n lib%{name}%{soname}
-%{_libdir}/lib%{name}*so.*
-%{_libdir}/libobabeliface*so.*
-
 %files devel
-%{_libdir}/lib%{name}*so
-%{_libdir}/libobabeliface*so
+%{_libdir}/%{name}/
+%{_includedir}/lib%{name}/
 
 %files doc
-%{_docdir}/%{name}/cs/
-%{_docdir}/%{name}/en/
-%{_docdir}/%{name}/nl/
+%{_docdir}/%{name}/
+%exclude %{_docdir}/molsketch/CHANGELOG
 
 %changelog

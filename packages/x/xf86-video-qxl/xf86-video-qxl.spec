@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-qxl
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -33,7 +33,7 @@ Release:        0
 Summary:        QXL virtual GPU video driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
 Patch0:         n_hardcode_libdrm_cflags.patch
 Patch1:         n_disable-surfaces-on-kms.patch
@@ -95,9 +95,6 @@ make %{?_smp_mflags}
 %install
 %make_install
 %if %{with xspice}
-mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/X11
-install -p -m 644 examples/spiceqxl.xorg.conf.example \
-    $RPM_BUILD_ROOT%{_sysconfdir}/X11/spiceqxl.xorg.conf
 # FIXME: upstream installs this file by default, we install it elsewhere.
 # upstream should just not install it and let dist package deal with
 # doc/examples.
@@ -115,7 +112,6 @@ find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
 %files -n xorg-x11-server-Xspice
 %defattr(-,root,root)
 %doc COPYING README.xspice README examples/spiceqxl.xorg.conf.example
-%config(noreplace) %{_sysconfdir}/X11/spiceqxl.xorg.conf
 %{_bindir}/Xspice
 %{_libdir}/xorg/modules/drivers/spiceqxl_drv.so
 %dir %{_libdir}/pcsc/

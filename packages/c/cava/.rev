@@ -96,4 +96,17 @@
   * updated macos building instructions</comment>
     <requestid>816962</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2693f68ef13dc0c6aa34c8b5ce3f3a2e</srcmd5>
+    <version>0.7.2</version>
+    <time>1593727998</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.2:
+  improvements:
+  * added key controls for noncurses mode #364
+  bugfixes:
+  * fix drawing of background color for noncurses mode
+  * fix install on macos #365</comment>
+    <requestid>818311</requestid>
+  </revision>
 </revisionlist>

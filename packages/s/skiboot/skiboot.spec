@@ -1,7 +1,7 @@
 #
 # spec file for package skiboot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %define build_firmware 0%{?is_opensuse} && !0%{?is_backports}
 
 Name:           skiboot
-Version:        6.5
+Version:        6.6.1
 Release:        0
 Summary:        Tools for the OpenPower platform
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://github.com/open-power/skiboot
+URL:            https://github.com/open-power/skiboot
 Source:         skiboot-%{version}.tar.gz
 BuildRequires:  libopenssl-devel
 BuildRequires:  linux-glibc-devel

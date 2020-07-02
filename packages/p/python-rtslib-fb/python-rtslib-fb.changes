@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 30 17:49:04 UTC 2020 - lduncan@suse.com
+
+- Update to version v2.1.73 (bsc#1173257 CVE-2020-14019):
+  * version 2.1.73
+  * save_to_file: fix fd open mode
+  * saveconfig: copy temp configfile with permissions
+  * saveconfig: open the temp configfile with modes set
+  * Fix "is not" with a literal SyntaxWarning
+  * Fix an incorrect config path in two comments
+  * version 2.1.72
+  * Do not change dbroot after drivers have been registered
+  * Remove '_if_needed' from RTSRoot._set_dbroot()'s name
+  Replacing old tarball with python-rtslib-fb-v2.1.73.tar.xz
+
+-------------------------------------------------------------------
 Tue Mar 03 15:46:53 UTC 2020 - lduncan@suse.com
 
 - Update to version v2.1.71 (jre#SLE-7751):

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  1 15:17:29 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Add patch which fixes the error occuring for spdlog 1.6.1:
+  * 0007-lua-Handle-the-default-case-in-scriptLog.patch
+
+-------------------------------------------------------------------
 Wed May 20 16:45:08 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 -  limit build resources for ppc64le to avoid Out of Memory error

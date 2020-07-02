@@ -1,7 +1,7 @@
 #
 # spec file for package mysql-workbench
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,14 @@
 
 %define edition community
 Name:           mysql-workbench
-Version:        8.0.15
+Version:        8.0.19
 Release:        0
 Summary:        A MySQL visual database modeling, administration and querying tool
 License:        GPL-2.0-only AND GPL-2.0-or-later
 Group:          Productivity/Databases/Clients
-Url:            http://wb.mysql.com
+URL:            http://wb.mysql.com
 Source:         http://dev.mysql.com/get/Downloads/MySQLGUITools/%{name}-%{edition}-%{version}-src.tar.gz
 Source1:        openSUSE_Vendor_Package.xml
-Source2:        %{name}-%{edition}-%{version}-prebuilt_parsers.tar.gz
 Source99:       %{name}.rpmlintrc
 #Patches
 Patch0:         patch-desktop-categories.patch
@@ -34,28 +33,30 @@ Patch0:         patch-desktop-categories.patch
 Patch1:         mysql-workbench-no-check-for-updates.patch
 # disabled , system scintila is buil with gtk3
 Patch7:         mysql-workbench-unbundle-libscintilla.patch
-Patch8:         mysql-workbench-preload-sqlparser.patch
-# patch from https://bugs.mysql.com/bug.php?id=84886
-Patch11:        git_patch_105207009.patch
+# PATCH-FIX-OPENSUSE fix lacking dependency
+Patch9:         mysql-workbench-dependences.patch
 Patch13:        mysql-workbench-mariadb.patch
 # PATCH-FIX-UPSTREAM guillaume@opensuse.org
 Patch14:        fix_aarch64_build.patch
 # PATCH-FIX-OPENSUSE allow to both support keyring and start without it
 Patch15:        mysql-workbench-keyring-check.patch
-# PATCH-FIX-OPENSUSE fix build with MariaDB
-Patch16:        mysql-workbench-mariadb-8.0.15.patch
 # PATCH-FIX-UPSTREAM fix include path for old JDBC api with new mysql-connector-cpp
 Patch17:        mysql-workbench-old-api.patch
 # PATCH-FIX-UPSTREAM fix warning interpreted as errors
 Patch18:        mysql-workbench-warnings-fix.patch
-# PATCH-FIX-OPENSUSE disable parser building (while we have no maven in OBS)
-Patch19:        mysql-workbench-prebuilt-parsers.patch
 # PATCH-FIX-OPENSUSE fix License.txt location
 Patch20:        mysql-workbench-license-location.patch
 # PATCH-FIX-UPSTREAM fix HiDPI support
 Patch21:        mysql-workbench-hidpi.patch
+# PATCH-FIX-OPENSUSE set explicitly ldconfig path
+Patch22:        mysql-workbench-proj-ldconfig.patch
+# PATCH-FIX-OPENSUSE use system antlr4
+Patch23:        mysql-workbench-antlr4.patch
+# PATCH-FIX-OPENSUSE drop unused glXQueryVersion call
+Patch24:        mysql-workbench-unused-glx-call.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  ant
+BuildRequires:  antlr4-tool
 BuildRequires:  binutils-gold
 BuildRequires:  cmake
 BuildRequires:  dos2unix
@@ -74,7 +75,7 @@ BuildRequires:  libtool
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python-devel
-BuildRequires:  python-paramiko
+BuildRequires:  rapidjson-devel
 BuildRequires:  swig
 BuildRequires:  tinyxml-devel
 BuildRequires:  unixODBC-devel
@@ -85,8 +86,6 @@ BuildRequires:  pkgconfig(cairomm-1.0)
 BuildRequires:  pkgconfig(gdal)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libctemplate)
-#BuildRequires:  pkgconfig(libglade-2.0)
-#BuildRequires:  pkgconfig(libgnome-2.0)
 BuildRequires:  pkgconfig(libpcrecpp)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libsecret-1)
@@ -103,8 +102,6 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xxf86vm)
 Requires:       libmysqlclient-devel
 Requires:       proj
-Requires:       python-paramiko
-Requires:       python-pexpect
 Requires(post): desktop-file-utils
 Requires(post): shared-mime-info
 Requires(postun): desktop-file-utils
@@ -138,21 +135,7 @@ This is the %{edition} build.
 %prep
 # Add the -D flag if you don't want to delete the source root on each build
 %setup -q -n %{name}-%{edition}-%{version}-src
-%setup -q -D -T -b 2 -n %{name}-%{edition}-%{version}-src
-%patch0 -p1
-%patch1 -p1
-%patch7 -p1
-%patch8 -p1
-%patch11 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch20 -p1
-%patch21 -p1
+%autopatch -p1
 
 %build
 export CFLAGS="%{optflags}"

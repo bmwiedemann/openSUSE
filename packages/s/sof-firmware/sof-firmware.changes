@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jun  9 17:36:56 CEST 2020 - tiwai@suse.de
+
+- Add some comments for avoid misunderstanding about the package
+- Add missing symlink for CML firmware
+- Avoid symlink for tplg directory that may cause an error at
+  upgrading from the old package
+
+-------------------------------------------------------------------
+Thu Jun  4 15:00:37 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim old specfile constructs.
+
+-------------------------------------------------------------------
+Thu Jun  4 15:13:40 CEST 2020 - tiwai@suse.de
+
+- Update to version 1.5:
+  tarball created from the official sof-bin git repo, only signed
+  firmware files are included at this time.
+  Release notes found at:
+    https://github.com/thesofproject/sof/releases/tag/v1.5
+- Fixed hda-dsp topology files taken from ftp.alsa-project.org
+
+-------------------------------------------------------------------
 Thu Feb 13 08:01:10 CET 2020 - tiwai@suse.de
 
 - Update to version 1.4.2:

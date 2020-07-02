@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 29 07:17:31 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Revert BuildRequires hicolor-icon-theme for icon dirs
+
+-------------------------------------------------------------------
+Wed Jun 24 10:28:15 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Use libexecdir macro to fix errors in Factory
+- BuildRequires hicolor-icon-theme for icon dirs
+
+-------------------------------------------------------------------
 Mon May 18 07:18:43 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Removed Recommends lxqt-archiver-lang due to auto supplements

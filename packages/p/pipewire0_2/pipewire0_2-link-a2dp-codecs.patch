@@ -1,0 +1,17 @@
+diff --git a/spa/plugins/bluez5/meson.build b/spa/plugins/bluez5/meson.build
+index 15890238..1eab8632 100644
+--- a/spa/plugins/bluez5/meson.build
++++ b/spa/plugins/bluez5/meson.build
+@@ -1,7 +1,8 @@
+ 
+ bluez5_sources = ['plugin.c',
+ 		  'a2dp-sink.c',
+-                  'bluez5-monitor.c']
++		  'a2dp-codecs.c',
++		  'bluez5-monitor.c']
+ 
+ bluez5lib = shared_library('spa-bluez5',
+ 	bluez5_sources,
+-- 
+2.24.1
+

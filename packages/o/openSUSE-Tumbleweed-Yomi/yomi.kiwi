@@ -53,9 +53,9 @@
 	  bootloader="grub2"
 	  firmware="efi"
 	  installpxe="true"
-	  kernelcmdline="rd.kiwi.ramdisk ramdisk_size=524288"
+	  kernelcmdline="rd.kiwi.ramdisk ramdisk_size=2097152"
 	  >
-      <size unit="G">1</size>
+      <size unit="G">2</size>
       <oemconfig>
         <oem-skip-verify>true</oem-skip-verify>
         <oem-unattended>true</oem-unattended>
@@ -107,6 +107,7 @@
     <!-- <package name="firewalld"/> -->
 
     <package name="kernel-default"/>
+    <package name="kernel-firmware"/>
 
     <!-- Yomi requirements -->
     <package name="SUSEConnect"/>    

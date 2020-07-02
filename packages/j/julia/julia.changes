@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun 23 22:02:46 UTC 2020 - Ronan Chagas <ronisbr@gmail.com>
+
+- Version bump to 1.4.2, see NEWS.md for details.
+- Replace the source code with the version with all dependencies.
+  Thus, all the source files related to the dependencies were
+  dropped:
+    * Pkg-f71e2c5a119b9c850f9b357fc8c56068f5b51cc0.tar.gz
+    * libuv-35b1504507a7a4168caae3d78db54d1121b121e1.tar.gz
+    * libwhich-81e9723c0273d78493dc8c8ed570f68d9ce7e89e.tar.gz
+    * llvm-6.0.1.src.tar.xz
+    * openlibm-ce69bf1f32d3e2e9791da36c9e33ba38670d5576.tar.gz
+    * utf8proc-5c632c57426f2e4246e3b64dd2fd088d3920f9e5.tar.gz
+- Add patch `llvm-8.0.1-gcc-10.patch` to fix build of LLVM 8.0.1
+  using gcc 10: https://reviews.llvm.org/D64937.
+- Use bundled version of libgit2 instead of the system library
+  because Julia does not support libgit2-1.0 yet (boo#1173180).
+- Use bundled version of libdSFMT because Julia uses a patch that is
+  not in upstream. Hence, using the system version leads to failures
+  related to RNG.
+- Add new build dependency `libcurl-devel`.
+
+-------------------------------------------------------------------
 Sat Mar 28 19:42:54 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - convert to singlespec

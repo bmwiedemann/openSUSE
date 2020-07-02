@@ -62,8 +62,8 @@ tar xf $RPM_SOURCE_DIR/xorg-confd-snippets.tar.bz2 -C $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 %doc README.meta
-%config %{_sysconfdir}/X11/xorg.conf.d/50-device.conf
-%config %{_sysconfdir}/X11/xorg.conf.d/50-monitor.conf
-%config %{_sysconfdir}/X11/xorg.conf.d/50-screen.conf
+%{_datadir}/X11/xorg.conf.d/50-device.conf
+%{_datadir}/X11/xorg.conf.d/50-monitor.conf
+%{_datadir}/X11/xorg.conf.d/50-screen.conf
 
 %changelog

@@ -114,4 +114,73 @@
     <comment></comment>
     <requestid>764129</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3f001b5720f46600da48422247257891</srcmd5>
+    <version>1.6.1</version>
+    <time>1593727109</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.1
+  * Fixed deadlock in daily_file_sink that happened while
+    cleaning older files.
+  * Fixed ringbuffer_sink::last_raw() and
+    ringbuffer_sink::last_formatted() that didn't return latest
+    elements.
+- Update to version 1.6.0
+  What's new:
+  * Load log levels from environment variable SPDLOG_LEVEL
+  * New windows eventlog sink.
+  * New tcp sink that sends log messages in tcp to a remote
+    server.
+  * Extend spdlog with your own flags in the log pattern. See
+    wiki for details.
+  * Bump the bundled fmt version to 6.2.0 .
+  Fixes and improvements:
+  * Prevent race condition when SPDLOG_PREVENT_CHILD_FD is
+    defined.
+  * Fix race condition in the filename() function in the file
+    sinks.
+  * Fix ansicolor_sink::set_color(..) - can cause memory
+    violation if user provides a custom color code that points to
+    stack memory.
+  * Optimize cases when string_view is passed to the logger to
+    avoid unnecessary fmt::format.
+  * Support for max files in daily logger.
+  * Fix deprecated warning with C++14 and external fmt lib.
+  * Optimize colos sinks to use std::array instead of map to
+    find color codes.
+  * Fix potential buffer overflow in color_sinks when one of
+    them has a pattern without colors.
+  * Don't include windows.h in common.h.
+  * Resolve erroneous clang-tidy warning about using a moved
+    from pointer.
+  * Fixed numerous clang-tidy warnings.
+  * Added options to to_hex to output hex like hexdump.
+  * Removed the 'SPDLOG_NO_NAME` macro in tweakme.h and cmake.
+  * Added a forward declaration header spdlog\fwd.h .
+  * Moved throw to dedicated function to optimize compile-time
+    and runtime-performance.
+  * Fix a build issue when SPDLOG_PREVENT_CHILD_FD is defined.
+  * Fix issue with using external fmt.
+  * Minor performance optimizations in pattern formatter.
+  * Add log function to the logger API to allow logging with
+    custom timepoint.
+  * Removed meson support.
+  * Fix typos and tabs in the code.
+  * CMake: Fix GNUInstallDirs include location.
+  * CMake: workaround for Unknown extension &quot;.c&quot; for file issue.
+  * CMake: Disabled extra warnings generation by default. Use
+    SPDLOG_BUILD_WARNINGS=ON to enable again.
+  * CMake: Support for precompiled headers with
+    SPDLOG_ENABLE_PCH flag.
+  * CMake: Set minimum version of fmt to 5.3.0.
+  * CMake: Fix tabs, whitespaces and eol.
+  * Tests: removed duplicate entry for count_lines().
+  * Tests: don't run spdlog-utests and spdlog-utests-ho in
+    parallel.
+  * Tests: Enable running the tests against an installed copy of
+    spdlog.
+  * Tests: Support empty SPDLOG_EOL.
+</comment>
+    <requestid>809185</requestid>
+  </revision>
 </revisionlist>

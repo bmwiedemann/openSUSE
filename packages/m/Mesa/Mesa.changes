@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  1 12:46:33 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- force valgrind support only on officially supported platforms
+  (boo#1173355)
+
+-------------------------------------------------------------------
 Fri Jun 26 11:43:50 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 20.1.2

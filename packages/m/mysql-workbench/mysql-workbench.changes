@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri May  1 08:31:21 UTC 2020 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Updated to 8.0.19
+  * release notes
+    https://dev.mysql.com/doc/relnotes/workbench/en/news-8-0-19.html
+    https://dev.mysql.com/doc/relnotes/workbench/en/news-8-0-18.html
+    https://dev.mysql.com/doc/relnotes/workbench/en/news-8-0-17.html
+    https://dev.mysql.com/doc/relnotes/workbench/en/news-8-0-16.html
+- Dropped deprecated dependencies for python-paramiko, python-pexpect
+- Updated patch due to code changes
+  * updated mysql-workbench-hidpi.patch
+  * updated mysql-workbench-unbundle-libscintilla.patch
+  * updated mysql-workbench-warnings-fix.patch
+- Dropped prebuilt parsers as we now have antlr4 (new dependency),
+  and fixed call for our jar's
+  * removed mysql-workbench-community-8.0.15-prebuilt_parsers.tar.gz
+  * removed mysql-workbench-prebuilt-parsers.patch
+  * added mysql-workbench-antlr4.patch
+- Merged and updated 2 MariaDB patches into one
+  * updated mysql-workbench-mariadb.patch
+  * removed mysql-workbench-mariadb-8.0.15.patch
+- Fixed dependecies for pcrecpp & zip
+  * added mysql-workbench-dependences.patch
+- Fixed unused call which leads to linking error
+  * added mysql-workbench-unused-glx-call.patch
+- Added dependency for rapidjson, jsonparser not included anymore
+  * removed git_patch_105207009.patch
+- Dropped unneeded preloading
+  * removed mysql-workbench-preload-sqlparser.patch
+
+-------------------------------------------------------------------
+Mon Mar 18 22:11:51 UTC 2019 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- fixed not found ldconfig if it's not in $PATH
+  (thanks Tyler Palmer for pointing out)
+  * added mysql-workbench-proj-ldconfig.patch
+
+-------------------------------------------------------------------
 Sat Feb 23 10:12:28 UTC 2019 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - fixed HiDPI: about box now works on HiDPI and got sharper images

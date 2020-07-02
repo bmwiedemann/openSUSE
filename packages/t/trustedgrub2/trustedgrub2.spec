@@ -1,7 +1,7 @@
 #
 # spec file for package trustedgrub2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Bootloader with TCG (TPM) support  
 License:        GPL-3.0-or-later
 Group:          System/Boot
-Url:            https://github.com/Sirrix-AG/TrustedGRUB2
+URL:            https://github.com/Sirrix-AG/TrustedGRUB2
 Source0:        %{name}-%{version}.tar.gz
 Source1:        trustedgrub2.rpmlintrc
 Source2:        HOWTO.luks-keyfile
@@ -55,6 +55,10 @@ Patch19:        0005-acpi-Fix-gcc9-error-Waddress-of-packed-member.patch
 Patch20:        0006-usbtest-Disable-gcc9-Waddress-of-packed-member.patch
 Patch21:        0007-chainloader-Fix-gcc9-error-Waddress-of-packed-member.patch
 Patch22:        0008-efi-Fix-gcc9-error-Waddress-of-packed-member.patch
+# fix build against GCC-10
+Patch23:        0001-mdraid1x_linux-Fix-gcc10-error-Werror-array-bounds.patch
+Patch24:        0002-zfs-Fix-gcc10-error-Werror-zero-length-bounds.patch
+Patch25:        0003-linux-Fix-gcc10-error-Werror-zero-length-bounds.patch
 # Btrfs snapshot booting related patches
 Patch101:       grub2-btrfs-01-add-ability-to-boot-from-subvolumes.patch
 Patch102:       grub2-btrfs-02-export-subvolume-envvars.patch

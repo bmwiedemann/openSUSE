@@ -61,10 +61,9 @@ LXQt file archiver.
 %license LICENSE
 %doc AUTHORS CHANGELOG README.md
 %{_bindir}/lxqt-archiver
-%dir /usr/libexec/
-%dir /usr/libexec/lxqt-archiver
-/usr/libexec/lxqt-archiver/isoinfo.sh                                                                                                                    
-/usr/libexec/lxqt-archiver/rpm2cpio  
+%dir %{_libexecdir}/lxqt-archiver
+%{_libexecdir}/lxqt-archiver/isoinfo.sh                                                                                                                    
+%{_libexecdir}/lxqt-archiver/rpm2cpio  
 %{_datadir}/applications/lxqt-archiver.desktop
 %dir %{_datadir}/icons/hicolor/
 %dir %{_datadir}/icons/hicolor/scalable/

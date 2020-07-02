@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  1 08:53:44 UTC 2020 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- update to official 1.8.6
+ * remove patch 4c4bdde.diff
+ * remove patch d3c7f75.diff
+ * use source URLs again 
+
+-------------------------------------------------------------------
 Tue Jun 16 12:56:21 UTC 2020 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - remove fix_timeval_i586.patch 

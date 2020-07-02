@@ -17,7 +17,7 @@
 
 
 Name:           smatch
-Version:        20200127+git.2f013029
+Version:        20200608+git.e92d9e00
 Release:        0
 Summary:        Static analysis tool for C
 License:        GPL-2.0-only

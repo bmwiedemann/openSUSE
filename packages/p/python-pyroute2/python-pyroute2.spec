@@ -24,7 +24,7 @@ Summary:        Python Netlink library
 License:        GPL-2.0-or-later OR Apache-2.0
 URL:            https://github.com/svinota/pyroute2
 Source:         https://files.pythonhosted.org/packages/source/p/pyroute2/pyroute2-%{version}.tar.gz
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -63,8 +63,7 @@ protocols. Some supported netlink families and protocols:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# tests require root access
-#%%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v
+%pytest
 
 %post
 %python_install_alternative pyroute2-cli

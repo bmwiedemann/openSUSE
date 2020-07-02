@@ -19,8 +19,8 @@
 %bcond_with server
 %bcond_with videorec
 
-# FPC (Pascal) engine is disabled on 32bit archs due to a FPC bug
-%ifarch %arm %ppc
+# FPC (Pascal) engine is disabled on some 32-bit archs due to a FPC bug
+%ifarch %ppc
 %bcond_without engine_c
 %else
 %bcond_with engine_c
@@ -89,6 +89,7 @@ BuildRequires:  ghc-utf8-string-devel
 BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-zlib-devel
 %endif
+ExcludeArch:    armv6l armv6hl
 
 %description
 Hedgewars is a turn-based artillery game where slow-moving hedgehocks fight

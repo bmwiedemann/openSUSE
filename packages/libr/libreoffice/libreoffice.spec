@@ -104,6 +104,9 @@ Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
 Patch4:         poppler-0.86.patch
 Patch5:         pyuno-nopwd.patch
+Patch6:         libreoffice-stuck-widgets-in-sidebar.patch
+Patch7:         libreoffice-select-correct-item-in-gallery.patch
+Patch8:         libreoffice-clipped-sidebar-paragraph-widget.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -963,6 +966,9 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch3
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
 %patch990 -p1
 %patch991 -p1
 

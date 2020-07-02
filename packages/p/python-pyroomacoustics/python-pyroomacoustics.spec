@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyroomacoustics
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,8 +34,8 @@ Requires:       python-Cython
 Requires:       python-numpy
 Requires:       python-scipy >= 0.18.0
 # SECTION test requirements
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy >= 0.18.0}
 # /SECTION
 %python_subpackages
@@ -62,7 +62,7 @@ mv pyroomacoustics pyroomacoustics_temp
 rm -rf build _build.*
 %{python_expand rm -rf build _build.*
 export PYTHONPATH=%{buildroot}%{$python_sitearch}
-nosetests-%{$python_bin_suffix} --no-byte-compile pyroomacoustics_temp/tests/
+%pytest pyroomacoustics_temp/tests/
 }
 mv pyroomacoustics_temp pyroomacoustics
 

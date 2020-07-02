@@ -18,7 +18,6 @@
     <preferences profiles="kvm-and-xen">
         <version>15.1.0</version>
         <packagemanager>zypper</packagemanager>
-        <bootsplash-theme>openSUSE</bootsplash-theme>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
         <type
@@ -53,7 +52,6 @@
     <preferences profiles="VMware">
         <version>15.1.0</version>
         <packagemanager>zypper</packagemanager>
-        <bootsplash-theme>openSUSE</bootsplash-theme>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
         <type
@@ -89,7 +87,6 @@
     <preferences profiles="OpenStack-Cloud">
         <version>15.1.0</version>
         <packagemanager>zypper</packagemanager>
-        <bootsplash-theme>openSUSE</bootsplash-theme>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
         <type
@@ -110,7 +107,6 @@
     <preferences profiles="MS-HyperV">
         <version>15.1.0</version>
         <packagemanager>zypper</packagemanager>
-        <bootsplash-theme>openSUSE</bootsplash-theme>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
         <type
@@ -146,7 +142,6 @@
     <preferences profiles="RaspberryPi">
         <version>15.1.0</version>
         <packagemanager>zypper</packagemanager>
-        <bootsplash-theme>openSUSE</bootsplash-theme>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
         <type

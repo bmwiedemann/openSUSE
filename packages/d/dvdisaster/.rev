@@ -16,4 +16,12 @@
     <comment></comment>
     <requestid>563525</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>95f4420cb21692b6c9a0ebc21eead004</srcmd5>
+    <version>0.79.6</version>
+    <time>1593727474</time>
+    <user>dimstar_suse</user>
+    <comment>unquote patch28</comment>
+    <requestid>812049</requestid>
+  </revision>
 </revisionlist>

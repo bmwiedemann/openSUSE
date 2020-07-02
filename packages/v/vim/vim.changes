@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 30 15:14:06 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- stop owning /etc/vimrc so the old, distro provided config actually
+  gets removed. Leaving it around leads to a duplicated autocmd for
+  *.spec, leading to spec file template inserted twice.
+
+-------------------------------------------------------------------
 Mon Jun 22 15:59:31 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - own some dirs in vim-data-common so installation of vim-small

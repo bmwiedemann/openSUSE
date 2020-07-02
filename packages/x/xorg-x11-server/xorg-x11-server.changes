@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 30 16:48:06 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- move xorg_pci_ids dir from /etc/X11 to /usr/share/X11 and
+  xorg-x11-server.macros from /etc/rpm to /usr/lib/rpm/macros.d; 
+  no longer package /etc/X11/xorg.conf.d (boo#1173056)
+
+-------------------------------------------------------------------
 Thu Jun  4 10:02:58 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_glamor_egl-Reject-OpenGL-2.1-early-on.patch

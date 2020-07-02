@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Tue Jun 30 16:40:55 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ugrep 2.3.2:
+  * gcc10 fixes and minor improvements
+
+-------------------------------------------------------------------
+Mon Jun 22 09:17:14 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ugrep 2.3.1:
+  * Faster search context matching and display with new streaming
+    implementation for options -A, -B, -C, and -y
+  * including when combined with options -v, -W, and -X
+  * remove the single-line search pattern constraint in prior
+    versions for these options
+  * fixed minor issue with option -G
+
+-------------------------------------------------------------------
+Sun Jun 14 09:11:01 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ugrep 2.2.1:
+  * improved query UI with Alt-g, corresponding to -g, --glob for
+    interative globbing
+  * improved fuzzy matching
+
+-------------------------------------------------------------------
+Sat Jun  6 07:30:31 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- initial package, 2.2.0

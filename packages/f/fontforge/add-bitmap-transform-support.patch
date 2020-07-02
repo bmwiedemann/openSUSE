@@ -1,0 +1,71 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+Subject: Add support to use bitmap font transformations from python
+
+This is needed by ttf-converter/xorg-x11-fonts in order to generate
+an Italic version of MUTT-ClearlyU-Wide at package build time.
+
+Index: fontforge-20200314/fontforge/python.c
+===================================================================
+--- fontforge-20200314.orig/fontforge/python.c
++++ fontforge-20200314/fontforge/python.c
+@@ -35,6 +35,7 @@
+ #include "autotrace.h"
+ #include "autowidth2.h"
+ #include "bitmapcontrol.h"
++#include "bvedit.h"
+ #include "cvexport.h"
+ #include "cvimages.h"
+ #include "cvundoes.h"
+@@ -11933,6 +11934,44 @@ return( -1 );
+ return( 0 );
+ }
+ 
++static PyObject *PyFFFont_bitmapTransform(PyFF_Font *self, PyObject *args) {
++    SplineFont *sf = self->fv->sf;
++    BDFFont *bdf;
++    char *funcname;
++    int xoff, yoff, i;
++    enum bvtools type;
++
++    if ( CheckIfFontClosed(self) )
++        return( NULL );
++
++    if ( !PyArg_ParseTuple(args,"sii", &funcname, &xoff, &yoff))
++        return( NULL );
++
++    if (strcmp(funcname, "fliph") == 0)
++        type = bvt_fliph;
++    else if (strcmp(funcname, "flipv") == 0)
++        type = bvt_flipv;
++    else if (strcmp(funcname, "rotate90cw") == 0)
++        type = bvt_rotate90cw;
++    else if (strcmp(funcname, "rotate90ccw") == 0)
++        type = bvt_rotate90ccw;
++    else if (strcmp(funcname, "rotate180") == 0)
++        type = bvt_rotate180;
++    else if (strcmp(funcname, "skew") == 0)
++        type = bvt_skew;
++    else if (strcmp(funcname, "transmove") == 0)
++        type = bvt_transmove;
++    else Py_RETURN( self );
++
++    for ( bdf=sf->bitmaps; bdf!=NULL; bdf=bdf->next )
++	for ( i=0; i<bdf->glyphcnt; ++i )
++            if ( bdf->glyphs[i]!=NULL )
++	        BCTransFunc(bdf->glyphs[i], type, xoff, yoff);
++
++Py_RETURN( self );
++}
++
++
+ static PyObject *PyFF_Font_get_bitmapSizes(PyFF_Font *self, void *UNUSED(closure)) {
+     PyObject *tuple;
+     int cnt;
+@@ -18179,6 +18218,7 @@ Py_RETURN( self );
+ 
+ PyMethodDef PyFF_Font_methods[] = {
+     { "appendSFNTName", (PyCFunction) PyFFFont_appendSFNTName, METH_VARARGS, "Adds or replaces a name in the sfnt 'name' table. Takes three arguments, a language, a string id, and the string value" },
++    { "bitmapTransform", (PyCFunction) PyFFFont_bitmapTransform, METH_VARARGS, "Transforms all bitmap glyphs."},
+     { "close", (PyCFunction) PyFFFont_close, METH_NOARGS, "Frees up memory for the current font. Any python pointers to it will become invalid." },
+     { "compareFonts", (PyCFunction) PyFFFont_compareFonts, METH_VARARGS, "Compares two fonts and stores the result into a file"},
+     { "save", (PyCFunction) PyFFFont_Save, METH_VARARGS, "Save the current font to a sfd file" },

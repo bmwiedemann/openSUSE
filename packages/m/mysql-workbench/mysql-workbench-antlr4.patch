@@ -1,0 +1,12 @@
+diff -uNr mysql-workbench-community-8.0.19-org/library/parsers/CMakeLists.txt mysql-workbench-community-8.0.19-src/library/parsers/CMakeLists.txt
+--- mysql-workbench-community-8.0.19-org/library/parsers/CMakeLists.txt	2020-04-05 00:09:04.733876842 +0300
++++ mysql-workbench-community-8.0.19-src/library/parsers/CMakeLists.txt	2020-04-04 20:54:21.868460175 +0300
+@@ -22,7 +22,7 @@
+ 
+ add_custom_command(OUTPUT ${GENERATED_FILES} 
+           DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/grammars/MySQLLexer.g4 ${CMAKE_CURRENT_SOURCE_DIR}/grammars/MySQLParser.g4
+-          COMMAND ${Java_JAVA_EXECUTABLE} -Xmx1024m -jar ${ANTLR_JAR_PATH} -Dlanguage=Cpp -listener -visitor -o ../mysql -package parsers ${CMAKE_CURRENT_SOURCE_DIR}/grammars/MySQLLexer.g4 ${CMAKE_CURRENT_SOURCE_DIR}/grammars/MySQLParser.g4
++          COMMAND ${Java_JAVA_EXECUTABLE} -Xmx1024m -cp /usr/share/java/antlr3-runtime.jar:/usr/share/java/antlr4/antlr4-runtime.jar:/usr/share/java/stringtemplate4/ST4.jar:/usr/share/java/antlr4/antlr4.jar org.antlr.v4.Tool -Dlanguage=Cpp -listener -visitor -o ../mysql -package parsers ${CMAKE_CURRENT_SOURCE_DIR}/grammars/MySQLLexer.g4 ${CMAKE_CURRENT_SOURCE_DIR}/grammars/MySQLParser.g4
+           WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/grammars
+           COMMENT "[mysql] Generating parser files..."
+           )

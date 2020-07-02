@@ -331,7 +331,7 @@ ln -s -f %{VIM_SUBDIR} %{buildroot}%{_datadir}/vim/current
 
 # additional files
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_datadir}/vim/current/suse.vimrc
-install -D -m 0644 /dev/null %{buildroot}%{_sysconfdir}/vimrc
+#install -D -m 0644 /dev/null %{buildroot}%{_sysconfdir}/vimrc
 install -D -m 0644 %{SOURCE8} %{buildroot}%{_sysconfdir}/gvimrc
 
 # create site wide runtime directory
@@ -545,7 +545,11 @@ fi
 %{_datadir}/vim/%{VIM_SUBDIR}/tutor/*
 
 %files data-common
-%ghost %config(noreplace) %{_sysconfdir}/vimrc
+# we can't currently own /etc/vimrc. If we keep owning it, an
+# existing, unmodified vimrc would not be removed. That results in a
+# duplicated definition of SKEL_spec().
+# see also https://github.com/rpm-software-management/rpm/issues/1296
+#%ghost %config(noreplace) %{_sysconfdir}/vimrc
 %{_datadir}/vim/current
 %dir %{_datadir}/vim/
 %dir %{_datadir}/vim/%{VIM_SUBDIR}/

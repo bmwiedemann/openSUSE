@@ -25,14 +25,15 @@
 # rubberband. Use the rubberband -cli package instead.
 %define librubberband 0
 Name:           hydrogen
-Version:        0.9.9pre1
+Version:        0.99+git20200527
 Release:        0
 Summary:        A Real-Time Drum Machine and Sequencer
 # NOTE: Don't forget to update the libsuffix macro.
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            http://www.hydrogen-music.org/
-Source0:        https://github.com/hydrogen-music/%{name}/archive/%{tarvers}-beta1.tar.gz#/%{name}-%{version}.tar.gz
+# https://github.com/hydrogen-music/%%{name}/archive/%%{tarvers}-beta2.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        h2cli.1
 Source2:        COPYING
 # Remove current date and time from sources.
@@ -41,9 +42,7 @@ Patch1:         hydrogen-no-current-time.patch
 Patch2:         hydrogen-0.9.6-lib64.patch
 # PATCH-FIX-UPSTREAM hydrogen-gcc47.patch boris@steki.net -- Fix build with gcc 4.7.
 Patch3:         hydrogen-gcc47.patch
-Patch6:         hydrogen-ongEditorPanel-clean-up-scroll-signals.patch
-Patch5:         hydrogen-SongEditorPanel-Add-methods-to-show-Timeline-Playbac.patch
-Patch7:         hydrogen-SongEditor-Fix-timeline-scrolling.patch
+Patch4:         hydrogen-fix-qt5.15.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -123,7 +122,7 @@ These are the headers needed to develop apps that
 link with libhydrogen-core.
 
 %prep
-%setup -q -n %{name}-%{tarvers}-beta1
+%setup -q
 
 %autopatch -p1
 
@@ -131,7 +130,6 @@ link with libhydrogen-core.
 install -m 0644 %{SOURCE2} ./
 
 %build
-
 %cmake \
 	-DWANT_SHARED:BOOL=on \
 	-DWANT_LIBARCHIVE:BOOL=on \
@@ -155,12 +153,8 @@ popd
 
 make %{?_smp_mflags}
 
-# LD_LIBRARY_PATH=%%{_libdir}/mpi/gcc/openmpi/%%{_lib}
-# LD_RUN_PATH=%%{_libdir}
-
 %install
 
-#export QTDIR=%%{_libdir}/qt4/
 %cmake_install VERBOSE_MAKEFILE=1
 mkdir -p %{buildroot}%{_libdir} && cp -v build/src/core/libhydrogen-core.so.%{tarvers} %{buildroot}%{_libdir}/
 # libhydrogen-core's internal SONAME = libhydrogen-core.so.0 so we provide a link.
@@ -171,8 +165,6 @@ popd
 # Install the h2cli man page created by help2man
 mkdir -p %{buildroot}%{_mandir}/man1
 install -pm 0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/
-# Move hydrogen man page to the correct directory
-mv %{buildroot}%{_prefix}/man/man1/hydrogen.1 %{buildroot}%{_mandir}/man1/
 
 # temporary link i18n files from usr/share/hydrogen/data/i18n to _datadir/locale for find_lang to find.
 ln -s %{_datadir}/hydrogen/data/i18n %{buildroot}%{_datadir}/locale
@@ -192,7 +184,7 @@ mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/ \
 && pushd %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
 ln -s ../../../../%{name}/data/img/gray/h2-icon.svg h2-icon.svg
 #usr/share/hydrogen/data/img/gray/h2-icon.svg
-popd && %suse_update_desktop_file -i %{name} AudioVideo Sequencer
+popd && %suse_update_desktop_file -i org.hydrogenmusic.Hydrogen AudioVideo Sequencer
 
 %post
 %desktop_database_post
@@ -210,10 +202,9 @@ popd && %suse_update_desktop_file -i %{name} AudioVideo Sequencer
 %{_mandir}/man1/hydrogen.1%{ext_man}
 %{_mandir}/man1/h2cli.1%{ext_man}
 %{_datadir}/%{name}/data/*
-%{_datadir}/appdata/%{name}.appdata.xml
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/scalable/apps/h2-icon.svg
-%{_datadir}/pixmaps/h2-icon.svg
+%{_datadir}/appdata/org.hydrogenmusic.Hydrogen.appdata.xml
+%{_datadir}/applications/org.hydrogenmusic.Hydrogen.desktop
+%{_datadir}/icons/hicolor/scalable/apps/*.svg
 
 %post -n libhydrogen-core%{soversion} -p /sbin/ldconfig
 %postun -n libhydrogen-core%{soversion} -p /sbin/ldconfig

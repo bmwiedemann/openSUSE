@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jul  1 12:59:25 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 7.71.1
+  * Bugfixes:
+    - Curl_inet_ntop: always check the return code
+    - CURLOPT_READFUNCTION.3: provide the upload data size up front
+    - escape: make the URL decode able to reject only %00-bytes
+    - escape: zero length input should return a zero length output
+    - examples/multithread.c: call curl_global_cleanup()
+    - http2: set the correct URL in pushed transfers
+    - http: fix proxy auth with blank password
+    - mbedtls: fix build with disabled proxy support
+    - ngtcp2: sync with current master
+    - Revert "multi: implement wait using winsock events"
+    - sendf: improve the message on client write errors
+    - terminology: call them null-terminated strings
+    - tool_cb_hdr: Fix etag warning output and return code
+    - url: allow user + password to contain "control codes" for HTTP(S)
+    - vtls: compare cert blob when finding a connection to reuse 
+
+-------------------------------------------------------------------
 Wed Jun 24 07:13:22 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update to 7.71.0 [bsc#1173026, CVE-2020-8169][bsc#1173027, CVE-2020-8177]

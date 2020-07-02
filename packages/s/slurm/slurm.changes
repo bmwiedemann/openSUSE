@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun  3 11:11:11 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Bring QA to the package build: add %%check stage.
+- Remove cruft that isn't needed any longer.
+- Add 'ghosted' run-file.
+- Add rpmlint filter to handle issues with library packages
+  for Leap and enterprise upgrade versions.
+
+-------------------------------------------------------------------
 Fri May 22 08:45:46 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - Updated to 20.02.3 which fixes CVE-2020-12693 (bsc#1172004).
@@ -25,6 +34,12 @@ Fri May 22 08:45:46 UTC 2020 - Christian Goll <cgoll@suse.com>
  * MySQL - Fix for handing typed GRES for association rollups.
  * Fix step allocations when tasks_per_core > 1.
  * Fix allocating more GRES than requested when asking for multiple GRES types.
+
+-------------------------------------------------------------------
+Wed May  6 10:54:43 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Treat libnss_slurm like any other package: add version string to
+  upgrade package.
 
 -------------------------------------------------------------------
 Fri Mar 27 08:26:34 UTC 2020 - Christian Goll <cgoll@suse.com>

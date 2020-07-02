@@ -54,7 +54,7 @@
 %define devname lib%{name}-devel
 
 Name:           createrepo_c
-Version:        0.15.7
+Version:        0.15.11
 Release:        0
 Summary:        RPM repository metadata generation utility
 License:        GPL-2.0-or-later
@@ -76,7 +76,6 @@ BuildRequires:  file-devel
 BuildRequires:  glib2-devel >= 2.22.0
 BuildRequires:  libbz2-devel
 BuildRequires:  libcurl-devel
-BuildRequires:  libexpat-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  lzma-devel
 BuildRequires:  openssl-devel

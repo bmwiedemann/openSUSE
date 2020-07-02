@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon May 25 07:29:38 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Update to version 1.1:
+  * Fix for ABSL CMake build.
+  * Fleshed out the Changelog a bit more.
+  * Added changelog for 1.1 release and updated version number.
+  * Updated README.md with latest Bloaty output.
+  * Fixed the build for the new ABSL version.
+  * Updated submodules, except for Demumble which switched to LLVM upstream.
+
+-------------------------------------------------------------------
+Fri May 22 09:14:38 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Update to version 1.0+git76. Most notable changes:
+  * Allow WebAssembly files with `--debug-file`.
+  * Use system deps for protobuf, capstone and re2
+  * Added experimental support for WebAssembly.
+  * Add support for ARM64 binaries.
+
+-------------------------------------------------------------------
 Wed Jan 25 15:54:57 UTC 2017 - mliska@suse.cz
 
 - Install license.

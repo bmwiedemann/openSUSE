@@ -18,7 +18,7 @@
 
 %define sover   6
 Name:           qwt6
-Version:        6.1.4
+Version:        6.1.5
 Release:        0
 Summary:        Qt5 Widgets for Technical Applications
 License:        SUSE-QWT-1.0

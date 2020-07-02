@@ -1,0 +1,11 @@
+--- mysql-workbench-community-8.0.19-org/backend/wbprivate/CMakeLists.txt	2019-12-15 21:40:32.000000000 +0200
++++ mysql-workbench-community-8.0.19-src_n/backend/wbprivate/CMakeLists.txt	2020-04-07 00:19:53.325400406 +0300
+@@ -97,6 +97,8 @@
+     mforms
+     wbpublic::wbpublic
+     Rapidjson::Rapidjson
++    pcrecpp
++    zip
+ )
+ 
+ add_library(wbprivate_Iface INTERFACE)

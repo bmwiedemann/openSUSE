@@ -64,25 +64,10 @@ diff -uNr mysql-workbench-community-8.0.15-org/backend/wbpublic/grt/spatial_hand
    OGRErr ret_val = OGRGeometryFactory::createFromWkt(&d, NULL, &_geometry);
  
    if (_geometry)
-diff -uNr mysql-workbench-community-8.0.15-org/library/base/util_functions.cpp mysql-workbench-community-8.0.15-src/library/base/util_functions.cpp
---- mysql-workbench-community-8.0.15-org/library/base/util_functions.cpp	2019-01-30 15:32:36.000000000 +0200
-+++ mysql-workbench-community-8.0.15-src/library/base/util_functions.cpp	2019-02-16 13:56:53.711465800 +0200
-@@ -127,9 +127,9 @@
-   while ((ptr = strstr(bptr, search)) != NULL) {
-     __sappend(&res, &ressize, &reslen, bptr, (int)(ptr - bptr));
-     bptr = ptr + searchlen;
--    __sappend(&res, &ressize, &reslen, replace, replsize);
-+    __sappend(&res, &ressize, &reslen, replace, 1 + replsize);
-   }
--  __sappend(&res, &ressize, &reslen, bptr, (int)strlen(bptr));
-+  __sappend(&res, &ressize, &reslen, bptr, 1 + (int)strlen(bptr));
- 
-   return res;
- }
 diff -uNr mysql-workbench-community-8.0.15-org/library/forms/swig/CMakeLists.txt mysql-workbench-community-8.0.15-src/library/forms/swig/CMakeLists.txt
 --- mysql-workbench-community-8.0.15-org/library/forms/swig/CMakeLists.txt	2019-01-30 15:32:36.000000000 +0200
 +++ mysql-workbench-community-8.0.15-src/library/forms/swig/CMakeLists.txt	2019-02-16 13:56:53.711465800 +0200
-@@ -91,7 +91,7 @@
+@@ -82,7 +82,7 @@
  
  set(SOURCE_FILE_COMPILE_FLAGS "-Wno-missing-field-initializers -Wno-parentheses")
  if(CMAKE_COMPILER_IS_GNUCXX)

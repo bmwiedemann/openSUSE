@@ -1,8 +1,8 @@
 #
 # spec file for package bstone
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2019-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           bstone
-Version:        1.1.16
+Version:        1.2.6
 Release:        0
 Summary:        A source port of Blake Stone
 License:        GPL-2.0-or-later

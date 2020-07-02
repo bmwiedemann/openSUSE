@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jul  2 02:25:31 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.15.0
+  + Support for kernel up to 5.7
+  + new tools: funcinterval.py, dirtop.py
+  + support lsm bpf programs
+  + support multiple pid/tids for offwaketime
+  + usdt: add helpers to set semaphore values
+  + turn off x86 jump table optimization during jit compilation
+  + add support to use bpf_probe_read[str}{_user,kernel} in all bpf
+  + programs, fail back to old bpf_probe_read[_str] for old kernels
+  + tools: add filtering by mount namespace
+  + libbpf-tools: cpudist, syscount, execsnoop, vfsstat
+  + lots of bug fixes and a few additional arguments for tools
+- Update libbpf to 0.0.9  
+  + BTF-defined map-in-map support;
+  + bpf_link support expanded to support new kernel BPF link objects;
+  + BPF_ENABLE_STATS API;
+  + new BPF ringbuf map support, added ring_buffer API for consuming;
+  + bpf_link-backed netns attachment (flow_dissector).
+  + bpf_object__load() better error code propagation;
+  + few memory leaks and corruptions fixed;
+  + register naming in PT_REGS s390 macros;
+  + .bss pre-setting through skeleton is now supported as well.
+- Drop upstreamed patch
+  + bcc-bsc1172493-Make-reading-blacklist-optional.patch
+
+-------------------------------------------------------------------
 Thu Jun  4 07:31:29 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add bcc-bsc1172493-Make-reading-blacklist-optional.patch to make

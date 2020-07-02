@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun 03 09:32:49 UTC 2020 - davejplater@gmail.com
+
+- Update to version 0.99+git20200527 and fix factory build against
+  qt 5.15 with hydrogen-fix-qt5.15.patch
+- Remove incorporated patches:
+  hydrogen-ongEditorPanel-clean-up-scroll-signals.patch,
+  hydrogen-SongEditorPanel-Add-methods-to-show-Timeline-Playbac.patch
+  and hydrogen-SongEditor-Fix-timeline-scrolling.patch
+- Upstream changes:
+  * Fix buffer and period size calculation
+  * hydrogen.cpp: change return value behavior of audioEngine_process()
+  * Fix prefs dialog buffersize driver restart message
+  * Fail gracefully on failure to set ALSA period (Fix #879)
+  * Bugfix for #857: Check audioEngine_process() ret. value when exporting
+  * Do not update specific UI parts if song export is active  (see #857)
+  * More smaller fixes which address compiler warnings..
+  * ExportMidiDialog: initialize pSmfWriter
+  * Fix #874 - improve scrolling to newly selected pattern (#875)
+
+-------------------------------------------------------------------
 Wed Feb 12 17:42:55 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - hydrogen-ongEditorPanel-clean-up-scroll-signals.patch,

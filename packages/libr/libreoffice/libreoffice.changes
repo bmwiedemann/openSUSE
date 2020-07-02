@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul  1 20:15:15 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update libreoffice-stuck-widgets-in-sidebar.patch with
+  an additional fix from upstream (tdf#134360).
+
+-------------------------------------------------------------------
+Tue Jun 30 14:05:33 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add patches from upstream to fix regressions:
+  * libreoffice-stuck-widgets-in-sidebar.patch: some sidebar
+    widgets getting stuck in a disabled state (boo#1173410,
+    tdf#134360).
+  * libreoffice-select-correct-item-in-gallery.patch: select the
+    item in gallery before dragging it (boo#1173409, tdf#134285).
+  * libreoffice-clipped-sidebar-paragraph-widget.patch: fix too
+    wide and clipped paragraph widget in sidebar (boo#1173404,
+    tdf#134357).
+
+-------------------------------------------------------------------
 Mon Jun 29 12:51:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update SUSE.soc bsc#1173471 to match up current SUSE branding

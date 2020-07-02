@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 20 07:43:50 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Don't enable and start google-network-daemon.service when it's
+  already installed (bsc#1169978)
+
+-------------------------------------------------------------------
 Tue Apr 28 15:25:22 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Add gceosl-no-def-sysgrps.patch (bsc#1170719, bsc#1170720)

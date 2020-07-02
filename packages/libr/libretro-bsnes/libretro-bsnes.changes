@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat May 30 17:27:08 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200403:
+  * Consider the overscan setting when getting the aspect ratio
+  * v115
+  * Add credits.
+  * v114.6
+  * Windows compilation fix.
+  * PulseAudio compilation fix.
+  * Restore IOKit fix that was missing from higan ruby sync.
+  * v114.5
+  * v110.4
+  * Readme updated.
+
+-------------------------------------------------------------------
 Mon Oct 14 12:49:44 UTC 2019 - i@guoyunhe.me
 
 - Update to version 0~git20191013:

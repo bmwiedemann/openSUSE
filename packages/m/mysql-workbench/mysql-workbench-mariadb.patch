@@ -1,7 +1,21 @@
-diff -uNr mysql-workbench-community-6.3.10-src.org/library/cdbc/src/driver_manager.cpp mysql-workbench-community-6.3.10-src/library/cdbc/src/driver_manager.cpp
---- mysql-workbench-community-6.3.10-src.org/library/cdbc/src/driver_manager.cpp	2017-11-09 18:11:42.000000000 +0200
-+++ mysql-workbench-community-6.3.10-src/library/cdbc/src/driver_manager.cpp	2018-02-05 11:51:59.083657042 +0200
-@@ -297,7 +297,7 @@
+diff -uNr mysql-workbench-community-8.0.19-org/build/cmake/Modules/FindMySQL.cmake mysql-workbench-community-8.0.19-src/build/cmake/Modules/FindMySQL.cmake
+--- mysql-workbench-community-8.0.19-org/build/cmake/Modules/FindMySQL.cmake	2020-04-05 00:00:02.702291848 +0300
++++ mysql-workbench-community-8.0.19-src/build/cmake/Modules/FindMySQL.cmake	2020-04-05 00:02:04.761297658 +0300
+@@ -72,8 +72,8 @@
+                  )
+ 
+         find_file(MySQL_VERSION_FILE mysql_version.h ${MySQL_INCLUDE_DIRS})
+-        file(STRINGS "${MySQL_VERSION_FILE}" MySQL_VERSION_LINE REGEX "MYSQL_SERVER_VERSION")
+-        string(REGEX REPLACE "#define MYSQL_SERVER_VERSION[ \t]+\"([0-9.]+)\"" "\\1" MySQL_VERSION "${MySQL_VERSION_LINE}")
++        file(STRINGS "${MySQL_VERSION_FILE}" MySQL_VERSION_LINE REGEX "MARIADB_CLIENT_VERSION_STR")
++        string(REGEX REPLACE "#define MARIADB_CLIENT_VERSION_STR[ \t]+\"([0-9.]+)\"" "\\1" MySQL_VERSION "${MySQL_VERSION_LINE}")
+         
+         # Find the library:
+         set(MySQL_LIBRARY_NAMES mysqlclient mysqlclient_r)
+diff -uNr mysql-workbench-community-8.0.19-org/library/cdbc/src/driver_manager.cpp mysql-workbench-community-8.0.19-src/library/cdbc/src/driver_manager.cpp
+--- mysql-workbench-community-8.0.19-org/library/cdbc/src/driver_manager.cpp	2020-04-05 00:00:02.686291978 +0300
++++ mysql-workbench-community-8.0.19-src/library/cdbc/src/driver_manager.cpp	2020-04-05 00:03:24.716646402 +0300
+@@ -307,7 +307,7 @@
        if (properties.find("OPT_READ_TIMEOUT") == properties.end())
          properties["OPT_READ_TIMEOUT"] = read_timeout;
      }
@@ -10,7 +24,7 @@ diff -uNr mysql-workbench-community-6.3.10-src.org/library/cdbc/src/driver_manag
      properties["CLIENT_MULTI_STATEMENTS"] = true;
      properties["metadataUseInfoSchema"] =
        false; // I_S is way too slow for many things as of MySQL 5.6.10, so disable it for now
-@@ -324,7 +324,7 @@
+@@ -334,7 +334,7 @@
        properties.erase("sslCipher");
      }
  
@@ -19,7 +33,7 @@ diff -uNr mysql-workbench-community-6.3.10-src.org/library/cdbc/src/driver_manag
      sql::ssl_mode sslMode = sql::SSL_MODE_DISABLED;
      switch(sslModeWb)
      {
-@@ -344,7 +344,7 @@
+@@ -355,7 +355,7 @@
          sslMode = sql::SSL_MODE_VERIFY_IDENTITY;
          break;
      }
@@ -28,3 +42,42 @@ diff -uNr mysql-workbench-community-6.3.10-src.org/library/cdbc/src/driver_manag
  
      // If we are on a pipe connection then set the host name explicitly.
      // However, pipe connections can only be established on the local box (Win only).
+diff -uNr mysql-workbench-community-8.0.19-org/plugins/migration/copytable/copytable.cpp mysql-workbench-community-8.0.19-src/plugins/migration/copytable/copytable.cpp
+--- mysql-workbench-community-8.0.19-org/plugins/migration/copytable/copytable.cpp	2020-04-05 00:04:46.387981155 +0300
++++ mysql-workbench-community-8.0.19-src/plugins/migration/copytable/copytable.cpp	2020-04-04 23:02:21.010272555 +0300
+@@ -324,7 +324,7 @@
+           base::strfmt("Unhandled MySQL type %i for column '%s'", col->target_type, col->target_name.c_str()));
+     }
+ 
+-#if MYSQL_VERSION_ID >= 80004
++#if MYSQL_VERSION_ID >= 80004 && !defined(MARIADB_BASE_VERSION)
+     typedef bool WB_BOOL;
+ #else
+     typedef my_bool WB_BOOL;
+@@ -2255,7 +2255,7 @@
+       case MYSQL_TYPE_DATETIME2:
+       case MYSQL_TYPE_TIME2:
+ #endif
+-#if MYSQL_VERSION_ID > 80016
++#if MYSQL_VERSION_ID > 80016 && !defined(MARIADB_BASE_VERSION)
+       case MYSQL_TYPE_TYPED_ARRAY: /* Used only for replication. */
+ #endif
+         // TODO: implement handling
+@@ -2270,6 +2270,8 @@
+                                                      *(*_row_buffer)[col_index].length);
+         _bulk_insert_record.append("')");
+         break;
++      case MAX_NO_FIELD_TYPES:
++        break;
+     }
+   }
+ 
+@@ -2657,7 +2659,7 @@
+ 
+ 
+ 
+-#if MYSQL_VERSION_ID >= 50706
++#if MYSQL_VERSION_ID >= 50706 && !defined(MARIADB_BASE_VERSION)
+   if (_target->is_mysql_version_at_least(5, 7, 6))
+     ret_length += mysql_real_escape_string_quote(_mysql, buffer + length, data, (unsigned long)dlength, '\'');
+   else

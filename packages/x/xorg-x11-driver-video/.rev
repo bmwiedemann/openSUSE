@@ -2441,4 +2441,13 @@
     <comment>- no longer require vesa X driver on openSUSE either (jsc#SLE-11798)</comment>
     <requestid>800856</requestid>
   </revision>
+  <revision rev="342" vrev="19">
+    <srcmd5>7383637f779d03d891d89df33b3ff3bf</srcmd5>
+    <version>7.6_1</version>
+    <time>1593727164</time>
+    <user>dimstar_suse</user>
+    <comment>- moved sample config files from /etc/X11/xorg.conf.d to 
+  /usr/share/X11/xorg.conf.d (boo#1173054)</comment>
+    <requestid>817938</requestid>
+  </revision>
 </revisionlist>

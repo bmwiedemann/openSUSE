@@ -416,4 +416,20 @@
     party authoritative name servers (CVE-2020-10995, bsc#1171553)</comment>
     <requestid>807216</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>2d5ca822b274233c2bba94fc77eace07</srcmd5>
+    <version>4.3.2</version>
+    <time>1593727869</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.2
+  * Fixes a access restriction bypass vulnerability where ACL applied
+    to the internal web server via webserver-allow-from is
+    not properly enforced, allowing a remote attacker to send
+    HTTP queries to the internal web server, bypassing the restriction.
+    (CVE-2020-14196, bsc#1173302)
+  * improves CNAME loop detection
+  * Fix the handling of DS queries for the root
+  * Fix RPZ removals when an update has several deltas</comment>
+    <requestid>818168</requestid>
+  </revision>
 </revisionlist>

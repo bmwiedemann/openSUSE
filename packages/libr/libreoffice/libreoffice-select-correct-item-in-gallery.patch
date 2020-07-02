@@ -1,0 +1,25 @@
+From 8753cc269a350cc468e4f54f961f304a35144467 Mon Sep 17 00:00:00 2001
+From: Caolán McNamara <caolanm@redhat.com>
+Date: Thu, 25 Jun 2020 21:05:26 +0100
+Subject: [PATCH] tdf#134285 select the item before dragging it
+
+so we don't get the previously selected item
+
+Change-Id: Ifd6e46d97f1de0de86403b9c237ee8d2cd3a6cd3
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/97137
+Tested-by: Jenkins
+Reviewed-by: Caolán McNamara <caolanm@redhat.com>
+---
+
+diff --git a/svx/source/gallery2/galctrl.cxx b/svx/source/gallery2/galctrl.cxx
+index 6604eee..47ef1757 100644
+--- a/svx/source/gallery2/galctrl.cxx
++++ b/svx/source/gallery2/galctrl.cxx
+@@ -400,6 +400,7 @@
+ 
+ bool GalleryIconView::StartDrag()
+ {
++    Select();
+     return mpParent->StartDrag();
+ }
+ 

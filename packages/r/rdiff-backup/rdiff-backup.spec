@@ -21,7 +21,7 @@
 #
 
 Name:           rdiff-backup
-Version:        2.0.0
+Version:        2.0.3
 Release:        0
 Summary:        Convenient and transparent local/remote incremental mirror/backup
 License:        GPL-2.0-or-later
@@ -65,7 +65,7 @@ rm -rf %{buildroot}%{_datadir}/doc/rdiff-backup
 %files
 %defattr(-, root, root)
 %license COPYING
-%doc CHANGELOG docs/FAQ.md docs/examples.md docs/index.md README.md
+%doc CHANGELOG.md docs/FAQ.md docs/examples.md docs/index.md README.md
 %{_mandir}/*/*
 %{_bindir}/*
 %{python3_sitearch}/rdiff_backup

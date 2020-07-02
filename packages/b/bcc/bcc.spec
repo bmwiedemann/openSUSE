@@ -26,10 +26,10 @@
 %{!?with_lua: %global with_lua 0}
 %endif
 
-%define libbpf_version 0.0.8
+%define libbpf_version 0.0.9
 
 Name:           bcc
-Version:        0.14.0
+Version:        0.15.0
 Release:        0
 Summary:        BPF Compiler Collection (BCC)
 License:        Apache-2.0
@@ -37,7 +37,6 @@ Group:          Development/Tools/Other
 URL:            https://github.com/iovisor/bcc
 Source:         https://github.com/iovisor/bcc/archive/v%{version}.tar.gz
 Source1:        https://github.com/libbpf/libbpf/archive/v%{libbpf_version}.tar.gz
-Patch1:         bcc-bsc1172493-Make-reading-blacklist-optional.patch
 ExcludeArch:    ppc s390
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.7
@@ -131,8 +130,6 @@ Documentation on how to write programs with the BPF Compiler Collection.
 
 %prep
 %setup -q -D -n %{name}-%{version}
-
-%patch1 -p1
 
 pushd src/cc/libbpf
 tar xf %{SOURCE1} --strip 1

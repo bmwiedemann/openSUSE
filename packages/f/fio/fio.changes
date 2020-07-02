@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun  5 08:16:45 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.20:
+  * No changelog available
+- Add fio-gfio_main_ui.patch
+
+-------------------------------------------------------------------
+Thu May 21 08:21:20 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.19 (no changelog) 
+- Remove 0001-Fix-compilation-error-with-gfio.patch
+- Remove fio.python2.patch
+
+-------------------------------------------------------------------
 Tue Oct  8 00:00:00 CEST 2019 - dsterba@suse.cz
 
 - Update to version 3.16:

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul  2 02:12:53 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.3. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-3-has-been-released/8303
+  boo#1173608
+
+  + Block custom storage volumes
+  + VM: Initial work for graphical console
+  * VM: Rework of PCIe layout
+  + VM: GPU passthrough
+  * Direct console attach on lxc start and lxc restart
+  * Isolated CPUs reporting in resources API
+
+-------------------------------------------------------------------
 Fri Jun  5 23:58:50 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 4.2. The full upstream changelog is available from:

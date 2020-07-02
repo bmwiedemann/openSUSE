@@ -4187,4 +4187,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - enable valgrind support (boo#1173355)</comment>
     <requestid>817253</requestid>
   </revision>
+  <revision rev="386" vrev="258">
+    <srcmd5>35deac0dfa125366b2dd2fbf0a3981e7</srcmd5>
+    <version>unknown</version>
+    <time>1593727058</time>
+    <user>dimstar_suse</user>
+    <comment>- force valgrind support only on officially supported platforms
+  (boo#1173355)</comment>
+    <requestid>818127</requestid>
+  </revision>
 </revisionlist>

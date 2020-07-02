@@ -175,9 +175,10 @@ cp google-compute-engine/src/etc/modprobe.d/gce-blacklist.conf  %{buildroot}/%{_
 
 %post init
     %service_add_post google-accounts-daemon.service google-clock-skew-daemon.service google-instance-setup.service google-network-daemon.service google-optimize-local-ssd.service google-set-multiqueue.service google-shutdown-scripts.service google-startup-scripts.service
-    if [ "$1" == "2" ] && ! [ -e /.buildenv ]; then
-        # "$1" == "2" means the package is being upgraded
-        # ./buildenv is only present during package builds
+    if [ "$1" == "2" ] && ! [ -e /.buildenv ] && ! [ -f /usr/lib/systemd/system/google-network-daemon.service ]; then
+        # - "$1" == "2" means the package is being upgraded
+        # - ./buildenv is only present during package builds
+        # - don't enable/start if the daemon is already installed
         systemctl enable google-network-daemon.service
         systemctl start google-network-daemon.service
     fi

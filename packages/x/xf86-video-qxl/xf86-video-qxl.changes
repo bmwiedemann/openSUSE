@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 30 19:52:52 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer ship xorg.conf sample file in /etc/X11; it's available
+  as %doc (boo#1173058)
+
+-------------------------------------------------------------------
 Sun Jan  1 20:54:29 UTC 2017 - sndirsch@suse.com
 
 - Update to version 0.1.5:

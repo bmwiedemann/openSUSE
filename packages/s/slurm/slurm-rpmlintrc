@@ -1,2 +1,13 @@
 addFilter(".*obsolete-not-provided slurm-sched-wiki.*")
 addFilter(".*obsolete-not-provided slurmdb-direct.*")
+
+# libslurm provides an ABI and a wire protocol. The wire protocol may change
+# with any SLURM version in an incompatible way. Therefore, multiple versions
+# of libslurm should not be installed on the same system.
+# Thus, libraries depending on libslurm need to match the installed SLURM
+# version - independent of their major versions.
+# To host multiple SLURM versions in the same repository we add the version
+# string to package names for none-base versions - even to library packages.
+# This mainly applies to upgrade packages for Leap and SLE in the maintenance
+# channel.
+addFilter("libnss_slurm\d_\d{2}_\d{2}.*: .* shlib-policy-name-error.*")

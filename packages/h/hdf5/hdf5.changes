@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 24 07:32:58 UTC 2020 - Alin M Elena <alinm.elena@gmail.com>
+
+- add openmpi4 packages to build and disable build for leap
+
+-------------------------------------------------------------------
 Fri Apr 17 14:54:44 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Fix .so number in baselibs.conf for libhdf5_fortran libs (boo#1169793).

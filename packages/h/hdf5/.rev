@@ -650,4 +650,12 @@ fixed baselibs.conf compared to previous version</comment>
     <comment>- Fix .so number in baselibs.conf for libhdf5_fortran libs (boo#1169793).</comment>
     <requestid>794967</requestid>
   </revision>
+  <revision rev="67" vrev="10">
+    <srcmd5>43c96e4a6084602323d6aae47d2a8be8</srcmd5>
+    <version>1.10.5</version>
+    <time>1593727904</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818282</requestid>
+  </revision>
 </revisionlist>

@@ -35,6 +35,7 @@ Patch2:         fix-sphinx-doc.patch
 Patch3:         support-sphinx3.patch
 # taken from gh#fontforge/fontforge#4284
 Patch4:         fix-glossary.patch
+Patch5:         add-bitmap-transform-support.patch
 BuildRequires:  cairo-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -108,6 +109,7 @@ to develop applications that use FontForge libraries.
 %endif
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 %cmake \

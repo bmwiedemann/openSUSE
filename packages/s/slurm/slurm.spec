@@ -180,6 +180,7 @@ BuildRequires:  libssh2-devel
 BuildRequires:  rrdtool-devel
 %if 0%{?with_systemd}
 %{?systemd_ordering}
+BuildRequires:  dejagnu
 BuildRequires:  pkgconfig(systemd)
 %else
 Requires(post):         %insserv_prereq %fillup_prereq
@@ -235,6 +236,8 @@ This package includes the Perl API to provide an interface to SLURM
 through Perl.
 
 %package -n %{libslurm}
+# the .so number of libslurm is bumped with each major release
+# therefore no need for a version string for Leap/SLE upgrade packages
 Summary:        Libraries for SLURM
 Group:          System/Libraries
 Requires:       %{name}-config = %{version}
@@ -256,12 +259,14 @@ Group:          System/Libraries
 This package contains the library needed to run programs dynamically linked
 with SLURM.
 
-%package -n libnss_%{pname}%{nss_so}
+%package -n libnss_%{pname}%{nss_so}%{?upgrade:%{_ver}}
 Summary:        NSS Plugin for SLURM
 Group:          System/Libraries
+%{?upgrade:Provides: libnss%{nss_so} = %{version}}
+%{?upgrade:Conflicts: libnss%{nss_so}}
 
-%description -n libnss_%{pname}%{nss_so}
-ibnss_slurm is an optional NSS plugin that permits password and group
+%description -n libnss_%{pname}%{nss_so}%{?upgrade:%{_ver}}
+libnss_slurm is an optional NSS plugin that permits password and group
 resolution for a job on a compute node to be serviced through the local
 slurmstepd process.
 
@@ -581,13 +586,6 @@ ln -sf %{_initrddir}/slurmdbd %{buildroot}%{_sbindir}/rcslurmdbd
 %endif
 mkdir -p %{buildroot}%{_localstatedir}/spool/slurm
 
-rm -f contribs/cray/opt_modulefiles_slurm
-rm -f %{buildroot}%{_sysconfdir}/plugstack.conf.template
-rm -f %{buildroot}%{_sysconfdir}/slurm.conf.template
-rm -f %{buildroot}%{_sbindir}/capmc_suspend
-rm -f %{buildroot}%{_sbindir}/capmc_resume
-rm -f %{buildroot}%{_sbindir}/slurmconfgen.py
-
 install -D -m644 etc/cgroup.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/cgroup.conf
 install -D -m644 etc/layouts.d.power.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/layouts.d/power.conf.example
 install -D -m644 etc/layouts.d.power_cpufreq.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/layouts.d/power_cpufreq.conf.example
@@ -635,47 +633,35 @@ sed -i -e "s@PIDFile=.*@PIDFile=%{_localstatedir}/run/slurm/slurmdbd.pid@" \
  %{buildroot}/%{_unitdir}/slurmdbd.service
 %endif
 
-# Delete unpackaged files:
-test -s %{buildroot}/%{_perldir}/auto/Slurm/Slurm.bs         ||
-rm   -f %{buildroot}/%{_perldir}/auto/Slurm/Slurm.bs
-
-test -s %{buildroot}/%{_perldir}/auto/Slurmdb/Slurmdb.bs     ||
-rm   -f %{buildroot}/%{_perldir}/auto/Slurmdb/Slurmdb.bs
-
+# Delete static files:
 rm -rf %{buildroot}/%{_libdir}/slurm/*.{a,la} \
        %{buildroot}/%{_libdir}/*.la \
-       %{buildroot}/%_lib/security/*.la \
-       %{buildroot}/%{_mandir}/man5/bluegene*
+       %{buildroot}/%_lib/security/*.la
 
-rm -f %{buildroot}/%{_mandir}/man1/srun_cr* \
-      %{buildroot}/%{_bindir}/srun_cr \
-      %{buildroot}/%{_libexecdir}/slurm/cr_*
+rm %{buildroot}/%{perl_archlib}/perllocal.pod \
+   %{buildroot}/%{perl_vendorarch}/auto/Slurm/.packlist \
+   %{buildroot}/%{perl_vendorarch}/auto/Slurmdb/.packlist
 
-rm doc/html/shtml2html.py doc/html/Makefile*
-
-rm -f %{buildroot}/%{perl_archlib}/perllocal.pod
-rm -f %{buildroot}/%{perl_vendorarch}/auto/Slurm/.packlist
-rm -f %{buildroot}/%{perl_vendorarch}/auto/Slurmdb/.packlist
+# Remove Cray specific binaries
+rm -f %{buildroot}/%{_sbindir}/capmc_suspend \
+      %{buildroot}/%{_sbindir}/capmc_resume
 
 # Build man pages that are generated directly by the tools
-rm -f %{buildroot}/%{_mandir}/man1/sjobexitmod.1
 %{buildroot}%{_bindir}/sjobexitmod --roff > %{buildroot}/%{_mandir}/man1/sjobexitmod.1
-rm -f %{buildroot}/%{_mandir}/man1/sjstat.1
 %{buildroot}%{_bindir}/sjstat --roff > %{buildroot}/%{_mandir}/man1/sjstat.1
 
 # rpmlint reports wrong end of line for those files
-sed -i 's/\r$//' %{buildroot}/%{_bindir}/qrerun
-sed -i 's/\r$//' %{buildroot}/%{_bindir}/qalter
+#sed -i 's/\r$//' %{buildroot}/%{_bindir}/qrerun
+#sed -i 's/\r$//' %{buildroot}/%{_bindir}/qalter
 
 # avoid conflicts with other packages, make wrapper unique
 mv %{buildroot}/%{_bindir}/mpiexec %{buildroot}/%{_bindir}/mpiexec.slurm
 
 mkdir -p %{buildroot}/etc/ld.so.conf.d
-echo '%{_libdir}                                                                                            
-%{_libdir}/slurm' > %{buildroot}/etc/ld.so.conf.d/slurm.conf
+echo '%{_libdir}/slurm' > %{buildroot}/etc/ld.so.conf.d/slurm.conf
 chmod 644 %{buildroot}/etc/ld.so.conf.d/slurm.conf
 
-# Make pkg-config file                                                                                      
+# Make pkg-config file
 mkdir -p %{buildroot}/%{_libdir}/pkgconfig
 cat > %{buildroot}/%{_libdir}/pkgconfig/slurm.pc <<EOF
 includedir=%{_prefix}/include
@@ -736,6 +722,9 @@ EOF
 %if 0%{!?have_http_parser:1} || 0%{!?have_json_c:1}
 rm -f %{buildroot}/%{_mandir}/man8/slurmrestd.*
 %endif
+
+%check
+make check
 
 %define fixperm() [ $1 -eq 1 -a -e %2 ] && /bin/chmod %1 %2
 
@@ -842,8 +831,8 @@ exit 0
 %post -n  libpmi%{pmi_so}%{?upgrade:%{_ver}} -p /sbin/ldconfig
 %postun -n  libpmi%{pmi_so}%{?upgrade:%{_ver}} -p /sbin/ldconfig
 
-%post -n libnss_%{pname}%{nss_so} -p /sbin/ldconfig
-%postun -n libnss_%{pname}%{nss_so} -p /sbin/ldconfig
+%post -n libnss_%{pname}%{nss_so}%{?upgrade:%{_ver}} -p /sbin/ldconfig
+%postun -n libnss_%{pname}%{nss_so}%{?upgrade:%{_ver}} -p /sbin/ldconfig
 
 %{!?nil:
 # On update the %%postun code of the old package restarts the
@@ -984,7 +973,7 @@ exit 0
 %{?comp_at}
 %{_libdir}/libpmi*.so.%{pmi_so}*
 
-%files -n libnss_%{pname}%{nss_so}
+%files -n libnss_%{pname}%{nss_so}%{?upgrade:%{_ver}}
 %{?comp_at}
 %config(noreplace) %{_sysconfdir}/%{pname}/nss_slurm.conf
 %{_libdir}/libnss_slurm.so.%{nss_so}
@@ -1209,6 +1198,7 @@ exit 0
 %config(noreplace) %{_sysconfdir}/%{pname}/layouts.d/unit.conf.example
 %attr(0755, %slurm_u, %slurm_g) %_localstatedir/lib/slurm
 %{?with_systemd:%{_tmpfilesdir}/%{pname}.conf}
+%{?_rundir:%ghost %{_rundir}/slurm}
 %dir %attr(0755, %slurm_u, %slurm_g)%{_localstatedir}/spool/slurm
 %config(noreplace) %{_sysconfdir}/logrotate.d/slurm*
 
@@ -1234,6 +1224,7 @@ exit 0
 %files cray
 %{?comp_at}
 # do not remove cray sepcific packages from SLES update
+# Only for Cray
 %{_libdir}/slurm/acct_gather_energy_cray_aries.so
 %{_libdir}/slurm/core_spec_cray_aries.so
 %{_libdir}/slurm/job_submit_cray_aries.so

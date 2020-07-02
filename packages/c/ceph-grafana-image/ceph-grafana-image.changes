@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Fri Mar  6 14:18:30 UTC 2020 - pseidensal@suse.com
+
+- Provision Grafana dashboards of Ceph Dashboard (SES-1540)
+
+-------------------------------------------------------------------
+Thu Jan 23 08:24:43 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Add ceph-grafana-dashboards (SES-1313)
+
+-------------------------------------------------------------------
+Tue Jan 14 13:55:33 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Initial version.
+

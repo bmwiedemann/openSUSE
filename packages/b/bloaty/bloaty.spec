@@ -1,7 +1,7 @@
 #
-# spec file for package creduce
+# spec file for package bloaty
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,39 +12,44 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           bloaty
-Version:        0.0.1+git.20161109.ca41835
+Version:        1.1
 Release:        0
 Summary:        Bloaty McBloatface: a size profiler for binaries
 License:        Apache-2.0
 Group:          Development/Tools/Other
-Url:		https://github.com/google/bloaty
-Source0:	%{name}-%{version}.tar.xz
+URL:            https://github.com/google/bloaty
+Source:         https://github.com/google/bloaty/releases/download/v%{version}/%{name}-%{version}.tar.bz2
+BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(capstone)
+BuildRequires:  pkgconfig(protobuf)
+BuildRequires:  pkgconfig(re2)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Bloaty McBloatface will show you a size profile of ELF or Mach-O
 binaries so you can understand what is taking up space inside.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-make %{?_smp_mflags}
+# CMakeLists.txt relies on libbloaty being a static lib (broken link deps).
+# We don't need libbloaty anywhere else though so it's fine.
+%cmake -DBUILD_SHARED_LIBS:BOOL=OFF -DBLOATY_ENABLE_CMAKETARGETS:BOOL=OFF
+%cmake_build
 
 %install
-install -d %{buildroot}/%{_bindir}
-install %{name} %{buildroot}%{_bindir}
+%cmake_install
 
 %files
-%defattr(-,root,root)
-%doc LICENSE
+%license LICENSE
 %{_bindir}/bloaty
 
 %changelog

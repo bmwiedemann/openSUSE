@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 28 15:16:43 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 1.7.5
+  * See /usr/share/doc/packages/pmacct/ChangeLog for all changes
+- Drop patch (addressed by upstream in 686495dd):
+  * pmacct-fix-overflow.patch
+
+-------------------------------------------------------------------
 Sun Jun  7 20:37:36 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Set CFLAGS+=-fcommon

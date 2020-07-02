@@ -24,7 +24,7 @@
 %bcond_with ndpi
 
 Name:           pmacct
-Version:        1.7.4p1
+Version:        1.7.5
 Release:        0
 Summary:        Accounting and aggregation toolsuite for IPv4 and IPv6
 License:        GPL-2.0-only
@@ -41,7 +41,6 @@ Source10:       nfacctd.conf
 Source11:       pmacctd.conf
 Source12:       sfacctd.conf
 Source20:       pmacct.1
-Patch0:         pmacct-fix-overflow.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libmysqlclient-devel
@@ -73,8 +72,7 @@ supported, both unicast and multicast. A client program can export
 export data to tools like RRDtool, GNUPlot, Net-SNMP, MRTG, and Cacti.
 
 %prep
-%setup -q -n %{name}-1.7.4
-%patch0 -p1
+%setup -q -n %{name}-%{version}
 
 # fix permissions
 chmod -x sql/pmacct-*

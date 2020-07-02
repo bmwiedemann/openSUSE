@@ -15,4 +15,12 @@
     <comment>- Drop the devel package from buildrequires</comment>
     <requestid>623125</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d4cd5f374004d6a3a1c7607c18b6fa7b</srcmd5>
+    <version>0.5.4</version>
+    <time>1593728112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818345</requestid>
+  </revision>
 </revisionlist>

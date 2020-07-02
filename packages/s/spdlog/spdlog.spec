@@ -18,7 +18,7 @@
 
 %define _sover  1
 Name:           spdlog
-Version:        1.5.0
+Version:        1.6.1
 Release:        0
 Summary:        C++ logging library
 License:        MIT

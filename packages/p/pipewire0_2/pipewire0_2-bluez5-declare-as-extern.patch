@@ -1,0 +1,49 @@
+From 7a976c7ca8e893960889f75a9c0b526f46c960c3 Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Fri, 7 Feb 2020 17:14:50 +0100
+Subject: [PATCH] bluez5: declare factory as extern
+
+---
+ spa/plugins/bluez5/bluez5-monitor.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/spa/plugins/bluez5/bluez5-monitor.c b/spa/plugins/bluez5/bluez5-monitor.c
+index e82ac5a8..71517cc6 100644
+--- a/spa/plugins/bluez5/bluez5-monitor.c
++++ b/spa/plugins/bluez5/bluez5-monitor.c
+@@ -75,7 +75,7 @@ struct spa_bt_monitor {
+ 	struct spa_list transport_list;
+ };
+ 
+-struct spa_handle_factory spa_a2dp_sink_factory;
++extern struct spa_handle_factory spa_a2dp_sink_factory;
+ 
+ static void fill_item(struct spa_bt_monitor *this, struct spa_bt_transport *transport,
+ 		struct spa_pod **result, struct spa_pod_builder *builder)
+
+diff --git a/spa/plugins/bluez5/a2dp-codecs.h b/spa/plugins/bluez5/a2dp-codecs.h
+index 9c061d6a..969cd141 100644
+--- a/spa/plugins/bluez5/a2dp-codecs.h
++++ b/spa/plugins/bluez5/a2dp-codecs.h
+@@ -284,15 +284,15 @@ static inline int a2dp_sbc_get_frequency(a2dp_sbc_t *config)
+         }
+ }
+ 
+-const a2dp_sbc_t bluez_a2dp_sbc;
++extern const a2dp_sbc_t bluez_a2dp_sbc;
+ #if ENABLE_MP3
+-const a2dp_mpeg_t bluez_a2dp_mpeg;
++extern const a2dp_mpeg_t bluez_a2dp_mpeg;
+ #endif
+ #if ENABLE_AAC
+-const a2dp_aac_t bluez_a2dp_aac;
++extern const a2dp_aac_t bluez_a2dp_aac;
+ #endif
+ #if ENABLE_APTX
+-const a2dp_aptx_t bluez_a2dp_aptx;
++extern const a2dp_aptx_t bluez_a2dp_aptx;
+ #endif
+ 
+ #endif
+-- 
+2.24.1

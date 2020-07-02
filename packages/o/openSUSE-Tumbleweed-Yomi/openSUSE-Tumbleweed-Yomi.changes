@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 23 13:59:41 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add kernel-firmware (bsc#1173264)
+
+-------------------------------------------------------------------
 Thu Mar 26 09:09:31 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Set JEOS_HIDE_SUSECONNECT for the image

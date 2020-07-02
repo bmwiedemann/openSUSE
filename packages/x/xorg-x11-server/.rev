@@ -3423,4 +3423,14 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   * GLAMOR: no longer bail out for OpenGL drivers &lt; 2.1 (boo#1172321)</comment>
     <requestid>811380</requestid>
   </revision>
+  <revision rev="383" vrev="4">
+    <srcmd5>e894918dc8d901e9bf82b1fc22d57fde</srcmd5>
+    <version>1.20.8+0</version>
+    <time>1593727183</time>
+    <user>dimstar_suse</user>
+    <comment>- move xorg_pci_ids dir from /etc/X11 to /usr/share/X11 and
+  xorg-x11-server.macros from /etc/rpm to /usr/lib/rpm/macros.d; 
+  no longer package /etc/X11/xorg.conf.d (boo#1173056)</comment>
+    <requestid>817940</requestid>
+  </revision>
 </revisionlist>

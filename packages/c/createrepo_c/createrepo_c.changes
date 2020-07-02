@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 30 14:20:03 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to 0.15.11
+  + Add python unittest for invalid date in updateinfo record get_datetime
+  + Simplify case when attr is empty (prevents covscan warnings)
+  + Fix couple of memory leaks, some mistakenly dead code and error handling
+  + Add --arch-expand option
+  + Fix spelling errors.
+
+-------------------------------------------------------------------
 Tue Feb 18 13:27:23 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 0.15.7

@@ -1,6 +1,6 @@
 --- mysql-workbench-community-8.0.15-org/backend/wbprivate/workbench/about_box.cpp	2019-01-30 15:32:36.000000000 +0200
 +++ mysql-workbench-community-8.0.15-src/backend/wbprivate/workbench/about_box.cpp	2019-02-23 11:58:46.373377035 +0200
-@@ -108,6 +108,8 @@
+@@ -109,6 +109,8 @@
    cairo_set_source_surface(cr, _back_image, 0, 0);
    cairo_paint(cr);
    cairo_identity_matrix(cr);
@@ -9,7 +9,7 @@
  
    std::string version = base::strfmt(_("Version %i.%i.%i build %i %s (%i bits)"), APP_MAJOR_NUMBER, APP_MINOR_NUMBER,
                                       APP_RELEASE_NUMBER, APP_BUILD_NUMBER, APP_RELEASE_TYPE, (int)sizeof(void *) * 8);
-@@ -124,6 +126,7 @@
+@@ -125,6 +127,7 @@
    cairo_show_text(cr, _edition.c_str());
  
    cairo_stroke(cr);
@@ -20,7 +20,7 @@
 diff -uNr mysql-workbench-community-8.0.15-org/library/forms/utilities.cpp mysql-workbench-community-8.0.15-src/library/forms/utilities.cpp
 --- mysql-workbench-community-8.0.15-org/library/forms/utilities.cpp	2019-01-30 15:32:36.000000000 +0200
 +++ mysql-workbench-community-8.0.15-src/library/forms/utilities.cpp	2019-02-23 14:22:55.683414594 +0200
-@@ -769,8 +769,8 @@
+@@ -791,8 +791,8 @@
  
    if (backing_scale_factor > 1 && mforms::Utilities::is_hidpi_icon(image)) {
      cairo_save(cr);
@@ -261,8 +261,8 @@ diff -uNr mysql-workbench-community-8.0.15-org/images/sql/CMakeLists.txt mysql-w
 diff -uNr mysql-workbench-community-8.0.15-org/images/toolbar/CMakeLists.txt mysql-workbench-community-8.0.15-src/images/toolbar/CMakeLists.txt
 --- mysql-workbench-community-8.0.15-org/images/toolbar/CMakeLists.txt	2019-01-30 15:32:36.000000000 +0200
 +++ mysql-workbench-community-8.0.15-src/images/toolbar/CMakeLists.txt	2019-02-23 00:06:39.446710703 +0200
-@@ -102,6 +102,27 @@
- wb_rel_nm.png
+@@ -108,6 +108,27 @@
+ wb_rel_nm_dark.png
  wb_rubber.png
  wb_toolbar_pages_18x18.png
 +record_add@2x.png

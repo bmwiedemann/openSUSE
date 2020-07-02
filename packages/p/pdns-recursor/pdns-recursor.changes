@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul  1 18:39:32 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- update to 4.3.2
+  * Fixes a access restriction bypass vulnerability where ACL applied
+    to the internal web server via webserver-allow-from is
+    not properly enforced, allowing a remote attacker to send
+    HTTP queries to the internal web server, bypassing the restriction.
+    (CVE-2020-14196, bsc#1173302)
+  * improves CNAME loop detection
+  * Fix the handling of DS queries for the root
+  * Fix RPZ removals when an update has several deltas
+
+-------------------------------------------------------------------
 Tue May 19 09:45:18 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - update to 4.3.1

@@ -17,7 +17,7 @@
 
 
 Name:           afl
-Version:        2.65c
+Version:        2.66c
 Release:        0
 Summary:        American fuzzy lop is a security-oriented fuzzer
 License:        Apache-2.0
@@ -53,7 +53,7 @@ export CFLAGS="$CFLAGS %{optflags}"
 export AFL_NO_X86=1
 %endif
 make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_docdir}
-make radamsa
+# make radamsa
 
 %install
 %ifnarch %{ix86} x86_64
@@ -70,7 +70,7 @@ make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_doc
 %{_libexecdir}/%{name}/as
 #{_libexecdir}/%{name}/argvfuzz*.so
 #{_libexecdir}/%{name}/socketfuzz*.so
-%{_libexecdir}/%{name}/libradamsa.so
+#{_libexecdir}/%{name}/libradamsa.so
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/testcases
 %{_datadir}/%{name}/testcases/*

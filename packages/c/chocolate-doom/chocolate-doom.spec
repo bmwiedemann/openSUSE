@@ -17,7 +17,7 @@
 
 
 Name:           chocolate-doom
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Conservative DOOM/Heretic/Hexen/Strife source port
 License:        GPL-2.0-or-later

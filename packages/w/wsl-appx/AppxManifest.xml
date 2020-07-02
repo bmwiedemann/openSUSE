@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Package IgnorableNamespaces="uap uap2 uap3 rescap desktop" xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap2="http://schemas.microsoft.com/appx/manifest/uap/windows10/2" xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3" xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="46932SUSE.@APPID@" Version="@VERSION@" Publisher="@PUBLISHER@" ProcessorArchitecture="@ARCH@" />
+  <Identity Name="46932SUSE.@IDENTITYAPPID@" Version="@VERSION@" Publisher="@PUBLISHER@" ProcessorArchitecture="@ARCH@" />
   <Properties>
     <DisplayName>@PRETTY_NAME@</DisplayName>
     <PublisherDisplayName>@PUBLISHER_DISPLAY_NAME@</PublisherDisplayName>

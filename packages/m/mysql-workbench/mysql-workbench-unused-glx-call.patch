@@ -1,0 +1,15 @@
+--- mysql-workbench-community-8.0.19-org/library/mysql.canvas/src/gtk/mdc_gtk_canvas_view.cpp	2019-12-15 21:40:32.000000000 +0200
++++ mysql-workbench-community-8.0.19-src_n/library/mysql.canvas/src/gtk/mdc_gtk_canvas_view.cpp	2020-04-06 22:06:09.731154484 +0300
+@@ -30,10 +30,12 @@
+ using namespace mdc;
+ 
+ std::string mdc::detect_opengl_version() {
++  /*
+   int major, minor;
+   Display *dpy = GDK_DISPLAY_XDISPLAY(gdk_display_get_default());
+   if (!glXQueryVersion(dpy, &major, &minor))
+     return ""; // glx not supported
++  */
+   return "";
+ }
+ 

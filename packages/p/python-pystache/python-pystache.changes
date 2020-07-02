@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  2 14:07:09 UTC 2020 - pgajdos@suse.com
+
+- switch from nose to pytest
+
+-------------------------------------------------------------------
 Mon Jul 16 12:31:15 UTC 2018 - tchvatal@suse.com
 
 - Drop the devel package from buildrequires

@@ -1,10 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 29 11:27:50 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to support transforming bitmap glyphs from python
+  with one of the predefined transformations in fontforge.
+  * add-bitmap-transform-support.patch
+  (boo#1169444)
+
+-------------------------------------------------------------------
 Mon May 25 19:11:37 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- add support-sphinx3.patch and fix-glossary.patch to allow 
+- add support-sphinx3.patch and fix-glossary.patch to allow
   python-Sphinx >= 3
-  gh#fontforge/fontforge#4269 
-  gh#fontforge/fontforge#4284  
+  gh#fontforge/fontforge#4269
+  gh#fontforge/fontforge#4284
 
 -------------------------------------------------------------------
 Wed Apr 15 18:30:12 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>

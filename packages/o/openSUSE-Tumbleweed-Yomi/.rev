@@ -128,4 +128,12 @@ different profiles.</comment>
     <comment>- Set JEOS_HIDE_SUSECONNECT for the image</comment>
     <requestid>789061</requestid>
   </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>f23eeac74a3b37b1bbaab5fd423dc748</srcmd5>
+    <version>1.0.0</version>
+    <time>1593728089</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>818338</requestid>
+  </revision>
 </revisionlist>

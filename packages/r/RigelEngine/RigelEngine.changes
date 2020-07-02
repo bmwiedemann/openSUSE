@@ -1,0 +1,108 @@
+-------------------------------------------------------------------
+Sun Jun 14 18:23:48 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Use gcc9 on Leap systems
+
+-------------------------------------------------------------------
+Sat Jun 13 10:42:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.0-beta
+  Overview
+  * As of this release, the full game (Shareware and registered
+    version content) can be completed without any known issues,
+    making RigelEngine feature complete in terms of gameplay.
+  * In addition, gamepad/controller support was further improved.
+  Gamepad support improvements
+  * Force field card readers, door locks, and teleporters can be
+    triggered by moving the analog stick up. Previously, this
+    worked only with the D-Pad
+  * Improved analog stick sensitivity for piloting Duke's ship
+  * It's now possible to use the analog stick for menu navigation,
+    in addition to the D-Pad
+  Bug fixes
+  * It was possible for a ceiling sucker to try to eat Duke while
+    he was already dying, which would lead to a crash. This is now
+    fixed.
+  * Fixed an inconsistency in the way blowing fans work. This was
+    making certain areas in the game harder to reach than intended
+    (e.g. the upper left edge allowing access to a laser pickup
+    near the exit of O7)
+  * Duke would fail to attach to climbing pipes in certain
+    circumstances, making some jumps in O1 harder than intended.
+  * Fixed initial camera offset being slightly wrong on some levels
+  * Fixed red birds sometimes getting stuck after reaching the
+    ground
+  * Fixed some inconsistencies in how the red bird behaves
+  * The water effect shader did not compile for OpenGL ES, making
+    the game unplayable in GL ES mode (e.g. on a Raspberry Pi).
+  * Fixed cloak not being removed when dying while cloaked
+- Update to version 0.5.3-beta
+  General improvements
+  * Debugging functionality is now disabled by default. This
+    prevents accidentally hitting one of the debug feature keys
+    (like single step mode) during gameplay. It can be reenabled
+    with a command line option (-d).
+  Gamepad support improvements
+  * Analog stick movement is more reliable, especially on a PS4
+    ontroller, and there is much less unintended up/down motion
+  * The trigger buttons (LT/RT aka L2/R2) can now be used for
+    jumping/shooting in addition to LB/RB (aka L1/R1)
+  * The game will now detect a gamepad if it's plugged in or
+    turned on during gameplay
+  Bug fixes
+  * Conveyor belts with an upward slope (as found in level N7)
+    did not work
+  * Cloak was not effective when eaten by a snake or ceiling sucker
+  * When cloaked, enemy shots were flying through the player
+    instead of disappearing
+  * Enemy rocket shots were missing acceleration
+  * Explosion effect was missing for enemy rocket shots
+  * Nuclear waste barrels were not affected by gravity or conveyor
+    belts
+  * Inconsistencies in climbing pipe movement which caused
+    problems in level O1 are now fixed
+  * Hover bot spawn machine was spawning indefinitely, instead of
+    stopping after 30 bots
+  * Bonuses 2 and 7 were potentially given incorrectly if the
+    player died before reaching a checkpoint
+  * Watchbot container would disappear if the carrier was
+    destroyed after it had released the container
+  * Stair stepping movement wasn't fully matching the original,
+    causing an inconsistency with the conveyor belts found in O5
+    and O6
+  * Physics for items released from item boxes were incorrect,
+    causing problems in O5 and O6
+
+-------------------------------------------------------------------
+Sat Apr  4 16:31:46 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.2-beta
+  New features
+  * When starting RigelEngine for the first time, a graphical file
+    browser UI is shown. This allows choosing the location of the
+    Duke Nukem II data files required for playing the game. The
+    chosen location is stored in the user profile, so this only
+    has to be done once.
+  * Adds a button to the options menu to choose a different Duke
+    Nukem II installation (only in main menu's options menu).
+  Bug fixes
+  * Added missing rocket fire sounds for episode 3 boss enemy
+  * Stopped explosion sprites from incorrectly appearing in N4
+    and N8
+  * Fix
+    and ed missing water animations
+  * Fixed collision detection for player shots, which makes it
+    possible to properly shoot the first burnable wall in M5 with
+    a rocket launcher
+  * Fixed collision detection for dynamic geometry, which fixed
+    issues in N5
+- Drop patch:
+  * 0001-Fix-building-with-Gcc-9.patch
+
+-------------------------------------------------------------------
+Sat Feb 15 18:08:04 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.5.1-beta
+- Add patch:
+  * RigelEngine-fix-build.patch
+  * 0001-Fix-building-with-Gcc-9.patch

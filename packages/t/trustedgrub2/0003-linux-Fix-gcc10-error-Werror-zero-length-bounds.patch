@@ -1,0 +1,13 @@
+Index: trustedgrub2-1.4.0/grub-core/loader/i386/linux.c
+===================================================================
+--- trustedgrub2-1.4.0.orig/grub-core/loader/i386/linux.c
++++ trustedgrub2-1.4.0/grub-core/loader/i386/linux.c
+@@ -823,7 +823,7 @@ grub_cmd_linux (grub_command_t cmd __att
+ 
+   len = sizeof (linux_params) - sizeof (lh);
+ 
+-  grub_memcpy( &linux_params + sizeof (lh), kernelBuf + kernelBufOffset, len );
++  grub_memcpy( (char *)&linux_params + sizeof (lh), kernelBuf + kernelBufOffset, len );
+   kernelBufOffset+= len;
+ 
+   linux_params.type_of_loader = GRUB_LINUX_BOOT_LOADER_TYPE;

@@ -21,7 +21,7 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-%define pci_ids_dir %{_sysconfdir}/X11/xorg_pci_ids
+%define pci_ids_dir %{_datadir}/X11/xorg_pci_ids
 %if 0%{?suse_version} >= 1330 || 0%{?build_xwayland}
 %define have_wayland 1
 %endif
@@ -411,7 +411,6 @@ export PCI_TXT_IDS_DIR=%{pci_ids_dir}
 %endif
 %configure CFLAGS="%{optflags} -fno-strict-aliasing" \
             --enable-xf86vidmode \
-            --sysconfdir=/etc \
             --enable-xdmcp \
             --enable-xdm-auth-1 \
             --enable-dri \
@@ -485,7 +484,6 @@ install -m 644 %{S:6} %{buildroot}%{pci_ids_dir}
 %endif
 ln -snf Xorg %{buildroot}%{_bindir}/X
 %if 0%{?suse_version} > 1120
-mkdir -p %{buildroot}%{_sysconfdir}/X11/xorg.conf.d
 %{__install} -m 644 %{S:5} %{buildroot}%{_datadir}/X11/xorg.conf.d
 %endif
 %if 0%{?suse_version} < 1315
@@ -501,7 +499,7 @@ mv %{buildroot}%{_localstatedir}/lib/xkb/compiled/README.compiled %{buildroot}%{
 mkdir -p %{buildroot}%{_tmpfilesdir}
 install -m 644 %{S:7} %{buildroot}%{_tmpfilesdir}/xkb.conf
 %ifarch s390 s390x
-rm -f %{buildroot}%{_sysconfdir}/X11/10-quirks.conf
+rm -f %{buildroot}%{_datadir}/X11/10-quirks.conf
 mkdir -p %{buildroot}%{_includedir}/xorg
 install -m 644 include/list.h \
          %{buildroot}%{_includedir}/xorg
@@ -514,7 +512,7 @@ install -m 644 %_sourcedir/sysconfig.displaymanager.template \
 install -m 755 $RPM_SOURCE_DIR/xorg-backtrace %{buildroot}%{_bindir}/xorg-backtrace
 cp %{S:90} .
 ./config.status --file xorg-x11-server.macros
-install -D xorg-x11-server.macros %{buildroot}%{_sysconfdir}/rpm/macros.xorg-server
+install -D xorg-x11-server.macros %{buildroot}/usr/lib/rpm/macros.d/macros.xorg-server
 %ifnarch s390 s390x
 %if 0%{?suse_version} >= 1315
 mkdir -p %{buildroot}%{_libdir}/xorg/modules/extensions/xorg
@@ -581,7 +579,6 @@ fi
 %defattr(-,root,root)
 %ifnarch s390 s390x
 %if 0%{?suse_version} > 1120
-%dir %{_sysconfdir}/X11/xorg.conf.d
 %if 0%{?pci_ids_dir:1}
 %dir %{pci_ids_dir}
 %{pci_ids_dir}/modesetting.ids
@@ -666,7 +663,7 @@ fi
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/aclocal/*.m4
 %endif
-%{_sysconfdir}/rpm/macros.xorg-server
+/usr/lib/rpm/macros.d/macros.xorg-server
 
 %files source
 %defattr(-,root,root)

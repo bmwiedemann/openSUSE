@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun 09 07:42:58 UTC 2020 - jslaby@suse.com
+
+- Update to version 20200608+git.e92d9e00:
+  * db: Fix buffer overflow in state_name_to_param_name()
+  * atomic_inc_dec: remove an unused parameter
+  * atomic_inc_dec: don't warn about impossible paths
+  * atomic_inc_dec: ignore local static variables
+  * atomic_inc_dec: unknown values are not failures
+  * atomic_inc_dec: don't record increment/decrement if they are reset
+  * atomic_inc_dec: record potential decrements as a decrement
+  * atomic_inc_dec: don't store information in impossible paths
+  * atomic_inc_dec: add more functions
+  * atomic_inc_dec: don't double set states to &inc/&dec
+  * and much more...
+
+-------------------------------------------------------------------
 Thu Jan 30 10:33:05 UTC 2020 - jslaby@suse.com
 
 - Update to version 20200127+git.2f013029:

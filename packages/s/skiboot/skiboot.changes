@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun  9 13:30:40 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- version update from 6.5 to 6.6.1
+  - v6.6 becomes the new stable release following v6.5
+  - Skiboot is now dual licensed as Apache 2.0 -OR- GPLv2+
+  - Skiboot can now be built as little endian, thanks to Team Nick
+  - OpenCAPI reset support
+  - OPAL_PHB_SET_OPTION and OPAL_PHB_GET_OPTION OPAL calls
+  - Fast-reboot is now disabled by default
+- details release notes of 6.6 and 6.6.1
+  https://github.com/open-power/skiboot/blob/master/doc/release-notes/skiboot-6.6.rst
+  https://github.com/open-power/skiboot/blob/master/doc/release-notes/skiboot-6.6.1.rst
+
+-------------------------------------------------------------------
 Tue Aug 20 13:34:49 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - version update from 6.2.2 to 6.5

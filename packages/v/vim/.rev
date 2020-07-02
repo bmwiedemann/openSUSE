@@ -4536,4 +4536,12 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>816526</requestid>
   </revision>
+  <revision rev="263" vrev="6">
+    <srcmd5>7b65789f07dfb6dddbe555e231193f69</srcmd5>
+    <version>8.2.0701</version>
+    <time>1593726953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818077</requestid>
+  </revision>
 </revisionlist>

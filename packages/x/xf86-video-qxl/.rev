@@ -200,4 +200,13 @@
   * Fix compilation with newer Xorg versions</comment>
     <requestid>448431</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>d2f9ad6181111ee2be254ba8ce9e8a20</srcmd5>
+    <version>0.1.5</version>
+    <time>1593727204</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer ship xorg.conf sample file in /etc/X11; it's available
+  as %doc (boo#1173058)</comment>
+    <requestid>817951</requestid>
+  </revision>
 </revisionlist>

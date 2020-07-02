@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun 29 13:57:51 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use ttf-converter 1.0.6 to build an  Italic version of
+  cu12.pcf.gz in the converted subpackage
+- Include the subfamily in the filename of converted fonts
+- Use ttf-converter's new bitmap font support to convert
+  Schumacher Clean and Schumacher Clean Wide since it generates
+  a font file that we can actually use (boo#1169444 #c41)
+- Stop using convertfont.py and just use ttf-converter for all fonts
+- Replace a couple of unicode values in cu-pua12.pcf.gz to fix them
+  (others probably also need fixing).
+- Shift some unicode values in arabic24.pcf.gz and cuarabic12.pcf.gz
+  to correct them so glyphs don't pretend to be latin characters
+  when they're not.
+- Stop distributing Bitstream-Charter-*.otb, Cursor.ttf,
+  Sun-OPEN-LOOK-*.otb, MUTT-ClearlyU-Devangari-Extra-Regular,
+  MUTT-ClearlyU-Ligature-Wide-Regular and
+  MUTT-ClearlyU-Devanagari-Regular as converted fonts since they
+  have most probably wrong unicode values in their glyphs.
+
+-------------------------------------------------------------------
 Tue Jun  9 15:19:43 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add Recommends: xorg-x11-fonts-converted and xorg-x11-fonts-legacy

@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-parallel-n64
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libretro-parallel-n64
-Version:        0~git20190917
+Version:        0~git20200529
 Release:        0
 Summary:        Parallel N64 libretro core for Nintendo 64 emulation
 License:        GPL-3.0-only
@@ -25,9 +25,9 @@ Group:          System/Emulators/Other
 URL:            http://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz
 
+BuildRequires:  Mesa-devel
 BuildRequires:  gcc-c++
 BuildRequires:  make
-BuildRequires:  Mesa-devel
 
 %description
 Optimized/rewritten Nintendo 64 emulator made specifically for Libretro.
@@ -38,18 +38,17 @@ Originally based on Mupen64 Plus.
 
 %build
 # https://github.com/libretro/libretro-super/blob/master/recipes/linux
-%ifarch x86_64 amd64
-    make WITH_DYNAREC=x86_64
-%else
-    %ifarch %ix86
-        make WITH_DYNAREC=x86
-    %else
-        %ifarch %arm
-            make WITH_DYNAREC=arm
-        %else
-            make
-        %endif
-    %endif
+%ifarch x86_64
+    make WITH_DYNAREC=x86_64 HAVE_PARALLEL_RSP=1 HAVE_THR_AL=1
+%endif
+%ifarch %ix86
+    make WITH_DYNAREC=x86 HAVE_PARALLEL_RSP=1 HAVE_THR_AL=1
+%endif
+%ifarch %arm
+    make WITH_DYNAREC=arm HAVE_THR_AL=1
+%endif
+%ifarch aarch64
+    make WITH_DYNAREC=aarch64 HAVE_THR_AL=1
 %endif
 
 %install
