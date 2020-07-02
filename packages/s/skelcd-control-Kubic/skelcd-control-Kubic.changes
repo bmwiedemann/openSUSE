@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 01 13:50:11 UTC 2020 - Richard Brown <rbrown@suse.de>
+
+- Remove tmp subvolume for transactional systems [boo#1173461][jsc#PM-1898]
+- 20200701
+
+-------------------------------------------------------------------
 Mon May 11 07:39:25 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
 
 - remove obsolete proposal_settings_editable (bsc#1171423)
