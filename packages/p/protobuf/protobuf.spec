@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define sover 22
+%define sover 23
 %define tarname protobuf
 %define src_install_dir %{_prefix}/src/%{name}
 %define extra_java_flags -source 7 -target 7
@@ -27,7 +27,7 @@
 %bcond_without python2
 %bcond_without python3
 Name:           protobuf
-Version:        3.11.4
+Version:        3.12.3
 Release:        0
 Summary:        Protocol Buffers - Google's data interchange format
 License:        BSD-3-Clause

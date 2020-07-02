@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Tue Jun 30 08:48:59 UTC 2020 - marec <marec@detebe.org>
+
+- Update to version 3.12.3; notable changes since 3.11.4:
+
+  Protocol Compiler
+  * [experimental] Singular, non-message typed fields in proto3 now support
+    presence tracking. This is enabled by adding the "optional" field label and
+    passing the --experimental_allow_proto3_optional flag to protoc.
+    * For usage info, see docs/field_presence.md.
+    * During this experimental phase, code generators should update to support
+      proto3 presence, see docs/implementing_proto3_presence.md for instructions.
+  * Allow duplicate symbol names when multiple descriptor sets are passed on
+    the command-line, to match the behavior when multiple .proto files are passed.
+  * Deterministic `protoc --descriptor_set_out` (#7175)
+
+  Objective-C
+  * Tweak the union used for Extensions to support old generated code. #7573
+  * Fix for the :protobuf_objc target in the Bazel BUILD file. (#7538)
+  * [experimental] ObjC Proto3 optional support (#7421)
+  * Block subclassing of generated classes (#7124)
+  * Use references to Obj C classes instead of names in descriptors. (#7026)
+  * Revisit how the WKTs are bundled with ObjC. (#7173)
+
+  C++
+  * Simplified the template export macros to fix the build for mingw32. (#7539)
+  * [experimental] Added proto3 presence support.
+  * New descriptor APIs to support proto3 presence.
+  * Enable Arenas by default on all .proto files.
+  * Documented that users are not allowed to subclass Message or MessageLite.
+  * Mark generated classes as final; inheriting from protos is strongly discouraged.
+  * Add stack overflow protection for text format with unknown fields.
+  * Add accessors for map key and value FieldDescriptors.
+  * Add FieldMaskUtil::FromFieldNumbers().
+  * MessageDifferencer: use ParsePartial() on Any fields so the diff does not
+    fail when there are missing required fields.
+  * ReflectionOps::Merge(): lookup messages in the right factory, if it can.
+  * Added Descriptor::WellKnownTypes enum and Descriptor::well_known_type()
+    accessor as an easier way of determining if a message is a Well-Known Type.
+  * Optimized RepeatedField::Add() when it is used in a loop.
+  * Made proto move/swap more efficient.
+  * De-virtualize the GetArena() method in MessageLite.
+  * Improves performance of json_stream_parser.cc by factor 1000 (#7230)
+  * bug: #7076 undefine Windows OUT and OPTIONAL macros (#7087)
+  * Fixed a bug in FieldDescriptor::DebugString() that would erroneously print
+    an "optional" label for a field in a oneof.
+  * Fix bug in parsing bool extensions that assumed they are always 1 byte.
+  * Fix off-by-one error in FieldOptions::ByteSize() when extensions are present.
+  * Clarified the comments to show an example of the difference between
+    Descriptor::extension and DescriptorPool::FindAllExtensions.
+  * Add a compiler option 'code_size' to force optimize_for=code_size on all
+    protos where this is possible.
+
+  Ruby
+  * Re-add binary gems for Ruby 2.3 and 2.4. These are EOL upstream, however
+    many people still use them and dropping support will require more
+    coordination.
+  * [experimental] Implemented proto3 presence for Ruby. (#7406)
+  * Stop building binary gems for ruby <2.5 (#7453)
+  * Fix for wrappers with a zero value (#7195)
+  * Fix for JSON serialization of 0/empty-valued wrapper types (#7198)
+  * Call "Class#new" over rb_class_new_instance in decoding (#7352)
+  * Build extensions for Ruby 2.7 (#7027)
+  * assigning 'nil' to submessage should clear the field. (#7397)
+
+  Java
+  * [experimental] Added proto3 presence support.
+  * Mark java enum _VALUE constants as @Deprecated if the enum field is deprecated
+  * reduce <clinit> size for enums with allow_alias set to true.
+  * Sort map fields alphabetically by the field's key when printing textproto.
+  * Fixed a bug in map sorting that appeared in -rc1 and -rc2 (#7508).
+  * TextFormat.merge() handles Any as top level type.
+  * Throw a descriptive IllegalArgumentException when calling
+    getValueDescriptor() on enum special value UNRECOGNIZED instead of
+    ArrayIndexOutOfBoundsException.
+  * Fixed an issue with JsonFormat.printer() where setting printingEnumsAsInts()
+    would override the configuration passed into includingDefaultValueFields().
+  * Implement overrides of indexOf() and contains() on primitive lists returned
+    for repeated fields to avoid autoboxing the list contents.
+  * Add overload to FieldMaskUtil.fromStringList that accepts a descriptor.
+  * [bazel] Move Java runtime/toolchains into //java (#7190)
+
+  Python
+  * [experimental] Added proto3 presence support.
+  * [experimental] fast import protobuf module, only works with cpp generated code linked in.
+  * Truncate 'float' fields to 4 bytes of precision in setters for pure-Python
+    implementation (C++ extension was already doing this).
+  * Fixed a memory leak in C++ bindings.
+  * Added a deprecation warning when code tries to create Descriptor objects
+    directly.
+  * Fix unintended comparison between bytes and string in descriptor.py.
+  * Avoid printing excess digits for float fields in TextFormat.
+  * Remove Python 2.5 syntax compatibility from the proto compiler generated _pb2.py module code.
+  * Drop 3.3, 3.4 and use single version docker images for all python tests (#7396)
+
+  JavaScript
+  * Fix js message pivot selection (#6813)
+
+  PHP
+  * Persistent Descriptor Pool (#6899)
+  * Implement lazy loading of php class for proto messages (#6911)
+  * Correct @return in Any.unpack docblock (#7089)
+  * Ignore unknown enum value when ignore_unknown specified (#7455)
+
+  C#
+  * [experimental] Add support for proto3 presence fields in C# (#7382)
+  * Mark GetOption API as obsolete and expose the "GetOptions()" method on descriptors instead (#7491)
+  * Remove Has/Clear members for C# message fields in proto2 (#7429)
+  * Enforce recursion depth checking for unknown fields (#7132)
+  * Fix conformance test failures for Google.Protobuf (#6910)
+  * Cleanup various bits of Google.Protobuf (#6674)
+  * Fix latest ArgumentException for C# extensions (#6938)
+  * Remove unnecessary branch from ReadTag (#7289)
+
+  Other
+  * Add a proto_lang_toolchain for javalite (#6882)
+  * [bazel] Update gtest and deprecate //external:{gtest,gtest_main} (#7237)
+  * Add application note for explicit presence tracking. (#7390)
+  * Howto doc for implementing proto3 presence in a code generator. (#7407)
+
+-------------------------------------------------------------------
 Wed Jun 10 15:32:29 UTC 2020 - Rolf Krahl <rolf@rotkraut.de>
 
 - Python: Add requirement on python-six
@@ -419,7 +539,7 @@ Mon Dec 11 23:42:45 UTC 2017 - jengelh@inai.de
 -------------------------------------------------------------------
 Fri Jun 16 07:57:00 UTC 2017 - mpluskal@suse.com
 
-- Install LICENSE 
+- Install LICENSE
 
 -------------------------------------------------------------------
 Sun Jun 11 17:15:13 UTC 2017 - alarrosa@suse.com
@@ -526,7 +646,7 @@ Fri Dec 16 03:33:01 UTC 2016 - stefan.bruens@rwth-aachen.de
 -------------------------------------------------------------------
 Wed Dec 14 07:32:06 UTC 2016 - mpluskal@suse.com
 
-- Drop protobuf-libs as it is just workaround for rpmlint issue 
+- Drop protobuf-libs as it is just workaround for rpmlint issue
 
 -------------------------------------------------------------------
 Sat Dec 10 19:24:18 UTC 2016 - stefan.bruens@rwth-aachen.de
@@ -578,44 +698,44 @@ Fri Feb 27 19:20:16 UTC 2015 - mpluskal@suse.com
 
 - Use current url's
 - Update dependencies
-  * python bindings now require recent python-google-apputils 
+  * python bindings now require recent python-google-apputils
     which are available only in recet (13.1 and higher releases of
     openSUSE)
 - Update to 2.6.1
   * Added atomicops support for Solaris.
-  * Released memory allocated by InitializeDefaultRepeatedFields() 
-    and GetEmptyString(). Some memory sanitizers reported them 
+  * Released memory allocated by InitializeDefaultRepeatedFields()
+    and GetEmptyString(). Some memory sanitizers reported them
     as memory leaks.
-  * Updated DynamicMessage.setField() to handle repeated enum 
+  * Updated DynamicMessage.setField() to handle repeated enum
     values correctly.
-  * Fixed a bug that caused NullPointerException to be thrown when 
-    converting manually constructed FileDescriptorProto to 
+  * Fixed a bug that caused NullPointerException to be thrown when
+    converting manually constructed FileDescriptorProto to
     FileDescriptor.
 - Changes for 2.6.0
-  * Added oneofs(unions) feature. Fields in the same oneof will 
+  * Added oneofs(unions) feature. Fields in the same oneof will
     share memory and at most one field can be set at the same time.
-  * Files, services, enums, messages, methods and enum values 
+  * Files, services, enums, messages, methods and enum values
     can be marked as deprecated now.
-  * Added Support for list values, including lists of mesaages, 
+  * Added Support for list values, including lists of mesaages,
     when parsing text-formatted protos in C++ and Java.
   * Enhanced customization on TestFormat printing.
-  * Added SwapFields() in reflection API to swap a subset of 
+  * Added SwapFields() in reflection API to swap a subset of
     fields.
   * Added SetAllocatedMessage() in reflection API.
-  * Repeated primitive extensions are now packable. The 
+  * Repeated primitive extensions are now packable. The
     [packed=true] option only affects serializers. Therefore,
-    it is possible to switch a repeated extension field to 
+    it is possible to switch a repeated extension field to
     packed format without breaking backwards-compatibility.
   * Various speed optimizations.
-  * writeTo() method in ByteString can now write a substring to 
+  * writeTo() method in ByteString can now write a substring to
     an output stream. Added endWith() method for ByteString.
   * ByteString and ByteBuffer are now supported in CodedInputStream
     and CodedOutputStream.
-  * java_generate_equals_and_hash can now be used with the 
+  * java_generate_equals_and_hash can now be used with the
     LITE_RUNTIME.
-  * A new C++-backed extension module (aka "cpp api v2") that 
-    replaces the old ("cpp api v1") one. Much faster than the 
-    pure Python code. This one resolves many bugs and is 
+  * A new C++-backed extension module (aka "cpp api v2") that
+    replaces the old ("cpp api v1") one. Much faster than the
+    pure Python code. This one resolves many bugs and is
     recommended for general use over the pure Python when possible.
 
 -------------------------------------------------------------------
@@ -627,14 +747,14 @@ Tue Nov  5 13:38:45 UTC 2013 - sleep_walker@suse.cz
 Fri Jun  7 15:32:55 UTC 2013 - dvaleev@suse.com
 
 - package google/protobuf/stubs/atomicops_internals_generic_gcc.h
-  mosh reqires it 
+  mosh reqires it
 
 -------------------------------------------------------------------
 Mon May 27 10:44:05 UTC 2013 - dvaleev@suse.com
 
 - Build on architectures where no specialized code has been written
   0001-Add-generic-GCC-support-for-atomic-operations.patch
-  
+
 -------------------------------------------------------------------
 Fri Apr 12 18:35:09 UTC 2013 - ftake@geeko.jp
 
@@ -658,7 +778,7 @@ Fri Apr 12 18:35:09 UTC 2013 - ftake@geeko.jp
 -------------------------------------------------------------------
 Sat May 19 18:25:52 UTC 2012 - crrodriguez@opensuse.org
 
-- BuildRequire zlib-devel otherwise gzip_stream is not built 
+- BuildRequire zlib-devel otherwise gzip_stream is not built
   thus breaking newer releases of mosh.
 
 -------------------------------------------------------------------
