@@ -30,6 +30,10 @@
 %define use_firewalld 0
 %endif
 
+%if 0%{?suse_version} < 1550
+%define _distconfdir /etc
+%endif
+
 Name:           tigervnc
 Version:        1.10.1
 Release:        0
@@ -321,7 +325,7 @@ install -m755 VncViewer.jar $RPM_BUILD_ROOT%{_datadir}/vnc/classes
 popd
 
 %ifnarch s390x
-install -D -m 644 %{SOURCE4} $RPM_BUILD_ROOT/etc/X11/xorg.conf.d/10-libvnc.conf
+install -D -m 644 %{SOURCE4} $RPM_BUILD_ROOT/usr/share/X11/xorg.conf.d/10-libvnc.conf
 %endif
 
 %if %{use_firewalld}
@@ -332,9 +336,10 @@ install -D -m 644 %{SOURCE5} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/SuSEfirewal
 install -D -m 644 %{SOURCE6} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/vnc-httpd
 %endif
 
-install -D -m 644 %{SOURCE7} $RPM_BUILD_ROOT/etc/slp.reg.d/vnc.reg
+# only package as %doc (boo#1173045)
+cp %{SOURCE7} .
 install -D -m 755 %{SOURCE8} $RPM_BUILD_ROOT%{_bindir}/vncpasswd.arg
-install -D -m 644 %{SOURCE9} $RPM_BUILD_ROOT/etc/pam.d/vnc
+install -D -m 644 %{SOURCE9} $RPM_BUILD_ROOT%{_distconfdir}/pam.d/vnc
 install -D -m 644 %{SOURCE11} $RPM_BUILD_ROOT%{_datadir}/vnc/classes
 %if 0%{?suse_version} >= 1315
 ln -s -f %{_sysconfdir}/alternatives/vncviewer $RPM_BUILD_ROOT%{_bindir}/vncviewer
@@ -463,7 +468,7 @@ fi
 %_datadir/applications/vncviewer.desktop
 
 %files -n xorg-x11-Xvnc
-%doc LICENCE.TXT README.rst
+%doc LICENCE.TXT README.rst vnc.reg
 %defattr(-,root,root)
 
 %{_bindir}/Xvnc
@@ -497,10 +502,11 @@ fi
 %config %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/vnc-httpd
 %endif
 
-%dir /etc/slp.reg.d
-%config(noreplace) /etc/slp.reg.d/vnc.reg
-
-%config %{_sysconfdir}/pam.d/vnc
+%if 0%{?suse_version} < 1550
+%config %{_distconfdir}/pam.d/vnc
+%else
+%{_distconfdir}/pam.d/vnc
+%endif
 
 %dir %attr(0755,%{vncuser},%{vncuser}) %{_sysconfdir}/vnc
 %ghost %attr(0600,%{vncuser},%{vncuser}) %config(noreplace) %{tlskey}
@@ -520,7 +526,7 @@ fi
 %exclude /usr/%{_lib}/xorg/protocol.txt
 %exclude /usr/%{_lib}/xorg/modules/extensions/libvnc.la
 %{_libdir}/xorg/modules/extensions/libvnc.so
-%config(noreplace) /etc/X11/xorg.conf.d/10-libvnc.conf
+/usr/share/X11/xorg.conf.d/10-libvnc.conf
 %endif
 
 %files -n xorg-x11-Xvnc-novnc

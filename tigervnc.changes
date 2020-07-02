@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  1 10:19:18 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- moved vnc snippet to /usr/share/X11/xorg.conf.d (boo#1173045)
+- package SLP sample config vnc.reg only as %doc (boo#1173045)
+- moved vnc pam config to /etc/usr/pam.d (boo#1173045)
+
+-------------------------------------------------------------------
 Mon Apr 13 18:20:43 UTC 2020 - Lorenzo Paulatto <paulatz@gmail.com>
 
 - TigerVNC 1.10.1:
