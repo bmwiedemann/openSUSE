@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun 30 13:03:14 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Skip test_raw_roundtrip on i586
+
+-------------------------------------------------------------------
+Wed Jun 24 01:52:29 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.0.5
+  * Fixed regressions
+    + Fix regression in read_parquet() when reading from file-like objects (GH34467).
+    + Fix regression in reading from public S3 buckets (GH34626).
+      Note this disables the ability to read Parquet files from
+      directories on S3 again (GH26388, GH34632), which was added
+      in the 1.0.4 release, but is now targeted for pandas 1.1.0.
+    + Fixed regression in replace() raising an AssertionError when replacing values in an extension dtype with values of a different dtype (GH34530)
+  * Bug fixes
+    + Fixed building from source with Python 3.8 fetching the wrong version of NumPy
+
+-------------------------------------------------------------------
 Sat May 30 23:39:38 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.0.4:

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-pandas
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
@@ -123,10 +123,15 @@ export http_proxy=http://1.2.3.4 https_proxy=http://1.2.3.4;
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
+export SKIP_TESTS="test_oo_optimizable or test_encode_non_c_locale or test_maybe_promote_int_with_int"
+# Skip test_raw_roundtrip on i586, gh#pandas-dev/pandas#29712
+%ifarch %{ix86}
+SKIP_TESTS="$SKIP_TESTS or test_raw_roundtrip"
+%endif
 mv pandas pandas_temp
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
 $python -c 'import pandas; print(pandas.show_versions())'
-xvfb-run py.test-%{$python_version} -n auto -v %{buildroot}%{$python_sitearch}/pandas/tests -k 'not test_oo_optimizable and not test_encode_non_c_locale and not test_maybe_promote_int_with_int'
+xvfb-run py.test-%{$python_version} -n auto -v %{buildroot}%{$python_sitearch}/pandas/tests -k "not ($SKIP_TESTS)"
 }
 mv pandas_temp pandas
 
