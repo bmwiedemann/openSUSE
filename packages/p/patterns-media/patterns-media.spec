@@ -734,6 +734,8 @@ Recommends:     libz.so.1
 Recommends:     msynctool
 Recommends:     nbd
 Recommends:     nbd-doc
+# yast needs nvme-cli to install / onto NVME
+Recommends:     nvme-cli
 # kernel modules
 Recommends:     omnibook-kmp-default
 Recommends:     omnibook-kmp-desktop
