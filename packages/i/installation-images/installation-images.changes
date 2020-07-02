@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Wed Jul 1 10:43:56 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/installation-images#391
+- generate hostnqn and hostid for NVMe (bsc#1172853)
+- mount /proc for 'nvme gen-hostnqn'
+- 15.10
+
+--------------------------------------------------------------------
 Thu Jun 25 13:12:14 UTC 2020 - aschnell@suse.com
 
 - merge gh#openSUSE/installation-images#390
