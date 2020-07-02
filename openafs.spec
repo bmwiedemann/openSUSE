@@ -57,23 +57,23 @@
 
 # used for %setup only
 # leave upstream tar-balls untouched for integrity checks.
-%define upstream_version git-7cd24908de4b65d9972bd3dca85b049f495bb1bd
+%define upstream_version 1.8.6
 
 Name:           openafs
 
-Version:        1.8.6~pre2a
+Version:        1.8.6
 Release:        0
 Summary:        OpenAFS Distributed File System
 License:        IPL-1.0
 Group:          System/Filesystems
 URL:            http://www.openafs.org/
 
-Source0:        openafs-%{version}-src.tar.bz2
-Source1:        openafs-%{version}-doc.tar.bz2
-Source2:        openafs-%{version}-src.tar.bz2.md5
-Source3:        openafs-%{version}-doc.tar.bz2.md5 
-Source4:        openafs-%{version}-src.tar.bz2.sha256
-Source5:        openafs-%{version}-doc.tar.bz2.sha256
+Source0:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2
+Source1:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2
+Source2:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.md5
+Source3:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.md5
+Source4:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.sha256
+Source5:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.sha256
 Source10:       README.SUSE.openafs
 Source15:       logrotate.openafs-server
 Source18:       RELNOTES-%{upstream_version}
@@ -97,10 +97,6 @@ Patch3:         dir_layout.patch
 Patch4:         openafs-1.8.x.ncurses6.patch
 # PATCH-SUSE-SPECIFIC make KMP work again 
 Patch5:         add_arch_to_linux_kernel_make.patch
-# PATCH-FIX-afsmonitor
-Patch99:        4c4bdde.diff
-# PATCH-FIX-GCC-10-BUILD
-Patch100:       d3c7f75.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 #
@@ -312,8 +308,6 @@ done
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch99 -p1
-%patch100 -p1
 
 ./regen.sh
 
@@ -347,7 +341,7 @@ perl -pi -e 's,^(XLIBS.*),\1 -lresolv,' src/config/Makefile.amd64_linux24.in
 afs_sysname=${sysbase}_linux26
 
 RPM_OPT_FLAGS=`echo ${RPM_OPT_FLAGS} | sed s/-D_FORTIFY_SOURCE=2//`
-export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -fPIC" 
+export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -fPIC -fcommon" 
 
 export KRB5LIBS='-lcom_err -lkrb5'
 export PATH_KRB5_CONFIG=%{krb5_config}
