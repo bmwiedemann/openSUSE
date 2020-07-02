@@ -1,7 +1,7 @@
 #
 # spec file for package libebml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define soname 4
+%define soname 5
 Name:           libebml
-Version:        1.3.10
+Version:        1.4.0
 Release:        0
 Summary:        Library to parse EBML (Extensible Binary Markup Language) files
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.matroska.org/
+URL:            https://www.matroska.org/
 #Git-Clone:     git://github.com/Matroska-Org/libebml
 #Git-Web:       https://github.com/Matroska-Org/libebml
 Source:         https://dl.matroska.org/downloads/libebml/%{name}-%{version}.tar.xz
 Source100:      baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 
 %description
 libebml is a C++ library to parse EBML files. See the EBML RFC at
@@ -56,11 +56,11 @@ libebml is a C++ library to parse EBML files. See the EBML RFC at
 http://www.matroska.org/technical/specs/rfc/index.html .
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %cmake
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install

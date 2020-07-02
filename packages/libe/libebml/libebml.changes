@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Jun 28 06:07:14 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.4.0
+  * Due to breaking ABI the soname version has been bumped to
+    5.0.0.
+  * Default symbol visibility is now "hidden", reducing binary
+    size.
+  * Converted some things pointed out by cppcheck & clang-tidy
+    to C++11.
+  * Fixed a lot of issues pointed out by clang-tidy.
+  * Added a function "ForceNoDefault" in the "EbmlElement" class.
+  * Added a function "OverwriteData" in the "EbmlElement" class
+    to complement the existing "OverwriteHead" function.
+  * A C++11 compliant compiler is now required. Several of its
+    features are now used in the source.
+  * EbmlElement::FindNextElement: fixed a buffer overflow on the
+    stack by one byte when the first byte read had its upper
+    four bits unset.
+  * EbmlCrc32: added a explicit assignment operator with default
+    implementation as an explicit copy constructor exists
+    (implicit assignment operators are deprecated in such cases).
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sat Dec  7 15:03:34 UTC 2019 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.3.10:
