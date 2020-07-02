@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-asgiref
-Version:        3.2.7
+Version:        3.2.10
 Release:        0
 Summary:        ASGI specs, helper code, and adapters
 License:        BSD-3-Clause

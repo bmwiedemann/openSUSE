@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  1 04:59:38 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.2.10:
+  * Fixed bugs due to bad WeakRef handling introduced in 3.2.8
+  * Fixed regression with exception handling in 3.2.8 related to the
+    contextvars fix.
+  * Fixed small memory leak in local.Local
+  * contextvars are now persisted through AsyncToSync 
+
+-------------------------------------------------------------------
 Fri Apr 24 06:47:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Execute tests
