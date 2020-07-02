@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 01 08:52:44 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not remove automatically aliases from /etc/hosts during an
+  autoinstallation (bsc#1173213)
+- Parse correctly udev rules keys using underscores (bsc#1167256)
+- 4.3.11
+
+-------------------------------------------------------------------
 Fri Jun 26 08:00:33 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - AutoYaST schema: add the setup_before_proposal element to the
