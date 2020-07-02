@@ -80,9 +80,6 @@ Requires:       netcfg
 Requires:       rpcbind
 Requires(post): %fillup_prereq
 Requires(pre):  permissions
-%if 0%{?suse_version} >= 1330
-Requires(pre):  group(nogroup)
-%endif
 Obsoletes:      nfs-utils < 1.1.0
 %sysusers_requires
 
@@ -211,15 +208,15 @@ install -m 644 %{SOURCE12} %{buildroot}%{_sysusersdir}/
 
 %post -n nfs-client
 # lib/nfs must be root-owned. 
-# sm and sm.back and contents should be statd:nogroup,
+# sm and sm.back and contents should be statd:statd,
 # but only chown if the dirs are currently root-owned.
 # This is needed for some upgraded, but chown is best avoided
 # when not necessary
 chown root:root %{_localstatedir}/lib/nfs > /dev/null 2>&1 || :
 for i in sm sm.bak; do
     p=%{_localstatedir}/lib/nfs/$i
-    if [ -d "$b" -a -n "`chown 2> /dev/null -c --from root statd:nogroup $p`" ]; then
-	chown -R statd:nogroup $p > /dev/null 2>&1 || :
+    if [ -d "$b" -a -n "`chown 2> /dev/null -c --from root statd:statd $p`" ]; then
+	chown -R statd:statd $p > /dev/null 2>&1 || :
     fi
 done
 ### migrate from /var/lock/subsys
@@ -350,8 +347,8 @@ fi
 %dir %{_localstatedir}/lib/nfs
 %dir %{_localstatedir}/lib/nfs/rpc_pipefs
 %dir %{_localstatedir}/lib/nfs/v4recovery
-%attr(0700,statd,nogroup) %dir %{_localstatedir}/lib/nfs/sm
-%attr(0700,statd,nogroup) %dir %{_localstatedir}/lib/nfs/sm.bak
+%attr(0700,statd,statd) %dir %{_localstatedir}/lib/nfs/sm
+%attr(0700,statd,statd) %dir %{_localstatedir}/lib/nfs/sm.bak
 %ghost %{_localstatedir}/lib/nfs/state
 
 %files -n nfs-kernel-server
