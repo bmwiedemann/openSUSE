@@ -229,4 +229,10 @@
     <user>dimstar_suse</user>
     <comment>Remove apparmor_opt dependency</comment>
   </revision>
+  <revision rev="28" vrev="28">
+    <srcmd5>73d280c9316c2a5c0c4e0c611c9bf90f</srcmd5>
+    <version>20170319</version>
+    <time>1593763587</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>
