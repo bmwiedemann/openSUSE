@@ -208,4 +208,12 @@
     <time>1593704089</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="25" vrev="25">
+    <srcmd5>fffda8281d2b74235dff02bef834167d</srcmd5>
+    <version>20170319</version>
+    <time>1593760544</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop yast2-trans-en_US recommends from media-rest: this package
+  no longer exists.</comment>
+  </revision>
 </revisionlist>

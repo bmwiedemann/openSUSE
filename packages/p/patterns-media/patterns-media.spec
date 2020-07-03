@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-media
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,13 +44,13 @@ Group:          Metapackages
 Provides:       pattern() = rest_cd_core
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 1941
+Requires:       kernel-default
+Requires:       kernel-firmware
 Requires:       pattern() = base
 Requires:       pattern() = enhanced_base
 Requires:       pattern() = fonts
 Requires:       pattern() = sw_management
 Requires:       pattern() = x11
-Requires:       kernel-default
-Requires:       kernel-firmware
 # minimal set of yast modules
 Requires:       yast2-bootloader
 Requires:       yast2-country
@@ -190,7 +190,6 @@ Recommends:     yast2-trans-cs
 Recommends:     yast2-trans-da
 Recommends:     yast2-trans-de
 Recommends:     yast2-trans-en_GB
-Recommends:     yast2-trans-en_US
 Recommends:     yast2-trans-es
 Recommends:     yast2-trans-fr
 Recommends:     yast2-trans-hu
@@ -232,10 +231,10 @@ Packages that are on CD but not in other patterns.
 %pattern_desktopfunctions
 Summary:        Remaining Software
 Group:          Metapackages
+Provides:       patterns-openSUSE-rest_cd_gnome = %{version}
 Provides:       pattern() = rest_cd_gnome
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 1940
-Provides:       patterns-openSUSE-rest_cd_gnome = %{version}
 Obsoletes:      patterns-openSUSE-rest_cd_gnome < %{version}
 Requires:       pattern() = apparmor
 Requires:       pattern() = games
@@ -275,11 +274,11 @@ Packages that are on CD but not in other patterns.
 %pattern_desktopfunctions
 Summary:        Remaining Software
 Group:          Metapackages
+Provides:       patterns-openSUSE-rest_cd_kde = %{version}
+Provides:       patterns-openSUSE-rest_cd_kde4 = %{version}
 Provides:       pattern() = rest_cd_kde
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 1960
-Provides:       patterns-openSUSE-rest_cd_kde = %{version}
-Provides:       patterns-openSUSE-rest_cd_kde4 = %{version}
 Obsoletes:      patterns-openSUSE-rest_cd_kde < %{version}
 Obsoletes:      patterns-openSUSE-rest_cd_kde4 < %{version}
 Requires:       pattern() = apparmor
@@ -317,12 +316,11 @@ Summary:        Remaining Software
 # Additional applications for rescue CD
 #
 Group:          Metapackages
+Provides:       patterns-openSUSE-rest_cd_x11 = %{version}
 Provides:       pattern() = rest_cd_x11
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 1961
-Provides:       patterns-openSUSE-rest_cd_x11 = %{version}
 Obsoletes:      patterns-openSUSE-rest_cd_x11 < %{version}
-Requires:       pattern() = rest_cd_core
 Requires:       evince
 Requires:       evince-plugin-pdfdocument
 Requires:       file-roller
@@ -331,6 +329,7 @@ Requires:       hexchat
 Requires:       leafpad
 Requires:       lightdm
 Requires:       lightdm-gtk-greeter
+Requires:       pattern() = rest_cd_core
 # This defines a bare minimum Xfce desktop used, for example, as
 # base for the openSUSE Rescue CD
 Requires:       patterns-xfce-xfce_basis
@@ -408,11 +407,13 @@ Packages that are on CD but not in other patterns.
 %pattern_desktopfunctions
 Summary:        Remaining Software
 Group:          Metapackages
+Provides:       patterns-openSUSE-rest_core_dvd = %{version}
 Provides:       pattern() = rest_core_dvd
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 1982
-Provides:       patterns-openSUSE-rest_core_dvd = %{version}
 Obsoletes:      patterns-openSUSE-rest_core_dvd < %{version}
+Requires:       kernel-default
+Requires:       kernel-firmware
 Requires:       pattern() = base
 Requires:       pattern() = enhanced_base
 Requires:       pattern() = fonts
@@ -420,8 +421,6 @@ Requires:       pattern() = sw_management
 Requires:       pattern() = x11
 Requires:       pattern() = yast2_basis
 Requires:       pattern() = yast2_install_wf
-Requires:       kernel-default
-Requires:       kernel-firmware
 Recommends:     pattern() = x11_yast
 # filesystem(btrfs)
 Recommends:     btrfsprogs
@@ -483,10 +482,10 @@ Packages that are on CD but not in other patterns.
 %pattern_desktopfunctions
 Summary:        Remaining Software
 Group:          Metapackages
+Provides:       patterns-openSUSE-rest_dvd = %{version}
 Provides:       pattern() = rest_dvd
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 1980
-Provides:       patterns-openSUSE-rest_dvd = %{version}
 Obsoletes:      patterns-openSUSE-rest_dvd < %{version}
 %ifnarch s390x
 Requires:       pattern() = gnome
@@ -514,6 +513,13 @@ Requires:       pattern() = kde_utilities
 Requires:       pattern() = kde_utilities_opt
 Requires:       pattern() = kde_yast
 %endif
+Requires:       arabic-fonts
+Requires:       arphic-uming-fonts
+Requires:       cracklib-dict-full
+Requires:       indic-fonts
+Requires:       ipa-gothic-fonts
+Requires:       khmeros-fonts
+Requires:       lklug-fonts
 Requires:       pattern() = apparmor
 Requires:       pattern() = apparmor_opt
 Requires:       pattern() = base
@@ -558,13 +564,6 @@ Requires:       pattern() = xfce_laptop
 Requires:       pattern() = xfce_office
 Requires:       pattern() = yast2_basis
 Requires:       pattern() = yast2_install_wf
-Requires:       arabic-fonts
-Requires:       arphic-uming-fonts
-Requires:       cracklib-dict-full
-Requires:       indic-fonts
-Requires:       ipa-gothic-fonts
-Requires:       khmeros-fonts
-Requires:       lklug-fonts
 # for now xen_server
 Requires:       thai-fonts
 Requires:       un-fonts
