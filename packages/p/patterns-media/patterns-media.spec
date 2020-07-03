@@ -521,7 +521,6 @@ Requires:       ipa-gothic-fonts
 Requires:       khmeros-fonts
 Requires:       lklug-fonts
 Requires:       pattern() = apparmor
-Requires:       pattern() = apparmor_opt
 Requires:       pattern() = base
 Requires:       pattern() = console
 Requires:       pattern() = devel_C_C++
