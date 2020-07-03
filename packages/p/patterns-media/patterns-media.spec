@@ -579,7 +579,6 @@ Requires:       yast2-trans-da
 Requires:       yast2-trans-de
 Requires:       yast2-trans-el
 Requires:       yast2-trans-en_GB
-Requires:       yast2-trans-en_US
 Requires:       yast2-trans-es
 Requires:       yast2-trans-et
 Requires:       yast2-trans-fa
