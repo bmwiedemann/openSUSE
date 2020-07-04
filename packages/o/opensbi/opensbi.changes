@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Jun 20 11:36:16 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 0.8
+  * Simple FDT timer driver framework
+  * Simple FDT ipi driver framework
+  * Simple FDT irqchip driver framework
+  * Simple FDT serial framework
+  * Generic FDT based platform support
+  * Nuclei UX600 platform support
+  * Detect HART CSRs at boot time
+  * Multi-PLIC support
+  * Multi-CLINT support
+  * Allow multiple builtin DTBs
+  * Hypervisor v0.6.1 specification support
+  * Shakti C-class platform support
+
+-------------------------------------------------------------------
+Thu Jun 18 08:50:59 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Drop qemu-riscv64smode flavor
+- Only install fw_dynamic firmware
+
+-------------------------------------------------------------------
+Mon Apr 20 13:30:20 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 0.7
+  * SBI v0.2 HSM extension
+  * Simple bitops library
+  * Simple bitmap library
+  * Simple hartmask library
+  * Sparse and discontinuous HART id support
+  * Memory reservation in DTB passed to next booting stage
+
+-------------------------------------------------------------------
 Mon Feb 24 12:53:11 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Update to opensbi 0.6

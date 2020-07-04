@@ -23,17 +23,13 @@ Name:           opensbi
 %else
 Name:           opensbi-%{target}
 %endif
-Version:        0.6
+Version:        0.8
 Release:        0
 Summary:        RISC-V Open Source Supervisor Binary Interface
 License:        BSD-2-Clause
 Group:          System/Boot
 URL:            https://github.com/riscv/opensbi
 Source:         https://github.com/riscv/opensbi/archive/v%{version}.tar.gz#/opensbi-%{version}.tar.gz
-%if "%{target}" != ""
-BuildRequires:  dtb-sifive
-BuildRequires:  u-boot-%{target}
-%endif
 ExclusiveArch:  riscv64
 
 %description
@@ -71,41 +67,23 @@ This package provides the development files for %{name}.
 
 %build
 %if "%{target}" == ""
-%make_build PLATFORM=qemu/virt
+%make_build PLATFORM=generic
 %endif
 %if "%{target}" == "sifivefu540"
-%make_build PLATFORM=sifive/fu540 FW_PAYLOAD_PATH=/boot/u-boot.bin FW_PAYLOAD_FDT_PATH=/boot/dtb/hifive-unleashed-a00.dtb
-%endif
-%if "%{target}" == "qemu-riscv64smode"
-%make_build PLATFORM=qemu/virt FW_PAYLOAD_PATH=/boot/u-boot.bin
+%make_build PLATFORM=sifive/fu540
 %endif
 
 %install
 %if "%{target}" == ""
-make install I=%{buildroot}%{_prefix}
-mv %{buildroot}%{_prefix}/lib %{buildroot}%{_libdir}
-install -D -m 644 build/platform/qemu/virt/firmware/fw_dynamic.bin %{buildroot}%{_datadir}/opensbi/opensbi.bin
+make install I=%{buildroot}%{_prefix} INSTALL_LIB_PATH=%{_lib}
 %endif
 %if "%{target}" == "sifivefu540"
-install -D -m 644 build/platform/sifive/fu540/firmware/fw_payload.bin %{buildroot}/boot/opensbi-u-boot-sifive-fu540.bin
-install -D -m 644 build/platform/sifive/fu540/firmware/fw_dynamic.bin %{buildroot}/boot/opensbi-sifive-fu540.bin
-%endif
-%if "%{target}" == "qemu-riscv64smode"
-install -D -m 644 build/platform/qemu/virt/firmware/fw_payload.bin %{buildroot}/boot/opensbi-u-boot-qemu-virt.bin
-install -D -m 644 build/platform/qemu/virt/firmware/fw_dynamic.bin %{buildroot}/boot/opensbi-qemu-virt.bin
+install -D -m 644 build/platform/sifive/fu540/firmware/fw_dynamic.bin %{buildroot}%{_datadir}/opensbi/opensbi-sifive-fu540.bin
 %endif
 
+%if "%{target}" != ""
 %files
-%if "%{target}" == ""
 %{_datadir}/opensbi
-%endif
-%if "%{target}" == "sifivefu540"
-/boot/opensbi-u-boot-sifive-fu540.bin
-/boot/opensbi-sifive-fu540.bin
-%endif
-%if "%{target}" == "qemu-riscv64smode"
-/boot/opensbi-u-boot-qemu-virt.bin
-/boot/opensbi-qemu-virt.bin
 %endif
 
 %if "%{target}" == ""
