@@ -4,10 +4,10 @@ Date:   Tue Nov 29 14:51:08 2016 +1030
 
     feature-wizard-keylayout-from-sys
 
-Index: enlightenment-0.23.0/src/modules/wizard/page_011.c
+Index: enlightenment-0.24.0/src/modules/wizard/page_011.c
 ===================================================================
---- enlightenment-0.23.0.orig/src/modules/wizard/page_011.c
-+++ enlightenment-0.23.0/src/modules/wizard/page_011.c
+--- enlightenment-0.24.0.orig/src/modules/wizard/page_011.c
++++ enlightenment-0.24.0/src/modules/wizard/page_011.c
 @@ -11,8 +11,9 @@ struct _Layout
  };
  
@@ -95,12 +95,9 @@ Index: enlightenment-0.23.0/src/modules/wizard/page_011.c
     api->wizard_title_set(_("Keyboard"));
     of = elm_frame_add(e_comp->elm);
     elm_object_text_set(of, _("Select one"));
-@@ -196,9 +250,9 @@ wizard_page_show(E_Wizard_Page *pg EINA_
-    EINA_LIST_FOREACH(layouts, l, lay)
-      {
+@@ -198,7 +252,7 @@ wizard_page_show(E_Wizard_Page *pg EINA_
          void *it;
--        
-+
+ 
          it = elm_genlist_item_append(ob, &itc, lay, NULL, 0, _layout_select, lay);
 -        if (eina_streq(lay->name, "us"))
 +        if (eina_streq(lay->name, layout_tmp))

@@ -1,7 +1,7 @@
 #
 # spec file for package enlightenment
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define efl_version	1.18.0
+%define efl_version	1.24.1
 %define systemd_present (0%{?suse_version} >= 1230 || 0%{?fedora} >= 18 || 0%{?mageia})
 # Wayland is broken with current efl waiting for a new e release
 %define enable_wayland (0%{?suse_version} > 1520)
@@ -24,17 +24,18 @@
 # Fix this later
 %define build_doc 0
 Name:           enlightenment
-Version:        0.23.1
+Version:        0.24.0
 Release:        0
 Summary:        The window manager
 License:        BSD-2-Clause
 Group:          System/X11/Displaymanagers
-Url:            http://enlightenment.org/
+URL:            http://enlightenment.org/
 Source:         http://download.enlightenment.org/rel/apps/enlightenment/%{name}-%{version}.tar.xz
 Source2:        enlightenment.pam
+Source3:        system.conf
 # PATCH-FEATURE_OPENSUSE feature-network-manager-wizard.patch simon@simotek.net adds nm-applet to startup apps if its present,
 # this will be maybe upstreamed when upstream network manager applet supports app indicator - (1.1.0)
-Source3:        network_manager_wizard.c
+Source4:        network_manager_wizard.c
 # PATCH-FIX-OPENSUSE - enlightenment-0.16.999.65256-dont_require_suidbit.patch sleep_walker@opensuse.org -- upstream insist on having suidbit
 Patch0:         enlightenment-0.16.999.65256-dont_require_suidbit.patch
 # PATCH-FEATURE-OPENSUSE dont_offer_updates.patch -- don't offer updates, that's up to package manager -- sleep_walker@opensuse.org
@@ -46,8 +47,9 @@ Patch3:         feature-wizard-auto-lang.patch
 Patch4:         feature-wizard-keylayout-from-sys.patch
 Patch5:         feature-qt-apps-gtk2-theme.patch
 BuildRequires:  alsa-devel
+BuildRequires:  cmake
 BuildRequires:  doxygen
-BuildRequires:  edje >= %{efl_version}
+BuildRequires:  efl >= %{efl_version}
 BuildRequires:  gettext-devel
 BuildRequires:  meson
 BuildRequires:  pam-devel
@@ -84,6 +86,8 @@ Requires:       efl
 Requires:       elementary
 Requires:       enlightenment-branding = 0.1
 Requires:       evas-generic-loaders
+# dlopened at runtime
+Requires:       libddcutil2
 # Require a Icon theme that will be detected by enlghtenment
 Requires:       oxygen-icon-theme
 # We use xdg-terminal, xdg-open and xdg-su in various places
@@ -209,7 +213,7 @@ Documentation of Enlightenment in form of man pages.
 
 # Copy In new Network Wizard
 rm src/modules/wizard/page_110.c
-cp -v %{SOURCE3} src/modules/wizard/page_110.c
+cp -v %{SOURCE4} src/modules/wizard/page_110.c
 
 %build
 # fake time used for documentation
@@ -241,9 +245,6 @@ mkdir -p %{buildroot}%{_datadir}/wayland-sessions/
 cp %{buildroot}%{_datadir}/xsessions/enlightenment.desktop \
  %{buildroot}%{_datadir}/wayland-sessions/enlightenment-wayland.desktop
 %endif
-%else
-# for now don't ship a desktop file for Leap - wayland is not stably tested
-rm %{buildroot}%{_datadir}/wayland-sessions/enlightenment.desktop
 %endif
 
 %if %{build_doc}
@@ -261,18 +262,19 @@ echo "Copying MAN pages"
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang enlightenment
 %if 0%{?suse_version}
-# remove setuid bits, enlightenment_backlight requires eeze-devel, which is not available for SLE
 # enlightenment_ckpasswd only needs suid bit on bsd's
-chmod -s %{buildroot}%{_libdir}/enlightenment/utils/enlightenment_backlight \
-		 %{buildroot}%{_libdir}/enlightenment/utils/enlightenment_ckpasswd \
+chmod -s %{buildroot}%{_libdir}/enlightenment/utils/enlightenment_ckpasswd \
 		 %{buildroot}%{_libdir}/enlightenment/utils/enlightenment_sys \
-		 %{buildroot}%{_libdir}/enlightenment/modules/sysinfo/*/cpuclock_sysfs \
-         %{buildroot}%{_libdir}/enlightenment/modules/cpufreq/*/freqset
 %endif
 
 # copy PAM profile
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
 cp %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/enlightenment
+
+# Install correct openSUSE rules for system.conf
+mkdir -p %{buildroot}/%{_datadir}/%{name}/doc/
+mv %{buildroot}/etc/enlightenment/system.conf %{buildroot}/%{_datadir}/%{name}/doc/
+cp %{SOURCE3} %{buildroot}/etc/enlightenment/
 
 %if 0%{?suse_version}
 %suse_update_desktop_file -r -G mixer emixer "AudioVideo;Mixer;"
@@ -305,12 +307,16 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 %post
 %{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \
   default-xsession.desktop %{_datadir}/xsessions/enlightenment.desktop 20
+%set_permissions %{_libdir}/enlightenment/utils/enlightenment_system
 
 %postun
 if [ ! -f %{_datadir}/xsessions/enlightenment.desktop ] ; then
   %{_sbindir}/update-alternatives  --remove default-xsession.desktop %{_datadir}/xsessions/enlightenment.desktop
 fi
 %endif
+
+%verifyscript
+%verify_permissions -e %{_libdir}/enlightenment/utils/enlightenment_system
 
 %files -f enlightenment.lang
 %defattr(-,root,root)
@@ -328,6 +334,7 @@ fi
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 %{_datadir}/enlightenment/
 %{_datadir}/applications/*.desktop
+%{_datadir}/icons/hicolor/*
 %{_libdir}/enlightenment
 %config(noreplace) %{_sysconfdir}/enlightenment
 %config(noreplace) %{_sysconfdir}/pam.d/enlightenment
@@ -335,7 +342,7 @@ fi
 %config %{_sysconfdir}/xdg/menus/e-applications.menu
 %{_bindir}/enlightenment*
 %{_bindir}/emixer
-%{_datadir}/pixmaps/emixer.png
+%{_datadir}/icons/hicolor/128x128/apps/emixer.png
 %{_datadir}/pixmaps/enlightenment-askpass.png
 
 %if %{systemd_present}

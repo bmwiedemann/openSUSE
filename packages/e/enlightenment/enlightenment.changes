@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jul  3 22:51:40 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix name for dlopen'ed libddcutil2 runtime dependency
+
+-------------------------------------------------------------------
+Tue May 19 04:59:07 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- 0.24.0
+    * New and improved shot module with editor and cropper
+    * Reduced number of setuid tools (merged many into single system tool)
+    * External monitor backlight and brightness controls via (lib)ddctil
+    * Improved resolution of EFM thumbnails to 256x256 by default
+    * New and improved crash handling guru meditation
+    * Restarts are now seamless with fade in and out and zero glitches
+    * Wallpaper import generates multiple resolutions for better efficiency
+    * Regularly malloc_trim if available to keep mem down
+    * All restarts are now handled by enlightenment_start, not e itself
+    * Enforce pointer lock to screen in X to stop pointer out-of-bounds
+    * Pager plain is gone - use the regular "miniature preview" pager
+    * Music control auto-runs your selected media player if not there
+    * Handle exception for steam games to find the right desktop file
+    * Polkit auth agent support as new core module - no extra daemons
+    * Drop comp fast effects - Should be edje transition factor + theme tags
+    * Easier config of specific desktop wallpaper straight from pager
+    * Startup should be smoother with IO prefetch thread
+    * New special blanking timeout for when locked that can be shorter
+    * Bluez4 gone now as Bluez5 is done and working fine
+    * Down to zero outstanding coverity issues
+    * The usual batches of bug fixes and minor improvements
+  * New source system.conf to replace upstream's with an openSUSE
+    specific config
+
+-------------------------------------------------------------------
 Thu Dec 19 15:34:37 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libsystemd) instead of systemd-devel:
@@ -40,7 +73,7 @@ Tue Mar 23 05:48:53 UTC 2018 - sflees@suse.de
 - 0.22.3
     * T6779 Fix screenlock regression
     * T6784 enlightenment_open still uses deprecated defaults.list
-    * remove pulse - wayland hack thats no longer needed 
+    * remove pulse - wayland hack thats no longer needed
 
 -------------------------------------------------------------------
 Thu Mar 15 05:48:53 UTC 2018 - sflees@suse.de
@@ -59,8 +92,8 @@ Thu Mar 15 05:48:53 UTC 2018 - sflees@suse.de
     * T6633    make it simpler to report bugs
     * T6644    wayland / xwayland issues
     * T6721    Make Bryce Less like a pogostick
-    * T6722    lockscreen gadgets are not shown on "startup lockscreen" and "suspend lockscreen" 
-    * T6723    window borders doesn't accept edje icons 
+    * T6722    lockscreen gadgets are not shown on "startup lockscreen" and "suspend lockscreen"
+    * T6723    window borders doesn't accept edje icons
     * Other miscolanious fixes
 - Don't ship wayland desktop file in Leap 15 (but build support)
 - Fix desktop files not to symlink to each other
@@ -122,7 +155,7 @@ Wed Aug 23 00:49:51 UTC 2017 - sflees@suse.de
     * T5700
     * T5714
     * T5738
-    * T5817 
+    * T5817
 
 -------------------------------------------------------------------
 Wed Jun 28 07:59:52 UTC 2017 - sflees@suse.de
@@ -192,7 +225,7 @@ Wed Nov 30 21:56:25 UTC 2016 - sflees@suse.de
 - Bump to 0.21.4
   * Most changes are related to wayland and bryce and won't affect
     most users, thre are several other minor fixes as well.
-  * boo#983978 - Scaling set to 1.2 at start of the wizard 
+  * boo#983978 - Scaling set to 1.2 at start of the wizard
   * Updated German and other translations
   * https://phab.enlightenment.org/T2879
   * https://phab.enlightenment.org/T4358
@@ -216,7 +249,7 @@ Wed Nov 30 21:56:25 UTC 2016 - sflees@suse.de
 - add feature-wizard-keylayout-from-sys.patch boo#1003939 this is another
   enhancement but due to a further upstream bug the keyboard layout
   screen still needs to be displayed
-- add feature-suse-disable-offline-menu.patch - as openSUSE uses 
+- add feature-suse-disable-offline-menu.patch - as openSUSE uses
   network manager not connman offline mode doesn't do whats expected
   so the menu item has been removed
 
@@ -398,7 +431,7 @@ Wed Jul 20 13:11:23 UTC 2016 - sflees@suse.de
 
   * https://phab.enlightenment.org/T4112
   * https://phab.enlightenment.org/T4119
-  
+
 == Changes ==
 Al Poole (1):
       fwin: prevent segv when the vaarg abi messup with unused parameter.
@@ -448,7 +481,7 @@ Mon Jul  4 02:07:39 UTC 2016 - sflees@suse.de
   * New gadget infrastructure
   * Wizard improvements
   * Video backgrounds
-  
+
 - enhance-upstream-share-icons.patch no longer needed.
 
 -------------------------------------------------------------------
@@ -577,9 +610,9 @@ Wed Apr 13 02:46:29 UTC 2016 - sflees@suse.de
 -------------------------------------------------------------------
 Fri Apr  8 05:35:30 UTC 2016 - sflees@suse.de
 
-- Recommend Pulse X11 Intergration for audio out of the box 
+- Recommend Pulse X11 Intergration for audio out of the box
   boo#972912
-- Make services localonly 
+- Make services localonly
 
 -------------------------------------------------------------------
 Fri Apr  8 03:02:37 UTC 2016 - sflees@suse.de
@@ -651,13 +684,13 @@ Wed Mar  9 19:46:44 UTC 2016 - sflees@suse.de
     apply x11 focus/unfocus using jobs
     block re-unsetting of native surface for comp objects
     always run client res changes in e_comp_canvas_update()
- 
+
 
 -------------------------------------------------------------------
 Sat Feb  6 09:29:53 UTC 2016 - simon@simotek.net
 
 - Enlightenment 0.20.5
-Hotfix for critical issue in 0.20.4 
+Hotfix for critical issue in 0.20.4
 
 -------------------------------------------------------------------
 Wed Feb  3 04:17:55 UTC 2016 - simon@simotek.net
@@ -723,7 +756,7 @@ disable map when unsetting zoomap child
 -------------------------------------------------------------------
 Wed Jan 20 00:18:06 UTC 2016 - simon@simotek.net
 
-- Enlightenment 0.20.3 Bugfix release 
+- Enlightenment 0.20.3 Bugfix release
 e randr - fix randr dialog to do restore right again
 Fix xbl_avail variable being used when it could be undefined
 Fix spelling in .pc file
@@ -835,7 +868,7 @@ Tickets Addressed
 -------------------------------------------------------------------
 Mon Nov 30 20:59:27 UTC 2015 - simon@simotek.net
 
-- Enlightenment 0.20.0 Release 
+- Enlightenment 0.20.0 Release
 Release Highlights
 
     Full Wayland support
@@ -1179,7 +1212,7 @@ Wed Sep 23 03:23:33 UTC 2015 - simon@simotek.net
 -------------------------------------------------------------------
 Thu Sep 17 12:38:17 UTC 2015 - simon@simotek.net
 
-- Add network manager intergration including feature-network-manager-wizard.patch 
+- Add network manager intergration including feature-network-manager-wizard.patch
 
 -------------------------------------------------------------------
 Tue Sep 15 06:01:47 UTC 2015 - simon@simotek.net
@@ -1193,7 +1226,7 @@ Tickets Resolved:
     T2690
     T2703
     T2717
- 
+
 e comp - set rects to null to silence compiler warning
 fix x11 compositor to use damage events
 explicitly show the client object of internal window during show
@@ -1235,13 +1268,13 @@ Tickets resolved:
 Thu Aug  6 06:25:11 UTC 2015 - simon@simotek.net
 
 - bump to 0.19.8 -skipped .6 - .7
-  
+
 Full release notes:
 https://phab.enlightenment.org/phame/live/3/post/e19_6_release/
 https://phab.enlightenment.org/phame/live/3/post/e19_7_release/
 https://phab.enlightenment.org/phame/live/3/post/e19_8_release/
 
-Tickets resolved: 
+Tickets resolved:
   0.19.6
 T2259
 T2277
@@ -1438,7 +1471,7 @@ Sun Mar 15 05:15:09 UTC 2015 - simon@simotek.net
 Sun Jan 25 22:46:27 UTC 2015 - simon@simotek.net
 
 - Bump to 0.19.3 bugfix release
-  * Fix safing settings failing in some cases on reboot 
+  * Fix safing settings failing in some cases on reboot
   * Fix eldbus usage
   * don't recalc winlist on client add event if client is not added to winlist
   * don't show mixer popup during nocomp
@@ -1511,7 +1544,7 @@ been deleted
 Thu Oct  9 06:42:29 UTC 2014 - simon@simotek.net
 
 - add sysactions.conf-systemd
-  - follows upstream by calling systemctl rather then consolekit and 
+  - follows upstream by calling systemctl rather then consolekit and
     upower through dbus
   - keeps the full user permissions and not providing mount options
 
@@ -1567,7 +1600,7 @@ Fri Aug 29 13:51:20 UTC 2014 - simon@simotek.net
 - Update to 0.19.0 RC3- Merged from X11:Enlightenment:Nightly
   * Major Packaging changes
     * Use upstream sysactions.conf, if systemd is present, no longer requires suid bits
-    * remove disable physics / ephysics configure flags, physics module is long gone, 
+    * remove disable physics / ephysics configure flags, physics module is long gone,
       and we support physics now anyway (removes sysactions.conf-oS12.2 patch from factory)
     * e18.service now enlightenment.service
   * Upstream changes
@@ -1614,9 +1647,9 @@ Tue Apr  8 08:13:25 UTC 2014 - simon@simotek.net
 
 - Update to 0.18.6 (No idea where the 1.8.X version numbers where coming from
   Should have been 0.18.*
-  
+
   Release Notes:
-  
+
     This bugfix release primarily focuses on fixing issues reported by the
     Coverity static analyzer.
 
@@ -1658,7 +1691,7 @@ Thu Mar  6 03:41:42 UTC 2014 - simon@simotek.net
 -------------------------------------------------------------------
 Thu Feb 27 09:54:40 UTC 2014 - simon@simotek.net
 
-- Update to 1.8.4 and efl 1.9.0 
+- Update to 1.8.4 and efl 1.9.0
 
 -------------------------------------------------------------------
 Fri Feb 21 11:43:09 UTC 2014 - simon@simotek.net
@@ -1669,7 +1702,7 @@ Fri Feb 21 11:43:09 UTC 2014 - simon@simotek.net
 -------------------------------------------------------------------
 Wed Feb 12 21:45:25 UTC 2014 - simon@simotek.net
 
-- Make enlightenment-devel explicity conflict with e17-devel and 
+- Make enlightenment-devel explicity conflict with e17-devel and
   provide obsoletes
 - Do the same for doc-html
 
@@ -1756,4 +1789,3 @@ Mon Dec  9 10:42:30 UTC 2013 - simon@simotek.net
 Thu Nov 28 00:17:26 UTC 2013 - simon@simotek.net
 
 - Create new enlightenment package by merging e17 from factory and nightly repo's
-

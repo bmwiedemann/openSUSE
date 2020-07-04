@@ -10,19 +10,10 @@ Date:   Wed Jun 28 12:58:55 2017 +0930
     selected as there default just set the language without showing
     the wizard page.
 
-Index: enlightenment-0.23.0/src/modules/wizard/page_010.c
+Index: enlightenment-0.24.0/src/modules/wizard/page_010.c
 ===================================================================
---- enlightenment-0.23.0.orig/src/modules/wizard/page_010.c
-+++ enlightenment-0.23.0/src/modules/wizard/page_010.c
-@@ -162,7 +162,7 @@ _lang_content_get(E_Intl_Pair *pair, Eva
-      e_prefix_data_snprintf(buf, sizeof(buf), "data/flags/%s", pair->locale_icon);
-    else
-      e_prefix_data_snprintf(buf, sizeof(buf), "data/flags/%s", "lang-system.png");
--   
-+
-    ic = elm_icon_add(obj);
-    elm_image_file_set(ic, buf, NULL);
-    evas_object_size_hint_aspect_set(ic, EVAS_ASPECT_CONTROL_VERTICAL, 20, 10);
+--- enlightenment-0.24.0.orig/src/modules/wizard/page_010.c
++++ enlightenment-0.24.0/src/modules/wizard/page_010.c
 @@ -172,17 +172,11 @@ _lang_content_get(E_Intl_Pair *pair, Eva
  static char *
  _lang_text_get(E_Intl_Pair *pair, Evas_Object *obj EINA_UNUSED, const char *part)

@@ -4,11 +4,11 @@ Date:   Mon Oct 31 10:54:16 2016 +1030
 
     openSUSE "feature" Disable offline mode it does nothing here
 
-diff --git a/src/modules/conf/e_mod_main.c b/src/modules/conf/e_mod_main.c
-index 88fad12..4fad637 100644
---- a/src/modules/conf/e_mod_main.c
-+++ b/src/modules/conf/e_mod_main.c
-@@ -421,12 +421,14 @@ _e_mod_submenu_modes_fill(void *data EINA_UNUSED, E_Menu *m)
+Index: enlightenment-0.23.99/src/modules/conf/e_mod_main.c
+===================================================================
+--- enlightenment-0.23.99.orig/src/modules/conf/e_mod_main.c
++++ enlightenment-0.23.99/src/modules/conf/e_mod_main.c
+@@ -419,12 +419,14 @@ _e_mod_submenu_modes_fill(void *data EIN
     e_util_menu_item_theme_icon_set(mi, "preferences-modes-presentation");
     e_menu_item_callback_set(mi, _e_mod_mode_presentation_toggle, NULL);
  
