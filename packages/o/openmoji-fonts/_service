@@ -2,8 +2,8 @@
   <service mode="disabled" name="obs_scm">
     <param name="url">git://github.com/hfg-gmuend/openmoji.git</param>
     <param name="scm">git</param>
-    <param name="revision">1a0d6f8</param>
-    <param name="versionprefix">12.2+git</param>
+    <param name="revision">9ea5516</param>
+    <param name="versionprefix">12.3.0+git</param>
     <param name="versionformat">%ct.%h</param>
   </service>
   <service mode="disabled" name="tar" />

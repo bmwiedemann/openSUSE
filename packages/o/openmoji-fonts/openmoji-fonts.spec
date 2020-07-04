@@ -1,5 +1,5 @@
 #
-# spec file for package veyon.spec
+# spec file for package openmoji-fonts
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -19,17 +19,17 @@
 %define ttf_fontdir %{_datadir}/fonts/truetype
 %define fontname     openmoji
 Name:           openmoji-fonts
-Version:        12.2+git.1581783086.1a0d6f8c
+Version:        12.3.0+git.1590131834.9ea5516a1
 Release:        0
-License:        CC-BY-SA-4.0
 Summary:        OpenMoji fonts
-Url:            https://openmoji.org/
+License:        CC-BY-SA-4.0
 Group:          System/X11/Fonts
+URL:            https://openmoji.org/
 Source:         %{fontname}-%{version}.tar.xz
 %reconfigure_fonts_prereq
-BuildRequires:  fontpackages-devel
 BuildRequires:  %suseconfig_fonts_prereq
-BuildRoot:      %{_tmppath}/%{fontname}-%{version}-build
+BuildRequires:  fontpackages-devel
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
