@@ -58,4 +58,14 @@
   * Close file descriptors on exec.</comment>
     <requestid>593753</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e019be4f701ec95741cb84f683d96902</srcmd5>
+    <version>1.0.4</version>
+    <time>1593904491</time>
+    <user>dimstar_suse</user>
+    <comment>- n_UsrEtc.patch:
+  * add /usr/etc/X11/xsm/system.xsm as fallback to
+    /etc/X11/xsm/system.xsm (boo#1173059)</comment>
+    <requestid>818560</requestid>
+  </revision>
 </revisionlist>

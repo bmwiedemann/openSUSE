@@ -1,0 +1,32 @@
+diff -u -r -p xsm-1.0.4.orig/Makefile.am xsm-1.0.4/Makefile.am
+--- xsm-1.0.4.orig/Makefile.am	2018-03-10 05:25:22.000000000 +0100
++++ xsm-1.0.4/Makefile.am	2020-07-03 12:36:15.551617000 +0200
+@@ -73,7 +73,7 @@ dist_appdefault_DATA = \
+ 
+ # system init file
+ 
+-systeminitdir = $(SYSTEM_INIT_DIR)
++systeminitdir = /usr/etc/X11/xsm
+ 
+ systeminit_DATA = system.xsm
+ 
+diff -u -r -p xsm-1.0.4.orig/restart.c xsm-1.0.4/restart.c
+--- xsm-1.0.4.orig/restart.c	2018-03-10 05:25:22.000000000 +0100
++++ xsm-1.0.4/restart.c	2020-07-03 12:26:18.281741000 +0200
+@@ -538,9 +538,13 @@ StartDefaultApps (void)
+ 	f = fopen (SYSTEM_INIT_FILE, "r");
+ 	if (!f)
+ 	{
+-	    printf ("Could not find default apps file.  Make sure you did\n");
+-	    printf ("a 'make install' in the xsm build directory.\n");
+-	    exit (1);
++	    f = fopen ("/usr/etc/X11/xsm/system.xsm", "r");
++	    if (!f)
++	    {
++		printf ("Could not find default apps file.  Make sure you did\n");
++		printf ("a 'make install' in the xsm build directory.\n");
++		exit (1);
++	    }
+ 	}
+     }
+     fcntl(fileno(f), F_SETFD, FD_CLOEXEC);
