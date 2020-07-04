@@ -1,7 +1,7 @@
 #
 # spec file for package python-rsa
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without tests
 Name:           python-rsa
-Version:        4.0
+Version:        4.6
 Release:        0
 Summary:        Pure-Python RSA Implementation
 License:        Apache-2.0
@@ -27,6 +27,7 @@ Group:          Development/Languages/Python
 URL:            http://stuvel.eu/rsa
 Source:         https://files.pythonhosted.org/packages/source/r/rsa/rsa-%{version}.tar.gz
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pyasn1 >= 0.1.3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -79,7 +80,7 @@ export LC_ALL=en_US.utf8
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGELOG.txt README.md
+%doc README.md
 %python_alternative %{_bindir}/pyrsa-decrypt
 %python_alternative %{_bindir}/pyrsa-encrypt
 %python_alternative %{_bindir}/pyrsa-keygen

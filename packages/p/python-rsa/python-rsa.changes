@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun 23 15:36:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to v 4.6.0 (bsc#1172389)
+  * Choose blinding factor relatively prime to N. Thanks Christian Heimes for pointing this out.
+  * Reject cyphertexts (when decrypting) and signatures (when verifying) that have been modified by prepending zero bytes. This resolves CVE-2020-13757. Thanks Carnil for pointing this out.
+  * Rolled back the switch to Poetry, and reverted back to using Pipenv + setup.py for dependency management. There apparently is an issue no-binary installs of packages build with Poetry. This fixes #148
+Limited SHA3 support to those Python versions (3.6+) that support it natively. The third-party library that adds support for this to Python 3.5 is a binary package, and thus breaks the pure-Python nature of Python-RSA. This should fix #147.
+  * Added support for Python 3.8.
+  * Dropped support for Python 2 and 3.4.
+  * Added type annotations to the source code. This will make Python-RSA easier to use in your IDE, and allows better type checking.
+  * Added static type checking via MyPy.
+  * Fix #129 Installing from source gives UnicodeDecodeError.
+  * Switched to using Poetry for package management.
+  * Choose blinding factor relatively prime to N. Thanks Christian Heimes for pointing this out.
+  * Reject cyphertexts (when decrypting) and signatures (when verifying) that
+  * have been modified by prepending zero bytes. This resolves CVE-2020-13757.
+
+-------------------------------------------------------------------
 Sat Mar 23 18:54:24 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
 - fix build on older distributions

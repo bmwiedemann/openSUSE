@@ -128,4 +128,12 @@
     <comment>- fix build on older distributions</comment>
     <requestid>687921</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3a00ed481c51c6a6c19e5e4129e78fcc</srcmd5>
+    <version>4.6</version>
+    <time>1593904237</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>818331</requestid>
+  </revision>
 </revisionlist>
