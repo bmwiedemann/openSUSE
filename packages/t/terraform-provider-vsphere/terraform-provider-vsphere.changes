@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 25 15:07:07 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add symlink for terraform execution
+
+-------------------------------------------------------------------
 Mon Jun  8 07:26:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.18.3:
@@ -28,6 +33,11 @@ Mon Jun  8 07:26:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   * resource/virtual_machine: Add poweron_timeout option for the amount of time to give a VM to power on. (#990)
   * resource/virtual_machine: Optimize OS family query. (#959)
   * Migrate provider to Terraform plugin SDK. (#982)
+
+-------------------------------------------------------------------
+Wed April 24 14:10:20 UTC 2020 - clark.hsu@suse.com
+
+- Package terraform-provider-vsphere v1.17.3
 
 -------------------------------------------------------------------
 Sat Feb 22 11:05:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>

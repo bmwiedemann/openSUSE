@@ -32,10 +32,10 @@ Source:         %{name}-%{version}.tar.xz
 %if 0%{?suse_version}
 BuildRequires:  golang-packaging
 BuildRequires:  xz
-BuildRequires:  golang(API) >= 1.8
+BuildRequires:  golang(API) >= 1.13
 %endif
 Requires:       mkisofs
-Requires:       terraform >= 0.10.0
+Requires:       terraform >= 0.12.0
 BuildRequires:  git
 BuildRequires:  xz
 %if 0%{?suse_version}
@@ -49,21 +49,12 @@ This is a terraform provider that lets you provision servers on a VMWare vSphere
 %setup -q
 
 %build
-export GOFLAGS=-mod=vendor
 %{goprep} github.com/terraform-providers/terraform-provider-vsphere
-%{gobuild} .
+%{gobuild} -mod=vendor ""
+ln -s %{_bindir}/%{name} %{buildroot}%{_bindir}/%{name}_v%{version}
 
 %install
-export GOFLAGS=-mod=vendor
 %{goinstall}
-
-curr=$PWD
-# extract the binary to be published
-if [ -d %{_topdir}/OTHER ]; then
-    cd %{buildroot}%{_bindir}
-    tar zcf %{_topdir}/OTHER/%{name}-%{version}.%{_repository}.%{_arch}.tar.gz %{name}
-fi
-cd $curr
 
 %check
 export GOFLAGS=-mod=vendor
@@ -73,5 +64,6 @@ export GOFLAGS=-mod=vendor
 %license LICENSE
 %doc CHANGELOG.md README.md
 %{_bindir}/%{name}
+%{_bindir}/%{name}_v%{version}
 
 %changelog
