@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysndfile
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pysndfile
-Version:        1.3.2
+Version:        1.4.3
 Release:        0
 Summary:        Cython wrapper class for reading/writing soundfiles
 License:        LGPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://forge-2.ircam.fr/roebel/pysndfile
 Source:         https://files.pythonhosted.org/packages/source/p/pysndfile/pysndfile-%{version}.tar.gz
-Source10:       https://forge-2.ircam.fr/roebel/pysndfile/raw/master/COPYING.txt
-Source11:       https://forge-2.ircam.fr/roebel/pysndfile/raw/master/COPYING.LESSER.txt
+Patch0:         fix-test-imports.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
@@ -59,8 +58,7 @@ command.
 
 %prep
 %setup -q -n pysndfile-%{version}
-cp %{SOURCE10} .
-cp %{SOURCE11} .
+%autopatch -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -77,7 +75,7 @@ $python tests/pysndfile_test.py
 
 %files %{python_files}
 %doc ChangeLog README.md
-%license COPYING.txt COPYING.LESSER.txt
+%license COPYING.LESSER.txt
 %{python_sitearch}/*
 
 %changelog
