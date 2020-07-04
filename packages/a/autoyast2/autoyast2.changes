@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Jul  3 15:04:28 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Replace old module registry with newer code that is easier to
+  maintain and better test covered (bsc#1173699)
+- 4.3.21
+
+-------------------------------------------------------------------
+Thu Jul  2 15:18:39 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Make the report section elements optional as AutoYaST proposes
+  default values when missing (bsc#1173312)
+- 4.3.20
+
+-------------------------------------------------------------------
+Thu Jul 02 11:53:44 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- The language, timezone and keyboard sections are applied and
+  removed during the first stage (bsc#1173624).
+- 4.3.19
+
+-------------------------------------------------------------------
+Fri Jun 26 13:59:41 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Allow the user to ask for a reduced profile using the 'target'
+  argument in the command line (bsc#1171356).
+- 4.3.18
+
+-------------------------------------------------------------------
+Fri Jun 26 11:21:11 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Cloning does not depend on the SetModified API call(bsc#1172552)
+- 4.3.17
+
+-------------------------------------------------------------------
+Tue Jun 23 20:15:14 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Do not export general section if not requested (bsc#1172552)
+- 4.3.16
+
+-------------------------------------------------------------------
+Fri Jun 19 11:38:57 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Validate the XML files before using them (bsc#1173091)
+- Allow disabling the validation by setting
+  YAST_SKIP_XML_VALIDATION=1
+- 4.3.15
+
+-------------------------------------------------------------------
+Thu Jun 18 11:53:05 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not export sections with no content (related to bsc#1172749).
+- 4.3.14
+
+-------------------------------------------------------------------
 Fri Jun 12 11:18:00 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - AutoinstGeneral.SetRebootAfterFirstStage is not private
