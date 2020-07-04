@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul  2 10:21:07 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to release 1.2.145
+  * scripts: Add default arg for kvt_genvk directory
+  * vulkaninfo: fix indent with for present support
+  * icd:Correctly Support Vulkan 1.1
+  * icd: Cleanup supported VK API version
+  * vulkaninfo: fix output style for memory types
+  * vulkaninfo: add more asserts to catch bad formatting
+  * vulkaninfo: fix ordering issues in generated code
+  * scripts: Use named params for generator options
+
+-------------------------------------------------------------------
 Thu May 28 13:32:28 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.141
