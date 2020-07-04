@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue May 26 05:19:15 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- 1.24.2
+  * evas_vg_shape: return NULL in evas_vg_shape_add when the parent of shape is NULL
+  * efl_ui_image: fix to call "clicked" smart callback when there is no img
+  * ecore-x - ensure we fully look at all xkb events and refresh all binds
+  * evas_vg_container: return NULL in evas_vg_container_add when the parent of container is NULL
+  * build: ensure we set ENABLE_LUA_OLD when using a lua interpreter
+
+-------------------------------------------------------------------
+Thu May 14 07:11:15 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- 1.24.1 Release
+   * edje - don't set font sizes less than 1
+   * ecore_evas_x - fix maximize/unmaximize request corner case
+   * ecore_evas: only define these eina errors once
+   * exactness: remove no longer needed _evas_new()
+   * exactness_player: do not test for delay_ms
+   * evas + gl - fix callback-to-app-changes-state issue with pixel data
+
+-------------------------------------------------------------------
+Tue May  5 01:54:28 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- 1.24.0 Release
+  * EO memory optimization improvements
+  * Copy and Paste rework
+  * Ecore_Wl2 work
+  * Documentation work
+  * Multiple other bugfixes
+  * Removals
+    * emotion & evas: remove gstreamer 0.10 support (gstreamer 1.x support is stable)
+    * escape: remove library from tree (no known reamaining user of EFL on PS3 OS)
+    * ecore_x: remove support XGesture extension (deprecated, distros do no longer ship it)
+    * elocation: remove beta library (never out of beta)
+    * eeze: remove tizen module support from eeze sensor (unused, sensor API stays)
+    * evas3d: remove support for evas 3D which was a beta all along (never out of beta)
+    * Xine and vlc supportin emotion (gstreamer 1.x support is stable)
+
+-------------------------------------------------------------------
+Fri Apr 10 05:22:09 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Drastically reduce the number of packages, the reality is
+  these days most of the libs don't function without the others
+  and everything we use needs all of them. Upstream is also heading
+  in this direction.
+- Drop avahi and elocation as upstream is phasing it out and we
+  don't use them
+
+-------------------------------------------------------------------
+Fri Feb 21 04:41:21 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- add full url to the source
+
+-------------------------------------------------------------------
 Fri Jan 31 16:59:22 UTC 2020 - Tomas Cech <sleep_walker@opensuse.org>
 
 - 1.23.3 Release

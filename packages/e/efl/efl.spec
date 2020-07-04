@@ -22,7 +22,7 @@
 # Build doc needs to be defined for build doc man to work
 %define build_doc_man 0
 %define gstreamer1_present 1
-%define build_examples 0
+%define build_examples 1
 %if !0%{?suse_version} || 0%{?is_opensuse}
 %define physics_present 1
 %endif
@@ -68,14 +68,15 @@
 %{?!icon_theme_cache_create_ghost:%define icon_theme_cache_create_ghost() touch %{buildroot}%{_datadir}/icons/%{1}/icon-theme.cache}
 %{?!icon_theme_cache_post:%define icon_theme_cache_post() gtk-update-icon-cache %{_datadir}/icons/$1 &> /dev/null || :}
 Name:           efl
-Version:        1.23.3
+Version:        1.24.2
 Release:        0
 # TODO: split package to separate packages and specify licenses correctly
 Summary:        Enlightenment Foundation Libraries - set of libraries used (not only) by E17
 License:        BSD-2-Clause AND LGPL-2.1-only AND Zlib
 URL:            https://git.enlightenment.org/core/efl.git
-Source:         %{name}-%{version}.tar.xz
+Source:         https://download.enlightenment.org/rel/libs/efl/%{name}-%{version}.tar.xz
 BuildRequires:  ImageMagick
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  giflib-devel
@@ -88,7 +89,6 @@ BuildRequires:  meson >= 0.47
 BuildRequires:  pkgconfig
 BuildRequires:  python >= 2.5
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dri)
@@ -101,15 +101,16 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(harfbuzz)
-BuildRequires:  pkgconfig(ibus-1.0)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libexif)
+BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpng) >= 1.2.10
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(libwebp)
 %if 0%{?luajit_present}
 BuildRequires:  pkgconfig(luajit)
 %else
@@ -118,6 +119,7 @@ BuildRequires:  pkgconfig(lua5.1)
 BuildRequires:  pkgconfig(mount)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pixman-1)
+BuildRequires:  pkgconfig(scim)
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(systemd)
@@ -145,6 +147,8 @@ Recommends:     elua = %{version}
 %endif
 Provides:       ecore = %{version}
 Obsoletes:      ecore < %{version}
+Provides:       edje = %{version}
+Obsoletes:      edje < %{version}
 Provides:       edje-utils = %{version}
 Obsoletes:      edje-utils < %{version}
 Provides:       eet = %{version}
@@ -155,12 +159,65 @@ Provides:       efreet = %{version}
 Obsoletes:      efreet < %{version}
 Provides:       eina = %{version}
 Obsoletes:      eina < %{version}
+Provides:       elementary = %{version}
+Obsoletes:      elementary < %{version}
+Provides:       embryo = %{version}
+Obsoletes:      embryo < %{version}
 Provides:       emotion = %{version}
 Obsoletes:      emotion < %{version}
 Provides:       ethumb = %{version}
 Obsoletes:      ethumb < %{version}
 Provides:       evas = %{version}
 Obsoletes:      evas < %{version}
+
+Provides:       libecore%{sover} = %{version}
+Obsoletes:      libecore%{sover} < %{version}
+Provides:       libector%{sover} = %{version}
+Obsoletes:      libector%{sover} < %{version}
+Provides:       libedje%{sover} = %{version}
+Obsoletes:      libedje%{sover} < %{version}
+Provides:       libeet%{sover} = %{version}
+Obsoletes:      libeet%{sover} < %{version}
+Provides:       libeeze%{sover} = %{version}
+Obsoletes:      libeeze%{sover} < %{version}
+Provides:       libefl%{sover} = %{version}
+Obsoletes:      libefl%{sover} < %{version}
+Provides:       libefreet%{sover} = %{version}
+Obsoletes:      libefreet%{sover} < %{version}
+Provides:       libefreet_mime%{sover} = %{version}
+Obsoletes:      libefreet_mime%{sover} < %{version}
+Provides:       libefreet_trash%{sover} = %{version}
+Obsoletes:      libefreet_trash%{sover} < %{version}
+Provides:       libeina%{sover} = %{version}
+Obsoletes:      libeina%{sover} < %{version}
+Provides:       libeio%{sover} = %{version}
+Obsoletes:      libeio%{sover} < %{version}
+Provides:       libeldbus%{sover} = %{version}
+Obsoletes:      libeldbus%{sover} < %{version}
+Provides:       libelementary%{sover} = %{version}
+Obsoletes:      libelementary%{sover} < %{version}
+Provides:       libelput%{sover} = %{version}
+Obsoletes:      libelput%{sover} < %{version}
+Provides:       libelua%{sover} = %{version}
+Obsoletes:      libelua%{sover} < %{version}
+Provides:       libembryo%{sover} = %{version}
+Obsoletes:      libembryo%{sover} < %{version}
+Provides:       libemile%{sover} = %{version}
+Obsoletes:      libemile%{sover} < %{version}
+Provides:       libemotion%{sover} = %{version}
+Obsoletes:      libemotion%{sover} < %{version}
+Provides:       libeo%{sover} = %{version}
+Obsoletes:      libeo%{sover} < %{version}
+Provides:       libeolian%{sover} = %{version}
+Obsoletes:      libeolian%{sover} < %{version}
+Provides:       libephysics%{sover} = %{version}
+Obsoletes:      libephysics%{sover} < %{version}
+Provides:       libethumb%{sover} = %{version}
+Obsoletes:      libethumb%{sover} < %{version}
+Provides:       libethumb_client%{sover} = %{version}
+Obsoletes:      libethumb_client%{sover} < %{version}
+Provides:       libevas%{sover} = %{version}
+Obsoletes:      libevas%{sover} < %{version}
 %{?systemd_requires}
 %if %{build_doc}
 BuildRequires:  doxygen
@@ -212,31 +269,9 @@ by Enlightenment 17, Terminology, Tizen mobile platform and much more.
 Summary:        Headers, pkgconfig files and other files for development with EFL
 License:        BSD-2-Clause AND LGPL-2.1-only AND Zlib
 Requires:       %{name} = %{version}
-Requires:       edje = %{version}
-Requires:       embryo = %{version}
 Requires:       gettext-devel
 Requires:       giflib-devel
 Requires:       glibc-devel
-Requires:       lib%{?mageia:%{?_bit}}ecore%{sover} = %{version}
-Requires:       lib%{?mageia:%{?_bit}}ector%{sover} = %{version}
-Requires:       lib%{?mageia:%{?_bit}}edje%{sover} = %{version}
-Requires:       lib%{?mageia:%{?_bit}}eet%{sover} = %{version}
-Requires:       lib%{?mageia:%{?_bit}}eeze%{sover} = %{version}
-Requires:       lib%{?mageia:%{?_bit}}efreet%{sover} = %{version}
-Requires:       lib%{?mageia:%{?_bit}}efreet_mime%{sover} = %{version}
-Requires:       lib%{?mageia:%{?_bit}}efreet_trash%{sover} = %{version}
-Requires:       lib%{?mageia:%{?_bit}}eina%{sover} = %{version}
-Requires:       lib%{?mageia:%{?_bit}}eio%{sover} = %{version}
-Requires:       lib%{?mageia:%{?_bit}}eldbus%{sover} = %{version}
-Requires:       lib%{?mageia:%{?_bit}}elementary%{sover} = %{version}
-Requires:       lib%{?mageia:%{?_bit}}elocation%{sover} = %{version}
-Requires:       lib%{?mageia:%{?_bit}}embryo%{sover} = %{version}
-Requires:       lib%{?mageia:%{?_bit}}emile%{sover} = %{version}
-Requires:       lib%{?mageia:%{?_bit}}emotion%{sover} = %{version}
-Requires:       lib%{?mageia:%{?_bit}}eo%{sover} = %{version}
-Requires:       lib%{?mageia:%{?_bit}}ethumb%{sover} = %{version}
-Requires:       lib%{?mageia:%{?_bit}}ethumb_client%{sover} = %{version}
-Requires:       lib%{?mageia:%{?_bit}}evas%{sover} = %{version}
 Requires:       pkgconfig(dbus-1)
 Requires:       pkgconfig(dri)
 Requires:       pkgconfig(egl)
@@ -315,7 +350,6 @@ Requires:       pkgconfig(gstreamer-1.0)
 Requires:       pkgconfig(gstreamer-plugins-base-1.0)
 %endif
 %if 0%{?physics_present}
-Requires:       lib%{?mageia:%{?_bit}}ephysics%{sover} = %{version}
 Requires:       pkgconfig(bullet)
 %endif
 %if 0%{?physics_present}
@@ -325,260 +359,6 @@ Obsoletes:      %{?mageia:%{_lib}}ephysics-devel < %{version}
 
 %description %{?mageia:-n %{_lib}%{name}-}devel
 Headers, pkgconfig files and other files needed for development with EFL.
-
-%package -n lib%{?mageia:%{?_bit}}ecore%{sover}
-Summary:        Ecore, part of EFL
-License:        BSD-2-Clause
-
-%description -n lib%{?mageia:%{?_bit}}ecore%{sover}
-Ecore is a clean and tiny event loop library with many modules to do lots of
-convenient things for a programmer, to save time and effort.
-
-%package -n lib%{?mageia:%{?_bit}}ector%{sover}
-Summary:        Ector, part of EFL
-License:        LGPL-2.1-only
-
-%description -n lib%{?mageia:%{?_bit}}ector%{sover}
-Ector provides a new retained rendering library that is used by Evas to
-provide Evas_Object_VG. This is a new Evas_Object that provides a vector
-graphics scene graph following the SVG specification. It will be considered
-a bug if some behaviour does not follow the SVG standard.
-
-Evas_Object_VG provides 3 kind of objects for now: shape, as well as linear
-and radial gradients.
-
-%package -n lib%{?mageia:%{?_bit}}edje%{sover}
-Summary:        Edje, part of EFL
-License:        BSD-2-Clause AND GPL-2.0-only
-
-%description -n lib%{?mageia:%{?_bit}}edje%{sover}
-Abstract GUI layout and animation object library.
-
-%package -n lib%{?mageia:%{?_bit}}eldbus%{sover}
-Summary:        ELDbus, part of EFL
-License:        LGPL-2.1-only
-
-%description -n lib%{?mageia:%{?_bit}}eldbus%{sover}
-ELDbus is a wrapper around libdbus for the Enlightenment Foundation Libraries.
-
-%package -n lib%{?mageia:%{?_bit}}eet%{sover}
-Summary:        Eet, part of EFL
-License:        BSD-2-Clause
-
-%description -n lib%{?mageia:%{?_bit}}eet%{sover}
-Eet is a tiny library designed to write an arbitrary set of chunks of data
-to a file and optionally compress each chunk (very much like a zip file)
-and allow fast random-access reading of the file later on. It does not do
-zip as a zip itself has more complexity than is needed, and it was much
-simpler to implement this once here.
-
-It also can encode and decode data structures in memory, as well as image
-data for saving to eet files or sending across the network to other
-machines, or just writing to arbitrary files on the system. All data is
-encoded in a platform independent way and can be written and read by any
-architecture.
-
-%package -n lib%{?mageia:%{?_bit}}eeze%{sover}
-Summary:        Eeze, part of EFL
-License:        BSD-2-Clause
-
-%description -n lib%{?mageia:%{?_bit}}eeze%{sover}
-Eeze is a library for manipulating devices through udev with a simple and
-fast api. It interfaces directly with libudev, avoiding such middleman
-daemons as udisks/upower or hal, to immediately gather device information
-the instant it becomes known to the system.  This can be used to determine
-such things as:
-  * If a cdrom has a disk inserted
-  * The temperature of a cpu core
-  * The remaining power left in a battery
-  * The current power consumption of various parts
-  * Monitor in realtime the status of peripheral devices
-
-Each of the above examples can be performed by using only a single eeze
-function, as one of the primary focuses of the library is to reduce the
-complexity of managing devices.
-
-%package -n lib%{?mageia:%{?_bit}}efl%{sover}
-Summary:        EFL's general purpose library
-License:        LGPL-2.1-only
-
-%description -n lib%{?mageia:%{?_bit}}efl%{sover}
-The foundation components for the Enlightenment foundation libraries.
-
-%package -n lib%{?mageia:%{?_bit}}efreet%{sover}
-Summary:        Efreet, part of EFL
-License:        BSD-2-Clause
-
-%description -n lib%{?mageia:%{?_bit}}efreet%{sover}
-Standards handling for FreeDesktop.org standards.
-
-%package -n lib%{?mageia:%{?_bit}}efreet_mime%{sover}
-Summary:        Efreet, part of EFL
-License:        BSD-2-Clause
-Conflicts:      lib%{?mageia:%{?_bit}}efreet%{sover} < 1.8
-
-%description -n lib%{?mageia:%{?_bit}}efreet_mime%{sover}
-Standards handling for FreeDesktop.org mime types.
-
-%package -n lib%{?mageia:%{?_bit}}efreet_trash%{sover}
-Summary:        Efreet, part of EFL
-License:        BSD-2-Clause
-Conflicts:      lib%{?mageia:%{?_bit}}efreet%{sover} < 1.8
-
-%description -n lib%{?mageia:%{?_bit}}efreet_trash%{sover}
-Standards handling for FreeDesktop.org trash.
-
-%package -n lib%{?mageia:%{?_bit}}eina%{sover}
-Summary:        Eina, part of EFL
-License:        LGPL-2.1-only
-
-%description -n lib%{?mageia:%{?_bit}}eina%{sover}
-Eina is library handling various data types.
-
-%package -n lib%{?mageia:%{?_bit}}eio%{sover}
-Summary:        Eio, part of EFL
-License:        LGPL-2.1-only
-
-%description -n lib%{?mageia:%{?_bit}}eio%{sover}
-Extension of ecore for parallel I/O operations.
-
-%package -n lib%{?mageia:%{?_bit}}elementary%{sover}
-Summary:        Elementary, part of EFL
-License:        LGPL-2.1-only
-
-%description -n lib%{?mageia:%{?_bit}}elementary%{sover}
-The core shared library for widgets.
-
-%package -n lib%{?mageia:%{?_bit}}elocation%{sover}
-Summary:        ELocation, part of EFL
-License:        LGPL-2.1-only
-
-%description -n lib%{?mageia:%{?_bit}}elocation%{sover}
-A location the shared library.
-
-%if 0%{?enable_wayland}
-%package -n lib%{?mageia:%{?_bit}}elput%{sover}
-Summary:        Elput, part of EFL
-License:        LGPL-2.1-only
-
-%description -n lib%{?mageia:%{?_bit}}elput%{sover}
-Elput is a library to handle input devices.
-
-For handling wayland input.
-%endif
-
-%package -n lib%{?mageia:%{?_bit}}elua%{sover}
-Summary:        Lua bindings for the EFL
-License:        LGPL-2.1-only
-
-%description -n lib%{?mageia:%{?_bit}}elua%{sover}
-Support for lua within the efl.
-
-%package -n lib%{?mageia:%{?_bit}}embryo%{sover}
-Summary:        Embryo, part of EFL
-License:        BSD-2-Clause AND Zlib
-
-%description -n lib%{?mageia:%{?_bit}}embryo%{sover}
-Embryo is a tiny library designed to interpret limited small programs
-compiled by the included compiler, embryo_cc. It is mostly a cleaned up and
-smaller version of the original Small abstract machine. The compiler is
-mostly untouched.
-
-%package -n lib%{?mageia:%{?_bit}}emotion%{sover}
-Summary:        Emotion, part of EFL
-License:        BSD-2-Clause
-
-%description -n lib%{?mageia:%{?_bit}}emotion%{sover}
-Emotion is a wrapper that provides a uniform api to a number of different
-media libraries.
-
-Currently the supported backends for this.
-
-%package -n lib%{?mageia:%{?_bit}}emile%{sover}
-Summary:        Emile, part of EFL
-License:        LGPL-2.1-only
-
-%description -n lib%{?mageia:%{?_bit}}emile%{sover}
-Emile provides a library to bring together serialization, compression and
-ciphering.
-
-It is a low-level library and can be used by anything above Eina. It came
-along with a lot re-factoring of our current code base to make use of it
-and de-duplicate a lot of existing code.
-
-More refactoring is expected in ecore_con_ssl ciphering and general image
-compression.
-
-%package -n lib%{?mageia:%{?_bit}}eo%{sover}
-Summary:        Eo, part of EFL
-License:        LGPL-2.1-only
-
-%description -n lib%{?mageia:%{?_bit}}eo%{sover}
-Eo is library providing basic E object in OOP way of programming.
-
-%package -n lib%{?mageia:%{?_bit}}eolian%{sover}
-Summary:        Eolian, part of EFL
-License:        LGPL-2.1-only
-
-%description -n lib%{?mageia:%{?_bit}}eolian%{sover}
-Eolian is library for binding/code generation based on Eo descriptions.
-
-%package -n lib%{?mageia:%{?_bit}}ethumb%{sover}
-Summary:        EThumb, part of EFL
-License:        LGPL-2.1-only
-
-%description -n lib%{?mageia:%{?_bit}}ethumb%{sover}
-Thumbnail generation library for EFL.
-
-%if 0%{?physics_present}
-%package -n lib%{?mageia:%{?_bit}}ephysics%{sover}
-Summary:        EPhysics, part of EFL
-License:        LGPL-2.1-only
-
-%description -n lib%{?mageia:%{?_bit}}ephysics%{sover}
-EPhysics is a wrapper around bullet physics for the enlightenment
-foundation libraries.
-%endif
-
-%package -n lib%{?mageia:%{?_bit}}evas%{sover}
-Summary:        Evas, part of EFL
-License:        BSD-2-Clause
-
-%description -n lib%{?mageia:%{?_bit}}evas%{sover}
-Evas is a clean display canvas API that implements a scene graph, not an
-immediate-mode rendering target, is cross-platform, for several target
-display systems that can draw anti-aliased text, smooth super and
-sub-sampled scaled images, alpha-blend objects and much more.
-
-%package -n lib%{?mageia:%{?_bit}}ethumb_client%{sover}
-Summary:        EThumb Client, part of EFL
-License:        LGPL-2.1-only
-
-%description -n lib%{?mageia:%{?_bit}}ethumb_client%{sover}
-Shared library of ethumb client.
-
-%package -n edje
-Summary:        Abstract GUI layout and animation object library
-License:        BSD-2-Clause
-Requires:       efl = %{version}
-Requires:       embryo = %{version}
-Requires:       lib%{?mageia:%{?_bit}}edje%{sover} = %{version}
-
-%description -n edje
-Abstract GUI layout and animation object library.
-
-This part of the Enlightenment Foundation Libraries.
-
-%package -n elementary
-Summary:        The widget set for enlightenment
-License:        LGPL-2.1-only
-Requires:       edje = %{version}
-Requires:       efl = %{version}
-Requires:       enlightenment-theme-dft
-Requires:       lib%{?mageia:%{?_bit}}elementary%{sover} = %{version}
-
-%description -n elementary
-Set of widgets for enlightenment focused on touch devices.
 
 %if %{build_examples}
 %package -n elementary-examples
@@ -596,19 +376,6 @@ Requires:       efl = %{version}
 
 %description -n elua
 A set of efl bindings for the LuaJIT environment.
-
-%package -n embryo
-Summary:        Abstract GUI layout and animation object library
-License:        BSD-2-Clause
-Requires:       lib%{?mageia:%{?_bit}}embryo%{sover} = %{version}
-
-%description -n embryo
-Embryo is a tiny library designed to interpret limited small programs
-compiled by the included compiler, embryo_cc. It is mostly a cleaned up and
-smaller version of the original Small abstract machine. The compiler is
-mostly untouched.
-
-This part of the Enlightenment Foundation Libraries.
 
 %package -n evas-generic-loaders
 Summary:        Set of generic loaders for Evas
@@ -729,8 +496,8 @@ INCLUDEDIR+=" -I$(pkg-config --variable=includedir libinput)"
 export CFLAGS="%{optflags}%{?mageia: -g} -Wno-address %{?enable_wayland:$INCLUDEDIR}"
 
 %meson \
-%if !0%{?physics_present}
-    -Dphysics=false \
+%if 0%{?physics_present}
+    -Dphysics=true \
 %endif
 %if !0%{?poppler_present}
     -Devas-loaders-disabler=pdf,webp \
@@ -833,134 +600,72 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %find_lang %{name}
 
-%if !0%{?mageia}
 %post
+/sbin/ldconfig
+%if !0%{?mageia}
 %systemd_user_post ethumb.service
+%endif
 
+%if !0%{?mageia}
 %preun
 %systemd_user_preun ethumb.service
+%endif
 
 %postun
+/sbin/ldconfig
+%if !0%{?mageia}
 %systemd_user_postun ethumb.service
-%endif
-
-%post -n lib%{?mageia:%{?_bit}}ecore%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}ecore%{sover} -p /sbin/ldconfig
-%post -n lib%{?mageia:%{?_bit}}ector%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}ector%{sover} -p /sbin/ldconfig
-%post -n lib%{?mageia:%{?_bit}}edje%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}edje%{sover} -p /sbin/ldconfig
-%post -n lib%{?mageia:%{?_bit}}eldbus%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}eldbus%{sover} -p /sbin/ldconfig
-%post -n lib%{?mageia:%{?_bit}}eet%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}eet%{sover} -p /sbin/ldconfig
-%post -n lib%{?mageia:%{?_bit}}eeze%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}eeze%{sover} -p /sbin/ldconfig
-%post -n lib%{?mageia:%{?_bit}}efl%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}efl%{sover} -p /sbin/ldconfig
-%post -n lib%{?mageia:%{?_bit}}efreet%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}efreet%{sover} -p /sbin/ldconfig
-%post -n lib%{?mageia:%{?_bit}}eina%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}eina%{sover} -p /sbin/ldconfig
-%post -n lib%{?mageia:%{?_bit}}eio%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}eio%{sover} -p /sbin/ldconfig
-%post -n lib%{?mageia:%{?_bit}}elementary%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}elementary%{sover} -p /sbin/ldconfig
-%post -n lib%{?mageia:%{?_bit}}elocation%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}elocation%{sover} -p /sbin/ldconfig
-
-%if 0%{?enable_wayland}
-%post -n lib%{?mageia:%{?_bit}}elput%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}elput%{sover} -p /sbin/ldconfig
-%endif
-
-%post -n lib%{?mageia:%{?_bit}}elua%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}elua%{sover} -p /sbin/ldconfig
-%post -n lib%{?mageia:%{?_bit}}embryo%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}embryo%{sover} -p /sbin/ldconfig
-%post -n lib%{?mageia:%{?_bit}}emile%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}emile%{sover} -p /sbin/ldconfig
-%post -n lib%{?mageia:%{?_bit}}emotion%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}emotion%{sover} -p /sbin/ldconfig
-%post -n lib%{?mageia:%{?_bit}}eo%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}eo%{sover} -p /sbin/ldconfig
-%post -n lib%{?mageia:%{?_bit}}eolian%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}eolian%{sover} -p /sbin/ldconfig
-
-%if 0%{?physics_present}
-%post -n lib%{?mageia:%{?_bit}}ephysics%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}ephysics%{sover} -p /sbin/ldconfig
-%endif
-
-%post -n lib%{?mageia:%{?_bit}}ethumb%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}ethumb%{sover} -p /sbin/ldconfig
-%post -n lib%{?mageia:%{?_bit}}ethumb_client%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}ethumb_client%{sover} -p /sbin/ldconfig
-%post -n lib%{?mageia:%{?_bit}}evas%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}evas%{sover} -p /sbin/ldconfig
-%post -n lib%{?mageia:%{?_bit}}efreet_trash%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}efreet_trash%{sover} -p /sbin/ldconfig
-%post -n lib%{?mageia:%{?_bit}}efreet_mime%{sover} -p /sbin/ldconfig
-%postun -n lib%{?mageia:%{?_bit}}efreet_mime%{sover} -p /sbin/ldconfig
-
-%if 0%{?suse_version} < 1500
-%post -n elementary
-%icon_theme_cache_post
-%desktop_database_post
-
-%postun -n elementary
-%icon_theme_cache_postun
-%desktop_database_postun
-
-%post -n edje
-%mime_database_post
-
-%postun -n edje
-%mime_database_postun
-%endif
-
-%if 0%{?suse_version} < 1320 || !0%{?suse_version}
-%post -n enlightenment-x-dark-icon-theme
-gtk-update-icon-cache %{_datadir}/icons/Enlightenment-X-dark &> /dev/null || :
 %endif
 
 %{?suse_version:%files}
 %{!?suse_version:%files -f %{name}.lang}
-%{_bindir}/*
-%exclude %{_bindir}/edje_*
-%exclude %{_bindir}/elementary_*
-%exclude %{_bindir}/embryo_*
-%exclude %{_datadir}/ecore_x/checkme
-%exclude %{_datadir}/evas/checkme
-
-%if %{build_examples}
-%exclude %{_datadir}/*/examples
-%endif
+%exclude %{_bindir}/elementary_codegen
+%exclude %{_bindir}/elementary_test
 # evas generic loaders
 %exclude %{_libdir}/evas/utils/
+%exclude %{_libdir}/libeo_dbg.so.*
+%exclude %{_datadir}/ecore_x/checkme
+%exclude %{_datadir}/evas/checkme
+%exclude %{_datadir}/elementary/themes/*
+
+#%if %{build_examples}
+#%exclude %{_datadir}/*/examples
+#%endif
 
 %if %{generic_players_present}
 %exclude %{_libdir}/emotion/generic_players/
 %endif
 
 %doc AUTHORS ChangeLog COPYING NEWS README
+%{_bindir}/*
 %{_libdir}/ecore
 %{_libdir}/ecore_con
 %{_libdir}/ecore_evas
 %{_libdir}/ecore_imf
+%{_libdir}/edje
 %{_libdir}/eeze
 %{_libdir}/efreet
+%{_libdir}/elementary
 %{_libdir}/emotion
 %{_libdir}/ethumb
 %{_libdir}/ethumb_client
 %{_libdir}/evas
+%{_libdir}/lib*.so.*
+%{_datadir}/applications/*.desktop
 %{_datadir}/dbus-1
 %{_datadir}/ecore
 %{_datadir}/ecore_x
+%{_datadir}/edje
+%{_datadir}/elementary
+%{_datadir}/embryo
 %{_datadir}/emotion
 %{_datadir}/eo
+%{_datadir}/eolian
 %{_datadir}/ethumb
 %{_datadir}/evas
+%{_datadir}/exactness
+%{_datadir}/icons/hicolor/*
+%{_datadir}/mime/packages/edje.xml
 %{_userunitdir}/ethumb.service
 
 %if 0%{?enable_wayland}
@@ -971,87 +676,6 @@ gtk-update-icon-cache %{_datadir}/icons/Enlightenment-X-dark &> /dev/null || :
 %files lang -f %{name}.lang
 %endif
 
-%files -n lib%{?mageia:%{?_bit}}efl%{sover}
-%{_libdir}/libefl*.so.*
-
-%files -n lib%{?mageia:%{?_bit}}ecore%{sover}
-%{_libdir}/libecore*.so.*
-
-%files -n lib%{?mageia:%{?_bit}}ector%{sover}
-%{_libdir}/libector*.so.*
-
-%files -n lib%{?mageia:%{?_bit}}edje%{sover}
-%{_libdir}/libedje.so.*
-
-%files -n lib%{?mageia:%{?_bit}}eldbus%{sover}
-%{_libdir}/libeldbus.so.*
-
-%files -n lib%{?mageia:%{?_bit}}elocation%{sover}
-%{_libdir}/libelocation.so.*
-
-%if 0%{?enable_wayland}
-%files -n lib%{?mageia:%{?_bit}}elput%{sover}
-%{_libdir}/libelput.so.*
-%endif
-
-%if 0%{?luajit_present}
-%files -n lib%{?mageia:%{?_bit}}elua%{sover}
-%{_libdir}/libelua.so.*
-%endif
-
-%files -n lib%{?mageia:%{?_bit}}eet%{sover}
-%{_libdir}/libeet.so.*
-
-%files -n lib%{?mageia:%{?_bit}}eeze%{sover}
-%{_libdir}/libeeze.so.*
-
-%files -n lib%{?mageia:%{?_bit}}efreet%{sover}
-%{_libdir}/libefreet.so.*
-
-%files -n lib%{?mageia:%{?_bit}}efreet_mime%{sover}
-%{_libdir}/libefreet_mime.so.*
-
-%files -n lib%{?mageia:%{?_bit}}efreet_trash%{sover}
-%{_libdir}/libefreet_trash.so.*
-
-%files -n lib%{?mageia:%{?_bit}}eina%{sover}
-%{_libdir}/libeina.so.*
-
-%files -n lib%{?mageia:%{?_bit}}eio%{sover}
-%{_libdir}/libeio.so.*
-
-%files -n lib%{?mageia:%{?_bit}}elementary%{sover}
-%{_libdir}/libelementary.so.*
-
-%files -n lib%{?mageia:%{?_bit}}embryo%{sover}
-%{_libdir}/libembryo.so.*
-
-%files -n lib%{?mageia:%{?_bit}}emile%{sover}
-%{_libdir}/libemile.so.*
-
-%files -n lib%{?mageia:%{?_bit}}emotion%{sover}
-%{_libdir}/libemotion.so.*
-
-%files -n lib%{?mageia:%{?_bit}}eo%{sover}
-%{_libdir}/libeo.so.*
-
-%files -n lib%{?mageia:%{?_bit}}eolian%{sover}
-%{_libdir}/libeolian.so.*
-
-%if 0%{?physics_present}
-%files -n lib%{?mageia:%{?_bit}}ephysics%{sover}
-%{_libdir}/libephysics.so.*
-%endif
-
-%files -n lib%{?mageia:%{?_bit}}ethumb%{sover}
-%{_libdir}/libethumb.so.*
-
-%files -n lib%{?mageia:%{?_bit}}ethumb_client%{sover}
-%{_libdir}/libethumb_client.so.*
-
-%files -n lib%{?mageia:%{?_bit}}evas%{sover}
-%{_libdir}/libevas.so.*
-
 %files %{?mageia:-n %{_lib}%{name}-}devel
 %{_bindir}/elementary_codegen
 %{_bindir}/elementary_test
@@ -1061,11 +685,10 @@ gtk-update-icon-cache %{_datadir}/icons/Enlightenment-X-dark &> /dev/null || :
 %{_libdir}/cmake/
 %{_includedir}/efl-1/
 %if 0%{?enable_wayland}
-%{_includedir}/efl-wl-1/
+%{_includedir}/efl-canvas-wl-1/
 %endif
 %{_includedir}/ecore-1/
 %{_includedir}/ecore-audio-1/
-%{_includedir}/ecore-avahi-1/
 %{_includedir}/ecore-con-1/
 %{_includedir}/ecore-evas-1/
 %{_includedir}/ecore-fb-1/
@@ -1078,7 +701,6 @@ gtk-update-icon-cache %{_datadir}/icons/Enlightenment-X-dark &> /dev/null || :
 %{_includedir}/ecore-x-1/
 %{_includedir}/eldbus-1/
 %{_includedir}/elementary-1
-%{_includedir}/elocation-1/
 %if 0%{?luajit_present}
 %{_includedir}/elua-1/
 %endif
@@ -1121,39 +743,8 @@ gtk-update-icon-cache %{_datadir}/icons/Enlightenment-X-dark &> /dev/null || :
 %{_datadir}/evas/checkme
 %{_datadir}/gdb/
 
-%files -n edje
-%{_bindir}/edje_*
-%{_datadir}/edje
-%if %{build_examples}
-%exclude %{_datadir}/edje/examples
-%endif
-%{_libdir}/edje
-%{_datadir}/mime/packages/edje.xml
-
-%files -n elementary
-%{_bindir}/elementary_*
-%exclude %{_bindir}/elementary_codegen
-%exclude %{_bindir}/elementary_test
-%{_datadir}/elementary
-%if %{build_examples}
-%exclude %{_datadir}/elementary/examples
-%endif
-%exclude %{_datadir}/elementary/themes/*
-%{_datadir}/icons/hicolor/*
-%{_datadir}/applications/*.desktop
-%{_libdir}/elementary
-
-%if %{build_examples}
-%files -n elementary-examples
-%{_datadir}/elementary/examples
-%endif
-
 %files -n elua
 %{_datadir}/elua
-
-%files -n embryo
-%{_bindir}/embryo_*
-%{_datadir}/embryo
 
 %files -n enlightenment-theme-upstream
 %{_datadir}/elementary/themes/default.edj
@@ -1186,8 +777,8 @@ gtk-update-icon-cache %{_datadir}/icons/Enlightenment-X-dark &> /dev/null || :
 
 %if %{build_examples}
 %files examples
-%{_datadir}/*/examples
-%exclude %{_datadir}/elementary/examples
+#%{_datadir}/*/examples
+#%exclude %{_datadir}/elementary/examples
 %endif
 
 %files testsuite
@@ -1196,7 +787,6 @@ gtk-update-icon-cache %{_datadir}/icons/Enlightenment-X-dark &> /dev/null || :
 %{_datadir}/efreet/
 %{_datadir}/ethumb_client/
 %if %{build_examples}
-%exclude %{_datadir}/ethumb_client/examples
 %endif
 
 %changelog
