@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Jun 17 14:33:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.4.2
+  * Made the new "Build" light mode operational
+
+-------------------------------------------------------------------
+Fri Jun 12 00:26:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add gzdoom-sdlbug.patch.
+
+-------------------------------------------------------------------
+Thu Jun 11 15:19:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.4.1
+  * Heretic's "bag of holding" had incorrectly given mace capacity.
+  * Mapped "Smooth mouse" back to the "m_filter" CVAR, and
+    removed the "smooth_mouse" CVAR.
+  * Fixed crash with texture upscaling in the truecolor software
+    renderer.
+  * Fixed crash rendering 3D floors without ceiling or floor
+    textures in software.
+
+-------------------------------------------------------------------
+Sun Jun  7 23:39:42 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.4.0
+  * Heretic's "bag of holding" had incorrectly given mace ammo.
+  * Added per pixel lighting for decals.
+  * Added a compatibility option for a bad teleporter in the
+    final map of Strife.
+  * Add a cvar to control weapon bobbing while firing.
+  * Fixed crash on maps with out of range sidedef and sector
+    numbers.
+  * Fixed missing sound for Polyobj_MoveTo.
+  * Attenuated lights for Strife.
+  * Added MTF_NOCOUNT to spawn flags.
+- Drop gzdoom-system-gme.patch (moved to zmusic.spec),
+  gzdoom-dl.patch (unnecessary). Add gzdoom-spirv.patch.
+
+-------------------------------------------------------------------
 Wed Jan 29 17:43:59 UTC 2020 - Michael Scafidi <raptir@gmail.com>
 
 - Update to release 4.3.3
@@ -7,10 +47,14 @@ Wed Jan 29 17:43:59 UTC 2020 - Michael Scafidi <raptir@gmail.com>
   * fixed calling a function on string CVar
   * added ability to filter VM disassembly dump
   * add check for unity version of Nerve.wad
-  * infrastructure in place in case Nerve.wad changes again, this can be extended
-  * customized invulnerability colormap does not interfere with Powerup.ColorMap
+  * infrastructure in place in case Nerve.wad changes again, this
+    can be extended.
+  * customized invulnerability colormap does not interfere with
+    Powerup.ColorMap.
   * precache a few sounds being referenced in common game code.
-  * define misc/secret for Hexen, too. By now there are some mods defining secrets for the game so this sound should be present there.
+  * define misc/secret for Hexen, too. By now there are some mods
+    defining secrets for the game so this sound should be present
+    there.
   * Implement special colormap support for softpoly
   * Softpoly: Fix broken fixed camera light for walls
   * make nosave standalone CVar flag, alongside server and user

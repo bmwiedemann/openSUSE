@@ -1,67 +1,38 @@
 From: Jan Engelhardt <jengelh@inai.de>
 Date: 2019-04-13 15:02:22.799297208 +0200
 
-Use Vulkan system libraries instead of bundled code.
+Use Vulkan/glslang/spirv system libraries instead of bundled code.
 
 ---
- CMakeLists.txt                              |    3 ---
- src/CMakeLists.txt                          |    2 +-
- src/rendering/vulkan/shaders/vk_shader.cpp  |    2 +-
- src/rendering/vulkan/system/vk_builders.cpp |    4 ++--
- 4 files changed, 4 insertions(+), 7 deletions(-)
+ CMakeLists.txt     |    4 +---
+ src/CMakeLists.txt |    2 +-
+ 2 files changed, 2 insertions(+), 4 deletions(-)
 
-Index: gzdoom-g4.2.4/CMakeLists.txt
+Index: gzdoom-g4.4.0/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.2.4.orig/CMakeLists.txt
-+++ gzdoom-g4.2.4/CMakeLists.txt
-@@ -330,9 +330,6 @@ option(FORCE_INTERNAL_ASMJIT "Use intern
+--- gzdoom-g4.4.0.orig/CMakeLists.txt
++++ gzdoom-g4.4.0/CMakeLists.txt
+@@ -307,9 +307,7 @@ option(FORCE_INTERNAL_ASMJIT "Use intern
  mark_as_advanced( FORCE_INTERNAL_ASMJIT )
  
  if (HAVE_VULKAN)
 -	add_subdirectory( libraries/glslang/glslang)
 -	add_subdirectory( libraries/glslang/spirv )
 -	add_subdirectory( libraries/glslang/OGLCompilersDLL )
++	include_directories(/usr/include/glslang/Public /usr/include/SPIRV)
  endif()
  
  if( ZLIB_FOUND AND NOT FORCE_INTERNAL_ZLIB )
-Index: gzdoom-g4.2.4/src/CMakeLists.txt
+Index: gzdoom-g4.4.0/src/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.2.4.orig/src/CMakeLists.txt
-+++ gzdoom-g4.2.4/src/CMakeLists.txt
-@@ -434,7 +434,7 @@ add_custom_target( revision_check ALL
+--- gzdoom-g4.4.0.orig/src/CMakeLists.txt
++++ gzdoom-g4.4.0/src/CMakeLists.txt
+@@ -435,7 +435,7 @@ add_custom_target( revision_check ALL
  
- set( ZDOOM_LIBS ${ZDOOM_LIBS} "${ZLIB_LIBRARIES}" "${JPEG_LIBRARIES}" "${BZIP2_LIBRARIES}" "${GME_LIBRARIES}" "${CMAKE_DL_LIBS}" )
+ set( ZDOOM_LIBS ${ZDOOM_LIBS} "${ZLIB_LIBRARIES}" "${JPEG_LIBRARIES}" "${BZIP2_LIBRARIES}" "${CMAKE_DL_LIBS}" )
  if (HAVE_VULKAN)
 -	set( ZDOOM_LIBS ${ZDOOM_LIBS} "glslang" "SPIRV" "OGLCompiler")
 +	set( ZDOOM_LIBS ${ZDOOM_LIBS} -lglslang -lSPIRV -lOGLCompiler)
  endif()
  include_directories( "${ZLIB_INCLUDE_DIR}" "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIRS}" "${JPEG_INCLUDE_DIR}" "${ZMUSIC_INCLUDE_DIR}" )
  
-Index: gzdoom-g4.2.4/src/rendering/vulkan/shaders/vk_shader.cpp
-===================================================================
---- gzdoom-g4.2.4.orig/src/rendering/vulkan/shaders/vk_shader.cpp
-+++ gzdoom-g4.2.4/src/rendering/vulkan/shaders/vk_shader.cpp
-@@ -4,7 +4,7 @@
- #include "hwrenderer/utility/hw_shaderpatcher.h"
- #include "w_wad.h"
- #include "doomerrors.h"
--#include <ShaderLang.h>
-+#include <glslang/Public/ShaderLang.h>
- 
- VkShaderManager::VkShaderManager(VulkanDevice *device) : device(device)
- {
-Index: gzdoom-g4.2.4/src/rendering/vulkan/system/vk_builders.cpp
-===================================================================
---- gzdoom-g4.2.4.orig/src/rendering/vulkan/system/vk_builders.cpp
-+++ gzdoom-g4.2.4/src/rendering/vulkan/system/vk_builders.cpp
-@@ -2,8 +2,8 @@
- #include "vk_builders.h"
- #include "doomerrors.h"
- #include "r_data/renderstyle.h"
--#include <ShaderLang.h>
--#include <GlslangToSpv.h>
-+#include <glslang/Public/ShaderLang.h>
-+#include <SPIRV/GlslangToSpv.h>
- 
- static const TBuiltInResource DefaultTBuiltInResource = {
- 	/* .MaxLights = */ 32,
