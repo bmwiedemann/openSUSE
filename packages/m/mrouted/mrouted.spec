@@ -1,6 +1,7 @@
 #
 # spec file for package mrouted
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,12 +13,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           mrouted
-Version:        3.9.8
+Version:        4.0
 Release:        0
 Summary:        An implementation of the DVMRP multicast routing protocol
 License:        BSD-3-Clause AND BSD-4-Clause
@@ -25,7 +26,10 @@ Group:          Productivity/Networking/Routing
 URL:            https://github.com/troglobit/mrouted
 #Git-Clone:     https://github.com/troglobit/mrouted.git
 Source:         https://github.com/troglobit/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  bison
+%{?systemd_requires}
 
 %description
 Mrouted is an implementation of the Distance-Vector Multicast Routing
@@ -39,18 +43,33 @@ virtual point-to-point, IP-IP tunnel, links between a pair of mrouted routers.
 %setup -q
 
 %build
-./configure
-make %{?_smp_mflags}
+autoreconf -fiv
+%configure --with-systemd=%{_unitdir}
+%make_build
 
 %install
-%make_install prefix=/usr
+%make_install prefix=%{_prefix}
+install -D -m0644 mrouted.conf %{buildroot}/%{_sysconfdir}/mrouted.conf
 rm -rf %{buildroot}/%{_datadir}/doc
 
+%preun
+%service_del_preun mrouted.service
+
+%postun
+%service_del_postun mrouted.service
+
+%pre
+%service_add_pre mrouted.service
+
+%post
+%service_add_post mrouted.service
+
 %files
-%doc AUTHORS ChangeLog README.md
+%doc ChangeLog.md README.md
 %license LICENSE
 %{_sbindir}/map-mbone
 %{_sbindir}/mrinfo
+%{_sbindir}/mroutectl
 %{_sbindir}/mrouted
 %{_sbindir}/mtrace
 %config %{_sysconfdir}/mrouted.conf
@@ -58,5 +77,8 @@ rm -rf %{buildroot}/%{_datadir}/doc
 %{_mandir}/man8/mrinfo.8%{?ext_man}
 %{_mandir}/man8/mrouted.8%{?ext_man}
 %{_mandir}/man8/mtrace.8%{?ext_man}
+%{_mandir}/man5/mrouted.conf.5%{?ext_man}
+%{_mandir}/man8/mroutectl.8%{?ext_man}
+%{_unitdir}/mrouted.service
 
 %changelog

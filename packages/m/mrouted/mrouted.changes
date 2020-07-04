@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Jun 10 14:41:41 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0
+  Major release with full IGMPv3 (ASM) support and a new
+  mroutectl tool.
+  Note: command line options have been changed!
+  Changes
+  * Support for IGMPv3, both sending queries and accepting
+    membership reports.
+  * Support for configurable IGMP query interval.
+  * Support for configurable IGMP robustness variable.
+  * Incompatible command line option refactor.
+  * New directive in mrouted.conf: no phyint, reverses the default
+    behavior of mrouted. Interfaces can then selectively be enabled
+  * Support for disabling the IP router-alert option
+    md unit file.
+  * Introduce mroutectl, a helpful tool to interact with mrouted.
+    This completely replaces mrouted.cache and mrouted.dump,
+    including SIGUSR1 and SIGUSR2 signals, which are now ignored.
+  * The mrouted.pid file, and the new mrouted.sock file, are now
+    located in /var/run
+  * Major cleanup of logging directives read from the command line,
+    and from mroutectl. Use -d ?, and -l ? to list alternatives.
+  Fixes
+  * Fix #20: Replace obsolete gethostbyname() w/ getaddrinfo()
+  * Fix #25: Save mrouted.genid to persistent store in /var/lib
+    instead of /var/run
+  * Fixed libc portability issues, e.g. GNU:isms like %m etc.
+  * Import OpenBSD fix to daemon() equivalent, use /dev/null for
+    stdin, stdout and stderr.
+  * Use clock_gettime(), with monotonic clock, instead of the
+    unsafe gethostbyname(), for all non-date-printing code paths.
+    Only for mrouted, other tools have not been changed.
+  * Fix lots of invalid format specifiers
+  * Fix memory leaks in mrouted on SIGHUP.
+- Package systemd service file
+
+-------------------------------------------------------------------
 Fri Jun 29 12:08:45 UTC 2018 - mardnh@gmx.de
 
 - Fix license
