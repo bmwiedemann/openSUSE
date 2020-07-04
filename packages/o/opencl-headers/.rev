@@ -155,4 +155,26 @@
   * Add API function pointer and ICD dispatch table definitions (#50)</comment>
     <requestid>780201</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7688393ebad435eea11a5515cd60e3d6</srcmd5>
+    <version>2.2+git.20200512</version>
+    <time>1593904375</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2+git.20200512:
+  * Add cl_half.h header (#60)
+  * add tokens for cl_amd_device_attribute_query (#90)
+  * Add Windows CI using Travis (#82)
+  * update headers for OpenCL 3.0 (#88)
+  * Add cl_khr_extended_versioning macro (#85)
+  * Synchronize experimental enum etc with cl.xml (#83)
+  * Include the DirectX sharing headers from CL/cl_icd.h. (#81)
+  * add missing error code CL_CONTEXT_TERMINATED_KHR
+  * Change license to Apache 2.0 (#76)
+  * Add enum value for `cl_khronos_vendor_id` (#71)
+  * Experimental enum cl_khronos_vendor_id (#75)
+  * experimental enums for language queries
+  * add experimental enum CL_COMMAND_SVM_MIGRATE_MEM
+  * move two subgroup queries from cl_kernel_info to cl_kernel_sub_group_info</comment>
+    <requestid>809455</requestid>
+  </revision>
 </revisionlist>
