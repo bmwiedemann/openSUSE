@@ -118,4 +118,17 @@
     <comment></comment>
     <requestid>783800</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b3d2d7bb29213cbb80fa58c4effc9648</srcmd5>
+    <version>5.2.1</version>
+    <time>1593904662</time>
+    <user>dimstar_suse</user>
+    <comment>- Upate to 5.2.1:
+  * Fix documentation build
+  * Allow kubeconfig context to be supplied in kubernetes backend
+  * Drop file.__ne__ implementation and require python &gt;= 3.5
+  * Use remote_user and remote_port in ansible.cfg
+  * Add arch (architecture) attribute to system_info module</comment>
+    <requestid>818477</requestid>
+  </revision>
 </revisionlist>
