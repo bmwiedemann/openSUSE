@@ -523,14 +523,6 @@ Requires:       lklug-fonts
 Requires:       pattern() = apparmor
 Requires:       pattern() = base
 Requires:       pattern() = console
-Requires:       pattern() = devel_C_C++
-Requires:       pattern() = devel_basis
-Requires:       pattern() = devel_kernel
-Requires:       pattern() = devel_osc_build
-Requires:       pattern() = devel_perl
-Requires:       pattern() = devel_rpm_build
-Requires:       pattern() = devel_ruby
-Requires:       pattern() = devel_web
 Requires:       pattern() = dhcp_dns_server
 Requires:       pattern() = directory_server
 Requires:       pattern() = enhanced_base
