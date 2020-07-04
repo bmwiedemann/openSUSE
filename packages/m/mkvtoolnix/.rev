@@ -1050,4 +1050,12 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
     <comment></comment>
     <requestid>810929</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>8ef5d5a8a376731ec3c0fce9ac1908e8</srcmd5>
+    <version>48.0.0</version>
+    <time>1593904436</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817563</requestid>
+  </revision>
 </revisionlist>

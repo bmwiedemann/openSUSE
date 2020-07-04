@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Sun Jun 28 05:55:10 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 48.0.0
+  New features and enhancements:
+  * mkvmerge: AC-3: file identification will report AC-3 tracks
+    encoded in Dolby Surround EX as codec "AC-3 Dolby Surround
+    EX".
+  * MKVToolNix GUI: multiplexer: on new installations the GUI
+    will now recognize all known ISO 639-2 language codes in file
+    names by default instead of only the top 100 of languages by
+    native speakers.
+  * MKVToolNix GUI: multiplexer: on new installations the list
+    of "often used languages" will by default only contain
+    certain agnostic ones ("multiple languages", "no linguistic
+    content", "reserved for local use", "uncoded languages"),
+    "English" and the default user interface language. The "list
+    of spoken languages by native speaks" isn't used anymore.
+  * MKVToolNix GUI: header editor: added an option to remove all
+    attachments to the tree context menu.
+  * MKVToolNix GUI: while the GUI is running it will remember
+    the last page that was selected when the preferences dialog
+    is closed. Upon re-opening the preferences that page will be
+    selected by default.
+  Bug fixes:
+  * mkvmerge: fixed a segmentation fault when exiting
+    prematurely due to write errors such as the destination
+    having run out of space.
+  * mkvmerge: DTS: fixed wrong channel count for DTS tracks with
+    XCh extensions.
+  * mkvmerge: MPEG TS reader: fixed detecting h.264/AVC and
+    h.265/HEVC tracks that consist of only a single frame.
+  * mkvmerge: MPEG TS reader: fixed handling of unbounded PES
+    sizes for tracks that consist of only a single PES packet.
+  * mkvmerge: MPEG TS reader: PGS subtitle tracks are now exempt
+    from the "detect bogus subtitle timestamps" heuristic which
+    could lead to some PGS subtitles not being timestamped
+    correctly. Symptoms were that they were shown at the wrong
+    time or that they were shown indefinitely.
+  * mkvmerge: MPEG TS reader: when reading MPLS playlists the
+    start timestamps of a play items were handled wrong: all the
+    timestamps of packets read were compared to that start
+    timestamp, dropping those packets whose timestamps were
+    smaller than the play item's start timestamp. The correct
+    behavior is to accept all packets as soon as the first one
+    with a timestamp equal to or larger than the play item's
+    start timestamp is encountered. This could result in PGS
+    subtitle entries located right at the start of the play item
+    being garbled/lost as they consist of multiple PES packets
+    for which some timestamps are often slightly smaller.
+  * mkvmerge: MPEG TS reader: when reading MPLS playlists
+    mkvmerge will no longer read the whole M2TS files they
+    reference, processing only the packets lying inside the
+    timestamp range given by the playlists's play item's start &
+    end timestamps. Instead mkvmerge will use the index
+    information present in corresponding clip information (CLPI)
+    files in order to seek to the nearest file position of the
+    play item's start timestamp. Additionally mkvmerge will
+    simply stop processing a file once the end timestamp is
+    seen. This change greatly speeds up processing files from
+    which only small portions must be read.
+  * mkvmerge: WavPack: fixed support for files created by v5 of
+    the program. Checksums, DSD audio data and non-standard
+    sampling rates are handled correctly.
+  * MKVToolNix GUI: multiplexer: fixed the cursor being
+    positioned wrong after entering or pasting characters that
+    aren't allowed in file names into the "destination file"
+    control.
+  Build system changes:
+  * libEBML v1.4.0 and libMatroska v1.6.0 are now required.
+  Other changes:
+  * The source code repository's main development branch was
+    renamed to `main`.
+
+-------------------------------------------------------------------
 Tue Jun  2 14:46:11 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints file to avoid build error for ppc64/ppc64le
