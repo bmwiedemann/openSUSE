@@ -18,11 +18,11 @@
 
 %define __builder ninja
 
-%define version_unconverted 1.4.1159+0
+%define version_unconverted 1.4.1366+0
 
 Name:           psi+
 URL:            https://github.com/psi-plus
-Version:        1.4.1159+0
+Version:        1.4.1366+0
 Release:        0
 Summary:        Jabber client using Qt
 License:        GPL-2.0-or-later AND Apache-2.0
@@ -154,12 +154,13 @@ Requires:       %{name} = %{version}
 %description plugins-birthdayreminderplugin
 This plugin is designed to show reminders of upcoming birthdays.
 
-%package plugins-gnupgplugin
+%package plugins-openpgpplugin
 Summary:        Plugin for Psi
 Group:          Productivity/Networking/Talk/Clients
 Requires:       %{name} = %{version}
+Provides:       plugins-gnupgplugin = %{version}
 
-%description plugins-gnupgplugin
+%description plugins-openpgpplugin
 Plugin to support GnuPG end-to-end encryption.
 
 %package plugins-gomokugameplugin
@@ -320,14 +321,6 @@ Requires:       %{name} = %{version}
 This plugin shows popup notifications when users from your roster changes
 their mood, tune or activity.
 
-%package plugins-skinsplugin
-Summary:        Plugin for Psi
-Group:          Productivity/Networking/Talk/Clients
-Requires:       %{name} = %{version}
-
-%description plugins-skinsplugin
-This plugin is designed to create, store and apply skins to Psi+.
-
 %package plugins-qipxstatusesplugin
 Summary:        Plugin for Psi
 Group:          Productivity/Networking/Talk/Clients
@@ -361,19 +354,14 @@ other resources for Psi+.
 %build
 %cmake \
 	-DCHAT_TYPE=WEBENGINE \
-	-DENABLE_PLUGINS=ON
+	-DENABLE_PLUGINS=ON \
+	-DINSTALL_PLUGINS_SDK=ON
 %cmake_build
 
 %install
 %cmake_install
 
 %suse_update_desktop_file psi-plus
-
-# plugins-devel
-install -d %{buildroot}%{_datadir}/psi-plus/plugins/include/
-install -m 0644 -t %{buildroot}%{_datadir}/psi-plus/plugins/ src/plugins/plugins.pri
-install -m 0644 -t %{buildroot}%{_datadir}/psi-plus/plugins/include/ src/plugins/include/*
-sed -e 's:target.path.*:target.path = %pluginspath:' src/plugins/psiplugin.pri > %{buildroot}%{_datadir}/psi-plus/plugins/psiplugin.pri
 
 # these are in %%doc and %%license
 rm -f %{buildroot}%{_datadir}/psi-plus/COPYING
@@ -419,9 +407,9 @@ dos2unix ChangeLog.Psi+.txt
 %defattr(-,root,root)
 %{pluginspath}/libconferenceloggerplugin.so
 
-%files plugins-gnupgplugin
+%files plugins-openpgpplugin
 %defattr(-,root,root)
-%{pluginspath}/libgnupgplugin.so
+%{pluginspath}/libopenpgpplugin.so
 
 %files plugins-gomokugameplugin
 %defattr(-,root,root)
@@ -495,10 +483,6 @@ dos2unix ChangeLog.Psi+.txt
 %defattr(-,root,root)
 %{pluginspath}/libqipxstatusesplugin.so
 
-%files plugins-skinsplugin
-%defattr(-,root,root)
-%{pluginspath}/libskinsplugin.so
-
 %files plugins-videostatusplugin
 %defattr(-,root,root)
 %{pluginspath}/libvideostatusplugin.so
@@ -531,14 +515,17 @@ dos2unix ChangeLog.Psi+.txt
 %{iconspath}/roster/stellar-1.jisp
 %{iconspath}/roster/README
 %{_datadir}/psi-plus/client_icons.txt
-%{_datadir}/psi-plus/skins
+#%%{_datadir}/psi-plus/skins
 %{_datadir}/psi-plus/sound
-#%%{_datadir}/psi-plus/themes
 
 %files plugins-devel
 %defattr(-,root,root)
+%dir %{_includedir}/psi-plus/
+%dir %{_includedir}/psi-plus/plugins/
+%{_includedir}/psi-plus/plugins/*.h
+%{_datadir}/cmake/Modules/FindPsiPluginsApi.cmake
 %dir %{_datadir}/psi-plus/plugins/
-%{_datadir}/psi-plus/plugins/include/
+%{_datadir}/psi-plus/plugins/*.cmake
 %{_datadir}/psi-plus/plugins/*.pri
 
 %changelog

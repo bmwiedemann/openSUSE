@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jun  5 11:31:28 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- update to 1.4.1366
+  * More svg related fixes
+  * relink libpsi
+  * Fixed overriding iconsets loading with svg inside
+  * Profanity converted to svg
+  * Render SVG in default size if desired size is not set
+  * Improve support of XEP-0380
+  * iris relinked
+  * Improve bookmarks menu + simplify work of translators
+  * Ensmall your icons
+  * Enlarge your icons
+  * Vectorize most of client icons
+  * Remove unused method from plugins interface
+  * Add indicator of secure messages in groupchats
+  * Rename icons related to encryption
+  * Change icons for all encrypted messages in chat
+  * Use captured this explicitly to hint compiler
+  * Fixed some deprecation warnings from Qt 5.15
+  * Removing deprecated bearer management
+  * More optimizations and fixes for svg icons
+  * Fixed rendering issues of svg clients in jid switcher
+  * Added original Conversations client icon
+  * An attempt to fix plugins options. Fixed codestyle
+  * and much more
+- skinsplugin dropped
+- gnupgplugin renamed to openpgpplugin
+
+-------------------------------------------------------------------
 Sun May  3 07:08:54 UTC 2020 - Jiri Slaby <jslaby@suse.com>
 
 - update to 1.4.1159
