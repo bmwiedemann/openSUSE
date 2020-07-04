@@ -2,9 +2,12 @@
     <service name="tar_scm" mode="disabled">
         <param name="url">git://github.com/SUSE/sap_host_exporter.git</param>
         <param name="scm">git</param>
-        <param name="revision">0.4.0</param>
+        <param name="revision">0.5.1</param>
         <param name="exclude">.git</param>
-        <param name="versionformat">@PARENT_TAG@+git.%ct.%h</param>
+        <param name="exclude">.github</param>
+        <param name="exclude">dashboards</param>
+        <param name="exclude">packaging/obs/grafana-sap-netweaver-dashboards</param>
+        <param name="version">0.5.1+git.1593777035.a5d05f8</param>
         <param name="filename">prometheus-sap_host_exporter</param>
     </service>
     <service name="set_version" mode="disabled">

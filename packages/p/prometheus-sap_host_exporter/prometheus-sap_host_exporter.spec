@@ -18,7 +18,7 @@
 
 Name:           prometheus-sap_host_exporter
 # Version will be processed via set_version source service
-Version:        0.4.0+git.1587141635.71f3338
+Version:        0.5.1+git.1593777035.a5d05f8
 Release:        0
 Summary:        Prometheus exporter for SAP systems (a.k.a. NetWeaver)
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 ExclusiveArch:  aarch64 x86_64 ppc64le s390x
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  go >= 1.11
+BuildRequires:  go >= 1.12
 Provides:       sap_host_exporter = %{version}-%{release}
 Provides:       prometheus(sap_host_exporter) = %{version}-%{release}
 # Unlike C/C++ packages, Golang packages do not have header files. They are statically built so the main package is also the devel package.

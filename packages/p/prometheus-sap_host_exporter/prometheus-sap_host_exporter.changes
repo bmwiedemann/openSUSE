@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jul  3 12:32:12 2020 UTC - shap-staff@suse.de
+
+- Release 0.5.1
+
+  ## Fixed
+  - Make OBS RPM builds reproducible by removing the build date. (#48)
+
+-------------------------------------------------------------------
+Thu Jul  2 15:56:07 2020 UTC - shap-staff@suse.de
+
+- Release 0.5.0
+
+  ## Added
+  - `--version` CLI flag (#42)
+  - Grafana dashboard is now part of the repo, although packaged independently (#44)
+
+  ## Changed
+  - Bumped required Go version to 1.12 (#43)
+  - Switched CI from Travis to GitHub Actions (#45)
+
+  ## Fixed
+  - Some usage details are now further clarified (#47)
+
+-------------------------------------------------------------------
 Wed May 20 10:35:11 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
 
 - Backport to SLE12SP3 and SLE15. (jsc#SLE-10902, jsc#SLE-10903, jsc#ECO-817, jsc#ECO-818)  
