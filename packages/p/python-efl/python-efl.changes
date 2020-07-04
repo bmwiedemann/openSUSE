@@ -1,7 +1,37 @@
 -------------------------------------------------------------------
+Thu Jun 25 09:25:48 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix _constraints
+
+-------------------------------------------------------------------
+Fri Jun 12 13:43:29 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Disable python2, broken on Leap and nothing uses it
+
+-------------------------------------------------------------------
+Tue May 26 05:32:31 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Fix issues with docs conflicts
+
+-------------------------------------------------------------------
+Tue May  5 05:05:02 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Update to 1.24.0
+  * As always new features of EFL have been ported and the usual
+    has been done in fixing bugs, optimizing speed and improve
+    documentation.  (see **ChangeLog** in the tarball for the
+    full list of changes)
+
+-------------------------------------------------------------------
+Thu Apr 23 12:33:05 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Explicitly require python3-Sphinx due to the module way being
+  now unresolvable.
+
+-------------------------------------------------------------------
 Fri Nov  8 03:49:38 UTC 2019 - Simon Lees <sflees@suse.de>
 
-- Update to 1.23.0 in line with efl 
+- Update to 1.23.0 in line with efl
 
 -------------------------------------------------------------------
 Sun Jul  7 22:40:48 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
@@ -156,4 +186,3 @@ Tue Dec 17 00:23:57 UTC 2013 - sleep_walker@suse.cz
 Mon Dec  9 15:39:20 UTC 2013 - sleep_walker@suse.cz
 
 - let there by python-efl!
-

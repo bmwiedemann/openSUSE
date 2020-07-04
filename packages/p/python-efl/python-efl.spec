@@ -1,7 +1,7 @@
 #
 # spec file for package python-efl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-efl
-Version:        1.23.0
+Version:        1.24.0
 Release:        0
 Summary:        Python bindings of evas
 License:        GPL-3.0-only AND LGPL-3.0-only
 Group:          Development/Libraries/Python
-Url:            http://enlightenment.org
+URL:            http://enlightenment.org
 Source:         https://download.enlightenment.org/rel/bindings/python/%{name}-%{version}.tar.xz
 BuildRequires:  %{python_module devel}
-BuildRequires:  dbus-1-python-devel
 BuildRequires:  dbus-1-python3-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python-cython
 BuildRequires:  python3-Cython
 BuildRequires:  pkgconfig(ecore)
 BuildRequires:  pkgconfig(edje)
@@ -132,23 +130,22 @@ for _name in python-efl python3-efl; do
   install -m 0755 -d "%{buildroot}/%{_datadir}/$_name"
   cp -R examples/  "%{buildroot}/%{_datadir}/$_name/"
   mkdir -p %{buildroot}/%{_docdir}/$_name
-  cp -pr COPYING %{buildroot}/%{_docdir}/$_name/
-  cp -pr COPYING.LESSER %{buildroot}/%{_docdir}/$_name/
-  cp -pr AUTHORS %{buildroot}/%{_docdir}/$_name/
 done
+# Remove examples installed under python-efl namespace
+rm -r "%{buildroot}/%{_datadir}/%{name}/examples"
+rm -r "%{buildroot}/%{_docdir}/%{name}/"
 %endif
 
 %if 0%{?suse_version}
 %files %{python_files}
 %{python_sitearch}/*
-%{_docdir}/%{name}/
-%exclude %{_docdir}/%{name}/html/
+%exclude %{_docdir}/python3-efl/html/
 
 %files %{python_files doc}
-%{_docdir}/%{name}/html/
+%{_docdir}/python3-efl
 
 %files  %{python_files examples}
-%{_datadir}/%{name}
+%{_datadir}/python3-efl
 %endif
 
 %if !0%{?suse_version}
