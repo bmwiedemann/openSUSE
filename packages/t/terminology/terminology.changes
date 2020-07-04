@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu May 14 07:43:52 UTC 2020 - Simon Lees <simonf.lees@suse.com>
+
+- Update to 1.7.0
+Additions:
+  * Terminology is packaged on the `snapstore` at https://snapcraft.io/terminology
+  * Add THEME.md, a documentation file on theming Terminology
+  * Drag tabs to reorder them
+  * Dragging tabs outside the tab bar can be used to create new splits
+    or tabs
+  * Add Croatian translation
+  * Handle escape code used to display terminal program and version
+  * Set environment variables TERM_PROGRAM and TERM_PROGRAM_VERSION
+
+Improvements:
+  * Memory accounting of the backlogs. Seen under the Behavior tab on
+    the Settings panel
+  * Handle escape codes to stack titles
+  * ''tyls'': add icon for ''flac'' files
+  * Update the mild-based themes to be on-par feature-wise with the
+    default theme
+  * Tab selector shows background color
+  * Controls panel is hidden when creating new tab or split
+  * Enable Grouped Input from the Controls panel
+  * Show special icon on tab when using Grouped Input
+  * Add option to decide whether Grouped input goes to all tabs or only
+    visible ones
+  * Improve email/links detection when surrounded with special
+    characters
+  * Remove link underline when the link disappears
+  * Share translucent/opacity setting across all instances
+  * Use a default icon of each tab on the Settings toolbar
+  * Update French, German, Italian and Serbian translations
+
+Removals:
+  * Removed video settings
+
+Fixes:
+  * Handle invalid values on OSC escape codes
+  * Better handle reads and writes on EINTR/EAGAIN 
+
+-------------------------------------------------------------------
 Fri Jan 31 17:01:31 UTC 2020 - Tomas Cech <sleep_walker@opensuse.org>
 
 - Update to 1.6.0

@@ -23,7 +23,7 @@
 %define e_branding_version 0.1
 %endif
 Name:           terminology
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        EFL based terminal emulator
 License:        BSD-2-Clause AND OFL-1.1
