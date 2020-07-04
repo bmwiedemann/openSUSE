@@ -218,4 +218,13 @@ Required to implement boo#1138725.</comment>
     <comment></comment>
     <requestid>818139</requestid>
   </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>40b14f265ad0b8001b2c554fbfc295c9</srcmd5>
+    <version>0.0+git20200504.7ff38d9</version>
+    <time>1593904648</time>
+    <user>dimstar_suse</user>
+    <comment>Add missing file check when overwriting generated service file; should fix https://openqa.opensuse.org/tests/1323068#step/journal_check/10
+</comment>
+    <requestid>818421</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  2 15:36:17 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Add missing file check when overwriting generated service file
+
+-------------------------------------------------------------------
 Wed Jul  1 13:11:06 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add back proper bootloader configuration code to grub2 post scripts

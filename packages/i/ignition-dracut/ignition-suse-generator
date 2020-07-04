@@ -4,15 +4,14 @@
 
 set -e
 
-UNIT_DIR="${1:-/tmp}"
-
 # Call upstream generator
 . /usr/lib/systemd/system-generators/ignition-generator
 . /run/ignition.env
 
 add_requires ignition-mount-initrd-fstab.service ignition-files.service
 
-cat > "${UNIT_DIR}/ignition-setup-user.service.d/diskful.conf" <<EOF
+if [ -e "${UNIT_DIR}/ignition-setup-user.service.d/diskful.conf" ]; then
+    cat > "${UNIT_DIR}/ignition-setup-user.service.d/diskful.conf" <<EOF
 [Unit]
 Wants=dev-disk-by\x2dlabel-ignition.device
 After=dev-disk-by\x2dlabel-ignition.device
@@ -21,6 +20,7 @@ After=dev-disk-by\x2dlabel-ignition.device
 ExecStart=
 ExecStart=/usr/sbin/ignition-setup-user-suse
 EOF
+fi
 
 if [ -z "${PLATFORM_ID}" ]; then
     platform="$(virt-what)"
