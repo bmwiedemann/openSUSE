@@ -1,17 +1,17 @@
 From: Jan Engelhardt <jengelh@inai.de>
-2018-01-02 15:25:05.669125932 +0100
+Date: 2018-01-02 15:25:05.669125932 +0100
 
 Ensure same IWAD directory across all Doom source ports in openSUSE
 
 ---
- src/posix/i_system.h |    2 +-
+ src/common/platform/posix/i_system.h |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: gzdoom-4.0.0/src/posix/i_system.h
+Index: gzdoom-g4.4.0/src/common/platform/posix/i_system.h
 ===================================================================
---- gzdoom-4.0.0.orig/src/posix/i_system.h
-+++ gzdoom-4.0.0/src/posix/i_system.h
-@@ -42,7 +42,7 @@ struct ticcmd_t;
+--- gzdoom-g4.4.0.orig/src/common/platform/posix/i_system.h
++++ gzdoom-g4.4.0/src/common/platform/posix/i_system.h
+@@ -17,7 +17,7 @@ struct ticcmd_t;
  struct WadStuff;
  
  #ifndef SHARE_DIR
@@ -19,4 +19,4 @@ Index: gzdoom-4.0.0/src/posix/i_system.h
 +#define SHARE_DIR "/usr/share/doom/"
  #endif
  
- 
+ void CalculateCPUSpeed(void);

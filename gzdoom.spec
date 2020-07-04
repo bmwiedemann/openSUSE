@@ -17,7 +17,7 @@
 
 
 Name:           gzdoom
-Version:        4.3.3
+Version:        4.4.2
 Release:        0
 Summary:        A DOOM source port with graphic and modding extensions
 License:        GPL-3.0-only
@@ -28,38 +28,31 @@ URL:            https://zdoom.org/
 Source:         https://github.com/coelckers/gzdoom/archive/g%version.tar.gz
 Patch1:         gzdoom-waddir.patch
 Patch2:         gzdoom-lzma.patch
-Patch3:         gzdoom-vulkan.patch
-Patch4:         gzdoom-asmjit.patch
-Patch5:         gzdoom-system-gme.patch
-Patch6:         gzdoom-dl.patch
+Patch3:         gzdoom-asmjit.patch
+Patch4:         gzdoom-spirv.patch
+Patch5:         gzdoom-sdlbug.patch
+Patch6:         gzdoom-vulkan.patch
 BuildRequires:  cmake >= 2.8.7
 BuildRequires:  gcc-c++
-BuildRequires:  glslang-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  nasm
 BuildRequires:  pkg-config
-BuildRequires:  spirv-tools-devel
 BuildRequires:  unzip
-BuildRequires:  xz
+BuildRequires:  zmusic-devel
 BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(clzma) >= 17.01
 BuildRequires:  pkgconfig(flac)
-BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libgme)
-BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(sdl2)
-BuildRequires:  pkgconfig(sndfile)
-BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} >= 1500
-BuildRequires:  pkgconfig(clzma) >= 17.01
+%if 0%{?sle_version} >= 150200
+BuildRequires:  glslang-devel >= 6.3
+BuildRequires:  pkgconfig(vulkan) >= 1.1.77
 %else
-Provides:       bundled(lzma-sdk) = 19.00
-%endif
-%if 0%{?suse_version} == 1315
-BuildRequires:  gcc6-c++
+Provides:       bundled(glslang) = 8.13.3559
+Provides:       bundled(vulkan) = 1.1.114
 %endif
 Recommends:     freedoom
 Recommends:     timidity
@@ -67,7 +60,6 @@ Recommends:     timidity-eawpats
 Provides:       qzdoom = 1.3.0
 Provides:       zdoom = 2.8.1
 # DUMB is modified to read OggVorbis samples
-Provides:       bundled(dumb) = 0.9.3
 Provides:       bundled(gdtoa)
 Provides:       bundled(re2c) = 0.16.0
 Provides:       bundled(xbrz) = 1.7
@@ -85,41 +77,30 @@ GZDoom is a port (a modification) of the original Doom source code, featuring:
 * Demo record/playback of classic and Boom demos is not supported.
 
 %prep
-%setup -q -n %name-g%version
-%patch -P 1 -p1
-
-%if 0%{?suse_version} >= 1500
-%patch -P 2 -p1
+%setup -qn %name-g%version
+%patch -P 1 -P 2 -P 3 -P 4 -P 5 -p1
+%if 0%{?sle_version} >= 150200
+%patch -P 6 -p1
+rm -Rf glslang src/common/rendering/vulkan/thirdparty/vulkan
 %endif
-%if 0%{?suse_version} >= 1550
-%patch -P 3 -p1
-rm -Rfv glslang src/rendering/vulkan/thirdparty/vulkan
-%endif
-%patch -P 4 -P 5 -P 6 -p1
 perl -i -pe 's{__DATE__}{""}g' src/posix/sdl/i_main.cpp
-perl -i -pe 's{<unknown version>}{%version}g' \
-	tools/updaterevision/updaterevision.c
 
 %build
+# There is handcrafted assembler, which LTO does not play nice with.
 %define _lto_cflags %nil
-# We must not strip - %%debug_package will take care of it
-# Deactivate -Wl,--as-needed
 
 %ifarch %ix86
-# program does a cpuid check, so it is ok to enable
+# Allow sw to use intrinsics (functions like _mm_set_sd).
+# Guarded by cpuid calls by sw.
 export CFLAGS="%optflags -msse -msse2"
 export CXXFLAGS="%optflags -msse -msse2"
 %endif
 %cmake -DNO_STRIP=1 \
-%if 0%{suse_version} == 1315
-	-DCMAKE_C_COMPILER=gcc-6 -DCMAKE_CXX_COMPILER=g++-6 \
-%endif
 	-DCMAKE_SHARED_LINKER_FLAGS="" \
 	-DCMAKE_EXE_LINKER_FLAGS="" -DCMAKE_MODULE_LINKER_FLAGS="" \
 	-DINSTALL_DOCS_PATH="%_defaultdocdir/%name" \
 	-DINSTALL_PK3_PATH="%_datadir/doom" \
-	-DDYN_FLUIDSYNTH=OFF -DDYN_OPENAL=OFF \
-	-DDYN_SNDFILE=OFF -DDYN_MPG123=OFF
+	-DDYN_OPENAL=OFF
 make %{?_smp_mflags}
 
 %install
