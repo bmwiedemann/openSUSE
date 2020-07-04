@@ -45,6 +45,7 @@ unsorted:
   - EternalTerminal 
   - FAudio-devel 
   - FAudio-devel-32bit: [x86_64] 
+  - FastCGI 
   - FastCGI-devel 
   - FirmwareUpdateKit 
   - FlightGear 
@@ -600,8 +601,10 @@ unsorted:
   - apache-resource-bundles 
   - apache-rex 
   - apache-rpm-macros 
+  - apache-rpm-macros-control 
   - apache-sshd 
   - apache-sshd-javadoc 
+  - apache2-devel 
   - apache2-event 
   - apache2-icons-oxygen 
   - apache2-mod_apparmor 
@@ -618,6 +621,7 @@ unsorted:
   - apache2-mod_maxminddb 
   - apache2-mod_mono 
   - apache2-mod_nss 
+  - apache2-mod_perl 
   - apache2-mod_perl-devel 
   - apache2-mod_security2 
   - apache2-mod_uwsgi 
@@ -647,6 +651,8 @@ unsorted:
   - appmenu-registrar 
   - appres 
   - appstream-glib-devel 
+  - apr-devel 
+  - apr-util-devel 
   - apulse: [i586] 
   - aqbanking 
   - aqbanking-devel 
@@ -859,6 +865,7 @@ unsorted:
   - audiofile-devel-32bit: [x86_64] 
   - audiofile-doc 
   - audit-audispd-plugins 
+  - audit-devel 
   - audit-devel-32bit: [x86_64] 
   - audit-visualize 
   - augeas-devel 
@@ -1126,10 +1133,12 @@ unsorted:
   - biboumi 
   - bibtool 
   - bibview 
+  - bin86 
   - bind-devel 
   - bind-devel-32bit: [x86_64] 
   - bindfs 
   - bing 
+  - binutils-devel 
   - binutils-devel-32bit: [x86_64] 
   - binutils-gold 
   - binwalk 
@@ -1221,6 +1230,7 @@ unsorted:
   - bookworm-lang 
   - boomaga 
   - boomaga-lang 
+  - boost-devel 
   - boost-gnu-hpc: [x86_64] 
   - boost-gnu-hpc-devel: [x86_64] 
   - boost-gnu-mpich-hpc: [x86_64] 
@@ -1239,8 +1249,10 @@ unsorted:
   - boost-gnu-openmpi3-hpc-devel: [x86_64] 
   - boost-gnu-openmpi3-hpc-python2: [x86_64] 
   - boost-gnu-openmpi3-hpc-python3: [x86_64] 
+  - boost-jam 
   - boost1_71_0-doc-html 
   - boost1_71_0-doc-pdf 
+  - boost1_71_0-jam 
   - boost1_71_0-quickbook 
   - boost_1_71_0-gnu-hpc: [x86_64] 
   - boost_1_71_0-gnu-hpc-devel: [x86_64] 
@@ -1314,6 +1326,7 @@ unsorted:
   - bs1770gain 
   - bs2b-tools 
   - bsdiff 
+  - bsdtar 
   - bsf 
   - bsf-javadoc 
   - bsh2 
@@ -1337,9 +1350,12 @@ unsorted:
   - buffer 
   - bugzilla 
   - bugzilla-lang-de 
+  - build 
   - build-compare 
   - build-initvm-i586: [i586] 
   - build-initvm-x86_64: [x86_64] 
+  - build-mkbaselibs 
+  - build-mkdrpms 
   - buildah 
   - buildstream 
   - bumblebee 
@@ -1364,7 +1380,6 @@ unsorted:
   - busybox-misc 
   - busybox-ncurses-utils 
   - busybox-net-tools 
-  - busybox-patch 
   - busybox-procps 
   - busybox-sendmail 
   - busybox-sh 
@@ -1537,6 +1552,7 @@ unsorted:
   - cblas-devel-32bit: [x86_64] 
   - cblas-devel-static 
   - cc-tool 
+  - ccache 
   - ccd2cue 
   - ccd2cue-doc 
   - ccgfs 
@@ -1629,6 +1645,7 @@ unsorted:
   - charliecloud-examples 
   - chartmuseum 
   - charybdis 
+  - chasen 
   - chasen-devel 
   - chck-devel 
   - check-create-certificate 
@@ -2170,6 +2187,7 @@ unsorted:
   - cryfs 
   - cryptctl: [x86_64] 
   - crystalhd-firmware 
+  - cscope 
   - cscreen 
   - csindex 
   - csmith 
@@ -2182,6 +2200,7 @@ unsorted:
   - csvprintf 
   - csync 
   - csync2 
+  - ctags 
   - ctdb 
   - ctdb-pcp-pmda 
   - ctdb-tests 
@@ -2227,6 +2246,7 @@ unsorted:
   - cyreal-wire-fonts 
   - cyrus-sasl-32bit: [x86_64] 
   - cyrus-sasl-crammd5-32bit: [x86_64] 
+  - cyrus-sasl-devel 
   - cyrus-sasl-devel-32bit: [x86_64] 
   - cyrus-sasl-digestmd5-32bit: [x86_64] 
   - cyrus-sasl-gs2 
@@ -2359,6 +2379,7 @@ unsorted:
   - dehydrated-apache2 
   - deja-dup 
   - deja-dup-lang 
+  - dejagnu 
   - delaguardo-inconsolata_lgc-fonts 
   - delta 
   - deltafs 
@@ -2403,6 +2424,7 @@ unsorted:
   - diff-pdf 
   - diffmk 
   - diffoscope 
+  - diffstat 
   - digikam 
   - digikam-devel 
   - digikam-lang 
@@ -2594,12 +2616,14 @@ unsorted:
   - dvdisaster-docs 
   - dvgt 
   - dwarves 
+  - dwz 
   - dwz-testsuite 
   - dxflib-devel 
   - dynamic-wallpapers-11x 
   - dynamips 
   - dzen2 
   - e16 
+  - e2fsprogs-devel 
   - e3 
   - eaglemode 
   - earlyoom 
@@ -2878,6 +2902,7 @@ unsorted:
   - exo-branding-upstream 
   - exo-devel 
   - exodusii-devel 
+  - expect 
   - expect-devel 
   - explain 
   - ext3grep 
@@ -3114,7 +3139,7 @@ unsorted:
   - finger-server 
   - fio 
   - fips 
-  - fipscheck: [i586] 
+  - fipscheck 
   - fipscheck-devel 
   - firebird-doc 
   - firebird-examples 
@@ -3513,28 +3538,34 @@ unsorted:
   - gcc-PIE 
   - gcc-ada 
   - gcc-ada-32bit: [x86_64] 
+  - gcc-c++ 
   - gcc-c++-32bit: [x86_64] 
   - gcc-d 
   - gcc-d-32bit: [x86_64] 
   - gcc-devel 
+  - gcc-fortran 
   - gcc-fortran-32bit: [x86_64] 
   - gcc-go 
   - gcc-go-32bit: [x86_64] 
   - gcc-locale 
   - gcc-obj-c++ 
+  - gcc-objc 
   - gcc-objc-32bit: [x86_64] 
   - gcc10-32bit: [x86_64] 
   - gcc10-ada 
   - gcc10-ada-32bit: [x86_64] 
+  - gcc10-c++ 
   - gcc10-c++-32bit: [x86_64] 
   - gcc10-d 
   - gcc10-d-32bit: [x86_64] 
   - gcc10-devel 
+  - gcc10-fortran 
   - gcc10-fortran-32bit: [x86_64] 
   - gcc10-go 
   - gcc10-go-32bit: [x86_64] 
   - gcc10-obj-c++ 
   - gcc10-obj-c++-32bit: [x86_64] 
+  - gcc10-objc 
   - gcc10-objc-32bit: [x86_64] 
   - gcc10-testresults 
   - gcc7 
@@ -3601,6 +3632,7 @@ unsorted:
   - gdata-sharp 
   - gdata-sharp-devel 
   - gdb-testresults 
+  - gdbm-devel 
   - gdbm-devel-32bit: [x86_64] 
   - gdbserver 
   - gdcm 
@@ -4763,6 +4795,7 @@ unsorted:
   - glibc-devel-static-32bit: [x86_64] 
   - glibc-html 
   - glibc-i18ndata 
+  - glibc-info 
   - glibc-locale-base-32bit: [x86_64] 
   - glibc-profile 
   - glibc-profile-32bit: [x86_64] 
@@ -4805,6 +4838,7 @@ unsorted:
   - gmime2_6-sharp 
   - gmmlib-devel: [x86_64] 
   - gmock 
+  - gmp-devel 
   - gmp-devel-32bit: [x86_64] 
   - gmp-ecm 
   - gmp-ecm-devel 
@@ -5136,6 +5170,7 @@ unsorted:
   - gpaste 
   - gpaste-devel 
   - gpaste-lang 
+  - gperf 
   - gperftools 
   - gperftools-devel 
   - gperftools-devel-static 
@@ -5786,7 +5821,10 @@ unsorted:
   - htdig-devel 
   - htdig-doc 
   - hte 
+  - html-dtd 
   - html-xml-utils 
+  - html2ps 
+  - html2text 
   - htmldoc 
   - htop 
   - htsfile 
@@ -5907,6 +5945,7 @@ unsorted:
   - icc-targets-npes 
   - icecast 
   - icecast-doc 
+  - icecream 
   - icecream-clang-wrappers 
   - icecream-monitor 
   - ices 
@@ -6013,6 +6052,8 @@ unsorted:
   - incidenceeditor-devel 
   - include-what-you-use 
   - include-what-you-use-tools 
+  - indent 
+  - indent-lang 
   - indicator-common 
   - indriya 
   - indriya-javadoc 
@@ -6041,6 +6082,7 @@ unsorted:
   - input-pad-xtest 
   - insighttoolkit-devel 
   - inspectrum 
+  - inst-source-utils 
   - install-initrd-Kubic: [x86_64] # suggested by dvd:suggested:patterns-gnome-gnome 
   - install-initrd-MicroOS: [x86_64] # suggested by dvd:suggested:patterns-gnome-gnome 
   - install-initrd-openSUSE 
@@ -6092,6 +6134,7 @@ unsorted:
   - ipa-pgothic-bold-fonts 
   - ipa-pgothic-bolditalic-fonts 
   - ipa-pgothic-italic-fonts 
+  - ipadic 
   - ipcalc 
   - iperf 
   - iperf-devel 
@@ -6695,7 +6738,9 @@ unsorted:
   - kajaani-kombat-server 
   - kajongg 
   - kajongg-lang 
+  - kakasi 
   - kakasi-devel 
+  - kakasi-dict 
   - kakoune 
   - kalarm 
   - kalarm-lang 
@@ -6826,16 +6871,20 @@ unsorted:
   - kernel-debug-devel 
   - kernel-default-base: [i586] 
   - kernel-default-base-rebuild 
+  - kernel-default-devel 
+  - kernel-devel 
   - kernel-docs-html 
   - kernel-firmware 
   - kernel-kvmsmall: [x86_64] 
   - kernel-kvmsmall-devel: [x86_64] 
+  - kernel-macros 
   - kernel-obs-build 
   - kernel-obs-qa 
   - kernel-pae: [i586] 
   - kernel-pae-devel: [i586] 
+  - kernel-source 
   - kernel-source-vanilla 
-  - kernel-syms: [i586] 
+  - kernel-syms 
   - kernel-vanilla 
   - kernel-vanilla-devel 
   - ketchup 
@@ -6945,6 +6994,8 @@ unsorted:
   - kim-api-devel 
   - kim-api-examples 
   - kimageformats-32bit: [x86_64] 
+  - kimagemapeditor 
+  - kimagemapeditor-lang 
   - kimap-devel 
   - kinit-32bit: [x86_64] 
   - kinit-devel 
@@ -8200,6 +8251,7 @@ unsorted:
   - libaec0 
   - libaec0-32bit: [x86_64] 
   - libags3 
+  - libaio-devel 
   - libaio-devel-32bit: [x86_64] 
   - libaio1-32bit: [x86_64] 
   - libairspy0 
@@ -8260,6 +8312,7 @@ unsorted:
   - libaom-devel 
   - libaom-devel-doc 
   - libaom2-32bit: [x86_64] 
+  - libapparmor-devel 
   - libappindicator-devel 
   - libappindicator1 
   - libappindicator3-devel 
@@ -8473,6 +8526,7 @@ unsorted:
   - libbladeRF2-doc 
   - libblas3-32bit: [x86_64] 
   - libbliss-0_73 
+  - libblkid-devel 
   - libblkid-devel-32bit: [x86_64] 
   - libblkid-devel-static 
   - libblockdev-devel 
@@ -8527,6 +8581,7 @@ unsorted:
   - libboost_graph_parallel1_71_0-32bit: [x86_64] 
   - libboost_graph_parallel1_71_0-devel 
   - libboost_headers-devel 
+  - libboost_headers1_71_0-devel 
   - libboost_iostreams-devel 
   - libboost_iostreams1_71_0-32bit: [x86_64] 
   - libboost_iostreams1_71_0-devel 
@@ -8833,6 +8888,7 @@ unsorted:
   - libcolord-gtk-devel 
   - libcolord-gtk1-32bit: [x86_64] 
   - libcolord2-32bit: [x86_64] 
+  - libcom_err-devel 
   - libcom_err-devel-32bit: [x86_64] 
   - libcom_err-devel-static 
   - libcompel1: [x86_64] 
@@ -8968,6 +9024,7 @@ unsorted:
   - libdavix0 
   - libdazzle-devel 
   - libdb-4_8-32bit: [x86_64] 
+  - libdb-4_8-devel 
   - libdb-4_8-devel-32bit: [x86_64] 
   - libdb_java-4_8 
   - libdb_java-4_8-devel 
@@ -9160,6 +9217,7 @@ unsorted:
   - libelektra-devel-doc 
   - libelektra4 
   - libelementary1 
+  - libelf-devel 
   - libelf-devel-32bit: [x86_64] 
   - libelf1-32bit: [x86_64] 
   - libelocation1 
@@ -9246,6 +9304,7 @@ unsorted:
   - libexpat-devel-32bit: [x86_64] 
   - libexplain-devel 
   - libexplain51 
+  - libext2fs-devel 
   - libext2fs-devel-32bit: [x86_64] 
   - libext2fs-devel-static 
   - libext2fs2-32bit: [x86_64] 
@@ -9274,6 +9333,7 @@ unsorted:
   - libfbclient2-32bit: [x86_64] 
   - libfcache-devel 
   - libfcache1 
+  - libfcgi0 
   - libfcitx-4_2_9-32bit: [x86_64] 
   - libfdata-devel 
   - libfdata1 
@@ -9329,7 +9389,7 @@ unsorted:
   - libfinal-devel 
   - libfinal-examples 
   - libfinal0 
-  - libfipscheck1: [i586] 
+  - libfipscheck1 
   - libfipscheck1-32bit: [x86_64] 
   - libfishsound-devel 
   - libfishsound1 
@@ -9590,6 +9650,7 @@ unsorted:
   - libgmime-2_6-0 
   - libgmime-2_6-0-32bit: [x86_64] 
   - libgmime-3_0-0-32bit: [x86_64] 
+  - libgmpxx4 
   - libgmpxx4-32bit: [x86_64] 
   - libgmsh4_5 
   - libgnome-desktop-3-19-32bit: [x86_64] 
@@ -9704,6 +9765,8 @@ unsorted:
   - libgsoap-2_8_102 
   - libgssdp-1_2-0-32bit: [x86_64] 
   - libgssdp-devel 
+  - libgssglue-devel 
+  - libgssglue1 
   - libgssglue1-32bit: [x86_64] 
   - libgstadaptivedemux-1_0-0-32bit: [x86_64] 
   - libgstallocators-1_0-0-32bit: [x86_64] 
@@ -10943,6 +11006,7 @@ unsorted:
   - liboop-devel 
   - liboop4 
   - libopae-c1: [x86_64] 
+  - libopagent1 
   - libopagent1-32bit: [x86_64] 
   - libopal-devel 
   - libopamgt-devel: [x86_64] 
@@ -11009,7 +11073,9 @@ unsorted:
   - libopenspecfun1 
   - libopenssl-1_0_0-devel 
   - libopenssl-1_0_0-devel-32bit: [x86_64] 
+  - libopenssl-1_1-devel 
   - libopenssl-1_1-devel-32bit: [x86_64] 
+  - libopenssl-devel 
   - libopenssl1_0_0 
   - libopenssl1_0_0-32bit: [x86_64] 
   - libopenssl1_0_0-hmac 
@@ -11044,6 +11110,8 @@ unsorted:
   - libortp15-32bit: [x86_64] 
   - libosdCPU3_4_3 
   - libosinfo-devel 
+  - libosip2 
+  - libosip2-devel 
   - liboslcomp1_11 
   - liboslexec1_11 
   - liboslnoise1_11 
@@ -11199,8 +11267,10 @@ unsorted:
   - libpcre16-0 
   - libpcre16-0-32bit: [x86_64] 
   - libpcre2-16-0-32bit: [x86_64] 
+  - libpcre2-32-0 
   - libpcre2-32-0-32bit: [x86_64] 
   - libpcre2-8-0-32bit: [x86_64] 
+  - libpcre2-posix2 
   - libpcre2-posix2-32bit: [x86_64] 
   - libpcrecpp0 
   - libpcrecpp0-32bit: [x86_64] 
@@ -12137,6 +12207,7 @@ unsorted:
   - libsolarus-gui1 
   - libsolarus1 
   - libsolv-demo 
+  - libsolv-devel 
   - libsord-0-0-32bit: [x86_64] 
   - libsoup-2_4-1-32bit: [x86_64] 
   - libsoup-devel 
@@ -12400,6 +12471,7 @@ unsorted:
   - libthriftnb-0_13_0 
   - libthriftz-0_13_0 
   - libtidy-devel 
+  - libtidy5 
   - libtidyp-1_04-0 
   - libtidyp-devel 
   - libtiff-devel 
@@ -13044,6 +13116,7 @@ unsorted:
   - libxml++26-devel 
   - libxml-security-c-devel 
   - libxml-security-c20 
+  - libxml2-devel 
   - libxml2-devel-32bit: [x86_64] 
   - libxml2-doc 
   - libxmlb-devel 
@@ -13189,6 +13262,7 @@ unsorted:
   - libzrtpcpp-devel 
   - libzrtpcpp4 
   - libzsolve0 
+  - libzstd-devel 
   - libzstd-devel-static 
   - libzvbi-chains0 
   - libzvbi-chains0-32bit: [x86_64] 
@@ -13433,6 +13507,7 @@ unsorted:
   - lsp-plugins-common 
   - lsp-plugins-doc 
   - lsyncd 
+  - ltrace 
   - ltrace-32bit: [x86_64] 
   - lttng-modules 
   - lttng-modules-kmp-default 
@@ -13667,6 +13742,7 @@ unsorted:
   - makebootfat: [i586] 
   - makedepend 
   - makedev 
+  - makeinfo 
   - makeinfo4 
   - makeself 
   - makewhat 
@@ -14085,6 +14161,8 @@ unsorted:
   - memprof 
   - memprof-lang 
   - menu-cache-devel 
+  - mercurial 
+  - mercurial-lang 
   - meslo-lg-fonts 
   - meson 
   - meson-test 
@@ -14475,6 +14553,7 @@ unsorted:
   - mpd 
   - mpeg2dec 
   - mpfi-devel 
+  - mpfr-devel 
   - mpfr-devel-32bit: [x86_64] 
   - mpg123 
   - mpg123-devel 
@@ -14922,6 +15001,7 @@ unsorted:
   - nanum-fonts 
   - nanum-gothic-coding-fonts 
   - nasc 
+  - nasm 
   - native-maven-plugin 
   - native-platform 
   - native-platform-javadoc 
@@ -14944,6 +15024,7 @@ unsorted:
   - ncdu 
   - ncmpcpp 
   - ncompress 
+  - ncurses-devel 
   - ncurses-devel-32bit: [x86_64] 
   - ncurses-devel-static 
   - ncurses5-devel 
@@ -15509,14 +15590,26 @@ unsorted:
   - objenesis 
   - objenesis-javadoc 
   - obs-service-appimage 
+  - obs-service-download_files 
+  - obs-service-download_url 
+  - obs-service-extract_file 
+  - obs-service-format_spec_file 
   - obs-service-go_modules 
   - obs-service-kiwi_label_helper 
   - obs-service-kiwi_metainfo_helper 
+  - obs-service-obs_scm 
+  - obs-service-obs_scm-common 
   - obs-service-product_converter 
+  - obs-service-recompress 
+  - obs-service-refresh_patches 
   - obs-service-replace_using_package_version 
   - obs-service-rust2rpm 
+  - obs-service-set_version 
   - obs-service-snapcraft 
+  - obs-service-source_validator 
   - obs-service-tar 
+  - obs-service-tar_scm 
+  - obs-service-verify_file 
   - ocaml 
   - ocaml-base 
   - ocaml-base-devel 
@@ -15969,6 +16062,7 @@ unsorted:
   - openldap2-back-sock 
   - openldap2-back-sql 
   - openldap2-contrib 
+  - openldap2-devel 
   - openldap2-devel-32bit: [x86_64] 
   - openldap2-devel-static 
   - openldap2-doc 
@@ -16147,6 +16241,7 @@ unsorted:
   - opi 
   - oping 
   - opmsg 
+  - oprofile 
   - oprofile-32bit: [x86_64] 
   - oprofile-devel 
   - optee-client 
@@ -16184,6 +16279,7 @@ unsorted:
   - os-maven-plugin 
   - os-maven-plugin-javadoc 
   - os-service-types-doc 
+  - osc 
   - osc-plugin-collab 
   - osc-plugin-cycle: [x86_64] 
   - osc-plugin-install 
@@ -16328,6 +16424,7 @@ unsorted:
   - palm-db-tools 
   - pam-deprecated 
   - pam-deprecated-32bit: [x86_64] 
+  - pam-devel 
   - pam-devel-32bit: [x86_64] 
   - pam-extra 
   - pam-extra-32bit: [x86_64] 
@@ -16455,6 +16552,7 @@ unsorted:
   - pasystray 
   - patch2mail 
   - patchelf 
+  - patchutils 
   - patool 
   - patool-bash-completion 
   - patterns-base-32bit: [x86_64] 
@@ -16468,11 +16566,19 @@ unsorted:
   - patterns-base-x11-32bit 
   - patterns-base-x11_enhanced-32bit 
   - patterns-ceph-containers-ceph_base: [x86_64] 
+  - patterns-devel-C-C++-devel_C_C++ 
+  - patterns-devel-base-devel_basis 
   - patterns-devel-base-devel_basis-32bit 
+  - patterns-devel-base-devel_kernel 
   - patterns-devel-base-devel_kernel-32bit 
+  - patterns-devel-base-devel_rpm_build 
+  - patterns-devel-base-devel_web 
   - patterns-devel-java-devel_java 
   - patterns-devel-mono-devel_mono 
+  - patterns-devel-osc-devel_osc_build 
+  - patterns-devel-perl-devel_perl 
   - patterns-devel-python-devel_python3 
+  - patterns-devel-ruby-devel_ruby 
   - patterns-devel-tcl-devel_tcl 
   - patterns-enlightenment-enlightenment 
   - patterns-gnome-devel_gnome 
@@ -16623,6 +16729,7 @@ unsorted:
   - pcre-devel-static 
   - pcre-doc 
   - pcre-tools 
+  - pcre2-devel 
   - pcre2-devel-static 
   - pcre2-doc 
   - pcre2-tools 
@@ -16707,16 +16814,22 @@ unsorted:
   - perl-Algorithm-C3 
   - perl-Algorithm-CheckDigits 
   - perl-Algorithm-Combinatorics 
+  - perl-Algorithm-Diff 
   - perl-Alien-Build 
   - perl-Alien-Libxml2 
   - perl-Alien-SDL 
   - perl-Alien-Tidyp 
   - perl-Alien-wxWidgets 
   - perl-Any-Moose 
+  - perl-AnyEvent 
   - perl-AnyEvent-HTTP 
   - perl-AnyEvent-I3 
+  - perl-Apache-AuthCookie 
+  - perl-Apache-DBI 
   - perl-Apache-Filter 
   - perl-Apache-LogFormat-Compiler 
+  - perl-Apache-Session 
+  - perl-Apache-SessionX 
   - perl-Apache2-AuthCookieDBI 
   - perl-App-Ack 
   - perl-App-CELL 
@@ -16734,6 +16847,7 @@ unsorted:
   - perl-App-Rad-Plugin-MoreHelp 
   - perl-App-cpanminus 
   - perl-App-perlbrew 
+  - perl-AppConfig 
   - perl-Archive-Cpio 
   - perl-Archive-Extract 
   - perl-Archive-Peek 
@@ -16742,12 +16856,17 @@ unsorted:
   - perl-Audio-RPLD 
   - perl-Authen-DecHpwd 
   - perl-Authen-Passphrase 
+  - perl-Authen-SASL-Cyrus 
   - perl-B-COW 
   - perl-B-Debug 
+  - perl-B-Hooks-EndOfScope 
   - perl-B-Hooks-OP-Annotation 
   - perl-B-Hooks-OP-Check 
   - perl-B-Hooks-OP-PPAddr 
   - perl-B-Keywords 
+  - perl-B-Utils 
+  - perl-BIND-Conf_Parser 
+  - perl-BSD-Resource 
   - perl-Benchmark-Timer 
   - perl-Bit-Vector 
   - perl-Boost-Geometry-Utils 
@@ -16758,6 +16877,7 @@ unsorted:
   - perl-Business-ISMN 
   - perl-Business-ISSN 
   - perl-CGI-Ajax 
+  - perl-CGI-Application 
   - perl-CGI-FastTemplate 
   - perl-CGI-FormBuilder 
   - perl-CGI-Session 
@@ -16776,15 +16896,19 @@ unsorted:
   - perl-Cache-Cache 
   - perl-Cache-LRU 
   - perl-Cache-Memcached 
+  - perl-Cairo 
   - perl-Cairo-GObject 
   - perl-Calendar-Simple 
   - perl-Canary-Stability 
   - perl-Capture-Tiny 
   - perl-Carp-Always 
+  - perl-Carp-Assert 
   - perl-Carp-Assert-More 
   - perl-Carp-Clan 
   - perl-Carton 
   - perl-Catalyst-Manual 
+  - perl-Chart 
+  - perl-Class-Accessor 
   - perl-Class-Accessor-Chained 
   - perl-Class-Accessor-Grouped 
   - perl-Class-Accessor-Lite 
@@ -16797,19 +16921,32 @@ unsorted:
   - perl-Class-C3-XS 
   - perl-Class-Container 
   - perl-Class-DBI 
+  - perl-Class-Data-Inheritable 
+  - perl-Class-Date 
   - perl-Class-ErrorHandler 
   - perl-Class-Factory-Util 
+  - perl-Class-ISA 
   - perl-Class-Inner 
+  - perl-Class-Inspector 
+  - perl-Class-Load 
+  - perl-Class-Load-XS 
   - perl-Class-MakeMethods 
+  - perl-Class-Method-Modifiers 
   - perl-Class-Method-Modifiers-Fast 
+  - perl-Class-MethodMaker 
   - perl-Class-Mix 
+  - perl-Class-Multimethods 
   - perl-Class-ReturnValue 
+  - perl-Class-Singleton 
   - perl-Class-Spiffy 
   - perl-Class-Std 
   - perl-Class-Tiny 
   - perl-Class-Trigger 
   - perl-Class-Unload 
+  - perl-Class-WhiteHole 
   - perl-Class-XPath 
+  - perl-Class-XSAccessor 
+  - perl-Clone 
   - perl-Clone-Choose 
   - perl-Clone-PP 
   - perl-Code-DRY 
@@ -16823,6 +16960,7 @@ unsorted:
   - perl-Config-GitLike 
   - perl-Config-Grammar 
   - perl-Config-INI 
+  - perl-Config-IniFiles 
   - perl-Config-MVP 
   - perl-Config-MVP-Reader-INI 
   - perl-Config-MySQL 
@@ -16834,6 +16972,8 @@ unsorted:
   - perl-Contextual-Return 
   - perl-Convert-BER 
   - perl-Cookie-Baker 
+  - perl-Crypt-Blowfish 
+  - perl-Crypt-CBC 
   - perl-Crypt-DH-GMP 
   - perl-Crypt-Eksblowfish 
   - perl-Crypt-MySQL 
@@ -16841,13 +16981,19 @@ unsorted:
   - perl-Crypt-PasswdMD5 
   - perl-Crypt-RC4 
   - perl-Crypt-Rot13 
+  - perl-Crypt-SSLeay 
   - perl-Crypt-SaltedHash 
   - perl-Crypt-UnixCrypt_XS 
   - perl-CryptX 
   - perl-Curses 
   - perl-CursesWidgets 
   - perl-Cwd-Guard 
+  - perl-DBD-CSV 
   - perl-DBD-MariaDB 
+  - perl-DBD-ODBC 
+  - perl-DBD-Pg 
+  - perl-DBD-XBase 
+  - perl-DBD-mysql 
   - perl-DBICx-TestDatabase 
   - perl-DBIx-Class 
   - perl-DBIx-Class-DeploymentHandler 
@@ -16877,6 +17023,7 @@ unsorted:
   - perl-Data-Hierarchy 
   - perl-Data-Integer 
   - perl-Data-ObjectDriver 
+  - perl-Data-OptList 
   - perl-Data-Page 
   - perl-Data-Peek 
   - perl-Data-Perl 
@@ -16895,38 +17042,51 @@ unsorted:
   - perl-Date-Holidays-CZ 
   - perl-Date-Simple 
   - perl-Date-Tiny 
+  - perl-DateTime 
   - perl-DateTime-Calendar-Julian 
   - perl-DateTime-Calendar-Mayan 
+  - perl-DateTime-Format-Builder 
   - perl-DateTime-Format-DateParse 
   - perl-DateTime-Format-Flexible 
+  - perl-DateTime-Format-ISO8601 
   - perl-DateTime-Format-Mail 
   - perl-DateTime-Format-MySQL 
   - perl-DateTime-Format-Natural 
   - perl-DateTime-Format-Pg 
   - perl-DateTime-Format-SQLite 
+  - perl-DateTime-Format-Strptime 
   - perl-DateTime-Format-W3CDTF 
+  - perl-DateTime-Locale 
+  - perl-DateTime-TimeZone 
   - perl-DateTime-Tiny 
   - perl-Debug-Trace 
   - perl-Declare-Constraints-Simple 
+  - perl-Devel-Caller 
   - perl-Devel-CheckBin 
   - perl-Devel-CheckCompiler 
   - perl-Devel-CheckLib 
   - perl-Devel-CheckOS 
   - perl-Devel-Confess 
+  - perl-Devel-CoreStack 
   - perl-Devel-Cover 
   - perl-Devel-Cover-Report-Codecov 
   - perl-Devel-Cycle 
   - perl-Devel-Declare 
   - perl-Devel-FindPerl 
+  - perl-Devel-GlobalDestruction 
   - perl-Devel-GlobalPhase 
   - perl-Devel-Hide 
   - perl-Devel-Leak 
+  - perl-Devel-LexAlias 
   - perl-Devel-NYTProf 
+  - perl-Devel-OverloadInfo 
   - perl-Devel-PPPort 
   - perl-Devel-PartialDump 
   - perl-Devel-PatchPerl 
   - perl-Devel-REPL 
+  - perl-Devel-StackTrace 
   - perl-Devel-StackTrace-AsHTML 
+  - perl-Devel-Symdump 
   - perl-Devel-TakeHashArgs 
   - perl-Devel-Trace 
   - perl-Device-SerialPort 
@@ -16935,11 +17095,13 @@ unsorted:
   - perl-Digest-JHash 
   - perl-Digest-MD5 
   - perl-Digest-Perl-MD5 
+  - perl-Dist-CheckConflicts 
   - perl-Dist-Zilla 
   - perl-Dumbbench 
   - perl-Email-Abstract 
   - perl-Email-Address 
   - perl-Email-Address-XS 
+  - perl-Email-Date-Format 
   - perl-Email-MIME 
   - perl-Email-MIME-ContentType 
   - perl-Email-MIME-Encodings 
@@ -16949,27 +17111,37 @@ unsorted:
   - perl-Email-Sender 
   - perl-Email-Simple 
   - perl-Email-Valid 
+  - perl-Encode 
   - perl-Encode-EUCJPASCII 
+  - perl-Encode-HanExtra 
+  - perl-Encode-JIS2K 
+  - perl-Eval-Closure 
   - perl-Eval-LineNumbers 
   - perl-Event 
   - perl-Exception-Base 
+  - perl-Exception-Class 
   - perl-Export-Attrs 
   - perl-Exporter-Declare 
   - perl-Exporter-Lite 
   - perl-Exporter-Tidy 
+  - perl-Exporter-Tiny 
   - perl-ExtUtils-CBuilder 
   - perl-ExtUtils-CChecker 
   - perl-ExtUtils-Config 
   - perl-ExtUtils-CppGuess 
+  - perl-ExtUtils-Depends 
+  - perl-ExtUtils-F77 
   - perl-ExtUtils-Helpers 
   - perl-ExtUtils-InstallPaths 
   - perl-ExtUtils-LibBuilder 
   - perl-ExtUtils-MakeMaker 
   - perl-ExtUtils-MakeMaker-CPANfile 
   - perl-ExtUtils-Manifest 
+  - perl-ExtUtils-PkgConfig 
   - perl-ExtUtils-Typemaps-Default 
   - perl-ExtUtils-XSpp 
   - perl-FFI-CheckLib 
+  - perl-FastCGI 
   - perl-Feed-Find 
   - perl-Fennec-Lite 
   - perl-File-BaseDir 
@@ -16979,19 +17151,23 @@ unsorted:
   - perl-File-Copy-Recursive-Reduced 
   - perl-File-DesktopEntry 
   - perl-File-FcntlLock 
+  - perl-File-Find-Rule 
   - perl-File-Find-Rule-Perl 
   - perl-File-Finder 
   - perl-File-Flock 
   - perl-File-HomeDir 
   - perl-File-LibMagic 
+  - perl-File-MMagic 
   - perl-File-Map 
   - perl-File-MimeInfo 
   - perl-File-Mork 
   - perl-File-Next 
+  - perl-File-Path 
   - perl-File-Path-Tiny 
   - perl-File-ReadBackwards 
   - perl-File-Remove 
   - perl-File-Rsync 
+  - perl-File-ShareDir 
   - perl-File-ShareDir-Install 
   - perl-File-ShareDir-ProjectDistDir 
   - perl-File-Slurp 
@@ -16999,9 +17175,12 @@ unsorted:
   - perl-File-Slurp-Unicode 
   - perl-File-Slurper 
   - perl-File-Sync 
+  - perl-File-Tail 
   - perl-File-Temp 
   - perl-File-Touch 
+  - perl-File-Type 
   - perl-File-Unpack 
+  - perl-File-Which 
   - perl-File-chdir 
   - perl-File-pushd 
   - perl-Filesys-Df 
@@ -17009,12 +17188,17 @@ unsorted:
   - perl-Filesys-Statvfs 
   - perl-Finance-Quote 
   - perl-FindBin-Real 
+  - perl-Font-AFM 
   - perl-Font-TTF 
   - perl-FreezeThaw 
   - perl-Furl 
   - perl-Fuse 
   - perl-Future 
+  - perl-GD 
   - perl-GD-Barcode 
+  - perl-GD-Graph3d 
+  - perl-GDGraph 
+  - perl-GDTextUtil 
   - perl-GStreamer1 
   - perl-Geo-Coordinates-UTM 
   - perl-Geography-Countries 
@@ -17022,6 +17206,7 @@ unsorted:
   - perl-Getopt-Long-Descriptive 
   - perl-Getopt-Tabular 
   - perl-Git-Version-Compare 
+  - perl-Glib 
   - perl-Glib-Object-Introspection 
   - perl-Gnome2-Canvas 
   - perl-Gnome2-VFS 
@@ -17034,22 +17219,32 @@ unsorted:
   - perl-GraphicsMagick 
   - perl-Gravatar-URL 
   - perl-Growl-GNTP 
+  - perl-Gtk2 
   - perl-Gtk2-AppIndicator 
   - perl-Gtk2-ImageView 
   - perl-Gtk2-Unique 
   - perl-Gtk3 
   - perl-Gtk3-SimpleList 
+  - perl-Guard 
+  - perl-HTML-Clean 
   - perl-HTML-Element-Extended 
   - perl-HTML-Encoding 
+  - perl-HTML-FillInForm 
   - perl-HTML-Form 
   - perl-HTML-FormHandler 
+  - perl-HTML-Format 
   - perl-HTML-FormatText-WithLinks 
   - perl-HTML-RewriteAttributes 
   - perl-HTML-Scrubber 
+  - perl-HTML-SimpleParse 
   - perl-HTML-Stream 
   - perl-HTML-TableExtract 
+  - perl-HTML-Template 
   - perl-HTML-Tidy 
   - perl-HTML-TokeParser-Simple 
+  - perl-HTML-Tree 
+  - perl-HTTP-Body 
+  - perl-HTTP-DAV 
   - perl-HTTP-Entity-Parser 
   - perl-HTTP-Headers-ActionPack 
   - perl-HTTP-Headers-Fast 
@@ -17060,10 +17255,12 @@ unsorted:
   - perl-HTTP-Server-Simple 
   - perl-HTTP-Thin 
   - perl-HTTP-Tiny 
+  - perl-HTTPS-Daemon 
   - perl-Hamlib 
   - perl-Hash-Merge 
   - perl-Hash-Merge-Simple 
   - perl-Hash-MoreUtils 
+  - perl-Hash-MultiValue 
   - perl-Hash-Util-FieldHash-Compat 
   - perl-Hook-LexWrap 
   - perl-IO-All 
@@ -17076,12 +17273,16 @@ unsorted:
   - perl-IO-Multiplex 
   - perl-IO-Pager 
   - perl-IO-Pipely 
+  - perl-IO-SessionData 
   - perl-IO-Socket-Multicast 
   - perl-IO-Socket-PortState 
   - perl-IO-Socket-Timeout 
+  - perl-IO-String 
+  - perl-IO-Stty 
   - perl-IO-Tee 
   - perl-IO-TieCombine 
   - perl-IP-Country 
+  - perl-IPC-Run 
   - perl-IPC-Run3 
   - perl-IPC-ShareLite 
   - perl-IPC-System-Simple 
@@ -17089,16 +17290,20 @@ unsorted:
   - perl-Ima-DBI 
   - perl-Image-Info 
   - perl-Image-Sane 
+  - perl-Image-Size 
   - perl-Import-Into 
   - perl-Importer 
+  - perl-Inline 
   - perl-Inline-Python 
   - perl-Iterator 
   - perl-Iterator-Util 
+  - perl-JSON 
   - perl-JSON-Any 
   - perl-JSON-DWIW 
   - perl-JSON-MaybeXS 
   - perl-JSON-RPC 
   - perl-JSON-Validator 
+  - perl-JSON-XS 
   - perl-JavaScript-Minifier-XS 
   - perl-LWP-Online 
   - perl-Lexical-Persistence 
@@ -17121,9 +17326,12 @@ unsorted:
   - perl-Lingua-Translit 
   - perl-Linux-DesktopFiles 
   - perl-Linux-Inotify2 
+  - perl-Linux-Pid 
   - perl-List-AllUtils 
   - perl-List-BinarySearch 
   - perl-List-BinarySearch-XS 
+  - perl-List-MoreUtils 
+  - perl-List-MoreUtils-XS 
   - perl-List-SomeUtils 
   - perl-List-SomeUtils-XS 
   - perl-List-UtilsBy 
@@ -17134,15 +17342,22 @@ unsorted:
   - perl-LockFile-Simple 
   - perl-Log-Any 
   - perl-Log-Contextual 
+  - perl-Log-Dispatch 
   - perl-Log-Dispatch-Array 
   - perl-Log-Dispatch-Config 
   - perl-Log-Dispatch-FileRotate 
   - perl-Log-Dispatchouli 
+  - perl-Log-Log4perl 
   - perl-Log-Message 
   - perl-Log-Message-Simple 
   - perl-MCE 
   - perl-MIME-Charset 
   - perl-MIME-EncWords 
+  - perl-MIME-Lite 
+  - perl-MIME-Types 
+  - perl-MLDBM 
+  - perl-MLDBM-Sync 
+  - perl-MRO-Compat 
   - perl-Mac-PropertyList 
   - perl-Mail-IMAPClient 
   - perl-Mail-SPF-Test 
@@ -17150,6 +17365,7 @@ unsorted:
   - perl-Mail-Sendmail 
   - perl-Mail-SpamAssassin-Plugin-iXhash2 
   - perl-Mason 
+  - perl-Math-Base-Convert 
   - perl-Math-BigInt 
   - perl-Math-BigInt-GMP 
   - perl-Math-Calc-Units 
@@ -17172,6 +17388,7 @@ unsorted:
   - perl-Mock-Config 
   - perl-Mock-Quick 
   - perl-Modern-Perl 
+  - perl-Module-Build 
   - perl-Module-Build-Deprecated 
   - perl-Module-Build-Tiny 
   - perl-Module-Build-WithXSpp 
@@ -17179,6 +17396,8 @@ unsorted:
   - perl-Module-CPANfile 
   - perl-Module-Depends 
   - perl-Module-Find 
+  - perl-Module-Implementation 
+  - perl-Module-Info 
   - perl-Module-Install 
   - perl-Module-Install-AuthorTests 
   - perl-Module-Install-ExtraTests 
@@ -17188,7 +17407,10 @@ unsorted:
   - perl-Module-Pluggable 
   - perl-Module-Reader 
   - perl-Module-Refresh 
+  - perl-Module-Runtime 
+  - perl-Module-Runtime-Conflicts 
   - perl-Module-ScanDeps 
+  - perl-Module-Signature 
   - perl-Module-Starter 
   - perl-Module-Util 
   - perl-Mojo-DOM58 
@@ -17210,6 +17432,7 @@ unsorted:
   - perl-MooX-Types-MooseLike 
   - perl-MooX-Types-MooseLike-Numeric 
   - perl-MooX-late 
+  - perl-Moose 
   - perl-Moose-Autobox 
   - perl-MooseX-Aliases 
   - perl-MooseX-App-Cmd 
@@ -17271,19 +17494,25 @@ unsorted:
   - perl-MouseX-Types 
   - perl-MouseX-Types-Path-Class 
   - perl-Mozilla-LDAP 
+  - perl-NKF 
   - perl-Nagios-Plugin 
   - perl-Net-AMQP: [x86_64] 
   - perl-Net-CIDR 
   - perl-Net-CIDR-Set 
   - perl-Net-DNS-Resolver-Programmable 
+  - perl-Net-Daemon 
   - perl-Net-Domain-TLD 
   - perl-Net-Dropbox-API 
   - perl-Net-HTTPServer 
   - perl-Net-IDN-Encode 
   - perl-Net-IDN-Nameprep 
   - perl-Net-INET6Glue 
+  - perl-Net-IP 
+  - perl-Net-IPv4Addr 
   - perl-Net-Ident 
+  - perl-Net-Jabber 
   - perl-Net-Libproxy 
+  - perl-Net-Netmask 
   - perl-Net-OAuth 
   - perl-Net-OpenID-Common 
   - perl-Net-OpenID-Consumer 
@@ -17293,11 +17522,14 @@ unsorted:
   - perl-Net-SSH2 
   - perl-Net-SSLGlue 
   - perl-Net-TFTP 
+  - perl-Net-Telnet 
   - perl-Net-Twitter 
   - perl-Net-Whois-RIPE 
   - perl-Net-Whois-Raw 
+  - perl-Net-XMPP 
   - perl-NetPacket 
   - perl-NetxAP 
+  - perl-Number-Compare 
   - perl-Number-Format 
   - perl-Number-WithError 
   - perl-OLE-Storage_Lite 
@@ -17312,6 +17544,7 @@ unsorted:
   - perl-PCP-LogSummary 
   - perl-PCP-MMV 
   - perl-PCP-PMDA 
+  - perl-PDA-Pilot 
   - perl-PDF-API2 
   - perl-PHP-Serialization 
   - perl-POE 
@@ -17321,14 +17554,23 @@ unsorted:
   - perl-PPIx-QuoteLike 
   - perl-PPIx-Regexp 
   - perl-PPIx-Utilities 
+  - perl-Package-DeprecationManager 
   - perl-Package-Generator 
+  - perl-Package-Stash 
+  - perl-Package-Stash-XS 
   - perl-Package-Variant 
+  - perl-PadWalker 
+  - perl-Pango 
   - perl-Params-Classify 
   - perl-Params-Coerce 
+  - perl-Params-Util 
+  - perl-Params-Validate 
+  - perl-Params-ValidationCompiler 
   - perl-Parse-CPAN-Packages 
   - perl-Parse-Method-Signatures 
   - perl-Parse-PMFile 
   - perl-Parse-Win32Registry 
+  - perl-Parse-Yapp 
   - perl-PatchReader 
   - perl-Path-Class 
   - perl-Path-FindDev 
@@ -17341,6 +17583,7 @@ unsorted:
   - perl-Perl-Critic-Policy-Variables-ProhibitLoopOnHash 
   - perl-Perl-Critic-Pulp 
   - perl-Perl-PrereqScanner 
+  - perl-Perl-Tidy 
   - perl-Perl-Version 
   - perl-Perl6-Junction 
   - perl-PerlIO-Layers 
@@ -17349,6 +17592,7 @@ unsorted:
   - perl-PerlIO-utf8_strict 
   - perl-PerlIO-via-Timeout 
   - perl-PerlIO-via-dynamic 
+  - perl-PerlMagick 
   - perl-Plack 
   - perl-Plack-Middleware-LogErrors 
   - perl-Plack-Middleware-Session 
@@ -17356,12 +17600,14 @@ unsorted:
   - perl-Pod-Coverage-Moose 
   - perl-Pod-Coverage-TrustPod 
   - perl-Pod-Eventual 
+  - perl-Pod-HtmlPsPdf 
   - perl-Pod-Markdown 
   - perl-Pod-MinimumVersion 
   - perl-Pod-POM 
   - perl-Pod-Readme 
   - perl-Pod-Spell 
   - perl-Pod-Usage 
+  - perl-PostScript-Simple 
   - perl-Prima 
   - perl-Probe-Perl 
   - perl-Proc-Fork 
@@ -17370,9 +17616,12 @@ unsorted:
   - perl-Protocol-Redis 
   - perl-Protocol-Redis-Faster 
   - perl-Protocol-WebSocket 
+  - perl-Quantum-Superpositions 
   - perl-RDF-Trine 
+  - perl-RPC-XML 
   - perl-RPM-Header-PurePerl 
   - perl-RPM2 
+  - perl-Readonly 
   - perl-Readonly-XS 
   - perl-Redis 
   - perl-Regexp-Assemble 
@@ -17382,17 +17631,22 @@ unsorted:
   - perl-Return-Value 
   - perl-Role-HasMessage 
   - perl-Role-Identifiable 
+  - perl-Role-Tiny 
   - perl-Rose-Object 
   - perl-Router-Simple 
   - perl-SDL 
   - perl-SGML-Parser-OpenSP 
+  - perl-SGMLS 
+  - perl-SOAP-Lite 
   - perl-SQL-Abstract 
   - perl-SQL-ReservedWords 
   - perl-SQL-SplitStatement 
+  - perl-SQL-Statement 
   - perl-SQL-Tokenizer 
   - perl-SQL-Translator 
   - perl-SUPER 
   - perl-SVG 
+  - perl-SVN-Simple 
   - perl-Safe-Isa 
   - perl-Scalar-List-Utils 
   - perl-Scalar-String 
@@ -17402,7 +17656,10 @@ unsorted:
   - perl-Sereal 
   - perl-Sereal-Decoder 
   - perl-Sereal-Encoder 
+  - perl-Set-Crontab 
   - perl-Set-IntSpan 
+  - perl-Set-Object 
+  - perl-Set-Scalar 
   - perl-Smart-Comments 
   - perl-Snowball-Norwegian 
   - perl-Snowball-Swedish 
@@ -17411,6 +17668,7 @@ unsorted:
   - perl-Sort-Key 
   - perl-Sort-Naturally 
   - perl-Sort-Versions 
+  - perl-Specio 
   - perl-Spiffy 
   - perl-Spooky-Patterns-XS: [x86_64] 
   - perl-Spreadsheet-ParseExcel 
@@ -17436,10 +17694,16 @@ unsorted:
   - perl-String-Truncate 
   - perl-Struct-Dumb 
   - perl-Sub-Delete 
+  - perl-Sub-Exporter 
   - perl-Sub-Exporter-ForMethods 
   - perl-Sub-Exporter-GlobExporter 
+  - perl-Sub-Exporter-Progressive 
+  - perl-Sub-Identify 
   - perl-Sub-Info 
+  - perl-Sub-Install 
+  - perl-Sub-Name 
   - perl-Sub-Override 
+  - perl-Sub-Quote 
   - perl-Sub-Retry 
   - perl-Sub-Spec 
   - perl-Sub-Uplevel 
@@ -17467,7 +17731,9 @@ unsorted:
   - perl-Task-Kensho-Testing 
   - perl-Task-Kensho-XML 
   - perl-Task-Moose 
+  - perl-Task-Weaken 
   - perl-Template-GD 
+  - perl-Template-Toolkit 
   - perl-Term-Encoding 
   - perl-Term-ProgressBar 
   - perl-Term-ReadPassword 
@@ -17494,6 +17760,7 @@ unsorted:
   - perl-Test-Exception 
   - perl-Test-Exception-LessClever 
   - perl-Test-FailWarnings 
+  - perl-Test-Fatal 
   - perl-Test-File 
   - perl-Test-File-Contents 
   - perl-Test-File-ShareDir 
@@ -17504,6 +17771,7 @@ unsorted:
   - perl-Test-JSON 
   - perl-Test-Kit 
   - perl-Test-LWP-UserAgent 
+  - perl-Test-LeakTrace 
   - perl-Test-LectroTest 
   - perl-Test-LongString 
   - perl-Test-Manifest 
@@ -17526,8 +17794,10 @@ unsorted:
   - perl-Test-Output 
   - perl-Test-Perl-Critic 
   - perl-Test-PerlTidy 
+  - perl-Test-Pod 
   - perl-Test-Pod-Coverage 
   - perl-Test-Refcount 
+  - perl-Test-Requires 
   - perl-Test-Requires-Git 
   - perl-Test-Script 
   - perl-Test-SharedFork 
@@ -17561,44 +17831,58 @@ unsorted:
   - perl-Text-BibTeX-devel 
   - perl-Text-Brew 
   - perl-Text-CSV 
+  - perl-Text-CSV_XS 
   - perl-Text-Capitalize 
+  - perl-Text-ChaSen 
   - perl-Text-CharWidth 
+  - perl-Text-DelimMatch 
   - perl-Text-Diff 
   - perl-Text-German 
+  - perl-Text-Glob 
   - perl-Text-Hunspell 
+  - perl-Text-Iconv 
+  - perl-Text-Kakasi 
   - perl-Text-Markdown 
   - perl-Text-Patch 
   - perl-Text-RecordParser 
   - perl-Text-Reform 
   - perl-Text-Roman 
+  - perl-Text-Soundex 
   - perl-Text-SpellChecker 
   - perl-Text-Sprintf-Named 
   - perl-Text-Table 
   - perl-Text-TabularDisplay 
   - perl-Text-Template 
+  - perl-Text-Unidecode 
   - perl-Text-WrapI18N 
   - perl-Text-Wrapper 
   - perl-TheSchwartz 
   - perl-Throwable 
+  - perl-Tie-Cache 
   - perl-Tie-Cycle 
   - perl-Tie-Hash-DBD 
   - perl-Tie-Hash-Method 
+  - perl-Tie-IxHash 
   - perl-Tie-RefHash-Weak 
   - perl-Tie-Simple 
   - perl-Tie-ToObject 
   - perl-Time-Clock 
+  - perl-Time-Duration 
   - perl-Time-Duration-Parse 
   - perl-Time-Local 
   - perl-Time-Mock 
   - perl-Time-Moment 
   - perl-Time-Out 
+  - perl-Time-Period 
   - perl-Time-Tiny 
+  - perl-Time-modules 
   - perl-Tk 
   - perl-Tk-Clock 
   - perl-Tk-devel 
   - perl-Tree-DAG_Node 
   - perl-TryCatch 
   - perl-Type-Tiny 
+  - perl-Types-Serialiser 
   - perl-UNIVERSAL-can 
   - perl-UNIVERSAL-isa 
   - perl-UNIVERSAL-moniker 
@@ -17611,14 +17895,19 @@ unsorted:
   - perl-Unicode-Collate 
   - perl-Unicode-LineBreak 
   - perl-Unicode-Map 
+  - perl-Unicode-Map8 
   - perl-Unicode-Normalize 
+  - perl-Unicode-String 
   - perl-Unicode-Stringprep 
+  - perl-Variable-Magic 
   - perl-Verilog-Perl 
+  - perl-WWW-Form-UrlEncoded 
   - perl-WWW-Mechanize 
   - perl-WWW-PAUSE-CleanUpHomeDir 
   - perl-WWW-Pastebin-PastebinCom-Create 
   - perl-WWW-Shorten 
   - perl-Want 
+  - perl-WeakRef 
   - perl-Web-MREST 
   - perl-Web-MREST-CLI 
   - perl-Web-Machine 
@@ -17637,20 +17926,27 @@ unsorted:
   - perl-XML-Handler-YAWriter 
   - perl-XML-LibXML-PrettyPrint 
   - perl-XML-LibXML-Simple 
+  - perl-XML-LibXSLT 
   - perl-XML-Namespace 
   - perl-XML-NamespaceFactory 
   - perl-XML-NodeFilter 
+  - perl-XML-Parser-Lite 
   - perl-XML-RSS 
+  - perl-XML-SAX-Expat 
   - perl-XML-SAX-ExpatXS 
   - perl-XML-SAX-Writer 
   - perl-XML-SemanticDiff 
+  - perl-XML-Simple 
   - perl-XML-SimpleObject-LibXML 
+  - perl-XML-Stream 
   - perl-XML-Structured 
   - perl-XML-Writer-String 
   - perl-XML-XPath 
   - perl-XML-XPathEngine 
+  - perl-XML-XSLT 
   - perl-XMLRPC-Lite 
   - perl-XSLoader 
+  - perl-YAML 
   - perl-YAML-LibYAML-API 
   - perl-YAML-PP 
   - perl-YAML-PP-LibYAML 
@@ -17674,12 +17970,15 @@ unsorted:
   - perl-genders 
   - perl-homedir 
   - perl-indirect 
+  - perl-libconfigfile 
   - perl-libintl-perl 
   - perl-libprelude 
   - perl-local-lib 
   - perl-marisa 
   - perl-mousex-getopt 
   - perl-multidimensional 
+  - perl-namespace-autoclean 
+  - perl-namespace-clean 
   - perl-obexftp 
   - perl-pcsc 
   - perl-prefork 
@@ -17701,8 +18000,8 @@ unsorted:
   - permissions-zypp-plugin 
   - permlib-devel 
   - perseus-sdr-tools 
-  - pesign: [i586] 
-  - pesign-obs-integration: [i586] 
+  - pesign 
+  - pesign-obs-integration 
   - petsc-devel 
   - petsc-doc 
   - petsc-gnu-mpich-hpc-devel 
@@ -17763,35 +18062,59 @@ unsorted:
   - php-pear-Net_Socket 
   - php-pear-XML_Parser 
   - php7-APCu 
+  - php7-bcmath 
+  - php7-bz2 
+  - php7-calendar 
+  - php7-curl 
+  - php7-dba 
+  - php7-devel 
   - php7-embed 
   - php7-enchant 
+  - php7-exif 
+  - php7-fastcgi 
   - php7-fileinfo 
   - php7-firebird 
   - php7-fpm 
+  - php7-ftp 
   - php7-gmagick 
+  - php7-gmp 
   - php7-ice 
   - php7-imagick 
   - php7-intl 
+  - php7-ldap 
   - php7-lzf 
   - php7-maxminddb 
   - php7-memcached 
+  - php7-odbc 
   - php7-opcache 
+  - php7-openssl 
   - php7-pcntl 
+  - php7-pear 
+  - php7-pecl 
+  - php7-pgsql 
   - php7-phalcon 
   - php7-phar 
   - php7-phpunit8 
   - php7-posix 
   - php7-readline 
   - php7-redis 
+  - php7-shmop 
   - php7-smbclient 
+  - php7-snmp 
   - php7-soap 
+  - php7-sockets 
   - php7-sodium 
   - php7-sysvmsg 
+  - php7-sysvsem 
+  - php7-sysvshm 
   - php7-test 
+  - php7-tidy 
   - php7-uuid 
   - php7-xdebug 
   - php7-xmlrpc 
+  - php7-xsl 
   - php7-zip 
+  - php7-zlib 
   - phpMyAdmin 
   - phpPgAdmin 
   - pianobar 
@@ -18042,11 +18365,13 @@ unsorted:
   - pommed 
   - pongix 
   - poppler-data 
+  - popt-devel 
   - popt-devel-32bit: [x86_64] 
   - portaudio-devel 
   - portmidi 
   - portmidi-devel 
   - portmidi-java 
+  - posix_cc 
   - posixovl 
   - post-build-checks 
   - poster 
@@ -18773,6 +19098,7 @@ unsorted:
   - python3-SPARQLWrapper 
   - python3-SQLAlchemy-Utils 
   - python3-Scrapy 
+  - python3-SecretStorage 
   - python3-Send2Trash 
   - python3-Shapely 
   - python3-SimpleWebSocketServer 
@@ -19580,6 +19906,7 @@ unsorted:
   - python3-enaml 
   - python3-encore 
   - python3-entrypoint2 
+  - python3-entrypoints 
   - python3-environmental-override 
   - python3-envisage 
   - python3-enzyme 
@@ -19682,6 +20009,7 @@ unsorted:
   - python3-freezerclient 
   - python3-fritzconnection 
   - python3-frozendict 
+  - python3-fs 
   - python3-fsspec 
   - python3-ftfy 
   - python3-ftputil 
@@ -19905,6 +20233,7 @@ unsorted:
   - python3-jdatetime 
   - python3-jdcal 
   - python3-jedihttp 
+  - python3-jeepney 
   - python3-jellyfish 
   - python3-jenkins-job-builder 
   - python3-jenkinsapi 
@@ -19973,6 +20302,9 @@ unsorted:
   - python3-keepalive 
   - python3-keras2onnx: [x86_64] 
   - python3-kerberos 
+  - python3-keyczar 
+  - python3-keyring 
+  - python3-keyrings.alt 
   - python3-keystoneauth1 
   - python3-keystoneclient 
   - python3-keystonemiddleware 
@@ -20507,6 +20839,7 @@ unsorted:
   - python3-process-tests 
   - python3-proglog 
   - python3-progress 
+  - python3-progressbar 
   - python3-progressbar2 
   - python3-prometheus_client 
   - python3-promise 
@@ -20599,6 +20932,7 @@ unsorted:
   - python3-pyfg 
   - python3-pyfiglet 
   - python3-pyflakes 
+  - python3-pyftpdlib 
   - python3-pyfuse3 
   - python3-pygal 
   - python3-pygaljs 
@@ -20684,6 +21018,7 @@ unsorted:
   - python3-pysaml2 
   - python3-pyscard 
   - python3-pysearpc 
+  - python3-pysendfile 
   - python3-pyshark 
   - python3-pyshould 
   - python3-pyshp 
@@ -21492,6 +21827,7 @@ unsorted:
   - qemu-audio-alsa 
   - qemu-audio-pa 
   - qemu-audio-sdl 
+  - qemu-linux-user 
   - qemu-ovmf-x86_64-debug: [x86_64] 
   - qemu-testsuite 
   - qemu-uefi-aarch32: [x86_64] 
@@ -21616,6 +21952,7 @@ unsorted:
   - quassel-mono 
   - quazip-devel 
   - quazip-doc 
+  - quilt 
   - quilter 
   - quilter-lang 
   - quimup 
@@ -21709,6 +22046,7 @@ unsorted:
   - re2-devel 
   - read-edid 
   - read-only-root-fs-volatile 
+  - readline-devel 
   - readline-devel-32bit: [x86_64] 
   - readline-devel-static 
   - readline5-devel 
@@ -21845,6 +22183,10 @@ unsorted:
   - rpcgen 
   - rpcsvc-proto-devel 
   - rpm-32bit: [x86_64] 
+  - rpm-build 
+  - rpm-build-perl 
+  - rpm-build-python 
+  - rpm-devel 
   - rpmconf 
   - rpmdevtools 
   - rpmemd: [x86_64] 
@@ -21916,6 +22258,7 @@ unsorted:
   - ruby-apparmor 
   - ruby-bundled-gems-rpmhelper 
   - ruby-common-rails 
+  - ruby-devel 
   - ruby-geos 
   - ruby-libprelude 
   - ruby-marisa 
@@ -23102,6 +23445,7 @@ unsorted:
   - ruby2.6-rubygem-yard 
   - ruby2.6-rubygem-yard-doc 
   - ruby2.6-rubygem-zeitwerk-doc 
+  - ruby2.7-devel 
   - ruby2.7-devel-extra 
   - ruby2.7-doc 
   - ruby2.7-doc-ri 
@@ -23872,6 +24216,7 @@ unsorted:
   - rubygem-mail-2_4 
   - rubygem-mail-2_4-doc 
   - rubygem-passenger-nginx 
+  - rubygem-ruby-fcgi 
   - rubygem-ruby-fcgi-doc 
   - rubygem-ruby-fcgi-testsuite 
   - rubygem-sexp_processor-3_2 
@@ -24470,6 +24815,7 @@ unsorted:
   - spdlog-devel 
   - spdylay 
   - spdylay-devel 
+  - spec-cleaner 
   - spec-cleaner-format_spec_file 
   - spec-version-maven-plugin 
   - spec-version-maven-plugin-javadoc 
@@ -24717,6 +25063,7 @@ unsorted:
   - swaylock-zsh-completion 
   - swift-im 
   - swiften-devel 
+  - swig 
   - swig-doc 
   - swig-examples 
   - swing-layout 
@@ -24787,6 +25134,7 @@ unsorted:
   - systemd-mini-sysvinit 
   - systemd-network 
   - systemd-portable 
+  - systemd-rpm-macros 
   - systemd-ui 
   - systemd-zram-service 
   - systemsettings5-devel 
@@ -24805,6 +25153,7 @@ unsorted:
   - t38modem 
   - tabix 
   - tachyon 
+  - tack 
   - tagbanwa-fonts 
   - taglib 
   - taglib-extras-devel 
@@ -32756,6 +33105,7 @@ unsorted:
   - thunarx-python-doc 
   - thunderbolt-user-space 
   - tibetan-machine-uni-fonts 
+  - tidy 
   - tidy-doc 
   - tidyp 
   - tig 
@@ -33458,6 +33808,7 @@ unsorted:
   - valadoc-doclet-devhelp 
   - valadoc-doclet-gtkdoc 
   - valadoc-doclet-html 
+  - valgrind 
   - valgrind-32bit: [x86_64] 
   - valgrind-client-headers 
   - valgrind-devel 
@@ -33746,6 +34097,7 @@ unsorted:
   - widelands 
   - widelands-data 
   - widelands-debug 
+  - wiggle 
   - wiiuse-devel 
   - wildmidi 
   - wildmidi-devel 
@@ -34003,6 +34355,7 @@ unsorted:
   - xgc 
   - xgrabsc 
   - xhfsutil 
+  - xhtml-dtd 
   - xiccd 
   - xindy 
   - xindy-doc 
@@ -34241,6 +34594,7 @@ unsorted:
   - xylib-devel 
   - xyscan 
   - xyscan-doc 
+  - xz-devel 
   - xz-devel-32bit: [x86_64] 
   - xz-java 
   - xz-java-javadoc 
@@ -34418,6 +34772,7 @@ unsorted:
   - zpaq 
   - zramcfg 
   - zsh-htmldoc 
+  - zstd 
   - zsync 
   - zutils 
   - zvbi 
