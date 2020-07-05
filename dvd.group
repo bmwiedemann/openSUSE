@@ -449,7 +449,7 @@
     <package name="ebtables" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="edict2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="eekboard" supportstatus="unsupported"/> <!-- reason: dvd:eekboard -->
+    <package name="eekboard" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="efont-unicode-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ekiga" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ekiga-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -1895,7 +1895,7 @@
     <package name="libcpupower0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcrack2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libcreaterepo_c0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libcroco-0_6-3" supportstatus="unsupported"/> <!-- reason: dvd:eekboard -->
+    <package name="libcroco-0_6-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libcrypt1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libcryptmount0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libcrypto46" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
