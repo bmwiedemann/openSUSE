@@ -2689,7 +2689,6 @@ unsorted:
   - edict 
   - editorconfig 
   - editres 
-  - edje 
   - eekboard-devel 
   - eeyek-fonts 
   - efibootmgr: [i586] 
@@ -2697,6 +2696,7 @@ unsorted:
   - efivar-devel 
   - efl 
   - efl-devel 
+  - efl-examples 
   - efl-lang 
   - efl-testsuite 
   - efont-serif-fonts 
@@ -2706,7 +2706,6 @@ unsorted:
   - eigen3-doc 
   - elektra 
   - elektra-qt-gui 
-  - elementary 
   - elementary-cmake-modules 
   - elementary-icon-theme 
   - elementary-icon-theme-gimp-palette 
@@ -2732,7 +2731,6 @@ unsorted:
   - emacs-scheme48 
   - emacs-semi 
   - embree-devel-static: [x86_64] 
-  - embryo 
   - emf2svg-conv 
   - emil 
   - emojione-color-font 
@@ -4682,6 +4680,7 @@ unsorted:
   - git-credential-gnome-keyring 
   - git-credential-libsecret 
   - git-crypt 
+  - git-deps-html 
   - git-doc 
   - git-filter-repo 
   - git-lfs 
@@ -9186,12 +9185,10 @@ unsorted:
   - libecholib1_3-devel 
   - libecm1 
   - libeconf-devel 
-  - libecore1 
   - libecpg6 
   - libecpg6-32bit: [x86_64] 
   - libecryptfs1 
   - libecryptfs1-32bit: [x86_64] 
-  - libector1 
   - libedata-book-1_2-26-32bit: [x86_64] 
   - libedata-cal-2_0-1-32bit: [x86_64] 
   - libedataserver-1_2-24-32bit: [x86_64] 
@@ -9201,45 +9198,25 @@ unsorted:
   - libeditorconfig-devel 
   - libeditorconfig-devel-32bit: [x86_64] 
   - libeditorconfig0-32bit: [x86_64] 
-  - libedje1 
-  - libeet1 
-  - libeeze1 
   - libefa1-32bit: [x86_64] 
-  - libefl1 
-  - libefreet1 
-  - libefreet_mime1 
-  - libefreet_trash1 
-  - libeina1 
-  - libeio1 
-  - libeldbus1 
   - libelektra-augeas 
   - libelektra-devel 
   - libelektra-devel-doc 
   - libelektra4 
-  - libelementary1 
   - libelf-devel 
   - libelf-devel-32bit: [x86_64] 
   - libelf1-32bit: [x86_64] 
-  - libelocation1 
-  - libelput1 
-  - libelua1 
-  - libembryo1 
   - libemf2svg-devel 
   - libemf2svg1 
-  - libemile1 
-  - libemotion1 
   - libenca0-32bit: [x86_64] 
   - libenchant-2-2-32bit: [x86_64] 
   - libenchant1-32bit: [x86_64] 
   - libenet7 
-  - libeo1 
-  - libeolian1 
   - libeot-devel 
   - libeot-tools 
   - libepc-1_0-2 
   - libepc-devel 
   - libepc-lang 
-  - libephysics1 
   - libepoxy-devel 
   - libepoxy0-32bit: [x86_64] 
   - libeppic-devel 
@@ -9256,8 +9233,6 @@ unsorted:
   - libesedb1 
   - libesmtp-devel 
   - libestr-devel 
-  - libethumb1 
-  - libethumb_client1 
   - libetonyek-devel 
   - libetonyek-devel-doc 
   - libetonyek-tools 
@@ -9266,7 +9241,6 @@ unsorted:
   - libev-devel 
   - libev4 
   - libev4-32bit: [x86_64] 
-  - libevas1 
   - libevdev2-32bit: [x86_64] 
   - libevemu3 
   - libevent-2_1-7-32bit: [x86_64] 
@@ -13255,6 +13229,7 @@ unsorted:
   - libzmf-devel-doc 
   - libzmf-tools 
   - libzmq5-32bit: [x86_64] 
+  - libzmusic1 
   - libzn_poly-0_9 
   - libzopfli-devel 
   - libzopfli1 
@@ -14131,6 +14106,7 @@ unsorted:
   - mdbtools-devel 
   - mdds-1_4-devel 
   - mdds-1_5-devel 
+  - mdevctl 
   - mdtest 
   - meabo 
   - meanwhile-devel 
@@ -15170,6 +15146,9 @@ unsorted:
   - netgen-devel 
   - nethogs 
   - netlabel-tools 
+  - netperfmeter 
+  - netperfmeter-pdfproctools 
+  - netperfmeter-plotting 
   - netsniff-ng 
   - netsurf-buildsystem 
   - nettle 
@@ -18393,6 +18372,7 @@ unsorted:
   - postgresql10-docs 
   - postgresql10-pg_cron 
   - postgresql10-pgagent 
+  - postgresql10-pgsql-ogr-fdw 
   - postgresql10-plperl 
   - postgresql10-plpython 
   - postgresql10-plr 
@@ -18409,6 +18389,8 @@ unsorted:
   - postgresql11-pg_cron 
   - postgresql11-pg_cron-llvmjit 
   - postgresql11-pgagent 
+  - postgresql11-pgsql-ogr-fdw 
+  - postgresql11-pgsql-ogr-fdw-llvmjit 
   - postgresql11-plperl 
   - postgresql11-plpython 
   - postgresql11-plr 
@@ -18423,6 +18405,8 @@ unsorted:
   - postgresql12-pg_cron 
   - postgresql12-pg_cron-llvmjit 
   - postgresql12-pgagent 
+  - postgresql12-pgsql-ogr-fdw 
+  - postgresql12-pgsql-ogr-fdw-llvmjit 
   - postgresql12-plperl 
   - postgresql12-plpython 
   - postgresql12-plr 
@@ -18437,6 +18421,7 @@ unsorted:
   - postgresql95-docs 
   - postgresql95-pg_cron 
   - postgresql95-pgagent 
+  - postgresql95-pgsql-ogr-fdw 
   - postgresql95-plperl 
   - postgresql95-plpython 
   - postgresql95-plr 
@@ -18450,6 +18435,7 @@ unsorted:
   - postgresql96-docs 
   - postgresql96-pg_cron 
   - postgresql96-pgagent 
+  - postgresql96-pgsql-ogr-fdw 
   - postgresql96-plperl 
   - postgresql96-plpython 
   - postgresql96-plr 
@@ -18597,7 +18583,6 @@ unsorted:
   - psi+-plugins-enummessagesplugin 
   - psi+-plugins-extendedmenuplugin 
   - psi+-plugins-extendedoptionsplugin 
-  - psi+-plugins-gnupgplugin 
   - psi+-plugins-gomokugameplugin 
   - psi+-plugins-historykeeperplugin 
   - psi+-plugins-imageplugin 
@@ -18606,11 +18591,11 @@ unsorted:
   - psi+-plugins-juickplugin 
   - psi+-plugins-messagefilterplugin 
   - psi+-plugins-omemoplugin 
+  - psi+-plugins-openpgpplugin 
   - psi+-plugins-otrplugin 
   - psi+-plugins-pepchangenotifyplugin 
   - psi+-plugins-qipxstatusesplugin 
   - psi+-plugins-screenshotplugin 
-  - psi+-plugins-skinsplugin 
   - psi+-plugins-stopspamplugin 
   - psi+-plugins-storagenotesplugin 
   - psi+-plugins-translateplugin 
@@ -18910,9 +18895,6 @@ unsorted:
   - python2-arabic-reshaper 
   - python2-azure-datalake-store 
   - python2-clustershell 
-  - python2-efl 
-  - python2-efl-doc 
-  - python2-efl-examples 
   - python2-geopy 
   - python2-keyrings.alt 
   - python2-libfwsi 
@@ -20049,6 +20031,7 @@ unsorted:
   - python3-gexiv2 
   - python3-ggplot 
   - python3-girder-client 
+  - python3-git-deps 
   - python3-git-pw 
   - python3-git-url-parse 
   - python3-gitdb 
@@ -33317,6 +33300,7 @@ unsorted:
   - trytond_stock 
   - trytond_stock_lot 
   - trytond_stock_supply 
+  - tsctp 
   - tslib 
   - tslib-devel 
   - tslib-devel-32bit: [x86_64] 
@@ -34064,6 +34048,8 @@ unsorted:
   - webkit-jsc-4 
   - webkit2gtk3-devel 
   - webkit2gtk3-minibrowser 
+  - weblate: [x86_64] 
+  - weblate-doc: [x86_64] 
   - websocketpp-devel 
   - webvfx 
   - webvfx-devel 
@@ -34759,6 +34745,7 @@ unsorted:
   - zlibrary-data 
   - zlibrary-devel 
   - zlibrary0_99 
+  - zmusic-devel 
   - zn_poly-devel 
   - znc 
   - znc-devel 
