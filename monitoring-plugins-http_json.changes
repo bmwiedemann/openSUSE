@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 03 08:11:34 UTC 2020 - mliska@suse.cz
+
+- Update to version 2.1+git.1593763135.c23ebac:
+  * Add JSON parsing on HTTPError
+  * Add handling of empty JSON return values
+  * Add spaces to debug output
+  * Add JSON parsing on HTTPError
+  * Adjust pylint for new function
+  * Move main entrypoint to own function for simpler testing
+  * Add Makefile and requirements.txt for easier testing
+  * Update README
+  * added missing cli args for V2.0
+  * added icinga2 command definitions
+
+-------------------------------------------------------------------
 Tue Mar 31 19:43:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Add icinga2 command configuration template (not yet part of
