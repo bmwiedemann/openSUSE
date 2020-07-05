@@ -18,7 +18,7 @@
 
 %define so_name 2
 Name:           libmpdclient
-Version:        2.18
+Version:        2.19
 Release:        0
 Summary:        Library for interfacing the Music Player Daemon
 License:        BSD-3-Clause

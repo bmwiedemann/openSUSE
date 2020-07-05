@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul  3 23:11:53 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 2.19
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/libmpdclient/v2.19/NEWS
+  * fix off-by-one bug in MPD_HOST parser
+  * add function mpd_lookup_replay_gain_mode()
+  * identify messages with length over the buffer limit
+  * support MPD protocol 0.16: replay gain
+  * support MPD protocol 0.19: idle events "neighbor" and "mount"
+  * support MPD protocol 0.20: rangeid
+  * support MPD protocol 0.21: command "tagtypes all"
+
+-------------------------------------------------------------------
 Mon Jan 27 06:35:18 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 2.18
