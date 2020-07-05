@@ -74,7 +74,6 @@ dvd:
   - patterns-base-enhanced_base: [suggested]
   - patterns-server-file_server: [suggested]
   - patterns-fonts-fonts: [suggested]
-  - patterns-fonts-fonts_opt: [suggested]
   - patterns-games-games: [suggested]
   - patterns-server-lamp_server: [suggested]
   - patterns-desktop-laptop: [suggested]
@@ -169,11 +168,8 @@ dvd:
   - cellwriter
   - clicfs
   - createrepo_c
-  - eekboard
   - git
   # hylafax as requested by kkeil
-  - hylafax+
-  - hylafax+-client
   # kdump+tools
   - kdump
   # all kernel flavors we want to have
