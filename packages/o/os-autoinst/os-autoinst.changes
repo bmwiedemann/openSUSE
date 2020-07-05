@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 30 18:09:17 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1593540547.a04ac9df:
+  * Add auto-merge same as in openQA based on single-approval
+  * Fix space issue
+  * Fix backend ipmi power off issue
+  * Workaround for cv::norm() returning NaN (poo#68474)
+  * Fix the issue that does not show softfail when needle file with boo
+
+-------------------------------------------------------------------
 Tue Jun 23 11:25:13 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1592908950.5038d8c2:

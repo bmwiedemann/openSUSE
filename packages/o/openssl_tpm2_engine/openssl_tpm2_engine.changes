@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul  3 09:35:56 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update tarball due to download_files error
+
+-------------------------------------------------------------------
+Thu Jul  2 15:03:09 UTC 2020 - James.Bottomley@HansenPartnership.com
+
+- Update to version 2.4.2
+  * Add every TPM supported curve (as defined by the TCG)
+  * Fix a bug with explicitly parametrised curve handling (needed for BN)
+  * Update the tests to be able to use swtpm
+  * Allow loading public key without password
+
+-------------------------------------------------------------------
 Thu Mar 26 04:31:36 UTC 2020 - James.Bottomley@HansenPartnership.com
 
 - Update to version 2.4.1

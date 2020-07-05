@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  2 12:57:31 UTC 2020 - pgajdos@suse.com
+
+- switch from nose to pytest
+
+-------------------------------------------------------------------
 Wed Apr 15 11:11:05 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 2.2.2

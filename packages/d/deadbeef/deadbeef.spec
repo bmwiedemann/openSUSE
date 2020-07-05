@@ -19,7 +19,7 @@
 %bcond_with restricted
 
 Name:           deadbeef
-Version:        1.8.3
+Version:        1.8.4
 Release:        0
 Summary:        GTK+ audio player
 License:        Zlib AND GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause
@@ -27,20 +27,12 @@ Group:          Productivity/Multimedia/Sound/Players
 URL:            https://deadbeef.sourceforge.io/
 Source:         https://github.com/DeaDBeeF-Player/deadbeef/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.appdata.xml
-# PATCH-FIX-OPENSUSE deadbeef-compiler-warnings.patch olaf@aepfle.de -- Fix compiler warnings.
-Patch0:         %{name}-compiler-warnings.patch
 # PATCH-FIX-OPENSUSE 0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
-Patch1:         0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
+Patch0:         0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
 # PATCH-FEATURE-OPENSUSE deadbeef_disable_psf.patch aloisio@gmx.com -- Do not look for plugins/psf.
-Patch2:         %{name}_disable_psf.patch
-# PATCH-FIX-UPSTREAM deadbeef-fix-return-type.patch hillwood@opensuse.org -- Fix return type.
-Patch3:         %{name}-fix-return-type.patch
+Patch1:         %{name}_disable_psf.patch
 # PATCH-FIX-OPENSUSE deadbeef-drop-documents-installation.patch hillwood@opensuse.org -- Install documents by rpmbuild.
-Patch4:         %{name}-drop-documents-installation.patch
-# PATCH-FIX-UPSTREAM deadbeef-better-ogg-and-aac-converter-support.patch hillwood@opensuse.org -- More profiles for ogg and aac.
-# Bring the feature to openSUSE first.
-# https://github.com/DeaDBeeF-Player/deadbeef/pull/2338
-Patch5:         deadbeef-better-ogg-and-aac-converter-support.patch
+Patch2:         %{name}-drop-documents-installation.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -133,6 +125,7 @@ export CXXFLAGS="$CFLAGS"
 
 %install
 %make_install
+rm -rf %{buildroot}%{_libexecdir}/debug/%{_libdir}/%{name}/ddb_soundtouch.so*
 install -Dpm 0644 %{name}.appdata.xml \
 %{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
 
@@ -185,6 +178,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/%{name}/ddb_dumb.so*
 %{_libdir}/%{name}/ddb_mono2stereo.so*
 %{_libdir}/%{name}/ddb_shn.so*
+%{_libdir}/%{name}/ddb_soundtouch.so*
 %{_libdir}/%{name}/alac.so*
 %{_libdir}/%{name}/in_sc68.so*
 %{_libdir}/%{name}/data68/

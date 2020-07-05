@@ -448,7 +448,9 @@ popd
 %endif
 
 %build
+export CC_PREFIX=ccache
 export CC_OPT_FLAGS=$CXXFLAGS
+ln -sf  /.ccache/ ~/.ccache
 %if !%{is_lite}
 %limit_build -m 6200
 %endif

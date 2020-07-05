@@ -30,6 +30,8 @@ Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/Boxes
 Source0:        https://download.gnome.org/sources/gnome-boxes/3.36/%{name}-%{version}.tar.xz
 
+# PATCH-FEATURE-OPENSUSE fcrozat@suse.com -- Ensure openSUSE Leap and TW are listed as recommended distributions
+Patch0:         gnome-boxes-opensuse.patch
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig

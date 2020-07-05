@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Fri Jun 26 19:04:05 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to version 1.0.12
+  + Add support of PostgreSQL 13
+- Packaging
+  + adjust _multibuild to current target 95 to 12
+  + rework build and not build suse version
+  + add llvmjit split and support
+  + spec-cleaner
+  + use common vars named and packaging way of pg at openSUSE
+
+-------------------------------------------------------------------
+Fri Sep 14 07:40:17 UTC 2018 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 1.0.6: Minor changes in support of PostgreSQL 11 release
+
+-------------------------------------------------------------------
+Thu Jun 14 11:39:17 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Make use of multibuild to handle multiple version of postgresql
+
+-------------------------------------------------------------------
+Tue May 29 12:39:35 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Inital version 1.0.5
+

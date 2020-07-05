@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Jun 30 11:54:52 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.48.7:
+  + Various improvements and bug fixes:
+    - codegen:
+      + Improve array-dup-wrapper for empty arrays.
+      + Don't call get_ccode_finish_instance() with non-async
+        methods.
+      + Cast initializer-list to struct for non-constant/-array
+        assignment.
+      + Consistently use get_ccode_lower_case_prefix() for function
+        names.
+    - vala:
+      + Correctly handle qualified struct type in initializer list.
+      + Reduce calls of CodeContext.get().
+      + Fix value-type for ArrayCreationExpression used as
+        argument.
+      + Improve parameter check of "get" method used for foreach.
+      + Don't carry floating reference into unknown target type
+        expression.
+    - girparser: Actually respect given cprefix metadata for
+      enumerations.
+    - girwriter: Append symbol-attributes to callback field.
+    - parser: Avoid mitigation for missing token if it follows DOT
+      or DOUBLE_COLON.
+    - libvaladoc/girimporter: Skip "function-macro" elements.
+    - build: Update git-version-gen to latest upstream.
+    - tests: Build typelib if g-ir-compiler is available.
+  + Bindings:
+    - gstreamer-audio-1.0: Adjustments for Gst.Audio.Sink class
+      extension.
+    - gstreamer: Update from 1.17.1+ git master.
+    - gtk+-3.0: Deprecated abstract methods are not required to be
+      implemented.
+    - gtk4: Prefix value names of PaintableFlags with "STATIC_".
+    - gtk4: Mark optional methods of Gdk.Paintable interface as
+      virtual.
+    - gtk4: Update to 3.98.5+fca2ba96.
+    - harfbuzz-gobject: Update to 2.6.8.
+    - pango: Update from 1.45.2.
+    - webkit2gtk-4.0: Update to 2.29.2.
+    - vapi: Update GIR-based bindings.
+
+-------------------------------------------------------------------
 Mon May 18 14:08:33 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.48.6:

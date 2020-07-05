@@ -7,7 +7,7 @@
 
 --- src/apprentice.c
 +++ src/apprentice.c	2019-05-27 08:53:31.057488035 +0000
-@@ -1154,7 +1154,7 @@ load_1(struct magic_set *ms, int action,
+@@ -1184,7 +1184,7 @@ load_1(struct magic_set *ms, int action,
  	ssize_t len;
  	struct magic_entry me;
  
@@ -16,7 +16,7 @@
  	if (f == NULL) {
  		if (errno != ENOENT)
  			file_error(ms, errno, "cannot read magic file `%s'",
-@@ -3052,7 +3052,7 @@ apprentice_map(struct magic_set *ms, con
+@@ -3108,7 +3108,7 @@ apprentice_map(struct magic_set *ms, con
  	if (dbname == NULL)
  		goto error;
  
@@ -25,7 +25,7 @@
  		goto error;
  
  	if (fstat(fd, &st) == -1) {
-@@ -3189,7 +3189,7 @@ apprentice_compile(struct magic_set *ms,
+@@ -3243,7 +3243,7 @@ apprentice_compile(struct magic_set *ms,
  	if (dbname == NULL)
  		goto out;
  
@@ -36,7 +36,7 @@
  		goto out;
 --- src/compress.c
 +++ src/compress.c	2019-05-27 08:53:31.057488035 +0000
-@@ -460,7 +460,7 @@ file_pipe2file(struct magic_set *ms, int
+@@ -462,7 +462,7 @@ file_pipe2file(struct magic_set *ms, int
  	{
  		int te;
  		mode_t ou = umask(0);
@@ -47,7 +47,7 @@
  		(void)unlink(buf);
 --- src/file.c
 +++ src/file.c	2019-05-27 08:53:31.057488035 +0000
-@@ -496,7 +496,7 @@ unwrap(struct magic_set *ms, const char
+@@ -509,7 +509,7 @@ unwrap(struct magic_set *ms, const char
  		f = stdin;
  		wid = 1;
  	} else {

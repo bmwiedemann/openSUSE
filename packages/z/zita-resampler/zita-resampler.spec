@@ -1,6 +1,7 @@
 #
 # spec file for package zita-resampler
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -85,7 +86,7 @@ cd ..
 %make_build LDFLAGS+=" -L../source" CXXFLAGS+=" -I../source" -C apps
 
 %install
-make -C source DESTDIR=%{buildroot} PREFIX=%{_prefix} install
+make -C source SUFFIX=%(echo %_lib | sed s/lib//) DESTDIR=%{buildroot} PREFIX=%{_prefix} install
 make -C apps DESTDIR=%{buildroot} PREFIX=%{_prefix} install
 
 %post -n %{libname} -p /sbin/ldconfig

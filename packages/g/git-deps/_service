@@ -1,0 +1,15 @@
+<services>
+    <service name="tar_scm" mode="disabled">
+        <param name="versionprefix">1.0.2+git</param>
+        <param name="url">https://github.com/aspiers/git-deps</param>
+        <param name="scm">git</param>
+        <param name="exclude">.git*</param>
+        <param name="changesgenerate">enable</param>
+        <param name="changesauthor">mcepl@cepl.eu</param>
+    </service>
+    <service mode="disabled" name="recompress">
+        <param name="file">*.tar</param>
+        <param name="compression">xz</param>
+    </service>
+    <service mode="disabled" name="set_version"/>
+</services>

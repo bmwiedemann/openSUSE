@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  1 03:09:34 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.01
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  4.01 2020-06-30T17:42:08+0900
+   - Fix combining "allOf" and "not" #218
+
+-------------------------------------------------------------------
 Mon Jun  8 03:13:01 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.00

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul 02 19:25:56 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1593683888.1074bc933:
+  * .circleci: Rename dependencies.txt to describe the actual use case
+  * Simplify code for reading JSON files
+  * Test OpenQA::CacheService::Client status functionality
+  * Add a job summary into the detail page
+  * Extract renderTestSummary as a common helper to print the job summary
+  * Test OpenQA::CacheService::Client info functionality
+  * Test OpenQA::CacheService::Client enqueue functionality
+  * Be more defensive and forward all cache service errors
+  * Handle all cache service client errors consistently
+  * Pass along cache service enqueue errors so they can be logged by the worker
+  * Dependency cron 200701
+  * Copy update-deps script from os-autoinst
+  * Narrow down fixtures needed by api tests
+
+-------------------------------------------------------------------
 Tue Jun 30 11:25:34 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1593514767.bedf7a0de:

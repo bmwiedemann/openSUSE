@@ -1,7 +1,7 @@
 #
 # spec file for package cups
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Release:        0
 Summary:        The Common UNIX Printing System
 License:        Apache-2.0
 Group:          Hardware/Printing
-Url:            http://www.cups.org/
+URL:            http://www.cups.org/
 # To get Source0 go to https://www.cups.org/software.html or https://github.com/apple/cups/releases or use e.g.
 # wget --no-check-certificate -O cups-2.3b6-source.tar.gz https://github.com/apple/cups/releases/download/v2.3b6/cups-2.3b6-source.tar.gz
 Source0:        https://github.com/apple/cups/releases/download/v2.3b6/cups-2.3b6-source.tar.gz
@@ -241,6 +241,10 @@ Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libcups2 = %{version}
 Requires:       libcupsimage2 = %{version}
+# make sure printer drivers benefit from automatic provides
+%if 0%{?suse_version} >= 1500
+Requires:       cups-rpm-helper
+%endif
 
 %description devel
 CUPS is a modular printing system which allows a computer to act as a

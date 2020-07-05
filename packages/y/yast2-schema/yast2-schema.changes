@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  2 19:13:36 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Make the report section elements optional as AutoYaST proposes
+  default values when missing (bsc#1173312)
+- 4.3.3
+
+-------------------------------------------------------------------
 Fri Jun 26 08:11:23 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Add the setup_before_proposal element to the networking section

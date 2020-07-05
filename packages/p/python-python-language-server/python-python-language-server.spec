@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-python-language-server
-Version:        0.33.0
+Version:        0.34.1
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
@@ -56,12 +56,12 @@ Recommends:     python-pylint
 Recommends:     python-rope >= 0.10.5
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module future >= 0.14.0}
 BuildRequires:  %{python_module jedi >= 0.17}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-jsonrpc-server >= 0.3.2}
-BuildRequires:  %{python_module future >= 0.14.0}
 %if %{with python2}
 BuildRequires:  python2-backports.functools_lru_cache
 BuildRequires:  python2-configparser
@@ -113,13 +113,22 @@ sed -i "s/'ujson<=.*'/'ujson'/" setup.py
 %check
 # Remove pytest addopts
 rm setup.cfg
+# define custom macros to skip tests in pytest
+%define pytest_addskiptest() \
+   for t in %{**}; do \
+     pytest_skippedtests+="${pytest_skippedtests:+ or }${t}"; \
+   done
+%define pytest_skiptests ${pytest_skippedtests:+-k "not (${pytest_skippedtests})"}
 %if 0%{?sle_version} == 150100 && 0%{?is_opensuse}
   # Test failure on Leap 15.1 due to different pylint version
-  skip_tests+="test_syntax_error_pylint_py"
-  # Test failure on Leap 15.1 due to mock hiccup
-  skip_tests+=" or test_flake8_config_param"
+  %pytest_addskiptest test_syntax_error_pylint_py
 %endif
-%pytest ${skip_tests:+-k "not ( $skip_tests )"}
+%if 0%{?sle_version} >= 150000 && 0%{?is_opensuse}
+  # Test failure on Leap 15 due to mock hiccup
+  %pytest_addskiptest test_flake8_config_param
+  %pytest_addskiptest test_flake8_executable_param
+%endif
+%pytest %{pytest_skiptests}
 
 %files %{python_files}
 %doc README.rst

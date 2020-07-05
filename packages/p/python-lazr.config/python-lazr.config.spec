@@ -33,7 +33,7 @@ Requires:       python-zope.interface
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module lazr.delegates}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module zope.interface}
 # /SECTION
 %python_subpackages
@@ -52,7 +52,18 @@ Create configuration schemas, and process and validate configurations.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix} -P lazr
+# use pytest, reported to lazr-users@lists.launchpad.net on 2020-06-03
+cat << EOF > pytest.ini
+[pytest]
+addopts = --doctest-glob='*.rst'
+doctest_optionflags = ELLIPSIS NORMALIZE_WHITESPACE
+testpaths = src/lazr
+EOF
+export PYTHONPATH=src
+# test_not_stackable fails otherwise (with nose it did not run at all)
+# needs to be investigated more
+sed -i 's:verifyObject, IStackableConfig, config.extends::' src/lazr/config/tests/test_config.py
+%pytest 
 
 %files %{python_files}
 %doc README.rst

@@ -671,4 +671,16 @@
     <comment>harfbuzz 2.6.7 (forwarded request 811217 from AndreasStieger)</comment>
     <requestid>811434</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>eecef9101d6f859301e62d44a4692c78</srcmd5>
+    <version>2.6.8</version>
+    <time>1593904299</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.8:
+  + New API to fetch glyph alternates from GSUB table
+  + New API +hb_ot_layout_lookup_get_glyph_alternates()
+- Drop gpg2 BuildRequires and stop verifying signature during
+  build: upstream no longer signs the tarball/signature.</comment>
+    <requestid>818353</requestid>
+  </revision>
 </revisionlist>

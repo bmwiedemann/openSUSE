@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jul  3 23:23:18 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 5.3.0
+  * https://pecl.php.net/package-changelog.php?package=redis&release=5.3.0
+  * Support for Redis 6 ACLs.
+  * LZ4 Compression.
+  * Support for new Redis 6 arguments.
+  * Support for TLS connections.
+  * New option Redis::SCAN_PREFIX, Redis::SCAN_NOPREFIX.
+  * Configurable unit test authentication arguments.
+  * Improved cluster slot caching mechanism to fix a couple
+    of bugs and make it more efficient.
+  * Stop calling Redis constructor when creating a RedisArray.
+  * Use ZEND_LONG_FMT instead of system `long`.
+  * Use long for SCAN iteration to fix potential overflow.
+  * Avoid use-after-free of RediSock.
+  * Use the portable `ZEND_LONG_FORMAT` family
+    instead of C format specifiers.
+  * PHP 8 compatibility.
+
+-------------------------------------------------------------------
 Wed May  6 07:59:21 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to 5.2.2

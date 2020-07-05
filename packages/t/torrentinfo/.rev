@@ -7,4 +7,12 @@
     <comment>Brought over from Packman</comment>
     <requestid>560765</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1102428fe610d61100af47be51adcf91</srcmd5>
+    <version>1.8.6</version>
+    <time>1593904722</time>
+    <user>dimstar_suse</user>
+    <comment>- remove dependency on nose, use %pytest macro (forwarded request 818488 from pgajdos)</comment>
+    <requestid>818492</requestid>
+  </revision>
 </revisionlist>

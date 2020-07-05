@@ -23,7 +23,7 @@
 # decimal separator, hoping they will not get to the idea to create a 0.100 release.
 %define         vala_priority 48
 Name:           vala
-Version:        0.48.6
+Version:        0.48.7
 Release:        0
 Summary:        Programming language for GNOME
 License:        LGPL-2.1-or-later

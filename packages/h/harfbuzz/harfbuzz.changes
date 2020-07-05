@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 23 13:54:41 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.6.8:
+  + New API to fetch glyph alternates from GSUB table
+  + New API +hb_ot_layout_lookup_get_glyph_alternates()
+- Drop gpg2 BuildRequires and stop verifying signature during
+  build: upstream no longer signs the tarball/signature.
+
+-------------------------------------------------------------------
 Wed Jun  3 18:29:52 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2.6.7:

@@ -577,4 +577,13 @@
     <comment></comment>
     <requestid>813505</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>2f2eee32e97ec910200975a35ba8c520</srcmd5>
+    <version>3.36.5</version>
+    <time>1593904273</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gnome-boxes-opensuse.patch: ensure openSUSE Leap and TW
+  distributions are listed as recommended. (forwarded request 818038 from fcrozat)</comment>
+    <requestid>818351</requestid>
+  </revision>
 </revisionlist>

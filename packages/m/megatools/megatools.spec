@@ -1,7 +1,7 @@
 #
 # spec file for package megatools
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 Name:           megatools
-Version:        1.9.98
+Version:        1.10.3
 Release:        0
 Summary:        CLI client for mega.co.nz
-License:        GPL-2.0
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/File-Sharing
-Url:            http://megatools.megous.com
+URL:            http://megatools.megous.com
 Source0:        http://megatools.megous.com/builds/%{name}-%{version}.tar.gz
 Source1:        http://megatools.megous.com/builds/%{name}-%{version}.tar.gz.asc
+# Keyring obtained from https://xff.cz/key.txt
 Source2:        %{name}.keyring
 BuildRequires:  asciidoc
 BuildRequires:  fuse-devel

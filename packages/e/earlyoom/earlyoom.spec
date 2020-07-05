@@ -20,14 +20,14 @@
 %global _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           earlyoom
-Version:        1.4
+Version:        1.6
 Release:        0
 Summary:        Early OOM Daemon for Linux
 License:        MIT
 Group:          System/Daemons
-URL:            https://github.com/rfjakob/earlyoom
-Source0:        https://github.com/rfjakob/earlyoom/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source11:       earlyoom.sysconfig
+URL:            https://github.com/rfjakob/%{name}
+Source0:        %{URL}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source11:       %{name}.sysconfig
 # pandoc only for `pandoc MANPAGE.md -s -t man > earlyoom.1`
 BuildRequires:  pandoc
 BuildRequires:  pkgconfig
@@ -41,7 +41,7 @@ earlyoom checks the amount of available memory and free swap, and if both are
 below critical level, it will kill the largest process (highest oom_score).
 
 %prep
-%setup -q
+%autosetup
 
 # Fix defaults file location
 sed -i 's|/default/|/sysconfig/|' earlyoom.service.in
@@ -50,8 +50,9 @@ sed -i 's|/default/|/sysconfig/|' earlyoom.service.in
 sed -ri '/LDFLAGS/ s|$| -lrt|' Makefile
 
 %build
-CFLAGS='%{optflags} -DVERSION=\"%{version}\" -std=gnu99'
-%make_build CFLAGS="$CFLAGS" PREFIX=%{_prefix}
+CFLAGS='%{?build_cflags}%{!?build_cflags:%optflags} -DVERSION=\"%{version}\" -std=gnu99'
+CPPFLAGS='%{?build_cxxflags}%{!?build_cxxflags:%optflags}'
+%make_build CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" PREFIX=%{_prefix}
 
 %install
 %make_install PREFIX=%{_prefix} SYSTEMDUNITDIR=%{_unitdir}

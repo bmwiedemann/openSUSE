@@ -148,4 +148,12 @@
   want). (forwarded request 556023 from dimstar)</comment>
     <requestid>556413</requestid>
   </revision>
+  <revision rev="22" vrev="276">
+    <srcmd5>56c83666ab9c381c06e482ad58031a0b</srcmd5>
+    <version>10.2</version>
+    <time>1593904225</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>818330</requestid>
+  </revision>
 </revisionlist>

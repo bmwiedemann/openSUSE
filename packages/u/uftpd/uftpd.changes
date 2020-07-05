@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 30 22:19:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.13
+  Changes
+  * Unit test framework in place, with regression test for issue
+  Fixes
+  * Socket leak in daemon accept() handling causing "Too many open
+    files". Effectively causing denial of service
+  * Minor memory leak fixed, only allocated once at startup.
+    Affects only non-MMU systems
+- Run testsuite
+
+-------------------------------------------------------------------
 Mon May 25 17:27:46 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.12

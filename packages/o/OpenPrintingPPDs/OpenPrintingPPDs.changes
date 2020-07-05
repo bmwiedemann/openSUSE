@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 25 12:33:39 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- BuildRequires cups-rpm-helper to fix printer driver provides (boo#1172407)
+
+-------------------------------------------------------------------
 Mon Mar 16 10:59:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to python3-cups to generate the metadata as python2

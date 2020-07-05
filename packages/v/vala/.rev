@@ -914,4 +914,12 @@
     <comment> (forwarded request 807081 from iznogood)</comment>
     <requestid>807572</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>3d175d8136e9f59c8949e854ac83770d</srcmd5>
+    <version>0.48.7</version>
+    <time>1593904257</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.48.7: (forwarded request 817863 from dimstar)</comment>
+    <requestid>818350</requestid>
+  </revision>
 </revisionlist>

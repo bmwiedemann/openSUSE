@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Apr 21 17:20:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Add signature and keyring for source verification
+- Build with support for maxminddb
+- Build with support for OATH
+- Update to version 1.0.1
+  * Prevent clients that use broken versions of gnutls from
+    connecting using DTLS.
+  * occtl: added machine-readable fields in json output.
+  * occtl: IPs in ban list value is now reflecting the actual
+    banned IPs rather than the database size.
+- Update to version 1.0.0
+  * Avoid crash on invalid configuration values.
+  * Updated manpage generation to work with newer versions of ronn.
+  * Ensure scripts have all the information on all disconnection
+    types.
+  * Several updates to further restrict the control that worker
+    processes have on the main process.
+  * Add support for RFC6750 bearer tokens. This adds the "auth=oidc"
+    config option. See doc/README-oidc.md for more information.
+  * Add USER_AGENT, DEVICE_TYPE and DEVICE_PLATFORM environment
+    variables when connect/disconnect scripts execute.
+  * Corrected issue with DTLS-PSK negotiation which prevented it
+    from being enabled.
+  * Improved IPv6 handling of AnyConnect client for Apple ios.
+  * Fixed issue with Radius accounting.
+- Update to version 0.12.6
+  * Improved IPv6 support for anyconnect clients.
+  * The 'split-dns' configuration directive can be used per-user.
+  * The max-same-clients=1 configuration option no longer refuses
+    the reconnection of an already connected user.
+  * Added openat() to the accepted list of seccomp calls. This
+    allows ocserv to run under certain libcs.
+- Update to version 0.12.5
+  * Added configuration option udp-listen-host. This option
+    supports different listen addresses for tcp and udp such as
+    haproxy for tcp, but support dtls at the same time.
+  * occtl: fixed json output of show status command. Introduced
+    tests for checking its json output using yajl.
+  * occtl: use maxminddb when available.
+- Update to version 0.12.4
+  * Added support for radius access-challenge (multifactor)
+    authentication.
+  * Fixed race condition when connect-script and disconnect-script
+    are set, which could potentially cause a crash.
+  * Perform quicker cleanup of sessions which their user explicitly
+    disconnected.
+
+-------------------------------------------------------------------
 Thu Dec 19 14:56:10 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libsystemd) instead of systemd-devel:

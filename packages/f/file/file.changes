@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jul  1 07:52:11 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream commit 85b7ab832 as patch file-5.39-alternate_format.dif
+  to also allow alternate format switch '#'
+- Replace patch file-5.38.dif with file-5.39.dif
+
+-------------------------------------------------------------------
+Wed Jun 17 14:01:25 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.39 
+  * Remove unused subtype_mime (Steve Grubb)
+  * Remove unused check in okstat (Steve Grubb)
+  * Fix mime-type in elf binaries by making sure $x is set
+  * Fix indirect negative offsets broken by OFFNEGATIVE
+  * Fix GUID equality check
+  * PR/165: Handle empty array and strings in JSON
+  * PR/162: Add --exclude-quiet
+  * Various fixes
+  * add guid support
+- Removed undo-24c9c0.patch as it is now part of upstream
+- Updated file-5.17-option.dif
+
+-------------------------------------------------------------------
 Mon May  4 13:51:18 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add temporary patch undo-24c9c0.patch to undo commit 24c9c0 (boo#1169192) 

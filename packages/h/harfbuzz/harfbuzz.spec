@@ -17,18 +17,14 @@
 
 
 Name:           harfbuzz
-Version:        2.6.7
+Version:        2.6.8
 Release:        0
 Summary:        An OpenType text shaping engine
 License:        MIT
 URL:            https://www.freedesktop.org/wiki/Software/HarfBuzz
 Source0:        https://github.com/harfbuzz/harfbuzz/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/harfbuzz/harfbuzz/releases/download/%{version}/%{name}-%{version}.tar.xz.sha256.asc
-# http://behdad.org
-Source2:        %{name}.keyring
 Source99:       baselibs.conf
 BuildRequires:  gcc-c++
-BuildRequires:  gpg2
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo) >= 1.8.0
 BuildRequires:  pkgconfig(cairo-ft)
@@ -99,9 +95,6 @@ HarfBuzz is an OpenType text shaping engine.
 This package contains the development files.
 
 %prep
-# the .tar.xz.sha256.asc non-detached signature was checked by source service
-# Now check the inside hash
-echo "`gpg --decrypt %{SOURCE1} | cut -c1-64`  %{SOURCE0}" | sha256sum -c
 %autosetup
 
 %build

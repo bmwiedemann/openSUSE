@@ -2,7 +2,7 @@
 # spec file for package uftpd
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2018-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 
 Name:           uftpd
-Version:        2.12
+Version:        2.13
 Release:        0
 Summary:        A combined TFTP/FTP server
 License:        ISC
 Group:          Productivity/Networking/Ftp/Servers
-URL:            http://troglobit.com/uftpd.html
+URL:            https://troglobit.com/uftpd.html
 #Git-Clone:     https://github.com/troglobit/uftpd.git
 Source:         https://github.com/troglobit/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
@@ -31,9 +31,14 @@ BuildRequires:  automake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libite)
 BuildRequires:  pkgconfig(libuev) >= 2.2.0
-Conflicts:      tftp
 Conflicts:      atftp
+Conflicts:      tftp
 Provides:       tftp(server)
+# SECTION test requirements
+BuildRequires:  ftp
+BuildRequires:  netcfg
+BuildRequires:  tftp
+# /SECTION
 
 %description
 uftpd serves both TFTP and FTP without any configuration file, starts
@@ -46,11 +51,15 @@ tcpwrapped.
 %build
 autoreconf -fiv
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 rm -rf %{buildroot}/%{_datadir}/doc
+
+%check
+ulimit -n 1024
+make check || find . -name test-suite.log -exec cat {} +
 
 %files
 %doc README.md

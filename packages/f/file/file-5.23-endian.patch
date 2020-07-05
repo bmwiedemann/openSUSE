@@ -14,7 +14,7 @@
  
  #define	EATAB {while (isascii(CAST(unsigned char, *l)) && \
  		      isspace(CAST(unsigned char, *l)))  ++l;}
-@@ -123,9 +123,11 @@ private struct mlist *mlist_alloc(void);
+@@ -124,9 +124,11 @@ private struct mlist *mlist_alloc(void);
  private void mlist_free(struct mlist *);
  private void byteswap(struct magic *, uint32_t);
  private void bs1(struct magic *);
@@ -29,7 +29,7 @@
  private char *mkdbname(struct magic_set *, const char *, int);
  private struct magic_map *apprentice_buf(struct magic_set *, struct magic *,
      size_t);
-@@ -3282,67 +3284,6 @@ byteswap(struct magic *magic, uint32_t n
+@@ -3336,67 +3338,6 @@ byteswap(struct magic *magic, uint32_t n
  }
  
  /*

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  8 18:57:22 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- packeth-ftbs-gcc10.patch: fix build with gcc >= 10 
+
+-------------------------------------------------------------------
 Tue Dec  1 18:44:20 UTC 2015 - p.drouand@gmail.com
 
 - Update to version 1.8.1

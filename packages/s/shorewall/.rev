@@ -2106,4 +2106,12 @@ Will serve as maintenance sr for Leap + Factory submission (forwarded request 36
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>810932</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>e9dddfb2bfc0fb0391f1ab7be6f9c89f</srcmd5>
+    <version>5.2.5.2</version>
+    <time>1593904447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818356</requestid>
+  </revision>
 </revisionlist>

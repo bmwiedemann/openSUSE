@@ -38,8 +38,8 @@ Recommends:     python-PyAudio
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module samplerate}
 BuildRequires:  %{python_module scipy}
 # /SECTION
@@ -60,8 +60,10 @@ This is a python audio signal processing library.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# https://github.com/ronnyandersson/zignal/issues/9
+sed -i '/import nose/d' zignal/tests/*.py
 # https://github.com/ronnyandersson/zignal/issues/8
-%python_expand nosetests-%{$python_bin_suffix} -v zignal/tests -e 'test_set_duration_and_samples'
+%pytest -k 'not test_set_duration_and_samples'
 
 %post
 %python_install_alternative zignal-listsndcards

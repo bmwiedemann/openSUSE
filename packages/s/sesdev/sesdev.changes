@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jul  3 13:34:51 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.5.0+1593783262.g6d822da:
+  + upstream 1.5.0 release (2020-07-03)
+    * cephadm iSCSI deployment (PR #300)
+    * "--filestore" option to deploy OSDs with FileStore (PR #341)
+    * "--devel/--product" option and add-repo subcommand (PR #351)
+    * qa: superficial test for presence of dashboard branding (PR #374)
+    * qa: add IGW to existing tests (PR #372)
+    * provisioning: set fqdn through vagrant and leave /etc/hosts alone (PR #199)
+    * no longer support nautilus deployment in Tumbleweed (PR #352)
+    * ceph_salt_deployment.sh: reduce number of "ceph orch apply" calls (PR #363)
+    * sesdev: raise exception if --roles combined with --single-node (PR #376)
+    * cleanup: replace "grep | wc --lines" with "grep --count" (PR #375)
+    * makecheck: reasonable defaults for Ceph repo/branch (PR #277)
+    * provision.sh: set up SSH keys earlier (PR #361)
+    * provision.sh: avoid endless while loop (PR #365)
+    * sesdev: sanitize makecheck deployment IDs (PR #371)
+    * doc: Update the example Deployment id in sesdev help (PR #378)
+    * qa/systemctl_test: better error message when FSID omitted (PR #373)
+    * qa/rgw: run curl command in try-wait loop to ping RGW (PR #370)
+    * qa: do not wait for non-existent daemons to start (PR #368)
+    * qa: get RGW port from /etc/ceph/ceph.conf (PR #353)
+
+-------------------------------------------------------------------
 Sat Jun 20 19:30:34 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 1.4.0+1592681394.g28f5853:

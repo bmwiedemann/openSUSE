@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           monitoring-plugins-http_json
-Version:        2.0+git.1585671306.219e993
+Version:        2.1+git.1593763135.c23ebac
 Release:        0
 Summary:        Plugin for Nagios which checks json values from a given HTTP endpoint
 License:        Apache-2.0
@@ -30,8 +30,8 @@ Source:         %{modname}-%{version}.tar.xz
 Source1:        https://raw.githubusercontent.com/bb-Ricardo/nagios-http-json/next-release/contrib/icinga2_check_command_definition.conf
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
 BuildRequires:  nagios-rpm-macros
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 

@@ -49,7 +49,7 @@ Patch4:         nm-dont-overwrite-resolv-conf.patch
 Patch5:         NetworkManager-1.10.6-netconfig.patch
 # PATCH-FIX-UPSTREAM 0001-Coerce-connectivity-LIMITED-to-NONE-when-device-is-d.patch boo#1103678
 Patch6:         0001-Coerce-connectivity-LIMITED-to-NONE-when-device-is-d.patch
-# PATCH-NEEDS-REBASE nm-add-CAP_SYS_ADMIN-permission.patch bsc#1129587 sckang@suse.com -- Add CAP_SYS_ADMIN which netconfig needs to call setdomainname WAS PATCH-FIX-OPENSUSE
+# PATCH-FIX-OPENSUSE nm-add-CAP_SYS_ADMIN-permission.patch bsc#1129587 sckang@suse.com -- Add CAP_SYS_ADMIN which netconfig needs to call setdomainname
 Patch7:         nm-add-CAP_SYS_ADMIN-permission.patch
 
 BuildRequires:  dnsmasq
@@ -185,7 +185,7 @@ translation-update-upstream
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-#patch7 -p1
+%patch7 -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh

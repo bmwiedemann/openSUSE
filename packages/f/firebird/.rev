@@ -428,4 +428,12 @@ Changes against the original submit request:
     <comment>- update to 3.0.4 point release</comment>
     <requestid>651958</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>b95fb7167032a9bec33eee34f4c972f0</srcmd5>
+    <version>3.0.5.33220</version>
+    <time>1593904243</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>818337</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Mon Jun  1 17:25:50 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Extend dont-use-st-markdown.patch to include full setup()
+  command instead of setup.cfg only.
+
+-------------------------------------------------------------------
+Tue Feb 18 09:49:14 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 1.0.2+git.1559732444.7c75531:
+  * add direct links to presentation videos
+  * add links to blog and Nashville presentation
+  * Fix link in readme to USE-CASES.md
+  * Don't crash with commit messages that aren't valid utf-8
+  * Use unbuffered IO
+  * add Credits section
+  * split off use cases to separate file
+  * add missing sections to TOC
+  * make CONTRIBUTING.md link consistent with others
+
+-------------------------------------------------------------------
+Thu Jun  4 07:32:47 UTC 2015 - bwiedemann@suse.com
+
+- add HTML parts
+
+-------------------------------------------------------------------
+Thu Jun  4 04:40:14 UTC 2015 - bwiedemann@suse.com
+
+- initial package
+

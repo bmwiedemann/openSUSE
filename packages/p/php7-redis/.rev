@@ -170,4 +170,29 @@
     <comment></comment>
     <requestid>800602</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>66e52f00d90286cffb5d9c868ea44fb0</srcmd5>
+    <version>5.3.0</version>
+    <time>1593904949</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.3.0
+  * https://pecl.php.net/package-changelog.php?package=redis&amp;release=5.3.0
+  * Support for Redis 6 ACLs.
+  * LZ4 Compression.
+  * Support for new Redis 6 arguments.
+  * Support for TLS connections.
+  * New option Redis::SCAN_PREFIX, Redis::SCAN_NOPREFIX.
+  * Configurable unit test authentication arguments.
+  * Improved cluster slot caching mechanism to fix a couple
+    of bugs and make it more efficient.
+  * Stop calling Redis constructor when creating a RedisArray.
+  * Use ZEND_LONG_FMT instead of system `long`.
+  * Use long for SCAN iteration to fix potential overflow.
+  * Avoid use-after-free of RediSock.
+  * Use the portable `ZEND_LONG_FORMAT` family
+    instead of C format specifiers.
+  * PHP 8 compatibility.
+</comment>
+    <requestid>818655</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-traittypes
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-traittypes
 Version:        0.2.1
 Release:        0
@@ -25,6 +26,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter-widgets/traittypes
 Source:         https://files.pythonhosted.org/packages/source/t/traittypes/traittypes-%{version}.tar.gz
+# https://github.com/jupyter-widgets/traittypes/pull/43
+Patch0:         python-traittypes-remove-nose.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -32,7 +35,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-traitlets >= 4.2.2
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
@@ -46,6 +48,7 @@ Custom trait types for scientific computing.
 
 %prep
 %setup -q -n traittypes-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -55,9 +58,8 @@ Custom trait types for scientific computing.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# gh#jupyter-widgets/traittypes#31
-# tests require xarray, which doesn't support python2, even though the package itself doesn't
-nosetests-%{python3_bin_suffix} -v -e 'test_bad_values' traittypes
+# test_bad_values: gh#jupyter-widgets/traittypes#31
+%pytest -k 'not test_bad_values' traittypes
 
 %files %{python_files}
 %doc README.md

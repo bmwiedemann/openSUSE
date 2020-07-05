@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  1 03:30:01 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use deterministic profile.sh script to make package build
+  reproducible (boo#1040589)
+
+-------------------------------------------------------------------
 Tue Jan 21 10:57:16 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Switch back to system regex to avoid undefined behaviour

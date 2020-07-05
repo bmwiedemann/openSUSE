@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 18 07:28:26 UTC 2020 - Sumit Jamgade <sjamgade@suse.com>
+
+- update spec file to link ccache correctly for bazel builds.
+
+-------------------------------------------------------------------
 Tue Jun 16 12:29:15 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - updated to bug fix release 1.15.3 

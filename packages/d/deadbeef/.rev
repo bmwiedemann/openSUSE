@@ -90,4 +90,12 @@
     <comment>- Update version to 1.8.3 .</comment>
     <requestid>791505</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fe559326b1b1bd6c441ace0142eb5a02</srcmd5>
+    <version>1.8.4</version>
+    <time>1593904875</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.8.4.</comment>
+    <requestid>818599</requestid>
+  </revision>
 </revisionlist>

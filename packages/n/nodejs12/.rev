@@ -275,4 +275,16 @@
 - versioned.patch: refreshed</comment>
     <requestid>815756</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3e88fefee51da3810af84bc7b762d2b4</srcmd5>
+    <version>12.18.2</version>
+    <time>1593904505</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream LTS version 12.18.2:
+  * deps: V8: backport fb26d0bb1835 (Matheus Marchini) #33573
+    + Fixes memory leak in PrototypeUsers::Add
+  * src: use symbol to store AsyncWrap resource (Anna Henningsen) #31745
+    + Fixes reported memory leak (bsc#1173653)</comment>
+    <requestid>818409</requestid>
+  </revision>
 </revisionlist>

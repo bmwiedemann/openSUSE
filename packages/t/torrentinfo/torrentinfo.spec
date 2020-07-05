@@ -1,7 +1,7 @@
 #
 # spec file for package torrentinfo
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2009 Pascal Bleser <guru@unixtech.be>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,10 +21,9 @@ Name:           torrentinfo
 Version:        1.8.6
 Release:        0
 Summary:        Displays information contained in .torrent Files
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Networking/Other
-# formerly at http://vrai.net/project.php?project=torrentinfo
-URL:            http://fuuzetsu.co.uk/torrentinfo
+URL:            https://github.com/Fuuzetsu/torrentinfo
 Source0:        https://github.com/Fuuzetsu/torrentinfo/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.changes
 # PATCH-FIX-UPSTREAM torrentinfo-fix_man.patch -- removes deprecated dependency
@@ -32,9 +31,9 @@ Patch0:         torrentinfo-fix_man.patch
 # PATCH-FIX-UPSTREAM torrentinfo-fix_tests_py3.patch
 Patch1:         torrentinfo-fix_tests_py3.patch
 BuildRequires:  python3
-BuildRequires:  python3-devel
-BuildRequires:  python3-nose
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-devel
+BuildRequires:  python3-pytest
 BuildArch:      noarch
 
 %description
@@ -59,7 +58,10 @@ python3 setup.py install --prefix="%{_prefix}" --root=%{buildroot}
 install -Dm0644 doc/_build/man/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
 %check
-nosetests test/tests.py
+# https://github.com/Fuuzetsu/torrentinfo/issues/17
+sed -i '/import nose/d' test/tests.py
+export PYTHONPATH=src
+%pytest test/tests.py
 
 %files
 %doc README.md

@@ -39,7 +39,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(avahi-glib)
 BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(freerdp2)
+BuildRequires:  pkgconfig(freerdp2) >= 2.1.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gnutls)

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul  2 20:39:34 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 12.18.2:
+  * deps: V8: backport fb26d0bb1835 (Matheus Marchini) #33573
+    + Fixes memory leak in PrototypeUsers::Add
+  * src: use symbol to store AsyncWrap resource (Anna Henningsen) #31745
+    + Fixes reported memory leak (bsc#1173653)
+
+-------------------------------------------------------------------
 Thu Jun 18 14:14:40 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - New upstream LTS version 12.18.1:

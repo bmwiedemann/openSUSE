@@ -1,7 +1,7 @@
 #
 # spec file for package firebird
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define up_stage 0
 
 Name:           firebird
-Version:        3.0.4.33054
+Version:        3.0.5.33220
 Release:        0
 Summary:        Database system (common files)
 License:        SUSE-IDPL-1.0 AND SUSE-IBPL-1.0
 Group:          Productivity/Databases/Servers
-Url:            http://www.firebirdsql.org/
+URL:            https://www.firebirdsql.org/
+# https://github.com/FirebirdSQL/firebird/releases/ - fetch and run firebird-clean-tar.sh
 Source:         Firebird-%{version}-%{up_stage}.tar.xz
 Source1:        README.SUSE
 Source2:        50-server.conf
+Source3:        firebird-clean-tar.sh
 Source999:      baselibs.conf
 BuildRequires:  autoconf >= 2.67
 BuildRequires:  gcc-c++
@@ -40,7 +42,7 @@ BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRequires:  zlib-devel
 Requires(pre):  pwdutils
-Requires(pre):	%insserv_prereq
+Requires(pre):  %insserv_prereq
 
 %if 0%{?suse_version} < 1130
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -237,13 +239,13 @@ in production systems, under a variety of names, since 1981.
 %attr(755,root,root) %{_initddir}/firebird
 
 %post server
-%restart_on_update /etc/init.d/firebird
+%restart_on_update %{_initddir}/firebird
 
 %preun server
-%stop_on_removal /etc/init.d/firebird
+%stop_on_removal %{_initddir}/firebird
 
 %postun server
-%restart_on_update /etc/init.d/firebird
+%restart_on_update %{_initddir}/firebird
 %insserv_cleanup
 
 # ----------------------------------------------------------------------------

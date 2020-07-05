@@ -109,4 +109,12 @@
     <comment>- Update to new upstream release 20190805</comment>
     <requestid>724394</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>84bf1135d2bde4add354182a9498ec51</srcmd5>
+    <version>20200412</version>
+    <time>1593904609</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 20200412</comment>
+    <requestid>818403</requestid>
+  </revision>
 </revisionlist>

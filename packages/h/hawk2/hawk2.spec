@@ -1,7 +1,7 @@
 #
 # spec file for package hawk2
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,15 +21,9 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-%if 0%{?suse_version}
 %define	vendor_ruby	vendor_ruby
 %define	init_style	suse
 %define	pkg_group	Productivity/Clustering/HA
-%else
-%define	vendor_ruby	site_ruby
-%define	init_style	redhat
-%define	pkg_group	System Environment/Daemons
-%endif
 
 %define www_base %{_datadir}
 %define www_tmp  %{_localstatedir}/lib/hawk/tmp
@@ -37,27 +31,22 @@
 %define gname haclient
 %define uname hacluster
 
-%if 0%{suse_version} && 0%{suse_version} < 1330
-%define rb_build_versions ruby24
-%define rb_default_ruby_abi ruby:2.4.0
-%define rb_default_ruby_suffix ruby2.4
-%endif
-
 Name:           hawk2
 Summary:        HA Web Konsole
 License:        GPL-2.0-only
 Group:          %{pkg_group}
-Version:        2.1.0+git.1576507574.01859128
+Version:        2.2.0+git.1593701652.5c1edcf8
 Release:        0
 URL:            http://www.clusterlabs.org/wiki/Hawk
 Source:         %{name}-%{version}.tar.bz2
+Source1:        sysconfig.hawk
 Source100:      hawk-rpmlintrc
-Patch:          hawk2-nodev.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       ha-cluster-webui
 Obsoletes:      hawk <= 1.1.0
 Provides:       hawk = %{version}
 Requires:       crmsh >= 3.0.0
+BuildRequires:  ruby(abi) >= 2.7.0
 Requires:       graphviz
 Requires:       graphviz-gd
 Requires:       hawk-apiserver
@@ -65,38 +54,25 @@ Requires(post): %fillup_prereq
 # Need a font of some kind for graphviz to work correctly (bsc#931950)
 Requires:       dejavu
 Requires:       pacemaker >= 1.1.8
-%if 0%{?fedora_version} >= 19
-Requires:       rubypick
-BuildRequires:  rubypick
-%endif
-%if 0%{?suse_version}
 Recommends:     graphviz-gnome
 Requires:       iproute2
 PreReq:         permissions
 BuildRequires:  fdupes
-%if 0%{?suse_version} >= 1210
 BuildRequires:  systemd-rpm-macros
-%endif
 %{?systemd_requires}
-%else
-Requires:       iproute
-%endif
 
-%if 0%{?is_opensuse} &&  0%{?suse_version} > 1500
 BuildRequires:  openSUSE-release
-%else
-BuildRequires:  distribution-release
-%endif
 
 BuildRequires:  timezone
 
 BuildRequires:  %{rubygem bundler}
 Requires:       %{rubygem bundler}
-BuildRequires:  %{rubygem rails:5.1}
-Requires:       %{rubygem rails:5.1}
+BuildRequires:  %{rubygem rails:6.0} 
+Requires:       %{rubygem rails:6.0} 
 BuildRequires:  %{rubygem puma >= 3}
 Requires:       %{rubygem puma >= 3}
 BuildRequires:  %{rubygem sass-rails >= 5.0.1}
+BuildRequires:  %{rubygem websocket-driver >= 0.6.6}
 Requires:       %{rubygem sass-rails >= 5.0.1}
 BuildRequires:  %{rubygem virtus:1.0 >= 1.0.1}
 Requires:       %{rubygem virtus:1.0 >= 1.0.1}
@@ -134,7 +110,6 @@ High-Availability cluster resource manager.
 
 %prep
 %setup
-%patch -p1
 
 %build
 sed -i 's$#!/.*$#!%{_bindir}/ruby.%{rb_default_ruby_suffix}$' hawk/bin/rails
@@ -158,7 +133,6 @@ make WWW_BASE=%{www_base} WWW_TMP=%{www_tmp} WWW_LOG=%{www_log} INIT_STYLE=%{ini
 
 # copy of GPL
 cp COPYING %{buildroot}%{www_base}/hawk/
-%if 0%{?suse_version}
 
 # Hack so missing links to docs don't kill the build
 mkdir -p %{buildroot}/usr/share/doc/manual/sle-ha-geo-quick_en-pdf
@@ -177,27 +151,17 @@ rm %{buildroot}%{www_base}/hawk/locale/*/hawk.po.time_stamp
 rm %{buildroot}%{www_base}/hawk/locale/*/hawk.edit.po
 # hard link duplicate files
 %fdupes %{buildroot}
-%else
-# Need file to exist else %%files fails later
-touch hawk.lang
-%endif
 # more cruft to clean up (WTF?)
 rm -f %{buildroot}%{www_log}/*
 # likewise .git special files
 find %{buildroot}%{www_base}/hawk -type f -name '.git*' -print0 | xargs --no-run-if-empty -0 rm
-%if 0%{?suse_version}
 %{__ln_s} -f %{_sbindir}/service %{buildroot}%{_sbindir}/rchawk
-%endif
 
 install -p -d -m 755 %{buildroot}%{_sysconfdir}/hawk
-install -D -m 0644 -T rpm/sysconfig.hawk %{buildroot}%{_fillupdir}/sysconfig.hawk
+install -D -m 0644 %{S:1} %{buildroot}%{_fillupdir}/sysconfig.hawk
 
 %clean
 rm -rf %{buildroot}
-
-%if 0%{?suse_version}
-# TODO(must): Determine sensible non-SUSE versions of these,
-# in particular restart_on_update and stop_on_removal.
 
 %verifyscript
 %verify_permissions -e %{_sbindir}/hawk_chkpwd
@@ -219,8 +183,6 @@ getent passwd %{uname} >/dev/null || useradd -r -g %{gname} -u 189 -s /sbin/nolo
 
 %postun
 %service_del_postun hawk.service hawk-backend.service
-
-%endif
 
 %files -f hawk.lang
 %defattr(644,root,root,755)
@@ -257,15 +219,11 @@ getent passwd %{uname} >/dev/null || useradd -r -g %{gname} -u 189 -s /sbin/nolo
 %{www_base}/hawk/config.ru
 %{www_base}/hawk/test
 %{www_base}/hawk/spec
-%if 0%{?suse_version}
 # itemizing content in %%{www_base}/hawk/locale to avoid
 # duplicate files that would otherwise be the result of including hawk.lang
 %dir %{www_base}/hawk/locale
 %dir %{www_base}/hawk/locale/*
 %dir %{www_base}/hawk/locale/*/*
-%else
-%{www_base}/hawk/locale
-%endif
 
 # Not doing this itemization for %%lang files in vendor, it's frightfully
 # hideous, so we're going to live with a handful of file-not-in-%%lang rpmlint
@@ -274,8 +232,6 @@ getent passwd %{uname} >/dev/null || useradd -r -g %{gname} -u 189 -s /sbin/nolo
 
 %{_unitdir}/hawk.service
 %{_unitdir}/hawk-backend.service
-%if 0%{?suse_version}
 %attr(-,root,root) %{_sbindir}/rchawk
-%endif
 
 %changelog

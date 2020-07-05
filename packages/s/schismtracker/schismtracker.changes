@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  2 18:48:18 UTC 2020 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Update to new upstream release 20200412
+
+  * Fix problem with switching tabs on the Instrument List page using the keyboard, introduced in 20190722 release.
+  * Implement incremental search on Load Instrument page, like on the Load Sample and Load Module pages.
+  * Correctly display size of exported mono files before exporting.
+  * Add "AudioVideo" category to Linux desktop entry.
+
+-------------------------------------------------------------------
 Sun Aug 18 14:08:18 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 20190805

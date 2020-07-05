@@ -26,6 +26,7 @@ URL:            https://www.gnu.org/software/grep/
 Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source2:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source3:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=grep&download=1#/%{name}.keyring
+Source4:        profile.sh
 BuildRequires:  fdupes
 BuildRequires:  makeinfo
 BuildRequires:  pcre-devel
@@ -48,9 +49,8 @@ match to a specified pattern.  By default, grep prints the matching lines.
   --without-included-regex \
   %{nil}
 %if 0%{?do_profiling}
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate} -fno-profile-values"
-  # do not run profiling in parallel for reproducible builds (boo#1040589)
-  make CFLAGS="%{optflags} %{cflags_profile_generate}" check
+  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}"
+  sh %{SOURCE4} # profiling run
   make clean
   make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}"
 %else

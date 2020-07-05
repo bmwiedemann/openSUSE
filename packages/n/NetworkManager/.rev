@@ -1689,4 +1689,12 @@ WANTED for 13.1 - BLUEZ5 FIX (forwarded request 203010 from Zaitor)</comment>
     <comment>New stable rel (forwarded request 810385 from iznogood)</comment>
     <requestid>811426</requestid>
   </revision>
+  <revision rev="213" vrev="2">
+    <srcmd5>1bdb73a80a2308bdf44dd03f49500e22</srcmd5>
+    <version>1.24.2</version>
+    <time>1593904287</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase nm-add-CAP_SYS_ADMIN-permission.patch. (forwarded request 818199 from JonathanKang)</comment>
+    <requestid>818352</requestid>
+  </revision>
 </revisionlist>

@@ -1,19 +1,15 @@
----
- src/file.c |    8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
-
---- src/file.c
-+++ src/file.c	2019-05-27 08:48:39.047051545 +0000
-@@ -237,6 +237,8 @@ main(int argc, char *argv[])
- 			flags |= MAGIC_ERROR;
+--- file-5.39/src/file.c.orig	2020-06-17 16:13:36.625305367 +0200
++++ file-5.39/src/file.c	2020-06-17 16:15:12.429553163 +0200
+@@ -249,6 +249,8 @@
  			break;
  		case 'e':
-+			if (!optarg)
-+				usage();
+ 		case OPT_EXCLUDE_QUIET:
++            if (!optarg)
++                usage();
  			for (i = 0; i < __arraycount(nv); i++)
  				if (strcmp(nv[i].name, optarg) == 0)
  					break;
-@@ -248,7 +250,7 @@ main(int argc, char *argv[])
+@@ -261,7 +263,7 @@
  			break;
  
  		case 'f':
@@ -22,21 +18,21 @@
  				usage();
  			if (magic == NULL)
  				if ((magic = load(magicfile, flags)) == NULL)
-@@ -258,6 +260,8 @@ main(int argc, char *argv[])
+@@ -271,6 +273,8 @@
  			++didsomefiles;
  			break;
  		case 'F':
-+			if (!optarg)
-+				usage();
++            if(!optarg)
++                usage();
  			separator = optarg;
  			break;
  		case 'i':
-@@ -270,6 +274,8 @@ main(int argc, char *argv[])
+@@ -283,6 +287,8 @@
  			action = FILE_LIST;
  			break;
  		case 'm':
-+			if (!optarg)
-+				usage();
++            if(!optarg)
++                usage();
  			magicfile = optarg;
  			break;
  		case 'n':

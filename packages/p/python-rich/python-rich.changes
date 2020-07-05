@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul  2 19:08:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.2
+  Added
+  * Added rich.styled.Styled class to apply styles to renderable
+  * Table.add_row now has an optional style parameter
+  * Added table_movie.py to examples
+  Changed
+  * Modified box options to use half line characters at edges
+  * Non no_wrap columns will now shrink below minimum width if
+    table is compressed
+
+-------------------------------------------------------------------
 Tue Jun 30 22:20:40 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.1

@@ -1,7 +1,7 @@
 #
 # spec file for package ocserv
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,15 @@
 
 
 Name:           ocserv
-Version:        0.12.3
+Version:        1.0.1
 Release:        0
 Summary:        OpenConnect VPN Server
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
 URL:            http://www.infradead.org/ocserv
-#Source:         ftp://ftp.infradead.org/pub/ocserv/%{name}-%{version}.tar.xz
-# released tarball has some problem, check out same thing from git
-# git clone https://gitlab.com/ocserv/ocserv
-# git checkout -b fce7610a
-Source:         %{name}-%{version}.tar.xz
+Source:         ftp://ftp.infradead.org/pub/ocserv/%{name}-%{version}.tar.xz
+Source100:      ftp://ftp.infradead.org/pub/ocserv/%{name}-%{version}.tar.xz.sig
+Source101:      %{name}.keyring
 Source1:        ca.tmpl
 Source2:        server.tmpl
 Source3:        user.tmpl
@@ -49,6 +47,7 @@ BuildRequires:  freeradius-client-devel
 BuildRequires:  gperf
 BuildRequires:  libev-devel
 BuildRequires:  libgnutls-devel >= 3.1.10
+BuildRequires:  libmaxminddb-devel
 BuildRequires:  libnl3-devel
 BuildRequires:  libprotobuf-c-devel
 BuildRequires:  libseccomp-devel
@@ -58,6 +57,7 @@ BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  protobuf-c
 BuildRequires:  readline-devel
+BuildRequires:  pkgconfig(liboath)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  rubygem(ronn)
 # /usr/bin/certtool for generating certificates

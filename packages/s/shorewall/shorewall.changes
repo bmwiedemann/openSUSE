@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Jul  2 13:24:45 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 5.2.5.2
+  https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.5/releasenotes.txt
+  + 5.2.5.2
+    Previously, ";;+" was mishandled in the snat file; the generated
+    rule incorrectly included the leading "+". That has been corrected
+    so that the generated rule is now correct.
+    Example (SNAT OpenVPN server traffic leaving on eth0):
+       SNAT(192.2.0.4)    -      eth0     ;;+ -p udp --sport 1194
+  + 5.2.5.1
+    - The change in 5.2.5 base which changed the 'user' facility to the
+    'daemon' facility in Shorewall syslog messages did not change the
+    messages with severity 'err'. That has been corrected such that
+    all syslog messages now use the 'daemon' facility.
+    - The actions.std file contains "?IF...?ELSE...?ENDIF" sequences
+    that provide different action options depending on the availabilty
+    of certain capabilities. This has resulted in the Broadcast and
+    Multicast options being listed twice in the output of
+    "shorewall[6] show actions". Beginning with this release, this
+    duplication is eliminated. Note, however, that the options shown
+    will be incomplete if they were continued onto another line, and
+    may be incorrect for Broadcast and Multicast.
+    - A typo in shorewall-providers(5) has been corrected.
+  + 5.2.5 Base
+    - Previously, Shorewall-init installed a 'shorewall' script in
+    /etc/network/if-down.d on Debian and derivatives. This script was
+    unnecessary and required Debian-specific code in the generated
+    firewall script. The Shorewall-init script is no longer installed
+    and the generated firewall script is now free of
+    distribution-specific code.
+    - Also on Debian and derivatives, Shorewall-init installed
+    /etc//NetworkManager/dispatcher.d/01-shorewall which was also
+    unnecessary.  Beginning with this release, that file is no longer
+    installed.
+    - Previously, if the dynamic-blacklisting default timeout was set in
+    a variable in the params file and the variable was used in setting
+    DYNAMIC_BLACKLIST, then the 'allow' command would fail with
+    the message:
+        ERROR: Invalid value (ipset-only,disconnect,timeout=) for
+               DYNAMIC_BLACKLIST
+    That has been corrected.
+    - When EXPAND_POLICIES=No in shorewall[6].conf, policies in complex
+    rulesets are enforced in chains such as 'net-all' and
+    'all-all'. Previously, these chains included redundant
+    state-oriented rules. In addition to being redundant. these rules
+    could actually break complex IPv6 configurations. The extra rules are
+    now omitted.
+
+-------------------------------------------------------------------
 Tue May 26 17:00:46 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to bugfix version 5.2.4.5

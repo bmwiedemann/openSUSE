@@ -1,7 +1,7 @@
 #
 # spec file for package packETH
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,24 +20,26 @@ Name:           packETH
 Version:        1.8.1
 Release:        0
 Summary:        Packet generator tool for ethernet
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Diagnostic
-Url:            http://packeth.sourceforge.net/packeth/Home.html
+URL:            http://packeth.sourceforge.net/packeth/Home.html
 Source0:        http://downloads.sourceforge.net/project/packeth/packETH-%{version}.tar.bz2
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0)
+Patch0:         packeth-ftbs-gcc10.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 packETH is tool for generating packets to send over ethernet.
 
 %prep
-%setup -q
+%autosetup -p1 
 # yay, lm is not in checked libs
 sed -i -e 's:$(DEPS_LIBS):$(DEPS_LIBS) -lm:' Makefile.in
 
 %build
+export CFLAGS="%optflags -fvisibility=hidden"
 %configure
 make %{?_smp_mflags}
 

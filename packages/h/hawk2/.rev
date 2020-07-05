@@ -968,4 +968,19 @@
     <comment></comment>
     <requestid>757897</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>1c531a96680dec653f38185eebde4e30</srcmd5>
+    <version>2.2.0+git.1593701652.5c1edcf8</version>
+    <time>1593904888</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git.1593618612.b6324f1b:
+  * support rails 6.0 (bsc#1172840)
+  * update puma to version 4.3.5
+  * Implement mechanism to switch binaries for backend
+  * Low: Fix omission of built-in stonith attributes (bsc#1165587)
+  * Refactor: Obtain the Pacemaker daemon directory during initialization
+  * drop un-needed  patch hawk2-nodev.patch 
+</comment>
+    <requestid>818570</requestid>
+  </revision>
 </revisionlist>

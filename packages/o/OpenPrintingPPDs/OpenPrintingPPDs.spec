@@ -18,11 +18,10 @@
 
 Name:           OpenPrintingPPDs
 BuildRequires:  cups
-# All printer driver packages should have "BuildRequires: python-cups"
-# because python-cups installs special rpm macros that adds Provides tags
-# for the printer drivers supported by the package,
-# see https://bugzilla.novell.com/show_bug.cgi?id=735865
-BuildRequires:  python3-cups
+# for automatic printer driver requires
+%if 0%{?suse_version} >= 1500
+BuildRequires:  cups-rpm-helper
+%endif
 Summary:        PPD files from OpenPrinting.org
 # The package version is the PPD-O-MATIC version mentioned in the PPD files
 # which is currently "PPD-O-MATIC (4.0.0 or newer)"

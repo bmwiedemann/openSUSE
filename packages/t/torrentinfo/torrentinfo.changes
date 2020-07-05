@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul  3 08:10:33 UTC 2020 - pgajdos@suse.com
+
+- remove dependency on nose, use %pytest macro
+
+-------------------------------------------------------------------
 Fri Dec 29 15:56:26 UTC 2017 - aloisio@gmx.com
 
 - Update to forked version 1.8.6
