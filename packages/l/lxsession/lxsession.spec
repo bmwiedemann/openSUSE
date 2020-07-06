@@ -1,7 +1,7 @@
 #
 # spec file for package lxsession
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           lxsession
-Version:        0.5.3
+Version:        0.5.5
 Release:        0
 Summary:        LXDE Session Manager, required for running the desktop environment
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/GUI/LXDE
-Url:            http://www.lxde.org/
-Source:         %{name}-%{version}.tar.xz
+URL:            http://www.lxde.org/
+Source0:        https://sourceforge.net/projects/lxde/files/LXSession%20%28session%20manager%29/LXSession%200.5.x/%{name}-%{version}.tar.xz
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  docbook-utils
 BuildRequires:  docbook-xsl-stylesheets
@@ -32,16 +32,14 @@ BuildRequires:  gtk2-devel
 BuildRequires:  intltool
 BuildRequires:  libgee-devel
 BuildRequires:  libtool
-BuildRequires:  libunique1-devel
 BuildRequires:  libxslt
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  polkit-devel
 BuildRequires:  vala >= 0.16
-Obsoletes:      lxsession-edit <= 0.2.0
 Obsoletes:      lxpolkit <= 0.1.0
-Provides:       lxsession-edit > 0.2.0
+Obsoletes:      lxsession-edit <= 0.2.0
 Provides:       lxpolkit > 0.1.0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Provides:       lxsession-edit > 0.2.0
 
 %description
 LXSession is the standard session manager used by LXDE. The LXSession manager
@@ -55,7 +53,7 @@ use when a user logs out and to restart them the next time the user logs in.
 %build
 %configure \
 	--enable-man
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -70,8 +68,8 @@ sed -i "3d" %{buildroot}%{_datadir}/applications/lxsession-edit.desktop
 %fdupes %{buildroot}
 
 %files -f %{name}.lang
-%defattr(-,root,root,0755)
-%doc AUTHORS ChangeLog README COPYING TODO
+%license COPYING
+%doc AUTHORS ChangeLog README TODO
 %{_bindir}/lxlock
 %{_bindir}/lxsession
 %{_bindir}/lxsession-logout
@@ -87,9 +85,9 @@ sed -i "3d" %{buildroot}%{_datadir}/applications/lxsession-edit.desktop
 %{_datadir}/lxsession/
 %{_datadir}/applications/lxsession-default-apps.desktop
 %{_datadir}/applications/lxsession-edit.desktop
-%{_mandir}/man1/*.1.gz
+%{_mandir}/man1/*.1%{?ext_man}
 %{_sysconfdir}/xdg/autostart/lxpolkit.desktop
-%dir /usr/lib/lxsession
-/usr/lib/lxsession/lxsession-xsettings
+%dir %{_prefix}/lib/lxsession
+%{_prefix}/lib/lxsession/lxsession-xsettings
 
 %changelog

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul  4 08:53:14 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.5.5:
+  * Remove libunique dependency
+  * Resolve correctness and memory handling issues
+  * Translation updates
+  * Pass desktop_environment as a parameter to
+    lxsession-xdg-autostart to fix wrong autostart processing
+- includes changes from 0.5.4:
+  * Drop attempt to run dbus-launch in code
+
+-------------------------------------------------------------------
 Sun Dec 25 13:48:48 UTC 2016 - trcs@gmx.com
 
 - New upstream version 0.5.3
