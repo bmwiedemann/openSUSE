@@ -49,6 +49,7 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  zlib-devel
 Requires(pre):  coreutils
 Requires(pre):  permissions
+Recommends:     sudo-plugin-python
 
 %description
 Sudo is a command that allows users to execute some commands as root.
@@ -58,6 +59,16 @@ activities to syslogd, so the system administrator can keep an eye on
 things. Sudo asks for the password for initializing a check period of a
 given time N (where N is defined at installation and is set to 5
 minutes by default).
+
+%package plugin-python
+Summary:        Plugin API for python
+Group:          System/Base
+Requires:       %{name} = %{version}
+
+%description plugin-python
+This package contains the sudo plugin which allows to write sudo plugins
+in python. The API closely follows the C sudo plugin API described by
+sudo_plugin(5).
 
 %package devel
 Summary:        Header files needed for sudo plugin development
@@ -181,7 +192,6 @@ chmod 0440 %{_sysconfdir}/sudoers
 %{_mandir}/man5/sudo_logsrv.proto.5%{?ext_man}
 %{_mandir}/man5/sudo_logsrvd.conf.5%{?ext_man}
 %{_mandir}/man8/sudo_logsrvd.8%{?ext_man}
-%{_mandir}/man8/sudo_plugin_python.8%{?ext_man}
 %{_mandir}/man8/sudo_sendlog.8%{?ext_man}
 
 %config(noreplace) %attr(0440,root,root) %{_sysconfdir}/sudoers
@@ -214,12 +224,15 @@ chmod 0440 %{_sysconfdir}/sudoers
 %{_libexecdir}/%{name}/%{name}/system_group.so
 %{_libexecdir}/%{name}/%{name}/audit_json.so
 %{_libexecdir}/%{name}/%{name}/sample_approval.so
-%{_libexecdir}/%{name}/%{name}/python_plugin.so
 %{_libexecdir}/%{name}/libsudo_util.so.*
 %attr(0711,root,root) %dir %ghost %{_localstatedir}/lib/%{name}
 %attr(0700,root,root) %dir %ghost %{_localstatedir}/lib/%{name}/ts
 %dir %{_tmpfilesdir}
 %{_tmpfilesdir}/sudo.conf
+
+%files plugin-python
+%{_mandir}/man8/sudo_plugin_python.8%{?ext_man}
+%{_libexecdir}/%{name}/%{name}/python_plugin.so
 
 %files devel
 %doc plugins/sample/sample_plugin.c
