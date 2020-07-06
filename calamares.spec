@@ -18,27 +18,29 @@
 
 %define _sover  3
 Name:           calamares
-Version:        3.2.15
+Version:        3.2.25
 Release:        0
 Summary:        Installer from a live CD/DVD/USB to disk
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 Group:          System/Management
-URL:            http://calamares.io/
+URL:            https://calamares.io/
 Source0:        https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
+Source2:        calamares.keyring
 # new generic branding.desc with explanations in comments
-Source1:        branding.desc
-Source2:        %{name}-rpmlintrc
+Source3:        branding.desc
+Source4:        %{name}-rpmlintrc
 # .desktop file customizations to use kdesu from kde-cli-tools5 instead of Polkit pkexec
 Patch0:         %{name}-desktop-file.patch
 # adjust some default settings (default shipped .conf files) for openSUSE and openSUSE based appliances
 Patch1:         3.2-packages.conf.patch
 Patch2:         3.2-bootloader.conf.patch
+Patch3:         3.2-show.qml.patch
 Patch4:         3.2-settings.conf.patch
 Patch5:         3.2.15-unpackfs.conf_Leap15.patch
 Patch6:         3.2.15-configuring_autologin_in_sysconfig.patch
 Patch7:         3.2-removeuser.conf.patch
 Patch8:         3.2-welcome.conf.patch
-Patch9:         3.2-show.qml.patch
 Provides:       %{name}-libs%{_sover} = %{version}
 Obsoletes:      %{name}-libs%{_sover} < %{version}
 BuildRequires:  cmake >= 3.2
@@ -147,16 +149,16 @@ based custom appliances.
 
 %prep
 %setup -q -n %{name}-%{version}
-cp -f %{SOURCE1} src/branding/default/
+cp -f %{SOURCE3} src/branding/default/
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
-%patch9 -p1
 # fix shebang 
 find . -wholename "./src/modules/*/main.py" -exec sed -re "1s/^#\!\/usr\/bin\/env python3/#\!\/usr\/bin\/python3/" -i {} \;
 

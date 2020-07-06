@@ -5,8 +5,8 @@ Calamares packages is no longer needed after installation.
 diff --git a/src/modules/packages/packages.conf b/src/modules/packages/packages.conf
 --- a/src/modules/packages/packages.conf
 +++ b/src/modules/packages/packages.conf
-@@ -12,7 +12,7 @@
- #  - entropy     - Sabayon package manager
+@@ -13,7 +13,7 @@
+ #  - apk         = Alpine Linux package manager
  #  - dummy       - Dummy manager, only logs
  #
 -backend: dummy
@@ -14,7 +14,7 @@ diff --git a/src/modules/packages/packages.conf b/src/modules/packages/packages.
  
  #
  # Often package installation needs an internet connection.
-@@ -28,7 +28,7 @@
+@@ -37,7 +37,7 @@
  # Therefore set also "update_system" to 'true'.
  #
  skip_if_no_internet: false
@@ -23,7 +23,7 @@ diff --git a/src/modules/packages/packages.conf b/src/modules/packages/packages.
  update_system: false
  
  #
-@@ -159,12 +159,6 @@
+@@ -163,12 +163,6 @@
  # of packages, this can lead to a considerable time savings.
  #
  operations:
