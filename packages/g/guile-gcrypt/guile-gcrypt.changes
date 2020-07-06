@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  6 03:28:39 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Build non-parallel for reproducible builds (boo#1170378)
+
+-------------------------------------------------------------------
 Mon Jan 13 21:37:13 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Make guile-gcrypt-rpmlintrc compatible with Guile 3.0 

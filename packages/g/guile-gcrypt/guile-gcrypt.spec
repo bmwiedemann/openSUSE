@@ -50,7 +50,7 @@ interface (FFI) of Guile.
 %build
 ./bootstrap.sh
 %configure
-make %{?_smp_mflags}
+make # non-parallel for boo#1170378
 
 %install
 make install %{_smp_mflags} DESTDIR=%{buildroot}
