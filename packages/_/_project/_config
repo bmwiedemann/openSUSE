@@ -607,6 +607,7 @@ Prefer: geronimo-servlet-2_4-api
 Prefer: openmpi-config
 Prefer: -libhdf5-0-openmpi -libhdf5_hl0-openmpi -libhdf5_hl8-openmpi -libhdf5-8-openmpi -libhdf5_hl9-openmpi -libhdf5-9-openmpi -libhdf5-10-openmpi -libhdf5_hl10-openmpi -libhdf5-11-openmpi -libhdf5_hl11-openmpi -libhdf5-101-openmpi -libhdf5-101-mvapich2 -libhdf5_hl101-openmpi libhdf5_hl100 -libhdf5-103-openmpi1 -libhdf5-103-mvapich2 -libhdf5_hl103-openmpi -libhdf5_cpp103-openmpi -libhdf5_cpp103-openmpi1 -libhdf5_cpp103-mvapich2 -libhdf5-103-openmpi2 -libhdf5-103-openmpi3 -libhdf5_cpp103-openmpi2 -libhdf5_cpp103-openmpi3 -libhdf5_cpp103-openmpi4
 Prefer: -libvtk1-openmpi libvtk1-openmpi2
+Prefer: -vtk-openmpi1-qt -vtk-openmpi2-qt -vtk-openmpi3-qt
 Prefer: -openmpi3-libs -openmpi4-libs
 Prefer: fftw3-devel ImageMagick-config-7-SUSE
 # prefer the small systemd for building
