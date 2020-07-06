@@ -3592,4 +3592,18 @@
 - update staging to 5.11 release</comment>
     <requestid>816139</requestid>
   </revision>
+  <revision rev="311" vrev="1">
+    <srcmd5>d2cd5cab8584a0447169285747b53512</srcmd5>
+    <version>5.12</version>
+    <time>1594045872</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 5.12 development release
+  - NTDLL converted to PE format.
+  - Support for the WebSocket API.
+  - Improved RawInput support.
+  - Vulkan spec update.
+  - Various bug fixes.
+- update staging to 5.12 release</comment>
+    <requestid>818933</requestid>
+  </revision>
 </revisionlist>

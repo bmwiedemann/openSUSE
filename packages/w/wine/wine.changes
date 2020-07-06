@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul  4 08:32:55 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 5.12 development release
+  - NTDLL converted to PE format.
+  - Support for the WebSocket API.
+  - Improved RawInput support.
+  - Vulkan spec update.
+  - Various bug fixes.
+- update staging to 5.12 release
+
+-------------------------------------------------------------------
 Sat Jun 20 08:01:30 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 5.11 development release
