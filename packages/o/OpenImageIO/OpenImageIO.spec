@@ -28,15 +28,13 @@
 %define so_ver 2_1
 %define major_minor_ver 2.1
 Name:           OpenImageIO
-Version:        2.1.15.0
+Version:        2.1.17.0
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://www.openimageio.org/
 Source0:        https://github.com/OpenImageIO/oiio/archive/Release-%{version}.tar.gz#/oiio-Release-%{version}.tar.gz
-Patch0:         oiio-clusterfit-boundscheck.patch
-Patch1:         oiio-detectplatform-others.patch
 # NOTE: Please don't uncomment a build requirement unless you have submitted the package to factory and it exists
 #BuildRequires:  Field3D-devel
 BuildRequires:  cmake >= 3.12
@@ -147,9 +145,6 @@ This package contains python bindings for OpenImageIO.
 
 %prep
 %setup -q -n oiio-Release-%{version}
-%patch0
-%patch1
-sed -i -e 's/_runtest python/_runtest python3/' src/cmake/oiio_macros.cmake
 
 # Make sure that bundled libraries are not used
 rm -f src/include/pugiconfig.hpp \
@@ -203,11 +198,13 @@ ln -s ../../src/fonts/Droid_Serif/DroidSerif.ttf build/fonts/DroidSerif.ttf
 ln -s ../../src/fonts/Droid_Sans/DroidSans.ttf build/fonts/DroidSans.ttf
 # Exclude known broken tests
 %ifarch x86_64
-%ctest '-E' 'broken|texture-icwrite'
+%ctest '-E' 'broken|texture-icwrite|unit_timer'
 %ctest '-R' 'texture-icwrite' || true
+%ctest '-j1' '-R' 'unit_timer'
 %else
 # Many test cases are failing on PPC, ARM, ix64 ... ignore for now
-%ctest '-E' 'broken|texture-icwrite' || true
+%ctest '-E' 'broken|texture-icwrite|unit_timer' || true
+%ctest '-j1' '-R' 'unit_timer'
 %endif
 
 %post -n libOpenImageIO%{so_ver} -p /sbin/ldconfig

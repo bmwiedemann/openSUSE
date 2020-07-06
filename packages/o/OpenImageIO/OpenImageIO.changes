@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul  5 02:03:09 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to release 2.1.17.0
+  For details, see included CHANGES.md file, or:
+  https://github.com/OpenImageIO/oiio/releases
+- Run unit_timer test sequentially, occasionally fails otherwise:
+  https://github.com/OpenImageIO/oiio/issues/2628
+- Drop obsolete patches:
+  + oiio-detectplatform-others.patch
+  + patch oiio-clusterfit-boundscheck.patch
+
+-------------------------------------------------------------------
 Wed May 13 20:01:43 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Set a default search location for plugins and create a matching
