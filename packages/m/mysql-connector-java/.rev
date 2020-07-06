@@ -279,4 +279,12 @@
     <comment>Build against the new compatibility packages log4j12/log4j12-mini</comment>
     <requestid>734257</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>30a4615d1f6c3465819e3daea27be601</srcmd5>
+    <version>5.1.49</version>
+    <time>1594044848</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818249</requestid>
+  </revision>
 </revisionlist>

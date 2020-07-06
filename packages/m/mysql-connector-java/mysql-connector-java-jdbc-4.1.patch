@@ -23,13 +23,13 @@ Subject: [PATCH] Java 8 compatibility
  .../jdbc2/optional/SuspendableXAConnection.java    |   8 +
  17 files changed, 822 insertions(+), 2 deletions(-)
 
-Index: mysql-connector-java-5.1.47/src/com/mysql/fabric/jdbc/FabricMySQLConnectionProxy.java
+Index: mysql-connector-java-5.1.49/src/com/mysql/fabric/jdbc/FabricMySQLConnectionProxy.java
 ===================================================================
---- mysql-connector-java-5.1.47.orig/src/com/mysql/fabric/jdbc/FabricMySQLConnectionProxy.java
-+++ mysql-connector-java-5.1.47/src/com/mysql/fabric/jdbc/FabricMySQLConnectionProxy.java
-@@ -3069,4 +3069,36 @@ public class FabricMySQLConnectionProxy
-     public boolean isServerTruncatesFracSecs() {
-         return getActiveMySQLConnection().isServerTruncatesFracSecs();
+--- mysql-connector-java-5.1.49.orig/src/com/mysql/fabric/jdbc/FabricMySQLConnectionProxy.java
++++ mysql-connector-java-5.1.49/src/com/mysql/fabric/jdbc/FabricMySQLConnectionProxy.java
+@@ -3073,4 +3073,36 @@ public class FabricMySQLConnectionProxy
+     public String getQueryTimingUnits() {
+         return getActiveMySQLConnection().getQueryTimingUnits();
      }
 +
 +    public java.sql.Clob createClob() throws SQLException {
@@ -64,10 +64,10 @@ Index: mysql-connector-java-5.1.47/src/com/mysql/fabric/jdbc/FabricMySQLConnecti
 +        throw new UnsupportedOperationException();
 +    }
  }
-Index: mysql-connector-java-5.1.47/src/com/mysql/fabric/jdbc/FabricMySQLDriver.java
+Index: mysql-connector-java-5.1.49/src/com/mysql/fabric/jdbc/FabricMySQLDriver.java
 ===================================================================
---- mysql-connector-java-5.1.47.orig/src/com/mysql/fabric/jdbc/FabricMySQLDriver.java
-+++ mysql-connector-java-5.1.47/src/com/mysql/fabric/jdbc/FabricMySQLDriver.java
+--- mysql-connector-java-5.1.49.orig/src/com/mysql/fabric/jdbc/FabricMySQLDriver.java
++++ mysql-connector-java-5.1.49/src/com/mysql/fabric/jdbc/FabricMySQLDriver.java
 @@ -103,7 +103,7 @@ public class FabricMySQLDriver extends N
          return super.parseURL(url.replaceAll("fabric:", ""), defaults);
      }
@@ -78,11 +78,11 @@ Index: mysql-connector-java-5.1.47/src/com/mysql/fabric/jdbc/FabricMySQLDriver.j
 +        throw new java.sql.SQLFeatureNotSupportedException("no logging");
      }
  }
-Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/CallableStatement.java
+Index: mysql-connector-java-5.1.49/src/com/mysql/jdbc/CallableStatement.java
 ===================================================================
---- mysql-connector-java-5.1.47.orig/src/com/mysql/jdbc/CallableStatement.java
-+++ mysql-connector-java-5.1.47/src/com/mysql/jdbc/CallableStatement.java
-@@ -2396,6 +2396,90 @@ public class CallableStatement extends P
+--- mysql-connector-java-5.1.49.orig/src/com/mysql/jdbc/CallableStatement.java
++++ mysql-connector-java-5.1.49/src/com/mysql/jdbc/CallableStatement.java
+@@ -2383,6 +2383,90 @@ public class CallableStatement extends P
          }
      }
  
@@ -173,13 +173,13 @@ Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/CallableStatement.java
      /**
       * JDBC 4.2
       */
-Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/ConnectionImpl.java
+Index: mysql-connector-java-5.1.49/src/com/mysql/jdbc/ConnectionImpl.java
 ===================================================================
---- mysql-connector-java-5.1.47.orig/src/com/mysql/jdbc/ConnectionImpl.java
-+++ mysql-connector-java-5.1.47/src/com/mysql/jdbc/ConnectionImpl.java
-@@ -5544,4 +5544,56 @@ public class ConnectionImpl extends Conn
-             }
-         }
+--- mysql-connector-java-5.1.49.orig/src/com/mysql/jdbc/ConnectionImpl.java
++++ mysql-connector-java-5.1.49/src/com/mysql/jdbc/ConnectionImpl.java
+@@ -5518,4 +5518,56 @@ public class ConnectionImpl extends Conn
+     public String getQueryTimingUnits() {
+         return this.io != null ? this.io.getQueryTimingUnits() : Constants.MILLIS_I18N;
      }
 +
 +    public java.sql.Clob createClob() throws SQLException {
@@ -234,11 +234,11 @@ Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/ConnectionImpl.java
 +        throw new UnsupportedOperationException();
 +    }
  }
-Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/DatabaseMetaData.java
+Index: mysql-connector-java-5.1.49/src/com/mysql/jdbc/DatabaseMetaData.java
 ===================================================================
---- mysql-connector-java-5.1.47.orig/src/com/mysql/jdbc/DatabaseMetaData.java
-+++ mysql-connector-java-5.1.47/src/com/mysql/jdbc/DatabaseMetaData.java
-@@ -7878,6 +7878,22 @@ public class DatabaseMetaData implements
+--- mysql-connector-java-5.1.49.orig/src/com/mysql/jdbc/DatabaseMetaData.java
++++ mysql-connector-java-5.1.49/src/com/mysql/jdbc/DatabaseMetaData.java
+@@ -7879,6 +7879,22 @@ public class DatabaseMetaData implements
          return pStmt;
      }
  
@@ -261,13 +261,13 @@ Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/DatabaseMetaData.java
      /**
       * JDBC-4.1
       * 
-Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/MultiHostMySQLConnection.java
+Index: mysql-connector-java-5.1.49/src/com/mysql/jdbc/MultiHostMySQLConnection.java
 ===================================================================
---- mysql-connector-java-5.1.47.orig/src/com/mysql/jdbc/MultiHostMySQLConnection.java
-+++ mysql-connector-java-5.1.47/src/com/mysql/jdbc/MultiHostMySQLConnection.java
-@@ -2502,4 +2502,56 @@ public class MultiHostMySQLConnection im
-     public boolean isServerTruncatesFracSecs() {
-         return getActiveMySQLConnection().isServerTruncatesFracSecs();
+--- mysql-connector-java-5.1.49.orig/src/com/mysql/jdbc/MultiHostMySQLConnection.java
++++ mysql-connector-java-5.1.49/src/com/mysql/jdbc/MultiHostMySQLConnection.java
+@@ -2506,4 +2506,56 @@ public class MultiHostMySQLConnection im
+     public String getQueryTimingUnits() {
+         return getActiveMySQLConnection().getQueryTimingUnits();
      }
 +
 +    public java.sql.Clob createClob() throws SQLException {
@@ -322,13 +322,13 @@ Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/MultiHostMySQLConnection.j
 +        throw new UnsupportedOperationException();
 +    }
  }
-Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/NonRegisteringDriver.java
+Index: mysql-connector-java-5.1.49/src/com/mysql/jdbc/NonRegisteringDriver.java
 ===================================================================
---- mysql-connector-java-5.1.47.orig/src/com/mysql/jdbc/NonRegisteringDriver.java
-+++ mysql-connector-java-5.1.47/src/com/mysql/jdbc/NonRegisteringDriver.java
-@@ -908,4 +908,9 @@ public class NonRegisteringDriver implem
-             }
-         }
+--- mysql-connector-java-5.1.49.orig/src/com/mysql/jdbc/NonRegisteringDriver.java
++++ mysql-connector-java-5.1.49/src/com/mysql/jdbc/NonRegisteringDriver.java
+@@ -871,4 +871,9 @@ public class NonRegisteringDriver implem
+     public static boolean isHostPropertiesList(String host) {
+         return host != null && StringUtils.startsWithIgnoreCase(host, "address=");
      }
 +
 +    @Override
@@ -336,11 +336,11 @@ Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/NonRegisteringDriver.java
 +        throw new java.sql.SQLFeatureNotSupportedException();
 +    }
  }
-Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/PreparedStatement.java
+Index: mysql-connector-java-5.1.49/src/com/mysql/jdbc/PreparedStatement.java
 ===================================================================
---- mysql-connector-java-5.1.47.orig/src/com/mysql/jdbc/PreparedStatement.java
-+++ mysql-connector-java-5.1.47/src/com/mysql/jdbc/PreparedStatement.java
-@@ -5150,6 +5150,18 @@ public class PreparedStatement extends c
+--- mysql-connector-java-5.1.49.orig/src/com/mysql/jdbc/PreparedStatement.java
++++ mysql-connector-java-5.1.49/src/com/mysql/jdbc/PreparedStatement.java
+@@ -5179,6 +5179,18 @@ public class PreparedStatement extends c
                  && StringUtils.indexOfIgnoreCase(statementStartPos, sql, "SELECT", "\"'`", "\"'`", StringUtils.SEARCH_MODE__MRK_COM_WS) == -1;
      }
  
@@ -359,13 +359,13 @@ Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/PreparedStatement.java
      /**
       * JDBC 4.2
       * Same as PreparedStatement.executeUpdate() but returns long instead of int.
-Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/ResultSetImpl.java
+Index: mysql-connector-java-5.1.49/src/com/mysql/jdbc/ResultSetImpl.java
 ===================================================================
---- mysql-connector-java-5.1.47.orig/src/com/mysql/jdbc/ResultSetImpl.java
-+++ mysql-connector-java-5.1.47/src/com/mysql/jdbc/ResultSetImpl.java
-@@ -7894,4 +7894,200 @@ public class ResultSetImpl implements Re
-     protected ExceptionInterceptor getExceptionInterceptor() {
-         return this.exceptionInterceptor;
+--- mysql-connector-java-5.1.49.orig/src/com/mysql/jdbc/ResultSetImpl.java
++++ mysql-connector-java-5.1.49/src/com/mysql/jdbc/ResultSetImpl.java
+@@ -7861,4 +7861,200 @@ public class ResultSetImpl implements Re
+     public int getId() {
+         return this.resultId;
      }
 +
 +    public java.sql.RowId getRowId(int columnIndex) throws SQLException {
@@ -564,10 +564,10 @@ Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/ResultSetImpl.java
 +        throw new UnsupportedOperationException();
 +    }
  }
-Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/jdbc2/optional/CallableStatementWrapper.java
+Index: mysql-connector-java-5.1.49/src/com/mysql/jdbc/jdbc2/optional/CallableStatementWrapper.java
 ===================================================================
---- mysql-connector-java-5.1.47.orig/src/com/mysql/jdbc/jdbc2/optional/CallableStatementWrapper.java
-+++ mysql-connector-java-5.1.47/src/com/mysql/jdbc/jdbc2/optional/CallableStatementWrapper.java
+--- mysql-connector-java-5.1.49.orig/src/com/mysql/jdbc/jdbc2/optional/CallableStatementWrapper.java
++++ mysql-connector-java-5.1.49/src/com/mysql/jdbc/jdbc2/optional/CallableStatementWrapper.java
 @@ -1498,6 +1498,142 @@ public class CallableStatementWrapper ex
  
          return null;
@@ -711,10 +711,10 @@ Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/jdbc2/optional/CallableSta
      //
      //	public Reader getCharacterStream(int parameterIndex) throws SQLException {
      //		try {
-Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/jdbc2/optional/ConnectionWrapper.java
+Index: mysql-connector-java-5.1.49/src/com/mysql/jdbc/jdbc2/optional/ConnectionWrapper.java
 ===================================================================
---- mysql-connector-java-5.1.47.orig/src/com/mysql/jdbc/jdbc2/optional/ConnectionWrapper.java
-+++ mysql-connector-java-5.1.47/src/com/mysql/jdbc/jdbc2/optional/ConnectionWrapper.java
+--- mysql-connector-java-5.1.49.orig/src/com/mysql/jdbc/jdbc2/optional/ConnectionWrapper.java
++++ mysql-connector-java-5.1.49/src/com/mysql/jdbc/jdbc2/optional/ConnectionWrapper.java
 @@ -2901,4 +2901,56 @@ public class ConnectionWrapper extends W
      public boolean isUseSSLExplicit() {
          return this.mc.isUseSSLExplicit();
@@ -772,10 +772,10 @@ Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/jdbc2/optional/ConnectionW
 +        throw new UnsupportedOperationException();
 +    }
  }
-Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/jdbc2/optional/MysqlDataSource.java
+Index: mysql-connector-java-5.1.49/src/com/mysql/jdbc/jdbc2/optional/MysqlDataSource.java
 ===================================================================
---- mysql-connector-java-5.1.47.orig/src/com/mysql/jdbc/jdbc2/optional/MysqlDataSource.java
-+++ mysql-connector-java-5.1.47/src/com/mysql/jdbc/jdbc2/optional/MysqlDataSource.java
+--- mysql-connector-java-5.1.49.orig/src/com/mysql/jdbc/jdbc2/optional/MysqlDataSource.java
++++ mysql-connector-java-5.1.49/src/com/mysql/jdbc/jdbc2/optional/MysqlDataSource.java
 @@ -436,6 +436,18 @@ public class MysqlDataSource extends Con
      //		throw SQLError.createSQLFeatureNotSupportedException();
      //	}
@@ -795,10 +795,10 @@ Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/jdbc2/optional/MysqlDataSo
      @Override
      public Properties exposeAsProperties(Properties props) throws SQLException {
          return exposeAsProperties(props, true);
-Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/jdbc2/optional/MysqlPooledConnection.java
+Index: mysql-connector-java-5.1.49/src/com/mysql/jdbc/jdbc2/optional/MysqlPooledConnection.java
 ===================================================================
---- mysql-connector-java-5.1.47.orig/src/com/mysql/jdbc/jdbc2/optional/MysqlPooledConnection.java
-+++ mysql-connector-java-5.1.47/src/com/mysql/jdbc/jdbc2/optional/MysqlPooledConnection.java
+--- mysql-connector-java-5.1.49.orig/src/com/mysql/jdbc/jdbc2/optional/MysqlPooledConnection.java
++++ mysql-connector-java-5.1.49/src/com/mysql/jdbc/jdbc2/optional/MysqlPooledConnection.java
 @@ -33,6 +33,7 @@ import java.util.Map;
  import javax.sql.ConnectionEvent;
  import javax.sql.ConnectionEventListener;
@@ -823,10 +823,10 @@ Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/jdbc2/optional/MysqlPooled
 +    }
  }
 \ No newline at end of file
-Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/jdbc2/optional/PreparedStatementWrapper.java
+Index: mysql-connector-java-5.1.49/src/com/mysql/jdbc/jdbc2/optional/PreparedStatementWrapper.java
 ===================================================================
---- mysql-connector-java-5.1.47.orig/src/com/mysql/jdbc/jdbc2/optional/PreparedStatementWrapper.java
-+++ mysql-connector-java-5.1.47/src/com/mysql/jdbc/jdbc2/optional/PreparedStatementWrapper.java
+--- mysql-connector-java-5.1.49.orig/src/com/mysql/jdbc/jdbc2/optional/PreparedStatementWrapper.java
++++ mysql-connector-java-5.1.49/src/com/mysql/jdbc/jdbc2/optional/PreparedStatementWrapper.java
 @@ -567,6 +567,78 @@ public class PreparedStatementWrapper ex
          return buf.toString();
      }
@@ -906,10 +906,10 @@ Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/jdbc2/optional/PreparedSta
      //
      //	public void setAsciiStream(int parameterIndex, InputStream x)
      //			throws SQLException {
-Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/jdbc2/optional/StatementWrapper.java
+Index: mysql-connector-java-5.1.49/src/com/mysql/jdbc/jdbc2/optional/StatementWrapper.java
 ===================================================================
---- mysql-connector-java-5.1.47.orig/src/com/mysql/jdbc/jdbc2/optional/StatementWrapper.java
-+++ mysql-connector-java-5.1.47/src/com/mysql/jdbc/jdbc2/optional/StatementWrapper.java
+--- mysql-connector-java-5.1.49.orig/src/com/mysql/jdbc/jdbc2/optional/StatementWrapper.java
++++ mysql-connector-java-5.1.49/src/com/mysql/jdbc/jdbc2/optional/StatementWrapper.java
 @@ -581,6 +581,34 @@ public class StatementWrapper extends Wr
          }
      }
@@ -945,10 +945,10 @@ Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/jdbc2/optional/StatementWr
      /**
       * JDBC 4.2
       * Same as {@link #executeBatch()} but returns long[] instead of int[].
-Index: mysql-connector-java-5.1.47/src/com/mysql/jdbc/jdbc2/optional/SuspendableXAConnection.java
+Index: mysql-connector-java-5.1.49/src/com/mysql/jdbc/jdbc2/optional/SuspendableXAConnection.java
 ===================================================================
---- mysql-connector-java-5.1.47.orig/src/com/mysql/jdbc/jdbc2/optional/SuspendableXAConnection.java
-+++ mysql-connector-java-5.1.47/src/com/mysql/jdbc/jdbc2/optional/SuspendableXAConnection.java
+--- mysql-connector-java-5.1.49.orig/src/com/mysql/jdbc/jdbc2/optional/SuspendableXAConnection.java
++++ mysql-connector-java-5.1.49/src/com/mysql/jdbc/jdbc2/optional/SuspendableXAConnection.java
 @@ -199,4 +199,12 @@ public class SuspendableXAConnection ext
              this.currentXAConnection.close();
          }

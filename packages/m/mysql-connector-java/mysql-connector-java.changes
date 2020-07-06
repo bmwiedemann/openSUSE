@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Jul  1 16:22:25 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 5.1.49 [bsc#1173600, CVE-2020-2875, CVE-2020-2933, CVE-2020-2934]
+- Changes in 5.1.49:
+  * INSERT..VALUE..lead to invalidation of batch insert.
+  * CLIENT HANG WHEN LOADBALANCESTRATEGY IS BESTRESPONSETIME.
+  * Remove third-party libraries from sources and bundles.
+  * PREPAREDSTATEMENT.SETOBJECT(I, "FALSE", TYPES.BOOLEAN) ALWAYS SETS TRUE OR 1.
+  * Not recommended default for 'allowLoadLocalInfile'.
+  * Disable external entities in Fabric's XML parser.
+  * INCORRECT DATE ERROR WHEN CALLING GETMETADATA ON PREPARED STATEMENT.
+- Changes in 5.1.48:
+  * COMMUNITY README AND README.TXT FILES HAS THE WRONG YEAR (2018).
+  * REGRESSION UNIT TESTS FAILS WHEN THE 8.0 SERVER'S CHARSET IS SET TO DEFAULT UTF8MB4.
+  * Update README.md and add new CONTRIBUTING.md.
+  * Improve DatabaseMetaData.getSQLKeywords() to include new reserved words.
+  * Parameter metadata inferred incorrectly when procedure or function doesn't exist.
+  * Can't execute a stored procedure if exists function with same name.
+  * PSTMT.EXECUTEUPDATE() FAILS WHEN SQL MODE IS NO_BACKSLASH_ESCAPES.
+  * SYNTAX ERROR ON RESULTSET.UPDATEROW() WITH SQL_MODE NO_BACKSLASH_ESCAPES.
+  * PREPAREDSTATEMENT.SETTIMESTAMP NULLPOINTEREXCEPTION.
+  * Support new utf8mb4 bin collation.
+  * GETTABLENAME() RETURNS NULL FOR A QUERY HAVING COUNT(*) WITH JDBC DRIVER V8.0.12.
+  * SETTING LOGSLOWQUERIES SHOULD NOT AUTOMATICALLY ENABLE PROFILESQL FOR QUERIES.
+  * PROFILEREVENT HOSTNAME HAS NO GETTER().
+  * CONNECTOR J WITH PROFILESQL - LOG CONTAINS LOTS OF STACKTRACE DATA.
+  * PROFILEREVENT.PACK() THROWS ARRAYINDEXOUTOFBOUNDSEXCEPTION.
+  * CHARACTERS GET GARBLED IN CONCAT() IN PS WHEN USECURSORFETCH=TRUE.
+  * javax.net.ssl.SSLException: closing inbound before receiving peer's close_notify.
+  * PLEASE AVOID SHOW PROCESSLIST IF POSSIBLE.
+  * Wrong defaults on collation mappings.
+  * ADD MAPPING FOR UTF8MB4_ZH_0900_AS_CS COLLATION.
+  * mysql-connector in bootclasspath causing memory leak.
+- Update mysql-connector-java-jdbc-4.1.patch
+
+-------------------------------------------------------------------
 Tue Oct  1 09:15:34 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the new compatibility packages log4j12/log4j12-mini
