@@ -5651,7 +5651,6 @@
     <package name="mokutil" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
     <package name="mozilla-nss-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="nodejs14" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="nodejs14-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm14" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nss-mdns-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="nss_ldap-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
