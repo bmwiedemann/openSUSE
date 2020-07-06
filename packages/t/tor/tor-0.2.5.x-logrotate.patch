@@ -24,6 +24,6 @@ Index: tor-0.2.5.10/contrib/operator-tools/tor.logrotate.in
  	sharedscripts
  	postrotate
 -		/etc/init.d/tor reload > /dev/null
-+		/usr/sbin/service tor reload > /dev/null
++		/usr/bin/systemctl try-reload-or-restart tor
  	endscript
  }

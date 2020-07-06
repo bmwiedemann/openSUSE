@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 29 08:57:42 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix logrotate to not fail when tor is stopped (boo#1164275)
+
+-------------------------------------------------------------------
 Fri May 15 18:58:11 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tor 0.4.3.5:
