@@ -1746,7 +1746,9 @@ unsorted:
   - clanlib-doc 
   - clanlib-examples 
   - clatd 
+  - claws-mail 
   - claws-mail-devel 
+  - claws-mail-lang 
   - cld2-devel 
   - cldr-emoji-annotation 
   - cldr-emoji-annotation-devel 
@@ -1892,6 +1894,7 @@ unsorted:
   - commandergenius 
   - compartm 
   - compcache 
+  - compface 
   - compface-devel 
   - compicc 
   - compiz 
@@ -8349,6 +8352,7 @@ unsorted:
   - libarprec0 
   - libart_lgpl-devel 
   - libart_lgpl-devel-32bit: [x86_64] 
+  - libart_lgpl_2-2 
   - libart_lgpl_2-2-32bit: [x86_64] 
   - libasan4 
   - libasan4-32bit: [x86_64] 
@@ -9237,6 +9241,7 @@ unsorted:
   - libetonyek-devel-doc 
   - libetonyek-tools 
   - libetpan-devel 
+  - libetpan20 
   - libetrophy0 
   - libev-devel 
   - libev4 
@@ -9633,8 +9638,10 @@ unsorted:
   - libgnome-keyring-devel 
   - libgnome-keyring0-32bit: [x86_64] 
   - libgnome-menu-3-0-32bit: [x86_64] 
+  - libgnomecanvas-2-0 
   - libgnomecanvas-2-0-32bit: [x86_64] 
   - libgnomecanvas-devel 
+  - libgnomecanvas-lang 
   - libgnomekbd-devel 
   - libgnomesu-devel 
   - libgnt-devel 
@@ -9821,6 +9828,7 @@ unsorted:
   - libguile17 
   - libguilereadline-v-17-17 
   - libgumbo-devel 
+  - libgumbo1 
   - libgupnp-1_2-0-32bit: [x86_64] 
   - libgupnp-av-devel 
   - libgupnp-devel 
@@ -11300,6 +11308,7 @@ unsorted:
   - libpipeline-devel 
   - libpipewire-0_2-1 
   - libpisock-devel 
+  - libpisock9 
   - libpisync-devel 
   - libpisync1 
   - libpkcs11-helper1-32bit: [x86_64] 
@@ -34471,6 +34480,7 @@ unsorted:
   - xosd 
   - xosd-devel 
   - xosview 
+  - xournal 
   - xournalpp 
   - xournalpp-lang 
   - xpenguins 
