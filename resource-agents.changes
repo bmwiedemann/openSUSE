@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 22 10:23:57 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec
+  * Changed all references of %{_libexecdir} to {_prefix}/lib
+
+-------------------------------------------------------------------
 Fri Jun 19 14:30:30 UTC 2020 - dakechi@suse.com
 
 - Update to version 4.6.1+git2.b2dcccf1:
