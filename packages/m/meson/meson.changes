@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 26 16:51:35 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Add meson-fix-gnome-test.patch: fix GNOME test that sometimes
+  fails (bsc#1173025).
+
+-------------------------------------------------------------------
 Tue Jun 16 08:09:40 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.54.3:
