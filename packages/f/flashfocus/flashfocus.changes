@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  6 08:18:58 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.1:
+  * Fixed: Renamed (--loglevel/-l) param to (--verbosity/-v) due
+    to conflict with --flash-lone-windows
+
+-------------------------------------------------------------------
 Mon Jun  1 05:44:53 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.2.0:

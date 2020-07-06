@@ -148,4 +148,14 @@
   * Fixed: Removed --opacity documentation in help</comment>
     <requestid>810521</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c4c02a0e049215b931c7894ea199ef09</srcmd5>
+    <version>2.2.1</version>
+    <time>1594045965</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.1:
+  * Fixed: Renamed (--loglevel/-l) param to (--verbosity/-v) due
+    to conflict with --flash-lone-windows</comment>
+    <requestid>818950</requestid>
+  </revision>
 </revisionlist>
