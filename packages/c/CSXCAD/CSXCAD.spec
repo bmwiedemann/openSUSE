@@ -1,7 +1,7 @@
 #
 # spec file for package CSXCAD
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Release:        0
 Summary:        A C++ library to describe geometrical objects and their properties
 License:        LGPL-3.0-or-later
 Group:          Productivity/Scientific/Physics
-Url:            http://openems.de
+URL:            https://openems.de
 Source0:        https://github.com/thliebig/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM CSXCAD-vtk.patch
 Patch1:         CSXCAD-vtk.patch
@@ -37,21 +37,19 @@ Patch3:         CSXCAD-octave-AppCSXCAD-load.patch
 Patch4:         CSXCAD-readme-octave-package.patch
 # PATCH-FIX-UPSTREAM CSXCAD-HDF5.patch
 Patch5:         CSXCAD-hdf5.patch
-%if 0%{?suse_version} >= 1500
+# PATCH-FIX-UPSTREAM -- https://github.com/thliebig/CSXCAD/pull/17
+Patch6:         0001-Fix-build-with-VTK-9.0-fix-memory-leak.patch
+BuildRequires:  cgal-devel
+BuildRequires:  cmake
+BuildRequires:  double-conversion-devel
+BuildRequires:  fparser-devel
+BuildRequires:  gcc-c++
 BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_serialization-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
-%else
-BuildRequires:  boost-devel
-%endif
-BuildRequires:  cgal-devel
-BuildRequires:  cmake
-BuildRequires:  double-conversion-devel
-BuildRequires:  fparser-devel
-BuildRequires:  gcc-c++
 BuildRequires:  lzma-devel
 BuildRequires:  octave-devel
 BuildRequires:  python3-devel
@@ -59,7 +57,6 @@ BuildRequires:  tinyxml-devel
 BuildRequires:  vtk-devel
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Widgets)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 CSXCAD is a C++ library to describe geometrical objects and their physical
@@ -115,6 +112,7 @@ This package provides MATLAB interface for CSXCAD.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 echo "Name: %{octpkg}" >> DESCRIPTION
 echo "Version: %{version}" >> DESCRIPTION
