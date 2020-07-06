@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 24 12:24:33 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Remove runtime dependency on accounts-qml-module again, it's no
+  longer used in 20.04
+
+-------------------------------------------------------------------
 Tue Jun  9 12:14:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 20.04.2

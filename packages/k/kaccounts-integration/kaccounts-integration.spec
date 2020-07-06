@@ -48,8 +48,6 @@ BuildRequires:  cmake(Qt5Core) >= 5.2.0
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Test) >= 5.2.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
-# QML uses Ubuntu.OnlineAccounts
-Requires:       accounts-qml-module
 Recommends:     %{name}-lang
 Recommends:     kaccounts-providers
 %if %{with lang}
