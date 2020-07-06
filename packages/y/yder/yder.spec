@@ -19,9 +19,10 @@
 
 %define sover 1_4
 Name:           yder
-Version:        1.4.10
+Version:        1.4.11
 Release:        0
 Summary:        Logging library written in C
+# Example programs in subfolder examples/ are licensed under MIT
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/C and C++
 URL:            https://github.com/babelouest/yder
