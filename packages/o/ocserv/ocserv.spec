@@ -17,21 +17,21 @@
 
 
 Name:           ocserv
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        OpenConnect VPN Server
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
 URL:            http://www.infradead.org/ocserv
 Source:         ftp://ftp.infradead.org/pub/ocserv/%{name}-%{version}.tar.xz
-Source100:      ftp://ftp.infradead.org/pub/ocserv/%{name}-%{version}.tar.xz.sig
-Source101:      %{name}.keyring
-Source1:        ca.tmpl
-Source2:        server.tmpl
-Source3:        user.tmpl
+Source1:        ftp://ftp.infradead.org/pub/ocserv/%{name}-%{version}.tar.xz.sig
+Source2:        ca.tmpl
+Source3:        server.tmpl
+Source4:        user.tmpl
 Source5:        ocserv.sysctl
 Source6:        ocserv.firewalld.xml
 Source99:       README.SUSE
+Source100:      gpgkey-1F42418905D8206AA754CCDC29EE58B996865171.gpg
 #PATCH-FIX-UPSTREAM marguerite@opensuse.org $LIBSYSTEMD_DAEMON env is not set on openSUSE
 Patch1:         %{name}-enable-systemd.patch
 #PATCH-FIX-UPSTREAM marguerite@opensuse.org tweak configuration
@@ -45,6 +45,7 @@ BuildRequires:  firewall-macros
 %endif
 BuildRequires:  freeradius-client-devel
 BuildRequires:  gperf
+BuildRequires:  gpg2
 BuildRequires:  libev-devel
 BuildRequires:  libgnutls-devel >= 3.1.10
 BuildRequires:  libmaxminddb-devel
@@ -89,6 +90,7 @@ escalation due to any bug on the VPN handling (worker) process.
 A management interface allows for viewing and querying logged-in users.
 
 %prep
+gpg --import %{SOURCE100} && gpg --verify %{SOURCE1}
 %setup -q
 %patch1 -p1
 %patch2 -p1
@@ -112,9 +114,9 @@ install -D -m 644 %{SOURCE6} %{buildroot}%{_libexecdir}/firewalld/services/ocser
 %endif
 
 install -d %{buildroot}%{_sysconfdir}/ocserv/certificates
-install -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/ocserv/certificates
 install -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/ocserv/certificates
 install -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/ocserv/certificates
+install -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/ocserv/certificates
 install -m 0644 %{SOURCE99} %{buildroot}%{_sysconfdir}/ocserv/
 install -m 0644 doc/sample.config %{buildroot}%{_sysconfdir}/ocserv/ocserv.conf
 install -m 0644 doc/sample.passwd %{buildroot}%{_sysconfdir}/ocserv/ocpasswd
@@ -156,6 +158,7 @@ install -m 0644 doc/systemd/socket-activated/ocserv.service %{buildroot}%{_unitd
 %{_bindir}/ocserv-script
 %{_bindir}/ocserv-fw
 %{_sbindir}/ocserv
+%{_sbindir}/ocserv-worker
 %{_unitdir}/ocserv.service
 %{_unitdir}/ocserv.socket
 %{_mandir}/man8/occtl.8%{ext_man}
