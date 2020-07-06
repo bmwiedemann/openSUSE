@@ -1,7 +1,7 @@
 #
 # spec file for package libhubbub
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,11 +22,11 @@ Release:        0
 Summary:        An HTML5 compliant parsing library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://www.netsurf-browser.org/projects/hubbub/
+URL:            http://www.netsurf-browser.org/projects/hubbub/
 Source:         http://download.netsurf-browser.org/libs/releases/%{name}-%{version}-src.tar.gz
 Patch0:         libhubbub-0.3.0-notimestamp.patch
 Patch1:         0001-workaround-fail-on-ppc64.patch
-Patch2:         libhubbub-0.3.0-is_error.patch
+Patch2:         0001-do-not-use-deprecated-is_error.patch
 BuildRequires:  check-devel
 BuildRequires:  doxygen
 BuildRequires:  libjson-c-devel >= 0.11

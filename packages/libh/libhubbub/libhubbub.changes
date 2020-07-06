@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul  6 05:52:15 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * libhubbub-0.3.0-is_error.patch
+    + json-c/bits.h does not exist in newer json-c versions
+  * 0001-do-not-use-deprecated-is_error.patch
+    + Do not use deprecated is_error
+    + Fixes build of tests
+
+-------------------------------------------------------------------
 Fri Jan 12 13:48:17 UTC 2018 - fstrba@suse.com
 
 - Added patch:

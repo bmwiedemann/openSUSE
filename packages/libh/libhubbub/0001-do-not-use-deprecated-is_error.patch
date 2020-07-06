@@ -1,0 +1,39 @@
+From 2a7157c319d4de41af31f5ce08723a9ead09e53f Mon Sep 17 00:00:00 2001
+From: David Tardon <dtardon@redhat.com>
+Date: Wed, 14 Feb 2018 08:49:32 +0100
+Subject: [PATCH] do not use deprecated is_error()
+
+---
+ test/tokeniser2.c | 2 +-
+ test/tokeniser3.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/tokeniser2.c b/test/tokeniser2.c
+index c8ab9c0..c077276 100644
+--- a/test/tokeniser2.c
++++ b/test/tokeniser2.c
+@@ -48,7 +48,7 @@ int main(int argc, char **argv)
+ 	}
+ 
+ 	json = json_object_from_file(argv[1]);
+-	assert(!is_error(json));
++	assert(json);
+ 
+ 	assert(strcmp((char *) ((json_object_get_object(json)->head)->k),
+ 			"tests") == 0);
+diff --git a/test/tokeniser3.c b/test/tokeniser3.c
+index 949ddd0..db5686e 100644
+--- a/test/tokeniser3.c
++++ b/test/tokeniser3.c
+@@ -46,7 +46,7 @@ int main(int argc, char **argv)
+ 	}
+ 
+ 	json = json_object_from_file(argv[1]);
+-	assert(!is_error(json));
++	assert(json);
+ 
+ 	assert(strcmp((char *) ((json_object_get_object(json)->head)->k),
+ 			"tests") == 0);
+-- 
+2.14.3
+
