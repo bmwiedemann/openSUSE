@@ -320,8 +320,6 @@
       <repopackage name="clang-tools"/>
       <repopackage name="clang10"/>
       <repopackage name="clang10-doc"/>
-      <repopackage name="claws-mail"/>
-      <repopackage name="claws-mail-lang"/>
       <repopackage name="clazy"/>
       <repopackage name="clicfs"/>
       <repopackage name="clutter-gtk-lang"/>
@@ -334,7 +332,6 @@
       <repopackage name="colord-gtk-lang"/>
       <repopackage name="colord-lang"/>
       <repopackage name="command-not-found"/>
-      <repopackage name="compface"/>
       <repopackage name="coreutils"/>
       <repopackage name="coreutils-doc"/>
       <repopackage name="coreutils-lang"/>
@@ -1472,7 +1469,6 @@
       <repopackage name="libarchive13"/>
       <repopackage name="libargon2-1"/>
       <repopackage name="libaria2-0"/>
-      <repopackage name="libart_lgpl_2-2"/>
       <repopackage name="libasan6"/>
       <repopackage name="libasm1"/>
       <repopackage name="libasound2"/>
@@ -1703,7 +1699,6 @@
       <repopackage name="libespeak-ng1"/>
       <repopackage name="libestr0"/>
       <repopackage name="libetonyek-0_1-1"/>
-      <repopackage name="libetpan20"/>
       <repopackage name="libevdev-devel"/>
       <repopackage name="libevdev-tools"/>
       <repopackage name="libevdev2"/>
@@ -1847,8 +1842,6 @@
       <repopackage name="libgnome-keyring-lang"/>
       <repopackage name="libgnome-keyring0"/>
       <repopackage name="libgnome-menu-3-0"/>
-      <repopackage name="libgnomecanvas-2-0"/>
-      <repopackage name="libgnomecanvas-lang"/>
       <repopackage name="libgnomekbd-lang"/>
       <repopackage name="libgnomekbd8"/>
       <repopackage name="libgnomesu"/>
@@ -1938,7 +1931,6 @@
       <repopackage name="libgudev-1_0-0"/>
       <repopackage name="libguess1"/>
       <repopackage name="libguile-3_0-1"/>
-      <repopackage name="libgumbo1"/>
       <repopackage name="libgupnp-1_2-0"/>
       <repopackage name="libgupnp-av-1_0-2"/>
       <repopackage name="libgupnp-dlna-2_0-3"/>
@@ -2461,7 +2453,6 @@
       <repopackage name="libpinyin13"/>
       <repopackage name="libpipeline1"/>
       <repopackage name="libpipewire-0_3-0"/>
-      <repopackage name="libpisock9"/>
       <repopackage name="libpixman-1-0"/>
       <repopackage name="libpixman-1-0-devel"/>
       <repopackage name="libpkcs11-helper1"/>
@@ -5292,7 +5283,6 @@
       <repopackage name="xorg-x11-Xvnc-module"/>
       <repopackage name="xorgproto-devel"/>
       <repopackage name="xorriso"/>
-      <repopackage name="xournal"/>
       <repopackage name="xprop"/>
       <repopackage name="xrandr"/>
       <repopackage name="xrdb"/>

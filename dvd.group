@@ -318,8 +318,6 @@
     <package name="clang-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="clang10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="clang10-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="claws-mail" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="claws-mail-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="clazy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="clicfs" supportstatus="unsupported"/> <!-- reason: dvd:clicfs -->
     <package name="clutter-gtk-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -332,7 +330,6 @@
     <package name="colord-gtk-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="colord-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="command-not-found" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="compface" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="coreutils" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="coreutils-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="coreutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1755,7 +1752,6 @@
     <package name="libarchive13" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libargon2-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libaria2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libart_lgpl_2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libasan6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libasm1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libasound2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1985,7 +1981,6 @@
     <package name="libespeak-ng1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libestr0" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
     <package name="libetonyek-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libetpan20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libevdev-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libevdev-tools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libevdev2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2126,8 +2121,6 @@
     <package name="libgnome-keyring-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnome-keyring0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnome-menu-3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libgnomecanvas-2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libgnomecanvas-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libgnomekbd-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnomekbd8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnomesu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2217,7 +2210,6 @@
     <package name="libgudev-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libguess1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libguile-3_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="libgumbo1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libgupnp-1_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgupnp-av-1_0-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgupnp-dlna-2_0-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2557,7 +2549,6 @@
     <package name="libpinyin13" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpipeline1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpipewire-0_3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libpisock9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libpixman-1-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpixman-1-0-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libpkcs11-helper1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5236,7 +5227,6 @@
     <package name="xorg-x11-server-wayland" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xorgproto-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xorriso" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="xournal" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="xprop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xrandr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xrdb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
