@@ -1,0 +1,25 @@
+From dcce831dfe5d12dbf355a08db0b7dc307782f9f0 Mon Sep 17 00:00:00 2001
+From: Marcus Meissner <marcus@jet.franken.de>
+Date: Mon, 6 Jul 2020 09:23:46 +0200
+Subject: [PATCH] second fix for https://github.com/libexif/exif/issues/2
+
+---
+ exif/actions.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/exif/actions.c b/exif/actions.c
+index b80d670..ed245df 100644
+--- a/exif/actions.c
++++ b/exif/actions.c
+@@ -599,7 +599,7 @@ action_tag_list (ExifData *ed, ExifParams p)
+ static void
+ show_entry_machine (ExifEntry *e, void *data)
+ {
+-	unsigned char *ids = data;
++	unsigned int *ids = data;
+ 	char v[TAG_VALUE_BUF];
+ 	ExifIfd ifd = exif_entry_get_ifd (e);
+ 
+-- 
+2.27.0
+

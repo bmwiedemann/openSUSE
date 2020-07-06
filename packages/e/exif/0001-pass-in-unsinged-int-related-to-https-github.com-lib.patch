@@ -1,0 +1,26 @@
+From dce6c3a6b3178b2c0206aa9180a51fdcda7fb19f Mon Sep 17 00:00:00 2001
+From: Marcus Meissner <marcus@jet.franken.de>
+Date: Mon, 6 Jul 2020 09:16:07 +0200
+Subject: [PATCH] pass in unsinged int, related to
+ https://github.com/libexif/exif/issues/2
+
+---
+ exif/actions.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/exif/actions.c b/exif/actions.c
+index 4498422..b80d670 100644
+--- a/exif/actions.c
++++ b/exif/actions.c
+@@ -479,7 +479,7 @@ show_ifd (ExifContent *content, void *data)
+ }
+ 
+ static void
+-print_hline (unsigned char ids, unsigned int screenwidth)
++print_hline (unsigned int ids, unsigned int screenwidth)
+ {
+         unsigned int i, width;
+ 
+-- 
+2.27.0
+

@@ -28,6 +28,8 @@ Version:        0.6.22
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        %{name}-%{version}.tar.bz2
+Patch0:         0001-pass-in-unsinged-int-related-to-https-github.com-lib.patch
+Patch1:         0001-second-fix-for-https-github.com-libexif-exif-issues-.patch
 
 %description
 Exif is a small command line utility to show and change EXIF
@@ -36,6 +38,8 @@ library.
 
 %prep 
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
 %configure

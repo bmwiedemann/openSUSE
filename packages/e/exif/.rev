@@ -168,4 +168,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>809175</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>4364550d5a493752901d6d865d7cd6c1</srcmd5>
+    <version>0.6.22</version>
+    <time>1594045923</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed an endiannes issue that broke exif -i option on big endian.
+  - 0001-pass-in-unsinged-int-related-to-https-github.com-lib.patch
+  - 0001-second-fix-for-https-github.com-libexif-exif-issues-.patch (forwarded request 818936 from msmeissn)</comment>
+    <requestid>818937</requestid>
+  </revision>
 </revisionlist>
