@@ -3564,7 +3564,6 @@
       <repopackage name="nmap"/>
       <repopackage name="nodejs-common"/>
       <repopackage name="nodejs14" arch="x86_64"/>
-      <repopackage name="nodejs14-devel" arch="x86_64"/>
       <repopackage name="notification-daemon"/>
       <repopackage name="notification-daemon-lang"/>
       <repopackage name="noto-coloremoji-fonts"/>
