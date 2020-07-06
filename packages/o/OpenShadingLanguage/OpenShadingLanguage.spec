@@ -23,22 +23,14 @@
 %define oiio_major_minor_ver %(rpm -q --queryformat='%%{version}' OpenImageIO-devel | cut -d . -f 1-2)
 
 Name:           OpenShadingLanguage
-Version:        1.11.4.1
+Version:        1.11.6.0
 Release:        0
 Summary:        A language for programmable shading
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/imageworks/OpenShadingLanguage
 Source0:        https://github.com/imageworks/OpenShadingLanguage/archive/Release-%{version}-dev.tar.gz#/%{name}-Release-%{version}.tar.gz
-Source1:        https://creativecommons.org/licenses/by/3.0/legalcode.txt
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-LLVM-10-odds-and-ends-1135.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Some-SPI-build-fixes-for-finding-the-right-llvm.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Fix-typo-in-the-.pc.in-files-that-botched-the-versio.patch
-# PATCH-FIX-UPSTREAM - https://github.com/imageworks/OpenShadingLanguage/pull/1171
-Patch3:         0001-Use-single-shared-clang-cpp-library-starting-with-LL.patch
+Source1:        https://creativecommons.org/licenses/by/3.0/legalcode.txt#/CC-BY-3.0.txt
 BuildRequires:  OpenEXR-devel
 BuildRequires:  bison
 BuildRequires:  clang-devel >= 7
@@ -198,13 +190,13 @@ developing applications that use %{name}.
 
 %prep
 %setup -q -n %{name}-Release-%{version}-dev
-%autopatch -p1
 find . -iname CMakeLists.txt -exec sed "-i" "-e s/COMMAND python/COMMAND python3/" "{}" \;
 
 %build
 %cmake \
       -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
       -DOSL_SHADER_INSTALL_DIR:PATH=%{_datadir}/%{name}/shaders/ \
+      -DOSL_BUILD_MATERIALX:BOOL=ON \
       -DCMAKE_CXX_STANDARD:STRING=14
 %cmake_build
 
@@ -240,7 +232,7 @@ find %{buildroot} -name CHANGES.md -print -delete
 %{_bindir}/*
 
 %files doc
-%license legalcode.txt
+%license CC-BY-3.0.txt
 %doc %{_docdir}/%{name}/
 
 %files MaterialX-shaders-source

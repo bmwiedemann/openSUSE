@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul  5 17:41:36 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to v1.11.6.0, see included CHANGES.md or
+  https://github.com/imageworks/OpenShadingLanguage/blob/Release-1.11.6.0-dev/CHANGES.md
+- Drop obsolete patches:
+  + 0001-Fix-typo-in-the-.pc.in-files-that-botched-the-versio.patch
+  + 0001-LLVM-10-odds-and-ends-1135.patch
+  + 0001-Some-SPI-build-fixes-for-finding-the-right-llvm.patch
+  + 0001-Use-single-shared-clang-cpp-library-starting-with-LL.patch
+- Renamed legalcode.txt to CC-BY-3.0.txt
+
+-------------------------------------------------------------------
 Wed May 13 19:11:41 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use the correct CMake variable to set the shader install location.
