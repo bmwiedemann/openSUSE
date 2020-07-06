@@ -19,7 +19,7 @@
 %define major   21
 %define libname libqalculate
 Name:           qalculate
-Version:        3.7.0
+Version:        3.11.0
 Release:        0
 Summary:        Multi-purpose desktop calculator application
 License:        GPL-2.0-or-later
@@ -107,7 +107,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING
 %doc README ChangeLog INSTALL AUTHORS TODO
 %{_bindir}/qalc
-%{_datadir}/doc/%{libname}
 %{_mandir}/man1/qalc.1%{?ext_man}
 
 %files -n %{name}-data
