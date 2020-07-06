@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul  5 04:24:34 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.4.11 improved AgsSF2SynthGenerator and
+  AgsSFZSynthGenerator to be faster.
+- improved thread safety.
+- minor improvements.
+
+-------------------------------------------------------------------
 Sun Jun 28 04:28:20 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.4.9 compute phase using fmod() in
