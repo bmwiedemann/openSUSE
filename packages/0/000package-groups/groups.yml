@@ -169,7 +169,6 @@ dvd:
   - clicfs
   - createrepo_c
   - git
-  # hylafax as requested by kkeil
   # kdump+tools
   - kdump
   # all kernel flavors we want to have
