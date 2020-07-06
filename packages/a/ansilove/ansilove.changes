@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul  5 15:28:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.2
+  * Define _GNU_SOURCE in CMakeLists.txt to avoid cluttering source
+    files
+  * No need to set HAVE_SECCOMP to 1, defining it is enough
+  * Remove some unneeded seccomp related includes
+  * Validate architectures for seccomp
+  * Add seccomp support on i386, tested on glibc and musl
+  * Remove extraneous underscore in #if defined check
+  * Use __NR_ instead of SYS_ prefix in #if defined checks
+
+-------------------------------------------------------------------
 Mon May 25 17:31:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.1.1
