@@ -1,0 +1,12 @@
+diff -urEbw swappy-1.2.0/src/po/swappy.desktop.in swappy-1.2.0.new/src/po/swappy.desktop.in
+--- swappy-1.2.0/src/po/swappy.desktop.in	2020-07-05 20:54:03.000000000 +0200
++++ swappy-1.2.0.new/src/po/swappy.desktop.in	2020-07-06 12:50:01.506063620 +0200
+@@ -8,6 +8,6 @@
+ Type=Application
+ Keywords=wayland;snapshot;annotation;editing;
+ Icon=swappy
+-Categories=Utility;Graphics;Annotation;
++Categories=Utility;Graphics;X-Annotation;
+ StartupNotify=true
+ MimeType=image/png;
+\ No newline at end of file
