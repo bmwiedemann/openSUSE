@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jul  5 08:19:41 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Upddate to 1.10.0:
+  Added:
+  * Log output order can now be controlled via the --reverse/--no-reverse
+  flag and the reverse_log configuration option (#369)
+  * Add --at flag to the start and restart commands (#364).
+  * Add --color and --no-color flags to force output to be colored or not
+  respectively (#350).
+  Changed:
+  * Require latest Arrow version 0.15.6 to support ISO week dates (#380)
+  Fixed:
+  * Make after-edit-check ensure that edited time stamps are not in the
+  future (#381)
+- Remove watson-arrow-version.patch:
+  This release depends on python-arrow 0.15.6 anyways
+
+-------------------------------------------------------------------
 Fri Jun  5 12:00:31 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Add Requires on python3-click-didyoumean

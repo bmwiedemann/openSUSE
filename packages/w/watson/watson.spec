@@ -18,16 +18,15 @@
 
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 Name:           watson
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        CLI time tracker
 License:        MIT
 Group:          Productivity/Office/Organizers
 URL:            https://github.com/TailorDev/Watson
 Source:         https://github.com/TailorDev/Watson/archive/%{version}.tar.gz
-Patch0:         watson-arrow-version.patch
 BuildRequires:  python3-setuptools
-Requires:       python3-arrow
+Requires:       python3-arrow >= 0.15.6
 Requires:       python3-click
 Requires:       python3-click-didyoumean
 Requires:       python3-requests
