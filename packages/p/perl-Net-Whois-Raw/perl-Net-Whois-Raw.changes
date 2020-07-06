@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  1 03:11:22 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.99029
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99029  Jun 26 2020 Alexander Nalobin
+      - Fix whois servers of some tlds
+      - Small refactor for get_server()
+
+-------------------------------------------------------------------
 Wed May 13 10:35:32 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 2.99028
