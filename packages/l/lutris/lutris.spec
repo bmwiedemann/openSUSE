@@ -18,7 +18,7 @@
 
 %global appid net.lutris.Lutris
 Name:           lutris
-Version:        0.5.6
+Version:        0.5.7
 Release:        0
 Summary:        Manager for game installation and execution
 License:        GPL-3.0-or-later
@@ -81,6 +81,7 @@ sed -i "s|!/usr/bin/env python3|!/usr/bin/python3|" share/lutris/bin/lutris-wrap
 %doc README.rst CONTRIBUTING.md AUTHORS
 %license LICENSE
 %{_bindir}/%{name}
+%{_mandir}/%{name}.1
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg

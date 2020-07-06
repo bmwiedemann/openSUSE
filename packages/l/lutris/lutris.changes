@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jul  5 08:09:02 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.7:
+  * Use Meson and Ninja to build translation files
+  * Improve Debian package compliance with standards
+  * Add translation strings for the code base
+  * Set a default directory to manually added games,
+    allowing to remove them
+  * Deprecate MESS runner
+  * Migrate all MESS games to MAME
+  * Get full supported system list from the XML given by MAME
+  * Allow to run MAME games by ID if the ROM path is set
+  * Add a no-GUI option to RPCS3
+  * Fix GalliumNine conflicts with DXVK
+  * Improve performance of DirectX 12 games running on AMD GPU by
+    setting RADV_DEBUG=zerovram
+  * Code style fixes. Pylint is now used in the Travis checks.
+
+-------------------------------------------------------------------
 Wed Apr 15 04:36:30 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.6:
