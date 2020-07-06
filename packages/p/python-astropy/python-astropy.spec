@@ -34,6 +34,7 @@ Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
 URL:            https://astropy.org
 Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy-%{version}.tar.gz
+Patch0:         astropy-openSUSE-ignore-warnings.patch
 # Mark wcs headers as false positives for devel-file-in-non-devel-package
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
@@ -95,7 +96,7 @@ BuildRequires:  %{python_module mpmath}
 BuildRequires:  %{python_module objgraph}
 BuildRequires:  %{python_module pytest >= 3.1}
 BuildRequires:  %{python_module pytest-astropy}
-BuildRequires:  %{python_module pytest-doctestplus}
+BuildRequires:  %{python_module pytest-doctestplus >= 0.6}
 BuildRequires:  %{python_module pytest-mpl}
 # /SECTION
 %endif
@@ -109,6 +110,7 @@ managing them.
 
 %prep
 %setup -q -n astropy-%{version}
+%patch0 -p1
 
 # Make sure bundled libs are not used
 rm -rf cextern/expat
@@ -153,17 +155,16 @@ $python -O -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}/
 
 %check
 %if %{with test}
-export PYTHONDONTWRITEBYTECODE=1
 # http://docs.astropy.org/en/latest/development/testguide.html#running-tests
 %python_exec setup.py build_ext --inplace --offline
+# import from local source dir for proper conftest.py collection 
+# and using above inplace built extensions
+export PYTHONPATH=$(pwd)
 %ifarch aarch64
 # doctest failure because of precision errors
   %define skippytest -k 'not bayesian_info_criterion_lsq'
 %endif
-%{pytest_arch -W "ignore:the imp module is deprecated:DeprecationWarning" \
-              -W "ignore:Unknown pytest.mark.openfiles_ignore:pytest.PytestUnknownMarkWarning" \
-              --ignore "docs/whatsnew" %{?skippytest}
-}
+%pytest_arch --ignore 'docs/whatsnew' %{?skippytest}
 %endif
 
 %if !%{with test}

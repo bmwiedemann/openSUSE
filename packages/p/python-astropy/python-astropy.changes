@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul  5 12:24:49 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix conftest collection error: import local source dir for tests 
+- Remove ignore pytest deprecation fixed by pytest-doctestplus >= 0.6
+- Ignore leap second expiry and dubious year warnings for
+  reproducible builds: gh#astropy/astropy#10228
+  astropy-openSUSE-ignore-warnings.patch
+
+-------------------------------------------------------------------
 Wed Jun  3 07:42:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to multibuild to avoid cycle with python-asdf package

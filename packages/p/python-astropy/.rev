@@ -1036,4 +1036,12 @@
 - %python3_only -&gt; %python_alternative</comment>
     <requestid>811018</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>109736fe8df8676a12a5ab8d2395759c</srcmd5>
+    <version>4.0.1.post1</version>
+    <time>1594045888</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818935</requestid>
+  </revision>
 </revisionlist>
