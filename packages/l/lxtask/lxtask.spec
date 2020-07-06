@@ -1,7 +1,7 @@
 #
 # spec file for package lxtask
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 Name:           lxtask
-Version:        0.1.8
+Version:        0.1.9
 Release:        0
 Summary:        Lightweight Task Manager
 License:        GPL-2.0-only
 Group:          System/GUI/LXDE
-Url:            http://www.lxde.org/
-Source0:        %{name}-%{version}.tar.xz
+URL:            http://www.lxde.org/
+Source0:        https://sourceforge.net/projects/lxde/files/LXTask%20%28task%20manager%29/LXTask%200.1.x/%{name}-%{version}.tar.xz
 BuildRequires:  docbook-utils
 BuildRequires:  fdupes
 BuildRequires:  gtk2-devel
 BuildRequires:  intltool
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 Recommends:     %{name}-lang
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %lang_package
 
 %description
@@ -42,11 +41,12 @@ This is the default LXDE task manager.
 %setup -q
 
 %build
+export CFLAGS="%optflags -fcommon"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 %suse_update_desktop_file %{name} System Monitor
 %find_lang %{name}
 %fdupes -s %{buildroot}
@@ -58,13 +58,12 @@ make DESTDIR=%{buildroot} install %{?_smp_mflags}
 %desktop_database_postun
 
 %files
-%defattr(-,root,root,0755)
-%doc COPYING
+%license COPYING
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{_mandir}/man1/lxtask.1.gz
+%{_mandir}/man1/lxtask.1%{?ext_man}
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
+%license COPYING
 
 %changelog
