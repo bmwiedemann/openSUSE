@@ -306,6 +306,7 @@ dvd:
   - bcm43xx-firmware
   - elilo
   - erofs-utils
+  - expect
   - f2fs-tools
   - fuse3
   - icewm-config-upstream
