@@ -105,4 +105,17 @@
     <comment>- Use %{_lib} macro</comment>
     <requestid>793812</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6e7eeb690743a9443dc16cb126eff110</srcmd5>
+    <version>0.5.0</version>
+    <time>1594045767</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  * This release fixes rendering issues under HiDPI configuraitons
+  Notable new features:
+  * --scrollbar none
+  * BEMENU_SCALE env variable which can be used to force scaling
+    factor</comment>
+    <requestid>818829</requestid>
+  </revision>
 </revisionlist>

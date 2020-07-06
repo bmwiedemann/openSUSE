@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jul  5 07:58:26 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.0:
+  * This release fixes rendering issues under HiDPI configuraitons
+  Notable new features:
+  * --scrollbar none
+  * BEMENU_SCALE env variable which can be used to force scaling
+    factor
+
+-------------------------------------------------------------------
 Tue Apr 14 10:29:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Use %{_lib} macro
