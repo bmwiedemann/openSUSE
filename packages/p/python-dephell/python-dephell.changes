@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jul  5 10:18:13 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.8.3:
+ - The only noticeable change is an ability to provide a custom CA bundle via --ca flag.
+ - Fewer network requests
+ - Fix envs filtering in `deps convert`
+ - test and fix `deps add`
+ - Fixes #425: `vendor download` doesn't do anything with private pypi
+ - fix path resolving 4 register
+ - Fix Converter.lock default value for subclasses
+ - Small fixes in requesting warehouse (simple and API)
+ - fix typo in examples
+- check: disable a failing test which depends on the (not packaged) docs.
+
+-------------------------------------------------------------------
 Tue May 26 07:22:37 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

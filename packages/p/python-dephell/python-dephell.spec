@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-dephell%{psuffix}
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        Dependency resolution for Python
 License:        MIT
@@ -172,7 +172,8 @@ install -D -m 644 %{SOURCE1} %{buildroot}%{_libexecdir}/rpm/macros.d/macros.py-d
 %if %{with test}
 # Emulate Travis, which disables tests which expect a git repository
 export TRAVIS_OS_NAME=1
-%pytest --no-network
+# test_params_all_described requires the docs to be packaged https://github.com/dephell/dephell/pull/448
+%pytest --no-network -k 'not test_params_all_described'
 %endif
 
 %if ! %{with test}
