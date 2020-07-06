@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul  4 06:48:22 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- lxpanel 0.10.0:
+  * Allow switching workplaces by scrolling over the pager
+  * Font display fixes  
+  * Memory calculation in lxpanel monitor now aligns with 'free'
+  * Updates to weather plugins: Remove Yahoo, add OpenWeatherMap
+  * Fix crashes in some specific locations
+  * Fix battery color (must be green) when battery is fully charged
+  * Fix ambiguity in keyboard layout names
+
+-------------------------------------------------------------------
 Wed Nov 01 13:54:13 UTC 2017 - gutaper@gmail.com
 
 - Update to 0.9.3

@@ -1,7 +1,7 @@
 #
 # spec file for package lxpanel
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           lxpanel
-Version:        0.9.3
+Version:        0.10.0
 Release:        0
 Summary:        Lightweight X11 desktop panel based on fbpanel
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/GUI/LXDE
-Url:            http://www.lxde.org/
-Source0:        https://sourceforge.net/projects/lxde/files/LXPanel%20%28desktop%20panel%29/LXPanel%200.9.x/%{name}-%{version}.tar.xz
+URL:            http://www.lxde.org/
+Source0:        https://sourceforge.net/projects/lxde/files/LXPanel%20%28desktop%20panel%29/LXPanel%200.10.x/%{name}-%{version}.tar.xz
 Patch0:         lxpanel-0.9.3-default_config.patch
 Patch1:         lxpanel-0.9.3-panel_config.patch
 BuildRequires:  autoconf
@@ -32,12 +32,13 @@ BuildRequires:  intltool
 BuildRequires:  libfm-gtk-devel
 BuildRequires:  libiw-devel
 BuildRequires:  libxml2-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  wireless-tools
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(keybinder)
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libmenu-cache)
 BuildRequires:  pkgconfig(libwnck-1.0)
 Requires:       lxmenu-data
@@ -45,7 +46,6 @@ Requires:       menu-cache
 Recommends:     %{name}-lang
 Provides:       %{name}-plugins >= %{version}
 Obsoletes:      %{name}-plugins < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %lang_package
 
 %description
@@ -89,21 +89,21 @@ Headers and development files for lxpanel.
 %build
 # autoconf
 %configure --with-plugins=all
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
-%makeinstall %{?_smp_mflags}
-rm %{buildroot}/%{_libdir}/lxpanel/*.la
+%make_install %{?_smp_mflags}
+find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
 %fdupes -s %{buildroot}
 
 %post -n liblxpanel0 -p /sbin/ldconfig
-
 %postun -n liblxpanel0 -p /sbin/ldconfig
 
 %files
 %defattr(-,root,root,0755)
-%doc ChangeLog README COPYING
+%license COPYING
+%doc ChangeLog README
 %{_bindir}/%{name}
 %{_bindir}/lxpanelctl
 %{_sysconfdir}/xdg/%{name}
@@ -120,7 +120,7 @@ rm %{buildroot}/%{_libdir}/lxpanel/*.la
 %{_datadir}/%{name}/xkeyboardconfig/models.cfg
 %{_datadir}/%{name}/xkeyboardconfig/toggle.cfg
 %{_datadir}/%{name}/ui/*.ui
-%{_mandir}/man1/*.1.gz
+%{_mandir}/man1/*.1%{?ext_man}
 %{_libdir}/%{name}/plugins/batt.so
 %{_libdir}/%{name}/plugins/cpu.so
 %{_libdir}/%{name}/plugins/deskno.so
@@ -136,19 +136,16 @@ rm %{buildroot}/%{_libdir}/lxpanel/*.la
 %config(noreplace) %{_sysconfdir}/xdg/%{name}/*
 
 %files devel
-%defattr(-,root,root)
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/*.h
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/lxpanel/liblxpanel.so
 
 %files -n liblxpanel0
-%defattr(-,root,root)
 %dir %{_libdir}/lxpanel
 %{_libdir}/lxpanel/liblxpanel.so.0
 %{_libdir}/lxpanel/liblxpanel.so.0.0.0
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
 
 %changelog
