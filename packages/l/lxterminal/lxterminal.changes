@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul  4 08:11:52 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- lxterminal 0.3.2 (boo#1113553):
+  * fix bug wth libvte 0.54 where closing 1 tab can cause other
+    tabs to be closed
+- drop upstreamed patches:
+  * lxterminal-0.3.1-return-value-unixterminal.patch
+  * lxterminal-fix-gtk3-comp-warnings.patch
+
+-------------------------------------------------------------------
 Mon Jun 11 18:12:58 UTC 2018 - bjorn.lie@gmail.com
 
 - Build against gtk3:
