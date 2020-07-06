@@ -241,6 +241,8 @@ dvd:
   - blender: [locked]
   - calibre: [locked]
   - libLLVM7: [locked]
+  - libgnomecanvas-2-0: [locked]
+  - claws-mail: [locked]
 
   ## attemt to shrink the DVD - 20151115 by dimstar: [locked]
   - valgrind-devel: [locked]
