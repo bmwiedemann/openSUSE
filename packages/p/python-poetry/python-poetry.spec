@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define dephell_loglevel DEBUG
 Name:           python-poetry
-Version:        1.0.5
+Version:        1.0.9
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
@@ -85,7 +85,7 @@ Python dependency management and packaging made easy.
 
 %prep
 %setup -q -n poetry-%{version}
-%patch0
+%patch0 -p1
 %{dephell_gensetup}
 
 %build
