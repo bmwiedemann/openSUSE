@@ -230,6 +230,7 @@ dvd:
 
   # trying to get a working DVD: [locked]
   - mono-devel: [locked]
+  - nodejs14-devel: [locked]
   - libqt5-qtdoc: [locked]
   - kde-l10n-fr-doc: [locked]
   - kde-l10n-pt_BR-doc: [locked]
