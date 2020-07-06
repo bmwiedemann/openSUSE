@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jul  1 03:13:23 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.13
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.13    2020-06-29
+          [BUGFIXES]
+           * Pack correct MANIFEST to include hax/ files
+
+  0.12    2020-06-29
+          [CHANGES]
+           * Optional and experimental allocation of a new lexical under
+             `catch my $VAR` syntax (RT130702). However, this syntax may not
+             survive long, as part of the ongoing typed catch design work.
+
+          [BUGFIXES]
+           * Work around perl versions prior to 5.22 built with -DDEBUGGING
+             getting upset about new*OP() being invoked with OP_CUSTOM
+             (RT128562)
+
+-------------------------------------------------------------------
 Sun Sep  8 19:54:48 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 0.11
