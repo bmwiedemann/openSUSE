@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul  2 01:24:49 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Upgrade to runc v1.0.0~rc91. Upstream changelog is available from
+  https://github.com/opencontainers/runc/releases/tag/v1.0.0-rc91
+
+  * This release of runc has experimental support for cgroupv2-only systems.
+
+- Remove upstreamed patches:
+  - bsc1149954-0001-sd-notify-do-not-hang-when-NOTIFY_SOCKET-is-used-wit.patch
+  - bsc1168481-0001-cgroup-devices-major-cleanups-and-minimal-transition.patch
+
+-------------------------------------------------------------------
+Thu Jun 25 22:34:03 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Switch to Go 1.13 for build.
+
+-------------------------------------------------------------------
 Wed May 13 06:49:44 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Backport https://github.com/opencontainers/runc/pull/2391 to help fix

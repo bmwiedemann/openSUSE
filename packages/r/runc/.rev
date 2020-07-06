@@ -266,4 +266,12 @@ provides).</comment>
   + bsc1168481-0001-cgroup-devices-major-cleanups-and-minimal-transition.patch</comment>
     <requestid>804891</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>daa7c44bc0273bfc708a6f9c556c50d6</srcmd5>
+    <version>1.0.0~rc91</version>
+    <time>1594044840</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818193</requestid>
+  </revision>
 </revisionlist>

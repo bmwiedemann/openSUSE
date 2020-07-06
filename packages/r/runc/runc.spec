@@ -22,9 +22,9 @@
 %define git_version %{nil}
 
 # Package-wide golang version
-%define go_version 1.10
+%define go_version 1.13
 %define go_tool go
-%define _version 1.0.0-rc10
+%define _version 1.0.0-rc91
 %define project github.com/opencontainers/runc
 
 # enable libseccomp for sle >= sle12sp2
@@ -41,7 +41,7 @@
 %endif
 
 Name:           runc
-Version:        1.0.0~rc10
+Version:        1.0.0~rc91
 Release:        0
 Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0
@@ -51,13 +51,11 @@ Source0:        https://github.com/opencontainers/runc/releases/download/v%{_ver
 Source1:        https://github.com/opencontainers/runc/releases/download/v%{_version}/runc.tar.xz.asc#/runc-%{_version}.tar.xz.asc
 Source2:        runc.keyring
 Source3:        runc-rpmlintrc
-# FIX-UPSTREAM: Backport of https://github.com/opencontainers/runc/pull/1807. bsc#1149954
-Patch0:         bsc1149954-0001-sd-notify-do-not-hang-when-NOTIFY_SOCKET-is-used-wit.patch
-# FIX-UPSTREAM: Backport of https://github.com/opencontainers/runc/pull/2391. bsc#1168481
-Patch1:         bsc1168481-0001-cgroup-devices-major-cleanups-and-minimal-transition.patch
 BuildRequires:  fdupes
 BuildRequires:  go-go-md2man
-BuildRequires:  golang(API) >= %{go_version}
+# Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
+# for 'golang(API) >= 1.x' here, so just require 1.x exactly. bsc#1172608
+BuildRequires:  go%{go_version}
 %if 0%{?with_libseccomp}
 BuildRequires:  libseccomp-devel
 %endif
@@ -73,7 +71,7 @@ and has grown to become a separate project entirely.
 %package test
 Summary:        Test package for runc
 Group:          System/Management
-BuildRequires:  golang(API) >= %{go_version}
+BuildRequires:  go%{go_version}
 %if 0%{?with_libseccomp}
 BuildRequires:  libseccomp-devel
 %endif
@@ -88,10 +86,6 @@ Test package for runc. It contains the source code and the tests.
 
 %prep
 %setup -q -n %{name}-%{_version}
-# bsc#1149954
-%patch0 -p1
-# bsc#1168481
-%patch1 -p1
 
 %build
 # Do not use symlinks. If you want to run the unit tests for this package at
