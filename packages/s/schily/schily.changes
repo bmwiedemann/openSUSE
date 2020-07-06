@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul  3 23:46:47 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.07.01
+  * star: Backslashes are now honored when looking for the
+    substitution separators in options like -s /from/to/ or
+    -pax-s /from/to/
+  * cdda2wav: The default for the CDDB database has been changed
+    to gnudb.gnudb.org, as freedb.freedb.org has shutdown.
+  * Full support for SCCSv6 history files.
+  * SCCS: A new sccs(1) subcommand "histfile" has been
+    implemented.
+  * SCCS: admin fixed a potential buffer overflow related to the
+    user (programmer) name that is used in the delta table.
+
+-------------------------------------------------------------------
+Fri Jul  3 09:28:52 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Run tests after build.
+
+-------------------------------------------------------------------
 Tue Jun  9 23:17:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.06.09

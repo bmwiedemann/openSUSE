@@ -17,14 +17,14 @@
 
 
 # grep -Pir 'define\s+VERSION|strvers'
-%global box_version	2020.06.09
+%global box_version	2020.07.01
 %global cdr_version	3.02~a10
 %global sccs_version	5.09
 %global smake_version	1.3
 %global star_version	1.6.1
 %global libfind_version 1.7
 %global ved_version     1.7
-%define rver	2020-06-09
+%define rver	2020-07-01
 
 Name:           schily
 Version:        %box_version
@@ -641,6 +641,11 @@ rm -Rfv \
 #rm -Rf "$b/%_datadir/doc"/*
 
 %fdupes -s %buildroot/%_prefix
+
+%check
+locale
+export LD_LIBRARY_PATH="$(find . -type d -name pic | perl -pe 's{\n}{:}gs')"
+NO_RANDOM=TRUE make tests || :
 
 %post -n cdrecord
 %set_permissions %_bindir/cdrecord
