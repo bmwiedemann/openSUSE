@@ -81,6 +81,9 @@ export ARCH=arm64
 %ifarch %ppc ppc64 ppc64le
 export ARCH=powerpc
 %endif
+%ifarch riscv64
+export ARCH=riscv
+%endif
 for flavor in %{flavors_to_build} ; do
 	cp -a source obj/$flavor
         pushd obj/$flavor
