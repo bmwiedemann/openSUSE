@@ -1,7 +1,7 @@
 #
 # spec file for package lxappearance
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           lxappearance
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        It's a desktop-independent theme switcher for GTK+
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/GUI/LXDE
-Url:            http://www.lxde.org/
-Source0:        %{name}-%{version}.tar.xz
+URL:            http://www.lxde.org/
+Source0:        https://sourceforge.net/projects/lxde/files/LXAppearance/%{name}-%{version}.tar.xz
 BuildRequires:  dbus-1-devel
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  docbook-utils
@@ -35,11 +35,10 @@ BuildRequires:  intltool
 BuildRequires:  libxslt
 BuildRequires:  perl
 BuildRequires:  perl-XML-Parser
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 Recommends:     %{name}-lang
 Recommends:     %{name}-obconf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 LXAppearance is part of LXDE project.
@@ -61,11 +60,11 @@ Development files to build lxappearance plugins
 %build
 %configure \
 	--enable-dbus \
-    --sysconfdir=/etc
-make %{?_smp_mflags} V=1
+    --sysconfdir=%{_sysconfdir}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 # own the pugins dir so that we don't need it
 # for each plugin we will install later
 mkdir -p %{buildroot}/%{_libdir}/lxappearance/plugins
@@ -80,24 +79,24 @@ mkdir -p %{buildroot}/%{_libdir}/lxappearance/plugins
 %desktop_database_postun
 
 %files
-%defattr(-,root,root)
+%license COPYING
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/ui
 %{_datadir}/%{name}/ui/lxappearance.ui
 %{_datadir}/%{name}/ui/about.ui
-%{_mandir}/man1/%{name}.1.gz
+%{_mandir}/man1/%{name}.1%{?ext_man}
 %dir %{_libdir}/lxappearance
 %dir %{_libdir}/lxappearance/plugins
 
 %files devel
-%defattr(-,root,root)
+%license COPYING
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/%{name}.h
 %{_libdir}/pkgconfig/%{name}.pc
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
+%license COPYING
 
 %changelog
