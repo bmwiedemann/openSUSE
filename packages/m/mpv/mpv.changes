@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jul 06 08:34:43 UTC 2020 - idonmez@suse.com
+
+- Update to version 0.32.0+git.20200701T004440.8fbc4b1737:
+  * ci: add d3d11 to mingw build
+  * vo_gpu: vulkan: add ability to disable events
+  * player: warn if both proper and compat. config directories exist
+  * path: do not use old_home for win32 exe dir
+  * path: switch back to using non-XDG config dir by default
+  * vo_gpu: fix typo in struct name
+  * manpage: --demuxer-seekable-cache is useless
+  * ci: replace mingw build scripts
+  * vo_gpu: use highp float if available for GLES
+  * vo_gpu: add better gamut clipping option
+  * vo_gpu: fix scaler/window validation to allow unsetting
+  * vo_x11: partially restore operation on bad endian systems
+  * video: some concessions to big endian hosts
+  * test: update to new ffmpeg pixfmts
+  * video: alias IMGFMT_RGB30 to AV_PIX_FMT_X2RGB10
+  * repack: handle endian in a more general way
+  * img_format: fight ffmpeg pixdesc some more
+  * audio: don't lock ao_control for pull mode drivers
+  * vo_gpu: placebo: add fallback code for stride mismatch
+  * vo_gpu: add BT.2390 tone-mapping
+  * vo_gpu: reinterpret SDR white levels based on ITU-R BT.2408
+
+-------------------------------------------------------------------
 Sun Jun 14 10:40:46 UTC 2020 - idonmez@suse.com
 
 - Update to version 0.32.0+git.20200610T171643.c7fe4ae73a:
