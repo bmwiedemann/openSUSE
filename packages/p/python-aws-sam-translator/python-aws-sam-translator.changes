@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  1 12:55:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.25.0
+  * chore: Exclude test modules in whl
+  * feat: Add Step Function Resource
+  * fix : missing UserPool properties
+  * fix: resource policy generation for {path+}
+
+-------------------------------------------------------------------
 Mon May  4 07:16:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.22.0:

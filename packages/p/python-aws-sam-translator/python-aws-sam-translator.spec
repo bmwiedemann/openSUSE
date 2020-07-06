@@ -26,7 +26,7 @@
 %endif
 %bcond_without python2
 Name:           python-aws-sam-translator
-Version:        1.22.0
+Version:        1.25.0
 Release:        0
 Summary:        AWS SAM template to AWS CloudFormation template translator
 License:        Apache-2.0
@@ -79,7 +79,6 @@ sed -i -e 's:~=:>=:g' requirements/base.txt
 
 %install
 %python_install
-%python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 mkdir -p %{buildroot}%{_bindir}
