@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 22 11:10:15 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Force the converted Nimbus Mono font to be monospaced by using
+  the --force-monospaced argument of ttf-converter 1.0.3
+  (boo#1169444 #c41)
+
+-------------------------------------------------------------------
 Mon Jun  8 15:09:01 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add a ghostscript-fonts-std-converted subpackage with fonts from

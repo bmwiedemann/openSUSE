@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun 23 19:23:47 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200617:
+  * Korean fallback font update
+  * Flip Flop Satellaview
+
+-------------------------------------------------------------------
+Thu May 28 14:02:33 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200528:
+  * Add korean fallback font
+  * Change cjk-font.ttf to chinese-fallback-font.ttf
+  * Add description file
+  * Add README for fonts
+  * Rename DroidSansFallbackFull.ttf to cjk-font.ttf
+  * Add Droid Sans Fallback as CJK fallback font
+  * Change ar-font.ttf to fallback-font.ttf
+  * Add description file
+  * Add Arabic fallback font
+  * Add README for fonts
+  * Rename DroidSansFallbackFull.ttf to cjk-font.ttf
+  * Add Droid Sans Fallback as CJK fallback font
+
+-------------------------------------------------------------------
 Thu May 07 08:06:44 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200505:

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul  1 03:08:04 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9999.32
+   see /usr/share/doc/packages/perl-File-Slurp/Changes
+   
+  9999.32     2020-06-30
+      - Re-release after fixing MANIFEST
+ 
+  9999.31     2020-06-28
+      - Remove TravisCI and AppVeyor
+      - Test using GitHub Actions/workflows on Windows, Mac, and Linux
+      - Add See Also section to the docs. (PR#24 Thanks, Dan Book)
+      - Add file existence and size checks (RT 132900 - Thanks, Bao Haojun)
+
+-------------------------------------------------------------------
 Tue Mar 10 03:11:44 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 9999.30

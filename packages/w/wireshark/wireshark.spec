@@ -27,14 +27,14 @@
 %bcond_with lz4
 %endif
 Name:           wireshark
-Version:        3.2.4
+Version:        3.2.5
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Networking/Diagnostic
 URL:            https://www.wireshark.org/
 Source:         https://www.wireshark.org/download/src/%{name}-%{version}.tar.xz
-Source2:        https://www.wireshark.org/download/SIGNATURES-%{version}.txt
+Source2:        https://www.wireshark.org/download/SIGNATURES-%{version}.txt#/%{name}-%{version}.tar.xz.asc
 Source3:        https://www.wireshark.org/download/gerald_at_wireshark_dot_org.gpg#/wireshark.keyring
 BuildRequires:  bison
 BuildRequires:  flex

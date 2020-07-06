@@ -1,0 +1,53 @@
+From 45cffb3ce590f6893426aa172a28e66e465d917a Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Mon, 29 Jun 2020 10:55:09 +0200
+Subject: [PATCH 2/2] Migrate away from singe quote identifiers as well
+
+Refactor the code a bit while at it.
+---
+ src/main.cpp | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/src/main.cpp b/src/main.cpp
+index 148eae3..ab4fcf3 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -303,21 +303,21 @@ int main(int argc, char **argv)
+     if ((!ignoreWallet) && (!identifier.isNull()) && wallet.get() && wallet->hasFolder(walletFolder)) {
+         wallet->setFolder(walletFolder);
+ 
+-        QString retrievedItem;
+-        wallet->readPassword(identifier, retrievedItem);
+-
+-        if (!retrievedItem.isEmpty()) {
+-            item = retrievedItem;
+-        } else {
+-            // There was a bug in previous versions of ksshaskpass that caused it to create keys with extra space
+-            // appended to key file name. Try these keys too, and, if there's a match, ensure that it's properly
++        wallet->readPassword(identifier, item);
++
++        if (item.isEmpty()) {
++            // There was a bug in previous versions of ksshaskpass that caused it to create keys with single quotes
++            // around the identifier and even older versions have an extra space appended to the identifier.
++            // key file name. Try these keys too, and, if there's a match, ensure that it's properly
+             // replaced with proper one.
+-            const QString keyFile = identifier + QLatin1Char(' ');
+-            wallet->readPassword(keyFile, retrievedItem);
+-            if (!retrievedItem.isEmpty()) {
+-                qCWarning(LOG_KSSHASKPASS) << "Detected legacy key for " << identifier << ", enabling workaround";
+-                item = retrievedItem;
+-                wallet->renameEntry(keyFile, identifier);
++            for(auto templ : QStringList{QStringLiteral("'%0'"), QStringLiteral("%0 "), QStringLiteral("'%0' ")}) {
++                const QString keyFile = templ.arg(identifier);
++                wallet->readPassword(keyFile, item);
++                if (!item.isEmpty()) {
++                    qCWarning(LOG_KSSHASKPASS) << "Detected legacy key for " << identifier << ", enabling workaround";
++                    wallet->renameEntry(keyFile, identifier);
++                    break;
++                }
+             }
+         }
+     }
+-- 
+2.25.1
+

@@ -144,7 +144,7 @@ install -m 644 %{SOURCE1} %{buildroot}%{_prefix}/lib/tmpfiles.d
 cd %{buildroot}/%{_libdir}/heartbeat
 for f in ocf-returncodes ocf-shellfuncs
 do
-    ln -s %{_libexecdir}/ocf/lib/heartbeat/$f
+    ln -s %{_prefix}/lib/ocf/lib/heartbeat/$f
 done
 )
 
@@ -157,9 +157,9 @@ done
 
 # Create a symlink for backward compat of suse:aws-vpc-move-ip
 (
-mkdir -p %{buildroot}%{_libexecdir}/ocf/resource.d/suse
-cd %{buildroot}%{_libexecdir}/ocf/resource.d/suse
-ln -s %{_libexecdir}/ocf/resource.d/heartbeat/aws-vpc-move-ip aws-vpc-move-ip
+mkdir -p %{buildroot}%{_prefix}/lib/ocf/resource.d/suse
+cd %{buildroot}%{_prefix}/lib/ocf/resource.d/suse
+ln -s %{_prefix}/lib/ocf/resource.d/heartbeat/aws-vpc-move-ip aws-vpc-move-ip
 )
 
 %post
@@ -205,9 +205,9 @@ ln -s %{_libexecdir}/ocf/resource.d/heartbeat/aws-vpc-move-ip aws-vpc-move-ip
 %{_datadir}/%{name}/ocft/helpers.sh
 %{_datadir}/%{name}/ocft/runocft
 %{_datadir}/%{name}/ocft/runocft.prereq
-%{_libexecdir}/ocf/resource.d/suse
-%{_libexecdir}/ocf/resource.d/heartbeat
-%{_libexecdir}/ocf/lib/heartbeat
+%{_prefix}/lib/ocf/resource.d/suse
+%{_prefix}/lib/ocf/resource.d/heartbeat
+%{_prefix}/lib/ocf/lib/heartbeat
 %{_sbindir}/ocf-tester
 %{_sbindir}/ocft
 %{_sbindir}/sfex_init

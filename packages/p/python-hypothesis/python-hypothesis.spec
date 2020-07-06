@@ -28,7 +28,7 @@
 %endif
 %define skip_python2 1
 Name:           python-hypothesis%{psuffix}
-Version:        5.11.0
+Version:        5.19.0
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
@@ -40,31 +40,32 @@ Patch0:         failing-test_array_values_are_unique_high_collision.patch
 BuildRequires:  %{python_module setuptools >= 36}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-attrs >= 19.2.0
-Requires:       python-sortedcontainers >= 2.1.0
-Recommends:     python-Django >= 2.2
-Recommends:     python-dpcontracts >= 0.4
-Recommends:     python-lark-parser >= 0.6.5
+Requires:       python-attrs >= 19.3.0
+Requires:       python-sortedcontainers >= 2.2.2
+Recommends:     python-Django >= 3.0.7
+Recommends:     python-dpcontracts >= 0.6.0
+Recommends:     python-lark-parser >= 0.8.9
 Recommends:     python-numpy >= 1.9.0
 Recommends:     python-pandas >= 0.19
-Recommends:     python-pytest >= 4.3.0
-Recommends:     python-python-dateutil >= 1.4
+Recommends:     python-pytest >= 5.4.3
+Recommends:     python-python-dateutil >= 2.8.1
 Recommends:     python-pytz >= 2014.1
 BuildArch:      noarch
 %if %{with test}
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 2.2}
-BuildRequires:  %{python_module attrs >= 19.2.0}
+BuildRequires:  %{python_module Django >= 3.0.7}
+BuildRequires:  %{python_module attrs >= 19.3.0}
+BuildRequires:  %{python_module dpcontracts >= 0.6.0}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module hypothesis >= %{version}}
-BuildRequires:  %{python_module lark-parser >= 0.6.5}
+BuildRequires:  %{python_module lark-parser >= 0.8.9}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module numpy >= 1.9.0}
-BuildRequires:  %{python_module pexpect >= 4.7.0}
-BuildRequires:  %{python_module pytest >= 4.3.0}
-BuildRequires:  %{python_module python-dateutil >= 1.4}
-BuildRequires:  %{python_module sortedcontainers >= 2.1.0}
-BuildRequires:  python3-dpcontracts
+BuildRequires:  %{python_module pexpect >= 4.8.0}
+BuildRequires:  %{python_module pytest >= 5.4.3}
+BuildRequires:  %{python_module python-dateutil >= 2.8.1}
+BuildRequires:  %{python_module sortedcontainers >= 2.2.2}
+BuildRequires:  %{python_module typing_extensions}
 %endif
 # /SECTION
 %python_subpackages

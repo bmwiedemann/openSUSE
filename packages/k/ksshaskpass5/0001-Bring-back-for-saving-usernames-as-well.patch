@@ -1,0 +1,66 @@
+From ed482e075ff10bef64356a52bfa9ef0472e9e729 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Mon, 29 Jun 2020 10:10:24 +0200
+Subject: [PATCH 1/2] Bring back for saving usernames as well
+
+While this also reintroduces that a password field is used for entering, this
+is better than asking for the username every time, which is a regression
+compared to 5.18.
+
+Using a proper username input field would need changes in kwidgetsaddons or
+some refactoring to ask for username and password at once.
+
+Drop use of wallet->readEntry - it's custom binary data, so the content is
+entirely defined by whoever wrote it. We don't use writeEntry here, so using
+readEntry is invalud.
+---
+ src/main.cpp | 23 ++++++-----------------
+ 1 file changed, 6 insertions(+), 17 deletions(-)
+
+diff --git a/src/main.cpp b/src/main.cpp
+index 3e3149e..148eae3 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -304,17 +304,11 @@ int main(int argc, char **argv)
+         wallet->setFolder(walletFolder);
+ 
+         QString retrievedItem;
+-        if (type != TypePassword) {
+-            QByteArray retrievedBytes;
+-            wallet->readEntry(identifier, retrievedBytes);
+-            retrievedItem = QString::fromUtf8(retrievedBytes);
+-        } else {
+-            wallet->readPassword(identifier, retrievedItem);
+-        }
++        wallet->readPassword(identifier, retrievedItem);
+ 
+         if (!retrievedItem.isEmpty()) {
+             item = retrievedItem;
+-        } else if (type == TypePassword) {
++        } else {
+             // There was a bug in previous versions of ksshaskpass that caused it to create keys with extra space
+             // appended to key file name. Try these keys too, and, if there's a match, ensure that it's properly
+             // replaced with proper one.
+@@ -343,15 +337,10 @@ int main(int argc, char **argv)
+             item = QStringLiteral("yes\n");
+             break;
+         }
+-        case TypeClearText: {
+-            bool ok = false;
+-            item = QInputDialog::getText(0, i18n("Ksshaskpass"), dialog, QLineEdit::Normal, QString(), &ok);
+-            if (!ok) {
+-                // dialog has been canceled
+-                return 1;
+-            }
+-            break;
+-        }
++        case TypeClearText:
++            // Should use a dialog with visible input, but KPasswordDialog doesn't support that and
++            // other available dialog types don't have a "Keep" checkbox.
++            /* fallthrough */
+         case TypePassword: {
+             // create the password dialog, but only show "Enable Keep" button, if the wallet is open
+             KPasswordDialog::KPasswordDialogFlag flag(KPasswordDialog::NoFlags);
+-- 
+2.25.1
+

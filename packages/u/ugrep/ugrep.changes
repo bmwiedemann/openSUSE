@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul  5 04:34:08 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Disable avx
+- Add reproducible.patch to drop march=native
+  to make package build reproducible (boo#1100677)
+
+-------------------------------------------------------------------
 Tue Jun 30 16:40:55 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ugrep 2.3.2:

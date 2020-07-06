@@ -34,6 +34,8 @@ License:        Apache-2.0
 Group:          Productivity/Networking/Other
 URL:            https://www.freerdp.com/
 Source0:        https://github.com/FreeRDP/FreeRDP/archive/%{version}.tar.gz#/FreeRDP-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM freerdp_Mask_CACHED_BRUSH_when_checking_brush_style.patch boo#1173605 gh#FreeRDP/FreeRDP#6298
+Patch1:         freerdp_Mask_CACHED_BRUSH_when_checking_brush_style.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel

@@ -40,7 +40,7 @@
 %define vmgid 303
 %define vmid 303
 %define vmdir /srv/maildirs
-%define unitdir %{_libexecdir}/systemd
+%define unitdir %{_prefix}/lib/systemd
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
@@ -60,7 +60,7 @@ License:        IPL-1.0 OR EPL-2.0
 Group:          Productivity/Networking/Email/Servers
 URL:            http://www.postfix.org
 Source0:        http://cdn.postfix.johnriley.me/mirrors/postfix-release/official/postfix-%{version}.tar.gz
-Source2:        %{name}-SuSE.tar.gz
+Source2:        %{name}-SUSE.tar.gz
 Source3:        %{name}-mysql.tar.bz2
 Source10:       %{name}-rpmlintrc
 Source11:       check_mail_queue
@@ -98,7 +98,7 @@ Requires(pre):  shadow
 Conflicts:      exim
 Conflicts:      sendmail
 Provides:       smtp_daemon
-%{?systemd_requires}
+%{?systemd_ordering}
 %if %{with lmdb}
 BuildRequires:  lmdb-devel
 %endif
@@ -279,10 +279,10 @@ mkdir -p %{buildroot}/%{pf_sample_directory}
 mkdir -p %{buildroot}/%{pf_html_directory}
 mkdir -p %{buildroot}%{_includedir}/%{name}
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
-install -m 644 %{name}-SuSE/smtp %{buildroot}%{_sysconfdir}/pam.d/smtp
+install -m 644 %{name}-SUSE/smtp %{buildroot}%{_sysconfdir}/pam.d/smtp
 mkdir -p %{buildroot}%{_fillupdir}
-sed -e 's;@lib@;%{_lib};g' %{name}-SuSE/sysconfig.%{name} > %{buildroot}%{_fillupdir}/sysconfig.%{name}
-install -m 644 %{name}-SuSE/sysconfig.mail-%{name} %{buildroot}%{_fillupdir}/sysconfig.mail-%{name}
+sed -e 's;@lib@;%{_lib};g' %{name}-SUSE/sysconfig.%{name} > %{buildroot}%{_fillupdir}/sysconfig.%{name}
+install -m 644 %{name}-SUSE/sysconfig.mail-%{name} %{buildroot}%{_fillupdir}/sysconfig.mail-%{name}
 sed -e 's;@lib@;%{_lib};g' \
     -e 's;@conf_backup_dir@;%{conf_backup_dir};' \
     -e 's;@daemon_directory@;%{pf_daemon_directory};' \
@@ -293,20 +293,20 @@ sed -e 's;@lib@;%{_lib};g' \
     -e 's;@manpage_directory@;%{_mandir};' \
     -e 's;@newaliases_path@;%{pf_newaliases_path};' \
     -e 's;@sample_directory@;%{pf_sample_directory};' \
-    -e 's;@mailq_path@;%{pf_mailq_path};' %{name}-SuSE/config.%{name} > %{buildroot}%{_sbindir}/config.%{name}
+    -e 's;@mailq_path@;%{pf_mailq_path};' %{name}-SUSE/config.%{name} > %{buildroot}%{_sbindir}/config.%{name}
 chmod 755 %{buildroot}%{_sbindir}/config.%{name}
-install -m 644 %{name}-SuSE/dynamicmaps.cf %{buildroot}%{_sysconfdir}/%{name}/dynamicmaps.cf
-install -m 644 %{name}-SuSE/ldap_aliases.cf %{buildroot}%{_sysconfdir}/%{name}/ldap_aliases.cf
-install -m 644 %{name}-SuSE/helo_access %{buildroot}%{_sysconfdir}/%{name}/helo_access
-install -m 644 %{name}-SuSE/permissions %{buildroot}%{_sysconfdir}/permissions.d/%{name}
-install -m 644 %{name}-SuSE/sender_canonical %{buildroot}%{_sysconfdir}/%{name}/sender_canonical
-install -m 644 %{name}-SuSE/relay %{buildroot}%{_sysconfdir}/%{name}/relay
-install -m 644 %{name}-SuSE/relay_ccerts %{buildroot}%{_sysconfdir}/%{name}/relay_ccerts
-install -m 600 %{name}-SuSE/sasl_passwd %{buildroot}%{_sysconfdir}/%{name}/sasl_passwd
+install -m 644 %{name}-SUSE/dynamicmaps.cf %{buildroot}%{_sysconfdir}/%{name}/dynamicmaps.cf
+install -m 644 %{name}-SUSE/ldap_aliases.cf %{buildroot}%{_sysconfdir}/%{name}/ldap_aliases.cf
+install -m 644 %{name}-SUSE/helo_access %{buildroot}%{_sysconfdir}/%{name}/helo_access
+install -m 644 %{name}-SUSE/permissions %{buildroot}%{_sysconfdir}/permissions.d/%{name}
+install -m 644 %{name}-SUSE/sender_canonical %{buildroot}%{_sysconfdir}/%{name}/sender_canonical
+install -m 644 %{name}-SUSE/relay %{buildroot}%{_sysconfdir}/%{name}/relay
+install -m 644 %{name}-SUSE/relay_ccerts %{buildroot}%{_sysconfdir}/%{name}/relay_ccerts
+install -m 600 %{name}-SUSE/sasl_passwd %{buildroot}%{_sysconfdir}/%{name}/sasl_passwd
 mkdir -p %{buildroot}%{_sysconfdir}/sasl2
-install -m 600 %{name}-SuSE/smtpd.conf %{buildroot}%{_sysconfdir}/sasl2/smtpd.conf
-install -m 644 %{name}-SuSE/openssl_%{name}.conf.in %{buildroot}%{_sysconfdir}/%{name}/openssl_%{name}.conf.in
-install -m 755 %{name}-SuSE/mk%{name}cert %{buildroot}%{_sbindir}/mk%{name}cert
+install -m 600 %{name}-SUSE/smtpd.conf %{buildroot}%{_sysconfdir}/sasl2/smtpd.conf
+install -m 644 %{name}-SUSE/openssl_%{name}.conf.in %{buildroot}%{_sysconfdir}/%{name}/openssl_%{name}.conf.in
+install -m 755 %{name}-SUSE/mk%{name}cert %{buildroot}%{_sbindir}/mk%{name}cert
 {
 cat<<EOF
 #
@@ -335,7 +335,7 @@ cat conf/main.cf
 	   "disable_vrfy_command = yes" \
 	   'smtpd_banner      = $myhostname ESMTP'
 #Set Permissions
-install -m 644 %{name}-SuSE/%{name}-files %{buildroot}%{pf_shlib_directory}/%{name}-files
+install -m 644 %{name}-SUSE/%{name}-files %{buildroot}%{pf_shlib_directory}/%{name}-files
 # postfix-mysql
 install -m 644 %{name}-mysql/main.cf-mysql %{buildroot}%{_sysconfdir}/%{name}/main.cf-mysql
 install -m 640 %{name}-mysql/*_maps.cf     %{buildroot}%{_sysconfdir}/%{name}/
@@ -355,13 +355,13 @@ rm %{buildroot}%{pf_docdir}/README_FILES/INSTALL
 # Fix build for Leap 42.3.
 rm -f %{buildroot}%{_sysconfdir}/%{name}/*.orig
 mkdir -p %{buildroot}%{_unitdir}
-mkdir -p %{buildroot}%{_sysconfdir}/%{name}/system
-install -m 0644 %{name}-SuSE/%{name}.service         %{buildroot}%{_unitdir}/%{name}.service
-install -m 0755 %{name}-SuSE/config_%{name}.systemd  %{buildroot}%{_sysconfdir}/%{name}/system/config_%{name}
-install -m 0755 %{name}-SuSE/update_chroot.systemd   %{buildroot}%{_sysconfdir}/%{name}/system/update_chroot
-install -m 0755 %{name}-SuSE/update_postmaps.systemd %{buildroot}%{_sysconfdir}/%{name}/system/update_postmaps
-install -m 0755 %{name}-SuSE/wait_qmgr.systemd       %{buildroot}%{_sysconfdir}/%{name}/system/wait_qmgr
-install -m 0755 %{name}-SuSE/cond_slp.systemd        %{buildroot}%{_sysconfdir}/%{name}/system/cond_slp
+mkdir -p %{buildroot}%{pf_shlib_directory}/systemd
+install -m 0644 %{name}-SUSE/%{name}.service         %{buildroot}%{_unitdir}/%{name}.service
+install -m 0755 %{name}-SUSE/config_%{name}.systemd  %{buildroot}%{pf_shlib_directory}/systemd/config_%{name}
+install -m 0755 %{name}-SUSE/update_chroot.systemd   %{buildroot}%{pf_shlib_directory}/systemd/update_chroot
+install -m 0755 %{name}-SUSE/update_postmaps.systemd %{buildroot}%{pf_shlib_directory}/systemd/update_postmaps
+install -m 0755 %{name}-SUSE/wait_qmgr.systemd       %{buildroot}%{pf_shlib_directory}/systemd/wait_qmgr
+install -m 0755 %{name}-SUSE/cond_slp.systemd        %{buildroot}%{pf_shlib_directory}/systemd/cond_slp
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %fdupes %{buildroot}%{pf_docdir}
 %fdupes %{buildroot}%{_mandir}
@@ -452,33 +452,10 @@ fi
 # We only start postfix own upgrade-configuration by update
 if [ ${1:-0} -gt 1 ]; then
 	touch %{_localstatedir}/adm/%{name}.configured
-        # Check if main.cf and master.cf was changed manualy
-        MAINCH=0
-        if [ -e %{_localstatedir}/adm/SuSEconfig/md5%{_sysconfdir}/%{name}/main.cf ]; then
-                MD5SUM1=$( cat %{_localstatedir}/adm/SuSEconfig/md5%{_sysconfdir}/%{name}/main.cf )
-                MD5SUM2=$( grep -v "^#" %{_sysconfdir}/%{name}/main.cf | md5sum )
-                if [ "$MD5SUM1" != "$MD5SUM2" ]; then
-                   MAINCH=1
-                fi
-        fi
-        MASTERCH=0
-        if [ -e %{_localstatedir}/adm/SuSEconfig/md5%{_sysconfdir}/%{name}/master.cf ]; then
-                MD5SUM1=$( cat %{_localstatedir}/adm/SuSEconfig/md5%{_sysconfdir}/%{name}/master.cf )
-                MD5SUM2=$( grep -v "^#" %{_sysconfdir}/%{name}/master.cf | md5sum )
-                if [ "$MD5SUM1" != "$MD5SUM2" ]; then
-                   MASTERCH=1
-                fi
-        fi
         echo "Executing upgrade-configuration."
         %{_sbindir}/%{name} set-permissions upgrade-configuration setgid_group=%{pf_setgid_group} || :
         if [ "$(%{_sbindir}/postconf -h daemon_directory)" != "%{pf_daemon_directory}" ]; then
                 %{_sbindir}/postconf daemon_directory=%{pf_daemon_directory}
-        fi
-        if [ $MASTERCH -eq 0 ]; then
-           test -e %{_localstatedir}/adm/SuSEconfig/md5%{_sysconfdir}/%{name}/master.cf && grep -v "^#" %{_sysconfdir}/%{name}/master.cf | md5sum > %{_localstatedir}/adm/SuSEconfig/md5%{_sysconfdir}/postfix/master.cf
-        fi
-        if [ $MAINCH -eq 0 ]; then
-           test -e %{_localstatedir}/adm/SuSEconfig/md5%{_sysconfdir}/%{name}/main.cf && grep -v "^#" %{_sysconfdir}/%{name}/main.cf | md5sum > %{_localstatedir}/adm/SuSEconfig/md5%{_sysconfdir}/postfix/main.cf
         fi
 fi
 
@@ -562,8 +539,8 @@ fi
 %dir %{_sysconfdir}/%{name}/ssl
 %dir %{_sysconfdir}/%{name}/ssl/certs
 %{_sysconfdir}/%{name}/ssl/cacerts
-%dir %{_sysconfdir}/%{name}/system
-%config %attr(0755,root,root) %{_sysconfdir}/%{name}/system/*
+%dir %{pf_shlib_directory}/systemd
+%config %attr(0755,root,root) %{pf_shlib_directory}/systemd/*
 %{_unitdir}/%{name}.service
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postdrop
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postqueue

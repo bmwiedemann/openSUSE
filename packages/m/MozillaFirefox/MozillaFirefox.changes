@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Wed Jul  1 07:15:02 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 78.0.1
+  * Fixed an issue which could cause installed search engines to not
+    be visible when upgrading from a previous release.
+- enable MOZ_USE_XINPUT2 for TW (boo#1173320)
+
+-------------------------------------------------------------------
+Sun Jun 28 07:17:13 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 78.0
+  * startup notifications now using Gtk instead of libnotify
+  * PDF downloads now show an option to open the PDF directly in Firefox
+  * Protections Dashboard (about:protections)
+  * WebRTC not interrupted by screensaver anymore
+  * disabled TLS 1.0 and 1.1 by default
+  MFSA 2020-24 (bsc#1173576)
+  * CVE-2020-12415 (bmo#1586630)
+    AppCache manifest poisoning due to url encoded character processing
+  * CVE-2020-12416 (bmo#1639734)
+    Use-after-free in WebRTC VideoBroadcaster
+  * CVE-2020-12417 (bmo#1640737)
+    Memory corruption due to missing sign-extension for ValueTags
+    on ARM64
+  * CVE-2020-12418 (bmo#1641303)
+    Information disclosure due to manipulated URL object
+  * CVE-2020-12419 (bmo#1643874)
+    Use-after-free in nsGlobalWindowInner
+  * CVE-2020-12420 (bmo#1643437)
+    Use-After-Free when trying to connect to a STUN server
+  * CVE-2020-12402 (bmo#1631597)
+    RSA Key Generation vulnerable to side-channel attack
+  * CVE-2020-12421 (bmo#1308251)
+    Add-On updates did not respect the same certificate trust
+    rules as software updates
+  * CVE-2020-12422 (bmo#1450353)
+    Integer overflow in nsJPEGEncoder::emptyOutputBuffer
+  * CVE-2020-12423 (bmo#1642400)
+    DLL Hijacking due to searching %PATH% for a library
+  * CVE-2020-12424 (bmo#1562600)
+    WebRTC permission prompt could have been bypassed by a
+    compromised content process
+  * CVE-2020-12425 (bmo#1634738)
+    Out of bound read in Date.parse()
+  * CVE-2020-12426 (bmo#1608068, bmo#1609951, bmo#1631187, bmo#1637682)
+    Memory safety bugs fixed in Firefox 78
+- requires
+  * NSS >= 3.53.1
+  * nodejs >= 10.21
+  * Gtk+3 >= 3.14
+- removed obsolete patches
+  * mozilla-s390-bigendian.patch
+  * mozilla-bmo1634646.patch
+- Add mozilla-pipewire-0-3.patch for openSUSE >= 15.2 to build
+  WebRTC with pipewire support to enable screen sharing under
+  Wayland; also add BuildRequires: pkgconfig(libpipewire-0.3)
+  appropriately (boo#1172903).
+- adding SLE12 compatibility in spec file
+- add patches for s390x
+  * mozilla-bmo1602730.patch (bmo#1602730)
+  * mozilla-bmo1626236.patch (bmo#1626236)
+  * mozilla-bmo998749.patch (bmo#998749)
+  * mozilla-s390x-skia-gradient.patch
+- update create-tar.sh
+- Use same _constraints for ppc64 (BE) as ppc64le to avoid oom build failure
+
+-------------------------------------------------------------------
+Wed Jun 10 07:17:15 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Exclude armv6, since it is unbuildable since about 3 years
+
+-------------------------------------------------------------------
 Wed Jun  3 21:39:11 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 77.0.1

@@ -287,4 +287,12 @@ See https://build.opensuse.org/package/live_build_log/openSUSE:Factory:Staging:N
   * fix _utils ImportError =&gt; DeprecationWarning</comment>
     <requestid>792334</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>220775396af2f17cb97ea85747fce8ee</srcmd5>
+    <version>4.47.0</version>
+    <time>1594045047</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818498</requestid>
+  </revision>
 </revisionlist>

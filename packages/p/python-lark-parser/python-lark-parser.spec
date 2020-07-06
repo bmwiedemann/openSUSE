@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-lark-parser
-Version:        0.8.5
+Version:        0.9.0
 Release:        0
 Summary:        A parsing library for Python
 License:        MPL-2.0
@@ -31,8 +31,9 @@ BuildRequires:  %{python_module Js2Py >= 0.68}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
+Requires:       python-regex
 Suggests:       python-Js2Py >= 0.68
+BuildArch:      noarch
 %python_subpackages
 
 %description

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  2 06:57:31 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Added freerdp_Mask_CACHED_BRUSH_when_checking_brush_style.patch 
+  which fixed frequent crashes described in boo#1173605 and gh#FreeRDP/FreeRDP#6298
+
+-------------------------------------------------------------------
 Mon Jun 22 12:59:59 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated to release 2.1.2 (boo#1173247)

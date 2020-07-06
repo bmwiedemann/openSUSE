@@ -1,7 +1,7 @@
 #
 # spec file for package lodepng
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define _libver r84
+
+%define _libver %(echo %{version}|sed 's/0~git/r/')
 Name:           lodepng
-Version:        0~git84
+Version:        0~git207
 Release:        0
 Summary:        PNG encoder and decoder
 License:        Zlib
 Group:          Development/Libraries/C and C++
-Url:            http://lodev.org/lodepng/
-# from https://github.com/lvandeve/lodepng.git
+URL:            https://lodev.org/lodepng/
 Source0:        %{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
-BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig
 
 %description
 A PNG encoder and decoder library.
@@ -50,8 +48,7 @@ Group:          Development/Libraries/C and C++
 A PNG encoder and decoder library.
 
 %prep
-%setup -q
-dos2unix examples/*
+%autosetup
 
 %build
 g++ -fPIC %{optflags} -shared -Wl,-soname,lib%{name}-%{_libver}.so -o lib%{name}-%{_libver}.so lodepng.cpp
@@ -77,7 +74,7 @@ includedir=${prefix}/include
 
 Name: lodepng
 Description: PNG encoder and decoder library
-Version: %{version}
+Version: 0~git207
 Libs: -L${libdir} -llodepng
 Cflags: -I${includedir}
 EOF
@@ -87,7 +84,6 @@ g++ %{optflags} lodepng_unittest.cpp lodepng_util.cpp -L. -l%{name}-%{_libver} -
 LD_LIBRARY_PATH=. ./lodepng_unittest
 
 %files devel
-%defattr(-,root,root)
 %doc README.md examples
 %{_bindir}/pngdetail
 %{_includedir}/%{name}.h
@@ -95,7 +91,7 @@ LD_LIBRARY_PATH=. ./lodepng_unittest
 %{_libdir}/pkgconfig/%{name}.pc
 
 %files -n lib%{name}-%{_libver}
-%defattr(-,root,root)
+%license LICENSE
 %doc README.md
 %{_libdir}/lib%{name}-%{_libver}.so
 

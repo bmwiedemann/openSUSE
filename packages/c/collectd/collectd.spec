@@ -17,7 +17,7 @@
 #
 
 
-%define plugins apache apcups aggregation ascent battery bind \\\
+%define plugins apache apcups aggregation ascent battery bind  \\\
   ceph cgroups chrony curl curl_json curl_xml conntrack contextswitch cpu cpufreq cpusleep csv \\\
   df disk dns drbd \\\
   email entropy ethstat exec fhcount filecount fscache hddtemp hugepages \\\
@@ -31,22 +31,8 @@
   table tail tail_csv target_notification target_replace target_scale target_set target_v5upgrade \\\
   tcpconns teamspeak2 ted thermal threshold \\\
   unixsock uptime users uuid vmem vserver \\\
-  wireless write_graphite write_http write_log write_sensu write_tsdb write_prometheus \\\
-  zfs_arc zookeeper
-
-%if !0%{?is_opensuse}
-%if 0%{?sle_version} <= 150100
-%define lvm2app 1
-%else
-%define lvm2app 0
-%endif
-%else
-%if !0%{?suse_version} > 1500
-%define lvm2app 1
-%else
-%define lvm2app 0
-%endif
-%endif
+  wireless write_graphite write_http write_log write_sensu write_tsdb \\\
+  write_prometheus zfs_arc zookeeper
 
 %ifnarch s390 s390x
 %define sensors    1
@@ -56,7 +42,7 @@
 %define sensors_plugin %{nil}
 %endif
 Name:           collectd
-Version:        5.10.0
+Version:        5.11.0
 Release:        0
 Summary:        Statistics Collection Daemon for filling RRD Files
 License:        GPL-2.0-only AND MIT
@@ -133,9 +119,6 @@ BuildRequires:  pkgconfig(libupsclient)
 BuildRequires:  pkgconfig(libvirt)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(lua)
-%if %{?lvm2app}
-BuildRequires:  pkgconfig(lvm2app)
-%endif
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(xtables)
 BuildRequires:  pkgconfig(zlib)
@@ -249,16 +232,6 @@ Requires:       %{name} = %{version}-%{release}
 
 %description plugin-nut
 This plugin for collectd provides Network UPS Tools support.
-%endif
-
-%if %{?lvm2app}
-%package plugin-lvm
-Summary:        LVM plugin for collectd
-Group:          System/Monitoring
-Requires:       %{name} = %{version}-%{release}
-
-%description plugin-lvm
-This plugin collects information from lvm.
 %endif
 
 %package plugin-pcie
@@ -444,10 +417,43 @@ Requires:       %{name} = %{version}-%{release}
 Optional %{name} plugin to listen to rsyslog events and submit matched values.
 .
 
+%package plugin-buddyinfo
+Summary:        Buddyinfo plugin for %{name}
+Group:          System/Monitoring
+Requires:       %{name} = %{version}-%{release}
+
+%description plugin-buddyinfo
+Optional %{name} plugin for memory fragmentation.
+
+%package plugin-logparser
+Summary:        Logparser plugin for %{name}
+Group:          System/Monitoring
+Requires:       %{name} = %{version}-%{release}
+
+%description plugin-logparser
+Optional %{name} plugin for filtering and parsing logs.
+
+%package plugin-ubi
+Summary:        ubifs plugin for %{name}
+Group:          System/Monitoring
+Requires:       %{name} = %{version}-%{release}
+
+%description plugin-ubi
+Optional %{name} plugin for reporting block state of flash memory devices with UBIFS filesystem.
+
+%package plugin-write_influxdb_udp
+Summary:        write_influxdb_udp plugin for %{name}
+Group:          System/Monitoring
+Requires:       %{name} = %{version}-%{release}
+
+%description plugin-write_influxdb_udp
+Optional %{name} plugin to send values to InfluxDB using line protocol via udp
+
 %package plugins-all
 Summary:        All Monitoring Plugins for %{name}
 Group:          System/Monitoring
 Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}-plugin-buddyinfo = %{version}-%{release}
 Requires:       %{name}-plugin-connectivity = %{version}-%{release}
 Requires:       %{name}-plugin-dbi = %{version}-%{release}
 %if 0%{?sle_version} < 150000  || 0%{?is_opensuse}
@@ -455,10 +461,8 @@ Requires:       %{name}-plugin-gps = %{version}-%{release}
 %endif
 Requires:       %{name}-plugin-ipmi = %{version}-%{release}
 Requires:       %{name}-plugin-java = %{version}-%{release}
+Requires:       %{name}-plugin-logparser = %{version}-%{release}
 Requires:       %{name}-plugin-lua = %{version}-%{release}
-%if %{?lvm2app}
-Requires:       %{name}-plugin-lvm = %{version}-%{release}
-%endif
 Requires:       %{name}-plugin-mcelog = %{version}-%{release}
 Requires:       %{name}-plugin-memcachec = %{version}-%{release}
 Requires:       %{name}-plugin-mysql = %{version}-%{release}
@@ -477,8 +481,10 @@ Requires:       %{name}-plugin-smart = %{version}-%{release}
 Requires:       %{name}-plugin-snmp = %{version}-%{release}
 Requires:       %{name}-plugin-synproxy = %{version}-%{release}
 Requires:       %{name}-plugin-sysevent = %{version}-%{release}
+Requires:       %{name}-plugin-ubi = %{version}-%{release}
 Requires:       %{name}-plugin-uptime = %{version}-%{release}
 Requires:       %{name}-plugin-virt = %{version}-%{release}
+Requires:       %{name}-plugin-write_influxdb_udp = %{version}-%{release}
 Requires:       %{name}-plugin-write_stackdriver = %{version}-%{release}
 Requires:       %{name}-plugin-write_syslog = %{version}-%{release}
 Requires:       %{name}-web = %{version}-%{release}
@@ -750,12 +756,6 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %{_libdir}/collectd/snmp*.la
 %{_mandir}/man5/collectd-snmp.5%{?ext_man}
 
-%if %{?lvm2app}
-%files plugin-lvm
-%{_libdir}/collectd/lvm.so
-%{_libdir}/collectd/lvm.la
-%endif
-
 %files plugin-pinba
 %{_libdir}/collectd/pinba.so
 %{_libdir}/collectd/pinba.la
@@ -857,6 +857,22 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %files plugin-sysevent
 %{_libdir}/collectd/sysevent.la
 %{_libdir}/collectd/sysevent.so
+
+%files plugin-buddyinfo
+%{_libdir}/collectd/buddyinfo.la
+%{_libdir}/collectd/buddyinfo.so
+
+%files plugin-logparser
+%{_libdir}/collectd/logparser.la
+%{_libdir}/collectd/logparser.so
+
+%files plugin-ubi
+%{_libdir}/collectd/ubi.la
+%{_libdir}/collectd/ubi.so
+
+%files plugin-write_influxdb_udp
+%{_libdir}/collectd/write_influxdb_udp.la
+%{_libdir}/collectd/write_influxdb_udp.so
 
 %if 0%{?suse_version} >= 1330
 %files plugin-nut

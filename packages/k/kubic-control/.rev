@@ -155,4 +155,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>767861</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fec2efc16f49256c73c55d2edd27aabb</srcmd5>
+    <version>0.10.0</version>
+    <time>1594044966</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.0
+  - Kubicd can now run on any salt master, it is no longer required
+    that kubic and the salt master run on the first kubernetes master
+    node
+  - Add support for upgrading of multi master setups
+  - Adjust /etc/sysconfig/kubelet and restart kubelet on upgrade
+  - Many bug fixes
+  - Documentation fixes</comment>
+    <requestid>818307</requestid>
+  </revision>
 </revisionlist>

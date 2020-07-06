@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.7
-%define patchversion 5.7.5
+%define patchversion 5.7.7
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -65,9 +65,9 @@ Name:           kernel-pae
 Summary:        Kernel with PAE Support
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.7.5
+Version:        5.7.7
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ga1775d0
+Release:        <RELEASE>.gcba119b
 %else
 Release:        0
 %endif
@@ -176,10 +176,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-a1775d0843b12327f00c719acc05a8224f9ef596
-Provides:       kernel-srchash-a1775d0843b12327f00c719acc05a8224f9ef596
+Provides:       kernel-%build_flavor-base-srchash-cba119b9d536c22bb0a3705ec58f0411fee53b7e
+Provides:       kernel-srchash-cba119b9d536c22bb0a3705ec58f0411fee53b7e
 # END COMMON DEPS
-Provides:       %name-srchash-a1775d0843b12327f00c719acc05a8224f9ef596
+Provides:       %name-srchash-cba119b9d536c22bb0a3705ec58f0411fee53b7e
 %ifarch %ix86
 Provides:       kernel-bigsmp = 2.6.17
 Obsoletes:      kernel-bigsmp <= 2.6.17

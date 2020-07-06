@@ -24,6 +24,7 @@ License:        BSD-3-Clause
 Group:          Productivity/File utilities
 URL:            https://github.com/Genivia/ugrep
 Source:         https://github.com/Genivia/ugrep/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         reproducible.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
@@ -38,9 +39,11 @@ fuzzy search.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \
+	--disable-avx \
 	--enable-color
 %make_build
 

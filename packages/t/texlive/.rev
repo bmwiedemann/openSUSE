@@ -813,4 +813,12 @@
     <comment>- Properly configure luajit (forwarded request 810398 from Andreas_Schwab)</comment>
     <requestid>810732</requestid>
   </revision>
+  <revision rev="68" vrev="71">
+    <srcmd5>691319b6860764828efabe67a225444a</srcmd5>
+    <version>unknown</version>
+    <time>1594045090</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>818535</requestid>
+  </revision>
 </revisionlist>

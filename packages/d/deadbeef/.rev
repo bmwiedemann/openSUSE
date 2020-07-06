@@ -98,4 +98,13 @@
     <comment>- Update version to 1.8.4.</comment>
     <requestid>818599</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>07a3c5af3b4981cefffbd9390554da73</srcmd5>
+    <version>1.8.4</version>
+    <time>1594045738</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix deadbeef.appdata.xml 
+</comment>
+    <requestid>818873</requestid>
+  </revision>
 </revisionlist>

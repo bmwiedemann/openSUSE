@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Jul  3 09:25:30 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 0.9.0
+  * Added error handling to LALR!
+    + on_error option to Lark.parse().
+    + Parser now comes with a puppet for advanced error handling.
+  * Support for better regexps with the regex module, when using
+    Lark(..., regex=True)
+
+- Update to 0.8.9
+  * Bugfix for PyInstaller (2) (Fixing the last two releases)
+
+- Update to 0.8.8
+  * Reverted EOF commit due to unexpected problems.
+
+- Update to 0.8.7
+  * Bugfix for PyInstaller
+
+- Update to 0.8.6
+  * Grammar caching: It's now possible to cache the results of the
+    LALR grammar analysis, for x2 to x3 faster loading. Use
+    Lark(..., cache=True) or specify a file name.
+  * Grammar templates: Added support for grammar "functions" that
+    expand in preprocessing.
+  * Lark online IDE: Technically not a feature, but it's possible to
+    run Lark in the browser. Now we also have a simple IDE on github
+    pages: https://lark-parser.github.io/lark/ide/app.html
+  * Other changes:
+    + Improved performance for large grammars
+    + More debug prints when in debug mode
+    + Better support for PyInstaller
+    + Lots of bugfixes: mypy stubs, v_args, docs, and more.
+
+-------------------------------------------------------------------
 Wed Apr 15 10:54:30 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.8.5

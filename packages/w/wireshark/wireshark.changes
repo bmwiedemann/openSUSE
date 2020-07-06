@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul  1 22:22:24 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Wireshark 3.2.5:
+  * CVE-2020-15466: GVCP dissector infinite loop (boo#1173606)
+  * Further features, bug fixes and updated protocol support as
+    listed in:
+    https://www.wireshark.org/docs/relnotes/wireshark-3.2.5.html
+- make verification of package source signatures compatible with
+  source_validator
+
+-------------------------------------------------------------------
 Fri Jun  5 08:21:21 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints for ppc/ppc64le that need more than 3GB to build

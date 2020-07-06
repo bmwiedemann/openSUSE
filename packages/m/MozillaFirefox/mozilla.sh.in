@@ -87,9 +87,11 @@ if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
   export MOZ_ENABLE_WAYLAND=1
 fi
 
-# enable xinput2 (boo#1032003)
-# breaks too many things right now (boo#1053959)
-#export MOZ_USE_XINPUT2=1
+# xinput2 (boo#1173320)
+source /etc/os-release
+if [ "$ID" = "opensuse-tumbleweed" ]; then
+  export MOZ_USE_XINPUT2=1
+fi
 
 moz_debug=0
 script_args=""

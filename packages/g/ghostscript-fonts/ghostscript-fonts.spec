@@ -54,7 +54,7 @@ Source1:        ghostscript-fonts-other-6.0.tar.gz
 #
 # Patch100...Patch999 is for patches from SUSE which are not intended for upstream:
 #
-BuildRequires:  ttf-converter
+BuildRequires:  ttf-converter >= 1.0.3
 # An older fontforge version should work, but 20200314 fixes bugs
 # that appear when converting n021023l.pfb from
 # ghostscript-fonts-std
@@ -139,6 +139,8 @@ be used by applications that don't support Type1 fonts.
 %build
 # There is nothing to "make" as the sources contain plain font files.
 ttf-converter --input-dir fonts/ --output-dir generated
+# Force Nimbus Mono to be monospaced:
+ttf-converter --force-monospaced fonts/n022003l.pfb fonts/n022004l.pfb fonts/n022023l.pfb fonts/n022024l.pfb --output-dir generated
 
 # There's already a version of these fonts included in xorg-x11-fonts-converted
 rm generated/CharterBT-*

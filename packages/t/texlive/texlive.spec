@@ -321,8 +321,8 @@ Obsoletes:      pdfjam < %{version}
 #
 %define texgrp		mktex
 %define texusr		mktex
-#%define texgid		505
-#%define texuid		505
+#define texgid		505
+#define texuid		505
 #
 %description
 After installing texlive and the package texlive-latex, find a large

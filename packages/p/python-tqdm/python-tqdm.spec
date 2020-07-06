@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-tqdm%{pkg_suffix}
-Version:        4.45.0
+Version:        4.47.0
 Release:        0
 Summary:        An extensible progress meter
 License:        MPL-2.0 AND MIT
@@ -68,6 +68,7 @@ and does not require ncurses.
 %if !%{with test}
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/tqdm
+install -m 644 -D tqdm/completion.sh %{buildroot}%{_datadir}/bash-completion/completions/tqdm
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -94,6 +95,7 @@ nosetests-%%{$python_bin_suffix} --ignore-files="tests_perf\.py" --ignore-files=
 %{python_sitelib}/tqdm/
 %{python_sitelib}/tqdm-%{version}-py*.egg-info
 %python_alternative %{_bindir}/tqdm
+%{_datadir}/bash-completion/completions/tqdm
 %endif
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 29 08:19:17 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to address regressions:
+  * 0001-Bring-back-for-saving-usernames-as-well.patch
+  * 0002-Migrate-away-from-singe-quote-identifiers-as-well.patch
+
+-------------------------------------------------------------------
 Tue Jun 23 13:26:15 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.2

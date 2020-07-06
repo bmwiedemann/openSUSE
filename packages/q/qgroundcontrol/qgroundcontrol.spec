@@ -1,7 +1,7 @@
 #
 # spec file for package qgroundcontrol
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           qgroundcontrol
-Version:        3.6.0~pre.1579852764.2702289a8
+Version:        4.0.8
 Release:        0
 Summary:        An operator control unit / ground control software for micro air vehicles
 License:        GPL-3.0-only
@@ -43,17 +43,21 @@ BuildRequires:  pkgconfig(Qt5Core) >= 5.11
 BuildRequires:  pkgconfig(Qt5MultimediaWidgets)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5Positioning)
+BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5ScriptTools)
 BuildRequires:  pkgconfig(Qt5SerialPort)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5TextToSpeech)
 BuildRequires:  pkgconfig(Qt5UiTools)
+BuildRequires:  pkgconfig(Qt5WaylandClient)
 BuildRequires:  pkgconfig(Qt5WebKitWidgets)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5X11Extras)
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(Qt5Qwt6)
 %endif
 
+BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  SDL2-devel
 BuildRequires:  gstreamer-devel
 BuildRequires:  gstreamer-plugins-base-devel
@@ -67,7 +71,7 @@ BuildRequires:  fdupes
 
 #qml deps
 Requires:       libqt5-qtgraphicaleffects
-Requires:       libqt5-qtquickcontrols
+Requires:       libqt5-qtquickcontrols2
 
 %description
 QGroundControl is an operator control unit / ground control software

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul  2 12:27:24 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.10.0
+  - Kubicd can now run on any salt master, it is no longer required
+    that kubic and the salt master run on the first kubernetes master
+    node
+  - Add support for upgrading of multi master setups
+  - Adjust /etc/sysconfig/kubelet and restart kubelet on upgrade
+  - Many bug fixes
+  - Documentation fixes
+
+-------------------------------------------------------------------
 Mon Jan 20 18:52:26 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - kubicd requires kubernetes-client

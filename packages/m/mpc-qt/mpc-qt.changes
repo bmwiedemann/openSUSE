@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul  3 08:19:18 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 18.08+git20200704
+- Switch again to the original developer's repository
+- Add _service 
+- Drop mpv-qthelper.patch (merged upstream)
+
+-------------------------------------------------------------------
 Thu Mar 19 11:48:49 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Added mpv-qthelper.patch

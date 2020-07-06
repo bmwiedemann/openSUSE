@@ -4447,4 +4447,41 @@
     <comment></comment>
     <requestid>811277</requestid>
   </revision>
+  <revision rev="314" vrev="1">
+    <srcmd5>5165a36e24dda6be09ff4b59805c9e85</srcmd5>
+    <version>78.0.1</version>
+    <time>1594045226</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 78.0.1
+  * Fixed an issue which could cause installed search engines to not
+    be visible when upgrading from a previous release.
+- enable MOZ_USE_XINPUT2 for TW (boo#1173320)
+
+- Mozilla Firefox 78.0
+  * startup notifications now using Gtk instead of libnotify
+  * PDF downloads now show an option to open the PDF directly in Firefox
+  * Protections Dashboard (about:protections)
+  * WebRTC not interrupted by screensaver anymore
+  * disabled TLS 1.0 and 1.1 by default
+  MFSA 2020-24 (bsc#1173576)
+  * CVE-2020-12415 (bmo#1586630)
+    AppCache manifest poisoning due to url encoded character processing
+  * CVE-2020-12416 (bmo#1639734)
+    Use-after-free in WebRTC VideoBroadcaster
+  * CVE-2020-12417 (bmo#1640737)
+    Memory corruption due to missing sign-extension for ValueTags
+    on ARM64
+  * CVE-2020-12418 (bmo#1641303)
+    Information disclosure due to manipulated URL object
+  * CVE-2020-12419 (bmo#1643874)
+    Use-after-free in nsGlobalWindowInner
+  * CVE-2020-12420 (bmo#1643437)
+    Use-After-Free when trying to connect to a STUN server
+  * CVE-2020-12402 (bmo#1631597)
+    RSA Key Generation vulnerable to side-channel attack
+  * CVE-2020-12421 (bmo#1308251)
+    Add-On updates did not respect the same certificate trust
+    rules as software updates</comment>
+    <requestid>818643</requestid>
+  </revision>
 </revisionlist>

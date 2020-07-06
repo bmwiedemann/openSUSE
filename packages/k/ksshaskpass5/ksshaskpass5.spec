@@ -29,7 +29,11 @@ Source:         https://download.kde.org/stable/plasma/%{version}/ksshaskpass-%{
 Source1:        https://download.kde.org/stable/plasma/%{version}/ksshaskpass-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-OPENSUSE
 Patch1:         suse-tweaks.diff
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Bring-back-for-saving-usernames-as-well.patch
+Patch3:         0002-Migrate-away-from-singe-quote-identifiers-as-well.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5CoreAddons)
@@ -54,9 +58,9 @@ Conflicts:      ksshaskpass
 A Plasma 5 version of ssh-askpass with KWallet support.
 
 %lang_package
+
 %prep
-%setup -q -n ksshaskpass-%{version}
-%patch1 -p1
+%autosetup -p1 -n ksshaskpass-%{version}
 
 %build
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}

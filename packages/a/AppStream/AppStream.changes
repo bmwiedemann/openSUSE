@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Jul  2 16:50:16 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 0.12.11:
+  Features:
+   * Auto-update static category data from fd.o
+   * Implement support for input control relations
+   * validator: Validate input control relations
+   * validator: Put AppStream technical terms and tag names in backticks in
+     explanation texts
+   * Modernize the README
+   * validator: Check for uppercase letters in cids
+   * Strip beginning/trailing newlines in a number of places
+   * Make AsContext getter for AsComponent public API
+   * qt: Add support for name_variant_suffix
+   * Make component sort-score API public API
+   * Implement a YAML representation of release artifact information  
+  Specification:
+   * Build specification and docs with DAPS
+   * docs: Add (HTML) anchors for requires/recommends items
+   * spec: Specify user input control recommendations
+   * docs: Don't show reference to nonexistent provides->service tag for services
+   * spec: Encourage the use of only lowercase letters for component-IDs
+   * docs: Document --explain flag in ascli manual page as well
+   * docs: Add permalink anchors to some list entries
+   * Formally support BLAKE2b/s as hash functions for release artifacts
+   * docs: Link to the MetaInfo Creator webapp in a few places
+  Bugfixes:
+   * Be less noisy about ignoring excessively long search tokens
+   * Tighten the "free license" check and prevent false positives
+   * cache: Use correct fts value per result (David Hewitt)
+   * validator: Control items can't have a version
+   * validator: Reduce download timeout
+   * yaml: Strip encoding when serializing keyword lists
+   * Allows arbitrary indentation when converting NEWS files
+   * Ignore NULL values silently in our stringstrip function
+   * Only dump valid metainfo description markup, sanitize it otherwise
+- Add patch to avoid parser errors for invalid descriptions:
+  * properly-escape-markup.patch
+- Add patch to fix build on Leap 15.2:
+  * fix-build-gcc7.patch
+
+-------------------------------------------------------------------
 Wed Feb 26 13:27:44 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 0.12.10. Check the NEWS file for the complete changelog.

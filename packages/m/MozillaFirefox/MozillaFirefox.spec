@@ -18,9 +18,16 @@
 
 
 # changed with every update
-%define major          77
+# orig_version vs. mainver: To have beta-builds
+# FF70beta3 would be released as FF69.99
+# orig_version would be the upstream tar ball
+# orig_version 70.0
+# orig_suffix b3
+# major 69
+# mainver %major.99
+%define major          78
 %define mainver        %major.0.1
-%define orig_version   77.0.1
+%define orig_version   78.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -61,6 +68,12 @@ BuildArch:      i686
 %else
 %define crashreporter 0
 %endif
+%if 0%{?sle_version} > 150100
+# pipewire is too old on Leap <15.1
+%define with_pipewire0_3 1
+%else
+%define with_pipewire0_3 0
+%endif
 
 Name:           %{pkgname}
 BuildRequires:  Mesa-devel
@@ -71,7 +84,7 @@ BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
 BuildRequires:  memory-constraints
 %if 0%{?suse_version} <= 1320
-BuildRequires:  gcc7-c++
+BuildRequires:  gcc9-c++
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -80,19 +93,22 @@ BuildRequires:  libXcomposite-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libidl-devel
 BuildRequires:  libiw-devel
-BuildRequires:  libnotify-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.25
-BuildRequires:  mozilla-nss-devel >= 3.52.1
+BuildRequires:  mozilla-nss-devel >= 3.53.1
 BuildRequires:  nasm >= 2.14
-BuildRequires:  nodejs10 >= 10.19.0
+BuildRequires:  nodejs10 >= 10.21.0
 BuildRequires:  python-devel
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
+BuildRequires:  python-libxml2
+BuildRequires:  python36
+%else
 BuildRequires:  python2-xml
 BuildRequires:  python3 >= 3.5
+%endif
 BuildRequires:  rust >= 1.41
 BuildRequires:  rust-cbindgen >= 0.14.1
-BuildRequires:  startup-notification-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-libXt-devel
@@ -104,16 +120,23 @@ BuildRequires:  zip
 %if 0%{?suse_version} < 1550
 BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %endif
+%if (0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000)
+BuildRequires:  clang6-devel
+%else
 BuildRequires:  clang-devel >= 5
+%endif
 BuildRequires:  pkgconfig(gdk-x11-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.18.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.4.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
 BuildRequires:  pkgconfig(gtk+-unix-print-2.0)
 BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(libpulse)
+%if %{with_pipewire0_3}
+BuildRequires:  pkgconfig(libpipewire-0.3)
+%endif
 # libavcodec is required for H.264 support but the
 # openSUSE version is currently not able to play H.264
 # therefore the Packman version is required
@@ -148,7 +171,7 @@ Source9:        firefox.js
 Source11:       firefox.1
 Source12:       mozilla-get-app-id
 Source13:       spellcheck.js
-Source14:       https://github.com/openSUSE/firefox-scripts/raw/8a54002/create-tar.sh
+Source14:       https://github.com/openSUSE/firefox-scripts/raw/5e54f4a/create-tar.sh
 Source15:       firefox-appdata.xml
 Source16:       %{name}.changes
 # Set up API keys, see http://www.chromium.org/developers/how-tos/api-keys
@@ -168,7 +191,6 @@ Patch6:         mozilla-sandbox-fips.patch
 Patch7:         mozilla-fix-aarch64-libopus.patch
 Patch8:         mozilla-disable-wasm-emulate-arm-unaligned-fp-access.patch
 Patch9:         mozilla-s390-context.patch
-Patch10:        mozilla-s390-bigendian.patch
 Patch11:        mozilla-reduce-rust-debuginfo.patch
 Patch12:        mozilla-ppc-altivec_static_inline.patch
 Patch13:        mozilla-bmo1005535.patch
@@ -181,7 +203,11 @@ Patch19:        mozilla-bmo1512162.patch
 Patch20:        mozilla-fix-top-level-asm.patch
 Patch21:        mozilla-bmo1504834-part4.patch
 Patch22:        mozilla-bmo849632.patch
-Patch23:        mozilla-bmo1634646.patch
+Patch23:        mozilla-pipewire-0-3.patch
+Patch24:        mozilla-bmo1602730.patch
+Patch25:        mozilla-bmo998749.patch
+Patch26:        mozilla-bmo1626236.patch
+Patch27:        mozilla-s390x-skia-gradient.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -203,7 +229,7 @@ Obsoletes:      %{name}-devel < %{version}
 %if 0%{?suse_version} < 1220
 Obsoletes:      libproxy1-pacrunner-mozjs <= 0.4.7
 %endif
-##BuildArch:      i686 x86_64 aarch64 ppc64le
+ExcludeArch:    armv6l armv6hl
 
 %description
 Mozilla Firefox is a standalone web browser, designed for standards
@@ -228,6 +254,8 @@ Development files for %{appname} to make packaging of addons easier.
 Summary:        Common translations for %{appname}
 Group:          System/Localization
 Provides:       locale(%{name}:ar;ca;cs;da;de;el;en_GB;es_AR;es_CL;es_ES;fi;fr;hu;it;ja;ko;nb_NO;nl;pl;pt_BR;pt_PT;ru;sv_SE;zh_CN;zh_TW)
+# This is there for updates from Firefox before the translations-package was split up into 2 packages
+Provides:       %{name}-translations
 Requires:       %{name} = %{version}
 Obsoletes:      %{name}-translations < %{version}-%{release}
 
@@ -302,9 +330,6 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
-%ifarch s390x ppc64
-%patch10 -p1
-%endif
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
@@ -317,7 +342,13 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
+%if %{with_pipewire0_3}
 %patch23 -p1
+%endif
+%patch24 -p1
+%patch25 -p1
+%patch26 -p1
+%patch27 -p1
 # Firefox
 %patch101 -p1
 %patch102 -p1
@@ -330,14 +361,23 @@ modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
 find . -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
+
+# SLE-12 provides python36, but that package does not provide a python3 binary
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
+sed -i "s/python3/python36/g" configure.in
+sed -i "s/python3/python36/g" mach
+export PYTHON3=/usr/bin/python36
+%endif
+
 #
 kdehelperversion=$(cat toolkit/xre/nsKDEUtils.cpp | grep '#define KMOZILLAHELPER_VERSION' | cut -d ' ' -f 3)
 if test "$kdehelperversion" != %{kde_helper_version}; then
   echo fix kde helper version in the .spec file
   exit 1
 fi
-source %{SOURCE4}
 %endif # only_print_mozconfig
+
+source %{SOURCE4}
 
 export CARGO_HOME=${RPM_BUILD_DIR}/%{srcname}-%{orig_version}/.cargo
 export MOZ_SOURCE_CHANGESET=$RELEASE_TAG
@@ -349,7 +389,7 @@ export MOZILLA_OFFICIAL=1
 export BUILD_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
 %if 0%{?suse_version} <= 1320
-export CC=gcc-7
+export CC=gcc-9
 %else
 %if 0%{?clang_build} == 0
 export CC=gcc
@@ -374,8 +414,17 @@ export MOZCONFIG=$RPM_BUILD_DIR/mozconfig
 echo "export CC=$CC"
 echo "export CXX=$CXX"
 echo "export CFLAGS=\"$CFLAGS\""
+echo "export CXXFLAGS=\"$CXXFLAGS\""
 echo "export LDFLAGS=\"$LDFLAGS\""
 echo "export RUSTFLAGS=\"$RUSTFLAGS\""
+echo "export CARGO_HOME=\"$CARGO_HOME\""
+echo "export PATH=\"$PATH\""
+echo "export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH\""
+echo "export PKG_CONFIG_PATH=\"$PKG_CONFIG_PATH\""
+echo "export MOZCONFIG=\"$MOZCONFIG\""
+echo "export MOZILLA_OFFICIAL=1"
+echo "export BUILD_OFFICIAL=1"
+echo "export MOZ_TELEMETRY_REPORTING=1"
 echo ""
 cat << EOF
 %else
@@ -395,9 +444,10 @@ ac_add_options --prefix=%{_prefix}
 ac_add_options --libdir=%{_libdir}
 ac_add_options --includedir=%{_includedir}
 ac_add_options --enable-release
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
+ac_add_options --enable-default-toolkit=cairo-gtk3
+%else
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
-%if 0%{?suse_version} >= 1550
-ac_add_options --disable-gconf
 %endif
 # bmo#1441155 - Disable the generation of Rust debug symbols on Linux32
 %ifarch %ix86 %arm
@@ -423,7 +473,6 @@ ac_add_options --disable-updater
 ac_add_options --disable-tests
 ac_add_options --enable-alsa
 ac_add_options --disable-debug
-ac_add_options --enable-startup-notification
 #ac_add_options --enable-chrome-format=jar
 ac_add_options --enable-update-channel=%{update_channel}
 ac_add_options --with-mozilla-api-keyfile=%{SOURCE18}

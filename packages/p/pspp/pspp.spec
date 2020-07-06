@@ -118,6 +118,9 @@ Requires:       gsl-devel
 Requires:       libxml2-devel
 Requires:       postgresql-devel
 Requires:       zlib-devel
+%if 0%{?suse_version} 
+Requires:       xz-devel
+%endif
 
 %description devel
 PSPP is a program for statistical analysis of sampled data. It
@@ -149,8 +152,11 @@ autoreconf -f -i
              --disable-relocatable --disable-static --disable-rpath \
              --enable-debug --without-libreadline-prefix
 
-#Fix "File is compiled without RPM_OPT_FLAGS"
+%if 0%{?suse_version} >= 1500 
 %make_build
+%else
+make
+%endif
 
 %install
 %make_install
@@ -158,12 +164,8 @@ autoreconf -f -i
 %suse_update_desktop_file -r %{name} Education Math
 %endif
 
-%if 0%{?mandriva_version}
-# do nothing
-%else
 # don't own /usr/share/info/dir if it exist
-[ -d %{buildroot}/%{_infodir}/dir ] && rm %{buildroot}/%{_infodir}/dir
-%endif
+[ -f %{buildroot}/%{_infodir}/dir ] && rm %{buildroot}/%{_infodir}/dir
 
 #Config for ld
 mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d
@@ -182,17 +184,20 @@ EOF
 
 %check
 %make_build check || /bin/true
+[ -f ./tests/testsuite.log ] || echo "check did not run" > ./tests/testsuite.log
+mkdir $RPM_BUILD_ROOT/%{_datadir}/pspp/tests
+cp ./tests/testsuite.log $RPM_BUILD_ROOT/%{_datadir}/pspp/tests/
 
 %post
 /sbin/ldconfig
-%install_info  --info-dir=%{_infodir}/dir  %{_infodir}/pspp.info
+%install_info  --info-dir=%{_infodir}  %{_infodir}/pspp.info
 %if 0%{?suse_version} >= 1140
 %desktop_database_post
 %endif
 
 %preun
 if [ $1 = 0 ] ; then
-   %install_info_delete --info-dir=%{_infodir}/dir %{_infodir}/pspp.info*
+   %install_info_delete --info-dir=%{_infodir} %{_infodir}/pspp.info*
 fi
 
 %postun
@@ -204,6 +209,7 @@ fi
 %files -f pspp.lang
 %license COPYING
 %doc README THANKS AUTHORS
+%doc %{_datadir}/doc/pspp
 %config(noreplace) %{_sysconfdir}/ld.so.conf.d/pspp.conf
 %{_bindir}/pspp
 %{_bindir}/psppire
@@ -214,7 +220,8 @@ fi
 %dir %{_libdir}/pspp/
 %{_libdir}/pspp/*.so
 %{_datadir}/pspp
-%doc %{_datadir}/doc/pspp
+%exclude %dir %{_datadir}/pspp/tests
+%exclude %{_datadir}/pspp/tests/testsuite.log
 %{_datadir}/icons/hicolor/scalable/apps/pspp.svg
 %{_datadir}/icons/hicolor/16x16/apps/pspp.png
 %{_datadir}/icons/hicolor/16x16/mimetypes/application-x-spss-por.png
@@ -247,16 +254,16 @@ fi
 %{_datadir}/icons/hicolor/48x48/mimetypes/application-x-spss-sps.png
 %{_datadir}/icons/hicolor/48x48/mimetypes/application-x-spss-zsav.png
 %{_datadir}/applications/pspp.desktop
-%if 0%{?mandriva_version}
-%{_mandir}/man1/pspp.1.xz
-%{_mandir}/man1/psppire.1.xz
-%{_mandir}/man1/pspp-dump-sav.1.xz
-%{_mandir}/man1/pspp-convert.1.xz
+%if 0%{?mandriva_version} 
+%doc %{_mandir}/man1/pspp.1.xz
+%doc %{_mandir}/man1/psppire.1.xz
+%doc %{_mandir}/man1/pspp-dump-sav.1.xz
+%doc %{_mandir}/man1/pspp-convert.1.xz
 %else
-%{_mandir}/man1/pspp.1%{?ext_man}
-%{_mandir}/man1/psppire.1%{?ext_man}
-%{_mandir}/man1/pspp-dump-sav.1%{?ext_man}
-%{_mandir}/man1/pspp-convert.1%{?ext_man}
+%doc %{_mandir}/man1/pspp.1.gz
+%doc %{_mandir}/man1/psppire.1.gz
+%doc %{_mandir}/man1/pspp-dump-sav.1.gz
+%doc %{_mandir}/man1/pspp-convert.1.gz
 %endif
 %dir %{_datadir}/appdata/
 %{_datadir}/appdata/pspp.appdata.xml
@@ -265,5 +272,7 @@ fi
 %dir %{_libdir}/pspp/
 %{_libdir}/pspp/libpspp-core.la
 %{_libdir}/pspp/libpspp.la
+%dir %{_datadir}/pspp/tests
+%{_datadir}/pspp/tests/testsuite.log
 
 %changelog

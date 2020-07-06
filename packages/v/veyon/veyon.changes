@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Fri Jun 12 22:53:11 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 4.4.0.
+  * Core: use updated VNC and network stack (libvncserver 0.9.13.)
+  * Core: make VNC connection parameters configurable internally
+  * Core: improve VNC connection reliability
+  * Core: add safe mechanism for opening files preventing symlink
+    attacks
+  * Core: drop log messages exceeding size limit
+  * DesktopServices: improve URL handler invocation (fixes opening
+    URLs with characters such as "=")
+  * RemoteAccess: honor feature configuration (hide view only 
+    button when corresponding feature is disabled)
+  * Fix possible symlink attacks on log files
+  * Update translations
+
+-------------------------------------------------------------------
+Mon Jun  8 13:52:15 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- make all executables correctly position-independent.
+
+-------------------------------------------------------------------
+Wed May 27 16:00:22 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Fix veyon not starting: error while loading shared libraries. 
+
+-------------------------------------------------------------------
+Tue May 12 19:12:41 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 4.3.5.
+  * Fix: LDAP: make SSL/LDAPS connections work properls (previously
+    broken due to improper certificate verifications)
+  * Fix: LDAP: enable additional low-level debug messages at the 
+    command line via environment variable VEYON_DEBUG_LDAP_LIBRARY
+  * Update 3rdparty component libvncserver to latest 0.9.13 
+    snapshot (including new unified connection timeout handling 
+    support)
+  * Master: limit update interval to 10 seconds to prevent server 
+    timeouts
+  * Fix build with Qt >= 5.14
+  * Minor code modernizations
+  * Update translations
+
+-------------------------------------------------------------------
+Mon Nov 18 04:03:43 UTC 2019 - malcolmlewis@opensuse.org
+
+- Clean up building.
+
+-------------------------------------------------------------------
+Wed Jan 17 10:51:54 UTC 2018 - lars@linux-schulserver.de
+
+- initial version 4.0.3

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 05 03:25:35 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1593790773.2f943dc7:
+  * Improve includes in videoencoder.cpp
+  * Fix warnings in videoencoder.cpp
+  * Prevent calling cv::imwrite with an empty image
+  * mergify: Also block merge on selected labels
+  * Update Perl::Tidy to 20200619
+  * deps: Make cpanfile targets configurable
+
+-------------------------------------------------------------------
 Tue Jun 30 18:09:17 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1593540547.a04ac9df:

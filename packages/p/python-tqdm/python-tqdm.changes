@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Jul  3 03:09:31 UTC 2020 - Arun Persaud <arun@dhcp.lbl.gov>
+
+- specfile:
+  * fix location of bash completion
+
+- update to version 4.47.0:
+  * add contrib.discord (similar to contrib.telegram) (#976)
+  * add contrib.bells to auto-enable all extras
+  * add contrib.utils_worker for common slow tasks (e.g. web I/O)
+    + fix lazy large memory usage & discard unsent messages
+      (unprocessed tasks)
+  * fix slow notebook imports (#955 <- #709)
+  * fix gui TypeError on unknown len() (#971)
+  * misc documentation/error message updates
+    + more succinct ImportError on missing ipywidgets (#872)
+    + fix broken/deprecated link (#981)
+    + add inline usage for contrib.discord and contrib.telegram
+  * misc framework updates
+    + add official py3.8 support (#986)
+    + fix snap builds
+
+-------------------------------------------------------------------
+Sun Jun 28 18:50:24 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.46.1:
+  * fix missing sys.setcheckinterval in py3.9 (#978)
+  * fix keras.TqdmCallback compatibility with tensorflow==2.2.0 (#979)
+  * update documentation
+    + correct contrib.concurrent correct max_workers (#977)
+    + drop prominent mention of xrange (#965)
+  * minor linting
+
+-------------------------------------------------------------------
+Sat May  9 15:48:23 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * add bash completion script
+
+- update to version 4.46.0:
+  * add contrib.telegram #949 <- #948
+  * add bash tab completion and --comppath #946, #947 <- #858
+  * fix exception safety in external_write_mode #940
+  * add requests examples (#242)
+  * update documentation
+
+-------------------------------------------------------------------
 Wed Apr  8 06:44:50 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to version 4.45.0:

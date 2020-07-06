@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 26 07:57:00 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Avoid expanded texuid/texgid macros within comments (boo#1172690)
+
+-------------------------------------------------------------------
 Sat May 30 19:14:09 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Properly configure luajit

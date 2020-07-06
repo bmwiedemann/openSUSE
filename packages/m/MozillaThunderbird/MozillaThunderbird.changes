@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  1 21:00:23 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Thunderbird 68.10.0
+  * fixed: Chat: Topics displayed some characters improperly
+    (bmo#1644024)
+  * fixed: Calendar: Filtering tasks did not work when
+    "Incomplete Tasks" was selected (bmo#1593711)
+
+-------------------------------------------------------------------
 Thu Jun 11 14:52:51 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - build with nodejs10 to be able to drop nodejs8 from TW

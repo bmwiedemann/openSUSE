@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul  3 14:06:53 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use systemd_ordering instead of systemd_require.
+- Move /etc/postfix/system to /usr/lib/postfix/systemd [bsc#1173688]
+- Drop /var/adm/SuSEconfig from %post, it does nothing.
+- Rename postfix-SuSE to postfix-SUSE
+- Delete postfix-SUSE/README.SuSE, company name spelled wrong, 
+  completly outdated and not used.
+- Delete postfix-SUSE/SPAMASSASSIN+POSTFIX.SuSE, company name
+  spelled wrong, outdated and not used.
+- sysconfig.mail-postfix: Fix description of MAIL_CREATE_CONFIG,
+  SuSEconfig is gone since ages.
+- update_chroot.systemd: Remove advice to run SuSEconfig.
+- Remove rc.postfix, not used, outdated.
+- mkpostfixcert: Remove advice to run SuSEconfig.
+
+-------------------------------------------------------------------
 Mon Jun 29 18:44:13 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to 3.5.4:

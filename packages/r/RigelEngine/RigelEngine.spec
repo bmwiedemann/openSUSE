@@ -17,9 +17,9 @@
 #
 
 
-%define realver 0.6.0-beta
+%define realver 0.6.1-beta
 Name:           RigelEngine
-Version:        0.6.0beta
+Version:        0.6.1beta
 Release:        0
 Summary:        A modern reimplementation of the game Duke Nukem II
 License:        GPL-2.0-only
@@ -28,8 +28,8 @@ URL:            https://github.com/lethal-guitar/RigelEngine
 Source:         %{name}-%{version}.tar.xz
 Patch0:         RigelEngine-fix-build.patch
 BuildRequires:  boost-devel
-BuildRequires:  cmake
-%if 0%{?sle_version} >= 150100 && 0%{?is_opensuse} 
+BuildRequires:  cmake >= 3.12
+%if 0%{?sle_version} >= 150100 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
 BuildRequires:  gcc9
 BuildRequires:  gcc9-c++
 %else

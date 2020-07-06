@@ -20,7 +20,7 @@
 
 %define psm_so 2
 Name:           libpsm2
-Version:        11.2.86
+Version:        11.2.166
 Release:        0
 Summary:        Intel PSM Messaging API libraries
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -31,7 +31,6 @@ Source1:        libpsm2.changelog
 Source2:        libpsm2-rpmlintrc
 Patch2:         libpsm2-use_RPM_OPT_FLAGS.patch
 Patch3:         libpsm2-use-exported-variable-for-version-and-release.patch
-Patch4:         Add-missing-extern-keywords.patch
 BuildRequires:  libnuma-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  pkg-config
@@ -85,7 +84,6 @@ Support for MPIs linked with PSM versions < 2.
 %setup -q -n %{name}-%{version}%{git_ver}
 %patch2
 %patch3
-%patch4
 
 cp %{S:1} ChangeLog
 

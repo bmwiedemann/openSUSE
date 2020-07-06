@@ -515,4 +515,41 @@ run -osc service localrun format_spec_file to fix copyright
     <comment></comment>
     <requestid>813127</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>149e2cca54d43ea2a63698073dfe91ee</srcmd5>
+    <version>2.20.1</version>
+    <time>1594045404</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.20.1:
+  Fixed:
+  * Installation on BSDs (Tobias Kortkamp)
+  * Regression that caused Newsboat to require a space before semicolon in macros,
+    which made set browser &quot;lynx&quot;; open-in-browser invalid (#1013[1], #1015[2],
+    #1017[3], #1018[4]) (Alexander Batischev)
+  * Possible segfault upon startup (#1025[5]) (Dennis van der Schagt, Alexander
+    Batischev)
+  * Feed sorting in Spanish locale (#1028[6]) (Dennis van der Schagt, Alexander
+    Batischev)
+
+- Update to 2.20:
+  Added:
+  * An FAQ item on why TT-RSS authentication might fail (#44[1]) (Alexander
+    Batischev)
+  * An FAQ item on browser failures in Newsboat 2.18 (Alexander Batischev)
+  * Ability to bind multiple keys to the same operation (#110[2]) (Dennis van
+    der Schagt)
+  * Ability to bind operations to Tab key (Dennis van der Schagt)
+  * New format specifiers for articlelist-format: %n (article unread), %d
+    (article deleted), %F (article's flags) (Dennis van der Schagt)
+  * New format specifier for feedlist-title-format,
+    articlelist-title-format, and searchresult-title-format: %F, which
+    contains current filter expression. That specifier is now included into
+    those settings by default (#946[3]) (Dennis van der Schagt)
+  * New setting, switch-focus, which specifies a key that moves the cursor
+    between widgets in File- and DirBrowser (Dennis van der Schagt)
+  * New setting, wrap-scroll, which makes the cursor jump to the last item
+    when scrolling up on the top one, and vice versa (David Pedersen)
+  * exec command-line command, which allows to run an arbitrary operation</comment>
+    <requestid>817201</requestid>
+  </revision>
 </revisionlist>

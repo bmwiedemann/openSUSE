@@ -1304,4 +1304,12 @@
     <comment>mercurial 5.4.1</comment>
     <requestid>812062</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>16bde0465e976aaffaf91679359aa537</srcmd5>
+    <version>5.4.2</version>
+    <time>1594044952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818303</requestid>
+  </revision>
 </revisionlist>

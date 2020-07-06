@@ -181,10 +181,7 @@ fi
 BUILD_ID=$(get_build_number "$VERSION$VERSION_SUFFIX")
 
 if [ -z ${SKIP_LOCALES+x} ]; then
-  # TODO: Thunderbird has usually "default" as locale entry. 
-  # There we probably need to double-check Firefox-locals
-  # For now, just download every time for Thunderbird
-  if [ "$PRODUCT" = "firefox" ] && [ "$PREV_VERSION" != "" ] && locales_unchanged "$BUILD_ID"; then
+  if [ "$PREV_VERSION" != "" ] && locales_unchanged "$BUILD_ID"; then
     printf "%-40s: Did not change. Skipping.\n" "locales"
     LOCALES_CHANGED=0
   else

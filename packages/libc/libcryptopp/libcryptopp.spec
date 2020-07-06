@@ -1,7 +1,7 @@
 #
 # spec file for package libcryptopp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,19 +20,17 @@
 %define minor 2
 %define patch 0
 %define pkg_version %{major}%{minor}%{patch}
-
+# There is no upstream interface version information.
+# Therefore we need unique basenames (see boo#1027192):
+%define sover %{major}_%{minor}_%{patch}
 Name:           libcryptopp
 # WARNING: Execute "sh precheckin_baselibs.sh" to update baselibs.conf
 # WARNING: uses source tarball name to create lib name.
 Version:        %{major}.%{minor}.%{patch}
 Release:        0
-# There is no upstream interface version information.
-# Therefore we need unique basenames (see boo#1027192):
-%define sover %{major}_%{minor}_%{patch}
 Summary:        Cryptographic library for C++
 License:        BSL-1.0
-Group:          Development/Libraries/C and C++
-Url:            http://www.cryptopp.com
+URL:            https://www.cryptopp.com
 Source:         https://github.com/weidai11/cryptopp/archive/CRYPTOPP_%{major}_%{minor}_%{patch}.tar.gz
 Source1:        precheckin_baselibs.sh
 Source2:        baselibs.conf
@@ -43,9 +41,7 @@ Patch4:         0001-Fix-TCXXFLAGS-using-openSUSE-standard-flags-GH-865.patch
 Patch5:         0001-Fix-missing-if-statement.patch
 Patch6:         cve-2019-14318.patch
 BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
-BuildRequires:  unzip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig
 
 %description
 The Crypto++ library is a C++ class library of cryptographic schemes.
@@ -55,7 +51,6 @@ RandomPool, RDRAND, RDSEED, NIST Hash DRBG.
 
 %package -n %{name}%{sover}
 Summary:        Cryptographic Library for C++
-Group:          System/Libraries
 Obsoletes:      %{name}%{major}_%{minor} = %{version}
 
 %description -n %{name}%{sover}
@@ -66,7 +61,6 @@ curve crypto.
 
 %package -n %{name}-devel
 Summary:        Development files for libcryptopp, a cryptographic library for C++
-Group:          Development/Libraries/C and C++
 Requires:       %{name}%{sover} = %{version}
 Obsoletes:      %{name}-devel-static
 
@@ -76,16 +70,12 @@ block ciphers, block cipher operation modes, message authentication
 codes, hash functions, PKI crypto, key agreement schemes and elliptic
 curve crypto. This package is used for crypto++ development.
 
-
 %prep
 %setup -q -n "cryptopp-CRYPTOPP_%{major}_%{minor}_%{patch}"
 %patch1 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p0
-echo %{major}.%{minor}.%{patch}
-echo %{pkg_version}
-#mv config.recommend config.h
+%patch6
 
 %build
 %ifarch %{arm} i586
@@ -96,7 +86,7 @@ CXXFLAGS="-DNDEBUG %{optflags} -fpic -fPIC -pthread -fopenmp"
 %ifarch ppc64
 CXXFLAGS="$CXXFLAGS -DCRYPTOPP_DISABLE_ALTIVEC"
 %endif
-make %{?_smp_mflags} \
+%make_build \
     CXXFLAGS="$CXXFLAGS" \
     DESTDIR="" \
     PREFIX="%{_prefix}" \
@@ -107,48 +97,41 @@ make %{?_smp_mflags} \
     all static
 
 %install
-make \
-    DESTDIR=%{buildroot} \
+%make_install \
     PREFIX="%{_prefix}" \
     LIB="%{_lib}" \
-    LIBSUFFIX="-%{version}" \
-    install
+    LIBSUFFIX="-%{version}"
 
 rm -rf "%{buildroot}%{_bindir}" %{buildroot}%{_datadir}/cryptopp
-rm -rf "%{buildroot}%{_bindir}"
 rm -rf %{buildroot}%{_libdir}/*.a
 # Install .pc file with correct version field.
 mkdir %{buildroot}%{_libdir}/pkgconfig/
-echo "prefix=%{_prefix}" >%{buildroot}%{_libdir}/pkgconfig/cryptopp.pc
-echo "exec_prefix=\${prefix}" >>%{buildroot}%{_libdir}/pkgconfig/cryptopp.pc
-echo "lib=%{_lib}" >>%{buildroot}%{_libdir}/pkgconfig/cryptopp.pc
-echo "libdir=\${exec_prefix}/\${lib}" >>%{buildroot}%{_libdir}/pkgconfig/cryptopp.pc
-echo "includedir=\${prefix}/include" >>%{buildroot}%{_libdir}/pkgconfig/cryptopp.pc
-echo "" >>%{buildroot}%{_libdir}/pkgconfig/cryptopp.pc
-echo "Name: libcrypto++" >>%{buildroot}%{_libdir}/pkgconfig/cryptopp.pc
-echo "Description: General purpose cryptographic shared library" >>%{buildroot}%{_libdir}/pkgconfig/cryptopp.pc
-echo "URL: http://www.cryptopp.com" >>%{buildroot}%{_libdir}/pkgconfig/cryptopp.pc
-echo "Version: %{version}" >>%{buildroot}%{_libdir}/pkgconfig/cryptopp.pc
-echo "Requires:" >>%{buildroot}%{_libdir}/pkgconfig/cryptopp.pc
-echo "Libs: -lcryptopp" >>%{buildroot}%{_libdir}/pkgconfig/cryptopp.pc
-echo "Cflags:" >>%{buildroot}%{_libdir}/pkgconfig/cryptopp.pc
-echo "" >>%{buildroot}%{_libdir}/pkgconfig/cryptopp.pc
+cat > %{buildroot}%{_libdir}/pkgconfig/cryptopp.pc <<EOF
+prefix=%{_prefix}
+exec_prefix=\${prefix}
+libdir=%{_libdir}
+includedir=%{_includedir}
+
+Name: libcrypto++
+Description: General purpose cryptographic shared library
+URL: https://www.cryptopp.com
+Version: %{version}
+Libs: -lcryptopp
+Cflags:
+EOF
 
 %check
-LD_LIBRARY_PATH=%{buildroot}%{_libdir} make test
+LD_LIBRARY_PATH=%{buildroot}%{_libdir} %make_build test
 
 %post   -n %{name}%{sover} -p /sbin/ldconfig
 %postun -n %{name}%{sover} -p /sbin/ldconfig
 
 %files -n %{name}%{sover}
-%defattr(-,root,root)
 %{_libdir}/libcryptopp.so.%{major}.*
 %license License.txt
 
 %files -n %{name}-devel
-%defattr(-,root,root)
 %doc Readme.txt
-%license License.txt
 %{_includedir}/cryptopp
 %{_libdir}/libcryptopp.so
 %{_libdir}/pkgconfig/cryptopp.pc

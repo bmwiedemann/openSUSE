@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Jun 27 10:26:28 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.1
+  General improvements
+  * It's now possible to set the difficulty when launching into a
+    specific level via the command line
+    (example: -l L2 --difficulty easy)
+  OpenGL support improvements
+  * The minimum required GLSL version is now 130 instead of 150,
+    allowing the game to run on older GPUs which support
+    OpenGL 3.0 but not GLSL 150.
+  * More robust OpenGL initialization error handling
+  * OpenGL ES support was broken and is now fixed, allowing the
+    game to run on some older GPUs and on a Raspberry Pi (not
+    optimized yet)
+  * Fixed a crash when running the game on Linux with Mesa
+    software rendering
+  Bug fixes
+  * Fixed camera position being wrong upon respawning
+  * Fixed missing animation for walking turkey
+
+-------------------------------------------------------------------
+Fri Jun 26 10:43:48 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Adjust BR: cmake >= 3.12 is needed
+- Limit gcc9 usage to Leap 15
+
+-------------------------------------------------------------------
 Sun Jun 14 18:23:48 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Use gcc9 on Leap systems

@@ -1,7 +1,7 @@
 #
 # spec file for package cargo-c
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Andreas Schneider <asn@cryptomilk.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           cargo-c
-Version:        0.5.0
+Version:        0.6.7
 Release:        0
 Summary:        Helper to build and install c-like libraries from Rust
 License:        MIT
@@ -30,6 +30,7 @@ Source0:        https://github.com/lu-zero/cargo-c/archive/v%{version}/%{name}-%
 Source1:        vendor.tar.xz
 #
 BuildRequires:  rust-packaging
+BuildRequires:  pkgconfig(openssl)
 
 %description
 The is a cargo applet to build and install C-ABI compatibile dynamic and static
@@ -64,6 +65,9 @@ EOF
 
 %install
 %cargo_install
+
+find %{buildroot} -name .crates2.json -delete
+rm -rf %{buildroot}%{_datadir}/cargo/registry
 
 %files
 %license LICENSE

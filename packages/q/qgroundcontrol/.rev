@@ -185,4 +185,41 @@
   BR, since the same symbol is also requried unconditionaly.</comment>
     <requestid>766791</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4cce8cd449415dc48935e729f4108aad</srcmd5>
+    <version>4.0.8</version>
+    <time>1594045277</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.0.8
+  *** INCOMPATIBLE: All settings will be reset!
+  Settings
+    Language: Allow selection of language
+    Optional CSV Logging of telemetry data for improved accessibility.
+    ArduPilot: Mavlink: Configurable stream rate settings
+  Setup
+    Joystick
+      New joystick setup ui
+      Ability to configure held button to single or repeated action
+    ArduPilot
+      Motor Test
+      ArduSub
+        Automatic motor direction detection
+  Plan
+    Create Plan from template with wizard like progression for completing full Plan.
+    Survey: Save commonly used settings as a Preset
+    Polygon editing
+      New editing tools ui
+      Support for tracing a polygon from map locations
+    ArduPilot
+      Support for GeoFence and Rally Points using latest firmwares and mavlink v2
+  Fly
+    Click to ROI support
+    Added support for connecting to ADSB SBS server. Adds support for ADSB data from USB SDR Dongle running 'dump1090 --net' for example.
+    Ability to turn on Heading to home, COG and Next Waypoint heading indicators in Compass.
+    Video
+      Add support for h.265 video streams
+      Automatically add a Video Overlay with flight data as a subtitle for locally-recorded videos
+    Vehicle type specific pre-flight checklists. Turn on from Settings.</comment>
+    <requestid>810733</requestid>
+  </revision>
 </revisionlist>

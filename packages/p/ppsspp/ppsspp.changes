@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Sat Jun 27 17:39:57 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version 1.10~git20200627:
+  * Update version number to 1.10. This required changing the Android version code pattern, but should be ok.
+  * Update lang submodule again
+  * Archive changelog for older versions
+  * Add https://github.com/hrydgard/ppsspp/issues/11974
+  * Update lang submodule
+  * Partly clean up SDL resize code, should help #11974
+  * Enable Vulkan validation in SDL debug builds
+  * Update Lang
+  * Minor style
+  * Update readme for v1.10
+  * Logging improvements and warning fixes.
+  * Finish the Linux part of this change
+  * Vulkan: Recreate the swapchain if we get too many "out of date" frames.
+  * Buildfixes
+  * Move the responsibility to register the debugutils callback to the VulkanContext. We only use one anyway.
+  * Simplify the validation interface code, bugfixes
+  * Vulkan: Remove support for the old VK_EXT_debug_report extension
+  * Update lang and pspautotests submodules
+  * oop
+  * oop
+  * Fix by @unknownbrackets
+  * oop
+  * Add a sceOpenPSID_driver nid
+  * Add sysclib_strncmp,sysclib_memmove
+  * Reuse some already translated strings
+  * ColorConv: Fix typo introduced in #12882, fixing #13014
+  * More README updates
+  * More README.md updates
+  * Don't forget rpi4
+  * Incorporate unknownbrackets' suggestions for the README.md update.
+  * iota97's suggested README.md items.
+  * Android: Fix odd screen centering with insets.
+  * Update lang submodule.
+  * Update README.md for 1.10.0.
+  * Real support Code Geass: Lost Colors chinese patched version
+  * Some work in sceKernelPartitionTotalFreeMemSize,sceKernelPartitionMaxFreeMemSize
+  * Add Kurok (homebrew with a distinctive GameID to compat.ini ForceMax60FPS. Fixes #13025
+  * Add some ThreadManForKernel nids
+  * Change to @unknownbrackets logic
+  * oop
+  * Add sysclib_strstr
+  * Link to buildbot builds of PPSSPP
+  * Add sceKernelStdout
+  * Kill the log as @hrydgard suggest
+  * Reduce sysclib_memcpy log level
+  * Real support "Hatsune Miku Project Diva Extend" chinese version
+  * Fix logging as @unknownbrackets suggest
+  * Wrap sceKernelUnloadModule in ModuleMgrForKernel
+  * Wrap some SysMemForKernel
+  * Forget HLE_KERNEL_SYSCALL flag
+  * Wrap sceKernelExitVSHKernel
+  * Warp some ThreadManForKernel
+  * Fix some bugs and style for #12994
+  * rudimentary serch function added for the memory dialog
+  * Code style fix
+  * Revert "Repeat of the experimental commit, was too fast for the build bot."
+  * Repeat of the experimental commit, was too fast for the build bot.
+  * Revert "Experimental commit: Bump up scratchpad size so that Android will act like Windows in #10196 (Spider-Man 3)"
+  * Experimental commit: Bump up scratchpad size so that Android will act like Windows in #10196 (Spider-Man 3)
+  * VFPU interpreter: Improve some error messages, after seeing a bad one in #10196.
+  * We need to check for renderpass change and dirty here too. What a mess..
+  * Annotate calls to RebindFramebuffer with their cause.
+  * Vulkan DrawEngine: Move the renderstep changed check until after the last place where it can change.
+  * Disable range culling for MGS:PW and MGS:PO. See #12348
+  * Typo fix. Will hopefully help #12992.
+  * Have DisplayLayoutScreen implemented insets manually. Gave up refactoring it.
+  * Handle insets correctly for the in-game final screen blit.
+  * Minor refactor in PresentationCommon (combine loose coordinates to a struct)
+  * VulkanQueueRunner: Fix some uninitialized struct members (not sure if it has any effect)
+  * oop
+  * Remove log as @unknownbrackets suggest
+  * add raspberry pi 64 bit build files
+  * Experimentally enable pixel-depth-rounding for Tales of Phantasia, tries to work around an Exynos driver bug.
+  * Time to update gradle again (Android Studio 4.0 was released)
+  * Fix minor bug in StereoResampler debug display
+  * UWP: Fix safe insets.
+  * Vulkan: Ensure depth/stencil load match on Mali.
+  * Vulkan: Trivially kill more empty steps.
+  * Travis: Build UWP also.
+  * UWP: Link ChatScreen.
+  * UWP: Stub new inputbox system func.
+  * UWP: Buildfix for controller vibration.
+  * UWP: Add libpng17 include path.
+  * UWP: Include TextDrawer in main MSVC project.
+  * UWP: Fix TextDrawer with latest changes.
+  * Thread: Default to kernel threads from kernel.
+  * GPU: Don't allow step id to decrease at a sync.
+  * Vulkan: Correct viewport flag reset on rebind.
+  * GE Debugger: Fix alignment in GE dumps.
+  * Do a similar thing for D3D (let the backend handle the dirtying).
+  * OpenGL/Vulkan: Rework the contract around dynamic state. Removes some ugly dirtying from the GL render manager.
+  * UI: Lock around removal from dispatch queue.
+  * Remove all those "GLES reset the blend state" comments.
+  * GLRenderManager: Removes some redundant dirtying. Preserves blend state (color mask) across clears.
+  * Vulkan: After binding a new framebuffer, we always need to dirty the viewport/scissor state.
+  * DarkStalkers: Handle the "normal" screen stretch too, not just "wide", to avoid a surprising performance drop.
+  * Exclude a couple more commands from re-execution in ReapplyGfxState. See
+  * GPU: Don't reapply LoadClut each frame.
+  * PPGe: Left align messages in dialogs.
+  * Windows: Workaround for custom build step error.
+  * Windows: Avoid calling git describe 3 times.
+  * SDL: Try to continue if EGL init fails.
+  * Windows: Move git-version update to build event.
+  * Global: Add more other platforms to MSVC project.
+  * Support chain
+  * Memory reading CWCheat
+  * Add postprocessing CWCHEAT
+
+-------------------------------------------------------------------
 Sun May 24 11:07:43 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add QT5Multimedia as build requirement. Fix building of the Qt

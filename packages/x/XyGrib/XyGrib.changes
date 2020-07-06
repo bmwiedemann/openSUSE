@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul  4 11:29:00 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- QPainter.patch applied for build error in TW (gcc10)
+  github.com/opengribs/XyGrib/pull/255 
+
+-------------------------------------------------------------------
 Fri Jul 19 11:26:47 UTC 2019 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.2.6.1

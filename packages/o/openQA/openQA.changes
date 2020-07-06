@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 05 03:26:30 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1593790150.a010576f0:
+  * Handle the case where a concurrent cache service Minion job failed gracefully
+  * mergify: Also block merge on selected labels
+  * Handle the case where the first cache service Minion job failed gracefully
+  * deps: Make cpanfile targets configurable
+  * openqa-clone-custom-git-refspec: Enhance error message when called with wrong certificates
+  * Fix showing help for commands loaded via plugins
+
+-------------------------------------------------------------------
 Thu Jul 02 19:25:56 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1593683888.1074bc933:

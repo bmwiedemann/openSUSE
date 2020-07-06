@@ -306,4 +306,12 @@ Packaging :
     <comment></comment>
     <requestid>769490</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>acecef774b66b3faace8d9ca56b7a472</srcmd5>
+    <version>5.11.0</version>
+    <time>1594045748</time>
+    <user>dimstar_suse</user>
+    <comment>collectd 5.11</comment>
+    <requestid>818825</requestid>
+  </revision>
 </revisionlist>

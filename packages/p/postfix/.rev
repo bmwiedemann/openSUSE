@@ -1742,4 +1742,12 @@
 successfully tested on Tumbleweed x86_64</comment>
     <requestid>817783</requestid>
   </revision>
+  <revision rev="187" vrev="2">
+    <srcmd5>0c3e78fe347e81a94af876046ec03a24</srcmd5>
+    <version>3.5.4</version>
+    <time>1594045184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818637</requestid>
+  </revision>
 </revisionlist>

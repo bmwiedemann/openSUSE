@@ -17,7 +17,7 @@
 
 
 Name:           newsboat
-Version:        2.19
+Version:        2.20.1
 Release:        0
 Summary:        RSS/Atom Feed Reader for Text Terminals
 License:        MIT
@@ -29,8 +29,6 @@ Source2:        https://newsboat.org/newsboat.pgp#/%{name}.keyring
 Source3:        vendor.tar.xz
 # pbleser: introduce OPTFLAGS make variable, instead of hard-coded -ggdb
 Patch0:         newsbeuter-makefile.patch
-# PATCH-FIX-UPSTREAM - https://github.com/newsboat/newsboat/issues/994
-Patch1:         newsboat-fix-json-hpp.patch
 BuildRequires:  cargo
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
@@ -62,7 +60,6 @@ text terminals.
 %prep
 %setup -qa3
 %patch0 -p1
-%patch1 -p1
 mkdir cargo-home
 cat >cargo-home/config <<EOF
 [source.crates-io]
@@ -72,6 +69,7 @@ replace-with = 'vendored-sources'
 directory = './vendor'
 EOF
 sed -i 's/#!\/usr\/bin\/env perl/#!\/usr\/bin\/perl/' ./contrib/pinboard.pl
+sed -i 's/#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/' ./doc/examples/example-exec-script.py
 
 %build
 export CARGO_HOME=`pwd`/cargo-home/
@@ -102,6 +100,10 @@ done
 %{_docdir}/%{name}/contrib/
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/man1/podboat.1%{?ext_man}
+%dir %{_datadir}/icons/hicolor/
+%dir %{_datadir}/icons/hicolor/scalable
+%dir %{_datadir}/icons/hicolor/scalable/apps
+%{_datadir}/icons/hicolor/scalable/apps/newsboat.svg
 
 %files lang -f %{name}.lang
 

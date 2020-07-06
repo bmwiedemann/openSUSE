@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Jun  7 09:46:46 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 3.2.25:
+  - Slideshow improvements
+  - Welcome QML module is now pretty much complete.
+- Removed Qt515_QPainterPath.patch: contained in upstream
+  
+-------------------------------------------------------------------
+Wed Jun  3 20:12:03 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Add patch Qt515_QPainterPath.patch to add missing includes 
+  (QPainterPath) for Qt 5.15 compatibility.
+
+-------------------------------------------------------------------
+Thu May 28 18:16:33 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Correct license
+
+-------------------------------------------------------------------
+Mon May 25 05:51:38 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Update generic branding.
+
+-------------------------------------------------------------------
+Sun May 24 18:02:23 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Added keyring and added SOURCE.asc
+- Patch updates
+- Update to version 3.2.24:
+  - Lots of fixes and additions since 3.2.15:
+   - https://calamares.io/calamares-3.2.16-is-out/
+   - https://calamares.io/calamares-3.2.17-is-out/
+   - https://calamares.io/calamares-3.2.18-is-out/
+   - https://calamares.io/calamares-3.2.19-is-out/
+   - https://calamares.io/calamares-3.2.20-is-out/
+   - https://calamares.io/calamares-3.2.21-is-out/
+   - https://calamares.io/calamares-3.2.22-is-out/
+   - https://calamares.io/calamares-3.2.23-is-out/
+   - https://calamares.io/calamares-3.2.24-is-out/
+
+-------------------------------------------------------------------
 Fri Feb 21 17:09:26 UTC 2020 - avvissu@yandex.by
 
 - Requires kde-cli-tools5 instead of /usr/bin/kdesu, 

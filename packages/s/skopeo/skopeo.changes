@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jun 24 13:17:30 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to skopeo v1.1.0:
+  * Add Skopeo Stable Image Dockerfile for Quay
+  * Add tags to support regular expressions in yaml conf
+  * Add tags to support regular expressions without breaking the
+    old ones in yaml conf
+  * Add upstream and testing container images
+  * Add upstream and testing container images
+  * Bump github.com/containers/storage from 1.20.1 to 1.20.2
+  * Bump github.com/stretchr/testify from 1.6.0 to 1.6.1
+  * Clarify control flow when handling the tags list
+  * Clarify imagesToCopy control flow
+  * Correct a typo in docs/skopeo-sync.1.md
+  * Don't use path.Join to form repository names
+  * Drop redundant fmt.Sprintf inside erorrs.Wrapf/Errorf
+  * Fix error handling on invalid regex
+  * Fix the recently added example in the man page.
+  * Inline isTagSpecified into its only caller
+  * Only create a SystemContext once per registry
+  * Remove the repoReference parameter of imagesToCopyFromRepo
+  * Share the logrus.WithFields settings over the loop bodies
+  * Use MatchString instead of Match with a manual conversion
+  * Use a reference.Named, not types.ImageReference, in
+    imagesToCopyFromRepo
+  * Use a separate field for the "sync images with tag
+    matching regex" feature
+  * Use reference.Tagged to extract the tag from a reference
+  * Work with a reference.Named, not strings, in
+    imagesToCopyFromRegistry
+
+-------------------------------------------------------------------
 Thu May 21 12:43:35 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to skopeo v1.0.0:

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 25 12:18:05 UTC 2020 - Christian Vögl <christian.voegl@suse.com>
+
+- Update to 5.11
+  * Adds buddyinfo, logparser, ubi, and write_influxdb_udp plugins
+  * Remove lvm plugin
+  * Multiple bugfixes/improvements
+- update collectd-fix_collection_cgi.patch
+
+-------------------------------------------------------------------
 Wed Jan 29 13:41:00 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Cleanup BuildRequires that are not actually in use:

@@ -22,17 +22,16 @@ Version:        1.4.0
 Release:        0
 Summary:        FIDO U2F and FIDO 2.0 protocols
 License:        BSD-2-Clause
-Group:          Productivity/Networking/Security
 URL:            https://developers.yubico.com/
 Source0:        https://developers.yubico.com/libfido2/Releases/%{name}-%{version}.tar.gz
 Source1:        https://developers.yubico.com/libfido2/Releases/%{name}-%{version}.tar.gz.sig
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libhidapi-devel
 BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcbor)
+BuildRequires:  pkgconfig(libudev)
 
 %description
 Provides library functionality for communicating with a FIDO device
@@ -40,7 +39,7 @@ over USB as well as verifying attestation and assertion signatures.
 
 %package     -n %{name}-%{sover}
 Summary:        FIDO U2F and FIDO 2.0 protocols
-Group:          System/Libraries
+Requires:       %{name}-udev
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 
@@ -51,9 +50,7 @@ Client-to-Authenticator Protocol (CTAP 1 and 2).
 
 %package     -n %{name}-devel
 Summary:        Development files for FIDO U2F and FIDO 2.0 protocols
-Group:          Development/Libraries/C and C++
 Requires:       %{name}-%{sover} = %{version}
-Requires:       libhidapi-devel
 Requires:       libopenssl-1_1-devel
 Conflicts:      libfido2-0_4_0
 
@@ -63,11 +60,16 @@ use FIDO U2F and FIDO 2.0 protocols.
 
 %package     -n %{name}-utils
 Summary:        Utility programs making use of libfido2, a library for FIDO U2F and FIDO 2.0
-Group:          Development/Tools/Other
 Conflicts:      libfido2-0_4_0
 
 %description -n %{name}-utils
 This package contains utilities to use FIDO U2F and FIDO 2.0 protocols.
+
+%package        udev
+Summary:        Utility programs making use of libfido2, a library for FIDO U2F and FIDO 2.0
+
+%description    udev
+This package contains the udev rules for FIDO2 compatible devices.
 
 %prep
 %setup -q
@@ -76,16 +78,26 @@ This package contains utilities to use FIDO U2F and FIDO 2.0 protocols.
 %define __builder ninja
 %cmake \
     -DCBOR_LIBRARY_DIRS=%{_libdir} \
-    -DUSE_HIDAPI=1
+    -DUSE_HIDAPI=0
 %cmake_build
 
 %install
 %cmake_install
 
+# u2f-host has the same udev rule, use a different name
+mkdir -p %{buildroot}%{_udevrulesdir}
+install -m 0644 udev/70-u2f.rules %{buildroot}%{_udevrulesdir}/70-fido2.rules
+
 find %{buildroot} -type f -name "*.a" -delete -print
 
 %post   -n %{name}-%{sover} -p /sbin/ldconfig
 %postun -n %{name}-%{sover} -p /sbin/ldconfig
+
+%post udev
+%{udev_rules_update}
+
+%postun udev
+%{udev_rules_update}
 
 %files -n %{name}-%{sover}
 %license LICENSE
@@ -99,6 +111,9 @@ find %{buildroot} -type f -name "*.a" -delete -print
 %{_libdir}/%{name}.so
 %{_mandir}/man3/*
 %{_libdir}/pkgconfig/*
+
+%files udev
+%{_udevrulesdir}/70-fido2.rules
 
 %files -n %{name}-utils
 %{_bindir}/fido2-*

@@ -19,7 +19,7 @@
 %define libappstream_sover 4
 %define libAppStreamQt_sover 2
 Name:           AppStream
-Version:        0.12.10
+Version:        0.12.11
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -28,6 +28,10 @@ URL:            https://www.freedesktop.org/software/appstream/docs/
 Source0:        http://www.freedesktop.org/software/appstream/releases/%{name}-%{version}.tar.xz
 Source1:        http://www.freedesktop.org/software/appstream/releases/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM
+Patch1:         properly-escape-markup.patch
+# PATCH-FIX-OPENSUSE
+Patch100:       fix-build-gcc7.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gettext
 BuildRequires:  gperf

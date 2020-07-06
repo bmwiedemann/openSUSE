@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul  3 08:04:50 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 11.2.166
+  - No release notes available
+- Drop Add-missing-extern-keywords.patch as it was merged upstream
+
+-------------------------------------------------------------------
 Fri Jun  5 10:45:37 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec

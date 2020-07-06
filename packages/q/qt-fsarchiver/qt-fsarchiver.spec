@@ -75,6 +75,7 @@ echo "GenericName=Qt GUI for fsarchiver" >> starter/%{name}.desktop
 echo "GenericName[lt]=Qt fsarchiver" >> starter/%{name}.desktop
 
 %build
+export CFLAGS="%{optflags} -fcommon"
 pushd %{name}-terminal
 %qmake5 %{name}-terminal.pro
 %make_jobs

@@ -1,7 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul  3 05:38:16 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20200702
+  - Added 50 icons
+  - Updated 20 icons
+  - Changes and fixes
+    * Added a few missing symlinks to symbolic icons of GNOME apps
+    * Changed color of emblems #2274
+    * Fixed a glich in Veloren icon #2282
+    * Fixed blurred 96px icons in GNOME and in other GTK-based #2301
+    * Increased 32px/64px folder icons #2274
+    * Removed qgis-mime symlink to avoid overriding image mime icons #1265
+
+-------------------------------------------------------------------
 Wed Jun  3 04:06:52 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
 
-- Update version 20200602
+- Update to version 20200602
   - Animated notification icons in Pantheon and other improvements to ePapirus
   - Yaru folders color #2198
   - Added 66 icons

@@ -1,7 +1,7 @@
 #
 # spec file for package XyGrib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018 Dr. Axel Braun
 # Copyright (c) 2018 Dominig ar Foll (Intel Open Source)
 #
@@ -28,6 +28,7 @@ URL:            https://opengribs.org/en/
 Source0:        https://github.com/opengribs/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.png
 Source2:        %{name}.desktop
+Patch0:         QPainter.patch 
 BuildRequires:  cmake
 BuildRequires:  libnova-devel
 BuildRequires:  libpng-devel
@@ -60,6 +61,7 @@ found on OpenSkiron.org.
 
 %prep
 %setup -q
+%patch0 -p1
 cp %{S:1} %{S:2} .
 
 %build

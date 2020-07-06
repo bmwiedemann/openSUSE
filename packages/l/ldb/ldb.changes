@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul  3 13:15:48 UTC 2020 - Noel Power <nopower@suse.com>
+
+- Release ldb 2.1.4
+  + CVE-2020-10730: NULL de-reference in AD DC LDAP server when
+    ASQ and VLV combined; (bso#14364); (bsc#1173159)
+
+-------------------------------------------------------------------
 Wed May 20 14:05:18 UTC 2020 - David Mulder <david.mulder@suse.com>
 
 ldb: Bump version to 2.1.3; (bso#14330)

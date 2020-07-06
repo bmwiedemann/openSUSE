@@ -17,17 +17,13 @@
 
 
 Name:           mpc-qt
-Version:        18.08+git20190618
+Version:        18.08+git20200704
 Release:        0
 Summary:        Media Player Classic Qute Theater
 License:        GPL-2.0-only
 URL:            https://github.com/cmdrkotori/mpc-qt
-# the original cvs at https://github.com/cmdrkotori/mpc-qt.git is gone
-# this is a dump of the reconstructed tree at https://gitlab.com/lbaldoni/mpc-qt.git
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}.changes
-# PATCH-FIX-UPSTREAM mpv-qthelper.patch including header removed from mpv-devel
-Patch0:         mpv-qthelper.patch
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig(Qt5Core)
@@ -37,7 +33,7 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.4
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(mpv) >= 1.101.0
-%if 0%{?suse_version} >= 1500
+%if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++
 %else
 BuildRequires:  gcc7-c++
@@ -51,15 +47,13 @@ A clone of Media Player Classic reimplemented in Qt.
 rm -rf mpv-dev
 
 %build
-export CC=gcc
 export CXX=g++
-test -x "$(type -p gcc-7)" && export CC=gcc-7
 test -x "$(type -p g++-7)" && export CXX=g++-7
 qmake-qt5 \
   QMAKE_CFLAGS+="%{optflags}" QMAKE_CXXFLAGS+="%{optflags}" \
   QMAKE_CC="${CC}" QMAKE_CXX="${CXX}" PREFIX=%{_prefix} \
   mpc-qt.pro
-make %{?_smp_mflags}
+%make_build
 
 %install
 mkdir -p %{buildroot}/%{_bindir} \

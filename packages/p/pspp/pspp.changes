@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul  4 11:30:18 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Enable build for SLE 12SP5 and other distros than openSUSE.
+- Add "Requires: xz-devel" for pspp-devel.
+- Add tests/testsuite.log in pspp-devel.
+
+-------------------------------------------------------------------
 Mon Jun  8 06:44:01 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
 
 - Add option -fcommon as a workaround for compilation with GCC10.

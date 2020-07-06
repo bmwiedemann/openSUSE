@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul  3 17:06:22 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.2.4-89-g583fe198f6:
+  + rebase on tip of upstream "octopus" branch, SHA1 5a3693ca1e7148b0365557740d6f70f3db8cd0e8
+    * upstream Octopus v15.2.4 release, see https://ceph.io/releases/v15-2-4-octopus-released/
+  + mgr/dashboard: Downstream branding (add fix for bsc#1170498)
+
+-------------------------------------------------------------------
+Mon Jun 29 16:24:37 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.2.3-579-g762c7116a8:
+  + mgr/dashboard: Downstream branding
+
+-------------------------------------------------------------------
+Mon Jun 29 13:54:04 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.2.3-578-g498d3083b7:
+  + rebase on tip of upstream "octopus" branch, SHA1 7b12a033c2fbeb415846ddda46d91eeab998e7a4
+
+-------------------------------------------------------------------
 Tue Jun 16 13:33:00 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 15.2.3-455-g04541bbb8e:

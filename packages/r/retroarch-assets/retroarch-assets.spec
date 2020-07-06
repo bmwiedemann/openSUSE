@@ -17,7 +17,7 @@
 
 
 Name:           retroarch-assets
-Version:        0~git20200505
+Version:        0~git20200617
 Release:        0
 Summary:        RetroArch Assets
 License:        CC-BY-4.0
@@ -26,11 +26,13 @@ URL:            https://github.com/libretro/retroarch-assets
 
 Source:         %{name}-%{version}.tar.xz
 
+BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
 BuildRequires:  google-droid-fonts
 BuildRequires:  make
 BuildArch:      noarch
 
+Requires:       dejavu-fonts
 Requires:       google-droid-fonts
 Requires:       retroarch
 
@@ -46,9 +48,10 @@ Assets needed for RetroArch - e.g. menu drivers, etc. Also contains the official
 %make_install
 %fdupes -s %{buildroot}
 
-# Use Droid Sans Fallback because the RetroArch font doesn't support Chinese and Korean
-rm %{buildroot}%{_datadir}/libretro/assets/xmb/monochrome/font.ttf
-ln -s %{_datadir}/fonts/truetype/DroidSansFallbackFull.ttf %{buildroot}%{_datadir}/libretro/assets/xmb/monochrome/font.ttf
+rm %{buildroot}%{_datadir}/libretro/assets/pkg/fallback-font.ttf
+rm %{buildroot}%{_datadir}/libretro/assets/pkg/chinese-fallback-font.ttf
+ln -s %{_datadir}/fonts/truetype/DroidSansFallbackFull.ttf %{buildroot}%{_datadir}/libretro/assets/pkg/chinese-fallback-font.ttf
+ln -s %{_datadir}/fonts/truetype/DejaVuSans.ttf %{buildroot}%{_datadir}/libretro/assets/pkg/fallback-font.ttf
 
 %files
 %license COPYING
