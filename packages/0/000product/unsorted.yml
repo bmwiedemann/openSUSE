@@ -2314,6 +2314,7 @@ unsorted:
   - db48-doc 
   - dbench 
   - dbench4 
+  - dbgl 
   - dbh-devel 
   - dblatex 
   - dblatex-doc 
@@ -2360,6 +2361,9 @@ unsorted:
   - deadbeef-devel 
   - deadbeef-lang 
   - deadbeef-plugin-mpris2 
+  - deal_II-devel: [x86_64] 
+  - deal_II-openmpi2-devel: [x86_64] 
+  - deal_II-openmpi3-devel: [x86_64] 
   - debhelper 
   - debootstrap 
   - debuginfod-client 
@@ -9080,6 +9084,9 @@ unsorted:
   - libddccontrol0 
   - libddcutil-devel 
   - libddcutil2 
+  - libdeal_II9_2_0: [x86_64] 
+  - libdeal_II9_2_0-openmpi2: [x86_64] 
+  - libdeal_II9_2_0-openmpi3: [x86_64] 
   - libdebuginfod-devel 
   - libdebuginfod1 
   - libdecoration0 
@@ -10469,8 +10476,7 @@ unsorted:
   - liblockdev1-32bit: [x86_64] 
   - liblockfile-devel 
   - liblockfile1 
-  - liblodepng-r207: [i586] 
-  - liblodepng-r84: [x86_64] 
+  - liblodepng-r207 
   - liblog4c-devel 
   - liblog4c-doc 
   - liblog4c3 
