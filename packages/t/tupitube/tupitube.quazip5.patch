@@ -1,3 +1,5 @@
+diff --git a/configure.tests/quazip/main.cpp b/configure.tests/quazip/main.cpp
+index dacfcd1..3e06e40 100755
 --- a/configure.tests/quazip/main.cpp
 +++ b/configure.tests/quazip/main.cpp
 @@ -33,8 +33,8 @@
@@ -11,6 +13,8 @@
  #include <QFile>
  
  int main()
+diff --git a/qonf/test.rb b/qonf/test.rb
+index a73280f..4f4b59f 100755
 --- a/qonf/test.rb
 +++ b/qonf/test.rb
 @@ -103,7 +103,7 @@ class Test
@@ -31,16 +35,20 @@
          end
  
          # config.addLib("-lquazip-qt5")
---- a/src/libtupi/tuppackagehandler.h
-+++ b/src/libtupi/tuppackagehandler.h
-@@ -38,8 +38,8 @@
+diff --git a/src/libtupi/tuppackagehandler.cpp b/src/libtupi/tuppackagehandler.cpp
+index 8885859..971e90d 100755
+--- a/src/libtupi/tuppackagehandler.cpp
++++ b/src/libtupi/tuppackagehandler.cpp
+@@ -34,9 +34,9 @@
+  ***************************************************************************/
  
- #include "tglobal.h"
- #include "tapplicationproperties.h"
+ #include "tuppackagehandler.h"
 -#include "quazip/quazip.h"
 -#include "quazip/quazipfile.h"
+-#include "quazip/JlCompress.h"
 +#include "quazip5/quazip.h"
 +#include "quazip5/quazipfile.h"
++#include "quazip5/JlCompress.h"
  
- // SQA: Pending to enable in the future
- // #include "quazip/JlCompress.h"
+ TupPackageHandler::TupPackageHandler()
+ {

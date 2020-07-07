@@ -1,7 +1,7 @@
 #
 # spec file for package tupitube
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %define	_tupilib  %{_libdir}/%{name}
 %define	_tupidata %{_datadir}/%{name}
 Name:           tupitube
-Version:        0.2.13
+Version:        0.2.15
 Release:        0
 Summary:        2D vectorial/animation tool
 License:        GPL-2.0-or-later
@@ -30,7 +30,9 @@ Group:          Productivity/Graphics/Vector Editors
 URL:            https://maefloresta.com
 Source0:        https://sourceforge.net/projects/tupi2d/files/Source%20Code/tupitube.desk-%{version}.tar.gz
 Patch0:         tupitube.quazip5.patch
-Patch1:         tupitube.libav.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-build-with-Qt-5.15.patch
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -38,7 +40,7 @@ BuildRequires:  libquazip-qt5-devel
 BuildRequires:  pkgconfig
 BuildRequires:  ruby
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
+BuildRequires:  pkgconfig(Qt5Core) >= 5.13.0
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Network)
@@ -88,9 +90,13 @@ A design and authoring tool for 2D animation.
 This package contains plugins for %{name}.
 
 %prep
-%setup -q -n tupitube.desk
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n tupitube.desk
+
+# Fix 'E: spurious-executable-perm'
+chmod -x COPYING README*
+
+# Fix 'W: wrong-script-end-of-line-encoding'
+dos2unix src/shell/html/css/tupitube.css
 
 # Add path to ffmpeg
 ffmpeg_include=$(pkg-config --cflags-only-I libavutil)
@@ -113,47 +119,46 @@ make %{?_smp_mflags}
 # Create symbolic link
 install -d %{buildroot}%{_bindir}
 ln -s %{_tupibin}/%{name}.desk %{buildroot}%{_bindir}/%{name}
+
 # Remove unneeded links
 pushd %{buildroot}%{_tupilib}
 for so in $(find . -maxdepth 1 -name \*.so); do
 rm -f $so; done
 popd
+
 # SVG icon
 install -Dm 0644 launcher/icons/icon.svg \
 %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+
 # fix icon name
 mv %{buildroot}%{_datadir}/pixmaps/%{name}.desk.png \
 %{buildroot}%{_datadir}/pixmaps/%{name}.png
+
 # fix .desktop
 sed -i -e '/^Exec/cExec=%{name}' -e '/^Icon/cIcon=%{name}' \
 %{buildroot}%{_datadir}/applications/%{name}.desktop
 
+# Fix 'W: script-without-shebang' rpmlint warnings
+find %{buildroot}%{_tupidata} -type f -executable -exec chmod -x {} \;
+
+# Cleanup
+rm -f %{buildroot}%{_tupilib}/raster/*.so
+
 %fdupes %{buildroot}%{_datadir}
-
-%if 0%{?suse_version} < 1500
-%post
-%mime_database_post
-%icon_theme_cache_post
-%desktop_database_post
-
-%postun
-%mime_database_postun
-%icon_theme_cache_postun
-%desktop_database_postun
-%endif
 
 %files
 %license COPYING
 %doc README*
-%{_bindir}/%{name}
-%{_tupibin}/
 %dir %{_tupilib}
-%{_tupilib}/*.so.*
-%{_tupidata}/
-%{_datadir}/pixmaps/%{name}.png
-%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+%{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/mime/packages/%{name}.xml
+%{_datadir}/pixmaps/%{name}.png
+%{_tupibin}/
+%{_tupidata}/
+%{_tupilib}/*.so.*
+%{_tupilib}/raster/
 %exclude %{_tupilib}/plugins
 
 %files plugins
