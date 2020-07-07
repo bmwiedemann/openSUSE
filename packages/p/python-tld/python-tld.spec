@@ -19,10 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tld
-Version:        0.12.1
+Version:        0.12.2
 Release:        0
 Summary:        URL top level domain (TLD) extraction module
-License:        MPL-1.1 OR GPL-2.0-only OR LGPL-2.1-only
+License:        MPL-1.1 OR GPL-2.0-only OR LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/barseghyanartur/tld
 Source:         https://files.pythonhosted.org/packages/source/t/tld/tld-%{version}.tar.gz
@@ -73,7 +73,7 @@ A list of TLD names is taken from Mozillas public suffix list:
 
 %files %{python_files}
 %doc README.rst CHANGELOG.rst
-%license LICENSE_GPL2.0.txt LICENSE_LGPL_2.1.txt
+%license LICENSE_GPL2.0.txt LICENSE_LGPL_2.1.txt LICENSE_MPL_1.1.txt
 %python_alternative %{_bindir}/update-tld-names
 %{python_sitelib}/*
 
