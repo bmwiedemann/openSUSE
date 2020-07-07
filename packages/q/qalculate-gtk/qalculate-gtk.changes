@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Jun 23 09:17:22 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 3.11.0:
+  * Option to clear history on exit (GUI)
+  * Fix removal of history items, and move to top, when
+    calculate-as-you-type is activated (GUI)
+  * Reduce the height of the result widget (GUI)
+  * Hide tooltip after keypad button click (GUI)
+  * Check for updates menu item (GUI)
+  * Slovenian translation (GUI)
+  * Configurable number of lines in expression entry (GUI)
+  * Add angle unit selection to sin, cos, and tan button menus
+    and an new status popup menu,
+    and make it possible to set keyboard shortcut for angle units
+  * Improved keyboard shortcuts dialog (GUI)
+  * New parentheses and other improvements in display of results
+  * Dark theme setting on Windows (GUI)
+  * Improved handling of vectors and matrices in insert function
+    dialog
+  * Configurable time limit for plot (GUI)
+  * Ellipsize long variable values used as title in completion
+    popup
+  * Persistent keypad option, which makes it possible to show
+    the keypad and the history simultaneously
+  * Minimal window mode, which hides everything but the expression
+    entry and, when not empty, the result
+  * Optional (disabled by default at compile time) internal help
+    viewer using WebKitGTK
+- Update version of libqalculate in BuildRequires: at least
+  version 3.8.0 now required.
+
+-------------------------------------------------------------------
 Sat Feb  8 13:52:27 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.7.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package qalculate-gtk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           qalculate-gtk
-Version:        3.7.0
+Version:        3.11.0
 Release:        0
 Summary:        Multi-purpose cross-platform desktop calculator
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://qalculate.github.io
 Source0:        https://github.com/Qalculate/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-
 BuildRequires:  automake
 BuildRequires:  c++_compiler
 BuildRequires:  intltool
@@ -33,7 +32,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.4
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12
-BuildRequires:  pkgconfig(libqalculate) >= 3.2.0
+BuildRequires:  pkgconfig(libqalculate) >= 3.8.0
 BuildRequires:  pkgconfig(libxml-2.0)
 
 %description
@@ -66,9 +65,22 @@ NOCONFIGURE=1 ./autogen.sh
 %{_bindir}/%{name}
 %{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/qalculate.??g
 %license COPYING
 %{_mandir}/man?/%{name}.?%{ext_man}
+%{_libdir}/qalculate-search-provider
+%{_datadir}/dbus-1/services/io.github.Qalculate.SearchProvider.service
+%dir %{_datadir}/gnome-shell/
+%dir %{_datadir}/gnome-shell/search-providers
+%{_datadir}/gnome-shell/search-providers/io.github.Qalculate.search-provider.ini
+%{_datadir}/icons/hicolor/128x128/apps/qalculate.png
+%{_datadir}/icons/hicolor/16x16/apps/qalculate.png
+%{_datadir}/icons/hicolor/22x22/apps/qalculate.png
+%{_datadir}/icons/hicolor/24x24/apps/qalculate.png
+%{_datadir}/icons/hicolor/256x256/apps/qalculate.png
+%{_datadir}/icons/hicolor/32x32/apps/qalculate.png
+%{_datadir}/icons/hicolor/48x48/apps/qalculate.png
+%{_datadir}/icons/hicolor/64x64/apps/qalculate.png
+%{_datadir}/icons/hicolor/scalable/apps/qalculate.svg
 
 %files lang -f %{name}.lang
 
