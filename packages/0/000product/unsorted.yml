@@ -108,7 +108,7 @@ unsorted:
   - MozillaFirefox-branding-upstream 
   - MozillaFirefox-buildsymbols 
   - MozillaFirefox-devel 
-  - MozillaFirefox-translations-common: [i586] 
+  - MozillaFirefox-translations-common: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - MozillaFirefox-translations-other 
   - MozillaThunderbird-translations-other 
   - MultiMarkdown-6 
@@ -283,6 +283,7 @@ unsorted:
   - acars2-examples 
   - acarsdec 
   - accerciser-plugin-IPython 
+  - accounts-qml-module 
   - accounts-qml-module-doc 
   - accountsservice-devel 
   - acct 
@@ -372,6 +373,8 @@ unsorted:
   - aho-corasick-double-array-trie-javadoc 
   - aide 
   - aide-test 
+  - aircrack-ng 
+  - aircrack-ng-devel 
   - airspy 
   - airspy-devel 
   - airspy-udev 
@@ -1847,11 +1850,13 @@ unsorted:
   - codespell 
   - cogl-devel 
   - collectd 
+  - collectd-plugin-buddyinfo 
   - collectd-plugin-connectivity 
   - collectd-plugin-dbi 
   - collectd-plugin-gps 
   - collectd-plugin-ipmi 
   - collectd-plugin-java 
+  - collectd-plugin-logparser 
   - collectd-plugin-lua 
   - collectd-plugin-mcelog 
   - collectd-plugin-memcachec 
@@ -1870,8 +1875,10 @@ unsorted:
   - collectd-plugin-snmp 
   - collectd-plugin-synproxy 
   - collectd-plugin-sysevent 
+  - collectd-plugin-ubi 
   - collectd-plugin-uptime 
   - collectd-plugin-virt 
+  - collectd-plugin-write_influxdb_udp 
   - collectd-plugin-write_stackdriver 
   - collectd-plugin-write_syslog 
   - collectd-plugins-all 
@@ -10039,6 +10046,7 @@ unsorted:
   - libhfstospell11 
   - libhfstospell11-32bit: [x86_64] 
   - libhidapi-devel 
+  - libhidapi-hidraw0 
   - libhidapi-libusb0 
   - libhinawa-devel 
   - libhinawa1 
@@ -10461,7 +10469,8 @@ unsorted:
   - liblockdev1-32bit: [x86_64] 
   - liblockfile-devel 
   - liblockfile1 
-  - liblodepng-r84 
+  - liblodepng-r207: [i586] 
+  - liblodepng-r84: [x86_64] 
   - liblog4c-devel 
   - liblog4c-doc 
   - liblog4c3 
@@ -25041,6 +25050,8 @@ unsorted:
   - svm-tools 
   - svn2git 
   - svxlink-server 
+  - swappy 
+  - swappy-lang 
   - sway 
   - sway-branding-openSUSE 
   - sway-branding-upstream 
@@ -33843,6 +33854,7 @@ unsorted:
   - verilator-doc-pdf 
   - verilator-examples 
   - veusz: [x86_64] 
+  - veyon 
   - vfontas 
   - vgrep 
   - vhba-kmp-pae: [i586] 
@@ -34120,6 +34132,9 @@ unsorted:
   - wizznic 
   - wkhtmltopdf 
   - wkhtmltopdf-devel 
+  - wl-clipboard 
+  - wl-clipboard-bash-completion 
+  - wl-clipboard-zsh-completion 
   - wlroots-devel 
   - wm-icons 
   - wmpomme 

@@ -667,6 +667,7 @@
     <package name="libffi8" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libfftw3-3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libfido2-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="libfido2-udev" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libflatpak0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libfontconfig1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libfontenc1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
@@ -762,7 +763,6 @@
     <package name="libharfbuzz-icu0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libharfbuzz0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libhavege2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="libhidapi-hidraw0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libhogweed6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libhunspell-1_7-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libhyphen0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
@@ -897,7 +897,7 @@
     <package name="libpulse-mainloop-glib0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libpulse0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libpwquality1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="libpython3_8-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="libpython3_8-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="libqalculate21" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libqca-qt5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libqt5-qdbus" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
@@ -1201,7 +1201,7 @@
     <package name="pulseaudio-utils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="purge-kernels-service" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="purpose" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
-    <package name="python-rpm-macros" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="python-rpm-macros" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python3-Babel" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python3-Jinja2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
@@ -1213,7 +1213,7 @@
     <package name="python3-asn1crypto" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python3-attrs" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python3-audit" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python3-base" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="python3-base" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="python3-blinker" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python3-certifi" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python3-cffi" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
