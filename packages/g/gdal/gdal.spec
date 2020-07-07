@@ -20,18 +20,12 @@
 %define sourcename gdal
 # Uppercase GDAL is the canonical name for this package in Python
 %define pypi_package_name GDAL
-# Enable docs on Tumbleweed only - https://github.com/OSGeo/gdal/issues/2690
-%if 0%{?suse_version} > 1500
-%bcond_without docs
-%else
-%bcond_with docs
-%endif
 %bcond_with ecw_support
 %bcond_with ecw5_support
 %bcond_with fgdb_support
 %bcond_without python2
 Name:           gdal
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
 License:        MIT AND BSD-3-Clause AND SUSE-Public-Domain
@@ -41,8 +35,6 @@ Source1:        http://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{ver
 Patch0:         gdal-perl.patch
 # Fix occasional parallel build failure
 Patch1:         GDALmake.opt.in.patch
-# PATCH-FIX-UPSTREAM - https://github.com/OSGeo/gdal/pull/2678
-Patch2:         gdal-fix-docs.patch
 BuildRequires:  KEALib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -93,20 +85,9 @@ BuildRequires:  pkgconfig(spatialite)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(xerces-c)
 BuildRequires:  pkgconfig(zlib) >= 1.1.4
-%if %{with docs}
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-breathe
-BuildRequires:  texlive-dvips-bin
-BuildRequires:  texlive-latex-bin-bin
-BuildRequires:  texlive-newunicodechar
-%endif
 %if %{with python2}
 BuildRequires:  python-numpy-devel
 BuildRequires:  python-setuptools
-%if %{with docs}
-BuildRequires:  python-Sphinx
-BuildRequires:  python-breathe
-%endif
 %endif
 %if %{with fgdb_support}
 BuildRequires:  filegdb_api-devel
@@ -176,9 +157,7 @@ The GDAL python modules provide support to handle multiple GIS file formats.
 
 %prep
 %setup -q -n %{sourcename}-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p2
+%autopatch -p1
 
 # Set the right (build) libproj.so version, use the upper found version.
 PROJSOVER=$(ls -1 %{_libdir}/libproj.so.?? | tail -n1 | awk -F '.' '{print $3}')
@@ -203,6 +182,9 @@ find . -type f -name "style_ogr_sym.png" -exec chmod 0644 {} \;
 # Fix wrong /usr/bin/env phyton
 #Create the move to python3
 find . -iname "*.py" -exec sed -i 's,^#!%{_bindir}/env python$,#!%{_bindir}/python3,' {} \;
+# Fix wrong /usr/bin/env python3
+find . -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env python3,#!%{_bindir}/python3," {} \;
+
 %if %{with ecw5_support}
 # gdal configure script looks for a given layout, so reproduce what is expected.
 export ECW_PATH="../ECW/Desktop_Read-Only"
@@ -284,16 +266,7 @@ do
   make %{?_smp_mflags} -C swig/${M} generate
 done
 
-# Force Doxygen generation
-rm doc/.doxygen_up_to_date
-pushd doc/
-make .doxygen_up_to_date
-popd
-
 make %{?_smp_mflags} VERBOSE=1 all \
-%if %{with docs}
-  docs man \
-%endif
 
 # Make Python 3 module
 pushd swig/python
@@ -308,19 +281,8 @@ pushd swig/python
   python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 popd
 
-make %{?_smp_mflags} install \
-%if %{with docs}
-  install-man \
-%endif
-  DESTDIR=%{buildroot} INST_MAN=%{_mandir}
-
-# Not on buildroot : broke everything with python3
-# If done got python3 needing python2 package heretic ..
-# Futhermore duplicates are only existing in src html dir
-%fdupes -s doc/build/html
-# Empty file
-rm -f doc/build/html/do-not-remove
-
+# Don't even think to make it smp_mflags if you want successful build!
+make V=1 install install-man DESTDIR=%{buildroot} INST_MAN=%{_mandir}
 # chrpath must be removed here
 chmod 644 %{buildroot}%{perl_vendorarch}/auto/Geo/GDAL/Const/Const.so
 chmod 644 %{buildroot}%{perl_vendorarch}/auto/Geo/GDAL/GDAL.so
@@ -334,7 +296,7 @@ chrpath --delete %{buildroot}%{perl_vendorarch}/auto/Geo/GNM/GNM.so
 chrpath --delete %{buildroot}%{perl_vendorarch}/auto/Geo/OGR/OGR.so
 chrpath --delete %{buildroot}%{perl_vendorarch}/auto/Geo/OSR/OSR.so
 
-# do not ship these
+# do not ship those
 rm -rf %{buildroot}%{_mandir}/man1/_*
 rm -rf %{buildroot}%{_libdir}/libgdal.la
 rm -rf %{buildroot}%{perl_archlib}/perllocal.pod
@@ -346,9 +308,6 @@ rm -f %{buildroot}%{_datadir}/gdal/LICENSE.TXT
 
 # avoid PACKAGE redefines
 sed -i 's,\(#define PACKAGE_.*\),/* \1 */,' %{buildroot}%{_includedir}/gdal/cpl_config.h
-
-# Fix wrong /usr/bin/env phyton3
-find %{buildroot}%{_bindir} -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env python3,#!%{_bindir}/python3," {} \;
 
 %post -n lib%{name}%{soversion} -p /sbin/ldconfig
 %postun	-n lib%{name}%{soversion} -p /sbin/ldconfig
@@ -414,7 +373,6 @@ find %{buildroot}%{_bindir} -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env pyth
 %{_bindir}/rgb2pct.py
 %{_bindir}/testepsg
 %{_datadir}/gdal
-%if %{with docs}
 %{_mandir}/man1/gdal2tiles.1%{?ext_man}
 %{_mandir}/man1/gdal_calc.1%{?ext_man}
 %{_mandir}/man1/gdal_contour.1%{?ext_man}
@@ -429,6 +387,7 @@ find %{buildroot}%{_bindir} -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env pyth
 %{_mandir}/man1/gdal_retile.1%{?ext_man}
 %{_mandir}/man1/gdal_sieve.1%{?ext_man}
 %{_mandir}/man1/gdal_translate.1%{?ext_man}
+%{_mandir}/man1/gdal_viewshed.1%{?ext_man}
 %{_mandir}/man1/gdaladdo.1%{?ext_man}
 %{_mandir}/man1/gdalbuildvrt.1%{?ext_man}
 %{_mandir}/man1/gdalcompare.1%{?ext_man}
@@ -436,6 +395,8 @@ find %{buildroot}%{_bindir} -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env pyth
 %{_mandir}/man1/gdalinfo.1%{?ext_man}
 %{_mandir}/man1/gdallocationinfo.1%{?ext_man}
 %{_mandir}/man1/gdalmanage.1%{?ext_man}
+%{_mandir}/man1/gdalmdiminfo.1%{?ext_man}
+%{_mandir}/man1/gdalmdimtranslate.1%{?ext_man}
 %{_mandir}/man1/gdalmove.1%{?ext_man}
 %{_mandir}/man1/gdalsrsinfo.1%{?ext_man}
 %{_mandir}/man1/gdaltindex.1%{?ext_man}
@@ -451,7 +412,6 @@ find %{buildroot}%{_bindir} -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env pyth
 %{_mandir}/man1/ogrtindex.1%{?ext_man}
 %{_mandir}/man1/pct2rgb.1%{?ext_man}
 %{_mandir}/man1/rgb2pct.1%{?ext_man}
-%endif
 
 %files devel
 %license LICENSE.TXT
@@ -464,9 +424,7 @@ find %{buildroot}%{_bindir} -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env pyth
 %{_libdir}/pkgconfig/gdal.pc
 %dir %{_includedir}/gdal
 %{_includedir}/gdal/*.h
-%if %{with docs}
 %{_mandir}/man1/gdal-config.1%{?ext_man}
-%endif
 
 %files -n perl-%{name}
 %license LICENSE.TXT

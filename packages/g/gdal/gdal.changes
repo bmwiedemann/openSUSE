@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 30 09:46:10 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to 3.1.1 version with full changelog
+  https://github.com/OSGeo/gdal/blob/v3.1.1/gdal/NEWS
+- Packaging:
+  + drop merged upstream gdal-fix-docs.patch
+  + Rework our way to deliver the package:
+    - Remove building doc as we don't deliver it
+    - Use upstream man page already present in tar
+    - Simplify all %if doc related stuff
+  + Lower again a bit _constraints: 2.5G RAM 4.0G HDD
+
+-------------------------------------------------------------------
 Tue Jun 16 08:22:44 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add _constraints to avoid build failure

@@ -445,4 +445,12 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
     <comment></comment>
     <requestid>814858</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>0e93c9244371c00417d96b5f0108104e</srcmd5>
+    <version>3.1.1</version>
+    <time>1594119520</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>819042</requestid>
+  </revision>
 </revisionlist>
