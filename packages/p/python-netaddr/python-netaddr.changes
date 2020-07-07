@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jul  4 18:19:40 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.0
+  * Fixed weak reference support in classes with __slots__
+  * Added __bytes__ to IPAddress for intuitive usage
+  * Added format() function to EUI
+  * Added IPNetwork.netmask property setter
+  * Added support for IABs in the 40:D8:55 OUI
+  * Drastically optimized spanning_cidr()
+  * Fixed "x.x.x.x/x" in IPNetwork tests
+  * Added support for passing iterables of IPRange to IPSet and
+    cidr_merge()
+  Bugfixes:
+  * N log N complexity instead of linear
+  * Efficiently creating a large IPSet from a list of IPRanges?
+  * Weak reference support
+- Run testsuite
+
+-------------------------------------------------------------------
 Thu May 21 10:56:34 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

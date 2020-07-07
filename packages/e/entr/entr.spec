@@ -1,7 +1,7 @@
 #
 # spec file for package entr
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016 Daniel Lichtenberger
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,15 @@
 
 
 Name:           entr
-Version:        4.4
+Version:        4.6
 Release:        0
 Summary:        A utility for running arbitrary commands when files change
 License:        ISC
 Group:          Development/Tools/Other
 URL:            https://bitbucket.org/eradman/entr
 Source:         http://eradman.com/entrproject/code/%{name}-%{version}.tar.gz
+Source1:        http://eradman.com/entrproject/code/%{name}-%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.sig
+Source99:       %{name}.keyring
 
 %description
 A utility for running arbitrary commands when files change. Uses

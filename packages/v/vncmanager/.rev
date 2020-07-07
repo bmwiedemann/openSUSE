@@ -83,4 +83,16 @@ Session manager for VNC. It listens on VNC port and spawns Xvnc processes for in
     <comment></comment>
     <requestid>807979</requestid>
   </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>8f201325c1a4faef353872d0cd1baeed</srcmd5>
+    <version>1.0.2</version>
+    <time>1594119535</time>
+    <user>maxlin_factory</user>
+    <comment>- added n_UsrEtc.patch (boo#1173047)
+  * no longer install vncmanager.conf sample as config file
+  * added description of how to make use of vncmanager.conf sample
+    to README.md
+- added README.md as %doc (boo#1173047)</comment>
+    <requestid>819018</requestid>
+  </revision>
 </revisionlist>

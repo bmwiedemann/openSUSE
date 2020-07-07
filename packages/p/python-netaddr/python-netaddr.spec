@@ -17,18 +17,22 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-#%%bcond_without test
 Name:           python-netaddr
-Version:        0.7.19
+Version:        0.8.0
 Release:        0
 Summary:        Pythonic manipulation of IPv4, IPv6, CIDR, EUI and MAC network addresses
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/drkjam/netaddr
 Source:         https://files.pythonhosted.org/packages/source/n/netaddr/netaddr-%{version}.tar.gz
+BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module importlib_resources}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-importlib-metadata
+Requires:       python-importlib_resources
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -53,7 +57,7 @@ Included are routines for:
 
 %prep
 %setup -q -n netaddr-%{version}
-sed -i "1d" netaddr/{ip/iana,eui/ieee,tests/__init__}.py # Fix non-executable scripts
+sed -i "1d" netaddr/{cli,ip/iana,eui/ieee,tests/__init__}.py # Fix non-executable scripts
 
 %build
 %python_build
@@ -63,10 +67,8 @@ sed -i "1d" netaddr/{ip/iana,eui/ieee,tests/__init__}.py # Fix non-executable sc
 %python_clone -a %{buildroot}%{_bindir}/netaddr
 %fdupes %{buildroot}
 
-%if %{with test}
 %check
-%python_exec setup.py test
-%endif
+%pytest
 
 %post
 %python_install_alternative netaddr
@@ -75,10 +77,10 @@ sed -i "1d" netaddr/{ip/iana,eui/ieee,tests/__init__}.py # Fix non-executable sc
 %python_uninstall_alternative netaddr
 
 %files %{python_files}
+%license LICENSE
+%doc AUTHORS CHANGELOG COPYRIGHT README.rst
 %{python_sitelib}/*
 %{_bindir}/netaddr-%{python_bin_suffix}
 %python_alternative %{_bindir}/netaddr
-%license LICENSE
-%doc AUTHORS CHANGELOG COPYRIGHT README.md
 
 %changelog

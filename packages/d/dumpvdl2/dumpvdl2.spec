@@ -18,7 +18,7 @@
 
 
 Name:           dumpvdl2
-Version:        1.9.0
+Version:        1.10.1
 Release:        0
 Summary:        A VDL Mode 2 message decoder and protocol analyzer
 License:        GPL-3.0-only

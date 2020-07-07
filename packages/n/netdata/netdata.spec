@@ -18,9 +18,9 @@
 
 %define netdata_user    netdata
 %define netdata_group   netdata
-%define godplugin_version 0.18.0
+%define godplugin_version 0.19.2
 Name:           netdata
-Version:        1.22.1
+Version:        1.23.1
 Release:        0
 Summary:        A system for distributed real-time performance and health monitoring
 # netdata is GPL-3.0+, other licenses refer to included third-party software (see REDISTRIBUTED.md)
@@ -157,7 +157,7 @@ getent passwd %{netdata_user} >/dev/null || \
 %service_del_postun %{name}.service
 
 %files
-%doc README.md
+%doc README.md CHANGELOG.md
 %license LICENSE REDISTRIBUTED.md
 
 %dir %{_sysconfdir}/%{name}

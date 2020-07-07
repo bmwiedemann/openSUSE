@@ -56,6 +56,7 @@ Patch6:         n_vncmanager-add-target-to-service.patch
 Patch7:         u_Fix_tight_decoder_on_888_encodings.patch
 Patch8:         u_Fix-PixelFormat-ntoh-and-PixelFormat-hton.patch
 Patch9:         u_Fix-TightCompressionControl-definition-for-big-endian.patch
+Patch10:        n_UsrEtc.patch
 
 %description
 Session manager for VNC. It listens on VNC port and spawns Xvnc processes for incoming clients.
@@ -84,6 +85,7 @@ Session manager for VNC. It listens on VNC port and spawns Xvnc processes for in
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_VERBOSE_MAKEFILE=ON
@@ -91,6 +93,7 @@ make %{?_smp_mflags}
 
 %install
 %cmake_install
+mkdir -p %{buildroot}/etc/vnc
 
 # tmpfiles
 install -d -m 0755 %{buildroot}/usr/lib/tmpfiles.d/
@@ -102,11 +105,11 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcvncmanager
 
 %files
 %defattr(-,root,root)
+%doc vncmanager.conf README.md
 %{_bindir}/vncmanager
 %{_unitdir}/vncmanager.service
 %{_sbindir}/rcvncmanager
 %dir %attr(0755,%{vncuser},%{vncuser}) %{_sysconfdir}/vnc
-%config(noreplace) %{_sysconfdir}/vnc/vncmanager.conf
 /usr/lib/tmpfiles.d/%{name}.conf
 %ghost %dir /run/vncmanager
 %doc LICENSE

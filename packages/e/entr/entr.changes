@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul  2 19:25:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.6
+  * Always call waitpid(2) to avoid dead processes
+  * Duplicate STDIN file descriptor before closing; for the '-r'
+    option
+
+-------------------------------------------------------------------
+Tue Apr 21 19:39:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.5
+  * New '-z' "one-shot" option self-terminates after the utility
+    exits
+  * Termination by 'q' or 'SIGINT' results in an exit status of 0
+- Add source verification
+
+-------------------------------------------------------------------
 Sun Jan  5 19:24:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.4

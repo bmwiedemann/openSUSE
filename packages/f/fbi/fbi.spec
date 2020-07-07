@@ -26,6 +26,7 @@ URL:            https://www.kraxel.org/blog/linux/fbida/
 Source0:        https://www.kraxel.org/releases/fbida/fbida-%{version}.tar.gz
 Source1:        https://www.kraxel.org/releases/fbida/fbida-%{version}.tar.gz.asc
 Source2:        fbi.keyring
+Patch0:         fbi.patch
 BuildRequires:  curl-devel
 BuildRequires:  freetype2-devel
 BuildRequires:  giflib-devel >= 5.1.0
@@ -72,15 +73,15 @@ This is a PDF viewer for Linux framebuffer devices. It uses the poppler
 library for rendering.
 
 %prep
-%setup -q -n fbida-%{version}
+%autosetup -p1 -n fbida-%{version}
 
+%build
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
 find . -name '*.[ch]' -print0 |\
 xargs -0 sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g"
 
-%build
 export CFLAGS="%{optflags}"
 make %{?_smp_mflags} prefix=%{_prefix} exiftran fbi
 
