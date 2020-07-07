@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul  6 18:38:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.13.0-beta2
+  * added 'prev' and 'next' PageProps to change order of pages
+  * fixed many remaining Python 3 compatibility issues
+  * added "pseudo-binary" version (actually compressed bytecode) in the source
+    release archive (requires Python 3)
+  * circumvent blurry fonts on Windows due to high-DPI scaling
+  * fixed crash in overview page handling when presentations have very many pages
+  * fixed box-zoom mode display error in half-page mode
+
+-------------------------------------------------------------------
 Tue May 12 12:17:49 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to 0.13.0-beta1

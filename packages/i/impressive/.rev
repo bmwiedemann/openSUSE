@@ -23,4 +23,19 @@
     <comment></comment>
     <requestid>802973</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3b7116c66b1dbb1e267997f48cdd3b15</srcmd5>
+    <version>0.13.0~beta2</version>
+    <time>1594119528</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.13.0-beta2
+  * added 'prev' and 'next' PageProps to change order of pages
+  * fixed many remaining Python 3 compatibility issues
+  * added &quot;pseudo-binary&quot; version (actually compressed bytecode) in the source
+    release archive (requires Python 3)
+  * circumvent blurry fonts on Windows due to high-DPI scaling
+  * fixed crash in overview page handling when presentations have very many pages
+  * fixed box-zoom mode display error in half-page mode</comment>
+    <requestid>819064</requestid>
+  </revision>
 </revisionlist>

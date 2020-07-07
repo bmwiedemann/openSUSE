@@ -1,7 +1,7 @@
 #
 # spec file for package impressive
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %define dist_name Impressive
-%define fileversion 0.13.0-beta1
+%define fileversion 0.13.0-beta2
 Name:           impressive
-Version:        0.13.0~beta1
+Version:        0.13.0~beta2
 Release:        0
 Summary:        PDF and image viewer optimized for presentations
 License:        GPL-2.0-only
