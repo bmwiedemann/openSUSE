@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 07 11:25:37 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1594109944.6b8fc853:
+  * os-autoinst-openvswitch: Fix spurious network startup race-conditions
+
+-------------------------------------------------------------------
 Sun Jul 05 03:25:35 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1593790773.2f943dc7:
