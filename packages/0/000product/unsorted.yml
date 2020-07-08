@@ -274,6 +274,8 @@ unsorted:
   - abi-dumper 
   - abi-monitor 
   - abi-tracker 
+  - abiword 
+  - abiword-docs 
   - abook 
   - abook-lang 
   - abootimg 
@@ -2905,6 +2907,7 @@ unsorted:
   - exercism 
   - exfat-utils 
   - exfatprogs: [x86_64] 
+  - exif 
   - exiftran 
   - eximon 
   - eximstats-html 
@@ -3158,7 +3161,7 @@ unsorted:
   - firebird-utils 
   - firecracker: [x86_64] 
   - firefox-esr-branding-openSUSE 
-  - firefox-uget-integrator: [i586] 
+  - firefox-uget-integrator 
   - firehol 
   - firehol-doc 
   - firejail 
@@ -3425,6 +3428,8 @@ unsorted:
   - gajim-lang 
   - gajim-plugin-omemo 
   - galaxis 
+  - galculator 
+  - galculator-lang 
   - gama 
   - gambas3 
   - gambas3-devel 
@@ -3626,6 +3631,7 @@ unsorted:
   - gcin-gtk2-32bit: [x86_64] 
   - gcin-gtk3-32bit: [x86_64] 
   - gcin-qt5-32bit: [x86_64] 
+  - gcolor2 
   - gcolor3 
   - gcompris-qt 
   - gcompris-qt-activities 
@@ -3675,8 +3681,12 @@ unsorted:
   - gdouros-symbola-fonts 
   - gdouros-text-fonts 
   - gdouros-unidings-fonts 
+  - geany 
   - geany-devel 
   - geany-doc 
+  - geany-lang 
+  - geany-plugins 
+  - geany-plugins-lang 
   - geary 
   - geary-lang 
   - gebaar-libinput 
@@ -5087,6 +5097,7 @@ unsorted:
   - godot-runner 
   - godot-server 
   - goffice-devel 
+  - goffice-lang 
   - gojsontoyaml 
   - golang-github-boynux-squid_exporter 
   - golang-github-cpuguy83-go-md2man 
@@ -7422,6 +7433,7 @@ unsorted:
   - ldmtool: [i586] 
   - ldns-devel 
   - leafnode 
+  - leafpad 
   - lector 
   - ledger 
   - ledmon 
@@ -7685,6 +7697,7 @@ unsorted:
   - libIlmThread-2_4-24-32bit: [x86_64] 
   - libImath-2_4-24 
   - libImath-2_4-24-32bit: [x86_64] 
+  - libImlib2-1 
   - libIrrlicht1_8 
   - libKDb3-4 
   - libKF5Activities5-32bit: [x86_64] 
@@ -8225,6 +8238,7 @@ unsorted:
   - libabigail-devel 
   - libabigail-tools 
   - libabigail0 
+  - libabiword-3_0 
   - libabiword-3_0-devel 
   - libabw-devel 
   - libabw-devel-doc 
@@ -9401,14 +9415,19 @@ unsorted:
   - libfluidsynth2 
   - libfluidsynth2-32bit: [x86_64] 
   - libflxmlrpc1 
+  - libfm 
   - libfm-devel 
   - libfm-doc 
   - libfm-extra-devel 
+  - libfm-extra4 
   - libfm-gtk-devel 
+  - libfm-gtk4 
+  - libfm-lang 
   - libfm-qt-data 
   - libfm-qt-devel 
   - libfm-qt-lang 
   - libfm-qt7 
+  - libfm4 
   - libfmapi-devel 
   - libfmapi1 
   - libfmt6 
@@ -9556,6 +9575,7 @@ unsorted:
   - libgdruntime1-32bit: [x86_64] 
   - libgdruntime76-gcc9 
   - libgdruntime76-gcc9-32bit: [x86_64] 
+  - libgeany0 
   - libgee-0_8-2-32bit: [x86_64] 
   - libgee-devel 
   - libgee06-devel 
@@ -9680,6 +9700,7 @@ unsorted:
   - libgo16-32bit: [x86_64] 
   - libgoa-1_0-0-32bit: [x86_64] 
   - libgoa-backend-1_0-1-32bit: [x86_64] 
+  - libgoffice-0_10-10 
   - libgomp1-32bit: [x86_64] 
   - libgomp1-gcc7 
   - libgomp1-gcc7-32bit: [x86_64] 
@@ -10314,6 +10335,7 @@ unsorted:
   - libkeccak1 
   - libkeduvocdocument-devel 
   - libkexiv2-devel 
+  - libkeybinder0 
   - libkgapi-devel 
   - libkgeomap 
   - libkgeomap-devel 
@@ -10379,6 +10401,7 @@ unsorted:
   - liblapack3-32bit: [x86_64] 
   - liblapacke3 
   - liblapacke3-32bit: [x86_64] 
+  - liblasem-0_4-4 
   - liblasso-devel 
   - liblasso3 
   - liblastfm-qt5-devel 
@@ -10439,6 +10462,7 @@ unsorted:
   - liblinbox0 
   - liblinebreak-devel 
   - liblinebreak2 
+  - liblink-grammar5 
   - liblinphone++9 
   - liblinphone++9-32bit: [x86_64] 
   - liblinphone-data 
@@ -10525,6 +10549,7 @@ unsorted:
   - liblur3 
   - liblxc-devel 
   - liblxc1 
+  - liblxpanel0 
   - liblxqt-devel 
   - liblxqt-globalkeys-ui0 
   - liblxqt-globalkeys0 
@@ -10624,6 +10649,7 @@ unsorted:
   - libmemcached-devel 
   - libmemcachedutil2 
   - libmemkind0: [x86_64] 
+  - libmenu-cache3 
   - libmesode-devel 
   - libmesode0 
   - libmetacity1 
@@ -10651,6 +10677,7 @@ unsorted:
   - libmilter-doc 
   - libmimetic-devel 
   - libmimetic0 
+  - libminisat2 
   - libminiupnpc-devel 
   - libminiupnpc17-32bit: [x86_64] 
   - libminizip1-32bit: [x86_64] 
@@ -10966,6 +10993,8 @@ unsorted:
   - libobjc4-gcc9 
   - libobjc4-gcc9-32bit: [x86_64] 
   - libobjc4_6 
+  - libobrender32 
+  - libobt2 
   - libode8 
   - libodfgen-devel 
   - libodfgen-devel-doc 
@@ -11039,6 +11068,7 @@ unsorted:
   - libopendkim10 
   - libopenhpi4 
   - libopenjp2-7-32bit: [x86_64] 
+  - libopenjpeg1 
   - libopenjpeg1-32bit: [x86_64] 
   - libopenlibm3 
   - libopenmpi1-gnu-hpc 
@@ -12874,11 +12904,13 @@ unsorted:
   - libwmf-devel 
   - libwmf-gnome 
   - libwmf-gnome-32bit: [x86_64] 
+  - libwnck-1-22 
   - libwnck-1-22-32bit: [x86_64] 
   - libwnck-3-0-32bit: [x86_64] 
   - libwnck-devel 
   - libwnck-tools 
   - libwnck2-devel 
+  - libwnck2-lang 
   - libwnn0 
   - libwoff2common1_0_2-32bit: [x86_64] 
   - libwoff2dec1_0_2-32bit: [x86_64] 
@@ -12907,6 +12939,7 @@ unsorted:
   - libwtdbo4_2_2 
   - libwtdbomysql4_2_2 
   - libwtdbopostgres4_2_2 
+  - libwv-1_2-4 
   - libwv2-4 
   - libwx_baseu-suse-nostl3_0_4 
   - libwx_baseu-suse-nostl3_1_3: [i586] 
@@ -13657,17 +13690,29 @@ unsorted:
   - lvm2-devel 
   - lvm2-lockd 
   - lvm2-testsuite 
+  - lxappearance 
   - lxappearance-devel 
+  - lxappearance-lang 
+  - lxappearance-obconf 
+  - lxappearance-obconf-lang 
   - lxc 
   - lxc-bash-completion 
   - lxcfs 
   - lxcfs-hooks-lxc 
   - lxd 
   - lxd-bash-completion 
+  - lxde-common 
+  - lxde-common-branding-openSUSE 
   - lxde-common-branding-upstream 
   - lximage-qt 
   - lximage-qt-lang 
+  - lxinput 
+  - lxinput-lang 
+  - lxlauncher 
+  - lxmenu-data 
+  - lxpanel 
   - lxpanel-devel 
+  - lxpanel-lang 
   - lxqt-about 
   - lxqt-about-lang 
   - lxqt-archiver 
@@ -13700,7 +13745,14 @@ unsorted:
   - lxqt-theme-openSUSE-leaper 
   - lxqt-theme-openSUSE-light 
   - lxqt-themes 
+  - lxrandr 
+  - lxrandr-lang 
+  - lxsession 
   - lxshortcut 
+  - lxtask 
+  - lxtask-lang 
+  - lxterminal 
+  - lxterminal-lang 
   - lynis 
   - lyx 
   - lz4 
@@ -14159,6 +14211,7 @@ unsorted:
   - memory-constraints 
   - memprof 
   - memprof-lang 
+  - menu-cache 
   - menu-cache-devel 
   - mercurial 
   - mercurial-lang 
@@ -14673,7 +14726,9 @@ unsorted:
   - mtdev 
   - mtools-doc 
   - mtp-tools 
+  - mtpaint 
   - mtpaint-handbook 
+  - mtpaint-lang 
   - mtr-gtk 
   - mtree 
   - mtx 
@@ -15555,6 +15610,7 @@ unsorted:
   - nuntius 
   - nuntius-lang 
   - nuosu-fonts 
+  - nuoveXT2-icon-theme 
   - nuspell 
   - nuspell-devel 
   - nut-devel 
@@ -15577,6 +15633,7 @@ unsorted:
   - obby 
   - obby-devel 
   - obby-lang 
+  - obconf 
   - obconf-qt 
   - obconf-qt-lang 
   - obex-data-server 
@@ -16002,6 +16059,8 @@ unsorted:
   - openblas_openmp-devel-static 
   - openblas_pthreads-devel-static 
   - openblas_serial-devel-static 
+  - openbox 
+  - openbox-adwaita-ob-theme 
   - openbox-devel 
   - openbox-gnome 
   - openbox-kde 
@@ -16523,6 +16582,7 @@ unsorted:
   - parboiled-javadoc 
   - parboiled-scala 
   - parboiled-scala-javadoc 
+  - parcellite 
   - pari-devel 
   - pari-elldata 
   - pari-galdata 
@@ -16599,6 +16659,9 @@ unsorted:
   - patterns-leechcraft-leechcraft_netutils 
   - patterns-leechcraft-leechcraft_office 
   - patterns-leechcraft-leechcraft_utilities 
+  - patterns-lxde-lxde 
+  - patterns-lxde-lxde_laptop 
+  - patterns-lxde-lxde_office 
   - patterns-lxqt-lxqt 
   - patterns-mate-mate 
   - patterns-mate-mate_admin 
@@ -16642,7 +16705,9 @@ unsorted:
   - pciutils-devel 
   - pciutils-devel-32bit: [x86_64] 
   - pcm 
+  - pcmanfm 
   - pcmanfm-devel 
+  - pcmanfm-lang 
   - pcmanfm-qt 
   - pcmanfm-qt-lang 
   - pcmanx-gtk2 
@@ -33616,7 +33681,9 @@ unsorted:
   - udtrace 
   - ufiformat 
   - uftpd 
-  - uget-integrator: [i586] 
+  - uget 
+  - uget-integrator 
+  - uget-lang 
   - ugrep 
   - uhd-devel 
   - uhd-doc 
@@ -33868,6 +33935,8 @@ unsorted:
   - vidcutter 
   - vido 
   - vido-lang 
+  - viewnior 
+  - viewnior-lang 
   - viewres 
   - vifm 
   - vifm-colors 
@@ -34283,6 +34352,7 @@ unsorted:
   - xdiskusage 
   - xditview 
   - xdmsc 
+  - xdotool 
   - xdotool-devel 
   - xdriinfo 
   - xed 
@@ -34388,6 +34458,7 @@ unsorted:
   - xkbprint 
   - xkbutils 
   - xkeycaps 
+  - xkill 
   - xl2tpd 
   - xlatencytop 
   - xless 
