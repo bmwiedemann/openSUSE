@@ -105,4 +105,13 @@
     <comment>- Cleanup of the SPEC file, remove warnings.</comment>
     <requestid>796109</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8481ff10a9f116c4189fdb0b5a653cfa</srcmd5>
+    <version>3.2.5</version>
+    <time>1594228808</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.5
+ * build fixes</comment>
+    <requestid>819499</requestid>
+  </revision>
 </revisionlist>
