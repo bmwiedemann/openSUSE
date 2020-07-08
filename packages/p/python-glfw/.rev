@@ -63,4 +63,15 @@
     <comment></comment>
     <requestid>781851</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>30bfefa41220ee24b678c1c41616a393</srcmd5>
+    <version>1.11.2</version>
+    <time>1594228760</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.11.2
+ * Fixed missing parameter in set_window_opacity
+ * Replaced non-ASCII whitespace
+ * Fixed a TypeError in _GLFWgamepadstate</comment>
+    <requestid>819480</requestid>
+  </revision>
 </revisionlist>

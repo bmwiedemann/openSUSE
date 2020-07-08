@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  8 12:38:53 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.11.2
+ * Fixed missing parameter in set_window_opacity
+ * Replaced non-ASCII whitespace
+ * Fixed a TypeError in _GLFWgamepadstate
+
+-------------------------------------------------------------------
 Thu Mar  5 12:46:21 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.11.0
