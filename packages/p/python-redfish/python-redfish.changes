@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  6 18:36:04 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.7
+  * Added support for setting the 'Content-Type' header to
+    'application/octet-stream' when binary data is provided in a
+    request
+
+-------------------------------------------------------------------
 Sat Jun 13 11:56:01 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.6
