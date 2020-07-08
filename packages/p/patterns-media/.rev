@@ -241,4 +241,13 @@
     <time>1593845440</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="30" vrev="30">
+    <srcmd5>b05b4357de5ca99c68eb1f8a3fe70212</srcmd5>
+    <version>20170319</version>
+    <time>1594192368</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop LXDE from the DVD; It was actually not on the DVD until
+  just a few days ago due to pattern errors. Now the pattern is
+  fixed, and the DVD too large.</comment>
+  </revision>
 </revisionlist>
