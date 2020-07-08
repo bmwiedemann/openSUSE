@@ -1,7 +1,7 @@
 #
 # spec file for package python-audiomate
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,41 +19,44 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-audiomate
-Version:        3.0.0
+Version:        5.2.0
 Release:        0
 Summary:        A library for working with audio datasets
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/ynop/audiomate
+URL:            https://github.com/ynop/audiomate
 Source0:        https://files.pythonhosted.org/packages/source/a/audiomate/audiomate-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-PGet >= 0.5.0
+Requires:       python-audioread >= 2.1.8
+Requires:       python-h5py >= 2.10.0
+Requires:       python-intervaltree >= 3.0.2
+Requires:       python-librosa >= 0.7.2
+Requires:       python-networkx >= 2.4
+Requires:       python-numba >= 0.49.1
+Requires:       python-numpy >= 1.18.1
+Requires:       python-requests >= 2.23.0
+Requires:       python-scipy >= 1.4.1
+Requires:       python-sox >= 1.3.7
+BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module audioread >= 2.1.0}
-BuildRequires:  %{python_module beautifulsoup4 >= 4.6.0}
-BuildRequires:  %{python_module h5py >= 2.7.1}
-BuildRequires:  %{python_module librosa >= 0.6.0}
-BuildRequires:  %{python_module lxml >= 4.1.1}
-BuildRequires:  %{python_module networkx >= 2.0}
-BuildRequires:  %{python_module numpy >= 1.14.0}
+BuildRequires:  %{python_module PGet >= 0.5.0}
+BuildRequires:  %{python_module audioread >= 2.1.8}
+BuildRequires:  %{python_module h5py >= 2.10.0}
+BuildRequires:  %{python_module intervaltree >= 3.0.2}
+BuildRequires:  %{python_module librosa >= 0.7.2}
+BuildRequires:  %{python_module networkx >= 2.4}
+BuildRequires:  %{python_module numba >= 0.49.1}
+BuildRequires:  %{python_module numpy >= 1.18.1}
 BuildRequires:  %{python_module pytest >= 3.3.0}
 BuildRequires:  %{python_module pytest-runner}
-BuildRequires:  %{python_module requests >= 2.18.4}
+BuildRequires:  %{python_module requests >= 2.23.0}
 BuildRequires:  %{python_module requests-mock >= 1.4.0}
-BuildRequires:  %{python_module scipy >= 1.1.0}
+BuildRequires:  %{python_module scipy >= 1.4.1}
+BuildRequires:  %{python_module sox >= 1.3.7}
 # /SECTION
-Requires:       python-audioread >= 2.1.0
-Requires:       python-beautifulsoup4 >= 4.6.0
-Requires:       python-h5py >= 2.7.1
-Requires:       python-librosa >= 0.6.0
-Requires:       python-lxml >= 4.1.1
-Requires:       python-networkx >= 2.0
-Requires:       python-numpy >= 1.14.0
-Requires:       python-requests >= 2.18.4
-Requires:       python-scipy >= 1.1.0
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
