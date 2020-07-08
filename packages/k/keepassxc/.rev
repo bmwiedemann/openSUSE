@@ -283,4 +283,20 @@
     <comment>- Drop build/requirement on libgcrypt20-hmac boo#1171438</comment>
     <requestid>802703</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e2028372c80f9b733a14a81910d0485f</srcmd5>
+    <version>2.6.0</version>
+    <time>1594228640</time>
+    <user>dimstar_suse</user>
+    <comment>- add _constraints with 6GB to fix build on ppc64 hopefully 
+
+- add BR for asciidoctor 
+
+- Update to version 2.6.0:
+  * https://keepassxc.org/blog/2020-07-07-2.6.0-released/
+  * https://github.com/keepassxreboot/keepassxc/releases/tag/2.6.0
+- drop keepassxc-Fix-window-hiding-after-shown.patch:
+  included in update</comment>
+    <requestid>819306</requestid>
+  </revision>
 </revisionlist>

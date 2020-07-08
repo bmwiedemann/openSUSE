@@ -17,7 +17,7 @@
 
 
 Name:           keepassxc
-Version:        2.5.4
+Version:        2.6.0
 Release:        0
 Summary:        Qt5-based Password Manager
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -26,18 +26,20 @@ URL:            https://www.keepassxc.org/
 Source0:        https://github.com/keepassxreboot/keepassxc/releases/download/%{version}/keepassxc-%{version}-src.tar.xz
 Source1:        https://github.com/keepassxreboot/keepassxc/releases/download/%{version}/keepassxc-%{version}-src.tar.xz.sig
 Source2:        https://keepassxc.org/keepassxc_master_signing_key.asc#/%{name}.keyring
+Source97:       _constraints
 Source98:       debian.tar.xz
 Source99:       keepassxc.dsc
-Patch:          keepassxc-Fix-window-hiding-after-shown.patch
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libgcrypt-devel >= 1.7
 %if 0%{?suse_version}
+BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  libquazip-qt5-devel
 %else
 BuildRequires:  qt5-linguist
+BuildRequires:  qt5-qtbase-private-devel
 BuildRequires:  quazip-qt5-devel
 %endif
 BuildRequires:  libsodium-devel
@@ -47,8 +49,8 @@ BuildRequires:  libykpers-devel
 BuildRequires:  ykpers-devel
 %endif
 BuildRequires:  libyubikey-devel
-BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
@@ -65,6 +67,7 @@ BuildRequires:  pkgconfig(libqrencode)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib)
+BuildRequires:  rubygem(asciidoctor)
 %if 0%{?suse_version}
 BuildRequires:  update-desktop-files
 %endif
@@ -162,7 +165,6 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor >/dev/null 2>/dev/null || :
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/docs/
 %{_datadir}/%{name}/icons/
-%{_datadir}/%{name}/wizard/
 %{_datadir}/%{name}/wordlists/
 %{_datadir}/applications/org.keepassxc.KeePassXC.desktop
 %dir %{_datadir}/metainfo

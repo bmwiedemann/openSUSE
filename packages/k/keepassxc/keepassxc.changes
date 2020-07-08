@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul  8 01:09:45 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- add _constraints with 6GB to fix build on ppc64 hopefully 
+
+-------------------------------------------------------------------
+Tue Jul  7 23:42:33 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- add BR for asciidoctor 
+
+-------------------------------------------------------------------
+Tue Jul  7 23:33:41 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.6.0:
+  * https://keepassxc.org/blog/2020-07-07-2.6.0-released/
+  * https://github.com/keepassxreboot/keepassxc/releases/tag/2.6.0
+- drop keepassxc-Fix-window-hiding-after-shown.patch:
+  included in update
+
+-------------------------------------------------------------------
 Mon May 11 14:05:15 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Drop build/requirement on libgcrypt20-hmac boo#1171438
