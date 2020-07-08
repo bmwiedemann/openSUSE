@@ -1,7 +1,7 @@
 #
 # spec file for package wcslib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define libver  6
+%define libver  7
 Name:           wcslib
-Version:        6.4
+Version:        7.3
 Release:        0
 Summary:        An implementation of the FITS WCS standard
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://www.atnf.csiro.au/people/mcalabre/WCS/wcslib/
+URL:            https://www.atnf.csiro.au/people/mcalabre/WCS/wcslib/
 Source0:        ftp://ftp.atnf.csiro.au/pub/software/wcslib/%{name}-%{version}.tar.bz2
 BuildRequires:  cfitsio-devel
 BuildRequires:  fdupes
@@ -86,6 +86,12 @@ opened with %{name}.
 %setup -q
 
 %build
+# required to pass the tests with newest gfortran.
+# see https://gcc.gnu.org/gcc-10/porting_to.html
+# Fortran Language issues
+%if 0%{?suse_version} >= 1550
+  export FFLAGS="%{optflags} -fallow-argument-mismatch"
+%endif
 %configure --docdir=%{_docdir}/%{name} --without-pgplot
 %make_build
 
