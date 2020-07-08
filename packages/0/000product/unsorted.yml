@@ -67,6 +67,8 @@ unsorted:
   - ImageMagick-devel 
   - ImageMagick-devel-32bit: [x86_64] 
   - ImageMagick-doc 
+  - Ipopt-devel: [x86_64] 
+  - Ipopt-java: [x86_64] 
   - J7Z 
   - J7Z-kf5 
   - Jamulus 
@@ -10194,6 +10196,7 @@ unsorted:
   - libipa_hbac-devel 
   - libipa_hbac0 
   - libiperf0 
+  - libipopt0: [x86_64] 
   - libipq-devel 
   - libipq0 
   - libiptc-devel 
@@ -10540,6 +10543,8 @@ unsorted:
   - liblttng-ust0: [i586] 
   - liblua5_1-5-32bit: [x86_64] 
   - liblua5_3-5-32bit: [x86_64] 
+  - liblua5_4-5 
+  - liblua5_4-5-32bit: [x86_64] 
   - libluabind0_9_1 
   - libluajit-5_1-2-32bit: [x86_64] 
   - liblucene++0 
@@ -12872,7 +12877,7 @@ unsorted:
   - libwbclient-devel 
   - libwbxml2-1 
   - libwbxml2-devel 
-  - libwcs6 
+  - libwcs7 
   - libwebcam-devel 
   - libwebcam0 
   - libwebkit2gtk-4_0-37-32bit: [x86_64] 
@@ -13650,6 +13655,9 @@ unsorted:
   - lua53-penlight-doc 
   - lua53-say 
   - lua53-zlib 
+  - lua54 
+  - lua54-devel 
+  - lua54-doc 
   - luabind-devel 
   - luaposix-doc 
   - lucene++-devel 
@@ -14713,6 +14721,7 @@ unsorted:
   - msmtp-mta 
   - msoak 
   - mspack-examples 
+  - msr-safe-kmp-pae: [i586] 
   - msr-tools 
   - mstflint 
   - msv-demo 
@@ -15952,6 +15961,8 @@ unsorted:
   - onboard-data 
   - onboard-lang 
   - onedrive 
+  - onedrive-completion-bash 
+  - onedrive-completion-zsh 
   - onefetch 
   - oneko 
   - oniguruma-devel 
@@ -19871,6 +19882,7 @@ unsorted:
   - python3-django-js-asset 
   - python3-django-json-widget 
   - python3-django-jsonfield 
+  - python3-django-mailer 
   - python3-django-mailman3 
   - python3-django-minio-storage 
   - python3-django-model-utils 
@@ -20286,6 +20298,7 @@ unsorted:
   - python3-iso8601 
   - python3-isodate 
   - python3-isort 
+  - python3-itemadapter 
   - python3-itsdangerous 
   - python3-itypes 
   - python3-iwlib 
@@ -21286,6 +21299,7 @@ unsorted:
   - python3-qgrid 
   - python3-qrcode 
   - python3-qscintilla-qt5 
+  - python3-qsymm 
   - python3-qt3d-qt5 
   - python3-qt5-devel 
   - python3-qtcharts-qt5 
@@ -22086,6 +22100,7 @@ unsorted:
   - raspberrypi-firmware-eeprom 
   - raspberrypi-firmware-extra 
   - raspberrypi-firmware-extra-pi4 
+  - raspberrypi-rpiboot 
   - rasqal 
   - ratbagd 
   - ratslap 
@@ -25197,6 +25212,7 @@ unsorted:
   - sysstat 
   - sysstat-isag 
   - system-group-obsolete 
+  - system-user-msr 
   - system-user-tss 
   - system-user-uuidd 
   - systemd-coredump 
