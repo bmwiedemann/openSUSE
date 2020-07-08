@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  8 12:08:55 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 5.3.1
+  * https://pecl.php.net/package-changelog.php?package=redis&release=5.3.1
+  * Properly clean up on session start failure.
+  * Treat NULL as a failure for redis_extract_auth_info.
+  * Don't dereference a NULL zend_string or efree one.
+  * Fix config.m4 messages and test for and include php_hash.h.
+
+-------------------------------------------------------------------
 Fri Jul  3 23:23:18 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 5.3.0
