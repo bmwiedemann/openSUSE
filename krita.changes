@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Sat Jun 20 10:13:51 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Set minimum disk size for ppc64/ppc64le in _constraints to
+  prevent "no space left on device" errors during build
+- Fix build on ARM
+
+-------------------------------------------------------------------
+Thu Jun 18 10:04:10 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 4.3.0:
+  * See https://krita.org/en/item/krita-4-3-0-released/
+  * The "Render Animation" dialog has a new option for exporting
+    only the unique frames of an animation
+  * New hotkey bind-able actions for selecting the previous/next
+    sibling layer
+  * General animation caching improvements
+  * Hidden layers can now be properly edited and scrubbed in active
+    isolation mode
+  * Timeline now correctly highlights the current frame when
+    loading a new document
+  * Onion skins no longer become misaligned after cropping
+  * Presence of transform masks on the layer tree no longer glitch
+    animation playback
+  * The "Render Animation" dialog's image settings are now
+    independent and no longer conflict with the image "Export"
+    dialog's settings
+  * The "Render Animation" dialog now correctly synchronizes HDR
+    settings between the video and image sequence options
+  * Added small headers to multiple animation context menus to
+    mitigate accidental selections
+  * The error message that's shown when Krita can't find FFMPEG now
+    provides helpful information and a link to the official
+    documentation
+  * The "Isolate Layer" feature is now called "Isolate Active
+    Layer" to better reflect how it works
+  * New set of watercolor effect brush presets
+  * Bundles now properly handle timezones and show dates in the
+    user's preferred format
+  * New patterns that are good for usage with the new Palettize
+    filter
+  * New Color Mode in the Gradient Map filter
+  * New Palettize and High Pass filters
+  * Memory leaks in the gradient map filter were fixed
+  * The edge detection and height to normal map filters no longer
+    show staircase-like artifacts
+  * All convolution filters (like sharpen, blur) now work correctly
+    on images with an opaque background
+  * The HSV filter now works more correctly on grayscale images
+  * The blur filter now calculates the aspect ratio correctly
+  * The motion blur filter now produces fewer artifacts
+  * The performance of layer styles has been improved
+  * The separate channels function works again
+  * The split image dialog now supports splitting along guides
+    dragged out of the rulers and has a nice preview as well
+  * Clone layers now perform much better and are much more stable
+  * New Dialog to change the source of clone layers
+  * Python:
+    + ManagedColor now can also be initialized with a QColor
+    + Added a setDocument method to the View class
+    + Actions creating in Python extensions are loaded before the
+      menus and toolbars are constructed
+  * RGBA brushes:  Krita now allows setting the opacity and
+    lightness on colored brush tips separately
+  * The pixel brush engine is about 20% faster
+  * Multi-dimension export for GIH (GIMP image hose format)
+  * It's now possible to take the central canvas area out of the
+    window and put it in its own window
+  * Rendering the Lab channels is now done correctly both in the
+    channels docker and on the canvas
+  * The color chooser no longer loses contrast when adjusting the
+    saturation of the the HSL slider, while changing the lightness
+    compensates better for keeping the saturation correct
+  * Krita now tries to recognize the broken ICC profiles that
+    Photoshop installs and doesn't try to load them
+  * Palettes with more than 4096 columns are now loaded and shown
+    correctly
+  * The color selectors not only perform much better but are also
+    more correct and easier to use
+  * New Snapshot docker
+  * Some tools come with "actions" - like increasing/decreasing the
+    brush tip size
+  * New Magnetic Selection Tool
+  * New Modes for the Gradient Tool: Spiral, Reverse Spiral and
+    Bilinear mode have been added
+  * The Fill Tool and Contiguous Selection Tool ("magic wand") have
+    been extended: you can choose between All Layers, Current Layer
+    and Color Labeled Layers to indicate what area the tool needs
+    to fill or select
+  * Creating selections is now much faster
+  * Krita now tries much, much harder to make sure a file really is
+    saved correctly
+  * A really nasty bug was fixed: selections that are entirely
+    outside the image could be saved and on loading would make it
+    seemingly impossible to paint
+  * Added an option to open an image as a file layer in an already
+    loaded image
+  * New option to save images to .kra with all layers trimmed to
+    the image size, off by default
+- Add openjpeg2-devel BuildRequires to enable the revived JPEG2000
+  import/export filter
+- Drop 0001-Fix-build-with-Qt-5.15.patch, merged upstream
+
+-------------------------------------------------------------------
 Thu Jun  4 14:35:42 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with Qt 5.15:
