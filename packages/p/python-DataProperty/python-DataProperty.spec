@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-DataProperty
-Version:        0.48.2
+Version:        0.49.1
 Release:        0
 Summary:        Python library for extract property from data
 License:        MIT
