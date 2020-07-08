@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Jul  7 09:01:28 UTC 2020 - Enno Gotthold <egotthold@suse.com>
+
+- Enable notifications via configure switch
+- Enable bash and zsh completitions via configure switch 
+
+-------------------------------------------------------------------
+Tue Jul 07 06:22:43 UTC 2020 - egotthold@suse.com
+
+- Update to version 2.4.3:
+  * Release files for 2.4.3 (#970)
+  * Process OneDrive Personal Shared Folders only if account type is 'personal' (#972)
+  * Update Docker.md (#971)
+  * Update USAGE.md (#968)
+  * Update README.md
+  * Update BusinessSharedFolders.md
+  * Implement OneDrive Business Shared Folders Support (Issue #459) (#473)
+  * Simplify code for readability (#961)
+  * Update documentation for --upload-only & --download-only to avoid ambiguity (#960)
+  * Support comments in sync_list file (#958)
+  * Implement support for National cloud deployments (Issue #937) (#938)
+  * Update known-issues.md
+  * Implement recursive deletion when Retention Policy is enabled (#955)
+  * Fix segfault when moving folder outside the sync directory when using --monitor (#957)
+  * Add openSUSE package installation option (#956)
+  * Update Ubuntu packaging details (#954)
+  * Update INSTALL.md
+  * Handle a 'race' condition to process inotify events (#948)
+  * Added support for loading system configs if there's no user config. (#914)
+  * Perform initial sync at startup in monitor mode (#946)
+  * Update message output for performFullItemScan or oneDriveFullScanTrigger (#945)
+  * Update logfile output spacing (#944)
+  * Check if symbolic link is relative to location path (#942)
+  * Update INSTALL.md
+  * Add inotify event debugging (#941)
+  * Release 2.4.3 Dev Prep (#940)
+
+-------------------------------------------------------------------
 Mon Jun 15 11:42:37 UTC 2020 - Enno Gotthold <egotthold@suse.com>
 
 - Modified service file to exclude bad file 
