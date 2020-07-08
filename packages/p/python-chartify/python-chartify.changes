@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  8 11:01:06 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.0.1
+  * Reduce dependencies by switching from Jupyter to IPython.
+  * Updated Python to 3.6+ and Pandas to 1.0+ (Thanks @tomasaschan!)
+  * Updated Bokeh to 2.0+
+  * Removed colour dependency to fix setup errors.
+
+-------------------------------------------------------------------
 Mon Apr  6 06:35:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable one test that fails due to numpy update

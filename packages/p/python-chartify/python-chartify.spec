@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-chartify
-Version:        2.7.0
+Version:        3.0.1
 Release:        0
 Summary:        Python library for plotting charts
 License:        Apache-2.0
@@ -28,27 +28,24 @@ Source:         https://github.com/spotify/chartify/archive/%{version}.tar.gz#/c
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       jupyter >= 1.0.0
-Requires:       python-Pillow >= 4.3.0
-Requires:       python-bokeh >= 0.12.16
-Requires:       python-colour >= 0.1.5
-Requires:       python-pandas >= 0.21.0
+Requires:       python-Pillow >= 6.2.0
+Requires:       python-bokeh >= 2.0.0
+Requires:       python-ipykernel >= 5.0
+Requires:       python-ipython >= 7.0
+Requires:       python-pandas >= 1.0.0
 Requires:       python-scipy >= 1.0.0
+# ignoring https://github.com/SeleniumHQ/selenium/issues/5296
 Requires:       python-selenium >= 3.7.0
-Recommends:     python-ipykernel
-Recommends:     python-ipython
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Pillow >= 4.3.0}
-BuildRequires:  %{python_module bokeh >= 0.12.16}
-BuildRequires:  %{python_module colour >= 0.1.5}
-BuildRequires:  %{python_module ipykernel}
-BuildRequires:  %{python_module ipython}
-BuildRequires:  %{python_module pandas >= 0.21.0}
+BuildRequires:  %{python_module Pillow >= 6.2.0}
+BuildRequires:  %{python_module bokeh >= 2.0.0}
+BuildRequires:  %{python_module ipykernel >= 5.0}
+BuildRequires:  %{python_module ipython >= 7.0}
+BuildRequires:  %{python_module pandas >= 1.0.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy >= 1.0.0}
 BuildRequires:  %{python_module selenium >= 3.7.0}
-BuildRequires:  jupyter >= 1.0.0
 # /SECTION
 %python_subpackages
 
@@ -67,8 +64,7 @@ rm tox.ini
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_grouped_categorical fails with new Nupy 
-%pytest -k 'not test_grouped_categorical'
+%pytest
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst
