@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  8 10:39:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.0.3
+  * Improve step test file name matching when similar file names exist within a project.
+  * Also improve the load process for project notebook displays in the UI application.
+
+-------------------------------------------------------------------
 Wed May 27 09:36:36 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
