@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul  8 14:03:55 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 3.8.1
+ * Added code optimization to reduce sequential appends of static text.
+ * The default symbol in dynamic attributes is now symbolic.
+ * The built-in attrs dictionary of static element attributes now correctly
+    works with tal:define, etc.
+ * Fix slice code generation compatibility issue on Python 3.9.
+ * Expose default marker as importable symbol chameleon.tales.DEFAULT_MARKER.
+ * Removed legacy flag literal_false. To get a similar behavior, use boolean_attributes.
+
+-------------------------------------------------------------------
 Mon Jun  8 09:03:16 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 3.7.2

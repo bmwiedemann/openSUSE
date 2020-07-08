@@ -111,4 +111,19 @@ New dependency of python-Pyramid</comment>
  * Allow setting a custom value representation function</comment>
     <requestid>812491</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6172b203e30c7a6e71a65e98c65a9063</srcmd5>
+    <version>3.8.1</version>
+    <time>1594228800</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.8.1
+ * Added code optimization to reduce sequential appends of static text.
+ * The default symbol in dynamic attributes is now symbolic.
+ * The built-in attrs dictionary of static element attributes now correctly
+    works with tal:define, etc.
+ * Fix slice code generation compatibility issue on Python 3.9.
+ * Expose default marker as importable symbol chameleon.tales.DEFAULT_MARKER.
+ * Removed legacy flag literal_false. To get a similar behavior, use boolean_attributes.</comment>
+    <requestid>819491</requestid>
+  </revision>
 </revisionlist>
