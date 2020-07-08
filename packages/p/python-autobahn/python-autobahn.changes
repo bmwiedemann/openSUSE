@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  8 02:19:00 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 20.6.2:
+  * fix: xbr fixes (#1396)
+  * fix: use cpy 3.8 for running flake in CI
+  * new: Ticket1392 internal attrs (#1394)
+  * new: internal-only router attributes and hook for router to add custom
+    information 
+
+-------------------------------------------------------------------
 Mon Jun 15 04:37:00 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 20.6.1:

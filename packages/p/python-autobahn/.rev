@@ -133,4 +133,17 @@
 - %python3_only -&gt; %python_alternative</comment>
     <requestid>814607</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8d926b41eed0d7cd50880f74f4d7c6bc</srcmd5>
+    <version>20.6.2</version>
+    <time>1594228408</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.6.2:
+  * fix: xbr fixes (#1396)
+  * fix: use cpy 3.8 for running flake in CI
+  * new: Ticket1392 internal attrs (#1394)
+  * new: internal-only router attributes and hook for router to add custom
+    information</comment>
+    <requestid>819310</requestid>
+  </revision>
 </revisionlist>
