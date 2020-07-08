@@ -50,7 +50,7 @@ Debug/Test tool to exercise a btrfs ioctl for deduplicating file regions.
 %if 0%{?suse_version} <= 1200
 make %{?_smp_mflags} CFLAGS="%{optflags} -DNO_BTRFS_HEADER"
 %else
-make %{?_smp_mflags} CFLAGS="%{optflags}"
+make %{?_smp_mflags} CFLAGS="%{optflags} -fcommon"
 %endif
 
 %install

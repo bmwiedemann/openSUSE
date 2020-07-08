@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 14 08:05:24 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building with gcc10
+
+-------------------------------------------------------------------
 Tue Dec  4 20:59:22 UTC 2018 - mfasheh@suse.com
 
 - Use source tarball from github
