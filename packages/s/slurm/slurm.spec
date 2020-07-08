@@ -28,12 +28,13 @@
 
 %define pname slurm
 
-%ifarch i586 %arm
+%ifarch i586 %arm s390
 ExclusiveArch:  do_not_build
 %endif
 
 %if 0%{?sle_version} == 120200
 %define base_ver 1702
+%define nocheck 1
 %endif
 %if 0%{?sle_version} == 150000
 %define base_ver 1711
@@ -49,8 +50,8 @@ ExclusiveArch:  do_not_build
 %define upgrade 1
 %endif
 
-# Build with PMIx only for SLE >= 15.2 and TW
-%if 0%{?sle_version} >= 150200 || 0%{suse_version} >= 1550
+# Build with PMIx only for SLE >= 15.0 and TW
+%if 0%{?sle_version} >= 150000 || 0%{suse_version} >= 1550
 %{bcond_without pmix}
 %else
 %{bcond_with pmix}
@@ -153,7 +154,6 @@ BuildRequires:  ncurses-devel
 %{?with_pmix:BuildRequires:  pmix-devel}
 BuildRequires:  openssl-devel >= 0.9.6
 BuildRequires:  pkgconfig
-BuildRequires:  postgresql-devel >= 8.0.0
 BuildRequires:  readline-devel
 %if 0%{?suse_version} > 1310 || 0%{?sle_version}
  %if 0%{?sle_version} >= 120400 && 0%{?sle_version} < 150000
@@ -724,7 +724,7 @@ rm -f %{buildroot}/%{_mandir}/man8/slurmrestd.*
 %endif
 
 %check
-make check
+%{!?nocheck:make check}
 
 %define fixperm() [ $1 -eq 1 -a -e %2 ] && /bin/chmod %1 %2
 

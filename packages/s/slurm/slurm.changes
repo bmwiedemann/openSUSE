@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul  7 09:05:40 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add support for openPMIx also for Leap/SLE 15.0/1 (bsc#1173805).
+- Do not run %check on SLE-12-SP2: Some incompatibility in tcl
+  makes this fail.
+- Remove unneeded build dependency to postgresql-devel.
+- Disable build on s390 (requires 64bit).
+
+-------------------------------------------------------------------
 Wed Jun  3 11:11:11 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Bring QA to the package build: add %%check stage.
