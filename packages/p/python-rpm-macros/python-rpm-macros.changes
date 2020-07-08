@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  2 10:24:38 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 20200701.9f5a2f6:
+  * add blank line between pytest and pytest_arch to fix expansion
+    failure in Leap gh#openSUSE/python-rpm-macros#53
+
+-------------------------------------------------------------------
 Wed Jun 24 22:05:31 UTC 2020 - mcepl@cepl.eu
 
 - Update to version 20200625.e862151:

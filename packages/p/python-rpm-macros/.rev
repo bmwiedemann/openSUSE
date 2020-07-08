@@ -324,4 +324,12 @@ prerequisite for new python submission</comment>
   * Replace py.test -&gt; pytest</comment>
     <requestid>816897</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>9551e9e9b7a62959176049d30bdd0b3a</srcmd5>
+    <version>20200701.9f5a2f6</version>
+    <time>1594228149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818299</requestid>
+  </revision>
 </revisionlist>
