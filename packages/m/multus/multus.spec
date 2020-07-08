@@ -27,6 +27,7 @@ Group:          System/Management
 Url:            https://github.com/intel/multus-cni
 Source:         %{name}-%{version}.tar.xz
 Patch0:         0001-build-Allow-to-define-VERSION-and-COMMIT-without-git.patch
+Patch1:         multus-override-build-date.patch
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.8
 
