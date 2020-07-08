@@ -108,4 +108,18 @@
 </comment>
     <requestid>773499</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e7fed21d25607145c120ebc4095bacad</srcmd5>
+    <version>0.9.4</version>
+    <time>1594228397</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable unit tests
+- Update to version 0.9.4
+  Fixes:
+  * on_part will now be called prior to channel / user destruction
+  * disconnecting client pools should work again
+  New features:
+  * Add optional support for REPL_WHOISHOST, an UnrealIRCd feature.</comment>
+    <requestid>819269</requestid>
+  </revision>
 </revisionlist>

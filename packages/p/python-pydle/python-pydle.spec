@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-pydle
-Version:        0.9.4rc1
+Version:        0.9.4
 Release:        0
 Summary:        Modular, callback-based IRCv3 library for Python 3
 License:        BSD-3-Clause
@@ -28,6 +28,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Shizmob/pydle
 Source:         https://github.com/Shizmob/pydle/archive/v%{version}.tar.gz#/pydle-%{version}.tar.gz
 Source1:        LICENSE.md
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -60,6 +61,9 @@ cp %{SOURCE1} .
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_expand chmod +x %{buildroot}%{$python_sitelib}/pydle/utils/irccat.py
+
+%check
+%pytest -m unit
 
 %files %{python_files}
 %license LICENSE.md

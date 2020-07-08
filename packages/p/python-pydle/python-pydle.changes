@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul  7 16:06:37 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Enable unit tests
+- Update to version 0.9.4
+  Fixes:
+  * on_part will now be called prior to channel / user destruction
+  * disconnecting client pools should work again
+
+  New features:
+  * Add optional support for REPL_WHOISHOST, an UnrealIRCd feature.
+
+-------------------------------------------------------------------
 Tue Feb 11 16:28:35 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to verssion 0.9.4rc1
