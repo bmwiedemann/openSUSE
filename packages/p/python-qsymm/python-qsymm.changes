@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Wed Jul  8 06:48:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not depend on pytest-runner
+
+-------------------------------------------------------------------
+Fri Jun  5 17:45:54 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.
