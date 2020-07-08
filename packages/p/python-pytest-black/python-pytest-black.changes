@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  7 10:14:36 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.3.10
+  * Remove black version number to fix pipenv instalation
+
+-------------------------------------------------------------------
 Mon May 18 09:27:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.3.9:

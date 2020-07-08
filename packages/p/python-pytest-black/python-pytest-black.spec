@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-pytest-black
-Version:        0.3.9
+Version:        0.3.10
 Release:        0
 Summary:        Black format checking plugin for pytest
 License:        MIT
@@ -29,12 +29,12 @@ BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-black >= 19.3
+Requires:       python-black
 Requires:       python-pytest >= 3.5.0
 Requires:       python-toml
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module black >= 19.3b}
+BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module pytest >= 3.5.0}
 BuildRequires:  %{python_module toml}
 # /SECTION
