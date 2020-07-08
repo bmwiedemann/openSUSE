@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-gammu
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-python-gammu
-Version:        2.12
+Version:        3.0
 Release:        0
 Summary:        Python module to communicate with mobile phones
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
-URL:            http://wammu.eu/python-gammu/
+URL:            https://wammu.eu/python-gammu/
 Source:         https://dl.cihar.com/python-gammu/python-gammu-%{version}.tar.bz2
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -41,6 +42,7 @@ supports - many Nokias, Siemens, Alcatel, ...
 
 %prep
 %setup -q -n python-gammu-%{version}
+find . -type f -name "*.py" -exec sed -i -e 's|\/usr\/bin\/env python|\/usr\/bin\/python|g' {} \;
 
 %build
 export CFLAGS="%{optflags}"
