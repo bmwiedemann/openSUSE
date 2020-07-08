@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-q
-Version:        1.2.4
+Version:        1.3.1
 Release:        0
 Summary:        Multiprocessing Distributed Task Queue for Django
 License:        MIT
@@ -28,18 +28,19 @@ Source:         https://github.com/Koed00/django-q/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Django >= 2.2
 Requires:       python-arrow
 Requires:       python-blessed
-Requires:       python-django >= 1.11
 Requires:       python-django-picklefield
-Requires:       python-setuptools
+Suggests:       python-croniter
 Suggests:       python-django-q-rollbar >= 0.1
 Suggests:       python-django-q-sentry >= 0.1
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module arrow}
 BuildRequires:  %{python_module blessed}
-BuildRequires:  %{python_module django >= 1.11}
+BuildRequires:  %{python_module croniter}
 BuildRequires:  %{python_module django-picklefield}
 BuildRequires:  %{python_module django-redis}
 BuildRequires:  %{python_module hiredis}
@@ -72,6 +73,7 @@ sleep 1
 # test_qcluster: hangs
 # test_mongo:    do not install mongodb
 # test_disque:   do not have disque at all
+PYTHONPATH=$PWD
 %pytest -k 'not (test_qcluster or test_mongo or test_disque)'
 # shutdown redis server
 redis-cli shutdown
