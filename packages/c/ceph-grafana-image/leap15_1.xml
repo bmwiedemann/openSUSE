@@ -6,4 +6,7 @@
   <prefix>org.opensuse.ceph</prefix>
   <url>https://registry.opensuse.org/ceph/grafana:%PKG_VERSION%.%RELEASE%</url>
   <reference>registry.opensuse.org/ceph/grafana:%PKG_VERSION%.%RELEASE%</reference>
+  <bootstrap-packages>
+    <package name="openSUSE-release-ftp"/>
+  </bootstrap-packages>
 </param>
