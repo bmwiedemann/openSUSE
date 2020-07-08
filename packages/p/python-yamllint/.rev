@@ -86,4 +86,14 @@
   * Add required: only-when-needed option to the quoted-strings rule</comment>
     <requestid>794473</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ec21255d66258a7c0b8b45b79d2b5a18</srcmd5>
+    <version>1.23.0</version>
+    <time>1594228361</time>
+    <user>dimstar_suse</user>
+    <comment>-  Update to 1.23.0:
+  * Allow rules to validate their configuration
+  * Add options extra-required and extra-allowed to quoted-strings</comment>
+    <requestid>819117</requestid>
+  </revision>
 </revisionlist>

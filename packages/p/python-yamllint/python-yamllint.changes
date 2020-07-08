@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  7 06:14:04 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+-  Update to 1.23.0:
+  * Allow rules to validate their configuration
+  * Add options extra-required and extra-allowed to quoted-strings
+
+-------------------------------------------------------------------
 Thu Apr 16 07:39:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.22.1:
