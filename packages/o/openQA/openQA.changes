@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 07 11:26:23 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1594050210.78188dc41:
+  * systemd: Prevent worker erroneously pulling in any local openQA webUI service
+  * Add perl-Mojolicious-Plugin-OAuth2 dep
+  * Document how to configure OAuth 2.0
+  * Capture output of Fake/OpenID cases and use tempdir
+  * Add OAuth2 auth method with GitHub provider
+  * Narrow down fixtures needed by toplevel tests
+
+-------------------------------------------------------------------
 Sun Jul 05 03:26:30 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1593790150.a010576f0:

@@ -63,7 +63,7 @@
 # Do not require on this in individual sub-packages except for the devel
 # package.
 # The following line is generated from dependencies.yaml
-%define test_requires %common_requires %main_requires %python_scripts_requires %worker_requires ShellCheck curl jq os-autoinst-devel perl(App::cpanminus) perl(Perl::Critic) perl(Perl::Critic::Freenode) perl(Selenium::Remote::Driver) >= 1.23 perl(Selenium::Remote::WDKeys) perl(Test::Exception) perl(Test::Fatal) perl(Test::MockModule) perl(Test::MockObject) perl(Test::Mojo) perl(Test::Most) perl(Test::Output) perl(Test::Pod) perl(Test::Strict) perl(Test::Warnings) >= 0.029 postgresql-server python3-setuptools python3-yamllint
+%define test_requires %common_requires %main_requires %python_scripts_requires %worker_requires ShellCheck curl jq os-autoinst-devel perl(App::cpanminus) perl(Mojolicious::Plugin::OAuth2) perl(Perl::Critic) perl(Perl::Critic::Freenode) perl(Selenium::Remote::Driver) >= 1.23 perl(Selenium::Remote::WDKeys) perl(Test::Exception) perl(Test::Fatal) perl(Test::MockModule) perl(Test::MockObject) perl(Test::Mojo) perl(Test::Most) perl(Test::Output) perl(Test::Pod) perl(Test::Strict) perl(Test::Warnings) >= 0.029 postgresql-server python3-setuptools python3-yamllint
 %ifarch x86_64
 %define qemu qemu qemu-kvm
 %else
@@ -73,7 +73,7 @@
 %define devel_requires %build_requires %qemu %test_requires chromedriver curl perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy) postgresql-devel rsync sudo tar xorg-x11-fonts
 
 Name:           openQA
-Version:        4.6.1593790150.a010576f0
+Version:        4.6.1594050210.78188dc41
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -99,6 +99,8 @@ Recommends:     apache2
 Recommends:     apparmor-profiles
 Recommends:     apparmor-utils
 Recommends:     logrotate
+# the plugin is needed if the auth method is set to "oauth2"
+Recommends:     perl(Mojolicious::Plugin::OAuth2)
 # server needs to run an rsync server if worker caching is used
 Recommends:     rsync
 BuildArch:      noarch
