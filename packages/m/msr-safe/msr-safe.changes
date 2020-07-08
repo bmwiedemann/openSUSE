@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue Jul  7 07:44:32 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add better descriptions, use noun phrase.
+- Drop redundant %clean section, drop useless %systemd_ordering,
+  drop arbitrary limitation to building for kernel-default.
+- Replace overarching systemd buildrequire.
+
+-------------------------------------------------------------------
+Mon Jul  6 01:00:47 UTC 2020 - Jeffrey Cheung <jcheung@suse.com>
+
+- Add system account msr for msr-safe tool 
+
+-------------------------------------------------------------------
+Wed May 20 07:21:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit jsc#SLE-12664
