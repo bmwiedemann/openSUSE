@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Jul  7 06:56:38 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.13.0:
+  * Added
+   + Added `SpotifyImplicitGrant` as an auth manager option. It provides
+     user authentication without a client secret but sacrifices the ability
+     to refresh the token without user input. (However, read the class
+     docstring for security advisory.)
+   + Added built-in verification of the `state` query parameter
+   + Added two new attributes: error and error_description to `SpotifyOauthError` exception class to show
+   + authorization/authentication web api errors details.
+   + Added `SpotifyStateError` subclass of `SpotifyOauthError`
+   + Allow extending `SpotifyClientCredentials` and `SpotifyOAuth`
+   + Added the market paramter to `album_tracks`
+   + Added a method to update the auth token.
+   + Support for shows/podcasts and episodes
+   + Added CONTRIBUTING.md
+  * Deprecated
+   + Deprecated `util.prompt_for_user_token` in favor of `spotipy.Spotify(auth_manager=SpotifyOAuth())`
+  * Fixed
+   + Logging regression due to the addition of `logging.basicConfig()` which was unneeded.
+   + Issue where using `http://localhost` as redirect_uri would cause the authorization process to hang.
+   + Fixed miscellaneous issues with parsing of callback URL
+   + Close session when Spotipy object is unloaded
+   + Propagate refresh token error
+  * Changed
+   + Updated the documentation to give more details on the authorization
+   + process and reflect 2020 Spotify Application jargon and practices.
+   + The local webserver is only started for localhost redirect_uri which specify a port,
+   + i.e. it is started for `http://localhost:8080` or `http://127.0.0.1:8080`, not for `http://localhost`.
+   + Client retry logic has changed as it now uses urllib3's `Retry` in conjunction with requests `Session`
+   + The session is customizable as it allows for:
+      - status_forcelist
+      - retries
+      - status_retries
+      - backoff_factor
+   + Spin up a local webserver to auto-fill authentication URL
+   + Use session in SpotifyAuthBase
+   + Logging used instead of print statements
+- Skip one test that requires external internet access
+
+-------------------------------------------------------------------
 Thu Mar 26 14:45:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 2.10.0
