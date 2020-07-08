@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul  7 09:02:56 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- updated to version 1.7.0 with following highlights:
+  * Training Support, as a tech preview
+  * Opset has been updated to version 12
+- removed not needed patch: protobuf.patch
+
+-------------------------------------------------------------------
 Thu May 21 06:55:38 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

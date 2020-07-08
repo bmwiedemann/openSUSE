@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-onnx
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Open Neural Network eXchange
 License:        MIT
 URL:            https://onnx.ai/
 Source0:        https://github.com/onnx/onnx/archive/v%{version}.tar.gz#/onnx-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-Patch0:         protobuf.patch
 Patch1:         no-python2.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
