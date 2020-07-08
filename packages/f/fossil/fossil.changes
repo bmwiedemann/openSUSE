@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul  4 16:48:06 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fossil 2.11.1:
+  * Make the "fossil git export" command more restrictive about
+    characters that it allows in the tag names
+
+-------------------------------------------------------------------
 Thu Jun 11 19:27:25 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add fossil-2.11-reproducible.patch to override build date (boo#1047218)
