@@ -1,7 +1,7 @@
 #
 # spec file for package python-biopython
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,8 +19,9 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Tests require a network connection
 %bcond_with test
+%define skip_python2 1
 Name:           python-biopython
-Version:        1.75
+Version:        1.77
 Release:        0
 Summary:        Python Tools for Computational Molecular Biology
 License:        MIT AND BSD-3-Clause
@@ -34,7 +35,6 @@ BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-2to3
 Requires:       python-numpy
 Requires:       python-xml
 Recommends:     python-matplotlib
