@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-asdf
-Version:        2.5.2
+Version:        2.6.0
 Release:        0
 Summary:        Python tools to handle ASDF files
 License:        BSD-3-Clause AND BSD-2-Clause
@@ -30,28 +30,25 @@ BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 3.10
-Requires:       python-astropy
+Requires:       python-astropy >= 3.0
 Requires:       python-astropy-helpers
-Requires:       python-jsonschema < 4
-Requires:       python-jsonschema >= 2.3
-Requires:       python-numpy >= 1.8
+Requires:       python-jsonschema >= 3.0.2
+Requires:       python-numpy >= 1.10
 Requires:       python-semantic_version >= 2.8
-Requires:       python-six >= 1.9.0
+Recommends:     python-lz4 >= 0.10
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 3.10}
+BuildRequires:  %{python_module astropy >= 3.0}
 BuildRequires:  %{python_module astropy-helpers}
-BuildRequires:  %{python_module astropy}
-BuildRequires:  %{python_module jsonschema < 4}
-BuildRequires:  %{python_module jsonschema >= 2.3}
-BuildRequires:  %{python_module numpy >= 1.8}
+BuildRequires:  %{python_module jsonschema >= 3.0.2}
+BuildRequires:  %{python_module numpy >= 1.10}
 BuildRequires:  %{python_module pytest-astropy}
 BuildRequires:  %{python_module pytest-openfiles >= 0.3.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module semantic_version >= 2.8}
-BuildRequires:  %{python_module six >= 1.9.0}
 # /SECTION
 %python_subpackages
 

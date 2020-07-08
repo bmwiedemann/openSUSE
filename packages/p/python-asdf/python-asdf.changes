@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jul  7 11:06:32 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.6.0
+  * AsdfDeprecationWarning now subclasses DeprecationWarning. [#710]
+  * Resolve external references in custom schemas, and deprecate
+    asdf.schema.load_custom_schema.  [#738]
+  * Add ``asdf.info`` for displaying a summary of a tree, and
+    ``AsdfFile.search`` for searching a tree. [#736]
+  * Add pytest plugin option to skip warning when a tag is
+    unrecognized. [#771]
+  * Fix generic_io ``read_blocks()`` reading past the requested size [#773]
+  * Add support for ASDF Standard 1.5.0, which includes several new
+    transform schemas. [#776]
+  * Enable validation and serialization of previously unhandled numpy
+    scalar types. [#778]
+  * Fix handling of trees containing implicit internal references and
+    reference cycles.  Eliminate need to call ``yamlutil.custom_tree_to_tagged_tree``
+    and ``yamlutil.tagged_tree_to_custom_tree`` from extension code,
+    and allow ``ExtensionType`` subclasses to return generators. [#777]
+  * Fix bug preventing history entries when a file was previously
+    saved without them. [#779]
+  * Update developer overview documentation to describe design of changes
+    to handle internal references and reference cycles. [#781]
+
+-------------------------------------------------------------------
 Wed May 27 09:36:04 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
