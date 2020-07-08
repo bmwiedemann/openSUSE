@@ -25,10 +25,11 @@ Name:           tupitube
 Version:        0.2.15
 Release:        0
 Summary:        2D vectorial/animation tool
-License:        GPL-2.0-or-later
+License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Graphics/Vector Editors
 URL:            https://maefloresta.com
 Source0:        https://sourceforge.net/projects/tupi2d/files/Source%20Code/tupitube.desk-%{version}.tar.gz
+Source99:       tupitube-rpmlintrc
 Patch0:         tupitube.quazip5.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Fix-build-with-Qt-5.15.patch
@@ -93,7 +94,7 @@ This package contains plugins for %{name}.
 %autosetup -p1 -n tupitube.desk
 
 # Fix 'E: spurious-executable-perm'
-chmod -x COPYING README*
+chmod -x COPYING README* launcher/tupitube.xml
 
 # Fix 'W: wrong-script-end-of-line-encoding'
 dos2unix src/shell/html/css/tupitube.css
@@ -103,6 +104,9 @@ ffmpeg_include=$(pkg-config --cflags-only-I libavutil)
 find . -type f -name \*.pro | while read f; do
 echo "QMAKE_CXXFLAGS += %{optflags} ${ffmpeg_include}" >> "$f"
 done
+
+# Remove shebang
+sed -i '/^#!/d' src/mypaint/raster/main/brushes/label-brush-mypaint.sh
 
 %build
 %configure \

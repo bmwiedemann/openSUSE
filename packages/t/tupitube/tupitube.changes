@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul  7 10:50:01 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add GPL-3.0-or-later license on account of the libqtmypaint and
+  libraster* plugins
+- Add tupitube-rpmlintrc
+- Fix some rpmlint complaints
+
+-------------------------------------------------------------------
 Thu Jun  4 21:14:42 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 0.2.15. No changelog.
