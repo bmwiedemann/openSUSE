@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  7 14:54:44 UTC 2020 - Jannik Seiler <seil0@mosad.xyz>
+
+- Updated to current git version
+  * Change decoration_layout property for GtkHeaderBar. Disable window icon.
+    Removes double icon problem when run in Plasma
+
+-------------------------------------------------------------------
 Mon Jun  1 05:41:10 UTC 2020 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Updated to current git version (Ryochan7's Python3 port)
