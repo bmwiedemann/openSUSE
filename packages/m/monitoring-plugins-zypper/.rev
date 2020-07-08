@@ -152,4 +152,12 @@ Package might get out as maintenance update for 13.2 (see bnc#904170) after acce
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>758460</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0e0fd863bcb5dbeb66a2044e76a543fa</srcmd5>
+    <version>1.98.5</version>
+    <time>1594228664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819265</requestid>
+  </revision>
 </revisionlist>
