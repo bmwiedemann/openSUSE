@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-blosc
-Version:        1.8.3
+Version:        1.9.1
 Release:        0
 Summary:        Blosc data compressor for Python
 License:        MIT
@@ -26,7 +27,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Blosc/python-blosc
 Source:         https://files.pythonhosted.org/packages/source/b/blosc/blosc-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module scikit-build}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  blosc-devel >= 1.9.0
