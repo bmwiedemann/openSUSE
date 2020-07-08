@@ -17,29 +17,30 @@
 #
 
 
-%define          fontname       cascadia-code
+%define fontname cascadia-code
+
 Name:           saja-cascadia-code-fonts
-Version:        2005.15
+Version:        2007.01
 Release:        0
 Summary:        Monospace terminal fonts from Microsoft
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://github.com/microsoft/cascadia-code
-Source0:        https://github.com/microsoft/cascadia-code/releases/download/v%{version}/CascadiaCode_%{version}.zip
+Source0:        https://github.com/microsoft/cascadia-code/releases/download/v%{version}/CascadiaCode-%{version}.zip
 Source1:        LICENSE.txt
 Source2:        OFL-FAQ.txt
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
-%reconfigure_fonts_prereq
 BuildArch:      noarch
+%reconfigure_fonts_prereq
 
 %description
 Cascadia Code is a monospaced font that was designed also with Visual Studio / Visual Studio Code in mind.
 
 %prep
 %setup -q -n otf
-cp %{S:1} .
-cp %{S:2} .
+cp %{SOURCE1} .
+cp %{SOURCE2} .
 
 %build
 
@@ -50,7 +51,6 @@ install -m 0644 *.otf %{buildroot}%{_ttfontsdir}
 %reconfigure_fonts_scriptlets
 
 %files
-%defattr(-, root, root)
 %dir %{_ttfontsdir}/
 %{_ttfontsdir}/*
 %license OFL-FAQ.txt LICENSE.txt

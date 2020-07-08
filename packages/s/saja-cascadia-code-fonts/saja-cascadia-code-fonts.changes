@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  8 04:47:23 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 2007.01
+  * The double-equals ligature == has been updated to improve
+    visual clarity
+  * The diacritics on IJacute are no longer malformed
+  * We've introduced a set of compatibility features to improve
+    the rendering of powerline glyphs in legacy GDI applications
+
+-------------------------------------------------------------------
 Tue May 19 16:22:38 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 2005.15
