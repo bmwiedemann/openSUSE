@@ -18,7 +18,7 @@
 
 
 Name:           bstone
-Version:        1.2.6
+Version:        1.2.7
 Release:        0
 Summary:        A source port of Blake Stone
 License:        GPL-2.0-or-later
