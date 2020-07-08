@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul  7 06:39:38 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 6.2.1 
+  * AqHBCI: Also accept warning about empty transactions list when getting statements.
+  * aqbanking-cli: Set command to CreateDatedSepaTransfer when date given.
+  * libaqfints: Added key management segments.
+  * XML: Added fields ultimateDebitor/creditor to CAMT profiles.
+  * libaqfints: Fixed a bug in transporthbci.c.
+  * AqHBCI: Use correct logdomain.
+  * AqHBCI: Increased verbosity.
+  * XML: Set default currency if none set.
+  * libaqfints: Added defs for HKSYN/HISYN.
+- Check the ChangeLog file for the complete list of changes.
+
+-------------------------------------------------------------------
 Wed Apr  8 07:19:51 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.1.4
