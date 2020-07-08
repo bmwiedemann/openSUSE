@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Wed Jul  8 06:54:27 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild
+- Fix the sitelib/sitearch and all the dependencies
+
+-------------------------------------------------------------------
+Tue Jul  7 23:30:56 UTC 2020 - Jacob W <jacob@jacobwinski.com>
+
+- Update spec file:
+  * Change to github archive, which includes tests.
+  * Enable tests.
+  * Add BuildRequires that is required for tests to pass.
+
+-------------------------------------------------------------------
+Thu Jul  2 20:16:51 UTC 2020 - Jacob W <jacob@jacobwinski.com>
+
+- Initial package of python-itemadapter version 0.1.0
