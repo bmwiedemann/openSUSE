@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-dns-lexicon
-Version:        3.3.19
+Version:        3.3.26
 Release:        0
 Summary:        DNS record manipulation utility
 License:        MIT

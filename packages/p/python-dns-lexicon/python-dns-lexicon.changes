@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul  8 04:43:48 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.3.26:
+  * More straightforward approach to configure tests suites
+  * Allow updating gandi RRSet TTL
+  * Final customizations for hetzner dns api v1. The main fix is, that hetzner
+    does not need the fqdn as record name
+  * Add initial support for UltraDNS provider
+  * Add support for record sets in Route53
+  * Give a flag to set explicitly the zone ID and avoid unscoped API tokens
+  * Test lowest and highest supported python versions. Move mostly to 3.x
+  * Register properly the pytest mark ext_suite_1
+  * Use Bearer Token Authorization for Cloudflare API Tokens
+  * Remove Hetzner KonsoleH provider that is broken and not maintained
+  * Implement pagination for cloudflare 
+
+-------------------------------------------------------------------
 Tue May 26 07:22:41 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
