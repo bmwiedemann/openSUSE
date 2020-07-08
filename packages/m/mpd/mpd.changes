@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jul  7 06:32:18 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.21.25
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.21.25/NEWS
+  * protocol: fix crash when using "rangeid" while playing
+  * database
+    - simple: automatically scan new mounts
+    - upnp: fix compatibility with Plex DLNA
+  * storage
+    - fix disappearing mounts after mounting twice
+    - udisks: fix reading ".mpdignore"
+  * input
+    - file: detect premature end of file
+    - smbclient: don't send credentials to MPD clients
+  * decoder
+    - opus: apply pre-skip and end trimming
+    - opus: fix memory leak
+    - opus: fix crash bug
+    - vorbis: fix crash bug
+  * neighbor
+    - upnp: fix crash during shutdown
+
+-------------------------------------------------------------------
 Mon Jun 22 10:33:14 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 0.21.24
