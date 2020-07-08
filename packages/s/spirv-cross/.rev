@@ -39,4 +39,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>809947</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>1a75ef939d254a7521c05af3f3898e16</srcmd5>
+    <version>unknown</version>
+    <time>1594228356</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2020-06-29 (no changelog)</comment>
+    <requestid>819297</requestid>
+  </revision>
 </revisionlist>

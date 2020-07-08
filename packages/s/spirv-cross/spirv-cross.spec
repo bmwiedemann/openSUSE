@@ -16,14 +16,14 @@
 #
 
 
-%define _ver 2020-05-19
-%define _libver 0.33.0
+%define _ver 2020-06-29
+%define _libver 0.35.0
 %define _sover 0
 %define _libname libspirv-cross-c-shared
 %define _libpkg %{_libname}%{_sover}
 %define __builder ninja
 Name:           spirv-cross
-Version:        20200403
+Version:        20200629
 Release:        0
 Summary:        Tool and library for SPIR-V reflection and disassembly
 License:        Apache-2.0
