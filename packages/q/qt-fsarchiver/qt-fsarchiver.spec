@@ -16,16 +16,17 @@
 # or upstream https://sourceforge.net/p/qt-fsarchiver/tickets/
 
 
-%define custom_version 0.8.5-12
+%define hyphen_version 0.8.5-18
+%define terminal_version 0.8.5-12
 Name:           qt-fsarchiver
-Version:        0.8.5_12
+Version:        0.8.5_18
 Release:        0
 Summary:        Qt GUI for fsarchiver
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            http://qt-fsarchiver.sourceforge.net/
-Source0:        %{name}-%{custom_version}.tar.gz
-Source1:        %{name}-terminal-%{custom_version}.tar.gz
+Source0:        %{name}-%{hyphen_version}.tar.gz
+Source1:        %{name}-terminal-%{terminal_version}.tar.gz
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libgcrypt-devel
@@ -109,6 +110,8 @@ install -m 0644 -p translations/*.qm %{buildroot}%{_datadir}/qt5/translations/
 %{_sbindir}/%{name}.sh
 %{_sbindir}/%{name}-terminal
 %{_sbindir}/findsmb-qt
+%{_sbindir}/ccguess
+%{_sbindir}/de
 %defattr(644,root,root,755)
 %{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/icons/hicolor/48x48

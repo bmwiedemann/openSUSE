@@ -26,6 +26,7 @@ Summary:        JBoss Logging I18n Annotation Processor
 License:        Apache-2.0 AND LGPL-2.0-or-later
 URL:            https://github.com/jboss-logging/jboss-logging-tools
 Source0:        %{url}/archive/%{namedversion}/%{name}-%{namedversion}.tar.gz
+Patch0:         reproducible.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.jboss.jdeparser:jdeparser)
@@ -44,6 +45,7 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{namedversion}
+%patch0 -p1
 
 %pom_remove_dep -r org.jboss.forge.roaster:
 rm processor/src/test/java/org/jboss/logging/processor/generated/GeneratedSourceAnalysisTest.java

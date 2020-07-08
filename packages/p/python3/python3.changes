@@ -1,7 +1,58 @@
 -------------------------------------------------------------------
+Wed Jul  1 11:50:19 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Reduce some now unused conditionals
+
+-------------------------------------------------------------------
+Wed Jul  1 11:00:40 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Redux the -base dependencies to match up pre-merge layout
+
+-------------------------------------------------------------------
+Wed Jul  1 09:24:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Generate baselibs in pre-checkin too
+
+-------------------------------------------------------------------
+Wed Jul  1 09:14:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Generate the importlib-failed using pre_checking again
+- Add back the information about skipped tests on the pre_checkin
+  output
+
+-------------------------------------------------------------------
+Tue Jun 30 07:11:19 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use %python_pkg_name instead of hardcoding python3 where
+  applicable
+- Sort out preamble with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jun 29 14:36:10 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Calculate required variables instead of relying on their continuous manual update
+
+-------------------------------------------------------------------
+Thu Jun 25 10:44:08 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the -base module build again to generate only the deps
+  we need
+
+-------------------------------------------------------------------
 Wed Jun 17 18:42:51 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Replace OBS_dev-shm.patch with the upstream PR#20944
+
+-------------------------------------------------------------------
+Thu Jun 10 14:30:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use the %{python_pkg_name} on more places to allow easier
+  multiversioning
+- Switch to _multibuild approach for easier maintenance of this
+  package. All is now in one spec file with 3 conditionals:
+  * bcond_with base
+  * bcond_with doc
+  * bcond_with general
 
 -------------------------------------------------------------------
 Mon Jun  8 14:26:00 UTC 2020 - Matej Cepl <mcepl@suse.com>

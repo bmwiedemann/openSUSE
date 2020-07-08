@@ -24,16 +24,17 @@
 %bcond_with vc
 %endif
 Name:           krita
-Version:        4.2.9
+Version:        4.3.0
 Release:        0
 Summary:        Digital Painting Application
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND CC0-1.0 AND LGPL-2.0-only
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://www.krita.org/
 Source0:        https://download.kde.org/stable/krita/%{version}/krita-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-build-with-Qt-5.15.patch
+%ifnarch %{arm} aarch64
+# causes build failure on ARM currently
 BuildRequires:  OpenColorIO-devel
+%endif
 BuildRequires:  OpenEXR-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fftw3-devel
@@ -49,6 +50,7 @@ BuildRequires:  libpoppler-qt5-devel
 BuildRequires:  libquazip-qt5-devel
 BuildRequires:  libraw-devel
 BuildRequires:  libtiff-devel
+BuildRequires:  openjpeg2-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
@@ -106,9 +108,13 @@ Development headers and libraries for Krita.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
+%ifarch %{arm} aarch64
+# workaround to avoid build failure on ARM, see https://bugs.kde.org/show_bug.cgi?id=421136
+export CXXFLAGS="%{optflags} -DHAS_ONLY_OPENGL_ES"
+%endif
 # install translations to %%{_kf5_localedir} so they don't clash with the krita translations in calligra-l10n (KDE4 based)
 # can probably be changed back to the standard location when calligra is KF5 based...
 %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
