@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Jul  7 11:31:48 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 5.2.6
+  + **Upgrade your configuration**
+  https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.6/releasenotes.txt
+  + When compiling for export, the compiler generates a firewall.conf
+    file which is later installed on the remote firewall system as
+    ${VARDIR}/firewall.conf. Previously, the CLI on that firewall was
+    not processing the file, resulting in some features not being
+    available:
+    - Default values for VERBOSITY, LOGFILE, LOGFORMAT, PATH,
+      SHOREWALL_SHELL, SUBSYSLOCK, RESTOREFILE, RESTART,
+      DYNAMIC_BLACKLIST and PAGER are not supplied.
+    - scfilter file supplied at compile time.
+    - dumpfilter file supplied at compile time.
+    That has been corrected.
+  + A bug in iptables (see
+    https://git.netfilter.org/iptables/commit/?id=d1555a0906e35ba8d170613d5a43da64e527dbe1)
+    prevents the '--queue-cpu-fanout' option from being applied unless
+    that option is the last one specified. Unfortunately, Shorewall
+    places the '--queue-bypass' option last if that option is also
+    specified.
+    This release works around this issue by ensuring that the
+    '--queue-cpu-fanout' option appears last.
+  + The -D 'compile', 'check', 'reload' and 'Restart'  option was
+    previously omitted from the output of 'shorewall help'. It is now
+    included. As part of this change, an incorrect and conflicting
+    description of the -D option was removed from the 'remote-restart'
+    section of shorewall(8).
+  + Previously, when EXPAND_POLICIES=No, chains that enforced ACCEPT
+    policies were not completely optimized by optimize level 2 (ACCEPT
+    rules preceding the final unconditional ACCEPT were not
+    deleted). That has been corrected such that these rules are now
+    optimized.
+
+-------------------------------------------------------------------
 Thu Jul  2 13:24:45 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to version 5.2.5.2

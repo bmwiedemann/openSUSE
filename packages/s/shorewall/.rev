@@ -2114,4 +2114,12 @@ Will serve as maintenance sr for Leap + Factory submission (forwarded request 36
     <comment></comment>
     <requestid>818356</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>79002f3ec4a6d5f7f2cc9d01f12a8f58</srcmd5>
+    <version>5.2.6</version>
+    <time>1594228644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819361</requestid>
+  </revision>
 </revisionlist>
