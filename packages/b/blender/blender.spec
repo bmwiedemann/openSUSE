@@ -48,7 +48,7 @@
 %define _suffix %(echo %{_version} | tr -d '.')
 
 Name:           blender
-Version:        2.82a
+Version:        2.83.1
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -67,8 +67,6 @@ Source99:       series
 Patch0:         make_python_3.6_compatible.patch
 # PATCH-FIX-OPENSUSE https://developer.blender.org/D5858
 Patch1:         reproducible.patch
-# PATCH-FIX-UPSTREAM https://developer.blender.org/T76044
-Patch2:         blender-add-OSL-1_11-compat.patch
 #!BuildIgnore:  libGLwM1
 BuildRequires:  OpenColorIO-devel
 BuildRequires:  OpenEXR-devel
@@ -236,7 +234,6 @@ popd
 %patch0 -p1
 %endif
 %patch1 -p1
-%patch2 -p1
 
 rm -rf extern/glew
 rm -rf extern/libopenjpeg
@@ -375,7 +372,6 @@ echo "release version = %{_version}"
 %cmake_install
 
 # Remove folder, it's not supposed to be installed here.
-rm -rf %{buildroot}%{_datadir}/%{name}/%{_version}/datafiles/fonts
 rm -f %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/addons/.gitignore
 # Fix any .py files with shebangs and wrong permissions.
 find %{buildroot} -name "*.py" -perm 0644 -print0 | \

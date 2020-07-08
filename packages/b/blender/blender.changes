@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Tue Jul  7 23:52:35 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.83.1 
+  - Fix T77774: New undo code broken by ‘make local’ behavior
+  - Audio SDL: Video editor Sound muted without muting it
+  - Fix T77803: IK Degrees of freedom drawing glitch
+  - Fix (unreported) wrong size of UserPreferences’ `dupflag`
+    parameter. Fix Applied rBdceaef92d7a4: Fix (unreported) wrong
+    size of UserPreferences’ `dupflag` parameter
+  - Fix T77915: Cycles OSL microfacet closure not working in custom
+    shaders
+  - GPencil: Fix unreported Vertex Opacity Overlay not working
+  - Fix T75414: Incorrect masking in Color Balance modifier
+  - Fix T76767: Cycles performance regression with CLI renders
+  - Fix T77853: Error reloading linked library
+  - Fix missing hinting information in monospace font,
+    rB783d3c675ac2: Fix missing hinting information in default font
+  - Fix T77657: NVIDIA Quadro FX4800 crash on startup
+  - GPencil: Improve viewlayer masking check
+  - Fix T77148: Crash changing multiple values for sequencer strips
+  - Fix T77047: Dyntopo Sample detail size on hidden mesh causes
+    crash
+  - Fix T74101: File Browser in macOS fullscreen crashes or makes
+    windows unusable
+  - Fix T77504: Operator search gives wrong results
+  - Fix T76894: Disable clipping region selection in
+    material/rendered mode
+  - Fix T72936: Incorrect gizmo orientation with inherit rotation
+    disabled
+  - Fix menu operator/search clipping the last character Fix
+    Applied rBf649e5c418d9: Fix menu operator/search clipping the
+    last character
+  - Fix T77603: OSL parser fails when script ends with comment
+    without newline
+  - Fix crash running “Edit Voxel Size” operator outside of a main
+    3D View region Fix Applied rB5fc252feaeab: Fix crash running
+    “Edit Voxel Size” operator outside of a main 3D View region
+  - GPencil: Fix unreported error in Dots Strokes material
+    initialization
+  - GPencil: Fix unreported Shift+F OPacity key not working
+  - Calculate epsilon values for interp_weights_poly to improve
+    accuracy Fix Applied rB9d5e5e282cff: Calculate epsilon values
+    for interp_weights_poly to improve accuracy
+  - Fix T76273 Glitches caused by glCopyImageSubData on windows +
+    intel gpu Fix Applied rB7b754c8c9952: Fix T76273 Glitches
+    caused by glCopyImageSubData on windows + intel gpu
+  - Fix T77358: Gpencil can’t select geometry within transparent
+    layers
+  - Fix T77520: GPencil viewlayer filter produce crash with masking
+    layers
+  - Fix T77367: Blender’s snap package ignores command line options
+  - Fix for T77095: work around render artifacts with AMD Radeon RX
+    4xx and 5xx
+  - Fix T77164: scaling/rotation fails for 3 selected NURB points
+  - Fix T77156: GPencil view layer filter by layer not working
+  - Fix T77456: Broken vertex paint undo on high-poly objects
+  - Fix T77448: Camera Solver constraint can’t be converted to
+    f-curve
+- changes from version 2.83.0
+  https://wiki.blender.org/wiki/Reference/Release_Notes/2.83 
+- do not delete the fonts directory:
+  it is actually needed for blender and we already packaged the
+  license file
+- drop blender-add-OSL-1_11-compat.patch: included in update
+- refreshed patch to apply cleanly again:
+  make_python_3.6_compatible.patch
+
+-------------------------------------------------------------------
 Thu May 14 16:54:12 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Readjust _constraints, x86_64 had the lowest constraint, but the

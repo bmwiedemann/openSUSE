@@ -1,3 +1,4 @@
-0006-add_ppc64el-s390x_support.patch
+# only rely on patch availibility, if python_36 is requested
 make_python_3.6_compatible.patch
-
+# PATCH-FIX-OPENSUSE https://developer.blender.org/D5858
+reproducible.patch
