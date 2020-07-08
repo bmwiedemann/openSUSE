@@ -3188,6 +3188,7 @@
     <package name="mpg123-pulse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mpt-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="mpt-status" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="msr-safe-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="mtd-utils" supportstatus="unsupported"/> <!-- reason: dvd:mtd-utils -->
     <package name="mtdev-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="mtools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
