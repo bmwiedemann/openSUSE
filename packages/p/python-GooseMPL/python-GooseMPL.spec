@@ -1,7 +1,7 @@
 #
 # spec file for package python-GooseMPL
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-GooseMPL
-Version:        0.2.26
+Version:        0.4.2
 Release:        0
 Summary:        Style and extension functions for matplotlib
 License:        MIT
@@ -29,14 +29,14 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-matplotlib
+Requires:       python-matplotlib >= 2.0.0
 Requires:       python-matplotlib-latex
-Requires:       python-numpy
+Requires:       python-numpy >= 1.0.0
 Requires:       tex(type1cm.sty)
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module matplotlib-latex}
+BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  tex(type1cm.sty)
 # /SECTION
