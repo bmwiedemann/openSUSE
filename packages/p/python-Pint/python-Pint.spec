@@ -19,24 +19,27 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-Pint
-Version:        0.11
+Version:        0.14
 Release:        0
 Summary:        Physical quantities module
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/hgrecco/pint
 Source:         https://files.pythonhosted.org/packages/source/P/Pint/Pint-%{version}.tar.gz
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module uncertainties}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-uncertainties
+Requires:       python-importlib-metadata
+Requires:       python-packaging
+Requires:       python-uncertainties >= 3.0
 Recommends:     python-numpy
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest >= 4.0}
+BuildRequires:  %{python_module uncertainties >= 3.0}
 # /SECTION
 %python_subpackages
 
