@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           pcsc-tools
-Version:        1.5.4
+Version:        1.5.7
 Release:        0
 Summary:        Smart card tools
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/Management
-Url:            http://ludovic.rousseau.free.fr/softwares/pcsc-tools/
+URL:            http://ludovic.rousseau.free.fr/softwares/pcsc-tools/
 Source0:        http://ludovic.rousseau.free.fr/softwares/%{name}/%{name}-%{version}.tar.bz2
 Source1:        http://ludovic.rousseau.free.fr/softwares/%{name}/%{name}-%{version}.tar.bz2.asc
 Source2:        pcsc-tools.keyring
@@ -43,6 +43,7 @@ or send commands in a friendly environment
 %prep
 %setup -q
 cp -v %{SOURCE3} %{SOURCE4} .
+sed 's|#!/usr/bin/env perl|#!/usr/bin/perl|g' -i ATR_analysis gscriptor scriptor
 
 %build
 %configure
