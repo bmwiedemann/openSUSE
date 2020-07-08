@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jul  3 17:05:03 UTC 2020 - Jacob W <jacob@jacobwinski.com>
+
+- Update to 2.2.0:
+  * Python 3.5.2+ is required now
+  * dataclass objects and attrs objects are now valid item types
+  * New TextResponse.json method
+  * New bytes_received signal that allows canceling response download
+  * CookiesMiddleware fixes 
+
+- Update to 2.1.0:
+  * New FEEDS setting to export to multiple feeds
+  * New Response.ip_address attribute
+
+- Remove zope-exception-test_crawler.patch
+- Add new required dependency python-itemadapter
+- Omit test that fails in OBS due to https / tls issues
+
+-------------------------------------------------------------------
 Tue May 19 09:27:53 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
