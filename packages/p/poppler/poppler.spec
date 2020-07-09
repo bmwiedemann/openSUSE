@@ -24,11 +24,11 @@
 %endif
 
 Name:           poppler%{?psuffix}
-Version:        0.89.0
+Version:        0.90.0
 Release:        0
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.9
-%define poppler_sover 100
+%define poppler_sover 101
 %define poppler_cpp_sover 0
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
@@ -40,7 +40,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://poppler.freedesktop.org/
 Source:         http://poppler.freedesktop.org/%{sname}-%{version}.tar.xz
 Source99:       baselibs.conf
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
 BuildRequires:  gobject-introspection-devel
