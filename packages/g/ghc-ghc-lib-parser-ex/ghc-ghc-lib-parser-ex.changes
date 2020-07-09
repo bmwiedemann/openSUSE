@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Mon Jul  6 13:50:59 UTC 2020 - psimons@suse.com
+
+- Update ghc-lib-parser-ex to version 8.10.0.15.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/ghc-lib-parser-ex-8.10.0.15/src/ChangeLog.md
+
+-------------------------------------------------------------------
+Tue Jun 23 09:31:50 UTC 2020 - psimons@suse.com
+
+- Add ghc-lib-parser-ex at version 8.10.0.14.
+
