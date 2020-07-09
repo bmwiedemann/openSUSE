@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-base16-bytestring
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %global pkg_name base16-bytestring
+%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.1.6
+Version:        0.1.1.7
 Release:        0
 Summary:        Fast base16 (hex) encoding and decoding for ByteStrings
 License:        BSD-3-Clause
@@ -29,7 +30,14 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-rpm-macros
 
 %description
-Fast base16 (hex) encoding and decoding for ByteStrings.
+This package provides support for encoding and decoding binary data according
+to 'base16' (see also <https://tools.ietf.org/html/rfc4648 RFC 4648>) for
+strict (see "Data.ByteString.Base16") and lazy 'ByteString's (see
+"Data.ByteString.Base16.Lazy").
+
+See also the <https://hackage.haskell.org/package/base-encoding base-encoding>
+package which provides an uniform API providing conversion paths between more
+binary and textual types.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -51,6 +59,9 @@ files.
 %install
 %ghc_lib_install
 
+%check
+%cabal_test
+
 %post devel
 %ghc_pkg_recache
 
@@ -61,6 +72,6 @@ files.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
-%doc README.markdown
+%doc CHANGELOG.md README.md
 
 %changelog

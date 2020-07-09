@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 21 02:00:47 UTC 2020 - psimons@suse.com
+
+- Update base16-bytestring to version 0.1.1.7.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
 Tue Jun 16 11:13:47 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Re-generate file with latest version of spec-cleaner.
