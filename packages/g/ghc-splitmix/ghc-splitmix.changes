@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul  7 11:19:12 UTC 2020 - psimons@suse.com
+
+- Update splitmix to version 0.1.
+  # 0.1
+
+  - Drop `random` dependency unconditionally.
+    https://github.com/phadej/splitmix/issues/34
+
+------------------------------------------------------------------
 Tue Jun  9 09:53:40 UTC 2020 - psimons@suse.com
 
 - Update splitmix to version 0.0.5.
@@ -34,4 +43,3 @@ Wed Jul 31 02:03:22 UTC 2019 - psimons@suse.com
 Thu Mar 28 11:08:30 UTC 2019 - psimons@suse.com
 
 - Add splitmix at version 0.0.2.
-
