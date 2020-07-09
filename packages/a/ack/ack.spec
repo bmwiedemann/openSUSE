@@ -24,7 +24,7 @@
 %endif
 %{!?perl_make_install:  %global perl_make_install make DESTDIR=%{buildroot} install_vendor}
 Name:           ack
-Version:        3.3.1
+Version:        3.4.0
 Release:        0
 Summary:        Grep-Like Text Finder
 License:        Artistic-2.0

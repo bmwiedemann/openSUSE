@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  6 19:39:51 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ack 3.4.0:
+  * tweaks to coloring in output
+  * Add --toml for the TOML filetype
+
+-------------------------------------------------------------------
 Wed Jan 22 14:02:54 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - ack 3.3.1:
