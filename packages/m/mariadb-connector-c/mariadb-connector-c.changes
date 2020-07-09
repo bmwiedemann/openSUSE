@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul  3 11:57:03 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to release 3.1.9
+  * CONC-469: Use servers preferred authentication method unless
+    another plugin was specified.
+  * Added support for kFreeBSD builds
+  * Fixed memory leak in GnuTLS if connection couldn't be established.
+- refresh private_library.patch 
+
+-------------------------------------------------------------------
 Fri May 22 15:05:07 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - Update to release 3.1.8 [bsc#1171550]

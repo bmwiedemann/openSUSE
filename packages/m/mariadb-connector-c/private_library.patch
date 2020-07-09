@@ -8,11 +8,11 @@ static linking, create a private shared library that simply
 exports all symbols. With the exception of exported symbols, it is
 identical to the regular library.
 
-Index: mariadb-connector-c-3.1.8-src/libmariadb/CMakeLists.txt
+Index: mariadb-connector-c-3.1.9-src/libmariadb/CMakeLists.txt
 ===================================================================
---- mariadb-connector-c-3.1.8-src.orig/libmariadb/CMakeLists.txt
-+++ mariadb-connector-c-3.1.8-src/libmariadb/CMakeLists.txt
-@@ -411,17 +411,25 @@ IF(CMAKE_SIZEOF_VOID_P EQUAL 8 AND MSVC)
+--- mariadb-connector-c-3.1.9-src.orig/libmariadb/CMakeLists.txt
++++ mariadb-connector-c-3.1.9-src/libmariadb/CMakeLists.txt
+@@ -411,6 +411,12 @@ IF(CMAKE_SIZEOF_VOID_P EQUAL 8 AND MSVC)
    SET_TARGET_PROPERTIES(mariadbclient PROPERTIES STATIC_LIBRARY_FLAGS "/machine:x64")
  ENDIF()
  
@@ -23,8 +23,9 @@ Index: mariadb-connector-c-3.1.8-src/libmariadb/CMakeLists.txt
 +ENDIF()
 +
  IF(CMAKE_SYSTEM_NAME MATCHES "Linux" OR
+    CMAKE_SYSTEM_NAME MATCHES "kFreeBSD" OR
     CMAKE_SYSTEM_NAME MATCHES "GNU")
-   IF (NOT WITH_ASAN AND NOT WITH_TSAN AND NOT WITH_UBSAN AND NOT WITH_MSAN)
+@@ -418,11 +424,13 @@ IF(CMAKE_SYSTEM_NAME MATCHES "Linux" OR
      TARGET_LINK_LIBRARIES (libmariadb LINK_PRIVATE "-Wl,--no-undefined")
    ENDIF()
    SET_TARGET_PROPERTIES(libmariadb PROPERTIES LINK_FLAGS "${CC_BINARY_DIR}/libmariadb/mariadbclient.def")
@@ -38,7 +39,7 @@ Index: mariadb-connector-c-3.1.8-src/libmariadb/CMakeLists.txt
  SET_TARGET_PROPERTIES(libmariadb PROPERTIES PREFIX "")
  
  #
-@@ -455,7 +463,9 @@ INSTALL(TARGETS mariadbclient
+@@ -456,7 +464,9 @@ INSTALL(TARGETS mariadbclient
  INSTALL(TARGETS libmariadb
            COMPONENT SharedLibraries
          DESTINATION ${INSTALL_LIBDIR})
@@ -49,10 +50,10 @@ Index: mariadb-connector-c-3.1.8-src/libmariadb/CMakeLists.txt
  
  IF(MSVC)
     # On Windows, install PDB
-Index: mariadb-connector-c-3.1.8-src/mariadb_config/mariadb_config.c.in
+Index: mariadb-connector-c-3.1.9-src/mariadb_config/mariadb_config.c.in
 ===================================================================
---- mariadb-connector-c-3.1.8-src.orig/mariadb_config/mariadb_config.c.in
-+++ mariadb-connector-c-3.1.8-src/mariadb_config/mariadb_config.c.in
+--- mariadb-connector-c-3.1.9-src.orig/mariadb_config/mariadb_config.c.in
++++ mariadb-connector-c-3.1.9-src/mariadb_config/mariadb_config.c.in
 @@ -7,6 +7,8 @@ static char *mariadb_progname;
  
  #define INCLUDE "-I@INSTALL_INCLUDEDIR@ -I@INSTALL_INCLUDEDIR@/mariadb"
