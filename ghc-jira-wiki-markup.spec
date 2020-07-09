@@ -19,7 +19,7 @@
 %global pkg_name jira-wiki-markup
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.1.4
+Version:        1.3.2
 Release:        0
 Summary:        Handle Jira wiki markup
 License:        MIT
