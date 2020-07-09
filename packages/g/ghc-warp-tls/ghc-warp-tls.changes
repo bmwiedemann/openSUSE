@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 26 02:00:24 UTC 2020 - psimons@suse.com
+
+- Update warp-tls to version 3.3.0.
+  ## 3.3.0
+
+  * Breaking changes: certFile and keyFile are not exported anymore.
+  * Allow TLS credentials to be retrieved from an IORef.
+    [#806](https://github.com/yesodweb/wai/pull/806)
+
+-------------------------------------------------------------------
 Tue Jun  9 09:26:14 UTC 2020 - psimons@suse.com
 
 - Add warp-tls at version 3.2.12.
