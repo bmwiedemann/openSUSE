@@ -12,7 +12,7 @@
       <xsl:if test="not(y:enabled = 'true')">
         <xsl:text> --disable</xsl:text>
       </xsl:if>
-      <xsl:if test="y:autorefresh = 'true'">
+      <xsl:if test="not(y:autorefresh = 'false')">
         <xsl:text> --refresh</xsl:text>
       </xsl:if>
       <xsl:if test="y:priority">

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  8 07:27:44 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- autorefresh defaults to true (boo#1173873)
+
+-------------------------------------------------------------------
 Mon Dec 10 16:00:28 UTC 2018 - Fabian Vogt <fvogt@suse.com>
 
 - Handle missing enabled and priority elements
