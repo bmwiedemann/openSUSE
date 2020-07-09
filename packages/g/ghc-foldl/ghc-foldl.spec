@@ -19,7 +19,7 @@
 %global pkg_name foldl
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.4.6
+Version:        1.4.7
 Release:        0
 Summary:        Composable, streaming, and efficient left folds
 License:        BSD-3-Clause

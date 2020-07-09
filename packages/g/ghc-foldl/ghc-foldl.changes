@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 21 02:00:43 UTC 2020 - psimons@suse.com
+
+- Update foldl to version 1.4.7.
+  1.4.7
+
+  * Add `foldByKey{,Hash}Map` functions
+
+-------------------------------------------------------------------
 Tue Jun 16 11:14:07 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Re-generate file with latest version of spec-cleaner.
