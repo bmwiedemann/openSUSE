@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-cryptonite
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name cryptonite
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.26
+Version:        0.27
 Release:        0
 Summary:        Cryptography Primitives sink
 License:        BSD-3-Clause
@@ -61,7 +61,7 @@ Generator
 * Data related: Anti-Forensic Information Splitter (AFIS)
 
 If anything cryptographic related is missing from here, submit a pull request
-to have it added. This package strive to be a cryptographic kitchen sink that
+to have it added. This package strives to be a cryptographic kitchen sink that
 provides cryptography for everyone.
 
 Evaluate the security related to your requirements before using.

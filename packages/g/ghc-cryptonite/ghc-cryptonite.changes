@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 22 02:00:23 UTC 2020 - psimons@suse.com
+
+- Update cryptonite to version 0.27.
+  ## 0.27
+
+  * Optimise AES GCM and CCM
+  * Optimise P256R1 implementation
+  * Various AES-NI building improvements
+  * Add better ECDSA support
+  * Add XSalsa derive
+  * Implement square roots for ECC binary curve
+  * Various tests and benchmarks
+
+-------------------------------------------------------------------
 Tue Jun 16 11:13:58 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Re-generate file with latest version of spec-cleaner.
