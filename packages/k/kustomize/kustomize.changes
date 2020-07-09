@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  6 10:43:41 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 3.8.0
+  - use kyaml
+  - swtich to api 0.5.0
+- Refresh vendor.tar.xz
+
+-------------------------------------------------------------------
 Fri May 29 14:04:41 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 3.6.1
