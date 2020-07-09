@@ -18,10 +18,10 @@
 
 %define asan_build  0
 %define debug_build 0
-%define sonum 24
-%global so_suffix -2_4
+%define sonum 25
+%global so_suffix -2_5
 Name:           ilmbase
-Version:        2.4.1
+Version:        2.5.2
 Release:        0
 Summary:        Base library for ILM software (OpenEXR)
 License:        BSD-3-Clause

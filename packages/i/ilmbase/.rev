@@ -305,4 +305,12 @@
   - Fix-the-symlinks-creation.patch (upstreamed)</comment>
     <requestid>794569</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e9111c673f8a0e5afec41b6d94e7fb6d</srcmd5>
+    <version>2.5.2</version>
+    <time>1594309732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818942</requestid>
+  </revision>
 </revisionlist>
