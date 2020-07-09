@@ -19,7 +19,7 @@
 %global pkg_name dbus
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.2.15.1
+Version:        1.2.16
 Release:        0
 Summary:        A client library for the D-Bus IPC system
 License:        Apache-2.0
