@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Jun 18 02:00:25 UTC 2020 - psimons@suse.com
+
+- Update unordered-containers to version 0.2.11.0.
+  ## 0.2.11.0
+
+   * Add `HashMap.findWithDefault` (soft-deprecates `HashMap.lookupDefault`).
+     Thanks, Matt Renaud.
+
+   * Add `HashMap.fromListWithKey`. Thanks, Josef Svenningsson.
+
+   * Add more folding functions and use them in `Foldable` instances. Thanks,
+     David Feuer.
+
+   * Add `HashMap.!?`, a flipped version of `lookup`. Thanks, Matt Renaud.
+
+   * Add a `Bifoldable` instance for `HashMap`. Thanks, Joseph Sible.
+
+   * Add a `HasCallStack` constraint to `(!)`. Thanks, Roman Cheplyaka.
+
+  ### Bug fixes
+
+   * Fix a space leak affecting updates on keys with hash collisions. Thanks,
+     Neil Mitchell. ([#254])
+
+   * Get rid of some silly thunks that could be left lying around. ([#232]).
+     Thanks, David Feuer.
+
+  ### Other changes
+
+   * Speed up the `Hashable` instances for `HashMap` and `HashSet`. Thanks,
+     Edward Amsden.
+
+   * Remove a dependency cycle hack from the benchmark suite. Thanks,
+     Andrew Martin.
+
+   * Improve documentation. Thanks, Tristan McLeay, Li-yao Xia, Gareth Smith,
+     Simon Jakobi, Sergey Vinokurov, and likely others.
+
+  [#232]: https://github.com/haskell-unordered-containers/unordered-containers/issues/232
+  [#254]: https://github.com/haskell-unordered-containers/unordered-containers/issues/254
+
+-------------------------------------------------------------------
 Tue Jun 16 11:14:47 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Re-generate file with latest version of spec-cleaner.
