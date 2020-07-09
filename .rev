@@ -2173,4 +2173,13 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
   * 0001-Fix-QToolButton-menus-showing-on-primary-screens-in-.patch</comment>
     <requestid>813289</requestid>
   </revision>
+  <revision rev="108" vrev="3">
+    <srcmd5>86ba5db30fe7637dee2b00305eefb1d1</srcmd5>
+    <version>5.15.0</version>
+    <time>1594293356</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to prevent stuck image conversion (boo#1172599, QTBUG-84619):
+  * 0001-Do-not-multithread-if-already-in-a-global-threadpool.patch</comment>
+    <requestid>818846</requestid>
+  </revision>
 </revisionlist>
