@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul  8 03:09:34 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.14    2020-07-07
+           * Optional experimental syntax of `catch (VAR)` instead of previous
+             experimental `catch my VAR`
+           * Mark `catch my VAR` as deprecated
+           * Added explicit use VERSION declarations to every perl file
+
+-------------------------------------------------------------------
 Wed Jul  1 03:13:23 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.13
