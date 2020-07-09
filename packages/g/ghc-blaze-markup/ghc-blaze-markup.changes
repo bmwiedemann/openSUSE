@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  1 02:00:30 UTC 2020 - psimons@suse.com
+
+- Update blaze-markup to version 0.8.2.7.
+  - 0.8.2.7 (2020-06-30)
+      * Bump Cabal version lower bound to 1.10
+
+  - 0.8.2.6 (2020-06-30)
+      * Bump `tasty` upper bound to 1.4
+
+-------------------------------------------------------------------
 Tue Jun 16 11:13:50 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Re-generate file with latest version of spec-cleaner.

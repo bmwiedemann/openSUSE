@@ -19,7 +19,7 @@
 %global pkg_name blaze-markup
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8.2.5
+Version:        0.8.2.7
 Release:        0
 Summary:        A blazingly fast markup combinator library for Haskell
 License:        BSD-3-Clause
