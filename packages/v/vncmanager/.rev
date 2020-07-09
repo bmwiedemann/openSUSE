@@ -95,4 +95,14 @@ Session manager for VNC. It listens on VNC port and spawns Xvnc processes for in
 - added README.md as %doc (boo#1173047)</comment>
     <requestid>819018</requestid>
   </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>01915cd2b0b8a5705b194e8552a71b0e</srcmd5>
+    <version>1.0.2</version>
+    <time>1594309470</time>
+    <user>dimstar_suse</user>
+    <comment>- n_use_port_5901.patch
+  * changed port number also in code, which sets the default, not
+    only in config file (boo#1173047)</comment>
+    <requestid>819750</requestid>
+  </revision>
 </revisionlist>

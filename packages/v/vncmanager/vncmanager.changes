@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  9 14:33:21 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- n_use_port_5901.patch
+  * changed port number also in code, which sets the default, not
+    only in config file (boo#1173047)
+
+-------------------------------------------------------------------
 Mon Jul  6 14:03:37 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - added n_UsrEtc.patch (boo#1173047)
