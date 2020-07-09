@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  8 16:22:11 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 3.2.1 (boo#1173905):
+  * Fix crashes on startup in some certain KIO related circumstances
+
+-------------------------------------------------------------------
 Mon Jan 13 12:35:34 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 3.2.0:

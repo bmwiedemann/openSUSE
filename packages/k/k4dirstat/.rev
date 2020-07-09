@@ -40,4 +40,12 @@
   * 0001-Add-the-missing-cassert-include.patch</comment>
     <requestid>763967</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>837a7a273bddedaa639d1e146285db97</srcmd5>
+    <version>3.2.1</version>
+    <time>1594293400</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819522</requestid>
+  </revision>
 </revisionlist>
