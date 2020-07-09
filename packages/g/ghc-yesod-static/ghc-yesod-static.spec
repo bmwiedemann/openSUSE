@@ -19,7 +19,7 @@
 %global pkg_name yesod-static
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.0.1
+Version:        1.6.1.0
 Release:        0
 Summary:        Static file serving subsite for Yesod Web Framework
 License:        MIT
@@ -58,6 +58,7 @@ BuildRequires:  ghc-yesod-core-devel
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-rio-devel
 BuildRequires:  ghc-wai-extra-devel
 BuildRequires:  ghc-yesod-test-devel
 %endif

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul  7 02:00:25 UTC 2020 - psimons@suse.com
+
+- Update yesod-static to version 1.6.1.0.
+  # ChangeLog for yesod-static
+
+  ## 1.6.1.0
+
+  * Support reproducible embedded file order [#1684](https://github.com/yesodweb/yesod/issues/1684#issuecomment-652562514)
+
+  ## 1.6.0.2
+
+  * Remove unnecessary deriving of Typeable
+
+-------------------------------------------------------------------
 Tue Jun  9 09:27:56 UTC 2020 - psimons@suse.com
 
 - Add yesod-static at version 1.6.0.1.
