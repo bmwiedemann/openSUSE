@@ -19,7 +19,7 @@
 %global pkg_name pandoc-types
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.20
+Version:        1.21
 Release:        0
 Summary:        Types for representing a structured document
 License:        GPL-2.0-only
@@ -74,8 +74,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver QuickCheck '< 2.14' '< 3'
-cabal-tweak-dep-ver aeson '< 1.5' '< 2'
 
 %build
 %ghc_lib_build
