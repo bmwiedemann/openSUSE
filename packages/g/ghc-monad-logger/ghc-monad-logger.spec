@@ -18,7 +18,7 @@
 
 %global pkg_name monad-logger
 Name:           ghc-%{pkg_name}
-Version:        0.3.32
+Version:        0.3.34
 Release:        0
 Summary:        A class of monads which can log messages
 License:        MIT

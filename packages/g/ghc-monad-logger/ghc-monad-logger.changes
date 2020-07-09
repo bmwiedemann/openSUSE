@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul  8 02:00:26 UTC 2020 - psimons@suse.com
+
+- Update monad-logger to version 0.3.34.
+  ## 0.3.34
+
+  * Fix build for lts-9 resolver
+
+-------------------------------------------------------------------
+Thu Jul  2 02:00:20 UTC 2020 - psimons@suse.com
+
+- Update monad-logger to version 0.3.33.
+  ## 0.3.33
+
+  * Export `LogLine` type synonym.
+
+-------------------------------------------------------------------
 Tue Jun  9 09:26:17 UTC 2020 - psimons@suse.com
 
 - Add monad-logger at version 0.3.32.
