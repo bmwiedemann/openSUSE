@@ -27,4 +27,45 @@
     <comment></comment>
     <requestid>766930</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8bfa4c4c3356afb58d94aba249fe3404</srcmd5>
+    <version>1.2.0</version>
+    <time>1594293616</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.0:
+  * Return the default values of dayofwk and dayofyr when calendar
+    is '' (issue #173).
+  * fix treatment of masked arrays in num2date and date2num (issue #175).
+    Also make sure masked arrays are output from num2date/date2num if
+    masked arrays are input.
+  * Where possible, use timedelta arithmetic to decode times exactly within
+    num2date (issue #171).
+  * Make taking the difference between two cftime datetimes to produce a
+    timedelta exact to the microsecond; depending on the units encoding,
+    this enables date2num to be exact as well (issue #109).
+  * utime.date2num/utime.num2date now just call module level functions.
+    JulianDayFromDate/DateFromJulianDay no longer used internally (PR #180).
+  * add isoformat method for compatibility with python datetime (issue #152).
+  * make 'standard' default calendar for cftime.datetime
+    so that dayofwk,dayofyr methods don't fail (issue #169).
+  * change dayofwk and dayofyr attributes into properties (issue #158)
+  * fix for issue #165 (python datetime should be returned when
+    only_use_cftime_datimes=False).
+  * include pyproject.toml in MANIFEST.in so it gets 
+    included in source tarball (issue #154).
+  * fix microsecond formatting issue, ensure identical results
+    computed for arrays and scales (issue #143, PR #146).
+  * improved exceptions for time differences (issue #128, PR #131).
+  * fix intersphinx entries (issue #133, PR #133)
+  * make only_use_cftime_datetimes=True by default, so cftime datetime
+    instances are returned by default by num2date (instead of returning python
+    datetime instances where possible). Issue #136, PR #135.
+  * Add daysinmonth attribute (issue #137, PR #138).
+  * If only_use_python_datetimes=True and only_use_cftime_datetimes=False,
+    num2date only returns python datetime instances and raises an exception
+    if this is not possible.
+  * Fix for fractional seconds in reference date in units string
+- Add numpy-devel to BuildRequires.</comment>
+    <requestid>819626</requestid>
+  </revision>
 </revisionlist>

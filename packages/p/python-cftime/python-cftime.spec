@@ -18,14 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cftime
-Version:        1.0.4.2
+Version:        1.2.0
 Release:        0
 Summary:        Time-handling functionality from netcdf4-python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/Unidata/cftime
 Source:         https://files.pythonhosted.org/packages/source/c/cftime/cftime-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 18.0}
