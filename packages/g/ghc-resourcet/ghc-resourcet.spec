@@ -19,7 +19,7 @@
 %global pkg_name resourcet
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.2.4.1
+Version:        1.2.4.2
 Release:        0
 Summary:        Deterministic allocation and freeing of scarce resources
 License:        BSD-3-Clause

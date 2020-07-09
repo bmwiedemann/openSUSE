@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 26 02:00:26 UTC 2020 - psimons@suse.com
+
+- Update resourcet to version 1.2.4.2.
+  ## 1.2.4.2
+
+  * Mask exceptions in `Acquire` allocation action
+
+-------------------------------------------------------------------
 Tue Jun  9 09:10:54 UTC 2020 - psimons@suse.com
 
 - Update resourcet to version 1.2.4.1.
