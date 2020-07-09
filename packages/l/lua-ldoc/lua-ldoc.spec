@@ -1,7 +1,7 @@
 #
-# spec file for package lua-lualdoc
+# spec file for package lua-ldoc
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        LuaDoc-compatible documentation generation system
 License:        MIT
 Group:          Development/Libraries/Other
-Url:            https://github.com/stevedonovan/LDoc
+URL:            https://github.com/stevedonovan/LDoc
 Source:         https://github.com/stevedonovan/LDoc/archive/%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 BuildArch:      noarch
@@ -54,7 +54,6 @@ and pretty-printed example files.
 %install
 mkdir -v -p %{buildroot}%{lua_noarchdir}/ldoc
 cp -v -r -p ldoc %{buildroot}%{lua_noarchdir}
-
 
 %files
 %dir %{lua_noarchdir}/ldoc
