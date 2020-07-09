@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  8 10:49:25 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.1.0
+  * The default URLs have been changed from plot.ly to plotly.com 
+    to match the changes to Chart Studio Cloud.
+
+-------------------------------------------------------------------
 Fri Dec  6 18:44:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Disable python2 support since dependencies dropped python2

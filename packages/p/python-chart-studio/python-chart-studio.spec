@@ -1,7 +1,7 @@
 #
 # spec file for package python-chart-studio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-chart-studio
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
-License:        MIT
 Summary:        Utilities for Chart Studio
-Url:            https://plot.ly/python/
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://plot.ly/python/
 Source:         https://files.pythonhosted.org/packages/source/c/chart-studio/chart-studio-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module plotly}
 BuildRequires:  %{python_module requests}
@@ -55,6 +56,9 @@ Utilities for interfacing with plotly's Chart Studio
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+# no tests in PyPI tarball, github "release tarball" is not suitable for build
 
 %files %{python_files}
 %doc README.md
