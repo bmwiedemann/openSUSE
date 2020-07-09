@@ -41,4 +41,12 @@ for me important as dependency for XMPP client poezio, which is 7 years outdated
  * Add support for ANY queries</comment>
     <requestid>687347</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>bda20785c382dc184762e1ef64f3138b</srcmd5>
+    <version>2.0.0</version>
+    <time>1594293627</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819688</requestid>
+  </revision>
 </revisionlist>
