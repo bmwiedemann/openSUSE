@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  2 02:00:30 UTC 2020 - psimons@suse.com
+
+- Update http2 to version 2.0.5.
+  Upstream has not updated the file "ChangeLog.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Tue Jun  9 09:26:15 UTC 2020 - psimons@suse.com
 
 - Add http2 at version 2.0.4.
