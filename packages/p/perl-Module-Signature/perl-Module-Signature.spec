@@ -17,7 +17,7 @@
 
 
 Name:           perl-Module-Signature
-Version:        0.86
+Version:        0.87
 Release:        0
 #Upstream: SUSE-Public-Domain
 %define cpan_name Module-Signature

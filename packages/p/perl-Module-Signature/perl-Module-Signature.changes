@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jul  5 03:08:25 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.87
+   see /usr/share/doc/packages/perl-Module-Signature/Changes
+
+  [Changes for 0.87 - Sat Jul  4 15:04:41 CST 2020]
+
+  * Skip 3-verify.t on Crypt::OpenPGP installations. (@pyramation)
+
+-------------------------------------------------------------------
 Fri Jun 26 03:12:00 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.86
