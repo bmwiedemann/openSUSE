@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 01 12:00:00 UTC 2020 - cunix@mail.de
+
+- In .desktop file prefix "PrefersNonDefaultGPU" with "X-" only
+  until package desktop-file-utils is up to date.
+
+-------------------------------------------------------------------
 Fri Jun 26 21:00:00 UTC 2020 - cunix@mail.de
 
 - In .desktop file "PrefersNonDefaultGPU" prefixed with "X-"

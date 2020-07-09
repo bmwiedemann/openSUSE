@@ -37,6 +37,7 @@ Patch0:         linker_pie_flag.patch
 # Use system certificates as fallback for certificates
 Patch1:         certs_fallback.patch
 BuildRequires:  Mesa-devel
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -220,8 +221,15 @@ cp thirdparty/README.md thirdparty_README.md
 # actual doc location in openSUSE
 sed -i 's/\/usr\/share\/doc\/godot\//\/usr\/share\/doc\/packages\/godot\//' misc/dist/linux/godot.6
 
-# rpmlint considers file invalid without "X-" prefix
-sed -i 's/PrefersNonDefaultGPU=true/X-PrefersNonDefaultGPU=true/' misc/dist/linux/org.godotengine.Godot.desktop
+if [[ -z "$(desktop-file-validate misc/dist/linux/org.godotengine.Godot.desktop)" ]];
+ then
+  # desktop-file-utils version >= 0.25
+  echo desktop-file-utils is up to date and recognizes PrefersNonDefaultGPU.
+ else
+  echo PrefersNonDefaultGPU not recognized.
+  # rpmlint considers file invalid without "X-" prefix
+  sed -i 's/PrefersNonDefaultGPU=true/X-PrefersNonDefaultGPU=true/' misc/dist/linux/org.godotengine.Godot.desktop
+fi
 
 # disarm shebang
 sed -i '1s/#!/##/' misc/dist/shell/godot.bash-completion
