@@ -19,7 +19,7 @@
 %global pkg_name warp
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.3.12
+Version:        3.3.13
 Release:        0
 Summary:        A fast, light-weight web server for WAI applications
 License:        MIT

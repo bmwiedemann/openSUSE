@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 26 02:00:23 UTC 2020 - psimons@suse.com
+
+- Update warp to version 3.3.13.
+  ## 3.3.13
+
+  * pReadMaker is exported from the Internal module.
+
+-------------------------------------------------------------------
 Tue Jun  9 09:26:15 UTC 2020 - psimons@suse.com
 
 - Add warp at version 3.3.12.
