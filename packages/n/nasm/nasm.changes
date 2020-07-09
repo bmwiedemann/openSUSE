@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sat Jul  4 16:22:43 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.15.2:
+  * Fix the handling of macro parameter ranges (%{:}), including
+    with brace-enclosed original arguments
+- includes changes from 2.15.01:
+  * Add instructions for Intel Control Flow Enforcement Technology
+- includes changes from 2.15:
+  * The comparison and booleanizing operators can now be used in
+    any expression context, not just %if
+  * New operator ? ... :. 
+  * Signed shift operators <<< and >>>
+  * The MASM DUP syntax for data definitions is now supported,
+    in a somewhat enhanced form
+  * Warn for strange legacy behavior regarding empty arguments in
+    multi-line macro expansion, but try to match legacy behavior in
+    most cases. Legacy behavior can be disabled with the directive
+    %pragma preproc sane_empty_expansion
+  * A much more sensible limit to expression evaluation depth.
+    The previously defined limit would rarely trigger before NASM
+    died with a stack overrun error on most systems
+  * The state of warnings can now be saved and restored via the
+    [WARNING PUSH] and [WARNING POP] directives
+  * The sectalign on|off switch does not affect an explicit directive
+  * Fixed 'mismatch in operand sizes' error in the MOVDDUP,
+    CMPXCHG8B and CMPXCHG16B instructions.
+  * Removed obsolete gnu-elf-extensions warning about 8- and 16-bit
+    relocation generation
+  * Added group aliases for all prefixed warnings
+  * Added implicitly sized versions of the K... instructions,
+    which allows the K... instructions to be specified without a
+    size suffix as long as the operands are sized
+  * Added -L option for additional listing information
+  * Added some warnings for obsolete instructions for a specified CPU.
+  * Deprecated -hf and -y options. Use -h instead
+  * Made DWARF as the default debug format for ELF
+  * Added %pragma list options... to set or clear listing options
+  * Allowed immediate syntax for LEA instruction (ignore operand
+    size completely)
+  * Added limited functionality MASM compatibility package
+  * Add single-line macros aliases using %defalias or %idefalias.
+    These behave like a kind of "symbolic links" for single-line
+    macros
+  * Added support for stringify, nostrip, evaluating, and greedy
+    single-line macro arguments
+  * Unused single-line macro arguments no longer need to have a
+    specified name
+  * Added conditional comma operator %,
+  * Changed private namespace from __foo__ to __?foo?__, so a user
+    namespace starting from underscore is now clean from symbols.
+    For backwards compatibility, the previous names are defined as
+    aliases
+  * Added support of ELF weak symbols and external references
+  * Changed the behavior of the EXTERN keyword and introduced
+    REQUIRED keyword
+  * Added %ifusable and %ifusing directives
+  * Made various performance improvements and stability fixes in
+    macro preprocessor engine
+  * Improved NASM error handling and cleaned up error messages
+- includes changes from 2.14.03:
+  * Suppress nuisance "label changed during code generation"
+    messages after a real error
+  * Add support for the merge and strings attributes on ELF sections
+  * Add support for the note, preinit_array, init_array, and
+    fini_array sections type in ELF
+  * Handle more than 32,633 sections in ELF
+
+-------------------------------------------------------------------
 Sat Nov 30 15:07:56 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Convert changes file to proper UTF-8 format: new

@@ -1,7 +1,7 @@
 #
 # spec file for package nasm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           nasm
-Version:        2.14.02
+Version:        2.15.02
 Release:        0
 Summary:        Netwide Assembler (An x86 Assembler)
 License:        BSD-2-Clause
 Group:          Development/Languages/Other
-URL:            http://www.nasm.us/
-Source:         http://www.nasm.us/pub/nasm/releasebuilds/%{version}/nasm-%{version}.tar.xz
+URL:            https://www.nasm.us/
+Source:         http://www.nasm.us/pub/nasm/releasebuilds/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 
 %description
@@ -36,39 +36,19 @@ several binary formats, including ELF, a.out, Win32, and OS/2.
 %build
 %configure \
   --enable-lto
-make %{?_smp_mflags} all
+%make_build all
 
 %install
 %make_install rdf_install
 %fdupes %{buildroot}%{_mandir}
 
 %check
-make %{?_smp_mflags} test
+%make_build test
 
 %files
 %license LICENSE
-%doc AUTHORS CHANGES ChangeLog README
-%{_bindir}/ldrdf
-%{_bindir}/nasm
-%{_bindir}/ndisasm
-%{_bindir}/rdf2bin
-%{_bindir}/rdf2com
-%{_bindir}/rdf2ihx
-%{_bindir}/rdf2ith
-%{_bindir}/rdf2srec
-%{_bindir}/rdfdump
-%{_bindir}/rdflib
-%{_bindir}/rdx
-%{_mandir}/man1/ldrdf.1%{?ext_man}
-%{_mandir}/man1/nasm.1%{?ext_man}
-%{_mandir}/man1/ndisasm.1%{?ext_man}
-%{_mandir}/man1/rdf2bin.1%{?ext_man}
-%{_mandir}/man1/rdf2com.1%{?ext_man}
-%{_mandir}/man1/rdf2ihx.1%{?ext_man}
-%{_mandir}/man1/rdf2ith.1%{?ext_man}
-%{_mandir}/man1/rdf2srec.1%{?ext_man}
-%{_mandir}/man1/rdfdump.1%{?ext_man}
-%{_mandir}/man1/rdflib.1%{?ext_man}
-%{_mandir}/man1/rdx.1%{?ext_man}
+%doc AUTHORS CHANGES ChangeLog README.md
+%{_bindir}/*
+%{_mandir}/man1/*.1%{?ext_man}
 
 %changelog
