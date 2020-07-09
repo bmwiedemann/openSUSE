@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jul  5 10:53:59 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.26.2
+  * Enable terminal control by default only when both input and
+    output are connected to a terminal. This avoids messing with
+    terminal settings when piping stderr to a pager, which takes
+    over terminal input anyway, while mpg123 still thinks it got
+    control.
+  * More CMake build fixes
+  * Use PROG_LIBS for output modules, to reinstate not
+    necessarily proper but previous behaviour
+  * Refine LFS support in libsyn123, avoiding
+    architecture-dependent syn123.h
+
+-------------------------------------------------------------------
 Sat May 30 13:57:25 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.26.1
