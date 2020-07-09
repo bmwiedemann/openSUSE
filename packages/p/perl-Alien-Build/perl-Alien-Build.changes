@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jun 17 03:07:27 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.26
+   see /usr/share/doc/packages/perl-Alien-Build/Changes.Alien-Base-Wrapper
+   
+  2.26      2020-06-16 07:11:13 -0600
+    - Diagnostic release
+ 
+  2.25      2020-06-10 09:18:25 -0600
+    - Fixed bug where alien library directory flags could be used in the wrong
+      order by Test::Alien, mostly a problem on NetBSD and similar platforms
+      (gh#203)
+ 
+  2.24_01   2020-06-07 18:13:55 -0600
+    - Disable parallel build when clean install is enabled
+      (gh#197, gh#198, shawnlaffan++)
+    - Dropping support for Perl 5.8.1, 5.8.2 and 5.8.3.  For now AB will install
+      on these versions of Perl, but a warning will be issued, along with a 3
+      minute sleep at configure time.  Please upgrade to 5.8.4 (or preferrably
+      5.32).  Starting July 1st, AB will refuse to install on these elderly Perls.
+      (gh#200, gh#201)
+
+-------------------------------------------------------------------
 Sat May 16 03:07:12 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 2.23
