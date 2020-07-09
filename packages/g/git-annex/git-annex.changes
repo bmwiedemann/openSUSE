@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Thu Jun 18 02:00:26 UTC 2020 - psimons@suse.com
+
+- Update git-annex to version 8.20200617.
+  git-annex (8.20200617) upstream; urgency=medium
+
+    * Added annex.skipunknown git config, that can be set to false to change
+      the behavior of commands like `git annex get foo*`, to not skip
+      over files/dirs that are not checked into git and are explicitly listed in
+      the command line.
+    * annex.skipunknown is planned to change to default to false in a
+      git-annex release in early 2022. If you prefer the current behavior,
+      you can explicitly set it to true.
+    * Try to enable special remotes configured with autoenable=yes
+      when git-annex auto-initialization happens in a new clone of an
+      existing repo. Previously, git-annex init had to be explicitly run to
+      enable them. Special remotes cannot display anything when autoenabled
+      this way, to avoid interfering with the output of git-annex query
+      commands.
+    * export: Added options for json output.
+    * import: Added --json-progress.
+    * addurl: Make --preserve-filename also apply when eg a torrent contains
+      multiple files.
+    * Fix a crash or potentially not all files being exported when
+      sync -J --content is used with an export remote.
+    * export: Let concurrent transfers be done with -J or annex.jobs.
+    * move --to, copy --to, mirror --to: When concurrency is enabled, run
+      cleanup actions in separate job pool from uploads.
+    * init: If lock probing stalls for a long time (eg a broken NFS server),
+      display a message to let the user know what's taking so long.
+    * init: When annex.pidlock is set, skip lock probing.
+    * Fix file descriptor leak when importing from a directory special remote
+      that is configured with exporttree=yes.
+    * Note that external special remote programs should not block SIGINT or
+      SIGTERM.
+    * Avoid creating the keys database during init when there are no unlocked
+      files, to prevent init failing when sqlite does not work in the
+      filesystem.
+    * import: Avoid using some strange names for temporary keys,
+      which broke importing from a directory special remote onto a vfat
+      filesystem.
+    * S3: The REDUCED_REDUNDANCY storage class is no longer cheaper so
+      stop documenting it, and stop offering it as a choice in the assistant.
+    * Improve display of problems auto-initializing or upgrading local git
+      remotes.
+    * When a local git remote cannot be initialized because it has no
+      git-annex branch or a .noannex file, avoid displaying a message about it.
+    * checkpresentkey: When no remote is specified, try all remotes, not
+      only ones that the location log says contain the key. This is what
+      the documentation has always said it did.
+    * Fix regression in external special remote handling: GETCONFIG did not
+      return a value that was set with SETCONFIG immediately before.
+      (Regression introduced in version 7.20200202.7)
+    * Fix bug that made initremote of extrnal special remotes with
+      embedcreds=yes or gpg encryption not store the creds in the git-annex
+      branch. git-annex-remote-googledrive one was special remote affected by
+      this bug.
+      (Regression introduced in version 7.20200202.7)
+    * Fix bug that made creds not be stored in git when a special remote
+      was initialized with gpg encryption, but without an explicit
+      embedcreds=yes.
+      (Regression introduced in version 7.20200202.7)
+    * Fix a annex.pidlock issue that made eg git-annex get of an unlocked
+      file hang until the annex.pidlocktimeout and then fail.
+
+   -- Joey Hess <id@joeyh.name>  Wed, 17 Jun 2020 15:58:59 -0400
+
+-------------------------------------------------------------------
 Tue Jun  9 09:26:18 UTC 2020 - psimons@suse.com
 
 - Add git-annex at version 8.20200522.
