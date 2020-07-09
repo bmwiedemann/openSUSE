@@ -19,10 +19,10 @@
 # perhaps you want to build against corresponding ilmbase build
 %define asan_build  0
 %define debug_build 0
-%define sonum 24
-%global so_suffix -2_4
+%define sonum 25
+%global so_suffix -2_5
 Name:           openexr
-Version:        2.4.1
+Version:        2.5.2
 Release:        0
 Summary:        Utilities for working with HDR images in OpenEXR format
 License:        BSD-3-Clause
@@ -102,7 +102,7 @@ Industrial Light & Magic for use in computer imaging applications.
 This package contains header files.
 
 %package doc
-Summary:        Documentatino for the 16-bit FP EXR picture handling library
+Summary:        Documentation for the 16-bit FP EXR picture handling library
 Group:          Documentation/Other
 Obsoletes:      OpenEXR-doc <= 1.6.1
 Provides:       OpenEXR-doc = %{version}
@@ -137,7 +137,7 @@ for i in $(find -name Makefile); do
          $i
 done
 %endif
-make %{?_smp_mflags}
+%cmake_build
 popd
 
 %install
@@ -146,9 +146,9 @@ pushd OpenEXR
 popd
 
 %check
-%ifarch x86_64
+%ifnarch i586 ppc64
 pushd OpenEXR
-export LD_LIBRARY_PATH="$PWD/build/IlmImf:$PWD/build/IlmImfUtil:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="%{buildroot}/%{_libdir}"
 # tests can take longer than the default timeout of 25 minutes
 %if 0%{?suse_version} < 1550
 # HACK - older versions of the ctest macro do not allow passing additional parameters

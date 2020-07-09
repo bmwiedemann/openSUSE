@@ -1,4 +1,4 @@
-From d874a3ce5ad741ea61f42953c779d50ae93b66d6 Mon Sep 17 00:00:00 2001
+From e1084440d543f3045038cc4e5fdc0a67eabf06d6 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
 Date: Mon, 10 Feb 2020 18:37:32 +0100
 Subject: [PATCH] Use absolute CMAKE_INSTALL_FULL_LIBDIR for libdir in
@@ -12,11 +12,12 @@ Remove unused exec_prefix variable.
 
 Fixes https://github.com/AcademySoftwareFoundation/openexr/issues/595
 ---
- IlmBase/IlmBase.pc.in         | 1 -
- IlmBase/config/CMakeLists.txt | 5 ++---
- OpenEXR/OpenEXR.pc.in         | 1 -
- OpenEXR/config/CMakeLists.txt | 5 ++---
- 4 files changed, 4 insertions(+), 8 deletions(-)
+ IlmBase/IlmBase.pc.in           | 1 -
+ IlmBase/config/CMakeLists.txt   | 4 ++--
+ OpenEXR/OpenEXR.pc.in           | 1 -
+ OpenEXR/config/CMakeLists.txt   | 5 ++---
+ PyIlmBase/config/CMakeLists.txt | 4 ++--
+ 5 files changed, 6 insertions(+), 9 deletions(-)
 
 diff --git a/IlmBase/IlmBase.pc.in b/IlmBase/IlmBase.pc.in
 index 45fc4de..1edd055 100644
@@ -31,18 +32,17 @@ index 45fc4de..1edd055 100644
  includedir=@includedir@
  libsuffix=@LIB_SUFFIX_DASH@
 diff --git a/IlmBase/config/CMakeLists.txt b/IlmBase/config/CMakeLists.txt
-index 508176a..e533987 100644
+index d9c5ae4..fc161b0 100644
 --- a/IlmBase/config/CMakeLists.txt
 +++ b/IlmBase/config/CMakeLists.txt
-@@ -71,9 +71,8 @@ if(ILMBASE_INSTALL_PKG_CONFIG)
-   # use a helper function to avoid variable pollution, but pretty simple
+@@ -76,8 +76,8 @@ if(ILMBASE_INSTALL_PKG_CONFIG)
    function(ilmbase_pkg_config_help pcinfile)
      set(prefix ${CMAKE_INSTALL_PREFIX})
--    set(exec_prefix ${CMAKE_INSTALL_BINDIR})
--    set(libdir ${CMAKE_INSTALL_LIBDIR})
--    set(includedir ${CMAKE_INSTALL_INCLUDEDIR})
-+    set(libdir ${CMAKE_INSTALL_FULL_LIBDIR})
-+    set(includedir ${CMAKE_INSTALL_FULL_INCLUDEDIR})
+     set(exec_prefix "\${prefix}")
+-    set(libdir "\${exec_prefix}/${CMAKE_INSTALL_LIBDIR}")
+-    set(includedir "\${prefix}/${CMAKE_INSTALL_INCLUDEDIR}")
++    set(libdir "${CMAKE_INSTALL_FULL_LIBDIR}")
++    set(includedir "${CMAKE_INSTALL_FULL_INCLUDEDIR}")
      set(LIB_SUFFIX_DASH ${ILMBASE_LIB_SUFFIX})
      if(TARGET Threads::Threads)
        # hrm, can't use properties as they end up as generator expressions
@@ -59,21 +59,36 @@ index cf72f88..4df6035 100644
  includedir=@includedir@
  OpenEXR_includedir=@includedir@/OpenEXR
 diff --git a/OpenEXR/config/CMakeLists.txt b/OpenEXR/config/CMakeLists.txt
-index 1ef829a..e068d2f 100644
+index b52ad0d..59f4916 100644
 --- a/OpenEXR/config/CMakeLists.txt
 +++ b/OpenEXR/config/CMakeLists.txt
 @@ -72,9 +72,8 @@ if(OPENEXR_INSTALL_PKG_CONFIG)
    # use a helper function to avoid variable pollution, but pretty simple
    function(openexr_pkg_config_help pcinfile)
      set(prefix ${CMAKE_INSTALL_PREFIX})
--    set(exec_prefix ${CMAKE_INSTALL_BINDIR})
+-    set(exec_prefix "\${prefix}")
+-    set(libdir "\${exec_prefix}/${CMAKE_INSTALL_LIBDIR}")
+-    set(includedir "\${prefix}/${CMAKE_INSTALL_INCLUDEDIR}")
++    set(libdir "${CMAKE_INSTALL_FULL_LIBDIR}")
++    set(includedir "${CMAKE_INSTALL_FULL_INCLUDEDIR}")
+     set(LIB_SUFFIX_DASH ${OPENEXR_LIB_SUFFIX})
+     if(TARGET Threads::Threads)
+       # hrm, can't use properties as they end up as generator expressions
+diff --git a/PyIlmBase/config/CMakeLists.txt b/PyIlmBase/config/CMakeLists.txt
+index 1872c89..a971723 100644
+--- a/PyIlmBase/config/CMakeLists.txt
++++ b/PyIlmBase/config/CMakeLists.txt
+@@ -16,8 +16,8 @@ if(PYILMBASE_INSTALL_PKG_CONFIG)
+   function(pyilmbase_pkg_config_help pcinfile)
+     set(prefix ${CMAKE_INSTALL_PREFIX})
+     set(exec_prefix ${CMAKE_INSTALL_BINDIR})
 -    set(libdir ${CMAKE_INSTALL_LIBDIR})
 -    set(includedir ${CMAKE_INSTALL_INCLUDEDIR})
 +    set(libdir ${CMAKE_INSTALL_FULL_LIBDIR})
 +    set(includedir ${CMAKE_INSTALL_FULL_INCLUDEDIR})
      set(LIB_SUFFIX_DASH ${OPENEXR_LIB_SUFFIX})
-     if(TARGET Threads::Threads)
-       # hrm, can't use properties as they end up as generator expressions
+     string(REPLACE ".in" "" pcout ${pcinfile})
+     configure_file(${pcinfile} ${CMAKE_CURRENT_BINARY_DIR}/${pcout} @ONLY)
 -- 
-2.25.0
+2.27.0
 

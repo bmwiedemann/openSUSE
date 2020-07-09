@@ -515,4 +515,12 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
   - Fix-the-symlinks-creation.patch (upstreamed)</comment>
     <requestid>794570</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>6afac73554bbd289edcb992aa2246b8d</srcmd5>
+    <version>2.5.2</version>
+    <time>1594309727</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818940</requestid>
+  </revision>
 </revisionlist>

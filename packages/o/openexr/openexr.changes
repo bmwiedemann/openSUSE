@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Jul  5 22:46:48 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix 0001-Use-absolute-CMAKE_INSTALL_FULL_LIBDIR-for-libdir-in.patch
+  so pkgconfig file has no duplicate prefix.
+- Run test suite also on all other archs but i586 and ppc64(be)
+
+-------------------------------------------------------------------
+Mon Jun 29 12:44:02 UTC 2020 - pgajdos@suse.com
+
+- version update to 2.5.2
+  2.5.2
+  * Invalid input could cause a heap-use-after-free error in DeepScanLineInputFile::DeepScanLineInputFile()
+  * Invalid chunkCount attributes could cause heap buffer overflow in getChunkOffsetTableSize()
+  * Invalid tiled input file could cause invalid memory access TiledInputFile::TiledInputFile()
+  * OpenEXRConfig.h now correctly sets OPENEXR_PACKAGE_STRING to "OpenEXR" (rather than "IlmBase")
+  2.5.1
+  * A patch release that corrects the SO version for the v2.5 release,
+    which missed getting bumped in v2.5.0.
+  * This release also fixes an improper failure in IlmImfTest when running
+    on ARMv7 and AAarch64.
+  2.5.0
+  * No more build-time header generation: toFloat.h, eLut.h,
+    b44ExpLogTable.h, and dwaLookups.h are now ordinary header files, no
+    longer generated on the fly.
+  * New StdISSTream class, an "input" stringstream version of StdOSStream
+  * New Matrix22 class in Imath
+  * Chromaticity comparison operator now includes white (formerly ignored)
+  * Various cmake fixes
+  * Bug fixes for various memory leaks
+  * Bug fixes for various invalid memory accesses
+  * New checks to detect damaged input files
+  * OpenEXR_Viewers has been deprecated, removed from the top-level
+    cmake build and documentation.
+- modified patches
+  % 0001-Use-absolute-CMAKE_INSTALL_FULL_LIBDIR-for-libdir-in.patch (refreshed)
+- modified sources
+  % baselibs.conf
+
+-------------------------------------------------------------------
 Thu Apr 16 10:44:44 UTC 2020 - pgajdos@suse.com
 
 - version update to 2.4.1
