@@ -1,0 +1,83 @@
+name:           polyparse
+version:        1.13
+x-revision:     1
+license:        LGPL
+license-files:   COPYRIGHT, LICENCE-LGPL, LICENCE-commercial
+copyright:      (c) 2006-2016 Malcolm Wallace
+author:         Malcolm Wallace <Malcolm.Wallace@me.com>
+maintainer:     author
+homepage:       http://code.haskell.org/~malcolm/polyparse/
+bug-reports:    https://github.com/haskell-infra/hackage-trustees/issues
+category:       Text, Parsing
+synopsis:       A variety of alternative parser combinator libraries.
+description:
+        This version, 1.13 is a Non-Maintainer Upload (NMU).
+        Report issues to the Hackage Trustees issue tracker.
+        .
+        A variety of alternative parser combinator libraries, including
+        the original HuttonMeijer set.  The Poly sets have features like
+        good error reporting, arbitrary token type, running state, lazy
+        parsing, and so on.  Finally, Text.Parse is a proposed
+        replacement for the standard Read class, for better
+        deserialisation of Haskell values from Strings.
+build-type:     Simple
+cabal-version:  >=1.8
+extra-source-files: Changelog.md
+
+tested-with:
+  GHC ==8.10.1
+   || ==8.8.3
+   || ==8.6.5
+   || ==8.4.4
+   || ==8.2.2
+   || ==8.0.2
+   || ==7.10.3
+   || ==7.8.4
+   || ==7.6.3
+   || ==7.4.2
+   || ==7.2.2
+   || ==7.0.4
+
+source-repository head
+  type:     darcs
+  location: http://code.haskell.org/polyparse
+
+source-repository this
+  type:      git
+  location:  https://github.com/hackage-trustees/malcolm-wallace-universe.git
+  tag:       1.12.1
+
+library
+  hs-source-dirs:       src
+  build-depends:        base >= 4.3.1.0 && < 4.15
+
+  if !impl(ghc >= 8.0)
+     build-depends: fail == 4.9.*
+
+  exposed-modules:
+        Text.ParserCombinators.HuttonMeijer,
+        Text.ParserCombinators.HuttonMeijerWallace,
+        Text.ParserCombinators.Poly,
+        Text.ParserCombinators.Poly.Base,
+        Text.ParserCombinators.Poly.Result,
+        Text.ParserCombinators.Poly.Parser,
+        Text.ParserCombinators.Poly.Plain,
+        Text.ParserCombinators.Poly.Lazy,
+        Text.ParserCombinators.Poly.StateParser,
+        Text.ParserCombinators.Poly.State,
+        Text.ParserCombinators.Poly.StateLazy,
+        Text.ParserCombinators.Poly.Lex,
+        Text.Parse
+  if impl(ghc)
+    build-depends:      bytestring >= 0.9.1.0 && < 0.11
+    build-depends:      text >= 1.2.3.0 && <1.3
+    exposed-modules:
+        Text.ParserCombinators.Poly.ByteString
+        Text.ParserCombinators.Poly.ByteStringChar
+        Text.Parse.ByteString
+        Text.ParserCombinators.Poly.Text
+        Text.ParserCombinators.Poly.StateText
+--      Text.Parse.Text
+  cpp-options:          -DVERSION="1.12"
+  nhc98-options:        -K6M
+  extensions:           CPP
