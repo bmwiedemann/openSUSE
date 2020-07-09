@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 22 02:00:23 UTC 2020 - psimons@suse.com
+
+- Update hledger-ui to version 1.18.1.
+  # 1.18.1 2020-06-21
+
+  - Fix regression in 'F' (#1255) (Dmitry Astapov)
+
+-------------------------------------------------------------------
 Tue Jun  9 09:26:37 UTC 2020 - psimons@suse.com
 
 - Add hledger-ui at version 1.18.
