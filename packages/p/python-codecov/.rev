@@ -24,4 +24,33 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>653977</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>64566f5eccca418ee79839016e96e9a9</srcmd5>
+    <version>2.1.7</version>
+    <time>1594293618</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.7:
+  * Fix pinned coverage version
+  * Fix GitHub Actions implementation
+  * Implement retries on Codecov API calls
+  * Add GitHub Actions CI detection
+  * Add CODECOV_NAME as default for name
+  * Fix command line quoting on Windows
+  * Fix GitLab CI project directory detection on Windows
+  * Fix GitLab CI post version 9
+  * Check text for NoneType on writes
+  * Include the cacert in the PUT call when uploading to S3
+  * Fixed gcov not being found in certain instances
+  * Fix find command not working on Windows
+  * Add support for gzipping reports
+  * Dynamic syncing of version
+  * Fix command when neither hg or git are not available
+  * Remove x-amz-acl header
+  * Cleaning TOC generation
+  * fixed string issues
+  * fixed broken subprocess handling
+  * fixed reported command injection vulnerability.
+- Drop LICENSE file, included directly in the tarball</comment>
+    <requestid>819627</requestid>
+  </revision>
 </revisionlist>

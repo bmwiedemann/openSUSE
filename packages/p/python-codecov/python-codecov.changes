@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jul  9 04:47:48 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.1.7:
+  * Fix pinned coverage version
+  * Fix GitHub Actions implementation
+  * Implement retries on Codecov API calls
+  * Add GitHub Actions CI detection
+  * Add CODECOV_NAME as default for name
+  * Fix command line quoting on Windows
+  * Fix GitLab CI project directory detection on Windows
+  * Fix GitLab CI post version 9
+  * Check text for NoneType on writes
+  * Include the cacert in the PUT call when uploading to S3
+  * Fixed gcov not being found in certain instances
+  * Fix find command not working on Windows
+  * Add support for gzipping reports
+  * Dynamic syncing of version
+  * Fix command when neither hg or git are not available
+  * Remove x-amz-acl header
+  * Cleaning TOC generation
+  * fixed string issues
+  * fixed broken subprocess handling
+  * fixed reported command injection vulnerability.
+- Drop LICENSE file, included directly in the tarball
+
+-------------------------------------------------------------------
 Tue Dec  4 12:46:43 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

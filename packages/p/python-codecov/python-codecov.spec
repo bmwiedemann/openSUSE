@@ -1,7 +1,7 @@
 #
 # spec file for package python-codecov
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-codecov
-Version:        2.0.15
+Version:        2.1.7
 Release:        0
 Summary:        Hosted coverage reports
 License:        Apache-2.0
-Group:          Development/Languages/Python
-Url:            https://github.com/codecov/codecov-python
+URL:            https://github.com/codecov/codecov-python
 Source:         https://files.pythonhosted.org/packages/source/c/codecov/codecov-%{version}.tar.gz
-Source10:       https://raw.githubusercontent.com/codecov/codecov-python/v%{version}/LICENSE
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,7 +46,6 @@ Hosted coverage reports for Github, Bitbucket and Gitlab.
 %prep
 %setup -q -n codecov-%{version}
 sed -i -e '/^#!\//, 1d' codecov/__init__.py
-cp %{SOURCE10} .
 
 %build
 %python_build
