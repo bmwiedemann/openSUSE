@@ -19,7 +19,7 @@
 %global pkg_name pandoc-citeproc
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.17
+Version:        0.17.0.1
 Release:        0
 Summary:        Supports using pandoc with citeproc
 License:        BSD-3-Clause
@@ -87,7 +87,6 @@ files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver aeson '< 1.5' '< 2'
 
 %build
 %ghc_lib_build

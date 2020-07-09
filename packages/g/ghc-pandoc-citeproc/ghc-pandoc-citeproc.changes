@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 24 02:00:43 UTC 2020 - psimons@suse.com
+
+- Update pandoc-citeproc to version 0.17.0.1.
+  pandoc-citeproc (0.17.0.1)
+
+    * Allow aeson 1.5 (#452, Felix Yan).
+    * Fix infinite loop when compiled with `embed_data_files` flag (#450).
+      This arose when locale specified an unknown locale.
+    * Allow pandoc-types 1.21.
+
+-------------------------------------------------------------------
 Tue Jun 16 11:14:26 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Re-generate file with latest version of spec-cleaner.
