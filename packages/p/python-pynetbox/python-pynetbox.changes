@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul  8 15:53:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0.4
+  * Fixes issue saving local_config_context attribute on objects
+
+-------------------------------------------------------------------
+Mon Jul  6 18:38:36 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0.3
+  * Fixes issue with threads overwriting Request.filters.
+
+-------------------------------------------------------------------
+Mon Jul  6 18:37:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to version 5.0.2
+  * Fixes Api.get_version() to use the session object.
+
+-------------------------------------------------------------------
 Fri Jun 26 08:08:29 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.0.1
