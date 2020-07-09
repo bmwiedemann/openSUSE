@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  8 10:17:21 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.4.0
+  * Added ability to reverse colourmap
+  * Mods for Bokeh v2
+  * Old ColourMap class set removed and ColourMap3 renamed as ColourMap.
+  * Minor bugfixes
+
+-------------------------------------------------------------------
 Thu Jan 30 14:43:03 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 1.1.0

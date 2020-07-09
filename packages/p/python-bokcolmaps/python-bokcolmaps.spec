@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-bokcolmaps
-Version:        1.1.0
+Version:        1.4.0
 Release:        0
 Summary:        Colourmap plots based on the Bokeh visualisation library
 License:        MIT
@@ -30,12 +30,12 @@ Source10:       https://bitbucket.org/sea_dev/bokcolmaps/raw/0a6f3852821bc033779
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-bokeh >= 0.12.13
-Requires:       python-numpy >= 1.13
+Requires:       python-bokeh >= 2.1
+Requires:       python-numpy >= 1.14
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module bokeh >= 0.12.13}
-BuildRequires:  %{python_module numpy >= 1.13}
+BuildRequires:  %{python_module bokeh >= 2.1}
+BuildRequires:  %{python_module numpy >= 1.14}
 # /SECTION
 %python_subpackages
 
@@ -55,7 +55,7 @@ cp %{SOURCE10} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -B -m unittest discover
+%python_exec -B -m unittest bokcolmaps/Tests/*
 
 %files %{python_files}
 %doc README.rst
