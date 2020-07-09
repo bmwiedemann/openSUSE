@@ -3706,4 +3706,12 @@
     <comment>submit new version 4.3.12</comment>
     <requestid>817856</requestid>
   </revision>
+  <revision rev="487" vrev="1">
+    <srcmd5>6586d1a66d5ac006e5405be98f719569</srcmd5>
+    <version>4.3.13</version>
+    <time>1594293382</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.3.13</comment>
+    <requestid>819189</requestid>
+  </revision>
 </revisionlist>
