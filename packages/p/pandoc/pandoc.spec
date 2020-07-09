@@ -19,7 +19,7 @@
 %global pkg_name pandoc
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.9.2.1
+Version:        2.10
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -36,8 +36,6 @@ BuildRequires:  ghc-SHA-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-pretty-devel
 BuildRequires:  ghc-attoparsec-devel
-BuildRequires:  ghc-base-compat-devel
-BuildRequires:  ghc-base-noprelude-devel
 BuildRequires:  ghc-base64-bytestring-devel
 BuildRequires:  ghc-binary-devel
 BuildRequires:  ghc-blaze-html-devel
@@ -45,6 +43,7 @@ BuildRequires:  ghc-blaze-markup-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-case-insensitive-devel
 BuildRequires:  ghc-cmark-gfm-devel
+BuildRequires:  ghc-connection-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-data-default-devel
 BuildRequires:  ghc-deepseq-devel
@@ -86,7 +85,6 @@ BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-unicode-transforms-devel
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-unordered-containers-devel
-BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-xml-devel
 BuildRequires:  ghc-zip-archive-devel
 BuildRequires:  ghc-zlib-devel
@@ -140,11 +138,6 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %setup -q
-cabal-tweak-dep-ver haddock-library '< 1.9' '< 2'
-cabal-tweak-dep-ver aeson '< 1.5' '< 2'
-cabal-tweak-dep-ver http-client '< 0.7' '< 1'
-cabal-tweak-dep-ver base64-bytestring '< 1.1' '< 2'
-cabal-tweak-dep-ver hslua '< 1.1' '< 2'
 
 %build
 %ghc_lib_build
