@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul  2 08:23:12 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Add 0001-gpg-Avoid-error-diagnostics-with-override-session-ke.patch
+
+  This patch is a fix from
+  https://dev.gnupg.org/rMae4d7761a15b82eb98b0bcc72af2ae2e8973e1f9 which fixes
+  https://dev.gnupg.org/T3464
+  The patch is required to make notmuch's testsuite pass with gpgme 1.13.0 and
+  1.13.1. For further details, see id:87366av72u.fsf@fifthhorseman.net on
+  notmuch@notmuchmail.org
+
+-------------------------------------------------------------------
 Thu May 14 16:24:40 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Don't delete python egg-info files (bsc#1168795)

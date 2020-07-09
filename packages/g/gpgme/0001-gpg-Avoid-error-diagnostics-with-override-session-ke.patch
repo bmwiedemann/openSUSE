@@ -1,0 +1,49 @@
+From ae4d7761a15b82eb98b0bcc72af2ae2e8973e1f9 Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Wed, 29 May 2019 17:56:01 -0400
+Subject: [GPGME PATCH] gpg: Avoid error diagnostics with
+ --override-session-key when verifying
+
+* src/engine-gpg.c (gpg_decrypt): only send --no-keyring when we are
+not verifying.
+
+--
+
+Without this change, the signature verification would fail.  This
+problem was introduced in bded8ebc59c7fdad2617f4c9232a58047656834c in
+an attempt to avoid an error when *not* verifying.  Clearly more test
+suite coverage is needed to avoid introducing this sort of problem in
+the future.
+
+GnuPG-bug-id: 3464
+Signed-off-by: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+---
+ src/engine-gpg.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/src/engine-gpg.c b/src/engine-gpg.c
+index 5c335cb2..223404ed 100644
+--- a/src/engine-gpg.c
++++ b/src/engine-gpg.c
+@@ -1717,12 +1717,15 @@ gpg_decrypt (void *engine,
+                                          strlen (override_session_key), 1);
+           if (!err)
+             {
+-              /* We add --no-keyring because a keyring is not required
+-               * when we are overriding the session key.  It would
++              /* When we are not trying to verify signatures as well,
++               * we add --no-keyring because a keyring is not required
++               * for decryption when overriding the session key.  It would
+                * work without that option but --no-keyring avoids that
+                * gpg return a failure due to a missing key log_error()
+                * diagnostic.  --no-keyring is supported since 2.1.14. */
+-              err = add_arg (gpg, "--no-keyring");
++
++              if (!(flags & GPGME_DECRYPT_VERIFY))
++                  err = add_arg (gpg, "--no-keyring");
+               if (!err)
+                 err = add_arg (gpg, "--override-session-key-fd");
+               if (!err)
+-- 
+2.27.0
+

@@ -43,6 +43,10 @@ Source3:        gpgme.keyring
 Source99:       gpgme.changes
 Patch1:         gpgme-t-json-test-Bravo-key-no-secret-key-material.patch
 Patch2:         gpgme-t-json-test-with-keygrip-when-listing-keys.patch
+# fix from https://dev.gnupg.org/rMae4d7761a15b82eb98b0bcc72af2ae2e8973e1f9
+# required to make notmuch's testsuite pass, see
+# id:87366av72u.fsf@fifthhorseman.net on notmuch@notmuchmail.org
+Patch3:         0001-gpg-Avoid-error-diagnostics-with-override-session-ke.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gpg2 >= 2.0.10
 BuildRequires:  libassuan-devel >= 2.4.2
@@ -184,9 +188,7 @@ management.
 This package contains the bindings to use the library in Qt C++ applications.
 
 %prep
-%setup -q -n gpgme-%{version}
-%patch1 -p1
-%patch2 -p1
+%autosetup -n gpgme-%{version} -p1
 
 %ifarch %{ix86}
 sed -i -e '/t-callbacks.py/d' lang/python/tests/Makefile.{am,in}
