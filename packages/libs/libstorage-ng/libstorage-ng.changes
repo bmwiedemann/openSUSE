@@ -1,4 +1,22 @@
 --------------------------------------------------------------------
+Tue Jul 7 07:02:14 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#760
+- minor code improvements
+- 4.3.34
+
+--------------------------------------------------------------------
+Mon Jul 6 11:12:00 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#759
+- experimental support for RAID journal device
+- extended documentation
+- added unit test
+- extended integration tests
+- coding style
+- 4.3.33
+
+--------------------------------------------------------------------
 Tue Jun 30 12:38:47 UTC 2020 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#753
