@@ -1,7 +1,7 @@
 #
 # spec file for package lua-lpeg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Parsing Expression Grammars For Lua
 License:        MIT
 Group:          Development/Libraries/Other
-Url:            http://www.inf.puc-rio.br/~roberto/lpeg
+URL:            http://www.inf.puc-rio.br/~roberto/lpeg
 Source:         http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
@@ -63,7 +63,7 @@ sed -i \
     makefile
 
 %build
-make -j1
+%make_build -j1
 
 %install
 
