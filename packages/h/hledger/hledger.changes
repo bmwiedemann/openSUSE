@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 22 02:00:26 UTC 2020 - psimons@suse.com
+
+- Update hledger to version 1.18.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hledger-1.18.1/src/CHANGES.md
+
+-------------------------------------------------------------------
 Tue Jun  9 09:26:17 UTC 2020 - psimons@suse.com
 
 - Add hledger at version 1.18.
