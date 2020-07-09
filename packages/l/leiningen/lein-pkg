@@ -4,7 +4,7 @@
 # It has all the cross-platform stuff stripped out as well as the
 # logic for running from a source checkout and self-install/upgrading.
 
-export LEIN_VERSION="2.9.3"
+export LEIN_VERSION="2.9.4"
 
 # cd to the project root, if applicable
 NOT_FOUND=1
@@ -86,7 +86,7 @@ if [ -r .lein-fast-trampoline ]; then
 fi
 
 if [ "$LEIN_FAST_TRAMPOLINE" != "" ] && [ -r project.clj ]; then
-    INPUTS="$* $(cat project.clj) $(test -f "$LEIN_HOME/profiles.clj" && cat "$LEIN_HOME/profiles.clj")"
+    INPUTS="$* $(cat project.clj) $LEIN_VERSION $(test -f "$LEIN_HOME/profiles.clj" && cat "$LEIN_HOME/profiles.clj") $(test -f profiles.clj && cat profiles.clj)"
 
     if command -v shasum >/dev/null 2>&1; then
         SUM="shasum"
