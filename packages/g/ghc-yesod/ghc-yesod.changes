@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 27 02:00:25 UTC 2020 - psimons@suse.com
+
+- Update yesod to version 1.6.0.2.
+  ## 1.6.0.2
+
+  * Replace deprecated decodeFile with decodeFileEither. This should have no semantic impact, but silences a deprecation warning. [#1658](https://github.com/yesodweb/yesod/pull/1658)
+
+-------------------------------------------------------------------
 Tue Jun  9 09:26:13 UTC 2020 - psimons@suse.com
 
 - Add yesod at version 1.6.0.1.
