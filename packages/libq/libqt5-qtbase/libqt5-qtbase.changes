@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul  5 10:16:48 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to prevent stuck image conversion (boo#1172599, QTBUG-84619):
+  * 0001-Do-not-multithread-if-already-in-a-global-threadpool.patch
+
+-------------------------------------------------------------------
 Wed Jun 10 12:31:44 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix tool menu placement (boo#1172754, QTBUG-84462):
