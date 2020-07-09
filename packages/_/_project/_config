@@ -706,6 +706,7 @@ Ignore: installation-images-openSUSE:cracklib-dict-full
 Ignore: systemd-sysvinit:systemd
 Ignore: openSUSE-release:openSUSE-release-ftp,openSUSE-release-dvd5,openSUSE-release-biarch,openSUSE-release-livecdkde,openSUSE-release-livecdgnome
 Ignore: openSUSE-MicroOS-release:openSUSE-MicroOS-release-dvd,openSUSE-MicroOS-release-kubic-dvd
+Ignore: MicroOS-release:openSUSE-MicroOS-release-dvd,openSUSE-MicroOS-release-kubic-dvd
 Ignore: cracklib:cracklib-dict
 Ignore: aaa_base:aaa_skel,suse-release,logrotate,ash,distribution-release,udev
 Ignore: sysvinit:mingetty
