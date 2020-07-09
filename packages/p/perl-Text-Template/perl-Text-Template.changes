@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul  4 03:13:36 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.59
+   see /usr/share/doc/packages/perl-Text-Template/Changes
+
+  1.59  2020-07-03
+     - Fix syntax error in POD example code.
+
+-------------------------------------------------------------------
 Sat Sep 28 13:49:48 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.58
