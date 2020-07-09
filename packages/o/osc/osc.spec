@@ -27,12 +27,12 @@
 %define use_python python
 %endif
 
-%define version_unconverted 0.169.1
+%define version_unconverted 0.170.0
 %define osc_plugin_dir %{_prefix}/lib/osc-plugins
 %define macros_file macros.osc
 
 Name:           osc
-Version:        0.169.1
+Version:        0.170.0
 Release:        0
 Summary:        Open Build Service Commander
 License:        GPL-2.0-or-later
@@ -181,7 +181,7 @@ install -m644 %{macros_file} -D %{buildroot}%{_sysconfdir}/rpm/%{macros_file}
 %if 0%{?suse_version} >= 1500
 %check
 cd tests
-#%%{use_python} suite.py
+%{use_python} suite.py
 %endif 
 
 %clean

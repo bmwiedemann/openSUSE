@@ -1376,4 +1376,35 @@ sr#761596 needed for this.</comment>
    * fix security issue (bsc#1122675, CVE-2019-3681) do not allow '/' in filename</comment>
     <requestid>810270</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>b4902cb66131940123df82de987810f8</srcmd5>
+    <version>0.170.0</version>
+    <time>1594293649</time>
+    <user>dimstar_suse</user>
+    <comment>- 0.170.0
+  * fix code for python3.8 and python3.9
+  * remove dead code
+  * fix tests
+  * don't use chardet to guess encoding. utf-8 or latin-1 is now assumed
+    This will speed up decoding (bsc#1173926)
+  * escape sequences are interpreted correctly on -m
+    osc sr -m &quot;1st line\n2nd line&quot;
+        results in
+    1st line
+    2nd line
+  * add status filter to osc results
+  * add --brief to osc prjresults
+        Gives:
+        build openSUSE_Leap_15.1 x86_64 succeeded
+        build openSUSE_Leap_15.0 x86_64 succeeded
+        build openSUSE_Leap_15.0 armv7l unresolvable
+        build openSUSE_Factory_ARM armv7l succeeded
+        build openSUSE_Factory_ARM aarch64 succeeded
+  * osc prjresults -s &lt;status&gt;: status can now be the long text like &quot;succeeded&quot;, &quot;failed&quot;
+  * improve error message if osc service &lt;servicename&gt; is not run in working directory
+  * web links are now also printed for osc mr when print_web_links=1 is set
+- Spec:
+  * re-enable test suite</comment>
+    <requestid>819698</requestid>
+  </revision>
 </revisionlist>
