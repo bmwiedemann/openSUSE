@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Wed Jul  1 02:00:26 UTC 2020 - psimons@suse.com
+
+- Update weeder to version 2.1.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/weeder-2.1.0/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Tue Jun 23 09:31:44 UTC 2020 - psimons@suse.com
+
+- Add weeder at version 2.0.1.
+
