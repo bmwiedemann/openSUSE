@@ -1,0 +1,35 @@
+Name:            data-fix
+Version:         0.2.1
+x-revision: 1
+Cabal-Version:   >= 1.10
+License:         BSD3
+License-file:    LICENSE
+Author:          Anton Kholomiov
+Maintainer:      <anton.kholomiov@gmail.com>
+Category:        Data
+Synopsis:        Fixpoint data types
+Build-Type:      Simple
+Description:
+  Fixpoint types and recursion schemes. If you define your AST as
+  fixpoint type, you get fold and unfold operations for free.
+  .
+  Thanks for contribution to: Matej Kollar, Herbert Valerio Riedel
+
+Stability:       Experimental
+
+Homepage:        https://github.com/anton-k/data-fix
+Bug-Reports:     https://github.com/anton-k/data-fix/issues
+
+Source-repository head
+    Type: git
+    Location: https://github.com/anton-k/data-fix
+
+Library
+  Default-Language: Haskell2010
+  Build-depends: base >= 4.8, base < 5
+  Hs-source-dirs: src/
+
+  ghc-options: -Wall
+
+  Exposed-modules:
+      Data.Fix
