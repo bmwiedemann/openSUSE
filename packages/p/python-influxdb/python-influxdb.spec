@@ -26,6 +26,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/influxdb/influxdb-python
 Source:         https://github.com/influxdata/influxdb-python/archive/v%{version}.tar.gz
+# https://github.com/influxdata/influxdb-python/pull/835
+Patch0:         python-influxdb-remove-nose.patch
 BuildRequires:  %{python_module python-dateutil >= 2.0.0}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 1.0.3}
@@ -42,8 +44,8 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module msgpack}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  influxdb
 %if 0%{?suse_version} >= 1500
@@ -57,12 +59,13 @@ InfluxDB-Python is a client for interacting with InfluxDB_. Maintained by @aviau
 
 %prep
 %setup -q -n influxdb-python-%{version}
+%patch0 -p1
 
 %build
 %python_build
 
 %check
-%python_expand nosetests-%{$python_bin_suffix} -v
+%pytest influxdb
 
 %install
 %python_install
