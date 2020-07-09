@@ -19,7 +19,7 @@
 %global pkg_name xmobar
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.34
+Version:        0.35.1
 Release:        0
 Summary:        A Minimalistic Text Based Status Bar
 License:        BSD-3-Clause
@@ -94,7 +94,6 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %setup -q
-cabal-tweak-dep-ver timezone-olson '== 0.1.*' '< 1'
 
 %build
 %define cabal_configure_options -fall_extensions
