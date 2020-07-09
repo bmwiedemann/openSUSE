@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test2-Plugin-NoWarnings
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-Test2-Plugin-NoWarnings
-Version:        0.08
+Version:        0.09
 Release:        0
 %define cpan_name Test2-Plugin-NoWarnings
 Summary:        Fail if tests warn
 License:        Artistic-2.0
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -31,7 +31,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(IPC::Run3)
-BuildRequires:  perl(Test2) >= 1.302096
+BuildRequires:  perl(Test2) >= 1.302167
 BuildRequires:  perl(Test2::API)
 BuildRequires:  perl(Test2::Event)
 BuildRequires:  perl(Test2::Require::Module)
@@ -39,7 +39,7 @@ BuildRequires:  perl(Test2::Util::HashBase)
 BuildRequires:  perl(Test2::V0)
 BuildRequires:  perl(Test::More) >= 1.302015
 BuildRequires:  perl(parent)
-Requires:       perl(Test2) >= 1.302096
+Requires:       perl(Test2) >= 1.302167
 Requires:       perl(Test2::API)
 Requires:       perl(Test2::Event)
 Requires:       perl(Test2::Util::HashBase)
@@ -71,7 +71,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc appveyor.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md
+%doc azure-pipelines.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md
 %license LICENSE
 
 %changelog

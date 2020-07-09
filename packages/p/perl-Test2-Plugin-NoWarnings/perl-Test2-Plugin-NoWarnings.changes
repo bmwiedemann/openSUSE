@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul  1 03:14:43 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.09
+   see /usr/share/doc/packages/perl-Test2-Plugin-NoWarnings/Changes
+
+  0.09     2020-06-29
+
+  - Don't emit a failing test if there is a warning _after_ done_testing() is
+    called. Based on PR #3 from Michael Alan Dorman.
+
+-------------------------------------------------------------------
 Sat Oct 12 13:54:13 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 0.08
