@@ -27,7 +27,7 @@
 %endif
 %define         skip_python2 1
 Name:           python-dask%{psuffix}
-Version:        2.14.0
+Version:        2.20.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -36,7 +36,8 @@ Source:         https://files.pythonhosted.org/packages/source/d/dask/dask-%{ver
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-toolz >= 0.7.3
+Requires:       python-PyYAML
+Requires:       python-toolz >= 0.8.2
 Requires:       python-tornado >= 5
 Recommends:     %{name}-array = %{version}
 Recommends:     %{name}-bag = %{version}
