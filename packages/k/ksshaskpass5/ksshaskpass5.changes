@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul  7 12:38:54 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.3
+- Changes since 5.19.2:
+  * Migrate away from singe quote identifiers as well
+  * Bring back for saving usernames as well
+- Drop patches, now upstream:
+  * 0001-Bring-back-for-saving-usernames-as-well.patch
+  * 0002-Migrate-away-from-singe-quote-identifiers-as-well.patch
+
+-------------------------------------------------------------------
 Mon Jun 29 08:19:17 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patches to address regressions:

@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           ksshaskpass5
-Version:        5.19.2
+Version:        5.19.3
 Release:        0
 Summary:        Plasma 5 version of ssh-askpass
 License:        GPL-2.0-or-later
@@ -31,9 +31,6 @@ Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch1:         suse-tweaks.diff
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Bring-back-for-saving-usernames-as-well.patch
-Patch3:         0002-Migrate-away-from-singe-quote-identifiers-as-well.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5CoreAddons)
