@@ -42,4 +42,12 @@
     <comment></comment>
     <requestid>639240</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>8c8cbd606f291d0b78c7248e32d0d9e9</srcmd5>
+    <version>20180125</version>
+    <time>1594383200</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python3-black into the devel pattern</comment>
+    <requestid>819889</requestid>
+  </revision>
 </revisionlist>
