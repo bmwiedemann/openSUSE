@@ -223,4 +223,23 @@
  * Made SSHConnection a subclass of asyncio.Protocol to please type checkers.</comment>
     <requestid>780986</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3d3ec6fea7abada9c41ab32afb85313a</srcmd5>
+    <version>2.2.1</version>
+    <time>1594383194</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.1
+ * Added optional timeout parameter to SSHClientProcess.wait()
+    and SSHClientConnection.run() methods.
+ * Created subclasses for SFTPError exceptions, allowing applications
+    to more easily have distinct exception handling for different errors.
+ * Fixed an issue in SFTP parallel I/O related to handling low-level
+    connection failures
+ * Fixed an issue with SFTP file copy where a local file could sometimes
+    be left open if an attempt to close a remote file failed.
+ * Fixed an issue in the handling of boolean return values when
+    SSHServer.server_requested() returns a coroutine
+ * Fixed an issue with passing tuples to the SFTP copy functions.</comment>
+    <requestid>819833</requestid>
+  </revision>
 </revisionlist>

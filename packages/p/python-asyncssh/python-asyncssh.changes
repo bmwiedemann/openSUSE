@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul  9 22:36:54 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 2.2.1
+ * Added optional timeout parameter to SSHClientProcess.wait()
+    and SSHClientConnection.run() methods.
+ * Created subclasses for SFTPError exceptions, allowing applications
+    to more easily have distinct exception handling for different errors.
+ * Fixed an issue in SFTP parallel I/O related to handling low-level
+    connection failures
+ * Fixed an issue with SFTP file copy where a local file could sometimes
+    be left open if an attempt to close a remote file failed.
+ * Fixed an issue in the handling of boolean return values when
+    SSHServer.server_requested() returns a coroutine
+ * Fixed an issue with passing tuples to the SFTP copy functions.
+
+-------------------------------------------------------------------
 Mon Mar  2 14:19:17 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 2.2.0
