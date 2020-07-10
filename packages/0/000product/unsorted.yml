@@ -2208,7 +2208,6 @@ unsorted:
   - csmith 
   - csound 
   - csound-devel 
-  - csound-java-bindings 
   - csound-lang 
   - csound-plugins 
   - cspctl: [i586] 
@@ -2500,7 +2499,6 @@ unsorted:
   - dnf-plugins-core-lang 
   - dns24-update 
   - dnscrypt-proxy 
-  - dnscrypt-proxy-devel 
   - dnsdiag 
   - dnsmasq-utils 
   - dnsmeter 
@@ -13738,6 +13736,7 @@ unsorted:
   - lua54-lpeg 
   - lua54-lpeg-doc 
   - lua54-markdown 
+  - lua54-say 
   - luabind-devel 
   - luaposix-doc 
   - lucene++-devel 
@@ -20092,6 +20091,7 @@ unsorted:
   - python3-exiv2 
   - python3-expects 
   - python3-exrex 
+  - python3-extension-helpers 
   - python3-extras 
   - python3-extratools 
   - python3-ez_setup 
@@ -21093,6 +21093,7 @@ unsorted:
   - python3-pyelftools 
   - python3-pyemd 
   - python3-pyenchant 
+  - python3-pyerfa 
   - python3-pyface 
   - python3-pyfakefs 
   - python3-pyfeyn 
