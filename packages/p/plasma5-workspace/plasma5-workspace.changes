@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jul  7 13:58:01 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.3
+- Changes since 5.19.2:
+  * [wallpaper] Save the package name in configuration not a URL
+  * Theme shouldn't inherit (kde#423747)
+  * [applet/systemtray] Load config defaults from main.xml (kde#423561)
+  * [applets/systemtray] Fix context menu misplaced (kde#421275)
+  * [startkde] Block plasma-session exiting until startup sound completes (kde#422948)
+  * [mediacontroller] Use half the samples for better performance with swrast
+  * [applets/mediaplayer] Make size of the standalone plasmoid similar to that of the system tray (kde#422736)
+  * Fix broken ENV variables for detailed settings (kde#417070,kde#176650)
+  * set proper formFactors to faces
+  * better propagate size hints
+  * Fix DBus service used in shutdown interface (kde#423391)
+- Drop patches, now upstream:
+  * 0001-mediacontroller-Use-half-the-samples-for-better-perf.patch
+  * 0001-Fix-DBus-service-used-in-shutdown-interface.patch
+
+-------------------------------------------------------------------
 Sat Jun 27 09:57:16 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to speed up artwork shader compilation in VMs (boo#1172763):
