@@ -24,7 +24,7 @@
 
 %bcond_without lang
 Name:           kwayland-server
-Version:        5.19.2
+Version:        5.19.3
 Release:        0
 Summary:        KDE Wayland server library
 License:        LGPL-2.1-or-later
