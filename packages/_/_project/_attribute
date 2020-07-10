@@ -271,6 +271,8 @@ products:
     - x86_64
   - opensuse-registry-image:
     - x86_64
+  - opensuse-rmt-server-image:
+    - x86_64
   - opensuse-rstudio-desktop:
     - x86_64
   - opensuse-rstudio-server:
@@ -364,9 +366,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20200708'
-published: '20200707'
-publishing: '20200707'
+    <value>failed: ''
+published: '20200708'
+publishing: '20200708'
 testing: '20200708'
 </value>
   </attribute>
