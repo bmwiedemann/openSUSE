@@ -1,7 +1,7 @@
 #
 # spec file for package sddm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,9 @@ Name:           sddm
 Version:        0.18.1
 Release:        0
 Summary:        QML-based display manager
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-Url:            https://github.com/sddm/sddm
+URL:            https://github.com/sddm/sddm
 Source:         https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        X11-displaymanagers-%{name}
 Source2:        00-general.conf
@@ -31,6 +31,10 @@ Source4:        sddm-tmpfiles.conf
 # Patch0-100: PATCH-FIX-UPSTREAM
 # Merged: https://github.com/sddm/sddm/pull/1062
 Patch0:         0001-Session-reuse-Only-consider-online-sessions.patch
+# Needed by some of the later patches
+Patch1:         0001-FreeBSD-Link-to-libutil.patch
+Patch2:         0001-FreeBSD-Split-implementation-of-VT-switching.patch
+Patch3:         0002-Only-allocate-VTs-for-seat0.patch
 # Not merged yet: https://github.com/sddm/sddm/pull/997
 Patch50:        0001-Remove-suffix-for-Wayland-session.patch
 # Not merged yet: https://github.com/sddm/sddm/pull/1017
@@ -39,13 +43,14 @@ Patch51:        0006-Don-t-fill-UserModel-if-theme-does-not-require-it.patch
 Patch52:        0001-Revert-Adds-sourcing-of-etc-profile-to-fish.patch
 # Not merged yet: https://github.com/sddm/sddm/pull/1117
 Patch53:        0001-Destroy-the-QLocalServer-in-Auth-on-shutdown.patch
+# Not merged yet: https://github.com/sddm/sddm/pull/1230
+Patch55:        0001-Redesign-Xauth-handling.patch
+# Not merged yet: https://github.com/sddm/sddm/pull/1273
+Patch56:        0003-Move-VT-setup-to-sddm-helper.patch
 # Patch100-?: PATCH-FIX-OPENSUSE
 # Use openSUSE pam config
 Patch100:       proper_pam.diff
 Patch101:       0001-Write-the-daemon-s-PID-to-a-file-on-startup.patch
-# Insert XAUTHLOCALHOSTNAME into users enviroment, so the session handles hostname changes with a single X instance/run
-# related patches: libxcb/bug-262309_xcb-xauthlocalhostname.diff, xauth/xauth-tolerant-hostname-changes.diff, kdebase4-workspace/kdm-relaxed-auth.diff
-Patch102:       sddm-relaxed-auth.patch
 Patch103:       0001-Read-the-DISPLAYMANAGER_AUTOLOGIN-value-from-sysconf.patch
 # sddm has some rudimentary support for plymouth handling, which only works with plymouth-quit.service
 # (the servce is not enabled on openSUSE). For users of sddm.service, we need to issue plymouth quit command by hand in this case
@@ -95,8 +100,8 @@ interfaces.
 %package branding-openSUSE
 Summary:        openSUSE branding for SDDM, a QML-based display manager
 Group:          System/GUI/KDE
-Requires:       sddm-theme-openSUSE
 Requires:       %{name} = %{version}
+Requires:       sddm-theme-openSUSE
 Requires(post): %{name}
 Requires(post): diffutils
 Supplements:    packageand(plasma5-workspace:branding-openSUSE)
@@ -158,14 +163,14 @@ fi
   mv org.freedesktop.DisplayManager.conf sddm_org.freedesktop.DisplayManager.conf
   popd
 
-  install -Dm 0644 %{SOURCE1} %{buildroot}%{_libexecdir}/X11/displaymanagers/%{name}
+  install -Dm 0644 %{SOURCE1} %{buildroot}%{_prefix}/lib/X11/displaymanagers/%{name}
   install -Dm 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/00-general.conf
   install -Dm 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/10-theme.conf
   install -Dm 0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/sddm.conf
 
   mkdir -p %{buildroot}%{_sysconfdir}/alternatives
   touch %{buildroot}%{_sysconfdir}/alternatives/default-displaymanager
-  ln -s %{_sysconfdir}/alternatives/default-displaymanager %{buildroot}%{_libexecdir}/X11/displaymanagers/default-displaymanager
+  ln -s %{_sysconfdir}/alternatives/default-displaymanager %{buildroot}%{_prefix}/lib/X11/displaymanagers/default-displaymanager
 
   install -d %{buildroot}%{_rundir}/sddm
   install -d %{buildroot}%{_localstatedir}/lib/sddm
@@ -202,8 +207,8 @@ if [ $1 -eq 2 -a -f %{_sysconfdir}/sddm.conf ]; then
     cmp -s "${tempconf}" "%{_sysconfdir}/sddm.conf" || cp "${tempconf}" "%{_sysconfdir}/sddm.conf"
     rm "${tempconf}"
 fi
-%{_sbindir}/update-alternatives --install %{_libexecdir}/X11/displaymanagers/default-displaymanager \
-  default-displaymanager %{_libexecdir}/X11/displaymanagers/sddm 25
+%{_sbindir}/update-alternatives --install %{_prefix}/lib/X11/displaymanagers/default-displaymanager \
+  default-displaymanager %{_prefix}/lib/X11/displaymanagers/sddm 25
 
 %preun
 %service_del_preun sddm.service
@@ -211,8 +216,8 @@ fi
 %postun
 # Don't restart on upgrades (boo#1161826)
 %service_del_postun -n sddm.service
-[ -f %{_libexecdir}/X11/displaymanagers/sddm ] || %{_sbindir}/update-alternatives \
-  --remove default-displaymanager %{_libexecdir}/X11/displaymanagers/sddm
+[ -f %{_prefix}/lib/X11/displaymanagers/sddm ] || %{_sbindir}/update-alternatives \
+  --remove default-displaymanager %{_prefix}/lib/X11/displaymanagers/sddm
 
 %post branding-upstream
 if [ $1 -eq 2 -a -f %{_sysconfdir}/sddm.conf ]; then
@@ -255,9 +260,9 @@ fi
 %config %{_sysconfdir}/pam.d/sddm-autologin
 %config %{_sysconfdir}/pam.d/sddm-greeter
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/sddm_org.freedesktop.DisplayManager.conf
-%dir %{_libexecdir}/X11/displaymanagers/
-%{_libexecdir}/X11/displaymanagers/%{name}
-%{_libexecdir}/X11/displaymanagers/default-displaymanager
+%dir %{_prefix}/lib/X11/displaymanagers/
+%{_prefix}/lib/X11/displaymanagers/%{name}
+%{_prefix}/lib/X11/displaymanagers/default-displaymanager
 %ghost %{_sysconfdir}/alternatives/default-displaymanager
 %{_bindir}/sddm
 %{_bindir}/sddm-greeter
@@ -267,6 +272,7 @@ fi
 %dir %{_prefix}/lib/sddm/
 %dir %{_prefix}/lib/sddm/sddm.conf.d/
 %{_prefix}/lib/sddm/sddm.conf.d/00-general.conf
+%dir %{_libexecdir}/sddm
 %{_libexecdir}/sddm/sddm-helper
 %{_datadir}/sddm/faces/
 %{_datadir}/sddm/flags/

@@ -589,4 +589,25 @@ https://github.com/sddm/sddm/commit/1bc813d08b8130e458a6550ec47fb2bfbe6de080 (fo
 - Do not restart sddm on upgrades (boo#1161826) (forwarded request 813171 from Vogtinator)</comment>
     <requestid>813173</requestid>
   </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>d664e5e5d19291be70390f6c6d9e5f6a</srcmd5>
+    <version>0.18.1</version>
+    <time>1594383153</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for %_libexecdir changing to /usr/libexec
+
+- Use pending upstream solution for hostname changes:
+  * Add 0001-Redesign-Xauth-handling.patch
+  * Drop sddm-relaxed-auth.patch
+  * A known issue with the redesigned Xauth handling is that it
+    leaks the tiny xauth file in XDG_RUNTIME_DIR on session end.
+    It's on a temporary tmpfs mount though and so shouldn't cause
+    any visible issues.
+- Add patches to fix FD leak:
+  * 0001-FreeBSD-Link-to-libutil.patch
+  * 0001-FreeBSD-Split-implementation-of-VT-switching.patch
+  * 0002-Only-allocate-VTs-for-seat0.patch
+  * 0003-Move-VT-setup-to-sddm-helper.patch</comment>
+    <requestid>819685</requestid>
+  </revision>
 </revisionlist>
