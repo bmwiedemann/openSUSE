@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul  7 13:57:59 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.3
+- Changes since 5.19.2:
+  * Make sure tablet coordinates take decorations into account (kde#423833)
+  * Provide a mask for flag-type properties (window types)
+  * [kcm/kwinrules] Fix types property for NET::AllTypesMask (kde#423214)
+  * [x11] Force FocusIn events for already focused windows
+  * [kcm/kwinrules] Fix detection of wmclass property (kde#423138)
+  * [x11] Hold a passive grab on buttons only when needed (kde#394772)
+  * KCM KWin Decoration : kcfgc File attribute should point to kcfg file (kde#423398)
+
+-------------------------------------------------------------------
 Tue Jun 23 13:26:16 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.2
