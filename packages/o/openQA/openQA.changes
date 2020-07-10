@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul 09 19:26:19 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1594309120.bdb02d947:
+  * deps: Fix nightly dependency bot job
+  * Convert line endings .circleci/ci-packages.txt
+  * worker: Allow video encoder to finalize the file
+  * Improve appearance of custom time filter in needles table
+  * Dependency cron 200708
+  * deps: Update Mojo-IOLoop-ReadWriteProcess
+  * Remove obsolete jobs table column 'backend'
+  * mergify: Add additional automatic merge on special label
+  * mergify: Only merge automatically when there are no pending reviews
+  * deps: Copy update-deps from os-autoinst
+  * Expand the search range in used/match when querying needles
+  * Test clone_job_get_job and error messages
+  * Update Perl::Tidy to 20200619
+
+-------------------------------------------------------------------
 Tue Jul 07 11:26:23 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1594050210.78188dc41:

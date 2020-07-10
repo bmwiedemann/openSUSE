@@ -55,7 +55,7 @@
 # The following line is generated from dependencies.yaml
 %define client_requires curl git-core jq perl(Getopt::Long::Descriptive) perl(IO::Socket::SSL) >= 2.009 perl(IPC::Run) perl(JSON::Validator) perl(LWP::Protocol::https) perl(LWP::UserAgent) perl(Test::More) perl(YAML::PP) >= 0.020 perl(YAML::XS)
 # The following line is generated from dependencies.yaml
-%define worker_requires openQA-client optipng os-autoinst < 5 perl(Minion::Backend::SQLite) >= 5.0.1 perl(Mojo::IOLoop::ReadWriteProcess) >= 0.20 perl(Mojo::SQLite)
+%define worker_requires openQA-client optipng os-autoinst < 5 perl(Minion::Backend::SQLite) >= 5.0.1 perl(Mojo::IOLoop::ReadWriteProcess) >= 0.26 perl(Mojo::SQLite)
 # The following line is generated from dependencies.yaml
 %define build_requires %assetpack_requires rubygem(sass)
 
@@ -73,7 +73,7 @@
 %define devel_requires %build_requires %qemu %test_requires chromedriver curl perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy) postgresql-devel rsync sudo tar xorg-x11-fonts
 
 Name:           openQA
-Version:        4.6.1594050210.78188dc41
+Version:        4.6.1594309120.bdb02d947
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
