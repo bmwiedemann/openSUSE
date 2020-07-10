@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jul  4 09:36:37 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.38.4:
+  + Core: Actually use the pretty hostname if found.
+  + Server: Fix missing nullable argument.
+  + Rygel: Add debug output regarding the currently applied ACL
+    policy.
+  + Server: Fix TimeSeekRange headers being locale-dependent.
+  + Tracker:
+    - Some fixes for compatibility with recent vala.
+    - nmm:albumTitle was removed ages ago, use nie:title.
+  + GStreamer Media Engine: Do not seek on encodebin.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:19:22 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
