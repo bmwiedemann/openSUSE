@@ -1,2 +1,0 @@
-d /run/dnscrypt-proxy 0755 dnscrypt dnscrypt
-d /var/log/dnscrypt-proxy 0755 dnscrypt dnscrypt

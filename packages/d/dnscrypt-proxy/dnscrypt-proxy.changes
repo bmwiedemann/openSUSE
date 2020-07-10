@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Jun 12 12:00:00 UTC 2020 - cunix@mail.de - 2.0.44
+
+- Update to version 2.0.44
+  * Netprobes and listening sockets are now ignored when the
+    '-list', '-list-all', '-show-certs' or '-check'
+    command-line switches are used.
+  * 'tls_client_auth' was renamed to 'doh_client_x509_auth'.
+    A section with the previous name is temporarily ignored if empty,
+    but will error out if not.
+  * Updates to the set of block lists.
+
+- Breaking change from 2.0.43 Update:
+  The 'tls_client_auth' section was renamed to 'doh_client_x509_auth'.
+  If you had a tls_client_auth section in the configuration file,
+  it needs to be updated/renamed/deleted.
+
+-------------------------------------------------------------------
+Tue Jun 09 16:00:00 UTC 2020 - cunix@mail.de - 2.0.43
+
+- Minimum golang version now at 1.14
+
+- Update to version 2.0.43
+  * When stored into a file, service logs now only contain data
+    from the most recent launch. This can be changed with the
+    new 'log_file_latest' option.
+  * Support for DNS64 translation implemented.
+  * Connections to DoH servers can be authenticated
+    using TLS client certificates.
+  * Multiple stamps are now allowed for a single server
+    in resolvers and relays lists.
+  * Updates and additions for the example domain block lists.
+  * Cached configuration files can now be temporarily used if
+    they are out of date, but bootstraping is impossible.
+  * 'generate-domains-blacklists' now tries to deduplicate
+    entries clobbered by wildcard rules.
+  * 'generate-domains-blacklists' can now directly
+    write lists to a file with the `-o` command-line option.
+  * Cache files are now downloaded as the user the daemon will
+    be running as. This fixes permission issues at startup time.
+  * Forwarded queries are now subject to global timeouts,
+    and can be forced to use TCP.
+  * The 'ct' parameter has been removed from DoH queries,
+    as Google doesn't require it any more.
+
+-------------------------------------------------------------------
+Sat May 23 12:00:00 UTC 2020 - cunix@mail.de - 2.0.42
+
+- Upgrade to 2.0.42 (boo#1165343)
+
+- Spec files from home:darix:apps/dnscrypt-proxy and
+  home:cunix:go/dnscrypt-proxy2 merged into existing spec.
+
+- v1 of dnscrypt-proxy is not supported anymore and v2 is
+  a new project. This will require v1 users to migrate their
+  configuration.
+
+- dnscrypt-proxy-default-config.patch deleted because patched
+  file 'dnscrypt-proxy.conf' is not used anymore.
+
+-------------------------------------------------------------------
 Thu Dec 19 15:27:22 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libsystemd) instead of systemd-devel:

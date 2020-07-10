@@ -1,0 +1,27 @@
+Some tips:
+
+1. Configure /etc/dnscrypt-proxy/dnscrypt-proxy.toml for your use case first!
+
+2. Override "ListenStream" and "ListenDatagram" for dnscrypt-proxy.socket
+   according to your setup, especially if dnscrypt-proxy should not be used as
+   your primary name resolver.
+   In this case you might want to forward queries from a tool
+   like "dnsmasq" to dnscrypt-proxy.
+   Then the later should probably not listen on the default adress/port.
+
+3. If running via systemd, start as root once with
+
+      $ systemctl start dnscrypt-proxy.socket
+
+   For always activating, do
+
+      $ systemctl enable dnscrypt-proxy.socket
+
+4. Alternatively dnscrypt-proxy.service can be used the same way.
+   This will require you to set or uncomment "listen_addresses" in
+   /etc/dnscrypt-proxy/dnscrypt-proxy.toml
+   In this case the socket configuration described in (2.)
+   has to be done in this file directly.
+
+
+
