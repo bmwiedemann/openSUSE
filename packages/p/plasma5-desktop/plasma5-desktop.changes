@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul  7 13:58:00 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.3
+- Changes since 5.19.2:
+  * Translate kcfg files
+  * fixuifiles
+  * Fix message extraction a bit
+  * Extract from ui files as well
+  * Fix a further potential null pointer deref in file manager chooser
+  * Fix a KCM crash when no file manager is installed (kde#422819)
+  * Do not modify vector while iterating over it in range-based for loop (kde#423224,kde#423441)
+  * KCM component chooser: use the category FileManager to filter filemanager apps (kde#423313)
+
+-------------------------------------------------------------------
 Tue Jun 23 13:26:17 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.2
