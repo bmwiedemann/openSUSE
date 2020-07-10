@@ -7,4 +7,12 @@
     <comment>Fix names of files.</comment>
     <requestid>743621</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>42f250facff43271b7bbf3b9ad28d9c0</srcmd5>
+    <version>1.31</version>
+    <time>1594383184</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lua54 as new build target</comment>
+    <requestid>819795</requestid>
+  </revision>
 </revisionlist>
