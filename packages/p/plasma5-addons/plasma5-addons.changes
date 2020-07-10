@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul  7 13:58:00 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.3
+- Changes since 5.19.2:
+  * Port task switchers to use standard sizes for everything else
+  * Port task switchers to use units.iconSizes (kde#422547)
+
+-------------------------------------------------------------------
 Tue Jun 23 13:26:17 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.2
