@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  9 06:43:11 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints for PowerPC to avoid "No space left" build error
+
+-------------------------------------------------------------------
 Tue Jun  2 09:35:19 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Fix factory build with patch from git:
