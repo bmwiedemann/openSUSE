@@ -16,16 +16,21 @@
 #
 
 
+%define __builder Ninja
+
 Name:           QMPlay2
-Version:        20.05.02
+Version:        20.07.04
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://github.com/zaps166/QMPlay2
 Source:         https://github.com/zaps166/QMPlay2/releases/download/%{version}/QMPlay2-src-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE
+Patch100:       0001-fix-build-error-lp151.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5Concurrent)
@@ -74,34 +79,28 @@ Requires:       %{name} = %{version}
 It's a development package for %{name}.
 
 %prep
-%setup -q -n %{name}-src-%{version}
+%autosetup -p1 -n %{name}-src-%{version}
 
 %build
 # Build options
 # Disable PCH compilation for older versions of openSUSE/SLES
 # as it requires cmake >= 3.16.
-# Temporarily disable PCH compilation for ppc64 and ppc64le architectures
-# as the build servers do not support it yet.
 %cmake \
   -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now" \
   -DUSE_CHIPTUNE_SID=ON \
   -DUSE_LINK_TIME_OPTIMIZATION=ON \
   %if 0%{?suse_version} >= 1520
-    %ifnarch ppc64 ppc64le
-    -DUSE_PCH=ON \
-    %else
-    -DUSE_PCH=OFF \
-    %endif
+  -DUSE_PCH=ON \
   %else
   -DUSE_PCH=OFF \
   %endif
   -DUSE_GLSLC=OFF \
   -DUSE_GIT_VERSION=OFF \
   -DSOLID_ACTIONS_INSTALL_PATH="%{_datadir}/solid/actions"
-%cmake_build
+%ninja_build
 
 %install
-%cmake_install
+%ninja_install -C build
 
 # Let's use %%doc macro. AUTHORS & ChangeLog are required for help window
 cd %{buildroot}/%{_datadir}/qmplay2
@@ -137,10 +136,6 @@ gunzip -S svgz %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/%{name}.svgz
 %{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.*
-%if 0%{?suse_version} == 1315
-%dir %{_datadir}/icons/hicolor/*
-%dir %{_datadir}/icons/hicolor/*/apps
-%endif
 %{_datadir}/qmplay2
 %{_mandir}/man?/%{name}.?%{ext_man}
 %{_datadir}/mime/packages/x-*.xml
