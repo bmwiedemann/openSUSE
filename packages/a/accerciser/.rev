@@ -537,4 +537,12 @@ No LGPL-2.1+ licenses found in package (forwarded request 105656 from babelworx)
     <comment>New stable release, not buildtested! (forwarded request 797720 from iznogood)</comment>
     <requestid>798340</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>dbd06f03d2fd1f6c3a75ff107353913f</srcmd5>
+    <version>3.36.2</version>
+    <time>1594387900</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 818774 from iznogood)</comment>
+    <requestid>819942</requestid>
+  </revision>
 </revisionlist>
