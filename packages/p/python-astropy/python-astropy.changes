@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  9 23:14:09 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Switch from pytest macro back to astropy.test()
+  This avoids compiling a second time inplace and obsoletes the
+  necessary deprecation warningsfilters. New deprecation warnings
+  from numpy 1.19 started to fail the test multibuild again.
+  Can now drop astropy-openSUSE-ignore-warnings.patch
+- Fix update-alternatives warnings by expanding the loop early 
+
+-------------------------------------------------------------------
 Sun Jul  5 12:24:49 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix conftest collection error: import local source dir for tests 

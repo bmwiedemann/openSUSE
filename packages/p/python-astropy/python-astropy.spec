@@ -34,7 +34,6 @@ Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
 URL:            https://astropy.org
 Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy-%{version}.tar.gz
-Patch0:         astropy-openSUSE-ignore-warnings.patch
 # Mark wcs headers as false positives for devel-file-in-non-devel-package
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
@@ -81,6 +80,7 @@ BuildRequires:  %{python_module Bottleneck}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module asdf >= 2.5}
+BuildRequires:  %{python_module astropy}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module bleach}
 BuildRequires:  %{python_module h5py}
@@ -108,9 +108,9 @@ common tools needed for performing astronomy and astrophysics research with
 Python. It also provides an index for other astronomy packages and tools for
 managing them.
 
+%if !%{with test}
 %prep
 %setup -q -n astropy-%{version}
-%patch0 -p1
 
 # Make sure bundled libs are not used
 rm -rf cextern/expat
@@ -122,12 +122,9 @@ echo "[build]" >> setup.cfg
 echo "use_system_libraries=1" >> setup.cfg
 
 %build
-%if !%{with test}
 %python_build --use-system-libraries --offline
-%endif
 
 %install
-%if !%{with test}
 %python_install --use-system-libraries --offline
 for b in %{binaries}; do
   %python_clone -a %{buildroot}%{_bindir}/$b
@@ -153,43 +150,28 @@ $python -O -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}/
 }
 %endif
 
-%check
 %if %{with test}
-# http://docs.astropy.org/en/latest/development/testguide.html#running-tests
-%python_exec setup.py build_ext --inplace --offline
-# import from local source dir for proper conftest.py collection 
-# and using above inplace built extensions
-export PYTHONPATH=$(pwd)
+%check
 %ifarch aarch64
 # doctest failure because of precision errors
-  %define skippytest -k 'not bayesian_info_criterion_lsq'
+  %define skip_pytest -k 'not bayesian_info_criterion_lsq'
 %endif
-%pytest_arch --ignore 'docs/whatsnew' %{?skippytest}
+# http://docs.astropy.org/en/latest/development/testguide.html#running-tests
+# running pytest directly would require building the extensions inplace
+%python_exec -B -c "import astropy; astropy.test(args=\"-v %{?skip_pytest}\")"
 %endif
 
 %if !%{with test}
 %post
-for b in %{binaries}; do
-  %python_install_alternative $b
-done
+%{expand:%(for b in %{binaries}; do echo "%%python_install_alternative $b"; done)}
 
 %postun
-for b in %{binaries}; do
-  %python_uninstall_alternative $b
-done
+%{expand:%(for b in %{binaries}; do echo "%%python_uninstall_alternative $b"; done)}
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license licenses/*
-%python_alternative %{_bindir}/fitsdiff
-%python_alternative %{_bindir}/fitsheader
-%python_alternative %{_bindir}/fitscheck
-%python_alternative %{_bindir}/fitsinfo
-%python_alternative %{_bindir}/fits2bitmap
-%python_alternative %{_bindir}/samp_hub
-%python_alternative %{_bindir}/showtable
-%python_alternative %{_bindir}/volint
-%python_alternative %{_bindir}/wcslint
+%{expand:%(for b in %{binaries}; do echo "%%python_alternative %%{_bindir}/$b"; done)}
 %{python_sitearch}/astropy/
 %{python_sitearch}/astropy-%{version}-py*.egg-info
 %endif
