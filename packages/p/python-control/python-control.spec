@@ -29,6 +29,7 @@ Source1:        %{name}-rpmlintrc
 Patch0:         pr365-copy-PR-320-for-robust_array_test.patch
 Patch1:         pr366-ease-precision-tolerance.patch
 Patch2:         pr380-fix-pytest-discovery.patch
+Patch3:         pr430-numpy119delete.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -57,9 +58,7 @@ operations for analysis and design of feedback control systems.
 
 %prep
 %setup -q -n control-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autopatch -p1
 #remove shebang
 sed -i '1{\@^#!/usr/bin/env python@ d}' control/tests/*.py
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  9 18:56:06 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- add pr430-numpy119delete.patch to fix test failures with new numpy 
+
+-------------------------------------------------------------------
 Tue Jun 30 12:21:40 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - remove ppc workaround 
