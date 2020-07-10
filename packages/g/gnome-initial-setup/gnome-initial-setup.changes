@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul  5 14:55:33 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.4:
+  + Bugs fixed: timezone: Don't set timezone if tz page is skipped.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Jun 15 09:10:31 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
 - Update gnome-initial-setup.spec: Start gnome-initial-setup via
