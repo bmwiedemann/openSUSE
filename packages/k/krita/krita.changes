@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  9 07:42:45 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- increase disk size from 4 to 9GB for ppc64/ppc64le
+
+-------------------------------------------------------------------
 Sat Jun 20 10:13:51 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Set minimum disk size for ppc64/ppc64le in _constraints to
