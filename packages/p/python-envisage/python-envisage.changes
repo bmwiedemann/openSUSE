@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul  9 13:07:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 4.9.2
+  - Conditionally skip tests that fail against Traits 6.0.0 due to the removal
+    of Categories. (#263)
+  - Fix tests that fail against Traits 6.0.0 due to the removal
+    of double nesting in list events. (#255)
+  - Replace a comment mention of ``AdaptedTo`` with ``Supports``. (#253)
+  - Remove dependence on ``clean_filename`` from Traits. (#252)
+  - Replace a use of the deprecated ``DictStrAny`` trait with
+    ``Dict(Str, Any)``. (#250)
+
+-------------------------------------------------------------------
 Tue Nov 19 21:13:05 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to Version 4.9.0
