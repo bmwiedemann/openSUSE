@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul  9 11:44:52 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 2.14
+  * Fall back to plain file I/O on platforms that support 
+    fileno() but that don’t support mmap(), like the Pyodide 
+    platform.
+- Update to 2.13
+  * The exception raised when a segment is given a Julian date 
+    outside the segment’s date range is now an instance of the 
+    ValueError subclass OutOfRangeError that reminds the caller 
+    of the range of dates supported by the SPK segment, and 
+    carries an array attribute indicating which input dates were 
+    at fault.
+
+-------------------------------------------------------------------
 Thu Jan 30 15:00:28 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 2.12
