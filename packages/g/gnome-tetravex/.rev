@@ -205,4 +205,12 @@
     <comment></comment>
     <requestid>811870</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7de29c8831ff356866c2c69576079604</srcmd5>
+    <version>3.36.4</version>
+    <time>1594387922</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 819021 from iznogood)</comment>
+    <requestid>819946</requestid>
+  </revision>
 </revisionlist>
