@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  1 10:13:03 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.4.3
+  * Minor fixes for a regression and a couple other minor changes
+
+-------------------------------------------------------------------
 Thu May 14 07:12:48 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Decrease dependencies which aren't really required so we can build

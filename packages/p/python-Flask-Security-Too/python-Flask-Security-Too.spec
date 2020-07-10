@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-Security-Too
-Version:        3.4.2
+Version:        3.4.3
 Release:        0
 Summary:        Security for Flask apps
 License:        MIT
