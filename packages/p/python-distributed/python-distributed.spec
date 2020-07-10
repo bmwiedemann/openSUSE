@@ -21,7 +21,7 @@
 # Test requires network connection
 %bcond_with     test
 Name:           python-distributed
-Version:        2.15.2
+Version:        2.20.0
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -36,7 +36,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-certifi
 Requires:       python-click >= 6.6
-Requires:       python-cloudpickle >= 0.2.2
+Requires:       python-cloudpickle >= 1.3.0
+Requires:       python-contextvars
 Requires:       python-dask >= 2.7.0
 Requires:       python-joblib >= 0.10.2
 Requires:       python-msgpack
@@ -52,7 +53,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module click >= 6.6}
-BuildRequires:  %{python_module cloudpickle >= 0.2.2}
+BuildRequires:  %{python_module cloudpickle >= 1.3.0}
 BuildRequires:  %{python_module dask >= 0.18.0}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module psutil}
