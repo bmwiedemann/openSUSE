@@ -18,14 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-%define binaries nib-dicomfs nib-diff nib-ls nib-nifti-dx nib-tck2trk nib-trk2tck parrec2nii
+%define binaries nib-conform nib-dicomfs nib-diff nib-ls nib-nifti-dx nib-tck2trk nib-trk2tck parrec2nii
 Name:           python-nibabel
-Version:        3.0.1
+Version:        3.1.1
 Release:        0
 Summary:        Tool to access multiple neuroimaging data formats
 License:        MIT
 URL:            https://nipy.org/nibabel
 Source:         https://files.pythonhosted.org/packages/source/n/nibabel/nibabel-%{version}.tar.gz
+Patch0:         purge-nose.patch
 BuildRequires:  %{python_module setuptools >= 30.3.0}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
@@ -41,7 +42,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module h5py}
-BuildRequires:  %{python_module nose >= 0.11}
 BuildRequires:  %{python_module numpy >= 1.12}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
@@ -58,6 +58,7 @@ very limited support for DICOM.
 
 %prep
 %setup -q -n nibabel-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -70,7 +71,7 @@ done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix} -v
+%pytest
 
 %post
 for b in %{binaries}; do
@@ -85,6 +86,7 @@ done
 %files %{python_files}
 %doc AUTHOR Changelog README.rst
 %license COPYING
+%python_alternative %{_bindir}/nib-conform
 %python_alternative %{_bindir}/nib-dicomfs
 %python_alternative %{_bindir}/nib-diff
 %python_alternative %{_bindir}/nib-ls
