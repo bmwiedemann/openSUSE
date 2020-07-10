@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul  9 12:53:51 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.11.2
+  * fix reference counting in declarative function PR #417
+  * fix signaling/weakmethod/callableref that were broken since 0.10.0 PR #416
+  * coerce iterator iterables of loopers to tuple so refresh works properly PR #414
+
+-------------------------------------------------------------------
 Thu Apr  9 12:44:00 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.11.0

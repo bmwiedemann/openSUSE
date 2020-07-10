@@ -20,7 +20,7 @@
 # python-cppy, python-bytecode is python3 only (at least)
 %define skip_python2 1
 Name:           python-enaml
-Version:        0.11.0
+Version:        0.11.2
 Release:        0
 # Source code is under BSD but images are under different licenses
 # and details are inside image_LICENSE.txt
