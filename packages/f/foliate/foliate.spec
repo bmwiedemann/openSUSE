@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(Handy\\) = 1
 %define oname com.github.johnfactotum.Foliate
 Name:           foliate
-Version:        2.4.0
+Version:        2.4.2
 Release:        0
 Summary:        A GTK eBook reader
 License:        GPL-3.0-only
@@ -28,10 +28,12 @@ URL:            https://johnfactotum.github.io/foliate/
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  gobject-introspection
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gjs-1.0)
 BuildRequires:  pkgconfig(glib-2.0)
+Requires:       typelib(WebKit2)
 BuildArch:      noarch
 
 %description
@@ -61,10 +63,13 @@ popd
 
 %find_lang %{oname} --with-gnome
 
+ln -sr %{buildroot}/%{_bindir}/%{oname} %{buildroot}/%{_bindir}/%{name}
+
 %files
 %license COPYING
 %doc README.md
 %{_bindir}/%{oname}
+%{_bindir}/%{name}
 %{_datadir}/applications/
 %{_datadir}/com.github.johnfactotum.Foliate
 %{_datadir}/glib-2.0/schemas/

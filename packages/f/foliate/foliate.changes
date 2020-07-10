@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jul  6 08:10:23 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 2.4.2:
+  * Fixed unable to open some EPUB files
+
+-------------------------------------------------------------------
+Mon Jul  6 06:50:18 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 2.4.1: 
+  * Fixed unable to open Mobipocket files
+
+-------------------------------------------------------------------
+Thu Jul  2 22:31:18 UTC 2020 - Scott Young <dev@iotib.net>
+
+- Fixed dependency issue
+- Added symlink "foliate" targetting main binary.
+
+-------------------------------------------------------------------
 Thu Jul  2 08:26:09 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 2.4.0: 
