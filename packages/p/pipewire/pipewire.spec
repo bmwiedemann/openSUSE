@@ -257,8 +257,9 @@ This package contains documentation for the PipeWire media server.
 %patch0 -p1
 %endif
 
-%if %{pkg_vcmp alsa-devel < 1.2.2}
+%if %{pkg_vcmp alsa-devel < 1.1.7}
 %patch1 -p1
+sed -i -e "s/dependency('alsa', version : '>=1.1.7')/dependency('alsa', version : '>=1.1.5')/" meson.build
 %endif
 %patch2 -p1
 

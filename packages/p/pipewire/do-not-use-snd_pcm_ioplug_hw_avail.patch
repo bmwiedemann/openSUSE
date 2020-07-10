@@ -34,7 +34,7 @@ Index: pipewire-0.3.5/pipewire-alsa/alsa-plugins/pcm_pipewire.c
 +	avail = maxsize;
  	index = d[0].chunk->offset;
  
- 	do {
+ 	if (avail < maxsize)
 @@ -309,7 +309,9 @@ snd_pcm_pipewire_process_record(snd_pcm_
  			pw->hw_ptr -= pw->boundary;
  		xfer += frames;

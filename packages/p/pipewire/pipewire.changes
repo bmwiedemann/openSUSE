@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul  3 08:29:04 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Rebase patches used in SLE/Leap:
+  * do-not-use-snd_pcm_ioplug_hw_avail.patch
+  * fix-memfd_create-call.patch
+
+-------------------------------------------------------------------
 Tue Jun 16 09:04:18 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
-- Update to version 0.3.6:
+- Update to version 0.3.6 (boo#1171433):
   * Extensive memory leak fixing and stress testing was done.
     A big leak in screen sharing with DMA-BUF was fixed.
   * Compile fixes
