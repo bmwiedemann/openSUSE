@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fastremap
-Version:        1.8.0
+Version:        1.10.2
 Release:        0
 Summary:        Module to Remap, mask, renumber, and in-place transpose numpy arrays
 License:        LGPL-3.0-only
