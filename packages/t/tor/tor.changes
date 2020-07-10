@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  9 17:27:13 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- tor 0.4.3.6
+  * Fix a crash due to an out-of-bound memory access (CVE-2020-15572)
+  * Some minor fixes
+
+-------------------------------------------------------------------
 Mon Jun 29 08:57:42 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Fix logrotate to not fail when tor is stopped (boo#1164275)
