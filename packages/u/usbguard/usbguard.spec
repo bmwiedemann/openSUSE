@@ -123,6 +123,11 @@ install -p -m 600 %{SOURCE3} %{buildroot}%{_sysconfdir}/usbguard/usbguard-daemon
 mkdir -p %{buildroot}%{_datadir}/zsh/site-functions/
 install -p -m 644 scripts/usbguard-zsh-completion %{buildroot}%{_datadir}/zsh/site-functions/_usbguard
 
+# turn off system call filtering in Leap 15.X, as it interferes with daemon start up (boo#1173750)
+%if 0%{?suse_version} == 1500 && 0%{?is_opensuse}
+  sed -i '/^SystemCallFilter=@system-service/d' %{buildroot}%{_unitdir}/usbguard.service
+%endif
+
 # Cleanup
 find %{buildroot} \( -name '*.la' -o -name '*.a' \) -delete
 

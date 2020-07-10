@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  9 12:57:34 UTC 2020 - Robert Frohl <rfrohl@suse.com>
+
+- disable system call filtering in systemd service file for Leap 15.X (boo#1173750)
+  * daemon wont start on Leap otherwise
+
+-------------------------------------------------------------------
 Tue Jun 16 11:40:03 UTC 2020 - Robert Frohl <rfrohl@suse.com>
 
 - update to 0.7.8
