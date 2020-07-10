@@ -175,4 +175,12 @@
     <comment></comment>
     <requestid>811869</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>fe3dda090cff70e084ee2490c4162fbf</srcmd5>
+    <version>3.36.4</version>
+    <time>1594387926</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 819022 from iznogood)</comment>
+    <requestid>819947</requestid>
+  </revision>
 </revisionlist>
