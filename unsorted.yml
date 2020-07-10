@@ -2022,6 +2022,7 @@ unsorted:
   - cpp7 
   - cpp9 
   - cppcheck-gui 
+  - cpphs 
   - cppi 
   - cppi-lang 
   - cppreference-doc 
@@ -3162,6 +3163,7 @@ unsorted:
   - firebird-server 
   - firebird-utils 
   - firecracker: [x86_64] 
+  - firectl: [x86_64] 
   - firefox-esr-branding-openSUSE 
   - firefox-uget-integrator 
   - firehol 
@@ -3863,6 +3865,8 @@ unsorted:
   - ghc-aeson-devel 
   - ghc-aeson-pretty 
   - ghc-aeson-pretty-devel 
+  - ghc-algebraic-graphs 
+  - ghc-algebraic-graphs-devel 
   - ghc-alsa-core 
   - ghc-alsa-core-devel 
   - ghc-alsa-mixer 
@@ -3887,6 +3891,8 @@ unsorted:
   - ghc-assoc-devel 
   - ghc-async 
   - ghc-async-devel 
+  - ghc-atomic-write 
+  - ghc-atomic-write-devel 
   - ghc-attoparsec 
   - ghc-attoparsec-devel 
   - ghc-attoparsec-iso8601 
@@ -3957,8 +3963,14 @@ unsorted:
   - ghc-cassava-devel 
   - ghc-cassava-megaparsec 
   - ghc-cassava-megaparsec-devel 
+  - ghc-cborg 
+  - ghc-cborg-devel 
+  - ghc-cborg-json 
+  - ghc-cborg-json-devel 
   - ghc-cereal 
   - ghc-cereal-devel 
+  - ghc-charset 
+  - ghc-charset-devel 
   - ghc-cipher-aes 
   - ghc-cipher-aes-devel 
   - ghc-clientsession 
@@ -3996,6 +4008,8 @@ unsorted:
   - ghc-control-monad-free-devel 
   - ghc-cookie 
   - ghc-cookie-devel 
+  - ghc-cpphs 
+  - ghc-cpphs-devel 
   - ghc-cprng-aes 
   - ghc-cprng-aes-devel 
   - ghc-crypto-api 
@@ -4034,10 +4048,14 @@ unsorted:
   - ghc-data-default-instances-dlist-devel 
   - ghc-data-default-instances-old-locale 
   - ghc-data-default-instances-old-locale-devel 
+  - ghc-data-fix 
+  - ghc-data-fix-devel 
   - ghc-dbus 
   - ghc-dbus-devel 
   - ghc-deepseq 
   - ghc-deepseq-devel 
+  - ghc-dhall 
+  - ghc-dhall-devel 
   - ghc-digest 
   - ghc-digest-devel 
   - ghc-directory 
@@ -4054,6 +4072,8 @@ unsorted:
   - ghc-doclayout-devel 
   - ghc-doctemplates 
   - ghc-doctemplates-devel 
+  - ghc-dotgen 
+  - ghc-dotgen-devel 
   - ghc-easy-file 
   - ghc-easy-file-devel 
   - ghc-echo 
@@ -4100,14 +4120,22 @@ unsorted:
   - ghc-filepath-bytestring 
   - ghc-filepath-bytestring-devel 
   - ghc-filepath-devel 
+  - ghc-filepattern 
+  - ghc-filepattern-devel 
   - ghc-foldl 
   - ghc-foldl-devel 
+  - ghc-foundation 
+  - ghc-foundation-devel 
   - ghc-free 
   - ghc-free-devel 
   - ghc-fsnotify 
   - ghc-fsnotify-devel 
   - ghc-generic-deriving 
   - ghc-generic-deriving-devel 
+  - ghc-generic-lens 
+  - ghc-generic-lens-core 
+  - ghc-generic-lens-core-devel 
+  - ghc-generic-lens-devel 
   - ghc-ghc 
   - ghc-ghc-boot 
   - ghc-ghc-boot-devel 
@@ -4118,6 +4146,8 @@ unsorted:
   - ghc-ghc-devel 
   - ghc-ghc-heap 
   - ghc-ghc-heap-devel 
+  - ghc-ghc-lib-parser-ex 
+  - ghc-ghc-lib-parser-ex-devel 
   - ghc-ghci 
   - ghc-ghci-devel 
   - ghc-githash 
@@ -4128,6 +4158,8 @@ unsorted:
   - ghc-hackage-security-devel 
   - ghc-haddock-library 
   - ghc-haddock-library-devel 
+  - ghc-half 
+  - ghc-half-devel 
   - ghc-hashable 
   - ghc-hashable-devel 
   - ghc-hashtables 
@@ -4136,6 +4168,8 @@ unsorted:
   - ghc-haskeline-devel 
   - ghc-haskell-lexer 
   - ghc-haskell-lexer-devel 
+  - ghc-heaps 
+  - ghc-heaps-devel 
   - ghc-hi-file-parser 
   - ghc-hi-file-parser-devel 
   - ghc-hinotify 
@@ -4146,6 +4180,8 @@ unsorted:
   - ghc-hledger-devel 
   - ghc-hledger-lib 
   - ghc-hledger-lib-devel 
+  - ghc-hlint 
+  - ghc-hlint-devel 
   - ghc-hostname 
   - ghc-hostname-devel 
   - ghc-hourglass 
@@ -4156,6 +4192,8 @@ unsorted:
   - ghc-hpc-devel 
   - ghc-hs-bibutils 
   - ghc-hs-bibutils-devel 
+  - ghc-hscolour 
+  - ghc-hscolour-devel 
   - ghc-hsemail 
   - ghc-hsemail-devel 
   - ghc-hslogger 
@@ -4200,6 +4238,8 @@ unsorted:
   - ghc-hxt-regex-xmlschema-devel 
   - ghc-hxt-unicode 
   - ghc-hxt-unicode-devel 
+  - ghc-indexed-profunctors 
+  - ghc-indexed-profunctors-devel 
   - ghc-infer-license 
   - ghc-infer-license-devel 
   - ghc-integer-logarithms 
@@ -4216,6 +4256,12 @@ unsorted:
   - ghc-iwlib-devel 
   - ghc-jira-wiki-markup 
   - ghc-jira-wiki-markup-devel 
+  - ghc-js-dgtable 
+  - ghc-js-dgtable-devel 
+  - ghc-js-flot 
+  - ghc-js-flot-devel 
+  - ghc-js-jquery 
+  - ghc-js-jquery-devel 
   - ghc-kan-extensions 
   - ghc-kan-extensions-devel 
   - ghc-language-c 
@@ -4224,6 +4270,8 @@ unsorted:
   - ghc-language-javascript-devel 
   - ghc-lens 
   - ghc-lens-devel 
+  - ghc-lens-family-core 
+  - ghc-lens-family-core-devel 
   - ghc-libiserv 
   - ghc-libiserv-devel 
   - ghc-libmpd 
@@ -4329,6 +4377,8 @@ unsorted:
   - ghc-parsec-numbers-devel 
   - ghc-parser-combinators 
   - ghc-parser-combinators-devel 
+  - ghc-parsers 
+  - ghc-parsers-devel 
   - ghc-path 
   - ghc-path-devel 
   - ghc-path-io 
@@ -4343,6 +4393,8 @@ unsorted:
   - ghc-persistent-sqlite-devel 
   - ghc-persistent-template 
   - ghc-persistent-template-devel 
+  - ghc-polyparse 
+  - ghc-polyparse-devel 
   - ghc-postgresql-libpq 
   - ghc-postgresql-libpq-devel 
   - ghc-postgresql-simple 
@@ -4353,6 +4405,12 @@ unsorted:
   - ghc-pretty-hex-devel 
   - ghc-pretty-show 
   - ghc-pretty-show-devel 
+  - ghc-pretty-simple 
+  - ghc-pretty-simple-devel 
+  - ghc-prettyprinter 
+  - ghc-prettyprinter-ansi-terminal 
+  - ghc-prettyprinter-ansi-terminal-devel 
+  - ghc-prettyprinter-devel 
   - ghc-primitive 
   - ghc-primitive-devel 
   - ghc-process 
@@ -4365,6 +4423,8 @@ unsorted:
   - ghc-quickcheck-io-devel 
   - ghc-random 
   - ghc-random-devel 
+  - ghc-refact 
+  - ghc-refact-devel 
   - ghc-reflection 
   - ghc-reflection-devel 
   - ghc-regex-applicative 
@@ -4381,6 +4441,8 @@ unsorted:
   - ghc-regex-posix-devel 
   - ghc-regex-tdfa 
   - ghc-regex-tdfa-devel 
+  - ghc-repline 
+  - ghc-repline-devel 
   - ghc-resolv 
   - ghc-resolv-devel 
   - ghc-resource-pool 
@@ -4411,10 +4473,14 @@ unsorted:
   - ghc-semigroupoids-devel 
   - ghc-semigroups 
   - ghc-semigroups-devel 
+  - ghc-serialise 
+  - ghc-serialise-devel 
   - ghc-setenv 
   - ghc-setenv-devel 
   - ghc-setlocale 
   - ghc-setlocale-devel 
+  - ghc-shake 
+  - ghc-shake-devel 
   - ghc-shakespeare 
   - ghc-shakespeare-devel 
   - ghc-shelly 
@@ -4481,6 +4547,8 @@ unsorted:
   - ghc-text-conversions 
   - ghc-text-conversions-devel 
   - ghc-text-devel 
+  - ghc-text-manipulate 
+  - ghc-text-manipulate-devel 
   - ghc-text-metrics 
   - ghc-text-metrics-devel 
   - ghc-text-short 
@@ -4543,6 +4611,8 @@ unsorted:
   - ghc-unbounded-delays-devel 
   - ghc-unicode-transforms 
   - ghc-unicode-transforms-devel 
+  - ghc-uniplate 
+  - ghc-uniplate-devel 
   - ghc-unix 
   - ghc-unix-compat 
   - ghc-unix-compat-devel 
@@ -4555,6 +4625,8 @@ unsorted:
   - ghc-unliftio-devel 
   - ghc-unordered-containers 
   - ghc-unordered-containers-devel 
+  - ghc-uri-encode 
+  - ghc-uri-encode-devel 
   - ghc-utf8-string 
   - ghc-utf8-string-devel 
   - ghc-utility-ht 
@@ -4593,6 +4665,8 @@ unsorted:
   - ghc-warp-tls-devel 
   - ghc-wcwidth 
   - ghc-wcwidth-devel 
+  - ghc-weeder 
+  - ghc-weeder-devel 
   - ghc-wizards 
   - ghc-wizards-devel 
   - ghc-word-wrap 
@@ -5809,6 +5883,7 @@ unsorted:
   - hledger 
   - hledger-interest 
   - hledger-ui 
+  - hlint 
   - hmaccalc 
   - hmcfgusb 
   - hmconv 
@@ -5836,6 +5911,7 @@ unsorted:
   - hppc-templateprocessor 
   - hpx 
   - hpx-devel 
+  - hscolour 
   - hspec-discover 
   - hsqldb 
   - hsqldb-demo 
@@ -7681,7 +7757,7 @@ unsorted:
   - libHYPRE_2_18_2-gnu-openmpi1-hpc 
   - libHYPRE_2_18_2-gnu-openmpi2-hpc 
   - libHYPRE_2_18_2-gnu-openmpi3-hpc 
-  - libHalf-2_4-24-32bit: [x86_64] 
+  - libHalf-2_5-25-32bit: [x86_64] 
   - libHepMC3-1 
   - libHepMC4 
   - libICE-devel-32bit: [x86_64] 
@@ -7690,15 +7766,15 @@ unsorted:
   - libIL1 
   - libIccXML-devel 
   - libIccXML2 
-  - libIex-2_4-24-32bit: [x86_64] 
-  - libIexMath-2_4-24 
-  - libIexMath-2_4-24-32bit: [x86_64] 
-  - libIlmImf-2_4-24-32bit: [x86_64] 
-  - libIlmImfUtil-2_4-24 
-  - libIlmImfUtil-2_4-24-32bit: [x86_64] 
-  - libIlmThread-2_4-24-32bit: [x86_64] 
-  - libImath-2_4-24 
-  - libImath-2_4-24-32bit: [x86_64] 
+  - libIex-2_5-25-32bit: [x86_64] 
+  - libIexMath-2_5-25 
+  - libIexMath-2_5-25-32bit: [x86_64] 
+  - libIlmImf-2_5-25-32bit: [x86_64] 
+  - libIlmImfUtil-2_5-25 
+  - libIlmImfUtil-2_5-25-32bit: [x86_64] 
+  - libIlmThread-2_5-25-32bit: [x86_64] 
+  - libImath-2_5-25 
+  - libImath-2_5-25-32bit: [x86_64] 
   - libImlib2-1 
   - libIrrlicht1_8 
   - libKDb3-4 
@@ -11422,7 +11498,7 @@ unsorted:
   - libpoppler-glib8-32bit: [x86_64] 
   - libpoppler-qt5-1-32bit: [x86_64] 
   - libpoppler-qt5-devel 
-  - libpoppler100-32bit: [x86_64] 
+  - libpoppler101-32bit: [x86_64] 
   - libportal-devel 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
@@ -13658,6 +13734,10 @@ unsorted:
   - lua54 
   - lua54-devel 
   - lua54-doc 
+  - lua54-ldoc 
+  - lua54-lpeg 
+  - lua54-lpeg-doc 
+  - lua54-markdown 
   - luabind-devel 
   - luaposix-doc 
   - lucene++-devel 
@@ -20403,6 +20483,7 @@ unsorted:
   - python3-kombu 
   - python3-kopano 
   - python3-kubernetes 
+  - python3-kwant: [x86_64] 
   - python3-l20n 
   - python3-labelImg 
   - python3-labels 
@@ -20419,6 +20500,7 @@ unsorted:
   - python3-lazyarray 
   - python3-ldap: [i586] 
   - python3-ldap3 
+  - python3-ldapdomaindump 
   - python3-ldappool 
   - python3-ldaptor 
   - python3-ldb-32bit: [x86_64] 
@@ -24626,6 +24708,7 @@ unsorted:
   - shadowsocks-libev-doc 
   - shadowsocks-v2ray-plugin 
   - shairport-sync 
+  - shake 
   - shapelib 
   - shared-color-targets 
   - shellementary 
