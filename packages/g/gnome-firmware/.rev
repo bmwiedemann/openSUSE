@@ -23,4 +23,18 @@
     <comment></comment>
     <requestid>768559</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6b1926eb8f24929801a2a15aacede2b4</srcmd5>
+    <version>3.36.0</version>
+    <time>1594387861</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed do-not-call-gtk_init-manually.patch. Fixed upstream
+- Update to version 3.36.0:
+  * Dynamically show verify and releases buttons
+  * Show device and progress when doing updates
+  * Add Croatian translation
+  * l10n: Add Turkish translation
+  * l10n: Add Italian translation (forwarded request 818626 from Dead_Mozay)</comment>
+    <requestid>819928</requestid>
+  </revision>
 </revisionlist>

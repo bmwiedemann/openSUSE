@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-firmware
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           gnome-firmware
-Version:        3.34.0
+Version:        3.36.0
 Release:        0
 Summary:        Install firmware on devices
 License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://gitlab.gnome.org/hughsie/gnome-firmware-updater
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         do-not-call-gtk_init-manually.patch
 
 BuildRequires:  gobject-introspection
 BuildRequires:  help2man
@@ -71,6 +70,7 @@ supported by fwupd.
 %{_datadir}/metainfo/org.gnome.Firmware.metainfo.xml
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Firmware.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Firmware-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Firmware.Devel.svg
 %{_mandir}/man1/gnome-firmware.1%{?ext_man}
 
 %files lang -f %{name}.lang

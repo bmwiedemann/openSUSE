@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul  3 16:51:43 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Removed do-not-call-gtk_init-manually.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Fri Jul 03 16:15:51 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 3.36.0:
+  * Dynamically show verify and releases buttons
+  * Show device and progress when doing updates
+  * Add Croatian translation
+  * l10n: Add Turkish translation
+  * l10n: Add Italian translation
+
+-------------------------------------------------------------------
 Wed Jan 29 22:39:12 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - No longer recommend -lang: supplements are in use.
