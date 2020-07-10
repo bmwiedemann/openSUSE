@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jul  9 08:17:08 UTC 2020 - Gabriele Santomaggio <gsantomaggio@suse.de>
+
+- Update to 3.8.5
+- RabbitMQ 3.8.5 is a maintenance release.
+- Full release notes: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.8.5
+- RabbitMQ 3.8.5 is a maintenance release.
+- This release requires Erlang/OTP 21.3 or later.
+  22.3 or 23.0 series is recommended.
+- RabbitMQ 3.8.5 is an RabbitMQ 3.8.0 update
+
+- Update to 3.8.4
+- RabbitMQ 3.8.4 is a maintenance release.
+- Full release notes: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.8.4
+- RabbitMQ 3.8.4 is a maintenance release.
+- This release requires Erlang/OTP 21.3 or later.
+  22.3 or 23.0 series is recommended.
+- This is the first release to officially support Erlang 23. Compared to 3.8.3, which
+  generally works as expected on Erlang 23, Prometheus monitoring plugin had to
+  be adapted to support a memory allocator metric format that has changed compared to
+  earlier Erlang releases.
+  There is one remaining known Erlang 23 incompatibility: rabbitmq-diagnostics observer will fail on Erlang 23.
+  This will be addressed in a future release.
+  The root cause is the same memory allocator metric change.
+  Provisioning Latest Erlang Releases explains
+  what package repositories and tools can be used to provision latest patch versions of Erlang 22.3.x
+- RabbitMQ 3.8.4 is an RabbitMQ 3.8.0 update
+
+-------------------------------------------------------------------
 Fri Apr 24 12:01:33 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - use python 3.x for building, allows dropping python 2.x
