@@ -19,13 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-fastparquet
-Version:        0.3.3
+Version:        0.4.0
 Release:        0
 Summary:        Python support for Parquet file format
 License:        Apache-2.0
 URL:            https://github.com/dask/fastparquet/
 Source:         https://github.com/dask/fastparquet/archive/%{version}.tar.gz#/fastparquet-%{version}.tar.gz
-Patch0:         use-python-exec.patch
 BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module bson}
@@ -63,7 +62,6 @@ for integrating it into python-based Big Data workflows.
 
 %prep
 %setup -q -n fastparquet-%{version}
-%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"

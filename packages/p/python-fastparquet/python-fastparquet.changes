@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  9 14:04:10 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.4.0
+  * Changed RangeIndex private methods to public ones
+  * Use the python executable used to run the code
+  * Add support for Python 3.8
+  * support for numba > 0.48
+- drop upstreamed patch use-python-exec.patch
+
+-------------------------------------------------------------------
 Mon Apr  6 06:54:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to use sys.executable and not call py2 binary directly:
