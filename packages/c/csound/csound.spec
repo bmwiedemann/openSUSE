@@ -1,7 +1,7 @@
 #
 # spec file for package csound
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,14 @@
 #
 
 
+%define rev 0dad8304c78efba48b4f405f4757f3e0a7e339c0
+
 %define py3version %(pkg-config python3 --modversion)
 %define support_fltk 1
 %bcond_with python
 
 %if 0%{?suse_version} > 1500
-%bcond_without java
+%bcond_with java
 %else
 %bcond_with java
 %endif
@@ -30,25 +32,21 @@
 %define min 0
 
 Name:           csound
-Version:        6.12.2
+Version:        6.14.0+git20200601
 Release:        0
 Summary:        Computer Sound Synthesis and Composition Program
-License:        GPL-2.0-or-later AND BSD-3-Clause AND PostgreSQL
+License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-Url:            http://www.csounds.com
+URL:            http://www.csounds.com
 #Source:         https://github.com/%%{name}/%%{name}/archive/%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
-Source0:        %{name}-%{version}-distibutable.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        README.SUSE
 Source2:        COPYING_gpl2+.txt
-#Update and remove undistributable files from the sources and repack with this script
-#Usage = sh pre_checkin.sh
-Source3:        pre_checkin.sh
 # Default to using pulseaudio instead of portaudio
 Patch2:         csound-6.08-default-pulse.patch
 # Use xdg-open to open a browser to view the manual
 Patch4:         csound-6.08-xdg-open.patch
-Patch6:         fluidsynth2.patch
-Patch7:         csound-rename-sndinfo.patch
+Patch5:         csound-rename-sndinfo.patch
 BuildRequires:  alsa-devel
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -173,6 +171,7 @@ make %{_smp_mflags}
 %cmake_install
 #python bindings are wip
 rm -rf %{buildroot}root
+cp -v OOps/README.md README.OOps
 
 %fdupes -s %{buildroot}
 %find_lang %{name}%{maj}
@@ -187,8 +186,8 @@ rm -rf %{buildroot}root
 %postun java-bindings -p /sbin/ldconfig
 
 %files
-%doc AUTHORS README.md README.SUSE Release_Notes
-%license COPYING OOps/LICENCE.random COPYING_gpl2+.txt COPYING.PostgreSQL
+%doc AUTHORS README.md README.SUSE Release_Notes README.OOps
+%license COPYING COPYING_gpl2+.txt COPYING.PostgreSQL
 %{_bindir}/*
 
 %files -n libcsnd6-%{maj}_%{min}

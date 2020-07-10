@@ -1,13 +1,13 @@
-Index: csound-6.12.2/Top/csound.c
+Index: csound-6.14.0/Top/csound.c
 ===================================================================
---- csound-6.12.2.orig/Top/csound.c	2018-11-07 16:05:23.000000000 +0200
-+++ csound-6.12.2/Top/csound.c	2019-04-05 15:32:03.893551257 +0200
-@@ -3443,7 +3443,7 @@ PUBLIC void csoundReset(CSOUND *csound)
-     csoundCreateGlobalVariable(csound, "_RTAUDIO", (size_t) max_len);
-     s = csoundQueryGlobalVariable(csound, "_RTAUDIO");
- #ifndef LINUX
--    strcpy(s, "PortAudio");
-+    strcpy(s, "pulse");
+--- csound-6.14.0.orig/Top/csound.c	2020-06-02 11:58:24.594002125 +0200
++++ csound-6.14.0/Top/csound.c	2020-06-02 12:02:34.339852882 +0200
+@@ -3456,7 +3456,7 @@ PUBLIC void csoundReset(CSOUND *csound)
+  #ifdef __HAIKU__
+       strcpy(s, "haiku");
+  #else
+-      strcpy(s, "PortAudio");
++      strcpy(s, "pulse");
+  #endif
  #else
      strcpy(s, "alsa");
- #endif

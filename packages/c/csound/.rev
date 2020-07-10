@@ -215,4 +215,12 @@
     <comment>fix requires in devel package</comment>
     <requestid>712999</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>25070f54bf209193954c67b9ce5ec484</srcmd5>
+    <version>6.14.0+git20200601</version>
+    <time>1594383155</time>
+    <user>dimstar_suse</user>
+    <comment>@babelworx Removed unused util/new_srconv.c from sources to fix licensing.</comment>
+    <requestid>819908</requestid>
+  </revision>
 </revisionlist>
