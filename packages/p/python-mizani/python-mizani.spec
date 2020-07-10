@@ -1,7 +1,7 @@
 #
 # spec file for package python-mizani
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-mizani
-Version:        0.6.0
+Version:        0.7.1
 Release:        0
 Summary:        Scales for Python
 License:        BSD-3-Clause
@@ -49,6 +49,8 @@ Mizani is a scales package for graphics.
 
 %prep
 %setup -q -n mizani-%{version}
+# correct np.timedelta64 usage
+sed -i 's/unit=//' mizani/tests/test_*.py
 
 %build
 %python_build
