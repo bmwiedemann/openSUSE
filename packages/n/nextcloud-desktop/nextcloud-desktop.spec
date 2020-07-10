@@ -19,7 +19,7 @@
 %define soname  libnextcloudsync
 %define sover   0
 Name:           nextcloud-desktop
-Version:        2.6.4
+Version:        2.6.5
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -31,8 +31,6 @@ Source1:        sysctl-sync-inotify.conf
 Patch0:         nextcloud-desktop-fix-rpath.patch
 # PATCH-FIX-OPENSUSE nextcloud-desktop-remove-datetime.patch sor.alexei@meowr.ru -- Remove __TIME__ and __DATE__.
 Patch1:         nextcloud-desktop-remove-datetime.patch
-# PATCH-FIX-OPENSUSE nextcloud-desktop-qt_5.15.patch - Fix build error with QT 5.15.
-Patch2:         %{name}-qt_5.15.patch
 BuildRequires:  AppStream
 BuildRequires:  cmake >= 3.2
 BuildRequires:  fdupes
@@ -61,6 +59,7 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       %{soname}%{sover} = %{version}
 Provides:       nextcloud-client = %{version}
 Obsoletes:      nextcloud-client < %{version}
+Provides:       nextcloud-client-lang = %{version}
 Obsoletes:      nextcloud-client-lang < %{version}
 %if 0%{?is_opensuse}
 BuildRequires:  doxygen
@@ -105,7 +104,7 @@ The Nextcloud Desktop Client synchronisation library.
 
 %package -n %{soname}-devel
 Summary:        Development files for the Nextcloud synchronisation library
-Group:          Productivity/Networking/File-Sharing
+Group:          Development/Libraries/C and C++
 Requires:       %{soname}%{sover} = %{version}
 
 %description -n %{soname}-devel
@@ -168,7 +167,6 @@ Dolphin filemanager to display overlay icons.
 %setup -q -n desktop-%{version}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 cp -a %{SOURCE1} sysctl-sync-inotify.conf
 
 %build
@@ -205,7 +203,7 @@ done
 #install -Dpm 0644 sysctl-sync-inotify.conf \
 #  %%{buildroot}%%{_sysconfdir}/sysctl.d/99-%%{name}-sync-inotify.conf
 
-%suse_update_desktop_file nextcloud
+%suse_update_desktop_file com.nextcloud.desktopclient.nextcloud
 %fdupes %{buildroot}%{_datadir}/
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
@@ -218,7 +216,7 @@ done
 #%%config %%{_sysconfdir}/sysctl.d/99-%%{name}-sync-inotify.conf
 %{_bindir}/nextcloud*
 %dir %{_datadir}/nextcloud/
-%{_datadir}/applications/nextcloud.desktop
+%{_datadir}/applications/com.nextcloud.desktopclient.nextcloud.desktop
 %dir %{_datadir}/icons/hicolor/1024x1024/
 %dir %{_datadir}/icons/hicolor/1024x1024/apps/
 %{_datadir}/icons/hicolor/*/apps/Nextcloud*.*

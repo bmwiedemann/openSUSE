@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Thu Jul  9 17:43:21 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.6.5
+  - #1449 Linux/Wayland: Updated .desktop file naming scheme
+  - #1834 Use print() function in both Python 2 and Python 3
+  - #1835 Added build for Focal
+  - #1838 Allow sharing to circles
+  - #1839 Added Focal-specific files
+  - #1841 Allow sharing to circles
+  - #1843 Enhance Version info display (minimal info, hide details)
+  - #1847 Updater: Enhance UI, make build optional
+  - #1848 WebView: Add missing Q_OBJECT macros
+  - #1851 Enhance Version info display (minimal info, hide details)
+  - #1853 Updater: Fix Tests build (failed with BUILD_UPDATER=NO)
+  - #1854 Updater: Fix Tests build (failed with BUILD_UPDATER=NO)
+  - #1855 WebView: Add missing Q_OBJECT macros
+  - #1859 Provide specific install file for Debian oldstable
+  - #1879 Add desktop-entry hint to notifications
+  - #1880 Remove timeout parameter from showMessage
+  - #1881 Use qEnvironmentVariableIsEmpty
+  - #1882 Fix container detaching
+  - #1883 [dolphin] Add icon to context menu
+  - #1886 Move the proxyfiles to libsync where they make more sense
+  - #1909 Fix build with Qt 5.15
+  - #1931 Fix container detaching
+  - #1932 [dolphin] Add icon to context menu
+  - #1933 Fix build of Dolphin integration
+  - #1934 Fix build of Dolphin integration
+  - #1954 Fix typos.
+  - #1956 Update ChangeLog with 2.6 series.
+  - #1958 Resolve symlinks when checking for registered paths.
+  - #1972 Fix leak in FileUtil::IsChildFile
+  - #1973 Fix leak in FileUtil::IsChildFile
+  - #1974 Don't silently kill debug messages
+  - #1975 Don't silently kill debug messages
+  - #1986 Properly handle denormalized href
+  - #1987 Fix a few leaks
+  - #1988 Use nullptr when appropriate
+  - #1989 Remove useless virtual, better use override only
+  - #1991 Improve sanitizer support
+  - #1992 Update github links to desktop repository
+  - #1996 Properly handle denormalized href
+  - #1997 Use nullptr when appropriate
+  - #1998 Update github links to desktop repository
+  - #1999 Remove useless virtual, better use override only
+  - #2000 Don't use int literals for bools
+  - #2001 Use default member initialization
+  - #2005 Use default member initialization
+  - #2006 Improve URL input field in Wizard
+  - #2007 Improve URL input field in Wizard
+  - #2017 Remove redundant initializer
+  - #2018 Use using instead of typedef
+  - #2019 Remove redundant void argument list
+  - #2020 Use make_unique when appropriate
+  - #2021 Use = default for trivial ctors and dtors
+  - #2023 Use the return braced init list pattern
+  - #2024 Use raw string literals when appropriate
+  - #2025 Remove redundant initializer
+  - #2026 Use using instead of typedef
+  - #2027 Remove redundant void argument list
+  - #2028 Use make_unique when appropriate
+  - #2029 Use = default for trivial ctors and dtors
+  - #2032 TestLaunchOnStartup shouldn't fail on dev setup
+  - #2033 Use the return braced init list pattern
+  - #2034 testLaunchOnStartup shouldn't fail on dev setup
+  - #2051 Remove Submodule binary (old upstream binaries)
+  - #2052 Remove Submodule binary (old upstream binaries)
+  - #2061 Improve command line version info and help display (gui & cmd)
+  - #2062 Improve command line version info and help display (gui & cmd)
+  - #2063 MacOS: Opt In to Dark Mode for building against older macOS SDKs < 10.14
+  - #2064 macOS: Opt In to Dark Mode for building against older macOS SDKs < 10.14
+  - #2065 Use APPLICATION_ICON_NAME for autostart icon
+  - #2068 Don't show a message box if the entered url returned an error
+  - #2069 Use APPLICATION_ICON_NAME for autostart icon
+  - #2071 Linux/Wayland: Updated .desktop file naming scheme
+  - #2072 AppImage: Upgrade to Qt 5.12.8
+  - #2078 Replace NULL by nullptr in all C++ files
+  - #2083 Simplify nullptr comparisons where appropriate
+  - #2084 macOS: Use macdeployqt instead of the old admin/osx/macdeployqt.py
+  - #2093 Add photothumb.db to sync-exclude.lst
+  - #2106 Fix libsync exports for proxy changes in #1886
+  - #2109 Default system proxy not working with Account Wizard (fixes #2108)
+  - #2127 ConfigFile security: Migrate Proxy password to keychain
+  - #2147 Repair and improve logging
+  - #2152 Don't display quota information when the user has no quota.
+  - #2162 ConfigFile security: Migrate Proxy password to keychain
+  - #2168 Display the correct default permissions when creating a share.
+  - #2170 [stable 2.6] Asemmar/issue 2137
+  - #2177 Share link display the correct permissions for files and folders.
+  - #2179 Display the correct default permissions when creating a share.
+- Drop nextcloud-desktop-qt_5.15.patch because now in upstream.
+
+-------------------------------------------------------------------
 Mon Jun  8 14:52:29 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Fix build error in Tumbleweed.
