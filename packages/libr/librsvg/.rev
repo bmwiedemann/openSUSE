@@ -804,4 +804,12 @@
     <comment></comment>
     <requestid>811866</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>6ad7f502e29f1f709782bbc198228e7a</srcmd5>
+    <version>2.48.8</version>
+    <time>1594623904</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 818719 from iznogood)</comment>
+    <requestid>819936</requestid>
+  </revision>
 </revisionlist>
