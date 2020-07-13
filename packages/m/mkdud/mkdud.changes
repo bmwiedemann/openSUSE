@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Fri Jul 10 13:28:59 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mkdud#34
+- ensure DUD repos are removed at the end of the installation
+  (bsc#1173988)
+- 1.50
+
+--------------------------------------------------------------------
 Wed Jun 24 16:04:34 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mkdud#33
