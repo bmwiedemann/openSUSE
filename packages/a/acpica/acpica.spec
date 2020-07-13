@@ -20,12 +20,11 @@
 %define kver %(rpm -q --qf '%%{VERSION}' kernel-source)
 %define dmp_ver %{kver}
 Name:           acpica
-Version:        20200110
+Version:        20200528
 Release:        0
 Summary:        A set of tools to display and debug BIOS ACPI tables
 License:        GPL-2.0-only
-Group:          Development/Tools/Debuggers
-URL:            http://acpica.org
+URL:            https://acpica.org
 Source:         https://acpica.org/sites/acpica/files/%{src_dir}.tar.gz
 Source1:        ec_access.c
 Source2:        acpi_genl.tar.bz2
@@ -72,14 +71,14 @@ cd acpidump-%{dmp_ver}
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 cc %{SOURCE1} %{optflags} -o ec_access
-make %{?_smp_mflags} -C acpi_genl CFLAGS="%{optflags}"
-make %{?_smp_mflags} -C wmidump CFLAGS="%{optflags}"
-make %{?_smp_mflags} OPT_CFLAGS="%{optflags} -fcommon"  HOST="_LINUX"
+%make_build -C acpi_genl CFLAGS="%{optflags}"
+%make_build -C wmidump CFLAGS="%{optflags}"
+%make_build OPT_CFLAGS="%{optflags} -fcommon"  HOST="_LINUX"
 cd acpidump-%{dmp_ver}/tools/power/acpi
 if [ -f tools/acpidump/Makefile ]; then # 4.3+
 	cd tools/acpidump/
 fi
-make %{?_smp_mflags} EXTRA_CFLAGS="%{optflags} -fno-strict-aliasing" prefix=%{_prefix} all
+%make_build EXTRA_CFLAGS="%{optflags} -fno-strict-aliasing" prefix=%{_prefix} all
 
 %install
 install -Dm 755 %{SOURCE3} %{buildroot}%{_bindir}/acpi_validate
@@ -113,7 +112,6 @@ make V=1 EXTRA_CFLAGS="%{optflags}" mandir=%{_mandir} prefix=%{_prefix} DESTDIR=
 %{_bindir}/wmixtract
 %{_bindir}/acpibin
 %{_bindir}/acpihelp
-%{_bindir}/acpinames
 %{_bindir}/acpi_validate
 %{_bindir}/acpiexamples
 %{_sbindir}/acpidump
