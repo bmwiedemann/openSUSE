@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul  9 16:01:13 CEST 2020 - tiwai@suse.de
+
+- Update to alsa-lib 1.2.3.2:
+  another bug fix release: control namehint fixes, PCM dnsoop fixes,
+  UCM regression fixes, etc.  See the details in
+    https://www.alsa-project.org/wiki/Changes_v1.2.3.1_v1.2.3.2
+
+-------------------------------------------------------------------
 Fri Jun 19 16:06:40 CEST 2020 - tiwai@suse.de
 
 - Update to alsa-lib 1.2.3.1:
