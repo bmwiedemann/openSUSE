@@ -451,4 +451,12 @@
     <comment>New stable rel (forwarded request 810501 from iznogood)</comment>
     <requestid>811427</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>f526279f9a5a9b7fedb099bcec13eef5</srcmd5>
+    <version>3.36.4.1</version>
+    <time>1594623951</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 819460 from iznogood)</comment>
+    <requestid>819958</requestid>
+  </revision>
 </revisionlist>

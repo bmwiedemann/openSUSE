@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul  8 11:10:55 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.4.1:
+  + Fix a showstopper bug in 3.36.4
+
+-------------------------------------------------------------------
+Sat Jul  4 21:09:30 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.4:
+  + Bugs fixed:
+    - pauseonsuspend: Fix calls to MusicLogger.warning().
+    - Duplication of menu bar.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun May 31 19:43:36 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.3:
