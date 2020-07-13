@@ -1745,4 +1745,15 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
     <comment> (forwarded request 807837 from iznogood)</comment>
     <requestid>811412</requestid>
   </revision>
+  <revision rev="225" vrev="1">
+    <srcmd5>26ada4f5de59a10ab2a2db3d341e2280</srcmd5>
+    <version>2.64.4</version>
+    <time>1594623921</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.64.4:
+  + Bugs fixed:glgo#GNOME/GLib#2140, glgo#GNOME/GLib!1507,
+    glgo#GNOME/GLib!1523, glgo#GNOME/GLib!1547.
+  + Updated translations. (forwarded request 818725 from iznogood)</comment>
+    <requestid>819941</requestid>
+  </revision>
 </revisionlist>
