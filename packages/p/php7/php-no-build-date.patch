@@ -55,7 +55,7 @@ Index: php-7.4.0RC6/configure.ac
 ===================================================================
 --- php-7.4.0RC6.orig/configure.ac	2019-11-19 11:29:46.258681331 +0100
 +++ php-7.4.0RC6/configure.ac	2019-11-19 11:31:37.507302813 +0100
-@@ -1295,13 +1295,12 @@ EXTRA_LDFLAGS_PROGRAM="$EXTRA_LDFLAGS_PR
+@@ -1317,10 +1317,8 @@ EXTRA_LDFLAGS_PROGRAM="$EXTRA_LDFLAGS_PR
  
  dnl SOURCE_DATE_EPOCH for reproducible builds
  dnl https://reproducible-builds.org/specs/source-date-epoch/
@@ -67,12 +67,7 @@ Index: php-7.4.0RC6/configure.ac
 +PHP_BUILD_DATE="1970-01-01"
  AC_DEFINE_UNQUOTED(PHP_BUILD_DATE,"$PHP_BUILD_DATE",[PHP build date])
  
--PHP_UNAME=`uname -a | xargs`
-+dnl Totally fake, it wasnt and will never be reliable anyway.
-+PHP_UNAME="Linux suse 2.6.36 #1 SMP 2011-02-21 10:34:10 +0100 x86_64 x86_64 x86_64 GNU/Linux"
- AC_DEFINE_UNQUOTED(PHP_UNAME,"$PHP_UNAME",[uname -a output])
- PHP_OS=`uname | xargs`
- AC_DEFINE_UNQUOTED(PHP_OS,"$PHP_OS",[uname output])
+ UNAME=`uname -a | xargs`
 Index: php-7.4.0RC6/sapi/fpm/fpm/fpm_main.c
 ===================================================================
 --- php-7.4.0RC6.orig/sapi/fpm/fpm/fpm_main.c	2019-11-19 11:29:46.258681331 +0100

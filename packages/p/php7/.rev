@@ -898,4 +898,23 @@
   several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.7 (forwarded request 813559 from adkorte)</comment>
     <requestid>814637</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>7e4eaaec81e22ab2da1b3ae38f5a3993</srcmd5>
+    <version>7.4.8</version>
+    <time>1594623876</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.4.8: This is a security release which also contains
+  several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.8
+
+- Use /run/php-fpm instead of /run/php
+- modified sources
+  % php-fpm.tmpfiles.d
+
+- do not install %{_tmpfilesdir}, %{_tmpfilesdir}/php-fpm.conf in
+  test favour
+
+- added tmpfiles.d for php-fpm to provide a base base for a socket
+  (boo#1173786)</comment>
+    <requestid>819887</requestid>
+  </revision>
 </revisionlist>

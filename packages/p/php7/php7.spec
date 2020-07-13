@@ -37,7 +37,7 @@
 %define build_argon2 1
 %endif
 Name:           php7%{psuffix}
-Version:        7.4.7
+Version:        7.4.8
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 7
 License:        PHP-3.01
@@ -52,6 +52,7 @@ Source8:        https://secure.php.net/distributions/php-%{version}.tar.xz.asc
 Source9:        %{name}.keyring
 Source11:       %{name}.rpmlintrc
 %endif
+Source12:       php-fpm.tmpfiles.d
 Source100:      build-test.sh
 ## SUSE specific patches
 Patch0:         php-phpize.patch
@@ -977,6 +978,8 @@ export CFLAGS
 export CXXFLAGS
 export LDFLAGS="-pie"
 export NO_INTERACTION=true
+# Totally fake, it wasnt and will never be reliable anyway.
+export PHP_UNAME="Linux suse 2.6.36 #1 SMP 2011-02-21 10:34:10 +0100 x86_64 x86_64 x86_64 GNU/Linux"
 # where to install extensions
 export EXTENSION_DIR=%{extension_dir}
 # Fix build-cli for %arm and aarch64
@@ -1250,6 +1253,9 @@ install -m 644 -c macros.php %{buildroot}%{_sysconfdir}/rpm/macros.php
 #install fpm init script.
 install -D -m 0644 ./build-fpm/sapi/fpm/php-fpm.service %{buildroot}%{_unitdir}/php-fpm.service
 ln -s service %{buildroot}%{_sbindir}/rcphp-fpm
+# bug 1173786
+install -d -m 0755 %{buildroot}%{_tmpfilesdir}
+install -m 0644 %{SOURCE12} %{buildroot}/%{_tmpfilesdir}/php-fpm.conf
 %endif
 
 %if !%{with test}
@@ -1282,6 +1288,7 @@ fi
 
 %post fpm
 %service_add_post php-fpm.service
+%tmpfiles_create %{_tmpfilesdir}/php-fpm.conf
 
 %post embed -p /sbin/ldconfig
 %postun embed -p /sbin/ldconfig
@@ -1342,6 +1349,8 @@ fi
 %dir %{_datadir}/%{name}/fpm
 %{_datadir}/%{name}/fpm/status.html
 %{_unitdir}/php-fpm.service
+%{_tmpfilesdir}/php-fpm.conf
+%ghost %dir %attr(711,root,root) /run/php-fpm
 
 %files embed
 %defattr(-, root, root)
