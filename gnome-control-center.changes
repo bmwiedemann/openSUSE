@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul  3 16:14:26 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.4:
+  + Sound: Stop non-interactive profile changes from triggering
+    changed events.
+  + Users:
+    - Don't limit the number of maximum fingerprint enroll stages.
+    - Don't use sync calls for deleting fingerprints.
+    - Only load the fingerprint state once.
+    - Make the fingerprint operations cancellable.
+    - Don't wait for fprintd on initialization.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Jun  3 16:38:10 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.3:
