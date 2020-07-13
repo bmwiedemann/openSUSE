@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul  3 18:45:11 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- help2man 1.47.16:
+  * Move table of contents to the top of the texi file so that it
+    appears in the correct location in the html page
+
+-------------------------------------------------------------------
 Tue Apr 28 18:58:08 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - help2man 1.47.15:
