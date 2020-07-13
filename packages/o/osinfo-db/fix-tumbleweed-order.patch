@@ -1,0 +1,55 @@
+Index: osinfo-db-20200529/os/opensuse.org/opensuse-tumbleweed.xml
+===================================================================
+--- osinfo-db-20200529.orig/os/opensuse.org/opensuse-tumbleweed.xml	2020-05-29 13:07:41.000000000 +0200
++++ osinfo-db-20200529/os/opensuse.org/opensuse-tumbleweed.xml	2020-07-01 09:04:20.344096387 +0200
+@@ -51,16 +51,6 @@
+     </variant>
+ 
+     
+-    <media arch="i686">
+-      <url>http://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-DVD-i586-Current.iso</url>
+-      <iso>
+-        <volume-id>openSUSE-Tumbleweed-DVD-i586*</volume-id>
+-        <system-id>LINUX</system-id>
+-        <publisher-id>SUSE LINUX GmbH</publisher-id>
+-      </iso>
+-      <kernel>boot/i386/loader/linux</kernel>
+-      <initrd>boot/i386/loader/initrd</initrd>
+-    </media>
+     <media arch="x86_64">
+       <url>http://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-DVD-x86_64-Current.iso</url>
+       <iso>
+@@ -71,13 +61,10 @@
+       <kernel>boot/x86_64/loader/linux</kernel>
+       <initrd>boot/x86_64/loader/initrd</initrd>
+     </media>
+-
+-    
+     <media arch="i686">
+-      <variant id="netinst"/>
+-      <url>http://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-NET-i586-Current.iso</url>
++      <url>http://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-DVD-i586-Current.iso</url>
+       <iso>
+-        <volume-id>openSUSE-Tumbleweed-NET-i586*</volume-id>
++        <volume-id>openSUSE-Tumbleweed-DVD-i586*</volume-id>
+         <system-id>LINUX</system-id>
+         <publisher-id>SUSE LINUX GmbH</publisher-id>
+       </iso>
+@@ -95,6 +84,17 @@
+       <kernel>boot/x86_64/loader/linux</kernel>
+       <initrd>boot/x86_64/loader/initrd</initrd>
+     </media>
++    <media arch="i686">
++      <variant id="netinst"/>
++      <url>http://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-NET-i586-Current.iso</url>
++      <iso>
++        <volume-id>openSUSE-Tumbleweed-NET-i586*</volume-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>SUSE LINUX GmbH</publisher-id>
++      </iso>
++      <kernel>boot/i386/loader/linux</kernel>
++      <initrd>boot/i386/loader/initrd</initrd>
++    </media>
+ 
+     
+     <media arch="x86_64">

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  1 07:06:24 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
+
+- Add fix-tumbleweed-order.patch: ensure x86_64 is listed before
+  i686, to have x86_64 selected by default in GNOME Boxes
+- Update url with gitlab home for osinfo-db.
+
+-------------------------------------------------------------------
 Mon Jun  1 12:47:43 MDT 2020 - carnold@suse.com
 
 - Update database to version 20200529

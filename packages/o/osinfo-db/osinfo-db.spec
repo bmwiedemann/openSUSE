@@ -23,7 +23,7 @@ Summary:        Osinfo database files
 License:        LGPL-2.1+ and GPL-2.0+
 Group:          System/Management
 BuildArch:      noarch
-Url:            https://releases.pagure.org/libosinfo/
+Url:            https://gitlab.com/libosinfo/osinfo-db
 Source:         https://releases.pagure.org/libosinfo/%{name}-%{version}.tar.xz
 Patch21:        add-oes-support.patch
 Patch22:        add-caasp40-support.patch
@@ -32,6 +32,7 @@ Patch24:        add-win-2k19-media-info.patch
 Patch25:        fix-sle15sp1-volume-id-string.patch
 Patch26:        SLE-add-info-about-UEFI-support.patch
 Patch27:        add-opensuse-leap-15.2-support.patch
+Patch28:	fix-tumbleweed-order.patch
 BuildRequires:  intltool
 BuildRequires:  osinfo-db-tools
 
@@ -49,6 +50,7 @@ provisioning of new virtual machines
 %patch25 -p1
 %patch26 -p1
 %patch27 -p1
+%patch28 -p1
 
 %build
 cd %{_builddir}
