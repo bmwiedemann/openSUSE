@@ -155,4 +155,13 @@
   - Make context orchestrator field optional</comment>
     <requestid>814541</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>78f8a47094fa8c5b99a1eddc6ed51a17</srcmd5>
+    <version>4.2.2</version>
+    <time>1594623979</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.2.2:
+  - Fix context load for non-docker endpoints</comment>
+    <requestid>819986</requestid>
+  </revision>
 </revisionlist>

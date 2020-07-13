@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 10 12:15:50 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.2.2:
+  - Fix context load for non-docker endpoints
+
+-------------------------------------------------------------------
 Mon Jun  8 13:35:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.2.1:
