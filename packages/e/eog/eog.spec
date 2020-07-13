@@ -17,7 +17,7 @@
 
 
 Name:           eog
-Version:        3.36.2
+Version:        3.36.3
 Release:        0
 Summary:        Image Viewer for GNOME
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
