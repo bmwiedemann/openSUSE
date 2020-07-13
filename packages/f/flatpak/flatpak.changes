@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  7 10:26:44 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec
+
+-------------------------------------------------------------------
 Thu Jun 25 21:10:14 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.4:

@@ -246,8 +246,8 @@ fi
 %{_userunitdir}/flatpak-portal.service
 %ghost %dir %{_localstatedir}/lib/flatpak
 %if %{support_environment_generators}
-%dir %{_libexecdir}/systemd/user-environment-generators
-%{_libexecdir}/systemd/user-environment-generators/60-flatpak
+%dir %{_prefix}/lib/systemd/user-environment-generators
+%{_prefix}/lib/systemd/user-environment-generators/60-flatpak
 %endif
 %{_libexecdir}/flatpak-oci-authenticator
 %{_userunitdir}/flatpak-oci-authenticator.service
