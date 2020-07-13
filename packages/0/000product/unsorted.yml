@@ -6659,7 +6659,6 @@ unsorted:
   - jp2a 
   - jpegoptim 
   - jpnevulator 
-  - jq 
   - jrosetta 
   - jrtplib-devel 
   - js-technology-fonts 
@@ -10339,7 +10338,6 @@ unsorted:
   - libjpgalleg4_4 
   - libjpgalleg4_4-32bit: [x86_64] 
   - libjq-devel 
-  - libjq1 
   - libjreen-qt5-1 
   - libjreen-qt5-devel 
   - libjrtp3_11_1 
@@ -13735,6 +13733,8 @@ unsorted:
   - lua54-ldoc 
   - lua54-lpeg 
   - lua54-lpeg-doc 
+  - lua54-luaposix 
+  - lua54-luaterm 
   - lua54-markdown 
   - lua54-say 
   - luabind-devel 
@@ -14268,7 +14268,6 @@ unsorted:
   - mdbtools-devel 
   - mdds-1_4-devel 
   - mdds-1_5-devel 
-  - mdevctl 
   - mdtest 
   - meabo 
   - meanwhile-devel 
