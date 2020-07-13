@@ -99,8 +99,8 @@ export LANG=C.UTF-8
 %{_libexecdir}/xdg-desktop-portal
 %{_prefix}/lib/systemd/user/xdg-document-portal.service
 %{_prefix}/lib/systemd/user/xdg-permission-store.service
-%{_prefix}/lib/xdg-document-portal
-%{_prefix}/lib/xdg-permission-store
+%{_libexecdir}/xdg-document-portal
+%{_libexecdir}/xdg-permission-store
 %{_userunitdir}/xdg-desktop-portal.service
 
 %files devel

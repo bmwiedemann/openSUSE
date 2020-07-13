@@ -145,4 +145,12 @@
     <comment></comment>
     <requestid>792300</requestid>
   </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>a0982ca07ac44a657dd336ba6a5dc70e</srcmd5>
+    <version>1.6.0</version>
+    <time>1594623937</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for %_libexecdir changing to /usr/libexec (forwarded request 819204 from gmbr3)</comment>
+    <requestid>819954</requestid>
+  </revision>
 </revisionlist>
