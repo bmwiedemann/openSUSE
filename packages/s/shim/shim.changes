@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 10 06:28:44 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add shim-bsc1173411-only-check-efi-var-on-sb.patch to only check
+  EFI variable copying when Secure Boot is enabled (bsc#1173411)
+
+-------------------------------------------------------------------
 Tue Mar 31 08:38:56 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Use the full path of efibootmgr to avoid errors when invoking
