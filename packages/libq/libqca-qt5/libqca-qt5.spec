@@ -19,7 +19,7 @@
 %define _so 2
 %bcond_without pkcs11
 Name:           libqca-qt5
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        Qt Cryptographic Architecture 2
 License:        LGPL-2.1-or-later
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core) >= 5.6.0
 BuildRequires:  pkgconfig(Qt5Network) >= 5.6.0
-BuildRequires:  pkgconfig(openssl)
+BuildRequires:  openssl-devel >= 1.1.1
 Requires:       gpg2 >= 2.0.0
 Recommends:     %{name}-plugins
 Provides:       libqca-qt5-2 = %{version}

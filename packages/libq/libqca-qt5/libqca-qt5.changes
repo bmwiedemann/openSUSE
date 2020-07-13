@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  6 16:02:52 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 2.3.1
+  * fixes memleaks and crashes
+
+-------------------------------------------------------------------
 Tue Mar 10 16:50:03 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Remove baselibs.conf
