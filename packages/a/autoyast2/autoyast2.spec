@@ -22,7 +22,7 @@
 %endif
 
 Name:           autoyast2
-Version:        4.3.21
+Version:        4.3.22
 Release:        0
 Summary:        YaST2 - Automated Installation
 License:        GPL-2.0-only
@@ -261,6 +261,7 @@ done
 %{yast_clientdir}/autoinst_scripts1_finish.rb
 %{yast_clientdir}/autoinst_scripts2_finish.rb
 %{yast_clientdir}/ayast_probe.rb
+%{yast_clientdir}/inst_autosetup.rb
 %{yast_clientdir}/inst_autosetup_upgrade.rb
 %{yast_clientdir}/inst_store_upgrade_software.rb
 %{yast_clientdir}/clone_system.rb
