@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  9 14:37:08 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Only record the first 2 numbers of kernel version (boo#1173918)
+- 4.3.2
+
+-------------------------------------------------------------------
 Tue May 12 15:42:51 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Autoyast schema: Allow optional types for string and map objects
