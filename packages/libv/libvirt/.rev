@@ -3602,4 +3602,18 @@ StandardGroups in rpmlint package.
     <comment></comment>
     <requestid>811207</requestid>
   </revision>
+  <revision rev="307" vrev="1">
+    <srcmd5>8c709e1d038fd5f125df4db39c05a81e</srcmd5>
+    <version>6.5.0</version>
+    <time>1594623828</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to libvirt 6.5.0
+  - The node device driver now supports creating mediated devices
+    using the mdevctl utility
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    ec07aad8-libxl-normalize-mac-addr.patch</comment>
+    <requestid>819047</requestid>
+  </revision>
 </revisionlist>

@@ -185,7 +185,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        6.4.0
+Version:        6.5.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -338,7 +338,6 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
-Patch0:         ec07aad8-libxl-normalize-mac-addr.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -495,6 +494,10 @@ Summary:        Nodedev driver plugin for the libvirtd daemon
 Group:          System/Management
 Requires:       %{name}-daemon = %{version}-%{release}
 Requires:       %{name}-libs = %{version}-%{release}
+# For managing persistent mediated devices
+%if 0%{?suse_version} >= 1550
+Requires:       mdevctl
+%endif
 
 %description daemon-driver-nodedev
 The nodedev driver plugin for the libvirtd daemon, providing
@@ -874,7 +877,6 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 
 %prep
 %setup -q
-%patch0 -p1
 %patch100 -p1
 %patch101 -p1
 %patch150 -p1
@@ -1920,7 +1922,7 @@ fi
 %{_datadir}/%{name}/api/libvirt-lxc-api.xml
 
 %files doc
-%doc AUTHORS NEWS README README.rst
+%doc AUTHORS NEWS.rst README README.rst
 %license COPYING COPYING.LESSER
 %dir %{_docdir}/%{name}
 %doc %{_docdir}/%{name}/*

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul  6 14:58:35 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 6.5.0
+  - The node device driver now supports creating mediated devices
+    using the mdevctl utility
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    ec07aad8-libxl-normalize-mac-addr.patch
+
+-------------------------------------------------------------------
 Wed Jun  3 16:38:09 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - libxl: Normalize MAC address in device conf on netdev hotplug
