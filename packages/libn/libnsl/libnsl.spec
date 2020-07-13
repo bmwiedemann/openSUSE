@@ -1,7 +1,7 @@
 #
 # spec file for package libnsl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define debug_package_requires libnsl2 = %{version}-%{release}
 Name:           libnsl
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Network Support Library (NIS/NIS+)
 License:        LGPL-2.1-only
-Group:          System/Libraries
-Url:            http://github.com/thkukuk/libnsl
-Source:         %{name}-%{version}.tar.bz2
+Group:          Development/Libraries/C and C++
+URL:            http://github.com/thkukuk/libnsl
+Source:         %{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  autoconf
 BuildRequires:  libtool
@@ -37,7 +37,7 @@ BuildRequires:  libtirpc-devel >= 1.0
 The Network Support Library for NIS/NIS+ was formerly part of glibc and
 is now a standalone library. The big difference is, that this library
 has support for IPv6.
-The NIS+ code is deprecated and only there "as is".
+The NIS+ code is deprecated and only provided "as is".
 
 %package -n libnsl2
 Summary:        Network Support Library (NIS/NIS+)
@@ -47,7 +47,7 @@ Group:          System/Libraries
 The Network Support Library for NIS/NIS+ was formerly part of glibc and
 is now a standalone library. The big difference is, that this library
 has support for IPv6.
-The NIS+ code is deprecated and only there "as is".
+The NIS+ code is deprecated and only provided "as is".
 
 %package devel
 Summary:        Development package for Network Support Library (NIS/NIS+)
@@ -60,7 +60,7 @@ The Network Support Library for NIS/NIS+ was formerly part of glibc and
 is now a standalone library. The big difference is, that this library
 has support for IPv6.
 This package contains all files to develop and link against libnsl.
-The NIS+ API is deprecated and only there "as is".
+The NIS+ API is deprecated and only provided "as is".
 
 %prep
 %setup -q

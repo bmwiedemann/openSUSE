@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul  6 10:39:22 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.3.0
+  - Cleanup to support new gettext, libtool, automake, ...
+  - Try to detect recursive NIS calls
+
+-------------------------------------------------------------------
+Sun Mar  4 12:26:30 UTC 2018 - jengelh@inai.de
+
+- Fix SRPM group and word choice in description.
+
+-------------------------------------------------------------------
 Fri Feb 23 10:12:14 UTC 2018 - kukuk@suse.com
 
 - Use %license instead of %doc [bsc#1082318]
