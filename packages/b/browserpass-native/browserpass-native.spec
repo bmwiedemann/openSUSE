@@ -1,7 +1,7 @@
 #
 # spec file for package browserpass-native
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           browserpass-native
-Version:        3.0.6
+Version:        3.0.7
 Release:        0
 Summary:        Native application for the browserpass browser extension
 License:        ISC
-Url:            https://github.com/browserpass/browserpass-native
-Source:         https://github.com/browserpass/%{name}/archive/%{version}.tar.gz
+URL:            https://github.com/browserpass/browserpass-native
+Source:         https://github.com/browserpass/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go
+BuildRequires:  golang(API) >= 1.14
 Recommends:     password-store
 
 %description
