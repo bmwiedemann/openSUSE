@@ -1056,6 +1056,7 @@
     <package name="jline1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="jmdict" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="joe" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="jq" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="json-glib-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="juk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="juk-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -2262,6 +2263,7 @@
     <package name="libjemalloc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libjpeg-turbo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libjpeg8" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libjq1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libjson-c5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libjson-glib-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libjsonrpc-glib-1_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
@@ -2460,7 +2462,7 @@
     <package name="libogg0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liboggkate1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libokteta-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="libonig5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libonig5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libopal3_10_10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libopenal1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libopenbabel5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
@@ -3097,6 +3099,7 @@
     <package name="mc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="mc-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="mdadm" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="mdevctl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="media-player-info" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="meld" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="meld-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

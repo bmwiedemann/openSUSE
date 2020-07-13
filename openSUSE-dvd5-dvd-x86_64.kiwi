@@ -1092,6 +1092,7 @@
       <repopackage name="jline1"/>
       <repopackage name="jmdict"/>
       <repopackage name="joe"/>
+      <repopackage name="jq"/>
       <repopackage name="json-glib-lang"/>
       <repopackage name="juk"/>
       <repopackage name="juk-lang"/>
@@ -2087,6 +2088,7 @@
       <repopackage name="libjpeg-turbo"/>
       <repopackage name="libjpeg8"/>
       <repopackage name="libjpeg8-32bit" arch="x86_64"/>
+      <repopackage name="libjq1"/>
       <repopackage name="libjson-c5"/>
       <repopackage name="libjson-c5-32bit" arch="x86_64"/>
       <repopackage name="libjson-glib-1_0-0"/>
@@ -3305,6 +3307,7 @@
       <repopackage name="mc-lang"/>
       <repopackage name="mcelog" arch="x86_64"/>
       <repopackage name="mdadm"/>
+      <repopackage name="mdevctl"/>
       <repopackage name="media-player-info"/>
       <repopackage name="meld"/>
       <repopackage name="meld-lang"/>
