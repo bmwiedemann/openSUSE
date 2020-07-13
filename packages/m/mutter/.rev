@@ -1293,4 +1293,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment> (forwarded request 811367 from iznogood)</comment>
     <requestid>811437</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>03c895e33b7a20626cc1cda4bb6d2c7d</srcmd5>
+    <version>3.36.4</version>
+    <time>1594623939</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 819369 from iznogood)</comment>
+    <requestid>819955</requestid>
+  </revision>
 </revisionlist>
