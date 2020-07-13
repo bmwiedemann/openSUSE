@@ -352,4 +352,15 @@ file to use singlespec. Req#512843 sent to delete libvirt-python.</comment>
   - Add all new APIs and constants in libvirt 6.4.0</comment>
     <requestid>810964</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0d0c706b3c92e504e430d488fffd421c</srcmd5>
+    <version>6.5.0</version>
+    <time>1594623842</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 6.5.0.
+
+- Update to 6.5.0
+  - Add all new APIs and constants in libvirt 6.5.0</comment>
+    <requestid>819048</requestid>
+  </revision>
 </revisionlist>
