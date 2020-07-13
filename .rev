@@ -1578,4 +1578,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   disabled (bsc#1167276 glgo#GNOME/gnome-shell!1215). (forwarded request 813360 from qkzhu)</comment>
     <requestid>813529</requestid>
   </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>24dde4a3d09980011967dacf5b77560c</srcmd5>
+    <version>3.36.4</version>
+    <time>1594623943</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release, resub with one less patch (forwarded request 819375 from iznogood)</comment>
+    <requestid>819956</requestid>
+  </revision>
 </revisionlist>

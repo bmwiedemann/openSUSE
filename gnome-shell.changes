@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul  8 07:35:34 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.4:
+  + Hide switch-user button on lock screen if unsupported.
+  + Improve world clocks styling.
+  + Improve calendar-server performance.
+  + Fix regressions in redesigned modal dialogs.
+  + Better support sandboxed apps with multiple .desktop files.
+  + Fix on-screen keyboard size in portrait orientation.
+  + Support scrolling anywhere in slider menu items.
+  + Fixed crash.
+  + Plugged leaks.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Drop patch fixed upstream:
+  + gnome-shell-disable-screensaver-user-switch-when-remote.patch
+
+-------------------------------------------------------------------
 Thu Jun 11 02:44:58 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
 - Add gnome-shell-disable-screensaver-user-switch-when-remote.patch: 
