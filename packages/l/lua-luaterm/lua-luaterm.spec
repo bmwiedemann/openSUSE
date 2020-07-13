@@ -1,7 +1,7 @@
 #
 # spec file for package lua-luaterm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@ This package provides terminal operations for Lua
 %setup -q -n %{mod_name}-%{version}
 
 %build
-make %{?_smp_mflags} \
+%make_build \
 	CWARNS="%{optflags}" \
 	LUA_INC=%{lua_incdir} \
 	LUA_SHARE=%{lua_noarchdir}/term \

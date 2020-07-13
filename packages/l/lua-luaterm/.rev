@@ -35,4 +35,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>745232</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>9098b963d8f07c69a391781de6d91cd5</srcmd5>
+    <version>0.07</version>
+    <time>1594623866</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lua54 as new build target</comment>
+    <requestid>819784</requestid>
+  </revision>
 </revisionlist>
