@@ -1,7 +1,7 @@
 #
 # spec file for package lua-luaposix
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,14 @@
 
 
 %define flavor @BUILD_FLAVOR@
-
 %define mod_name luaposix
 Version:        34.1.1
 Release:        0
 Summary:        POSIX library for Lua
 License:        MIT
 Group:          Development/Libraries/Other
-Url:            https://github.com/luaposix/luaposix
+URL:            https://github.com/luaposix/luaposix
 Source0:        https://github.com/luaposix/luaposix/archive/v%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
-
 BuildRequires:  %{flavor}-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  perl
