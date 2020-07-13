@@ -1,12 +1,12 @@
-Index: doxygen-1.8.10/src/fortranscanner.l
+Index: doxygen-1.8.18/src/fortranscanner.l
 ===================================================================
---- doxygen-1.8.10.orig/src/fortranscanner.l
-+++ doxygen-1.8.10/src/fortranscanner.l
-@@ -2090,7 +2090,6 @@ static void initEntry()
- */
- static void addCurrentEntry(int case_insens)
+--- doxygen-1.8.18.orig/src/fortranscanner.l	2020-07-10 09:10:24.205905062 +0200
++++ doxygen-1.8.18/src/fortranscanner.l	2020-07-10 09:13:31.570972499 +0200
+@@ -2357,7 +2357,6 @@ static void initEntry(yyscan_t yyscanner
+ static void addCurrentEntry(yyscan_t yyscanner,bool case_insens)
  {
--  if (case_insens) current->name = current->name.lower();
-   //printf("===Adding entry %s to %s\n", current->name.data(), current_root->name.data());
-   current_root->addSubEntry(current);
-   last_entry = current;
+   struct yyguts_t *yyg = (struct yyguts_t*)yyscanner;
+-  if (case_insens) yyextra->current->name = yyextra->current->name.lower();
+   //printf("===Adding entry %s to %s\n", yyextra->current->name.data(), yyextra->current_root->name.data());
+   yyextra->last_entry = yyextra->current;
+   yyextra->current_root->moveToSubEntryAndRefresh(yyextra->current);

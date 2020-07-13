@@ -19,7 +19,7 @@
 # build with "--with libclang" to enable libclang support
 %bcond_with libclang
 Name:           doxygen
-Version:        1.8.16
+Version:        1.8.18
 Release:        0
 Summary:        Automated C, C++, and Java Documentation Generator
 # qtools are used for building and they are GPL-3.0 licensed
@@ -33,14 +33,8 @@ Patch0:         %{name}-modify_footer.patch
 Patch1:         %{name}-no-lowercase-man-names.patch
 # PATCH-FIX-UPSTREAM: add missing returns to non-void functions
 Patch3:         vhdlparser-no-return.patch
-# really do not require git executable
-Patch5:         doxygen-git-not-required.patch
 Patch6:         doxygen-llvm-libs.patch
-# PATCH-FIX-UPSTREAM: Populate FILE_PATTERN default if not set (issue#7190)
-Patch7:         PR_7193_fix_blank_file_patterns.patch
-# PATCH-FIX-UPSTREAM Including external tag files with TOC produces a broken index.qhp
-Patch8:         0001-issue-7248-Including-external-tag-files-with-TOC-pro.patch
-Patch9:         reproducible-sort.patch
+Patch10:        doxygen-libclang-cpp.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  flex
@@ -67,13 +61,14 @@ as well.
 %patch0 -p1
 %patch1 -p1
 %patch3 -p1
-%patch5 -p1
 %if %{with libclang}
 %patch6
 %endif
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
+%if %{with libclang}
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+%patch10 -p1
+%endif
+%endif
 
 %build
 %cmake \

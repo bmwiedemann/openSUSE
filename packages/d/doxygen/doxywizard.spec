@@ -17,7 +17,7 @@
 
 
 Name:           doxywizard
-Version:        1.8.16
+Version:        1.8.18
 Release:        0
 Summary:        Graphical User Interface for Doxygen
 # qtools are used for building and they are GPL-3.0 licensed
@@ -28,8 +28,6 @@ Source:         http://doxygen.nl/files/doxygen-%{version}.src.tar.gz
 Source1:        doxywizard.desktop
 # PATCH-FIX-UPSTREAM: add missing returns to non-void functions
 Patch3:         vhdlparser-no-return.patch
-# really do not require git executable
-Patch4:         doxygen-git-not-required.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  flex
@@ -57,7 +55,6 @@ configuration files.
 %prep
 %setup -q -n doxygen-%{version}
 %patch3 -p1
-%patch4 -p1
 
 %build
 export CFLAGS="%{optflags} -fPIC"

@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Jul 10 07:34:45 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.8.18
+  Removed functionality
+    * Removed support for TCL (code is too buggy and unmaintained, language not very popular)
+  Features
+    * Added the few missing French translations [view]
+    * Updated Swedish translation to match the latest version [view]
+    * Adding check on configuration setting EXTENSION_MAPPING [view]
+    * Adding commands `\rtfinclude`, `\docbookinclude`, `\maninclude` and `\xmlinclude` [view]
+    * output on doxyparse if a function is a prototype [view]
+    * print protection information on doxyparse [view]
+    * Creation of svg images for formulas with inkscape [view]
+    * Improve formula handling and rendering. [view]
+    * Doxygen version in the messages output (#7640) [view]
+    * Doxygen version information (#7645) [view]
+    * Enabling Travis builds for s390x [view]
+    * Relative markdown file reference (#7032) [view]
+  Bugs fixed
+    * see https://www.doxygen.nl/manual/changelog.html
+- modified patches
+  % doxygen-no-lowercase-man-names.patch (refreshed)
+  % vhdlparser-no-return.patch (refreshed)
+- deleted patches
+  - 0001-issue-7248-Including-external-tag-files-with-TOC-pro.patch (upstreamed)
+  - PR_7193_fix_blank_file_patterns.patch (upstreamed)
+  - doxygen-64f1f2357ae764f2c8190d067aff801bc0a56721.patch (upstreamed)
+  - doxygen-git-not-required.patch (upstreamed)
+  - reproducible-sort.patch (upstreamed)
+
+-------------------------------------------------------------------
+Wed Jul  8 07:53:57 UTC 2020 - Franz Sirl <franz.sirl-obs@lauterbach.com>
+
+- Improve build with libclang support:
+  * add doxygen-libclang-cpp.patch to support linking against libclang-cpp
+  * add upstream doxygen-64f1f2357ae764f2c8190d067aff801bc0a56721.patch
+    to support clang-10
+
+-------------------------------------------------------------------
 Wed Jan 22 17:31:41 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible-sort.patch to make html output reproducible
