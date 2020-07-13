@@ -1976,4 +1976,12 @@ Recommended for 12.3</comment>
     <comment>New stable rel (forwarded request 810283 from iznogood)</comment>
     <requestid>811423</requestid>
   </revision>
+  <revision rev="236" vrev="1">
+    <srcmd5>385b0f37a45e99d5322fd5ac06915bb5</srcmd5>
+    <version>3.36.4</version>
+    <time>1594623914</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 818723 from iznogood)</comment>
+    <requestid>819939</requestid>
+  </revision>
 </revisionlist>
