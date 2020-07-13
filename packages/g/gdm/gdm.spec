@@ -284,11 +284,12 @@ mv %{buildroot}%{_sysconfdir}/gdm/PostLogin/Default.sample %{buildroot}%{_syscon
 # Move gdmflexiserver to libexecdir and replace it with the compatibility wrapper
 mv %{buildroot}%{_bindir}/gdmflexiserver %{buildroot}%{_libexecdir}/gdm/gdmflexiserver
 install -m 755 %{SOURCE6} %{buildroot}%{_bindir}/gdmflexiserver
+sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{buildroot}%{_bindir}/gdmflexiserver
 #Install /etc/xinit.d/xdm integration script
-install -D -m 644 %{SOURCE7} %{buildroot}%{_libexecdir}/X11/displaymanagers/gdm
+install -D -m 644 %{SOURCE7} %{buildroot}%{_prefix}/lib/X11/displaymanagers/gdm
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-displaymanager
-ln -s %{_sysconfdir}/alternatives/default-displaymanager %{buildroot}%{_libexecdir}/X11/displaymanagers/default-displaymanager
+ln -s %{_sysconfdir}/alternatives/default-displaymanager %{buildroot}%{_prefix}/lib/X11/displaymanagers/default-displaymanager
 # Install other files
 mkdir -p %{buildroot}/run/gdm
 mkdir -p %{buildroot}%{_bindir}
@@ -297,8 +298,8 @@ ln -s ../sbin/gdm %{buildroot}%{_bindir}/gdm
 mkdir -p %{buildroot}%{_prefix}/lib/tmpfiles.d
 install -m 644 %{SOURCE9} %{buildroot}%{_prefix}/lib/tmpfiles.d/gdm.conf
 
-mkdir -p %{buildroot}%{_libexecdir}/systemd/logind.conf.d
-install -m 644 %{SOURCE10} %{buildroot}%{_libexecdir}/systemd/logind.conf.d/reserveVT.conf
+mkdir -p %{buildroot}%{_prefix}/lib/systemd/logind.conf.d
+install -m 644 %{SOURCE10} %{buildroot}%{_prefix}/lib/systemd/logind.conf.d/reserveVT.conf
 
 %find_lang %{name} %{?no_lang_C}
 %fdupes -s %{buildroot}%{_datadir}/help
@@ -314,16 +315,16 @@ install -m 644 %{SOURCE10} %{buildroot}%{_libexecdir}/systemd/logind.conf.d/rese
 
 %post
 %tmpfiles_create gdm.conf
-%{_sbindir}/update-alternatives --install %{_libexecdir}/X11/displaymanagers/default-displaymanager \
-  default-displaymanager %{_libexecdir}/X11/displaymanagers/gdm 25
+%{_sbindir}/update-alternatives --install %{_prefix}/lib/X11/displaymanagers/default-displaymanager \
+  default-displaymanager %{_prefix}/lib/X11/displaymanagers/gdm 25
 
 %posttrans
 # Create dconf database for gdm, to lockdown the gdm session
 dconf update
 
 %postun
-[ -f %{_libexecdir}/X11/displaymanagers/gdm ] || %{_sbindir}/update-alternatives \
-  --remove default-displaymanager %{_libexecdir}/X11/displaymanagers/gdm
+[ -f %{_prefix}/lib/X11/displaymanagers/gdm ] || %{_sbindir}/update-alternatives \
+  --remove default-displaymanager %{_prefix}/lib/X11/displaymanagers/gdm
 
 %post -n libgdm1 -p /sbin/ldconfig
 %postun -n libgdm1 -p /sbin/ldconfig
@@ -361,14 +362,14 @@ dconf update
 %config %{_sysconfdir}/pam.d/gdm-launch-environment
 %config %{_sysconfdir}/dbus-1/system.d/gdm.conf
 # /etc/xinit.d/xdm integration
-%dir %{_libexecdir}/X11/displaymanagers
-%{_libexecdir}/X11/displaymanagers/default-displaymanager
-%{_libexecdir}/X11/displaymanagers/gdm
+%dir %{_prefix}/lib/X11/displaymanagers
+%{_prefix}/lib/X11/displaymanagers/default-displaymanager
+%{_prefix}/lib/X11/displaymanagers/gdm
 %ghost %{_sysconfdir}/alternatives/default-displaymanager
 %{_udevrulesdir}/61-gdm.rules
-%{_libexecdir}/tmpfiles.d/gdm.conf
-%dir %{_libexecdir}/systemd/logind.conf.d
-%{_libexecdir}/systemd/logind.conf.d/reserveVT.conf
+%{_prefix}/lib/tmpfiles.d/gdm.conf
+%dir %{_prefix}/lib/systemd/logind.conf.d
+%{_prefix}/lib/systemd/logind.conf.d/reserveVT.conf
 
 %files -n libgdm1
 %{_libdir}/libgdm.so.*

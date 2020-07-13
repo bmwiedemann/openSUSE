@@ -1742,4 +1742,12 @@
   tty to tty7 (bsc#1171290). (forwarded request 810058 from xiaoguang_wang)</comment>
     <requestid>811417</requestid>
   </revision>
+  <revision rev="230" vrev="3">
+    <srcmd5>43a63d5bceee1f43370c2674533cf5ee</srcmd5>
+    <version>3.36.2</version>
+    <time>1594623933</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for %_libexecdir changing to /usr/libexec (forwarded request 819161 from gmbr3)</comment>
+    <requestid>819952</requestid>
+  </revision>
 </revisionlist>
