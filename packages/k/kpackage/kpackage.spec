@@ -16,17 +16,17 @@
 #
 
 
-%define _tar_path 5.71
+%define _tar_path 5.72
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kpackage
-Version:        5.71.0
+Version:        5.72.0
 Release:        0
 Summary:        Non-binary asset user-installable package managing framework
-License:        LGPL-2.1-or-later
+License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-%{version}.tar.xz
@@ -35,7 +35,6 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -44,9 +43,9 @@ BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5DocTools) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Core) >= 5.8.0
-BuildRequires:  cmake(Qt5DBus) >= 5.8.0
-BuildRequires:  cmake(Qt5Test) >= 5.8.0
+BuildRequires:  cmake(Qt5Core) >= 5.12.0
+BuildRequires:  cmake(Qt5DBus) >= 5.12.0
+BuildRequires:  cmake(Qt5Test) >= 5.12.0
 Recommends:     %{name}-lang
 
 %description
@@ -87,20 +86,21 @@ Development files.
 %endif
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc README*
-%{_kf5_bindir}/kpackagetool*
-%{_kf5_libdir}/libKF5Package.so.*
 %dir %{_kf5_servicetypesdir}
-%{_kf5_servicetypesdir}/kpackage-packagestructure.desktop
+%doc %lang(en) %{_kf5_mandir}/*/kpackagetool*
+%{_kf5_bindir}/kpackagetool*
+%{_kf5_debugdir}/*.categories
+%{_kf5_libdir}/libKF5Package.so.*
 %{_kf5_servicetypesdir}/kpackage-generic.desktop
 %{_kf5_servicetypesdir}/kpackage-genericqml.desktop
-%doc %lang(en) %{_kf5_mandir}/*/kpackagetool*
-%{_kf5_debugdir}/*.categories
+%{_kf5_servicetypesdir}/kpackage-packagestructure.desktop
 
 %files devel
-%{_kf5_libdir}/libKF5Package.so
-%{_kf5_libdir}/cmake/KF5Package/
+%license LICENSES/*
 %{_kf5_includedir}/
+%{_kf5_libdir}/cmake/KF5Package/
+%{_kf5_libdir}/libKF5Package.so
 
 %changelog
