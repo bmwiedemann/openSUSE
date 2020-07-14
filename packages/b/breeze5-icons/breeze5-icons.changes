@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jul  5 07:54:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 5.71.0:
+  * Fixed three 16px icons for application-x-... to be more pixel-perfet (kde#423727)
+  * Add support for >200% scale for icons which should stay monochrome
+  * Cut out center of window-close-symbolic
+  * Fix cervisia icon
+  * cervisia app and action icon update
+  * Add README section about the webfont
+  * Use grunt-webfonts instead of grunt-webfont and disable generation for symbolic linked icons.
+  * add kup icon from kup repo
+
+-------------------------------------------------------------------
 Sun Jun  7 08:06:13 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.71.0

@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.71
+%define _tar_path 5.72
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -24,7 +24,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           breeze5-icons
-Version:        5.71.0
+Version:        5.72.0
 Release:        0
 Summary:        Breeze icon theme
 License:        LGPL-3.0-only
@@ -37,7 +37,6 @@ Source2:        frameworks.keyring
 %endif
 # PATCH-FIX-OPENSUSE oxygen.diff -- inherit from oxygen
 Patch0:         oxygen.diff
-BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
