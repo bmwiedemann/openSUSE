@@ -17,14 +17,13 @@
 
 
 Name:           ugrep
-Version:        2.3.2
+Version:        2.4.0
 Release:        0
 Summary:        Universal grep: a feature-rich grep implementation with focus on speed
 License:        BSD-3-Clause
 Group:          Productivity/File utilities
 URL:            https://github.com/Genivia/ugrep
 Source:         https://github.com/Genivia/ugrep/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         reproducible.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
@@ -39,7 +38,6 @@ fuzzy search.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure \

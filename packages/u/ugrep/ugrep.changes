@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 11 17:39:21 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ugrep 2.4.0:
+  * New ug command which is the same as ugrep --config with the new
+    --config option to use configuration files
+  * new option --save-config to create configuration files
+  * added --help [WHAT] for quick help on WHA
+  * drop reproducible.patch, upstream
+ 
+-------------------------------------------------------------------
 Sun Jul  5 04:34:08 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Disable avx
