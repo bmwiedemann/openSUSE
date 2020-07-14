@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul  5 07:55:41 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 5.71.0:
+  * Add license texts as required by REUSE specification
+  * Convert license headers to SPDX statements
+
+-------------------------------------------------------------------
 Sun Jun  7 08:06:57 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.71.0
