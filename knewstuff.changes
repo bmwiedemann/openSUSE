@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jul  5 07:55:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 5.71.0:
+  * Fix minor typos
+  * Move explanatory text from sheet header to list header
+  * Fix typo
+  * Fix paths for install script and uncompression
+  * Hide the ShadowRectangle for non-loaded previews (kde#422048)
+  * Don't allow content to overflow in the grid delegates (kde#422476)
+
+-------------------------------------------------------------------
 Sun Jun  7 08:06:52 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.71.0
