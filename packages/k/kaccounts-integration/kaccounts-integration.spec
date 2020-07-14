@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kaccounts-integration
-Version:        20.04.2
+Version:        20.04.3
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
@@ -60,12 +60,12 @@ Small system to administer web accounts for the sites
 and services across the KDE desktop, including: Google,
 Facebook, Owncloud, IMAP, Jabber and others.
 
-%package -n libkaccounts1
+%package -n libkaccounts2
 Summary:        KDE Accounts Providers - System Library
 Group:          System/Libraries
 Recommends:     %{name}
 
-%description -n libkaccounts1
+%description -n libkaccounts2
 Small system to administer web accounts for the sites
 and services across the KDE desktop, including: Google,
 Facebook, Owncloud, IMAP, Jabber and others.
@@ -73,7 +73,7 @@ Facebook, Owncloud, IMAP, Jabber and others.
 %package devel
 Summary:        KDE Accounts Providers - Development Files
 Group:          Development/Libraries/KDE
-Requires:       libkaccounts1 = %{version}
+Requires:       libkaccounts2 = %{version}
 Requires:       libsignon-qt5-devel
 Requires:       cmake(AccountsQt5)
 Requires:       cmake(KF5CoreAddons)
@@ -102,8 +102,8 @@ Facebook, Owncloud, IMAP, Jabber and others. Devel files.
     %find_lang %{name} --with-man --all-name
   %endif
 
-%post   -n libkaccounts1 -p /sbin/ldconfig
-%postun -n libkaccounts1 -p /sbin/ldconfig
+%post   -n libkaccounts2 -p /sbin/ldconfig
+%postun -n libkaccounts2 -p /sbin/ldconfig
 
 %files
 %license COPYING*
@@ -114,7 +114,7 @@ Facebook, Owncloud, IMAP, Jabber and others. Devel files.
 %{_kf5_qmldir}/
 %{_kf5_servicesdir}/
 
-%files -n libkaccounts1
+%files -n libkaccounts2
 %license COPYING*
 %{_kf5_libdir}/libkaccounts.so.*
 

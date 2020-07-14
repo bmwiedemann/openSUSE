@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  9 20:08:46 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-07-apps-update
+- Changes since 20.04.2:
+  * Bump libkaccounts so version (kde#422191)
+
+-------------------------------------------------------------------
 Wed Jun 24 12:24:33 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Remove runtime dependency on accounts-qml-module again, it's no
