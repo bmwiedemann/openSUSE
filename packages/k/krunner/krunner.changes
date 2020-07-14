@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul  5 07:55:43 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 5.71.0:
+  * Fix RunnerContextTest to not assume presence of .bashrc
+  * Use embedded JSON metadata for binary plugins & custom for D-Bus plugins
+  * Emit queryFinished when all jobs for current query have finished (kde#422579)
+
+-------------------------------------------------------------------
 Sun Jun  7 08:07:00 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.71.0
