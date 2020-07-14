@@ -18,7 +18,7 @@
 
 
 Name:           printer-driver-brlaser
-Version:        6+git20191118.2f63d0a
+Version:        6+git20200420.9d7ddda
 Release:        0
 Summary:        Driver for (some) Brother laster printers
 License:        GPL-2.0-or-later
@@ -65,6 +65,8 @@ It is known to support these printers:
     Brother HL-2140 series
     Brother HL-2220 series
     Brother HL-2270DW series
+    Brother HL-2375DW
+    Brother HL-2390DW
     Brother HL-5030 series
     Brother HL-L2300D series
     Brother HL-L2320D series
@@ -74,6 +76,8 @@ It is known to support these printers:
     Brother MFC-7240
     Brother MFC-7360N
     Brother MFC-7365DN
+    Brother MFC-7420
+    Brother MFC-7460DN
     Brother MFC-7840W
     Brother MFC-L2710DW series
     Lenovo M7605D

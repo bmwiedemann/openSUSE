@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-exception_notification
-Version:        4.4.1
+Version:        4.4.3
 Release:        0
 %define mod_name exception_notification
 %define mod_full_name %{mod_name}-%{version}

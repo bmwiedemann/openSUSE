@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 10 13:20:23 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to improve XTest and use it more (boo#1173968):
+  * 0001-Handle-modifier-keys-with-xtest-in-ShortcutsHandler-.patch
+  * 0002-Use-xtest-also-for-sending-input-to-the-active-windo.patch
+
+-------------------------------------------------------------------
 Tue Jul  7 12:38:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.3

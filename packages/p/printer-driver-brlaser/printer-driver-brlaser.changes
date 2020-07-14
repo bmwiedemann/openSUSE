@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jul 11 09:56:15 UTC 2020 - seife+obs@b1-systems.com
+
+- Update to version 6+git20200420.9d7ddda:
+  * Arrange blocks in bands of 128 lines
+    - this is more similar to what the Brother driver does and
+      fixes #52, #40 etc
+  * Tweak compiler flags
+  * Be tolerant of zero-page jobs
+  * Add some new printer definitions
+    - HL-2375DW, HL-2390DW, MFC-7420, MFC-7460DN, DCP-L2520DW
+  * Update README.md
+
+-------------------------------------------------------------------
 Tue Jun  2 14:38:16 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - use cups-rpm-helper to have automatic printer driver provides (boo#1172407)

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 13 17:26:21 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 4.4.3
+
+  * big fixes
+    * Remove using configured default from address from custom mailer_parent class
+
+-------------------------------------------------------------------
 Sat Jun 27 18:55:33 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 4.4.1

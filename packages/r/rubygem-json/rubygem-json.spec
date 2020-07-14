@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-json
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,16 +24,16 @@
 #
 
 Name:           rubygem-json
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 %define mod_name json
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel >= 1.9}
+BuildRequires:  %{rubydevel >= 2.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
-Url:            http://flori.github.com/json
+URL:            http://flori.github.com/json
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-json-rpmlintrc
 Source2:        gem2rpm.yml
@@ -50,7 +50,7 @@ This is a JSON implementation as a Ruby extension in C.
 
 %install
 %gem_install \
-  --doc-files="CHANGES.md LICENSE README.md" \
+  --doc-files="CHANGES.md README.md" \
   -f
 %gem_cleanup
 

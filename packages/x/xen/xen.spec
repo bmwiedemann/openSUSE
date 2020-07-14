@@ -123,7 +123,7 @@ BuildRequires:  makeinfo
 BuildRequires:  pesign-obs-integration
 %endif
 
-Version:        4.13.1_02
+Version:        4.13.1_04
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -165,8 +165,29 @@ Source99:       baselibs.conf
 Patch1:         5eb51be6-cpupool-fix-removing-cpu-from-pool.patch
 Patch2:         5eb51caa-sched-vcpu-pause-flags-atomic.patch
 Patch3:         5ec2a760-x86-determine-MXCSR-mask-always.patch
-Patch100:       xsa320-1.patch
-Patch101:       xsa320-2.patch
+Patch4:         5ec50b05-x86-idle-rework-C6-EOI-workaround.patch
+Patch5:         5ec7dcaa-x86-dont-enter-C6-with-in-service-intr.patch
+Patch6:         5ec7dcf6-x86-dont-enter-C3-C6-with-errata.patch
+Patch7:         5ec82237-x86-extend-ISR-C6-workaround-to-Haswell.patch
+Patch8:         5ece1b91-x86-clear-RDRAND-CPUID-bit-on-AMD-fam-15-16.patch
+Patch9:         5ece8ac4-x86-load_system_tables-NMI-MC-safe.patch
+Patch10:        5ed69804-x86-ucode-fix-start-end-update.patch
+Patch11:        5eda60cb-SVM-split-recalc-NPT-fault-handling.patch
+Patch12:        5edf6ad8-ioreq-pending-emulation-server-destruction-race.patch
+Patch13:        5edfbbea-x86-spec-ctrl-CPUID-MSR-defs-for-SRBDS.patch
+Patch14:        5edfbbea-x86-spec-ctrl-mitigate-SRBDS.patch
+Patch15:        5ee24d0e-x86-spec-ctrl-document-SRBDS-workaround.patch
+Patch317:       xsa317.patch
+Patch319:       xsa319.patch
+Patch32101:     xsa321-1.patch
+Patch32102:     xsa321-2.patch
+Patch32103:     xsa321-3.patch
+Patch32104:     xsa321-4.patch
+Patch32105:     xsa321-5.patch
+Patch32106:     xsa321-6.patch
+Patch32107:     xsa321-7.patch
+Patch32801:     xsa328-1.patch
+Patch32802:     xsa328-2.patch
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch
@@ -193,6 +214,7 @@ Patch456:       pygrub-boot-legacy-sles.patch
 Patch457:       pygrub-handle-one-line-menu-entries.patch
 Patch458:       aarch64-rename-PSR_MODE_ELxx-to-match-linux-headers.patch
 Patch459:       aarch64-maybe-uninitialized.patch
+Patch461:       libxl.max_event_channels.patch
 Patch462:       libxc.sr.superpage.patch
 Patch463:       libxl.add-option-to-disable-disk-cache-flushes-in-qdisk.patch
 Patch464:       libxl.pvscsi.patch
@@ -202,6 +224,7 @@ Patch467:       xenstore-run-in-studomain.patch
 Patch468:       libxl.libxl__domain_pvcontrol.patch
 Patch469:       libxl.helper_done-crash.patch
 Patch470:       libxl.LIBXL_HOTPLUG_TIMEOUT.patch
+Patch471:       libxc.migrate_tracking.patch
 # python3 conversion patches
 Patch500:       build-python3-conversion.patch
 Patch501:       migration-python3-conversion.patch
@@ -395,8 +418,29 @@ Authors:
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch100 -p1
-%patch101 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch317 -p1
+%patch319 -p1
+%patch32801 -p1
+%patch32802 -p1
+%patch32101 -p1
+%patch32102 -p1
+%patch32103 -p1
+%patch32104 -p1
+%patch32105 -p1
+%patch32106 -p1
+%patch32107 -p1
 # Our platform specific patches
 %patch400 -p1
 %patch401 -p1
@@ -423,6 +467,7 @@ Authors:
 %patch457 -p1
 %patch458 -p1
 %patch459 -p1
+%patch461 -p1
 %patch462 -p1
 %patch463 -p1
 %patch464 -p1
@@ -432,6 +477,7 @@ Authors:
 %patch468 -p1
 %patch469 -p1
 %patch470 -p1
+%patch471 -p1
 # python3 conversion patches
 %patch500 -p1
 %patch501 -p1

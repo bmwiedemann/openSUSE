@@ -205,8 +205,8 @@ Index: VirtualBox-6.1.10/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
      size_t              iPage;
  
 +# if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 8, 0)
-+    pVmArea = __get_vm_area_caller(cbAlloc, VM_ALLOC, MODULES_VADDR, MODULES_END,
-+				  __builtin_return_address(0));
++//    pVmArea = __get_vm_area_caller(cbAlloc, VM_ALLOC, MODULES_VADDR, MODULES_END,
++//				  __builtin_return_address(0));
 +#else
      pVmArea = __get_vm_area(cbAlloc, VM_ALLOC, MODULES_VADDR, MODULES_END);
 +#endif
@@ -219,9 +219,9 @@ Index: VirtualBox-6.1.10/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
          pVmArea->pages    = papPages;
 +# if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 8, 0)
 +	unsigned long start = (unsigned long)pVmArea->addr;
-+	unsigned long size = get_vm_area_size(pVmArea);
++//	unsigned long size = get_vm_area_size(pVmArea);
 +
-+	if (!map_kernel_range(start, size, PAGE_KERNEL_EXEC, papPages))
++//	if (!map_kernel_range(start, size, PAGE_KERNEL_EXEC, papPages))
 +#else
          if (!map_vm_area(pVmArea, PAGE_KERNEL_EXEC,
  # if LINUX_VERSION_CODE < KERNEL_VERSION(3, 17, 0)
@@ -234,3 +234,16 @@ Index: VirtualBox-6.1.10/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
          {
              PRTMEMLNXHDREX pHdrEx = (PRTMEMLNXHDREX)pVmArea->addr;
              pHdrEx->pVmArea     = pVmArea;
+Index: VirtualBox-6.1.10/src/VBox/Additions/linux/sharedfolders/vfsmod.c
+===================================================================
+--- VirtualBox-6.1.10.orig/src/VBox/Additions/linux/sharedfolders/vfsmod.c
++++ VirtualBox-6.1.10/src/VBox/Additions/linux/sharedfolders/vfsmod.c
+@@ -53,7 +53,7 @@
+ #include <linux/seq_file.h>
+ #include <linux/vfs.h>
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 5, 62)
+-# include <linux/vermagic.h>
++//# include <linux/vermagic.h>
+ #endif
+ #include <VBox/err.h>
+ #include <iprt/path.h>

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-pydata-google-auth
-Version:        0.3.0
+Version:        1.1.0
 Release:        0
 Summary:        PyData helpers for authenticating to Google APIs
 License:        BSD-3-Clause

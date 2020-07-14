@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 13 06:15:12 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.1:
+  Bug Fixes:
+  * text: properly handle utf-8 chars (717ab0c), closes #43
+
+-------------------------------------------------------------------
 Mon Jul  6 10:55:20 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.2.0:

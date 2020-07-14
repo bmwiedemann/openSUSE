@@ -24,11 +24,12 @@ License:        MIT
 Group:          Productivity/Networking/Diagnostic
 URL:            http://www.fping.org
 Source:         http://fping.org/dist/%{name}-%{version}.tar.gz
+Source2:        http://fping.org/dist/%{name}-%{version}.tar.gz.asc
+Source3:        http://david.schweikert.ch/gpg-pubkey.txt#/%{name}.keyring
 Patch0:         fping-4.2-gcc10-extern.patch
 %if 0%{?suse_version} >= 1500
 Requires(pre):  permissions
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 FPing is a ping-like program that uses the Internet Control Message
@@ -54,10 +55,10 @@ designed to be easy to parse.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%{buildroot}"
+%make_install
 
 %if 0%{?suse_version} >= 1500
 %post
@@ -68,15 +69,14 @@ make install DESTDIR="%{buildroot}"
 %endif
 
 %files
-%defattr(-,root,root)
-%doc CHANGELOG.md 
+%doc CHANGELOG.md
 %if 0%{?suse_version} >= 1500
 %license COPYING
 %verify(not mode caps) %attr(0755,root,root) %{_sbindir}/fping
 %else
-%doc COPYING
+%license COPYING
 %{_sbindir}/fping
 %endif
-%{_mandir}/man8/fping.8%{ext_man}
+%{_mandir}/man8/fping.8%{?ext_man}
 
 %changelog

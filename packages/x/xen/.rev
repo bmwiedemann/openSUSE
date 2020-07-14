@@ -2459,4 +2459,12 @@
     <comment>Security update for Xen for bsc#1172205 CVE-2020-0543 - CrossTalk vulnerability</comment>
     <requestid>813013</requestid>
   </revision>
+  <revision rev="287" vrev="1">
+    <srcmd5>782ac7772ef5ede561a8ef8021a874c2</srcmd5>
+    <version>4.13.1_04</version>
+    <time>1594705440</time>
+    <user>dimstar_suse</user>
+    <comment>Security and maintenance update for Xen with several CVEs</comment>
+    <requestid>820049</requestid>
+  </revision>
 </revisionlist>

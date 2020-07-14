@@ -26,16 +26,18 @@ Group:          Development/Languages/Python
 URL:            https://github.com/cloudflare/python-cloudflare
 Source:         https://files.pythonhosted.org/packages/source/c/cloudflare/cloudflare-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module jsonlines}
-BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module requests >= 2.4.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
+Requires:       python-beautifulsoup4
 Requires:       python-future
 Requires:       python-jsonlines
-Requires:       python-requests
+Requires:       python-requests >= 2.4.2
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -60,6 +62,9 @@ rm -rf %{buildroot}/usr/man
 # remove examples from sitelib
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/examples
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+#%%check
+# there is one test, but even upstream does not launch it
 
 %post
 %python_install_alternative cli4 cli4.1

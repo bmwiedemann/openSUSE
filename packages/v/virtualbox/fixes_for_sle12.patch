@@ -1,0 +1,185 @@
+Index: VirtualBox-6.1.10/src/VBox/Runtime/r0drv/linux/waitqueue-r0drv-linux.h
+===================================================================
+--- VirtualBox-6.1.10.orig/src/VBox/Runtime/r0drv/linux/waitqueue-r0drv-linux.h
++++ VirtualBox-6.1.10/src/VBox/Runtime/r0drv/linux/waitqueue-r0drv-linux.h
+@@ -49,7 +49,7 @@ typedef struct RTR0SEMLNXWAIT
+ {
+     /** The wait queue entry. */
+ #if LINUX_VERSION_CODE > KERNEL_VERSION(4, 13, 0) \
+-  || defined(CONFIG_SUSE_VERSION) && CONFIG_SUSE_VERSION == 12 && CONFIG_SUSE_PATCHLEVEL == 4 \
++  || defined(CONFIG_SUSE_VERSION) && CONFIG_SUSE_VERSION == 12 && CONFIG_SUSE_PATCHLEVEL >= 4 \
+   || defined(CONFIG_SUSE_VERSION) && CONFIG_SUSE_VERSION == 15
+     wait_queue_entry_t WaitQE;
+ #else
+Index: VirtualBox-6.1.10/src/VBox/Additions/linux/drm/vbox_drv.c
+===================================================================
+--- VirtualBox-6.1.10.orig/src/VBox/Additions/linux/drm/vbox_drv.c
++++ VirtualBox-6.1.10/src/VBox/Additions/linux/drm/vbox_drv.c
+@@ -327,7 +327,9 @@ static struct drm_driver driver = {
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 18, 0) || defined(RHEL_72)
+ # if LINUX_VERSION_CODE < KERNEL_VERSION(4, 14, 0) && !defined(RHEL_75) \
+   && !defined(OPENSUSE_151)
++#if !(defined(CONFIG_SUSE_VERSION) && CONFIG_SUSE_VERSION == 12 && CONFIG_SUSE_PATCHLEVEL >= 4)
+ 	.set_busid = drm_pci_set_busid,
++#endif
+ # endif
+ #endif
+ 
+Index: VirtualBox-6.1.10/src/VBox/Additions/linux/drm/vbox_main.c
+===================================================================
+--- VirtualBox-6.1.10.orig/src/VBox/Additions/linux/drm/vbox_main.c
++++ VirtualBox-6.1.10/src/VBox/Additions/linux/drm/vbox_main.c
+@@ -606,11 +606,13 @@ int vbox_dumb_destroy(struct drm_file *f
+ #endif
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 19, 0) && !defined(OPENSUSE_151) && !defined(RHEL_77) && !defined(RHEL_81)
++#if !(defined(CONFIG_SUSE_VERSION) && CONFIG_SUSE_VERSION == 12 && CONFIG_SUSE_PATCHLEVEL >= 4)
+ static void ttm_bo_put(struct ttm_buffer_object *bo)
+ {
+ 	ttm_bo_unref(&bo);
+ }
+ #endif
++#endif
+ 
+ void vbox_gem_free_object(struct drm_gem_object *obj)
+ {
+Index: VirtualBox-6.1.10/src/VBox/Additions/linux/drm/vbox_ttm.c
+===================================================================
+--- VirtualBox-6.1.10.orig/src/VBox/Additions/linux/drm/vbox_ttm.c
++++ VirtualBox-6.1.10/src/VBox/Additions/linux/drm/vbox_ttm.c
+@@ -211,7 +211,7 @@ static struct ttm_backend_func vbox_tt_b
+ };
+ 
+ #if (LINUX_VERSION_CODE < KERNEL_VERSION(4, 17, 0)) && !defined(RHEL_76) \
+-  && !defined(OPENSUSE_151)
++  && !defined(OPENSUSE_151) && !defined(SUSE_SLE12)
+ static struct ttm_tt *vbox_ttm_tt_create(struct ttm_bo_device *bdev,
+ 					 unsigned long size,
+ 					 u32 page_flags,
+@@ -229,7 +229,7 @@ static struct ttm_tt *vbox_ttm_tt_create
+ 
+ 	tt->func = &vbox_tt_backend_func;
+ #if (LINUX_VERSION_CODE < KERNEL_VERSION(4, 17, 0)) && !defined(RHEL_76) \
+-  && !defined(OPENSUSE_151)
++  && !defined(OPENSUSE_151) && !defined(SUSE_SLE12)
+ 	if (ttm_tt_init(tt, bdev, size, page_flags, dummy_read_page)) {
+ #else
+ 	if (ttm_tt_init(tt, bo, page_flags)) {
+@@ -243,7 +243,7 @@ static struct ttm_tt *vbox_ttm_tt_create
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 17, 0)
+ # if (LINUX_VERSION_CODE < KERNEL_VERSION(4, 16, 0)) && !defined(RHEL_76) \
+-  && !defined(OPENSUSE_151)
++  && !defined(OPENSUSE_151) && !defined(SUSE_SLE12)
+ static int vbox_ttm_tt_populate(struct ttm_tt *ttm)
+ {
+ 	return ttm_pool_populate(ttm);
+@@ -278,7 +278,7 @@ static struct ttm_bo_driver vbox_bo_driv
+ 	.io_mem_free = &vbox_ttm_io_mem_free,
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 12, 0) || defined(RHEL_75)
+ # if (LINUX_VERSION_CODE < KERNEL_VERSION(4, 16, 0)) && !defined(RHEL_76) \
+-  && !defined(OPENSUSE_151)
++  && !defined(OPENSUSE_151) && !defined(SUSE_SLE12)
+ 	.io_mem_pfn = ttm_bo_default_io_mem_pfn,
+ # endif
+ #endif
+@@ -429,7 +429,7 @@ int vbox_bo_create(struct drm_device *de
+ 	ret = ttm_bo_init(&vbox->ttm.bdev, &vboxbo->bo, size,
+ 			  ttm_bo_type_device, &vboxbo->placement,
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 17, 0) && !defined(RHEL_76) \
+-  && !defined(OPENSUSE_151)
++  && !defined(OPENSUSE_151) && !defined(SUSE_SLE12)
+ 			  align >> PAGE_SHIFT, false, NULL, acc_size,
+ #else
+ 			  align >> PAGE_SHIFT, false, acc_size,
+@@ -459,7 +459,7 @@ static inline u64 vbox_bo_gpu_offset(str
+ int vbox_bo_pin(struct vbox_bo *bo, u32 pl_flag, u64 *gpu_addr)
+ {
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 16, 0)) || defined(RHEL_76) \
+-  || defined(OPENSUSE_151)
++  || defined(OPENSUSE_151) || defined(SUSE_SLE12)
+ 	struct ttm_operation_ctx ctx = { false, false };
+ #endif
+ 	int i, ret;
+@@ -478,7 +478,7 @@ int vbox_bo_pin(struct vbox_bo *bo, u32
+ 		PLACEMENT_FLAGS(bo->placements[i]) |= TTM_PL_FLAG_NO_EVICT;
+ 
+ #if (LINUX_VERSION_CODE < KERNEL_VERSION(4, 16, 0)) && !defined(RHEL_76) \
+-  && !defined(OPENSUSE_151)
++  && !defined(OPENSUSE_151) && !defined(SUSE_SLE12)
+ 	ret = ttm_bo_validate(&bo->bo, &bo->placement, false, false);
+ #else
+ 	ret = ttm_bo_validate(&bo->bo, &bo->placement, &ctx);
+@@ -497,7 +497,7 @@ int vbox_bo_pin(struct vbox_bo *bo, u32
+ int vbox_bo_unpin(struct vbox_bo *bo)
+ {
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 16, 0)) || defined(RHEL_76) \
+-  || defined(OPENSUSE_151)
++  || defined(OPENSUSE_151) || defined(SUSE_SLE12)
+ 	struct ttm_operation_ctx ctx = { false, false };
+ #endif
+ 	int i, ret;
+@@ -514,7 +514,7 @@ int vbox_bo_unpin(struct vbox_bo *bo)
+ 		PLACEMENT_FLAGS(bo->placements[i]) &= ~TTM_PL_FLAG_NO_EVICT;
+ 
+ #if (LINUX_VERSION_CODE < KERNEL_VERSION(4, 16, 0)) && !defined(RHEL_76) \
+-  && !defined(OPENSUSE_151)
++  && !defined(OPENSUSE_151) && !defined(SUSE_SLE12)
+ 	ret = ttm_bo_validate(&bo->bo, &bo->placement, false, false);
+ #else
+ 	ret = ttm_bo_validate(&bo->bo, &bo->placement, &ctx);
+@@ -533,7 +533,7 @@ int vbox_bo_unpin(struct vbox_bo *bo)
+ int vbox_bo_push_sysram(struct vbox_bo *bo)
+ {
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 16, 0)) || defined(RHEL_76) \
+-  || defined(OPENSUSE_151)
++  || defined(OPENSUSE_151) || defined(SUSE_SLE12)
+ 	struct ttm_operation_ctx ctx = { false, false };
+ #endif
+ 	int i, ret;
+@@ -555,7 +555,7 @@ int vbox_bo_push_sysram(struct vbox_bo *
+ 		PLACEMENT_FLAGS(bo->placements[i]) |= TTM_PL_FLAG_NO_EVICT;
+ 
+ #if (LINUX_VERSION_CODE < KERNEL_VERSION(4, 16, 0)) && !defined(RHEL_76) \
+-  && !defined(OPENSUSE_151)
++  && !defined(OPENSUSE_151) && !defined(SUSE_SLE12)
+ 	ret = ttm_bo_validate(&bo->bo, &bo->placement, false, false);
+ #else
+ 	ret = ttm_bo_validate(&bo->bo, &bo->placement, &ctx);
+Index: VirtualBox-6.1.10/src/VBox/Additions/linux/drm/vbox_drv.h
+===================================================================
+--- VirtualBox-6.1.10.orig/src/VBox/Additions/linux/drm/vbox_drv.h
++++ VirtualBox-6.1.10/src/VBox/Additions/linux/drm/vbox_drv.h
+@@ -91,6 +91,9 @@
+ #  define OPENSUSE_151
+ # endif
+ #endif
++#if defined(CONFIG_SUSE_VERSION) && CONFIG_SUSE_VERSION == 12 && CONFIG_SUSE_PATCHLEVEL >= 4
++# define SUSE_SLE12
++#endif
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3, 14, 0) || defined(RHEL_71)
+ #define U8_MAX          ((u8)~0U)
+Index: VirtualBox-6.1.10/src/VBox/Additions/linux/drm/vbox_mode.c
+===================================================================
+--- VirtualBox-6.1.10.orig/src/VBox/Additions/linux/drm/vbox_mode.c
++++ VirtualBox-6.1.10/src/VBox/Additions/linux/drm/vbox_mode.c
+@@ -547,7 +547,8 @@ static void vbox_set_edid(struct drm_con
+ 	for (i = 0; i < EDID_SIZE - 1; ++i)
+ 		sum += edid[i];
+ 	edid[EDID_SIZE - 1] = (0x100 - (sum & 0xFF)) & 0xFF;
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 19, 0) || defined(OPENSUSE_151) || defined(RHEL_77) || defined(RHEL_81)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 19, 0) || defined(OPENSUSE_151) || \
++			  defined(SUSE_SLE12) || defined(RHEL_77) || defined(RHEL_81)
+ 	drm_connector_update_edid_property(connector, (struct edid *)edid);
+ #else
+ 	drm_mode_connector_update_edid_property(connector, (struct edid *)edid);
+@@ -722,7 +723,7 @@ static int vbox_connector_init(struct dr
+ 	drm_connector_register(connector);
+ #endif
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 19, 0) || defined(OPENSUSE_151) || defined(RHEL_77) || defined(RHEL_81)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 19, 0) || defined(OPENSUSE_151) || defined(SUSE_SLE12) || defined(RHEL_77) || defined(RHEL_81)
+ 	drm_connector_attach_encoder(connector, encoder);
+ #else
+ 	drm_mode_connector_attach_encoder(connector, encoder);

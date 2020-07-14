@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Jun 30 18:03:40 UTC 2020 - ohering@suse.de
+
+- Add libxc.migrate_tracking.patch to track live migrations
+  unconditionally in logfiles, especially in libvirt.
+  This will track how long a domU was suspended during transit.
+
+-------------------------------------------------------------------
+Mon Jun 29 11:28:27 MDT 2020 - carnold@suse.com
+
+- bsc#1173376 - VUL-0: CVE-2020-15566: xen: XSA-317 - Incorrect
+  error handling in event channel port allocation
+  xsa317.patch
+- bsc#1173377 - VUL-0: CVE-2020-15563: xen: XSA-319 - inverted code
+  paths in x86 dirty VRAM tracking
+  xsa319.patch
+- bsc#1173378 - VUL-0: CVE-2020-15565: xen: XSA-321 - insufficient
+  cache write- back under VT-d
+  xsa321-1.patch
+  xsa321-2.patch
+  xsa321-3.patch
+  xsa321-4.patch
+  xsa321-5.patch
+  xsa321-6.patch
+  xsa321-7.patch
+- bsc#1173380 - VUL-0: CVE-2020-15567: xen: XSA-328 - non-atomic
+  modification of live EPT PTE
+  xsa328-1.patch
+  xsa328-2.patch
+
+-------------------------------------------------------------------
+Mon Jun 22 11:24:48 MDT 2020 - carnold@suse.com
+
+- bsc#1172205 - VUL-0: CVE-2020-0543: xen: Special Register Buffer
+  Data Sampling (SRBDS) aka "CrossTalk" (XSA-320)
+  5ee24d0e-x86-spec-ctrl-document-SRBDS-workaround.patch
+  5edfbbea-x86-spec-ctrl-CPUID-MSR-defs-for-SRBDS.patch (Replaces xsa320-1.patch)
+  5edfbbea-x86-spec-ctrl-mitigate-SRBDS.patch (Replaces xsa320-2.patch)
+- Upstream bug fixes (bsc#1027519)
+  5ec50b05-x86-idle-rework-C6-EOI-workaround.patch
+  5ec7dcaa-x86-dont-enter-C6-with-in-service-intr.patch
+  5ec7dcf6-x86-dont-enter-C3-C6-with-errata.patch
+  5ec82237-x86-extend-ISR-C6-workaround-to-Haswell.patch
+  5ece1b91-x86-clear-RDRAND-CPUID-bit-on-AMD-fam-15-16.patch
+  5ece8ac4-x86-load_system_tables-NMI-MC-safe.patch
+  5ed69804-x86-ucode-fix-start-end-update.patch
+  5eda60cb-SVM-split-recalc-NPT-fault-handling.patch
+  5edf6ad8-ioreq-pending-emulation-server-destruction-race.patch
+
+-------------------------------------------------------------------
 Fri Jun  5 16:42:16 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec
@@ -112,6 +161,13 @@ Mon Apr  6 12:01:45 MDT 2020 - carnold@suse.com
   5e7dfbf6-x86-ucode-AMD-potential-buffer-overrun-equiv-tab.patch
   5e846cce-x86-HVM-fix-AMD-ECS-handling-for-Fam10.patch
   5e84905c-x86-ucode-AMD-fix-more-potential-buffer-overruns.patch
+
+-------------------------------------------------------------------
+Wed Mar 25 18:18:18 UTC 2020 - ohering@suse.de
+
+- bsc#1167608 - unbound limit for max_event_channels
+  domUs with many vcpus and/or resources fail to start
+  libxl.max_event_channels.patch
 
 -------------------------------------------------------------------
 Wed Mar 18 17:00:34 UTC 2020 - ohering@suse.de

@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-zeitwerk
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 %define mod_name zeitwerk
 %define mod_full_name %{mod_name}-%{version}
@@ -42,7 +42,7 @@ Group:          Development/Languages/Ruby
 %description
 Zeitwerk implements constant autoloading with Ruby semantics. Each gem
 and application may have their own independent autoloader, with its own
-configuration, inflector, and logger. Supports autoloading, preloading,
+configuration, inflector, and logger. Supports autoloading,
 reloading, and eager loading.
 
 %prep

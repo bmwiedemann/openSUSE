@@ -33,8 +33,11 @@ Source:         https://download.kde.org/stable/plasma/%{version}/khotkeys-%{ver
 Source1:        https://download.kde.org/stable/plasma/%{version}/khotkeys-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM https://invent.kde.org/plasma/khotkeys/-/merge_requests/3
+Patch1:         0001-Handle-modifier-keys-with-xtest-in-ShortcutsHandler-.patch
+Patch2:         0002-Use-xtest-also-for-sending-input-to-the-active-windo.patch
 # PATCH-FIX-OPENSUSE
-Patch:          0001-Use-qdbus-qt5-and-qdbusviewer-qt5.patch
+Patch100:       0001-Use-qdbus-qt5-and-qdbusviewer-qt5.patch
 BuildRequires:  extra-cmake-modules >= 1.1.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  xz

@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Mon Jul 13 13:43:13 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to version 2.8.1
+  * Pass resolution to tesseract to avoid messages like
+    "Warning! Invalid resolution 0 dpi. Using 70 instead"
+  * Cope better if data model becomes corrupted
+  * + restart option to 'device not found' mini-wizard & if tmp
+    directory changed.
+  * When saving a session file, note that pages have been saved to avoid
+    'Some pages have not been saved. Do you really want to quit?' message.
+  * Improvements to the Crashed sessions dialog to make it more
+    intuitive.
+  * Update position of OCR text when cropping
+  * Create PS level 3 instead of 1.
+  * Fix check for unpaper version. Closes #285 (Scan fails if unpaper is
+    not installed but selected in post processing)
+  * Fix check for tesseract version. Remove support for tesseract < 3.04.00.
+  * Update to Hungarian translation (thanks to csola)
+  * Update to Brazilian Portuguese translation (thanks to Arthur Rodrigues)
+  * Update to German translation (thanks to Matthias Sprau)
+  * Update to Ukrainian translation (thanks to Yuri Chornoivan)
+
+- Update to version 2.8.0 (11.06.2020):
+  * Interpolate colours according to OCR confidence in HSV space.
+  * Limit zoom to 100 to avoid errors like:
+    "drawing failure for widget 'GtkBox': error occurred in libfreetype"
+  * Also update text position and rectangle when updating bounding box.
+  * + button to add to text layer
+  * + preference to disable device list cache
+  * + mini-wizard if device not found
+  * Fix save as PS. Closes Debian bug #962151
+   (Failure to save: unitialized value $SETTINGS{"ps_backend"})
+ * Update to Hungarian translation (thanks to csola)
+ * Update to Ukrainian translation (thanks to Yuri Chornoivan)
+
+- Update to version 2.7.0 (08.05.2020):
+  * Cache device list to speed up first display of scan dialog.
+  * Fix bug updating switch widgets in scan options.
+  * Fixed bug importing file with non-ASCII characters in filename
+    from file browser.
+  * Use daylight savings time from document date when setting timezone.
+  * Use UTF8 in logs, fixing "wide character in print" warnings.
+  * Fix UTF8 encoding when importing metadata from PDF or DjVu.
+  * When editing OCR text, display bounding box on image and allow it
+    to be adjusted.
+  * + buttons to navigate between OCR text boxes, sorted by confidence
+    level.
+  * Zoom to text when editing OCR
+  * Fix error running File/Compress temporary files.
+  * Use only xdg-email for creating email. Closes feature request #112
+    (Use gsettings and xdg-email instead of gconftool for sending e-mails)
+  * Use GTK functionality instead of xdg-open for launching file viewer.
+  * Update to French translation (thanks to Jean-Marc)
+
+- Update to version 2.6.7 (08.04.2020):
+  * Fix bug causing stretched images after cropping.
+  * Don't allow errors without page numbers to hang GUI.
+  * Fixed bug importing multipage DjVu.
+  * Fixed bug reloading options after setting manual paper size.
+
+- Update to version 2.6.6 (06.04.2020):
+  * Support importing PDF with different resolutions in x and y
+    directions.
+  * Fix bug applying paper after option set SANE_INFO_INEXACT
+    Closes bugs #346 (gscan2pdf paper size selection inoperative) and
+    #348 (paper size selection has no effect for US Letter / US Legal)
+  * Update to Bulgarian translation (thanks to Berov)
+  * Update to Turkish translation (thanks to Utku BERBEROĞLU)
+
+- Update to version 2.6.5 (06.03.2020):
+  * Fixed bug when editing page number causing page to deselect and
+    thumbnails to scroll to top of list
+  * Use a scrolled window in the multiple message dialog to prevent it
+    from growing too large.
+  * Use the "Don't show these messages again" checkbox to switch the
+    checkboxes for the individual messages. Set the button inconsistent
+    if the states are not all the same.
+  * Fix warning message about pdftk (again) by making sure that
+    user-defined tmp directory is available in time.
+  * Improve responsiveness with OCR output (again). Closes bug #192
+    (Sometimes after saving a PDF, the page selection UI becomes
+    sluggish/unresponsive)
+  * Select # pages = all when switching from reverse->facing.
+    Closes bug #344 (# Pages in Scan Document dialog reverts to # from All)
+  * Show "waiting" cursor for longer to prevent scans from being started
+    before all options applied.
+  * Respect 'Use timezone from locale' option when setting file system
+    timestamp
+  * Update to Hungarian translation (thanks to csola)
+  * Update to German translation (thanks to Martin Butter)
+  * Update to Spanish translation (thanks to rodroes)
+  * Update to Ukrainian translation (thanks to Yuri Chornoivan)
+
+-------------------------------------------------------------------
 Mon Mar  2 09:27:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Format with spec-cleaner

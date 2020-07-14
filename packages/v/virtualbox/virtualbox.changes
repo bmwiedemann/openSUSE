@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jul 10 01:38:55 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Switch to multibuild to so that we can maintain one spec file
+  for both virtualbox and virtualbox-kmp and build them separately.
+  (bsc#1114605)
+  + Add file "_multibuild" to specify the additional "kmp" build
+    flavor.
+  + Merge "virtualbox-kmp.spec" into "virtualbox.spec"
+  + Drop file "virtualbox-kmp.changes".
+  + Add file "fixes_for_sle12.patch"
+
+-------------------------------------------------------------------
+Tue Jun 23 06:10:10 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Split virtualbox-kmp from virtualbox.spec (bsc#1114605)
+  Adds files "virtualbox-kmp.spec" and "virtualbox-kmp.changes".
+
+-------------------------------------------------------------------
 Sat Jun 13 18:42:48 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
 
 - Add fixes to build with kernel 5.8. File "fixes_for_5.8.patch" is added.

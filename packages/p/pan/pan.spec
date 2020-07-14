@@ -1,7 +1,7 @@
 #
 # spec file for package pan
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/News/Clients
 URL:            http://pan.rebelbase.com/
 Source0:        http://pan.rebelbase.com/download/releases/%{version}/source/%{name}-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM pan-fix-sending-with-gmime30.patch boo#1166404 badshah400@gmail.com -- Fix message sending when using gmime 3.0
+Patch0:         pan-fix-sending-with-gmime30.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext >= 0.19.7

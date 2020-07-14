@@ -81,4 +81,12 @@
     <comment>- use cups-rpm-helper to have automatic printer driver provides (boo#1172407)</comment>
     <requestid>810863</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ad28e95e16819b854a42f39e923ef710</srcmd5>
+    <version>6+git20200420.9d7ddda</version>
+    <time>1594706396</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820630</requestid>
+  </revision>
 </revisionlist>

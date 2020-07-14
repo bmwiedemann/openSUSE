@@ -1,6 +1,7 @@
+#
 # spec file for package swappy
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +17,14 @@
 
 
 Name:           swappy
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Wayland compositor screenshot editor
 License:        MIT
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/jtheoof/swappy
 Source:         https://github.com/jtheoof/swappy/archive/v%{version}.tar.gz
-Source1:        https://github.com/jtheoof/swappy/releases/download/v%{version}/swappy-%{version}.tar.gz.asc
+Source1:        https://github.com/jtheoof/swappy/releases/download/v%{version}/swappy-%{version}.tar.gz.sig
 Patch0:         swappy-desktopfile.patch
 Requires:       fontawesome-fonts
 Requires:       wl-clipboard

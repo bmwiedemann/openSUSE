@@ -1,0 +1,174 @@
+Track live migration state unconditionally in logfiles to see how long a domU was suspended.
+Depends on libxc.sr.superpage.patch
+
+--- a/tools/libxc/xc_sr_common.c
++++ b/tools/libxc/xc_sr_common.c
+@@ -196,6 +196,65 @@ bool _xc_sr_bitmap_resize(struct xc_sr_b
+     return true;
+ }
+ 
++/* Write a two-character hex representation of 'byte' to digits[].
++   Pre-condition: sizeof(digits) >= 2 */
++static void byte_to_hex(char *digits, const uint8_t byte)
++{
++    uint8_t nybbel = byte >> 4;
++
++    if ( nybbel > 9 )
++        digits[0] = 'a' + nybbel-10;
++    else
++        digits[0] = '0' + nybbel;
++
++    nybbel = byte & 0x0f;
++    if ( nybbel > 9 )
++        digits[1] = 'a' + nybbel-10;
++    else
++        digits[1] = '0' + nybbel;
++}
++
++/* Convert an array of 16 unsigned bytes to a DCE/OSF formatted UUID
++   string.
++
++   Pre-condition: sizeof(dest) >= 37 */
++void sr_uuid_to_string(char *dest, const uint8_t *uuid)
++{
++    int i = 0;
++    char *p = dest;
++
++    for (; i < 4; i++ )
++    {
++        byte_to_hex(p, uuid[i]);
++        p += 2;
++    }
++    *p++ = '-';
++    for (; i < 6; i++ )
++    {
++        byte_to_hex(p, uuid[i]);
++        p += 2;
++    }
++    *p++ = '-';
++    for (; i < 8; i++ )
++    {
++        byte_to_hex(p, uuid[i]);
++        p += 2;
++    }
++    *p++ = '-';
++    for (; i < 10; i++ )
++    {
++        byte_to_hex(p, uuid[i]);
++        p += 2;
++    }
++    *p++ = '-';
++    for (; i < 16; i++ )
++    {
++        byte_to_hex(p, uuid[i]);
++        p += 2;
++    }
++    *p = '\0';
++}
++
+ /*
+  * Local variables:
+  * mode: C
+--- a/tools/libxc/xc_sr_common.h
++++ b/tools/libxc/xc_sr_common.h
+@@ -10,6 +10,10 @@
+ 
+ #include "xc_sr_stream_format.h"
+ 
++#define SUSEINFO(_m, _a...)  do { int ERROR_errno = errno; \
++        xc_report(xch, xch->error_handler, XTL_ERROR, XC_ERROR_NONE, "SUSEINFO: " _m , ## _a ); \
++        errno = ERROR_errno; \
++        } while (0)
+ /* String representation of Domain Header types. */
+ const char *dhdr_type_to_str(uint32_t type);
+ 
+@@ -195,6 +199,7 @@ struct xc_sr_context
+     int fd;
+ 
+     xc_dominfo_t dominfo;
++    char uuid[16*2+4+1];
+ 
+     union /* Common save or restore data. */
+     {
+@@ -427,6 +432,8 @@ static inline int pfn_set_populated(stru
+     return 0;
+ }
+ 
++extern void sr_uuid_to_string(char *dest, const uint8_t *uuid);
++
+ struct xc_sr_record
+ {
+     uint32_t type;
+--- a/tools/libxc/xc_sr_restore.c
++++ b/tools/libxc/xc_sr_restore.c
+@@ -608,6 +608,7 @@ static int restore(struct xc_sr_context
+     struct xc_sr_record rec;
+     int rc, saved_rc = 0, saved_errno = 0;
+ 
++    SUSEINFO("domid %u: %s %s start", ctx->domid, ctx->uuid, __func__);
+     IPRINTF("Restoring domain");
+ 
+     rc = setup(ctx);
+@@ -684,6 +685,7 @@ static int restore(struct xc_sr_context
+     PERROR("Restore failed");
+ 
+  done:
++    SUSEINFO("domid %u: %s done", ctx->domid, __func__);
+     cleanup(ctx);
+ 
+     if ( saved_rc )
+@@ -748,6 +750,7 @@ int xc_domain_restore(xc_interface *xch,
+     }
+ 
+     ctx.domid = dom;
++    sr_uuid_to_string(ctx.uuid, ctx.dominfo.handle);
+ 
+     if ( read_headers(&ctx) )
+         return -1;
+--- a/tools/libxc/xc_sr_save.c
++++ b/tools/libxc/xc_sr_save.c
+@@ -852,6 +852,7 @@ static int save(struct xc_sr_context *ct
+     xc_interface *xch = ctx->xch;
+     int rc, saved_rc = 0, saved_errno = 0;
+ 
++    SUSEINFO("domid %u: %s %s start", ctx->domid, ctx->uuid, __func__);
+     IPRINTF("Saving domain %d, type %s",
+             ctx->domid, dhdr_type_to_str(guest_type));
+ 
+@@ -964,6 +965,7 @@ static int save(struct xc_sr_context *ct
+     PERROR("Save failed");
+ 
+  done:
++    SUSEINFO("domid %u: %s done", ctx->domid, __func__);
+     cleanup(ctx);
+ 
+     if ( saved_rc )
+@@ -1019,6 +1021,10 @@ static int suse_precopy_policy(struct pr
+         goto out;
+     }
+     /* Keep going */
++    if ( stats.dirty_count >= 0 )
++        SUSEINFO("domid %u: dirty pages %ld after iteration %u/%u",
++                suse_flags.ctx->domid,
++                suse_flags.dirty_count, stats.iteration, suse_flags.max_iters);
+     return XGS_POLICY_CONTINUE_PRECOPY;
+ 
+ out:
+@@ -1032,6 +1038,9 @@ out:
+         return XGS_POLICY_ABORT;
+     }
+ suspend:
++    SUSEINFO("domid %u: suspending, remaining dirty pages %ld/%lu prior final transit",
++            suse_flags.ctx->domid,
++            suse_flags.dirty_count, suse_flags.ctx->save.p2m_size);
+     return XGS_POLICY_STOP_AND_COPY;
+ }
+ 
+@@ -1095,6 +1104,7 @@ int xc_domain_save_suse(xc_interface *xc
+     }
+ 
+     ctx.domid = dom;
++    sr_uuid_to_string(ctx.uuid, ctx.dominfo.handle);
+ 
+     if ( ctx.dominfo.hvm )
+     {

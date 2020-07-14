@@ -1,0 +1,43 @@
+# Commit 7028534d8482d25860c4d1aa8e45f0b911abfc5a
+# Date 2020-06-11 16:26:06 +0100
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/spec-ctrl: Update docs with SRBDS workaround
+
+RDRAND/RDSEED can be hidden using cpuid= to mitigate SRBDS if microcode
+isn't available.
+
+This is part of XSA-320 / CVE-2020-0543.
+
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Acked-by: Julien Grall <jgrall@amazon.com>
+
+--- a/docs/misc/xen-command-line.pandoc
++++ b/docs/misc/xen-command-line.pandoc
+@@ -481,16 +481,21 @@ choice of `dom0-kernel` is deprecated an
+ This option allows for fine tuning of the facilities Xen will use, after
+ accounting for hardware capabilities as enumerated via CPUID.
+ 
++Unless otherwise noted, options only have any effect in their negative form,
++to hide the named feature(s).  Ignoring a feature using this mechanism will
++cause Xen not to use the feature, nor offer them as usable to guests.
++
+ Currently accepted:
+ 
+ The Speculation Control hardware features `srbds-ctrl`, `md-clear`, `ibrsb`,
+ `stibp`, `ibpb`, `l1d-flush` and `ssbd` are used by default if available and
+-applicable.  They can be ignored, e.g. `no-ibrsb`, at which point Xen won't
+-use them itself, and won't offer them to guests.
++applicable.  They can all be ignored.
+ 
+-`rdrand` can be used to override the default disabling of the feature on certain
+-AMD systems.  Its negative form can of course also be used to suppress use and
+-exposure of the feature.
++`rdrand` and `rdseed` can be ignored, as a mitigation to XSA-320 /
++CVE-2020-0543.  The RDRAND feature is disabled by default on certain AMD
++systems, due to possible malfunctions after ACPI S3 suspend/resume.  `rdrand`
++may be used in its positive form to override Xen's default behaviour on these
++systems, and make the feature fully usable.
+ 
+ ### cpuid_mask_cpu
+ > `= fam_0f_rev_[cdefg] | fam_10_rev_[bc] | fam_11_rev_b`

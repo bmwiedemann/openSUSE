@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jul 13 11:09:48 2020 UTC - shap-staff@suse.de
+
+- Release 1.1.0
+
+  ## Added
+  - Support for Corosync v3 (#156)
+  - `--version` CLI flag (#158 #168)
+  - Grafana dashboards (#160 #166)
+  - New metrics for Pacemaker node attributes (#167)
+  - New metrics for instrumentation of the exporter itself (#169)
+
+  ## Changed
+  - `--enable-timestamps` CLI flag and config option have been marked as deprecated (#158)
+  - Migrated CI from Travis to GitHub Actions (#163)
+  - Update and improve documentation (#164 #165)
+
+  ## Fixed
+  - Fix `corosync-quorumtool` parsing in Corosync v2.3.6 (#157)
+
+-------------------------------------------------------------------
 Mon May 18 10:00:39 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
 
 - Backport to SLE12SP3 and SLE15. (jsc#SLE-10902, jsc#SLE-10903, jsc#ECO-817, jsc#ECO-818) 

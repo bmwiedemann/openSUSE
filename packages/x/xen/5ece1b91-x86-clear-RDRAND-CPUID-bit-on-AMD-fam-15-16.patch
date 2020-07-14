@@ -1,0 +1,154 @@
+# Commit 93401e28a84b9dc5945f5d0bf5bce68e9d5ee121
+# Date 2020-05-27 09:49:37 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86: clear RDRAND CPUID bit on AMD family 15h/16h
+
+Inspired by Linux commit c49a0a80137c7ca7d6ced4c812c9e07a949f6f24:
+
+    There have been reports of RDRAND issues after resuming from suspend on
+    some AMD family 15h and family 16h systems. This issue stems from a BIOS
+    not performing the proper steps during resume to ensure RDRAND continues
+    to function properly.
+
+    Update the CPU initialization to clear the RDRAND CPUID bit for any family
+    15h and 16h processor that supports RDRAND. If it is known that the family
+    15h or family 16h system does not have an RDRAND resume issue or that the
+    system will not be placed in suspend, the "cpuid=rdrand" kernel parameter
+    can be used to stop the clearing of the RDRAND CPUID bit.
+
+    Note, that clearing the RDRAND CPUID bit does not prevent a processor
+    that normally supports the RDRAND instruction from executing it. So any
+    code that determined the support based on family and model won't #UD.
+
+Warn if no explicit choice was given on affected hardware.
+
+Check RDRAND functions at boot as well as after S3 resume (the retry
+limit chosen is entirely arbitrary).
+
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Roger Pau Monné <roger.pau@citrix.com>
+Acked-by: Andrew Cooper <andrew.cooper3@citrix.com>
+
+--- a/docs/misc/xen-command-line.pandoc
++++ b/docs/misc/xen-command-line.pandoc
+@@ -488,6 +488,10 @@ The Speculation Control hardware feature
+ be ignored, e.g. `no-ibrsb`, at which point Xen won't use them itself, and
+ won't offer them to guests.
+ 
++`rdrand` can be used to override the default disabling of the feature on certain
++AMD systems.  Its negative form can of course also be used to suppress use and
++exposure of the feature.
++
+ ### cpuid_mask_cpu
+ > `= fam_0f_rev_[cdefg] | fam_10_rev_[bc] | fam_11_rev_b`
+ 
+--- a/xen/arch/x86/cpu/amd.c
++++ b/xen/arch/x86/cpu/amd.c
+@@ -3,6 +3,7 @@
+ #include <xen/mm.h>
+ #include <xen/smp.h>
+ #include <xen/pci.h>
++#include <xen/warning.h>
+ #include <asm/io.h>
+ #include <asm/msr.h>
+ #include <asm/processor.h>
+@@ -645,6 +646,26 @@ static void init_amd(struct cpuinfo_x86
+ 		if (acpi_smi_cmd && (acpi_enable_value | acpi_disable_value))
+ 			amd_acpi_c1e_quirk = true;
+ 		break;
++
++	case 0x15: case 0x16:
++		/*
++		 * There are some Fam15/Fam16 systems where upon resume from S3
++		 * firmware fails to re-setup properly functioning RDRAND.
++		 * By the time we can spot the problem, it is too late to take
++		 * action, and there is nothing Xen can do to repair the problem.
++		 * Clear the feature unless force-enabled on the command line.
++		 */
++		if (c == &boot_cpu_data &&
++		    cpu_has(c, X86_FEATURE_RDRAND) &&
++		    !is_forced_cpu_cap(X86_FEATURE_RDRAND)) {
++			static const char __initconst text[] =
++				"RDRAND may cease to work on this hardware upon resume from S3.\n"
++				"Please choose an explicit cpuid={no-}rdrand setting.\n";
++
++			setup_clear_cpu_cap(X86_FEATURE_RDRAND);
++			warning_add(text);
++		}
++		break;
+ 	}
+ 
+ 	display_cacheinfo(c);
+--- a/xen/arch/x86/cpu/common.c
++++ b/xen/arch/x86/cpu/common.c
+@@ -10,6 +10,7 @@
+ #include <asm/io.h>
+ #include <asm/mpspec.h>
+ #include <asm/apic.h>
++#include <asm/random.h>
+ #include <asm/setup.h>
+ #include <mach_apic.h>
+ #include <public/sysctl.h> /* for XEN_INVALID_{SOCKET,CORE}_ID */
+@@ -97,6 +98,11 @@ void __init setup_force_cpu_cap(unsigned
+ 	__set_bit(cap, boot_cpu_data.x86_capability);
+ }
+ 
++bool __init is_forced_cpu_cap(unsigned int cap)
++{
++	return test_bit(cap, forced_caps);
++}
++
+ static void default_init(struct cpuinfo_x86 * c)
+ {
+ 	/* Not much we can do here... */
+@@ -496,6 +502,27 @@ void identify_cpu(struct cpuinfo_x86 *c)
+ 	printk("\n");
+ #endif
+ 
++	/*
++	 * If RDRAND is available, make an attempt to check that it actually
++	 * (still) works.
++	 */
++	if (cpu_has(c, X86_FEATURE_RDRAND)) {
++		unsigned int prev = 0;
++
++		for (i = 0; i < 5; ++i)
++		{
++			unsigned int cur = arch_get_random();
++
++			if (prev && cur != prev)
++				break;
++			prev = cur;
++		}
++
++		if (i >= 5)
++			printk(XENLOG_WARNING "CPU%u: RDRAND appears to not work\n",
++			       smp_processor_id());
++	}
++
+ 	if (system_state == SYS_STATE_resume)
+ 		return;
+ 
+--- a/xen/arch/x86/cpuid.c
++++ b/xen/arch/x86/cpuid.c
+@@ -67,6 +67,9 @@ static int __init parse_xen_cpuid(const
+             {
+                 if ( !val )
+                     setup_clear_cpu_cap(mid->bit);
++                else if ( mid->bit == X86_FEATURE_RDRAND &&
++                          (cpuid_ecx(1) & cpufeat_mask(X86_FEATURE_RDRAND)) )
++                    setup_force_cpu_cap(X86_FEATURE_RDRAND);
+                 mid = NULL;
+             }
+ 
+--- a/xen/include/asm-x86/processor.h
++++ b/xen/include/asm-x86/processor.h
+@@ -166,6 +166,7 @@ extern const struct x86_cpu_id *x86_matc
+ extern void identify_cpu(struct cpuinfo_x86 *);
+ extern void setup_clear_cpu_cap(unsigned int);
+ extern void setup_force_cpu_cap(unsigned int);
++extern bool is_forced_cpu_cap(unsigned int);
+ extern void print_cpu_info(unsigned int cpu);
+ extern unsigned int init_intel_cacheinfo(struct cpuinfo_x86 *c);
+ 

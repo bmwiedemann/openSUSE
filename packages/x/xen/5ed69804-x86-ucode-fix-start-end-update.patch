@@ -1,0 +1,207 @@
+# Commit 3659f54e9bd31f0f59268402fd67fb4b4118e184
+# Date 2020-06-02 19:18:44 +0100
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/ucode: Fix errors with start/end_update()
+
+c/s 9267a439c "x86/ucode: Document the behaviour of the microcode_ops hooks"
+identified several poor behaviours of the start_update()/end_update_percpu()
+hooks.
+
+AMD have subsequently confirmed that OSVW don't, and are not expected to,
+change across a microcode load, rendering all of this complexity unecessary.
+
+Instead of fixing up the logic to not leave the OSVW state reset in a number
+of corner cases, delete the logic entirely.
+
+This in turn allows for the removal of the poorly-named 'start_update'
+parameter to microcode_update_one(), and for svm_host_osvw_{init,reset}() to
+become static.
+
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Roger Pau Monné <roger.pau@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/acpi/power.c
++++ b/xen/arch/x86/acpi/power.c
+@@ -286,7 +286,7 @@ static int enter_state(u32 state)
+     console_end_sync();
+     watchdog_enable();
+ 
+-    microcode_update_one(true);
++    microcode_update_one();
+ 
+     if ( !recheck_cpu_features(0) )
+         panic("Missing previously available feature(s)\n");
+--- a/xen/arch/x86/microcode_amd.c
++++ b/xen/arch/x86/microcode_amd.c
+@@ -24,7 +24,6 @@
+ #include <asm/msr.h>
+ #include <asm/processor.h>
+ #include <asm/microcode.h>
+-#include <asm/hvm/svm/svm.h>
+ 
+ #define pr_debug(x...) ((void)0)
+ 
+@@ -590,27 +589,10 @@ static struct microcode_patch *cpu_reque
+     return patch;
+ }
+ 
+-#ifdef CONFIG_HVM
+-static int start_update(void)
+-{
+-    /*
+-     * svm_host_osvw_init() will be called on each cpu by calling '.end_update'
+-     * in common code.
+-     */
+-    svm_host_osvw_reset();
+-
+-    return 0;
+-}
+-#endif
+-
+ static const struct microcode_ops microcode_amd_ops = {
+     .cpu_request_microcode            = cpu_request_microcode,
+     .collect_cpu_info                 = collect_cpu_info,
+     .apply_microcode                  = apply_microcode,
+-#ifdef CONFIG_HVM
+-    .start_update                     = start_update,
+-    .end_update_percpu                = svm_host_osvw_init,
+-#endif
+     .free_patch                       = free_patch,
+     .compare_patch                    = compare_patch,
+     .match_cpu                        = match_cpu,
+--- a/xen/arch/x86/microcode.c
++++ b/xen/arch/x86/microcode.c
+@@ -578,9 +578,6 @@ static int do_microcode_update(void *pat
+     else
+         ret = secondary_thread_fn();
+ 
+-    if ( microcode_ops->end_update_percpu )
+-        microcode_ops->end_update_percpu();
+-
+     return ret;
+ }
+ 
+@@ -652,16 +649,6 @@ static long microcode_update_helper(void
+     }
+     spin_unlock(&microcode_mutex);
+ 
+-    if ( microcode_ops->start_update )
+-    {
+-        ret = microcode_ops->start_update();
+-        if ( ret )
+-        {
+-            microcode_free_patch(patch);
+-            goto put;
+-        }
+-    }
+-
+     cpumask_clear(&cpu_callin_map);
+     atomic_set(&cpu_out, 0);
+     atomic_set(&cpu_updated, 0);
+@@ -760,28 +747,14 @@ static int __init microcode_init(void)
+ __initcall(microcode_init);
+ 
+ /* Load a cached update to current cpu */
+-int microcode_update_one(bool start_update)
++int microcode_update_one(void)
+ {
+-    int err;
+-
+     if ( !microcode_ops )
+         return -EOPNOTSUPP;
+ 
+     microcode_ops->collect_cpu_info(&this_cpu(cpu_sig));
+ 
+-    if ( start_update && microcode_ops->start_update )
+-    {
+-        err = microcode_ops->start_update();
+-        if ( err )
+-            return err;
+-    }
+-
+-    err = microcode_update_cpu(NULL);
+-
+-    if ( microcode_ops->end_update_percpu )
+-        microcode_ops->end_update_percpu();
+-
+-    return err;
++    return microcode_update_cpu(NULL);
+ }
+ 
+ /* BSP calls this function to parse ucode blob and then apply an update. */
+@@ -825,7 +798,7 @@ int __init early_microcode_update_cpu(vo
+     spin_unlock(&microcode_mutex);
+     ASSERT(rc);
+ 
+-    return microcode_update_one(true);
++    return microcode_update_one();
+ }
+ 
+ int __init early_microcode_init(void)
+--- a/xen/arch/x86/hvm/svm/svm.c
++++ b/xen/arch/x86/hvm/svm/svm.c
+@@ -1082,7 +1082,7 @@ static void svm_guest_osvw_init(struct d
+     spin_unlock(&osvw_lock);
+ }
+ 
+-void svm_host_osvw_reset()
++static void svm_host_osvw_reset(void)
+ {
+     spin_lock(&osvw_lock);
+ 
+@@ -1092,7 +1092,7 @@ void svm_host_osvw_reset()
+     spin_unlock(&osvw_lock);
+ }
+ 
+-void svm_host_osvw_init()
++static void svm_host_osvw_init(void)
+ {
+     spin_lock(&osvw_lock);
+ 
+--- a/xen/arch/x86/smpboot.c
++++ b/xen/arch/x86/smpboot.c
+@@ -358,7 +358,7 @@ void start_secondary(void *unused)
+ 
+     initialize_cpu_data(cpu);
+ 
+-    microcode_update_one(false);
++    microcode_update_one();
+ 
+     /*
+      * If MSR_SPEC_CTRL is available, apply Xen's default setting and discard
+--- a/xen/include/asm-x86/hvm/svm/svm.h
++++ b/xen/include/asm-x86/hvm/svm/svm.h
+@@ -93,9 +93,6 @@ extern u32 svm_feature_flags;
+ #define DEFAULT_TSC_RATIO       0x0000000100000000ULL
+ #define TSC_RATIO_RSVD_BITS     0xffffff0000000000ULL
+ 
+-extern void svm_host_osvw_reset(void);
+-extern void svm_host_osvw_init(void);
+-
+ /* EXITINFO1 fields on NPT faults */
+ #define _NPT_PFEC_with_gla     32
+ #define NPT_PFEC_with_gla      (1UL<<_NPT_PFEC_with_gla)
+--- a/xen/include/asm-x86/microcode.h
++++ b/xen/include/asm-x86/microcode.h
+@@ -24,8 +24,6 @@ struct microcode_ops {
+                                                      size_t size);
+     int (*collect_cpu_info)(struct cpu_signature *csig);
+     int (*apply_microcode)(const struct microcode_patch *patch);
+-    int (*start_update)(void);
+-    void (*end_update_percpu)(void);
+     void (*free_patch)(void *mc);
+     bool (*match_cpu)(const struct microcode_patch *patch);
+     enum microcode_match_result (*compare_patch)(
+--- a/xen/include/asm-x86/processor.h
++++ b/xen/include/asm-x86/processor.h
+@@ -586,7 +586,7 @@ void microcode_set_module(unsigned int);
+ int microcode_update(XEN_GUEST_HANDLE_PARAM(const_void), unsigned long len);
+ int early_microcode_update_cpu(void);
+ int early_microcode_init(void);
+-int microcode_update_one(bool start_update);
++int microcode_update_one(void);
+ int microcode_init_intel(void);
+ int microcode_init_amd(void);
+ 

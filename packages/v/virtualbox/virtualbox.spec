@@ -16,6 +16,23 @@
 #
 
 
+%if "@BUILD_FLAVOR@" == "kmp"
+### macros for virtualbox-kmp ###
+%define main_package 0
+%define kmp_package 1
+
+%define name_suffix kmp
+%define dash -
+%define package_summary Kernel modules for VirtualBox
+%define package_group System/Kernel
+%else
+### macros for virtualbox main package ###
+%define main_package 1
+%define kmp_package 0
+
+%define package_summary VirtualBox is an Emulator
+%define package_group System/Emulators/PC
+
 %define qt5ver %(rpm -q --queryformat %%{version} libQt5Core5|perl -ne '/(\\d+)\\.(\\d+)\\.(\\d+)?/&&printf "%%d%%02d%%02d\\n",$1,$2,$3')
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
@@ -43,15 +60,17 @@ python3 -O -c "import sys, os, compileall; br='%{buildroot}'; compileall.compile
 # For the above reasons, limit the number of jobs to 2.
 %define _smp_mflags -j2
 
-%define _vbox_instdir  %{_libexecdir}/virtualbox
+%define _vbox_instdir  %{_prefix}/lib/virtualbox
 %define _udevrulesdir /usr/lib/udev/rules.d
-Name:           virtualbox
+%endif 
+
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
+Name:           virtualbox%{?dash}%{?name_suffix}
 Version:        6.1.10
 Release:        0
-Summary:        VirtualBox is an Emulator
+Summary:        %{package_summary}
 License:        GPL-2.0-or-later
-Group:          System/Emulators/PC
+Group:          %{package_group}
 URL:            http://www.virtualbox.org/
 #
 # so you don't need to repack virtualbox by hand, just add new release of VirtualBox-x.x.x.tar.bz2 and line below with
@@ -63,14 +82,14 @@ Source1:        UserManual.pdf
 %if 0%{?sle_version} != 120300 
 Source2:        VirtualBox.appdata.xml
 %endif
-Source3:        %{name}-60-vboxguest.rules
-Source4:        %{name}-default.virtualbox
-Source5:        %{name}-kmp-files
-Source7:        %{name}-kmp-preamble
+Source3:        virtualbox-60-vboxguest.rules
+Source4:        virtualbox-default.virtualbox
+Source5:        virtualbox-kmp-files
+Source7:        virtualbox-kmp-preamble
 Source8:        update-extpack.sh
-Source9:        %{name}-wrapper.sh
-Source10:       %{name}-LocalConfig.kmk
-Source11:       %{name}-60-vboxdrv.rules
+Source9:        virtualbox-wrapper.sh
+Source10:       virtualbox-LocalConfig.kmk
+Source11:       virtualbox-60-vboxdrv.rules
 Source14:       vboxdrv.service
 Source15:       vboxadd-service.service
 Source16:       vboxconfig.sh
@@ -83,8 +102,8 @@ Source22:       vboxweb-service.sh
 Source23:       vboxautostart.service
 Source24:       vboxautostart.sh
 Source97:       README.build
-Source98:       %{name}-rpmlintrc
-Source99:       %{name}-patch-source.sh
+Source98:       virtualbox-rpmlintrc
+Source99:       virtualbox-patch-source.sh
 #rework init scripts to fit suse needs
 Patch1:         vbox-vboxdrv-init-script.diff
 Patch2:         vbox-vboxadd-init-script.diff
@@ -144,6 +163,8 @@ Patch125:       remove_vbox_video_build.patch
 Patch128:       fix_lib_search.patch
 # Fixes for modified kernel in Leap 42.3
 Patch130:       fixes_for_Leap42.3.patch
+# Fixes for SLE12
+Patch131:       fixes_for_sle12.patch
 # Fixes for Qt5.13 on 32-bit systems
 Patch132:       fixes_for_qt5.13.patch
 # Fixes for openSUSE Leap 15.2
@@ -160,6 +181,22 @@ Patch137:       handle_gsoap_208103.patch
 Patch138:       fixes_for_5.8.patch
 Patch999:       virtualbox-fix-ui-background-color.patch
 #
+
+# Common BuildRequires for both virtualbox and virtualbox-kmp
+BuildRequires:  %{kernel_module_package_buildreqs}
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
+BuildRequires:  kbuild >= 0.1.9998svn3101
+BuildRequires:  libcap-devel
+BuildRequires:  libcurl-devel
+BuildRequires:  libopenssl-devel
+BuildRequires:  libxslt-devel
+BuildRequires:  module-init-tools
+BuildRequires:  pam-devel
+BuildRequires:  yasm
+
+### Requirements for virtualbox main package ###
+%if %{main_package}
 BuildRequires:  LibVNCServer-devel
 BuildRequires:  SDL-devel
 BuildRequires:  acpica
@@ -172,24 +209,16 @@ BuildRequires:  libboost_headers-devel
 %else
 BuildRequires:  boost-devel
 %endif
-BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  dev86
 BuildRequires:  device-mapper-devel
 BuildRequires:  dmidecode
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  fdupes
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel-static
 BuildRequires:  gsoap-devel >= 2.8.50
 BuildRequires:  java-devel >= 1.6.0
-BuildRequires:  kbuild >= 0.1.9998svn3101
-#BuildRequires:  kernel-syms
-BuildRequires:  libcap-devel
-BuildRequires:  libcurl-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libidl-devel
-BuildRequires:  libopenssl-devel
 BuildRequires:  libopus-devel
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtbase-devel
@@ -197,8 +226,6 @@ BuildRequires:  libqt5-qtx11extras-devel
 BuildRequires:  libvpx-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  libzio-devel
-BuildRequires:  module-init-tools
-BuildRequires:  pam-devel
 BuildRequires:  pulseaudio-devel
 BuildRequires:  python3-devel
 BuildRequires:  sed
@@ -207,7 +234,6 @@ BuildRequires:  which
 BuildRequires:  xorg-x11
 BuildRequires:  xorg-x11-server
 BuildRequires:  xorg-x11-server-sdk
-BuildRequires:  yasm
 BuildRequires:  zlib-devel-static
 BuildRequires:  pkgconfig(fontsproto)
 BuildRequires:  pkgconfig(libpng)
@@ -230,21 +256,6 @@ BuildRequires:  pkgconfig(xineramaproto)
 BuildRequires:  pkgconfig(xmu)
 BuildRequires:  pkgconfig(xproto)
 BuildRequires:  pkgconfig(xrandr)
-Requires:       %{name}-kmp = %{version}
-Requires(post): sysvinit(syslog)
-Requires(pre):  permissions
-%if ! 0%{?suse_version} > 1325
-Requires(pre):  net-tools-deprecated
-%endif
-Requires(pre):  shadow
-Requires(pre):  %fillup_prereq
-Recommends:     %{name}-gui = %{version}
-#rename from ose version:
-Provides:       %{name}-ose = %{version}
-Obsoletes:      %{name}-ose < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%(sed -e '/^Provides: multiversion(kernel)/d' %{_libexecdir}/rpm/kernel-module-subpackage > %{_builddir}/virtualbox-kmp-template)
-ExclusiveArch:  x86_64
 %ifarch amd64 x86_64 ia32e em64t
 BuildRequires:  gcc-32bit
 BuildRequires:  gcc-c++-32bit
@@ -257,7 +268,34 @@ BuildRequires:  xorg-x11-libXt-devel-32bit
 # package i4l-vbox from source package i4l-base shares the directory /etc/vbox
 # with us, but with different owner.
 Conflicts:      i4l-vbox
+Requires:       %{name}-kmp = %{version}
+Requires(post): sysvinit(syslog)
+Requires(pre):  permissions
+%if ! 0%{?suse_version} > 1325
+Requires(pre):  net-tools-deprecated
+%endif
+Requires(pre):  shadow
+Requires(pre):  %fillup_prereq
+Recommends:     %{name}-gui = %{version}
+#rename from ose version:
+Provides:       %{name}-ose = %{version}
+Obsoletes:      %{name}-ose < %{version}
+%endif # main_package
 
+### Requirements for virtualbox-kmp ###
+%if %{kmp_package}
+BuildRequires:  libxml2-devel
+%(sed -e '/^Provides: multiversion(kernel)/d' %{_libexecdir}/rpm/kernel-module-subpackage > %{_builddir}/virtualbox-kmp-template)
+%kernel_module_package -t %{_builddir}/virtualbox-kmp-template -p %{SOURCE7} -n virtualbox -f %{SOURCE5} -x kdump um xen pae xenpae pv
+Obsoletes:      virtualbox-guest-kmp
+Obsoletes:      virtualbox-host-kmp
+%endif # kmp_package
+
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+ExclusiveArch:  x86_64
+
+### Description and subpackages of virtualbox main package ###
+%if %{main_package}
 %description
 VirtualBox is a hosted hypervisor for x86 computers. It supports the
 creation and management of guest virtual machines running versions
@@ -275,7 +313,7 @@ Requires(pre):  permissions
 Provides:       %{name}-gui = %{version}
 #this is needed during update to trigger installing qt subpackage
 #http://en.opensuse.org/openSUSE:Upgrade_dependencies_explanation#Splitting_and_Merging
-Provides:       %{name}-ose:%{_libexecdir}/virtualbox/VirtualBox.so
+Provides:       %{name}-ose:%{_prefix}/lib/virtualbox/VirtualBox.so
 #rename from "ose" version:
 Provides:       %{name}-ose-qt = %{version}
 Obsoletes:      %{name}-ose-qt < %{version}
@@ -294,18 +332,6 @@ Obsoletes:      %{name}-vboxwebsrv
 %description websrv
 The VirtualBox web server is used to control headless VMs using a browser.
 #########################################
-
-%package  kmp
-Summary:        Kernel modules for VirtualBox
-Group:          System/Emulators/PC
-%kernel_module_package -t %{_builddir}/virtualbox-kmp-template -p %{SOURCE7} -n %{name} -f %{SOURCE5} -x kdump um xen pae xenpae pv
-Requires:       %{kernel_module_package_buildreqs}
-Obsoletes:      %{name}-guest-kmp
-Obsoletes:      %{name}-host-kmp
-
-%description kmp
-This package contains the kernel-modules that VirtualBox uses to create or run virtual machines.
-##########################################
 
 %package guest-x11
 Summary:        VirtualBox X11 drivers for mouse and video
@@ -418,6 +444,13 @@ Virtual Network Computing (VNC) is a graphical desktop sharing system that uses 
 protocol (RFB) to remotely control another computer. When this optional feature is desired, it is installed
 as an "extpack" for VirtualBox. The implementation is licensed under GPL.
 ###########################################
+%endif # main_package
+
+### Description of virtualbox-kmp ###
+%if %{kmp_package}
+%description
+This package contains the kernel-modules that VirtualBox uses to create or run virtual machines.
+%endif # kmp_package
 
 %prep
 %setup -q -n VirtualBox-%{version}
@@ -454,6 +487,7 @@ as an "extpack" for VirtualBox. The implementation is licensed under GPL.
 # Patch for Leap 42.3
 %patch130 -p1
 %endif
+%patch131 -p1
 # Handle the 32-bit changes needed for Qt 5.13
 %ifarch %ix86 && 0%{?qt5ver} >= 51300
 %patch132 -p1
@@ -467,6 +501,8 @@ as an "extpack" for VirtualBox. The implementation is licensed under GPL.
 # make VB UI background colors look sane again
 %patch999 -p1
 
+### Documents for virtualbox main package ###
+%if %{main_package}
 #copy user manual
 cp %{SOURCE1} UserManual.pdf
 #copy README.build
@@ -475,6 +511,8 @@ cp %{SOURCE97} README.build
 cp %{SOURCE10} LocalConfig.kmk
 #copy autostart doc
 cp %{SOURCE20} README.autostart
+%endif # main_package
+
 #
 ##########################
 ####workaround kmk_sed --v
@@ -497,6 +535,8 @@ echo "SED = $RPM_BUILD_DIR/VirtualBox-%{version}/kmk_sed"  >> LocalConfig.kmk
 # fix build of vboxvideo kernel module: replace relative drm include path with absolute include path
 sed -i 's:include/drm:/usr/src/linux/include/drm:' src/VBox/Additions/linux/drm/Makefile.module.kms
 
+### %build, %install, and %file sections for virtualbox ###
+%if %{main_package}
 %build
 # Disable LTO - Link Time Optimization
 %define _lto_cflags %{nil}
@@ -543,51 +583,6 @@ install -D -m 644 VNC-*.vbox-extpack "%{buildroot}%{_datadir}/virtualbox/extensi
 popd
 install -D -m 644 "COPYING" "%{buildroot}%{_datadir}/licenses/LICENSE.vnc"
 
-#
-# build kernel modules for guest and host (check novel-kmp package as example)
-# host  modules : vboxdrv,vboxnetflt,vboxnetadp
-# guest modules : vboxguest,vboxsf vboxvideo (for Leap 15.1 and older)
-echo "build kernel modules"
-for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp} \
-           out/linux.*/release/bin/additions/src/vbox{guest,sf,video}; do
-    #get the module name from path
-    module_name=$(basename "$vbox_module")
-
-    # go through the all flavors (desktop,default ...)
-    for flavor in %{flavors_to_build}; do
-	# delete old build dir for sure
-	rm -rf modules_build_dir/${module_name}_${flavor}
-
-       if [ "$module_name" = "vboxdrv" -o \
-            "$module_name" = "vboxguest" ] ; then
-	    SYMBOLS=""
-	fi
-	# create build directory for specific flavor
-        mkdir -p modules_build_dir/$flavor
-
-	# copy sources which will be used to build vbox module in last step
-	cp -r $vbox_module/ modules_build_dir/$flavor/
-
-	# copy vboxdrv (for host) module symbols which are used by vboxnetflt and vboxnetadp km's:
-	if [ "$module_name" = "vboxnetflt" -o \
-	     "$module_name" = "vboxnetadp" ] ; then
-	    cp $PWD/modules_build_dir/$flavor/vboxdrv/Module.symvers	\
-		  $PWD/modules_build_dir/$flavor/$module_name
-	    SYMBOLS="$PWD/modules_build_dir/$flavor/vboxdrv/Module.symvers"
-	fi
-	# copy vboxguest (for guest) module symbols which are used by vboxsf km:
-       if [ "$module_name" = "vboxsf" -o \
-            "$module_name" = "vboxvideo" ] ; then
-           cp $PWD/modules_build_dir/$flavor/vboxguest/Module.symvers \
-	          $PWD/modules_build_dir/$flavor/$module_name
-	    SYMBOLS="$PWD/modules_build_dir/$flavor/vboxguest/Module.symvers"
-	fi
-	# build the module for the specific flavor
-	make -j2 -C %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor %{?linux_make_arch} modules \
-		M=$PWD/modules_build_dir/$flavor/$module_name KBUILD_EXTRA_SYMBOLS="$SYMBOLS" V=1
-    done
-done
-
 %install
 #################################
 echo "create directory structure"
@@ -611,23 +606,6 @@ install -d %{buildroot}%{_unitdir}/multi-user.target.wants
 install -d -m 755 %{buildroot}%{_sysconfdir}/vbox
 install -d -m 755 %{buildroot}%{_udevrulesdir}
 install -d -m 755 %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d
-
-####################################################################################
-echo "entering virtualbox-kmp install section"
-####################################################################################
-export INSTALL_MOD_PATH=%{buildroot}
-export INSTALL_MOD_DIR=extra
-#Keep the install process from calling mkinitrd. The VB kernel modules are not in initrd. bsc#1052428
-export INITRD_IN_POSTTRANS=1
-export KMP_NEEDS_MKINITRD=0
-#to install modules we use here similar steps like in build phase, go through all the modules :
-for module_name in vbox{drv,netflt,netadp,guest,sf,video}
-do
-	#and through the all flavors
-	for flavor in %{flavors_to_build}; do
-    	    make -C %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor modules_install M=$PWD/modules_build_dir/$flavor/$module_name
-    	done
-done
 
 ###########################################
 echo "entering guest-tools install section"
@@ -1102,5 +1080,141 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_datadir}/virtualbox/extensions/VNC-%{version}.vbox-extpack
 %dir %{_datadir}/licenses
 %{_datadir}/licenses/LICENSE.vnc
+
+%endif # main_package
+
+### %build and %install sections of virtualbox-kmp ### 
+%if %{kmp_package}
+%build
+# Disable LTO - Link Time Optimization
+%define _lto_cflags %{nil}
+#ensure we don't ever use them
+rm -rf src/libs/{libpng-*,libxml2-*,libxslt-*,zlib-*,boost-*}
+
+# Craft LocalConfig.kmk
+echo "
+VBOX_GCC_OPT                   := %{optflags}
+VBOX_GCC_WERR                  := 
+VBOX_BUILD_PUBLISHER           := _SUSE
+
+VBOX_OSE                       := 1
+VBOX_WITH_DOCS                 :=
+VBOX_WITHOUT_LINUX_TEST_BUILDS := 1
+VBOX_WITH_TESTCASES            :=
+SDK_VBOX_LIBXML2_DEFS          := _REENTRANT
+SDK_VBOX_LIBXML2_INCS          := /usr/include/libxml2
+SDK_VBOX_LIBXML2_LIBS          := xml2
+SDK_VBOX_OPENSSL_INCS          :=
+SDK_VBOX_OPENSSL_LIBS          := ssl crypto
+SDK_VBOX_BLD_OPENSSL_LIBS      := ssl crypto
+SDK_VBOX_LIBCURL_INCS          :=
+SDK_VBOX_LIBCURL_LIBS          := curl
+" > LocalConfig.kmk
+
+COMMON_KMK_FLAGS="
+	KBUILD_VERBOSE=2 \
+	KBUILD_TARGET=linux \
+	BUILD_TARGET=linux \
+"
+# Architecture specific flags
+%ifarch x86_64
+COMMON_KMK_FLAGS+="
+	KBUILD_TARGET_ARCH=amd64 \
+	BUILD_TARGET_ARCH=amd64
+"
+%endif
+
+# Build additions to export the source code of vbox{guest,sf,video} to
+# out/linux.*/release/bin/additions/src/
+%{_bindir}/kmk %_smp_mflags \
+	${COMMON_KMK_FLAGS} \
+	VBOX_WITH_X11_ADDITIONS= \
+	VBOX_ONLY_ADDITIONS=1
+
+# The following kmk commands are used to extract the source of
+# vbox{drv,netflt,netadp} without building the whole virtualbox
+# program.
+
+# 1. build src/bldprogs/ to get bin2c and VBoxTpG
+%{_bindir}/kmk %_smp_mflags -C src/bldprogs/ \
+	${COMMON_KMK_FLAGS} \
+	VBOX_ONLY_EXTPACKS=1
+
+# 2. build src/VBox/HostDrivers/ with VBOX_ONLY_EXTPACKS=1 to
+#    get SUPR3.a for src/VBox/Runtime/
+%{_bindir}/kmk %_smp_mflags -C src/VBox/HostDrivers/ \
+	${COMMON_KMK_FLAGS} \
+	VBOX_ONLY_EXTPACKS=1
+
+# 3. build src/VBox/Runtime/ with VBOX_ONLY_BUILD=1 to get
+#    VBoxRt.so for src/VBox/HostDrivers/Support/
+%{_bindir}/kmk %_smp_mflags -C src/VBox/Runtime/ \
+	${COMMON_KMK_FLAGS} \
+	VBOX_ONLY_BUILD=1
+
+# 4. build src/VBox/HostDrivers/ to export the source of
+#    host kernel modules to out/linux.*/release/bin/src/
+%{_bindir}/kmk %_smp_mflags -C src/VBox/HostDrivers/ \
+	${COMMON_KMK_FLAGS}
+#
+# build kernel modules for guest and host (check novel-kmp package as example)
+# host  modules : vboxdrv,vboxnetflt,vboxnetadp
+# guest modules : vboxguest,vboxsf vboxvideo (for Leap 15.1 and older)
+echo "build kernel modules"
+for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp} \
+           out/linux.*/release/bin/additions/src/vbox{guest,sf,video}; do
+    #get the module name from path
+    module_name=$(basename "$vbox_module")
+
+    # go through the all flavors (desktop,default ...)
+    for flavor in %{flavors_to_build}; do
+	# delete old build dir for sure
+	rm -rf modules_build_dir/${module_name}_${flavor}
+
+       if [ "$module_name" = "vboxdrv" -o \
+            "$module_name" = "vboxguest" ] ; then
+	    SYMBOLS=""
+	fi
+	# create build directory for specific flavor
+        mkdir -p modules_build_dir/$flavor
+
+	# copy sources which will be used to build vbox module in last step
+	cp -r $vbox_module/ modules_build_dir/$flavor/
+
+	# copy vboxdrv (for host) module symbols which are used by vboxnetflt and vboxnetadp km's:
+	if [ "$module_name" = "vboxnetflt" -o \
+	     "$module_name" = "vboxnetadp" ] ; then
+	    cp $PWD/modules_build_dir/$flavor/vboxdrv/Module.symvers	\
+		  $PWD/modules_build_dir/$flavor/$module_name
+	    SYMBOLS="$PWD/modules_build_dir/$flavor/vboxdrv/Module.symvers"
+	fi
+	# copy vboxguest (for guest) module symbols which are used by vboxsf km:
+       if [ "$module_name" = "vboxsf" -o \
+            "$module_name" = "vboxvideo" ] ; then
+           cp $PWD/modules_build_dir/$flavor/vboxguest/Module.symvers \
+	          $PWD/modules_build_dir/$flavor/$module_name
+	    SYMBOLS="$PWD/modules_build_dir/$flavor/vboxguest/Module.symvers"
+	fi
+	# build the module for the specific flavor
+	make -j2 -C %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor %{?linux_make_arch} modules \
+		M=$PWD/modules_build_dir/$flavor/$module_name KBUILD_EXTRA_SYMBOLS="$SYMBOLS" V=1
+    done
+done
+
+%install
+export INSTALL_MOD_PATH=%{buildroot}
+export INSTALL_MOD_DIR=extra
+#Keep the install process from calling mkinitrd. The VB kernel modules are not in initrd. bsc#1052428
+export INITRD_IN_POSTTRANS=1
+export KMP_NEEDS_MKINITRD=0
+#to install modules we use here similar steps like in build phase, go through all the modules :
+for module_name in vbox{drv,netflt,netadp,guest,sf,video}
+do
+	#and through the all flavors
+	for flavor in %{flavors_to_build}; do
+    	    make -C %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor modules_install M=$PWD/modules_build_dir/$flavor/$module_name
+    	done
+done
+%endif # kmp_package
 
 %changelog

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 13 14:43:11 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.3.1
+
+  * Saves some unnecessary allocations made internally by MRI. See [#125](https://github.com/fxn/zeitwerk/pull/125), by [@casperisfine](https://github.com/casperisfine).
+
+  * Documentation improvements.
+
+  * Internal code base maintenance.
+
+-------------------------------------------------------------------
 Mon Apr 27 11:38:16 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 2.3.0
