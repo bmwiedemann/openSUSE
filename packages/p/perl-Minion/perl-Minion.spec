@@ -17,7 +17,7 @@
 
 
 Name:           perl-Minion
-Version:        10.08
+Version:        10.09
 Release:        0
 %define cpan_name Minion
 Summary:        Job queue
@@ -38,10 +38,10 @@ Requires:       perl(Mojolicious) >= 8.50
 Minion is a high performance job queue for the Perl programming language,
 with support for multiple named queues, priorities, delayed jobs, job
 dependencies, job progress, job results, retries with backoff, rate
-limiting, unique jobs, statistics, distributed workers, parallel
-processing, autoscaling, remote control, at https://mojolicious.org admin
-ui, resource leak protection and multiple backends (such as at
-https://www.postgresql.org).
+limiting, unique jobs, job sequences, statistics, distributed workers,
+parallel processing, autoscaling, remote control, at
+https://mojolicious.org admin ui, resource leak protection and multiple
+backends (such as at https://www.postgresql.org).
 
 Job queues allow you to process time and/or computationally intensive tasks
 in background processes, outside of the request/response lifecycle of web
