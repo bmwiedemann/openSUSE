@@ -18,9 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-%define misp_objects_revision 10fe1b29574279902d9c9097e6e67a872ecbe2cf
+%define misp_objects_revision b7c2562a4f2b79b3764a8e3fcd38d24bb5abfa33
 Name:           python-pymisp
-Version:        2.4.126
+Version:        2.4.128
 Release:        0
 Summary:        Python API for MISP
 License:        BSD-2-Clause
@@ -74,7 +74,6 @@ Examples and HTML documentation for %{name}.
 
 %prep
 %setup -q -n PyMISP-%{version}
-#%%setup -q -n pymisp-%%{version}
 %setup -T -D -b 1 -n PyMISP-%{version}
 mv ../misp-objects-*/* pymisp/data/misp-objects/
 find pymisp examples -name "*.py" -type f -exec sed -i '1s/^#!.*//' '{}' \+
