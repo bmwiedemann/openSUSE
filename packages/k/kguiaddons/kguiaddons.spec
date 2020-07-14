@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5GuiAddons5
-%define _tar_path 5.71
+%define _tar_path 5.72
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kguiaddons
-Version:        5.71.0
+Version:        5.72.0
 Release:        0
 Summary:        Utilities for graphical user interfaces
 License:        LGPL-2.1-or-later
@@ -37,7 +37,6 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -89,18 +88,18 @@ of colors, fonts, text, images, keyboard input. Development files.
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%license COPYING*
+%license LICENSES/*
 %doc README*
-%{_kf5_libdir}/libKF5GuiAddons.so.*
 %dir %{_kf5_plugindir}/kf5/
 %dir %{_kf5_plugindir}/kf5/kguiaddons
 %dir %{_kf5_plugindir}/kf5/kguiaddons/kmodifierkey
+%{_kf5_libdir}/libKF5GuiAddons.so.*
 %{_kf5_plugindir}/kf5/kguiaddons/kmodifierkey/kmodifierkey_xcb.so
 
 %files devel
-%{_kf5_libdir}/libKF5GuiAddons.so
-%{_kf5_libdir}/cmake/KF5GuiAddons/
 %{_kf5_includedir}/
+%{_kf5_libdir}/cmake/KF5GuiAddons/
+%{_kf5_libdir}/libKF5GuiAddons.so
 %{_kf5_mkspecsdir}/qt_KGuiAddons.pri
 
 %changelog
