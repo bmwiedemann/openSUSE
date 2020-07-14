@@ -17,14 +17,14 @@
 
 
 %define sonum   5
-%define _tar_path 5.71
+%define _tar_path 5.72
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kconfig
-Version:        5.71.0
+Version:        5.72.0
 Release:        0
 Summary:        Advanced configuration system
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -38,7 +38,6 @@ Source2:        frameworks.keyring
 Source99:       baselibs.conf
 # PATCH-FEATURE-OPENSUSE
 Patch0:         kconfig-desktop-translations.patch
-BuildRequires:  cmake >= 3.5
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -155,29 +154,30 @@ their changes to their respective configuration files. Development files.
 %endif
 
 %files -n libKF5ConfigCore%{sonum}
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %{_kf5_bindir}/k*config5
-%{_kf5_libdir}/libKF5ConfigCore.so.*
 %{_kf5_debugdir}/kconfig.categories
+%{_kf5_libdir}/libKF5ConfigCore.so.*
 
 %files -n libKF5ConfigGui%{sonum}
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %{_kf5_libdir}/libKF5ConfigGui.so.*
 
 %files -n kconf_update5
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %dir %{_kf5_libexecdir}
 %{_kf5_libexecdir}/kconf_update
 
 %files devel
-%{_kf5_libexecdir}/kconfig_compiler_kf5
+%license LICENSES/*
+%{_kf5_includedir}/
+%{_kf5_libdir}/cmake/KF5Config/
 %{_kf5_libdir}/libKF5ConfigCore.so
 %{_kf5_libdir}/libKF5ConfigGui.so
-%{_kf5_libdir}/cmake/KF5Config/
-%{_kf5_includedir}/
+%{_kf5_libexecdir}/kconfig_compiler_kf5
 %{_kf5_mkspecsdir}/qt_KConfigCore.pri
 %{_kf5_mkspecsdir}/qt_KConfigGui.pri
 
