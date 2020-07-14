@@ -347,4 +347,34 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>805664</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5a343c3487803ef28fb69338f3fe905b</srcmd5>
+    <version>1.9.2</version>
+    <time>1594706196</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.2
+  * PR gh#spyder-ide/spyder-kernels#234
+    Fix a problem caused by ipykernel 5.3.1, by @ccordoba12
+  * PR gh#spyder-ide/spyder-kernels#231
+    Send comm config on every message, by @impact27
+  * PR gh#spyder-ide/spyder-kernels#230
+    Send comm config before any wait just to be sure, by @impact27
+  * PR gh#spyder-ide/spyder-kernels#229
+    Add warning on console if file is not saved, by @impact27
+  * PR gh#spyder-ide/spyder-kernels#228
+    Fix post_mortem interaction, by @dalthviz
+  * PR gh#spyder-ide/spyder-kernels#227
+    Create a constant for numeric Numpy types, by @dalthviz
+  * PR gh#spyder-ide/spyder-kernels#226
+    Backport PR 225, by @ccordoba12
+  * PR gh#spyder-ide/spyder-kernels#222
+    Remove the current working directory from sys.path for Python 3.7+,
+    by @ccordoba12
+  * PR gh#spyder-ide/spyder-kernels#220
+    Make multithreading patch work for all OSes in Python 3,
+    by @steff456 (gh#spyder-ide/spyder#12465)
+- use pytest macro
+- add scipy and dask-distributed to test requirements</comment>
+    <requestid>820033</requestid>
+  </revision>
 </revisionlist>

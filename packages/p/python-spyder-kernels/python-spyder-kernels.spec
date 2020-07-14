@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-spyder-kernels
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        Jupyter kernels for Spyder's console
 License:        MIT
@@ -32,6 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module cloudpickle}
+BuildRequires:  %{python_module dask-distributed}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipykernel >= 4.8.2}
 BuildRequires:  %{python_module jupyter_client >= 5.2.3}
@@ -40,6 +41,7 @@ BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyzmq >= 17}
+BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module wurlitzer}
 BuildRequires:  %{python_module xarray}
 # /SECTION
@@ -73,9 +75,7 @@ all inside the IDE.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-rm -rf _build.python*
-rm -rf build
-%python_expand pytest-%{$python_bin_suffix}
+%pytest -v
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
