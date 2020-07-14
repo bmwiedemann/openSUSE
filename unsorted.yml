@@ -2587,6 +2587,8 @@ unsorted:
   - drc 
   - drc-doc 
   - driverctl 
+  - droidcam 
+  - droidcam-cli 
   - dropbox-cli 
   - drops 
   - dropwatch 
@@ -7278,6 +7280,7 @@ unsorted:
   - kreport 
   - kreport-devel 
   - kreport-lang 
+  - kristall 
   - krita-devel 
   - krita-plugin-gmic 
   - kronometer 
@@ -10351,7 +10354,7 @@ unsorted:
   - libjxrglue0 
   - libkColorPicker0_1_4 
   - libkImageAnnotator0_3_1 
-  - libkaccounts1-32bit: [x86_64] 
+  - libkaccounts2-32bit: [x86_64] 
   - libkate-devel 
   - libkate-tools 
   - libkate1-32bit: [x86_64] 
@@ -12082,7 +12085,7 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
-  - librssguard-3_6_3 
+  - librssguard-3_7_0 
   - librssguard-devel 
   - librsvg-2-2-32bit: [x86_64] 
   - librsvg-devel 
@@ -12785,7 +12788,6 @@ unsorted:
   - libv4l-devel-32bit: [x86_64] 
   - libv4l1-0-32bit: [x86_64] 
   - libv4l2-0-32bit: [x86_64] 
-  - libv4l2rds0 
   - libv4l2rds0-32bit: [x86_64] 
   - libv4lconvert0-32bit: [x86_64] 
   - libva-devel 
@@ -14352,6 +14354,8 @@ unsorted:
   - metis_5_1_0-gnu-hpc-examples 
   - metronome 
   - metronome-lang 
+  - metslib-devel 
+  - metslib-doc 
   - mfoc 
   - mfsm 
   - mftrace 
@@ -19826,6 +19830,7 @@ unsorted:
   - python3-cpplint 
   - python3-cppy 
   - python3-cracklib 
+  - python3-crashtest 
   - python3-crayons 
   - python3-crcmod 
   - python3-cron-descriptor 
@@ -20315,6 +20320,7 @@ unsorted:
   - python3-hvplot 
   - python3-hyper 
   - python3-hypothesis 
+  - python3-hypothesis-auto 
   - python3-hypothesis-fspaths 
   - python3-hypothesmith 
   - python3-i3ipc 
@@ -21532,6 +21538,7 @@ unsorted:
   - python3-sfs 
   - python3-sge-pygame 
   - python3-sgmllib3k 
+  - python3-sgp4 
   - python3-sh 
   - python3-shaptools 
   - python3-shellingham 
@@ -21553,6 +21560,7 @@ unsorted:
   - python3-sip-devel 
   - python3-siphashc 
   - python3-sklearn-pandas 
+  - python3-skyfield 
   - python3-sleekxmpp 
   - python3-slimit 
   - python3-slixmpp 
@@ -21722,7 +21730,6 @@ unsorted:
   - python3-tld 
   - python3-tldextract 
   - python3-tmx 
-  - python3-tomate 
   - python3-toml 
   - python3-tomlkit 
   - python3-tools 
@@ -33938,11 +33945,8 @@ unsorted:
   - uwsgi-xslt 
   - v2ray-core 
   - v4l-tools 
-  - v4l-utils 
   - v4l-utils-devel-tools 
-  - v4l-utils-lang 
   - v4l2loopback-kmp-pae: [i586] 
-  - v4l2loopback-utils 
   - vacuum-im 
   - vacuum-im-devel 
   - vacuum-im-lang 
@@ -34097,7 +34101,7 @@ unsorted:
   - virt-viewer 
   - virtme 
   - virtualbox: [x86_64] 
-  - virtualbox-devel: [x86_64] # devel package of dvd:virtualbox-kmp-default 
+  - virtualbox-devel: [x86_64] # devel package of dvd:virtualbox-guest-x11 
   - virtualbox-guest-desktop-icons: [x86_64] 
   - virtualbox-guest-source: [x86_64] 
   - virtualbox-host-source: [x86_64] 

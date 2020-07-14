@@ -2268,7 +2268,7 @@
     <package name="libjson-glib-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libjsonrpc-glib-1_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="libjte1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libkaccounts1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libkaccounts2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkasten-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libkate1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libkcddb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2858,6 +2858,7 @@
     <package name="libv4l" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libv4l1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libv4l2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libv4l2rds0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libv4lconvert0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libva-drm2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libva-glx2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -4905,7 +4906,10 @@
     <package name="util-linux-systemd" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="util-macros-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="v4l-conf" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="v4l-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="v4l-utils-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="v4l2loopback-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="v4l2loopback-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="vacation" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="vala" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="vcdimager" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
