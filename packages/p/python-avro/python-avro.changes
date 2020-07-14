@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul 11 09:34:41 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 1.10.0
+  AVRO-2387 Type checking added to python  
+  AVRO-2656 avro-python package is now the preferred python3 library
+  and avro-python3 is prepared to be deprecated
+- reenable unit tests
+- remove unnecessary BuildRequires for the linting packages
+- add untested and not in setup.cfg declared but imported packages
+  into Requires https://issues.apache.org/jira/browse/AVRO-2595
+
+-------------------------------------------------------------------
 Wed May 27 09:36:12 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

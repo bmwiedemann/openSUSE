@@ -18,30 +18,32 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-avro
-Version:        1.9.2
+Version:        1.10.0
 Release:        0
 Summary:        A serialization and RPC framework for Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://avro.apache.org/
 Source:         https://files.pythonhosted.org/packages/source/a/avro/avro-%{version}.tar.gz
-BuildRequires:  %{python_module isort}
-BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Requires:       python-Twisted
+Requires:       python-zope.interface
 Suggests:       python-python-snappy
 BuildArch:      noarch
 %python_subpackages
 
 %description
-Avro is a serialization and RPC framework.
+Apache Avro is a serialization and RPC framework.
+This package contains the python implementation of Avro.
 
 %prep
 %setup -q -n avro-%{version}
+sed -i '1{\@^#!/usr/bin/env python@d}' avro/*.py avro/tether/*.py avro/test/*.py
 
 %build
 %python_build
@@ -52,9 +54,8 @@ Avro is a serialization and RPC framework.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Dies on which is nowhere even in their VCS
-#  E   ImportError: No module named set_avro_test_path
-#%%pytest
+# test_server_with_path: tries to connect to apache.org
+%pytest -k "not test_server_with_path"
 
 %post
 %python_install_alternative avro
@@ -64,6 +65,7 @@ Avro is a serialization and RPC framework.
 
 %files %{python_files}
 %python_alternative %{_bindir}/avro
-%{python_sitelib}/*
+%{python_sitelib}/avro
+%{python_sitelib}/avro-%{version}-py*.egg-info
 
 %changelog
