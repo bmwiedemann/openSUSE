@@ -19,7 +19,7 @@
 %define sonum   5
 %define rname prison
 %define _libname KF5Prison
-%define _tar_path 5.71
+%define _tar_path 5.72
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -27,7 +27,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           prison-qt5
-Version:        5.71.0
+Version:        5.72.0
 Release:        0
 Summary:        Barcode abstraction layer library
 License:        MIT
@@ -39,14 +39,13 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{rname}
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-BuildRequires:  cmake >= 2.8.12
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Core) >= 5.5.0
-BuildRequires:  cmake(Qt5Gui) >= 5.5.0
-BuildRequires:  cmake(Qt5Quick) >= 5.5.0
+BuildRequires:  cmake(Qt5Core) >= 5.12.0
+BuildRequires:  cmake(Qt5Gui) >= 5.12.0
+BuildRequires:  cmake(Qt5Quick) >= 5.12.0
 BuildRequires:  pkgconfig(libdmtx)
 BuildRequires:  pkgconfig(libqrencode)
 
@@ -77,7 +76,7 @@ uniform access to generation of barcodes with data.
 Summary:        Development files for prison-qt5, a barcode abstraction library
 Group:          Development/Libraries/C and C++
 Requires:       lib%{_libname}%{sonum} = %{version}
-Requires:       cmake(Qt5Gui) >= 5.5.0
+Requires:       cmake(Qt5Gui) >= 5.12.0
 
 %description -n prison-qt5-devel
 Development files for prison, a barcode abstraction layer library providing
@@ -98,13 +97,13 @@ uniform access to generation of barcodes with data.
 %postun -n lib%{_libname}%{sonum} -p /sbin/ldconfig
 
 %files -n lib%{_libname}%{sonum}
-%license LICENSE
+%license LICENSES/*
 %doc README*
-%{_libqt5_libdir}/lib%{_libname}*.so.*
 %{_kf5_debugdir}/*.categories
+%{_libqt5_libdir}/lib%{_libname}*.so.*
 
 %files imports
-%license LICENSE
+%license LICENSES/*
 %doc README*
 %dir %{_kf5_qmldir}/org/
 %dir %{_kf5_qmldir}/org/kde/
@@ -113,9 +112,10 @@ uniform access to generation of barcodes with data.
 %{_kf5_qmldir}/org/kde/prison/qmldir
 
 %files -n prison-qt5-devel
-%{_kf5_libdir}/cmake/KF5Prison/
-%{_libqt5_libdir}/lib%{_libname}*.so
+%license LICENSES/*
 %{_kf5_includedir}/
+%{_kf5_libdir}/cmake/KF5Prison/
 %{_kf5_mkspecsdir}/qt_Prison.pri
+%{_libqt5_libdir}/lib%{_libname}*.so
 
 %changelog
