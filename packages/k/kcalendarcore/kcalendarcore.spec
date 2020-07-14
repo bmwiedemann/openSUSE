@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.71
+%define _tar_path 5.72
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcalendarcore
-Version:        5.71.0
+Version:        5.72.0
 Release:        0
 Summary:        Library to access and handle calendar data
 License:        LGPL-2.0-or-later
@@ -86,13 +86,13 @@ develop applications making use of KCalendarCore.
 %postun -n libKF5CalendarCore5 -p /sbin/ldconfig
 
 %files -n libKF5CalendarCore5
-%license COPYING*
-%{_kf5_libdir}/libKF5CalendarCore.so.*
+%license LICENSES/*
 %{_kf5_debugdir}/*.categories
 %{_kf5_debugdir}/*.renamecategories
+%{_kf5_libdir}/libKF5CalendarCore.so.*
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_cmakedir}/KF5CalendarCore/
 %{_kf5_includedir}/KCalendarCore/
 %{_kf5_includedir}/kcalcore_version.h
