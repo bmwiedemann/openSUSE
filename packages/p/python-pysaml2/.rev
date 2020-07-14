@@ -189,4 +189,16 @@
   - docs: document default value for 'want_response_signed'</comment>
     <requestid>814543</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>05d6c8c9fb2b8cdeefbb85614ae66d4f</srcmd5>
+    <version>5.3.0</version>
+    <time>1594706185</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.3.0:
+  - Fix check for nameid_format set to the string &quot;None&quot; in the configuration
+  - Fix presence of empty eIDAS RequestedAttributes element on AuthnRequest
+  - Refactor create_authn_request method to be easier to reason about
+  - Fix NameIDPolicy checks for allowed Format and allowCreate values</comment>
+    <requestid>820096</requestid>
+  </revision>
 </revisionlist>
