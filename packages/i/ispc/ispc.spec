@@ -1,7 +1,7 @@
 #
 # spec file for package ispc
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,20 +13,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           ispc
 Version:        1.13.0
 Release:        0
 Summary:        C-based SPMD programming language compiler
-Group:          Development/Languages/C and C++
 License:        BSD-3-Clause
+Group:          Development/Languages/C and C++
 URL:            https://ispc.github.io/
 Source:         https://github.com/%{name}/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  bison
-BuildRequires:  cmake >= 3.13
 BuildRequires:  clang-devel
+BuildRequires:  cmake >= 3.13
 BuildRequires:  doxygen
 BuildRequires:  flex
 BuildRequires:  llvm-devel
@@ -49,8 +50,8 @@ A compiler for a variant of the C programming language, with extensions for
 # other distributions seem to provide curses compatibility links to ncurses
 sed -i 's|${PROJECT_NAME} pthread z tinfo curses)|${PROJECT_NAME} pthread z tinfo ncurses)|' CMakeLists.txt
 
-# fix clang library modules for new clang
-%if 0%{?_llvm_sonum} >= 10
+# fix clang library modules for new clang as carried in TW and 15.2
+%if 0%{?_llvm_sonum} >= 10 || ( 0%{?sle_version} == 150200 && 0%{?is_opensuse} )
 sed -i 's|set(CLANG_LIBRARY_LIST .*)|set(CLANG_LIBRARY_LIST clang-cpp)|' CMakeLists.txt
 %endif
 

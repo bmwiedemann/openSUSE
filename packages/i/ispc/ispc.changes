@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  8 14:23:04 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- fix build with 15.2
+
+-------------------------------------------------------------------
 Sun Apr 26 17:36:00 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Use lto option "thin"
