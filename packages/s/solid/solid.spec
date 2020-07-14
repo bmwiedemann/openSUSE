@@ -17,10 +17,10 @@
 
 
 %define lname   libKF5Solid5
-%define _tar_path 5.71
+%define _tar_path 5.72
 %bcond_without lang
 Name:           solid
-Version:        5.71.0
+Version:        5.72.0
 Release:        0
 Summary:        KDE Desktop hardware abstraction
 License:        LGPL-2.1-or-later
@@ -33,7 +33,6 @@ Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
 BuildRequires:  bison
-BuildRequires:  cmake >= 3.5
 BuildRequires:  extra-cmake-modules >= %{_tar_path}
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -123,23 +122,24 @@ Development files.
 %endif
 
 %files -n %{lname}
-%license COPYING*
-%{_kf5_libdir}/libKF5Solid.so.*
+%license LICENSES/*
 %{_kf5_debugdir}/solid.categories
+%{_kf5_libdir}/libKF5Solid.so.*
 
 %files tools
-%license COPYING*
+%license LICENSES/*
 %{_kf5_bindir}/solid-hardware5
 %{_kf5_bindir}/solid-power
 
 %files imports
-%license COPYING*
+%license LICENSES/*
 %{_kf5_qmldir}/
 
 %files devel
-%{_kf5_libdir}/libKF5Solid.so
-%{_kf5_libdir}/cmake/KF5Solid/
+%license LICENSES/*
 %{_kf5_includedir}/
+%{_kf5_libdir}/cmake/KF5Solid/
+%{_kf5_libdir}/libKF5Solid.so
 %{_kf5_mkspecsdir}/qt_Solid.pri
 
 %changelog
