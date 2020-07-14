@@ -900,4 +900,12 @@
   * 0001-Introduce-PlaceholderMessage.patch</comment>
     <requestid>816410</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>4e316e82ab78c3fe5205b333027ebb45</srcmd5>
+    <version>5.72.0</version>
+    <time>1594706100</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.72</comment>
+    <requestid>820405</requestid>
+  </revision>
 </revisionlist>

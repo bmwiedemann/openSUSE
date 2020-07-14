@@ -17,14 +17,14 @@
 
 
 %define lname libKF5Plasma5
-%define _tar_path 5.71
+%define _tar_path 5.72
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           plasma-framework
-Version:        5.71.0
+Version:        5.72.0
 Release:        0
 Summary:        Plasma library and runtime components based upon KF5 and Qt5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -36,16 +36,13 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Add-property-to-access-the-ExpandableListItem-loader.patch
-Patch2:         0001-Introduce-PlaceholderMessage.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  libxcb-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xz
-BuildRequires:  cmake(KF5Activities) >= 5.19.0
+BuildRequires:  cmake(KF5Activities) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_bugfix_version}
@@ -70,7 +67,7 @@ BuildRequires:  cmake(Qt5Concurrent) >= 5.12.0
 BuildRequires:  cmake(Qt5Gui) >= 5.12.0
 BuildRequires:  cmake(Qt5Qml) >= 5.12.0
 BuildRequires:  cmake(Qt5Quick) >= 5.12.0
-BuildRequires:  cmake(Qt5QuickControls2) >= 5.7.0
+BuildRequires:  cmake(Qt5QuickControls2) >= 5.12.0
 BuildRequires:  cmake(Qt5Sql) >= 5.12.0
 BuildRequires:  cmake(Qt5Svg) >= 5.12.0
 BuildRequires:  cmake(Qt5Test) >= 5.12.0
@@ -137,7 +134,7 @@ Plasma library and runtime components based upon KF5 and Qt5
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
   %cmake_kf5 -d build

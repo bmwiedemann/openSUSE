@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul  5 07:55:53 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Too many changes since 5.71.0, only listing bugfixes:
+  * [spinbox] Don't use QQC2 items when we should use PlasmaComponents (kde#423445)
+  * Use fully qualified identifiers for metaobject types (kde#423643)
+- Drop upstream patches:
+  * 0001-Add-property-to-access-the-ExpandableListItem-loader.patch
+  * 0001-Introduce-PlaceholderMessage.patch
+
+-------------------------------------------------------------------
 Sat Jun 20 09:28:28 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add new component needed to fix label appearance (kde#422684):
