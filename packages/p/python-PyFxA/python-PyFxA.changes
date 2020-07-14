@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jul 11 13:33:33 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 0.7.6:
+  * Add ability to configure a fixed list of JWT access token keys,
+    by passing them as an argument to `oauth.Client()` rather than
+    fetching them at runtime from the server.
+  * Fix verification of JWT access token `typ` header.
+  * Fix verification of `scope` list obtained from a JWT access
+    token.
+- Changes from version 0.7.5:
+  * Add support for `reason` and `verification_method` keyword
+    arguments to the `login` method.
+- Changes from version 0.7.4:
+  * Perform more complete checking of the `state` parameter when
+    authorizing an OAuth code.
+  * When verifying OAuth access tokens, try to verify them locally
+    as a JWT rather than passing them to the remote verification
+    endpoint.
+- Add new dependency: PyJWT.
+- Update existing dependency: six >= 1.14.
+- Update list of excluded tests.
+
+-------------------------------------------------------------------
 Wed May 20 07:26:28 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

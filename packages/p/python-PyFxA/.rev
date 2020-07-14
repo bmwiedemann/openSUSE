@@ -77,4 +77,30 @@
     <comment></comment>
     <requestid>807663</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c014a226793e883e563778f2a9b06dbe</srcmd5>
+    <version>0.7.6</version>
+    <time>1594706192</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.6:
+  * Add ability to configure a fixed list of JWT access token keys,
+    by passing them as an argument to `oauth.Client()` rather than
+    fetching them at runtime from the server.
+  * Fix verification of JWT access token `typ` header.
+  * Fix verification of `scope` list obtained from a JWT access
+    token.
+- Changes from version 0.7.5:
+  * Add support for `reason` and `verification_method` keyword
+    arguments to the `login` method.
+- Changes from version 0.7.4:
+  * Perform more complete checking of the `state` parameter when
+    authorizing an OAuth code.
+  * When verifying OAuth access tokens, try to verify them locally
+    as a JWT rather than passing them to the remote verification
+    endpoint.
+- Add new dependency: PyJWT.
+- Update existing dependency: six &gt;= 1.14.
+- Update list of excluded tests.</comment>
+    <requestid>820420</requestid>
+  </revision>
 </revisionlist>

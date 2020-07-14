@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyFxA
-Version:        0.7.3
+Version:        0.7.6
 Release:        0
 Summary:        Firefox Accounts client library for Python
 License:        MPL-2.0
@@ -27,6 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/mozilla/PyFxA
 Source:         https://files.pythonhosted.org/packages/source/P/PyFxA/PyFxA-%{version}.tar.gz
 BuildRequires:  %{python_module PyBrowserID}
+BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module hawkauthlib}
 BuildRequires:  %{python_module mock}
@@ -35,13 +36,13 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.4.2}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module six >= 1.14}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyBrowserID
 Requires:       python-cryptography
 Requires:       python-requests >= 2.4.2
-Requires:       python-six
+Requires:       python-six >= 1.14
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -56,8 +57,6 @@ This is python library for interacting with the Firefox Accounts ecosystem.
 %prep
 %setup -q -n PyFxA-%{version}
 sed -i -e '/^#!\/usr\/bin\/env python/d' fxa/__main__.py
-# Remove online tests
-rm -f fxa/tests/test_core.py
 find ./ -type f -exec chmod -x {} +
 
 %build
@@ -69,8 +68,17 @@ find ./ -type f -exec chmod -x {} +
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_monkey_patch_for_gevent gevent no longer packaged as it is deprecated
-%pytest -k 'not test_monkey_patch_for_gevent' fxa/tests/
+# Exclude tests which require network connection +
+# deprecated test_monkey_patch_for_gevent
+includedTests='\
+  not TestAuthClientAuthorizeToken and\
+  not TestAuthClientVerifyCode and\
+  not TestCachedClient and\
+  not TestCoreClient and\
+  not TestCoreClientSession and\
+  not TestJwtToken and\
+  not test_monkey_patch_for_gevent'
+%pytest -k "${includedTests}" fxa/tests/
 
 %post
 %python_install_alternative fxa-client
