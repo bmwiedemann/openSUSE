@@ -111,6 +111,8 @@ Patch31:        openmp-link-with-atomic-if-needed.patch
 Patch32:        llvm-skip-broken-float-test.patch
 # PATCH-FIX-UPSTREAM compiler-rt-sanitizer-ipc-perm.patch -- Fix sanitizer-common build with glibc 2.31
 Patch33:        compiler-rt-sanitizer-ipc-perm.patch
+# PATCH-FIX-UPSTREAM fix-ppcle64-build.patch -- Fix ppcle64 build with newer GCC
+Patch34:        fix-ppcle64-build.patch
 BuildRequires:  binutils-devel >= 2.21.90
 %if %{with gold}
 BuildRequires:  binutils-gold
@@ -129,6 +131,7 @@ Requires:       libLLVM%{_sonum}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+ExcludeArch:    riscv64
 # llvm does not work on s390
 ExcludeArch:    s390
 BuildRequires:  gcc
@@ -512,6 +515,7 @@ pushd cfe-%{_relver}.src
 %patch16 -p2
 %patch26 -p1
 %patch30 -p1
+%patch34 -p1
 popd
 
 pushd compiler-rt-%{_relver}.src
