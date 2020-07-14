@@ -53,4 +53,12 @@
     <comment>- Add macro %dephell_genspec to generate setup.py</comment>
     <requestid>787820</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>146eca6f295ffdeb1f2ed9600f9a1a89</srcmd5>
+    <version>0.6.2</version>
+    <time>1594706315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820531</requestid>
+  </revision>
 </revisionlist>
