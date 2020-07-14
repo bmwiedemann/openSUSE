@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5WebKit5
-%define _tar_path 5.71
+%define _tar_path 5.72
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kdewebkit
-Version:        5.71.0
+Version:        5.72.0
 Release:        0
 Summary:        Integration of the HTML rendering engine WebKit
 License:        LGPL-2.1-or-later
@@ -37,7 +37,6 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/portingA
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
