@@ -131,6 +131,8 @@ Patch35:        polly-pthread.patch
 Patch36:        compiler-rt-move-fdp.patch
 # PATCH-FIX-UPSTREAM compiler-rt-sanitizer-ipc-perm.patch -- Fix sanitizer-common build with glibc 2.31
 Patch37:        compiler-rt-sanitizer-ipc-perm.patch
+# PATCH-FIX-UPSTREAM fix-ppcle64-build.patch -- Fix ppcle64 build with newer GCC
+Patch38:        fix-ppcle64-build.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -580,6 +582,7 @@ pushd clang-%{version}.src
 %patch26 -p1
 %patch30 -p1
 %patch31 -p1
+%patch38 -p1
 
 # We hardcode openSUSE
 rm unittests/Driver/DistroTest.cpp
