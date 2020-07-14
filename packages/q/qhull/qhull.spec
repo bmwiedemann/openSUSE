@@ -27,8 +27,10 @@ License:        Qhull
 Group:          Development/Libraries/C and C++
 URL:            http://www.qhull.org
 Source0:        http://www.qhull.org/download/qhull-%{srcyear}-src-%{srcver}.tgz
-# PATCH-FIX-OPENUSE -- https://github.com/qhull/qhull/issues/57
-Patch0:         0001-Link-tools-to-shared-library.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/qhull/qhull/pull/69
+Patch0:         0001-Allow-disabling-of-static-or-shared-library-builds.patch
+# PATCH-FIX-OPENSUSE
+Patch1:         0002-Remove-tools-from-CMake-exported-targets.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 
@@ -79,19 +81,19 @@ This package contains the header files for the Qhull libraries.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %cmake \
         -DDOC_INSTALL_DIR="%{_docdir}/%{name}" \
         -DINCLUDE_INSTALL_DIR="%{_includedir}" \
-        -DLIB_INSTALL_DIR"=%{_libdir}" \
+        -DLIB_INSTALL_DIR="%{_lib}" \
         -DBIN_INSTALL_DIR="%{_bindir}" \
         -DMAN_INSTALL_DIR="%{_mandir}/man1/"
 %make_jobs
 
 %install
 %cmake_install
-rm %{buildroot}%{_libdir}/*.a
 # Fixup wrong location
 %if "%{_lib}" != "lib"
 mv %{buildroot}%{_prefix}/lib/cmake %{buildroot}%{_libdir}/
@@ -101,7 +103,6 @@ mv %{buildroot}%{_prefix}/lib/cmake %{buildroot}%{_libdir}/
 %postun -n libqhull%{sonum} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %license COPYING.txt
 %doc src/Changes.txt
 %{_docdir}/%{name}/
@@ -114,7 +115,6 @@ mv %{buildroot}%{_prefix}/lib/cmake %{buildroot}%{_libdir}/
 %{_mandir}/man1/*
 
 %files -n libqhull%{sonum}
-%defattr(-,root,root)
 %license COPYING.txt
 %{_libdir}/libqhull.so.%{sonum}
 %{_libdir}/libqhull.so.%{srcver}
@@ -124,7 +124,6 @@ mv %{buildroot}%{_prefix}/lib/cmake %{buildroot}%{_libdir}/
 %{_libdir}/libqhull_r.so.%{srcver}
 
 %files devel
-%defattr(-,root,root)
 %license COPYING.txt
 %{_includedir}/libqhull/
 %{_includedir}/libqhull_r/

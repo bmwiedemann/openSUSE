@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  8 19:22:43 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix static library references in CMake files, replace
+  0001-Link-tools-to-shared-library.patch with upstream
+  0001-Allow-disabling-of-static-or-shared-library-builds.patch
+- Also remove references to tools in CMake files, add
+  0002-Remove-tools-from-CMake-exported-targets.patch
+
+-------------------------------------------------------------------
 Sun Feb 16 15:30:55 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add missing dependency from devel package to shared library.
