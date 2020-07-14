@@ -581,4 +581,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment>20.04.2 (+respins) (forwarded request 813365 from cgiboudeaux)</comment>
     <requestid>813573</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>cb8c9308184d0bf70994ea42f4a7f017</srcmd5>
+    <version>20.04.3</version>
+    <time>1594705531</time>
+    <user>dimstar_suse</user>
+    <comment>20.04.3 release</comment>
+    <requestid>820113</requestid>
+  </revision>
 </revisionlist>
