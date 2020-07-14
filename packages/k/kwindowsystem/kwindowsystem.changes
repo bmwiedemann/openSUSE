@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jul  5 07:55:49 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 5.71.0:
+  * [xcb] Send correctly scaled icon geometry (kde#407458)
+
+-------------------------------------------------------------------
 Sun Jun  7 08:07:06 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.71.0

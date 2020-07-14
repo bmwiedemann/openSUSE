@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5WindowSystem5
-%define _tar_path 5.71
+%define _tar_path 5.72
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kwindowsystem
-Version:        5.71.0
+Version:        5.72.0
 Release:        0
 Summary:        KDE Access to window manager
 License:        LGPL-2.1-or-later
@@ -36,7 +36,6 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -119,18 +118,19 @@ Development files.
 %endif
 
 %files -n %{lname}
-%license COPYING*
-%{_kf5_libdir}/libKF5WindowSystem.so.*
+%license LICENSES/*
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/org.kde.kwindowsystem.platforms
+%{_kf5_debugdir}/kwindowsystem.categories
+%{_kf5_libdir}/libKF5WindowSystem.so.*
 %{_kf5_plugindir}/kf5/org.kde.kwindowsystem.platforms/KF5WindowSystemWaylandPlugin.so
 %{_kf5_plugindir}/kf5/org.kde.kwindowsystem.platforms/KF5WindowSystemX11Plugin.so
-%{_kf5_debugdir}/kwindowsystem.categories
 
 %files devel
-%{_kf5_libdir}/libKF5WindowSystem.so
-%{_kf5_libdir}/cmake/KF5WindowSystem/
+%license LICENSES/*
 %{_kf5_includedir}/
+%{_kf5_libdir}/cmake/KF5WindowSystem/
+%{_kf5_libdir}/libKF5WindowSystem.so
 %{_kf5_mkspecsdir}/qt_KWindowSystem.pri
 
 %changelog
