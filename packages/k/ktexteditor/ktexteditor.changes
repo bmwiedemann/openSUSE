@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Jul  5 07:55:45 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 5.71.0:
+  * Make "goto line" work backwards (kde#411165)
+  * fix crash on view deletion if ranges are still alive (kde#422546)
+
+-------------------------------------------------------------------
+Sun Jun  7 08:07:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.71.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.71.0
+- Changes since 5.70.0:
+  * Add .diff to the file-changed-diff to enable mime detection on windows.
+  * scrollbar minimap: performance: delay update for inactive documents
+  * Make text always align with font base line
+  * Port from KRun::runUrl to OpenUrlJob
+  * Fix modified line marker in kate minimap
+  * Port to KIO::statDetails. We only need StatBasic since we only need the permissions
+
+-------------------------------------------------------------------
 Fri May 15 11:23:57 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 5.70.1
