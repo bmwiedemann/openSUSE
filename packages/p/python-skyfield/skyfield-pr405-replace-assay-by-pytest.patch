@@ -1,0 +1,327 @@
+From cc229382ea8f301a1d911f228482feb043fc4db1 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Fri, 10 Jul 2020 13:52:58 +0200
+Subject: [PATCH] change test code to use pytest instead of assay
+
+---
+ skyfield/tests/conftest.py            | 11 +++++++++++
+ skyfield/tests/test_against_novas.py  |  6 ++++++
+ skyfield/tests/test_api.py            | 18 +++++++++---------
+ skyfield/tests/test_io.py             |  7 ++++++-
+ skyfield/tests/test_stars.py          |  2 +-
+ skyfield/tests/test_strs_and_reprs.py |  2 ++
+ skyfield/tests/test_timelib.py        | 12 +++++++-----
+ skyfield/tests/test_topos.py          |  5 ++---
+ skyfield/tests/test_units.py          | 14 +++++++-------
+ skyfield/tests/test_vectors.py        |  6 +++---
+ 10 files changed, 54 insertions(+), 29 deletions(-)
+ create mode 100644 skyfield/tests/conftest.py
+
+diff --git a/skyfield/tests/conftest.py b/skyfield/tests/conftest.py
+new file mode 100644
+index 00000000..bb5c5c4c
+--- /dev/null
++++ b/skyfield/tests/conftest.py
+@@ -0,0 +1,11 @@
++"""conftest.py to provide session wide fixtures"""
++
++
++import pytest
++from skyfield.api import load
++
++
++@pytest.fixture(scope='session')
++def ts():
++    """Provide standard timescale for tests"""
++    return load.timescale()
+diff --git a/skyfield/tests/test_against_novas.py b/skyfield/tests/test_against_novas.py
+index af38d597..65eae075 100644
+--- a/skyfield/tests/test_against_novas.py
++++ b/skyfield/tests/test_against_novas.py
+@@ -1,6 +1,8 @@
+ 'Auto-generated accuracy tests vs NOVAS (see build_novas_tests.py).'
+ 
+ from numpy import abs, array, einsum, max
++import pytest
++
+ from skyfield import (earthlib, framelib, nutationlib, positionlib,
+                       precessionlib, starlib, timelib)
+ from skyfield.api import Topos, load
+@@ -25,9 +27,13 @@ def compare(value, expected_value, epsilon):
+     else:
+         assert abs(value - expected_value) <= epsilon
+ 
++
++@pytest.fixture(scope='module')
+ def de405():
+     yield load('de405.bsp')
+ 
++
++@pytest.fixture(scope='module')
+ def earth():
+     eph = load('de405.bsp')
+     yield eph[399]
+diff --git a/skyfield/tests/test_api.py b/skyfield/tests/test_api.py
+index 1292cb14..5c27a1cd 100644
+--- a/skyfield/tests/test_api.py
++++ b/skyfield/tests/test_api.py
+@@ -1,6 +1,6 @@
+ """Basic tests of the Skyfield API module and its contents."""
+ 
+-from assay import assert_raises
++from pytest import raises
+ from skyfield import api, positionlib
+ from skyfield.api import Topos
+ from skyfield.errors import EphemerisRangeError
+@@ -10,7 +10,7 @@ def ts():
+ 
+ def test_sending_jd_that_is_not_a_julian_date():
+     earth = api.load('de421.bsp')['earth']
+-    with assert_raises(ValueError, r"please provide the at\(\) method"
++    with raises(ValueError, match=r"please provide the at\(\) method"
+                        " with a Time instance as its argument,"
+                        " instead of the value 'blah'"):
+         earth.at('blah')
+@@ -40,10 +40,10 @@ def test_exception_raised_for_dates_outside_ephemeris(ts):
+         'ephemeris segment only covers dates 1899-07-28 23:59:18Z'
+         ' through 2053-10-08 23:58:51Z UT'
+     )
+-    with assert_raises(EphemerisRangeError, message) as a:
++    with raises(EphemerisRangeError, match=message) as a:
+         eph['earth'].at(ts.tt(4096))
+ 
+-    e = a.exception
++    e = a.value
+     assert e.args == (message,)
+     assert e.start_time.tdb == 2414864.5
+     assert e.end_time.tdb == 2471184.5
+@@ -102,12 +102,12 @@ def test_altaz_needs_topos(ts):
+     e = api.load('de421.bsp')
+     earth = e['earth']
+     moon = e['moon']
+-    with assert_raises(ValueError, 'from a specific Earth location'):
++    with raises(ValueError, match='from a specific Earth location'):
+         earth.at(ts.utc(2016)).observe(moon).apparent().altaz()
+ 
+ def test_from_altaz_needs_topos():
+     p = positionlib.ICRF([0.0, 0.0, 0.0])
+-    with assert_raises(ValueError, 'the orientation of the horizon'):
++    with raises(ValueError, match='the orientation of the horizon'):
+         p.from_altaz(alt_degrees=0, az_degrees=0)
+ 
+ def test_from_altaz_parameters(ts):
+@@ -116,9 +116,9 @@ def test_from_altaz_parameters(ts):
+     p = usno.at(t)
+     a = api.Angle(degrees=10.0)
+     d = api.Distance(au=0.234)
+-    with assert_raises(ValueError, 'the alt= parameter with an Angle'):
++    with raises(ValueError, match='the alt= parameter with an Angle'):
+         p.from_altaz(alt='Bad value', alt_degrees=0, az_degrees=0)
+-    with assert_raises(ValueError, 'the az= parameter with an Angle'):
++    with raises(ValueError, match='the az= parameter with an Angle'):
+         p.from_altaz(az='Bad value', alt_degrees=0, az_degrees=0)
+     p.from_altaz(alt=a, alt_degrees='bad', az_degrees=0)
+     p.from_altaz(az=a, alt_degrees=0, az_degrees='bad')
+@@ -126,7 +126,7 @@ def test_from_altaz_parameters(ts):
+     assert str(p.from_altaz(alt=a, az=a, distance=d).distance()) == '0.234 au'
+ 
+ def test_named_star_throws_valueerror():
+-    with assert_raises(ValueError, 'No star named foo known to skyfield'):
++    with raises(ValueError, match='No star named foo known to skyfield'):
+         api.NamedStar('foo')
+ 
+ def test_named_star_returns_star():
+diff --git a/skyfield/tests/test_io.py b/skyfield/tests/test_io.py
+index 8c5ead99..a31a719d 100644
+--- a/skyfield/tests/test_io.py
++++ b/skyfield/tests/test_io.py
+@@ -5,7 +5,11 @@
+ import tempfile
+ from contextlib import contextmanager
+ from datetime import date
+-from mock import patch
++try:
++    from mock import patch
++except ImportError:
++    from unittest.mock import patch
++import pytest
+ 
+ from skyfield import api
+ 
+@@ -28,6 +32,7 @@
+ new_content = (old_content +
+                b' 2016  2  1  68.1577\n')
+ 
++@pytest.fixture
+ def load():
+     path = tempfile.mkdtemp()
+     try:
+diff --git a/skyfield/tests/test_stars.py b/skyfield/tests/test_stars.py
+index bff6a9e1..926c0c5d 100644
+--- a/skyfield/tests/test_stars.py
++++ b/skyfield/tests/test_stars.py
+@@ -4,5 +4,5 @@
+ def test_dataframe():
+     with api.load.open('hip_main.dat.gz') as f:
+         df = load_dataframe(f)
+-    star = api.Star.from_dataframe(df)
++    star = api.Star.from_dataframe(df.iloc[:214])
+     assert repr(star) == 'Star(ra shape=214, dec shape=214, ra_mas_per_year shape=214, dec_mas_per_year shape=214, parallax_mas shape=214, epoch shape=214)'
+diff --git a/skyfield/tests/test_strs_and_reprs.py b/skyfield/tests/test_strs_and_reprs.py
+index 536a45ad..bd1316f9 100644
+--- a/skyfield/tests/test_strs_and_reprs.py
++++ b/skyfield/tests/test_strs_and_reprs.py
+@@ -1,3 +1,4 @@
++import pytest
+ import textwrap
+ from ..api import Topos, load
+ from ..sgp4lib import EarthSatellite
+@@ -5,6 +6,7 @@
+ def dedent(s):
+     return textwrap.dedent(s.rstrip())
+ 
++@pytest.fixture
+ def eph():
+     yield load('de421.bsp')
+ 
+diff --git a/skyfield/tests/test_timelib.py b/skyfield/tests/test_timelib.py
+index 27d9fc6e..0648741e 100644
+--- a/skyfield/tests/test_timelib.py
++++ b/skyfield/tests/test_timelib.py
+@@ -1,5 +1,5 @@
+ import numpy as np
+-from assay import assert_raises
++import pytest
+ from pytz import timezone
+ from skyfield import api
+ from skyfield.constants import DAY_S
+@@ -12,9 +12,9 @@
+ time_parameter = ['tai', 'tt', 'tdb', 'ut1']
+ time_value = [(1973, 1, 18, 1, 35, 37.5), 2441700.56640625]
+ 
+-def ts():
+-    yield api.load.timescale()
+ 
++@pytest.mark.parametrize("time_parameter", time_parameter)
++@pytest.mark.parametrize("time_value", time_value)
+ def test_time_creation_methods(ts, time_parameter, time_value):
+     method = getattr(ts, time_parameter)
+     if isinstance(time_value, tuple):
+@@ -55,6 +55,9 @@ def test_tt_seconds_preserve_10_decimal_places_in_calendar_seconds(ts):
+     (2018, 3, 25, 13, 1, (10, 11, 12)),
+ ]
+ 
++
++@pytest.mark.parametrize("time_scale_name", time_scale_name)
++@pytest.mark.parametrize("time_params_with_array", time_params_with_array)
+ def test_time_creation_with_arrays(time_scale_name, time_params_with_array):
+     ts = api.load.timescale()
+     getattr(ts, time_scale_name)(*time_params_with_array)
+@@ -67,9 +70,8 @@ def test_timescale_utc_method_with_array_inside(ts):
+         assert t.tai[i] == ts.utc(1973, 12, 29, 23, 59, second).tai
+ 
+ def test_that_building_time_from_naive_datetime_raises_exception(ts):
+-    with assert_raises(ValueError) as info:
++    with pytest.raises(ValueError, match='import timezone'):
+         ts.utc(datetime(1973, 12, 29, 23, 59, 48))
+-    assert 'import timezone' in str(info.exception)
+ 
+ def test_building_time_from_single_utc_datetime(ts):
+     t = ts.utc(datetime(1973, 12, 29, 23, 59, 48, tzinfo=utc))
+diff --git a/skyfield/tests/test_topos.py b/skyfield/tests/test_topos.py
+index 0c47237e..e442ced2 100644
+--- a/skyfield/tests/test_topos.py
++++ b/skyfield/tests/test_topos.py
+@@ -1,13 +1,12 @@
+ from numpy import abs
++import pytest
+ 
+-from skyfield.api import load
+ from skyfield.toposlib import Topos
+ 
+ angle = (-15, 15, 35, 45)
+ 
+-def ts():
+-    yield load.timescale()
+ 
++@pytest.mark.parametrize("angle", angle)
+ def test_beneath(ts, angle):
+     t = ts.utc(2018, 1, 19, 14, 37, 55)
+     # An elevation of 0 is more difficult for the routine's accuracy
+diff --git a/skyfield/tests/test_units.py b/skyfield/tests/test_units.py
+index a4a14832..d07d2d34 100644
+--- a/skyfield/tests/test_units.py
++++ b/skyfield/tests/test_units.py
+@@ -1,6 +1,6 @@
+ """Tests of whether units behave."""
+ 
+-from assay import assert_raises
++from pytest import raises
+ from numpy import array
+ from skyfield.units import Angle, Distance, Velocity, UnpackingError
+ 
+@@ -83,9 +83,9 @@ def test_stringifying_vector_distance():
+ 
+ def test_iterating_over_raw_measurement():
+     distance = Distance(au=1.234)
+-    with assert_raises(UnpackingError) as a:
++    with raises(UnpackingError) as a:
+         x, y, z = distance
+-    assert str(a.exception) == '''\
++    assert str(a.value) == '''\
+ cannot directly unpack a Distance into several values
+ 
+ To unpack a Distance into three components, you need to ask for its
+@@ -98,9 +98,9 @@ def test_iterating_over_raw_measurement():
+ 
+ def test_iterating_over_raw_velocity():
+     velocity = Velocity(au_per_d=1.234)
+-    with assert_raises(UnpackingError) as a:
++    with raises(UnpackingError) as a:
+         x, y, z = velocity
+-    assert str(a.exception) == '''\
++    assert str(a.value) == '''\
+ cannot directly unpack a Velocity into several values
+ 
+ To unpack a Velocity into three components, you need to ask for its
+@@ -113,9 +113,9 @@ def test_iterating_over_raw_velocity():
+ 
+ def test_iterating_over_raw_angle():
+     angle = Angle(degrees=4.5)
+-    with assert_raises(ValueError) as a:
++    with raises(ValueError) as a:
+         iter(angle)
+-    assert str(a.exception) == '''choose a specific Angle unit to iterate over
++    assert str(a.value) == '''choose a specific Angle unit to iterate over
+ 
+ Instead of iterating over this Angle object, try iterating over one of
+ its unit-specific arrays like .degrees, .hours, or .radians, or else over
+diff --git a/skyfield/tests/test_vectors.py b/skyfield/tests/test_vectors.py
+index 8407cbd1..69c4949e 100644
+--- a/skyfield/tests/test_vectors.py
++++ b/skyfield/tests/test_vectors.py
+@@ -1,6 +1,6 @@
+ # Test the behavior of all combinations of vector.
+ 
+-from assay import assert_raises
++from pytest import raises
+ from skyfield.api import Topos, load
+ from skyfield.positionlib import Geocentric
+ 
+@@ -8,14 +8,14 @@ def test_bad_addition():
+     planets = load('de421.bsp')
+     earth = planets['earth']
+     mars = planets['mars']
+-    with assert_raises(ValueError, 'the center where the other vector starts'):
++    with raises(ValueError, match='the center where the other vector starts'):
+         earth + mars
+ 
+ def test_bad_subtraction():
+     planets = load('de421.bsp')
+     earth = planets['earth']
+     usno = Topos('38.9215 N', '77.0669 W', elevation_m=92.0)
+-    with assert_raises(ValueError, 'if they both start at the same center'):
++    with raises(ValueError, match='if they both start at the same center'):
+         earth - usno
+ 
+ def test_chebyshev_subtraction():

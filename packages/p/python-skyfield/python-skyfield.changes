@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Sun Jul 12 19:12:27 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- fix typo in Patch0 url 
+
+-------------------------------------------------------------------
+Sat Jul 11 19:06:39 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- mention python-skyfield-rpmlintrc to specfile: don't warn about
+  matplotlib and html5lib in Requires 
+
+-------------------------------------------------------------------
+Fri Jul 10 14:51:52 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to Version 1.23     
+  * Added `kepler-orbits` support for generating the positions of comets and 
+    asteroids from Minor Planet Center data files.   
+  * Added `skyfield.positionlib.ICRF.is_behind_earth()` to determine whether a 
+    celestial object is blocked from an Earth satellite’s view by the Earth 
+    itself.    
+  * Replaced the awkward and hard-to-explain rough_period search parameter with 
+    the conceptually simpler step_days parameter, and updated the instructions 
+    in `searches` to match.    
+  * Made the `skyfield.iokit.Loader.load.tle_file()` import method less strict 
+    about Earth satellite names: any text on the line before two lines of TLE 
+    data is now saved as the satellite name. A parameter skip_names=True turns 
+    this off if, for particular TLE files, this leads to unwanted text being 
+    saved
+- directly copy downloaded testfiles as sources
+- move skyfield-openSUSE-comparefloat.patch to skyfield-PR404-comparefloat.patch
+  and submit upstream: gh#skyfielders/python-skyfield#404
+- move skyfield-openSUSE-replace-testrunner.patch to 
+  skyfield-PR405-replace-assay-by-pytest.patch and submit upstream:
+  gh#skyfielders/python-skyfield#405
+- disable python2 package
+    
+-------------------------------------------------------------------
+Thu Jul  9 16:51:16 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- initial package. Version 1.22 
+- provide a bunch of astronomical testdata which would be downloaded
+  by the tests on networking hosts
+- skyfield-openSUSE-replace-testrunner.patch:
+  replace the author's own test runner 'assay' with regular pytest
+- skyfield-openSUSE-comparefloat.patch:
+  refine float comparison failing on some flaky platforms
