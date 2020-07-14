@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jul  5 07:55:12 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 5.71.0:
+  * Don't use execvpe
+  * Fix undefined reference to environ by a small hack
+  * Add missing declaration of environ, otherwise available only on GNU
+  * State copyright information correctly according to FLA
+  * Add license texts as required by REUSE specification
+  * Convert license statements to SPDX
+
+-------------------------------------------------------------------
 Sun Jun  7 08:06:27 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.71.0
