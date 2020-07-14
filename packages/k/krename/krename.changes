@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 11 13:56:25 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add use-local-cmake-modules-first.patch to fix build with KDE
+  Frameworks 5.72.0
+- Remove no longer necessary workaround for podofo 0.9.5
+
+-------------------------------------------------------------------
 Wed Jan  9 01:03:54 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim filler words from description. Fix bumpy grammar in the

@@ -34,6 +34,8 @@ Patch3:         0002-Fix-building-against-exiv2-0.27.patch
 Patch4:         0003-Fix-the-previous-commits-and-the-build-with-exiv2-0..patch
 # PATCH-FIX-OPENSUSE
 Patch5:         lower-minimum-cmake-version.patch
+# PATCH-FIX-UPSTREAM
+Patch6:         use-local-cmake-modules-first.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freetype2-devel
 BuildRequires:  kcompletion-devel
@@ -57,10 +59,6 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(taglib)
-%if 0%{?suse_version} >= 1500
-# podofo 0.9.5 needs openssl-devel by mistake, should be fixed in 0.9.6
-BuildRequires:  openssl-devel
-%endif
 
 %description
 KRename is a batch renamer by KDE. It allows renaming many files in

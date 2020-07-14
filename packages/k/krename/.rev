@@ -284,4 +284,15 @@
     <comment></comment>
     <requestid>664079</requestid>
   </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>9bcc7bcb0905f2586a556e2c230ad448</srcmd5>
+    <version>5.0.0</version>
+    <time>1594706149</time>
+    <user>dimstar_suse</user>
+    <comment>- Add use-local-cmake-modules-first.patch to fix build with KDE
+  Frameworks 5.72.0
+- Remove no longer necessary workaround for podofo 0.9.5
+</comment>
+    <requestid>820424</requestid>
+  </revision>
 </revisionlist>
