@@ -16,12 +16,8 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
-%endif
-
-# Globals and defines to control package behavior (configure these as desired)
+# User-configurable globals and defines to control package behavior
+# (these should not test {with X} values, which are declared later)
 
 ## User and group to use for nonprivileged services
 %global uname hacluster
@@ -30,26 +26,14 @@
 ## Where to install Pacemaker documentation
 %global pcmk_docdir %{_docdir}/%{name}
 
-%define _rundir /run
-
-## Path to Python interpreter (leave commented to auto-detect,
-## or uncomment and edit to use a specific version)
-%global python_path /usr/bin/python%{python3_version}
-
-## Corosync version
-%define cs_version 2
-
-%define with_nagios             1
-%define with_cibsecrets         1
-%define enable_lib_cluster_pkg  0
-%define enable_fatal_warnings   0
-%define with_regression_tests   0
-
 # Define conditionals so that "rpmbuild --with <feature>" and
 # "rpmbuild --without <feature>" can enable and disable specific features
 
 ## Add option to enable support for stonith/external fencing agents
 %bcond_without stonithd
+
+## Add option to enable support for storing sensitive information outside CIB
+%bcond_without cibsecrets
 
 ## Add option to create binaries suitable for use with profiling tools
 %bcond_with profiling
@@ -67,6 +51,14 @@
 ## Add option to disable links for legacy daemon names
 %bcond_without legacy_links
 
+# Define globals for convenient use later
+
+%define _rundir /run
+
+## Path to Python interpreter (leave commented to auto-detect,
+## or uncomment and edit to use a specific version)
+%global python_path /usr/bin/python%{python3_version}
+
 # Keep sane profiling data if requested
 %if %{with profiling}
 
@@ -75,8 +67,18 @@
 
 %endif
 
+#Compat macro for new _fillupdir macro introduced in Nov 2017
+%if ! %{defined _fillupdir}
+  %define _fillupdir /var/adm/fillup-templates
+%endif
+
+%define with_nagios             1
+%define enable_lib_cluster_pkg  0
+%define enable_fatal_warnings   0
+%define with_regression_tests   0
+
 Name:           pacemaker
-Version:        2.0.3+20200511.2b248d828
+Version:        2.0.4+20200616.2deceaa3a
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
@@ -114,10 +116,6 @@ BuildRequires:  pkgconfig
 # Required for agent_config.h which specifies the correct scratch directory
 BuildRequires:  resource-agents
 BuildRequires:  sed
-%if %{with_cibsecrets}
-BuildRequires:  openssh
-BuildRequires:  procps
-%endif
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(corosync) >= 2.0.0
 BuildRequires:  pkgconfig(dbus-1)
@@ -344,9 +342,6 @@ autoreconf -fvi
 %if %{with_nagios}
         --with-nagios=true                         \
 %endif
-%if %{with_cibsecrets}
-        --with-cibsecrets=true                     \
-%endif
 %if !%{enable_fatal_warnings}
         --enable-fatal-warnings=no                 \
 %endif
@@ -355,6 +350,7 @@ autoreconf -fvi
         %{!?with_legacy_links: --disable-legacy-links} \
         %{?with_profiling:     --with-profiling}       \
         %{?with_coverage:      --with-coverage}        \
+        %{?with_cibsecrets:    --with-cibsecrets}      \
         %{!?with_doc:          --with-brand=}          \
         --with-initdir=%{_initddir}                    \
         --with-runstatedir=%{_rundir}                  \
@@ -401,7 +397,7 @@ ln -s service %{buildroot}%{_sbindir}/rccrm_mon
 mv %{buildroot}%{_sbindir}/crm_report %{buildroot}%{_sbindir}/crm_report.pacemaker
 install -m 755 %{SOURCE1} %{buildroot}%{_sbindir}/crm_report
 
-ln -s ../heartbeat/NodeUtilization %{buildroot}%{_libexecdir}/ocf/resource.d/pacemaker/
+ln -s ../heartbeat/NodeUtilization %{buildroot}%{_prefix}/lib/ocf/resource.d/pacemaker/
 
 %fdupes -s %{buildroot}
 
@@ -504,7 +500,6 @@ fi
 %dir %{_libexecdir}/pacemaker
 %{_libexecdir}/pacemaker/*
 
-%{_sbindir}/cibsecret
 %{_sbindir}/fence_legacy
 
 %{_mandir}/man7/pacemaker-controld.7%{ext_man}
@@ -513,7 +508,6 @@ fi
 %{_mandir}/man7/ocf_pacemaker_controld.7%{ext_man}
 %{_mandir}/man7/ocf_pacemaker_o2cb.7%{ext_man}
 %{_mandir}/man7/ocf_pacemaker_remote.7%{ext_man}
-%{_mandir}/man8/cibsecret.8%{ext_man}
 %{_mandir}/man8/fence_legacy.8%{ext_man}
 %{_mandir}/man8/pacemakerd.8%{ext_man}
 
@@ -524,9 +518,9 @@ fi
 
 %dir %attr (750, %{uname}, %{gname}) %{_var}/lib/pacemaker/cib
 %dir %attr (750, %{uname}, %{gname}) %{_var}/lib/pacemaker/pengine
-%{_libexecdir}/ocf/resource.d/pacemaker/controld
-%{_libexecdir}/ocf/resource.d/pacemaker/o2cb
-%{_libexecdir}/ocf/resource.d/pacemaker/remote
+%{_prefix}/lib/ocf/resource.d/pacemaker/controld
+%{_prefix}/lib/ocf/resource.d/pacemaker/o2cb
+%{_prefix}/lib/ocf/resource.d/pacemaker/remote
 
 %files cli
 %defattr(-,root,root)
@@ -536,6 +530,9 @@ fi
 %{_sbindir}/rccrm_mon
 %{_sbindir}/attrd_updater
 %{_sbindir}/cibadmin
+%if %{with cibsecrets}
+%{_sbindir}/cibsecret
+%endif
 %{_sbindir}/crm_attribute
 %{_sbindir}/crm_diff
 %{_sbindir}/crm_error
@@ -561,13 +558,13 @@ fi
 %{_datadir}/pkgconfig/pacemaker-schemas.pc
 %{_datadir}/snmp/mibs/PCMK-MIB.txt
 
-%exclude %{_libexecdir}/ocf/resource.d/pacemaker/controld
-%exclude %{_libexecdir}/ocf/resource.d/pacemaker/o2cb
-%exclude %{_libexecdir}/ocf/resource.d/pacemaker/remote
+%exclude %{_prefix}/lib/ocf/resource.d/pacemaker/controld
+%exclude %{_prefix}/lib/ocf/resource.d/pacemaker/o2cb
+%exclude %{_prefix}/lib/ocf/resource.d/pacemaker/remote
 
-%dir %{_libexecdir}/ocf
-%dir %{_libexecdir}/ocf/resource.d
-%{_libexecdir}/ocf/resource.d/pacemaker
+%dir %{_prefix}/lib/ocf
+%dir %{_prefix}/lib/ocf/resource.d
+%{_prefix}/lib/ocf/resource.d/pacemaker
 
 %config(noreplace) %{_fillupdir}/sysconfig.pacemaker
 %config(noreplace) %{_fillupdir}/sysconfig.crm_mon
@@ -579,7 +576,6 @@ fi
 %exclude %{_mandir}/man7/ocf_pacemaker_o2cb.*
 %exclude %{_mandir}/man7/ocf_pacemaker_remote.*
 %{_mandir}/man8/*
-%exclude %{_mandir}/man8/cibsecret.*
 %exclude %{_mandir}/man8/fence_legacy.*
 %exclude %{_mandir}/man8/pacemakerd.*
 %exclude %{_mandir}/man8/pacemaker-remoted.*

@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Tue Jul  7 09:47:46 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec
+
+-------------------------------------------------------------------
+Wed Jun 24 08:19:39 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version pacemaker-2.0.4+20200616.2deceaa3a (Pacemaker-2.0.4):
+- cibsecret: don't use pssh -q option unless supported
+- tools: verify newly created CIB connection is not NULL
+- tools: check resource separately from managing parameter in cibsecret
+- tools: improve cibsecret help
+
+-------------------------------------------------------------------
+Thu Jun 18 10:55:19 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200608.44045c027:
+- scheduler: Add the node name back to bundle instances.
+
+-------------------------------------------------------------------
+Thu Jun 18 10:54:09 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200605.0db37d66f:
+- rpm: add spec option for enabling CIB secrets
+- build: avoid resource-agents as build dependency when cibsecrets are enabled
+
+-------------------------------------------------------------------
+Thu Jun 18 10:51:41 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200603.4ff9c412f:
+- based: use crm_exit to free qb-logging
+
+-------------------------------------------------------------------
+Thu Jun 18 10:50:12 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200602.f7f36e8a8:
+- libpe_status: Modify filtering of inactive resources.
+
+-------------------------------------------------------------------
+Tue Jun 02 07:42:10 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200527.e67fb5c73:
+- rpm: put user-configurable items at top of spec
+- tools: free IPC memory after closing connection
+- resources: attribute name parameter doesn't have to be unique
+
+-------------------------------------------------------------------
+Wed May 20 12:38:55 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200516.b06fc662e:
+- crm_ticket: avoid unnecessary issues with dynamic allocation
+- crm_resource: avoid unnecessary issus with dynamic allocation
+- crm_mon: NULL output-pointer when buffer is freed
+- crm_error: use g_free for a proper match
+- libreplace: closedir when bailing out dir traversal
+- libcrmcommon: return ENOMEM directly instead of errno
+- libcrmcommon: free basename after setting prgname
+- silence some false positives static analysis stumbled over
+- move bcond_with/without up front for e.g. pcmk_release
+- fencer: avoid infinite loop if device is removed during operation
+
+------------------------------------------------------------------
 Tue May 12 06:30:23 UTC 2020 - Yan Gao <ygao@suse.com>
 
 - libcrmcommon: lower message on reading proc file to info
@@ -49,8 +111,8 @@ Thu May 07 21:48:11 UTC 2020 - Yan Gao <ygao@suse.com>
 Mon May 04 17:11:07 UTC 2020 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.3+20200429.029571144:
-- stonith_admin: --delay is an optional option for --fence/--unfence/--reboot commands (ECO-1611, SLE-12239, SLE-12240)
-- controller: avoid possible use-of-NULL on logging fencing message (ECO-1611, SLE-12239, SLE-12240)
+- stonith_admin: --delay is an optional option for --fence/--unfence/--reboot commands (jsc#ECO-1611, jsc#SLE-12239, jsc#SLE-12240)
+- controller: avoid possible use-of-NULL on logging fencing message (jsc#ECO-1611, jsc#SLE-12239, jsc#SLE-12240)
 
 -------------------------------------------------------------------
 Mon May 04 17:08:14 UTC 2020 - Yan Gao <ygao@suse.com>
@@ -95,12 +157,12 @@ Thu Apr 09 11:48:23 UTC 2020 - Yan Gao <ygao@suse.com>
 Thu Apr 09 11:46:28 UTC 2020 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.3+20200403.eb73f2237:
-- fencer: update cpg_topology_delay test to also verify pcmk_delay_base is added (ECO-1611, SLE-12239, SLE-12240)
-- controller: requested priority fencing delay defaults to 0 (ECO-1611, SLE-12239, SLE-12240)
-- stonith_admin: --delay option defaults to 0 (ECO-1611, SLE-12239, SLE-12240)
-- fencer: any delays from pcmk_delay_base/max are added to requested fencing delay (ECO-1611, SLE-12239, SLE-12240)
-- scheduler: do not differentiate the case where all the nodes have equal priority (ECO-1611, SLE-12239, SLE-12240)
-- scheduler: priority-fencing-delay defaults to 0 meaning disabled (ECO-1611, SLE-12239, SLE-12240)
+- fencer: update cpg_topology_delay test to also verify pcmk_delay_base is added (jsc#ECO-1611, jsc#SLE-12239, jsc#SLE-12240)
+- controller: requested priority fencing delay defaults to 0 (jsc#ECO-1611, jsc#SLE-12239, jsc#SLE-12240)
+- stonith_admin: --delay option defaults to 0 (jsc#ECO-1611, jsc#SLE-12239, jsc#SLE-12240)
+- fencer: any delays from pcmk_delay_base/max are added to requested fencing delay (jsc#ECO-1611, jsc#SLE-12239, jsc#SLE-12240)
+- scheduler: do not differentiate the case where all the nodes have equal priority (jsc#ECO-1611, jsc#SLE-12239, jsc#SLE-12240)
+- scheduler: priority-fencing-delay defaults to 0 meaning disabled (jsc#ECO-1611, jsc#SLE-12239, jsc#SLE-12240)
 
 -------------------------------------------------------------------
 Thu Apr 09 11:42:27 UTC 2020 - Yan Gao <ygao@suse.com>
@@ -129,15 +191,15 @@ Thu Apr 09 11:30:56 UTC 2020 - Yan Gao <ygao@suse.com>
 Thu Apr 09 11:19:36 UTC 2020 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.3+20200321.3e73aefb8:
-- Pacemaker Explained: document priority-fencing-delay cluster option (ECO-1611, SLE-12239, SLE-12240)
-- fencer: add cpg_topology_delay test to verify enforced fencing delay with fencing topology (ECO-1611, SLE-12239, SLE-12240)
-- fencer: handle any enforced fencing delay (ECO-1611, SLE-12239, SLE-12240)
-- stonith_admin: add --delay option to support enforced fencing delay (ECO-1611, SLE-12239, SLE-12240)
-- controller: request fencing with any enforced priority fencing delay (ECO-1611, SLE-12239, SLE-12240)
-- libstonithd: introduce fence_with_delay() operation (ECO-1611, SLE-12239, SLE-12240)
-- scheduler: add regression test for priority-fencing-delay (ECO-1611, SLE-12239, SLE-12240)
-- scheduler: implement priority-fencing-delay (ECO-1611, SLE-12239, SLE-12240)
-- scheduler: add priority-fencing-delay cluster option (ECO-1611, SLE-12239, SLE-12240)
+- Pacemaker Explained: document priority-fencing-delay cluster option (jsc#ECO-1611, jsc#SLE-12239, jsc#SLE-12240)
+- fencer: add cpg_topology_delay test to verify enforced fencing delay with fencing topology (jsc#ECO-1611, jsc#SLE-12239, jsc#SLE-12240)
+- fencer: handle any enforced fencing delay (jsc#ECO-1611, jsc#SLE-12239, jsc#SLE-12240)
+- stonith_admin: add --delay option to support enforced fencing delay (jsc#ECO-1611, jsc#SLE-12239, jsc#SLE-12240)
+- controller: request fencing with any enforced priority fencing delay (jsc#ECO-1611, jsc#SLE-12239, jsc#SLE-12240)
+- libstonithd: introduce fence_with_delay() operation (jsc#ECO-1611, jsc#SLE-12239, jsc#SLE-12240)
+- scheduler: add regression test for priority-fencing-delay (jsc#ECO-1611, jsc#SLE-12239, jsc#SLE-12240)
+- scheduler: implement priority-fencing-delay (jsc#ECO-1611, jsc#SLE-12239, jsc#SLE-12240)
+- scheduler: add priority-fencing-delay cluster option (jsc#ECO-1611, jsc#SLE-12239, jsc#SLE-12240)
 
 -------------------------------------------------------------------
 Thu Apr 09 10:16:15 UTC 2020 - Yan Gao <ygao@suse.com>

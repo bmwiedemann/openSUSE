@@ -1670,4 +1670,41 @@
 - tools: get stonith_admin --list-targets working again (forwarded request 802831 from yan_gao)</comment>
     <requestid>802832</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>01f3e1fbbf3e0cf0d4202b1d0091a24a</srcmd5>
+    <version>2.0.4+20200616.2deceaa3a</version>
+    <time>1594705387</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for %_libexecdir changing to /usr/libexec
+
+- Update to version pacemaker-2.0.4+20200616.2deceaa3a (Pacemaker-2.0.4):
+- cibsecret: don't use pssh -q option unless supported
+- tools: verify newly created CIB connection is not NULL
+- tools: check resource separately from managing parameter in cibsecret
+- tools: improve cibsecret help
+
+- Update to version 2.0.3+20200608.44045c027:
+- scheduler: Add the node name back to bundle instances.
+
+- Update to version 2.0.3+20200605.0db37d66f:
+- rpm: add spec option for enabling CIB secrets
+- build: avoid resource-agents as build dependency when cibsecrets are enabled
+
+- Update to version 2.0.3+20200603.4ff9c412f:
+- based: use crm_exit to free qb-logging
+
+- Update to version 2.0.3+20200602.f7f36e8a8:
+- libpe_status: Modify filtering of inactive resources.
+
+- Update to version 2.0.3+20200527.e67fb5c73:
+- rpm: put user-configurable items at top of spec
+- tools: free IPC memory after closing connection
+- resources: attribute name parameter doesn't have to be unique
+
+- Update to version 2.0.3+20200516.b06fc662e:
+- crm_ticket: avoid unnecessary issues with dynamic allocation
+- crm_resource: avoid unnecessary issus with dynamic allocation
+- crm_mon: NULL output-pointer when buffer is freed (forwarded request 819984 from yan_gao)</comment>
+    <requestid>819985</requestid>
+  </revision>
 </revisionlist>
