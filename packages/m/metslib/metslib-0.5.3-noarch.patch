@@ -1,0 +1,14 @@
+diff -up ./metslib.pc.in.noarch ./metslib.pc.in
+--- ./metslib.pc.in.noarch	2013-08-10 11:03:19.804295046 -0400
++++ ./metslib.pc.in	2013-08-10 11:03:33.005806016 -0400
+@@ -1,9 +1,8 @@
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+-libdir=@libdir@
+ includedir=@includedir@
+ 
+ Name: METS tabu search generic library.
+ Description: METS Tabu Search Metaheuristic C++ generic library.
+ Version: @VERSION@
+-Cflags: -I${includedir}/@GENERIC_LIBRARY_NAME@-@GENERIC_API_VERSION@ -I${libdir}/@GENERIC_LIBRARY_NAME@-@GENERIC_API_VERSION@/include
++Cflags: -I${includedir}/@GENERIC_LIBRARY_NAME@-@GENERIC_API_VERSION@ 

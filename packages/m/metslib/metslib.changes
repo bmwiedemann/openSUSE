@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Mon Feb 13 08:32:40 UTC 2017 - bruno@ioda-net.ch
+
+- Backport from Fedora patches
+  + Add metslib-0.5.3-noarch.patch 
+    remove libdir references from pkgconfig file
+  + Add metslib-0.5.3-boost.patch 
+    Use boost for random functions
+- Remove -O3 from configure instead of configure.ac
+- Fix Copyright year.
+
+-------------------------------------------------------------------
+Sun May 17 17:50:38 UTC 2015 - p.drouand@gmail.com
+
+- Initial release (version 0.5.3)
