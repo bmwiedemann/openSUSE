@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul 10 19:58:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 4.1.4
+  * Important fixes
+    * Correctly restart kernels after a crash while running code.
+    * Clear variable explorer after a kernel restart.
+    * Fix several errors when sorting variables in the variable
+      explorer.
+    * Fix selection color in several syntax highlighting themes.
+    * Support Jedi 0.17.1, which fixes several issues with code
+      completion in the editor.
+    * Fix errors when running Dask code in the IPython console. 
+    * Only show folding arrows when the user hovers over them, which
+      improves responsiveness in the editor.
+    * Fix several problems with the integration between our projects
+      and the Python language server.
+    * Handle NaT values in the Variable Explorer. 
+- drop spyder-pr12746-fixtests.patch merged upstream
+  
+-------------------------------------------------------------------
 Fri May 29 09:54:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - We can be tested using pytest5

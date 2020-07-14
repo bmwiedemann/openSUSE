@@ -23,7 +23,7 @@
 %endif
 %define skip_python2 1
 Name:           spyder
-Version:        4.1.3
+Version:        4.1.4
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -31,7 +31,6 @@ Group:          Development/Languages/Python
 URL:            https://www.spyder-ide.org/
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
 Source1:        spyder-rpmlintrc
-Patch0:         spyder-pr12746-fixtests.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
@@ -48,24 +47,24 @@ Requires:       python3-cloudpickle >= 0.5.0
 Requires:       python3-diff-match-patch >= 20181111
 Requires:       python3-intervaltree
 Requires:       python3-ipython >= 4.0
-Requires:       python3-jedi >= 0.15.2
+Requires:       python3-jedi >= 0.17.1
 Requires:       python3-keyring
 Requires:       python3-nbconvert >= 4.0
 Requires:       python3-numpydoc >= 0.6.0
 Requires:       python3-paramiko >= 2.4.0
-Requires:       python3-parso >= 0.5.2
+Requires:       python3-parso >= 0.7.0
 Requires:       python3-pexpect >= 0.4.4
 Requires:       python3-pickleshare >= 0.4
 Requires:       python3-psutil >= 5.3
 Requires:       python3-pygments >= 2.0
-Requires:       python3-pylint >= 0.25
-Requires:       python3-python-language-server >= 0.31.9
+Requires:       python3-pylint >= 1.0
+Requires:       python3-python-language-server >= 0.34
 Requires:       python3-pyxdg >= 0.26
 Requires:       python3-pyzmq >= 17
 Requires:       python3-qt5 >= 5.5
 Requires:       python3-qtconsole >= 4.6.0
 Requires:       python3-qtwebengine-qt5
-Requires:       python3-spyder-kernels >= 1.9.1
+Requires:       python3-spyder-kernels >= 1.9.2
 Requires:       python3-watchdog
 Recommends:     %{name}-dicom
 Recommends:     %{name}-hdf5
@@ -109,7 +108,7 @@ BuildRequires:  python3-diff-match-patch >= 20181111
 BuildRequires:  python3-flaky
 BuildRequires:  python3-intervaltree
 BuildRequires:  python3-ipython >= 4.0
-BuildRequires:  python3-jedi >= 0.15.2
+BuildRequires:  python3-jedi >= 0.17.1
 BuildRequires:  python3-keyring
 BuildRequires:  python3-matplotlib >= 2.0.0
 BuildRequires:  python3-matplotlib-qt5
@@ -118,13 +117,13 @@ BuildRequires:  python3-mock
 BuildRequires:  python3-nbconvert >= 4.0
 BuildRequires:  python3-numpydoc >= 0.6.0
 BuildRequires:  python3-pandas >= 0.13.1
-BuildRequires:  python3-parso >= 0.5.2
+BuildRequires:  python3-parso >= 0.7.0
 BuildRequires:  python3-pexpect >= 4.4.0
 BuildRequires:  python3-pickleshare >= 0.4
 BuildRequires:  python3-psutil >= 5.3
 BuildRequires:  python3-pyaml
 BuildRequires:  python3-pygments >= 2.0
-BuildRequires:  python3-pylint >= 0.25
+BuildRequires:  python3-pylint >= 1.0
 BuildRequires:  python3-pytest >= 5.0
 BuildRequires:  python3-pytest-lazy-fixture
 BuildRequires:  python3-pytest-mock
@@ -132,14 +131,14 @@ BuildRequires:  python3-pytest-ordering
 BuildRequires:  python3-pytest-qt
 BuildRequires:  python3-pytest-timeout
 BuildRequires:  python3-pytest-xvfb
-BuildRequires:  python3-python-language-server >= 0.31.9
+BuildRequires:  python3-python-language-server >= 0.34.0
 BuildRequires:  python3-pyxdg >= 0.26
 BuildRequires:  python3-pyzmq >= 17
 BuildRequires:  python3-qt5 >= 5.5
 BuildRequires:  python3-qtconsole >= 4.6.0
 BuildRequires:  python3-qtwebengine-qt5
 BuildRequires:  python3-scipy
-BuildRequires:  python3-spyder-kernels >= 1.9.1
+BuildRequires:  python3-spyder-kernels >= 1.9.2
 BuildRequires:  python3-sympy >= 0.7.3
 BuildRequires:  python3-watchdog
 BuildRequires:  xdpyinfo
@@ -215,7 +214,6 @@ Provides translations for the "%{name}" package.
 
 %prep
 %setup -q -n spyder-%{version}
-%patch0 -p1
 
 # Fix wrong-file-end-of-line-encoding RPMLint warning
 sed -i 's/\r$//' spyder/app/restart.py
@@ -232,8 +230,6 @@ sed -i -e '/^#!\//, 1d' spyder/plugins/ipythonconsole/scripts/conda-activate.sh
 sed -i "s|JEDI_REQVER = '=|JEDI_REQVER = '>=|" spyder/dependencies.py
 # parso was pinned because of JEDI (PR#11476 and PR#11809)
 sed -i "s|PARSO_REQVER = '=|PARSO_REQVER = '>=|" spyder/dependencies.py
-# python-python-language-server
-sed -i "s|PYLS_REQVER = '>=0.31.9;<0.32.0'|PYLS_REQVER = '>=0.31.9'|" spyder/dependencies.py
 
 # Upstream brings its fixed version pyls and spyder-kernels for its
 # test environment, but we want to test against installed packages.
