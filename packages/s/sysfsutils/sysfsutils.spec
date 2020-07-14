@@ -26,9 +26,6 @@ URL:            https://github.com/linux-ras/sysfsutils
 Source:         %{name}-sysfsutils-2_1_0.tar.gz
 Source2:        baselibs.conf
 Patch1:         sysfsutils-latest-changes.diff.gz
-Patch2:         0001-Fix-compiler-complain-about-multiple-defs-of-my_stdo.patch
-Patch3:         0002-Fix-compiler-complaint-about-string-truncation.patch
-Patch4:         0003-Fix-more-string-issues-for-gcc-10.patch
 Provides:       libsysfs
 # bug437293
 %ifarch ppc64
@@ -67,9 +64,6 @@ This package contains the development files for libsysfs.
 %prep
 %setup -n sysfsutils-sysfsutils-2_1_0
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %build
 %global optflags %{optflags} -fcommon
