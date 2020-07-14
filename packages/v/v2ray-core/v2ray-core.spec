@@ -25,14 +25,14 @@
 %define   import_path     v2ray.com/core
 
 Name:           v2ray-core
-Version:        4.25.0
+Version:        4.26.0
 Release:        0
 Summary:        Network tools for building a computer network
 License:        MIT
 Group:          Productivity/Networking/Web/Proxy
 URL:            https://github.com/v2ray/v2ray-core
 Source0:        https://github.com/v2ray/v2ray-core/archive/v%{version}/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.xz
+Source1:        vendor.tar.gz
 Source2:        v2ray.service
 Source3:        config.json
 Source4:        vpoint_socks_vmess.json
@@ -40,8 +40,8 @@ Source5:        vpoint_vmess_freedom.json
 Source99:       %{name}-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
-# This package can be built with go version < 1.13
 BuildRequires:  systemd-rpm-macros
+# This package can not be built with go version < 1.13
 BuildRequires:  golang(API) = 1.14
 BuildRequires:  pkgconfig(systemd)
 AutoReqProv:    Off

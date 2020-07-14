@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 10 14:05:15 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 4.26.0
+  * Update Signing key
+  * Update geoip, geosite
+  * Fix bug with tag name extract
+  * Generate Manifest for bleeding edge release
+  * Adjust arm build
+  * Allow the use of Browser Bridge
+
+-------------------------------------------------------------------
 Thu Jun 25 15:09:25 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update summary with something useful. Trim filler wording
