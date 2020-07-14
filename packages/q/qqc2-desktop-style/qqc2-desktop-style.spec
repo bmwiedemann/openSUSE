@@ -16,11 +16,11 @@
 #
 
 
-%define _tar_path 5.71
+%define _tar_path 5.72
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           qqc2-desktop-style
-Version:        5.71.0
+Version:        5.72.0
 Release:        0
 Summary:        A Qt Quick Controls 2 Style for Desktop UIs
 License:        GPL-2.0-or-later
@@ -31,7 +31,7 @@ Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/qqc2-des
 Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/qqc2-desktop-style-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= 0.0.8
+BuildRequires:  extra-cmake-modules
 # For dir ownership
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5ConfigWidgets)
@@ -83,15 +83,16 @@ Usually not needed as it is only a runtime dependency.
 %kf5_makeinstall -C build
 
 %files
-%license LICENSE*
-%{_kf5_qmldir}/QtQuick/Controls.2/org.kde.desktop/
+%license LICENSES/*
+%dir %{_kf5_plugindir}/kf5/kirigami/
 %dir %{_kf5_qmldir}/org/
 %dir %{_kf5_qmldir}/org/kde/
-%dir %{_kf5_plugindir}/kf5/kirigami/
 %{_kf5_plugindir}/kf5/kirigami/org.kde.desktop.so
+%{_kf5_qmldir}/QtQuick/Controls.2/org.kde.desktop/
 %{_kf5_qmldir}/org/kde/qqc2desktopstyle/
 
 %files devel
+%license LICENSES/*
 %{_kf5_libdir}/cmake/KF5QQC2DesktopStyle/
 # Legacy alias with typo...
 %{_kf5_libdir}/cmake/KF5QQC2DeskopStyle/

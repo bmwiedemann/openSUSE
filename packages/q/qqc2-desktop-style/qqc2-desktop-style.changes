@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul  5 07:55:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 5.71.0:
+  * Set selectByMouse to true for SpinBox
+  * Fix menu icons becoming blurry with some font sizes (kde#423236)
+  * Prevent delegates and scrollbar overlapping in combobox popups
+  * Fix Slider vertical implicitWidth and a binding loop
+  * Make ToolTips more consistent with Breeze widget style tooltips
+  * Set editable to true by default for SpinBox
+  * Fix Connections warnings in Menu.qml
+
+-------------------------------------------------------------------
 Sun Jun  7 08:07:12 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.71.0
