@@ -17,14 +17,14 @@
 
 
 %define lname libKF5Kirigami2-5
-%define _tar_path 5.71
+%define _tar_path 5.72
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kirigami2
-Version:        5.71.0
+Version:        5.72.0
 Release:        0
 Summary:        Set of QtQuick components
 License:        LGPL-2.1-or-later
@@ -37,7 +37,7 @@ Source2:        frameworks.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch:          0001-Revert-Watch-for-language-change-events-and-forward-.patch
-BuildRequires:  extra-cmake-modules >= %{_tar_path}
+BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(Qt5Concurrent) >= 5.12.0
 BuildRequires:  cmake(Qt5Core) >= 5.12.0
@@ -51,7 +51,7 @@ Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols2
 Recommends:     %{name}-lang = %{version}
 %if %{with lang}
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.7.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.12.0
 %endif
 
 %description
@@ -100,19 +100,21 @@ Development files.
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files
-%{_kf5_qmldir}/
+%license LICENSES/*
 %dir %{_kf5_sharedir}/kdevappwizard/
+%{_kf5_qmldir}/
 %{_kf5_sharedir}/kdevappwizard/templates/
 
 %files -n %{lname}
-%license LICENSE*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5Kirigami2.so.*
 
 %files devel
+%license LICENSES/*
 %dir %{_kf5_includedir}/Kirigami2/
 %{_kf5_includedir}/Kirigami2/*
-%{_libdir}/cmake/KF5Kirigami2/
 %{_kf5_libdir}/libKF5Kirigami2.so
 %{_kf5_mkspecsdir}/qt_Kirigami2.pri
+%{_libdir}/cmake/KF5Kirigami2/
 
 %changelog

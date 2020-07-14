@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul  5 07:55:30 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Too many changes since 5.71.0, only listing bugfixes:
+  * [overlaysheet] Avoid fractional height for contentLayout (kde#422965)
+  * Fix OverlaySheet closing when clicking inside layout (kde#421848)
+
+-------------------------------------------------------------------
 Fri Jun 19 10:28:31 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add patch to fix crashes of several settings modules, with Qt
