@@ -115,4 +115,19 @@
     <comment></comment>
     <requestid>814086</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>22dd5a03e4e14a6fda69c622bcbd7247</srcmd5>
+    <version>7.1.1</version>
+    <time>1594706359</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.1.1:
+  * Add debug prints (#390)
+  * Report host+port for discovered casts (#385)
+  * Fix plex controller (#389)
+  * Update list_chromecasts example (#382)
+  * BREAKING CHANGE Track services based on UUID instead of mDNS service
+    name (#380)
+  * Reset receiver controller on connection lost (#379)</comment>
+    <requestid>820588</requestid>
+  </revision>
 </revisionlist>
