@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5DBusAddons5
-%define _tar_path 5.71
+%define _tar_path 5.72
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdbusaddons
-Version:        5.71.0
+Version:        5.72.0
 Release:        0
 Summary:        Convenience classes for QtDBus
 License:        LGPL-2.1-or-later
@@ -36,7 +36,6 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -106,18 +105,19 @@ create KDED modules. Development files.
 %endif
 
 %files -n %{lname}
-%license COPYING*
+%license LICENSES/*
 %doc README*
-%{_kf5_libdir}/libKF5DBusAddons.so.*
 %{_kf5_debugdir}/*.categories
+%{_kf5_libdir}/libKF5DBusAddons.so.*
 
 %files tools
 %{_kf5_bindir}/kquitapp5
 
 %files devel
-%{_kf5_libdir}/libKF5DBusAddons.so
-%{_kf5_libdir}/cmake/KF5DBusAddons/
+%license LICENSES/*
 %{_kf5_includedir}/
+%{_kf5_libdir}/cmake/KF5DBusAddons/
+%{_kf5_libdir}/libKF5DBusAddons.so
 %{_kf5_mkspecsdir}/qt_KDBusAddons.pri
 
 %changelog
