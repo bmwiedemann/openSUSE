@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 30 12:00:00 UTC 2020 - cunix@mail.de
+
+- Made PID available in /run/dnscrypt-proxy/dnscrypt-proxy.pid
+  through systemd service unit.
+
+- README.openSUSE updated.
+
+- dnscrypt-proxy.socket.conf added as example for a systemd
+  drop-in file to override the socket unit.
+
+-------------------------------------------------------------------
 Fri Jun 12 12:00:00 UTC 2020 - cunix@mail.de - 2.0.44
 
 - Update to version 2.0.44

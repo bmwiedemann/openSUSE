@@ -1,6 +1,10 @@
 # the socket unit should listen
 s/listen_addresses = \['127.0.0.1:53']/#listen_addresses = ['127.0.0.1:53']\nlisten_addresses = []/
 
+# point to shipped distro specific documentation
+12c\\n##********************************************************************##\n##                                                                    ##
+13c\##                    README.openSUSE in directory                    ##\n##              \/usr\/share\/doc\/packages\/dnscrypt-proxy                ##\n##                       might be useful to read.                     ##\n##                                                                    ##\n##********************************************************************##
+
 # absolute paths by default
 s/# log_file = 'dnscrypt-proxy.log'/# log_file = '\/var\/log\/dnscrypt-proxy\/dnscrypt-proxy.log'/
 s/# forwarding_rules = 'forwarding-rules.txt'/# forwarding_rules = '\/etc\/dnscrypt-proxy\/forwarding-rules.txt'/

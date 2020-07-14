@@ -1,27 +1,73 @@
-Some tips:
+***************************************************************************
+*                                                                         *
+*            README.openSUSE last edited for version 2.0.44               *
+*                                                                         *
+***************************************************************************
 
-1. Configure /etc/dnscrypt-proxy/dnscrypt-proxy.toml for your use case first!
 
-2. Override "ListenStream" and "ListenDatagram" for dnscrypt-proxy.socket
-   according to your setup, especially if dnscrypt-proxy should not be used as
-   your primary name resolver.
-   In this case you might want to forward queries from a tool
-   like "dnsmasq" to dnscrypt-proxy.
-   Then the later should probably not listen on the default adress/port.
+Some hints:
+-----------
 
-3. If running via systemd, start as root once with
+Configure /etc/dnscrypt-proxy/dnscrypt-proxy.toml for your use case first!
+
+A.
+If dnscrypt-proxy should act as your primary resolver and only listen at
+127.0.0.1:53, start as root once with
 
       $ systemctl start dnscrypt-proxy.socket
 
-   For always activating, do
+  and if you don't want to repeat this after next boots, do
 
       $ systemctl enable dnscrypt-proxy.socket
 
-4. Alternatively dnscrypt-proxy.service can be used the same way.
-   This will require you to set or uncomment "listen_addresses" in
-   /etc/dnscrypt-proxy/dnscrypt-proxy.toml
-   In this case the socket configuration described in (2.)
-   has to be done in this file directly.
+
+B.
+If you have some other resolver listening on 127.0.0.1:53 that should forward
+queries to dnscrypt-proxy it is recommended to create as root the directory
+
+/etc/systemd/system/dnscrypt-proxy.socket.d
+
+and copy the file
+
+dnscrypt-proxy.socket.conf
+
+into the created directory.
+An example  file should be available in this doc directory:
+/usr/share/doc/packages/dnscrypt-proxy
+
+Afterwards you have to start/enable the socket unit as described above in A.
+Additionally your primary resolver has to be configured to forward requests to
+the address specified in file dnscrypt-proxy.socket.conf - 127.0.0.1:5353 for
+example.
 
 
+C.
+Alternatively the unit dnscrypt-proxy.service can be used the same way as the
+socket unit described in A for starting and enabling.
+
+This will require you to set "listen_addresses" in file
+
+/etc/dnscrypt-proxy/dnscrypt-proxy.toml
+
+In this case dnscrypt-proxy has to setup the sockets itself and because it is
+by default executed as user "dnscrypt" it is not allowed to listen on
+ports < 1024.
+
+If dnscrypt-proxy should listen on these lower ports
+a) the socket unit should be used or
+b) the program has to be started directly by root or
+c) the user settings in the service unit have to be overridden
+   as described in B with files ending with ".conf"
+   in a to be created directory at
+
+   /etc/systemd/system/dnscrypt-proxy.service.d
+
+
+D.
+The socket OR the service unit should be started/enabled - not both.
+If the socket unit is used, it will start the service unit when queries are sent
+to one of its configured addresses.
+
+If using systemd, the PID should be available in file
+/run/dnscrypt-proxy/dnscrypt-proxy.pid
 

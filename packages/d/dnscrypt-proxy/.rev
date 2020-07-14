@@ -183,4 +183,32 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>817415</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>257b4fcdb1e023ff70c31a996297559e</srcmd5>
+    <version>2.0.44</version>
+    <time>1594706274</time>
+    <user>dimstar_suse</user>
+    <comment>In order to satisfy
+
+https://build.opensuse.org/request/show/817415#comment-1258559
+
+i created
+
+https://build.opensuse.org/request/show/818413
+
+to wipe out those 2 packages.
+
+With accept of
+
+https://build.opensuse.org/request/show/817415
+
+this not necessary anymore?
+
+
+Please consider setting 'url' and 'description' in Factory package meta file
+to values of devel package (or part of it).
+
+dnscrypt-proxy v2 differs significantly from v1.</comment>
+    <requestid>820018</requestid>
+  </revision>
 </revisionlist>

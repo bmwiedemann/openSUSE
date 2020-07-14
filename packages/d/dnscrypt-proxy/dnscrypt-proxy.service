@@ -2,7 +2,8 @@
 Description=DNSCrypt-proxy client
 Documentation=https://github.com/DNSCrypt/dnscrypt-proxy/wiki/systemd
 # with openSUSE changes
-Requires=dnscrypt-proxy.socket
+Documentation=file:/usr/share/doc/packages/dnscrypt-proxy/README.openSUSE
+PartOf=dnscrypt-proxy.socket
 After=network.target
 Before=nss-lookup.target
 Wants=nss-lookup.target
@@ -11,6 +12,10 @@ Wants=nss-lookup.target
 NonBlocking=true
 
 ExecStart=/usr/sbin/dnscrypt-proxy --config /etc/dnscrypt-proxy/dnscrypt-proxy.toml
+
+# May substitute command line option "pidfile".
+PIDFile=/run/dnscrypt-proxy/dnscrypt-proxy.pid
+ExecStartPost=-/bin/bash -c '/bin/echo -n $MAINPID > /run/dnscrypt-proxy/dnscrypt-proxy.pid'
 
 Group=dnscrypt
 User=dnscrypt
@@ -26,5 +31,5 @@ ProtectControlGroups=yes
 ProtectKernelModules=yes
 
 [Install]
-Also=dnscrypt-proxy.socket
+# Also=dnscrypt-proxy.socket
 WantedBy=multi-user.target

@@ -41,12 +41,16 @@ Source4:        find_licenses.sh
 Source5:        install_licenses.sh
 # Some words
 Source6:        README.openSUSE
+# Example how to override socket unit
+Source7:        %{name}.socket.conf
 BuildRequires:  golang(API) >= 1.14
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libsystemd)
+# For systemd pidfile solution.
+Requires:       bash
 # for daemon group/user
 Requires(pre):  shadow
 %{?systemd_requires}
@@ -81,7 +85,7 @@ sed -i "s/## This is an example configuration file./## This is a configuration f
 sed -i "1s/#! \/usr\/bin\/env python3/#! \/usr\/bin\/python3/" utils/generate-domains-blacklists/generate-domains-blacklist.py
 
 %build
-cd dnscrypt-proxy
+cd %{name}
 go build -mod=vendor -buildmode=pie
 
 %install
@@ -91,8 +95,7 @@ install -D -d -m 0750               \
   %{buildroot}%{home_dir}           \
   %{buildroot}%{config_dir}
 
-install -D -d -m 0755               \
-  %{buildroot}%{_datadir}/%{name}/
+install -D -d -m 0755 %{buildroot}%{_datadir}/%{name}/
 
 # Binary
 install -D -m 0755 %{name}/%{name} %{buildroot}%{_sbindir}/%{name}
@@ -132,6 +135,9 @@ bash %{SOURCE5} %{vlic_dir} %{buildroot}/%{_licensedir}/%{name}/%{vlic_dir}
 # Some hints. Improvements and feedback welcome!
 cp %{SOURCE6} README.openSUSE
 
+# Example drop-in.
+cp %{SOURCE7} %{name}.socket.conf
+
 %pre
 # group and user
 getent group %{user_group} >/dev/null || %{_sbindir}/groupadd -r %{user_group}
@@ -166,7 +172,7 @@ getent passwd %{user_group} >/dev/null || %{_sbindir}/useradd -r -g %{user_group
 %dir %attr(0750,%{user_group},%{user_group}) %{home_dir}
 %dir %attr(0750,%{user_group},%{user_group}) %{log_dir}
 %{_docdir}/%{name}/
-%doc ChangeLog README.md README.openSUSE
+%doc ChangeLog README.md README.openSUSE %{name}.socket.conf
 %license LICENSE
 %{_licensedir}/%{name}/%{vlic_dir}/
 
