@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jul  5 07:55:48 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 5.71.0:
+  * Fix KTimeComboBox for locales with unusual characters in formats (kde#405857)
+  * KPageView: remove invisible pixmap on right side of header
+  * KTitleWidget: move from QPixmap property to QIcon property
+  * Deprecate some KMultiTabBarButton/KMultiTabBarTab API using QPixmap
+  * KMultiTabBarTab: make styleoption state logic follow QToolButton even more
+  * KMultiTabBar: do not display checked buttons in QStyle::State_Sunken
+  * Fix mem leak found by ASAN
+  * [KCharSelect] Initially give focus to the search lineedit
+
+-------------------------------------------------------------------
 Sun Jun  7 08:07:05 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.71.0
