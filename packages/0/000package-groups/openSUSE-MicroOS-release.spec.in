@@ -16,7 +16,7 @@
 #
 
 
-Name:           MicroOS-release
+Name:           openSUSE-MicroOS-release
 Version:        ___VERSION___
 Release:        0
 Summary:        ___SUMMARY___ ___BETA_VERSION___
@@ -37,13 +37,11 @@ Provides:       distribution-release
 # MicroOS-release replaces Tumbleweed-Kubic-release
 Provides:       openSUSE-Tumbleweed-Kubic-release
 Obsoletes:      openSUSE-Tumbleweed-Kubic-release <= 20190324
-Provides:       openSUSE-MicroOS-release = %{version}
-Obsoletes:      openSUSE-MicroOS-release <= %{version}
 # Give zypp a hint that this product must be kept up-to-date using zypper dup, not up (boo#1061384)
 Provides:       product-update() = dup
 # With more than one product in the FTP tree, yast needs to know which products are installable
 # The name is referenced by the control file as well
-Provides:       system-installation() = MicroOS
+Provides:       system-installation() = openSUSE-MicroOS
 # bnc#826592
 Provides:       weakremover(kernel-default) < 3.11
 Provides:       weakremover(kernel-desktop) < 4.2
@@ -185,9 +183,9 @@ ___FLAVOR_PACKAGES___
 
 %install
 mkdir -p %{buildroot}%{_sysconfdir}
-mkdir -p %{buildroot}%{_prefix}/lib/issue.d
-echo -e "\nWelcome to ___SUMMARY___ (%{_target_cpu}) - Kernel \\\r (\\\l).\n" > %{buildroot}%{_prefix}/lib/issue.d/10-OS
-echo -e "\n" > %{buildroot}%{_prefix}/lib/issue.d/90-OS
+mkdir -p %{buildroot}%{_libexecdir}/issue.d
+echo -e "\nWelcome to ___SUMMARY___ (%{_target_cpu}) - Kernel \\\r (\\\l).\n" > %{buildroot}%{_libexecdir}/issue.d/10-OS
+echo -e "\n" > %{buildroot}%{_libexecdir}/issue.d/90-OS
 
 touch %{buildroot}%{_sysconfdir}/motd
 
@@ -196,14 +194,14 @@ mkdir -p %{buildroot}/%{_sysconfdir}/YaST2/licenses/base
 cd %{buildroot}/%{_sysconfdir}/YaST2/licenses/base
 if [ -f /CD1/license.tar.gz ]; then
   tar -xzf /CD1/license.tar.gz
-elif [ -f %{_prefix}/lib/skelcd/CD1/license.tar.gz ]; then
-  tar -xzf %{_prefix}/lib/skelcd/CD1/license.tar.gz
+elif [ -f %{_libexecdir}/skelcd/CD1/license.tar.gz ]; then
+  tar -xzf %{_libexecdir}/skelcd/CD1/license.tar.gz
 fi
 
 VERSION_ID=`echo %{version}|tr '[:upper:]' '[:lower:]'|sed -e 's/ //g;'`
 # note: VERSION is an optional field and has no meaning other than informative on a rolling distro
 # We do thus not add it to the os-release file
-cat > %{buildroot}%{_prefix}/lib/os-release <<EOF
+cat > %{buildroot}%{_libexecdir}/os-release <<EOF
 NAME="openSUSE MicroOS"
 # VERSION="%{version}%{?betaversion: %{betaversion}}"
 ID="opensuse-microos"
@@ -216,7 +214,7 @@ BUG_REPORT_URL="https://bugs.opensuse.org"
 HOME_URL="https://www.opensuse.org/"
 LOGO="distributor-logo"
 EOF
-ln -s ..%{_prefix}/lib/os-release %{buildroot}%{_sysconfdir}/os-release
+ln -s ..%{_libexecdir}/os-release %{buildroot}%{_sysconfdir}/os-release
 
 ___CREATE_PRODUCT_FILES___
 
@@ -225,18 +223,18 @@ ___CREATE_PRODUCT_FILES___
 # Fix the baseproduct symlink and make sure, it exists
 if [ -L %{_sysconfdir}/products.d/baseproduct ] ; then
     PRODLINK=$(basename $(readlink -f %{_sysconfdir}/products.d/baseproduct))
-    if [ "$PRODLINK"  = "openSUSE-Tumbleweed-Kubic.prod" -o "$PRODLINK"  = "openSUSE-MicroOS.prod" ]; then
+    if [ "$PRODLINK"  == "openSUSE-Tumbleweed-Kubic.prod" ]; then
       rm -f %{_sysconfdir}/products.d/baseproduct
     fi
 fi
 if [ ! -e %{_sysconfdir}/products.d/baseproduct ]; then
-    ln -sf MicroOS.prod %{_sysconfdir}/products.d/baseproduct
+    ln -sf openSUSE-MicroOS.prod %{_sysconfdir}/products.d/baseproduct
 fi
 
 %files
 %defattr(644,root,root,755)
 %{_sysconfdir}/os-release
-%{_prefix}/lib/os-release
+%{_libexecdir}/os-release
 %dir %{_sysconfdir}/products.d
 %{_sysconfdir}/products.d/*
 %dir %{_sysconfdir}/YaST2/
@@ -246,7 +244,7 @@ fi
 # no %doc here, or we will not install them
 %{_sysconfdir}/YaST2/licenses/base/license*txt
 %{_sysconfdir}/YaST2/licenses/base/no-acceptance-needed
-%dir %{_prefix}/lib/issue.d
-%{_prefix}/lib/issue.d/*-OS
+%dir %{_libexecdir}/issue.d
+%{_libexecdir}/issue.d/*-OS
 
 %changelog

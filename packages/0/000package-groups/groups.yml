@@ -27,7 +27,7 @@ dvd:
   - kernel-kvmsmall: [locked]
   - kernel-debug: [locked]
   - dummy-release: [locked]
-  - MicroOS-release: [locked]
+  - openSUSE-MicroOS-release: [locked]
   - patterns-microos-basesystem: [locked]
   - openSUSE-Tumbleweed-Kubic-release: [locked]
   - openSUSE-release-appliance: [locked]
@@ -357,7 +357,6 @@ dvd:
 opensuse_microos:
   - dummy-release: [locked]
   - openSUSE-release: [locked]
-  - openSUSE-MicroOS-release: [locked] # FIXME: remove after dropped
   - patterns-base-basesystem: [locked]
   # we need a global flag, not there yet
   - kernel-vanilla-base: [locked]
@@ -365,7 +364,7 @@ opensuse_microos:
   - kernel-vanilla: [locked]
   - kernel-kvmsmall: [locked]
   - kernel-debug: [locked]
-  - MicroOS-release
+  - openSUSE-MicroOS-release
   - kernel-default
   - patterns-microos-base: [aarch64,ppc64le,s390x,x86_64]
   - patterns-microos-defaults: [aarch64,ppc64le,s390x,x86_64]
@@ -382,6 +381,11 @@ opensuse_microos:
   - patterns-containers-container_runtime: [aarch64,ppc64le,s390x,x86_64]
   - podman-cni-config: [aarch64,ppc64le,s390x,x86_64]
   - kernel-default-base: [aarch64,ppc64le,s390x,x86_64]
+  - grub2-x86_64-efi: [x86_64]
+  - grub2-i386-pc: [x86_64]
+  - grub2-arm64-efi: [aarch64]
+  - grub2-powerpc-ieee1275: [ppc64le]
+  - patterns-microos-basesystem: [ppc64le]
   - patterns-base-bootloader: [ppc64le]
   # Have a bootable system for RPi3/4 - boo#1172574
   - raspberrypi-firmware: [aarch64]  # bsc 1130015
@@ -389,7 +393,6 @@ opensuse_microos:
   - raspberrypi-firmware-dt: [aarch64]  # bsc 1130015
   - u-boot-rpiarm64: [aarch64]  # bsc 1130015, jsc SLE-7276 / bsc 1164080
   - u-boot-rpiarm64-doc: [aarch64]  # jsc SLE-7276 / bsc 1164080
-  - kdump # needed by yast when the option to enable it is selected
 
 opensuse_kubic:
   - patterns-microos-desktop-kde: [locked]
@@ -401,3 +404,9 @@ opensuse_kubic:
   - patterns-containers-kubic_admin: [aarch64,ppc64le,s390x,x86_64]
   - patterns-containers-kubernetes_utilities: [aarch64,ppc64le,s390x,x86_64]
   - patterns-containers-kubic_loadbalancer: [aarch64,ppc64le,s390x,x86_64]
+  - grub2-x86_64-efi: [x86_64]
+  - grub2-i386-pc: [x86_64]
+  - grub2-arm64-efi: [aarch64]
+  - grub2-powerpc-ieee1275: [ppc64le]
+  - patterns-microos-basesystem: [ppc64le]
+  - patterns-base-bootloader: [ppc64le]
