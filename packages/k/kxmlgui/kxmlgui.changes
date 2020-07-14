@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul  5 07:55:50 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 5.71.0:
+  * Use kcm_users instead of user_manager
+  * Use new KTitleWidget::icon/iconSize API
+  * autotests: use ui_standards.rc from qrc from unittests
+  * autotests: repair after previous commit, now the settings menu is always there
+  * Move "Switch Application Language" to Settings menu (kde#177856)
+
+-------------------------------------------------------------------
 Sun Jun  7 08:07:07 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.71.0
