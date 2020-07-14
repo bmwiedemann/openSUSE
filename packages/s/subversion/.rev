@@ -1514,4 +1514,22 @@
   to fix boo#1170834.</comment>
     <requestid>800319</requestid>
   </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>69bbd377178cb44df56da2c9c8da6a5d</srcmd5>
+    <version>1.14.0</version>
+    <time>1594705376</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.14.0:
+  * Support for Python 3.x
+  * Support for Python 2.7 is being phased out
+  * New Build-Time Dependency: py3c
+  * Many enhancements and bug fixes
+- Drop patches:
+  * subversion-1.12.0-swig-4.patch
+  * ruby27-warnings.patch
+  * ruby-includes.patch
+- Refresh patch subversion-no-build-date.patch
+</comment>
+    <requestid>819162</requestid>
+  </revision>
 </revisionlist>

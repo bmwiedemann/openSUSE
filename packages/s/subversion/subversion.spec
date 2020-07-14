@@ -34,7 +34,7 @@
 %bcond_with	python_ctypes
 %bcond_with	all_regression_tests
 Name:           subversion
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        Subversion version control system
 License:        Apache-2.0
@@ -60,11 +60,7 @@ Patch30:        subversion-1.8.0-rpath.patch
 Patch37:        subversion-no-build-date.patch
 Patch39:        subversion-fix-parallel-build-support-for-perl-bindings.patch
 Patch40:        subversion-perl-underlinking.patch
-# PATCH-FIX-UPSTREAM subversion-1.12.0-swig-4.patch -- Support Swig 4
-Patch41:        subversion-1.12.0-swig-4.patch
 Patch42:        gcc10-do-not-optimize-get_externals_to_pin.patch
-Patch43:        ruby27-warnings.patch
-Patch44:        ruby-includes.patch
 Patch45:        disable-fs-fs-pack-test.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel >= 2.2.0
@@ -78,9 +74,10 @@ BuildRequires:  junit
 BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-# Python 2 is required to run autogen.sh ; swig is also hardcoded to py2
-BuildRequires:  python2-devel >= 2.7
-BuildRequires:  python2-xml
+BuildRequires:  py3c-devel
+BuildRequires:  python3-devel >= 2.7
+BuildRequires:  python3-py3c
+BuildRequires:  python3-xml
 BuildRequires:  ruby-devel >= 1.8.2
 BuildRequires:  swig
 BuildRequires:  update-alternatives
@@ -243,13 +240,11 @@ parameters and keywords for the svn command and other tools.
 %patch37 -p1
 %patch39
 %patch40 -p1
-%if 0%{?suse_version} > 1500
-%patch41 -p1
-%endif
 %patch42 -p1
-%patch43 -p1
-%patch44 -p1
 %patch45 -p1
+
+# do not use 'env python'
+sed -i -e 's#/usr/bin/env python#/usr/bin/python3#' subversion/tests/cmdline/*.py
 
 %build
 # Re-boot strap, needed for patch37
@@ -314,17 +309,17 @@ export LDFLAGS="-pie"
 	--with-libmagic \
 	--disable-static \
 	--enable-broken-httpd-auth
-make %{?_smp_mflags}
-make doc-api %{?_smp_mflags}
+%make_build
+%make_build doc-api
 
 # Bindings
-make extraclean-bindings %{?_smp_mflags}
-make %{?_smp_mflags} swig-py swig-rb swig-pl
+%make_build extraclean-bindings
+%make_build swig-py swig-rb swig-pl
 %if %{with python_ctypes}
-make %{?_smp_mflags} ctypes-python
+%make_build ctypes-python
 %endif
 # Java is not thread safe
-make -j1 JAVAC_FLAGS=" -encoding iso8859-1" javahl doc-javahl
+%make_build -j1 JAVAC_FLAGS=" -encoding iso8859-1" javahl doc-javahl
 
 %install
 %make_install
@@ -407,19 +402,19 @@ rm -rf doc/doxygen/html/installdox
 %check
 export LANG=C LC_ALL=C
 
-make %{?_smp_mflags} check CLEANUP=true || (cat fails.log; exit 1)
-make %{?_smp_mflags} check-javahl || (cat fails.log; exit 1)
-make %{?_smp_mflags} check-swig-pl || (cat fails.log; exit 1)
+%make_build check CLEANUP=true || (cat fails.log; exit 1)
+%make_build check-javahl || (cat fails.log; exit 1)
+%make_build check-swig-pl || (cat fails.log; exit 1)
 %if 0%{?suse_version} <= 1500
 # swig bindings check failing from swig 4.0.0 and later
-make %{?_smp_mflags} check-swig-py || (cat fails.log; exit 1)
+%make_build check-swig-py || (cat fails.log; exit 1)
 %endif
-make %{?_smp_mflags} check-swig-rb || (cat fails.log; exit 1)
+%make_build check-swig-rb || (cat fails.log; exit 1)
 %if %{with all_regression_tests}
-make %{?_smp_mflags} svnserveautocheck CLEANUP=true FS_TYPE=fsfs || (cat fails.log; exit 1)
-make %{?_smp_mflags} svnserveautocheck CLEANUP=true FS_TYPE=bdb || (cat fails.log; exit 1)
-make %{?_smp_mflags} davautocheck CLEANUP=true FS_TYPE=fsfs || (cat fails.log; exit 1)
-make %{?_smp_mflags} davautocheck CLEANUP=true FS_TYPE=bdb || (cat fails.log; exit 1)
+%make_build svnserveautocheck CLEANUP=true FS_TYPE=fsfs || (cat fails.log; exit 1)
+%make_build svnserveautocheck CLEANUP=true FS_TYPE=bdb || (cat fails.log; exit 1)
+%make_build davautocheck CLEANUP=true FS_TYPE=fsfs || (cat fails.log; exit 1)
+%make_build davautocheck CLEANUP=true FS_TYPE=bdb || (cat fails.log; exit 1)
 %endif
 
 %pre
