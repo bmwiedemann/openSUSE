@@ -6,4 +6,5 @@
 %dephell_gensetup LANG=en_US.utf8 dephell deps convert --traceback \\\
     --level=%{?dephell_loglevel}%{!?dephell_loglevel:INFO} \\\
     --from %{?dephell_tomlfile}%{!?dephell_tomlfile:pyproject.toml} \\\
-    --to %{?dephell_setupfile}%{!?dephell_setupfile:setup.py}
+    --to-format setuppy \\\
+    --to-path %{?dephell_setupfile}%{!?dephell_setupfile:setup.py}
