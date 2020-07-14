@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul  5 07:55:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 5.71.0:
+  * autotests: fix for shared-mime-info >= 2.0
+  * Adapt kfilemetadata to "audio/x-speex+ogg" as
+    recently changed in shared-mime-info
+  * Add license files as required by REUSE specification
+  * Convert license statements to SPDX expressions
+
+-------------------------------------------------------------------
 Sun Jun  7 08:06:37 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.71.0
