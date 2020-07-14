@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul 12 12:05:20 UTC 2020 - aloisio@gmx.com
+
+- Update to version 0.4.7
+  * README: Add detail on subtitle handling
+  * Fix handling of dashed options in loadfile.
+  * update README with inserting subtitles
+  * Add release script 
+
+-------------------------------------------------------------------
 Sun Apr  5 11:47:16 UTC 2020 - aloisio@gmx.com
 
 - Update to version v0.4.6
