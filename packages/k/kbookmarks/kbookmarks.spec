@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Bookmarks5
-%define _tar_path 5.71
+%define _tar_path 5.72
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kbookmarks
-Version:        5.71.0
+Version:        5.72.0
 Release:        0
 Summary:        Framework for manipulating bookmarks in XBEL format
 License:        LGPL-2.1-or-later
@@ -36,7 +36,6 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-BuildRequires:  cmake >= 3.5
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -46,11 +45,11 @@ BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5XmlGui) >= %{_kf5_bugfix_version}
-Requires:       cmake(Qt5DBus) >= 5.9.0
-Requires:       cmake(Qt5Widgets) >= 5.9.0
-Requires:       cmake(Qt5Xml) >= 5.9.0
+Requires:       cmake(Qt5DBus) >= 5.12.0
+Requires:       cmake(Qt5Widgets) >= 5.12.0
+Requires:       cmake(Qt5Xml) >= 5.12.0
 %if %{with lang}
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.9.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.12.0
 %endif
 
 %description
@@ -72,8 +71,8 @@ Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
-Requires:       cmake(Qt5Widgets) >= 5.9.0
-Requires:       cmake(Qt5Xml) >= 5.9.0
+Requires:       cmake(Qt5Widgets) >= 5.12.0
+Requires:       cmake(Qt5Xml) >= 5.12.0
 
 %description devel
 Development files for kbookmarks, a framework for accessing and
