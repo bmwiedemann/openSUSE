@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Fri Jul 10 19:26:03 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Initial package version 1.4
+- Add two patches to make it work with the upstream v4l2loopback driver:
+  * 0001-Enhance-compatibility-with-upstream-v4l2loopback-dri.patch
+  * 0002-Accept-upstream-v4l2loopback-driver-as-device.patch
+- Add compatibility for TurboJPEG version in Leap 15.x
+  * 0003-Hack-backwards-compatibility-for-TurboJPEG-2.0.0.patch
