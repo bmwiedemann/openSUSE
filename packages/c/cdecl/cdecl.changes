@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 12 09:56:04 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.4.1
+  * The legal signed main() signature is now accepted.
+  * "East const" is now ignored when explaining gibberish.
+
+-------------------------------------------------------------------
 Mon Jun 29 15:40:42 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.3
