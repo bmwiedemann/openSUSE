@@ -223,4 +223,12 @@
   it got already broken by upstream in e491b5d4aa anyway.</comment>
     <requestid>783875</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a4d71a3f5ef6d6b07e98b464607d1c7b</srcmd5>
+    <version>0.782</version>
+    <time>1594706121</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>820414</requestid>
+  </revision>
 </revisionlist>

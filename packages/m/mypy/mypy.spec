@@ -17,7 +17,7 @@
 
 
 Name:           mypy
-Version:        0.770
+Version:        0.782
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT

@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Sat Jul  4 12:28:39 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.780:
+ - Following Imports in Mypy Daemon
+  - You can now leave out the --follow-imports option when running dmypy, and mypy daemon will follow imports, similar to a non-daemon mypy run.
+    Previously mypy daemon did not support this, and it was necessary to use --follow-imports and explicitly mention all files to check on the command line. (Following imports in mypy daemon is an experimental feature.)
+    See the docs about following import in mypy.
+ - Miscellaneous New Features:
+  - Support environment variable interpolation for junit_xml configuration key (Mattwmaster58, PR 8479)
+  - Add no_site_packages config file setting (davidzwa, PR 8524)
+  - Allow .mypy.ini (with a dot prefix) as an alternative name to mypy.ini (dosisod, PR 8515)
+  - Disallow unpacking of strings in multiple assignment, as this is usually a bug (Abtin, PR 8589)
+  - Allow type aliases in a runtime (non-type) context (PR 8779)
+  - Add narrowing unions with bool literals via identity check (Steve Dignam, PR 8821)
+  - Always allow to cast to Any without warnings (oda, PR 8544)
+  - Suggest solutions for a typo in a key of a TypedDict (Felicián Németh, PR 8483)
+  - Provide more context about why incompatible with supertype is an error (Chetan Khanna, PR 8866) 
+ - Other Notable Improvements and Bug Fixes:
+  - Fix handling dependencies to __call__ in mypy daemon (PR 8494)
+  - Various improvements to stubtest (PR 8502, PR 8886) (Shantanu)
+  - Fix invalid type causing named tuple errors reported in wrong files (PR 8549)
+  - Clarify documentation of Liskov substitution principle (PR 8563)
+  - Fix type inference with lambda that returns None (PR 8562)
+  - Fix incremental crash bug caused by NewType in functions (PR 8607)
+  - Fix indexed assignment check when TypedDict is used as upper bound (Xuanda Yang, PR 8621)
+  - Improve error message for bad indexed assignment (pando, PR 8641)
+  - Fix crash when the same file is processed under multiple names (PR 8644)
+  - Fix parser when using Python 3.9 (PR 8716)
+  - Accept dict() as an empty dictionary in a TypedDict context (PR 8749)
+  - Fix incorrect coroutine return type for nested function (Jens Widell, PR 8741)
+  - Reject bytes literal as a TypedDict key (PR 8782)
+  - Allow attrs keyword-only arguments at any position (Markus Schmaus, PR 8803)
+  - Detect duplicate keys in call-based TypedDict definitions (PR 8849)
+  - Look at arguments when generating constraints for an overload (PR 8845)
+  - Fix potential wrong-file error message for unsupported types (PR 8854) 
+ - Typeshed Updates
+  - Many small improvements were made to typeshed — too many to list. Browse the typeshed commit log here.
+- update to version 0.770:
+ - Tagged Unions
+  - Previously, the only way to distinguish between two types in a union was to use an isinstance check. Now, mypy supports distinguishing between two or more types based on the value of some common shared "tag" field.
+    This feature is most useful when you want to narrow down a union of TypedDicts: since TypedDicts are really just regular dicts at runtime, using isinstance checks won't work. Instead, you can now label or tag each TypedDict with a distinct Literal type and discriminate by checking that tag.
+    Note that you can import Literal from typing_extensions on Python 3.7 and earlier.
+    You can also use this technique to discriminate between unions of objects, tuples, or named tuples, so long as: 1. Every item in your union is tagged with a unique value 2. Mypy understands how to narrow the union of the tag values.
+    For more details and examples, see the documentation on tagged unions.
+ - Type Inference Improvements
+   Type inference is now more powerful. Mypy can infer types in some cases where you previously needed an explicit type annotation.
+   Mypy can infer a built-in collection type from augmented assignment statements.
+   Some dictionary construction idioms are better supported.
+   Mypy is better at inferring defaultdict types.
+ - Multiple Inheritance and isinstance() Checks
+   Previously, mypy assumed a variable cannot have two unrelated types when analyzing isinstance checks. For example, in the following example B is not a subclass of A, so mypy would incorrectly conclude the isinstance check is always false, and that the if-branch is unreachable — even though var could actually be a subtype of both types.
+   This meant that mypy skipped type checking anything inside the if statement, since it (by design) skips analyzing unreachable branches.
+   Now, mypy will instead decide that the narrowed type of x is test.<subclass of "A" and "B">, instead of marking the branch as unreachable.
+   If it’s impossible for two types to be a subtype of one another, mypy will continue to not attempt to infer this "ad-hoc intersection".
+ - Other Notable Improvements and Bug Fixes:
+  - Fix some crash bugs involving import * and import cycles (PR 8450)
+  - Fix interaction of descriptor methods with plugins (Jan Verbeek, PR 8365)
+  - Allow strict in config file (Ville Skyttä, PR 8192)
+  - Don’t crash when a module shadows builtin libraries (such as typing or types, PR 8405)
+  - Fix type join between subclasses of unicode and str (PR 8402)
+  - Fix type join of fixed-length tuples with mismatching lengths (Marti Raudsepp, PR 8333)
+  - Fix type join of Sequence (e.g. variadic tuple) and fixed-length tuple (Marti Raudsepp, PR 8335)
+  - Make mypy.api.run_dmypy actually capture the output (PR 8375)
+  - Support determining whether a literal is truthy (Jan Verbeek, PR 8368)
+  - Fix covariant overriding of decorated methods (Xuanda Yang, PR 8350)
+  - Support typing.Annotated in addition to typing_extensions.Annotated (Jakub Stasiak, PR 8371)
+  - Add add_method_to_class function to plugins.common (useful when writing mypy plugins) (Maksim Kurnikov, PR 8245)
+  - Fix module alias as instance attribute (Uwe L. Korn, PR 8259)
+  - Automatically write a file .gitignore file to cache directory, ignoring everything (Ville Skyttä , PR 8193)
+  - Don't make dunder attributes enum members (Xuanda Yang, PR 8302)
+  - Allow redefining TypedDict keys (while still generating an error) (Cohen Karnell, PR 8109)
+  - Fix some crashes in dataclasses (PR 8271)
+  - Use TypedDict union as type context when unambiguous (PattenR, PR 8212)
+  - Fix false positive for subclasses of bytes overriding __str__ (Shantanu, PR 8222)
+  - Fix deeply nested InitVar definitions in dataclasses with init=False (Jacob Beck, PR 8208)
+  - Narrow types for walrus assignment in if statements in some cases (Shantanu, PR 8258)
+  - Narrow types for walrus assignment in if statements in most of the rest of cases (PR 8458)
+  - Fix incorrect error code indexing (Xuanda Yang, PR 8248)
+  - Fix regression in container check logic (Michael Lee, PR 8232)
+  - Make reachability code understand chained comparisons (Michael Lee, PR 8148)
+  - Fix incorrect name lookup for decorated methods (Xuanda Yang, PR 8175)
+  - Fix simplifying unions with type aliases (Xuanda Yang, PR 8146)
+  - Fix crash when overriding __init__ in a dataclass subclass (Jacob Beck, PR 8159)
+  - Fix some daemon crashes involving classes becoming generic (PR 8157) 
+ - Documentation and Error Reporting Improvements
+  - Use fully qualified names in error messages for class names resembling builtins(Mukuntha N S, PR 8425)
+  - Improve diagnostics involving missing stubs for a library that is installed in site-packages (Michael Lee, PR 8238)
+  - Add a section to the documentation about incompatible overrides (RAHUL RAJA, PR 8377)
+  - Add variable-sized tuples to the cheat sheet (Marcio Mazza, PR 8364)
+  - Improve documentation of decorators (add decorator factories) (Marti Raudsepp, PR 8336)
+  - Update documentation of variables and aliases (Xuanda Yang, PR 8200)
+  - Report an error if a final class has abstract attributes (Denys Halenok, PR 8332)
+  - Update common issues to include __init__ without arguments (Tan Yuanhong, PR 8303)
+  - Add a new error code for errors about unreachability (Denys Halenok, PR 8312)
+  - Fix error indicator position in code with tabs (dosisod, PR 8307)
+  - Document --local-partial-types (Xuanda Yang, PR 8201)
+  - Update documentation for Literal types (Michael Lee, PR 8152) 
+ - Stubtest rewrite
+   stubtest is a tool that compares stub definitions to what it finds at runtime with introspection and reports back inconsistencies. It got a complete rewrite. Some features of the new stubtest are:
+  - Find missing, extraneous or mistyped classes, methods, functions and attributes in the stubs
+  - Check presence, names and kinds of function arguments, accounting for overloads, decorators, *args and kwargs. Checks argument types against their default values, accounting for type vars.
+  - Checks @property, @classmethod, @staticmethod declarations
+  - Check types of module level and class level attributes and enums 
+ - Some results of this:
+  - We now run stubtest in typeshed CI (for stdlib)
+  - We’ve fixed about 1900 issues in typeshed definitions
+  - We’ve greatly improved Python 3.8 support in typeshed and it’ll be easier to make the changes needed for future Python versions
+  - We’ve uncovered a handful of issues in Python itself 
+ - Typeshed Updates:
+  - Many small improvements were made to typeshed — too many to list. Browse the typeshed commit log here.
+
+-------------------------------------------------------------------
 Wed Mar 11 11:18:05 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.770: too many changes to
