@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul 12 09:55:18 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20200712
+  * profile: add QUILT_COLORS
+  * bsvplay: Pianoman MUS support
+  * pcmmix: new utility for arpeggio/polyphonic mixing of
+    bsvplay/qplay outputs
+
+-------------------------------------------------------------------
 Tue Apr 28 21:27:57 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20200428

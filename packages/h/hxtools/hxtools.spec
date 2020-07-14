@@ -17,7 +17,7 @@
 
 
 Name:           hxtools
-Version:        20200428
+Version:        20200712
 Release:        0
 Summary:        Collection of day-to-day tools (binaries)
 License:        GPL-2.0+ and WTFPL
@@ -139,7 +139,8 @@ Group:          System/Base
 
 %description -n fd0ssh
 fd0ssh a helper program used by non-interactive programs, for example
-pam_mount, that want to pipe a password to ssh.
+pam_mount, that want to pipe a password to ssh. It works similar in
+spirit to expect(1), but implements much less features.
 
 %package -n ofl
 Summary:        Open File Lister from hxtools
@@ -199,6 +200,7 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %_bindir/gxxdm
 %_bindir/hcdplay
 %_bindir/pcmdiff
+%_bindir/pcmmix
 %_bindir/proc_iomem_count
 %_bindir/proc_stat_parse
 %_bindir/qplay
