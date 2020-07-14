@@ -608,4 +608,12 @@
     <comment>- Update to version 1.2.4.</comment>
     <requestid>778250</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>920bd4f934dce550d296b6f9ab9448b6</srcmd5>
+    <version>1.2.7</version>
+    <time>1594706206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820031</requestid>
+  </revision>
 </revisionlist>
