@@ -360,4 +360,12 @@
     <comment>20.04.2 (+respins) (forwarded request 813365 from cgiboudeaux)</comment>
     <requestid>813700</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>00f2596fba8b8edc6f4e369d45002826</srcmd5>
+    <version>20.04.3</version>
+    <time>1594705762</time>
+    <user>dimstar_suse</user>
+    <comment>20.04.3 release</comment>
+    <requestid>820241</requestid>
+  </revision>
 </revisionlist>
