@@ -104,6 +104,8 @@ Patch27:        run-test-single-threaded.patch
 Patch28:        llvm-add-missing-include.patch
 # PATCH-FIX-UPSTREAM compiler-rt-sanitizer-ipc-perm.patch -- Fix sanitizer-common build with glibc 2.31
 Patch29:        compiler-rt-sanitizer-ipc-perm.patch
+# PATCH-FIX-UPSTREAM fix-ppcle64-build.patch -- Fix ppcle64 build with newer gcc5
+Patch30:        fix-ppcle64-build.patch
 BuildRequires:  binutils-devel >= 2.21.90
 %if %{with gold}
 BuildRequires:  binutils-gold
@@ -511,6 +513,7 @@ pushd cfe-%{_relver}.src
 %patch8 -p1
 %patch16 -p2
 %patch26 -p1
+%patch30 -p1
 popd
 
 pushd compiler-rt-%{version}.src

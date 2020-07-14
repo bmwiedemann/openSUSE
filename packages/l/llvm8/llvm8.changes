@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 10 20:27:00 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add fix-ppcle64-build.patch to fix ppc64le build.
+
+-------------------------------------------------------------------
 Thu Mar 19 22:51:37 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Move all clang-related scripts (including those originally in
