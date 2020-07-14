@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5CoreAddons5
-%define _tar_path 5.71
+%define _tar_path 5.72
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcoreaddons
-Version:        5.71.0
+Version:        5.72.0
 Release:        0
 Summary:        Utilities for core application functionality and accessing the OS
 License:        LGPL-2.1-or-later
@@ -36,7 +36,6 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-BuildRequires:  cmake >= 3.5
 BuildRequires:  extra-cmake-modules >= %{_tar_path}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -110,22 +109,23 @@ replacement, accessing user information and many more. Development files.
 %endif
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %{_kf5_appsdir}/mime/packages/kde5.xml
 %{_kf5_datadir}/
 
 %files -n %{lname}
-%license COPYING*
+%license LICENSES/*
 %doc README*
-%{_kf5_libdir}/libKF5CoreAddons.so.*
 %{_kf5_debugdir}/kcoreaddons.categories
+%{_kf5_libdir}/libKF5CoreAddons.so.*
 
 %files devel
+%license LICENSES/*
 %{_kf5_bindir}/desktoptojson
-%{_kf5_libdir}/libKF5CoreAddons.so
-%{_kf5_libdir}/cmake/KF5CoreAddons/
 %{_kf5_includedir}/
+%{_kf5_libdir}/cmake/KF5CoreAddons/
+%{_kf5_libdir}/libKF5CoreAddons.so
 %{_kf5_mkspecsdir}/qt_KCoreAddons.pri
 
 %changelog
