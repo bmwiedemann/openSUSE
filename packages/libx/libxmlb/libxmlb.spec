@@ -1,7 +1,7 @@
 #
 # spec file for package libxmlb
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define sover 1
 
 Name:           libxmlb
-Version:        0.1.13
+Version:        0.1.15
 Release:        0
 Summary:        Library for querying compressed XML metadata
 License:        LGPL-2.1-or-later
@@ -36,7 +36,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.45.8
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk-doc)
-BuildRequires:  pkgconfig(uuid)
 # Needed for the self tests
 BuildRequires:  pkgconfig(shared-mime-info)
 
@@ -115,8 +114,6 @@ Files for development with %{name}.
 %files -n xmlb-tool
 %doc README.md NEWS
 %{_libexecdir}/xb-tool
-%{_libexecdir}/installed-tests/
-%{_datadir}/installed-tests/
 
 %files devel
 %doc %{_datadir}/gtk-doc/html/%{name}
@@ -124,5 +121,7 @@ Files for development with %{name}.
 %{_includedir}/%{name}-%{sover}/
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/xmlb.pc
+%{_libexecdir}/installed-tests/
+%{_datadir}/installed-tests/
 
 %changelog

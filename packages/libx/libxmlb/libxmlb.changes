@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 10 19:11:47 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.15:
+  + New Features:
+    - Add xb_builder_source_add_simple_adapter.
+    - Allow reversing the query results.
+- Changes from version 0.1.14:
+  + New Features: Add MinGW Windows 64 builds to CI.
+  + Bugfixes:
+    - Allow compiling without gio-unix.
+    - Do not use libuuid.
+    - Do not unconditionally use -fstack-protector-strong.
+    - Ignore adaptors added with xb_builder_source_add_converter().
+- Drop pkgconfig(uuid) BuildRequires: No longer needed.
+- Move installed-tests to devel subpackage.
+
+-------------------------------------------------------------------
 Wed Nov 13 09:50:26 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to version 0.1.13:
