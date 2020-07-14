@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.71
+%define _tar_path 5.72
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcontacts
-Version:        5.71.0
+Version:        5.72.0
 Release:        0
 Summary:        KDE Frameworks based address book API
 License:        LGPL-2.1-or-later
@@ -95,13 +95,13 @@ address books.
 %postun -n libKF5Contacts5 -p /sbin/ldconfig
 
 %files -n libKF5Contacts5
-%license COPYING*
-%{_kf5_libdir}/libKF5Contacts.so.*
+%license LICENSES/*
 %{_kf5_debugdir}/*.categories
 %{_kf5_debugdir}/*.renamecategories
+%{_kf5_libdir}/libKF5Contacts.so.*
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_cmakedir}/KF5Contacts/
 %{_kf5_includedir}/KContacts/
 %{_kf5_includedir}/kcontacts_version.h
@@ -110,7 +110,7 @@ address books.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
