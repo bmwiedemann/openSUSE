@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Su5
-%define _tar_path 5.71
+%define _tar_path 5.72
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdesu
-Version:        5.71.0
+Version:        5.72.0
 Release:        0
 Summary:        User interface for running shell commands with root privileges
 License:        LGPL-2.1-or-later
@@ -40,7 +40,6 @@ Source99:       baselibs.conf
 Patch0:         fpie.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Unset-QT_QPA_PLATFORM-to-get-xcb.patch
-BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
