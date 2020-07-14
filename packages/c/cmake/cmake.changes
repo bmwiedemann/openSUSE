@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  8 20:06:07 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add lua54.patch which adds 5.4 among allowed versions of
+  Lua interpreter.
+  (https://gitlab.kitware.com/cmake/cmake/-/issues/20933)
+
+-------------------------------------------------------------------
 Fri Jun 19 08:08:08 UTC 2020 - olaf@aepfle.de
 
 - Use plain autosetup
