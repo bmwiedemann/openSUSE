@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jul  5 07:54:58 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 5.71.0:
+  * [Indexers] Ignore name-based mimetype for initial indexing decisions
+
+-------------------------------------------------------------------
 Sun Jun  7 08:06:12 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.71.0
