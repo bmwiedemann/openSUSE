@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 10 09:36:09 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 10.09
+   see /usr/share/doc/packages/perl-Minion/Changes
+
+  10.09  2020-07-09
+    - Added EXPERIMENTAL support for job sequences.
+    - Added EXPERIMENTAL sequence option to enqueue method in Minion, Minion::Backend and Minion::Backend::Pg.
+    - Added EXPERIMENTAL sequences option to list_jobs method in Minion::Backend and Minion::Backend::Pg.
+    - Added next and previous fields to list_jobs method in Minion::Backend::Pg.
+    - Added -Q option to job command.
+    - Improved admin ui to allow navigating job sequences.
+
+-------------------------------------------------------------------
 Thu Jun 18 03:09:47 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 10.08
