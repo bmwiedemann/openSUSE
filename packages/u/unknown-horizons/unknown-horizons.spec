@@ -32,6 +32,8 @@ Patch0:         unknown-horizons-encoding.patch
 Patch1:         0001-replace-deprecated-to-distro-package-2910.patch
 # PATCH-FIX-OPENSUSE -- Use python3 without env for rpm detection
 Patch2:         rpm-shbang.patch
+# PATCH-FIX-UPSTREAM https://github.com/unknown-horizons/unknown-horizons/pull/2943
+Patch3:         reproducible.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  fife-devel >= 0.4.2

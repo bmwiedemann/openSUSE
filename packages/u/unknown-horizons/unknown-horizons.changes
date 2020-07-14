@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  6 03:55:20 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to sort file lists (boo#1041090)
+
+-------------------------------------------------------------------
 Mon Jun  1 17:51:24 UTC 2020 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Specfile cleanup
