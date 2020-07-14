@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul  5 07:55:00 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 5.71.0:
+  * Fix Sphinx warning about cmake code block
+  * Remove support for png2ico
+  * Fix the ECM doc generation
+  * Fix markdown list from not being a list
+  * Deal with Qt's CMake code modifying CMAKE_SHARED_LIBRARY_SUFFIX
+  * Add FindTaglib find module
+  * extra-cmake-modules: Convert to SPDX license statements
+
+-------------------------------------------------------------------
 Sun Jun  7 08:06:14 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.71.0
