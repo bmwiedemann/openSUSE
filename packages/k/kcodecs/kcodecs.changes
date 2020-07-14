@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul  5 07:55:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 5.71.0:
+  * Minor optimisation
+  * Fix another "Using QCharRef with an index pointing outside the valid
+  * Minor optimization
+  * Fix warning about "Using QCharRef with an index pointing outside the
+  * Add some \n otherwise text can be very big in messagebox
+
+-------------------------------------------------------------------
 Sun Jun  7 08:06:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.71.0

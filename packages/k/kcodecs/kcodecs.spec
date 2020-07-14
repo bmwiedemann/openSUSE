@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Codecs5
-%define _tar_path 5.71
+%define _tar_path 5.72
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcodecs
-Version:        5.71.0
+Version:        5.72.0
 Release:        0
 Summary:        Method collection to manipulate strings using various encodings
 License:        LGPL-2.1-or-later
@@ -36,7 +36,6 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-BuildRequires:  cmake >= 3.5
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  gperf
@@ -98,15 +97,16 @@ strings using various encodings.
 %endif
 
 %files -n %{lname}
-%license COPYING*
+%license LICENSES/*
 %doc README*
-%{_kf5_libdir}/libKF5Codecs.so.*
 %{_kf5_debugdir}/*.categories
+%{_kf5_libdir}/libKF5Codecs.so.*
 
 %files devel
-%{_kf5_libdir}/libKF5Codecs.so
-%{_kf5_libdir}/cmake/KF5Codecs/
+%license LICENSES/*
 %{_kf5_includedir}/
+%{_kf5_libdir}/cmake/KF5Codecs/
+%{_kf5_libdir}/libKF5Codecs.so
 %{_kf5_mkspecsdir}/qt_KCodecs.pri
 
 %changelog
