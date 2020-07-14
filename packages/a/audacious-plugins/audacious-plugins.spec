@@ -123,6 +123,9 @@ Extra plugins for the Audacious audio player.
 %exclude %{_libdir}/audacious/Input/libaac-raw.so
 %endif
 %exclude %{_libdir}/audacious/Output/libfilewriter.so
+# Fix Winamp Default skin by removing wrong skin file
+# https://github.com/audacious-media-player/audacious-plugins/pull/93
+%exclude %{_datadir}/audacious/Skins/Default/balance.png
 %{_datadir}/audacious/
 
 %files lang -f %{name}.lang

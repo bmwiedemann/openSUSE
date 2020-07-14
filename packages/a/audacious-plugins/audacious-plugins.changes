@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 10 13:50:33 UTC 2020 - Petr Vorel <pvorel@suse.cz>
+
+- Fix Winamp Default skin by removing wrong skin file
+  * See https://github.com/audacious-media-player/audacious-plugins/pull/93
+
+-------------------------------------------------------------------
 Tue Jun  9 06:39:50 UTC 2020 - Petr Vorel <pvorel@suse.cz>
 
 - Add missing Qt5X11Extras dependency for qthotkey plugin.
