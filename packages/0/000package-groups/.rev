@@ -901,4 +901,15 @@ it wants then though.</comment>
     <time>1594034513</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="125" vrev="123">
+    <srcmd5>a62be11d0199094371cdc56270ff3dcb</srcmd5>
+    <version>unknown</version>
+    <time>1594706129</time>
+    <user>dimstar_suse</user>
+    <comment>openSUSE-MicroOS -&gt; MicroOS
+
+So far the vendor &quot;openSUSE&quot; produced the product &quot;openSUSE-MicroOS&quot;. Should be
+vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
+    <requestid>817866</requestid>
+  </revision>
 </revisionlist>
