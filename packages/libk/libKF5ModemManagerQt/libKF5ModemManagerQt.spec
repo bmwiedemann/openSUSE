@@ -17,7 +17,7 @@
 
 
 %define soversion 6
-%define _tar_path 5.71
+%define _tar_path 5.72
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           libKF5ModemManagerQt
-Version:        5.71.0
+Version:        5.72.0
 Release:        0
 Summary:        Qt wrapper for ModemManager DBus API
 License:        LGPL-2.1-only OR LGPL-3.0-only
@@ -81,15 +81,16 @@ Qt5 wrapper for ModemManager DBus API.
 %postun -n libKF5ModemManagerQt%{soversion} -p /sbin/ldconfig
 
 %files -n libKF5ModemManagerQt%{soversion}
-%license COPYING.LIB
+%license LICENSES/*
 %doc README
-%{_kf5_libdir}/libKF5ModemManagerQt.so.*
 %{_kf5_debugdir}/modemmanagerqt.categories
+%{_kf5_libdir}/libKF5ModemManagerQt.so.*
 
 %files devel
-%{_kf5_libdir}/libKF5ModemManagerQt.so
-%{_kf5_includedir}/ModemManagerQt/
+%license LICENSES/*
 %{_kf5_includedir}/*.h
+%{_kf5_includedir}/ModemManagerQt/
 %{_kf5_libdir}/cmake/KF5ModemManagerQt/
+%{_kf5_libdir}/libKF5ModemManagerQt.so
 
 %changelog
