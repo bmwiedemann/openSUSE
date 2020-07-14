@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 11 18:38:46 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.11.1:
+  * Fix an AST-related AttributeError when processing decorator lists.
+
+- changes from version 0.11.0:
+  * __class_getitem__ is now recognized as a class method.
+  * Support ast.Call nodes in decorator lists (@decorator(arg)).
+  * As a performance improvement, onl
+
+-------------------------------------------------------------------
 Tue Mar 24 12:49:26 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.10.0
