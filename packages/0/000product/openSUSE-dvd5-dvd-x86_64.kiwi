@@ -2095,7 +2095,7 @@
       <repopackage name="libjsonrpc-glib-1_0-1"/>
       <repopackage name="libjte1"/>
       <repopackage name="libJudy1"/>
-      <repopackage name="libkaccounts1"/>
+      <repopackage name="libkaccounts2"/>
       <repopackage name="libkasten-lang"/>
       <repopackage name="libKasten4"/>
       <repopackage name="libkate1"/>
@@ -2977,6 +2977,7 @@
       <repopackage name="libv4l"/>
       <repopackage name="libv4l1-0"/>
       <repopackage name="libv4l2-0"/>
+      <repopackage name="libv4l2rds0"/>
       <repopackage name="libv4lconvert0"/>
       <repopackage name="libva-drm2"/>
       <repopackage name="libva-glx2"/>
@@ -5209,7 +5210,10 @@
       <repopackage name="util-linux-systemd"/>
       <repopackage name="util-macros-devel"/>
       <repopackage name="v4l-conf"/>
+      <repopackage name="v4l-utils"/>
+      <repopackage name="v4l-utils-lang"/>
       <repopackage name="v4l2loopback-kmp-default"/>
+      <repopackage name="v4l2loopback-utils"/>
       <repopackage name="vacation"/>
       <repopackage name="vala"/>
       <repopackage name="vcdimager"/>
