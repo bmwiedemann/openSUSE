@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul  9 10:16:24 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.1.1
+  * Do not enable countdown when configuration changes (bxo#16118)
+  * Add lock button to break dialog (bxo#16317)
+  * Update URLs from goodies.x.o to docs.x.o (bxo#16179)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Mon Nov  4 13:27:37 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.1.0
