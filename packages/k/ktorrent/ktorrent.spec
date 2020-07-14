@@ -28,6 +28,8 @@ Source2:        ktorrent.1
 Source3:        ktupnptest.1
 # PATCH-FIX-OPENSUSE initial-preference.diff cmorve69@yahoo.es -- InitialPreference to set it as the default torrent downloader
 Patch0:         initial-preference.diff
+# PATCH-FIX-UPSTREAM
+Patch1:         Update-FindTaglib-from-ECM.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  libboost_headers-devel

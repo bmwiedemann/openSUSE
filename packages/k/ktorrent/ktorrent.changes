@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 11 13:51:11 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Update-FindTaglib-from-ECM.patch to fix build with KDE
+  Frameworks 5.72.0
+
+-------------------------------------------------------------------
 Mon Jun  8 14:00:58 UTC 2020 - wbauer@tmo.at
 
 - Update to version 5.2.0

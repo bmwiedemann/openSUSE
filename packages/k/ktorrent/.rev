@@ -864,4 +864,12 @@ This should fix the failures seen in Staging:E</comment>
     <comment></comment>
     <requestid>812721</requestid>
   </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>ce0334cd1511d27de0ce66b9912ebf5f</srcmd5>
+    <version>5.2.0</version>
+    <time>1594706145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820422</requestid>
+  </revision>
 </revisionlist>
