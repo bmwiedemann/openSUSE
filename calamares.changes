@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Jul 11 16:18:24 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- calamares.keyring updated (gh#calamares/calamares#1450)
+- Changed 3.2-packages.conf.patch: updated for new version
+- Update to version 3.2.27:
+ - locale put some more places into the correct timezone visually;
+   for instance Norfolk Island gave up UTC+11.5 in 2015 and is now
+   UTC+11, but Calamares still showed it in a zone separate from UTC+11.
+ - localeq can now properly switch between on & offline mode,
+   it detects internet status through js.
+ - tracking now supports kuserfeedback configuration.
+ - welcomeq added the GEOIP configuration option, so locale can be
+   initially set according to IP address.
+ - Welcome to Azerbaijani translations. These are available
+   in two variations, Azerbaijani and Azerbaijani (Azerbaijan).
+ - Warnings while building with Qt 5.15 have been much reduced.
+ - partitioning has one case of undefined behavior (UB) due
+   to a missing integer-initialization.
+ - keyboardq QML module now works correctly.
+ - QML modules with no surrounding navigation -- this is basically a
+   special case for full-screen Calamares -- now have margins suitable
+   for full-screen use.
+ - PythonQt modules are increasingly on the way out.
+ - The netinstall module has had some minor UI tweaks.
+ - Partitioning now tries harder to avoid floppy drives.
+
+-------------------------------------------------------------------
 Sun Jun  7 09:46:46 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Update to version 3.2.25:

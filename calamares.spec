@@ -18,7 +18,7 @@
 
 %define _sover  3
 Name:           calamares
-Version:        3.2.25
+Version:        3.2.27
 Release:        0
 Summary:        Installer from a live CD/DVD/USB to disk
 License:        GPL-3.0-or-later
@@ -148,17 +148,9 @@ Meanwhile configuration files adopted to work with openSUSE and SUSE
 based custom appliances.
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -N
 cp -f %{SOURCE3} src/branding/default/
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
+%autopatch -p1
 # fix shebang 
 find . -wholename "./src/modules/*/main.py" -exec sed -re "1s/^#\!\/usr\/bin\/env python3/#\!\/usr\/bin\/python3/" -i {} \;
 
