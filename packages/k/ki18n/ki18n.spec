@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5I18n5
-%define _tar_path 5.71
+%define _tar_path 5.72
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ki18n
-Version:        5.71.0
+Version:        5.72.0
 Release:        0
 Summary:        KDE Gettext-based UI text internationalization
 License:        LGPL-2.1-or-later
@@ -38,7 +38,6 @@ Source2:        frameworks.keyring
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE fallbackLang.diff -- look for translations in locale/kf5 also
 Patch0:         fallbackLang.diff
-BuildRequires:  cmake >= 3.5
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  gettext-runtime
@@ -120,16 +119,17 @@ done
 %endif
 
 %files -n %{lname}
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %{_kf5_debugdir}/ki18n.categories
 %{_kf5_libdir}/libKF5I18n.so.*
 %{_kf5_plugindir}/
 
 %files devel
-%{_kf5_libdir}/libKF5I18n.so
-%{_kf5_libdir}/cmake/KF5I18n/
+%license LICENSES/*
 %{_kf5_includedir}/
+%{_kf5_libdir}/cmake/KF5I18n/
+%{_kf5_libdir}/libKF5I18n.so
 %{_kf5_mkspecsdir}/qt_KI18n.pri
 
 %changelog
