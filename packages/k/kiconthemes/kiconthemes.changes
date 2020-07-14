@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul  5 07:55:26 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 5.71.0:
+  * Drop assignment in resetPalette
+  * Return QPalette() if we have no custom palette
+  * Respect QIcon::fallbackSearchpaths() (kde#405522)
+
+-------------------------------------------------------------------
 Sun Jun  7 08:06:42 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.71.0
