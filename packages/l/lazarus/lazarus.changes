@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  8 17:15:55 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.0.10
+  This is a bugfix release. For a complete list of changes see:
+  https://wiki.freepascal.org/Lazarus_2.0_fixes_branch#Fixes_for_2.0.10_.28merged.29
+- Add lazarus-2.0.10-fpc304.patch (fix build with fpc 3.0.4)
+
+-------------------------------------------------------------------
 Wed Apr 15 20:15:11 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.0.8

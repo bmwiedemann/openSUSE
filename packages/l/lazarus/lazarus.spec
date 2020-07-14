@@ -18,7 +18,7 @@
 
 %define sover   1
 Name:           lazarus
-Version:        2.0.8
+Version:        2.0.10
 Release:        0
 # Please note that the LGPL is modified and this is not multi-licensed, but each component has a separate license chosen.
 Summary:        FreePascal RAD IDE and Component Library
@@ -33,6 +33,8 @@ Source90:       %{name}-rpmlintrc
 Patch0:         %{name}-Makefile_patch.diff
 # PATCH-FIX-OPENSUSE lazarus.desktop.patch -- Fix desktop file
 Patch1:         lazarus.desktop.patch
+# PATCH-FIX-UPSTREAM lazarus-2.0.10-fpc304.patch
+Patch2:         lazarus-2.0.10-fpc304.patch
 %if 0%{?suse_version} > 1210
 BuildRequires:  desktop-file-utils
 %else
@@ -101,6 +103,7 @@ Development files for Free Pascal interface to Qt5.
 %setup -q -n %{name}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 # remove unneeded files
 rm -rf debian
