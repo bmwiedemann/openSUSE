@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Mon Jul  6 09:33:44 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of kristall 0.3 for openSUSE
+- Add kristall-qmake5.patch:
+  Use qmake-qt5 instead of qmake
