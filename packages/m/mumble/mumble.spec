@@ -1,7 +1,7 @@
 #
 # spec file for package mumble
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 #%%define snapshot rc2
-%define ver 1.3.0
+%define ver 1.3.2
 %if 0%{?fedora_version}
 %bcond_without ice
 %else
@@ -47,10 +47,9 @@ Source1:        https://github.com/mumble-voip/mumble/releases/download/%{ver}%{
 Source2:        mumble-server.init
 Source3:        murmur.apparmor
 # http://mumble.info/gpg/gpg.txt
-Source4:        https://raw.githubusercontent.com/mumble-voip/mumble-gpg-signatures/master/mumble-auto-build-2019.asc#/%{name}.keyring
+Source4:        https://raw.githubusercontent.com/mumble-voip/mumble-gpg-signatures/master/mumble-auto-build-2020.asc#/%{name}.keyring
 Source5:        mumble-server.service
 Source6:        baselibs.conf
-Patch0:         add-speechd-include-path.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel
 BuildRequires:  libogg-devel
@@ -161,11 +160,11 @@ won't be audible to other players.
 %package server
 Summary:        Voice Communication Server for Gamers
 Group:          Productivity/Multimedia/Sound/Utilities
-Recommends:     libQt5Sql5-mysql
-Recommends:     libQt5Sql5-postgresql
 Requires:       libQt5Sql5-sqlite
 Requires:       lsb-release
 Requires(pre):  %{_sbindir}/useradd
+Recommends:     libQt5Sql5-mysql
+Recommends:     libQt5Sql5-postgresql
 %if 0%{?snapshot:1}
 Conflicts:      mumble-server < %{version}
 Provides:       mumble-server = %{version}
@@ -182,7 +181,6 @@ won't be audible to other players.
 
 %prep
 %setup -q -n %{name}-%{ver}
-%patch0 -p1
 rm -v scripts/*.bak
 
 %build
@@ -235,10 +233,10 @@ sed -i "s,<libspeechd.h>,<speech-dispatcher/libspeechd.h>," src/mumble/TextToSpe
 # them manually first
 for i in src/* ; do
        grep -q compiler_pb_make_all $i/Makefile.Release || continue
-       make %{?_smp_mflags} -C $i -f Makefile.Release compiler_pb_make_all
+       %make_build -C $i -f Makefile.Release compiler_pb_make_all
 done
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 # client
