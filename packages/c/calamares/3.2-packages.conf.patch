@@ -6,7 +6,7 @@ diff --git a/src/modules/packages/packages.conf b/src/modules/packages/packages.
 --- a/src/modules/packages/packages.conf
 +++ b/src/modules/packages/packages.conf
 @@ -13,7 +13,7 @@
- #  - apk         = Alpine Linux package manager
+ # Not actually a package manager, but suitable for testing:
  #  - dummy       - Dummy manager, only logs
  #
 -backend: dummy
