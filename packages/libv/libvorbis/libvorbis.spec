@@ -1,7 +1,7 @@
 #
 # spec file for package libvorbis
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libvorbis
-Version:        1.3.6
+Version:        1.3.7
 Release:        0
 Summary:        The Vorbis General Audio Compression Codec
 License:        BSD-3-Clause
 Group:          System/Libraries
-Url:            http://www.vorbis.com/
-Source:         http://downloads.xiph.org/releases/vorbis/%{name}-%{version}.tar.xz
-Source1:        baselibs.conf
+URL:            http://www.vorbis.com/
+Source:         https://downloads.xiph.org/releases/vorbis/%{name}-%{version}.tar.xz
+Source1:        https://downloads.xiph.org/releases/vorbis/libvorbis-%{version}.tar.xz.asc
+Source10:       baselibs.conf
+Source99:       libvorbis.keyring
 Patch1:         libvorbis-lib64.dif
 Patch2:         libvorbis-m4.dif
 Patch12:        vorbis-ocloexec.patch
-Patch101:       vorbis-CVE-2017-14160.patch
-Patch102:       vorbis-CVE-2018-10393.patch
-Patch103:       vorbis-CVE-2018-10392.patch
 BuildRequires:  libogg-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -119,9 +118,6 @@ if [ "%{_lib}" == "lib64" ]; then
 %patch1
 fi
 %patch12
-%patch101 -p1
-%patch102 -p1
-%patch103 -p1
 
 %build
 # Fix optimization level

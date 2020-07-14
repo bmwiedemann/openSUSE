@@ -1,7 +1,7 @@
 #
 # spec file for package libvorbis-doc
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,13 +23,15 @@
 %endif
 
 Name:           libvorbis-doc
-Version:        1.3.6
+Version:        1.3.7
 Release:        0
 Summary:        Documentation of Ogg/Vorbis library
 License:        BSD-3-Clause
 Group:          Documentation/Other
-Url:            http://www.vorbis.com/
-Source:         http://downloads.xiph.org/releases/vorbis/libvorbis-%{version}.tar.xz
+URL:            https://www.vorbis.com/
+Source:         https://downloads.xiph.org/releases/vorbis/libvorbis-%{version}.tar.xz
+Source1:        https://downloads.xiph.org/releases/vorbis/libvorbis-%{version}.tar.xz.asc
+Source99:       libvorbis.keyring
 Patch1:         libvorbis-lib64.dif
 Patch2:         libvorbis-m4.dif
 Patch12:        vorbis-ocloexec.patch
