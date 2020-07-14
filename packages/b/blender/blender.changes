@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jul 10 11:12:11 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.83.2 
+  - Random crash when rendering animation [T77734]
+  - Overlay: “Outline Selected” overlay doesnt affect armatures
+    [T66934]
+  - Crash when closing window while Outliner shows screens
+    [ef0ded4df389]
+  - Crash on undo Draw Face Sets stroke with dyntopo active
+    [T77328]
+  - Fix random crash in Cycles smoke volume loading [2d89951be54d]
+  - UV Editor: Fix Vertex Overlay color not being color managed
+    [000fbef35d24]
+  - Crash after any alembic import undo in an empty scene [T77754]
+  - Crash on proxied rig, custom bone shape, driver targeting rig
+    [T77712]
+  - Crash in VR session when opening material preview [T77830]
+  - Fix memory leak calculating deform modifiers in edit-mode
+    [91b455c00f28]
+  - Incorrect handling of negative-scale bit in DRWResourceHandle
+    [T77913]
+  - VSE Sequencer/Preview crash after fullscreen [T78112]
+  - Compositor Disabled Node Config -> SegFault [T67358]
+  - Undo crash due to IDTemplate operations missing undo push
+    [T78172]
+  - Simple scene created in version 2.82 crashes Blender [T77460]
+
+-------------------------------------------------------------------
 Tue Jul  7 23:52:35 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 2.83.1 
