@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 10 18:44:42 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fixup util dependencies: pull in required vl42-ctl for
+  v4l2loopback-ctl, recommend gst-launch, supplement kernel
+  module (v4l2loopback.ko).
+- Make util package noarch, its just a shell script.
+
+-------------------------------------------------------------------
 Sun Apr 19 17:41:58 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.12.5
