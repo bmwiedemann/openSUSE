@@ -26,6 +26,8 @@ URL:            https://tellico-project.org/
 Source0:        https://tellico-project.org/files/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM
 Patch0:         Fix-compilation-with-Qt-5.9.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         switch-order-of-cmake-modules.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  libcdio-devel

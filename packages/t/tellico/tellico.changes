@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 11 13:53:46 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add switch-order-of-cmake-modules.patch to fix build with KDE
+  Frameworks 5.72.0
+
+-------------------------------------------------------------------
 Tue Jun  2 15:41:28 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 3.3.1:
