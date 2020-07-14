@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-flake8-comprehensions
-Version:        3.2.2
+Version:        3.2.3
 Release:        0
 Summary:        A flake8 plugin to help you write better list/set/dict comprehensions
 License:        ISC
