@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul  9 20:11:04 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-07-apps-update
+- Changes since 20.04.2:
+  * Fix mem leak found by ASAN
+  * Make sure that we don"t see [vcard] when we don't have it
+  * Fix crash when node is empty
+  * Add more check about css imported from message
+  * Don't allow to use div in head
+  * We don't need to add all testcase when we use qt >= 5.14
+  * NavigationTypeRedirect was added to qt5.14
+  * Exclude redirect too
+
+-------------------------------------------------------------------
 Tue Jun  9 12:16:24 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 20.04.2
