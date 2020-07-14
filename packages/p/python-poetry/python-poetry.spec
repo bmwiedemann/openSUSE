@@ -102,7 +102,10 @@ python3 -m venv testenv
 source testenv/bin/activate
 # test_default_with_excluded_data fails, see the above ticket for
 # discussion on this.
-%pytest -k 'not test_default_with_excluded_data'
+# test_publish_returns_non_zero_code_for_upload_errors fails with clikit 0.6.0+
+# which uses crashtest, which outputs extra information not expected by the test
+# This does not occur in the poetry 1.1.0a test suite.
+%pytest -vv -k 'not (test_default_with_excluded_data or test_publish_returns_non_zero_code_for_upload_errors)'
 
 %post
 %python_install_alternative poetry
