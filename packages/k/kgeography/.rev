@@ -955,4 +955,12 @@
     <comment>20.04.2</comment>
     <requestid>813787</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>8ffca4ef2452913378fa00f58afd91ad</srcmd5>
+    <version>20.04.3</version>
+    <time>1594806495</time>
+    <user>dimstar_suse</user>
+    <comment>20.04.3 release</comment>
+    <requestid>820190</requestid>
+  </revision>
 </revisionlist>
