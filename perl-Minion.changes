@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 12 03:08:33 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 10.10
+   see /usr/share/doc/packages/perl-Minion/Changes
+
+  10.10  2020-07-11
+    - Added stuck_after attribute to Minion.
+    - Improved repair method in Minion::Backend::Pg to detect stuck jobs and transtion them to the failed state after 2
+      days of inactivity.
+
+-------------------------------------------------------------------
 Fri Jul 10 09:36:09 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 10.09
