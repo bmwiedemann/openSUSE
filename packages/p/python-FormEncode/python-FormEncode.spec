@@ -1,7 +1,7 @@
 #
 # spec file for package python-FormEncode
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,9 +29,11 @@ Source:         https://files.pythonhosted.org/packages/source/F/FormEncode/Form
 Patch0:         remove-online-tests.patch
 Patch1:         new-pycountry.patch
 Patch2:         six.patch
+# https://github.com/formencode/formencode/pull/154
+Patch3:         python-FormEncode-remove-nose.patch
 BuildRequires:  %{python_module dnspython}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pycountry}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  dos2unix
@@ -57,6 +59,7 @@ for filling and generating forms.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 dos2unix README.rst
 
 %build
@@ -73,7 +76,7 @@ dos2unix README.rst
 %check
 export LANG=en_US.UTF-8
 # excluded tests poll dns
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v -e '(test_cyrillic_email|test_unicode_ascii_subgroup)' formencode/tests
+%pytest -k 'not (test_cyrillic_email or test_unicode_ascii_subgroup)' formencode/tests
 
 %files %{python_files}
 %doc README.rst
