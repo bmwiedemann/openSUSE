@@ -49,4 +49,16 @@
     <comment>- Add a Supplements to snapper plugin to auto-install when snapper and dnf are installed</comment>
     <requestid>783870</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5b47a42243472799fcfd8c4574558ea3</srcmd5>
+    <version>4.0.10</version>
+    <time>1594817645</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.10
+  + Ensure plymouth progressbar is filled up only once (rh#1809096)
+- Enable kickstart plugin
+- Fix author identity in changes
+- test package and test it with pytest (drop dependency on nose)</comment>
+    <requestid>819225</requestid>
+  </revision>
 </revisionlist>

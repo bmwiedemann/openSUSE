@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul  7 11:53:45 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 4.0.10
+  + Ensure plymouth progressbar is filled up only once (rh#1809096)
+- Enable kickstart plugin
+- Fix author identity in changes
+
+-------------------------------------------------------------------
+Fri Jul  3 11:42:03 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- test package and test it with pytest (drop dependency on nose)
+
+-------------------------------------------------------------------
 Wed Mar 11 14:11:37 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Add a Supplements to snapper plugin to auto-install when snapper and dnf are installed
