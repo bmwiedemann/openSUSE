@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul  8 18:33:04 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Remove not needed exports in %install section.
+
+-------------------------------------------------------------------
+Wed Jul  8 17:47:50 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use %make_build macro.
+- Add upstream patch fix-lib-build.patch which fixes lib-mt target.
+
+-------------------------------------------------------------------
 Fri May 22 08:05:28 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 1.4.5

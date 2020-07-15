@@ -28,6 +28,7 @@ URL:            https://github.com/facebook/zstd
 Source0:        https://github.com/facebook/zstd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 Patch1:         pzstd.1.patch
+Patch2:         fix-lib-build.patch
 BuildRequires:  gcc
 # C++ is needed for pzstd only
 BuildRequires:  gcc-c++
@@ -84,23 +85,26 @@ Needed for compiling programs that link with the library.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags} -std=c++11"
-for dir in lib programs contrib/pzstd; do
-  make %{?_smp_mflags} -C "$dir"
+# lib-mt is alias for multi-threaded library support
+%make_build -C lib lib-mt
+for dir in programs contrib/pzstd; do
+  %make_build -C "$dir"
 done
 
 %check
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags} -std=c++11"
-make %{?_smp_mflags} -C tests test-zstd
+%make_build -C tests test-zstd
 #make %{?_smp_mflags} -C contrib/pzstd test-pzstd
 
 %install
-%make_install PREFIX=%{_prefix} LIBDIR=%{_libdir}
+%make_install V=1 VERBOSE=1 PREFIX=%{_prefix} LIBDIR=%{_libdir}
 install -D -m755 contrib/pzstd/pzstd %{buildroot}%{_bindir}/pzstd
 install -D -m644 programs/zstd.1 %{buildroot}%{_mandir}/man1/pzstd.1
 
