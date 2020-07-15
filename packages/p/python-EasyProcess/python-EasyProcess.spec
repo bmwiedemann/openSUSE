@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-EasyProcess%{psuffix}
-Version:        0.2.10
+Version:        0.3
 Release:        0
 Summary:        Python subprocess interface
 License:        BSD-2-Clause
@@ -39,7 +39,7 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module PyVirtualDisplay}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
 %endif
 %python_subpackages
@@ -81,13 +81,13 @@ Limitations:
 %check
 %if %{with test}
 export LANG=en_US.UTF-8
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v tests/
+%pytest
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %license LICENSE.txt
-%doc README.rst
+%doc README.md
 %{python_sitelib}/*
 %endif
 
