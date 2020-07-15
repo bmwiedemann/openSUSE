@@ -57,4 +57,35 @@
   * hypothesis-no-unilmited.patch</comment>
     <requestid>794783</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ce13b8e3b5a46e57c0e2ef7bb57bee8c</srcmd5>
+    <version>1.4.0</version>
+    <time>1594807301</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.0
+  * Update ``libsodium`` to 1.0.18.
+  * **BACKWARDS INCOMPATIBLE:** We no longer distribute 32-bit ``manylinux1``
+    wheels. Continuing to produce them was a maintenance burden.
+  * Added support for Python 3.8, and removed support for Python 3.4.
+  * Add low level bindings for extracting the seed and the public key
+    from crypto_sign_ed25519 secret key
+  * Add low level bindings for deterministic random generation.
+  * Add ``wheel`` and ``setuptools`` setup_requirements in ``setup.py`` (#485)
+  * Fix checks on very slow builders (#481, #495)
+  * Add low-level bindings to ed25519 arithmetic functions
+  * Update low-level blake2b state implementation
+  * Fix wrong short-input behavior of SealedBox.decrypt() (#517)
+  * Raise CryptPrefixError exception instead of InvalidkeyError when trying
+    to check a password against a verifier stored in a unknown format (#519)
+  * Add support for minimal builds of libsodium. Trying to call functions
+    not available in a minimal build will raise an UnavailableError
+    exception. To compile a minimal build of the bundled libsodium, set
+    the SODIUM_INSTALL_MINIMAL environment variable to any non-empty
+    string (e.g. ``SODIUM_INSTALL_MINIMAL=1``) for setup.
+- removed obsolete back-port patch:
+  * fix_tests.patch
+  * hypothesis-no-unilmited.patch
+  * python-PyNaCl-hypothesis-remove-average_size.patch</comment>
+    <requestid>819131</requestid>
+  </revision>
 </revisionlist>

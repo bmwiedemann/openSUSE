@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyNaCl
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Python binding to the Networking and Cryptography (NaCl) library
 License:        Apache-2.0
@@ -26,13 +26,11 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pyca/pynacl/
 Source:         https://pypi.org/packages/source/P/PyNaCl/PyNaCl-%{version}.tar.gz
 # https://github.com/pyca/pynacl/commit/a8c08b18f3a2e8f2140c531afaf42715fcab68e7
-Patch0:         python-PyNaCl-hypothesis-remove-average_size.patch
-Patch1:         fix_tests.patch
-Patch2:         hypothesis-no-unilmited.patch
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pycparser}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -52,7 +50,6 @@ speed.
 
 %prep
 %setup -q -n PyNaCl-%{version}
-%autopatch -p1
 rm -Rf src/libsodium
 
 %build
