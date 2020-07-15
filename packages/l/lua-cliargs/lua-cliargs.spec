@@ -1,7 +1,7 @@
 #
-# spec file for package lua-luacliargs
+# spec file for package lua-cliargs
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,11 +24,11 @@ Release:        0
 Summary:        Command-line argument parsing module for Lua
 License:        MIT
 Group:          Development/Libraries/Other
-Url:            https://github.com/amireh/lua_cliargs
+URL:            https://github.com/amireh/lua_cliargs
 Source:         https://github.com/amireh/lua_cliargs/archive/v%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
 BuildRequires:  %{flavor}-devel
-BuildArch:      noarch
 Requires:       %{flavor}
+BuildArch:      noarch
 %if "%{flavor}" == "lua53"
 Provides:       lua-luacliargs = %{version}
 Obsoletes:      lua-luacliargs < %{version}
@@ -55,7 +55,6 @@ cliargs allows you to define required, optional, and flag arguments.
 %install
 install -v -D -m 0644 -p -t %{buildroot}%{lua_noarchdir} src/cliargs.lua
 cp -v -r -p src/cliargs %{buildroot}%{lua_noarchdir}
-
 
 %files
 %dir %{lua_noarchdir}/cliargs

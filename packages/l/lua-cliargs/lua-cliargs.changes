@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  6 19:02:21 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add lua54 as new build target
+
+-------------------------------------------------------------------
 Sun May 19 19:08:01 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Initial import of lua_cliargs version 3.0-2
