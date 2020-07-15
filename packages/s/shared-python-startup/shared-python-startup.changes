@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 14 11:03:14 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Import readline in the save_history handler. Otherwise the call
+  to readline.write_history_file doesn't work (the readline import
+  at the beginning of the file is already removed) and is silently
+  ignored by the exception catcher.
+
+-------------------------------------------------------------------
 Mon Apr 27 13:18:52 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Correct suse_version value for SLE-12

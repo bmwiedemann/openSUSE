@@ -15,10 +15,12 @@ historyPath = os.path.expanduser("~/.pyhistory%s" % ver)
 
 # handler for saving history
 def save_history(historyPath=historyPath):
+    import readline
     try:
         readline.write_history_file(historyPath)
     except:
         pass
+    del readline
 
 
 # read history, if it exists
