@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 13 08:34:32 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 1.6.0
+  * Certbot snaps are now available for the arm64 and armhf architectures.
+  * Make Certbot snap find externally snapped plugins
+  * Function certbot.compat.filesystem.umask is a drop-in replacement for 
+    os.umask implementing umask for both UNIX and Windows systems.
+
+-------------------------------------------------------------------
 Thu Jun 11 12:10:12 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 1.5.0
