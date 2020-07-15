@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  8 13:23:59 UTC 2020 - pgajdos@suse.com
+
+- use pytest instead of deprecated nose
+- added patches
+  https://github.com/jek/blinker/pull/60
+  + python-blinker-remove-nose.patch
+
+-------------------------------------------------------------------
 Thu Dec  6 11:24:47 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix fdupes call

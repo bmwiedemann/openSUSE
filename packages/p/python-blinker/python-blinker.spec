@@ -1,7 +1,7 @@
 #
 # spec file for package python-blinker
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://pythonhosted.org/blinker/
 Source:         https://files.pythonhosted.org/packages/source/b/blinker/blinker-%{version}.tar.gz
-BuildRequires:  %{python_module nose}
+# https://github.com/jek/blinker/pull/60
+Patch0:         python-blinker-remove-nose.patch
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,6 +57,7 @@ This sub-package contains the HTML documentation.
 
 %prep
 %setup -q -n blinker-%{version}
+%patch0 -p1
 # remove unneded doc file that trigger rpmlint
 rm docs/html/objects.inv
 
@@ -66,7 +69,7 @@ rm docs/html/objects.inv
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec %{_bindir}/nosetests-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
 %license LICENSE

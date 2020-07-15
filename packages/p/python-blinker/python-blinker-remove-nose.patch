@@ -1,0 +1,32 @@
+Index: blinker-1.4/tests/test_signals.py
+===================================================================
+--- blinker-1.4.orig/tests/test_signals.py	2015-07-23 13:34:42.000000000 +0200
++++ blinker-1.4/tests/test_signals.py	2020-07-08 15:07:17.109435209 +0200
+@@ -4,7 +4,7 @@ import time
+ 
+ import blinker
+ 
+-from nose.tools import assert_raises
++import pytest
+ 
+ 
+ jython = sys.platform.startswith('java')
+@@ -227,7 +227,7 @@ def test_meta_connect_failure():
+         pass
+     sig = blinker.Signal()
+ 
+-    assert_raises(TypeError, sig.connect, receiver)
++    pytest.raises(TypeError, sig.connect, receiver)
+     assert not sig.receivers
+     assert not sig._by_receiver
+     assert sig._by_sender == {blinker.base.ANY_ID: set()}
+@@ -487,9 +487,4 @@ def values_are_empty_sets_(dictionary):
+     for val in dictionary.values():
+         assert val == set()
+ 
+-if sys.version_info < (2, 5):
+-    def test_context_manager_warning():
+-        sig = blinker.Signal()
+-        receiver = lambda sender: None
+ 
+-        assert_raises(RuntimeError, sig.connected_to, receiver)
