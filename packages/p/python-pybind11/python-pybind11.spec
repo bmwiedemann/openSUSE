@@ -18,13 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pybind11
-Version:        2.4.3
+Version:        2.5.0
 Release:        0
 Summary:        Module for operability between C++11 and Python
 License:        BSD-3-Clause
 URL:            https://github.com/pybind/pybind11
 Source:         https://github.com/pybind/pybind11/archive/v%{version}.tar.gz#/pybind11-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake
@@ -63,7 +64,10 @@ This package contains files for developing applications using pybind11.
 %python_build
 # calling cmake to install header to right location and
 # generate cmake include files
-%cmake
+%cmake \
+  -DPYBIND11_INSTALL=ON \
+  -DPYBIND11_TEST=ON \
+
 %cmake_build
 
 %install
@@ -74,10 +78,16 @@ This package contains files for developing applications using pybind11.
 rm -rfv %{buildroot}%{_includedir}/python2.*/pybind11/
 rm -rfv %{buildroot}%{_includedir}/python3.*/pybind11
 
+#%%check
+# test fails as python3-widget is not in distribuion
+rm tests/test_embed/test_interpreter.py
+%pytest 
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pybind11*
+%exclude %{python_sitelib}/pybind11/include
 
 %files -n %{name}-common-devel
 %{_includedir}/pybind11

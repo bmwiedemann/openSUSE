@@ -65,4 +65,12 @@
     <comment>- On devel files you need the pybind too to compile anything</comment>
     <requestid>796474</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1e2df210ef2d02e5aef4ed94453b840e</srcmd5>
+    <version>2.5.0</version>
+    <time>1594807324</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819139</requestid>
+  </revision>
 </revisionlist>
