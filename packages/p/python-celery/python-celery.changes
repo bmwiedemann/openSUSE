@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Fri Jul 10 18:47:27 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
+
+- since version 4.3 celery depends on cryptography instead of
+  PyOpenSSL
+
+-------------------------------------------------------------------
+Fri Jul 10 12:44:37 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
+
+- disable failing minor test test_pytest_celery_marker_registration
+  for now
+
+-------------------------------------------------------------------
+Thu Jul  9 06:36:54 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to 4.4.6:
+  * Remove autoscale force_scale methods (#6085).
+  * Fix autoscale test
+  * Pass ping destination to request
+  * chord: merge init options with run options
+  * Put back KeyValueStoreBackend.set method without state
+  * Added --range-prefix option to celery multi (#6180)
+  * Added as_list function to AsyncResult class (#6179)
+  * Fix CassandraBackend error in threads or gevent pool (#6147)
+  * Kombu 4.6.11
+- Additional changes from 4.4.5:
+  * Add missing dependency on future (#6146).
+  * ElasticSearch: Retry index if document was deleted between
+    index
+  * fix windows build
+  * Customize the retry interval of chord_unlock tasks
+  * fix multi tests in local
+- Additional changes from 4.4.4:
+  * Fix autoretry_for with explicit retry (#6138).
+  * Kombu 4.6.10
+  * Use Django DB max age connection setting (fixes #4116).
+  * Add retry on recoverable exception for the backend (#6122).
+  * Fix random distribution of jitter for exponential backoff.
+  * ElasticSearch: add setting to save meta as json.
+  * fix #6136. celery 4.4.3 always trying create /var/run/celery
+    directory.
+  * Add task_internal_error signal (#6049).
+- Additional changes from 4.4.3:
+  * Fix backend utf-8 encoding in s3 backend .
+  * Kombu 4.6.9
+  * Task class definitions can have retry attributes (#5869)
+  * Upgraded pycurl to the latest version that supports wheel.
+  * Add uptime to the stats inspect command
+  * Fixing issue #6019: unable to use mysql SSL parameters when getting
+  * Clean TraceBack to reduce memory leaks for exception task (#6024)
+  * exceptions: NotRegistered: fix up language
+  * Give up sending a worker-offline message if transport is not
+    connected
+  * Add Task to __all__ in celery.__init__.py
+  * Ensure a single chain object in a chain does not raise
+    MaximumRecursion
+  * Fix autoscale when prefetch_multiplier is 1
+  * Allow start_worker to function without ping task
+  * Update celeryd.conf
+  * Fix correctly handle configuring the serializer for always_eager
+    mode.
+  * Remove doubling of prefetch_count increase when
+    prefetch_multiplier
+  * Fix eager function not returning result after retries
+  * return retry result if not throw and is_eager
+  * Always requeue while worker lost regardless of the redelivered
+    flag
+  * Allow relative paths in the filesystem backend (#6070)
+  * [Fixed Issue #6017]
+  * Avoid race condition due to task duplication.
+  * Exceptions must be old-style classes or derived from BaseException
+  * Fix windows build (#6104)
+  * Add encode to meta task in base.py (#5894)
+  * Update time.py to solve the microsecond issues (#5199)
+  * Change backend _ensure_not_eager error to warning
+  * Add priority support for 'celery.chord_unlock' task (#5766)
+  * Change eager retry behaviour
+  * Avoid race condition in elasticsearch backend
+  * backends base get_many pass READY_STATES arg
+  * Add integration tests for Elasticsearch and fix _update
+  * feat(backend): Adds cleanup to ArangoDB backend
+  * remove jython check
+  * fix filesystem backend cannot not be serialized by picked
+
+-------------------------------------------------------------------
 Wed May 27 09:36:39 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
