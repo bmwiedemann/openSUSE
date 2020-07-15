@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  6 19:04:39 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add lua54 as new build target
+
+-------------------------------------------------------------------
 Mon Oct 30 14:45:32 UTC 2017 - jmatejek@suse.com
 
 - do not build for Lua 5.2
