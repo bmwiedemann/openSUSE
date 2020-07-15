@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jul  8 22:36:13 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update TO 0.29.21
+ * Fix a regression in 0.29.20 where __div__ failed to be found in extension types
+ * Fix a regression in 0.29.20 where a call inside of a finally clause could
+    fail to compile
+ * Zero-sized buffers could fail to validate as C/Fortran-contiguous.
+ * exec() did not allow recent Python syntax features in Py3.8+
+    due to https://bugs.python.org/issue35975
+ * Binding staticmethods of Cython functions were not behaving like
+    Python methods in Py3
+ * Pythran calls to NumPy methods no longer generate useless method lookup code.
+ * The PyUnicode_GET_LENGTH() macro was missing from the cpython.* declarations
+ * The deprecated PyUnicode_*() C-API functions are no longer used, except
+    for Unicode strings that contain lone surrogates. Unicode strings that
+    contain non-BMP characters or surrogate pairs now generate different C
+    code on 16-bit Python 2.x Unicode deployments (such as MS-Windows).
+    Generating the C code on Python 3.x is recommended in this case
+ * Some template parameters were missing from the C++ std::unordered_map declaration
+ * Several internal code generation issues regarding temporary variables were resolved
+
+-------------------------------------------------------------------
 Thu Jun 11 06:30:55 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.29.20
