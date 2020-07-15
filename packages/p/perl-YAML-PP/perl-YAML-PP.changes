@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 10 09:45:38 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.023
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  0.023 2020-07-09 22:09:50+02:00
+
+      - Support loading and dumping typeglobs. Issue #15
+      - Dumper: Don't use aliases for JSON::PP/boolean.pm booleans, because they
+        alwas use the same reference. Issue #32
+      - Fix float comparison in test. Issue #33
+      - Make aliases in custom tags work
+      - YAML::PP::Highlight: colorize mapping keys
+
+-------------------------------------------------------------------
 Tue May  5 03:18:19 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 0.022
