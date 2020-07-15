@@ -124,8 +124,8 @@ includedir=%{_includedir}/lame
 Name: lame
 Description: encoder that converts audio to the MP3 file format.
 Version: %{version}
-Libs: -L${libdir} -lmp3lame
-Cflags: -I${includedir}
+Libs: -L\${libdir} -lmp3lame
+Cflags: -I\${includedir}
 EOF
 pushd %{buildroot}%{_libdir}/pkgconfig/
 ln -s lame.pc libmp3lame.pc

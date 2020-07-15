@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  8 20:03:47 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Escape the "$" character in spec file, so that the non-existing
+  variable does not get replaced by empty string
+
+-------------------------------------------------------------------
 Sun Jun 28 13:58:25 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Create pkgconfig file.
