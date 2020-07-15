@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jul  7 00:00:00 CEST 2020 - dsterba@suse.cz
+
+- Update to 5.7:
+  * mkfs:
+    * new option to enable features otherwise enabled at runtime, now
+      implemented for quotas, 'mkfs.btrfs -R quota'
+    * fix space accounting for small image, DUP and --rootdir
+    * option -A removed
+  * check: detect ranges with overlapping csum items
+  * fi usage: report correct numbers when plain RAID56 profiles are used
+  * convert: ensure the data chunks size never exceed device size
+  * libbtrfsutil: update documentation regarding subvolume deletion
+  * build: support libkcapi as implementation backend for cryptographic
+    primitives
+  * core: global options for verbosity (-v, -q), subcommands -v or -q are
+    aliases and will continue to work but are considered deprecated,
+    current command output is preserved to keep scripts working
+  * other:
+    * build warning fixes
+    * btrfs-debugfs ported to python 3
+
+-------------------------------------------------------------------
 Thu May 14 00:00:00 CEST 2020 - dsterba@suse.cz
 
 - Update to 5.6.1:
