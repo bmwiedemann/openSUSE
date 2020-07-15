@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  6 19:06:32 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add lua54 as new build target
+
+-------------------------------------------------------------------
 Thu Apr  2 13:12:04 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Install and package noarch modules as well.
