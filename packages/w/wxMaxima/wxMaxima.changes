@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Jul  3 16:17:02 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 20.06.6:
+  * Resolved a compiling problem the last release has introduced.
+- Changes from version 20.06.1 through 20.06.5: Minor bug fixes.
+- Changes from version 20.06.0:
+  * Many spell corrections and bugfixes
+  * The history sidebar now works again
+  * TextCells with copy-alt-text caused an crash
+  * A few additional small bugfixes
+  * Many (really many!) big stability improvements
+  * In sqrt(conjugate(f(x))) the horizontal lines coincided
+  * Strings were searched for comment starts when adding line
+    endings
+  * Faster start-up by avoiding unneeded redraw events
+  * A big number of performance improvements
+  * Unfortunately one last temporary fix reduces performance again
+  * Corrected a bug that sometimes caused parts of equations not
+    to be displayed
+  * As this allows to improve performance and stability C++14 is
+    now used
+  * Speed boost The list of anchors from the manual is now cached
+    on disk
+  * Updated translations.
+- Add wxMaxima-string-type-conversion.patch: Fix an invalid
+  conversion from wxString to wxChar*
+  (gh#wxMaxima-developers/wxmaxima#1324).
+- Add new BuildRequires: pandoc.
+- Use ninja for build (BuildRequires: ninja).
+
+-------------------------------------------------------------------
 Thu May 21 13:25:06 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Remove unused libomp7-devel dependency: when compiling with GCC,

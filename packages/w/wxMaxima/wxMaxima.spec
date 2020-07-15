@@ -16,15 +16,18 @@
 #
 
 
+%define __builder ninja
 %define tarname wxmaxima
 Name:           wxMaxima
-Version:        20.04.0
+Version:        20.06.6
 Release:        0
 Summary:        Graphical User Interface for the maxima Computer Algebra System
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://wxmaxima-developers.github.io/wxmaxima/
 Source0:        https://github.com/wxmaxima-developers/wxmaxima/archive/Version-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM wxMaxima-string-type-conversion.patch gh#wxMaxima-developers/wxmaxima#1324 badshah400@gmail.com -- Fix an invalid wxString to wxChar* conversion
+Patch0:         wxMaxima-string-type-conversion.patch
 BuildRequires:  appstream-glib
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -33,6 +36,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  maxima >= 5.30.0
+BuildRequires:  ninja
+BuildRequires:  pandoc
 BuildRequires:  po4a
 %if 0%{suse_version} >= 1550 || 0%{?sle_version} >= 150200
 BuildRequires:  rsvg-convert
@@ -55,6 +60,7 @@ based on wxWidgets.
 
 %prep
 %setup -q -n %{tarname}-Version-%{version}
+%patch0 -p1
 
 %build
 %cmake
@@ -83,8 +89,8 @@ mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/mimetypes
 rm %{buildroot}%{_datadir}/pixmaps/*
 
 # REMOVE README.md AND COPYING FILES INSTALLED BY mak install, WE INCLUDE THEM BY USING %%doc
-rm %{buildroot}%{_datadir}/%{tarname}/README*
-rm %{buildroot}%{_datadir}/%{tarname}/COPYING
+rm -fr %{buildroot}%{_datadir}/doc/%{tarname}/README*
+rm -fr %{buildroot}%{_datadir}/doc/%{tarname}/COPYING
 
 %suse_update_desktop_file io.github.wxmaxima_developers.wxMaxima
 
@@ -99,7 +105,7 @@ rm %{buildroot}%{_datadir}/%{tarname}/COPYING
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/wxmaxima.info%{ext_info}
 
 %files
-%license COPYING
+%license COPYING GPL.txt
 %doc AUTHORS README.md ChangeLog
 %{_datadir}/doc/%{tarname}/
 %{_bindir}/*
