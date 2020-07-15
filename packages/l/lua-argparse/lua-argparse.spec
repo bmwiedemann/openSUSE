@@ -50,9 +50,9 @@ Name:           %{flavor}-argparse
 %endif
 %endif
 %if %{with test}
-BuildRequires:  %{flavor}-penlight
 BuildRequires:  %{flavor}-argparse
 BuildRequires:  %{flavor}-busted
+BuildRequires:  %{flavor}-penlight
 %endif
 
 %description
