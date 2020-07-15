@@ -1,7 +1,7 @@
 #
 # spec file for package freecell-solver
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,21 @@
 %define soversion 0
 %define libname libfreecell-solver
 Name:           freecell-solver
-Version:        5.0.0
+Version:        5.24.0
 Release:        0
 Summary:        A Freecell Solver
 License:        MIT
 Group:          Amusements/Games/Other
-URL:            http://fc-solve.shlomifish.org
+URL:            https://fc-solve.shlomifish.org
 Source0:        http://fc-solve.shlomifish.org/downloads/fc-solve/%{name}-%{version}.tar.xz
-BuildRequires:  cmake >= 3.0
+BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  gperf
 BuildRequires:  perl-Template-Toolkit
 BuildRequires:  pkgconfig
+BuildRequires:  python3-pysol-cards
 BuildRequires:  python3-random2
 BuildRequires:  python3-six
 BuildRequires:  perl(Path::Tiny)
@@ -74,7 +75,8 @@ Development package for the libfreecell-solver library
 %cmake -DBUILD_STATIC_LIBRARY=OFF \
        -DFCS_WITH_TEST_SUITE=OFF \
        -DFCS_AVOID_TCMALLOC=ON
-%make_jobs
+
+%cmake_build
 
 %install
 %cmake_install
@@ -105,7 +107,8 @@ sed -i '/^#!\/bin/d' %{buildroot}%{_datadir}/freecell-solver/presets/*.sh
 %files
 %license COPYING.asciidoc
 %doc %{_datadir}/doc/freecell-solver/
-%doc AUTHORS.asciidoc NEWS.asciidoc README.asciidoc USAGE.asciidoc
+%{_bindir}/dbm-fc-solver
+%{_bindir}/depth-dbm-fc-solver
 %{_bindir}/*freecell*
 %{_bindir}/fc*
 %{_bindir}/gen-multiple-pysol-layouts
