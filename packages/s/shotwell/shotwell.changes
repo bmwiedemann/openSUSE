@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul 12 12:48:51 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(gdk-2.0) and pkgconfig(gdk-x11-2.0) BuildRequires:
+  No longer needed, nor used.
+- Add pkgconfig(gdk-3.0) and pkgconfig(gdk-pixbuf-2.0)
+  BuildRequires.
+- Drop -lang Recommends: Supplements takes care of it now.
+
+-------------------------------------------------------------------
 Fri May 22 14:38:37 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.30.10: 

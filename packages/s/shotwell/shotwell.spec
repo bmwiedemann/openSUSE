@@ -38,8 +38,8 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(gcr-3)
 BuildRequires:  pkgconfig(gcr-ui-3)
-BuildRequires:  pkgconfig(gdk-2.0)
-BuildRequires:  pkgconfig(gdk-x11-2.0)
+BuildRequires:  pkgconfig(gdk-3.0)
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gee-0.8) >= 0.10.0
 BuildRequires:  pkgconfig(gexiv2) >= 0.11.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.20
@@ -57,7 +57,6 @@ BuildRequires:  pkgconfig(libsoup-2.4) >= 2.26.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.32
 BuildRequires:  pkgconfig(sqlite3) >= 3.5.9
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
-Recommends:     %{name}-lang
 
 %description
 Shotwell is a digital photo organizer designed for the GNOME desktop
