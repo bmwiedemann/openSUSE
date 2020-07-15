@@ -10,7 +10,7 @@ Tue Apr 28 15:25:22 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 - Add gceosl-no-def-sysgrps.patch (bsc#1170719, bsc#1170720)
   + Do not add the created user to the adm (CVE-2020-8903),
     docker (CVE-2020-8907), or lxd (CVE-2020-8933) groups
-    if they exist
+    if they exist (bsc#1173258)
 
 -------------------------------------------------------------------
 Wed Apr  8 15:45:59 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
