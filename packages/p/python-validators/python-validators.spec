@@ -33,7 +33,6 @@ Requires:       python-six >= 1.4.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module decorator >= 3.4.0}
-BuildRequires:  %{python_module isort >= 4.2.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six >= 1.4.0}
 # /SECTION

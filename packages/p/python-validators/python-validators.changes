@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jul 11 11:00:04 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- remove isort build requirement. It is not called. 
+
+-------------------------------------------------------------------
 Fri May  8 08:28:01 UTC 2020 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.15.0:

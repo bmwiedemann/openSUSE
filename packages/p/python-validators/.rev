@@ -93,4 +93,12 @@
   * Removed pypy2 support</comment>
     <requestid>801767</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>a4c15cecd1eb6a2e6882bc64a4177fb5</srcmd5>
+    <version>0.15.0</version>
+    <time>1594807622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820430</requestid>
+  </revision>
 </revisionlist>
