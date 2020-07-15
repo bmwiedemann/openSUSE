@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 10 09:29:30 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.23
+   see /usr/share/doc/packages/perl-HTTP-Entity-Parser/Changes
+
+  0.23 2020-07-10T02:45:46Z
+
+      - Handle nested arrays #12
+
+-------------------------------------------------------------------
 Tue Nov 19 08:33:52 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 0.22
