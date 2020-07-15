@@ -1,7 +1,7 @@
 #
 # spec file for package colordiff
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           colordiff
-Version:        1.0.18
+Version:        1.0.19
 Release:        0
 Summary:        Colour-highlighted 'diff' output
-License:        GPL-2.0+
-Group:          Productivity/Text/Utilities
-Url:            http://www.colordiff.org
+License:        GPL-2.0-or-later
+URL:            https://www.colordiff.org
 Source0:        http://www.colordiff.org/%{name}-%{version}.tar.gz
 Source1:        http://www.colordiff.org/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
-Patch0:         colordiff-fix-permission.diff
 BuildArch:      noarch
 
 %description
@@ -35,24 +33,19 @@ output but with pretty 'syntax' highlighting. Colour schemes can be
 customized.
 
 %prep
-%setup -q
-%patch0
+%autosetup
 
 %build
 
 %install
-mkdir -p %{buildroot}/%{_bindir}
-mkdir -p %{buildroot}/%{_sysconfdir}
-make \
-  INSTALL_DIR=%{buildroot}/%{_bindir} \
-  MAN_DIR=%{buildroot}/%{_mandir}/man1 \
-  ETC_DIR=%{buildroot}%{_sysconfdir} install
-sed -i -e "s@%{buildroot}@@" %{buildroot}/%{_bindir}/colordiff
-chmod a-x %{buildroot}/%{_mandir}/man1/colordiff.*
+%make_install INSTALL_DIR=%{_bindir} \
+	ETC_DIR=%{_sysconfdir} \
+	MAN_DIR=%{_mandir}/man1
 
 %files
-%doc README COPYING CHANGES BUGS colordiffrc colordiffrc-lightbg
-%config %{_sysconfdir}/colordiffrc
+%license COPYING
+%doc README CHANGES BUGS colordiffrc colordiffrc-lightbg colordiffrc-gitdiff
+%config(noreplace) %{_sysconfdir}/colordiffrc
 %{_bindir}/cdiff
 %{_bindir}/colordiff
 %{_mandir}/man1/cdiff.1%{?ext_man}
