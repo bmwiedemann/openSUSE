@@ -16,14 +16,14 @@
 #
 
 
-%define _build 387
-%define tag V_2_8_23_BUILD_%{_build}
+%define _build 388
+%define tag V_2_8_24_BUILD_%{_build}
 
 Name:           hibiscus
 Summary:        Java online banking client using the HBCI standard
 License:        GPL-2.0-only AND LGPL-2.0-only AND Apache-2.0 AND CPL-1.0 AND Zlib AND MPL-1.0 AND EPL-1.0
 Group:          Productivity/Office/Finance
-Version:        2.8.23
+Version:        2.8.24
 Release:        0
 URL:            https://www.willuhn.de/products/hibiscus/
 Source:         https://github.com/willuhn/hibiscus/archive/%{tag}.tar.gz
