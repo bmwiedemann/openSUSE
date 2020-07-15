@@ -19,8 +19,8 @@
 %define sonum   3
 %define libname libnuspell
 Name:           nuspell
-Version:        3.1.1
-Release:        1
+Version:        3.1.2
+Release:        0
 Summary:        A spell checker library and command-line tool
 License:        LGPL-3.0-or-later
 Group:          Productivity/Office/Other
@@ -83,6 +83,7 @@ Header files and definitions for developing with Nuspell.
 %build
 %cmake -DBUILD_SHARED_LIBS:BOOL=ON \
        -DBUILD_TESTING:BOOL=ON  \
+       -DCMAKE_SKIP_RPATH:BOOL=OFF \
  ..
 
 %cmake_build
@@ -107,7 +108,7 @@ popd
 %files -n %{libname}%{sonum}
 %doc README.md CHANGELOG.md AUTHORS
 %license COPYING.LESSER COPYING
-%{_libdir}/%{libname}.so.%{sonum}.1.0
+%{_libdir}/%{libname}.so.%{sonum}.1.2
 %exclude %{_datadir}/doc/nuspell/README.md
 
 %files devel

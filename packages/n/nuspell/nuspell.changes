@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jul 11 17:52:37 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 3.1.2.
+  * Fixed: Internal refactorings that reduce function templates in
+    utils and finder.
+  * Changed: File utils.hxx is not installed any more. It is a 
+    private header.
+  * Deprecated: Some functions for searching dictionaries in class
+    Finder are deprecated as they were searching in directories that
+    no longer contain dictionaries.
+
+-------------------------------------------------------------------
+Sat Jul 11 17:49:40 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Fix build for leap by enabling cmake rpath flag. 
+
+-------------------------------------------------------------------
 Thu Jun  4 15:48:03 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim redundancies from description.
