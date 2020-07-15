@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  6 19:03:08 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add lua54 as new build target
+
+-------------------------------------------------------------------
 Wed Apr  1 22:50:23 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Initial packaging effort to package version 2.5
