@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Tue Jul 14 08:47:47 UTC 2020 - Arnav Singh <opensuse@arnavion.dev>
+
+- Change systemd buildreq to pkgconfig(systemd) for OBS's sake.
+
+-------------------------------------------------------------------
+Sat Jul 11 04:22:51 UTC 2020 - Arnav Singh <opensuse@arnavion.dev>
+
+- Initial packaging of v0.1.0
