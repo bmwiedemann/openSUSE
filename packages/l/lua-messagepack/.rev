@@ -15,4 +15,12 @@
     <comment>drop lua5.2 from multibuild</comment>
     <requestid>537634</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>aa58de6687fe819dd716804a4acc5859</srcmd5>
+    <version>0.3.3</version>
+    <time>1594817784</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lua54 as new build target</comment>
+    <requestid>819792</requestid>
+  </revision>
 </revisionlist>

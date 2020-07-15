@@ -1,7 +1,7 @@
 #
 # spec file for package lua-messagepack
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        MessagePack is an efficient binary serialization format
 License:        MIT
 Group:          Development/Libraries/Other
-Url:            http://fperrad.github.io/lua-MessagePack/
+URL:            http://fperrad.github.io/lua-MessagePack/
 Source:         https://github.com/fperrad/lua-MessagePack/archive/%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
