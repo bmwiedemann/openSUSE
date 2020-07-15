@@ -1,7 +1,7 @@
 #
 # spec file for package lua-mediator_lua
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,11 +24,11 @@ Release:        0
 Summary:        Command-line argument parsing module for Lua
 License:        MIT
 Group:          Development/Libraries/Other
-Url:            https://github.com/Olivine-Labs/mediator_lua
+URL:            https://github.com/Olivine-Labs/mediator_lua
 Source:         https://github.com/Olivine-Labs/mediator_lua/archive/v%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
 BuildRequires:  %{flavor}-devel
-BuildArch:      noarch
 Requires:       %{flavor}
+BuildArch:      noarch
 %if "%{flavor}" == "lua53"
 Provides:       lua-mediator_lua = %{version}
 Obsoletes:      lua-mediator_lua < %{version}
@@ -54,7 +54,6 @@ mediator_lua allows you to define required, optional, and flag arguments.
 
 %install
 install -v -D -m 0644 -p -t %{buildroot}%{lua_noarchdir} src/mediator.lua
-
 
 %files
 %{lua_noarchdir}/mediator*
