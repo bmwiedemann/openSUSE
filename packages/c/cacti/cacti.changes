@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 14 09:14:56 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti 1.2.13:
+  * Query XSS vulnerabilities require vendor package update
+    (CVE-2020-11022 / CVE-2020-11023)
+  * Lack of escaping on some pages can lead to XSS exposure
+  * Update PHPMailer to 6.1.6 (CVE-2020-13625)
+  * SQL Injection vulnerability due to input validation failure when
+    editing colors (CVE-2020-14295, boo#1173090)
+  * Lack of escaping on template import can lead to XSS exposure
+
+-------------------------------------------------------------------
 Mon May 11 12:23:32 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
 
 - switch from cron to systemd timers (boo#1115436):
