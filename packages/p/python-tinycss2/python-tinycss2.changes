@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jul 11 10:50:32 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- switch of isort in testing. isort5 is out and breaks everything 
+
+-------------------------------------------------------------------
 Sat May 16 00:00:10 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - The fix for bsc#1130082 does not have an effect (anymore?).

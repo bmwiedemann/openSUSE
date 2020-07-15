@@ -30,7 +30,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module pytest-isort}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module webencodings >= 0.4}
 # /SECTION
@@ -57,7 +56,7 @@ more recent CSS Syntax Level 3 specification.
 export LANG=en_US.UTF-8
 # remove pytest default args --flake8 and --isort
 rm setup.cfg
-%pytest --isort
+%pytest
 
 %files %{python_files}
 %doc README.rst
