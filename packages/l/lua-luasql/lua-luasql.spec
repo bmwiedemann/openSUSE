@@ -1,7 +1,7 @@
 #
-# spec file for package luasql
+# spec file for package lua-luasql
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,6 +15,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %define flavor_dec $(c=%{flavor}; echo ${c:0:-1}.${c: -1})
@@ -41,13 +42,13 @@ Source0:        https://github.com/keplerproject/luasql/archive/v%{version}/%{mo
 # PATCH-FIX-OPENSUSE luasql-fix-configuration.patch malcolmlewis@opensuse.org -- Clean up building and add rpm optflags.
 Patch0:         luasql-fix-configuration.patch
 BuildRequires:  %{flavor}-devel
+BuildRequires:  libiodbc-devel
 BuildRequires:  libmysqlclient-devel
+BuildRequires:  pkg-config
 BuildRequires:  postgresql-devel
 BuildRequires:  sqlite3-devel
-BuildRequires:  libiodbc-devel
-BuildRequires:  pkg-config
-Requires:       libmariadb3
 Requires:       %{flavor}
+Requires:       libmariadb3
 
 %description
 A simple interface from Lua to a DBMS. It enables a Lua program to:
@@ -72,7 +73,6 @@ make %{?_smp_mflags} \
     DRIVER_INCS="-I%{_includedir}/mysql" DRIVER_LIBS_mysql="-lmysqlclient -lz" mysql
 make %{?_smp_mflags} \
     DRIVER_INCS="-I%{_includedir}" DRIVER_LIBS_odbc="-liodbc" odbc
-
 
 %install
 %make_install LUA_LIBDIR='$(DESTDIR)%{lua_archdir}' sqlite3
