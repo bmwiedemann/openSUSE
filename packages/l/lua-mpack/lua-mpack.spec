@@ -1,7 +1,7 @@
 #
 # spec file for package lua-mpack
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Implementation of MessagePack for Lua 5.1
 License:        MIT
 Group:          Development/Libraries/Other
-Url:            https://github.com/libmpack/libmpack-lua
+URL:            https://github.com/libmpack/libmpack-lua
 Source:         https://github.com/libmpack/libmpack-lua/archive/%{version}.tar.gz
 # libmpack source is necessary to build lua-mpack, next release should build
 # fine against system version
@@ -64,7 +64,7 @@ popd
 sed -i 's|LUA_CMOD_INSTALLDIR :=.*|LUA_CMOD_INSTALLDIR := $(shell echo "%{lua_archdir}")|g' Makefile
 
 %build
-make %{?_smp_mflags} \
+%make_build \
     USE_SYSTEM_LUA=yes \
     MPACK_LUA_VERSION=%{lua_version} \
     CFLAGS="%{optflags} -fPIC"
