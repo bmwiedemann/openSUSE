@@ -1,7 +1,7 @@
 #
 # spec file for package lua-penlight
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,10 +29,13 @@ License:        MIT
 Group:          Development/Languages/Other
 URL:            http://stevedonovan.github.com/Penlight
 Source:         https://github.com/stevedonovan/Penlight/archive/%{version}.tar.gz#/Penlight-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM lua54.patch gh#Tieske/Penlight#320 mcepl@suse.com
+# workaround hardcoded version of Lua 5.3.
+Patch0:         lua54.patch
 BuildRequires:  %{flavor}-devel
+BuildRequires:  %{flavor}-ldoc
 BuildRequires:  %{flavor}-luafilesystem
 BuildRequires:  %{flavor}-markdown
-BuildRequires:  %{flavor}-ldoc
 Requires:       %{flavor}
 Requires:       %{flavor}-luafilesystem
 BuildArch:      noarch
@@ -54,6 +57,7 @@ the functionality is inspired by the Python standard libraries.
 %if 0%{?with_docs}
 %package doc
 Summary:        Documentation for %{name}
+Group:          Development/Languages/Other
 Requires:       %{name} = %{version}
 
 %description doc
@@ -62,6 +66,7 @@ Documentation for the package %{name}
 
 %prep
 %setup -q -n Penlight-%{version}
+%autopatch -p1
 
 %build
 
@@ -74,7 +79,6 @@ chmod -x %{buildroot}%{lua_noarchdir}/pl/dir.lua
 
 # build and install README etc.
 lua%{lua_version} %{lua_noarchdir}/markdown.lua *.md
-
 
 %check
 LUA_PATH="%{buildroot}%{lua_noarchdir}/?/init.lua;%{buildroot}%{lua_noarchdir}/?.lua;;" \
