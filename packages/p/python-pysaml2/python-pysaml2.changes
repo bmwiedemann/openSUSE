@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jul 11 18:07:25 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to 6.1.0:
+  * Fix signed logout requests flag
+  * Differentiate between metadata NameIDFormat and AuthnRequest NameIDPolicy Format
+    - Users using `name_id_format` to set the `<NameIDPolicy Format="...">` attribute now
+      need to use the new configuration option `name_id_policy_format`.
+  * Fix documentation formatting
+  * Fix generation of signed metadata
+  * Add attribute mappings used by SwedenConnect (DIGG, INERA and PKIX specifications)
+  * Update SWAMID entity category
+  * Document the `additional_cert_files` configuration option
+
+-------------------------------------------------------------------
 Fri Jul 10 12:29:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 5.3.0:

@@ -201,4 +201,12 @@
   - Fix NameIDPolicy checks for allowed Format and allowCreate values</comment>
     <requestid>820096</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b80bba02b78fd11c142138ccebfc0a63</srcmd5>
+    <version>6.1.0</version>
+    <time>1594818322</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820840</requestid>
+  </revision>
 </revisionlist>
