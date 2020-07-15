@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Mon Jul 13 07:27:48 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Set timezone if necessary
+
+-------------------------------------------------------------------
+Sat Jul 11 10:54:45 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- entrypoint.sh uses bash syntax, so make sure bash is there
+
+-------------------------------------------------------------------
+Sat Jul 11 07:11:44 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use syslogd to print postfix messages on stdout
+- Create all missing db files for maps
+
+-------------------------------------------------------------------
+Wed Jul  8 12:05:37 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add ca-certificates-mozilla to verify certificates of remote
+  smtp server 
+- Add cyrus-sasl and cyrus-sasl-plain for authentication against
+  the smtp server
+- Set correct options to authenticate with user/password (smtp_sasl_*)
+- Add netcfg, we need services and aliases file
+
+-------------------------------------------------------------------
+Mon May 11 19:11:49 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial version
+
