@@ -24,7 +24,6 @@
 %bcond_with test
 %endif
 %define mod_name loadkit
-
 Version:        1.1.0
 Release:        0
 Summary:        Loadkit allows you to load arbitrary files within the Lua package path
@@ -35,10 +34,10 @@ Source:         https://github.com/leafo/%{mod_name}/archive/v%{version}.tar.gz#
 # BuildRequires:  %{flavor}-moonscript
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{flavor}-busted
 %endif
-BuildArch:      noarch
 %if "%{flavor}" == ""
 Name:           lua-loadkit
 ExclusiveArch:  do_not_build
