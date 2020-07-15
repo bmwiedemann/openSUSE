@@ -1,7 +1,7 @@
 #
 # spec file for package dnf-plugins-core
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,13 +13,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.2.17}
+%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.2.22}
 %global dnf_plugins_extra 2.0.0
-%global hawkey_version 0.37.0
+%global hawkey_version 0.46.1
 
 %if 0%{?is_opensuse}
 # Copr targets are available for openSUSE Leap 15.0 and newer
@@ -51,18 +51,17 @@
 %global deconflict_prefix %{nil}
 %endif
 
-# Tests are broken on SUSE for now
-%bcond_with tests
+%bcond_without tests
 
 #global prerel rc1
 
 Name:           dnf-plugins-core
-Version:        4.0.14
+Version:        4.0.17
 Release:        0
 Summary:        Core Plugins for DNF
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Packages
-Url:            https://github.com/rpm-software-management/dnf-plugins-core
+URL:            https://github.com/rpm-software-management/dnf-plugins-core
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildArch:      noarch
@@ -86,10 +85,10 @@ Provides:       dnf-command(debug-restore)
 Provides:       dnf-command(debuginfo-install)
 Provides:       dnf-command(download)
 Provides:       dnf-command(repoclosure)
+Provides:       dnf-command(repodiff)
 Provides:       dnf-command(repograph)
 Provides:       dnf-command(repomanage)
 Provides:       dnf-command(reposync)
-Provides:       dnf-command(repodiff)
 
 # Plugins shift from extras to core
 Provides:       dnf-plugins-extras-debug = %{version}-%{release}
@@ -122,11 +121,11 @@ Group:          System/Packages
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-devel
 BuildRequires:  python3-dnf >= %{dnf_lowest_compatible}
-BuildRequires:  python3-nose
-Requires:       python3-dnf >= %{dnf_lowest_compatible}
-Requires:       python3-hawkey >= %{hawkey_version}
+BuildRequires:  python3-pytest
 Requires:       python3-dateutil
 Requires:       python3-distro
+Requires:       python3-dnf >= %{dnf_lowest_compatible}
+Requires:       python3-hawkey >= %{hawkey_version}
 
 Conflicts:      %{name} <= 0.1.5
 # let the both python plugin versions be updated simultaneously
@@ -153,8 +152,8 @@ Additionally, it provides the generate_completion_cache passive plugin.
 Summary:        Yum-utils CLI compatibility layer
 Group:          System/Packages
 %if %{with as_yum}
-Obsoletes:      yum-utils < 4.0.0
 Obsoletes:      dnf-utils < %{version}-%{release}
+Obsoletes:      yum-utils < 4.0.0
 Provides:       dnf-utils = %{version}-%{release}
 # SUSE-specific yum-utils subpackage obsoletion
 Obsoletes:      yum-changelog < 4.0.0
@@ -283,7 +282,6 @@ sed -e "s:libexec:%{_libexecdir}:g" -i libexec/CMakeLists.txt
 # Fix sphinx-build run...
 sed -e "s/sphinx-build-3/sphinx-build-%{python3_version}/" -i doc/CMakeLists.txt
 
-
 %build
 %cmake -DPYTHON_DESIRED:FILEPATH=%{__python3}
 %make_build
@@ -332,12 +330,12 @@ rm -rf %{buildroot}%{_sysconfdir}/dnf/plugins/copr.d
 rm -rf %{buildroot}%{_sysconfdir}/dnf/plugins/copr.conf
 %endif
 
-
 %if %{with tests}
 %check
-PYTHONPATH=./plugins /usr/bin/nosetests-3.* -s tests/
+export PYTHONDONTWRITEBYTECODE=1
+export PYTHONPATH=./plugins
+/usr/bin/pytest-%{python3_version} -v -s tests/
 %endif
-
 
 %files
 %license COPYING

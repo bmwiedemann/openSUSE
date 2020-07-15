@@ -181,4 +181,24 @@
   + Fix: don't open stdin if versionlock is missing (rh#1785563)</comment>
     <requestid>779945</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>eab0f2f8b1d0bacd320037a2143a5c08</srcmd5>
+    <version>4.0.17</version>
+    <time>1594817639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.17
+  + Support remote files in dnf builddep
+  + [download] Respect repo priority (rh#1800342)
+  + [versionlock] Take obsoletes into account (rh#1627124)
+  + Move args &quot;--set-enabled&quot;, &quot;--set-disabled&quot; from DNF (rh#1727882)
+  + Add missing arguments --set-enabled/--set-diabled into error message
+  + Warn when --enablerepo/--disablerepo args were passed (rh#1727882)
+  + [copr] add support for enabling/disabling runtime dependencies
+  + [copr] no-liability text to be always printed
+  + [repomanage] Add modular support (rh#1804720)
+  + [needs-restarting] add options using .conf file (rh#1810123)
+- Fix author identity in changes
+- test package and test it with pytest (drop dependency on nose)</comment>
+    <requestid>819224</requestid>
+  </revision>
 </revisionlist>
