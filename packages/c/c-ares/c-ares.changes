@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Jul  8 20:35:17 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Version update to 1.16.1
+  Security:
+  * Prevent possible use-after-free and double-free in ares_getaddrinfo() if 
+    ares_destroy() is called prior to ares_getaddrinfo() completing. 
+	Reported by Jann Horn at Google Project Zero.
+  Changes:
+  * Allow TXT records on CHAOS qclass. Used for retriving things like
+    version.bind, version.server, authoris.bind, hostname.bind, and id.server. [3] 
+  Bug fixes:
+  * Fix Windows Unicode incompatibilities with ares_getaddrinfo() [1]
+  * Silence false cast-align compiler warnings due to valid casts of struct
+    sockaddr to struct sockaddr_in and struct sockaddr_in6.
+  * MacOS should use libresolv for retrieving DNS servers, like iOS
+  * CMake build system should populate the INCLUDE_DIRECTORIES property of
+    installed targets [2]
+  * Correct macros in use for the ares_getaddrinfo.3 man page
+- Changes in version 1.16.0
+  Changes:
+  * Introduction of ares_getaddrinfo() API which provides similar output
+    (including proper sorting as per RFC 6724) to the system native API, but
+	utilizes different data structures in order to provide additional
+	information such as TTLs and all aliases. Please reference the respective
+	man pages for usage details.
+  * Parse SOA records from ns_t_any response
+  * CMake: Provide c-ares version in package export file
+  * CMake: Add CPACK functionality for DEB and RPM
+  * CMake: Generate PDB files during build
+  * CMake: Support manpage installation
+  Bug fixes:
+  * Fix bad expectation in IPv6 localhost test.
+  * AutoTools: use XC_CHECK_BUILD_FLAGS instead of XC_CHECK_USER_FLAGS to
+    prevent complaints about CPPFLAGS in CFLAGS.
+  * Fix .onion handling
+  * Command line usage was out of date for adig and ahost.
+  * Typos in manpages
+  * If ares_getenv is defined, it must return a value on all platforms
+  * If /etc/resolv.conf has invalid lookup values, use the defaults.
+  * Tests: Separate live tests from SetServers* tests as only live tests
+    should require internet access.
+  * ares_gethostbyname() should return ENODATA if no valid A or AAAA record
+    is found, but a CNAME was found.
+  * CMake: Rework library function checking to prevent unintended linking
+    with system libraries that aren't needed.
+  * Due to use of inet_addr() it was not possible to return 255.255.255.255
+    from ares_gethostbyname().
+  * CMake: Fix building of tests on Windows 
+- Drop regression.patch which have been fixed upstream
+- Refresh disable-live-tests.patch
+- Remove static lib since its required when doing tests and we dont want it
+  included in package
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Mon Feb  3 15:17:24 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Upgrade to latest snapshot from 2020-01-17

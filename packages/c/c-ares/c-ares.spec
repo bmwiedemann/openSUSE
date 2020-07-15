@@ -1,7 +1,7 @@
 #
 # spec file for package c-ares
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,18 @@
 
 %define sonum   2
 %define libname libcares%{sonum}
-%define realver 1.15.0-20200117
 Name:           c-ares
-Version:        1.15.0+20200117
+Version:        1.16.1
 Release:        0
 Summary:        Library for asynchronous name resolves
 License:        MIT
 URL:            https://c-ares.haxx.se/
-#Source0:        https://c-ares.haxx.se/daily-snapshot/c-ares-%{realver}.tar.gz
-Source0:        c-ares-%{realver}.tar.gz
-#Source0:        http://c-ares.haxx.se/download/%{name}-%{version}.tar.gz
-#Source1:        http://c-ares.haxx.se/download/%{name}-%{version}.tar.gz.asc
+Source0:        http://c-ares.haxx.se/download/%{name}-%{version}.tar.gz
+Source1:        http://c-ares.haxx.se/download/%{name}-%{version}.tar.gz.asc
 Source3:        %{name}.keyring
 Source4:        baselibs.conf
 Patch0:         0001-Use-RPM-compiler-options.patch
 Patch1:         disable-live-tests.patch
-Patch2:         regression.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -56,7 +52,6 @@ by Greg Hudson at MIT.
 
 This package provides some tools that make use of c-ares.
 
-
 %package     -n %{libname}
 Summary:        Library for asynchronous name resolves
 # Needed for getservbyport_r function to work properly.
@@ -68,7 +63,6 @@ asynchronously. c-ares is a fork of the library named 'ares', written
 by Greg Hudson at MIT.
 
 This package provides the shared libraries for c-ares.
-
 
 %package devel
 Summary:        Development files for %{name}
@@ -85,9 +79,8 @@ by Greg Hudson at MIT.
 This package provides the development libraries and headers needed
 to build packages that depend on c-ares.
 
-
 %prep
-%autosetup -p1 -n %{name}-%{realver}
+%autosetup -p1 -n %{name}-%{version}
 
 # Remove bogus cflags checking
 sed -i -e '/XC_CHECK_BUILD_FLAGS/d' configure.ac
@@ -100,17 +93,18 @@ sed -i -e '/XC_CHECK_USER_FLAGS/d' m4/xc-cc-check.m4
     -DCARES_INSTALL:BOOL=ON \
     -DCARES_BUILD_TESTS:BOOL=ON \
     -DCARES_BUILD_TOOLS:BOOL=ON
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
 install -m 644 -Dt %{buildroot}%{_mandir}/man1/ *.1
 install -m 644 -Dt %{buildroot}%{_mandir}/man3/ *.3
-find %{buildroot} -type f -name "*.la" -delete -print
+# Tests require static lib so lets remove it so it does not get in package
+find %{buildroot} -type f \( -name "*.la" -o -name "*.a" \) -delete -print
 
 %check
 pushd build
-make -C test %{?_smp_mflags}
+%make_build -C test
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./lib
 ./bin/arestest
 
@@ -122,9 +116,9 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./lib
 %{_bindir}/acountry
 %{_bindir}/adig
 %{_bindir}/ahost
-%{_mandir}/man1/acountry.1%{ext_man}
-%{_mandir}/man1/adig.1%{ext_man}
-%{_mandir}/man1/ahost.1%{ext_man}
+%{_mandir}/man1/acountry.1%{?ext_man}
+%{_mandir}/man1/adig.1%{?ext_man}
+%{_mandir}/man1/ahost.1%{?ext_man}
 
 %files -n %{libname}
 %license LICENSE.md
@@ -134,7 +128,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./lib
 %license LICENSE.md
 %{_libdir}/libcares.so
 %{_includedir}/*.h
-%{_mandir}/man3/ares_*.3%{ext_man}
+%{_mandir}/man3/ares_*.3%{?ext_man}
 %{_libdir}/pkgconfig/libcares.pc
 %{_libdir}/cmake/c-ares/
 
