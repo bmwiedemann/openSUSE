@@ -1274,4 +1274,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>20.04.2 (+respins) (forwarded request 813365 from cgiboudeaux)</comment>
     <requestid>813781</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>cbf7610c33d64177f5b2838a6389a29c</srcmd5>
+    <version>20.04.3</version>
+    <time>1594807085</time>
+    <user>dimstar_suse</user>
+    <comment>20.04.3 release</comment>
+    <requestid>820321</requestid>
+  </revision>
 </revisionlist>
