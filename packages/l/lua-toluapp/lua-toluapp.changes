@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul  6 19:14:33 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for lua54 build target
+
+-------------------------------------------------------------------
+Mon Jul  6 19:08:06 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add lua54 as new build target
+
+-------------------------------------------------------------------
 Tue Jun  2 21:23:34 UTC 2020 - Max Lin <mlin@suse.com>
 
 - Fix build with scons 3.1.2 - env.Copy() has been depreacated

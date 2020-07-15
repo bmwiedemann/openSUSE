@@ -29,6 +29,9 @@
 %if "%{flavor}" == "lua53"
 %define lua_suffix 5_3
 %endif
+%if "%{flavor}" == "lua54"
+%define lua_suffix 5_4
+%endif
 Version:        1.0.93
 Release:        0
 Summary:        C/C++ with Lua Integration Tool

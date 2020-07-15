@@ -56,4 +56,14 @@
     <comment></comment>
     <requestid>811208</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>35b07c9f668b474c99a42e9bbe158aba</srcmd5>
+    <version>1.0.93</version>
+    <time>1594817817</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for lua54 build target
+
+- Add lua54 as new build target</comment>
+    <requestid>819796</requestid>
+  </revision>
 </revisionlist>
