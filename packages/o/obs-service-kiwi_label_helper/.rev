@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>800081</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>200a218d3ade2b9535f896b59f291897</srcmd5>
+    <version>0.0</version>
+    <time>1594804295</time>
+    <user>dimstar_suse</user>
+    <comment>- Add explicit fallback for chroot builds</comment>
+    <requestid>819506</requestid>
+  </revision>
 </revisionlist>
