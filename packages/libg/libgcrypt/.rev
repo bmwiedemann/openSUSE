@@ -707,4 +707,12 @@ This correction fixes the build failures we are currently seeing in Factory, etc
   libgcrypt-PCT-ECC.patch</comment>
     <requestid>807319</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>3f33e6ad06123728f9545af7342bf4ea</srcmd5>
+    <version>1.8.6</version>
+    <time>1594804272</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819169</requestid>
+  </revision>
 </revisionlist>

@@ -48,7 +48,7 @@ Index: libgcrypt-1.8.5/cipher/ecc-ecdsa.c
  
    k = NULL;
    dr = mpi_alloc (0);
-@@ -128,15 +132,26 @@ _gcry_ecc_ecdsa_sign (gcry_mpi_t input,
+@@ -128,14 +132,25 @@ _gcry_ecc_ecdsa_sign (gcry_mpi_t input,
          }
        while (!mpi_cmp_ui (r, 0));
  
@@ -70,7 +70,6 @@ Index: libgcrypt-1.8.5/cipher/ecc-ecdsa.c
 +          mpi_mulm (sum, b, hash, skey->E.n);
 +          mpi_addm (sum, sum, dr, skey->E.n);   /* sum = hash + (d*r) mod n */
 +	}
-       mpi_invm (k_1, k, skey->E.n);         /* k_1 = k^(-1) mod n  */
        mpi_mulm (s, k_1, sum, skey->E.n);    /* s = k^(-1)*(hash+(d*r)) mod n */
 -      /* Undo blinding by b^-1 */
 -      mpi_mulm (s, bi, s, skey->E.n);

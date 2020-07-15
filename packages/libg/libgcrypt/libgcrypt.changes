@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jul  7 09:12:27 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 1.8.6
+  * mpi: Consider +0 and -0 the same in mpi_cmp
+  * mpi: Fix flags in mpi_copy for opaque MPI
+  * mpi: Fix the return value of mpi_invm_generic
+  * mpi: DSA,ECDSA: Fix use of mpi_invm
+    - Call mpi_invm before _gcry_dsa_modify_k
+    - Call mpi_invm before _gcry_ecc_ecdsa_sign
+  * mpi: Constant time mpi_inv with some conditions
+    - mpi/mpi-inv.c (mpih_add_n_cond, mpih_sub_n_cond, mpih_swap_cond)
+    - New: mpih_abs_cond, mpi_invm_odd
+    - Rename from _gcry_mpi_invm: mpi_invm_generic
+    - Use mpi_invm_odd for usual odd cases: _gcry_mpi_invm
+  * mpi: Abort on division by zero also in _gcry_mpi_tdiv_qr
+  * Fix wrong code execution in Poly1305 ARM/NEON implementation
+    - Set r14 to -1 at function entry: (_gcry_poly1305_armv7_neon_init_ext)
+  * Set vZZ.16b register to zero before use in armv8 gcm implementation
+  * random: Fix include of config.h
+  * Fix declaration of internal function _gcry_mpi_get_ui: Don't use ulong
+  * ecc: Fix wrong handling of shorten PK bytes
+    - Zeros are already recovered: (_gcry_ecc_mont_decodepoint)
+- Update libgcrypt-ecc-ecdsa-no-blinding.patch
+
+-------------------------------------------------------------------
 Tue May 19 11:25:37 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - FIPS: RSA/DSA/ECC test_keys() print out debug messages [bsc#1171872]

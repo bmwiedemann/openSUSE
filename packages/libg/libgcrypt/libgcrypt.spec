@@ -22,14 +22,14 @@
 %define libsoname %{name}%{libsover}
 %define cavs_dir %{_libexecdir}/%{name}/cavs
 Name:           libgcrypt
-Version:        1.8.5
+Version:        1.8.6
 Release:        0
 Summary:        The GNU Crypto Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://directory.fsf.org/wiki/Libgcrypt
-Source:         ftp://ftp.gnupg.org/gcrypt/libgcrypt/%{name}-%{version}.tar.bz2
-Source1:        ftp://ftp.gnupg.org/gcrypt/libgcrypt/%{name}-%{version}.tar.bz2.sig
+Source:         https://gnupg.org/ftp/gcrypt/libgcrypt/%{name}-%{version}.tar.bz2
+Source1:        https://gnupg.org/ftp/gcrypt/libgcrypt/%{name}-%{version}.tar.bz2.sig
 Source2:        baselibs.conf
 Source4:        %{name}.keyring
 # https://www.gnupg.org/signature_key.en.html
