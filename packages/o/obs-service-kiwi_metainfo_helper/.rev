@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>800073</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>03ecb2a6762f3215be10df7f899a61e9</srcmd5>
+    <version>0.0</version>
+    <time>1594804307</time>
+    <user>dimstar_suse</user>
+    <comment>- Add explicit fallback for chroot builds
+- Refactor into a single sed call
+
+- Also allow working on Dockerfile</comment>
+    <requestid>819507</requestid>
+  </revision>
 </revisionlist>
