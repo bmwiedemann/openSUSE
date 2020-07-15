@@ -1,7 +1,7 @@
 #
 # spec file for package lua-copas
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,10 @@ Summary:        Coroutine Oriented Portable Asynchronous Services
 License:        MIT
 URL:            http://www.keplerproject.org/copas/
 Source:         https://github.com/keplerproject/%{mod_name}/archive/%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
-BuildRequires:  %{flavor}-devel
-BuildRequires:  %{flavor}-luasocket
-BuildRequires:  %{flavor}-luasec
 BuildRequires:  %{flavor}-coxpcall
+BuildRequires:  %{flavor}-devel
+BuildRequires:  %{flavor}-luasec
+BuildRequires:  %{flavor}-luasocket
 Requires:       %{flavor}
 BuildArch:      noarch
 %if "%{flavor}" == "lua53"

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  6 19:02:42 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add lua54 as new build target
+
+-------------------------------------------------------------------
 Sat Nov  2 19:51:09 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Initial effort to package copas 2.0.2
