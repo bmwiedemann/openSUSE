@@ -1,7 +1,7 @@
 #
 # spec file for package lua-compat-5.3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name lua-compat-5.3
-Version:        0.7
+Version:        0.9
 Release:        0
 Summary:        Lua-5.3-style APIs for Lua 5.2 and 5.1
 License:        MIT
@@ -40,7 +40,7 @@ Name:           %{flavor}-compat-5.3
 This package provides terminal operations for Lua
 
 %prep
-%setup -q -n %{mod_name}-%{version}
+%autosetup -n %{mod_name}-%{version}
 
 %build
 export CC="${COMPILER:-gcc}" DEF="" SRC="" CFLAGS="-Wall -Wextra $(pkg-config --cflags lua%{lua_version}) -Ic-api -O2 -fPIC"

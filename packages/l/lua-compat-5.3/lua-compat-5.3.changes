@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jul 12 14:02:52 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Removed lua54-support.patch: contained in upstream
+- Update to version 0.9
+  * Lua 5.4 is supported
+  * Added bit32 library compatibility module.
+
+-------------------------------------------------------------------
+Mon Jul  6 21:15:52 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add lua54-support.patch for support of Lua 5.4
+
+-------------------------------------------------------------------
+Mon Jul  6 19:02:29 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add lua54 as new build target
+
+-------------------------------------------------------------------
 Mon Nov 11 09:53:35 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add BR lua-macros.
