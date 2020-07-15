@@ -16,11 +16,8 @@
 #
 
 
-# Add -fcommon and -fno-lto to optflags to workaround https://github.com/fluent/fluent-bit/issues/1945
-%global optflags %optflags -fcommon -fno-lto
-
 Name:           fluent-bit
-Version:        1.4.5
+Version:        1.5.0
 Release:        0
 Summary:        Fast Log Processor and Forwarder
 License:        Apache-2.0
@@ -52,7 +49,6 @@ Devel files for Fluent Bit
 %setup -q
 
 %build
-%define _lto_cflags %{nil}
 %cmake -Wno-dev \
           -DBUILD_SHARED_LIBS=OFF \
           -DFLB_DEBUG=Off \
