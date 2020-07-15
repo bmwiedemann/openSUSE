@@ -253,4 +253,20 @@
     <comment>- switch to python 3.x only builds</comment>
     <requestid>785059</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b4cccd8e944fdb785e8067f63938e454</srcmd5>
+    <version>3.0.0</version>
+    <time>1594805206</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.0.0
+  - Switch to Ussuri jobs
+  - Change README.rst with a better title
+  - Drop python 2.7 support and testing
+  - Bump the openstackdocstheme extension to 1.20
+  - Update source link in readme
+  - Add swift_api_audit_map.conf
+  - Add swift_api_audit_map.conf to setup.cfg
+  - Update the constraints url</comment>
+    <requestid>812564</requestid>
+  </revision>
 </revisionlist>

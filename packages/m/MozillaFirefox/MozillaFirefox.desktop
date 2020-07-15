@@ -11,8 +11,16 @@ StartupNotify=true
 MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;application/x-xpinstall;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
 Type=Application
 
-Actions=PrivateBrowsing;
+Actions=new-window;PrivateBrowsing;ProfileManager
+
+[Desktop Action new-window]
+Name=New Window
+Exec==%EXEC --new-windows %u
 
 [Desktop Action PrivateBrowsing]
 Name=New Private Browsing Window
 Exec=%EXEC --private-window %u
+
+[Desktop Action ProfileManager]
+Name=Profile Manager
+Exec=%EXEC --ProfileManager

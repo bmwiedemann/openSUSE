@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Jul 14 10:22:22 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Fix regression in latest gpg2 that makes gpgme fail to build [bsc#1174007]
+- Add gnupg-gpgme-t-encrypt-sym.patch
+
+-------------------------------------------------------------------
+Thu Jul  9 11:36:57 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GnuPG 2.2.21:
+  * gpg: Improve symmetric decryption speed by about 25%
+  * gpg: Support decryption of AEAD encrypted data packets
+  * gpg: Add option --no-include-key-block
+  * gpg: Allow for extra padding in ECDH
+  * gpg: Only a single pinentry is shown for symmetric encryption if
+    the pinentry supports this
+  * gpg: Print a note if no keys are given to --delete-key
+  * gpg,gpgsm: The ridiculous passphrase quality bar is not anymore
+    shown
+  * gpgsm: Certificates without a CRL distribution point are now
+    considered valid without looking up a CRL. The new option
+    --enable-issuer-based-crl-check can be used to revert to the
+    former behaviour
+  * gpgsm: Support rsaPSS signature verification
+  * gpgsm: Unless CRL checking is disabled lookup a missing issuer
+    certificate using the certificate's authorityInfoAccess
+  * gpgsm: Print the certificate's serial number also in decimal
+    notation
+  * gpgsm: Fix possible NULL-deref in messages of --gen-key
+  * scd: Support the CardOS 5 based D-Trust Card 3.1
+  * dirmngr: Allow http URLs with "LOOKUP --url"
+  * wkd: Take name of sendmail from configure. Fixes an OpenBSD
+    specific bug
+
+-------------------------------------------------------------------
 Thu Apr 30 13:59:33 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Fix gpgme and gpgme-qt builds on gpg2 2.2.20 update [bsc#1170811]

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jul 07 15:13:34 UTC 2020 - mrueckert@suse.de
+
+- Update to version 2.2.0+git0.3a00c915f:
+  https://www.haproxy.com/blog/announcing-haproxy-2-2/
+
+  * [RELEASE] Released version 2.2.0
+  * MINOR: version: mention that it's an LTS release now
+  * DOC: minor update to coding style file
+  * DOC: update INSTALL with new compiler versions
+  * CLEANUP: ssl: remove unrelevant comment in smp_fetch_ssl_x_keylog()
+  * DOC: configuration: remove obsolete mentions of H2 being converted to HTTP/1.x
+  * BUG/MINOR: connection: See new connection as available only on reuse always
+  * BUG/MEDIUM: connection: Don't consider new private connections as available
+  * BUG/MINOR: backend: Remove CO_FL_SESS_IDLE if a client remains on the last server
+  * MINOR: mux-h1: Improve traces about the splicing
+- refreshed patches to apply cleanly again:
+  haproxy-1.6.0-makefile_lib.patch
+  haproxy-1.6.0-sec-options.patch
+- track series file in source rpm
+
+-------------------------------------------------------------------
 Tue Jun 09 20:27:50 UTC 2020 - mrueckert@suse.de
 
 - Update to version 2.1.7+git0.8bebf80fb:

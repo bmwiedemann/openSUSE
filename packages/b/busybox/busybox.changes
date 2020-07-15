@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 11 06:05:40 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Enable syslogd for containers
+
+-------------------------------------------------------------------
+Wed Jul  8 07:26:14 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- Enable testsuite and package it for later rerun (for QA,
+  jsc#CAR-15)
+
+-------------------------------------------------------------------
 Fri Apr 17 09:46:21 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Re-add modutils

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-pip-shims
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        Compatibility shims for pip versions 8 thru current
 License:        ISC
@@ -59,6 +59,8 @@ Compatibility shims for pip versions 8 thru current.
 
 %check
 # Skip two online tests
+# Some skipped tests fail because of missing git, however
+# adding git only causes failure to fetch repositories.
 # The tests are highly tied to API changes in pip
 #  but they do not factualy test if the tool behave
 #  so just skip them instead of having to patch them with

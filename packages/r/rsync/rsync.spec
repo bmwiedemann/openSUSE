@@ -1,7 +1,7 @@
 #
 # spec file for package rsync
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           rsync
-Version:        3.1.3
+Version:        3.2.2
 Release:        0
 Summary:        Versatile tool for fast incremental file transfer
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Other
-Url:            http://rsync.samba.org/
+URL:            https://rsync.samba.org/
 Source:         http://rsync.samba.org/ftp/rsync/src/rsync-%{version}.tar.gz
 Source1:        http://rsync.samba.org/ftp/rsync/src/rsync-patches-%{version}.tar.gz
 Source2:        logrotate.rsync
@@ -38,19 +38,18 @@ Source12:       %{name}.keyring
 Patch0:         rsync-no-libattr.patch
 #PATCH-FIX-SUSE boo#922710 slp
 Patch1:         rsync-add_back_use_slp_directive.patch
-Patch2:         rsync-both-compressions.patch
-#PATCH-FIX-UPSTREAM bsc#1062063 rsync doesn't stop on errors
-Patch4:         rsync-send_error_to_sender.patch
-Patch5:         rsync-avoid-uploading-after-error.patch
-#PATCH-FIX-UPSTREAM bsc#1108562 file contents cause rsync to fail
-Patch6:         rsync-fix-prealloc-to-keep-file-size-0-when-possible.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libacl-devel
+BuildRequires:  liblz4-devel
+BuildRequires:  libzstd-devel
 BuildRequires:  openslp-devel
+BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  xxhash-devel
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(openssl)
 Requires(post): grep
 Requires(post): sed
 Recommends:     logrotate
@@ -68,17 +67,16 @@ for backups and mirroring and as an improved copy command for everyday use.
 %prep
 %setup -q -b 1
 rm -f zlib/*.h
+
 patch -p1 < patches/acls.diff
 patch -p1 < patches/xattrs.diff
 patch -p1 < patches/slp.diff
-%patch1 -p1
+
 # fate#312479
 patch -p1 < patches/time-limit.diff
+
 %patch0 -p1
-%patch2 -p1
-%patch4
-%patch5
-%patch6 -p1
+%patch1 -p1
 
 %build
 autoreconf -fiv
@@ -91,11 +89,11 @@ export LDFLAGS="-Wl,-z,relro,-z,now -pie"
   --enable-slp \
   --enable-acl-support \
   --enable-xattr-support
-make %{?_smp_mflags} reconfigure
-make %{?_smp_mflags}
+%make_build reconfigure
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
@@ -103,9 +101,9 @@ rm -f %{buildroot}%{_sbindir}/rsyncd
 install -d %{buildroot}%{_sysconfdir}/logrotate.d
 install -d %{buildroot}%{_sysconfdir}/init.d
 install -d %{buildroot}%{_sysconfdir}/xinetd.d
-install -d %{buildroot}%{_prefix}/sbin
+install -d %{buildroot}%{_sbindir}
 ln -sf ../bin/rsync %{buildroot}%{_sbindir}/rsyncd
-install -m 755 support/rsyncstats %{buildroot}%{_prefix}/bin
+install -m 755 support/rsyncstats %{buildroot}%{_bindir}
 install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/logrotate.d/rsync
 install -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/rsyncd.conf
 install -m 600 %{SOURCE6} %{buildroot}%{_sysconfdir}/rsyncd.secrets
@@ -127,6 +125,8 @@ ln -sf service %{buildroot}%{_sbindir}/rcrsyncd
 %service_del_postun rsyncd.service
 
 %files
+%license COPYING
+%doc NEWS.md README.md tech_report.tex
 %{_unitdir}/rsyncd@.service
 %{_unitdir}/rsyncd.service
 %{_unitdir}/rsyncd.socket
@@ -137,9 +137,9 @@ ln -sf service %{buildroot}%{_sbindir}/rcrsyncd
 %{_sbindir}/rsyncd
 %{_bindir}/rsyncstats
 %{_bindir}/rsync
-%{_mandir}/man1/rsync.1%{ext_man}
-%{_mandir}/man5/rsyncd.conf.5%{ext_man}
-%license COPYING
-%doc NEWS README tech_report.tex
+%{_bindir}/rsync-ssl
+%{_mandir}/man1/rsync.1%{?ext_man}
+%{_mandir}/man1/rsync-ssl.1%{?ext_man}
+%{_mandir}/man5/rsyncd.conf.5%{?ext_man}
 
 %changelog

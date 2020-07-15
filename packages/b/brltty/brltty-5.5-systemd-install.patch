@@ -7,8 +7,8 @@ diff -urp brltty-6.1.orig/Autostart/Systemd/Makefile.in brltty-6.1/Autostart/Sys
  #SYSTEMD_UNITS_DIRECTORY = $(INSTALL_ROOT)$(sysconfdir)/systemd/system
 -SYSTEMD_UNITS_DIRECTORY = $(INSTALL_ROOT)$(libdir)/systemd/system
 -SYSTEMD_SCRIPTS_DIRECTORY = $(INSTALL_ROOT)$(libdir)/$(PACKAGE_TARNAME)
-+SYSTEMD_UNITS_DIRECTORY = $(INSTALL_ROOT)$(libexecdir)/systemd/system
-+SYSTEMD_SCRIPTS_DIRECTORY = $(INSTALL_ROOT)$(libexecdir)/$(PACKAGE_TARNAME)
++SYSTEMD_UNITS_DIRECTORY = $(INSTALL_ROOT)$(exec_prefix)/lib/systemd/system
++SYSTEMD_SCRIPTS_DIRECTORY = $(INSTALL_ROOT)$(exec_prefix)/lib/$(PACKAGE_TARNAME)
  
  install: install-units install-scripts
  

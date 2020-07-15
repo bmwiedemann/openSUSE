@@ -1,7 +1,7 @@
 #
 # spec file for package python-openstack-doc-tools
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%global sname openstack-doc-tools
 %global module os_doc_tools
 Name:           python-openstack-doc-tools
 Version:        1.8.0
@@ -24,54 +23,66 @@ Release:        0
 Summary:        OpenStack Docs Tools
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/%{sname}
-Source0:        https://files.pythonhosted.org/packages/source/o/%{sname}/%{sname}-%{version}.tar.gz
+URL:            https://launchpad.net/openstack-doc-tools
+Source0:        https://files.pythonhosted.org/packages/source/o/openstack-doc-tools/openstack-doc-tools-1.8.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-Babel
-BuildRequires:  python-PyYAML >= 3.12
-BuildRequires:  python-Sphinx
-BuildRequires:  python-demjson >= 2.2.2
-BuildRequires:  python-lxml >= 3.4.1
-BuildRequires:  python-mock
-BuildRequires:  python-openstackdocstheme
-BuildRequires:  python-pbr >= 2.0.0
-BuildRequires:  python-setuptools
-BuildRequires:  python-testrepository
-Requires:       python-PyYAML >= 3.12
-Requires:       python-Sphinx
-Requires:       python-iso8601 >= 0.1.11
-Requires:       python-lxml >= 3.4.1
-Requires:       python-openstackdocstheme
+BuildRequires:  python3-Babel
+BuildRequires:  python3-PyYAML >= 3.12
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-demjson
+BuildRequires:  python3-lxml >= 3.4.1
+BuildRequires:  python3-mock
+BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-pbr >= 2.0.0
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-testrepository
 BuildArch:      noarch
 
 %description
 Tools used by the OpenStack Documentation Project.
 
+%package -n python3-openstack-doc-tools
+Summary:        OpenStack Docs Tools
+Group:          Development/Languages/Python
+Requires:       python3-PyYAML >= 3.12
+Requires:       python3-Sphinx
+Requires:       python3-iso8601 >= 0.1.11
+Requires:       python3-lxml >= 3.4.1
+Requires:       python3-openstackdocstheme
+%if 0%{?suse_version}
+Obsoletes:      python-openstack-doc-tools < 1.8.0
+Obsoletes:      python2-openstack-doc-tools < 1.8.0
+%endif
+
+%description -n python3-openstack-doc-tools
+Tools used by the OpenStack Documentation Project.
+
+This package contains the Python 3.x module.
+
 %prep
-%autosetup -n %{sname}-%{version}
+%autosetup -n openstack-doc-tools-%{version}
 %py_req_cleanup
-sed -i 's/^warning-is-error.*/warning-is-error = 0/g' setup.cfg
 
 %build
-%py2_build
+%py3_build
 
 %install
-%py2_install
+%py3_install
 
 %check
 # We don't want to run the sitemap tests, it is not included in the package
 rm -f test/test_sitemap_file.py test/test_pipelines.py
-%{__python2} setup.py testr
+PYTHON=python3 python3 setup.py testr
 
-%files
+%files -n python3-openstack-doc-tools
 %license LICENSE
 %doc README.rst
 %{_bindir}/doc-tools-build-rst
 %{_bindir}/doc-tools-check-languages
 %{_bindir}/openstack-indexpage
 %{_bindir}/openstack-jsoncheck
-%{python2_sitelib}/%{module}
-%{_datadir}/%{sname}
-%{python2_sitelib}/*.egg-info
+%{python3_sitelib}/%{module}
+%{_datadir}/openstack-doc-tools
+%{python3_sitelib}/*.egg-info
 
 %changelog

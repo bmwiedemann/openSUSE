@@ -853,4 +853,27 @@
   * Revert &quot;BUG/MEDIUM: connections: force connections cleanup on server changes&quot;</comment>
     <requestid>813045</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>fd71d44e90535694d8cae900dc4bff33</srcmd5>
+    <version>2.2.0+git0.3a00c915f</version>
+    <time>1594805099</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git0.3a00c915f:
+  https://www.haproxy.com/blog/announcing-haproxy-2-2/
+  * [RELEASE] Released version 2.2.0
+  * MINOR: version: mention that it's an LTS release now
+  * DOC: minor update to coding style file
+  * DOC: update INSTALL with new compiler versions
+  * CLEANUP: ssl: remove unrelevant comment in smp_fetch_ssl_x_keylog()
+  * DOC: configuration: remove obsolete mentions of H2 being converted to HTTP/1.x
+  * BUG/MINOR: connection: See new connection as available only on reuse always
+  * BUG/MEDIUM: connection: Don't consider new private connections as available
+  * BUG/MINOR: backend: Remove CO_FL_SESS_IDLE if a client remains on the last server
+  * MINOR: mux-h1: Improve traces about the splicing
+- refreshed patches to apply cleanly again:
+  haproxy-1.6.0-makefile_lib.patch
+  haproxy-1.6.0-sec-options.patch
+- track series file in source rpm</comment>
+    <requestid>819260</requestid>
+  </revision>
 </revisionlist>

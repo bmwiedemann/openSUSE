@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jul 11 19:09:45 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.1.0:
+  * Merge pull request #90 from readthedocs/humitos/parallel-read-safe
+
+- changes from version 2.0.0:
+  * Define parallel_read_safe=True for our extensions
+  * Move the feature flags added in #85
+  * Re-add the builders as deprecated
+  * Use Py3 for Lint
+  * Remove the custom RTD builders
+
+-------------------------------------------------------------------
 Sat May 30 23:26:29 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.0.4:

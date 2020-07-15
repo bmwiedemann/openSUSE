@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 13 07:59:58 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Improve medium type detection, do not report Online medium
+  when the /media.1/products file is missing in the repository,
+  SMT does not mirror this file (bsc#1173336)
+- 4.3.3
+
+-------------------------------------------------------------------
 Thu Jun  4 11:45:45 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Replace anyxml agent with rubygem-nokogiri as yast2 already

@@ -53,7 +53,7 @@
 %endif
 
 Name:           haproxy
-Version:        2.1.7+git0.8bebf80fb
+Version:        2.2.0+git0.3a00c915f
 Release:        0
 #
 #
@@ -102,6 +102,7 @@ Patch1:         haproxy-1.6.0_config_haproxy_user.patch
 Patch2:         haproxy-1.6.0-makefile_lib.patch
 Patch3:         haproxy-1.6.0-sec-options.patch
 #
+Source98:       series
 Source99:       haproxy-rpmlintrc
 #
 Summary:        The Reliable, High Performance TCP/HTTP Load Balancer

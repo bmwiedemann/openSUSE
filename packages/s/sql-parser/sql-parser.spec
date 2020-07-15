@@ -26,6 +26,7 @@ Summary:        SQL Parser for C++
 License:        MIT
 Url:            https://github.com/envoyproxy/%{name}
 Source:         %{name}-%{version}.tar.xz
+Patch0:         reproducible.patch
 BuildRequires:  gcc-c++
 BuildRequires:  patchelf
 
@@ -57,6 +58,7 @@ This package contains development files for sql-parser.
 
 %prep
 %setup -q
+%patch0 -p1
 sed -i \
     -e "s|\$(INSTALL)/lib|%{buildroot}%{_libdir}|" \
     Makefile

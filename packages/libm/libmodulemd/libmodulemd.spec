@@ -17,8 +17,8 @@
 
 
 %global majorversion 2
-%global minorversion 8
-%global patchversion 3
+%global minorversion 9
+%global patchversion 4
 %global majorminorversion %{majorversion}.%{minorversion}
 %global nsversion %{majorversion}.0
 
@@ -38,6 +38,7 @@ License:        MIT
 URL:            https://github.com/fedora-modularity/libmodulemd
 Source0:        %{url}/releases/download/%{name}-%{libmodulemd_version}/modulemd-%{libmodulemd_version}.tar.xz
 
+BuildRequires:  help2man
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  gcc
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -126,6 +127,7 @@ export LC_CTYPE=C.utf8
 %license COPYING
 %doc README.md
 %{_bindir}/modulemd-validator
+%{_mandir}/man1/modulemd-validator.1*
 
 %files -n python3-%{name}
 %{python3_sitearch}/gi/overrides/Modulemd.py

@@ -1,7 +1,7 @@
 #
 # spec file for package python-backcall
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-backcall
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
 Summary:        Specifications for callback functions passed in to an API
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/takluyver/backcall
 Source0:        https://files.pythonhosted.org/packages/source/b/backcall/backcall-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/takluyver/backcall/cff13f5e4bd2a2af82fc5174e38cca0f9b7c21d2/LICENSE
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+#
 %python_subpackages
 
 %description
@@ -43,7 +43,6 @@ prototype function.
 
 %prep
 %setup -q -n backcall-%{version}
-cp %{SOURCE1} .
 
 %build
 %python_build
@@ -53,11 +52,12 @@ cp %{SOURCE1} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m pytest tests
+%pytest tests
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/backcall
+%{python_sitelib}/backcall-%{version}-py*.egg-info
 
 %changelog

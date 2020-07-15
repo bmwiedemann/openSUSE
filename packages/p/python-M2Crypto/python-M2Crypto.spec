@@ -19,14 +19,13 @@
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-M2Crypto
-Version:        0.35.2
+Version:        0.36.0
 Release:        0
 Summary:        Crypto and SSL toolkit for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://gitlab.com/m2crypto/m2crypto
 Source:         https://files.pythonhosted.org/packages/source/M/M2Crypto/M2Crypto-%{version}.tar.gz
-Patch1:         001-fix-buffering-for-python38.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing}
@@ -78,9 +77,6 @@ Documentation for the Crypto and SSL toolkit for Python
 
 %prep
 %setup -q -n M2Crypto-%{version}
-%if 0%{?suse_version} > 1500
-%patch1 -p1
-%endif
 
 %build
 export CFLAGS="%{optflags}"

@@ -528,4 +528,23 @@
     <comment></comment>
     <requestid>714581</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>b44924abfc681b306e3fadfd7d425688</srcmd5>
+    <version>3.2.2</version>
+    <time>1594804845</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 3.2.2
+  * Too many changes to list, see included NEWS.md file.
+- Add BR on pkgconfig(openssl), rsync now uses openssl for MD4/MD5
+- Add BR on libzstd-devel and liblz4-devel to enabled lz4 and zstd
+  compression support.
+- Add BR on xxhash-devel to enable xxhash checksum support.
+- Refresh rsync-add_back_use_slp_directive.patch
+- Drop rsync-both-compressions.patch, rsync-send_error_to_sender.patch,
+  rsync-avoid-uploading-after-error.patch,
+  rsync-fix-prealloc-to-keep-file-size-0-when-possible.patch:
+  Fixed upstream.
+</comment>
+    <requestid>819203</requestid>
+  </revision>
 </revisionlist>

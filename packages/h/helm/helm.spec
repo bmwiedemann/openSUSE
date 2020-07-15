@@ -18,17 +18,17 @@
 
 %define git_commit ac925eb7279f4a6955df663a0128044a8a6b7593
 Name:           helm
-Version:        3.0.3
+Version:        3.2.4
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
 Group:          Development/Languages/Other
 URL:            https://github.com/kubernetes/helm
-Source:         %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source:         %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
 BuildRequires:  xz
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  golang(API) >= 1.14
 %{go_nostrip}
 %{go_provides}
 
@@ -36,8 +36,7 @@ BuildRequires:  golang(API) >= 1.12
 Helm is a tool for managing Kubernetes charts. Charts are packages of pre-configured Kubernetes resources.
 
 %prep
-%setup -q
-tar xJf %{SOURCE1}
+%setup -qa1
 
 %build
 go build -mod=vendor -buildmode=pie ./cmd/helm

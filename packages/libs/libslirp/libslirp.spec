@@ -19,7 +19,7 @@
 %define libname libslirp0
 
 Name:           libslirp
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        A general purpose TCP-IP emulator
 License:        MIT
@@ -54,7 +54,7 @@ developing applications that use %{name}.
 
 
 %prep
-%autosetup -S git_am -n %{name}-%{version}
+%autosetup -n %{name}-%{version}
 
 %build
 %meson

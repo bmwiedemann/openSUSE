@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jul 11 11:08:06 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 78.0.2
+  * Fixed an accessibility regression in reader mode (bmo#1650922)
+  * Made the address bar more resilient to data corruption in the
+    user profile (bmo#1649981)
+  * Fixed a regression opening certain external applications (bmo#1650162)
+  MFSA 2020-28
+  * CVE pending (bmo#1644076)
+    X-Frame-Options bypass using object or embed tags
+- added desktop file actions
+- do not use XINPUT2 for the moment until Plasma 5.19.3 has landed
+  (boo#1173993)
+- rework langpack integration (boo#1173991)
+  * ship XPIs instead of directories
+  * allow addon sideloading
+  * mark signatures for langpacks non-mandatory
+  * do not autodisable user profile scopes
+- Google API key is not usable for geolocation service
+- fix pipewire support for TW (boo#1172903)
+
+-------------------------------------------------------------------
 Wed Jul  1 07:15:02 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 78.0.1

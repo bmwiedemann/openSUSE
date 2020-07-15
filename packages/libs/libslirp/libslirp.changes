@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul  8 14:53:54 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to 4.3.1 (bsc#1172380)
+  - A silent truncation could occur in `slirp_fmt()`, which will
+    now print a critical message. See also #22.
+  - CVE-2020-10756 - Drop bogus IPv6 messages that could lead to
+    data leakage.  See !44 and !42.
+  - Fix win32 builds by using the SLIRP_PACKED definition.
+  - Various coverity scan errors fixed. !41
+  - Fix new GCC warnings. !43 
+- Packaging changes
+  - Enable "set_version" source service in _service file
+  - Move "tar" and "recompress" service to "buildtime" as outlined
+    in the OBS user guide
+  - Enable "package-meta" as the libslirp build process now
+    requires access to the git metadata.
+
+-------------------------------------------------------------------
 Mon May  4 10:16:40 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Update to 4.3.0

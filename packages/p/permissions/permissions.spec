@@ -16,7 +16,7 @@
 #
 
 
-%define VERSION_DATE 20200526
+%define VERSION_DATE 20200710
 
 Name:           permissions
 Version:        %{VERSION_DATE}.%{suse_version}
@@ -28,7 +28,6 @@ Group:          Productivity/Security
 URL:            http://github.com/openSUSE/permissions
 Source:         permissions-%{VERSION_DATE}.tar.xz
 Source1:        fix_version.sh
-Patch0:         dbus-libexec.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
@@ -41,7 +40,7 @@ Recommends:     permissions-doc
 Provides:       aaa_base:%{_datadir}/permissions
 
 %prep
-%autosetup -p1 -n permissions-%{VERSION_DATE}
+%autosetup -n permissions-%{VERSION_DATE}
 
 %build
 make %{?_smp_mflags} CFLAGS="-W -Wall %{optflags}" FSCAPS_DEFAULT_ENABLED=0

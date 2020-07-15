@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 10 09:24:53 CEST 2020 - aschnell@suse.com
+
+- Extensions to handle raw repository name (bsc#1172477)
+- 4.2.8
+
+-------------------------------------------------------------------
 Wed Feb 26 08:50:50 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix SourceRestore when some service is defined (bsc#1163081)

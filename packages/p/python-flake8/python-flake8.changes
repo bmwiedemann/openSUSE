@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 11 19:09:03 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 3.8.3:
+  * Also catch SyntaxError when tokenizing (See also GitLab!433,
+    GitLab#662)
+  * Fix --jobs default display in flake8 --help (See also GitLab!434,
+    GitLab#665)
+
+-------------------------------------------------------------------
 Wed Jun  3 02:23:36 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 3.8.2:

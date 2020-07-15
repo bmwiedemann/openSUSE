@@ -134,4 +134,12 @@
   - Remove usage of platform.linux_distribution</comment>
     <requestid>785863</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6c12193ae2d3f63a8874a04104635fd3</srcmd5>
+    <version>2.0.0</version>
+    <time>1594805256</time>
+    <user>dimstar_suse</user>
+    <comment>- update urls to opendev</comment>
+    <requestid>812566</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jul 10 09:41:03 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.017
+   see /usr/share/doc/packages/perl-Sereal-Decoder/Changes
+
+  4.017 Thurs July 9, 2020
+      * The build fixes in 4.016 didn't work correctly, this should fix them.
+
+  4.016 Thurs July 9, 2020
+      * Fix some dependency issues in build process
+
+  4.015 Weds  July 8, 2020
+      * Build fixes (missing dependency)
+      * Hardening against corrupted data
+      * New thresholds to manage decoding process
+
+-------------------------------------------------------------------
+Fri Jun 12 03:15:59 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.014
+   see /usr/share/doc/packages/perl-Sereal-Decoder/Changes
+
+  4.014 Thurs June 11, 2020
+      * Fix build issue on non-win32 platforms.
+      * Update zstd to 1.4.5
+
+  4.012 Weds June 10, 2020
+      * Fix memory leak in looks_like_sereal(), thanks to Kirill Sysoev
+
+-------------------------------------------------------------------
 Wed Feb  5 03:13:24 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 4.011

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  6 08:48:20 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- ignore build requirement of cups-rpm-helper to avoid cycle with cups-devel
+  (boo#1172407))
+
+-------------------------------------------------------------------
 Wed Aug 28 19:22:11 UTC 2019 - Martin Wilck <mwilck@suse.com>
 
 - Package /usr/lib/rpm/postscriptdriver.prov again, in the

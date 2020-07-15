@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  7 01:12:50 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.16.0
+  + Never do dir walk when --recycle-pkglist specified
+  + Add automatic module metadata handling for repos (rh#1795936)
+
+-------------------------------------------------------------------
 Tue Jun 30 14:20:03 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Update to 0.15.11

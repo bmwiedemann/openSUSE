@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul  3 13:19:02 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Fix the registration of libvirt pool and nodedev events
+- Accept nested namespaces in spacewalk.api runner function. (bsc#1172211)
+- info_installed works without status attr now (bsc#1171461)
+
+- Added:
+  * info_installed-works-without-status-attr-now.patch
+  * opensuse-3000.3-spacewalk-runner-parse-command-250.patch
+  * opensuse-3000-libvirt-engine-fixes-251.patch
+
+-------------------------------------------------------------------
+Thu May 28 16:01:10 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Avoid traceback on debug logging for swarm module (bsc#1172075)
+
+- Added:
+  * avoid-has_docker-true-if-import-messes-with-salt.uti.patch
+
+-------------------------------------------------------------------
 Thu May 28 08:51:19 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Add publish_batch to ClearFuncs exposed methods

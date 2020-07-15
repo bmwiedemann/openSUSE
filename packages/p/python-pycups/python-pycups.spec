@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycups
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,14 @@ Release:        0
 Summary:        Python Bindings for CUPS
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Python
-Url:            http://cyberelk.net/tim/software/pycups/
+URL:            http://cyberelk.net/tim/software/pycups/
 Source:         https://files.pythonhosted.org/packages/source/p/pycups/pycups-%{version}.tar.bz2
 BuildRequires:  %{python_module devel}
 BuildRequires:  cups-devel
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# need to avoid cycle as cups-devel wants us (boo#1172407)
+#!BuildIgnore: cups-rpm-helper
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %ifpython2
 Obsoletes:      %{oldpython}-cups < %{version}
@@ -47,7 +49,7 @@ Python Bindings for CUPS, the Common Unix Printing System
 %package -n cups-rpm-helper
 Summary:        RPM macros for building cups drivers
 Group:          Development/Libraries/Python
-Url:            https://fedoraproject.org/wiki/Features/AutomaticPrintDriverInstallation
+URL:            https://fedoraproject.org/wiki/Features/AutomaticPrintDriverInstallation
 Requires:       python3-cups
 Requires:       rpm-build
 Supplements:    (rpm-build and cups-devel)

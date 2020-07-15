@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 13 07:04:18 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Force disk size of OpenStack-Cloud to 1GiB to avoid ENOSPC
+  (bsc#1096738)
+
+-------------------------------------------------------------------
 Tue Jun 30 13:37:54 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Drop bootsplash-theme, not used

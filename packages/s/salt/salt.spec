@@ -318,6 +318,14 @@ Patch116:     fix-for-return-value-ret-vs-return-in-batch-mode.patch
 Patch117:     zypperpkg-filter-patterns-that-start-with-dot-244.patch
 # PATCH-FIX_OPENSUSE: hhttps://github.com/openSUSE/salt/commit/da936daeebd701e147707ad814c07bfc259d4be
 Patch118:     add-publish_batch-to-clearfuncs-exposed-methods.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/57489
+Patch119:     avoid-has_docker-true-if-import-messes-with-salt.uti.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/57779
+Patch120:     info_installed-works-without-status-attr-now.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/57491
+Patch121:     opensuse-3000.3-spacewalk-runner-parse-command-250.patch
+# PATCH-FIX_UPSTREAM: https://github.com/openSUSE/salt/pull/251
+Patch122:     opensuse-3000-libvirt-engine-fixes-251.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  logrotate
@@ -942,6 +950,10 @@ cp %{S:5} ./.travis.yml
 %patch116 -p1
 %patch117 -p1
 %patch118 -p1
+%patch119 -p1
+%patch120 -p1
+%patch121 -p1
+%patch122 -p1
 
 %build
 %if 0%{?build_py2}

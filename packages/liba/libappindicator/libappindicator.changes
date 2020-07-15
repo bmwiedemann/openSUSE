@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  7 13:20:25 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec
+
+-------------------------------------------------------------------
 Tue Apr 14 10:01:22 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add -fcommon in order to fix boo#1164492.

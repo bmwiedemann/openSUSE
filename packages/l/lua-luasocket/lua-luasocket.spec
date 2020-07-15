@@ -1,7 +1,7 @@
 #
 # spec file for package lua-luasocket
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,14 @@
 #
 
 
-%define flavor lua
+%define flavor @BUILD_FLAVOR@
 %define mod_name luasocket
-Name:           %{flavor}-%{mod_name}
 Version:        3.0~rc1+git20170515.5a17f79
 Release:        0
 Summary:        Network support for the Lua language
 License:        MIT
 Group:          Development/Languages/Other
-Url:            https://github.com/diegonehab/luasocket
+URL:            https://github.com/diegonehab/luasocket
 Source:         %{mod_name}-%{version}.tar.xz
 Patch0:         luasocket-makefile.patch
 BuildRequires:  %{flavor}-devel
@@ -33,8 +32,11 @@ Requires:       %{flavor}
 Provides:       luasocket = %{version}
 Obsoletes:      luasocket < %{version}
 %endif
-%if "%{flavor}" == "lua"
+%if "%{flavor}" == ""
 ExclusiveArch:  do_not_build
+Name:           lua-%{mod_name}
+%else
+Name:           %{flavor}-%{mod_name}
 %endif
 
 %description

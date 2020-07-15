@@ -26,7 +26,7 @@
 %endif
 %bcond_without python2
 Name:           python-arrow%{?psuffix}
-Version:        0.15.6
+Version:        0.15.7
 Release:        0
 Summary:        Better dates and times for Python
 License:        Apache-2.0
@@ -82,8 +82,7 @@ rm -rf arrow.egg-info
 
 %check
 %if %{with test}
-# remove pytest -cov* args. (Next release will move this to tox.ini)
-rm setup.cfg 
+rm tox.ini
 %pytest
 %endif
 

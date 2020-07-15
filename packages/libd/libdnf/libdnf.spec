@@ -18,8 +18,8 @@
 
 %global libsolv_version 0.7.7
 %global libmodulemd_version 2.5.0
-%global librepo_version 1.11.0
-%global dnf_conflict 4.2.13
+%global librepo_version 1.12.0
+%global dnf_conflict 4.2.23
 %global swig_version 3.0.12
 
 # Keep tests switched off for now, it bombs out on SUSE
@@ -33,7 +33,7 @@
 %define devname %{name}-devel
 
 Name:           libdnf
-Version:        0.45.0
+Version:        0.48.0
 Release:        0
 Summary:        Library providing C and Python APIs atop libsolv
 License:        LGPL-2.1-or-later
@@ -42,11 +42,9 @@ Url:            https://github.com/rpm-software-management/%{name}
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 # PATCH-FIX-OPENSUSE: Fix libdnf build with static libsolvext
-Patch1000:      libdnf-0.39.1-with-static-libsolvext.patch
+Patch1000:      libdnf-0.48.0-with-static-libsolvext.patch
 # PATCH-FIX-OPENSUSE: Switch default reposdir to /etc/dnf/repos.d
 Patch1001:      libdnf-0.39.1-Switch-default-reposdir-to-etc-dnf-repos.d.patch
-# PATCH-FIX-OPENSUSE: Handle monitoring non-bdb rpmdb variants
-Patch1002:      libdnf-0.45.0-handle-all-rpmdb-variants.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 14 12:05:44 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Fix 'partition' elements using the right type (bsc#1174071).
+- 4.3.24
+
+-------------------------------------------------------------------
+Mon Jul 13 09:26:52 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix exception when autoyast module does not report any package
+  to install (bsc#1174069)
+- 4.3.23
+
+-------------------------------------------------------------------
 Wed Jul  8 23:41:41 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Move pre-scripts to the autoinit client running them just after

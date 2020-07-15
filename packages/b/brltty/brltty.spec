@@ -448,8 +448,8 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-someth
 %{_datadir}/polkit-1/actions/org.a11y.brlapi.policy
 %endif
 %{_libdir}/brltty/
-%{_libexecdir}/brltty/
-%{_libexecdir}/%{name}/systemd-wrapper
+%{_prefix}/lib/brltty/
+%{_prefix}/lib/%{name}/systemd-wrapper
 %{_mandir}/man1/brltty.1*
 %{_mandir}/man1/eutp.1.gz
 %{_udevdir}/rules.d/69-%{name}.rules

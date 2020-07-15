@@ -17,7 +17,7 @@
 
 
 Name:           ffnvcodec
-Version:        9.1.23.1
+Version:        10.0.26.0
 Release:        0
 Summary:        FFmpeg version of NVIDIA codec API headers
 License:        MIT

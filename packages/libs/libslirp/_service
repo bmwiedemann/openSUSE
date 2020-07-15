@@ -1,16 +1,18 @@
 <services>
-
-<service name="obs_scm" mode="disabled">
-<param name="url">https://gitlab.freedesktop.org/slirp/libslirp.git</param>
-<param name="scm">git</param>
-<param name="filename">libslirp</param>
-<param name="versionformat">4.3.0</param>
-<param name="revision">v4.3.0</param>
-</service>
-<service name="tar" mode="disabled" />
-<service name="recompress" mode="disabled">
-<param name="file">*.tar</param>
-<param name="compression">xz</param>
-</service>
-
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://gitlab.freedesktop.org/slirp/libslirp.git</param>
+    <param name="scm">git</param>
+    <param name="filename">libslirp</param>
+    <param name="versionformat">4.3.1</param>
+    <param name="revision">v4.3.1</param>
+    <param name="package-meta">yes</param>
+  </service>
+  <service name="set_version" mode="buildtime"/>
+  <service name="tar" mode="buildtime">
+    <param name="package-meta">yes</param>
+  </service>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
 </services>

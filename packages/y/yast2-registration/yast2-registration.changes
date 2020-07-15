@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  9 10:31:17 CEST 2020 - schubi@suse.de
+
+- Evaluating addon-list: Uses version without release for
+  connecting SCC (bsc#1162755).
+- 4.3.2
+
+-------------------------------------------------------------------
 Thu May 28 10:50:51 UTC 2020 - Martin Vidner <mvidner@suse.com>
 
 - Declining/refusal of an addon license means canceling all addons.

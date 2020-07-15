@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jul  7 10:43:34 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Rebase to 2.9.4
+  + Deprecate reset methods in favor of clear methods
+  + Add modulemd-validator man page
+  + Add Module.search_streams_by_glob()
+  + Add ModuleIndex.search_streams() method
+  + Add Modulemd.Module.search_streams_by_nsvca_glob()
+  + Add ModuleIndex.search_streams_by_nsvca_glob()
+  + Add ModuleIndex.search_rpms()
+  + Add ModuleStreamV2.search_profiles()
+  + Add framework for handling modulemd-packager YAML documents
+  + Return appropriate error when parsing a ModulemdStream doc fails
+  + Rework ModulemdError and ModulemdYamlError
+  + Improve Modulemd*ErrorEnum deprecations
+  + Use the new error enums everywhere
+  + Fix inconsistent error setting
+  + Make SKIP_UNKNOWN return UNKNOWN_ATTR in strict mode
+  + modulemd-packager: Check for extraneous attributes
+  + Fix bug printing negative buildorder values
+  + Handle NULL nsvca_patterns for globs
+  + Relax handling of differing content for the same NSVCA
+
+-------------------------------------------------------------------
 Sun Jan 19 14:55:59 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 2.8.3

@@ -17,13 +17,13 @@
 
 
 Name:           python-senlinclient
-Version:        1.11.0
+Version:        2.0.1
 Release:        0
 Summary:        Python API and CLI for OpenStack Senlin
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-senlinclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-senlinclient/python-senlinclient-1.11.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-senlinclient/python-senlinclient-2.0.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Babel >= 2.3.4
 BuildRequires:  python3-PrettyTable >= 0.7.2
@@ -90,7 +90,7 @@ It implements 100% of the OpenStack Senlin API. This package contains
 auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-senlinclient-1.11.0
+%autosetup -p1 -n python-senlinclient-2.0.1
 %py_req_cleanup
 
 %build

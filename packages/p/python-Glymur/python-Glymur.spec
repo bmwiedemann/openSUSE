@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-Glymur
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        Tools for accessing JPEG2000 files
 License:        MIT
@@ -40,6 +40,9 @@ BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module numpy >= 1.7.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scikit-image}
+%if 0%{?suse_version} <= 1500
+BuildRequires:  %{python_module importlib_resources}
+%endif
 # /SECTION
 %python_subpackages
 
@@ -54,6 +57,8 @@ Python interface to the OpenJPEG library
 
 %install
 %python_install
+# don't install tests
+rm -rf %{buildroot}%{python_sitelib}/tests
 %python_clone -a %{buildroot}%{_bindir}/jp2dump
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -70,6 +75,7 @@ Python interface to the OpenJPEG library
 %doc README.md CHANGES.txt
 %license LICENSE.txt
 %python_alternative %{_bindir}/jp2dump
-%{python_sitelib}/*
+%{python_sitelib}/glymur*
+%{python_sitelib}/Glymur*
 
 %changelog

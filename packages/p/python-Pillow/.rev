@@ -372,4 +372,12 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
   * Warn if an unknown feature is passed to features.check() #4438</comment>
     <requestid>799155</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>97948cce42964f0fad8023f29e28f685</srcmd5>
+    <version>7.2.0</version>
+    <time>1594807726</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820507</requestid>
+  </revision>
 </revisionlist>

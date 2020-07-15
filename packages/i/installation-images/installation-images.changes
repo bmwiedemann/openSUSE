@@ -1,4 +1,15 @@
 --------------------------------------------------------------------
+Tue Jul 14 09:21:27 UTC 2020 - mvidner@suse.cz
+
+- merge gh#openSUSE/installation-images#388
+- Adjust style to fix shellcheck warnings; admit this needs bash
+- Remove bashisms, explicitly use /bin/dash as interpreter
+  (bsc#1172139)
+- 'make check' will run shellcheck on the scripts needing dash
+- Save 1.5 MiB RAM by switching inst_setup to dash
+- 15.13
+
+--------------------------------------------------------------------
 Fri Jul 10 13:29:07 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#395

@@ -1,7 +1,7 @@
 #
 # spec file for package libraw
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ URL:            https://www.libraw.org/
 #Git-Clone:	git://github.com/LibRaw/LibRaw
 Source:         https://www.libraw.org/data/%tar_name-%version.tar.gz
 Patch1:         libraw-Add-Sony-ILCE-7M3.patch
+# CVE-2020-15503 [bsc#1173674], lack of thumbnail size range check can lead to buffer overflow
+Patch2:         libraw-CVE-2020-15503.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -102,6 +104,7 @@ against LibRaw. LibRaw does not provide dynamic libraries.
 %prep
 %setup -q -n %{tar_name}-%{version}
 %patch1 -p1
+%patch2 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

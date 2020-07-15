@@ -37,7 +37,7 @@
 %define devname %{name}-devel
 
 Name:           librepo
-Version:        1.11.2
+Version:        1.12.0
 Release:        0
 Summary:        Repodata downloading library
 License:        LGPL-2.0-or-later

@@ -47,7 +47,7 @@ cp %{SOURCE4} .
 
 %build
 mkdir output
-OUTPUTDIR=$PWD/output %{_libexecdir}/YaST2/bin/y2start %{SOURCE3} UI
+OUTPUTDIR=$PWD/output %{_prefix}/lib/YaST2/bin/y2start %{SOURCE3} UI
 
 %install
 pushd output

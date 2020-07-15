@@ -34,6 +34,8 @@ Patch0:         busybox-no-stime.patch
 Patch100:       busybox.install.patch
 Provides:       useradd_or_adduser_dep
 BuildRequires:  glibc-devel-static
+# for test suite
+BuildRequires:  zip
 
 %description
 BusyBox combines tiny versions of many common UNIX utilities into a
@@ -52,6 +54,20 @@ Group:          System/Base
 %description static
 BusyBox combines tiny versions of many common UNIX utilities into a
 single executable.
+
+%package testsuite
+Summary:        Testsuite of busybox
+Group:          Development/Testing
+Requires:       %{name} = %{version}
+Requires:       zip
+
+%description testsuite
+Using this package you can test the busybox build on different kernels and glibc. 
+It needs to run with permission to the current directory, so either copy it away
+as is or run as root:
+
+cd /usr/share/busybox/testsuite 
+PATH=/usr/share/busybox:$PATH SKIP_KNOWN_BUGS=1 ./runtest
 
 %prep
 %setup -q
@@ -89,6 +105,19 @@ install -d %{buildroot}%{_sysconfdir}
 install -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/
 install -d %{buildroot}%{_mandir}/man1
 install -m 644 docs/BusyBox.1 %{buildroot}%{_mandir}/man1
+cp %{SOURCE2} %{buildroot}%{_datadir}/busybox/.config
+ln -s %_bindir/busybox %{buildroot}%{_datadir}/busybox/busybox
+cp -a testsuite %{buildroot}%{_datadir}/busybox/testsuite
+
+%check
+export KCONFIG_NOTIMESTAMP=KCONFIG_NOTIMESTAMP
+export BUILD_VERBOSE=2
+export CFLAGS="%{optflags} -fno-strict-aliasing -I/usr/include/tirpc"
+export CC="gcc"
+export HOSTCC=gcc
+export SKIP_KNOWN_BUGS=1 
+export SKIP_INTERNET_TESTS=1 
+make -e %{?_smp_mflags} test
 
 %files
 %license LICENSE
@@ -99,6 +128,11 @@ install -m 644 docs/BusyBox.1 %{buildroot}%{_mandir}/man1
 %{_bindir}/busybox.install
 %dir %{_datadir}/busybox
 %{_datadir}/busybox/busybox.links
+
+%files testsuite
+%{_datadir}/busybox/busybox
+%{_datadir}/busybox/.config
+%{_datadir}/busybox/testsuite
 
 %files static
 %license LICENSE

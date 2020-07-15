@@ -17,7 +17,7 @@
 
 
 Name:           gpg2
-Version:        2.2.20
+Version:        2.2.21
 Release:        0
 Summary:        File encryption, decryption, signature creation and verification utility
 License:        GPL-3.0-or-later
@@ -40,6 +40,8 @@ Patch13:        gnupg-accept_subkeys_with_a_good_revocation_but_no_self-sig_duri
 Patch14:        gnupg-add-test-cases-for-import-without-uid.patch
 Patch15:        gnupg-allow-import-of-previously-known-keys-even-without-UIDs.patch
 Patch1124847:   gnupg-gpg-agent-ulimit.patch
+# PATCH-FIX-UPSTREAM bsc#1174007 gpgme: Fails to build with latest gpg-2.2.21
+Patch16:        gnupg-gpgme-t-encrypt-sym.patch
 BuildRequires:  expect
 BuildRequires:  fdupes
 BuildRequires:  libassuan-devel >= 2.5.0
@@ -105,6 +107,7 @@ gpgsm, or via the gpg-connect-agent tool.
 %patch13 -p1
 %patch14 -p1
 %patch15 -p1
+%patch16 -p1
 touch -d 2018-05-04 doc/gpg.texi # to compensate for patch11 in order to not have man pages and info files have the build date (boo#1047218)
 
 %build

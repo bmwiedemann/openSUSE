@@ -17,7 +17,7 @@
 
 
 Name:           issue-generator
-Version:        1.9
+Version:        1.10
 Release:        0
 Summary:        Generates an issue files from different snippets
 License:        GPL-2.0-or-later

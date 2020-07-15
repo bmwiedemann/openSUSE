@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 12 10:09:51 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.0.0
+  - Switch to Ussuri jobs
+  - Change README.rst with a better title
+  - Drop python 2.7 support and testing
+  - Bump the openstackdocstheme extension to 1.20
+  - Update source link in readme
+  - Add swift_api_audit_map.conf
+  - Add swift_api_audit_map.conf to setup.cfg
+  - Update the constraints url
+
+-------------------------------------------------------------------
 Sat Mar 14 15:36:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only builds

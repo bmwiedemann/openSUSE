@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Jul 10 09:50:04 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 20200710:
+  * Revert "etc/permissions: remove entries for bind-chrootenv". This
+    currently conflicts with the way the CheckSUIDPermissions rpmlint-check is
+    implemented.
+
+-------------------------------------------------------------------
+Tue Jul  7 15:56:02 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Removed dbus-libexec.patch: contained in upstream
+
+-------------------------------------------------------------------
+Tue Jul 07 13:25:40 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 20200624:
+  * rework permissions.local text (boo#1173221)
+  * dbus-1: adjust to new libexec dir location (bsc#1171164)
+  * permission profiles: reinstate kdesud for kde5
+  * etc/permissions: remove entries for bind-chrootenv
+  * etc/permissions: remove traceroute entry
+  * VirtualBox: remove outdated entry which is only a symlink any more
+  * /bin/su: remove path refering to symlink
+  * etc/permissions: remove legacy RPM directory entries
+  * /etc/permissions: remove outdated sudo directories
+  * singularity: remove outdated setuid-binary entries
+  * chromium: remove now unneeded chrome_sandbox entry (bsc#1163588)
+  * dbus-1: remove deprecated alternative paths
+  * PolicyKit: remove outdated entries last used in SLE-11
+  * pcp: remove no longer needed / conflicting entries
+  * gnats: remove entries for package removed from Factory
+  * kdelibs4: remove entries for package removed from Factory
+  * v4l-base: remove entries for package removed from Factory
+  * mailman: remove entries for package deleted from Factory
+  * gnome-pty-helper: remove dead entry no longer part of the vte package
+  * gnokii: remove entries for package no longer in Factory
+  * xawtv (v4l-conf): correct group ownership in easy profile
+  * systemd-journal: remove unnecessary profile entries
+  * thttp: make makeweb entry usable in the secure profile (bsc#1171580)
+
+-------------------------------------------------------------------
 Tue Jun 16 13:23:23 UTC 2020 - malte.kraus@suse.com
 
 - dbus-1: adjust to new libexec dir location (bsc#1171164). This is

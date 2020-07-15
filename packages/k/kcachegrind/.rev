@@ -693,4 +693,12 @@
     <comment>20.04.2 (+respins) (forwarded request 813365 from cgiboudeaux)</comment>
     <requestid>813622</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>0170b94a636fd570ae3a7adf54ec081d</srcmd5>
+    <version>20.04.3</version>
+    <time>1594806390</time>
+    <user>dimstar_suse</user>
+    <comment>20.04.3 release</comment>
+    <requestid>820161</requestid>
+  </revision>
 </revisionlist>

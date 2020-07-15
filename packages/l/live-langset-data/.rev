@@ -126,4 +126,12 @@
     <comment>- Use y2start instead of y2base, it breaks nokogiri</comment>
     <requestid>810832</requestid>
   </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>54d70f59227b1770e6b376fbbfb58b66</srcmd5>
+    <version>2.0</version>
+    <time>1594804920</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819207</requestid>
+  </revision>
 </revisionlist>

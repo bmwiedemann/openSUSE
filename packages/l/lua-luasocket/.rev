@@ -37,4 +37,12 @@
     <comment></comment>
     <requestid>684695</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>3239278e21dade462ea70208571e4844</srcmd5>
+    <version>3.0~rc1+git20170515.5a17f79</version>
+    <time>1594805455</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to multibuild and add lua54 build target.</comment>
+    <requestid>819302</requestid>
+  </revision>
 </revisionlist>

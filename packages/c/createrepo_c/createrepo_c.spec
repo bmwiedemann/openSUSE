@@ -54,7 +54,7 @@
 %define devname lib%{name}-devel
 
 Name:           createrepo_c
-Version:        0.15.11
+Version:        0.16.0
 Release:        0
 Summary:        RPM repository metadata generation utility
 License:        GPL-2.0-or-later

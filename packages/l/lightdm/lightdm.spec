@@ -237,10 +237,10 @@ install -d %{buildroot}%{_localstatedir}/log/lightdm
 install -d %{buildroot}%{rundir}/lightdm
 
 install -Dpm 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/pam.d/lightdm-greeter
-install -Dpm 0644 %{SOURCE4} %{buildroot}%{_libexecdir}/X11/displaymanagers/lightdm
+install -Dpm 0644 %{SOURCE4} %{buildroot}%{_prefix}/lib/X11/displaymanagers/lightdm
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-displaymanager
-ln -s %{_sysconfdir}/alternatives/default-displaymanager %{buildroot}%{_libexecdir}/X11/displaymanagers/default-displaymanager
+ln -s %{_sysconfdir}/alternatives/default-displaymanager %{buildroot}%{_prefix}/lib/X11/displaymanagers/default-displaymanager
 
 install -Dpm 0755 %{SOURCE5} %{buildroot}%{_libexecdir}/lightdm/gdmflexiserver
 
@@ -261,8 +261,8 @@ install -Dpm 0644 %{SOURCE7} %{buildroot}%{_sysconfdir}/lightdm/users.conf
 if [ -z "$DISPLAYMANAGER" -o "$DISPLAYMANAGER" = "lxdm" ] ; then
     sed -i 's/^DISPLAYMANAGER=".*"/DISPLAYMANAGER="lightdm"/' %{_sysconfdir}/sysconfig/displaymanager
 fi
-%{_sbindir}/update-alternatives --install %{_libexecdir}/X11/displaymanagers/default-displaymanager \
-  default-displaymanager %{_libexecdir}/X11/displaymanagers/lightdm 15
+%{_sbindir}/update-alternatives --install %{_prefix}/lib/X11/displaymanagers/default-displaymanager \
+  default-displaymanager %{_prefix}/lib/X11/displaymanagers/lightdm 15
 
 %postun
 if [ "$1" -eq 0 ]; then
@@ -271,8 +271,8 @@ if [ "$1" -eq 0 ]; then
         sed -i 's/^DISPLAYMANAGER="lightdm"/DISPLAYMANAGER=""/' %{_sysconfdir}/sysconfig/displaymanager
     fi
 fi
-[ -f %{_libexecdir}/X11/displaymanagers/lightdm ] || %{_sbindir}/update-alternatives \
-  --remove default-displaymanager %{_libexecdir}/X11/displaymanagers/lightdm
+[ -f %{_prefix}/lib/X11/displaymanagers/lightdm ] || %{_sbindir}/update-alternatives \
+  --remove default-displaymanager %{_prefix}/lib/X11/displaymanagers/lightdm
 
 %post -n %{gobject_lib} -p /sbin/ldconfig
 
@@ -304,9 +304,9 @@ fi
 %config %{_sysconfdir}/pam.d/lightdm-autologin
 %config %{_sysconfdir}/pam.d/lightdm-greeter
 %config %{_sysconfdir}/dbus-1/system.d/org.freedesktop.DisplayManager.conf
-%dir %{_libexecdir}/X11/displaymanagers/
-%{_libexecdir}/X11/displaymanagers/lightdm
-%{_libexecdir}/X11/displaymanagers/default-displaymanager
+%dir %{_prefix}/lib/X11/displaymanagers/
+%{_prefix}/lib/X11/displaymanagers/lightdm
+%{_prefix}/lib/X11/displaymanagers/default-displaymanager
 %ghost %{_sysconfdir}/alternatives/default-displaymanager
 %{_datadir}/lightdm/
 %dir %{_datadir}/accountsservice/

@@ -1,7 +1,7 @@
 #
 # spec file for package cfitsio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define tar_ver 3.47
-%define so_ver 8
+%define tar_ver 3.48
+%define so_ver 9
 Name:           cfitsio
-Version:        3.470
+Version:        3.480
 Release:        0
 Summary:        Library for manipulating FITS data files
 License:        ISC
-URL:            https://heasarc.nasa.gov/fitsio/
+URL:            https://heasarc.gsfc.nasa.gov/fitsio/
 Source0:        https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/%{name}-%{tar_ver}.tar.gz
 # PATCH-FIX-OPENSUSE cfitsio-zlib.patch asterios.dramis@gmail.com -- Use system zlib, link programs to shared libcfitsio (based on patches from Fedora and Debian)
 Patch0:         cfitsio-zlib.patch
@@ -93,8 +93,7 @@ popd
 # so please drop them if they are not needed (in next round of updates)
 # Add include dir, multithreading support, zlib dependency
 sed -i 's|Cflags: -I${includedir}|Cflags: -D_REENTRANT -I${includedir} -I${includedir}/%{name}|' cfitsio.pc.in
-sed -i 's|Libs: -L${libdir} -lcfitsio @LIBS@|Libs: -L${libdir} -lcfitsio|' cfitsio.pc.in
-sed -i 's|Libs.private: -lm|Libs.private: @LIBS@ -lz -lm|' cfitsio.pc.in
+sed -i 's|Libs.private: -lm @LIBS@|Libs.private: -lz -lm @LIBS@|' cfitsio.pc.in
 
 %configure --enable-reentrant
 make shared %{?_smp_mflags}

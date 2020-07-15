@@ -190,4 +190,13 @@
     <comment></comment>
     <requestid>816633</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>63cc85c2434df7740832097f1cb8116d</srcmd5>
+    <version>2.5.3</version>
+    <time>1594808041</time>
+    <user>dimstar_suse</user>
+    <comment>- Added both_isort_4_5.patch (gh#PyCQA/pylint#3725) allowing
+  work with both versions of isort.</comment>
+    <requestid>820769</requestid>
+  </revision>
 </revisionlist>

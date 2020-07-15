@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 14 09:50:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add obsoletes to make factory review team happy
+
+-------------------------------------------------------------------
+Tue May 12 10:06:49 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- switch to stable/ussuri template (drops python 2.x support)
+
+-------------------------------------------------------------------
 Fri Dec 20 07:58:50 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
 - switch to stable/train template

@@ -241,4 +241,14 @@
     <comment></comment>
     <requestid>817923</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c42d7e78dca7a985be5b571c4d13f585</srcmd5>
+    <version>0.16.0</version>
+    <time>1594804776</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0
+  + Never do dir walk when --recycle-pkglist specified
+  + Add automatic module metadata handling for repos (rh#1795936)</comment>
+    <requestid>819088</requestid>
+  </revision>
 </revisionlist>

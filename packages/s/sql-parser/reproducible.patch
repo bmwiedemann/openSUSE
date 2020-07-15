@@ -1,0 +1,30 @@
+https://github.com/envoyproxy/sql-parser/pull/1
+
+From 026854f4e467a2d09c12e4eb8f35dcbdcfa0c155 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Thu, 14 Nov 2019 09:40:31 +0100
+Subject: [PATCH] Sort the input file list
+
+so that libsqlparser.so.1 builds in a reproducible way
+in spite of indeterministic filesystem readdir order.
+
+See https://reproducible-builds.org/ for why this is good.
+
+Signed-off-by: Bernhard M. Wiedemann <bwiedemann@suse.de>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index fcfd3c0..06c7eac 100644
+--- a/Makefile
++++ b/Makefile
+@@ -50,7 +50,7 @@ else
+ 	LIB_CFLAGS  +=  -fPIC
+ 	LIB_LFLAGS = -shared -o
+ endif
+-LIB_CPP    = $(shell find $(SRC) -name '*.cpp' -not -path "$(SRCPARSER)/*") $(PARSER_CPP)
++LIB_CPP    = $(sort $(shell find $(SRC) -name '*.cpp' -not -path "$(SRCPARSER)/*") $(PARSER_CPP))
+ LIB_H      = $(shell find $(INCLUDE) -name '*.h' -not -path "$(SRCPARSER)/*") $(PARSER_H)
+ LIB_ALL    = $(shell find $(SRC) -name '*.cpp' -not -path "$(SRCPARSER)/*") $(shell find $(INCLUDE) -name '*.h' -not -path "$(SRCPARSER)/*")
+ LIB_OBJ    = $(LIB_CPP:%.cpp=%.o)

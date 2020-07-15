@@ -1469,4 +1469,22 @@ let build start it or we will get libvirt errors.
   * fix-a-test-and-some-variable-names-229.patch</comment>
     <requestid>810127</requestid>
   </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>931092df73c0a8d23b4371a62a2f7d7f</srcmd5>
+    <version>3000.3</version>
+    <time>1594804364</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the registration of libvirt pool and nodedev events
+- Accept nested namespaces in spacewalk.api runner function. (bsc#1172211)
+- info_installed works without status attr now (bsc#1171461)
+- Added:
+  * info_installed-works-without-status-attr-now.patch
+  * opensuse-3000.3-spacewalk-runner-parse-command-250.patch
+  * opensuse-3000-libvirt-engine-fixes-251.patch
+
+- Avoid traceback on debug logging for swarm module (bsc#1172075)
+- Added:
+  * avoid-has_docker-true-if-import-messes-with-salt.uti.patch</comment>
+    <requestid>819714</requestid>
+  </revision>
 </revisionlist>

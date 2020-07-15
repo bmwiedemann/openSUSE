@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul 12 06:59:17 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.5.2
+  * Added support for pip==20.1
+  * Added support for global temporary directory context management
+    when generating wheel caches using the compatibility module
+  * Added wheel cache context management which now requires the
+    temporary directory context in some cases
+  * Improved function argument introspection
+  * Updated test invocations to reflect shifting parameters
+
+-------------------------------------------------------------------
 Mon Mar 16 10:40:36 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 0.5.1

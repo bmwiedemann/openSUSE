@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Pillow
-Version:        7.1.2
+Version:        7.2.0
 Release:        0
 Summary:        Python Imaging Library (Fork)
 License:        HPND
@@ -31,6 +31,7 @@ BuildRequires:  %{python_module olefile}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module tk}
 BuildRequires:  fdupes
 BuildRequires:  libimagequant-devel
 BuildRequires:  pkgconfig
@@ -46,7 +47,6 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(tk)
 BuildRequires:  pkgconfig(zlib)
 Requires:       python-olefile
-BuildRequires:  %{python_module tk}
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(libopenjp2)
 %endif

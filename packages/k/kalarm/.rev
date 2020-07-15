@@ -369,4 +369,12 @@ Needs KF 5.59 and SR 710707</comment>
     <comment>20.04.2 (+respins) (forwarded request 813365 from cgiboudeaux)</comment>
     <requestid>813604</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>71562e6b2e98a06126b8e93435ac7de5</srcmd5>
+    <version>20.04.3</version>
+    <time>1594806109</time>
+    <user>dimstar_suse</user>
+    <comment>20.04.3 release</comment>
+    <requestid>820144</requestid>
+  </revision>
 </revisionlist>

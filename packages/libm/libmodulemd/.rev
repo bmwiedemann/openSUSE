@@ -118,4 +118,31 @@
   + Add support for new ModulemdBuildopts arches attribute</comment>
     <requestid>765592</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9b761fb64059d86a787082bc18cc0bc3</srcmd5>
+    <version>2.9.4</version>
+    <time>1594804962</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase to 2.9.4
+  + Deprecate reset methods in favor of clear methods
+  + Add modulemd-validator man page
+  + Add Module.search_streams_by_glob()
+  + Add ModuleIndex.search_streams() method
+  + Add Modulemd.Module.search_streams_by_nsvca_glob()
+  + Add ModuleIndex.search_streams_by_nsvca_glob()
+  + Add ModuleIndex.search_rpms()
+  + Add ModuleStreamV2.search_profiles()
+  + Add framework for handling modulemd-packager YAML documents
+  + Return appropriate error when parsing a ModulemdStream doc fails
+  + Rework ModulemdError and ModulemdYamlError
+  + Improve Modulemd*ErrorEnum deprecations
+  + Use the new error enums everywhere
+  + Fix inconsistent error setting
+  + Make SKIP_UNKNOWN return UNKNOWN_ATTR in strict mode
+  + modulemd-packager: Check for extraneous attributes
+  + Fix bug printing negative buildorder values
+  + Handle NULL nsvca_patterns for globs
+  + Relax handling of differing content for the same NSVCA</comment>
+    <requestid>819221</requestid>
+  </revision>
 </revisionlist>

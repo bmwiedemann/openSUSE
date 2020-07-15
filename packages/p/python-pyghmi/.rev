@@ -251,4 +251,12 @@
 - switch to python 3.x only client</comment>
     <requestid>787447</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f3ad2022757529b6dc1bd74c2212d8a2</srcmd5>
+    <version>1.5.13</version>
+    <time>1594805228</time>
+    <user>dimstar_suse</user>
+    <comment>- update to stable/ussuri template (version 1.5.13)</comment>
+    <requestid>812565</requestid>
+  </revision>
 </revisionlist>

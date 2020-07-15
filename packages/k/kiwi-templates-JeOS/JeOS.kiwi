@@ -101,7 +101,9 @@
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
-        />
+        >
+            <size unit="G">1</size>
+        </type>
     </preferences>
 
     <preferences profiles="MS-HyperV">

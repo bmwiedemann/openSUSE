@@ -277,17 +277,17 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/appindicator-sharp-0.1/policy.0.0.appindicator-sharp.dll
 %{_libdir}/appindicator-sharp-0.1/policy.0.1.appindicator-sharp.config
 %{_libdir}/appindicator-sharp-0.1/policy.0.1.appindicator-sharp.dll
-%dir %{_libexecdir}/mono/appindicator-sharp/
-%{_libexecdir}/mono/appindicator-sharp/appindicator-sharp.dll
-%{_libexecdir}/mono/appindicator-sharp/policy.0.0.appindicator-sharp.dll
-%dir %{_libexecdir}/mono/gac/appindicator-sharp/
-%dir %{_libexecdir}/mono/gac/appindicator-sharp/*/
-%{_libexecdir}/mono/gac/appindicator-sharp/*/appindicator-sharp.dll
-%{_libexecdir}/mono/gac/appindicator-sharp/*/appindicator-sharp.dll.config
-%dir %{_libexecdir}/mono/gac/policy.0.0.appindicator-sharp/
-%dir %{_libexecdir}/mono/gac/policy.0.0.appindicator-sharp/*/
-%{_libexecdir}/mono/gac/policy.0.0.appindicator-sharp/*/policy.0.0.appindicator-sharp.config
-%{_libexecdir}/mono/gac/policy.0.0.appindicator-sharp/*/policy.0.0.appindicator-sharp.dll
+%dir %{_prefix}/lib/mono/appindicator-sharp/
+%{_prefix}/lib/mono/appindicator-sharp/appindicator-sharp.dll
+%{_prefix}/lib/mono/appindicator-sharp/policy.0.0.appindicator-sharp.dll
+%dir %{_prefix}/lib/mono/gac/appindicator-sharp/
+%dir %{_prefix}/lib/mono/gac/appindicator-sharp/*/
+%{_prefix}/lib/mono/gac/appindicator-sharp/*/appindicator-sharp.dll
+%{_prefix}/lib/mono/gac/appindicator-sharp/*/appindicator-sharp.dll.config
+%dir %{_prefix}/lib/mono/gac/policy.0.0.appindicator-sharp/
+%dir %{_prefix}/lib/mono/gac/policy.0.0.appindicator-sharp/*/
+%{_prefix}/lib/mono/gac/policy.0.0.appindicator-sharp/*/policy.0.0.appindicator-sharp.config
+%{_prefix}/lib/mono/gac/policy.0.0.appindicator-sharp/*/policy.0.0.appindicator-sharp.dll
 
 %files -n appindicator-sharp-devel
 %license COPYING COPYING.LGPL.2.1

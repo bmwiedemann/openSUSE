@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-Locale
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           perl-DateTime-Locale
-Version:        1.250000
+Version:        1.260000
 Release:        0
-%define cpan_version 1.25
-Provides:       perl(DateTime::Locale) = 1.250000
+%define cpan_version 1.26
+Provides:       perl(DateTime::Locale) = 1.260000
 %define cpan_name DateTime-Locale
 Summary:        Localization support for DateTime.pm
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -36,7 +36,7 @@ BuildRequires:  perl(CPAN::Meta::Check) >= 0.011
 BuildRequires:  perl(CPAN::Meta::Requirements)
 BuildRequires:  perl(Dist::CheckConflicts) >= 0.02
 BuildRequires:  perl(File::ShareDir)
-BuildRequires:  perl(File::ShareDir::Install) >= 0.03
+BuildRequires:  perl(File::ShareDir::Install) >= 0.06
 BuildRequires:  perl(IPC::System::Simple)
 BuildRequires:  perl(List::Util) >= 1.45
 BuildRequires:  perl(Params::ValidationCompiler) >= 0.13
@@ -67,7 +67,7 @@ please read the 'DateTime::Locale::FromData' documentation.
 
 %prep
 %setup -q -n %{cpan_name}-%{cpan_version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -83,7 +83,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc appveyor.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md
+%doc azure-pipelines.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md
 %license LICENSE LICENSE.cldr
 
 %changelog

@@ -39,4 +39,15 @@
     <comment></comment>
     <requestid>809364</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b58bc23b6de2e91eb1688377f8729970</srcmd5>
+    <version>0.9.2</version>
+    <time>1594805375</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.2:
+ * Update setup.py to include tests in source distribution to PyPi
+ * Update gdal imports to comply with GDAL recommendations.
+ * Don't install tests</comment>
+    <requestid>820974</requestid>
+  </revision>
 </revisionlist>
