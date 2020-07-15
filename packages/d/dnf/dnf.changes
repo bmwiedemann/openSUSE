@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Jul  7 11:39:37 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 4.2.23
+  + Fix completion helper if solv files not in roon cache (rh#1714376)
+  + Add bash completion for 'dnf module' (rh#1565614)
+  + Check command no longer reports  missing %pre and %post deps (rh#1543449)
+  + Check if arguments can be encoded in 'utf-8'
+  + [doc] Remove incorrect information about includepkgs (rh#1813460)
+  + Fix crash with "dnf -d 6 repolist" (rh#1812682)
+  + Do not print the first empty line for repoinfo
+  + Redirect logger and repo download progress when --verbose
+  + Respect repo priority when listing packages (rh#1800342)
+  + [doc] Document that list and info commands respect repo priority
+  + [repoquery] Do not protect running kernel for --unsafisfied (rh#1750745)
+  + Remove misleading green color from the "broken dependencies" lines (rh#1814192)
+  + [doc] Document color options
+  + Fix behavior of install-n, autoremove-n, remove-n, repoquery-n
+  + Fix behavior of localinstall and list-updateinfo aliases
+  + Add updated field to verbose output of updateinfo list (rh#1801092)
+  + Add comment option to transaction (rh#1773679)
+  + Add new API for handling gpg signatures (rh#1339617)
+  + Verify GPG signatures when running dnf-automatic (rh#1793298)
+  + Fix up Conflicts: on python-dnf-plugins-extras
+  + [doc] Move yum-plugin-post-transaction-actions to dnf-plugins-core
+  + Remove args "--set-enabled", "--set-disabled" from DNF (rh#1727882)
+  + Search command is now alphabetical (rh#1811802)
+  + Fix downloading packages with full URL as their location
+  + repo: catch libdnf.error.Error in addition to RuntimeError in load() (rh#1788182)
+  + History table to max size when redirect to file (rh#1786335, rh#1786316)
+
+-------------------------------------------------------------------
 Thu Feb 27 14:13:22 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 4.2.19
