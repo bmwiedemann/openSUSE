@@ -1,7 +1,7 @@
 #
 # spec file for package lua-luadbi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,7 +60,7 @@ sed -i \
     Makefile
 
 %build
-make %{?_smp_mflags} LIBDIR=%{_libdir}
+%make_build LIBDIR=%{_libdir}
 
 %install
 install -d %{buildroot}%{lua_archdir}
