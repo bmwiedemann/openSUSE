@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul 13 21:16:05 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 2.1
+  * We have tweaked build scripts.
+  * When you use USE_Z3=yes, we will handle new versions of z3 better. If you
+    have an old z3 library and get compilation problems you will need to add
+	a z3_version.h in externals.
+  * The cmake scripts was updated.
+  * There was a couple of bug fixes.
+  New check:
+  * for "expression % 1" the result is always 0.
+- Run spec-cleaner
+  * Remove rpm groups
+- Enable Z3 build flag
+
+-------------------------------------------------------------------
 Thu Mar 12 12:54:24 UTC 2020 - Vladislav Savic <vladisav@gmx.com>
 
 - Since cppcheck version 1.89 CFGDIR is replaced by FILESDIR and

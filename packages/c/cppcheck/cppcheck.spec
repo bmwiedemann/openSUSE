@@ -17,11 +17,10 @@
 
 
 Name:           cppcheck
-Version:        1.90
+Version:        2.1
 Release:        0
 Summary:        A tool for static C/C++ code analysis
 License:        GPL-3.0-or-later
-Group:          Development/Languages/C and C++
 URL:            http://cppcheck.sourceforge.net/
 Source:         https://downloads.sourceforge.net/cppcheck/cppcheck-%{version}.tar.bz2
 BuildRequires:  cmake
@@ -31,6 +30,7 @@ BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  xsltproc
+BuildRequires:  z3-devel
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
@@ -61,7 +61,6 @@ errors:
 
 %package gui
 Summary:        A tool for static C/C++ code analysis
-Group:          Development/Languages/C and C++
 Requires:       cppcheck
 
 %description gui
@@ -70,7 +69,7 @@ This is the gui for Cppcheck, a program to detect bugs that your C/C++ compiler
 doesn't see.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %cmake \
@@ -78,7 +77,8 @@ doesn't see.
   -DFILESDIR="%{_datadir}/%{name}" \
   -DBUILD_GUI=ON \
   -DBUILD_TESTS=ON \
-  -DHAVE_RULES=yes
+  -DHAVE_RULES=yes \
+  -DUSE_Z3=yes
 %cmake_build
 
 # does not work with CMake, directly call provided Makefile from source directory
