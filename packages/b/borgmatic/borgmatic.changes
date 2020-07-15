@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jul  7 09:38:32 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 1.5.8
+  * #336: Fix for traceback when running Cronitor, Cronhub, and
+    PagerDuty monitor hooks.
+
+- Update to 1.5.7
+  * #327: Fix broken pass-through of BORG_* environment variables
+    to Borg.
+  * #328: Fix duplicate logging to Healthchecks and send "after_*"
+    hooks output to Healthchecks.
+  * #331: Add SSL support to PostgreSQL database configuration.
+  * #333: Fix for potential data loss (data not getting backed up)
+    when borgmatic omitted configured source directories in certain
+    situations. Specifically, this occurred when two source
+    directories on different filesystems were related by parentage
+    (e.g. "/foo" and "/foo/bar/baz") and the one_file_system option
+    was enabled.
+  * Update documentation code fragments theme to better match the
+    rest of the page.
+  * Improve configuration reference documentation readability via
+    more aggressive word-wrapping in configuration schema
+    descriptions.
+
+-------------------------------------------------------------------
 Mon Jun 15 17:22:18 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - Update to 1.5.6
