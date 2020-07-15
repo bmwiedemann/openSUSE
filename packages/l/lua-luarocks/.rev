@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>726834</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3342ea52f1358ddedc52c32ccf4c5a19</srcmd5>
+    <version>3.2.0</version>
+    <time>1594817753</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lua54 as new build target
+</comment>
+    <requestid>819771</requestid>
+  </revision>
 </revisionlist>
