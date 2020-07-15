@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul  5 07:55:03 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 5.71.0:
+  * Use macOS instead of MacOSX
+  * Support "repo_id" in metainfo.yaml to override guessed repo name
+
+-------------------------------------------------------------------
 Sun Jun  7 08:06:18 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.71.0
