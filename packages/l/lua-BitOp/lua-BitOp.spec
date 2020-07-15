@@ -1,7 +1,7 @@
 #
 # spec file for package lua-BitOp
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name    BitOp
-Version:        1.0.2
-Release:        0
-Summary:        Lua Bit Operations Module
-License:        MIT
-Group:          Development/Libraries/Other
-Url:            http://bitop.luajit.org/index.html
-Source:         http://bitop.luajit.org/download/LuaBitOp-%{version}.tar.gz
-BuildRequires:  %{flavor}-devel
-BuildRequires:  gcc
-Requires:       %{flavor}
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
 %else
 Name:           %{flavor}-%{mod_name}
 %endif
+Version:        1.0.2
+Release:        0
+Summary:        Lua Bit Operations Module
+License:        MIT
+Group:          Development/Libraries/Other
+URL:            https://bitop.luajit.org/index.html
+Source:         http://bitop.luajit.org/download/LuaBitOp-%{version}.tar.gz
+BuildRequires:  %{flavor}-devel
+BuildRequires:  gcc
+Requires:       %{flavor}
 Obsoletes:      %{name}-doc < %{version}-%{release}
 Provides:       %{name}-doc = %{version}-%{release}
 
@@ -46,7 +46,7 @@ on numbers.
 
 %build
 export CFLAGS="%{optflags} -I%{lua_incdir}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 mkdir -p %{buildroot}%{_docdir}/%{name}

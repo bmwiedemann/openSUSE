@@ -23,4 +23,12 @@
     <comment>drop lua5.2 from multibuild</comment>
     <requestid>537619</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f2bfdf182718799a2eb301ebdbe717d1</srcmd5>
+    <version>1.0.2</version>
+    <time>1594817960</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix with spec-cleaner</comment>
+    <requestid>819816</requestid>
+  </revision>
 </revisionlist>

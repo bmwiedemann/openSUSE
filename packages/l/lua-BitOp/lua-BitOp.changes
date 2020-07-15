@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  9 20:45:21 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Fix with spec-cleaner
+
+-------------------------------------------------------------------
 Mon Oct 30 14:45:32 UTC 2017 - jmatejek@suse.com
 
 - do not build for Lua 5.2
