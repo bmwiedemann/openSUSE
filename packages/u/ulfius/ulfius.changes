@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 10 14:52:55 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Redownloaded source tarball
+
+-------------------------------------------------------------------
+Tue Jul  7 19:46:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.8
+  * Increase `ULFIUS_POSTBUFFERSIZE` to follow MHD documentation
+  * Adapt code to be compatible with all MHD version
+  * In case of secure websocket communication, use a combination of
+    `gnutls_record_check_pending()` and `poll()` to determine if
+    data is ready.
+  * Install uwsc manpage
+  * Fix bug about missing `res` variable assignment.
+
+-------------------------------------------------------------------
 Thu Jun  4 08:37:52 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.6.7
