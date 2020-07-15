@@ -1025,4 +1025,12 @@ touch version is still build but no desktop file installed. (forwarded request 2
     <comment>20.04.2 (+respins) (forwarded request 813365 from cgiboudeaux)</comment>
     <requestid>813762</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>bc9736b7f9674c3bd3d85e61f5046c40</srcmd5>
+    <version>20.04.3</version>
+    <time>1594807012</time>
+    <user>dimstar_suse</user>
+    <comment>20.04.3 release</comment>
+    <requestid>820302</requestid>
+  </revision>
 </revisionlist>
