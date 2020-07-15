@@ -61,9 +61,7 @@ ExclusiveArch:  do_not_build
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-luafilesystem
 Requires:       %{flavor}
-%if "%{flavor}" == "lua51"
 BuildRequires:  %{flavor}-compat-5.3
-%endif
 # not SUSE
 %else
 BuildRequires:  lua-devel
@@ -132,6 +130,7 @@ rm -fv tests/test-dns.lua
     -DBUILD_STATIC_LIBS=OFF -DCMAKE_INSTALL_DO_STRIP=OFF \
     -DBUILD_MODULE=OFF -DBUILD_SHARED_LIBS=ON \
     -DWITH_SHARED_LIBUV=ON -DWITH_LUA_ENGINE=Lua \
+    -DLUA_INCLUDE_DIR:PATH="%{lua_incdir}" \
     -DLUA_BUILD_TYPE=System -DLUA_COMPAT53_DIR="%{lua_incdir}/"
 ( cd build ; make )
 %endif
@@ -143,6 +142,7 @@ rm -fv tests/test-dns.lua
     -DBUILD_STATIC_LIBS=OFF -DCMAKE_INSTALL_DO_STRIP=OFF \
     -DBUILD_MODULE=ON -DBUILD_SHARED_LIBS=ON \
     -DWITH_SHARED_LIBUV=ON -DWITH_LUA_ENGINE=Lua \
+    -DLUA_INCLUDE_DIR:PATH="%{lua_incdir}" \
     -DLUA_BUILD_TYPE=System -DLUA_COMPAT53_DIR="%{lua_incdir}/"
 ( cd build ; make )
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  6 19:06:47 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add lua54 as new build target and fix problems with
+  compatibility with it.
+
+-------------------------------------------------------------------
 Sun Apr 12 12:30:52 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - We don't need to define macros, when lua-macros is finally
