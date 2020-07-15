@@ -7,7 +7,7 @@ Index: gettext-0.19.5.1/build-aux/config.rpath
      gnu* | linux* | tpf* | k*bsd*-gnu | kopensolaris*-gnu)
        if $LD --help 2>&1 | grep ': supported targets:.* elf' > /dev/null; then
 -        :
-+        if $libdir == /usr/lib | $libdir == /usr/lib64; then
++        if [[ $libdir = '/usr/lib' ]] || [[ $libdir = '/usr/lib64' ]] ; then
 +		     hardcode_libdir_flag_spec=""
 +	     fi
        else
