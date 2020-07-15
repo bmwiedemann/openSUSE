@@ -32,4 +32,13 @@
     <comment></comment>
     <requestid>742983</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>12f24218fdc93280bf066b2106f55f58</srcmd5>
+    <version>0.0+git20190816.9e176fe</version>
+    <time>1594817700</time>
+    <user>dimstar_suse</user>
+    <comment>- Added lua54.patch to fix building with Lua 5.4
+- Add lua54 as new build target</comment>
+    <requestid>819738</requestid>
+  </revision>
 </revisionlist>
