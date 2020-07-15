@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Jul  2 15:18:42 UTC 2020 - Noel Power <nopower@suse.com>
+
+- Update to samba 4.12.5
+  + Fix smbd panic on force-close share during async
+    io; (bso#14301).
+  + Fix segfault when using SMBC_opendir_ctx() routine for
+    share folder that contains incorrect symbols in any
+    file name; (bso#14374)
+  + Fix DFS links; (bso#14391).
+  + Can't use DNS functionality after a Windows DC has been
+    in domain; (bso#14310).
+  + ldapi search to FreeIPA crashes; (bso#14413).
+  + Add net-ads-join dnshostname=fqdn option; (bso#14396)
+  + Fix adding msDS-AdditionalDnsHostName to keytab with
+    Windows DC; (bso#14406).
+  + docs-xml: Update list of posible VFS operations for
+    vfs_full_audit; (bso#14386).
+  + winbindd: Fix a use-after-free when winbind clients exit;
+    (bso#14382).
+  + Client tools are not able to read gencache anymore;
+    (bso#14370).
+
+-------------------------------------------------------------------
+Thu Jul  2 11:56:15 UTC 2020 - Noel Power <nopower@suse.com>
+
+- Update to samba 4.12.4
+  + CVE-2020-10730: NULL de-reference in AD DC LDAP server when
+    ASQ and VLV combined; (bso#14364); (bsc#1173159)
+  + CVE-2020-10745: invalid DNS or NBT queries containing dots use
+    several seconds of CPU each; (bso#14378); (bsc#1173160).
+  + CVE-2020-10760: Use-after-free in AD DC Global Catalog LDAP
+    server with paged_result or VLV; (bso#14402); (bsc#1173161)
+  + CVE-2020-14303: Endless loop from empty UDP packet sent to
+    AD DC nbt_server; (bso#14417); (bsc#1173359).
+
+-------------------------------------------------------------------
 Sat May 30 15:42:34 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - add libnetapi-devel to baselibs conf, for wine usage (bsc#1172307)

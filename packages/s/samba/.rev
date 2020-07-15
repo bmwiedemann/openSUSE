@@ -3319,4 +3319,12 @@ list of changes.</comment>
     <comment></comment>
     <requestid>811173</requestid>
   </revision>
+  <revision rev="261" vrev="1">
+    <srcmd5>99f3b82af910b4cd6ca2776b75e19e79</srcmd5>
+    <version>4.12.5+git.168.88cc07e6cbf</version>
+    <time>1594804255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818949</requestid>
+  </revision>
 </revisionlist>

@@ -53,7 +53,7 @@
 %define talloc_version 2.3.1
 %define tevent_version 0.10.2
 %define tdb_version    1.4.3
-%define ldb_version    2.1.3
+%define ldb_version    2.1.4
 
 %global with_mitkrb5 1
 %global with_dc 0
@@ -164,7 +164,7 @@ BuildRequires:  libtasn1-devel >= 3.8
 %else
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
-Version:        4.12.3+git.161.208cf9730ee
+Version:        4.12.5+git.168.88cc07e6cbf
 Release:        0
 Url:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
