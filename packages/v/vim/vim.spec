@@ -17,7 +17,7 @@
 
 
 %define pkg_version 8.2
-%define patchlevel 0701
+%define patchlevel 1154
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim82
 %define site_runtimepath %{_datadir}/vim/site
@@ -378,6 +378,8 @@ rm -rf %{buildroot}%{_mandir}/da.UTF-8/
 rm -rf %{buildroot}%{_mandir}/de.UTF-8/
 rm -rf %{buildroot}%{_mandir}/da.ISO8859-1/
 rm -rf %{buildroot}%{_mandir}/de.ISO8859-1/
+rm -Rf %{buildroot}%{_mandir}/tr.ISO8859-9/
+rm -Rf %{buildroot}%{_mandir}/tr.UTF-8/
 
 # remove unnecessary files
 rm -rf %{buildroot}%{_datadir}/applications/vim.desktop
@@ -485,6 +487,9 @@ fi
 %dir %{_mandir}/ja
 %dir %{_mandir}/ja/man1/
 %{_mandir}/ja/man1/*
+%dir %{_mandir}/tr
+%dir %{_mandir}/tr/man1/
+%{_mandir}/tr/man1/*
 # docs and data file
 %license LICENSE
 %doc %{_docdir}/vim

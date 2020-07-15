@@ -1,4 +1,449 @@
 -------------------------------------------------------------------
+Wed Jul  8 16:01:14 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.1154, fixes the following problems
+  * Vim9 test fails without job feature.
+  * Running channel tests may leave running process behind.
+  * Vim9: closure cannot store value in outer context.
+  * Vim9: memory leak in disassemble test.
+  * Indent tests don't run on CI for FreeBSD.
+  * Vim9: using assert_fails() causes function to finish.
+  * Vim9 function test fails.
+  * Vim9: constant expressions are not simplified.
+  * Netbeans test sometimes fails.
+  * With a long running Vim the temp directory might be cleared on some
+  systems.
+  * Various code not fully tested.
+  * The pam_environment file is not recognized.
+  * Vim9: handling constant expression does not scale.
+  * Vim9: leaking memory.
+  * Vim9: another memory leak.
+  * Vim9: postponed constant expressions does not scale.
+  * Gcc warning for returning pointer to local variable. (John Marriott)
+  * Vim9: more expressions can be evaluated at compile time
+  * Occasional exit when encountering an X error. (Manfred Lotz)
+  * Vim9: leaking memory when skipping.
+  * Vim9: not handling constant expression for elseif.
+  * Vim9: nested constant expression not evaluated compile time.
+  * Vim9: appending to buffer/window/tab variable not tested
+  * Vim9: cannot call a function declared later in Vim9 script.
+  * Vim9: leaking memory when calling not compiled :def function.
+  * Messages about a deadly signal are not left aligned.
+  * Vim9: When reloading a script variables are not cleared.
+  * Vim9: Assignment to dict member does not work.
+  * Vim9: parsing declarations continues after :finish.
+  * Vim9: storing value in dict messes up stack.
+  * Vim9: assigning to dict or list argument does not work.
+  * Vim9: leaking memory when using :finish.
+  * Vim9: using unitialized memory.
+  * Some files not recognized as pamenv.
+  * When shell doesn't support CTRL-Z Vim still handles it.
+  * Mouse handling in a terminal window not well tested.
+  * Incomplete profiling when exiting because of a deadly signal.
+  * Minor message mistakes.
+  * Python tests fail because of changed message.
+  * Handling of a TERM signal not tested.
+  * Can move to another buffer from a terminal in popup window.
+  * The name vim is not capitalized in a message.
+  * Crash on exit when not all popups are closed.
+  * popup_clear() hangs when a popup can't be closed.
+  * Cannot forcefully close all popups.
+  * Cannot get a list of all popups.
+  * TERM signal test fails on FreeBSD.
+  * Netbeans test is a bit flaky.
+  * Vim9: performance can be improved.
+  * Terminal in popup window test is a bit flaky.
+  * Vim9: expressions are evaluated in the discovery phase.
+  * Vim9: No test for forward declaration.
+  * Vim9: No error when variable initializer is not a constant.
+  * Vim9: no test for MEMBER instruction.
+  * Vim9: no test for STORELIST and STOREDICT.
+  * Vim9: missing changes for performance improvements
+  * Vim9: dict member errors not tested.
+  * Vim9: instructions not tested
+  * Buffer is not considered modified after setting crypt key.
+  * GUI test fails without the terminal feature.
+  * Vim9: assigning to option not fully tested.
+  * In the GUI can't use all the modifiers. (Andri Möll)
+  * Display error when using 'number' and 'breakindent'.
+  * ModifyOtherKeys active when using a shell command in autocmd.
+  * Vim9: memory leak in script test.
+  * VimLeavePre not triggered when Vim is terminated.
+  * Cannot map CTRL-B when using the GUI.
+  * Vim9: cannot call a compiled closure from not compiled code.
+  * Vim9: some variable initializations not tested.
+  * Switching to raw mode every time ":" is used.
+  * t_TI and t_TE are output when using 'visualbell'. (Dominique Pelle)
+  * Not easy to call a Vim function from Lua.
+  * Libvterm code lags behind the upstream version.
+  * Terminal test fails.
+  * Libvterm code lags behind the upstream version.
+  * Tmode_T not used everywhere.
+  * Libvterm code lags behind the upstream version.
+  * Compiler warning for not using value in Lua.
+  * Cannot build with Lua on MS-Windows.
+  * Libvterm code lags behind the upstream version.
+  * Libvterm code lags behind the upstream version.
+  * Libvterm code lags behind the upstream version.
+  * Channel test is flaky on FreeBSD.
+  * Libvterm code lags behind the upstream version.
+  * Memory leak in libvterm.
+  * Vim9: expression testing lost coverage using constants.
+  * Vim9: list index not well tested.
+  * A second popup window with terminal causes trouble.
+  * Build failure with small features.
+  * Libvterm code lags behind the upstream version.
+  * Build fails if snprintf is not available.
+  * Errors from failing test are unclear.
+  * Terminal test fails on Mac.
+  * Terminal key codes test fails on some systems.
+  * using "func!" after vim9script gives confusing error.
+  * Cannot easily restore a mapping.
+  * Not enough testing for the terminal window.
+  * Build failure with small features. (Tony Mechelynck)
+  * Error when appending "tagfile" to 'wildoptions'.
+  * Terminal keycode test is flaky.
+  * mapset() does not properly handle <> notation.
+  * libvterm code is slightly different from upstream.
+  * Clang warning for implicit conversion.
+  * maparg() does not provide enough information for mapset().
+  * Terminal test fails when compiled with Athena.
+  * Not enough memory allocated when converting string with special character.
+  * Vim9: using a discovery phase doesn't work well.
+  * Compiler warning for unused variable.
+  * Vim9: function type isn't set until compiled.
+  * Vim9: memory leak in expr test.
+  * Vim9: code left over from discovery phase.
+  * Vim9: script reload test is disabled.
+  * Still not enough memory allocated when converting string with special
+  character.
+  * def_function() may return pointer that was freed.
+  * Vim9: crash in :defcompile.
+  * Vim9: crash in :defcompile.
+  * Travis: regexp patttern doesn't work everywhere.
+  * filter() may give misleading error message.
+  * Motif: can't map "!". (Ben Jackson)
+  * Compiler warnings for integer sizes.
+  * Compiler warning for uninitialized variable. (Tony Mechelynck)
+  * Mapping <C-bslash> doesn't work in the GUI.
+  * :drop command in terminal popup causes problems.
+  * Motif: mapping <C-bslash> still doesn't work.
+  * Not all :cdo output is visible.
+  * Compiler warning for value set but not used.
+  * Dropping modifier when putting a character back in typeahead.
+  * Search match count wrong when only match is in fold.
+  * 'verbose' value 16 causes duplicate output.
+  * Filetype elm not detected.
+  * Text properties crossing lines not handled correctly.
+  * Text properties crossing lines not handled correctly.
+  * Build failure with small features.
+  * Typval related code is spread out.
+  * Can't distinguish <M-a> from accented "a" in the GUI.
+  * Cannot map CTRL-S on some systems.
+  * ml_delete() often called with FALSE argument.
+  * Xxd cannot show offset as a decimal number.
+  * GUI tests fail because the test doesn't use a modifier.
+  * CTRL-S stops output.
+  * GTK cell height can be a pixel too much.
+  * Not easy to require Lua modules.
+  * No Turkish translation of the manual.
+  * Cannot use CTRL-A and CTRL-X on unsigned numbers.
+  * Cannot easily get all the current marks.
+  * ":term ++curwin" makes the current buffer hidden. (Harm te Hennepe)
+  * Cannot set a separate color for underline/undercurl.
+  * Pragmas are indented all the way to the left.
+  * Syntax foldlevel is taken from the start of the line.
+  * Not enough tests for buffer writing.
+  * Using \{xxx} for encoding a modifier is not nice.
+  * trim() always trims both ends.
+  * It is not possible to customize the quickfix window contents.
+  * MS-Windows: Control keys don't work in the GUI.
+  * Cannot use getmarklist() as a method.
+  * XIM code is mixed with multi-byte code.
+  * A .jl file can be sawfish (lisp) or Julia.
+  * Signals test is a bit flaky.
+  * Getting attributes for directory entries is slow.
+  * :pwd does not give a hint about the scope of the directory
+  * Cannot get the search statistics.
+  * No reduce() function.
+  * Compiler warning for unused function argument.
+  * Leaking memory when using searchcount().
+  * Compiler warning for argument type.
+  * Leaking memory when using reduce().
+  * Memory leak in test 49.
+  * Searchcount() test fails on slower systems.
+  * "make shadow" does not link new lua test dir.
+  * Cannot use octal numbers in scriptversion 4.
+  * Searchcount().exact_match is 1 right after a match.
+  * Readdirex() returns size -2 for a directory.
+  * Using old style comments.
+  * No color in terminal window when 'termguicolor' is set.
+  * Clang warns for invalid conversion.
+  * Ubsan warns for undefined behavior.
+  * Assert_equalfile() does not take a third argument.
+  * :mkspell can take very long if the word count is high.
+  * :mkspell output does not mention the tree type.
+  * Crash when calling searchcount() with a string.
+  * List of functions in patched version is outdated.
+  * Missing help for a function goes unnoticed.
+  * Assert_equalfile() does not give a hint about the difference.
+  * Function list test fails on MS-Windows.
+  * Formatting CJK text isn't optimal.
+  * Using searchcount() in 'statusline' causes an error.
+  * comparing WINVER does not work correctly.
+  * Assuming modifyOtherKeys for rhs of mapping.
+  * Test coverage could be better.
+  * When setting 'termguicolors' SpellBad is no longer red.
+  * When using :global clipboard isn't set correctly.
+  * Crash when changing the function table while listing it.
+  * Cannot go back to the previous local directory.
+  * Vim is not reproducibly buildable.
+  * Crash when opening a buffer for the cmdline window fails. (Chris Barber)
+  * A few test cases for CJK formatting are disabled.
+  * Code for resetting v:register is duplicated.
+  * Search() cannot skip over matches like searchpair() can.
+  * Mapping with partly modifyOtherKeys code does not work.
+  * Quickfix entries do not suport a "note" type.
+  * Duplicate code for evaluating expression argument.
+  * Merging modifier for modifyOtherKeys is done twice.
+  * Writing viminfo fails with a circular reference.
+  * CTRL-W T in cmdline window causes trouble.
+  * Search test fails.
+  * Cmdline test is slow.
+  * Cannot save and restore a register properly.
+  * Getcompletion() does not return command line arguments.
+  * Cmdline test fails on Appveyor.
+  * Some sshconfig and ssdhconfig files are not recognized.
+  * Many type casts are used for vim_strnsave().
+  * v:register is not cleared after an operator was executed.
+  * Script filetype detection trips over env -S argument.
+  * Some remarks about BeOS remain.
+  * Missspelling spelllang.
+  * 'quickfixtextfunc' does not get window ID of location list.
+  * Running lhelpgrep twice in a help window doesn't jump to the help topic.
+  * Flattening a list with existing code is slow.
+  * Some terminals misinterpret the code for getting cursor style.
+  * Asan failure in the flatten() test.
+  * NFA regexp uses tolower() to compare ignore-case. (Thayne McCombs)
+  * checking for term escape sequences is long and confusing
+  * Build failure with tiny features.
+  * Detecting terminal properties is unstructured.
+  * Expanding to local dir after homedir keeps "~/".
+  * Displaying ^M or ^J depends on current buffer.
+  * Xxd test leaves file behind.
+  * Cannot use "z=" when 'spell' is off.
+  * Cannot use "q" to cancel a number prompt.
+  * Readdirex() doesn't handle broken link properly.
+  * Spell test fails.
+  * Strptime() does not use DST.
+  * Tagjump test fails.
+  * Search stat test has leftover from debugging.
+  * No simple way to interrupt Vim.
+  * Spell checking doesn't work for CamelCased words.
+  * Not all desktop files are recognized.
+  * Build fails.
+  * Spell test fails.
+  * Compiler warning for uninitialized variable. (Tony Mechelynck)
+  * Not sufficient testing for buffer writing.
+  * Using 'quickfixtextfunc' is a bit slow.
+  * Cannot use :import in legacy Vim script.
+  * Terminal test sometimes hangs on Travis.
+  * Number increment/decrement does not work with 'virtualedit'.
+  * TextYankPost does not provide info about Visual selection.
+  * Has_funcundefined() is not used.
+  * 'shortmess' flag "n" not used in two places.
+  * Unnecessary type casts for vim_strnsave().
+  * No proper testing of the 'cpoptions' flags.
+  * Assert_equal() output for dicts is hard to figure out.
+  * Terminal properties are not available in Vim script.
+  * Build with tiny features fails.
+  * Vim9 script variable declarations need a type.
+  * Vim9: type is not checked when assigning to a script variable.
+  * Vim9: memory leak when script var has wrong type.
+  * Vim9: script variable does not accept optional s: prefix.
+  * Some 'cpoptions' not tested.
+  * t_8u is made empty for the wrong terminals. (Dominique Pelle)
+  * Leaking memory in termcodes test.
+  * A couple of screendump tests fail.
+  * Raku file extension not recognized. (Steven Penny)
+  * Vim9: cannot compile "[var, var] = list".
+  * Insufficient testing for reading/writing files.
+  * SConstruct file type not recognized.
+  * Not using previous window when closing a shell popup window.
+  * Simplify() does not remove slashes from "///path".
+  * Vim9: cannot assign to [var; var].
+  * Getting directory contents is always case sorted.
+  * Crash after resizing a terminal window. (August Masquelier)
+  * Using duplicate error number.
+  * Cannot get window type for autocmd and preview window.
+  * Vim9: crash when using :import in the Vim command.
+  * Vim9 script test fails with normal features.
+  * Vim9: missing function causes compilation error.
+  * Insufficient testing for the readdir() sort option.
+  * Using "aucmdwin" in win_gettype() is not ideal.
+  * Cannot execute a register containing line continuation.
+  * Not all tag code is tested.
+  * Moving to next sentence gets stuck on quote.
+  * Get error when leaving Ex mode with :visual and a CmdLineEnter autocommand
+  was used.
+  * Vim9: crash with nested "if" and assignment.
+  * Test may fail when run directly.
+  * Vim9: return type of sort() is too generic.
+  * Line numbers below filler lines not always updated.
+  * Vim9: using TRUE/FALSE/MAYBE for ctx_skip is confusing.
+  * Vim9: require unnecessary return statement.
+  * Completion doesn't work after ":r ++arg !".
+  * Vim9: no test for disassambling newly added instructions.
+  * Vim9: some failures not checked for.
+  * Build failure in libvterm with debug enabled. (John Little)
+  * Vim9: some code not tested.
+  * Vim9: cannot declare single character script variables.
+  * Channel tests can be a bit flaky.
+  * Using "name" for a string result is confusing.
+  * Popup filter gets key with modifier prepended when using modifyOtherKeys.
+  * Vim9: test fails when channel feature is missing.
+  * Appveyor output doesn't show MinGW console features.
+  * Typo in enum value. (James McCoy)
+  * Mapping <M-S-a> does not work in the GUI.
+  * Popupwin test fails in the GUI.
+  * Ruby interface not tested enough.
+  * Various parts of code not covered by tests.
+  * Vim9: redefining a function uses a new index every time.
+  * Vim9: no error for using "let g:var = val".
+  * Tabpage menu and tabline not sufficiently tested.
+  * Vim9: cannot break the line after "->".
+  * GUI: multi-byte characters do not work in a terminal.
+  * Vim9: no error for declaring buffer, window, etc. variable.
+  * Vim9: cannot chain function calls with -> at line start.
+  * Reducing size of a terminal window may cause a crash.
+  * Build failure with Perl5.32.
+  * Error message for declaring a variable cannot be translated.
+  * Not easy to read the test time in the test output.
+  * Compiler warning for uninitialized variables.
+  * setreg() does not always clear the register.
+  * Popupwin test fails sometimes.
+  * Vim9: crash when using line continuation inside :def.
+  * Popupwin test fails.
+  * Cannot put NUL byte on clipboard.
+  * Not enough testing for movement commands.
+  * Test summary is missing executed count.
+  * Vim9: cannot put an operator on the next line.
+  * %a item in 'statusline' not tested.
+  * Not all systemd file types are recognized.
+  * Vim9: line break before operator does not work.
+  * Insufficient tests for src/buffer.c.
+  * Vim9: script cannot use line continuation like in a :def function.
+  * Build failure without the eval feature.
+  * Vim9: leaking memory when using continuation line.
+  * Missing change in struct.
+  * Crash when changing a list while using reduce() on it.
+  * Build failure with older compilers.
+  * Insufficient testing for 'statusline' and 'tabline'.
+  * Not so easy to pass a lua function to Vim.
+  * No filetype set for pacman config files.
+  * Wrong display when mixing match conceal and syntax conceal.
+  * Cannot build with dynamic Lua.
+  * Multiline conceal causes display errors.
+  * Crash when using :tabonly in an autocommand. (Yegappan Lakshmanan)
+  * Not all elinks files are recognized.
+  * Insufficient testing for src/window.c.
+  * Vim9: no line break allowed inside "cond ? val1 : val2".
+  * Vim9: no line break allowed before || or &&.
+  * Vim9: no line break allowed before comperators.
+  * Vim9: no line break allowed inside a list.
+  * Lua arrays are zero based.
+  * Expression "!expr->func()" does not work.
+  * Vim9: no line break allowed inside a dict.
+  * Vim9: fail to check for white space in list.
+  * Vim9: leaking memory when lacking white space in dict.
+  * Vim9: no line break allowed inside a lambda.
+  * Missing libvterm test.
+  * Vim9: no line break allowed in () expression.
+  * Vim9: no line break allowed after some operators.
+  * Vim9: no line break allowed in :echo expression.
+  * Vim9: no line break allowed in :if expression.
+  * Not enough test coverage for highlighting.
+  * Highlight and match functionality together in one file.
+  * Vim9: no line break allowed in a while loop.
+  * Vim9: no line break allowed in a for loop.
+  * Lua: cannot use table.insert() and table.remove().
+  * Coverity complains about ignoring dict_add() return value.
+  * Crash when using reduce() on a NULL list.
+  * Lua: registering function has useless code.
+  * Coverity complains about ignoring dict_add() return value.
+  * Possibly using freed memory when text properties used when changing
+  indent of a line.
+  * Possible memory leak when file expansion fails.
+  * A very long translation might cause a buffer overflow.
+  * Coverity warns for pointer computation.
+  * May use NULL pointer when skipping over name.
+  * No check if opening a pty works.
+  * Not checking if saving for undo succeeds.
+  * Python: double free when adding item to dict fails.
+  * Dead code in libvterm.
+  * May use pointer after freeing it when text properties are used.
+  * Vim9: return type of getqflist() is wrong.
+  * Highlight code not sufficiently tested.
+  * Vim9: cannot use line break in :throw argument.
+  * Vim9: cannot use line break in :cexpr argument.
+  * Vim9: cannot use line break in :execute, :echomsg and :echoerr argument.
+  * No error when using wrong arguments for setqflist() or setloclist().
+  * Coverity gets confused by an unnecessary NULL check.
+  * Coverity reports an unnecessary NULL check.
+  * Coverity warns for possible NULL pointer use.
+  * Insufficient test coverage for Lua.
+  * Crash when trying to use s: variable in typed command.
+  * 'imactivatefunc' and 'imstatusfunc' are not used in the GUI.
+  * Mouse left-right scroll is not supported in terminal window.
+  * Still crashing when using s:variable.
+  * Vim9: line continuation does not work in function arguments.
+  * Inconsistent naming of get_list_tv() and eval_dict().
+  * Vim9: no line continuation allowed in method call.
+  * No test for verbose output of :call.
+  * Terminal test sometimes times out.
+  * Iminsert test fails when compiled with VIMDLL.
+  * Vim9: parsing command checks for list twice.
+  * Coverity warns for unsing unitialized field.
+  * Condition can never be true, dead code.
+  * Configure fails with Xcode 12 beta.
+  * Python code not tested properly.
+  * Command completion not working after ++arg.
+  * Vim9: line continuation in dict member not recognized.
+  * Python 3 test is old style.
+  * Vim9: no line break allowed in :import command.
+  * Vim9: double quote can be a string or a comment.
+  * Vim9: using :copen causes an error.
+  * Vim9: getting a dict member may not work.
+  * The write message mentions characters, but it's actually bytes.
+  * Vim9: bar not recognized after not compiled command.
+  * Vim9: bar not recognized after function call
+  * Vim9: error message for returning a value in a function that does not
+  return anything is not clear.
+  * Vim9: return type of repeat() is not specific enough.
+  * Vim9: return type of add() is not specific enough.
+  * Vim9: getting a list member may not work.
+  * Vim9: getting a dict member may not work.
+  * Vim9: return type of argv() is always any.
+  * Vim9: modifiers not cleared after compiling function.
+  * Vim9: return type of copy() and deepcopy() is any.
+  * Vim9: test for silent echo fails in some environments.
+  * Vim9: return type of extend() is any.
+  * Vim9: return type of filter() is any.
+  * Vim9: return type of insert() is any.
+  * Vim9: return type of remove() is any.
+  * Vim9: return type of reverse() is any.
+  * Vim9: "for" only accepts a list at compile time.
+  * Not enough testing for Python.
+  * :confirm may happen in cooked mode. (Jason Franklin)
+  * Warning for using int instead of size_t.
+  * Vim9: :eval command not handled properly.
+  * ml_get error when using Python. (Yegappan Lakshmanan)
+  * Insufficient test coverage for Python.
+  * Vim9: function reference is missing script prefix.
+  * Vim9: script test fails on some systems.
+  * Vim9: crash when using imported function.
+
+-------------------------------------------------------------------
 Tue Jun 30 15:14:06 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - stop owning /etc/vimrc so the old, distro provided config actually

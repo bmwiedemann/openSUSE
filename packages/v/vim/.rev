@@ -4544,4 +4544,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>818077</requestid>
   </revision>
+  <revision rev="264" vrev="1">
+    <srcmd5>2fce747d40ec78f7f68cc1bb422c68d3</srcmd5>
+    <version>8.2.1154</version>
+    <time>1594804318</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.1154, fixes the following problems
+  * Vim9 test fails without job feature.
+  * Running channel tests may leave running process behind.
+  * Vim9: closure cannot store value in outer context.
+  * Vim9: memory leak in disassemble test.
+  * Indent tests don't run on CI for FreeBSD.
+  * Vim9: using assert_fails() causes function to finish.
+  * Vim9 function test fails.
+  * Vim9: constant expressions are not simplified.
+  * Netbeans test sometimes fails.
+  * With a long running Vim the temp directory might be cleared on some
+  systems.
+  * Various code not fully tested.
+  * The pam_environment file is not recognized.
+  * Vim9: handling constant expression does not scale.
+  * Vim9: leaking memory.
+  * Vim9: another memory leak.
+  * Vim9: postponed constant expressions does not scale.
+  * Gcc warning for returning pointer to local variable. (John Marriott)
+  * Vim9: more expressions can be evaluated at compile time
+  * Occasional exit when encountering an X error. (Manfred Lotz)
+  * Vim9: leaking memory when skipping.
+  * Vim9: not handling constant expression for elseif.
+  * Vim9: nested constant expression not evaluated compile time.
+  * Vim9: appending to buffer/window/tab variable not tested
+  * Vim9: cannot call a function declared later in Vim9 script.
+  * Vim9: leaking memory when calling not compiled :def function.
+  * Messages about a deadly signal are not left aligned.
+  * Vim9: When reloading a script variables are not cleared.
+  * Vim9: Assignment to dict member does not work.</comment>
+    <requestid>819524</requestid>
+  </revision>
 </revisionlist>
