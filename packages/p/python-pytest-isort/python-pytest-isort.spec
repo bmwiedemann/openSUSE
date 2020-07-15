@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-isort
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Plugin for pytest to perform isort checks
 License:        BSD-3-Clause
