@@ -1,7 +1,7 @@
 #
 # spec file for package lua-moonscript
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -30,22 +30,24 @@ Release:        0
 Summary:        A programmer friendly language that compiles to Lua
 License:        MIT
 Group:          Development/Libraries/Other
-Url:            http://moonscript.org/
+URL:            http://moonscript.org/
 Source:         https://github.com/leafo/moonscript/archive/v%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
-BuildRequires:  %{flavor}-devel
-BuildRequires:  %{flavor}-lpeg >= 0.10
-BuildRequires:  %{flavor}-argparse >= 0.5
-BuildRequires:  %{flavor}-luafilesystem >= 1.5
-BuildRequires:  %{flavor}-loadkit
 BuildRequires:  %{flavor}-alt-getopt
+BuildRequires:  %{flavor}-argparse >= 0.5
+BuildRequires:  %{flavor}-devel
+BuildRequires:  %{flavor}-loadkit
+BuildRequires:  %{flavor}-lpeg >= 0.10
+BuildRequires:  %{flavor}-luafilesystem >= 1.5
+Requires:       %{flavor}
+Requires:       %{flavor}-alt-getopt
+Requires:       %{flavor}-argparse
+Requires:       %{flavor}-loadkit
+Requires:       %{flavor}-lpeg
+Requires:       %{flavor}-luafilesystem
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # optionally BuildRequires:  %%{flavor}-lnotify
 BuildArch:      noarch
-Requires:       %{flavor}
-Requires:       %{flavor}-loadkit
-Requires:       %{flavor}-alt-getopt
-Requires:       %{flavor}-luafilesystem
-Requires:       %{flavor}-lpeg
-Requires:       %{flavor}-argparse
 %if "%{flavor}" == "lua53"
 Provides:       lua-moonscript = %{version}
 Obsoletes:      lua-moonscript < %{version}
@@ -61,15 +63,13 @@ BuildRequires:  %{flavor}-busted
 Name:           %{flavor}-moonscript
 %endif
 %endif
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
 
 %description
 A programmer friendly language that compiles to Lua.
 
 %prep
 %setup -q -n %{mod_name}-%{upversion}
-sed -i 's|^#!/usr/bin/env lua|#!/usr/bin/lua%{lua_version}|' bin/moon{,c}
+sed -i 's|^#!%{_bindir}/env lua|#!%{_bindir}/lua%{lua_version}|' bin/moon{,c}
 
 %build
 /bin/true
@@ -115,8 +115,8 @@ busted
 %{_bindir}/moonc
 %{_bindir}/moonc-%{lua_version}
 %{lua_noarchdir}/moon*
-%ghost %_sysconfdir/alternatives/moon
-%ghost %_sysconfdir/alternatives/moonc
+%ghost %{_sysconfdir}/alternatives/moon
+%ghost %{_sysconfdir}/alternatives/moonc
 %endif
 
 %changelog
