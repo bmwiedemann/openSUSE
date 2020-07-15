@@ -192,4 +192,19 @@
   * Add day_of_week and month_name for de_DE provider. Thanks @eumiro.</comment>
     <requestid>812811</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f4e7f7e79916493ada72b81f07a1479d</srcmd5>
+    <version>4.1.1</version>
+    <time>1594807486</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.1
+ * Add date_time providers for cs_CZ, de_AT, es_ES, it_IT, sk_SK, tr_TR.
+ * Add prefix support to BarcodeProvider.
+ * Fix company format for hy_AM provider.
+ * Add .uk email providers and TLDs for en_GB.
+ * Add language_name generator.
+ * Add pytimezone generator returning tzinfo objects.
+ * Add es_ES currency provider.</comment>
+    <requestid>819620</requestid>
+  </revision>
 </revisionlist>
