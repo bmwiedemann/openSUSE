@@ -1,7 +1,7 @@
 #
 # spec file for package lua-luaexpat
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2009 florian.leparoux@gmail.com
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 #
@@ -14,7 +14,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,7 @@ Release:        0
 Summary:        A SAX XML parser based on the Expat library
 License:        MIT
 Group:          Productivity/Networking/Other
-Url:            http://matthewwild.co.uk/projects/luaexpat/
+URL:            http://matthewwild.co.uk/projects/luaexpat/
 Source:         http://matthewwild.co.uk/projects/luaexpat/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 BuildRequires:  libexpat-devel
