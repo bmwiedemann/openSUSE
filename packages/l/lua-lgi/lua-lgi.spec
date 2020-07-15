@@ -1,7 +1,7 @@
 #
 # spec file for package lua-lgi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Adam Mizerski <adam@mizerski.pl>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,6 +26,7 @@ License:        MIT
 Group:          Development/Languages/Other
 URL:            https://github.com/pavouk/lgi
 Source0:        https://github.com/pavouk/%{mod_name}/archive/%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
+Patch:          lua54.patch
 BuildRequires:  %{flavor}-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gmodule-2.0)
@@ -58,7 +59,7 @@ using gobject-introspection. Allows using GObject-based libraries
 directly from Lua.
 
 %prep
-%setup -q -n %{mod_name}-%{version}
+%autosetup -n %{mod_name}-%{version} -p1
 
 %build
 make %{?_smp_mflags} V=1 \
