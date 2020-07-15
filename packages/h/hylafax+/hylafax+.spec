@@ -191,18 +191,46 @@ rm -f %{buildroot}%{faxspool}/bin/{ps2fax.imp,ps2fax.dps}
 rm -f %{buildroot}%{faxspool}/COPYRIGHT
 
 %pre
-%service_add_pre hylafax-faxq.service hylafax-hfaxd.service hylafax-usage.timer hylafax-faxqclean.timer
+%service_add_pre hylafax-faxq.service 
+%service_add_pre hylafax-hfaxd.service 
+%service_add_pre hylafax-usage.service
+%service_add_pre hylafax-faxqclean.service
+%service_add_pre hylafax-usage.timer 
+%service_add_pre hylafax-faxqclean.timer
+%service_add_pre hylafax.target
+%service_add_pre hylafax-faxgetty@.service
 
 %post
 /sbin/ldconfig
-%service_add_post hylafax-faxq.service hylafax-hfaxd.service hylafax-usage.timer hylafax-faxqclean.timer
+%service_add_post hylafax-faxq.service 
+%service_add_post hylafax-hfaxd.service 
+%service_add_post hylafax-usage.service 
+%service_add_post hylafax-faxqclean.service
+%service_add_post hylafax-usage.timer 
+%service_add_post hylafax-faxqclean.timer
+%service_add_post hylafax.target
+%service_add_post hylafax-faxgetty@.service
 
 %preun
-%service_del_preun hylafax-faxq.service hylafax-hfaxd.service hylafax-usage.timer hylafax-faxqclean.timer
+%service_del_preun hylafax-faxq.service 
+%service_del_preun hylafax-hfaxd.service 
+%service_del_preun hylafax-usage.service
+%service_del_preun hylafax-faxqclean.service
+%service_del_preun hylafax-usage.timer 
+%service_del_preun hylafax-faxqclean.timer
+%service_del_preun hylafax.target
+%service_del_preun hylafax-faxgetty@.service
 
 %postun
 /sbin/ldconfig
-%service_del_postun hylafax-faxq.service hylafax-hfaxd.service hylafax-usage.timer hylafax-faxqclean.timer
+%service_del_postun hylafax-faxq.service 
+%service_del_postun hylafax-hfaxd.service 
+%service_del_postun hylafax-usage.service
+%service_del_postun hylafax-faxqclean.service
+%service_del_postun hylafax-usage.timer 
+%service_del_postun hylafax-faxqclean.timer
+%service_del_postun hylafax.target
+%service_del_postun hylafax-faxgetty@.service
 
 %post -n libfaxutil%{lib_version} -p /sbin/ldconfig
 %postun -n libfaxutil%{lib_version} -p /sbin/ldconfig
@@ -284,12 +312,13 @@ rm -f %{buildroot}%{faxspool}/COPYRIGHT
 %{_mandir}/man8/ondelay.8c%{ext_man}
 %{_mandir}/man8/probemodem.8c%{ext_man}
 %{_mandir}/man8/typetest.8c%{ext_man}
-%defattr(-,uucp,uucp,-)
+%defattr(755,root,root,-)
 %dir %{_sysconfdir}/hylafax
 %dir %{_sysconfdir}/hylafax/faxmail
 %dir %{_sysconfdir}/hylafax/faxmail/application
 %dir %{_sysconfdir}/hylafax/faxmail/image
 %config(noreplace) %{_sysconfdir}/hylafax/hfaxd.conf
+%defattr(-,uucp,uucp,-)
 %dir %{faxspool}/config
 %dir %{faxspool}/dev
 %{faxspool}/config/*
@@ -359,10 +388,10 @@ rm -f %{buildroot}%{faxspool}/COPYRIGHT
 %{_sysconfdir}/hylafax/faxmail/image/tiff
 %defattr(-,uucp,uucp,-)
 %dir %{faxspool}
-%dir %{faxspool}/bin
+%attr(755,root,root) %dir %{faxspool}/bin
 %dir %{faxspool}/bin/dict
 %dir %{faxspool}/client
-%dir %{faxspool}%{_sysconfdir}
+%attr(755,root,root) %dir %{faxspool}%{_sysconfdir}
 %dir %{faxspool}/info
 %dir %{faxspool}/log
 %dir %{faxspool}/recvq
