@@ -744,4 +744,12 @@
   - update pyamqp to 2.6 with optional cythonization</comment>
     <requestid>814552</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>4b1a65269c2b72bfae980cfceade48e2</srcmd5>
+    <version>4.6.11</version>
+    <time>1594807540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819679</requestid>
+  </revision>
 </revisionlist>
