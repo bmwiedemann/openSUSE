@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 13 08:27:35 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.6.0
+  * Support for alternative certificate chains in the acme module.
+  * Added --preferred-chain <issuer CN>. If a CA offers multiple 
+    certificate chains, it may be used to indicate to Certbot which 
+    chain should be preferred. 
+
+-------------------------------------------------------------------
 Thu Jun 11 12:06:37 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 1.5.0

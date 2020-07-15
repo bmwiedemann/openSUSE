@@ -484,4 +484,16 @@
   * Fix TLS-ALPN test that fails when run with newer versions of OpenSSL.</comment>
     <requestid>813504</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a47cde6e9660c4623572c8f5e3370fb2</srcmd5>
+    <version>1.6.0</version>
+    <time>1594818082</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.6.0
+  * Support for alternative certificate chains in the acme module.
+  * Added --preferred-chain &lt;issuer CN&gt;. If a CA offers multiple 
+    certificate chains, it may be used to indicate to Certbot which 
+    chain should be preferred.</comment>
+    <requestid>820645</requestid>
+  </revision>
 </revisionlist>
