@@ -518,4 +518,35 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>812364</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6811f55f5d6505fa6009a886f6890a75</srcmd5>
+    <version>0.6.13</version>
+    <time>1594820797</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.13:
+ * Bugfixes:
+ + Fixed cut-off text in about dialog.
+ + Fixed increasing play count when stop after track is enabled.
+ + Fixed showing/hiding playing widget when playback is started while window is hidden.
+ + Fixed &quot;Show in file browser&quot; to also work on local songs that are not in the collection.
+ + Fixed &quot;Show in file browser&quot; to work with PCManFM file manager.
+ + Fixed audio analyzer to work with S24LE and F32LE audio formats.
+ + Fixed playlist background image not loading.
+ + Fixed a memory leak when switching between playlists.
+ + Removed use of HTML in systemtray tooltip on KDE, since KDE no longer renders HTML in the systemtray.
+ * Enhancements:
+ + Replaced use of C style casts.
+ + Adapted use of C++11 override.
+ + Improved CMake build files.
+ + Added new on startup options to show maximized or minimized.
+ + Builtin TagLib code is updated and improved.
+ + Made most icon sizes configurable in the settings, and increased default sizes for icons.
+ + Improved fancy tabbar to use font sizes from the theme instead of fixed sizes.
+ + Moving the currently playing song to the top when the playlist is manually shuffled.
+ + Added &quot;a taste of Strawbs&quot; background image.
+ + Fixed unit test for testing playlist model.
+ + Added new unit tests for tagreader.
+</comment>
+    <requestid>820763</requestid>
+  </revision>
 </revisionlist>
