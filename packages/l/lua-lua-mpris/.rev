@@ -74,4 +74,16 @@ mpv which can be used to control the media player using dbus</comment>
     <comment></comment>
     <requestid>742984</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>42295f0e4ac6ca9dcf3d123b23b15595</srcmd5>
+    <version>0.0+git20191025.2b12542</version>
+    <time>1594817761</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lua54 as new build target
+
+- Do not build mpv-plugin-mpris as it is broken and to be replaced
+  with https://github.com/hoyon/mpv-mpris
+- Run spec-cleaner</comment>
+    <requestid>819782</requestid>
+  </revision>
 </revisionlist>
