@@ -422,4 +422,41 @@
   * Complete rewrite and redesign of the virtualenv package</comment>
     <requestid>794520</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>96c4ce63b0fec55230d78e4db92fa18b</srcmd5>
+    <version>20.0.25</version>
+    <time>1594807345</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch from upstream to fix one failing test:
+  * tests.patch
+
+- Add missing dependencies
+- Skip online test test_seed_link_via_app_data
+
+- update to 20.0.25:
+  *  Fix that when the ``app-data`` seeders image creation fails the exception is silently ignored. Avoid two virtual environment creations to step on each oth
+ers toes by using a lock while creating the base images. By :user:`gaborbernat`. (`#1869 &lt;https://github.com/pypa/virtualenv/issues/1869&gt;`_)
+  *  Ensure that the seeded packages do not get too much out of date:
++  More details under :ref:`wheels` - by :user:`gaborbernat`. (`#1821 &lt;https://github.com/pypa/virtualenv/issues/1821&gt;`_)
+  *  Upgrade embed wheel content:
++  - ship wheels for Python ``3.9`` and ``3.10``
++  - upgrade setuptools for Python ``3.5+`` from ``47.1.1`` to ``47.3.1``
+  *  Fix typo in ``setup.cfg`` - by :user:`RowdyHowell`. (`#1857 &lt;https://github.com/pypa/virtualenv/issues/1857&gt;`_)
+  *  Relax ``importlib.resources`` requirement to also allow version 2 - by :user:`asottile`. (`#1846 &lt;https://github.com/pypa/virtualenv/issues/1846&gt;`_)
+  *  Upgrade embedded setuptools to ``44.1.1`` for python 2 and ``47.1.1`` for python3.5+ - by :user:`gaborbernat`. (`#1855 &lt;https://github.com/pypa/virtualenv/issues/1855&gt;`_)
+
+- update to 20.0.21:
+  - Fix virtualenv fails sometimes when run concurrently, ``--clear-app-data`` conflicts with :option:`clear` flag when
+    abbreviation is turned on. To bypass this while allowing abbreviated flags on the command line we had to move it to
+    :option:`reset-app-data` - by :user:`gaborbernat`. (`#1824 &lt;https://github.com/pypa/virtualenv/issues/1824&gt;`_)
+  - Fix download fails with python 3.4 - by :user:`gaborbernat`. (`#1809 &lt;https://github.com/pypa/virtualenv/issues/1809&gt;`_)
+  - Fixes older CPython2 versions use ``_get_makefile_filename`` instead of ``get_makefile_filename`` on ``sysconfig`` - by :user:`ianw`. (`#1810 &lt;https://github.com/pypa/virtualenv/issues/1810&gt;`_)
+  - Fix download is ``True`` by default - by :user:`gaborbernat`. (`#1813 &lt;https://github.com/pypa/virtualenv/issues/1813&gt;`_)
+  - Fail ``app-data`` seed operation when wheel download fails and better error message - by :user:`gaborbernat`. (`#1814 &lt;https://github.com/pypa/virtualenv/issues/1814&gt;`_)
+  - Fix generating a Python 2 environment from Python 3 creates invalid python activator - by :user:`gaborbernat`. (`#1776 &lt;https://github.com/pypa/virtualenv/issues/1776&gt;`_)
+  - Fix pinning seed packages via ``app-data`` seeder raised ``Invalid Requirement`` - by :user:`gaborbernat`. (`#1779 &lt;https://github.com/pypa/virtualenv/issues/1779&gt;`_)
+  - Do not stop interpreter discovery if we fail to find the system interpreter for a executable during discovery
+    - by :user:`gaborbernat`. (`#1781 &lt;https://github.com/pypa/virtualenv/issues/1781&gt;`_)</comment>
+    <requestid>819158</requestid>
+  </revision>
 </revisionlist>

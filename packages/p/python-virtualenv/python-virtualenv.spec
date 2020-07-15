@@ -26,12 +26,13 @@
 %bcond_with test
 %endif
 Name:           python-virtualenv%{psuffix}
-Version:        20.0.17
+Version:        20.0.25
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
 URL:            http://www.virtualenv.org/
 Source:         https://files.pythonhosted.org/packages/source/v/virtualenv/virtualenv-%{version}.tar.gz
+Patch0:         tests.patch
 BuildRequires:  %{python_module setuptools >= 41.0.0}
 BuildRequires:  %{python_module setuptools_scm >= 2}
 BuildRequires:  fdupes
@@ -53,9 +54,11 @@ Requires:       python-pathlib2 >= 2.3.3
 %if %{with test}
 BuildRequires:  %{python_module coverage >= 4.5.1}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module flaky >= 3}
 BuildRequires:  %{python_module packaging >= 20.0}
 BuildRequires:  %{python_module pytest >= 4.0.0}
 BuildRequires:  %{python_module pytest-env >= 0.6.2}
+BuildRequires:  %{python_module pytest-freezegun >= 0.4.1}
 BuildRequires:  %{python_module pytest-mock >= 2.0.0}
 BuildRequires:  %{python_module pytest-timeout >= 1.3.4}
 BuildRequires:  %{python_module virtualenv >= %{version}}
@@ -85,6 +88,7 @@ libraries either).
 
 %prep
 %setup -q -n virtualenv-%{version}
+%autopatch -p1
 
 %build
 %python_build
@@ -99,7 +103,8 @@ libraries either).
 %check
 %if %{with test}
 export LANG="en_US.UTF8"
-%pytest
+# test_seed_link_via_app_data - online tests downloads from pypi
+%pytest -k 'not test_seed_link_via_app_data'
 %endif
 
 %if !%{with test}
