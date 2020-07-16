@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 15 03:02:21 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 3.3.5
+  * Trying to import an R package that it not installed will now raise an
+    exception :class:`rpy2.robjects.packages.PackageNotInstalledError`.
+  * The R C API functions `void SET_FRAME(SEXP x, SEXP v)`,
+    `void SET_ENCLOS(SEXP x, SEXP v)` and `void SET_HASHTAB(SEXP x, SEXP v)`
+    are now accessible through rpy2.
+  * When calling R C-API's `R_ParseVector` and a error occurs, the
+    exception message now contains the parsing status.
+
+
+-------------------------------------------------------------------
 Mon Feb 10 15:10:53 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 3.2.6
