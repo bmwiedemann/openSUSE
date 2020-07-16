@@ -1,7 +1,7 @@
 #
 # spec file for package cbi-plugins
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,8 @@ BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.bouncycastle:bcpg-jdk15on)
 #!BuildIgnore:  tycho
 BuildArch:      noarch
+# Upstream Eclipse no longer supports non-64bit arches
+ExcludeArch:    s390 %{arm} %{ix86}
 
 %description
 A set of helpers for Eclipse CBI.
