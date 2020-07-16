@@ -1,7 +1,7 @@
 #
 # spec file for package iio-sensor-proxy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 Name:           iio-sensor-proxy
-Version:        2.8
+Version:        3.0
 Release:        0
 Summary:        Proxy for IIO and input subsystems
 License:        GPL-3.0-only
 Group:          System/Monitoring
-URL:            https://github.com/hadess/iio-sensor-proxy
-Source0:        https://github.com/hadess/iio-sensor-proxy/releases/download/%{version}/%{name}-%{version}.tar.xz
+URL:            https://gitlab.freedesktop.org/hadess/iio-sensor-proxy
+Source0:        %{url}/uploads/de965bcb444552d328255639b241ce73/%{name}-%{version}.tar.xz
+
 Source99:       iio-sensor-proxy-rpmlintrc
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(systemd) >= 219
@@ -35,7 +36,8 @@ Requires:       user(srvGeoClue)
 %{?systemd_requires}
 
 %description
-This proxy reads sensor data from the IIO subsystem and serves to the input subsystem
+This proxy reads sensor data from the IIO subsystem and serves to
+the input subsystem
 
 %package doc
 Summary:        Documentation for %{name}
