@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 15 13:11:00 UTC 2020 - psychonaut@nothingisreal.com
+
+- update to GPP 2.26
+  * Made --include work when using a relative path to the infile
+    (Issue #16)
+  * Various minor fixes and revisions to the documentation
+  * Added autoconf checks for popen() and pclose()
+  * Moved the openSUSE-specific RPM spec file to a separate repository
+  * Avoided possibility of stack overflow during parsing (Issue #26)
+- update keyring
+
+-------------------------------------------------------------------
 Sun Sep  3 08:49:31 UTC 2017 - mpluskal@suse.com
 
 - Cleanup spec file with spec-cleaner
