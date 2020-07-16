@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-pyzo
-Version:        4.9.0
+Version:        4.10.2
 Release:        0
 Summary:        Python IDE for scientific computing
 License:        BSD-3-Clause
@@ -85,13 +85,25 @@ popd
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+# weirdly installed stuff
+rm %{buildroot}%{_prefix}/LICENSE.md
+rm %{buildroot}%{_prefix}/README.md
+mv %{buildroot}%{_prefix}/pyzo* %{buildroot}%{python_sitelib}/pyzo/util/
+chmod +x %{buildroot}%{python_sitelib}/pyzo/util/pyzolauncher.py
+
+%check
+# the only test which is in the upstream testsuite
+# no need to download github tarball just because of this
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+%python_exec -c 'import pyzo; assert pyzo.__version__'
+
 %files %{python_files}
 %doc README.md
-%license pyzo/license.txt
+%license LICENSE.md
 %{python_sitelib}/*
 
 %files -n pyzo
-%license pyzo/license.txt
+%license LICENSE.md
 %{_datadir}/applications/pyzo.desktop
 %{_bindir}/pyzo
 
