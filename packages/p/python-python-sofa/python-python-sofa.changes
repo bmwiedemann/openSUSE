@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 14 14:44:29 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.2.0
+  * Switched spherical coordinate definition from azimuth and colatitude (0...180) 
+    angles to azimuth and elevation (90...-90) to conform to SOFA specifications.
+  * Provided a more direct access to variable and attribute creation within the dataset
+  * Reworked the initialization process and DataType creation
+  * Reworked RoomTypes
+  * Ensured conventions conform to SOFA 1.0
+  * Updated usage example
+  * Fixed issues in relative coordinate access.
+
+-------------------------------------------------------------------
 Thu Jan 30 15:24:40 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.1.1

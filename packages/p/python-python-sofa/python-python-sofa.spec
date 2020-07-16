@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-sofa
-Version:        0.1.1
+Version:        0.2.0
 Release:        0
 Summary:        Spatially Oriented Format for Acoustics (SOFA) API for Python
 License:        MIT
