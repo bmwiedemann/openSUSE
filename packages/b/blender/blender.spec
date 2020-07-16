@@ -186,7 +186,8 @@ Requires:       python3-xml
 Requires(post):    hicolor-icon-theme
 Requires(postun):  hicolor-icon-theme
 Provides:       %{name}-%{_suffix} = %{version}
-Obsoletes:      %{name}-%{_suffix} < %{version}
+# current locale handling doesn't create locale(..) provides correctly
+Recommends:     %name-lang = %version 
 
 %description
 Blender is a 3D modelling and rendering package. It is the in-house
@@ -208,13 +209,11 @@ and game creation and playback with cross-platform compatibility.
 
 %ifarch x86_64
 %package cycles-devel
-Summary:        Headers for cycles rendering
+Summary:        Headers for cycles rendering with %{name}-%{version}
 #This package is for blender with cycles OSL
 License:        Apache-2.0
 Group:          Development/Sources
-Obsoletes:      %{name}-devel <= %{version}
-Provides:       %{name}-%{_suffix} = %{version}
-Obsoletes:      %{name}-%{_suffix} < %{version}
+Requires:       %{name}-%{_suffix} = %{version}
 BuildArch:      noarch
 
 %description cycles-devel
