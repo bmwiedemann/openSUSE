@@ -1,7 +1,7 @@
 #
 # spec file for package sanlock
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,12 +28,12 @@
 %endif
 %bcond_without python2
 Name:           sanlock
-Version:        3.8.0
+Version:        3.8.1
 Release:        0
 Summary:        A shared disk lock manager
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Base
-Url:            https://pagure.io/sanlock
+URL:            https://pagure.io/sanlock
 Source0:        %{name}-%{version}.tar.gz
 Source1:        sysconfig.sanlock
 Source2:        sysconfig.wdmd
