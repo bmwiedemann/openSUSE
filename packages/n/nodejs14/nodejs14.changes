@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul  2 20:51:30 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 14.5.0:
+  * deps: V8 engine is updated to version 8.3. For details, see
+    https://v8.dev/blog/v8-release-83
+  * events: experimental implementation of EventTarget
+
+For details, see
+https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V14.md#14.5.0
+
+- sle12_python3_compat.patch: refreshed
+- fix_ci_tests.patch: refreshed
+
+-------------------------------------------------------------------
 Tue Jun  9 11:45:55 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Add Require for nodejs14 when intalling npm14. (bsc#1172728)

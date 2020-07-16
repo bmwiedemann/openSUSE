@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 12 06:24:53 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Dont ship unreproducible cache files to make package build reproducible
+
+-------------------------------------------------------------------
 Thu Jul  9 12:53:51 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.11.2

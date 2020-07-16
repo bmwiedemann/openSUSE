@@ -1,6 +1,6 @@
 --- rt.equinox.framework/features/org.eclipse.equinox.executable.feature/library/gtk/eclipseGtkInit.c.orig	2018-08-22 15:19:04.602623018 +0100
 +++ rt.equinox.framework/features/org.eclipse.equinox.executable.feature/library/gtk/eclipseGtkInit.c	2018-08-22 15:20:03.453348722 +0100
-@@ -111,6 +111,11 @@
+@@ -114,6 +114,11 @@
  #define DLFLAGS RTLD_LAZY
  #endif
  
@@ -11,4 +11,4 @@
 +
  	void *gioLib = NULL, *glibLib = NULL, *gdkLib = NULL, *gtkLib = NULL, *objLib = NULL, *pixLib = NULL;
  	
- 	char *gtk3 = getenv("SWT_GTK3");
+ 	gdkLib = dlopen(GDK3_LIB, DLFLAGS);

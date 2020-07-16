@@ -46,7 +46,7 @@
 %define         modname synapse
 %define         pkgname matrix-synapse
 Name:           %{pkgname}
-Version:        1.11.1
+Version:        1.17.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -77,102 +77,102 @@ Requires:       %{python_flavor} >= 3.5
 %endif
 # NOTE: Keep this is in the same order as synapse/python_dependencie.py.
 BuildRequires:  python3-Pillow >= 4.3.0
-Requires:       python3-Pillow >= 4.3.0
+%requires_eq    python3-Pillow
 BuildRequires:  python3-PyNaCl >= 1.2.1
-Requires:       python3-PyNaCl >= 1.2.1
+%requires_eq    python3-PyNaCl
 BuildRequires:  python3-PyYAML >= 3.11
-Requires:       python3-PyYAML >= 3.11
-BuildRequires:  python3-Twisted >= 18.9.0
-Requires:       python3-Twisted >= 18.9.0
+%requires_eq    python3-PyYAML
+BuildRequires:  python3-Twisted >= 20.3.0
+%requires_eq    python3-Twisted
 BuildRequires:  python3-attrs >= 17.4.0
-Requires:       python3-attrs >= 17.4.0
+%requires_eq    python3-attrs
 BuildRequires:  python3-bcrypt >= 3.1.0
-Requires:       python3-bcrypt >= 3.1.0
+%requires_eq    python3-bcrypt
 BuildRequires:  python3-bleach >= 1.4.3
-Requires:       python3-bleach >= 1.4.3
+%requires_eq    python3-bleach
 BuildRequires:  python3-canonicaljson >= 1.1.3
-Requires:       python3-canonicaljson >= 1.1.3
+%requires_eq    python3-canonicaljson
 BuildRequires:  python3-daemonize >= 2.3.1
-Requires:       python3-daemonize >= 2.3.1
+%requires_eq    python3-daemonize
 BuildRequires:  python3-frozendict >= 1
-Requires:       python3-frozendict >= 1
+%requires_eq    python3-frozendict
 BuildRequires:  python3-idna >= 2.5
-Requires:       python3-idna >= 2.5
+%requires_eq    python3-idna
 BuildRequires:  python3-jsonschema >= 2.5.1
-Requires:       python3-jsonschema >= 2.5.1
+%requires_eq    python3-jsonschema
 BuildRequires:  python3-msgpack >= 0.5.2
-Requires:       python3-msgpack >= 0.5.2
+%requires_eq    python3-msgpack
 BuildRequires:  python3-netaddr >= 0.7.18
-Requires:       python3-netaddr >= 0.7.18
+%requires_eq    python3-netaddr
 BuildRequires:  python3-phonenumbers >= 8.2.0
-Requires:       python3-phonenumbers >= 8.2.0
-BuildRequires:  python3-prometheus_client >= 0.4.0
-Requires:       python3-prometheus_client >= 0.4.0
+%requires_eq    python3-phonenumbers
+BuildRequires:  (python3-prometheus_client >= 0.4.0 with python3-prometheus_client < 0.9.0)
+%requires_eq    python3-prometheus_client
 BuildRequires:  python3-psutil >= 2.0.0
-Requires:       python3-psutil >= 2.0.0
+%requires_eq    python3-psutil
 BuildRequires:  python3-pyOpenSSL >= 16.0.0
-Requires:       python3-pyOpenSSL >= 16.0.0
+%requires_eq    python3-pyOpenSSL
 BuildRequires:  python3-pyasn1 >= 0.1.9
-Requires:       python3-pyasn1 >= 0.1.9
+%requires_eq    python3-pyasn1
 BuildRequires:  python3-pyasn1-modules >= 0.0.7
-Requires:       python3-pyasn1-modules >= 0.0.7
+%requires_eq    python3-pyasn1-modules
 BuildRequires:  python3-pymacaroons >= 0.13.0
-Requires:       python3-pymacaroons >= 0.13.0
+%requires_eq    python3-pymacaroons
 BuildRequires:  python3-service_identity >= 18.1.0
-Requires:       python3-service_identity >= 18.1.0
+%requires_eq    python3-service_identity
 BuildRequires:  python3-signedjson >= 1.1.0
-Requires:       python3-signedjson >= 1.1.0
+%requires_eq    python3-signedjson
 BuildRequires:  python3-six >= 1.10
-Requires:       python3-six >= 1.10
+%requires_eq    python3-six
 BuildRequires:  python3-sortedcontainers >= 1.4.4
-Requires:       python3-sortedcontainers >= 1.4.4
+%requires_eq    python3-sortedcontainers
 BuildRequires:  python3-systemd  >= 231
-Requires:       python3-systemd  >= 231
+%requires_eq    python3-systemd
 BuildRequires:  python3-typing_extensions >= 3.7.4
-Requires:       python3-typing_extensions >= 3.7.4
+%requires_eq    python3-typing_extensions
 BuildRequires:  python3-treq >= 15.1
-Requires:       python3-treq >= 15.1
+%requires_eq    python3-treq
 BuildRequires:  python3-unpaddedbase64 >= 1.1.0
-Requires:       python3-unpaddedbase64 >= 1.1.0
+%requires_eq    python3-unpaddedbase64
 # Specify all CONDITIONAL_REQUIREMENTS (we Require them to avoid no-recommends
 # breaking very commonly-used bits of matrix-synapse such as postgresql).
 %if %{with email_notifs}
 BuildRequires:  python3-Jinja2 >= 2.9
-Requires:       python3-Jinja2 >= 2.9
+%requires_eq    python3-Jinja2
 %endif
 %if %{with ldap}
 BuildRequires:  python3-matrix-synapse-ldap3 >= 0.1
-Requires:       python3-matrix-synapse-ldap3 >= 0.1
+%requires_eq    python3-matrix-synapse-ldap3
 %endif
 %if %{with postgres}
 BuildRequires:  python3-psycopg2 >= 2.7
-Requires:       python3-psycopg2 >= 2.7
+%requires_eq    python3-psycopg2
 %endif
 %if %{with acme}
 BuildRequires:  python3-txacme >= 0.9.2
-Requires:       python3-txacme >= 0.9.2
+%requires_eq    python3-txacme
 %endif
 %if %{with saml}
 BuildRequires:  python3-pysaml2 >= 4.5.0
-Requires:       python3-pysaml2 >= 4.5.0
+%requires_eq    python3-pysaml2
 %endif
 %if %{with url_preview}
 BuildRequires:  python3-lxml >= 3.5.0
-Requires:       python3-lxml >= 3.5.0
+%requires_eq    python3-lxml
 %endif
 %if %{with sentry}
 BuildRequires:  python3-sentry-sdk >= 0.7.2
-Requires:       python3-sentry-sdk >= 0.7.2
+%requires_eq    python3-sentry-sdk
 %endif
 %if %{with jwt}
 BuildRequires:  python3-PyJWT >= 1.6.4
-Requires:       python3-PyJWT >= 1.6.4
+%requires_eq    python3-PyJWT
 %endif
 %if %{with opentracing}
 BuildRequires:  python3-jaeger-client >= 4.0.0
-Requires:       python3-jaeger-client >= 4.0.0
+%requires_eq    python3-jaeger-client
 BuildRequires:  python3-opentracing   >= 2.2.0
-Requires:       python3-opentracing   >= 2.2.0
+%requires_eq    python3-opentracing
 %endif
 BuildArch:      noarch
 # We only provide/obsolete python2 to ensure that users upgrade.

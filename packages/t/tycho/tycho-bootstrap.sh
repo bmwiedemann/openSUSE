@@ -4,8 +4,8 @@
 
 preV=$1
 v="$preV-SNAPSHOT"
-osgiV='3.13.0.v20180428-1222'
-osgiCompatV='1.1.100.v20180428-1222'
+osgiV='3.15.100.v20191219-0358'
+osgiCompatV='1.1.600.v20191219-0358'
 fp2V='0.0.1-SNAPSHOT'
 bundles=()
 bundles[0]='tycho-bundles/org.eclipse.tycho.embedder.shared'
@@ -94,7 +94,7 @@ mkdir -p 'eclipse/configuration'
 
 echo '#Product Runtime Configuration File
 #Thu Dec 19 21:40:37 EST 2013
-osgi.bundles=org.apache.commons.codec,org.apache.commons.logging,org.apache.httpcomponents.httpclient,org.apache.httpcomponents.httpcore,org.eclipse.core.contenttype,org.eclipse.core.jobs,org.eclipse.core.net,org.eclipse.core.runtime@4\:start,org.eclipse.core.runtime.compatibility.registry,org.eclipse.ecf,org.eclipse.ecf.filetransfer,org.eclipse.ecf.identity,org.eclipse.ecf.provider.filetransfer,org.eclipse.ecf.provider.filetransfer.httpclient4,org.eclipse.ecf.provider.filetransfer.httpclient4.ssl,org.eclipse.ecf.provider.filetransfer.ssl,org.eclipse.ecf.ssl,org.eclipse.equinox.app,org.eclipse.equinox.common@2\:start,org.eclipse.equinox.concurrent,org.eclipse.equinox.ds@2\:start,org.eclipse.equinox.frameworkadmin,org.eclipse.equinox.frameworkadmin.equinox,org.eclipse.equinox.launcher,org.eclipse.equinox.p2.artifact.repository,org.eclipse.equinox.p2.core,org.eclipse.equinox.p2.director,org.eclipse.equinox.p2.director.app,org.eclipse.equinox.p2.engine,org.eclipse.equinox.p2.garbagecollector,org.eclipse.equinox.p2.jarprocessor,org.eclipse.equinox.p2.metadata,org.eclipse.equinox.p2.metadata.repository,org.eclipse.equinox.p2.publisher,org.eclipse.equinox.p2.publisher.eclipse,org.eclipse.equinox.p2.repository,org.eclipse.equinox.p2.repository.tools,org.eclipse.equinox.p2.touchpoint.eclipse,org.eclipse.equinox.p2.touchpoint.natives,org.eclipse.equinox.p2.transport.ecf,org.eclipse.equinox.p2.updatesite,org.eclipse.equinox.preferences,org.eclipse.equinox.registry,org.eclipse.equinox.security,org.eclipse.equinox.simpleconfigurator,org.eclipse.equinox.simpleconfigurator.manipulator,org.eclipse.equinox.util,org.eclipse.osgi.services,org.eclipse.osgi.compatibility.state,org.eclipse.tycho.noopsecurity,org.sat4j.core,org.sat4j.pb,org.eclipse.osgi.util,org.apache.felix.scr,org.kxml2,org.xmlpull,org.fedoraproject.p2
+osgi.bundles=org.apache.commons.codec,org.apache.commons.logging,org.apache.httpcomponents.httpclient,org.apache.httpcomponents.httpcore,org.eclipse.core.contenttype,org.eclipse.core.jobs,org.eclipse.core.net,org.eclipse.core.runtime@4\:start,org.eclipse.core.runtime.compatibility.registry,org.eclipse.ecf,org.eclipse.ecf.filetransfer,org.eclipse.ecf.identity,org.eclipse.ecf.provider.filetransfer,org.eclipse.ecf.provider.filetransfer.httpclient4,org.eclipse.ecf.provider.filetransfer.httpclient4.ssl,org.eclipse.ecf.provider.filetransfer.ssl,org.eclipse.ecf.ssl,org.eclipse.equinox.app,org.eclipse.equinox.common@2\:start,org.eclipse.equinox.concurrent,org.eclipse.equinox.ds@2\:start,org.eclipse.equinox.frameworkadmin,org.eclipse.equinox.frameworkadmin.equinox,org.eclipse.equinox.launcher,org.eclipse.equinox.p2.artifact.repository,org.eclipse.equinox.p2.core,org.eclipse.equinox.p2.director,org.eclipse.equinox.p2.director.app,org.eclipse.equinox.p2.engine,org.eclipse.equinox.p2.garbagecollector,org.eclipse.equinox.p2.jarprocessor,org.eclipse.equinox.p2.metadata,org.eclipse.equinox.p2.metadata.repository,org.eclipse.equinox.p2.publisher,org.eclipse.equinox.p2.publisher.eclipse,org.eclipse.equinox.p2.repository,org.eclipse.equinox.p2.repository.tools,org.eclipse.equinox.p2.touchpoint.eclipse,org.eclipse.equinox.p2.touchpoint.natives,org.eclipse.equinox.p2.transport.ecf,org.eclipse.equinox.p2.updatesite,org.eclipse.equinox.preferences,org.eclipse.equinox.registry,org.eclipse.equinox.security,org.eclipse.equinox.simpleconfigurator,org.eclipse.equinox.simpleconfigurator.manipulator,org.eclipse.equinox.util,org.eclipse.osgi.services,org.eclipse.osgi.compatibility.state,org.eclipse.tycho.noopsecurity,org.sat4j.core,org.sat4j.pb,org.eclipse.osgi.util,org.apache.felix.scr,org.osgi.cmpn.fedoraproject.p2
 osgi.bundles.defaultStartLevel=4
 eclipse.product=org.eclipse.equinox.p2.director.app.product
 osgi.splashPath=platform\:/base/plugins/org' > 'eclipse/configuration/config.ini'
@@ -109,7 +109,7 @@ mkdir -p ${loc}
 cp "${tbeTargetDir}/tycho-bundles-external-${v}.zip" ${loc}
 cp 'tycho-bundles/tycho-bundles-external/pom.xml' "${loc}/tycho-bundles-external-${v}.pom"
 
-sed -i "s/<equinoxVersionMaven>.*<\/equinoxVersionMaven>/<equinoxVersionMaven>${osgiV}<\/equinoxVersionMaven>/" pom.xml
-sed -i "s/<equinoxCompatVersionMaven>.*<\/equinoxCompatVersionMaven>/<equinoxCompatVersionMaven>${osgiCompatV}<\/equinoxCompatVersionMaven>/" pom.xml
+sed -i "s/<equinoxVersion>.*<\/equinoxVersion>/<equinoxVersion>${osgiV}<\/equinoxVersion>/" pom.xml
+sed -i "s/<equinoxCompatVersion>.*<\/equinoxCompatVersion>/<equinoxCompatVersion>${osgiCompatV}<\/equinoxCompatVersion>/" pom.xml
 # xmvn-p2-installer-plugin needs to find the org.eclipse.osgi bundle
 sed -i "s/>\${equinox-version}</>${osgiV}</" fedoraproject-p2/xmvn-p2-installer-plugin/pom.xml

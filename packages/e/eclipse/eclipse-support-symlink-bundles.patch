@@ -24,14 +24,14 @@ index d88d0a6..07fe087 100644
 + org.eclipse.osgi.util;version="1.1.0",
   org.osgi.framework;version="1.3.0",
   org.osgi.framework.namespace;version="1.0.0",
-  org.osgi.framework.wiring;version="1.2.0",
+  org.osgi.framework.startlevel;version="1.0.0",
 diff --git rt.equinox.p2/bundles/org.eclipse.equinox.simpleconfigurator/src/org/eclipse/equinox/internal/simpleconfigurator/utils/SimpleConfiguratorUtils.java rt.equinox.p2/bundles/org.eclipse.equinox.simpleconfigurator/src/org/eclipse/equinox/internal/simpleconfigurator/utils/SimpleConfiguratorUtils.java
 index ab69b88..d6bf121 100644
 --- rt.equinox.p2/bundles/org.eclipse.equinox.simpleconfigurator/src/org/eclipse/equinox/internal/simpleconfigurator/utils/SimpleConfiguratorUtils.java
 +++ rt.equinox.p2/bundles/org.eclipse.equinox.simpleconfigurator/src/org/eclipse/equinox/internal/simpleconfigurator/utils/SimpleConfiguratorUtils.java
-@@ -15,8 +15,12 @@ package org.eclipse.equinox.internal.simpleconfigurator.utils;
- import java.net.*;
+@@ -20,8 +20,12 @@
  import java.nio.file.Files;
+ import java.nio.file.attribute.FileTime;
  import java.util.*;
 +import java.util.jar.JarFile;
 +import java.util.zip.ZipEntry;
@@ -43,7 +43,7 @@ index ab69b88..d6bf121 100644
  
  public class SimpleConfiguratorUtils {
  
-@@ -277,6 +281,16 @@ public class SimpleConfiguratorUtils {
+@@ -282,6 +286,16 @@
  		String symbolicName = tok.nextToken().trim();
  		String version = tok.nextToken().trim();
  		URI location = parseLocation(tok.nextToken().trim());
@@ -60,9 +60,9 @@ index ab69b88..d6bf121 100644
  		int startLevel = Integer.parseInt(tok.nextToken().trim());
  		boolean markedAsStarted = Boolean.parseBoolean(tok.nextToken());
  		BundleInfo result = new BundleInfo(symbolicName, version, location, startLevel, markedAsStarted);
-@@ -400,4 +414,93 @@ public class SimpleConfiguratorUtils {
+@@ -420,4 +434,93 @@
  		}
- 		return regularTimestamp;
+ 		return lastModified;
  	}
 +
 +	private static Dictionary<String, String> getOSGiManifest(URI location) {
@@ -154,6 +154,3 @@ index ab69b88..d6bf121 100644
 +		return result;
 +	}
  }
--- 
-2.5.0
-

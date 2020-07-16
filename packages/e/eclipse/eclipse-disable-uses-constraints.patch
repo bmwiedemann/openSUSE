@@ -12,7 +12,7 @@ diff --git rt.equinox.framework/bundles/org.eclipse.osgi/felix/src/org/apache/fe
 index ded683f..7216865 100755
 --- rt.equinox.framework/bundles/org.eclipse.osgi/felix/src/org/apache/felix/resolver/ResolverImpl.java
 +++ rt.equinox.framework/bundles/org.eclipse.osgi/felix/src/org/apache/felix/resolver/ResolverImpl.java
-@@ -1230,7 +1230,9 @@ public class ResolverImpl implements Resolver
+@@ -1234,7 +1234,9 @@ public class ResolverImpl implements Resolver
              {
                  public void run()
                  {

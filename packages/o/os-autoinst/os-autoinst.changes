@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jul 13 21:27:30 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1594675641.d4771812:
+  * Extend test for missing file installations with simulated install
+  * Add yamllint checks
+  * codecov.yml: Simplify format
+  * Fix YAML style issues in codecov.yml
+  * Fix YAML style issues in dependencies.yaml
+  * Add test for missing install specifications
+  * spec: Fix missing signalblocker
+  * Fix missing signalblocker.pm introduced by 809f7df5
+  * mergify: Wait for OBS Package Build as well after we have it back
+  * Add deactivate IPMI SOL for sshXtermIPMI to fix xterm start failure
+  * Stabialize t/18-qemu-options.t by letting QEMU finish by itself
+  * Adjust test variable EXPECTED_QEMU_START_S
+  * Avoid exception in handle_qmp_command when started with QEMU_ONLY_EXEC
+  * Refactor t/18-qemu-options.t
+  * Avoid crashes due to signals being handled by OpenCV threads
+
+-------------------------------------------------------------------
 Thu Jul 09 19:25:39 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1594300744.d68c85a3:

@@ -139,6 +139,9 @@ Obsoletes:      qgis2
 %if %{with grass}
 BuildRequires:  grass-devel >= 7.2
 %endif
+%ifarch ppc64le
+BuildRequires:  memory-constraints
+%endif
 
 %package devel
 Summary:        Development Libraries for QGIS
@@ -219,6 +222,10 @@ export PATH=$PATH:$QTDIR/bin
 
 export QTDIR=%{_prefix}
 export PATH=$PATH:$QTDIR/bin
+%ifarch ppc64le
+# avoid OOM failure on power8-01 builder
+%limit_build -m 1300
+%endif
 %make_jobs
 
 %install

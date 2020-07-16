@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1594300744.d68c85a3
+Version:        4.6.1594675641.d4771812
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -52,7 +52,7 @@ Source0:        %{name}-%{version}.tar.xz
 %define make_check_args CHECK_DOC=0
 %endif
 # The following line is generated from dependencies.yaml
-%define test_requires %build_requires %main_requires %spellcheck_requires perl(Benchmark) perl(Devel::Cover) perl(FindBin) perl(Pod::Coverage) perl(Test::Exception) perl(Test::Fatal) perl(Test::Mock::Time) perl(Test::MockModule) perl(Test::MockObject) perl(Test::Mojo) perl(Test::More) perl(Test::Output) perl(Test::Pod) perl(Test::Strict) perl(Test::Warnings) >= 0.029 perl(YAML::PP) qemu qemu-tools qemu-x86
+%define test_requires %build_requires %main_requires %spellcheck_requires perl(Benchmark) perl(Devel::Cover) perl(FindBin) perl(Pod::Coverage) perl(Test::Exception) perl(Test::Fatal) perl(Test::Mock::Time) perl(Test::MockModule) perl(Test::MockObject) perl(Test::Mojo) perl(Test::More) perl(Test::Output) perl(Test::Pod) perl(Test::Strict) perl(Test::Warnings) >= 0.029 perl(YAML::PP) python3-setuptools python3-yamllint qemu qemu-tools qemu-x86
 # The following line is generated from dependencies.yaml
 %define devel_requires %test_requires perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy)
 BuildRequires:  %test_requires
@@ -171,6 +171,7 @@ make check test VERBOSE=1 %{make_check_args}
 %{_libexecdir}/os-autoinst/ocr.pm
 %{_libexecdir}/os-autoinst/needle.pm
 %{_libexecdir}/os-autoinst/osutils.pm
+%{_libexecdir}/os-autoinst/signalblocker.pm
 %{_libexecdir}/os-autoinst/myjsonrpc.pm
 %{_libexecdir}/os-autoinst/backend
 %{_libexecdir}/os-autoinst/OpenQA

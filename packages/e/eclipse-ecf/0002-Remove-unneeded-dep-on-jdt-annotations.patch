@@ -1,0 +1,25 @@
+From d52239f133c57aba7853f534c80730b403c3b16d Mon Sep 17 00:00:00 2001
+From: Mat Booth <mat.booth@redhat.com>
+Date: Sun, 16 Jun 2019 12:37:29 +0100
+Subject: [PATCH 2/2] Remove unneeded dep on jdt annotations
+
+---
+ .../build.properties                                         | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/providers/bundles/org.eclipse.ecf.provider.filetransfer.httpclient45/build.properties b/providers/bundles/org.eclipse.ecf.provider.filetransfer.httpclient45/build.properties
+index d9caeab..f165c5f 100644
+--- a/providers/bundles/org.eclipse.ecf.provider.filetransfer.httpclient45/build.properties
++++ b/providers/bundles/org.eclipse.ecf.provider.filetransfer.httpclient45/build.properties
+@@ -9,7 +9,4 @@ bin.includes = META-INF/,\
+                .options
+ src.includes = about.html,\
+                asl-v20.txt
+-## JDT Null Analysis for Eclipse
+-additional.bundles = org.eclipse.jdt.annotation
+-## JDT Null Analysis and OSGi Services types for Tycho
+-jars.extra.classpath = platform:/plugin/org.eclipse.jdt.annotation,platform:/plugin/org.eclipse.osgi.services
++jars.extra.classpath = platform:/plugin/org.eclipse.osgi.services
+-- 
+2.20.1
+

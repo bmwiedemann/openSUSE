@@ -1,8 +1,8 @@
 #!/bin/bash
 
-ECLIPSE_DATE=20180906
-ECLIPSE_TIME=0745
-VERSION=4.9
+ECLIPSE_DATE=20200305
+ECLIPSE_TIME=0155
+VERSION=4.15
 NAME="eclipse-platform-sources"
 
 tmp_dir=$(mktemp -d)
@@ -11,7 +11,7 @@ echo ${tmp_dir}
 
 pushd ${tmp_dir}
 
-wget http://archive.eclipse.org/eclipse/downloads/drops4/R-${VERSION}-${ECLIPSE_DATE}${ECLIPSE_TIME}/${NAME}-${VERSION}.tar.xz
+wget https://archive.eclipse.org/eclipse/downloads/drops4/R-${VERSION}-${ECLIPSE_DATE}${ECLIPSE_TIME}/${NAME}-${VERSION}.tar.xz
 tar -xf ${NAME}-${VERSION}.tar.xz
 rm ${NAME}-${VERSION}.tar.xz
 

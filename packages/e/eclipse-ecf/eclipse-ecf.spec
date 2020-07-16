@@ -26,38 +26,41 @@
 # This exclude breaks the cyclic dependency on the platform to aide in
 # bootstrapping
 %global __requires_exclude .*org\.eclipse\.equinox.*
-%global git_tag 10bfc24f030d889e7dfa36e3a77034ae2786c368
+%global git_tag 1e6e8e72cbb77a0e359e409cd4d2a58d03a6428d
 # Set this flag to avoid building additional providers when their
 # dependencies are not available
 %bcond_with providers
-Version:        3.14.7
+Version:        3.14.8
 Release:        0
 Summary:        Eclipse Communication Framework (ECF) Eclipse plug-in
-# Note: The jive/smack provider is apache licensed
-License:        EPL-1.0 AND Apache-2.0
+License:        EPL-2.0 AND Apache-2.0 AND BSD-3-Clause
 Group:          Development/Libraries/Java
 URL:            https://www.eclipse.org/ecf/
 Source0:        https://git.eclipse.org/c/ecf/org.eclipse.ecf.git/snapshot/org.eclipse.ecf-%{git_tag}.tar.xz
 # Change how feature deps are specified, to avoid embedding versions
-Patch0:         eclipse-ecf-feature-deps.patch
+Patch0:         0001-Avoid-hard-coding-dependency-versions-by-using-featu.patch
+# Unneeded dep on JDT prevents bootstrap mode
+Patch1:         0002-Remove-unneeded-dep-on-jdt-annotations.patch
 BuildRequires:  apache-commons-codec
 BuildRequires:  apache-commons-logging
-BuildRequires:  eclipse-license
+BuildRequires:  eclipse-license2
 BuildRequires:  fdupes
+BuildRequires:  glassfish-annotation-api
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
+BuildRequires:  java-devel >= 9
+BuildRequires:  maven-local
 BuildRequires:  maven-plugin-build-helper
 BuildRequires:  osgi-annotation
-BuildRequires:  tycho-extras
-BuildRequires:  xpp3-minimal
-BuildConflicts: java-devel >= 9
+# Upstream Eclipse no longer supports non-64bit arches
+ExcludeArch:    s390 %{arm} %{ix86}
 %if %{with bootstrap}
 Name:           eclipse-ecf-bootstrap
+BuildRequires:  tycho-bootstrap
+#!BuildIgnore:  tycho
 %else
 Name:           eclipse-ecf
-%endif
-%if %{without bootstrap}
-BuildRequires:  eclipse-ecf-core-bootstrap
+BuildRequires:  eclipse-ecf-core-bootstrap >= %{version}
 BuildRequires:  eclipse-emf-core
 BuildRequires:  eclipse-emf-runtime
 BuildRequires:  eclipse-pde-bootstrap
@@ -67,13 +70,6 @@ BuildRequires:  tycho
 #!BuildIgnore:  eclipse-platform
 #!BuildIgnore:  tycho-bootstrap
 #!BuildRequires: log4j
-%if %{with providers}
-BuildRequires:  dnsjava
-BuildRequires:  irclib
-%endif
-%else
-BuildRequires:  tycho-bootstrap
-#!BuildIgnore:  tycho
 %endif
 
 %description
@@ -127,6 +123,7 @@ find . -type f -name "*.jar" -exec rm {} \;
 find . -type f -name "*.class" -exec rm {} \;
 
 %patch0 -p1
+%patch1 -p1
 
 # Correction for content of runtime package
 %pom_xpath_remove "feature/plugin[@id='org.eclipse.ecf.presence']" releng/features/org.eclipse.ecf.core/feature.xml
@@ -134,6 +131,7 @@ find . -type f -name "*.class" -exec rm {} \;
 # Don't build examples or tests
 sed -i -e '/<module>examples/d' -e '/<module>tests/d' pom.xml
 %pom_disable_module releng/features/org.eclipse.ecf.tests.feature
+%pom_disable_module releng/features/org.eclipse.ecf.tests.filetransfer.feature
 %pom_disable_module releng/features/org.eclipse.ecf.eventadmin.examples.feature
 %pom_disable_module releng/features/org.eclipse.ecf.remoteservice.examples.feature
 %pom_disable_module releng/features/org.eclipse.ecf.remoteservice.sdk.examples.feature
@@ -155,21 +153,24 @@ sed -i -e '/<module>examples/d' -e '/<module>tests/d' pom.xml
 %pom_disable_module releng/features/org.eclipse.ecf.discovery.zookeeper.feature
 %pom_disable_module providers/bundles/org.eclipse.ecf.provider.zookeeper
 %pom_xpath_remove "feature/includes[@id='org.eclipse.ecf.discovery.zookeeper.feature']" releng/features/org.eclipse.ecf.remoteservice.sdk.feature/feature.xml
+sed -i -e '/provider.zookeeper/d' doc/bundles/org.eclipse.ecf.doc/build.properties
 
 # Using latest rome requires non-trivial port
 %pom_disable_module releng/features/org.eclipse.ecf.remoteservice.rest.synd.feature
 %pom_disable_module framework/bundles/org.eclipse.ecf.remoteservice.rest.synd
+sed -i -e '/remoteservice.rest.synd/d' doc/bundles/org.eclipse.ecf.doc/build.properties
 
 # Disable SLP provider, rhbz#1416706
 %pom_disable_module releng/features/org.eclipse.ecf.discovery.slp.feature
 %pom_disable_module providers/bundles/org.eclipse.ecf.provider.jslp
 %pom_disable_module protocols/bundles/ch.ethz.iks.slp
 %pom_xpath_remove "feature/includes[@id='org.eclipse.ecf.discovery.slp.feature']" releng/features/org.eclipse.ecf.remoteservice.sdk.feature/feature.xml
+sed -i -e '/provider.jslp/d' doc/bundles/org.eclipse.ecf.doc/build.properties
 
-# Misc other providers
-%if %{without providers}
+# Misc other providers that we don't need
 %pom_disable_module releng/features/org.eclipse.ecf.discovery.dnssd.feature
 %pom_disable_module providers/bundles/org.eclipse.ecf.provider.dnssd
+sed -i -e '/provider.dnssd/d' doc/bundles/org.eclipse.ecf.doc/build.properties
 %pom_disable_module protocols/bundles/org.jivesoftware.smack
 %pom_disable_module providers/bundles/org.eclipse.ecf.provider.xmpp.datashare
 %pom_disable_module providers/bundles/org.eclipse.ecf.provider.xmpp
@@ -181,7 +182,6 @@ sed -i -e '/<module>examples/d' -e '/<module>tests/d' pom.xml
 %pom_disable_module providers/bundles/org.eclipse.ecf.provider.irc.ui
 %pom_xpath_remove "feature/plugin[@id='org.eclipse.ecf.provider.irc']" releng/features/org.eclipse.ecf.core/feature.xml
 %pom_xpath_remove "feature/plugin[@id='org.eclipse.ecf.provider.irc.ui']" releng/features/org.eclipse.ecf.core/feature.xml
-%endif
 
 # Don't build bundles that are not relevant to our platform
 %pom_disable_module providers/bundles/org.eclipse.ecf.provider.filetransfer.httpclient45.win32
@@ -189,12 +189,6 @@ sed -i -e '/<module>examples/d' -e '/<module>tests/d' pom.xml
 
 # Use system libs
 ln -s $(build-classpath osgi-annotation) osgi/bundles/org.eclipse.osgi.services.remoteserviceadmin/osgi/osgi.annotation.jar
-%if %{with providers}
-ln -s $(build-classpath xpp3-minimal) protocols/bundles/org.jivesoftware.smack/jars/xpp.jar
-echo "Eclipse-BundleShape: dir" >> protocols/bundles/org.jivesoftware.smack/META-INF/MANIFEST.MF
-ln -s $(build-classpath irclib) providers/bundles/org.eclipse.ecf.provider.irc/lib/irclib.jar
-echo "Eclipse-BundleShape: dir" >> providers/bundles/org.eclipse.ecf.provider.irc/META-INF/MANIFEST.MF
-%endif
 
 %if %{with bootstrap}
 # Only build core modules when bootstrapping
@@ -204,6 +198,7 @@ echo "Eclipse-BundleShape: dir" >> providers/bundles/org.eclipse.ecf.provider.ir
 <module>releng/features/org.eclipse.ecf.filetransfer.feature</module>
 <module>releng/features/org.eclipse.ecf.filetransfer.httpclient4.feature</module>
 <module>releng/features/org.eclipse.ecf.filetransfer.httpclient4.ssl.feature</module>
+<module>releng/features/org.eclipse.ecf.filetransfer.httpclient45.feature</module>
 <module>releng/features/org.eclipse.ecf.filetransfer.ssl.feature</module>
 <module>framework/bundles/org.eclipse.ecf</module>
 <module>framework/bundles/org.eclipse.ecf.identity</module>
@@ -212,12 +207,18 @@ echo "Eclipse-BundleShape: dir" >> providers/bundles/org.eclipse.ecf.provider.ir
 <module>providers/bundles/org.eclipse.ecf.provider.filetransfer</module>
 <module>providers/bundles/org.eclipse.ecf.provider.filetransfer.httpclient4</module>
 <module>providers/bundles/org.eclipse.ecf.provider.filetransfer.httpclient4.ssl</module>
+<module>providers/bundles/org.eclipse.ecf.provider.filetransfer.httpclient45</module>
 <module>providers/bundles/org.eclipse.ecf.provider.filetransfer.ssl</module>
 </modules>"
 %endif
 
 # TODO: Figure out why this is necessary....
 sed -i -e '/Require-Bundle:/a\ org.eclipse.osgi.services,' framework/bundles/org.eclipse.ecf.console/META-INF/MANIFEST.MF
+
+%pom_xpath_inject \
+	"pom:plugin/pom:executions/pom:execution/pom:configuration/pom:dependencies" \
+	"<dependency><artifactId>javax.annotation-api</artifactId><type>eclipse-plugin</type></dependency>" \
+	doc/bundles/org.eclipse.ecf.doc
 
 # Don't install poms
 %{mvn_package} "::{pom,target}::" __noinstall
@@ -237,6 +238,7 @@ done
 %{mvn_package} ":org.eclipse.ecf.remoteservice.sdk.*" sdk
 %{mvn_package} ":org.eclipse.ecf.core.{,ssl.}feature"
 %{mvn_package} ":org.eclipse.ecf.filetransfer.{,httpclient4.}{,ssl.}feature"
+%{mvn_package} ":org.eclipse.ecf.filetransfer.httpclient45.feature"
 %{mvn_package} ":org.eclipse.ecf{,.identity,.ssl,.filetransfer}"
 %{mvn_package} ":org.eclipse.ecf.provider.filetransfer*"
 %{mvn_package} ":" runtime
@@ -274,23 +276,11 @@ while [ "$location" != "/" ] ; do
     updir="$updir../"
 done
 pushd %{buildroot}%{_javadir}/eclipse
-for J in ecf{,.identity,.ssl,.filetransfer,.provider.filetransfer{,.ssl,.httpclient4{,.ssl}}}  ; do
+for J in ecf{,.identity,.ssl,.filetransfer,.provider.filetransfer{,.ssl,.httpclient4{,.ssl}}} ecf.provider.filetransfer.httpclient45 ; do
     DIR=$updir%{_eclipsedir}/plugins
     [ -e "`ls $DIR/org.eclipse.${J}_*.jar`" ] && ln -s $DIR/org.eclipse.${J}_*.jar ${J}.jar
 done
 popd
-
-# Use system libs
-%if %{without bootstrap}
-%if %{with providers}
-pushd %{buildroot}%{_datadir}/eclipse/droplets/ecf-sdk/plugins/org.eclipse.ecf.provider.irc_*
-rm lib/irclib.jar && ln -s $(build-classpath irclib) lib/irclib.jar
-popd
-pushd %{buildroot}%{_datadir}/eclipse/droplets/ecf-runtime/plugins/org.jivesoftware.smack_*
-rm jars/xpp.jar && ln -s $(build-classpath xpp3-minimal) jars/xpp.jar
-popd
-%endif
-%endif
 
 %fdupes -s %{buildroot}
 

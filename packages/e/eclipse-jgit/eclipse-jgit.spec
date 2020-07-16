@@ -16,37 +16,60 @@
 #
 
 
-%global gittag 5.1.3.201810200350-r
+%global gittag 5.8.0.202006091008-r
+%define __requires_exclude osgi*
 Name:           eclipse-jgit
-Version:        5.1.3
+Version:        5.8.0
 Release:        0
 Summary:        Eclipse JGit
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
 URL:            https://www.eclipse.org/egit/
 # Use github mirror for now, see: https://bugs.eclipse.org/bugs/show_bug.cgi?id=522144
-Source0:        https://github.com/eclipse/jgit/archive/v%{gittag}/jgit-v%{gittag}.tar.gz
-Patch0:         fix_jgit_sh.patch
-# Change how feature deps are specified, to avoid embedding versions
-Patch1:         jgit-feature-deps.patch
+Source0:        https://github.com/eclipse/jgit/archive/v%{gittag}/jgit-%{gittag}.tar.gz
+# Set the correct classpath for the command line tools
+Patch0:         0001-Ensure-the-correct-classpath-is-set-for-the-jgit-com.patch
+# Switch to feature requirements for third-party bundles, also makes the following changes:
+#  javaewah -> com.googlecode.javaewah.JavaEWAH
+#  org.slf4j.api -> slf4j.api
+#  org.slf4j.impl.log4j12 -> slf4j.simple
+Patch1:         0002-Don-t-embed-versions-of-third-party-libs-use-feature.patch
+# Remove req on assertj
+Patch2:         0003-Remove-requirement-on-assertj-core.patch
+Patch3:         jgit-shade.patch
+# For main build
+BuildRequires:  ant
 BuildRequires:  apache-commons-compress
+BuildRequires:  apache-sshd >= 2.4
 BuildRequires:  args4j
+BuildRequires:  bouncycastle
+BuildRequires:  bouncycastle-pg
+BuildRequires:  bouncycastle-pkix
 BuildRequires:  eclipse-platform-bootstrap
+BuildRequires:  ed25519-java
+BuildRequires:  fdupes
+BuildRequires:  git
 BuildRequires:  google-gson
 BuildRequires:  hamcrest-core
 BuildRequires:  javaewah
 BuildRequires:  jgit = %{version}
 BuildRequires:  junit
 BuildRequires:  jzlib
+BuildRequires:  maven-local
 BuildRequires:  slf4j
 BuildRequires:  tycho
 BuildRequires:  xml-commons-apis
-#!BuildRequires: log4j eclipse-emf-core eclipse-ecf-core
+BuildRequires:  xmvn-subst
 #!BuildIgnore:  eclipse-platform
 #!BuildIgnore:  tycho-bootstrap
+#!BuildRequires: eclipse-emf-core eclipse-ecf-core
 Requires:       apache-commons-compress
+Requires:       apache-sshd >= 2.4
 Requires:       args4j
-Requires:       eclipse-platform
+Requires:       bouncycastle
+Requires:       bouncycastle-pg
+Requires:       bouncycastle-pkix
+Requires:       ed25519-java
 Requires:       google-gson
 Requires:       hamcrest-core
 Requires:       javaewah
@@ -56,6 +79,8 @@ Requires:       jzlib
 Requires:       slf4j
 Requires:       xml-commons-apis
 BuildArch:      noarch
+# Upstream Eclipse no longer supports non-64bit arches
+ExcludeArch:    s390 %{arm} %{ix86}
 
 %description
 A pure Java implementation of the Git version control system.
@@ -63,38 +88,52 @@ A pure Java implementation of the Git version control system.
 %prep
 %setup -q -n jgit-%{gittag}
 
-%patch0
-%patch1
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 # Disable multithreaded build
 rm .mvn/maven.config
 
-# Javaewah change
-sed -i -e "s/javaewah/com.googlecode.javaewah.JavaEWAH/g" org.eclipse.jgit.packaging/org.eclipse.jgit{,.pgm}.feature/feature.xml
-
 # Don't try to get deps from local *maven* repo, use tycho resolved ones
-%pom_remove_dep com.googlecode.javaewah:JavaEWAH
 for p in $(find org.eclipse.jgit.packaging -name pom.xml) ; do
   grep -q dependencies $p && %pom_xpath_remove "pom:dependencies" $p
 done
 
+# Disable "errorprone" compiler
+%pom_xpath_remove "pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:executions/pom:execution[pom:id='compile-with-errorprone']" pom.xml
+%pom_xpath_remove "pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:executions/pom:execution[pom:id='default-compile']/pom:configuration" pom.xml
+%pom_xpath_remove "pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:dependencies" pom.xml
+
 # Don't need target platform or repository modules with xmvn
 %pom_disable_module org.eclipse.jgit.target org.eclipse.jgit.packaging
 %pom_disable_module org.eclipse.jgit.repository org.eclipse.jgit.packaging
-%pom_xpath_remove "pom:build/pom:pluginManagement/pom:plugins/pom:plugin/pom:configuration/pom:target" org.eclipse.jgit.packaging
+%pom_xpath_remove "pom:build/pom:pluginManagement/pom:plugins/pom:plugin/pom:configuration/pom:target" org.eclipse.jgit.packaging/pom.xml
 
 # Don't build source features
 %pom_disable_module org.eclipse.jgit.source.feature org.eclipse.jgit.packaging
-%pom_disable_module org.eclipse.jgit.pgm.source.feature org.eclipse.jgit.packaging
+
+# Don't build benchmark and coverage
+%pom_disable_module org.eclipse.jgit.benchmarks
+%pom_disable_module org.eclipse.jgit.coverage
+
+# Use newer Felix dep
+%pom_change_dep -r org.osgi:org.osgi.core org.osgi:osgi.core
 
 # Remove unnecessary plugins for RPM builds
+%pom_remove_plugin :jacoco-maven-plugin
+%pom_remove_plugin :maven-javadoc-plugin
+%pom_remove_plugin :maven-enforcer-plugin
 %pom_remove_plugin :maven-enforcer-plugin org.eclipse.jgit.packaging
+%pom_remove_plugin -r :japicmp-maven-plugin
 
-# org.slf4j.api -> slf4j.api
-# org.slf4j.impl.log4j12 -> slf4j.simple
-sed -i 's/org\.slf4j\.api/slf4j\.api/
-        s/org\.slf4j\.impl\.log4j12/slf4j\.simple/' \
-org.eclipse.jgit.packaging/org.eclipse.jgit.feature/feature.xml
+# Don't attach shell script artifact
+%pom_remove_plugin org.codehaus.mojo:build-helper-maven-plugin org.eclipse.jgit.pgm
+
+# Remove org.apache.log4j
+%pom_remove_dep log4j:log4j . org.eclipse.jgit.pgm
+%pom_change_dep org.slf4j:slf4j-log4j12 org.slf4j:slf4j-simple . org.eclipse.jgit.pgm
 
 pushd org.eclipse.jgit.packaging
 %{mvn_package} "::pom::" __noinstall
@@ -109,6 +148,8 @@ popd
 pushd org.eclipse.jgit.packaging
 %mvn_install
 popd
+xmvn-subst -R %{buildroot} %{_datadir}/eclipse/droplets/jgit
+#%fdupes -s %{buildroot}%{_datadir}
 
 %files -f org.eclipse.jgit.packaging/.mfiles
 %license LICENSE

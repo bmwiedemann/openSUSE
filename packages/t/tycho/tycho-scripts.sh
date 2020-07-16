@@ -4,11 +4,11 @@ function minibuild () {
 
 basedir=$1
 
-src=`cat "${basedir}/build.properties" | grep 'source..' | cut -d'=' -f2 | tr ' ' '\0'`
-output=`cat "${basedir}/build.properties" | grep 'output..' | cut -d'=' -f2 | tr ' ' '\0'`
-bName=`cat "${basedir}/META-INF/MANIFEST.MF" | grep 'Bundle-SymbolicName:' | sed 's/Bundle-SymbolicName: \([a-zA-Z0-9_.-]*\)\(;\)\?.*/\1/'`
-artifactId=`cat "${basedir}/pom.xml" | sed '/<parent>/,/<\/parent>/ d' | grep "<artifactId>" | sed 's/.*<artifactId>\(.*\)<\/artifactId>.*/\1/'`
-version=`cat "${basedir}/pom.xml" | grep "<version>" | sed 's/.*<version>\(.*\)<\/version>.*/\1/'`
+src=$(cat "${basedir}/build.properties" | grep 'source..' | cut -d'=' -f2 | sed -e 's/ //g')
+output=$(cat "${basedir}/build.properties" | grep 'output..' | cut -d'=' -f2 | sed -e 's/ //g')
+bName=$(cat "${basedir}/META-INF/MANIFEST.MF" | grep 'Bundle-SymbolicName:' | sed 's/Bundle-SymbolicName: \([a-zA-Z0-9_.-]*\)\(;\)\?.*/\1/')
+artifactId=$(cat "${basedir}/pom.xml" | sed '/<parent>/,/<\/parent>/ d' | grep "<artifactId>" | sed 's/.*<artifactId>\(.*\)<\/artifactId>.*/\1/')
+version=$(cat "${basedir}/pom.xml" | grep "<version>" | sed 's/.*<version>\(.*\)<\/version>.*/\1/')
 
 # External (System) dependencies
 if [ $# -eq 3 ]; then
@@ -26,7 +26,7 @@ if [ $# -gt 1 ]; then
   cp='-classpath '$2':'"${basedir}"'/target/externalDeps/*'
 fi
 
-javac -d "${basedir}/${output}" \
+javac -d "${basedir}/${output}" -encoding utf8 -source 1.8 -target 1.8 \
   $(for file in `find "${basedir}/${src}" -name "*.java"`; \
     do echo -n "${file} "; \
   done;) \

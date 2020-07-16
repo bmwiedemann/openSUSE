@@ -104,8 +104,8 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcbrld
 %config %{_sysconfdir}/sbl/profile
 %config %{_sysconfdir}/sbl/spkfilter
 %config %{_sysconfdir}/sbl.conf
-%dir %{_libexecdir}/sbl
-%{_libexecdir}/sbl/lib
+%dir %{_prefix}/lib/sbl
+%{_prefix}/lib/sbl/lib
 %{_sysconfdir}/sbl/brltbl
 %{_sysconfdir}/sbl/spk
 %{_sbindir}/sbl

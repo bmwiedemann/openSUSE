@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 13 14:35:36 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.10.10
+
+  * Features
+
+    - [MRI] Cross-built Windows gems now support Ruby 2.7 [#2029].
+      Note that prior to this release, the v1.11.x prereleases
+      provided this support.
+
+-------------------------------------------------------------------
 Mon Jun  8 23:10:55 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Switch to the proper directory so it actually finds the patched

@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Tue Jul 14 09:15:27 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.17.2
+  * Support for registering and deregistering autonomous dedicated databases
+    with Data Safe in the Database service
+  * Support for switching between non-private-endpoints and private endpoints on
+    autonomous databases in the Database service
+  * Support for returning group names when listing identity provider
+    groups in the Identity service
+  * Support for server-side object re-encryption in the Object Storage service
+  * Support for private endpoint (ingress) and public endpoint whitelisting
+    in the Analytics Cloud service
+- from version 2.17.1
+  * Support for the Usage service
+  * Support for the VMware Provisioning service
+  * Support for applying one-off patches to databases in the Database service
+  * Support for layer-2 virtualization features on vlans in the Networking service
+  * Support for all AttachVolumeDetails and ParavirtualizedAttachVolumeDetails
+    properties on instance configurations in the Compute Management service
+  * Support for setting HTTP header size and allowing invalid characters in
+    HTTP request headers in the Load Balancing service
+  * Support for enabling/disabling HTTP logging.
+    Please see https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/en/latest/logging.html
+- from version 2.17.0
+  * Support for the Data Integration service
+  * Support for updating database home IDs on databases in the Database service
+  * Support for backing up autonomous databases on Cloud at Customer in the Database service
+  * Support for managing autonomous VM clusters on Cloud at Customer in the Database service
+  * Support for accessing data assets via private endpoints in the Data Catalog service
+  * Support for dependency archive zip files to be specified for use by applications in the Data Flow service
+  * Attribute `lifecycle_state` in the Data Catalog service has restricted values to
+    "CREATING", "ACTIVE", "INACTIVE", "UPDATING", "DELETING", "DELETED", "FAILED", "MOVING"
+  * Attribute `workflow_status` in the Data Catalog service has restricted values to
+    "NEW", "APPROVED", "UNDER_REVIEW", "ESCALATED"
+  * Attribute `schedule_type` in the Data Catalog service has restricted values to "SCHEDULED", "IMMEDIATE"
+  * Attribute `job_type` in the Data Catalog service has restricted values to "HARVEST",
+    "PROFILING", "SAMPLING", "PREVIEW", "IMPORT", "EXPORT", "INTERNAL", "PURGE", "IMMEDIATE", "SCHEDULED",
+    "IMMEDIATE_EXECUTION", "SCHEDULED_EXECUTION", "SCHEDULED_EXECUTION_INSTANCE"
+  * Attribute `harvest_status` in the Data Catalog service has restricted values to "COMPLETE",
+    "ERROR", "IN_PROGRESS", "DEFERRED"
+- from version 2.16.1
+  * Support for creating a new database from an existing database based on
+    a given timestamp in the Database service
+  * Support for enabling archive log backups of databases in the Database service
+  * Support for returning the database version on autonomous container databases in the Database service
+  * Support for the new DNS format of the Data Transfer service
+  * Support for scheduled autoscaling, which allows for scaling actions triggered at particular
+    times based on CRON expressions, in the Compute Autoscaling service
+  * Support for filtering of list APIs for groups, identity providers, identity provider groups,
+    compartments, dynamic groups, network sources, policies, and users by name or lifecycle
+    state in the Identity Service
+  * Support for returning the database version of backups in the Database service
+  * Support for patching on Exadata Cloud at Customer resources in the Database service
+  * Support for new lifecycle substates on instances in the Digital Assistant service
+  * Support for file servers in the Integration service
+  * Support for deleting non-empty tag namespaces and bulk deleting tags in the Identity service
+  * Support for bulk move and bulk delete of resources by compartment in the Identity service
+  * Data type for paramater `data_storage_size_in_tbs` changed from int to float in the Database service
+  * Parameter `lifecycle_state` removed state `OFFLINE` and added `DISCONNECTED` in the Database service
+- from version 2.15.0
+  * Support for optionally supplying a signature when deleting an agreement in the Marketplace service
+  * Support for launching paid listings in non-US regions in the Marketplace service
+  * Support for returning the image id of packages in the Marketplace service
+  * Support for calling Oracle Cloud Infrastructure services in the ap-chuncheon-1 region
+  * Support for authenticating via Resource Principals. An example of how to use resource principals is
+    available on `GitHub <https://github.com/oracle/oci-python-sdk/blob/master/examples/resource_principals_example.py>`__
+  * Fixed a bug where `oci.waiter.wait_until()` was not invoking `wait_callback` correctly based on the resource property
+  * Fixed a bug in `ExponentialBackoffWithFullJitterRetryStrategy.do_sleep()` where it
+    was assuming time in milliseconds but it should be seconds
+  * Field `signature` in `delete_accepted_agreement_id` from Marketplace Service changed from required to optional
+- Refresh patches for new version
+  ops_fixture-order.patch
+- Update file list to fix Python imports for unvendoring
+
+-------------------------------------------------------------------
 Tue Jun  2 10:12:27 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.14.3

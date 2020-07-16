@@ -22,7 +22,7 @@
 %endif
 
 Name:           terraform-provider-vsphere
-Version:        1.18.3
+Version:        1.21.0
 Release:        0
 Summary:        Terraform vSphere provider
 License:        MPL-2.0
@@ -49,16 +49,12 @@ This is a terraform provider that lets you provision servers on a VMWare vSphere
 %setup -q
 
 %build
-%{goprep} github.com/terraform-providers/terraform-provider-vsphere
+%{goprep} github.com/hashicorp/terraform-provider-vsphere
 %{gobuild} -mod=vendor ""
 ln -s %{_bindir}/%{name} %{buildroot}%{_bindir}/%{name}_v%{version}
 
 %install
 %{goinstall}
-
-%check
-export GOFLAGS=-mod=vendor
-%{gotest} github.com/terraform-providers/terraform-provider-vsphere/...
 
 %files
 %license LICENSE

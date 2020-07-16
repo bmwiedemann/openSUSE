@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  7 16:58:27 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- use limit_build for ppc64le to avoid OOM failure on power8-01
+
+-------------------------------------------------------------------
 Thu Jun 25 09:12:52 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - proj.db is required, so requires proj package

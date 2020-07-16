@@ -379,9 +379,9 @@ export CXXFLAGS="%{optflags} ${PYTHON_INCLUDEDIR} -fno-strict-aliasing -Wno-erro
             --enable-foomatic-ppd-install \
             --disable-foomatic-rip-hplip-install \
             --with-hpppddir=%{_datadir}/cups/model/manufacturer-PPDs/%{name} \
-            --with-cupsbackenddir=%{_libexecdir}/cups/backend \
-            --with-cupsfilterdir=%{_libexecdir}/cups/filter \
-            --with-drvdir=%{_libexecdir}/cups/driver \
+            --with-cupsbackenddir=%{_prefix}/lib/cups/backend \
+            --with-cupsfilterdir=%{_prefix}/lib/cups/filter \
+            --with-drvdir=%{_prefix}/lib/cups/driver \
             --with-mimedir=%{_sysconfdir}/cups \
             --with-docdir=%{_defaultdocdir}/%{name} \
             --with-htmldir=%{_defaultdocdir}/%{name} \
@@ -460,7 +460,7 @@ rm %{buildroot}%{_datadir}/hal/fdi/preprobe/10osvendor/20-hplip-devices.fdi
 # see for example https://bugs.launchpad.net/bugs/1197416
 # while in contrast manual printer setup via hp-setup usually "just works"
 # and it is clear for the user what goes on and in case of failure what went wrong.
-rm %{buildroot}%{_libexecdir}/systemd/system/hplip-printer@.service
+rm %{buildroot}%{_unitdir}/hplip-printer@.service
 # Remove selinux configurations we are not supporting on SUSE
 # force for not on all distributions the files were installed
 # Can't be disabled during configure
@@ -645,11 +645,11 @@ exit 0
 %{_libdir}/python%{pyver}/site-packages/cupsext.*
 %{_libdir}/python%{pyver}/site-packages/hpmudext.*
 %{_libdir}/python%{pyver}/site-packages/pcardext.*
-%dir %{_libexecdir}/cups
-%dir %{_libexecdir}/cups/backend
-%{_libexecdir}/cups/backend/hpfax
-%dir %{_libexecdir}/cups/filter
-%{_libexecdir}/cups/filter/hpps
+%dir %{_prefix}/lib/cups
+%dir %{_prefix}/lib/cups/backend
+%{_prefix}/lib/cups/backend/hpfax
+%dir %{_prefix}/lib/cups/filter
+%{_prefix}/lib/cups/filter/hpps
 %dir %{_datadir}/cups
 %dir %{_datadir}/cups/model
 %dir %{_datadir}/cups/model/manufacturer-PPDs
@@ -698,13 +698,13 @@ exit 0
 %{_libdir}/libhpipp.so.*
 %{_libdir}/libhpmud.so.*
 %{_libdir}/libhpdiscovery.so.*
-%dir %{_libexecdir}/cups
-%dir %{_libexecdir}/cups/backend
-%{_libexecdir}/cups/backend/hp
-%dir %{_libexecdir}/cups/filter
-%{_libexecdir}/cups/filter/hpcups
-%{_libexecdir}/cups/filter/hpcupsfax
-%{_libexecdir}/cups/filter/pstotiff
+%dir %{_prefix}/lib/cups
+%dir %{_prefix}/lib/cups/backend
+%{_prefix}/lib/cups/backend/hp
+%dir %{_prefix}/lib/cups/filter
+%{_prefix}/lib/cups/filter/hpcups
+%{_prefix}/lib/cups/filter/hpcupsfax
+%{_prefix}/lib/cups/filter/pstotiff
 %dir %{_datadir}/cups
 %dir %{_datadir}/cups/model
 %dir %{_datadir}/cups/model/manufacturer-PPDs

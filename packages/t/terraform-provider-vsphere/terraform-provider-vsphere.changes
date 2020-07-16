@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jul 07 11:24:56 UTC 2020 - dmueller@suse.com
+
+- Update to version 1.21.0:
+  * v1.21.0
+  * Update CHANGELOG.md and remove backup docs
+  * Reformat examples in documentation to terraform v0.12 (#1116)
+  * Support for SATA and IDE disks (#1118)
+  * Updates imports for org move (#1117)
+  * Cleanup after v1.20.0 release
+  * v1.20.0
+  * Update CHANGELOG.md
+  * Update CHANGELOG.md
+  * Adding ova deployment feature (#1105)
+
+-------------------------------------------------------------------
+Tue Jul 07 11:20:39 UTC 2020 - dmueller@suse.com
+
+- Update to version 1.21.0:
+  * Reformat examples in documentation to terraform v0.12 (#1116)
+  * Support for SATA and IDE disks (#1118)
+  * Updates imports for org move (#1117)
+  * Cleanup after v1.20.0 release
+  * Adding ova deployment feature (#1105)
+
+-------------------------------------------------------------------
 Thu Jun 25 15:07:07 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add symlink for terraform execution

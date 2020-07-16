@@ -17,7 +17,7 @@ diff --git rt.equinox.p2/bundles/org.eclipse.equinox.p2.reconciler.dropins/src/o
 index 802ee1b..74023fe 100644
 --- rt.equinox.p2/bundles/org.eclipse.equinox.p2.reconciler.dropins/src/org/eclipse/equinox/internal/p2/reconciler/dropins/PlatformXmlListener.java
 +++ rt.equinox.p2/bundles/org.eclipse.equinox.p2.reconciler.dropins/src/org/eclipse/equinox/internal/p2/reconciler/dropins/PlatformXmlListener.java
-@@ -168,11 +168,24 @@ public class PlatformXmlListener extends DirectoryChangeListener {
+@@ -172,11 +172,24 @@ public class PlatformXmlListener extends DirectoryChangeListener {
  	 * Ensure that we have a repository for each site in the given configuration.
  	 */
  	protected void synchronizeConfiguration(Configuration config) {

@@ -1,0 +1,80 @@
+From d964680827a248e8a312c000c4c2443f96c8c459 Mon Sep 17 00:00:00 2001
+From: Mat Booth <mat.booth@redhat.com>
+Date: Fri, 27 Sep 2019 14:52:54 +0100
+Subject: [PATCH] Force a clean on the restart after p2 operations
+
+---
+ .../META-INF/MANIFEST.MF                            |  2 +-
+ .../bundles/org.eclipse.equinox.launcher/pom.xml    |  2 +-
+ .../src/org/eclipse/equinox/launcher/Main.java      | 13 +++++++++++++
+ .../internal/p2/ui/ProvisioningOperationRunner.java |  6 ++++++
+ 4 files changed, 21 insertions(+), 2 deletions(-)
+
+diff --git a/rt.equinox.framework/bundles/org.eclipse.equinox.launcher/META-INF/MANIFEST.MF b/rt.equinox.framework/bundles/org.eclipse.equinox.launcher/META-INF/MANIFEST.MF
+index 497e5d6fa..a118a0e4c 100644
+--- a/rt.equinox.framework/bundles/org.eclipse.equinox.launcher/META-INF/MANIFEST.MF
++++ b/rt.equinox.framework/bundles/org.eclipse.equinox.launcher/META-INF/MANIFEST.MF
+@@ -2,7 +2,7 @@ Manifest-Version: 1.0
+ Bundle-ManifestVersion: 2
+ Bundle-Name: %pluginName
+ Bundle-SymbolicName: org.eclipse.equinox.launcher;singleton:=true
+-Bundle-Version: 1.5.700.qualifier
++Bundle-Version: 1.5.701.qualifier
+ Main-Class: org.eclipse.equinox.launcher.Main
+ Bundle-ClassPath: .
+ Bundle-Vendor: %providerName
+diff --git a/rt.equinox.framework/bundles/org.eclipse.equinox.launcher/pom.xml b/rt.equinox.framework/bundles/org.eclipse.equinox.launcher/pom.xml
+index 43849b5b8..c5d2cdfea 100644
+--- a/rt.equinox.framework/bundles/org.eclipse.equinox.launcher/pom.xml
++++ b/rt.equinox.framework/bundles/org.eclipse.equinox.launcher/pom.xml
+@@ -19,6 +19,6 @@
+   </parent>
+   <groupId>org.eclipse.equinox</groupId>
+   <artifactId>org.eclipse.equinox.launcher</artifactId>
+-  <version>1.5.700-SNAPSHOT</version>
++  <version>1.5.701-SNAPSHOT</version>
+   <packaging>eclipse-plugin</packaging>
+ </project>
+diff --git a/rt.equinox.framework/bundles/org.eclipse.equinox.launcher/src/org/eclipse/equinox/launcher/Main.java b/rt.equinox.framework/bundles/org.eclipse.equinox.launcher/src/org/eclipse/equinox/launcher/Main.java
+index d013ff7c2..65f4cfd8a 100644
+--- a/rt.equinox.framework/bundles/org.eclipse.equinox.launcher/src/org/eclipse/equinox/launcher/Main.java
++++ b/rt.equinox.framework/bundles/org.eclipse.equinox.launcher/src/org/eclipse/equinox/launcher/Main.java
+@@ -560,6 +560,18 @@
+ 		setupVMProperties();
+ 		processConfiguration();
+ 
++		File oca = new File(getConfigurationLocation().toURI());
++		File ocaFile = new File(oca, "clean_on_restart");
++		if (ocaFile.exists()) {
++			System.err.println("Clean triggered."); //$NON-NLS-1$
++			ocaFile.delete();
++			commands = Arrays.copyOf(args, args.length + 1);
++			commands[commands.length-1] = CLEAN;
++			passThruArgs = Arrays.copyOf(passThruArgs, passThruArgs.length + 1);
++			passThruArgs[passThruArgs.length-1] = CLEAN;
++			setupVMProperties();
++		}
++		
+ 		if (protectBase && (System.getProperty(PROP_SHARED_CONFIG_AREA) == null)) {
+ 			System.err.println("This application is configured to run in a cascaded mode only."); //$NON-NLS-1$
+ 			System.setProperty(PROP_EXITCODE, Integer.toString(14));
+diff --git a/rt.equinox.p2/bundles/org.eclipse.equinox.p2.ui/src/org/eclipse/equinox/internal/p2/ui/ProvisioningOperationRunner.java b/rt.equinox.p2/bundles/org.eclipse.equinox.p2.ui/src/org/eclipse/equinox/internal/p2/ui/ProvisioningOperationRunner.java
+index a70b640ba..8a002ebc2 100644
+--- a/rt.equinox.p2/bundles/org.eclipse.equinox.p2.ui/src/org/eclipse/equinox/internal/p2/ui/ProvisioningOperationRunner.java
++++ b/rt.equinox.p2/bundles/org.eclipse.equinox.p2.ui/src/org/eclipse/equinox/internal/p2/ui/ProvisioningOperationRunner.java
+@@ -72,6 +72,12 @@ public class ProvisioningOperationRunner {
+ 	 * @param restartPolicy
+ 	 */
+ 	void requestRestart(final int restartPolicy) {
++		String oca = System.getProperty("osgi.configuration.area");
++		try {
++			java.io.File ocaCleanFile = new java.io.File(new java.net.URL(oca).toURI());
++			new java.io.File(ocaCleanFile, "clean_on_restart").createNewFile();
++		} catch (Exception e) { /* Eh, we tried... */ }
++
+ 		// Global override of restart (used in test cases).
+ 		if (suppressRestart)
+ 			return;
+-- 
+2.20.1
+

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jul  3 09:59:22 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 1.6.0
+- Removed patches:
+  * build-against-surefire-2.21.patch
+  * build-against-surefire-2.22.patch
+  * port-to-surefire-junit-platform.patch
+  * tycho-fix-build.patch
+  * tycho-maven-archiver-3.0.1.patch
+  * tycho-maven-delegation.patch
+  * tycho-use-custom-resolver.patch
+  * use-java8-for-default-ee.patch
+- Added patches:
+  * 0001-Fix-the-Tycho-build-to-work-on-Fedora.patch
+  * 0002-Implement-a-custom-resolver-for-Tycho-in-local-mode.patch
+  * 0003-Tycho-should-always-delegate-artifact-resolution-to-.patch
+  * 0004-Bug-537963-Make-the-default-EE-Java-1.8.patch
+  * 0005-Fix-uncaught-exception.patch
+  * 0006-Mockito-does-not-have-test-scope.patch
+  * 0007-Fix-dependency-problems-when-bootstrapping-with-extr.patch
+  * 0008-Use-custom-resolver-for-tycho-eclipserun-plugin.patch
+
+-------------------------------------------------------------------
 Wed Apr  1 08:53:05 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

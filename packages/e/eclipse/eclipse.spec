@@ -19,16 +19,17 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "bootstrap"
 %bcond_without bootstrap
+%bcond_with contrib_tools
 %else
 %bcond_with bootstrap
+%bcond_without contrib_tools
 %endif
-%global eb_commit       44643cbda3dfd6f00fbf1b346dae7068df2a9ef9
-%global eclipse_date    20180906
-%global eclipse_time    0745
-%global short_version   4.9
-%global eclipse_tag     I%{eclipse_date}-%{eclipse_time}
-%global _jetty_version  9.4.11
-%global _lucene_version 7.1.0
+%global eb_commit       c985e357223668b4bc1fb76ea6b9e0c12829b7e8
+%global eclipse_rel   4.15
+%global eclipse_tag     R-%{eclipse_rel}-202003050155
+%global _jetty_version  9.4.27
+%global _lucene_version 8.4.1
+%global _batik_version 1.11
 %define __requires_exclude .*SUNWprivate_1\\.1.*
 %ifarch %{ix86}
     %global eclipse_arch x86
@@ -45,16 +46,20 @@
 # Desktop file information
 %global app_name %{?app_name_prefix}%{!?app_name_prefix:Eclipse}
 %global app_exec %{?app_exec_prefix} eclipse
+# Eclipse is arch-specific, but multilib agnostic
 %global _eclipsedir %{_libdir}/eclipse
 %global use_wayland 0
-Version:        %{short_version}.0
+Version:        %{eclipse_rel}
 Release:        0
 Summary:        An open, extensible IDE
 License:        EPL-2.0
 Group:          Development/Libraries/Java
 URL:            https://www.eclipse.org/
 # eclipse-create-tarball.sh
-Source0:        eclipse-platform-sources-%{short_version}-clean.tar.xz
+Source0:        eclipse-platform-sources-%{eclipse_rel}-clean.tar.xz
+# Can generate locally with:
+# git archive --format=tar --prefix=org.eclipse.linuxtools.eclipse-build-%%{eb_commit}/ \
+#   %%{eb_commit} | xz > org.eclipse.linuxtools.eclipse-build-%%{eb_commit}.tar.xz
 Source1:        http://git.eclipse.org/c/linuxtools/org.eclipse.linuxtools.eclipse-build.git/snapshot/org.eclipse.linuxtools.eclipse-build-%{eb_commit}.tar.xz
 Source100:      eclipse-create-tarball.sh
 # Eclipse should not include source for dependencies that are not supplied by this package
@@ -64,18 +69,13 @@ Patch0:         eclipse-no-source-for-dependencies.patch
 Patch1:         eclipse-p2-pick-up-renamed-jars.patch
 # Patch for this was contributed. Unlikely to be released.
 Patch2:         eclipse-ignore-version-when-calculating-home.patch
-# CBI uses timestamps generated from the git commits. We don't have the repo,
-# just source, and we don't want additional dependencies.
-Patch3:         eclipse-remove-jgit-provider.patch
+# Explicit requirement on hamcrest where it is used directly
+Patch3:         explicit-hamcrest.patch
+# Add support for all arches supported by Fedora
 Patch4:         eclipse-secondary-arches.patch
 Patch5:         eclipse-debug-symbols.patch
-Patch6:         eclipse-test-support.patch
 # https://bugs.eclipse.org/bugs/show_bug.cgi?id=408138
 Patch12:        eclipse-fix-dropins.patch
-# org.mockito -> org.mockito.mockito-core
-# org.hamcrest-> org.hamcrest.core
-Patch14:        eclipse-mockito.patch
-Patch15:        eclipse-support-symlink-bundles.patch
 # Feature plugin definitions lock onto version of plugin at build-time.
 # If plugin is external, updating it breaks the feature. (version changes)
 # Workaround : Change <plugin> definition to a 'requirement'
@@ -84,40 +84,36 @@ Patch15:        eclipse-support-symlink-bundles.patch
 # javax.el -> javax.el-api
 # javax.servlet -> javax.servlet-api
 # org.apache.jasper.glassfish -> org.glassfish.web.javax.servlet.jsp
-# javax.annotation -> removed
+# javax.annotation -> javax.annotation-api
 # org.w3c.dom.smil -> removed
-Patch16:        eclipse-feature-plugins-to-category-ius.patch
+Patch13:        eclipse-feature-plugins-to-category-ius.patch
+Patch14:        eclipse-support-symlink-bundles.patch
 # Fix various JDT and PDE tests
-Patch20:        eclipse-fix-tests.patch
+Patch15:        eclipse-fix-tests.patch
 # Droplet fixes
-Patch21:        eclipse-adjust-droplets.patch
-Patch22:        eclipse-pde-tp-support-droplets.patch
-# Only build gtk3 backend for SWT
-Patch23:        eclipse-swt-disable-gtk2.patch
+Patch17:        eclipse-pde-tp-support-droplets.patch
 # Disable uses by default
-Patch24:        eclipse-disable-uses-constraints.patch
+Patch18:        eclipse-disable-uses-constraints.patch
 # Droplet fixes
-Patch26:        eclipse-make-droplets-runnable.patch
-Patch27:        eclipse-disable-droplets-in-dropins.patch
+Patch19:        eclipse-make-droplets-runnable.patch
+Patch20:        eclipse-disable-droplets-in-dropins.patch
 # Temporary measure until wayland improves
-Patch28:        prefer_x11_backend.patch
+Patch21:        prefer_x11_backend.patch
 # Fix errors when building ant launcher
-Patch29:        fix_ant_build.patch
+Patch22:        fix_ant_build.patch
 # Hide the p2 Droplets from cluttering Install Wizard Combo
-Patch30:        eclipse-hide-droplets-from-install-wizard.patch
+Patch23:        eclipse-hide-droplets-from-install-wizard.patch
+# Avoid the need for a javascript interpreter at build time
+Patch24:        eclipse-swt-avoid-javascript-at-build.patch
+# Avoid optional dep used only for tests
+Patch25:        eclipse-patch-out-fileupload-dep.patch
+# Force a clean on the restart after p2 operations
+Patch26:        force-clean-after-p2-operations.patch
+Patch27:        compiler-release.patch
 # Adapt the symlinks to the openSUSE install of batik
 Patch31:        eclipse-suse-batik.patch
-# Fix build of ImageDescriptor.createImage(boolean, Device)
-Patch32:        eclipse-imagedescriptor.patch
 # Fix build on ppc64 big endian
 Patch33:        eclipse-ppc64.patch
-# Fix build with objectweb-asm 7
-Patch34:        eclipse-asm7.patch
-Patch35:        eclipse-arm32.patch
-Patch36:        eclipse-force-gtk2.patch
-Patch37:        eclipse-felix-scr-dependencies.patch
-Patch38:        eclipse-lucene-8.patch
-Patch39:        eclipse-gcc10.patch
 BuildRequires:  ant >= 1.10.5
 BuildRequires:  ant-antlr
 BuildRequires:  ant-apache-bcel
@@ -139,66 +135,62 @@ BuildRequires:  ant-swing
 BuildRequires:  ant-testutil
 BuildRequires:  ant-xz
 BuildRequires:  apache-commons-codec
-BuildRequires:  apache-commons-el >= 1.0
-BuildRequires:  apache-commons-fileupload
 BuildRequires:  apache-commons-jxpath
 BuildRequires:  apache-commons-logging
 BuildRequires:  apiguardian
 BuildRequires:  atinject
-BuildRequires:  batik >= 1.10
-BuildRequires:  batik-css >= 1.10
 BuildRequires:  cbi-plugins
 BuildRequires:  desktop-file-utils
-BuildRequires:  easymock
 BuildRequires:  eclipse-license2
 BuildRequires:  gcc
+BuildRequires:  glassfish-annotation-api
 BuildRequires:  glassfish-el > 3.0.0
 BuildRequires:  glassfish-el-api > 3.0.0
 BuildRequires:  glassfish-jsp >= 2.2.5
-BuildRequires:  glassfish-jsp-api >= 2.2.1
+BuildRequires:  glassfish-jsp-api >= 2.2.1-4
 BuildRequires:  glassfish-servlet-api >= 3.1.0
+BuildRequires:  google-gson
 BuildRequires:  hamcrest
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
-BuildRequires:  icu4j >= 62.1
+BuildRequires:  icu4j >= 65.1
+# Build with Java 11
+BuildRequires:  java-devel >= 11
 BuildRequires:  jgit
 BuildRequires:  jsch >= 0.1.46
 BuildRequires:  jsoup
 BuildRequires:  junit >= 4.12
-BuildRequires:  junit5
+BuildRequires:  junit5 >= 5.4.0
 BuildRequires:  lucene-analysis >= %{_lucene_version}
 BuildRequires:  lucene-analyzers-smartcn >= %{_lucene_version}
 BuildRequires:  lucene-core >= %{_lucene_version}
 BuildRequires:  lucene-queryparser >= %{_lucene_version}
 BuildRequires:  make
+BuildRequires:  maven-antrun-plugin
+BuildRequires:  maven-assembly-plugin
+BuildRequires:  maven-dependency-plugin
+BuildRequires:  maven-enforcer-plugin
+BuildRequires:  maven-install-plugin
 BuildRequires:  maven-local
-BuildRequires:  mockito
-BuildRequires:  objectweb-asm >= 6.1.1
-BuildRequires:  osgi-compendium
+BuildRequires:  maven-shade-plugin
+BuildRequires:  objectweb-asm >= 7.0
 BuildRequires:  pkgconfig
-BuildRequires:  rhino
 BuildRequires:  rsync
 BuildRequires:  sac
 BuildRequires:  sat4j
 BuildRequires:  sonatype-oss-parent
-BuildRequires:  tycho-extras
 BuildRequires:  unzip
 BuildRequires:  xml-commons-apis
 BuildRequires:  xml-maven-plugin
-BuildRequires:  xmlgraphics-commons >= 2.2
+BuildRequires:  xmlgraphics-batik >= %{_batik_version}
+BuildRequires:  xmlgraphics-batik-css >= %{_batik_version}
+BuildRequires:  xmlgraphics-commons >= 2.3
 BuildRequires:  xz-java
 BuildRequires:  zip
-BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-assembly-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-enforcer-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-install-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-shade-plugin)
-BuildRequires:  osgi(javax.servlet-api)
 BuildRequires:  osgi(org.apache.felix.gogo.command) >= 1.0.2
 BuildRequires:  osgi(org.apache.felix.gogo.runtime) >= 1.1.0
 BuildRequires:  osgi(org.apache.felix.gogo.shell) >= 1.1.0
-BuildRequires:  osgi(org.apache.felix.scr) >= 2.0.14
+BuildRequires:  osgi(org.apache.felix.scr) >= 2.1.16
 BuildRequires:  osgi(org.eclipse.jetty.continuation) >= %{_jetty_version}
 BuildRequires:  osgi(org.eclipse.jetty.http) >= %{_jetty_version}
 BuildRequires:  osgi(org.eclipse.jetty.io) >= %{_jetty_version}
@@ -219,7 +211,8 @@ BuildRequires:  pkgconfig(nspr)
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
-BuildConflicts: java-devel >= 9
+# Upstream Eclipse no longer supports non-64bit arches
+ExcludeArch:    s390 %{arm} %{ix86}
 %if %{with bootstrap}
 Name:           eclipse-bootstrap
 %else
@@ -227,16 +220,14 @@ Name:           eclipse
 %endif
 # Build deps that are excluded when bootstrapping
 %if %{without bootstrap}
-# For contributor tools
 BuildRequires:  eclipse-ecf-core >= 3.14.1
-BuildRequires:  eclipse-egit
 BuildRequires:  eclipse-emf-core > 2.14.99
-BuildRequires:  eclipse-emf-runtime
 BuildRequires:  eclipse-pde-bootstrap
 BuildRequires:  eclipse-platform-bootstrap
 BuildRequires:  tycho
 #!BuildIgnore:  eclipse-ecf-core-bootstrap
 #!BuildIgnore:  eclipse-emf-core-bootstrap
+#!BuildIgnore:  eclipse-pde
 #!BuildIgnore:  eclipse-platform
 #!BuildIgnore:  tycho-bootstrap
 %else
@@ -246,6 +237,10 @@ BuildRequires:  tycho-bootstrap
 #!BuildIgnore:  eclipse-ecf-core
 #!BuildIgnore:  eclipse-emf-core
 #!BuildIgnore:  tycho
+%endif
+%if %{with contrib_tools}
+BuildRequires:  eclipse-egit
+BuildRequires:  eclipse-emf-runtime
 %endif
 
 %description
@@ -262,7 +257,7 @@ Obsoletes:      eclipse-swt-bootstrap
 Summary:        SWT Library for GTK+
 Group:          Development/Libraries/Java
 Requires:       gtk3
-Requires:       java-headless >= 1.8.0
+Requires:       java-headless >= 1.8
 Requires:       javapackages-tools
 Requires:       libwebkit2gtk-4_0-37
 
@@ -281,7 +276,7 @@ Obsoletes:      eclipse-equinox-osgi-bootstrap
 %endif
 Summary:        Eclipse OSGi - Equinox
 Group:          Development/Libraries/Java
-Requires:       java-headless >= 1.8.0
+Requires:       java-headless >= 1.8
 Requires:       javapackages-tools
 Provides:       osgi(system.bundle) = %{version}
 
@@ -294,8 +289,14 @@ Eclipse OSGi - Equinox
 
 %if %{with bootstrap}
 %package        -n eclipse-platform-bootstrap
+Requires:       eclipse-equinox-osgi-bootstrap = %{version}-%{release}
+Requires:       eclipse-swt-bootstrap = %{version}-%{release}
 %else
 %package        platform
+Requires:       %{name}-equinox-osgi = %{version}-%{release}
+Requires:       %{name}-swt = %{version}-%{release}
+Requires:       eclipse-ecf-core >= 3.14.7
+Requires:       eclipse-emf-core >= 2.21.0
 Obsoletes:      eclipse-platform-bootstrap
 %endif
 Summary:        Eclipse platform common files
@@ -321,30 +322,33 @@ Requires:       ant-swing
 Requires:       ant-testutil
 Requires:       ant-xz
 Requires:       apache-commons-codec
-Requires:       apache-commons-el >= 1.0
 Requires:       apache-commons-jxpath
 Requires:       apache-commons-logging
 Requires:       atinject
-Requires:       batik >= 1.10
-Requires:       batik-css >= 1.10
+Requires:       glassfish-annotation-api
 Requires:       glassfish-el > 3.0.0
 Requires:       glassfish-el-api > 3.0.0
 Requires:       glassfish-jsp >= 2.2.5
-Requires:       glassfish-jsp-api >= 2.2.1
+Requires:       glassfish-jsp-api >= 2.2.1-4
 Requires:       glassfish-servlet-api >= 3.1.0
 Requires:       httpcomponents-client
 Requires:       httpcomponents-core
-Requires:       icu4j >= 62.1
-Requires:       jsch >= 0.1.46
-Requires:       osgi-compendium
+Requires:       icu4j >= 65.1
+Requires:       jsch >= 0.1.46-2
+Requires:       lucene-analysis >= %{_lucene_version}
+Requires:       lucene-analyzers-smartcn >= %{_lucene_version}
+Requires:       lucene-core >= %{_lucene_version}
+Requires:       lucene-queryparser >= %{_lucene_version}
 Requires:       sac
 Requires:       sat4j
 Requires:       xml-commons-apis
-Requires:       xmlgraphics-commons >= 2.2
+Requires:       xmlgraphics-batik >= %{_batik_version}
+Requires:       xmlgraphics-batik-css >= %{_batik_version}
+Requires:       xmlgraphics-commons >= 2.3
 Requires:       osgi(org.apache.felix.gogo.command) >= 1.0.2
-Requires:       osgi(org.apache.felix.gogo.runtime) >= 1.0.4
-Requires:       osgi(org.apache.felix.gogo.shell) >= 1.0.0
-Requires:       osgi(org.apache.felix.scr) >= 2.0.14
+Requires:       osgi(org.apache.felix.gogo.runtime) >= 1.1.0
+Requires:       osgi(org.apache.felix.gogo.shell) >= 1.1.0
+Requires:       osgi(org.apache.felix.scr) >= 2.1.16
 Requires:       osgi(org.eclipse.jetty.continuation) >= %{_jetty_version}
 Requires:       osgi(org.eclipse.jetty.http) >= %{_jetty_version}
 Requires:       osgi(org.eclipse.jetty.io) >= %{_jetty_version}
@@ -353,10 +357,7 @@ Requires:       osgi(org.eclipse.jetty.server) >= %{_jetty_version}
 Requires:       osgi(org.eclipse.jetty.servlet) >= %{_jetty_version}
 Requires:       osgi(org.eclipse.jetty.util) >= %{_jetty_version}
 Requires:       osgi(org.tukaani.xz)
-%requires_ge    lucene-analysis
-%requires_ge    lucene-analyzers-smartcn
-%requires_ge    lucene-core
-%requires_ge    lucene-queryparser
+Recommends:     eclipse-usage
 
 %if %{with bootstrap}
 Requires:       eclipse-equinox-osgi-bootstrap = %{version}-%{release}
@@ -386,8 +387,10 @@ Obsoletes:      eclipse-jdt-bootstrap
 %endif
 Summary:        Eclipse Java Development Tools
 Group:          Development/Libraries/Java
+Requires:       junit >= 4.12
+Requires:       junit5 >= 5.4.0
 Requires:       osgi(org.hamcrest.core)
-Requires:       osgi(org.junit) >= 4.12
+Provides:       %{name} = %{version}-%{release}
 BuildArch:      noarch
 
 %if %{with bootstrap}
@@ -410,7 +413,7 @@ Obsoletes:      eclipse-pde-bootstrap
 %endif
 Summary:        Eclipse Plugin Development Environment
 Group:          Development/Libraries/Java
-Requires:       objectweb-asm >= 6.1.1
+Requires:       objectweb-asm >= 7.0
 
 %if %{with bootstrap}
 %description    -n eclipse-pde-bootstrap
@@ -442,6 +445,7 @@ p2 provisioning platform. Discovery can be used as a tool to display and
 install from existing P2 repositories or as a framework to build branded
 installer UIs.
 
+%if %{with contrib_tools}
 %if %{with bootstrap}
 %package        -n eclipse-contributor-tools-bootstrap
 Requires:       eclipse-platform-bootstrap = %{version}-%{release}
@@ -451,9 +455,9 @@ Requires:       %{name}-platform = %{version}-%{release}
 Obsoletes:      eclipse-contributor-tools-bootstrap
 %endif
 Summary:        Tools for Eclipse Contributors
+# No longer shipping tests
 Group:          Development/Libraries/Java
-Requires:       easymock
-Requires:       mockito
+Obsoletes:      %{name}-tests < 4.14-2
 
 %if %{with bootstrap}
 %description    -n eclipse-contributor-tools-bootstrap
@@ -462,72 +466,55 @@ Requires:       mockito
 %endif
 This package contains tools specifically for Eclipse contributors. It includes
 SWT tools, E4 tools, Rel-Eng tools and Eclipse Test frameworks.
-
-%if %{with bootstrap}
-%package        -n eclipse-tests-bootstrap
-Requires:       eclipse-contributor-tools-bootstrap = %{version}-%{release}
-%else
-%package        tests
-Requires:       %{name}-contributor-tools = %{version}-%{release}
-Obsoletes:      eclipse-tests-bootstrap
 %endif
-Summary:        Eclipse Tests
-Group:          Development/Libraries/Java
-
-%if %{with bootstrap}
-%description    -n eclipse-tests-bootstrap
-%else
-%description    tests
-%endif
-Eclipse Tests.
 
 %prep
-%setup -q -n eclipse-platform-sources-%{eclipse_tag}
+%setup -q -T -c
+
+# Extract main source
+tar --strip-components=1 -xf %{SOURCE0}
 
 # Extract linuxtools/eclipse-build sources
 tar --strip-components=1 -xf %{SOURCE1}
 
 %patch0
 %patch1
-%patch2
+%patch2 -p1
 %patch3
 %patch4 -p1
 %patch5
-#%patch6
 %patch12
+%patch13 -p1
 %patch14
 %patch15
-%patch16
+%patch17 -p1
+%patch18
+%patch19
 %patch20
-%patch21
-%patch22
-#%patch23
-%patch24
-%patch26
-%patch27
 %if ! %{use_wayland}
-%patch28
+%patch21
 %endif
-%patch29
-%patch30 -p1
-%patch31 -p1
-%patch32 -p1
-%patch33 -p1
-%patch34 -p1
-%patch35 -p1
-%ifarch s390 %{arm} %{ix86} ppc
-%patch36 -p1
-%endif
-%patch37 -p1
-%if %{?pkg_vcmp:%pkg_vcmp lucene-core >= 8}%{!?pkg_vcmp:0}
-%patch38 -p1
-%endif
-%patch39 -p1
+%patch22
+%patch23 -p1
+%patch24 -p1
+%patch25
+%patch26 -p1
+%patch27
 
-# Use ecj when bootstrapping
-%if %{with bootstrap}
-sed -i -e 's/groupId>org.eclipse.jdt</groupId>org.eclipse.tycho</' eclipse-platform-parent/pom.xml
-%endif
+%patch31 -p1
+%patch33 -p1
+
+# Optional (unused) multipart support (see patch 25)
+rm rt.equinox.bundles/bundles/org.eclipse.equinox.http.servlet/src/org/eclipse/equinox/http/servlet/internal/multipart/MultipartSupport{Impl,FactoryImpl,Part}.java
+
+# No strict bin includes
+sed -i -e '/jgit.dirtyWorkingTree>/a<strictSrcIncludes>false</strictSrcIncludes><strictBinIncludes>false</strictBinIncludes>' eclipse-platform-parent/pom.xml
+
+# Remove jgit deps because building from source tarball, not a git repo
+%pom_remove_dep :tycho-buildtimestamp-jgit eclipse-platform-parent
+%pom_remove_dep :tycho-sourceref-jgit eclipse-platform-parent
+%pom_xpath_remove 'pom:configuration/pom:timestampProvider' eclipse-platform-parent
+%pom_xpath_remove 'pom:configuration/pom:sourceReferences' eclipse-platform-parent
 
 # Resolving the target platform requires too many changes, so don't use it
 %pom_xpath_remove "pom:configuration/pom:target" eclipse-platform-parent
@@ -547,7 +534,6 @@ sed -i -e 's/groupId>org.eclipse.jdt</groupId>org.eclipse.tycho</' eclipse-platf
 %pom_disable_module features/org.eclipse.equinox.sdk rt.equinox.bundles
 %pom_disable_module bundles/org.eclipse.equinox.console.jaas.fragment rt.equinox.bundles
 %pom_disable_module bundles/org.eclipse.equinox.console.ssh rt.equinox.bundles
-%pom_disable_module bundles/org.eclipse.equinox.ip rt.equinox.bundles
 %pom_disable_module bundles/org.eclipse.equinox.transforms.xslt rt.equinox.bundles
 %pom_disable_module bundles/org.eclipse.equinox.transforms.hook rt.equinox.bundles
 %pom_disable_module bundles/org.eclipse.equinox.weaving.caching.j9 rt.equinox.bundles
@@ -558,32 +544,69 @@ sed -i -e 's/groupId>org.eclipse.jdt</groupId>org.eclipse.tycho</' eclipse-platf
 %pom_disable_module features/org.eclipse.equinox.p2.sdk rt.equinox.p2
 %pom_disable_module features/org.eclipse.equinox.server.p2 rt.equinox.bundles
 %pom_disable_module features/org.eclipse.equinox.serverside.sdk rt.equinox.bundles
-%pom_disable_module bundles/org.eclipse.equinox.p2.tests.reconciler.product rt.equinox.p2
 %pom_disable_module bundles/org.eclipse.equinox.p2.artifact.optimizers rt.equinox.p2
 %pom_disable_module bundles/org.eclipse.equinox.p2.artifact.processors rt.equinox.p2
+%pom_disable_module bundles/org.eclipse.equinox.p2.artifact.checksums.bouncycastle rt.equinox.p2
 
 # Don't need annotations for obsolete JDKs
 %pom_disable_module org.eclipse.jdt.annotation_v1 eclipse.jdt.core
-%pom_xpath_remove "plugin[@version='1.1.300.qualifier']" eclipse.jdt/org.eclipse.jdt-feature/feature.xml
+%pom_xpath_remove "plugin[@version='1.1.400.qualifier']" eclipse.jdt/org.eclipse.jdt-feature/feature.xml
 sed -i -e '/org\.eclipse\.jdt\.annotation;bundle-version="\[1\.1\.0,2\.0\.0)"/d' \
   eclipse.jdt.core/org.eclipse.jdt.core.tests.{model,builder,compiler}/META-INF/MANIFEST.MF \
   eclipse.jdt.core/org.eclipse.jdt.apt.pluggable.tests/META-INF/MANIFEST.MF \
   eclipse.jdt.ui/org.eclipse.jdt.ui.tests/META-INF/MANIFEST.MF
+sed -i -e 's/javax.annotation/javax.annotation-api/' eclipse-platform-parent/pom.xml \
+  eclipse.jdt.core/org.eclipse.jdt.core.tests.compiler/META-INF/MANIFEST.MF
 
 # Disable examples
+%pom_disable_module examples rt.equinox.p2
+%pom_disable_module examples eclipse.platform.ui
+%pom_disable_module org.eclipse.debug.examples.core eclipse.platform.debug
+%pom_disable_module org.eclipse.debug.examples.memory eclipse.platform.debug
+%pom_disable_module org.eclipse.debug.examples.mixedmode eclipse.platform.debug
+%pom_disable_module org.eclipse.debug.examples.ui eclipse.platform.debug
 %pom_disable_module bundles/org.eclipse.sdk.examples eclipse.platform.releng
 %pom_disable_module features/org.eclipse.sdk.examples-feature eclipse.platform.releng
 %pom_disable_module examples/org.eclipse.swt.examples.ole.win32 eclipse.platform.swt
+%pom_disable_module examples/org.eclipse.compare.examples eclipse.platform.team
+%pom_disable_module examples/org.eclipse.compare.examples.xml eclipse.platform.team
+%pom_disable_module examples/org.eclipse.team.examples.filesystem eclipse.platform.team
+%pom_disable_module org.eclipse.jface.text.examples eclipse.platform.text
+%pom_disable_module org.eclipse.ui.genericeditor.examples eclipse.platform.text
+%pom_disable_module org.eclipse.ui.intro.quicklinks.examples eclipse.platform.ua
+%pom_disable_module org.eclipse.ui.intro.solstice.examples eclipse.platform.ua
+
+# Disable tests
+for pom in eclipse.jdt.core{,.binaries} eclipse.jdt.debug eclipse.jdt.ui eclipse.pde.build eclipse.pde.ui{,/apitools} \
+    eclipse.platform eclipse.platform.debug eclipse.platform.releng eclipse.platform.resources eclipse.platform.runtime \
+    eclipse.platform.swt eclipse.platform.team eclipse.platform.text eclipse.platform.ui eclipse.platform.ua \
+    rt.equinox.bundles rt.equinox.framework rt.equinox.p2 ; do
+  sed -i -e '/<module>.*tests.*<\/module>/d' $pom/pom.xml
+done
+%pom_disable_module bundles/org.eclipse.equinox.frameworkadmin.test rt.equinox.p2
+%pom_disable_module eclipse-junit-tests eclipse.platform.releng.tychoeclipsebuilder
+%pom_disable_module ./tests/org.eclipse.e4.tools.test eclipse.platform.ui.tools
+
+# Disable test framework if we are not shipping tests
+%pom_disable_module features/org.eclipse.test-feature eclipse.platform.releng
+%pom_disable_module bundles/org.eclipse.test eclipse.platform.releng
+%pom_disable_module bundles/org.eclipse.test.performance eclipse.platform.releng
+%pom_disable_module bundles/org.eclipse.test.performance.win32 eclipse.platform.releng
+%pom_disable_module bundles/org.eclipse.ant.optional.junit eclipse.platform.releng
 
 # Disable servletbridge stuff
 %pom_disable_module bundles/org.eclipse.equinox.http.servletbridge rt.equinox.bundles
 %pom_disable_module bundles/org.eclipse.equinox.servletbridge rt.equinox.bundles
 %pom_disable_module bundles/org.eclipse.equinox.servletbridge.template rt.equinox.bundles
 
+# Don't need enforcer on RPM builds
+%pom_remove_plugin :maven-enforcer-plugin eclipse-platform-parent
+
 # This part generates secondary fragments using primary fragments
+rm -rf eclipse.platform.swt.binaries/bundles/org.eclipse.swt.gtk.linux.{aarch64,s390x,ppc64}
+rm -rf rt.equinox.framework/bundles/org.eclipse.equinox.launcher.gtk.linux.{aarch64,s390x,ppc64}
 for dir in rt.equinox.binaries rt.equinox.framework/bundles eclipse.platform.swt.binaries/bundles ; do
-  utils/ensure_arch.sh "$dir" x86 arm
-  utils/ensure_arch.sh "$dir" x86_64 aarch64 ppc64
+  utils/ensure_arch.sh "$dir" x86_64 aarch64 s390x ppc64
 done
 
 # Remove platform-specific stuff that we don't care about to reduce build time
@@ -592,7 +615,6 @@ done
 # we are not currently building)
 TYCHO_ENV="<environment><os>linux</os><ws>gtk</ws><arch>%{eclipse_arch}</arch></environment>"
 %pom_xpath_set "pom:configuration/pom:environments" "$TYCHO_ENV" eclipse-platform-parent
-%pom_xpath_set "pom:configuration/pom:environments" "$TYCHO_ENV" eclipse.platform.releng.tychoeclipsebuilder/eclipse-junit-tests
 %pom_xpath_set "pom:configuration/pom:environments" "$TYCHO_ENV" eclipse.platform.ui/bundles/org.eclipse.e4.ui.swt.gtk
 for b in `ls eclipse.platform.swt.binaries/bundles | grep -P -e 'org.eclipse.swt\.(?!gtk\.linux.%{eclipse_arch}$)'` ; do
   module=$(grep ">bundles/$b<" eclipse.platform.swt.binaries/pom.xml || :)
@@ -609,17 +631,19 @@ for b in `ls rt.equinox.framework/bundles | grep -P -e 'org.eclipse.equinox.laun
   fi
 done
 for b in `(cd rt.equinox.bundles/bundles && ls -d *{macosx,win32,linux}*) | grep -P -e 'org.eclipse.equinox.security\.(?!linux\.%{eclipse_arch}$)'` ; do
-  %pom_disable_module bundles/$b rt.equinox.bundles
-  %pom_xpath_remove "plugin[@id='$b']" rt.equinox.p2/features/org.eclipse.equinox.p2.core.feature/feature.xml
+  module=$(grep ">bundles/$b<" rt.equinox.bundles/pom.xml || :)
+  if [ -n "$module" ] ; then
+    %pom_disable_module bundles/$b rt.equinox.bundles
+    %pom_xpath_remove -f "plugin[@id='$b']" rt.equinox.p2/features/org.eclipse.equinox.p2.core.feature/feature.xml
+  fi
 done
-for b in `ls eclipse.platform.team/bundles/org.eclipse.core.net/fragments/ | grep -P -e 'org.eclipse.core.net\.(?!linux.%{eclipse_arch}$)'` ; do
-  %pom_disable_module bundles/org.eclipse.core.net/fragments/$b eclipse.platform.team
+for b in `ls eclipse.platform.team/bundles/ | grep -P -e 'org.eclipse.core.net\.(?!linux.%{eclipse_arch}$)'` ; do
+  %pom_disable_module bundles/$b eclipse.platform.team
 done
 for b in `ls eclipse.platform.resources/bundles/ | grep -P -e 'org.eclipse.core.filesystem\.(?!linux\.%{eclipse_arch}$)'` ; do
   module=$(grep ">bundles/$b<" eclipse.platform.resources/pom.xml || :)
   if [ -n "$module" ] ; then
     %pom_disable_module bundles/$b eclipse.platform.resources
-    %pom_xpath_remove -f "plugin[@id='$b']" eclipse.platform.resources/tests/org.eclipse.core.tests.filesystem.feature/feature.xml
   fi
 done
 %pom_disable_module org.eclipse.jdt.launching.macosx eclipse.jdt.debug
@@ -628,7 +652,6 @@ done
 %pom_disable_module org.eclipse.e4.ui.workbench.renderers.swt.cocoa eclipse.platform.ui/bundles
 %pom_disable_module org.eclipse.ui.cocoa eclipse.platform.ui/bundles
 %pom_disable_module org.eclipse.ui.win32 eclipse.platform.ui/bundles
-%pom_disable_module bundles/org.eclipse.core.resources.win32.x86 eclipse.platform.resources
 %pom_disable_module bundles/org.eclipse.core.resources.win32.x86_64 eclipse.platform.resources
 for f in eclipse.jdt/org.eclipse.jdt-feature/feature.xml \
          eclipse.platform.ui/features/org.eclipse.e4.rcp/feature.xml \
@@ -637,32 +660,22 @@ for f in eclipse.jdt/org.eclipse.jdt-feature/feature.xml \
   %pom_xpath_remove -f "plugin[@os='macosx']" $f
   %pom_xpath_remove -f "plugin[@os='win32']" $f
   %pom_xpath_remove -f "plugin[@ws='win32']" $f
-  for arch in x86 x86_64 arm aarch64 ppc64 ppc64le s390x ; do
+  for arch in x86_64 aarch64 ppc64le s390x ppc64; do
     if [ "$arch" != "%{eclipse_arch}" ] ; then
       %pom_xpath_remove -f "plugin[@arch='$arch']" $f
     fi
   done
 done
 
-# Fix versions in secondary arch fragments
-fix_files=$(grep -lr 3.107.100 eclipse.platform.swt.binaries/bundles/org.eclipse.swt.gtk.linux.*)
-sed -i -e "s/3.107.100/3.108.0/" $fix_files
-fix_files=$(grep -lr '1\.1\.[67]00' rt.equinox.framework/bundles/org.eclipse.equinox.launcher.gtk.linux.*)
-sed -i -e "s/1\.1\.[67]00/1.1.800/" $fix_files
-sed -i -e "/Fragment-Host/s/\(bundle-version=\).*/\1\"1.0.0\"/" $fix_files
-
-# We don't need SWT fragments since we only care for current arch
-%pom_disable_module tests/org.eclipse.swt.tests.fragments.feature eclipse.platform.swt
-%pom_xpath_remove "pom:dependency-resolution" eclipse.platform.swt/tests/org.eclipse.swt.tests{,.gtk}
-
+%if %{with bootstrap} || %{without contrib_tools}
 # Disable contributor tools that have external dependencies during bootstrap
-%if %{with bootstrap}
 %pom_disable_module eclipse.platform.ui.tools
+%pom_disable_module features/org.eclipse.swt.tools.feature eclipse.platform.swt
+%pom_disable_module bundles/org.eclipse.swt.tools.base eclipse.platform.swt
+%pom_disable_module bundles/org.eclipse.swt.tools.spies eclipse.platform.swt
+%pom_disable_module bundles/org.eclipse.swt.tools eclipse.platform.swt
 %pom_disable_module features/org.eclipse.releng.tools eclipse.platform.releng
 %pom_disable_module bundles/org.eclipse.releng.tools eclipse.platform.releng
-%pom_disable_module bundles/org.eclipse.releng.tests eclipse.platform.releng
-%pom_xpath_remove "plugin[@id='org.eclipse.releng.tests']" \
-  eclipse.platform.releng/features/org.eclipse.sdk.tests/feature.xml
 %endif
 
 # Include some extra features with the product that some other projects may need at
@@ -675,18 +688,6 @@ sed -i -e '/org.eclipse.ui.themes/i<plugin id="org.eclipse.jdt.core.compiler.bat
   eclipse.platform.releng/features/org.eclipse.platform-feature/feature.xml
 sed -i -e '/<\/excludes>/i<plugin id="org.eclipse.jdt.core.compiler.batch"/>' \
   eclipse.platform.releng/features/org.eclipse.platform-feature/pom.xml
-
-# Remove uneeded hamcrest bundles
-%pom_xpath_remove "plugin[@id='org.hamcrest']" eclipse.platform.releng/features/org.eclipse.sdk.tests/feature.xml
-%pom_xpath_remove "plugin[@id='org.hamcrest.text']" eclipse.platform.releng/features/org.eclipse.sdk.tests/feature.xml
-
-# Use unbundled mockito
-%pom_xpath_remove "plugin[@id='org.mockito']" eclipse.platform.releng/features/org.eclipse.sdk.tests/feature.xml
-%pom_xpath_inject "feature" '<plugin id="org.mockito.mockito-core" download-size="0" install-size="0" version="0.0.0" unpack="false"/>' eclipse.platform.releng/features/org.eclipse.sdk.tests/feature.xml
-%pom_xpath_inject "feature" '<plugin id="net.sf.cglib.core" download-size="0" install-size="0" version="0.0.0" unpack="false"/>' eclipse.platform.releng/features/org.eclipse.sdk.tests/feature.xml
-
-# Prevent dep cycle
-%pom_xpath_remove "plugin[@id='org.eclipse.core.tests.harness']" eclipse.platform.releng/features/org.eclipse.test-feature/feature.xml
 
 # Include maven descriptors to allow our test execution setup to work
 %pom_xpath_set "pom:plugin[pom:artifactId = 'tycho-packaging-plugin']/pom:configuration/pom:archive/pom:addMavenDescriptor" "true" eclipse-platform-parent
@@ -701,10 +702,9 @@ done
 mkdir -p rt.equinox.binaries/org.eclipse.equinox.executable/bin/gtk/linux/%{eclipse_arch}
 
 # Ensure that bundles with native artifacts are dir-shaped, so no *.so is extracted into user.home
-for f in rt.equinox.bundles/bundles/org.eclipse.equinox.security.linux.*/META-INF/MANIFEST.MF \
-         eclipse.platform.swt.binaries/bundles/org.eclipse.swt.gtk.linux.*/META-INF/MANIFEST.MF \
+for f in eclipse.platform.swt.binaries/bundles/org.eclipse.swt.gtk.linux.*/META-INF/MANIFEST.MF \
          eclipse.platform.resources/bundles/org.eclipse.core.filesystem.linux.*/META-INF/MANIFEST.MF \
-         eclipse.platform.team/bundles/org.eclipse.core.net/fragments/org.eclipse.core.net.linux.*/META-INF/MANIFEST.MF ; do
+         eclipse.platform.team/bundles/org.eclipse.core.net.linux.*/META-INF/MANIFEST.MF ; do
     echo -e "Eclipse-BundleShape: dir\n\n" >> $f;
 done
 
@@ -728,12 +728,6 @@ sed -i -e '/org.apache.felix.service.command/s/;status=provisional//' rt.equinox
 # Pre-compiling JSPs does not currently work
 %pom_remove_plugin org.eclipse.jetty:jetty-jspc-maven-plugin eclipse.platform.ua/org.eclipse.help.webapp
 
-# Remove generated files not present during bootstrap build
-# org.eclipse.platform.doc.isv, org.eclipse.jdt.doc.isv, org.eclipse.pde.doc.user
-%if %{with bootstrap}
-sed -i '22,51d' eclipse.platform.releng.tychoeclipsebuilder/eclipse-junit-tests/src/main/assembly/assembly.xml
-%endif
-
 # Use system osgi.annotation lib
 ln -s $(build-classpath osgi-annotation) rt.equinox.framework/bundles/org.eclipse.osgi/osgi/
 ln -s $(build-classpath osgi-annotation) rt.equinox.framework/bundles/org.eclipse.osgi.services/lib/
@@ -742,20 +736,12 @@ ln -s $(build-classpath osgi-annotation) rt.equinox.bundles/bundles/org.eclipse.
 ln -s $(build-classpath osgi-annotation) rt.equinox.bundles/bundles/org.eclipse.equinox.coordinator/lib/
 ln -s $(build-classpath osgi-annotation) rt.equinox.bundles/bundles/org.eclipse.equinox.log.stream/osgi/
 
-# This test doesn't build on 32bit
-# See: https://bugs.eclipse.org/bugs/show_bug.cgi?id=534174
-rm eclipse.platform.swt/tests/org.eclipse.swt.tests.gtk/ManualTests/org/eclipse/swt/tests/gtk/snippets/Bug421127_Clipping_is_wrong.java
+# Allow library detector to build on Java 11
+sed -i -e 's/target="1.1" source="1.3"/target="1.6" source="1.6"/' eclipse.jdt.debug/org.eclipse.jdt.launching/scripts/buildLaunchingSupportJAR.xml
 
 # The order of these mvn_package calls is important
 %{mvn_package} "::pom::" __noinstall
-%{mvn_package} ":*tests*" tests
-%{mvn_package} ":org.eclipse.equinox.frameworkadmin.test" tests
-%{mvn_package} ":org.eclipse.equinox.p2.installer" tests
-%{mvn_package} ":org.eclipse.jface.examples.databinding" tests
-%{mvn_package} ":org.eclipse.pde.tools.versioning" tests
-%{mvn_package} ":org.eclipse.update.core" tests
-%{mvn_package} "org.eclipse.test:org.eclipse.test" contributor-tools
-%{mvn_package} ":*examples*" __noinstall
+%{mvn_package} ":org.eclipse.pde.tools.versioning" contributor-tools
 %{mvn_package} "::jar:sources{,-feature}:" sdk
 %{mvn_package} ":org.eclipse.jdt.doc.isv" sdk
 %{mvn_package} ":org.eclipse.platform.doc.isv" sdk
@@ -767,33 +753,37 @@ rm eclipse.platform.swt/tests/org.eclipse.swt.tests.gtk/ManualTests/org/eclipse/
 %{mvn_package} ":org.eclipse.e4{,.core}.tools*" contributor-tools
 %{mvn_package} ":org.eclipse.releng.tools" contributor-tools
 %{mvn_package} ":org.eclipse.swt.tools*" contributor-tools
-%{mvn_package} "org.eclipse.test{,.feature}:" contributor-tools
-%{mvn_package} ":org.eclipse.ant.optional.junit" contributor-tools
 %{mvn_package} "org.eclipse.cvs{,.feature}:" cvs
 %{mvn_package} "org.eclipse.team:org.eclipse.team.cvs*" cvs
 %{mvn_package} "org.eclipse.pde{,.ui,.feature}:" pde
-%{mvn_package} "org.eclipse.ui:org.eclipse.ui.{views.log,trace}" pde
+%{mvn_package} ":org.eclipse.pde.api.tools*" pde
+%{mvn_package} "org.eclipse.ui:org.eclipse.ui.trace" pde
 %{mvn_package} "org.eclipse.sdk{,.feature}:" sdk
 %{mvn_package} ":" __noinstall
 
 %build
+# Compiler/linker flags for native parts
+export M_CFLAGS="$CFLAGS"
+export M_ARCH="$LDFLAGS"
+
 #This is the lowest value where the build succeeds. 512m is not enough.
-export MAVEN_OPTS="-Xmx2g -XX:CompileCommand=exclude,org/eclipse/tycho/core/osgitools/EquinoxResolver,newState ${MAVEN_OPTS}"
-export JAVA_HOME=%{_jvmdir}/java
+export MAVEN_OPTS="-Xmx1024m -XX:CompileCommand=exclude,org/eclipse/tycho/core/osgitools/EquinoxResolver,newState ${MAVEN_OPTS}"
+export JAVA_HOME=%{_jvmdir}/java-11
 
 # Pre-build agent jar needed for AdvancedSourceLookupSupport
-sed -i -e '/createSourcesJar/d' eclipse.jdt.debug/org.eclipse.jdt.launching.javaagent/pom.xml
-(cd eclipse.jdt.debug/org.eclipse.jdt.launching.javaagent && xmvn -o -B clean verify)
+sed -i -e '/createSourcesJar/d' -e 's/7\.2/7.0/' eclipse.jdt.debug/org.eclipse.jdt.launching.javaagent/pom.xml
+sed -i -e 's/V14/V11/' eclipse.jdt.debug/org.eclipse.jdt.launching.javaagent/src/main/java/org/eclipse/jdt/launching/internal/weaving/ClassfileTransformer.java
+(cd eclipse.jdt.debug/org.eclipse.jdt.launching.javaagent && xmvn -e -o -B clean verify)
 mv eclipse.jdt.debug/org.eclipse.jdt.launching.javaagent/target/javaagent-shaded.jar \
   eclipse.jdt.debug/org.eclipse.jdt.launching/lib
 
 # Qualifier generated from last modification time of source tarball
 QUALIFIER=$(date -u -d"$(stat --format=%%y %{SOURCE0})" +v%%Y%%m%%d-%%H%%M)
-%{mvn_build} -j -f -- -DforceContextQualifier=$QUALIFIER \
+%{mvn_build} -j -f -- -e -DforceContextQualifier=$QUALIFIER \
 %if %{with bootstrap}
    -P !api-generation,!build-docs \
 %endif
-   -Declipse.javadoc=%{_bindir}/javadoc -Dnative=gtk.linux.%{eclipse_arch} \
+   -Declipse.javadoc=%{_jvmdir}/java-11/bin/javadoc -Dnative=gtk.linux.%{eclipse_arch} \
    -Dtycho.local.keepTarget \
    -Dfedora.p2.repos=$(pwd)/.m2/p2/repo-sdk/plugins -DbuildType=X
 
@@ -932,7 +922,6 @@ popd
 # Generate addition Maven metadata
 rm -rf .xmvn/ .xmvn-reactor
 %{mvn_package} "org.eclipse.osgi:" equinox-osgi
-%{mvn_package} "org.eclipse.equinox.http:" platform
 %{mvn_package} "org.eclipse.swt:" swt
 
 # Install Maven metadata for OSGi jars
@@ -940,18 +929,8 @@ for J in $OSGI_JARS ; do
   JAR=%{buildroot}%{_eclipsedir}/plugins/org.eclipse.${J}_*.jar
   VER=$(echo $JAR | sed -e "s/.*${J}_\(.*\)\.jar/\1/")
   %{mvn_artifact} "org.eclipse.osgi:$J:jar:$VER" $JAR
-  if [ "$J" = "osgi" ] ; then
-    %{mvn_alias} "org.eclipse.osgi:$J" "org.eclipse.osgi:org.eclipse.$J" "org.eclipse.tycho:org.eclipse.$J" "org.eclipse:$J"
-  else
-    %{mvn_alias} "org.eclipse.osgi:$J" "org.eclipse.osgi:org.eclipse.$J" "org.eclipse.tycho:org.eclipse.$J"
-  fi
+  %{mvn_alias} "org.eclipse.osgi:$J" "org.eclipse.osgi:org.eclipse.$J" "org.eclipse.platform:org.eclipse.$J"
 done
-
-# Install Maven metadata for Equinox HTTP Servlet
-JAR=%{buildroot}%{_eclipsedir}/plugins/org.eclipse.equinox.http.servlet_*.jar
-VER=$(echo $JAR | sed -e "s/.*_\(.*\)\.jar/\1/")
-%{mvn_artifact} "org.eclipse.equinox.http:equinox.http.servlet:jar:$VER" $JAR
-%{mvn_alias} "org.eclipse.equinox.http:equinox.http.servlet" "org.eclipse.equinox.http:servlet"
 
 # Install Maven metadata for SWT
 JAR=%{buildroot}%{_eclipsedir}/plugins/org.eclipse.swt_*.jar
@@ -968,45 +947,12 @@ pushd %{buildroot}/%{_eclipsedir}/
     ln -s $(abs2rel %{_jnidir}/swt.jar %{_eclipsedir})
 popd
 
-# Tests framework
-unzip eclipse.platform.releng.tychoeclipsebuilder/eclipse-junit-tests/target/eclipse-junit-tests-bundle.zip \
-  -d %{buildroot}/%{_datadir}/ -x eclipse-testing/runtests.bat eclipse-testing/runtestsmac.sh
-cp utils/splitter.xsl %{buildroot}/%{_datadir}/eclipse-testing
-rm %{buildroot}/%{_datadir}/eclipse-testing/eclipse-junit-tests-*.zip
-
-# These properties are not correct and nested properties won't get resolved
-sed -i '/org.eclipse.equinox.p2.reconciler.test/ d' %{buildroot}/%{_datadir}/eclipse-testing/equinoxp2tests.properties
-
-# Package testbundle-to-eclipse-test
-cp -r testbundle-to-eclipse-test %{buildroot}/%{_datadir}/eclipse-testing/testbundle
-mv %{buildroot}/%{_datadir}/eclipse-testing/testbundle/eclipse-runTestBundles %{buildroot}/%{_bindir}/eclipse-runTestBundles
-
 #fix so permissions
 find %{buildroot}/%{_eclipsedir} -name *.so -exec chmod a+x {} \;
 
 # Usage marker
 install -d -m 755 %{buildroot}%{_eclipsedir}/.pkgs
 echo "%{version}-%{release}" > %{buildroot}%{_eclipsedir}/.pkgs/Distro%{?dist}
-
-%if %{with bootstrap}
-%post -n eclipse-platform-bootstrap
-%else
-%post platform
-%endif
-touch --no-create %{_datadir}/icons/hicolor
-if [ -x %{_bindir}/gtk-update-icon-cache ]; then
-  gtk-update-icon-cache -q %{_datadir}/icons/hicolor
-fi
-
-%if %{with bootstrap}
-%postun -n eclipse-platform-bootstrap
-%else
-%postun platform
-%endif
-touch --no-create %{_datadir}/icons/hicolor
-if [ -x %{_bindir}/gtk-update-icon-cache ]; then
-  gtk-update-icon-cache -q %{_datadir}/icons/hicolor
-fi
 
 %if %{with bootstrap}
 %files -n eclipse-swt-bootstrap -f .mfiles-swt
@@ -1019,14 +965,14 @@ fi
 %{_jnidir}/swt.jar
 
 %if %{with bootstrap}
-%files -n eclipse-platform-bootstrap -f .mfiles-platform
+%files -n eclipse-platform-bootstrap
 %else
-%files platform -f .mfiles-platform
+%files platform
 %endif
 %{_bindir}/eclipse
 %{_eclipsedir}/eclipse
-%{_eclipsedir}/.eclipseproduct
 %{_eclipsedir}/.pkgs
+%{_eclipsedir}/.eclipseproduct
 %config %{_eclipsedir}/eclipse.ini
 %config %{_sysconfdir}/eclipse.ini
 %{_datadir}/applications/*
@@ -1086,6 +1032,7 @@ fi
 %{_eclipsedir}/plugins/org.eclipse.e4.ui.css.swt.theme_*
 %{_eclipsedir}/plugins/org.eclipse.e4.ui.di_*
 %{_eclipsedir}/plugins/org.eclipse.e4.ui.dialogs_*
+%{_eclipsedir}/plugins/org.eclipse.e4.ui.ide_*
 %{_eclipsedir}/plugins/org.eclipse.e4.ui.model.workbench_*
 %{_eclipsedir}/plugins/org.eclipse.e4.ui.services_*
 %{_eclipsedir}/plugins/org.eclipse.e4.ui.swt.gtk_*
@@ -1143,7 +1090,6 @@ fi
 %{_eclipsedir}/plugins/org.eclipse.equinox.security*
 %{_eclipsedir}/plugins/org.eclipse.equinox.simpleconfigurator_*
 %{_eclipsedir}/plugins/org.eclipse.equinox.simpleconfigurator.manipulator_*
-%{_eclipsedir}/plugins/org.eclipse.equinox.util_*
 %{_eclipsedir}/plugins/org.eclipse.help_*
 %{_eclipsedir}/plugins/org.eclipse.help.base_*
 %{_eclipsedir}/plugins/org.eclipse.help.ui_*
@@ -1165,6 +1111,7 @@ fi
 %{_eclipsedir}/plugins/org.eclipse.team.genericeditor.diff.extension_*
 %{_eclipsedir}/plugins/org.eclipse.team.ui_*
 %{_eclipsedir}/plugins/org.eclipse.text_*
+%{_eclipsedir}/plugins/org.eclipse.text.quicksearch_*
 %{_eclipsedir}/plugins/org.eclipse.ui_*
 %{_eclipsedir}/plugins/org.eclipse.ui.browser_*
 %{_eclipsedir}/plugins/org.eclipse.ui.cheatsheets_*
@@ -1184,6 +1131,7 @@ fi
 %{_eclipsedir}/plugins/org.eclipse.ui.net_*
 %{_eclipsedir}/plugins/org.eclipse.ui.themes_*
 %{_eclipsedir}/plugins/org.eclipse.ui.views_*
+%{_eclipsedir}/plugins/org.eclipse.ui.views.log_*
 %{_eclipsedir}/plugins/org.eclipse.ui.views.properties.tabbed_*
 %{_eclipsedir}/plugins/org.eclipse.ui.workbench_*
 %{_eclipsedir}/plugins/org.eclipse.ui.workbench.texteditor_*
@@ -1195,7 +1143,6 @@ fi
 %{_eclipsedir}/plugins/org.tukaani.xz_*
 %{_eclipsedir}/plugins/org.w3c.css.sac_*
 %{_eclipsedir}/plugins/org.w3c.dom.svg_*
-%{_eclipsedir}/plugins/osgi.cmpn_*
 %doc %{_eclipsedir}/readme
 %{_eclipsedir}/artifacts.xml
 %{_eclipsedir}/p2
@@ -1214,7 +1161,6 @@ fi
 %else
 %files pde -f .mfiles-pde -f .mfiles-cvs -f .mfiles-sdk
 %endif
-%{_eclipsedir}/droplets/*-sdk/features/org.eclipse.equinox.executable_*
 %{_datadir}/appdata/eclipse-pde.metainfo.xml
 
 %if %{with bootstrap}
@@ -1223,19 +1169,13 @@ fi
 %files p2-discovery -f .mfiles-p2-discovery
 %endif
 
+%if %{with contrib_tools}
 %if %{with bootstrap}
 %files -n eclipse-contributor-tools-bootstrap -f .mfiles-contributor-tools
 %else
 %files contributor-tools -f .mfiles-contributor-tools
 %endif
-
-%if %{with bootstrap}
-%files -n eclipse-tests-bootstrap -f .mfiles-tests
-%else
-%files tests -f .mfiles-tests
 %endif
-%{_bindir}/eclipse-runTestBundles
-%{_datadir}/eclipse-testing
 
 %if %{with bootstrap}
 %files -n eclipse-equinox-osgi-bootstrap -f .mfiles-equinox-osgi

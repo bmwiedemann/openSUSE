@@ -1,7 +1,7 @@
 #
 # spec file for package iputils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        IPv4 and IPv6 Networking Utilities
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-Url:            https://github.com/iputils/iputils
+URL:            https://github.com/iputils/iputils
 Source0:        https://github.com/iputils/iputils/archive/%{version}.tar.gz
 Source1:        rarpd.service
 Patch1:         iputils-sec-ping-unblock.diff
@@ -34,16 +34,14 @@ BuildRequires:  docbook_5
 BuildRequires:  iso_ent
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
-BuildRequires:  libidn2-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  meson
 BuildRequires:  opensp
 BuildRequires:  perl-SGMLS
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(libidn2)
 BuildRequires:  pkgconfig(systemd)
-# For Makefile modifications
-BuildRequires:  pkgconfig(libidn)
 Requires(pre):  permissions
 # I have spotted at least two packages (yast-printer and dhcp-client) that need
 # /bin/ping and /sbin/arping but they do not seem to use them with absolute
@@ -170,12 +168,12 @@ ln -sf %{_bindir}/tracepath6    %{buildroot}/bin
 /bin/tracepath
 /bin/tracepath6
 #EndUsrMerge
-%{_mandir}/man8/arping.8%{ext_man}
-%{_mandir}/man8/clockdiff.8%{ext_man}
-%{_mandir}/man8/ping.8%{ext_man}
-%{_mandir}/man8/rdisc.8%{ext_man}
-%{_mandir}/man8/tracepath.8%{ext_man}
-%{_mandir}/man8/tracepath6.8%{ext_man}
+%{_mandir}/man8/arping.8%{?ext_man}
+%{_mandir}/man8/clockdiff.8%{?ext_man}
+%{_mandir}/man8/ping.8%{?ext_man}
+%{_mandir}/man8/rdisc.8%{?ext_man}
+%{_mandir}/man8/tracepath.8%{?ext_man}
+%{_mandir}/man8/tracepath6.8%{?ext_man}
 #EndUsrMerge
 
 %files -n rarpd
@@ -185,6 +183,6 @@ ln -sf %{_bindir}/tracepath6    %{buildroot}/bin
 #UsrMerge
 /sbin/rarpd
 #EndUsrMerge
-%{_mandir}/man8/rarpd.8%{ext_man}
+%{_mandir}/man8/rarpd.8%{?ext_man}
 
 %changelog

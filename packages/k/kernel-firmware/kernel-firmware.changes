@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jul 13 09:47:28 UTC 2020 - tiwai@suse.com
+
+- Update to version 20200702 (git commit 74ac3b5a7e79):
+  * amdgpu: add UVD firmware for SI asics
+  * QCA: Update WCN3991 FW files
+  * amdgpu: update renoir firmware from 20.20 release
+  * amdgpu: update picasso firmware from 20.20 release
+  * amdgpu: update raven2 firmware from 20.20 release
+  * amdgpu: update raven firmware from 20.20 release
+  * amdgpu: add vega20 TA firmware from 20.20 release
+  * amdgpu: update vega20 firmware from 20.20 release
+  * amdgpu: update vega12 firmware from 20.20 release
+  * amdgpu: update vega10 firmware from 20.20 release
+  * amdgpu: update navi10 firmware from 20.20 release
+  * amdgpu: update navi14 firmware from 20.20 release
+  * rtl_nic: add firmware for RTL8125B
+
+-------------------------------------------------------------------
 Mon Jun 15 09:54:47 UTC 2020 - tiwai@suse.com
 
 - Update to version 20200610 (git commit 887d2a103c2b):

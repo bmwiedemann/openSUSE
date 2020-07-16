@@ -1,6 +1,6 @@
 --- eclipse.platform/ant/org.eclipse.ant.launching/build.properties.orig	2017-01-09 10:24:16.258243377 +0000
 +++ eclipse.platform/ant/org.eclipse.ant.launching/build.properties	2017-01-09 10:25:08.302620557 +0000
-@@ -20,18 +20,14 @@
+@@ -23,18 +23,14 @@
                 about.html
  
  jars.compile.order = .,\
@@ -29,7 +29,7 @@
  javacWarnings..=-unavoidableGenericProblems
 --- eclipse.platform/ant/org.eclipse.ant.ui/build.properties.orig	2017-04-03 18:40:41.033489412 +0100
 +++ eclipse.platform/ant/org.eclipse.ant.ui/build.properties	2017-04-03 18:43:21.614928391 +0100
-@@ -14,8 +14,8 @@
+@@ -17,8 +17,8 @@
  source.lib/antrunner.jar = Ant Runner Support/
  output.lib/antrunner.jar = ant_runner_support_bin/
  # Compiled with 1.6 locally, see bug 495617:
@@ -40,7 +40,7 @@
  src.includes = about.html,\
                 about_files/,\
                 Remote Ant Support/
-@@ -31,6 +31,5 @@
+@@ -34,6 +34,5 @@
                 lib/antrunner.jar,\
                 lib/remoteAnt.jar,\
                 css/

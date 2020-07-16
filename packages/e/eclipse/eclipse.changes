@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Jul  6 04:53:01 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 4.15
+- Build only on 64-bit architectures, since 32-bit support was
+  dropped upstream
+- Modified patches:
+  * eclipse-debug-symbols.patch
+  * eclipse-disable-droplets-in-dropins.patch
+  * eclipse-disable-uses-constraints.patch
+  * eclipse-feature-plugins-to-category-ius.patch
+  * eclipse-fix-dropins.patch
+  * eclipse-fix-tests.patch
+  * eclipse-hide-droplets-from-install-wizard.patch
+  * eclipse-ignore-version-when-calculating-home.patch
+  * eclipse-make-droplets-runnable.patch
+  * eclipse-no-source-for-dependencies.patch
+  * eclipse-p2-pick-up-renamed-jars.patch
+  * eclipse-pde-tp-support-droplets.patch
+  * eclipse-secondary-arches.patch
+  * eclipse-support-symlink-bundles.patch
+  * eclipse-suse-batik.patch
+  * fix_ant_build.patch
+  * prefer_x11_backend.patch
+- Removed patches:
+  * eclipse-adjust-droplets.patch
+  * eclipse-arm32.patch
+  * eclipse-asm7.patch
+  * eclipse-felix-scr-dependencies.patch
+  * eclipse-force-gtk2.patch
+  * eclipse-gcc10.patch
+  * eclipse-imagedescriptor.patch
+  * eclipse-lucene-8.patch
+  * eclipse-mockito.patch
+  * eclipse-remove-jgit-provider.patch
+  * eclipse-swt-disable-gtk2.patch
+  * eclipse-test-support.patch
+- Added patches:
+  * compiler-release.patch
+  * eclipse-patch-out-fileupload-dep.patch
+  * eclipse-swt-avoid-javascript-at-build.patch
+  * explicit-hamcrest.patch
+  * force-clean-after-p2-operations.patch
+
+-------------------------------------------------------------------
 Thu Jun  4 07:44:39 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

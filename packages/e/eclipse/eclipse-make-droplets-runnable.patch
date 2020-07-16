@@ -19,7 +19,7 @@ diff --git rt.equinox.p2/bundles/org.eclipse.equinox.p2.extensionlocation/src/or
 index 342e33e..425a166 100644
 --- rt.equinox.p2/bundles/org.eclipse.equinox.p2.extensionlocation/src/org/eclipse/equinox/internal/p2/extensionlocation/ExtensionLocationArtifactRepository.java
 +++ rt.equinox.p2/bundles/org.eclipse.equinox.p2.extensionlocation/src/org/eclipse/equinox/internal/p2/extensionlocation/ExtensionLocationArtifactRepository.java
-@@ -260,6 +260,22 @@ public class ExtensionLocationArtifactRepository extends AbstractRepository<IArt
+@@ -284,6 +284,22 @@ public class ExtensionLocationArtifactRepository extends AbstractRepository<IArt
  		return artifactRepository.getProperties();
  	}
  

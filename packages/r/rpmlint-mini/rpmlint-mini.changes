@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 13 09:32:06 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version master:
+  * whitelist ppc64-diag cron job (bsc#1173044)
+
+-------------------------------------------------------------------
 Fri Jun 12 08:50:17 UTC 2020 - matthias.gerstner@suse.com
 
 - Update to version master:

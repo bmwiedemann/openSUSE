@@ -1,0 +1,85 @@
+diff -urEbwB jgit-5.7.0.202003110725-r.orig/org.eclipse.jgit.pgm/pom.xml jgit-5.7.0.202003110725-r/org.eclipse.jgit.pgm/pom.xml
+--- jgit-5.7.0.202003110725-r.orig/org.eclipse.jgit.pgm/pom.xml	2020-04-07 12:24:45.966217181 +0200
++++ jgit-5.7.0.202003110725-r/org.eclipse.jgit.pgm/pom.xml	2020-04-07 12:48:09.474568774 +0200
+@@ -145,19 +145,40 @@
+       </plugin>
+ 
+       <plugin>
+-        <groupId>org.springframework.boot</groupId>
+-        <artifactId>spring-boot-maven-plugin</artifactId>
++        <groupId>org.apache.maven.plugins</groupId>
++        <artifactId>maven-shade-plugin</artifactId>
+         <executions>
+           <execution>
++            <phase>package</phase>
+             <goals>
+-              <goal>repackage</goal>
++              <goal>shade</goal>
+             </goals>
+             <configuration>
+               <finalName>jgit-cli</finalName>
+-              <attach>false</attach>
+-              <mainClass>org.eclipse.jgit.pgm.Main</mainClass>
+-              <executable>true</executable>
+-              <embeddedLaunchScript>jgit.sh</embeddedLaunchScript>
++              <createDependencyReducedPom>false</createDependencyReducedPom>
++              <transformers>
++                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
++                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
++                  <manifestEntries>
++                    <Main-Class>org.eclipse.jgit.pgm.Main</Main-Class>
++                    <Implementation-Title>JGit Command Line Interface</Implementation-Title>
++                  </manifestEntries>
++                </transformer>
++              </transformers>
++              <filters>
++                <!-- exclude the signing data for individual jars, ueberjar will be signed again -->
++                <filter>
++                  <artifact>*:*</artifact>
++                  <excludes>
++                    <exclude>META-INF/*.SF</exclude>
++                    <exclude>META-INF/*.DSA</exclude>
++                    <exclude>META-INF/*.RSA</exclude>
++                    <exclude>OSGI-OPT/**</exclude>
++                  </excludes>
++                </filter>
++              </filters>
++              <shadedArtifactAttached>true</shadedArtifactAttached>
++              <shadedClassifierName>shaded</shadedClassifierName> <!-- Any name that makes sense -->
+             </configuration>
+           </execution>
+         </executions>
+@@ -172,13 +193,11 @@
+             <phase>package</phase>
+             <configuration>
+               <target>
+-                <move
+-                  file="${basedir}/target/jgit-cli.jar"
+-                  force="yes"
+-                  tofile="${basedir}/target/jgit" />
+-                <chmod
+-                  file="${basedir}/target/jgit"
+-                  perm="a+x" />
++                <concat destfile="${basedir}/target/jgit" force="yes" binary="true">
++                  <fileset file="${basedir}/jgit.sh" />
++                  <fileset file="${basedir}/target/jgit-cli.jar" />
++                </concat>
++                <chmod file="${basedir}/target/jgit" perm="a+x"/>
+               </target>
+             </configuration>
+             <goals>
+diff -urEbwB jgit-5.7.0.202003110725-r.orig/pom.xml jgit-5.7.0.202003110725-r/pom.xml
+--- jgit-5.7.0.202003110725-r.orig/pom.xml	2020-04-07 12:24:45.782216086 +0200
++++ jgit-5.7.0.202003110725-r/pom.xml	2020-04-07 12:27:10.879079553 +0200
+@@ -385,11 +385,6 @@
+           <artifactId>maven-resources-plugin</artifactId>
+           <version>3.1.0</version>
+         </plugin>
+-        <plugin>
+-          <groupId>org.springframework.boot</groupId>
+-          <artifactId>spring-boot-maven-plugin</artifactId>
+-          <version>2.1.5.RELEASE</version>
+-        </plugin>
+       </plugins>
+     </pluginManagement>
+ 

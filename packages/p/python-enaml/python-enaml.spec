@@ -92,6 +92,7 @@ mv enaml enaml_temp
 # not sure why these two are failing
 %pytest_arch -k "not (test_focus_tracking or test_focus_traversal)"
 mv enaml_temp enaml
+find %{buildroot} -name __enamlcache__ | xargs rm -r # drop unreproducible files https://github.com/nucleic/enaml/issues/397
 
 %post
 %{python_install_alternative enaml-compileall enaml-run}

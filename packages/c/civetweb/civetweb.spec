@@ -1,7 +1,7 @@
 #
 # spec file for package civetweb
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,11 @@ Name:           civetweb
 Summary:        A C/C++ web server
 License:        MIT
 Group:          Productivity/Networking/Web/Servers
-Version:        1.11
+Version:        1.12
 Release:        0
-Url:            https://github.com/civetweb/civetweb
+URL:            https://github.com/civetweb/civetweb
 Source0:        https://github.com/civetweb/civetweb/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        civetweb.conf
-Patch1:         fix-libpath.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  openssl-devel
@@ -57,7 +56,6 @@ comprisable header file.
 
 %prep
 %setup -q
-%patch1 -p1
 
 install -pm0644  %{SOURCE1} .
 
@@ -70,6 +68,9 @@ rm -rf build
 
 %install
 %cmake_install
+
+#remove cmake files
+rm %{buildroot}%{_libdir}/cmake/%{name}/*cmake
 
 %post -n %{_libname}%{soname} -p /sbin/ldconfig
 %postun -n %{_libname}%{soname} -p /sbin/ldconfig

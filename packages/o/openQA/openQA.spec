@@ -70,10 +70,12 @@
 %define qemu qemu
 %endif
 # The following line is generated from dependencies.yaml
-%define devel_requires %build_requires %qemu %test_requires chromedriver curl perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy) postgresql-devel rsync sudo tar xorg-x11-fonts
+%define devel_no_selenium_requires %build_requires %qemu %test_requires curl perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy) postgresql-devel rsync sudo tar xorg-x11-fonts
+# The following line is generated from dependencies.yaml
+%define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1594309120.bdb02d947
+Version:        4.6.1594640971.bf4138e4b
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -131,6 +133,14 @@ Even more importantly, openQA can run several combinations of tests for every
 revision of the operating system, reporting the errors detected for each
 combination of hardware configuration, installation options and variant of the
 operating system.
+
+%package no-selenium-devel
+Summary:        Development package pulling in all build+test dependencies except chromedriver for Selenium based tests
+Group:          Development/Tools/Other
+Requires:       %{devel_no_selenium_requires}
+
+%description no-selenium-devel
+Development package pulling in all build+test dependencies except chromedriver for Selenium based tests.
 
 %package devel
 Summary:        Development package pulling in all build+test dependencies
@@ -249,9 +259,11 @@ export LC_ALL=en_US.UTF-8
 # Skip tests not working currently, or flaky, and Selenium tests
 # https://progress.opensuse.org/issues/19652
 # 17-labels_carry_over.t: https://progress.opensuse.org/issues/60209
+# api/14-plugin_obs_rsync_async.t: https://progress.opensuse.org/issues/68836
 rm \
     t/17-labels_carry_over.t \
     t/25-cache-service.t \
+    t/api/14-plugin_obs_rsync_async.t \
     t/ui/*.t
 
 make test OBS_RUN=1 PROVE_ARGS='-l -r -v' TEST_PG_PATH=%{buildroot}/DB

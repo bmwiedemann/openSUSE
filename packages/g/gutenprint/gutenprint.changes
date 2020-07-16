@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul  5 19:12:17 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to 5.2.15 final version:
+  * The following printers have been added: Canon SELPHY CP1300.
+  * The following printers have seen bugfixes:
+    - Sony UP-CR10L
+    - Sony UP-DR150
+    - Sony UP-DR200
+  * Miscellaneous fixes for Shinko S1245, Sony UP-CR10L, UP-DR150,
+    and UP-DR200, and Kodak.
+
+-------------------------------------------------------------------
 Mon Mar 16 11:07:50 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build with no python2 available by pulling in python3-cups

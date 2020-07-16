@@ -1,7 +1,7 @@
 #
 # spec file for package gutenprint
 #
-# Copyright (c) 2019 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gutenprint
-Url:            http://gutenprint.sourceforge.net
-#Version:        5.2.14
-Version:        5.2.14pre15.1
+URL:            http://gutenprint.sourceforge.net
+Version:        5.2.15
 Release:        0
-#define tarball_version %{version}
-%define tarball_version 5.2.15-pre1
+#Version:        5.2.14pre15.1
+%define tarball_version %{version}
+#%%define tarball_version 5.2.15-pre1
 %define gutenprintmajor 5.2
 BuildRequires:  cairo-devel
 # SLE10 and SLE11 and SLE12 need special BuildRequires.
@@ -55,12 +55,10 @@ BuildRequires:  libtiff-devel
 BuildRequires:  libusb-1_0-devel
 %endif
 BuildRequires:  pango-devel
-# add python-cups BuildRequires to have postscriptdriver() Provides for the drivers in gutenprint.
-BuildRequires:  python3-cups
 Summary:        Printer drivers for CUPS from the Gutenprint project
-License:        GPL-2.0+
-Group:          Hardware/Printing
 # The "rastertogutenprint" filter requires CUPS and the "cups" output device in Ghostscript:
+License:        GPL-2.0-or-later
+Group:          Hardware/Printing
 %if 0%{?suse_version} == 1010
 # For SLE10 it must be built with --disable-escputil because in SLE10 escputil is provided by ghostscript-library
 %define enable_or_disable_escputil disable-escputil
@@ -102,10 +100,10 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # https://sourceforge.net/projects/gimp-print/files/gutenprint-5.2/5.2.14/gutenprint-5.2.14.tar.bz2/download
 # How to get Source0 directly:
 # wget --no-check-certificate -O gutenprint-5.2.14.tar.bz2 https://sourceforge.net/projects/gimp-print/files/gutenprint-5.2/5.2.14/gutenprint-5.2.14.tar.bz2
-#Source0:        http://downloads.sourceforge.net/gimp-print/%{name}-%{version}.tar.bz2
+Source0:        http://downloads.sourceforge.net/gimp-print/%{name}-%{version}.tar.bz2
 # How to get Source0 directly:
 # wget --no-check-certificate -O gutenprint-5.2.15-pre1.tar.bz2 https://sourceforge.net/projects/gimp-print/files/gutenprint-5.2/5.2.15-pre1/gutenprint-5.2.15-pre1.tar.bz2/download
-Source0:        gutenprint-5.2.15-pre1.tar.bz2
+#Source0:        gutenprint-5.2.15-pre1.tar.bz2
 # Patch0...Patch9 is for patches from upstream:
 # Patch10...Patch99 is for openSUSE patches which which are intended for upstream:
 
