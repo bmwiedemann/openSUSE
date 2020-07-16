@@ -571,6 +571,8 @@ unsorted:
   - apache-commons-httpclient-demo 
   - apache-commons-httpclient-javadoc 
   - apache-commons-httpclient-manual 
+  - apache-commons-imaging 
+  - apache-commons-imaging-javadoc 
   - apache-commons-io-javadoc 
   - apache-commons-jexl 
   - apache-commons-jexl-javadoc 
@@ -1364,6 +1366,8 @@ unsorted:
   - build-mkbaselibs 
   - build-mkdrpms 
   - buildah 
+  - buildnumber-maven-plugin 
+  - buildnumber-maven-plugin-javadoc 
   - buildstream 
   - bumblebee 
   - bumblebee-status 
@@ -1391,6 +1395,7 @@ unsorted:
   - busybox-sendmail 
   - busybox-sh 
   - busybox-sharutils 
+  - busybox-testsuite 
   - busybox-traceroute 
   - busybox-util-linux 
   - busybox-which 
@@ -2055,7 +2060,6 @@ unsorted:
   - crawl-data 
   - crawl-sdl 
   - crazydiskinfo 
-  - creduce 
   - cri-tools: [i586] 
   - criu: [x86_64] # recommended by opensuse_kubic:patterns-containers-kubeadm 
   - criu-devel: [x86_64] 
@@ -6293,6 +6297,7 @@ unsorted:
   - istack-commons-tools 
   - istgt 
   - isync 
+  - itext-parent 
   - itk 
   - itpp-devel 
   - itpp-doc 
@@ -6406,7 +6411,7 @@ unsorted:
   - java-15-openjdk-accessibility 
   - java-15-openjdk-demo 
   - java-15-openjdk-devel 
-  - java-15-openjdk-headless: [x86_64] 
+  - java-15-openjdk-headless 
   - java-15-openjdk-javadoc 
   - java-15-openjdk-jmods 
   - java-15-openjdk-src 
@@ -8524,20 +8529,20 @@ unsorted:
   - libavc1394-devel 
   - libavc1394-devel-32bit: [x86_64] 
   - libavc1394-tools 
-  - libavcodec58-32bit: [x86_64] 
-  - libavdevice58: [i586] 
-  - libavdevice58-32bit: [x86_64] 
-  - libavfilter7-32bit: [x86_64] 
-  - libavformat58-32bit: [x86_64] 
+  - libavcodec58_91-32bit: [x86_64] 
+  - libavdevice58_10: [i586] 
+  - libavdevice58_10-32bit: [x86_64] 
+  - libavfilter7_85-32bit: [x86_64] 
+  - libavformat58_45-32bit: [x86_64] 
   - libavfs0 
   - libavif-devel 
   - libavif4 
   - libavogadrolibs-suse0 
   - libavrdude1 
-  - libavresample4-32bit: [x86_64] 
+  - libavresample4_0-32bit: [x86_64] 
   - libavtp-devel 
   - libavtp0 
-  - libavutil56-32bit: [x86_64] 
+  - libavutil56_51-32bit: [x86_64] 
   - libax25-0 
   - libax25-common 
   - libax25-devel 
@@ -11502,7 +11507,7 @@ unsorted:
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
   - libportmidi0 
-  - libpostproc55-32bit: [x86_64] 
+  - libpostproc55_7-32bit: [x86_64] 
   - libpq5-32bit: [x86_64] 
   - libpqos-devel 
   - libpqos3 
@@ -12480,8 +12485,8 @@ unsorted:
   - libsvm2 
   - libswitchboard-2_0-0 
   - libsword-1_8_1 
-  - libswresample3-32bit: [x86_64] 
-  - libswscale5-32bit: [x86_64] 
+  - libswresample3_7-32bit: [x86_64] 
+  - libswscale5_7-32bit: [x86_64] 
   - libsybdb5 
   - libsympol0_1 
   - libsymspg1 
@@ -12606,6 +12611,8 @@ unsorted:
   - libtolua++-5_1-devel 
   - libtolua++-5_3-1 
   - libtolua++-5_3-devel 
+  - libtolua++-5_4-1 
+  - libtolua++-5_4-devel 
   - libtolua-devel 
   - libtolua5 
   - libtomcrypt-devel 
@@ -13275,7 +13282,6 @@ unsorted:
   - libxtrxdsp0 
   - libxtrxll-devel 
   - libxtrxll0 
-  - libxxhash0 
   - libxy4 
   - libyajl-devel 
   - libyajl-devel-32bit: [x86_64] 
@@ -13329,7 +13335,6 @@ unsorted:
   - libyui-qt-rest-api12 
   - libyui-rest-api-devel 
   - libyui-rest-api12 
-  - libz3-4_8 
   - libzapojit-devel 
   - libzbar-devel 
   - libzbar0-32bit: [x86_64] 
@@ -13730,15 +13735,48 @@ unsorted:
   - lua53-say 
   - lua53-zlib 
   - lua54 
+  - lua54-alt-getopt 
+  - lua54-argparse 
+  - lua54-cliargs 
+  - lua54-compat-5.3 
+  - lua54-copas 
+  - lua54-coxpcall 
   - lua54-devel 
+  - lua54-dkjson 
   - lua54-doc 
+  - lua54-ldbus 
   - lua54-ldoc 
+  - lua54-lgi 
+  - lua54-lgi-doc 
+  - lua54-loadkit 
   - lua54-lpeg 
   - lua54-lpeg-doc 
+  - lua54-lua-dbus 
+  - lua54-lua-mpris 
+  - lua54-luadbi 
+  - lua54-luaevent 
+  - lua54-luaexpat 
+  - lua54-luafilesystem 
   - lua54-luaposix 
+  - lua54-luarocks 
+  - lua54-luasec 
+  - lua54-luasocket 
+  - lua54-luasocket-devel 
+  - lua54-luasql 
+  - lua54-luassert 
+  - lua54-luasystem 
   - lua54-luaterm 
+  - lua54-luv 
+  - lua54-luv-devel 
   - lua54-markdown 
+  - lua54-mediator_lua 
+  - lua54-messagepack 
+  - lua54-moonscript 
+  - lua54-mpack 
+  - lua54-penlight 
+  - lua54-penlight-doc 
   - lua54-say 
+  - lua54-zlib 
   - luabind-devel 
   - luaposix-doc 
   - lucene++-devel 
@@ -14780,7 +14818,6 @@ unsorted:
   - mpv-bash-completion 
   - mpv-devel 
   - mpv-mpris 
-  - mpv-plugin-mpris 
   - mpv-zsh-completion 
   - mr 
   - mraa: [x86_64] 
@@ -18985,7 +19022,6 @@ unsorted:
   - python-novaclient-doc 
   - python-octaviaclient-doc 
   - python-onionshare-data 
-  - python-openstack-doc-tools 
   - python-openstackclient-doc 
   - python-openstacksdk-doc 
   - python-optcomplete 
@@ -20006,6 +20042,7 @@ unsorted:
   - python3-djet 
   - python3-djvulibre 
   - python3-dnf 
+  - python3-dnf-plugin-kickstart 
   - python3-dnf-plugin-leaves 
   - python3-dnf-plugin-local 
   - python3-dnf-plugin-post-transaction-actions 
@@ -20827,6 +20864,7 @@ unsorted:
   - python3-openqa_client 
   - python3-openqa_review 
   - python3-openshot 
+  - python3-openstack-doc-tools 
   - python3-openstack.nose_plugin 
   - python3-openstackclient 
   - python3-openstackdocstheme 
@@ -22173,7 +22211,6 @@ unsorted:
   - rainbow-bash-completion 
   - rainbow-zsh-completion 
   - rakudo 
-  - raleway-fonts 
   - rang-devel 
   - ranger 
   - rapid-photo-downloader 
@@ -22456,18 +22493,14 @@ unsorted:
   - ruby2.6-rubygem-abstract_method 
   - ruby2.6-rubygem-abstract_method-doc 
   - ruby2.6-rubygem-actioncable-5.2 
-  - ruby2.6-rubygem-actioncable-5_1 
   - ruby2.6-rubygem-actioncable-6.0 
   - ruby2.6-rubygem-actioncable-doc-5.2 
-  - ruby2.6-rubygem-actioncable-doc-5_1 
   - ruby2.6-rubygem-actioncable-doc-6.0 
   - ruby2.6-rubygem-actionmailbox-6.0 
   - ruby2.6-rubygem-actionmailbox-doc-6.0 
   - ruby2.6-rubygem-actionmailer-5.2 
-  - ruby2.6-rubygem-actionmailer-5_1 
   - ruby2.6-rubygem-actionmailer-6.0 
   - ruby2.6-rubygem-actionmailer-doc-5.2 
-  - ruby2.6-rubygem-actionmailer-doc-5_1 
   - ruby2.6-rubygem-actionmailer-doc-6.0 
   - ruby2.6-rubygem-actionpack-5.2 
   - ruby2.6-rubygem-actionpack-5_1 
@@ -22493,7 +22526,6 @@ unsorted:
   - ruby2.6-rubygem-activemodel-doc-5_1 
   - ruby2.6-rubygem-activemodel-doc-6.0 
   - ruby2.6-rubygem-activerecord-5.2 
-  - ruby2.6-rubygem-activerecord-5_1 
   - ruby2.6-rubygem-activerecord-6.0 
   - ruby2.6-rubygem-activerecord-deprecated_finders 
   - ruby2.6-rubygem-activerecord-deprecated_finders-doc 
@@ -23254,13 +23286,11 @@ unsorted:
   - ruby2.6-rubygem-rack-testsuite-1_6 
   - ruby2.6-rubygem-rack-testsuite-2.0 
   - ruby2.6-rubygem-rails-5.2 
-  - ruby2.6-rubygem-rails-5_1 
   - ruby2.6-rubygem-rails-6.0 
   - ruby2.6-rubygem-rails-deprecated_sanitizer 
   - ruby2.6-rubygem-rails-deprecated_sanitizer-doc 
   - ruby2.6-rubygem-rails-deprecated_sanitizer-testsuite 
   - ruby2.6-rubygem-rails-doc-5.2 
-  - ruby2.6-rubygem-rails-doc-5_1 
   - ruby2.6-rubygem-rails-doc-6.0 
   - ruby2.6-rubygem-rails-dom-testing-doc 
   - ruby2.6-rubygem-rails-dom-testing-testsuite 
@@ -23272,9 +23302,7 @@ unsorted:
   - ruby2.6-rubygem-rails_stdout_logging-doc 
   - ruby2.6-rubygem-rails_stdout_logging-testsuite 
   - ruby2.6-rubygem-railties-5.2 
-  - ruby2.6-rubygem-railties-5_1 
   - ruby2.6-rubygem-railties-doc-5.2 
-  - ruby2.6-rubygem-railties-doc-5_1 
   - ruby2.6-rubygem-railties-doc-6.0 
   - ruby2.6-rubygem-rainbow 
   - ruby2.6-rubygem-rainbow-doc 
@@ -23631,11 +23659,9 @@ unsorted:
   - ruby2.7-rubygem-abstract-testsuite 
   - ruby2.7-rubygem-abstract_method-doc 
   - ruby2.7-rubygem-actioncable-doc-5.2 
-  - ruby2.7-rubygem-actioncable-doc-5_1 
   - ruby2.7-rubygem-actioncable-doc-6.0 
   - ruby2.7-rubygem-actionmailbox-doc-6.0 
   - ruby2.7-rubygem-actionmailer-doc-5.2 
-  - ruby2.7-rubygem-actionmailer-doc-5_1 
   - ruby2.7-rubygem-actionmailer-doc-6.0 
   - ruby2.7-rubygem-actionpack-doc-5.2 
   - ruby2.7-rubygem-actionpack-doc-5_1 
@@ -24139,7 +24165,6 @@ unsorted:
   - ruby2.7-rubygem-rails-deprecated_sanitizer-doc 
   - ruby2.7-rubygem-rails-deprecated_sanitizer-testsuite 
   - ruby2.7-rubygem-rails-doc-5.2 
-  - ruby2.7-rubygem-rails-doc-5_1 
   - ruby2.7-rubygem-rails-doc-6.0 
   - ruby2.7-rubygem-rails-dom-testing-doc 
   - ruby2.7-rubygem-rails-dom-testing-testsuite 
@@ -24149,7 +24174,6 @@ unsorted:
   - ruby2.7-rubygem-rails_stdout_logging-doc 
   - ruby2.7-rubygem-rails_stdout_logging-testsuite 
   - ruby2.7-rubygem-railties-doc-5.2 
-  - ruby2.7-rubygem-railties-doc-5_1 
   - ruby2.7-rubygem-railties-doc-6.0 
   - ruby2.7-rubygem-rainbow-doc 
   - ruby2.7-rubygem-rainbow-testsuite 
@@ -33359,6 +33383,7 @@ unsorted:
   - tolua 
   - toluapp-5.1 
   - toluapp-5.3 
+  - toluapp-5.4 
   - tomatoes 
   - tomcat 
   - tomcat-admin-webapps 
@@ -34452,6 +34477,7 @@ unsorted:
   - xcursorgen 
   - xdbedizzy 
   - xdg-desktop-portal-devel 
+  - xdg-desktop-portal-wlr 
   - xdiskusage 
   - xditview 
   - xdmsc 
@@ -34590,7 +34616,9 @@ unsorted:
   - xml-im-exporter-javadoc 
   - xml-maven-plugin 
   - xml-maven-plugin-javadoc 
+  - xml-security 
   - xml-security-c-bin 
+  - xml-security-javadoc 
   - xml2po 
   - xml2po-devel 
   - xmlb-tool 
