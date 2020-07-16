@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Jul 13 19:16:04 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.1
+  Added
+  * box.ASCII_DOUBLE_HEAD
+  Changed
+  * Removed replace of -- --- ... from Markdown, as it made it
+    impossible to include CLI info
+- Update to version 3.3.0
+  Added
+  * Added title and title_align options to Panel
+  * Added pad and width parameters to Align
+  * Added end parameter to Rule
+  * Added Text.pad and Text.align methods
+  * Added leading parameter to Table
+- Update to version 3.2.0
+  Added
+  * Added Align.left Align.center Align.right shortcuts
+  * Added Panel.fit shortcut
+  * Added align parameter to Columns
+  Fixed
+  * Align class now pads to the right, like Text
+  * ipywidgets added as an optional dependency
+  * Issue with Panel and background color
+  * Fixed missing __bool__ on Segment
+  Changed
+  * Added border_style argument to Panel (note, style now applies
+    to interior of the panel)
+- Update to version 3.1.0
+  Changed
+  * Progress bars now work in Jupyter
+  Added
+  * Added refresh_per_second to progress.track
+  * Added styles to BarColumn and progress.track
+- Update to version 3.0.5
+  Fixed
+  * Fixed Windows version number require for truecolor
+- Update to version 3.0.4
+  Changed
+  * More precise detection of Windows console
+- Update to version 3.0.3
+  Fixed
+  * Fixed edge case with wrapped and overflowed text
+  Changed
+  * New algorithm for compressing table that priorities smaller
+    columns
+  Added
+  * Added safe_box parameter to Console constructor
+
+-------------------------------------------------------------------
 Thu Jul  2 19:08:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.2
