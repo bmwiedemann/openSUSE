@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 15 11:53:13 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.2.0
+  * New pulse shaping
+  * Print statements changed to logging and warnings
+
+-------------------------------------------------------------------
 Mon Jun 29 18:52:20 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 1.1.0

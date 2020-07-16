@@ -17,19 +17,28 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-scikit-dsp-comm
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        DSP and Comm package for Python
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/mwickert/scikit-dsp-comm
+URL:            https://github.com/mwickert/scikit-dsp-comm
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-dsp-comm/scikit-dsp-comm-%{version}.tar.gz
 Source100:      python-scikit-dsp-comm-rpmlintrc
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-matplotlib
+Requires:       python-numpy
+Requires:       python-scipy
+Recommends:     python-PyAudio
+Recommends:     python-colorama
+Recommends:     python-ipywidgets
+Recommends:     python-pyrtlsdr
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module nose}
@@ -37,13 +46,6 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module tox}
 # /SECTION
-Requires:       python-matplotlib
-Requires:       python-numpy
-Requires:       python-scipy
-Recommends:     python-PyAudio
-Recommends:     python-pyrtlsdr
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
