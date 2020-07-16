@@ -23,11 +23,11 @@ Summary:        Application and environment virtualization
 License:        BSD-3-Clause-LBNL
 Group:          Productivity/Clustering/Computing
 Name:           singularity
-Version:        3.5.3
+Version:        3.6.0
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
-URL:            https://www.sylabs.io/singularity/
-Source0:        https://github.com/sylabs/singularity/releases/download/v%{version}/singularity-%{version}.tar.gz
+URL:            https://github.com/hpcng/singularity
+Source0:        https://github.com/hpcng/singularity/releases/download/v%{version}/singularity-%{version}.tar.gz
 Source1:        README.SUSE
 Source5:        %{name}-rpmlintrc
 Patch0:         build-position-independent-binaries.patch
