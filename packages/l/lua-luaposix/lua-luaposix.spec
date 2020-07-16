@@ -18,7 +18,7 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name luaposix
-Version:        34.1.1
+Version:        35.0
 Release:        0
 Summary:        POSIX library for Lua
 License:        MIT

@@ -82,4 +82,16 @@
     <comment>- Add lua54 as new build target</comment>
     <requestid>819781</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>494894c7af421cf27fdb6e62e68a09e4</srcmd5>
+    <version>35.0</version>
+    <time>1594894067</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 35.0
+  * Initial support for Lua 5.4
+  * Internally, we use our own bitwise operation wrapper functions
+    rather than bit32 where possible. This means bitwise operations
+    when running under Lua 5.3+ work on 64bit integers.</comment>
+    <requestid>820758</requestid>
+  </revision>
 </revisionlist>
