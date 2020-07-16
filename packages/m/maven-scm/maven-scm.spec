@@ -48,6 +48,7 @@ BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-container-default)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.eclipse.jgit:org.eclipse.jgit)
+BuildRequires:  mvn(org.eclipse.jgit:org.eclipse.jgit.ssh.jsch)
 BuildRequires:  mvn(org.sonatype.plexus:plexus-sec-dispatcher)
 #!BuildRequires: jgit
 BuildArch:      noarch
@@ -97,6 +98,8 @@ sed -i s/cvsjava.CvsJava/cvsexe.CvsExe/ maven-scm-client/src/main/resources/META
 # Tests are skipped anyways, so remove dependency on mockito.
 %pom_remove_dep org.mockito: maven-scm-providers/maven-scm-provider-jazz
 %pom_remove_dep org.mockito: maven-scm-providers/maven-scm-provider-accurev
+
+%pom_add_dep org.eclipse.jgit:org.eclipse.jgit.ssh.jsch maven-scm-providers/maven-scm-providers-git/maven-scm-provider-jgit
 
 # Put TCK tests into a separate sub-package
 %{mvn_package} :%{name}-provider-cvstest test
