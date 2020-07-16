@@ -37,6 +37,8 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Do-not-remove-virtual-method-from-build.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -76,7 +78,7 @@ Conflicts:      kapptemplate <= 16.03.80
 Files needed for developing custom runners or frontends.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
