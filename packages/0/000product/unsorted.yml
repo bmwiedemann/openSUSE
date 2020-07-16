@@ -1558,8 +1558,8 @@ unsorted:
   - catatonit: [i586] 
   - catcodec 
   - cava 
-  - cbi-plugins 
-  - cbi-plugins-javadoc 
+  - cbi-plugins: [x86_64] 
+  - cbi-plugins-javadoc: [x86_64] 
   - cblas-devel 
   - cblas-devel-32bit: [x86_64] 
   - cblas-devel-static 
@@ -2669,35 +2669,33 @@ unsorted:
   - echomixer 
   - eciadsl-usermode 
   - ecj 
-  - eclipse-contributor-tools 
-  - eclipse-contributor-tools-bootstrap 
-  - eclipse-ecf-core 
-  - eclipse-ecf-core-bootstrap 
-  - eclipse-ecf-runtime 
-  - eclipse-ecf-sdk 
-  - eclipse-egit 
-  - eclipse-emf-core 
-  - eclipse-emf-core-bootstrap 
-  - eclipse-emf-runtime 
-  - eclipse-emf-sdk 
-  - eclipse-emf-xsd 
-  - eclipse-equinox-osgi 
-  - eclipse-equinox-osgi-bootstrap 
-  - eclipse-jdt 
-  - eclipse-jdt-bootstrap 
-  - eclipse-jgit 
-  - eclipse-license1 
-  - eclipse-license2 
-  - eclipse-p2-discovery 
-  - eclipse-p2-discovery-bootstrap 
-  - eclipse-pde 
-  - eclipse-pde-bootstrap 
-  - eclipse-platform 
-  - eclipse-platform-bootstrap 
+  - eclipse-contributor-tools: [x86_64] 
+  - eclipse-ecf-core: [x86_64] 
+  - eclipse-ecf-core-bootstrap: [x86_64] 
+  - eclipse-ecf-runtime: [x86_64] 
+  - eclipse-ecf-sdk: [x86_64] 
+  - eclipse-egit: [x86_64] 
+  - eclipse-emf-core: [x86_64] 
+  - eclipse-emf-core-bootstrap: [x86_64] 
+  - eclipse-emf-runtime: [x86_64] 
+  - eclipse-emf-sdk: [x86_64] 
+  - eclipse-emf-xsd: [x86_64] 
+  - eclipse-equinox-osgi: [x86_64] 
+  - eclipse-equinox-osgi-bootstrap: [x86_64] 
+  - eclipse-jdt: [x86_64] 
+  - eclipse-jdt-bootstrap: [x86_64] 
+  - eclipse-jgit: [x86_64] 
+  - eclipse-license1: [x86_64] 
+  - eclipse-license2: [x86_64] 
+  - eclipse-p2-discovery: [x86_64] 
+  - eclipse-p2-discovery-bootstrap: [x86_64] 
+  - eclipse-pde: [x86_64] 
+  - eclipse-pde-bootstrap: [x86_64] 
+  - eclipse-platform: [x86_64] 
+  - eclipse-platform-bootstrap: [x86_64] 
   - eclipse-swt 
-  - eclipse-swt-bootstrap 
-  - eclipse-tests 
-  - eclipse-tests-bootstrap 
+  - eclipse-swt-bootstrap: [x86_64] 
+  - eclipse-tests: [x86_64] 
   - econnman 
   - ecryptfs-utils 
   - ecryptfs-utils-32bit: [x86_64] 
@@ -5315,6 +5313,9 @@ unsorted:
   - grafana 
   - grafana-ha-cluster-dashboards 
   - grafana-piechart-panel 
+  - grafana-sap-hana-dashboards 
+  - grafana-sap-netweaver-dashboards 
+  - grafana-sap-providers 
   - grafana-status-panel 
   - grafx2 
   - grail 
@@ -6298,6 +6299,8 @@ unsorted:
   - istgt 
   - isync 
   - itext-parent 
+  - itextpdf 
+  - itextpdf-javadoc 
   - itk 
   - itpp-devel 
   - itpp-doc 
@@ -9513,8 +9516,8 @@ unsorted:
   - libfm4 
   - libfmapi-devel 
   - libfmapi1 
-  - libfmt6 
-  - libfmt6-32bit: [x86_64] 
+  - libfmt7 
+  - libfmt7-32bit: [x86_64] 
   - libfole-devel 
   - libfole1 
   - libfolks-telepathy25 
@@ -12985,7 +12988,8 @@ unsorted:
   - libwiiuse0 
   - libwim15 
   - libwkhtmltox0 
-  - libwlroots5 
+  - libwlroots5: [i586] 
+  - libwlroots6: [x86_64] 
   - libwmf-0_2-7-32bit: [x86_64] 
   - libwmf-devel 
   - libwmf-gnome 
@@ -15931,6 +15935,7 @@ unsorted:
   - ocfs2-tools-devel 
   - ocfs2-tools-devel-static 
   - ocfs2-tools-o2cb 
+  - oci-cli: [x86_64] 
   - ocl-icd-devel 
   - ocl-icd-devel-32bit: [x86_64] 
   - ocli 
@@ -20264,6 +20269,7 @@ unsorted:
   - python3-glfw 
   - python3-glob2 
   - python3-glom 
+  - python3-glucat: [x86_64] 
   - python3-gluster 
   - python3-gmconfig 
   - python3-gmsh 
@@ -20639,6 +20645,7 @@ unsorted:
   - python3-loguru 
   - python3-logutils 
   - python3-logzero 
+  - python3-lscsoft-glue 
   - python3-lttngust 
   - python3-lupa 
   - python3-lws 
@@ -21768,6 +21775,7 @@ unsorted:
   - python3-tld 
   - python3-tldextract 
   - python3-tmx 
+  - python3-tokenize-rt 
   - python3-toml 
   - python3-tomlkit 
   - python3-tools 
@@ -22503,9 +22511,7 @@ unsorted:
   - ruby2.6-rubygem-actionmailer-doc-5.2 
   - ruby2.6-rubygem-actionmailer-doc-6.0 
   - ruby2.6-rubygem-actionpack-5.2 
-  - ruby2.6-rubygem-actionpack-5_1 
   - ruby2.6-rubygem-actionpack-doc-5.2 
-  - ruby2.6-rubygem-actionpack-doc-5_1 
   - ruby2.6-rubygem-actionpack-doc-6.0 
   - ruby2.6-rubygem-actiontext-6.0 
   - ruby2.6-rubygem-actiontext-doc-6.0 
@@ -22515,15 +22521,11 @@ unsorted:
   - ruby2.6-rubygem-actionview-doc-5_1 
   - ruby2.6-rubygem-actionview-doc-6.0 
   - ruby2.6-rubygem-activejob-5.2 
-  - ruby2.6-rubygem-activejob-5_1 
   - ruby2.6-rubygem-activejob-6.0 
   - ruby2.6-rubygem-activejob-doc-5.2 
-  - ruby2.6-rubygem-activejob-doc-5_1 
   - ruby2.6-rubygem-activejob-doc-6.0 
   - ruby2.6-rubygem-activemodel-5.2 
-  - ruby2.6-rubygem-activemodel-5_1 
   - ruby2.6-rubygem-activemodel-doc-5.2 
-  - ruby2.6-rubygem-activemodel-doc-5_1 
   - ruby2.6-rubygem-activemodel-doc-6.0 
   - ruby2.6-rubygem-activerecord-5.2 
   - ruby2.6-rubygem-activerecord-6.0 
@@ -23664,17 +23666,14 @@ unsorted:
   - ruby2.7-rubygem-actionmailer-doc-5.2 
   - ruby2.7-rubygem-actionmailer-doc-6.0 
   - ruby2.7-rubygem-actionpack-doc-5.2 
-  - ruby2.7-rubygem-actionpack-doc-5_1 
   - ruby2.7-rubygem-actionpack-doc-6.0 
   - ruby2.7-rubygem-actiontext-doc-6.0 
   - ruby2.7-rubygem-actionview-doc-5.2 
   - ruby2.7-rubygem-actionview-doc-5_1 
   - ruby2.7-rubygem-actionview-doc-6.0 
   - ruby2.7-rubygem-activejob-doc-5.2 
-  - ruby2.7-rubygem-activejob-doc-5_1 
   - ruby2.7-rubygem-activejob-doc-6.0 
   - ruby2.7-rubygem-activemodel-doc-5.2 
-  - ruby2.7-rubygem-activemodel-doc-5_1 
   - ruby2.7-rubygem-activemodel-doc-6.0 
   - ruby2.7-rubygem-activerecord-deprecated_finders-doc 
   - ruby2.7-rubygem-activerecord-doc-5.2 
@@ -33585,11 +33584,11 @@ unsorted:
   - twm 
   - twolame 
   - txt2man 
-  - tycho 
-  - tycho-bootstrap 
+  - tycho: [x86_64] 
+  - tycho-bootstrap: [x86_64] 
   - tycho-extras 
   - tycho-extras-javadoc 
-  - tycho-javadoc 
+  - tycho-javadoc: [x86_64] 
   - typelib-1_0-Accounts-1_0 
   - typelib-1_0-Amtk-5 
   - typelib-1_0-Anjuta-3_0 
