@@ -8,10 +8,10 @@ Subject: [PATCH] aperture mask test: assert almost equal
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/photutils/aperture/tests/test_mask.py b/photutils/aperture/tests/test_mask.py
-index fb9bff9a..47f64bf7 100644
+index fb9bff9a3..47f64bf71 100644
 --- a/photutils/aperture/tests/test_mask.py
 +++ b/photutils/aperture/tests/test_mask.py
-@@ -5,7 +5,7 @@ Tests for the mask module.
+@@ -5,7 +5,7 @@
  
  import astropy.units as u
  import numpy as np
@@ -38,6 +38,3 @@ index fb9bff9a..47f64bf7 100644
  
      # test that multiply() returns a copy
      data[25, 25] = 100. * u.adu
--- 
-2.25.0
-

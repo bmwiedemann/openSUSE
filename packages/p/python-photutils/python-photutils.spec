@@ -26,7 +26,7 @@ License:        BSD-3-Clause
 Group:          Productivity/Scientific/Astronomy
 URL:            https://github.com/astropy/photutils
 Source:         https://files.pythonhosted.org/packages/source/p/photutils/photutils-%{version}.tar.gz
-Patch0:         0001-aperture-mask-test-assert-almost-equal.patch
+Patch0:         https://github.com/astropy/photutils/pull/1014.patch#/0001-aperture-mask-test-assert-almost-equal.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.13}
 BuildRequires:  %{python_module setuptools}
@@ -42,7 +42,6 @@ Recommends:     python-gwcs >= 0.11
 # SECTION test requirements
 BuildRequires:  %{python_module astropy >= 2.0}
 BuildRequires:  %{python_module astropy-helpers >= 2.0}
-BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pytest-astropy >= 0.7}
 BuildRequires:  %{python_module scikit-image >= 0.14.2}
 BuildRequires:  %{python_module scikit-learn >= 0.19}
@@ -69,7 +68,13 @@ rm -rf  %{buildroot}%{python_sitearch}/photutils/geometry/*.c
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec setup.py test --skip-docs
+# do not import source dir without extensions
+cd .. 
+# Use astropy test suite logic. Calling pytest directly would require
+# duplicate in-place building of extensions.
+%{python_expand export PYTHONPATH="%{buildroot}%{$python_sitearch}"
+$python -B -c "import photutils; photutils.test(args=\"-v\")"
+}
 
 %files %{python_files}
 %doc CHANGES.rst README.rst

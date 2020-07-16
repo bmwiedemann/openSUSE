@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 13 18:40:46 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- fix failing tests: use astropy's test suite logic to call pytest 
+- add URL for 0001-aperture-mask-test-assert-almost-equal.patch
+  gh#astropy/photutils#1014
+
+-------------------------------------------------------------------
 Fri Jan 24 17:09:13 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - 0001-aperture-mask-test-assert-almost-equal.patch:
