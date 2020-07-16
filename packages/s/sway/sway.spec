@@ -17,7 +17,7 @@
 
 
 Name:           sway
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Window manager for Wayland compatible with i3
 License:        MIT
@@ -26,7 +26,6 @@ URL:            https://github.com/swaywm/sway
 Source0:        https://github.com/swaywm/sway/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        sway.keyring
 Patch0:         sway-1.0-include.patch
-Patch1:         0001-Fix-compiling-with-fno-common.patch
 BuildRequires:  gcc-c++
 #BuildRequires:  libxslt-tools
 BuildRequires:  libevdev-devel
@@ -35,7 +34,7 @@ BuildRequires:  meson >= 0.48.0
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc >= 1.9.2
-BuildRequires:  wlroots-devel >= 0.5
+BuildRequires:  wlroots-devel >= 0.11.0
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1) >= 1.10
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
@@ -80,7 +79,6 @@ This package provides the upstream look and feel for sway.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -98,8 +96,6 @@ export CFLAGS="%{optflags}"
 %license LICENSE
 %doc README.md CONTRIBUTING.md
 %{_bindir}/%{name}*
-%dir %{_sysconfdir}/sway/security.d
-%config(noreplace) %{_sysconfdir}/sway/security.d/00-defaults
 %{_mandir}/man?/%{name}*
 %{_datadir}/wayland-sessions/
 %dir %{_datadir}/backgrounds

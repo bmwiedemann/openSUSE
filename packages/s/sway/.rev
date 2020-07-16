@@ -368,4 +368,41 @@ changes since last time:
     <comment></comment>
     <requestid>816414</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>66af6a1b8d47002763d67d3781f9454f</srcmd5>
+    <version>1.5</version>
+    <time>1594894723</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5:
+  New features:
+  * Headless outputs can now be created dynamically via the create_output
+    command, and can be used with WayVNC
+  * Input method editors (IME) are now supported via the input-method and
+    text-input protocols
+  * Adaptive synchronization (aka. variable refresh rate, VRR) can be enabled
+    to reduce stuttering in games
+  * Support for the viewporter protocol, allowing older X11 games to work
+    better and improve performance
+  * Allow virtualization and remote desktop software to inhibit keyboard
+    shortcuts
+  * Support for the wlr-foreign-toplevel-management protocol, allowing
+    custom docks and window switchers
+  * For details see: https://github.com/swaywm/sway/releases/tag/1.5
+- Remove 0001-Fix-compiling-with-fno-common.patch: in new release
+- Remove file %{_sysconfdir}/sway/security.d/00-defaults
+
+- Update to 1.5~RC2:
+  * output: simplify loop over layer surfaces
+  * tree/view: Make foreign-toplevel app_id fallback to class
+  * transaction: Mark client resize immediately ready
+  * seat: Refocus seat when wlr_drag is destroyed
+  * input/pointer: correctly handle bindings for synthetic events
+  * tree/view: fix smart borders with tabbed/stacked ancestor
+
+- Update to 1.5~RC1:
+  New features:
+  * Headless outputs can now be created dynamically via the create_output
+    command, and can be used with WayVNC</comment>
+    <requestid>821250</requestid>
+  </revision>
 </revisionlist>

@@ -1,18 +1,18 @@
-diff -urEbw sway-1.1.1/common/util.c sway-1.1.1.new/common/util.c
---- sway-1.1.1/common/util.c	2019-06-03 15:54:48.000000000 +0200
-+++ sway-1.1.1.new/common/util.c	2019-06-04 08:01:49.398954211 +0200
-@@ -5,7 +5,7 @@
+diff -urEbw sway-1.5/common/util.c sway-1.5.new/common/util.c
+--- sway-1.5/common/util.c	2020-07-16 01:04:23.000000000 +0200
++++ sway-1.5.new/common/util.c	2020-07-16 10:33:51.931400571 +0200
+@@ -6,7 +6,7 @@
  #include <stdlib.h>
  #include <string.h>
  #include <strings.h>
 -#include <wayland-server-protocol.h>
-+#include <wayland/wayland-client-protocol.h>
++#include <wayland/wayland-server-protocol.h>
  #include "log.h"
  #include "util.h"
  
-diff -urEbw sway-1.1.1/include/cairo.h sway-1.1.1.new/include/cairo.h
---- sway-1.1.1/include/cairo.h	2019-06-03 15:54:48.000000000 +0200
-+++ sway-1.1.1.new/include/cairo.h	2019-06-04 07:58:54.169992613 +0200
+diff -urEbw sway-1.5/include/cairo.h sway-1.5.new/include/cairo.h
+--- sway-1.5/include/cairo.h	2020-07-16 01:04:23.000000000 +0200
++++ sway-1.5.new/include/cairo.h	2020-07-16 10:34:11.895528595 +0200
 @@ -3,7 +3,7 @@
  #include "config.h"
  #include <stdint.h>
@@ -22,15 +22,15 @@ diff -urEbw sway-1.1.1/include/cairo.h sway-1.1.1.new/include/cairo.h
  
  void cairo_set_source_u32(cairo_t *cairo, uint32_t color);
  cairo_subpixel_order_t to_cairo_subpixel_order(enum wl_output_subpixel subpixel);
-diff -urEbw sway-1.1.1/include/util.h sway-1.1.1.new/include/util.h
---- sway-1.1.1/include/util.h	2019-06-03 15:54:48.000000000 +0200
-+++ sway-1.1.1.new/include/util.h	2019-06-04 08:03:46.167595133 +0200
+diff -urEbw sway-1.5/include/util.h sway-1.5.new/include/util.h
+--- sway-1.5/include/util.h	2020-07-16 01:04:23.000000000 +0200
++++ sway-1.5.new/include/util.h	2020-07-16 10:34:33.707668480 +0200
 @@ -3,7 +3,7 @@
  
  #include <stdint.h>
  #include <stdbool.h>
 -#include <wayland-server-protocol.h>
-+#include <wayland/wayland-client-protocol.h>
++#include <wayland/wayland-server-protocol.h>
  
  /**
-  * Wrap i into the range [0, max[
+  * Get the current time, in milliseconds.
