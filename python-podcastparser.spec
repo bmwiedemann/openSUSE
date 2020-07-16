@@ -1,7 +1,7 @@
 #
 # spec file for package python-podcastparser
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-podcastparser
-Version:        0.6.4
+Version:        0.6.5
 Release:        0
 Summary:        A podcast parser
 License:        ISC
 Group:          Development/Libraries/Python
 URL:            https://github.com/gpodder/podcastparser
 Source:         https://files.pythonhosted.org/packages/source/p/podcastparser/podcastparser-%{version}.tar.gz
+# https://github.com/gpodder/podcastparser/pull/21
+Patch0:         python-podcastparser-remove-nose.patch
 BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
@@ -39,6 +43,7 @@ way of parsing RSS- and Atom-based podcast feeds in Python.
 
 %prep
 %setup -q -n podcastparser-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -48,7 +53,7 @@ way of parsing RSS- and Atom-based podcast feeds in Python.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
 %license LICENSE
