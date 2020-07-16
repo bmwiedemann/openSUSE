@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Jul 16 07:45:16 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.0:
+  * build: replace version with soversion (#2005)
+  * Fix wl_output_transform rotation direction, and composition (#2023)
+  * backend/drm: add support for custom modes (#1881)
+  * Introduce wlr_client_buffer (#2043)
+  * Augment wlr_buffer to support swapchains (#2044)
+  * output: remove wlr_output_impl.schedule_frame (#2046)
+  * output: replace wlr_output.damage with a damage event (#2065)
+  * Implement the viewporter protocol (#2092)
+  * output: introduce wlr_output_test (#2097)
+  * output: fix blurred hw cursors with fractional scaling (#2107)
+  * Texture improvements (#2139)
+  * xwayland: split server (#2175)
+  * Make wlr_xcursor_manager_load() return a bool (#2195)
+  * output: make wlr_output_set_gamma atomic (#2196)
+  * Allow keyboard and pointer grabs to hook clear_focus() (#2217)
+  * backend/drm: atomic improvements (#2238)
+  * render: choose DMA-BUF texture target via eglQueryDmaBufModifiersEXT (#2255)
+  * output: fix dangling renderer context after wlr_output_preferred_read_format (#2292)
+  * layer-shell: remove unused surface list (#2309)
+  * For details see: https://github.com/swaywm/wlroots/releases/tag/0.11.0
+- Remove 0001-Declare-wlr_seat-globals-as-extern.patch: in new release
+- Remove viewport-implementation.patch: in new release
+- Set -Dlogind-provider=systemd
+
+-------------------------------------------------------------------
+Thu Jun 25 07:31:47 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add viewport-implementation.patch:
+  To be able to compile sway 1.5 RC1 which depends on unreleased
+  wlroots
+
+-------------------------------------------------------------------
 Sat Jun  6 14:09:57 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - Add -fno-common patch in order to address boo#1160244
@@ -34,6 +69,7 @@ Mon Jan 13 12:06:03 UTC 2020 - Michael Vetter <mvetter@suse.com>
 - Update to 0.9.1:
   * virtual-pointer: Actually use the value passed to axis_discrete
   * xwm: allow applications to change focus between their own surfaces
+
   * backend/wayland: fix frame callback not registered
 
 -------------------------------------------------------------------

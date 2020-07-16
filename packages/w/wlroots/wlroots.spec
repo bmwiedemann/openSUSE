@@ -16,6 +16,7 @@
 #
 
 
+%define libname libwlroots6
 %bcond_without  libcap
 %bcond_without  systemd
 %bcond_with     elogind
@@ -23,22 +24,25 @@
 %bcond_without  xwayland
 %bcond_without  xcb_errors
 Name:           wlroots
-Version:        0.10.1
+Version:        0.11.0
 Release:        0
 Summary:        Modular Wayland compositor library
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/swaywm/wlroots
 Source0:        https://github.com/swaywm/wlroots/archive/%{version}.tar.gz
-Patch0:         0001-Declare-wlr_seat-globals-as-extern.patch
 BuildRequires:  meson >= 0.48.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(freerdp2)
 BuildRequires:  pkgconfig(gbm) >= 17.1.0
 BuildRequires:  pkgconfig(glesv2)
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.95
 BuildRequires:  pkgconfig(libinput) >= 1.9.0
+BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(wayland-client)
@@ -75,41 +79,41 @@ Pluggable, composable modules for building a Wayland compositor.
 %package devel
 Summary:        Modular Wayland compositor library
 Group:          Development/Libraries/C and C++
-Requires:       libwlroots5 = %{version}
+Requires:       %{libname} = %{version}
 
 %description devel
 Pluggable, composable modules for building a Wayland compositor.
 
-%package -n libwlroots5
+%package -n %{libname}
 Summary:        Modular Wayland compositor library
 Group:          System/Libraries
 
-%description -n libwlroots5
+%description -n %{libname}
 Pluggable, composable modules for building a Wayland compositor.
 
 %prep
 %setup -q
-%patch0 -p1
 %build
 export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls"
 %meson \
-  %{?with_libcap:-Denable-libcap=true} \
+  %{?with_libcap:-Dlibcap=enabled} \
 %if 0%{?suse_version} >= 1550
-  %{?with_systemd:-Denable-systemd=true} \
-  %{?with_elogind:-Denable-elogind=true} \
+  %{?with_systemd:-Dsystemd=enabled} \
+  %{?with_elogind:-Dlogind=enabled} \
+  -Dlogind-provider=systemd \
 %else
   -Dlogind=disabled \
 %endif
-  %{?with_x11_backend:-Denable-x11_backend=true} \
-  %{?with_xwayland:-Denable-xwayland=true} \
-  %{?with_xcb_errors:-Denable-xcb_errors=true}
+  %{?with_x11_backend:-Dx11_backend=enabled} \
+  %{?with_xwayland:-Dxwayland=enabled} \
+  %{?with_xcb_errors:-Dxcb-errors=enabled}
 %meson_build
 
 %install
 %meson_install
 
-%post   -n libwlroots5 -p /sbin/ldconfig
-%postun -n libwlroots5 -p /sbin/ldconfig
+%post   -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
 %files devel
 %license LICENSE
@@ -118,7 +122,7 @@ export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls"
 %{_libdir}/pkgconfig/wlroots.pc
 %{_libdir}/libwlroots.so
 
-%files -n libwlroots5
+%files -n %{libname}
 %{_libdir}/libwlroots.so.*
 
 %changelog
