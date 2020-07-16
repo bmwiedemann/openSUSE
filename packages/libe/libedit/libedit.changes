@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 13 07:06:04 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Regenerate the build system before the build in order to avoid
+  errors due to automake version mismatch
+
+-------------------------------------------------------------------
 Tue Apr 30 13:49:12 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 20190324-3.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package libedit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,9 @@ Source2:        baselibs.conf
 Patch0:         libedit-20180525-manpage-conflicts.patch
 #BuildRequires:  gcc-c++
 # For patch0
+BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ncurses)
 
@@ -73,6 +75,8 @@ cp %{SOURCE1} .
 %patch0 -p1
 
 %build
+libtoolize --force --copy --install
+autoreconf -fi
 %configure \
   --disable-static \
   --disable-silent-rules

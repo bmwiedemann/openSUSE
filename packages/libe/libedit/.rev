@@ -225,4 +225,12 @@
   * Sync with upstream sources</comment>
     <requestid>699689</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>8f1e648d923b11a660ba5ac11f875f7d</srcmd5>
+    <version>3.1.snap20180525</version>
+    <time>1594894185</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820662</requestid>
+  </revision>
 </revisionlist>
