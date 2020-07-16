@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 15 20:58:34 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 19.0.1
+  - Security update
+    Fix (CVE-2020-8183, NC-SA-2020-026, CWE-256)
+    A logic error in Nextcloud Server 19.0.0 caused a plaintext 
+    storage of the share password when it was given on the initial
+    create API call.
+- No changelog from upstream at this time.
+
+-------------------------------------------------------------------
 Wed Jun  3 17:49:51 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 19.0.0
