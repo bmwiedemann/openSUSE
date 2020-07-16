@@ -15,7 +15,7 @@
 #
 
 Name:           ibus-typing-booster
-Version:        2.9.3
+Version:        2.9.4
 Release:        0 
 Summary:        An input completion utility
 License:        GPL-3.0+
@@ -38,6 +38,7 @@ BuildRequires:  m17n-lib
 BuildRequires:  m17n-db
 BuildRequires:  python3-mock
 BuildRequires:  python3-pyenchant
+BuildRequires:  AppStream
 BuildRequires:  appstream-glib
 BuildRequires:  glib2
 BuildRequires:  gtk3
@@ -115,6 +116,7 @@ cp -p inscript2/icons/* %{buildroot}%{_datadir}/m17n/icons
 %check
 export LC_ALL=en_US.UTF-8
 export M17NDIR=%{buildroot}%{_datadir}/m17n/
+appstreamcli validate --pedantic --nonet %{buildroot}/%{_datadir}/metainfo/*.appdata.xml
 appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/*.appdata.xml
 desktop-file-validate \
     %{buildroot}%{_datadir}/applications/ibus-setup-typing-booster.desktop

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 14 10:40:04 UTC 2020 - maiku.fabian@gmail.com
+
+- Update to 2.9.4
+- Add emoji-picker.appdata.xml
+- Fix warnings and errors in typing-booster.appdata.xml
+- Update emoji annotations from CLDR
+- Support %S expansion in include statements in compose files
+- Translation update from Weblate for fr, he, hu, zh_CN
+
+-------------------------------------------------------------------
 Mon Jun 22 08:45:50 UTC 2020 - maiku.fabian@gmail.com
 
 - Update to 2.9.3
