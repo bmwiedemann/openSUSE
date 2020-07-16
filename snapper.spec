@@ -25,7 +25,7 @@
 %bcond_with coverage
 
 Name:           snapper
-Version:        0.8.10
+Version:        0.8.11
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         snapper-%{version}.tar.bz2
@@ -49,6 +49,7 @@ BuildRequires:  libmount-devel >= 2.24
 %endif
 %if 0%{?fedora_version} >= 23
 BuildRequires:  pkgconfig
+BuildRequires:  systemd
 %else
 BuildRequires:  pkg-config
 %endif
