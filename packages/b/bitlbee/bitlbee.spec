@@ -19,7 +19,7 @@
 
 %define daemon_piddir /run/%{name}
 Name:           bitlbee
-Version:        3.5.1
+Version:        3.6
 Release:        0
 Summary:        IRC to other Chat Networks Gateway
 License:        GPL-2.0-only

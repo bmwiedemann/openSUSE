@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul 14 16:05:02 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.6:
+  - Removed msn, skype, oscar (icq/aim). For msn/skype use skypeweb, for
+    ICQ use icyque. AIM is just dead.
+  - Fix twitter (disable stream setting, set tweet length to 280)
+    Note that users of 3.5.1 and older can re-enable twitter support by
+    changing these two settings:
+
+    account twitter set stream off
+    account twitter set message_length 280
+
+  - Add server-time IRCv3 capability
+  - Large performance improvements for large contact lists
+
+-------------------------------------------------------------------
 Tue Mar 13 19:13:45 UTC 2018 - 9+suse@cirno.systems
 
 - Add explicit build time dependency on Python 3.x
