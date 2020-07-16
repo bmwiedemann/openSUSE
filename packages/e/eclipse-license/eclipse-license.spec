@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-license
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Source2:        http://git.eclipse.org/c/cbi/org.eclipse.license.git/snapshot/%{
 BuildRequires:  tycho-bootstrap
 #!BuildIgnore:  tycho
 BuildArch:      noarch
+# Upstream Eclipse no longer supports non-64bit arches
+ExcludeArch:    s390 %{arm} %{ix86}
 
 %description
 Shared license features for Eclipse. Other features may consume these
@@ -39,8 +41,10 @@ features to avoid unnecessary duplication of license boiler plate.
 
 %package -n %{name}1
 Version:        %{eplv1_ver}
+Release:        0
 Summary:        Shared EPL v1.0 license feature for Eclipse
 License:        EPL-1.0
+Group:          Development/Libraries/Java
 Provides:       eclipse-license = %{eplv1_ver}
 
 %description -n %{name}1
@@ -49,8 +53,10 @@ feature to avoid unnecessary duplication of license boiler plate.
 
 %package -n %{name}2
 Version:        %{eplv2_ver}
+Release:        0
 Summary:        Shared EPL v2.0 license feature for Eclipse
 License:        EPL-2.0
+Group:          Development/Libraries/Java
 
 %description -n %{name}2
 Shared license feature for Eclipse. Other features may consume this
