@@ -18,23 +18,22 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyviz-comms
-Version:        0.7.4
+Version:        0.7.6
 Release:        0
 Summary:        Tool to launch jobs, organize the output, and dissect the results
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pyviz/pyviz_comms
-Source0:        https://files.pythonhosted.org/packages/source/p/pyviz-comms/pyviz_comms-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pyviz_comms/pyviz_comms-%{version}.tar.gz
 Source100:      python-pyviz-comms-rpmlintrc
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-param >= 1.6.0
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module param >= 1.6.0}
 # /SECTION
-Requires:       python-param >= 1.6.0
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
