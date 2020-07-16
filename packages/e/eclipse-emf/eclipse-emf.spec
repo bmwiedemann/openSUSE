@@ -23,34 +23,31 @@
 %bcond_with bootstrap
 %endif
 %global _eclipsedir %{_libdir}/eclipse
-%global emf_tag d1e5fddbdcb41db9a272c8aaaba7689442310efb
-%global xsd_tag be9714f28ae9ccc05cee1ee49424f2f97810fe60
-Version:        2.15.0~gitd1e5fdd
+%global emf_tag R2_22_0
+%global xsd_tag R2_22_0
+Version:        2.22.0
 Release:        0
 Summary:        EMF and XSD Eclipse plug-ins
 License:        EPL-2.0
 Group:          Development/Libraries/Java
 URL:            https://www.eclipse.org/modeling/emf/
-Source0:        http://git.eclipse.org/c/emf/org.eclipse.emf.git/snapshot/org.eclipse.emf-%{emf_tag}.tar.xz
-Source1:        http://git.eclipse.org/c/xsd/org.eclipse.xsd.git/snapshot/org.eclipse.xsd-%{xsd_tag}.tar.xz
+Source0:        https://git.eclipse.org/c/emf/org.eclipse.emf.git/snapshot/org.eclipse.emf-%{emf_tag}.tar.xz
+Source1:        https://git.eclipse.org/c/xsd/org.eclipse.xsd.git/snapshot/org.eclipse.xsd-%{xsd_tag}.tar.xz
 # Avoid hard build-time dep on nebula
-Patch0:         remove-nebula-dep.patch
+Patch0:         0001-Remove-dependency-on-nebula.patch
 # Remove test that requires internet connection
-Patch1:         remove-network-tests.patch
-# Remove test that seems to fail in some timezones, reported upstream: https://bugs.eclipse.org/bugs/show_bug.cgi?id=534542
-Patch2:         remove-timezone-test.patch
-# Remove unnecessary imports of JRE packages that are supplied by the system bundle
-Patch3:         remove-unnecessary-imports.patch
+Patch1:         0002-Remove-test-that-requires-talking-to-the-internet.patch
 BuildRequires:  fdupes
-BuildRequires:  tycho-extras
+BuildRequires:  maven-local
 BuildRequires:  xz
-BuildConflicts: java-devel >= 9
+# Upstream Eclipse no longer supports non-64bit arches
+ExcludeArch:    s390 %{arm} %{ix86}
 %if %{with bootstrap}
 Name:           eclipse-emf-bootstrap
+BuildRequires:  tycho-bootstrap
+#!BuildIgnore:  tycho
 %else
 Name:           eclipse-emf
-%endif
-%if %{without bootstrap}
 BuildRequires:  eclipse-ecf-core-bootstrap
 BuildRequires:  eclipse-emf-core-bootstrap
 BuildRequires:  eclipse-pde-bootstrap
@@ -60,9 +57,6 @@ BuildRequires:  tycho
 #!BuildIgnore:  eclipse-platform
 #!BuildIgnore:  tycho-bootstrap
 #!BuildRequires: log4j
-%else
-BuildRequires:  tycho-bootstrap
-#!BuildIgnore:  tycho
 %endif
 
 %description
@@ -125,10 +119,8 @@ Documentation and developer resources for the Eclipse Modeling Framework
 mv org.eclipse.emf-%{emf_tag}/ org.eclipse.emf/
 mv org.eclipse.xsd-%{xsd_tag}/ org.eclipse.xsd/
 
-%patch0
-%patch1
-%patch2
-%patch3
+%patch0 -p1
+%patch1 -p1
 
 pushd org.eclipse.emf
 
@@ -148,7 +140,6 @@ sed -i -e '/<module>.*examples/d' releng/org.eclipse.emf.parent/plugins/pom.xml
 %pom_xpath_remove "plugin[@id='org.eclipse.emf.test.examples']" tests/org.eclipse.emf.tests-feature/feature.xml
 
 # Disable modules unneeded for tycho build
-
 %pom_disable_module "tp" releng/org.eclipse.emf.parent
 %pom_disable_module "../org.eclipse.emf.site" releng/org.eclipse.emf.parent
 %pom_disable_module '../../../features/org.eclipse.emf.all-feature' releng/org.eclipse.emf.parent/features
@@ -183,6 +174,7 @@ popd
 # Don't install poms or license features
 %{mvn_package} "::pom::" __noinstall
 %{mvn_package} ":org.eclipse.{emf,xsd}.license" __noinstall
+%{mvn_package} ":org.eclipse.emf.base" __noinstall
 
 # No need to ship tests as they are run at buildtime
 %{mvn_package} ":org.eclipse.emf.tests" __noinstall
