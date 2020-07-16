@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 07 15:29:46 UTC 2020 - lars@linux-schulserver.de
+
+-  update AppArmor profiles to include a comment why the check
+   needs to read nsswitch.conf and passwd
+
+-------------------------------------------------------------------
 Sun May 31 13:31:20 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
 
 - update AppArmor profile to allow reading /etc/nsswitch.conf and /etc/passwd

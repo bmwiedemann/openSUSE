@@ -71,4 +71,14 @@
     <comment></comment>
     <requestid>810954</requestid>
   </revision>
+  <revision rev="10" vrev="109">
+    <srcmd5>450805db79571223bb7a4a18ebd32d92</srcmd5>
+    <version>0.1</version>
+    <time>1594894607</time>
+    <user>dimstar_suse</user>
+    <comment>-  update AppArmor profiles to include a comment why the check
+   needs to read nsswitch.conf and passwd
+</comment>
+    <requestid>820972</requestid>
+  </revision>
 </revisionlist>

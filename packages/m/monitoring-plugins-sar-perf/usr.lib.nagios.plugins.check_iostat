@@ -14,8 +14,10 @@
    /proc/diskstats r,
    /proc/uptime r,
    / r,
-   /etc/nsswitch.conf r,
-   /etc/passwd r,
    /etc/sysstat/sysstat.ioconf r,
+   # once the service tries to lookup which user is 
+   # invoking the programm, it needs access to the 
+   # following files
+   /etc/nsswitch.conf      r,
+   /etc/passwd             r,
 }
-
