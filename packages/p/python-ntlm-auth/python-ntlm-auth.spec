@@ -1,7 +1,7 @@
 #
 # spec file for package python-ntlm-auth
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ntlm-auth
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        NTLM low-level Python library
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jborean93/ntlm-auth
 Source:         https://github.com/jborean93/ntlm-auth/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module cryptography}
