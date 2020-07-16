@@ -33,8 +33,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(alsa)
+# BuildRequires:  pkgconfig(jack) # undefined reference to `jack_error_callback'
 BuildRequires:  pkgconfig(libmysofa)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(portaudio-2.0)
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -138,7 +141,6 @@ rm -v alc/backends/opensl.cpp
   -DCMAKE_BUILD_TYPE=Release \
   -DALSOFT_CONFIG=ON \
   -DALSOFT_DLOPEN=OFF \
-  -DALSOFT_BACKEND_JACK=OFF \
   -Wno-dev
 %make_jobs
 gcc -Wall %{optflags} -fPIC -DPIC -Wl,-soname,libopenal.so.0 -shared -Wl,--no-as-needed -L. -lopenal -o libopenal.so.0 %{SOURCE1}
