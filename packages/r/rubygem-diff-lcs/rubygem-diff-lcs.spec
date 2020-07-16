@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-diff-lcs
-Version:        1.4.2
+Version:        1.4.4
 Release:        0
 %define mod_name diff-lcs
 %define mod_full_name %{mod_name}-%{version}
@@ -49,14 +49,14 @@ PreReq:         update-alternatives
 Diff::LCS computes the difference between two Enumerable sequences using the
 McIlroy-Hunt longest common subsequence (LCS) algorithm. It includes utilities
 to create a simple HTML diff output format and a standard diff-like tool.
-This is release 1.4, providing a simple extension that allows for
-Diff::LCS::Change objects to be treated implicitly as arrays. Ruby versions
-below 2.5 are soft-deprecated.
-This means that older versions are no longer part of the CI test suite. If any
-changes have been introduced that break those versions, bug reports and
-patches
-will be accepted, but it will be up to the reporter to verify any fixes prior
-to release. A future release will completely break compatibility.
+This is release 1.4.3, providing a simple extension that allows for
+Diff::LCS::Change objects to be treated implicitly as arrays and fixes a
+number of formatting issues.
+Ruby versions below 2.5 are soft-deprecated, which means that older versions
+are no longer part of the CI test suite. If any changes have been introduced
+that break those versions, bug reports and patches will be accepted, but it
+will be up to the reporter to verify any fixes prior to release. The next
+major release will completely break compatibility.
 
 %prep
 %gem_unpack
