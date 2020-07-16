@@ -186,6 +186,17 @@ EOF
 %make_build check || /bin/true
 [ -f ./tests/testsuite.log ] || echo "check did not run" > ./tests/testsuite.log
 mkdir $RPM_BUILD_ROOT/%{_datadir}/pspp/tests
+# remove nondeterministic bits to make package build reproducible:
+perl -i -pe '
+  s/ (starting|ending) at:.*/ $1 at: [scrubbed]/;
+  s/(test suite duration:).*/$1 [scrubbed]/;
+  s/(hostname =) .*/$1 [hostscrubbed]/;
+  s/^(\| on) [a-zA-Z0-9._-]+/$1 [hostscrubbed]/;
+  s/ \(\d+m.*\ds\)/([durationscrubbed])/;
+  s/20\d\d-\d\d-\d\d \d\d:\d\d:\d\d\.\d+ [+-]\d\d00/[datescrubbed]/;
+  s!(bin/ld: /tmp/conftest\.)\w+!$1[randomnessscrubbed]!;
+  s!^(\| \./configure: line \d+: *)\d+ (Aborted)!$1 [PIDscrubbed] $2!;
+' ./tests/testsuite.log
 cp ./tests/testsuite.log $RPM_BUILD_ROOT/%{_datadir}/pspp/tests/
 
 %post

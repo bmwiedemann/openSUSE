@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 15 10:57:45 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- remove nondeterministic bits from testsuite.log
+  to make package build reproducible
+
+-------------------------------------------------------------------
 Sat Jul  4 11:30:18 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
 
 - Enable build for SLE 12SP5 and other distros than openSUSE.
