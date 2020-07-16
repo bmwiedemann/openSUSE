@@ -1,7 +1,7 @@
 #
 # spec file for package dovecot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -28,15 +28,10 @@ Release:        0
 Summary:        IMAP and POP3 Server Written Primarily with Security in Mind
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND MIT
 Group:          Productivity/Networking/Email/Servers
-Url:            http://www.dovecot.org/
+URL:            http://www.dovecot.org/
 PreReq:         dovecot-implementation
 Recommends:     dovecot23
 #!BuildIgnore: dovecot-implementation
-%if %{with systemd}
-BuildRequires:  pkgconfig(systemd)
-%{?systemd_requires}
-%define has_systemd 1
-%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 Source0:        dovecot-2.0.configfiles
