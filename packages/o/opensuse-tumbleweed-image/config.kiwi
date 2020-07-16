@@ -54,6 +54,7 @@
     <package name="systemd"/>
     <package name="systemd-sysvinit"/>
     <package name="wicked"/>
+    <package name="iproute2"/>
   </packages>
   <packages type="bootstrap">
     <package name="aaa_base"/>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 13 12:43:03 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- include iproute2 in lxc build
+
+-------------------------------------------------------------------
 Fri Apr 17 14:28:44 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add systemd-sysvinit to the lxc flavor for /sbin/init (boo#1169002)
