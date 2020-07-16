@@ -17,7 +17,7 @@
 
 
 Name:           linuxrc-devtools
-Version:        0.18
+Version:        0.19
 Release:        0
 Source:         %{name}-%{version}.tar.xz
 

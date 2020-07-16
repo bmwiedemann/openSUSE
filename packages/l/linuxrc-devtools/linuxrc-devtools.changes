@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Thu Jul 16 11:03:11 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc-devtools#25
+- add --obs option to manage files needed or OBS
+- adjust build_it script
+- 0.19
+
+--------------------------------------------------------------------
 Wed Mar 25 16:27:12 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc-devtools#24
