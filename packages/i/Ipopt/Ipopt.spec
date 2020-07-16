@@ -31,12 +31,14 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  graphviz
+BuildRequires:  graphviz-gd
 BuildRequires:  java-devel
 BuildRequires:  javapackages-tools
 BuildRequires:  lapack-devel
 BuildRequires:  metis-devel
 BuildRequires:  mumps-devel
 BuildRequires:  pkgconfig
+BuildRequires:  strip-nondeterminism
 BuildRequires:  texlive-bibtex-bin
 BuildRequires:  texlive-dvips-bin
 BuildRequires:  texlive-latex-bin
@@ -77,10 +79,13 @@ This package provides the java bindings for %{name} in a jar file.
            --with-mumps-cflags="-I%{_includedir}/mumps" \
            --with-mumps-lflags="-L%{_libdir} -ldmumps_seq"
 
-%make_build all doc
+%make_build all
+# create docs in a separate step for reproducible build results (boo#1102408)
+%make_build doc
 
 %install
 %make_install
+strip-nondeterminism %{buildroot}%{_javadir}/org.coinor.ipopt.jar
 
 # REMOVE FILES TO BE PACKAGED USING %%doc
 for f in AUTHORS README.md LICENSE;
