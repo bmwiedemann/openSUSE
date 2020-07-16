@@ -1,11 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 15 22:26:55 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to bpftrace 0.11.0.
+
+-------------------------------------------------------------------
 Tue Apr 14 06:57:29 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 0.10.0
   * Support for LLVM 9 and LLVM 10 has been added.
   * See the complete changelog at https://github.com/iovisor/bpftrace/releases/tag/v0.10.0
-- Drop boo1162312-cmake-use-_LIBRARIES-when-testing-for-libbfd-version.patch
-  and install-man-dir.patch, fixed upstream.
+- Drop upstreamed patches:
+  - boo1162312-cmake-use-_LIBRARIES-when-testing-for-libbfd-version.patch
+  - install-man-dir.patch
 
 -------------------------------------------------------------------
 Wed Feb  5 02:21:50 UTC 2020 - Aleksa Sarai <asarai@suse.com>

@@ -17,7 +17,7 @@
 
 
 Name:           bpftrace
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        High-level tracing language for Linux eBPF
 License:        Apache-2.0
@@ -31,6 +31,7 @@ BuildRequires:  clang
 BuildRequires:  clang-devel
 BuildRequires:  cmake
 BuildRequires:  flex
+BuildRequires:  libbpf-devel
 BuildRequires:  llvm-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
@@ -70,6 +71,7 @@ find tools -name '*.bt' -type f \
 LIBBFD="$(find "%{_libdir}" -type f -name 'libbfd*.so*')"
 LIBOPCODES="$(find "%{_libdir}" -type f -name 'libopcodes*.so*')"
 
+# We need to build with clang.
 %define _lto_cflags %{nil}
 export CC="clang"
 export CXX="clang++"
