@@ -183,4 +183,21 @@
 </comment>
     <requestid>809185</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bb6b55f43d8e74706bcb3581b504e9b8</srcmd5>
+    <version>1.7.0</version>
+    <time>1594894053</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.0
+  * Support fmt version 7.x.
+  * Fixed to_hex segmentation fault
+  * Support for FMT_STRING compile time checking. 
+  * Clean CMakeLists.txt.
+- Drop spdlog-1.6.1-fmt7_build.patch and
+  spdlog-1.6.1-fmt7_tests.patch (merged upstream)
+- Add spdlog-1.6.1-fmt7_build.patch and
+  spdlog-1.6.1-fmt7_tests.patch to fix build with fmt 7.x
+</comment>
+    <requestid>819807</requestid>
+  </revision>
 </revisionlist>

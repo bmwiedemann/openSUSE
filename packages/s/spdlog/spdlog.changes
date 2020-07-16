@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul  9 19:59:07 UTC 2020 - aloisio@gmx.com
+
+- Update to version 1.7.0
+  * Support fmt version 7.x.
+  * Fixed to_hex segmentation fault
+  * Support for FMT_STRING compile time checking. 
+  * Clean CMakeLists.txt.
+- Drop spdlog-1.6.1-fmt7_build.patch and
+  spdlog-1.6.1-fmt7_tests.patch (merged upstream)
+
+-------------------------------------------------------------------
+Wed Jul  8 11:05:02 UTC 2020 - aloisio@gmx.com
+
+- Add spdlog-1.6.1-fmt7_build.patch and
+  spdlog-1.6.1-fmt7_tests.patch to fix build with fmt 7.x
+
+-------------------------------------------------------------------
 Wed May 27 07:38:11 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.6.1
