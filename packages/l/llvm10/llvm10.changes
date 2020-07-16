@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 12 11:49:47 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Factor out computation of the number of jobs into a macro.
+- Choose mem_per_compile_job dependent on build stage, let stage 1
+  on x86_64 use more memory.
+- More generous memory allocation on riscv64.
+
+-------------------------------------------------------------------
 Tue Jun 23 07:18:55 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Add lld-default-sha1.patch to make lld generate SHA1 build-ids by

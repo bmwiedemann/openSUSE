@@ -66,6 +66,17 @@
 %bcond_without polly
 %bcond_without lld
 
+# set_jobs type memory
+# Set max_<type>_jobs so that every job of the given type has at least the
+# given amount of memory.
+%define set_jobs() \
+    max_%{1}_jobs="%{?jobs:%{jobs}}" \
+    if test -n "$max_%{1}_jobs" -a "$max_%{1}_jobs" -gt 1 ; then \
+        max_jobs="$(($avail_mem / %2))" \
+        test "$max_%{1}_jobs" -gt "$max_jobs" && max_%{1}_jobs="$max_jobs" && echo "Warning: Reducing number of %{1} jobs to $max_jobs because of memory limits" \
+        test "$max_%{1}_jobs" -le 0 && max_%{1}_jobs=1 && echo "Warning: Not %{1}ing in parallel at all because of memory limits" \
+    fi
+
 Name:           llvm10
 Version:        10.0.0
 Release:        0
@@ -641,33 +652,29 @@ TARGETS_TO_BUILD="host;AMDGPU;BPF;NVPTX"
 TARGETS_TO_BUILD="host;BPF"
 %endif
 
-# do not eat all memory
 mem_per_compile_job=900000
 %ifarch i586 ppc armv6hl armv7hl
+# 32-bit arches need less memory than 64-bit arches.
 mem_per_compile_job=600000
 %endif
-%ifarch x86_64
-mem_per_compile_job=800000
+%ifarch riscv64
+# RISCV needs more because of emulation overhead.
+mem_per_compile_job=1000000
 %endif
 
-max_link_jobs="%{?jobs:%{jobs}}"
-max_compile_jobs="%{?jobs:%{jobs}}"
+mem_per_link_job=3000000
+%ifarch riscv64
+# Give RISCV link jobs more memory.
+mem_per_link_job=4000000
+%endif
+
 echo "Available memory:"
 cat /proc/meminfo
 echo "System limits:"
 ulimit -a
 avail_mem=$(awk '/MemAvailable/ { print $2 }' /proc/meminfo)
-if test -n "$max_link_jobs" -a "$max_link_jobs" -gt 1 ; then
-    mem_per_link_job=3000000
-    max_jobs="$(($avail_mem / $mem_per_link_job))"
-    test "$max_link_jobs" -gt "$max_jobs" && max_link_jobs="$max_jobs" && echo "Warning: Reducing number of link jobs to $max_jobs because of memory limits"
-    test "$max_link_jobs" -le 0 && max_link_jobs=1 && echo "Warning: Not linking in parallel at all because of memory limits"
-fi
-if test -n "$max_compile_jobs" -a "$max_compile_jobs" -gt 1 ; then
-    max_jobs="$(($avail_mem / $mem_per_compile_job))"
-    test "$max_compile_jobs" -gt "$max_jobs" && max_compile_jobs="$max_jobs" && echo "Warning: Reducing number of compile jobs to $max_jobs because of memory limits"
-    test "$max_compile_jobs" -le 0 && max_compile_jobs=1 && echo "Warning: Not compiling in parallel at all because of memory limits"
-fi
+%set_jobs link $mem_per_link_job
+%set_jobs compile $mem_per_compile_job
 
 %define __builder ninja
 %define __builddir stage1
@@ -714,6 +721,13 @@ cd ..
 # Remove files that won't be needed anymore.
 # This reduces the total amount of disk space used during build. (bnc#1074625)
 find ./stage1 \( -name '*.o' -or -name '*.a' \) -delete
+
+# Clang uses a bit less memory.
+%ifarch x86_64
+mem_per_compile_job=800000
+%endif
+
+%set_jobs compile $mem_per_compile_job
 
 %define __builddir build
 export PATH=${PWD}/stage1/bin:$PATH
