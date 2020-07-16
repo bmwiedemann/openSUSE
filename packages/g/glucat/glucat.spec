@@ -16,16 +16,8 @@
 #
 
 
-# SECTION DISABLE pyclical FOR openSUSE >= 1550: DOESN'T BUILD WITH PYTHON3
-%if 0%{?suse_version} < 1550
-%bcond_without python2
-%else
-%bcond_with python2
-%endif
-# /SECTION
-
 Name:           glucat
-Version:        0.8.2
+Version:        0.8.4
 Release:        0
 Summary:        Library of C++ templates implementing universal Clifford algebras
 License:        LGPL-3.0-only
@@ -38,11 +30,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  graphviz-gd
 BuildRequires:  graphviz-gnome
 BuildRequires:  libboost_headers-devel
-%if %{with python2}
-BuildRequires:  python-Cython
-BuildRequires:  python-devel
-BuildRequires:  python-numpy
-%endif
+BuildRequires:  python3-Cython
+BuildRequires:  python3-numpy
 BuildRequires:  texlive-collection-fontsrecommended
 BuildRequires:  texlive-latex-bin
 BuildRequires:  texlive-metafont-bin
@@ -100,15 +89,15 @@ up to a maximum number of dimensions.
 
 This package provides the documentation for %{name}.
 
-%package -n python-glucat
+%package -n python3-glucat
 Summary:        Library of C++ templates implementing universal Clifford algebras
 Group:          Development/Libraries/C and C++
-%if %{with python2}
-Requires:       python-base = %{py_ver}
-%endif
+Requires:       python3-base
 Recommends:     %{name}-doc = %{version}
+Obsoletes:      python-glucat < %{version}
+Provides:       python-glucat = %{version}
 
-%description -n python-glucat
+%description -n python3-glucat
 GluCat is a library of template classes which model the universal
 Clifford algebras over the field of real numbers, with arbitrary
 dimension and arbitrary signature. GluCat implements a model of each
@@ -124,15 +113,10 @@ This package contains the python-bindings for the package.
 sed -i "s|-march=native||g" configure
 %configure \
   --docdir=%{_docdir}/%{name} \
-%if %{without python2}
-  --disable-pyclical \
-%endif
+  --enable-pyclical \
   --with-demo-dir=%{_docdir}/%{name}/demos
 
-# FIX A NON-UNIX EOF ENCODING
-sed -i 's/\r$//' ./pyclical/demos/plotting_demo_mayavi.py
-
-make %{?_smp_mflags} clean all
+%make_build clean all
 make %{?_smp_mflags} doc
 
 %install
@@ -140,7 +124,7 @@ make %{?_smp_mflags} doc
 make DESTDIR=%{buildroot} install-doc
 
 # REMOVE FILES PKGED USING %%doc ANYWAY OR OTHERWISE NOT NEEDED
-rm -fr %{buildroot}%{_docdir}/%{name}/{AUTHORS,COPYING,ChangeLog,glucat.lsm,INSTALL,NEWS,README,TODO}
+rm -fr %{buildroot}%{_docdir}/%{name}/{AUTHORS,COPYING,ChangeLog,glucat.lsm,INSTALL,NEWS,README,TODO,DESIGN}
 
 %check
 make %{?_smp_mflags} check
@@ -149,7 +133,7 @@ make %{?_smp_mflags} check
 
 %files devel
 %license COPYING
-%doc AUTHORS ChangeLog README TODO NEWS
+%doc AUTHORS ChangeLog README TODO NEWS DESIGN
 %{_includedir}/%{name}/
 
 %files doc
@@ -157,11 +141,9 @@ make %{?_smp_mflags} check
 %{_docdir}/%{name}/html/
 %{_docdir}/%{name}/pdf/
 
-%if %{with python2}
-%files -n python-glucat
-%{python_sitearch}/*
+%files -n python3-glucat
+%{python3_sitearch}/*
 %dir %{_docdir}/%{name}
 %{_docdir}/%{name}/demos/
-%endif
 
 %changelog
