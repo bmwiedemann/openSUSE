@@ -31,7 +31,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  ninja
 BuildRequires:  python3-devel
-ExclusiveArch:  %{ix86} x86_64
 
 %description
 Z3 is a Satisfiability Modulo Theories (SMT) solver and integrates
