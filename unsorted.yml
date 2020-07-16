@@ -12988,8 +12988,7 @@ unsorted:
   - libwiiuse0 
   - libwim15 
   - libwkhtmltox0 
-  - libwlroots5: [i586] 
-  - libwlroots6: [x86_64] 
+  - libwlroots6 
   - libwmf-0_2-7-32bit: [x86_64] 
   - libwmf-devel 
   - libwmf-gnome 
@@ -15935,7 +15934,7 @@ unsorted:
   - ocfs2-tools-devel 
   - ocfs2-tools-devel-static 
   - ocfs2-tools-o2cb 
-  - oci-cli: [x86_64] 
+  - oci-cli 
   - ocl-icd-devel 
   - ocl-icd-devel-32bit: [x86_64] 
   - ocli 
@@ -20269,7 +20268,7 @@ unsorted:
   - python3-glfw 
   - python3-glob2 
   - python3-glom 
-  - python3-glucat: [x86_64] 
+  - python3-glucat 
   - python3-gluster 
   - python3-gmconfig 
   - python3-gmsh 
@@ -22516,9 +22515,7 @@ unsorted:
   - ruby2.6-rubygem-actiontext-6.0 
   - ruby2.6-rubygem-actiontext-doc-6.0 
   - ruby2.6-rubygem-actionview-5.2 
-  - ruby2.6-rubygem-actionview-5_1 
   - ruby2.6-rubygem-actionview-doc-5.2 
-  - ruby2.6-rubygem-actionview-doc-5_1 
   - ruby2.6-rubygem-actionview-doc-6.0 
   - ruby2.6-rubygem-activejob-5.2 
   - ruby2.6-rubygem-activejob-6.0 
@@ -23669,7 +23666,6 @@ unsorted:
   - ruby2.7-rubygem-actionpack-doc-6.0 
   - ruby2.7-rubygem-actiontext-doc-6.0 
   - ruby2.7-rubygem-actionview-doc-5.2 
-  - ruby2.7-rubygem-actionview-doc-5_1 
   - ruby2.7-rubygem-actionview-doc-6.0 
   - ruby2.7-rubygem-activejob-doc-5.2 
   - ruby2.7-rubygem-activejob-doc-6.0 
