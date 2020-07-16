@@ -143,4 +143,27 @@ Added
 </comment>
     <requestid>811827</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>190f7bb08c06060c844991ae862a30fd</srcmd5>
+    <version>0.0.21</version>
+    <time>1594894567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.0.21
+Fixed
+  * (BUG): BlockTree: root node was not showing EDID file name if
+    the file path was provided as an cmd line argument
+    (both binary and --text).
+  * (BUG) cea_hdrs_cl::init(): Incorrect min size for
+    &quot;HDR Static Metadata Data Block&quot; (TagCode=7, ExtTagCode=6):
+    the min. block size is 3, not 6 bytes. Fields for bytes 4..6
+    are marked as unused, depending on the block size.
+  * (BUG) cea_hdrs_cl: incorrect bitfield definitions for reserved
+    fields: &quot;ET6-7&quot; &amp; &quot;SM1-7&quot;
+  * Wrong evt ID for importing HEX-text EDID from cmd line arg:
+    should be id_mnu_imphex, not id_mnu_exphex.
+  * (Regression) if config file doen't exist, the
+    config.b_dtd_keep_aspect is set to OFF, but by default it
+    should be set to ON.</comment>
+    <requestid>820976</requestid>
+  </revision>
 </revisionlist>

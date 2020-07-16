@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jul 14 20:11:09 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Update to v0.0.21
+Fixed
+  * (BUG): BlockTree: root node was not showing EDID file name if
+    the file path was provided as an cmd line argument
+    (both binary and --text).
+  * (BUG) cea_hdrs_cl::init(): Incorrect min size for
+    "HDR Static Metadata Data Block" (TagCode=7, ExtTagCode=6):
+    the min. block size is 3, not 6 bytes. Fields for bytes 4..6
+    are marked as unused, depending on the block size.
+  * (BUG) cea_hdrs_cl: incorrect bitfield definitions for reserved
+    fields: "ET6-7" & "SM1-7"
+  * Wrong evt ID for importing HEX-text EDID from cmd line arg:
+    should be id_mnu_imphex, not id_mnu_exphex.
+  * (Regression) if config file doen't exist, the
+    config.b_dtd_keep_aspect is set to OFF, but by default it
+    should be set to ON.
+
+-------------------------------------------------------------------
 Fri Jun  5 11:35:37 UTC 2020 - Mia Herkt <mia@0x0.st>
 
 - Add wxedid-no-implicit-string-conversion.patch
