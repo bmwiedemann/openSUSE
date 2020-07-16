@@ -19,7 +19,7 @@
 %{!?make_build: %global make_build make %{?_smp_mflags}}
 %define sover 5
 Name:           libzip
-Version:        1.7.1
+Version:        1.7.3
 Release:        0
 Summary:        C library for reading, creating, and modifying zip archives
 License:        BSD-3-Clause
@@ -28,7 +28,8 @@ URL:            https://libzip.org/
 Source0:        https://libzip.org/download/libzip-%{version}.tar.xz
 Source1:        baselibs.conf
 Source2:        %{name}-rpmlintrc
-Patch2:         pkgconfig.patch
+# fix libdir in pkg-config file
+Patch0:         libzip-pkgconfig.patch
 BuildRequires:  cmake >= 3.0.2
 BuildRequires:  fdupes
 BuildRequires:  groff
