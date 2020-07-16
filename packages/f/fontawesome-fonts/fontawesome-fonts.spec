@@ -57,8 +57,8 @@ cp -p %{SOURCE2} .
 install -m 0755 -d %{buildroot}%{_ttfontsdir}
 install -p -m 0644 */otfs/*.otf %{buildroot}%{_ttfontsdir}
 
-install -m 0755 -d %{buildroot}%{_datadir}/fontawesome-web/fonts
-install -p -m 0644 */webfonts/*.{ttf,woff,woff2,svg,eot} %{buildroot}%{_datadir}/fontawesome-web/fonts
+install -m 0755 -d %{buildroot}%{_datadir}/fontawesome-web/webfonts
+install -p -m 0644 */webfonts/*.{ttf,woff,woff2,svg,eot} %{buildroot}%{_datadir}/fontawesome-web/webfonts
 cp -r */css */less */scss %{buildroot}%{_datadir}/fontawesome-web/
 
 %reconfigure_fonts_scriptlets
