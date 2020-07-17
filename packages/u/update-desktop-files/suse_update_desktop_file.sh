@@ -193,10 +193,7 @@ fi
 #
 # find file
 #
-for i in /$RPM_BUILD_ROOT/opt/kde3/share/applications/kde/ \
-  /$RPM_BUILD_ROOT/opt/kde3/share/applnk \
-  /$RPM_BUILD_ROOT/usr/share/applications/ \
-  /$RPM_BUILD_ROOT/usr/share/gnome/apps/ \
+for i in /$RPM_BUILD_ROOT/usr/share/applications/ \
   /$RPM_BUILD_ROOT/etc/xdg/autostart/ ; do
     [ -e "$i" ] && DIRS="$DIRS $i" 
 done 
@@ -227,22 +224,6 @@ for i in $FILE_; do
 done
 
 #
-# move KDE legacy files to XDG path
-#
-if echo $FILE | grep -q /opt/kde3/share/applnk/ ; then
- if ! echo $FILE | grep -q /opt/kde3/share/applnk/.hidden/ ; then
-  if ! echo $FILE | grep -q /opt/kde3/share/applnk/Settings/ ; then
-   if ! echo $FILE | grep -q /opt/kde3/share/applnk/System/ScreenSavers/ ; then
-     echo "WARNING: file is in old KDE legacy path, moving it to XDG path"
-     mkdir -p $RPM_BUILD_ROOT/opt/kde3/share/applications/kde/
-     mv "$FILE" $RPM_BUILD_ROOT/opt/kde3/share/applications/kde/
-     FILE="$RPM_BUILD_ROOT/opt/kde3/share/applications/kde/${FILE##*/}"
-   fi
-  fi
- fi
-fi
-
-#
 # validate file
 #
 if [ ! -r "$FILE" ]; then 
@@ -252,7 +233,7 @@ fi
 # esp. for susehelp
 FILE_DOCPATH=`sed -n -e '/^\[Desktop Entry\]/,/(\[.*|$)/ s,;, ,g' -e 's,^DocPath=\\(.*\\),\\1,p' ${FILE}` 
 if [ -n "$FILE_DOCPATH" ] ; then
-  if [ ! -r "$RPM_BUILD_ROOT/opt/kde3/share/doc/HTML/en/$FILE_DOCPATH/index.docbook" ] && [ ! -r "$RPM_BUILD_ROOT/usr/share/gnome/help/$FILE_DOCPATH/C/$FILE_DOCPATH.xml" ] && [ ! -r $RPM_BUILD_ROOT/usr/share/gnome/help/${DOCPATH/\///C/} ] ; then 
+  if [ ! -r "$RPM_BUILD_ROOT/usr/share/gnome/help/$FILE_DOCPATH/C/$FILE_DOCPATH.xml" ] && [ ! -r $RPM_BUILD_ROOT/usr/share/gnome/help/${DOCPATH/\///C/} ] ; then 
      echo WARNING: suse_update_desktop_file: DocPath target $FILE_DOCPATH for $FILE does not exist
   fi
 fi
@@ -264,12 +245,6 @@ if [ "$RESET" = "no" ]; then
   CATIN=`sed -n -e '/^\[Desktop Entry\]/,/(\[.*|$)/ s,;, ,g' -e 's,^Categories=\\(.*\\),\\1,p' ${FILE}` 
 fi
 CATIN="$CATIN ${CATEGORIES//;/ }"
-if [ -z "$CATIN" ]; then 
-  case "${FILE%/*}" in
-   */opt/kde3/*) CATIN="Qt KDE" ;;
-   */usr/share/gnome*) CATIN="GTK" ;;
-  esac
-fi
 unset CAT
 unset DCAT
 for i in $CATIN; do
@@ -311,10 +286,6 @@ fi
 DOCPATH_IS_GUESS=false
 if [ -z "$DOCPATH" ] ; then
   if [ -f $RPM_BUILD_ROOT/usr/share/gnome/help/$APPLICATION/C/$APPLICATION.xml ] ; then
-    DOCPATH=$APPLICATION
-    DOCPATH_IS_GUESS=true
-  fi
-  if [ -f $RPM_BUILD_ROOT/opt/kde3/share/doc/HTML/en/$APPLICATION/index.docbook ] ; then
     DOCPATH=$APPLICATION
     DOCPATH_IS_GUESS=true
   fi

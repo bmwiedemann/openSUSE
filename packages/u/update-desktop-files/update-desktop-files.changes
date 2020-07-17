@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 30 03:21:06 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove GNOME 1 and KDE 3 support (boo#1062631, rpmlint#437).
+
+-------------------------------------------------------------------
 Tue Sep 10 16:06:41 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
 
 - Add ComputerScience, sort Science and Education alphabetically

@@ -104,12 +104,8 @@ find "/$RPM_BUILD_ROOT/usr/share/metainfo/" "/$RPM_BUILD_ROOT/usr/share/appdata/
 done
 
 # Handle desktop files
-find "/$RPM_BUILD_ROOT/opt/kde3/share/applications/kde/" \
-  "/$RPM_BUILD_ROOT/opt/kde3/share/applnk/" \
-  "/$RPM_BUILD_ROOT/usr/share/xsessions/" \
+find "/$RPM_BUILD_ROOT/usr/share/xsessions/" \
   "/$RPM_BUILD_ROOT/usr/share/applications/" \
-  "/$RPM_BUILD_ROOT/usr/share/mimelnk/" \
-  "/$RPM_BUILD_ROOT/usr/share/gnome/apps/" \
   "/$RPM_BUILD_ROOT/usr/share/autostart/" \
   "/$RPM_BUILD_ROOT/etc/xdg/autostart/" \
   "/$RPM_BUILD_ROOT/usr/share/wallpapers/" \
