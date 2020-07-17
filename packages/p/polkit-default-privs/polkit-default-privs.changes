@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 15 07:48:57 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 1550+20200715.6ddc764:
+  * whitelist libvirt-dbus rule file (bsc#1173093)
+
+-------------------------------------------------------------------
 Tue Jun 30 15:47:59 UTC 2020 - jsegitz@suse.com
 
 - Update to version 1550+20200630.e9f182b:

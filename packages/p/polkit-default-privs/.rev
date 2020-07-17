@@ -1659,4 +1659,13 @@ for 12.3</comment>
     <comment></comment>
     <requestid>818034</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>9cb0680817ea6b25e6a53ded5a323342</srcmd5>
+    <version>1550+20200715.6ddc764</version>
+    <time>1595011562</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20200715.6ddc764:
+  * whitelist libvirt-dbus rule file (bsc#1173093)</comment>
+    <requestid>821045</requestid>
+  </revision>
 </revisionlist>
