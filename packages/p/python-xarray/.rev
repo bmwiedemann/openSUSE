@@ -776,4 +776,12 @@
     <comment>- Package is py3 only -&gt; drop py2 dependency</comment>
     <requestid>795672</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>03a594bdfa640c6174ffb59e6a320c5d</srcmd5>
+    <version>0.16.0</version>
+    <time>1595011832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821410</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 15 03:13:15 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.16.0
+  Highlights:
+  * xarray.cov & xarray.corr for covariance & correlation respectively
+  * the idxmax & idxmin methods
+  * the polyfit method & xarray.polyval for fitting polynomials
+  * a number of documentation improvements, other features, and bug fixes
+- Enable now-working tests
+
+-------------------------------------------------------------------
 Mon Apr 20 07:11:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Package is py3 only -> drop py2 dependency

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-xarray
-Version:        0.15.1
+Version:        0.16.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
@@ -68,8 +68,8 @@ chmod -x xarray/util/print_versions.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Tests are xfail on aarch64: gh#pydata/xarray#2334
-%pytest -k "not test_datetime_reduce and not test_roundtrip_numpy_datetime_data and not test_download_from_github" xarray
+# test_no_warning_from_dask_effective_get fails due to upstream scipy warning
+%pytest -k "not test_download_from_github and not test_no_warning_from_dask_effective_get" xarray
 
 %files %{python_files}
 %doc README.rst
