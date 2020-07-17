@@ -18,7 +18,7 @@
 
 %define powerline_python_sitelib %{python3_sitelib}
 Name:           powerline
-Version:        2.8
+Version:        2.8.1
 Release:        0
 Summary:        Status line and prompt utility
 License:        MIT
@@ -27,16 +27,33 @@ URL:            https://github.com/powerline/powerline
 Source0:        https://github.com/powerline/powerline/archive/%{version}/powerline-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  fontconfig
+BuildRequires:  git-core
+BuildRequires:  lemonbar
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
-BuildRequires:  python3-base
+BuildRequires:  python3-i3ipc
+BuildRequires:  python3-netifaces
+BuildRequires:  python3-pexpect
+BuildRequires:  python3-psutil
+BuildRequires:  python3-pytest
+BuildRequires:  python3-pyuv
 BuildRequires:  python3-setuptools
-BuildRequires:  sed
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  tmux
 BuildRequires:  vim-base
 Requires:       powerline-fonts
 Requires:       python3
+Requires:       python3-psutil
+Recommends:     git-core
+Recommends:     python3-i3ipc
+Recommends:     python3-netifaces
 Recommends:     python3-pygit2
+Suggests:       i3
+Suggests:       lemonbar
+Suggests:       python3-pyuv
+Suggests:       tmux
+Provides:       python3-powerline-status = %{version}
+Obsoletes:      python3-powerline-status < %{version}
 %{?systemd_requires}
 
 %description
@@ -195,6 +212,14 @@ rm -rf %{buildroot}/%{powerline_python_sitelib}/%{name}/config_files
 find %{buildroot}/%{powerline_python_sitelib}/%{name}/bindings -name "*.py[a-z]" -delete
 
 %fdupes %{buildroot}%{powerline_python_sitelib}
+
+%check
+# test_user and test_system_load mock logic may be broken
+# test_network_load or test_threaded_segment or test_kw_threaded_segment appear incompatible with OBS VM
+# test_top_log_format or test_logger_format are newish failures, possibly due to Python 3.8
+export TEST_ROOT=${CWD}
+export PYTHONPATH=$TEST_ROOT:%{buildroot}%{powerline_python_sitelib}
+python3 -m pytest -vv -rs -k 'not (test_user or test_system_load or test_network_load or test_threaded_segment or test_kw_threaded_segment or test_top_log_format or test_logger_format)'
 
 %pre
 %service_add_pre powerline.service

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 17 05:55:06 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+- Require python3-psutil needed for segments env, net and sys
+- Add Provides python3-powerline-status for compatibility with
+  python_module macro
+- Recommend python3-i3ipc needed for bindings to i3 and lemonbar
+- Recommend git-core needed for most git functionality
+- Update to v2.8.1
+  * Add __version__
+
+-------------------------------------------------------------------
 Fri May 15 06:20:03 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 2.8

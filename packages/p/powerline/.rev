@@ -74,4 +74,12 @@ editors status lines (vim) and WM widgets for specific WMs (awesome, qtile)</com
 </comment>
     <requestid>805743</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>264eacab1effe0e3386cd06dbcd3dd2f</srcmd5>
+    <version>2.8.1</version>
+    <time>1595011848</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821414</requestid>
+  </revision>
 </revisionlist>
