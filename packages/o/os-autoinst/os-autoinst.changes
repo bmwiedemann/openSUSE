@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 16 19:25:39 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1594921384.d00b0724:
+  * CMake: Improve dependency lookup via pkg-config
+  * CMake: Add install target for openvswitch files
+  * CMake: Fix check for pod2html
+  * Remove unused 'IO::Select' from some backends
+  * Install the "null" backend as well
+  * Add "amt" backend and console to installed files
+  * CMake: Add target to generate documentation
+  * CMake: Configure install versions of isotovideo and cv.pm
+  * CMake: Add install targets
+  * Add CMake build script
+
+-------------------------------------------------------------------
 Mon Jul 13 21:27:30 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1594675641.d4771812:
