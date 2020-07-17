@@ -741,4 +741,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>805520</requestid>
   </revision>
+  <revision rev="73" vrev="6">
+    <srcmd5>0471982198f3c2f6396b34a99063c433</srcmd5>
+    <version>6.22.02</version>
+    <time>1595011571</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch tcsh-6.22.02-double_tilde.dif from mailing list for
+  reported bug and already added upstream</comment>
+    <requestid>821046</requestid>
+  </revision>
 </revisionlist>

@@ -35,6 +35,7 @@ Patch6:         tcsh-6.18.03-catalogs.dif
 Patch7:         tcsh-6.22.02-workaround-common.patch
 Patch8:         tcsh-6.22.02-local-dotlock.dif
 Patch9:         tcsh-6.22.02-history-merge.dif
+Patch10:        tcsh-6.22.02-double_tilde.dif
 BuildRequires:  autoconf
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
@@ -63,6 +64,7 @@ correction, a history mechanism, job control, and a C-like syntax.
 %patch7 -p 1 -b .workaround
 %patch8 -p 0 -b .dotlock
 %patch9 -p 0 -b .histmrg
+%patch10 -p0 -b .dbltilde
 %patch0      -b .0
 
 %build

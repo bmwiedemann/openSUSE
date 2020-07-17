@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 15 07:34:33 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch tcsh-6.22.02-double_tilde.dif from mailing list for
+  reported bug and already added upstream
+
+-------------------------------------------------------------------
 Thu May  7 08:22:30 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Better support of Midnight Commander (bsc#1170527) 
