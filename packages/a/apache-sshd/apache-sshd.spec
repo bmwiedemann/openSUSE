@@ -27,6 +27,7 @@ URL:            https://mina.apache.org/sshd-project
 Source0:        https://archive.apache.org/dist/mina/sshd/%{version}/apache-sshd-%{version}-src.tar.gz
 # Avoid optional dep on tomcat native APR library
 Patch0:         0001-Avoid-optional-dependency-on-native-tomcat-APR-libra.patch
+Patch1:         apache-sshd-2.4.0-java8.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(junit:junit)
@@ -58,6 +59,7 @@ This package provides %{name}.
 
 %prep
 %setup -q
+%patch1 -p1
 
 # Avoid optional dep on tomcat native APR library
 %patch0 -p1
