@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 14 21:12:13 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.10.0, no changes overview provided.
+- Build with Python 3, add gimp-help-2.10.0-python3.patch.
+- Clean up spec file, drop unused dependencies.
+- Drop huge ChangeLog (verbatim git log), README and TERMINOLOGY
+  files, not useful for end users.
+
+-------------------------------------------------------------------
 Thu Oct  3 12:23:32 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints for ppc64/ppc64le as build failed with 3.5G disk
