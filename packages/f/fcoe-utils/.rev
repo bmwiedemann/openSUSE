@@ -237,4 +237,12 @@ of removed patches. (forwarded request 476759 from morbidrsa)</comment>
     <comment></comment>
     <requestid>813010</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>60caf2563cd99c737bc9513dc4aa4417</srcmd5>
+    <version>1.0.33</version>
+    <time>1595011609</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821148</requestid>
+  </revision>
 </revisionlist>

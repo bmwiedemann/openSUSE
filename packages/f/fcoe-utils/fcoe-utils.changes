@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 15 17:24:06 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Handle NIC names longer than 7 characters for the output of
+  "fcoeadm -s" output (bsc#1010047), adding patch:
+  * Handle-NIC-names-longer-than-7-characters.patch
+
+-------------------------------------------------------------------
 Tue Jun  9 15:57:49 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Updated with latest upstream v1.0.33 from v1.0.32:
