@@ -21,7 +21,7 @@
 
 Name:           HepMC
 %define lname	libHepMC3-1
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        An event record for High Energy Physics Monte Carlo Generators in C++
 # Python bindings are BSD-3-Clause, packaged separately
@@ -29,8 +29,6 @@ License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://hepmc.web.cern.ch/hepmc/
 Source:         http://hepmc.web.cern.ch/hepmc/releases/%{name}3-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM HepMC-type-mismatch-error.patch badshah400@gmail.com -- Fix type mismatch between function definition and function call flagged by GCC 10
-Patch0:         HepMC-type-mismatch-error.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
