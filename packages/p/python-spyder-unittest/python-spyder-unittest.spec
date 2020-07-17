@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-spyder-unittest
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Plugin to run tests from within the Spyder IDE
 License:        MIT

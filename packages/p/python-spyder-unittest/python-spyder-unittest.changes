@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 17 09:55:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.4.1
+  * This release fixes several bugs and other issues, allowing the plugin to be
+    used with Spyder 4.1. See changelog.
+
+-------------------------------------------------------------------
 Tue Mar 24 16:06:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - add release to provides and obsoletes
