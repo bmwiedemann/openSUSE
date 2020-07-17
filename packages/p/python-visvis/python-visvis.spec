@@ -1,7 +1,7 @@
 #
 # spec file for package python-visvis
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-visvis
-Version:        1.12.2
+Version:        1.12.4
 Release:        0
 Summary:        An object oriented approach to visualization of 1D to 4D data
 License:        BSD-3-Clause
@@ -38,6 +38,7 @@ Recommends:     python-scipy
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module imageio}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module opengl}
 BuildRequires:  %{python_module pytest}
@@ -63,6 +64,9 @@ find * -name '*.py' -exec sed -i -e '/^#!\//, 1d' {} \;
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %license license.txt
