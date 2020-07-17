@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 16 15:20:57 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0.5
+  * Fixes issue with unchanged tags being reordered when .save()
+    is called that caused unnecessary updates to NetBox.
+
+-------------------------------------------------------------------
 Wed Jul  8 15:53:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.0.4
