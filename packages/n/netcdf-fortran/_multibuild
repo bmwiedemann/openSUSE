@@ -1,4 +1,5 @@
 <multibuild>
+  <package>gnu-hpc</package>
   <package>gnu-openmpi-hpc</package>
   <package>gnu-openmpi2-hpc</package>
   <package>gnu-openmpi3-hpc</package>

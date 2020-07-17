@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 15 16:55:04 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add serial HPC build flavor (boo#1174177).
+  For loading serial module, run 'module load netcdf-fortran'
+  for an MPI variant use 'module load pnetcdf-fortran'.
+- Fixed bug in module file.
+
+-------------------------------------------------------------------
 Wed Jul  1 15:36:46 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Gfortran from gcc-10 requires -std=legacy to build the Fortran

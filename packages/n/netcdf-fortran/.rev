@@ -125,4 +125,15 @@
   code in netcdf-fortran (bsc#1173598). (forwarded request 818156 from eeich)</comment>
     <requestid>818157</requestid>
   </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>2de8c95b6730fd76192b920aa8d57126</srcmd5>
+    <version>4.5.2</version>
+    <time>1595011776</time>
+    <user>dimstar_suse</user>
+    <comment>- Add serial HPC build flavor (boo#1174177).
+  For loading serial module, run 'module load netcdf-fortran'
+  for an MPI variant use 'module load pnetcdf-fortran'.
+- Fixed bug in module file. (forwarded request 821324 from eeich)</comment>
+    <requestid>821326</requestid>
+  </revision>
 </revisionlist>

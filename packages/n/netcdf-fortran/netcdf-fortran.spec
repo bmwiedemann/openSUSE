@@ -38,6 +38,11 @@ ExclusiveArch:  do_not_build
 
 ExcludeArch:    s390 s390x
 
+%if "%flavor" == "gnu-hpc"
+%global compiler_family gnu
+%{bcond_with mpi}
+%endif
+
 %if "%flavor" == "gnu-openmpi-hpc"
 %{?DisOMPI1}
 %global compiler_family gnu
@@ -204,6 +209,7 @@ ExcludeArch:    s390 s390x
 %if 0%{!?package_name:1}
 %define package_name %{hpc_package_name %_ver}
 %endif
+%{?with_mpi:%global hpc_module_pname p%{pname}}
 
 Name:           %package_name
 %define libname libnetcdf-fortran
@@ -236,10 +242,10 @@ NetCDF is a set of software libraries and self-describing,
 machine-independent data formats that support the creation, access,
 and sharing of array-oriented scientific data.
 
-%if 0%{!?mpi_flavor:1}
+%if %{without mpi}
 This package contains utility functions for working with NetCDF files.
 %else
-This package contains the openmpi version of utility functions for
+This package contains the %{mpi_flavor} version of utility functions for
 working with NetCDF files.
 %endif
 
@@ -330,15 +336,17 @@ chmod a-x RELEASE_NOTES.md
 
 %build
 %{hpc_setup}
-module load pnetcdf
+module load %{?with_mpi:p}netcdf
 export CFLAGS="-I $NETCDF_INC -L$NETCDF_LIB -lnetcdf -L$HDF5_LIB -lhdf5"
+export FCFLAGS="-std=legacy"
+export FFLAGS=$FCFLAGS
 export CPPFLAGS=$CFLAGS
 export LDFLAGS="-L$NETCDF_LIB -lnetcdf -L$HDF5_LIB -lhdf5"
 
-%if 0%{?mpi_flavor:1}
+%if %{with mpi}
 export CC="mpicc"
-export FC="mpif90 -std=legacy"
-export F77="mpif77 -std=legacy"
+export FC="mpif90"
+export F77="mpif77"
 %endif
 %hpc_configure \
     --enable-shared \
@@ -353,11 +361,11 @@ make %{?_smp_mflags}
 
 %install
 %{hpc_setup}
-module load pnetcdf
+module load %{?with_mpi:p}netcdf
 export CFLAGS="-I $NETCDF_INC -L$NETCDF_LIB -lnetcdf -L$HDF5_LIB -lhdf5"
 export CPPFLAGS=$CFLAGS
 export LDFLAGS="-L$NETCDF_LIB -lnetcdf -L$HDF5_LIB -lhdf5"
-%if 0%{?mpi_flavor:1}
+%if %{with mpi}
 export CC="mpicc"
 export FC="mpif90"
 export F77="mpif77"
@@ -396,8 +404,8 @@ module-whatis "%{url}"
 # Require generic netcdf
 
 if [ expr [ module-info mode load ] || [module-info mode display ] ] {
-    if {  ![is-loaded netcdf]  } {
-        module load pnetcdf
+    if {  ![is-loaded %{?with_mpi:p}netcdf]  } {
+        module load %{?with_mpi:p}netcdf
     }
 }
 
@@ -427,11 +435,11 @@ EOF
 %if %_do_check
 %check
 %{hpc_setup}
-    module load pnetcdf
+    module load %{?with_mpi:p}netcdf
 export CFLAGS="-I $NETCDF_INC -L$NETCDF_LIB -lnetcdf -L$HDF5_LIB -lhdf5"
 export CPPFLAGS=$CFLAGS
 export LDFLAGS="-L$NETCDF_LIB -lnetcdf -L$HDF5_LIB -lhdf5"
-%if 0%{?mpi_flavor:1}
+%if 0%{with mpi}
 export CC="mpicc"
 export FC="mpif90"
 export F77="mpif77"
