@@ -137,4 +137,12 @@
   * fixed crash on icon theme search (regression since 0.40)</comment>
     <requestid>754871</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>90037064050b59b9ab181a9aef5b56c3</srcmd5>
+    <version>1.0</version>
+    <time>1595012047</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821530</requestid>
+  </revision>
 </revisionlist>
