@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  7 20:31:26 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- We don't need to skip TestKatzCentralityDirectedNumpy when we don't
+  use -n auto parameter of pytest (gh#networkx/networkx#4030)
+
+-------------------------------------------------------------------
 Mon Jun 29 10:01:59 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Skipping over test_subgraph_centrality_big_graph is not

@@ -102,8 +102,9 @@ popd
 }
 
 %check
-# gh#networkx/networkx#4030 TestKatzCentralityDirectedNumpy failing
-%pytest -n auto -k 'not TestKatzCentralityDirectedNumpy'
+# gh#networkx/networkx#4030 we cannot use -n auto because
+# TestKatzCentralityDirectedNumpy fails otherwise
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt

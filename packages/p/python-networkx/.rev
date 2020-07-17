@@ -211,4 +211,12 @@
   necessary anymore (gh#networkx/networkx#3304)</comment>
     <requestid>817741</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>66d4ed8f9b07428bc2ed96cca0f8e7f5</srcmd5>
+    <version>2.4</version>
+    <time>1595011509</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>820984</requestid>
+  </revision>
 </revisionlist>
