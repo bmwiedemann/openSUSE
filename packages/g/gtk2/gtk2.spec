@@ -1,7 +1,7 @@
 #
 # spec file for package gtk2
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define gtk_binary_version 2.10.0
 %define _name gtk
 Name:           gtk2
-Version:        2.24.32+67
+Version:        2.24.32+70
 Release:        0
 # FIXME: when updating to next version, check whether we can remove the workaround for bgo#596977 below (removing -fomit-frame-pointer)
 Summary:        The GTK+ toolkit library (version 2)

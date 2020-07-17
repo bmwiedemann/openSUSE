@@ -1277,4 +1277,12 @@ Ensure nobody gets confused next time we want to update the version. (forwarded 
     <comment>Eliminate the -lang recommends (forwarded request 767168 from dimstar)</comment>
     <requestid>767433</requestid>
   </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>e679b0a3ce349da854490f44349ddb86</srcmd5>
+    <version>2.24.32+70</version>
+    <time>1595011525</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820988</requestid>
+  </revision>
 </revisionlist>

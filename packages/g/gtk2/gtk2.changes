@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul 12 12:26:32 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 2.24.32+70:
+  * Resolve GIMP segfault from accessing memory past end of pixbuf
+    Fixes https://gitlab.gnome.org/GNOME/gtk/-/issues/2684
+  * Use bundle id instead of package name for the macOS preview as
+    filename is now changed.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:14:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
