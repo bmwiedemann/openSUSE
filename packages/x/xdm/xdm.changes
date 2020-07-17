@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 16 05:13:42 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- readd insserv-compat also when using systemd due to missing
+  /etc/rc.status, etc. (boo#1174180)
+
+-------------------------------------------------------------------
 Mon Jun 22 18:56:47 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Require fillup_prereq not insserv-compat when using systemd 

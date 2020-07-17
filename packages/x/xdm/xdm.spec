@@ -74,9 +74,8 @@ BuildRequires:  firewall-macros
 Requires:       /sbin/pidof
 %if 0%{?with_systemd}
 Requires:       %fillup_prereq
-%else
-Requires:       insserv-compat
 %endif
+Requires:       insserv-compat
 Requires:       logrotate
 Requires:       sessreg
 Requires:       xconsole

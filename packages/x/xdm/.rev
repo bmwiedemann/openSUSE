@@ -788,4 +788,13 @@
     <comment></comment>
     <requestid>816540</requestid>
   </revision>
+  <revision rev="82" vrev="8">
+    <srcmd5>46a4ad52b24ec4d1a794b3f6442b9641</srcmd5>
+    <version>1.1.12</version>
+    <time>1595011634</time>
+    <user>dimstar_suse</user>
+    <comment>- readd insserv-compat also when using systemd due to missing
+  /etc/rc.status, etc. (boo#1174180)</comment>
+    <requestid>821182</requestid>
+  </revision>
 </revisionlist>
