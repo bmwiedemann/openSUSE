@@ -220,4 +220,12 @@
   upstream (forwarded request 765506 from mcepl)</comment>
     <requestid>765507</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>01335a0d66b72a8451531ec0d3527b7e</srcmd5>
+    <version>3.5.44</version>
+    <time>1595011579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821075</requestid>
+  </revision>
 </revisionlist>

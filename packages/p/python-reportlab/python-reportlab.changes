@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 15 11:00:29 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.5.44
+  * Python 3.9 partial support
+  * fix for improper <img> handling in paragraphs
+  * ensure shapes save can do svg and regularize formats
+  * allow TTF subfont selection with a PSName
+  * experimental support for pie shading
+
+-------------------------------------------------------------------
 Sat Jan 18 09:46:57 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.5.34:
