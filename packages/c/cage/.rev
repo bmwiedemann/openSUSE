@@ -24,4 +24,31 @@
   Some applications wont work correctly otherwise.</comment>
     <requestid>790836</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5f41b5ab63f59779a3c6a8ea94393c02</srcmd5>
+    <version>0.1.2.1</version>
+    <time>1595011700</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.2.1:
+  * man: indent with tabs (#156)
+
+- Update to 0.1.2:
+  * Cage now implements the
+    wlr-screencopy-unstable-v1,
+    xdg-output-unstable-v1.xml,
+    wlr-gamma-control-unstable-v1,
+    and wlr_export_dmabuf_unstable_v1 protocols.
+  * Support for direct scan-out has been added to Cage.
+  * Cage now allows switching VTs
+  * Extended multi monitor behaviour
+    One to extend the application across the monitors' bounding
+    box and another to use only the last plugged in monitor.
+  * Add support for keyboard groups.
+  * Cage now comes with a manpage
+  * For details see https://github.com/Hjdskes/cage/releases/tag/v0.1.2
+- Remove because in new release:
+  * cage-0.1.1-new-wlroots.patch
+  * cage-0.1.1-dont-terminate-display.patch</comment>
+    <requestid>821323</requestid>
+  </revision>
 </revisionlist>

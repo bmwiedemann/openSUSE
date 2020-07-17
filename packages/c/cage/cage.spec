@@ -17,19 +17,18 @@
 
 
 Name:           cage
-Version:        0.1.1
+Version:        0.1.2.1
 Release:        0
 Summary:        Wayland Kiosk
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://www.hjdskes.nl/projects/cage/
 Source:         https://github.com/Hjdskes/cage/archive/v%{version}.tar.gz
-Patch0:         cage-0.1.1-new-wlroots.patch
-Patch1:         cage-0.1.1-dont-terminate-display.patch
-BuildRequires:  libpixman-1-0-devel
 BuildRequires:  meson >= 0.43.0
 BuildRequires:  pkgconfig
-BuildRequires:  wlroots-devel >= 0.9.1
+BuildRequires:  scdoc
+BuildRequires:  wlroots-devel >= 0.11.0
+BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.14
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(xkbcommon)
@@ -39,8 +38,6 @@ A Wayland Kiosk.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 %meson
@@ -53,5 +50,6 @@ A Wayland Kiosk.
 %license LICENSE
 %doc README.md
 %{_bindir}/cage
+%{_mandir}/man1/cage.1%{?ext_man}
 
 %changelog
