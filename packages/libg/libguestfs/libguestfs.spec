@@ -602,6 +602,7 @@ fi
 	--docdir=%{guestfs_docdir} \
 	--enable-daemon \
 	--enable-install-daemon \
+	--with-guestfs-path=%{_libdir}/guestfs \
 	--with-qemu=$QEMU \
 	--without-java \
 	--with-supermin-packager-config="$PWD/zypper.priv.conf --use-installed --verbose" \

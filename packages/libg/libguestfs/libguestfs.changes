@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  7 15:48:08 MDT 2020 - carnold@suse.com
+
+- bsc#1172818 - libguestfs: inconsistent LIBGUESTFS_PATH
+  libguestfs.spec
+
+-------------------------------------------------------------------
 Wed Apr 22 14:23:36 MDT 2020 - carnold@suse.com
 
 - Update to version 1.42.0
