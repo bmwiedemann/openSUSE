@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 16 10:29:11 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- n_disable-touchscreen.patch
+  * don't use wacom driver for various touchscreens; let it fall
+    back to libinput driver instead (boo#1172669) 
+
+-------------------------------------------------------------------
 Mon Jun  8 17:45:15 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_Change-default-gesture-mode-touchpad-on-touchscreen-.patch
