@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 16 23:57:01 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * eclipse-libkeystorelinuxnative.patch
+    + Fix unresolved symbols when trying to load
+      libkeystorelinuxnative.so on platforms that have it
+
+-------------------------------------------------------------------
 Mon Jul  6 04:53:01 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 4.15

@@ -114,6 +114,7 @@ Patch27:        compiler-release.patch
 Patch31:        eclipse-suse-batik.patch
 # Fix build on ppc64 big endian
 Patch33:        eclipse-ppc64.patch
+Patch34:        eclipse-libkeystorelinuxnative.patch
 BuildRequires:  ant >= 1.10.5
 BuildRequires:  ant-antlr
 BuildRequires:  ant-apache-bcel
@@ -503,6 +504,7 @@ tar --strip-components=1 -xf %{SOURCE1}
 
 %patch31 -p1
 %patch33 -p1
+%patch34 -p1
 
 # Optional (unused) multipart support (see patch 25)
 rm rt.equinox.bundles/bundles/org.eclipse.equinox.http.servlet/src/org/eclipse/equinox/http/servlet/internal/multipart/MultipartSupport{Impl,FactoryImpl,Part}.java
