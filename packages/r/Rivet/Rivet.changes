@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jul 14 20:43:26 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.2:
+  * Submission of ATLAS_2019_I1744201, ATLAS_2019_I1764342.
+  * Add a very horrible preprocessor hack to allow use of a
+    private method on the HepMC2 WeightContainer, for robust and
+    correctly ordered weight name acquisition before HepMC
+    2.06.11.
+  * Allow several AnalysisHandler objects to run in different
+    threads. This is a temporary fix. A permanent fix involves
+    changing the Analysis handler to own its own projections.
+    Currently each AnalysisHandler need sto be created and run
+    completely within the same separate thread.
+  * Allow + and - in AO paths.
+  * Always skip weights that have "AUX" or "DEBUG" in the name.
+  * Add computation of Python versions and passing them to Cython
+    as command-line flags.
+  * Fix small bug in rivet-cmphistos.
+  * Add ATLAS_2018_I163527 (W+jets at 8 TeV).
+  * Add InvisibleFinalState projection.
+  * HTML sectioning and float/overflow/scrollbar improvements in
+    rivet-mkhtml output.
+
+-------------------------------------------------------------------
 Sat May 16 03:11:44 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.1.1: Long list of changes, see ChangeLog

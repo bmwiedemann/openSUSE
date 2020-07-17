@@ -157,4 +157,12 @@ Depends on
     <comment></comment>
     <requestid>807781</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f61ace0a71398d3ba2ca4a3c24fcc13a</srcmd5>
+    <version>3.1.2</version>
+    <time>1595012039</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821521</requestid>
+  </revision>
 </revisionlist>

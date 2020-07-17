@@ -16,9 +16,9 @@
 #
 
 
-%define so_name lib%{name}-3_1_1
+%define so_name lib%{name}-3_1_2
 Name:           Rivet
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        A toolkit for validation of Monte Carlo event generators
 License:        GPL-2.0-only
