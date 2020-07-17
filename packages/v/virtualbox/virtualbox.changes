@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Jul 15 18:52:28 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Version bump to 6.1.12 (released July 14 2020 by Oracle)
+
+  This is a maintenance release. The following items were fixed and/or added:
+
+  File "turn_off_cloud_net.patch" added.
+  Fixes for CVE-2020-14628, CVE-2020-14646, CVE-2020-14647, CVE-2020-14649 	 	 
+            CVE-2020-14713, CVE-2020-14674, CVE-2020-14675, CVE-2020-14676 	  	 
+            CVE-2020-14677, CVE-2020-14699, CVE-2020-14711, CVE-2020-14629 	 
+            CVE-2020-14703, CVE-2020-14704, CVE-2020-14648, CVE-2020-14650 	
+            CVE-2020-14673, CVE-2020-14694, CVE-2020-14695, CVE-2020-14698 		 
+            CVE-2020-14700, CVE-2020-14712, CVE-2020-14707, CVE-2020-14714	 
+            CVE-2020-14715 bsc#1174159.
+
+  UI: Fixes for Log-Viewer search-backward icon
+  Devices: Fixes and improvements for the BusLogic SCSI controller emulation
+  Serial Port: Regression fixes in FIFO data handling
+  Oracle Cloud Infrastructure integration: Experimental new type of network attachment, allowing local VM to act as if it was run in cloud
+  API: improved resource management in the guest control functionality
+  VBoxManage: fixed command option parsing for the "snapshot edit" sub-command
+  VBoxManage: Fix crash of 'VBoxManage internalcommands repairhd' when processing invalid input (bug #19579)
+  Guest Additions, 3D: New experimental GLX graphics output
+  Guest Additions, 3D: Fixed releasing texture objects, which could cause guest crashes
+  Guest Additions: Fixed writes to a file on a shared folder not being reflected on the host when the file is mmap'ed and the used Linux kernel is between version 4.10.0 and 4.11.x
+  Guest Additions: Fixed the shared folder driver on 32bit Windows 8 and newer returning an error when flushing writes to a file which is mapped into memory under rare circumstances
+  Guest Additions: Improve resize coverage for VMSVGA graphics controller
+  Guest Additions: Fix issues detecting guest additions ISO at runtime
+  Guest Additions: Fixed German translation encoding for Windows GA installer
+
+-------------------------------------------------------------------
+Tue Jul 14 10:37:53 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- More fixes for %_libexecdir changing to /usr/libexec(bsc#1174075)
+  - Previous fixes accidentally removed from changelog after conflict
+
+-------------------------------------------------------------------
 Fri Jul 10 01:38:55 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Switch to multibuild to so that we can maintain one spec file

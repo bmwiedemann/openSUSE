@@ -1,40 +1,20 @@
-Index: VirtualBox-6.1.4/src/VBox/Frontends/VirtualBox/src/globals/UIImageTools.cpp
+Index: VirtualBox-6.1.12/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.cpp
 ===================================================================
---- VirtualBox-6.1.4.orig/src/VBox/Frontends/VirtualBox/src/globals/UIImageTools.cpp
-+++ VirtualBox-6.1.4/src/VBox/Frontends/VirtualBox/src/globals/UIImageTools.cpp
-@@ -17,6 +17,7 @@
- 
+--- VirtualBox-6.1.12.orig/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.cpp
++++ VirtualBox-6.1.12/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.cpp
+@@ -18,6 +18,7 @@
  /* Qt includes: */
- #include <QPainter>
-+#include <QPainterPath>
- 
- /* GUI include */
- #include "UIImageTools.h"
-Index: VirtualBox-6.1.4/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.cpp
-===================================================================
---- VirtualBox-6.1.4.orig/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.cpp
-+++ VirtualBox-6.1.4/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.cpp
-@@ -19,6 +19,7 @@
  #include <QApplication>
  #include <QLabel>
- #include <QPainter>
 +#include <QPainterPath>
  #include <QPaintEvent>
  #include <QStyle>
  #include <QVBoxLayout>
-Index: VirtualBox-6.1.4/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.h
+Index: VirtualBox-6.1.12/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.h
 ===================================================================
---- VirtualBox-6.1.4.orig/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.h
-+++ VirtualBox-6.1.4/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.h
-@@ -24,6 +24,7 @@
- /* Qt includes: */
- #include <QIcon>
- #include <QWidget>
-+#include <QPainterPath>
- 
- /* GUI includes: */
- #include "UILibraryDefs.h"
-@@ -34,7 +35,6 @@ class QIcon;
+--- VirtualBox-6.1.12.orig/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.h
++++ VirtualBox-6.1.12/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.h
+@@ -37,7 +37,6 @@ class QIcon;
  class QLabel;
  class QMouseEvent;
  class QObject;
@@ -42,27 +22,3 @@ Index: VirtualBox-6.1.4/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.h
  class QPaintEvent;
  class QResizeEvent;
  class QString;
-Index: VirtualBox-6.1.4/src/VBox/Frontends/VirtualBox/src/widgets/UIMiniToolBar.cpp
-===================================================================
---- VirtualBox-6.1.4.orig/src/VBox/Frontends/VirtualBox/src/widgets/UIMiniToolBar.cpp
-+++ VirtualBox-6.1.4/src/VBox/Frontends/VirtualBox/src/widgets/UIMiniToolBar.cpp
-@@ -21,6 +21,7 @@
- #include <QMenu>
- #include <QMoveEvent>
- #include <QPainter>
-+#include <QPainterPath>
- #include <QStateMachine>
- #include <QStyle>
- #include <QTimer>
-Index: VirtualBox-6.1.4/src/VBox/Frontends/VirtualBox/src/widgets/UIMenuToolBar.cpp
-===================================================================
---- VirtualBox-6.1.4.orig/src/VBox/Frontends/VirtualBox/src/widgets/UIMenuToolBar.cpp
-+++ VirtualBox-6.1.4/src/VBox/Frontends/VirtualBox/src/widgets/UIMenuToolBar.cpp
-@@ -19,6 +19,7 @@
- #include <QApplication>
- #include <QHBoxLayout>
- #include <QPainter>
-+#include <QPainterPath>
- #include <QStyle>
- #include <QToolButton>
- 

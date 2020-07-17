@@ -66,7 +66,7 @@ python3 -O -c "import sys, os, compileall; br='%{buildroot}'; compileall.compile
 
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        6.1.10
+Version:        6.1.12
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-2.0-or-later
@@ -147,6 +147,8 @@ Patch111:       fix_conflict_between_host_and_guest.patch
 Patch112:       modify_for_4_8_bo_move.patch
 # Remove all mention of _smp_mflags
 Patch113:       vbox_remove_smp_mflags.patch
+# Disable experimental and incomplete CLOUD_NET
+Patch114:       turn_off_cloud_net.patch
 # Fix for missing include needed for server 1.19
 Patch116:       Fix_for_server_1.19.patch
 # Fix invalid use of internal headers
@@ -285,7 +287,7 @@ Obsoletes:      %{name}-ose < %{version}
 ### Requirements for virtualbox-kmp ###
 %if %{kmp_package}
 BuildRequires:  libxml2-devel
-%(sed -e '/^Provides: multiversion(kernel)/d' %{_libexecdir}/rpm/kernel-module-subpackage > %{_builddir}/virtualbox-kmp-template)
+%(sed -e '/^Provides: multiversion(kernel)/d' %{_prefix}/lib/rpm/kernel-module-subpackage > %{_builddir}/virtualbox-kmp-template)
 %kernel_module_package -t %{_builddir}/virtualbox-kmp-template -p %{SOURCE7} -n virtualbox -f %{SOURCE5} -x kdump um xen pae xenpae pv
 Obsoletes:      virtualbox-guest-kmp
 Obsoletes:      virtualbox-host-kmp
@@ -475,6 +477,7 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch111 -p1
 %patch112 -p1
 %patch113 -p1
+%patch114 -p1
 %patch116 -p1
 %patch118 -p1
 %patch120 -p1
