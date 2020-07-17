@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 16 19:26:24 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1594892785.5a3073ffd:
+  * openqa-clone-custom-git-refspec: Fix curl+jq check for jq < 1.6
+  * Dependency cron 200716
+  * Fix user creation in OAuth2 plugin
+  * Dependency cron 200715
+  * Improve code for collapsing investigation details
+  * Collapse content of in investigation when content is too big
+  * docs: Extend Networking chapter to cover non-qemu in general
+  * docs: Fix and improve networking sections
+
+-------------------------------------------------------------------
 Mon Jul 13 12:47:34 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1594640971.bf4138e4b:
