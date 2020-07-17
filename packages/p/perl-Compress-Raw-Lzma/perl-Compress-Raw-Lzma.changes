@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 14 03:08:58 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.094
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.094 13 July 2020
+
+        * Issue with Append mode & SvOOK
+          Issue https://github.com/pmqs/Compress-Raw-Lzma/issues/4
+          10fbd83afbf02b255bfac79fc38f6b507bc93b4e
+
+-------------------------------------------------------------------
 Sun Dec  8 03:15:19 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 2.093
