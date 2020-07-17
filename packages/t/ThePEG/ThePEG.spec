@@ -17,13 +17,10 @@
 
 
 # DISABLE JAVA BINDINGS UNTIL COMPATIBLE WITH openjdk >= 1.9
-%if 0%{?suse_version} <= 1325
 %bcond_with java
-%endif
-#
 
 Name:           ThePEG
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Toolkit providing a common platform for event generators in C++
 License:        GPL-2.0-only
@@ -31,20 +28,16 @@ Group:          Development/Libraries/C and C++
 URL:            http://home.thep.lu.se/~leif/ThePEG/
 Source:         http://www.hepforge.org/archive/thepeg/%{name}-%{version}.tar.bz2
 Patch1:         ThePEG_gcc6_failed.patch
-BuildRequires:  HepMC2-devel
+BuildRequires:  HepMC-devel
 BuildRequires:  LHAPDF-devel
 BuildRequires:  Rivet-devel
 BuildRequires:  YODA-devel
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_test-devel
-%else
-BuildRequires:  boost-devel
-%endif
 BuildRequires:  fastjet-devel
 BuildRequires:  fastjet-plugin-siscone-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gsl-devel
+BuildRequires:  libboost_test-devel
 %if %{with java}
 BuildRequires:  java-devel
 %endif
@@ -86,9 +79,14 @@ ThePEG.
 %setup -q
 %patch1 -p1
 
+# FIX AN env BASED HASHBANG
+sed -i "1{s|#! /usr/bin/env bash|#!/bin/bash|}" ./src/thepeg-config.in
+
 %build
-%configure
-make %{?_smp_mflags}
+%configure \
+  --with-hepmcversion=3 \
+  --with-rivet=%{_prefix}
+%make_build
 
 %install
 %make_install

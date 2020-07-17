@@ -116,4 +116,12 @@ Depends on
     <comment></comment>
     <requestid>761604</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f9ab3dae1c900d86851b549c06e321dd</srcmd5>
+    <version>2.2.1</version>
+    <time>1595012016</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821513</requestid>
+  </revision>
 </revisionlist>
