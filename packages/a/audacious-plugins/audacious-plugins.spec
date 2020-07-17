@@ -21,7 +21,7 @@
 %define aud_ver_max 4.0.99
 %bcond_with faad
 Name:           audacious-plugins
-Version:        4.0.4
+Version:        4.0.5
 Release:        0
 Summary:        Plugins for Audacious
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only AND MIT AND BSD-2-Clause
@@ -123,9 +123,6 @@ Extra plugins for the Audacious audio player.
 %exclude %{_libdir}/audacious/Input/libaac-raw.so
 %endif
 %exclude %{_libdir}/audacious/Output/libfilewriter.so
-# Fix Winamp Default skin by removing wrong skin file
-# https://github.com/audacious-media-player/audacious-plugins/pull/93
-%exclude %{_datadir}/audacious/Skins/Default/balance.png
 %{_datadir}/audacious/
 
 %files lang -f %{name}.lang
