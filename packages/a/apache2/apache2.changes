@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 15 09:16:02 UTC 2020 - pgajdos@suse.com
+
+- fix crash in mod_proxy_uwsgi for empty values of environment
+  variables [bsc#1174052]
+- added patches
+  fix https://svn.apache.org/viewvc?view=revision
+  + apache2-mod_proxy_uwsgi-fix-crash.patch
+
+-------------------------------------------------------------------
 Fri Apr  3 12:09:55 UTC 2020 - pgajdos@suse.com
 
 - declare ap_sock_disable_nagle to fix loading mod_proxy_http2

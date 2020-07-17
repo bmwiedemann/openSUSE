@@ -1705,4 +1705,16 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
      and exit. [Graham Leggett]</comment>
     <requestid>791205</requestid>
   </revision>
+  <revision rev="168" vrev="2">
+    <srcmd5>c67e116f1a1f067902edc03d0acd83ac</srcmd5>
+    <version>2.4.43</version>
+    <time>1595011599</time>
+    <user>dimstar_suse</user>
+    <comment>- fix crash in mod_proxy_uwsgi for empty values of environment
+  variables [bsc#1174052]
+- added patches
+  fix https://svn.apache.org/viewvc?view=revision
+  + apache2-mod_proxy_uwsgi-fix-crash.patch</comment>
+    <requestid>821097</requestid>
+  </revision>
 </revisionlist>
