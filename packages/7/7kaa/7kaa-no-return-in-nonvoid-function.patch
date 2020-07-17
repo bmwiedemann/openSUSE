@@ -1,0 +1,12 @@
+diff -Nur 7kaa-2.15.4p1/include/OFIRM.h new/include/OFIRM.h
+--- 7kaa-2.15.4p1/include/OFIRM.h	2020-07-11 04:47:28.000000000 +0200
++++ new/include/OFIRM.h	2020-07-13 17:12:35.540867933 +0200
+@@ -322,7 +322,7 @@
+ 			  void detect_info_both();
+ 
+ 	virtual void put_info(int refreshFlag)		{;}
+-	virtual int  detect_info()						{;}
++	virtual int  detect_info()						{return 0;}
+ 			  void sort_worker();
+ 
+ 	 		  void process_animation();

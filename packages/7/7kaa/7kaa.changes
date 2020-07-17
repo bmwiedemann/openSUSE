@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Jul 12 15:49:42 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 2.15.4p1
+  * This is a patch release to fix a few issues with 2.15.4.
+    All users should upgrade.
+- Update to 2.15.4
+  * Fixed a problem in multiplayer that halted the game play.
+  * Added option to play with the original seven kingdoms, and
+    enabled on original scenarios.
+  * Apply the leadership bonus when the general is in fort for
+    defending soldiers in range.
+  * Fixed the mobile general range calculation for the leadership
+    bonus to not apply to the troop anywhere on the map.
+  * Apply the leadership bonus when the general is on a ship for
+    defending soldiers in range.
+  * Updated translations.
+  * Added hotkeys for managing the build menu in the War Factory,
+    Harbor, and Town.
+  * Restored support for real full screen resolution that requires
+    a screen mode change.
+  * Improved dynamic UI button and text layout.
+  * Added Polish translation.
+  * Added trade locations to the trade report.
+  * Sort and filter trade locations based on the map selected
+    caravan.
+  * Allow setting stops using the trade report.
+  * Allow copying trade routes using the trade report.
+- Add 7kaa-no-return-in-nonvoid-function.patch
+- Clean with spec-cleaner
+
+-------------------------------------------------------------------
 Fri Mar 27 09:34:45 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.15.3. Changes since 2.15.2:
