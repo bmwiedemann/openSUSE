@@ -18,7 +18,7 @@
 
 
 Name:           s-tui
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Terminal based CPU stress and monitoring utility
 License:        GPL-2.0-or-later

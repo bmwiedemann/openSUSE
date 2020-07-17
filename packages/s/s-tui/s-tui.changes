@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 11 17:16:36 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.2
+  Bug fixes and stability realease.
+  * Crash on save settings with no .config dir for user.
+  * Fix for not saving summaries independently of graphs.
+  * Do not display stress counter when no stress too is installed.
+  * Fix call for temperature hooks not called.
+
+-------------------------------------------------------------------
 Tue Jun 16 18:45:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Use correct license: GPL-2.0-only -> GPL-2.0-or-later
