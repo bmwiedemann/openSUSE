@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 14 13:22:12 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add plplot-include-QPainterPath.patch: Include QPainterPath
+  header when building Qt modules, needed for Qt >= 5.15.0; patch
+  from upstream.
+- Re-enable octave bindings (issue with swig and octave seems to
+  be fixed now).
+- Reorganise the distribution of cmake files so that each cmake
+  file belongs in the right package.
+
+-------------------------------------------------------------------
 Mon Feb 24 14:17:15 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Re-enable csironn bindings for openSUSE >= 1550 as they build

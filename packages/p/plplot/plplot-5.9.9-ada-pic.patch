@@ -1,8 +1,8 @@
-Index: plplot-5.12.0/bindings/ada/CMakeLists.txt
+Index: plplot-5.15.0/bindings/ada/CMakeLists.txt
 ===================================================================
---- plplot-5.12.0.orig/bindings/ada/CMakeLists.txt
-+++ plplot-5.12.0/bindings/ada/CMakeLists.txt
-@@ -20,6 +20,10 @@
+--- plplot-5.15.0.orig/bindings/ada/CMakeLists.txt
++++ plplot-5.15.0/bindings/ada/CMakeLists.txt
+@@ -18,6 +18,10 @@
  
  if(ENABLE_ada)
  

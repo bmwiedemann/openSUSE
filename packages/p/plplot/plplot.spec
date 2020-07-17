@@ -26,7 +26,7 @@
 %define tk_enabled 1
 
 # SECTION Disable octave bindings for all versions until compilation against octave 4.4 is fixed
-%define octave_enabled 0
+%define octave_enabled 1
 # /SECTION
 
 %define X_display ":98"
@@ -54,6 +54,8 @@ Source0:        http://download.sf.net/plplot/%{name}-%{version}.tar.gz
 Patch0:         plplot-ocaml.patch
 # PATCH-FIX-UPSTREAM plplot-5.9.9-ada-pic.patch idoenmez@suse.de -- Compile Ada code with -fPIC
 Patch1:         plplot-5.9.9-ada-pic.patch
+# PATCH-FIX-UPSTREAM plplot-include-QPainterPath.patch badshah400@gmail.com -- Include QPainterPath header when building Qt modules, needed for Qt >= 5.15.0; patch from upstream
+Patch2:         plplot-include-QPainterPath.patch
 # List based on build_ada in gcc.spec
 ExclusiveArch:  %ix86 x86_64 ppc ppc64 ppc64le s390 s390x ia64 aarch64 riscv64
 BuildRequires:  cmake >= 3.13.2
@@ -215,8 +217,6 @@ in C.
 %{_libdir}/libqsastime.so
 %{_libdir}/pkgconfig/plplot.pc
 %dir %{_libdir}/cmake/plplot
-%{_libdir}/cmake/plplot/export_cairo.cmake
-%{_libdir}/cmake/plplot/export_cairo-release.cmake
 %{_libdir}/cmake/plplot/export_csirocsa.cmake
 %{_libdir}/cmake/plplot/export_csirocsa-release.cmake
 %{_libdir}/libcsironn.so
@@ -224,68 +224,18 @@ in C.
 %{_libdir}/cmake/plplot/export_csironn-release.cmake
 %{_libdir}/cmake/plplot/export_mem.cmake
 %{_libdir}/cmake/plplot/export_mem-release.cmake
-%{_libdir}/cmake/plplot/export_ntk.cmake
-%{_libdir}/cmake/plplot/export_ntk-release.cmake
 %{_libdir}/cmake/plplot/export_null.cmake
 %{_libdir}/cmake/plplot/export_null-release.cmake
-%{_libdir}/cmake/plplot/export_plfortrandemolib.cmake
-%{_libdir}/cmake/plplot/export_plfortrandemolib-release.cmake
-%{_libdir}/cmake/plplot/export_plplotada.cmake
-%{_libdir}/cmake/plplot/export_plplotada-release.cmake
-%{_libdir}/cmake/plplot/export_plplotc.cmake
 %{_libdir}/cmake/plplot/export_plplot.cmake
+%{_libdir}/cmake/plplot/export_plplotc.cmake
 %{_libdir}/cmake/plplot/export_plplotc-release.cmake
-%{_libdir}/cmake/plplot/export_plplotcxx.cmake
-%{_libdir}/cmake/plplot/export_plplotcxx-release.cmake
-%{_libdir}/cmake/plplot/export_plplotfortran.cmake
-%{_libdir}/cmake/plplot/export_plplotfortran-release.cmake
-%{_libdir}/cmake/plplot/export_plplotjavac_wrap.cmake
-%{_libdir}/cmake/plplot/export_plplotjavac_wrap-release.cmake
-%{_libdir}/cmake/plplot/export_plplotluac.cmake
-%{_libdir}/cmake/plplot/export_plplotluac-release.cmake
-%{_libdir}/cmake/plplot/export_plplot_pyqt5.cmake
-%{_libdir}/cmake/plplot/export_plplot_pyqt5-release.cmake
-%{_libdir}/cmake/plplot/export_plplotqt.cmake
-%{_libdir}/cmake/plplot/export_plplotqt-release.cmake
 %{_libdir}/cmake/plplot/export_plplot-release.cmake
-%{_libdir}/cmake/plplot/export_plplottcltk.cmake
-%{_libdir}/cmake/plplot/export_plplottcltk_Main.cmake
-%{_libdir}/cmake/plplot/export_plplottcltk_Main-release.cmake
-%{_libdir}/cmake/plplot/export_plplottcltk-release.cmake
-%{_libdir}/cmake/plplot/export_plplotwxwidgets.cmake
-%{_libdir}/cmake/plplot/export_plplotwxwidgets-release.cmake
 %{_libdir}/cmake/plplot/export_plserver.cmake
 %{_libdir}/cmake/plplot/export_plserver-release.cmake
-%{_libdir}/cmake/plplot/export_pltcl.cmake
-%{_libdir}/cmake/plplot/export_pltcl-release.cmake
 %{_libdir}/cmake/plplot/export_pltek.cmake
 %{_libdir}/cmake/plplot/export_pltek-release.cmake
-%{_libdir}/cmake/plplot/export_Pltk_init.cmake
-%{_libdir}/cmake/plplot/export_Pltk_init-release.cmake
-%{_libdir}/cmake/plplot/export_ps.cmake
-%{_libdir}/cmake/plplot/export_ps-release.cmake
-%{_libdir}/cmake/plplot/export_psttf.cmake
-%{_libdir}/cmake/plplot/export_psttf-release.cmake
 %{_libdir}/cmake/plplot/export_qsastime.cmake
 %{_libdir}/cmake/plplot/export_qsastime-release.cmake
-%{_libdir}/cmake/plplot/export_qt.cmake
-%{_libdir}/cmake/plplot/export_qt-release.cmake
-%{_libdir}/cmake/plplot/export_svg.cmake
-%{_libdir}/cmake/plplot/export_svg-release.cmake
-%{_libdir}/cmake/plplot/export_tclmatrix.cmake
-%{_libdir}/cmake/plplot/export_tclmatrix-release.cmake
-%{_libdir}/cmake/plplot/export_tk.cmake
-%{_libdir}/cmake/plplot/export_tk-release.cmake
-%{_libdir}/cmake/plplot/export_tkwin.cmake
-%{_libdir}/cmake/plplot/export_tkwin-release.cmake
-%{_libdir}/cmake/plplot/export_wxPLViewer.cmake
-%{_libdir}/cmake/plplot/export_wxPLViewer-release.cmake
-%{_libdir}/cmake/plplot/export_wxwidgets.cmake
-%{_libdir}/cmake/plplot/export_wxwidgets-release.cmake
-%{_libdir}/cmake/plplot/export_xfig.cmake
-%{_libdir}/cmake/plplot/export_xfig-release.cmake
-%{_libdir}/cmake/plplot/export_xwin.cmake
-%{_libdir}/cmake/plplot/export_xwin-release.cmake
 %{_libdir}/cmake/plplot/plplotConfig.cmake
 %{_libdir}/cmake/plplot/plplot_exports.cmake
 %{_mandir}/man3/pl*.3*
@@ -386,6 +336,8 @@ This package provides the files necessary for using PLplot in Ada.
 %{_libdir}/libplplotada.so
 %{_libdir}/ada/adalib/plplotada/
 %{_libdir}/pkgconfig/plplot-ada.pc
+%{_libdir}/cmake/plplot/export_plplotada.cmake
+%{_libdir}/cmake/plplot/export_plplotada-release.cmake
 %{_datadir}/ada/adainclude/plplotada/
 %{_datadir}/plplot%{version}/examples/ada/
 %{_datadir}/plplot%{version}/examples/test_ada.sh
@@ -438,6 +390,10 @@ This package provides the files necessary for using PLplot in Fortran.
 %{_libdir}/fortran/modules/plplot/
 %{_libdir}/libplplotfortran.so
 %{_libdir}/pkgconfig/plplot-fortran.pc
+%{_libdir}/cmake/plplot/export_plfortrandemolib.cmake
+%{_libdir}/cmake/plplot/export_plfortrandemolib-release.cmake
+%{_libdir}/cmake/plplot/export_plplotfortran.cmake
+%{_libdir}/cmake/plplot/export_plplotfortran-release.cmake
 %{_datadir}/plplot%{version}/examples/fortran/
 %{_datadir}/plplot%{version}/examples/test_fortran.sh
 ##########################################################################
@@ -459,6 +415,8 @@ plotting with Java.
 
 %files java
 %{_libdir}/plplot%{version}/libplplotjavac_wrap.so
+%{_libdir}/cmake/plplot/export_plplotjavac_wrap.cmake
+%{_libdir}/cmake/plplot/export_plplotjavac_wrap-release.cmake
 %{_datadir}/java/plplot.jar
 %{_datadir}/plplot%{version}/examples/java/
 %{_datadir}/plplot%{version}/examples/test_java.sh
@@ -481,6 +439,8 @@ plotting with Lua.
 
 %files lua
 %{_libdir}/lua/plplot/
+%{_libdir}/cmake/plplot/export_plplotluac.cmake
+%{_libdir}/cmake/plplot/export_plplotluac-release.cmake
 %{_datadir}/plplot%{version}/examples/lua/
 %{_datadir}/plplot%{version}/examples/test_lua.sh
 ##########################################################################
@@ -505,6 +465,8 @@ plotting with Octave.
 %{_datadir}/%{name}_octave/
 %{_datadir}/octave/site/m/PLplot/
 %{_libdir}/octave/site/oct/*/plplot_octave.oct
+%{_libdir}/cmake/plplot/export_plplot_octave-release.cmake
+%{_libdir}/cmake/plplot/export_plplot_octave.cmake
 %{_datadir}/plplot%{version}/examples/octave/
 %{_datadir}/plplot%{version}/examples/test_octave.sh
 %endif
@@ -527,6 +489,8 @@ plotting with python-qt.
 
 %files python3-qt
 %{python3_sitearch}/plplot_pyqt5.so
+%{_libdir}/cmake/plplot/export_plplot_pyqt5.cmake
+%{_libdir}/cmake/plplot/export_plplot_pyqt5-release.cmake
 ##########################################################################
 
 %package -n %{qt_shlib}
@@ -578,6 +542,10 @@ with Qt.
 %{_libdir}/pkgconfig/plplot-qt.pc
 %{_libdir}/plplot%{version}/drivers/qt.driver_info
 %{_libdir}/plplot%{version}/drivers/qt.so
+%{_libdir}/cmake/plplot/export_plplotqt.cmake
+%{_libdir}/cmake/plplot/export_plplotqt-release.cmake
+%{_libdir}/cmake/plplot/export_qt.cmake
+%{_libdir}/cmake/plplot/export_qt-release.cmake
 ##########################################################################
 
 %package tcltk-libs
@@ -627,7 +595,11 @@ This package provides the development files for using PLplot with Tcl/Tk.
 %{_bindir}/pltcl
 %{_libdir}/libplplottcltk*.so
 %{_libdir}/libtclmatrix.so
+%{_libdir}/cmake/plplot/export_pltcl.cmake
+%{_libdir}/cmake/plplot/export_pltcl-release.cmake
 %{_libdir}/pkgconfig/plplot-tcl*.pc
+%{_libdir}/cmake/plplot/export_tclmatrix.cmake
+%{_libdir}/cmake/plplot/export_tclmatrix-release.cmake
 %{_datadir}/plplot%{version}/examples/test_tcl.sh
 %{_datadir}/plplot%{version}/examples/tcl/
 %{_datadir}/plplot%{version}/pkgIndex.tcl
@@ -642,6 +614,16 @@ This package provides the development files for using PLplot with Tcl/Tk.
 %{_libdir}/plplot%{version}/drivers/tk.so
 %{_libdir}/plplot%{version}/drivers/tkwin.driver_info
 %{_libdir}/plplot%{version}/drivers/tkwin.so
+%{_libdir}/cmake/plplot/export_tk.cmake
+%{_libdir}/cmake/plplot/export_tk-release.cmake
+%{_libdir}/cmake/plplot/export_tkwin.cmake
+%{_libdir}/cmake/plplot/export_tkwin-release.cmake
+%{_libdir}/cmake/plplot/export_plplottcltk.cmake
+%{_libdir}/cmake/plplot/export_plplottcltk_Main.cmake
+%{_libdir}/cmake/plplot/export_plplottcltk_Main-release.cmake
+%{_libdir}/cmake/plplot/export_plplottcltk-release.cmake
+%{_libdir}/cmake/plplot/export_Pltk_init.cmake
+%{_libdir}/cmake/plplot/export_Pltk_init-release.cmake
 %{python3_sitearch}/Plframe.py*
 %{python3_sitearch}/TclSup.py*
 %{python3_sitearch}/*Pltk_init.*
@@ -686,6 +668,8 @@ This package provides a PLplot viewer built using the wxWidgets GUI API.
 
 %files wxwidgets
 %{_bindir}/wxPLViewer
+%{_libdir}/cmake/plplot/export_wxPLViewer.cmake
+%{_libdir}/cmake/plplot/export_wxPLViewer-release.cmake
 ##########################################################################
 
 %package -n %{name}wxwidgets-devel
@@ -713,6 +697,10 @@ plotting with wxWidgets.
 %{_libdir}/pkgconfig/plplot-wxwidgets.pc
 %{_libdir}/plplot%{version}/drivers/wxwidgets.driver_info
 %{_libdir}/plplot%{version}/drivers/wxwidgets.so
+%{_libdir}/cmake/plplot/export_plplotwxwidgets.cmake
+%{_libdir}/cmake/plplot/export_plplotwxwidgets-release.cmake
+%{_libdir}/cmake/plplot/export_wxwidgets.cmake
+%{_libdir}/cmake/plplot/export_wxwidgets-release.cmake
 ##########################################################################
 
 %package -n %{c_shlib}
@@ -772,6 +760,8 @@ This package provides the shared lib for PLplot's C++ binding.
 %files -n plplotcxx-devel
 %{_libdir}/libplplotcxx.so
 %{_libdir}/pkgconfig/plplot-c++.pc
+%{_libdir}/cmake/plplot/export_plplotcxx.cmake
+%{_libdir}/cmake/plplot/export_plplotcxx-release.cmake
 %{_includedir}/plplot/plstream.h
 ##########################################################################
 
@@ -876,6 +866,8 @@ This package provides the cairo driver for plotting using PLplot.
 %files driver-cairo
 %{_libdir}/plplot%{version}/drivers/cairo.driver_info
 %{_libdir}/plplot%{version}/drivers/cairo.so
+%{_libdir}/cmake/plplot/export_cairo.cmake
+%{_libdir}/cmake/plplot/export_cairo-release.cmake
 ##########################################################################
 
 %package driver-ntk
@@ -894,6 +886,8 @@ This package provides the ntk driver for plotting using PLplot.
 %files driver-ntk
 %{_libdir}/plplot%{version}/drivers/ntk.driver_info
 %{_libdir}/plplot%{version}/drivers/ntk.so
+%{_libdir}/cmake/plplot/export_ntk.cmake
+%{_libdir}/cmake/plplot/export_ntk-release.cmake
 ##########################################################################
 
 %package driver-ps
@@ -912,6 +906,8 @@ This package provides the ps driver for plotting using PLplot.
 %files driver-ps
 %{_libdir}/plplot%{version}/drivers/ps.driver_info
 %{_libdir}/plplot%{version}/drivers/ps.so
+%{_libdir}/cmake/plplot/export_ps.cmake
+%{_libdir}/cmake/plplot/export_ps-release.cmake
 ##########################################################################
 
 %package driver-psttf
@@ -930,6 +926,8 @@ This package provides the psttf driver for plotting using PLplot.
 %files driver-psttf
 %{_libdir}/plplot%{version}/drivers/psttf.driver_info
 %{_libdir}/plplot%{version}/drivers/psttf.so
+%{_libdir}/cmake/plplot/export_psttf.cmake
+%{_libdir}/cmake/plplot/export_psttf-release.cmake
 ##########################################################################
 
 %package driver-svg
@@ -948,6 +946,8 @@ This package provides the SVG driver for plotting using PLplot.
 %files driver-svg
 %{_libdir}/plplot%{version}/drivers/svg.driver_info
 %{_libdir}/plplot%{version}/drivers/svg.so
+%{_libdir}/cmake/plplot/export_svg.cmake
+%{_libdir}/cmake/plplot/export_svg-release.cmake
 ##########################################################################
 
 %package driver-xfig
@@ -966,6 +966,8 @@ This package provides the xfig driver for plotting using PLplot.
 %files driver-xfig
 %{_libdir}/plplot%{version}/drivers/xfig.driver_info
 %{_libdir}/plplot%{version}/drivers/xfig.so
+%{_libdir}/cmake/plplot/export_xfig.cmake
+%{_libdir}/cmake/plplot/export_xfig-release.cmake
 ##########################################################################
 
 %package driver-xwin
@@ -984,6 +986,8 @@ This package provides the xwin driver for plotting using PLplot.
 %files driver-xwin
 %{_libdir}/plplot%{version}/drivers/xwin.driver_info
 %{_libdir}/plplot%{version}/drivers/xwin.so
+%{_libdir}/cmake/plplot/export_xwin.cmake
+%{_libdir}/cmake/plplot/export_xwin-release.cmake
 ##########################################################################
 
 %prep
