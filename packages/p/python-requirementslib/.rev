@@ -35,4 +35,12 @@
     <comment>Py2 fix Staging:I</comment>
     <requestid>784792</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f942bae3a46ca4b1134343b16be17672</srcmd5>
+    <version>1.5.12</version>
+    <time>1595011494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820914</requestid>
+  </revision>
 </revisionlist>

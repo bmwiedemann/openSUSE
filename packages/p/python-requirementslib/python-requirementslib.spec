@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-requirementslib
-Version:        1.5.3
+Version:        1.5.12
 Release:        0
 Summary:        A tool for converting between pip-style and pipfile requirements
 License:        MIT
@@ -62,6 +62,7 @@ BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module attrs >= 18.2}
 BuildRequires:  %{python_module boltons >= 19.0.0}
 BuildRequires:  %{python_module cached-property}
+BuildRequires:  %{python_module dateutil}
 BuildRequires:  %{python_module distlib >= 0.2.8}
 BuildRequires:  %{python_module first}
 BuildRequires:  %{python_module hypothesis}
@@ -70,7 +71,6 @@ BuildRequires:  %{python_module packaging >= 0.19.0}
 BuildRequires:  %{python_module pep517 >= 0.5.0}
 BuildRequires:  %{python_module pip-shims}
 BuildRequires:  %{python_module plette}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -87,21 +87,18 @@ BuildRequires:  python-typing
 %python_subpackages
 
 %description
-A tool for converting between pip-style and pipfile requirements.
+RequirementsLib provides a simple layer for building and 
+interacting with requirements in both the Pipfile format and 
+the requirements.txt format. This library was originally built 
+for converting between these formats in Pipenv.
 
 %prep
 %setup -q -n requirementslib-%{version}
 %patch0 -p1
 cp %{SOURCE1} .
 
-# https://github.com/sarugaku/requirementslib/pull/144 unnecessary in next release
-sed -i '/colorama/d' setup.cfg
-
 sed -i '/invoke/d' setup.cfg
 rm -r tasks
-
-# This test module is entirely online
-rm tests/unit/test_dependencies.py
 
 %build
 export LANG=en_US.UTF-8
@@ -113,14 +110,28 @@ export LANG=en_US.UTF-8
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_get_local_ref and test_get_requirements need internet, test_local_req is somehow misconfigured
-#  The tests actually fail randomly; if you loop them in 100 runs around
-#  3-7 tests fail, with no repeated offender most of the time
-#%%pytest tests -k "not needs_internet and not test_get_local_ref and not test_get_requirements and not test_local_req"
+# many tests need internet https://github.com/sarugaku/requirementslib/issues/145
+# most tests are marked properly
+skip_tests="needs_internet"
+# unmarked but need internet
+skip_tests+=" or test_get_local_ref"
+skip_tests+=" or test_get_requirements"
+skip_tests+=" or (test_convert_from_pipfile and requirement10)"
+# unkown reason
+skip_tests+=" or test_parse_function_call_as_name"
+skip_tests+=" or test_ast_parser_handles_exceptions"
+# increase test deadline for slow obs executions architectures (e.g. on s390x)
+cat >> tests/conftest.py <<EOF
+
+from hypothesis import settings
+settings.register_profile("obs", deadline=1000)
+EOF
+%pytest tests -k "not ($skip_tests)" --hypothesis-profile=obs
 
 %files %{python_files}
 %doc CHANGELOG.rst README.rst docs/quickstart.rst
 %license LICENSE LICENSE.boltons
-%{python_sitelib}/*
+%{python_sitelib}/requirementslib
+%{python_sitelib}/requirementslib-%{version}-py*.egg-info
 
 %changelog
