@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Jul 14 19:09:59 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.8.3:
+  * The python method `Histo2D.addBins` was reimplemented using
+    `Histo2D::addBins()` C++ method instead of `Histo2D::addBin()`
+    for better performance.
+  * Make the low stats error for variances strictly require Neff >
+    1, rather than a fuzzy comparison that can cause trouble
+    downstream.
+  * Make xyMids,Foci,Errs,Mins,Maxs etc. runtime configurable with
+    'unique' and 'asgrid' optional params.
+  * Convert geometric axis-property array functions on Histo2D and
+    Profile2D to return the unique edges, mins, maxes, mids, etc.
+    rather than the heavily repeated versions for all the bins.
+  * Fix Histo2D.volumes() Python mapping, and add sumWs()
+    functions to all histo types.
+  * Add asgrid optional arguments to value-related Python methods
+    for Histo2D and Profile2D
+  * Add computation of Python versions and passing them to Cython
+    as command-line flags.
+- Changes from version 1.8.2:
+  * Fix off-by-one error in Axis2D.numBinsX/Y() return values,
+    fixing Histo2D and Profile2D.
+  * Add numBinsX() methods to the 1D histogram and profile
+    classes.
+  * Py3 compatibility fix
+  * Fix call to `Histo1D.annotationsDict`
+- Changes from version 1.8.1:
+  * Fix list-return read YODA-format function.
+  * Removed unwanted space at end of headers.
+  * Set correct dimension when calling setErrs.
+  * Added zerrs to 3DScatter headers.
+  * Added xErrs, yErrs, zErrs to Scatter3D.pyx
+  * Add underflow and overflow reporting to the verbose yodals
+    printout.
+  * Re-instate title() and fix bug in z-error storage for scatter
+    3Ds.
+  * Python3 compatibility tweaks
+  * Add a pdfspace() function in C++ and a Python equivalent --
+    recoded rather than mapped, due to the technical implications
+    of passing Python callables as std::functions -- for custom
+    binning from a density function.
+  * Fix YODA 1.7 style call to AO.dim.
+  * Update yodamerge ao_out.point(i).setVal(dim, val_i)
+  * IO.pyx: missing python3 compatibility
+  * Sort dicts on IO write(), and return ordered dicts in read
+    mode if possible.
+- Drop YODA-py3-compatibility-for-IO_pyx.patch: incorporated
+  upstream.
+
+-------------------------------------------------------------------
 Sat Jan 18 13:47:23 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add YODA-py3-compatibility-for-IO_pyx.patch -- Py3 compatibilty

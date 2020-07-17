@@ -16,10 +16,10 @@
 #
 
 
-%define so_name lib%{name}-1_8_0
+%define so_name lib%{name}-1_8_3
 
 Name:           YODA
-Version:        1.8.0
+Version:        1.8.3
 Release:        0
 Summary:        A small set of data analysis classes for MC event generator validation analyses
 License:        GPL-2.0-only
@@ -27,8 +27,6 @@ Group:          Development/Libraries/C and C++
 URL:            http://yoda.hepforge.org/
 Source:         http://www.hepforge.org/archive/yoda/%{name}-%{version}.tar.bz2
 Patch1:         sover.diff
-# PATCH-FIX-UPSTREAM YODA-py3-compatibility-for-IO_pyx.patch badshah400@gmail.com -- Py3 compatibilty for IO.pyx; patch taken from upstream commit
-Patch2:         YODA-py3-compatibility-for-IO_pyx.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkg-config
@@ -108,7 +106,6 @@ This package provides the python binidings for %{name}.
 %prep
 %setup -q
 %patch -P 1 -p1
-%patch2 -p1
 
 # USE PYTHON3 FOR HASHBANGS
 sed -Ei "1{s|/usr/bin/python|/usr/bin/python3|}" bin/*
