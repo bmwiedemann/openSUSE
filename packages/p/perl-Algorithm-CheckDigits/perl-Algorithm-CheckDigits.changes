@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 15 03:06:45 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.3.3
+   see /usr/share/doc/packages/perl-Algorithm-CheckDigits/Changes
+
+  v1.3.3 Di 14. Jul 19:20:56 CEST 2020
+  	- reworked lib/Algorithm/CheckDigits.pm, allow 10-digit numbers,
+  	  allow prepending of 'BE' before the digits
+  	- fix Bug #132950
+
+-------------------------------------------------------------------
 Tue May 24 09:02:22 UTC 2016 - coolo@suse.com
 
 - updated to 1.3.2
