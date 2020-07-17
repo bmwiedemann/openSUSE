@@ -2500,4 +2500,41 @@ Improvements:
     <comment></comment>
     <requestid>819067</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>63b1087524817b85a3a4c1a19a3f309e</srcmd5>
+    <version>1.23.2</version>
+    <time>1595011754</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.23.2:
+  * Fixed a buffer overrun vulnerability in Netdata's JSON parsing
+    code. This vulnerability could be used to crash Agents
+    remotely, and in some circumstances, could be used in an
+    arbitrary code execution (ACE) exploit.
+Improvements:
+  * Add support for multiple ACLK query processing threads
+  * Add Infiniband monitoring to collector proc.plugin
+  * Change the HTTP method to make the IPFS collector compatible
+    with 0.5.0+
+  * Add support for returning headers using python.d's UrlService
+Bug fixes:
+  * Fix vulnerability in JSON parsing
+  * Fixed stored number accuracy
+  * Fix transition from archived to active charts not generating
+    alarms
+  * Fix PyMySQL library to respect my.cnf parameter
+  * Remove health from archived metrics
+  * Update exporting engine to read the prefix option from instance
+    config sections
+  * Fix display error in Swagger API documentation
+  * Wrap exporting engine header definitions in compilation
+    conditions
+  * Improve cgroups collector to autodetect unified cgroups
+  * Fix CMake build failing if ACLK is disabled
+  * Fix now_ms in charts.d collector to prevent tc-qos-helper
+    crashes
+  * Fix python.d crashes by adding a lock to stdout write function
+  * Fix an issue with random crashes when updating a chart's
+    metadata on the fly</comment>
+    <requestid>821336</requestid>
+  </revision>
 </revisionlist>
