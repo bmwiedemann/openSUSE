@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul 17 08:04:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.8.0:
+  * **chore:**  using Github templates for issues and PRs (#610) ([eddc0976](https://github.com/python-zk/kazoo/commit/eddc0976bf1ef9d9fb97990cebbc3f9b1abe9d7d))
+  * **core:**
+    *  Use strict regex to identify lock contenders. ([cc8ce892](https://github.com/python-zk/kazoo/commit/cc8ce8929116a1f0a2f0d088afa82ac9576395dc))
+    *  Support additionaal lock contenter patterns ([225eeecb](https://github.com/python-zk/kazoo/commit/225eeecbe66c10d46dc7928681783d17f389f13a))
+  * **tests:**
+    *  Disable problematic hound-flake8-black integration. ([75f62a0d](https://github.com/python-zk/kazoo/commit/75f62a0dd40a9f9bdefcb04cea5ee5fcd3438c0e))
+    *  Move to pytest ([de97d74b](https://github.com/python-zk/kazoo/commit/de97d74b50b62cd2f0cddc2a04e150575d9c6bc7))
+    *  add Python 3.8 and remove Python 3.6 from the testing suite (#611) ([e4f808f7](https://github.com/python-zk/kazoo/commit/e4f808f7f0fe17e7e01468a2c54684f048e12b52))
+  * **core:**  Use chain.from_iterable in threading.py (#614) ([13c73ec5](https://github.com/python-zk/kazoo/commit/13c73ec5f4d4f2215deb987a059051bb821674ca))
+  * **core:**
+    *  handle SSL_WANT_READ/WRITE errors (#619) ([cbdc4749](https://github.com/python-zk/kazoo/commit/cbdc4749edb5879099c1f9b832c055d9eeb52dea), closes [#618](https://github.com/python-zk/kazoo/issues/618))
+    *  '"is" with a literal' syntax errors (#609) ([6b6ffe62](https://github.com/python-zk/kazoo/commit/6b6ffe62a073d1ed5413c65c2d8ec94ea2fa1760))
+    *  sync() return should be unchrooted ([cbde70ac](https://github.com/python-zk/kazoo/commit/cbde70ac87435afbbacc9806c675184c7f778343), closes [#601](https://github.com/python-zk/kazoo/issues/601))
+  * **core:**  Update matrix: add pypy3, drop py27 ([522189da](https://github.com/python-zk/kazoo/commit/522189da0f238faafc8f1db34f682f49b15ec503))
+  * **tests:**  Add coverage report on codecov.io ([bb475843](https://github.com/python-zk/kazoo/commit/bb475843905af1a2d25b1f5834085c85c28bb175))
+
+-------------------------------------------------------------------
 Mon Mar 30 10:53:58 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - downgrade pure-sasl dependency to suggests, as it requires
