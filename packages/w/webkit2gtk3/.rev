@@ -794,4 +794,21 @@
     <comment>Add bug ref and CVEs to changes (forwarded request 799041 from mgorse)</comment>
     <requestid>799169</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>fce099401f91ac821d5461208777d08d</srcmd5>
+    <version>2.28.3</version>
+    <time>1595011542</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.28.3:
+  + Enable kinetic scrolling with async scrolling.
+  + Fix web process hangs on large GitHub pages.
+  + Bubblewrap sandbox should not attempt to bind empty paths.
+  + Fix threading issues in the media player.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2020-9802, CVE-2020-9803, CVE-2020-9805,
+    CVE-2020-9806, CVE-2020-9807, CVE-2020-9843, CVE-2020-9850,
+    CVE-2020-13753.
+</comment>
+    <requestid>820991</requestid>
+  </revision>
 </revisionlist>
