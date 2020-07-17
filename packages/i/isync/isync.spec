@@ -17,19 +17,22 @@
 
 
 Name:           isync
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Utility to synchronize IMAP mailboxes with local maildir folders
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Email/Utilities
-URL:            http://isync.sf.net/
-Source:         http://prdownloads.sourceforge.net/isync/%{name}-%{version}.tar.gz
+URL:            https://isync.sf.net/
+Source:         https://prdownloads.sourceforge.net/isync/%{name}-%{version}.tar.gz
+Source1:        https://prdownloads.sourceforge.net/isync/%{name}-%{version}.tar.gz.asc
+# gpg2 --recv-keys 106457B8735659A4D40F56456F5447F95D001D85
+# gpg2 --export --armour oswald.buddenhagen@gmx.de > isync.keyring
+Source2:        %{name}.keyring
 BuildRequires:  db-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 isync is a command line application which synchronizes mailboxes; currently
@@ -43,26 +46,28 @@ synchronizers). Synchronization state is kept in one local text file per
 mailbox pair; multiple replicas of a mailbox can be maintained.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} docdir=%{_docdir}/%{name} install
+%make_install docdir=%{_docdir}/%{name}
 
 %files
-%defattr(-,root,root,-)
 %license COPYING
-%doc README AUTHORS ChangeLog
+%doc README AUTHORS ChangeLog NEWS
 %{_bindir}/mbsync-get-cert
 %{_bindir}/isync
 %{_bindir}/mbsync
 %{_bindir}/mdconvert
-%doc %{_docdir}/isync
-%{_mandir}/man1/isync.1%{ext_man}
-%{_mandir}/man1/mbsync.1%{ext_man}
-%{_mandir}/man1/mdconvert.1%{ext_man}
+%exclude %{_docdir}/%{name}/TODO
+%exclude %{_docdir}/%{name}/COPYING
+%{_docdir}/%{name}/examples/*
+%dir %{_docdir}/%{name}/examples
+%{_mandir}/man1/isync.1%{?ext_man}
+%{_mandir}/man1/mbsync.1%{?ext_man}
+%{_mandir}/man1/mdconvert.1%{?ext_man}
 
 %changelog

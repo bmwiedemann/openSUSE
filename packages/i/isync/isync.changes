@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul  8 11:19:38 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Update to version 1.3.2
+  - increased PassCmd buffer size to accomodate XOAUTH2 tokens
+  - improved SSL error handling
+  - improved resilience to IMAP server bugs relating to FETCH
+  - fixed handling of non-uppercase IMAP iNbOx spellings
+  - fixed timeouts while uploading big messages
+  - fixed parsing of NIL hierarchy delimiters in IMAP LIST responses
+  - fixed crash when using Tunnel in an IPv6-enabled build
+  - fixed libcrypto detection from OpenSSL 1.1+ without pkg-config
+  - made --debug-crash work with Yama ptrace protection
+- use more scriptlets
+- don't include COPYING twice and drop TODO from %doc
+- reenable gpg source verification
+
+-------------------------------------------------------------------
 Wed Feb 26 07:21:40 UTC 2020 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 - drop sources signature as there is no published key to verify them
