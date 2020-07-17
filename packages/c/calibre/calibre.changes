@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jul 16 19:25:22 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.21.0
+  * New Features
+    - Kobo driver: Add support for the new Kobo Nia
+    - Cover grid: Vertically center covers that are smaller than 
+      the available space.
+    - Quickview panel: Add a checkbox to easily toggle if virtual
+      libraries are respected.
+    - When creating custom columns allow specifying a default value
+      to be applied to new books for that column
+  * Bug Fixes
+    - Edit book: Fix initial sync of preview panel to cursor 
+      position sometimes not working when a new HTML file is opened
+      for editing
+    - Fix changed author sort name not being used when adding 
+      another book by the author to the library.
+    - Cover browser: improve rendering of text with heavily hinted
+      fonts.
+    - Viewer: Fix CBC comic files not being viewed correctly. 
+      Note that you have to reload the book via the viewer controls
+      to apply the fix.
+    - Viewer: Fix Table of Contents not correct for comics.
+    - Viewer: Ignore the zero width non-joiner character in 
+      searches
+    - Viewer: Fix a regression in the previous release that broke
+      reading of books with mathematics and also tags without href
+      attributes.
+    - Cover grid: When using a background image do not scroll it
+      with the covers.
+
+-------------------------------------------------------------------
 Fri Jul  3 05:51:30 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.20.0
