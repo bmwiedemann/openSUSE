@@ -32,13 +32,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       7
+%global updatever       8
 %global patchver        0
-%global datever         2020-04-14
+%global datever         2020-07-14
 %global buildver        10
 %global hg_project      jdk-updates
 %global hg_repository   jdk11u
-%global hg_revision     44ce940b344b
+%global hg_revision     0b0d55cb09b2
 %global icedtea_sound_version 1.0.1
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
@@ -209,9 +209,6 @@ Patch16:        missing-return.patch
 Patch20:        loadAssistiveTechnologies.patch
 #
 Patch30:        JDK-8208602.patch
-# 8228407: JVM crashes with shared archive file mismatch
-# Summary: Stop processing other header fields if initial header check has failed.
-Patch31:        JDK-8228407.patch
 Patch32:        gcc-fno-common-fix.patch
 #
 # OpenJDK specific patches
@@ -508,7 +505,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch20 -p1
 
 %patch30 -p1
-%patch31 -p1
 %patch32 -p1
 
 # s390 build fixes

@@ -303,4 +303,12 @@
     <comment>Oracle April 2020 CPU</comment>
     <requestid>795995</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ee5dee8c11d1a248b9f0fffbfa7d717a</srcmd5>
+    <version>11.0.8.0</version>
+    <time>1595011448</time>
+    <user>dimstar_suse</user>
+    <comment>July 2020 CPU</comment>
+    <requestid>821262</requestid>
+  </revision>
 </revisionlist>
