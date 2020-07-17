@@ -1,0 +1,272 @@
+--- jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsBlock.java	2020-07-01 15:56:03.808653270 +0200
++++ jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsBlock.java	2020-07-16 22:36:08.290442860 +0200
+@@ -13,6 +13,7 @@
+ package org.eclipse.jgit.internal.storage.dfs;
+ 
+ import java.io.IOException;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.util.zip.CRC32;
+ import java.util.zip.DataFormatException;
+@@ -40,7 +41,7 @@
+ 
+ 	ByteBuffer zeroCopyByteBuffer(int n) {
+ 		ByteBuffer b = ByteBuffer.wrap(block);
+-		b.position(n);
++		((Buffer)b).position(n);
+ 		return b;
+ 	}
+ 
+--- jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsPackFile.java	2020-07-01 15:56:03.808653270 +0200
++++ jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsPackFile.java	2020-07-16 22:33:28.081395320 +0200
+@@ -21,6 +21,7 @@
+ import java.io.EOFException;
+ import java.io.IOException;
+ import java.io.InputStream;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.channels.Channels;
+ import java.text.MessageFormat;
+@@ -379,7 +380,7 @@
+ 
+ 			// Need to skip the 'PACK' header for the first read
+ 			int ptr = packHeadSkipped ? 0 : 12;
+-			buf.position(0);
++			((Buffer)buf).position(0);
+ 			int bufLen = read(rc, buf);
+ 			if (bufLen <= ptr) {
+ 				throw packfileIsTruncated();
+--- jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsReftable.java	2020-07-01 15:56:03.808653270 +0200
++++ jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsReftable.java	2020-07-16 22:34:32.497816502 +0200
+@@ -13,6 +13,7 @@
+ import static org.eclipse.jgit.internal.storage.pack.PackExt.REFTABLE;
+ 
+ import java.io.IOException;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ 
+ import org.eclipse.jgit.internal.storage.io.BlockSource;
+@@ -102,7 +103,7 @@
+ 
+ 			byte[] dst = new byte[cnt];
+ 			ByteBuffer buf = ByteBuffer.wrap(dst);
+-			buf.position(ctx.copy(file, pos, dst, 0, cnt));
++			((Buffer)buf).position(ctx.copy(file, pos, dst, 0, cnt));
+ 			return buf;
+ 		}
+ 
+--- jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/file/ByteBufferWindow.java	2020-07-01 15:56:03.808653270 +0200
++++ jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/file/ByteBufferWindow.java	2020-07-16 22:49:51.215827431 +0200
+@@ -13,6 +13,7 @@
+ package org.eclipse.jgit.internal.storage.file;
+ 
+ import java.io.IOException;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.util.zip.DataFormatException;
+ import java.util.zip.Inflater;
+@@ -36,7 +37,7 @@
+ 	@Override
+ 	protected int copy(int p, byte[] b, int o, int n) {
+ 		final ByteBuffer s = buffer.slice();
+-		s.position(p);
++		((Buffer)s).position(p);
+ 		n = Math.min(s.remaining(), n);
+ 		s.get(b, o, n);
+ 		return n;
+@@ -46,7 +47,7 @@
+ 	void write(PackOutputStream out, long pos, int cnt)
+ 			throws IOException {
+ 		final ByteBuffer s = buffer.slice();
+-		s.position((int) (pos - start));
++		((Buffer)s).position((int) (pos - start));
+ 
+ 		while (0 < cnt) {
+ 			byte[] buf = out.getCopyBuffer();
+@@ -62,7 +63,7 @@
+ 	protected int setInput(int pos, Inflater inf)
+ 			throws DataFormatException {
+ 		final ByteBuffer s = buffer.slice();
+-		s.position(pos);
++		((Buffer)s).position(pos);
+ 		final byte[] tmp = new byte[Math.min(s.remaining(), 512)];
+ 		s.get(tmp, 0, tmp.length);
+ 		inf.setInput(tmp, 0, tmp.length);
+--- jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/reftable/BlockReader.java	2020-07-01 15:56:03.812653298 +0200
++++ jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/reftable/BlockReader.java	2020-07-16 22:47:40.366971204 +0200
+@@ -31,6 +31,7 @@
+ import static org.eclipse.jgit.lib.Ref.Storage.PACKED;
+ 
+ import java.io.IOException;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.util.Arrays;
+ import java.util.zip.DataFormatException;
+@@ -272,7 +273,7 @@
+ 			buf = b.array();
+ 		} else {
+ 			buf = new byte[bufLen];
+-			b.flip();
++			((Buffer)b).flip();
+ 			b.get(buf);
+ 		}
+ 		endPosition = pos + bufLen;
+--- jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/reftable/ReftableReader.java	2020-07-01 15:56:03.816653326 +0200
++++ jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/reftable/ReftableReader.java	2020-07-16 22:46:22.670462804 +0200
+@@ -23,6 +23,7 @@
+ import static org.eclipse.jgit.lib.Constants.OBJECT_ID_LENGTH;
+ 
+ import java.io.IOException;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.text.MessageFormat;
+ import java.util.Arrays;
+@@ -341,7 +342,7 @@
+ 		}
+ 
+ 		byte[] tmp = new byte[len];
+-		buf.flip();
++		((Buffer)buf).flip();
+ 		buf.get(tmp);
+ 		if (!isFileHeaderMagic(tmp, 0, len)) {
+ 			throw new IOException(JGitText.get().invalidReftableFile);
+@@ -408,7 +409,7 @@
+ 			buf = tmp.array();
+ 		} else {
+ 			buf = new byte[sz];
+-			tmp.flip();
++			((Buffer)tmp).flip();
+ 			tmp.get(buf);
+ 		}
+ 		if (pos == 0 && buf[FILE_HEADER_LEN] == FILE_BLOCK_TYPE) {
+--- jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/transport/RefAdvertiser.java	2020-07-01 15:56:03.824653381 +0200
++++ jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/transport/RefAdvertiser.java	2020-07-16 22:59:50.575747763 +0200
+@@ -15,6 +15,7 @@
+ import static org.eclipse.jgit.transport.GitProtocolConstants.OPTION_SYMREF;
+ 
+ import java.io.IOException;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.CharBuffer;
+ import java.nio.charset.CharacterCodingException;
+@@ -65,7 +66,7 @@
+ 				throws IOException {
+ 			id.copyTo(binArr, 0);
+ 			binArr[OBJECT_ID_STRING_LENGTH] = ' ';
+-			binBuf.position(OBJECT_ID_STRING_LENGTH + 1);
++			((Buffer)binBuf).position(OBJECT_ID_STRING_LENGTH + 1);
+ 			append(refName);
+ 			if (first) {
+ 				first = false;
+@@ -88,7 +89,7 @@
+ 				chBuf = CharBuffer.wrap(chArr);
+ 			}
+ 			str.getChars(0, n, chArr, 0);
+-			chBuf.position(0).limit(n);
++			((Buffer)chBuf).position(0).limit(n);
+ 			utf8.reset();
+ 			for (;;) {
+ 				CoderResult cr = utf8.encode(chBuf, binBuf, true);
+@@ -115,7 +116,7 @@
+ 			System.arraycopy(binArr, 0, tmp, 0, cnt);
+ 			binArr = tmp;
+ 			binBuf = ByteBuffer.wrap(binArr);
+-			binBuf.position(cnt);
++			((Buffer)binBuf).position(cnt);
+ 		}
+ 
+ 		@Override
+--- jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/util/RawParseUtils.java	2020-07-01 15:56:03.824653381 +0200
++++ jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/util/RawParseUtils.java	2020-07-16 22:57:18.914756147 +0200
+@@ -18,6 +18,7 @@
+ import static org.eclipse.jgit.lib.ObjectChecker.encoding;
+ import static org.eclipse.jgit.lib.ObjectChecker.tagger;
+ 
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.charset.CharacterCodingException;
+ import java.nio.charset.Charset;
+@@ -1137,7 +1138,7 @@
+ 			final byte[] buffer, final int start, final int end)
+ 			throws CharacterCodingException {
+ 		ByteBuffer b = ByteBuffer.wrap(buffer, start, end - start);
+-		b.mark();
++		((Buffer)b).mark();
+ 
+ 		// Try our built-in favorite. The assumption here is that
+ 		// decoding will fail if the data is not actually encoded
+@@ -1145,7 +1146,7 @@
+ 		try {
+ 			return decode(b, UTF_8);
+ 		} catch (CharacterCodingException e) {
+-			b.reset();
++			((Buffer)b).reset();
+ 		}
+ 
+ 		if (!cs.equals(UTF_8)) {
+@@ -1154,7 +1155,7 @@
+ 			try {
+ 				return decode(b, cs);
+ 			} catch (CharacterCodingException e) {
+-				b.reset();
++				((Buffer)b).reset();
+ 			}
+ 		}
+ 
+@@ -1165,7 +1166,7 @@
+ 			try {
+ 				return decode(b, defcs);
+ 			} catch (CharacterCodingException e) {
+-				b.reset();
++				((Buffer)b).reset();
+ 			}
+ 		}
+ 
+--- jgit-5.8.0.202006091008-r/org.eclipse.jgit.lfs.server/src/org/eclipse/jgit/lfs/server/fs/ObjectDownloadListener.java	2020-07-01 15:56:03.840653492 +0200
++++ jgit-5.8.0.202006091008-r/org.eclipse.jgit.lfs.server/src/org/eclipse/jgit/lfs/server/fs/ObjectDownloadListener.java	2020-07-16 22:26:56.886837333 +0200
+@@ -10,6 +10,7 @@
+ package org.eclipse.jgit.lfs.server.fs;
+ 
+ import java.io.IOException;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.channels.Channels;
+ import java.nio.channels.ReadableByteChannel;
+@@ -85,11 +86,11 @@
+ 	public void onWritePossible() throws IOException {
+ 		while (out.isReady()) {
+ 			try {
+-				buffer.clear();
++				((Buffer)buffer).clear();
+ 				if (in.read(buffer) < 0) {
+ 					buffer = null;
+ 				} else {
+-					buffer.flip();
++					((Buffer)buffer).flip();
+ 				}
+ 			} catch (Throwable t) {
+ 				LOG.log(Level.SEVERE, t.getMessage(), t);
+--- jgit-5.8.0.202006091008-r/org.eclipse.jgit.lfs.server/src/org/eclipse/jgit/lfs/server/fs/ObjectUploadListener.java	2020-07-01 15:56:03.840653492 +0200
++++ jgit-5.8.0.202006091008-r/org.eclipse.jgit.lfs.server/src/org/eclipse/jgit/lfs/server/fs/ObjectUploadListener.java	2020-07-16 22:27:35.039086792 +0200
+@@ -11,6 +11,7 @@
+ 
+ import java.io.FileNotFoundException;
+ import java.io.IOException;
++import java.nio.Buffer;
+ import java.nio.ByteBuffer;
+ import java.nio.channels.Channels;
+ import java.nio.channels.ReadableByteChannel;
+@@ -131,11 +132,11 @@
+ 	public void onDataAvailable() throws IOException {
+ 		while (in.isReady()) {
+ 			if (inChannel.read(buffer) > 0) {
+-				buffer.flip();
++				((Buffer)buffer).flip();
+ 				uploaded += Integer.valueOf(channel.write(buffer)).longValue();
+ 				buffer.compact();
+ 			} else {
+-				buffer.flip();
++				((Buffer)buffer).flip();
+ 				while (buffer.hasRemaining()) {
+ 					uploaded += Integer.valueOf(channel.write(buffer))
+ 							.longValue();

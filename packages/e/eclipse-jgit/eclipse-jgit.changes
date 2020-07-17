@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 16 21:23:15 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jgit-5.8.0-java8.patch
+    + restore java 8 compatibility when building with java 9+
+
+-------------------------------------------------------------------
 Fri Jul  3 09:55:53 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 5.8.0

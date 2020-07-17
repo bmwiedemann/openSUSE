@@ -37,6 +37,7 @@ Patch1:         0002-Don-t-embed-versions-of-third-party-libs-use-feature.patch
 # Remove req on assertj
 Patch2:         0003-Remove-requirement-on-assertj-core.patch
 Patch3:         jgit-shade.patch
+Patch4:         jgit-5.8.0-java8.patch
 # For main build
 BuildRequires:  ant
 BuildRequires:  apache-commons-compress
@@ -92,6 +93,7 @@ A pure Java implementation of the Git version control system.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 # Disable multithreaded build
 rm .mvn/maven.config
