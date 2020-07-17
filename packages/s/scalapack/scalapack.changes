@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 16 09:10:54 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add openmpi4 spport (provided by Alin M Elena)
+- Replace -fallow-argument-mismatch by -std=legacy
+
+-------------------------------------------------------------------
 Wed Jun 17 06:46:49 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Add compiler flag -fallow-argument-mismatch to allow build with

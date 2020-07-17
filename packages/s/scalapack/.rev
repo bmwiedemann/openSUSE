@@ -196,4 +196,13 @@
   gcc10. (forwarded request 815394 from eeich)</comment>
     <requestid>815395</requestid>
   </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>cbe52e8b701016611b51bf643fdfe576</srcmd5>
+    <version>2.1.0</version>
+    <time>1595011767</time>
+    <user>dimstar_suse</user>
+    <comment>- Add openmpi4 spport (provided by Alin M Elena)
+- Replace -fallow-argument-mismatch by -std=legacy</comment>
+    <requestid>821325</requestid>
+  </revision>
 </revisionlist>

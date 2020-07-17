@@ -32,6 +32,10 @@
 %define DisOMPI3 ExclusiveArch:  do_not_build
 %endif
 
+%if 0%{?sle_version:1} && 0%{?sle_version} < 150300
+%define DisOMPI4 ExclusiveArch:  do_not_build
+%endif
+
 %if "%flavor" == ""
 ExclusiveArch:  do_not_build
 %define package_name %pname
@@ -55,6 +59,18 @@ ExclusiveArch:  do_not_build
 %{?DisOMPI3}
 %define mpi_flavor openmpi
 %define mpi_vers 3
+%{bcond_with hpc}
+%{bcond_without blacs_devel_headers}
+%else
+# Only build header back on one multibuild for non-HPC.
+# Note: For HPC the headers need to be built always.
+%{bcond_with blacs_devel_headers}
+%endif
+
+%if "%flavor" == "openmpi4"
+%{?DisOMPI4}
+%define mpi_flavor openmpi
+%define mpi_vers 4
 %{bcond_with hpc}
 %{bcond_without blacs_devel_headers}
 %else
@@ -92,6 +108,15 @@ ExclusiveArch:  do_not_build
 %define compiler_family gnu
 %undefine c_f_ver
 %define mpi_vers 3
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu-openmpi4-hpc"
+%{?DisOMPI4}
+%define mpi_flavor openmpi
+%define compiler_family gnu
+%undefine c_f_ver
+%define mpi_vers 4
 %{bcond_without hpc}
 %endif
 
@@ -136,6 +161,15 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
+%if "%flavor" == "gnu7-openmpi4-hpc"
+%{?DisOMPI4}
+%define mpi_flavor openmpi
+%define compiler_family gnu
+%define c_f_ver 7
+%define mpi_vers 4
+%{bcond_without hpc}
+%endif
+
 %if "%flavor" == "gnu7-mvapich2-hpc"
 %define mpi_flavor mvapich2
 %define compiler_family gnu
@@ -177,6 +211,15 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
+%if "%flavor" == "gnu8-openmpi4-hpc"
+%{?DisOMPI4}
+%define mpi_flavor openmpi
+%define compiler_family gnu
+%define c_f_ver 8
+%define mpi_vers 4
+%{bcond_without hpc}
+%endif
+
 %if "%flavor" == "gnu8-mvapich2-hpc"
 %define mpi_flavor mvapich2
 %define compiler_family gnu
@@ -215,6 +258,15 @@ ExclusiveArch:  do_not_build
 %define compiler_family gnu
 %define c_f_ver 9
 %define mpi_vers 3
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu9-openmpi4-hpc"
+%{?DisOMPI4}
+%define mpi_flavor openmpi
+%define compiler_family gnu
+%define c_f_ver 9
+%define mpi_vers 4
 %{bcond_without hpc}
 %endif
 
@@ -481,14 +533,7 @@ EOF
 module load openblas
 %endif
 
-%if "%version" == "2.1.0"
-XTRA_FCFLAGS=-fallow-argument-mismatch
-%else
-# On version update check whether -fallow-argument-mismatch is
-# still required for gcc10. New versions may set this in the code.
-%error "Check if -fallow-argument-mismatch is still required for gcc10"
-%endif
-RPM_OPT_FLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing $XTRA_FCFLAGS"
+RPM_OPT_FLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -std=legacy"
 %if %{without hpc}
 echo $PATH | grep -q %{mpi_flavor}%{?mpi_ext} || \
     PATH=/usr/%_lib/mpi/gcc/%{mpi_flavor}%{?mpi_ext}/bin:$PATH
