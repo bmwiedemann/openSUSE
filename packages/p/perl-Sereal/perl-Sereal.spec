@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Sereal
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,26 @@
 
 
 Name:           perl-Sereal
-Version:        4.011
+Version:        4.017
 Release:        0
 %define cpan_name Sereal
 Summary:        Binary serialization module for Perl
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/Y/YV/YVES/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Sereal::Decoder) >= 4.011
-BuildRequires:  perl(Sereal::Encoder) >= 4.011
+BuildRequires:  perl(Sereal::Decoder) >= 4.017
+BuildRequires:  perl(Sereal::Encoder) >= 4.017
 BuildRequires:  perl(Test::LongString)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Warn)
-Requires:       perl(Sereal::Decoder) >= 4.011
-Requires:       perl(Sereal::Encoder) >= 4.011
+Requires:       perl(Sereal::Decoder) >= 4.017
+Requires:       perl(Sereal::Encoder) >= 4.017
 %{perl_requires}
 
 %description
