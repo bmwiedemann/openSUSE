@@ -473,4 +473,26 @@ Latest changes:
   * Fix: use full path in invoking prime-select</comment>
     <requestid>792950</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>013e82aa5180d72875186fc4a0ca5b15</srcmd5>
+    <version>0.7.14</version>
+    <time>1595011936</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.14
+  * Fix failure on TW to determine current systemd target
+  * Avoid endless loop when nvidia modules cannot be unloaded (boo#1173632)
+
+- Update to version 0.7.13
+  * (Hopefully) fixes user_logout_waiter for gdm autologin (issue#55)
+
+- Update to version 0.7.12
+  * README.md: Better explain power-off/powersave option of 
+    NVIDIA GPU (issue#54) 
+
+- Update to version 0.7.11
+  * Change nvidia's NVreg_DynamicPowerManagement kernel option to
+    0x01. This prevents intermittent 1s - 1.5s freezes on Turing
+    GPU's in nvidia mode (issue#52).</comment>
+    <requestid>821478</requestid>
+  </revision>
 </revisionlist>

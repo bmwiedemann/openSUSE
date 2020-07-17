@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jul 17 10:07:18 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.7.14
+  * Fix failure on TW to determine current systemd target
+  * Avoid endless loop when nvidia modules cannot be unloaded (boo#1173632)
+
+-------------------------------------------------------------------
+Tue Jul  7 19:49:47 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.7.13
+  * (Hopefully) fixes user_logout_waiter for gdm autologin (issue#55)
+
+-------------------------------------------------------------------
+Mon Jun 15 10:30:49 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.7.12
+  * README.md: Better explain power-off/powersave option of 
+    NVIDIA GPU (issue#54) 
+
+-------------------------------------------------------------------
+Tue Apr 14 09:55:14 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.7.11
+  * Change nvidia's NVreg_DynamicPowerManagement kernel option to
+    0x01. This prevents intermittent 1s - 1.5s freezes on Turing
+    GPU's in nvidia mode (issue#52).
+
+-------------------------------------------------------------------
 Fri Apr 10 12:17:13 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 0.7.10
