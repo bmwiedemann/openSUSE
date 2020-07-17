@@ -605,7 +605,7 @@ Prefer: -rubygem-method_source-0_7 -rubygem-rails-2_3 -rubygem-activerecord-2_3
 Prefer: -rubygem-json_pure-1_5
 Prefer: geronimo-servlet-2_4-api
 Prefer: openmpi-config
-Prefer: -libhdf5-0-openmpi -libhdf5_hl0-openmpi -libhdf5_hl8-openmpi -libhdf5-8-openmpi -libhdf5_hl9-openmpi -libhdf5-9-openmpi -libhdf5-10-openmpi -libhdf5_hl10-openmpi -libhdf5-11-openmpi -libhdf5_hl11-openmpi -libhdf5-101-openmpi -libhdf5-101-mvapich2 -libhdf5_hl101-openmpi libhdf5_hl100 -libhdf5-103-openmpi1 -libhdf5-103-mvapich2 -libhdf5_hl103-openmpi -libhdf5_cpp103-openmpi -libhdf5_cpp103-openmpi1 -libhdf5_cpp103-mvapich2 -libhdf5-103-openmpi2 -libhdf5-103-openmpi3 -libhdf5_cpp103-openmpi2 -libhdf5_cpp103-openmpi3 -libhdf5_cpp103-openmpi4
+Prefer: -libhdf5-0-openmpi -libhdf5_hl0-openmpi -libhdf5_hl8-openmpi -libhdf5-8-openmpi -libhdf5_hl9-openmpi -libhdf5-9-openmpi -libhdf5-10-openmpi -libhdf5_hl10-openmpi -libhdf5-11-openmpi -libhdf5_hl11-openmpi -libhdf5-101-openmpi -libhdf5-101-mvapich2 -libhdf5_hl101-openmpi libhdf5_hl100 -libhdf5-103-openmpi1 -libhdf5-103-mvapich2 -libhdf5_hl103-openmpi -libhdf5_cpp103-openmpi -libhdf5_cpp103-openmpi1 -libhdf5_cpp103-mvapich2 -libhdf5-103-openmpi2 -libhdf5-103-openmpi3 -libhdf5-103-openmpi4 -libhdf5_cpp103-openmpi2 -libhdf5_cpp103-openmpi3 -libhdf5_cpp103-openmpi4
 Prefer: -libvtk1-openmpi libvtk1-openmpi2
 Prefer: -vtk-openmpi1-qt -vtk-openmpi2-qt -vtk-openmpi3-qt
 Prefer: -openmpi3-libs -openmpi4-libs
@@ -672,7 +672,7 @@ Prefer: gnome-keyring-32bit
 Prefer: linux-glibc-devel
 Prefer: squid sysvinit
 Prefer: libpng16-compat-devel
-Prefer: -python3 -python3-gobject-devel -python3-gobject2-devel -x11-video-fglrxG02 -libpng12-0
+Prefer: -python -python3-gobject-devel -python3-gobject2-devel -x11-video-fglrxG02 -libpng12-0
 Prefer: python3-docutils
 Prefer: perl-Mail-SPF:perl-Error libldb0 -audit-libs
 Prefer: -xml-commons-apis-bootstrap -xml-commons-resolver-bootstrap
