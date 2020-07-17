@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Jul 16 20:06:49 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 2.2.0
+  + User-facing changes
+    * Cells can no longer be executed while kernels are terminating or restarting. There is a new status for these events on the Kernel Indicator
+    * Adds a visual clue for distinguishing hidden files and folders in the file browser window
+    * Enable horizontal scrolling for toolbars to improve mobile experience
+    * Improves the right-click context menu for the file editor
+    * Merge cell attachments when merging cells
+    * Add styling for high memory usage warning in status bar with nbresuse
+    * Adds support for Python version 3.10
+    * Support live editing of SVG with updating rendering
+  + For developers
+    * Specify that we recommend typescript over javascript for extensions
+    * Lazy load codemirror theme stylesheets.
+    * Increase the link expiry to one week
+    * Add documentation on private npm registry usage
+    * Add feature request template + slight reorg in readme
+    * Add link to react example in extension-examples repo
+    * Update documentation of whitelist/blacklist
+    * Improve whitelist figure description in documentation
+  + Bugfixes
+    * Typo: fix extensino to extension
+    * Close correct tab with close tab
+    * Remove unused css rules
+    * Fix small typo in getting started docs, proxy
+    * Fix link on CI badges
+    * Simplified multicursor backspace code
+    * Fix recent breaking changes to normalizepath in filebrowser
+    * Fix watch mode and add ci test
+    * Address CI failures
+    * Fix lint errors in dependency graph script
+    * Fix lint complaints coming up from github actions
+    * Address CI usage test timeout
+    * Add chokidar to dev_mode/package.json
+    * Fix autolink
+    * Update phosphor aliases
+    * Fix default return in Python when extension has no version metadata
+    * Updated the installation documentation on read the docs to match the readme file on the repo
+    * Handle quit_button when launched as an extension
+    * Add worker-loader
+
+
+
+-------------------------------------------------------------------
 Tue Jun  9 09:10:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.1.4:
