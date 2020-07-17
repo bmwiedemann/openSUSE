@@ -258,7 +258,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcmdmonitor
 %{_unitdir}/mdcheck_start.timer
 %{_unitdir}/mdmonitor-oneshot.service
 %{_unitdir}/mdmonitor-oneshot.timer
-%dir %{_libexecdir}/mdadm
-%{_libexecdir}/mdadm/mdadm_env.sh
+%dir %{_prefix}/lib/mdadm
+%{_prefix}/lib/mdadm/mdadm_env.sh
 
 %changelog

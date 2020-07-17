@@ -1242,4 +1242,12 @@ which haven't landed upstream yet
     <comment></comment>
     <requestid>816923</requestid>
   </revision>
+  <revision rev="123" vrev="8">
+    <srcmd5>aa5370c0bac756b03520147481d0e72a</srcmd5>
+    <version>4.1</version>
+    <time>1595011552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821004</requestid>
+  </revision>
 </revisionlist>

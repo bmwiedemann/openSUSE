@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  7 09:35:58 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec(bsc#1174075)
+
+-------------------------------------------------------------------
 Mon Jun 22 16:12:47 UTC 2020 - Coly Li <colyli@suse.com>
 
 - OnCalendar format fix of mdcheck_start.timer (bsc#1173137)
