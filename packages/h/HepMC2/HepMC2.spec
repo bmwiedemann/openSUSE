@@ -1,7 +1,7 @@
 #
-# spec file for package HepMC
+# spec file for package HepMC2
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define srcname HepMC
 Name:           HepMC2
-Version:        2.06.09
+Version:        2.06.11
 Release:        0
 Summary:        An event record for High Energy Physics Monte Carlo Generators in C++
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++ 
-Url:            http://lcgapp.cern.ch/project/simu/HepMC/
-Source:         http://lcgapp.cern.ch/project/simu/HepMC/download/HepMC-%{version}.tar.gz
+URL:            http://hepmc.web.cern.ch/hepmc/
+Source:         http://hepmc.web.cern.ch/hepmc/releases/hepmc%{version}.tgz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -109,7 +110,8 @@ mv %{buildroot}%{_datadir}/%{srcname}/doc/*.pdf %{buildroot}%{_docdir}/%{name}/
 
 %files -n libHepMC4
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog README COPYING
+%doc AUTHORS ChangeLog README
+%license COPYING
 %{_libdir}/*.so.*
 
 %files -n HepMC2-devel

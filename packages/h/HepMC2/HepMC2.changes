@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul 14 20:29:31 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.06.11:
+  * HepMC/HepMCDefs.h: Add a HEPMC_HAS_ORDERED_WEIGHTS #define.
+  * HepMC/WeightContainer.h: Add weights() and weight_names()
+    public methods.
+  * src/WeightContainer.cc: Fix print() to use canonical weight
+    ordering.
+  * src/GenEventStreamIO.cc: Fix the I/O streaming to preserve the
+    weight ordering.
+  * Fixed the tests.
+- Use %license for COPYING file.
+- Minor updates to spec file.
+- Update URL and Source Url to new upstream website.
+
+-------------------------------------------------------------------
 Tue Sep  5 23:20:53 UTC 2017 - jengelh@inai.de
 
 - Trim description for size (like was already done for HepMC
