@@ -1,7 +1,7 @@
 #
 # spec file for package skanlite
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           skanlite
-Version:        2.1.0.1
+Version:        2.2.0
 Release:        0
 Summary:        Image Scanner Application
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Hardware/Scanner
-Url:            https://www.kde.org/applications/graphics/skanlite/
-Source0:        http://download.kde.org/stable/%{name}/2.1/%{name}-%{version}.tar.xz
+URL:            https://www.kde.org/applications/graphics/skanlite/
+Source0:        http://download.kde.org/stable/%{name}/2.2/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         Fix-compilation-with-Qt-before-5.14.patch
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  libksane-devel
 BuildRequires:  libpng-devel
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Sane) >= 5.55.0
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang = %{version}
 Obsoletes:      %{name}-doc < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Skanlite is an image scanner application by KDE.
@@ -46,6 +47,7 @@ Skanlite is an image scanner application by KDE.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %cmake_kf5 -d build
@@ -58,7 +60,6 @@ Skanlite is an image scanner application by KDE.
 chmod 644 %{buildroot}%{_kf5_applicationsdir}/org.kde.skanlite.desktop
 
 %files
-%defattr(-,root,root,-)
 %license src/COPYING
 %doc src/TODO
 %{_kf5_applicationsdir}/org.kde.skanlite.desktop
@@ -68,7 +69,6 @@ chmod 644 %{buildroot}%{_kf5_applicationsdir}/org.kde.skanlite.desktop
 %doc %{_kf5_htmldir}/en/
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
 %doc %{_kf5_htmldir}
 %exclude %{_kf5_htmldir}/en/
 

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 15 09:24:50 UTC 2020 - wbauer@tmo.at
+
+- Update to version 2.2.0:
+  * Saving is moved to a thread to not freeze the interface while
+    saving
+  * D-Bus interface for hotkeys and controlling scanning
+  * Bug fixes
+- Add Fix-compilation-with-Qt-before-5.14.patch to fix build on
+  Leap 15.2
+- Switch Qt5/KF5 BuildRequires to cmake() notation
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Tue Apr  3 08:11:40 UTC 2018 - wbauer@tmo.at
 
 - Update to version 2.1.0.1:
@@ -184,7 +197,7 @@ Sun Apr 26 07:51:01 CEST 2009 - beineri@opensuse.org
 - document and limit doc directory work-arounds
 
 -------------------------------------------------------------------
-Tue Mar 31 20:41:06 CET 2009 - beineri@opensuse.org
+Tue Mar 31 20:41:06 CEST 2009 - beineri@opensuse.org
 
 - update to 0.3-kde4.2.2:
    * Add a scan mode "Open the save dialog for the first image only"
