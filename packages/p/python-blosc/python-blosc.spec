@@ -41,7 +41,6 @@ BuildRequires:  %{python_module psutil}
 # /SECTION
 Requires:       blosc-devel
 Recommends:     python-numpy
-ExclusiveArch:  %ix86 x86_64
 %python_subpackages
 
 %description
