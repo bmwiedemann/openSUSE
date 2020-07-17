@@ -17,11 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%ifarch %{ix86} x86_64
-%bcond_without tests
-%else
-%bcond_with tests
-%endif
 %bcond_without python2
 Name:           python-bcolz
 Version:        1.2.1
@@ -45,8 +40,7 @@ Requires:       python-xml
 Recommends:     python-numexpr >= 2.5.2
 Recommends:     python-pandas
 Recommends:     python-tables
-ExclusiveArch:  %{ix86} x86_64
-%if %{with tests} && %{with python2}
+%if %{with python2}
 BuildRequires:  python-mock
 %endif
 %python_subpackages
@@ -72,15 +66,12 @@ export BLOSC_DIR=%{_includedir}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
-%if %{with tests}
 %check
-# %%python_exec setup.py test
 pushd docs
 %{python_expand export PYTHONPATH="%{buildroot}%{$python_sitearch}"
 $python -c "import bcolz; bcolz.test()"
 }
 popd
-%endif
 
 %files %{python_files}
 %doc ANNOUNCE.rst README.rst RELEASE_NOTES.rst THANKS.rst

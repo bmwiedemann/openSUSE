@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 17 07:16:44 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable builds and tests on all archs
+
+-------------------------------------------------------------------
 Thu Apr 23 06:11:49 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Only BuildRequire python-mock under Python 2. 
