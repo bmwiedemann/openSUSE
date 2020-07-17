@@ -217,6 +217,7 @@ setOption('StandardGroups', (
     'privoxy',
     'prosody',
     'prometheus',
+    'ptokax',
     'public',
     'pulse',
     'pulse-access',
@@ -432,6 +433,7 @@ setOption('StandardUsers', (
     'privoxy',
     'prosody',
     'prometheus',
+    'ptokax',
     'pulse',
     'puppet',
     'qemu',
@@ -496,12 +498,12 @@ setOption('StandardUsers', (
 
 addDetails('non-standard-uid',
 '''A file in this package is owned by an unregistered user id.
-To register the user, please branch the devel:openSUSE:Factory:rpmlint rpmlint package, 
+To register the user, please branch the devel:openSUSE:Factory:rpmlint rpmlint package,
 add the user to the "config" file and send a submitrequest.
 ''',
 'non-standard-gid',
 '''A file in this package is owned by an unregistered group id.
-To register the group, please branch the devel:openSUSE:Factory:rpmlint rpmlint package, 
+To register the group, please branch the devel:openSUSE:Factory:rpmlint rpmlint package,
 add the group to the "config" file and send a submitrequest.
 ''',
 'no-changelogname-tag',
@@ -606,7 +608,7 @@ setOption("DBUSServices.WhiteList", (
     # kdebase4-runtime, bnc#672145
     "org.kde.powerdevil.backlighthelper.service",
     "org.kde.powerdevil.backlighthelper.conf",
-    # urfkill (bnc#688328) 
+    # urfkill (bnc#688328)
     "org.freedesktop.URfkill.service",
     "org.freedesktop.URfkill.conf",
     # account services (bnc#676638)
@@ -774,6 +776,9 @@ setOption("DBUSServices.WhiteList", (
     # oddjob (bsc#1169494)
     "oddjob.conf",
     "oddjob-mkhomedir.conf",
+    # libvirt-dbus (bsc#1173093)
+    "org.libvirt.service",
+    "org.libvirt.conf"
 ))
 
 setOption("PAMModules.WhiteList", (

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 15 07:40:08 UTC 2020 - matthias.gerstner@suse.com
+
+- whitelist D-Bus files for libvirt-dbus (bsc#1173093)
+
+-------------------------------------------------------------------
+Wed Jul  8 16:36:34 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Add user and group "ptokax" for PtokaX DC++ hub.
+
+-------------------------------------------------------------------
 Fri Jun 19 11:18:06 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Add user/group 'conman' and 'munge' and group 'warewulf'.
@@ -4003,4 +4013,3 @@ Mon Feb 23 12:37:56 CET 2004 - hmacht@suse.de
 Wed Jun 11 10:49:01 CEST 2003 - coolo@suse.de
 
 - initial version
-
