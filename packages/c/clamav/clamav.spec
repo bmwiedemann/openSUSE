@@ -19,7 +19,7 @@
 %define clamav_check --enable-check
 %bcond_with clammspack
 Name:           clamav
-Version:        0.102.3
+Version:        0.102.4
 Release:        0
 Summary:        Antivirus Toolkit
 License:        GPL-2.0-only
@@ -153,7 +153,7 @@ CFLAGS="$CFLAGS -DFP_64BIT"
 	--with-system-libmspack
 %endif
 
-make V=1 %?_smp_mflags
+%make_build
 
 %install
 %make_install
@@ -247,7 +247,7 @@ getent passwd vscan >/dev/null || \
 %service_add_pre clamd.service freshclam.service clamav-milter.service
 
 %post
-systemd-tmpfiles --create %_tmpfilesdir/clamav.conf
+%tmpfiles_create %_tmpfilesdir/clamav.conf
 %service_add_post clamd.service freshclam.service clamav-milter.service
 
 %preun
