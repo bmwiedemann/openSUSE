@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 17 10:43:44 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.2.1
+  * Add \wtilde text command to place a tilde over text
+  * Add ability to plot image widget using boxes rather than a bitmap,
+    with new drawing mode option
+  * Add widget order option in key widget
+  * Export dialog now uses multiple threads
+  * Python 3.9 compatibility fixes
+
+-------------------------------------------------------------------
 Tue Nov 19 19:59:45 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 3.1
