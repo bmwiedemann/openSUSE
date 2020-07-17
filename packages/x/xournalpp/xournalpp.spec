@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(poppler-glib)
 BuildRequires:  pkgconfig(portaudiocpp)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(zlib)
-Requires:       texlive-latex-bin
+Recommends:     tex(standalone.tex)
 
 %description
 Xournal++ is a hand note taking software.
