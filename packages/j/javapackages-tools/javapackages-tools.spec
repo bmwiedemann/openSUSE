@@ -16,6 +16,7 @@
 #
 
 
+%{!?_rpmmacrodir:%global _rpmmacrodir %{_rpmconfigdir}/macros.d}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "extras"
 %bcond_without python
@@ -27,7 +28,7 @@ Name:           javapackages-tools-%{flavor}
 %else
 Name:           javapackages-tools
 %endif
-Version:        5.3.0
+Version:        5.3.1
 Release:        0
 Summary:        Macros and scripts for Java packaging support
 License:        BSD-3-Clause

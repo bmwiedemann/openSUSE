@@ -247,4 +247,12 @@
     <comment></comment>
     <requestid>800404</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>130ca688ffa57749860b292eb15c8558</srcmd5>
+    <version>5.3.1</version>
+    <time>1595011457</time>
+    <user>dimstar_suse</user>
+    <comment>3.5.1</comment>
+    <requestid>821264</requestid>
+  </revision>
 </revisionlist>

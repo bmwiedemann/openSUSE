@@ -1,5 +1,5 @@
---- javapackages-5.3.0/configure-base.sh	2018-08-06 17:09:06.000000000 +0200
-+++ javapackages-5.3.0/configure-base.sh	2018-11-28 06:33:58.811049137 +0100
+--- javapackages-5.3.1/configure-base.sh	2019-06-14 12:26:27.000000000 +0200
++++ javapackages-5.3.1/configure-base.sh	2020-07-16 09:04:37.316453132 +0200
 @@ -14,6 +14,7 @@
  root_sysconfdir
  rpmconfigdir
@@ -16,8 +16,9 @@
  test -z "${rpmconfigdir}" && rpmconfigdir="${prefix}/lib/rpm"
  test -z "${rpmmacrodir}" && rpmmacrodir="${rpmconfigdir}/macros.d"
  
---- javapackages-5.3.0/etc/eclipse.conf	2018-08-06 17:09:06.000000000 +0200
-+++ javapackages-5.3.0/etc/eclipse.conf	2018-11-28 06:33:58.811049137 +0100
+diff -urEbwB javapackages-5.3.1/etc/eclipse.conf javapackages-5.3.1/etc/eclipse.conf
+--- javapackages-5.3.1/etc/eclipse.conf	2019-06-14 12:26:27.000000000 +0200
++++ javapackages-5.3.1/etc/eclipse.conf	2020-07-16 09:04:37.316453132 +0200
 @@ -1,7 +1,7 @@
  # Eclipse filesystem configuration file
  
@@ -40,8 +41,8 @@
  
  # Comma-separated list of directories searched for external bundles
  eclipse.bundles=@{javadir},@{jnidir}
---- javapackages-5.3.0/expand.sh	2018-08-06 17:09:06.000000000 +0200
-+++ javapackages-5.3.0/expand.sh	2018-11-28 06:33:58.811049137 +0100
+--- javapackages-5.3.1/expand.sh	2019-06-14 12:26:27.000000000 +0200
++++ javapackages-5.3.1/expand.sh	2020-07-16 09:04:37.316453132 +0200
 @@ -45,6 +45,7 @@
          -e "s|@{scl_suffix}|${scl_suffix}|g" \
          -e "s|@{bindir}|${bindir}|g" \
@@ -50,8 +51,8 @@
          -e "s|@{javaconfdir}|${javaconfdir}|g" \
          -e "s|@{javadir}|${javadir}|g" \
          -e "s|@{jnidir}|${jnidir}|g" \
---- javapackages-5.3.0/install	2018-08-06 17:09:06.000000000 +0200
-+++ javapackages-5.3.0/install	2018-11-28 06:36:39.927862680 +0100
+--- javapackages-5.3.1/install	2019-06-14 12:26:27.000000000 +0200
++++ javapackages-5.3.1/install	2020-07-16 09:04:37.316453132 +0200
 @@ -90,11 +90,11 @@
  dir "${mavenpomdir}"
  dir "${ivyxmldir}"
@@ -69,8 +70,8 @@
  dir "${datadir}/eclipse"
  dir "${datadir}/eclipse/dropins"
  dir "${datadir}/eclipse/droplets"
---- javapackages-5.3.0/macros.d/macros.javapackages-filesystem	2018-08-06 17:09:06.000000000 +0200
-+++ javapackages-5.3.0/macros.d/macros.javapackages-filesystem	2018-11-28 06:33:58.811049137 +0100
+--- javapackages-5.3.1/macros.d/macros.javapackages-filesystem	2019-06-14 12:26:27.000000000 +0200
++++ javapackages-5.3.1/macros.d/macros.javapackages-filesystem	2020-07-16 09:05:34.448792440 +0200
 @@ -13,17 +13,17 @@
  #
  # Root directory where all Java VMs/SDK/JREs are installed.
@@ -96,7 +97,7 @@
  #
  # Root directory for all common architecture dependent parts of Java VM/SDK/JRE's
  #
--%_jvmcommonlibdir %{_prefix}/lib/jvm-commmon
+-%_jvmcommonlibdir %{_prefix}/lib/jvm-common
 +%_jvmcommonlibdir %{_libdir}/jvm-commmon
  
  #
@@ -110,8 +111,8 @@
  
  #
  # Root directory where all javadoc is installed. Also already in RH macros.
---- javapackages-5.3.0/macros.d/macros.scl-java-template	2018-08-06 17:09:06.000000000 +0200
-+++ javapackages-5.3.0/macros.d/macros.scl-java-template	2018-11-28 06:34:48.631301258 +0100
+--- javapackages-5.3.1/macros.d/macros.scl-java-template	2019-06-14 12:26:27.000000000 +0200
++++ javapackages-5.3.1/macros.d/macros.scl-java-template	2020-07-16 09:04:37.320453154 +0200
 @@ -50,11 +50,11 @@
      dir "%{_ivyxmldir}" \
      dir "%{_sysconfdir}/ivy" \

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 16 07:23:37 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 5.3.1
+- Modified patch:
+  * suse-use-libdir.patch
+    + rediff to changed context
+- Define _rpmmacrodir for distributions that don't have it
+
+-------------------------------------------------------------------
 Tue May  5 12:32:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %{_rpmmacrodir} instead of %{_libexecdir}/rpm/macros.d: this
