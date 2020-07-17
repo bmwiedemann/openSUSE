@@ -308,4 +308,14 @@
   * disable gesture mode on Touchscreens by default (boo#1172669)</comment>
     <requestid>812710</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>6e7eb82f3a28370b1643d5f37f083f37</srcmd5>
+    <version>0.37.0</version>
+    <time>1595011463</time>
+    <user>dimstar_suse</user>
+    <comment>- n_disable-touchscreen.patch
+  * don't use wacom driver for various touchscreens; let it fall
+    back to libinput driver instead (boo#1172669)</comment>
+    <requestid>821265</requestid>
+  </revision>
 </revisionlist>
