@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 09 09:33:15 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1594286044.7a596d12:
+  * Low: hb_report: Fix collecting of binary data (bsc#1166962)
+
+-------------------------------------------------------------------
 Wed Jul 08 09:18:41 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1594199184.309141ea:
