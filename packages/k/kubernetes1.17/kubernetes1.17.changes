@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Jul 15 21:14:01 UTC 2020 - dmueller@suse.com
+
+- Update to version 1.17.9:
+  * Don't return proxied redirects to the client
+  * Include pod /etc/hosts in ephemeral storage calculation for eviction
+  * cluster: ipvs conntrack module vs kernel version
+  * kube-proxy ipvs masquerade hairpin traffic
+  * kubeadm: add --port=0 for kube-controller-manager and kube-scheduler
+  * Wait for all informers to sync in /readyz.
+  * Delete default load balancer source range (0.0.0.0/0) to prevent redundant network security rules.
+  * hyperkube: Use debian-hyperkube-base@v1.1.1 image
+  * test: add unit test
+  * fix: use force detach for azure disk
+  * Update CHANGELOG/CHANGELOG-1.17.md for v1.17.8
+  * add docu + fix copyright year
+  * export scheduler.Snapshot function, needed for cluster autoscaler integration
+  * fix#92167: GetLabelsForVolume panic issue for azure disk PV
+  * Fix DS expectations on recreate
+  * kubeadm: don't re-add an etcd member if it already exists for "join"
+  * kubelet, kube-proxy: unmark packets before masquerading them
+  * Automated cherry pick of #90373: kube-scheduler: compatibility with ServerSideApply
+  * some tests for new function
+  * go-to-protobuf: fix rewrite of embedded struct fields
+  * kubelet: fix `/stats/summary` endpoint on Windows when init-containers are present on the node
+
+-------------------------------------------------------------------
+Tue Jul 14 20:26:14 UTC 2020 - dmueller@suse.com
+
+- add update-alternative logic for kubernetes1.17-client
+- Update to version 1.17.8:
+  * Update CHANGELOG/CHANGELOG-1.17.md for v1.17.8-rc.1
+  * hyperkube: Use debian-hyperkube-base@v1.1.0 image
+  * Update CHANGELOG/CHANGELOG-1.17.md for v1.17.7
+  * kubeadm join: Wait longer for TLS bootstrapping
+  * Fix merge errors
+  * CSI: Modify VolumeAttachment check to use Informer/Cache
+  * Fix log timestamps to be displayed in fixed width
+  * If firstTimestamp is not set use eventTime when printing event
+  * If lastTimestamp is not set use firstTimestamp when printing event
+
+-------------------------------------------------------------------
 Fri Jun 19 05:49:18 UTC 2020 - rbrown@suse.com
 
 - Update to version 1.17.7:

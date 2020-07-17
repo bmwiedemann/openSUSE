@@ -23,7 +23,7 @@
 %define baseversion 1.17
 
 Name:           kubernetes%{baseversion}
-Version:        1.17.7
+Version:        1.17.9
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -161,9 +161,6 @@ kubeadm bootstrapping tool
 %package client
 Summary:        Kubernetes client tools
 Group:          System/Management
-Provides:       kubernetes-client-provider = %{version}
-Conflicts:      kubernetes-client-provider
-Recommends:     bash-completion
 
 %description client
 Kubernetes client tools like kubectl.
@@ -218,10 +215,15 @@ install -m 755 -d %{buildroot}%{_bindir}
 echo "+++ INSTALLING kubeadm"
 install -p -m 755 -t %{buildroot}%{_bindir} ${output_path}/kubeadm
 
-binaries=(kube-apiserver kube-controller-manager kube-scheduler kube-proxy kubelet kubectl)
+binaries=(kube-apiserver kube-controller-manager kube-scheduler kube-proxy kubelet)
 for bin in "${binaries[@]}"; do
   echo "+++ INSTALLING ${bin}"
   install -p -m 755 -t %{buildroot}%{_bindir} ${output_path}/${bin}
+done
+
+for bin in kubectl; do
+  echo "+++ INSTALLING ${bin} with %{baseversion} suffix"
+  install -p -m 755 ${output_path}/${bin} %{buildroot}%{_bindir}/${bin}%{baseversion}
 done
 
 echo "+++ RENAMING kubelet to kubelet%{baseversion}"
@@ -234,12 +236,8 @@ install -p -m 755 %{SOURCE3} %{buildroot}%{_bindir}/kubelet
 sed -i -e 's|BASE_VERSION|%{baseversion}|g' %{SOURCE22}
 install -D -m 0644 %{SOURCE22} %{buildroot}%{_fillupdir}/sysconfig.kubelet-kubernetes%{baseversion}
 
-# install the bash completion
-install -d -m 0755 %{buildroot}%{_datadir}/bash-completion/completions/
-%{buildroot}%{_bindir}/kubectl completion bash > %{buildroot}%{_datadir}/bash-completion/completions/kubectl
-
 # move CHANGELOG-%{baseversion}.md to old location
-mv CHANGELOG/CHANGELOG-%{baseversion}.md . 
+mv CHANGELOG/CHANGELOG-%{baseversion}.md .
 
 # cleanup before copying dirs...
 rm -f hack/.linted_packages
@@ -257,6 +255,7 @@ ln -sf service "%{buildroot}%{_sbindir}/rckubelet"
 
 # install manpages
 install -d %{buildroot}%{_mandir}/man1
+rm -v docs/man/man1/kubectl*
 install -p -m 644 docs/man/man1/* %{buildroot}%{_mandir}/man1
 
 # create config folder
@@ -286,7 +285,20 @@ install -d -m 0755 %{buildroot}%{_unitdir}/kubelet.service.d
 sed -i -e 's|PATH_TO_FLEXVOLUME|%{volume_plugin_dir}|g' %{SOURCE25}
 install -m 0644 -t %{buildroot}%{_unitdir}/kubelet.service.d/ %{SOURCE25}
 
+# alternatives
+ln -s -f %{_sysconfdir}/alternatives/kubectl %{buildroot}%{_bindir}/kubectl
+
 %fdupes -s %{buildroot}
+
+%post client
+export baseversion="%{baseversion}"
+%{_sbindir}/update-alternatives \
+  --install %{_bindir}/kubectl kubectl %{_bindir}/kubectl%{baseversion} ${baseversion/./}
+
+%postun client
+if [ ! -f %{_bindir}/kubectl%{baseversion} ] ; then
+  update-alternatives --remove kubectl %{_bindir}/kubectl%{baseversion}
+fi
 
 %pre kubelet-common
 %service_add_pre kubelet.service
@@ -370,9 +382,8 @@ fi
 %files client
 %doc README.md CONTRIBUTING.md
 %license LICENSE
-%{_mandir}/man1/kubectl.1%{?ext_man}
-%{_mandir}/man1/kubectl-*
 %{_bindir}/kubectl
-%{_datadir}/bash-completion/completions/kubectl
+%{_bindir}/kubectl%{baseversion}
+%ghost %_sysconfdir/alternatives/kubectl
 
 %changelog
