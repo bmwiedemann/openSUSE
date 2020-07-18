@@ -3,13 +3,13 @@
   <products>
     <product>
       <vendor>openSUSE</vendor>
-      <name>openSUSE-MicroOS</name>
-      <releasepkgname>openSUSE-MicroOS-release</releasepkgname>
+      <name>MicroOS</name>
+      <releasepkgname>MicroOS-release</releasepkgname>
       <endoflife/>
       <version></version>
       <!-- release is no longer optional -->
       <release>0</release>
-      <productline>openSUSE-MicroOS</productline>
+      <productline>MicroOS</productline>
 
       <summary>openSUSE MicroOS</summary>
       <shortsummary>openSUSE MicroOS</shortsummary>

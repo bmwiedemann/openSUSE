@@ -919,4 +919,12 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <user>dimstar_suse</user>
     <comment>Revert SR#817866</comment>
   </revision>
+  <revision rev="127" vrev="125">
+    <srcmd5>a62be11d0199094371cdc56270ff3dcb</srcmd5>
+    <version>unknown</version>
+    <time>1595098815</time>
+    <user>dimstar_suse</user>
+    <comment>openSUSE-MicroOS -&gt; MicroOS</comment>
+    <requestid>821492</requestid>
+  </revision>
 </revisionlist>
