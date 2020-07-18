@@ -18,22 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define tarname PyOpenGL-accelerate
-%define _version 3.1.3b1
+%define _version 3.1.5
 Name:           python-opengl-accelerate
-Version:        %{_version}.post1
+Version:        %{_version}
 Release:        0
 Summary:        Acceleration for python-opengl
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            http://pyopengl.sourceforge.net
 Source0:        https://files.pythonhosted.org/packages/source/P/%{tarname}/%{tarname}-%{_version}.tar.gz
-# Missing pxd only needed to rebuild .c https://github.com/mcfletch/pyopengl/issues/12
-Source2:        https://raw.githubusercontent.com/mcfletch/pyopengl/master/accelerate/OpenGL_accelerate/formathandler.pxd
-Source3:        https://raw.githubusercontent.com/mcfletch/pyopengl/master/accelerate/OpenGL_accelerate/wrapper.pxd
-# Newer numpy_formathandler.pyx needed to match opengl 3.1.3b2
-# https://github.com/mcfletch/pyopengl/issues/28
-# Patch is subset of https://bazaar.launchpad.net/~mcfletch/pyopengl/trunk/diff/1099
-Patch0:         commit1080.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
@@ -52,10 +45,6 @@ code.
 
 %prep
 %setup -q -n %{tarname}-%{_version}
-%patch0 -p1
-sed -i 's/\t/    /g' src/numpy_formathandler.pyx
-
-cp %{SOURCE2} %{SOURCE3} OpenGL_accelerate/
 
 # Force Cython to rebuild .c files
 rm src/*.c

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 17 21:57:47 UTC 2020 - Markus Ebner <info@ebner-markus.de>
+
+- Update to 3.1.5
+  * This aligns python3-opengl-accelerate with python3-opengl, which
+    is required by some other packages
+  * no real changelog
+- Drop patch commit1080.patch, included upstream
+- Drop shipped pxd files, included upstream (https://github.com/mcfletch/pyopengl/commit/d401885f6a1c61213058a96e050eb45ee6189b7c)
+
+-------------------------------------------------------------------
 Mon Aug 19 05:37:59 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Add commit1080.patch to make source compatible with opengl 3.1.3b2
