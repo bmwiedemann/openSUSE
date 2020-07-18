@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jun 24 12:13:14 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- openSUSE-MicroOS-release -> MicroOS-release
+
+-------------------------------------------------------------------
+Fri Jun 19 16:41:45 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- further microos_base overhaul:
+  * move audit to default pattern where systemd-logger is too. That
+    allows to have appliances without disk logging by default
+  * use vim-small instead of nano
+  * drop kubic-locale-archive, glibc-locale-base has the required
+    C and en_US locales.
+  * drop parted, system-group-wheel, terminfo, vlan, xfsprogs
+  * move hwinfo to hardware pattern
+  * explicitly require curl, hostname and iproute2. curl is
+    indirectly needed by igition, hostname and iproute2 is
+    considered core.
+- microos_hardware
+  * remove explicit kernel requirements, this allows yast to
+    decide about the kernel (jsc#PM-1968)
+
+-------------------------------------------------------------------
 Mon Jun 15 11:54:49 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - tidy up package list of microos_base

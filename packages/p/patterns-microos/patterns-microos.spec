@@ -69,6 +69,8 @@ Requires:       btrfsprogs
 Requires:       ca-certificates
 Requires:       ca-certificates-mozilla
 Requires:       coreutils
+Requires:       hostname
+Requires:       iproute2
 Requires:       login
 Requires:       openSUSE-build-key
 Requires:       pam
@@ -81,42 +83,44 @@ Requires:       systemd
 Requires:       wicked
 Requires:       zypper
 ####
-Requires:       audit
 Requires:       btrfsmaintenance
 Requires:       chrony
 # prefer small variant
 Suggests:       cracklib-dict-small
+# curl indirectly needed by ignition via dracut's url-lib
+Requires:       curl
+# probably needed for fsck.fat on efi partitions
 Requires:       dosfstools
+Requires:       glibc-locale-base
 Requires:       haveged
 Requires:       health-checker
 Requires:       health-checker-plugins-MicroOS
-Requires:       hwinfo
+# ping!
+Requires:       MicroOS-release
 Requires:       iputils
 Requires:       issue-generator
 Requires:       kdump
-Requires:       kubic-locale-archive
 Requires:       less
 Requires:       microos-tools
-Requires:       nano
-Requires:       openSUSE-MicroOS-release
 Requires:       openssh
-Requires:       parted
+Requires:       vim-small
+# people are addicted to sudo
 Requires:       sudo
 Requires:       supportutils
-Requires:       system-group-wheel
 Requires:       systemd-presets-branding-MicroOS
 Requires:       tallow
-Requires:       terminfo
+Requires:       terminfo-base
+# timezone-base with only UTC useful?
 Requires:       timezone
 Requires:       transactional-update
 Requires:       transactional-update-zypp-config
-Requires:       vlan
-Requires:       xfsprogs
-Requires:       yast2-logs
+# zypper ps is useless in transactional mode. It also checks for
+# /run/reboot-needed though which is created by transactional-update
 Requires:       zypper-needs-restarting
 Conflicts:      gettext-runtime-mini
 Conflicts:      krb5-mini
 Obsoletes:      suse-build-key < 12.1
+Requires:       yast2-logs
 
 %description base
 This is the openSUSE MicroOS runtime system. It contains only a minimal multiuser
@@ -133,6 +137,7 @@ Requires:       pattern() = microos_base
 #Obsolete CaaSP Patterns
 Provides:       patterns-caasp-MicroOS-defaults
 Obsoletes:      patterns-caasp-MicroOS-defaults <= 4.0
+Requires:       audit
 Requires:       systemd-logger
 
 %description defaults
@@ -150,16 +155,11 @@ Provides:       pattern-visible()
 #Obsolete CaaSP Patterns
 Provides:       patterns-caasp-hardware
 Obsoletes:      patterns-caasp-hardware <= 4.0
-%ifarch armv7l armv7hl
-Requires:       kernel-lpae
-%else
-Requires:       kernel-default
-%endif
-Requires:       kernel-firmware
 %ifnarch s390x
 Requires:       irqbalance
 %endif
 Requires:       fcoe-utils
+Requires:       hwinfo
 
 %description hardware
 Packages required to install openSUSE MicroOS on real hardware.
