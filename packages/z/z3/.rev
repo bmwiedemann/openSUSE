@@ -190,4 +190,13 @@
     <comment></comment>
     <requestid>821247</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>3628a6caed5c19fc301a4d8188be7400</srcmd5>
+    <version>4.8.8</version>
+    <time>1595098963</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport pkg-config support from upstream
+  * add 5a42a000e938a295feb1a7070dd74b192796db4e.patch</comment>
+    <requestid>821644</requestid>
+  </revision>
 </revisionlist>

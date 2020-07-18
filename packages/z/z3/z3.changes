@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 17 23:58:58 UTC 2020 - Mark Stopka <mstopka@opensuse.org>
+
+- Backport pkg-config support from upstream
+  * add 5a42a000e938a295feb1a7070dd74b192796db4e.patch
+
+-------------------------------------------------------------------
 Thu Jul 16 08:23:41 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Drop ExclusiveArch as it does build properly on other archs

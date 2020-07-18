@@ -26,10 +26,14 @@ Group:          Productivity/Scientific/Other
 URL:            https://github.com/Z3Prover/z3/wiki
 Source0:        https://github.com/Z3Prover/z3/archive/z3-%{version}.tar.gz
 Patch0:         remove-timestamp.patch
+# Remove after upstream bump, add PKG-CONFIG .pc file
+# https://github.com/Z3Prover/z3/pull/4368
+Patch1:         5a42a000e938a295feb1a7070dd74b192796db4e.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  ninja
+BuildRequires:  pkg-config
 BuildRequires:  python3-devel
 
 %description
@@ -68,6 +72,7 @@ Python bindings for the Z3 library.
 %prep
 %setup -q -n %{name}-%{name}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %define __builder ninja
@@ -103,6 +108,7 @@ Python bindings for the Z3 library.
 %files devel
 %{_includedir}/z3*.h
 %{_libdir}/libz3.so
+%{_libdir}/pkgconfig/z3.pc
 %dir %{_libdir}/cmake/z3/
 %{_libdir}/cmake/z3/Z3Config.cmake
 %{_libdir}/cmake/z3/Z3ConfigVersion.cmake
