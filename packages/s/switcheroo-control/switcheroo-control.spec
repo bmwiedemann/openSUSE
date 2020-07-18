@@ -17,7 +17,7 @@
 
 
 Name:           switcheroo-control
-Version:        2.1
+Version:        2.3
 Release:        0
 Summary:        D-Bus service to check the availability of dual-GPU
 License:        GPL-3.0-only
@@ -25,9 +25,8 @@ Group:          Hardware/Other
 URL:            https://gitlab.freedesktop.org/hadess/switcheroo-control
 Source0:        https://gitlab.freedesktop.org/hadess/switcheroo-control/-/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  gtk-doc
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(gio-2.0)
@@ -50,15 +49,15 @@ This package contains the documentation for %{name}.
 %setup -q
 
 %build
-NOCONFIGURE=1 sh autogen.sh
-%configure \
-    --with-systemdsystemunitdir=%{_unitdir} \
-    --with-hwdbdir=%{_udevhwdbdir} \
-    --enable-gtk-doc
-make %{?_smp_mflags}
+%meson \
+   -Dsystemdsystemunitdir=%{_unitdir} \
+   -Dhwdbdir=%{_udevhwdbdir} \
+   -Dgtk_doc=true
+
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %pre
 %service_add_pre switcheroo-control.service
@@ -77,8 +76,10 @@ make %{?_smp_mflags}
 %files
 %defattr(-,root,root)
 %license COPYING
-%doc NEWS README
+%doc NEWS README.md
+%{_bindir}/switcherooctl
 %{_libexecdir}/switcheroo-control
+%{_mandir}/man1/switcherooctl.1%{?ext_man}
 %{_unitdir}/switcheroo-control.service
 %{_udevhwdbdir}/30-pci-intel-gpu.hwdb
 # Own dirs to avoid depending on dbus while building.
