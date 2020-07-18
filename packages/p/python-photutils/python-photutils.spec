@@ -73,7 +73,7 @@ cd ..
 # Use astropy test suite logic. Calling pytest directly would require
 # duplicate in-place building of extensions.
 %{python_expand export PYTHONPATH="%{buildroot}%{$python_sitearch}"
-$python -B -c "import photutils; photutils.test(args=\"-v\")"
+$python -B -c "import photutils, sys; sys.exit(photutils.test(args=\"-v\"))"
 }
 
 %files %{python_files}
