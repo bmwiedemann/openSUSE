@@ -336,4 +336,12 @@ Require: filesystem</comment>
     <comment></comment>
     <requestid>811712</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8f0568a55c3f89c62be15d63d0b764cb</srcmd5>
+    <version>1.2.2</version>
+    <time>1595098951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821636</requestid>
+  </revision>
 </revisionlist>

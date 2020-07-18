@@ -27,8 +27,11 @@
 %bcond_without  carla
 %bcond_without  crippled_stk
 %bcond_without  wine
+%if %{with carla}
+%define carlavers %(carla --version|grep Carla | cut -b 21,22,23,24,25,26)
+%endif
 Name:           lmms
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Linux MultiMedia Studio
 License:        GPL-2.0-or-later
@@ -47,7 +50,6 @@ Patch1:         lmms-1.2.0-crippled_stk.patch
 # PATCH-FIX-UPSTREAM Fix plugin library search path, testing an upstream proposal
 Patch2:         lmms-1.2.0-libdir.patch
 Patch3:         lmms-rpmalloc-fpic.patch
-Patch4:         lmms-qpainterpath.patch
 
 BuildRequires:  bash-completion
 BuildRequires:  cmake
@@ -74,7 +76,7 @@ BuildRequires:  pkgconfig(gig)
 BuildRequires:  pkgconfig(jack) >= 0.77
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(ogg)
-BuildRequires:  pkgconfig(portaudio-2.0)
+BuildRequires:  pkgconfig(portaudiocpp)
 BuildRequires:  pkgconfig(samplerate) >= 0.1.8
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(shared-mime-info)
@@ -117,6 +119,7 @@ ExclusiveArch:  x86_64
 BuildRequires:  carla
 # to enable internal Carla plugin host
 BuildRequires:  pkgconfig(carla-standalone)
+Requires:       carla = %carlavers
 %endif
 
 %description
@@ -160,8 +163,6 @@ ln -s /usr/share/ECM 3rdparty/ECM
 popd
 cd rpmalloc && rm -rf rpmalloc && tar -xf %{S:1} && mv rpmalloc-%{rpmallocrev} rpmalloc
 popd
-# This doesn't do anything but cause trouble
-rm plugins/LadspaEffect/swh/ladspa-util.c
 
 %build
 %if %{with wine}

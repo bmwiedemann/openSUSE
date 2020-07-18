@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat Jul 18 07:37:04 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Update to version 1.2.2
+- Remove incorporated qt5.15 with lmms-qpainterpath.patch
+- Rebase lmms-1.2.0-crippled_stk.patch and lmms-rpmalloc-fpic.patch
+- Upstream General improvements
+  *Stop filtering out valid characters from file name while
+   exporting tracks (#5282)
+  *Fix Invalid warning about "dummy-MIDI-client" (#5509)
+- Upstream UI improvements
+  *Note selection: Editing values works in dialog (#5438)
+- Upstream Bug Fixes
+  *Piano Roll - Fix retrigger with vol/pan sliders (#5271)
+  *Fix a rare crash on export (#5293)
+  *Fix LMMS not launching when AppImage has spaces in name (#5297)
+  *Fix vertical piano being unresponsive when clicked too fast
+   (#5262)
+  *Fix crash with Grooove VST (#5300)
+  *Fix crash on deleting instrument with controller connections on
+   knobs (#5306)
+  *Fix notes being placed at negative positions on MIDI import
+   (#5343)
+  *Fix scrolling direction in the song editor due to stuck
+   Ctrl/Shift (#5286)
+  *Fix stuck notes with Helm VST on tempo automation (#5365)
+  *Fix file factory delimeter position (#5378)
+  *Fix controls linking misbehaviors (#5336)
+  *Fix loading and saving of .fxb/.fxp files on Windows (#5411)
+  *Fix crashes and hangs on importing some Hydrogen drum kit songs
+   (#5420)
+  *Fix freeze when replacing Mallets with another instrument
+   (#5428)
+  *DrumSynth: ensure correct envelope length in any sample rate
+   (#5467)
+  *AFP: fix loading start and loop points if the loop point is
+   automated (#5472)
+  *Select the correct piano key for marking semitones (#5478)
+  *Ensure consistent use of effect gate (#5475)
+  *Fix Piano roll crashing when window is vertically scaled too
+   large (#5449)
+  *Fix some memory errors with JACK audio/MIDI (#5452)
+  *JackMidi: Remove confusing warnings at shutdown (737fcd3)
+  *Fix SF2 player crashing when file is not a soundfont, with
+   FluidSynth 2 (#5487)
+  *BB editor: fix mouse event affecting wrong beats due to the
+   cursor shape (#5489)
+  *Fix knobs moving too fast on some platforms (#5360)
+  *Fix notes created in BB editor resizing incorrectly when
+   resizing a selection (#5515)
+  *Fix some patterns not being saved in project (#5537)
+
+-------------------------------------------------------------------
 Fri Jun  5 07:05:14 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Fix build with qt5.15 with lmms-qpainterpath.patch
