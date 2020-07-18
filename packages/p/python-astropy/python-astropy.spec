@@ -34,6 +34,12 @@ Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
 URL:            https://astropy.org
 Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM astropy-pr10433-wcslib73-tests.patch gh#astropy/astropy#10433 -- allow system wcslib 7.3
+Patch0:         astropy-pr10433-wcslib73-tests.patch
+# PATCH-FIX-UPSTREAM astropy-pr10440-wcs-datfix.patch gh#astropy/astropy#10440 -- allow system wcslib 7.3
+Patch1:         astropy-pr10440-wcs-datfix.patch
+# PATCH-FIX-UPSTREAM astropy-pr10545-remove-newline-3d_cd_hdr.patch gh#astropy/astropy#10545 -- clean up newlines after pytest output
+Patch2:         astropy-pr10545-remove-newline-3d_cd_hdr.patch
 # Mark wcs headers as false positives for devel-file-in-non-devel-package
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
@@ -111,6 +117,10 @@ managing them.
 %if !%{with test}
 %prep
 %setup -q -n astropy-%{version}
+%autopatch -p1
+
+# Disable test failure on DeprecationWarnings
+sed -i "/enable_deprecations_as_exceptions(/,/)/ d" astropy/conftest.py
 
 # Make sure bundled libs are not used
 rm -rf cextern/expat
@@ -158,7 +168,7 @@ $python -O -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}/
 %endif
 # http://docs.astropy.org/en/latest/development/testguide.html#running-tests
 # running pytest directly would require building the extensions inplace
-%python_exec -B -c "import astropy; astropy.test(args=\"-v %{?skip_pytest}\")"
+%python_exec -B -c "import astropy, sys; sys.exit(astropy.test(args=\"-v %{?skip_pytest}\"))"
 %endif
 
 %if !%{with test}

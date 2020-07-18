@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 17 11:42:19 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- actually detect unit test failures with sys.exit(astropy.tests())
+- do not fail on DeprecationWarnings
+- support updated system lib wcslib 7.3 with
+  astropy-pr10433-wcslib73-tests.patch gh#astropy/astropy#10433
+  astropy-pr10440-wcs-datfix.patch gh#astropy/astropy#10440
+- clean up blank lines after pytest report and prevent possible
+  failure of tests depending on test order
+  astropy-pr10545-remove-newline-3d_cd_hdr.patch
+  gh#astropy/astropy#10545
+  
+-------------------------------------------------------------------
 Thu Jul  9 23:14:09 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Switch from pytest macro back to astropy.test()
