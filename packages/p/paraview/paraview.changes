@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 17 15:58:34 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Set CMAKE_SKIP_INSTALL_RPATH:BOOL=ON during %cmake for openSUSE
+  Leap 15.2 and older to fix build failures.
+
+-------------------------------------------------------------------
 Sun May 17 19:57:59 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Don't delete libFmmMesh.a static lib, it is referenced by
