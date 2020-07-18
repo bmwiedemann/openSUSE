@@ -168,7 +168,7 @@ BuildRequires:  distribution-logos-openSUSE-Leap
 %define branding_grub2    openSUSE
 %define branding_gfxboot  openSUSE
 %define config_bootmenu_no_upgrade 1
-BuildRequires:  openSUSE-MicroOS-release
+BuildRequires:  MicroOS-release
 BuildRequires:  adobe-sourcesanspro-fonts
 BuildRequires:  distribution-logos-openSUSE-Kubic
 
@@ -198,7 +198,7 @@ BuildRequires:  MicroOSNG-release
 %define branding_grub2    openSUSE
 %define branding_gfxboot  openSUSE
 %define config_bootmenu_no_upgrade 1
-BuildRequires:  openSUSE-MicroOS-release
+BuildRequires:  MicroOS-release
 BuildRequires:  adobe-sourcesanspro-fonts
 BuildRequires:  distribution-logos-openSUSE-MicroOS
 %endif
@@ -639,7 +639,7 @@ ExcludeArch:    %arm
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0+
 Group:          Metapackages
-Version:        15.13
+Version:        16.0
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

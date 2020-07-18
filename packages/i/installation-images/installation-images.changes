@@ -1,4 +1,19 @@
 --------------------------------------------------------------------
+Thu Jul 16 13:16:57 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#397
+- move OBS files used for building to git
+- adjust doc
+- 16.0
+
+--------------------------------------------------------------------
+Wed Jul 15 14:15:20 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#396
+- Rename openSUSE-MicroOS -> MicroOS
+- 15.14
+
+--------------------------------------------------------------------
 Tue Jul 14 09:21:27 UTC 2020 - mvidner@suse.cz
 
 - merge gh#openSUSE/installation-images#388
