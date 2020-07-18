@@ -16,7 +16,7 @@
 #
 
 
-Name:           openSUSE-MicroOS-release
+Name:           MicroOS-release
 Version:        20200718
 Release:        0
 Summary:        openSUSE MicroOS 
@@ -37,11 +37,13 @@ Provides:       distribution-release
 # MicroOS-release replaces Tumbleweed-Kubic-release
 Provides:       openSUSE-Tumbleweed-Kubic-release
 Obsoletes:      openSUSE-Tumbleweed-Kubic-release <= 20190324
+Provides:       openSUSE-MicroOS-release = %{version}
+Obsoletes:      openSUSE-MicroOS-release <= %{version}
 # Give zypp a hint that this product must be kept up-to-date using zypper dup, not up (boo#1061384)
 Provides:       product-update() = dup
 # With more than one product in the FTP tree, yast needs to know which products are installable
 # The name is referenced by the control file as well
-Provides:       system-installation() = openSUSE-MicroOS
+Provides:       system-installation() = MicroOS
 # bnc#826592
 Provides:       weakremover(kernel-default) < 3.11
 Provides:       weakremover(kernel-desktop) < 4.2
@@ -170,13 +172,13 @@ Provides:       weakremover(openssl-debuginfo)
 ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64 %arm
 %include %{SOURCE100}
 Provides:       %name-%version
-Provides:       product() = openSUSE-MicroOS
-Provides:       product(openSUSE-MicroOS) = 20200718-0
+Provides:       product() = MicroOS
+Provides:       product(MicroOS) = 20200718-0
 Provides:       product-label() = openSUSE%20MicroOS
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aopensuse%2Dmicroos%3A20200718
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Amicroos%3A20200718
 Provides:       product-url(releasenotes) = http%3A%2F%2Fdoc.opensuse.org%2Frelease%2Dnotes%2Fx86_64%2FopenSUSE%2FTumbleweed%2Frelease%2Dnotes%2DopenSUSE.rpm
 Provides:       product-endoflife()
-Requires:       product_flavor(openSUSE-MicroOS)
+Requires:       product_flavor(MicroOS)
 
 
 
@@ -189,7 +191,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(dvd)
-Provides:       product_flavor(openSUSE-MicroOS) = 20200718-0
+Provides:       product_flavor(MicroOS) = 20200718-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description dvd
@@ -198,14 +200,14 @@ openSUSE MicroOS combines the benefits of a rolling OS with a read-only root fil
 
 %files dvd
 %defattr(-,root,root)
-%doc %{_defaultdocdir}/openSUSE-MicroOS-release-dvd
+%doc %{_defaultdocdir}/MicroOS-release-dvd
 
 %package kubic-dvd
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(kubic-dvd)
-Provides:       product_flavor(openSUSE-MicroOS) = 20200718-0
+Provides:       product_flavor(MicroOS) = 20200718-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description kubic-dvd
@@ -214,14 +216,14 @@ openSUSE MicroOS combines the benefits of a rolling OS with a read-only root fil
 
 %files kubic-dvd
 %defattr(-,root,root)
-%doc %{_defaultdocdir}/openSUSE-MicroOS-release-kubic-dvd
+%doc %{_defaultdocdir}/MicroOS-release-kubic-dvd
 
 %package appliance
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
-Provides:       product_flavor(openSUSE-MicroOS) = 20200718-0
+Provides:       product_flavor(MicroOS) = 20200718-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description appliance
@@ -230,14 +232,14 @@ openSUSE MicroOS combines the benefits of a rolling OS with a read-only root fil
 
 %files appliance
 %defattr(-,root,root)
-%doc %{_defaultdocdir}/openSUSE-MicroOS-release-appliance
+%doc %{_defaultdocdir}/MicroOS-release-appliance
 
 %package appliance-kubic
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance-kubic)
-Provides:       product_flavor(openSUSE-MicroOS) = 20200718-0
+Provides:       product_flavor(MicroOS) = 20200718-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description appliance-kubic
@@ -246,7 +248,7 @@ openSUSE MicroOS combines the benefits of a rolling OS with a read-only root fil
 
 %files appliance-kubic
 %defattr(-,root,root)
-%doc %{_defaultdocdir}/openSUSE-MicroOS-release-appliance-kubic
+%doc %{_defaultdocdir}/MicroOS-release-appliance-kubic
 
 
 
@@ -256,9 +258,9 @@ openSUSE MicroOS combines the benefits of a rolling OS with a read-only root fil
 
 %install
 mkdir -p %{buildroot}%{_sysconfdir}
-mkdir -p %{buildroot}%{_libexecdir}/issue.d
-echo -e "\nWelcome to openSUSE MicroOS (%{_target_cpu}) - Kernel \\\r (\\\l).\n" > %{buildroot}%{_libexecdir}/issue.d/10-OS
-echo -e "\n" > %{buildroot}%{_libexecdir}/issue.d/90-OS
+mkdir -p %{buildroot}%{_prefix}/lib/issue.d
+echo -e "\nWelcome to openSUSE MicroOS (%{_target_cpu}) - Kernel \\\r (\\\l).\n" > %{buildroot}%{_prefix}/lib/issue.d/10-OS
+echo -e "\n" > %{buildroot}%{_prefix}/lib/issue.d/90-OS
 
 touch %{buildroot}%{_sysconfdir}/motd
 
@@ -267,14 +269,14 @@ mkdir -p %{buildroot}/%{_sysconfdir}/YaST2/licenses/base
 cd %{buildroot}/%{_sysconfdir}/YaST2/licenses/base
 if [ -f /CD1/license.tar.gz ]; then
   tar -xzf /CD1/license.tar.gz
-elif [ -f %{_libexecdir}/skelcd/CD1/license.tar.gz ]; then
-  tar -xzf %{_libexecdir}/skelcd/CD1/license.tar.gz
+elif [ -f %{_prefix}/lib/skelcd/CD1/license.tar.gz ]; then
+  tar -xzf %{_prefix}/lib/skelcd/CD1/license.tar.gz
 fi
 
 VERSION_ID=`echo %{version}|tr '[:upper:]' '[:lower:]'|sed -e 's/ //g;'`
 # note: VERSION is an optional field and has no meaning other than informative on a rolling distro
 # We do thus not add it to the os-release file
-cat > %{buildroot}%{_libexecdir}/os-release <<EOF
+cat > %{buildroot}%{_prefix}/lib/os-release <<EOF
 NAME="openSUSE MicroOS"
 # VERSION="%{version}%{?betaversion: %{betaversion}}"
 ID="opensuse-microos"
@@ -287,20 +289,20 @@ BUG_REPORT_URL="https://bugs.opensuse.org"
 HOME_URL="https://www.opensuse.org/"
 LOGO="distributor-logo"
 EOF
-ln -s ..%{_libexecdir}/os-release %{buildroot}%{_sysconfdir}/os-release
+ln -s ..%{_prefix}/lib/os-release %{buildroot}%{_sysconfdir}/os-release
 
 mkdir -p $RPM_BUILD_ROOT/etc/products.d
-cat >$RPM_BUILD_ROOT/etc/products.d/openSUSE-MicroOS.prod << EOF
+cat >$RPM_BUILD_ROOT/etc/products.d/MicroOS.prod << EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
-  <name>openSUSE-MicroOS</name>
+  <name>MicroOS</name>
   <version>20200718</version>
   <release>0</release>
   <endoflife></endoflife>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:opensuse-microos:20200718</cpeid>
-  <productline>openSUSE-MicroOS</productline>
+  <cpeid>cpe:/o:opensuse:microos:20200718</cpeid>
+  <productline>MicroOS</productline>
   <register>
     <pool>
     </pool>
@@ -335,26 +337,26 @@ cat >$RPM_BUILD_ROOT/etc/products.d/openSUSE-MicroOS.prod << EOF
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-MicroOS-release-dvd
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-MicroOS-release-dvd/README << EOF
+mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/MicroOS-release-dvd
+cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/MicroOS-release-dvd/README << EOF
 This package only exists for providing the product flavor 'dvd'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-MicroOS-release-kubic-dvd
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-MicroOS-release-kubic-dvd/README << EOF
+mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/MicroOS-release-kubic-dvd
+cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/MicroOS-release-kubic-dvd/README << EOF
 This package only exists for providing the product flavor 'kubic-dvd'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-MicroOS-release-appliance
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-MicroOS-release-appliance/README << EOF
+mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/MicroOS-release-appliance
+cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/MicroOS-release-appliance/README << EOF
 This package only exists for providing the product flavor 'appliance'.
 
 EOF
 
-mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-MicroOS-release-appliance-kubic
-cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/openSUSE-MicroOS-release-appliance-kubic/README << EOF
+mkdir -p $RPM_BUILD_ROOT/%{_defaultdocdir}/MicroOS-release-appliance-kubic
+cat >$RPM_BUILD_ROOT/%{_defaultdocdir}/MicroOS-release-appliance-kubic/README << EOF
 This package only exists for providing the product flavor 'appliance-kubic'.
 
 EOF
@@ -366,18 +368,18 @@ EOF
 # Fix the baseproduct symlink and make sure, it exists
 if [ -L %{_sysconfdir}/products.d/baseproduct ] ; then
     PRODLINK=$(basename $(readlink -f %{_sysconfdir}/products.d/baseproduct))
-    if [ "$PRODLINK"  == "openSUSE-Tumbleweed-Kubic.prod" ]; then
+    if [ "$PRODLINK"  = "openSUSE-Tumbleweed-Kubic.prod" -o "$PRODLINK"  = "openSUSE-MicroOS.prod" ]; then
       rm -f %{_sysconfdir}/products.d/baseproduct
     fi
 fi
 if [ ! -e %{_sysconfdir}/products.d/baseproduct ]; then
-    ln -sf openSUSE-MicroOS.prod %{_sysconfdir}/products.d/baseproduct
+    ln -sf MicroOS.prod %{_sysconfdir}/products.d/baseproduct
 fi
 
 %files
 %defattr(644,root,root,755)
 %{_sysconfdir}/os-release
-%{_libexecdir}/os-release
+%{_prefix}/lib/os-release
 %dir %{_sysconfdir}/products.d
 %{_sysconfdir}/products.d/*
 %dir %{_sysconfdir}/YaST2/
@@ -387,7 +389,7 @@ fi
 # no %doc here, or we will not install them
 %{_sysconfdir}/YaST2/licenses/base/license*txt
 %{_sysconfdir}/YaST2/licenses/base/no-acceptance-needed
-%dir %{_libexecdir}/issue.d
-%{_libexecdir}/issue.d/*-OS
+%dir %{_prefix}/lib/issue.d
+%{_prefix}/lib/issue.d/*-OS
 
 %changelog

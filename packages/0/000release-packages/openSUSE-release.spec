@@ -493,23 +493,23 @@ openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
 mkdir license
 if [ -f /CD1/license.tar.gz ]; then
   tar -C license -xzf /CD1/license.tar.gz
-elif [ -f %{_libexecdir}/skelcd/CD1/license.tar.gz ]; then
-  tar -C license -xzf %{_libexecdir}/skelcd/CD1/license.tar.gz
+elif [ -f %{_prefix}/lib/skelcd/CD1/license.tar.gz ]; then
+  tar -C license -xzf %{_prefix}/lib/skelcd/CD1/license.tar.gz
 fi
 
 %build
 
 %install
-mkdir -p %{buildroot}%{_sysconfdir} %{buildroot}%{_libexecdir}/issue.d %{buildroot}/run
+mkdir -p %{buildroot}%{_sysconfdir} %{buildroot}%{_prefix}/lib/issue.d %{buildroot}/run
 
-echo -e 'Welcome to %{product} %{codename} %{version}%{?betaversion: %{betaversion}} - Kernel \\r (\\l).\n' > %{buildroot}%{_libexecdir}/issue.d/10-openSUSE.conf
-echo -e "\n" > %{buildroot}%{_libexecdir}/issue.d/90-openSUSE.conf
+echo -e 'Welcome to %{product} %{codename} %{version}%{?betaversion: %{betaversion}} - Kernel \\r (\\l).\n' > %{buildroot}%{_prefix}/lib/issue.d/10-openSUSE.conf
+echo -e "\n" > %{buildroot}%{_prefix}/lib/issue.d/90-openSUSE.conf
 echo    'Welcome to %{product} %{codename} %{version}%{?betaversion: %{betaversion}} - Kernel %%r (%%t).' > %{buildroot}%{_sysconfdir}/issue.net
 
 VERSION_ID=`echo %{version}|tr '[:upper:]' '[:lower:]'|sed -e 's/ //g;'`
 # note: VERSION is an optional field and has no meaning other than informative on a rolling distro
 # We do thus not add it to the os-release file
-cat > %{buildroot}%{_libexecdir}/os-release <<EOF
+cat > %{buildroot}%{_prefix}/lib/os-release <<EOF
 NAME="openSUSE Tumbleweed"
 # VERSION="%{version}%{?betaversion: %{betaversion}}"
 ID="opensuse-tumbleweed"
@@ -522,7 +522,7 @@ BUG_REPORT_URL="https://bugs.opensuse.org"
 HOME_URL="https://www.opensuse.org/"
 LOGO="distributor-logo"
 EOF
-ln -s ..%{_libexecdir}/os-release %{buildroot}%{_sysconfdir}/os-release
+ln -s ..%{_prefix}/lib/os-release %{buildroot}%{_sysconfdir}/os-release
 
 echo "Have a lot of fun..." > %{buildroot}%{_sysconfdir}/motd
 # Bug 404141 - /etc/YaST/control.xml should be owned by some package
@@ -530,8 +530,8 @@ mkdir -p %{buildroot}%{_sysconfdir}/YaST2/
 echo %{buildroot}
 if [ -f /CD1/control.xml ]; then
   install -m 644 /CD1/control.xml %{buildroot}%{_sysconfdir}/YaST2/
-elif [ -f %{_libexecdir}/skelcd/CD1/control.xml ]; then
-  install -m 644 %{_libexecdir}/skelcd/CD1/control.xml %{buildroot}%{_sysconfdir}/YaST2/
+elif [ -f %{_prefix}/lib/skelcd/CD1/control.xml ]; then
+  install -m 644 %{_prefix}/lib/skelcd/CD1/control.xml %{buildroot}%{_sysconfdir}/YaST2/
 fi
 
 # fate#319341, make openSUSE-release own YaST license files. TODO:
@@ -743,14 +743,14 @@ fi
 %_defaultlicensedir/product/base
 %license license/*
 %{_sysconfdir}/os-release
-%{_libexecdir}/os-release
+%{_prefix}/lib/os-release
 # Bug 404141 - /etc/YaST/control.xml should be owned by some package
 %dir %{_sysconfdir}/YaST2/
 %config %{_sysconfdir}/YaST2/control.xml
 %config(noreplace) %{_sysconfdir}/motd
-%dir %{_libexecdir}/issue.d/
-%{_libexecdir}/issue.d/10-openSUSE.conf
-%{_libexecdir}/issue.d/90-openSUSE.conf
+%dir %{_prefix}/lib/issue.d/
+%{_prefix}/lib/issue.d/10-openSUSE.conf
+%{_prefix}/lib/issue.d/90-openSUSE.conf
 %config(noreplace) %{_sysconfdir}/issue.net
 %{_sysconfdir}/products.d
 
