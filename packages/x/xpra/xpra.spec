@@ -78,6 +78,8 @@ Requires(post): %fillup_prereq
 Recommends:     python3-dnspython
 Recommends:     python3-opencv
 Recommends:     python3-paramiko
+Recommends:     python3-opengl
+Recommends:     python3-opengl-accelerate
 %{?systemd_ordering}
 
 %description
