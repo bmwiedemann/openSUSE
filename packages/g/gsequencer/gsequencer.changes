@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jul 16 16:14:32 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.5.3 minor improvements.
+
+-------------------------------------------------------------------
+Thu Jul 16 06:06:16 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.5.2 fixed missing expand of WebView.
+
+-------------------------------------------------------------------
+Thu Jul 16 04:35:06 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.5.1 small release with improved user experience
+  during quit. Asking to do a fast export of AgsAudiorec.
+- Improved online help allowing you to go home, previous or forward
+  page of PDF user manual.
+- Added PDF support using poppler and cairo as a alternative to
+  webkit2gtk-4.0 in online help window.
+
+-------------------------------------------------------------------
 Sun Jul  5 04:24:34 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.4.11 improved AgsSF2SynthGenerator and
