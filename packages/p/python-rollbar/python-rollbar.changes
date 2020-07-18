@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 18 05:17:28 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Upstream doesn't care about unittest2 at all
+  (gh#rollbar/pyrollbar#340), we can just ignore it. Adjust
+  python-rollbar-no-unittest2.patch accordingly.
+
+-------------------------------------------------------------------
 Wed Jun  3 09:05:04 UTC 2020 - pgajdos@suse.com
 
 - use %pytest macro

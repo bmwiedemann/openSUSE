@@ -39,4 +39,15 @@
     <comment></comment>
     <requestid>811061</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>22941e6866b9d4419fd5468a423e1ff4</srcmd5>
+    <version>0.15.0</version>
+    <time>1595099012</time>
+    <user>dimstar_suse</user>
+    <comment>- Upstream doesn't care about unittest2 at all
+  (gh#rollbar/pyrollbar#340), we can just ignore it. Adjust
+  python-rollbar-no-unittest2.patch accordingly.
+</comment>
+    <requestid>821667</requestid>
+  </revision>
 </revisionlist>
