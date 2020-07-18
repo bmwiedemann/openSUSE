@@ -4753,6 +4753,7 @@ unsorted:
   - gimp-help-nn 
   - gimp-help-pl 
   - gimp-help-pt_BR 
+  - gimp-help-ro 
   - gimp-help-ru 
   - gimp-help-sl 
   - gimp-help-sv 
@@ -8128,7 +8129,7 @@ unsorted:
   - libQtAVWidgets1-32bit: [x86_64] 
   - libQtQuick5-32bit: [x86_64] 
   - libRaTools0 
-  - libRivet-3_1_1 
+  - libRivet-3_1_2 
   - libSDL-1_2-0-32bit: [x86_64] 
   - libSDL-devel 
   - libSDL-devel-32bit: [x86_64] 
@@ -8314,7 +8315,7 @@ unsorted:
   - libXxf86vm-devel 
   - libXxf86vm-devel-32bit: [x86_64] 
   - libXxf86vm1-32bit: [x86_64] 
-  - libYODA-1_8_0 
+  - libYODA-1_8_3 
   - liba52-0-32bit: [x86_64] 
   - liba52-devel 
   - libaa1-32bit: [x86_64] 
@@ -8635,6 +8636,9 @@ unsorted:
   - libblacs2-openmpi3 
   - libblacs2-openmpi3-devel 
   - libblacs2-openmpi3-devel-static 
+  - libblacs2-openmpi4 
+  - libblacs2-openmpi4-devel 
+  - libblacs2-openmpi4-devel-static 
   - libbladeRF2 
   - libbladeRF2-doc 
   - libblas3-32bit: [x86_64] 
@@ -10938,11 +10942,13 @@ unsorted:
   - libnetcdf-cxx4_4_3_1-gnu-hpc 
   - libnetcdf-cxx4_4_3_1-gnu-hpc-devel 
   - libnetcdf-cxx4_4_3_1-gnu-hpc-devel-static 
+  - libnetcdf-fortran-gnu-hpc 
   - libnetcdf-fortran-gnu-mpich-hpc 
   - libnetcdf-fortran-gnu-mvapich2-hpc 
   - libnetcdf-fortran-gnu-openmpi1-hpc 
   - libnetcdf-fortran-gnu-openmpi2-hpc 
   - libnetcdf-fortran-gnu-openmpi3-hpc 
+  - libnetcdf-fortran_4_5_2-gnu-hpc 
   - libnetcdf-fortran_4_5_2-gnu-mpich-hpc 
   - libnetcdf-fortran_4_5_2-gnu-mvapich2-hpc 
   - libnetcdf-fortran_4_5_2-gnu-openmpi1-hpc 
@@ -12148,6 +12154,8 @@ unsorted:
   - libscalapack2-gnu-openmpi2-hpc-devel 
   - libscalapack2-gnu-openmpi3-hpc 
   - libscalapack2-gnu-openmpi3-hpc-devel 
+  - libscalapack2-gnu-openmpi4-hpc 
+  - libscalapack2-gnu-openmpi4-hpc-devel 
   - libscalapack2-mvapich2 
   - libscalapack2-mvapich2-32bit: [x86_64] 
   - libscalapack2-mvapich2-devel 
@@ -12168,6 +12176,11 @@ unsorted:
   - libscalapack2-openmpi3-devel 
   - libscalapack2-openmpi3-devel-32bit: [x86_64] 
   - libscalapack2-openmpi3-devel-static 
+  - libscalapack2-openmpi4 
+  - libscalapack2-openmpi4-32bit: [x86_64] 
+  - libscalapack2-openmpi4-devel 
+  - libscalapack2-openmpi4-devel-32bit: [x86_64] 
+  - libscalapack2-openmpi4-devel-static 
   - libscalapack2_2_1_0-gnu-mpich-hpc 
   - libscalapack2_2_1_0-gnu-mpich-hpc-devel 
   - libscalapack2_2_1_0-gnu-mpich-hpc-devel-static 
@@ -12183,6 +12196,9 @@ unsorted:
   - libscalapack2_2_1_0-gnu-openmpi3-hpc 
   - libscalapack2_2_1_0-gnu-openmpi3-hpc-devel 
   - libscalapack2_2_1_0-gnu-openmpi3-hpc-devel-static 
+  - libscalapack2_2_1_0-gnu-openmpi4-hpc 
+  - libscalapack2_2_1_0-gnu-openmpi4-hpc-devel 
+  - libscalapack2_2_1_0-gnu-openmpi4-hpc-devel-static 
   - libscamperfile-devel 
   - libscamperfile0 
   - libscca-devel 
@@ -12286,6 +12302,7 @@ unsorted:
   - libsmdev-tools 
   - libsmdev1 
   - libsmi-devel 
+  - libsmooth-0_9-0 
   - libsmpp34-1 
   - libsmpp34-devel 
   - libsmputils-devel 
@@ -15280,6 +15297,8 @@ unsorted:
   - netcdf-devel 
   - netcdf-devel-data 
   - netcdf-devel-static 
+  - netcdf-fortran-gnu-hpc 
+  - netcdf-fortran-gnu-hpc-devel 
   - netcdf-fortran-gnu-mpich-hpc 
   - netcdf-fortran-gnu-mpich-hpc-devel 
   - netcdf-fortran-gnu-mvapich2-hpc 
@@ -15290,6 +15309,9 @@ unsorted:
   - netcdf-fortran-gnu-openmpi2-hpc-devel 
   - netcdf-fortran-gnu-openmpi3-hpc 
   - netcdf-fortran-gnu-openmpi3-hpc-devel 
+  - netcdf-fortran_4_5_2-gnu-hpc 
+  - netcdf-fortran_4_5_2-gnu-hpc-devel 
+  - netcdf-fortran_4_5_2-gnu-hpc-devel-static 
   - netcdf-fortran_4_5_2-gnu-mpich-hpc 
   - netcdf-fortran_4_5_2-gnu-mpich-hpc-devel 
   - netcdf-fortran_4_5_2-gnu-mpich-hpc-devel-static 
@@ -18497,6 +18519,7 @@ unsorted:
   - plplot-driver-xwin 
   - plplot-java 
   - plplot-lua 
+  - plplot-octave 
   - plplot-python3-qt 
   - plplot-tcltk-devel 
   - plplot-tcltk-libs 
@@ -21414,6 +21437,7 @@ unsorted:
   - python3-pytricia 
   - python3-pytzdata 
   - python3-pyuca 
+  - python3-pyupgrade 
   - python3-pyusb 
   - python3-pyuv 
   - python3-pyux 
@@ -22535,9 +22559,7 @@ unsorted:
   - ruby2.6-rubygem-activestorage-doc-5.2 
   - ruby2.6-rubygem-activestorage-doc-6.0 
   - ruby2.6-rubygem-activesupport-5.2 
-  - ruby2.6-rubygem-activesupport-5_1 
   - ruby2.6-rubygem-activesupport-doc-5.2 
-  - ruby2.6-rubygem-activesupport-doc-5_1 
   - ruby2.6-rubygem-activesupport-doc-6.0 
   - ruby2.6-rubygem-addressable 
   - ruby2.6-rubygem-addressable-2_3 
@@ -23677,7 +23699,6 @@ unsorted:
   - ruby2.7-rubygem-activestorage-doc-5.2 
   - ruby2.7-rubygem-activestorage-doc-6.0 
   - ruby2.7-rubygem-activesupport-doc-5.2 
-  - ruby2.7-rubygem-activesupport-doc-5_1 
   - ruby2.7-rubygem-activesupport-doc-6.0 
   - ruby2.7-rubygem-addressable-doc 
   - ruby2.7-rubygem-addressable-doc-2_3 
@@ -24584,6 +24605,7 @@ unsorted:
   - scalapack-openmpi1-test 
   - scalapack-openmpi2-test 
   - scalapack-openmpi3-test 
+  - scalapack-openmpi4-test 
   - scalapack_2_1_0-gnu-mpich-hpc-module 
   - scalapack_2_1_0-gnu-mpich-hpc-test 
   - scalapack_2_1_0-gnu-mvapich2-hpc-module 
@@ -24594,6 +24616,8 @@ unsorted:
   - scalapack_2_1_0-gnu-openmpi2-hpc-test 
   - scalapack_2_1_0-gnu-openmpi3-hpc-module 
   - scalapack_2_1_0-gnu-openmpi3-hpc-test 
+  - scalapack_2_1_0-gnu-openmpi4-hpc-module 
+  - scalapack_2_1_0-gnu-openmpi4-hpc-test 
   - scalpel 
   - scamper 
   - scanmem 
@@ -24884,6 +24908,8 @@ unsorted:
   - smillaenlarger 
   - smilutils 
   - smlnj: [i586] 
+  - smooth 
+  - smooth-devel 
   - smplayer 
   - smplayer-lang 
   - smproxy 
