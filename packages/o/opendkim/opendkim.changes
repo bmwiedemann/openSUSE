@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jul 15 08:49:30 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- opendkim calls openssl, make sure the command is there
+
+-------------------------------------------------------------------
+Mon Jul 13 12:46:52 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use systemd_ordering instead of systemd_requires for container
+- Update to opendkim 2.11.0-Beta2
+  - Add support for ED25519 keys
+  - Add compatibility with openssl-1.1.0
+  - Feature request #190: Reject signature object requests
+    where the domain name or selector includes non-printable
+    characters.
+  - Feature requrest #187: Add option to match subdomains when
+    generating zone files.
+  - Many bug fixes
+  - Obsoletes opendkim.ticket35+37.patch
+- Disable erlang, new erlang version seems to miss required files
+
+-------------------------------------------------------------------
 Sat Jun  2 00:23:34 UTC 2018 - mrueckert@suse.de
 
 - https://src.fedoraproject.org/rpms/opendkim/raw/master/f/opendkim.ticket35+37.patch

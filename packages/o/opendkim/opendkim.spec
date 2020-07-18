@@ -1,7 +1,7 @@
 #
 # spec file for package opendkim
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define ver_odkim    2.10.3
+%define full_version 2.11.0-Beta2
+%define upname OpenDKIM
+%define ver_odkim    2.11.0
 %define ver_mt       1.6.0
-%define sover_odkim  10
+%define sover_odkim  11
 %define sover_rbl    1
 %define sover_repute 1
 %define sover_ut     1
 %define sover_rrd    1
 %define sover_vbr    2
+
 %bcond_with     opendkim_sql
 # RRD is off for now as it pulls too many dependencies when installing
 %bcond_with     opendkim_rrd
 %bcond_without  opendkim_libmemcached
 %bcond_without  opendkim_reputation
 %bcond_without  systemd
+
 Name:           opendkim
 Version:        %{ver_odkim}
 Release:        0
@@ -37,8 +41,7 @@ Summary:        Milter based implementation of DKIM
 License:        BSD-3-Clause AND Sendmail
 Group:          Productivity/Networking/Email/Servers
 URL:            http://www.opendkim.org/
-Source0:        http://sourceforge.net/projects/opendkim/files/opendkim-%{version}.tar.gz
-Source1:        http://sourceforge.net/projects/opendkim/files/opendkim-%{version}.tar.gz.asc
+Source0:        https://github.com/trusteddomainproject/OpenDKIM/archive/%{full_version}.tar.gz
 Source2:        %{name}.keyring
 Source3:        opendkim.service
 Source4:        opendkim.tmpfiles.d
@@ -47,13 +50,15 @@ Source5:        opendkim.init
 Patch0:         opendkim-2.9.2_compiler_warnings.patch
 # PATCH-FIX-OPENSUSE set default values in installed configuration file
 Patch1:         opendkim-2.9.2_default_config.patch
-Patch2:         https://src.fedoraproject.org/rpms/opendkim/raw/master/f/opendkim.ticket35+37.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  curl-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  db-devel
-BuildRequires:  erlang
+#BuildRequires:  erlang
 BuildRequires:  libbsd-devel
 BuildRequires:  libevent-devel
+BuildRequires:  libtool
 BuildRequires:  lua51-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
@@ -63,6 +68,7 @@ BuildRequires:  tre-devel
 BuildRequires:  unbound-devel
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
+Requires:       /usr/bin/openssl
 BuildRequires:  libopenssl-devel
 %if %{with opendkim_reputation}
 BuildRequires:  libjansson-devel
@@ -78,7 +84,7 @@ BuildRequires:  rrdtool-devel
 %endif
 %if %{with systemd}
 BuildRequires:  pkgconfig(systemd)
-%{?systemd_requires}
+%{?systemd_ordering}
 %else
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         %fillup_prereq
@@ -199,12 +205,12 @@ authentication.
 This package holds the development files.
 
 %prep
-%setup -q
+%setup -q -n %{upname}-%{full_version}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
+autoreconf -iv
 %configure                            \
   --includedir=%{_includedir}/%{name} \
   --disable-static                    \
@@ -244,7 +250,9 @@ This package holds the development files.
   %endif
   --with-openldap                     \
   --with-sasl                         \
+%if 0
   --with-erlang                       \
+%endif
   --with-unbound                      \
   --with-domain="example.com"
 
