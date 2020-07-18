@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 18 09:36:06 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to version 1.2.4
+  * Add option "-1" to display only a single line per event 
+- refreshed u_Add-event-filter-for-motion-and-button-events.patch
+
+-------------------------------------------------------------------
 Wed Feb 20 14:30:57 UTC 2019 - sndirsch@suse.com
 
 - update to version 1.2.3

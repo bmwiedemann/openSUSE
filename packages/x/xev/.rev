@@ -83,4 +83,14 @@
 - adjusted u_Add-event-filter-for-motion-and-button-events.patch</comment>
     <requestid>677757</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>88e783a9be4eb92ccc5e137356cbd1bc</srcmd5>
+    <version>1.2.4</version>
+    <time>1595098922</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.2.4
+  * Add option &quot;-1&quot; to display only a single line per event 
+- refreshed u_Add-event-filter-for-motion-and-button-events.patch</comment>
+    <requestid>821629</requestid>
+  </revision>
 </revisionlist>
