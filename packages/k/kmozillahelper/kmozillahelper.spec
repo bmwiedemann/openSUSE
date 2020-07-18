@@ -1,7 +1,7 @@
 #
 # spec file for package kmozillahelper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5WindowSystem)
 Requires:       mozilla-kde4-version = %{helper_version}
 Supplements:    packageand(MozillaFirefox:plasma5-desktop)
+Supplements:    packageand(MozillaThunderbird:plasma5-desktop)
 # make sure the package is not installed when there is still
 # a user of the old api version
 Conflicts:      mozilla-kde4-version < %{helper_version}

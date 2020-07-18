@@ -47,4 +47,12 @@
   * Recognize if started from Thunderbird</comment>
     <requestid>720162</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7ba22f4efac1e47ef565d9293298fe6d</srcmd5>
+    <version>5.0.5</version>
+    <time>1595098882</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821567</requestid>
+  </revision>
 </revisionlist>
