@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 13 18:53:38 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.12.1.2
+* 2020-07-13 7.12.1.2
+  * improve output for connect-vips
+- Update to version 7.12.1.1
+  * bugfix in UCD-MIB swap
+- Update to version 7.12.1
+  * try to fallback to ucd if neither sysUptime nor sysDescr exist
+
+-------------------------------------------------------------------
 Thu Jun  4 09:55:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.12
