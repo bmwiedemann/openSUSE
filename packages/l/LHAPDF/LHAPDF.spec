@@ -16,26 +16,22 @@
 #
 
 
-%define so_name libLHAPDF-6_2_3
+%define so_name libLHAPDF-6_3_0
 %define execname lhapdf
 
 Name:           LHAPDF
-Version:        6.2.3
+Version:        6.3.0
 Release:        0
 Summary:        A library for unified interface to PDF sets
 License:        GPL-3.0-only
-Group:          Development/Libraries/C and C++
 URL:            https://lhapdf.hepforge.org/
 Source:         http://www.hepforge.org/archive/lhapdf/%{name}-%{version}.tar.gz
 Patch1:         sover.diff
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel >= 1.53.0
-%endif
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
@@ -54,7 +50,6 @@ and no limit to the expansion possibilities.
 
 %package -n %{so_name}
 Summary:        A library for unified and interface to PDF sets
-Group:          System/Libraries
 Obsoletes:      libLHAPDF < %{version}-%{release}
 Provides:       libLHAPDF = %{version}-%{release}
 
@@ -70,13 +65,9 @@ This package provides the shared library for %{name}.
 
 %package -n %{name}-devel
 Summary:        Development files for LHAPDF, a library for PDF sets
-Group:          Development/Libraries/C and C++
 Requires:       %{so_name} = %{version}
-%if 0%{?suse_version} > 1325
 BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel >= 1.53.0
-%endif
+Recommends:     %{name}-doc = %{version}
 
 %description -n %{name}-devel
 LHAPDF provides a unified and interface to PDF (probability
@@ -84,6 +75,16 @@ distribution function) sets.
 
 This package provides the header and source files for development with
 %{name}.
+
+%package doc
+Summary:        API documentation for LHAPDF, a library for PDF sets
+BuildArch:      noarch
+
+%description doc
+LHAPDF provides a unified and interface to PDF (probability
+distribution function) sets.
+
+This package provides the API documentation for LHAPDF in HTML format.
 
 %prep
 %setup -q
@@ -97,9 +98,12 @@ mkdir ../$python
 cp -pr ./ ../$python
 pushd ../$python
 %configure --disable-static --docdir=%{_docdir}/%{name}/
-make %{?_smp_mflags}
+%make_build
 popd
 }
+pushd ../python3
+%make_build doxy
+popd
 
 %install
 %{python_expand # py2 and py3 make_install
@@ -134,5 +138,8 @@ find %{buildroot}%{_libdir}/ -name "*.la" -delete
 %python3_only %{_bindir}/%{execname}
 %{python_sitearch}/*.egg-info
 %{python_sitearch}/*.so
+
+%files -n %{name}-doc
+%doc ../python3/doc/doxygen
 
 %changelog
