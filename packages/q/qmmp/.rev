@@ -786,4 +786,12 @@
     <comment></comment>
     <requestid>799152</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>b8fba306eaf2d4a1a0366d7e81df506b</srcmd5>
+    <version>1.4.1</version>
+    <time>1595098893</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.1.</comment>
+    <requestid>821580</requestid>
+  </revision>
 </revisionlist>

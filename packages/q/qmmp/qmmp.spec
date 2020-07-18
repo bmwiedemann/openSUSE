@@ -21,7 +21,7 @@
 %bcond_with faad
 %bcond_with restricted
 Name:           qmmp
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Qt-based Multimedia Player
 License:        GPL-2.0-or-later
@@ -151,8 +151,8 @@ Development files for libqmmp.
 
 %install
 %cmake_install
-# do not install werdly-sized cions
-rm -rf %{buildroot}/%{_datadir}/icons/hicolor/56x56
+# Do not install werdly-sized icons.
+rm -r %{buildroot}/%{_datadir}/icons/hicolor/56x56
 
 %post -n lib%{name}%{sover} -p /sbin/ldconfig
 

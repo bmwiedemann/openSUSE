@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 17 21:04:11 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.4.1:
+  * Fix "jump to track" dialogue delay.
+  * Fix the feature to disable formats in the ffmpeg plugin.
+  * Fix some streams detection in the mpeg plugin.
+  * Fix a loss of equaliser settings.
+  * Fix codec and bitrate display for IceCast streams.
+  * Fix playback start-up detection in the mpris plugin.
+  * Update translations.
+
+-------------------------------------------------------------------
 Thu Apr 30 05:53:15 UTC 2020 - aloisio@gmx.com
 
 - Update to version 1.4.0
