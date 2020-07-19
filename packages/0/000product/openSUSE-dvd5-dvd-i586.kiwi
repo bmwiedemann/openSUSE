@@ -411,8 +411,6 @@
       <repopackage name="discover-backend-fwupd"/>
       <repopackage name="discover-backend-packagekit"/>
       <repopackage name="discover-lang"/>
-      <repopackage name="distribution-logos-openSUSE-Kubic" arch="i586,i686"/>
-      <repopackage name="distribution-logos-openSUSE-MicroOS"/>
       <repopackage name="distribution-logos-openSUSE-Tumbleweed"/>
       <repopackage name="djvulibre"/>
       <repopackage name="dleyna-connector-dbus"/>
@@ -1056,8 +1054,6 @@
       <repopackage name="iw"/>
       <repopackage name="java-11-openjdk"/>
       <repopackage name="java-11-openjdk-headless"/>
-      <repopackage name="java-15-openjdk"/>
-      <repopackage name="java-15-openjdk-headless"/>
       <repopackage name="javapackages-filesystem"/>
       <repopackage name="javapackages-tools"/>
       <repopackage name="jfsutils"/>
@@ -3371,8 +3367,6 @@
       <repopackage name="openssl"/>
       <repopackage name="openssl-1_1"/>
       <repopackage name="openSUSE-build-key"/>
-      <repopackage name="openSUSE-MicroOS-release"/>
-      <repopackage name="openSUSE-MicroOS-release-appliance"/>
       <repopackage name="openSUSE-release"/>
       <repopackage name="openSUSE-release-appliance-custom"/>
       <repopackage name="openSUSE-release-dvd"/>
