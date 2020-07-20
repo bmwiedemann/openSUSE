@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 18 21:16:29 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
+
+- Add patch for a broken dependency gh#fare/command-line-arguments#6
+  + command-line-arguments.patch
+
+-------------------------------------------------------------------
 Mon Mar 23 20:23:26 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to version 3.6.2
