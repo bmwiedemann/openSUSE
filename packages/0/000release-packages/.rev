@@ -4430,4 +4430,12 @@
     <user>staging-bot</user>
     <comment>Automatic update</comment>
   </revision>
+  <revision rev="634" vrev="634">
+    <srcmd5>6b9281cf97e278731f8f52edc51795ef</srcmd5>
+    <version>unknown</version>
+    <time>1595237461</time>
+    <user>dimstar_suse</user>
+    <comment>Revert broken product-converter change</comment>
+    <requestid>821849</requestid>
+  </revision>
 </revisionlist>
