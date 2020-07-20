@@ -30,7 +30,8 @@ Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aopensuse%2Daddon%2Dnon
 
 AutoReqProv:    on
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
+# this package should only be available for the "basearchs" of a product
+ExclusiveArch:
 %description
 non oss repo and cd
 
