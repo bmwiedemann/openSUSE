@@ -229,6 +229,8 @@ URL:            https://ansible.com/
 Source:         https://releases.ansible.com/ansible/ansible-%{version}.tar.gz
 Source1:        https://releases.ansible.com/ansible/ansible-%{version}.tar.gz.sha
 Source99:       ansible-rpmlintrc
+# PATCH-FEATURE-UPSTREAM ansible_bugfix_640.diff gh#ansible-collections/community.general#640
+Patch:          ansible_bugfix_640.diff
 BuildArch:      noarch
 # extented documentation
 %if 0%{?with_docs}
@@ -288,6 +290,9 @@ automatically.
 
 %prep
 %setup -q -n ansible-%{version}
+pushd lib/ansible
+%patch -p2
+popd
 
 for file in .git_keep .travis.yml ; do
   find . -name "$file" -delete
@@ -297,7 +302,6 @@ find contrib/ -type f -exec chmod 644 {} +
 # Replace all #!/usr/bin/env lines to use #!/usr/bin/$1 directly.
 find ./ -type f -exec \
     sed -i '1s|^#!%{_bindir}/env |#!%{_bindir}/|' {} \;
-
 
 %build
 %{python} setup.py build
