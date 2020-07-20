@@ -595,6 +595,6 @@
         <package name="glibc-locale-base"/>
         <package name="ca-certificates"/>
         <!-- TODO: Use the proper flavors once available -->
-        <package name="openSUSE-MicroOS-release-dvd"/>
+        <package name="MicroOS-release-dvd"/>
     </packages>
 </image>
