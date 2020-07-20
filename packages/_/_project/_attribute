@@ -365,8 +365,8 @@ products:
   - 000product:openSUSE-dvd5-dvd-x86_64
   - 000product:openSUSE-cd-mini-i586
   - 000product:openSUSE-cd-mini-x86_64
-  - 000product:openSUSE-MicroOS-dvd5-dvd-x86_64
-  - 000product:openSUSE-MicroOS-dvd5-kubic-dvd-x86_64
+  - 000product:MicroOS-dvd5-dvd-x86_64
+  - 000product:MicroOS-dvd5-kubic-dvd-x86_64
 test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
