@@ -202,7 +202,7 @@ autoreconf -fi
 %configure \
         --prefix=%{_prefix}     \
         --includedir=%{_includedir}/gdal \
-        --datadir=%{_datadir}/gdal \
+        --datadir=%{_datadir}   \
         --with-threads          \
         --disable-static        \
         --with-geotiff          \
@@ -266,7 +266,9 @@ do
   make %{?_smp_mflags} -C swig/${M} generate
 done
 
-make %{?_smp_mflags} VERBOSE=1 all \
+# Workaround incomplete ordering in Makefile
+%make_build lib-dependencies
+%make_build all
 
 # Make Python 3 module
 pushd swig/python

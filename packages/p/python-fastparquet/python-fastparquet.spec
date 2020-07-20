@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-fastparquet
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Python support for Parquet file format
 License:        Apache-2.0
@@ -32,7 +32,8 @@ BuildRequires:  %{python_module cffi >= 0.6}
 BuildRequires:  %{python_module lz4 >= 0.19.1 }
 BuildRequires:  %{python_module numba >= 0.28}
 BuildRequires:  %{python_module numpy-devel >= 1.11}
-BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pandas >= 0.19}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lzo}
@@ -45,6 +46,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numba >= 0.28
 Requires:       python-numpy >= 1.11
+Requires:       python-packaging
 Requires:       python-pandas
 Requires:       python-six
 Requires:       python-thrift >= 0.11.0

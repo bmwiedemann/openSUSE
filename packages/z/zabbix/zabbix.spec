@@ -23,13 +23,13 @@
 %define agent_group  zabbix
 %define SUSEfirewall_services_dir %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
 Name:           zabbix
-Version:        4.0.19
+Version:        4.0.22
 Release:        0
 Summary:        Distributed monitoring system
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            http://www.zabbix.com
-Source0:        https://cdn.zabbix.com/stable/%{version}/zabbix-%{version}.tar.gz
+Source0:        https://cdn.zabbix.com/zabbix/sources/stable/4.0/zabbix-%{version}.tar.gz
 Source1:        rn4.0.0.html
 Source2:        zabbix-tmpfiles.conf
 Source3:        zabbix-java-gateway.sh

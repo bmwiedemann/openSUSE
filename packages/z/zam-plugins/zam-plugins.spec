@@ -17,15 +17,14 @@
 #
 
 
+%define         _lto_cflags      %{nil}
 Name:           zam-plugins
-Version:        3.12
+Version:        3.13
 Release:        0
 Summary:        A collection of audio plugins for high quality processing
 License:        GPL-2.0-or-later
 URL:            http://www.zamaudio.com/?p=976
 Source:         %{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE zam-plugins-verbose_build.patch aloisio@gmx.com -- prints compilation flags
-Patch0:         zam-plugins-verbose_build.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa
 BuildRequires:  ladspa-devel
@@ -39,6 +38,7 @@ BuildRequires:  pkgconfig(lv2)
 BuildRequires:  pkgconfig(rubberband)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sndfile)
+BuildRequires:  pkgconfig(x11)
 ExclusiveArch:  %ix86 x86_64
 
 %description
@@ -169,7 +169,7 @@ ZamGEQ31X2 - Stereo 31 band graphic equalizer plugin
 
 %build
 export CFLAGS="%{optflags}" CXXFLAGS="%{optflags}"
-%make_build SKIP_STRIPPING=true
+%make_build SKIP_STRIPPING=true VERBOSE=true
 
 %install
 %make_install PREFIX=%{_prefix} LIBDIR=%{_lib}

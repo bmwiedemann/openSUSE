@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 16 07:42:30 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use systemd_ordering instead of sytemd_requires, we don't want
+  systemd in our containers.
+
+-------------------------------------------------------------------
 Tue Jul  7 11:39:37 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 4.2.23

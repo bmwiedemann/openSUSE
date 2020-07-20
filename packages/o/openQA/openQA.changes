@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 19 03:26:23 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1595016885.fd322f928:
+  * Add UI support for removing users
+  * Add docs how to set the --no-cleanup parameter in the systemd units
+
+-------------------------------------------------------------------
 Thu Jul 16 19:26:24 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1594892785.5a3073ffd:

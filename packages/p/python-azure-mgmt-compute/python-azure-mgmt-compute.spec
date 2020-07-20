@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-compute
-Version:        12.0.0
+Version:        13.0.0
 Release:        0
 Summary:        Microsoft Azure Compute Management Client Library
 License:        MIT

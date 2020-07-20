@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul 20 07:50:34 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.2
+  New features:
+  * Support unar as decompression backend.  It has much
+    better support for RAR features than bsdtar.
+  * Support SFX archives - archive header is searched in first
+    2MB of the file.
+  * Add :data:`HACK_TMP_DIR` option, to force temp files into
+    specific directory.
+  Fixes:
+  * Always use "/" for path separator in command-line
+  Cleanups:
+  * Drop module-level options from docs, they create confusion.
+  * Drop support for Python 2 and 3.5 and earlier.  Python 2 is
+    dead and requiring Python 3.6 gives blake2s, stdlib that
+    supports pathlib, and ordered dict without compat hacks.
+
+-------------------------------------------------------------------
 Mon Oct 14 14:40:03 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.

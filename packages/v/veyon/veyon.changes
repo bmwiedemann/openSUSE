@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jul 18 14:09:07 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 4.4.1.
+  * Core: improve multi session support
+  * Core: improve worker execution and fix tray icon not being 
+    shown on startup
+  * Demo: broadcast actual teacher session instead of console 
+    session when running Master within RDP session
+  * LDAP: fix computer query on host name lookup error
+  * Linux: don't use functions marked deprecated in Qt 5.15
+  * Linux: provide package for openSUSE 15.2
+  * NetworkObjects: update existing objects instead of adding 
+    duplicate objects when importing CSV / text file
+  * NetworkObjects: output proper line endings when exporting to 
+    CSV / text file on Windows
+  * Server: fix crash on connection accept error
+  * Update translations
+
+-------------------------------------------------------------------
 Fri Jun 12 22:53:11 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.4.0.

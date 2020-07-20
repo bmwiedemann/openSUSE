@@ -1,7 +1,7 @@
 #
 # spec file for package motion
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,18 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
-%endif
-
 %define spooldir /var/spool/motion
 
 Name:           motion
-Version:        4.2.1
+Version:        4.3.1
 Release:        0
 Summary:        A motion detection system
 License:        GPL-2.0-or-later
 Group:          Hardware/Camera
-Url:            https://motion-project.github.io/
+URL:            https://motion-project.github.io/
 Source0:        https://github.com/Motion-Project/motion/archive/release-%{version}.tar.gz
 Source1:        motion-service
 Source2:        motion-sysconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libjpeg-devel
@@ -47,10 +41,8 @@ BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(sqlite3)
 %{?systemd_requires}
-%if %{suse_version} > 1320
 BuildRequires:  group(video)
 Requires(pre): group(video)
-%endif
 Requires(pre): pwdutils
 Requires(pre): %fillup_prereq
 
@@ -67,14 +59,21 @@ without MySQL and PostgreSQL support.
 
 %build
 autoreconf -i -f
-%configure --without-optimizecpu --without-mysql --without-pgsql
-make %{?_smp_mflags}
+%configure \
+  --without-optimizecpu \
+  --without-mariadb \
+  --without-mysql \
+  --without-pgsql
+%make_build
 
 %install
-%makeinstall
+%make_install
+
 # We keep the main configuration file
 mv %{buildroot}%{_sysconfdir}/%{name}/motion-dist.conf %{buildroot}%{_sysconfdir}/%{name}/motion.conf
 rm %{buildroot}%{_sysconfdir}/%{name}/camera*-dist.conf
+
+install -m 0644 -D -t %{buildroot}%{_datadir}/%{name}/examples data/*.{conf,service}
 
 #We change the PID file path to match the one in the startup script
 sed -i 's|/var/run/motion/motion.pid|/var/run/motion.pid|g' %{buildroot}%{_sysconfdir}/%{name}/motion.conf
@@ -91,13 +90,10 @@ install -c -m 0644 %{SOURCE1}  %{buildroot}%{_unitdir}/motion.service
 mkdir -p %{buildroot}%{_fillupdir}
 cp %{SOURCE2} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 
-rm %{buildroot}/%{_datadir}/%{name}/examples/motion.init-Debian
-rm %{buildroot}/%{_datadir}/%{name}/examples/motion.init-FreeBSD.sh
-
 mkdir -p %{buildroot}%{_sbindir}
 ln -s service %{buildroot}%{_sbindir}/rcmotion
 
-mkdir -p %{buildroot}/var/spool/%{name}
+mkdir -p %{buildroot}/%{spooldir}
 
 rm -rf %{buildroot}/usr/share/doc/motion/
 
@@ -119,8 +115,8 @@ getent passwd motion || useradd -g motion -G video -c "Motion capture daemon" -d
 %service_del_preun motion.service
 
 %files
-%defattr (-,root,root,-)
-%doc CHANGELOG COPYING CREDITS README.md mask1.png motion_guide.html normal.jpg outputmotion1.jpg outputnormal1.jpg
+%doc doc/CHANGELOG doc/CREDITS README.md doc/*.png doc/*.html doc/*.jpg
+%license doc/COPYING
 %dir %{_sysconfdir}/%{name}
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/examples

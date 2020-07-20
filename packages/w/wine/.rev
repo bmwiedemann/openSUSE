@@ -3606,4 +3606,18 @@
 - update staging to 5.12 release</comment>
     <requestid>818933</requestid>
   </revision>
+  <revision rev="312" vrev="1">
+    <srcmd5>38217fee8f449d0d4dba1a5cb13dc39d</srcmd5>
+    <version>5.13</version>
+    <time>1595271579</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 5.13 development release
+  - Re-mapping of INI files to the registry.
+  - System call thunks in NTDLL.
+  - Reimplementation of floating point numbers printing.
+  - Beginnings of a restructuration of the console support.
+  - Various bug fixes.
+- update staging to 5.13 release</comment>
+    <requestid>821810</requestid>
+  </revision>
 </revisionlist>

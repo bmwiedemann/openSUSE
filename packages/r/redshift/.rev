@@ -218,4 +218,13 @@
     <comment>- fix apparmor profile - fix_apparmor.patch boo#1111906 (forwarded request 642727 from mimi_vx)</comment>
     <requestid>642728</requestid>
   </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>d44836c7a0a38516fd87248cbfa52e97</srcmd5>
+    <version>1.12</version>
+    <time>1595272114</time>
+    <user>dimstar_suse</user>
+    <comment>- Update apparmor profile to work around boo#1174290
+</comment>
+    <requestid>821964</requestid>
+  </revision>
 </revisionlist>

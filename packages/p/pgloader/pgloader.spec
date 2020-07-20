@@ -24,6 +24,7 @@ License:        PostgreSQL
 Group:          Productivity/Databases/Tools
 URL:            https://pgloader.io
 Source:         https://github.com/dimitri/%{name}/releases/download/v%{version}/%{name}-bundle-%{version}.tgz
+Patch1:         command-line-arguments.patch
 BuildRequires:  fdupes
 BuildRequires:  freetds-devel
 BuildRequires:  pkgconfig
@@ -55,6 +56,8 @@ from the pgloader command directly.
 
 %prep
 %setup -q -n %{name}-bundle-%{version}
+
+%patch1 -p1
 
 %build
 export CCFLAGS="%{optflags}"

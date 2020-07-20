@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sat Jul 18 20:46:25 UTC 2020 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest release 4.0.22
+- Fixes CVE-2020-15803
+- New Features and Improvements: 
+  + ZBXNEXT-3588 Improved Zabbix server performance when evaluating
+    trigger, discovery, autoregistration and internal actions
+  + ZBXNEXT-5922 Increased max configuration cache size limit to 64GB
+  + ZBXNEXT-4829 Changed web setup wizard to not create
+    and drop tables for DB connectivity test purposes
+
+- Bug Fixes:
+  + ZBX-17720 Exclude disabled items from preprocessing configuration sync
+  + ZBX-17851 Fixed possible deadlocks when deleting escalations
+  + ZBX-17406 Fixed null value for a field of compositedata in jmx discovery
+  + ZBX-17891 Changed log, log.count monitoring to ignore file modification time
+  + ZBX-17697 Fixed strict dfsg compliance issue in using minified jquery sources
+  + ZBX-16461 Fixed recovery expression for "link down" trigger and updated
+    for following zabbix template guidelines
+  + ZBX-17702 Fixed escalation cancellation message not being sent when action is disabled
+  + ZBX-17480 Fixed context of {$temp_crit} macro in temperature trigger prototype
+  + ZBX-17694 Fixed high memory consumption when using dependent items
+  + ZBX-17780 Fixed memory leak
+  + ZBX-17577 Fixed remove of selected items in multiselect
+  + ZBX-17226 Fixed confusing error message being displayed if dbversion table cannot be found
+  + ZBX-17801 Shadow global auto_increment mysql variables only for proxy
+  + ZBX-17662 Fixed a failing query when updating existing host prototypes
+  + ZBX-15484 Shadow global auto_increment variables for mysql
+  + ZBX-17607 Fixed unreachable poller being too busy due
+    to snmp checks being attempted twice at a time
+  + ZBX-17629 Fixed markup in user media popup
+  + ZBX-17109 Fixed agent request parameter type parsing
+  + ZBX-17470 Fixed element of filters is not focused on several pages
+  + ZBX-17691 Fixed server crashes on regexp preprocessing
+  + ZBX-17445 Fixed misleading error shown when formula cannot be updated during lld
+  + ZBX-17186 Fixed context-aware lld macro expansion in jsonpath preprocessing
+  + ZBX-17524 Fixed time selector button state
+  + ZBX-17496 Fixed usermacro api validation
+  + ZBX-17532 Added css files and sprites versioning by query strings
+  + ZBX-17501 Fixed overlapping multiselect suggest with browser autocomplete
+  + ZBX-17402 Fixed search field accidentally transform value to lowercase
+  + ZBX-17505 Fixed crash inside a fork when calling vfs.fs.inode
+  + ZBX-16959 Fixed return code check of curl_easy_setopt
+  + ZBX-17423 Fixed "reset" button in history page
+  + ZBX-17395 Fixed deletion of templated applications that were
+    linked to items when importing templates
+  + ZBX-17359 Fixed "sortorder": "desc" option with multiple sortfields
+  + ZBX-17336 Fixed wrong error message when fping fails
+  + ZBX-17427 Fixed top busiest triggers filter
+  + ZBX-17523 Fixed agent compilation on windows
+  + ZBX-17508 Fixed error in oracle database encoding check
+  + ZBX-17442 Fixed web.page.get to time out when there is no response
+  + ZBX-17429 Fixed trigger expression condition popup to display
+    negative numbers upon opening existing expression
+  + ZBX-17012 Fixed url validator to also accept relative urls
+  + ZBX-17507 Fixed oracle query interpreted as a multistatement
+  + ZBX-9387 Fixed incorrect maintenance calculations when dst changed to summer time
+  + ZBX-17390 Fixed validation of the maximum selected period 
+
+-------------------------------------------------------------------
 Thu Apr 23 12:11:58 UTC 2020 - Boris Manojlovic <boris@steki.net>
 
 - updated to latest release 4.0.19

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 20 07:56:54 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.7.1:
+  * Provide D3D12.DLL, based on vkd3d3-proton project
+   (https://github.com/HansKristian-Work/vkd3d-proton),
+   as part of our DXVK runtime. This will help push updates faster
+   and provide better compatibility for Direct3D 12 titles such as
+   World of Warcraft.
+
+-------------------------------------------------------------------
 Sun Jul  5 08:09:02 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.7:

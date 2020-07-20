@@ -31,4 +31,12 @@
     <comment>- Align getent/useradd error hiding with the other Factory packages.</comment>
     <requestid>676607</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>1086b5423433a469f950c36e0c04aa68</srcmd5>
+    <version>0.5.2.2</version>
+    <time>1595271676</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>821753</requestid>
+  </revision>
 </revisionlist>

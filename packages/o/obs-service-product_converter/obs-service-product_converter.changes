@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 20 09:31:07 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- 1.4.1
+  - fix regression creating empty ExclusiveArchs lists
+
+-------------------------------------------------------------------
 Tue Jun 23 14:36:20 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - 1.4.0

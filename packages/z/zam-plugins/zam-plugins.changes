@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 20 11:04:54 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.13
+  * ZamTube: Add labels for tonestack styles
+  * All: Fix narrowing of double to float math
+  * Fix glibc compat for finite math ABI change (-lm)
+- Drop zam-plugins-verbose_build.patch (no longer necessary)
+
+-------------------------------------------------------------------
 Fri Jun  5 15:54:20 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.12

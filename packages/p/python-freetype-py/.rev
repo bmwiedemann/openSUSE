@@ -32,4 +32,22 @@
   * no changelog given</comment>
     <requestid>730392</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dc36490cbe2f938743bd8e6e71d56478</srcmd5>
+    <version>2.2.0</version>
+    <time>1595271534</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0:
+  * Expose FT_Outline_Decompose() as Outline.decompose()
+  * examples/glyph-vector-decompose.py: Use larger size, and with
+    FT_LOAD_NO_BITMAP, to avoid loading embedded bitmaps
+  * Glyph.get_cbox: unbreak
+  * Improve variable font support with examples
+  * Update embedded FreeType and HarfBuzz in wheels to latest versions.
+  * Drop Python 2 support and 32 bit wheels. 
+- Update URL to use zip
+- Update BuildRequires
+- Drop bcond test now that upstream no longer supports Python 2</comment>
+    <requestid>820819</requestid>
+  </revision>
 </revisionlist>

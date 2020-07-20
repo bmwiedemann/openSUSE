@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Jul 18 18:13:10 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.21.0:
+  * Fix data replication error (GH#3963) Andrew Fulton
+  * Treat falsey local directory as None (GH#3964) Tom Augspurger
+  * Unpin numpydoc now that 1.1 is released (GH#3957) Gil Forsyth
+  * Error hard when Dask has mismatched versions or lz4 installed
+    (GH#3936) Matthew Rocklin
+  * Skip coercing to bytes in merge_frames (GH#3960) jakirkham
+  * UCX: reuse endpoints in order to fix NVLINK issue (GH#3953) Mads
+    R. B. Kristensen
+  * Optionally use pickle5 (GH#3849) jakirkham
+  * Update time per task chart with filtering and pie (GH#3933)
+    Benjamin Zaitlen
+  * UCX: explicit shutdown message (GH#3950) Mads R. B. Kristensen
+  * Avoid too aggressive retry of connections (GH#3944) Matthias
+    Bussonnier
+  * Parse timeouts in Client.sync (GH#3952) Matthew Rocklin
+  * Synchronize on non-trivial CUDA frame transmission (GH#3949)
+    jakirkham
+  * Serialize memoryview with shape and format (GH#3947) jakirkham
+  * Move scheduler_comm into Cluster.__init__ (GH#3945) Matthew
+    Rocklin
+
+-------------------------------------------------------------------
 Thu Jul  9 12:28:22 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 2.20.0

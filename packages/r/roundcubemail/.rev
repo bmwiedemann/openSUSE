@@ -567,4 +567,12 @@
   roundcubemail-1.4.6-config_dir.patch</comment>
     <requestid>813299</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>54cd34f185d59d501f2eb38f05709105</srcmd5>
+    <version>1.4.7</version>
+    <time>1595272101</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.4.7 with security fix</comment>
+    <requestid>821954</requestid>
+  </revision>
 </revisionlist>

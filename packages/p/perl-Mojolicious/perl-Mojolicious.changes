@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jul 18 03:10:07 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 8.57
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.57  2020-07-16
+    - Added support for YAML config files.
+    - Added module Mojolicious::Plugin::NotYAMLConfig.
+    - Improved app generator command to use a YAML config file.
+    - Fixed a bug in proxy helpers that caused response content to be ignored in some cases. (mohawk2)
+    - Fixed attr_is bug in Test::Mojo that prevented false value comparisons from working correctly. (tim-2)
+
+-------------------------------------------------------------------
 Sat Jun 27 03:11:38 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 8.56

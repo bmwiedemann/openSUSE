@@ -40,6 +40,8 @@ Requires:       python-boto3 >= 1.5
 Requires:       python-docopt >= 0.6.2
 Requires:       python-jsonschema >= 3.0
 Requires:       python-six >= 1.11
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if 0%{?suse_version} < 1500
 BuildRequires:  python
@@ -83,6 +85,7 @@ sed -i -e 's:~=:>=:g' requirements/base.txt
 
 mkdir -p %{buildroot}%{_bindir}
 install -D -m 755 bin/sam-translate.py %{buildroot}%{_bindir}/sam-translate
+%python_clone -a %{buildroot}%{_bindir}/sam-translate
 
 %if %{with test}
 %check
@@ -90,10 +93,16 @@ export LANG=en_US.UTF8
 %pytest
 %endif
 
+%post
+%python_install_alternative sam-translate
+
+%postun
+%python_uninstall_alternative sam-translate
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/sam-translate
+%python_alternative %{_bindir}/sam-translate
 %{python_sitelib}/*
 
 %changelog

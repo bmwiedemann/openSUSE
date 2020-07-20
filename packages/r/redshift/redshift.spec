@@ -1,7 +1,8 @@
 #
 # spec file for package redshift
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,8 +69,8 @@ A graphical user interface for the redshift tool that integrates into Gtk+ and G
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+%patch0 -p0
+%patch1 -p0
 
 %build
 %configure \

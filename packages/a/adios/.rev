@@ -44,4 +44,12 @@
     <comment>- Add support for gcc8 and gcc9 (jsc#SLE-7766 &amp; jsc#SLE-8604).</comment>
     <requestid>755688</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>291034aa04b32d87955ade05cba40bae</srcmd5>
+    <version>1.13.1</version>
+    <time>1595271828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821888</requestid>
+  </revision>
 </revisionlist>

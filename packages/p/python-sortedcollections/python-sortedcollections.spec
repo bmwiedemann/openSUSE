@@ -1,7 +1,7 @@
 #
 # spec file for package python-sortedcollections
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,19 +23,21 @@ Release:        0
 Summary:        Python Sorted Collections
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/grantjenks/sortedcollections
+URL:            https://github.com/grantjenks/sortedcollections
 #Source:         https://files.pythonhosted.org/packages/source/s/sortedcollections/sortedcollections-%%{version}.tar.gz
 Source:         https://github.com/grantjenks/python-sortedcollections/archive/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM method_item.patch gh#grantjenks/python-sortedcollections#12 mcepl@suse.com
+# Add method_item.patch to replace _del_item and _set_item methods
+Patch0:         method_item.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-sortedcontainers >= 2
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sortedcontainers >= 2}
 # /SECTION
-Requires:       python-sortedcontainers >= 2
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -54,6 +56,7 @@ Features
 
 %prep
 %setup -q -n python-sortedcollections-%{version}
+%autopatch -p1
 
 %build
 %python_build

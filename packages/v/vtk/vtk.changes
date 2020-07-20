@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Jul 16 16:55:31 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 9.0.1:
+  * Drop obsolete patches:
+    + bundled_exodusii_add_missing_libpthread.patch
+    + vtk-parallelgeometry-dependency.patch
+    + vtk-qt-5.15-include-QPainterPath.patch
+- Explicitly enable module RenderingContextOpenGL2 required for PCL
+- Conditionally add pugixml-devel Requires in devel package
+- Make devel package installable even when built without Java
+- Remove CAPITALIZATION from comments
+- Drop obsolete TK build dependency
+- Drop unused wget build dependency
+- Wrap devel-doc generation in bcond (keep defaulted to off), and
+  drop the essentially empty package when disabled.
+- Fix build on ARM/Qt GLES (boo#1172723):
+  * set VTK_OPENGL_USE_GLES
+  * Add 0001-clean-up-some-old-opengl-es-stuff.patch
+  * Add 0001-expose-1d-texture-options.patch
+  * Add 0001-Remove-duplicate-check-for-QOpenGLFunctions_3_2_Core.patch
+  * Rebase 0001-Allow-compilation-on-GLES-platforms.patch
+  * Add 0001-Replace-last-glDrawBuffer-call-with-glDrawBuffers-1.patch
+  * Add 0001-Use-2D-textures-for-1D-texture-emulation-on-GLES.patch
+  * Add 0001-Add-missing-guard-required-for-GLES-to-disable-stere.patch
+  * Add 0001-Correct-GL_BACK-GL_BACK_LEFT-mapping-on-GLES.patch
+  * Add 0002-Use-GL_DRAW_BUFFER0-instead-of-GL_DRAW_BUFFER-for-GL.patch
+  * Add 0001-GL_POINT_SPRITE-is-only-available-for-Compatibility-.patch
+  * Add 0002-Guard-GL_LINE_SMOOTH-for-GLES.patch
+  * Add 0001-Guard-glPointSize-with-GL_ES_VERSION_3_0.patch
+- Add 0001-Fix-PyVTKAddFile_-function-signature-mismatch.patch
+- Add 0001-Replace-invalid-GL_LINE-with-GL_LINES-for-glDrawArra.patch
+
+-------------------------------------------------------------------
 Mon Jun 15 14:47:31 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Drop -ffat-lto-objects to avoid wasting disk space

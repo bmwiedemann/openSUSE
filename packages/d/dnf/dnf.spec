@@ -1,7 +1,7 @@
 #
 # spec file for package dnf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -42,7 +42,6 @@
 %global yum_subpackage_name dnf-yum
 %endif
 
-
 # Tests fail (possibly due to failures in libdnf tests on SUSE)
 # Until those are resolved, these will remain disabled
 %bcond_with tests
@@ -54,7 +53,7 @@ Summary:        Package manager forked from Yum, using libsolv as a dependency r
 # For a breakdown of the licensing, see PACKAGE-LICENSING
 License:        GPL-2.0-or-later AND GPL-2.0-only
 Group:          System/Packages
-Url:            https://github.com/rpm-software-management/dnf
+URL:            https://github.com/rpm-software-management/dnf
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  bash-completion
@@ -91,7 +90,7 @@ Provides:       dnf-command(updateinfo)
 Provides:       dnf-command(upgrade)
 Provides:       dnf-command(upgrade-to)
 BuildArch:      noarch
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description
 DNF is an package manager for RPM systems that was forked from Yum. Among the
@@ -110,8 +109,8 @@ Summary:        As a Yum CLI compatibility layer, supplies %{_bindir}/yum redire
 Group:          System/Packages
 Requires:       dnf = %{version}-%{release}
 %if %{with as_yum}
-Obsoletes:      yum < 4.0.0
 Obsoletes:      dnf-yum < %{version}-%{release}
+Obsoletes:      yum < 4.0.0
 Provides:       dnf-yum = %{version}-%{release}
 # SUSE-specific split up of yum-utils features obsoleted by DNF itself...
 %global yum_replaces() \
@@ -177,7 +176,7 @@ Summary:        Alternative CLI to "dnf upgrade" suitable for automatic, regular
 Group:          System/Packages
 BuildRequires:  systemd-rpm-macros
 Requires:       dnf = %{version}-%{release}
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description automatic
 Alternative CLI to "dnf upgrade" suitable for automatic, regular execution.

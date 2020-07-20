@@ -1,7 +1,7 @@
 #
 # spec file for package CorsixTH
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           CorsixTH
-Version:        0.63
+Version:        0.64
 Release:        0
 Summary:        Theme Hospital clone
 License:        MIT
@@ -81,7 +81,7 @@ rm -f %{buildroot}/%{_datadir}/corsix-{th,TH}/LICENSE.txt
 %{_bindir}/corsix-th
 %{_datadir}/corsix-th
 %{_datadir}/applications/com.corsixth.CorsixTH.desktop
-/usr/share/icons/hicolor/scalable/apps/corsix-th.svg
+%{_datadir}/icons/hicolor/scalable/apps/corsix-th.svg
 %{_mandir}/man6/corsix-th.6%{?ext_man}
 %{_datadir}/metainfo/com.corsixth.CorsixTH.appdata.xml
 

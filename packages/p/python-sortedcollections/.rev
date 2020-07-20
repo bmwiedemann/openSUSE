@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>702877</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>463115f46a0bc1de4673867157601b21</srcmd5>
+    <version>1.1.2</version>
+    <time>1595271906</time>
+    <user>dimstar_suse</user>
+    <comment>- Add method_item.patch to replace _del_item and _set_item methods
+  (gh#grantjenks/python-sortedcollections#12).</comment>
+    <requestid>821872</requestid>
+  </revision>
 </revisionlist>

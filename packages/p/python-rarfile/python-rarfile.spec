@@ -1,7 +1,7 @@
 #
 # spec file for package python-rarfile
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-rarfile
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        RAR Archive Reader for Python
 License:        ISC
@@ -54,7 +54,7 @@ This package contains technical documentation.
 
 %build
 %python_build
-make %{?_smp_mflags} -C doc html
+%make_build -C doc html
 rm doc/_build/html/.buildinfo
 
 %install

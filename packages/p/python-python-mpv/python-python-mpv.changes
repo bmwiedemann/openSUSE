@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jul 20 14:50:15 UTC 2020 - aloisio@gmx.com
+
+- Update to version 0.5.1
+  * mpv.py: terminate: Raise warning when called from event
+    thread.
+  * mpv.py: add wait_for_shutdown
+  * mpv.py: add check_core_alive, check core in __getattr__,
+    __setattr__
+
+-------------------------------------------------------------------
+Mon Jul 20 07:38:56 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.5.0
+  * mpv.py: add prepare_and_wait_for_property
+  * mpv.py: Update copyright date
+  * mpv.py: Add docstrings to new additions to API
+  * Sprinkle some thread safety over event loop, add
+    *wait_for_event
+  * mpv.py: improve shutdown handling, replace wait_for_playback
+
+-------------------------------------------------------------------
 Fri Jul 17 05:17:54 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.4.8

@@ -1,7 +1,7 @@
 #
 # spec file for package babe
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,12 @@ Name:           babe
 Version:        1.2.1
 Release:        0
 Summary:        A Qt music player with support for favorites
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://babe.kde.org
 Source:         http://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Always-use-local-CMake-modules-first.patch
 BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  libtag-devel
 BuildRequires:  pkgconfig
@@ -49,18 +51,19 @@ genre, date and location. It can link to, and bookmark YouTube music
 videos into the local collection by using a Chromium extension.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
-  make %{?_smp_mflags}
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
   %suse_update_desktop_file -r org.kde.babe Qt KDE AudioVideo Audio Player
 
 %files
-%doc COPYING* README*
+%license COPYING*
+%doc README*
 %{_kf5_bindir}/babe
 %{_kf5_applicationsdir}/org.kde.babe.desktop
 %{_kf5_iconsdir}/hicolor/*/apps/babe.*

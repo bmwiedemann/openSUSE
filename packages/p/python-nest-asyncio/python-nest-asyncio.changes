@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 20 15:06:01 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.4.0
+  * Propagate KeyboardInterrupt / SystemExit encountered when running handle
+  * set loop back when loop end
+
+-------------------------------------------------------------------
 Tue Jun  9 08:54:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Initial commit, needed by nbclient

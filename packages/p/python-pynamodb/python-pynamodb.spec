@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pynamodb
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Summary:        Python Interface to DynamoDB
 License:        MIT
@@ -28,14 +28,14 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-botocore >= 1.2.54
+Requires:       python-botocore >= 1.12.54
 Requires:       python-python-dateutil >= 2.1
 Requires:       python-six
 Recommends:     python-blinker >= 1.3
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module blinker >= 1.3}
-BuildRequires:  %{python_module botocore >= 1.2.54}
+BuildRequires:  %{python_module botocore >= 1.12.54}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.1}

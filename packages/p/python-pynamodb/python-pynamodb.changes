@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul  3 15:17:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 4.3.2
+  * Fix discrepancy between runtime and type-checker's perspective of Index and derived types
+  * Add ListAttribute.remove_indexes action for removing specific indexes from a ListAttribute
+  * Type stub fixes
+  * Prevent integration tests from being packaged
+  * Various documentation fixes
+
+-------------------------------------------------------------------
 Thu Feb 27 08:31:25 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 4.3.1:

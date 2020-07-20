@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 16 07:30:27 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Fix requires not to have to redo the package on each
+  javapackages-tools update
+
+-------------------------------------------------------------------
 Sun Nov 17 15:38:20 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Enable gradle-local subpackage

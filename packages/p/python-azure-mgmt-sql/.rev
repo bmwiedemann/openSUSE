@@ -71,4 +71,15 @@
     <comment></comment>
     <requestid>790988</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e97f29e7e11dc85ed37e2087977be413</srcmd5>
+    <version>0.19.0</version>
+    <time>1595272031</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.19.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 821913 from glaubitz)</comment>
+    <requestid>821944</requestid>
+  </revision>
 </revisionlist>

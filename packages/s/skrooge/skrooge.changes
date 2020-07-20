@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Jul 18 23:51:20 UTC 2020 - wbauer@tmo.at
+
+- Update to 2.23.0
+  * Correction: Broken transaction group after CSV import
+    (kde#420557)
+  * Correction: documentation references obsolete "Merge
+    operations" menu item (kde#412262)
+  * Correction: Jumpy tab order in Accounts entry form (kde#422154)
+  * Correction: Skrooge doesn't use per-locale bank icons
+    (kde#422155)
+  * Correction: Tooltip in Operations view is misleading, it only
+    works in Status column (kde#422311)
+  * Correction: Skrooge doesn't show key error message, only
+    summary error (kde#423311)
+  * Correction: Drag and drop file works only for operations. Not
+    for all other objects.
+  * Correction: cryptocompare fails if too many values are
+    requested (>2000)
+  * Correction: Change icon for trackers by a "crosshairs"
+  * Correction: Source ratesapi doesn't work in appimage  
+  * Correction: Add "Settings" description in documentation  
+  * Correction: Units list doesn't save font size
+    (see https://forum.kde.org/viewtopic.php?f=210&t=166692)
+  * Correction: Update comment of operation when suboperation of a
+    single operation is modified  
+  * Correction: Adapt download-po.py for new svn structure
+  * Feature: Add new source "exchangeratesapi.io"
+  * Feature: In "Search & Process", possibility to search
+    operations by number of split (ideal to search simple
+    operations are push suboperation comment on operation comment)
+  * Feature: New advice to align comment of operation with the
+    comment of suboperation of single operations  
+
+-------------------------------------------------------------------
 Fri Apr 10 08:54:05 UTC 2020 - wbauer@tmo.at
 
 - Update to 2.22.1

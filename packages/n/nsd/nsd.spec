@@ -1,7 +1,7 @@
 #
 # spec file for package nsd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,14 +23,14 @@
 %define zonesdir   %{configdir}/zones
 %define pidfile    %{_rundir}/nsd/nsd.pid
 Name:           nsd
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 #
 Summary:        An authoritative-only domain name server
 #
 License:        BSD-3-Clause
 Group:          Productivity/Networking/DNS/Servers
-Url:            http://open.nlnetlabs.nl/nsd/
+URL:            http://open.nlnetlabs.nl/nsd/
 Source:         http://open.nlnetlabs.nl/downloads/nsd/nsd-%{version}.tar.gz
 Source1:        nsd.service
 Source2:        tmpfiles-nsd.conf

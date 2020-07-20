@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Jul 18 18:12:13 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.21.0:
+  * Array
+    + Correct error message in array.routines.gradient() (:pr:`6417`)
+      johnomotani
+    + Fix blockwise concatenate for array with some dimension=1
+      (:pr:`6342`) Matthias Bussonnier
+  * Bag
+    + Fix bag.take example (:pr:`6418`) Roberto Panai
+  * Core
+    + Groups values in optimization pass should only be graph and keys
+      -- not an optimization + keys (:pr:`6409`) Ben Zaitlen
+    + Call custom optimizations once, with kwargs provided
+      (:pr:`6382`) Clark Zinzow
+    + Include pickle5 for testing on Python 3.7 (:pr:`6379`) John A
+      Kirkham
+  * DataFrame
+    + Correct typo in error message (:pr:`6422`) Tom McTiernan
+    + Use pytest.warns to check for UserWarning (:pr:`6378`) Richard
+      (Rick) Zamora
+    + Parse bytes_per_chunk keyword from string (:pr:`6370`) Matthew
+      Rocklin
+  * Documentation
+    + Numpydoc formatting (:pr:`6421`) Matthias Bussonnier
+    + Unpin numpydoc following 1.1 release (:pr:`6407`) Gil Forsyth
+    + Numpydoc formatting (:pr:`6402`) Matthias Bussonnier
+    + Add instructions for using conda when installing code for
+      development (:pr:`6399`) Ray Bell
+    + Update visualize docstrings (:pr:`6383`) Zhengnan
+
+-------------------------------------------------------------------
 Thu Jul  9 08:20:00 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 2.20.0

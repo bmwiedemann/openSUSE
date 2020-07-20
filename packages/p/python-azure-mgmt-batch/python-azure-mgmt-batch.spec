@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-batch
-Version:        8.0.0
+Version:        9.0.0
 Release:        0
 Summary:        Microsoft Azure Batch Management Client Library
 License:        MIT

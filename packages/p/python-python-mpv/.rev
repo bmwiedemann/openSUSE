@@ -134,4 +134,25 @@
     <comment></comment>
     <requestid>821382</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c6699758ad3546b9b1471fd4e5b55ff6</srcmd5>
+    <version>0.5.1</version>
+    <time>1595271756</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.1
+  * mpv.py: terminate: Raise warning when called from event
+    thread.
+  * mpv.py: add wait_for_shutdown
+  * mpv.py: add check_core_alive, check core in __getattr__,
+    __setattr__
+- Update to version 0.5.0
+  * mpv.py: add prepare_and_wait_for_property
+  * mpv.py: Update copyright date
+  * mpv.py: Add docstrings to new additions to API
+  * Sprinkle some thread safety over event loop, add
+    *wait_for_event
+  * mpv.py: improve shutdown handling, replace wait_for_playback
+</comment>
+    <requestid>821925</requestid>
+  </revision>
 </revisionlist>

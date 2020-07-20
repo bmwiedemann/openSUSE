@@ -1,7 +1,7 @@
 #
 # spec file for package ptokax
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,8 +33,6 @@ Source1:        ptokax.service
 Patch1:         logs.patch
 Patch2:         nodate.diff
 Patch3:         gcc7.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{?systemd_requires}
 Requires(pre):  shadow
 
 %description
@@ -85,15 +83,15 @@ getent passwd ptokax >/dev/null || %_sbindir/useradd -g ptokax \
 %service_del_postun %name.service
 
 %files
-%defattr(-,root,root)
-%doc Changelog.txt ReadMe.txt License.txt scripting.docs
+%doc Changelog.txt ReadMe.txt scripting.docs
+%license License.txt
 %_sbindir/%name
 %_sbindir/rcptokax
 %_unitdir/%name.service
 %attr(-,ptokax,ptokax) %dir %_sysconfdir/%name
 %attr(-,ptokax,ptokax) %dir %_sysconfdir/%name/cfg
 %attr(-,ptokax,ptokax) %dir %_sysconfdir/%name/language
-%config %attr(644,ptokax,ptokax) %_sysconfdir/%name/cfg/*
+%config(noreplace) %attr(644,ptokax,ptokax) %_sysconfdir/%name/cfg/*
 %config %attr(644,ptokax,ptokax) %_sysconfdir/%name/language/*
 %attr(-,ptokax,ptokax) %dir /var/log/%name
 

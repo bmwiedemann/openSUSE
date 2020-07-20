@@ -93,4 +93,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>818335</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1b96c6ad6d5fa163de30a04d9de83774</srcmd5>
+    <version>1.4.1</version>
+    <time>1595271787</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.4.1
+  - fix regression creating empty ExclusiveArchs lists</comment>
+    <requestid>821850</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 20 04:59:19 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Remove build restrictions for SLE builds: build all flavors for
+  SLE.
+- Fix ldconfig args for HPC packages: no caching should be done
+  as these libs are made available thru LD_LIBRARY_PATH tweaking.
+- Adhere to common conventions regarding NetCDF and PnetCDF:
+  NetCDF modules should be called 'netcdf' - regardless whether
+  they are 'serial' or use MPI (boo#1174291).
+
+-------------------------------------------------------------------
 Sat Mar 28 07:03:45 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Build macro package netcdf-devel-data only for non-HPC builds

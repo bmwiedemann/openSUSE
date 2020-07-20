@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 20 11:42:57 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.6.0
+  * Napalm 3 compatibility
+- Drop napalm3.patch
+
+-------------------------------------------------------------------
 Fri May 15 09:28:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - add patch napalm3.patch

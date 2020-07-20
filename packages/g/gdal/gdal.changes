@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 19 01:20:55 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Work-around occasional build failures due to incomplete ordering
+  in Makefile. (https://github.com/OSGeo/gdal/issues/2777)
+- Avoid double gdal prefix for /usr/share/gdal/gdal/*
+
+-------------------------------------------------------------------
 Tue Jul  7 18:29:25 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to 3.1.2 version bug fix release see changelog

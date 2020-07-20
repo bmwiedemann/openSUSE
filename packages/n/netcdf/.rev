@@ -490,4 +490,12 @@ Use SPDX- proprietary prefix until this license is accepted upstream by spdx.org
   (boo#1167947). (forwarded request 789283 from eeich)</comment>
     <requestid>789301</requestid>
   </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>436c1681107853d9e193bc0cc2f0b66a</srcmd5>
+    <version>4.7.3</version>
+    <time>1595271817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821862</requestid>
+  </revision>
 </revisionlist>

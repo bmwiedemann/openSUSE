@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Jul 19 17:56:14 UTC 2020 - wbauer@tmo.at
+
+- Update to 3.4.3
+  * http://knro.blogspot.com/2020/07/kstars-v343-is-released.html
+  * New Bahtinov Mask focus assistant tool
+  * Added support for triggering autofocus procedure when the
+    temperature exceeds a certain delta threshold in the capture
+    module
+  * New dedicated focus logger
+  * Experimental camera driver restart feature added to the capture
+    module
+  * Mount Hour Angle limits added
+  * A simple, but convenient editor was added in Capture module to
+    edit filter name
+  * Significant new features and improvement to the Ekos Internal
+    Guider
+  * A backlash removal section was added to the "calibration
+    dance"
+  * New Calibration Plot subtab to the right of the Drift Plot
+  * PHDLogView compatibility
+  * PHD2 integration fixes
+  * Almanac batch output date fixed
+  * Code refactoring unifying capture initialization for new
+    sequences and continuing of sequences
+  * Internal guider didn't take binning into account when
+    computing arc-seconds
+  * Fix issue with Meridian Flip Retry
+  * Add function to get UTC datetime from DATE-OBS header field
+  * Allow for the case where the mount uses the pointing state
+    early
+  * Added profile name uniqueness requirement
+  * Bugfix for correct activation of dome and weather UI
+  * Major refactoring of refraction corrections that fixes some
+    bugs
+  * Add explicit offset control. Separate ISO and Gain controls.
+
+-------------------------------------------------------------------
 Mon Apr 27 06:36:34 UTC 2020 - wbauer@tmo.at
 
 - Update to 3.4.2

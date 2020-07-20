@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Jul  9 10:29:34 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.3.1
+  * Fixes
+    + Compiler errors with GCC 10
+    + Overrides to CFLAGS
+    + Add maintainer mode
+    + Segfault when invalid camera directory specified
+    + MariaDB initializations
+    + Updated guide
+- Update to 4.3.0
+  * Fixes
+    + Use default for non ASCII characters in drawing
+    + Removed poll requirement for MHD
+    + Implement revised configure and automake
+    + Updated testing for travis
+    + Revise MMAL to handle revisions from upstream.
+    + Fix movie start times
+    + Set the FPS on v4l2 devices
+    + Consolidate the JPEG code processing
+    + Fix substream processing for non modulo 16
+    + Ignore invalid data sent from rtsp cameras.
+    + Adjust the netcam handler wait and processing
+    + Answer incorrect web requests.
+    + Implement a delay upon excessive reconnect attempts
+    + Fix filetype specified for snapshots
+    + Guide updates
+    + Fix vbr calculation for high frame rates
+  * Enhancements
+    + Updated translations
+    + Implement revised directory structure
+    + Implement optional decoder and encoders
+    + Allow for distros that use videoio.h
+    + Revise and enhance the sample service file
+    + Output to the log the resulting ext pipe command
+  * New Configuration Options
+    + netcam_decoder
+- Update to 4.2.2
+  * Fixes
+    + Webcontrol quit/end
+    + Add stream_motion option
+    + Generic tracking option
+    + Delay stream when starting
+    + Hostname for IPV6
+    + Multiple source streams when using passthrough
+    + Guide update
+- Cleanup spec file
+
+-------------------------------------------------------------------
 Tue Feb 12 18:08:38 UTC 2019 - bjorn.lie@gmail.com
 
 - No longer force ffmpeg 3 versions of pkgconfig(libav*).

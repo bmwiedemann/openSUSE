@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 17 12:19:37 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to 4.3.3
+  * Validate cached DNSKEYs against the DSs, not the RRSIGs only.
+  * Ignore cache-only for DNSKEYs and DS retrieval.
+  * A ServFail while retrieving DS/DNSKEY records is just that.
+  * Refuse DS records received from child zones.
+  * Better exception handling in houseKeeping/handlePolicyHit.
+  * Take initial refresh time from loaded zone.
+
+-------------------------------------------------------------------
 Wed Jul  1 18:39:32 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - update to 4.3.2

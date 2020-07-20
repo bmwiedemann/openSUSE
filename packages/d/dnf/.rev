@@ -358,4 +358,12 @@
   + History table to max size when redirect to file (rh#1786335, rh#1786316)</comment>
     <requestid>819223</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>e8158792af64c37df6e67729563765e4</srcmd5>
+    <version>4.2.23</version>
+    <time>1595271864</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821863</requestid>
+  </revision>
 </revisionlist>

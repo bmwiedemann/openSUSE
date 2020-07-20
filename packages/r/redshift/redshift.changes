@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 20 03:08:01 UTC 2020 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update apparmor profile to work around boo#1174290
+
+-------------------------------------------------------------------
 Wed Oct 17 22:48:14 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - fix apparmor profile - fix_apparmor.patch boo#1111906

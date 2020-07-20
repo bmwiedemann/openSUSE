@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 18 06:37:58 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 5.13 development release
+  - Re-mapping of INI files to the registry.
+  - System call thunks in NTDLL.
+  - Reimplementation of floating point numbers printing.
+  - Beginnings of a restructuration of the console support.
+  - Various bug fixes.
+- update staging to 5.13 release
+
+-------------------------------------------------------------------
 Sat Jul  4 08:32:55 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 5.12 development release

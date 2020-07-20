@@ -1,7 +1,7 @@
 #
 # spec file for package python-freetype-py
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,25 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# Upstream performs tests only for Python 3.5
-%bcond_with     test
+%define skip_python2 1
 Name:           python-freetype-py
-Version:        2.1.0.post1
+Version:        2.2.0
 Release:        0
 Summary:        Freetype python bindings
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/rougier/freetype-py
-Source:         https://files.pythonhosted.org/packages/source/f/freetype-py/freetype-py-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/f/freetype-py/freetype-py-%{version}.zip
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
+BuildRequires:  freetype2
 BuildRequires:  python-rpm-macros
+BuildRequires:  unzip
 Requires:       freetype2
 BuildArch:      noarch
-%if %{with test}
-BuildRequires:  freetype2
-%endif
 %python_subpackages
 
 %description
@@ -53,10 +53,8 @@ sed -i -e '/^#!\//, 1d' freetype/ft_structs.py freetype/ft_types.py
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
 %pytest tests
-%endif
 
 %files %{python_files}
 %license LICENSE.txt

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 20 12:16:03 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Adapt to HPC module netcdf naming change (boo#1174291).
+
+-------------------------------------------------------------------
+Sat Jul 18 22:59:18 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Drop numpy build dependency. The numpy wrapper is currently not
+  built, and can be built separately.
+- Add -fallow-argument-mismatch Fortran flag to workaround
+  GFortran10 being more strict by default.
+
+-------------------------------------------------------------------
 Sat Nov 30 14:01:36 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Correct naming of openmpi1 packages in Leap 15.0/15.1 (still

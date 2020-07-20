@@ -1,7 +1,7 @@
 #
 # spec file for package adios
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -235,7 +235,7 @@ ExclusiveArch:  do_not_build
 
 %if %{with hpc}
  %{hpc_init %{?compiler_family:-c %{compiler_family} %{?c_f_ver:-v %{c_f_ver}}} %{?with_mpi:-m %{?mpi_flavor}} %{?mpi_ver:-V %{?mpi_ver}} %{?ext:-e %{ext}}}
- %{hpc_modules_init phdf5 pnetcdf}
+ %{hpc_modules_init phdf5 netcdf}
  %global hpc_module_pname %{pname}
  %define pkg_prefix %{hpc_prefix}
  %define pkg_bindir %{hpc_bindir}
@@ -278,7 +278,6 @@ BuildRequires:  fdupes
 BuildRequires:  libbz2-devel
 BuildRequires:  liblz4-devel
 BuildRequires:  python
-BuildRequires:  python-numpy
 BuildRequires:  zlib-devel
 %if %{without hpc}
 BuildRequires:  %{mpi_flavor}%{?mpi_ext}-devel
@@ -367,7 +366,12 @@ export MPICC=mpicc
 export MPICXX=mpicxx
 export MPIFC=mpif90
 export CFLAGS="-fPIC %{optflags}"
+%if 0%{?suse_version} >= 1550 || 0%{?c_f_ver} >= 10
+# https://github.com/ornladios/ADIOS/issues/206
+export FCFLAGS="-fPIC %{optflags} -fallow-argument-mismatch"
+%else
 export FCFLAGS="-fPIC %{optflags}"
+%endif
 export LDFLAGS="-pie"
 
 %if %{without hpc}

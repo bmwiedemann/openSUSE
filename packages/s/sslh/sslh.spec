@@ -18,7 +18,7 @@
 
 
 Name:           sslh
-Version:        1.21
+Version:        1.21b
 Release:        0
 Summary:        SSL/SSH multiplexer
 License:        GPL-2.0-or-later

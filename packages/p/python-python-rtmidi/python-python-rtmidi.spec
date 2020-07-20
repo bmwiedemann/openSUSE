@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-rtmidi
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Python binding for the RtMidi C++ library
 License:        MIT
@@ -59,6 +59,7 @@ Contains HTML documentation and examples for python-rtmidi.
 
 %prep
 %setup -q -n python-rtmidi-%{version}
+sed -i 's,/usr/bin/env python,/usr/bin/%{python_for_executables},' examples/*.py examples/*/*.py
 
 %build
 %python_build
@@ -70,6 +71,7 @@ rm docs/modules.rst
 sphinx-apidoc -o docs/ rtmidi rtmidi/release.py
 cat docs/api.rst.inc >> docs/rtmidi.rst
 %make_build -C docs html
+rm docs/_build/html/.buildinfo docs/_build/html/objects.inv
 
 %install
 %python_install

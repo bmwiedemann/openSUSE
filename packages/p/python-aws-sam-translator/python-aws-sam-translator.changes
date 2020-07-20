@@ -8,6 +8,11 @@ Wed Jul  1 12:55:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
   * fix: resource policy generation for {path+}
 
 -------------------------------------------------------------------
+Wed May 27 13:48:52 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Mon May  4 07:16:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.22.0:

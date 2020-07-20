@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 20 07:50:38 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.21b:
+  * Moved configuration and command-line management to
+    use conf2struct. Changes are:
+    - command line option <-F|--config> no longer defaults to
+	  /etc/sslh.cfg, so you have to specify it explicitly.
+	- command line option <-v|--verbose> takes a mandatory
+	  integer parameter
+  * Changed exit code for illegal command line parameter
+	from 1 to 6 (for testing purposes)
+
+-------------------------------------------------------------------
 Mon Jul 13 07:23:35 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.21:

@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue Jul  7 22:43:10 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- spec: Switch from explicitly adding user:group to sysuser
+  mechanism
+
+-------------------------------------------------------------------
+Wed Jun 17 09:49:59 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- initial package version 1.4.0

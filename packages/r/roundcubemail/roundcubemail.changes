@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jul  6 12:00:02 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to 1.4.7 with security fix:
+  * Security: Fix cross-site scripting (XSS) via HTML messages with malicious svg/namespace
+  * Fix bug where subfolders of special folders could have been duplicated on folder list
+  * Increase maximum size of contact jobtitle and department fields to 128 characters
+  * Fix missing newline after the logged line when writing to stdout (#7418)
+  * Elastic: Fix context menu (paste) on the recipient input (#7431)
+  * Fix problem with forwarding inline images attached to messages with no HTML part (#7414)
+  * Fix problem with handling attached images with same name when using
+    database_attachments/redundant_attachments (#7455)
+- renamed roundcubemail-1.4.6-config_dir.patch to
+  roundcubemail-1.4.7-config_dir.patch
+
+-------------------------------------------------------------------
+Fri Jul  3 18:43:00 UTC 2020 - chris@computersalat.de
+
+- add http.inc file
+  * include one file for php5/php7 admin flags/values
+
+-------------------------------------------------------------------
 Sun Jun  7 14:27:25 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - update to 1.4.6

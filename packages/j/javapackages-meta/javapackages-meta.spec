@@ -1,7 +1,7 @@
 #
 # spec file for package javapackages-meta
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ using XMvn resolver.
 Summary:        Local mode for Gradle
 Group:          Development/Languages/Java
 Requires:       gradle >= 2.2.1
-Requires:       javapackages-gradle = %{version}
+Requires:       javapackages-gradle >= %{version}
 Requires:       xmvn-connector-gradle
 Requires:       xmvn-install
 Requires:       xmvn-resolve
@@ -51,7 +51,7 @@ Summary:        Local mode for Apache Ivy
 Group:          Development/Languages/Java
 Requires:       ant
 Requires:       apache-ivy >= 2.3.0
-Requires:       javapackages-ivy = %{version}
+Requires:       javapackages-ivy >= %{version}
 Requires:       xmvn-connector-ivy
 Requires:       xmvn-install
 Requires:       xmvn-resolve
@@ -64,8 +64,11 @@ artifact resolution using XMvn resolver.
 %package -n maven-local
 Summary:        Local mode for Maven
 Group:          Development/Languages/Java
-Requires:       javapackages-local = %{version}
-Requires:       javapackages-tools = %{version}
+Requires:       javapackages-local >= %{version}
+Requires:       javapackages-tools >= %{version}
+# Tests based on JUnit are very common and JUnit itself is small.
+# Include JUnit and JUnit provider for Surefire just for convenience.
+Requires:       mvn(junit:junit)
 # Common Maven plugins required by almost every build. It wouldn't make
 # sense to explicitly require them in every package built with Maven.
 Requires:       mvn(org.apache.maven.plugins:maven-compiler-plugin)
@@ -73,17 +76,14 @@ Requires:       mvn(org.apache.maven.plugins:maven-jar-plugin)
 Requires:       mvn(org.apache.maven.plugins:maven-javadoc-plugin)
 Requires:       mvn(org.apache.maven.plugins:maven-resources-plugin)
 Requires:       mvn(org.apache.maven.plugins:maven-surefire-plugin)
-# Tests based on JUnit are very common and JUnit itself is small.
-# Include JUnit and JUnit provider for Surefire just for convenience.
-Requires:       mvn(junit:junit)
 Requires:       mvn(org.apache.maven.surefire:surefire-junit4)
+Requires:       mvn(org.apache.maven.surefire:surefire-testng)
 # testng is quite common as well
 Requires:       xmvn-connector-aether
 Requires:       xmvn-install
 Requires:       xmvn-minimal
 Requires:       xmvn-mojo
 Requires:       xmvn-resolve
-Requires:       mvn(org.apache.maven.surefire:surefire-testng)
 
 %description -n maven-local
 This meta-package pulls in macros, scripts and dependencies

@@ -1,8 +1,8 @@
 #
 # spec file for package qelectrotech
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2013 Asterios Dramis <asterios.dramis@gmail.com>.
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 Asterios Dramis <asterios.dramis@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,21 +13,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define src_date 20180823
+%define src 0.7.0
 Name:           qelectrotech
-Version:        0.61
+Version:        0.70
 Release:        0
 Summary:        Application to design electric diagrams
 License:        GPL-2.0-or-later AND CC-BY-3.0
 Group:          Productivity/Scientific/Electronics
 URL:            https://qelectrotech.org/
-Source0:        https://download.tuxfamily.org/qet/tags/%{src_date}/%{name}-%{version}-src.tar.gz
+Source0:        https://git.tuxfamily.org/qet/qet.git/snapshot/qet-%{src}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  kcoreaddons-devel
+BuildRequires:  kwidgetsaddons-devel
 BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
 BuildRequires:  update-desktop-files
@@ -51,7 +53,7 @@ files for elements and diagrams, and includes both a diagram editor and an
 element editor.
 
 %prep
-%setup -q -n %{name}-%{version}-src
+%setup -q -n qet-%{src}
 
 # Fix compilation and installation paths
 sed -e s,%{_prefix}/local/,%{_prefix}/, \
@@ -67,12 +69,11 @@ sed -i "s/__TIME__/\"$FAKE_BUILDTIME\"/g" sources/aboutqet.cpp
 sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/g" sources/aboutqet.cpp
 
 %build
-qmake-qt5 QMAKE_CXXFLAGS+="%{optflags}" -config debug qelectrotech.pro
-
-make %{?_smp_mflags}
+%qmake5
+%make_build
 
 %install
-%make_install INSTALL_ROOT=%{buildroot}
+%qmake5_install
 
 # Fix desktop file
 %suse_update_desktop_file -r qelectrotech "Education;Engineering"
@@ -98,14 +99,13 @@ make %{?_smp_mflags}
 %license %{_defaultdocdir}/%{name}/ELEMENTS.LICENSE
 %license %{_defaultdocdir}/%{name}/LICENSE
 %{_bindir}/qelectrotech
-%dir %{_datadir}/appdata
 %{_datadir}/appdata/qelectrotech.appdata.xml
 %{_datadir}/applications/qelectrotech.desktop
 %{_datadir}/icons/hicolor/*/*/*.png
-%dir %{_mandir}/be
 %dir %{_mandir}/fr.ISO8859-1
 %dir %{_mandir}/fr.UTF-8
 %{_mandir}/man1/qelectrotech.1%{?ext_man}
+%dir %{_datadir}/mime/application
 %{_datadir}/mime/application/x-qet-element.xml
 %{_datadir}/mime/application/x-qet-project.xml
 %{_datadir}/mime/application/x-qet-titleblock.xml
@@ -115,10 +115,6 @@ make %{?_smp_mflags}
 %{_datadir}/mimelnk/application/x-qet-element.desktop
 %{_datadir}/mimelnk/application/x-qet-project.desktop
 %{_datadir}/mimelnk/application/x-qet-titleblock.desktop
-%dir %{_datadir}/qelectrotech
-%dir %{_datadir}/qelectrotech/lang
-%{_datadir}/qelectrotech/elements/
-%{_datadir}/qelectrotech/examples/
-%{_datadir}/qelectrotech/titleblocks/
+%{_datadir}/qelectrotech/
 
 %changelog

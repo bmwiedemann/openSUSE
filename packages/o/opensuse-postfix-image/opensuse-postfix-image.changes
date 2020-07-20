@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 20 08:36:26 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Implement and document virtual mailbox support
+
+-------------------------------------------------------------------
 Mon Jul 13 07:27:48 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Set timezone if necessary

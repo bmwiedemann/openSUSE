@@ -22,19 +22,20 @@
 %define roundcubeconfigpath %{_sysconfdir}/%{name}
 %define php_major_version       %(php -r "echo PHP_MAJOR_VERSION;")
 Name:           roundcubemail
-Version:        1.4.6
+Version:        1.4.7
 Release:        0
 Summary:        A browser-based multilingual IMAP client
 License:        GPL-3.0-or-later AND GPL-2.0-only AND BSD-3-Clause
 Group:          Productivity/Networking/Email/Clients
 URL:            https://www.roundcube.net/
-Source0:        https://github.com/roundcube/roundcubemail/releases/download/%{version}/%{name}-%{version}-complete.tar.gz
+Source0:        https://github.com/roundcube/%{name}/releases/download/%{version}/%{name}-%{version}-complete.tar.gz
 Source1:        %{name}-rpmlintrc
 Source2:        %{name}-httpd.conf
+Source3:        %{name}-httpd.inc
 Source4:        README.openSUSE
 Source5:        %{name}.logrotate
 Source6:        https://roundcube.net/download/pubkey.asc#/%{name}.keyring
-Source7:        https://github.com/roundcube/roundcubemail/releases/download/%{version}/%{name}-%{version}-complete.tar.gz.asc
+Source7:        https://github.com/roundcube/%{name}/releases/download/%{version}/%{name}-%{version}-complete.tar.gz.asc
 Source8:        robots.txt
 # PATCH-FIX-OPENSUSE roundcubemail-1.1-beta-config_dir.patch -- use the general config directory /etc
 Patch0:         %{name}-%{version}-config_dir.patch
@@ -169,8 +170,12 @@ for file in _styles.less _variables.less ; do
 done
 
 # install httpd.conf file and adapt the configuration
-install -d -m 0755 %{buildroot}/%{apache_sysconfdir}/conf.d
-sed -e "s#__ROUNDCUBEPATH__#%{roundcubepath}#g" %{SOURCE2} > %{buildroot}%{apache_sysconfdir}/conf.d/roundcubemail.conf
+install -D -m0644 %{SOURCE3} %{buildroot}%{apache_sysconfdir}/conf.d/%{name}.inc
+# fix paths in http config
+sed -e "s#__ROUNDCUBEPATH__#%{roundcubepath}#g" \
+ -e "s,@apache_sysconfdir@,%{apache_sysconfdir},g" \
+ -e "s,@name@,%{name},g" \
+%{SOURCE2} > %{buildroot}%{apache_sysconfdir}/conf.d/%{name}.conf
 
 # install docs
 install -d -m 0755 %{buildroot}/%{_defaultdocdir}/%{name}
@@ -323,7 +328,8 @@ exit 0
 %config %{roundcubeconfigpath}/config.inc.php.sample
 %config %{roundcubeconfigpath}/defaults.inc.php
 %config %{roundcubeconfigpath}/mimetypes.php
-%config(noreplace) %{apache_sysconfdir}/conf.d/roundcubemail.conf
+%config(noreplace) %{apache_sysconfdir}/conf.d/%{name}.conf
+%config(noreplace) %{apache_sysconfdir}/conf.d/%{name}.inc
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %config(noreplace) %{roundcubeconfigpath}/skins/elastic/styles/_styles.less 
 %config(noreplace) %{roundcubeconfigpath}/skins/elastic/styles/_variables.less

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 20 17:44:05 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Fix rpmlint warnings
+- Update to 1.4.2
+Enhancements:
+  * Added more helpful aliases for MIDI events/controllers
+    constants
+
+Examples:
+  * Added ccstore advanced example to show how to remember last
+    seen controller change values
+
+-------------------------------------------------------------------
 Mon Jun 22 19:29:15 UTC 2020 - Mia Herkt <mia@0x0.st>
 
 - init, 1.4.1

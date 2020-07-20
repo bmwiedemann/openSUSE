@@ -261,10 +261,6 @@ ExcludeArch:    s390 s390x
 %bcond_with hpc
 %endif
 
-%if !0%{?is_opensuse} && !0%{?with_hpc:1}
-ExclusiveArch:  do_not_build
-%endif
-
 %{?mpi_flavor:%{bcond_without mpi}}%{!?mpi_flavor:%{bcond_with mpi}}
 %{?with_hpc:%{!?compiler_family:%global compiler_family gnu}}
 %{?with_mpi:%{!?mpi_flavor:error "No MPI family specified!"}}
@@ -277,7 +273,6 @@ ExclusiveArch:  do_not_build
 %if %{with hpc}
 %{hpc_init -c %compiler_family %{?c_f_ver:-v %{c_f_ver}} %{?with_mpi:-m {%mpi_flavor}} %{?mpi_ver:-V %{mpi_ver}} %{?ext:-e %{ext}}}
 %define package_name %{hpc_package_name %_ver}
-%{?with_mpi:%global hpc_module_pname p%{pname}}
 %define libname(s:)   lib%{pname}%{hpc_package_name_tail %_ver}
 %define p_prefix %hpc_prefix
 %define p_bindir %hpc_bindir
@@ -648,10 +643,15 @@ module load %{hdf5_module_file}
     make check
 %endif
 
-%post -n %{libname -s %{sonum}} -p /sbin/ldconfig
+%if %{with hpc} || %{with mpi}
+%define ldconfig_args -N %p_libdir
+%endif
+
+%post -n %{libname -s %{sonum}}
+/sbin/ldconfig %{?ldconfig_args}
 
 %postun -n %{libname -s %{sonum}}
-/sbin/ldconfig
+/sbin/ldconfig %{?ldconfig_args}
 %{?with_hpc:%hpc_module_delete_if_default}
 
 %files
