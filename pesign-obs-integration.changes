@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 17 07:25:34 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add 0001-Enable-find_provides-and-requires.patch (bsc#1114605)
+  + Enable this patch again since virtualbox-kmp is split from
+    the main package so the customized %find_provides for
+    virtualbox-x11-guest won't be affected anymore.
+
+-------------------------------------------------------------------
 Wed Feb 26 13:35:18 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - pesign-sign-s390x-kernel.patch: Sign also the non-PE (e.g. s390x)
