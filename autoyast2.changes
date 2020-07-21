@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jul 20 14:51:49 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix fallback for autoyast client name (bsc#1174119)
+- 4.3.28
+
+-------------------------------------------------------------------
+Mon Jul 20 12:12:39 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Do not crash when wait section is not initialized (related to
+  bsc#1174173)
+- 4.3.27
+
+-------------------------------------------------------------------
+Thu Jul 16 10:27:54 CEST 2020 - schubi@suse.de
+
+- Moving <files> section handling from second installation stage
+  to first installation stage. (bsc#1174194)
+- 4.3.26  
+
+-------------------------------------------------------------------
+Wed Jul 15 14:52:06 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Export more methods in AutoinstGeneral so it can be queried for
+  general autoyast settings (bsc#1174173)
+- 4.3.25
+
+-------------------------------------------------------------------
 Tue Jul 14 12:05:44 UTC 2020 - David Diaz <dgonzalez@suse.com>
 
 - Fix 'partition' elements using the right type (bsc#1174071).
