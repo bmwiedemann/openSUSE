@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 17 01:00:06 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Also expand generation of test binaries for Python 2 and 3,
+  fixes Leap 15.x builds where Python 2 is still built.
+
+-------------------------------------------------------------------
 Mon Jul  6 14:56:54 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - updated to version 2.5.0 and running the internal unit tests now 

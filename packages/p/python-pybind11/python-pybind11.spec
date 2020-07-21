@@ -64,24 +64,28 @@ This package contains files for developing applications using pybind11.
 %python_build
 # calling cmake to install header to right location and
 # generate cmake include files
+%{python_expand pushd .
 %cmake \
   -DPYBIND11_INSTALL=ON \
   -DPYBIND11_TEST=ON \
+  -DPYTHON_EXECUTABLE:FILEPATH=%{_bindir}/$python \
 
 %cmake_build
+popd
+}
 
 %install
 %python_install
-%cmake_install
+%python_expand %cmake_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # removing duplicated header files
 rm -rfv %{buildroot}%{_includedir}/python2.*/pybind11/
 rm -rfv %{buildroot}%{_includedir}/python3.*/pybind11
 
-#%%check
+%check
 # test fails as python3-widget is not in distribuion
 rm tests/test_embed/test_interpreter.py
-%pytest 
+%pytest
 
 %files %{python_files}
 %doc README.md
