@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-validators
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 Summary:        Python Data Validation
 License:        MIT
