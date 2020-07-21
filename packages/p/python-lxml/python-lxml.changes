@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 17 07:30:50 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.5.2:
+  * ``Cleaner()`` now validates that only known configuration options can be set.
+  * LP#1882606: ``Cleaner.clean_html()`` discarded comments and PIs regardless of the
+    corresponding configuration option, if ``remove_unknown_tags`` was set.
+  * LP#1880251: Instead of globally overwriting the document loader in libxml2, lxml now
+    sets it per parser run, which improves the interoperability with other users of libxml2
+    such as libxmlsec.
+  * LP#1881960: Fix build in CPython 3.10 by using Cython 0.29.21.
+  * The setup options "--with-xml2-config" and "--with-xslt-config" were accidentally renamed
+    to "--xml2-config" and "--xslt-config" in 4.5.1 and are now available again.
+
+-------------------------------------------------------------------
 Tue Jun  2 14:24:31 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 4.5.1

@@ -733,4 +733,21 @@ Send to Staging:E.
     <comment></comment>
     <requestid>810905</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>0d0ddfaa899a22f8051f73db1c7787da</srcmd5>
+    <version>4.5.2</version>
+    <time>1595338824</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.5.2:
+  * ``Cleaner()`` now validates that only known configuration options can be set.
+  * LP#1882606: ``Cleaner.clean_html()`` discarded comments and PIs regardless of the
+    corresponding configuration option, if ``remove_unknown_tags`` was set.
+  * LP#1880251: Instead of globally overwriting the document loader in libxml2, lxml now
+    sets it per parser run, which improves the interoperability with other users of libxml2
+    such as libxmlsec.
+  * LP#1881960: Fix build in CPython 3.10 by using Cython 0.29.21.
+  * The setup options &quot;--with-xml2-config&quot; and &quot;--with-xslt-config&quot; were accidentally renamed
+    to &quot;--xml2-config&quot; and &quot;--xslt-config&quot; in 4.5.1 and are now available again.</comment>
+    <requestid>821439</requestid>
+  </revision>
 </revisionlist>
