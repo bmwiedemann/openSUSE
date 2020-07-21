@@ -357,4 +357,15 @@
     <comment>bugfix release</comment>
     <requestid>813783</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>55fdc7a160bfe0b6aca0ae214d7de050</srcmd5>
+    <version>5.0.24</version>
+    <time>1595339563</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 5.0.24 - Bugfix Release
+  * readme renamed (SUSE -&gt; openSUSE)
+  
+</comment>
+    <requestid>822090</requestid>
+  </revision>
 </revisionlist>

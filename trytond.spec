@@ -20,14 +20,14 @@
 %define majorver 5.0
 %define base_name tryton
 Name:           trytond
-Version:        %{majorver}.23
+Version:        %{majorver}.24
 Release:        0
 Summary:        An Enterprise Resource Planning (ERP) system
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Management
 URL:            https://www.tryton.org/
 Source0:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
-Source1:        tryton-server.README.SUSE
+Source1:        tryton-server.README.openSUSE
 Source2:        trytond.conf.example
 Source3:        %{name}.conf
 Source4:        %{name}_log.conf
@@ -115,7 +115,7 @@ getent passwd tryton > /dev/null || %{_sbindir}/useradd -r -g tryton \
 
 %files
 %license LICENSE
-%doc README tryton-server.README.SUSE trytond.conf.example doc/*
+%doc README tryton-server.README.openSUSE trytond.conf.example doc/*
 %{python3_sitelib}/*
 %dir %{_sysconfdir}/%{base_name}
 %{_bindir}/%{name}
