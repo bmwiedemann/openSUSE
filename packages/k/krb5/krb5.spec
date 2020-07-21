@@ -166,14 +166,9 @@ DEFCCNAME=DIR:/run/user/%%{uid}/krb5cc; export DEFCCNAME
         CFLAGS="%{optflags} -I%{_includedir}/et -fno-strict-aliasing -D_GNU_SOURCE -fPIC $(getconf LFS_CFLAGS)" \
         CPPFLAGS="-I%{_includedir}/et " \
         SS_LIB="-lss" \
-    --prefix=%{_prefix}/lib/mit \
     --sysconfdir=%{_sysconfdir} \
     --mandir=%{_mandir} \
     --infodir=%{_infodir} \
-    --libexecdir=%{_prefix}/lib/mit/sbin \
-    --bindir=%{_prefix}/lib/mit/bin \
-    --sbindir=%{_prefix}/lib/mit/sbin \
-    --datadir=%{_prefix}/lib/mit/share \
     --libdir=%{_libdir} \
     --includedir=%{_includedir} \
     --localstatedir=%{_localstatedir}/lib/kerberos \
@@ -202,7 +197,7 @@ mkdir -p %{buildroot}/%{_localstatedir}/log/krb5
 # Munge krb5-config yet again.  This is totally wrong for 64-bit, but chunks
 # of the buildconf patch already conspire to strip out /usr/<anything> from the
 # list of link flags, and it helps prevent file conflicts on multilib systems.
-sed -r -i -e 's|^libdir=%{_prefix}/lib(64)?$|libdir=%{_prefix}/lib|g' %{buildroot}%{_prefix}/lib/mit/bin/krb5-config
+sed -r -i -e 's|^libdir=%{_prefix}/lib(64)?$|libdir=%{_prefix}/lib|g' %{buildroot}%{_bindir}/krb5-config
 
 # install autoconf macro
 mkdir -p %{buildroot}/%{_datadir}/aclocal
@@ -211,7 +206,6 @@ install -m 644 src/util/ac_check_krb5.m4 %{buildroot}%{_datadir}/aclocal/
 # I'll probably do something about this later on
 mkdir -p %{buildroot}%{_sysconfdir}
 mkdir -p %{buildroot}%{_sysconfdir}/krb5.conf.d
-mkdir -p %{buildroot}%{_sysconfdir}/profile.d/
 mkdir -p %{buildroot}%{_localstatedir}/log/krb5
 # create plugin directories
 mkdir -p %{buildroot}/%{_libdir}/krb5/plugins/kdb
@@ -219,8 +213,6 @@ mkdir -p %{buildroot}/%{_libdir}/krb5/plugins/preauth
 mkdir -p %{buildroot}/%{_libdir}/krb5/plugins/libkrb5
 mkdir -p %{buildroot}/%{_libdir}/krb5/plugins/tls
 install -m 644 %{vendorFiles}/krb5.conf %{buildroot}%{_sysconfdir}
-install -m 644 %{vendorFiles}/krb5.csh.profile %{buildroot}%{_sysconfdir}/profile.d/krb5.csh
-install -m 644 %{vendorFiles}/krb5.sh.profile %{buildroot}%{_sysconfdir}/profile.d/krb5.sh
 
 # Do not write directly to /var/lib/kerberos anymore as it breaks transactional
 # updates. Use systemd-tmpfiles to copy the files there when it doesn't exist
@@ -239,7 +231,7 @@ do
   chmod 0755 ${lib}
 done
 # and binaries too
-chmod 0755 %{buildroot}%{_prefix}/lib/mit/bin/ksu
+chmod 0755 %{buildroot}%{_bindir}/ksu
 # install systemd files
 %if 0%{?suse_version} >= 1210
 mkdir -p %{buildroot}%{_unitdir}
@@ -267,9 +259,6 @@ mkdir -p %{buildroot}%{_sbindir}/
 ln -s service %{buildroot}%{_sbindir}/rckadmind
 ln -s service %{buildroot}%{_sbindir}/rckrb5kdc
 ln -s service %{buildroot}%{_sbindir}/rckpropd
-# create links for kinit and klist, because of the java ones
-ln -sf ../..%{_prefix}/lib/mit/bin/kinit   %{buildroot}%{_bindir}/kinit
-ln -sf ../..%{_prefix}/lib/mit/bin/klist   %{buildroot}%{_bindir}/klist
 # install doc
 install -d -m 755 %{buildroot}/%{krb5docdir}
 install -m 644 %{_builddir}/%{srcRoot}/README %{buildroot}/%{krb5docdir}/README
@@ -283,12 +272,12 @@ install -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/pam.d/ksu
 # cleanup
 rm -f  %{buildroot}%{_mandir}/man1/tmac.doc*
 rm -f  %{_mandir}/man1/tmac.doc* html/.doctrees/environment.pickle
-rm -rf %{buildroot}%{_prefix}/lib/mit/share/examples
+rm -rf %{buildroot}%{_datadir}/examples
 # manually remove test plugin since configure doesn't support disabling it at build time
 rm -f %{buildroot}/%{_libdir}/krb5/plugins/preauth/test.so
 
 # Don't add the lto flags to the public link flags.
-sed -i "s/%{_lto_cflags}//" %{buildroot}%{_prefix}/lib/mit/bin/krb5-config
+sed -i "s/%{_lto_cflags}//" %{buildroot}%{_bindir}/krb5-config
 
 %find_lang mit-krb5
 
@@ -314,10 +303,6 @@ sed -i "s/%{_lto_cflags}//" %{buildroot}%{_prefix}/lib/mit/bin/krb5-config
 %postun plugin-kdb-ldap -p /sbin/ldconfig
 
 %files devel
-%dir %{_prefix}/lib/mit
-%dir %{_prefix}/lib/mit/bin
-%dir %{_prefix}/lib/mit/sbin
-%dir %{_prefix}/lib/mit/share
 %dir %{_datadir}/aclocal
 %{_libdir}/libgssrpc.so
 %{_libdir}/libk5crypto.so
@@ -338,8 +323,8 @@ sed -i "s/%{_lto_cflags}//" %{buildroot}%{_prefix}/lib/mit/bin/krb5-config
 %{_libdir}/pkgconfig/mit-krb5-gssapi.pc
 %{_libdir}/pkgconfig/mit-krb5.pc
 %{_includedir}/*
-%{_prefix}/lib/mit/bin/krb5-config
-%{_prefix}/lib/mit/sbin/krb5-send-pr
+%{_bindir}/krb5-config
+%{_sbindir}/krb5-send-pr
 %{_mandir}/man1/krb5-config.1%{?ext_man}
 %{_datadir}/aclocal/ac_check_krb5.m4
 
@@ -357,7 +342,6 @@ sed -i "s/%{_lto_cflags}//" %{buildroot}%{_prefix}/lib/mit/bin/krb5-config
 %doc %{krb5docdir}/README
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/krb5.conf
 %dir %{_sysconfdir}/krb5.conf.d
-%attr(0644,root,root) %config %{_sysconfdir}/profile.d/krb5*
 %{_libdir}/libgssapi_krb5.*
 %{_libdir}/libgssrpc.so.*
 %{_libdir}/libk5crypto.so.*
@@ -377,8 +361,6 @@ sed -i "s/%{_lto_cflags}//" %{buildroot}%{_prefix}/lib/mit/bin/krb5-config
 %{_unitdir}/kpropd.service
 %{_tmpfilesdir}/krb5.conf
 %dir %{krb5docdir}
-%dir %{_prefix}/lib/mit
-%dir %{_prefix}/lib/mit/sbin
 %dir %{_datadir}/kerberos/
 %dir %{_datadir}/kerberos/krb5kdc
 %dir %{_datadir}/kerberos/krb5
@@ -399,17 +381,17 @@ sed -i "s/%{_lto_cflags}//" %{buildroot}%{_prefix}/lib/mit/bin/krb5-config
 %ghost %attr(0600,root,root) %config(noreplace) %{_sharedstatedir}/kerberos/krb5kdc/kadm5.dict
 %{_fillupdir}/sysconfig.*
 %{_sbindir}/rc*
-%{_prefix}/lib/mit/sbin/kadmin.local
-%{_prefix}/lib/mit/sbin/kadmind
-%{_prefix}/lib/mit/sbin/kpropd
-%{_prefix}/lib/mit/sbin/kproplog
-%{_prefix}/lib/mit/sbin/kprop
-%{_prefix}/lib/mit/sbin/kdb5_util
-%{_prefix}/lib/mit/sbin/krb5kdc
-%{_prefix}/lib/mit/sbin/gss-server
-%{_prefix}/lib/mit/sbin/sim_server
-%{_prefix}/lib/mit/sbin/sserver
-%{_prefix}/lib/mit/sbin/uuserver
+%{_sbindir}/kadmin.local
+%{_sbindir}/kadmind
+%{_sbindir}/kpropd
+%{_sbindir}/kproplog
+%{_sbindir}/kprop
+%{_sbindir}/kdb5_util
+%{_sbindir}/krb5kdc
+%{_sbindir}/gss-server
+%{_sbindir}/sim_server
+%{_sbindir}/sserver
+%{_sbindir}/uuserver
 %{_libdir}/krb5/plugins/kdb/db2.so
 %{_mandir}/man5/kdc.conf.5%{?ext_man}
 %{_mandir}/man5/kadm5.acl.5%{?ext_man}
@@ -423,24 +405,21 @@ sed -i "s/%{_lto_cflags}//" %{buildroot}%{_prefix}/lib/mit/bin/krb5-config
 %{_mandir}/man8/sserver.8%{?ext_man}
 
 %files client
-%dir %{_prefix}/lib/mit
-%dir %{_prefix}/lib/mit/bin
-%dir %{_prefix}/lib/mit/sbin
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/pam.d/ksu
-%{_prefix}/lib/mit/bin/kvno
-%{_prefix}/lib/mit/bin/kinit
-%{_prefix}/lib/mit/bin/kdestroy
-%{_prefix}/lib/mit/bin/kpasswd
-%{_prefix}/lib/mit/bin/klist
-%{_prefix}/lib/mit/bin/kadmin
-%{_prefix}/lib/mit/bin/ktutil
-%{_prefix}/lib/mit/bin/k5srvutil
-%{_prefix}/lib/mit/bin/gss-client
-%{_prefix}/lib/mit/bin/ksu
-%{_prefix}/lib/mit/bin/sclient
-%{_prefix}/lib/mit/bin/sim_client
-%{_prefix}/lib/mit/bin/uuclient
-%{_prefix}/lib/mit/bin/kswitch
+%{_bindir}/kvno
+%{_bindir}/kinit
+%{_bindir}/kdestroy
+%{_bindir}/kpasswd
+%{_bindir}/klist
+%{_bindir}/kadmin
+%{_bindir}/ktutil
+%{_bindir}/k5srvutil
+%{_bindir}/gss-client
+%{_bindir}/ksu
+%{_bindir}/sclient
+%{_bindir}/sim_client
+%{_bindir}/uuclient
+%{_bindir}/kswitch
 %{_bindir}/kinit
 %{_bindir}/klist
 %{_mandir}/man1/kvno.1%{?ext_man}
@@ -465,13 +444,13 @@ sed -i "s/%{_lto_cflags}//" %{buildroot}%{_prefix}/lib/mit/bin/krb5-config
 %dir %{_libdir}/krb5
 %dir %{_libdir}/krb5/plugins
 %dir %{_libdir}/krb5/plugins/kdb
-%dir %{_prefix}/lib/mit/sbin/
+%dir %{_sbindir}/
 %dir %{_datadir}/kerberos
 %dir %{_datadir}/kerberos/ldap
 %config %{_datadir}/kerberos/ldap/kerberos.schema
 %config %{_datadir}/kerberos/ldap/kerberos.ldif
 %{_libdir}/krb5/plugins/kdb/kldap.so
-%{_prefix}/lib/mit/sbin/kdb5_ldap_util
+%{_sbindir}/kdb5_ldap_util
 %{_libdir}/libkdb_ldap*
 %{_mandir}/man8/kdb5_ldap_util.8%{?ext_man}
 

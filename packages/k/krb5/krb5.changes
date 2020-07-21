@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 12 08:38:23 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not mangle libexecdir, bindir, sbindir and datadir: there is
+  no reasonable justification to step out of the defaults.
+  + No longer install csh/sh profiles into /etc/profiles.d: as we
+    not install to default paths, there is no need to further
+    inject paths into $PATH; also, now sbin binaries are only in
+    path for admin users.
+
+-------------------------------------------------------------------
 Fri May 29 08:38:37 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 1.18.2
