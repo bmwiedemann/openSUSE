@@ -1750,4 +1750,12 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment></comment>
     <requestid>818637</requestid>
   </revision>
+  <revision rev="188" vrev="3">
+    <srcmd5>462d9ed291605b3055921b9d3af62052</srcmd5>
+    <version>3.5.4</version>
+    <time>1595338758</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821373</requestid>
+  </revision>
 </revisionlist>

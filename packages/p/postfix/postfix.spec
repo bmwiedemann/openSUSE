@@ -60,8 +60,11 @@ License:        IPL-1.0 OR EPL-2.0
 Group:          Productivity/Networking/Email/Servers
 URL:            http://www.postfix.org
 Source0:        http://cdn.postfix.johnriley.me/mirrors/postfix-release/official/postfix-%{version}.tar.gz
+Source1:        http://cdn.postfix.johnriley.me/mirrors/postfix-release/official/postfix-%{version}.tar.gz.gpg2#/postfix-%{version}.tar.gz.sig
 Source2:        %{name}-SUSE.tar.gz
 Source3:        %{name}-mysql.tar.bz2
+#Source4:        http://cdn.postfix.johnriley.me/mirrors/postfix-release/wietse.pgp#/postfix.keyring
+Source4:        postfix.keyring
 Source10:       %{name}-rpmlintrc
 Source11:       check_mail_queue
 Patch1:         %{name}-no-md5.patch
