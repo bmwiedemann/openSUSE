@@ -4,16 +4,18 @@
 #sources:
 #  - source1
 #  - source2
-#patches:
-#  foo.patch: -p1
-#  bar.patch:
+patches:
+  perl-XML-Twig-CVE-2016-9180.patch: -p1
 preamble: |-
  BuildRequires:  expat
  BuildRequires:  perl-HTML-Tidy
  BuildRequires:  perl-IO-CaptureOutput
+ BuildRequires:  perl-Test-Exception
  BuildRequires:  perl-Test-Pod
+ BuildRequires:  perl-Text-Iconv
  BuildRequires:  perl-Text-Wrapper
  BuildRequires:  perl-Tie-IxHash
+ BuildRequires:  perl-Unicode-Map8
  BuildRequires:  perl-XML-Filter-BufferText
  BuildRequires:  perl-XML-Handler-YAWriter
  BuildRequires:  perl-XML-Parser
@@ -24,8 +26,3 @@ preamble: |-
  Requires:       expat
  Requires:       perl-XML-Parser
  Requires:       perl(Encode)
- BuildRequires:     perl-HTML-Tidy
- BuildRequires:     perl-Text-Wrapper
- BuildRequires:     perl-Tie-IxHash
- BuildRequires:     perl-XML-XPath
- BuildRequires:     perl-XML-XPathEngine

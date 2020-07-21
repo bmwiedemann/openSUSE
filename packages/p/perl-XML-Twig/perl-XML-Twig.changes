@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 13 17:35:09 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Security fix [bsc#1008644, CVE-2016-9180]
+  * Setting expand_external_ents to 0 or -1 currently doesn't work  
+    as expected; To completely turn off expanding external entities
+    use no_xxe.
+  * Update documentation for XML::Twig to mention problems with
+    expand_external_ents and add information about new no_xxe argument
+  * Add test CVE-2016-9180.t
+  * Add test build-requirements:
+    perl-Test-Exception, perl-Text-Iconv, perl-Unicode-Map8
+- Add perl-XML-Twig-CVE-2016-9180.patch
+
+-------------------------------------------------------------------
 Thu Nov 24 07:28:15 UTC 2016 - coolo@suse.com
 
 - updated to 3.52
