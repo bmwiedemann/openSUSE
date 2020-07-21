@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Mon Jul 20 00:31:35 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
+
+- new .desktop file from weechat sources
+- update to 2.9
+- New features
+  * core: add bar option "color_bg_inactive": color for window bars
+    in inactive window (issue #732)
+  * core: add Alacritty title escape sequence support (issue #1517)
+  * core: display notify level for current buffer
+    with command /buffer notify (issue #1505)
+  * core: count only visible nicks in bar item "buffer_nicklist_count",
+    add bar items "buffer_nicklist_count_groups" and "buffer_nicklist_count_all"
+    (issue #1506)
+  * core: set default size for input bar to 0 (automatic) (issue #1498)
+  * core: add default key Alt+Enter to insert a newline (issue #1498)
+  * core: add flag "input_multiline" in buffer (issue #984, issue #1063)
+  * core: add a scalable WeeChat logo (SVG) (issue #1454, issue #1456)
+  * core: add base 16/32/64 encoding/decoding in evaluation of expressions
+    with "base_encode:base,xxx" and "base_decode:base,xxx"
+  * core: add case sensitive wildcard matching comparison operator (==* and !!*)
+    and case sensitive/insensitive include comparison operators (==-, !!-, =-, !-)
+    in evaluation of expressions
+  * core: add default key Alt+Shift+N to toggle nicklist bar
+  * core: add command line option "--stdout" in weechat-headless binary
+    to log to stdout rather than ~/.weechat/weechat.log (issue #1475, issue #1477)
+  * core: reload configuration files on SIGHUP (issue #1476)
+  * api: add pointer "_bar_window" in hashtable sent to hook focus callback (issue #1450)
+  * api: add info_hashtable "focus_info" (issue #1245, issue #1257)
+  * api: rename function hook_completion_get_string to completion_get_string
+    and hook_completion_list_add to completion_list_add
+  * api: add functions completion_new, completion_search and completion_free
+  * api: add hdata "completion_word"
+  * buflist: add default key Alt+Shift+B to toggle buflist
+  * buflist: add options enable/disable/toggle in command /buflist
+  * buflist: evaluate option buflist.look.sort so that sort can be customized
+    for each of the three buflist bar items (issue #1465)
+  * irc: add support of UTF8MAPPING (issue #1528)
+  * irc: display account messages in buffers (issue #1250)
+  * python: add WeeChat sharedir python directory to PYTHONPATH (issue #1537)
+  * relay: increase default limits for IRC backlog options
+  * relay: add command "handshake" in weechat relay protocol and nonce
+    to prevent replay attacks, add options relay.network.password_hash_algo,
+    relay.network.password_hash_iterations, relay.network.nonce_size (issue #1474)
+  * relay: add command "completion" in weechat relay protocol
+    to perform a completion on a string at a given position (issue #1484)
+  * relay: add option relay.network.auth_timeout
+  * relay: update default colors for client status
+  * relay: add status "waiting_auth" in irc and weechat protocols (issue #1358)
+  * trigger: evaluate arguments of command when the trigger is created (issue #1472)
+- Bug fixes
+  * core: fix command /window scroll_beyond_end when buffer has fewer lines
+    than chat height (issue #1509)
+  * core: force buffer property "time_for_each_line" to 0 for buffers
+    with free content (issue #1485)
+  * core: don’t collapse consecutive newlines in lines displayed
+    before the first buffer is created
+  * core: don’t remove consecutive newlines when pasting text (issue #1500)
+  * core: don’t collapse consecutive newlines in bar content (issue #1500)
+  * core: fix WEECHAT_SHAREDIR with CMake build (issue #1461)
+  * core: fix memory leak in calculation of expression on FreeBSD (issue #1469)
+  * core: fix resize of a bar when its size is 0 (automatic) (issue #1470)
+  * api: fix use of pointer after free in function key_unbind
+  * api: replace plugin and buffer name by buffer pointer in argument "modifier_data"
+    sent to weechat_print modifier callback (issue #42)
+  * buflist: add "window" pointer in bar item evaluation only if it’s not NULL
+    (if bar type is "window")
+  * exec: fix use of same task id for different tasks (issue #1491)
+  * fifo: fix errors when writing in the FIFO pipe (issue #713)
+  * guile: enable again /guile eval (issue #1514)
+  * irc: use new default chantypes "#&" when the server does not send it
+  * irc: add support of optional server in info "irc_is_nick",
+    fix check of nick using UTF8MAPPING isupport value (issue #1528)
+  * irc: fix add of ignore with flags in regex, display full ignore mask
+    in list of ignores (issue #1518)
+  * irc: do not remove spaces at the end of users messages received (issue #1513)
+  * irc: fix realname delimiter color in WHO/WHOX response (issue #1497)
+  * irc: reuse a buffer with wrong type "channel"
+    when a private message is received (issue #869)
+  * python: fix crash when invalid UTF-8 string is in a WeeChat hashtable
+    converted to a Python dict (issue #1463)
+  * relay: add missing field "notify_level" in message "_buffer_line_added" (issue #1529)
+  * relay: fix slow send of data to clients when SSL is enabled
+  * trigger: only return trigger’s return code
+    when condition evaluates to true (issue #592)
+  * trigger: fix truncated trigger command with commands /trigger input|output|recreate
+  * trigger: do not hide values of options with /set command in cmd_pass trigger
+- Documentation
+  * add includes directory
+  * merge 53 auto-generated files into 11 files
+  * fix broken literal blocks in Japanese docs with Firefox (issue #1466)
+- Tests
+  * core: add CI with GitHub Actions, move codecov.io upload to GitHub Actions
+  * core: switch to Ubuntu Bionic on Travis CI, use pylint3 to lint Python scripts
+  * core: run tests on plugins only if the plugins are enabled and compiled
+  * irc: add tests on IRC color and channel functions
+- Build
+  * javascript: disable build by default and remove Debian packaging
+    of JavaScript plugin (issue #360)
+  * core: make GnuTLS a required dependency
+  * core: fix build with CMake 3.17.0
+  * core: fix build with cygport on Cygwin
+
+-------------------------------------------------------------------
 Sun Mar 29 14:16:40 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
 
 - update to 2.8
