@@ -2699,7 +2699,6 @@ unsorted:
   - eclipse-platform-bootstrap: [x86_64] 
   - eclipse-swt 
   - eclipse-swt-bootstrap: [x86_64] 
-  - eclipse-tests: [x86_64] 
   - econnman 
   - ecryptfs-utils 
   - ecryptfs-utils-32bit: [x86_64] 
@@ -12895,6 +12894,7 @@ unsorted:
   - libvirt-daemon-driver-lxc: [i586] 
   - libvirt-daemon-hooks 
   - libvirt-daemon-lxc: [i586] 
+  - libvirt-dbus 
   - libvirt-devel 
   - libvirt-devel-32bit: [x86_64] 
   - libvirt-doc 
@@ -16153,6 +16153,7 @@ unsorted:
   - openQA-python-scripts: [x86_64] 
   - openQA-single-instance: [x86_64] 
   - openQA-worker: [x86_64] 
+  - openSUSE-Addon-NonOss-release 
   - openSUSE-EULAs 
   - openSUSE-appdata-extra 
   - openSUSE-appstream-process 
@@ -17862,6 +17863,7 @@ unsorted:
   - perl-SGMLS 
   - perl-SOAP-Lite 
   - perl-SQL-Abstract 
+  - perl-SQL-Abstract-Classic 
   - perl-SQL-ReservedWords 
   - perl-SQL-SplitStatement 
   - perl-SQL-Statement 
@@ -19403,6 +19405,7 @@ unsorted:
   - python3-aiohttp-socks 
   - python3-aiohttp-theme 
   - python3-aiohttp_cors 
+  - python3-aioitertools 
   - python3-aioresponses 
   - python3-aiorpcX 
   - python3-aiosmtplib 
@@ -25346,6 +25349,7 @@ unsorted:
   - sysstat 
   - sysstat-isag 
   - system-group-obsolete 
+  - system-user-libvirt-dbus 
   - system-user-msr 
   - system-user-tss 
   - system-user-uuidd 
@@ -34215,18 +34219,14 @@ unsorted:
   - vte-devel 
   - vte-tools 
   - vtk-devel 
-  - vtk-devel-doc 
   - vtk-java 
   - vtk-openmpi1-devel 
-  - vtk-openmpi1-devel-doc 
   - vtk-openmpi1-java 
   - vtk-openmpi1-qt 
   - vtk-openmpi2-devel 
-  - vtk-openmpi2-devel-doc 
   - vtk-openmpi2-java 
   - vtk-openmpi2-qt 
   - vtk-openmpi3-devel 
-  - vtk-openmpi3-devel-doc 
   - vtk-openmpi3-java 
   - vtk-openmpi3-qt 
   - vtk-qt 
