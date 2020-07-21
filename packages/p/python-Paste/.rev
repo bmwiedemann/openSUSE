@@ -281,4 +281,14 @@
     <comment></comment>
     <requestid>788612</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c18843f3913118cf85c7507fe722c051</srcmd5>
+    <version>3.4.2</version>
+    <time>1595338793</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.4.2:
+  * Correct sorting of items() in EvalHTMLFormatter.
+  * Fix next in iterators in wsgilib.py.</comment>
+    <requestid>821422</requestid>
+  </revision>
 </revisionlist>
