@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 17 07:21:31 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.1.1:
+  - Improve ``popitem()`` exception context handling.
+  - Replace ``float('inf')`` with ``math.inf``.
+
+-------------------------------------------------------------------
 Wed Apr 29 10:47:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.1.0:
