@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 17 10:54:41 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Export the registration settings in the <suse_register/>
+  section when cloning a registered system (bsc#1174202).
+- 4.3.4
+
+-------------------------------------------------------------------
+Wed Jul 15 15:09:50 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Do not use Profile.current unless necessary (bsc#1174173)
+- 4.3.3
+
+-------------------------------------------------------------------
 Thu Jul  9 10:31:17 CEST 2020 - schubi@suse.de
 
 - Evaluating addon-list: Uses version without release for

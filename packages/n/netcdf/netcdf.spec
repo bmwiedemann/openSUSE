@@ -28,9 +28,14 @@
 %if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build
 %endif
-%if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
-%define DisOMPI3 ExclusiveArch:  do_not_build
-%endif
+%if !0%{?is_opensuse} && 0%{?sle_version:1}
+ %if 0%{?sle_version} < 150200
+  %define DisOMPI3 ExclusiveArch:  do_not_build
+ %endif
+ %if 0%{?sle_version} < 150300
+  %define DisOMPI4 ExclusiveArch:  do_not_build
+ %endif
+%endif 
 
 %if "%flavor" == ""
 %define package_name %{pname}
@@ -65,6 +70,15 @@ ExcludeArch:    s390 s390x
 %undefine c_f_ver
 %define mpi_flavor openmpi
 %define mpi_ver 3
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu-openmpi4-hpc"
+%{?DisOMPI4}
+%global compiler_family gnu
+%undefine c_f_ver
+%define mpi_flavor openmpi
+%define mpi_ver 4
 %bcond_without hpc
 %endif
 
@@ -125,6 +139,15 @@ ExcludeArch:    s390 s390x
 %bcond_without hpc
 %endif
 
+%if "%{flavor}" == "gnu7-openmpi4-hpc"
+%{?DisOMPI4}
+%global compiler_family gnu
+%define c_f_ver 7
+%define mpi_flavor openmpi
+%define mpi_ver 4
+%bcond_without hpc
+%endif
+
 %if "%{flavor}" == "gnu7-mvapich2-hpc"
 %global compiler_family gnu
 %define c_f_ver 7
@@ -170,6 +193,15 @@ ExcludeArch:    s390 s390x
 %define c_f_ver 8
 %define mpi_flavor openmpi
 %define mpi_ver 3
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi4-hpc"
+%{?DisOMPI4}
+%global compiler_family gnu
+%define c_f_ver 8
+%define mpi_flavor openmpi
+%define mpi_ver 4
 %bcond_without hpc
 %endif
 
@@ -221,6 +253,15 @@ ExcludeArch:    s390 s390x
 %bcond_without hpc
 %endif
 
+%if "%{flavor}" == "gnu9-openmpi4-hpc"
+%{?DisOMPI4}
+%global compiler_family gnu
+%define c_f_ver 9
+%define mpi_flavor openmpi
+%define mpi_ver 4
+%bcond_without hpc
+%endif
+
 %if "%{flavor}" == "gnu9-mvapich2-hpc"
 %global compiler_family gnu
 %define c_f_ver 9
@@ -258,6 +299,13 @@ ExcludeArch:    s390 s390x
 %{?DisOMPI3}
 %define mpi_flavor openmpi
 %define mpi_ver 3
+%bcond_with hpc
+%endif
+
+%if "%{flavor}" == "openmpi4"
+%{?DisOMPI4}
+%define mpi_flavor openmpi
+%define mpi_ver 4
 %bcond_with hpc
 %endif
 
@@ -331,10 +379,6 @@ BuildRequires:  hdf5%{p_suffix}-devel
 BuildRequires:  libhdf5_hl%{p_suffix}
  %if %{with mpi}
 BuildRequires:  %{mpi_flavor}%{?mpi_ext}-devel
-BuildRequires:  parallel-netcdf%{p_suffix}-devel
-  %if "%{flavor}" == "openmpi1"
-BuildRequires:  libpnetcdf%{p_suffix}
-  %endif
  %endif
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
@@ -369,9 +413,6 @@ Obsoletes:      %{libname} < %{version}
 # To avoid unresolvable errors due to multiple providers of the library
 Requires:       libhdf5%{p_suffix}
 Requires:       libhdf5_hl%{p_suffix}
-%if %{flavor} == "openmpi1"
-%{?with_mpi:Requires:       libpnetcdf%{p_suffix}}
-%endif
 %else
 %{hpc_requires}
 Requires:       libhdf5%{hpc_package_name_tail} >= 1.8.8
@@ -436,9 +477,6 @@ Requires:       zlib-devel >= 1.2.5
 %if %{without hpc}
 Requires:       hdf5%{p_suffix}-devel >= 1.8.8
 %{?with_mpi:Requires:       %{mpi_flavor}%{?mpi_ext}-devel}
-  %if "%{flavor}" == "openmpi1"
-Requires:       parallel-netcdf-%{mpi_flavor}%{?mpi_ext}-devel
-  %endif
 %else
 %{hpc_requires_devel}
 Requires:       hdf5%{hpc_package_name_tail}-devel >= 1.8.8

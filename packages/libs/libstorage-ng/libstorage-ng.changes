@@ -1,4 +1,14 @@
 --------------------------------------------------------------------
+Fri Jul 17 08:03:20 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#761
+- probe dax flag for disks
+- verify devicegraph and pool name
+- parse partition name in parted output
+- use in-class member initialization
+- 4.3.35
+
+--------------------------------------------------------------------
 Tue Jul 7 07:02:14 UTC 2020 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#760

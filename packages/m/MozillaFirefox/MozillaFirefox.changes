@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 17 15:07:45 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Add mozilla-libavcodec58_91.patch to link against updated
+  soversion of libavcodec (58.91) with ffmpeg >= 4.3.
+  (patch provided by Atri Bhattacharya <badshah400@gmail.com>
+- enable MOZ_USE_XINPUT2 for TW (again) (boo#1173320)
+  (Plasma 5.19.3 is now in TW)
+
+-------------------------------------------------------------------
 Sat Jul 11 11:08:06 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 78.0.2

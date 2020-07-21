@@ -45,7 +45,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 20.1.2
+%define _version 20.1.3
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -113,7 +113,7 @@
 %endif
 
 Name:           Mesa
-Version:        20.1.2
+Version:        20.1.3
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -1072,10 +1072,10 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 
 %if %{xvmc_support}
 %files -n libXvMC_nouveau
-%{_libdir}/libXvMCnouveau.so
+%{_libdir}/libXvMCnouveau.so*
 
 %files -n libXvMC_r600
-%{_libdir}/libXvMCr600.so
+%{_libdir}/libXvMCr600.so*
 %endif
 
 %if %{vdpau_nouveau}

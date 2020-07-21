@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 15 10:30:22 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Add hana active/active resources to the cluster template
+- Change `route_table` by `route_name` to make the variable usage
+  more meaningful
+
+-------------------------------------------------------------------
 Wed Jun 10 01:49:02 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 
 - Add support to extract zip,rar,exe,sar hana media

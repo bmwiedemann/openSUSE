@@ -316,4 +316,12 @@
     <comment></comment>
     <requestid>820572</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>f403cc81835acdb9026153a80c2af12d</srcmd5>
+    <version>4.3.1</version>
+    <time>1595339033</time>
+    <user>dimstar_suse</user>
+    <comment>- Add librav1e support (forwarded request 821298 from FuchtelJockel)</comment>
+    <requestid>821475</requestid>
+  </revision>
 </revisionlist>

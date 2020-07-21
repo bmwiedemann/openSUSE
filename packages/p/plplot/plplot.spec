@@ -25,8 +25,12 @@
 %bcond_with    ocaml_camlidl
 %define tk_enabled 1
 
-# SECTION Disable octave bindings for all versions until compilation against octave 4.4 is fixed
+# SECTION Disable octave bindings for openSUSE < 1550 until compilation against octave 4.4 is fixed
+%if 0%{?suse_version} < 1550
+%define octave_enabled 0
+%else
 %define octave_enabled 1
+%endif
 # /SECTION
 
 %define X_display ":98"

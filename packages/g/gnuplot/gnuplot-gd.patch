@@ -1,13 +1,13 @@
 Index: gnuplot-5.2.2/configure.ac
 ===================================================================
 ---
- gnuplot-5.2.5/configure.ac    |   66 ++++++------------------------------------
- gnuplot-5.2.5/src/Makefile.am |    2 -
+ gnuplot-5.4.0/configure.ac    |   66 ++++++------------------------------------
+ gnuplot-5.4.0/src/Makefile.am |    2 -
  2 files changed, 11 insertions(+), 57 deletions(-)
 
---- gnuplot-5.2.5/configure.ac
-+++ gnuplot-5.2.5/configure.ac	2018-10-09 09:38:56.700946180 +0000
-@@ -577,63 +577,17 @@ AC_ARG_WITH(gd,dnl
+--- gnuplot-5.4.0/configure.ac
++++ gnuplot-5.4.0/configure.ac	2020-07-17 07:31:14.828189953 +0000
+@@ -535,63 +535,17 @@ AC_ARG_WITH(gd,dnl
    with_gd=yes)
  
  if test "$with_gd" != no; then
@@ -81,11 +81,11 @@ Index: gnuplot-5.2.2/configure.ac
  
  fi
  dnl end gd
---- gnuplot-5.2.5/src/Makefile.am
-+++ gnuplot-5.2.5/src/Makefile.am	2018-10-09 09:36:58.135163622 +0000
-@@ -58,7 +58,7 @@ tabulate.c tabulate.h \
- template.h term_api.h term.c term.h time.c unset.c util.c util.h \
- util3d.c util3d.h variable.c variable.h version.c version.h
+--- gnuplot-5.4.0/src/Makefile.am
++++ gnuplot-5.4.0/src/Makefile.am	2020-07-17 07:32:16.391125309 +0000
+@@ -60,7 +60,7 @@ term_api.h term.c term.h time.c unset.c
+ util3d.c util3d.h variable.c variable.h version.c version.h \
+ voxelgrid.c voxelgrid.h vplot.c vplot.h marching_cubes.h
  
 -gnuplot_LDADD = $(TERMLIBS) $(TERMXLIBS) $(WX_LIBS) $(QT_LIBS)
 +gnuplot_LDADD = $(GD_LIBS) $(TERMLIBS) $(TERMXLIBS) $(WX_LIBS) $(QT_LIBS)

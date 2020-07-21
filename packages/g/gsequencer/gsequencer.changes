@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 20 16:38:33 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.5.6 fixed missing $(docdir)/images/adwaita.
+- fixed since v3.5.5 memory leak causing performance impact and
+  AgsFMSyncsynth missing restore of loop fields in
+  ags_simple_file.c.
+
+-------------------------------------------------------------------
 Thu Jul 16 16:14:32 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.5.3 minor improvements.

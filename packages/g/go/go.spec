@@ -16,30 +16,35 @@
 #
 # nodebuginfo
 
-# By default we don't include tsan. It's only supported on amd64.
-%define tsan_arch x86_64
-
-%if 0%{?suse_version} >= 1315
-%define short_version 1.12
+# NOTE: This logic must come from the latest go1.x package specfile.
+# We only build go-race on supported systems.
+%if 0%{suse_version} >= 1500 || 0%{?sle_version} >= 150000
+%define tsan_arch x86_64 aarch64
 %else
-%define short_version 1.11
+# Cannot use {nil} here (ifarch doesn't like it) so just make up a fake
+# architecture that no build will ever match.
+%define tsan_arch openSUSE_FAKE_ARCH
 %endif
 
 Name:           go
-Version:        1.12
+Version:        1.14
+# Version must always be a valid golang(API) version
+%define api_version %{version}
 Release:        0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
 Group:          Development/Languages/Other
 Url:            http://golang.org
 Source:         README
 Recommends:     go-doc = %{version}
-ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x
+ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x riscv64
 # We provide golang(API) so that projects can Prefer: go. Any project using Go
 # code with golang(API) BuildRequires should add Prefer: go.
-Provides:       golang(API) = %{short_version}
-Requires:       go%{short_version}
+Provides:       golang(API) = %{api_version}
+# Make this both Requires and BuildRequires go1.x so that we get build errors
+# if it is missing.
+BuildRequires:  go%{api_version}
+Requires:       go%{api_version}
 
 %description
 Go is an expressive, concurrent, garbage collected systems programming language
@@ -53,8 +58,8 @@ Summary:        Go documentation
 License:        BSD-3-Clause
 Group:          Documentation/Other
 Requires:       go = %{version}
-Requires:       go%{short_version}-doc
-Provides:       go-doc = %{version}
+Supplements:    go = %{version}
+Requires:       go%{api_version}-doc
 
 %description doc
 Go examples and documentation.
@@ -69,7 +74,10 @@ Url:            https://compiler-rt.llvm.org/
 Requires:       go = %{version}
 Supplements:    go = %{version}
 ExclusiveArch:  %{tsan_arch}
-Requires:       go%{short_version}-race
+# Make this both Requires and BuildRequires go1.x-race so that we get build
+# errors if it is missing.
+BuildRequires:  go%{api_version}-race
+Requires:       go%{api_version}-race
 
 %description race
 Go runtime race detector libraries. Install this package if you wish to use the

@@ -30,7 +30,7 @@ Source1:        vendor.tar.gz
 Source10:       Corefile
 Source11:       coredns.service
 BuildRequires:  fdupes
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  golang(API) >= 1.13
 
 %description
 CoreDNS is a DNS server in Go. It has a plugin architecture for
@@ -65,7 +65,7 @@ mkdir -pv $HOME/go/src/%{project}
 find . -mindepth 1 -maxdepth 1 -exec cp -r {} $HOME/go/src/%{project} \;
 
 cd $HOME/go/src/%{project}
-go build -v -buildmode=pie -o coredns
+go build -mod=vendor -v -buildmode=pie -o coredns
 
 %check
 # Too many tests fail due to the restricted permissions in the build enviroment.

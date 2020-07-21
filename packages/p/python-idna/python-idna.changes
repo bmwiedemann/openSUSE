@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 17 08:01:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.10:
+  - Update to Unicode 13.0.0.
+  - Throws a more specific exception if "xn--" is provided as a label.
+  - This is expected to be the last version that supports Python 2.
+
+-------------------------------------------------------------------
 Fri Feb 28 22:41:37 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.9:

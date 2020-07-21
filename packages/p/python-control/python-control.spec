@@ -39,6 +39,7 @@ Requires:       python-scipy
 Recommends:     python-slycot
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module matplotlib-qt5}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}

@@ -42,4 +42,17 @@
     <comment></comment>
     <requestid>752995</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fddb76b67461a5fb6d70007d133c9641</srcmd5>
+    <version>0.4.0</version>
+    <time>1595339322</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * fixes silent recordings on Windows
+  * get and set the pulseaudio program name on Linux
+  * fixes error with unicode soundcard names on Windows
+  * adds support for pyinstaller (v4)
+  * adds compatibility with Windows 7</comment>
+    <requestid>821996</requestid>
+  </revision>
 </revisionlist>

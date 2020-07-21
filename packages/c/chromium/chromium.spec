@@ -19,7 +19,7 @@
 %define rname chromium
 # bsc#1108175
 %define __provides_exclude ^lib.*\\.so.*$
-%if 0%{?suse_vesrion} > 1500
+%if 0%{?suse_version} > 1500
 %bcond_without system_icu
 %bcond_without system_vpx
 %bcond_without wayland
@@ -28,7 +28,7 @@
 %bcond_with system_vpx
 %bcond_with wayland
 %endif
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200     
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 %bcond_without system_harfbuzz
 %bcond_without pipewire
 %else
@@ -51,12 +51,14 @@
 %endif
 %bcond_with clang
 Name:           chromium
-Version:        83.0.4103.116
+Version:        84.0.4147.89
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
 URL:            https://www.chromium.org/
 Source0:        https://commondatastorage.googleapis.com/chromium-browser-official/%{rname}-%{version}.tar.xz
+# we need to bundle this because we need py2 version until google switches to python3
+Source1:        https://www.x.org/releases/individual/proto/xcb-proto-1.14.tar.xz
 # Toolchain definitions
 Source30:       master_preferences
 Source100:      chromium-browser.sh
@@ -76,31 +78,38 @@ Patch5:         chromium-buildname.patch
 Patch6:         chromium-drm.patch
 Patch9:         chromium-system-libusb.patch
 Patch10:        gcc-enable-lto.patch
-Patch12:        chromium-79-gcc-alignas.patch
-Patch13:        chromium-80-gcc-quiche.patch
-Patch14:        chromium-fix-char_traits.patch
-Patch15:        gpu-timeout.patch
-Patch16:        build-with-pipewire-0.3.patch
-Patch17:        chromium-82-gcc-constexpr.patch
-Patch18:        chromium-82-gcc-incomplete-type.patch
-Patch19:        chromium-82-gcc-iterator.patch
-Patch20:        chromium-82-gcc-noexcept.patch
-Patch21:        chromium-82-gcc-template.patch
-Patch22:        chromium-83-gcc-template.patch
-Patch23:        chromium-83-icu67.patch
-Patch24:        chromium-83-gcc-serviceworker.patch
-Patch25:        chromium-83-gcc-permissive.patch
-Patch26:        chromium-83-gcc-iterator.patch
-Patch27:        chromium-83-gcc-include.patch
-Patch28:        chromium-83-gcc-10.patch
-Patch29:        chromium-81-re2-0.2020.05.01.patch
+Patch11:        chromium-79-gcc-alignas.patch
+Patch12:        chromium-80-gcc-quiche.patch
+Patch13:        chromium-fix-char_traits.patch
+Patch14:        gpu-timeout.patch
+Patch15:        build-with-pipewire-0.3.patch
+Patch16:        chromium-82-gcc-constexpr.patch
+Patch18:        chromium-82-gcc-template.patch
+Patch20:        chromium-83-gcc-10.patch
+Patch21:        chromium-84-gcc-include.patch
+Patch22:        chromium-84-gcc-noexcept.patch
+Patch23:        chromium-84-gcc-template.patch
+Patch24:        chromium-84-gcc-unique_ptr.patch
 # Do not use unrar code, it is non-free
-Patch30:        chromium-norar.patch
-# specific patch to disable location on Leap; works on 15.2 but not on 15.1
-Patch31:        no-location-leap151.patch
-Patch32:        chromium-dev-shm.patch
-Patch33:        chromium-83.0.4103.97-skia-gcc-no_sanitize-fixes.patch
-Patch34:        chromium-84-mediaalloc.patch
+Patch26:        chromium-norar.patch
+Patch27:        chromium-84-blink-disable-clang-format.patch
+Patch28:        chromium-84-AXObject-stl-iterator.patch
+Patch29:        chromium-84-base-has_bultin.patch
+Patch30:        chromium-84-FilePath-add-noexcept.patch
+Patch31:        chromium-84-fix-decltype.patch
+Patch32:        chromium-84-gcc-DOMRect-constexpr.patch
+Patch33:        chromium-84-gcc-use-brace-initializer.patch
+Patch34:        chromium-84-revert-manage-ManifestManagerHost-per-document.patch
+Patch35:        chromium-84-std-vector-const.patch
+# revert location on old GCC on 15.1, 15.2 gets it right tho
+Patch36:        no-location-leap151.patch
+Patch37:        chromium-84-mediaalloc.patch
+Patch38:        chromium-84-nss-include.patch
+Patch39:        chromium-84-ozone-include.patch
+Patch40:        chromium-blink-gcc-diagnostic-pragma.patch
+Patch41:        chromium-quiche-invalid-offsetof.patch
+Patch42:        chromium-clang_lto_visibility_public.patch
+Patch43:        system-libdrm.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -143,8 +152,6 @@ BuildRequires:  snappy-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  util-linux
 BuildRequires:  wdiff
-BuildRequires:  yasm
-BuildRequires:  yasm-devel
 BuildRequires:  perl(Switch)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(bzip2)
@@ -181,6 +188,7 @@ BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libwebp) >= 0.4.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.5
 BuildRequires:  pkgconfig(libxslt)
@@ -200,6 +208,7 @@ BuildRequires:  pkgconfig(vdpau)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb-dri3)
+BuildRequires:  pkgconfig(xcb-proto)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xdamage)
@@ -244,7 +253,6 @@ BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(xkbcommon)
 %endif
-BuildRequires:  pkgconfig(libva)
 %ifnarch aarch64
 # Current tcmalloc does not support AArch64
 BuildRequires:  pkgconfig(libtcmalloc)
@@ -284,6 +292,9 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %prep
 %setup -q -n %{rname}-%{version}
 %autopatch -p1
+
+# bundle xcb-proto for python2
+tar xJf %{SOURCE1}
 
 # Fix the path to nodejs binary
 mkdir -p third_party/node/linux/node-linux-x64/bin
@@ -363,6 +374,8 @@ keeplibs=(
     third_party/depot_tools/third_party/six
     third_party/devscripts
     third_party/devtools-frontend
+    third_party/devtools-frontend/src/front_end/third_party/acorn
+    third_party/devtools-frontend/src/front_end/third_party/codemirror
     third_party/devtools-frontend/src/front_end/third_party/fabricjs
     third_party/devtools-frontend/src/front_end/third_party/lighthouse
     third_party/devtools-frontend/src/front_end/third_party/wasmparser
@@ -390,6 +403,7 @@ keeplibs=(
     third_party/libaom
     third_party/libaom/source/libaom/third_party/vector
     third_party/libaom/source/libaom/third_party/x86inc
+    third_party/libavif
     third_party/libjingle
     third_party/libphonenumber
     third_party/libsecret
@@ -400,6 +414,7 @@ keeplibs=(
     third_party/libwebm
     third_party/libxml/chromium
     third_party/libyuv
+    third_party/lottie
     third_party/lss
     third_party/lzma_sdk
     third_party/mako
@@ -413,6 +428,7 @@ keeplibs=(
     third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2
     third_party/one_euro_filter
     third_party/openscreen
+    third_party/openscreen/src/third_party/mozilla
     third_party/openscreen/src/third_party/tinycbor/src/src
     third_party/ots
     third_party/pdfium
@@ -461,7 +477,7 @@ keeplibs=(
     third_party/web-animations-js
     third_party/webdriver
     third_party/webrtc
-    third_party/webrtc/common_audio/third_party/fft4g
+    third_party/webrtc/common_audio/third_party/ooura
     third_party/webrtc/common_audio/third_party/spl_sqrt_floor
     third_party/webrtc/modules/third_party/fft
     third_party/webrtc/modules/third_party/g711
@@ -482,7 +498,6 @@ keeplibs=(
 )
 %if %{with wayland}
 keeplibs+=(
-    third_party/libdrm/src/include
     third_party/v4l-utils
     third_party/wayland
     third_party/wayland-protocols
@@ -510,7 +525,6 @@ keeplibs+=(
     third_party/speech-dispatcher
     third_party/usb_ids
     third_party/xdg-utils
-    third_party/yasm/run_yasm.py
 )
 build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove
 
@@ -581,7 +595,6 @@ gn_system_libraries=(
     opus
     re2
     snappy
-    yasm
     zlib
 )
 %if %{with system_harfbuzz}
@@ -601,9 +614,10 @@ build/linux/unbundle/replace_gn_files.py --system-libraries ${gn_system_librarie
 # Create the configuration for GN
 # Available options: out/Release/gn args --list out/Release/
 myconf_gn=""
+# bundled xcb py2 variant
+myconf_gn+=" xcbproto_path=\"$PWD/xcb-proto-1.14/src\""
 myconf_gn+=" custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
 myconf_gn+=" host_toolchain=\"//build/toolchain/linux/unbundle:default\""
-myconf_gn+=" linux_use_bundled_binutils=false"
 myconf_gn+=" use_custom_libcxx=false"
 myconf_gn+=" is_debug=false"
 myconf_gn+=" enable_nacl=false"
@@ -638,7 +652,6 @@ myconf_gn+=" use_sysroot=false"
 myconf_gn+=" treat_warnings_as_errors=false"
 myconf_gn+=" enable_widevine=true"
 myconf_gn+=" use_dbus=true"
-myconf_gn+=" use_system_minigbm=true"
 # See dependency logic in third_party/BUILD.gn
 %if %{with system_harfbuzz}
 myconf_gn+=" use_system_harfbuzz=true"
@@ -652,9 +665,14 @@ myconf_gn+=" rtc_use_pipewire_version=\"0.3\""
 %endif
 # ozone stuff
 %if %{with wayland}
-myconf_gn+=" use_ozone=true ozone_platform=\"x11\" ozone_platform_x11=true"
+myconf_gn+=" use_system_minigbm=true use_xkbcommon=true"
+myconf_gn+=" use_system_libdrm=true"
+myconf_gn+=" use_ozone=true ozone_auto_platforms=false"
+myconf_gn+=" ozone_platform=\"x11\" ozone_platform_x11=true ozone_platform_gbm=true"
+myconf_gn+=" ozone_platform_wayland=true"
 # use_v4l2_codec - uses patches in kernel-headers present on chromeos only
-myconf_gn+=" use_v4lplugin=true use_v4l2_codec=false use_linux_v4l2_only=true"
+myconf_gn+=" use_v4lplugin=true use_v4l2_codec=false"
+
 %endif
 %if %{with clang}
 myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"
@@ -717,6 +735,9 @@ myconf_gn+=" google_default_client_secret=\"${google_default_client_secret}\""
 # GN does not support passing cflags:
 #  https://bugs.chromium.org/p/chromium/issues/detail?id=642016
 gn gen --args="${myconf_gn}" out/Release
+
+# bundled xcb proto for python2
+export PYTHONPATH="$PWD/xcb-proto-1.14${PYTHONPATH+:}${PYTHONPATH}"
 
 ninja -v %{?_smp_mflags} -C out/Release chrome chromedriver
 

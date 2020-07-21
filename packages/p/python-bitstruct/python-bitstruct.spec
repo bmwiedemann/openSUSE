@@ -1,6 +1,7 @@
 #
 # spec file for package python-bitstruct
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,23 +13,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-bitstruct
-Version:        8.9.0
+Version:        8.11.0
 Release:        0
-License:        MIT
 Summary:        Interpret strings as packed binary data
-Url:            https://github.com/eerimoq/bitstruct
-Group:          Development/Languages/Python
+License:        MIT
+URL:            https://github.com/eerimoq/bitstruct
 Source:         https://files.pythonhosted.org/packages/source/b/bitstruct/bitstruct-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 %python_subpackages
 
 %description

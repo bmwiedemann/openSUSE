@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 20 13:00:48 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints for ppc64le avoid "no space left on device" build error
+
+-------------------------------------------------------------------
 Mon Jul 13 21:16:08 UTC 2020 - Jonas Kvinge <jonas@jkvinge.net>
 
 - Update to version 0.6.13:

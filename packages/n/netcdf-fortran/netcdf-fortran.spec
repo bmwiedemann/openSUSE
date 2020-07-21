@@ -27,8 +27,13 @@
 %if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build
 %endif
-%if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
-%define DisOMPI3 ExclusiveArch:  do_not_build
+%if !0%{?is_opensuse} && 0%{?sle_version:1}
+ %if 0%{?sle_version} < 150200
+  %define DisOMPI3 ExclusiveArch:  do_not_build
+ %endif
+ %if 0%{?sle_version} < 150300
+  %define DisOMPI4 ExclusiveArch:  do_not_build
+ %endif
 %endif
 
 %if "%flavor" == ""
@@ -67,6 +72,14 @@ ExcludeArch:    s390 s390x
 %{bcond_without mpi}
 %endif
 
+%if "%flavor" == "gnu-openmpi4-hpc"
+%{?DisOMPI4}
+%global compiler_family gnu
+%global mpi_flavor openmpi
+%global mpi_ver 4
+%{bcond_without mpi}
+%endif
+
 %if "%flavor" == "gnu-mvapich2-hpc"
 %global compiler_family gnu
 %global mpi_flavor mvapich2
@@ -102,6 +115,15 @@ ExcludeArch:    s390 s390x
 %global compiler_family gnu
 %global mpi_flavor openmpi
 %global mpi_ver 3
+%global c_f_ver 7
+%{bcond_without mpi}
+%endif
+
+%if "%flavor" == "gnu7-openmpi4-hpc"
+%{?DisOMPI4}
+%global compiler_family gnu
+%global mpi_flavor openmpi
+%global mpi_ver 4
 %global c_f_ver 7
 %{bcond_without mpi}
 %endif
@@ -147,6 +169,15 @@ ExcludeArch:    s390 s390x
 %{bcond_without mpi}
 %endif
 
+%if "%flavor" == "gnu8-openmpi4-hpc"
+%{?DisOMPI4}
+%global compiler_family gnu
+%global mpi_flavor openmpi
+%global mpi_ver 4
+%global c_f_ver 8
+%{bcond_without mpi}
+%endif
+
 %if "%flavor" == "gnu8-mvapich2-hpc"
 %global compiler_family gnu
 %global mpi_flavor mvapich2
@@ -188,6 +219,15 @@ ExcludeArch:    s390 s390x
 %{bcond_without mpi}
 %endif
 
+%if "%flavor" == "gnu9-openmpi4-hpc"
+%{?DisOMPI4}
+%global compiler_family gnu
+%global mpi_flavor openmpi
+%global mpi_ver 4
+%global c_f_ver 9
+%{bcond_without mpi}
+%endif
+
 %if "%flavor" == "gnu9-mvapich2-hpc"
 %global compiler_family gnu
 %global mpi_flavor mvapich2
@@ -209,7 +249,6 @@ ExcludeArch:    s390 s390x
 %if 0%{!?package_name:1}
 %define package_name %{hpc_package_name %_ver}
 %endif
-%{?with_mpi:%global hpc_module_pname p%{pname}}
 
 Name:           %package_name
 %define libname libnetcdf-fortran
@@ -336,7 +375,7 @@ chmod a-x RELEASE_NOTES.md
 
 %build
 %{hpc_setup}
-module load %{?with_mpi:p}netcdf
+module load netcdf
 export CFLAGS="-I $NETCDF_INC -L$NETCDF_LIB -lnetcdf -L$HDF5_LIB -lhdf5"
 export FCFLAGS="-std=legacy"
 export FFLAGS=$FCFLAGS
@@ -361,7 +400,7 @@ make %{?_smp_mflags}
 
 %install
 %{hpc_setup}
-module load %{?with_mpi:p}netcdf
+module load netcdf
 export CFLAGS="-I $NETCDF_INC -L$NETCDF_LIB -lnetcdf -L$HDF5_LIB -lhdf5"
 export CPPFLAGS=$CFLAGS
 export LDFLAGS="-L$NETCDF_LIB -lnetcdf -L$HDF5_LIB -lhdf5"
@@ -404,8 +443,8 @@ module-whatis "%{url}"
 # Require generic netcdf
 
 if [ expr [ module-info mode load ] || [module-info mode display ] ] {
-    if {  ![is-loaded %{?with_mpi:p}netcdf]  } {
-        module load %{?with_mpi:p}netcdf
+    if {  ![is-loaded netcdf]  } {
+        module load netcdf
     }
 }
 
@@ -435,7 +474,7 @@ EOF
 %if %_do_check
 %check
 %{hpc_setup}
-    module load %{?with_mpi:p}netcdf
+    module load netcdf
 export CFLAGS="-I $NETCDF_INC -L$NETCDF_LIB -lnetcdf -L$HDF5_LIB -lhdf5"
 export CPPFLAGS=$CFLAGS
 export LDFLAGS="-L$NETCDF_LIB -lnetcdf -L$HDF5_LIB -lhdf5"
@@ -447,9 +486,11 @@ export F77="mpif77"
     make check
 %endif
 
-%post -n %{libname}%{hpc_package_name_tail %_ver} -p /sbin/ldconfig
+%post -n %{libname}%{hpc_package_name_tail %_ver}
+/sbin/ldconfig -N %{hpc_libdir}
+
 %postun -n %{libname}%{hpc_package_name_tail %_ver} 
-/sbin/ldconfig
+/sbin/ldconfig -N %{hpc_libdir}
 %hpc_module_delete_if_default
 
 %files

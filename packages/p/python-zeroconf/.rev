@@ -150,4 +150,12 @@
     on SRV/A/AAAA record changes now), thanks to Matt Saxon</comment>
     <requestid>812731</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f6a52bff454953faedeeb201d1dbd399</srcmd5>
+    <version>0.28.0</version>
+    <time>1595339465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822073</requestid>
+  </revision>
 </revisionlist>

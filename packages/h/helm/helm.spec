@@ -35,6 +35,26 @@ BuildRequires:  golang(API) >= 1.14
 %description
 Helm is a tool for managing Kubernetes charts. Charts are packages of pre-configured Kubernetes resources.
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    packageand(%{name}:bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash command line completion support for %{name}.
+
+%package zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    packageand(%{name}:zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+Zsh command line completion support for %{name}.
+
 %prep
 %setup -qa1
 
@@ -44,10 +64,24 @@ go build -mod=vendor -buildmode=pie ./cmd/helm
 %install
 mkdir -p %{buildroot}%{_bindir}
 install -m755 helm %{buildroot}/%{_bindir}/helm
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions
+./helm completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d
+./helm completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/helm
+
+%files bash-completion
+%defattr(-,root,root)
+%dir %{_datarootdir}/bash-completion/completions/
+%{_datarootdir}/bash-completion/completions/%{name}
+
+%files zsh-completion
+%defattr(-,root,root)
+%dir %{_datarootdir}/zsh_completion.d/
+%{_datarootdir}/zsh_completion.d/_%{name}
 
 %changelog

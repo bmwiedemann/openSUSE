@@ -1,7 +1,61 @@
 -------------------------------------------------------------------
+Fri Jul 17 07:33:25 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.14.6 (released 2020-07-16) includes fixes to the go command,
+  the compiler, the linker, vet, and the database/sql,
+  encoding/json, net/http, reflect, and testing packages.
+  Refs boo#1164903 go1.14 release tracking
+  * go#39991 runtime: missing deferreturn on linux/ppc64le
+  * go#39920 net/http: panic on misformed If-None-Match Header with http.ServeContent
+  * go#39849 cmd/compile: internal compile error when using sync.Pool: mismatched zero/store sizes
+  * go#39824 cmd/go: TestBuildIDContainsArchModeEnv/386 fails on linux/386 in Go 1.14 and 1.13, not 1.15
+  * go#39698 reflect: panic from malloc after MakeFunc function returns value that is also stored globally
+  * go#39636 reflect: DeepEqual can return true for values that are not equal
+  * go#39585 encoding/json: incorrect object key unmarshaling when using custom TextUnmarshaler as Key with string values
+  * go#39562 cmd/compile/internal/ssa: TestNexting/dlv-dbg-hist failing on linux-386-longtest builder because it tries to use an older version of dlv which only supports linux/amd64
+  * go#39308 testing: streaming output loses parallel subtest associations
+  * go#39288 cmd/vet: update for new number formats
+  * go#39101 database/sql: context cancellation allows statements to execute after rollback
+  * go#38030 doc: BuildNameToCertificate deprecated in go 1.14 not mentioned in the release notes
+
+-------------------------------------------------------------------
+Wed Jul 14 00:24:08 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.14.5 (released 2020-07-14) includes security fixes to the
+  crypto/x509 and net/http packages addressing the following CVEs:
+  CVE-2020-15586 CVE-2020-14039
+  Refs boo#1174153 boo#1174191
+  Refs boo#1164903 go1.14 release tracking
+  * boo#1174153 CVE-2020-15586
+  * boo#1174191 CVE-2020-14039 (Windows only)
+  * go#40212 net/http: Expect 100-continue panics in httputil.ReverseProxy
+  * go#40210 crypto/x509: Certificate.Verify method seemingly ignoring EKU requirements on Windows
+
+-------------------------------------------------------------------
+Tue Jun 30 17:14:24 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Add support for riscv64
+
+-------------------------------------------------------------------
+Mon Jun 29 13:46:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- Packaging improvements for update-alternatives priority,
+  %license tag, and permissions in %files macro section.
+  * update-alternatives increment priority on this and subsequent
+    go1.x versions using priority = 20 + (minor version) i.e.
+    go1.13 = 33, go1.14 = 34, etc.
+  * Use %license tag for LICENSE keep %doc for suse_version < 1500
+  * Remove %defattr(-,root,root,-) in %files
+
+-------------------------------------------------------------------
 Fri Jun 12 12:34:48 UTC 2020 - Richard Brown <rbrown@suse.com>
 
-- Add Prefer-etc-hosts-over-DNS.patch to ensure /etc/hosts is used if /etc/nsswitch.conf is not present boo#1172868 gh#golang/go#35305
+- Add patch to ensure /etc/hosts is used if /etc/nsswitch.conf is
+  not present boo#1172868 gh#golang/go#35305
+  * add go1.x-prefer-etc-hosts-over-dns.patch
+  * Patch renamed and fields added per packaging guidelines
+    on 2020-07-15 by Jeff Kowalczyk <jkowalczyk@suse.com>
+  * Patch can likely be dropped for go1.16 in February 2021
 
 -------------------------------------------------------------------
 Tue Jun  9 17:32:52 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>

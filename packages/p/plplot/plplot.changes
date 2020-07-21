@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 21 11:36:26 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable octave bindings for openSUSE < 1550 where they fail to
+  build.
+
+-------------------------------------------------------------------
+Mon Jul 20 12:50:23 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints for PowerPC avoid "no space left on device" build error
+
+-------------------------------------------------------------------
 Tue Jul 14 13:22:12 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add plplot-include-QPainterPath.patch: Include QPainterPath

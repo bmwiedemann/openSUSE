@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 16 02:00:23 UTC 2020 - psimons@suse.com
+
+- Update extra to version 1.7.4.
+  1.7.4, released 2020-07-15
+      #59, add whileJustM and untilJustM
+      #61, optimise nubOrd (10% or so)
+      Add first3, second3, third3
+
+-------------------------------------------------------------------
 Tue Jun  9 09:10:56 UTC 2020 - psimons@suse.com
 
 - Update extra to version 1.7.3.

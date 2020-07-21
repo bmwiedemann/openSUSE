@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 16 08:45:00 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Permit to write networking config changes without touching the
+  service and other components like the firewall (bsc#1173298)
+- Permit dot characters in the hostname allowing to specify it as
+  a FQDN (bsc#1173298)
+- 4.3.13
+
+-------------------------------------------------------------------
+Wed Jul 15 15:10:34 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Do not use Profile.current (bsc#1174173)
+- 4.3.12
+
+-------------------------------------------------------------------
 Wed Jul 01 08:52:44 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Do not remove automatically aliases from /etc/hosts during an

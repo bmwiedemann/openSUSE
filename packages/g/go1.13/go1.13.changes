@@ -1,7 +1,50 @@
 -------------------------------------------------------------------
+Fri Jul 17 07:33:25 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.13.14 (released 2020/07/16) includes fixes to the compiler,
+  vet, and the database/sql, net/http, and reflect packages
+  Refs boo#1149259 go1.13 release tracking
+  * go#39925 net/http: panic on misformed If-None-Match Header with http.ServeContent
+  * go#39848 cmd/compile: internal compile error when using sync.Pool: mismatched zero/store sizes
+  * go#39823 cmd/go: TestBuildIDContainsArchModeEnv/386 fails on linux/386 in Go 1.14 and 1.13, not 1.15
+  * go#39697 reflect: panic from malloc after MakeFunc function returns value that is also stored globally
+  * go#39561 cmd/compile/internal/ssa: TestNexting/dlv-dbg-hist failing on linux-386-longtest builder because it tries to use an older version of dlv which only supports linux/amd64
+  * go#39538 net: TestDialParallel is flaky on windows-amd64-longtest
+  * go#39287 cmd/vet: update for new number formats
+
+-------------------------------------------------------------------
+Wed Jul 14 00:24:08 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.13.13 (released 2020/07/14) includes security fixes to the
+  crypto/x509 and net/http packages addressing the following CVE:
+  CVE-2020-15586 CVE-2020-14039
+  Refs boo#1174153 boo#1174191
+  Refs boo#1149259 go1.13 release tracking
+  * boo#1174153 CVE-2020-15586
+  * boo#1174191 CVE-2020-14039 (Windows only)
+  * go#40211 net/http: Expect 100-continue panics in httputil.ReverseProxy
+  * go#40209 crypto/x509: Certificate.Verify method seemingly ignoring EKU requirements on Windows
+
+-------------------------------------------------------------------
+Mon Jun 29 13:46:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- Packaging improvements for update-alternatives priority,
+  %license tag, and permissions in %files macro section.
+  * update-alternatives increment priority on this and subsequent
+    go1.x versions using priority = 20 + (minor version) i.e.
+    go1.13 = 33, go1.14 = 34, etc.
+  * Use %license tag for LICENSE keep %doc for suse_version < 1500
+  * Remove %defattr(-,root,root,-) in %files
+
+-------------------------------------------------------------------
 Fri Jun 12 12:34:48 UTC 2020 - Richard Brown <rbrown@suse.com>
 
-- Add Prefer-etc-hosts-over-DNS.patch to ensure /etc/hosts is used if /etc/nsswitch.conf is not present boo#1172868 gh#golang/go#35305
+- Add patch to ensure /etc/hosts is used if /etc/nsswitch.conf is
+  not present boo#1172868 gh#golang/go#35305
+  * add go1.x-prefer-etc-hosts-over-dns.patch
+  * Patch renamed and fields added per packaging guidelines
+    on 2020-07-15 by Jeff Kowalczyk <jkowalczyk@suse.com>
+  * Patch can likely be dropped for go1.16 in February 2021
 
 -------------------------------------------------------------------
 Mon Jun  8 08:22:07 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
@@ -13,6 +56,15 @@ Sat Jun  6 01:46:13 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Document (and clean up) LLVM snapshotting for go-race.
 - Update _service to no longer fetch Go from git.
+
+-------------------------------------------------------------------
+Fri Jun  5 22:56:00 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.13.12 (released 2020/06/01) includes fixes to the runtime,
+  and the go/types and math/big packages.
+  Refs boo#1149259.
+  * go#38932 runtime: preemption in startTemplateThread may cause infinite hang
+  * go#36689 go/types, math/big: data race in go/types due to math/big.Rat accessors unsafe for concurrent use
 
 -------------------------------------------------------------------
 Fri May 15 19:42:01 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>

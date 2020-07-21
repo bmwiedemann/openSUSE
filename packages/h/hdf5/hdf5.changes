@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 20 14:48:42 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add missing openmpi4 flavors.
+- Enable build of non-HPC flavors for all non-HPC builds.
+
+-------------------------------------------------------------------
 Wed Jun 24 07:32:58 UTC 2020 - Alin M Elena <alinm.elena@gmail.com>
 
 - add openmpi4 packages to build and disable build for leap

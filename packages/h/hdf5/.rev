@@ -658,4 +658,12 @@ fixed baselibs.conf compared to previous version</comment>
     <comment></comment>
     <requestid>818282</requestid>
   </revision>
+  <revision rev="68" vrev="11">
+    <srcmd5>3b54f9f20664b6ae048559b3115d5f63</srcmd5>
+    <version>1.10.5</version>
+    <time>1595339351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822016</requestid>
+  </revision>
 </revisionlist>

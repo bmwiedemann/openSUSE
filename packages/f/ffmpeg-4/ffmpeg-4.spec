@@ -64,6 +64,7 @@
 %bcond_without srt
 %bcond_without codec2
 %bcond_without lv2
+%bcond_without librav1e
 %bcond_without rubberband
 %bcond_without soxr
 %bcond_without zmq
@@ -75,6 +76,7 @@
 %bcond_with srt
 %bcond_with codec2
 %bcond_with lv2
+%bcond_with librav1e
 %bcond_with rubberband
 %bcond_with soxr
 %bcond_with zmq
@@ -169,6 +171,9 @@ BuildRequires:  pkgconfig(lilv-0)
 %endif
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(opus)
+%if %{with librav1e}
+BuildRequires:  pkgconfig(rav1e)
+%endif
 %if %{with rubberband}
 BuildRequires:  pkgconfig(rubberband)
 %endif
@@ -642,6 +647,9 @@ LDFLAGS="%_lto_cflags" \
 %endif
 	--enable-libopus \
 	--enable-libpulse \
+%if %{with librav1e}
+	--enable-librav1e \
+%endif
 %if %{with rubberband}
 	--enable-librubberband \
 %endif

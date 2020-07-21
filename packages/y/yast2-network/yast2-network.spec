@@ -17,7 +17,7 @@
 
 
 Name:           yast2-network
-Version:        4.3.11
+Version:        4.3.13
 Release:        0
 Summary:        YaST2 - Network Configuration
 License:        GPL-2.0-only
@@ -65,6 +65,9 @@ BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
 
 # carrier detection
 Conflicts:      yast2-core < 2.10.6
+
+# new calls in AutoinstGeneral
+Conflicts:      autoyast2 < 4.3.23
 
 Obsoletes:      yast2-network-devel-doc <= 3.1.154
 Provides:       yast2-network-devel-doc = %{version}

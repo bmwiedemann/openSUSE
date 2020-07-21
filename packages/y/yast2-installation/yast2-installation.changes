@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 16 11:01:42 CEST 2020 - schubi@suse.de
+
+- Moving <files> section handling from second installation stage
+  to first installation stage. (bsc#1174194)
+- 4.3.9  
+  
+-------------------------------------------------------------------
+Wed Jul 15 15:09:07 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Do not use Profile.current unless necessary (bsc#1174173)
+- 4.3.8
+
+-------------------------------------------------------------------
 Thu Jun 25 13:24:45 UTC 2020 - Martin Vidner <mvidner@suse.com>
 
 - Fix "Cmdline: parameter not set" for virt-install (bsc#1172139)

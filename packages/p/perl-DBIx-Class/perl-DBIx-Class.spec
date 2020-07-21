@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBIx-Class
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-DBIx-Class
-Version:        0.082841
+Version:        0.082842
 Release:        0
 %define cpan_name DBIx-Class
 Summary:        Extensible and flexible object <-> relational mapper
-License:        Artistic-1.0 or GPL-1.0+
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/DBIx-Class/
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RI/RIBASUSHI/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -38,7 +38,6 @@ BuildRequires:  perl(Context::Preserve) >= 0.01
 BuildRequires:  perl(DBD::SQLite) >= 1.29
 BuildRequires:  perl(DBI) >= 1.57
 BuildRequires:  perl(Data::Dumper::Concise) >= 2.020
-BuildRequires:  perl(Data::Page) >= 2.00
 BuildRequires:  perl(Devel::GlobalDestruction) >= 0.09
 BuildRequires:  perl(File::Temp) >= 0.22
 BuildRequires:  perl(Hash::Merge) >= 0.12
@@ -47,7 +46,7 @@ BuildRequires:  perl(Module::Find) >= 0.07
 BuildRequires:  perl(Moo) >= 2.000
 BuildRequires:  perl(Package::Stash) >= 0.28
 BuildRequires:  perl(Path::Class) >= 0.18
-BuildRequires:  perl(SQL::Abstract) >= 1.81
+BuildRequires:  perl(SQL::Abstract::Classic) >= 1.91
 BuildRequires:  perl(Scope::Guard) >= 0.03
 BuildRequires:  perl(Sub::Name) >= 0.04
 BuildRequires:  perl(Test::Deep) >= 0.101
@@ -64,14 +63,13 @@ Requires:       perl(Config::Any) >= 0.20
 Requires:       perl(Context::Preserve) >= 0.01
 Requires:       perl(DBI) >= 1.57
 Requires:       perl(Data::Dumper::Concise) >= 2.020
-Requires:       perl(Data::Page) >= 2.00
 Requires:       perl(Devel::GlobalDestruction) >= 0.09
 Requires:       perl(Hash::Merge) >= 0.12
 Requires:       perl(MRO::Compat) >= 0.12
 Requires:       perl(Module::Find) >= 0.07
 Requires:       perl(Moo) >= 2.000
 Requires:       perl(Path::Class) >= 0.18
-Requires:       perl(SQL::Abstract) >= 1.81
+Requires:       perl(SQL::Abstract::Classic) >= 1.91
 Requires:       perl(Scope::Guard) >= 0.03
 Requires:       perl(Sub::Name) >= 0.04
 Requires:       perl(Text::Balanced) >= 2.00
@@ -118,17 +116,17 @@ back to trunk for a major release.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
 sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' Makefile.PL
 # MANUAL END
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+PERL_USE_UNSAFE_INC=1 perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

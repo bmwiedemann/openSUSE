@@ -136,4 +136,12 @@
 - Fixed bug in module file. (forwarded request 821324 from eeich)</comment>
     <requestid>821326</requestid>
   </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>1aa88a5b215b51d9c1764761abc018e9</srcmd5>
+    <version>4.5.2</version>
+    <time>1595339356</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822017</requestid>
+  </revision>
 </revisionlist>

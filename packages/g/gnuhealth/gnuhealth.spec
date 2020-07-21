@@ -34,7 +34,7 @@ BuildRequires:  trytond
 
 URL:            https://health.gnu.org
 Source0:        https://ftp.gnu.org/gnu/health/%{name}-%{version}.tar.gz
-Source1:        GNUHealth.README.SUSE
+Source1:        GNUHealth.README.openSUSE
 Source2:        gnuhealth-control
 Source3:        gnuhealth.service
 Source4:        gnuhealth-webdav@.service
@@ -193,7 +193,7 @@ EOF
 %{_bindir}/install_demo_database.sh
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}-webdav@.service
-%doc README Changelog gnuhealth-setup version gnuhealthrc GNUHealth.README.SUSE scripts/* config/* doc/*
+%doc README Changelog gnuhealth-setup version gnuhealthrc GNUHealth.README.openSUSE scripts/* config/* doc/*
 %{_docdir}/%{name}/examples* 
 %dir %{_sysconfdir}/tryton
 %license COPYING

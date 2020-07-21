@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 10 02:00:27 UTC 2020 - psimons@suse.com
+
+- Update brick to version 0.55.
+  0.55
+  ----
+
+  Package changes:
+   * Increased lower bound on `vty` dependency to 5.29.
+
+  Bug fixes:
+   * `customMain` now restores the initial terminal input state on
+     shutdown. This means that changes to the input state flags in the last
+     `suspendAndResume` before program exit are no longer propagated to the
+     end user's terminal environment (which could lead to broken or garbled
+     terminal I/O).
+
+-------------------------------------------------------------------
 Tue Jun  9 09:26:18 UTC 2020 - psimons@suse.com
 
 - Add brick at version 0.54.

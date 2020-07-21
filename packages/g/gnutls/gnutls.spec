@@ -41,7 +41,8 @@ Source3:        baselibs.conf
 Patch1:         gnutls-3.5.11-skip-trust-store-tests.patch
 Patch4:         gnutls-3.6.6-set_guile_site_dir.patch
 Patch5:         0001-crypto-api-always-allocate-memory-when-serializing-i.patch
-Patch6:         gnutls-temporarily_disable_broken_guile_reauth_test
+Patch6:         gnutls-temporarily_disable_broken_guile_reauth_test.patch
+Patch7:         gnutls-detect_nettle_so.patch
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  datefudge

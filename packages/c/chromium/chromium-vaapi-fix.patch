@@ -2,11 +2,11 @@ description: fix vaapi with vdpau
 author: Maxim Baz
 origin: chromium-vaapi patches from Arch linux
 
-Index: chromium-81.0.4044.43/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
+Index: chromium-84.0.4147.68/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
 ===================================================================
---- chromium-81.0.4044.43.orig/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
-+++ chromium-81.0.4044.43/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
-@@ -712,6 +712,7 @@ void VaapiVideoDecodeAccelerator::Assign
+--- chromium-84.0.4147.68.orig/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
++++ chromium-84.0.4147.68/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
+@@ -677,6 +677,7 @@ void VaapiVideoDecodeAccelerator::Assign
    // |vpp_vaapi_wrapper_| for VaapiPicture to DownloadFromSurface() the VA's
    // internal decoded frame.
    if (buffer_allocation_mode_ != BufferAllocationMode::kNone &&
@@ -14,7 +14,7 @@ Index: chromium-81.0.4044.43/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
        !vpp_vaapi_wrapper_) {
      vpp_vaapi_wrapper_ = VaapiWrapper::Create(
          VaapiWrapper::kVideoProcess, VAProfileNone,
-@@ -743,7 +744,8 @@ void VaapiVideoDecodeAccelerator::Assign
+@@ -708,7 +709,8 @@ void VaapiVideoDecodeAccelerator::Assign
              : gfx::Size();
  
      std::unique_ptr<VaapiPicture> picture = vaapi_picture_factory_->Create(
@@ -24,7 +24,7 @@ Index: chromium-81.0.4044.43/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
              ? vaapi_wrapper_
              : vpp_vaapi_wrapper_,
          make_context_current_cb_, bind_image_cb_, buffer, size_to_bind);
-@@ -1199,6 +1201,14 @@ VaapiVideoDecodeAccelerator::GetSupporte
+@@ -1164,6 +1166,14 @@ VaapiVideoDecodeAccelerator::GetSupporte
  
  VaapiVideoDecodeAccelerator::BufferAllocationMode
  VaapiVideoDecodeAccelerator::DecideBufferAllocationMode() {
@@ -39,20 +39,20 @@ Index: chromium-81.0.4044.43/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
    // TODO(crbug.com/912295): Enable a better BufferAllocationMode for IMPORT
    // |output_mode_| as well.
    if (output_mode_ == VideoDecodeAccelerator::Config::OutputMode::IMPORT)
-@@ -1211,7 +1221,7 @@ VaapiVideoDecodeAccelerator::DecideBuffe
-   // depends on the bitstream and sometimes it's not enough to cover the amount
-   // of frames needed by the client pipeline (see b/133733739).
+@@ -1174,7 +1184,7 @@ VaapiVideoDecodeAccelerator::DecideBuffe
+   // associated format reconciliation copy, avoiding all internal buffer
+   // allocations.
    // TODO(crbug.com/911754): Enable for VP9 Profile 2.
 -  if (IsGeminiLakeOrLater() &&
 +  if (false && IsGeminiLakeOrLater() &&
-       (profile_ == VP9PROFILE_PROFILE0 || profile_ == VP8PROFILE_ANY)) {
+       (profile_ == VP9PROFILE_PROFILE0 || profile_ == VP8PROFILE_ANY ||
+        (profile_ >= H264PROFILE_MIN && profile_ <= H264PROFILE_MAX))) {
      // Add one to the reference frames for the one being currently egressed, and
-     // an extra allocation for both |client_| and |decoder_|, see
-Index: chromium-81.0.4044.43/media/gpu/vaapi/vaapi_video_decode_accelerator.h
+Index: chromium-84.0.4147.68/media/gpu/vaapi/vaapi_video_decode_accelerator.h
 ===================================================================
---- chromium-81.0.4044.43.orig/media/gpu/vaapi/vaapi_video_decode_accelerator.h
-+++ chromium-81.0.4044.43/media/gpu/vaapi/vaapi_video_decode_accelerator.h
-@@ -208,6 +208,7 @@ class MEDIA_GPU_EXPORT VaapiVideoDecodeA
+--- chromium-84.0.4147.68.orig/media/gpu/vaapi/vaapi_video_decode_accelerator.h
++++ chromium-84.0.4147.68/media/gpu/vaapi/vaapi_video_decode_accelerator.h
+@@ -210,6 +210,7 @@ class MEDIA_GPU_EXPORT VaapiVideoDecodeA
      // Using |client_|s provided PictureBuffers and as many internally
      // allocated.
      kNormal,
@@ -60,11 +60,11 @@ Index: chromium-81.0.4044.43/media/gpu/vaapi/vaapi_video_decode_accelerator.h
    };
  
    // Decides the concrete buffer allocation mode, depending on the hardware
-Index: chromium-81.0.4044.43/media/gpu/vaapi/vaapi_wrapper.cc
+Index: chromium-84.0.4147.68/media/gpu/vaapi/vaapi_wrapper.cc
 ===================================================================
---- chromium-81.0.4044.43.orig/media/gpu/vaapi/vaapi_wrapper.cc
-+++ chromium-81.0.4044.43/media/gpu/vaapi/vaapi_wrapper.cc
-@@ -1137,6 +1137,11 @@ VAImplementation VaapiWrapper::GetImplem
+--- chromium-84.0.4147.68.orig/media/gpu/vaapi/vaapi_wrapper.cc
++++ chromium-84.0.4147.68/media/gpu/vaapi/vaapi_wrapper.cc
+@@ -1227,6 +1227,11 @@ VAImplementation VaapiWrapper::GetImplem
  }
  
  // static
@@ -76,11 +76,11 @@ Index: chromium-81.0.4044.43/media/gpu/vaapi/vaapi_wrapper.cc
  scoped_refptr<VaapiWrapper> VaapiWrapper::Create(
      CodecMode mode,
      VAProfile va_profile,
-Index: chromium-81.0.4044.43/media/gpu/vaapi/vaapi_wrapper.h
+Index: chromium-84.0.4147.68/media/gpu/vaapi/vaapi_wrapper.h
 ===================================================================
---- chromium-81.0.4044.43.orig/media/gpu/vaapi/vaapi_wrapper.h
-+++ chromium-81.0.4044.43/media/gpu/vaapi/vaapi_wrapper.h
-@@ -119,6 +119,9 @@ class MEDIA_GPU_EXPORT VaapiWrapper
+--- chromium-84.0.4147.68.orig/media/gpu/vaapi/vaapi_wrapper.h
++++ chromium-84.0.4147.68/media/gpu/vaapi/vaapi_wrapper.h
+@@ -121,6 +121,9 @@ class MEDIA_GPU_EXPORT VaapiWrapper
    // Returns the type of the underlying VA-API implementation.
    static VAImplementation GetImplementationType();
  

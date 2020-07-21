@@ -828,4 +828,41 @@
 - Disable warning messages from Qt5(.15 and up) (boo#1172565)</comment>
     <requestid>816758</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>181b6577ebbead84560142b0af2ccd6c</srcmd5>
+    <version>5.4.0</version>
+    <time>1595339069</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gnuplot 5.4
+  * NEW support for 64-bit integer arithmetic
+  * NEW support for voxel grids
+  * NEW plot ... with table if &lt;expression&gt;
+  * NEW &quot;set walls&quot; command to show xy xz and yz planes in 3D plots
+  * NEW &quot;set clip radial&quot; for line segments in polar mode plots
+  * NEW &quot;splot ... with isosurface&quot;
+  * NEW &quot;splot ... with circles&quot;
+  * NEW &quot;splot ... with boxes&quot;
+  * NEW &quot;plot ... with arrows&quot;
+  * NEW &quot;plot ... with polygons&quot;
+  * NEW &quot;set view projection {xz|yz}&quot;
+  * NEW &quot;set datafile columnheaders&quot;
+  * NEW per-plot fillcolor and fillstyle for pm3d surfaces
+  * NEW allow separate color column with dgrid3d surfaces (but not color splines)
+  * NEW string function trim(&quot; padded string &quot;) removes leading and trailing whitespace
+  * NEW unicode escape sequences \U+hhhh
+  * NEW order N Bessel functions of 1st and 2nd kind (besjn besyn)
+  * NEW modified Bessel functions I0 (besi0) and I1 (besi1)
+  * NEW modified Bessel function of order n (besin)
+  * NEW &quot;set object polygon depthsort&quot; as an alternative to front/back/behind
+  * NEW &quot;set pixmap&quot; object-like bitmap images from png/gif/jpeg input files
+  * NEW overflow avoidance extends range of arguments handled by complex division
+  * NEW largely extended pcl5 terminal supports PCL5e/PCL5c printers
+  * NEW revised pstricks and texdraw LaTeX terminals
+  * NEW extended dospc terminal (DOS32/OpenWatcom)
+  * NEW extended svga terminal using the (M)GRX library (DOS32/DJGPP)
+  * NEW heavily revised fig terminal
+  * NEW LaTeX terminal pict2e uses the LaTeX2e pict2e environment
+  * NEW Left-click on hypertext label will copy text to clipboard (wxt qt)</comment>
+    <requestid>821479</requestid>
+  </revision>
 </revisionlist>

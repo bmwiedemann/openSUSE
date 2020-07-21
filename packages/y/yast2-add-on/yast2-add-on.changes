@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 16 10:17:01 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not export registered add-ons, as they should be included
+  in the <suse_register/> section of the profile (bsc#1174202).
+- 4.3.2
+
+-------------------------------------------------------------------
 Wed Jun 10 14:04:00 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Reduce autoyast profile size if addons are empty (bsc#1172749) 

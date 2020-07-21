@@ -146,4 +146,13 @@
     information</comment>
     <requestid>819310</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4205ad27751dc438a93ed81fd7cba968</srcmd5>
+    <version>20.7.1</version>
+    <time>1595339329</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.7.1:
+  * new: add market login eip. expose helpers</comment>
+    <requestid>821997</requestid>
+  </revision>
 </revisionlist>

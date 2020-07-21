@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jul 20 10:08:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add baselibs.conf: produce librav1e0-32bit, as needed by
+  ffmpeg-4, as this newly builds against rav1e.
+
+-------------------------------------------------------------------
+Sun Jun  7 12:36:57 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.3.3
+  * https://github.com/xiph/rav1e/releases/tag/v0.3.3
+
+-------------------------------------------------------------------
+Fri May 29 06:20:36 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.3.2
+  * https://github.com/xiph/rav1e/releases/tag/v0.3.2
+- Removed a6e98603cf4ada059fa3b715f0412e3ad83bb7fc.patch
+
+-------------------------------------------------------------------
+Tue May 19 14:38:25 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix parentheses warnings
+- Added a6e98603cf4ada059fa3b715f0412e3ad83bb7fc.patch
+
+-------------------------------------------------------------------
 Tue Mar  3 07:01:18 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 0.3.1

@@ -1,11 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun  9 09:15:45 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Correctly detect gmp, nettle, and hogweed libraries (bsc#1172666)
+  * add gnutls-detect_nettle_so.patch
+
+-------------------------------------------------------------------
 Mon Jun  8 15:41:46 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
 
 - Fix a memory leak that could lead to a DoS attack against Samba
   servers (bsc#1172663)
   * add 0001-crypto-api-always-allocate-memory-when-serializing-i.patch
 - Temporarily disable broken guile reauth test (bsc#1171565)
-  * add gnutls-temporarily_disable_broken_guile_reauth_test
+  * add gnutls-temporarily_disable_broken_guile_reauth_test.patch
 
 -------------------------------------------------------------------
 Thu Jun  4 09:39:58 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>

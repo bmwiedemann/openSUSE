@@ -28,7 +28,11 @@
 %define gcc_go_version 6
 %define go_bootstrap_version go1.4
 %else
+%ifarch riscv64
+%define go_bootstrap_version go1.14
+%else
 %define go_bootstrap_version go1.9
+%endif
 %if 0%{?sle_version} == 150000
 # SLE15 or Leap 15.x
 %define gcc_go_version 7
@@ -126,9 +130,12 @@
 %ifarch s390x
 %define go_arch s390x
 %endif
+%ifarch riscv64
+%define go_arch riscv64
+%endif
 
 Name:           go1.14
-Version:        1.14.4
+Version:        1.14.6
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -146,7 +153,7 @@ Patch5:         tools-packaging.patch
 Patch8:         gcc6-go.patch
 Patch9:         gcc7-go.patch
 # PATCH-FIX-UPSTREAM prefer /etc/hosts over DNS when /etc/nsswitch.conf not present boo#1172868 gh#golang/go#35305
-Patch12:        Prefer-etc-hosts-over-DNS.patch
+Patch12:        go1.x-prefer-etc-hosts-over-dns.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # boostrap
 %if %{with gccgo}
@@ -187,7 +194,7 @@ Obsoletes:      go-devel < go%{version}
 # go-vim/emacs were separate projects starting from 1.4
 Obsoletes:      go-emacs <= 1.3.3
 Obsoletes:      go-vim <= 1.3.3
-ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x
+ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x riscv64
 
 %description
 Go is an expressive, concurrent, garbage collected systems programming language
@@ -364,7 +371,7 @@ cp -r doc/* %{buildroot}%{_docdir}/go/%{go_api}
 %post
 
 update-alternatives \
-  --install %{_bindir}/go go %{_libdir}/go/%{go_api}/bin/go 30 \
+  --install %{_bindir}/go go %{_libdir}/go/%{go_api}/bin/go $((20+$(echo %{version} | cut -d. -f2))) \
   --slave %{_bindir}/gofmt gofmt %{_libdir}/go/%{go_api}/bin/gofmt \
   --slave %{_sysconfdir}/gdbinit.d/go.gdb go.gdb %{_libdir}/go/%{go_api}/bin/gdbinit.d/go.gdb
 
@@ -374,7 +381,6 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %files
-%defattr(-,root,root,-)
 %{_bindir}/go
 %{_bindir}/gofmt
 %dir %{_libdir}/go
@@ -391,10 +397,14 @@ fi
 %doc %{_docdir}/go/%{go_api}/AUTHORS
 %doc %{_docdir}/go/%{go_api}/CONTRIBUTORS
 %doc %{_docdir}/go/%{go_api}/CONTRIBUTING.md
-%doc %{_docdir}/go/%{go_api}/LICENSE
 %doc %{_docdir}/go/%{go_api}/PATENTS
 %doc %{_docdir}/go/%{go_api}/README.md
 %doc %{_docdir}/go/%{go_api}/README.SUSE
+%if 0%{?suse_version} < 1500
+%doc %{_docdir}/go/%{go_api}/LICENSE
+%else
+%license %{_docdir}/go/%{go_api}/LICENSE
+%endif%
 
 # We don't include TSAN in the main Go package.
 %ifarch %{tsan_arch}
@@ -414,7 +424,6 @@ fi
 
 %ifarch %{tsan_arch}
 %files race
-%defattr(-,root,root,-)
 %{_datadir}/go/%{go_api}/src/runtime/race/race_linux_%{go_arch}.syso
 %endif
 

@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-librouteros
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Python implementation of MikroTik RouterOS API
 License:        GPL-2.0-or-later

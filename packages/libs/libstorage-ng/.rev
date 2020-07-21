@@ -703,4 +703,12 @@
     <comment>submitted by yast2-maintainers via jenkins</comment>
     <requestid>819128</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>dc912e47cdc7f4c7d5768f5605309bee</srcmd5>
+    <version>4.3.35</version>
+    <time>1595339189</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>821450</requestid>
+  </revision>
 </revisionlist>

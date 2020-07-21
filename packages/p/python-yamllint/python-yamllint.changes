@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 21 11:03:17 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.24.2
+  * Add ``locale`` config option and make ``key-ordering`` locale-aware
+  * Revert ``locale`` config option from version 1.24.0 because of a bug
+  * Specify config with environment variable ``YAMLLINT_CONFIG_FILE``
+  * Fix bug with CRLF in ``new-lines`` and ``require-starting-space``
+  * Do not run linter on directories whose names look like YAML files
+  * Add ``locale`` config option and make ``key-ordering`` locale-aware
+
+-------------------------------------------------------------------
 Tue Jul  7 06:14:04 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 -  Update to 1.23.0:

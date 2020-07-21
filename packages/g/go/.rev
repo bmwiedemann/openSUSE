@@ -883,4 +883,27 @@ go#29903 crypto/elliptic: CPU DoS vulnerability affecting P-521 and P-384 (forwa
   go1.12 packages are available for SLE-12. (forwarded request 725156 from jfkw)</comment>
     <requestid>725167</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>4560902ed56285a77e67b22edcae5241</srcmd5>
+    <version>1.14</version>
+    <time>1595339007</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure 'Provides: golang(API) = %{api_version}' is consistent
+  * Unify '{version'} and '{short_version}' as '{api_version}' for
+    'Provides: golang(API) = %{api_version}'
+  * Use both 'BuildRequires: go%{api_version}' and 'Requires: go%{api_version}'
+    to trigger build errors if go1.x is unavailable
+  * Add aarch64 to supported systems for go-race via
+    %define tsan_arch x86_64 aarch64
+  * Add tsan_arch x86_64 aarch64 for suse_version &gt;= 1500 and
+    sle_version &gt;= 150000, formerly conditional on suse_version &gt;= 1315
+  * Ensure %ifarch %{tsan_arch} always evaluates (nil does not work)
+    via dummy tsan_arch on systems where go-race is not supported
+- Enable for riscv64
+
+- Update to current stable go1.14
+  Refs boo#1164903 go1.14 release tracking
+  * Remove redundant Provides: go-doc=%{version} per rpmlint warning</comment>
+    <requestid>821470</requestid>
+  </revision>
 </revisionlist>

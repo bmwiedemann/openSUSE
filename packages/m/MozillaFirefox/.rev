@@ -4509,4 +4509,16 @@
 - fix pipewire support for TW (boo#1172903)</comment>
     <requestid>820688</requestid>
   </revision>
+  <revision rev="316" vrev="2">
+    <srcmd5>7ad8edb7c2d97d1a3888732b3f77ed2a</srcmd5>
+    <version>78.0.2</version>
+    <time>1595339126</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mozilla-libavcodec58_91.patch to link against updated
+  soversion of libavcodec (58.91) with ffmpeg &gt;= 4.3.
+  (patch provided by Atri Bhattacharya &lt;badshah400@gmail.com&gt;
+- enable MOZ_USE_XINPUT2 for TW (again) (boo#1173320)
+  (Plasma 5.19.3 is now in TW)</comment>
+    <requestid>821616</requestid>
+  </revision>
 </revisionlist>

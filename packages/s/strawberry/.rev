@@ -549,4 +549,12 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>820763</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>bed98c3ddf69ab49c94319fa8d287270</srcmd5>
+    <version>0.6.13</version>
+    <time>1595339391</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822031</requestid>
+  </revision>
 </revisionlist>

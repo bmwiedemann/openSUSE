@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-stomp.py
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        Python STOMP client
 License:        Apache-2.0
@@ -57,7 +57,7 @@ A Python client library for accessing messaging servers (such as ActiveMQ, Apoll
 %python_uninstall_alternative stomp
 
 %files %{python_files}
-%doc README CHANGELOG
+%doc README CHANGELOG.md
 %license LICENSE
 %{python_sitelib}/*
 %python_alternative %{_bindir}/stomp

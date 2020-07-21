@@ -18,7 +18,7 @@
 
 
 Name:           rav1e
-Version:        0.3.1
+Version:        0.3.3
 Release:        0
 Summary:        Fastest and safest AV1 encoder
 License:        BSD-2-Clause
@@ -28,6 +28,7 @@ URL:            https://github.com/xiph/rav1e
 #
 Source0:        https://github.com/xiph/rav1e/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
+Source99:       baselibs.conf
 #
 BuildRequires:  cargo-c
 BuildRequires:  nasm

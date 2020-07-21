@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 21 10:35:58 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.10.1
+  * Add support for xmltodict force_list definition for xq CLI (#95)
+  * Support explicit doc markers (#93)
+  * Ensure proper ordering of help messages (#90)
+- Drop already merged pyaml53.patch
+
+-------------------------------------------------------------------
 Thu Mar  5 08:32:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.10.0:

@@ -16,6 +16,11 @@
 #
 
 
+#################################################################
+###    Please call "./pre_checkin.sh" prior to submitting.    ###
+###    (This will regenerate gnuplot-doc.changes)             ###
+#################################################################
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %global sname gnuplot
 %if "%{flavor}" == ""
@@ -70,18 +75,20 @@ BuildRequires:  tex(pdftex.def)
 BuildRequires:  tex(subfigure.sty)
 %endif
 URL:            http://www.gnuplot.info/
-Version:        5.2.8
+Version:        5.4.0
 Release:        0
+%global         underscore 5_4
 %if "%{flavor}" == ""
 Summary:        Function Plotting Utility and more
 License:        SUSE-Gnuplot AND GPL-2.0-or-later
-Group:          Productivity/Graphics/Visualization/Graph
+Group:          Documentation/Other
 %else
 Summary:        Documentation of GNUplot
 License:        SUSE-Gnuplot AND GPL-2.0-or-later
 Group:          Documentation/Other
 %endif
 Source0:        http://downloads.sourceforge.net/project/gnuplot/gnuplot/%{version}/gnuplot-%{version}.tar.gz
+Source1:        http://downloads.sourceforge.net/project/gnuplot/gnuplot/%{version}/Gnuplot_%{underscore}.pdf
 Source2:        gnuplot-fr.doc.bz2
 Source3:        README.whynot
 # http://mirrors.ctan.org/macros/latex209/contrib/picins/picins.sty
@@ -96,7 +103,6 @@ Patch4:         gnuplot-4.6.0-demo.diff
 Patch5:         gnuplot-wx3.diff
 Patch6:         gnuplot-QtCore-PIC.dif
 Patch7:         gnuplot-gd.patch
-Patch8:         gnuplot-QtIndexedList.dif
 %define _x11lib     %{_libdir}
 %define _x11data    %{_datadir}/X11
 %define _libx11     %{_exec_prefix}/lib/X11
@@ -131,7 +137,6 @@ cp %{_sourcedir}/picins.sty docs
 %patch5 -p1 -b .w3x
 %patch6 -p0 -b .pic
 %patch7 -p1 -b .gd
-%patch8 -p0 -b .qtlist
 
 %build
 autoreconf -fi
@@ -197,9 +202,12 @@ autoreconf -fi
 	    make srcdir=. pdf
 	popd
   popd
-  pushd tutorial/
+  if test -d tutorial/
+  then
+     pushd tutorial/
 	make srcdir=. clean pdf
-  popd
+     popd
+  fi
 %endif
 
 %install
@@ -208,7 +216,7 @@ autoreconf -fi
 %if "%{flavor}" == ""
     make DESTDIR=%{buildroot} appdefaultdir=%{_appdef} install
     mkdir -p %{buildroot}/%{_mandir}/ja/man1
-    mv %{buildroot}/%{_mandir}/man1/gnuplot-ja.1 %{buildroot}/%{_mandir}/ja/man1/gnuplot.1
+    install -m 0644 man/gnuplot-ja_JP.UTF-8 %{buildroot}/%{_mandir}/ja/man1/gnuplot.1
 %endif
 
 %if "%{flavor}" == "doc"
@@ -226,20 +234,18 @@ autoreconf -fi
     rm  -vf tutorial/eg7.pdf
     rm -rvf demo/html
     install -m 0444 docs/*.info*      %{buildroot}/%{_infodir}/
-    install -m 0444 docs/*.pdf        %{buildroot}/%{_docdir}/gnuplot/doc/
     install -m 0444 docs/htmldocs/*   %{buildroot}/%{_docdir}/gnuplot/doc/html
     install -m 0444 docs/psdoc/*.pdf  %{buildroot}/%{_docdir}/gnuplot/doc/
     install -m 0444 docs/psdoc/*.ps   %{buildroot}/%{_docdir}/gnuplot/doc/
     install -m 0444 docs/psdoc/*.gpi  %{buildroot}/%{_docdir}/gnuplot/doc/
     install -m 0444 docs/psdoc/*.doc  %{buildroot}/%{_docdir}/gnuplot/doc/
     install -m 0444 docs/psdoc/README %{buildroot}/%{_docdir}/gnuplot/doc/
-    install -m 0444 tutorial/*.pdf    %{buildroot}/%{_docdir}/gnuplot/doc/
     install -m 0444 demo/*.*          %{buildroot}/%{_docdir}/gnuplot/demo/
     install -m 0444 README*           %{buildroot}/%{_docdir}/gnuplot/
-    install -m 0444 VERSION           %{buildroot}/%{_docdir}/gnuplot/
     install -m 0444 NEWS BUGS	      %{buildroot}/%{_docdir}/gnuplot/
     install -m 0444 %{SOURCE3}        %{buildroot}/%{_docdir}/gnuplot/
     rm -f %{buildroot}/%{_docdir}/gnuplot/demo/Makefile*
+    install -m 0444 %{S:1}            %{buildroot}/%{_docdir}/gnuplot/
 %endif
     %fdupes -s %{buildroot}
 
@@ -267,8 +273,8 @@ autoreconf -fi
 
 %if "%{flavor}" == "doc"
 %files
-%doc %{_docdir}/gnuplot/
-%doc %{_infodir}/%{sname}.info.gz
+%{_docdir}/gnuplot/
+%{_infodir}/%{sname}.info.gz
 %endif
 
 %changelog

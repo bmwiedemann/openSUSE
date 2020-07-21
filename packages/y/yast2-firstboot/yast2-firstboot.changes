@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 16 09:15:57 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix firsboot_hostname client crash (bsc#1173298)
+- 4.3.1
+
+-------------------------------------------------------------------
 Thu May  7 11:05:20 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Autoyast schema: Allow optional types for string and map objects

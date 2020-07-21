@@ -208,6 +208,7 @@ Patch24:        mozilla-bmo1602730.patch
 Patch25:        mozilla-bmo998749.patch
 Patch26:        mozilla-bmo1626236.patch
 Patch27:        mozilla-s390x-skia-gradient.patch
+Patch28:        mozilla-libavcodec58_91.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -349,6 +350,7 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch25 -p1
 %patch26 -p1
 %patch27 -p1
+%patch28 -p1
 # Firefox
 %patch101 -p1
 %patch102 -p1

@@ -18,7 +18,7 @@
 
 %global pkg_name xml-types
 Name:           ghc-%{pkg_name}
-Version:        0.3.7
+Version:        0.3.8
 Release:        0
 Summary:        Basic types for representing XML
 License:        MIT

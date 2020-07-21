@@ -364,4 +364,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>818327</requestid>
   </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>45a68e3ea0608f8017fc948f68d255ad</srcmd5>
+    <version>3.6.4</version>
+    <time>1595339573</time>
+    <user>dimstar_suse</user>
+    <comment>- Readme renamed (SUSE -&gt; openSUSE)
+  gnuhealth: Link to oS wiki added
+</comment>
+    <requestid>822092</requestid>
+  </revision>
 </revisionlist>

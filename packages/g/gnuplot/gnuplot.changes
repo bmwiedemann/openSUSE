@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Fri Jul 17 07:36:14 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Update to gnuplot 5.4
+  * NEW support for 64-bit integer arithmetic
+  * NEW support for voxel grids
+  * NEW plot ... with table if <expression>
+  * NEW "set walls" command to show xy xz and yz planes in 3D plots
+  * NEW "set clip radial" for line segments in polar mode plots
+  * NEW "splot ... with isosurface"
+  * NEW "splot ... with circles"
+  * NEW "splot ... with boxes"
+  * NEW "plot ... with arrows"
+  * NEW "plot ... with polygons"
+  * NEW "set view projection {xz|yz}"
+  * NEW "set datafile columnheaders"
+  * NEW per-plot fillcolor and fillstyle for pm3d surfaces
+  * NEW allow separate color column with dgrid3d surfaces (but not color splines)
+  * NEW string function trim(" padded string ") removes leading and trailing whitespace
+  * NEW unicode escape sequences \U+hhhh
+  * NEW order N Bessel functions of 1st and 2nd kind (besjn besyn)
+  * NEW modified Bessel functions I0 (besi0) and I1 (besi1)
+  * NEW modified Bessel function of order n (besin)
+  * NEW "set object polygon depthsort" as an alternative to front/back/behind
+  * NEW "set pixmap" object-like bitmap images from png/gif/jpeg input files
+  * NEW overflow avoidance extends range of arguments handled by complex division
+  * NEW largely extended pcl5 terminal supports PCL5e/PCL5c printers
+  * NEW revised pstricks and texdraw LaTeX terminals
+  * NEW extended dospc terminal (DOS32/OpenWatcom)
+  * NEW extended svga terminal using the (M)GRX library (DOS32/DJGPP)
+  * NEW heavily revised fig terminal
+  * NEW LaTeX terminal pict2e uses the LaTeX2e pict2e environment
+  * NEW Left-click on hypertext label will copy text to clipboard (wxt qt)
+  * NEW smooth option "zsort" controls order that points are plotting in
+  * NEW multiple textbox styles
+  * NEW Time/date input recognizes format %p to handle am/pm field
+  * EXPERIMENTAL "set mouse mouseformat function <stringval_from_xy(x,y)>"
+  * EXPERIMENTAL load $DATABLOCK
+  * CHANGE revised syntax for plot style "with parallelaxes"
+  * CHANGE deprecate command "reread"
+  * CHANGE remove deprecated command "update"
+  * CHANGE remove deprecated option "thru"
+  * CHANGE special case optimization of nonlinear code to speed up logscale
+  * CHANGE windows terminal can print using Direct2D
+  * CHANGE windows terminal supports color fonts (Direct2D)
+  * CHANGE arrow head size can be decoupled from arrow size
+  * CHANGE apply trange to sampling on pseudofile '+'
+  * CHANGE move tgif terminal to "legacy" status; build only if configured
+  * CHANGE imaginary values from the using spec of a 2D plot are treated as NaN
+  * CHANGE remove compile option EXTENDED_COLOR_SPECS used only by vgagl.trm
+  * CHANGE remove linux and vgagl terminals
+  * CHANGE remove undocumented EXPERIMENTAL option for pm3d filled contours
+  * CHANGE print to datablock expands embedded \n into a separate block entry
+  * CHANGE boxplot outliers affect autoscaling only if they are enabled
+  * CHANGE remove latex, emtex, eepic, and tpic terminals from default build
+  * CHANGE pm3d quadrangles are by default clipped smoothly to zrange
+  * CHANGE `set offset` is ignored when the axis range is not autoscaled
+  * FIX allow mixed use of in-key plot titles and manually placed titles
+  * FIX open/close path for polygons
+  * FIX several stability issues of the caca terminal
+  * FIX gd terminals: rendering of white lines with lw > 1
+  * FIX do not reapply "set offset" on refresh or scrolling event
+  * FIX for negative relative time format with leading element zero
+- Port patch to 5.4.0
+  * gnuplot-4.4.0-x11ovf.dif
+  * gnuplot-4.6.0-demo.diff
+  * gnuplot-4.6.0-fonts.diff
+  * gnuplot-4.6.0.dif
+  * gnuplot-QtCore-PIC.dif
+  * gnuplot-gd.patch
+  * gnuplot-wx3.diff
+  * gnuplot-5.2.0-texi2info.patch
+- Remove now obsolete patch gnuplot-QtIndexedList.dif
+- Add new Gnuplot_5_4.pdf as now the old tutorial isn't anymore
+
+-------------------------------------------------------------------
 Mon Jun 22 07:49:19 UTC 2020 - Werner Fink <werner@suse.de>
 
 - Add patch gnuplot-QtIndexedList.dif to avoid warnings reported

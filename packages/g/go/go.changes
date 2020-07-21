@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Jun 30 17:15:40 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Enable for riscv64
+
+-------------------------------------------------------------------
+Sat Jun  6 09:45:55 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Ensure 'Provides: golang(API) = %{api_version}' is consistent
+  to improve package resolution for common go dependency expressions
+  'BuildRequires: golang(API) >= 1.x' and BuildRequires: go >= 1.x
+  OBS projects that contain go code often have prjconf entries
+  'Prefer: go' which selects go metapackage over go1.x packages.
+  When go metapackage Provides: version is lower than go1.x versions,
+  'Prefer: go' is not effective and build failures occur with errors
+  unresolvable: have choice for golang(API) >= 1.13: go1.13 go1.14
+  Edits and changelog Jeff Kowalczyk <jkowalczyk@suse.com>
+  Refs boo#1172608
+  * Unify '{version'} and '{short_version}' as '{api_version}' for
+    'Provides: golang(API) = %{api_version}'
+  * Use both 'BuildRequires: go%{api_version}' and 'Requires: go%{api_version}'
+    to trigger build errors if go1.x is unavailable
+  * Add aarch64 to supported systems for go-race via
+    %define tsan_arch x86_64 aarch64
+  * Add tsan_arch x86_64 aarch64 for suse_version >= 1500 and
+    sle_version >= 150000, formerly conditional on suse_version >= 1315
+  * Ensure %ifarch %{tsan_arch} always evaluates (nil does not work)
+    via dummy tsan_arch on systems where go-race is not supported
+
+-------------------------------------------------------------------
+Fri Apr 17 03:00:35 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to current stable go1.14
+  Refs boo#1164903 go1.14 release tracking
+  * Remove redundant Provides: go-doc=%{version} per rpmlint warning
+
+-------------------------------------------------------------------
 Wed Aug 21 21:25:13 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Change suse_version >= 1315 (was 1550) defines short_version 1.12

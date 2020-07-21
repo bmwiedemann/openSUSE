@@ -18,7 +18,7 @@
 
 %global pkg_name these
 Name:           ghc-%{pkg_name}
-Version:        1.1
+Version:        1.1.1.1
 Release:        0
 Summary:        An either-or-both data type
 License:        BSD-3-Clause
@@ -26,7 +26,6 @@ URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-assoc-devel
-BuildRequires:  ghc-base-compat-devel
 BuildRequires:  ghc-binary-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-hashable-devel

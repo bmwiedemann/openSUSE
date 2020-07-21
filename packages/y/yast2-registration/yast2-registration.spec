@@ -17,7 +17,7 @@
 
 
 Name:           yast2-registration
-Version:        4.3.2
+Version:        4.3.4
 Release:        0
 Summary:        YaST2 - Registration Module
 License:        GPL-2.0-only
@@ -57,6 +57,9 @@ Requires:       yast2-slp >= 3.1.9
 # Y2Packager::MediumType
 Requires:       yast2-packager >= 4.2.27
 Requires:       yast2-update >= 3.1.36
+
+# new calls in AutoinstGeneral
+Conflicts:      autoyast2 < 4.3.23
 
 BuildArch:      noarch
 # SUSEConnect does not build for i586 and s390 and is not supported on those architectures

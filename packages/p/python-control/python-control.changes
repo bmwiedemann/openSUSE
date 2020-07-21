@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 20 17:48:34 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- explicitely require Pillow for tests because of matplotlib
+
+-------------------------------------------------------------------
 Thu Jul  9 18:56:06 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - add pr430-numpy119delete.patch to fix test failures with new numpy 

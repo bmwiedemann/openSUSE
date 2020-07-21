@@ -486,4 +486,15 @@
     <comment></comment>
     <requestid>821511</requestid>
   </revision>
+  <revision rev="62" vrev="7">
+    <srcmd5>41297616d146ae488d7e06d8219ac5e0</srcmd5>
+    <version>5.15.0</version>
+    <time>1595339486</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable octave bindings for openSUSE &lt; 1550 where they fail to
+  build.
+- Add _constraints for PowerPC avoid &quot;no space left on device&quot; build error
+</comment>
+    <requestid>822083</requestid>
+  </revision>
 </revisionlist>

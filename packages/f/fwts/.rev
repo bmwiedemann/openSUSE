@@ -549,4 +549,13 @@
   * See provided changelog for detailed list of changes</comment>
     <requestid>809010</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>5104788dd670b5c4387fbc3c43b1c110</srcmd5>
+    <version>20.06.01</version>
+    <time>1595339455</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.06.01:
+  * See provided changelog for detailed list of changes</comment>
+    <requestid>822064</requestid>
+  </revision>
 </revisionlist>

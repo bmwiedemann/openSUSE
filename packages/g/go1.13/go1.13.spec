@@ -120,7 +120,7 @@
 %endif
 
 Name:           go1.13
-Version:        1.13.11
+Version:        1.13.14
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -139,7 +139,7 @@ Patch8:         gcc6-go.patch
 Patch9:         gcc7-go.patch
 Patch11:        gcc9-rsp-clobber.patch
 # PATCH-FIX-UPSTREAM prefer /etc/hosts over DNS when /etc/nsswitch.conf not present boo#1172868 gh#golang/go#35305
-Patch12:        Prefer-etc-hosts-over-DNS.patch
+Patch12:        go1.x-prefer-etc-hosts-over-dns.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # boostrap
 %if %{with gccgo}
@@ -358,7 +358,7 @@ cp -r doc/* %{buildroot}%{_docdir}/go/%{go_api}
 %post
 
 update-alternatives \
-  --install %{_bindir}/go go %{_libdir}/go/%{go_api}/bin/go 30 \
+  --install %{_bindir}/go go %{_libdir}/go/%{go_api}/bin/go $((20+$(echo %{version} | cut -d. -f2))) \
   --slave %{_bindir}/gofmt gofmt %{_libdir}/go/%{go_api}/bin/gofmt \
   --slave %{_sysconfdir}/gdbinit.d/go.gdb go.gdb %{_libdir}/go/%{go_api}/bin/gdbinit.d/go.gdb
 
@@ -368,7 +368,6 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %files
-%defattr(-,root,root,-)
 %{_bindir}/go
 %{_bindir}/gofmt
 %dir %{_libdir}/go
@@ -385,10 +384,14 @@ fi
 %doc %{_docdir}/go/%{go_api}/AUTHORS
 %doc %{_docdir}/go/%{go_api}/CONTRIBUTORS
 %doc %{_docdir}/go/%{go_api}/CONTRIBUTING.md
-%doc %{_docdir}/go/%{go_api}/LICENSE
 %doc %{_docdir}/go/%{go_api}/PATENTS
 %doc %{_docdir}/go/%{go_api}/README.md
 %doc %{_docdir}/go/%{go_api}/README.SUSE
+%if 0%{?suse_version} < 1500
+%doc %{_docdir}/go/%{go_api}/LICENSE
+%else
+%license %{_docdir}/go/%{go_api}/LICENSE
+%endif%
 
 # We don't include TSAN in the main Go package.
 %ifarch %{tsan_arch}
@@ -409,7 +412,6 @@ fi
 
 %ifarch %{tsan_arch}
 %files race
-%defattr(-,root,root,-)
 %{_datadir}/go/%{go_api}/src/runtime/race/race_linux_%{go_arch}.syso
 %endif
 

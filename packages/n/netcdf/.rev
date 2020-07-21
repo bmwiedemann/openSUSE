@@ -498,4 +498,12 @@ Use SPDX- proprietary prefix until this license is accepted upstream by spdx.org
     <comment></comment>
     <requestid>821862</requestid>
   </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>4203784b10197d0807f7a54b38cdb526</srcmd5>
+    <version>4.7.3</version>
+    <time>1595339361</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822020</requestid>
+  </revision>
 </revisionlist>

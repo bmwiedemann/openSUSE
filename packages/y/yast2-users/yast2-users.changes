@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 14 15:06:32 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Use available kadmin.local binary (either at /usr/lib/mit/sbin
+  or /usr/sbin).
+- Related to bsc#1174078.
+- 4.3.4
+
+-------------------------------------------------------------------
 Mon Jun 29 15:28:01 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Honor the 'target' argument when cloning the system. If it is

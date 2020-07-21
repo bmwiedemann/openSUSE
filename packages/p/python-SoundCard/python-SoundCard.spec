@@ -1,7 +1,7 @@
 #
 # spec file for package python-SoundCard
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-SoundCard
-Version:        0.3.3
+Version:        0.4.0
 Release:        0
 Summary:        Python package to play and record audio
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/bastibe/SoundCard
 Source0:        https://files.pythonhosted.org/packages/source/S/SoundCard/SoundCard-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/bastibe/SoundCard/master/LICENSE

@@ -57,4 +57,12 @@
   * pyaml53.patch</comment>
     <requestid>781772</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>535687ae0f779513c96328484231b1de</srcmd5>
+    <version>2.10.1</version>
+    <time>1595339447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822066</requestid>
+  </revision>
 </revisionlist>

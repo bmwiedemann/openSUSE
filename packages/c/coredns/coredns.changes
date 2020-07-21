@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 14 20:58:42 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- fix vendoring to build against go 1.13+
+
+-------------------------------------------------------------------
 Wed Mar 25 13:51:22 UTC 2020 - Michal Jura <mjura@suse.com>
 
 - Update to version 1.6.7:

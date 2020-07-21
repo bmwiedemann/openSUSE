@@ -180,6 +180,15 @@ ExclusiveArch:  do_not_build
 %define mpi_vers 3
 %endif
 
+%if "%{flavor}" == "gnu7-openmpi4-hpc"
+%{?DisOMPI4}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 7
+%global mpi_flavor openmpi
+%define mpi_vers 4
+%endif
+
 %if "%{flavor}" == "gnu7-mpich-hpc"
 %bcond_without hpc
 %define compiler_family gnu
@@ -219,6 +228,15 @@ ExclusiveArch:  do_not_build
 %define c_f_ver 8
 %global mpi_flavor openmpi
 %define mpi_vers 3
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi4-hpc"
+%{?DisOMPI4}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 8
+%global mpi_flavor openmpi
+%define mpi_vers 4
 %endif
 
 %if "%{flavor}" == "gnu8-mvapich2-hpc"
@@ -269,6 +287,15 @@ ExclusiveArch:  do_not_build
 %define mpi_vers 3
 %endif
 
+%if "%{flavor}" == "gnu9-openmpi4-hpc"
+%{?DisOMPI4}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 9
+%global mpi_flavor openmpi
+%define mpi_vers 4
+%endif
+
 %if "%{flavor}" == "gnu9-mvapich2-hpc"
 %bcond_without hpc
 %define compiler_family gnu
@@ -281,11 +308,6 @@ ExclusiveArch:  do_not_build
 %define compiler_family gnu
 %define c_f_ver 9
 %global mpi_flavor mpich
-%endif
-
-# Don't build non-HPC on SLE
-%if !0%{?is_opensuse} && !0%{?with_hpc:1}
-ExclusiveArch:  do_not_build
 %endif
 
 %{?mpi_flavor:%{bcond_without mpi}}%{!?mpi_flavor:%{bcond_with mpi}}

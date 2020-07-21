@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 20 10:24:37 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add support for OpenMPI 4 (disabled on < 15.3)
+
+-------------------------------------------------------------------
+Mon Jul 20 10:23:26 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Remove requirements for parallel-netcdf from non-HPC builds:
+  without the '--enable-pnetcdf' configure option, this doesn't
+  make sense.
+
+-------------------------------------------------------------------
 Mon Jul 20 04:59:19 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Remove build restrictions for SLE builds: build all flavors for
