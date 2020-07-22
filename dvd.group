@@ -2630,6 +2630,7 @@
     <package name="libqxp-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libraptor2-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="librasqal3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="librav1e0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libraw1394-11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libraw19" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="librcc0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->

@@ -2,7 +2,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
+  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -2407,7 +2407,6 @@ unsorted:
   - deja-dup-lang 
   - dejagnu 
   - delaguardo-inconsolata_lgc-fonts 
-  - delta 
   - deltafs 
   - deluge 
   - deluge-lang 
@@ -2673,6 +2672,8 @@ unsorted:
   - echomixer 
   - eciadsl-usermode 
   - ecj 
+  - eclipse-anyedit: [x86_64] 
+  - eclipse-anyedit-javadoc: [x86_64] 
   - eclipse-contributor-tools: [x86_64] 
   - eclipse-ecf-core: [x86_64] 
   - eclipse-ecf-core-bootstrap: [x86_64] 
@@ -2686,6 +2687,9 @@ unsorted:
   - eclipse-emf-xsd: [x86_64] 
   - eclipse-equinox-osgi: [x86_64] 
   - eclipse-equinox-osgi-bootstrap: [x86_64] 
+  - eclipse-gef: [x86_64] 
+  - eclipse-gef-sdk: [x86_64] 
+  - eclipse-gef-tests: [x86_64] 
   - eclipse-jdt: [x86_64] 
   - eclipse-jdt-bootstrap: [x86_64] 
   - eclipse-jgit: [x86_64] 
@@ -2699,6 +2703,7 @@ unsorted:
   - eclipse-platform-bootstrap: [x86_64] 
   - eclipse-swt 
   - eclipse-swt-bootstrap: [x86_64] 
+  - eclipse-swtchart: [x86_64] 
   - econnman 
   - ecryptfs-utils 
   - ecryptfs-utils-32bit: [x86_64] 
@@ -5852,7 +5857,9 @@ unsorted:
   - hello-kubic: [x86_64] 
   - hello-lang 
   - helm: [i586] 
+  - helm-bash-completion 
   - helm-mirror 
+  - helm-zsh-completion 
   - help2man 
   - help2man-lang 
   - herbstluftwm 
@@ -7199,7 +7206,6 @@ unsorted:
   - knights-lang 
   - knock 
   - knockd 
-  - knot 
   - knotifications-devel 
   - knotifications-devel-32bit: [x86_64] 
   - knotifyconfig-devel 
@@ -10950,18 +10956,21 @@ unsorted:
   - libnetcdf-fortran-gnu-openmpi1-hpc 
   - libnetcdf-fortran-gnu-openmpi2-hpc 
   - libnetcdf-fortran-gnu-openmpi3-hpc 
+  - libnetcdf-fortran-gnu-openmpi4-hpc 
   - libnetcdf-fortran_4_5_2-gnu-hpc 
   - libnetcdf-fortran_4_5_2-gnu-mpich-hpc 
   - libnetcdf-fortran_4_5_2-gnu-mvapich2-hpc 
   - libnetcdf-fortran_4_5_2-gnu-openmpi1-hpc 
   - libnetcdf-fortran_4_5_2-gnu-openmpi2-hpc 
   - libnetcdf-fortran_4_5_2-gnu-openmpi3-hpc 
+  - libnetcdf-fortran_4_5_2-gnu-openmpi4-hpc 
   - libnetcdf-gnu-hpc 
   - libnetcdf-gnu-mpich-hpc 
   - libnetcdf-gnu-mvapich2-hpc 
   - libnetcdf-gnu-openmpi1-hpc 
   - libnetcdf-gnu-openmpi2-hpc 
   - libnetcdf-gnu-openmpi3-hpc 
+  - libnetcdf-gnu-openmpi4-hpc 
   - libnetcdf15 
   - libnetcdf15-32bit: [x86_64] 
   - libnetcdf15-openmpi1 
@@ -10970,12 +10979,15 @@ unsorted:
   - libnetcdf15-openmpi2-32bit: [x86_64] 
   - libnetcdf15-openmpi3 
   - libnetcdf15-openmpi3-32bit: [x86_64] 
+  - libnetcdf15-openmpi4 
+  - libnetcdf15-openmpi4-32bit: [x86_64] 
   - libnetcdf_4_7_3-gnu-hpc 
   - libnetcdf_4_7_3-gnu-mpich-hpc 
   - libnetcdf_4_7_3-gnu-mvapich2-hpc 
   - libnetcdf_4_7_3-gnu-openmpi1-hpc 
   - libnetcdf_4_7_3-gnu-openmpi2-hpc 
   - libnetcdf_4_7_3-gnu-openmpi3-hpc 
+  - libnetcdf_4_7_3-gnu-openmpi4-hpc 
   - libnetcdf_c++-devel 
   - libnetcdf_c++4 
   - libnetcdf_c++4-1 
@@ -11847,7 +11859,7 @@ unsorted:
   - librasqal3-32bit: [x86_64] 
   - libratbag-devel 
   - libratbag-tools 
-  - librav1e0 
+  - librav1e0-32bit: [x86_64] 
   - libraw-devel 
   - libraw-devel-static 
   - libraw-tools 
@@ -15312,6 +15324,8 @@ unsorted:
   - netcdf-fortran-gnu-openmpi2-hpc-devel 
   - netcdf-fortran-gnu-openmpi3-hpc 
   - netcdf-fortran-gnu-openmpi3-hpc-devel 
+  - netcdf-fortran-gnu-openmpi4-hpc 
+  - netcdf-fortran-gnu-openmpi4-hpc-devel 
   - netcdf-fortran_4_5_2-gnu-hpc 
   - netcdf-fortran_4_5_2-gnu-hpc-devel 
   - netcdf-fortran_4_5_2-gnu-hpc-devel-static 
@@ -15330,6 +15344,9 @@ unsorted:
   - netcdf-fortran_4_5_2-gnu-openmpi3-hpc 
   - netcdf-fortran_4_5_2-gnu-openmpi3-hpc-devel 
   - netcdf-fortran_4_5_2-gnu-openmpi3-hpc-devel-static 
+  - netcdf-fortran_4_5_2-gnu-openmpi4-hpc 
+  - netcdf-fortran_4_5_2-gnu-openmpi4-hpc-devel 
+  - netcdf-fortran_4_5_2-gnu-openmpi4-hpc-devel-static 
   - netcdf-gnu-hpc 
   - netcdf-gnu-hpc-devel 
   - netcdf-gnu-mpich-hpc 
@@ -15342,6 +15359,8 @@ unsorted:
   - netcdf-gnu-openmpi2-hpc-devel 
   - netcdf-gnu-openmpi3-hpc 
   - netcdf-gnu-openmpi3-hpc-devel 
+  - netcdf-gnu-openmpi4-hpc 
+  - netcdf-gnu-openmpi4-hpc-devel 
   - netcdf-openmpi1 
   - netcdf-openmpi1-devel 
   - netcdf-openmpi1-devel-static 
@@ -15351,6 +15370,9 @@ unsorted:
   - netcdf-openmpi3 
   - netcdf-openmpi3-devel 
   - netcdf-openmpi3-devel-static 
+  - netcdf-openmpi4 
+  - netcdf-openmpi4-devel 
+  - netcdf-openmpi4-devel-static 
   - netcdf_4_7_3-gnu-hpc 
   - netcdf_4_7_3-gnu-hpc-devel 
   - netcdf_4_7_3-gnu-hpc-devel-static 
@@ -15369,6 +15391,9 @@ unsorted:
   - netcdf_4_7_3-gnu-openmpi3-hpc 
   - netcdf_4_7_3-gnu-openmpi3-hpc-devel 
   - netcdf_4_7_3-gnu-openmpi3-hpc-devel-static 
+  - netcdf_4_7_3-gnu-openmpi4-hpc 
+  - netcdf_4_7_3-gnu-openmpi4-hpc-devel 
+  - netcdf_4_7_3-gnu-openmpi4-hpc-devel-static 
   - netcomponents 
   - netcomponents-javadoc 
   - netconsole-tools 
@@ -20231,6 +20256,7 @@ unsorted:
   - python3-fluent 
   - python3-flufl.testing 
   - python3-flup 
+  - python3-folium: [x86_64] 
   - python3-fontMath 
   - python3-fontParts 
   - python3-fontPens 
@@ -22433,6 +22459,8 @@ unsorted:
   - rpm-build-perl 
   - rpm-build-python 
   - rpm-devel 
+  - rpm-repo-keys-openSUSE 
+  - rpm-repos-openSUSE-Tumbleweed 
   - rpmconf 
   - rpmdevtools 
   - rpmemd: [x86_64] 
