@@ -2003,7 +2003,7 @@
     <package name="libfile1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfind4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfl-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libfl2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libfl2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libflatpak0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfltk1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfolks-eds25" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
