@@ -20,7 +20,7 @@ Name:           logwatch
 Summary:        Tool to analyze and report on system logs
 License:        MIT
 Group:          System/Monitoring
-Version:        7.5.2
+Version:        7.5.3
 Release:        0
 URL:            http://www.logwatch.org
 BuildArch:      noarch

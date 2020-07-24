@@ -1,0 +1,26 @@
+From ebede9123918ca01a6004fb28a4a8b6c24f4732e Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Fri, 19 Jun 2020 12:12:48 +0200
+Subject: [PATCH] impl-link: reset state before starting allocation
+
+Reset our state before checking the state of the ports or else
+we might still think a port has buffers while they are being
+allocated.
+---
+ src/pipewire/impl-link.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/pipewire/impl-link.c b/src/pipewire/impl-link.c
+index aeda03f8..c0095f0a 100644
+--- a/src/pipewire/impl-link.c
++++ b/src/pipewire/impl-link.c
+@@ -411,6 +411,9 @@ static int do_allocation(struct pw_impl_link *this)
+ 	pw_log_debug(NAME" %p: out-node:%p in-node:%p: out-flags:%08x in-flags:%08x",
+ 			this, output->node, input->node, out_flags, in_flags);
+ 
++	this->rt.in_mix.have_buffers = false;
++	this->rt.out_mix.have_buffers = false;
++
+ 	if (out_flags & SPA_PORT_FLAG_LIVE) {
+ 		pw_log_debug(NAME" %p: setting link as live", this);
+ 		output->node->live = true;

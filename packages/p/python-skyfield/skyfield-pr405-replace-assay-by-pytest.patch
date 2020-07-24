@@ -17,11 +17,10 @@ Subject: [PATCH] change test code to use pytest instead of assay
  10 files changed, 54 insertions(+), 29 deletions(-)
  create mode 100644 skyfield/tests/conftest.py
 
-diff --git a/skyfield/tests/conftest.py b/skyfield/tests/conftest.py
-new file mode 100644
-index 00000000..bb5c5c4c
+Index: skyfield-1.24/skyfield/tests/conftest.py
+===================================================================
 --- /dev/null
-+++ b/skyfield/tests/conftest.py
++++ skyfield-1.24/skyfield/tests/conftest.py
 @@ -0,0 +1,11 @@
 +"""conftest.py to provide session wide fixtures"""
 +
@@ -34,10 +33,10 @@ index 00000000..bb5c5c4c
 +def ts():
 +    """Provide standard timescale for tests"""
 +    return load.timescale()
-diff --git a/skyfield/tests/test_against_novas.py b/skyfield/tests/test_against_novas.py
-index af38d597..65eae075 100644
---- a/skyfield/tests/test_against_novas.py
-+++ b/skyfield/tests/test_against_novas.py
+Index: skyfield-1.24/skyfield/tests/test_against_novas.py
+===================================================================
+--- skyfield-1.24.orig/skyfield/tests/test_against_novas.py
++++ skyfield-1.24/skyfield/tests/test_against_novas.py
 @@ -1,6 +1,8 @@
  'Auto-generated accuracy tests vs NOVAS (see build_novas_tests.py).'
  
@@ -47,7 +46,7 @@ index af38d597..65eae075 100644
  from skyfield import (earthlib, framelib, nutationlib, positionlib,
                        precessionlib, starlib, timelib)
  from skyfield.api import Topos, load
-@@ -25,9 +27,13 @@ def compare(value, expected_value, epsilon):
+@@ -26,9 +28,13 @@ def compare(value, expected_value, epsil
      else:
          assert abs(value - expected_value) <= epsilon
  
@@ -61,10 +60,10 @@ index af38d597..65eae075 100644
  def earth():
      eph = load('de405.bsp')
      yield eph[399]
-diff --git a/skyfield/tests/test_api.py b/skyfield/tests/test_api.py
-index 1292cb14..5c27a1cd 100644
---- a/skyfield/tests/test_api.py
-+++ b/skyfield/tests/test_api.py
+Index: skyfield-1.24/skyfield/tests/test_api.py
+===================================================================
+--- skyfield-1.24.orig/skyfield/tests/test_api.py
++++ skyfield-1.24/skyfield/tests/test_api.py
 @@ -1,6 +1,6 @@
  """Basic tests of the Skyfield API module and its contents."""
  
@@ -82,7 +81,7 @@ index 1292cb14..5c27a1cd 100644
                         " with a Time instance as its argument,"
                         " instead of the value 'blah'"):
          earth.at('blah')
-@@ -40,10 +40,10 @@ def test_exception_raised_for_dates_outside_ephemeris(ts):
+@@ -40,10 +40,10 @@ def test_exception_raised_for_dates_outs
          'ephemeris segment only covers dates 1899-07-28 23:59:18Z'
          ' through 2053-10-08 23:58:51Z UT'
      )
@@ -131,11 +130,11 @@ index 1292cb14..5c27a1cd 100644
          api.NamedStar('foo')
  
  def test_named_star_returns_star():
-diff --git a/skyfield/tests/test_io.py b/skyfield/tests/test_io.py
-index 8c5ead99..a31a719d 100644
---- a/skyfield/tests/test_io.py
-+++ b/skyfield/tests/test_io.py
-@@ -5,7 +5,11 @@
+Index: skyfield-1.24/skyfield/tests/test_io.py
+===================================================================
+--- skyfield-1.24.orig/skyfield/tests/test_io.py
++++ skyfield-1.24/skyfield/tests/test_io.py
+@@ -5,7 +5,11 @@ import shutil
  import tempfile
  from contextlib import contextmanager
  from datetime import date
@@ -148,7 +147,7 @@ index 8c5ead99..a31a719d 100644
  
  from skyfield import api
  
-@@ -28,6 +32,7 @@
+@@ -16,6 +20,7 @@ old_content = (b' 2015 10  1  67.9546\n'
  new_content = (old_content +
                 b' 2016  2  1  68.1577\n')
  
@@ -156,27 +155,27 @@ index 8c5ead99..a31a719d 100644
  def load():
      path = tempfile.mkdtemp()
      try:
-diff --git a/skyfield/tests/test_stars.py b/skyfield/tests/test_stars.py
-index bff6a9e1..926c0c5d 100644
---- a/skyfield/tests/test_stars.py
-+++ b/skyfield/tests/test_stars.py
-@@ -4,5 +4,5 @@
+Index: skyfield-1.24/skyfield/tests/test_stars.py
+===================================================================
+--- skyfield-1.24.orig/skyfield/tests/test_stars.py
++++ skyfield-1.24/skyfield/tests/test_stars.py
+@@ -4,5 +4,5 @@ from skyfield.data.hipparcos import load
  def test_dataframe():
      with api.load.open('hip_main.dat.gz') as f:
          df = load_dataframe(f)
 -    star = api.Star.from_dataframe(df)
 +    star = api.Star.from_dataframe(df.iloc[:214])
      assert repr(star) == 'Star(ra shape=214, dec shape=214, ra_mas_per_year shape=214, dec_mas_per_year shape=214, parallax_mas shape=214, epoch shape=214)'
-diff --git a/skyfield/tests/test_strs_and_reprs.py b/skyfield/tests/test_strs_and_reprs.py
-index 536a45ad..bd1316f9 100644
---- a/skyfield/tests/test_strs_and_reprs.py
-+++ b/skyfield/tests/test_strs_and_reprs.py
+Index: skyfield-1.24/skyfield/tests/test_strs_and_reprs.py
+===================================================================
+--- skyfield-1.24.orig/skyfield/tests/test_strs_and_reprs.py
++++ skyfield-1.24/skyfield/tests/test_strs_and_reprs.py
 @@ -1,3 +1,4 @@
 +import pytest
  import textwrap
  from ..api import Topos, load
  from ..sgp4lib import EarthSatellite
-@@ -5,6 +6,7 @@
+@@ -5,6 +6,7 @@ from ..sgp4lib import EarthSatellite
  def dedent(s):
      return textwrap.dedent(s.rstrip())
  
@@ -184,10 +183,10 @@ index 536a45ad..bd1316f9 100644
  def eph():
      yield load('de421.bsp')
  
-diff --git a/skyfield/tests/test_timelib.py b/skyfield/tests/test_timelib.py
-index 27d9fc6e..0648741e 100644
---- a/skyfield/tests/test_timelib.py
-+++ b/skyfield/tests/test_timelib.py
+Index: skyfield-1.24/skyfield/tests/test_timelib.py
+===================================================================
+--- skyfield-1.24.orig/skyfield/tests/test_timelib.py
++++ skyfield-1.24/skyfield/tests/test_timelib.py
 @@ -1,5 +1,5 @@
  import numpy as np
 -from assay import assert_raises
@@ -195,7 +194,7 @@ index 27d9fc6e..0648741e 100644
  from pytz import timezone
  from skyfield import api
  from skyfield.constants import DAY_S
-@@ -12,9 +12,9 @@
+@@ -12,9 +12,9 @@ epsilon = one_second * 42.0e-6  # 20.1e-
  time_parameter = ['tai', 'tt', 'tdb', 'ut1']
  time_value = [(1973, 1, 18, 1, 35, 37.5), 2441700.56640625]
  
@@ -207,7 +206,7 @@ index 27d9fc6e..0648741e 100644
  def test_time_creation_methods(ts, time_parameter, time_value):
      method = getattr(ts, time_parameter)
      if isinstance(time_value, tuple):
-@@ -55,6 +55,9 @@ def test_tt_seconds_preserve_10_decimal_places_in_calendar_seconds(ts):
+@@ -55,6 +55,9 @@ time_params_with_array = [
      (2018, 3, 25, 13, 1, (10, 11, 12)),
  ]
  
@@ -217,41 +216,49 @@ index 27d9fc6e..0648741e 100644
  def test_time_creation_with_arrays(time_scale_name, time_params_with_array):
      ts = api.load.timescale()
      getattr(ts, time_scale_name)(*time_params_with_array)
-@@ -67,9 +70,8 @@ def test_timescale_utc_method_with_array_inside(ts):
+@@ -67,9 +70,8 @@ def test_timescale_utc_method_with_array
          assert t.tai[i] == ts.utc(1973, 12, 29, 23, 59, second).tai
  
  def test_that_building_time_from_naive_datetime_raises_exception(ts):
 -    with assert_raises(ValueError) as info:
 +    with pytest.raises(ValueError, match='import timezone'):
-         ts.utc(datetime(1973, 12, 29, 23, 59, 48))
+         ts.from_datetime(datetime(1973, 12, 29, 23, 59, 48))
 -    assert 'import timezone' in str(info.exception)
  
  def test_building_time_from_single_utc_datetime(ts):
-     t = ts.utc(datetime(1973, 12, 29, 23, 59, 48, tzinfo=utc))
-diff --git a/skyfield/tests/test_topos.py b/skyfield/tests/test_topos.py
-index 0c47237e..e442ced2 100644
---- a/skyfield/tests/test_topos.py
-+++ b/skyfield/tests/test_topos.py
-@@ -1,13 +1,12 @@
+     t = ts.from_datetime(datetime(1973, 12, 29, 23, 59, 48, tzinfo=utc))
+Index: skyfield-1.24/skyfield/tests/test_topos.py
+===================================================================
+--- skyfield-1.24.orig/skyfield/tests/test_topos.py
++++ skyfield-1.24/skyfield/tests/test_topos.py
+@@ -1,4 +1,5 @@
  from numpy import abs
 +import pytest
  
--from skyfield.api import load
- from skyfield.toposlib import Topos
+ from skyfield import constants
+ from skyfield.api import Topos, load
+@@ -6,9 +7,6 @@ from skyfield.functions import length_of
  
  angle = (-15, 15, 35, 45)
  
 -def ts():
 -    yield load.timescale()
+-
+ def test_velocity():
+     # It looks like this is a sweet spot for accuracy: presumably a
+     # short enough fraction of a second that the vector does not time to
+@@ -35,6 +33,7 @@ def test_itrf_vector():
+     assert abs(y - 0.0) < 1e-14
+     assert abs(z - 0.7071) < 1e-4
  
 +@pytest.mark.parametrize("angle", angle)
  def test_beneath(ts, angle):
      t = ts.utc(2018, 1, 19, 14, 37, 55)
      # An elevation of 0 is more difficult for the routine's accuracy
-diff --git a/skyfield/tests/test_units.py b/skyfield/tests/test_units.py
-index a4a14832..d07d2d34 100644
---- a/skyfield/tests/test_units.py
-+++ b/skyfield/tests/test_units.py
+Index: skyfield-1.24/skyfield/tests/test_units.py
+===================================================================
+--- skyfield-1.24.orig/skyfield/tests/test_units.py
++++ skyfield-1.24/skyfield/tests/test_units.py
 @@ -1,6 +1,6 @@
  """Tests of whether units behave."""
  
@@ -272,7 +279,7 @@ index a4a14832..d07d2d34 100644
  cannot directly unpack a Distance into several values
  
  To unpack a Distance into three components, you need to ask for its
-@@ -98,9 +98,9 @@ def test_iterating_over_raw_measurement():
+@@ -98,9 +98,9 @@ value in specific units through an attri
  
  def test_iterating_over_raw_velocity():
      velocity = Velocity(au_per_d=1.234)
@@ -284,7 +291,7 @@ index a4a14832..d07d2d34 100644
  cannot directly unpack a Velocity into several values
  
  To unpack a Velocity into three components, you need to ask for its
-@@ -113,9 +113,9 @@ def test_iterating_over_raw_velocity():
+@@ -113,9 +113,9 @@ value in specific units through an attri
  
  def test_iterating_over_raw_angle():
      angle = Angle(degrees=4.5)
@@ -296,10 +303,10 @@ index a4a14832..d07d2d34 100644
  
  Instead of iterating over this Angle object, try iterating over one of
  its unit-specific arrays like .degrees, .hours, or .radians, or else over
-diff --git a/skyfield/tests/test_vectors.py b/skyfield/tests/test_vectors.py
-index 8407cbd1..69c4949e 100644
---- a/skyfield/tests/test_vectors.py
-+++ b/skyfield/tests/test_vectors.py
+Index: skyfield-1.24/skyfield/tests/test_vectors.py
+===================================================================
+--- skyfield-1.24.orig/skyfield/tests/test_vectors.py
++++ skyfield-1.24/skyfield/tests/test_vectors.py
 @@ -1,6 +1,6 @@
  # Test the behavior of all combinations of vector.
  

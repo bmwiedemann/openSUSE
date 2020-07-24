@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-control-center
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-control-center
-Version:        4.2.3
+Version:        4.3.0
 Release:        0
 Url:            https://github.com/yast/yast-control-center
 Summary:        YaST2 - Control Center
@@ -110,7 +110,7 @@ cd ..
 %{yast_icondir}
 
 %files qt
-%{_libexecdir}/YaST2/bin/y2controlcenter
+%{_prefix}/lib/YaST2/bin/y2controlcenter
 %license COPYING.GPL2
 
 %changelog

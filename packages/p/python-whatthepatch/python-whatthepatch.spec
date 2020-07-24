@@ -1,7 +1,7 @@
 #
 # spec file for package python-whatthepatch
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-whatthepatch
-Version:        0.0.6
+Version:        1.0.0
 Release:        0
-License:        MIT
 Summary:        A patch parsing and application library
-Url:            https://github.com/cscorley/whatthepatch
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/cscorley/whatthepatch
 Source:         https://github.com/cscorley/whatthepatch/archive/%{version}.tar.gz#/whatthepatch-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+Patch0:         no-nose.patch
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module nose}
 BuildRequires:  ed
 BuildRequires:  fdupes
 BuildRequires:  patch
+BuildRequires:  python-rpm-macros
 Requires:       ed
 Requires:       patch
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -41,6 +43,7 @@ A patch parsing and application library.
 
 %prep
 %setup -q -n whatthepatch-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -50,7 +53,7 @@ A patch parsing and application library.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m nose --with-doctest --doctest-extension=rst
+%pytest tests
 
 %files %{python_files}
 %doc README.rst

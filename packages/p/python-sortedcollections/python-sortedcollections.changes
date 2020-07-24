@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 22 15:04:59 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.2.1:
+  - Update self._dict_* methods to use dict.__* functions directly.
+
+-------------------------------------------------------------------
 Mon Jul 20 11:05:33 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add method_item.patch to replace _del_item and _set_item methods

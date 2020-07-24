@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 21 10:57:39 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Fixed a crash when ~/.y2usersettings is missing (bsc#1173781)
+- 4.3.0
+
+-------------------------------------------------------------------
 Fri Jan 24 10:02:03 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
 
 - remove obsolete patch 103.diff

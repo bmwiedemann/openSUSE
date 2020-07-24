@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 20 15:13:13 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.10.1
+  - Fix upgrading of kubelet version
+  - Remove workarounds for salt, breaks non-salt usage
+  - Add new parameter apiserver_cert_extra_sans
+
+-------------------------------------------------------------------
 Thu Jul  2 12:27:24 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.10.0

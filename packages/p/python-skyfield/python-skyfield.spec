@@ -17,12 +17,11 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define assaycommit 18f320237345813a49173657e7d2d6ca85e9a38a
+%define assayver    245.18f3202
 %define skip_python2 1
-%ifarch %{ix86}
-%define skyfield_atol export SKYFIELD_TEST_DEFAULT_ATOL=2e-16
-%endif
 Name:           python-skyfield
-Version:        1.23
+Version:        1.24
 Release:        0
 Summary:        Elegant astronomy for Python
 License:        MIT
@@ -39,11 +38,10 @@ Source7:        ftp://cddis.nasa.gov/products/iers/deltat.preds
 Source8:        https://hpiers.obspm.fr/iers/bul/bulc/Leap_Second.dat
 Source9:        http://cdsarc.u-strasbg.fr/ftp/cats/I/239/hip_main.dat.gz
 Source99:       python-skyfield-rpmlintrc
-# PR404 Refine some float comparisons in the unit tests for flaky platforms
-Patch0:         https://github.com/skyfielders/python-skyfield/pull/404.patch#/skyfield-pr404-comparefloat.patch
-# PR405 Replace upstreams custom testrunner 'assay' with standard pytest (first commit the rest is git repository specific)
-# https://github.com/skyfielders/python-skyfield/pull/405
-Patch1:         https://github.com/skyfielders/python-skyfield/pull/405/commits/cc229382ea8f301a1d911f228482feb043fc4db1.patch#/skyfield-pr405-replace-assay-by-pytest.patch
+# PR404 Refine some float comparisons in the unit tests for flaky platforms gh#skyfielders/python-skyfield#404
+Patch0:         skyfield-pr404-comparefloat.patch
+# PR405 Replace upstreams custom testrunner 'assay' with standard pytest gh#skyfielders/python-skyfield#405
+Patch1:         skyfield-pr405-replace-assay-by-pytest.patch
 BuildRequires:  %{python_module astropy}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module certifi}
@@ -78,6 +76,8 @@ research-grade positions for planets and Earth satellites.
 %prep
 %setup -q -n skyfield-%{version}
 %autopatch -p1
+# https://github.com/skyfielders/python-skyfield/issues/411
+sed -i -e 's/assert relative_error < 2e-12/assert relative_error < 4e-12/' skyfield/tests/test_positions.py
 # copy all test data files into the rootdir
 cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} %{SOURCE7} %{SOURCE8} %{SOURCE9} ./
 
@@ -89,9 +89,7 @@ cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} %{SOURCE7} 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/skyfielders/python-skyfield/pull/404
-%{?skyfield_atol}
-%pytest -v
+%pytest
 
 %files %{python_files}
 %doc README.rst

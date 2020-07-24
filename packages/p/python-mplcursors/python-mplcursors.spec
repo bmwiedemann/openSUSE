@@ -25,6 +25,12 @@ Summary:        Interactive data selection cursors for Matplotlib
 License:        MIT
 URL:            https://github.com/anntzer/mplcursors
 Source:         https://files.pythonhosted.org/packages/source/m/mplcursors/mplcursors-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#anntzer/mplcursors#26
+Patch0:         mplcursors-unicodeminus.patch
+Patch1:         mplcursors-newstem.patch
+Patch2:         mplcursors-parse_annotation.patch
+Patch3:         mplcursors-fix-LineCollection.patch
+Patch4:         mplcursors-unicodeminus2.patch
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -33,7 +39,7 @@ Requires:       python-matplotlib >= 2.1
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module matplotlib >= 2.1}
-BuildRequires:  %{python_module pytest < 5}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -42,6 +48,7 @@ mplcursors provides interactive data selection cursors for Matplotlib.
 
 %prep
 %setup -q -n mplcursors-%{version}
+%autopatch -p1
 
 %build
 %python_build
@@ -56,6 +63,8 @@ mplcursors provides interactive data selection cursors for Matplotlib.
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/mplcursors
+%{python_sitelib}/mplcursors.pth
+%{python_sitelib}/mplcursors-%{version}-py*.egg-info
 
 %changelog

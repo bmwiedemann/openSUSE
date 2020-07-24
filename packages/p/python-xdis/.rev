@@ -132,4 +132,12 @@
   * Add better arguemnt formatting on `CALL_FUNCTION` and `MAKE_FUNCTION`</comment>
     <requestid>811038</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9ff027f0ac534fee488f14a7f6bfe462</srcmd5>
+    <version>5.0.1</version>
+    <time>1595577306</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822103</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 22 16:02:16 CEST 2020 - aschnell@suse.com
+
+- Expand URL when libzypp expects an expanded URL. Fixes weird zypp
+  repository name generated during installation. (bsc#1173509)
+- 4.2.9
+
+-------------------------------------------------------------------
 Fri Jul 10 09:24:53 CEST 2020 - aschnell@suse.com
 
 - Extensions to handle raw repository name (bsc#1172477)

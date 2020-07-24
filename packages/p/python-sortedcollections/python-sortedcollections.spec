@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sortedcollections
-Version:        1.1.2
+Version:        1.2.1
 Release:        0
 Summary:        Python Sorted Collections
 License:        Apache-2.0
@@ -26,9 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/grantjenks/sortedcollections
 #Source:         https://files.pythonhosted.org/packages/source/s/sortedcollections/sortedcollections-%%{version}.tar.gz
 Source:         https://github.com/grantjenks/python-sortedcollections/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM method_item.patch gh#grantjenks/python-sortedcollections#12 mcepl@suse.com
-# Add method_item.patch to replace _del_item and _set_item methods
-Patch0:         method_item.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

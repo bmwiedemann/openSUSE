@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 30 13:18:41 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Remove -m32 and -m64 options except for x86* and ppc*
+
+-------------------------------------------------------------------
 Mon Dec 22 11:48:55 UTC 2014 - dimstar@opensuse.org
 
 - Don't start fdupes over docs: it can cause build failures if the

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 23 11:07:58 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.4.1
+  * Prevent adding paths multiple times on macOS/Linux
+  * Send CLI errors to stderr instead of stdout
+
+-------------------------------------------------------------------
 Mon May 18 09:10:45 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

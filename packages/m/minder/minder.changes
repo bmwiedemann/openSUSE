@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Jul 16 18:37:38 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.9.1:
+  * Merge branch 'xml_huge_fix'
+  * Fixing issues with reading large/deep XML-styled files
+  * Fixing issue with setting the cursor when zoom is not 100%
+  * Merge pull request #165 from albanobattistella/patch-1
+  * Update it.po
+  * Merge branch 'devel'
+  * Fixing string copy of node text to clipboard.
+  * Updating appdata.
+  * Fixing issue with pasting UTF-8 text from clipboard.
+  * Updating Minder version and appdata.xml
+  * Chaning panning to use the Alt key while the mouse is being
+    moved.
+  * Adding proper support for opening one or more files from
+    command-line.
+  * Fixing issue with connection color handling.
+  * Bug fixes
+  * Fixing issues with quick entry from previous submission.
+  * Fixing issues with pasting text in QuickEntry.
+  * Fixing issues with selection box behavior.
+  * Fixing QuickEntry issues.
+  * Checkpointing work on fixing/enhancing quick entry (work in
+    progress).
+  * Updating contextual menus.
+  * Changing select parent node algorithm to work with multiple
+    nodes.
+  * Updating selection shortcut cheatsheet.
+  * Fixing issues with selection boxes.
+  * Merge remote-tracking branch 'origin/master' into devel
+  * Fixing application crash when animation is disabled and the
+    re-enabled.
+  * Merge pull request #141 from febrezo/master
+  * changing warning to message
+  * Adding debug output
+  * Adjusting default connection colors and causing connections
+    to follow theme colors unless manually changed.
+  * Fixing syntax issue with meson.build
+  * Fixing custom theming issues.
+  * Making default connection color lighter to improve contrast
+    against background.
+  * Merge branch 'master' into devel
+  * ...
+
+-------------------------------------------------------------------
 Sun May 17 12:19:55 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.8.0:

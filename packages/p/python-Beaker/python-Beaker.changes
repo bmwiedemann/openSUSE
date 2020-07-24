@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 22 20:24:19 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add denose.patch, which ports the package from the dependency
+  on nose to pytest (gh#bbangert/beaker#192).
+
+-------------------------------------------------------------------
 Wed Apr 22 06:59:17 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Fix build without Python 2 present.

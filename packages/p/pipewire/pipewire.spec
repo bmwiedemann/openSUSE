@@ -47,6 +47,26 @@ Source1:        %{name}-rpmlintrc
 Patch0:         fix-memfd_create-call.patch
 Patch1:         do-not-use-snd_pcm_ioplug_hw_avail.patch
 Patch2:         fix-meson-required-version.patch
+Patch101:       0001-client-node-fix-buffer-size-calculation.patch
+Patch102:       0002-gst-fix-proxy-leaks.patch
+Patch103:       0003-pulse-fix-pa_card_info-profiles2-array-to-be-NULL-terminated.patch
+Patch104:       0004-pulse-fix-size-calculation.patch
+Patch105:       0005-jack-fix-crash-on-close-when-metadata-are-not-available.patch
+Patch106:       0006-a2dpsink-only-request-new-data-when-buffer-is-done.patch
+Patch107:       0007-pulse-fix-counter-while-populating-car_info-profiles.patch
+Patch108:       0008-impl-link-reset-state-before-starting-allocation.patch
+Patch109:       0009-impl-core-clear-the-mempool.patch
+Patch110:       0010-mem-reset-the-map-in-clear.patch
+Patch111:       0011-avoid-uninitialized-variables.patch
+Patch112:       0012-dlclose-on-errors.patch
+Patch113:       0013-stream-handle-NULL-context.patch
+Patch114:       0014-state-always-update-state-variables.patch
+Patch115:       0015-spa-device-fix-leak-of-properties-in-error-case.patch
+Patch116:       0016-alsa-dont-leak-structure-on-error.patch
+Patch117:       0017-alsa-dont-leak-properties-on-error.patch
+Patch118:       0018-stream-fix-some-more-leaks-in-error-paths.patch
+Patch119:       0019-buffers-increase-max-datas-and-metadata-in-buffers.patch
+Patch120:       0020-gst-return-NULL-for-unknown-format.patch
 
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -86,9 +106,9 @@ BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(x11)
 Requires:       %{libpipewire} = %{version}
 Requires:       %{name}-modules = %{version}
+Requires:       %{name}-spa-plugins-%{spa_ver_str} = %{version}
 Requires:       %{name}-spa-tools = %{version}
 Requires:       %{name}-tools = %{version}
-Recommends:     %{name}-spa-plugins-%{spa_ver_str} = %{version}
 
 %description
 PipeWire is a server and user space API to deal with multimedia pipelines.
@@ -105,6 +125,7 @@ Some of its features include:
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
 Group:          System/Libraries
+Recommends:     pipewire
 
 %description -n %{libpipewire}
 PipeWire is a server and user space API to deal with multimedia pipelines.
@@ -263,6 +284,8 @@ sed -i -e "s/dependency('alsa', version : '>=1.1.7')/dependency('alsa', version 
 %endif
 %patch2 -p1
 
+%autopatch -m 101 -p1
+
 %build
 %if %{pkg_vcmp gcc < 8}
 export CC=gcc-9
@@ -307,6 +330,26 @@ done
 
 %check
 %meson_test
+
+%post
+if [ ! -f /etc/systemd/user/sockets.target.wants/%{name}.socket ]; then
+  echo "Switching Pipewire activation using systemd user socket."
+  echo "Please log out from all sessions once to make it effective."
+fi
+%systemd_user_post pipewire.socket
+# FIXME: workaround to make sure the user socket symlink creation (related to bsc#1083473)
+if [ ! -f /etc/systemd/user/sockets.target.wants/%{name}.socket ]; then
+  # below should work once when preset is defined properly:
+  #  /usr/bin/systemctl --no-reload --global preset pipewire.socket
+  mkdir -p /etc/systemd/user/sockets.target.wants
+  ln -s %{_userunitdir}/%{name}.socket /etc/systemd/user/sockets.target.wants/%{name}.socket
+fi
+
+%preun
+%systemd_user_preun pipewire.socket
+
+%postun
+%systemd_user_postun pipewire.socket
 
 %post   -n %{libpipewire} -p /sbin/ldconfig
 %postun -n %{libpipewire} -p /sbin/ldconfig

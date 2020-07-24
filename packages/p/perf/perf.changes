@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 22 07:09:35 UTC 2020 - Mian Yousaf Kaukab <yousaf.kaukab@suse.com>
+
+- Link with CoreSight Trace Decode library (OpenCSD)
+
+-------------------------------------------------------------------
+Wed Jul 22 07:06:47 UTC 2020 - Mian Yousaf Kaukab <yousaf.kaukab@suse.com>
+
+- perf.spec: incorporate automatic changes from osc 
+
+-------------------------------------------------------------------
 Fri Jun 12 17:02:10 UTC 2020 - Tony Jones <tonyj@suse.com>
 
 - Fix build breakage on aarch64 and armv7 (bsc#1172741)

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 22 09:33:51 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update the path to grub-tpm.efi in shim-install (bsc#1174320)
+- shim-install: add check for btrfs is used as root file system to enable
+  relative path lookup for file. (bsc#1153953)
+- Update shim-install to handle the partitioned MD devices
+  (bsc#1119762, bsc#1119763)
+- Update grub2 path in shim-install
+
+-------------------------------------------------------------------
 Tue Mar 31 08:38:56 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Use the full path of efibootmgr to avoid errors when invoking

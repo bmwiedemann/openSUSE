@@ -1,0 +1,22 @@
+From d5604990545012a2318eebdc38d569bbc5773a38 Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Wed, 24 Jun 2020 12:50:42 +0200
+Subject: [PATCH] stream: handle NULL context
+
+---
+ pipewire-pulseaudio/src/stream.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pipewire-pulseaudio/src/stream.c b/pipewire-pulseaudio/src/stream.c
+index bcb338bf..1c1ce5f7 100644
+--- a/pipewire-pulseaudio/src/stream.c
++++ b/pipewire-pulseaudio/src/stream.c
+@@ -212,7 +212,7 @@ static void stream_state_changed(void *data, enum pw_stream_state old,
+ 	pw_log_debug("stream %p: state  '%s'->'%s' (%d)", s, pw_stream_state_as_string(old),
+ 			pw_stream_state_as_string(state), s->state);
+ 
+-	if (s->state == PA_STREAM_TERMINATED)
++	if (s->state == PA_STREAM_TERMINATED || c == NULL)
+ 		return;
+ 
+ 	switch(state) {

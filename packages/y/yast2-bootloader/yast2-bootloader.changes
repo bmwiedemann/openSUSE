@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 23 10:54:47 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- add rd.zdev to allowed kernel options on s390 (bsc#1168036)
+- 4.3.7
+
+-------------------------------------------------------------------
 Thu Jun 18 08:37:58 UTC 2020 - José Iván López González <jlopez@suse.com>
 
 - Avoid random failure in unit tests when there is a serial

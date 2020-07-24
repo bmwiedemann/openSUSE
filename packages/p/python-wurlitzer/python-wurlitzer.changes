@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 21 12:41:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.0.1
+  * small bug- and test fixes
+
+-------------------------------------------------------------------
 Mon Apr 20 07:24:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2 available

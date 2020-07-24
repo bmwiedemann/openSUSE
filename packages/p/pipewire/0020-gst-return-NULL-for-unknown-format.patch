@@ -1,0 +1,22 @@
+From a596cdbf2ef15bb90b19c470722b50524bb93261 Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Mon, 13 Jul 2020 11:50:06 +0200
+Subject: [PATCH] gst: return NULL for unknown format
+
+---
+ src/gst/gstpipewireformat.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/gst/gstpipewireformat.c b/src/gst/gstpipewireformat.c
+index 222bb9f2..2bd84bb3 100644
+--- a/src/gst/gstpipewireformat.c
++++ b/src/gst/gstpipewireformat.c
+@@ -858,6 +858,8 @@ gst_caps_from_format (const struct spa_pod *format)
+           "stream-format", G_TYPE_STRING, "byte-stream",
+           "alignment", G_TYPE_STRING, "au",
+           NULL);
++    } else {
++	    return NULL;
+     }
+     if ((prop = spa_pod_object_find_prop (obj, prop, SPA_FORMAT_VIDEO_size))) {
+       handle_rect_prop (prop, "width", "height", res);

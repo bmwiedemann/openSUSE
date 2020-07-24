@@ -1,7 +1,7 @@
 #
 # spec file for package python-latexcodec
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define modname latexcodec
 Name:           python-latexcodec
-Version:        1.0.5
+Version:        2.0.1
 Release:        0
 Summary:        A lexer and codec to work with LaTeX code in Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/mcmtroffaes/latexcodec
-Source:         https://github.com/mcmtroffaes/latexcodec/archive/1.0.5.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/mcmtroffaes/latexcodec/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.4.1}
 BuildRequires:  fdupes
@@ -40,7 +41,7 @@ BuildArch:      noarch
 A lexer and codec to work with LaTeX code in Python.
 
 %prep
-%setup -q -n latexcodec-%{version}
+%setup -q -n %{modname}-%{version}
 
 %build
 %python_build
@@ -50,10 +51,11 @@ A lexer and codec to work with LaTeX code in Python.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_exec %{_bindir}/nosetests -v}
+%pytest
 
 %files %{python_files}
-%doc AUTHORS.rst CHANGELOG.rst LICENSE.rst README.rst
+%license LICENSE.rst
+%doc AUTHORS.rst CHANGELOG.rst README.rst
 %{python_sitelib}/*
 
 %changelog

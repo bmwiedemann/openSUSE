@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul 22 01:59:58 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.8.14: 
+  + Fixes for issue #7, par2backend produces badly encoded
+    filenames.
+  + Merged in mikix:mikix/rename-fix - Fix --rename encoding.
+  + Merged in jmakovicka:master - Support PyDrive2 library in the
+    pydrive backend.
+  + More fixes for bug #1877885 - Catch quota overflow on Mega
+    upload.
+  + Fixed bug #1875937 - validate_encryption_settings() fails w/S3
+    glacier.
+  + Patched in a megav2backend.py to update to MEGAcmd tools.
+  + Fixes for rclonebackend.
+
+-------------------------------------------------------------------
 Fri May  8 00:44:51 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.8.13: 

@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
 Name:           yast2-metapackage-handler
-Version:        4.1.1
+Version:        4.3.0
 Release:        0
 Summary:        YaST2 - Easy Installation of Add-on RPMs using Metapackages
 License:        GPL-2.0-or-later

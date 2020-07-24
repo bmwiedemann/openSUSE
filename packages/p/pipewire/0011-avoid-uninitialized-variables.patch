@@ -1,0 +1,63 @@
+From f08c35259c3d87adaeb9fa09c1c471d7357cec86 Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Tue, 23 Jun 2020 15:25:27 +0200
+Subject: [PATCH] avoid uninitialized variables
+
+---
+ spa/examples/adapter-control.c |  6 +++---
+ src/tools/pw-profiler.c        | 13 ++++++-------
+ 2 files changed, 9 insertions(+), 10 deletions(-)
+
+diff --git a/spa/examples/adapter-control.c b/spa/examples/adapter-control.c
+index 8a3daf59..499d4d60 100644
+--- a/spa/examples/adapter-control.c
++++ b/spa/examples/adapter-control.c
+@@ -490,10 +490,10 @@ static int negotiate_formats(struct data *data)
+ 	if (spa_node_port_enum_params_sync(data->source_follower_node,
+ 			SPA_DIRECTION_OUTPUT, 0,
+ 			SPA_PARAM_Buffers, &state, filter, &param, &b) != 1)
+-		return res;
++		return -ENOTSUP;
+ 	spa_pod_fixate(param);
+-	if (spa_pod_parse_object(param, SPA_TYPE_OBJECT_ParamBuffers, NULL,
+-		SPA_PARAM_BUFFERS_size, SPA_POD_Int(&buffer_size)) < 0)
++	if ((res = spa_pod_parse_object(param, SPA_TYPE_OBJECT_ParamBuffers, NULL,
++		SPA_PARAM_BUFFERS_size, SPA_POD_Int(&buffer_size))) < 0)
+ 		return res;
+ 
+ 	/* set the sink and source formats */
+diff --git a/src/tools/pw-profiler.c b/src/tools/pw-profiler.c
+index e0a7492a..5cc09ca3 100644
+--- a/src/tools/pw-profiler.c
++++ b/src/tools/pw-profiler.c
+@@ -114,15 +114,14 @@ static int process_clock(struct data *d, const struct spa_pod *pod, struct point
+ 
+ static int process_driver_block(struct data *d, const struct spa_pod *pod, struct point *point)
+ {
+-	union {
+-		char *s;
+-	} dummy;
+-	uint32_t driver_id;
++	char *name = NULL;
++	uint32_t driver_id = 0;
+ 	struct measurement driver;
+ 
++	spa_zero(driver);
+ 	spa_pod_parse_struct(pod,
+ 			SPA_POD_Int(&driver_id),
+-			SPA_POD_String(&dummy.s),
++			SPA_POD_String(&name),
+ 			SPA_POD_Long(&driver.prev_signal),
+ 			SPA_POD_Long(&driver.signal),
+ 			SPA_POD_Long(&driver.awake),
+@@ -169,8 +168,8 @@ static int add_follower(struct data *d, uint32_t id, const char *name)
+ 
+ static int process_follower_block(struct data *d, const struct spa_pod *pod, struct point *point)
+ {
+-	uint32_t id;
+-	const char *name;
++	uint32_t id = 0;
++	const char *name =  NULL;
+ 	struct measurement m;
+ 	int idx;
+ 

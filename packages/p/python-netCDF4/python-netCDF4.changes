@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 22 15:07:22 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+-  Add _constraints with default 5G min disk space
+
+-------------------------------------------------------------------
 Thu May 21 10:56:35 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

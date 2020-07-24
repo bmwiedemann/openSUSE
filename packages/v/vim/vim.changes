@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Mon Jul 20 11:26:57 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.1253, fixes the following problems
+  * Vim9: crash when using imported function.
+  * Vim9: cannot handle line break inside lambda.
+  * Vim9: No error for invalid command in compiled function.
+  * Vim9: dict.name is not recognized as an expression.
+  * Vim9: no error for missing space after a comma.
+  * Vim9: memory leak in allocated types.
+  * Vim9: using freed memory.
+  * Text cleared by checking terminal properties not redrawn. (Alexey Radkov)
+  * Insufficient testing for the Tcl interface.
+  * Once mouse move events are enabled getchar() returns them.
+  * Vim9: builtin function method call only supports first argument.
+  * Wrong method argument for appendbufline().
+  * Write NUL past allocated space using corrupted spell file. (Markus Vervier)
+  * Cursor off by one with block paste while 'virtualedit' is "all".
+  * Possible crash when out of memory.
+  * Error messages when doing "make clean" in the runtime/doc or src/tee
+  directories.
+  * Tee doesn't build on some systems.
+  * No test for the "recording @x" message.
+  * Vim9: Cannot split a line before ".member".
+  * Vim9: not enough type checking in Vim9 script.
+  * Terminal2 test sometimes hangs in the GUI.
+  * Vim9: filter function recognized as command modifier, leading to a crash.
+  * Test_termwinscroll() sometimes hangs in the GUI.
+  * Build failure in small version.
+  * Json code not fully tested.
+  * Vim9: no check for whitespace after comma in lambda.
+  * assert_fails() checks the last error message.
+  * Some tests fail.
+  * Some other tests fail.
+  * With SGR mouse codes balloon doesn't show up after click.
+  * Terminal2 test sometimes hangs in the GUI on Travis.
+  * Memory leak with invalid json input.
+  * Vim9: line continuation in lambda doesn't always work.
+  * Vim9: checking for Vim9 syntax is spread out.
+  * Vim9: crash when function calls itself.
+  * Lua test fails with older Lua version.
+  * Terminal window not redrawn when dragging a popup window over it.
+  * Test failure because shell prompt differs.
+  * Clientserver test fails on MS-Windows.
+  * Build failure with normal features.
+  * Clientserver test still fails on MS-Windows.
+  * Terminal2 test sometimes hangs in the GUI on Travis.
+  * Not all assert functions are fully tested.
+  * Vim9: cannot disassemble a lambda function.
+  * Vim9: crash when passing number as dict key.
+  * Vim9: crash when calling a closure from a builtin function.
+  * Unused assignments in expression evaluation.
+  * Vim9: true and false not recognized in Vim9 script.
+  * Vim9: && and || work different when not compiled.
+  * Vim9: crash in expr test when run in the GUI.
+  * Vim9: crash in expr test when run in the GUI.
+  * Using ht_used when looping through a hashtab is less reliable.
+  * Removed more than dead code.
+  * Cannot build with Lua 5.4.
+  * Mouse codes not tested sufficiently.
+  * Startup test depends on random source file.
+  * Vim9: cannot use 'text'->func().
+  * Symlink not followed if dirname ends in //.
+  * memory access error when dragging a popup window over a buffer with
+  folding.
+  * Memory leak when updating popup window.
+  * When using valgrind a Vim command started by a test uses the same log
+  file name which gets overwritten.
+  * Vim9: invalid type error for function default value.
+  * Vim9: arguments from partial are not used.
+  * Linker errors when building with dynamic Python 3.9.
+  * Vim9: allowing both quoted and # comments is confusing.
+  * Scrollbars not flush against the window edges when maximised.
+  * Build error without the eval feature.
+  * Vim9: list index error not caught by try/catch.
+  * Vim9: various errors not caught by try/catch.
+  * Lua build problem with old compiler.
+  * Not all mouse codes covered by tests.
+  * Vim9: a few errors not caught by try/catch.
+  * Changing 'completepopup' after opening a popup has no effect. (Jay Sitter)
+  * Vim9: a few remaining errors not caught by try/catch.
+  * "maxwidth" in 'completepopup' not obeyed. (Jay Sitter)
+  * GUI tests sometimes fail because of translations.
+  * Cannot use getbufinfo() as a method.
+  * Vim9: no error if calling a function with wrong argument type.
+  * Vim9: cannot have a comment or empty line halfway a list at script level.
+  * Vim9: in lambda index assumes a list.
+  * Build failure in tiny version.
+  * Vim9: comment after assignment doesn't work.
+  * Vim9: cannot index a character in a string.
+  * Netbeans test is flaky in the GUI.
+  * Vim9: disassemble test fails.
+  * Vim9: cannot use the g:, b:, t: and w: namespaces.
+  * Vim9: warning for pointer usage, test failure undetected.
+  * ":marks" may show '< and '> mixed up.
+  * CTRL-K in Insert mode gets <CursorHold> inserted. (Roland Puntaier)
+
+-------------------------------------------------------------------
 Wed Jul  8 16:01:14 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.1154, fixes the following problems

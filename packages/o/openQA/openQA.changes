@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jul 23 19:26:31 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1595521154.aa29e2427:
+  * Add help popover for restart button
+  * Allow skipping parents when restarting a job via API
+  * Clone directly chained parents when restarting jobs
+  * Improve error message and coding style when cloning a job
+  * Fail Makefile targets if checks for certain tools fail
+  * Add "tidy" make target calling Perl and JavaScript tidy
+  * Make "last good" a link to a job instead of plain job ID
+  * Render the dependency graph only while the tab panel element is visible
+  * Avoid overriding explicitly specified tab/step when loading running jobs
+  * Fix qcow image URLs being treated as text
+  * t: Add test for content-type of qcow2 image
+  * t: Delete obsolete disabled content from ui/07-file.t
+  * t: Simplify 07-file.t using more Mojo::File
+  * t: Add test for content-type of log archive and ISO media as well
+  * t: Minor enhancements to comments
+  * t: Move 'wait_for_worker' to only place where used
+  * Allow to configure worker connect interval using env variable
+
+-------------------------------------------------------------------
 Tue Jul 21 11:26:50 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1595305429.43f8dce53:

@@ -1,0 +1,28 @@
+[Unit]
+Description=Combustion
+DefaultDependencies=false
+
+ConditionKernelCommandLine=ignition.firstboot
+
+Requires=sysroot.mount
+After=sysroot.mount
+
+# Optionally make network available
+After=network.target
+
+# Config drive has to be available
+Requires=dev-disk-by\x2dlabel-ignition.device
+After=dev-disk-by\x2dlabel-ignition.device
+
+# After ignition completed its stuff
+After=ignition-complete.target
+
+# So that /etc/fstab's x-initrd.mount entries are read (again) later
+Before=initrd-parse-etc.service
+
+Conflicts=initrd-switch-root.target umount.target
+Conflicts=dracut-emergency.service emergency.service emergency.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/combustion

@@ -18,35 +18,29 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
+%define psuffix %{nil}
 %bcond_without python2
 %bcond_without python3
 %bcond_with qt
-%define psuffix %{nil}
 %else
+%define psuffix qt
 %bcond_with python2
 %bcond_with python3
 %bcond_without qt
-%define psuffix qt
 %endif
 Name:           gpgme%{psuffix}
-Version:        1.13.1
+Version:        1.14.0
 Release:        0
 Summary:        Programmatic library interface to GnuPG
 License:        LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          Productivity/Security
-URL:            http://www.gnupg.org/related_software/gpgme/
+URL:            https://www.gnupg.org/related_software/gpgme/
 Source:         ftp://ftp.gnupg.org/gcrypt/gpgme/gpgme-%{version}.tar.bz2
 Source1:        ftp://ftp.gnupg.org/gcrypt/gpgme/gpgme-%{version}.tar.bz2.sig
 Source2:        baselibs.conf
 Source3:        gpgme.keyring
 # used to have a fixed timestamp
 Source99:       gpgme.changes
-Patch1:         gpgme-t-json-test-Bravo-key-no-secret-key-material.patch
-Patch2:         gpgme-t-json-test-with-keygrip-when-listing-keys.patch
-# fix from https://dev.gnupg.org/rMae4d7761a15b82eb98b0bcc72af2ae2e8973e1f9
-# required to make notmuch's testsuite pass, see
-# id:87366av72u.fsf@fifthhorseman.net on notmuch@notmuchmail.org
-Patch3:         0001-gpg-Avoid-error-diagnostics-with-override-session-ke.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gpg2 >= 2.0.10
 BuildRequires:  libassuan-devel >= 2.4.2
@@ -188,7 +182,7 @@ management.
 This package contains the bindings to use the library in Qt C++ applications.
 
 %prep
-%autosetup -n gpgme-%{version} -p1
+%setup -q -n gpgme-%{version}
 
 %ifarch %{ix86}
 sed -i -e '/t-callbacks.py/d' lang/python/tests/Makefile.{am,in}
@@ -212,7 +206,7 @@ languages="cpp qt"
 	--disable-fd-passing \
 	--enable-languages="${languages}" \
 	--enable-build-timestamp="${build_timestamp}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -231,7 +225,7 @@ rm -r %{buildroot}%{_libdir}/pkgconfig/gpgme*
 
 %check
 %if ! 0%{?qemu_user_space_build}
-make %{?_smp_mflags} check
+%make_build check
 %endif
 
 %if %{with qt}
@@ -244,7 +238,6 @@ make %{?_smp_mflags} check
 %postun -n libgpgme11 -p /sbin/ldconfig
 %post -n libgpgmepp6 -p /sbin/ldconfig
 %postun -n libgpgmepp6 -p /sbin/ldconfig
-
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/gpgme.info%{ext_info}
 

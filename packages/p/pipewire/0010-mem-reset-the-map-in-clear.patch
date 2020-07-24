@@ -1,0 +1,22 @@
+From 95192b21f152ba6fa769049a2298aba1221f794d Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Fri, 19 Jun 2020 16:58:22 +0200
+Subject: [PATCH] mem: reset the map in clear
+
+Or else the free list is not cleared.
+---
+ src/pipewire/mem.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/pipewire/mem.c b/src/pipewire/mem.c
+index 79d94672..94b62049 100644
+--- a/src/pipewire/mem.c
++++ b/src/pipewire/mem.c
+@@ -164,6 +164,7 @@ void pw_mempool_clear(struct pw_mempool *pool)
+ 
+ 	spa_list_consume(b, &impl->blocks, link)
+ 		pw_memblock_free(&b->this);
++	pw_map_reset(&impl->map);
+ }
+ 
+ void pw_mempool_destroy(struct pw_mempool *pool)

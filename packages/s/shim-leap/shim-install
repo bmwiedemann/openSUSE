@@ -1,5 +1,6 @@
 #! /bin/bash -e
 
+arch=`uname -m`
 rootdir=
 bootdir=
 efidir=
@@ -10,8 +11,9 @@ no_nvram=no
 removable=no
 clean=no
 sysconfdir="/etc"
-libdir="/usr/lib64"
-source_dir="$libdir/efi"
+libdir="/usr/lib64"	# Beware, this is arch dependent!
+datadir="/usr/share"
+source_dir="${datadir}/efi/${arch}"
 efibootmgr="/usr/sbin/efibootmgr"
 grub_probe="/usr/sbin/grub2-probe"
 grub_mkrelpath="/usr/bin/grub2-mkrelpath"
@@ -23,7 +25,6 @@ update_boot=no
 def_grub_efi="${source_dir}/grub.efi"
 def_boot_efi=
 
-arch=`uname -m`
 if [ x${arch} = xx86_64 ] ; then
 	grub_install_target="x86_64-efi"
 	def_boot_efi="bootx64.efi"
@@ -35,6 +36,12 @@ else
 	exit 1
 fi
 
+if [ ! -d "${source_dir}" -o ! -e "${def_grub_efi}" ] ; then
+    # for outdated packages fall back to previous behavior
+    source_dir="$libdir/efi"
+    def_grub_efi="${source_dir}/grub.efi"
+fi
+ 
 # Get GRUB_DISTRIBUTOR.
 if test -f "${sysconfdir}/default/grub" ; then
     . "${sysconfdir}/default/grub"
@@ -139,7 +146,17 @@ do
 	no_nvram=yes ;;
 
     --suse-enable-tpm)
-        source_grub_efi="/usr/lib/grub2/${grub_install_target}/grub-tpm.efi" ;;
+        # bsc#1174320 shim-install uses wrong paths for EFI files
+        # There are 3 possible locations of grub-tpm.efi and we will check them
+        # one by one.
+        if [ -e "${source_dir}/grub-tpm.efi" ]; then
+            source_grub_efi="${source_dir}/grub-tpm.efi"
+	elif [ -e "${datadir}/grub2/${grub_install_target}/grub-tpm.efi" ] ; then
+            source_grub_efi="${datadir}/grub2/${grub_install_target}/grub-tpm.efi"
+        else
+            source_grub_efi="/usr/lib/grub2/${grub_install_target}/grub-tpm.efi"
+        fi
+       	;;
 
     --clean)
 	clean=yes ;;
@@ -288,8 +305,13 @@ make_grubcfg () {
 grub_cfg_dirname=`dirname $grub_cfg`
 grub_cfg_basename=`basename $grub_cfg`
 cfg_fs_uuid=`"$grub_probe" --target=fs_uuid "$grub_cfg_dirname"`
+# bsc#1153953 - Leap 42.3 boot error snapshot missing
+# We have to check btrfs is used as root file system to enable relative path
+# lookup for file to be on par with other utility which also accounts for it.
+GRUB_FS="$(stat -f --printf=%T / || echo unknown)"
 
-if test "x$SUSE_BTRFS_SNAPSHOT_BOOTING" = "xtrue"; then
+if test "x$SUSE_BTRFS_SNAPSHOT_BOOTING" = "xtrue" &&
+   [ "x${GRUB_FS}" = "xbtrfs" ] ; then
 cat <<EOF
 set btrfs_relative_path="yes"
 EOF
@@ -333,7 +355,10 @@ if test "$no_nvram" = no && test -n "$bootloader_id"; then
     efidir_disk="$("$grub_probe" --target=disk --device-map= "$efidir")"
     if test -z "$efidir_drive" || test -z "$efidir_disk"; then
         echo "Can't find GRUB drive for $efidir; unable to create EFI Boot Manager entry." >&2
-    elif [[ "$efidir_drive" == \(mduuid/* ]]; then
+    # bsc#1119762 If the MD device is partitioned, we just need to create one
+    # boot entry since the partitions are nested partitions and the mirrored
+    # partitions share the same UUID.
+    elif [[ "$efidir_drive" == \(mduuid/* && "$efidir_drive" != \(mduuid/*,* ]]; then
         eval $(mdadm --detail --export "$efidir_disk" |
           perl -ne 'print if m{^MD_LEVEL=}; push( @D, $1) if (m{^MD_DEVICE_\S+_DEV=(\S+)$});
                     sub END() {print "MD_DEVS=\"", join( " ", @D), "\"\n";};')

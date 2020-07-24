@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 19 11:25:51 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0. kdav is now a KDE Framework.
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 20.04.3:
+  * Add full namespace to external class references
+  * Option to build & install QCH file with the public API dox
+  * Make KDAV a KDE Framework
+
+-------------------------------------------------------------------
 Sat Jul 11 08:59:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 20.04.3

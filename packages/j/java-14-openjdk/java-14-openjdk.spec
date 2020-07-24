@@ -32,13 +32,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      14
 %global interimver      0
-%global updatever       1
+%global updatever       2
 %global patchver        0
-%global datever         2020-04-14
-%global buildver        7
+%global datever         2020-07-14
+%global buildver        12
 %global hg_project      jdk-updates
 %global hg_repository   jdk14u
-%global hg_revision     dff61ec755a9
+%global hg_revision     55692db5e928
 %global icedtea_sound_version 1.0.1
 %global java_atk_wrapper_version 0.33.2
 # JavaEE modules
@@ -212,7 +212,6 @@ Patch16:        missing-return.patch
 #
 Patch20:        loadAssistiveTechnologies.patch
 #
-Patch31:        DependOnVariableHelper.patch
 Patch32:        gcc-fno-common-fix.patch
 #
 # OpenJDK specific patches
@@ -492,7 +491,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
 %patch20 -p1
 
-%patch31 -p1
 %patch32 -p1
 
 # s390 build fixes

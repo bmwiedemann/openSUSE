@@ -22,8 +22,8 @@ Release:        0
 Summary:        Tiling window manager
 License:        BSD-3-Clause
 Group:          System/GUI/Other
-URL:            http://i3wm.org/
-Source0:        http://i3wm.org/downloads/%{name}-%{version}.tar.bz2
+URL:            https://i3wm.org/
+Source0:        https://i3wm.org/downloads/%{name}-%{version}.tar.bz2
 Source1:        %{name}.png
 Source2:        %{name}.keyring
 Source3:        https://i3wm.org/downloads/%{name}-%{version}.tar.bz2.asc
@@ -60,6 +60,7 @@ Requires:       perl-AnyEvent-I3
 Recommends:     dmenu
 Recommends:     i3lock
 Recommends:     i3status
+Recommends:     xorg-x11-server
 Provides:       windowmanager
 # Upstream First - Policy:
 # Never add any patches to this package without the upstream commit id
@@ -81,8 +82,7 @@ Requires:       %{name}
 Development headers for the i3 window manager.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 # fix rpmlint E: env-script-interpreter
 sed -i 's,^#!/usr/bin/env ,#!/usr/bin/,' i3-dmenu-desktop i3-migrate-config-to-v4 i3-save-tree

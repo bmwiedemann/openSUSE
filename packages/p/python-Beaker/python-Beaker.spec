@@ -26,16 +26,19 @@ Summary:        A Session and Caching library with WSGI Middleware
 License:        BSD-3-Clause
 URL:            https://github.com/bbangert/beaker
 Source:         https://github.com/bbangert/beaker/archive/%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM denose.patch gh#bbangert/beaker#192 mcepl@suse.com
+# Port tests to pytest
+Patch0:         denose.patch
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pycryptodome}
 BuildRequires:  %{python_module pylibmc}
 BuildRequires:  %{python_module pymongo}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-memcached}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module setuptools}
@@ -97,6 +100,8 @@ Features include:
 
 %prep
 %setup -q -n beaker-%{version}
+%autopatch -p1
+
 # needs mongo and redis running
 rm -r tests/test_managers
 rm tests/test_memcached.py
@@ -113,7 +118,7 @@ rm tests/test_cachemanager.py
 %{python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}
 # gh#bbangert/beaker#172
 rm -fv tests/test.db
-nosetests-%{$python_bin_suffix} -v tests
+pytest tests
 }
 
 %files %{python_files}

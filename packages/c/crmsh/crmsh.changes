@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 23 15:28:41 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1595517298.a06e892f:
+  * Dev: unittest: append unit test for corosync status related codes
+  * Low: ui_corosync: copy ssh key to qnetd while detect need password(bsc#1174385)
+
+-------------------------------------------------------------------
 Thu Jul 09 09:33:15 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1594286044.7a596d12:

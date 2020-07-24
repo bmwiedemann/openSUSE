@@ -170,4 +170,15 @@
   - Documentation fixes</comment>
     <requestid>818307</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9563da0e2a12da93902dacfabfbdfc2c</srcmd5>
+    <version>0.10.1</version>
+    <time>1595577143</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.1
+  - Fix upgrading of kubelet version
+  - Remove workarounds for salt, breaks non-salt usage
+  - Add new parameter apiserver_cert_extra_sans</comment>
+    <requestid>821936</requestid>
+  </revision>
 </revisionlist>

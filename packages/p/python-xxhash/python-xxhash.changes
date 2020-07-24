@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 21 11:23:49 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.4.4
+  * Upgrade xxHash to v0.7.3
+  * Stop using PEP393 deprecated APIs 
+  * Use XXH(32|64)_canonicalFromHash to replace u2bytes and ull2bytes
+  
+-------------------------------------------------------------------
 Tue Feb  4 16:26:29 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.4.3

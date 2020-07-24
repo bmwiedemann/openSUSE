@@ -17,9 +17,18 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         oldpython python
-Name:           python-traits
-Version:        5.2.0
+%define         skip_python2 1
+# cycle with pyface
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-traits%{psuffix}
+Version:        6.1.0
 Release:        0
 Summary:        Explicitly typed attributes for Python
 # Images have different licenses. For image license breakdown check
@@ -30,23 +39,24 @@ License:        BSD-3-Clause AND EPL-1.0 AND LGPL-2.1-only
 Group:          Development/Libraries/Python
 URL:            https://github.com/enthought/traits
 Source:         https://files.pythonhosted.org/packages/source/t/traits/traits-%{version}.tar.gz
+# Import of pyface.toolkit mysteriously fails. But it is needed by only one test, which needs traitsui,
+# but we cannot have traitsui, because the tests invocation segfaults with traitsui installed (why?!).
+# So the test would be skipped anyway, so let us just skip the import as if pyface was not there.
+Patch0:         fix-test.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module mock}
+%if %{with test}
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pyface}
+%endif
 # /SECTION
 Requires:       python-numpy
-Requires:       python-six
-Recommends:     python-traitsui
-%ifpython2
-Provides:       %{oldpython}-Traits = %{version}
-Obsoletes:      %{oldpython}-Traits < %{version}
-%endif
+Recommends:     python-traitsui >= 7.0.0
 
 %python_subpackages
 
@@ -73,23 +83,31 @@ Part of the Enthought Tool Suite (ETS).
 # file not utf-8
 iconv -f iso8859-1 -t utf-8 image_LICENSE_Eclipse.txt > image_LICENSE_Eclipse.txt.conv
 mv -f image_LICENSE_Eclipse.txt.conv image_LICENSE_Eclipse.txt
+%patch0 -p1
 
 %build
+%if %{without test}
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_build
+%endif
 
 %install
+%if %{without test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%endif
 
 %check
+%if %{with test}
 %{python_expand mkdir tester_%{$python_bin_suffix}
 pushd tester_%{$python_bin_suffix}
 export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python -m nose.core -v traits
+$python -m unittest discover -v traits
 popd
 }
+%endif
 
+%if %{without test}
 %files %{python_files}
 %defattr(-,root,root,-)
 %doc CHANGES.rst README.rst
@@ -97,5 +115,6 @@ popd
 %license LICENSE.txt image_LICENSE*.txt
 %{python_sitearch}/traits/
 %{python_sitearch}/traits-%{version}-py*.egg-info
+%endif
 
 %changelog

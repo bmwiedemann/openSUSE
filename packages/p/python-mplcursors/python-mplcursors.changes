@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul 23 09:54:39 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- moved Pillow requirement to matplotlib package
+
+-------------------------------------------------------------------
+Tue Jul 21 22:23:22 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- allow newest pytest again
+- require Pillow
+- apply upstream patches to allow newest matplotlib and numpy
+  gh#anntzer/mplcursors#26
+  * mplcursors-unicodeminus.patch
+  * mplcursors-newstem.patch
+  * mplcursors-parse_annotation.patch
+  * mplcursors-fix-LineCollection.patch
+  * mplcursors-unicodeminus2.patch
+
+-------------------------------------------------------------------
 Tue Jun  9 07:49:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - build against older pytest to have tests passing

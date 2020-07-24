@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-voluptuous-serialize
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Python module to convert voluptuous schemas to dictionaries
 License:        Apache-2.0

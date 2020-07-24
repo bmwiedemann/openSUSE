@@ -1591,4 +1591,12 @@ ImageEditor : Add HTMLGallery, Calendar, ExpoBlending, VideSlideshow,</comment>
     <comment></comment>
     <requestid>822014</requestid>
   </revision>
+  <revision rev="189" vrev="5">
+    <srcmd5>15fe44f0f3464852a9bce2fd545cc126</srcmd5>
+    <version>6.4.0</version>
+    <time>1595577705</time>
+    <user>dimstar_suse</user>
+    <comment>- Update _constraints with latest disk value for all archs (forwarded request 822241 from Guillaume_G)</comment>
+    <requestid>822276</requestid>
+  </revision>
 </revisionlist>

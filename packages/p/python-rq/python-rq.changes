@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 22 12:38:39 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.4.3
+  * Added job.get_position() and queue.get_job_position(). Thanks @aparcar!
+  * Longer TTLs for worker keys to prevent them from expiring inside the worker lifecycle. Thanks @selwin!
+  * Long job args/kwargs are now truncated during logging. Thanks @JhonnyBn!
+  * job.requeue() now returns the modified job. Thanks @ericatkin!
+- Fix build error for Leap: Since 1.4.0 rq require python >= 3.4.
+
+-------------------------------------------------------------------
 Thu Jun 11 05:04:56 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.4.2:

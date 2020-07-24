@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 10 20:14:48 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 0.110:
+  Dependencies:
+  + GLib 2.40 is required
+  Enhancements:
+  + The GLib main-loop glue, "dbus-gmain", is now available as a separate
+    subproject (the dbus-gmain branch in dbus-glib's git repository) for
+    embedding in larger projects like dbus-glib and dbus-python via the
+    `git subtree` or `git submodule` commands. This removes dbus-python's
+    dependency on the rest of dbus-glib.
+  Fixes:
+  + autogen.sh can now detect gtk-doc >= 1.26.
+  + More files have per-file copyright information.
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Fri Jun  9 06:45:23 UTC 2017 - meissner@suse.com
 
 - remove CFLAGS setting, -fstack-protector is default and -fPIC

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 23 07:29:27 UTC 2020 - Petr Vorel <pvorel@suse.cz>
+
+- Use %autosetup -p1
+
+-------------------------------------------------------------------
 Wed Jul 15 18:41:09 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 4.0.5:

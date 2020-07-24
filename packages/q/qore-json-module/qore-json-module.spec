@@ -1,7 +1,7 @@
 #
 # spec file for package qore-json-module
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Name:           qore-json-module
 Version:        1.4
 Release:        0
 Summary:        JSON module for Qore
-License:        LGPL-2.0+ or GPL-2.0+ or MIT
+License:        LGPL-2.0-or-later OR GPL-2.0-or-later OR MIT
 Group:          Development/Languages
 Url:            http://qore.org
 Source:         http://prdownloads.sourceforge.net/qore/%{name}-%{version}.tar.bz2
@@ -48,6 +48,10 @@ JSON is a concise human-readable data serialization format.
 %patch0 -p1
 
 %build
+# Remove -m32 and -m64 options except for x86* and ppc*
+%ifnarch %{ix86} x86_64 ppc64 ppc64le
+sed -i 's/-m32//g;s/-m64//g' configure
+%endif
 CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" ./configure RPM_OPT_FLAGS="%{optflags}" --prefix=/usr --disable-debug
 make %{?_smp_mflags}
 

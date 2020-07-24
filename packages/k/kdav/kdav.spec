@@ -16,15 +16,24 @@
 #
 
 
+%define _tar_path 5.72
+# Full KF5 version (e.g. 5.33.0)
+%{!?_kf5_version: %global _kf5_version %{version}}
+# Last major and minor KF5 version (e.g. 5.33)
+%{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without  lang
 Name:           kdav
-Version:        20.04.3
+Version:        5.72.0
 Release:        0
 Summary:        DAV protocol implementation
-License:        GPL-2.0-only
-Group:          Productivity/Other
+License:        LGPL-2.0-or-later
+Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-%{version}.tar.xz.sig
+Source2:        frameworks.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5I18n)
@@ -34,10 +43,6 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5XmlPatterns)
 Recommends:     %{name}-lang
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 kdav is a library providing a KJob-based implementation of DAV protocols such as
@@ -79,18 +84,18 @@ This package contains development files needed to use kdav in other applications
 %postun -n libKF5DAV5 -p /sbin/ldconfig
 
 %files
-%license COPYING
+%license LICENSES/*
 %doc README.md
 %{_kf5_debugdir}/kdav.categories
 
 %files -n libKF5DAV5
-%license COPYING
+%license LICENSES/*
 %doc README.md
 %{_kf5_libdir}/libKF5DAV.so.5
 %{_kf5_libdir}/libKF5DAV.so.5.*
 
 %files devel
-%license COPYING
+%license LICENSES/*
 %doc README.md
 %{_includedir}/KF5/
 %{_kf5_libdir}/cmake/KF5DAV/
@@ -99,7 +104,7 @@ This package contains development files needed to use kdav in other applications
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog

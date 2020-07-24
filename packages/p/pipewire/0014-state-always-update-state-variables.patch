@@ -1,0 +1,103 @@
+From f678f4371de0a8a4b75023fb123d0210ac685ed2 Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Sat, 27 Jun 2020 13:21:12 +0200
+Subject: [PATCH] state: always update state variables
+
+Or else we might leak the error string.
+---
+ src/pipewire/impl-link.c |  8 ++++----
+ src/pipewire/impl-node.c | 11 +++++------
+ src/pipewire/impl-port.c | 24 +++++++++++++-----------
+ 3 files changed, 22 insertions(+), 21 deletions(-)
+
+diff --git a/src/pipewire/impl-link.c b/src/pipewire/impl-link.c
+index 8be818b4..22446c86 100644
+--- a/src/pipewire/impl-link.c
++++ b/src/pipewire/impl-link.c
+@@ -89,6 +89,10 @@ static void pw_impl_link_update_state(struct pw_impl_link *link, enum pw_link_st
+ {
+ 	enum pw_link_state old = link->info.state;
+ 
++	link->info.state = state;
++	free((char*)link->info.error);
++	link->info.error = error;
++
+ 	if (state == old)
+ 		return;
+ 
+@@ -105,10 +109,6 @@ static void pw_impl_link_update_state(struct pw_impl_link *link, enum pw_link_st
+ 				pw_link_state_as_string(state));
+ 	}
+ 
+-	link->info.state = state;
+-	free((char*)link->info.error);
+-	link->info.error = error;
+-
+ 	pw_impl_link_emit_state_changed(link, old, state, error);
+ 
+ 	link->info.change_mask |= PW_LINK_CHANGE_MASK_STATE;
+diff --git a/src/pipewire/impl-node.c b/src/pipewire/impl-node.c
+index fb415cdb..97ee439d 100644
+--- a/src/pipewire/impl-node.c
++++ b/src/pipewire/impl-node.c
+@@ -285,9 +285,12 @@ do_node_add(struct spa_loop *loop,
+ 
+ static void node_update_state(struct pw_impl_node *node, enum pw_node_state state, char *error)
+ {
+-	enum pw_node_state old;
++	enum pw_node_state old = node->info.state;
++
++	free((char*)node->info.error);
++	node->info.error = error;
++	node->info.state = state;
+ 
+-	old = node->info.state;
+ 	if (old == state)
+ 		return;
+ 
+@@ -302,10 +305,6 @@ static void node_update_state(struct pw_impl_node *node, enum pw_node_state stat
+ 		     pw_node_state_as_string(old), pw_node_state_as_string(state));
+ 	}
+ 
+-	free((char*)node->info.error);
+-	node->info.error = error;
+-	node->info.state = state;
+-
+ 	switch (state) {
+ 	case PW_NODE_STATE_RUNNING:
+ 		pw_loop_invoke(node->data_loop, do_node_add, 1, NULL, 0, true, node);
+diff --git a/src/pipewire/impl-port.c b/src/pipewire/impl-port.c
+index 7e4528e7..21434360 100644
+--- a/src/pipewire/impl-port.c
++++ b/src/pipewire/impl-port.c
+@@ -98,17 +98,19 @@ void pw_impl_port_update_state(struct pw_impl_port *port, enum pw_impl_port_stat
+ {
+ 	enum pw_impl_port_state old = port->state;
+ 
+-	if (old != state) {
+-		pw_log(state == PW_IMPL_PORT_STATE_ERROR ?
+-				SPA_LOG_LEVEL_ERROR : SPA_LOG_LEVEL_DEBUG,
+-			NAME" %p: state %s -> %s (%s)", port,
+-			port_state_as_string(old), port_state_as_string(state), error);
+-
+-		port->state = state;
+-		free((void*)port->error);
+-		port->error = error;
+-		pw_impl_port_emit_state_changed(port, old, state, error);
+-	}
++	port->state = state;
++	free((void*)port->error);
++	port->error = error;
++
++	if (old == state)
++		return;
++
++	pw_log(state == PW_IMPL_PORT_STATE_ERROR ?
++			SPA_LOG_LEVEL_ERROR : SPA_LOG_LEVEL_DEBUG,
++		NAME" %p: state %s -> %s (%s)", port,
++		port_state_as_string(old), port_state_as_string(state), error);
++
++	pw_impl_port_emit_state_changed(port, old, state, error);
+ }
+ 
+ static int tee_process(void *object)

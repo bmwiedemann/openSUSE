@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue Jul 14 22:09:20 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add insighttoolkit-drop-netlib-triangle-files.patch: Drop netlib
+  triangle files and any linking to them due to licensing issues;
+  patch from upstream [gh#InsightSoftwareConsortium/ITK#1913].
+
+-------------------------------------------------------------------
+Wed Jun  3 00:58:31 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.1.0: See
+  https://blog.kitware.com/itk-5-1-0-available-for-download/.
+- Drop dcmtk-cmake.patch: no longer needed when using system
+  dcmtk.
+- Update itklbfgs-linking.patch and nrrdio-linking.patch to
+  upstream-blessed versions (minor changes only)
+  [gh#InsightSoftwareConsortium/ITK#1867,
+  gh#InsightSoftwareConsortium/ITK#1878].
+- New BuildRequires: pkgconfig(libpcrecpp) and bison.
+- Drop BuildRequires: tcpd-devel, no longer needed.
+- Add necessary Requires: python3-numpy to python3-%{name}
+  package.
+- Update Requires for devel package and convert existing Requires
+  to pkgconfig equivalents where possible.
+- Pass -DITK_USE_SYSTEM_SWIG:BOOL=ON to cmake, otherwise it
+  defaults to OFF and tries to download swig.
+- Drop -DITK_USE_STRICT_CONCEPT_CHECKING:BOOL=ON option passed to
+  cmake: no longer used.
+- Drop -DITK_WRAPPING option passed to cmake: obsoleted by
+  -DITK_WRAP_PYTHON.
+- No longer need to `export CXXFLAGS+=" -I%{_includedir}/gdcm/"`
+  [gh#InsightSoftwareConsortium/ITK#1768].
+- Drop Group tags.
+- Improve Summary and descriptions for packages.
+
+-------------------------------------------------------------------
+Mon May 18 01:15:30 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.0.1: See
+  https://discourse.itk.org/t/itk-5-0-1-has-been-released/2094.
+- Changes from version 5.0.0: See
+  https://discourse.itk.org/t/itk-5-0-0-has-been-released/1931.
+- Drop add_gcc9_support.patch: no longer required with upstream
+  support for up to GCC 10 baked in.
+- Pass options to %cmake to set proper install paths when
+  installing; prevents the need to manually move installed libs
+  around. Drop sed BuildRequires that is no longer required as a
+  consequence.
+- Enable python3 wrapping (needed for tomviz, for instance); split
+  out separate python3-itk package. Introduces BuildRequires:
+  python3-devel.
+- Add BuildRequires: memory-constraints and use %limit_build
+  to require at least 2 GiB memory per thread; OOM failures
+  otherwise.
+- Update _constraints file: at least 24 GB (!!!) disk space and 2
+  GB memory now required.
+- Use ninja for build (BuildRequires: ninja); compile using
+  %cmake_build instead of make directly.
+- Additional system library dependencies: CastXML-devel, gtest,
+  double-conversion, and gdcm-devel.
+- Convert BuildRequires to pkgconfig() or cmake() based ones
+  wherever possible.
+- Update URL and Source URL in keeping with upstream's move to
+  github.
+- Drop conditionals for old openSUSE versions.
+
+-------------------------------------------------------------------
 Sat Jul  6 18:06:51 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove filler wording from description.

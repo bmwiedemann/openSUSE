@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xxhash
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        Python binding for xxHash
 License:        BSD-2-Clause
@@ -29,9 +29,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  xxhash-devel
-# SECTION test requirements
-BuildRequires:  %{python_module nose > 1.3.0}
-# /SECTION
 %python_subpackages
 
 %description

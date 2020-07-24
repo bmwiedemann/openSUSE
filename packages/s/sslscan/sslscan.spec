@@ -1,7 +1,7 @@
 #
 # spec file for package sslscan
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sslscan
-Version:        1.11.10
+Version:        2.0.0
 Release:        0
 Summary:        SSL cipher scanning tool
 License:        SUSE-GPL-3.0+-with-openssl-exception
 Group:          Productivity/Networking/Diagnostic
-URL:            https://github.com/rbsec/sslscan
-Source:         https://github.com/rbsec/sslscan/archive/%{version}-rbsec.tar.gz#/%{name}-%{version}-rbsec.tar.gz
+Source:         https://github.com/rbsec/sslscan/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 #Patches copied from Debian package
 Patch1:         fedora-sslscan-patents.patch
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libssl) < 1.1.0
-%if 0%{?sle_version}
-%ifarch x86_64
-BuildRequires:  glibc-devel-32bit(x86-32)
-%endif
-%endif
+BuildRequires:  pkgconfig(libssl) >= 1.1.1
 
 %description
 SSLScan determines what ciphers are supported on SSL-based services,
@@ -40,13 +34,13 @@ such as HTTPS. Furthermore, SSLScan will determine the preferred
 ciphers of the SSL service.
 
 %prep
-%setup -q -n %{name}-%{version}-rbsec
+%setup -q
 %if %{defined fedora}
 %patch1 -p1
 %endif
 
 %build
-make CFLAGS="%{optflags}" %{?_smp_mflags}
+%make_build CFLAGS="%{optflags} -fPIE"
 
 %install
 install -d "%{buildroot}%{_bindir}"
@@ -55,8 +49,9 @@ make install PREFIX="%{buildroot}%{_prefix}"
 
 %files
 %defattr(0644,root,root)
-%doc LICENSE README.md
+%doc README.md
+%license LICENSE
 %attr(0755,root,root) %{_bindir}/sslscan
-%{_mandir}/man1/sslscan.1%{ext_man}
+%{_mandir}/man1/sslscan.1%{?ext_man}
 
 %changelog

@@ -98,7 +98,7 @@ Requires(pre):  /etc/init.d/syslog
 %else
 Requires(pre):  syslog-service >= 2.0
 %endif
-%{?systemd_requires}
+%{?systemd_ordering}
 BuildRequires:  pkgconfig(systemd) >= 209
 %if %{with journal}
 BuildRequires:  pkgconfig(libsystemd) >= 234
@@ -220,7 +220,7 @@ BuildRequires:  tcl-devel
 %endif
 %endif
 %if %{with systemd}
-%{?systemd_requires}
+%{?systemd_ordering}
 BuildRequires:  pkgconfig(systemd)
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

@@ -26,12 +26,12 @@
 %bcond_without opengles
 %endif
 Name:           piglit
-Version:        1~20191210.603cfb975
+Version:        1~20200721.5db8d7472
 Release:        0
 Summary:        OpenGL driver testing framework
 License:        MIT
 Group:          System/Benchmark
-URL:            http://cgit.freedesktop.org/piglit
+URL:            https://cgit.freedesktop.org/piglit
 Source0:        %{name}-%{version}.tar.xz
 Source1:        piglit-rpmlintrc
 Source2:        suse_qa.py

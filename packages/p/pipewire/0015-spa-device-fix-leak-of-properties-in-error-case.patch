@@ -1,0 +1,29 @@
+From d871adbd4d602e0ba70e4c23f792aea1b214b79e Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Thu, 2 Jul 2020 10:52:15 +0200
+Subject: [PATCH] spa-device: fix leak of properties in error case
+
+---
+ src/modules/spa/spa-device.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/modules/spa/spa-device.c b/src/modules/spa/spa-device.c
+index 4486bce8..a1cc82e1 100644
+--- a/src/modules/spa/spa-device.c
++++ b/src/modules/spa/spa-device.c
+@@ -147,6 +147,7 @@ struct pw_impl_device *pw_spa_device_load(struct pw_context *context,
+ 	pw_log_error("can't get device interface %d", res);
+ 	goto error_exit_unload;
+ error_device:
++	properties = NULL;
+ 	res = -errno;
+ 	pw_log_error("can't create device: %m");
+ 	goto error_exit_unload;
+@@ -155,5 +156,7 @@ struct pw_impl_device *pw_spa_device_load(struct pw_context *context,
+ 	pw_unload_spa_handle(handle);
+ error_exit:
+ 	errno = -res;
++	if (properties)
++		pw_properties_free(properties);
+ 	return NULL;
+ }

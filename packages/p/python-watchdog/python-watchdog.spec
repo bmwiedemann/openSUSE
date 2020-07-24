@@ -18,21 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-watchdog
-Version:        0.10.2
+Version:        0.10.3
 Release:        0
 Summary:        Filesystem events monitoring
 License:        Apache-2.0
 URL:            https://github.com/gorakhargosh/watchdog
 Source:         https://files.pythonhosted.org/packages/source/w/watchdog/watchdog-%{version}.tar.gz
 BuildRequires:  %{python_module pathtools >= 0.1.1}
-BuildRequires:  %{python_module pytest-timeout >= 0.3}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
-Requires:       python-PyYAML
-Requires:       python-argh
+Requires:       python-PyYAML >= 3.10
+Requires:       python-argh >= 0.24.1
 Requires:       python-pathtools >= 0.1.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives

@@ -18,8 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-%define labver  0.5.0
-%define mainver 0.4.1
+%define labver  0.7.3
+%define mainver 0.5.7
 %bcond_with     test
 Name:           python-ipympl
 Version:        %{mainver}
@@ -27,33 +27,24 @@ Release:        0
 Summary:        Matplotlib Jupyter Extension
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/matplotlib/jupyter-matplotlib
+URL:            https://github.com/matplotlib/ipympl
 Source:         https://files.pythonhosted.org/packages/source/i/ipympl/ipympl-%{mainver}.tar.gz
 BuildRequires:  %{python_module ipython}
-BuildRequires:  %{python_module ipywidgets >= 7.0.0}
-BuildRequires:  %{python_module matplotlib >= 2.0.0}
+BuildRequires:  %{python_module ipywidgets >= 7.5.0}
+BuildRequires:  %{python_module matplotlib-web >= 2.0.0}
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  npm
-BuildRequires:  python-backports.functools_lru_cache
 BuildRequires:  python-rpm-macros
 Requires:       python-ipython
-Requires:       python-ipywidgets >= 7.0.0
-Requires:       python-matplotlib >= 2.0.0
-Requires:       python-six
+Requires:       python-ipywidgets >= 7.5.0
+Requires:       python-matplotlib-web >= 2.0.0
 Provides:       python-jupyter_ipympl = %{mainver}
 Obsoletes:      python-jupyter_ipympl < %{mainver}
 BuildArch:      noarch
-%ifpython2
-Requires:       python-backports.functools_lru_cache
-Requires:       python3-ipympl = %{mainver}
-%endif
-%ifpython3
 Provides:       jupyter-ipympl = %{mainver}
-%endif
 %python_subpackages
 
 %description

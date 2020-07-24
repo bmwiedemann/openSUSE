@@ -1,7 +1,7 @@
 #
 # spec file for package tuxguitar
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2008-2017 Orcan Ogetbil <oget[DOT]fedora[AT]gmail[DOT]com>
 # Copyright (c) 2008-2017 Fedora project
 #
@@ -14,241 +14,198 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Summary:        A multitrack tablature editor and player written in Java-SWT
-License:        LGPL-2.1+
-Group:          Applications/Multimedia
-Name:           tuxguitar
-Version:        1.4
-Release:        0
-Url:            http://www.tuxguitar.pw
-# Source file cleaned of potentially proprietary SF2, DLL, EXE files:
-#   wget -N http://downloads.sourceforge.net/tuxguitar/tuxguitar-1.4-src.tar.gz
-#   tar zxf tuxguitar-1.4-src.tar.gz
-#   find tuxguitar-1.4-src -name "*.exe" -exec rm {} \;
-#   find tuxguitar-1.4-src -name "*.dll" -exec rm {} \;
-#   find tuxguitar-1.4-src -name "*.sf2" -exec rm {} \;
-#   tar zcf tuxguitar-1.4-src-clean.tar.gz tuxguitar-1.4-src
-Source0:        %{name}-%{version}-src-clean.tar.gz
-Patch0:         tuxguitar-startscript.patch
-Patch1:         tuxguitar-default-soundfont.patch
-Patch2:         tuxguitar-jsa-build.patch
-Patch3:         tuxguitar-tray-build.patch
-Patch4:         tuxguitar-do-not-force-java-1.5.patch
-
-Requires:       eclipse-swt
-Requires:       java >= 1.7
-Requires:       javapackages-tools
-# use FluidR3_GM.sf2 (from fluid-soundfont-gm) as default sound font
-%if 0%{?suse_version} <= 1320
-Requires:       fluid-soundfont-gm
-%else
-Suggests:       fluid-soundfont-gm
+%bcond_without itext
+%ifarch x86_64
+%global bit x86_64
 %endif
-Recommends:     timidity
-Recommends:     snd_sf2
-# export to PDF feature requires itext
-#Requires:         itext
-#BuildRequires:    itext
+%ifarch armv7hl
+%global bit armv7hl
+%endif
+%ifarch ppc64
+%global bit ppc64
+%endif
+%ifarch ppc64le
+%global bit ppc64le
+%endif
+%ifarch s390x
+%global bit s390x
+%endif
+%ifarch aarch64
+%global bit aarch64
+%endif
+%ifarch %{ix86}
+%global bit x86
+%endif
+Name:           tuxguitar
+Version:        1.5.4
+Release:        0
+Summary:        A multitrack tablature editor and player written in Java-SWT
+License:        LGPL-2.1-or-later
+Group:          Productivity/Multimedia/Sound/Utilities
+URL:            http://www.tuxguitar.pw
+Source0:        https://sourceforge.net/projects/%{name}/files/TuxGuitar/TuxGuitar-%{version}/%{name}-%{version}-src.tar.gz
+Patch0:         tuxguitar-default-soundfont.patch
+Patch1:         no-vst.patch
+Patch2:         tuxguitar-additional-arch.patch
+Patch3:         tuxguitar-startscript.patch
+Patch4:         tuxguitar-startscript-itext.patch
 BuildRequires:  alsa-devel
 BuildRequires:  ant
 BuildRequires:  ant-contrib
 BuildRequires:  desktop-file-utils
 BuildRequires:  eclipse-swt
 BuildRequires:  fdupes
-%if 0%{?suse_version} <= 1320
 BuildRequires:  fluidsynth-devel
-%endif
 BuildRequires:  jack-audio-connection-kit-devel
 BuildRequires:  java-devel >= 1.7
 BuildRequires:  javapackages-tools
+BuildRequires:  maven-local
 BuildRequires:  update-desktop-files
+BuildRequires:  mvn(org.apache.commons:commons-compress)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
+BuildRequires:  mvn(org.eclipse.swt:org.eclipse.swt)
+Requires:       apache-commons-compress
+Requires:       eclipse-swt
+Recommends:     snd_sf2
+Recommends:     timidity
+%if %{with itext}
+BuildRequires:  mvn(com.itextpdf.tool:xmlworker)
+BuildRequires:  mvn(com.itextpdf:itextpdf)
+%endif
+# use FluidR3_GM.sf2 (from fluid-soundfont-gm) as default sound font
+%if 0%{?suse_version} <= 1320
+Requires:       fluid-soundfont-gm
+%else
+Suggests:       fluid-soundfont-gm
+%endif
 
 %description
 TuxGuitar is a guitar tablature editor with player support through midi. It can
 display scores and multitrack tabs. Various features TuxGuitar provides include
 autoscrolling while playing, note duration management, bend/slide/vibrato/
-hammer-on/pull-off effects, support for tuplets, time signature management, 
+hammer-on/pull-off effects, support for tuplets, time signature management,
 tempo management, gp3/gp4/gp5 import and export.
 
 %prep
 %setup -q -n %{name}-%{version}-src
+find . -name "*.exe" -print -delete
+find . -name "*.dll" -print -delete
+find . -name "*.sf2" -print -delete
+find . -name "*.jar" -print -delete
+find . -name "*.so" -print -delete
+
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%if %{with itext}
 %patch4 -p1
-
-# Set debug="true" on javac part of the build scripts.
-for file in $(find . -name build.xml); do
-   sed -i 's|debug="false"|debug="true"|' $file
-done
-
-# Don't force compiling with JAVA 1.5
-find . -wholename "./*/build.properties" -exec sed -re "s/^ant.build.javac.source=1.5/#ant.build.javac.source=1.5/" -i {} \;
-find . -wholename "./*/build.properties" -exec sed -re "s/^ant.build.javac.target=1.5/#ant.build.javac.target=1.5/" -i {} \;
-# Fix build.properties files by providing paths to required jar files
-sed "s/TuxGuitar-ui-toolkit\/tuxguitar-ui-toolkit-swt.jar/TuxGuitar-ui-toolkit-swt\/tuxguitar-ui-toolkit-swt.jar/" \
- -i TuxGuitar-image/build.properties
-sed "s/TuxGuitar-ui-toolkit\/tuxguitar-ui-toolkit-swt.jar/TuxGuitar-ui-toolkit-swt\/tuxguitar-ui-toolkit-swt.jar/" \
- -i TuxGuitar-tray/build.properties
-echo "path.tuxguitar-editor-utils=../TuxGuitar-editor-utils/tuxguitar-editor-utils.jar" \
- >> TuxGuitar-tray/build.properties
-echo -e "\npath.tuxguitar-editor-utils=../TuxGuitar-editor-utils/tuxguitar-editor-utils.jar" \
- >> TuxGuitar-tray/build.properties
-echo "path.tuxguitar-editor-utils=../TuxGuitar-editor-utils/tuxguitar-editor-utils.jar" \
- >> TuxGuitar-jsa/build.properties
-# Use fluidsynth by default
-%if 0%{?suse_version} <= 1320
-sed "s/tuxguitar-fluidsynth.enabled=false/tuxguitar-fluidsynth.enabled=true/" \
- -i build-scripts/common-resources/common-linux/dist/tuxguitar-plugin-settings.cfg
-sed -re "s/midi.port=.*$/midi.port=tuxguitar-fluidsynth_\/usr\/share\/sounds\/sf2\/FluidR3_GM.sf2/" \
- -i build-scripts/common-resources/common-linux/dist/tuxguitar.cfg
+%else
+%pom_remove_dep -r com.itextpdf:itextpdf
+%pom_remove_dep -r com.itextpdf.tool:xmlworker
+%pom_remove_dep -r com.itextpdf:itextpdf build-scripts/%{name}-linux-%{bit}
+%pom_remove_dep -r com.itextpdf.tool:xmlworker build-scripts/%{name}-linux-%{bit}
+%pom_disable_module ../../TuxGuitar-pdf build-scripts/%{name}-linux-%{bit}
+%pom_remove_dep -r :tuxguitar-pdf
+%pom_disable_module ../../TuxGuitar-pdf-ui build-scripts/%{name}-linux-%{bit}
+%pom_remove_dep -r :tuxguitar-pdf-ui
+%pom_xpath_remove "pom:artifactItem[pom:artifactId[text()='itextpdf']]" build-scripts/%{name}-linux-%{bit}
+%pom_xpath_remove "pom:artifactItem[pom:artifactId[text()='xmlworker']]" build-scripts/%{name}-linux-%{bit}
+%pom_xpath_remove "pom:artifactItem[pom:artifactId[text()='tuxguitar-pdf']]" build-scripts/%{name}-linux-%{bit}
+%pom_xpath_remove "pom:artifactItem[pom:artifactId[text()='tuxguitar-pdf-ui']]" build-scripts/%{name}-linux-%{bit}
 %endif
-# Update URL
-sed "s/www.tuxguitar.com.ar/www.tuxguitar.pw/" -i TuxGuitar/dist/about_description.dist
-# Remove duplicated files
-rm -fr TuxGuitar/doc
-rm -f TuxGuitar/dist/tuxguitar.cfg
-# Remove not needed file
-rm -f TuxGuitar/share/lang/toutf.pl
+
+%pom_xpath_set -r pom:org.eclipse.swt.artifactId org.eclipse.swt
+%pom_xpath_set -r pom:org.eclipse.swt.artifactId org.eclipse.swt build-scripts/%{name}-linux-%{bit}
+%pom_change_dep :org.eclipse.swt.gtk.linux.x86 :org.eclipse.swt
+%pom_remove_dep :org.eclipse.swt.gtk.linux.x86_64
+%pom_remove_dep :org.eclipse.swt.gtk.linux.ppc
+%pom_remove_dep :org.eclipse.swt.win32.win32.x86
+%pom_remove_dep :org.eclipse.swt.cocoa.macosx
+%pom_remove_dep :org.eclipse.swt.cocoa.macosx.x86_64
+%pom_remove_dep :org.eclipse.swt.carbon.macosx
+
+%pom_xpath_inject pom:modules "<module>../../TuxGuitar-tray</module>
+ <module>../../TuxGuitar-viewer</module>"  build-scripts/%{name}-linux-%{bit}
 
 %build
-# Plugins to build:
-%if 0%{?suse_version} <= 1320
-PLUGINS="alsa ascii browser-ftp compat converter fluidsynth gervill gm-settings gpx gtp \
-         image jack jsa lilypond midi musicxml oss ptb svg tef tray tuner viewer"
-%else
-#remove "fluidsynth"
-PLUGINS="alsa ascii browser-ftp compat converter gervill gm-settings gpx gtp \
-         image jack jsa lilypond midi musicxml oss ptb svg tef tray tuner viewer"
-%endif
-# FIXME: "pdf" plugin requires itext, but even after adding itext 1.4 from Education repo:
-# error: package com.itextpdf.text does not exist
-
-# JNI's to build
-%if 0%{?suse_version} <= 1320
-JNIS="alsa fluidsynth jack oss"
-%else
-JNIS="alsa jack oss"
-%endif
-LIBSUFFIX=$(echo %{_lib}|sed 's|lib||')
-
-# to pass to ant:
-ANT_FLAGS=" \
-   -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
-   -Dpath.tuxguitar=$PWD/TuxGuitar/%{name}.jar \
-   -Dpath.swt=%{_libdir}/java/swt.jar \
-   -Dlib.swt.jar=%{_libdir}/java/swt.jar \
-   -Ddist.lib.path=%{_libdir}/%{name}/ \
-   -Ddist.jar.path=%{_datadir}/%{name}/ \
-   -Ddist.share.path=%{_datadir}/%{name}/ \
-   -Dos.bin.dir=%{_bindir} \
-   -Dos.lib.suffix=$LIBSUFFIX \
-   -Dos.data.dir=%{_datadir}/ \
-   -Ddist.default.style=Oxygen \
-   -Ddist.default.song=%{_datadir}/%{name}/%{name}.tg"
-#   -Dpath.itext=% {_javadir}/itext.jar \
-
-# build jars
-ant -f TuxGuitar-lib/build.xml -v -d $ANT_FLAGS all
-ant -f TuxGuitar-editor-utils/build.xml -v -d $ANT_FLAGS all
-ant -f TuxGuitar-ui-toolkit/build.xml -v -d $ANT_FLAGS all
-ant -f TuxGuitar-ui-toolkit-swt/build.xml -v -d $ANT_FLAGS all
-ant -f TuxGuitar/build.xml -v -d $ANT_FLAGS all
-ant -f TuxGuitar-gm-utils -v -d $ANT_FLAGS all
-for jarname in $PLUGINS; do
-   ant -f TuxGuitar-$jarname/build.xml  -v -d $ANT_FLAGS \
-      -Dbuild.jar=../TuxGuitar/share/plugins/tuxguitar-$jarname.jar all
-done
-
-# build jnis
-for jni in $JNIS; do
-   make -C TuxGuitar-$jni/jni %{?_smp_mflags} CFLAGS="${RPM_OPT_FLAGS} \
-              -I%{_jvmdir}/java-openjdk/include \
-              -I%{_jvmdir}/java-openjdk/include/linux \
-              -fPIC"
-done
+%{mvn_build} -j -f -- -e -f build-scripts/%{name}-linux-%{bit}/pom.xml -Dproject.build.sourceEncoding=UTF-8 -Dnative-modules=true
 
 %install
-# install main content
-install -dm 755 $RPM_BUILD_ROOT/%{_bindir}
-install -dm 755 $RPM_BUILD_ROOT/%{_datadir}/%{name}
-install -pm 644 TuxGuitar/dist/* $RPM_BUILD_ROOT/%{_datadir}/%{name}/
-cp -r TuxGuitar/share/* $RPM_BUILD_ROOT/%{_datadir}/%{name}
-install -pm 755 misc/%{name}.sh $RPM_BUILD_ROOT/%{_bindir}/%{name}
-install -pm 644 misc/%{name}.tg $RPM_BUILD_ROOT/%{_datadir}/%{name}/%{name}.tg
-install -pm 644 build-scripts/common-resources/common-linux/dist/*.cfg $RPM_BUILD_ROOT/%{_datadir}/%{name}/
-for jardir in TuxGuitar* ; do
- if [ -e $jardir/*jar ]
- then 
-  install -m 644 $jardir/*jar  $RPM_BUILD_ROOT/%{_datadir}/%{name}/
- fi
-done
-
+%mvn_install
 # install jnis we built
-mkdir -p $RPM_BUILD_ROOT%{_libdir}/%{name}
-cp -a TuxGuitar-*/jni/*.so $RPM_BUILD_ROOT%{_libdir}/%{name}/
+mkdir -p %{buildroot}%{_libdir}/%{name}
+cp -a TuxGuitar-*/jni/*.so %{buildroot}%{_libdir}/%{name}/
 
-# mime-type file
-install -dm 755 $RPM_BUILD_ROOT/%{_datadir}/mime/packages
-install -pm 644 misc/%{name}.xml $RPM_BUILD_ROOT/%{_datadir}/mime/packages/
+# Launch script
+mkdir -p %{buildroot}/%{_bindir}
+cp -a misc/tuxguitar.sh %{buildroot}/%{_bindir}/%{name}
+perl -pi -e 's#/usr/lib64/%{name}#%{_libdir}/%{name}#g' %{buildroot}/%{_bindir}/%{name}
 
-# man
-install -dm 755 $RPM_BUILD_ROOT/%{_mandir}/man1/
-install -pm 644 misc/%{name}.1 $RPM_BUILD_ROOT/%{_mandir}/man1/
+# Fix permissions
+chmod 755 %{buildroot}/%{_bindir}/%{name}
+chmod 755 %{buildroot}%{_libdir}/%{name}/*.so
+
+# mime types
+mkdir -p %{buildroot}/%{_datadir}/mime/packages/
+cp -a misc/tuxguitar.xml %{buildroot}/%{_datadir}/mime/packages/
+
+# data files
+mkdir -p %{buildroot}/%{_datadir}/%{name}
+cp -a TuxGuitar/share/* %{buildroot}/%{_datadir}/%{name}
+cp -a misc/tuxguitar.tg %{buildroot}/%{_datadir}/%{name}
+cp -a build-scripts/%{name}-linux-%{bit}/target/%{name}-%{version}-linux-%{bit}/dist/* %{buildroot}/%{_datadir}/%{name}
+
+STYLE=Oxygen
+
+for dim in 16 24 32 48 64 96; do
+    mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${dim}x${dim}/apps/
+    mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${dim}x${dim}/mimetypes/
+    cp -a TuxGuitar/share/skins/${STYLE}/icon-${dim}x${dim}.png %{buildroot}%{_datadir}/icons/hicolor/${dim}x${dim}/apps/%{name}.png
+    cp -a TuxGuitar/share/skins/${STYLE}/icon-${dim}x${dim}.png %{buildroot}%{_datadir}/icons/hicolor/${dim}x${dim}/mimetypes/audio-x-%{name}.png
+    cp -a TuxGuitar/share/skins/${STYLE}/icon-${dim}x${dim}.png %{buildroot}%{_datadir}/icons/hicolor/${dim}x${dim}/mimetypes/audio-x-gtp.png
+    cp -a TuxGuitar/share/skins/${STYLE}/icon-${dim}x${dim}.png %{buildroot}%{_datadir}/icons/hicolor/${dim}x${dim}/mimetypes/audio-x-ptb.png
+done
 
 # desktop files
-install -dm 755 $RPM_BUILD_ROOT/%{_datadir}/applications
-install -pm 644 misc/tuxguitar.desktop $RPM_BUILD_ROOT/%{_datadir}/applications/
-
-# mime-type icons
-for sz in 16 24 32 48 64 96 ; do
-  install -dm 755 $RPM_BUILD_ROOT/%{_datadir}/icons/hicolor/${sz}x${sz}/mimetypes
-  install -pm 644 TuxGuitar/share/skins/Lavender/icon-${sz}x${sz}.png $RPM_BUILD_ROOT/%{_datadir}/icons/hicolor/${sz}x${sz}/mimetypes/audio-x-tuxguitar.png
-  install -pm 644 TuxGuitar/share/skins/Lavender/icon-${sz}x${sz}.png $RPM_BUILD_ROOT/%{_datadir}/icons/hicolor/${sz}x${sz}/mimetypes/audio-x-gtp.png
-  install -pm 644 TuxGuitar/share/skins/Lavender/icon-${sz}x${sz}.png $RPM_BUILD_ROOT/%{_datadir}/icons/hicolor/${sz}x${sz}/mimetypes/audio-x-ptb.png
-done
+install -dm 755 %{buildroot}/%{_datadir}/applications
+install -pm 644 misc/tuxguitar.desktop %{buildroot}/%{_datadir}/applications/
 
 #install also big icon
-install -D -m 644 TuxGuitar/share/skins/Lavender/icon-48x48.png $RPM_BUILD_ROOT%{_datadir}/pixmaps/tuxguitar.png
+install -D -m 644 TuxGuitar/share/skins/Lavender/icon-48x48.png %{buildroot}%{_datadir}/pixmaps/tuxguitar.png
 %suse_update_desktop_file -n -i tuxguitar AudioVideo Music Java
 
-%fdupes $RPM_BUILD_ROOT
+# man page
+mkdir -p %{buildroot}/%{_mandir}/man1
+cp -a misc/%{name}.1 %{buildroot}/%{_mandir}/man1/
 
-%check
-desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/%{name}.desktop
+%fdupes -s %{buildroot}
 
-%post
-touch --no-create %{_datadir}/icons/hicolor &>/dev/null
-touch --no-create %{_datadir}/mime/packages &> /dev/null || :
-update-desktop-database &> /dev/null
+ln -sf %{_jnidir}/%{name}/%{name}-alsa.jar %{buildroot}%{_javadir}/%{name}/
+ln -sf %{_jnidir}/%{name}/%{name}-fluidsynth.jar %{buildroot}%{_javadir}/%{name}/
+ln -sf %{_jnidir}/%{name}/%{name}-jack.jar %{buildroot}%{_javadir}/%{name}/
+ln -sf %{_jnidir}/%{name}/%{name}-oss.jar %{buildroot}%{_javadir}/%{name}/
 
-%postun
-if [ $1 -eq 0 ] ; then
-   touch --no-create %{_datadir}/icons/hicolor &>/dev/null
-   gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null
-   update-mime-database %{_datadir}/mime >& /dev/null ||:
-fi
-update-desktop-database &> /dev/null
-
-%posttrans
-gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
-update-mime-database %{_datadir}/mime &> /dev/null || :
-
-%files
-%defattr(-,root,root,-)
-%doc README
-%{_mandir}/*/*
-%{_bindir}/%{name}
+%files -f .mfiles
+%license LICENSE
+%doc AUTHORS CHANGES README
 %{_libdir}/%{name}
 %{_datadir}/%{name}
-%{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/*/*
+%{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
 %{_datadir}/mime/packages/%{name}.xml
+%{_bindir}/%{name}
+%{_mandir}/man1/%{name}.1%{?ext_man}
+
+%{_javadir}/%{name}/tuxguitar-alsa.jar
+%{_javadir}/%{name}/tuxguitar-fluidsynth.jar
+%{_javadir}/%{name}/tuxguitar-jack.jar
+%{_javadir}/%{name}/tuxguitar-oss.jar
 
 %changelog

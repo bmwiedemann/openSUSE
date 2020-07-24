@@ -43,6 +43,6 @@ setup(
     packages=['dephell_changelogs'],
     package_dir={"": "."},
     package_data={},
-    install_requires=['pytest', 'requests'],
-    extras_require={"dev": ["pytest-xdist"]},
+    install_requires=['requests'],
+    extras_require={"dev": ['pytest', 'pytest-xdist']},
 )

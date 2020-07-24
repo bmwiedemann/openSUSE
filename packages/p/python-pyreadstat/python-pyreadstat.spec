@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyreadstat
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyreadstat
-Version:        0.2.9
+Version:        1.0.0
 Release:        0
 Summary:        Package to read and write statistical data files into pandas
 License:        Apache-2.0
@@ -33,9 +33,9 @@ BuildRequires:  glibc-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  zlib-devel
 Requires:       python-numpy
-Requires:       python-pandas
+Requires:       python-pandas >= 0.24.0
 # SECTION test requirements
-BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pandas >= 0.24.0}
 # /SECTION
 %python_subpackages
 

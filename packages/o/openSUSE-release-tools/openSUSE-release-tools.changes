@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Jul 16 12:47:26 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200716.558f783b:
+  * metrics/grafana/openqa: Add openSUSE Leap 15.1 and 15.2
+  * factory-auto: add opensuse-review-team on submits to NonFree
+  * fixed a whitespace
+  * skip SUSE:Channel files harder
+
+-------------------------------------------------------------------
+Tue Jul 14 09:00:03 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200714.b826963d:
+  * fix cutting off part of a stagings name
+
+-------------------------------------------------------------------
+Thu Jul 09 05:28:24 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200709.cef2425d:
+  * Merge check images and release to TEST for 15-SP3
+  * Add SLE15-SP3 setup.
+
+-------------------------------------------------------------------
+Wed Jul 08 12:17:58 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200708.6a13cb44:
+  * WSL: Add output of gocd/generate.sh
+  * Add openSUSE:Leap:15.2:WSL under gocd control
+
+-------------------------------------------------------------------
+Mon Jul 06 11:13:16 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200706.c31bc8f1:
+  * Update version attribute also in o:F:RISCV
+
+-------------------------------------------------------------------
+Sun Jul 05 08:09:30 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200705.5aedaf1c:
+  * Add pkglistgen instance for openSUSE:Factory:RISCV
+  * Add rebuild trigger for openSUSE:Factory:RISCV
+
+-------------------------------------------------------------------
 Thu Jun 25 12:10:28 UTC 2020 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20200625.d66b16f2:

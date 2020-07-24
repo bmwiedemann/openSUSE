@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 22 10:26:11 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.10.3
+  * Ensure ``ObservedWatch.path`` is a string 
+  * [inotify] Allow to monitor single file 
+  * [inotify] Prevent raising an exception when a file in a monitored folder has no permissions 
+
+-------------------------------------------------------------------
 Wed Jun  3 07:50:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip randomly failing test test_event_dispatcher

@@ -1,7 +1,7 @@
 #
 # spec file for package python-arf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,9 @@ Summary:        Advanced Recording Format for physiology and behavior
 License:        GPL-2.0-only
 URL:            https://github.com/melizalab/arf
 Source:         https://files.pythonhosted.org/packages/source/a/arf/arf-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM denose.patch gh#melizalab/arf#7 mcepl@suse.com
+# Remove the dependency on the nose package.
+Patch0:         denose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -34,8 +37,8 @@ Requires:       python-numpy >= 1.3
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module h5py >= 2.2}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy >= 1.3}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -53,6 +56,7 @@ specifications on how different kinds of data are stored.
 
 %prep
 %setup -q -n arf-%{version}
+%autopatch -p1
 
 %build
 %python_build
@@ -62,7 +66,7 @@ specifications on how different kinds of data are stored.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
 %doc README.md

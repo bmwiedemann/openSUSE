@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon Jul 20 22:32:45 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.1.14
+  fonts
+    * modify start up font enumeration
+      - sort system fonts with qsort
+      - enumerate fixed fonts
+      - add fixed/all selector to font selector
+      - use static class members []
+        . instantiated and initialized on first instance
+        . deleted when all instances deleted
+    * change FreqControl width sizing to one based on widest
+      numeral for selected font.
+  Navigator
+    * Fix missing initialization code for Windows OS
+  hamlib
+    * changes driven by hamlib 4.0
+  Build scripts
+    * remove -lregex from mingw cross compile scripts
+  localtime_r
+    * add timeops.h to n3fjp_logger.cxx
+  Freq Analysis
+    * Add Rx RIT control
+      - apply as linear correction to observed frequency
+    * Disable rxppm corrections when frequency analysis modem
+      is active
+  Field Day Logger
+    * Fix reconnect to server when changing bands/modes
+  flarq update
+    * Replace text widgets with fl_input2 and F_Edit widgets.  Adds
+      UTF-8 character handling.
+    * Add restoration of beacon after cessation of ARQ exchanges
+    * Modify fldigi to correctly display UTF-8 characters during
+      both transmit and reception of flarq text
+  Navtex
+    * Fix crash in navtex code
+    * remove the NOSIGNAL state.
+    * make early/prompt/late detector able to lock onto more signals
+  Sound Record
+    * Insure that audio recordings have .wav extension
+  Freq Control
+    * change to use unsigned long to represent the frequency value
+      maximum value increased to 4294967295 (2^32-1)
+  Cabrillo logs
+    * correct Cabrillo report MODE entry
+  sound.cxx warning
+    * fix compile warning on indentation
+  SNDFILE
+    * change SNDFILE to a required library
+  FSK HELL
+    * invert video reversal on HELL 80
+    * rename FSK_HELL -> FSKH245
+    * set default filter bandwidth for each mode
+  Store/Recall
+    * Change Store/Recall menu items to mode_info[].name vice
+      mode_info[].sname
+  wefax
+    * Change bandwidth selections
+  Rx Monitor
+    * Add test for existence of filter in monitor playback
+
+-------------------------------------------------------------------
 Wed May 27 19:07:13 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.1.13

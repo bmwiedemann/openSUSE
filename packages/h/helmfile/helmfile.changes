@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Fri Jul 17 12:29:09 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Install program using "make install" to ensure it knows its version
+  number.
+
+-------------------------------------------------------------------
+Fri Jul 17 12:04:13 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add _service* files to automate source and vendor tarball retrieval
+
+-------------------------------------------------------------------
+Fri Jul 17 10:59:22 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Replace hard-coded version numbers with %{version}
+
+-------------------------------------------------------------------
+Fri Jul 17 09:20:51 - manfred.h@gmx.net
+
+- Initial revision of v0.121 from gitlab.

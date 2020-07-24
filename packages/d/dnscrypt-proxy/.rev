@@ -211,4 +211,12 @@ to values of devel package (or part of it).
 dnscrypt-proxy v2 differs significantly from v1.</comment>
     <requestid>820018</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>4084378ff0a64ae8f5f17e662b44f2b4</srcmd5>
+    <version>2.0.44</version>
+    <time>1595578164</time>
+    <user>dimstar_suse</user>
+    <comment>Sort file lists to make package build reproducible</comment>
+    <requestid>822511</requestid>
+  </revision>
 </revisionlist>

@@ -1,6 +1,48 @@
 *** This file is updated by the SUSE package maintainers, based on version
 control logs (e.g. 'git log --oneline v1..v2'), as the Logwatch project does
 not release a change log themselves. ***
+==== 7.5.3 (2020-01-22) ====
+48b2db1 Updating version to 7.5.3
+9164fec [logwatch.pl,HOWTO] Added sanity check for egrep, and documented Pre_Ignore
+e066288 [systemd] Ignore "Consumed CPU time" messages
+e1c82e1 [systemd] Ignore "selinux: avc: *received policyload notice"
+acd8793 [afpd] Ignore Netatalk AFP/TCP listening on message
+5af5441 [rsyslogd] Ignore new "imjournal: journal files changed, reloading" message
+9908554 [sssd] Ignore Keytab success message
+1d69fab [systemd] Capture "Failed to execute command" messages
+ffb05ed [smartd] Ignore "not ATA, no IDENTIFY DEVICE Structure"; Avoid pattern capture
+44b627f [evtapplication] Ignore messages for laptops that can be off network; Allow ignoring of certain registry file in use messages
+a904dd6 [systemd] Update regexes for new wordings
+fddbf64 [rsyslogd] Fix ignoremessages handling; Handle invalid certificate messages
+55b4c45 [omsa] Much better detail handling for informational messages; Allow ignoring messages about uncertified drives
+fab9d5d [lvm] Ignore "lvmetad is being updated, retrying" message
+1a5c914 [cron] Re-order messages; Make incrond messages only shown with high detail as well
+0ee3ba7 [cron] conf: exclude atd service
+b57a07b [smartd] Expand "type changed" regex
+21536c1 [dirsrv] Ignore more routine startup message; Allow ignoring warnings
+6d059ba [clam-update] Allow ignoring of out of date clamav messages
+ab306dd [evtsecurity] Drop 4673/4: A privileged service was called - too noisy, no information; Empty firewall pass rules
+eadf3af [evtapplication] Ignore N/A messages and "This error was suppressed GP messages"
+6a9ee90 [evt*] Various enhancements
+4c22329 [logwatch.pl] Fixed spacing bug introduced in previous commit
+c4ba813 [rsyslogd.conf] Fixed typo.
+3d7df7a [sendmail] Formatted "accept failed" and "connect failed" statements to be 	consistent with rest of output.  Also added failure reason"
+123e639 [logwatch.pl] Checking for Pre_Ignore variable in every service configuration 	file ("conf/services/*.conf).  If present, it ignores that regexp 	(egrep syntax) in the log file BEFORE running the corresponding 	service script.
+e8ca7f7 [systemd.conf] Removed --mailto option, per Amish.
+667babb [dovecot] Modified sieve filter, and ignore doveadm HTTP API entries
+02349ab [systemd files] Enable systemd.conf files in both basedir and confdir
+10fba28 [sshd] Added illegal_users_threshold variable
+0279bc3 [dovecot] Fixed filter syntax, and clarified header removal, per Reio Remma
+014fed6 [logwatch.service] Add logwatch options to systemd timer, per Amish.
+90c8000 [zz-disk_space] Excluded squashfs from linux listing, per Mauro Dionisi.  Corrected AIX and Darwin entries.
+bd87ac0 [logwatch.pl] Fixed --logdir option; bug reported by simi.
+59198ba [named] Ignore some new messages
+ae23d27 [lvm] Ignore more pvscan informational messages
+d99ed93 [dovecot] Modified regex so that there is no overlap between LogFile and Archive
+14bf128 [lvm] Ignore informational pvscan messages
+32b9128 [logwatch.pl] Added $Config{'pathtocat'} to debug statement.
+669a4d6 Clean up of HOWTO document and comment in logwatch.pl.  No functional changes.
+d36eb0f [sshd] Filtering pam uid statement; corrected detail level, per Martin Frodl.
 
 ==== 7.5.2 (2019-07-22) ====
 f6b19b9 Corrected release date.

@@ -27,15 +27,13 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           freerdp
-Version:        2.1.2
+Version:        2.2.0
 Release:        0
 Summary:        Remote Desktop Viewer Client
 License:        Apache-2.0
 Group:          Productivity/Networking/Other
 URL:            https://www.freerdp.com/
 Source0:        https://github.com/FreeRDP/FreeRDP/archive/%{version}.tar.gz#/FreeRDP-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM freerdp_Mask_CACHED_BRUSH_when_checking_brush_style.patch boo#1173605 gh#FreeRDP/FreeRDP#6298
-Patch1:         freerdp_Mask_CACHED_BRUSH_when_checking_brush_style.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel
@@ -74,9 +72,6 @@ BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xv)
 Requires:       lib%{name}%{major_version} = %{version}-%{release}
-%if 0%{?sle_version} >= 150000
-BuildRequires:  pkgconfig(libavcodec)
-%endif
 
 %description
 FreeRDP is a client-side implementation of the Remote Desktop Protocol (RDP)

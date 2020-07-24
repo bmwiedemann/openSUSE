@@ -69,4 +69,12 @@
   * 0001-Make-it-build-both-with-pre-and-post.patch</comment>
     <requestid>770645</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b15344c8f870a338a17c041d8e7bee59</srcmd5>
+    <version>0.5.71</version>
+    <time>1595578043</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822447</requestid>
+  </revision>
 </revisionlist>

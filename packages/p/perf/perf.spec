@@ -18,15 +18,22 @@
 
 # perf does not link with LTO
 %define _lto_cflags %{nil}
-
-Name:           perf
 %define version %(rpm -q --qf '%%{VERSION}' kernel-source)
+%ifarch s390x s390
+%define         _perf_unwind NO_LIBUNWIND=1
+%else
+%define         _perf_unwind %{nil}
+BuildRequires:  libunwind-devel
+%endif
+Name:           perf
 Version:        %{version}
 Release:        0
 Summary:        Performance Monitoring Tools for Linux
 License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
 URL:            https://perf.wiki.kernel.org/
+Patch1:         perf-cs-etm-move-definition-of-traceid_list-global-variable-from-header-file.patch
+BuildRequires:  OpenCSD-devel
 BuildRequires:  audit-devel
 BuildRequires:  binutils-devel
 BuildRequires:  bison
@@ -36,32 +43,22 @@ BuildRequires:  kernel-source >= 2.6.31
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libzstd-devel
-BuildRequires:  xz-devel
-BuildRequires:  rubygem(asciidoctor)
-%ifarch aarch64 ia64 x86_64 ppc64 ppc64le ppc %sparc
-BuildRequires:  libnuma-devel
-%endif
-%ifarch s390x s390
-%define         _perf_unwind NO_LIBUNWIND=1
-%else
-%define         _perf_unwind %{nil}
-BuildRequires:  libunwind-devel
-%endif
 BuildRequires:  newt-devel
 BuildRequires:  openssl-devel
 BuildRequires:  python3-devel
+BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
+BuildRequires:  rubygem(asciidoctor)
+Requires:       kernel >= 2.6.31
+%{perl_requires}
+%{?libperl_requires}
+%ifarch aarch64 ia64 x86_64 ppc64 ppc64le ppc %sparc
+BuildRequires:  libnuma-devel
+%endif
 # dl_open requirement so not autodetected
 %ifarch ppc64 ppc64le
 Requires:       libebl
 %endif
-%{perl_requires}
-%{?libperl_requires}
-
-Requires:       kernel >= 2.6.31
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-Patch1:         perf-cs-etm-move-definition-of-traceid_list-global-variable-from-header-file.patch
 
 %description
 This package provides a userspace tool 'perf', which monitors performance for
@@ -72,7 +69,7 @@ counters of the underlying cpu architecture (if supported).
 
 %prep
 # copy necessary files from kernel-source since we need to modify them
-(cd /usr/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} lib) | tar -xf - 
+(cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} lib) | tar -xf -
 chmod +x tools/perf/util/generate-cmdlist.sh
 
 # don't error out on deprecated definitions in gtk2.h
@@ -84,15 +81,15 @@ sed -i 's@ignored "-Wstrict-prototypes"@&\n#pragma GCC diagnostic ignored "-Wdep
 cd tools/perf
 export WERROR=0
 # PASS rpm optflags as EXTRA_FLAGS,  passing as CFLAGS overrides and breaks build
-make %{?_smp_mflags} -f Makefile.perf PYTHON=python3 EXTRA_CFLAGS="%{optflags}" ASCIIDOC8=1 prefix=/usr libdir=%{_libdir} perfexecdir=lib/%{name}-core all doc %{_perf_unwind} tipdir=share/doc/packages/perf USE_ASCIIDOCTOR=1
+make %{?_smp_mflags} -f Makefile.perf PYTHON=python3 EXTRA_CFLAGS="%{optflags}" ASCIIDOC8=1 prefix=%{_prefix} libdir=%{_libdir} perfexecdir=lib/%{name}-core all doc %{_perf_unwind} tipdir=share/doc/packages/perf USE_ASCIIDOCTOR=1 CORESIGHT=1
 
 %install
 cd tools/perf
 export WERROR=0
-make -f Makefile.perf V=1 PYTHON=python3 EXTRA_CFLAGS="%{optflags}" prefix=/usr libdir=%{_libdir} perfexecdir=lib/%{name}-core DESTDIR=%{buildroot} install install-doc %{_perf_unwind} tipdir=share/doc/packages/perf USE_ASCIIDOCTOR=1
+make -f Makefile.perf V=1 PYTHON=python3 EXTRA_CFLAGS="%{optflags}" prefix=%{_prefix} libdir=%{_libdir} perfexecdir=lib/%{name}-core DESTDIR=%{buildroot} install install-doc %{_perf_unwind} tipdir=share/doc/packages/perf USE_ASCIIDOCTOR=1 CORESIGHT=1
 mkdir -p %{buildroot}/%{_docdir}/perf/examples/bpf
-mv %{buildroot}/usr/lib/perf/include/bpf/* %{buildroot}/%{_docdir}/perf/examples/bpf
-mv %{buildroot}/usr/lib/perf/examples/bpf/* %{buildroot}/%{_docdir}/perf/examples/bpf
+mv %{buildroot}%{_prefix}/lib/perf/include/bpf/* %{buildroot}/%{_docdir}/perf/examples/bpf
+mv %{buildroot}%{_prefix}/lib/perf/examples/bpf/* %{buildroot}/%{_docdir}/perf/examples/bpf
 
 %files
 %defattr(-, root, root)

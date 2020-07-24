@@ -1,0 +1,73 @@
+From cd7a56a71c76e6a4d4158bf739fd61644d325584 Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Tue, 16 Jun 2020 11:02:16 +0200
+Subject: [PATCH] gst: fix proxy leaks
+
+---
+ src/gst/gstpipewiredeviceprovider.c | 22 +++++++++++++++++++++-
+ 1 file changed, 21 insertions(+), 1 deletion(-)
+
+diff --git a/src/gst/gstpipewiredeviceprovider.c b/src/gst/gstpipewiredeviceprovider.c
+index e0b8d855..ca7f7306 100644
+--- a/src/gst/gstpipewiredeviceprovider.c
++++ b/src/gst/gstpipewiredeviceprovider.c
+@@ -404,6 +404,13 @@ static const struct pw_node_events node_events = {
+   .info = node_event_info
+ };
+ 
++static void
++removed_node (void *data)
++{
++  struct node_data *nd = data;
++  pw_proxy_destroy((struct pw_proxy*)nd->proxy);
++}
++
+ static void
+ destroy_node (void *data)
+ {
+@@ -428,9 +435,17 @@ destroy_node (void *data)
+ 
+ static const struct pw_proxy_events proxy_node_events = {
+   PW_VERSION_PROXY_EVENTS,
++  .removed = removed_node,
+   .destroy = destroy_node,
+ };
+ 
++static void
++removed_port (void *data)
++{
++  struct port_data *pd = data;
++  pw_proxy_destroy((struct pw_proxy*)pd->proxy);
++}
++
+ static void
+ destroy_port (void *data)
+ {
+@@ -442,6 +457,7 @@ destroy_port (void *data)
+ 
+ static const struct pw_proxy_events proxy_port_events = {
+         PW_VERSION_PROXY_EVENTS,
++        .removed = removed_port,
+         .destroy = destroy_port,
+ };
+ 
+@@ -563,6 +579,7 @@ gst_pipewire_device_provider_probe (GstDeviceProvider * provider)
+   }
+ 
+   GST_DEBUG_OBJECT (self, "disconnect");
++  pw_proxy_destroy ((struct pw_proxy*)data->registry);
+   pw_core_disconnect (self->core);
+   pw_context_destroy (c);
+   pw_loop_destroy (l);
+@@ -654,7 +671,10 @@ gst_pipewire_device_provider_stop (GstDeviceProvider * provider)
+   GstPipeWireDeviceProvider *self = GST_PIPEWIRE_DEVICE_PROVIDER (provider);
+ 
+   GST_DEBUG_OBJECT (self, "stopping provider");
+-
++  if (self->registry) {
++    pw_proxy_destroy ((struct pw_proxy*)self->registry);
++    self->registry = NULL;
++  }
+   if (self->core) {
+     pw_core_disconnect (self->core);
+     self->core = NULL;

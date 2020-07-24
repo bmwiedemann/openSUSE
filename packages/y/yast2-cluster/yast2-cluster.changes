@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 23 10:48:14 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- RPM Packaging: do not rely on libexecdir being expanded to
+  /usr/lib, which is not always the case (bsc#1174075).
+- Version 4.3.0
+
+-------------------------------------------------------------------
 Mon Apr 13 06:49:43 UTC 2020 - nick wang <nwang@suse.com>
 
 - jsc#SLE-12432, add qdevice heuristics support

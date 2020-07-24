@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Fri Jul 17 12:25:25 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Adjust README after removal of combustion-generator
+- Switch to GPL-2.0-only
+
+-------------------------------------------------------------------
+Thu Jul  9 10:29:44 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Also force mounting of /tmp
+- Fix getting the script's return value
+
+-------------------------------------------------------------------
+Wed Jul  1 10:31:10 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Set the timeout for the config device explicitly, like ignition-dracut
+
+-------------------------------------------------------------------
+Fri Jun 19 11:26:48 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Drop dependency on ignition
+
+-------------------------------------------------------------------
+Thu Jun 18 11:07:54 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Initial commit

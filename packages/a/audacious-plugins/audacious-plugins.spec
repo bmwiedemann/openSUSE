@@ -97,8 +97,7 @@ Requires:       %{name} = %{version}
 Extra plugins for the Audacious audio player.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %meson \

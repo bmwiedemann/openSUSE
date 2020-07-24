@@ -1,4 +1,312 @@
 -------------------------------------------------------------------
+Wed Jul 22 12:29:46 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-14.0.2+12 (July 2020 CPU,
+  bsc#1174157)
+  * Security fixes:
+    + JDK-8230613: Better ASCII conversions
+    + JDK-8231800: Better listing of arrays
+    + JDK-8232014: Expand DTD support
+    + JDK-8233234: Better Zip Naming
+    + JDK-8233239, CVE-2020-14562: Enhance TIFF support
+    + JDK-8233255: Better Swing Buttons
+    + JDK-8234032: Improve basic calendar services
+    + JDK-8234042: Better factory production of certificates
+    + JDK-8234418: Better parsing with CertificateFactory
+    + JDK-8234836: Improve serialization handling
+    + JDK-8236191: Enhance OID processing
+    + JDK-8236867, CVE-2020-14573: Enhance Graal interface handling
+    + JDK-8237117, CVE-2020-14556: Better ForkJoinPool behavior
+    + JDK-8237592, CVE-2020-14577: Enhance certificate verification
+    + JDK-8238002, CVE-2020-14581: Better matrix operations
+    + JDK-8238013: Enhance String writing
+    + JDK-8238804: Enhance key handling process
+    + JDK-8238843: Enhanced font handing
+    + JDK-8238920, CVE-2020-14583: Better Buffer support
+    + JDK-8238925: Enhance WAV file playback
+    + JDK-8240119, CVE-2020-14593: Less Affine Transformations
+    + JDK-8240482: Improved WAV file playback
+    + JDK-8241379: Update JCEKS support
+    + JDK-8241522: Manifest improved jar headers redux
+    + JDK-8242136, CVE-2020-14621: Better XML namespace handling
+  * Other changes:
+    + JDK-8215711: Missing key_share extension for (EC)DHE key
+      exchange should alert missing_extension
+    + JDK-8220503: Move
+      ShenandoahTerminatorTerminator::should_exit_termination out of
+      header
+    + JDK-8224541: Better mapping of serial ENUMs
+    + JDK-8224549: Less Blocking Array Queues
+    + JDK-8225068: Remove DocuSign root certificate that is
+      expiring in May 2020
+    + JDK-8225069: Remove Comodo root certificate that is expiring
+      in May 2020
+    + JDK-8225130: Add exception for expiring Comodo roots to
+      VerifyCACerts test
+    + JDK-8225603: Enhancement for big integers
+    + JDK-8227269: Slow class loading when running with JDWP
+    + JDK-8230853: Shenandoah: replace leftover assert(is_in(...))
+      with rich asserts
+    + JDK-8231572: Use -lobjc instead of -fobjc-link-runtime in
+      libosxsecurity
+    + JDK-8235833: PosixPlatform.cpp should not include sysctl.h
+    + JDK-8236039: JSSE Client does not accept status_request
+      extension in CertificateRequest messages for TLS 1.3
+    + JDK-8236201: Better Scanner conversions
+    + JDK-8237474: Default SSLEngine should create in server role
+    + JDK-8237821: Shenandoah: build broken after JDK-8237637
+      (Remove dubious type conversions from oop)
+    + JDK-8237859: C2: Crash when loads float above range check
+    + JDK-8238225: Issues reported after replacing symlink at
+      Contents/MacOS/libjli.dylib with binary
+    + JDK-8238960: linux-i586 builds are inconsistent as the newly
+      build jdk is not able to reserve enough space for object heap
+    + JDK-8239071: bump JDK version in jdk14u-cpu repository to
+      14.0.2
+    + JDK-8239429: AbsPathsInImage.java fails in JDK 11u and 14u on
+      Windows
+    + JDK-8239786: Shenandoah: print per-cycle statistics
+    + JDK-8239926: Shenandoah: Shenandoah needs to mark nmethod's
+      metadata
+    + JDK-8240197: Cannot start JVM when $JAVA_HOME includes CJK
+      characters
+    + JDK-8240223: Use consistent predicate order in and with
+      PhaseIdealLoop::find_predicate
+    + JDK-8240227: Loop predicates should be copied to unswitched
+      loops
+    + JDK-8240315: Shenandoah: Rename ShLBN::get_barrier_strength()
+    + JDK-8240725: Some functions might not work with CJK character
+    + JDK-8240872: Shenandoah: Avoid updating new regions from
+      start of evacuation
+    + JDK-8240873: Shenandoah: Short-cut arraycopy barriers
+    + JDK-8240915: Shenandoah: Remove unused fields in init mark
+      tasks
+    + JDK-8240917: Shenandoah: Avoid scanning thread code roots
+      twice in all root scanner
+    + JDK-8241062: Shenandoah: rich asserts trigger "empty
+      statement" inspection
+    + JDK-8241081: Shenandoah: Do not modify update-watermark
+      concurrently
+    + JDK-8241093: Shenandoah: editorial changes in flag
+      descriptions
+    + JDK-8241139: Shenandoah: distribute mark-compact work exactly
+      to minimize fragmentation
+    + JDK-8241142: Shenandoah: should not use parallel reference
+      processing with single GC thread
+    + JDK-8241144: Javadoc is not generated for new module
+      jdk.nio.mapmode
+    + JDK-8241150: Create tag jdk-14.0.1-ga for 14.0.1 fcs b07 repos
+    + JDK-8241351: Shenandoah: fragmentation metrics overhaul
+    + JDK-8241435: Shenandoah: avoid disabling pacing with
+      "aggressive"
+    + JDK-8241520: Shenandoah: simplify region sequence numbers
+      handling
+    + JDK-8241534: Shenandoah: region status should include update
+      watermark
+    + JDK-8241583: Shenandoah: turn heap lock asserts into macros
+    + JDK-8241603: ZGC:
+      java/lang/management/MemoryMXBean/MemoryTestZGC.sh crashes
+      on macOS
+    + JDK-8241668: Shenandoah: make ShenandoahHeapRegion not derive
+      from ContiguousSpace
+    + JDK-8241673: Shenandoah: refactor anti-false-sharing padding
+    + JDK-8241675: Shenandoah: assert(n->outcnt() > 0) at
+      shenandoahSupport.cpp:2858 with
+      java/util/Collections/FindSubList.java
+    + JDK-8241692: Shenandoah: remove
+      ShenandoahHeapRegion::_reserved
+    + JDK-8241700: Shenandoah: Fold ShenandoahKeepAliveBarrier flag
+      into ShenandoahSATBBarrier
+    + JDK-8241740: Shenandoah: remove ShenandoahHeapRegion::_heap
+    + JDK-8241743: Shenandoah: refactor and inline
+      ShenandoahHeap::heap()
+    + JDK-8241748: Shenandoah: inline MarkingContext TAMS methods
+    + JDK-8241750: x86_32 build failure after JDK-8227269
+    + JDK-8241765: Shenandoah: AARCH64 need to save/restore call
+      clobbered registers before calling keepalive barrier
+    + JDK-8241838: Shenandoah: no need to trash cset during final
+      mark
+    + JDK-8241841: Shenandoah: ditch one of allocation type
+      counters in ShenandoahHeapRegion
+    + JDK-8241842: Shenandoah: inline
+      ShenandoahHeapRegion::region_number
+    + JDK-8241844: Shenandoah: rename
+      ShenandoahHeapRegion::region_number
+    + JDK-8241845: Shenandoah: align ShenandoahHeapRegions to cache
+      lines
+    + JDK-8241900: Loop unswitching may cause dependence on null
+      check to be lost
+    + JDK-8241926: Shenandoah: only print heap changes for
+      operations that directly affect it
+    + JDK-8241983: Shenandoah: simplify FreeSet logging
+    + JDK-8241984: Shenandoah: enhance GCTimer and JFR support
+    + JDK-8241985: Shenandoah: simplify collectable garbage logging
+    + JDK-8242040: Shenandoah: print allocation failure type
+    + JDK-8242041: Shenandoah: adaptive heuristics should account
+      evac reserve in free target
+    + JDK-8242042: Shenandoah: tune down ShenandoahGarbageThreshold
+    + JDK-8242054: Shenandoah: New incremental-update mode
+    + JDK-8242075: Shenandoah: rename ShenandoahHeapRegionSize flag
+    + JDK-8242082: Shenandoah: Purge Traversal mode
+    + JDK-8242083: Shenandoah: split "Prepare Evacuation" tracking
+      into cset/freeset counters
+    + JDK-8242089: Shenandoah: per-worker stats should be summed
+      up, not averaged
+    + JDK-8242101: Shenandoah: coalesce and parallelise heap region
+      walks during the pauses
+    + JDK-8242107: Shenandoah: Fix aarch64 build after JDK-8242082
+    + JDK-8242114: Shenandoah: remove
+      ShenandoahHeapRegion::reset_alloc_metadata_to_shared
+    + JDK-8242130: Shenandoah: Simplify arraycopy-barrier
+      dispatching
+    + JDK-8242211: Shenandoah: remove
+      ShenandoahHeuristics::RegionData::_seqnum_last_alloc
+    + JDK-8242212: Shenandoah: initialize
+      ShenandoahHeuristics::_region_data eagerly
+    + JDK-8242213: Shenandoah: remove
+      ShenandoahHeuristics::_bytes_in_cset
+    + JDK-8242217: Shenandoah: Enable GC mode to be
+      diagnostic/experimental and have a name
+    + JDK-8242227: Shenandoah: transit regions to cset state when
+      adding to collection set
+    + JDK-8242228: Shenandoah: remove unused
+      ShenandoahCollectionSet methods
+    + JDK-8242229: Shenandoah: inline ShenandoahHeapRegion
+      liveness-related methods
+    + JDK-8242267: Shenandoah: regions space needs to be aligned by
+      os::vm_allocation_granularity()
+    + JDK-8242271: Shenandoah: add test to verify GC mode unlock
+    + JDK-8242273: Shenandoah: accept either SATB or IU barriers,
+      but not both
+    + JDK-8242283: Can't start JVM when java home path includes
+      non-ASCII character
+    + JDK-8242301: Shenandoah: Inline LRB runtime call
+    + JDK-8242316: Shenandoah: Turn NULL-check into assert in SATB
+      slow-path entry
+    + JDK-8242353: Shenandoah: micro-optimize region liveness
+      handling
+    + JDK-8242365: Shenandoah: use uint16_t instead of jushort for
+      liveness cache
+    + JDK-8242375: Shenandoah: Remove
+      ShenandoahHeuristic::record_gc_start/end methods
+    + JDK-8242379: [TESTBUG]
+      compiler/loopopts/TestLoopUnswitchingLostCastDependency.java
+      fails with release VMs
+    + JDK-8242400: Shenandoah: Restore logging to pre-jdk8241984
+      format
+    + JDK-8242430: Correct links in javadoc of OperatingSystemMXBean
+    + JDK-8242470: Update Xerces to Version 2.12.1
+    + JDK-8242498: Invalid "sun.awt.TimedWindowEvent" object leads
+      to JVM crash
+    + JDK-8242625: Shenandoah: restore heap logging for
+      Degenerated/Full cycles
+    + JDK-8242638: Shenandoah: restore heap logging for uncommit
+    + JDK-8242641: Shenandoah: clear live data and update TAMS
+      optimistically
+    + JDK-8243008: Shenandoah: TestVolatilesShenandoah test failed
+      on aarch64
+    + JDK-8243059: Build fails when --with-vendor-name contains a
+      comma
+    + JDK-8243238: Shenandoah: explicit GC request should wait for
+      a complete GC cycle
+    + JDK-8243291: Shenandoah: no need to retire TLABs at Init
+      Update Refs
+    + JDK-8243301: Shenandoah: ditch ShenandoahAllowMixedAllocs
+    + JDK-8243307: Shenandoah: remove ShCollectionSet::live_data
+    + JDK-8243395: Shenandoah: demote guarantee in
+      ShenandoahPhaseTimings::record_workers_end
+    + JDK-8243460: Shenandoah: purge init_update_refs_prepare
+      counter
+    + JDK-8243463: Shenandoah: ditch total_pause counters
+    + JDK-8243464: Shenandoah: print statistic counters in time
+      order
+    + JDK-8243465: Shenandoah: ditch unused pause_other, conc_other
+      counters
+    + JDK-8243478: Shenandoah: avoid implicit worker_id = 0
+    + JDK-8243487: Shenandoah: make _num_phases illegal phase type
+    + JDK-8243494: Shenandoah: set counters once per cycle
+    + JDK-8243495: Shenandoah: print root statistics for concurrent
+      weak/strong root phases
+    + JDK-8243541: (tz) Upgrade time-zone data to tzdata2020a
+    + JDK-8243573: Shenandoah: rename GCParPhases and related code
+    + JDK-8243578: Shenandoah: Cleanup
+      ShenandoahStringDedup::parallel_oops_do()
+    + JDK-8243848: Shenandoah: Windows build fails after JDK-8239786
+    + JDK-8244067: Change jdk 14.0.2 milestone to fcs for
+      stabilization repos
+    + JDK-8244180: Shenandoah: carry Phase to
+      ShWorkerTimingsTracker explicitly
+    + JDK-8244200: Shenandoah: build breakages after JDK-8241743
+    + JDK-8244226: Shenandoah: per-cycle statistics contain worker
+      data from previous cycles
+    + JDK-8244326: Shenandoah: global statistics should not accept
+      bogus samples
+    + JDK-8244328: Shenandoah: move
+      ShenandoahThreadLocalData::_disarmed_value initialization
+    + JDK-8244420: Shenandoah: Ensure _disarmed_value offset < 128
+    + JDK-8244551: Shenandoah: Fix racy update of update_watermark
+    + JDK-8244663: Shenandoah: C2 assertion fails in
+      Matcher::collect_null_checks
+    + JDK-8244721: CTW: C2 (Shenandoah) compilation fails with
+      "unexpected infinite loop graph shape"
+    + JDK-8244730: Shenandoah:
+      gc/shenandoah/options/TestHeuristicsUnlock.java should only
+      verify the heuristics
+    + JDK-8244732: Shenandoah: move heuristics code to
+      gc/shenandoah/heuristics
+    + JDK-8244737: Shenandoah: move mode code to gc/shenandoah/mode
+    + JDK-8244739: Shenandoah: break superclass dependency on
+      ShenandoahNormalMode
+    + JDK-8244740: Shenandoah: rename ShenandoahNormalMode to
+      ShenandoahSATBMode
+    + JDK-8244821: Shenandoah: disarmed_value is initialized at
+      wrong place
+    + JDK-8244853: The static build of libextnet is missing the
+      JNI_OnLoad_extnet function
+    + JDK-8244951: Missing entitlements for hardened runtime
+    + JDK-8245047: [PPC64] C2: ReverseBytes + Load always match to
+      unordered Load (acquire semantics missing)
+    + JDK-8245179: JvmciNotifyBootstrapFinishedEventTest.java fails
+      with custom Tiered Level set externally
+    + JDK-8245461: Shenandoah: refine mode name()-s
+    + JDK-8245463: Shenandoah: refine ShenandoahPhaseTimings
+      constructor arguments
+    + JDK-8245726: Shenandoah: lift/cleanup ShenandoahHeuristics
+      names and properties
+    + JDK-8245754: Shenandoah: ditch ShenandoahAlwaysPreTouch
+    + JDK-8245757: Shenandoah: AlwaysPreTouch should not disable
+      heap resizing or uncommits
+    + JDK-8245812: Shenandoah: compute root phase parallelism
+    + JDK-8245814: Shenandoah: reconsider format specifiers for
+      stats
+    + JDK-8245825: Shenandoah: Remove diagnostic flag
+      ShenandoahConcurrentScanCodeRoots
+    + JDK-8246031: SSLSocket.getSession() doesn't close connection
+      for timeout/ interrupts
+    + JDK-8246097: Shenandoah: limit parallelism in CLDG root
+      handling
+    + JDK-8246100: Shenandoah: walk roots in more efficient order
+    + JDK-8246162: Shenandoah: full GC does not mark code roots
+      when class unloading is off
+    + JDK-8246342: Shenandoah: remove unused
+      ShenandoahIsMarkedNextClosure
+    + JDK-8246613: Choose the default SecureRandom algo based on
+      registration ordering
+    + JDK-8247310: Shenandoah: pacer should not affect interrupt
+      status
+    + JDK-8247358: Shenandoah: reconsider free budget slice for
+      marking
+    + JDK-8247474: Shenandoah: Windows build warning after
+      JDK-8247310
+    + JDK-8247560: Shenandoah: heap iteration holds root locks all
+      the time
+    + JDK-8248505: Unexpected NoSuchAlgorithmException when using
+      secure random impl from BCFIPS provider
+- Removed patch:
+  * DependOnVariableHelper.patch
+    + integrated in the upsteam code
+
+-------------------------------------------------------------------
 Tue Apr 21 07:06:56 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-14.0.1+7 (April 2020 CPU,

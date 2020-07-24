@@ -18,14 +18,15 @@
 
 %define mod_name rq
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-rq
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        Easy Job Queues for Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/rq/rq
-Source:         https://github.com/rq/rq/archive/v%{version}.tar.gz
+Source:         https://github.com/rq/rq/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module click >= 3.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}

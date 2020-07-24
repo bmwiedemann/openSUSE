@@ -64,4 +64,12 @@
     <comment>- Skip randomly failing test test_event_dispatcher</comment>
     <requestid>811020</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>469714c9b4b505d305f4fbcd34f6bde1</srcmd5>
+    <version>0.10.3</version>
+    <time>1595577611</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822237</requestid>
+  </revision>
 </revisionlist>

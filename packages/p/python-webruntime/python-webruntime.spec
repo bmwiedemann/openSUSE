@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-webruntime
-Version:        0.5.6
+Version:        0.5.7
 Release:        0
 Summary:        A python package to launch HTML5 apps in the browser or a desktop-like runtime
 License:        BSD-2-Clause

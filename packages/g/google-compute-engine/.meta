@@ -1,5 +1,0 @@
-<package name="google-compute-engine" project="openSUSE:Factory">
-  <title>GCE Instance intialization</title>
-  <description>Provides code to initialize an instance inside Google Compute Engine</description>
-  <devel project="Cloud:Tools" package="google-compute-engine"/>
-</package>

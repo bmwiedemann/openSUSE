@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jul 16 18:41:30 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.4.0:
+  * Update screenshots
+  * Recorder: Always record in stereo (#68)
+  * Fix the oops that I should cut, not copy
+  * Recorder: Enums in the top of files
+  * Allow setting per-app dark style preference (#67)
+  * README: Requires gstreamer1.0-libav as a runtime dependency
+  * Consistent naming in favor of SourceDevice.SYSTEM
+  * Recorder Cast as a new Enum instead of a row int (#65)
+  * Fix comment notation
+  * Add execuse permission to post_install.py
+  * Add 'Gettext updates' GitHub Actions
+  * Fix elementary OS-wide dark preference isn't applied
+  * Respect an elementary OS-wide dark preference (#62)
+  * Add linter to CI
+
+-------------------------------------------------------------------
 Sat Mar 28 16:12:27 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 2.3.2:

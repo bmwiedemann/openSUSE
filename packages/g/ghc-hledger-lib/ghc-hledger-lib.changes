@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 23 12:41:08 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints default 4GB disk space
+
+-------------------------------------------------------------------
 Mon Jun 22 02:00:23 UTC 2020 - psimons@suse.com
 
 - Update hledger-lib to version 1.18.1.

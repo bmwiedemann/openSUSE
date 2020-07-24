@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-drbd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _fwdefdir %{_libexecdir}/firewalld/services
 
 Name:           yast2-drbd
-Version:        4.2.2
+Version:        4.3.0
 Release:        0
 Summary:        YaST2 - DRBD Configuration
 License:        GPL-2.0-or-later
@@ -74,7 +74,7 @@ install -m 644 %{S:1} %{buildroot}%{_fwdefdir}/drbd.xml
 %{yast_agentdir}
 %doc %{yast_docdir}
 %license COPYING
-%dir %{_libexecdir}/firewalld
+%dir %{_prefix}/lib/firewalld
 %dir %{_fwdefdir}
 %{_fwdefdir}/drbd.xml
 %{yast_icondir}

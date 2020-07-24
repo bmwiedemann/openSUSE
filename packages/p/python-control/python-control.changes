@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 23 09:56:18 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- moved Pillow requirement to matplotlib package 
+
+-------------------------------------------------------------------
 Mon Jul 20 17:48:34 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - explicitely require Pillow for tests because of matplotlib

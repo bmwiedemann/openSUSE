@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 14 07:12:47 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix files section for libexecdir change from /usr/lib to
+  /usr/libexec: all of YaST is in %_prefix/lib (boo#1174075).
+- 4.3.0
+
+-------------------------------------------------------------------
 Tue Dec 22 21:27:38 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
 
 - Fix theming icons again (boo#1159283)

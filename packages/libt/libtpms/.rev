@@ -50,4 +50,12 @@
     <comment></comment>
     <requestid>729455</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>26d5988898f58d94812df92e7c13b72c</srcmd5>
+    <version>0.7.3</version>
+    <time>1595577923</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.7.3. Other minor changes to the spec file were done automatically by the format spec service. (forwarded request 822315 from kailiu)</comment>
+    <requestid>822328</requestid>
+  </revision>
 </revisionlist>

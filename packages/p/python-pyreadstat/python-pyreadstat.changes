@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 14 12:27:48 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.0.0
+  * improved error messages when column names have spaces
+  * updated readstat to release 1.1.3: improved support for columns with utf-8 characters.
+  * bumped version to first stable release as the library looks stable
+  * added capability to set_value_labels to handle subset of dataframes
+  * added capacity to read and write files with paths starting with tilde
+  * few bugfixes
+
+-------------------------------------------------------------------
 Fri Sep 13 15:05:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.2.9:

@@ -1,0 +1,25 @@
+From 1f1386879b8dd3d3be9a54f749bb839ae2281223 Mon Sep 17 00:00:00 2001
+From: Julian Bouzas <julian.bouzas@collabora.com>
+Date: Wed, 17 Jun 2020 13:36:05 -0400
+Subject: [PATCH] a2dpsink: only request new data when buffer is done
+
+---
+ spa/plugins/bluez5/a2dp-sink.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/spa/plugins/bluez5/a2dp-sink.c b/spa/plugins/bluez5/a2dp-sink.c
+index 2ef5317f..575234f2 100644
+--- a/spa/plugins/bluez5/a2dp-sink.c
++++ b/spa/plugins/bluez5/a2dp-sink.c
+@@ -563,7 +563,10 @@ static int flush_data(struct impl *this, uint64_t now_time)
+ 		if (written > 0 && l1 > 0)
+ 			written += add_data(this, src, l1);
+ 		if (written <= 0) {
+-			port->need_data = true;
++		        /* only request new data when the current buffer will be fully processed in the next iteration */
++			if (port->ready_offset + (this->frame_count * this->codesize) >= d[0].chunk->size)
++			        port->need_data = true;
++
+ 			if (written < 0 && written != -ENOSPC) {
+ 				spa_list_remove(&b->link);
+ 				b->outstanding = true;

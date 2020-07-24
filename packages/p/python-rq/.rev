@@ -74,4 +74,12 @@
 - BR redis to make the testsuite work</comment>
     <requestid>813366</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9235ccff69bf6ee1dcff90f42645eca2</srcmd5>
+    <version>1.4.3</version>
+    <time>1595577686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822248</requestid>
+  </revision>
 </revisionlist>

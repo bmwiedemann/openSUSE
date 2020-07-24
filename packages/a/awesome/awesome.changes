@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 18 21:23:16 UTC 2020 - Brice DEKANY <brice.dekany@suse.com>
+
+- Added 001-extern-vars-declaration-fix-gcc10.patch: Move variable
+  declarations from header to C file to fix build with GCC 10 
+  See https://github.com/awesomeWM/awesome/pull/3065
+
+-------------------------------------------------------------------
 Sat Feb  9 06:34:59 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - Do not hardcode default ruby, but use macro

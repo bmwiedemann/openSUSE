@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Jul 15 07:26:01 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Recommend pipewire from libpipewire, so if the library is
+  installed the daemon gets pulled in since we want a daemon
+  to connect to.
+- Require pipewire-spa-plugins from pipewire instead of
+  recommending it since the support plugin is actually required
+  for most uses (like screen sharing in wayland, which we want to
+  support out-of-the-box).
+- Enable the pipewire.socket systemd user service in %post
+  (using pulseaudio's %post section as an example of how to do it
+  since systemd-presets-common-SUSE currently lacks support for
+  user services). Also disable it in %preun and %postun.
+
+-------------------------------------------------------------------
+Tue Jul 14 08:25:49 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patches from upstream to fix many issues mainly related to
+  memory leaks, crashes and wrong behaviour:
+  * 0001-client-node-fix-buffer-size-calculation.patch
+  * 0002-gst-fix-proxy-leaks.patch
+  * 0003-pulse-fix-pa_card_info-profiles2-array-to-be-NULL-terminated.patch
+  * 0004-pulse-fix-size-calculation.patch
+  * 0005-jack-fix-crash-on-close-when-metadata-are-not-available.patch
+  * 0006-a2dpsink-only-request-new-data-when-buffer-is-done.patch
+  * 0007-pulse-fix-counter-while-populating-car_info-profiles.patch
+  * 0008-impl-link-reset-state-before-starting-allocation.patch
+  * 0009-impl-core-clear-the-mempool.patch
+  * 0010-mem-reset-the-map-in-clear.patch
+  * 0011-avoid-uninitialized-variables.patch
+  * 0012-dlclose-on-errors.patch
+  * 0013-stream-handle-NULL-context.patch
+  * 0014-state-always-update-state-variables.patch
+  * 0015-spa-device-fix-leak-of-properties-in-error-case.patch
+  * 0016-alsa-dont-leak-structure-on-error.patch
+  * 0017-alsa-dont-leak-properties-on-error.patch
+  * 0018-stream-fix-some-more-leaks-in-error-paths.patch
+  * 0019-buffers-increase-max-datas-and-metadata-in-buffers.patch
+  * 0020-gst-return-NULL-for-unknown-format.patch
+
+-------------------------------------------------------------------
 Fri Jul  3 08:29:04 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Rebase patches used in SLE/Leap:
@@ -8,7 +49,7 @@ Fri Jul  3 08:29:04 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 -------------------------------------------------------------------
 Tue Jun 16 09:04:18 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
-- Update to version 0.3.6 (boo#1171433):
+- Update to version 0.3.6 (boo#1171433, jsc#ECO-2308):
   * Extensive memory leak fixing and stress testing was done.
     A big leak in screen sharing with DMA-BUF was fixed.
   * Compile fixes

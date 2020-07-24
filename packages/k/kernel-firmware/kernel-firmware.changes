@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul 19 16:21:20 UTC 2020 - tiwai@suse.com
+
+- Update to version 20200716 (git commit 1d1c80b69653):
+  * Update to 20200629111339 version to aligh SDK. Mainly fix DFS false alarm.
+  * rtl_nic: update firmware for RTL8125B
+  * Update binary firmware for MT7663 based devices to include firmware offload feature and low power feature.
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9260
+  * linux-firmware: wilc1000: add wilc1000 v15.4 FW
+  * QCA: Update Bluetooth firmware for QCA6390
+- Revert the previous update of AMDGPU firmware due to regression
+  (bsc#1174278); back to the state of 887d2a103c2b
+
+-------------------------------------------------------------------
 Mon Jul 13 09:47:28 UTC 2020 - tiwai@suse.com
 
 - Update to version 20200702 (git commit 74ac3b5a7e79):

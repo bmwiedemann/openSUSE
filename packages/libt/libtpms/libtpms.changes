@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Jul 23 05:01:12 UTC 2020 - Kai Liu <kai.liu@suse.com>
+
+- Update to version 0.7.3
+  * Fixed the set of PCRs belonging to the TCB group. This affects
+    the pcrUpdateCounter in TPM2_Pcrread() responses, thus needs
+    latest `swtpm` (master, stable branches) for test cases to
+    succeed there.
+
+- Changes since version 0.7.2
+  * Fix output buffer parameter and size for RSA decryption that
+    could cause stack corruption under certain circumstances
+  * Set the RSA PSS salt length to the digest length rathern than
+    max. possible
+  * Fixes to symmetric decrytion related to input size check, defer
+    padding to the user [EVP_CIPHER_CTX_set_padding(ctx, 0)] and to
+    always use a temporary malloc'ed buffer for decryption
+
+- Changes since version 0.7.1
+  * tpm2: Fix TDES key creation by adding missing un-/marshalling
+    functions
+  * tpm2: Fix a bug in CheckAuthSession
+  * compilation fixes for TPM 1.2 & TPM 2 and various architectures
+    and gcc versions
+  * Fix support for NIST curves P{192,224,521} and SM2 P256 and
+    BNP648 that would not work;
+  * Runtime filter elliptic curves (that OpenSSL does not support)
+    and do not advertise those curves as capabilities
+  * Removed unnecessary space in MANUFACTURER "IBM " -> "IBM"
+
+-------------------------------------------------------------------
 Thu Sep  5 08:21:34 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to version 0.7.0

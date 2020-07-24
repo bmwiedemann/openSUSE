@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 22 10:40:47 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.3.4
+  * Advertise support for Python 3.8.
+  * Add Python 3.9 compatibility by using xml.etree.ElementTree if
+    xml.etree.cElementTree does not exist.  [bug=1870294]
+
+-------------------------------------------------------------------
 Thu Aug 23 09:25:47 UTC 2018 - tchvatal@suse.com
 
 - Update to 1.3.3:

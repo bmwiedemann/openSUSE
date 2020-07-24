@@ -1,0 +1,29 @@
+From 715be5dfe779e73139904461b5e3da53e030ead6 Mon Sep 17 00:00:00 2001
+From: George Kiagiadakis <george.kiagiadakis@collabora.com>
+Date: Wed, 17 Jun 2020 18:01:17 +0300
+Subject: [PATCH] pulse: fix counter while populating card_info profiles
+
+---
+ pipewire-pulseaudio/src/introspect.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pipewire-pulseaudio/src/introspect.c b/pipewire-pulseaudio/src/introspect.c
+index f0512ead..67f1bd54 100644
+--- a/pipewire-pulseaudio/src/introspect.c
++++ b/pipewire-pulseaudio/src/introspect.c
+@@ -1262,7 +1262,6 @@ static void card_callback(struct card_data *d)
+ 			continue;
+ 		}
+ 
+-		j = i->n_profiles++;
+ 		i->profiles[j].name = name;
+ 		i->profiles[j].description = name;
+ 		i->profiles[j].n_sinks = 1;
+@@ -1281,6 +1280,7 @@ static void card_callback(struct card_data *d)
+ 			i->active_profile = &i->profiles[j];
+ 			i->active_profile2 = i->profiles2[j];
+ 		}
++		j = ++i->n_profiles;
+ 	}
+ 	i->profiles2[j] = NULL;
+ 	d->cb(d->context, i, 0, d->userdata);

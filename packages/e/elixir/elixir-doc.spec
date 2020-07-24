@@ -17,7 +17,7 @@
 
 
 Name:           elixir-doc
-Version:        1.10.3
+Version:        1.10.4
 Release:        0
 Summary:        Documentation for elixir
 License:        Apache-2.0
@@ -26,6 +26,7 @@ URL:            http://elixir-lang.org
 Source0:        https://github.com/elixir-lang/elixir/archive/v%{version}.tar.gz#/elixir-%{version}.tar.gz
 BuildRequires:  elixir
 BuildRequires:  elixir-ex_doc
+BuildRequires:  unzip
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 Requires:       elixir = %{version}

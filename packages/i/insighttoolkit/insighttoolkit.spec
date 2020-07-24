@@ -1,7 +1,7 @@
 #
 # spec file for package insighttoolkit
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016 Angelos Tzotsos <tzotsos@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,167 +13,161 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%global __builder ninja
 %define tarname InsightToolkit
-%define baseversion 4.13
+%define baseversion 5.1
+%define libname lib%{name}5
+
 Name:           insighttoolkit
-Version:        %{baseversion}.2
+Version:        5.1.0
 Release:        0
-Summary:        Insight Segmentation and Registration Toolkit
+Summary:        Toolkit for scientific image processing, segmentation, and registration
+# NON-FREE FILES IN Modules/ThirdParty/VNL/src/vxl/v3p/netlib/ NOT USED BY ITK AND REMOVED BY Patch4
+# SEE NOTICE file, https://github.com/InsightSoftwareConsortium/ITK/pull/1913, and https://github.com/InsightSoftwareConsortium/ITK/pull/1920
 License:        Apache-2.0
-Group:          Development/Libraries/C and C++
-Url:            http://www.itk.org
-#Source0:        http://sourceforge.net/projects/itk/files/itk/%{baseversion}/%{tarname}-%{version}.tar.xz
-Source:         https://netix.dl.sourceforge.net/project/itk/itk/%{baseversion}/%{tarname}-%{version}.tar.xz
-Patch0:         dcmtk-cmake.patch
-# PATCH-FIX-UPSTREAM proper linking against math library
+URL:            https://www.itk.org
+Source:         https://github.com/InsightSoftwareConsortium/ITK/releases/download/v%{version}/%{tarname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM proper linking against math library [gh#InsightSoftwareConsortium/ITK#1867, gh#InsightSoftwareConsortium/ITK#1878]
 Patch1:         nrrdio-linking.patch
-# PATCH-FIX-UPSTREAM add support for GCC 9
-Patch2:         add_gcc9_support.patch
-# PATCH-FIX-UPSTREAM proper linking against math library
+# PATCH-FIX-UPSTREAM proper linking against math library [gh#InsightSoftwareConsortium/ITK#1867, gh#InsightSoftwareConsortium/ITK#1878]
 Patch3:         itklbfgs-linking.patch
-BuildRequires:  cmake >= 2.8.0
-BuildRequires:  dcmtk
+# PATCH-FIX-UPSTREAM insighttoolkit-drop-netlib-triangle-files.patch [gh#InsightSoftwareConsortium/ITK#1913] badshah400@gmail.com -- Drop netlib triangle files and any linking to them due to licensing issues; patch from upstream
+Patch4:         insighttoolkit-drop-netlib-triangle-files.patch
+BuildRequires:  CastXML-devel
+BuildRequires:  bison
+BuildRequires:  cmake
 BuildRequires:  dcmtk-devel
 BuildRequires:  fdupes
-BuildRequires:  fftw3-devel
 BuildRequires:  fftw3-threads-devel
-BuildRequires:  gcc
 BuildRequires:  gcc-c++
-# BuildRequires:  gdcm-devel
+BuildRequires:  gdcm-devel
+BuildRequires:  gtest
 BuildRequires:  hdf5-devel
-BuildRequires:  libexpat-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  libpng-devel
-BuildRequires:  libtiff-devel
-BuildRequires:  libxml2-devel
-BuildRequires:  python-devel
-BuildRequires:  sed
-BuildRequires:  swig
-%if 0%{suse_version} > 1320
-# Indirect DCMTK dep. Should DCMTK be fixed?
-# tcpd-devel is needed for libwrap.so on Tumbleweed (> Leap 42.3)
-BuildRequires:  tcpd-devel
 BuildRequires:  libnsl-devel
-%endif
+BuildRequires:  memory-constraints
+BuildRequires:  ninja
+BuildRequires:  pkgconfig
+BuildRequires:  python3-devel
+BuildRequires:  swig
 BuildRequires:  vtk-devel
+BuildRequires:  vtk-qt
 BuildRequires:  xz
-BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  cmake(double-conversion)
+BuildRequires:  pkgconfig(eigen3)
+BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(fftw3)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libpcrecpp)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(zlib)
 
 %description
-ITK is a suite of software tools for image analysis.
+The Insight Toolkit (ITK) is a toolkit for N-dimensional scientific
+image processing, segmentation, and registration.
 
 %package devel
 Summary:        Development files for ITK
-Group:          Development/Libraries/C and C++
+Requires:       %{libname} = %{version}
 Requires:       dcmtk-devel
-Requires:       fftw3-devel
+Requires:       double-conversion-devel
 Requires:       fftw3-threads-devel
 Requires:       hdf5-devel
-Requires:       lib%{name}4 = %{version}
-Requires:       libexpat-devel
-Requires:       libjpeg-devel
-Requires:       libpng-devel
-Requires:       libtiff-devel
 Requires:       vtk-devel
-Requires:       zlib-devel
+Requires:       pkgconfig(expat)
+Requires:       pkgconfig(fftw3)
+Requires:       pkgconfig(libjpeg)
+Requires:       pkgconfig(libpcrecpp)
+Requires:       pkgconfig(libpng)
+Requires:       pkgconfig(libtiff-4)
+Requires:       pkgconfig(libxml-2.0)
+Requires:       pkgconfig(zlib)
 Provides:       lib%{name}-devel
 
 %description devel
-Development files for the ITK library.
-ITK is a suite of software tools for image analysis.
+The Insight Toolkit (ITK) is a toolkit for N-dimensional scientific
+image processing, segmentation, and registration.
 
-%package -n lib%{name}4
-Summary:        Insight Segmentation and Registration Toolkit
-Group:          System/Libraries
+This package provides development files for the ITK library.
 
-%description -n lib%{name}4
-Shared ITK library.
-ITK is a suite of software tools for image analysis.
+%package -n %{libname}
+Summary:        Toolkit for scientific image processing, segmentation, and registration
+
+%description -n %{libname}
+The Insight Toolkit (ITK) is a toolkit for N-dimensional scientific
+image processing, segmentation, and registration.
+
+This package provides shared libraries for ITK.
+
+%package -n python3-itk
+Summary:        Python bindings for ITK
+Requires:       python3-numpy
+
+%description -n python3-itk
+The Insight Toolkit (ITK) is a toolkit for N-dimensional scientific
+image processing, segmentation, and registration.
+
+This package provides the modules for ITK's python bindings.
 
 %prep
-%setup -q -n %{tarname}-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n %{tarname}-%{version}
 
 %build
+%limit_build -m 2000
+
+# Enabling BUILD_TESTING requires KWStyle, not available for openSUSE
 %cmake \
+  -DITK_INSTALL_LIBRARY_DIR:PATH=%{_lib}/ \
+  -DITK_INSTALL_INCLUDE_DIR:PATH=include/%{name}/ \
+  -DITK_INSTALL_PACKAGE_DIR:PATH=%{_lib}/cmake/%{name}/ \
+  -DITK_INSTALL_RUNTIME_DIR:PATH=%{_bindir} \
+  -DITK_INSTALL_DOC_DIR=share/doc/packages/%{name}/ \
   -DBUILD_EXAMPLES:BOOL=ON \
   -DBUILD_SHARED_LIBS:BOOL=ON \
   -DBUILD_TESTING:BOOL=OFF \
   -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=ON \
-  -DUSE_FFTWF=ON \
   -DITK_USE_FFTWD:BOOL=ON \
   -DITK_USE_FFTWF:BOOL=ON \
-  -DITK_USE_SYSTEM_FFTW:BOOL=ON \
-  -DITK_USE_STRICT_CONCEPT_CHECKING:BOOL=ON \
-  -DITK_USE_SYSTEM_DOUBLECONVERSION:BOOL=OFF \
-  -DITK_USE_SYSTEM_DCMTK:BOOL=ON \
-  -DITK_USE_SYSTEM_GDCM:BOOL=OFF \
-  -DITK_USE_SYSTEM_HDF5:BOOL=ON \
-  -DITK_USE_SYSTEM_JPEG:BOOL=ON \
-  -DITK_USE_SYSTEM_PNG:BOOL=ON \
-  -DITK_USE_SYSTEM_TIFF:BOOL=ON \
+  -DITK_USE_SYSTEM_LIBRARIES:BOOL=ON \
+  -DITK_USE_SYSTEM_CASTXML:BOOL=ON \
+  -DITK_USE_SYSTEM_GDCM:BOOL=ON \
+  -DITK_USE_SYSTEM_SWIG:BOOL=ON \
   -DITK_USE_SYSTEM_VXL:BOOL=OFF \
-  -DITK_USE_SYSTEM_ZLIB:BOOL=ON \
-  -DITK_USE_SYSTEM_EXPAT:BOOL=ON \
-  -DModule_ITKDCMTK:BOOL=ON \
-  -DModule_ITKIOPhilipsREC:BOOL=OFF \
-  -DModule_ITKLevelSetsv4Visualization:BOOL=OFF \
-  -DModule_ITKReview:BOOL=OFF \
-  -DModule_ITKVideoBridgeOpenCV:BOOL=OFF \
-  -DModule_ITKVideoBridgeVXL:BOOL=OFF \
-  -DModule_ITKVtkGlue:BOOL=OFF \
-  -DModule_ITKDeprecated:BOOL=OFF \
-  -DITKV3_COMPATIBILITY:BOOL=ON \
+  -DVXL_BUILD_CORE_NUMERICS:BOOL=OFF \
   -DVCL_INCLUDE_CXX_0X:BOOL=ON \
-  -DITK_WRAPPING:BOOL=OFF \
-  -DITK_WRAP_PYTHON:BOOL=OFF \
-  -DCMAKE_BUILD_TYPE:STRING="Release"
+  -DITK_FORBID_DOWNLOADS=ON \
+  -DITK_WRAP_PYTHON:BOOL=ON
 
-make VERBOSE=1 %{?_smp_mflags}
-
+%cmake_build
 
 %install
 %cmake_install
 
-%if "%{_lib}" == "lib64"
-mkdir -p %{buildroot}%{_libdir}
-mv %{buildroot}%{_libexecdir}/* %{buildroot}%{_libdir}/
-sed -i 's|/lib/|/lib64/|g' %{buildroot}%{_libdir}/cmake/ITK-%{baseversion}/ITKConfig.cmake
-sed -i 's|/lib/|/lib64/|g' %{buildroot}%{_libdir}/cmake/ITK-%{baseversion}/ITKTargets.cmake
-sed -i 's|/lib/|/lib64/|g' %{buildroot}%{_libdir}/cmake/ITK-%{baseversion}/ITKTargets-release.cmake
-%endif
-rm -rf %{buildroot}%{_libexecdir}/debug
-# move files to a proper place
-mv %{buildroot}%{_libdir}/*itk*.cmake %{buildroot}%{_libdir}/cmake/
-# remove openjp2 file installation
-rm -rf %{buildroot}/%{_includedir}/gdcmopenjpeg %{buildroot}%{_libdir}/gdcmopenjpeg-* %{buildroot}%{_libdir}/pkgconfig/libopenjp2.pc
-rmdir %{buildroot}%{_libdir}/pkgconfig
-
 %fdupes %{buildroot}/%{_prefix}
 
-%post -n lib%{name}4 -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
-%postun -n lib%{name}4 -p /sbin/ldconfig
-
-%files -n lib%{name}4
-%defattr(644,root,root,755)
-%license LICENSE
+%files -n %{libname}
+%license LICENSE NOTICE
 %{_libdir}/*.so.1
 
 %files devel
-%defattr(-,root,root,-)
-%{_includedir}/*
+%license LICENSE NOTICE
+%{_includedir}/%{name}/
 %{_libdir}/lib*.so
 %{_libdir}/cmake/
 %{_bindir}/itkTestDriver
-%{_datadir}/*
+%doc %{_docdir}/%{name}/
+
+%files -n python3-itk
+%license LICENSE NOTICE
+%{python3_sitearch}/*.py
+%{python3_sitearch}/itk/
 
 %changelog

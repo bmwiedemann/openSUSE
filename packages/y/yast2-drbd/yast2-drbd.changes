@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 23 09:36:14 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- RPM Packaging: do not rely on libexecdir being expanded to
+  /usr/lib, which is not always the case (bsc#1174075).
+- 4.3.0
+
+-------------------------------------------------------------------
 Thu Oct 31 10:26:12 UTC 2019 - nick wang <nwang@suse.com>
 
 - jsc#SLE-5498, lvmetad is removed in lvm2 since 2.03.05

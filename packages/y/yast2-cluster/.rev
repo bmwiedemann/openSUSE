@@ -302,4 +302,12 @@
     <comment>jsc#SLE-12432, add qdevice heuristics support</comment>
     <requestid>798634</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>e70655962b5e961c42fc32a20add3a51</srcmd5>
+    <version>4.3.0</version>
+    <time>1595577934</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.3.0</comment>
+    <requestid>822362</requestid>
+  </revision>
 </revisionlist>

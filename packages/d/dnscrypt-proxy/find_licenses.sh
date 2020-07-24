@@ -33,8 +33,8 @@ if [[ -z "$vendor_licenses_dir" ]]
           then
             echo Searching for licenses ...
             rm $licenses_file
-            find ./*/ -iname  "license*" -fprint $licenses_file
-            find ./*/ -iname  "copying*" >> $licenses_file
+            find ./*/ -iname  "license*" | sort > $licenses_file
+            find ./*/ -iname  "copying*" | sort >> $licenses_file
             goahead=1
           else
             echo "$vendor_licenses_dir" is not a directory.

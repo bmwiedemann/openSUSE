@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Jul 13 10:56:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 6.1.0
+  * A new :mod:`observation <traits.observation>` framework for observing traited
+    attributes and other observable objects has been introduced. This is intended
+    to provide a full replacement for the existing :func:`on_trait_change`
+    mechanism, and aims to fix a number of fundamental flaws and limitations of
+    that mechanism. See the :ref:`observe-notification` section of
+    the user manual for an introduction to this framework.
+  * New :class:`~traits.trait_list_object.TraitList`,
+    :class:`~traits.trait_dict_object.TraitDict` and
+    :class:`~traits.trait_set_object.TraitSet` classes have been added,
+    subclassing Python's built-in :class:`python:list`, :class:`python:dict` and
+    :class:`python:set` (respectively). Instances of these classes are observable
+    objects in their own right, and it's possible to attach observers to them
+    directly. These classes were primarily introduced to support the new
+    observation framework, and are not expected to be used directly. The API for
+    these objects and their notification system is provisional, and may change in
+    a future Traits release.
+  * A new :class:`.Union` trait type has been added. This is intended as a
+    simpler replacement for the existing :class:`.Either` trait type, which
+    will eventually be deprecated.
+  * New :class:`.PrefixList`, :class:`.PrefixMap` and :class:`.Map` trait types
+    have been added. These replace the existing :class:`.TraitPrefixList`,
+    :class:`.TraitPrefixMap` and :class:`.TraitMap` subclasses of
+    :class:`.TraitHandler`, which are deprecated.
+  * Typing stubs for the Traits library have been added in a
+    ``traits-stubs`` package, which will be released separately to PyPI. This
+    should help support Traits-using projects that want to make use of type
+    annotations and type checkers like `mypy <http://mypy-lang.org/>`_.
+  * Python 2.7 is no longer supported; Traits 6.0 requires Python 3.5 or later.
+  * Trait types related to Python 2 (for example ``Unicode`` and ``Long``) have
+    been deprecated in favour of their Python 3 equivalents (for example ``Str``
+    and ``Int``).
+  * Many little-used historical features of Traits have been deprecated, and
+    are scheduled for removal in Traits 7.0.
+  * Some historical features of Traits that had no evidence of external usage
+    were removed in Traits 6.0.
+  * Introspection of ``CTrait`` and ``HasTraits`` objects is greatly improved.
+    All of the internal state that was previously hidden within the C extension
+    is now accessible from Python.
+  * The Traits codebase has undergone some significant reorganizations,
+    reformattings and style cleanups to make it easier to work with, and
+    to improve the separation between Traits and TraitsUI.
+  * This release was focused mainly on cleanup and bugfixing. Nevertheless,
+    it contains a sprinkling of new features. There's a new ``Datetime``
+    trait type. The ``Enum`` trait type now supports Python enumerations.
+    The ``File`` trait type supports path-like objects.
+  * And many more... see upstream changelog
+- Convert to multibuild to break build cycle with pyface
+- Add patch fix-test.patch to make the tests pass
+
+-------------------------------------------------------------------
 Thu Jan 30 15:42:17 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 5.2.0:

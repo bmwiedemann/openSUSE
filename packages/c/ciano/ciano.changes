@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Jul 16 18:32:07 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.2.4:
+  * Merge branch 'master' of github.com:robertsanseries/ciano
+  * Minor fixes and changes
+  * update file gitignore
+  * Merge pull request #105 from NathanBnm/patch-5
+  * Fix README app icon
+  * Merge pull request #102 from NathanBnm/master
+  * Make post_install.py scrip executable
+  * Merge pull request #100 from NathanBnm/improvements
+  * Improvements
+  * Merge pull request #99 from NathanBnm/fix-typo
+  * Merge pull request #98 from NathanBnm/update-fr
+  * Fix typo
+  * Merge pull request #96 from NathanBnm/patch-4
+  * Add missing OARS metadata making build fail
+  * Merge pull request #93 from NathanBnm/patch-3
+  * Update .travis.yml
+  * Merge pull request #83 from meisenzahl/master
+  * Merge pull request #89 from safak45x/patch-1
+  * Merge branch 'master' into patch-1
+  * Merge pull request #78 from libreajans/Turkish
+  * Merge branch 'master' into Turkish
+  * Merge pull request #72 from NathanBnm/patch-1
+  * commit partial
+  * Update LINGUAS
+  * updated .gitignore to ignore *~
+  * Downgrade Node.js to fix builds on Travis CI
+  * Merge pull request #76 from nedrichards/patch-1
+  * Add OARS tag
+  * Merge pull request #1 from NathanBnm/patch-2
+  * Added fr
+
+-------------------------------------------------------------------
 Mon Nov  5 17:12:24 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 0.2.1:

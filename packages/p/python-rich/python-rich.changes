@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jul 22 20:03:19 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.4.1
+  * Fixed incorrect default of expand in Table.grid
+- Update to version 3.4.0
+  Added
+  * Added stream parameter to Console.input
+  * Added password parameter to Console.input
+  * Added description parameter to Progress.update
+  * Added rich.prompt
+  * Added detecting 'dumb' terminals
+  * Added Text.styled alternative constructor
+  Fixes
+  * Fixed progress bars so that they are readable when color is
+    disabled
+- Update to version 3.3.2
+  Changed
+  * Optimized Text.pad
+  Added
+  * Added rich.scope
+  * Change log_locals to use scope.render_scope
+  * Added title parameter to Columns
+
+-------------------------------------------------------------------
 Mon Jul 13 19:16:04 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.3.1

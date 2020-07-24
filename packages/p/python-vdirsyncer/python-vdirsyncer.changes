@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 23 09:16:29 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.16.8
+  * Support Python 3.7 and 3.8.
+  * Vdirsyncer will now warn if there's a string without quotes in your config.
+- Drop python-vdirsyncer-fix-tests.patch
+
+-------------------------------------------------------------------
 Sun Jun  7 21:35:23 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add missing BR python-atomicwrites

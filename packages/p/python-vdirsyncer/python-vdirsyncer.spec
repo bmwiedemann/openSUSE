@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-vdirsyncer
-Version:        0.16.7
+Version:        0.16.8
 Release:        0
 Summary:        CalDAV and CardDAV synchronization module
 License:        BSD-3-Clause
@@ -28,9 +28,6 @@ URL:            https://github.com/pimutils/vdirsyncer
 Source0:        https://files.pythonhosted.org/packages/source/v/vdirsyncer/vdirsyncer-%{version}.tar.gz
 Source1:        vdirsyncer.service
 Source2:        vdirsyncer.timer
-# https://github.com/pimutils/vdirsyncer/pull/779
-# https://github.com/pimutils/vdirsyncer/issues/793
-Patch0:         python-vdirsyncer-fix-tests.patch
 # default deadline (200ms) is too short for obs
 Patch1:         python-vdirsyncer-shift-deadline.patch
 BuildRequires:  %{python_module atomicwrites}
@@ -44,11 +41,7 @@ Requires:       python-atomicwrites >= 0.1.7
 Requires:       python-click >= 5.0
 Requires:       python-click-log >= 0.3
 Requires:       python-click-threading >= 0.2
-Requires:       python-icalendar >= 3.6
-Requires:       python-lxml
-Requires:       python-python-dateutil
-Requires:       python-pytz
-Requires:       python-requests >= 2.4.1
+Requires:       python-requests >= 2.20.0
 Requires:       python-requests-toolbelt >= 0.4.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -57,11 +50,11 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click-log >= 0.3}
 BuildRequires:  %{python_module click-threading >= 0.2}
-BuildRequires:  %{python_module hypothesis >= 3.1}
+BuildRequires:  %{python_module hypothesis >= 5.0.0}
 BuildRequires:  %{python_module pytest-localserver}
 BuildRequires:  %{python_module pytest-subtesthack}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests >= 2.4.1}
+BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module requests-toolbelt >= 0.4.40}
 BuildRequires:  %{python_module urllib3}
 # /SECTION
@@ -79,7 +72,6 @@ what OfflineIMAP is for IMAP.
 
 %prep
 %setup -q -n vdirsyncer-%{version}
-%patch0 -p1
 %patch1 -p1
 rm -rf vdirsyncer.egg-info
 

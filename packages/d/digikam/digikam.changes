@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 22 12:44:20 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints with latest disk value for all archs
+
+-------------------------------------------------------------------
 Mon Jul 20 14:35:59 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - increase min disk space for PowerPC from 6 to 8GB

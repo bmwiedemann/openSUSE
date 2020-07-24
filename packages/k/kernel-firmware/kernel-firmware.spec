@@ -19,10 +19,10 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define __ksyms_path ^/lib/firmware
-%define version_unconverted 20200702
+%define version_unconverted 20200716
 
 Name:           kernel-firmware
-Version:        20200702
+Version:        20200716
 Release:        0
 Summary:        Linux kernel firmware files
 License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
@@ -40,6 +40,8 @@ Source8:        ql2600_fw.bin
 Source9:        ql2700_fw.bin
 Source10:       ql8300_fw.bin
 Source99:       %{name}-rpmlintrc
+# Revert AMDGPU firmware due to regression (bsc#1174278)
+Source100:      amdgpu-887d2a103c2b.tar.xz
 # install / build infrastructure
 Source1001:     install-split.sh
 Source1002:     list-license.sh
@@ -5636,7 +5638,7 @@ various USB WiFi / Ethernet drivers.
 
 
 %prep
-%setup -q
+%setup -q -a 100
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .

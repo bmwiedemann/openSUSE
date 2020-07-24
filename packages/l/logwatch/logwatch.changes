@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 22 08:54:52 UTC 2020 - Christian Vögl <christian.voegl@suse.com>
+
+- Update to 7.5.3.
+  See /usr/share/doc/packages/logwatch/ChangeLog for details. 
+
+-------------------------------------------------------------------
 Mon Jan 20 13:20:10 UTC 2020 - Christian Vögl <cvoegl@suse.de>
 
 - Remove cron support:

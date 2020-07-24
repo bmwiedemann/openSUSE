@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jul 21 10:42:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 0.5.7
+  * Add ESlint and prettier #213 by @QuLogic
+  * Add versions table to the README #217 by @martinRenou
+  * Add issue template #226 by @martinRenou
+  * Add flake8 linting in CI #230 by @QuLogic
+  * Add an option for prevent default behavior during scroll
+    #235 by @ianhi
+  * Update dev install instructions #243 by @ianhi
+  * Fix CSS issues in the toolbar icons #245 by @davidbailey00
+- Update to 0.5.6
+  * Missing "wait" cursor #205
+  * Improved packaging for JupyterLab
+- No changelog entries between 0.4.1 and 0.5.6
+- labver is now 7.3.0
+- remove Python 2 requirements
+- require matplotlib web backend
+
+-------------------------------------------------------------------
 Mon Feb 24 15:51:54 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.4.1

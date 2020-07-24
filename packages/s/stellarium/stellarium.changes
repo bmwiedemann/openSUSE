@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 22 13:00:19 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints for all archs
+
+-------------------------------------------------------------------
+Tue Jul 21 12:20:30 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints for PowerPC avoid "no space left on device" build error
+
+-------------------------------------------------------------------
 Mon Jun 22 17:51:55 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 0.20.2

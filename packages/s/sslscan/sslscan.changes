@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Jul 23 12:25:27 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Upgrade to version 2.0.0
+  Version 2 of sslscan includes a major rewrite of the backend scanning code,
+  which means that it is no longer reliant on the version of OpenSSL for many
+  checks. This means that it is possible to support legacy protocols (SSLv2 and
+  SSLv3), as well as supporting TLSv1.3 - regardless of the version of OpenSSL
+  that it has been compiled against. It is still recommended to build statically
+  where possible, but dynamically built version should be significantly more
+  useful.
+
+  Note that there are also some breaking changes to the XML output, which are 
+  documented in the readme file.
+
+  This rewrite been made possible largely by the work of jtesta, who has been
+  responsible for most of the backend rewrite.
+
+- Cleaned up spec file
+
+-------------------------------------------------------------------
+Wed Jul 22 14:11:33 UTC 2020 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Upgrade to version 2.0.0-beta6
+  * Various bugfixes
+  * Added -4 and -6 options to force IPv4 and IPv6.
+  * Added strength attribute to XML to reflect colouring in stdout
+  * Checks for server signature algorithms.
+  * Checks for server key exchange groups.
+  * Support for SSLv2 and SSLv3 protocol detection regardless of OpenSSL
+  * Support for TLSv1.3
+  * Support for additional cipher suites.
+  * Print curve name and key strength for ECC certs
+  * Fix a bug with servers that return incorrect cipher IDs.
+  * Add a new "<certificates>" element to the XML output.
+  * Remove the "Signature Algorithm:" text and spacing from the XML.
+  * Report servers that accept any signature algorithm in the XML
+- Rebased fedora-sslscan-patents.patch
+- OpenSSL dependency bumped to >= 1.1
+
+-------------------------------------------------------------------
 Fri Feb  2 12:34:34 UTC 2018 - jweberhofer@weberhofer.at
 
 - Simplified requirements

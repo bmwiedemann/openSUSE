@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jul 13 11:20:18 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 7.0.0
+  * Documentation improvements (#720, #724, #723, #778)
+  * WxPython 4 compatibility and support (#708, #736, #762, #772, #775, #776)
+  * Traits 6 compatibility and enhancements (#689, #690, #693, #695, #713, #727, #770)
+  * Style improvements (#648, #771)
+  * Add placeholder text option for TextEditor (#735)
+  * Examples clean-up and unification (#697, #702, #703, #705, #711, #712, #777)
+  * Add a DatetimeEditor (#719, #730)
+  * Refactor and clean-up of base Editor class (#685, #686, #688)
+  * Remove use of Category classes from TraitsUI (#654)
+  * Add LEDEditor for Qt (#635)
+  * Add 'docs' command to etstool.py (#624)
+  * Add TabularAdapter to traitsui.api (#627)
+  * Enhancements to CI and testing (#683, #714, #740)
+  * Documentation fixes (#546, #766)
+  * Fix cgi.escape for Python 3.8 (#780)
+  * Log exceptions in table sorting (#751)
+  * Use TupleEditor for traits derived from BaseTuple (#747)
+  * Fixes for Undo/Redo (#733)
+  * Add explicit redraw for TableEditor selection (#721)
+  * Fixes for Qt5 support (#709)
+  * Fix bugs in color functions (#707, #744)
+  * Fix importing of ProgressColumn and EditColumn (#691)
+  * Set initial focus item correctly in Qt (#602)
+  * Fix text elision test on some platforms (#644)
+  * Fix a bug with TableEditor column clicking (#669)
+  * Fix typo in progress column exception (#662)
+
+-------------------------------------------------------------------
 Mon Apr 20 08:58:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

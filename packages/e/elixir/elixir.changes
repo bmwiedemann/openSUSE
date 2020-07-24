@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jul 8 08:09:49 UTC 2020 - Gabriele Santomaggio <gsantomaggio@suse.com>
+
+- Elixir 1.10.4
+ * Bug fixes
+   Elixir
+   [Kernel] Fix a bug where custom types were printed as built-in types
+   [Kernel] Don't add compile-time dependency on defdelegate
+   [Kernel] Add line numbers to warnings on deprecated imports
+   [Kernel] Report the correct line number when raising inside a macro
+   [Task] Include callers in translated Logger metadata for Task
+   [Task] Fix Task PID and caller in Task Supervisor reports
+   ExUnit
+   [ExUnit.Formatter] Avoid crashes when diffing guards when the pattern does not match
+   [ExUnit.Formatter] Also blame exceptions that come from linked and trapped exits
+   IEx
+   [IEx.Helpers] Do not crash when printing a type that cannot be code formatted
+   Mix
+   [mix app.start] Fix reading .app file located in archives (.ez files)
+   [mix local.hex] Provide more guidance when Hex can't be installed
+   [mix release] Properly encode config in releases
+
+-------------------------------------------------------------------
 Sat Apr 25 16:20:54 UTC 2020 - Sven Marquardt <dev@mail.smarquardt.space>
 
 - Elixir 1.10.3

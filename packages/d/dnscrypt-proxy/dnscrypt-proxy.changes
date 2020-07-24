@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 22 01:43:47 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Sort file lists to make package build reproducible
+
+-------------------------------------------------------------------
 Tue Jun 30 12:00:00 UTC 2020 - cunix@mail.de
 
 - Made PID available in /run/dnscrypt-proxy/dnscrypt-proxy.pid

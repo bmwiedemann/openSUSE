@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 22 11:01:03 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Add options to configure the installation layout.
+- Related to jsc#PM-1998.
+- 4.3.3
+
+-------------------------------------------------------------------
 Tue May 26 13:48:56 UTC 2020 - Martin Vidner <martin@frogs>
 
 - Work around Relax-NG parser error: "Found anyName attribute

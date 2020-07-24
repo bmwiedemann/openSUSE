@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-SQLAlchemy
-Version:        2.4.3
+Version:        2.4.4
 Release:        0
 Summary:        SQLAlchemy support for Flask
 License:        BSD-3-Clause

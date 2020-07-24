@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 23 04:18:57 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove pytest from runtime dependencies
+
+-------------------------------------------------------------------
 Fri May 29 07:10:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not pull in the dephell-macros for now as it cycles

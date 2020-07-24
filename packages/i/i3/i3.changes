@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 15 14:31:53 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- packaging changes:
+  * use https everywhere
+  * switch to %autosetup
+  * Recommend xorg-x11-server
+
+-------------------------------------------------------------------
 Fri May  8 15:15:21 UTC 2020 - Martin Kincl <kinclm@gmail.com>
 
 - Update to version 4.18.1:

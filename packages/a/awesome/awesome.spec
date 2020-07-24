@@ -1,7 +1,7 @@
 #
 # spec file for package awesome
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Url:            https://awesomewm.org/
 Source:         https://github.com/awesomeWM/awesome-releases/raw/master/%{name}-%{version}.tar.xz
 Source1:        https://github.com/awesomeWM/awesome-releases/raw/master/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+Patch0:         001-extern-vars-declaration-fix-gcc10.patch
 BuildRequires:  ImageMagick
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -95,6 +96,9 @@ This package provides the upstream look and feel for awesome.
 sed -i 's/nano/vi/g' %{name}rc.lua
 sed -i 's/^\(Type=\).*$/\1XSession/' %{name}.desktop
 sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' ./utils/awesome-client
+%if 0%{?suse_version} >= 1500
+%patch0 -p1
+%endif
 
 %build
 %cmake \

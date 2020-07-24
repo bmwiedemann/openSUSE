@@ -17,11 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         oldpython python
 %define         X_display         ":98"
-%bcond_without python2
+%define skip_python2 1
 Name:           python-traitsui
-Version:        6.1.3
+Version:        7.0.0
 Release:        0
 Summary:        Traits-capable windowing framework
 # Source code is under BSD but images are under different licenses
@@ -32,16 +31,14 @@ URL:            https://github.com/enthought/traitsui
 Source:         https://files.pythonhosted.org/packages/source/t/traitsui/traitsui-%{version}.tar.gz
 BuildRequires:  %{python_module configobj}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pyface}
+BuildRequires:  %{python_module pyface >= 6.0.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module traits}
+BuildRequires:  %{python_module traits >= 6}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-configobj
-Requires:       python-pyface
-Requires:       python-six
-Requires:       python-traits
+Requires:       python-pyface >= 6.0.0
+Requires:       python-traits >= 6
+Recommends:     python-configobj
 Recommends:     python-qt5
 Recommends:     python-wxWidgets
 BuildArch:      noarch
@@ -49,21 +46,10 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module qt5}
-BuildRequires:  %{python_module wxPython}
+BuildRequires:  %{python_module wxPython >= 4}
 BuildRequires:  Mesa-dri
 BuildRequires:  xorg-x11-server
-%if %{with python2}
-BuildRequires:  python-mock
-%endif
 # /SECTION
-%ifpython2
-Provides:       %{oldpython}-TraitsGUI = %{version}
-Obsoletes:      %{oldpython}-TraitsGUI < %{version}
-Provides:       %{oldpython}-TraitsBackendQt = %{version}
-Obsoletes:      %{oldpython}-TraitsBackendQt < %{version}
-Provides:       %{oldpython}-TraitsBackendWx = %{version}
-Obsoletes:      %{oldpython}-TraitsBackendWx < %{version}
-%endif
 %python_subpackages
 
 %description

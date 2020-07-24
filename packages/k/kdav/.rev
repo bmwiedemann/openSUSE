@@ -327,4 +327,18 @@
     <comment>20.04.3 release</comment>
     <requestid>820167</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>ee599e0f955e22c00cb890bdff37163c</srcmd5>
+    <version>5.72.0</version>
+    <time>1595577155</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.72.0. kdav is now a KDE Framework.
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 20.04.3:
+  * Add full namespace to external class references
+  * Option to build &amp; install QCH file with the public API dox
+  * Make KDAV a KDE Framework</comment>
+    <requestid>822019</requestid>
+  </revision>
 </revisionlist>

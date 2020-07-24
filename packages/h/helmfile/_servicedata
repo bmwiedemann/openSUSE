@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/roboll/helmfile.git</param>
+              <param name="changesrevision">4bbb1699a3d35b0af68630f7df7312dd63df6c88</param></service></servicedata>

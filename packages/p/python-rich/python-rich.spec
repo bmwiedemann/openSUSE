@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rich
-Version:        3.3.1
+Version:        3.4.1
 Release:        0
 Summary:        A Python library for rich text and beautiful formatting in the terminal
 License:        MIT

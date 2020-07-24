@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 18 18:04:37 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.4.4:
+  * Change base class of meta mixins to type. This fixes an issue
+    caused by a regression in CPython 3.8.4. :issue:`852`
+
+-------------------------------------------------------------------
 Sun May 31 00:08:47 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

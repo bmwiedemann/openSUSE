@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jul 20 14:22:07 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Updated to release 2.2.0 (boo#1174321)
+  * SECURITY: CVE-2020-15103 - Integer overflow due to missing input sanitation in rdpegfx channel
+  * Sound & mic - filter GSM codec for microphone redirection (gh#FreeRDP/FreeRDP#6263)
+  * windows client title length (gh#FreeRDP/FreeRDP#6335)
+  * "Alternate Secondary Drawing Order UNKNOWN" (gh#FreeRDP/FreeRDP#6370)
+  * remoteapp with dialog is disconnecting when it loses focus (gh#FreeRDP/FreeRDP#6298)
+  * v2.1.2: Can't connect to Windows7 (gh#FreeRDP/FreeRDP#6299)
+
+  * fix: memory leak in nsc
+  * urbdrc: some fixes and improvements
+  * build: use cmake to detect getlogin_r, improve asan checks/detection
+  * server/proxy:
+    - new: support for heartbeats
+    - new: support for rail handshake ex flags
+    - fix: possible race condition with redirects
+
+- Removed freerdp_Mask_CACHED_BRUSH_when_checking_brush_style.patch
+
+-------------------------------------------------------------------
+Fri Jul 17 08:19:56 UTC 2020 - QK ZHU <qkzhu@suse.com>
+
+- Drop BuildRequires of libavcodec for Leap/SLE (bsc#1174200) 
+
+-------------------------------------------------------------------
 Thu Jul  2 06:57:31 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Added freerdp_Mask_CACHED_BRUSH_when_checking_brush_style.patch 

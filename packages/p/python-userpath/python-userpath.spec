@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-userpath
-Version:        1.3.0
+Version:        1.4.1
 Release:        0
 Summary:        Tool for adding locations to the user PATH
 License:        MIT OR Apache-2.0

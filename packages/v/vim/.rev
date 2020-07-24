@@ -4581,4 +4581,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Vim9: Assignment to dict member does not work.</comment>
     <requestid>819524</requestid>
   </revision>
+  <revision rev="265" vrev="1">
+    <srcmd5>e2855736172bf0bc648ff474c244f297</srcmd5>
+    <version>8.2.1253</version>
+    <time>1595577094</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.1253, fixes the following problems
+  * Vim9: crash when using imported function.
+  * Vim9: cannot handle line break inside lambda.
+  * Vim9: No error for invalid command in compiled function.
+  * Vim9: dict.name is not recognized as an expression.
+  * Vim9: no error for missing space after a comma.
+  * Vim9: memory leak in allocated types.
+  * Vim9: using freed memory.
+  * Text cleared by checking terminal properties not redrawn. (Alexey Radkov)
+  * Insufficient testing for the Tcl interface.
+  * Once mouse move events are enabled getchar() returns them.
+  * Vim9: builtin function method call only supports first argument.
+  * Wrong method argument for appendbufline().
+  * Write NUL past allocated space using corrupted spell file. (Markus Vervier)
+  * Cursor off by one with block paste while 'virtualedit' is &quot;all&quot;.
+  * Possible crash when out of memory.
+  * Error messages when doing &quot;make clean&quot; in the runtime/doc or src/tee
+  directories.
+  * Tee doesn't build on some systems.
+  * No test for the &quot;recording @x&quot; message.
+  * Vim9: Cannot split a line before &quot;.member&quot;.
+  * Vim9: not enough type checking in Vim9 script.
+  * Terminal2 test sometimes hangs in the GUI.
+  * Vim9: filter function recognized as command modifier, leading to a crash.
+  * Test_termwinscroll() sometimes hangs in the GUI.
+  * Build failure in small version.
+  * Json code not fully tested.
+  * Vim9: no check for whitespace after comma in lambda.
+  * assert_fails() checks the last error message.
+  * Some tests fail.</comment>
+    <requestid>821868</requestid>
+  </revision>
 </revisionlist>

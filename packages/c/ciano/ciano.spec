@@ -17,7 +17,7 @@
 
 
 Name:           ciano
-Version:        0.2.1
+Version:        0.2.4
 Release:        0
 Summary:        A multimedia file converter
 License:        GPL-3.0-or-later
@@ -60,16 +60,29 @@ sed -i 's/\bmetainfo\b/appdata/' $(grep -rwl 'metainfo')
 %find_lang com.github.robertsanseries.ciano %{name}.lang
 %fdupes %{buildroot}/%{_datadir}
 
-%files
+# dirlist HiDPI icons (see: hicolor/index.theme)
+touch $PWD/dir.lst
+_dirlist=$PWD/dir.lst
+pushd %{buildroot}
+find ./ | while read _list; do
+    echo $_list | grep '[0-9]\@[0-9]' || continue
+    _path=$(echo $_list | sed 's/[^/]//')
+    if ! ls ${_path%/*}; then
+        grep -xqs "\%dir\ ${_path%/*}" $_dirlist || echo "%dir ${_path%/*}" >> $_dirlist
+    fi
+done
+popd
+
+%files -f dir.lst
 %doc AUTHORS LICENSE* README.md
 %{_bindir}/com.github.robertsanseries.ciano
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/com.github.robertsanseries.ciano.appdata.xml
 %{_datadir}/applications/com.github.robertsanseries.ciano.desktop
-%{_datadir}/ciano/
 %{_datadir}/glib-2.0/schemas/com.github.robertsanseries.ciano.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/com.github.robertsanseries.ciano.??g
 %{_datadir}/pixmaps/com.github.robertsanseries.ciano.??g
+%{_datadir}/ciano/
 
 %files lang -f %{name}.lang
 

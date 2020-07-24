@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jul 17 20:26:35 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- gpgme 1.14.0:
+  * New keylist mode to force the engine to return the keygrip
+  * New export mode to export as OpenSSH public key
+  * New context flag "extended-edit" to enable expert key edit
+  * Deprecate the anyway non working trustlist functions
+  * cpp: Add convenience API to obtain remarks
+  * cpp: The sign key edit-interactor now supports multiple
+    signatures from the same key
+  * qt: Extended signkeyjob to handle remarks and multiple
+    signatures
+  * qt: Added job API for gpg-card
+  * qt: The logging category has been changed to gpg.qgpgme to be
+    more consistent with other qt logging categories
+- drop upstream patches:
+  * 0001-gpg-Avoid-error-diagnostics-with-override-session-ke.patch
+- drop patches no longer needed that now break tests:
+  * gpgme-t-json-test-Bravo-key-no-secret-key-material.patch
+  * gpgme-t-json-test-with-keygrip-when-listing-keys.patch
+
+-------------------------------------------------------------------
 Thu Jul  2 08:23:12 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Add 0001-gpg-Avoid-error-diagnostics-with-override-session-ke.patch

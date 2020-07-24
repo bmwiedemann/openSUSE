@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 22 10:15:24 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.5.7
+  * dont't use extension on non-Windows
+  * firefox: Fix <browser> setup to specify remoteness.
+
+-------------------------------------------------------------------
 Mon May 18 07:25:36 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

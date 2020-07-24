@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 21 12:10:17 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 5.0.1
+  * Routines for extracting line and offset information from code objects was added.
+  * Disassembly format and options have simplified and improved.
+  * Before, we had separate flags and command-line options for whether to show just 
+    the header, and whether to include bytecode ops in the output. Now there is just 
+    a single parameter called `asm_format`, and choice option `--format` (short option `-F`).
+  * Small fixes and improvements
+
+-------------------------------------------------------------------
 Wed Jun  3 08:24:47 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.6.1:

@@ -47,10 +47,10 @@ BuildRequires:  pkgconfig(Qt5UiTools) >= 5.7.0
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.7.0
 BuildRequires:  pkgconfig(dri)
 BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(zlib)
 %if 0%{?is_opensuse}
 BuildRequires:  pkgconfig(libgps)
 %endif
-BuildRequires:  pkgconfig(zlib)
 
 %description
 Stellarium is a software to render 3D photo-realistic skies in real

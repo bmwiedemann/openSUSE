@@ -91,4 +91,12 @@
     <comment>Use the full path of efibootmgr to avoid errors when invoking shim-install from packagekitd (bsc#1168104)</comment>
     <requestid>790405</requestid>
   </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>d9bc4fac9355c7534585b5428a5860bf</srcmd5>
+    <version>14</version>
+    <time>1595577889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822331</requestid>
+  </revision>
 </revisionlist>

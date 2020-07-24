@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul 23 19:25:46 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1595530333.7963b3d4:
+  * Avoid updating last_good if there is no possible user of it
+  * Simplify runalltests in autotest.pm
+  * Simplify passing test list in tools/invoke-tests
+  * Fix link to architecture documentation
+  * Improve build instructions in README, mainly to cover CMake
+  * CMake: Tweak test execution
+  * Improve argument parsing and source directory handling in tools/invoke-tests
+  * CMake: Add targets for computing test coverage
+  * CMake: Add targets for invoking tests
+  * CMake: Add target for updating dependencies
+  * docker: Bump base OS version to Leap 15.2
+
+-------------------------------------------------------------------
 Tue Jul 21 11:25:44 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1595262693.dc25ddd8:
