@@ -22,13 +22,13 @@
 %define with_cacert_patch 0
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           NetworkManager
-Version:        1.24.2
+Version:        1.26.0
 Release:        0
 Summary:        Network Link Manager and user applications for it
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.gnome.org/projects/NetworkManager/
-Source0:        https://download.gnome.org/sources/%{name}/1.24/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/%{name}/1.26/%{name}-%{version}.tar.xz
 Source1:        nfs
 Source2:        NetworkManager.conf
 Source3:        baselibs.conf
@@ -287,6 +287,8 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_mandir}/man5/NetworkManager.conf.5%{?ext_man}
 %{_mandir}/man5/nm-settings.5%{?ext_man}
 %{_mandir}/man5/nm-system-settings.conf.5%{?ext_man}
+%{_mandir}/man5/nm-settings-dbus.5%{ext_man}
+%{_mandir}/man5/nm-settings-nmcli.5%{ext_man}
 %{_mandir}/man7/nm-openvswitch.7%{?ext_man}
 %{_mandir}/man7/nmcli-examples.7%{?ext_man}
 %{_mandir}/man8/NetworkManager.8%{ext_man}
