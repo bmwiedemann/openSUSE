@@ -161,4 +161,12 @@ update descriptions and categories</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>712385</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f6975766934421c40321b2abc69ad933</srcmd5>
+    <version>0.21.1</version>
+    <time>1595576871</time>
+    <user>dimstar_suse</user>
+    <comment>libpsl 0.21.1</comment>
+    <requestid>821819</requestid>
+  </revision>
 </revisionlist>

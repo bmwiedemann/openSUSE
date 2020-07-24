@@ -19,13 +19,13 @@
 
 %define somajor 5
 Name:           libpsl
-Version:        0.21.0
+Version:        0.21.1
 Release:        0
 Summary:        C library for the Publix Suffix List
 License:        MIT AND MPL-2.0 AND BSD-3-Clause
 Group:          Development/Libraries/C and C++
 Url:            https://rockdaboot.github.io/libpsl
-Source:         https://github.com/rockdaboot/libpsl/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/rockdaboot/libpsl/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1000:     baselibs.conf
 BuildRequires:  libidn2-devel >= 0.14
 BuildRequires:  libunistring-devel
