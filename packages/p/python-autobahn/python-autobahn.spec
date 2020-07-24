@@ -26,6 +26,7 @@ License:        MIT
 URL:            https://github.com/crossbario/autobahn-python
 Source:         https://files.pythonhosted.org/packages/source/a/autobahn/autobahn-%{version}.tar.gz
 Patch0:         respect-cflags.patch
+Patch1:         intrin-arch.patch
 BuildRequires:  %{python_module PyNaCl >= 1.0.1}
 BuildRequires:  %{python_module PyQRCode >= 1.1}
 BuildRequires:  %{python_module Twisted >= 20.3.0}
@@ -85,6 +86,7 @@ asynchronous Remote Procedure Calls and Publish & Subscribe on top of WebSocket.
 %prep
 %setup -q -n autobahn-%{version}
 %patch0 -p1
+%patch1 -p1
 
 # this test relies too much on rng that can behave randomly in obs
 rm autobahn/test/test_rng.py

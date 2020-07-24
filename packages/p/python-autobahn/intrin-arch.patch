@@ -1,0 +1,17 @@
+Index: autobahn-20.7.1/autobahn/nvx/_utf8validator.c
+===================================================================
+--- autobahn-20.7.1.orig/autobahn/nvx/_utf8validator.c
++++ autobahn-20.7.1/autobahn/nvx/_utf8validator.c
+@@ -27,8 +27,12 @@
+ #include <stdlib.h>
+ #include <stdint.h>
+ 
++#ifdef __s390__
++#include <s390intrin.h>
++#else
+ // http://stackoverflow.com/questions/11228855/header-files-for-simd-intrinsics
+ #include <x86intrin.h>
++#endif
+ 
+ 
+ #define UTF8_ACCEPT 0

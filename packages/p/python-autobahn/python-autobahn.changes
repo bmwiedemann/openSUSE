@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 23 14:42:38 UTC 2020 - Berthold Gunreben <azouhr@opensuse.org>
+
+- Add patch to include correct <arch>intrin.h for s390
+  * intrin-arch.patch
+- Minor patch refresh for respect-cflags.patch
+
+-------------------------------------------------------------------
 Tue Jul 21 05:51:09 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 20.7.1:
