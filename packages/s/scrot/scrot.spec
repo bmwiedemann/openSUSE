@@ -17,7 +17,7 @@
 
 
 Name:           scrot
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        Screenshot Capture Utility
 License:        SUSE-Scrot
@@ -27,6 +27,7 @@ Source:         https://github.com/resurrecting-open-source-projects/scrot/archi
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
+BuildRequires:  libXcomposite-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(giblib)
 BuildRequires:  pkgconfig(imlib2)

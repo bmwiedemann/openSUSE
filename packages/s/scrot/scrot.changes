@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 24 08:53:30 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.4:
+  * Added a new logo 128x128.
+  * New Feature: capture stack/overlapping windows.
+    Depends of libXcomposite (X11). New option: --stack or -k.
+  * Call XCloseDisplay on exit. This is the right thing in every
+    X server program, to release acquired resources.
+  * Fixed autoselect.
+  * Fixed capturing partially hidden windows on the edge of the desktop.
+  * Fixed required number.
+  * Fixed SIGSEGV, if running without DISPLAY environment variable.
+  * Fixed SIGSEGV, option --note.
+  * Minor fix: variable is assigned that is never used.
+  * Stack windows: client list spec EWMH.
+
+-------------------------------------------------------------------
 Wed May 13 07:32:27 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.3
