@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 23 09:36:37 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- handle properly exceptions from new XML parser/serializer
+  (related to bsc#1171412)
+- 4.3.30
+
+-------------------------------------------------------------------
+Tue Jul 21 19:24:34 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not crash when the networking section is missing
+  (bsc#1174118).
+- 4.3.29
+
+-------------------------------------------------------------------
 Mon Jul 20 14:51:49 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix fallback for autoyast client name (bsc#1174119)
