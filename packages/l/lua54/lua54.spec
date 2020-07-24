@@ -24,7 +24,7 @@ Release:        0
 Summary:        Small Embeddable Language with Procedural Syntax
 License:        MIT
 Group:          Development/Languages/Other
-Url:            http://www.lua.org
+URL:            http://www.lua.org
 Source:         http://www.lua.org/ftp/lua-5.4.0.tar.gz
 Source1:        http://www.lua.org/tests/lua-5.4.0-tests.tar.gz
 Source99:       baselibs.conf
@@ -34,6 +34,8 @@ Patch0:         lua-build-system.patch
 # Fix failing test
 Patch1:         attrib_test.patch
 Patch2:         files_test.patch
+# PATCH-FIX-UPSTREAM https://www.lua.org/bugs.html
+Patch3:         upstream-bugs.patch
 BuildRequires:  libtool
 BuildRequires:  lua-macros
 BuildRequires:  pkgconfig
@@ -78,9 +80,9 @@ application.
 
 %package -n %{libname}
 Summary:        The Lua integration library
-# Compat as libtool changes the soname
 Group:          System/Libraries
-%ifarch aarch64 x86_64 ppc64 ppc64le s390x
+# Compat as libtool changes the soname
+%ifarch aarch64 x86_64 ppc64 ppc64le s390x riscv64
 Provides:       liblua.so.5.4()(64bit)
 %else
 Provides:       liblua.so.5.4

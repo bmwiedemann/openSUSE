@@ -1,5 +1,7 @@
---- a/lua-5.4.0-tests/files.lua
-+++ b/lua-5.4.0-tests/files.lua
+Index: lua-5.4.0/lua-5.4.0-tests/files.lua
+===================================================================
+--- lua-5.4.0.orig/lua-5.4.0-tests/files.lua
++++ lua-5.4.0/lua-5.4.0-tests/files.lua
 @@ -81,7 +81,7 @@ assert(io.output() ~= io.stdout)
  
  if not _port then   -- invalid seek
@@ -36,28 +38,12 @@
    _G.D = os.date("*t", t)
    assert(os.time(D) == t)
    load(os.date([[assert(D.year==%Y and D.month==%m and D.day==%d and
-@@ -784,6 +788,15 @@ local function checkDateTable (t)
-   _G.D = nil
- end
- 
-+local function is64bit()
-+  local arch = io.popen("uname -m"):read("*a")
-+  if (arch or ""):match("64") then
-+    return 64
-+  else
-+    return 32
-+  end
-+end
-+
- checkDateTable(os.time())
- if not _port then
-   -- assume that time_t can represent these values
-@@ -791,7 +804,9 @@ if not _port then
+@@ -791,7 +795,9 @@ if not _port then
    checkDateTable(1)
    checkDateTable(1000)
    checkDateTable(0x7fffffff)
 -  checkDateTable(0x80000000)
-+  if is64bit() == 64 then
++  if not testerr("out-of-bound", os.date, "*t", 0x80000000) then
 +      checkDateTable(0x80000000)
 +  end
  end

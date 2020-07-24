@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul 20 11:00:56 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add upstream patches 7 & 8
+
+-------------------------------------------------------------------
+Sat Jul 18 09:51:00 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add upstream-bugs.patch, upstream fixes from https://www.lua.org/bugs.html
+
+-------------------------------------------------------------------
+Sat Jul 18 08:59:50 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- files_test.patch: use proper check for 64-bit time_t
+- Amend list of 64bit architectures
+
+-------------------------------------------------------------------
 Mon Jul  6 21:20:00 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Don't use %make_build macro, which doesn't work on SLE-12
