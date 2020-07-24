@@ -32,14 +32,13 @@
 
 %define libname libflatpak0
 Name:           flatpak
-Version:        1.6.4
+Version:        1.8.1
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
 Group:          System/Packages
 URL:            https://flatpak.github.io/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        system-user-flatpak.conf
 Patch0:         polkit_rules_usability.patch
 BuildRequires:  bison
 BuildRequires:  bubblewrap >= 0.4.1
@@ -48,6 +47,7 @@ BuildRequires:  gtk-doc
 BuildRequires:  intltool >= 0.35.0
 BuildRequires:  libcap-devel
 BuildRequires:  libdwarf-devel
+BuildRequires:  libgpg-error-devel
 BuildRequires:  libgpgme-devel >= 1.1.8
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -55,11 +55,11 @@ BuildRequires:  sysuser-tools
 BuildRequires:  xdg-dbus-proxy >= 0.1.0
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(appstream-glib)
-BuildRequires:  pkgconfig(dconf)
-BuildRequires:  pkgconfig(fuse)
+BuildRequires:  pkgconfig(dconf) >= 0.26
+BuildRequires:  pkgconfig(fuse) >= 2.9.2
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44
+BuildRequires:  pkgconfig(glib-2.0) >= 2.60
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.40.0
 BuildRequires:  pkgconfig(gobject-introspection-no-export-1.0) >= 1.40.0
 BuildRequires:  pkgconfig(json-glib-1.0)
@@ -68,6 +68,7 @@ BuildRequires:  pkgconfig(libelf) >= 0.8.12
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libzstd) >= 0.8.1
 BuildRequires:  pkgconfig(ostree-1) >= 2018.9
 BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(systemd)
@@ -155,9 +156,12 @@ NOCONFIGURE=1 ./autogen.sh
 	--with-priv-mode=none \
 	--with-dbus-config-dir=%{_dbusconfigdir} \
         --with-system-dbus-proxy=%{_bindir}/xdg-dbus-proxy \
+%if !%{support_environment_generators}
+        --enable-gdm-env-file \
+%endif
 	%{nil}
 %make_build
-%sysusers_generate_pre %{SOURCE1} system-user-flatpak
+%sysusers_generate_pre system-helper/flatpak.conf system-user-flatpak
 
 %install
 %make_install
@@ -170,9 +174,6 @@ ln -s service %{buildroot}%{_sbindir}/rcflatpak-system-helper
 # result. This should fix bsc#984817, granting members of group wheel access
 # w/o password entry.
 mv %{buildroot}/%{_datadir}/polkit-1/rules.d/{,60-}org.freedesktop.Flatpak.rules
-
-mkdir -p %{buildroot}%{_sysusersdir}
-install -m 644 %{SOURCE1} %{buildroot}%{_sysusersdir}/system-user-flatpak.conf
 
 %if !%{support_environment_generators}
 rm -Rf %{buildroot}%{_libexecdir}/systemd/user-environment-generators/
@@ -214,6 +215,9 @@ fi
 %{_libexecdir}/flatpak-validate-icon
 %{_libexecdir}/revokefs-fuse
 %{_datadir}/bash-completion/completions/flatpak
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/flatpak.fish
 # # Own dirs so we don't have to depend on dbus for building.
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/interfaces
@@ -236,10 +240,6 @@ fi
 %{_datadir}/%{name}/
 %config %{_sysconfdir}/profile.d/flatpak.sh
 %{_sysconfdir}/flatpak
-# Own dirs so we don't have to depend on gdm for building.
-%dir %{_datadir}/gdm/
-%dir %{_datadir}/gdm/env.d/
-%{_datadir}/gdm/env.d/flatpak.env
 %{_unitdir}/flatpak-system-helper.service
 %{_sbindir}/rcflatpak-system-helper
 %{_userunitdir}/flatpak-session-helper.service
@@ -248,6 +248,11 @@ fi
 %if %{support_environment_generators}
 %dir %{_prefix}/lib/systemd/user-environment-generators
 %{_prefix}/lib/systemd/user-environment-generators/60-flatpak
+%else
+# Own dirs so we don't have to depend on gdm for building.
+%dir %{_datadir}/gdm/
+%dir %{_datadir}/gdm/env.d/
+%{_datadir}/gdm/env.d/flatpak.env
 %endif
 %{_libexecdir}/flatpak-oci-authenticator
 %{_userunitdir}/flatpak-oci-authenticator.service
@@ -255,7 +260,7 @@ fi
 %{_datadir}/dbus-1/services/org.flatpak.Authenticator.Oci.service
 
 %files -n system-user-flatpak
-%{_sysusersdir}/system-user-flatpak.conf
+%{_sysusersdir}/flatpak.conf
 
 %files -n %{libname}
 %{_libdir}/libflatpak.so.*
