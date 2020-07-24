@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 21 14:59:12 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add vl805-firmware-loader overlay so as for upstream u-boot to be able to
+  acess USB.
+
+-------------------------------------------------------------------
 Fri Jul  3 13:48:37 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Add armstub=armstub8-rpi4.bin entry conditionally for rpi4, if not present in
