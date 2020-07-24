@@ -80,20 +80,53 @@ ExclusiveArch:  do_not_build
 %undefine c_f_ver
 %endif
 
-%if "%flavor" == "gnu7-hpc"
-%define compiler_family gnu
-%define c_f_ver 7
-%endif
-
 %if "%flavor" == "gnu-hpc-testsuite"
 %define compiler_family gnu
 %undefine c_f_ver
 %define testsuite 1
 %endif
 
+%if "%flavor" == "gnu7-hpc"
+%define compiler_family gnu
+%define c_f_ver 7
+%endif
+
 %if "%flavor" == "gnu7-hpc-testsuite"
 %define compiler_family gnu
 %define c_f_ver 7
+%define testsuite 1
+%endif
+
+%if "%flavor" == "gnu8-hpc"
+%define compiler_family gnu
+%define c_f_ver 8
+%endif
+
+%if "%flavor" == "gnu8-hpc-testsuite"
+%define compiler_family gnu
+%define c_f_ver 8
+%define testsuite 1
+%endif
+
+%if "%flavor" == "gnu9-hpc"
+%define compiler_family gnu
+%define c_f_ver 9
+%endif
+
+%if "%flavor" == "gnu9-hpc-testsuite"
+%define compiler_family gnu
+%define c_f_ver 9
+%define testsuite 1
+%endif
+
+%if "%flavor" == "gnu10-hpc"
+%define compiler_family gnu
+%define c_f_ver 10
+%endif
+
+%if "%flavor" == "gnu10-hpc-testsuite"
+%define compiler_family gnu
+%define c_f_ver 10
 %define testsuite 1
 %endif
 

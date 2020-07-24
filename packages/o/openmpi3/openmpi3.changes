@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 23 16:00:23 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add build support for gcc8/9/10 to HPC build (bsc#1174439). 
+
+-------------------------------------------------------------------
 Fri Mar 20 11:26:15 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to openmpi3 3.1.6
