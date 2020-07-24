@@ -25,6 +25,9 @@ License:        GPL-2.0-only
 Group:          Productivity/Office/Organizers
 URL:            https://zanshin.kde.org
 Source:         https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         Port-to-kontactinterface-5.14.42.patch
+Patch1:         Install-the-kontact-plugin-into-kontact5.patch
 BuildRequires:  boost-devel
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
@@ -49,6 +52,7 @@ job and personal life. You will never forget anything anymore.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
   %cmake_kf5 -d build
@@ -67,6 +71,7 @@ job and personal life. You will never forget anything anymore.
 %dir %{_kf5_appstreamdir}
 %dir %{_kf5_iconsdir}/hicolor/256x256
 %dir %{_kf5_iconsdir}/hicolor/256x256/apps
+%dir %{_kf5_plugindir}/kontact5/
 %{_kf5_applicationsdir}/org.kde.zanshin.desktop
 %{_kf5_appstreamdir}/org.kde.zanshin.appdata.xml
 %{_kf5_bindir}/zanshin
@@ -74,7 +79,7 @@ job and personal life. You will never forget anything anymore.
 %{_kf5_iconsdir}/hicolor/*/apps/zanshin.png
 %{_kf5_iconsdir}/hicolor/scalable/apps/zanshin.svgz
 %{_kf5_kxmlguidir}/zanshin/
-%{_kf5_plugindir}/kontact_zanshinplugin.so
+%{_kf5_plugindir}/kontact5/kontact_zanshinplugin.so
 %{_kf5_plugindir}/krunner_zanshin.so
 %{_kf5_plugindir}/zanshin_part.so
 %{_kf5_servicesdir}/kontact/
