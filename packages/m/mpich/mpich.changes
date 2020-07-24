@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 23 16:06:00 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add build support for gcc8/9/10 to HPC build (bsc#1174439). 
+
+-------------------------------------------------------------------
 Tue Jun  9 19:35:09 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Fix compilation with GCC10 by adding -fallow-argument-mismatch to FFLAGS

@@ -89,6 +89,7 @@ ExclusiveArch:  do_not_build
 %define build_static_devel 1
 %{bcond_without hpc}
 %endif
+
 %if "%flavor" == "gnu7-hpc-testsuite"
 %define compiler_family gnu
 %define c_f_ver 7
@@ -107,6 +108,98 @@ ExclusiveArch:  do_not_build
 %if "%flavor" == "gnu7-hpc-ofi-testsuite"
 %define compiler_family gnu
 %define c_f_ver 7
+%define testsuite 1
+%define build_flavor ofi
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu8-hpc"
+%define compiler_family gnu
+%define c_f_ver 8
+%define build_flavor verbs
+%define build_static_devel 1
+%{bcond_without hpc}
+%endif
+%if "%flavor" == "gnu8-hpc-testsuite"
+%define compiler_family gnu
+%define c_f_ver 8
+%define testsuite 1
+%define build_flavor verbs
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu8-hpc-ofi"
+%define compiler_family gnu
+%define c_f_ver 8
+%define build_flavor ofi
+%define build_static_devel 1
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu8-hpc-ofi-testsuite"
+%define compiler_family gnu
+%define c_f_ver 8
+%define testsuite 1
+%define build_flavor ofi
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu9-hpc"
+%define compiler_family gnu
+%define c_f_ver 9
+%define build_flavor verbs
+%define build_static_devel 1
+%{bcond_without hpc}
+%endif
+%if "%flavor" == "gnu9-hpc-testsuite"
+%define compiler_family gnu
+%define c_f_ver 9
+%define testsuite 1
+%define build_flavor verbs
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu9-hpc-ofi"
+%define compiler_family gnu
+%define c_f_ver 9
+%define build_flavor ofi
+%define build_static_devel 1
+%{bcond_without hpc}
+%endif
+%if "%flavor" == "gnu9-hpc-ofi-testsuite"
+%define compiler_family gnu
+%define c_f_ver 9
+%define testsuite 1
+%define build_flavor ofi
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu10-hpc"
+%define compiler_family gnu
+%define c_f_ver 10
+%define build_flavor verbs
+%define build_static_devel 1
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu10-hpc-testsuite"
+%define compiler_family gnu
+%define c_f_ver 10
+%define testsuite 1
+%define build_flavor verbs
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu10-hpc-ofi"
+%define compiler_family gnu
+%define c_f_ver 10
+%define build_flavor ofi
+%define build_static_devel 1
+%{bcond_without hpc}
+%endif
+%if "%flavor" == "gnu10-hpc-ofi-testsuite"
+%define compiler_family gnu
+%define c_f_ver 10
 %define testsuite 1
 %define build_flavor ofi
 %{bcond_without hpc}
