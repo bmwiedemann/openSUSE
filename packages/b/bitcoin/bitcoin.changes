@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 24 04:46:06 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add 7GB min disk space and change memory setting to physicalmemory
+  in existing _constraints file
+
+-------------------------------------------------------------------
 Wed Jun 17 11:57:34 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add fix-qpainterpath.patch
