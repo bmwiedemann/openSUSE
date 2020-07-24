@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Jul 24 11:25:05 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 11.0.8, including July 2020 CPU
+  security fixes (bsc#1174157)
+  * Security Fixes:
+    + JDK-8245422, CVE-2020-14664: Better Pisces rasterizing
+    + JDK-8236798: Enhance FX scripting support
+  * Other Fixes:
+    + JDK-8189092: ArrayIndexOutOfBoundsException on Linux in 
+      getCachedGlyph
+    + JDK-8200224: Multiple press event when JFXPanel gains focus
+    + JDK-8212034: Potential memory leaks in jpegLoader.c in error 
+      case
+    + JDK-8232811: Dialog's preferred size no longer accommodates 
+      multi-line strings
+    + JDK-8234474: [macos 10.15] Crash in file dialog in sandbox 
+      mode
+    + JDK-8234916: [macos 10.15] Garbled text running with 
+      native-image
+    + JDK-8235627: Blank stages when running JavaFX app in a macOS 
+      virtual machine
+    + JDK-8236685: [macOs] Remove obsolete file dialog subclasses
+    + JDK-8236832: [macos 10.15] JavaFX Application hangs on video 
+      play on Catalina
+    + JDK-8236971: [macos] Gestures handled incorrectly due to 
+      missing events
+    + JDK-8237078: [macOS] Media build broken on XCode 11
+    + JDK-8237782: Only read advances up to the minimum of the 
+      numHorMetrics or the available font data.
+    + JDK-8237833: Check glyph size before adding to glyph texture 
+      cache
+    + JDK-8237889: Update libxml2 to version 2.9.10
+    + JDK-8237944: webview native cl "-m32" unknown option for 
+      windows 32-bit build
+    + JDK-8238249: GetPrimitiveArrayCritical passed with hardcoded 
+      FALSE value
+    + JDK-8239107: Update libjpeg to version 9d
+    + JDK-8240694: [macos 10.15] JavaFX Media hangs on some video 
+      files on Catalina
+    + JDK-8241108: Glib improvements
+    + JDK-8241370: Crash in JPEGImageLoader after fix for 
+      JDK-8212034
+    + JDK-8241474: Build failing on Ubuntu 20.04
+    + JDK-8241629: [macos10.15] Long startup delay playing media 
+      over https on Catalina
+    + JDK-8242106: [macos] Remove obsolete GlassView2D.m class
+    + JDK-8242209: Increase web native thread stack size for x86 
+      mode
+    + JDK-8242530: [macos] Some audio files miss spectrum data when 
+      another audio file plays first
+    + JDK-8244042: Change JavaFX release version in 11-dev to 11.0.8
+    + JDK-8244579: Windows "User Objects" leakage with WebView
+    + JDK-8247360: Add missing license file for Microsoft 
+      DirectShow Samples
+
+-------------------------------------------------------------------
 Mon Apr 27 12:53:15 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 11.0.7, including April 2020 CPU

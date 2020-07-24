@@ -17,9 +17,9 @@
 
 
 %global priority        2105
-%global build_number 1
+%global build_number 2
 Name:           openjfx
-Version:        11.0.7
+Version:        11.0.8
 Release:        0
 Summary:        Rich client application platform for Java
 License:        GPL-2.0-only WITH Classpath-exception-2.0 AND BSD-3-Clause
