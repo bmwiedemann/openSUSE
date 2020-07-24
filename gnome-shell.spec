@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(Meta\\)
 
 Name:           gnome-shell
-Version:        3.36.4
+Version:        3.36.4+3
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -184,7 +184,7 @@ This package contains an optional extensions app for managing GNOME Shell extens
 
 translation-update-upstream
 
-%if !0%{?is_opensuse}
+%if 0%{?sle_version}
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1
@@ -195,7 +195,7 @@ translation-update-upstream
 %patch1008 -p1
 %endif
 
-%if !0%{?is_opensuse}
+%if 0%{?sle_version}
 cp %{SOURCE1} js/ui/
 cp %{SOURCE2} data/theme/
 %endif

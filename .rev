@@ -1586,4 +1586,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment>New stable release, resub with one less patch (forwarded request 819375 from iznogood)</comment>
     <requestid>819956</requestid>
   </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>c59bbe815e0d2fdae817b47093e0e921</srcmd5>
+    <version>3.36.4+3</version>
+    <time>1595576993</time>
+    <user>dimstar_suse</user>
+    <comment>Bump to head of stable branch, get 2 rather important bug fixes (forwarded request 821352 from iznogood)</comment>
+    <requestid>821840</requestid>
+  </revision>
 </revisionlist>
