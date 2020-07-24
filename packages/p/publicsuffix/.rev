@@ -664,4 +664,12 @@ Now with build cycle removed.</comment>
   * Add Voxel.sh DNS public suffixes (#1014)</comment>
     <requestid>815961</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>a5a1767174ccd8a8c62c4a3eea02c7df</srcmd5>
+    <version>20200715</version>
+    <time>1595576849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821284</requestid>
+  </revision>
 </revisionlist>

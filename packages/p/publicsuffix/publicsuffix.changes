@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul 16 11:09:46 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20200715:
+  * Add cn.vu (#987)
+  * Add opensocial.site (#1056)
+  * Add wpenginepowered.com (#1064)
+  * The list of Jelastic public domains was extended. Addition to #1023 (#1063)
+  * Update platform.sh (#1061)
+  * add pages.wiardweb.com (#1035)
+  * Update public_suffix_list.dat (#1036)
+  * gTLD autopull: 2020-06-27 (#1059)
+  * Removal of education.tas.edu.au (#977)
+  * gTLD autopull: 2020-06-24 (#1057)
+  * gTLD autopull: 2020-06-20 (#1055)
+
+-------------------------------------------------------------------
 Fri Jun 19 13:47:32 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20200616:
