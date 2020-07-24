@@ -3594,11 +3594,11 @@
     <package name="pinentry-gtk2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="pinentry-qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pinfo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="pipewire" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="pipewire-modules" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="pipewire-spa-plugins-0_2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="pipewire-spa-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="pipewire-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="pipewire" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="pipewire-modules" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="pipewire-spa-plugins-0_2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="pipewire-spa-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="pipewire-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pitivi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pitivi-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pkcs11-helper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

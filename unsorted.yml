@@ -1911,6 +1911,7 @@ unsorted:
   - colormake 
   - colorpicker 
   - colorpicker-lang 
+  - combustion 
   - commandergenius 
   - compartm 
   - compcache 
@@ -2040,6 +2041,7 @@ unsorted:
   - cpprest-devel 
   - cpptasks 
   - cpptasks-javadoc 
+  - cpptoml-devel 
   - cppunit-devel 
   - cppunit-devel-32bit: [x86_64] 
   - cppunit-devel-doc 
@@ -5232,9 +5234,6 @@ unsorted:
   - google-cabin-fonts 
   - google-caladea-fonts 
   - google-cardo-fonts 
-  - google-compute-engine-init 
-  - google-compute-engine-oslogin 
-  - google-compute-engine-oslogin-32bit: [x86_64] 
   - google-exo-fonts 
   - google-gson 
   - google-gson-javadoc 
@@ -5860,6 +5859,7 @@ unsorted:
   - helm-bash-completion 
   - helm-mirror 
   - helm-zsh-completion 
+  - helmfile 
   - help2man 
   - help2man-lang 
   - herbstluftwm 
@@ -5948,6 +5948,10 @@ unsorted:
   - http-builder 
   - http-builder-javadoc 
   - http-parser-devel 
+  - httpcomponents-asyncclient 
+  - httpcomponents-asyncclient-cache 
+  - httpcomponents-asyncclient-javadoc 
+  - httpcomponents-asyncclient-parent 
   - httpcomponents-client 
   - httpcomponents-client-cache 
   - httpcomponents-client-javadoc 
@@ -6663,6 +6667,18 @@ unsorted:
   - jna 
   - jna-contrib 
   - jna-javadoc 
+  - jnr-constants 
+  - jnr-constants-javadoc 
+  - jnr-enxio 
+  - jnr-enxio-javadoc 
+  - jnr-ffi 
+  - jnr-ffi-javadoc 
+  - jnr-netdb 
+  - jnr-netdb-javadoc 
+  - jnr-posix 
+  - jnr-posix-javadoc 
+  - jnr-x86asm 
+  - jnr-x86asm-javadoc 
   - jo 
   - jo-bash-completion 
   - joda-convert 
@@ -8548,7 +8564,7 @@ unsorted:
   - libavformat58_45-32bit: [x86_64] 
   - libavfs0 
   - libavif-devel 
-  - libavif4 
+  - libavif5 
   - libavogadrolibs-suse0 
   - libavrdude1 
   - libavresample4_0-32bit: [x86_64] 
@@ -9617,7 +9633,7 @@ unsorted:
   - libgaminggearfx0 
   - libgaminggearwidget0 
   - libganesha_nfsd-devel: [x86_64] 
-  - libganesha_nfsd3_2: [x86_64] 
+  - libganesha_nfsd3_3: [x86_64] 
   - libganglia0 
   - libgarcon-branding-upstream 
   - libgarcon-devel 
@@ -10283,7 +10299,7 @@ unsorted:
   - libinput-devel 
   - libinput-tools 
   - libinput10-32bit: [x86_64] 
-  - libinsighttoolkit4 
+  - libinsighttoolkit5 
   - libinstpatch-1_0-2 
   - libinstpatch-1_0-2-32bit: [x86_64] 
   - libinstpatch-devel 
@@ -11071,7 +11087,7 @@ unsorted:
   - libnsync_cpp1 
   - libntfs-3g-devel 
   - libntirpc-devel: [x86_64] 
-  - libntirpc3_2: [x86_64] 
+  - libntirpc3_3: [x86_64] 
   - libntk1 
   - libntl43 
   - libntlm-devel 
@@ -20028,6 +20044,7 @@ unsorted:
   - python3-django-assets 
   - python3-django-auth-ldap 
   - python3-django-avatar 
+  - python3-django-bootstrap3 
   - python3-django-braces 
   - python3-django-ckeditor 
   - python3-django-classy-tags 
@@ -20477,6 +20494,7 @@ unsorted:
   - python3-isodate 
   - python3-isort 
   - python3-itemadapter 
+  - python3-itk 
   - python3-itsdangerous 
   - python3-itypes 
   - python3-iwlib 
@@ -20983,6 +21001,7 @@ unsorted:
   - python3-pandas-datareader 
   - python3-pandas-ext 
   - python3-pandocfilters 
+  - python3-panel: [x86_64] 
   - python3-panflute 
   - python3-papermill 
   - python3-parallax 
@@ -21257,6 +21276,7 @@ unsorted:
   - python3-pyosf 
   - python3-pyotp 
   - python3-pyowm 
+  - python3-pypandoc 
   - python3-pyparallel 
   - python3-pyperclip 
   - python3-pyperf 
@@ -21287,6 +21307,7 @@ unsorted:
   - python3-pyscard 
   - python3-pysearpc 
   - python3-pysendfile 
+  - python3-pysha3 
   - python3-pyshark 
   - python3-pyshould 
   - python3-pyshp 
@@ -21759,6 +21780,7 @@ unsorted:
   - python3-sure 
   - python3-susepubliccloudinfo 
   - python3-sushy 
+  - python3-svgpathtools: [x86_64] 
   - python3-svgwrite 
   - python3-svneverever 
   - python3-swapper 
@@ -33639,8 +33661,6 @@ unsorted:
   - txt2man 
   - tycho: [x86_64] 
   - tycho-bootstrap: [x86_64] 
-  - tycho-extras 
-  - tycho-extras-javadoc 
   - tycho-javadoc: [x86_64] 
   - typelib-1_0-Accounts-1_0 
   - typelib-1_0-Amtk-5 

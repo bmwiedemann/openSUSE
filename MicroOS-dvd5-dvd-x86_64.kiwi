@@ -1163,6 +1163,7 @@
       <repopackage name="pinentry-qt5" arch="x86_64"/>
       <repopackage name="pipewire" arch="x86_64"/>
       <repopackage name="pipewire-modules" arch="x86_64"/>
+      <repopackage name="pipewire-spa-plugins-0_2" arch="x86_64"/>
       <repopackage name="pipewire-spa-tools" arch="x86_64"/>
       <repopackage name="pipewire-tools" arch="x86_64"/>
       <repopackage name="pkgconf"/>
