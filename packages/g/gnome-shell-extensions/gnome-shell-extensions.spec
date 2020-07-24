@@ -125,13 +125,13 @@ translation-update-upstream po %{name}
 gnome-patch-translation-prepare po %{name}
 
 %patch1000 -p1
-%if !0%{?is_opensuse}
+%if 0%{?sle_version}
 %patch1001 -p1
 %endif
 # In openSUSE GNOME, we don't launch gnome-session directly, but wrap this through a shell script, /usr/bin/gnome
 sed -i "s:Exec=gnome-session:Exec=gnome:g" data/gnome-classic.desktop.in
 cp %{SOURCE1} .
-%if !0%{?is_opensuse}
+%if 0%{?sle_version}
 sed -i -e 's/openSUSE/SUSE Linux Enterprise/g' README.SUSE
 %endif
 
@@ -155,14 +155,14 @@ tar -xzvf %{SOURCE6}
 install -d %{buildroot}/%{_datadir}/gnome-shell/extensions/sle-classic@suse.com
 cp sle-classic@suse.com/*  %{buildroot}/%{_datadir}/gnome-shell/extensions/sle-classic@suse.com
 install -m0644 %{SOURCE7} %{buildroot}/%{_datadir}/glib-2.0/schemas/00_org.gnome.shell.extensions.sle-classic.gschema.override
-%if !0%{?is_opensuse}
+%if 0%{?sle_version}
 tar -xzvf %{SOURCE3}
 install -d %{buildroot}%{_datadir}/gnome-shell/theme
 cp SLE-theme/theme/*  %{buildroot}%{_datadir}/gnome-shell/theme
 %endif
 %fdupes %{buildroot}%{_datadir}
 
-%if !0%{?is_opensuse}
+%if 0%{?sle_version}
 # Prepare for 'default.desktop' being update-alternative handled, boo#1039756
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
@@ -172,7 +172,7 @@ install -d -m755 %{buildroot}%{_datadir}/wayland-sessions
 ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_datadir}/wayland-sessions/default.desktop
 %endif
 
-%if !0%{?is_opensuse}
+%if 0%{?sle_version}
 %post -n gnome-shell-classic
 %{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \
   default-xsession.desktop %{_datadir}/xsessions/sle-classic.desktop 20
@@ -217,7 +217,7 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_datadir}/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com/sle-classic.css
 %{_datadir}/gnome-shell/modes/sle-classic.json
 %{_datadir}/gnome-shell/extensions/sle-classic@suse.com/
-%if !0%{?is_opensuse}
+%if 0%{?sle_version}
 %dir %{_datadir}/wayland-sessions
 %{_datadir}/gnome-shell/theme/sle-background.png
 %{_datadir}/xsessions/default.desktop

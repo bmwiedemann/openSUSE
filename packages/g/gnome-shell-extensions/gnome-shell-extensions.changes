@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 13 02:17:42 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update gnome-shell-extensions.spec: Replace is_opensuse with
+  sle_version (jsc#SLE-11720).
+
+-------------------------------------------------------------------
 Tue May 12 07:16:00 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Update gnome-classic-s390-not-require-g-s-d_wacom.patch: Solve
