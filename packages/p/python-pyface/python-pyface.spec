@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyface
 #
-# Copyright (c) 2019 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,34 +15,31 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# Tests have a dependency loop with traitsui
-%bcond_with     test
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 %define         X_display         ":98"
 Name:           python-pyface
-Version:        6.1.2
+Version:        7.0.0
 Release:        0
 Summary:        Traits-capable windowing framework
-License:        BSD-3-Clause and EPL-1.0 and LGPL-2.1 and LGPL-3.0 and SUSE-Public-Domain
-Group:          Development/Libraries/Python
 # Source code is under BSD but images are under different licenses
 # and details are inside image_LICENSE.txt
-Url:            https://github.com/enthought/pyface
+License:        BSD-3-Clause AND EPL-1.0 AND LGPL-2.1-only AND LGPL-3.0-only AND SUSE-Public-Domain
+Group:          Development/Libraries/Python
+URL:            https://github.com/enthought/pyface
 Source:         https://files.pythonhosted.org/packages/source/p/pyface/pyface-%{version}.tar.gz
+BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module traits}
+BuildRequires:  %{python_module traits >= 6}
+BuildRequires:  %{python_module wxWidgets}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with test}
-BuildRequires:  %{python_module Pygments}
-BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module qt5}
 BuildRequires:  xorg-x11-server
-%endif
-Requires:       python-traits
+Requires:       python-traits >= 6
 Recommends:     python-Pygments
 Recommends:     python-qt5
 Recommends:     python-traitsui
@@ -74,7 +71,6 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/py
 %fdupes %{buildroot}%{$python_sitelib}/pyface/sizers
 }
 
-%if %{with test}
 %check
 export ETS_TOOLKIT=qt4
 export DISPLAY=%{X_display}
@@ -85,10 +81,9 @@ sleep 10
 %{python_expand mkdir tester_%{$python_bin_suffix}
 pushd tester_%{$python_bin_suffix}
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
-$python -m nose.core -v pyface --exclude=wx
+$python -m unittest discover -v pyface
 popd
 }
-%endif
 
 %files %{python_files}
 %doc CHANGES.txt README.rst TODO.txt

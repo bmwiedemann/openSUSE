@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul 13 10:42:34 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 7.0.0
+  * Use Traits 6 features (#480, #494)
+  * WxPython 4 support (#469, #473, #497, $499)
+  * Remove six and other Python 2 code (#493)
+  * Add utility functions for Qt images (#498)
+  * Allow live update of Action images (#484)
+  * Add Qt Multimedia APIs to pyface.qt (#485)
+  * Allow additional copyright notices in the AboutDialog class (#467)
+  * Replace default AboutDialog and Splashscreen images with Python logo (#454)
+  * Allow etstool.py to run in non EDM environments (#443)
+  * Add assertEventuallyTrueInGui method to GuiTestAssistant (#419)
+  * Multiple bugfixes
+
+-------------------------------------------------------------------
 Tue Jul 23 20:23:21 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 6.1.2
