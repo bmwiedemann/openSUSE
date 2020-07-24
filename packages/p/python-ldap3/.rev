@@ -203,4 +203,13 @@
     <comment></comment>
     <requestid>805890</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>f97a3a7fab5013b6face75f4eda20b71</srcmd5>
+    <version>2.7</version>
+    <time>1595585362</time>
+    <user>dimstar_suse</user>
+    <comment>- Add skip-missing-LDAP-server.patch to skip over tests failing because
+  of the missing local LDAP server running (gh#cannatag/ldap3#843).</comment>
+    <requestid>822513</requestid>
+  </revision>
 </revisionlist>

@@ -24,8 +24,11 @@ Summary:        A strictly RFC 4511 conforming LDAP V3 pure Python client
 License:        LGPL-3.0-only
 URL:            https://github.com/cannatag/ldap3
 Source:         https://github.com/cannatag/ldap3/archive/v%{version}.tar.gz
-BuildRequires:  %{python_module nose}
+# PATCH-FIX-UPSTREAM skip-missing-LDAP-server.patch gh#cannatag/ldap3#843 mcepl@suse.com
+# skip over tests failing because of the missing local LDAP server running
+Patch0:         skip-missing-LDAP-server.patch
 BuildRequires:  %{python_module pyasn1 >= 0.4.6}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -44,6 +47,8 @@ The name has been changed to avoid confusion with the python-ldap library.
 
 %prep
 %setup -q -n ldap3-%{version}
+%autopatch -p1
+
 dos2unix COPYING.LESSER.txt COPYING.txt README.rst LICENSE.txt
 
 %build
@@ -54,7 +59,8 @@ dos2unix COPYING.LESSER.txt COPYING.txt README.rst LICENSE.txt
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec %{_bindir}/nosetests -s test || :
+export STRATEGY=SYNC SERVER=EDIR DECODER=INTERNAL
+%pytest test/test*.py
 
 %files %{python_files}
 %license COPYING.LESSER.txt COPYING.txt LICENSE.txt
