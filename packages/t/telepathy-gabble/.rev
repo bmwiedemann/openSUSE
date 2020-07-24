@@ -522,4 +522,12 @@
     <comment></comment>
     <requestid>792947</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>91ba8f138da5024c6a5ce5822c856a59</srcmd5>
+    <version>0.18.4</version>
+    <time>1595576980</time>
+    <user>dimstar_suse</user>
+    <comment>- Add telepathy-gabble-SNI.patch: Add SNI support(bsc#1136781). (forwarded request 821037 from JonathanKang)</comment>
+    <requestid>821838</requestid>
+  </revision>
 </revisionlist>

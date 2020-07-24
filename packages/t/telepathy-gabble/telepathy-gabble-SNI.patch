@@ -1,0 +1,71 @@
+Index: telepathy-gabble-0.18.3/lib/ext/wocky/wocky/wocky-tls-connector.c
+===================================================================
+--- telepathy-gabble-0.18.3.orig/lib/ext/wocky/wocky/wocky-tls-connector.c
++++ telepathy-gabble-0.18.3/lib/ext/wocky/wocky/wocky-tls-connector.c
+@@ -22,6 +22,8 @@
+ #include <config.h>
+ 
+ #include <glib-object.h>
++#include <gnutls/gnutls.h>
++#include <string.h>
+ 
+ #include "wocky-tls-connector.h"
+ 
+@@ -189,6 +191,7 @@ add_crl (gpointer data,
+ static void
+ prepare_session (WockyTLSConnector *self)
+ {
++    gnutls_session_t gnutls_session;
+   GSList *cas;
+   GSList *crl;
+ 
+@@ -197,6 +200,10 @@ prepare_session (WockyTLSConnector *self
+ 
+   g_slist_foreach (cas, add_ca, self->priv->session);
+   g_slist_foreach (crl, add_crl, self->priv->session);
++
++  gnutls_session = wocky_tls_session_get_gnutls_session (self->priv->session);
++  gnutls_server_name_set (gnutls_session, GNUTLS_NAME_DNS,
++          self->priv->peername, strlen (self->priv->peername));
+ }
+ 
+ static void
+Index: telepathy-gabble-0.18.3/lib/ext/wocky/wocky/wocky-tls.c
+===================================================================
+--- telepathy-gabble-0.18.3.orig/lib/ext/wocky/wocky/wocky-tls.c
++++ telepathy-gabble-0.18.3/lib/ext/wocky/wocky/wocky-tls.c
+@@ -487,6 +487,12 @@ wocky_tls_job_start (WockyTLSJob
+   job->active = TRUE;
+ }
+ 
++gnutls_session_t
++wocky_tls_session_get_gnutls_session (WockyTLSSession *session)
++{
++    return session->session;
++}
++
+ WockyTLSConnection *
+ wocky_tls_session_handshake (WockyTLSSession   *session,
+                              GCancellable  *cancellable,
+Index: telepathy-gabble-0.18.3/lib/ext/wocky/wocky/wocky-tls.h
+===================================================================
+--- telepathy-gabble-0.18.3.orig/lib/ext/wocky/wocky/wocky-tls.h
++++ telepathy-gabble-0.18.3/lib/ext/wocky/wocky/wocky-tls.h
+@@ -30,6 +30,7 @@
+ #define _wocky_tls_h_
+ 
+ #include <gio/gio.h>
++#include <gnutls/gnutls.h>
+ 
+ #include "wocky-enumtypes.h"
+ 
+@@ -93,6 +94,9 @@ int wocky_tls_session_verify_peer (Wocky
+ GPtrArray *wocky_tls_session_get_peers_certificate (WockyTLSSession *session,
+     WockyTLSCertType *type);
+ 
++gnutls_session_t
++wocky_tls_session_get_gnutls_session (WockyTLSSession *session);
++
+ WockyTLSConnection *wocky_tls_session_handshake (WockyTLSSession   *session,
+                                                  GCancellable  *cancellable,
+                                                  GError       **error);

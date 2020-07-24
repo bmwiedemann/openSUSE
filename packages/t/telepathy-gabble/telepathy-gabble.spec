@@ -25,6 +25,8 @@ URL:            https://telepathy.freedesktop.org/wiki/
 Source:         http://telepathy.freedesktop.org/releases/telepathy-gabble/%{name}-%{version}.tar.gz
 Patch0:         telepathy-gabble-0.18.4-python3.patch
 Patch1:         0001-xmpp-console-Explicitly-state-python-in-the-shebang.patch
+# PATCH-FIX-OPENSUSE telepathy-gabble-SNI.patch bsc#1136781 sckang@suse.com -- Add SNI support
+Patch2:         telepathy-gabble-SNI.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 15 05:51:44 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add telepathy-gabble-SNI.patch: Add SNI support(bsc#1136781).
+
+-------------------------------------------------------------------
 Wed Apr  8 12:22:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to version 0.18.4:
