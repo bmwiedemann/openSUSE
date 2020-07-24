@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 17 21:43:14 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 0.17.2
+  * Added an option to pass environment variables to ``Environment``
+  * ``Project(...).path`` exists now
+  * Support for Python 3.9
+  * A few bugfixes
+- rpmlint zero length django-stubs
+
+-------------------------------------------------------------------
 Sat Jun 20 12:15:53 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 0.17.1

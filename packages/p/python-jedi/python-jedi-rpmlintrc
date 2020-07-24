@@ -1,1 +1,2 @@
 addFilter("zero-length.*typeshed.*pyi")
+addFilter("zero-length.*django-stubs.*pyi")

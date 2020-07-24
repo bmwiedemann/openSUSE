@@ -256,4 +256,17 @@
 - drop jedi-pr1543-sorttest.patch merged upstream</comment>
     <requestid>816146</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>371539cd134e813afb2cbdf0d6a6f1e0</srcmd5>
+    <version>0.17.2</version>
+    <time>1595576867</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.17.2
+  * Added an option to pass environment variables to ``Environment``
+  * ``Project(...).path`` exists now
+  * Support for Python 3.9
+  * A few bugfixes
+- rpmlint zero length django-stubs</comment>
+    <requestid>821570</requestid>
+  </revision>
 </revisionlist>
