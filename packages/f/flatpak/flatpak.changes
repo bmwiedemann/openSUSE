@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jul 10 08:55:59 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.8.1:
+  * Avoid calling authenticator in update if ref didn't change
+  * Don't fail transaction if ref is already installed (after
+    transaction start)
+  * Fix flatpak run handling of userns in the --device=all case
+  * Fix handling of extensions from different remotes
+  * Fix flatpak run --no-session-bus
+  * Updated translations
+
+- Update to version 1.8.0:
+  * FlatpakTransaction has a new signal "install-authenticator"
+    which clients can handle to install authenticators needed for
+    the transaction. This is done in the CLI commands.
+  * We now always expose the host timezone data, allowing us the
+    expose the host /etc/localtime in a way that works better,
+    fixing several apps that had timezone issues.
+  * Fix flatpak enter which didn't work in some cases.
+  * We now ship a systemd unit (not installed by default) to
+    automatically detect plugged in usb sticks with sideload repos.
+  * By default we no longer install the gdm env.d file, as the
+    systemd generators work better.
+  * create-usb now exports partial commits by default
+  * Fix handling of docker media types in oci remotes
+  * Fix subjects in remote-info --log output
+
+- Remove source file used to generate a flatpak user on the system
+  since it's now included by upstream:
+  * system-user-flatpak.conf
+
+-------------------------------------------------------------------
 Tue Jul  7 10:26:44 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec
@@ -197,6 +229,7 @@ Wed Jul  3 08:27:20 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
   * Support extra_data in extensions.
   * Handle double slashes ("//") in XDG_DATA_DIRS.
   * Fix detection of local related refs.
+- jsc#SLE-7171
 
 -------------------------------------------------------------------
 Thu Jun 14 09:33:16 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
