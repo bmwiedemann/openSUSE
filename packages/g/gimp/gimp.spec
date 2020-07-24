@@ -296,7 +296,7 @@ install -m 644 -c macros.gimp \
 %{_bindir}/gimp-console-2.*
 # should this maybe be in _libexecdir too?
 %{_bindir}/gimp-test-clipboard-2.0
-%{_libexecdir}/gimp-debug-tool-2.0
+%{_prefix}/lib/gimp-debug-tool-2.0
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/gimp-data-extras.metainfo.xml
 %{_datadir}/metainfo/org.gimp.GIMP.appdata.xml
