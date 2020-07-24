@@ -17,7 +17,7 @@
 
 
 Name:           alttab
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Task Switcher
 License:        GPL-3.0-only
