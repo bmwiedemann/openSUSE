@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mocket
-Version:        3.8.4
+Version:        3.8.6
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/mindflayer/python-mocket
-Source:         https://github.com/mindflayer/python-mocket/archive/%{version}.tar.gz#/mocket-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/m/mocket/mocket-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -44,6 +44,7 @@ BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pook}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-magic}
@@ -64,10 +65,10 @@ Socket Mock Framework - for all kinds of socket animals, web-clients
 included, with gevent/asyncio/SSL support.
 
 %prep
-%setup -q -n python-mocket-%{version}
+%setup -q -n mocket-%{version}
 rm -f setup.cfg pytest.ini tox.ini
+sed -i '/pipenv/d' setup.py
 touch conftest.py
-rm tests/tests27/test_pook.py
 
 %build
 export LANG=en_US.UTF-8
@@ -84,9 +85,9 @@ export PYTHONPATH=${PWD}
 export SKIP_TRUE_HTTP=1
 %{python_expand  #
 if [ $python = python2 ]; then
-  $python -m pytest tests/main mocket tests/tests27/ -vv -k 'not RedisTestCase'
+  $python -m pytest tests/main mocket -vv -k 'not RedisTestCase'
 else
-  $python -m pytest tests/main mocket tests/tests27/ tests/tests35/ -vv -k 'not RedisTestCase'
+  $python -m pytest tests/main mocket tests/tests35/ -vv -k 'not RedisTestCase'
 fi
 }
 
