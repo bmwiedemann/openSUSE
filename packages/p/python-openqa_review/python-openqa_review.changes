@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 24 10:51:24 UTC 2020 - okurz@suse.com
+
+- Update to version 1.20.1:
+  * Read text data from details JSON if present
+
+-------------------------------------------------------------------
 Wed May 27 06:35:20 UTC 2020 - okurz@suse.com
 
 - Update to version 1.20.0:
