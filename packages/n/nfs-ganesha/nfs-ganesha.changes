@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul 17 16:20:27 UTC 2020 - Supriti Singh <supriti.singh@suse.com>
+
+- dropped fix-compilation-errors-on-xfs-ioctl-syscall-structs.patch which is a part of upstream 3.3
+- Update to version 3.3+git0.39e0cf712:
+  * V3.3
+  * FSAL_CEPH: Fix size of handle
+  * FSAL_CEPH: Always use the large handle size
+  * FSAL_CEPH: clarify the User_Id setting in the sample config
+  * FSAL_CEPH: set ino_release_cb on mount
+  * RADOS_URLS: restore rados_urls watch on new configuration
+  * RADOS_URLS: when built with rados_urls, don't error if lib not installed
+  * Fix accessing object handle after feering its last state
+  * Fix get_state_obj_export_owner_refs() fail case
+  * Fix responding with NFS version mismatch
+  * core: multiple definitions of 'common' data compiling with gcc-10
+  * Fixes in stats module
+  * Throttle the health warning
+  * Fix seg fault when NFSv4 compound op fails for regular files
+ 
+-------------------------------------------------------------------
 Tue Mar 31 12:07:46 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add -fcommon in order to fix boo#1164548.
