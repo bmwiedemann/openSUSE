@@ -21,7 +21,7 @@
 %define enable_split_authentication 0
 
 Name:           gdm
-Version:        3.36.2
+Version:        3.36.3
 Release:        0
 Summary:        The GNOME Display Manager
 License:        GPL-2.0-or-later
@@ -55,7 +55,7 @@ Patch3:         gdm-default-wm.patch
 Patch4:         gdm-xauthlocalhostname.patch
 # PATCH-FIX-OPENSUSE gdm-switch-to-tty1.patch bsc#1113700 xwang@suse.com -- switch to tty1 when stopping gdm service
 Patch6:         gdm-switch-to-tty1.patch
-# PATCH-FIX-OPENSUSE gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch bnc#1075805 bgo#793255 msrb@suse.com -- Add runtime option to start X under root instead of regular user. Necessary if no DRI drivers are present. rejected upstream
+# PATCH-NEEDS-REBASE gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch bnc#1075805 bgo#793255 msrb@suse.com -- Add runtime option to start X under root instead of regular user. Necessary if no DRI drivers are present. rejected upstream WAS: PATCH-FIX-OPENSUSE
 Patch8:         gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch
 # PATCH-FIX-OPENSUSE gdm-initial-setup-hardening.patch boo#1140851, glgo#GNOME/gnome-initial-setup#76 fezhang@suse.com -- Prevent gnome-initial-setup running if any regular user has perviously logged into the system
 Patch9:         gdm-initial-setup-hardening.patch
@@ -216,7 +216,7 @@ cp %{SOURCE8} .
 %patch3 -p1
 %patch4 -p1
 %patch6 -p1
-%patch8 -p1
+#patch8 -p1
 %patch9 -p1
 %ifarch s390 s390x
 %patch13 -p1
