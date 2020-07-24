@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 18 09:22:33 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- nasm 2.15.3:
+  * Add instructions from the Intel Instruction Set Extensions and
+    Future Features Programming Reference, June 2020. This includes
+    AVX5512 bfloat16, AVX512 mask intersect, and Intel Advanced
+    Matrix Extensions (AMX).
+  * Support for bfloat16 floating-point constants
+  * various bug fixes
+
+-------------------------------------------------------------------
 Sat Jul  4 16:22:43 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.15.2:
