@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 23 15:53:00 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add build support for gcc8/9/10 to HPC build (bsc#1174439).
+
+-------------------------------------------------------------------
 Wed Jun  3 08:13:07 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update so mvapich2 2.3.4

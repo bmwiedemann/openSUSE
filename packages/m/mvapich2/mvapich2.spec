@@ -113,6 +113,90 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
+%if "%flavor" == "gnu8-hpc"
+%define compiler_family gnu
+%define c_f_ver 8
+%define build_flavor verbs
+%{bcond_without hpc}
+%endif
+%if "%flavor" == "gnu8-hpc-testsuite"
+%define compiler_family gnu
+%define c_f_ver 8
+%define testsuite 1
+%define build_flavor verbs
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu8-hpc-psm"
+%define compiler_family gnu
+%define c_f_ver 8
+%define build_flavor psm
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu8-hpc-psm2"
+%define compiler_family gnu
+%define c_f_ver 8
+%define build_flavor psm2
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu9-hpc"
+%define compiler_family gnu
+%define c_f_ver 9
+%define build_flavor verbs
+%{bcond_without hpc}
+%endif
+%if "%flavor" == "gnu9-hpc-testsuite"
+%define compiler_family gnu
+%define c_f_ver 9
+%define testsuite 1
+%define build_flavor verbs
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu9-hpc-psm"
+%define compiler_family gnu
+%define c_f_ver 9
+%define build_flavor psm
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu9-hpc-psm2"
+%define compiler_family gnu
+%define c_f_ver 9
+%define build_flavor psm2
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu10-hpc"
+%define compiler_family gnu
+%define c_f_ver 10
+%define build_flavor verbs
+%{bcond_without hpc}
+%endif
+%if "%flavor" == "gnu10-hpc-testsuite"
+%define compiler_family gnu
+%define c_f_ver 10
+%define testsuite 1
+%define build_flavor verbs
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu10-hpc-psm"
+%define compiler_family gnu
+%define c_f_ver 10
+%define build_flavor psm
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu10-hpc-psm2"
+%define compiler_family gnu
+%define c_f_ver 10
+%define build_flavor psm2
+%{bcond_without hpc}
+%endif
+
 %if "%{build_flavor}" != "verbs"
 %define pack_suff %{?build_flavor:-%{build_flavor}}
 %endif

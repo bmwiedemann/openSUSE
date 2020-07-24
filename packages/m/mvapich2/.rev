@@ -193,4 +193,12 @@
   This allows legacy builds to work without adding a -lmpi flag</comment>
     <requestid>813107</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>44ef0595ec4cd2d6b7ce9448e17d7b52</srcmd5>
+    <version>2.3.4</version>
+    <time>1595585445</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822495</requestid>
+  </revision>
 </revisionlist>
