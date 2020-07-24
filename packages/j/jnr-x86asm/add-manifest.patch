@@ -1,0 +1,23 @@
+diff -up ./pom.xml.fix ./pom.xml
+--- ./pom.xml.fix	2015-06-22 15:44:35.991442997 -0400
++++ ./pom.xml	2015-06-22 15:45:44.215610804 -0400
+@@ -50,4 +50,19 @@
+     <maven.compiler.source>1.5</maven.compiler.source>
+     <maven.compiler.target>1.5</maven.compiler.target>
+   </properties>
++
++  <build>
++    <plugins>
++      <plugin>
++        <groupId>org.apache.maven.plugins</groupId>
++        <artifactId>maven-jar-plugin</artifactId>
++        <configuration>
++          <archive>
++            <manifestFile>MANIFEST.MF</manifestFile>
++          </archive>
++        </configuration>
++      </plugin>
++    </plugins>
++  </build>
++
+ </project>
