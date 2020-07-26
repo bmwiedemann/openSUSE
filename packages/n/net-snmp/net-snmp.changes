@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 29 17:20:01 UTC 2020 - Alexander van Kaam <alexvkaam@gmail.com>
+
+- Change /etc/logrotate.d/net-snmp from init.d to systemd
+  fix boo#1173487.
+
+-------------------------------------------------------------------
 Tue Mar 31 11:56:24 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add -fcommon in order to fix boo#1160404.

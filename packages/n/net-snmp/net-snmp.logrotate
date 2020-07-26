@@ -10,10 +10,8 @@
    su root root
    sharedscripts
    postrotate
-       /etc/init.d/snmpd reload ||:
-       if [ -x /etc/init.d/snmptrapd ] ; then \
-          /etc/init.d/snmptrapd reload ||: ; \
-       fi
+       /usr/bin/systemctl try-restart snmpd.service >/dev/null
+       /usr/bin/systemctl try-restart snmptrapd.service >/dev/null 	
    endscript
 
 }
