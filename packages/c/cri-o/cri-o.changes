@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 20 12:44:28 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to version 1.18.3:
+  - Fix a bug where a sudden reboot causes incomplete image writes.
+    This could cause image storage to be corrupted, resulting in an
+    error layer not known.
+  - Fixed bug where pod names would sometimes leak on creation,
+    causing the kubelet to fail to recreate
+  - If conmon is v2.0.19 or greater, ExecSync requests will not
+    double fork, causing systemd to have fewer conmons re-parented
+    to it
+
+-------------------------------------------------------------------
 Thu Jun 18 20:50:15 UTC 2020 - dmueller@suse.com
 
 - Update to version 1.18.2:
