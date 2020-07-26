@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jul 21 14:06:51 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to version bind-9.16.5
+  * The "primary" and "secondary" keywords, when used
+    as parameters for "check-names", were not
+    processed correctly and were being ignored.
+  * 'rndc dnstap -roll <value>' did not limit the number of
+    saved files to <value>.
+  * Add 'rndc dnssec -status' command.
+  * Addressed a couple of situations where named could crash
+  For the full list, see the CHANGES file in the source RPM.
+
+-------------------------------------------------------------------
+Tue Jun 30 08:32:21 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Changed /var/lib/named to owner root:named and perms rwxrwxr-t
+  so that named, being a/the only member of the "named" group
+  has full r/w access yet cannot change directories owned by root
+  in the case of a compromized named.
+  [bsc#1173307, bind-chrootenv.conf]
+
+-------------------------------------------------------------------
 Thu Jun 18 06:35:35 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - Upgrade to version bind-9.16.4

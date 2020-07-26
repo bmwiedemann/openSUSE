@@ -20,17 +20,17 @@
 # Note that the sonums are LIBINTERFACE - LIBAGE
 %define bind9_sonum 1600
 %define libbind9 libbind9-%{bind9_sonum}
-%define dns_sonum 1603
+%define dns_sonum 1605
 %define libdns libdns%{dns_sonum}
 %define irs_sonum 1601
 %define libirs libirs%{irs_sonum}
-%define isc_sonum 1603
+%define isc_sonum 1605
 %define libisc libisc%{isc_sonum}
 %define isccc_sonum 1600
 %define libisccc libisccc%{isccc_sonum}
 %define isccfg_sonum 1600
 %define libisccfg libisccfg%{isccfg_sonum}
-%define libns_sonum 1603
+%define libns_sonum 1604
 
 %define	VENDOR SUSE
 %if 0%{?suse_version} >= 1500
@@ -60,7 +60,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.16.4
+Version:        9.16.5
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
@@ -561,7 +561,7 @@ fi
 %if %{with_systemd}
 %{_prefix}/lib/tmpfiles.d/bind-chrootenv.conf
 %endif
-%attr(-,named,named) %dir %{_var}/lib/named
+%attr(1775,root,named) %dir %{_var}/lib/named
 %dir %{_var}/lib/named%{_sysconfdir}
 %dir %{_var}/lib/named%{_sysconfdir}/named.d
 %dir %{_var}/lib/named/dev
@@ -641,7 +641,7 @@ fi
 %{_mandir}/man1/mdig.1%{ext_man}
 %{_mandir}/man1/nslookup.1%{ext_man}
 %{_mandir}/man1/nsupdate.1%{ext_man}
-%{_mandir}/man1/dnstap-read.1%{ext_man}
+# %%{_mandir}/man1/dnstap-read.1%%{ext_man}
 %{_mandir}/man5/rndc.conf.5%{ext_man}
 %{_mandir}/man8/ddns-confgen.8%{ext_man}
 %{_mandir}/man8/dnssec-dsfromkey.8%{ext_man}
@@ -656,13 +656,15 @@ fi
 %{_mandir}/man8/dnssec-coverage.8%{ext_man}
 %{_mandir}/man8/dnssec-keymgr.8%{ext_man}
 %{_mandir}/man8/dnssec-cds.8%{ext_man}
-%{_mandir}/man8/named-nzd2nzf.8%{ext_man}
+# %%{_mandir}/man8/named-nzd2nzf.8%%{ext_man}
 # %%{_mandir}/man8/genrandom.8%%{ext_man}
 # %%{_mandir}/man8/isc-hmac-fixup.8%%{ext_man}
 %{_mandir}/man8/named-journalprint.8%{ext_man}
 %{_mandir}/man8/nsec3hash.8%{ext_man}
 %{_mandir}/man8/rndc.8%{ext_man}
 %{_mandir}/man8/rndc-confgen.8%{ext_man}
+%{_mandir}/man8/named-compilezone.8%{ext_man}
+%{_mandir}/man8/tsig-keygen.8%{ext_man}
 
 %files -n python3-bind
 %{python3_sitelib}/isc
