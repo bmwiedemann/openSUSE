@@ -68,4 +68,12 @@
   * There were some bugfixes to Python 3.4-3.8. See the ChangeLog for details</comment>
     <requestid>812616</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3c0fc168a44491486c628cdb1a281b99</srcmd5>
+    <version>3.7.2</version>
+    <time>1595773110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822409</requestid>
+  </revision>
 </revisionlist>

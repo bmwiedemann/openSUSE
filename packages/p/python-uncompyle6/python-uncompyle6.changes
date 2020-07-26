@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 23 11:45:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 3.7.2
+  * Use newer xdis
+  * Docstrings (again) which were broken again on earlier Python
+  * Fix 2.6 and 2.7 decompilation bug in handling "list if" comprehensions
+  * Handle 3.7+ "else" branch removal adAs seen in `_cmp()` of `python3.8/distutils/version.py` with optimization `-O2`
+  * 3.6+ "with" and "with .. as" grammar improvements
+  * ast-check for "for" loop was missing some grammar rules
+
+-------------------------------------------------------------------
 Mon Jun  8 13:23:58 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.7.0
