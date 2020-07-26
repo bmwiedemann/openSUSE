@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 23 15:40:26 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with default 7G min disk space.
+
+-------------------------------------------------------------------
 Mon Mar 12 08:30:05 UTC 2018 - adrian@suse.de
 
 - minor update to 0.18.3
