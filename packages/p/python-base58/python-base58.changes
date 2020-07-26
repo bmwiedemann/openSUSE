@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 23 02:06:04 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Switched back to PyPI source now it has needed files
+- Update to v2.0.1
+  * Include license file in source distribution
+  * Typecheck tests now that hamcrest has typing
+  * Replace custom exception assert with hamcrest utils
+
+-------------------------------------------------------------------
 Wed May 27 09:36:25 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

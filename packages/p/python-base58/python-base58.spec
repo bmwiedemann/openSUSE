@@ -19,13 +19,13 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-base58
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Base58 and Base58Check implementation
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/keis/base58
-Source:         https://github.com/keis/base58/archive/v%{version}.tar.gz#/base58-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/b/base58/base58-%{version}.tar.gz
 BuildRequires:  %{python_module PyHamcrest}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
