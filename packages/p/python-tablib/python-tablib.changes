@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 24 14:13:26 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.0.0
+  * The `Row.lpush/rpush` logic was reversed. `lpush` was appending while `rpush`
+    and `append` were prepending. This was fixed (reversed behavior). If you
+    counted on the broken behavior, please update your code (#453).
+  * Fixed minimal openpyxl dependency version to 2.6.0 (#457).
+  * Dates from xls files are now read as Python datetime objects (#373).
+  * Allow import of "ragged" xlsx files (#465).
+  * When importing an xlsx file, Tablib will now read cell values instead of formulas (#462).
+
+-------------------------------------------------------------------
 Mon Apr 20 09:06:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove py2 dependencies as the package is py3 only

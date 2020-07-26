@@ -23,7 +23,7 @@
 %endif
 %define         skip_python2 1
 Name:           python-tablib
-Version:        1.1.0
+Version:        2.0.0
 Release:        0
 Summary:        Format agnostic tabular data library (XLS, JSON, YAML, CSV)
 License:        MIT
@@ -31,28 +31,27 @@ Group:          Development/Languages/Python
 URL:            http://python-tablib.org
 Source:         https://files.pythonhosted.org/packages/source/t/tablib/tablib-%{version}.tar.gz
 BuildRequires:  %{python_module MarkupPy}
-BuildRequires:  %{python_module PyYAML >= 3.12}
-BuildRequires:  %{python_module odfpy >= 1.3.5}
-BuildRequires:  %{python_module openpyxl >= 2.4.8}
-BuildRequires:  %{python_module pandas >= 0.20.3}
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module odfpy}
+BuildRequires:  %{python_module openpyxl >= 2.6.0}
+BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tabulate}
-BuildRequires:  %{python_module xlrd >= 1.1.0}
-BuildRequires:  %{python_module xlwt >= 1.3.0}
-BuildRequires:  %{python_module xml}
+BuildRequires:  %{python_module xlrd}
+BuildRequires:  %{python_module xlwt}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-MarkupPy
-Requires:       python-PyYAML >= 3.12
-Requires:       python-odfpy >= 1.3.5
-Requires:       python-openpyxl >= 2.4.8
-Requires:       python-xlrd >= 1.1.0
-Requires:       python-xlwt >= 1.3.0
-Requires:       python-xml
-Suggests:       python-pandas >= 0.20.3
+Requires:       python-PyYAML
+Requires:       python-odfpy
+Requires:       python-openpyxl >= 2.6.0
+Requires:       python-tabulate
+Requires:       python-xlrd
+Requires:       python-xlwt
+Suggests:       python-pandas
 BuildArch:      noarch
 %python_subpackages
 
