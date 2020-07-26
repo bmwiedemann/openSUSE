@@ -111,8 +111,8 @@ Recommends:     %{use_python}-keyrings.alt                      \
 
 %define pkg_name obs-service-tar_scm
 Name:           %{pkg_name}%{nsuffix}
-%define version_unconverted 0.10.16.1590752286.5c27247
-Version:        0.10.16.1590752286.5c27247
+%define version_unconverted 0.10.16.1595245235.15a0df2
+Version:        0.10.16.1595245235.15a0df2
 Release:        0
 Summary:        An OBS source service: create tar ball from svn/git/hg
 License:        GPL-2.0-or-later
@@ -131,6 +131,7 @@ BuildRequires:  %{use_python}-keyring
 BuildRequires:  %{use_python}-keyrings.alt
 BuildRequires:  %{use_python}-mock
 BuildRequires:  %{use_python}-six
+BuildRequires:  %{use_python}-unittest2
 BuildRequires:  bzr
 BuildRequires:  git-core
 BuildRequires:  mercurial

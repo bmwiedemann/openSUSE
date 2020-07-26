@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 20 12:05:22 UTC 2020 - FSchreiner@suse.com
+
+- Update to version 0.10.16.1595245235.15a0df2:
+  * Build with python 3 for Debian and Ubuntu
+  * [doc] added allowed urls in documentation of tar_scm.service
+
+-------------------------------------------------------------------
 Wed Jun  3 12:38:35 UTC 2020 - pgajdos@suse.com
 
 - remove unused unittest2 dependency
