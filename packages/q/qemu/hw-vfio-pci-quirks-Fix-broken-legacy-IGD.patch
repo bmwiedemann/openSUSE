@@ -1,0 +1,36 @@
+From: Thomas Huth <thuth@redhat.com>
+Date: Thu, 11 Jun 2020 11:36:40 -0600
+Subject: hw/vfio/pci-quirks: Fix broken legacy IGD passthrough
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 643a4eacef87a318cf71800a4fb2ae1f78c4b245
+
+The #ifdef CONFIG_VFIO_IGD in pci-quirks.c is not working since the
+required header config-devices.h is not included, so that the legacy
+IGD passthrough is currently broken. Let's include the right header
+to fix this issue.
+
+Buglink: https://bugs.launchpad.net/qemu/+bug/1882784
+Fixes: 29d62771c81d ("hw/vfio: Move the IGD quirk code to a separate file")
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Signed-off-by: Alex Williamson <alex.williamson@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/vfio/pci-quirks.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hw/vfio/pci-quirks.c b/hw/vfio/pci-quirks.c
+index 2d348f8237fa6a8e7aac10a4a920..656098b827c69f04ac1d6e2ff227 100644
+--- a/hw/vfio/pci-quirks.c
++++ b/hw/vfio/pci-quirks.c
+@@ -11,6 +11,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "config-devices.h"
+ #include "exec/memop.h"
+ #include "qemu/units.h"
+ #include "qemu/error-report.h"

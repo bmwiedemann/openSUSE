@@ -2,6 +2,7 @@ From: Janosch Frank <frankja@linux.ibm.com>
 Date: Wed, 5 Feb 2020 07:02:33 -0500
 Subject: s390x: protvirt: Move IO control structures over SIDA
 
+Git-commit: 4989e18cbe5621df39020ef812316f479d8f5246
 References: bsc#1167075
 
 For protected guests, we need to put the IO emulation results into the
@@ -10,7 +11,6 @@ SIDA, so SIE will write them into the guest at the next entry.
 Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
 Reviewed-by: David Hildenbrand <david@redhat.com>
 Reviewed-by: Cornelia Huck <cohuck@redhat.com>
-(cherry picked from commit 4989e18cbe5621df39020ef812316f479d8f5246)
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
  target/s390x/ioinst.c | 61 +++++++++++++++++++++++++++++++------------

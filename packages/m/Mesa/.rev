@@ -4204,4 +4204,14 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>821518</requestid>
   </revision>
+  <revision rev="388" vrev="260">
+    <srcmd5>7b20acd6c0c67adc6ada91b9d8d08c20</srcmd5>
+    <version>unknown</version>
+    <time>1595772954</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.1.4
+  * fourth bugfix release for the 20.1 branch
+  * just a few fixes here and there, nothing major</comment>
+    <requestid>822405</requestid>
+  </revision>
 </revisionlist>

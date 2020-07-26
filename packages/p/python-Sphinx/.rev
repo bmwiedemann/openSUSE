@@ -643,4 +643,41 @@
 - update to 3.0.1</comment>
     <requestid>811095</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>82e6c6f128fda1fe331c009589ce6760</srcmd5>
+    <version>3.1.2</version>
+    <time>1595772849</time>
+    <user>dimstar_suse</user>
+    <comment>- In the new multiversion world, python*.inv is in python3.8
+  directory not python3.
+
+- update to version 3.1.2:
+  * Incompatible changes
+    + #7650: autodoc: the signature of base function will be shown for
+       decorated functions, not a signature of decorator
+  * Bugs fixed
+    + #7844: autodoc: Failed to detect module when relative module
+       name given
+    + #7856: autodoc: AttributeError is raised when non-class object
+       is given to the autoclass directive
+    + #7850: autodoc: KeyError is raised for invalid mark up when
+       autodoc_typehints is 'description'
+    + #7812: autodoc: crashed if the target name matches to both an
+       attribute and module that are same name
+    + #7650: autodoc: function signature becomes &quot;(*args, **kwargs)&quot;
+       if the function is decorated by generic decorator
+    + #7812: autosummary: generates broken stub files if the target
+       code contains an attribute and module that are same name
+    + #7806: viewcode: Failed to resolve viewcode references on 3rd
+       party builders
+    + #7838: html theme: List items have extra vertical space
+    + #7878: html theme: Undesired interaction between &quot;overflow&quot; and
+       &quot;float&quot;
+- changes from version 3.1.1:
+  * Incompatible changes
+    + #7808: napoleon: a type for attribute are represented as typed
+       field
+  * Features added</comment>
+    <requestid>821465</requestid>
+  </revision>
 </revisionlist>

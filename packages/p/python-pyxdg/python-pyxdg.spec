@@ -55,8 +55,7 @@ PyXDG is a python library to access freedesktop.org standards. Currently support
 
 %prep
 %setup -q -n pyxdg-%{version}
-%patch0 -p1
-%patch1 -p1
+%autopatch -p1
 
 %build
 %python_build
@@ -69,8 +68,9 @@ PyXDG is a python library to access freedesktop.org standards. Currently support
 # https://gitlab.freedesktop.org/xdg/pyxdg/issues/15
 # test_get_type{,2} both fail but come from s-m-i package for data
 # https://gitlab.freedesktop.org/xdg/pyxdg/merge_requests/4
+# RulesTest.test_rule_from_node failure is https://gitlab.freedesktop.org/xdg/pyxdg/-/issues/20
 %{python_expand sed -i "s/Exec=python.*$/Exec=$python/" test/resources.py
-PYTHONPATH=%{buildroot}%{$python_sitelib} pytest-%{$python_bin_suffix} test/test-*.py -v -k 'not test_get_type'
+PYTHONPATH=%{buildroot}%{$python_sitelib} pytest-%{$python_bin_suffix} test/test-*.py -v -k 'not (test_get_type or test_rule_from_node)'
 }
 
 %files %{python_files}

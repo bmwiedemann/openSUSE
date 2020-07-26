@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Jul 21 15:58:10 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Updating to Sphinx v3.1.2 in Factory is exposing an issue in
+  qemu doc sources. Fix it
+  docs-fix-trace-docs-build-with-sphinx-3..patch
+
+-------------------------------------------------------------------
+Wed Jul  8 23:00:21 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Fix DoS possibility in ati-vga emulation (CVE-2020-13800
+  bsc#1172495)
+  ati-vga-check-mm_index-before-recursive-.patch
+- Fix DoS possibility in Network Block Device (nbd) support
+  infrastructure (CVE-2020-10761 bsc#1172710)
+  nbd-server-Avoid-long-error-message-asse.patch
+- Fix null pointer dereference possibility (DoS) in MegaRAID SAS
+  8708EM2 emulation (CVE-2020-13659 bsc#1172386)
+  exec-set-map-length-to-zero-when-returni.patch
+- Fix OOB access possibility in MegaRAID SAS 8708EM2 emulation
+  (CVE-2020-13362 bsc#1172383)
+  megasas-use-unsigned-type-for-reply_queu.patch
+- Fix legacy IGD passthrough
+  hw-vfio-pci-quirks-Fix-broken-legacy-IGD.patch
+
+-------------------------------------------------------------------
+Wed Jul  1 00:10:43 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- The latest gcc10 available in Factory has the fix for the
+  issue this patch was created to avoid, so drop it
+  build-Work-around-gcc10-bug-by-not-using.patch
+
+-------------------------------------------------------------------
+Sun Jun 28 16:25:32 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Switch to upstream versions of some patches we carry
+  add-enum-cast-to-avoid-gcc10-warning.patch
+  -> golan-Add-explicit-type-casts-for-nodnic.patch
+  Be-explicit-about-fcommon-compiler-direc.patch
+  -> build-Be-explicit-about-fcommon-compiler.patch
+  Do-not-apply-WORKAROUND_CFLAGS-for-host-.patch
+  -> build-Do-not-apply-WORKAROUND_CFLAGS-for.patch
+  Fix-s-directive-argument-is-null-error.patch
+  -> build-Fix-s-directive-argument-is-null-e.patch
+  Workaround-compilation-error-with-gcc-9..patch
+  -> build-Workaround-compilation-error-with-.patch
+  work-around-gcc10-problem-with-zero-leng.patch
+  -> intel-Avoid-spurious-compiler-warning-on.patch
+- Fix vgabios issue for cirrus graphics emulation, which
+  effectively downgraded it to standard VGA behavior
+  vga-fix-cirrus-bios.patch
+
+-------------------------------------------------------------------
+Fri Jun 12 16:14:07 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Fix OOB access possibility in ES1370 audio device emulation
+  (CVE-2020-13361 bsc#1172384)
+  es1370-check-total-frame-count-against-c.patch
+
+-------------------------------------------------------------------
 Tue Jun  2 17:22:57 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Work around gcc 10 bug (boo#1172411)

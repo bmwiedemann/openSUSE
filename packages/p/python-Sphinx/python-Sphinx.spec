@@ -28,7 +28,7 @@
 %endif
 %define skip_python2 1
 Name:           python-Sphinx%{psuffix}
-Version:        3.0.4
+Version:        3.1.2
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause
@@ -71,7 +71,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Sphinx = %{version}}
 BuildRequires:  %{python_module Sphinx-latex = %{version}}
-BuildRequires:  %{python_module doc}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pytest}
@@ -229,18 +228,8 @@ mkdir build.doc
 
 # get its intersphinx_inventroy from python3-doc
 # instead of via network from https://docs.python.org/3/objects.inv
-# https://github.com/sphinx-doc/sphinx/pull/7616
-%if %{python3_version_nodots} <= 36
-# python3-doc 3.6.5-lp151.5.4 from Leap 15.1
-# doesn't have one necessary entry in python3.inv
-# so use a copy from version 3.8.2-3.1 from Tumbleweed
 cp %{SOURCE2} doc/python3.inv
-%else
-%python_expand cp %{_defaultdocdir}/%{$python_prefix}/html/objects.inv doc/%{$python_prefix}.inv
-%endif
 %python_expand sed -i -e "s/\(intersphinx_mapping = ..python.: (.https:..docs.python.org.3.., \)None\()}\)/\1'%{$python_prefix}.inv'\2/g" doc/conf.py
-# fix file not found error
-sed -i -e 's/.. include:: ...CODE_OF_CONDUCT//g' doc/code_of_conduct.rst
 %python_exec setup.py build_sphinx && rm build/sphinx/html/.buildinfo
 %python_exec setup.py build_sphinx -b man
 

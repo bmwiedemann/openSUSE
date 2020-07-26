@@ -127,82 +127,89 @@ Source303:      README.PACKAGING
 # This patch queue is auto-generated - see README.PACKAGING for process
 
 # Patches applied in base project:
-Patch00000:     virtiofsd-add-rlimit-nofile-NUM-option.patch
-Patch00001:     virtiofsd-stay-below-fs.file-max-sysctl-.patch
-Patch00002:     audio-fix-wavcapture-segfault.patch
-Patch00003:     XXX-dont-dump-core-on-sigabort.patch
-Patch00004:     qemu-binfmt-conf-Modify-default-path.patch
-Patch00005:     qemu-cvs-gettimeofday.patch
-Patch00006:     qemu-cvs-ioctl_debug.patch
-Patch00007:     qemu-cvs-ioctl_nodirection.patch
-Patch00008:     linux-user-add-binfmt-wrapper-for-argv-0.patch
-Patch00009:     PPC-KVM-Disable-mmu-notifier-check.patch
-Patch00010:     linux-user-binfmt-support-host-binaries.patch
-Patch00011:     linux-user-Fake-proc-cpuinfo.patch
-Patch00012:     linux-user-use-target_ulong.patch
-Patch00013:     Make-char-muxer-more-robust-wrt-small-FI.patch
-Patch00014:     linux-user-lseek-explicitly-cast-non-set.patch
-Patch00015:     AIO-Reduce-number-of-threads-for-32bit-h.patch
-Patch00016:     xen_disk-Add-suse-specific-flush-disable.patch
-Patch00017:     qemu-bridge-helper-reduce-security-profi.patch
-Patch00018:     qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
-Patch00019:     linux-user-properly-test-for-infinite-ti.patch
-Patch00020:     roms-Makefile-pass-a-packaging-timestamp.patch
-Patch00021:     Raise-soft-address-space-limit-to-hard-l.patch
-Patch00022:     increase-x86_64-physical-bits-to-42.patch
-Patch00023:     i8254-Fix-migration-from-SLE11-SP2.patch
-Patch00024:     acpi_piix4-Fix-migration-from-SLE11-SP2.patch
-Patch00025:     Switch-order-of-libraries-for-mpath-supp.patch
-Patch00026:     Make-installed-scripts-explicitly-python.patch
-Patch00027:     hw-smbios-handle-both-file-formats-regar.patch
-Patch00028:     xen-add-block-resize-support-for-xen-dis.patch
-Patch00029:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
-Patch00030:     tests-Fix-block-tests-to-be-compatible-w.patch
-Patch00031:     xen-ignore-live-parameter-from-xen-save-.patch
-Patch00032:     Conditionalize-ui-bitmap-installation-be.patch
-Patch00033:     tests-change-error-message-in-test-162.patch
-Patch00034:     hw-usb-hcd-xhci-Fix-GCC-9-build-warning.patch
-Patch00035:     hw-usb-dev-mtp-Fix-GCC-9-build-warning.patch
-Patch00036:     hw-intc-exynos4210_gic-provide-more-room.patch
-Patch00037:     configure-only-populate-roms-if-softmmu.patch
-Patch00038:     pc-bios-s390-ccw-net-avoid-warning-about.patch
-Patch00039:     roms-change-cross-compiler-naming-to-be-.patch
-Patch00040:     tests-Disable-some-block-tests-for-now.patch
-Patch00041:     test-add-mapping-from-arch-of-i686-to-qe.patch
-Patch00042:     roms-Makefile-enable-cross-compile-for-b.patch
-Patch00043:     s390x-Move-diagnose-308-subcodes-and-rcs.patch
-Patch00044:     Sync-pv.patch
-Patch00045:     s390x-protvirt-Support-unpack-facility.patch
-Patch00046:     s390x-protvirt-Add-migration-blocker.patch
-Patch00047:     s390x-protvirt-Inhibit-balloon-when-swit.patch
-Patch00048:     s390x-protvirt-KVM-intercept-changes.patch
-Patch00049:     s390x-Add-SIDA-memory-ops.patch
-Patch00050:     s390x-protvirt-Move-STSI-data-over-SIDAD.patch
-Patch00051:     s390x-protvirt-SCLP-interpretation.patch
-Patch00052:     s390x-protvirt-Set-guest-IPL-PSW.patch
-Patch00053:     s390x-protvirt-Move-diag-308-data-over-S.patch
-Patch00054:     s390x-protvirt-Disable-address-checks-fo.patch
-Patch00055:     s390x-protvirt-Move-IO-control-structure.patch
-Patch00056:     s390x-protvirt-Handle-SIGP-store-status-.patch
-Patch00057:     s390x-Add-unpack-facility-feature-to-GA1.patch
-Patch00058:     s390x-s390-virtio-ccw-Fix-build-on-syste.patch
-Patch00059:     configure-remove-pkgversion-from-CONFIG_.patch
-Patch00060:     gcc10-maybe-uninitialized.patch
-Patch00061:     docs-add-SUSE-support-statements-to-html.patch
-Patch00062:     build-Work-around-gcc10-bug-by-not-using.patch
+Patch00000:     s390x-Move-diagnose-308-subcodes-and-rcs.patch
+Patch00001:     Sync-pv.patch
+Patch00002:     s390x-protvirt-Support-unpack-facility.patch
+Patch00003:     s390x-protvirt-Add-migration-blocker.patch
+Patch00004:     s390x-protvirt-Inhibit-balloon-when-swit.patch
+Patch00005:     s390x-protvirt-KVM-intercept-changes.patch
+Patch00006:     s390x-Add-SIDA-memory-ops.patch
+Patch00007:     s390x-protvirt-Move-STSI-data-over-SIDAD.patch
+Patch00008:     s390x-protvirt-SCLP-interpretation.patch
+Patch00009:     s390x-protvirt-Set-guest-IPL-PSW.patch
+Patch00010:     s390x-protvirt-Move-diag-308-data-over-S.patch
+Patch00011:     s390x-protvirt-Disable-address-checks-fo.patch
+Patch00012:     s390x-protvirt-Move-IO-control-structure.patch
+Patch00013:     s390x-protvirt-Handle-SIGP-store-status-.patch
+Patch00014:     s390x-Add-unpack-facility-feature-to-GA1.patch
+Patch00015:     virtiofsd-add-rlimit-nofile-NUM-option.patch
+Patch00016:     virtiofsd-stay-below-fs.file-max-sysctl-.patch
+Patch00017:     es1370-check-total-frame-count-against-c.patch
+Patch00018:     audio-fix-wavcapture-segfault.patch
+Patch00019:     ati-vga-check-mm_index-before-recursive-.patch
+Patch00020:     nbd-server-Avoid-long-error-message-asse.patch
+Patch00021:     hw-vfio-pci-quirks-Fix-broken-legacy-IGD.patch
+Patch00022:     megasas-use-unsigned-type-for-reply_queu.patch
+Patch00023:     exec-set-map-length-to-zero-when-returni.patch
+Patch00024:     XXX-dont-dump-core-on-sigabort.patch
+Patch00025:     qemu-binfmt-conf-Modify-default-path.patch
+Patch00026:     qemu-cvs-gettimeofday.patch
+Patch00027:     qemu-cvs-ioctl_debug.patch
+Patch00028:     qemu-cvs-ioctl_nodirection.patch
+Patch00029:     linux-user-add-binfmt-wrapper-for-argv-0.patch
+Patch00030:     PPC-KVM-Disable-mmu-notifier-check.patch
+Patch00031:     linux-user-binfmt-support-host-binaries.patch
+Patch00032:     linux-user-Fake-proc-cpuinfo.patch
+Patch00033:     linux-user-use-target_ulong.patch
+Patch00034:     Make-char-muxer-more-robust-wrt-small-FI.patch
+Patch00035:     linux-user-lseek-explicitly-cast-non-set.patch
+Patch00036:     AIO-Reduce-number-of-threads-for-32bit-h.patch
+Patch00037:     xen_disk-Add-suse-specific-flush-disable.patch
+Patch00038:     qemu-bridge-helper-reduce-security-profi.patch
+Patch00039:     qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
+Patch00040:     linux-user-properly-test-for-infinite-ti.patch
+Patch00041:     roms-Makefile-pass-a-packaging-timestamp.patch
+Patch00042:     Raise-soft-address-space-limit-to-hard-l.patch
+Patch00043:     increase-x86_64-physical-bits-to-42.patch
+Patch00044:     i8254-Fix-migration-from-SLE11-SP2.patch
+Patch00045:     acpi_piix4-Fix-migration-from-SLE11-SP2.patch
+Patch00046:     Switch-order-of-libraries-for-mpath-supp.patch
+Patch00047:     Make-installed-scripts-explicitly-python.patch
+Patch00048:     hw-smbios-handle-both-file-formats-regar.patch
+Patch00049:     xen-add-block-resize-support-for-xen-dis.patch
+Patch00050:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
+Patch00051:     tests-Fix-block-tests-to-be-compatible-w.patch
+Patch00052:     xen-ignore-live-parameter-from-xen-save-.patch
+Patch00053:     Conditionalize-ui-bitmap-installation-be.patch
+Patch00054:     tests-change-error-message-in-test-162.patch
+Patch00055:     hw-usb-hcd-xhci-Fix-GCC-9-build-warning.patch
+Patch00056:     hw-usb-dev-mtp-Fix-GCC-9-build-warning.patch
+Patch00057:     hw-intc-exynos4210_gic-provide-more-room.patch
+Patch00058:     configure-only-populate-roms-if-softmmu.patch
+Patch00059:     pc-bios-s390-ccw-net-avoid-warning-about.patch
+Patch00060:     roms-change-cross-compiler-naming-to-be-.patch
+Patch00061:     tests-Disable-some-block-tests-for-now.patch
+Patch00062:     test-add-mapping-from-arch-of-i686-to-qe.patch
+Patch00063:     roms-Makefile-enable-cross-compile-for-b.patch
+Patch00064:     s390x-s390-virtio-ccw-Fix-build-on-syste.patch
+Patch00065:     configure-remove-pkgversion-from-CONFIG_.patch
+Patch00066:     gcc10-maybe-uninitialized.patch
+Patch00067:     docs-add-SUSE-support-statements-to-html.patch
+Patch00068:     docs-fix-trace-docs-build-with-sphinx-3..patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
 Patch01002:     enable-cross-compilation-on-ARM.patch
+Patch01003:     vga-fix-cirrus-bios.patch
 # Patches applied in roms/ipxe/:
-Patch02000:     stub-out-the-SAN-req-s-in-int13.patch
-Patch02001:     ipxe-Makefile-fix-issues-of-build-reprod.patch
-Patch02002:     Fix-s-directive-argument-is-null-error.patch
-Patch02003:     Workaround-compilation-error-with-gcc-9..patch
-Patch02004:     Do-not-apply-WORKAROUND_CFLAGS-for-host-.patch
-Patch02005:     Be-explicit-about-fcommon-compiler-direc.patch
-Patch02006:     work-around-gcc10-problem-with-zero-leng.patch
-Patch02007:     add-enum-cast-to-avoid-gcc10-warning.patch
+Patch02000:     build-Fix-s-directive-argument-is-null-e.patch
+Patch02001:     build-Workaround-compilation-error-with-.patch
+Patch02002:     build-Do-not-apply-WORKAROUND_CFLAGS-for.patch
+Patch02003:     build-Be-explicit-about-fcommon-compiler.patch
+Patch02004:     intel-Avoid-spurious-compiler-warning-on.patch
+Patch02005:     golan-Add-explicit-type-casts-for-nodnic.patch
+Patch02006:     stub-out-the-SAN-req-s-in-int13.patch
+Patch02007:     ipxe-Makefile-fix-issues-of-build-reprod.patch
 # Patches applied in roms/sgabios/:
 Patch03000:     sgabios-Makefile-fix-issues-of-build-rep.patch
 Patch03001:     roms-sgabios-Fix-csum8-to-be-built-by-ho.patch
@@ -959,24 +966,31 @@ This package provides a service file for starting and stopping KSM.
 %patch00058 -p1
 %patch00059 -p1
 %patch00060 -p1
-%if %{legacy_qemu_kvm} && 0%{?is_opensuse} == 0
 %patch00061 -p1
-%endif
 %patch00062 -p1
+%patch00063 -p1
+%patch00064 -p1
+%patch00065 -p1
+%patch00066 -p1
+%if %{legacy_qemu_kvm} && 0%{?is_opensuse} == 0
+%patch00067 -p1
+%endif
+%patch00068 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
-%if 0%{?patch-possibly-applied-elsewhere}
+%patch01003 -p1
 %patch02000 -p1
-%endif
 %patch02001 -p1
-%patch02002 -p1
-%patch02003 -p1
 %ifarch aarch64
-%patch02004 -p1
+%patch02002 -p1
 %endif
+%patch02003 -p1
+%patch02004 -p1
 %patch02005 -p1
+%if 0%{?patch-possibly-applied-elsewhere}
 %patch02006 -p1
+%endif
 %patch02007 -p1
 %patch03000 -p1
 %patch03001 -p1
@@ -1468,7 +1482,7 @@ done
 
 # Compile the QOM test binary first, so that ...
 touch -r config-host.mak pc-bios
-make %{?_smp_mflags} tests/qtest/qom-test %{?_smp_mflags} V=1
+make %{?_smp_mflags} tests/qtest/qom-test V=1
 # ... make comes in fresh and has lots of address space (needed for 32bit, bsc#957379)
 make %{?_smp_mflags} check-report.tap V=1
 

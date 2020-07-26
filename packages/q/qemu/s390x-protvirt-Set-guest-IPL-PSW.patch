@@ -2,6 +2,7 @@ From: Janosch Frank <frankja@linux.ibm.com>
 Date: Tue, 23 Jul 2019 13:17:32 +0200
 Subject: s390x: protvirt: Set guest IPL PSW
 
+Git-commit: e8686d9849f1625f4f4b28403f0555181b72d1b6
 References: bsc#1167075
 
 Handling of CPU reset and setting of the IPL psw from guest storage at
@@ -14,7 +15,6 @@ Reviewed-by: David Hildenbrand <david@redhat.com>
 Reviewed-by: Christian Borntraeger <borntraeger@de.ibm.com>
 Reviewed-by: Claudio Imbrenda <imbrenda@linux.ibm.com>
 Reviewed-by: Cornelia Huck <cohuck@redhat.com>
-(cherry picked from commit e8686d9849f1625f4f4b28403f0555181b72d1b6)
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
  target/s390x/cpu.c | 26 +++++++++++++++++---------

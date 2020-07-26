@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 22 14:25:37 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Stop building grub2-branding-openSUSE for Power architectures [boo#1171146] 
+
+-------------------------------------------------------------------
 Sat Oct 26 19:37:41 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
 
 - Don't set the theme on install/uninstall

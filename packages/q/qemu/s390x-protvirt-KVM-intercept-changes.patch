@@ -2,6 +2,7 @@ From: Janosch Frank <frankja@linux.ibm.com>
 Date: Mon, 13 May 2019 10:35:27 +0200
 Subject: s390x: protvirt: KVM intercept changes
 
+Git-commit: fd70eb764f176c200d6723c2ad88362f23536bfa
 References: bsc#1167075
 
 Protected VMs no longer intercept with code 4 for an instruction
@@ -30,7 +31,6 @@ Reviewed-by: David Hildenbrand <david@redhat.com>
 Reviewed-by: Christian Borntraeger <borntraeger@de.ibm.com>
 Reviewed-by: Claudio Imbrenda <imbrenda@linux.ibm.com>
 Reviewed-by: Cornelia Huck <cohuck@redhat.com>
-(cherry picked from commit fd70eb764f176c200d6723c2ad88362f23536bfa)
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
  target/s390x/kvm.c | 4 ++++

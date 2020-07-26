@@ -2,6 +2,7 @@ From: Janosch Frank <frankja@linux.ibm.com>
 Date: Fri, 29 Nov 2019 04:22:41 -0500
 Subject: s390x: protvirt: Disable address checks for PV guest IO emulation
 
+Git-commit f658bf14295ad49caf8d1b21033982ce69423fb7
 References: bsc#1167075
 
 IO instruction data is routed through SIDAD for protected guests, so
@@ -16,7 +17,6 @@ Reviewed-by: David Hildenbrand <david@redhat.com>
 Reviewed-by: Christian Borntraeger <borntraeger@de.ibm.com>
 Reviewed-by: Claudio Imbrenda <imbrenda@linux.ibm.com>
 Reviewed-by: Cornelia Huck <cohuck@redhat.com>
-(cherry picked from commit f658bf14295ad49caf8d1b21033982ce69423fb7)
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
  target/s390x/ioinst.c | 35 ++++++++++++++++++++++++++++-------

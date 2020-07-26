@@ -146,7 +146,17 @@ do
 	no_nvram=yes ;;
 
     --suse-enable-tpm)
-        source_grub_efi="/usr/lib/grub2/${grub_install_target}/grub-tpm.efi" ;;
+        # bsc#1174320 shim-install uses wrong paths for EFI files
+        # There are 3 possible locations of grub-tpm.efi and we will check them
+        # one by one.
+        if [ -e "${source_dir}/grub-tpm.efi" ]; then
+            source_grub_efi="${source_dir}/grub-tpm.efi"
+	elif [ -e "${datadir}/grub2/${grub_install_target}/grub-tpm.efi" ] ; then
+            source_grub_efi="${datadir}/grub2/${grub_install_target}/grub-tpm.efi"
+        else
+            source_grub_efi="/usr/lib/grub2/${grub_install_target}/grub-tpm.efi"
+        fi
+       	;;
 
     --clean)
 	clean=yes ;;

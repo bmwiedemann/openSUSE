@@ -2,6 +2,7 @@ From: Janosch Frank <frankja@linux.ibm.com>
 Date: Wed, 5 Feb 2020 06:57:35 -0500
 Subject: s390x: Add SIDA memory ops
 
+Git-commit a9f21cec3bc9c86062c7c24bb2143d22cb3c2950
 References: bsc#1167075
 
 Protected guests save the instruction control blocks in the SIDA
@@ -17,7 +18,6 @@ Reviewed-by: David Hildenbrand <david@redhat.com>
 Reviewed-by: Christian Borntraeger <borntraeger@de.ibm.com>
 Reviewed-by: Claudio Imbrenda <imbrenda@linux.ibm.com>
 Reviewed-by: Cornelia Huck <cohuck@redhat.com>
-(cherry picked from commit a9f21cec3bc9c86062c7c24bb2143d22cb3c2950)
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
  target/s390x/cpu.h        |  7 ++++++-

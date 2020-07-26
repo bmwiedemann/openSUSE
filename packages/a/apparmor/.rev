@@ -1900,4 +1900,13 @@ The correct message about the refreshed patch is:
 - refresh usr-etc-abstractions-base-nameservice.diff (forwarded request 807998 from cboltz)</comment>
     <requestid>807999</requestid>
   </revision>
+  <revision rev="139" vrev="5">
+    <srcmd5>ec602d707ea96c9db6bce9e8fc5432d1</srcmd5>
+    <version>2.13.4</version>
+    <time>1595772987</time>
+    <user>dimstar_suse</user>
+    <comment>- add abstractions-X-xauth-mr582.diff to allow reading the xauth file
+  from its new sddm location (boo#1174290, boo#1174293) (forwarded request 821970 from cboltz)</comment>
+    <requestid>821972</requestid>
+  </revision>
 </revisionlist>

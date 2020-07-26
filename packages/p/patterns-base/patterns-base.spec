@@ -588,7 +588,7 @@ Requires:       (grub2-snapper-plugin if snapper)
 # rather than bootloader related thing?
 Requires:       biosdevname
 %endif
-%ifnarch s390x
+%ifnarch s390x ppc64 ppc64le
 Requires:       (grub2-branding-openSUSE if branding-openSUSE)
 %endif
 %ifarch x86_64

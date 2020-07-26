@@ -2,6 +2,7 @@ From: Janosch Frank <frankja@linux.ibm.com>
 Date: Fri, 6 Mar 2020 06:40:13 -0500
 Subject: s390x: protvirt: Add migration blocker
 
+Git-commit: e721e55a3dabb2897081614b17dd4565e85249ac
 References: bsc#1167075
 
 Migration is not yet supported.
@@ -11,7 +12,6 @@ Reviewed-by: David Hildenbrand <david@redhat.com>
 Reviewed-by: Christian Borntraeger <borntraeger@de.ibm.com>
 Reviewed-by: Claudio Imbrenda <imbrenda@linux.ibm.com>
 Reviewed-by: Cornelia Huck <cohuck@redhat.com>
-(cherry picked from commit e721e55a3dabb2897081614b17dd4565e85249ac)
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
  hw/s390x/s390-virtio-ccw.c | 18 ++++++++++++++++++

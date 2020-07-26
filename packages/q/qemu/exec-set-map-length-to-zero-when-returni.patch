@@ -1,0 +1,54 @@
+From: Prasad J Pandit <pjp@fedoraproject.org>
+Date: Tue, 26 May 2020 16:47:43 +0530
+Subject: exec: set map length to zero when returning NULL
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 77f55eac6c433e23e82a1b88b2d74f385c4c7d82
+References: bsc#1172386, CVE-2020-13659
+
+When mapping physical memory into host's virtual address space,
+'address_space_map' may return NULL if BounceBuffer is in_use.
+Set and return '*plen = 0' to avoid later NULL pointer dereference.
+
+Reported-by: Alexander Bulekov <alxndr@bu.edu>
+Fixes: https://bugs.launchpad.net/qemu/+bug/1878259
+Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Prasad J Pandit <pjp@fedoraproject.org>
+Message-Id: <20200526111743.428367-1-ppandit@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ exec.c                | 1 +
+ include/exec/memory.h | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/exec.c b/exec.c
+index 2874bb508853d353bca3b9790e5d..2c419f327cf925ee55c46d111272 100644
+--- a/exec.c
++++ b/exec.c
+@@ -3538,6 +3538,7 @@ void *address_space_map(AddressSpace *as,
+ 
+     if (!memory_access_is_direct(mr, is_write)) {
+         if (atomic_xchg(&bounce.in_use, true)) {
++            *plen = 0;
+             return NULL;
+         }
+         /* Avoid unbounded allocations */
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index e000bd2f97b2fce76a41f9b5d9f3..8fa2d3cab2d51e5328e28151c65c 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -2303,7 +2303,8 @@ bool address_space_access_valid(AddressSpace *as, hwaddr addr, hwaddr len,
+ /* address_space_map: map a physical memory region into a host virtual address
+  *
+  * May map a subset of the requested range, given by and returned in @plen.
+- * May return %NULL if resources needed to perform the mapping are exhausted.
++ * May return %NULL and set *@plen to zero(0), if resources needed to perform
++ * the mapping are exhausted.
+  * Use only for reads OR writes - not for read-modify-write operations.
+  * Use cpu_register_map_client() to know when retrying the map operation is
+  * likely to succeed.

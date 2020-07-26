@@ -332,4 +332,13 @@ prerequisite for new python submission</comment>
     <comment></comment>
     <requestid>818299</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5cb7625b9a851c8f5d096e55d545004f</srcmd5>
+    <version>20200714.252de1f</version>
+    <time>1595772812</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200714.252de1f:
+  * Add pyunittest and pyunittest_arch macros</comment>
+    <requestid>820838</requestid>
+  </revision>
 </revisionlist>

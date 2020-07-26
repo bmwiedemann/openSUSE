@@ -2,13 +2,13 @@ From: Janosch Frank <frankja@linux.ibm.com>
 Date: Fri, 13 Mar 2020 10:35:02 -0400
 Subject: s390x: Move diagnose 308 subcodes and rcs into ipl.h
 
+Git-commit: 284bc3dd6e9a978e6e34b00777ce72007a88d6d9
 References: bsc#1167075
 
 They are part of the IPL process, so let's put them into the ipl
 header.
 
 Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
-(cherry picked from commit 284bc3dd6e9a978e6e34b00777ce72007a88d6d9)
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
  hw/s390x/ipl.h      | 11 +++++++++++

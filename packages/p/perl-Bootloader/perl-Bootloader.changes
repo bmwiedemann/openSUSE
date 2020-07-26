@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Fri Jul 24 07:06:12 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#129
+- Check tpm.mod in the new grub2 directory (bsc#1174320)
+- 0.931
+
+--------------------------------------------------------------------
+Thu Jul 23 11:20:14 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#130
+- Throw less warnings about fstab
+- 0.930
+
+--------------------------------------------------------------------
 Tue Jul 14 13:46:21 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#128

@@ -2,6 +2,7 @@ From: Janosch Frank <frankja@linux.ibm.com>
 Date: Mon, 24 Feb 2020 07:49:06 -0500
 Subject: s390x: protvirt: Inhibit balloon when switching to protected mode
 
+Git-commit: 59dc32a3494d6afdd420f3e401f1f324a1179256
 References: bsc#1167075
 
 Ballooning in protected VMs can only be done when the guest shares the
@@ -29,7 +30,6 @@ Reviewed-by: David Hildenbrand <david@redhat.com>
 Reviewed-by: Christian Borntraeger <borntraeger@de.ibm.com>
 Reviewed-by: Claudio Imbrenda <imbrenda@linux.ibm.com>
 Reviewed-by: Cornelia Huck <cohuck@redhat.com>
-(cherry picked from commit 59dc32a3494d6afdd420f3e401f1f324a1179256)
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
  hw/s390x/s390-virtio-ccw.c | 11 +++++++++++

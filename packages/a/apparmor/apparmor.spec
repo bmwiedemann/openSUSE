@@ -71,6 +71,9 @@ Patch9:         changes-since-2.13.4.diff
 # update abstractions/base and nameservice for /usr/etc (submitted upstream 2020-01-25 https://gitlab.com/apparmor/apparmor/merge_requests/447, only merged to master, not 2.13.x)
 Patch10:        ./usr-etc-abstractions-base-nameservice.diff
 
+# allow /{,var/}run/user/*/xauth_* r, in abstractions/X (submitted upstream 2020-07-20 https://gitlab.com/apparmor/apparmor/-/merge_requests/581 (master), https://gitlab.com/apparmor/apparmor/-/merge_requests/582 (2.11..2.13))
+Patch11:        abstractions-X-xauth-mr582.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix /lib/apparmor
@@ -365,6 +368,8 @@ SubDomain.
 # /usr/etc/ changes in abstractions, apply only to Tumbleweed, but not to Leap 15.x
 %patch10 -p1
 %endif
+
+%patch11 -p1
 
 %build
 %define _lto_cflags %{nil}

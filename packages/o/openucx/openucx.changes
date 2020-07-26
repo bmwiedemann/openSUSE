@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 13 08:19:45 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v1.8.1
+  - Features:
+    - Added binary release pipeline in Azure CI
+  - Bugfixes:
+    - Multiple fixes in testing environment
+    - Fixes in InfiniBand DEVX transport
+    - Fixes in memory management for CUDA IPC transport
+    - Fixes for binutils 2.34+
+    - Fixes for AMD ROCM build environment
+
+-------------------------------------------------------------------
 Fri Jun  5 09:38:40 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim bias and filler wording from descriptions.

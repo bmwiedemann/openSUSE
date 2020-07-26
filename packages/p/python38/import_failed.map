@@ -1,0 +1,7 @@
+python38-curses: curses _curses _curses_panel
+python38-dbm: dbm _dbm _gdbm
+python38-idle: idlelib
+python38-testsuite: test _ctypes_test _testbuffer _testcapi _testinternalcapi _testimportmultiple _testmultiphase xxlimited
+python38-tk: tkinter _tkinter
+python38-tools: turtledemo
+python38: sqlite3 readline _sqlite3 nis

@@ -393,4 +393,12 @@
     <comment>- Update to edk2-stable202005</comment>
     <requestid>812838</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>f6b1b72e5b803df28abdcef255b22aa9</srcmd5>
+    <version>202005</version>
+    <time>1595772915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822306</requestid>
+  </revision>
 </revisionlist>

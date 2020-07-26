@@ -28,7 +28,7 @@ Source1:        README.packaging.txt
 BuildRequires:  dracut
 BuildRequires:  update-bootloader-rpm-macros
 Requires:       dracut
-Requires(post): coreutils
+Requires(post): /usr/bin/mkdir /usr/bin/cat /usr/bin/sed
 Requires(post): gawk
 Requires(post): snapper
 # Required if system with new /etc/fstab entries is supposed to be updated

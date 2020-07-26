@@ -2,6 +2,7 @@ From: Janosch Frank <frankja@linux.ibm.com>
 Date: Wed, 31 Jul 2019 17:49:08 +0200
 Subject: s390x: protvirt: Move diag 308 data over SIDA
 
+Git-commit: 258da1c7736d3aa4604ceea6cce00995c6f30058
 References: bsc#1167075
 
 For protected guests the IPIB is written/read to/from the SIDA, so we
@@ -12,7 +13,6 @@ Reviewed-by: David Hildenbrand <david@redhat.com>
 Reviewed-by: Christian Borntraeger <borntraeger@de.ibm.com>
 Reviewed-by: Claudio Imbrenda <imbrenda@linux.ibm.com>
 Reviewed-by: Cornelia Huck <cohuck@redhat.com>
-(cherry picked from commit 258da1c7736d3aa4604ceea6cce00995c6f30058)
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
  target/s390x/diag.c | 25 ++++++++++++++++++++-----

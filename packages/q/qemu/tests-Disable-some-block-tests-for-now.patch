@@ -2,48 +2,22 @@ From: Bruce Rogers <brogers@suse.com>
 Date: Wed, 2 Oct 2019 07:28:04 -0600
 Subject: tests: Disable some block tests for now
 
-For a very long time we've experienced intermittent failure of some
-block tests. There doesn't seem to be an obvious cause. Given that we
-now build qemu using multibuild, the qemu-testsuite failure is now more
-problematic to just ignore. Until we can address these failures, which
-seem to be tied to the build environment in some way, disable the tests
-which are either randomly or reliably failing.
-
-Currently, this patch is based on these failures seen on 09OCT2019 on
-v4.1.0 qemu:
-disable 065, 129, 169, 182, 205, 218, 242, 248, 250
-(other architectures not evaluated at this time)
+Most tests previously disabled for qemu-testsuite to be able to complete
+successfully are no longer (as of v4.1) listed as auto, and therefore
+do not get run anymore.
 
 27NOV2019 - added 161 since it is failing on s390x and ppc consistently
 
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
- tests/qemu-iotests/group | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ tests/qemu-iotests/group | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/tests/qemu-iotests/group b/tests/qemu-iotests/group
-index 435dccd5af90754a3f80f4455bdb..8409dad73f2cbd7447235ea10b03 100644
+index 435dccd5af90754a3f80f4455bdb..a6c8ed8a5cdef50383594305c0c1 100644
 --- a/tests/qemu-iotests/group
 +++ b/tests/qemu-iotests/group
-@@ -86,7 +86,7 @@
- 062 rw auto quick
- 063 rw auto quick
- 064 rw quick
--065 rw quick
-+#DISABLE FOR NOW 065 rw quick
- 066 rw auto quick
- 067 rw quick
- 068 rw quick
-@@ -150,7 +150,7 @@
- 126 rw auto backing
- 127 rw auto backing quick
- 128 rw quick
--129 rw quick
-+#DISABLE FOR NOW 129 rw quick
- 130 rw quick
- 131 rw quick
- 132 rw quick
-@@ -182,11 +182,11 @@
+@@ -182,7 +182,7 @@
  158 rw auto quick
  159 rw auto quick
  160 rw quick
@@ -52,54 +26,3 @@ index 435dccd5af90754a3f80f4455bdb..8409dad73f2cbd7447235ea10b03 100644
  162 quick
  163 rw
  165 rw quick
--169 rw quick migration
-+#DISABLE FOR NOW 169 rw quick migration
- 170 rw auto quick
- 171 rw quick
- 172 auto
-@@ -198,7 +198,7 @@
- 178 img
- 179 rw auto quick
- 181 rw auto migration
--182 rw quick
-+#DISABLE FOR NOW 182 rw quick
- 183 rw migration
- 184 rw auto quick
- 185 rw
-@@ -220,7 +220,7 @@
- 202 rw quick
- 203 rw auto migration
- 204 rw quick
--205 rw quick
-+#DISABLE FOR NOW 205 rw quick
- 206 rw
- 207 rw
- 208 rw quick
-@@ -233,7 +233,7 @@
- 215 rw quick
- 216 rw quick
- 217 rw auto quick
--218 rw quick
-+#DISABLE FOR NOW 218 rw quick
- 219 rw
- 220 rw auto
- 221 rw quick
-@@ -256,15 +256,15 @@
- 239 rw quick
- 240 quick
- 241 rw quick
--242 rw quick
-+#DISABLE FOR NOW 242 rw quick
- 243 rw quick
- 244 rw auto quick
- 245 rw
- 246 rw quick
- 247 rw quick
--248 rw quick
-+#DISABLE FOR NOW 248 rw quick
- 249 rw auto quick
--250 rw quick
-+#DISABLE FOR NOW 250 rw quick
- 251 rw auto quick
- 252 rw auto backing quick
- 253 rw quick

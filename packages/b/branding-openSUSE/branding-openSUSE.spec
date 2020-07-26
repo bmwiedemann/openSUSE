@@ -1,7 +1,7 @@
 #
 # spec file for package branding-openSUSE
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Stasiek Michalski <hellcp@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +26,7 @@
 %define gfxboot 1
 %endif
 
-%ifarch %{arm} aarch64 %{ix86} x86_64 ppc ppc64
+%ifarch %{arm} aarch64 %{ix86} x86_64
 %define grub2 1
 %endif
 

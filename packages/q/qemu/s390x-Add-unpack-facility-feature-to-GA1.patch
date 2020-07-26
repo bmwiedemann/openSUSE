@@ -2,6 +2,7 @@ From: Christian Borntraeger <borntraeger@de.ibm.com>
 Date: Tue, 25 Feb 2020 06:28:51 -0500
 Subject: s390x: Add unpack facility feature to GA1
 
+Git-commit: 3034eaac3b2970ba85a1d77814ceef1352d05357
 References: bsc#1167075
 
 The unpack facility is an indication that diagnose 308 subcodes 8-10
@@ -21,7 +22,6 @@ Reviewed-by: David Hildenbrand <david@redhat.com>
 Reviewed-by: Claudio Imbrenda <imbrenda@linux.ibm.com>
 Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
-(cherry picked from commit 3034eaac3b2970ba85a1d77814ceef1352d05357)
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
  target/s390x/gen-features.c | 1 +

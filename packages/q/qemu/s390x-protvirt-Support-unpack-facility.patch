@@ -2,6 +2,7 @@ From: Janosch Frank <frankja@linux.ibm.com>
 Date: Mon, 11 Feb 2019 16:07:19 +0100
 Subject: s390x: protvirt: Support unpack facility
 
+Git-commit: 2150c92b9b7d12b5fbdd2c59e5b17197d28f53db
 References: bsc#1167075
 
 The unpack facility provides the means to setup a protected guest. A
@@ -23,7 +24,6 @@ to machine]
 Reviewed-by: David Hildenbrand <david@redhat.com>
 Reviewed-by: Claudio Imbrenda <imbrenda@linux.ibm.com>
 Reviewed-by: Cornelia Huck <cohuck@redhat.com>
-(cherry picked from commit 2150c92b9b7d12b5fbdd2c59e5b17197d28f53db)
 [BR: Needed to fix a compiler warning on i586 in hw/s390x/ipl.c]
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---

@@ -17,7 +17,7 @@
 
 
 Name:           perl-Bootloader
-Version:        0.929
+Version:        0.931
 Release:        0
 Requires:       coreutils
 Requires:       perl-base = %{perl_version}

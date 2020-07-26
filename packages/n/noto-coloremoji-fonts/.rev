@@ -26,4 +26,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>794598</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4c7e2f127aed8ae38a801659feb24f11</srcmd5>
+    <version>20200722</version>
+    <time>1595772940</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v2020-07-22-unicode13_0
+  * Unicode 13.0 update.
+</comment>
+    <requestid>822337</requestid>
+  </revision>
 </revisionlist>

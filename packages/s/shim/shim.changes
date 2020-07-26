@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 22 09:23:02 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update the path to grub-tpm.efi in shim-install (bsc#1174320)
+
+-------------------------------------------------------------------
 Fri Jul 10 06:28:44 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add shim-bsc1173411-only-check-efi-var-on-sb.patch to only check

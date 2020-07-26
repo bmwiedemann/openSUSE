@@ -2,6 +2,7 @@ From: Janosch Frank <frankja@linux.ibm.com>
 Date: Mon, 3 Jun 2019 16:40:29 +0200
 Subject: s390x: protvirt: SCLP interpretation
 
+Git-commit: 32633cf4539341180dbc7a92c2655c711b4a6996
 References: bsc#1167075
 
 SCLP for a protected guest is done over the SIDAD, so we need to use
@@ -16,7 +17,6 @@ Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
 Reviewed-by: David Hildenbrand <david@redhat.com>
 Reviewed-by: Claudio Imbrenda <imbrenda@linux.ibm.com>
 Reviewed-by: Cornelia Huck <cohuck@redhat.com>
-(cherry picked from commit 32633cf4539341180dbc7a92c2655c711b4a6996)
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
  hw/s390x/sclp.c         | 56 +++++++++++++++++++++++++++++++++--------

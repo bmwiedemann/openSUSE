@@ -14,7 +14,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 2 insertions(+)
 
 diff --git a/exec.c b/exec.c
-index 2874bb508853d353bca3b9790e5d..76ac1f619b563c591f36f9601c15 100644
+index 2c419f327cf925ee55c46d111272..7adf108c66ed8912588cb83bc15e 100644
 --- a/exec.c
 +++ b/exec.c
 @@ -2297,11 +2297,13 @@ RAMBlock *qemu_ram_alloc_from_fd(ram_addr_t size, MemoryRegion *mr,

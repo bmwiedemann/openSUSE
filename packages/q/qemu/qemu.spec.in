@@ -1297,7 +1297,7 @@ done
 
 # Compile the QOM test binary first, so that ...
 touch -r config-host.mak pc-bios
-make %{?_smp_mflags} tests/qtest/qom-test %{?_smp_mflags} V=1
+make %{?_smp_mflags} tests/qtest/qom-test V=1
 # ... make comes in fresh and has lots of address space (needed for 32bit, bsc#957379)
 make %{?_smp_mflags} check-report.tap V=1
 

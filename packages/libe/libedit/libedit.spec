@@ -75,8 +75,7 @@ cp %{SOURCE1} .
 %patch0 -p1
 
 %build
-libtoolize --force --copy --install
-autoreconf -fi
+autoreconf -fiv
 %configure \
   --disable-static \
   --disable-silent-rules

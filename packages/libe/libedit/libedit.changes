@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 16 11:04:44 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- autoreconf already runs libtoolize no need to run twice
+
+-------------------------------------------------------------------
 Mon Jul 13 07:06:04 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Regenerate the build system before the build in order to avoid

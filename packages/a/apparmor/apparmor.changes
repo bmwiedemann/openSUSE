@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 20 18:42:02 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
+
+- add abstractions-X-xauth-mr582.diff to allow reading the xauth file
+  from its new sddm location (boo#1174290, boo#1174293)
+
+-------------------------------------------------------------------
 Thu May 21 12:17:15 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
 
 - add changes-since-2.13.4.diff with upstream changes and fixes

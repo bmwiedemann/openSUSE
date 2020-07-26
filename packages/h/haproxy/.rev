@@ -876,4 +876,41 @@
 - track series file in source rpm</comment>
     <requestid>819260</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>cbfe5a592702c38abd8072ae6a594817</srcmd5>
+    <version>2.2.1+git0.0ef71a557</version>
+    <time>1595772966</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.1+git0.0ef71a557:
+  * [RELEASE] Released version 2.2.1
+  * BUG/MEDIUM: http-ana: Only set CF_EXPECT_MORE flag on data filtering
+  * BUG/MEDIUM: stream-int: Don't set MSG_MORE flag if no more data are expected
+  * BUG/MINOR: htx: add two missing HTX_FL_EOI and remove an unexpected one
+  * MEDIUM: htx: Add a flag on a HTX message when no more data are expected
+  * BUG/MEDIUM: dns: Release answer items when a DNS resolution is freed
+  * BUG/MAJOR: dns: Make the do-resolve action thread-safe
+  * BUG/MAJOR: tasks: don't requeue global tasks into the local queue
+  * BUG/MEDIUM: resolve: fix init resolving for ring and peers section.
+  * BUG/MEDIUM: arg: empty args list must be dropped
+  * DOC: ssl: req_ssl_sni needs implicit TLS
+  * BUILD: config: fix again bugs gcc warnings on calloc
+  * BUG/MAJOR: tasks: make sure to always lock the shared wait queue if needed
+  * BUILD: config: address build warning on raspbian+rpi4
+  * BUG/MEDIUM: channel: Be aware of SHUTW_NOW flag when output data are peeked
+  * BUG/MEDIUM: server: fix possibly uninitialized state file on close
+  * BUG/MEDIUM: server: resolve state file handle leak on reload
+  * BUG/MEDIUM: fcgi-app: fix memory leak in fcgi_flt_http_headers
+  * BUG/MEDIUM: log: issue mixing sampled to not sampled log servers.
+  * BUG/MINOR: mux-fcgi: Set flags on the right stream field for empty FCGI_STDOUT
+  * BUG/MINOR: mux-fcgi: Set conn state to RECORD_P when skipping the record padding
+  * BUG/MINOR: mux-fcgi: Handle empty STDERR record
+  * BUG/MEDIUM: mux-h1: Continue to process request when switching in tunnel mode
+  * BUG/MEDIUM: mux-fcgi: Don't add private connections in available connection list
+  * BUG/MEDIUM: mux-h2: Don't add private connections in available connection list
+  * CONTRIB: da: fix memory leak in dummy function da_atlas_open()
+  * BUG/MEDIUM: lists: add missing store barrier in MT_LIST_ADD/MT_LIST_ADDQ
+  * BUG/MEDIUM: lists: add missing store barrier on MT_LIST_BEHEAD()
+  * BUG/MINOR: sample: Free str.area in smp_check_const_meth</comment>
+    <requestid>822445</requestid>
+  </revision>
 </revisionlist>

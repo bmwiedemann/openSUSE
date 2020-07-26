@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 22 16:01:04 UTC 2020 - Kai Liu <kai.liu@suse.com>
+
+- Fixed TPM support. TPM2_ENABLE & TPM2_CONFIG_ENABLE build flags
+  were changed to TPM_* since upstream commit 07952a962a40.
+
+-------------------------------------------------------------------
 Tue Jun  9 08:06:06 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Use the reduced source tarballs since ovmf only needs a portion

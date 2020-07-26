@@ -2,6 +2,7 @@ From: Janosch Frank <frankja@linux.ibm.com>
 Date: Wed, 5 Feb 2020 07:02:51 -0500
 Subject: s390x: protvirt: Move STSI data over SIDAD
 
+Git-commit: ccce7a654911ae507c962aff5f41004a7a88fad6
 References: bsc#1167075
 
 For protected guests, we need to put the STSI emulation results into
@@ -11,7 +12,6 @@ Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
 Reviewed-by: David Hildenbrand <david@redhat.com>
 Reviewed-by: Claudio Imbrenda <imbrenda@linux.ibm.com>
 Reviewed-by: Cornelia Huck <cohuck@redhat.com>
-(cherry picked from commit ccce7a654911ae507c962aff5f41004a7a88fad6)
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
  target/s390x/kvm.c | 11 +++++++++--

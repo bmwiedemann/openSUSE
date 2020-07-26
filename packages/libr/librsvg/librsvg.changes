@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 21 06:59:15 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints for PowerPC avoid "no space left on device" build error
+
+-------------------------------------------------------------------
 Sat Jul  4 09:39:14 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.48.8:

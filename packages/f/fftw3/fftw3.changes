@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 20 18:34:40 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add gnu compiler support up to gcc9.
+- Fix typo which caused issus building openmpi HPC flavors
+  (bsc#1174329).
+- Add support for openmpi4 (provided by Alin Marin Elena).
+
+-------------------------------------------------------------------
 Sat Jun  6 22:20:41 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Fix BuildFailures for openSUSE >= 1550:

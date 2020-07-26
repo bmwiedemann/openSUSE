@@ -102,4 +102,12 @@
 </comment>
     <requestid>766129</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>41ae947de21ceb40feb5bdfe0343b1db</srcmd5>
+    <version>1.0+git20200121.5ed8d15</version>
+    <time>1595773006</time>
+    <user>dimstar_suse</user>
+    <comment>- Use file requires, add sed</comment>
+    <requestid>822078</requestid>
+  </revision>
 </revisionlist>
