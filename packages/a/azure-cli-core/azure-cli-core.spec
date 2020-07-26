@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-core
-Version:        2.7.0
+Version:        2.9.1
 Release:        0
 Summary:        Microsoft Azure CLI Core Module
 License:        MIT
@@ -42,10 +42,10 @@ Requires:       python3-argcomplete < 2.0
 Requires:       python3-argcomplete >= 1.8
 Requires:       python3-azure-mgmt-core < 2.0.0
 Requires:       python3-azure-mgmt-core >= 1.0.0
-Requires:       python3-azure-mgmt-resource < 10.0.0
-Requires:       python3-azure-mgmt-resource >= 9.0.0
+Requires:       python3-azure-mgmt-resource < 11.0.0
+Requires:       python3-azure-mgmt-resource >= 10.0.0
 Requires:       python3-azure-nspkg >= 3.0.0
-Requires:       python3-colorama >= 0.3.9
+Requires:       python3-colorama >= 0.4.1
 Requires:       python3-humanfriendly < 9.0
 Requires:       python3-humanfriendly >= 4.7
 Requires:       python3-jmespath
@@ -63,7 +63,7 @@ Requires:       python3-pip
 Requires:       python3-pkginfo >= 1.5.0.1
 Requires:       python3-pyOpenSSL >= 17.1.0
 Requires:       python3-requests < 3.0.0
-Requires:       python3-requests >= 2.20
+Requires:       python3-requests >= 2.22
 Requires:       python3-six < 2.0.0
 Requires:       python3-six >= 1.12
 Requires:       python3-wheel >= 0.30.0
