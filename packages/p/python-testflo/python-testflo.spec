@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-testflo
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        A flow-based testing framework
 License:        Apache-2.0
@@ -74,7 +74,7 @@ using unittest.TestCase objects that they are familiar with.
 
 %files %{python_files}
 %license LICENSE.txt
-%doc README.md RELEASE_NOTES.txt
+%doc README.md
 %python_alternative %{_bindir}/testflo
 %{python_sitelib}/*
 
