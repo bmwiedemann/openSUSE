@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-thespian
-Version:        3.10.0
+Version:        3.10.1
 Release:        0
 Summary:        Python Actor concurrency library
 License:        MIT
