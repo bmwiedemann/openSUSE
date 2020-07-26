@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jul 23 10:38:42 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Install the rpm provides handler to the correct location
+  (%{_rpmconfigdir, not %{_libexecdir}).
+
+-------------------------------------------------------------------
+Thu Jul 16 15:36:16 UTC 2020 - Christoph G <foss@grueninger.de>
+
+- update to cmake 3.18.0
+  * The “CUDA” language can now be compiled using Clang on non-Windows platforms.
+  * “cmake(1)” gained support for profiling of CMake scripts
+  * The “cmake_language()” command was added for meta-operations on
+    scripted or built-in commands, starting with a mode to “CALL” other
+    commands, and “EVAL CODE” to inplace evaluate a CMake script.
+  * The “find_program()”, “find_library()”, “find_path()” and
+    “find_file()” commands gained a new “REQUIRED” option that will stop
+    processing with an error message if nothing is found.
+  * The “CheckLinkerFlag” module has been added to provide a facility to
+    check validity of link flags.
+  * “ccmake(1)” learned to read a “CCMAKE_COLORS” environment variable
+    to customize colors.
+- Drop patch lua54.patch, it became part of upstream
+- Udjust patch cmake-fix-ruby-test.patch
+- Add patch no-system-nghttp2.patch which will become part of 3.18.1
+  to disable nghttp2 from system for cmake-mini
+
+-------------------------------------------------------------------
 Wed Jul  8 20:06:07 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add lua54.patch which adds 5.4 among allowed versions of

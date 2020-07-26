@@ -35,9 +35,9 @@
 %else
 %bcond_with full
 %endif
-%define shortversion 3.17
+%define shortversion 3.18
 Name:           cmake%{?psuffix}
-Version:        3.17.3
+Version:        3.18.0
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause
@@ -55,9 +55,8 @@ Patch0:         cmake-fix-ruby-test.patch
 # Search for python interpreters from newest to oldest rather then picking up /usr/bin/python as first choice
 Patch1:         feature-suse-python-interp-search-order.patch
 Patch2:         cmake-fix-png-include-dir.patch
-# PATCH-FIX-UPSTREAM lua54.patch https://gitlab.kitware.com/cmake/cmake/-/issues/20933 mcepl@suse.com
-# Add Lua 5.4 among allowed versions of the Lua interpreter.
-Patch3:         lua54.patch
+# Adding flag --no-system-nghttp2, will become part of 3.18.1
+Patch3:         no-system-nghttp2.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -132,6 +131,7 @@ export CXXFLAGS="%{optflags}"
     --system-libs \
 %if %{with mini}
     --no-system-curl \
+    --no-system-nghttp2 \
     --no-system-jsoncpp \
     --no-system-libarchive \
     --no-system-zstd \
@@ -160,6 +160,9 @@ rm -rf %{buildroot}%{_bindir}/{cpack,cmake,ctest,ccmake}
 rm -rf %{buildroot}%{_datadir}/cmake
 rm -rf %{buildroot}%{_datadir}/aclocal/cmake.m4
 rm -rf %{buildroot}%{_docdir}/cmake
+rm -rf %{buildroot}%{_datadir}/bash-completion/completions/{cmake,cpack,ctest}
+rm -rf %{buildroot}%{_datadir}/emacs/site-lisp/cmake-mode.el
+rm -rf %{buildroot}%{_datadir}/vim/
 %else
 
 find %{buildroot}%{_datadir}/cmake -type f -print0 | xargs -0 chmod 644
@@ -167,20 +170,9 @@ find %{buildroot}%{_datadir}/cmake -type f -print0 | xargs -0 chmod 644
 install -m644 %{SOURCE1} -D %{buildroot}%{_rpmconfigdir}/macros.d/macros.cmake
 
 # RPM auto provides
-install -p -m0644 -D %{SOURCE3} %{buildroot}%{_libexecdir}/rpm/fileattrs/cmake.attr
-install -p -m0755 -D %{SOURCE4} %{buildroot}%{_libexecdir}/rpm/cmake.prov
+install -p -m0644 -D %{SOURCE3} %{buildroot}%{_fileattrsdir}/cmake.attr
+install -p -m0755 -D %{SOURCE4} %{buildroot}%{_rpmconfigdir}/cmake.prov
 
-# Install bash completion symlinks
-mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
-for f in %{buildroot}%{_datadir}/cmake/completions/*
-do
-  ln -s ../../cmake/completions/$(basename $f) %{buildroot}%{_datadir}/bash-completion/completions
-done
-
-# cmake-mode.el
-%define cmake_mode_el %{_datadir}/emacs/site-lisp/cmake-mode.el
-install -D -p -m 0644 Auxiliary/cmake-mode.el %{buildroot}%cmake_mode_el
-rm %{buildroot}%{_datadir}/cmake/editors/emacs/cmake-mode.el
 # fix: W: files-duplicate  (%%license covers already)
 rm %{buildroot}%{_docdir}/cmake/Copyright.txt
 
@@ -223,7 +215,8 @@ rm %{buildroot}%{_docdir}/cmake/Copyright.txt
 %license Copyright.txt
 %doc README.rst
 %{_rpmconfigdir}/macros.d/macros.cmake
-%{_libexecdir}/rpm
+%{_fileattrsdir}/cmake.attr
+%{_rpmconfigdir}/cmake.prov
 %{_bindir}/cpack
 %{_bindir}/cmake
 %{_bindir}/ctest
@@ -233,9 +226,18 @@ rm %{buildroot}%{_docdir}/cmake/Copyright.txt
 %dir %{_datadir}/aclocal
 %{_datadir}/aclocal/cmake.m4
 %doc %{_docdir}/cmake
-%{_datadir}/bash-completion
-%cmake_mode_el
-%dir %{dirname:%cmake_mode_el}
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/{cmake,cpack,ctest}
+%dir %{_datadir}/emacs
+%dir %{_datadir}/emacs/site-lisp
+%{_datadir}/emacs/site-lisp/cmake-mode.el
+%dir %{_datadir}/vim
+%dir %{_datadir}/vim/vimfiles
+%dir %{_datadir}/vim/vimfiles/indent
+%{_datadir}/vim/vimfiles/indent/cmake.vim
+%dir %{_datadir}/vim/vimfiles/syntax
+%{_datadir}/vim/vimfiles/syntax/cmake.vim
 %endif
 %endif
 
