@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jul 24 08:17:11 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.1.1
+  * This adds support for user-customized wordlists
+  * This adds a new keyword argument to the `titlecase()` method.
+  * This adds environment checks for a wordlist file in the home directory.
+  * This drops Py2k support and add 3.8
+  * #35: Add fancy double quote to punctuation; Thanks @dwaynebailey!
+  * #45: Fix deprecation warning regarding invalid escape sequences. Thanks @tirkarthi
+  * #46: Add support for titlecasing non-ASCII letters; Thanks @acabal!
+  * #47: Add sphinx documentation to titlecase function; Thanks @1kastner!
+  * #49: Remove closing bracket in parser help text; Thanks @1kastner!
+  * #53: Add table with examples; Thanks @1kastner!
+  * #53: Terms with only consonants should be ALL CAPS; Thanks @Garret-R!
+
+-------------------------------------------------------------------
 Mon May 18 09:10:30 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

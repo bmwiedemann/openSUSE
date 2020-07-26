@@ -18,16 +18,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-titlecase
-Version:        0.12.0
+Version:        1.1.1
 Release:        0
 Summary:        Python library to capitalize strings
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/ppannuto/python-titlecase
 Source:         https://files.pythonhosted.org/packages/source/t/titlecase/titlecase-%{version}.tar.gz
+BuildRequires:  %{python_module regex >= 2020.4.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-regex >= 2020.4.4
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -55,7 +57,7 @@ York Times Manual of Style, plus some others like 'vs' and 'v'.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%python_expand nosetests-%{$python_bin_suffix} titlecase.tests
 
 %post
 %python_install_alternative titlecase
