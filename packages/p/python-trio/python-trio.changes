@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 23 12:46:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.16.0
+  * If you want to use Trio, but are stuck with some other event loop 
+    like Qt or PyGame, then good news: now you can have both.
+  * To speed up `trio.to_thread.run_sync`, Trio now caches and re-uses
+    worker threads.
+  * Tasks spawned with `nursery.start() <trio.Nursery.start>` aren't treated as
+    direct children of their nursery until they call ``task_status.started()``.
+  * Some bugfixes and deprecations
+  
+-------------------------------------------------------------------
 Tue Jun  9 07:36:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.15.1:
