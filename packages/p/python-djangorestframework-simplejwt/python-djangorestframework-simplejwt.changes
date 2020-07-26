@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 24 07:55:24 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v4.4.0
+  * Added official support for Python 3.8 and Django 3.0.
+  * Added settings for expected audience and issuer claims.
+  * Documentation updates.
+  * Updated package/python version support
+  * Added Chilean Spanish language support.
+  * Added Russian language support.
+
+-------------------------------------------------------------------
 Fri Sep 13 08:46:31 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 4.3.0:
