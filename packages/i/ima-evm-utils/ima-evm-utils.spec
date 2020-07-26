@@ -1,7 +1,7 @@
 #
 # spec file for package ima-evm-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,17 @@
 #
 
 
-%define sover 1
+%define sover 2
 %define libname libimaevm%{sover}
 Name:           ima-evm-utils
-Version:        1.2.1
+Version:        1.3
 Release:        0
 Summary:        IMA/EVM control utility
 License:        LGPL-2.1-or-later
 Group:          System/Base
-Url:            http://sourceforge.net/projects/linux-ima/
+URL:            http://sourceforge.net/projects/linux-ima/
 Source0:        http://downloads.sourceforge.net/project/linux-ima/ima-evm-utils/%{name}-%{version}.tar.gz
+Patch1:         0001-pcr_tss-Fix-compilation-for-old-compilers.patch
 BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -36,6 +37,7 @@ BuildRequires:  libtool
 BuildRequires:  libxslt-tools
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+BuildRequires:  tpm2-0-tss-devel
 
 %description
 This package provides the control utility for IMA/EVM (Integrity
@@ -70,7 +72,7 @@ which are used by Linux kernel integrity subsystem (IMA/EVM). It can be also
 used to import keys into the kernel keyring.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fiv
@@ -93,7 +95,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libimaevm.so
 
 %files -n %{libname}
-%doc README COPYING NEWS AUTHORS
+%doc README NEWS AUTHORS
+%license COPYING
 %{_libdir}/libimaevm.so.%{sover}*
 
 %files -n evmctl

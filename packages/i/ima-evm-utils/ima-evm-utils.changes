@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Thu Jul 23 07:15:19 UTC 2020 - Petr Vorel <pvorel@suse.cz>
+
+- Use %autosetup -p1
+
+-------------------------------------------------------------------
+Wed Jul 22 12:10:45 UTC 2020 - Petr Vorel <pvorel@suse.cz>
+
+- Remove suse_version check for tpm2-0-tss-devel as the package is available
+  for back as far as SLE 12 SP2 and respective openSUSE versions (also check
+  was wrong, should have been 1500).
+
+-------------------------------------------------------------------
+Wed Jul 22 11:35:42 UTC 2020 - Petr Vorel <pvorel@suse.cz>
+
+- Fixes from previous SR (reported by fvogt):
+  * Move ibmtss runtime dependency to evmctl package
+  * Remove dependencies to devel package (should not be needed)
+
+-------------------------------------------------------------------
+Wed Jul 22 08:23:08 UTC 2020 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 1.3
+	version 1.3 new features:
+	* NEW ima-evm-utils regression test infrastructure with two initial
+	  tests:
+	  - ima_hash.test: calculate/verify different crypto hash algorithms
+	  - sign_verify.test: EVM and IMA sign/verify signature tests
+	* TPM 2.0 support
+	  - Calculate the new per TPM 2.0 bank template data digest
+	  - Support original padding the SHA1 template data digest
+	  - Compare ALL the re-calculated TPM 2.0 bank PCRs against the
+	    TPM 2.0 bank PCR values
+	  - Calculate the per TPM bank "boot_aggregate" values, including
+	    PCRs 8 & 9 in calculation
+	  - Support reading the per TPM 2.0 Bank PCRs using Intel's TSS
+	  - boot_aggregate.test: compare the calculated "boot_aggregate"
+	    values with the "boot_aggregate" value included in the IMA
+	    measurement.
+	* TPM 1.2 support
+	  - Additionally support reading the TPM 1.2 PCRs from a supplied file
+	    ("--pcrs" option)
+	* Based on original IMA LTP and standalone version support
+	  - Calculate the TPM 1.2 "boot_aggregate" based on the exported
+	    TPM 1.2 BIOS event log.
+	  - In addition to verifying the IMA measurement list against the
+	    the TPM PCRs, verify the IMA template data digest against the
+	    template data.  (Based on LTP "--verify" option.)
+	  - Ignore file measurement violations while verifying the IMA
+	    measurment list. (Based on LTP "--validate" option.)
+	  - Verify the file data signature included in the measurement list
+	    based on the file hash also included in the measurement list
+	    (--verify-sig)
+	  - Support original "ima" template (mixed templates not supported)
+	* Support "sm3" crypto name
+
+	Bug fixes and code cleanup:
+	* Don't exit with -1 on failure, exit with 125
+	* On signature verification failure, include pathname.
+	* Provide minimal hash_info.h file in case one doesn't exist, needed
+	  by the ima-evm-utils regression tests.
+	* On systems with TPM 1.2, skip "boot_aggregate.test" using sample logs
+	* Fix hash_algo type comparison mismatch
+	* Simplify/clean up code
+	* Address compiler complaints and failures
+	* Fix memory allocations and leaks
+	* Sanity check provided input files are regular files
+	* Revert making "tsspcrread" a compile build time decision.
+	* Limit additional messages based on log level (-v)
+
+- Add patch 0001-pcr_tss-Fix-compilation-for-old-compilers.patch
+- Upstream bumped soname to 2.0.0
+- Add tpm2-0-tss-devel for Tumbleweed as build dependency, for the rest ibmtss
+  as runtime dependency (needed for for reading PCR in ima_boot_aggregate cmd;
+  better to use libtss2-esys and libtss2-rc than require tsspcrread binary in
+  runtime, but tpm2-0-tss-devel is available only for Tumbleweed) + the same
+  logic as runtime dependency for devel package
+- Mark COPYING as %license
+
+-------------------------------------------------------------------
 Tue Jul 30 21:55:31 UTC 2019 - Petr Vorel <pvorel@suse.cz>
 
 - Update to version 1.2.1 (included changes of unreleased v1.2)
