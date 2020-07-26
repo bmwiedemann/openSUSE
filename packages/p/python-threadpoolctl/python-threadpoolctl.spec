@@ -19,13 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-threadpoolctl
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Thread-pool Controls
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/joblib/threadpoolctl
 Source:         https://files.pythonhosted.org/packages/source/t/threadpoolctl/threadpoolctl-%{version}.tar.gz
+# fix python executable in tests
+Patch0:         python_executable.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -41,6 +43,7 @@ and OpenMP implementations).
 
 %prep
 %setup -q -n threadpoolctl-%{version}
+%patch0 -p1
 
 %build
 %python_build
