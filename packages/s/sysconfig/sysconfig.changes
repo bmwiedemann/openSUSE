@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 21 13:18:26 UTC 2020 - Marius Tomaschewski <mt@suse.com>
+
+- version 0.85.5
+- spec: Fix Requires, use file requires
+  (https://github.com/openSUSE/sysconfig/pull/25)
+- ntp: call chrony helper in background (bsc#1173391)
+
+-------------------------------------------------------------------
 Tue Feb 25 14:04:11 CET 2020 - Marius Tomaschewski <mt@suse.com>
 
 - version 0.85.4

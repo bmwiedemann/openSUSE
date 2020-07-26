@@ -28,7 +28,7 @@ BuildRequires:  pkgconfig(systemd)
 %define         udevdir	/lib/udev
 %endif
 Name:           sysconfig
-Version:        0.85.4
+Version:        0.85.5
 Release:        0
 Summary:        The sysconfig scheme for traditional network scripts
 License:        GPL-2.0-or-later
@@ -48,12 +48,9 @@ BuildRequires:  pkgconfig
 Requires:       /sbin/ifup
 Requires:       /sbin/netconfig
 Requires:       sysvinit(network)
-PreReq:         %fillup_prereq
-PreReq:         fileutils
-PreReq:         gawk
-PreReq:         grep
-PreReq:         sed
-PreReq:         textutils
+Requires(post): %fillup_prereq
+Requires(post): /usr/bin/grep
+Requires(post): /usr/bin/chmod /usr/bin/mkdir /usr/bin/touch
 Recommends:     wicked-service
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -64,7 +61,9 @@ traditional "ifup" alias "netcontrol" network scripts.
 %package netconfig
 Summary:        Script to apply network provided settings
 Group:          System/Base
+Requires:       /bin/gawk
 Requires:       /bin/logger
+Requires:       /usr/bin/sed
 Requires(pre):  sysconfig = %{version}
 Provides:       /sbin/netconfig
 

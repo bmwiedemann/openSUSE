@@ -1686,4 +1686,15 @@ also obs request: #660553
   work properly (boo#1159566).</comment>
     <requestid>779087</requestid>
   </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>d06e60f81d3d32a33d29024a70b4bcc2</srcmd5>
+    <version>0.85.5</version>
+    <time>1595773036</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.85.5
+- spec: Fix Requires, use file requires
+  (https://github.com/openSUSE/sysconfig/pull/25)
+- ntp: call chrony helper in background (bsc#1173391)</comment>
+    <requestid>822107</requestid>
+  </revision>
 </revisionlist>
