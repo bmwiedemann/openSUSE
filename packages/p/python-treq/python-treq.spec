@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-treq
-Version:        20.3.0
+Version:        20.4.1
 Release:        0
 Summary:        HTTP library inspired by python-requests
 License:        MIT
@@ -28,6 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/t/treq/treq-%{ver
 BuildRequires:  %{python_module Twisted >= 16.4.0}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module httpbin}
+BuildRequires:  %{python_module hyperlink >= 19.0.0}
 BuildRequires:  %{python_module incremental}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module requests >= 2.1.0}
@@ -38,6 +39,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Twisted >= 18.7.0
 Requires:       python-attrs
+Requires:       python-hyperlink >= 19.0.0
 Requires:       python-incremental
 Requires:       python-requests >= 2.1.0
 Requires:       python-six

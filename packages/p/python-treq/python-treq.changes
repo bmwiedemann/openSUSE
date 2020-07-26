@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 23 13:10:39 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 20.4.1
+  * Support for Python 3.8 and PyPy3: treq is now tested with these interpreters.
+  * `treq.client.HTTPClient.request()` and its aliases no longer raise `UnicodeEncodeError` when passed a Unicode *url* and non-empty *params*.
+  * In treq 20.3.0 the *params* argument didn't accept parameter names or values that contain the characters ``&`` or ``#``.
+
+-------------------------------------------------------------------
 Wed Mar 25 15:05:08 UTC 2020 - pgajdos@suse.com
 
 - version update to 20.3.0
