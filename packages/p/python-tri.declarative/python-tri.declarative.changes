@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 23 13:02:19 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 5.4.1
+  * Minor bug fix on trailing comma explanation TypeException
+  * Fix bug when nesting `@class_shortcut` with same name i sub classes
+  * Refactor code to separate modules to get better stack traces
+
+-------------------------------------------------------------------
 Fri May 29 09:28:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to pytest5 and disable one test that does not work with it

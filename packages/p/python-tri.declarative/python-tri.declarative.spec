@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tri.declarative
-Version:        5.3.0
+Version:        5.4.1
 Release:        0
 Summary:        Python class decorators in the style of Django model classes
 License:        BSD-3-Clause
