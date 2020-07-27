@@ -1,0 +1,105 @@
+-------------------------------------------------------------------
+Thu Jun 11 23:04:36 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.2.4:
+  * Support for C++17 compilers that do not permit throw specifications.
+  * Minor bug fixes.
+- update to 4.2.3:
+  * New retainAddressOrder and resolveNamesForTransportRules options.
+  * Experimental support for Mac / iOS CFNetwork connections.
+  * Fixed a lock order violation that could lead to a deadlock if
+    multiple connections were being opened and closed simultaneously
+    in thread pool mode.
+- Clean up spec file
+- Split shared library package
+
+-------------------------------------------------------------------
+Sat May 20 13:55:29 UTC 2017 - lars@linux-schulserver.de
+
+- update to 4.2.2:
+  + Miscellaneous minor fixes based on Coverity testing.
+  + Correctly duplicate POA reference in tie class
+  + Update GPL / LGPL headers
+  + Rely on OpenSSL to check file existence. Clearer error reporting
+  + Suppress lots of warnings
+  + Log transition between thread per connection and thread pool
+  + Locking errors in bidirectional connections
+  + Support changed API in OpenSSL 1.1.0
+  + New defaultCharCodeSet and defaultWCharCodeSet configuration
+    parameters; always use correct exceptions when codesets are missing
+  + Unnecessary lock leading to deadlock. Thanks Michael Teske
+  + Avoid compiler warnings about unused parameters. Thanks David Ward
+    for the request
+
+-------------------------------------------------------------------
+Tue Apr 29 08:53:55 UTC 2014 - lars@linux-schulserver.de
+
+- update to 4.2.0:
+  + New listenBacklog parameter. Thanks Peter Klotz
+  + Log more detail about SSL errors
+  + Support for Python 3 in omniidl
+  + Tolerate broken omniNames data files at startup
+  + More efficient, but non-standard, union methods
+  + Pass Py_BAD_PARAM info through AMI calls
+  + Documentation updates
+  + Validate UTF-8 more thoroughly. Thanks Peter Klotz.
+
+-------------------------------------------------------------------
+Wed Jun 26 15:46:23 UTC 2013 - lars@linux-schulserver.de
+
+- update to 4.1.7:
+ + Bug fixes and platform updates. See bugfixes-416.xml
+ + ZIOP support. See 
+   /usr/share/doc/packages/omniORB/README.txt 
+   for details.
+- removed upstreamed omniORB-4.1.6-prototypes.patch
+
+-------------------------------------------------------------------
+Sat Dec 15 19:32:34 UTC 2012 - lars@linux-schulserver.de
+
+- update to 4.1.6:
+  + Bug fixes. See bugfixes-414.xml and bugfixes-415.xml
+  + New clientOpenConnection and serverAcceptConnection interceptors
+  + Support for building with the newest versions of Cygwin
+  + Incoming SSL connections can time out waiting for SSL_accept 
+    to complete.
+  + Ability to disable longdouble support during compilation.
+- define omniNames log directory = /var/log/omninames
+- add pkg-config to BuildRequires
+- specfile cleanup
+- license tag follows SPDX.org license strings now
+- added omniORB-4.1.6-prototypes.patch
+- package bugfixes*.xml files as doc files
+
+-------------------------------------------------------------------
+Sun Nov  8 22:05:29 CET 2009 - lars@linux-schulserver.de
+
+- update to 4.1.4
+
+-------------------------------------------------------------------
+Thu Sep 25 12:27:33 CEST 2008 - lars@linux-schulserver.de
+
+- moved to Education base repository
+
+-------------------------------------------------------------------
+Tue Mar 25 21:41:14 CET 2008 - lars@linux-schulserver.de
+
+- repackaged for openSUSE-Education
+- disable static library
+
+-------------------------------------------------------------------
+Thu Feb 14 00:00:00 CET 2008 - Toni Graffy <toni@links2linux.de>
+
+- update to 4.1.2
+
+-------------------------------------------------------------------
+Wed Oct 10 00:00:00 CET 2007 - Toni Graffy <toni@links2linux.de>
+
+- update to 4.1.1
+
+-------------------------------------------------------------------
+Sun Dec 17 00:00:00 CET 2006 - Toni Graffy <toni@links2linux.de>
+
+- initial build 4.1.0
+- repacked as tar.bz2
+
