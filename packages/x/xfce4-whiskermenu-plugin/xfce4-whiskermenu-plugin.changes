@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul 23 12:15:36 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 2.4.6
+  * Fix crash during grab check. (gxo#19)
+  * Fix background incorrect without compositing. 
+
+-------------------------------------------------------------------
+Tue Jul 21 14:04:00 UTC 2020 - Vinzenz Vietzke <vinz@vinzv.de>
+
+- Update to 2.4.5
+  * Fix saving plugin title with overridden default text (bxo#16822)
+  * Fix extra key press to select search items (gxo#8)
+  * Fix icon view skipping first item when pressing arrow key
+  * Fix incorrect signal name
+  * Fix nonfunctional grab check
+  * Translation updates
+
+-------------------------------------------------------------------
 Wed Apr 22 19:29:54 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 2.4.4

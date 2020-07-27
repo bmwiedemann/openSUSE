@@ -63,4 +63,22 @@
     <comment></comment>
     <requestid>797266</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>25a939be7cf10907005be43c2b84c3a3</srcmd5>
+    <version>2.4.6</version>
+    <time>1595864336</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.6
+  * Fix crash during grab check. (gxo#19)
+  * Fix background incorrect without compositing. 
+- Update to 2.4.5
+  * Fix saving plugin title with overridden default text (bxo#16822)
+  * Fix extra key press to select search items (gxo#8)
+  * Fix icon view skipping first item when pressing arrow key
+  * Fix incorrect signal name
+  * Fix nonfunctional grab check
+  * Translation updates
+</comment>
+    <requestid>822752</requestid>
+  </revision>
 </revisionlist>
