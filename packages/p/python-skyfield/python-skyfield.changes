@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Jul 25 11:43:28 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 1.25
+  * Added skyfield.data.stellarium.parse_constellations()
+    and skyfield.data.stellarium.parse_star_names()
+    to load Stellarium star names and constellation lines. 
+    Constellation lines are featured in a new example script 
+    neowise-chart that produces a finder chart for 
+    comet C/2020 F3 NEOWISE.
+  * The Hipparcos star catalog should now load faster, having 
+    switched behind the scenes to a higher performance Pandas 
+    import routine.
+  * Fixed the ability of  skyfield.timelib.Timescale.utc()
+    to accept a Python datetime.date object as its argument.
+    #409
+  * Slightly lowered the precision of two tests when they 
+    detect that Python is compiled for a 32-bit processor, so 
+    the test suite can succeed when contributors package 
+    Skyfield for 32-bit Linux. #411
+- use upstreams custom test runner 'assay'
+  * The runner does not have any releases yet. No package 
+    available, so use assay-master-252.79f5d78.tar.gz directly
+  * drop skyfield-pr405-replace-assay-by-pytest.patch
+  * gh#brandon-rhodes/assay#6, gh#skyfielders/python-skyfield#405
+- the unit test expect a truncated hipparcos catalog
+  * generate-hipparcos.sh
+  * hip_main.dat.gz
+- drop skyfield-pr404-comparefloat.patch addressed upstream
+  gh#skyfielders/python-skyfield#404
+  gh#skyfielders/python-skyfield#411
+
+-------------------------------------------------------------------
 Wed Jul 22 14:42:06 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - release precision for i586 test

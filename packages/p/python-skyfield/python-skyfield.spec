@@ -17,11 +17,11 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define assaycommit 18f320237345813a49173657e7d2d6ca85e9a38a
-%define assayver    245.18f3202
+%define assaycommit 79f5d784a55d70f31b2c90b636910738cd74840e
+%define assayver    252.79f5d78
 %define skip_python2 1
 Name:           python-skyfield
-Version:        1.24
+Version:        1.25
 Release:        0
 Summary:        Elegant astronomy for Python
 License:        MIT
@@ -36,12 +36,12 @@ Source5:        ftp://ssd.jpl.nasa.gov/pub/eph/planets/bsp/de421.bsp
 Source6:        ftp://cddis.nasa.gov/products/iers/deltat.data
 Source7:        ftp://cddis.nasa.gov/products/iers/deltat.preds
 Source8:        https://hpiers.obspm.fr/iers/bul/bulc/Leap_Second.dat
-Source9:        http://cdsarc.u-strasbg.fr/ftp/cats/I/239/hip_main.dat.gz
+# use generate-hipparcos.sh to download and truncate the test data
+Source9:        hip_main.dat.gz
+Source10:       generate-hipparcos.sh
+# upstreams custom test runner assay: gh#skyfielders/python-skyfield#405
+Source98:       https://github.com/brandon-rhodes/assay/archive/%{assaycommit}.tar.gz#/assay-master-%{assayver}.tar.gz
 Source99:       python-skyfield-rpmlintrc
-# PR404 Refine some float comparisons in the unit tests for flaky platforms gh#skyfielders/python-skyfield#404
-Patch0:         skyfield-pr404-comparefloat.patch
-# PR405 Replace upstreams custom testrunner 'assay' with standard pytest gh#skyfielders/python-skyfield#405
-Patch1:         skyfield-pr405-replace-assay-by-pytest.patch
 BuildRequires:  %{python_module astropy}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module certifi}
@@ -49,9 +49,9 @@ BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module jplephem >= 2.13}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sgp4 >= 2.2}
 BuildRequires:  fdupes
@@ -74,10 +74,7 @@ A Python astronomy package that makes it easy to generate high precision
 research-grade positions for planets and Earth satellites.
 
 %prep
-%setup -q -n skyfield-%{version}
-%autopatch -p1
-# https://github.com/skyfielders/python-skyfield/issues/411
-sed -i -e 's/assert relative_error < 2e-12/assert relative_error < 4e-12/' skyfield/tests/test_positions.py
+%setup -q -n skyfield-%{version} -b 98
 # copy all test data files into the rootdir
 cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} %{SOURCE7} %{SOURCE8} %{SOURCE9} ./
 
@@ -89,7 +86,8 @@ cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} %{SOURCE7} 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+export PYTHONPATH="../assay-%{assaycommit}"
+%python_exec -m assay --batch skyfield.tests
 
 %files %{python_files}
 %doc README.rst
