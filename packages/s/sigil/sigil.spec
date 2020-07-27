@@ -18,7 +18,7 @@
 
 %define sigil_doc_version 2019.09.03
 Name:           sigil
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        WYSIWYG Ebook Editor
 License:        GPL-3.0-only
@@ -34,7 +34,6 @@ BuildRequires:  cmake >= 3.0
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  hunspell-devel
 # upstream use Qt 5.12.3
 BuildRequires:  libqt5-qtbase-devel >= 5.4.2
 BuildRequires:  libqt5-qtlocation-devel >= 5.4.2
@@ -43,27 +42,37 @@ BuildRequires:  libxerces-c-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  make
-BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 # not need for build, only check for exists
-# upstream use for python3-Pillow 5.4.1
-BuildRequires:  python3-Pillow
+# upstream use for python3-Pillow 7.1.2
+BuildRequires:  python3-Pillow >= 5.0.0
+# upstream use python3-certifi 2020.6.20
+BuildRequires:  python3-certifi
+# upstream use python3-chardet 3.0.4
 BuildRequires:  python3-chardet >= 3.0.4
+# upstream use python3-css-parser 1.0.4
+BuildRequires:  python3-css-parser >= 1.0.4
+# upstream use python3-cssselect 1.1.0
 BuildRequires:  python3-cssselect >= 1.0.3
+# upstream use python3-cssutils ?
 BuildRequires:  python3-cssutils >= 1.0.2
 # upstream use 3.7.2
 BuildRequires:  python3-devel >= 3.4
-# upstream use python3-dulwich 0.19.15
-BuildRequires:  python3-dulwich
-BuildRequires:  python3-html5lib >= 1.0.1
-# upstream use for python3-lxml 4.2.6
-BuildRequires:  python3-lxml
+# upstream use python3-dulwich 0.20.5
+BuildRequires:  python3-dulwich >= 0.20.2
+# upstream use python3-html5lib >= 1.1
+BuildRequires:  python3-html5lib
+# upstream use for python3-lxml 4.5.1
+BuildRequires:  python3-lxml >= 4.4.2
 # upstream use for python3-qt5 5.12.3
 BuildRequires:  python3-qt5
-# upstream use for python3-regex 2018.11.12
+# upstream use for python3-regex 2020.6.8
 BuildRequires:  python3-regex
-# upstream use for python3-six 1.12.0
-BuildRequires:  python3-six
+# upstream use for python3-six 1.15.0
+BuildRequires:  python3-six >= 1.14.0
+# upstream use for python3-urllib3 1.25.9
+BuildRequires:  python3-urllib3 >= 1.24
+# upstream use python3-tk ?
 BuildRequires:  python3-tk
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
@@ -79,9 +88,14 @@ BuildRequires:  pkgconfig(Qt5WebEngine)
 BuildRequires:  pkgconfig(Qt5WebKitWidgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5XmlPatterns)
+BuildRequires:  pkgconfig(hunspell)
+BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(minizip)
 Requires:       python3-Pillow
+Requires:       python3-certifi
 Requires:       python3-chardet
+Requires:       python3-css-parser
 Requires:       python3-cssselect
 Requires:       python3-cssutils
 Requires:       python3-dulwich
@@ -90,6 +104,7 @@ Requires:       python3-lxml
 Requires:       python3-regex
 Requires:       python3-six
 Requires:       python3-tk
+Requires:       python3-urllib3
 
 %description
 Sigil is an editor for the EPUB format. It is designed for WYSIWYG
@@ -128,8 +143,10 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="$CFLAGS"
 
 # FIXME: you should use %%cmake macros
+# With SYSTEM_LIBS=1 package does not build
 cmake -G "Unix Makefiles" \
    -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+   -DUSE_SYSTEM_LIBS=0 \
    -DCMAKE_BUILD_TYPE=Release .
 
 %make_build
