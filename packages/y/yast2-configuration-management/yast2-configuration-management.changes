@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 24 08:44:41 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Handle exceptions when parsing xml file (related to bsc#1170886)
+- 4.3.2
+
+-------------------------------------------------------------------
 Thu May 21 21:20:44 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - bsc#1169410:
