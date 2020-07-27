@@ -17,7 +17,7 @@
 
 
 Name:           perl-Compress-Bzip2
-Version:        2.27
+Version:        2.28
 Release:        0
 %define cpan_name Compress-Bzip2
 Summary:        Interface to Bzip2 compression library
@@ -29,9 +29,9 @@ Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-Recommends:     perl(Compress::Raw::Bzip2) >= 2.060
+Recommends:     perl(Compress::Raw::Bzip2) >= 2.094
 Recommends:     perl(Compress::Zlib) >= 1.19
-Recommends:     perl(IO::Compress::Bzip2) >= 2.060
+Recommends:     perl(IO::Compress::Bzip2) >= 2.094
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  libbz2-devel
