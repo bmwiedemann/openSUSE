@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jul 24 09:04:37 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.7.1
+  * Update URLs from goodies.x.o to docs.x.o (bxo#16180)
+  * Do not recreate box when orientation changes
+  * Remove unused eventbox
+  * Avoid square-sized plugin (bxo#16101)
+  * Remove unused variables and function
+  * Resolve GCC warning: ISO C90 forbids mixed declarations and code
+  * Preferences: Improved spacing and layout in editor (bxo#14678)
+  * Selecting a timer always starts it
+  * Add Hossam Ayman's multiple timer code, some leak and g_free
+    fixes in update_function.
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Aug 16 12:09:55 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed source in spec file
