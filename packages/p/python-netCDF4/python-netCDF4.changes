@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jul 25 15:33:53 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.5.4:
+  * fix printing of variable objects for variables that end with the
+    letter 'u' (issue #983).
+  * make sure root group has 'name' attribute (issue #988).
+  * add the ability to pack vlen floats to integers using
+    scale_factor/add_offset (issue #1003)
+  * use len instead of deprecated numpy.alen (issue #1008)
+  * check size on valid_range instead of using len (issue #1013).
+  * add `set_chunk_cache/get_chunk_cache` module functions to reset
+    the default chunk cache sizes before opening a Dataset (issue
+    #1018).
+  * replace use of numpy's deprecated tostring() method with tobytes()
+    (issue #1023).
+  * bump minimal numpy version to 1.9 (first version to have
+    tobytes()).
+
+-------------------------------------------------------------------
 Wed Jul 22 15:07:22 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 -  Add _constraints with default 5G min disk space

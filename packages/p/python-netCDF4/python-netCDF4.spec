@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-netCDF4
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        Python interface to netCDF 3 and 4
 License:        HPND AND MIT
