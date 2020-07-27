@@ -9,7 +9,7 @@
     missingok
     create 600 lighttpd lighttpd
     postrotate
-     /etc/init.d/lighttpd reload
+      /usr/bin/systemctl try-restart lighttpd.service >/dev/null
     endscript
 }
 
@@ -24,6 +24,6 @@
     missingok
     create 600 lighttpd lighttpd
     postrotate
-     /etc/init.d/lighttpd reload
+      /usr/bin/systemctl try-restart lighttpd.service >/dev/null
     endscript
 }

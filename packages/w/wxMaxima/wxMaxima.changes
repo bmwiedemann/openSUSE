@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jul 22 08:10:24 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 20.07.0:
+  * A massive performance update.
+  * Better display of sqrt() cells.
+  * Better display of fractions.
+  * Nicer display of lists.
+  * Made sure we read in the whole .mac file when opening .mac
+    files.
+  * Allow building wxMaxima, if pandoc or po4translate are not
+    installed.
+  * As always many small additional bug fixes.
+  * Updated translations.
+- Drop wxMaxima-string-type-conversion.patch: upstreamed.
+
+-------------------------------------------------------------------
+Sun Jul 19 17:26:18 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Compile against the more recent toolkit wxGTK3 >= 3.1 for
+  openSUSE >= 1550 (mainly for better HiDPI support).
+
+-------------------------------------------------------------------
 Fri Jul  3 16:17:02 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 20.06.6:

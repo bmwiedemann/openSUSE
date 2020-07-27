@@ -174,7 +174,7 @@ install -Dm0755 dist/osc.complete %{buildroot}%{_prefix}/lib/osc/complete
 install -Dm0755 dist/osc.complete %{buildroot}%{_libdir}/osc/complete
 %endif
 
-install -Dm0755 osc.fish %{buildroot}%{_datadir}/fish/completions/vendor_completions.d/osc.fish
+install -Dm644 osc.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/osc.fish
 
 install -m644 %{macros_file} -D %{buildroot}%{_sysconfdir}/rpm/%{macros_file}
 
@@ -211,7 +211,9 @@ rm -rf %{buildroot}
 %else
 %{_libdir}/osc
 %endif
-%{_datadir}/fish
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/osc.fish
 %dir %{osc_plugin_dir}
 
 %changelog

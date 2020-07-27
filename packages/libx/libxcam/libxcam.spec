@@ -19,36 +19,31 @@
 %define sover   1
 %define libname %{name}%{sover}
 Name:           libxcam
-Version:        1.2.2
+Version:        1.4.0
 Release:        0
 Summary:        Image processing library for extended camera features and video analysis
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/01org/libxcam
 Source0:        https://github.com/01org/libxcam/archive/release_%{version}.tar.gz
-# From https://github.com/intel/libxcam/commit/a7ad68cf32079f297b9a210ad81b99207877437f.patch, rebased.
-Patch0:         allow-newer-opencv.patch
+# PATCH-FIX-UPSTREAM
+Patch0:         Fix-build-with-Vulkan-1.2.140.patch
+BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  beignet-devel >= 1.2.0
 BuildRequires:  gcc-c++
 BuildRequires:  gstreamer-devel
 BuildRequires:  gstreamer-plugins-base-devel
-BuildRequires:  libdrm-devel
 BuildRequires:  libtool
 BuildRequires:  ocl-icd-devel
 BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(egl)
-BuildRequires:  pkgconfig(glesv2)
+%ifarch %{ix86} x86_64
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libdrm_intel)
-BuildRequires:  pkgconfig(libv4l2)
-BuildRequires:  pkgconfig(libva-x11)
-BuildRequires:  pkgconfig(opencv)
+%endif
+BuildRequires:  pkgconfig(opencv) <= 4.0
 BuildRequires:  pkgconfig(vulkan)
-# Intel graphics hardware only available on these platforms
-ExclusiveArch:  %{ix86} x86_64
 
 %description
 libXCam is a project for extended camera features and focus on image quality
@@ -87,16 +82,19 @@ autoreconf -fiv
    --disable-static \
    --with-package-name="Libxcam (openSUSE)" \
    --with-package-origin="http://www.opensuse.org/" \
+%ifarch %{ix86} x86_64
    --enable-drm \
+%endif
    --disable-aiq \
    --enable-gst \
+   --enable-gles \
    --enable-libcl \
    --enable-vulkan \
    --enable-opencv \
    --enable-capi \
    --disable-3alib \
    --enable-smartlib
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -106,11 +104,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%defattr(-,root,root)
 %doc README.md NOTICE
 %license COPYING
 %{_libdir}/%{name}_capi.so.%{sover}*
 %{_libdir}/%{name}_core.so.%{sover}*
+%{_libdir}/%{name}_gles.so.%{sover}*
 %{_libdir}/%{name}_ocl.so.%{sover}*
 %{_libdir}/%{name}_soft.so.%{sover}*
 %{_libdir}/%{name}_vulkan.so.%{sover}*
@@ -118,11 +116,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-1.0/libgstxcamfilter.so
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/xcam
 %{_libdir}/pkgconfig/libxcam.pc
 %{_libdir}/libxcam_capi.so
 %{_libdir}/libxcam_core.so
+%{_libdir}/libxcam_gles.so
 %{_libdir}/libxcam_ocl.so
 %{_libdir}/libxcam_soft.so
 %{_libdir}/libxcam_vulkan.so

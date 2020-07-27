@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Jul 23 18:18:37 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.4.0:
+  * 360 stitching supports processing YUV420p pixel format
+  * 360 degree image stitching quality tuning
+    - support json parse to apply OpenCV fisheye camera calibration parameters
+  * 8K 360 degree image stitching performance improvement
+    - optimized AVX pixel data loading instructions
+  * Simplify configure.ac
+    - extract macros to m4 file
+  * Remove Beignet dependence
+  * Limit OpenCV version to [3.0.0, 4.0.0)
+  * Extend the functionality of capi module
+    - support soft/GLES/Vulkan image stitching
+    - implement new FFmpeg xcam video filter
+- Update to version 1.3.0:
+  * 8K 360 degree image stitching performance improvement
+    - enable AVX512 intrinsic instructions to increase performance
+  * 3 cameras 8K stitching enabling (CPU/GLES)
+    - support disable feature match in runtime
+    - support specify the pyramid levels of blender
+    - stitching quality tuning
+  * 2 cameras 1080p stitching enabling (CPU/GLES)
+  * DNN inference support processing video stream
+  * Use Intel open source graphics compute runtime for OpenCL (NEO)
+    - will not support Beignet driver
+- Remove obsolete allow-newer-opencv.patch
+- Add Fix-build-with-Vulkan-1.2.140.patch
+- Removed obsolete or irrelevant build dependencies
+- Enable build for all architectures, disable DRM for everything
+  but Intel.
+
+-------------------------------------------------------------------
 Thu May 21 14:43:43 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 1.2.2

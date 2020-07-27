@@ -18,16 +18,15 @@
 
 
 %define _data_dir_name testssl-sh
-%define realver 3.0-1
 
 Name:           testssl.sh
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Testing TLS/SSL Encryption Anywhere On Any Port
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://testssl.sh
-Source0:        https://github.com/drwetter/%{name}/archive/%{realver}.tar.gz#/%{name}-%{realver}.tar.gz
+Source0:        https://github.com/drwetter/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Patch0:         testssl.sh-2.9.95-set-install-dir.patch
 Requires:       bash >= 3.2
@@ -40,7 +39,7 @@ any port for the support of TLS/SSL ciphers, protocols as well as some
 cryptographic flaws.
 
 %prep
-%setup -q -n %{name}-%{realver}
+%setup -q
 %patch0 -p1
 %if 0%{?suse_version} > 1500
 sed -i 's|#!/usr/bin/env bash|#!/usr/bin/bash|g' testssl.sh

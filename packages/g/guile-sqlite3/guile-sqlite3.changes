@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul 19 20:40:54 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 0.1.2:
+  * Allow builds with Guile 3.0.
+  * Various smaller additions and bug fixes.
+- Remove patch:
+  * enable-guile-3.0.patch: included in release
+
+-------------------------------------------------------------------
 Mon Jan 13 21:55:22 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Add patch:

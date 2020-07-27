@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 27 08:13:14 UTC 2020 - matthias.gerstner@suse.com
+
+- In a previous commit the Requires line for the tss user got accidentally
+  dropped. This change reintroduces it.
+
+-------------------------------------------------------------------
 Tue Jun  2 10:23:53 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - add gcc-10.patch: fixes the build on gcc 10 by removing unused global

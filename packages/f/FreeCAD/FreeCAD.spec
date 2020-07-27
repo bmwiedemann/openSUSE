@@ -188,6 +188,7 @@ rm src/3rdparty/Pivy -fr
 rm src/3rdparty/Pivy-0.5 -fr
 
 %build
+# disabled until vtk 9 support arrives: -DBUILD_MESH_PART:BOOL=ON -DBUILD_FEM:BOOL=ON
 %cmake \
   -DCMAKE_INSTALL_PREFIX=%{x_prefix} \
   -DCMAKE_INSTALL_DATADIR=%{_datadir}/%{name} \
@@ -204,9 +205,9 @@ rm src/3rdparty/Pivy-0.5 -fr
   -DPYSIDE_INCLUDE_DIR=/usr/include/PySide2/ \
   -DBUILD_QT5=ON \
   -DFREECAD_USE_EXTERNAL_PIVY:BOOL=TRUE \
-  -DBUILD_MESH_PART:BOOL=ON \
+  -DBUILD_MESH_PART:BOOL=OFF \
   -DBUILD_OPENSCAD:BOOL=ON \
-  -DBUILD_FEM:BOOL=ON \
+  -DBUILD_FEM:BOOL=OFF \
   -DBUILD_FEM_NETGEN:BOOL=OFF \
   -DFREECAD_USE_EXTERNAL_SMESH=OFF \
   ..

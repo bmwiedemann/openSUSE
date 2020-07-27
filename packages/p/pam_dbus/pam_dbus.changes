@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 27 10:26:52 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- The python2 pacakge dbus-1-python is gone: use python3-dbus-python
+
+-------------------------------------------------------------------
 Wed Jan 29 12:52:19 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch py3port.patch

@@ -18,7 +18,7 @@
 
 
 Name:           redfishtool
-Version:        1.1.2
+Version:        1.1.4
 Release:        0
 Summary:        A CLI tool for accessing the Redfish API
 License:        BSD-3-Clause
@@ -44,6 +44,7 @@ of the Redfish RESTful API for Data Center Hardware Management.
 %install
 %python3_install
 %python_expand %fdupes %{buildroot}%{python3_sitelib}/
+rm %{buildroot}/%{_bindir}/redfishtool.py
 
 %files
 %license LICENSE.md

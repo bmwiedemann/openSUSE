@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Jul  8 18:53:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.2.0
+  telnet:
+  * There was an issue with telnet handling where it could get
+    into a loop talking to the remote end.
+  * Fix an issue where an error in a certain place could cause
+    closing to hang.
+  selector:
+    Allow an arbitrary number of file descriptors with epoll. With
+    epoll, you can set the max number of fds > FD_SETSIZE. Allow
+    that.
+  IPv6:
+  * There was a bug in the Linux SCTP stack dealing with IPv6
+    handling that I thought was a bug in ser2net. So I looked, and
+    I found some issues with IPv6 in general and the way it handles
+    IPv4 address mapping. In the new code:
+    Modify the operation of an address without "ipv6," explicitly
+    in front of it to all V4 mapped addresses. And fix the connect
+    side to set V6 only on the socket if "ipv6,"is in front of it.
+    This means you cannot mix "ipv6," and "ipv6n4," addresses on
+    the same connection, and the default is now "ipv6n4"
+    This broke handling of things like "tcp,1234", so rework those
+    to only use IPv6 when it is mapped. That, in turn, broke UDP.
+    Or, more accurately, expose a UDP bug, so some work had to be
+    done to handle IPv4 mapped addresses in IPv6 by reworking
+    address comparison to handle that.
+  general:
+    convert gensio_raddr_to_str(), gensio_get_raddr(), and 
+    gensio_remote_id() to use gensio_control(). Having separate
+    functions for those added to the API and added a lot of code
+    to all the intermediate layer. The function are there but
+    deprecated, and use the ioctls underneath them.
+    Have gensio snprint functions return a gensiods
+    Add dll visibililty handling. This is required for windows,
+    and makes things cleaner. As part of this, functions should
+    all be the right visibility now.
+    Lots of other little bug fixes and such.
+  relpkt:
+    There were issues with the way the base code handled certain
+    things. For a real protocol that might have outstanding data
+    to send but cannot send due to flow control, new functions
+    needs to be added to the base layer to account for this, and
+    relpkt needed to use them.
+    Fixed several other issues dealing with close handling and flow
+    control. It runs much better now.
+  msgdelim:
+    There was an issue with telnet handling where it could get into
+    a loop talking to the remote end.
+    Fix an issue where an error in a certain place could cause
+    closing to hang.
+  file descriptor based gensios:
+    Fixed an issue that would result in a callback being done after
+    close is compelete.
+  UDP:
+    As part of an added test, I found a situation where if the
+    upper layer doesn't accept the data for a UDP packet, the UDP
+    layer would not accept any more data from the socket.
+
+-------------------------------------------------------------------
 Sat May 16 14:56:56 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.1.8

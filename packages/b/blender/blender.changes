@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Jul 27 09:03:30 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- After upgrading ffmpeg from 4.2.3 to 4.3.1, unaligned buffer
+  accesses in yuv2rgb conversion result in segfaults:
+  https://trac.ffmpeg.org/ticket/8747, https://trac.ffmpeg.org/ticket/8532
+  Issue fixed for Blender with:
+  https://developer.blender.org/rB6778ef4dcc6e8d92e3b2ec9b9ecaf1e54e5bf7b5
+  0001-Fix-T78867-Crash-related-to-viewing-video-files.patch
+
+-------------------------------------------------------------------
+Fri Jul 24 09:25:47 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 2.83.3
+  - Fix alignment/size issue on ARM/RPi architecture [9c41744ef4]
+  - EEVEE: Cubemaps shows black [T75943]
+  - Blender Freezes when using the 3d Scale Gizmo [T77455]
+  - GPU: Apple/Nvidia Proxy check [T78175]
+  - Fix missing GPU image free in background mode [9949b5098a]
+  - Overlay: Weight colors are not in render in the right
+    colorspace [T77780]
+  - Cycles OpenCL error rendering empty scene [T77984]
+  - Overlay: Edit mode + wire drawtype + infront not transparent
+    [T77655]
+  - Overlay: Sulpt overlay not working if object use in-front
+    option [T76229]
+  - Sculpt mode performance regression in 2.83 [T77641]
+  - Faces missing, weird faces added [T74024]
+  - Fix error when filtering in Outliner “Blender File” mode with
+    libraries [d0c986b748]
+  - Fix crash when use GPencil merge without materials [T78337]
+  - Fix undefined behavior when using BSDF nodes inside volume
+    shaders[T76171]
+  - GPencil interpolation crash [T78134]
+  - GPencil: Strokes go missing after Interpolation from another
+    layer [T78042]
+  - Workbench: “Not enough texture slots!” Message being spammed
+    and lags the entire computer [T77759]
+
+-------------------------------------------------------------------
 Sat Jul 11 08:26:08 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Supply a Recommends: %name-lang = %version, because current locale

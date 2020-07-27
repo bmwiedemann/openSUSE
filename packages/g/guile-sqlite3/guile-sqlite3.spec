@@ -17,15 +17,13 @@
 
 
 Name:           guile-sqlite3
-Version:        0.1.0
+Version:        0.1.2
 Release:        0
 Summary:        SQLite3 database access from Guile
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/Other
 URL:            https://notabug.org/guile-sqlite3/guile-sqlite3
 Source0:        https://notabug.org/guile-sqlite3/%{name}/archive/v%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM: enable-guile-3.0.patch -- 103fa4973b
-Patch0:         enable-guile-3.0.patch
 BuildRequires:  automake
 BuildRequires:  guile-devel >= 2.0.10
 BuildRequires:  pkg-config
@@ -39,7 +37,6 @@ This package provides Guile bindings to the SQLite3 database system.
 
 %prep
 %setup -q -n %{name}
-%patch0 -p1
 
 %build
 autoreconf -vfi

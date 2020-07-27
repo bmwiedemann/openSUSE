@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul 26 18:11:49 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fping 4.4:
+  * Linux unprivileged ping support (ping_group_range)
+  * Add SIGQUIT summary support similar to ping
+  * bug fixes
+- drop fping-4.2-gcc10-extern.patch, upstream
+
+-------------------------------------------------------------------
 Sun Jul 12 17:22:38 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - add upstream signing key and validate source signature

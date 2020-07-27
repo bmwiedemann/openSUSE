@@ -65,4 +65,12 @@
   * Fix bugs, drop signed-char.patch and autofix.diff (forwarded request 793095 from hillwood)</comment>
     <requestid>793101</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>07af8c91ebe165fe0e11a4263786fdcd</srcmd5>
+    <version>1.1</version>
+    <time>1595864622</time>
+    <user>dimstar_suse</user>
+    <comment>Enhance the &quot;fix tumbleweed&quot; changes entry by adding the &quot;how&quot;</comment>
+    <requestid>823007</requestid>
+  </revision>
 </revisionlist>

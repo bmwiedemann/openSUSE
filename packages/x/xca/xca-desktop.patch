@@ -1,10 +1,10 @@
-Index: xca-2.1.2/misc/xca.desktop
+Index: misc/xca.desktop
 ===================================================================
---- xca-2.1.2.orig/misc/xca.desktop
-+++ xca-2.1.2/misc/xca.desktop
-@@ -10,5 +10,5 @@ Comment[hr]=Grafičko korisničko sučel
+--- misc/xca.desktop.orig
++++ misc/xca.desktop
+@@ -11,5 +11,5 @@ Comment[nl]=Een grafische gebruikers int
  Exec=xca %F
- Icon=xca-32x32
+ Icon=xca
  Terminal=false
 -Categories=Application;Utility;Qt;
 +Categories=Utility;DesktopUtility;

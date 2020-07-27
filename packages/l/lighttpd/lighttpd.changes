@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  2 16:37:34 UTC 2020 - Alexander van Kaam <alexvkaam@gmail.com>
+
+- Changed /etc/logrotate.d/lighttpd from init.d to systemd
+  fix boo#1146452. 
+
+-------------------------------------------------------------------
 Fri Mar  6 12:49:37 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
 
 - Remove deprecated GeoIP support (bsc#1156198)

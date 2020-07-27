@@ -1,7 +1,7 @@
 #
 # spec file for package sphinx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,9 +54,9 @@ BuildRequires:  pkgconfig(libecpg_compat) >= 9.6
 BuildRequires:  pkgconfig(libpgtypes) >= 9.6
 BuildRequires:  pkgconfig(libpq) >= 9.6
 Requires:       logrotate
-Provides:       %{daemon}
 Requires(pre):  %{_bindir}/getent
-Requires(pre):  /usr/sbin/useradd
+Requires(pre):  %{_sbindir}/useradd
+Provides:       %{daemon}
 %if 0%{?suse_version}
 Requires(post): %fillup_prereq
 #Requires(pre):  permissions >= 2014.11
@@ -142,6 +142,8 @@ find %{buildroot} "(" -name "*.a" -o -name "*.la" ")" -print -delete
 
 # Create /var/log/sphinx
 mkdir -p %{buildroot}%{_localstatedir}/log/%{name}
+touch %{buildroot}%{_localstatedir}/log/%{name}/query.log
+touch %{buildroot}%{_localstatedir}/log/%{name}/%{daemon}.log
 
 # Create /var/run/sphinx
 mkdir -p %{buildroot}/run/%{name}
@@ -154,13 +156,9 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/%{name}/data/index
 for CONF in %{buildroot}%{_sysconfdir}/%{name}/%{name}.conf.dist\
  %{buildroot}%{_sysconfdir}/%{name}/%{name}-min.conf.dist;
 do
-
  sed -i 's|%{_localstatedir}/log/%{daemon}.log|%{_localstatedir}/log/%{name}/%{daemon}.log|g' ${CONF}
-
  sed -i 's|%{_localstatedir}/log/query.log|%{_localstatedir}/log/%{name}/query.log|g' ${CONF}
-
  sed -i 's|%{_localstatedir}/log/%{daemon}.pid|/run/%{name}/%{daemon}.pid|g' ${CONF}
-
  sed -i 's|%{_localstatedir}/data|%{_localstatedir}/lib/%{name}/data|g' ${CONF}
 done
 
@@ -222,16 +220,6 @@ useradd -r -g %{sphinx_group} -d %{sphinx_home} -s /bin/sh \
    /sbin/chkconfig --add %{daemon}
  %endif
 %endif
-# Create empty log files with correct rights if not exist
-for LOG in %{_localstatedir}/log/%{name}/%{daemon}.log\
- %{_localstatedir}/log/%{name}/query.log;
-do
-  if [ ! -f ${LOG} ];then
-   touch ${LOG}
-   chmod 0640 ${LOG}
-   chown %{sphinx_user}:root ${LOG}
-  fi
-done
 
 %preun
 %if 0%{?has_systemd}
@@ -261,10 +249,6 @@ done
   fi
  %endif
 %endif
-
-%posttrans
-# chown -R %%{sphinx_user}:root %%{_localstatedir}/log/sphinx/
-chown -R %{sphinx_user}:%{sphinx_group} %{_localstatedir}/lib/%{name}/
 
 %post -n libsphinxclient-%{soname} -p /sbin/ldconfig
 %postun -n libsphinxclient-%{soname} -p /sbin/ldconfig
@@ -308,6 +292,9 @@ chown -R %{sphinx_user}:%{sphinx_group} %{_localstatedir}/lib/%{name}/
 %dir %attr(0755, %{sphinx_user}, %{sphinx_group}) %{_localstatedir}/lib/%{name}
 %dir %attr(0755, %{sphinx_user}, %{sphinx_group}) %{_localstatedir}/lib/%{name}/data
 %dir %attr(0755, %{sphinx_user}, %{sphinx_group}) %{_localstatedir}/lib/%{name}/data/index
+%dir %attr(0750, root, root) %{_localstatedir}/log/%{name}
+%attr(0640, %{sphinx_user}, root) %{_localstatedir}/log/%{name}/%{daemon}.log
+%attr(0640, %{sphinx_user}, root) %{_localstatedir}/log/%{name}/query.log
 
 %files -n libsphinxclient-%{soname}
 %license COPYING

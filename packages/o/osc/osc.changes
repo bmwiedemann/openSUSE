@@ -27,6 +27,12 @@ Thu Jul  9 08:06:35 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
   * re-enable test suite
 
 -------------------------------------------------------------------
+Thu Jul  2 12:46:33 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
+
+- Really fix path for fish completion file to 
+  /usr/share/fish/vendor_completions.d and fix its permissions.
+
+-------------------------------------------------------------------
 Fri May 29 18:40:18 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
 
 - 0.169.1

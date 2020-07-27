@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 26 14:31:08 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Spec cleaner minimal update date
+- Minor cosmetic changes
+- Close boo#1157590
+  + Remove posttrans section with chown
+    On systems with fs.protected_hardlinks=0 this allows sphinx
+    to escalate to root.
+  + Add log directory and files to files section
+
+-------------------------------------------------------------------
 Sat Mar 23 08:45:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Reduce scriptlets' hard dependency on systemd.
@@ -32,7 +43,7 @@ Thu Jun 14 12:23:40 UTC 2018 - mvetter@suse.com
 -------------------------------------------------------------------
 Sun Sep 18 11:29:08 UTC 2016 - bruno@ioda-net.ch
 
-- Update to last maintenance release 
+- Update to last maintenance release
   with over 70 bug fixes and small improvements:
   * max_matches option did not affect facet queries #2348
   * support for Connector/J 5.1.36+ #2365
@@ -51,7 +62,7 @@ Sun Sep 18 11:29:08 UTC 2016 - bruno@ioda-net.ch
     service script
     For a complete list, please consult the changelog.
     http://sphinxsearch.com/docs/latest/rel2211.html
-- Packaging : 
+- Packaging :
   * Fix missing postun for libsphinx
   * Added ghost /run/sphinx
 
@@ -59,7 +70,7 @@ Sun Sep 18 11:29:08 UTC 2016 - bruno@ioda-net.ch
 Sun Sep 20 12:10:35 UTC 2015 - bruno@ioda-net.ch
 
 - Removed unneeded patch sphinx-fix_static.patch
-- Fix packaging and build issues : add systemd requires when needed 
+- Fix packaging and build issues : add systemd requires when needed
 
 -------------------------------------------------------------------
 Sat Sep 19 12:04:41 UTC 2015 - p.drouand@gmail.com
@@ -74,10 +85,10 @@ Sat Sep 19 12:04:41 UTC 2015 - p.drouand@gmail.com
   * added #2121, "where flt<>val" support, "where fltcol=intval" and
     "where fltcol!=intval" conditions
   * added #2119, new indexer exit code 2 on a --rotate failure
-  * fixed #2207, unified min_prefix_len, min_infix_len behavior 
+  * fixed #2207, unified min_prefix_len, min_infix_len behavior
     between RT and plain indexes
   * fixed #2020, unified (and greatly shortened) the list of SphinxQL
-    reserved keywords between indexer checks, SphinxQL parser checks, 
+    reserved keywords between indexer checks, SphinxQL parser checks,
     and the documentation
 - Add patches
   * sphinx-default_listen.patch
@@ -113,8 +124,8 @@ Thu May 14 18:28:04 UTC 2015 - bruno@ioda-net.ch
   * fixed #2208, ZONESPANLIST() support for RT indexes
   * fixed #1979, snippets generation and span length and lcs calculation in proximity queries
   * fixed truncated results (and a potential crash) vs long enough ZONESPANLIST() result
- 
-- Packaging: 
+
+- Packaging:
   * run spec-cleaner
     ** Adapted Year licence
 	** changes to make macros
@@ -128,7 +139,7 @@ Thu May 14 18:28:04 UTC 2015 - bruno@ioda-net.ch
 Fri Mar 20 19:08:04 UTC 2015 - hvogel@suse.com
 
 - Update to 2.2.8
-  
+
   * Full JSON support.
   * New and easy FACET syntax.
   * ALTER statement for dynamic index manipulation.
@@ -154,7 +165,7 @@ Wed Aug  7 10:57:10 UTC 2013 - coolo@suse.com
 - update to 2.0.8
   Bug fixes
   ---------
-  
+
      * fixed #1515, log strings over 2KB were clipped when
        query_log_format=plain
      * fixed #1514, RT index disk chunk lose attribute update on daemon
@@ -184,18 +195,18 @@ Wed Aug  7 10:57:10 UTC 2013 - coolo@suse.com
 -------------------------------------------------------------------
 Mon May  6 07:55:01 UTC 2013 - aldemir.akpinar@gmail.com
 
-- Removed libsphinx client package and moved it to sphinx-devel 
+- Removed libsphinx client package and moved it to sphinx-devel
 
 -------------------------------------------------------------------
 Thu Apr 25 08:29:01 UTC 2013 - aldemir.akpinar@gmail.com
 
 - update to 2.0.7
-- cleanup of spec file 
+- cleanup of spec file
 
 -------------------------------------------------------------------
 Fri Feb  8 07:43:55 UTC 2013 - highwaystar.ru@gmail.com
 
-- update to 2.0.6 release 
+- update to 2.0.6 release
 
 -------------------------------------------------------------------
 Tue Jun  3 03:20:29 GMT 2011 - ctype

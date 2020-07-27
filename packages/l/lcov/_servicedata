@@ -1,6 +1,6 @@
 <servicedata>
   <service name="tar_scm">
     <param name="url">git://github.com/linux-test-project/lcov</param>
-    <param name="changesrevision">75fbae1cfc5027f818a0bb865bf6f96fab3202da</param>
+    <param name="changesrevision">b668fab257931356bfb21ec9c89944143b5855e6</param>
   </service>
 </servicedata>

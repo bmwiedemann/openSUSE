@@ -1,7 +1,7 @@
 #
 # spec file for package xca
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xca
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        An RSA key and certificate management tool
 License:        BSD-3-Clause
@@ -28,6 +28,7 @@ Source:         https://github.com/chris2511/xca/releases/download/RELEASE.%{ver
 Patch0:         %{name}-desktop.patch
 Patch1:         %{name}-configure.patch
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -37,7 +38,7 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(openssl)
-Requires:       libQt5Sql5-sqlite
+#Requires:       libQt5Sql5-sqlite
 
 %description
 Graphical certification authority is an interface for managing RSA
@@ -60,7 +61,7 @@ Baumstruktur präsentiert.
 
 %prep
 %setup -q
-%autopatch -p1
+%autopatch -p0
 
 %build
 %configure --with-qt-version=5 \
@@ -77,6 +78,7 @@ Baumstruktur präsentiert.
 %license COPYRIGHT
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/mime/packages/%{name}.xml
 %{_datadir}/pixmaps/%{name}*
 %{_datadir}/%{name}

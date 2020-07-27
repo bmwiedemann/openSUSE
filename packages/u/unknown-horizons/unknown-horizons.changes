@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 19 11:33:17 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- add appdata.patch https://en.opensuse.org/openSUSE:AppStore metadata
+
+-------------------------------------------------------------------
 Mon Jul  6 03:55:20 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to sort file lists (boo#1041090)

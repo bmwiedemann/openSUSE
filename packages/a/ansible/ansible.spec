@@ -220,7 +220,7 @@ Recommends:     %{python}-six
 Recommends:     sshpass
 %endif
 Name:           ansible
-Version:        2.9.10
+Version:        2.9.11
 Release:        0
 Summary:        SSH-based configuration management, deployment, and task execution system
 License:        GPL-3.0-or-later
@@ -229,8 +229,6 @@ URL:            https://ansible.com/
 Source:         https://releases.ansible.com/ansible/ansible-%{version}.tar.gz
 Source1:        https://releases.ansible.com/ansible/ansible-%{version}.tar.gz.sha
 Source99:       ansible-rpmlintrc
-# PATCH-FEATURE-UPSTREAM ansible_bugfix_640.diff gh#ansible-collections/community.general#640
-Patch:          ansible_bugfix_640.diff
 BuildArch:      noarch
 # extented documentation
 %if 0%{?with_docs}
@@ -290,9 +288,6 @@ automatically.
 
 %prep
 %setup -q -n ansible-%{version}
-pushd lib/ansible
-%patch -p2
-popd
 
 for file in .git_keep .travis.yml ; do
   find . -name "$file" -delete

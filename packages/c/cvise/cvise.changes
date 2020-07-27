@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sun Jul 26 19:28:48 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.5.0+git.20200726.1b1be7c:
+  * Bump to v1.6.0.
+
+-------------------------------------------------------------------
+Fri Jul 24 09:46:50 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.5.0+git.20200724.686d1e9:
+  * clex: correctly exit when file does not exist.
+  * Clean up ignores a bit.
+  * Add ignores.
+  * One more fix to ignores.
+  * Add more ignores.
+  * Fix mapping and add ignores.
+  * Replace coverage badge.
+  * Rename codecov.yml file.
+  * Add .codecov.yml file with prefix fix.
+  * Switch to codecov.
+  * LGMT: exclude cpp/fixme-comment type.
+  * Fix 2 LGTM CPP warnings.
+  * LGTM: Do not build with debug info enabled.
+  * Remove object files for LGTM.
+  * Add coverage badge.
+  * Update build script.
+  * Add missing python3 package.
+  * Add exclude pattern.
+  * cvise/utils/testing.py: print full backtrace for test failure
+  * cvise/passes/clangbinarysearch.py: add missing imports
+  * Fix usage of BUILD_TYPE.
+  * Pass BUILD_TYPE to build_and_test.sh.
+  * Add missing sqlite3.
+  * Add special coverage build.
+  * Add argument to build_and_test.sh.
+  * Install python3-pip package.
+  * Run coverage just for one build.
+  * Add objdir to .gitignore.
+  * Install coveralls within Docker containers.
+  * Add coveralls.
+  * Fix 2 LGTM CPP warnings.
+  * Add cpp grade for LGTM.
+  * Add build command.
+  * Remove make from LGTM.
+  * Fix build
+  * LGTM: Move to single line.
+  * Rework configure commands for LGTM.
+  * LGTM: fix macro definition.
+  * LGTM: add search location for LGTM.
+  * Remove 2 packages for LGTM.
+  * Add Pebble via pip3 for LGTM.
+  * Add more LLVM packages for LGTM.
+  * Fix LGTM build.
+  * Fix remaining LGTM issues.
+  * Use DEBUG mode for cmake.
+  * Clean Python code.
+  * Fix up InvalidInterestingnessTestError constructor.
+  * Fix usage of UnknownArgumentError.
+  * Update Ubuntu packages in lgtm.yml.
+  * Fix package list in LGTM.
+  * Add code quality badge.
+  * Add LGTM to README.md file.
+  * Add new dependencies to lgtm.yml file.
+  * Add LGTM yml file.
+  * Update documentation a bit.
+  * Add Debian and Fedora packages.
+
+-------------------------------------------------------------------
 Tue Jul 07 12:15:06 UTC 2020 - mliska@suse.cz
 
 - Update to version 1.5.0+git.20200707.c1ebd48:

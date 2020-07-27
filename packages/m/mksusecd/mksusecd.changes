@@ -1,4 +1,25 @@
 --------------------------------------------------------------------
+Mon Jul 27 12:37:29 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#50
+- added "--sign-pass-file"
+- added option for recreating and signing the repo
+- remove "all done" message
+- additional passphrase options are not necessary at key creation
+- set additional options only when a existing sign key is specified
+- print message if --sign-pass-file and missing
+- sign-key
+- readded removed line
+- removed sign_passwd_option on import
+- changed if-else-logic when specifying a passphrasefile
+- readded redirection to /dev/null
+- removed a print
+- removed trailing spaces
+- remove a single space
+- additional options
+- 1.75
+
+--------------------------------------------------------------------
 Wed Jun 24 16:05:31 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#49

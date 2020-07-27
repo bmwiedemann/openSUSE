@@ -410,4 +410,13 @@ Should be handled together with sr#769061</comment>
   [1]: https://sourceforge.net/p/trousers/mailman/message/36951419/</comment>
     <requestid>810797</requestid>
   </revision>
+  <revision rev="47" vrev="12">
+    <srcmd5>bb4b5fcdbd2ca7145dfde54860049717</srcmd5>
+    <version>0.3.14</version>
+    <time>1595864857</time>
+    <user>dimstar_suse</user>
+    <comment>- In a previous commit the Requires line for the tss user got accidentally
+  dropped. This change reintroduces it.</comment>
+    <requestid>822938</requestid>
+  </revision>
 </revisionlist>

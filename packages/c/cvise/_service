@@ -4,11 +4,11 @@
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">cvise</param>
-    <param name="versionformat">1.5.0+git.%cd.%h</param>
+    <param name="versionformat">1.6.0+git.%cd.%h</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
-    <param name="compression">xz</param>
+    <param name="compression">zstd</param>
   </service>
   <service mode="disabled" name="set_version"/>
 </services>

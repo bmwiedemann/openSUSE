@@ -25,4 +25,12 @@
   python3-argon2-cffi (forwarded request 693200 from hellcp)</comment>
     <requestid>693295</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d5a71bd20fd8d2334930817a2d2eadbf</srcmd5>
+    <version>3.99.2</version>
+    <time>1595864947</time>
+    <user>dimstar_suse</user>
+    <comment>update to 3.99.2 to work with latest pykeepass (forwarded request 821767 from kkirill)</comment>
+    <requestid>822965</requestid>
+  </revision>
 </revisionlist>

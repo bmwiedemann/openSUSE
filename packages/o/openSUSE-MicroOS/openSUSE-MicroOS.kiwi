@@ -516,6 +516,7 @@
     <packages type="image" profiles="kvm-and-xen,kvm-and-xen_x86_64,kvm-and-xen_aarch64,VMware,MS-HyperV,VirtualBox,Pine64,RaspberryPi,RaspberryPi2,Vagrant_x86_64,Vagrant_aarch64">
         <!-- Needed for initial configuration, except on OpenStack-Cloud, where cloud-init is used -->
         <package name="ignition-dracut"/>
+        <package name="combustion"/>
         <package name="growpart-generator"/>
     </packages>
     <packages type="image" profiles="ContainerHost">

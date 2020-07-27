@@ -1,8 +1,8 @@
-Index: xca-2.1.2/configure.ac
+Index: configure.ac
 ===================================================================
---- xca-2.1.2.orig/configure.ac
-+++ xca-2.1.2/configure.ac
-@@ -226,7 +226,7 @@ if test "${enable_doc}"; then
+--- configure.ac.orig
++++ configure.ac
+@@ -263,7 +263,7 @@ if test "${enable_doc}"; then
  
    case "$DOCTOOL" in
     linuxdoc) DOCTOOL="linuxdoc -B html -H \$(TOPDIR)/doc/html.header";;
@@ -11,11 +11,11 @@ Index: xca-2.1.2/configure.ac
     :)
      if test "${srcdir}" != "."; then
        mkdir -p doc
-Index: xca-2.1.2/configure
+Index: configure
 ===================================================================
---- xca-2.1.2.orig/configure
-+++ xca-2.1.2/configure
-@@ -4136,7 +4136,7 @@ test -n "$DOCTOOL" || DOCTOOL="":""
+--- configure.orig
++++ configure
+@@ -4274,7 +4274,7 @@ test -n "$DOCTOOL" || DOCTOOL="":""
  
    case "$DOCTOOL" in
     linuxdoc) DOCTOOL="linuxdoc -B html -H \$(TOPDIR)/doc/html.header";;

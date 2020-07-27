@@ -9,7 +9,7 @@ Sat Apr 11 13:16:04 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 -------------------------------------------------------------------
 Sun Jan 13 10:42:52 UTC 2019 - Marguerite Su <i@marguerite.su>
 
-- fix tumbleweed build
+- fix tumbleweed build by adding BuildRequires: python
 
 -------------------------------------------------------------------
 Tue Jul 21 10:30:52 UTC 2015 - schwab@suse.de

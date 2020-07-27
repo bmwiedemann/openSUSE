@@ -318,4 +318,12 @@
     <comment>- Replace openSUSE-MicroOS-release-dvd with MicroOS-release-dvd:
   the product has been renamed.</comment>
   </revision>
+  <revision rev="30" vrev="30">
+    <srcmd5>1080f18eac69d724c415256e1ee21286</srcmd5>
+    <version>16.0.0</version>
+    <time>1595865020</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823003</requestid>
+  </revision>
 </revisionlist>

@@ -34,6 +34,7 @@ Patch3:         003-rateidx_init-fix.patch
 Patch4:         004-iftop-unlimited_text_output.patch
 Patch5:         0001-Prefer-ncurses6w.patch
 Patch6:         006-iftop-choose_first_running_interface.patch
+Patch7:         007-iftop-declare-extern-vars.patch
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(ncursesw)
 %else
@@ -58,6 +59,9 @@ network links slow.
 %patch5 -p1
 %endif
 %patch6 -p1
+%if 0%{?suse_version} >= 1500
+%patch7 -p1
+%endif
 
 %build
 autoreconf -fiv

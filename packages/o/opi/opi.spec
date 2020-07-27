@@ -17,13 +17,13 @@
 
 
 Name:           opi
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        OBS Package Installer (CLI)
 License:        GPL-3.0-only
 Group:          System/Packages
-URL:            https://github.com/openSUSE-zh/%{name}
-Source0:        https://github.com/openSUSE-zh/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/openSUSE/%{name}
+Source0:        https://github.com/openSUSE/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 Requires:       perl
 Requires:       perl(Config::Tiny)

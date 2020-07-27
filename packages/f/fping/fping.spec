@@ -17,7 +17,7 @@
 
 
 Name:           fping
-Version:        4.2
+Version:        4.4
 Release:        0
 Summary:        A program to ping multiple hosts
 License:        MIT
@@ -26,7 +26,6 @@ URL:            http://www.fping.org
 Source:         http://fping.org/dist/%{name}-%{version}.tar.gz
 Source2:        http://fping.org/dist/%{name}-%{version}.tar.gz.asc
 Source3:        http://david.schweikert.ch/gpg-pubkey.txt#/%{name}.keyring
-Patch0:         fping-4.2-gcc10-extern.patch
 %if 0%{?suse_version} >= 1500
 Requires(pre):  permissions
 %endif
@@ -51,10 +50,10 @@ designed to be easy to parse.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-%configure
+%configure \
+	--enable-safe-limits
 %make_build
 
 %install

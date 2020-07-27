@@ -1407,4 +1407,12 @@ sr#761596 needed for this.</comment>
   * re-enable test suite</comment>
     <requestid>819698</requestid>
   </revision>
+  <revision rev="151" vrev="2">
+    <srcmd5>0dc8b0452b5133606e9c007e20d23914</srcmd5>
+    <version>0.170.0</version>
+    <time>1595864604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822844</requestid>
+  </revision>
 </revisionlist>

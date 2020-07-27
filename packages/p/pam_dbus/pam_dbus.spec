@@ -32,7 +32,11 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  dbus-1-devel
 BuildRequires:  dbus-1-glib-devel
+%if 0%{?suse_version} >= 1550
+BuildRequires:  python3-dbus-python
+%else
 BuildRequires:  dbus-1-python
+%endif
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
 BuildRequires:  gobject-introspection

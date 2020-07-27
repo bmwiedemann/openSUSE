@@ -248,4 +248,13 @@
   * mu4e-headers: require mule-util for truncate-string-ellipsis</comment>
     <requestid>813122</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>376d43a8140c10af237a5a2ba39d3341</srcmd5>
+    <version>1.4.12</version>
+    <time>1595864749</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.12:
+  * Bugfix release, no changes provided</comment>
+    <requestid>822925</requestid>
+  </revision>
 </revisionlist>

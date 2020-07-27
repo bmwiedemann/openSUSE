@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 21 04:48:11 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.11 with many bug fixes
+- removed ansible_bugfix_640.diff obsoleted by upstream update
+
+-------------------------------------------------------------------
 Mon Jul 13 17:53:58 UTC 2020 - Andrey Karepin <egdfree@opensuse.org>
 
 - added ansible_bugfix_640.diff to fix gh#ansible-collections/community.general#640

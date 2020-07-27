@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 12 14:20:58 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 3.3.1
+  * Fix downgrades of rocks containing directories: stop it from creating spurious 0-byte files where directories have been
+  * Fix error message when attempting to copy a file that is missing
+  * For the changes made in 3.3.0 see https://github.com/luarocks/luarocks/blob/master/CHANGELOG.md#whats-new-in-luarocks-330
+
+-------------------------------------------------------------------
 Mon Jul  6 19:05:47 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add lua54 as new build target

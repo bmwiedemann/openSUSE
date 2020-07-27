@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 23 11:43:21 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- temporary disable FEM module until VTK 9 support arrives
+
+-------------------------------------------------------------------
 Sun Jun  7 15:48:17 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with Qt 5.15, add fix_qt_5.15_build.patch

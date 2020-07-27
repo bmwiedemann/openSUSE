@@ -1,7 +1,7 @@
 #
 # spec file for package kompose
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,15 +22,15 @@ Release:        0
 Summary:        Go from Docker Compose to Kubernetes
 License:        Apache-2.0
 Group:          Development/Tools/Other
-Url:            http://kompose.io
+URL:            http://kompose.io
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM kompose-make-pie.patch sweiberg@suse.com -- use pie to fix lint-warning
 Patch1:         kompose-make-pie.patch
-BuildRequires:  make
-BuildRequires:  go >= 1.6
 BuildRequires:  git
+BuildRequires:  go >= 1.6
+BuildRequires:  make
 # necessary for SLE15, Leap 15, Tumbleweed and some archs (no problem for other releases as well)
-BuildRequires:  python-PyYAML
+BuildRequires:  python3-PyYAML
 #!BuildIgnore:  python2-PyYAML
 
 %define GONS github.com/kubernetes
@@ -63,4 +63,3 @@ install -m 0755 %{name} %{buildroot}/%{_bindir}/
 %doc CHANGELOG.md README.md
 
 %changelog
-

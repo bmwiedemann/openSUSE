@@ -19,15 +19,13 @@
 %define __builder ninja
 %define tarname wxmaxima
 Name:           wxMaxima
-Version:        20.06.6
+Version:        20.07.0
 Release:        0
 Summary:        Graphical User Interface for the maxima Computer Algebra System
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://wxmaxima-developers.github.io/wxmaxima/
 Source0:        https://github.com/wxmaxima-developers/wxmaxima/archive/Version-%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM wxMaxima-string-type-conversion.patch gh#wxMaxima-developers/wxmaxima#1324 badshah400@gmail.com -- Fix an invalid wxString to wxChar* conversion
-Patch0:         wxMaxima-string-type-conversion.patch
 BuildRequires:  appstream-glib
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -45,7 +43,11 @@ BuildRequires:  rsvg-convert
 BuildRequires:  rsvg-view
 %endif
 BuildRequires:  update-desktop-files
+%if 0%{?suse_version} >= 1550
+BuildRequires:  wxGTK3-devel >= 3.1
+%else
 BuildRequires:  wxWidgets-devel >= 3
+%endif
 # gnuplot is needed for plotting
 Requires:       gnuplot
 Requires:       maxima >= 5.30.0
@@ -60,7 +62,6 @@ based on wxWidgets.
 
 %prep
 %setup -q -n %{tarname}-Version-%{version}
-%patch0 -p1
 
 %build
 %cmake

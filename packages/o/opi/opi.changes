@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 25 12:29:41 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 0.8.3
+  * Fixed
+    - ffmpeg/libav packages due to Packman update
+
+-------------------------------------------------------------------
 Sat May 16 12:16:13 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Version 0.8.2

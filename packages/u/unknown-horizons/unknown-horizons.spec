@@ -34,6 +34,8 @@ Patch1:         0001-replace-deprecated-to-distro-package-2910.patch
 Patch2:         rpm-shbang.patch
 # PATCH-FIX-UPSTREAM https://github.com/unknown-horizons/unknown-horizons/pull/2943
 Patch3:         reproducible.patch
+# PATCH-FIX-UPSTREAM https://github.com/unknown-horizons/unknown-horizons/pull/2946
+Patch4:         appdata.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  fife-devel >= 0.4.2
@@ -106,6 +108,9 @@ rm -rfv %{buildroot}%{_datadir}/%{name}/content/lang
 find %{buildroot}%{_datadir}/%{name} -type f -exec chmod 644 \{\} +
 
 %suse_update_desktop_file -i -r -G "A RTS simulation game" %{name} StrategyGame Game
+
+install -D -m 0644 content/packages/%{name}.appdata.xml %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
+
 %fdupes %{buildroot}%{python_sitelib}
 %fdupes %{buildroot}%{_datadir}
 
@@ -115,6 +120,7 @@ find %{buildroot}%{_datadir}/%{name} -type f -exec chmod 644 \{\} +
 %{_bindir}/unknown-horizons
 %{python3_sitelib}/horizons/
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/%{name}/
 %{_datadir}/icons/*/*/*/%{name}.svg
 %{_mandir}/man6/%{name}.6%{?ext_man}

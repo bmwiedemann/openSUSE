@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-passwordsafe
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define appname PasswordSafe
 %define appid   org.gnome.PasswordSafe
 Name:           gnome-passwordsafe
-Version:        3.32.0
+Version:        3.99.2
 Release:        0
 Summary:        A password manager for GNOME
 License:        GPL-3.0-or-later
@@ -28,19 +29,19 @@ Source:         %{url}/-/archive/%{version}/%{appname}-%{version}.tar.bz2
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
-BuildRequires:  python3-pykeepass
 BuildRequires:  python3-construct
+BuildRequires:  python3-pykeepass
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libhandy-0.0)
 BuildRequires:  pkgconfig(pwquality)
-Requires:       python3-pykeepass
+Requires:       python3-argon2-cffi
 Requires:       python3-construct
-Requires:       python3-pycryptodome
 Requires:       python3-lxml
 Requires:       python3-pwquality
-Requires:       python3-argon2-cffi
+Requires:       python3-pycryptodome
+Requires:       python3-pykeepass
 BuildArch:      noarch
 
 %description
