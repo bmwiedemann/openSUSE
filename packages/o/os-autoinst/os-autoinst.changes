@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul 26 03:25:50 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1595671685.bac387ad:
+  * Fix invalid "installprefix" replacement in CMakeLists.txt
+  * CMake: Install isotovideo as executable
+  * Use CMake build script within CI and RPM package builds
+  * CMake: Install openvswitch config directly under /etc
+  * CMake: Use -output option of xsubpp to fix file paths
+  * CMake: Make symlinks target work in source-tree builds as well
+  * CMake: Add autotools-style check target to build and test everything in one go
+  * CMake: Avoid overriding isotovideo and cv.pm when building within source tree
+
+-------------------------------------------------------------------
 Thu Jul 23 19:25:46 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1595530333.7963b3d4:
