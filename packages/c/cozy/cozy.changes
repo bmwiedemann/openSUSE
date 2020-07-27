@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Jul 16 18:32:49 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.6.18:
+  * Version bump
+  * Fix #281: Exception when opening the book overview while
+    artwork cache is not available
+  * Fix #282: Removing a book produces an exception and all books
+    are missing from book overview
+  * Fix #278: Jump to folder is broken
+  * Update build.yml
+  * Revert "CI: enable debugging"
+  * CI: enable debugging
+  * Update extra pot
+  * UÃpdate contributors
+  * Update pot
+  * Fix: viewport was missing in no_media stack
+  * Fix #271
+  * Fix: #268
+  * Fix: All books where displayed in recent page
+  * main_window.ui: Allow smaller window size
+  * A little bit risky but should detect more mp3 files
+  * track_element: bold title
+  * Update magic library
+  * Add elya5 to contributors
+  * TrackElement: use monospace font for duration
+  * Remove missing languages
+  * Fix: Some legacy methods were called with the wrong book
+    object
+  * Update languages
+  * Fix: swap author reader
+  * Merge branch 'master' of github.com:geigi/cozy into
+    refactor_views
+  * Library-view: listen to application setting changes
+  * Move filtering of author and reader to view and viewmodel
+  * Observable: only notify the property name
+  * WIP: a new place for application settings
+  * WIP: Add player class which works with new models
+  * Refactor: author reader filter box
+  * Tests: remove database file at end of test
+  * ...
+
+-------------------------------------------------------------------
 Tue Mar 17 10:29:54 UTC 2020 - suse@geigi.de
 
 - Update to 0.6.15
