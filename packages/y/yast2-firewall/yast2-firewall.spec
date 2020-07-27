@@ -17,7 +17,7 @@
 
 
 Name:           yast2-firewall
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Summary:        YaST2 - Firewall Configuration
 License:        GPL-2.0-only
@@ -30,13 +30,13 @@ BuildRequires:  perl-XML-Writer
 BuildRequires:  update-desktop-files
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-testsuite
-# AutoYaST issue report
-BuildRequires:  yast2 >= 4.3.2
+# Y2Firewall::Firewalld#modified_from_default
+BuildRequires:  yast2 >= 4.3.17
 BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
 BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
 
-# AutoYaST issue report
-Requires:       yast2 >= 4.3.2
+# Y2Firewall::Firewalld#modified_from_default
+Requires:       yast2 >= 4.3.17
 Requires:       yast2-ruby-bindings >= 1.0.0
 
 # ButtonBox widget

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 23 15:55:52 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- AutoYaST: Only export modified zones when it is asked to export a
+  reduced profile. (bsc#1171356)
+- 4.3.2
+
+-------------------------------------------------------------------
 Thu May  7 15:22:56 CEST 2020 - schubi@suse.de
 
 - AutoYaST: Cleanup/improve issue handling (bsc#1171335).
