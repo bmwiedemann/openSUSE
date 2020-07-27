@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 26 06:26:13 UTC 2020 - aloisio@gmx.com
+
+- Update to version 0.5.2
+  * Fixing typo in keep_playlist causing NameError
+
+-------------------------------------------------------------------
 Mon Jul 20 14:50:15 UTC 2020 - aloisio@gmx.com
 
 - Update to version 0.5.1
