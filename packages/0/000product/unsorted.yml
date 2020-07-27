@@ -3120,6 +3120,7 @@ unsorted:
   - fftw3-gnu-openmpi1-hpc-devel 
   - fftw3-gnu-openmpi2-hpc-devel 
   - fftw3-gnu-openmpi3-hpc-devel 
+  - fftw3-gnu-openmpi4-hpc-devel 
   - fftw3-mpi-devel 
   - fftw3-openmp-devel 
   - fftw3-threads-devel 
@@ -3135,6 +3136,8 @@ unsorted:
   - fftw3_3_3_8-gnu-openmpi2-hpc-devel-static 
   - fftw3_3_3_8-gnu-openmpi3-hpc-devel 
   - fftw3_3_3_8-gnu-openmpi3-hpc-devel-static 
+  - fftw3_3_3_8-gnu-openmpi4-hpc-devel 
+  - fftw3_3_3_8-gnu-openmpi4-hpc-devel-static 
   - fhourstones 
   - fhs 
   - fife-devel 
@@ -6347,6 +6350,10 @@ unsorted:
   - jackson-dataformat-smile 
   - jackson-dataformats-binary 
   - jackson-dataformats-binary-javadoc 
+  - jackson-datatype-guava 
+  - jackson-datatype-hppc 
+  - jackson-datatypes-collections 
+  - jackson-datatypes-collections-javadoc 
   - jackson-javadoc 
   - jackson-jaxrs-json-provider 
   - jackson-jaxrs-providers 
@@ -9256,7 +9263,7 @@ unsorted:
   - libdnf-devel 
   - libdnf2 
   - libdnnl1: [x86_64] 
-  - libdns1603-32bit: [x86_64] 
+  - libdns1605-32bit: [x86_64] 
   - libdns_sd 
   - libdns_sd-32bit: [x86_64] 
   - libdouble-conversion3-32bit: [x86_64] 
@@ -9483,12 +9490,14 @@ unsorted:
   - libfftw3-gnu-openmpi1-hpc 
   - libfftw3-gnu-openmpi2-hpc 
   - libfftw3-gnu-openmpi3-hpc 
+  - libfftw3-gnu-openmpi4-hpc 
   - libfftw3_3_3_8-gnu-hpc 
   - libfftw3_3_3_8-gnu-mpich-hpc 
   - libfftw3_3_3_8-gnu-mvapich2-hpc 
   - libfftw3_3_3_8-gnu-openmpi1-hpc 
   - libfftw3_3_3_8-gnu-openmpi2-hpc 
   - libfftw3_3_3_8-gnu-openmpi3-hpc 
+  - libfftw3_3_3_8-gnu-openmpi4-hpc 
   - libfftw3_mpi3 
   - libfftw3_mpi3-32bit: [x86_64] 
   - libfftw3_omp3 
@@ -10267,7 +10276,7 @@ unsorted:
   - libigfxcmrt-devel: [x86_64] 
   - libigfxcmrt7: [x86_64] 
   - libilbc0 
-  - libimaevm1: [i586] 
+  - libimaevm2: [i586] 
   - libimagequant-devel 
   - libiml0 
   - libimobiledevice-devel 
@@ -10322,7 +10331,7 @@ unsorted:
   - libirrecord0 
   - libirs-devel 
   - libirs1601-32bit: [x86_64] 
-  - libisc1603-32bit: [x86_64] 
+  - libisc1605-32bit: [x86_64] 
   - libisccc1600-32bit: [x86_64] 
   - libisccfg1600-32bit: [x86_64] 
   - libiscsi-devel 
@@ -12711,7 +12720,7 @@ unsorted:
   - libtspi1-32bit: [x86_64] 
   - libtss2-esys0-32bit: [x86_64] 
   - libtss2-mu0-32bit: [x86_64] 
-  - libtss2-rc0 
+  - libtss2-rc0: [i586] 
   - libtss2-sys0-32bit: [x86_64] 
   - libtss2-tcti-device0 
   - libtss2-tcti-device0-32bit: [x86_64] 
@@ -19192,7 +19201,6 @@ unsorted:
   - python2-pycairo-common-devel 
   - python2-pycairo-devel 
   - python2-setuptools 
-  - python3-32bit: [x86_64] 
   - python3-APScheduler 
   - python3-AnyQt 
   - python3-Arpeggio 
@@ -19734,7 +19742,6 @@ unsorted:
   - python3-bandit 
   - python3-barbicanclient 
   - python3-baron 
-  - python3-base-32bit: [x86_64] 
   - python3-base58 
   - python3-bashate 
   - python3-bcc 
@@ -20014,7 +20021,6 @@ unsorted:
   - python3-deprecation 
   - python3-derpconf 
   - python3-designateclient 
-  - python3-devel 
   - python3-devpi-client 
   - python3-devpi-common 
   - python3-devpi-server 
@@ -20127,8 +20133,6 @@ unsorted:
   - python3-dnf-plugins-core 
   - python3-dnf-plugins-extras-common 
   - python3-dns-lexicon 
-  - python3-doc 
-  - python3-doc-devhelp 
   - python3-docformatter 
   - python3-docker 
   - python3-docker-compose 
@@ -20436,7 +20440,6 @@ unsorted:
   - python3-i3ipc 
   - python3-icalendar 
   - python3-identify 
-  - python3-idle 
   - python3-idna_ssl 
   - python3-ifaddr 
   - python3-ifconfig-parser 
@@ -21066,6 +21069,7 @@ unsorted:
   - python3-pikepdf 
   - python3-pilkit 
   - python3-pingparsing 
+  - python3-pip 
   - python3-pip-api 
   - python3-pip-licenses 
   - python3-pip-shims 
@@ -21823,7 +21827,6 @@ unsorted:
   - python3-testrepository 
   - python3-testresources 
   - python3-testscenarios 
-  - python3-testsuite 
   - python3-testtools 
   - python3-tevent-32bit: [x86_64] 
   - python3-text-unidecode 
@@ -21851,7 +21854,6 @@ unsorted:
   - python3-tokenize-rt 
   - python3-toml 
   - python3-tomlkit 
-  - python3-tools 
   - python3-toolz 
   - python3-tooz 
   - python3-topy 
@@ -22095,6 +22097,13 @@ unsorted:
   - python3-zstandard 
   - python3-zstd 
   - python3-zxcvbn 
+  - python38-32bit: [x86_64] 
+  - python38-base-32bit: [x86_64] 
+  - python38-devel 
+  - python38-doc-devhelp 
+  - python38-idle 
+  - python38-testsuite 
+  - python38-tools 
   - pytorch-converters: [x86_64] 
   - pytorch-examples: [x86_64] 
   - pyzo 
