@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 24 06:48:57 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Configure the wizard layout according to the product features.
+- Related to jsc#PM-1998.
+- 4.3.10
+
+-------------------------------------------------------------------
 Thu Jul 16 11:01:42 CEST 2020 - schubi@suse.de
 
 - Moving <files> section handling from second installation stage
