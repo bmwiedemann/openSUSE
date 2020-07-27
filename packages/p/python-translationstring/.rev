@@ -51,4 +51,16 @@ New dependency of python-Pyramid</comment>
   * https://github.com/Pylons/translationstring/commit/bb4c396b23dca5ee0ec27c00ed3c49881b5c2245 (forwarded request 576828 from TheBlackCat)</comment>
     <requestid>576836</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>277519368ee3e999d3a21ca7ad85a1a5</srcmd5>
+    <version>1.4</version>
+    <time>1595864257</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4
+  * Drop support for Python 2.6, 3.2 and 3.
+  * Update license classifiers
+- drop use_pylons_theme.patch
+</comment>
+    <requestid>822789</requestid>
+  </revision>
 </revisionlist>

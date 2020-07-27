@@ -1,7 +1,7 @@
 #
 # spec file for package python-translationstring
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,30 +13,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-translationstring
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        Utility library for i18n relied on by various Repoze and Pyramid packages
 License:        SUSE-Repoze
 Group:          Development/Languages/Python
-Url:            https://github.com/Pylons/translationstring
+URL:            https://github.com/Pylons/translationstring
 Source:         https://files.pythonhosted.org/packages/source/t/translationstring/translationstring-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM use_pylons_theme.patch -- Use pylons_sphinx_theme from external package
-Patch0:         use_pylons_theme.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 # SECTION documentation requirements
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-pylons-sphinx-themes
 # /SECTION
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -52,7 +50,6 @@ work best when provided with an instance of the babel.support.Translations class
 %package     -n %{name}-doc
 Summary:        Documentation files for %{name}
 Group:          Development/Languages/Python
-Requires:       %{name} = %{version}
 Provides:       %{python_module translationstring-doc = %{version}}
 
 %description -n %{name}-doc
@@ -60,7 +57,6 @@ This package contains documentation files for %{name}.
 
 %prep
 %setup -q -n translationstring-%{version}
-%patch0 -p1
 # drop build date from doc to fix build-compare
 sed -i "s/\(html_last_updated_fmt = \).*/\\1None/" docs/conf.py
 rm -rf translationstring.egg-info
@@ -80,12 +76,11 @@ popd
 %python_exec setup.py test
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc CONTRIBUTORS.txt COPYRIGHT.txt LICENSE.txt README.rst
+%license LICENSE.txt
+%doc CONTRIBUTORS.txt COPYRIGHT.txt README.rst
 %{python_sitelib}/*
 
 %files -n %{name}-doc
-%defattr(-,root,root,-)
 %doc docs/_build/html
 
 %changelog

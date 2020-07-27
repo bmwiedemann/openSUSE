@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 23 13:22:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.4
+  * Drop support for Python 2.6, 3.2 and 3.
+  * Update license classifiers
+- drop use_pylons_theme.patch
+
+-------------------------------------------------------------------
 Thu Feb  1 16:50:50 UTC 2018 - toddrme2178@gmail.com
 
 - Add use_pylons_theme.patch
