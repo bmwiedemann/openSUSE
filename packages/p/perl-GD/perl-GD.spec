@@ -1,7 +1,7 @@
 #
 # spec file for package perl-GD
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,24 @@
 #
 
 
-%define cpan_name GD
 Name:           perl-GD
-Version:        2.71
+Version:        2.72
 Release:        0
+%define cpan_name GD
 Summary:        Interface to Gd Graphics Library
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-URL:            https://metacpan.org/release/GD
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RU/RURBAN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 Patch0:         GD-cflags.patch
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::Constant) >= 0.22
 BuildRequires:  perl(ExtUtils::PkgConfig)
+#BuildRequires:  perl(Test::Fork) >= 0.02
+BuildRequires:  perl(Test::More) >= 0.88
 Recommends:     perl(Class::XSAccessor)
 Recommends:     perl(ExtUtils::Constant) >= 0.23
 Recommends:     perl(List::MoreUtils)
@@ -59,7 +62,7 @@ files.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 %patch0 -p1
 
 %build
@@ -67,8 +70,7 @@ perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
 make %{?_smp_mflags}
 
 %check
-# MANUAL no testing (see https://rt.cpan.org/Public/Bug/Display.html?id=85789)
-make %{?_smp_mflags} test
+make test
 
 %install
 %perl_make_install

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 24 08:28:47 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Enable the test suite
+
+-------------------------------------------------------------------
+Sun Jul 19 03:12:52 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.72
+   see /usr/share/doc/packages/perl-GD/ChangeLog
+
+  2.72    * fix CVE 2019-6977 colorMatch for older unpatched libgd versions.
+            This is a severe security problem, an exploitable heap-overflow.
+            See https://nvd.nist.gov/vuln/detail/CVE-2019-6977
+
+-------------------------------------------------------------------
 Mon Jun 17 08:56:18 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - updated to 2.71
