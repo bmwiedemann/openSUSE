@@ -136,7 +136,7 @@ FileProvides: /usr/bin/pkg-config pkgconf-pkg-config
 Substitute: pkg-config pkgconf-pkg-config
 FileProvides: /usr/bin/python python-base
 FileProvides: /usr/bin/python2 python2-base
-FileProvides: /usr/bin/python3 python3-base
+FileProvides: /usr/bin/python3 python38-base
 FileProvides: /usr/bin/setfacl acl
 FileProvides: /usr/bin/sg_inq sg3_utils
 FileProvides: /usr/bin/touch coreutils busybox-coreutils
