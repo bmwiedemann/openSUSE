@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 14 11:40:24 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- New 0.6 release
+  * Enforce tty branding in the branded sway
+  * Don't start mako explicitly
+  * Only include sway config files with .conf file extension
+- Add initial requirements to the openSUSEway desktop meta package
+  * add openSUSEway pattern
+
+-------------------------------------------------------------------
 Mon Jun 22 16:02:30 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - New 0.3 release

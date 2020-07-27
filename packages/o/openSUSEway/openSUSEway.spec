@@ -19,17 +19,55 @@
 %define waybar_version %(rpm -q --queryformat "%%{version}" waybar)
 
 Name:           openSUSEway
-Version:        0.3
+Version:        0.6
 Release:        0
 Summary:        The openSUSEway desktop environment meta package
-Group:          System/GUI/Other
+Group:          Metapackages
 URL:            https://github.com/openSUSE/openSUSEway
 Source0:        https://github.com/openSUSE/openSUSEway/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 License:        MIT
 BuildArch:      noarch
+Requires:       sway-branding-openSUSE
+Requires:       waybar-branding-openSUSE
+Requires:       sudo
+Requires:       git
+Requires:       jq
+Requires:       wget
+Requires:       curl
+Requires:       vim
+Requires:       tar
+Requires:       gzip
+Requires:       bzip2
+Requires:       less
+Requires:       grep
+Requires:       vifm
+Requires:       imv
+Requires:       firefox
+Requires:       NetworkManager
+Requires:       mpv
 
 %description
 This meta package aggregates openSUSEway desktop enviroment packages.
+
+%bcond_with betatest
+%pattern_graphicalenvironments
+%package -n     patterns-openSUSEway
+Summary:        The openSUSEway desktop environment pattern
+License:        MIT
+Group:          Metapackages
+Provides:       pattern() = openSUSEway
+Provides:       pattern-category() = openSUSEway
+Provides:       pattern-icon() = pattern-sway
+Provides:       pattern-order() = 1460
+Provides:       pattern-visible()
+URL:            https://github.com/openSUSE/openSUSEway
+BuildRequires:  patterns-rpm-macros
+Requires:       openSUSEway
+
+%description -n patterns-openSUSEway
+This is an internal package that is used to create the patterns as part
+of the installation source setup.  Installation of this package does
+not make sense.
 
 %package -n     sway-branding-openSUSE
 Summary:        openSUSE branding of sway
@@ -41,6 +79,7 @@ Requires:       brightnessctl
 Requires:       pavucontrol
 Requires:       fontawesome-fonts
 Requires:       jq
+Requires:       sway
 Provides:       sway-branding = %{version}
 Conflicts:      otherproviders(sway-branding)
 Supplements:    packageand(sway:branding-openSUSE)
@@ -72,36 +111,40 @@ This package provides the openSUSE look and feel for waybar.
 
 %install
 
+mkdir -p %{buildroot}/%{_defaultdocdir}/patterns/
+echo 'This file marks the pattern openSUSEway to be installed.' >%{buildroot}/%{_defaultdocdir}/patterns/openSUSEway.txt
+
 ## Sway
 install -D -p -m 644 .config/sway/config %{buildroot}%{_sysconfdir}/sway/config
 install -D -p -m 644 .config/sway/env %{buildroot}%{_sysconfdir}/sway/env
-install -D -p -m 644 .config/sway/config.d/50-openSUSE %{buildroot}%{_sysconfdir}/sway/config.d/50-openSUSE
+install -D -p -m 644 .config/sway/config.d/50-openSUSE.conf %{buildroot}%{_sysconfdir}/sway/config.d/50-openSUSE.conf
 
 ### alacritty
 # so far doesn't have special branding package and it doesn't support system wide config
 install -D -p -m 644 .config/alacritty/alacritty.yml %{buildroot}%{_sysconfdir}/alacritty/alacritty.yml
-#set alacritty config to the system dir
-sed -i -e "s|alacritty.*|alacritty --config-file %{_sysconfdir}/alacritty/alacritty.yml|g" %{buildroot}%{_sysconfdir}/sway/config.d/50-openSUSE
 
 ## wofi
 install -D -p -m 644 .config/wofi/config %{buildroot}%{_sysconfdir}/wofi/config
 install -D -p -m 644 .config/wofi/style.css %{buildroot}%{_sysconfdir}/wofi/style.css
 #set wofi config and style to the system dir
-sed -i -e "s|wofi --show.*|wofi --conf=%{_sysconfdir}/wofi/config --style=%{_sysconfdir}/wofi/style.css|g" %{buildroot}%{_sysconfdir}/sway/config.d/50-openSUSE
+sed -i -e "s|wofi --show.*|wofi --conf=%{_sysconfdir}/wofi/config --style=%{_sysconfdir}/wofi/style.css|g" %{buildroot}%{_sysconfdir}/sway/config.d/50-openSUSE.conf
 
 ## waybar
 install -D -p -m 644 .config/waybar/config %{buildroot}%{_sysconfdir}/xdg/waybar/config
 install -D -p -m 644 .config/waybar/style.css %{buildroot}%{_sysconfdir}/xdg/waybar/style.css
 
-%clean
-rm -rf %{buildroot}
+%files
+
+%files -n patterns-openSUSEway
+%dir %{_defaultdocdir}/patterns
+%{_defaultdocdir}/patterns/openSUSEway.txt
 
 %files -n sway-branding-openSUSE
 %dir %{_sysconfdir}/sway
 %config(noreplace) %{_sysconfdir}/sway/config
 %config(noreplace) %{_sysconfdir}/sway/env
 %dir %{_sysconfdir}/sway/config.d
-%config(noreplace) %{_sysconfdir}/sway/config.d/50-openSUSE
+%config(noreplace) %{_sysconfdir}/sway/config.d/50-openSUSE.conf
 
 %dir %{_sysconfdir}/alacritty
 %config(noreplace) %{_sysconfdir}/alacritty/alacritty.yml
