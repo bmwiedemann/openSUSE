@@ -22,18 +22,18 @@ diff --git a/core/CMakeLists.txt b/core/CMakeLists.txt
 index e31e267772..d14364dc1e 100644
 --- a/core/CMakeLists.txt
 +++ b/core/CMakeLists.txt
-@@ -56,7 +56,7 @@ set(ECM_MIN_VERSION       "1.7.0")
- set(KF5_MIN_VERSION       "5.1.0")
- set(QT_MIN_VERSION        "5.6.0")
- set(LENSFUN_MIN_VERSION   "0.2.6.0")
+@@ -16,7 +16,7 @@ message(STATUS "")
+ 
+ set(KF5_MIN_VERSION       "5.5.0")
+ set(QT_MIN_VERSION        "5.9.0")
 -set(EXIV2_MIN_VERSION     "0.27.0")
 +set(EXIV2_MIN_VERSION     "0.26")
- set(OPENCV_MIN_VERSION    "3.1.0")
- set(QTAV_MIN_VERSION      "1.12.0")
- set(KSANE_MIN_VERSION     "5.0.0")         # For digital scanner support.
-@@ -248,9 +248,9 @@ find_package(EXPAT)    # For DNGWriter: XMP SDK need Expat library to compile.
- find_package(Threads)  # For DNGWriter and LibRaw which needs native threads support.
- find_package(X265)     # For HEIF encoding support.
+ set(OPENCV_MIN_VERSION    "3.3.0")
+ set(LENSFUN_MIN_VERSION   "0.2.6.0")      # For Lens auto-correction plugin
+ set(QTAV_MIN_VERSION      "1.12.0")       # For video support.
+@@ -178,9 +178,9 @@ if(NOT X265_FOUND)
+     set(X265_LIBRARIES "")
+ endif()
  
 -find_package(exiv2 REQUIRED)
 +find_package(Exiv2 ${EXIV2_MIN_VERSION} REQUIRED)
@@ -41,9 +41,9 @@ index e31e267772..d14364dc1e 100644
 -set_package_properties("exiv2"     PROPERTIES
 +set_package_properties("Exiv2"     PROPERTIES
                         DESCRIPTION "Required to build digiKam"
-                        URL         "http://www.exiv2.org"
+                        URL         "https://www.exiv2.org"
                         TYPE        RECOMMENDED
-@@ -257,10 +257,6 @@ set_package_properties("Exiv2"     PROPERTIES
+@@ -187,10 +187,6 @@ set_package_properties("Exiv2"     PROPERTIES
                         PURPOSE     "Library to manage image metadata"
  )
  
@@ -53,17 +53,17 @@ index e31e267772..d14364dc1e 100644
 -
  # -- check Media player --------------------------------------------------------
  
- find_package(FFmpeg COMPONENTS AVCODEC AVFILTER AVFORMAT AVUTIL SWSCALE)
-@@ -585,7 +585,7 @@ PRINT_COMPONENT_COMPILE_STATUS("FacesEngine DNN Support" ENABLE_FACESENGINE_DNN)
+ find_package(FFmpeg COMPONENTS AVCODEC AVDEVICE AVFILTER AVFORMAT AVUTIL SWSCALE)
+@@ -535,7 +531,7 @@ PRINT_COMPONENT_COMPILE_STATUS("QWebEngine Support"      ENABLE_QWEBENGINE)
  # ==============================================================================
  
- PRINT_LIBRARY_STATUS("libboostgraph" "http://www.boost.org/doc/libs"                    "(version >= 1.43.0)"                Boost_FOUND)
--PRINT_LIBRARY_STATUS("libexiv2"      "http://www.exiv2.org"                             "(version >= ${EXIV2_MIN_VERSION}"   exiv2_FOUND)
-+PRINT_LIBRARY_STATUS("libexiv2"      "http://www.exiv2.org"                             "(version >= ${EXIV2_MIN_VERSION}"   Exiv2_FOUND)
- PRINT_LIBRARY_STATUS("libexpat"      "http://expat.sourceforge.net"                     "(version >= 2.0.0)"                 EXPAT_FOUND)
- PRINT_LIBRARY_STATUS("libjpeg"       "http://www.ijg.org"                               "(version >= 6b)"                    JPEG_FOUND)
- PRINT_LIBRARY_STATUS("libkde"        "http://www.kde.org"                               "(version >= ${KF5_MIN_VERSION})"    KF5_FOUND)
-@@ -627,7 +627,7 @@ PRINT_OPTIONAL_LIBRARY_STATUS("OpenGL"            "https://www.mesa3d.org"
+ PRINT_LIBRARY_STATUS("libboostgraph" "https://www.boost.org/doc/libs"                    "(version >= 1.43.0)"                Boost_FOUND)
+-PRINT_LIBRARY_STATUS("libexiv2"      "https://www.exiv2.org"                             "(version >= ${EXIV2_MIN_VERSION}"   exiv2_FOUND)
++PRINT_LIBRARY_STATUS("libexiv2"      "https://www.exiv2.org"                             "(version >= ${EXIV2_MIN_VERSION}"   Exiv2_FOUND)
+ PRINT_LIBRARY_STATUS("libexpat"      "https://libexpat.github.io"                        "(version >= 2.0.0)"                 EXPAT_FOUND)
+ PRINT_LIBRARY_STATUS("libjpeg"       "https://github.com/libjpeg-turbo/libjpeg-turbo"    "(version >= 6b)"                    JPEG_FOUND)
+ PRINT_LIBRARY_STATUS("libkde"        "https://www.kde.org"                               "(version >= ${KF5_MIN_VERSION})"    KF5_FOUND)
+@@ -576,7 +572,7 @@ PRINT_OPTIONAL_LIBRARY_STATUS("OpenGL"            "https://www.mesa3d.org"
  # ==============================================================================
  
  if(Boost_FOUND                          AND
@@ -76,7 +76,7 @@ diff --git a/core/app/DigikamCoreTarget.cmake b/core/app/DigikamCoreTarget.cmake
 index 72b424cb36..7aa6dc5a1e 100644
 --- a/core/app/DigikamCoreTarget.cmake
 +++ b/core/app/DigikamCoreTarget.cmake
-@@ -116,7 +116,7 @@ target_link_libraries(digikamcore
+@@ -143,7 +143,7 @@ target_link_libraries(digikamcore
                        ${TIFF_LIBRARIES}
                        PNG::PNG
                        ${JPEG_LIBRARIES}
@@ -211,7 +211,7 @@ diff --git a/core/libs/metadataengine/CMakeLists.txt b/core/libs/metadataengine/
 index 64754c882c..da6fac050a 100644
 --- a/core/libs/metadataengine/CMakeLists.txt
 +++ b/core/libs/metadataengine/CMakeLists.txt
-@@ -7,14 +7,13 @@
+@@ -9,16 +9,15 @@
  
  kde_enable_exceptions()
  
@@ -224,12 +224,14 @@ index 64754c882c..da6fac050a 100644
 +    add_definitions( -DEXV_HAVE_DLL )
  endif()
  
+ # Exiv2 version < 0.28 use auto_ptr instead unique_ptr which is deprecated.
+ 
 -if("${exiv2_VERSION}" VERSION_LESS "0.27.99")
 +if("${EXIV2_VERSION}" VERSION_LESS "0.27.99")
  
-     # Exiv2 version < 0.28 use auto_ptr instead unique_ptr which is deprecated.
      DISABLE_GCC_COMPILER_WARNINGS("5.99.99" "-Wno-deprecated")
-@@ -64,13 +63,12 @@ set(libdmetadata_SRCS
+ 
+@@ -72,13 +71,12 @@ set(libdmetadata_SRCS
  )
  
  include_directories(
@@ -243,7 +245,7 @@ index 64754c882c..da6fac050a 100644
 -    $<TARGET_PROPERTY:exiv2lib,INTERFACE_INCLUDE_DIRECTORIES>
  )
  
- add_library(dmetadata_src OBJECT ${libdmetadata_SRCS})
+ # Used by digikamcore
 -- 
 2.16.4
 

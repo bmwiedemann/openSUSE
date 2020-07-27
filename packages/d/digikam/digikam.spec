@@ -16,25 +16,18 @@
 #
 
 
-%define soversion 6
+%define soversion 7
 %bcond_without lang
 Name:           digikam
-Version:        6.4.0
+Version:        7.0.0
 Release:        0
 Summary:        A KDE Photo Manager
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://www.digikam.org/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE 0001-Disable-detection-of-OpenGL-for-GLES-platforms.patch -- The OpenGL slideshow depends on Desktop GL, see kde#383715
-Patch0:         0001-Disable-detection-of-OpenGL-for-GLES-platforms.patch
 # PATCH-FIX-OPENSUSE -- Lower minimum exiv2 version to 0.26
-Patch1:         0001-Revert-Exiv2-is-now-released-with-exported-targets-u.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         fix-build-with-opencv-4.2.patch
-Patch3:         dlib-update-to-work-with-latest-version-of-OpenCV.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         Fix-build-with-Qt-5.15.patch
+Patch0:         0001-Revert-Exiv2-is-now-released-with-exported-targets-u.patch
 BuildRequires:  QtAV-devel >= 1.12
 BuildRequires:  bison
 BuildRequires:  boost-devel
@@ -72,11 +65,11 @@ BuildRequires:  marble-devel
 BuildRequires:  opencv-devel
 BuildRequires:  pkgconfig
 BuildRequires:  solid-devel
-BuildRequires:  threadweaver-devel >= 5.1.0
+BuildRequires:  threadweaver-devel >= 5.5.0
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core) >= 5.6.0
+BuildRequires:  cmake(Qt5Core) >= 5.9.0
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Network)
@@ -90,6 +83,7 @@ BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(Qt5XmlPatterns)
 BuildRequires:  pkgconfig(Magick++)
 BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
@@ -115,20 +109,13 @@ Obsoletes:      digikam-libs < %{version}
 # Docs no longer included in 6.0.0
 Provides:       %{name}-doc = %{version}
 Obsoletes:      %{name}-doc < %{version}
-#This pulls in QWebEngine, which is not available on ppc64
+# QWebEngine is not available on ppc64
 %ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
-%global qwebengine -DENABLE_QWEBENGINE:BOOL=ON
 BuildRequires:  akonadi-contact-devel
-BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
+BuildRequires:  cmake(Qt5WebEngineWidgets)
 %else
-BuildRequires:  pkgconfig(Qt5WebKitWidgets)
-%endif
-%ifarch ppc64le
-%global facesengine -DENABLE_FACESENGINE_DNN:BOOL=OFF
-%endif
-%if 0%{?suse_version} < 1320
-# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-BuildRequires:  gcc7-c++
+%global qwebengine -DENABLE_QWEBENGINE:BOOL=OFF
+BuildRequires:  cmake(Qt5WebKitWidgets)
 %endif
 
 %description
@@ -176,17 +163,16 @@ The main digikam libraries that are being shared between showfoto and digikam
 
 %prep
 %setup -q
-%ifarch %{arm} aarch64
-# Disable OpenGL slideshow on embedded platforms
-%patch0 -p1
-%endif
 %if 0%{?suse_version} <= 1500
 # Leap 15 only has exiv2 0.26
-%patch1 -p1
+%patch0 -p1
 %endif
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%if %pkg_vcmp opencv-devel < 3.4.0
+# Option to switch between DNN or HAAR face detection.
+# DNN is the default one, Haar is the legacy deprecated method.
+# DNN fails to build with openCV 3.3 though (needs 3.4 at least), so disable it...
+sed -i 's/set(DNN_DETECTION TRUE)/set(DNN_DETECTION FALSE)/' core/libs/facesengine/CMakeLists.txt
+%endif
 
 # Remove build time references so build-compare can do its work
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
@@ -196,12 +182,7 @@ sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/g" core/libs/dimg/filters/greycstoration/
 sed -i "s/__TIME__/\"$FAKE_BUILDTIME\"/g" core/libs/dimg/filters/greycstoration/cimg/CImg.h
 
 %build
-%if 0%{?suse_version} < 1320
-# gcc 4.8.5 is too old
-export CC=gcc-7
-export CXX=g++-7
-%endif
-%cmake_kf5 -d build -- -DENABLE_APPSTYLES=ON -DENABLE_MEDIAPLAYER=ON %{?qwebengine} %{?facesengine}
+%cmake_kf5 -d build -- -DENABLE_APPSTYLES=ON -DENABLE_MEDIAPLAYER=ON %{?qwebengine}
 %make_jobs VERBOSE=1
 
 %install
@@ -249,6 +230,7 @@ export CXX=g++-7
 %{_kf5_cmakedir}/DigikamCore/
 %{_kf5_cmakedir}/DigikamDatabase/
 %{_kf5_cmakedir}/DigikamGui/
+%{_kf5_cmakedir}/DigikamPlugin/
 %{_kf5_libdir}/libdigikamcore.so
 %{_kf5_libdir}/libdigikamdatabase.so
 %{_kf5_libdir}/libdigikamgui.so

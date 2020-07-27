@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Sat Jul 25 06:33:55 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 7.0.0
+  * https://www.digikam.org/news/2020-07-19-7.0.0_release_announcement/
+- New features (from NEWS):
+FaceManagement: New Neural Network engine based on OpenCV Deep
+                Learning module to detect and recognize faces.
+FaceManagement: Face Scan dialog contents is now simplified and
+                embeded into left side-bar tab.
+SlideShow     : Add new shuffle mode.
+HTMLGallery   : Add new theme "Html5Responsive".
+General       : Code compile with Qt5.15 framework.
+General       : All bundles have switched to last Qt 5.14.2 LTS.
+                Linux and MacOS use QtWebEngine instead QtWebKit.
+General       : All bundles have switched to last KF5 5.70.0.
+                Fix support for Gimp XCF files >= 2.10.
+General       : New FlatPak bundle processed by the KDE continuous
+                integration stream.
+General       : New Plugin ImageMosaicWall to create an image based
+                on a bunch of other photos.
+General       : Add Microsoft Visual C++ support and a Continuous
+                Integration workflow to check code with this
+                compiler.
+General       : Table-view is now able to show digiKam Tag-Paths
+                properties.
+Metadata      : Add option to write geolocation information in file
+                metadata.
+Metadata      : Add color label support for advanced metadata
+                settings.
+Metadata      : Add Exif, Iptc, and Xmp read support for HEIF
+                images.
+General       : Improved support for UNC network paths under
+                Windows.
+General       : Improved support for Unicode paths under Windows.
+General       : Internal libheif updated to last stable 1.6.2 and
+                internal libde265 updated to last stable 1.0.5.
+General       : Internal libraw updated to 0.20-RC2
+                (https://www.libraw.org/news/libraw-0-20-rc2 ).
+                New camera supported:
+                    Canon CR3, PowerShot G5 X Mark II,
+                    G7 X Mark III, SX70 HS, EOS R, EOS RP, EOS 90D,
+                    EOS 250D, EOS M6 Mark II, EOS M50, EOS M200,
+                    EOS 1DX Mark III (lossless files only)
+                    DJI Mavic Air, Air2, Osmo Action,
+                    FujiFilm Fujifilm compressed/16bit, GFX 100,
+                    X-A7, X-Pro3, X100V, X-T4, X-T200,
+                    GoPro Fusion, HERO5, HERO6, HERO7, HERO8,
+                    Hasselblad L1D-20c, X1D II 50C,
+                    Leica D-LUX7, Q-P, Q2, V-LUX5, C-Lux / CAM-DC25,
+                    SL2, M10 Monochrom,
+                    Nikon D780, Z50, P950,
+                    Olympus TG-6, E-M5 Mark III, E-PL10, E-M1 Mark III,
+                    Panasonic Panasonic 14-bit, DC-FZ1000 II, DC-G90,
+                    DC-S1, DC-S1R, DC-S1H, DC-TZ95,
+                    PhaseOne IQ4 150MP,
+                    Rapsberry Pi RAW+JPEG format,
+                    Ricoh GR III,
+                    Sony A7R IV, A9 II, ILCE-6100, ILCE-6600, RX0 II,
+                    RX100 VII,
+                    Zenit M,
+                    also multiple modern smartphones.
+
+- 761 bugs fixed
+- Drop patches merged upstream:
+  * fix-build-with-opencv-4.2.patch
+  * dlib-update-to-work-with-latest-version-of-OpenCV.patch
+  * Fix-build-with-Qt-5.15.patch
+- Drop 0001-Disable-detection-of-OpenGL-for-GLES-platforms.patch,
+  no longer necessary
+- Refresh patch:
+  * 0001-Revert-Exiv2-is-now-released-with-exported-targets-u.patch
+- Re-enable Faces engine DNN on ppc64le, it builds fine now
+- Switch back to old face detection engine when building with
+  opencv 3.3 (Leap 15.1/15.2), as the compilation fails otherwise
+- Drop conditionals for no longer supported openSUSE versions
+
+-------------------------------------------------------------------
 Wed Jul 22 12:44:20 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update _constraints with latest disk value for all archs
