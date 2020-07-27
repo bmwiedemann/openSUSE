@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 27 09:05:35 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Handle exceptions when parsing xml file (related to bsc#1170886)
+- 4.3.3
+
+-------------------------------------------------------------------
+Thu Jul 23 14:27:02 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Configure the wizard layout according to the product features.
+- Related to jsc#PM-1998.
+- 4.3.2
+
+-------------------------------------------------------------------
 Thu Jul 16 09:15:57 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Fix firsboot_hostname client crash (bsc#1173298)
