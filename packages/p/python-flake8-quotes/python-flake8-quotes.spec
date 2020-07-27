@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-flake8-quotes
-Version:        3.0.0
+Version:        3.2.0
 Release:        0
 Summary:        Flake8 lint for quotes
 License:        MIT

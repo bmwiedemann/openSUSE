@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 25 15:27:54 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 3.2.0:
+  * Fixed mistaking key access as docstring (#99)
+  * Added lint checks for main files (#79)
+
+- changes from version 3.1.0:
+  * Added quadruple quote ending support (#96)
+
+-------------------------------------------------------------------
 Thu Apr 16 10:36:56 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.0.0:
