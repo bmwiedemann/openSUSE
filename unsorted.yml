@@ -1113,6 +1113,8 @@ unsorted:
   - bdfresize 
   - bdftopcf 
   - bea-stax 
+  - bean-validation-api 
+  - bean-validation-api-javadoc 
   - beansbinding 
   - beansbinding-javadoc 
   - beets 
@@ -6684,6 +6686,8 @@ unsorted:
   - jnr-netdb-javadoc 
   - jnr-posix 
   - jnr-posix-javadoc 
+  - jnr-unixsocket 
+  - jnr-unixsocket-javadoc 
   - jnr-x86asm 
   - jnr-x86asm-javadoc 
   - jo 
@@ -7392,7 +7396,6 @@ unsorted:
   - kubernetes-apiserver-minus1: [x86_64] 
   - kubernetes-controller-manager: [x86_64] 
   - kubernetes-controller-manager-minus1: [x86_64] 
-  - kubernetes-dashboard: [x86_64] 
   - kubernetes-dns 
   - kubernetes-node-image-pause 
   - kubernetes-pause 
@@ -9234,7 +9237,7 @@ unsorted:
   - libdhash-devel-32bit: [x86_64] 
   - libdhash1-32bit: [x86_64] 
   - libdico2 
-  - libdigikamcore6 
+  - libdigikamcore7 
   - libdirac_decoder0 
   - libdirac_decoder0-32bit: [x86_64] 
   - libdirac_encoder0 
@@ -11157,6 +11160,7 @@ unsorted:
   - libolecf-devel 
   - libolecf-tools 
   - libolecf1 
+  - libomniORB4 
   - libomp10-devel 
   - libomp7-devel 
   - libomp8-devel 
@@ -12239,7 +12243,7 @@ unsorted:
   - libscalapack2_2_1_0-gnu-openmpi4-hpc-devel 
   - libscalapack2_2_1_0-gnu-openmpi4-hpc-devel-static 
   - libscamperfile-devel 
-  - libscamperfile0 
+  - libscamperfile1 
   - libscca-devel 
   - libscca-tools 
   - libscca1 
@@ -16153,6 +16157,10 @@ unsorted:
   - okteta-part-lang 
   - okular-devel 
   - omemo-utils 
+  - omniORB 
+  - omniORB-devel 
+  - omniORBpy 
+  - omniORBpy-devel 
   - omnisharp-server 
   - omping 
   - onboard 
@@ -16242,6 +16250,7 @@ unsorted:
   - openSUSE-release-usb-gnome 
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
+  - openSUSEway 
   - openafs-authlibs 
   - openafs-authlibs-devel 
   - openafs-devel 
@@ -16881,6 +16890,7 @@ unsorted:
   - patterns-media-rest_cd_kde 
   - patterns-media-rest_cd_x11 
   - patterns-media-rest_core_dvd 
+  - patterns-openSUSEway 
   - patterns-rpm-macros 
   - patterns-server-dhcp_dns_server-32bit 
   - patterns-server-directory_server-32bit 
