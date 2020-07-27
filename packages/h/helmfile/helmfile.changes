@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jul 24 12:50:14 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.125.0: Add pre/postuninstall hooks (#1375)
+  * ee8ea50 (HEAD, tag: v0.125.0, origin/master, origin/HEAD, master)
+    Add pre/postuninstall hooks (#1375)
+  * b5830a3 Add ability to use go-getter for fetching remote manifests
+    directory as chart (#1374)
+
+- v0.124.0: Add disableValidation and disableOpenAPIValidation per
+  release (#1373)
+  * 4fde6e1 (HEAD, tag: v0.124.0, master) Add disableValidation and
+    disableOpenAPIValidation per release (#1373)
+  * a5e790c Add Jenkins OSS to the list of users (#1372)
+  * 1e956ae Fix list failure when patches are used (#1371)
+
+- v0.123.0: Bump variantdev/vals for better Variant KV v2 support
+  (#1367)
+  * 1671b8b (HEAD, tag: v0.123.0, origin/master, origin/HEAD, master)
+    Bump variantdev/vals for better Variant KV v2 support (#1367)
+
+- v0.122.2: Bump chartify to 0.3.11 (#1366)
+  * 608ba19 (HEAD, tag: v0.122.2, origin/master, origin/HEAD, master)
+    Bump chartify to 0.3.11 (#1366)
+  * daf7d3b fix the issue in the documentation (#1364)
+
+-------------------------------------------------------------------
 Fri Jul 17 12:29:09 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Install program using "make install" to ensure it knows its version

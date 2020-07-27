@@ -16,9 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define git_commit 4bbb1699a3d35b0af68630f7df7312dd63df6c88
+%define git_commit ee8ea507a6c33eb0ce288059856c37fdee88f4d0
 Name:           helmfile
-Version:        0.121.1
+Version:        0.125.0
 Release:        0
 Summary:        Deploy Kubernetes Helm Charts
 License:        MIT
@@ -50,7 +50,7 @@ delegates to helm - as a result, helm must be installed.
 go build -mod=vendor -buildmode=pie
 
 %install
-make TAG=%{version} install
+make TAG=v%{version} install
 mkdir -p %{buildroot}%{_bindir}
 install -m755 ${HOME}/go/bin/helmfile %{buildroot}/%{_bindir}/helmfile
 
