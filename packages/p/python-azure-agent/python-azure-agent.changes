@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 17 17:20:01 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Add proper_dhcp_config_set.patch (bsc#1173866)
+  + Properly set the dhcp configuration to push the hostname to the DHCP
+    server
+  + Do not bring the interface down to push the hostname, just use ifup
+
+-------------------------------------------------------------------
 Tue Mar 24 20:41:35 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Add paa_use_hostnamectl.patch (bsc#1167601, bsc#1167602)
