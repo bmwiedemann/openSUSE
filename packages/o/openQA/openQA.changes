@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jul 26 03:26:31 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1595658530.ccadcf580:
+  * Dependency cron 200725
+  * Add .jsbeautifyrc for editor support
+  * Fix "last good" link introduced in 8fc2dc99a
+  * Specify timeout for timeout to send KILL signal
+  * Make prove aware of timeout
+
+-------------------------------------------------------------------
 Thu Jul 23 19:26:31 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1595521154.aa29e2427:
