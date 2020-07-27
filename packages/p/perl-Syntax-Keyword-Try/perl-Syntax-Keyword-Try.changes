@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 21 03:18:33 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.15    2020-07-21
+           * Experimental typed `catch (VAR ...)` conditions
+
+-------------------------------------------------------------------
 Wed Jul  8 03:09:34 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.14
