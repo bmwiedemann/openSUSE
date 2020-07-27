@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul 24 08:53:31 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Provide a way to determine which resources (zones, services...)
+  have been modified from the default values (bsc#1171356)
+- 4.3.17
+
+-------------------------------------------------------------------
+Fri Jul 24 08:06:27 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- update is_wsl function to match wsl1 and wsl2 osrelease spellings
+  (boo#1174183)
+
+-------------------------------------------------------------------
+Thu Jul 23 14:03:42 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Add Layout class to configure a Wizard layout.
+- Related to jsc#PM-1998.
+- 4.3.16
+
+-------------------------------------------------------------------
 Thu Jul 16 12:48:24 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Better management of libzypp repovars (eg. those enclosed in
