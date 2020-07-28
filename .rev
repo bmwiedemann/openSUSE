@@ -630,4 +630,14 @@
     <comment></comment>
     <requestid>779892</requestid>
   </revision>
+  <revision rev="79" vrev="4">
+    <srcmd5>95f2e8b2b97bf7708e7b340b53dcc350</srcmd5>
+    <version>2.40.0</version>
+    <time>1595949867</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gdk-pixbuf-boo1174307-io-gif-overflow.patch: Avoid overflows
+  by checking the memset length argument (boo#1174307).
+- Raise dependency glib-2.0 version. (forwarded request 822927 from zcjia)</comment>
+    <requestid>822966</requestid>
+  </revision>
 </revisionlist>

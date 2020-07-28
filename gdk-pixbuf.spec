@@ -37,6 +37,9 @@ Source2:        README.SUSE
 Source3:        gdk-pixbuf-rpmlintrc
 Source99:       baselibs.conf
 
+# PATCH-FIX-UPSTREAM gdk-pixbuf-boo1174307-io-gif-overflow.patch boo#1174307 glgo#GNOME/gdk-pixbuf#132 zcjia@suse.com -- Avoid overflows by checking the memset length argument
+Patch0:         gdk-pixbuf-boo1174307-io-gif-overflow.patch
+
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gtk-doc
 BuildRequires:  libjpeg-devel
@@ -46,7 +49,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  unzip
 BuildRequires:  xsltproc
-BuildRequires:  pkgconfig(glib-2.0) >= 2.48.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(x11)
@@ -135,6 +138,7 @@ This package contains the development files for gdk-pixbuf.
 %setup -c -T -q
 unzip -P gecko %{SOURCE0}
 translation-update-upstream
+%patch0 -p1
 %if "%{_lib}" == "lib64"
 cp -a %{SOURCE2} .
 %endif
