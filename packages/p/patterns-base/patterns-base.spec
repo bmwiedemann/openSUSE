@@ -131,7 +131,6 @@ Requires:       glibc
 Requires:       libnss_usrfiles2
 Requires:       pam
 Requires:       pam-config
-Requires:       pam_pwquality
 Requires:       rpm
 Requires:       shadow
 Requires:       sysconfig
@@ -149,6 +148,7 @@ Requires:       purge-kernels-service
 Recommends:     busybox-static
 Recommends:     elfutils
 Recommends:     iproute2
+Recommends:     pam_pwquality
 Recommends:     system-group-trusted
 Recommends:     system-group-wheel
 Recommends:     system-user-bin
