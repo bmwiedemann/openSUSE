@@ -312,4 +312,12 @@
     <comment>- Update to release 2020.07.01</comment>
     <requestid>818728</requestid>
   </revision>
+  <revision rev="32" vrev="32">
+    <srcmd5>8d8ca26d5b78e41d47d64058b15d88ff</srcmd5>
+    <version>unknown</version>
+    <time>1595949845</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>822952</requestid>
+  </revision>
 </revisionlist>

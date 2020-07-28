@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 19 22:24:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.07.18
+  * star: star could dump core if it was used as `star -t ...` or
+    `star -x ...` while being in a UTF-8 based locale and trying
+    to deal with extremely long pathnames (more than PATH_MAX) in
+    the archive.
+  * fifo: the fifo command is based on the star FIFO code and has
+    been changed to support a FIFO size > 2 GB as well.
+
+-------------------------------------------------------------------
 Fri Jul  3 23:46:47 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.07.01
