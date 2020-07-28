@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul 23 14:26:02 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to 0.14.3
+  * Introduce cbindgen:ignore comment annotation, to allow ignoring items or modules.
+  * Support for casts in constant expressions.
+  * Make a non-fatal error a warning message.
+  * Add a --metadata option to the CLI, to allow passing pre-computed cargo metadata.
+  0.14.2
+  * Fixed minimal dependency versions.
+  * Add an option to write pragma once.
+  * Fix submodule scanning for implicit Rust 2018 modules.
+  * Fix dependency parsing / scanning to handle target-specific versions.
+  * Use heck for case conversion.
+  * Add support for verbatim content after includes.
+  * Allow to add attributes to most generated functions.
+
+-------------------------------------------------------------------
 Wed May 27 07:39:14 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Update to version 0.14.1
