@@ -1,7 +1,7 @@
 #
 # spec file for package perl-POSIX-strftime-Compiler
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           perl-POSIX-strftime-Compiler
-Version:        0.42
+Version:        0.43
 Release:        0
 %define cpan_name POSIX-strftime-Compiler
 Summary:        GNU C library compatible strftime for loggers and servers
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build) >= 0.380000
+BuildRequires:  perl(Module::Build::Tiny) >= 0.035
 BuildRequires:  perl(Test::More) >= 0.98
 %{perl_requires}
 # MANUAL BEGIN
@@ -49,14 +49,14 @@ wraps POSIX::strftime and converts some format characters to perl code
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
