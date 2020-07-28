@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul 28 09:44:28 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 10.12
+   see /usr/share/doc/packages/perl-Minion/Changes
+
+  10.12  2020-07-25
+    - Added EXPERIMENTAL support for expiring jobs.
+    - Removed experimental support for job sequences again since use cases turned out to be weaker than expected.
+    - Added EXPERIMENTAL expire option to enqueue method in Minion, Minion::Backend and Minion::Backend::Pg.
+    - Added expires field to list_jobs method in Minion::Backend::Pg.
+    - Added -E option to job command.
+
+  10.11  2020-07-21
+    - Improved adming ui with more icons.
+
+-------------------------------------------------------------------
 Sun Jul 12 03:08:33 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 10.10
