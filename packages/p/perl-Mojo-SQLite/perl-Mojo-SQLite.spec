@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojo-SQLite
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-Mojo-SQLite
-Version:        3.003
+Version:        3.004
 Release:        0
 %define cpan_name Mojo-SQLite
 Summary:        Tiny Mojolicious wrapper for SQLite
 License:        Artistic-2.0
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -34,15 +34,15 @@ BuildRequires:  perl(DBD::SQLite) >= 1.64
 BuildRequires:  perl(DBI) >= 1.627
 BuildRequires:  perl(Module::Build::Tiny) >= 0.034
 BuildRequires:  perl(Module::Metadata)
-BuildRequires:  perl(Mojolicious) >= 7.32
+BuildRequires:  perl(Mojolicious) >= 8.03
 BuildRequires:  perl(SQL::Abstract) >= 1.81
-BuildRequires:  perl(Test::More) >= 0.88
+BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(URI) >= 1.69
 BuildRequires:  perl(URI::db) >= 0.15
 BuildRequires:  perl(URI::file) >= 4.21
 Requires:       perl(DBD::SQLite) >= 1.64
 Requires:       perl(DBI) >= 1.627
-Requires:       perl(Mojolicious) >= 7.32
+Requires:       perl(Mojolicious) >= 8.03
 Requires:       perl(SQL::Abstract) >= 1.81
 Requires:       perl(URI) >= 1.69
 Requires:       perl(URI::db) >= 0.15
@@ -58,7 +58,7 @@ database schema with migrations.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Build.PL --installdirs=vendor
@@ -73,7 +73,7 @@ perl Build.PL --installdirs=vendor
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes CONTRIBUTING.md examples README
+%doc Changes CONTRIBUTING.md examples prereqs.yml README
 %license LICENSE
 
 %changelog

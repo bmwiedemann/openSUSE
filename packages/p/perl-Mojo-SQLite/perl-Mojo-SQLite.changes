@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul 28 09:47:04 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.004
+   see /usr/share/doc/packages/perl-Mojo-SQLite/Changes
+
+  3.004     2020-07-22 22:50:43 EDT
+    - The Mojo::SQLite::Migrations sqlite attribute and the
+      Mojo::SQLite::Transaction db attribute are now weak attributes, increasing
+      the required version of Mojolicious to 8.03.
+    - Defer loading of Mojo::IOLoop unless the callback compatibility API is
+      used.
+    - Newly created mojo_migrations tables from Mojo::SQLite::Migrations will use
+      a primary key.
+    - Recognize -json parameters in queries.
+
+-------------------------------------------------------------------
 Fri Oct  4 09:25:08 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 3.003
