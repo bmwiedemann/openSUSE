@@ -25,7 +25,7 @@
 %bcond_with    xmms2
 %endif
 Name:           conky
-Version:        1.11.5
+Version:        1.11.6
 Release:        0
 Summary:        A System Monitor
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -37,7 +37,6 @@ Source2:        conky.conf.SUSE
 Source3:        README.SUSE
 Patch1:         conky-1.10.1-avoid-git.patch
 Patch2:         conky.timestamp.patch
-Patch3:         fix-negative-memory.patch
 BuildRequires:  cmake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook2x

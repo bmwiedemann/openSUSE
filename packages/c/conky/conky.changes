@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 28 06:55:32 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.6:
+  * Fix negative RAM usage (#878)
+  * Add nvidia driverversion variable (#889)
+  * properly format PIDs longer than 5 digits
+  * linux: update statistics based on newer kernel interface (#859)
+  * Fix segfault on pulseaudio tunnel sinks 
+  * Added lower_case and upper_case commands
+- Remove fix-negative-memory.patch: upstreamed
+
+-------------------------------------------------------------------
 Tue Apr 14 08:17:05 UTC 2020 - Simon Lees <sflees@suse.com>
 
 - Don't require nano with the nano completions, conky shouldn't 
