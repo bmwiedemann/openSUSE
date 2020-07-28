@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 24 19:08:33 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_Fix-symbols-in-syntax-error-spurious-git-conflict-ma.patch
+  * Fix symbols/in syntax error: spurious git conflict marker
+    (boo#1174483)
+
+-------------------------------------------------------------------
 Wed Jun  3 10:08:06 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.30
