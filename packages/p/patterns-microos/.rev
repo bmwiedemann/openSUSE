@@ -152,4 +152,12 @@
     <comment>- openSUSE-MicroOS-release -&amp;gt; MicroOS-release (forwarded request 820879 from lnussel)</comment>
     <requestid>820883</requestid>
   </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>5534cfd58d5ee2ec04531bd83e610b91</srcmd5>
+    <version>5.0</version>
+    <time>1595949837</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-add kernel-firmware back to the DVDs [bsc#1174521]</comment>
+    <requestid>822949</requestid>
+  </revision>
 </revisionlist>

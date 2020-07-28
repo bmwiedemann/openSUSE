@@ -423,6 +423,7 @@ Requires:       cracklib-dict-full
 Requires:       cryptsetup
 Requires:       glibc-locale
 Requires:       iscsiuio
+Requires:       kernel-firmware
 Requires:       multipath-tools
 Requires:       open-iscsi
 %ifarch %ix86 x86_64
