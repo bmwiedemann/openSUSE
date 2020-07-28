@@ -494,7 +494,6 @@ be used with NFS-Ganesha to support Gluster
 %setup -q
 
 %build
-%global optflags %{optflags} -fcommon
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 27 12:44:00 UTC 2020 - Supriti Singh <supriti.singh@suse.com>
+
+- Remove -fcommon from spec file
+  * Reverting changes made to fix boo#1164548.  
+
+-------------------------------------------------------------------
 Fri Jul 17 16:20:27 UTC 2020 - Supriti Singh <supriti.singh@suse.com>
 
 - dropped fix-compilation-errors-on-xfs-ioctl-syscall-structs.patch which is a part of upstream 3.3
