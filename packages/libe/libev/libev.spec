@@ -1,7 +1,7 @@
 #
 # spec file for package libev
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,24 @@
 
 %define library_name libev4
 Name:           libev
-Version:        4.27
+Version:        4.33
 Release:        0
 Summary:        An event loop library
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://software.schmorp.de/pkg/libev.html
-Source:         http://dist.schmorp.de/%{name}/%{name}-%{version}.tar.gz
+URL:            http://software.schmorp.de/pkg/libev.html
+Source:         http://dist.schmorp.de/%{name}/Attic/%{name}-%{version}.tar.gz
 # Upstream has received patches to add pkg-config support for years but it always ignored them (yes, no answer at all). But since every distribution creates it we just follow.
 Source1:        libev.pc
+Source2:        http://dist.schmorp.de/%{name}/Attic/%{name}-%{version}.tar.gz.sig
+Source3:        http://dist.schmorp.de/signing-key.pub
 Source99:       baselibs.conf
 Patch0:         libev-4.15_compiler_warnings.patch
+Patch1:         libev-4.33-nonvoid-return.patch
 BuildRequires:  pkgconfig
+%if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
+BuildRequires:  signify
+%endif
 
 %description
 An event loop that is loosely modeled after libevent.
@@ -66,8 +72,12 @@ available.
 This package holds the development files for libev.
 
 %prep
+%if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
+signify -V -p %{SOURCE3} -m %{SOURCE0}
+%endif
 %setup -q
 %patch0
+%patch1 -p1
 
 %build
 CFLAGS="%{optflags} -fno-strict-aliasing -Wno-unused"
@@ -93,12 +103,13 @@ cp %{SOURCE1} %{buildroot}%{_libdir}/pkgconfig/libev.pc
 %postun -n %{library_name} -p /sbin/ldconfig
 
 %files devel
-%doc LICENSE README ev.pod Changes
+%license LICENSE
+%doc README ev.pod Changes
 %{_includedir}/ev++.h
 %{_includedir}/ev.h
 %{_includedir}/event.h
 %{_libdir}/libev.so
-%{_mandir}/man3/ev.3*
+%{_mandir}/man3/ev.3%{?ext_man}
 %{_libdir}/pkgconfig/libev.pc
 
 %files -n %{library_name}

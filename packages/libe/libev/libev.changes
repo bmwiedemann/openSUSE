@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 30 21:30:24 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.33:
+  * New feature ev_io_modify can modify the event watch mask in
+    I/O watchers without incurring overhead from changed fd
+- includes changes from 4.31:
+  * new backend iouring using new event polling mechanism in
+    Linux 4.18
+  * take advantage of timerfds to detect time jumps
+- add libev-4.33-nonvoid-return.patch to fix build
+- add signify (bsd) based source verification
+
+-------------------------------------------------------------------
 Wed Jul 17 18:10:28 UTC 2019 - pgajdos@suse.com
 
 - version update to 4.27
