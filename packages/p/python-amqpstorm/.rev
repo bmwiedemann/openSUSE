@@ -83,4 +83,19 @@
     <comment></comment>
     <requestid>813214</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7f8b00f844ef502f99f4421271e9d9e9</srcmd5>
+    <version>2.8.1</version>
+    <time>1595949955</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.8.1:
+  * Cleaned up documentation.
+  * Introduced a new channel function called check_for_exceptions.
+  * Fixed issue where a publish was successful but raised an error because
+    connection was closed
+  * Updated TLS handling to use the non-deprecated way of creating a TLS
+    Connection
+  * Enabled SNI for TLS connections by default</comment>
+    <requestid>823066</requestid>
+  </revision>
 </revisionlist>

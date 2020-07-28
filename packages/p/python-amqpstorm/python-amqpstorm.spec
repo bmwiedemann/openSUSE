@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-amqpstorm
-Version:        2.7.2
+Version:        2.8.1
 Release:        0
 Summary:        Thread-safe Python RabbitMQ Client & Management library
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/eandersson/amqpstorm
 Source:         https://files.pythonhosted.org/packages/source/A/AMQPStorm/AMQPStorm-%{version}.tar.gz
 BuildRequires:  %{python_module mock}

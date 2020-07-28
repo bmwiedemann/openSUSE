@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 28 06:12:20 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.8.1:
+  * Cleaned up documentation.
+  * Introduced a new channel function called check_for_exceptions.
+  * Fixed issue where a publish was successful but raised an error because
+    connection was closed
+  * Updated TLS handling to use the non-deprecated way of creating a TLS
+    Connection
+  * Enabled SNI for TLS connections by default
+
+-------------------------------------------------------------------
 Wed Jun 10 11:40:37 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - replace nose with pytest
