@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 27 07:26:03 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Replace shim-correct-license-in-headers.patch with the upstream
+  commit: shim-bsc1174512-correct-license-in-headers.patch
+  (bsc#1174512)
+
+-------------------------------------------------------------------
 Wed Jul 22 09:23:02 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update the path to grub-tpm.efi in shim-install (bsc#1174320)

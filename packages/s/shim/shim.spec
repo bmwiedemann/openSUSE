@@ -70,7 +70,8 @@ Patch2:         shim-change-debug-file-path.patch
 Patch3:         shim-bsc1092000-fallback-menu.patch
 # PATCH-FIX-UPSTREAM shim-always-mirror-mok-variables.patch glin@suse.com -- Mirror MOK variables correctly
 Patch4:         shim-always-mirror-mok-variables.patch
-Patch5:         shim-correct-license-in-headers.patch
+# PATCH-FIX-UPSTREAM shim-bsc1174512-correct-license-in-headers.patch glin@suse.com -- Fix the license header in errlog.c and mok.c
+Patch5:         shim-bsc1174512-correct-license-in-headers.patch
 # PATCH-FIX-UPSTREAM gcc9-fix-warnings.patch mliska@suse.cz -- MokManager: Use CompareMem on MokListNode.Type instead of CompareGuid 
 Patch6:         gcc9-fix-warnings.patch
 # PATCH-FIX-OPENSUSE shim-fix-gnu-efi-3.0.11.patch glin@suse.com -- Fix the build error caused by the typo fix in gnu-efi 3.0.11
