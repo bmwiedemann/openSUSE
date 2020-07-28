@@ -31,6 +31,7 @@ Source1:        %{name}-build.xml
 Source2:        %{name}-MANIFEST.MF
 Source3:        http://mirrors.ibiblio.org/pub/mirrors/maven2/org/w3c/css/sac/1.3/sac-1.3.pom
 BuildRequires:  ant
+BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.6.0
 BuildRequires:  javapackages-local
 BuildRequires:  javapackages-tools
@@ -66,7 +67,7 @@ ant \
 mkdir -p META-INF
 cp -p %{SOURCE2} META-INF/MANIFEST.MF
 touch META-INF/MANIFEST.MF
-zip -u build/lib/sac.jar META-INF/MANIFEST.MF
+zip -X -u build/lib/sac.jar META-INF/MANIFEST.MF
 
 mkdir -p %{buildroot}%{_javadir}
 cp -p ./build/lib/sac.jar %{buildroot}%{_javadir}/sac.jar
@@ -81,6 +82,7 @@ install -pm 644 %{SOURCE3} \
     %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
 
 %add_maven_depmap JPP-%{name}.pom %{name}.jar
+%fdupes %{buildroot}%{_javadocdir}/%{name}
 
 %files
 %defattr(-,root,root)
