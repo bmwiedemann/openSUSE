@@ -114,6 +114,7 @@ Patch2:         ffmpeg-new-coder-errors.diff
 Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         soversion.patch
+Patch6:         ffmpeg.git-ba3e771a42c29ee02c34e7769cfc1b2dbc5c760a.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel

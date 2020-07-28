@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 27 13:39:27 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Apply upstream fix to avoid segfaults in x86/yuv2rgb conversion
+  ffmpeg.git-ba3e771a42c29ee02c34e7769cfc1b2dbc5c760a.patch
+
+-------------------------------------------------------------------
 Thu Jul 16 10:49:02 UTC 2020 - Alexander Reimelt <alexander.reimelt@protonmail.ch>
 
 - Add librav1e support 
