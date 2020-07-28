@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Log-Dispatch
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-Log-Dispatch
-Version:        2.69
+Version:        2.70
 Release:        0
 %define cpan_name Log-Dispatch
 Summary:        Dispatches messages to one or more outputs
 License:        Artistic-2.0
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -80,7 +80,7 @@ code needed on your part, once the dispatching object has been created.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -96,7 +96,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc appveyor.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md
+%doc azure-pipelines.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md
 %license LICENSE
 
 %changelog

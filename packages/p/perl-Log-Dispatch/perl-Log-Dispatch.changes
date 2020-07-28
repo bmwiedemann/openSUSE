@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 21 03:14:49 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.70
+   see /usr/share/doc/packages/perl-Log-Dispatch/Changes
+
+  2.70     2020-07-20
+
+  - Make locking test wait longer before giving up. Some filesystems (like NFS)
+    can be quite slow to lock files. Fixed by Joelle Maslak. GH #61.
+
+-------------------------------------------------------------------
 Mon Oct 28 10:54:22 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 2.69
