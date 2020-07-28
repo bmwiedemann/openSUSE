@@ -92,9 +92,9 @@ KDE Plasma.
 
 %install
 %kf5_makeinstall -C build
-if [ "%{_libdir}" != "%{_libexecdir}" ]; then
+if [ "%{_libdir}" != "%{_prefix}/lib" ]; then
 	# Move mozilla native messaging file to correct location
-	mv %{buildroot}%{_libexecdir}/mozilla %{buildroot}%{_libdir}
+	mv %{buildroot}%{_prefix}/lib/mozilla %{buildroot}%{_libdir}
 fi
   %if %{with lang}
     %find_lang %{name} --all-name

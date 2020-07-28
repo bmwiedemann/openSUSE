@@ -339,4 +339,12 @@
     <comment>Plasma 5.19.3</comment>
     <requestid>819422</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>c68003a8adecf2407bd0b3ffc0d45822</srcmd5>
+    <version>5.19.3</version>
+    <time>1595949905</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)</comment>
+    <requestid>823012</requestid>
+  </revision>
 </revisionlist>
