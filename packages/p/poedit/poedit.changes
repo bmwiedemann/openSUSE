@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 27 19:46:07 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Poedit 2.4:
+  * Crowdin integration was greatly improved and now supports
+    editing of any kind of localization: Files from Crowdin
+    projects, not just POs.
+  * Improvements to editor user interface.
+
+-------------------------------------------------------------------
 Sun May 10 15:46:44 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Poedit 2.3.1:
