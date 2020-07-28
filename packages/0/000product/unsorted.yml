@@ -6410,6 +6410,7 @@ unsorted:
   - jansi-native-javadoc 
   - jarjar 
   - jarjar-javadoc 
+  - jasper 
   - jatl 
   - jatl-javadoc 
   - java-11-openj9: [x86_64] 
@@ -9607,6 +9608,7 @@ unsorted:
   - libfsntfs1 
   - libfst-hfst0 
   - libfstrcmp0 
+  - libfstrm0 
   - libftdi-devel 
   - libftdi1 
   - libftdi1-2 
@@ -10368,6 +10370,9 @@ unsorted:
   - libjackserver0 
   - libjackserver0-32bit: [x86_64] 
   - libjansson-devel 
+  - libjasper-devel 
+  - libjasper4 
+  - libjasper4-32bit: [x86_64] 
   - libjavascriptcoregtk-4_0-18-32bit: [x86_64] 
   - libjaylink 
   - libjaylink-devel 
@@ -15537,9 +15542,6 @@ unsorted:
   - nodejs12-docs: [x86_64] 
   - nodejs14-devel: [x86_64] 
   - nodejs14-docs: [x86_64] 
-  - nodejs8 
-  - nodejs8-devel 
-  - nodejs8-docs 
   - nomacs 
   - nomacs-lang 
   - non-mixer 
@@ -15780,7 +15782,6 @@ unsorted:
   - npm-default 
   - npm10: [x86_64] 
   - npm12: [x86_64] 
-  - npm8 
   - npth-devel 
   - nqp 
   - nrpe 
