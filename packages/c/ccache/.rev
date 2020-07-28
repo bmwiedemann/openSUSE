@@ -547,4 +547,12 @@ mtime and ctime values are now stored in the manifest files only when sloppy_fil
     <comment></comment>
     <requestid>821776</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>381e0e1f9426d00fa34f3c35fba634f3</srcmd5>
+    <version>3.7.11</version>
+    <time>1595949825</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822943</requestid>
+  </revision>
 </revisionlist>

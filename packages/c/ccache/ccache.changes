@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 26 21:10:54 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 3.7.11:
+  * Added knowledge about -fprofile-{correction,reorder-functions,values}.
+  * ccache now handles the Intel compiler option -xCODE (where CODE is a
+    processor feature code) correctly.
+  * Added support for NVCC’s -Werror and --Werror options.
+  * ccache’s “Directory is not hashed if using -gz[=zlib]” tests are now
+    skipped for GCC 6.
+
+-------------------------------------------------------------------
 Sun Jul 19 20:21:16 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 3.7.10: 

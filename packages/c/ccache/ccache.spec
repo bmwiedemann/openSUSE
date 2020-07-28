@@ -17,7 +17,7 @@
 
 
 Name:           ccache
-Version:        3.7.10
+Version:        3.7.11
 Release:        0
 Summary:        A Fast C/C++ Compiler Cache
 License:        GPL-3.0-or-later
