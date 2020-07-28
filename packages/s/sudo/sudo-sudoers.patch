@@ -67,7 +67,7 @@ Index: sudo-1.8.31/plugins/sudoers/sudoers.in
  ##
  ## Runas alias specification
  ##
-@@ -84,14 +83,6 @@ root ALL=(ALL) ALL
+@@ -84,13 +84,5 @@
  ## Same thing without a password
  # %wheel ALL=(ALL) NOPASSWD: ALL
  
@@ -80,8 +80,7 @@ Index: sudo-1.8.31/plugins/sudoers/sudoers.in
 -# ALL ALL=(ALL) ALL  # WARNING: only use this together with 'Defaults targetpw'
 -
  ## Read drop-in files from @sysconfdir@/sudoers.d
- ## (the '#' here does not indicate a comment)
- #includedir @sysconfdir@/sudoers.d
+ @includedir @sysconfdir@/sudoers.d
 Index: sudo-1.8.31/doc/sudoers.mdoc.in
 ===================================================================
 --- sudo-1.8.31.orig/doc/sudoers.mdoc.in
