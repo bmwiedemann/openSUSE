@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20200727" schemaversion="4.1">
+<image name="OBS__MicroOS___20200728" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200727</productvar>
+      <productvar name="VERSION">20200728</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20200727,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20200728,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20200727/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20200728/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -174,6 +174,36 @@
       <repopackage name="kdump"/>
       <repopackage name="kernel-default"/>
       <repopackage name="kernel-default-base" arch="x86_64"/>
+      <repopackage name="kernel-firmware-all" arch="x86_64"/>
+      <repopackage name="kernel-firmware-amdgpu" arch="x86_64"/>
+      <repopackage name="kernel-firmware-ath10k" arch="x86_64"/>
+      <repopackage name="kernel-firmware-atheros" arch="x86_64"/>
+      <repopackage name="kernel-firmware-bluetooth" arch="x86_64"/>
+      <repopackage name="kernel-firmware-bnx2" arch="x86_64"/>
+      <repopackage name="kernel-firmware-brcm" arch="x86_64"/>
+      <repopackage name="kernel-firmware-chelsio" arch="x86_64"/>
+      <repopackage name="kernel-firmware-dpaa2" arch="x86_64"/>
+      <repopackage name="kernel-firmware-i915" arch="x86_64"/>
+      <repopackage name="kernel-firmware-intel" arch="x86_64"/>
+      <repopackage name="kernel-firmware-iwlwifi" arch="x86_64"/>
+      <repopackage name="kernel-firmware-liquidio" arch="x86_64"/>
+      <repopackage name="kernel-firmware-marvell" arch="x86_64"/>
+      <repopackage name="kernel-firmware-media" arch="x86_64"/>
+      <repopackage name="kernel-firmware-mediatek" arch="x86_64"/>
+      <repopackage name="kernel-firmware-mellanox" arch="x86_64"/>
+      <repopackage name="kernel-firmware-mwifiex" arch="x86_64"/>
+      <repopackage name="kernel-firmware-network" arch="x86_64"/>
+      <repopackage name="kernel-firmware-nfp" arch="x86_64"/>
+      <repopackage name="kernel-firmware-nvidia" arch="x86_64"/>
+      <repopackage name="kernel-firmware-platform" arch="x86_64"/>
+      <repopackage name="kernel-firmware-qlogic" arch="x86_64"/>
+      <repopackage name="kernel-firmware-radeon" arch="x86_64"/>
+      <repopackage name="kernel-firmware-realtek" arch="x86_64"/>
+      <repopackage name="kernel-firmware-serial" arch="x86_64"/>
+      <repopackage name="kernel-firmware-sound" arch="x86_64"/>
+      <repopackage name="kernel-firmware-ti" arch="x86_64"/>
+      <repopackage name="kernel-firmware-ueagle" arch="x86_64"/>
+      <repopackage name="kernel-firmware-usb-network" arch="x86_64"/>
       <repopackage name="kexec-tools"/>
       <repopackage name="keyutils" arch="x86_64"/>
       <repopackage name="kmod"/>
@@ -428,7 +458,6 @@
       <repopackage name="p11-kit-tools" arch="x86_64"/>
       <repopackage name="pam"/>
       <repopackage name="pam-config"/>
-      <repopackage name="pam_pwquality" arch="x86_64"/>
       <repopackage name="patterns-base-apparmor" arch="x86_64"/>
       <repopackage name="patterns-base-base" arch="x86_64"/>
       <repopackage name="patterns-base-bootloader" arch="x86_64"/>
