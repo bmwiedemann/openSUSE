@@ -60,4 +60,30 @@
   * no-py2.patch</comment>
     <requestid>796537</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f7d9a2464cedb644eeaa14c6ce650fa8</srcmd5>
+    <version>0.7.2</version>
+    <time>1595949947</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.2:
+  * Update release instructions for the 0.x branch, by @ccordoba12
+  * Do not call python directly in tests, by @scarabeusiv
+  * Remove warning for Python 2.7, by @dalthviz (140)
+  * al design icons to 4.9.95
+  * t class to display icons as widgets
+  * rowser
+  * Fix file lock (125)
+  * Update documentation and images (45)
+  * Use Github as the only CI provider
+  * Update MDI to 4.9.95
+  * Add IconWidget to display icon as widget
+  * Add an icon browser
+  * Improve sponsors section in readme
+  * Replace QtGui by QtWidgets in docs
+  * Update MDI to 4.5.95
+  * Update number of icons in Readme and docs
+- Drop no-py2.patch, merged upstream.
+- Add update-alternatives for new qta-browser binary</comment>
+    <requestid>823051</requestid>
+  </revision>
 </revisionlist>

@@ -18,14 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-QtAwesome
-Version:        0.6.0
+Version:        0.7.2
 Release:        0
 Summary:        FontAwesome icons in PyQt and PySide applications
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/spyder-ide/qtawesome
 Source:         https://files.pythonhosted.org/packages/source/Q/QtAwesome/QtAwesome-%{version}.tar.gz
-Patch0:         no-py2.patch
 BuildRequires:  %{python_module QtPy}
 BuildRequires:  %{python_module pytest-qt}
 BuildRequires:  %{python_module pytest}
@@ -37,6 +35,8 @@ BuildRequires:  xvfb-run
 Requires:       python-QtPy
 Requires:       python-six
 BuildArch:      noarch
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -48,7 +48,6 @@ library by Rick Blommers.
 
 %prep
 %setup -q -n QtAwesome-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -56,13 +55,21 @@ library by Rick Blommers.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_clone -a %{buildroot}%{_bindir}/qta-browser
 
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} xvfb-run py.test-%{$python_bin_suffix} -v qtawesome/tests
 
+%post
+%python_install_alternative qta-browser
+
+%postun
+%python_uninstall_alternative qta-browser
+
 %files %{python_files}
-%license LICENSE
+%license LICENSE.txt
 %doc CHANGELOG.md README.md
 %{python_sitelib}/*
+%python_alternative %{_bindir}/qta-browser
 
 %changelog
