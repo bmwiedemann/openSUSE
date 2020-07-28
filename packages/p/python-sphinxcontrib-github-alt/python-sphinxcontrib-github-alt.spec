@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-github-alt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,21 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_with     test
 Name:           python-sphinxcontrib-github-alt
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        Sphinx extension to link to GitHub issues, pull requests, commits and users
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-Url:            http://github.com/Calysto/octave_kernel
+URL:            https://github.com/Calysto/octave_kernel
 Source0:        https://files.pythonhosted.org/packages/source/s/sphinxcontrib_github_alt/sphinxcontrib_github_alt-%{version}.tar.gz
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx
 Requires:       python-docutils
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -51,6 +52,10 @@ and set the variable github_project_url:
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+# the only test upstream has
+%python_exec -c 'import sphinxcontrib_github_alt'
 
 %files %{python_files}
 %license COPYING.md
