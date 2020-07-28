@@ -1,7 +1,7 @@
 #
 # spec file for package python-spidev
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,23 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
-%define         orig_name spidev
-
 Name:           python-spidev
-Version:        3.4
+Version:        3.5
 Release:        0
 Summary:        Python module for interfacing with SPI devices
 License:        MIT
-Url:            https://pypi.org/project/spidev/
-Source0:        https://github.com/doceme/py-spidev/archive/v%{version}.tar.gz#/%{orig_name}-%{version}.tar.gz
+URL:            https://pypi.org/project/spidev/
+Source0:        https://files.pythonhosted.org/packages/source/s/spidev/spidev-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
+%python_subpackages
 
 %description
 This package contains the python module for interfacing with SPI devices from user space via the spidev linux kernel driver.
 
-%python_subpackages
-
 %prep
-%setup -q -n py-spidev-%{version}
+%setup -q -n spidev-%{version}
 
 %build
 %python_build
