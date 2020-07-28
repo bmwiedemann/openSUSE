@@ -2,9 +2,9 @@
   <service mode="disabled" name="tar_scm">
     <param name="url">git@github.com:openSUSE/obs-service-recompress.git</param>
     <param name="scm">git</param>
-    <param name="version">git-master</param>
-    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
-    <param name="revision">master</param>
+    <param name="exclude">.git</param>
+    <param name="version">0.5.0</param>
+    <param name="revision">0.5.0</param>
     <param name="changesgenerate">enable</param>
   </service>
 

@@ -118,4 +118,17 @@
     <comment></comment>
     <requestid>766573</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>260d0880d38d0b7185ee0340544f964b</srcmd5>
+    <version>0.5.0</version>
+    <time>1595949793</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.0:
+  * do not follow symlinks (issue 9)
+  * add license file
+  * compression using # of core threads for zstd and xz
+  * Add support for keeping of original file
+  * use --threads=0</comment>
+    <requestid>822924</requestid>
+  </revision>
 </revisionlist>
