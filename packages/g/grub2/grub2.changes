@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 16 13:15:27 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- No 95_textmode for PowerPC (boo#1174166)
+
+-------------------------------------------------------------------
 Mon May 18 08:15:01 UTC 2020 - Michael Chang <mchang@suse.com>
 
 - Skip zfcpdump kernel from the grub boot menu (bsc#1166513)

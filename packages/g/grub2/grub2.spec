@@ -899,6 +899,7 @@ rm -f $R%{_sysconfdir}/grub.d/20_memtest86+
 %endif
 
 %ifarch ppc ppc64 ppc64le
+rm -f $R%{_sysconfdir}/grub.d/95_textmode
 %else
 rm -f $R%{_sysconfdir}/grub.d/20_ppc_terminfo
 %endif
@@ -1107,7 +1108,9 @@ fi
 %config(noreplace) %{_sysconfdir}/grub.d/40_custom
 %config(noreplace) %{_sysconfdir}/grub.d/41_custom
 %config(noreplace) %{_sysconfdir}/grub.d/90_persistent
+%ifnarch ppc ppc64 ppc64le
 %config(noreplace) %{_sysconfdir}/grub.d/95_textmode
+%endif
 %ifarch %{ix86} x86_64
 %config(noreplace) %{_sysconfdir}/grub.d/20_memtest86+
 %endif
