@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jul 27 18:36:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.1.0
+  Core changes
+  * Fix: force_no_enable enabled on ios and nx only
+  * If you maintain a thrid-party driver using Netmiko for the
+    underlying layer, but that doesn't make use of the enable
+    features typically found on IOS-like devices, it is
+    recommended to pin to this NAPALM version, so it won't break
+    compatibility.
+  * lxml text retrieval (find_txt) shouldn't fail if no text
+    element available
+  Driver changes
+  * [NX-OS] Initial version for nxos_ssh get_optics
+  * [NX-OS] Fixed get_bgp_neighbors and asdot notation on NX-OS
+  * [Junos] Fix "KeyError in get_environment() on Juniper MX10k3
+    with Junos 19.2R1.8 by making PEM naming consistent
+  * [IOS] Fix get_optics metric
+  * [IOS] Allow username detection on older Cisco ios versions
+
+-------------------------------------------------------------------
 Thu May 21 10:56:30 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
