@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jul 28 09:15:05 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- ugrep 2.5.0:
+  * New query UI search commands: Tab to navigate into a directory
+    or to select a single file to search; Shift-Tab to navigate up
+    the directory tree or deselect the selected file. Press Ctrl-^
+    to go back to the starting working directory. These commands
+    are best experienced with option -l (Alt-l ("Alt-ell") in the
+    query UI) to navigate directories in the list view.
+  * Ctrl-S/Ctrl-W now also move down/up by directory in the query
+    UI when viewing a list of files with options -l and -c.
+  * Faster query UI response to commands (the response to patterns
+    entered is still determined by the DELAY parameter.)
+  * Option --pretty now also enables options -n and --sort in
+    addition to --color, --heading, and -T when the output is sent
+    to a terminal and if these options are not explicitly disabled
+    or set already.
+  * Fixed minor issues to improve the overall user experience
+- ugrep 2.4.1:
+  * Support lz4-compressed files with extension .lz4
+
+-------------------------------------------------------------------
 Sat Jul 11 17:39:21 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ugrep 2.4.0:
