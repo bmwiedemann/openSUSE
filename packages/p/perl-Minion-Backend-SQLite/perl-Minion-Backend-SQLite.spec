@@ -17,7 +17,7 @@
 
 
 Name:           perl-Minion-Backend-SQLite
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 %define cpan_name Minion-Backend-SQLite
 Summary:        SQLite backend for Minion job queue
@@ -30,13 +30,13 @@ BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Minion) >= 10.03
+BuildRequires:  perl(Minion) >= 10.10
 BuildRequires:  perl(Module::Build::Tiny) >= 0.034
 BuildRequires:  perl(Module::Metadata)
 BuildRequires:  perl(Mojo::SQLite) >= 3.000
 BuildRequires:  perl(Mojolicious) >= 7.29
 BuildRequires:  perl(Test::More) >= 0.96
-Requires:       perl(Minion) >= 10.03
+Requires:       perl(Minion) >= 10.10
 Requires:       perl(Mojo::SQLite) >= 3.000
 Requires:       perl(Mojolicious) >= 7.29
 %{perl_requires}
@@ -63,7 +63,7 @@ perl Build.PL --installdirs=vendor
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes CONTRIBUTING.md examples README
+%doc Changes CONTRIBUTING.md examples prereqs.yml README
 %license LICENSE
 
 %changelog
