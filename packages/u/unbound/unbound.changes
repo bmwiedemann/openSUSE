@@ -1,4 +1,153 @@
 -------------------------------------------------------------------
+Mon Jul 27 10:48:36 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to 1.11.0
+
+Features
+- Merge #225 from akhait: KSK-2010 has been revoked. It removes the
+  KSK-2010 from the default list in unbound-anchor, now that the
+  revocation period is over.  KSK-2017 is the only trust anchor in
+  the shipped default now.
+- Merge PR #93: Add dynamic library support.
+- Introduce 'include-toplevel:' configuration option.
+- Change default value for 'rrset-roundrobin' to yes.
+- Add SNI support on more TLS connections (fixes #193).
+- Add SNI support to unbound-anchor.
+- Merge PR #164: Framestreams, this branch implements dnstap
+  connectivity in unbound. This has a number of new features.
+- Fix #165: Add prefer-ip4: yesno config option to prefer ipv4 for
+  using ipv4 filters, because the hosts ip6 netblock /64 is not owned
+  by one operator, and thus reputation is shared.
+
+Bug Fixes
+- protect X509_CHECK_FLAG_NO_PARTIAL_WILDCARDS with ifdef for
+  different openssl versions.
+- Merge PR #166: Fix typo in unbound.service.in, by glitsj16.
+- Fix #169: Fix warning for daemon/remote.c output may be truncated
+  from snprintf.
+- Fix #170: Fix gcc undefined sanitizer signed integer overflow
+  warning in signature expiry RFC1982 serial number arithmetic.
+- Fix more undefined sanitizer issues, in respip copy_rrset null
+  dname, and in the client_info_compare routine for null memcmp.
+- Merge PR #171: Add additional compilers and platforms to Travis
+  testing, by noloader.
+- Merge PR #173: updated makedist.sh for config.guess and
+  config.sub and sha256 digest for gpg, by noloader.
+- Merge PR #172: Add IBM s390x arch for testing, by noloader.
+- Fix #177: dnstap does not build on macOS.
+- Fix compiler warning in dns64/dns64.c
+- Merge PR #174: Add Android to Travis testing, by noloader.
+- Move android build scripts to contrib/ and allow android tests to fail.
+- Fix #175, Merge PR #176: fix link error when OpenSSL is configured
+  with no-engine, thanks noloader.
+- Upgrade config.guess(2020-01-01) and config.sub(2020-01-01).
+- Merge PR #180 from noloader: Avoid calling exit in Travis script.
+- Merge PR #181 from noloader: Fix OpenSSL -pie warning on Android.
+- Update README-Travis.md (from PR #179), by Jeffrey Walton.
+- Fix PR #182 from noloader: Add iOS testing to Travis.
+- Merge PR #186, fix #183: Fix unrecognized 'echo -n' option on OS X, by
+  noloader
+- Fix #188: unbound-control.c:882:6: error: 'execlp' is
+  unavailable: not available on tvOS.
+- Fix #189: mini_event.h:142:17: error: field 'ev_timeout' has incomplete
+  type, by noloader.
+- Add check to make sure RPZ records are subdomains of configured
+  zone origin.
+- Fix #192: In the unbound-checkconf tool, the module config of
+  dns64 subnetcache respip validator iterator is whitelisted, it was
+  reported it seems to work.
+- Merge PR#191: Update iOS testing on Travis, by Jeffrey Walton.
+- Fix #158: open tls-session-ticket-keys as binary, for Windows. By
+  Daisuke HIGASHI.
+- Merge PR#134, Allow the kernel to provide random source ports. By
+  Florian Obser.
+- Log warning when using outgoing-port-permit and outgoing-port-avoid
+  while explicit port randomisation is disabled.
+- Merge PR#194: Add libevent testing to Travis, by Jeffrey Walton.
+- Fix .travis.yml error, missing 'env' option.
+- Merge PR #197 from fobser: Make log_ident_revert_to_default() a
+  proper prototype.
+- Merge PR #198 from fobser: Declare lz_enter_rr_into_zone()
+  static, it's only used in this file.
+- Fix compile on Solaris for unbound-checkconf.
+- Fix compile of test tools without protobuf.
+- Merge PR #200 from yarikk: add ip-dscp option to specify the DSCP
+  tag for outgoing packets.
+- Travis fix for ios by omitting tools from install.
+- Merge PR #201 from noloader: Fix OpenSSL cross-compaile warnings.
+- Fix RPZ concurrency issue when using auth_zone_reload.
+- Make unbound-control error returned on missing domain name more user
+  friendly.
+- Merge PR #203 from noloader: Update README-Travis.md with current
+  procedures.
+- Merge PR #207: Clarify if-automatic listens on 0.0.0.0 and ::
+- Merge PR #208: Fix uncached CLIENT_RESPONSE'es on stateful
+  transports.
+- Merge PR #206: Redis TTL, by Talkabout.
+- More documentation for redis-expire-records option.
+- Keep track of number of timeouts. Use this counter to determine if
+  capsforid fallback should be started.
+- Merge PR #214 from gearnode: unbound-control-setup recreate
+  certificates.  With the -r option the certificates are created
+  again, without it, only the files that do not exist are created.
+- Fix #220: auth-zone section in config may lead to segfault.
+- Fix help return code in unbound-control-setup script.
+- Fix for posix shell syntax for trap in nsd-control-setup.
+- Fix for posix shell syntax for trap in run_msg.sh test script.
+- Add doxygen documentation for DSCP.
+- Fix #222: --enable-rpath, fails to rpath python lib.
+- Fix for count of reply states in the mesh.
+- Remove unneeded was_mesh_reply check.
+- Explicitly use 'rrset-roundrobin: no' for test cases.
+- Cache ECS answers with longest scope of CNAME chain.
+- windows compile warnings removal for ip dscp option code.
+- Fix for integer overflow when printing RDF_TYPE_TIME.
+- Update contrib/aaaa-filter-iterator.patch for the recent
+  generate_sub_request() change and to apply cleanly.
+- Merge PR #241 by Robert Edmonds: contrib/libunbound.pc.in: Do not use
+  "Requires:".
+- Mention tls name possible when tls is enabled for stub-addr in the
+  man page.
+- Fix default explanation in man page for qname-minimisation-strict.
+- Fix display of event loop method with libev.
+- iana portlist updated.
+- Move reply list clean for serve expired mesh callback to after
+  the reply is sent, so that script callbacks have reply_info.
+- Also move reply list clean for mesh callbacks to the scrip callback
+  can see the reply_info.
+- Fix for mesh accounting if the reply list already empty to begin
+  with.
+- Fix for mesh accounting when rpz decides to drop a reply with a
+  tcp stream waiting for it.
+- Review fix for number of detached states due to use of variable
+  after end of loop.
+- Fix tcp req info drop due to size call into mesh accounting
+  removal of mesh state during mesh send reply.
+- Fix #259: Fix unbound-checkconf does not check view existence.
+  unbound-checkconf checks access-control-view, access-control-tags,
+  access-control-tag-actions and access-control-tag-datas.
+- Fix offset of error printout for access-control-tag-datas.
+- Fix add missing DSA header, for compilation without deprecated
+  OpenSSL APIs.
+- Fix to use SSL_CTX_set_tlsext_ticket_key_evp_cb in OpenSSL
+  3.0.0-alpha4.
+- Longer keys for the test set, this avoids weak crypto errors.
+- Add bidirectional frame streams support.
+- Fix check conf test for referencing installation paths.
+- Fix unused variable warning for clang analyzer.
+- Merge PR #234 - Ensure proper alignment of cmsg buffers by Jérémie
+  Courrèges-Anglas.
+- Fix PR #234 log_assert sizeof to use union buffer.
+- Fix libnettle compile for session ticket key callback function
+  changes.
+- Fix lock dependency cycle in rpz zone config setup.
+- Fix streamtcp to print packet data to stdout.  This makes the
+  stdout and stderr not mix together lines, when parsing its output.
+- Fix contrib/fastrpz.patch to apply cleanly.  It fixes for changes
+  due to added libdynmod, but it does not compile, it conflicts with
+  new rpz code.
+
+-------------------------------------------------------------------
 Tue May 19 10:45:19 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - update to 1.10.1 with security fixes

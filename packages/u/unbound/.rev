@@ -388,4 +388,12 @@ Features
     <comment>update to 1.10.1 with security fixes</comment>
     <requestid>807296</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>a877c9c599f702cca333233bbc7913bb</srcmd5>
+    <version>1.11.0</version>
+    <time>1595949859</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822963</requestid>
+  </revision>
 </revisionlist>
