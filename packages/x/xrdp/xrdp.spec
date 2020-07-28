@@ -22,7 +22,7 @@
 %endif
 
 Name:           xrdp
-Version:        0.9.13
+Version:        0.9.13.1
 Release:        0
 Summary:        Remote desktop protocol (RDP) server
 License:        Apache-2.0 AND GPL-2.0-or-later
