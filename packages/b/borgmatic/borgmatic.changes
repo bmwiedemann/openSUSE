@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 28 06:57:42 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 1.5.9
+* #300: Add “borgmatic export-tar” action to export an archive to a
+  tar-formatted file or stream.
+* #339: Fix for intermittent timing-related test failure of logging
+  function.
+* Clarify database documentation about excluding named pipes and
+  character/block devices to prevent
+  hangs.
+
+-------------------------------------------------------------------
 Tue Jul  7 09:38:32 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - Update to 1.5.8
