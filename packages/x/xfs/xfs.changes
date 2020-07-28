@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 27 15:30:53 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- moved config file to /usr/etc/X11/fs (boo#1173050)
+
+-------------------------------------------------------------------
 Sun Jan  5 21:17:26 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - dropped /tmp/.font-unix deletion/creation from the init script 

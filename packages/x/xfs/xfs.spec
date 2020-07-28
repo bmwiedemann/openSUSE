@@ -1,7 +1,7 @@
 #
 # spec file for package xfs
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,17 @@
 #
 
 
+%if 0%{?suse_version} < 1550
+  %define _distconfdir /usr/etc
+%endif
+
 Name:           xfs
 Version:        1.2.0
 Release:        0
 Summary:        X font server
 License:        HPND
 Group:          System/X11/Utilities
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 # http://xorg.freedesktop.org/releases/individual/app/
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        xfs.config
@@ -48,14 +52,15 @@ System display servers.
 %setup -q
 
 %build
-%configure
+%configure --with-default-config-file=%{_sysconfdir}/X11/fs/config,%{_distconfdir}/X11/fs/config
 make %{?_smp_mflags}
 
 %install
 %make_install
 mkdir -p %{buildroot}%{_sbindir} \
          %{buildroot}%{_unitdir}
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/X11/fs/config
+rm -f %{buildroot}%{_sysconfdir}/X11/fs/config
+install -D -m 0644 %{SOURCE1} %{buildroot}%{_distconfdir}/X11/fs/config
 install -D -m 0444 %{SOURCE3} %{buildroot}%{_unitdir}/xfs.service
 install -D -m 0755 %{SOURCE2} %{buildroot}%{_sbindir}/rcxfs
 
@@ -74,8 +79,10 @@ install -D -m 0755 %{SOURCE2} %{buildroot}%{_sbindir}/rcxfs
 %files
 %defattr(-,root,root)
 %doc ChangeLog COPYING README
-%dir %{_sysconfdir}/X11/fs
-%config %verify(not md5 size mtime) %{_sysconfdir}/X11/fs/config
+%dir %{_distconfdir}
+%dir %{_distconfdir}/X11
+%dir %{_distconfdir}/X11/fs
+%{_distconfdir}/X11/fs/config
 %{_unitdir}/xfs.service
 %{_sbindir}/rcxfs
 %{_bindir}/xfs

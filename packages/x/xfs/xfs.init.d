@@ -24,9 +24,11 @@ test -x $XFS_BIN || exit 5
 rc_reset
 
 if [ ! -f /etc/X11/fs/config ] ; then
-    echo "can't find /etc/X11/fs/config"
-    # program is not configured
-    exit 6
+    if [ ! -f /usr/etc/X11/fs/config ] ; then
+        echo "can't find neither /etc/X11/fs/config nor /usr/etc/X11/fs/config"
+        # program is not configured
+        exit 6
+    fi
 fi
 
 case "$1" in

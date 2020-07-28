@@ -141,4 +141,12 @@ This is HPND, not MIT (absence of express sublicensing permission etc) (forwarde
   (boo#1159121)</comment>
     <requestid>761009</requestid>
   </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>3140e8b4524af1c37ca36280796a588d</srcmd5>
+    <version>1.2.0</version>
+    <time>1595949911</time>
+    <user>dimstar_suse</user>
+    <comment>- moved config file to /usr/etc/X11/fs (boo#1173050)</comment>
+    <requestid>823018</requestid>
+  </revision>
 </revisionlist>
