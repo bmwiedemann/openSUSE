@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 21 11:37:26 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add vl805-firware-loader-overlay.dts which registers a reset controller
+  that'll take care of triggering vl805's firmware load.
+
+-------------------------------------------------------------------
 Tue Apr 28 10:36:14 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Update to d7b4d5935198 (2020-05-02)
