@@ -17,7 +17,7 @@
 
 
 Name:           perl-Encode
-Version:        3.06
+Version:        3.07
 Release:        0
 %define cpan_name Encode
 Summary:        Character encodings in Perl
