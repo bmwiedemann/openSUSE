@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 24 11:24:06 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to disable the seccomp sandbox (boo#1174448):
+  * 0001-Disable-the-seccomp-sandbox.patch
+
+-------------------------------------------------------------------
 Tue Jul  7 12:38:54 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.3

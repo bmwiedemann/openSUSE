@@ -32,6 +32,8 @@ Source1:        https://download.kde.org/stable/plasma/%{version}/kscreenlocker-
 Source2:        plasma.keyring
 %endif
 Source3:        kde
+# PATCH-FIX-UPSTREAM (kind of, https://invent.kde.org/plasma/kscreenlocker/-/merge_requests/9)
+Patch1:         0001-Disable-the-seccomp-sandbox.patch
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  extra-cmake-modules >= 1.8.0
 BuildRequires:  kf5-filesystem
@@ -86,8 +88,9 @@ Requires:       cmake(Qt5X11Extras) >= 5.5.0
 Development files for Library and components for secure lock screen architecture.
 
 %lang_package
+
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
   %cmake_kf5 -d build -- -DKDE4_COMMON_PAM_SERVICE=kde -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
