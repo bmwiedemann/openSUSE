@@ -6,8 +6,8 @@
     <package name="aaa_base" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="bash" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="blog" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="busybox" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-ima_evm -->
+    <package name="busybox" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
+    <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
     <package name="chkstat" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="coreutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="cpio" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -30,7 +30,6 @@
     <package name="kernel-default" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="kexec-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="kmod" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="kmod-compat" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="krb5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libacl1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libapparmor1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -172,7 +171,7 @@
     <package name="appstream-glib" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="at-spi2-core" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="attica-qt5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
-    <package name="attr" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="attr" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-ima_evm -->
     <package name="audit" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-defaults -->
     <package name="avahi" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="baloo5-imports" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
@@ -198,7 +197,6 @@
     <package name="btrfsprogs-udev-rules" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="bubblewrap" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="busybox-coreutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
-    <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="busybox-psmisc" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="busybox-xz" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="ca-certificates" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->

@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20200728" schemaversion="4.1">
+<image name="OBS__openSUSE___20200729" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200728</productvar>
+      <productvar name="VERSION">20200729</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200728,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200729,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200728/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200729/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -280,6 +280,7 @@
       <repopackage name="btrfsprogs-udev-rules"/>
       <repopackage name="bubblewrap"/>
       <repopackage name="busybox"/>
+      <repopackage name="busybox-bzip2"/>
       <repopackage name="busybox-coreutils"/>
       <repopackage name="busybox-findutils"/>
       <repopackage name="busybox-gawk"/>
@@ -1326,7 +1327,6 @@
       <repopackage name="kmines"/>
       <repopackage name="kmines-lang"/>
       <repopackage name="kmod"/>
-      <repopackage name="kmod-compat"/>
       <repopackage name="kmousetool"/>
       <repopackage name="kmousetool-lang"/>
       <repopackage name="kmouth"/>
@@ -3312,8 +3312,6 @@
       <repopackage name="mdadm"/>
       <repopackage name="mdevctl"/>
       <repopackage name="media-player-info"/>
-      <repopackage name="meld"/>
-      <repopackage name="meld-lang"/>
       <repopackage name="memcached"/>
       <repopackage name="memtest86+"/>
       <repopackage name="menulibre"/>
@@ -5130,7 +5128,6 @@
       <repopackage name="typelib-1_0-GstVideo-1_0"/>
       <repopackage name="typelib-1_0-Gtk-3_0"/>
       <repopackage name="typelib-1_0-GtkClutter-1_0"/>
-      <repopackage name="typelib-1_0-GtkSource-3_0"/>
       <repopackage name="typelib-1_0-GtkSource-4"/>
       <repopackage name="typelib-1_0-GWeather-3_0"/>
       <repopackage name="typelib-1_0-Handy-0_0"/>
