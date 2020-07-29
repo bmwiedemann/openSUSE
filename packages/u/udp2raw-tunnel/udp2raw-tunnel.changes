@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 16 17:34:13 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 20200715.0
+  * further fix of GH#226. --fix-gro is no longer compatible with
+    old versions.
+  * fix a problem/bug in --cipher-mode aes128cfb, aes128cfb is
+    redesigned and not compatible with old versions. The original
+    aes128cfb is renamed to aes128cfb_0 and not suggested to use.
+  * Fixed a bug which may cause bind port fail in log and the
+    program to exit by itself.
+
+-------------------------------------------------------------------
 Tue Mar 26 20:48:12 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Clarify license

@@ -1,6 +1,7 @@
 #
 # spec file for package udp2raw-tunnel
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,11 +13,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           udp2raw-tunnel
-Version:        20181113.0
+Version:        20200715.0
 Release:        0
 Summary:        UDP over TCP/ICMP/UDP tunnel
 # The following files are adapted from PolarSSL 1.3.19 (GPL-2.0)
