@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 29 03:12:34 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.16
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.16    2020-07-23
+          [CHANGES]
+           * Provide the `:experimental` import tag as a nicer way to silence
+             experimental warnings
+
+          [BUGFIXES]
+           * Don't name a variable `class` because it upsets some C compilers
+             (RT133043)
+
+-------------------------------------------------------------------
 Tue Jul 21 03:18:33 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.15
