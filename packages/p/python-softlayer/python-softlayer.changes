@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 29 07:47:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 5.8.9
+  * #1252 Automated Snap publisher
+  * #1230 Tag Management
+  * #1287 Edit IP note and add ipAddress table in detail view
+  * #1291 Storage documentation updates
+  * #1266 Fixed ticket upload with REST endpoint
+  * #1263 add the redundant/degraded option to hardware
+  * #1262 Added `iter` option for ordering manager functions
+  * #1264 Add Account planned, unplanned and announcement events
+  * #1241 Storage feature for virtual and hardware servers 
+
+-------------------------------------------------------------------
 Tue May 19 09:28:05 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
