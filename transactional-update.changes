@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 23 13:17:47 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove unused attr requires
+- Change bc to file requires
+
+-------------------------------------------------------------------
 Tue Jun 23 15:39:12 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Version 2.22
