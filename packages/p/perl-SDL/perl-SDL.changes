@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  7 09:26:26 UTC 2020 - Berthold Gunreben <azouhr@opensuse.org>
+
+- Remove hanging tests on s390x: 't/sdlx_controller_interface.t'
+
+-------------------------------------------------------------------
 Wed Nov 28 16:54:20 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Remove hanging tests on %arm and ppc64*: 't/sdlx_controller_interface.t'

@@ -64,7 +64,7 @@ emulators, and many popular games, including the award winning Linux port of
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-%ifarch %arm ppc64 ppc64le
+%ifarch %arm ppc64 ppc64le s390x
 # Remove hanging test. See: https://github.com/PerlGameDev/SDL/issues/289
 rm t/sdlx_controller_interface.t
 %endif
