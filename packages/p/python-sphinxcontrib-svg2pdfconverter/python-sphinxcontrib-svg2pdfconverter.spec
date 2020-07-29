@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-svg2pdfconverter
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-sphinxcontrib-svg2pdfconverter
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        Sphinx SVG to PDF converter extension
 License:        BSD-2-Clause
@@ -31,6 +31,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 1.6.3
+Recommends:     python-CairoSVG >= 1.0
 BuildArch:      noarch
 %python_subpackages
 
