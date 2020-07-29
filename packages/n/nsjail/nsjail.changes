@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 28 09:10:57 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0:
+  * the TCP proxy mode is a socketpair proxy now
+  * fixes for some configs/ (e.g. for xchat and for znc)
+  * new clone option recognized (CLONE_NEWPID)
+  * fixed max_conns_per_ip
+  * clarification of units for cgroups_mem_max
+- Remove remove_werror.patch
+
+-------------------------------------------------------------------
 Thu Jun 18 13:59:19 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
 
 - Add remove_werror.patch to prevent build errors due to deprecation

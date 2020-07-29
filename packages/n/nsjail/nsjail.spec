@@ -17,15 +17,14 @@
 
 
 Name:           nsjail
-Version:        2.9
+Version:        3.0
 Release:        0
 Summary:        A light-weight process isolation tool
 License:        Apache-2.0
 Group:          System/GUI/Other
 URL:            https://nsjail.com
-Source0:        nsjail-%{version}.tar.gz
+Source0:        https://github.com/google/nsjail/archive/%{version}.tar.gz#/nsjail-%{version}.tar.gz
 Source1:        kafel.tar.gz
-Patch0:         remove_werror.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  flex
@@ -44,7 +43,6 @@ seccomp-bpf syscall filters (with help of the kafel bpf language)
 
 %prep
 %setup -qa1
-%patch0 -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -55,9 +53,23 @@ make %{?_smp_mflags}
 %install
 mkdir -p %{buildroot}/%{_bindir}/
 cp nsjail %{buildroot}/%{_bindir}/
+mkdir -p %{buildroot}/%{_sysconfdir}/%{name}
+install -m 644 configs/*.cfg %{buildroot}/%{_sysconfdir}/%{name}
 
 %files
 %license LICENSE
 %{_bindir}/nsjail
+%{_sysconfdir}/%{name}
+%config %{_sysconfdir}/%{name}/xchat-with-net.cfg
+%config %{_sysconfdir}/%{name}/znc-with-net.cfg
+%config %{_sysconfdir}/%{name}/apache.cfg
+%config %{_sysconfdir}/%{name}/bash-with-fake-geteuid.cfg
+%config %{_sysconfdir}/%{name}/demo-dont-use-chrome-with-net.cfg
+%config %{_sysconfdir}/%{name}/firefox-with-cloned-net.cfg
+%config %{_sysconfdir}/%{name}/firefox-with-net.cfg
+%config %{_sysconfdir}/%{name}/home-documents-with-xorg-no-net.cfg
+%config %{_sysconfdir}/%{name}/imagemagick-convert.cfg
+%config %{_sysconfdir}/%{name}/static-busybox-with-execveat.cfg
+%config %{_sysconfdir}/%{name}/tomcat8.cfg
 
 %changelog
