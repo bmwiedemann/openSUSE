@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 28 11:31:49 UTC 2020 - Jan Zerebecki <jzerebecki@suse.com>
+
+- as a workaround (bsc#1163136) disable test for rabbit until a release with
+  fix is available, otherwise build would loop forever
+
+-------------------------------------------------------------------
 Tue May 12 09:45:06 UTC 2020 - cloud-devel@suse.de
 
 - update to version 12.1.0

@@ -459,4 +459,13 @@
     <comment>Ussuri Update</comment>
     <requestid>803593</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>c426c11e170e0582bdd54d6b05502fc4</srcmd5>
+    <version>12.1.0</version>
+    <time>1596035996</time>
+    <user>dimstar_suse</user>
+    <comment>- as a workaround (bsc#1163136) disable test for rabbit until a release with
+  fix is available, otherwise build would loop forever</comment>
+    <requestid>823213</requestid>
+  </revision>
 </revisionlist>
