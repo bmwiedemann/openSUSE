@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 16 17:39:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 20200714.0
+  * fix --key option (the longer form of -k) not working
+  * new options --out-addr --out-interface.
+
+-------------------------------------------------------------------
 Tue Mar 26 15:17:59 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Clarify license
