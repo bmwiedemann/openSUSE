@@ -1,7 +1,7 @@
 #
 # spec file for package python-slixmpp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,8 @@
 
 %define skip_python2 1
 %define _name   slixmpp
-%define _tar_ver 127
 Name:           python-slixmpp
-Version:        1.4.2
+Version:        1.5.2
 Release:        0
 Summary:        Python XMPP (Jabber) Library that Implements Everything as a Plugin
 License:        MIT
@@ -59,8 +58,7 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/
 
 %check
-# %%python_exec run_tests.py
-%python_exec -munittest discover -v -s tests
+%python_exec -m unittest discover -v -s tests
 
 %files %{python_files}
 %license LICENSE
