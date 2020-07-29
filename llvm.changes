@@ -1,7 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul 22 21:54:01 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 10.0.1.
+  * This release contains bug-fixes for the LLVM 10.0.0 release.
+    This release is API and ABI compatible with 10.0.0.
+
+-------------------------------------------------------------------
 Tue Mar 24 22:30:06 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 10.0.0.
+  * For details, see the release notes:
+    - https://releases.llvm.org/10.0.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/10.0.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/10.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/10.0.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/10.0.0/tools/lld/docs/ReleaseNotes.html
 - Remove superfluous clang-checker requirement.
 
 -------------------------------------------------------------------
