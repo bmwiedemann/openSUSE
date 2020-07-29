@@ -161,7 +161,7 @@ install %{S:4} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d
 %endif
 
 # Setup for ports
-%ifarch aarch64 %{arm} %{power64} ppc s390x
+%ifarch aarch64 %{arm} %{power64} ppc s390x riscv64
 install %{S:3} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d/opensuse-tumbleweed-oss.repo
 install %{S:5} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d/opensuse-tumbleweed-update.repo
 
@@ -194,7 +194,7 @@ install %{S:12} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d
 %endif
 
 # Setup for ports
-%ifarch aarch64 %{arm} %{power64} ppc s390x
+%ifarch aarch64 %{arm} %{power64} ppc s390x riscv64
 install %{S:13} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d/opensuse-leap-oss.repo
 
 %ifnarch %{power64} ppc s390x riscv64
