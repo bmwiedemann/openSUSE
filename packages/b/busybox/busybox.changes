@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 22 15:10:41 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to busybox 1.32.0
+  - many bugfixes and new features
+  - Obsoletes busybox-no-stime.patch
+
+-------------------------------------------------------------------
+Wed Jul 22 09:24:42 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable ftpget/ftpput, non-standard, ftp is outdated
+- Disable run-init, we don't use that
+- Disable cttyhack, we don't provide the calling tools
+- Disable dnsd
+
+-------------------------------------------------------------------
 Sat Jul 11 06:05:40 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Enable syslogd for containers

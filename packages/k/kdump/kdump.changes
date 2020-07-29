@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 21 12:43:49 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Make dracut and sed normal requires as we don't use them in 
+  %pre/%post install. Use file requires for sed.
+
+-------------------------------------------------------------------
+Thu Jun  4 14:53:00 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't PreRequire coreutils but the tools we really need
+
+-------------------------------------------------------------------
 Mon Mar 30 11:40:15 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
 
 - kdump-make-sure-that-the-udev-runtime-directory-exists.patch:

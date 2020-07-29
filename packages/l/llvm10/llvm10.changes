@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jul 22 21:54:01 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 10.0.1.
+  * This release contains bug-fixes for the LLVM 10.0.0 release.
+    This release is API and ABI compatible with 10.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Replace ValueLattice-Add-new-state-for-undef-constants.patch,
+  which landed upstream in a modified version, by
+  restore-llvm10-abi.patch that resets the ABI to our 10.0.0.
+- Rewrite lld-default-sha1.patch to be version-independent.
+- Set flags consistently, so that we don't lose -DNDEBUG on 32-bit
+  architectures. Also we don't need the opt flags twice. This leads
+  to a significant reduction in binary sizes on 32-bit arches.
+- Make it easier to package release candidates.
+- Enable most tests on 32-bit ARM, but not for libcxx.
+- Add fix-atomics-test.patch for architectures where native atomics
+  are not available.
+- Lower build constraints for riscv64 a bit to allow building on
+  more workers.
+- Allow more compile jobs in stage 2.
+
+-------------------------------------------------------------------
 Sun Jul 12 11:49:47 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Factor out computation of the number of jobs into a macro.
@@ -16,6 +38,12 @@ Tue Jun 23 07:18:55 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 Tue Mar 24 22:30:06 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 10.0.0.
+  * For details, see the release notes:
+    - https://releases.llvm.org/10.0.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/10.0.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/10.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/10.0.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/10.0.0/tools/lld/docs/ReleaseNotes.html
   * New LLVM tools: llvm-ifs, llvm-install-name-tool, llvm-reduce.
   * New Clang tools: clang-move, clang-offload-wrapper, pp-trace.
   * lldb-mi moved to a separate project and is no longer available.

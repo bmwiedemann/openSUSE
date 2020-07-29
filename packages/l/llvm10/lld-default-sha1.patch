@@ -1,7 +1,7 @@
-Index: llvm-10.0.0.src/lld-10.0.0.src/ELF/Driver.cpp
+Index: lld-10.0.0.src/ELF/Driver.cpp
 ===================================================================
---- llvm-10.0.0.src.orig/lld-10.0.0.src/ELF/Driver.cpp
-+++ llvm-10.0.0.src/lld-10.0.0.src/ELF/Driver.cpp
+--- lld-10.0.0.src.orig/ELF/Driver.cpp
++++ lld-10.0.0.src/ELF/Driver.cpp
 @@ -693,7 +693,7 @@ getBuildId(opt::InputArgList &args) {
      return {BuildIdKind::None, {}};
  

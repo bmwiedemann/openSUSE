@@ -58,7 +58,7 @@ Requires:       libcontainers-common >= 0.0.1
 Requires:       runc >= 1.0.0~rc6
 Requires:       socat
 Requires:       conmon
-Recommends:     katacontainers
+Suggests:       katacontainers
 # Provide generic cri-runtime dependency (needed by kubernetes)
 Provides:       cri-runtime
 # disable stripping of binaries

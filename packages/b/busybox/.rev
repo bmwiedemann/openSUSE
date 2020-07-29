@@ -611,4 +611,12 @@
     <comment>- Enable syslogd for containers (forwarded request 820439 from kukuk)</comment>
     <requestid>820440</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>c16b940c7af9944a5dd6f79ee866bf27</srcmd5>
+    <version>1.32.0</version>
+    <time>1596035740</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822592</requestid>
+  </revision>
 </revisionlist>

@@ -16,11 +16,13 @@
 #
 
 
-%define _relver 10.0.0
+%define _relver 10.0.1
+%define _version %_relver%{?_rc:rc%_rc}
+%define _tagver %_relver%{?_rc:-rc%_rc}
 %define _minor  10.0
 %define _sonum  10
 # Integer version used by update-alternatives
-%define _uaver  1000
+%define _uaver  1001
 %define _socxx  1
 
 %ifarch x86_64 aarch64 %arm
@@ -78,26 +80,26 @@
     fi
 
 Name:           llvm10
-Version:        10.0.0
+Version:        %_relver%{?_rc:~rc%_rc}
 Release:        0
 Summary:        Low Level Virtual Machine
 License:        Apache-2.0 WITH LLVM-exception OR NCSA
 Group:          Development/Languages/Other
 URL:            https://www.llvm.org/
 # NOTE: please see README.packaging in the llvm package for details on how to update this package
-Source0:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{version}/llvm-%{version}.src.tar.xz
-Source1:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{version}/clang-%{version}.src.tar.xz
-Source2:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{version}/clang-tools-extra-%{version}.src.tar.xz
-Source3:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{version}/compiler-rt-%{version}.src.tar.xz
-Source4:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{version}/libcxx-%{version}.src.tar.xz
-Source5:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{version}/libcxxabi-%{version}.src.tar.xz
-Source6:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{version}/openmp-%{version}.src.tar.xz
-Source7:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{version}/lld-%{version}.src.tar.xz
-Source8:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{version}/lldb-%{version}.src.tar.xz
-Source9:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{version}/polly-%{version}.src.tar.xz
+Source0:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/llvm-%{_version}.src.tar.xz
+Source1:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/clang-%{_version}.src.tar.xz
+Source2:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/clang-tools-extra-%{_version}.src.tar.xz
+Source3:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/compiler-rt-%{_version}.src.tar.xz
+Source4:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/libcxx-%{_version}.src.tar.xz
+Source5:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/libcxxabi-%{_version}.src.tar.xz
+Source6:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/openmp-%{_version}.src.tar.xz
+Source7:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/lld-%{_version}.src.tar.xz
+Source8:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/lldb-%{_version}.src.tar.xz
+Source9:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/polly-%{_version}.src.tar.xz
 # Docs are created manually, see below
-Source50:       llvm-docs-%{version}.src.tar.xz
-Source51:       clang-docs-%{version}.src.tar.xz
+Source50:       llvm-docs-%{_version}.src.tar.xz
+Source51:       clang-docs-%{_version}.src.tar.xz
 Source100:      %{name}-rpmlintrc
 Source101:      baselibs.conf
 # PATCH-FIX-OPENSUSE lto-disable-cache.patch -- Disable ThinLTO cache
@@ -124,10 +126,14 @@ Patch20:        llvm_build_tablegen_component_as_shared_library.patch
 Patch21:        tests-use-python3.patch
 Patch22:        llvm-better-detect-64bit-atomics-support.patch
 Patch24:        opt-viewer-Find-style-css-in-usr-share.patch
-# Proposed fix for https://bugs.llvm.org/show_bug.cgi?id=45272.
-Patch25:        ValueLattice-Add-new-state-for-undef-constants.patch
+# A patch in 10.0.0 changed the ABI vs upstream, but the upstream patch that
+# landed in 10.0.1 is ABI stable, so to be ABI-compatible with our 10.0.0 we
+# need to make sure we go with our 10.0.0 enum value order.
+Patch25:        restore-llvm10-abi.patch
 # PATCH-FIX-OPENSUSE lld-default-sha1.patch
 Patch26:        lld-default-sha1.patch
+# PATCH-FIX-UPSTREAM fix-atomics-test.patch -- Fix Clang test for arches without native atomics.
+Patch27:        fix-atomics-test.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -537,7 +543,7 @@ This package contains the development files for Polly.
 %endif
 
 %prep
-%setup -q -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -b 50 -a 51 -n llvm-%{version}.src
+%setup -q -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -b 50 -a 51 -n llvm-%{_version}.src
 
 %patch0 -p2
 %patch5 -p1
@@ -548,16 +554,16 @@ This package contains the development files for Polly.
 %patch21 -p1
 %patch22 -p1
 %patch24 -p1
-%patch25 -p2
-%patch26 -p1
+%patch25 -p1
 
-pushd clang-%{version}.src
+pushd clang-%{_version}.src
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch6 -p1
 %patch8 -p1
 %patch9 -p2
+%patch27 -p1
 
 # We hardcode openSUSE
 rm unittests/Driver/DistroTest.cpp
@@ -567,18 +573,22 @@ rm test/Driver/x86_features.c
 rm test/Driver/nacl-direct.c
 popd
 
-pushd clang-tools-extra-%{version}.src
+pushd clang-tools-extra-%{_version}.src
 %patch10 -p2
 popd
 
+pushd lld-%{_version}.src
+%patch26 -p1
+popd
+
 %if %{with lldb}
-pushd lldb-%{version}.src
+pushd lldb-%{_version}.src
 %patch11 -p1
 popd
 %endif
 
 %if %{with libcxx}
-pushd libcxx-%{version}.src
+pushd libcxx-%{_version}.src
 rm test/libcxx/thread/thread.threads/thread.thread.this/sleep_for.pass.cpp
 rm test/std/localization/locale.categories/category.time/locale.time.get.byname/get_monthname.pass.cpp
 rm test/std/localization/locale.categories/category.time/locale.time.get.byname/get_monthname_wide.pass.cpp
@@ -588,32 +598,32 @@ rm -rf test/std/thread/
 popd
 %endif
 
-pushd polly-%{version}.src
+pushd polly-%{_version}.src
 %patch12 -p2
 popd
 
 # Move into right place
-mv clang-%{version}.src tools/clang
-mv compiler-rt-%{version}.src projects/compiler-rt
-mv clang-tools-extra-%{version}.src tools/clang/tools/extra
+mv clang-%{_version}.src tools/clang
+mv compiler-rt-%{_version}.src projects/compiler-rt
+mv clang-tools-extra-%{_version}.src tools/clang/tools/extra
 %if %{with lld}
-mv lld-%{version}.src tools/lld
+mv lld-%{_version}.src tools/lld
 %endif
 %if %{with polly}
-mv polly-%{version}.src tools/polly
+mv polly-%{_version}.src tools/polly
 %endif
 
 %if %{with lldb}
-mv lldb-%{version}.src tools/lldb
+mv lldb-%{_version}.src tools/lldb
 %endif
 
 %if %{with openmp}
-mv openmp-%{version}.src  projects/openmp
+mv openmp-%{_version}.src  projects/openmp
 %endif
 
 %if %{with libcxx}
-mv libcxx-%{version}.src projects/libcxx
-mv libcxxabi-%{version}.src projects/libcxxabi
+mv libcxx-%{_version}.src projects/libcxx
+mv libcxxabi-%{_version}.src projects/libcxxabi
 %endif
 
 %build
@@ -632,6 +642,9 @@ flags+=" -mfloat-abi=hard -march=armv6zk -mtune=arm1176jzf-s -mfpu=vfp"
 %ifarch armv7hl
 flags+=" -mfloat-abi=hard -march=armv7-a -mtune=cortex-a15 -mfpu=vfpv3-d16"
 %endif
+
+CFLAGS=$flags
+CXXFLAGS=$flags
 
 # By default build everything
 TARGETS_TO_BUILD="all"
@@ -657,10 +670,6 @@ mem_per_compile_job=900000
 # 32-bit arches need less memory than 64-bit arches.
 mem_per_compile_job=600000
 %endif
-%ifarch riscv64
-# RISCV needs more because of emulation overhead.
-mem_per_compile_job=1000000
-%endif
 
 mem_per_link_job=3000000
 %ifarch riscv64
@@ -682,8 +691,6 @@ avail_mem=$(awk '/MemAvailable/ { print $2 }' /proc/meminfo)
 %cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS:BOOL=OFF \
-    -DCMAKE_C_FLAGS="$flags -g0" \
-    -DCMAKE_CXX_FLAGS="$flags -g0" \
     -DLLVM_BUILD_LLVM_DYLIB:BOOL=OFF \
     -DLLVM_LINK_LLVM_DYLIB:BOOL=OFF \
     -DLLVM_PARALLEL_COMPILE_JOBS="$max_compile_jobs" \
@@ -723,8 +730,10 @@ cd ..
 find ./stage1 \( -name '*.o' -or -name '*.a' \) -delete
 
 # Clang uses a bit less memory.
-%ifarch x86_64
-mem_per_compile_job=800000
+mem_per_compile_job=700000
+%ifarch i586 ppc armv6hl armv7hl
+# 32-bit arches need less memory than 64-bit arches.
+mem_per_compile_job=500000
 %endif
 
 %set_jobs compile $mem_per_compile_job
@@ -745,8 +754,6 @@ export CLANG_TABLEGEN=${PWD}/stage1/bin/clang-tblgen
     -DLLVM_BUILD_LLVM_DYLIB:BOOL=ON \
     -DLLVM_LINK_LLVM_DYLIB:BOOL=ON \
     -DCLANG_LINK_CLANG_DYLIB:BOOL=ON \
-    -DCMAKE_C_FLAGS="$flags" \
-    -DCMAKE_CXX_FLAGS="$flags" \
     -DLLVM_PARALLEL_COMPILE_JOBS="$max_compile_jobs" \
     -DLLVM_PARALLEL_LINK_JOBS="$max_link_jobs" \
 %if %{with thin_lto}
@@ -755,8 +762,8 @@ export CLANG_TABLEGEN=${PWD}/stage1/bin/clang-tblgen
     -DCMAKE_RANLIB="${LLVM_RANLIB}" \
 %endif
 %ifarch %arm ppc s390 %{ix86}
-    -DCMAKE_C_FLAGS_RELWITHDEBINFO="$flags -g1" \
-    -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="$flags -g1" \
+    -DCMAKE_C_FLAGS_RELWITHDEBINFO="-g1" \
+    -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-g1" \
 %endif
     -DENABLE_LINKER_BUILD_ID=ON \
     -DLLVM_TABLEGEN="${LLVM_TABLEGEN}" \
@@ -821,16 +828,16 @@ find ./build \( -name '*.o' -or -name '*.a' \)  -delete
 
 # Docs are prebuilt due to sphinx dependency
 #
-# tar xf llvm-10.0.0.src.tar.xz
-# tar xf clang-10.0.0.src.tar.xz
-# pushd llvm-10.0.0.src/docs
+# tar xf llvm-%{_version}.src.tar.xz
+# tar xf clang-%{_version}.src.tar.xz
+# pushd llvm-%{_version}.src/docs
 # make -f Makefile.sphinx man html
 # popd
-# pushd clang-10.0.0.src/docs
+# pushd clang-%{_version}.src/docs
 # make -f Makefile.sphinx man html
 # popd
-# tar cvJf llvm-docs-10.0.0.src.tar.xz llvm-10.0.0.src/docs/_build/{man,html}
-# tar cvJf clang-docs-10.0.0.src.tar.xz clang-10.0.0.src/docs/_build/{man,html}
+# tar cvJf llvm-docs-%{_version}.src.tar.xz llvm-%{_version}.src/docs/_build/{man,html}
+# tar cvJf clang-docs-%{_version}.src.tar.xz clang-%{_version}.src/docs/_build/{man,html}
 
 # Build man/html pages
 pushd docs
@@ -980,7 +987,7 @@ cat > %{buildroot}%{_rpmconfigdir}/macros.d/macros.llvm <<EOF
 #
 
 # Version information
-%_llvm_version %{_relver}
+%_llvm_version %{version}
 %_llvm_relver %{_relver}
 %_llvm_minorver %{_minor}
 %_llvm_sonum  %{_sonum}
@@ -1042,24 +1049,27 @@ export LANG=C.UTF-8
 # NOTE: We're not running the tests via ninja, because we've removed object
 # files and static libraries already.
 pushd build
-%ifnarch %{arm}
 %if !0%{?qemu_user_space_build:1}
 # we just do not have enough memory with qemu emulation
 
+# On armv6l, fpext frem(12.0f, 5.0f) to double = inf for some reason.
+sed -i '1i; XFAIL: armv6' ../test/ExecutionEngine/frem.ll
 # Tests are disabled on ppc because of sporadic hangs. Also some tests fail.
 %ifnarch ppc
 python3 bin/llvm-lit -sv test/
-%else
-python3 bin/llvm-lit -sv test/ || echo "Ignore failures"
 %endif
 python3 bin/llvm-lit -sv --param clang_site_config=tools/clang/test/lit.site.cfg \
 	--param USE_Z3_SOLVER=0 tools/clang/test/
 
 %if %{with libcxx}
+# libcxx tests take too long on ARM.
+%ifnarch %{arm}
 python3 bin/llvm-lit -sv projects/libcxx/test/
-python3 bin/llvm-lit -sv projects/libcxxabi/test/
 %endif
 
+# There are undefined references to __cxa_* functions and "typeinfo for int".
+sed -i '1i@ XFAIL: arm' ../projects/libcxxabi/test/native/arm-linux-eabi/ttype-encoding-{0,9}0.pass.sh.s
+python3 bin/llvm-lit -sv projects/libcxxabi/test/
 %endif
 %endif
 popd

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 28 09:19:33 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Suggest katacontainers instead of recommending it. It's not
+  enabled by default, so it's just bloat
+
+-------------------------------------------------------------------
 Mon Jul 20 12:44:28 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to version 1.18.3:

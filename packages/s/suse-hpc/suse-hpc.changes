@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 23 17:42:34 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Fix %%hpc_base during hpc_init to allow for changes to %%_prefix.
+
+-------------------------------------------------------------------
 Thu May  7 21:50:13 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Fix typo in shell script variable.

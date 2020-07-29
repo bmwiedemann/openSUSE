@@ -37,8 +37,7 @@ BuildRequires:  suse-module-tools
 BuildRequires:  pkgconfig(dracut)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
-Requires:       attr
-Requires:       bc
+Requires:       /usr/bin/bc
 Requires:       btrfsprogs
 Requires:       logrotate
 Requires:       lsof

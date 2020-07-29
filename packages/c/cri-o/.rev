@@ -456,4 +456,12 @@
     <comment></comment>
     <requestid>822091</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>ba7d0135b70ca5f21fc856eb42426bae</srcmd5>
+    <version>1.18.3</version>
+    <time>1596035805</time>
+    <user>dimstar_suse</user>
+    <comment>Only suggest katacontainers and not recommend it.</comment>
+    <requestid>823099</requestid>
+  </revision>
 </revisionlist>

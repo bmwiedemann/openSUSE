@@ -17,7 +17,7 @@
 
 
 Name:           busybox
-Version:        1.31.1
+Version:        1.32.0
 Release:        0
 Summary:        Minimalist variant of UNIX utilities linked in a single executable
 License:        GPL-2.0-or-later
@@ -28,8 +28,6 @@ Source1:        BusyBox.1
 Source2:        busybox.config
 Source3:        busybox-static.config
 Source4:        man.conf
-# Upstream patches
-Patch0:         busybox-no-stime.patch
 # other patches
 Patch100:       busybox.install.patch
 Provides:       useradd_or_adduser_dep
@@ -71,7 +69,6 @@ PATH=/usr/share/busybox:$PATH SKIP_KNOWN_BUGS=1 ./runtest
 
 %prep
 %setup -q
-%patch0 -p1
 %patch100 -p0
 cp -a %{SOURCE1} docs/
 find "(" -name CVS -o -name .cvsignore -o -name .svn -o -name .gitignore ")" \

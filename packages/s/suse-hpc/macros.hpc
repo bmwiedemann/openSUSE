@@ -117,6 +117,7 @@ EOF\
 # -V: <arg>: set MPI version to <arg> (optional - default:)
 # -e: <arg>: program name extension
 %_hpc_init(Cc:Mm:v:V:e:)\
+  %global hpc_base %{expand:%hpc_base} \
   %{-m:%{!-c:%{error: Cannot est MPI family without compiler}}} \
   %{-c:%{expand: %%global hpc_compiler_family %{-c*}}} \
   %{-m: %{expand: %%global hpc_mpi_family %{-m*}}} \

@@ -25,7 +25,7 @@
 %endif
 %endif
 Name:           llvm
-Version:        10.0.0
+Version:        10.0.1
 Release:        0
 Summary:        Low Level Virtual Machine
 License:        Apache-2.0 WITH LLVM-exception OR NCSA

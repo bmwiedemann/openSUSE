@@ -1,0 +1,45 @@
+From eb918032722041abaed5f74a37a091e322e2d319 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Florian=20M=C3=BCllner?= <fmuellner@gnome.org>
+Date: Sat, 18 Jul 2020 16:12:25 +0200
+Subject: [PATCH] urlPreview: Move margin into CSS
+
+Setting it in code for some reason confuses size negotiations, resulting
+in warnings about negative size requests. It looks like CSS margins
+don't suffer from the same problem, so just use those instead.
+
+https://gitlab.gnome.org/GNOME/polari/-/issues/142
+---
+ data/resources/application.css | 3 +++
+ src/urlPreview.js              | 2 --
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/data/resources/application.css b/data/resources/application.css
+index a0a57a76..e455304f 100644
+--- a/data/resources/application.css
++++ b/data/resources/application.css
+@@ -118,6 +118,9 @@ treeview.polari-server-room-list {
+ }
+ 
+ .url-preview { padding: 8px; }
++.url-preview { margin: 12px; }
++.url-preview:dir(ltr) { margin-left: 0; }
++.url-preview:dir(rtl) { margin-right: 0; }
+ .url-preview image { min-width: 120px; min-height: 90px; }
+ .url-preview label { font-size: small; }
+ 
+diff --git a/src/urlPreview.js b/src/urlPreview.js
+index e388b78b..b818c812 100644
+--- a/src/urlPreview.js
++++ b/src/urlPreview.js
+@@ -78,8 +78,6 @@ var URLPreview = GObject.registerClass({
+ 
+         this.set({
+             orientation: Gtk.Orientation.VERTICAL,
+-            margin: 12,
+-            margin_start: 0,
+             spacing: 6,
+         });
+ 
+-- 
+GitLab
+

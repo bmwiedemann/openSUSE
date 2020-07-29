@@ -917,6 +917,8 @@ setOption("PAMModules.WhiteList", (
     "pam_usertype.so",
     # pam (bsc#1171563)
     "pam_setquota.so",
+    # kanidm (bsc#1173387)
+    "pam_kanidm.so"
 ))
 
 # Output filters

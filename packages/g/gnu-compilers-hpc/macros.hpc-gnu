@@ -9,9 +9,9 @@
  %{-v: %define _cf_ver %{-v*}} \
  %{echo: hpc_gnu_init %{?_cf_ver:version: %_cf_ver}} \
  %{expand: %%global hpc_gnu_bin_version %{?_cf_ver:-%(\\\
- 	     echo %_cf_ver | \\\
+ 	     v=%_cf_ver; [ $v -lt 40 ] && echo $v || \\\
 	     sed -e "s@\\([0-9]\\)@\\1.@g" \\\
-	     -e "s@\\([0-9]\\)\\.\\$@\\1@g")}%{!?_cf_ver:%%{nil}}} \
+	     -e "s@\\([0-9]\\)\\.\\$@\\1@g" <<< $v)}%{!?_cf_ver:%%{nil}}} \
  %{expand: %%global hpc_gnu_full_version %(\\\
  	     gcc%{hpc_gnu_bin_version} --version |\\\
 	     head -1 |\\\

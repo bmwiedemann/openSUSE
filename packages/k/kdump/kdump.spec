@@ -81,15 +81,15 @@ BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(udev)
 #!BuildIgnore:  fop
+Requires:       /usr/bin/sed
 Requires:       curl
+Requires:       dracut
 Requires:       kexec-tools
 Requires:       makedumpfile
 Requires:       openssh
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         %fillup_prereq
-PreReq:         coreutils
-PreReq:         dracut
-PreReq:         sed
+PreReq:         /usr/bin/mkdir /usr/bin/rm /usr/bin/touch
 Recommends:     cifs-utils
 Recommends:     nfs-client
 # update should detect the split-off from kexec-tools

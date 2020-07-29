@@ -1,7 +1,7 @@
 #
 # spec file for package gnu
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,9 +47,15 @@ ExclusiveArch:  do_not_build
 %define c_f_ver 9
 %endif
 
+%if "%flavor" == "gnu10-hpc"
+%define c_f_ver 10
+%endif
+
 # Keep in sync with macros.hpc-gnu
-%global hpc_gnu_bin_version %{?c_f_ver:-%(echo %c_f_ver | \
-                sed -e "s@\\([0-9]\\)@\\1.@g" -e "s@\\([0-9]\\)\\.\\$@\\1@g")}
+# ab >= 40 - version: a.b to accompodate for old gcc version scheme of gcc < 5
+%global hpc_gnu_bin_version %{?c_f_ver:-%(v=%c_f_ver; [ $v -lt 40 ] && echo $v ||
+                              sed -e "s@\\([0-9]\\)@\\1.@g" \\
+                                  -e "s@\\([0-9]\\)\\.\\$@\\1@g" <<< $v)}
 %global hpc_gnu_full_version %( gcc%{hpc_gnu_bin_version} --version |\
                 head -1 |\
                 sed -e "s#.* \\([0-9]\\+\\.[0-9.]\\+\\)\\(\$\\| .*\\)#\\1#" )
@@ -72,7 +78,7 @@ Name:           %myname
 Version:        1.4
 Release:        0
 
-Url:            https://github.com/openhpc/ohpc
+URL:            https://github.com/openhpc/ohpc
 Source0:        https://raw.githubusercontent.com/openSUSE/hpc/master/compiler/macros.hpc-gnu
 Source1:        LICENSE
 Source2:        gnu-compilers-hpc-rpmlintrc

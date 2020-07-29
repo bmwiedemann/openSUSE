@@ -91,4 +91,12 @@
     <comment>  for SLE-15-SP2: add gcc v.9 (jsc#SLE-8604)</comment>
     <requestid>741204</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>00ab164592256c4a310a163d62355a0b</srcmd5>
+    <version>1.4</version>
+    <time>1596035796</time>
+    <user>dimstar_suse</user>
+    <comment>Fix version parsing for gcc10 and up. (forwarded request 822743 from eeich)</comment>
+    <requestid>822744</requestid>
+  </revision>
 </revisionlist>

@@ -28,6 +28,8 @@ Source0:        https://download.gnome.org/sources/polari/3.36/%{name}-%{version
 Source99:       polari-rpmlintrc
 # PATCH-FIX-UPSTREAM polari-fix-nb-translation.patch glgo#GNOME/polari!145 -- Fix Norwegian bokmål translation
 Patch0:         polari-fix-nb-translation.patch
+# PATCH-FIX-UPSTREAM polari-fix-log-spam.patch -- Quiet down unneeded log warnings
+Patch1:         polari-fix-log-spam.patch
 
 BuildRequires:  gjs >= 1.57.3
 BuildRequires:  meson >= 0.43.0

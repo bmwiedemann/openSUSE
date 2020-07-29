@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 24 09:05:55 UTC 2020 - matthias.gerstner@suse.com
+
+- whitelist kanidm PAM module (bsc#1173387)
+
+-------------------------------------------------------------------
 Wed Jul 15 07:40:08 UTC 2020 - matthias.gerstner@suse.com
 
 - whitelist D-Bus files for libvirt-dbus (bsc#1173093)
