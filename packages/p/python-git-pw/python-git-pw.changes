@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 29 06:47:47 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.0:
+  * Drop support for Python 2.7
+  * trivial: Use names for options with multiple=True
+  * Add '--hash' option for 'git-pw patch list'
+  * rpm: Address review comments
+  * Add spec file
+  * Revert "docs: Increase support range for reno"
+  * travis: Add support for GitHub releases
+  * docs: Increase support range for reno
+
+-------------------------------------------------------------------
 Wed Jun 24 04:27:25 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.9.0:
