@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Jul 29 05:49:12 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.2:
+  * X11: Improve handling of multiple keyboards. Now pressing a
+    modifier key in one keyboard and a normal key in another works (#2362).
+    Don't rebuild keymaps on new keyboard events that only change
+    geometry (#2787). Better handling of multiple keyboards with
+    incompatible layouts (#2726)
+  * Improve anti-aliasing of triangular box drawing characters,
+    noticeable on low-resolution screens (#2844)
+  * Fix kitty @ send-text not working reliably when using a socket
+    for remote control (#2852)
+  * Implement support for box drawing rounded-corners characters (#2240)
+  * Allow setting the class for new OS windows in a session file
+  * When a character from the Unicode Dingbat block is followed by a
+    space, use the extra space to render a larger version of the character (#2850)
+  * Make neighboring window selection in grid and splits layouts
+    more intelligent (#2840)
+  * Allow passing the current selection to kittens (#2796)
+  * Fix pre-edit text not always being cleared with ibus input (#2862)
+  * Allow setting the background_opacity of new OS windows created via
+    kitty --single-instance using the kitty --override command line argument (#2806)
+  * Fix the CSI J (Erase in display ED) escape code not removing line
+    continued markers (#2809)
+  * hints kitten: In linenumber mode expand paths that starts with ~ (#2822)
+  * Fix launch --location=last not working (#2841)
+  * Fix incorrect centering when a PUA or symbol glyph is followed by
+    more than one space
+  * Have the confirm_os_window_close option also apply when closing tabs
+    with multiple windows (#2857)
+  * Add support for legacy DECSET codes 47, 1047 and 1048 (#2871)
+  * Wayland: Fix a regression in 0.18.0 that could cause crashes related
+    to mouse cursors in some rare circumstances (#2810)
+  * Fix change in window size that does not change number of cells not being
+    reported to the kernel (#2880)
+
+-------------------------------------------------------------------
 Fri Jun 26 21:43:23 UTC 2020 - Philipp Seiler <p.seiler@linuxmail.org>
 
 - ported no-docs patch to 0.18.1
