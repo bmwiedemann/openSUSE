@@ -1,7 +1,7 @@
-From 4b93f9c3bf16ce1fddbfdd85e7a4560f9bcea1da Mon Sep 17 00:00:00 2001
+From fca49f41d3c52bff1a62c01916af307f49198e83 Mon Sep 17 00:00:00 2001
 From: Marco Varlese <marco.varlese@suse.com>
 Date: Mon, 27 Jan 2020 14:29:40 +0100
-Subject: [PATCH 09/11] Fix rstudio exec path
+Subject: [PATCH 3/4] Fix rstudio exec path
 
 Fix the path to the rstudio executable in the rstudio.desktop file.
 ---
@@ -9,7 +9,7 @@ Fix the path to the rstudio executable in the rstudio.desktop file.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/cpp/desktop/resources/freedesktop/rstudio.desktop.in b/src/cpp/desktop/resources/freedesktop/rstudio.desktop.in
-index 0a1a387fd2..e8f68277e2 100644
+index ddd96ad34b..99b207ba7c 100644
 --- a/src/cpp/desktop/resources/freedesktop/rstudio.desktop.in
 +++ b/src/cpp/desktop/resources/freedesktop/rstudio.desktop.in
 @@ -1,5 +1,5 @@
@@ -20,5 +20,5 @@ index 0a1a387fd2..e8f68277e2 100644
  Type=Application
  Terminal=false
 -- 
-2.26.2
+2.27.0
 

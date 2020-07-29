@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Jun 15 20:06:34 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Correct license of bundled font
+
+-------------------------------------------------------------------
+Tue Jun  9 17:22:53 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.3.959
+
+  * Fix wrong unbundling of pandoc (boo#1172426)
+  * No longer bundle gwt and gin, these are now included in rstudio's source
+    code. Also, rename gwt to gwt-rstudio, as they now maintain their own fork.
+  * change NOTICE to %license as it is a legal document as well
+  * unbundle rapidjson and websocketpp
+  * find a lot more bundled dependencies and declare them in the spec file
+    including their licenses
+
+  Drop patches (merged upstream):
+  * 0001-First-pass-at-Boost-1.70-support.patch
+  * 0002-Bump-bundled-gwt-version.patch
+  * 0003-Remove-boost-signals-from-the-required-Boost-librari.patch
+  * 0010-fix-STL-access-undefined-behaviour.patch
+
+  Drop patches (compatibility with Leap 15.1 dropped as boost is too old):
+  * 0005-Use-std-thread-instead-of-QThread-for-Qt-5.10-suppor.patch
+  * 0006-Add-explicit-include-mutex-for-gcc-7-to-DesktopWebpa.patch
+  * 0007-Remove-PauseChanged-related-handler-from-DownloadHel.patch
+
+  Rebase patches:
+  * 0004-Unbundle-mathjax-and-pandoc.patch as
+    0001-Unbundle-mathjax-and-pandoc.patch
+  * 0008-Don-t-install-pandoc-and-mathjax.patch as
+    0002-Don-t-install-pandoc-and-mathjax.patch
+  * 0009-Fix-rstudio-exec-path.patch as 0003-Fix-rstudio-exec-path.patch
+  * 0011-R_Slave-R_NoEcho-for-non-Windows.patch as
+    0004-R_Slave-R_NoEcho-for-non-Windows.patch
+
+-------------------------------------------------------------------
 Wed Apr 29 12:27:11 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 1.2.5042

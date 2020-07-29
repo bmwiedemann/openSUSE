@@ -1,19 +1,19 @@
-From 75bef4a26bfd71183354637e9d1f74c863227290 Mon Sep 17 00:00:00 2001
+From 2c741fa655b39b24ffdd46e0caf20de6072d10ac Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Tue, 14 Jan 2020 14:20:40 +0100
-Subject: [PATCH 08/11] Don't install pandoc and mathjax
+Subject: [PATCH 2/4] Don't install pandoc and mathjax
 
 Because we use the system wide version, there's no need to waste time installing
 the files.
 ---
- src/cpp/session/CMakeLists.txt | 10 ----------
- 1 file changed, 10 deletions(-)
+ src/cpp/session/CMakeLists.txt | 22 ----------------------
+ 1 file changed, 22 deletions(-)
 
 diff --git a/src/cpp/session/CMakeLists.txt b/src/cpp/session/CMakeLists.txt
-index 3e2caa1b2e..24e8008edb 100644
+index 31d0ee2227..4739b4068a 100644
 --- a/src/cpp/session/CMakeLists.txt
 +++ b/src/cpp/session/CMakeLists.txt
-@@ -497,20 +497,10 @@ if (NOT RSTUDIO_SESSION_WIN32)
+@@ -515,10 +515,6 @@ if (NOT RSTUDIO_SESSION_WIN32)
     install(DIRECTORY "${RSTUDIO_DEPENDENCIES_DIR}/common/dictionaries"
             DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/resources")
  
@@ -24,16 +24,31 @@ index 3e2caa1b2e..24e8008edb 100644
     # icons for database connections
     install(DIRECTORY "resources/connections"
             DESTINATION ${RSTUDIO_INSTALL_SUPPORTING}/resources)
+@@ -531,24 +527,6 @@ if (NOT RSTUDIO_SESSION_WIN32)
+    install(DIRECTORY "resources/dependencies"
+            DESTINATION ${RSTUDIO_INSTALL_SUPPORTING}/resources)
  
 -   # install pandoc
+-   set(PANDOC_VERSION "2.7.3" CACHE INTERNAL "Pandoc version")
+-
+-   set(PANDOC_BIN "${RSTUDIO_DEPENDENCIES_DIR}/common/pandoc/${PANDOC_VERSION}")
+-   file(GLOB PANDOC_FILES "${PANDOC_BIN}/pandoc*")
 -   set(PANDOC_FILES ${PANDOC_CITEPROC_BIN_LOCATION} ${PANDOC_BIN_LOCATION})
 -   install(FILES ${PANDOC_FILES}
 -           PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
 -           DESTINATION  ${RSTUDIO_INSTALL_BIN}/pandoc)
 -
-    # install rmarkdown package
-    # file(GLOB RMARKDOWN_PACKAGE "${RSTUDIO_DEPENDENCIES_DIR}/common/rmarkdown*.tar.gz")
-    # install(FILES ${RMARKDOWN_PACKAGE}
+-   # install embedded packages
+-   foreach(PKG ${RSTUDIO_EMBEDDED_PACKAGES})
+-      file(GLOB PKG_FILES "${RSTUDIO_DEPENDENCIES_DIR}/common/${PKG}*.tar.gz")
+-      install(
+-         FILES "${PKG_FILES}"
+-         DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/R/packages")
+-   endforeach()
+-
+    # install PDF.js
+    install(DIRECTORY "resources/pdfjs"
+            DESTINATION ${RSTUDIO_INSTALL_SUPPORTING}/resources)
 -- 
-2.26.2
+2.27.0
 

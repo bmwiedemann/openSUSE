@@ -16,26 +16,94 @@
 #
 
 
-%global bundled_gwt_version 2.8.2
-%global bundled_gin_version 2.1.2
-# !no longer bundled!
-# but upstream expects them in specific locations, so we keep these macros around
-%global bundled_mathjax_version 2.6.1
-%global bundled_mathjax_short_version 26
+# Bundled dependencies from NOTICE:
+# - Qt (LGPL v2.1)                           => undbundled
+# - QtSingleApplication                      => bundled at some version, using BSD-3-Clause
+# - Ace (LGPL v2.1)                          => bundled at version 1.4.5 (see ./src/gwt/src/org/rstudio/studio/client/workbench/views/source/editors/text/ace/ace-uncompressed.js), license is BSD-3-Clause
+%global bundled_ace_version           1.4.5
+# - Stan Ace Mode (LGPL 2.1)                 => does not appear to exist?
+# - Boost                                    => unbundled
+# - RapidXml                                 => bundled in ./src/cpp/core/include/core/rapidxml/rapidxml.hpp at version 1.13, license is (BSL-1.0 OR MIT)
+%global bundled_rapidxml_version      1.13
+# - Google Web Toolkit                       => bundled as gwt-rstudio (version 1.3), new upstream https://github.com/rstudio/gwt, license is Apache-2.0
+%global bundled_gwt_rstudio_version   1.3
+# - Guice                                    => bundled in ./src/gwt/lib/gin/%%{bundled_gin_version}/, version 3.0, license is Apache-2.0
+%global bundled_guice_version         3.0
+# - GIN                                      => bundled in ./src/gwt/lib/gin/%%{bundled_gin_version}, license is Apache-2.0
+%global bundled_gin_version           2.1.2
+# - AOP Alliance                             => bundled in ./src/gwt/lib/gin/2.1.2/aopalliance.jar, version 1.0, license is Public Domain
+%global bundled_aopalliance_version   1.0
+# - RSA-JS                                   => bundled in ./src/gwt/tools/rsa.js, however this is actually part of the jsbn library (ends up as encrypt.min.js in the rpm), version 1.1, license is MIT
+%global bundled_jsbn_version          1.1
+# - tree.hh                                  => bundled in ./src/cpp/core/include/core/collection/Tree.hpp, version 2.81, license is GPL-3.0-only
+%global bundled_treehh_version        2.81
+# - Hunspell (MPL)                           => bundled in ./src/cpp/core/spelling/hunspell, version 1.3, license is (MPL-1.1 or GPL-2.0-or-later or LGPL-2.1-or-later)
+%global bundled_hunspell_version      1.3
+# - Chromium Hunspell Dictionaries (MPL)
+# - pdf.js                                   => bundled in ./src/cpp/session/resources/pdfjs/build/pdf.js
+%global bundled_pdfjs_version         1.3.158
+# - SyncTeX                                  => bundled in ./src/cpp/core/tex/synctex, version 1.17, license is MIT
+%global bundled_synctex_version       1.17
+# - ZLib                                     => only used on windows, license is ZLIB
+# - Sundown                                  => bundled in ./src/cpp/core/markdown/sundown, version 1.16.0, license is ISC
+%global bundled_sundown_version       1.16.0
+# - highlight.js                             => bundled via src/cpp/tools/sync-highlight, license is BSD-3-Clause
+%global bundled_highlightjs_version   c589dcc424c034d1cf63a998ee68225e4915dfca
+# - MathJax                                  => unbundled at version 2.7
+%global bundled_mathjax_short_version 27
+# - reveal.js                                => bundled in ./src/cpp/session/resources/presentation/revealjs/js, version 2.4.0, license is MIT and includes fonts under the OFL-1.1
+%global bundled_revealjs_version      2.4.0
+# - JSCustomBadge                            => used as inspiration for ./src/cpp/desktop/DockTileView.mm
+# - DataTables                               => bundled in ./src/cpp/session/resources/grid/datatables/js, license is MIT
+%global bundled_datatables_version    1.10.4
+# - jQuery                                   => bundled in ./src/cpp/session/resources/grid/datatables/js/jquery.js, version 3.4.0, license is MIT
+%global bundled_jquery_version        3.4.0
+# - Catch                                    => used for testing only (which we don't run currently)
+# - QUnit                                    => bundled in ./src/gwt/test/acesupport/qunit/, version 1.18.0, license is MIT
+%global bundled_quinitjs_version      1.18.0
+# - xterm.js                                 => bundled in ./src/gwt/src/org/rstudio/studio/client/workbench/views/terminal/xterm/xterm.js, version 3.14.5, license is MIT
+%global bundled_xtermjs_version       3.14.5
+# - winpty                                   => windows only
+# - websocketpp                              => unbundled
+# - gwt-websockets                           => bundled in ./src/gwt/src/com/sksamuel/gwt, version 1.0.4, license is Apache-2.0
+%global bundled_gwt_websockets_version 1.0.4
+# - ansi-regex                               => some ANSI escape sequences from https://github.com/chalk/ansi-regex are used, license is MIT
+# - RapidJSON                                => bundled in ./src/cpp/shared_core/include/shared_core/json/rapidjson, unbundled on Leap 15.2 & Tumbleweed, licensed under the MIT
+# - msinttypes                               => part of rapidjson on Windows, licensed under BSD-3-Clause
+# - fontawesome                              => per https://github.com/rstudio/rstudio/issues/7115, this is actually iconmoon, bundled in ./src/gwt/www/fonts/icomoon.woff, license is GPL-3.0-or-later or CC-BY-4.0, rstudio includes this under CC-BY-4.0
+# - gsl-lite                                 => bundled in ./src/cpp/ext/gsl, version is probably 0.34.0, license is MIT
+%global bundled_gsl_lite_version      0.34.0
+# - inert-polyfill.js                        => bundled in ./src/gwt/www/js/inert-polyfill.min.js, version 0.2.5, license is Apache-2.0
+%global bundled_intert_polyfill_js_version 0.2.5
+# - focus-visible.js                         => bundled in ./src/gwt/www/js/focus-visible.*, version 5.0.2, license is W3C-20150513
+%global bundled_focus_visible_js_version 5.0.2
+# - fast-text-encoding                       => bundled in ./src/gwt/www/js/text.min.js, version 1.0.2, license is Apache-2.0
+%global bundled_fast_text_encoding_version 1.0.2
+
+# missing from NOTICE:
+# - Google Closure Compiler                  => bundled in ./src/gwt/tools/compiler/ but AFAIK only used for building, version is "compiler-latest.zip as of July 9, 2019", license is Apache-2.0 with bundled dependencies under (NPL-1.1 AND (MPL-1.1 OR GPL-2.0-or-later)) AND MIT AND CPL-1.0 AND BSD-3-Clause AND Apache-2.0:
+
 %global rstudio_version_major 1
-%global rstudio_version_minor 2
-%global rstudio_version_patch 5042
+%global rstudio_version_minor 3
+%global rstudio_version_patch 959
 # commit of the tag belonging to %%{version}
-%global rstudio_git_revision_hash e4a1c219cbf6c10d9aec41461d80171ab3009bef
+%global rstudio_git_revision_hash 3a09be39fd51a8fafa8ae330007937d31924b395
 Name:           rstudio
 Version:        %{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}
 Release:        0
 Summary:        RStudio base package
-# R-Studio: AGPL 3.0
-# GWT: Apache License 2.0
-# gin: Apache License 2.0
+# AGPLv3:             RStudio, icomoon glyphs
+# Apache-2.0:         gwt, gwt-websockets, gin, guice, pdf.js, fast-text-encoding, inert-polyfill.js
+# MIT:                rsa.js/jsbn, synctex, datatables, jquery, reveal.js, jsbn, qunit.js, xterm.js, guidelines-support-library-lite, rapidjson
+# BSD-3-Clause        qtsingleapplication, ace, highlight.js, msinttypes
+# W3C (2015):         focus-visible.js
+# BSL or MIT:         rapidxml
+# Public Domain:      AOP Alliance
+# GPL-3.0-only:       tree.hh
+# (MPL-1.1 or GPL-2.0-or-later or LGPL-2.1-or-later): hunspell
+# ISC:                sundown
 # dictionaries: see below
-License:        AGPL-3.0-only AND Apache-2.0 AND MPL-1.1 AND LGPL-2.1-or-later AND GPL-2.0-only
+License:        AGPL-3.0-only AND Apache-2.0 AND MPL-1.1 AND LGPL-2.1-or-later AND GPL-2.0-only AND MIT AND W3C-20150513 AND BSD-3-Clause AND (BSL-1.0 OR MIT) AND GPL-3.0-only AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND ISC AND OFL-1.1 AND Zlib AND NPL-1.1 AND CC-BY-4.0
 URL:            https://github.com/%{name}/
 Source0:        %{URL}/%{name}/archive/v%{version}.tar.gz
 # these appear to have been taken from Chromium's source code, see:
@@ -46,25 +114,14 @@ Source0:        %{URL}/%{name}/archive/v%{version}.tar.gz
 # Upstream claims that the only licenses are:
 # GPL 2.0, LGPL 2.1 (or later), MPL 1.1 and Apache 2.0
 Source1:        https://s3.amazonaws.com/%{name}-dictionaries/core-dictionaries.zip
-Source2:        https://s3.amazonaws.com/%{name}-buildtools/gwt-%{bundled_gwt_version}.zip
-Source3:        https://s3.amazonaws.com/%{name}-buildtools/gin-%{bundled_gin_version}.zip
 Source4:        %{name}-server-user.conf
 Source99:       %{name}-rpmlintrc
-Patch0:         0003-Remove-boost-signals-from-the-required-Boost-librari.patch
-Patch1:         0002-Bump-bundled-gwt-version.patch
-# Tumbleweed and Leap 15.2 only patch
-Patch2:         0001-First-pass-at-Boost-1.70-support.patch
-# main ubundling patch
-Patch3:         0004-Unbundle-mathjax-and-pandoc.patch
-# patches for Leap 15.1 & 15.0
-Patch4:         0005-Use-std-thread-instead-of-QThread-for-Qt-5.10-suppor.patch
-Patch5:         0006-Add-explicit-include-mutex-for-gcc-7-to-DesktopWebpa.patch
-Patch6:         0007-Remove-PauseChanged-related-handler-from-DownloadHel.patch
+Patch0:         0001-Unbundle-mathjax-and-pandoc.patch
 # shorten the installation time a bit by not installing mathjax
-Patch7:         0008-Don-t-install-pandoc-and-mathjax.patch
-Patch8:         0009-Fix-rstudio-exec-path.patch
-Patch9:         0010-fix-STL-access-undefined-behaviour.patch
-Patch10:        0011-R_Slave-R_NoEcho-for-non-Windows.patch
+Patch1:         0002-Don-t-install-pandoc-and-mathjax.patch
+Patch2:         0003-Fix-rstudio-exec-path.patch
+Patch3:         0004-R_Slave-R_NoEcho-for-non-Windows.patch
+
 BuildRequires:  Mesa-devel
 BuildRequires:  R-core-devel
 BuildRequires:  ant
@@ -79,17 +136,17 @@ BuildRequires:  glibc-devel
 # for dir ownership of /usr/share/icons/hicolor/*
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  java
-BuildRequires:  libboost_atomic-devel
-BuildRequires:  libboost_chrono-devel
-BuildRequires:  libboost_date_time-devel
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_headers-devel
-BuildRequires:  libboost_iostreams-devel
-BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_random-devel
-BuildRequires:  libboost_regex-devel
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_thread-devel
+BuildRequires:  libboost_atomic-devel          >= 1.69
+BuildRequires:  libboost_chrono-devel          >= 1.69
+BuildRequires:  libboost_date_time-devel       >= 1.69
+BuildRequires:  libboost_filesystem-devel      >= 1.69
+BuildRequires:  libboost_headers-devel         >= 1.69
+BuildRequires:  libboost_iostreams-devel       >= 1.69
+BuildRequires:  libboost_program_options-devel >= 1.69
+BuildRequires:  libboost_random-devel          >= 1.69
+BuildRequires:  libboost_regex-devel           >= 1.69
+BuildRequires:  libboost_system-devel          >= 1.69
+BuildRequires:  libboost_thread-devel          >= 1.69
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  make
 BuildRequires:  mathjax
@@ -119,11 +176,13 @@ BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5XmlPatterns)
+BuildRequires:  pkgconfig(RapidJSON)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(uuid)
+BuildRequires:  pkgconfig(websocketpp)
 BuildRequires:  pkgconfig(zlib)
 Requires:       R-base
 Requires:       R-core-libs
@@ -133,8 +192,29 @@ Requires:       pandoc
 Recommends:     git
 Suggests:       rstudio-desktop
 Suggests:       rstudio-server
+Provides:       bundled(ace.js) = %{bundled_ace_version}
+Provides:       bundled(aopalliance) = %{bundled_aopalliance_version}
+Provides:       bundled(datatables) = %{bundled_datatables_version}
+Provides:       bundled(fast-text-encoding) = %{bundled_fast_text_encoding_version}
+Provides:       bundled(focus-visible.js) = %{bundled_focus_visible_js_version}
+Provides:       bundled(fontawesome)
 Provides:       bundled(gin) = %{bundled_gin_version}
-Provides:       bundled(gwt) = %{bundled_gwt_version}
+Provides:       bundled(gsl-lite) = %{bundled_gsl_lite_version}
+Provides:       bundled(guice) = %{bundled_guice_version}
+Provides:       bundled(gwt-rstudio) = %{bundled_gwt_rstudio_version}
+Provides:       bundled(gwt-websockets) = %{bundled_gwt_websockets_version}
+Provides:       bundled(highlight.js) = %{bundled_highlightjs_version}
+Provides:       bundled(hunspell) = %{bundled_hunspell_version}
+Provides:       bundled(inert-polyfill.js) = %{bundled_intert_polyfill_js_version}
+Provides:       bundled(jquery.js) = %{bundled_jquery_version}
+Provides:       bundled(jsbn) = %{bundled_jsbn_version}
+Provides:       bundled(pdf.js) = %{bundled_pdfjs_version}
+Provides:       bundled(qtsingleapplication)
+Provides:       bundled(quinit.js) = %{bundled_quinitjs_version}
+Provides:       bundled(rapidxml) = %{bundled_rapidxml_version}
+Provides:       bundled(reveal.js) = %{bundled_revealjs_version}
+Provides:       bundled(sundown) = %{bundled_sundown_version}
+Provides:       bundled(tree.hh) = %{bundled_treehh_version}
 %{?systemd_requires}
 
 %description
@@ -172,35 +252,17 @@ on a server has a number of benefits, including:
   supporting libraries
 
 %prep
-%autosetup -N
-%patch0 -p1
-%patch1 -p1
-%patch3 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
+%autosetup -p1
 
-# TW & Leap 15.2 specific patches
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} == 150200
-%patch2 -p1
-# Leap 15.1 & 15.0 patches:
-%else
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%endif
+# use system libraries when available
+rm -rf src/cpp/ext/websocketpp src/cpp/shared_core/include/shared_core/json/rapidjson/
+
+ln -sf %{_includedir}/websocketpp src/cpp/ext/websocketpp
+ln -sf %{_includedir}/rapidjson src/cpp/shared_core/include/shared_core/json/rapidjson
 
 # unpack common-dictionaries
 mkdir -p dependencies/common/dictionaries
 unzip -d dependencies/common/dictionaries %{SOURCE1}
-# unpack gwt
-mkdir -p src/gwt/lib/gwt
-unzip -d src/gwt/lib/gwt/ %{SOURCE2}
-mv src/gwt/lib/gwt/gwt-%{bundled_gwt_version} src/gwt/lib/gwt/%{bundled_gwt_version}
-# unpack gin
-mkdir -p src/gwt/lib/gin/%{bundled_gin_version}
-unzip -d src/gwt/lib/gin/%{bundled_gin_version} %{SOURCE3}
 
 # don't include gwt_build in ALL to avoid recompilation, but then we must build
 # it manually
@@ -268,11 +330,6 @@ install -m 0644 %{buildroot}%{_libexecdir}/%{name}/extras/pam/%{name} \
 ln -sf %{_datadir}/javascript/mathjax \
     %{buildroot}%{_libexecdir}/%{name}/resources/mathjax-%{bundled_mathjax_short_version}
 
-# redo the same for pandoc & pandoc-citeproc
-for pd in pandoc pandoc-citeproc; do
-    ln -sf %{_bindir}/${pd} %{buildroot}%{_libexecdir}/%{name}/bin/${pd}
-done
-
 # cleanup
 find %{buildroot}%{_libexecdir}/%{name} -name .gitignore -delete
 find %{buildroot}%{_libexecdir}/%{name} -name .Rbuildignore -delete
@@ -305,8 +362,8 @@ done
 %service_del_postun %{rserver_service}
 
 %files
-%license COPYING
-%doc NOTICE README.md
+%license COPYING NOTICE
+%doc README.md
 %{_libexecdir}/rstudio
 
 %files desktop
