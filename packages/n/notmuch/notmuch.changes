@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Jul  6 11:30:40 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.30
+
+  S/MIME
+  ------
+
+  Handle S/MIME (PKCS#7) messages -- one-part signed messages, encrypted
+  messages, and multilayer messages. Treat them symmetrically to
+  OpenPGP messages. This includes handling protected headers
+  gracefully.
+
+  If you're using Notmuch with S/MIME, you currently need to configure
+  gpgsm appropriately.
+
+  Mixed-up MIME Repair
+  --------------------
+
+  Detect and automatically repair a common form of message mangling
+  created by Microsoft Exchange (see index.repaired=mixedup in
+  notmuch-properties(7)).
+
+  Protected Headers
+  -----------------
+
+  Avoid indexing the legacy-display part of an encrypted message that
+  has protected headers (see
+  index.repaired=skip-protected-headers-legacy-display in
+  notmuch-properties(7)).
+
+  Python
+  ------
+
+  Drop support for python2, focus on python3.
+
+  Introduce new CFFI-based python bindings in the python module named
+  "notmuch2".  Officially deprecate (but still support) the older
+  "notmuch" module.
+
+  Dependencies
+  ------------
+
+  Support for Xapian 1.2 is removed. The minimum supported version of
+  Xapian is now 1.4.0.
+
+-------------------------------------------------------------------
 Tue May  5 08:54:01 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Add missing BuildRequire info and drop obsoleted macros:

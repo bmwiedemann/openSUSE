@@ -18,7 +18,7 @@
 
 %define libversion 5
 Name:           notmuch
-Version:        0.29.3
+Version:        0.30
 Release:        0
 Summary:        The mail indexer
 License:        GPL-3.0-or-later
