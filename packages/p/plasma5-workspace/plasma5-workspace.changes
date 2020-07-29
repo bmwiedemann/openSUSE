@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul 28 13:45:52 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.4
+- Changes since 5.19.3:
+  * emit countChanged when we get a new source model
+  * [wallpaper] Avoid using pluginId for indexing package indexes (kde#423987)
+  * Revert "Fix broken ENV variables for detailed settings" (kde#423995)
+  * [applet/systemtray] Regression: all applets in config are shown as disabled
+  * hide face config button if the face can't config
+  * Only open KCM in systemsettings if it can be displayed (kde#423612)
+
+-------------------------------------------------------------------
 Tue Jul  7 13:58:01 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.3
