@@ -20,11 +20,10 @@
 %define commands create_pkg find_pkg generate_changelog package_version prepare_release tag_changelog test_changelog
 
 Name:           python-catkin-pkg
-Version:        0.4.16
+Version:        0.4.22
 Release:        0
 Summary:        Catkin package library
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://wiki.ros.org/catkin_pkg
 Source:         https://github.com/ros-infrastructure/catkin_pkg/archive/%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}

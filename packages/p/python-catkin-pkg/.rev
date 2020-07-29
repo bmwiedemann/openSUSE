@@ -31,4 +31,27 @@
     <comment></comment>
     <requestid>809827</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ce9b183660a823fb9f77e892ff9f01f4</srcmd5>
+    <version>0.4.22</version>
+    <time>1596036020</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.22:
+  * catkin_generate_changelog: hack to allow tag version prefixed with v
+  * add GitLab auto linking for issues in catkin_generate_changelog
+  * enable releasing from Focal with stdeb 0.9.1
+  * fix deprecation warnings in tests
+  * pass stricter pycodestyle 2.6 checks
+  * Restore compatibility with pyparsing &lt; 1.5.7
+  * Respect (AMENT|COLCON|CATKIN)_IGNORE directories
+  * bump min CMake version to avoid CMP0048 warning
+  * Fix travis warning
+  * use parse actions to evaluate conditions
+  * Speed up topological_order by using a per-package cache of all run_depends
+  * Fix crash with pyparsing 3
+  * [enhancement]evaluating more than 1 condition fixes #277
+  * exclude Signed-off-by: lines from changelog
+  * Changes 'install' to 'catkin_install_python' in the CMakeLists.txt template</comment>
+    <requestid>823291</requestid>
+  </revision>
 </revisionlist>
