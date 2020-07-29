@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jul 28 22:44:05 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.8.15: 
+  + Merged in joshAppdev:pydriveshared - Backend for Shared Drives
+    on Google.
+  + Merged in martin-sucha:pydrive-notfound - Fix missing
+    FileNotUploadedError in pydrive
+      - Since dadbe2d2, FileNotUploadedError is not imported
+    anymore, resulting in an exception in case some of the files
+    failed to upload. Adding the import back.
+  + * Merged in hupfdule:s3-boto3-region-and-endpoint - Allow
+    setting s3 region and endpoint.
+  + Fix bug #1211481 with merge from Raffaele Di Campli
+    - Ignores the uid/gid from the archive and keeps the current
+      user's one.
+  + - Cleanup with Paramiko backend does not remove files due to
+    missing filename byte decoding
+
+-------------------------------------------------------------------
 Wed Jul 22 01:59:58 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.8.14: 
