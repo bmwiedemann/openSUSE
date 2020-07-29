@@ -435,4 +435,18 @@
   Just use gethostname via hyper-v.kvp.gethostname.patch (bsc#1100758)</comment>
     <requestid>777742</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>164231d8c7d7fdc4de14354b99c971ba</srcmd5>
+    <version>8</version>
+    <time>1596035653</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove dependency to network-online.target now that gethostname
+  is used in kvp_daemon (bsc#1174443, bsc#1174444)
+- Reopen the devices if read() or write() returns errors (9fc3c01a)
+- Use either python2 or python3 for lsvmbus (bsc#1093910)
+- Remove sysv init scripts
+
+- Enable build on aarch64</comment>
+    <requestid>822481</requestid>
+  </revision>
 </revisionlist>

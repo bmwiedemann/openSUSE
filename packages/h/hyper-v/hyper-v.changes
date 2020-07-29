@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 22 12:12:12 UTC 2020 - ohering@suse.de
+
+- Remove dependency to network-online.target now that gethostname
+  is used in kvp_daemon (bsc#1174443, bsc#1174444)
+- Reopen the devices if read() or write() returns errors (9fc3c01a)
+- Use either python2 or python3 for lsvmbus (bsc#1093910)
+- Remove sysv init scripts
+
+-------------------------------------------------------------------
+Wed Jul 22 09:12:44 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build on aarch64
+
+-------------------------------------------------------------------
 Thu Feb 20 16:16:16 UTC 2020 - ohering@suse.de
 
 - Revert previous non-upstream change for async name resolution
