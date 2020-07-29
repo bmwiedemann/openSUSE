@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 28 13:45:50 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.4
+- Changes since 5.19.3:
+  * correctly replace spaces with nothing
+  * fix presets loading
+  * delete the face config ui when face gets switched (kde#423071)
+
+-------------------------------------------------------------------
 Tue Jul  7 13:57:59 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.3
