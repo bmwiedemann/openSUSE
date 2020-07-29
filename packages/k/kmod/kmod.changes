@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul  7 13:05:53 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop old RPM constructs from the build recipe.
+
+-------------------------------------------------------------------
+Fri Jul  3 11:36:22 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Drop kmod-compat (boo#1173353):
+  The symlinks in kmod-compat are not obsolete. They are
+  desirable for kernel module autoload. The "kernel.modprobe"
+  sysctl references /sbin/modprobe, and changing it to
+  "/usr/bin/kmod load" is not possible, because this sysctl
+  specifies a single executable, not a command (so spaces will be
+  treated as part of the filename).
+
+-------------------------------------------------------------------
 Wed May 27 23:31:52 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 27

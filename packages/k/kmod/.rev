@@ -511,4 +511,12 @@
     <comment>- Update to release 27</comment>
     <requestid>809713</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>a13423ccc62b5861ede322f7ef114c93</srcmd5>
+    <version>27</version>
+    <time>1596035646</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop kmod-compat (boo#1173353):</comment>
+    <requestid>819240</requestid>
+  </revision>
 </revisionlist>

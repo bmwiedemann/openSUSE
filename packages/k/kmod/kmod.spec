@@ -35,7 +35,6 @@ Patch3:         0009-libkmod-Implement-filtering-of-unsupported-modules-o.patch
 Patch4:         0010-modprobe-Implement-allow-unsupported-modules.patch
 Patch5:         0011-Do-not-filter-unsupported-modules-when-running-a-van.patch
 Patch6:         0012-modprobe-print-unsupported-status.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libopenssl-devel >= 1.1.0
@@ -45,7 +44,12 @@ BuildRequires:  xz
 BuildRequires:  pkgconfig(liblzma) >= 4.99
 BuildRequires:  pkgconfig(zlib)
 Requires(post): coreutils
-Conflicts:      kmod-compat < 25
+Obsoletes:      kmod-compat < %version-%release
+Provides:       kmod-compat = %version-%release
+Requires:       suse-module-tools
+Obsoletes:      module-init-tools < 3.16
+Provides:       module-init-tools = 3.16
+Provides:       modutils
 
 %description
 kmod is a set of tools to handle common tasks with Linux kernel
@@ -64,23 +68,6 @@ BuildArch:      noarch
 
 %description bash-completion
 Contains bash completion support for kmod utilities.
-
-%package compat
-Summary:        Compat symlinks for kernel module utilities
-License:        GPL-2.0-or-later
-Group:          System/Kernel
-Requires:       kmod = %version-%release
-Requires:       suse-module-tools
-Obsoletes:      module-init-tools < 3.16
-Provides:       module-init-tools = 3.16
-Provides:       modutils
-
-%description compat
-kmod is a set of tools to handle common tasks with Linux kernel
-modules like insert, remove, list, check properties, resolve
-dependencies and aliases.
-
-This package contains traditional name symlinks (lsmod, etc.)
 
 %package -n %lname
 Summary:        Library to interact with Linux kernel modules
@@ -147,7 +134,6 @@ done
 %postun -n %lname -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %_bindir/kmod
 %_bindir/lsmod
 %_sbindir/depmod
@@ -157,24 +143,6 @@ done
 %_sbindir/modprobe
 %_sbindir/rmmod
 %_mandir/man[58]/*.[58]*
-
-%files bash-completion
-%defattr(-,root,root)
-%_datadir/bash-completion/
-
-%files -n %lname
-%defattr(-,root,root)
-%_libdir/libkmod.so.2*
-
-%files -n libkmod-devel
-%defattr(-,root,root)
-%_includedir/*
-%_libdir/pkgconfig/libkmod.pc
-%_libdir/libkmod.so
-
-%files compat
-%defattr(-,root,root)
-# The very very old paths (UsrMerge)
 /bin/lsmod
 /sbin/depmod
 /sbin/insmod
@@ -182,6 +150,16 @@ done
 /sbin/modinfo
 /sbin/modprobe
 /sbin/rmmod
-# EndUsrMerge
+
+%files bash-completion
+%_datadir/bash-completion/
+
+%files -n %lname
+%_libdir/libkmod.so.2*
+
+%files -n libkmod-devel
+%_includedir/*
+%_libdir/pkgconfig/libkmod.pc
+%_libdir/libkmod.so
 
 %changelog
