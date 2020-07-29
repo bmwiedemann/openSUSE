@@ -19,19 +19,20 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-coveralls
-Version:        2.0.0
+Version:        2.1.1
 Release:        0
 Summary:        Module for showing coverage stats online via coverallsio
 License:        MIT
 URL:            https://github.com/coveralls-clients/coveralls-python
 Source:         https://github.com/coveralls-clients/coveralls-python/archive/%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML >= 3.10}
-BuildRequires:  %{python_module coverage >= 3.6}
+BuildRequires:  %{python_module coverage >= 4.1}
 BuildRequires:  %{python_module docopt >= 0.6.1}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 1.0.0}
+BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sh >= 1.08}
 BuildRequires:  fdupes

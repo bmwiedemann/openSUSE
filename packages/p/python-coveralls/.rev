@@ -90,4 +90,15 @@
   * Drop support for Python 2.7 and 3.4.</comment>
     <requestid>815335</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9bc67e1b8ff039bed933618fc8d799b1</srcmd5>
+    <version>2.1.1</version>
+    <time>1596036022</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.1:
+  * fix unhashable CoverallsException
+  * **cli**:  add new `--finish` flag for finalizing parallel builds
+  * **github:**  fix Github Actions support</comment>
+    <requestid>823293</requestid>
+  </revision>
 </revisionlist>

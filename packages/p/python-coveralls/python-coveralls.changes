@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 29 04:37:06 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.1.1:
+  * fix unhashable CoverallsException
+  * **cli**:  add new `--finish` flag for finalizing parallel builds
+  * **github:**  fix Github Actions support
+
+-------------------------------------------------------------------
 Wed Jun 17 04:05:52 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.0.0:
