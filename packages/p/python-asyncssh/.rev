@@ -242,4 +242,41 @@
  * Fixed an issue with passing tuples to the SFTP copy functions.</comment>
     <requestid>819833</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>519da3df620ce6b0989fb126451a9a96</srcmd5>
+    <version>2.3.0</version>
+    <time>1596035999</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.0
+ * Added initial support for reading configuration from OpenSSH-compatible
+   config files, when present. Both client and server configuration files are
+   supported, but not all config options are supported.
+ * Added support for the concept of only a subset of supported algorithms being
+   enabled by default, and for the ability to use wildcards when specifying
+   algorithm names. Also, OpenSSH’s syntax of prefixing the list with
+   ‘^’, ‘+’, or ‘-‘ is supported for incrementally adjusting the list
+   of algorithms starting from the default set.
+ * Added support for specifying a preferred list of client authentication
+   methods, in order of preference.
+ * Added the ability to use AsyncSSH’s “password” argument on servers which
+   are using keyboard-interactive authentication to prompt for a “passcode”.
+ * Added support for providing separate lists of private keys and certificates,
+   rather than requiring them to be specifying together as a tuple.
+   When this new option is used, AsyncSSH will automatically associate
+   the private keys with their corresponding certificates if matching
+   certificates are present in the list.
+ * Added support for the “known_hosts” argument to accept a list of known host
+   files, rather than just a single file. Known hosts can also be specified
+   using the GlobalKnownHostFile and UserKnownHostFile config file options,
+   each of which can take multiple filenames.
+ * Added new “request_tty” option to provide finer grained control over whether
+   AsyncSSH will request a TTY when opening new sessions. The default is to
+   still tie this to whether a “term_type” is specified, but now that can be
+   overridden. Supported options of “yes”, “no”, “force”, and “auto” match
+   the values supported by OpenSSH.
+ * Added new “rdns_lookup” option to control whether the server does a reverse
+   DNS of client addresses to allow matching of clients based on hostname
+   in authorized keys and config files. When this option is disabled (the default),</comment>
+    <requestid>823202</requestid>
+  </revision>
 </revisionlist>
