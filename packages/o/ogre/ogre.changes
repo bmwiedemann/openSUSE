@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 24 15:22:30 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with default min 4GB disk
+  and specifically for PowerPC set min 6GB physicalmemory.
+
+-------------------------------------------------------------------
 Tue Jan  2 16:33:09 UTC 2018 - stefan.bruens@rwth-aachen.de
 
 - Fix aarch64 build, add fix-aarch64-detection.patch
