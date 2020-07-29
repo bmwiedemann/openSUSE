@@ -39,7 +39,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module html5lib >= 1.0}
 BuildRequires:  %{python_module httpretty}
 BuildRequires:  %{python_module jsonschema >= 3.1}
-BuildRequires:  %{python_module keyring > 18.0}
+BuildRequires:  %{python_module keyring >= 20.0.1}
 BuildRequires:  %{python_module lockfile}
 BuildRequires:  %{python_module pexpect >= 4.7.0}
 BuildRequires:  %{python_module pkginfo >= 1.4}
@@ -62,7 +62,7 @@ Requires:       python-cleo >= 0.7.6
 Requires:       python-clikit >= 0.4.2
 Requires:       python-html5lib >= 1.0
 Requires:       python-jsonschema >= 3.1
-Requires:       python-keyring > 18.0
+Requires:       python-keyring >= 20.0.1
 Requires:       python-lockfile
 Requires:       python-pexpect >= 4.7.0
 Requires:       python-pkginfo >= 1.4
@@ -116,7 +116,8 @@ source testenv/bin/activate
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/poetry
+%{python_sitelib}/poetry-%{version}-py*.egg-info
 %python_alternative %{_bindir}/poetry
 
 %changelog

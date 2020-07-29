@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 29 10:32:43 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- allow keyring >= 20.0.1
+
+-------------------------------------------------------------------
 Sun Jul 12 08:45:06 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip one test that breaks due to clikit 0.6.0+ improving
