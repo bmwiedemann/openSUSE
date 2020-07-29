@@ -1382,7 +1382,6 @@ unsorted:
   - busybox-ash 
   - busybox-attr 
   - busybox-bind-utils 
-  - busybox-bzip2 
   - busybox-cpio 
   - busybox-diffutils 
   - busybox-gzip 
@@ -6905,7 +6904,7 @@ unsorted:
   - karchive-devel 
   - karchive-devel-32bit: [x86_64] 
   - kasumi 
-  - katacontainers: [x86_64] # recommended by opensuse_kubic:patterns-containers-kubeadm 
+  - katacontainers: [x86_64] # recommended by opensuse_kubic:patterns-containers-container_runtime 
   - katacontainers-image-initrd: [x86_64] 
   - kauth-devel 
   - kauth-devel-32bit: [x86_64] 
@@ -14397,6 +14396,8 @@ unsorted:
   - megaglest 
   - megaglest-data 
   - megatools 
+  - meld 
+  - meld-lang 
   - melody 
   - melody-lang 
   - melt 
@@ -16134,6 +16135,7 @@ unsorted:
   - octave-forge-tisean 
   - octave-forge-tsa 
   - octave-forge-vrml 
+  - octave-mathgl 
   - octave-nlopt_optimize 
   - octave-openEMS 
   - oddjob 
@@ -19093,7 +19095,6 @@ unsorted:
   - python-marisa 
   - python-marshmallow-docs 
   - python-masakariclient-doc 
-  - python-mathgl 
   - python-md2workflow-common 
   - python-mistralclient-doc 
   - python-mox3-doc 
@@ -33800,6 +33801,7 @@ unsorted:
   - typelib-1_0-Gtk-4_0 
   - typelib-1_0-GtkFrdp-0_1 
   - typelib-1_0-GtkLayerShell-0_1 
+  - typelib-1_0-GtkSource-3_0 
   - typelib-1_0-GtkSpell-3_0 
   - typelib-1_0-GtkVnc-2_0 
   - typelib-1_0-Gucharmap-2_90 

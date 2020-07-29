@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20200728" schemaversion="4.1">
+<image name="OBS__MicroOS___20200729" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200728</productvar>
+      <productvar name="VERSION">20200729</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20200728,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20200729,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20200728/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20200729/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -98,7 +98,6 @@
       <repopackage name="busybox"/>
       <repopackage name="busybox-coreutils" arch="x86_64"/>
       <repopackage name="busybox-gawk"/>
-      <repopackage name="busybox-grep" arch="x86_64"/>
       <repopackage name="busybox-psmisc" arch="x86_64"/>
       <repopackage name="busybox-xz" arch="x86_64"/>
       <repopackage name="ca-certificates" arch="x86_64"/>
@@ -339,7 +338,6 @@
       <repopackage name="kitemmodels-imports" arch="x86_64"/>
       <repopackage name="kmenuedit5" arch="x86_64"/>
       <repopackage name="kmod"/>
-      <repopackage name="kmod-compat"/>
       <repopackage name="knewstuff" arch="x86_64"/>
       <repopackage name="knewstuff-imports" arch="x86_64"/>
       <repopackage name="konsole" arch="x86_64"/>
