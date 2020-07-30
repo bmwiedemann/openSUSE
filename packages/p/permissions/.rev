@@ -1265,4 +1265,16 @@ Feel free to use or reject (forwarded request 397400 from dimstar)</comment>
   * systemd-journal: remove unnecessary profile entries</comment>
     <requestid>819968</requestid>
   </revision>
+  <revision rev="139" vrev="19">
+    <srcmd5>37d0e28924669d82d23f392cbc2aba98</srcmd5>
+    <version>unknown</version>
+    <time>1596095740</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200727:
+  * etc/permissions: remove static /var/spool/* dirs
+  * etc/permissions: remove outdated entries
+  * etc/permissions: remove unnecessary static dirs and devices
+  * screen: remove now unused /var/run/uscreens</comment>
+    <requestid>822971</requestid>
+  </revision>
 </revisionlist>

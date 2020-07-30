@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 27 12:18:04 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 20200727:
+  * etc/permissions: remove static /var/spool/* dirs
+  * etc/permissions: remove outdated entries
+  * etc/permissions: remove unnecessary static dirs and devices
+  * screen: remove now unused /var/run/uscreens
+
+-------------------------------------------------------------------
 Fri Jul 10 09:50:04 UTC 2020 - matthias.gerstner@suse.com
 
 - Update to version 20200710:
