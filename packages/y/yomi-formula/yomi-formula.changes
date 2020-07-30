@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 28 16:12:00 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1595952633.b300be2:
+  * pillar: install always kernel-default
+  * chroot: python3-base is now a capability
+  * Move systemctl calls inside chroot
+  * Network: initial work for network declaration
+  * MicroOS: Remove tmp subvolume
+  * Update format following the new standard
+  * Fix __mount_device wrapper
+
+-------------------------------------------------------------------
 Mon Apr 27 11:28:16 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 0.0.1+git.1587986719.9a9097a:

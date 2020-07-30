@@ -167,4 +167,19 @@
   * Add initial support for ARM64 with EFI</comment>
     <requestid>798191</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4d09bb68e71704574a7bbf5cdc94db25</srcmd5>
+    <version>0.0.1+git.1595952633.b300be2</version>
+    <time>1596095765</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.1+git.1595952633.b300be2:
+  * pillar: install always kernel-default
+  * chroot: python3-base is now a capability
+  * Move systemctl calls inside chroot
+  * Network: initial work for network declaration
+  * MicroOS: Remove tmp subvolume
+  * Update format following the new standard
+  * Fix __mount_device wrapper</comment>
+    <requestid>823207</requestid>
+  </revision>
 </revisionlist>
