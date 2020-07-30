@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul 30 09:25:01 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Stop using zstd compression.
+
+-------------------------------------------------------------------
+Thu Jul 30 09:23:40 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.6.0+git.20200728.98d731e:
+  * Catch proper exception in readkey.py.
+  * Add missing dependency.
+  * Add first integration test.
+
+-------------------------------------------------------------------
+Thu Jul 30 09:19:19 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Support building on Leap 15.
+
+-------------------------------------------------------------------
 Sun Jul 26 19:28:48 UTC 2020 - mliska@suse.cz
 
 - Update to version 1.5.0+git.20200726.1b1be7c:
