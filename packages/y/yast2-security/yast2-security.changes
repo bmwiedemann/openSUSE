@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 28 13:52:52 CEST 2020 - aschnell@suse.com
+
+- Use pam_pwquality instead of pam_cracklib depending on
+  availability (bsc#1171318)
+- Fix setting dictpath for pam_pwquality (bsc#1174619)
+- 4.3.1
+
+-------------------------------------------------------------------
 Tue May 12 15:16:34 UTC 2020 - josef Reidinger <jreidinger@localhost>
 
 - Autoyast schema: Allow optional types for string and map objects
