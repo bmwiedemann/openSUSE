@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 29 03:10:42 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.073
+   see /usr/share/doc/packages/perl-PPIx-Regexp/Changes
+
+  0.073		2020-07-28	T. R. Wyant
+      Remove prototypes from testing subroutines defined in t/*.t.
+
+-------------------------------------------------------------------
 Thu May 21 03:11:03 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 0.072

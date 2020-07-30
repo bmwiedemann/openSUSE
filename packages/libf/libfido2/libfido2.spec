@@ -66,7 +66,8 @@ Conflicts:      libfido2-0_4_0
 This package contains utilities to use FIDO U2F and FIDO 2.0 protocols.
 
 %package        udev
-Summary:        Utility programs making use of libfido2, a library for FIDO U2F and FIDO 2.0
+Summary:        Udev rules for libfido2
+BuildArch:      noarch
 
 %description    udev
 This package contains the udev rules for FIDO2 compatible devices.
@@ -84,6 +85,8 @@ This package contains the udev rules for FIDO2 compatible devices.
 %install
 %cmake_install
 
+# Remove Debian specific plugdev setting from udev rules
+sed -i -e 's/, GROUP="plugdev"//g ; s/, MODE="0660"//g' udev/70-u2f.rules
 # u2f-host has the same udev rule, use a different name
 mkdir -p %{buildroot}%{_udevrulesdir}
 install -m 0644 udev/70-u2f.rules %{buildroot}%{_udevrulesdir}/70-fido2.rules

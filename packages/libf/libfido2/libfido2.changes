@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 24 19:33:15 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Cleanup udev rules, trying to use the Debian specific plugdev
+  group fills up the journal.
+- Make the udev rules package noarch, correct Summary
+
+-------------------------------------------------------------------
 Fri Jul  3 09:11:31 UTC 2020 -  Ismail Dönmez <idonmez@suse.com>
 
 - Create a udev subpackage and ship the udev rule 

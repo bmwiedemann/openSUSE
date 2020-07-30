@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Jul 28 18:50:39 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Version update to 1.66
+  * Defects Fixed:
+    - EdDSA verifiers now reset correctly after rejecting overly long signatures.
+    - BCJSSE: SSLSession.getPeerCertificateChain could throw NullPointerException.
+    - qTESLA-I verifier would reject some valid signatures.
+    - qTESLA verifiers now reject overly long signatures.
+    - PGP regression caused failure to preserve existing version header when
+      headers were reset.
+    - PKIXNameConstraintValidator had a bad cast preventing use of multiple
+      OtherName constraints.
+    - Serialisation of the non-CRT RSA Private Key could cause a NullPointerException.
+    - An extra 4 bytes was included in the start of HSS public key encodings.
+    - CMS with Ed448 using a direct signature was using id-shake256-len
+      rather than id-shake256.
+    - Use of GCMParameterSpec could cause an AccessControlException under
+      some circumstances.
+    - DTLS: Fixed high-latency HelloVerifyRequest handshakes.
+    - An encoding bug for rightEncoded() in KMAC has been fixed.
+    - For a few values the cSHAKE implementation would add unnecessary pad bytes
+      where the N and S strings produced encoded data that was block aligned.
+    - There were a few circumstances where Argon2BytesGenerator might hit an
+      unexpected null. These have been removed.
+  * Additional Features and Functionality
+    - The qTESLA signature algorithm has been updated to v2.8 (20191108).
+    - BCJSSE: Client-side OCSP stapling now supports status_request_v2 extension.
+    - Support has been added for "ocsp.enable", "ocsp.responderURL" and
+      PKIXRevocationChecker for users of Java 8 and later.
+    - Support has been added for "org.bouncycastle.x509.enableCRLDP" to the PKIX validator.
+    - BCJSSE: Now supports system property 'jsse.enableFFDHE'
+    - BCJSSE: Now supports system properties 'jdk.tls.client.SignatureSchemes'
+      and 'jdk.tls.server.SignatureSchemes'.
+    - Multi-release support has been added for Java 11 XECKeys.
+    - Multi-release support has been added for Java 15 EdECKeys.
+    - The MiscPEMGenerator will now output general PrivateKeyInfo structures.
+    - A new property "org.bouncycastle.pkcs8.v1_info_only" has been added to
+      make the provider only produce version 1 PKCS8 PrivateKeyInfo structures.
+    - The PKIX CertPathBuilder will now take the target certificate from the target
+      constraints if a specific certificate is given to the selector.
+    - BCJSSE: A range of ARIA and CAMELLIA cipher suites added to supported list.
+    - BCJSSE: Now supports the PSS signature schemes from RFC 8446 (TLS 1.2 onwards).
+    - Performance of the Base64 encoder has been improved.
+    - The PGPPublicKey class will now include direct key signatures when checking
+      for key expiry times.
+  * NOTES:
+    - The qTESLA update breaks compatibility with previous versions.
+      Private keys now include a hash of the public key at the end,
+      and signatures are no longer interoperable with previous versions. 
+
+-------------------------------------------------------------------
 Wed Apr 29 09:28:03 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Version update to 1.65

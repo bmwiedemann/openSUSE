@@ -15,7 +15,7 @@ Actions=new-window;PrivateBrowsing;ProfileManager
 
 [Desktop Action new-window]
 Name=New Window
-Exec==%EXEC --new-windows %u
+Exec=%EXEC --new-window %u
 
 [Desktop Action PrivateBrowsing]
 Name=New Private Browsing Window

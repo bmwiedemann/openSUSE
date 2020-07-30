@@ -15,17 +15,20 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# libpodver - version from containers/libpod
-%define libpodver 1.9.3
+# commonver - version from containers/common
+%define commonver 0.14.6
+
+# podman - version from containers/podman
+%define podmanver 2.0.3
 
 # storagever - version from containers/storage
-%define storagever 1.19.1
+%define storagever 1.20.2
 
 # imagever - version from containers/image
-%define imagever 5.4.4
+%define imagever 5.5.1
 
 Name:           libcontainers-common
-Version:        20200603
+Version:        20200727
 Release:        0
 Summary:        Configuration files common to github.com/containers
 License:        Apache-2.0 and GPL-3.0+
@@ -38,8 +41,10 @@ Source3:        policy.json
 Source4:        storage.conf
 Source5:        mounts.conf
 Source6:        registries.conf
-Source7:        libpod-%{libpodver}.tar.xz
+Source7:        podman-%{podmanver}.tar.xz
 Source8:        default.yaml
+Source9:        common-%{commonver}.tar.xz
+Source10:       containers.conf
 BuildRequires:  go-go-md2man
 Provides:       libcontainers-image
 Provides:       libcontainers-storage
@@ -56,7 +61,8 @@ github.com/containers libraries, such as Buildah, CRI-O, Podman and Skopeo.
 %prep
 %setup -q -T -D -b 0 -n image-%{imagever}
 %setup -q -T -D -b 1 -n storage-%{storagever}
-%setup -q -T -D -b 7 -n libpod-%{libpodver}
+%setup -q -T -D -b 7 -n podman-%{podmanver}
+%setup -q -T -D -b 9 -n common-%{commonver}
 # copy the LICENSE file in the build root
 cd ..
 cp %{SOURCE2} .
@@ -82,10 +88,14 @@ done
 rename '.5.md' '.5' docs/*
 rename '.md' '.1' docs/*
 cd ..
-# compile subset of containers/libpod manpages
-cd libpod-%{libpodver}
+# compile subset of containers/podman manpages
+cd podman-%{podmanver}
 go-md2man -in docs/source/markdown/containers-mounts.conf.5.md -out docs/source/markdown/containers-mounts.conf.5 
 go-md2man -in pkg/hooks/docs/oci-hooks.5.md -out pkg/hooks/docs/oci-hooks.5
+cd ..
+
+cd common-%{commonver}
+make docs
 cd ..
 
 %install
@@ -101,8 +111,9 @@ install -D -m 0644 %{SOURCE5} %{buildroot}/%{_datadir}/containers/mounts.conf
 install -D -m 0644 %{SOURCE5} %{buildroot}/%{_sysconfdir}/containers/mounts.conf
 install -D -m 0644 %{SOURCE6} %{buildroot}/%{_sysconfdir}/containers/registries.conf
 install -D -m 0644 %{SOURCE8} %{buildroot}/%{_sysconfdir}/containers/registries.d/default.yaml
-install -D -m 0644 libpod-%{libpodver}/seccomp.json %{buildroot}/%{_datadir}/containers/seccomp.json
-install -D -m 0644 libpod-%{libpodver}/seccomp.json %{buildroot}/%{_sysconfdir}/containers/seccomp.json
+install -D -m 0644 %{SOURCE10} %{buildroot}/%{_datadir}/containers/containers.conf
+install -D -m 0644 podman-%{podmanver}/seccomp.json %{buildroot}/%{_datadir}/containers/seccomp.json
+install -D -m 0644 podman-%{podmanver}/seccomp.json %{buildroot}/%{_sysconfdir}/containers/seccomp.json
 
 install -d %{buildroot}/%{_mandir}/man1
 install -d %{buildroot}/%{_mandir}/man5
@@ -110,8 +121,9 @@ install -D -m 0644 image-%{imagever}/docs/*.1 %{buildroot}/%{_mandir}/man1/
 install -D -m 0644 image-%{imagever}/docs/*.5 %{buildroot}/%{_mandir}/man5/
 install -D -m 0644 storage-%{storagever}/docs/*.1 %{buildroot}/%{_mandir}/man1/
 install -D -m 0644 storage-%{storagever}/docs/*.5 %{buildroot}/%{_mandir}/man5/
-install -D -m 0644 libpod-%{libpodver}/pkg/hooks/docs/oci-hooks.5 %{buildroot}/%{_mandir}/man5/
-install -D -m 0644 libpod-%{libpodver}/docs/source/markdown/containers-mounts.conf.5 %{buildroot}/%{_mandir}/man5/
+install -D -m 0644 podman-%{podmanver}/pkg/hooks/docs/oci-hooks.5 %{buildroot}/%{_mandir}/man5/
+install -D -m 0644 podman-%{podmanver}/docs/source/markdown/containers-mounts.conf.5 %{buildroot}/%{_mandir}/man5/
+install -D -m 0644 common-%{commonver}/docs/containers.conf.5 %{buildroot}/%{_mandir}/man5/
 
 %post
 # If installing, check if /var/lib/containers (or /var/lib in its defect) is btrfs and set driver
@@ -140,6 +152,7 @@ fi
 %config(noreplace) %{_sysconfdir}/containers/seccomp.json
 %config(noreplace) %{_sysconfdir}/containers/registries.d/default.yaml
 %{_datadir}/containers/seccomp.json
+%{_datadir}/containers/containers.conf
 
 %{_mandir}/man1/*.1%{?ext_man}
 %{_mandir}/man5/*.5%{?ext_man}

@@ -1,11 +1,11 @@
 PRODUCT="firefox"
 CHANNEL="release"
-VERSION="78.0.2"
+VERSION="79.0"
 VERSION_SUFFIX=""
-PREV_VERSION="78.0.1"
+PREV_VERSION="78.0.2"
 PREV_VERSION_SUFFIX=""
 #SKIP_LOCALES="" # Uncomment to skip l10n and compare-locales-generation
 
 RELEASE_REPO="https://hg.mozilla.org/releases/mozilla-release"
-RELEASE_TAG="e56adbbfe01c2443bae35e3d6f34867e36c3828e"
-RELEASE_TIMESTAMP="20200708170202"
+RELEASE_TAG="df3ed76cf46b23c9b658cd5be4cdd4162d86f736"
+RELEASE_TIMESTAMP="20200720193547"

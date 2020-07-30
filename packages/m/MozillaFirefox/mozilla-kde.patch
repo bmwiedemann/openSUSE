@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  aa58e8c70d1448a08407c6c191ea8b76d61e8bf6
+# Parent  43647626f7204e312a4e38cac0414a461b06667f
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -31,7 +31,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  #ifdef MOZ_MEMORY
  #  include "mozmemory.h"
  #endif
-@@ -4566,25 +4567,37 @@ nsresult Preferences::InitInitialObjects
+@@ -4570,25 +4571,37 @@ nsresult Preferences::InitInitialObjects
    // application pref files for backwards compatibility.
    static const char* specialFiles[] = {
  #if defined(XP_MACOSX)
@@ -69,7 +69,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  
    // Load jar:$app/omni.jar!/defaults/preferences/*.js
    // or jar:$gre/omni.jar!/defaults/preferences/*.js.
-@@ -4630,17 +4643,17 @@ nsresult Preferences::InitInitialObjects
+@@ -4634,17 +4647,17 @@ nsresult Preferences::InitInitialObjects
        }
  
        nsCOMPtr<nsIFile> path = do_QueryInterface(elem);
@@ -91,7 +91,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
 diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
 --- a/modules/libpref/moz.build
 +++ b/modules/libpref/moz.build
-@@ -114,16 +114,20 @@ EXPORTS.mozilla += [
+@@ -117,16 +117,20 @@ EXPORTS.mozilla += [
  ]
  EXPORTS.mozilla += sorted(['!' + g for g in gen_h])
  
@@ -106,12 +106,12 @@ diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
 +
  gen_all_tuple = tuple(gen_h + gen_cpp + gen_rs)
  
- GENERATED_FILES += [gen_all_tuple]
+ GeneratedFile(*gen_all_tuple, script='init/generate_static_pref_list.py',
+               entry_point='emit_code', inputs=['init/StaticPrefList.yaml'])
  
- static_pref_list = GENERATED_FILES[gen_all_tuple]
- static_pref_list.script = 'init/generate_static_pref_list.py:emit_code'
- static_pref_list.inputs = ['init/StaticPrefList.yaml']
- 
+ PYTHON_UNITTEST_MANIFESTS += [
+     'test/python.ini',
+ ]
 diff --git a/python/mozbuild/mozpack/chrome/flags.py b/python/mozbuild/mozpack/chrome/flags.py
 --- a/python/mozbuild/mozpack/chrome/flags.py
 +++ b/python/mozbuild/mozpack/chrome/flags.py
@@ -356,7 +356,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
 diff --git a/toolkit/xre/moz.build b/toolkit/xre/moz.build
 --- a/toolkit/xre/moz.build
 +++ b/toolkit/xre/moz.build
-@@ -88,17 +88,19 @@ elif CONFIG['MOZ_WIDGET_TOOLKIT'] == 'co
+@@ -90,17 +90,19 @@ elif CONFIG['MOZ_WIDGET_TOOLKIT'] == 'co
          '../components/printingui',
      ]
  elif CONFIG['MOZ_WIDGET_TOOLKIT'] == 'uikit':
@@ -1293,7 +1293,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
 diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
 --- a/widget/gtk/moz.build
 +++ b/widget/gtk/moz.build
-@@ -131,16 +131,17 @@ include('/ipc/chromium/chromium-config.m
+@@ -133,16 +133,17 @@ include('/ipc/chromium/chromium-config.m
  
  FINAL_LIBRARY = 'xul'
  

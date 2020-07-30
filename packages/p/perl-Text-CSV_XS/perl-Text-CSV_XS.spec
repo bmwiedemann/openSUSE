@@ -17,7 +17,7 @@
 
 
 Name:           perl-Text-CSV_XS
-Version:        1.43
+Version:        1.44
 Release:        0
 %define cpan_name Text-CSV_XS
 Summary:        Comma-separated values manipulation routines

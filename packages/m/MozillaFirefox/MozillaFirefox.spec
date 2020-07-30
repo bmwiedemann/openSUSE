@@ -25,9 +25,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          78
-%define mainver        %major.0.2
-%define orig_version   78.0.2
+%define major          79
+%define mainver        %major.0
+%define orig_version   79.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -88,15 +88,15 @@ BuildRequires:  gcc9-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  cargo >= 1.41
+BuildRequires:  cargo >= 1.43
 BuildRequires:  libXcomposite-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libidl-devel
 BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
-BuildRequires:  mozilla-nspr-devel >= 4.25
-BuildRequires:  mozilla-nss-devel >= 3.53.1
+BuildRequires:  mozilla-nspr-devel >= 4.26
+BuildRequires:  mozilla-nss-devel >= 3.54
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs10 >= 10.21.0
 BuildRequires:  python-devel
@@ -107,8 +107,8 @@ BuildRequires:  python36
 BuildRequires:  python2-xml
 BuildRequires:  python3 >= 3.5
 %endif
-BuildRequires:  rust >= 1.41
-BuildRequires:  rust-cbindgen >= 0.14.1
+BuildRequires:  rust >= 1.43
+BuildRequires:  rust-cbindgen >= 0.14.3
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-libXt-devel
@@ -186,7 +186,6 @@ Patch1:         mozilla-nongnome-proxies.patch
 Patch2:         mozilla-kde.patch
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         mozilla-aarch64-startup-crash.patch
-Patch5:         mozilla-bmo1463035.patch
 Patch6:         mozilla-sandbox-fips.patch
 Patch7:         mozilla-fix-aarch64-libopus.patch
 Patch8:         mozilla-disable-wasm-emulate-arm-unaligned-fp-access.patch
@@ -326,7 +325,6 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1

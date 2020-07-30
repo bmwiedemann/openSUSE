@@ -4521,4 +4521,41 @@
   (Plasma 5.19.3 is now in TW)</comment>
     <requestid>821616</requestid>
   </revision>
+  <revision rev="317" vrev="1">
+    <srcmd5>6aecf0b70aea4be050d5563da694dfb8</srcmd5>
+    <version>79.0</version>
+    <time>1596095792</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 79.0
+  MFSA 2020-30 (bsc#1174538)
+  * CVE-2020-15652 (bmo#1634872)
+    Potential leak of redirect targets when loading scripts in a worker
+  * CVE-2020-6514 (bmo#1642792)
+    WebRTC data channel leaks internal address to peer
+  * CVE-2020-15655 (bmo#1645204)
+    Extension APIs could be used to bypass Same-Origin Policy
+  * CVE-2020-15653 (bmo#1521542)
+    Bypassing iframe sandbox when allowing popups
+  * CVE-2020-6463 (bmo#1635293)
+    Use-after-free in ANGLE gl::Texture::onUnbindAsSamplerTexture
+  * CVE-2020-15656 (bmo#1647293)
+    Type confusion for special arguments in IonMonkey
+  * CVE-2020-15658 (bmo#1637745)
+    Overriding file type when saving to disk
+  * CVE-2020-15657 (bmo#1644954)
+    DLL hijacking due to incorrect loading path
+  * CVE-2020-15654 (bmo#1648333)
+    Custom cursor can overlay user interface
+  * CVE-2020-15659 (bmo#1550133, bmo#1633880, bmo#1638856,
+    bmo#1643613, bmo#1644839, bmo#1645835, bmo#1646006, bmo#1646220,
+    bmo#1646787, bmo#1649347, bmo#1650811, bmo#1651678)
+    Memory safety bugs fixed in Firefox 79
+- updated dependency requirements:
+  * mozilla-nspr &gt;= 4.26
+  * mozilla-nss &gt;= 3.54
+  * rust &gt;= 1.43
+  * rust-cbindgen &gt;= 0.14.3
+- removed obsolete patch</comment>
+    <requestid>823315</requestid>
+  </revision>
 </revisionlist>

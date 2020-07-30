@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jul 29 10:20:58 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v2.0.20
+  - journald: fix logging container name
+  - container logging: Implement none driver - "off", "null" or
+    "none" all work.
+  - ctrl: warn if we fail to unlink
+  - Drop fsync calls
+  - Reap PIDs before running exit command
+  - Fix log path parsing
+  - Add --sync option to prevent conmon from double forking
+  - Add --no-sync-log option to instruct conmon to not sync the
+    logs of the containers upon shutting down. This feature fixes a
+    regression where we unconditionally dropped the log sync. It is
+    possible the container logs could be corrupted on a sudden
+    power-off. If you need container logs to remain in consistent
+    state after a sudden shutdown, please update from v2.0.19 to
+    v2.0.20
+
+-------------------------------------------------------------------
 Wed May 27 06:55:07 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v2.0.17

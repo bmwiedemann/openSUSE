@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 28 09:02:52 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.17.0:
+  * lock state file to prevent parallel execution of logrotate
+  * add '.bak' extension to default taboo list
+  * allow to pass a home-relative path to 'include'
+  * 'switch_user_permanently': skip switchback check if switched to root
+  * logrotate.service: enable 'ProtectClock' to restrict setting of clock
+  * delete old logs hit by 'maxage' regardless of 'dateext'
+
+-------------------------------------------------------------------
 Wed Apr 15 07:22:01 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Require /usr/bin/xz instead of xz to make it working with busybox

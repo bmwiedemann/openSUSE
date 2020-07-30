@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Jul 23 13:31:51 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.54
+  Notable changes
+  * Support for TLS 1.3 external pre-shared keys (bmo#1603042).
+  * Use ARM Cryptography Extension for SHA256, when available
+    (bmo#1528113)
+  * The following CA certificates were Added:
+    bmo#1645186 - certSIGN Root CA G2.
+    bmo#1645174 - e-Szigno Root CA 2017.
+    bmo#1641716 - Microsoft ECC Root Certificate Authority 2017.
+    bmo#1641716 - Microsoft RSA Root Certificate Authority 2017.
+  * The following CA certificates were Removed:
+    bmo#1645199 - AddTrust Class 1 CA Root.
+    bmo#1645199 - AddTrust External CA Root.
+    bmo#1641718 - LuxTrust Global Root 2.
+    bmo#1639987 - Staat der Nederlanden Root CA - G2.
+    bmo#1618402 - Symantec Class 2 Public Primary Certification Authority - G4.
+    bmo#1618402 - Symantec Class 1 Public Primary Certification Authority - G4.
+    bmo#1618402 - VeriSign Class 3 Public Primary Certification Authority - G3.
+  * A number of certificates had their Email trust bit disabled.
+    See bmo#1618402 for a complete list.
+  Bugs fixed
+  * bmo#1528113 - Use ARM Cryptography Extension for SHA256.
+  * bmo#1603042 - Add TLS 1.3 external PSK support.
+  * bmo#1642802 - Add uint128 support for HACL* curve25519 on Windows.
+  * bmo#1645186 - Add "certSIGN Root CA G2" root certificate.
+  * bmo#1645174 - Add Microsec's "e-Szigno Root CA 2017" root certificate.
+  * bmo#1641716 - Add Microsoft's non-EV root certificates.
+  * bmo1621151 - Disable email trust bit for "O=Government
+                 Root Certification Authority; C=TW" root.
+  * bmo#1645199 - Remove AddTrust root certificates.
+  * bmo#1641718 - Remove "LuxTrust Global Root 2" root certificate.
+  * bmo#1639987 - Remove "Staat der Nederlanden Root CA - G2" root
+                  certificate.
+  * bmo#1618402 - Remove Symantec root certificates and disable email trust
+                  bit.
+  * bmo#1640516 - NSS 3.54 should depend on NSPR 4.26.
+  * bmo#1642146 - Fix undefined reference to `PORT_ZAlloc_stub' in seed.c.
+  * bmo#1642153 - Fix infinite recursion building NSS.
+  * bmo#1642638 - Fix fuzzing assertion crash.
+  * bmo#1642871 - Enable SSL_SendSessionTicket after resumption.
+  * bmo#1643123 - Support SSL_ExportEarlyKeyingMaterial with External PSKs.
+  * bmo#1643557 - Fix numerous compile warnings in NSS.
+  * bmo#1644774 - SSL gtests to use ClearServerCache when resetting
+                  self-encrypt keys.
+  * bmo#1645479 - Don't use SECITEM_MakeItem in secutil.c.
+  * bmo#1646520 - Stricter enforcement of ASN.1 INTEGER encoding.
+
+-------------------------------------------------------------------
 Sat Jun 27 21:16:07 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - add FIPS mode patches from SLE stream

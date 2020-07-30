@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 29 03:15:14 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.44
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+
+  1.44	- 2020-07-22, H.Merijn Brand
+      * EBCDIC now fully functional
+      * Prevent false negative CPANTESTERS fail reports
+      * Fully tested on perl-5.32.0 and perl-5.33.0
+      * Fix partly decoded fields in header (found by Eric Brine)
+
+-------------------------------------------------------------------
 Thu May 28 03:14:24 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 1.43

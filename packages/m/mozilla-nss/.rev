@@ -2065,4 +2065,41 @@
 </comment>
     <requestid>817441</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>ec6fda619349cc78e556692223e25e32</srcmd5>
+    <version>3.54</version>
+    <time>1596095864</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.54
+  Notable changes
+  * Support for TLS 1.3 external pre-shared keys (bmo#1603042).
+  * Use ARM Cryptography Extension for SHA256, when available
+    (bmo#1528113)
+  * The following CA certificates were Added:
+    bmo#1645186 - certSIGN Root CA G2.
+    bmo#1645174 - e-Szigno Root CA 2017.
+    bmo#1641716 - Microsoft ECC Root Certificate Authority 2017.
+    bmo#1641716 - Microsoft RSA Root Certificate Authority 2017.
+  * The following CA certificates were Removed:
+    bmo#1645199 - AddTrust Class 1 CA Root.
+    bmo#1645199 - AddTrust External CA Root.
+    bmo#1641718 - LuxTrust Global Root 2.
+    bmo#1639987 - Staat der Nederlanden Root CA - G2.
+    bmo#1618402 - Symantec Class 2 Public Primary Certification Authority - G4.
+    bmo#1618402 - Symantec Class 1 Public Primary Certification Authority - G4.
+    bmo#1618402 - VeriSign Class 3 Public Primary Certification Authority - G3.
+  * A number of certificates had their Email trust bit disabled.
+    See bmo#1618402 for a complete list.
+  Bugs fixed
+  * bmo#1528113 - Use ARM Cryptography Extension for SHA256.
+  * bmo#1603042 - Add TLS 1.3 external PSK support.
+  * bmo#1642802 - Add uint128 support for HACL* curve25519 on Windows.
+  * bmo#1645186 - Add &quot;certSIGN Root CA G2&quot; root certificate.
+  * bmo#1645174 - Add Microsec's &quot;e-Szigno Root CA 2017&quot; root certificate.
+  * bmo#1641716 - Add Microsoft's non-EV root certificates.
+  * bmo1621151 - Disable email trust bit for &quot;O=Government
+                 Root Certification Authority; C=TW&quot; root.
+  * bmo#1645199 - Remove AddTrust root certificates.</comment>
+    <requestid>823327</requestid>
+  </revision>
 </revisionlist>

@@ -642,4 +642,16 @@ require it nevertheless
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>783554</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>c42352d50b7efe45f061063d22dab75f</srcmd5>
+    <version>4.26</version>
+    <time>1596095847</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.26
+  * PR_GetSystemInfo supports a new flag PR_SI_RELEASE_BUILD to get
+    information about the operating system build version.
+  * Better support parallel building on Windows.
+  * The internal release automatic script requires python 3.</comment>
+    <requestid>823326</requestid>
+  </revision>
 </revisionlist>

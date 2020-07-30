@@ -109,4 +109,12 @@
     <comment></comment>
     <requestid>718594</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>182c15fbc9f1f3b7fd78a2c4ec7914eb</srcmd5>
+    <version>1.2.0</version>
+    <time>1596095916</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.2.0 (forwarded request 820946 from mmanu84)</comment>
+    <requestid>823363</requestid>
+  </revision>
 </revisionlist>

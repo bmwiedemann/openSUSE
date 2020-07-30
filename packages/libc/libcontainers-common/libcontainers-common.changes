@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul 28 13:22:02 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Added containers/common tarball for containers.conf(5) man page
+- Install containers.conf default configuration in
+  /usr/share/containers
+- libpod repository on github got renamed to podman
+- Update to image 5.5.1
+  - Add documentation for credHelpera
+  - Add defaults for using the rootless policy path
+- Update libpod/podman to 2.0.3
+  - docs: user namespace can't be shared in pods
+  - Switch references from libpod.conf to containers.conf
+  - Allow empty host port in --publish flag
+  - update document login see config.json as valid
+- Update storage to 1.20.2
+  - Add back skip_mount_home
+
+-------------------------------------------------------------------
 Fri Jun 19 09:57:44 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Remove remaining difference between SLE and openSUSE package and
