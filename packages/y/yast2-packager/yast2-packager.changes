@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 27 21:10:29 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Handle exceptions when parsing xml file (related to bsc#1170886)
+- 4.3.5
+
+-------------------------------------------------------------------
 Tue Jul 14 10:41:22 CEST 2020 - aschnell@suse.com
 
 - Handle variable expansion in repository name (bsc#1172477)
