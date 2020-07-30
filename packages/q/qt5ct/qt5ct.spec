@@ -17,7 +17,7 @@
 
 
 Name:           qt5ct
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        Qt5 Configuration Tool
 License:        BSD-2-Clause
