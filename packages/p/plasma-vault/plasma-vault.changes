@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 28 13:45:52 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.4
+- Changes since 5.19.3:
+  * Reset password field when the user clicks Ok (kde#424063)
+
+-------------------------------------------------------------------
 Tue Jul  7 13:58:02 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.3
