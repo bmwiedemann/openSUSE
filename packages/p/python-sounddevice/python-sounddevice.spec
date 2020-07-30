@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-sounddevice
-Version:        0.3.15
+Version:        0.4.0
 Release:        0
 Summary:        Module to play and record sound with Python
 License:        MIT

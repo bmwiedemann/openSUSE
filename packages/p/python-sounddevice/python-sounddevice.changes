@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 29 07:27:48 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.4.0
+  * Drop support for Python 2.x
+  * Fix memory issues in `play()`, `rec()` and `playrec()`
+  * Example application ``play_stream.py``
+  * Remove ``print_devices()``, `query_devices()` can be used instead
+
+-------------------------------------------------------------------
 Thu Mar 26 14:13:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.3.15
