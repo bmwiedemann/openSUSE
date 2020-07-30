@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jul 29 13:06:19 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- update to 2.42 state of the Mozilla NSS Certificate store (bsc#1174673)
+
+  Removed CAs:
+  - AddTrust External CA Root
+  - AddTrust Class 1 CA Root
+  - LuxTrust Global Root 2
+  - Staat der Nederlanden Root CA - G2
+  - Symantec Class 1 Public Primary Certification Authority - G4
+  - Symantec Class 2 Public Primary Certification Authority - G4
+  - VeriSign Class 3 Public Primary Certification Authority - G3
+
+  Added CAs:
+  - certSIGN Root CA G2
+  - e-Szigno Root CA 2017
+  - Microsoft ECC Root Certificate Authority 2017
+  - Microsoft RSA Root Certificate Authority 2017
+
+
+-------------------------------------------------------------------
 Thu Mar 26 11:38:06 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - also run update-ca-certificates in %posttrans

@@ -596,4 +596,25 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>790876</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>7c4954297089f861d4ed42b3d5b61fbc</srcmd5>
+    <version>2.42</version>
+    <time>1596095980</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.42 state of the Mozilla NSS Certificate store (bsc#1174673)
+  Removed CAs:
+  - AddTrust External CA Root
+  - AddTrust Class 1 CA Root
+  - LuxTrust Global Root 2
+  - Staat der Nederlanden Root CA - G2
+  - Symantec Class 1 Public Primary Certification Authority - G4
+  - Symantec Class 2 Public Primary Certification Authority - G4
+  - VeriSign Class 3 Public Primary Certification Authority - G3
+  Added CAs:
+  - certSIGN Root CA G2
+  - e-Szigno Root CA 2017
+  - Microsoft ECC Root Certificate Authority 2017
+  - Microsoft RSA Root Certificate Authority 2017</comment>
+    <requestid>823414</requestid>
+  </revision>
 </revisionlist>
