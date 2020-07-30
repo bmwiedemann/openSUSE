@@ -1,6 +1,7 @@
 #
 # spec file for package dbgl
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,15 +17,15 @@
 #
 
 
-%define realver 091
+%define realver 092
 Name:           dbgl
-Version:        0.91
+Version:        0.92
 Release:        0
 Summary:        DOSBox Game Launcher
 License:        GPL-2.0-only
 Group:          System/Emulators/Other
 URL:            http://home.quicknet.nl/qn/prive/blankendaalr/dbgl/
-Source0:        http://members.quicknet.nl/blankendaalr/dbgl/download/src%{realver}.zip
+Source0:        https://www.squadrablu.nl/dbgl/src%{realver}.zip
 Source1:        %{name}-wrapper.sh
 Source2:        %{name}.appdata.xml
 BuildRequires:  ant
