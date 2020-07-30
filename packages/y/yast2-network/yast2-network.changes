@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 29 10:47:01 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST: do not crash when the <host> section is present
+  (bsc#1174643).
+- 4.3.15
+
+-------------------------------------------------------------------
+Tue Jul 28 08:45:12 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not crash when configuring an IPv6 route through AutoYaST
+  (bsc#1174353)
+- 4.3.14
+
+-------------------------------------------------------------------
 Thu Jul 16 08:45:00 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Permit to write networking config changes without touching the
