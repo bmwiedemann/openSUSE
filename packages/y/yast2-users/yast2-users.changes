@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 24 14:00:40 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Load the right nsswitch.conf from either, /usr/etc or /etc
+- Related to bsc#1173119.
+- 4.3.5
+
+-------------------------------------------------------------------
 Tue Jul 14 15:06:32 UTC 2020 - José Iván López González <jlopez@suse.com>
 
 - Use available kadmin.local binary (either at /usr/lib/mit/sbin

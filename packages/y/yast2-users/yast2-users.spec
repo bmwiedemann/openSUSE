@@ -17,7 +17,7 @@
 
 
 Name:           yast2-users
-Version:        4.3.4
+Version:        4.3.5
 Release:        0
 Summary:        YaST2 - User and Group Configuration
 License:        GPL-2.0-only
@@ -46,8 +46,8 @@ Requires:       perl-X500-DN
 Requires:       perl-gettext
 Requires:       yast2-country
 
-# Autologin.supported?
-Requires:       yast2-pam >= 4.2.0
+# CFA::Nsswitch
+Requires:       yast2-pam >= 4.3.0
 
 Requires:       yast2-security
 
