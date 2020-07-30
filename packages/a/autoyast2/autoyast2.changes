@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 27 17:01:01 CEST 2020 - schubi@suse.de
+
+- Removed "image" section from "software" section (bsc#1140711).
+- 4.3.31
+
+-------------------------------------------------------------------
 Thu Jul 23 09:36:37 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - handle properly exceptions from new XML parser/serializer
