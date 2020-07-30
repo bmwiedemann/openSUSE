@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 28 14:07:48 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix the schema definition for the add_on_products and
+  add_on_others elements (boo#1174424).
+- 4.3.4
+
+-------------------------------------------------------------------
 Thu Jul  2 19:13:36 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Make the report section elements optional as AutoYaST proposes
