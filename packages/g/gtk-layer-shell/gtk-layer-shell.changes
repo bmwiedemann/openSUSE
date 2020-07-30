@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 29 05:54:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.0:
+  * Relicense to LGPL v3
+  * Fix long standing issue with popup grabs
+  * Fix potential compatibility issues between GTK versions with
+    gtk-priv headers
+  * Add GitHub Actions CI (just building and license check for now)
+  * Add script to check that are files are licensed correctly
+  * Use layer_surface->set_layer instead of remapping (when available)
+
+-------------------------------------------------------------------
 Wed Apr 29 08:32:39 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - BuildRequire gobject introspection devel files correctly
