@@ -237,4 +237,12 @@
    asynchronous runner compatibility.</comment>
     <requestid>810916</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>c7182eb2b730feb70d42aad2375987cb</srcmd5>
+    <version>0.9.2</version>
+    <time>1596110781</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python2 building - 0.9.2 is python 3.x only</comment>
+    <requestid>823565</requestid>
+  </revision>
 </revisionlist>

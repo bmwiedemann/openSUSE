@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
+%global skip_python2 1
 Name:           python-dogpile.cache
 Version:        0.9.2
 Release:        0
@@ -39,10 +39,6 @@ BuildRequires:  python-rpm-macros
 Provides:       python-dogpile.core = %{version}
 Obsoletes:      python-dogpile.core < 0.4.1
 BuildArch:      noarch
-%ifpython2
-Obsoletes:      %{oldpython}-dogpile.core < 0.4.1
-Provides:       %{oldpython}-dogpile.core = %{version}
-%endif
 %python_subpackages
 
 %description
