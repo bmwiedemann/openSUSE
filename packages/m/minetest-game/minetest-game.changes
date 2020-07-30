@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul 29 20:18:24 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to version 5.3.0
+  * Rename “Dry Dirt” and related blocks to “Savanna Dirt” and
+    similar (paramat)
+  * Added Wild Cotton: grows in savannas, drops Cotton Seeds
+    (paramat)
+  * Sort items into correct categories (An0n3m0us)
+  * Tune cloud density variation (paramat)
+  * Fix broken Creative inventory search in translation (sfan5)
+  * Make Straw Stairs/Slabs usable as fuel (Paul Ouellette)
+  * New textures: Dry Shrub, Brake Rail (Extex101, Hooded Ice)
+  * Block particles when leaves decay, TNT explodes (sfan5)
+- Use spec-cleaner on spec file 
+
+-------------------------------------------------------------------
 Mon Apr  6 13:49:46 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
 
 - Update to version 5.2.0
