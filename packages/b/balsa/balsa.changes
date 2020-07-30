@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 29 19:16:57 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 2.6.1:
+  + fix server identity verification.
+- Run spec-cleaner
+  + Remove package groups
+
+-------------------------------------------------------------------
 Sun Apr 12 14:46:21 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.6.0:

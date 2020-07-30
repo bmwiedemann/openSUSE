@@ -17,14 +17,12 @@
 
 
 Name:           balsa
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        The GNOME Mail Program
 License:        GPL-2.0-or-later
-Group:          Productivity/Networking/Email/Clients
 URL:            https://pawsa.fedorapeople.org/balsa/
 Source0:        %{url}/%{name}-%{version}.tar.bz2
-
 BuildRequires:  compface-devel
 BuildRequires:  fdupes
 BuildRequires:  gpgme-devel
