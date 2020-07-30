@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 29 10:59:21 CEST 2020 - schubi@suse.de
+
+- Removed unneeded AY installation step "autoimage" (bsc#1140711).
+- 20200729
+
+-------------------------------------------------------------------
 Wed Jul 01 13:50:11 UTC 2020 - Richard Brown <rbrown@suse.de>
 
 - Remove tmp subvolume for transactional systems [boo#1173461][jsc#PM-1898]
