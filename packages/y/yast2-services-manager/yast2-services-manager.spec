@@ -24,7 +24,7 @@
 ######################################################################
 
 Name:           yast2-services-manager
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Summary:        YaST2 - Services Manager
 License:        GPL-2.0-or-later

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 29 11:15:35 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix detection of modifications in AutoYaST config mode
+  (bsc#1173408)
+- Fix remembering of services configuration in AutoYaST config mode
+  (bsc#1173408)
+- 4.3.2
+
+-------------------------------------------------------------------
 Tue Jun 30 11:48:27 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Honor the 'target' argument when cloning the system. If it is
