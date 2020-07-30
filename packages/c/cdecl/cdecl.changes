@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 30 10:47:43 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.0
+  * Support for C2X and Embedded C.
+  * More support for C++20.
+
+-------------------------------------------------------------------
 Sun Jul 12 09:56:04 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.4.1

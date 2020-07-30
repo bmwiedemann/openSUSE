@@ -578,4 +578,12 @@
     <comment>April 2020 CPU</comment>
     <requestid>800009</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>91891c79e7d0841742bd290fea8d7171</srcmd5>
+    <version>1.8.0.252</version>
+    <time>1596116711</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>823568</requestid>
+  </revision>
 </revisionlist>

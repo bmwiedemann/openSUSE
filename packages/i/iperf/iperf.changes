@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 11 09:45:53 UTC 2020 - Michal Svec <msvec@suse.com>
+
+- update to 3.8.1
+  * Minor bugfixes and enhancements
+- don't apply the profiling patch any more
+  (removed iperf-disable-profiling.patch)
+  
+-------------------------------------------------------------------
 Thu Nov 14 21:32:57 UTC 2019 - Michal Svec <msvec@suse.com>
 
 - update to 3.7

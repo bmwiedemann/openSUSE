@@ -313,7 +313,7 @@ Mon May  4 08:01:35 UTC 2020 - Fridrich Strba <fstrba@suse.com>
       ShenandoahTerminationTrace
     + [backport] 8240217: Shenandoah: remove ShenandoahEvacAssist
     + [backport] 8240534: Shenandoah: ditch debug safepoint timeout
-adjustment
+      adjustment
     + Fix LRB use in LIRGenerator::do_UnsafeGetAndSetObject
     + Fix tier2_gc_shenandoah group definition
     + Rectify JDK-8191227 workaround for Shenandoah

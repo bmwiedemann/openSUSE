@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jul 13 13:07:55 UTC 2020 - Michael Vetter <mvetter@suse.com>
+- Update to 3.17.6:
+  * It is now possible to 'Inherit Folder properties and processing
+    rules from parent folder' when creating new folders with the
+    move message and copy message dialogues.
+  * A Phishing warning is now shown when copying a phishing URL, (in
+    addition to clicking a phishing URL).
+  * The progress window when importing an mbox file is now more
+    responsive.
+  * A warning dialogue is shown if the selected privacy system is
+    'None' and automatic signing amd/or encrypting is enabled.
+  * Python plugin: pkgconfig is now used to check for python2. This
+    enables the Python plugin (which uses python2) to be built on
+    newer systems which have both python2 and python3.
+  Bug fixes:
+  * bug 3922, 'minimize to tray on startup not working'
+  * bug 4220, 'generates files in cache without content'
+  * bug 4325, 'Following redirects when retrieving image'
+  * bug 4342, 'Import mbox file command doesn't work twice on a row'
+  * fix STARTTLS protocol violation
+  * fix initial debug line
+  * fix fat-fingered crash when v (hiding msgview) is pressed
+    just before c (check signature)
+  * fix non-translation of some Templates strings
+
+-------------------------------------------------------------------
 Fri Apr  3 22:23:22 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - prepare turning off python support when we drop python2 in TW 

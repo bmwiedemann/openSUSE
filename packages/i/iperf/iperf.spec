@@ -18,7 +18,7 @@
 
 %define soname  0
 Name:           iperf
-Version:        3.7
+Version:        3.8.1
 Release:        0
 Summary:        A tool to measure network performance
 License:        BSD-3-Clause
@@ -26,8 +26,6 @@ Group:          Productivity/Networking/Diagnostic
 URL:            https://software.es.net/iperf/
 #Source URL:    http://downloads.es.net/pub/iperf/%{name}-%{version}.tar.gz
 Source:         http://downloads.es.net/pub/iperf/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE -- Disable profiling if %%optflags includes -fomit-frame-pointer, as option -pg conflicts with it
-Patch1:         iperf-disable-profiling.patch
 %if %{?sles_version} && %{?sles_version} <= 11
 BuildRequires:  libuuid-devel
 %else
@@ -82,9 +80,6 @@ This package contains development files.
 
 %prep
 %setup -q
-%if 0%(case "%{optflags}" in (*-fomit-frame-pointer*) echo 1;; esac)
-%patch1 -p 1
-%endif
 
 %build
 %configure --disable-static

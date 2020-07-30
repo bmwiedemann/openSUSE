@@ -1,7 +1,7 @@
 #
 # spec file for package modsecurity
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           modsecurity
-Version:        3.0.0
+Version:        3.0.4
 Release:        0
 Summary:        Web application firewall engine
 License:        BSD-2-Clause
 Group:          Productivity/Networking/Security
-Url:            https://www.modsecurity.org/
-Source:         https://github.com/SpiderLabs/ModSecurity/releases/download/v%{version}/modsecurity-v%{version}.tar.gz
+URL:            https://www.modsecurity.org/
+Source0:        https://github.com/SpiderLabs/ModSecurity/releases/download/v%{version}/modsecurity-v%{version}.tar.gz
+Source1:        baselibs.conf
 BuildRequires:  automake
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -64,11 +65,12 @@ This subpackage holds the development headers for the library.
 %build
 export MAKEFLAGS=-j$(($(grep -c ^processor /proc/cpuinfo) - 0))
 sh build.sh
-./configure --prefix=%{_prefix} --disable-doxygen-doc --disable-examples --disable-dependency-tracking
-make
-%make_install
+%configure --disable-doxygen-doc --disable-examples --disable-dependency-tracking
+%make_build
 
 %install
+export MAKEFLAGS=-j$(($(grep -c ^processor /proc/cpuinfo) - 0))
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 find %{buildroot} -type f -name "*.a" -delete -print
 
@@ -81,11 +83,12 @@ find %{buildroot} -type f -name "*.a" -delete -print
 
 %files -n libmodsecurity3
 %license LICENSE
-%{_libexecdir}/libmodsecurity.so.3
-%{_libexecdir}/libmodsecurity.so.3.*
+%{_libdir}/libmodsecurity.so.3
+%{_libdir}/libmodsecurity.so.3.*
 
 %files devel
-%{_libexecdir}/libmodsecurity.so
+%{_libdir}/libmodsecurity.so
 %{_includedir}/modsecurity
+%{_libdir}/pkgconfig/*.pc
 
 %changelog

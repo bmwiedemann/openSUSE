@@ -783,4 +783,34 @@ No changes entry, as it's just a correction of the last changes entry.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>793004</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>90c919b9495d44f48ae25133dbe1a29b</srcmd5>
+    <version>3.17.6</version>
+    <time>1596116716</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.17.6:
+  * It is now possible to 'Inherit Folder properties and processing
+    rules from parent folder' when creating new folders with the
+    move message and copy message dialogues.
+  * A Phishing warning is now shown when copying a phishing URL, (in
+    addition to clicking a phishing URL).
+  * The progress window when importing an mbox file is now more
+    responsive.
+  * A warning dialogue is shown if the selected privacy system is
+    'None' and automatic signing amd/or encrypting is enabled.
+  * Python plugin: pkgconfig is now used to check for python2. This
+    enables the Python plugin (which uses python2) to be built on
+    newer systems which have both python2 and python3.
+  Bug fixes:
+  * bug 3922, 'minimize to tray on startup not working'
+  * bug 4220, 'generates files in cache without content'
+  * bug 4325, 'Following redirects when retrieving image'
+  * bug 4342, 'Import mbox file command doesn't work twice on a row'
+  * fix STARTTLS protocol violation
+  * fix initial debug line
+  * fix fat-fingered crash when v (hiding msgview) is pressed
+    just before c (check signature)
+  * fix non-translation of some Templates strings (forwarded request 820689 from jubalh)</comment>
+    <requestid>820715</requestid>
+  </revision>
 </revisionlist>

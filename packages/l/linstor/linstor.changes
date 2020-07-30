@@ -1,0 +1,141 @@
+-------------------------------------------------------------------
+Mon Jun  1 06:05:35 UTC 2020 - nick wang <nwang@suse.com>
+
+- Update to 1.7.1, match to linstor client/api 1.1.2
+  * VolumeDefinition: Make create synchronous
+  * Autoplacer: Fixed decimal regex for weights
+  * Renamed DrbdProxy/Site to Site
+  * ParseThinSpace: Fixed NPE due to a race condition
+  * ParseThinSpaces: return now all requested entries
+  * AutoPlaceApi: added null-pointer check
+  * Autoplacer: Fixed "autoplaced on 0 nodes" bug
+  * ReconnectorTask: Attempt to fix possible deadlock
+  * DrbdProxy: Disable autoproxy when disabling proxy
+  * AutoProxy: Added migration to rename Site property
+  * virter/Makefile: fix hardcoded path
+  [...]
+  - 1.4.0-1
+  * rest-api: go back to version 1.0.11
+  * errorreport: parameterize comparable
+  * wiphandler: allow a collection of paths to be specified
+  * create-storagepool: Allow an onError flux to be given and fix Exc handling
+  * createdevicepool: cleanup
+  * scripts/rest-gen: allow null default for string
+  * genericname: Throw InvalidNameException if string is null
+  * rest/physicaldevice: Add "atomic" storage pool creation
+  * rest-api-doc: fix incorrect yaml
+  * lsblkutils: show full paths for device names
+  * createdevicepool: do not continue on vdo errors
+  * args: allow args to be overwritten
+  [...]
+  - 0.9.13-1
+  * taskscheduleservice: catch exception in running task
+  * retryresourcestask: check if resource is deleted
+  * database/mariadb: add compatibility with mariadb
+  * allow node names to be matched with a search domain property
+  * ctrlauthenticator: fix typo
+  * ctrlapidataload: fix accessdenied on loadnode
+  * InvalidKeyException: extend from LinStorRuntimeException
+  * rest-api-docu: fix missing volume_number in volumes PUT
+  * CmldArguments: ConfigurationDir is now returned as Path
+  * grizzly-http: add exception mapper for ApiRcException
+  * apicallrcimpl: shortcut to create a ApiCallRc with 1 entry
+  [...]
+
+-------------------------------------------------------------------
+Tue May 28 06:36:36 UTC 2019 - nwang@suse.com
+
+- Update to 0.9.10, match to linstor client/api 0.9.5
+ - linstor-server 0.9.10
+  * Fixed: lvm not working if the --reportformat option is missing
+  * Fixed: Possible DRBD split-brain if a resources is readded on a node
+  * Fixed: HTTP server tries to start on ipv4 if ipv6 bind failed
+ - linstor-server 0.9.9
+  * REST-API v1.0.4:
+    - Added /v1/views/storage-pools overview
+    - Added UUID for main objects
+    - Enable gzip compression if requested
+  * Added WaitTimeoutAfterCreate property
+  * Fixed: repeatedly created error logs for version mismatch on satellites
+  * Fixed ZFS volume resize
+  * Fixed out of date usable size reporting
+  * Removed DISKLESS provider dependency on DRBD
+ - linstor-server 0.9.8
+  * Fixed: Finding device path of NVMe volumes
+  * Fixed: Local Controller node will now show as ONLINE
+  * REST: Added /v1/view/resources and set REST-API version to 1.0.3
+  * REST: Data structures are now generated from the rest documentation
+  * Allow to pass raid level for LVM
+  * Passphrase generation changed, old encrypted volumes will not be able to be unlocked
+ - linstor-server 0.9.7
+  * Fixed: Volume definitions not deleted on satellite
+  * Fixed: Race condition while creating volume definitions too fast
+  * Fixed: Minor bug in NVME layer
+  * Fixed: NVME issues if drbd-utils have not been installed
+  * NVME: Added creating and deleting volumes while resource is up
+  * NVME: Added storage pools to prio props for NVME PrefNic property
+  * REST: updated to version 1.0.2, added /v1/storage-pool-definitions, minor fixes
+  * REST: default bind interface is now `::` ipv6 and ipv4
+  * Use better default JVM memory options
+ - linstor-server 0.9.6
+  * Fixed: DRBD handlers written on satellite restart
+  * Fixed: Migration for resources without volumes
+  * Fixed: Deletion of resources not updating freespace info
+  * Fixed: Satellite nullpointer exception on applying already deleted resource
+  * REST: Undocumented single resource paths will not return arrays anymore
+  * DRBD handler options are now always quoted.
+  * Added optional file system creation on DRBD or storage resources
+  * Support for NVMe over fabrics
+
+-------------------------------------------------------------------
+Tue Apr  9 01:11:16 UTC 2019 - nwang@suse.com
+
+- Update to 0.9.5, match to linstor client/api 0.9.2
+ * Fixed: Multi-volume migration from old versions
+ * Fixed: Encryption layer didn't correctly decode the passphrase
+ * Fixed: REST-API 404 is now returned if a resource definition
+   was not found
+ * Satellite does now check what layers the host does support
+ * DRBD/config handlers will now set from the according property values
+ * REST-API: On create node if only 1 net-interface is given,
+   it defaults to satellite connector 
+
+-------------------------------------------------------------------
+Thu Apr  4 07:17:31 UTC 2019 - nwang@suse.com
+
+- Update to 0.9.4, match linstor client 0.9.1
+ * REST API
+ * Resource layers allowing volumes without DRBD
+ * Multiple network paths, configure more than one network path
+ * Retry on failed resources
+ * Added migrate disk option to toggle disk command
+ * Better resource ready detection
+
+-------------------------------------------------------------------
+Thu Nov  1 00:51:14 UTC 2018 - nwang@suse.com
+
+- Update to upstream release 0.7.1
+ * Basic DRBD Proxy support
+ * Resource can now created in a batch (used for drbdmigrate)
+ * More synchronous operations (auto-place, storage-pool create)
+ * linstor-config: improved sql-script command
+ * Added list API for resource connection
+ * Fix: drbdsetup events2 parsing will be restarted if process dies
+ * Fix: resource create check available size
+ * Fix: Delete snapshots on node lost command
+ * Fix: SSL configurations files are now resolved from config directory
+ * Fix: Some race conditions are avoided 
+ * Fix: Deleting thin volumes didn't correctly clean up
+        free space information
+
+-------------------------------------------------------------------
+Wed Oct 31 11:30:56 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace description by something useful that does not rely
+  on the term "SDS".
+
+-------------------------------------------------------------------
+Wed Sep 26 07:12:43 UTC 2018 - nwang@suse.com
+
+- bsc#1095668. First version in 0.6.5. 
+

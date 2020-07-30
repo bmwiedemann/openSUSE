@@ -205,4 +205,17 @@
     <comment></comment>
     <requestid>750375</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ae0271f991264cb8607389ce5f047fa1</srcmd5>
+    <version>3.8.1</version>
+    <time>1596116825</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.8.1
+  * Minor bugfixes and enhancements
+- don't apply the profiling patch any more
+  (removed iperf-disable-profiling.patch)
+  
+</comment>
+    <requestid>822859</requestid>
+  </revision>
 </revisionlist>
