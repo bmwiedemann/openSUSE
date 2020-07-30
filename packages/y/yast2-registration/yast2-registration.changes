@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 28 07:20:28 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Handle exceptions when parsing xml file (related to bsc#1170886)
+- 4.3.5
+
+-------------------------------------------------------------------
 Fri Jul 17 10:54:41 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Export the registration settings in the <suse_register/>
