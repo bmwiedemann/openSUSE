@@ -19,7 +19,7 @@
 %define major   5
 
 Name:           leptonica
-Version:        1.79.0
+Version:        1.80.0
 Release:        0
 Summary:        Library for image processing and image analysis applications
 License:        BSD-2-Clause

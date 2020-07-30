@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jul 29 20:50:16 UTC 2020 - Kyrill Detinov <lazy.kent@opensuse.org>
+
+- Update to 1.80.0.
+  * Improve bmp handling of 1 bpp images and sanity checking of params.
+  * Add function to display all rgb gamut colors.
+  * In Makefile.am, use option serial-tests to avoid races in
+    testing.
+  * Make md subdirectory and add ax_split_version.md there.
+  * Simple function for hue-invariant mapping
+    (pixMapWithInvariantHue).
+  * Fixed bug in limit of ptra size when used for sorting by bins.
+  * Use hashmap to count pixel colors in RGB(A) images.
+  * Convert hashtest program to regression test hash_reg.
+  * Convert croptest program to regression test crop_reg.
+  * New color segmentation by region growing (colorfill.c).
+  * New regression tests: colorfill_reg, circle_reg, ccbord_reg.
+  * Set maxima for all allocations for common leptonica data structures.
+  * Don't fail when downscaling 2, 4, 8, and 32 bpp images, even to one
+    pixel, invoking pixScaleSmooth().
+  * New functions that select 1 bpp components based on their area.
+  * Incremental addition to sorted array of numbers.
+  * New prog/fuzzing directory for oss-fuzz based fuzzing programs.
+  * Ue of pixcmapIsValid() with extra argument to determine validity
+    with the pix it is attached to.
+  * Use lept_stderr() in all programs in the prog directory.
+  * New program rasteroptest() for thorough testing of rasterop functions.
+  * Removed the pixSaveTiled*() functions.
+  * Stubbed pixDisplayWrite(). Last used in tesseract 3.04.01 (2/2016).
+
+-------------------------------------------------------------------
 Sat Jan 25 20:01:05 UTC 2020 - Kyrill Detinov <lazy.kent@opensuse.org>
 
 - Update to 1.79.0.
