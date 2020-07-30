@@ -39,14 +39,14 @@ scdoc is a man page generator written for POSIX systems written in C99.
 %patch0 -p1
 
 %build
-make %{?_smp_mflags} PREFIX=%{_prefix}
+%make_build PREFIX=%{_prefix}
 
 %install
-%make_install PREFIX=%{_prefix} PCDIR=%{buildroot}/usr/share/pkgconfig %{?_smp_mflags} 
+%make_install PREFIX=%{_prefix} PCDIR=%{buildroot}%{_datadir}/pkgconfig %{?_smp_mflags}
 
 %files
 %{_bindir}/scdoc
 %{_mandir}/man?/scdoc.?%{?ext_man}
-/usr/share/pkgconfig/scdoc.pc
+%{_datadir}/pkgconfig/scdoc.pc
 
 %changelog

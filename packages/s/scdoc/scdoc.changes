@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 30 09:15:59 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Use _datadir macro
+
+-------------------------------------------------------------------
 Tue Jun 16 08:23:04 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.11.0:

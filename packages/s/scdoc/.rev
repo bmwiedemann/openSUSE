@@ -146,4 +146,12 @@
   * Fix parsing of line breaks followed by underlined text</comment>
     <requestid>814844</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>7f3ab4f3c9b8a1cd13b2626ac2609f01</srcmd5>
+    <version>1.11.0</version>
+    <time>1596104763</time>
+    <user>dimstar_suse</user>
+    <comment>- Use _datadir macro</comment>
+    <requestid>823536</requestid>
+  </revision>
 </revisionlist>
