@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 29 22:24:40 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 2.4f
+  * Fixed configure script mis-detection of "labels need underline
+    prefix" on Fedora. Fix from Jiri Hladky.
+  * Added configure script autodetection for x86/amd64 -fno-pie compile
+    and -no-pie linker flags. These are needed when compiler/linker
+    produces position independent executable (PIE) by default.
+- Run spec-cleaner
+- Add source verification
+
+-------------------------------------------------------------------
 Thu Oct 17 12:57:45 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove obsolete Groups tag (fate#326485)

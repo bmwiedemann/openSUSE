@@ -1,7 +1,7 @@
 #
 # spec file for package aespipe
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 Name:           aespipe
-Version:        2.4e
+Version:        2.4f
 Release:        0
 Summary:        AES Encrypting/Decrypting Pipe
 License:        GPL-2.0-only
-Url:            http://loop-aes.sourceforge.net/
-Source:         http://loop-aes.sourceforge.net/aespipe/%{name}-v%{version}.tar.bz2#/%{name}-%{version}.tar.bz2
+URL:            http://loop-aes.sourceforge.net/
+Source0:        http://loop-aes.sourceforge.net/aespipe/%{name}-v%{version}.tar.bz2#/%{name}-%{version}.tar.bz2
+Source1:        http://loop-aes.sourceforge.net/aespipe/%{name}-v%{version}.tar.bz2.sign#/%{name}-%{version}.tar.bz2.sign
+Source2:        %{name}.keyring
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gpg2
-#!BuildIgnore:  gcc-PIE
 Requires:       gpg2
 
 %description
@@ -49,10 +50,10 @@ autoreconf -fiv
   --enable-asm=amd64 --enable-padlock --enable-intelaes \
 %endif
   --disable-silent-rules
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} tests
+%make_build tests
 
 %install
 %make_install
@@ -63,6 +64,6 @@ install -D -p -m 0755 bz2aespipe \
 %doc ChangeLog README
 %{_bindir}/aespipe
 %{_bindir}/bz2aespipe
-%{_mandir}/man1/aespipe.1%{ext_man}
+%{_mandir}/man1/aespipe.1%{?ext_man}
 
 %changelog
