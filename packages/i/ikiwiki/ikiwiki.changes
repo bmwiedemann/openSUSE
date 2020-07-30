@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 30 07:57:01 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 3.20200202.3
+  * highlight: Adapt to API change in highlight >= 3.51
+  * mdwn: Fix inverted footnote configuration when MultiMarkdown is
+    enabled. Thanks, Giuseppe Bilotta
+  * translation improvements
+- Switch to python3-docutils since we do not have Python 2 anymore
+
+-------------------------------------------------------------------
 Wed Apr  8 12:37:05 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Remove BR of bzr ... we don't support it anymore, and there isn't any

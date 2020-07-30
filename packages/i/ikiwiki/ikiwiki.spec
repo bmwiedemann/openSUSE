@@ -17,17 +17,14 @@
 
 
 # Basic requirements stated in Bundle::IkiWiki
-%define base_requires perl(CGI) perl(CGI::FormBuilder) perl(CGI::Session) perl(Data::Dumper) perl(Date::Parse) perl(HTML::Parser) perl(HTML::Scrubber) perl(HTML::Template) perl(JSON) perl(Mail::Sendmail) perl(Text::Markdown) perl(URI) perl(XML::Simple) perl(YAML::XS)
+%define base_requires perl(CGI) perl(CGI::FormBuilder) perl(CGI::Session) perl(Data::Dumper) perl(Date::Parse) perl(HTML::Parser) perl(HTML::Scrubber) perl(HTML::Template) perl(JSON) perl(Mail::Sendmail) perl(RPC::XML) perl(Text::Markdown) perl(URI) perl(XML::Simple) perl(YAML::XS)
 # Basic plugin requirements stated in Bundle::IkiWiki::Extras
-%define plugins_requires perl(Authen::Passphrase) perl(Crypt::SSLeay) perl(File::MimeInfo) perl(Gravatar::URL) perl(HTML::Tree) perl(Locale::gettext) perl(Net::INET6Glue) perl(Net::OpenID::Consumer) perl(Sort::Naturally) perl(Term::ReadLine::Gnu) perl(Text::CSV) perl(XML::Writer)
+%define plugins_requires perl(Authen::Passphrase) perl(Crypt::SSLeay) perl(File::MimeInfo) perl(Gravatar::URL) perl(HTML::Tree) perl(Locale::gettext) perl(Net::INET6Glue) perl(Net::OpenID::Consumer) perl(Sort::Naturally) perl(Term::ReadLine::Gnu) perl(Text::CSV) perl(URI::Fetch) perl(XML::Feed) perl(XML::Writer)
 # Additional requirements added based on code and docs searching
-%define additional_requires perl(Cwd) perl(Digest::SHA) perl(Encode) perl(ExtUtils::MakeMaker) perl(File::Find) perl(File::chdir) perl(File::Path) perl(File::Spec) perl(Getopt::Long) perl(HTML::Entities) perl(HTML::TreeBuilder) perl(Image::Magick) perl(Locale::gettext) perl(Memoize) perl(Net::OpenID::VerifiedIdentity) perl(Storable) perl(URI::Escape) python-docutils
+%define additional_requires perl(Cwd) perl(Digest::SHA) perl(Encode) perl(ExtUtils::MakeMaker) perl(File::Find) perl(File::chdir) perl(File::Path) perl(File::Spec) perl(Getopt::Long) perl(HTML::Entities) perl(HTML::TreeBuilder) perl(Image::Magick) perl(Locale::gettext) perl(Memoize) perl(Net::OpenID::VerifiedIdentity) perl(Storable) perl(URI::Escape) python3-docutils
 # Requirements needed for tests
 %define tests_requires cvs cvsps git-core mercurial perl(B) perl(Errno) perl(HTML::LinkExtor) perl(IPC::Run) perl(Test::More) perl(XML::Twig) subversion
 # Currently unresolvable - enable when it becomes available
-# - RPC::XML - base requires
-# - XML::Feed - needed for aggregate.pm, t/podcast.t
-# - URI::Fetch - aggregate.pm
 # - Net::Amazon::S3 - amazon_s3.pm
 # - Text::Typography - typography.pm
 # - Monotone - monotone.pm
@@ -39,7 +36,7 @@
 # - Text::WikiCreole - creole.pm
 # - Locale::Po4a::Chooser::new - po.t
 Name:           ikiwiki
-Version:        3.20190228
+Version:        3.20200202.3
 Release:        0
 Summary:        A wiki compiler
 License:        GPL-2.0-or-later AND BSD-2-Clause
@@ -82,7 +79,7 @@ CGI scripts, and ikiwiki can be set up to run that way.
 %{cgi_bin}/ikiwiki-w3m.cgi
 
 %prep
-%setup -q -n IkiWiki-%{version}
+%setup -q -n ikiwiki-%{version}
 
 # Create README for the w3m subpackage
 cat << \EOF > README.w3m
