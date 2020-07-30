@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jul 30 08:25:38 UTC 2020 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest release 4.0.23
+- New Features and improvements
+  + ZBXNEXT-6004 Added host info to vmware event message log
+  + ZBXNEXT-5903 Added vmware datacenters discovery 
+- Bug Fixes
+  + ZBX-8081 Fixed 'cmdline' parameter truncation on solaris 11.3 and later
+  + ZBX-18014 Fixed memory leak when action message does not have to be sent
+  + ZBX-15117 Fixed graph configuration with large amount of items
+  + ZBX-18069 Fixed server exit when trying to execute ipmi script without ipmi pollers
+  + ZBX-17960 Fixed undefined index in trends api
+  + ZBX-17682 Fixed button disable state in template item list and discovery list
+  + ZBX-17820 Fixed classic graph widget default header
+  + ZBX-17924 Fixed php errors in "system information" window for mysql
+  + ZBX-17917 Changed vm.memory.size keys on solaris to get memory usage statistics from kstat
+  + ZBX-18029 Fixed cpu counter wraparound handling on solaris
+  + ZBX-17624 Fixed misleading error message in case of not available datastorage
+    for vmware.hv.datastore.read and vmware.hv.datastore.write metrics
+  + ZBX-17860 Fixed host prototype import
+  + ZBX-17922 Removed mtime check when matching files on disk with the cached list,
+    this should reduce chances of log files being scanned again after system time changes
+
+-------------------------------------------------------------------
 Sat Jul 18 20:46:25 UTC 2020 - Boris Manojlovic <boris@steki.net>
 
 - updated to latest release 4.0.22
