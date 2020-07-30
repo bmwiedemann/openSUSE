@@ -1,4 +1,20 @@
 --------------------------------------------------------------------
+Wed Jul 29 12:24:18 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#765
+- added functions to query whether a MD RAID supports spare and
+  journal devices
+- 4.3.39
+
+--------------------------------------------------------------------
+Wed Jul 29 11:23:45 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/libstorage-ng#764
+- add _constraints file for OBS requiring at least 4 GB disk size
+  (bsc#1174375)
+- 4.3.38
+
+--------------------------------------------------------------------
 Wed Jul 22 10:49:43 UTC 2020 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#763
