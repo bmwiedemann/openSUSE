@@ -36,4 +36,12 @@
     <comment>Scripted push from GNOME:Apps</comment>
     <requestid>767362</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>67e297959097a822276f9cf0a60bf4f9</srcmd5>
+    <version>3.0.3</version>
+    <time>1596104721</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.3: (forwarded request 822446 from dimstar)</comment>
+    <requestid>823106</requestid>
+  </revision>
 </revisionlist>

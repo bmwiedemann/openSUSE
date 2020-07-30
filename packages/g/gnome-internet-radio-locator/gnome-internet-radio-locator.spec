@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-internet-radio-locator
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gnome-internet-radio-locator
-Version:        1.4.0
+Version:        3.0.3
 Release:        0
 Summary:        Live Internet radio broadcaster discovery program
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://wiki.gnome.org/Apps/InternetRadioLocator
-Source0:        https://download.gnome.org/sources/%{name}/1.4/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/%{name}/3.0/%{name}-%{version}.tar.xz
 
 BuildRequires:  intltool
 BuildRequires:  itstool
@@ -34,6 +34,8 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.40
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.12.0
 BuildRequires:  pkgconfig(gstreamer-player-1.0) >= 1.12.0
+BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0)
+BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-tag-1.0) >= 1.12.0
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= 1.12.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
@@ -77,8 +79,7 @@ make %{?_smp_mflags}
 %dir %{_datadir}/icons/hicolor/1024x1024
 %dir %{_datadir}/icons/hicolor/1024x1024/apps
 %{_datadir}/icons/hicolor/*/apps/*.png
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/*.xml
+%{_datadir}/metainfo/*.xml
 %{_mandir}/man?/%{name}.?%{?ext_man}
 
 %files lang -f %{name}.lang
