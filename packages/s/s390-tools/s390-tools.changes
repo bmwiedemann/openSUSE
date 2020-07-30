@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Jul 24 21:17:36 UTC 2020 - Mark Post <mpost@suse.com>
+
+- The location of the udevadm binary was changed from /sbin/ to /usr/bin
+  a while back. A symbolic link was added for compatibility. In the latest
+  versions, that symbolic link has been removed, requiring changes to scripts
+  that were depending on that.
+  Added the following patches for bsc#1171587
+  * s390-tools-sles15sp2-lsluns-try-harder-to-find-udevadm.patch
+  * s390-tools-sles15sp2-znetconf-introduce-better-ways-to-locate-udevadm.patch
+  *s390-tools-sles15sp2-mon_tools-update-udevadm-location.patch
+
+-------------------------------------------------------------------
+Thu Jul 23 19:28:25 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Added s390-tools-sles15sp2-zipl-prevent-endless-loop-during-IPL.patch
+  (bsc#1174309) zipl: prevent endless loop during secure IPL
+- Added s390-tools-sles15sp2-zipl-check-for-valid-ipl-parmblock-lowcore-pointer.patch
+  (bsc#1174310) zipl: check for valid ipl parmblock lowcore pointer
+- Added s390-tools-sles15sp2-01-zipl-libc-libc_stop-move-noreturn-to-declaration.patch
+        s390-tools-sles15sp2-02-zipl-stage3-correctly-handle-diag308-response-code.patch
+  (bsc1174311) zipl: Fix KVM IPL without bootindex
+- Updated cputype and read_values to recognize the new z15 models.
+
+-------------------------------------------------------------------
+Thu Jul 23 19:28:25 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Added s390-tools-sles15sp2-zipl-prevent-endless-loop-during-IPL.patch
+  (bsc#1174309) zipl: prevent endless loop during secure IPL
+- Added s390-tools-sles15sp2-zipl-check-for-valid-ipl-parmblock-lowcore-pointer.patch
+  (bsc#1174310) zipl: check for valid ipl parmblock lowcore pointer
+- Added s390-tools-sles15sp2-01-zipl-libc-libc_stop-move-noreturn-to-declaration.patch
+        s390-tools-sles15sp2-02-zipl-stage3-correctly-handle-diag308-response-code.patch
+  (bsc1174311) zipl: Fix KVM IPL without bootindex
+- Updated cputype and read_values to recognize the new z15 models.
+
+-------------------------------------------------------------------
+Mon Jun 29 19:45:01 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Added s390-tools-sles15sp2-vmcp-exit-code.patch (bsc#1173481)
+  Change the vmcp exit code and return 'CP command failed' when both
+  "CP command failed" and "response buffer is too small" error
+  conditions are true.
+
+-------------------------------------------------------------------
 Tue Apr  7 18:52:02 UTC 2020 - Mark Post <mpost@suse.com>
 
 - Added s390-tools-sles15sp2-01-cpumf-add-new-deflate-counters-for-z15.patch

@@ -188,6 +188,14 @@ Patch98:        s390-tools-sles15sp2-02-zipl-allow-stand-alone-secure-option-on-
 Patch99:        s390-tools-sles15sp2-03-zipl-correct-secure-boot-config-handling.patch
 Patch100:       s390-tools-sles15sp2-04-zipl-fix-zipl.conf-man-page-example-for-secure-boot.patch
 Patch101:       s390-tools-sles15sp2-01-cpumf-add-new-deflate-counters-for-z15.patch
+Patch102:       s390-tools-sles15sp2-vmcp-exit-code.patch
+Patch103:       s390-tools-sles15sp2-zipl-prevent-endless-loop-during-IPL.patch
+Patch104:       s390-tools-sles15sp2-zipl-check-for-valid-ipl-parmblock-lowcore-pointer.patch
+Patch105:       s390-tools-sles15sp2-01-zipl-libc-libc_stop-move-noreturn-to-declaration.patch
+Patch106:       s390-tools-sles15sp2-02-zipl-stage3-correctly-handle-diag308-response-code.patch
+Patch107:       s390-tools-sles15sp2-lsluns-try-harder-to-find-udevadm.patch
+Patch108:       s390-tools-sles15sp2-znetconf-introduce-better-ways-to-locate-udevadm.patch
+Patch109:       s390-tools-sles15sp2-mon_tools-update-udevadm-location.patch
 
 # SUSE patches
 Patch900:       s390-tools-sles12-zipl_boot_msg.patch
