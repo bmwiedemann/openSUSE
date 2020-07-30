@@ -17,7 +17,7 @@
 
 
 Name:           yast2-installation
-Version:        4.3.10
+Version:        4.3.13
 Release:        0
 Summary:        YaST2 - Installation Parts
 License:        GPL-2.0-only
@@ -40,6 +40,8 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 BuildRequires:  yast2 >= 4.2.56
 # Y2Packager::MediumType
 BuildRequires:  yast2-packager >= 4.2.27
+# CIOIgnore
+BuildRequires:  yast2-bootloader
 # using /usr/bin/udevadm
 BuildRequires:  yast2-storage-ng >= 4.2.71
 # Y2Network::NtpServer
@@ -67,6 +69,8 @@ Requires:       yast2-country-data >= 2.16.11
 Requires:       yast2-pkg-bindings >= 3.1.33
 # Y2Packager::MediumType
 Requires:       yast2-packager >= 4.2.22
+# CIOIgnore
+Requires:       yast2-bootloader
 # use in startup scripts
 Requires:       initviocons
 # Proxy settings for 2nd stage (bnc#764951)
@@ -179,7 +183,8 @@ systemctl enable YaST2-Firstboot.service
 %postun
 %service_del_postun YaST2-Second-Stage.service YaST2-Firstboot.service
 
-%endif #suse_version
+#suse_version
+%endif
 
 %files
 

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul 27 17:04:26 CEST 2020 - schubi@suse.de
+
+- AY: Removed "image" section from "software" section
+  (bsc#1140711).
+- 4.3.13
+
+-------------------------------------------------------------------
+Mon Jul 27 13:43:29 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Handle exceptions when parsing xml file (related to bsc#1170886)
+- 4.3.12
+
+-------------------------------------------------------------------
+Mon Jul 27 08:14:24 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- handle device autoconfig setting in summary screen (bsc#1168036)
+- 4.3.11
+
+-------------------------------------------------------------------
 Fri Jul 24 06:48:57 UTC 2020 - José Iván López González <jlopez@suse.com>
 
 - Configure the wizard layout according to the product features.
