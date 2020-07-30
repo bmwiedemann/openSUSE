@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 28 14:05:54 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix the schema definition for the add_on_products
+  and add_on_others elements (boo#1174424).
+- 4.3.3
+
+-------------------------------------------------------------------
 Thu Jul 16 10:17:01 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Do not export registered add-ons, as they should be included
