@@ -28,6 +28,8 @@ BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 Recommends:     android-tools
 BuildArch:      noarch
+Provides:       android-tools-udev = %{version}-%{release}
+Obsoletes:      android-tools-udev < %{version}-%{release}
 %{sysusers_requires}
 
 %description
