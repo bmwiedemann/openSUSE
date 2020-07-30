@@ -1,4 +1,21 @@
 --------------------------------------------------------------------
+Wed Jul 29 09:28:31 UTC 2020 - mvidner@suse.cz
+
+- merge gh#openSUSE/installation-images#399
+- Remove pycache to save space (20 MB uncompressed)
+- Remove pycache to save space (20:4 MiB pre:post squashfs-ing)
+- 16.2
+
+--------------------------------------------------------------------
+Tue Jul 28 14:31:50 UTC 2020 - mvidner@suse.cz
+
+- merge gh#openSUSE/installation-images#400
+- check_libs internals: use xargs, enable perl warnings
+- check_libs internals: document data structures, use xargs, enable
+  perl warnings
+- 16.1
+
+--------------------------------------------------------------------
 Thu Jul 16 13:16:57 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#397
