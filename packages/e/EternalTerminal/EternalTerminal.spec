@@ -18,7 +18,7 @@
 
 %global _firewalld_dir %{_prefix}/lib/firewalld
 Name:           EternalTerminal
-Version:        6.0.7
+Version:        6.0.8
 Release:        0
 Summary:        Remote shell that survives IP roaming and disconnect
 License:        Apache-2.0
@@ -46,7 +46,7 @@ interrupting the session.
 %autosetup -n EternalTerminal-et-v%{version}
 
 %build
-%cmake -DDISABLE_CRASH_LOG=ON
+%cmake
 
 %install
 %cmake_install

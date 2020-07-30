@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 30 06:30:25 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.0.8:
+  * TSAN/ASAN fixes
+  * Parse named socket port forwards (#293)
+  * Fix input for forward tunnels (#319)
+  * Revert back to write/read instead of send/recv on unix (#323, #322)
+  * Handle SIGINT manually (#333, #324)
+- Build with DISABLE_CRASH_LOG=OFF since SIGINT is now not handled
+  by easylogging++ anymore, thus ctrl+c won't lead to crash
+
+-------------------------------------------------------------------
 Wed Jun 24 14:21:42 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Build with DISABLE_CRASH_LOG=ON to prevent segfault upon abort
