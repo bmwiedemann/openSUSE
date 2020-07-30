@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Wed Jul 29 16:24:18 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Improve spec file
+  * Add RPM group
+  * Don't set default cflags explicitly, as %meson does it already
+
+-------------------------------------------------------------------
+Mon Jul 27 19:41:06 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Initial packaging of version 0.8 
