@@ -381,7 +381,7 @@ find %{buildroot} -type f \
     -print0 | xargs -0 rm -f
 
 # make Perl modules writable so they get stripped
-find %{buildroot}%{_libexecdir}/perl5 -type f -perm 555 -print0 |
+find %{buildroot}%{_prefix}/lib/perl5 -type f -perm 555 -print0 |
     xargs -0 chmod 755
 
 install -d -m 0755 %{buildroot}/%{_datadir}/java
