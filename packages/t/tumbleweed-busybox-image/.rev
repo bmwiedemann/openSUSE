@@ -100,4 +100,18 @@
     <comment>- Add busybox-adduser (forwarded request 814042 from kukuk)</comment>
     <requestid>814043</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>b3b496853911f43d6e54f8e93bde3b67</srcmd5>
+    <version>1.0.0</version>
+    <time>1596203491</time>
+    <user>dimstar_suse</user>
+    <comment>- Add busybox-{dos2unix,telnet,tftp,time,tunctl,vlan,sysvinit-tools}
+
+- Add missing busybox-psmisc
+- Add busybox-ed, busybox-bc and busybox-netcat
+
+- Add busybox-whois, busybox-less, busybox-unzip, busybox-vi,
+  busybox-wget and busybox-syslogd (forwarded request 822618 from kukuk)</comment>
+    <requestid>822619</requestid>
+  </revision>
 </revisionlist>

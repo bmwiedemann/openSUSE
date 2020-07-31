@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 24 08:18:08 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add busybox-{dos2unix,telnet,tftp,time,tunctl,vlan,sysvinit-tools}
+
+-------------------------------------------------------------------
+Thu Jul 23 13:06:24 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add missing busybox-psmisc
+- Add busybox-ed, busybox-bc and busybox-netcat
+
+-------------------------------------------------------------------
+Wed Jul 22 09:32:23 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add busybox-whois, busybox-less, busybox-unzip, busybox-vi,
+  busybox-wget and busybox-syslogd
+
+-------------------------------------------------------------------
 Thu Jun 11 09:41:26 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add busybox-adduser
