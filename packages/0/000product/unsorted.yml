@@ -2526,6 +2526,8 @@ unsorted:
   - docker 
   - docker-bash-completion 
   - docker-bench-security 
+  - docker-client-java 
+  - docker-client-java-javadoc 
   - docker-distribution-registry: [x86_64] 
   - docker-kubic: [x86_64] 
   - docker-kubic-bash-completion: [x86_64] 
@@ -6572,6 +6574,8 @@ unsorted:
   - jenkins-json-lib 
   - jeos-firstboot 
   - jeos-firstboot-rpiwifi 
+  - jersey 
+  - jersey-javadoc 
   - jetbrains-annotations 
   - jetbrains-annotations-javadoc 
   - jettison 
@@ -10843,6 +10847,7 @@ unsorted:
   - libmodplug-devel 
   - libmodplug1-32bit: [x86_64] 
   - libmodsecurity3 
+  - libmodsecurity3-32bit: [x86_64] 
   - libmodulemd-devel 
   - libmongoose-doc 
   - libmongoose2 
@@ -13514,9 +13519,9 @@ unsorted:
   - linphone 
   - linphone-cli 
   - linssid 
-  - linstor-common: [i586] 
-  - linstor-controller: [i586] 
-  - linstor-satellite: [i586] 
+  - linstor-common 
+  - linstor-controller 
+  - linstor-satellite 
   - linux-atm 
   - linux-atm-devel 
   - linux-ftools 
@@ -17495,6 +17500,7 @@ unsorted:
   - perl-Getopt-Long-Descriptive 
   - perl-Getopt-Tabular 
   - perl-Git-Repository 
+  - perl-Git-Repository-Plugin-Log 
   - perl-Git-Version-Compare 
   - perl-Glib 
   - perl-Glib-Object-Introspection 
@@ -20713,7 +20719,7 @@ unsorted:
   - python3-linecache2 
   - python3-lineup-widget 
   - python3-linstor 
-  - python3-linstor-client: [i586] 
+  - python3-linstor-client 
   - python3-lit 
   - python3-lldb: [x86_64] 
   - python3-lldb10: [x86_64] 
