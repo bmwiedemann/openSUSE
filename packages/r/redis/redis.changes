@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jul 27 00:11:22 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- redis 6.0.6:
+  * Fix crash when enabling CLIENT TRACKING with prefix
+  * EXEC always fails with EXECABORT and multi-state is cleared
+  * RESTORE ABSTTL won't store expired keys into the db
+  * redis-cli better handling of non-pritable key names
+  * TLS: Ignore client cert when tls-auth-clients off
+  * Tracking: fix invalidation message on flush
+  * Notify systemd on Sentinel startup
+  * Fix crash on a misuse of STRALGO
+  * Few fixes in module API
+  * Fix a few rare leaks (STRALGO error misuse, Sentinel)
+  * Fix a possible invalid access in defrag of scripts
+  * Add LPOS command to search in a list
+  * Use user+pass for MIGRATE in redis-cli and redis-benchmark in
+    cluster mode
+  * redis-cli support TLS for --pipe, --rdb and --replica options
+  * TLS: Session caching configuration support
+
+-------------------------------------------------------------------
 Wed Jun 10 15:18:18 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - redis 6.0.5:
