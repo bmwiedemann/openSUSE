@@ -829,4 +829,13 @@ undo bootstrap workaround</comment>
   * whitelist ppc64-diag cron job (bsc#1173044)</comment>
     <requestid>820646</requestid>
   </revision>
+  <revision rev="103" vrev="20">
+    <srcmd5>49b1c5705c156c14181940b3413b1e17</srcmd5>
+    <version>1.10</version>
+    <time>1596203527</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version master:
+  * opa-ff: add wildcard whitelisting (bsc#1174464)</comment>
+    <requestid>823075</requestid>
+  </revision>
 </revisionlist>
