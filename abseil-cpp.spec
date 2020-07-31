@@ -1,7 +1,7 @@
 #
 # spec file for package abseil-cpp
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
-%define src_install_dir /usr/src/%{name}
-
+%define src_install_dir %{_prefix}/src/%{name}
 Name:           abseil-cpp
-Version:        20190808
+Version:        20200225.2
 Release:        0
 Summary:        C++11 libraries which augment the C++ stdlib
 License:        Apache-2.0
 URL:            https://abseil.io/
-Source0:        %{name}-%{version}.tar.gz
+Source0:        https://github.com/abseil/abseil-cpp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  fdupes
-ExcludeArch:    %ix86
+ExcludeArch:    %{ix86}
 
 %description
 Abseil is a collection of C++11 libraries which augment the C++

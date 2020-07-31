@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 24 21:15:12 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20200225.2
+  * This release fixes the list of dependencies of absl::Cord in the CMake build.
+  * bug fix for absl::Status::ErasePayload
+
+-------------------------------------------------------------------
 Thu Jan 16 14:50:51 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Remove all packages except source.

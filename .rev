@@ -103,4 +103,14 @@
     <comment>- Remove all packages except source. (forwarded request 765214 from mrostecki)</comment>
     <requestid>765215</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e191f35faa561349f568a68e11119f1e</srcmd5>
+    <version>20200225.2</version>
+    <time>1596203496</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200225.2
+  * This release fixes the list of dependencies of absl::Cord in the CMake build.
+  * bug fix for absl::Status::ErasePayload</comment>
+    <requestid>823021</requestid>
+  </revision>
 </revisionlist>
