@@ -20,7 +20,7 @@
 
 %define psm_so 2
 Name:           libpsm2
-Version:        11.2.166
+Version:        11.2.185
 Release:        0
 Summary:        Intel PSM Messaging API libraries
 License:        BSD-2-Clause OR GPL-2.0-only

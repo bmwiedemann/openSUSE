@@ -335,7 +335,6 @@ install -d -m 0755 %{buildroot}%{_bindir}
 install -d -m 0755 %{buildroot}%{_sbindir}
 install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}
 install -d -m 0755 %{buildroot}%{_initddir}
-install -d -m 0755 %{buildroot}%{_systemddir}
 install -d -m 0755 %{buildroot}%{_sysconfdir}/logrotate.d
 install -d -m 0755 %{buildroot}%{_sysconfdir}/sysconfig
 install -d -m 0755 %{buildroot}%{appdir}
@@ -343,7 +342,7 @@ install -d -m 0755 %{buildroot}%{tomcatappdir}
 install -d -m 0755 %{buildroot}%{bindir}
 install -d -m 0775 %{buildroot}%{confdir}
 install -d -m 0755 %{buildroot}%{cachedir}/Catalina/localhost
-install -d -m 0775 %{buildroot}%{confdir}/conf.d
+install -d -m 0755 %{buildroot}%{confdir}/conf.d
 /bin/echo "Place your custom *.conf files here. Shell expansion is supported." > %{buildroot}%{confdir}/conf.d/README
 install -d -m 0755 %{buildroot}%{libdir}
 install -d -m 0775 %{buildroot}%{logdir}
@@ -575,7 +574,7 @@ ln -s -f %{_sysconfdir}/alternatives/servlet %{buildroot}%{_javadir}/%{name}-ser
 
 mkdir -p %{buildroot}%{_tmpfilesdir}
 cat > %{buildroot}%{_tmpfilesdir}/%{name}.conf <<EOF
-f %{_localstatedir}/run/%{name}.pid 0644 tomcat tomcat -
+f /run/%{name}.pid 0644 tomcat tomcat -
 EOF
 
 # Install tool used to edit server.xml
@@ -589,13 +588,14 @@ popd
 # add the tomcat user and group
 %{_sbindir}/groupadd -r tomcat 2>/dev/null || :
 %{_sbindir}/useradd -c "Apache Tomcat" -g tomcat \
-    -s /bin/sh -r -d %{homedir} tomcat 2>/dev/null || :
+    -s /sbin/nologin -r -d %{homedir} tomcat 2>/dev/null || :
 %service_add_pre %{name}.service
 
 %post
 %service_add_post %{name}.service
+%service_add_post %{name}@.service
 %{fillup_only %{name}}
-%{_bindir}/systemd-tmpfiles --create  >/dev/null 2>&1 || :
+%tmpfiles_create %_tmpfilesdir/%{name}.conf
 
 %preun
 %service_del_preun %{name}.service
@@ -684,7 +684,7 @@ if [ $1 -eq 0 ]; then # uninstall only
 fi
 
 %files
-%defattr(0664,root,tomcat,0755)
+%defattr(-,root,root)
 %doc {LICENSE,NOTICE,RELEASE*}
 %attr(0755,root,root) %{_bindir}/%{name}-digest
 %attr(0755,root,root) %{_bindir}/%{name}-tool-wrapper
@@ -704,41 +704,43 @@ fi
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %attr(0755,root,tomcat) %dir %{basedir}
 %attr(0755,root,tomcat) %dir %{confdir}
-%defattr(0664,tomcat,root,0770)
 %attr(0775,root,tomcat) %dir %{appdir}
-%attr(0770,tomcat,root) %{logdir}
+%attr(0770,tomcat,root) %dir %{logdir}
 %attr(0660,tomcat,tomcat) %{logdir}/catalina.out
-%attr(0770,root,tomcat) %{cachedir}
-%defattr(0664,root,tomcat,0770)
+%attr(0770,root,tomcat) %dir %{cachedir}
+%attr(0775,root,tomcat) %dir %{cachedir}/Catalina
+
+# tomcat group writtable dirs - bnc#625415
 %attr(0770,root,tomcat) %dir %{tempdir}
 %attr(0770,root,tomcat) %dir %{workdir}
 %attr(0775,root,tomcat) %dir %{tomcatappdir}
-# tomcat group writtable dirs - bnc#625415
-%defattr(0664,root,tomcat,0775)
+
 %{confdir}/Catalina
-%attr(0775,root,tomcat) %dir %{confdir}/conf.d
-%attr(0664,tomcat,tomcat) %{confdir}/conf.d/README
-%attr(0664,tomcat,tomcat) %config(noreplace) %{confdir}/%{name}.conf
-%attr(0664,tomcat,tomcat) %config(noreplace) %{confdir}/*.policy
-%attr(0664,tomcat,tomcat) %config(noreplace) %{confdir}/*.properties
-%attr(0664,tomcat,tomcat) %config(noreplace) %{confdir}/context.xml
-%attr(0664,tomcat,tomcat) %config(noreplace) %{confdir}/server.xml
-%attr(0660,tomcat,tomcat) %config(noreplace) %{confdir}/tomcat-users.xml
-%attr(0664,tomcat,tomcat) %config(noreplace) %{confdir}/web.xml
-%attr(0664,tomcat,tomcat) %config(noreplace) %{confdir}/jaspic-providers.xml
-%dir %{homedir}
-%{_tmpfilesdir}/%{name}.conf
-%{bindir}/bootstrap.jar
-%{bindir}/catalina-tasks.xml
+%attr(0755,root,tomcat) %dir %{confdir}/conf.d
+%attr(0644,root,tomcat) %{confdir}/conf.d/README
+%attr(0644,root,tomcat) %config(noreplace) %{confdir}/%{name}.conf
+%attr(0644,root,tomcat) %config(noreplace) %{confdir}/*.policy
+%attr(0644,root,tomcat) %config(noreplace) %{confdir}/*.properties
+%attr(0644,root,tomcat) %config(noreplace) %{confdir}/context.xml
+%attr(0644,root,tomcat) %config(noreplace) %{confdir}/server.xml
+# keep tomcat-users.xml readable only by root and tomcat group
+%attr(0640,root,tomcat) %config(noreplace) %{confdir}/tomcat-users.xml
+%attr(0644,root,tomcat) %config(noreplace) %{confdir}/web.xml
+%attr(0644,root,tomcat) %config(noreplace) %{confdir}/jaspic-providers.xml
+%attr(0755,root,tomcat) %dir %{homedir}
+%attr(0644,root,tomcat) %{_tmpfilesdir}/%{name}.conf
+%attr(0644,root,tomcat) %{bindir}/bootstrap.jar
+%attr(0644,root,tomcat) %{bindir}/catalina-tasks.xml
 %{homedir}/lib
 %{homedir}/temp
 %{homedir}/webapps
 %{homedir}/work
 %{homedir}/logs
 %{homedir}/conf
-%{_fillupdir}/sysconfig.%{name}
+%attr(0644,root,tomcat) %{_fillupdir}/sysconfig.%{name}
 
 %files admin-webapps
+%defattr(0644,root,tomcat,0755)
 %{tomcatappdir}/host-manager
 %config(noreplace) %{tomcatappdir}/host-manager/META-INF/context.xml
 %{tomcatappdir}/manager
@@ -786,6 +788,7 @@ fi
 %ghost %{_sysconfdir}/alternatives/servlet
 
 %files webapps
+%defattr(0644,tomcat,tomcat,0755)
 #bnc#520532
 %config(noreplace) %{tomcatappdir}/ROOT
 %{tomcatappdir}/examples

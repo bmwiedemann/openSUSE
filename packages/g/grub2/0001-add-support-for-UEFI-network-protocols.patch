@@ -23,9 +23,15 @@ V3:
   * Finish HTTP transaction in one go
   * Fix bsc#1076132
 
-V4
+V4:
   * Add fs_ prefix with upstream commit 
     ad4bfeec5 Change fs functions to add fs_ prefix
+
+V5:
+  * Use overflow checking primitives where the arithmetic expression for
+    buffer allocations may include unvalidated data
+  * Use grub_calloc for overflow check and return NULL when it would
+    occur.
 
 ---
  grub-core/Makefile.core.def        |   18 +
@@ -57,10 +63,10 @@ V4
  create mode 100644 include/grub/efi/http.h
  create mode 100644 include/grub/net/efi.h
 
-Index: grub-2.04~rc1/grub-core/Makefile.core.def
+Index: grub-2.04/grub-core/Makefile.core.def
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/Makefile.core.def
-+++ grub-2.04~rc1/grub-core/Makefile.core.def
+--- grub-2.04.orig/grub-core/Makefile.core.def
++++ grub-2.04/grub-core/Makefile.core.def
 @@ -1854,7 +1854,6 @@ module = {
  module = {
    name = linuxefi;
@@ -82,10 +88,10 @@ Index: grub-2.04~rc1/grub-core/Makefile.core.def
  };
  
  module = {
-Index: grub-2.04~rc1/grub-core/io/bufio.c
+Index: grub-2.04/grub-core/io/bufio.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/io/bufio.c
-+++ grub-2.04~rc1/grub-core/io/bufio.c
+--- grub-2.04.orig/grub-core/io/bufio.c
++++ grub-2.04/grub-core/io/bufio.c
 @@ -139,7 +139,7 @@ grub_bufio_read (grub_file_t file, char
      return res;
  
@@ -95,10 +101,10 @@ Index: grub-2.04~rc1/grub-core/io/bufio.c
    /* Now read between file->offset + res and bufio->buffer_at.  */
    if (file->offset + res < next_buf)
      {
-Index: grub-2.04~rc1/grub-core/kern/efi/efi.c
+Index: grub-2.04/grub-core/kern/efi/efi.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/kern/efi/efi.c
-+++ grub-2.04~rc1/grub-core/kern/efi/efi.c
+--- grub-2.04.orig/grub-core/kern/efi/efi.c
++++ grub-2.04/grub-core/kern/efi/efi.c
 @@ -722,7 +722,7 @@ grub_efi_print_device_path (grub_efi_dev
  	      {
  		grub_efi_ipv4_device_path_t *ipv4
@@ -226,10 +232,10 @@ Index: grub-2.04~rc1/grub-core/kern/efi/efi.c
  	    default:
  	      grub_printf ("/UnknownMessaging(%x)", (unsigned) subtype);
  	      break;
-Index: grub-2.04~rc1/grub-core/net/drivers/efi/efinet.c
+Index: grub-2.04/grub-core/net/drivers/efi/efinet.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/net/drivers/efi/efinet.c
-+++ grub-2.04~rc1/grub-core/net/drivers/efi/efinet.c
+--- grub-2.04.orig/grub-core/net/drivers/efi/efinet.c
++++ grub-2.04/grub-core/net/drivers/efi/efinet.c
 @@ -24,6 +24,7 @@
  #include <grub/efi/efi.h>
  #include <grub/i18n.h>
@@ -298,11 +304,11 @@ Index: grub-2.04~rc1/grub-core/net/drivers/efi/efinet.c
 +  grub_efi_net_config = NULL;
  }
  
-Index: grub-2.04~rc1/grub-core/net/efi/dhcp.c
+Index: grub-2.04/grub-core/net/efi/dhcp.c
 ===================================================================
 --- /dev/null
-+++ grub-2.04~rc1/grub-core/net/efi/dhcp.c
-@@ -0,0 +1,397 @@
++++ grub-2.04/grub-core/net/efi/dhcp.c
+@@ -0,0 +1,399 @@
 +#include <grub/mm.h>
 +#include <grub/command.h>
 +#include <grub/efi/api.h>
@@ -385,7 +391,7 @@ Index: grub-2.04~rc1/grub-core/net/efi/dhcp.c
 +  if (status != GRUB_EFI_BUFFER_TOO_SMALL)
 +    return NULL;
 +
-+  option_list = grub_malloc (option_count * sizeof(*option_list));
++  option_list = grub_calloc (option_count, sizeof(*option_list));
 +  if (!option_list)
 +    return NULL;
 +
@@ -665,7 +671,9 @@ Index: grub-2.04~rc1/grub-core/net/efi/dhcp.c
 +
 +	if (status == GRUB_EFI_BUFFER_TOO_SMALL && count)
 +	  {
-+	    options = grub_malloc (count * sizeof(*options));
++	    options = grub_calloc (count, sizeof(*options));
++	    if (!options)
++	      return grub_error (GRUB_ERR_OUT_OF_RANGE, N_("overflow is detected"));
 +	    status = efi_call_4 (dev->dhcp6->parse, dev->dhcp6, mode.ia->reply_packet, &count, options);
 +	  }
 +
@@ -700,17 +708,18 @@ Index: grub-2.04~rc1/grub-core/net/efi/dhcp.c
 +
 +grub_command_func_t grub_efi_net_bootp = grub_cmd_efi_bootp;
 +grub_command_func_t grub_efi_net_bootp6 = grub_cmd_efi_bootp6;
-Index: grub-2.04~rc1/grub-core/net/efi/http.c
+Index: grub-2.04/grub-core/net/efi/http.c
 ===================================================================
 --- /dev/null
-+++ grub-2.04~rc1/grub-core/net/efi/http.c
-@@ -0,0 +1,419 @@
++++ grub-2.04/grub-core/net/efi/http.c
+@@ -0,0 +1,424 @@
 +
 +#include <grub/efi/api.h>
 +#include <grub/efi/efi.h>
 +#include <grub/misc.h>
 +#include <grub/net/efi.h>
 +#include <grub/charset.h>
++#include <grub/safemath.h>
 +
 +static void
 +http_configure (struct grub_efi_net_device *dev, int prefer_ip6)
@@ -835,6 +844,7 @@ Index: grub-2.04~rc1/grub-core/net/efi/http.c
 +    grub_efi_char16_t *ucs2_url;
 +    grub_size_t url_len, ucs2_url_len;
 +    const char *protocol = (use_https == 1) ? "https" : "http";
++    grub_size_t sz;
 +
 +    if (grub_efi_string_to_ip6_address (server, &address, &rest) && *rest == 0)
 +      url = grub_xasprintf ("%s://[%s]%s", protocol, server, name);
@@ -847,8 +857,11 @@ Index: grub-2.04~rc1/grub-core/net/efi/http.c
 +      }
 +
 +    url_len = grub_strlen (url);
-+    ucs2_url_len = url_len * GRUB_MAX_UTF16_PER_UTF8;
-+    ucs2_url = grub_malloc ((ucs2_url_len + 1) * sizeof (ucs2_url[0]));
++    if (grub_mul (url_len, GRUB_MAX_UTF16_PER_UTF8, &ucs2_url_len) ||
++	grub_add (ucs2_url_len, 1, &sz))
++      return GRUB_ERR_OUT_OF_RANGE;
++
++    ucs2_url = grub_calloc (sz, sizeof (ucs2_url[0]));
 +
 +    if (!ucs2_url)
 +      {
@@ -1124,26 +1137,30 @@ Index: grub-2.04~rc1/grub-core/net/efi/http.c
 +    .read = grub_efihttp_read,
 +    .close = grub_efihttp_close
 +  };
-Index: grub-2.04~rc1/grub-core/net/efi/ip4_config.c
+Index: grub-2.04/grub-core/net/efi/ip4_config.c
 ===================================================================
 --- /dev/null
-+++ grub-2.04~rc1/grub-core/net/efi/ip4_config.c
-@@ -0,0 +1,398 @@
++++ grub-2.04/grub-core/net/efi/ip4_config.c
+@@ -0,0 +1,409 @@
 +
 +#include <grub/efi/api.h>
 +#include <grub/efi/efi.h>
 +#include <grub/misc.h>
 +#include <grub/net/efi.h>
 +#include <grub/charset.h>
++#include <grub/safemath.h>
 +
 +char *
 +grub_efi_hw_address_to_string (grub_efi_uint32_t hw_address_size, grub_efi_mac_address_t hw_address)
 +{
 +  char *hw_addr, *p;
-+  int sz, s;
++  int s;
 +  int i;
++  grub_size_t sz;
 +
-+  sz = (int)hw_address_size * (sizeof ("XX:") - 1) + 1;
++  if (grub_mul (hw_address_size, sizeof ("XX:") - 1, &sz) ||
++      grub_add (sz, 1, &sz))
++    return NULL;
 +
 +  hw_addr = grub_malloc (sz);
 +  if (!hw_addr)
@@ -1359,12 +1376,19 @@ Index: grub-2.04~rc1/grub-core/net/efi/ip4_config.c
 +  grub_efi_ip4_config2_interface_info_t *interface_info;
 +  char **ret;
 +  int i, id;
++  grub_size_t sz;
 +
 +  interface_info = efi_ip4_config_interface_info (dev->ip4_config);
 +  if (!interface_info)
 +    return NULL;
 +
-+  ret = grub_malloc (sizeof (*ret) * (interface_info->route_table_size + 1));
++  if (grub_add (interface_info->route_table_size, 1, &sz))
++    {
++      grub_free (interface_info);
++      return NULL;
++    }
++
++  ret = grub_calloc (sz, sizeof (*ret));
 +
 +  if (!ret)
 +    {
@@ -1527,16 +1551,17 @@ Index: grub-2.04~rc1/grub-core/net/efi/ip4_config.c
 +    .set_gateway = grub_efi_ip4_interface_set_gateway,
 +    .set_dns = grub_efi_ip4_interface_set_dns
 +  };
-Index: grub-2.04~rc1/grub-core/net/efi/ip6_config.c
+Index: grub-2.04/grub-core/net/efi/ip6_config.c
 ===================================================================
 --- /dev/null
-+++ grub-2.04~rc1/grub-core/net/efi/ip6_config.c
-@@ -0,0 +1,422 @@
++++ grub-2.04/grub-core/net/efi/ip6_config.c
+@@ -0,0 +1,430 @@
 +#include <grub/efi/api.h>
 +#include <grub/efi/efi.h>
 +#include <grub/misc.h>
 +#include <grub/net/efi.h>
 +#include <grub/charset.h>
++#include <grub/safemath.h>
 +
 +char *
 +grub_efi_ip6_address_to_string (grub_efi_pxe_ipv6_address_t *address)
@@ -1763,12 +1788,19 @@ Index: grub-2.04~rc1/grub-core/net/efi/ip6_config.c
 +  grub_efi_ip6_config_interface_info_t *interface_info;
 +  char **ret;
 +  int i, id;
++  grub_size_t sz;
 +
 +  interface_info = efi_ip6_config_interface_info (dev->ip6_config);
 +  if (!interface_info)
 +    return NULL;
 +
-+  ret = grub_malloc (sizeof (*ret) * (interface_info->route_count + 1));
++  if (grub_add (interface_info->route_count, 1, &sz))
++    {
++      grub_free (interface_info);
++      return NULL;
++    }
++
++  ret = grub_calloc (sz, sizeof (*ret));
 +
 +  if (!ret)
 +    {
@@ -1954,11 +1986,11 @@ Index: grub-2.04~rc1/grub-core/net/efi/ip6_config.c
 +    .set_gateway = grub_efi_ip6_interface_set_gateway,
 +    .set_dns = grub_efi_ip6_interface_set_dns
 +  };
-Index: grub-2.04~rc1/grub-core/net/efi/net.c
+Index: grub-2.04/grub-core/net/efi/net.c
 ===================================================================
 --- /dev/null
-+++ grub-2.04~rc1/grub-core/net/efi/net.c
-@@ -0,0 +1,1428 @@
++++ grub-2.04/grub-core/net/efi/net.c
+@@ -0,0 +1,1437 @@
 +#include <grub/net.h>
 +#include <grub/env.h>
 +#include <grub/mm.h>
@@ -1973,6 +2005,7 @@ Index: grub-2.04~rc1/grub-core/net/efi/net.c
 +#include <grub/efi/dhcp.h>
 +#include <grub/net/efi.h>
 +#include <grub/charset.h>
++#include <grub/safemath.h>
 +
 +GRUB_MOD_LICENSE ("GPLv3+");
 +
@@ -2198,7 +2231,15 @@ Index: grub-2.04~rc1/grub-core/net/efi/net.c
 +
 +      if (code == GRUB_NET_DHCP6_OPTION_BOOTFILE_URL)
 +	{
-+	  char *url = grub_malloc (len + 1);
++	  char *url;
++	  grub_size_t sz;
++
++	  if (grub_add (len, 1, &sz))
++	    return;
++
++	  url = grub_malloc (sz);
++	  if (!url)
++	    return;
 +
 +	  grub_memcpy (url, dhcp_opt->data, len);
 +	  url[len] = 0;
@@ -3387,10 +3428,10 @@ Index: grub-2.04~rc1/grub-core/net/efi/net.c
 +  grub_net_open = NULL;
 +  grub_fs_unregister (&grub_efi_netfs);
 +}
-Index: grub-2.04~rc1/grub-core/net/efi/pxe.c
+Index: grub-2.04/grub-core/net/efi/pxe.c
 ===================================================================
 --- /dev/null
-+++ grub-2.04~rc1/grub-core/net/efi/pxe.c
++++ grub-2.04/grub-core/net/efi/pxe.c
 @@ -0,0 +1,424 @@
 +
 +#include <grub/efi/api.h>
@@ -3816,10 +3857,10 @@ Index: grub-2.04~rc1/grub-core/net/efi/pxe.c
 +    .close = pxe_close
 +  };
 +
-Index: grub-2.04~rc1/grub-core/net/net.c
+Index: grub-2.04/grub-core/net/net.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/net/net.c
-+++ grub-2.04~rc1/grub-core/net/net.c
+--- grub-2.04.orig/grub-core/net/net.c
++++ grub-2.04/grub-core/net/net.c
 @@ -32,6 +32,9 @@
  #include <grub/loader.h>
  #include <grub/bufio.h>
@@ -3926,10 +3967,10 @@ Index: grub-2.04~rc1/grub-core/net/net.c
 +  init_mode = INIT_MODE_NONE;
 +#endif
  }
-Index: grub-2.04~rc1/include/grub/efi/api.h
+Index: grub-2.04/include/grub/efi/api.h
 ===================================================================
---- grub-2.04~rc1.orig/include/grub/efi/api.h
-+++ grub-2.04~rc1/include/grub/efi/api.h
+--- grub-2.04.orig/include/grub/efi/api.h
++++ grub-2.04/include/grub/efi/api.h
 @@ -588,6 +588,23 @@ typedef grub_uint16_t grub_efi_ipv6_addr
  typedef grub_uint8_t grub_efi_ip_address_t[8] __attribute__ ((aligned(4)));
  typedef grub_efi_uint64_t grub_efi_physical_address_t;
@@ -4177,10 +4218,10 @@ Index: grub-2.04~rc1/include/grub/efi/api.h
  #if (GRUB_TARGET_SIZEOF_VOID_P == 4) || defined (__ia64__) \
    || defined (__aarch64__) || defined (__MINGW64__) || defined (__CYGWIN__) \
    || defined(__riscv)
-Index: grub-2.04~rc1/include/grub/efi/dhcp.h
+Index: grub-2.04/include/grub/efi/dhcp.h
 ===================================================================
 --- /dev/null
-+++ grub-2.04~rc1/include/grub/efi/dhcp.h
++++ grub-2.04/include/grub/efi/dhcp.h
 @@ -0,0 +1,343 @@
 +#ifndef GRUB_EFI_DHCP_HEADER
 +#define GRUB_EFI_DHCP_HEADER	1
@@ -4525,10 +4566,10 @@ Index: grub-2.04~rc1/include/grub/efi/dhcp.h
 +};
 +
 +#endif /* ! GRUB_EFI_DHCP_HEADER */
-Index: grub-2.04~rc1/include/grub/efi/http.h
+Index: grub-2.04/include/grub/efi/http.h
 ===================================================================
 --- /dev/null
-+++ grub-2.04~rc1/include/grub/efi/http.h
++++ grub-2.04/include/grub/efi/http.h
 @@ -0,0 +1,215 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
@@ -4745,10 +4786,10 @@ Index: grub-2.04~rc1/include/grub/efi/http.h
 +typedef struct grub_efi_http grub_efi_http_t;
 +
 +#endif /* !GRUB_EFI_HTTP_HEADER */
-Index: grub-2.04~rc1/include/grub/net/efi.h
+Index: grub-2.04/include/grub/net/efi.h
 ===================================================================
 --- /dev/null
-+++ grub-2.04~rc1/include/grub/net/efi.h
++++ grub-2.04/include/grub/net/efi.h
 @@ -0,0 +1,144 @@
 +#ifndef GRUB_NET_EFI_HEADER
 +#define GRUB_NET_EFI_HEADER	1

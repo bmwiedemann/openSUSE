@@ -23,12 +23,15 @@ Summary:        Links for busybox applets
 License:        GPL-2.0-or-later
 Source:         busybox-links-rpmlintrc
 BuildRequires:  attr
+BuildRequires:  bc
 BuildRequires:  bind-utils
 BuildRequires:  busybox
 BuildRequires:  bzip2
 BuildRequires:  coreutils
 BuildRequires:  cpio
 BuildRequires:  diffutils
+BuildRequires:  dos2unix
+BuildRequires:  ed
 BuildRequires:  findutils
 BuildRequires:  gawk
 BuildRequires:  grep
@@ -38,30 +41,44 @@ BuildRequires:  iproute2
 BuildRequires:  iputils
 BuildRequires:  kbd
 BuildRequires:  kmod
+BuildRequires:  less
 BuildRequires:  man
 BuildRequires:  ncurses-utils
 BuildRequires:  net-tools
 BuildRequires:  net-tools-deprecated
+BuildRequires:  netcat-openbsd
 BuildRequires:  patch
 BuildRequires:  procps
 BuildRequires:  psmisc
 BuildRequires:  sed
 BuildRequires:  sendmail
 BuildRequires:  sharutils
+BuildRequires:  sysvinit-tools
 BuildRequires:  tar
+BuildRequires:  telnet
+BuildRequires:  tftp
+BuildRequires:  time
 BuildRequires:  traceroute
+BuildRequires:  tunctl
+BuildRequires:  unzip
 BuildRequires:  util-linux
+BuildRequires:  vim
+BuildRequires:  vlan
+BuildRequires:  wget
 BuildRequires:  which
+BuildRequires:  whois
 BuildRequires:  xz
 Requires:       busybox = %{version}
 Requires:       busybox-adduser = %{version}
-Requires:       busybox-ash = %{version}
 Requires:       busybox-attr = %{version}
+Requires:       busybox-bc = %{version}
 Requires:       busybox-bind-utils = %{version}
 Requires:       busybox-bzip2 = %{version}
 Requires:       busybox-coreutils = %{version}
 Requires:       busybox-cpio = %{version}
 Requires:       busybox-diffutils = %{version}
+Requires:       busybox-dos2unix = %{version}
+Requires:       busybox-ed = %{version}
 Requires:       busybox-findutils = %{version}
 Requires:       busybox-gawk = %{version}
 Requires:       busybox-grep = %{version}
@@ -70,10 +87,12 @@ Requires:       busybox-hostname = %{version}
 Requires:       busybox-iproute2 = %{version}
 Requires:       busybox-iputils = %{version}
 Requires:       busybox-kbd = %{version}
+Requires:       busybox-less = %{version}
 Requires:       busybox-man = %{version}
 Requires:       busybox-misc = %{version}
 Requires:       busybox-ncurses-utils = %{version}
 Requires:       busybox-net-tools = %{version}
+Requires:       busybox-netcat = %{version}
 Requires:       busybox-patch = %{version}
 Requires:       busybox-procps = %{version}
 Requires:       busybox-psmisc = %{version}
@@ -81,10 +100,21 @@ Requires:       busybox-sed = %{version}
 Requires:       busybox-sendmail = %{version}
 Requires:       busybox-sh = %{version}
 Requires:       busybox-sharutils = %{version}
+Requires:       busybox-syslogd = %{version}
+Requires:       busybox-sysvinit-tools = %{version}
 Requires:       busybox-tar = %{version}
+Requires:       busybox-telnet = %{version}
+Requires:       busybox-tftp = %{version}
+Requires:       busybox-time = %{version}
 Requires:       busybox-traceroute = %{version}
+Requires:       busybox-tunctl = %{version}
+Requires:       busybox-unzip = %{version}
 Requires:       busybox-util-linux = %{version}
+Requires:       busybox-vi = %{version}
+Requires:       busybox-vlan = %{version}
+Requires:       busybox-wget = %{version}
 Requires:       busybox-which = %{version}
+Requires:       busybox-whois = %{version}
 Requires:       busybox-xz = %{version}
 BuildArch:      noarch
 
@@ -94,29 +124,14 @@ This is a meta package requireing all packages providing busybox applets.
 %package -n busybox-misc
 Summary:        Busybox applets not fitting anywhere else
 Requires:       busybox = %{version}
-Conflicts:      bc
 Conflicts:      binutils
 Conflicts:      blog
-Conflicts:      dos2unix
 Conflicts:      dosfstools
 Conflicts:      e2fsprogs
-Conflicts:      ed
-Conflicts:      less
 Conflicts:      lsof
 Conflicts:      lsscsi
 Conflicts:      nbd
-Conflicts:      netcat-openbsd
-Conflicts:      sysvinit-tools
-Conflicts:      telnet
-Conflicts:      tftp
-Conflicts:      time
-Conflicts:      tunctl
-Conflicts:      unzip
 Conflicts:      usbutils
-Conflicts:      util-linux-systemd
-Conflicts:      vim
-Conflicts:      vlan
-Conflicts:      wget
 Conflicts:      xterm-bin
 
 %description -n busybox-misc
@@ -131,22 +146,16 @@ Conflicts:      attr
 %description -n busybox-attr
 This package contains the symlinks to replace attr with busybox.
 
-%package -n busybox-ash
-Summary:        Busybox ash
-Requires:       busybox = %{version}
-
-%description -n busybox-ash
-This package contains the busybox ash
-
 %package -n busybox-sh
-Summary:        Busybox sh
+Summary:        Busybox sh, ash and hush
 Requires:       busybox = %{version}
+Obsoletes:      busybox-ash < %{version}
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
 
 %description -n busybox-sh
-This package contains the busybox sh.
+This package contains the busybox sh, ash and hush.
 
 %package -n busybox-bind-utils
 Summary:        Busybox applets replacing bind-utils
@@ -184,6 +193,7 @@ This package contains the symlinks to replace findutils with busybox.
 Summary:        Busybox applets replacing util-linux
 Requires:       busybox = %{version}
 Conflicts:      util-linux
+Conflicts:      util-linux-systemd
 
 %description -n busybox-util-linux
 This package contains the symlinks to replace util-linux with busybox.
@@ -200,6 +210,7 @@ This package contains the symlinks to replace iputils with busybox.
 Summary:        Busybox applets replacing iproute2
 Requires:       busybox = %{version}
 Conflicts:      iproute2
+Conflicts:      wicked-service
 
 %description -n busybox-iproute2
 This package contains the symlinks to replace iproute2 with busybox.
@@ -301,6 +312,14 @@ Conflicts:      kbd
 %description -n busybox-kbd
 This package contains the symlinks to replace kbd with busybox.
 
+%package -n busybox-less
+Summary:        Busybox applets replacing less
+Requires:       busybox = %{version}
+Conflicts:      less
+
+%description -n busybox-less
+This package contains the symlinks to replace less with busybox.
+
 %package -n busybox-sharutils
 Summary:        Busybox applets replacing sharutils
 Requires:       busybox = %{version}
@@ -308,6 +327,14 @@ Conflicts:      sharutils
 
 %description -n busybox-sharutils
 This package contains the symlinks to replace sharutils with busybox.
+
+%package -n busybox-syslogd
+Summary:        Busybox applets providing syslogd
+Requires:       busybox = %{version}
+Conflicts:      syslogd
+
+%description -n busybox-syslogd
+This package contains the symlinks to provide syslogd with busybox.
 
 %package -n busybox-hostname
 Summary:        Busybox applets replacing hostname
@@ -370,6 +397,7 @@ This package contains the symlinks to replace tar with busybox.
 %package -n busybox-sendmail
 Summary:        Busybox applets replacing sendmail
 Requires:       busybox = %{version}
+Provides:       smtp_daemon
 Conflicts:      sendmail
 Conflicts:      postfix
 Conflicts:      exim
@@ -387,6 +415,117 @@ Conflicts:      shadow
 This package contains the symlinks for adduser and some tools from the
 shadow suite.
 
+%package -n busybox-whois
+Summary:        Busybox applets replacing whois
+Requires:       busybox = %{version}
+Conflicts:      whois
+
+%description -n busybox-whois
+This package contains the symlinks to replace whois with busybox.
+
+%package -n busybox-unzip
+Summary:        Busybox applets replacing unzip
+Requires:       busybox = %{version}
+Conflicts:      unzip
+
+%description -n busybox-unzip
+This package contains the symlinks to replace unzip with busybox.
+
+%package -n busybox-wget
+Summary:        Busybox applets replacing wget
+Requires:       busybox = %{version}
+Conflicts:      wget
+
+%description -n busybox-wget
+This package contains the symlinks to replace wget with busybox.
+
+%package -n busybox-vi
+Summary:        Busybox applets replacing vim
+Requires:       busybox = %{version}
+Conflicts:      vim
+
+%description -n busybox-vi
+This package contains the symlinks to provide vi with busybox.
+
+%package -n busybox-ed
+Summary:        Busybox applets replacing ed
+Requires:       busybox = %{version}
+Conflicts:      ed
+
+%description -n busybox-ed
+This package contains the symlinks to provide ed with busybox.
+
+%package -n busybox-bc
+Summary:        Busybox applets replacing bc
+Requires:       busybox = %{version}
+Conflicts:      bc
+
+%description -n busybox-bc
+This package contains the symlinks to provide bc with busybox.
+
+%package -n busybox-netcat
+Summary:        Busybox applets replacing netcat
+Requires:       busybox = %{version}
+Conflicts:      netcat-openbsd
+
+%description -n busybox-netcat
+This package contains the symlinks to provide nc with busybox.
+
+%package -n busybox-dos2unix
+Summary:        Busybox applets replacing dos2unix
+Requires:       busybox = %{version}
+Conflicts:      dos2unix
+
+%description -n busybox-dos2unix
+This package contains the symlinks to provide dos2unix with busybox.
+
+%package -n busybox-telnet
+Summary:        Busybox applets replacing telnet
+Requires:       busybox = %{version}
+Conflicts:      telnet
+
+%description -n busybox-telnet
+This package contains the symlinks to provide telnet with busybox.
+
+%package -n busybox-tftp
+Summary:        Busybox applets replacing tftp
+Requires:       busybox = %{version}
+Conflicts:      tftp
+
+%description -n busybox-tftp
+This package contains the symlinks to provide tftp with busybox.
+
+%package -n busybox-time
+Summary:        Busybox applets replacing time
+Requires:       busybox = %{version}
+Conflicts:      time
+
+%description -n busybox-time
+This package contains the symlinks to provide time with busybox.
+
+%package -n busybox-tunctl
+Summary:        Busybox applets replacing tunctl
+Requires:       busybox = %{version}
+Conflicts:      tunctl
+
+%description -n busybox-tunctl
+This package contains the symlinks to provide tunctl with busybox.
+
+%package -n busybox-vlan
+Summary:        Busybox applets replacing vlan
+Requires:       busybox = %{version}
+Conflicts:      vlan
+
+%description -n busybox-vlan
+This package contains the symlinks to provide vlan with busybox.
+
+%package -n busybox-sysvinit-tools
+Summary:        Busybox applets replacing sysvinit-tools
+Requires:       busybox = %{version}
+Conflicts:      sysvinit-tools
+
+%description -n busybox-sysvinit-tools
+This package contains the symlinks to provide sysvinit-tools with busybox.
 
 %prep
 %setup -q -c -T
@@ -402,7 +541,7 @@ rm apps/rpm apps/rpm2cpio
 rm -f apps/linuxrc
 # Does not really fit
 rm apps/[[
-for package in coreutils diffutils findutils grep util-linux iputils iproute2 gzip sed cpio procps xz bzip2 psmisc kbd sharutils hostname net-tools net-tools-deprecated traceroute ncurses-utils kmod tar gawk patch attr which bind-utils man sendmail shadow; do
+for package in coreutils diffutils findutils grep util-linux util-linux-systemd iputils iproute2 gzip sed cpio procps xz bzip2 psmisc kbd sharutils hostname net-tools net-tools-deprecated traceroute ncurses-utils kmod tar gawk patch attr which bind-utils man sendmail shadow less whois unzip vim wget ed bc netcat-openbsd dos2unix telnet tftp time tunctl vlan sysvinit-tools; do
     for i in `rpm -ql $package |grep "bin/"` ; do
 	prog=`basename $i`
 	if [ -f apps/$prog ]; then
@@ -417,15 +556,24 @@ done
 cat filelist-net-tools-deprecated.txt >> filelist-net-tools.txt
 rm filelist-net-tools-deprecated.txt
 # Create some extra sub-packages
-echo -e "%{_bindir}/ash" > filelist-ash.txt
+echo -e "%{_bindir}/ash" > filelist-sh.txt
 touch used/ash
-echo -e "/usr/bin/sh\n/bin/sh" > filelist-sh.txt
+echo -e "%{_bindir}/hush" >> filelist-sh.txt
+touch used/hush
+echo -e "/bin/sh\n%{_bindir}/sh" >> filelist-sh.txt
 touch used/sh
-echo -e "/sbin/loadkmap\n/usr/sbin/loadfont" >> filelist-kbd.txt
+echo -e "/sbin/loadkmap\n%{_sbindir}/loadfont" >> filelist-kbd.txt
 touch used/loadkmap used/loadfont
 
 echo -e "/usr/sbin/addgroup\n/usr/sbin/adduser\n/usr/sbin/delgroup\n/usr/sbin/deluser" >> filelist-shadow.txt
 touch used/addgroup used/adduser used/delgroup used/deluser
+
+echo -e "/usr/sbin/syslogd" > filelist-syslogd.txt
+touch used/syslogd
+
+# Some iproute2 commands are named sligthly different
+echo -e "/usr/sbin/ifdown\n/usr/sbin/ifenslave\n/usr/sbin/ifup\n/usr/sbin/ipaddr\n/usr/sbin/iplink\n/usr/sbin/ipneigh\n/usr/sbin/iproute\n/usr/sbin/iprule\n/usr/sbin/brctl" >> filelist-iproute2.txt
+touch used/ifdown used/ifenslave used/ifup used/ipaddr used/iplink used/ipneigh used/iproute used/iprule used/brctl
 
 for i in `/bin/ls used/` ; do
     rm apps/$i
@@ -455,11 +603,11 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -sf %{_sysconfdir}/alternatives/sh %{buildroot}%{_bindir}/sh
 ln -sf %{_bindir}/sh   %{buildroot}/bin/sh
 
-%post -n busybox-ash -p /usr/bin/ash
+%post -n busybox-sh -p /usr/bin/ash
 %{_sbindir}/update-alternatives --quiet --force \
         --install %{_bindir}/sh sh %{_bindir}/busybox 10000
 
-%preun -n busybox-ash -p /usr/bin/ash
+%preun -n busybox-sh -p /usr/bin/ash
 if test "$1" = 0; then
         %{_sbindir}/update-alternatives --quiet --remove sh %{_bindir}/busybox
 fi
@@ -467,13 +615,15 @@ fi
 %files
 
 %files -n busybox-adduser -f filelist-shadow.txt
-%files -n busybox-ash -f filelist-ash.txt
 %files -n busybox-attr -f filelist-attr.txt
+%files -n busybox-bc -f filelist-bc.txt
 %files -n busybox-bind-utils -f filelist-bind-utils.txt
 %files -n busybox-bzip2 -f filelist-bzip2.txt
 %files -n busybox-coreutils -f filelist-coreutils.txt
 %files -n busybox-cpio -f filelist-cpio.txt
 %files -n busybox-diffutils -f filelist-diffutils.txt
+%files -n busybox-dos2unix -f filelist-dos2unix.txt
+%files -n busybox-ed -f filelist-ed.txt
 %files -n busybox-findutils -f filelist-findutils.txt
 %files -n busybox-gawk -f filelist-gawk.txt
 %files -n busybox-grep -f filelist-grep.txt
@@ -483,23 +633,36 @@ fi
 %files -n busybox-iputils -f filelist-iputils.txt
 %files -n busybox-kbd -f filelist-kbd.txt
 %files -n busybox-kmod -f filelist-kmod.txt
+%files -n busybox-less -f filelist-less.txt
 %files -n busybox-man -f filelist-man.txt
 %files -n busybox-misc -f filelist-misc.txt
 %files -n busybox-ncurses-utils -f filelist-ncurses-utils.txt
 %files -n busybox-net-tools -f filelist-net-tools.txt
+%files -n busybox-netcat -f filelist-netcat-openbsd.txt
 %files -n busybox-patch -f filelist-patch.txt
 %files -n busybox-procps -f filelist-procps.txt
 %files -n busybox-psmisc -f filelist-psmisc.txt
 %files -n busybox-sed -f filelist-sed.txt
 %files -n busybox-sendmail -f filelist-sendmail.txt
+%files -n busybox-sharutils -f filelist-sharutils.txt
+%files -n busybox-syslogd -f filelist-syslogd.txt
+%files -n busybox-sysvinit-tools -f filelist-sysvinit-tools.txt
+%files -n busybox-tar -f filelist-tar.txt
+%files -n busybox-telnet -f filelist-telnet.txt
+%files -n busybox-tftp -f filelist-tftp.txt
+%files -n busybox-time -f filelist-time.txt
+%files -n busybox-traceroute -f filelist-traceroute.txt
+%files -n busybox-tunctl -f filelist-tunctl.txt
+%files -n busybox-unzip -f filelist-unzip.txt
+%files -n busybox-util-linux -f filelist-util-linux.txt -f filelist-util-linux-systemd.txt
+%files -n busybox-vi -f filelist-vim.txt
+%files -n busybox-vlan -f filelist-vlan.txt
+%files -n busybox-wget -f filelist-wget.txt
+%files -n busybox-which -f filelist-which.txt
+%files -n busybox-whois -f filelist-whois.txt
+%files -n busybox-xz -f filelist-xz.txt
+
 %files -n busybox-sh -f filelist-sh.txt
 %ghost %config %{_sysconfdir}/alternatives/sh
-
-%files -n busybox-sharutils -f filelist-sharutils.txt
-%files -n busybox-tar -f filelist-tar.txt
-%files -n busybox-traceroute -f filelist-traceroute.txt
-%files -n busybox-util-linux -f filelist-util-linux.txt
-%files -n busybox-which -f filelist-which.txt
-%files -n busybox-xz -f filelist-xz.txt
 
 %changelog

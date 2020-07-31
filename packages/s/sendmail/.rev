@@ -866,4 +866,41 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
 - Spec file cleanups (forwarded request 816723 from gmbr3)</comment>
     <requestid>816802</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>66464e14f89058dd27577bbb4a99ce7d</srcmd5>
+    <version>8.16.1</version>
+    <time>1596203578</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix same strange permissions below /usr/share/sendmail 
+
+- Update to sendmail 8.16.1 2020/07/05 (boo#1174572)
+   SECURITY: If sendmail tried to reuse an SMTP session which had
+           already been closed by the server, then the connection
+           cache could have invalid information about the session.
+           One possible consequence was that STARTTLS was not
+           used even if offered.  This problem has been fixed
+           by clearing out all relevant status information
+           when a closed session is encountered.
+   OpenSSL versions before 0.9.8 are no longer supported.
+   OpenSSL version 1.1.0 and 1.1.1 are supported.
+   Initial support for DANE (see RFC 7672 et.al.) is available if
+           the compile time option DANE is set.  Only TLSA RR 3-1-x
+           is currently implemented.
+   New options SSLEngine and SSLEnginePath to support OpenSSL engines.
+           Note: this feature has so far only been tested with the
+           &quot;chil&quot; engine; please report problems with other engines
+           if you encounter any.
+   New option CRLPath to specify a directory which contains
+           hashes pointing to certificate revocations files.
+           Based on patch from Al Smith.
+   New rulesets tls_srv_features and tls_clt_features which
+           can return a (semicolon separated) list of TLS related
+           options, e.g., CipherList, CertFile, KeyFile,
+           see doc/op/op.me for details.
+   To automatically handle TLS interoperability problems for outgoing
+           mail, sendmail can now immediately try a connection again
+           without STARTTLS after a TLS handshake failure.
+           This can be configured globally via the option</comment>
+    <requestid>823136</requestid>
+  </revision>
 </revisionlist>

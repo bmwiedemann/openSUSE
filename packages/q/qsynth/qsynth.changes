@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 31 10:57:55 UTC 2020 - aloisio@gmx.com
+
+- Update to version 0.6.3
+  * Left-clicking on the system-tray icon now simply
+    toggles the main widget visibility, disregarding
+    if already hidden undercover to other windows.
+  * Early fixing to build for Qt >= 5.15.0.
+
+-------------------------------------------------------------------
 Tue Mar 24 21:52:09 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.6.2

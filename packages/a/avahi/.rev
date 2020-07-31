@@ -991,4 +991,17 @@
   pull in the python3 package (forwarded request 792425 from scarabeus_iv)</comment>
     <requestid>794349</requestid>
   </revision>
+  <revision rev="133" vrev="14">
+    <srcmd5>80e83f259173409914a4284709fcd672</srcmd5>
+    <version>0.7</version>
+    <time>1596203637</time>
+    <user>dimstar_suse</user>
+    <comment>- Call xargs -r0 instead of just xargs -r: guard against file names
+  with whitespaces.
+
+- When changing ownership of /var/lib/autoipd, only change
+  ownership of files owned by avahi, to mitigate against
+  possible exploits (bsc#1154063).</comment>
+    <requestid>823552</requestid>
+  </revision>
 </revisionlist>

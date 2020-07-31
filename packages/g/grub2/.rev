@@ -1960,4 +1960,12 @@ pretty much the same. The main user visible changes are
     <comment></comment>
     <requestid>822680</requestid>
   </revision>
+  <revision rev="223" vrev="13">
+    <srcmd5>617f38f456eedb1ab7c7c7d30cb04f8e</srcmd5>
+    <version>2.04</version>
+    <time>1596203661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823470</requestid>
+  </revision>
 </revisionlist>

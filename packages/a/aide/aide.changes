@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jul 30 20:13:39 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 0.16.2
+  Bug fixes:
+  * Fix handling of directory-restricted negative rules
+  * Don't lock '/dev/null' when used as output database
+  * Fix parsing of rules containing '?' quantifier
+  * Fix extended attributes support (xattrs)
+  * Fix processing of go files
+  Please note:
+  * The addition of the "trusted.*", "user.*" and the "security.*"
+	namespaces to the xattrs attribute might lead to a vast amount of
+	reported changed entries during your next AIDE run. You can use the
+	`report_ignore_changed_attrs` option (see aide.conf(5)) to ignore
+	changes of the xattrs attribute; but be aware that this will exclude
+	the expected but also the unexpected (potentially malicious) changes.
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Thu Jul 11 13:03:25 UTC 2019 -  <abergmann@suse.com>
 
 - Remove not available gcrypt algorithm 7 DB_HAVAL (bsc#1098360).

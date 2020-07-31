@@ -645,7 +645,7 @@ getent passwd avahi-autoipd >/dev/null || \
 %post autoipd
 %{fillup_only -ns avahi autoipd}
 # Change ownership of /var/lib/avahi-autoipd after upgrade from openSUSE <= 12.3 and SLE <= 11.
-chown -R avahi-autoipd:avahi-autoipd %{_localstatedir}/lib/avahi-autoipd
+find %{_localstatedir}/lib/avahi-autoipd -user avahi |xargs -r0 chown avahi-autoipd:avahi-autoipd
 
 %post -n libavahi-client3 -p /sbin/ldconfig
 %postun -n libavahi-client3 -p /sbin/ldconfig

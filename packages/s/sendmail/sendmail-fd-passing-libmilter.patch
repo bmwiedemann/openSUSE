@@ -1,10 +1,12 @@
-Description: systemd-like socket activation support for libmilter
-Author: Mikhail Gusarov <dottedmag@debian.org
+---
+ libmilter/docs/smfi_setconn.html |    1 +
+ libmilter/listener.c             |   27 ++++++++++++++++++++++++---
+ 2 files changed, 25 insertions(+), 3 deletions(-)
 
-diff --git a/sendmail-8.15.2/libmilter/docs/smfi_setconn.html b/sendmail-8.15.2/libmilter/docs/smfi_setconn.html
+diff --git a/libmilter/docs/smfi_setconn.html b/libmilter/docs/smfi_setconn.html
 --- a/libmilter/docs/smfi_setconn.html
 +++ b/libmilter/docs/smfi_setconn.html
-@@ -43,6 +43,7 @@ Set the socket through which this filter
+@@ -44,6 +44,7 @@ Set the socket through which this filter
  	<LI><CODE>{unix|local}:/path/to/file</CODE> -- A named pipe.
  	<LI><CODE>inet:port@{hostname|ip-address}</CODE> -- An IPV4 socket.
  	<LI><CODE>inet6:port@{hostname|ip-address}</CODE> -- An IPV6 socket.
@@ -12,7 +14,7 @@ diff --git a/sendmail-8.15.2/libmilter/docs/smfi_setconn.html b/sendmail-8.15.2/
  	</UL>
  	</TD></TR>
      </TABLE>
-diff --git a/sendmail-8.15.2/libmilter/listener.c b/sendmail-8.15.2/libmilter/listener.c
+diff --git a/libmilter/listener.c b/libmilter/listener.c
 --- a/libmilter/listener.c
 +++ b/libmilter/listener.c
 @@ -197,6 +197,11 @@ mi_milteropen(conn, backlog, rmsocket, n
@@ -53,7 +55,7 @@ diff --git a/sendmail-8.15.2/libmilter/listener.c b/sendmail-8.15.2/libmilter/li
 @@ -466,6 +485,7 @@ mi_milteropen(conn, backlog, rmsocket, n
  #if NETUNIX
  	    addr.sa.sa_family != AF_UNIX &&
- #endif /* NETUNIX */
+ #endif
 +	    addr.sa.sa_family != AF_UNSPEC &&
  	    setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, (void *) &sockopt,
  		       sizeof(sockopt)) == -1)
@@ -71,7 +73,7 @@ diff --git a/sendmail-8.15.2/libmilter/listener.c b/sendmail-8.15.2/libmilter/li
 @@ -818,7 +839,7 @@ mi_listener(conn, dbg, smfi, timeout, ba
  # ifdef BSD4_4_SOCKADDR
  		     cliaddr.sa.sa_len == 0 ||
- # endif /* BSD4_4_SOCKADDR */
+ # endif
 -		     cliaddr.sa.sa_family != L_family))
 +		     (L_family != AF_UNSPEC && cliaddr.sa.sa_family != L_family)))
  		{

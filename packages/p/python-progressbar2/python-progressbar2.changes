@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 30 11:06:51 UTC 2020 - Duncan Mac-Vicar <dmacvicar@suse.com>
+
+- Remove unnecessary python_module devel BuildRequires
+- Restore conflicts with python-progressbar
+- Restore BuildArch noarch
+
+-------------------------------------------------------------------
+Sat Jul 25 09:43:04 UTC 2020 - Duncan Mac-Vicar <dmacvicar@suse.com>
+
+- Update to v3.51.4
+- Fix build (pytest)
+
+-------------------------------------------------------------------
 Wed May  6 12:29:51 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v3.51.3

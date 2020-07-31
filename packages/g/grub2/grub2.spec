@@ -302,6 +302,24 @@ Patch700:       0001-normal-Move-common-datetime-functions-out-of-the-nor.patch
 Patch701:       0002-kern-Add-X-option-to-printf-functions.patch
 Patch702:       0003-normal-main-Search-for-specific-config-files-for-net.patch
 Patch703:       0004-datetime-Enable-the-datetime-module-for-the-emu-plat.patch
+# bsc#1168994 VUL-0: EMBARGOED: CVE-2020-10713: grub2: parsing overflows can
+# bypass secure boot restrictions
+Patch704:       0001-yylex-Make-lexer-fatal-errors-actually-be-fatal.patch
+# bsc#1173812 VUL-0: EMBARGOED: CVE-2020-14308, CVE-2020-14309, CVE-2020-14310,
+# CVE-2020-14311: grub2: avoid integer overflows
+Patch705:       0002-safemath-Add-some-arithmetic-primitives-that-check-f.patch
+Patch706:       0003-calloc-Make-sure-we-always-have-an-overflow-checking.patch
+Patch707:       0004-calloc-Use-calloc-at-most-places.patch
+Patch708:       0005-malloc-Use-overflow-checking-primitives-where-we-do-.patch
+Patch709:       0006-iso9660-Don-t-leak-memory-on-realloc-failures.patch
+Patch710:       0007-font-Do-not-load-more-than-one-NAME-section.patch
+# bsc#1174463 VUL-0: EMBARGOED: CVE-2020-15706: grub2: script: Avoid a
+# use-after-free when redefining a function during execution
+Patch711:       0008-script-Remove-unused-fields-from-grub_script_functio.patch
+Patch712:       0009-script-Avoid-a-use-after-free-when-redefining-a-func.patch
+# bsc#1174570 VUL-0: EMBARGOED: CVE-2020-15707: grub2: linux: Fix integer
+# overflows in initrd size handling
+Patch713:       0010-linux-Fix-integer-overflows-in-initrd-size-handling.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -607,6 +625,16 @@ swap partition while in resuming
 %patch701 -p1
 %patch702 -p1
 %patch703 -p1
+%patch704 -p1
+%patch705 -p1
+%patch706 -p1
+%patch707 -p1
+%patch708 -p1
+%patch709 -p1
+%patch710 -p1
+%patch711 -p1
+%patch712 -p1
+%patch713 -p1
 
 %build
 # collect evidence to debug spurious build failure on SLE15

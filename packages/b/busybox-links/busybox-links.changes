@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jul 28 12:28:36 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- busybox-syslogd: add conflict with syslogd
+- busybox-iproute2: add conflict with wicked-service for ifup
+- busybox-sh: remove bogus %ghost entry
+
+-------------------------------------------------------------------
+Fri Jul 24 08:46:53 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Create busybox-{dos2unix,telnet,tftp,time,tunctl,vlan,sysvinit-tools}
+
+-------------------------------------------------------------------
+Thu Jul 23 12:36:22 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Create busybox-ed, busybox-bc and busybox-netcat
+- Fix filelist of busybox-iproute2
+
+-------------------------------------------------------------------
+Wed Jul 22 09:49:56 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Create busybox-less, busybox-unzip, busybox-whois, busybox-wget,
+  busybox-syslogd and busybox-vi
+- Merge all shells into busybox-sh (to fix update-alternative for sh)
+
+-------------------------------------------------------------------
+Tue Jul 14 16:05:43 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add provides smtp_daemon to busybox-sendmail 
+
+-------------------------------------------------------------------
 Thu Jun 11 09:48:18 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Create own busybox-adduser sub-package

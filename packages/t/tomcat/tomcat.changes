@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 29 20:48:14 UTC 2020 - Matei Albu <malbu@suse.com>
+
+- Don't give write permissions for the tomcat group on files and
+  directories where it's not needed (bsc#1172562)
+- Change tomcat.pid location from /var/run to /run (bsc#1173103)
+- Use the /sbin/nologin shell when creating the tomcat user
+- Use %tmpfiles_create macro in %post instead of calling
+  systemd-tmpfiles directly
+
+-------------------------------------------------------------------
 Fri Jun 26 08:03:01 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to Tomcat 9.0.36. See changelog at

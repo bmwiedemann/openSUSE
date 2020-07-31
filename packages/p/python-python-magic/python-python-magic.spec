@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-magic
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 Name:           python-python-magic
-Version:        0.4.15
+Version:        0.4.18
 Release:        0
 Summary:        File type identification using libmagic
 License:        Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/ahupp/python-magic
 Source:         https://github.com/ahupp/python-magic/archive/%{version}.tar.gz
-Patch0:         magic-new-mime.patch
-Patch1:         magic-pep8.patch
-Patch2:         magic-tests.patch
-Patch3:         magic-new-file.patch
+#PATCH-FIX-OPENSUSE fix-test.patch -- adapt file outputs to opensuse
+Patch0:         fix-test.patch
+Patch1:         fix-test-tumbleweed.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  file
@@ -47,12 +46,18 @@ Conflicts:      %{oldpython}-magic
 
 %description
 This module uses ctypes to access the libmagic file type
-identification library.  It makes use of the local magic database and
+identification library. It makes use of the local magic database and
 supports both textual and MIME-type output.
 
 %prep
 %setup -q -n python-magic-%{version}
-%autopatch -p1
+%if 0%{?suse_version} > 1500
+# Tumbleweed
+%patch1 -p1
+%elif 0%{?sle_version} < 150300 && 0%{?is_opensuse}
+# Leap 15.2 and older
+%patch0 -p1
+%endif
 
 %build
 %python_build
@@ -62,11 +67,12 @@ supports both textual and MIME-type output.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export LANG=en_US.UTF-8
-%python_exec setup.py test
+export LC_ALL=en_US.UTF-8
+%python_expand PYTHONPATH=. $python test/test.py
 
 %files %{python_files}
 %license LICENSE
+%doc README.md
 %{python_sitelib}/magic.py*
 %pycache_only %{python_sitelib}/__pycache__/magic*.py*
 %{python_sitelib}/python_magic-%{version}-py*.egg-info

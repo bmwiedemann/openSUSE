@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 10 12:41:49 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
+
+- Update ekiga-missing-includes.patch to include ostream to another
+  file.
+
+-------------------------------------------------------------------
 Tue Apr  2 16:41:44 CEST 2019 - ro@suse.de
 
 - get rid of boost:signal dependency

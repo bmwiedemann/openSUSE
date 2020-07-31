@@ -26,7 +26,7 @@
 %define libname libhandle1
 
 Name:           xfsprogs
-Version:        5.6.0
+Version:        5.7.0
 Release:        0
 Summary:        Utilities for managing the XFS file system
 License:        GPL-2.0-or-later
@@ -44,7 +44,7 @@ BuildRequires:  automake
 BuildRequires:  libblkid-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  pkgconfig
-BuildRequires:  readline-devel
+BuildRequires:  libedit-devel 
 BuildRequires:  xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post): coreutils
@@ -122,7 +122,7 @@ export DEBUG=-DNDEBUG
 export LIBUUID=%{_libdir}/libuuid.a
 
 %configure \
-    --enable-readline=yes \
+    --enable-editline=yes \
 %if %{with systemd}
     --with-systemd-unit-dir=%{_unitdir} \
 %endif

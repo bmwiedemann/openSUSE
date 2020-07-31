@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 31 06:33:48 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.0.9:
+  * TSAN fixes
+  * Pass errno correctly from ::read
+
+-------------------------------------------------------------------
 Thu Jul 30 06:30:25 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 6.0.8:

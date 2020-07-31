@@ -5,11 +5,11 @@
     <param name="package-meta">no</param>
     <param name="exclude">.git</param>
     <param name="filename">libpsm2</param>
-    <param name="version">11.2.166</param>
+    <param name="version">11.2.185</param>
     <param name="versionrewrite-pattern">PSM2_(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="match-tag">PSM2_*</param>
-    <param name="revision">6d5af3c8766ae8e86f96ba7d04d5941966a5630c</param>
+    <param name="revision">7a33bedc4bb3dff4e57c00293a2d70890db4d983</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">libpsm2*.tar</param>

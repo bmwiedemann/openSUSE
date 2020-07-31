@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul 30 05:31:23 UTC 2020 - munix9@googlemail.com
+
+- Update to version 20200613
+  * Indentation cleanup
+  * Removed duplicate entry for Qualcomm (05c6)
+  * Adds support for Huawei P10 Lite to udev rules
+  * Disable ADVANCE rules: needs specific product rules
+  * Add Spectralink
+
+- Update to version 20200410
+  * Cleanup of entries without an action
+  * Revert "Uncommented Dell idVendor line"
+  * Add Sonim as vendor
+  * Essential Phone PH-1 is also known as `2e17:c032`
+
+-------------------------------------------------------------------
 Tue Jul 28 09:09:09 UTC 2020 - olaf@aepfle.de
 
 - This package replaces android-tools-udev version 5
@@ -7,5 +23,5 @@ Tue Jul 28 09:09:09 UTC 2020 - olaf@aepfle.de
 -------------------------------------------------------------------
 Fri Nov  8 15:43:09 UTC 2019 - munix9@googlemail.com
 
-- initial package for version 20191103
+- Initial package for version 20191103
 

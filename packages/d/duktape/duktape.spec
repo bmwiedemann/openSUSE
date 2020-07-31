@@ -1,7 +1,7 @@
 #
 # spec file for package duktape
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define sover 201
 Name:           duktape
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Embeddable Javascript engine
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://duktape.org/
-Source0:        http://duktape.org/%{name}-%{version}.tar.xz
+URL:            https://duktape.org/
+Source0:        https://duktape.org/%{name}-%{version}.tar.xz
 Source1:        duktape.pc.in
 BuildRequires:  gcc
 BuildRequires:  pkgconfig
@@ -68,7 +68,7 @@ sed -e '/^INSTALL_PREFIX/s|[^=]*$|%{_prefix}|' \
     -e 's/\(\$.INSTALL_PREFIX.\)/$(DESTDIR)\1/' \
     -e 's/\/lib\b/\/%{_lib}/g' \
      < Makefile.sharedlibrary > Makefile
-make -j1
+%make_build -j1
 
 %install
 %make_install
@@ -79,13 +79,12 @@ install -Dm0644 %{name}.pc.in %{buildroot}%{_libdir}/pkgconfig/%{name}.pc
 %postun -n lib%{name}%{sover} -p /sbin/ldconfig
 
 %files -n lib%{name}%{sover}
-%defattr(-,root,root)
-%doc AUTHORS.rst LICENSE.txt
+%doc AUTHORS.rst
+%license LICENSE.txt
 %{_libdir}/libduktape.so.*
 %{_libdir}/libduktaped.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/duk_config.h
 %{_includedir}/duktape.h
 %{_libdir}/libduktape.so

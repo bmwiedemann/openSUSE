@@ -37,6 +37,8 @@ Patch1:         nrrdio-linking.patch
 Patch3:         itklbfgs-linking.patch
 # PATCH-FIX-UPSTREAM insighttoolkit-drop-netlib-triangle-files.patch [gh#InsightSoftwareConsortium/ITK#1913] badshah400@gmail.com -- Drop netlib triangle files and any linking to them due to licensing issues; patch from upstream
 Patch4:         insighttoolkit-drop-netlib-triangle-files.patch
+# PATCH-FIX-OPENSUSE reproducible.patch boo#1100677 gh#InsightSoftwareConsortium/ITK#1939
+Patch100:       reproducible.patch
 BuildRequires:  CastXML-devel
 BuildRequires:  bison
 BuildRequires:  cmake

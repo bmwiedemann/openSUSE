@@ -1,7 +1,7 @@
 #
 # spec file for package android-udev-rules
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           android-udev-rules
-Version:        20191103
+Version:        20200613
 Release:        0
 Summary:        Android udev rules list aimed to be the most comprehensive on the net
 License:        GPL-3.0-or-later
@@ -27,9 +27,9 @@ Source0:        https://github.com/M0Rf30/%{name}/archive/%{version}/%{name}-%{v
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 Recommends:     android-tools
-BuildArch:      noarch
 Provides:       android-tools-udev = %{version}-%{release}
 Obsoletes:      android-tools-udev < %{version}-%{release}
+BuildArch:      noarch
 %{sysusers_requires}
 
 %description
@@ -43,8 +43,8 @@ and include many suggestions from the Archlinux and Github Communities.
 %sysusers_generate_pre android-udev.conf adbusers
 
 %install
-install -D -m 0644 -t %{buildroot}%{_sysusersdir}/ android-udev.conf
-install -D -m 0644 -t %{buildroot}%{_udevrulesdir}/ 51-android.rules
+install -D -m 0644 -t %{buildroot}%{_sysusersdir} android-udev.conf
+install -D -m 0644 -t %{buildroot}%{_udevrulesdir} 51-android.rules
 
 %pre -f adbusers.pre
 

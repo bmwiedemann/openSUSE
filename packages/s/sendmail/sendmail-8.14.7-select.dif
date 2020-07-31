@@ -7,7 +7,7 @@
  5 files changed, 28 insertions(+), 10 deletions(-)
 
 --- libmilter/comm.c
-+++ libmilter/comm.c	2016-04-14 07:25:09.745910028 +0000
++++ libmilter/comm.c	2020-07-28 06:16:36.425638839 +0000
 @@ -78,8 +78,11 @@ mi_rd_cmd(sd, timeout, cmd, rlen, name)
  	i = 0;
  	for (;;)
@@ -56,7 +56,7 @@
  			return MI_FAILURE;
  		if (i < 0)
 --- libmilter/listener.c
-+++ libmilter/listener.c	2016-04-14 07:25:09.745910028 +0000
++++ libmilter/listener.c	2020-07-28 06:16:36.425638839 +0000
 @@ -685,12 +685,12 @@ mi_closener()
  	int rs = 0;							\
  	struct timeval st;						\
@@ -74,7 +74,7 @@
  			if (rs < 0 && errno == EINTR)			\
  				continue;				\
 --- libsm/local.h
-+++ libsm/local.h	2016-04-14 07:25:09.773909514 +0000
++++ libsm/local.h	2020-07-28 06:16:36.453638343 +0000
 @@ -258,8 +258,11 @@ int sm_flags __P((int));
  		return SM_IO_EOF; \
  	do \
@@ -89,7 +89,7 @@
  	if (sm_io_to_sel < 0) \
  	{ \
 --- libsm/refill.c
-+++ libsm/refill.c	2016-04-14 07:25:09.773909514 +0000
++++ libsm/refill.c	2020-07-28 06:22:31.359355018 +0000
 @@ -79,8 +79,11 @@ static int sm_lflush __P((SM_FILE_T *, i
  		return SM_IO_EOF;					\
  	do								\
@@ -98,14 +98,14 @@
 +		tv.tv_sec  = (to)->tv_sec;				\
 +		tv.tv_usec = (to)->tv_usec;				\
  		(sel_ret) = select((fd) + 1, &sm_io_to_mask, NULL,	\
--			   	&sm_io_x_mask, (to));			\
-+			   	&sm_io_x_mask, &tv);			\
+-				&sm_io_x_mask, (to));			\
++				&sm_io_x_mask, &tv);			\
  	} while ((sel_ret) < 0 && errno == EINTR);			\
  	if ((sel_ret) < 0)						\
  	{								\
 --- sendmail/sfsasl.c
-+++ sendmail/sfsasl.c	2016-04-14 07:25:09.777909439 +0000
-@@ -609,8 +609,6 @@ tls_retry(ssl, rfd, wfd, tlsstart, timeo
++++ sendmail/sfsasl.c	2020-07-28 06:16:36.453638343 +0000
+@@ -610,8 +610,6 @@ tls_retry(ssl, rfd, wfd, tlsstart, timeo
  	left = timeout - (now - tlsstart);
  	if (left <= 0)
  		return 0;	/* timeout */

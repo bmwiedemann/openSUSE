@@ -228,4 +228,26 @@
     <comment>Remove not available gcrypt algorithm 7 DB_HAVAL (bsc#1098360). (forwarded request 714652 from abergmann)</comment>
     <requestid>714657</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c2d7467c40a27f41c9f164b8cff14196</srcmd5>
+    <version>0.16.2</version>
+    <time>1596203833</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.2
+  Bug fixes:
+  * Fix handling of directory-restricted negative rules
+  * Don't lock '/dev/null' when used as output database
+  * Fix parsing of rules containing '?' quantifier
+  * Fix extended attributes support (xattrs)
+  * Fix processing of go files
+  Please note:
+  * The addition of the &quot;trusted.*&quot;, &quot;user.*&quot; and the &quot;security.*&quot;
+	namespaces to the xattrs attribute might lead to a vast amount of
+	reported changed entries during your next AIDE run. You can use the
+	`report_ignore_changed_attrs` option (see aide.conf(5)) to ignore
+	changes of the xattrs attribute; but be aware that this will exclude
+	the expected but also the unexpected (potentially malicious) changes.
+- Run spec-cleaner (forwarded request 823631 from elimat)</comment>
+    <requestid>823667</requestid>
+  </revision>
 </revisionlist>

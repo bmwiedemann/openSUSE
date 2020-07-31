@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jul 24 21:54:14 UTC 2020 - Anthony Iliopoulos <ailiopoulos@suse.com>
+
+- update to v5.7.0:
+  * xfs_io: document '-q' option for sendfile command
+  * remove libreadline support
+  * xfs_quota: allow individual timer extension
+  * xfs_quota: fix unsigned int id comparisons
+  * xfs_repair: fix progress reporting
+  * xfs_repair: fix minrecs error during phase5 btree rebuild
+  * xfs_repair: add missing validations to match xfs_check
+  * xfs_repair: use btree bulk loading
+  * xfs_io: fix copy_range argument parsing
+  * xfs_io: document -q option for pread/pwrite command
+  * xfs_metadump: man page fixes
+  * xfs_db: fix crc invalidation segfault
+  * libxfs changes merged from kernel 5.7
+
+-------------------------------------------------------------------
 Wed Apr 15 19:48:24 UTC 2020 - Anthony Iliopoulos <ailiopoulos@suse.com>
 
 - update to v5.6.0:

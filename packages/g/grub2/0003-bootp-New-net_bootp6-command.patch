@@ -8,16 +8,21 @@ DHCPv6 protocol (RFC3315).
 
 Signed-off-by: Michael Chang <mchang@suse.com>
 Signed-off-by: Ken Lin <ken.lin@hpe.com>
+
+V1:
+  * Use grub_calloc for overflow check and return NULL when it would
+    occur.
+
 ---
  grub-core/net/bootp.c | 908 +++++++++++++++++++++++++++++++++++++++++++++++++-
  grub-core/net/ip.c    |  39 +++
  include/grub/net.h    |  72 ++++
  3 files changed, 1018 insertions(+), 1 deletion(-)
 
-Index: grub-2.04~rc1/grub-core/net/bootp.c
+Index: grub-2.04/grub-core/net/bootp.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/net/bootp.c
-+++ grub-2.04~rc1/grub-core/net/bootp.c
+--- grub-2.04.orig/grub-core/net/bootp.c
++++ grub-2.04/grub-core/net/bootp.c
 @@ -24,6 +24,98 @@
  #include <grub/net/netbuff.h>
  #include <grub/net/udp.h>
@@ -265,7 +270,7 @@ Index: grub-2.04~rc1/grub-core/net/bootp.c
 +	      break;
 +	    }
 +	  dhcp6->num_dns_server = ln = len >> 4;
-+	  dhcp6->dns_server_addrs = la = grub_zalloc (ln * sizeof (*la));
++	  dhcp6->dns_server_addrs = la = grub_calloc (ln, sizeof (*la));
 +
 +	  for (po = opt->data; ln > 0; po += 0x10, la++, ln--)
 +	    {
@@ -966,10 +971,10 @@ Index: grub-2.04~rc1/grub-core/net/bootp.c
    grub_unregister_command (cmd_dhcp);
 +  grub_unregister_command (cmd_bootp6);
  }
-Index: grub-2.04~rc1/grub-core/net/ip.c
+Index: grub-2.04/grub-core/net/ip.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/net/ip.c
-+++ grub-2.04~rc1/grub-core/net/ip.c
+--- grub-2.04.orig/grub-core/net/ip.c
++++ grub-2.04/grub-core/net/ip.c
 @@ -239,6 +239,45 @@ handle_dgram (struct grub_net_buff *nb,
    {
      struct udphdr *udph;
@@ -1016,10 +1021,10 @@ Index: grub-2.04~rc1/grub-core/net/ip.c
      if (proto == GRUB_NET_IP_UDP && grub_be_to_cpu16 (udph->dst) == 68)
        {
  	const struct grub_net_bootp_packet *bootp;
-Index: grub-2.04~rc1/include/grub/net.h
+Index: grub-2.04/include/grub/net.h
 ===================================================================
---- grub-2.04~rc1.orig/include/grub/net.h
-+++ grub-2.04~rc1/include/grub/net.h
+--- grub-2.04.orig/include/grub/net.h
++++ grub-2.04/include/grub/net.h
 @@ -448,6 +448,66 @@ struct grub_net_bootp_packet
    grub_uint8_t vendor[0];
  } GRUB_PACKED;

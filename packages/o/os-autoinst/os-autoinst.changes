@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jul 30 19:25:53 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1596123333.53214479:
+  * Also fix chdir bug in other tests using temp dirs
+  * Fix issue where 99-full-stack.t can't cleanup temp dir on test failure
+  * Fix swapped actual/expected args in check in svirt test
+  * Record a reason if isotovideo received a signal to stop
+  * Record QEMU stopping unexpectedly as failure reason
+  * Provide a reason in certain errors encountered by isotovideo
+  * Merge INSTALL documentation into README
+  * os-autoinst-openvswitch: Fix spurious network startup race-conditions (2nd)
+  * Use C-style for loop for iterating testorder to react to length changes
+  * Revert "Revert "Avoid updating last_good if there's no possible user of it""
+  * mergify: Add merge-fast shortcut, same as for openQA
+  * Use autotools-based build system as fallback on SLE12
+  * Re-establish compatibility with OpenCV 3
+  * Revert "Avoid updating last_good if there's no possible user of it"
+  * Make local VM host IPs '10.0.2.2' configurable
+  * Ensure qemu dbus failures are handled correctly
+
+-------------------------------------------------------------------
 Tue Jul 28 11:25:52 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1595922953.775a5164:

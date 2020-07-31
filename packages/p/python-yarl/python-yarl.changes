@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jul 28 21:28:25 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- remove c source file from package (rpmlint error)
+- needs typing-extensions 
+
+-------------------------------------------------------------------
+Tue Jul 28 19:15:09 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.5.0
+- fix tests
+ * Convert host to lowercase on URL building. #386
+ * Allow using mod operator (%) for updating query string (an alias for update_query() method)
+ * Allow use of sequences such as list and tuple in the values of a mapping
+   such as dict to represent that a key has many values:
+     url = URL("http://example.com")
+     assert url.with_query({"a": [1, 2]}) == URL("http://example.com/?a=1&a=2")
+ * Support URL.build() with scheme and path (creates a relative URL)
+ * Cache slow IDNA encode/decode calls
+ * Add @final / Final type hints
+ * Support URL authority/raw_authority properties and authority argument
+   of URL.build() method
+ * Hide the library implementation details, make the exposed public list very clean
+ * Fix tests with newer Python (3.7.6, 3.8.1 and 3.9.0+)
+ * Fix a bug where query component, passed in a form of mapping or sequence,
+   is unquoted in unexpected way
+ * Hide Query and QueryVariable type aliases in __init__.pyi, now they
+   are prefixed with underscore.
+ * Keep ipv6 brackets after updating port/user/password.
+
+-------------------------------------------------------------------
 Mon Feb  3 14:38:51 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.4.2

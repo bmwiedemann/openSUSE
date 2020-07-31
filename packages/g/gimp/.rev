@@ -1920,4 +1920,12 @@ General:
     <comment>- Fixes for %_libexecdir changing to /usr/libexec(bsc#1174075) (forwarded request 820852 from gmbr3)</comment>
     <requestid>821749</requestid>
   </revision>
+  <revision rev="118" vrev="3">
+    <srcmd5>5632615e799137defe9c5eda98dbfd4b</srcmd5>
+    <version>2.10.20</version>
+    <time>1596203616</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823169</requestid>
+  </revision>
 </revisionlist>

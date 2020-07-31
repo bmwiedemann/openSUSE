@@ -565,4 +565,12 @@
   * libxfs changes merged from kernel 5.6 (forwarded request 794385 from ailiopoulos)</comment>
     <requestid>794397</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>0303a40745f6b4b3d0fc2f95f99b3d6c</srcmd5>
+    <version>5.7.0</version>
+    <time>1596203552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823128</requestid>
+  </revision>
 </revisionlist>

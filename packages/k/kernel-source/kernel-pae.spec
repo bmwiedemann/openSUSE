@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.7
-%define patchversion 5.7.9
+%define patchversion 5.7.11
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -54,6 +54,9 @@
 %define config_vars CONFIG_MODULES CONFIG_MODULE_SIG CONFIG_KMSG_IDS CONFIG_SUSE_KERNEL_SUPPORTED CONFIG_EFI_STUB
 %{expand:%(eval "$(test -n "%cpu_arch_flavor" && tar -xjf %_sourcedir/config.tar.bz2 --to-stdout config/%cpu_arch_flavor)"; for config in %config_vars; do echo "%%global $config ${!config:-n}"; done)}
 %define split_extra (%CONFIG_MODULES == "y" && %CONFIG_SUSE_KERNEL_SUPPORTED == "y")
+%if %CONFIG_MODULES != "y"
+	%define klp_symbols 0
+%endif
 
 %ifarch %ix86 x86_64
 %define install_vdso 1
@@ -65,9 +68,9 @@ Name:           kernel-pae
 Summary:        Kernel with PAE Support
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.7.9
+Version:        5.7.11
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ga010166
+Release:        <RELEASE>.g5015994
 %else
 Release:        0
 %endif
@@ -176,10 +179,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-a010166ebb50275ce822855b1f8891ce1fd75291
-Provides:       kernel-srchash-a010166ebb50275ce822855b1f8891ce1fd75291
+Provides:       kernel-%build_flavor-base-srchash-501599469bceacc25b7494a8c45b87fefd7ea51a
+Provides:       kernel-srchash-501599469bceacc25b7494a8c45b87fefd7ea51a
 # END COMMON DEPS
-Provides:       %name-srchash-a010166ebb50275ce822855b1f8891ce1fd75291
+Provides:       %name-srchash-501599469bceacc25b7494a8c45b87fefd7ea51a
 %ifarch %ix86
 Provides:       kernel-bigsmp = 2.6.17
 Obsoletes:      kernel-bigsmp <= 2.6.17

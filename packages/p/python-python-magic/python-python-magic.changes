@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Jul 25 14:46:39 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- remove patches not necessary anymore:
+ - magic-new-mime.patch
+ - magic-pep8.patch
+ - magic-tests.patch
+ - magic-new-file.patch
+- add patch fix-test.patch and fix-test-tumbleweed.patch to adapt the `file` test outputs to OpenSUSE.
+- update to version 0.4.18:
+ - Make bindings for magic_[set|get]param optional, and throw NotImplementedError
+   if they are used but not supported. Only call setparam() in the constructor if
+   it's supported. This prevents breakage on CentOS7 which uses an old version of
+   libmagic.
+- update to version 0.4.16 and 0.4.17 (changelog is combined upstream):
+ - add MAGIC_MIME_TYPE constant, use that in preference to MAGIC_MIME internally.
+   This sets up for a breaking change in a future major version bump where
+   MAGIC_MIME will change to mathch magic.h.
+ - add magic.version() function to return library version
+ - add setparam/getparam to control internal behavior
+ - increase internal limits with setparam to prevent spurious error on some jpeg files
+ - various setup.py improvements to declare modern python support
+ - support MSYS2 magic dlls
+ - fix warning about using 'is' on an int in python 3.8
+ - include tests in source distribution
+ - many test improvements:
+  - tox runner support
+  - remove deprecated test_suite field from setup.py
+  - docker tests that cover all LTS ubuntu versions
+  - add test for snapp file identification
+ - doc improvements
+  - document dependency install process for debian
+  - various typos
+  - document test running process
+
+-------------------------------------------------------------------
 Thu Jul  4 12:09:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update the patch magic-new-file.patch to work with newer file

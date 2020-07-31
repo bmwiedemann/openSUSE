@@ -1,7 +1,7 @@
 #
 # spec file for package aide
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           aide
-Version:        0.16.1
+Version:        0.16.2
 Release:        0
 Summary:        Advanced Intrusion Detection Environment
 License:        GPL-2.0-or-later
-Group:          Productivity/Security
 URL:            https://aide.github.io/
 Source0:        https://github.com/aide/aide/releases/download/v%{version}/aide-%{version}.tar.gz
 Source1:        aide.conf
@@ -48,7 +47,6 @@ AIDE is an intrusion detection system that checks file integrity.
 
 %package test
 Summary:        Simple AIDE testing
-Group:          Productivity/Security
 
 %description test
 Simple AIDE test script for externalized testing.
@@ -75,7 +73,7 @@ autoreconf -fiv
     --with-gcrypt \
     --without-mhash
 # --enable-forced_configmd
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -89,7 +87,7 @@ cp -a %{SOURCE2} doc/examples%{_sysconfdir}/cron.daily/aide.sh
 %check
 mkdir %{_localstatedir}/tmp/aide-test
 export TESTDIR=%{_localstatedir}/tmp/aide-test
-make %{?_smp_mflags} DESTDIR=$TESTDIR install
+%make_build DESTDIR=$TESTDIR install
 install -m 700 -d $TESTDIR%{_localstatedir}/lib/aide
 install -m 700 -d $TESTDIR%{_sysconfdir}
 install -m 600    %{SOURCE1} $TESTDIR%{_sysconfdir}/aide.conf.new

@@ -1,8 +1,13 @@
-Index: grub-2.04~rc1/grub-core/fs/btrfs.c
+
+V1:
+  * Use overflow checking primitives where the arithmetic expression for
+    buffer allocations may include unvalidated data
+
+Index: grub-2.04/grub-core/fs/btrfs.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/fs/btrfs.c
-+++ grub-2.04~rc1/grub-core/fs/btrfs.c
-@@ -2867,6 +2867,242 @@ out:
+--- grub-2.04.orig/grub-core/fs/btrfs.c
++++ grub-2.04/grub-core/fs/btrfs.c
+@@ -2880,6 +2880,254 @@ out:
    return 0;
  }
  
@@ -26,6 +31,7 @@ Index: grub-2.04~rc1/grub-core/fs/btrfs.c
 +  grub_disk_addr_t elemaddr;
 +  grub_err_t err;
 +  char *parent_path;
++  grub_size_t sz;
 +
 +  *parent_id = 0;
 +  *path_out = 0;
@@ -44,7 +50,10 @@ Index: grub-2.04~rc1/grub-core/fs/btrfs.c
 +      return grub_error(GRUB_ERR_FILE_NOT_FOUND, N_("can't find root backrefs"));
 +    }
 +
-+  buf = grub_malloc(elemsize + 1);
++  if (grub_add (elemsize, 1, &sz))
++    return grub_error (GRUB_ERR_OUT_OF_RANGE, N_("overflow is detected"));
++
++  buf = grub_malloc(sz);
 +  if (!buf)
 +    {
 +      free_iterator(&desc);
@@ -98,6 +107,7 @@ Index: grub-2.04~rc1/grub-core/fs/btrfs.c
 +  struct grub_btrfs_dir_item *direl = NULL;
 +  const char *ctoken = "default";
 +  grub_size_t ctokenlen = sizeof ("default") - 1;
++  grub_size_t sz;
 +
 +  *id = 0;
 +  key.object_id = data->sblock.root_dir_objectid;
@@ -112,7 +122,14 @@ Index: grub-2.04~rc1/grub-core/fs/btrfs.c
 +    return grub_error (GRUB_ERR_FILE_NOT_FOUND, N_("file not found"));
 +
 +  struct grub_btrfs_dir_item *cdirel;
-+  direl = grub_malloc (elemsize + 1);
++
++  if (grub_add (elemsize, 1, &sz))
++    return grub_error (GRUB_ERR_OUT_OF_RANGE, N_("overflow is detected"));
++
++  direl = grub_malloc (sz);
++  if (!direl)
++    return grub_errno;
++
 +  err = grub_btrfs_read_logical (data, elemaddr, direl, elemsize, 0);
 +  if (err)
 +    {
@@ -245,7 +262,7 @@ Index: grub-2.04~rc1/grub-core/fs/btrfs.c
  static struct grub_fs grub_btrfs_fs = {
    .name = "btrfs",
    .fs_dir = grub_btrfs_dir,
-@@ -2885,6 +3121,7 @@ static struct grub_fs grub_btrfs_fs = {
+@@ -2898,6 +3146,7 @@ static struct grub_fs grub_btrfs_fs = {
  static grub_command_t cmd_info;
  static grub_command_t cmd_mount_subvol;
  static grub_extcmd_t cmd_list_subvols;
@@ -253,7 +270,7 @@ Index: grub-2.04~rc1/grub-core/fs/btrfs.c
  
  static char *
  subvolid_set_env (struct grub_env_var *var __attribute__ ((unused)),
-@@ -2955,6 +3192,11 @@ GRUB_MOD_INIT (btrfs)
+@@ -2968,6 +3217,11 @@ GRUB_MOD_INIT (btrfs)
  					 "[-p|-n] [-o var] DEVICE",
  					 "Print list of BtrFS subvolumes on "
  					 "DEVICE.", options);

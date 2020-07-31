@@ -89,12 +89,12 @@ Requires(verify): permissions
 %{?systemd_requires}
 Conflicts:      smail postfix postfix-tls
 Obsoletes:      sendmail-tls
-Version:        8.15.2
+Version:        8.16.1
 Release:        0
 Summary:        BSD Sendmail
 License:        Sendmail
 Group:          Productivity/Networking/Email/Servers
-Source0:        ftp://ftp.sendmail.org/pub/sendmail/sendmail.%{version}.tar.gz
+Source0:        ftp://ftp.sendmail.org/pub/sendmail/%{name}.%{version}.tar.gz
 Source1:        sendmail-suse.tar.bz2
 Source2:        sendmail-rpmlintrc
 Source3:        sendmail-client.path
@@ -102,22 +102,18 @@ Source4:        sendmail.service
 Source5:        sendmail-client.service
 Source6:        sendmail.systemd
 Source7:        sendmail-client.systemd
+Source42:       ftp://ftp.sendmail.org/pub/sendmail/PGPKEYS#/%{name}.keyring
+Source43:       ftp://ftp.sendmail.org/pub/sendmail/%{name}.%{version}.tar.gz.sig
 # PATCH-FIX-OPENSUSE: Add our m4 extensions and maintenance scripts
-Patch0:         sendmail-8.15.2.dif
+Patch0:         sendmail-8.16.1.dif
 # PATCH-FIX-OPENSUSE: if select(2) is interrupted the timeout become undefined
 Patch1:         sendmail-8.14.7-select.dif
-# PATCH-FIX-UPSTREAM: SMTP session reuse bugfix (boo#1162204)
-Patch2:         8.15.2.mci.p0
 # PATCH-FIX-UPSTREAM: Detect shared libraries
 Patch4:         sendmail-8.14.8-m4header.patch
 # PATCH-FIX-DEBIAN: systemd socket activation support for libmilter
 Patch5:         sendmail-fd-passing-libmilter.patch
-Patch6:         sendmail-8.15.2-openssl-1.1.0-fix.patch
-Patch7:         sendmail-8.15.2-openssl-1.1.0-ecdhe-fix.patch
 # PATCH-FIX-OPENSUSE: make build result reproducible
 Patch8:         sendmail-8.15.2-reproducible.patch
-# PATCH-FIX-OPENSUSE: The former deprecated macro RES_USE_INET6 is gone with glibc 2.30
-Patch9:         sendmail-8.15.2-glibc-2.30.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir	%{_sysconfdir}
 %global         _mailcnfdir	%{_sysconfdir}/mail
@@ -210,16 +206,10 @@ processed mail on to the MTA (e.g. sendmail).
 %prep
 %setup -n sendmail-%{version}
 %patch1 -p0 -b .select
-%patch2 -p0 -b .reuse
 %patch4 -p0 -b .m4head
 %patch5 -p1 -b .fdmilt
-if pkg-config --atleast-version=1.1.0 openssl; then
-%patch6 -p1 -b .openssl11
-%patch7 -p1 -b .ecdhe
-fi
 %patch0 -p0 -b .p0
 %patch8 -p1 -b .reproducible
-%patch9 -p0 -b .use_inet6
     tar --strip-components=1 -xf %{S:1} 
     set -f
     cat <<-EOF > file-list
@@ -406,6 +396,8 @@ fi
     tar cfC - cf . | tar xfC - %{buildroot}%{_datadir}/sendmail/
     test "$ID" -ne 0 || \
     chown root:root -R	%{buildroot}%{_datadir}/sendmail/
+    find %{buildroot}%{_datadir}/sendmail/ -type d -exec chmod g+x,o+x '{}' \+
+    chmod g+r,o+r   -R	%{buildroot}%{_datadir}/sendmail/
     chmod 0755		%{buildroot}%{_datadir}/sendmail/sh/makeinfo.sh
     rm -f  %{buildroot}%{_datadir}/sendmail/cf/Build
     rm -f  %{buildroot}%{_datadir}/sendmail/cf/README

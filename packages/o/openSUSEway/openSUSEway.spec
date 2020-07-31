@@ -19,7 +19,7 @@
 %define waybar_version %(rpm -q --queryformat "%%{version}" waybar)
 
 Name:           openSUSEway
-Version:        0.6
+Version:        0.8
 Release:        0
 Summary:        The openSUSEway desktop environment meta package
 Group:          Metapackages
@@ -27,6 +27,9 @@ URL:            https://github.com/openSUSE/openSUSEway
 Source0:        https://github.com/openSUSE/openSUSEway/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 License:        MIT
 BuildArch:      noarch
+BuildRequires:  aaa_base
+BuildRequires:  systemd
+Requires:       aaa_base
 Requires:       sway-branding-openSUSE
 Requires:       waybar-branding-openSUSE
 Requires:       sudo
@@ -45,6 +48,14 @@ Requires:       imv
 Requires:       firefox
 Requires:       NetworkManager
 Requires:       mpv
+Requires:       libqt5-qtwayland
+Requires:       xdg-desktop-portal
+Requires:       xdg-utils
+Requires:       qt5ct
+Requires:       adwaita-qt5
+Requires:       wob
+Requires:       pamixer
+Requires:       command-not-found
 
 %description
 This meta package aggregates openSUSEway desktop enviroment packages.
@@ -111,6 +122,11 @@ This package provides the openSUSE look and feel for waybar.
 
 %install
 
+## openSUSEway package
+install -D -p -m 644 openSUSEway.sh %{buildroot}%{_sysconfdir}/profile.d/openSUSEway.sh
+install -D -p -m 644 .config/sway/env %{buildroot}%{_prefix}/lib/environment.d/50-openSUSE.conf
+
+## openSUSEway pattern package
 mkdir -p %{buildroot}/%{_defaultdocdir}/patterns/
 echo 'This file marks the pattern openSUSEway to be installed.' >%{buildroot}/%{_defaultdocdir}/patterns/openSUSEway.txt
 
@@ -134,6 +150,8 @@ install -D -p -m 644 .config/waybar/config %{buildroot}%{_sysconfdir}/xdg/waybar
 install -D -p -m 644 .config/waybar/style.css %{buildroot}%{_sysconfdir}/xdg/waybar/style.css
 
 %files
+%config %{_sysconfdir}/profile.d/openSUSEway.sh
+%config %{_prefix}/lib/environment.d/50-openSUSE.conf
 
 %files -n patterns-openSUSEway
 %dir %{_defaultdocdir}/patterns
@@ -141,10 +159,10 @@ install -D -p -m 644 .config/waybar/style.css %{buildroot}%{_sysconfdir}/xdg/way
 
 %files -n sway-branding-openSUSE
 %dir %{_sysconfdir}/sway
-%config(noreplace) %{_sysconfdir}/sway/config
-%config(noreplace) %{_sysconfdir}/sway/env
+%config %{_sysconfdir}/sway/config
+%config %{_sysconfdir}/sway/env
 %dir %{_sysconfdir}/sway/config.d
-%config(noreplace) %{_sysconfdir}/sway/config.d/50-openSUSE.conf
+%config %{_sysconfdir}/sway/config.d/50-openSUSE.conf
 
 %dir %{_sysconfdir}/alacritty
 %config(noreplace) %{_sysconfdir}/alacritty/alacritty.yml

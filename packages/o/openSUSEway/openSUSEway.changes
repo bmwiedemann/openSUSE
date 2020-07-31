@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 31 11:00:00 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- New in 0.8 release
+  * Add wob support
+  * pamixer is dependency for wob controls in config
+- Add command-not-found to the environment
+ 
+-------------------------------------------------------------------
+Mon Jul 20 12:05:29 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- New in 0.7 release
+  * update sway conf to the 1.5
+  * adding GTK and QT themes
+
+-------------------------------------------------------------------
 Tue Jul 14 11:40:24 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - New 0.6 release

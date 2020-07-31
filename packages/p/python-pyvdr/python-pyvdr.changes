@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 29 21:12:34 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.3
+  * Parsing of timers couldn't handle channel numbers > 10
+
+-------------------------------------------------------------------
 Fri Jul 10 17:47:20 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.2.2

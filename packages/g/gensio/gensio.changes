@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Jul 26 19:40:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.3
+  * No major bug fixes or anything of that nature, some little
+    things.
+  The only bug that might be significant is with the pty gensio:
+  it can close it's file descripter twice in some cases.
+  New gensios:
+  * perf - This is a fairly unusual gensio, but I created it so I
+    could do performance measurements. It's fairly primitive, and I
+    didn't uncover any performance issues in the gensio library
+    itself, but I was useful to see how different buffer sizes
+    affected performance. It does show that the Linux SCTP stack
+    has some issues.
+  * conacc - Another somewhat unusual gensio. This is a gensio
+    accepter that takes a normal gensio string as a child. When
+    started, it opens the gensio and when the open complete it
+    reports a new gensio on the accepter. This has some
+    interesting uses; see the docs for details.
+  * Added missing man pages on the sergensio functions.
+
+-------------------------------------------------------------------
+Sun Jul 12 11:01:43 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.2
+  * lots of little corner cases and race conditions are fixed and
+    a few minor enhancements. If you are using in a multithreaded
+    application, or using UDP, the relpkt, or the mux gensios,
+    you should certainly upgrade.
+  * One minor semantic change. UDP sockets are now opened without
+    SO_REUSEADDR set. The UDP tests were occasionally failing,
+    and it turned out that the two parts of the tests would
+    sometimes get the same port, with predictable results.
+- Update to version 2.1.1
+  * fixes a build issue on newer gccs, a doubly-defined variable
+    that I don't know how didn't cause an issue before. I've also
+    been enhancing the tests a bit, and that shook out a few
+    memory leaks that are also fixed.
+
+-------------------------------------------------------------------
 Sun Jun  7 20:04:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Set CFLAGS+=-fcommon

@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.7
-%define patchversion 5.7.9
+%define patchversion 5.7.11
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -30,9 +30,9 @@ Name:           kernel-source
 Summary:        The Linux Kernel Sources
 License:        GPL-2.0
 Group:          Development/Sources
-Version:        5.7.9
+Version:        5.7.11
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ga010166
+Release:        <RELEASE>.g5015994
 %else
 Release:        0
 %endif
@@ -43,7 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-a010166ebb50275ce822855b1f8891ce1fd75291
+Provides:       %name-srchash-501599469bceacc25b7494a8c45b87fefd7ea51a
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
@@ -262,6 +262,7 @@ perl "%_sourcedir/group-source-files.pl" \
 	-L "%src_install_dir"
 popd
 
+find %{buildroot}/usr/src/linux* -type f -name '*.[ch]' -perm /0111 -exec chmod -v a-x {} +
 # kernel-source and kernel-$flavor-devel are built independently, but the
 # shipped sources (/usr/src/linux/) need to be older than generated files
 # (/usr/src/linux-obj). We rely on the git commit timestamp to not point into

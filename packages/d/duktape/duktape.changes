@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 28 07:16:30 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 2.5.0:
+  * CBOR support, minor fixes and improvements
+- spec file changes
+  * change http to https in URLs
+  * use RPM macros
+
+-------------------------------------------------------------------
 Mon Jul 29 16:13:30 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 2.4.0:

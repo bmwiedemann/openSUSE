@@ -1,0 +1,13 @@
+--- python-magic-0.4.18/test/test.py	2020-05-06 04:25:46.000000000 +0200
++++ python-magic-0.4.18/test/test.py	2020-07-25 20:02:37.988452945 +0200
+@@ -97,7 +97,9 @@
+                  ': Sun Jun 29 01:32:52 2008, from Unix, original size 15',
+                  'gzip compressed data, was "test", '
+                  'last modified: Sun Jun 29 01:32:52 2008, '
+-                 'from Unix, original size modulo 2^32 15'
++                 'from Unix, original size modulo 2^32 15',
++                 'gzip compressed data, was "test", last modified: '
++                 'Sun Jun 29 01:32:52 2008, from Unix, truncated',
+                 ),
+                 'text.txt': 'ASCII text',
+                 'test.snappy.parquet': ('Apache Parquet', 'Par archive data'),

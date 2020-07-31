@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jul 31 08:05:36 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.22.0
+  * New Features
+    - Edit book: In dark mode, make the preview panel also dark.
+    - PDF Output: Headers/footers: Allow displaying the current
+      page number and total number of pages in the top level 
+      section/chapter.
+    - Edit book: Show EPUB version in window title
+    - Allow testing if a number column is set or not set in 
+      coloring/icon/emblem rules.
+    - Viewer: Add a setting to control how many pixels a scroll 
+      wheel should generate before triggering a page turn
+  * Bug Fixes
+    - Edit book: Fix a regression in the previous release that 
+      caused poor performance when editing large files.
+    - DOCX Input: Leave undefined text colors in the input document
+      as undefined
+    - Viewer: Fix using a very small font step size not working.
+    - Font scanner: Also scan the new win 10 local font paths
+    - Viewer: Fix typing values in font size adjust control not
+      working
+
+-------------------------------------------------------------------
 Thu Jul 16 19:25:22 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.21.0

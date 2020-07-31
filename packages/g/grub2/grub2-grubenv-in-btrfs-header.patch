@@ -4,11 +4,16 @@ As a workaround use the Btrfs header to store known data of the GRUB environment
 block.
 
 v2: export env_block and make sure to use the device of grubenv
+
+v3:
+  * Use xcalloc for overflow check and return NULL when it would
+    occur.
+
 ---
-Index: grub-2.02/grub-core/kern/fs.c
+Index: grub-2.04/grub-core/kern/fs.c
 ===================================================================
---- grub-2.02.orig/grub-core/kern/fs.c
-+++ grub-2.02/grub-core/kern/fs.c
+--- grub-2.04.orig/grub-core/kern/fs.c
++++ grub-2.04/grub-core/kern/fs.c
 @@ -27,6 +27,7 @@
  #include <grub/mm.h>
  #include <grub/term.h>
@@ -31,10 +36,10 @@ Index: grub-2.02/grub-core/kern/fs.c
  	  ret += size;
  	  len -= size;
  	  sector -= ((size + offset) >> GRUB_DISK_SECTOR_BITS);
-Index: grub-2.02/util/grub-editenv.c
+Index: grub-2.04/util/grub-editenv.c
 ===================================================================
---- grub-2.02.orig/util/grub-editenv.c
-+++ grub-2.02/util/grub-editenv.c
+--- grub-2.04.orig/util/grub-editenv.c
++++ grub-2.04/util/grub-editenv.c
 @@ -23,8 +23,11 @@
  #include <grub/util/misc.h>
  #include <grub/lib/envblk.h>
@@ -207,7 +212,7 @@ Index: grub-2.02/util/grub-editenv.c
  }
  
  static void
-@@ -202,6 +346,38 @@ write_envblk (const char *name, grub_env
+@@ -203,6 +347,38 @@ write_envblk (const char *name, grub_env
  }
  
  static void
@@ -246,7 +251,7 @@ Index: grub-2.02/util/grub-editenv.c
  set_variables (const char *name, int argc, char *argv[])
  {
    grub_envblk_t envblk;
-@@ -217,8 +393,27 @@ set_variables (const char *name, int arg
+@@ -218,8 +394,27 @@ set_variables (const char *name, int arg
  
        *(p++) = 0;
  
@@ -276,7 +281,7 @@ Index: grub-2.02/util/grub-editenv.c
  
        argc--;
        argv++;
-@@ -226,26 +421,158 @@ set_variables (const char *name, int arg
+@@ -227,26 +422,158 @@ set_variables (const char *name, int arg
  
    write_envblk (name, envblk);
    grub_envblk_close (envblk);
@@ -371,7 +376,7 @@ Index: grub-2.02/util/grub-editenv.c
 +      ndev++;
 +    }
 +
-+  grub_drives = xmalloc (sizeof (grub_drives[0]) * (ndev + 1));
++  grub_drives = xcalloc ((ndev + 1), sizeof (grub_drives[0]));
 +
 +  for (curdev = grub_devices, curdrive = grub_drives; *curdev; curdev++,
 +       curdrive++)
@@ -435,7 +440,7 @@ Index: grub-2.02/util/grub-editenv.c
  int
  main (int argc, char *argv[])
  {
-@@ -277,6 +604,9 @@ main (int argc, char *argv[])
+@@ -278,6 +605,9 @@ main (int argc, char *argv[])
        command  = argv[curindex++];
      }
  
@@ -445,10 +450,10 @@ Index: grub-2.02/util/grub-editenv.c
    if (strcmp (command, "create") == 0)
      grub_util_create_envblk_file (filename);
    else if (strcmp (command, "list") == 0)
-Index: grub-2.02/util/grub.d/00_header.in
+Index: grub-2.04/util/grub.d/00_header.in
 ===================================================================
---- grub-2.02.orig/util/grub.d/00_header.in
-+++ grub-2.02/util/grub.d/00_header.in
+--- grub-2.04.orig/util/grub.d/00_header.in
++++ grub-2.04/util/grub.d/00_header.in
 @@ -46,6 +46,13 @@ cat << EOF
  if [ -s \$prefix/grubenv ]; then
    load_env

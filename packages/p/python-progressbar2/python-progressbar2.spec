@@ -18,9 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-progressbar2
-Version:        3.51.3
+Version:        3.51.4
 Release:        0
-Summary:        Python progressbar library
+Summary:        Python library to provide visual text-based progress to long running operations
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/WoLpH/python-progressbar
@@ -33,16 +33,15 @@ Requires:       python-six
 Conflicts:      python-progressbar
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module freezegun >= 0.3.11}
-BuildRequires:  %{python_module pytest >= 4.3.1}
+BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-utils >= 2.3.0}
 BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 
 %description
-A Python Progressbar library to provide visual (yet text based)
-progress to long running operations.
+A Python Progressbar library to provide visual (yet text based) progress to long running operations.
 
 %prep
 %setup -q -n progressbar2-%{version}
@@ -56,6 +55,9 @@ rm pytest.ini
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# remove problematic section from pytest.ini
+export PYTEST_ADDOPTS="--doctest-modules"
+export PYTHONPATH=$PWD
 %pytest
 
 %files %{python_files}

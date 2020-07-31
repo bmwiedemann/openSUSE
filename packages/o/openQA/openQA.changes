@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 30 14:33:32 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1596119585.a5800f1aa:
+  * Prepare using CMake and ninja to build os-autoinst
+  * Allow the worker to start ffmpeg to encode the video
+  * Show job dependency on the Test overview page
+  * Dependency cron 200729
+  * Make a few small optimizations to speed up the deletion of screenshots
+
+-------------------------------------------------------------------
 Sun Jul 26 03:26:31 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1595658530.ccadcf580:

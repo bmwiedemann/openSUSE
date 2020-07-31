@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-yarl
-Version:        1.4.2
+Version:        1.5.0
 Release:        0
 Summary:        Yet another URL library
 License:        Apache-2.0
@@ -35,9 +35,11 @@ BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-idna >= 2.0
 Requires:       python-multidict >= 4.0
+Requires:       python-typing_extensions >= 3.7.4
 %python_subpackages
 
 %description
@@ -52,13 +54,17 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
+# devel file in non-devel-package
+%python_expand rm %{buildroot}%{$python_sitearch}/yarl/_quoting_c.c
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest tests
+%pytest_arch
 
 %files %{python_files}
 %license LICENSE
 %doc CHANGES.rst README.rst
-%{python_sitearch}/*
+%{python_sitearch}/yarl
+%{python_sitearch}/yarl-%{version}-py*.egg-info
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package assimp
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,38 +12,52 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define sover 3
+%define sover 5
 Name:           assimp
-Version:        3.3.1
+Version:        5.0.1
 Release:        0
 Summary:        Library to load and process 3D scenes from various data formats
-License:        BSD-3-Clause
+License:        BSD-3-Clause AND MIT
 Group:          Development/Libraries/C and C++
-Url:            http://assimp.org/
-#Source:         https://github.com/assimp/assimp/archive/v%{version}/%{name}-%{version}.tar.gz
-Source:         %{name}-%{version}-suse.tar.gz
-Source9:        sanitize_source.sh
-BuildRequires:  boost-devel
+URL:            https://assimp.org/
+Source0:        %{name}-%{version}.tar.xz
+Patch0:         do-not-install-irrXML.patch
+# PATCH-FIX-UPSTREAM -- Don't hardcode the library and binary location
+Patch1:         0001-use-GNUInstallDirs-where-possible.patch
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
+BuildRequires:  irrlicht-devel
+BuildRequires:  libboost_headers-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(IL)
+BuildRequires:  pkgconfig(Qt5OpenGL)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(minizip)
 
 %description
-Assimp is a library to load and process geometric scenes from various data formats. It is tailored at typical game scenarios by supporting a node hierarchy, static or skinned meshes, materials, bone animations and potential texture data. The library is not designed for speed, it is primarily useful for importing assets from various sources once and storing it in a engine-specific format for easy and fast every-day-loading.
+Assimp is a library to load and process geometric scenes from various data formats.
+It is tailored at typical game scenarios by supporting a node hierarchy, static or skinned meshes,
+materials, bone animations and potential texture data. The library is not designed for speed,
+it is primarily useful for importing assets from various sources once and storing it in a
+engine-specific format for easy and fast every-day-loading.
 
 %package -n lib%{name}%{sover}
-Summary:        Headers, docs and command-line utility for %{name}
+Summary:        Library to load and process 3D scenes from various data formats
 Group:          System/Libraries
 
 %description -n lib%{name}%{sover}
-Assimp is a library to load and process geometric scenes from various data formats. It is tailored at typical game scenarios by supporting a node hierarchy, static or skinned meshes, materials, bone animations and potential texture data. The library is not designed for speed, it is primarily useful for importing assets from various sources once and storing it in a engine-specific format for easy and fast every-day-loading.
+Assimp is a library to load and process geometric scenes from various data formats.
+It is tailored at typical game scenarios by supporting a node hierarchy, static or skinned meshes,
+materials, bone animations and potential texture data. The library is not designed for speed,
+it is primarily useful for importing assets from various sources once and storing it in a
+engine-specific format for easy and fast every-day-loading.
 
 %package devel
 Summary:        Headers, docs and command-line utility for %{name}
@@ -53,40 +67,38 @@ Requires:       lib%{name}%{sover} = %{version}
 Requires:       libstdc++-devel
 
 %description devel
-Assimp is a library to load and process geometric scenes from various data formats. It is tailored at typical game scenarios by supporting a node hierarchy, static or skinned meshes, materials, bone animations and potential texture data. The library is not designed for speed, it is primarily useful for importing assets from various sources once and storing it in a engine-specific format for easy and fast every-day-loading.
+Assimp is a library to load and process geometric scenes from various data formats.
+It is tailored at typical game scenarios by supporting a node hierarchy, static or skinned meshes,
+materials, bone animations and potential texture data. The library is not designed for speed,
+it is primarily useful for importing assets from various sources once and storing it in a
+engine-specific format for easy and fast every-day-loading.
 
 %prep
-%setup -q
-
-dos2unix LICENSE CREDITS CHANGES README
-find . -type f -name "*.lib" -delete
+%autosetup -p1
 
 %build
-%cmake \
-      -DCMAKE_BUILD_TYPE="Release" \
-      -DASSIMP_LIB_INSTALL_DIR="%{_libdir}"
-CFLAGS="%{optflags}" make %{?_smp_mflags}
+%cmake
+
+%cmake_build
 
 %install
-rm -rf examples/.deps
 %cmake_install
 find %{buildroot} -type f -name "*.la" -delete -print
+
+%check
+pushd build/test
+LD_LIBRARY_PATH=%{buildroot}%{_libdir} ctest --output-on-failure --force-new-ctest-process
+popd
 
 %post -n lib%{name}%{sover}  -p /sbin/ldconfig
 %postun -n lib%{name}%{sover} -p /sbin/ldconfig
 
 %files -n lib%{name}%{sover}
-%defattr(-,root,root)
-%if 0%{?suse_version} > 1320
-%license CREDITS LICENSE
-%else
-%doc CREDITS LICENSE
-%endif
-%{_libdir}/libassimp.so.3*
+%license LICENSE
+%{_libdir}/libassimp.so.%{sover}*
 
 %files devel
-%defattr(-,root,root)
-%doc README CHANGES
+%doc README CHANGES CREDITS
 %{_includedir}/assimp/
 %{_bindir}/assimp
 %{_libdir}/libassimp.so

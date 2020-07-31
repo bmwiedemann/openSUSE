@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 22 15:31:44 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 11.2.185
+  - No release notes available
+- Refresh libpsm2-use_RPM_OPT_FLAGS.patch against latest sources
+
+-------------------------------------------------------------------
 Fri Jul  3 08:04:50 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 11.2.166
