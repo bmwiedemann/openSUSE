@@ -1,5 +1,4 @@
 unsorted:
-  - 0ad-data 
   - 2048-cli 
   - 2ping 
   - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
@@ -1379,11 +1378,13 @@ unsorted:
   - bumblebee-status 
   - bumpversion 
   - busybox-adduser 
-  - busybox-ash 
   - busybox-attr 
+  - busybox-bc 
   - busybox-bind-utils 
   - busybox-cpio 
   - busybox-diffutils 
+  - busybox-dos2unix 
+  - busybox-ed 
   - busybox-gzip 
   - busybox-hostname 
   - busybox-iproute2 
@@ -1391,19 +1392,30 @@ unsorted:
   - busybox-k8s-yaml: [i586] 
   - busybox-kbd 
   - busybox-kmod 
+  - busybox-less 
   - busybox-links 
   - busybox-man 
   - busybox-misc 
   - busybox-ncurses-utils 
   - busybox-net-tools 
+  - busybox-netcat 
   - busybox-procps 
-  - busybox-sendmail 
   - busybox-sh 
   - busybox-sharutils 
+  - busybox-syslogd 
+  - busybox-sysvinit-tools 
+  - busybox-telnet 
   - busybox-testsuite 
+  - busybox-tftp 
+  - busybox-time 
   - busybox-traceroute 
+  - busybox-tunctl 
   - busybox-util-linux 
+  - busybox-vi 
+  - busybox-vlan 
+  - busybox-wget 
   - busybox-which 
+  - busybox-whois 
   - buzztrax 
   - buzztrax-lang 
   - buzztrax-plugins 
@@ -2495,6 +2507,7 @@ unsorted:
   - dleyna-core-devel 
   - dleyna-renderer-devel 
   - dleyna-server-devel 
+  - dlpack-devel 
   - dm-zoned-tools 
   - dmd 
   - dmenu 
@@ -2927,6 +2940,7 @@ unsorted:
   - exfatprogs: [x86_64] 
   - exif 
   - exiftran 
+  - exim 
   - eximon 
   - eximstats-html 
   - exiv2 
@@ -8516,7 +8530,7 @@ unsorted:
   - libaspell15-32bit: [x86_64] 
   - libass-devel 
   - libass9-32bit: [x86_64] 
-  - libassimp3 
+  - libassimp5 
   - libassuan-devel 
   - libassuan0-32bit: [x86_64] 
   - libastro1 
@@ -12413,6 +12427,7 @@ unsorted:
   - libspeechd2-32bit: [x86_64] 
   - libspeex1-32bit: [x86_64] 
   - libspeexdsp1-32bit: [x86_64] 
+  - libspf2-2 
   - libspf2-devel 
   - libspf2-tools 
   - libsphinxbase1 

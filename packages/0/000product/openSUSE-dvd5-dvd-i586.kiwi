@@ -277,8 +277,10 @@
       <repopackage name="busybox-patch"/>
       <repopackage name="busybox-psmisc"/>
       <repopackage name="busybox-sed"/>
+      <repopackage name="busybox-sendmail"/>
       <repopackage name="busybox-static"/>
       <repopackage name="busybox-tar"/>
+      <repopackage name="busybox-unzip"/>
       <repopackage name="busybox-xz"/>
       <repopackage name="bzip2"/>
       <repopackage name="ca-certificates"/>
@@ -503,7 +505,6 @@
       <repopackage name="evolution-plugin-spamassassin"/>
       <repopackage name="evolution-plugin-text-highlight"/>
       <repopackage name="exiftool"/>
-      <repopackage name="exim"/>
       <repopackage name="exo-branding-openSUSE"/>
       <repopackage name="exo-data"/>
       <repopackage name="exo-helpers"/>
@@ -2712,7 +2713,6 @@
       <repopackage name="libspeechd2"/>
       <repopackage name="libspeex1"/>
       <repopackage name="libspeexdsp1"/>
-      <repopackage name="libspf2-2"/>
       <repopackage name="libspice-client-glib-2_0-8"/>
       <repopackage name="libspice-client-glib-helper"/>
       <repopackage name="libspice-client-gtk-3_0-5"/>
