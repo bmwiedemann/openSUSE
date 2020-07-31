@@ -102,6 +102,13 @@ Release:        0
 Source0:        ghostscript-%{version}.tar.gz
 Source1:        apparmor_ghostscript
 # Patch0...Patch9 is for patches from upstream:
+# Patch1 CVE-2020-15900.patch is
+# https://github.com/ArtifexSoftware/ghostpdl/commit/5d499272b95a6b890a1397e11d20937de000d31b
+# that fixes CVE-2020-15900 Memory Corruption
+# in the rsearch PostScript function that is implemented as search_impl() in psi/zstring.c
+# cf. https://bugs.ghostscript.com/show_bug.cgi?id=702582
+# and https://bugzilla.suse.com/show_bug.cgi?id=1174415
+Patch1:         CVE-2020-15900.patch
 # Source10...Source99 is for sources from SUSE which are intended for upstream:
 # Patch10...Patch99 is for patches from SUSE which are intended for upstream:
 # Source100...Source999 is for sources from SUSE which are not intended for upstream:
@@ -283,6 +290,13 @@ This package contains the development files for Ghostscript.
 # Be quiet when unpacking and
 # use a directory name matching Source0 to make it work also for ghostscript-mini:
 %setup -q -n ghostscript-%{tarball_version}
+# Patch1 CVE-2020-15900.patch is
+# https://github.com/ArtifexSoftware/ghostpdl/commit/5d499272b95a6b890a1397e11d20937de000d31b
+# that fixes CVE-2020-15900 Memory Corruption
+# in the rsearch PostScript function that is implemented as search_impl() in psi/zstring.c
+# cf. https://bugs.ghostscript.com/show_bug.cgi?id=702582
+# and https://bugzilla.suse.com/show_bug.cgi?id=1174415
+%patch1
 # Patch100 remove-zlib-h-dependency.patch removes dependency on zlib/zlib.h
 # in makefiles as we do not use the zlib sources from the Ghostscript upstream tarball.
 # Again use the zlib sources from Ghostscript upstream

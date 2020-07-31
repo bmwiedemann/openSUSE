@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 28 09:15:30 CEST 2020 - jsmeix@suse.de
+
+- CVE-2020-15900.patch fixes CVE-2020-15900 Memory Corruption
+  cf. https://bugs.ghostscript.com/show_bug.cgi?id=702582
+  (bsc#1174415)
+
+-------------------------------------------------------------------
 Wed Apr 29 12:09:39 CEST 2020 - jsmeix@suse.de
 
 - The version upgrade to 9.52 fixes in particular
